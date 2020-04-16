@@ -1,6 +1,10 @@
 !Command
-command:
-- /opt/conda/bin/podchecker
+positional:
+- !Positional
+  description: The pathname of a POD file to syntax-check (defaults to standard input).
+  position: 0
+  name: file
+  optional: false
 named:
 - !Flag
   description: Print the manual page and exit.
@@ -9,15 +13,22 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: -nowarnings
+  description: Turn on/off printing of warnings. Repeating -warnings increases the
+    warning level, i.e. more warnings are printed. Currently increasing to level two
+    causes flagging of unescaped "<,>" characters.
   synonyms:
   - -warnings
+  - -nowarnings
   args: !EmptyFlagArg {}
   optional: true
+command:
+- /opt/conda/bin/podchecker
+subcommands: []
 help_flag: !Flag
   description: Print a brief help message and exit.
   synonyms:
   - -help
   args: !EmptyFlagArg {}
   optional: true
-positional: []
+usage_flag:
+version_flag:
