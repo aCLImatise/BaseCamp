@@ -1,0 +1,306 @@
+!Command
+positional:
+- !Positional
+  description: Truth VCF file
+  position: 0
+  name: truth
+  optional: false
+- !Positional
+  description: Query VCF file
+  position: 1
+  name: query
+  optional: false
+named:
+- !Flag
+  description: Output file prefix for statistics and feature table (when selected)
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Location for bcftools view (e.g. chr1)
+  synonyms:
+  - -l
+  - --location
+  args: !SimpleFlagArg
+    name: LOCATION
+  optional: true
+- !Flag
+  description: Restrict analysis to given (sparse) regions (using -R in bcftools).
+  synonyms:
+  - -R
+  - --restrict-regions
+  args: !SimpleFlagArg
+    name: REGIONS_BEDFILE
+  optional: true
+- !Flag
+  description: Restrict analysis to given (dense) regions (using -T in bcftools).
+  synonyms:
+  - -T
+  - --target-regions
+  args: !SimpleFlagArg
+    name: TARGETS_BEDFILE
+  optional: true
+- !Flag
+  description: False-positive region bed file to distinguish UNK from FP
+  synonyms:
+  - -f
+  - --false-positives
+  args: !SimpleFlagArg
+    name: FP
+  optional: true
+- !Flag
+  description: Ambiguous region bed file(s) to distinguish from FP (e.g. variant only
+    observed in some replicates)
+  synonyms:
+  - -a
+  - --ambiguous
+  args: !SimpleFlagArg
+    name: AMBI
+  optional: true
+- !Flag
+  description: Use FP calls from ambiguous region files also.
+  synonyms:
+  - --ambi-fp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not use FP calls from ambiguous region files also.
+  synonyms:
+  - --no-ambi-fp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assume the truth set covers the whole genome and only count FPs in
+    regions specified by the truth VCF or ambiguous/false-positive regions.
+  synonyms:
+  - --count-unk
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not use FP calls from ambiguous region files also.
+  synonyms:
+  - --no-count-unk
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print a table giving the number of ambiguous events per category
+  synonyms:
+  - -e
+  - --explain_ambiguous
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify a reference file.
+  synonyms:
+  - -r
+  - --reference
+  args: !SimpleFlagArg
+    name: REF
+  optional: true
+- !Flag
+  description: Filename prefix for scratch report output.
+  synonyms:
+  - --scratch-prefix
+  args: !SimpleFlagArg
+    name: SCRATCH_PREFIX
+  optional: true
+- !Flag
+  description: Filename prefix for scratch report output.
+  synonyms:
+  - --keep-scratch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Continue from scratch space (i.e. use VCFs in there if they already
+    exist).
+  synonyms:
+  - --continue
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use to include failing variants in comparison.
+  synonyms:
+  - -P
+  - --include-nonpass
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '{hcc.strelka.snv,hcc.pisces.snv,hcc.mutect.snv,hcc.varscan2.indel,admix.strelka.snv,generic,hcc.pisces.indel,hcc.strelka.indel,admix.strelka.indel,hcc.varscan2.snv,hcc.mutect.indel}
+    Select a feature table to output.'
+  synonyms:
+  - --feature-table
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Generate summary.csv.
+  synonyms:
+  - --happy-stats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: pass one or more BAM files for feature table extraction
+  synonyms:
+  - --bam
+  args: !SimpleFlagArg
+    name: BAMS
+  optional: true
+- !Flag
+  description: Enable running of bcftools norm on the truth file.
+  synonyms:
+  - --normalize-truth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable running of bcftools norm on the query file.
+  synonyms:
+  - --normalize-query
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable running of bcftools norm on both truth and query file.
+  synonyms:
+  - -N
+  - --normalize-all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Add chr prefix to truth file (default: true).'
+  synonyms:
+  - --fixchr-truth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Add chr prefix to query file (default: true).'
+  synonyms:
+  - --fixchr-query
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Same as --fixchr-truth.
+  synonyms:
+  - --fix-chr-truth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Same as --fixchr-query.
+  synonyms:
+  - --fix-chr-query
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Disable chr replacement for truth (default: false).'
+  synonyms:
+  - --no-fixchr-truth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Add chr prefix to query file (default: false).'
+  synonyms:
+  - --no-fixchr-query
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable checking the order of TP features (dev feature).
+  synonyms:
+  - --no-order-check
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '{varscan2.indel,strelka.snv.qss,mutect.snv,strelka.snv,strelka.indel.evs,varscan2.snv,mutect.indel,strelka.indel,strelka.snv.vqsr}
+    Create a ROC-style table. This is caller specific - this will override the --feature-table
+    switch!'
+  synonyms:
+  - --roc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Stratify into different AF buckets. This needs to have features available
+    for getting the AF both in truth and query variants.
+  synonyms:
+  - --bin-afs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Bin size for AF binning (should be < 1). Multiple bin sizes can be
+    specified using a comma, e.g. 0.1,0.2,0.5,0.2 will split at 0.1, 0.3, 0.8 and
+    1.0.
+  synonyms:
+  - --af-binsize
+  args: !SimpleFlagArg
+    name: AF_STRAT_BINSIZE
+  optional: true
+- !Flag
+  description: Feature name to use for retrieving AF for truth variants (TP and FN)
+  synonyms:
+  - --af-truth
+  args: !SimpleFlagArg
+    name: AF_STRAT_TRUTH
+  optional: true
+- !Flag
+  description: Feature name to use for retrieving AF for query variants (FP/UNK/AMBI)
+  synonyms:
+  - --af-query
+  args: !SimpleFlagArg
+    name: AF_STRAT_QUERY
+  optional: true
+- !Flag
+  description: Count filtered vs. absent FN numbers. This requires the -P switch (to
+    use all variants) and either the --feature-table or --roc switch.
+  synonyms:
+  - -FN
+  - --count-filtered-fn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'How to obtain the normalisation constant for FP rate. By default,
+    this will use the FP region bed file size when using --count-unk and the size
+    of all reference contigs that overlap with the location specified in -l otherwise.
+    This can be overridden with: 1) a number of nucleotides, or 2) "auto" to use the
+    lengths of all contigs that have calls. The resulting value is used as fp.region.size.'
+  synonyms:
+  - --fp-region-size
+  args: !SimpleFlagArg
+    name: FPR_SIZE
+  optional: true
+- !Flag
+  description: 'Confidence level for precision/recall confidence intervals (default:
+    0.95)'
+  synonyms:
+  - --ci-level
+  args: !SimpleFlagArg
+    name: CI_LEVEL
+  optional: true
+- !Flag
+  description: Write logging information into file rather than to stderr
+  synonyms:
+  - --logfile
+  args: !SimpleFlagArg
+    name: LOGFILE
+  optional: true
+- !Flag
+  description: Raise logging level from warning to info.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set logging level to output errors only.
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- som.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

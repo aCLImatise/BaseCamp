@@ -1,0 +1,133 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Produce a BED GRAPH instead of a WIGGLE file. Default: false'
+  synonyms:
+  - -bg
+  - --bedgraph
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'What kind of data should we display ? Default: COVERAGE Possible Values:
+    [COVERAGE, CLIPPING, INSERTION, DELETION, READ_GROUPS, CASE_CTRL]'
+  synonyms:
+  - --display
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "A filter expression. Reads matching the expression will be filtered-out.\
+    \  Empty String means 'filter out nothing/Accept all'. See https://github.com/lindenb/jvarkit/blob/master/src/main/resources/javacc/com/github/lindenb/jvarkit/util/bio/samfilter/SamFilterParser.jj\
+    \  for a complete syntax. Default: mapqlt(1) || MapQUnavailable() || Duplicate()\
+    \ || FailsVendorQuality() || NotPrimaryAlignment() || SupplementaryAlignment()"
+  synonyms:
+  - --filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '`Printf` Format for the values. see  https://docs.oracle.com/javase/tutorial/java/data/numberformat.html
+    .  Use "%.01f" to print an integer. "%e" for scientific notation. Default: %.3f'
+  synonyms:
+  - -f
+  - --format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "print a UCSC custom track header: something lile track type=track_type\
+    \  name=\"__REPLACE_WIG_NAME__\" description=\"__REPLACE_WIG_DESC__\". Use  `sed`\
+    \ to replace the tokens. e.g: `sed  '/^track/s/__REPLACE_WIG_NAME__/My data/'`\
+    \ Default: false"
+  synonyms:
+  - -t
+  - --header
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: What kind of help. One of [usage,markdown,xml].
+  synonyms:
+  - --helpFormat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Limit analysis to this interval. An interval as the following syntax
+    :  "chrom:start-end" or "chrom:middle+extend"  or "chrom:start-end+extend"  or
+    "chrom:start-end+extend-percent%".A program might use a Reference  sequence to
+    fix the chromosome name (e.g: 1->chr1)'
+  synonyms:
+  - --region
+  - --interval
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'When using display READ_GROUPS, What is the minimal read depth that  should
+    be considered ? Default: 0'
+  synonyms:
+  - --mindepth
+  - --mindp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output file. Optional . Default: stdout'
+  synonyms:
+  - -o
+  - --output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'When using display READ_GROUPS, how should we partition the ReadGroup
+    ?  Data partitioning using the SAM Read Group (see  https://gatkforums.broadinstitute.org/gatk/discussion/6472/
+    ) . It can  be any combination of sample, library.... Default: sample Possible
+    Values: [readgroup, sample, library, platform, center, sample_by_platform, sample_by_center,
+    sample_by_platform_by_center, any]'
+  synonyms:
+  - --partition
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Pedigree file for CASE_CTRL. A pedigree is a text file delimited with\
+    \  tabs. No header. Columns are (1) Family (2) Individual-ID (3) Father Id  or\
+    \ '0' (4) Mother Id or '0' (5) Sex : 1 male/2 female / 0 unknown (6)  Status :\
+    \ 0 unaffected, 1 affected,-9 unknown"
+  synonyms:
+  - --pedigree
+  - -ped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'How to group data in the sliding window ? Default: AVERAGE Possible
+    Values: [MIN, MAX, MEDIAN, AVERAGE, RANDOM, SUM]'
+  synonyms:
+  - --percentile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'window shift Default: 25'
+  synonyms:
+  - -s
+  - --windowShift
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'window size Default: 100'
+  synonyms:
+  - -w
+  - --windowSize
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- bam2wig.sh
+subcommands: []
+help_flag: !Flag
+  description: print help and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print version and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

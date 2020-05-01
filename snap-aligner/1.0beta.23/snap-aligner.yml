@@ -1,0 +1,258 @@
+!Command
+positional: []
+named: []
+command:
+- snap-aligner
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input.fa
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: output-dir
+    optional: false
+  named:
+  - !Flag
+    description: 'Seed size (default: 20)'
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Use pre-computed table bias for hg19, which results in better speed,
+      balance, and a smaller index, but only works for the complete human reference.
+    synonyms:
+    - -hg19
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: This parameter is deprecated and will be ignored.
+    synonyms:
+    - -Ofactor
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Specify the maximum number of threads to use. Default is the number
+      of cores.
+    synonyms:
+    - -tMaxThreads
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: <chars>         Specify characters to use as chromosome name terminators
+      in the FASTA header line; these characters and anything after are not part of
+      the chromosome name.  You must specify all characters on a single -B switch.  So,
+      for example, with -B_|, the FASTA header line '>chr1|Chromosome 1' would generate
+      a chromosome named 'chr1'.  There's a separate flag for indicating that a space
+      is a terminator.
+    synonyms:
+    - -B
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Indicates that the space character is a terminator for chromosome
+      names (see -B above).  This may be used in addition to other terminators specified
+      by -B.  -B and -bSpace are case sensitive.
+    synonyms:
+    - -bSpace
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Specify the number of Ns to put as padding between chromosomes.  This
+      must be as large as the largest edit distance you'll ever use, and there's a
+      performance advantage to have it be bigger than any read you'll process.  Default
+      is 500
+    synonyms:
+    - -pPadding
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Build a histogram of seed popularity.  This is just for information,
+      it's not used by SNAP.
+    synonyms:
+    - -HHistogramFile
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Compute hash table sizes exactly.  This will slow down index build,
+      but usually will result in smaller indices.
+    synonyms:
+    - -exact
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "The number of bytes to use for the hash table key.  Larger values\
+      \ increase SNAP's memory footprint, but allow larger seeds.  Default: 4"
+    synonyms:
+    - -keysize
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Build a larger index that's a little faster, particualrly for runs
+      with quick/inaccurate parameters.  Increases index size by about 30%, depending
+      on the other index parameters and the contents of the reference genome
+    synonyms:
+    - -large
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: The size of the genome locations stored in the index.  This can be
+      from 4 to 8 bytes.  The locations need to be big enough not only to index the
+      genome, but also to allow some space for representing seeds that occur multiple
+      times.  For the human genome, it will fit with four byte locations if the seed
+      size is 19 or larger, but needs 5 (or more) for smaller seeds.  Making the location
+      size bigger than necessary will just waste (lots of) space, so unless you're
+      doing something quite unusual, the right answer is 4 or 5.  Default is 4
+    synonyms:
+    - -locationSize
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Use a temp file to work better in smaller memory.  This only helps
+      a little, but can be the difference if you're close. In particular, this will
+      generally use less memory than the index will use once it's built, so if this
+      doesn't work you won't be able to use the index anyway. However, if you've got
+      sufficient memory to begin with, this option will just slow down the index build
+      by doing extra, useless IO.
+    synonyms:
+    - -sm
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - snap-aligner
+  - index
+  subcommands: []
+  help_flag: !Flag
+    description: 'Hash table slack (default: 0.3)'
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Run SNAP at low scheduling priority (Only implemented on Windows)
+    synonyms:
+    - -lp
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "No Ukkonen: don't reduce edit distance search based on prior candidates.\
+      \ This option is purely for evaluating the performance effect of using Ukkonen's\
+      \ algorithm rather than Smith-Waterman, and specifying it will slow down execution\
+      \ without improving the alignments."
+    synonyms:
+    - -nu
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "No Ordering: don't order the evalutation of reads so as to select\
+      \ more likely candidates first.  This option is purely for evaluating the performance\
+      \ effect of the read evaluation order, and specifying it will slow down execution\
+      \ without improving alignments."
+    synonyms:
+    - -no
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Don't truncate searches based on missed seed hits.  This option is
+      purely for evaluating the performance effect of candidate truncation, and specifying
+      it will slow down execution without improving alignments.
+    synonyms:
+    - -nt
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Write buffer size in megabytes.  Don't specify this unless you've
+      gotten an error message saying to make it bigger.  Default 16.
+    synonyms:
+    - -wbs
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - snap-aligner
+  - single
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Run SNAP at low scheduling priority (Only implemented on Windows)
+    synonyms:
+    - -lp
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "No Ukkonen: don't reduce edit distance search based on prior candidates.\
+      \ This option is purely for evaluating the performance effect of using Ukkonen's\
+      \ algorithm rather than Smith-Waterman, and specifying it will slow down execution\
+      \ without improving the alignments."
+    synonyms:
+    - -nu
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "No Ordering: don't order the evalutation of reads so as to select\
+      \ more likely candidates first.  This option is purely for evaluating the performance\
+      \ effect of the read evaluation order, and specifying it will slow down execution\
+      \ without improving alignments."
+    synonyms:
+    - -no
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Don't truncate searches based on missed seed hits.  This option is
+      purely for evaluating the performance effect of candidate truncation, and specifying
+      it will slow down execution without improving alignments.
+    synonyms:
+    - -nt
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Write buffer size in megabytes.  Don't specify this unless you've
+      gotten an error message saying to make it bigger.  Default 16.
+    synonyms:
+    - -wbs
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: additional option to -F to require both mates to satisfy filter (default
+      is just one) If you specify -F b together with one of the other -F options,
+      -F b MUST be second
+    synonyms:
+    - -F
+    args: !SimpleFlagArg
+      name: b
+    optional: true
+  - !Flag
+    description: Keep unpaired-looking reads in SAM/BAM input.  Ordinarily, if a read
+      doesn't specify mate information (RNEXT field is * and/or PNEXT is 0) then the
+      code that matches reads will immdeiately discard it.  Specifying this flag may
+      cause large memory usage for some input files, but may be necessary for some
+      strangely formatted input files.  You'll also need to specify this flag for
+      SAM/BAM files that were aligned by a single-end aligner.
+    synonyms:
+    - -ku
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - snap-aligner
+  - paired
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

@@ -1,0 +1,121 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Short read input files. If no file is specified, panphlan_map reads
+    from standard input.
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: Input directory of bowtie2 indexes and pangenome
+  synonyms:
+  - --i_bowtie2_indexes
+  args: !SimpleFlagArg
+    name: INPUT_BOWTIE2_INDEXES
+  optional: true
+- !Flag
+  description: 'Read input format (fasta or fastq), default: fastq, if not fasta recognized
+    by file ending.'
+  synonyms:
+  - --fastx
+  args: !SimpleFlagArg
+    name: FASTX_FORMAT
+  optional: true
+- !Flag
+  description: 'Name of the species or clade: -c ecoli16'
+  synonyms:
+  - -c
+  - --clade
+  args: !SimpleFlagArg
+    name: CLADE_NAME
+  optional: true
+- !Flag
+  description: 'Mapping result output-file: -o path/sampleID_clade.csv'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+  optional: true
+- !Flag
+  description: 'Get BAM output file: --out_bam sampleID.bam'
+  synonyms:
+  - -b
+  - --out_bam
+  args: !SimpleFlagArg
+    name: OUTPUT_BAM_FILE
+  optional: true
+- !Flag
+  description: Maximum number of processors to use. Default is 12 or a lower number
+    of available processors.
+  synonyms:
+  - -p
+  - --nproc
+  args: !SimpleFlagArg
+    name: NUMOF_PROCESSORS
+  optional: true
+- !Flag
+  description: 'Maximum amount of memory for Samtools: -mGB 4'
+  synonyms:
+  - -m
+  - --mGB
+  args: !SimpleFlagArg
+    name: MEMORY_GIGABTES_FOR_SAMTOOLS
+  optional: true
+- !Flag
+  description: 'Minimum read length, default: --readLength 70'
+  synonyms:
+  - --readLength
+  args: !SimpleFlagArg
+    name: READS_LENGTH
+  optional: true
+- !Flag
+  description: 'Additional bowtie2 mapping options, separated by slash: /-D/20/-R/3/,
+    default: -bt2 /--very-sensitive/'
+  synonyms:
+  - --bt2
+  args: !SimpleFlagArg
+    name: BOWTIE2_OPTIONS
+  optional: true
+- !Flag
+  description: Number of mismatches to filter (bam)
+  synonyms:
+  - --th_mismatches
+  args: !SimpleFlagArg
+    name: NUMOF_MISMATCHES
+  optional: true
+- !Flag
+  description: 'Directory for temporary files, default: --tmp TMP_panphlan_map'
+  synonyms:
+  - --tmp
+  args: !SimpleFlagArg
+    name: TEMP_FOLDER
+  optional: true
+- !Flag
+  description: Display progress information
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- panphlan_map.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: PanPhlAn version
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

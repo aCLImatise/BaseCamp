@@ -1,0 +1,143 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: OPTIONS
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: file1.vcf
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: vcf-compare
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: chr1.cmp
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: Options
+  optional: false
+named:
+- !Flag
+  description: Ignore lines where FILTER column is anything else than PASS or '.'
+  synonyms:
+  - -a
+  - --apply-filters
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <list|file>       Same as -r, left for backward compatibility. Please
+    do not use as it will be dropped in the future.
+  synonyms:
+  - -c
+  - --chromosomes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Debugging information. Giving the option multiple times increases verbosity
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Compare genotypes, not only positions
+  synonyms:
+  - -g
+  - --cmp-genotypes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Exclude sites containing indels from genotype comparison
+  synonyms:
+  - --ignore-indels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <list|file>      Use with -g when comparing files with differing column
+    names. The argument to this options is a comma-separated list or one mapping per
+    line in a file. The names are colon separated and must appear in the same order
+    as the files on the command line.
+  synonyms:
+  - -m
+  - --name-mapping
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[<int>]         Calculate genotype errors by INFO. Use zero based
+    indecies if field has more than one value. Can be given multiple times.'
+  synonyms:
+  - --INFO
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Create plots. Multiple files (e.g. per-chromosome outputs from vcf-compare)
+    can be given.
+  synonyms:
+  - -p
+  - --plot
+  args: !SimpleFlagArg
+    name: prefix
+  optional: true
+- !Flag
+  description: Compare the actual sequence, not just positions. Use with -w to compare
+    indels.
+  synonyms:
+  - -R
+  - --refseq
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: <list|file>           Process the given regions (comma-separated list
+    or one region per line in a file).
+  synonyms:
+  - -r
+  - --regions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <list|file>           Process only the listed samples. Excluding unwanted
+    samples may increase performance considerably.
+  synonyms:
+  - -s
+  - --samples
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Title for graphs (see also -p)
+  synonyms:
+  - -t
+  - --title
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: In repetitive sequences, the same indel can be called at different
+    positions. Consider records this far apart as matching (be it a SNP or an indel).
+  synonyms:
+  - -w
+  - --win
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+command:
+- vcf-compare
+subcommands: []
+help_flag: !Flag
+  description: ', -?, --help                      This help message.'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

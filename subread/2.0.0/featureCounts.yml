@@ -1,0 +1,275 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Specify format of the provided annotation file. Acceptable formats
+    include 'GTF' (or compatible GFF format) and 'SAF'. 'GTF' by default.  For SAF
+    format, please refer to Users Guide.
+  synonyms:
+  - -F
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Specify feature type in GTF annotation. 'exon' by  default. Features
+    used for read counting will be  extracted from annotation using the provided value.
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Specify attribute type in GTF annotation. 'gene_id' by  default. Meta-features
+    used for read counting will be  extracted from annotation using the provided value.
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Extract extra attribute types from the provided GTF annotation and
+    include them in the counting output. These attribute types will not be used to
+    group features. If more than one attribute type is provided they should be separated
+    by comma.
+  synonyms:
+  - --extraAttributes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Provide a chromosome name alias file to match chr names in annotation
+    with those in the reads. This should be a two- column comma-delimited text file.
+    Its first column should include chr names in the annotation and its second column
+    should include chr names in the reads. Chr names are case sensitive. No column
+    header should be included in the file.
+  synonyms:
+  - -A
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Perform read counting at feature level (eg. counting  reads for exons
+    rather than genes).
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <5:3>    Reduce reads to their 5' most base or 3' most base. Read counting
+    is then performed based on the single base the  read is reduced to.
+  synonyms:
+  - --read2pos
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Multi-mapping reads will also be counted. For a multi- mapping read,
+    all its reported alignments will be  counted. The 'NH' tag in BAM/SAM input is
+    used to detect  multi-mapping reads.
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assign fractional counts to features. This option must be used together
+    with '-M' or '-O' or both. When '-M' is specified, each reported alignment from
+    a multi-mapping read (identified via 'NH' tag) will carry a fractional count of
+    1/x, instead of 1 (one), where x is the total number of alignments reported for
+    the same read. When '-O' is specified, each overlapping feature will receive a
+    fractional count of 1/y, where y is the total number of features overlapping with
+    the read. When both '-M' and '-O' are specified, each alignment will carry a fractional
+    count of 1/(x*y).
+  synonyms:
+  - --fraction
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The minimum mapping quality score a read must satisfy in order to be
+    counted. For paired-end reads, at least one end should satisfy this criteria.
+    0 by default.
+  synonyms:
+  - -Q
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Count split alignments only (ie. alignments with CIGAR string containing
+    'N'). An example of split alignments is exon-spanning reads in RNA-seq data.
+  synonyms:
+  - --splitOnly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If specified, only non-split alignments (CIGAR strings do not contain
+    letter 'N') will be counted. All the other alignments will be ignored.
+  synonyms:
+  - --nonSplitOnly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Count primary alignments only. Primary alignments are  identified using
+    bit 0x100 in SAM/BAM FLAG field.
+  synonyms:
+  - --primary
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ignore duplicate reads in read counting. Duplicate reads  are identified
+    using bit Ox400 in BAM/SAM FLAG field. The  whole read pair is ignored if one
+    of the reads is a  duplicate read for paired end data.
+  synonyms:
+  - --ignoreDup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Perform strand-specific read counting. A single integer value (applied
+    to all input files) or a string of comma- separated values (applied to each corresponding
+    input file) should be provided. Possible values include: 0 (unstranded), 1 (stranded)
+    and 2 (reversely stranded). Default value is 0 (ie. unstranded read counting carried
+    out for all input files).'
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: int or string
+  optional: true
+- !Flag
+  description: Count number of reads supporting each exon-exon junction. Junctions
+    were identified from those exon-spanning reads in the input (containing 'N' in
+    CIGAR string). Counting results are saved to a file named '<output_file>.jcounts'
+  synonyms:
+  - -J
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Provide the name of a FASTA-format file that contains the reference
+    sequences used in read mapping that produced the provided SAM/BAM files. This
+    optional argument can be used with '-J' option to improve read counting for junctions.
+  synonyms:
+  - -G
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: If specified, fragments (or templates) will be counted instead of reads.
+    This option is only applicable for paired-end reads; single-end reads are always
+    counted as reads.
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Only count read pairs that have both ends aligned.
+  synonyms:
+  - -B
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Check validity of paired-end distance when counting read  pairs. Use
+    -d and -D to set thresholds.
+  synonyms:
+  - -P
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum fragment/template length, 50 by default.
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Maximum fragment/template length, 600 by default.
+  synonyms:
+  - -D
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Do not count read pairs that have their two ends mapping  to different
+    chromosomes or mapping to same chromosome  but on different strands.
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not sort reads in BAM/SAM input. Note that reads from  the same
+    pair are required to be located next to each  other in the input.
+  synonyms:
+  - --donotsort
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of the threads. 1 by default.
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Assign reads by read group. "RG" tag is required to be present in the
+    input BAM/SAM files.
+  synonyms:
+  - --byReadGroup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Count long reads such as Nanopore and PacBio reads. Long read counting
+    can only run in one thread and only reads (not read-pairs) can be counted. There
+    is no limitation on the number of 'M' operations allowed in a CIGAR string in
+    long read counting.
+  synonyms:
+  - -L
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output detailed assignment results for each read or read- pair. Results
+    are saved to a file that is in one of the following formats: CORE, SAM and BAM.
+    See Users Guide for more info about these formats.'
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: format
+  optional: true
+- !Flag
+  description: Specify a directory to save the detailed assignment results. If unspecified,
+    the directory where counting results are saved is used.
+  synonyms:
+  - --Rpath
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Directory under which intermediate files are saved (later removed).
+    By default, intermediate files will be saved to the directory specified in '-o'
+    argument.
+  synonyms:
+  - --tmpDir
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Maximum number of 'M' operations allowed in a CIGAR string. 10 by default.
+    Both 'X' and '=' are treated as 'M' and adjacent 'M' operations are merged in
+    the CIGAR string.
+  synonyms:
+  - --maxMOp
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Output verbose information for debugging, such as un- matched chromosome/contig
+    names.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output version of the program.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- featureCounts
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

@@ -1,0 +1,73 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - --kmer
+  args: !SimpleFlagArg
+    name: KMER
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+command:
+- hitac.py
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: Input FASTA file containing the sequences for training
+    position: 0
+    name: train
+    optional: false
+  - !Positional
+    description: Input FASTA file containing the sequences for taxonomy prediction
+    position: 1
+    name: test
+    optional: false
+  - !Positional
+    description: Output file to write the predictions
+    position: 2
+    name: predictions
+    optional: false
+  named:
+  - !Flag
+    description: 'Kmer size for feature extraction [default: 6]'
+    synonyms:
+    - --kmer
+    args: !SimpleFlagArg
+      name: KMER
+    optional: true
+  - !Flag
+    description: 'Number of threads [default: all threads available]'
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  command:
+  - hitac.py
+  - train
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

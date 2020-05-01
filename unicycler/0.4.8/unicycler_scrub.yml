@@ -1,0 +1,104 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: These are the reads or assembly to be scrubbed (can be FASTA or FASTQ
+    format
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: The scrubbed reads or assembly will be saved to this file (will have
+    the same format as the --input file format) or use "none" to not produce an output
+    file
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: OUT
+  optional: true
+- !Flag
+  description: 'These are the reads used to scrub --input (can be FASTA or FASTQ format)
+    (default: same file as --input)'
+  synonyms:
+  - -r
+  - --reads
+  args: !SimpleFlagArg
+    name: READS
+  optional: true
+- !Flag
+  description: 'The aggressiveness with which the input will be trimmed (0 to 100,
+    where 0 is no trimming and 100 is very aggressive trimming) (default: 50)'
+  synonyms:
+  - --trim
+  args: !SimpleFlagArg
+    name: TRIM
+  optional: true
+- !Flag
+  description: 'The aggressiveness with which the input will be split (0 to 100, where
+    0 is no splitting and 100 is very aggressive splitting) (default: 50)'
+  synonyms:
+  - --split
+  args: !SimpleFlagArg
+    name: SPLIT
+  optional: true
+- !Flag
+  description: 'Parts of split sequences will only be outputted if they are at least
+    this big (default: 1000)'
+  synonyms:
+  - --min_split_size
+  args: !SimpleFlagArg
+    name: MIN_SPLIT_SIZE
+  optional: true
+- !Flag
+  description: 'If used, chimeric sequences will be discarded instead of split (default:
+    False)'
+  synonyms:
+  - --discard_chimeras
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of threads used (default: 8)'
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: 'Save the alignments to file (makes repeated runs faster because alignments
+    can be loaded from file) (default: False)'
+  synonyms:
+  - --keep_paf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Low-level parameters (for debugging use only) (default: )'
+  synonyms:
+  - --parameters
+  args: !SimpleFlagArg
+    name: PARAMETERS
+  optional: true
+- !Flag
+  description: 'Level of stdout information (default: 1) 0 = no stdout, 1 = basic
+    progress indicators, 2 = extra info, 3 = debugging info'
+  synonyms:
+  - --verbosity
+  args: !SimpleFlagArg
+    name: VERBOSITY
+  optional: true
+command:
+- unicycler_scrub
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

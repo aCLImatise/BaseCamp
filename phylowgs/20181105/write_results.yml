@@ -1,0 +1,55 @@
+!Command
+positional:
+- !Positional
+  description: Name identifying dataset
+  position: 0
+  name: dataset_name
+  optional: false
+- !Positional
+  description: File containing sampled trees
+  position: 1
+  name: tree_file
+  optional: false
+- !Positional
+  description: Output file for JSON-formatted tree summaries
+  position: 2
+  name: tree_summary_output
+  optional: false
+- !Positional
+  description: Output file for JSON-formatted list of mutations
+  position: 3
+  name: mutlist_output
+  optional: false
+- !Positional
+  description: Output file for JSON-formatted list of SSMs and CNVs assigned to each
+    subclone
+  position: 4
+  name: mutass_output
+  optional: false
+named:
+- !Flag
+  description: 'Include SSM names in output (which may be sensitive data) (default:
+    False)'
+  synonyms:
+  - --include-ssm-names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Minimum number or percent of SSMs to retain a subclone (default: 0.01)'
+  synonyms:
+  - --min-ssms
+  args: !SimpleFlagArg
+    name: MIN_SSMS
+  optional: true
+command:
+- write_results.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

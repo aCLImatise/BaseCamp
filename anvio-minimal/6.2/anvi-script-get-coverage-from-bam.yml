@@ -1,0 +1,78 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Sorted and indexed BAM file to analyze.
+  synonyms:
+  - -b
+  - --bam-file
+  args: !SimpleFlagArg
+    name: BAM_FILE
+  optional: true
+- !Flag
+  description: The name of a single contig
+  synonyms:
+  - -c
+  - --contig-name
+  args: !SimpleFlagArg
+    name: CONTIG_NAME
+  optional: true
+- !Flag
+  description: Provide here a file where each line is a contig name.
+  synonyms:
+  - -l
+  - --contigs-of-interest
+  args: !SimpleFlagArg
+    name: CONTIGS_OF_INTEREST
+  optional: true
+- !Flag
+  description: Provide a collection text file. The first column should be contig names
+    and the second column should be the bin to which the contig belongs. If you have
+    a collection from a profile database, you can export it in this format with anvi-export-collection.
+  synonyms:
+  - -C
+  - --collection-txt
+  args: !SimpleFlagArg
+    name: COLLECTION_TXT
+  optional: true
+- !Flag
+  description: 'If pos, each nucleotide position will be reported (valid for OPTION
+    #1, #2, #3). If contig, report contains contig averages (valid for OPTION #2,
+    #3). If bin, report contains bin averages (valid for OPTION #3).'
+  synonyms:
+  - -m
+  - --method
+  args: !ChoiceFlagArg
+    choices:
+    - pos
+    - contig
+    - bin
+  optional: true
+- !Flag
+  description: Output tab-delimited file path. Will overwrite existing files.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Checking to see that your collection text or contigs of interest file
+    has correct names can take a really long time if you have a large enough number
+    of contigs. Use this flag to forego checking, and find out the hard way.
+  synonyms:
+  - --skip-contigs-check
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- anvi-script-get-coverage-from-bam
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

@@ -1,0 +1,108 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: ": be quiet, don't print mapping of each column"
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": mask to <f>:'1'=msa1 aln       col x maps msa2 aln col"
+  synonyms:
+  - --mask-a2a
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: ": mask to <f>:'1'=msa1 aln       col x maps msa2 nongap RF col"
+  synonyms:
+  - --mask-a2rf
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: ": mask to <f>:'1'=msa1 nongap RF col x maps msa2 aln col"
+  synonyms:
+  - --mask-rf2a
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: ": mask to <f>:'1'=msa1 nongap RF col x maps msa2 nongap RF col"
+  synonyms:
+  - --mask-rf2rf
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: ': <msafile2> is subaln of <msafile1>, output mask to <f>'
+  synonyms:
+  - --submap
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: ': <msafile{1,2}> contain protein alignments'
+  synonyms:
+  - --amino
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': <msafile{1,2}> contain DNA alignments'
+  synonyms:
+  - --dna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': <msafile{1,2}> contain RNA alignments'
+  synonyms:
+  - --rna
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- ssu-esl-alimap
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: msafile2
+    optional: false
+  named: []
+  command:
+  - ssu-esl-alimap
+  - msafile1
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: msafile1
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: msafile2
+    optional: false
+  named: []
+  command:
+  - ssu-esl-alimap
+  - msafile2
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: ': help; show brief info on version and usage'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

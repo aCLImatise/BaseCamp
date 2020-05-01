@@ -1,0 +1,215 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: '[ --mappedFiles ] arg           Specify the names of RRBS/WGBS alignment  files
+    for methylation calling. Multiple  files can be provided to combine them(eg.  lanes
+    or replicates) into a single track;'
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If two or more mappedFiles are specifed,  this option generates a merged
+    result;  Ignored for one input file;
+  synonyms:
+  - --sampleName
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: The name of the output directory;
+  synonyms:
+  - --outputDir
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: The name of the web-accessible output  directory for UCSC Genome Browser
+    tracks;
+  synonyms:
+  - --webOutputDir
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '[ --genome ] arg                The UCSC Genome Browser identifier
+    of  source genome assembly; mm9 for example;'
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --reference ] arg             Reference DNA fasta file; It's required\
+    \ if CHG methylation is wanted;"
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(=20)       Threshold for cytosine quality score  (default: 20). Discard
+    the base if  threshold is not reached;'
+  synonyms:
+  - --cytosineMinScore
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '(=3)        Threshold for the next base quality  score(default: 3,ie,
+    better than B or #);  Possible values: -1 makes the program not  to check if next
+    base matches reference;  any positive integer or zero makes the  program to check
+    if next base matches  reference and reaches this score  threshold;'
+  synonyms:
+  - --nextBaseMinScore
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '(=0)        Specify quality score system: 0 means  autodetection;
+    Sanger=>33;Solexa=>59;Illum ina=>64; See wiki FASTQ_format for  details;'
+  synonyms:
+  - --qualityScoreBase
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '(=3) How to trim end-repair sequence from begin of +-/-- reads from
+    Pair End WGBS  Sequencing; 0: no trim; n(positive  integer): trim n bases from
+    begin of +-/-- reads; -2: model determined n; -1: trim  from beginning to before
+    1st methylated C; Suggest 3; n>readLen is equivalent to use  PE1 reads;'
+  synonyms:
+  - --trimWGBSEndRepairPE2Seq
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '(=3) How to trim end-repair sequence from end   of ++/-+ reads from
+    Pair End WGBS  Sequencing; 0: no trim; n(positive  integer): trim n + NM bases
+    from end of  ++/-+ reads if fragSize <= maxReadLen; -2: model determined n; Suggest
+    3;'
+  synonyms:
+  - --trimWGBSEndRepairPE1Seq
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=1)     1/0 makes the program count once/twice the overlap seq of
+    two pairs;
+  synonyms:
+  - --processPEOverlapSeq
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '(=2)    How to trim end-repair sequence for RRBS  reads; RRBS or WGBS
+    protocol can be  automatically detected; 0: no trim; 2:  trim the last CG at exactly
+    end of ++/-+  reads and trim the first CG at exactly  begin of +-/-- reads like
+    the WGBS  situation;'
+  synonyms:
+  - --trimRRBSEndRepairSeq
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=1)         Specify whether to skip random and hadrop  chrom;
+  synonyms:
+  - --skipRandomChrom
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '[ --requiredFlag ] arg (=0)     Requiring samtools flag; 0x2(properly  paried),
+    0x40(PE1), 0x80(PE2), 0x100(not  unique), r=0x10(reverse); Examples: -f  0x10
+    <=> +-/-+ (Right) reads; -f 0x40 <=>  ++/-+ (PE1) reads; -f 0x50 <=> -+ read;
+    -f 0x90 <=> +- read;'
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --excludedFlag ] arg (=0)     Excluding samtools flag; Examples:
+    -f 0x2  -F 0x100 <=> uniquely mapped pairs; -F  0x10 <=> ++/-- (Left) reads; -F
+    0x40 <=>  -f 0x80 +-/-- (PE2) reads; -f 0x40 -F 0x10 <=> ++ read; -f 0x80 -F 0x10
+    <=> -- read; '
+  synonyms:
+  - -F
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (=0)             Requiring min fragment size, the 9th field in sam
+    file; Since non-properly-paired  read has 0 at 9th field, setting this  option
+    is requiring properly paired and  large enough fragment size;
+  synonyms:
+  - --minFragSize
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=0)           Requiring min fragment size for multiply  matched read;
+    Same as option above but  only this option is only applicable to  reads with flag
+    0x100 set as 1;
+  synonyms:
+  - --minMMFragSize
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=G)               X=G generates a file for CpG methylation;  A/C/T
+    generates file for CpA/CpC/CpT meth;
+  synonyms:
+  - --reportCpX
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=X)               X=G generates a file for CHG methylation;  A/C/T
+    generates file for CHA/CHC/CHT meth; This file is large;
+  synonyms:
+  - --reportCHX
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '[ --fullMode ] arg (=0)         Specify whether to turn on full mode.  Off(0):
+    only *.G.bed, *.HG.bed and  *_stat.txt are allowed to be generated.  On(1): file
+    *.HG.bed, *.bed, *_skip.bed,  and *_strand.bed are forced to be  generated. Extremely
+    large files will be  generated at fullMode.'
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(=0)               Off(0): no effect. On(1): only *_stat.txt  is generated.'
+  synonyms:
+  - --statsOnly
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=0)                Specify whether to keep temp files;
+  synonyms:
+  - --keepTemp
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '[ --threads ] arg (=1)          Number of threads on all mapped file.  Suggest
+    1~8 on EACH input file depending  RAM size and disk speed.'
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- mcall
+subcommands: []
+help_flag: !Flag
+  description: '[ --help ]                      Produce help message. Common options
+    are  provided with single letter format.  Parameter defaults are in brackts. Example
+    command: mCall -m Ko.bam; mCall -m  wt_r1.bam -m wt_r2.bam -sampleName Wt; See
+    doc for more details.'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

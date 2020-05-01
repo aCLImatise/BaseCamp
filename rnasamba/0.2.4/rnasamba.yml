@@ -1,0 +1,144 @@
+!Command
+positional: []
+named: []
+command:
+- rnasamba
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: output TSV file containing the results of the classification.
+    position: 0
+    name: output_file
+    optional: false
+  - !Positional
+    description: input FASTA file containing transcript sequences.
+    position: 1
+    name: fasta_file
+    optional: false
+  - !Positional
+    description: input HDF5 file(s) containing weights of a trained RNAsamba network
+      (if more than a file is provided, an ensembling of the models will be performed).
+    position: 2
+    name: weights
+    optional: false
+  named:
+  - !Flag
+    description: 'output FASTA file containing translated sequences for the predicted
+      coding ORFs. (default: None)'
+    synonyms:
+    - -p
+    - --protein_fasta
+    args: !SimpleFlagArg
+      name: PROTEIN_FASTA
+    optional: true
+  - !Flag
+    description: '{0,1}, --verbose {0,1} print the progress of the classification.
+      0 = silent, 1 = current step. (default: 0)'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - rnasamba
+  - classify
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: show program's version number and exit
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional:
+  - !Positional
+    description: output HDF5 file containing weights of the newly trained RNAsamba
+      network.
+    position: 0
+    name: output_file
+    optional: false
+  - !Positional
+    description: input FASTA file containing sequences of protein- coding transcripts.
+    position: 1
+    name: coding_file
+    optional: false
+  - !Positional
+    description: input FASTA file containing sequences of noncoding transcripts.
+    position: 2
+    name: noncoding_file
+    optional: false
+  named:
+  - !Flag
+    description: 'number of epochs after lowest validation loss before stopping training
+      (a fraction of 0.1 of the training set is set apart for validation and the model
+      with the lowest validation loss will be saved). (default: 0)'
+    synonyms:
+    - -s
+    - --early_stopping
+    args: !SimpleFlagArg
+      name: EARLY_STOPPING
+    optional: true
+  - !Flag
+    description: 'number of samples per gradient update. (default: 128)'
+    synonyms:
+    - -b
+    - --batch_size
+    args: !SimpleFlagArg
+      name: BATCH_SIZE
+    optional: true
+  - !Flag
+    description: 'number of epochs to train the model. (default: 40)'
+    synonyms:
+    - -e
+    - --epochs
+    args: !SimpleFlagArg
+      name: EPOCHS
+    optional: true
+  - !Flag
+    description: '{0,1,2,3}, --verbose {0,1,2,3} print the progress of the training.
+      0 = silent, 1 = current step, 2 = progress bar, 3 = one line per epoch. (default:
+      0)'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - rnasamba
+  - train
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: show program's version number and exit
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

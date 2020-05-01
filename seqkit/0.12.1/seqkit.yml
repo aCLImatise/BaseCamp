@@ -1,0 +1,2610 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: length of sequence prefix of the first FASTA record based on which
+    seqkit guesses the sequence type (0 for whole seq) (default 10000)
+  synonyms:
+  - --alphabet-guess-seq-length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+  synonyms:
+  - --id-ncbi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: regular expression for parsing ID (default "^(\\S+)\\s?")
+  synonyms:
+  - --id-regexp
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: file of input files list (one file per line), if given, they are appended
+    to files from cli arguments
+  synonyms:
+  - --infile-list
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: line width when outputing FASTA format (0 for no wrap) (default 60)
+  synonyms:
+  - -w
+  - --line-width
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+  synonyms:
+  - -o
+  - --out-file
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: be quiet and do not show extra information
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+    detect by the first sequence) (default "auto")
+  synonyms:
+  - -t
+  - --seq-type
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others)
+    (default 2)'
+  synonyms:
+  - -j
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+command:
+- seqkit
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: match by full name instead of just id
+    synonyms:
+    - -n
+    - --by-name
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: search subseq on seq, only positive strand is searched, and mismatch
+      allowed using flag -m/--max-mismatch
+    synonyms:
+    - -s
+    - --by-seq
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: pattern/motif contains degenerate base
+    synonyms:
+    - -d
+    - --degenerate
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: delete a pattern right after being matched, this keeps the firstly
+      matched data and speedups when using regular expressions
+    synonyms:
+    - --delete-matched
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ignore case
+    synonyms:
+    - -i
+    - --ignore-case
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: invert the sense of matching, to select non-matching records
+    synonyms:
+    - -v
+    - --invert-match
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: max mismatch when matching by seq. For large genomes like human genome,
+      using mapping/alignment tools would be faster
+    synonyms:
+    - -m
+    - --max-mismatch
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: "search pattern (multiple values supported. Attention: use double\
+      \ quotation marks for patterns containing comma, e.g., -p '\"A{2,}\"'))"
+    synonyms:
+    - -p
+    - --pattern
+    args: !SimpleFlagArg
+      name: strings
+    optional: true
+  - !Flag
+    description: pattern file (one record per line)
+    synonyms:
+    - -f
+    - --pattern-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: specify sequence region for searching. e.g 1:12 for first 12 bases,
+      -12:-1 for last 12 bases
+    synonyms:
+    - -R
+    - --region
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: patterns are regular expression
+    synonyms:
+    - -r
+    - --use-regexp
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: length of sequence prefix of the first FASTA record based on which
+      seqkit guesses the sequence type (0 for whole seq) (default 10000)
+    synonyms:
+    - --alphabet-guess-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+    synonyms:
+    - --id-ncbi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: regular expression for parsing ID (default "^(\\S+)\\s?")
+    synonyms:
+    - --id-regexp
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: file of input files list (one file per line), if given, they are
+      appended to files from cli arguments
+    synonyms:
+    - --infile-list
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: line width when outputing FASTA format (0 for no wrap) (default 60)
+    synonyms:
+    - -w
+    - --line-width
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    synonyms:
+    - -o
+    - --out-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: be quiet and do not show extra information
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+      detect by the first sequence) (default "auto")
+    synonyms:
+    - -t
+    - --seq-type
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others)
+      (default 2)'
+    synonyms:
+    - -j
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - seqkit
+  - grep
+  subcommands: []
+  help_flag: !Flag
+    description: help for grep
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: print first N FASTA/Q records (default 10)
+    synonyms:
+    - -n
+    - --number
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: length of sequence prefix of the first FASTA record based on which
+      seqkit guesses the sequence type (0 for whole seq) (default 10000)
+    synonyms:
+    - --alphabet-guess-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+    synonyms:
+    - --id-ncbi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: regular expression for parsing ID (default "^(\\S+)\\s?")
+    synonyms:
+    - --id-regexp
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: file of input files list (one file per line), if given, they are
+      appended to files from cli arguments
+    synonyms:
+    - --infile-list
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: line width when outputing FASTA format (0 for no wrap) (default 60)
+    synonyms:
+    - -w
+    - --line-width
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    synonyms:
+    - -o
+    - --out-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: be quiet and do not show extra information
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+      detect by the first sequence) (default "auto")
+    synonyms:
+    - -t
+    - --seq-type
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others)
+      (default 2)'
+    synonyms:
+    - -j
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - seqkit
+  - head
+  subcommands: []
+  help_flag: !Flag
+    description: help for head
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: output in BED6 format
+    synonyms:
+    - --bed
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: pattern/motif contains degenerate base
+    synonyms:
+    - -d
+    - --degenerate
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output in GTF format
+    synonyms:
+    - --gtf
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: do not show matched sequences
+    synonyms:
+    - -M
+    - --hide-matched
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ignore case
+    synonyms:
+    - -i
+    - --ignore-case
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: max mismatch when matching by seq. For large genomes like human genome,
+      using mapping/alignment tools would be faster
+    synonyms:
+    - -m
+    - --max-mismatch
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: non-greedy mode, faster but may miss motifs overlapping with others
+    synonyms:
+    - -G
+    - --non-greedy
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: only search on positive strand
+    synonyms:
+    - -P
+    - --only-positive-strand
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "pattern/motif (multiple values supported. Attention: use double\
+      \ quotation marks for patterns containing comma, e.g., -p '\"A{2,}\"')"
+    synonyms:
+    - -p
+    - --pattern
+    args: !SimpleFlagArg
+      name: strings
+    optional: true
+  - !Flag
+    description: pattern/motif file (FASTA format)
+    synonyms:
+    - -f
+    - --pattern-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: use FM-index for much faster search of lots of sequence patterns
+    synonyms:
+    - -F
+    - --use-fmi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: patterns/motifs are regular expression
+    synonyms:
+    - -r
+    - --use-regexp
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: length of sequence to validate (0 for whole seq) (default 10000)
+    synonyms:
+    - -V
+    - --validate-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: length of sequence prefix of the first FASTA record based on which
+      seqkit guesses the sequence type (0 for whole seq) (default 10000)
+    synonyms:
+    - --alphabet-guess-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+    synonyms:
+    - --id-ncbi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: regular expression for parsing ID (default "^(\\S+)\\s?")
+    synonyms:
+    - --id-regexp
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: file of input files list (one file per line), if given, they are
+      appended to files from cli arguments
+    synonyms:
+    - --infile-list
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: line width when outputing FASTA format (0 for no wrap) (default 60)
+    synonyms:
+    - -w
+    - --line-width
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    synonyms:
+    - -o
+    - --out-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: be quiet and do not show extra information
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+      detect by the first sequence) (default "auto")
+    synonyms:
+    - -t
+    - --seq-type
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others)
+      (default 2)'
+    synonyms:
+    - -j
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - seqkit
+  - locate
+  subcommands: []
+  help_flag: !Flag
+    description: help for locate
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: '[match seqs to mutate] match by full name instead of just id'
+    synonyms:
+    - -n
+    - --by-name
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'deletion mutation: deleting subsequence in a range. e.g., -d 1:2
+      for deleting leading two bases, -d -3:-1 for removing last 3 bases'
+    synonyms:
+    - -d
+    - --deletion
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: '[match seqs to mutate] ignore case of search pattern'
+    synonyms:
+    - -I
+    - --ignore-case
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'insertion mutation: inserting bases behind of given position, e.g.,
+      -i 0:ACGT for inserting ACGT at the beginning, -1:* for add * to the end'
+    synonyms:
+    - -i
+    - --insertion
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: '[match seqs to mutate] invert the sense of matching, to select non-matching
+      records'
+    synonyms:
+    - -v
+    - --invert-match
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "[match seqs to mutate] search pattern (multiple values supported.\
+      \ Attention: use double quotation marks for patterns containing comma, e.g.,\
+      \ -p '\"A{2,}\"'))"
+    synonyms:
+    - -s
+    - --pattern
+    args: !SimpleFlagArg
+      name: strings
+    optional: true
+  - !Flag
+    description: '[match seqs to mutate] pattern file (one record per line)'
+    synonyms:
+    - -f
+    - --pattern-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'point mutation: changing base at given position. e.g., -p 2:C for
+      setting 2nd base as C, -p -1:A for change last base as A'
+    synonyms:
+    - -p
+    - --point
+    args: !SimpleFlagArg
+      name: strings
+    optional: true
+  - !Flag
+    description: '[match seqs to mutate] search patterns are regular expression'
+    synonyms:
+    - -r
+    - --use-regexp
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: length of sequence prefix of the first FASTA record based on which
+      seqkit guesses the sequence type (0 for whole seq) (default 10000)
+    synonyms:
+    - --alphabet-guess-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+    synonyms:
+    - --id-ncbi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: regular expression for parsing ID (default "^(\\S+)\\s?")
+    synonyms:
+    - --id-regexp
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: file of input files list (one file per line), if given, they are
+      appended to files from cli arguments
+    synonyms:
+    - --infile-list
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: line width when outputing FASTA format (0 for no wrap) (default 60)
+    synonyms:
+    - -w
+    - --line-width
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    synonyms:
+    - -o
+    - --out-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: be quiet and do not show extra information
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+      detect by the first sequence) (default "auto")
+    synonyms:
+    - -t
+    - --seq-type
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others)
+      (default 2)'
+    synonyms:
+    - -j
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - seqkit
+  - mutate
+  subcommands: []
+  help_flag: !Flag
+    description: help for mutate
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: range. e.g., 1:12 for first 12 records (head -n 12), -12:-1 for last
+      12 records (tail -n 12)
+    synonyms:
+    - -r
+    - --range
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: length of sequence prefix of the first FASTA record based on which
+      seqkit guesses the sequence type (0 for whole seq) (default 10000)
+    synonyms:
+    - --alphabet-guess-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+    synonyms:
+    - --id-ncbi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: regular expression for parsing ID (default "^(\\S+)\\s?")
+    synonyms:
+    - --id-regexp
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: file of input files list (one file per line), if given, they are
+      appended to files from cli arguments
+    synonyms:
+    - --infile-list
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: line width when outputing FASTA format (0 for no wrap) (default 60)
+    synonyms:
+    - -w
+    - --line-width
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    synonyms:
+    - -o
+    - --out-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: be quiet and do not show extra information
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+      detect by the first sequence) (default "auto")
+    synonyms:
+    - -t
+    - --seq-type
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others)
+      (default 2)'
+    synonyms:
+    - -j
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - seqkit
+  - range
+  subcommands: []
+  help_flag: !Flag
+    description: help for range
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: check duplication by full name instead of just id
+    synonyms:
+    - -n
+    - --by-name
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: overwrite output directory
+    synonyms:
+    - -f
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write results into separated files for multiple input files
+    synonyms:
+    - -m
+    - --multiple-outfiles
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output directory (default "renamed")
+    synonyms:
+    - -O
+    - --out-dir
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: length of sequence prefix of the first FASTA record based on which
+      seqkit guesses the sequence type (0 for whole seq) (default 10000)
+    synonyms:
+    - --alphabet-guess-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+    synonyms:
+    - --id-ncbi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: regular expression for parsing ID (default "^(\\S+)\\s?")
+    synonyms:
+    - --id-regexp
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: file of input files list (one file per line), if given, they are
+      appended to files from cli arguments
+    synonyms:
+    - --infile-list
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: line width when outputing FASTA format (0 for no wrap) (default 60)
+    synonyms:
+    - -w
+    - --line-width
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    synonyms:
+    - -o
+    - --out-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: be quiet and do not show extra information
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+      detect by the first sequence) (default "auto")
+    synonyms:
+    - -t
+    - --seq-type
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others)
+      (default 2)'
+    synonyms:
+    - -j
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - seqkit
+  - rename
+  subcommands: []
+  help_flag: !Flag
+    description: help for rename
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: replace seq
+    synonyms:
+    - -s
+    - --by-seq
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ignore case
+    synonyms:
+    - -i
+    - --ignore-case
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: keep the key as value when no value found for the key (only for sequence
+      name)
+    synonyms:
+    - -K
+    - --keep-key
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: capture variable index of key (1-based) (default 1)
+    synonyms:
+    - -I
+    - --key-capt-idx
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: replacement for key with no corresponding value
+    synonyms:
+    - -m
+    - --key-miss-repl
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: tab-delimited key-value file for replacing key with value when using
+      "{kv}" in -r (--replacement) (only for sequence name)
+    synonyms:
+    - -k
+    - --kv-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: minimum width for {nr} in flag -r/--replacement. e.g., formating
+      "1" to "001" by --nr-width 3 (default 1)
+    synonyms:
+    - --nr-width
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: search regular expression
+    synonyms:
+    - -p
+    - --pattern
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'replacement. supporting capture variables.  e.g. $1 represents the
+      text of the first submatch. ATTENTION: for *nix OS, use SINGLE quote NOT double
+      quotes or use the \ escape character. Record number is also supported by "{nr}".use
+      ${1} instead of $1 when {kv} given!'
+    synonyms:
+    - -r
+    - --replacement
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: length of sequence prefix of the first FASTA record based on which
+      seqkit guesses the sequence type (0 for whole seq) (default 10000)
+    synonyms:
+    - --alphabet-guess-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+    synonyms:
+    - --id-ncbi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: regular expression for parsing ID (default "^(\\S+)\\s?")
+    synonyms:
+    - --id-regexp
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: file of input files list (one file per line), if given, they are
+      appended to files from cli arguments
+    synonyms:
+    - --infile-list
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: line width when outputing FASTA format (0 for no wrap) (default 60)
+    synonyms:
+    - -w
+    - --line-width
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    synonyms:
+    - -o
+    - --out-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: be quiet and do not show extra information
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+      detect by the first sequence) (default "auto")
+    synonyms:
+    - -t
+    - --seq-type
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others)
+      (default 2)'
+    synonyms:
+    - -j
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - seqkit
+  - replace
+  subcommands: []
+  help_flag: !Flag
+    description: help for replace
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: new start position (1-base, supporting negative value counting from
+      the end) (default 1)
+    synonyms:
+    - -i
+    - --new-start
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: length of sequence prefix of the first FASTA record based on which
+      seqkit guesses the sequence type (0 for whole seq) (default 10000)
+    synonyms:
+    - --alphabet-guess-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+    synonyms:
+    - --id-ncbi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: regular expression for parsing ID (default "^(\\S+)\\s?")
+    synonyms:
+    - --id-regexp
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: file of input files list (one file per line), if given, they are
+      appended to files from cli arguments
+    synonyms:
+    - --infile-list
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: line width when outputing FASTA format (0 for no wrap) (default 60)
+    synonyms:
+    - -w
+    - --line-width
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    synonyms:
+    - -o
+    - --out-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: be quiet and do not show extra information
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+      detect by the first sequence) (default "auto")
+    synonyms:
+    - -t
+    - --seq-type
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others)
+      (default 2)'
+    synonyms:
+    - -j
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - seqkit
+  - restart
+  subcommands: []
+  help_flag: !Flag
+    description: help for restart
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: by full name instead of just id
+    synonyms:
+    - -n
+    - --by-name
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: by seq
+    synonyms:
+    - -s
+    - --by-seq
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: file to save number and list of duplicated seqs
+    synonyms:
+    - -D
+    - --dup-num-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: file to save duplicated seqs
+    synonyms:
+    - -d
+    - --dup-seqs-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: ignore case
+    synonyms:
+    - -i
+    - --ignore-case
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: length of sequence prefix of the first FASTA record based on which
+      seqkit guesses the sequence type (0 for whole seq) (default 10000)
+    synonyms:
+    - --alphabet-guess-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+    synonyms:
+    - --id-ncbi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: regular expression for parsing ID (default "^(\\S+)\\s?")
+    synonyms:
+    - --id-regexp
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: file of input files list (one file per line), if given, they are
+      appended to files from cli arguments
+    synonyms:
+    - --infile-list
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: line width when outputing FASTA format (0 for no wrap) (default 60)
+    synonyms:
+    - -w
+    - --line-width
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    synonyms:
+    - -o
+    - --out-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: be quiet and do not show extra information
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+      detect by the first sequence) (default "auto")
+    synonyms:
+    - -t
+    - --seq-type
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others)
+      (default 2)'
+    synonyms:
+    - -j
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - seqkit
+  - rmdup
+  subcommands: []
+  help_flag: !Flag
+    description: help for rmdup
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: ASCII BASE, 33 for Phred+33 (default 33)
+    synonyms:
+    - -b
+    - --qual-ascii-base
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: length of sequence prefix of the first FASTA record based on which
+      seqkit guesses the sequence type (0 for whole seq) (default 10000)
+    synonyms:
+    - --alphabet-guess-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+    synonyms:
+    - --id-ncbi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: regular expression for parsing ID (default "^(\\S+)\\s?")
+    synonyms:
+    - --id-regexp
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: file of input files list (one file per line), if given, they are
+      appended to files from cli arguments
+    synonyms:
+    - --infile-list
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: line width when outputing FASTA format (0 for no wrap) (default 60)
+    synonyms:
+    - -w
+    - --line-width
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    synonyms:
+    - -o
+    - --out-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: be quiet and do not show extra information
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+      detect by the first sequence) (default "auto")
+    synonyms:
+    - -t
+    - --seq-type
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others)
+      (default 2)'
+    synonyms:
+    - -j
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - seqkit
+  - sana
+  subcommands: []
+  help_flag: !Flag
+    description: help for sana
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: colorize sequences - to be piped into "less -R"
+    synonyms:
+    - -k
+    - --color
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: complement sequence, flag '-v' is recommended to switch on
+    synonyms:
+    - -p
+    - --complement
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: DNA to RNA
+    synonyms:
+    - --dna2rna
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: gap letters (default "- \t.")
+    synonyms:
+    - -G
+    - --gap-letters
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: print sequences in lower case
+    synonyms:
+    - -l
+    - --lower-case
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: only print sequences shorter than the maximum length (-1 for no limit)
+      (default -1)
+    synonyms:
+    - -M
+    - --max-len
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: only print sequences with average quality less than this limit (-1
+      for no limit) (default -1)
+    synonyms:
+    - -R
+    - --max-qual
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: only print sequences longer than the minimum length (-1 for no limit)
+      (default -1)
+    synonyms:
+    - -m
+    - --min-len
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: only print sequences with average quality qreater or equal than this
+      limit (-1 for no limit) (default -1)
+    synonyms:
+    - -Q
+    - --min-qual
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: only print names
+    synonyms:
+    - -n
+    - --name
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: print ID instead of full head
+    synonyms:
+    - -i
+    - --only-id
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: only print qualities
+    synonyms:
+    - -q
+    - --qual
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ASCII BASE, 33 for Phred+33 (default 33)
+    synonyms:
+    - -b
+    - --qual-ascii-base
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: remove gaps
+    synonyms:
+    - -g
+    - --remove-gaps
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: reverse sequence
+    synonyms:
+    - -r
+    - --reverse
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: RNA to DNA
+    synonyms:
+    - --rna2dna
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: only print sequences
+    synonyms:
+    - -s
+    - --seq
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: print sequences in upper case
+    synonyms:
+    - -u
+    - --upper-case
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: validate bases according to the alphabet
+    synonyms:
+    - -v
+    - --validate-seq
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: length of sequence to validate (0 for whole seq) (default 10000)
+    synonyms:
+    - -V
+    - --validate-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: length of sequence prefix of the first FASTA record based on which
+      seqkit guesses the sequence type (0 for whole seq) (default 10000)
+    synonyms:
+    - --alphabet-guess-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+    synonyms:
+    - --id-ncbi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: regular expression for parsing ID (default "^(\\S+)\\s?")
+    synonyms:
+    - --id-regexp
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: file of input files list (one file per line), if given, they are
+      appended to files from cli arguments
+    synonyms:
+    - --infile-list
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: line width when outputing FASTA format (0 for no wrap) (default 60)
+    synonyms:
+    - -w
+    - --line-width
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    synonyms:
+    - -o
+    - --out-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: be quiet and do not show extra information
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+      detect by the first sequence) (default "auto")
+    synonyms:
+    - -t
+    - --seq-type
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others)
+      (default 2)'
+    synonyms:
+    - -j
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - seqkit
+  - seq
+  subcommands: []
+  help_flag: !Flag
+    description: help for seq
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: circular genome.
+    synonyms:
+    - -C
+    - --circular-genome
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: greedy mode, i.e., exporting last subsequences even shorter than
+      windows size
+    synonyms:
+    - -g
+    - --greedy
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: step size
+    synonyms:
+    - -s
+    - --step
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: window size
+    synonyms:
+    - -W
+    - --window
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: length of sequence prefix of the first FASTA record based on which
+      seqkit guesses the sequence type (0 for whole seq) (default 10000)
+    synonyms:
+    - --alphabet-guess-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+    synonyms:
+    - --id-ncbi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: regular expression for parsing ID (default "^(\\S+)\\s?")
+    synonyms:
+    - --id-regexp
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: file of input files list (one file per line), if given, they are
+      appended to files from cli arguments
+    synonyms:
+    - --infile-list
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: line width when outputing FASTA format (0 for no wrap) (default 60)
+    synonyms:
+    - -w
+    - --line-width
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    synonyms:
+    - -o
+    - --out-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: be quiet and do not show extra information
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+      detect by the first sequence) (default "auto")
+    synonyms:
+    - -t
+    - --seq-type
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others)
+      (default 2)'
+    synonyms:
+    - -j
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - seqkit
+  - sliding
+  subcommands: []
+  help_flag: !Flag
+    description: help for sliding
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: all statistics, including quartiles of seq length, sum_gap, N50
+    synonyms:
+    - -a
+    - --all
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: only output basename of files
+    synonyms:
+    - -b
+    - --basename
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "fastq quality encoding. available values: 'sanger', 'solexa', 'illumina-1.3+',\
+      \ 'illumina-1.5+', 'illumina-1.8+'. (default \"sanger\")"
+    synonyms:
+    - -E
+    - --fq-encoding
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: gap letters (default "- .")
+    synonyms:
+    - -G
+    - --gap-letters
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: skip error, only show warning message
+    synonyms:
+    - -e
+    - --skip-err
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output in machine-friendly tabular format
+    synonyms:
+    - -T
+    - --tabular
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: length of sequence prefix of the first FASTA record based on which
+      seqkit guesses the sequence type (0 for whole seq) (default 10000)
+    synonyms:
+    - --alphabet-guess-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+    synonyms:
+    - --id-ncbi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: regular expression for parsing ID (default "^(\\S+)\\s?")
+    synonyms:
+    - --id-regexp
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: file of input files list (one file per line), if given, they are
+      appended to files from cli arguments
+    synonyms:
+    - --infile-list
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: line width when outputing FASTA format (0 for no wrap) (default 60)
+    synonyms:
+    - -w
+    - --line-width
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    synonyms:
+    - -o
+    - --out-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: be quiet and do not show extra information
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+      detect by the first sequence) (default "auto")
+    synonyms:
+    - -t
+    - --seq-type
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others)
+      (default 2)'
+    synonyms:
+    - -j
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - seqkit
+  - stats
+  subcommands: []
+  help_flag: !Flag
+    description: help for stats
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: by tab-delimited BED file
+    synonyms:
+    - --bed
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: select limited sequence with sequence IDs when using --gtf or --bed
+      (multiple value supported, case ignored)
+    synonyms:
+    - --chr
+    args: !SimpleFlagArg
+      name: strings
+    optional: true
+  - !Flag
+    description: down stream length
+    synonyms:
+    - -d
+    - --down-stream
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: select limited feature types (multiple value supported, case ignored,
+      only works with GTF)
+    synonyms:
+    - --feature
+    args: !SimpleFlagArg
+      name: strings
+    optional: true
+  - !Flag
+    description: by GTF (version 2.2) file
+    synonyms:
+    - --gtf
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: output this tag as sequence comment (default "gene_id")
+    synonyms:
+    - --gtf-tag
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: only return up/down stream sequence
+    synonyms:
+    - -f
+    - --only-flank
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: by region. e.g 1:12 for first 12 bases, -12:-1 for last 12 bases,
+      13:-1 for cutting first 12 bases. type "seqkit subseq -h" for more examples
+    synonyms:
+    - -r
+    - --region
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: up stream length
+    synonyms:
+    - -u
+    - --up-stream
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: length of sequence prefix of the first FASTA record based on which
+      seqkit guesses the sequence type (0 for whole seq) (default 10000)
+    synonyms:
+    - --alphabet-guess-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+    synonyms:
+    - --id-ncbi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: regular expression for parsing ID (default "^(\\S+)\\s?")
+    synonyms:
+    - --id-regexp
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: file of input files list (one file per line), if given, they are
+      appended to files from cli arguments
+    synonyms:
+    - --infile-list
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: line width when outputing FASTA format (0 for no wrap) (default 60)
+    synonyms:
+    - -w
+    - --line-width
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    synonyms:
+    - -o
+    - --out-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: be quiet and do not show extra information
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+      detect by the first sequence) (default "auto")
+    synonyms:
+    - -t
+    - --seq-type
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others)
+      (default 2)'
+    synonyms:
+    - -j
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - seqkit
+  - subseq
+  subcommands: []
+  help_flag: !Flag
+    description: help for subseq
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: comment line prefix (default [#,//])
+    synonyms:
+    - -p
+    - --comment-line-prefix
+    args: !SimpleFlagArg
+      name: strings
+    optional: true
+  - !Flag
+    description: length of sequence prefix of the first FASTA record based on which
+      seqkit guesses the sequence type (0 for whole seq) (default 10000)
+    synonyms:
+    - --alphabet-guess-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+    synonyms:
+    - --id-ncbi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: regular expression for parsing ID (default "^(\\S+)\\s?")
+    synonyms:
+    - --id-regexp
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: file of input files list (one file per line), if given, they are
+      appended to files from cli arguments
+    synonyms:
+    - --infile-list
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: line width when outputing FASTA format (0 for no wrap) (default 60)
+    synonyms:
+    - -w
+    - --line-width
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    synonyms:
+    - -o
+    - --out-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: be quiet and do not show extra information
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+      detect by the first sequence) (default "auto")
+    synonyms:
+    - -t
+    - --seq-type
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others)
+      (default 2)'
+    synonyms:
+    - -j
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - seqkit
+  - tab2fx
+  subcommands: []
+  help_flag: !Flag
+    description: help for tab2fx
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: translate unknown code to 'X'. And you may not use flag --trim which
+      removes 'X'
+    synonyms:
+    - -x
+    - --allow-unknown-codon
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: change all STOP codon positions from the '*' character to 'X' (an
+      unknown residue)
+    synonyms:
+    - --clean
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'frame(s) to translate, available value: 1, 2, 3, -1, -2, -3, and
+      6 for all six frames (default [1])'
+    synonyms:
+    - -f
+    - --frame
+    args: !SimpleFlagArg
+      name: strings
+    optional: true
+  - !Flag
+    description: translate initial codon at beginning to 'M'
+    synonyms:
+    - -M
+    - --init-codon-as-M
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: show details of translate table N, 0 for all (default -1)
+    synonyms:
+    - -l
+    - --list-transl-table
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: show details of translate table N (including ambigugous codons),
+      0 for all.  (default -1)
+    synonyms:
+    - -L
+    - --list-transl-table-with-amb-codons
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: translate table/genetic code, type 'seqkit translate --help' for
+      more details (default 1)
+    synonyms:
+    - -T
+    - --transl-table
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: remove all 'X' and '*' characters from the right end of the translation
+    synonyms:
+    - --trim
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: length of sequence prefix of the first FASTA record based on which
+      seqkit guesses the sequence type (0 for whole seq) (default 10000)
+    synonyms:
+    - --alphabet-guess-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+    synonyms:
+    - --id-ncbi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: regular expression for parsing ID (default "^(\\S+)\\s?")
+    synonyms:
+    - --id-regexp
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: file of input files list (one file per line), if given, they are
+      appended to files from cli arguments
+    synonyms:
+    - --infile-list
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: line width when outputing FASTA format (0 for no wrap) (default 60)
+    synonyms:
+    - -w
+    - --line-width
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    synonyms:
+    - -o
+    - --out-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: be quiet and do not show extra information
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+      detect by the first sequence) (default "auto")
+    synonyms:
+    - -t
+    - --seq-type
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others)
+      (default 2)'
+    synonyms:
+    - -j
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - seqkit
+  - translate
+  subcommands: []
+  help_flag: !Flag
+    description: help for translate
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: check update
+    synonyms:
+    - -u
+    - --check-update
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: length of sequence prefix of the first FASTA record based on which
+      seqkit guesses the sequence type (0 for whole seq) (default 10000)
+    synonyms:
+    - --alphabet-guess-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+    synonyms:
+    - --id-ncbi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: regular expression for parsing ID (default "^(\\S+)\\s?")
+    synonyms:
+    - --id-regexp
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: file of input files list (one file per line), if given, they are
+      appended to files from cli arguments
+    synonyms:
+    - --infile-list
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: line width when outputing FASTA format (0 for no wrap) (default 60)
+    synonyms:
+    - -w
+    - --line-width
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    synonyms:
+    - -o
+    - --out-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: be quiet and do not show extra information
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+      detect by the first sequence) (default "auto")
+    synonyms:
+    - -t
+    - --seq-type
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others)
+      (default 2)'
+    synonyms:
+    - -j
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - seqkit
+  - version
+  subcommands: []
+  help_flag: !Flag
+    description: help for version
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: number of histogram bins (default -1)
+    synonyms:
+    - -B
+    - --bins
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: sleep this many seconds after online plotting (default 1)
+    synonyms:
+    - -W
+    - --delay
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: print histogram data to stderr instead of plotting
+    synonyms:
+    - -y
+    - --dump
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: target fields (default "ReadLen")
+    synonyms:
+    - -f
+    - --fields
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: save histogram to this PDF/image file
+    synonyms:
+    - -O
+    - --img
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: print out a list of available fields
+    synonyms:
+    - -H
+    - --list-fields
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: log10(x+1) transform numeric values
+    synonyms:
+    - -L
+    - --log
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: pass through mode (write input to stdout)
+    synonyms:
+    - -x
+    - --pass
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: print/report after this many records (-1 for print after EOF) (default
+      -1)
+    synonyms:
+    - -p
+    - --print-freq
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: ASCII BASE, 33 for Phred+33 (default 33)
+    synonyms:
+    - -b
+    - --qual-ascii-base
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: supress all plotting to stderr
+    synonyms:
+    - -Q
+    - --quiet-mode
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: reset histogram after every report
+    synonyms:
+    - -R
+    - --reset
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: validate bases according to the alphabet
+    synonyms:
+    - -v
+    - --validate-seq
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: length of sequence to validate (0 for whole seq) (default 10000)
+    synonyms:
+    - -V
+    - --validate-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: length of sequence prefix of the first FASTA record based on which
+      seqkit guesses the sequence type (0 for whole seq) (default 10000)
+    synonyms:
+    - --alphabet-guess-seq-length
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: FASTA head is NCBI-style, e.g. >gi|110645304|ref|NC_002516.2| Pseud...
+    synonyms:
+    - --id-ncbi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: regular expression for parsing ID (default "^(\\S+)\\s?")
+    synonyms:
+    - --id-regexp
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: file of input files list (one file per line), if given, they are
+      appended to files from cli arguments
+    synonyms:
+    - --infile-list
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: line width when outputing FASTA format (0 for no wrap) (default 60)
+    synonyms:
+    - -w
+    - --line-width
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: out file ("-" for stdout, suffix .gz for gzipped out) (default "-")
+    synonyms:
+    - -o
+    - --out-file
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: be quiet and do not show extra information
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sequence type (dna|rna|protein|unlimit|auto) (for auto, it automatically
+      detect by the first sequence) (default "auto")
+    synonyms:
+    - -t
+    - --seq-type
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'number of CPUs. (default value: 1 for single-CPU PC, 2 for others)
+      (default 2)'
+    synonyms:
+    - -j
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - seqkit
+  - watch
+  subcommands: []
+  help_flag: !Flag
+    description: help for watch
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: help for seqkit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

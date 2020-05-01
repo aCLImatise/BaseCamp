@@ -1,0 +1,58 @@
+!Command
+positional:
+- !Positional
+  description: A metaSNP initialized project directory
+  position: 0
+  name: DIR
+  optional: false
+- !Positional
+  description: File with an input list of bam files, one file per line
+  position: 1
+  name: FILE
+  optional: false
+- !Positional
+  description: reference multi-sequence FASTA file used for the alignments.
+  position: 2
+  name: REF_DB_FILE
+  optional: false
+named:
+- !Flag
+  description: Database gene annotation.
+  synonyms:
+  - --db_ann
+  args: !SimpleFlagArg
+    name: DB_ANN_FILE
+  optional: true
+- !Flag
+  description: Instead of executing the commands, simply print them out
+  synonyms:
+  - --print-commands
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of jobs to run simmultaneously. Will create same number of splits,
+    unless n_splits set differently.
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Number of bins to split ref into
+  synonyms:
+  - --n_splits
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+command:
+- metaSNV.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

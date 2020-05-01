@@ -1,0 +1,127 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Specify name of an input file including read mapping results. The
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Specify name of the file including all reference sequences. Only one
+    single FASTA format file should be provided.
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Specify name of the output file. This program outputs a VCF format
+    file that includes discovered SNPs.
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Provide a set of annotated SNPs (e.g. SNPs included in the dbSNP database).
+    The supplied file should be in VCF format (gzipped file is accepted). Providing
+    known SNPs to the program should improve its SNP calling performance. Note that
+    the provided SNPs may or may not be called.
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Indicate the input file provided via -i is in BAM format.
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify the q-value cutoff for SNP calling at sequencing depth of 50X.
+    12 by default. The corresponding p-value cutoff is 10^(-1*Q). Note that this program
+    automatically adjusts the q-value cutoff according to the sequencing depth at
+    each chromosomal location.
+  synonyms:
+  - -Q
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Specify the minimum fraction of mis-matched bases a SNP-containing
+    location must have. Its value must between 0 and 1. 0 by default.
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Specify the minimum number of mis-matched bases a SNP-containing location
+    must have. 1 by default.
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Specify the minimum number of mapped reads a SNP-containing location
+    must have (ie. the minimum coverage). 1 by default.
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Specify the maximum depth a SNP location is allowed to have. 1,000,000
+    reads by default. This option is useful for removing PCR artefacts.
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Specify the minimum base quality scores (Phred scores) read bases must
+    satisfy to be used for SNP calling. 13 by default. Read bases with quality scores
+    less than 13 will be excluded from the analysis.
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Specify the number of bases trimmed off from each end of the read.
+    3 by default.
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Specify the number of threads. 1 by default.
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: output version of the program.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify the path to save the temporary files.
+  synonyms:
+  - -C
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+command:
+- exactSNP
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

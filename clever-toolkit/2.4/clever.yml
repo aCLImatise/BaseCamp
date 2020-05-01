@@ -1,0 +1,105 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Input BAM file is sorted by position. Note that this requires alternative
+    alignments to be given as XA tags (like produced by BWA, stampy, etc.).
+  synonyms:
+  - --sorted
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Interprete XA tags in input BAM file. This option SHOULD be given for
+    mappers writing XA tags like BWA and stampy.
+  synonyms:
+  - --use_xa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use MAPQ value instead re-computing posteriors.
+  synonyms:
+  - --use_mapq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of threads to use (default=1).
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: Delete old result and working directory first (if present).
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Working directory (default: <result-directory>/work).'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: WORK_DIR
+  optional: true
+- !Flag
+  description: Do not (re-)compute AS tags. If given, the argument <ref.fasta(.gz)>
+    is ignored.
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Keep working directory (default: delete directory when finished).'
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Take read groups into account (multi sample mode).
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Additional parameters to be passed to the CLEVER core algorithm. Call
+    "clever-core" without parameters for a list of options.
+  synonyms:
+  - -C
+  args: !SimpleFlagArg
+    name: ADD_CLEVER_PARAMS
+  optional: true
+- !Flag
+  description: Additional parameters for postprocessing results. Call "postprocess-predictions"
+    without parameters for a list of options.
+  synonyms:
+  - -P
+  args: !SimpleFlagArg
+    name: ADD_POST_PARAMS
+  optional: true
+- !Flag
+  description: Create a plot of internal segment size distribution (=fragment size
+    - 2x read length). Also displays the estimated normal distribution (requires NumPy
+    and matplotlib).
+  synonyms:
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Only process given chromosome (default: all).'
+  synonyms:
+  - --chromosome
+  args: !SimpleFlagArg
+    name: CHROMOSOME
+  optional: true
+command:
+- clever
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

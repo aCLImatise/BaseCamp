@@ -1,0 +1,256 @@
+!Command
+positional: []
+named: []
+command:
+- segmentation-fold-utils
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: "Regex to capture the targeted location in DBN file (default: '>.*?(chr[^:]):([0-9]+)-([0-9]+)'\
+      \ )"
+    synonyms:
+    - -r
+    - --regex
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - segmentation-fold-utils
+  - add-read-counts
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: OPTIONS
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: DBN_OUTPUT_FILE
+    optional: false
+  named:
+  - !Flag
+    description: 'Ppath in which temporary conifig files will be stored (default:
+      /tmp)'
+    synonyms:
+    - -t
+    - --temp-dir
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: 'Location of segmentatio-fold binary (default: segmentation-fold)'
+    synonyms:
+    - -s
+    - --segmentation-fold
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'Location of segments.xml (default: /usr/local/share/segmentation-
+      fold/segments.xml)'
+    synonyms:
+    - -x
+    - --xml-file
+    args: !SimpleFlagArg
+      name: FILENAME
+    optional: true
+  - !Flag
+    description: Number of threads per spawned instance of segmentation-fold
+    synonyms:
+    - -T
+    - --threads
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Minimal difference for binary split - the smaller this value the
+      slower. if this value equals 0, the difference is set to infinity (default:
+      0.05)'
+    synonyms:
+    - -p
+    - --precision
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: 'Shuffle each sequence this many times and predict energy of shuffled
+      sequence(s) (default: 0, 0 means disabled)'
+    synonyms:
+    - -r
+    - --randomize
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Use sequences from a FASTA file instead of using the XML file that
+      also contains the segments. In XML files you can explicitly link one Segment(Loop)
+      to one particular sequence instead of doing n*n comparisons (default: None)'
+    synonyms:
+    - -f
+    - --sequences-from-fasta-file
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  command:
+  - segmentation-fold-utils
+  - estimate-energy
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Maximal distance between the boxes (default=250bp)
+    synonyms:
+    - -d
+    - --max-inner-dist
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Extend extracted sequences with this number of bases (default: 10bp)'
+    synonyms:
+    - -e
+    - --bp-extension
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  command:
+  - segmentation-fold-utils
+  - extract-boxed-sequences
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: "Regex to capture the targeted location in DBN file (default: '>.*?(chr[^:]):([0-9]+)-([0-9]+)'\
+      \ )"
+    synonyms:
+    - -r
+    - --regex
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - segmentation-fold-utils
+  - filter-annotated-entries
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Entries with transitions with energy smaller than energy (< e) or
+      without transitions will be put into DBN_OUTPUT_FILE_LARGER_OR_EQUAL and those
+      larger or equal (>= e) to DBN_OUTPUT_FILE_SMALLER
+    synonyms:
+    - -e
+    - --energy
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  command:
+  - segmentation-fold-utils
+  - filter-by-energy
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: "Sequence of box1 (default = C-box: 'NRUGAUG')"
+    synonyms:
+    - -c
+    - --box1
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: "Sequence of box2 (default = D-box: 'CUGA')"
+    synonyms:
+    - -d
+    - --box2
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: / --no-forward  Search in the forward direction of the reference
+      sequence
+    synonyms:
+    - --forward
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: / --no-reverse  Search in the reverse complement of the reference
+      sequence
+    synonyms:
+    - --reverse
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - segmentation-fold-utils
+  - find-boxes
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show the version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

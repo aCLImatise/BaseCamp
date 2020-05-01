@@ -1,0 +1,71 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Path to fai index for reference fasta. Index fasta using `samtools
+    faidx FASTA`
+  synonyms:
+  - --refIdx
+  args: !SimpleFlagArg
+    name: REFIDX
+  optional: true
+- !Flag
+  description: Require clip to extend past ref contig end by at least N bases.
+  synonyms:
+  - --minClip
+  args: !SimpleFlagArg
+    name: MINCLIP
+  optional: true
+- !Flag
+  description: Tolerate max N unaligned bases at contig ends.
+  synonyms:
+  - --maxBreak
+  args: !SimpleFlagArg
+    name: MAXBREAK
+  optional: true
+- !Flag
+  description: If set keep only reads containing given motif/s from comma delimited
+    list of strings. By default also search for reverse complement of motifs. i.e.
+    TTAGGG,TTAAGGG will also match CCCTAA,CCCTTAA
+  synonyms:
+  - --motifs
+  args: !SimpleFlagArg
+    name: MOTIFS
+  optional: true
+- !Flag
+  description: If set do NOT search for reverse complement of specified motifs.
+  synonyms:
+  - --noRev
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'If set collapse homopolymer tracks within motifs before searching
+    overhangs. i.e. "TTAGGGTTAGGGTTAGGGTTAGGGTTAGGG" -> "TAGTAGTAGTAGTAG". Useful
+    for PacBio or ONP long reads homopolymer length errors. Default: Off'
+  synonyms:
+  - --noPoly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If set motif match may occur in unclipped region of alignment.
+  synonyms:
+  - --matchAny
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- teloclip
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

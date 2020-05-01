@@ -1,0 +1,83 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Minimum length of contigs to keep (contigs shorter than this value
+    will not be included in the output file). The default is 0, so nothing will be
+    removed if you do not declare a minimum size.
+  synonyms:
+  - -l
+  - --min-len
+  args: !SimpleFlagArg
+    name: MIN_LENGTH
+  optional: true
+- !Flag
+  description: Maximum fraction of gaps in a sequence (any sequence with more gaps
+    will be removed from the output FASTA file). The default is 100.000000.
+  synonyms:
+  - --max-percentage-gaps
+  args: !SimpleFlagArg
+    name: PERCENTAGE
+  optional: true
+- !Flag
+  description: FILE, --exclude-ids TXT FILE IDs to remove from the FASTA file. You
+    cannot provide both --keep-ids and --exclude-ids.
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: TXT
+  optional: true
+- !Flag
+  description: FILE, --keep-ids TXT FILE If provided, all IDs not in this file will
+    be excluded from the reformatted FASTA file. Any additional filters (such as --min-len)
+    will still be applied to the IDs in this file. You cannot provide both --exclude-ids
+    and --keep-ids.
+  synonyms:
+  - -I
+  args: !SimpleFlagArg
+    name: TXT
+  optional: true
+- !Flag
+  description: FILE, --output-file FASTA FILE Output file path.
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: Edit deflines to make sure they contigs have simple names.
+  synonyms:
+  - --simplify-names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use this parameter if you would like to add a prefix to your contig
+    names while simplifying them. The prefix must be a single word (you can use underscor
+    character, but nothing more!).
+  synonyms:
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: FILE, --report-file REPORT FILE Report file path. When you run this
+    program with `--simplify-names` flag, all changes to deflines will be reported
+    in this file in case you need to go back to this information later. It is not
+    mandatory to declare one, but it is a very good idea to have it.
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: REPORT
+  optional: true
+command:
+- anvi-script-reformat-fasta
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

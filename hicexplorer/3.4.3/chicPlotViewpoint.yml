@@ -1,0 +1,227 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: path to the interaction files which should be used for plotting
+  synonyms:
+  - --interactionFile
+  - -if
+  args: !RepeatFlagArg
+    name: INTERACTIONFILE
+  optional: true
+- !Flag
+  description: 'RANGE   Defines the region upstream and downstream of a reference
+    point which should be included. Format is --region upstream downstream, e.g.:
+    --region 500000 500000 plots 500kb up- and 500kb downstream. This value should
+    not exceed the range used in the other chic-tools.'
+  synonyms:
+  - --range
+  args: !SimpleFlagArg
+    name: RANGE
+  optional: true
+- !Flag
+  description: path to the background file which should be used for plotting
+  synonyms:
+  - --backgroundModelFile
+  - -bmf
+  args: !SimpleFlagArg
+    name: BACKGROUNDMODELFILE
+  optional: true
+- !Flag
+  description: Folder where the interaction files are stored. Applies only for batch
+    mode.
+  synonyms:
+  - --interactionFileFolder
+  - -iff
+  args: !SimpleFlagArg
+    name: INTERACTIONFILEFOLDER
+  optional: true
+- !Flag
+  description: Path to the H0 rejected files to highlight the regions in the plot.
+  synonyms:
+  - --differentialTestResult
+  - -dif
+  args: !RepeatFlagArg
+    name: DIFFERENTIALTESTRESULT
+  optional: true
+- !Flag
+  description: Folder where the files with detected significant interactions are stored.
+    Applies only for batch mode.
+  synonyms:
+  - --significantInteractionFileFolder
+  - -siff
+  args: !SimpleFlagArg
+    name: SIGNIFICANTINTERACTIONFILEFOLDER
+  optional: true
+- !Flag
+  description: Folder where the H0 rejected files are stored. Applies only for batch
+    mode.
+  synonyms:
+  - --differentialTestResultsFolder
+  - -diff
+  args: !SimpleFlagArg
+    name: DIFFERENTIALTESTRESULTSFOLDER
+  optional: true
+- !Flag
+  description: Path to the files with detected significant interactions to highlight
+    the regions in the plot.
+  synonyms:
+  - --significantInteractions
+  - -si
+  args: !RepeatFlagArg
+    name: SIGNIFICANTINTERACTIONS
+  optional: true
+- !Flag
+  description: Highlights the significant interactions in the plot itself. If not
+    set, only the p-values are updated
+  synonyms:
+  - --plotSignificantInteractions
+  - -psi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output folder of the files.
+  synonyms:
+  - --outputFolder
+  - -of
+  args: !SimpleFlagArg
+    name: OUTPUTFOLDER
+  optional: true
+- !Flag
+  description: Output format of the plot.
+  synonyms:
+  - --outputFormat
+  - -format
+  args: !SimpleFlagArg
+    name: OUTPUTFORMAT
+  optional: true
+- !Flag
+  description: 'Optional parameter: Resolution for the image, ifoutput is a raster
+    graphics image (e.g png, jpg)'
+  synonyms:
+  - --dpi
+  args: !SimpleFlagArg
+    name: DPI
+  optional: true
+- !Flag
+  description: Resolution of the bin in genomic units. Values are set as number of
+    bases, e.g. 1000 for a 1kb, 5000 for a 5kb or 10000 for a 10kb resolution.
+  synonyms:
+  - --binResolution
+  - -r
+  args: !SimpleFlagArg
+    name: BINRESOLUTION
+  optional: true
+- !Flag
+  description: 'Color map to use for the p-value. Available values can be seen here:
+    http://matplotlib.org/examples/color/col ormaps_reference.html'
+  synonyms:
+  - --colorMapPvalue
+  args: !SimpleFlagArg
+    name: COLORMAPPVALUE
+  optional: true
+- !Flag
+  description: Maximal value for p-value. Values above this threshold are set to this
+    value.
+  synonyms:
+  - --maxPValue
+  - -map
+  args: !SimpleFlagArg
+    name: MAXPVALUE
+  optional: true
+- !Flag
+  description: Minimal value for p-value. Values below this threshold are set to this
+    value.
+  synonyms:
+  - --minPValue
+  - -mp
+  args: !SimpleFlagArg
+    name: MINPVALUE
+  optional: true
+- !Flag
+  description: Plot p-values as a colorbar
+  synonyms:
+  - --pValue
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Highlight the p-values by the defined significance levels.
+  synonyms:
+  - --pValueSignificanceLevels
+  - -psl
+  args: !RepeatFlagArg
+    name: PVALUESIGNIFICANCELEVELS
+  optional: true
+- !Flag
+  description: Plot x-fold region for the mean background.
+  synonyms:
+  - --xFold
+  - -xf
+  args: !SimpleFlagArg
+    name: XFOLD
+  optional: true
+- !Flag
+  description: Sets all p-values which are equal to zero to one.
+  synonyms:
+  - --truncateZeroPvalues
+  - -tzpv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: File name to save the image. Not used in batch mode.
+  synonyms:
+  - --outFileName
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+  optional: true
+- !Flag
+  description: The given file for --interactionFile and or --targetFile contain a
+    list of the to be processed files.
+  synonyms:
+  - --batchMode
+  - -bm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of samples per plot. Applies only in batch mode.
+  synonyms:
+  - --plotSampleNumber
+  - -psn
+  args: !SimpleFlagArg
+    name: PLOTSAMPLENUMBER
+  optional: true
+- !Flag
+  description: Colorlist for the viewpoint lines.
+  synonyms:
+  - --colorList
+  - -cl
+  args: !RepeatFlagArg
+    name: COLORLIST
+  optional: true
+- !Flag
+  description: Number of threads (uses the python multiprocessing module).
+  synonyms:
+  - --threads
+  - -t
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+command:
+- chicPlotViewpoint
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,799 @@
+!Command
+positional: []
+named: []
+command:
+- lofreq
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Be verbose
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Normal BAM file
+    synonyms:
+    - -n
+    - --normal
+    args: !SimpleFlagArg
+      name: NORMAL
+    optional: true
+  - !Flag
+    description: Tumor BAM file
+    synonyms:
+    - -t
+    - --tumor
+    args: !SimpleFlagArg
+      name: TUMOR
+    optional: true
+  - !Flag
+    description: Prefix for output files
+    synonyms:
+    - -o
+    - --outprefix
+    args: !SimpleFlagArg
+      name: OUTPREFIX
+    optional: true
+  - !Flag
+    description: Reference fasta file
+    synonyms:
+    - -f
+    - --ref
+    args: !SimpleFlagArg
+      name: REF
+    optional: true
+  - !Flag
+    description: BED file listing regions to restrict analysis to
+    synonyms:
+    - -l
+    - --bed
+    args: !SimpleFlagArg
+      name: BED
+    optional: true
+  - !Flag
+    description: vcf-file (bgzipped and index with tabix) containing known germline
+      variants (e.g. dbsnp for human
+    synonyms:
+    - -d
+    - --dbsnp
+    args: !SimpleFlagArg
+      name: DBSNP
+    optional: true
+  - !Flag
+    description: Use this many threads for each call
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: NUM_THREADS
+    optional: true
+  - !Flag
+    description: 'Type of multiple testing correction for tumor (default: bonf)'
+    synonyms:
+    - --tumor-mtc
+    args: !ChoiceFlagArg
+      choices:
+      - bonf
+      - holm-bonf
+      - fdr
+    optional: true
+  - !Flag
+    description: 'Multiple testing correction alpha for tumor (default: 1.000000)'
+    synonyms:
+    - --tumor-mtc-alpha
+    args: !SimpleFlagArg
+      name: TUMOR_MTC_ALPHA
+    optional: true
+  - !Flag
+    description: 'Type of multiple testing correction for tumor (default: bonf)'
+    synonyms:
+    - --indel-tumor-mtc
+    args: !ChoiceFlagArg
+      choices:
+      - bonf
+      - holm-bonf
+      - fdr
+    optional: true
+  - !Flag
+    description: 'Multiple testing correction alpha for tumor (default: 0.010000)'
+    synonyms:
+    - --indel-tumor-mtc-alpha
+    args: !SimpleFlagArg
+      name: INDEL_TUMOR_MTC_ALPHA
+    optional: true
+  - !Flag
+    description: Also call indels (see documentation on how to preprocess your BAM
+      files)
+    synonyms:
+    - --call-indels
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum coverage for somatic calls (default: 7)'
+    synonyms:
+    - --min-cov
+    args: !SimpleFlagArg
+      name: MIN_COV
+    optional: true
+  - !Flag
+    description: Also list germline calls in separate file
+    synonyms:
+    - --germline
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Ignore variants in this vcf-file for source quality computation in
+      tumor (collides with --no-src-qual). Default is to use (stringently filtered)
+      predictions in normal sample
+    synonyms:
+    - -S
+    - --ign-vcf
+    args: !SimpleFlagArg
+      name: IGN_VCF
+    optional: true
+  - !Flag
+    description: Use orphaned/anomalous reads from pairs in all samples
+    synonyms:
+    - --use-orphan
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Switch use of BAQ off in all samples
+    synonyms:
+    - --baq-off
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Extra arguments to call_rlx (replace dashes with @)
+    synonyms:
+    - --call-rlx-extra-args
+    args: !SimpleFlagArg
+      name: CALL_RLX_EXTRA_ARGS
+    optional: true
+  - !Flag
+    description: Disable use of source quality in tumor (see also -V)
+    synonyms:
+    - --no-src-qual
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Enable debugging
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: continue interrupted run. Will reuse existing files, assuming they
+      are complete and created with identical options!
+    synonyms:
+    - --continue
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - lofreq
+  - somatic
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.bam
+    optional: false
+  named:
+  - !Flag
+    description: '| --ref FILE     Indexed reference fasta file [null]'
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "| --keepflags    Don't delete flags MC, MD, NM and A, which are\
+      \ all prone to change during realignment."
+    synonyms:
+    - -k
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --defqual INT  Assume INT as quality for all bases with BQ2. Default
+      (=-1) is to use median quality of bases in read.'
+    synonyms:
+    - -q
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --out FILE     Output BAM file [- = stdout = default] --verbose      Be
+      verbose'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --ref FILE     Indexed reference fasta file [null]'
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "| --keepflags    Don't delete flags MC, MD, NM and A, which are\
+      \ all prone to change during realignment."
+    synonyms:
+    - -k
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --defqual INT  Assume INT as quality for all bases with BQ2. Default
+      (=-1) is to use median quality of bases in read.'
+    synonyms:
+    - -q
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --out FILE     Output BAM file [- = stdout = default] --verbose      Be
+      verbose'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - lofreq
+  - viterbi
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.bam
+    optional: false
+  named:
+  - !Flag
+    description: "| --uniform INT[,INT]  Add this indel quality uniformly to all bases.\
+      \ Use two comma separated values to specify insertion and deletion quality separately.\
+      \ (clashes with --dindel) --dindel             Add Dindel's indel qualities\
+      \ (Illumina specific) (clashes with -u; needs --ref)"
+    synonyms:
+    - -u
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --ref                Reference sequence used for mapping (Only
+      required for --dindel)'
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --out FILE           Output BAM file [- = stdout = default] --verbose            Be
+      verbose'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - lofreq
+  - indelqual
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: aln.bam
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: ref.fasta
+    optional: false
+  named:
+  - !Flag
+    description: BAM output (instead of SAM)
+    synonyms:
+    - -b
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Uncompressed BAM output (for piping)
+    synonyms:
+    - -u
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: The input is SAM with header
+    synonyms:
+    - -S
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Use default instead of extended BAQ (the latter gives better sensitivity
+      but lower specificity)
+    synonyms:
+    - -e
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Don't compute base alignment qualities
+    synonyms:
+    - -B
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Don't compute indel alignment qualities
+    synonyms:
+    - -A
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Recompute i.e. overwrite existing values
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - lofreq
+  - alnqual
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - lofreq
+  - checkref
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: in.bam
+      optional: false
+    named: []
+    command:
+    - lofreq
+    - checkref
+    - ref.fa
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: ref.fa
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: in.bam
+      optional: false
+    named: []
+    command:
+    - lofreq
+    - checkref
+    - in.bam
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Don't use compound filter
+    synonyms:
+    - --sb-no-compound
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Apply SB filter to indels as well
+    synonyms:
+    - --sb-incl-indels
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Keep InDels only
+    synonyms:
+    - --only-indels
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Keep SNVs only
+    synonyms:
+    - --only-snvs
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Print all, not just passed variants
+    synonyms:
+    - --print-all
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Remove all default filter settings
+    synonyms:
+    - --no-defaults
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Be verbose
+    synonyms:
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Enable debugging
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - lofreq
+  - filter
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: indexed-in.bam
+    optional: false
+  named:
+  - !Flag
+    description: '| --vcf-in FILE      Input vcf file listing variants [- = stdin;
+      gzip supported]'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --vcf-out FILE     Output vcf file [- = stdout; gzip supported]'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --uni-freq         Assume variants have uniform test frequency
+      of this value (unused if <=0) [-1.000000]'
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --uniq-thresh INT  Minimum uniq phred-value required. Conflicts
+      with -m. 0 for off (default=0)'
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "| --uniq-mtc STRING  Uniq multiple testing correction type. One\
+      \ of 'bonf', 'holm' or 'fdr'. (default=MTC_FDR)"
+    synonyms:
+    - -m
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --uniq-alpha FLOAT Uniq Multiple testing correction p-value threshold
+      (default=0.001000)'
+    synonyms:
+    - -a
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "| --uniq-ntests INT  Uniq multiple testing correction p-value threshold\
+      \ (default=#vars) --output-all       Report all variants instead of only the\
+      \ ones, marked unique. Note, that variants already filtered in input will not\
+      \ be printed. --use-det-lim      Report variants if they are above implied detection\
+      \ limit Default is to use binomial test to check for frequency differences --use-orphan\
+      \       Don't ignore anomalous read pairs / orphan reads --verbose         \
+      \ Be verbose --debug            Enable debugging"
+    synonyms:
+    - -n
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - lofreq
+  - uniq
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: call
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: in.bam
+    optional: false
+  named:
+  - !Flag
+    description: '| --ref FILE              Indexed reference fasta file (gzip supported)
+      [null]'
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --out FILE              Vcf output file [- = stdout]'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --region STR            Limit calls to this region (chrom:start-end)
+      [null]'
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --bed FILE              List of positions (chr pos) or regions
+      (BED) [null]'
+    synonyms:
+    - -l
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --min-bq INT            Skip any base with baseQ smaller than
+      INT [6]'
+    synonyms:
+    - -q
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --min-alt-bq INT        Skip alternate bases with baseQ smaller
+      than INT [6]'
+    synonyms:
+    - -Q
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --def-alt-bq INT        Overwrite baseQs of alternate bases (that
+      passed bq filter) with this value (-1: use median ref-bq; 0: keep) [0]'
+    synonyms:
+    - -R
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --min-jq INT            Skip any base with joinedQ smaller than
+      INT [0]'
+    synonyms:
+    - -j
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --min-alt-jq INT        Skip alternate bases with joinedQ smaller
+      than INT [0]'
+    synonyms:
+    - -J
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --def-alt-jq INT        Overwrite joinedQs of alternate bases
+      (that passed jq filter) with this value (-1: use median ref-bq; 0: keep) [0]'
+    synonyms:
+    - -K
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --no-baq                Disable use of base-alignment quality
+      (BAQ)'
+    synonyms:
+    - -B
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "| --no-idaq               Don't use IDAQ values (NOT recommended\
+      \ under ANY circumstances other than debugging)"
+    synonyms:
+    - -A
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --del-baq               Delete pre-existing BAQ values, i.e. compute
+      even if already present in BAM'
+    synonyms:
+    - -D
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "| --no-ext-baq            Use 'normal' BAQ (samtools default) instead\
+      \ of extended BAQ (both computed on the fly if not already present in lb tag)"
+    synonyms:
+    - -e
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --min-mq INT            Skip reads with mapping quality smaller
+      than INT [0]'
+    synonyms:
+    - -m
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --max-mq INT            Cap mapping quality at INT [255]'
+    synonyms:
+    - -M
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "| --no-mq                 Don't merge mapping quality in LoFreq's\
+      \ model"
+    synonyms:
+    - -N
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Enable indel calls (note: preprocess your file to include indel
+      alignment qualities!)'
+    synonyms:
+    - --call-indels
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Only call indels; no SNVs
+    synonyms:
+    - --only-indels
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --src-qual              Enable computation of source quality'
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --ign-vcf FILE          Ignore variants in this vcf file for source
+      quality computation. Multiple files can be given separated by commas'
+    synonyms:
+    - -S
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --def-nm-q INT          If >= 0, then replace non-match base qualities
+      with this default value [-1]'
+    synonyms:
+    - -T
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --sig                   P-Value cutoff / significance level [0.010000]'
+    synonyms:
+    - -a
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "| --bonf                  Bonferroni factor. 'dynamic' (increase\
+      \ per actually performed test) or INT ['dynamic']"
+    synonyms:
+    - -b
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --min-cov INT           Test only positions having at least this
+      coverage [1] (note: without --no-default-filter default filters (incl. coverage)
+      kick in after predictions are done)'
+    synonyms:
+    - -C
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "| --max-depth INT         Cap coverage at this depth [1000000] --illumina-1.3\
+      \          Assume the quality is Illumina-1.3-1.7/ASCII+64 encoded --use-orphan\
+      \            Count anomalous read pairs (i.e. where mate is not aligned properly)\
+      \ --plp-summary-only      No variant calling. Just output pileup summary per\
+      \ column --no-default-filter     Don't run default 'lofreq filter' automatically\
+      \ after calling variants --force-overwrite       Overwrite any existing output\
+      \ --verbose               Be verbose --debug                 Enable debugging"
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - lofreq
+  - plpsummary
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '| --vcfout         VCF output file (default: - for stdout; gzip
+      supported).'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '| --action         Set operation to perform: intersect, complement
+      or concat. - intersect = vcf1 AND vcf2. - complement = vcf1 \ vcf2. - concat
+      = vcf1 + vcf2 ... vcfn (output as in file order, i.e. output not necessarily
+      sorted!)'
+    synonyms:
+    - -a
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "| --add-info STR   Add info field, e.g. 'SOMATIC' --count-only \
+      \    Don't print bases, just numbers --only-pos       Disable allele-awareness\
+      \ by using position only (ignoring bases) as key for storing and comparison\
+      \ --only-passed    Ignore variants marked as filtered --only-snvs      Ignore\
+      \ anything but SNVs in both input files --only-indels    Ignore anything but\
+      \ indels in both input files --verbose        Be verbose --debug          Enable\
+      \ debugging"
+    synonyms:
+    - -I
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - lofreq
+  - vcfset
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: samtools
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: idxstats
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: in.bam
+    optional: false
+  named: []
+  command:
+  - lofreq
+  - idxstats
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

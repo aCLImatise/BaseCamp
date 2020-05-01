@@ -1,0 +1,185 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Silence status output normally printed to STDERR
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Overwrite output files if they already exist
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Memory e.g. 1GB [default: 1GB]'
+  synonyms:
+  - -m
+  - --memory
+  args: !SimpleFlagArg
+    name: M
+  optional: true
+- !Flag
+  description: 'Hash entries [default: 4M, ~4 million]'
+  synonyms:
+  - -n
+  - --nkmers
+  args: !SimpleFlagArg
+    name: H
+  optional: true
+- !Flag
+  description: 'Limit on proccessing threads [default: 2]'
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: T
+  optional: true
+- !Flag
+  description: Output file
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Links file to load (can specify multiple times)
+  synonyms:
+  - -p
+  - --paths
+  args: !SimpleFlagArg
+    name: in.ctp
+  optional: true
+command:
+- mccortex127
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[default:  1]'
+    synonyms:
+    - -m
+    - --match
+    args: !SimpleFlagArg
+      name: m
+    optional: true
+  - !Flag
+    description: '[default: -2]'
+    synonyms:
+    - -M
+    - --mismatch
+    args: !SimpleFlagArg
+      name: m
+    optional: true
+  - !Flag
+    description: '[default: -4]'
+    synonyms:
+    - -g
+    - --gap-open
+    args: !SimpleFlagArg
+      name: m
+    optional: true
+  - !Flag
+    description: '[default: -1]'
+    synonyms:
+    - -G
+    - --gap-extend
+    args: !SimpleFlagArg
+      name: m
+    optional: true
+  command:
+  - mccortex127
+  - calls2vcf
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: <out>.fa.gz, --seq2 outputs <out>.1.fa.gz, <out>.2.fa.gz
+    synonyms:
+    - --seq
+    args: !SimpleFlagArg
+      name: outputs
+    optional: true
+  - !Flag
+    description: come AFTER two/oneway options. Output may be slightly shuffled.
+    synonyms:
+    - --seq
+    args: !SimpleFlagArg
+      name: must
+    optional: true
+  command:
+  - mccortex127
+  - correct
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Number of kmers to extend by [default: 0]'
+    synonyms:
+    - -d
+    - --dist
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Dump kmers not in subgraph
+    synonyms:
+    - -v
+    - --invert
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Grab entire runs of kmers that are touched by a read
+    synonyms:
+    - -U
+    - --unitigs
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - mccortex127
+  - subgraph
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Add flanking kmers to <in.fa>
+    synonyms:
+    - -F
+    - --flank
+    args: !SimpleFlagArg
+      name: in.fa
+    optional: true
+  command:
+  - mccortex127
+  - uniqkmers
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: Help message
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

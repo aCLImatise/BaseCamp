@@ -1,0 +1,123 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: "*            Input files separated by blank (valid formats: 'mzML')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: files
+  optional: true
+- !Flag
+  description: "*             Transition file with the RT peptides ('TraML' or 'csv')\
+    \ (valid formats: 'csv', 'traML')"
+  synonyms:
+  - -tr
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*            Output file (valid formats: 'trafoXML')"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "RT normalization file (how to map the RTs of this run to the ones\
+    \ stored in the library) (valid formats: 'trafoXML')"
+  synonyms:
+  - -rt_norm
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Minimum r-squared of RT peptides regression (default: '0.95')"
+  synonyms:
+  - -min_rsq
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: "Minimum relative amount of RT peptides to keep (default: '0.6')"
+  synonyms:
+  - -min_coverage
+  args: !SimpleFlagArg
+    name: double
+  optional: true
+- !Flag
+  description: Whether the algorithms should try to choose the best peptides based
+    on their peak shape for normalization. Use this option you do not expect all your
+    peptides to be detected in a sampl e and too many 'bad' peptides enter the outlier
+    removal step (e.g. due to them being endogenous peptides or using a less curated
+    list of peptides).
+  synonyms:
+  - -estimateBestPeptides
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Parameters for the RTNormalization. RT normalization and outlier detection
+    can be done iteratively (by default) which removes one outlier per iteration or
+    using the RANSAC algorithm.
+  synonyms:
+  - '- RTNormalization'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Algorithm parameters section
+  synonyms:
+  - '- algorithm'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Parameters for the peptide estimation (use -estimateBestPeptides to
+    enable).
+  synonyms:
+  - '- peptideEstimation'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ://www.openms.de/documentation/TOPP_OpenSwathRTNormalizer.html
+  synonyms:
+  - '- http'
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- OpenSwathRTNormalizer
+subcommands: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

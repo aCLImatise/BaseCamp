@@ -1,0 +1,117 @@
+!Command
+positional:
+- !Positional
+  description: --noconv                Do not automatically substitude nucleotide
+    "T" with "U" (default=off)
+  position: 0
+  name: program
+  optional: false
+named:
+- !Flag
+  description: Print help, including all details and hidden options, and exit
+  synonyms:
+  - --detailed-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set the number of threads used for calculations (only available when
+    compiled with OpenMP support)
+  synonyms:
+  - -j
+  - --numThreads
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: calculate partition function and thus, Boltzmann probabilities and
+    Gibbs free energy (default=off)
+  synonyms:
+  - -p
+  - --partfunc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: backtrack a certain number of Boltzmann samples from the appropriate
+    k,l neighborhood(s)
+  synonyms:
+  - --stochBT
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: :<l>  backtrack structures from certain k,l-neighborhood only, can
+    be specified multiple times (<k>:<l>,<m>:<n>,...)
+  synonyms:
+  - --neighborhood
+  args: !SimpleFlagArg
+    name: k
+  optional: true
+- !Flag
+  description: scaling factor for pf to avoid overflows
+  synonyms:
+  - -S
+  - --pfScale
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: do not backtrack structures, calculate energy contributions only (default=off)
+  synonyms:
+  - --noBT
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assume a circular (instead of linear) RNA molecule. (default=off)
+  synonyms:
+  - -c
+  - --circ
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Read energy parameters from paramfile, instead of using the default
+    parameter set.
+  synonyms:
+  - -P
+  - --paramFile
+  args: !SimpleFlagArg
+    name: paramfile
+  optional: true
+- !Flag
+  description: How to treat "dangling end" energies for bases adjacent to helices
+    in free ends and multi-loops (possible values="0", "2" default=`2')
+  synonyms:
+  - -d
+  - --dangles
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Do not allow GU pairs (default=off)
+  synonyms:
+  - --noGU
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not allow GU pairs at the end of helices (default=off)
+  synonyms:
+  - --noClosingGU
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- RNA2Dfold
+subcommands: []
+help_flag: !Flag
+  description: Print help and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

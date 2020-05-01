@@ -1,0 +1,797 @@
+!Command
+positional: []
+named: []
+command:
+- medaka
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: Bam file to compress.
+    position: 0
+    name: bam_input
+    optional: false
+  - !Positional
+    description: Output bam file.
+    position: 1
+    name: bam_output
+    optional: false
+  - !Positional
+    description: Reference fasta file used for `bam_input`.
+    position: 2
+    name: ref_fname
+    optional: false
+  named: []
+  command:
+  - medaka
+  - compress_bam
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Input alignments.
+    position: 0
+    name: bam
+    optional: false
+  - !Positional
+    description: Output features file.
+    position: 1
+    name: output
+    optional: false
+  named: []
+  command:
+  - medaka
+  - features
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Paths to training data.
+    position: 0
+    name: features
+    optional: false
+  named:
+  - !Flag
+    description: 'Verbose logging of debug information. (default: 20)'
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimal logging; warnings only). (default: 20)'
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Name for training run. (default: keras_train)'
+    synonyms:
+    - --train_name
+    args: !SimpleFlagArg
+      name: TRAIN_NAME
+    optional: true
+  - !Flag
+    description: 'Model definition and initial weights .hdf, or .yml with kwargs to
+      build model. {r941_min_high_g330, r941_min_high_g344, r941_min_high_g351, r941_prom_high_g330,
+      r941_prom_high_g344, r941_prom_high_g351, r941_min_high_g340_rle, r103_min_high_g345,
+      r941_prom_snp_g322, r941_prom_variant_g322, r103_prom_snp_g3210, r103_prom_variant_g3210}
+      (default: None)'
+    synonyms:
+    - --model
+    args: !SimpleFlagArg
+      name: MODEL
+    optional: true
+  - !Flag
+    description: 'Maximum number of trainig epochs. (default: 5000)'
+    synonyms:
+    - --epochs
+    args: !SimpleFlagArg
+      name: EPOCHS
+    optional: true
+  - !Flag
+    description: 'Training batch size. (default: 100)'
+    synonyms:
+    - --batch_size
+    args: !SimpleFlagArg
+      name: BATCH_SIZE
+    optional: true
+  - !Flag
+    description: 'Only train on max_samples. (default: inf)'
+    synonyms:
+    - --max_samples
+    args: !SimpleFlagArg
+      name: MAX_SAMPLES
+    optional: true
+  - !Flag
+    description: 'Reduce fraction of data per epoch by this factor (default: 1)'
+    synonyms:
+    - --mini_epochs
+    args: !SimpleFlagArg
+      name: MINI_EPOCHS
+    optional: true
+  - !Flag
+    description: 'Seed for random batch shuffling. (default: None)'
+    synonyms:
+    - --seed
+    args: !SimpleFlagArg
+      name: SEED
+    optional: true
+  - !Flag
+    description: 'Number of threads for parallel IO. (default: 1)'
+    synonyms:
+    - --threads_io
+    args: !SimpleFlagArg
+      name: THREADS_IO
+    optional: true
+  - !Flag
+    description: 'GPU device to use. (default: 0)'
+    synonyms:
+    - --device
+    args: !SimpleFlagArg
+      name: DEVICE
+    optional: true
+  - !Flag
+    description: 'Optimizer to use. (default: rmsprop)'
+    synonyms:
+    - --optimizer
+    args: !ChoiceFlagArg
+      choices:
+      - nadam
+      - rmsprop
+    optional: true
+  - !Flag
+    description: '=VAL1,KEY2=VAL2... [KEY1=VAL1,KEY2=VAL2... ...] Optimizer key-word
+      arguments. (default: None)'
+    synonyms:
+    - --optim_args
+    args: !SimpleFlagArg
+      name: KEY1
+    optional: true
+  - !Flag
+    description: 'Fraction of data to validate on. (default: 0.2)'
+    synonyms:
+    - --validation_split
+    args: !SimpleFlagArg
+      name: VALIDATION_SPLIT
+    optional: true
+  - !Flag
+    description: 'Paths to validation data (default: None)'
+    synonyms:
+    - --validation_features
+    args: !RepeatFlagArg
+      name: VALIDATION_FEATURES
+    optional: true
+  command:
+  - medaka
+  - train
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Input alignments.
+    position: 0
+    name: bam
+    optional: false
+  - !Positional
+    description: Output file.
+    position: 1
+    name: output
+    optional: false
+  named:
+  - !Flag
+    description: 'Verbose logging of debug information. (default: 20)'
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimal logging; warnings only). (default: 20)'
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Inference batch size. (default: 100)'
+    synonyms:
+    - --batch_size
+    args: !SimpleFlagArg
+      name: BATCH_SIZE
+    optional: true
+  - !Flag
+    description: 'Genomic regions to analyse, or a bed file. (default: None)'
+    synonyms:
+    - --regions
+    args: !RepeatFlagArg
+      name: REGIONS
+    optional: true
+  - !Flag
+    description: 'Chunk length of samples. (default: 10000)'
+    synonyms:
+    - --chunk_len
+    args: !SimpleFlagArg
+      name: CHUNK_LEN
+    optional: true
+  - !Flag
+    description: 'Overlap of chunks. (default: 1000)'
+    synonyms:
+    - --chunk_ovlp
+    args: !SimpleFlagArg
+      name: CHUNK_OVLP
+    optional: true
+  - !Flag
+    description: 'Model definition, default is equivalent to r941_min_high_g351. {r941_min_high_g330,
+      r941_min_high_g344, r941_min_high_g351, r941_prom_high_g330, r941_prom_high_g344,
+      r941_prom_high_g351, r941_min_high_g340_rle, r103_min_high_g345, r941_prom_snp_g322,
+      r941_prom_variant_g322, r103_prom_snp_g3210, r103_prom_variant_g3210} (default:
+      /tmp/tmp9hrxhmvc/lib/python3.6/site- packages/medaka/data/r941_min_high_g351_model.hdf5)'
+    synonyms:
+    - --model
+    args: !SimpleFlagArg
+      name: MODEL
+    optional: true
+  - !Flag
+    description: 'Disable use of cuDNN model layers. (default: False)'
+    synonyms:
+    - --disable_cudnn
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Number of threads used by inference. (default: 1)'
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  - !Flag
+    description: 'Verify integrity of output file after inference. (default: False)'
+    synonyms:
+    - --check_output
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Save features with consensus probabilities. (default: False)'
+    synonyms:
+    - --save_features
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Two-letter tag name. (default: None)'
+    synonyms:
+    - --tag_name
+    args: !SimpleFlagArg
+      name: TAG_NAME
+    optional: true
+  - !Flag
+    description: 'Value of tag. (default: None)'
+    synonyms:
+    - --tag_value
+    args: !SimpleFlagArg
+      name: TAG_VALUE
+    optional: true
+  - !Flag
+    description: 'Keep alignments when tag is missing. (default: False)'
+    synonyms:
+    - --tag_keep_missing
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Read group to select. (default: None)'
+    synonyms:
+    - --RG
+    args: !SimpleFlagArg
+      name: READGROUP
+    optional: true
+  command:
+  - medaka
+  - consensus
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Single-molecule reads, one file per read.
+    position: 0
+    name: fasta
+    optional: false
+  - !Positional
+    description: Output directory.
+    position: 1
+    name: output
+    optional: false
+  named:
+  - !Flag
+    description: 'Verbose logging of debug information. (default: 20)'
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimal logging; warnings only). (default: 20)'
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Inference batch size. (default: 100)'
+    synonyms:
+    - --batch_size
+    args: !SimpleFlagArg
+      name: BATCH_SIZE
+    optional: true
+  - !Flag
+    description: 'Genomic regions to analyse, or a bed file. (default: None)'
+    synonyms:
+    - --regions
+    args: !RepeatFlagArg
+      name: REGIONS
+    optional: true
+  - !Flag
+    description: 'Chunk length of samples. (default: 1000)'
+    synonyms:
+    - --chunk_len
+    args: !SimpleFlagArg
+      name: CHUNK_LEN
+    optional: true
+  - !Flag
+    description: 'Overlap of chunks. (default: 500)'
+    synonyms:
+    - --chunk_ovlp
+    args: !SimpleFlagArg
+      name: CHUNK_OVLP
+    optional: true
+  - !Flag
+    description: 'Model definition, default is equivalent to r941_min_high_g351. {r941_min_high_g330,
+      r941_min_high_g344, r941_min_high_g351, r941_prom_high_g330, r941_prom_high_g344,
+      r941_prom_high_g351, r941_min_high_g340_rle, r103_min_high_g345, r941_prom_snp_g322,
+      r941_prom_variant_g322, r103_prom_snp_g3210, r103_prom_variant_g3210} (default:
+      /tmp/tmp9hrxhmvc/lib/python3.6/site- packages/medaka/data/r941_min_high_g351_model.hdf5)'
+    synonyms:
+    - --model
+    args: !SimpleFlagArg
+      name: MODEL
+    optional: true
+  - !Flag
+    description: 'Disable use of cuDNN model layers. (default: False)'
+    synonyms:
+    - --disable_cudnn
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum subread count. (default: 3)'
+    synonyms:
+    - --depth
+    args: !SimpleFlagArg
+      name: DEPTH
+    optional: true
+  - !Flag
+    description: 'Minimum median subread length. (default: 400)'
+    synonyms:
+    - --length
+    args: !SimpleFlagArg
+      name: LENGTH
+    optional: true
+  - !Flag
+    description: 'Number of threads used by inference. (default: 1)'
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  - !Flag
+    description: 'Verify integrity of output file after inference. (default: False)'
+    synonyms:
+    - --check_output
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Save features with consensus probabilities. (default: False)'
+    synonyms:
+    - --save_features
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - medaka
+  - smolecule
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Pregenerated features (from medaka features).
+    position: 0
+    name: features
+    optional: false
+  named:
+  - !Flag
+    description: 'Verbose logging of debug information. (default: 20)'
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimal logging; warnings only). (default: 20)'
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Model definition. {r941_min_high_g330, r941_min_high_g344, r941_min_high_g351,
+      r941_prom_high_g330, r941_prom_high_g344, r941_prom_high_g351, r941_min_high_g340_rle,
+      r103_min_high_g345, r941_prom_snp_g322, r941_prom_variant_g322, r103_prom_snp_g3210,
+      r103_prom_variant_g3210} (default: r941_min_high_g351)'
+    synonyms:
+    - --model
+    args: !SimpleFlagArg
+      name: MODEL
+    optional: true
+  command:
+  - medaka
+  - consensus_from_features
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Input fasta/q. may be gzip compressed.
+    position: 0
+    name: input
+    optional: false
+  named:
+  - !Flag
+    description: 'Verbose logging of debug information. (default: 20)'
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimal logging; warnings only). (default: 20)'
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - medaka
+  - fastrle
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Consensus .hdf files.
+    position: 0
+    name: inputs
+    optional: false
+  - !Positional
+    description: Output .fasta.
+    position: 1
+    name: output
+    optional: false
+  named:
+  - !Flag
+    description: 'Verbose logging of debug information. (default: 20)'
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimal logging; warnings only). (default: 20)'
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Limit stitching to these reference names (default: None)'
+    synonyms:
+    - --regions
+    args: !RepeatFlagArg
+      name: REGIONS
+    optional: true
+  - !Flag
+    description: 'Number of worker processes to use. (default: 1)'
+    synonyms:
+    - --jobs
+    args: !SimpleFlagArg
+      name: JOBS
+    optional: true
+  command:
+  - medaka
+  - stitch
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Reference sequence .fasta file.
+    position: 0
+    name: ref_fasta
+    optional: false
+  - !Positional
+    description: Consensus .hdf files.
+    position: 1
+    name: inputs
+    optional: false
+  - !Positional
+    description: Output .vcf.
+    position: 2
+    name: output
+    optional: false
+  named:
+  - !Flag
+    description: 'Verbose logging of debug information. (default: 20)'
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimal logging; warnings only). (default: 20)'
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Limit variant calling to these reference names (default: None)'
+    synonyms:
+    - --regions
+    args: !RepeatFlagArg
+      name: REGIONS
+    optional: true
+  - !Flag
+    description: 'Populate VCF info fields. (default: False)'
+    synonyms:
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - medaka
+  - variant
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Reference sequence .fasta file.
+    position: 0
+    name: ref_fasta
+    optional: false
+  - !Positional
+    description: Consensus .hdf files.
+    position: 1
+    name: inputs
+    optional: false
+  - !Positional
+    description: Output .vcf.
+    position: 2
+    name: output
+    optional: false
+  named:
+  - !Flag
+    description: 'Verbose logging of debug information. (default: 20)'
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimal logging; warnings only). (default: 20)'
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Limit variant calling to these reference names (default: None)'
+    synonyms:
+    - --regions
+    args: !RepeatFlagArg
+      name: REGIONS
+    optional: true
+  - !Flag
+    description: 'Threshold for considering secondary calls. A value of 1 will result
+      in haploid decoding. (default: 0.04)'
+    synonyms:
+    - --threshold
+    args: !SimpleFlagArg
+      name: THRESHOLD
+    optional: true
+  - !Flag
+    description: 'Reference vcf. (default: None)'
+    synonyms:
+    - --ref_vcf
+    args: !SimpleFlagArg
+      name: REF_VCF
+    optional: true
+  - !Flag
+    description: 'Populate VCF info fields. (default: False)'
+    synonyms:
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - medaka
+  - snp
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Convert Guppy .fast5 files with methylation calls to .sam file, output
+      to stdout.
+    position: 0
+    name: guppy2sam
+    optional: false
+  - !Positional
+    description: Call methylation from .bam file.
+    position: 1
+    name: call
+    optional: false
+  named:
+  - !Flag
+    description: 'Verbose logging of debug information. (default: 20)'
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimal logging; warnings only). (default: 20)'
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - medaka
+  - methylation
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Verbose logging of debug information. (default: 20)'
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimal logging; warnings only). (default: 20)'
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - medaka
+  - tools
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: 'Model definition, default is equivalent to r941_min_high_g351.
+        {r941_min_high_g330, r941_min_high_g344, r941_min_high_g351, r941_prom_high_g330,
+        r941_prom_high_g344, r941_prom_high_g351, r941_min_high_g340_rle, r103_min_high_g345,
+        r941_prom_snp_g322, r941_prom_variant_g322, r103_prom_snp_g3210, r103_prom_variant_g3210}
+        (default: /tmp/tmp9hrxhmvc/lib/python3.6/site- packages/medaka/data/r941_min_high_g351_model.hdf5)'
+      synonyms:
+      - --model
+      args: !SimpleFlagArg
+        name: MODEL
+      optional: true
+    - !Flag
+      description: 'Disable use of cuDNN model layers. (default: False)'
+      synonyms:
+      - --disable_cudnn
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - medaka
+    - tools
+    - is_rle_model
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

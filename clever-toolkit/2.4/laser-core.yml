@@ -1,0 +1,328 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: '[ --verbose ]                      Be (very) verbose. CAUTION: produces
+    a  lot of output to stderr.'
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Process single end reads (instead of  paired end).
+  synonyms:
+  - --single-end
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --skip_non_xa ]                  Skip reads for which other alignments  exist
+    (i.e. X0+X1>1), but no XA tag is  present. Turn on when using BWA.'
+  synonyms:
+  - -X
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (=-1)             Maximum number of input anchor  alignments. If more
+    are given, skip  this anchor (but not the whole read).
+  synonyms:
+  - --max_input_aln
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '[ --ignore_wrong_X_tags ]          Do not abort when wrongly set X0/X1  tags
+    are encountered.'
+  synonyms:
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --phred_offset ] arg (=33)       Value to subtract from ASCII code
+    to  get the PHRED quality.'
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --max_mapping ] arg (=10)        Maximum number of mappings for
+    each  read in a pair. If more mappings are  found, the read is skipped.'
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --cost_threshold ] arg (=115)    Maximum PHRED sum allowed for (split)  read
+    alignments.'
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --indel_cost ] arg (=30)         PHRED like cost of an indel.'
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use affine gapcosts (instead of linear  gapcosts). If enabled, gap
+    open costs  are given by --indel_cost and gap  extend costs are given by  --gap_extend_cost,
+    i.e. a gap of length k costs indel_cost+k*gap_extend_cost.
+  synonyms:
+  - --affine_gapcosts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (=10)           Gap extend cost. Only effective in  connection with
+    --affine_gapcosts.
+  synonyms:
+  - --gap_extend_cost
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '[ --split_cost ] arg (=25)         PHRED like cost of splitting an  alignment.'
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Search for interchromosomal split  reads.
+  synonyms:
+  - --interchromosomal
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (=60)     PHRED like cost of an inter-chromosomal split.
+  synonyms:
+  - --interchrom_split_cost
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Search for inversion split reads.
+  synonyms:
+  - --inversions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (=45)      PHRED like cost of an inversion split.
+  synonyms:
+  - --inversion_split_cost
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '[ --secondary_aln_phred_diff ] arg (=29) Report/evaluate split alignments
+    with a difference of at most this value to the best split alignment.'
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --min_anchor_length ] arg (=8)   Minimal number of nucleotides on
+    each  sides of a split.'
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --max_span ] arg (=1000)         Maximal allowed span (i.e. length
+    on  reference) of a split read alignment.'
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (=100)              Maximal allowed anchors per read  suffix/prefix.
+  synonyms:
+  - --max_anchors
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=500)         Maximal allowed number of anchor  pairings.
+  synonyms:
+  - --max_anchor_pairs
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=4)    Number of characters to increase anchor length by if too many
+    anchors are  found.
+  synonyms:
+  - --anchor_length_increment
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=30)         Maximal anchor length (if reached it  will not be increased
+    any further.
+  synonyms:
+  - --max_anchor_length
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '[ --max_insert ] arg (=50000)      Maximal allowed internal segment
+    size  when pairing alignments for a read  pair.'
+  synonyms:
+  - -N
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --output_secondary ]             Also output secondary alignments.'
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --anchor_search_length ] arg (=20) Length of anchor used for searching.'
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --anchor_errors ] arg (=2)       Allowed errors when searching for  anchors.'
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --anchor_distance ] arg (=600)   Regions size for searching for
+    anchors.'
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --anchor_search_iter ] arg (=3)  Anchor search iterations.'
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --putative_variations ] arg      Filename to write a list of all  variation
+    candidates to. All candidates are written, no matter how weak the  evidence for
+    them to be true.'
+  synonyms:
+  - -P
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --input_length_dist_in ] arg     File with known internal segment
+    length histogram to be used to score  alignments.'
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --input_length_dist_out ] arg    File to write internal segment
+    length  histogram for uniquely mappable reads  to.'
+  synonyms:
+  - -L
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --insertion_length_dist ] arg    File to write insertion length  histogram
+    for uniquely mappable reads  to.'
+  synonyms:
+  - -R
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --deletion_length_dist ] arg     File to write deletion length histogram
+    for uniquely mappable reads to.'
+  synonyms:
+  - -D
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --threads ] arg (=0)             Number of threads (default: 0 =  strictly
+    single-threaded).'
+  synonyms:
+  - -T
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --m_in_cigar ]                   Use M for matches and mismatches\
+    \ in  CIGAR strings (instead of '=' and 'X')."
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Filename to store putative SNP  positions to.
+  synonyms:
+  - --snp
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '[ --snp_weight_cutoff ] arg (=3)   Weight cutoff for SNPs to be written
+    to filename given as parameter --snp.'
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (=3)        Weight cutoff for indels to be written  to filename given
+    as parameter -P.
+  synonyms:
+  - --indel_weight_cutoff
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Report rightmost deletions/insertions  (default: leftmost).'
+  synonyms:
+  - --rightmost
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Allow reads to be soft-clipped.
+  synonyms:
+  - --soft_clip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (=35)       Cost for soft clipping a read.
+  synonyms:
+  - --soft_clip_open_cost
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=3)      Cost for "extending" a soft clip; i.e., softclipping k characters
+    from a read  will cost soft_clip_open_cost+k*soft_cl ip_extend_cost.
+  synonyms:
+  - --soft_clip_extend_cost
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Read group for all reads.
+  synonyms:
+  - --read_group
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Library information for read group  header.
+  synonyms:
+  - --read_group_library
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Sample information for read group  header.
+  synonyms:
+  - --read_group_sample
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+command:
+- laser-core
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

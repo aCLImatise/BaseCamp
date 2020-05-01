@@ -1,0 +1,72 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Input FASTQ file which contanins the reads which will be trimmed.
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT_FILENAME
+  optional: true
+- !Flag
+  description: The size of part which is trimmed from each read. It should not be
+    used together with --size!
+  synonyms:
+  - -s
+  - --trim_size
+  args: !SimpleFlagArg
+    name: TRIM_SIZE
+  optional: true
+- !Flag
+  description: The size of read part which is left after trimming. If the read is
+    shorter than this then no trimming is performed.
+  synonyms:
+  - -f
+  - --final_size
+  args: !SimpleFlagArg
+    name: SIZE
+  optional: true
+- !Flag
+  description: The end of the short read where the trimming will be done. The choices
+    are [5,3].
+  synonyms:
+  - -e
+  - --trim_end
+  args: !SimpleFlagArg
+    name: END
+  optional: true
+- !Flag
+  description: It trims the Ns from the reads sequence ends, wherever is possible,
+    such that to minimize the amount of Ns in the read sequence which is left after
+    the trimming. It works only with '--final_size'.'
+  synonyms:
+  - -N
+  - --trim_n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The output FASTQ file containing the trimmed reads.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME
+  optional: true
+command:
+- trim_reads.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

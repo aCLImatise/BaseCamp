@@ -1,0 +1,234 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: "*                        Input spectrum file (valid formats: 'mzML')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*                        Protein/peptide identifications file (valid\
+    \ formats: 'idXML')"
+  synonyms:
+  - -id
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*                       Output file (valid formats: 'idXML')"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*                LuciPHOr2 .jar file, e.g. 'c:\\program files\\luciphor2.jar'"
+  synonyms:
+  - -executable
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Fragmentation method (default: 'CID' valid: 'CID', 'HCD')"
+  synonyms:
+  - -fragment_method
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: "Tolerance of the peaks in the fragment spectrum (default: '0.5')"
+  synonyms:
+  - -fragment_mass_tolerance
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "Unit of fragment mass tolerance (default: 'Da' valid: 'Da', 'ppm')"
+  synonyms:
+  - -fragment_error_units
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: "Do not consider peaks below this value for matching fragment ions\
+    \ (default: '150')"
+  synonyms:
+  - -min_mz
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "List the amino acids to be searched for and their mass modifications,\
+    \ specified using UniMod (www.unimod.org) terms, e.g. 'Carbamidomethyl (C)' (default:\
+    \ '[Phospho (S) Phosp ho (T) Phospho (Y)]' valid: '15N-oxobutanoic (N-term C)',\
+    \ '2-dimethylsuccinyl (C)', '2-monomethylsuccinyl (C)', '2-nitrobenzyl (Y)', '2-succinyl\
+    \ (C)', '2HPG (R)', '3-deoxygl ucosone (R)', '3-phosphoglyceryl (K)', '3sulfo\
+    \ (N-term)', '4-ONE (C)', '4-ONE (H)', '4-ONE (K)', '4-ONE+Delta:H(-2)O(-1) (C)',\
+    \ '4-ONE+Delta:H(-2)O(-1) (H)', '4-ONE+Delta:H(- 2)O(-1) (K)', '4AcAllylGal (C)',\
+    \ 'a-type-ion (C-term)', 'AccQTag (K)', 'AccQTag (N-term)', 'Acetyl (C)', 'Acetyl\
+    \ (H)', 'Acetyl (K)', 'Acetyl (N-term)', 'Acetyl (S)', 'Acetyl (T)', 'Acetyl (Y)',\
+    \ 'Acetyl:13C(2) (K)', 'Acetyl:2H(3) (H)', 'Acetyl:2H(3) (K)', 'Acetyl:2H(3) (N-term)',\
+    \ 'Acetyl:2H(3) (S)', 'Acetyl:2H(3) (T)', 'Acetyl:2H(3) (Y)', 'Acety ldeoxyhypusine\
+    \ (K)', 'Acetylhypusine (K)', 'ADP-Ribosyl (C)', 'ADP-Ribosyl (D)', 'ADP-Ribosyl\
+    \ (E)', 'ADP-Ribosyl (K)', 'ADP-Ribosyl (N)', 'ADP-Ribosyl (R)', 'ADP-Ribosyl\
+    \ (S)', 'ADP-Ribosyl (T)', 'AEBS (H)', 'AEBS (K)', 'AEBS (S)', 'AEBS (Y)', 'AEC-MAEC\
+    \ (S)', 'AEC-MAEC (T)', 'AEC-MAEC:2H(4) (S)', 'AEC-MAEC:2H(4) (T)', 'AHA-Alkyne\
+    \ (M)', 'AHA-A lkyne-KDDDD (M)', 'AHA-SS (M)', 'AHA-SS_CAM (M)', 'Ahx2+Hsl (C-term)',\
+    \ 'Ala->Arg (A)', 'Ala->Asn (A)', 'Ala->Asp (A)', 'Ala->Cys (A)', 'Ala->Gln (A)',\
+    \ 'Ala->Glu (A)', 'Ala-> ... DSS-NH2 (K)', 'Xlink:DST (K)', 'Xlink:DTSSP (K)',\
+    \ 'Xlink:EGS (K)', 'Xlink:EGScleaved (K)', 'Xlink:SMCC (C)', 'Xlink:SSD (K)',\
+    \ 'ZGB (K)', 'ZGB (N-term)')"
+  synonyms:
+  - -target_modifications
+  args: !SimpleFlagArg
+    name: mods
+  optional: true
+- !Flag
+  description: "List the types of neutral losses that you want to consider. The residue\
+    \ field is case sensitive. For example: lower case 'sty' implies that the neutral\
+    \ loss can only occur  if the specified modification is present. Syntax: NL =\
+    \ <RESDIUES> -<NEUTRAL_LOSS_MOLECULAR_FORMULA> <MASS_LOST> (default: '[sty -H3PO4\
+    \ -97.97690]')"
+  synonyms:
+  - -neutral_losses
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "How much to add to an amino acid to make it a decoy (default: '79.966331'\
+    \ min: '1')"
+  synonyms:
+  - -decoy_mass
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "For handling the neutral loss from a decoy sequence. The syntax for\
+    \ this is identical to that of the normal neutral losses given above except that\
+    \ the residue is always 'X'. Syntax: DECOY_NL = X -<NEUTRAL_LOSS_MOLECULAR_FORMULA>\
+    \ <MASS_LOST> (default: '[X -H3PO4 -97.97690]')"
+  synonyms:
+  - -decoy_neutral_losses
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "Do not consider PSMs with a charge state above this value (default:\
+    \ '5' min: '1')"
+  synonyms:
+  - -max_charge_state
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "Restrict scoring to peptides with a length shorter than this value\
+    \ (default: '40' min: '1')"
+  synonyms:
+  - -max_peptide_length
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "Maximum number of permutations a sequence can have (default: '16384'\
+    \ min: '1')"
+  synonyms:
+  - -max_num_perm
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "Minimum score a PSM needs to be considered for modeling (default:\
+    \ '0.95' min: '0')"
+  synonyms:
+  - -modeling_score_threshold
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "PSMs below this value will be discarded (default: '0' min: '0')"
+  synonyms:
+  - -scoring_threshold
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "The minimum number of PSMs you need for any charge state in order\
+    \ to build a model for it (default: '50' min: '1')"
+  synonyms:
+  - -min_num_psms_model
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "For multi-threading, 0 = use all CPU found by JAVA (default: '6' min:\
+    \ '0')"
+  synonyms:
+  - -num_threads
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "Determines how Luciphor will run: 0 = calculate FLR then rerun scoring\
+    \ without decoys (two iterations), 1 = Report Decoys: calculate FLR but don't\
+    \ rescore PSMs, all decoy  hits will be reported (default: '0' valid: '0', '1')"
+  synonyms:
+  - -run_mode
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: The Java executable. Usually Java is on the system PATH. If Java is
+    not found, use this parameter to specify the full path to Java
+  synonyms:
+  - -java_executable
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Maximum Java heap size (in MB) (default: '3500')"
+  synonyms:
+  - -java_memory
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- LuciphorAdapter
+subcommands: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

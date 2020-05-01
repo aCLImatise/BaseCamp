@@ -1,0 +1,143 @@
+!Command
+positional:
+- !Positional
+  description: Global YAML configuration file specifying details about the system
+    (optional, defaults to installed bcbio_system.yaml)
+  position: 0
+  name: global_config
+  optional: false
+- !Positional
+  description: A directory of Illumina output or fastq files to process (optional)
+  position: 1
+  name: fc_dir
+  optional: false
+- !Positional
+  description: YAML file with details about samples to process (required, unless using
+    Galaxy LIMS as input)
+  position: 2
+  name: run_config
+  optional: false
+named:
+- !Flag
+  description: Total cores to use for processing
+  synonyms:
+  - -n
+  - --numcores
+  args: !SimpleFlagArg
+    name: NUMCORES
+  optional: true
+- !Flag
+  description: Approach to parallelization
+  synonyms:
+  - -t
+  - --paralleltype
+  args: !ChoiceFlagArg
+    choices:
+    - local
+    - ipython
+  optional: true
+- !Flag
+  description: Scheduler to use for ipython parallel
+  synonyms:
+  - -s
+  - --scheduler
+  args: !ChoiceFlagArg
+    choices:
+    - lsf
+    - sge
+    - torque
+    - slurm
+    - pbspro
+  optional: true
+- !Flag
+  description: run controller locally
+  synonyms:
+  - --local_controller
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Scheduler queue to run jobs on, for ipython parallel
+  synonyms:
+  - -q
+  - --queue
+  args: !SimpleFlagArg
+    name: QUEUE
+  optional: true
+- !Flag
+  description: Cluster specific resources specifications. Can be specified multiple
+    times. Supports SGE, Torque, LSF and SLURM parameters.
+  synonyms:
+  - -r
+  - --resources
+  args: !SimpleFlagArg
+    name: RESOURCES
+  optional: true
+- !Flag
+  description: Number of minutes before cluster startup times out. Defaults to 15
+  synonyms:
+  - --timeout
+  args: !SimpleFlagArg
+    name: TIMEOUT
+  optional: true
+- !Flag
+  description: Number of retries of failed tasks during distributed processing. Default
+    0 (no retries)
+  synonyms:
+  - --retries
+  args: !SimpleFlagArg
+    name: RETRIES
+  optional: true
+- !Flag
+  description: Tag name to label jobs on the cluster
+  synonyms:
+  - -p
+  - --tag
+  args: !SimpleFlagArg
+    name: TAG
+  optional: true
+- !Flag
+  description: Run a workflow with the given commandline arguments
+  synonyms:
+  - -w
+  - --workflow
+  args: !SimpleFlagArg
+    name: WORKFLOW
+  optional: true
+- !Flag
+  description: Directory to process in. Defaults to current working directory
+  synonyms:
+  - --workdir
+  args: !SimpleFlagArg
+    name: WORKDIR
+  optional: true
+- !Flag
+  description: Treat all files as single reads
+  synonyms:
+  - --force-single
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: comma separated list of separators that indicates paired files.
+  synonyms:
+  - --separators
+  args: !SimpleFlagArg
+    name: SEPARATORS
+  optional: true
+command:
+- bcbio_nextgen.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print current version
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

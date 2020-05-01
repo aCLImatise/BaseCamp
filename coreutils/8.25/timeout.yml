@@ -1,0 +1,53 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: exit with the same status as COMMAND, even when the command times out
+  synonyms:
+  - --preserve-status
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: when not running timeout directly from a shell prompt, allow COMMAND
+    to read from the TTY and get TTY signals; in this mode, children of COMMAND will
+    not be timed out
+  synonyms:
+  - --foreground
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: also send a KILL signal if COMMAND is still running this long after
+    the initial signal was sent
+  synonyms:
+  - -k
+  - --kill-after
+  args: !SimpleFlagArg
+    name: DURATION
+  optional: true
+- !Flag
+  description: specify the signal to be sent on timeout; SIGNAL may be a name like
+    'HUP' or a number; see 'kill -l' for a list of signals
+  synonyms:
+  - -s
+  - --signal
+  args: !SimpleFlagArg
+    name: SIGNAL
+  optional: true
+command:
+- timeout
+subcommands: []
+help_flag: !Flag
+  description: this help and exit
+  synonyms:
+  - --help
+  args: !SimpleFlagArg
+    name: display
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: version information and exit
+  synonyms:
+  - --version
+  args: !SimpleFlagArg
+    name: output
+  optional: true

@@ -1,0 +1,285 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: "*                        Input file (MS-GF+ parameter '-s') (valid\
+    \ formats: 'mzML', 'mzXML', 'mgf', 'ms2')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Output file (valid formats: 'idXML')"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Alternative output file (MS-GF+ parameter '-o') Either 'out' or 'mzid_out'\
+    \ are required. They can be used together. (valid formats: 'mzid')"
+  synonyms:
+  - -mzid_out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: '*                The MSGFPlus Java archive file. Provide a full or
+    relative path, or make sure it can be found in your PATH environment.'
+  synonyms:
+  - -executable
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*                  Protein sequence database (FASTA file; MS-GF+ parameter\
+    \ '-d'). Non-existing relative filenames are looked up via 'OpenMS.ini:id_db_dir'.\
+    \ (valid formats: 'FASTA')"
+  synonyms:
+  - -database
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Create decoy proteins (reversed sequences) and append them to the database
+    for the search (MS-GF+ parameter '-tda'). This allows the calculation of FDRs,
+    but should only be  used if the database does not already contain decoys.
+  synonyms:
+  - -add_decoys
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Precursor monoisotopic mass tolerance (MS-GF+ parameter '-t') (default:\
+    \ '10.0')"
+  synonyms:
+  - -precursor_mass_tolerance
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "Unit of precursor mass tolerance (MS-GF+ parameter '-t') (default:\
+    \ 'ppm' valid: 'Da', 'ppm')"
+  synonyms:
+  - -precursor_error_units
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: "Range of allowed isotope peak errors (MS-GF+ parameter '-ti'). Takes\
+    \ into account the error introduced by choosing a non-monoisotopic peak for fragmentation.\
+    \ Combined with  'precursor_mass_tolerance'/'precursor_error_units', this determines\
+    \ the actual precursor mass tolerance. E.g. for experimental mass 'exp' and calculated\
+    \ mass 'calc', '-precu rsor_mass_tolerance 20 -precursor_error_units ppm -isotope_error_range\
+    \ -1,2' tests '|exp - calc - n * 1.00335 Da| < 20 ppm' for n = -1, 0, 1, 2. (default:\
+    \ '0,1')"
+  synonyms:
+  - -isotope_error_range
+  args: !SimpleFlagArg
+    name: range
+  optional: true
+- !Flag
+  description: "Fragmentation method ('from_spectrum' relies on spectrum meta data\
+    \ and uses CID as fallback option; MS-GF+ parameter '-m') (default: 'from_spectrum'\
+    \ valid: 'from_spectrum',  'CID', 'ETD', 'HCD')"
+  synonyms:
+  - -fragment_method
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: "Instrument that generated the data ('low_res'/'high_res' refer to\
+    \ LCQ and LTQ instruments; MS-GF+ parameter '-inst') (default: 'low_res' valid:\
+    \ 'low_res', 'high_res', 'TOF', 'Q_Exactive')"
+  synonyms:
+  - -instrument
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: "Enzyme used for digestion, or type of cleavage. Note: MS-GF+ does\
+    \ not support blocking rules. (MS-GF+ parameter '-e') (default: 'Trypsin/P' valid:\
+    \ 'Alpha-lytic protease',  'Arg-C/P', 'Asp-N/B', 'Chymotrypsin/P', 'Lys-C/P',\
+    \ 'Lys-N', 'Trypsin/P', 'glutamyl endopeptidase', 'no cleavage', 'unspecific cleavage')"
+  synonyms:
+  - -enzyme
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: "Labeling or enrichment protocol used, if any (MS-GF+ parameter '-p')\
+    \ (default: 'automatic' valid: 'automatic', 'phospho', 'iTRAQ', 'iTRAQ_phospho',\
+    \ 'TMT', 'none')"
+  synonyms:
+  - -protocol
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: "Level of cleavage specificity required (MS-GF+ parameter '-ntt') (default:\
+    \ 'fully' valid: 'non', 'semi', 'fully')"
+  synonyms:
+  - -tryptic
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: "Minimum precursor ion charge (only used for spectra without charge\
+    \ information; MS-GF+ parameter '-minCharge') (default: '2' min: '1')"
+  synonyms:
+  - -min_precursor_charge
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "Maximum precursor ion charge (only used for spectra without charge\
+    \ information; MS-GF+ parameter '-maxCharge') (default: '3' min: '1')"
+  synonyms:
+  - -max_precursor_charge
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "Minimum peptide length to consider (MS-GF+ parameter '-minLength')\
+    \ (default: '6' min: '1')"
+  synonyms:
+  - -min_peptide_length
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "Maximum peptide length to consider (MS-GF+ parameter '-maxLength')\
+    \ (default: '40' min: '1')"
+  synonyms:
+  - -max_peptide_length
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "Number of matches per spectrum to be reported (MS-GF+ parameter '-n')\
+    \ (default: '1' min: '1')"
+  synonyms:
+  - -matches_per_spec
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "<true/false>         Output additional features (MS-GF+ parameter\
+    \ '-addFeatures'). This is required by Percolator and hence by default enabled.\
+    \ (default: 'true' valid: 'true', 'false')"
+  synonyms:
+  - -add_features
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Maximum number of modifications per peptide. If this value is large,\
+    \ the search may take very long. (default: '2' min: '0')"
+  synonyms:
+  - -max_mods
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "Fixed modifications, specified using Unimod (www.unimod.org) terms,\
+    \ e.g. 'Carbamidomethyl (C)' or 'Oxidation (M)' (default: '[Carbamidomethyl (C)]'\
+    \ valid: '15N-oxobutanoic  (N-term C)', '15N-oxobutanoic (Protein N-term S)',\
+    \ '15N-oxobutanoic (Protein N-term T)', '2-dimethylsuccinyl (C)', '2-monomethylsuccinyl\
+    \ (C)', '2-nitrobenzyl (Y)', '2-succin yl (C)', '2HPG (R)', '3-deoxyglucosone\
+    \ (R)', '3-phosphoglyceryl (K)', '3sulfo (N-term)', '4-ONE (C)', '4-ONE (H)',\
+    \ '4-ONE (K)', '4-ONE+Delta:H(-2)O(-1) (C)', '4-ONE+Delta:H( -2)O(-1) (H)', '4-ONE+Delta:H(-2)O(-1)\
+    \ (K)', '4AcAllylGal (C)', 'a-type-ion (C-term)', 'AccQTag (K)', 'AccQTag (N-term)',\
+    \ 'Acetyl (C)', 'Acetyl (H)', 'Acetyl (K)', 'Acetyl (N-term)', 'Acetyl (Protein\
+    \ N-term)', 'Acetyl (S)', 'Acetyl (T)', 'Acetyl (Y)', 'Acetyl:13C(2) (K)', 'Acetyl:13C(2)\
+    \ (Protein N-term)', 'Acetyl:2H(3) (H)', 'Acetyl:2H(3) (K)' , 'Acetyl:2H(3) (N-term)',\
+    \ 'Acetyl:2H(3) (Protein N-term)', 'Acetyl:2H(3) (S)', 'Acetyl:2H(3) (T)', 'Acetyl:2H(3)\
+    \ (Y)', 'Acetyldeoxyhypusine (K)', 'Acetylhypusine (K)', 'ADP -Ribosyl (C)', 'ADP-Ribosyl\
+    \ (D)', 'ADP-Ribosyl (E)', 'ADP-Ribosyl (K)', 'ADP-Ribosyl (N)', 'ADP-Ribosyl\
+    \ (R)', 'ADP-Ribosyl (S)', 'ADP-Ribosyl (T)', 'AEBS (H)', 'AEBS (K)', 'AEBS (Protein\
+    \ N-term)', 'AEBS (S)', 'AEBS (Y)', 'AEC-MAEC (S)', 'AEC-MAEC (T)', 'AEC-MAEC:2H(4)\
+    \ (S)', 'AEC-MAEC:2H(4) (T)', 'AHA-Alkyne (M)', 'AHA-Alkyne-KDDDD (M)', 'AHA-S\
+    \ ... rm)', 'Xlink:EGScleaved (K)', 'Xlink:EGScleaved (Protein N-term)', 'Xlink:SMCC\
+    \ (C)', 'Xlink:SSD (K)', 'ZGB (K)', 'ZGB (N-term)')"
+  synonyms:
+  - -fixed_modifications
+  args: !SimpleFlagArg
+    name: mods
+  optional: true
+- !Flag
+  description: "Variable modifications, specified using Unimod (www.unimod.org) terms,\
+    \ e.g. 'Carbamidomethyl (C)' or 'Oxidation (M)' (default: '[Oxidation (M)]' valid:\
+    \ '15N-oxobutanoic (N-t erm C)', '15N-oxobutanoic (Protein N-term S)', '15N-oxobutanoic\
+    \ (Protein N-term T)', '2-dimethylsuccinyl (C)', '2-monomethylsuccinyl (C)', '2-nitrobenzyl\
+    \ (Y)', '2-succinyl (C)', '2HPG (R)', '3-deoxyglucosone (R)', '3-phosphoglyceryl\
+    \ (K)', '3sulfo (N-term)', '4-ONE (C)', '4-ONE (H)', '4-ONE (K)', '4-ONE+Delta:H(-2)O(-1)\
+    \ (C)', '4-ONE+Delta:H(-2) O(-1) (H)', '4-ONE+Delta:H(-2)O(-1) (K)', '4AcAllylGal\
+    \ (C)', 'a-type-ion (C-term)', 'AccQTag (K)', 'AccQTag (N-term)', 'Acetyl (C)',\
+    \ 'Acetyl (H)', 'Acetyl (K)', 'Acetyl (N-t erm)', 'Acetyl (Protein N-term)', 'Acetyl\
+    \ (S)', 'Acetyl (T)', 'Acetyl (Y)', 'Acetyl:13C(2) (K)', 'Acetyl:13C(2) (Protein\
+    \ N-term)', 'Acetyl:2H(3) (H)', 'Acetyl:2H(3) (K)', 'Acetyl:2H(3) (N-term)', 'Acetyl:2H(3)\
+    \ (Protein N-term)', 'Acetyl:2H(3) (S)', 'Acetyl:2H(3) (T)', 'Acetyl:2H(3) (Y)',\
+    \ 'Acetyldeoxyhypusine (K)', 'Acetylhypusine (K)', 'ADP-R ibosyl (C)', 'ADP-Ribosyl\
+    \ (D)', 'ADP-Ribosyl (E)', 'ADP-Ribosyl (K)', 'ADP-Ribosyl (N)', 'ADP-Ribosyl\
+    \ (R)', 'ADP-Ribosyl (S)', 'ADP-Ribosyl (T)', 'AEBS (H)', 'AEBS (K)', 'AEBS (Protein\
+    \ N-term)', 'AEBS (S)', 'AEBS (Y)', 'AEC-MAEC (S)', 'AEC-MAEC (T)', 'AEC-MAEC:2H(4)\
+    \ (S)', 'AEC-MAEC:2H(4) (T)', 'AHA-Alkyne (M)', 'AHA-Alkyne-KDDDD (M)', 'AHA-S\
+    \ ... rm)', 'Xlink:EGScleaved (K)', 'Xlink:EGScleaved (Protein N-term)', 'Xlink:SMCC\
+    \ (C)', 'Xlink:SSD (K)', 'ZGB (K)', 'ZGB (N-term)')"
+  synonyms:
+  - -variable_modifications
+  args: !SimpleFlagArg
+    name: mods
+  optional: true
+- !Flag
+  description: The Java executable. Usually Java is on the system PATH. If Java is
+    not found, use this parameter to specify the full path to Java
+  synonyms:
+  - -java_executable
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Maximum Java heap size (in MB) (default: '3500')"
+  synonyms:
+  - -java_memory
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- MSGFPlusAdapter
+subcommands: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

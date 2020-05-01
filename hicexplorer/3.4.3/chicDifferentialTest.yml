@@ -1,0 +1,88 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: path to the interaction files which should be used for the differential
+    test.
+  synonyms:
+  - --interactionFile
+  - -if
+  args: !RepeatFlagArg
+    name: INTERACTIONFILE
+  optional: true
+- !Flag
+  description: define a significance level (alpha) for accepting samples
+  synonyms:
+  - --alpha
+  - -a
+  args: !SimpleFlagArg
+    name: ALPHA
+  optional: true
+- !Flag
+  description: Folder where the interaction files are stored. Applies only for batch
+    mode.
+  synonyms:
+  - --interactionFileFolder
+  - -iff
+  args: !SimpleFlagArg
+    name: INTERACTIONFILEFOLDER
+  optional: true
+- !Flag
+  description: Output folder of the files.
+  synonyms:
+  - --outputFolder
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUTFOLDER
+  optional: true
+- !Flag
+  description: "Type of test used: fisher's exact test or chi2 contingency"
+  synonyms:
+  - --statisticTest
+  args: !ChoiceFlagArg
+    choices:
+    - fisher
+    - chi2
+  optional: true
+- !Flag
+  description: turn on batch mode. The given file for --interactionFile and or --targetFile
+    contain a list of the to be processed files.
+  synonyms:
+  - --batchMode
+  - -bm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of threads (uses the python multiprocessing module)
+  synonyms:
+  - --threads
+  - -t
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: Writes the names of the rejected H0 (therefore containing the differential
+    interactions) to file. Can be used for batch processing mode of chicPlotViewpoint.
+  synonyms:
+  - --rejectedFileNamesToFile
+  - -r
+  args: !SimpleFlagArg
+    name: REJECTEDFILENAMESTOFILE
+  optional: true
+command:
+- chicDifferentialTest
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

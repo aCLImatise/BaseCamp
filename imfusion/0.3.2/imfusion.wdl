@@ -1,0 +1,7 @@
+version 1.0
+
+task Imfusion {
+  command <<<
+    imfusion
+  >>>
+}

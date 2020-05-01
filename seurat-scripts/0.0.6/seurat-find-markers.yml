@@ -1,0 +1,122 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: File name in which a serialized R matrix object may be found.
+  synonyms:
+  - -i
+  - --input-object-file
+  args: !SimpleFlagArg
+    name: INPUT-OBJECT-FILE
+  optional: true
+- !Flag
+  description: File to be used to derive a vector of genes to test. Default is to
+    use all genes.
+  synonyms:
+  - -e
+  - --genes-use
+  args: !SimpleFlagArg
+    name: GENES-USE
+  optional: true
+- !Flag
+  description: Either loom, seurat, anndata or singlecellexperiment for the input
+    format to read.
+  synonyms:
+  - --input-format
+  args: !SimpleFlagArg
+    name: INPUT-FORMAT
+  optional: true
+- !Flag
+  description: Limit testing to genes which show, on average, at least X-fold difference
+    (log-scale) between the two groups of cells. Default is 0.25 Increasing logfc.threshold
+    speeds up the function, but can miss weaker signals.
+  synonyms:
+  - -l
+  - --logfc-threshold
+  args: !SimpleFlagArg
+    name: LOGFC-THRESHOLD
+  optional: true
+- !Flag
+  description: Only test genes that are detected in a minimum fraction of min.pct
+    cells in either of the two populations. Meant to speed up the function by not
+    testing genes that are very infrequently expressed. Default is 0.1.
+  synonyms:
+  - -m
+  - --min-pct
+  args: !SimpleFlagArg
+    name: MIN-PCT
+  optional: true
+- !Flag
+  description: Only test genes that show a minimum difference in the fraction of detection
+    between the two groups. Set to -Inf by default.
+  synonyms:
+  - -n
+  - --min-diff-pct
+  args: !SimpleFlagArg
+    name: MIN-DIFF-PCT
+  optional: true
+- !Flag
+  description: Only return positive markers (FALSE by default).
+  synonyms:
+  - -p
+  - --only-pos
+  args: !SimpleFlagArg
+    name: ONLY-POS
+  optional: true
+- !Flag
+  description: Denotes which test to use. Available options are 'wilcox', 'bimod',
+    'roc', 't', 'tobit', 'poisson', 'negbinom', 'MAST', 'DESeq2'. See ?FindMarkers()
+    for more info.
+  synonyms:
+  - -t
+  - --test-use
+  args: !SimpleFlagArg
+    name: TEST-USE
+  optional: true
+- !Flag
+  description: Down sample each identity class to a max number. Default is no downsampling.
+    Not activated by default (set to Inf).
+  synonyms:
+  - -x
+  - --max-cells-per-ident
+  args: !SimpleFlagArg
+    name: MAX-CELLS-PER-IDENT
+  optional: true
+- !Flag
+  description: Minimum number of cells expressing the gene in at least one of the
+    two groups, currently only used for poisson and negative binomial tests.
+  synonyms:
+  - -c
+  - --min-cells-gene
+  args: !SimpleFlagArg
+    name: MIN-CELLS-GENE
+  optional: true
+- !Flag
+  description: Minimum number of cells in one of the groups.
+  synonyms:
+  - -d
+  - --min-cells-group
+  args: !SimpleFlagArg
+    name: MIN-CELLS-GROUP
+  optional: true
+- !Flag
+  description: File name in which to store text format matrix containing a ranked
+    list of putative markers, and associated statistics (p-values, ROC score, etc.).
+  synonyms:
+  - -o
+  - --output-text-file
+  args: !SimpleFlagArg
+    name: OUTPUT-TEXT-FILE
+  optional: true
+command:
+- seurat-find-markers.R
+subcommands: []
+help_flag: !Flag
+  description: Show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

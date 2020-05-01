@@ -1,0 +1,168 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: name of the project (will be determine how the output file is called
+  synonyms:
+  - --name
+  - -N
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: '{0,1,2,3,4,5}, -M {0,1,2,3,4,5} numpber of mismatches allowed during
+    mapping'
+  synonyms:
+  - --mismatches
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Which database has to be used (currently only ENSEMBL is available
+  synonyms:
+  - --database
+  - -D
+  args: !ChoiceFlagArg
+    choices:
+    - ENSEMBL
+  optional: true
+- !Flag
+  description: species to be used
+  synonyms:
+  - --species
+  - -S
+  args: !ChoiceFlagArg
+    choices:
+    - homo_sapiens
+    - mus_musculus
+    - drosophila_melanogaster
+    - danio_rerio
+  optional: true
+- !Flag
+  description: location of the psm file to be processed
+  synonyms:
+  - --file
+  - -F
+  args: !SimpleFlagArg
+    name: PSM_FILE
+  optional: true
+- !Flag
+  description: location where to output files should be stored
+  synonyms:
+  - --directory
+  - -C
+  args: !SimpleFlagArg
+    name: DIRECTORY
+  optional: true
+- !Flag
+  description: Whether duplicates should be removes
+  synonyms:
+  - --rm_duplicates
+  - -R
+  args: !ChoiceFlagArg
+    choices:
+    - Y
+    - N
+  optional: true
+- !Flag
+  description: translate transcript sequences in 3 frames
+  synonyms:
+  - --three_frame_translation
+  - -T
+  args: !ChoiceFlagArg
+    choices:
+    - Y
+    - N
+  optional: true
+- !Flag
+  description: annotation for DECOY PSM
+  synonyms:
+  - --decoy_annotation
+  - -E
+  args: !SimpleFlagArg
+    name: DECOY_ANNOTATION
+  optional: true
+- !Flag
+  description: sorting order of the SAM file
+  synonyms:
+  - --sorting_order
+  - -O
+  args: !ChoiceFlagArg
+    choices:
+    - unknown
+    - unsorted
+    - queryname
+    - coordinate
+  optional: true
+- !Flag
+  description: Which/How annotation should be identified
+  synonyms:
+  - --pre_picked_annotation
+  - -P
+  args: !ChoiceFlagArg
+    choices:
+    - First
+    - Ensembl_tr
+    - Ensembl_pr
+    - UniProt_ACC
+    - UniProt_Entry
+    - RefSeq
+    - all
+  optional: true
+- !Flag
+  description: Whether unmapped psm should be included in the output
+  synonyms:
+  - --include_unmapped
+  - -U
+  args: !ChoiceFlagArg
+    choices:
+    - Y
+    - N
+  optional: true
+- !Flag
+  description: which ouput format should be generated
+  synonyms:
+  - --conversion_mode
+  - -X
+  args: !ChoiceFlagArg
+    choices:
+    - proBAM_psm
+    - proBAM_peptide
+    - proBAM_peptide_mod
+    - proBED
+  optional: true
+- !Flag
+  description: add a comment to the file
+  synonyms:
+  - --comments
+  - -Y
+  args: !SimpleFlagArg
+    name: COMMENTS
+  optional: true
+- !Flag
+  description: only process validated PSMs (for mzIdentML
+  synonyms:
+  - --validated_only
+  - -A
+  args: !ChoiceFlagArg
+    choices:
+    - Y
+    - N
+  optional: true
+command:
+- proBAM.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: '{74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89}, -V {74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89}
+    ENSEMBL version to be used'
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

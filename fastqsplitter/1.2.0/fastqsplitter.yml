@@ -1,0 +1,62 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The fastq file to be scattered.
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: Scatter over these output files. Multiple -o flags can be used. The
+    extensions determine which compression algorithm will be used. '.gz' for gzip,
+    '.bz2' for bzip2, '.xz' for xz. Other extensions will use no compression.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Only applicable when output files have a '.gz' extension. Default=1
+  synonyms:
+  - -c
+  - --compression-level
+  args: !SimpleFlagArg
+    name: COMPRESSION_LEVEL
+  optional: true
+- !Flag
+  description: 'Set the number of compression threads per output file. NOTE: more
+    threads are only useful when using a compression level > 1. Default=1'
+  synonyms:
+  - -t
+  - --threads-per-file
+  args: !SimpleFlagArg
+    name: THREADS_PER_FILE
+  optional: true
+- !Flag
+  description: Use the cython version of the file splitting algorithm. (default)
+  synonyms:
+  - --cython
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the python version of the file splitting algorithm.
+  synonyms:
+  - --python
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- fastqsplitter
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

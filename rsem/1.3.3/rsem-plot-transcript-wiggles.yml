@@ -1,0 +1,65 @@
+!Command
+positional:
+- !Positional
+  description: The name of the sample analyzed.
+  position: 0
+  name: sample_name
+  optional: false
+- !Positional
+  description: A list of transcript ids or gene ids. But it cannot be a mixture of
+    transcript & gene ids. Each id occupies one line without extra spaces.
+  position: 1
+  name: input_list
+  optional: false
+- !Positional
+  description: The file name of the pdf file which contains all plots.
+  position: 2
+  name: output_plot_file
+  optional: false
+named:
+- !Flag
+  description: 'The input-list is a list of gene ids. (Default: off)'
+  synonyms:
+  - --gene-list
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The input-list is a list of transcript ids. This option can only be
+    turned on if allele-specific expression is calculated. (Default: off)'
+  synonyms:
+  - --transcript-list
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Show the wiggle plots as stacked bar plots. See description section
+    for details. (Default: off)'
+  synonyms:
+  - --show-unique
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '/--num-threads <int> Set the number of threads we can use. (Default:
+    1)'
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Set the maximum allowable memory per thread. <string> represents the\
+    \ memory and accepts suffices 'K/M/G'. (Default: 1G)"
+  synonyms:
+  - --memory-per-thread
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+command:
+- rsem-plot-transcript-wiggles
+subcommands: []
+help_flag: !Flag
+  description: /--help Show help information.
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

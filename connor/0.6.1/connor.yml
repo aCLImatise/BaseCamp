@@ -1,0 +1,104 @@
+!Command
+positional:
+- !Positional
+  description: path to input BAM
+  position: 0
+  name: input_bam
+  optional: false
+- !Positional
+  description: path to deduplicated output BAM
+  position: 1
+  name: output_bam
+  optional: false
+named:
+- !Flag
+  description: print all log messages to console
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =False. Override validation warnings
+  synonyms:
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ={output_filename}.log. Path to verbose log file
+  synonyms:
+  - --log_file
+  args: !SimpleFlagArg
+    name: LOG_FILE
+  optional: true
+- !Flag
+  description: path to output BAM containing all original aligns annotated with BAM
+    tags
+  synonyms:
+  - --annotated_output_bam
+  args: !SimpleFlagArg
+    name: ANNOTATED_OUTPUT_BAM
+  optional: true
+- !Flag
+  description: '=0.6 (0..1.0): Ambiguous base calls at a specific position in a family
+    are transformed to either majority base call, or N if the majority percentage
+    is below this threshold. (Higher threshold results in more Ns in consensus.)'
+  synonyms:
+  - -f
+  - --consensus_freq_threshold
+  args: !SimpleFlagArg
+    name: CONSENSUS_FREQ_THRESHOLD
+  optional: true
+- !Flag
+  description: '=3 (>=0): families with count of original reads < threshold are excluded
+    from the deduplicated output. (Higher threshold is more stringent.)'
+  synonyms:
+  - -s
+  - --min_family_size_threshold
+  args: !SimpleFlagArg
+    name: MIN_FAMILY_SIZE_THRESHOLD
+  optional: true
+- !Flag
+  description: =1 (>=0); UMTs equal to or closer than this Hamming distance will be
+    combined into a single family. Lower threshold make more families with more consistent
+    UMTs; 0 implies UMI must match exactly.
+  synonyms:
+  - -d
+  - --umt_distance_threshold
+  args: !SimpleFlagArg
+    name: UMT_DISTANCE_THRESHOLD
+  optional: true
+- !Flag
+  description: =count; determines how filters will be ordered in the log results
+  synonyms:
+  - --filter_order
+  args: !ChoiceFlagArg
+    choices:
+    - count
+    - name
+  optional: true
+- !Flag
+  description: =6 (>=1); length of UMT
+  synonyms:
+  - --umt_length
+  args: !SimpleFlagArg
+    name: UMT_LENGTH
+  optional: true
+command:
+- connor
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

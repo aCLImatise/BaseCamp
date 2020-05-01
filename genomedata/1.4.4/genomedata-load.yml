@@ -1,0 +1,88 @@
+!Command
+positional:
+- !Positional
+  description: genomedata archive
+  position: 0
+  name: GENOMEDATAFILE
+  optional: false
+named:
+- !Flag
+  description: Print status updates and diagnostic messages
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Add the sequence data in the specified file or files (may use UNIX
+    glob wildcard syntax)
+  synonyms:
+  - -s
+  - --sequence
+  args: !SimpleFlagArg
+    name: SEQUENCE
+  optional: true
+- !Flag
+  description: '=FILE, --track NAME=FILE Add data from FILE as the track NAME, such
+    as: -t signal=signal.wig'
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: A BED file containing regions to mask out from tracks before loading
+  synonyms:
+  - -m
+  - --maskfile
+  args: !SimpleFlagArg
+    name: MASKFILE
+  optional: true
+- !Flag
+  description: sequence files contain assembly (AGP) files instead of sequence
+  synonyms:
+  - --assembly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: sequence files contain list of sizes instead of sequence
+  synonyms:
+  - --sizes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If specified, the Genomedata archive will be implemented as a single
+    file, with a separate h5 group for each Chromosome. This is recommended if there
+    are a large number of Chromosomes. The default behavior is to use a single file
+    if there are at least 100 Chromosomes being added.
+  synonyms:
+  - -f
+  - --file-mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If specified, the Genomedata archive will be implemented as a directory,
+    with a separate file for each Chromosome. This is recommended if there are a small
+    number of Chromosomes. The default behavior is to use a directory if there are
+    fewer than 100 Chromosomes being added.
+  synonyms:
+  - -d
+  - --directory-mode
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- genomedata-load
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

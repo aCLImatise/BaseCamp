@@ -1,0 +1,226 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: "*                                               Input file  (valid\
+    \ formats: 'idXML')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*                                              Output file  (valid\
+    \ formats: 'idXML')"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: ":rt [min]:[max]                                 Retention time range\
+    \ to extract. (default: ':')"
+  synonyms:
+  - -precursor
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":mz [min]:[max]                                 Mass-to-charge range\
+    \ to extract. (default: ':')"
+  synonyms:
+  - -precursor
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":length [min]:[max]                             Keep only peptide\
+    \ hits with a sequence length in this range. (default: ':')"
+  synonyms:
+  - -precursor
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":charge [min]:[max]                             Keep only peptide\
+    \ hits with charge states in this range. (default: ':')"
+  synonyms:
+  - -precursor
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":pep <score>                                        The score which\
+    \ should be reached by a peptide hit to be kept. (default: '0.0')"
+  synonyms:
+  - -score
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":prot <score>                                       The score which\
+    \ should be reached by a protein hit to be kept. Use in combination with 'delete_unreferenced_peptide_hits'\
+    \ to remove affected peptides. (default: '0.0')"
+  synonyms:
+  - -score
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":proteins <file>                                Filename of a FASTA\
+    \ file containing protein sequences. All peptides that are not referencing a protein\
+    \ in this file are removed. All proteins whose accessions are not present in this\
+    \ file are removed. (valid formats: 'fasta')"
+  synonyms:
+  - -whitelist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: :protein_accessions <accessions>                All peptides that do
+    not reference at least one of the provided protein accession are removed. Only
+    proteins of the provided list are retained.
+  synonyms:
+  - -whitelist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":peptides <file>                                Only peptides with\
+    \ the same sequence and modification assignment as any peptide in this file are\
+    \ kept. Use with 'whitelist:ignore_modifications' to  only compare by sequence.\
+    \ (valid formats: 'idXML')"
+  synonyms:
+  - -whitelist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":proteins <file>                                Filename of a FASTA\
+    \ file containing protein sequences. All peptides that are referencing a protein\
+    \ in this file are removed. All proteins whose accessions are present in this\
+    \ file are removed. (valid formats: 'fasta')"
+  synonyms:
+  - -blacklist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: :protein_accessions <accessions>                All peptides that reference
+    at least one of the provided protein accession are removed. Only proteins not
+    in the provided list are retained.
+  synonyms:
+  - -blacklist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":peptides <file>                                Peptides with the\
+    \ same sequence and modification assignment as any peptide in this file are filtered\
+    \ out. Use with 'blacklist:ignore_modifications'  to only compare by sequence.\
+    \ (valid formats: 'idXML')"
+  synonyms:
+  - -blacklist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":fasta <file>                         Fasta protein sequence database.\
+    \ (valid formats: 'fasta')"
+  synonyms:
+  - -in_silico_digestion
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":number_of_missed_cleavages [min]:[max]  Range of allowed missed cleavages\
+    \ in the peptide sequences. For example: 0:1 -> peptides with two or more missed\
+    \ cleavages will be removed, 0:0 -> peptides with any missed cleavages will be\
+    \ removed (default: ':')"
+  synonyms:
+  - -missed_cleavages
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":n_peptide_hits <integer>                            Keep only the\
+    \ 'n' highest scoring peptide hits per spectrum (for n > 0). (default: '0' min:\
+    \ '0')"
+  synonyms:
+  - -best
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":n_protein_hits <integer>                            Keep only the\
+    \ 'n' highest scoring protein hits (for n > 0). (default: '0' min: '0')"
+  synonyms:
+  - -best
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: :strict                                              Keep only the
+    highest scoring peptide hit. Similar to n_peptide_hits=1, but if there are ties
+    between two or more highest scoring hits, none are kept.
+  synonyms:
+  - -best
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Keep only peptide hits with variable modifications (as defined in the
+    'SearchParameters' section of the input file).
+  synonyms:
+  - -var_mods
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Only peptides matching exactly one protein are kept. Remember that
+    isoforms count as different proteins!
+  synonyms:
+  - -remove_shared_peptides
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Proteins not referenced by a peptide are retained in the IDs.
+  synonyms:
+  - -keep_unreferenced_protein_hits
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Remove proteins according to the information in the user parameters.
+    Usually used in combination with 'delete_unreferenced_peptide_hits'.
+  synonyms:
+  - -remove_decoys
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Peptides not referenced by any protein are deleted in the IDs. Usually
+    used in combination with 'score:prot' or 'thresh:prot'.
+  synonyms:
+  - -delete_unreferenced_peptide_hits
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- IDFilter
+subcommands: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

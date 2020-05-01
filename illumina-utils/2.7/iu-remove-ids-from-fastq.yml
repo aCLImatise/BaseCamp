@@ -1,0 +1,58 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Sequences file from which reads will be removed in FASTQ format
+  synonyms:
+  - -i
+  - --input-fastq
+  args: !SimpleFlagArg
+    name: FASTQ_FILE_PATH
+  optional: true
+- !Flag
+  description: Input file that contains the list of ids for removal
+  synonyms:
+  - -l
+  - --ids-file-path
+  args: !SimpleFlagArg
+    name: IDS_FILE_PATH
+  optional: true
+- !Flag
+  description: By default this script will perform exact match match for IDs you listed
+    in the IDs file. But using this parameter, you can ask the script to "split" the
+    IDs found in the FASTQ file, and then try to match the first part of the resulting
+    ID to those you listed in the IDs file.
+  synonyms:
+  - -d
+  - --delimiter
+  args: !SimpleFlagArg
+    name: CHARACTER
+  optional: true
+- !Flag
+  description: If provided then only one output file (the file with "survived" ids)
+    will be produced.
+  synonyms:
+  - -G
+  - --generate-output-for-survived-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If provided, then instead of removing the ids in the list, only the
+    ids in the list will be kept (and the rest would be removed).
+  synonyms:
+  - -K
+  - --keep-ids
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- iu-remove-ids-from-fastq
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

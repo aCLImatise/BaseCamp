@@ -1,0 +1,145 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: ARGS
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: SEQUENCE.FASTA
+  optional: false
+named:
+- !Flag
+  description: ':    Energy band width (in kcal) in which structures are completely
+    enumerated. [15] To achieve reasonable runtimes, use RNAsubopt -e <xx> | wc -l
+    to count the structures and keep it below a few millions.'
+  synonyms:
+  - -E
+  args: !SimpleFlagArg
+    name: xx
+  optional: true
+- !Flag
+  description: ':    Minimal barrier height (barriers --minh). [1] Minima seperated
+    from their respective father by a lower barrier are merged with it.'
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: xx
+  optional: true
+- !Flag
+  description: ':    Folding temperature in deg Celsius at which the simulation is
+    performed. [37]'
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: xx
+  optional: true
+- !Flag
+  description: ':       Allows lonely pairs. By default, only "canonical" structures
+    (i.e. such without any lonely pairs) are generated.'
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':       Remove disconnected structures (i.e. not reachable from mfe)
+    instead of trying to connect them with the findpath heuristic.'
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':    File containing additional structures to be included into the
+    simulation, e.g. waterfall output.'
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: ss
+  optional: true
+- !Flag
+  description: Let barriers output a list of contact / transient states, ie those
+    having a neighbor in a different basin.
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':       Skip generation of macro states but use existing files as
+    input. Pass file names of barriers files of monomer and dimer world as positional
+    parameters. Assumes existence of BARFILE_FULL.sbmap. Only the options below and
+    -T will have an effect if -M is given. Use the same temperature as during the
+    generation of the macro states, or the rates will be incorrect.'
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "/ii: Use the monomer basin containing structure <ss> as start state\
+    \ for the simulation. By default, the basin containing the open chain (i.e. without\
+    \ any basepairs) is used. When passing an integer <ii>, it's used as start state\
+    \ directly. When removing disconnected states (-r), <ii> does NOT necessarily\
+    \ correspond to the macrostate number from Barriers (e.g. for macrostates 1, 2,\
+    \ 3 where 2 has been removed, -s 2 starts in macrostate 3). To refer directly\
+    \ to Barriers' macrostates, use prefixes mon and dim (e.g. -s mon15 or -s dim1)\
+    \ for monomer or dimer macrostates, respectively. Phew!"
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: ss
+  optional: true
+- !Flag
+  description: ':    Ligand concentration in molar =  mol / l = mol / dm^3 in the
+    cell [1e-3]'
+  synonyms:
+  - -L
+  args: !SimpleFlagArg
+    name: xx
+  optional: true
+- !Flag
+  description: ':    Bonus energy for binding the ligand (>=0, in kcal/mol). With
+    -M, specifying -B will re-compute the monomer<->dimer transition matrix, else
+    the existing one is used. [9.59]'
+  synonyms:
+  - -B
+  args: !SimpleFlagArg
+    name: xx
+  optional: true
+- !Flag
+  description: ':       Folding rate of RNA in s^-1 (pre-exponential factor). [1e6]'
+  synonyms:
+  - -F
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':       Dimerization rate in (M s)^-1 (pre-exponential factor). [1.7e5]'
+  synonyms:
+  - -D
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':    Simulation time. [1e16]'
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: xx
+  optional: true
+- !Flag
+  description: ':       Force run, even if a lock file exists. If a lock file is found
+    and -f is not given, the user is promted to confirm the run.'
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- kinSimRiboswitch
+subcommands: []
+help_flag: !Flag
+  description: ':       Display this help.'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

@@ -1,0 +1,98 @@
+!Command
+positional:
+- !Positional
+  description: The UUID of the object to be copied.
+  position: 0
+  name: object_uuid
+  optional: false
+named:
+- !Flag
+  description: Verbose output.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Report progress on copying collections. (default)
+  synonyms:
+  - --progress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not report progress on copying collections.
+  synonyms:
+  - --no-progress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Perform copy even if the object appears to exist at the remote destination.
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The name of the source Arvados instance (required) - points at an Arvados
+    config file. May be either a pathname to a config file, or (for example) "foo"
+    as shorthand for $HOME/.config/arvados/foo.conf.
+  synonyms:
+  - --src
+  args: !SimpleFlagArg
+    name: SOURCE_ARVADOS
+  optional: true
+- !Flag
+  description: The name of the destination Arvados instance (required) - points at
+    an Arvados config file. May be either a pathname to a config file, or (for example)
+    "foo" as shorthand for $HOME/.config/arvados/foo.conf.
+  synonyms:
+  - --dst
+  args: !SimpleFlagArg
+    name: DESTINATION_ARVADOS
+  optional: true
+- !Flag
+  description: Recursively copy any dependencies for this object. (default)
+  synonyms:
+  - --recursive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Do not copy any dependencies. NOTE: if this option is given, the copied
+    object will need to be updated manually in order to be functional.'
+  synonyms:
+  - --no-recursive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The UUID of the project at the destination to which the collection
+    or workflow should be copied.
+  synonyms:
+  - --project-uuid
+  args: !SimpleFlagArg
+    name: PROJECT_UUID
+  optional: true
+- !Flag
+  description: Maximum number of times to retry server requests that encounter temporary
+    failures (e.g., server down). Default 3.
+  synonyms:
+  - --retries
+  args: !SimpleFlagArg
+    name: RETRIES
+  optional: true
+command:
+- arv-copy
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

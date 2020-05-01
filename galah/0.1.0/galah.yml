@@ -1,0 +1,200 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Unless there is an error, do not print logging information
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print extra debug logging information
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- galah
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: OPTIONS
+    optional: true
+  named:
+  - !Flag
+    description: 'Average nucleotide identity threshold for clustering [default: 99]'
+    synonyms:
+    - --ani
+    args: !SimpleFlagArg
+      name: ani
+    optional: true
+  - !Flag
+    description: Output of CheckM lineage_wf/taxonomy_wf/qa with --tab_table specified
+    synonyms:
+    - --checkm-tab-table
+    args: !SimpleFlagArg
+      name: checkm-tab-table
+    optional: true
+  - !Flag
+    description: Directory containing fasta files for processing
+    synonyms:
+    - --genome-fasta-directory
+    args: !SimpleFlagArg
+      name: genome-fasta-directory
+    optional: true
+  - !Flag
+    description: 'File extension of FASTA files in --genome-fasta-directory [default:
+      fna]'
+    synonyms:
+    - -x
+    - --genome-fasta-extension
+    args: !SimpleFlagArg
+      name: genome-fasta-extension
+    optional: true
+  - !Flag
+    description: '...         List of fasta files for processing'
+    synonyms:
+    - -f
+    - --genome-fasta-files
+    args: !SimpleFlagArg
+      name: genome-fasta-files
+    optional: true
+  - !Flag
+    description: List of fasta file paths, one per line, for processing
+    synonyms:
+    - --genome-fasta-list
+    args: !SimpleFlagArg
+      name: genome-fasta-list
+    optional: true
+  - !Flag
+    description: Genomes with greater than this percentage of contamination are exluded
+    synonyms:
+    - --max-contamination
+    args: !SimpleFlagArg
+      name: max-contamination
+    optional: true
+  - !Flag
+    description: 'Genomes with less than this percentage of completeness are exluded
+      [default: 0]'
+    synonyms:
+    - --min-completeness
+    args: !SimpleFlagArg
+      name: min-completeness
+    optional: true
+  - !Flag
+    description: 'Require at least this dashing-derived ANI for preclustering and
+      to avoid FastANI on distant lineages within preclusters [default: 95]'
+    synonyms:
+    - --prethreshold-ani
+    args: !SimpleFlagArg
+      name: prethreshold-ani
+    optional: true
+  - !Flag
+    description: 'Number of CPU threads to use [default: 1]'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: threads
+    optional: true
+  command:
+  - galah
+  - cluster
+  subcommands: []
+  help_flag: !Flag
+    description: Prints help information
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Prints version information
+    synonyms:
+    - -V
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'ANI to validate against [default: 99]'
+    synonyms:
+    - --ani
+    args: !SimpleFlagArg
+      name: ani
+    optional: true
+  - !Flag
+    description: Output of 'cluster' subcommand
+    synonyms:
+    - --cluster-file
+    args: !SimpleFlagArg
+      name: cluster-file
+    optional: true
+  - !Flag
+    description: '[default: 1]'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: threads
+    optional: true
+  command:
+  - galah
+  - cluster-validate
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --cluster-file
+      args: !SimpleFlagArg
+        name: cluster-file
+      optional: true
+    command:
+    - galah
+    - cluster-validate
+    - OPTIONS
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: Prints help information
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Prints version information
+    synonyms:
+    - -V
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+help_flag: !Flag
+  description: Prints help information
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Prints version information
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

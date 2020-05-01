@@ -1,0 +1,549 @@
+!Command
+positional: []
+named: []
+command:
+- paladin
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: reference.fasta
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: annotation.gff
+    optional: true
+  named:
+  - !Flag
+    description: Enable indexing all frames in nucleotide references
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '<#>  Reference type: 1: Reference contains nucleotide sequences
+      (requires corresponding .gff annotation) 2: Reference contains nucleotide sequences
+      (coding only, eg curated transcriptome) 3: Reference contains protein sequences
+      (UniProt or other source) 4: Development tests'
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - paladin
+  - index
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '<#>         Reference Database: 1: UniProtKB Reviewed (Swiss-Prot)
+      2: UniProtKB Clustered 90% (UniRef90)'
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Skip download, use local copy of reference database (may be indexed)
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: ref.fasta
+    optional: true
+  - !Flag
+    description: HTTP or SOCKS proxy address
+    synonyms:
+    - -P
+    args: !SimpleFlagArg
+      name: address
+    optional: true
+  command:
+  - paladin
+  - prepare
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: idxbase
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: in.fq
+    optional: false
+  named:
+  - !Flag
+    description: disable ORF detection and treat input as protein sequence
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: disable brute force ORF detection
+    synonyms:
+    - -b
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: do not adjust minimum ORF length (constant value) for shorter read
+      lengths
+    synonyms:
+    - -J
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: minimum ORF length accepted (as constant value) [250]
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: minimum ORF length accepted (as percentage of read length) [0.00]
+    synonyms:
+    - -F
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: '[,...]  Genetic code used for translation (-z ? for full list) [1]'
+    synonyms:
+    - -z
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: number of threads [1]
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: minimum seed length [11]
+    synonyms:
+    - -k
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: off-diagonal X-dropoff [100]
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: look for internal seeds inside a seed longer than {-k} * FLOAT [1.5]
+    synonyms:
+    - -r
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: seed occurrence for the 3rd round seeding [20]
+    synonyms:
+    - -y
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: skip seeds with more than INT occurrences [500]
+    synonyms:
+    - -c
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: drop chains shorter than FLOAT fraction of the longest overlapping
+      chain [0.50]
+    synonyms:
+    - -D
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: discard a chain if seeded bases shorter than INT [0]
+    synonyms:
+    - -W
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: perform at most INT rounds of mate rescues for each read [50]
+    synonyms:
+    - -m
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: discard full-length exact matches
+    synonyms:
+    - -e
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: score for a sequence match, which scales options -TdBOELU unless
+      overridden [1]
+    synonyms:
+    - -A
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: penalty for a mismatch [3]
+    synonyms:
+    - -B
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: gap open penalties for deletions and insertions [0,0]
+    synonyms:
+    - -O
+    args: !OptionalFlagArg
+      names:
+      - INT
+      - INT
+    optional: true
+  - !Flag
+    description: gap extension penalty; a gap of size k cost '{-O} + {-E}*k' [1,1]
+    synonyms:
+    - -E
+    args: !OptionalFlagArg
+      names:
+      - INT
+      - INT
+    optional: true
+  - !Flag
+    description: penalty for 5'- and 3'-end clipping [0,0]
+    synonyms:
+    - -L
+    args: !OptionalFlagArg
+      names:
+      - INT
+      - INT
+    optional: true
+  - !Flag
+    description: penalty for an unpaired read pair [17]
+    synonyms:
+    - -U
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'read type. Setting -x changes multiple parameters unless overriden
+      [null] pacbio: -k17 -W40 -r10 -A1 -B1 -O1 -E1 -L0  (PacBio reads to ref) ont2d:
+      -k14 -W20 -r10 -A1 -B1 -O1 -E1 -L0  (Oxford Nanopore 2D-reads to ref) intractg:
+      -B9 -O16 -L5  (intra-species contigs to ref)'
+    synonyms:
+    - -x
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: 'activate PALADIN reporting using STR as an output file prefix.  Files
+      generated as follows: STR.sam - alignment data (will not be sent to stdout)
+      STR_uniprot.tsv - Tab delimited UniProt report (normal alignment mode) STR_uniprot_primary.tsv
+      - Tab delimited UniProt report, primary alignments (all alignments mode) STR_uniprot_secondary.tsv
+      - Tab delimited UniProt report, secondary alignments (all alignments mode)'
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: 'report type generated when using reporting and a UniProt reference
+      [1] 0: Simple ID summary report 1: Detailed report (Contacts uniprot.org)'
+    synonyms:
+    - -u
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: HTTP or SOCKS proxy address
+    synonyms:
+    - -P
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: generate detected ORF nucleotide sequence FASTA
+    synonyms:
+    - -g
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: keep protein sequence after alignment
+    synonyms:
+    - -n
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: read group header line such as '@RG\tID:foo\tSM:bar' [null]
+    synonyms:
+    - -R
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: /FILE   insert STR to header if it starts with @; or insert lines
+      in FILE [null]
+    synonyms:
+    - -H
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: treat ALT contigs as part of the primary assembly (i.e. ignore <idxbase>.alt
+      file)
+    synonyms:
+    - -j
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'verbose level: 1=error, 2=warning, 3=message, 4+=debugging [3]'
+    synonyms:
+    - -v
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: minimum score to output [15]
+    synonyms:
+    - -T
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: if there are <INT hits with score >80% of the max score, output all
+      in XA [5,200]
+    synonyms:
+    - -h
+    args: !OptionalFlagArg
+      names:
+      - INT
+      - INT
+    optional: true
+  - !Flag
+    description: output all alignments for SE or unpaired PE
+    synonyms:
+    - -a
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: append FASTA/FASTQ comment to SAM output
+    synonyms:
+    - -C
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output the reference FASTA header in the XR tag
+    synonyms:
+    - -V
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: use soft clipping for supplementary alignments
+    synonyms:
+    - -Y
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: mark shorter split hits as secondary
+    synonyms:
+    - -M
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: specify the mean, standard deviation (10% of the mean if absent),
+      max (4 sigma from the mean if absent) and min of the insert size distribution.
+      FR orientation only. [inferred]
+    synonyms:
+    - -I
+    args: !OptionalFlagArg
+      names:
+      - FLOAT
+      - FLOAT
+      - INT
+      - INT
+    optional: true
+  command:
+  - paladin
+  - align
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: destroy all indices in shared memory
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: list names of indices in shared memory
+    synonyms:
+    - -l
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: temporary file to reduce peak memory
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - paladin
+  - shm
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: bwa
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: fa2pac
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: in.fasta
+    optional: false
+  - !Positional
+    description: ''
+    position: 3
+    name: out.prefix
+    optional: true
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - paladin
+  - fa2pac
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - paladin
+  - pac2bwt
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: out.bwt
+      optional: false
+    named: []
+    command:
+    - paladin
+    - pac2bwt
+    - in.pac
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: in.pac
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: out.bwt
+      optional: false
+    named: []
+    command:
+    - paladin
+    - pac2bwt
+    - out.bwt
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: the.bwt
+    optional: false
+  named: []
+  command:
+  - paladin
+  - bwtupdate
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: '32'
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: in.bwt
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: out.sa
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -i
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - paladin
+  - bwt2sa
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

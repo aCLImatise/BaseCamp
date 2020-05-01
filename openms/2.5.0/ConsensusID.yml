@@ -1,0 +1,135 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: "*                       Input file (valid formats: 'idXML', 'featureXML',\
+    \ 'consensusXML')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*                      Output file (valid formats: 'idXML', 'featureXML',\
+    \ 'consensusXML')"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "[idXML input only] Maximum allowed retention time deviation between\
+    \ identifications belonging to the same spectrum. (default: '0.1' min: '0.0')"
+  synonyms:
+  - -rt_delta
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "[idXML input only] Maximum allowed precursor m/z deviation between\
+    \ identifications belonging to the same spectrum. (default: '0.1' min: '0.0')"
+  synonyms:
+  - -mz_delta
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: ":considered_hits <number>  The number of top hits in each ID run that\
+    \ are considered for consensus scoring ('0' for all hits). (default: '0' min:\
+    \ '0')"
+  synonyms:
+  - -filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":min_support <value>       For each peptide hit from an ID run, the\
+    \ fraction of other ID runs that must support that hit (otherwise it is removed).\
+    \ (default: '0.0' min: '0.0' max: '1.0')"
+  synonyms:
+  - -filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: :count_empty               Count empty ID runs (i.e. those containing
+    no peptide hit for the current spectrum) when calculating 'min_support'?
+  synonyms:
+  - -filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Algorithm used for consensus scoring. * PEPMatrix: Scoring based on\
+    \ posterior error probabilities (PEPs) and peptide sequence similarities (scored\
+    \ by a substitution matrix). Requires PEPs as scores. * PEPIons: Scoring based\
+    \ on posterior error probabilities (PEPs) and fragment ion similarities ('shared\
+    \ peak count'). Requires PEPs as scores. * best: For each peptide ID, use the\
+    \ best score of any search engine as the consensus score. Requires the same score\
+    \ type in all ID runs. * worst: For each peptide ID, use the worst score of any\
+    \ search engine as the consensus score. Requires the same score type in all ID\
+    \ runs. * average:  For each peptide ID, use the average score of all search engines\
+    \ as the consensus. Requires the same score type in all ID runs. * ranks: Calculates\
+    \ a consensus score based on the ranks of peptide IDs in the results of different\
+    \ search engines. The final score is in the range (0, 1], with 1 being the best\
+    \ score. No requirements about score types. (default: 'PEPMatrix' valid: 'PEPMatrix',\
+    \ 'PEPIons', 'best', 'worst', 'average', 'ranks')"
+  synonyms:
+  - -algorithm
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: PEPIons algorithm parameters
+  synonyms:
+  - '- PEPIons'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: PEPMatrix algorithm parameters
+  synonyms:
+  - '- PEPMatrix'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ://www.openms.de/documentation/TOPP_ConsensusID.html
+  synonyms:
+  - '- http'
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- ConsensusID
+subcommands: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

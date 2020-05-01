@@ -1,0 +1,216 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: path to input fastq containing single-end reads
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: INPUT_S
+  optional: true
+- !Flag
+  description: path to input fastq containing paired-end reads (/1)
+  synonyms:
+  - -p1
+  args: !SimpleFlagArg
+    name: INPUT_P1
+  optional: true
+- !Flag
+  description: path to input fastq containing paired-end reads (/2)
+  synonyms:
+  - -p2
+  args: !SimpleFlagArg
+    name: INPUT_P2
+  optional: true
+- !Flag
+  description: minimum overlap length required between reads
+  synonyms:
+  - -m
+  - --min_overlap_len
+  args: !SimpleFlagArg
+    name: MIN_OVERLAP_LEN
+  optional: true
+- !Flag
+  description: allowed number of cores
+  synonyms:
+  - -t
+  - --num_threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: split the data set into patches s.t. 500 < coverage/split_num < 1000
+  synonyms:
+  - --split
+  args: !SimpleFlagArg
+    name: SPLIT_NUM
+  optional: true
+- !Flag
+  description: use this option when paired-end input reads are in forward-reverse
+    orientation; this option will take reverse complements of /2 reads (specified
+    with -p2) please see the SAVAGE manual for more information about input read orientations
+  synonyms:
+  - --revcomp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: specify output directory
+  synonyms:
+  - -o
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: reference genome in fasta format
+  synonyms:
+  - --ref
+  args: !SimpleFlagArg
+    name: REFERENCE
+  optional: true
+- !Flag
+  description: skip Stage a (initial contig formation)
+  synonyms:
+  - --no_stage_a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: skip Stage b (extending initial contigs)
+  synonyms:
+  - --no_stage_b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: skip Stage c (merging maximized contigs into master strains)
+  synonyms:
+  - --no_stage_c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: skip overlap computations (use existing overlaps file instead)
+  synonyms:
+  - --no_overlaps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: skip preprocessing procedure (i.e. creating data patches)
+  synonyms:
+  - --no_preprocessing
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: skip all assembly steps; only use this option when using --count_strains
+    separate from assembly (e.g. on a denovo assembly)
+  synonyms:
+  - --no_assembly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'compute a lower bound on the number of strains in this sample; note:
+    this requires a reference genome.'
+  synonyms:
+  - --count_strains
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ignore subread info from previous stage
+  synonyms:
+  - --ignore_subreads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: specify maximal distance between contigs for merging into master strains
+    (stage c)
+  synonyms:
+  - --merge_contigs
+  args: !SimpleFlagArg
+    name: MERGE_CONTIGS
+  optional: true
+- !Flag
+  description: minimum clique size used during error correction
+  synonyms:
+  - --min_clique_size
+  args: !SimpleFlagArg
+    name: MIN_CLIQUE_SIZE
+  optional: true
+- !Flag
+  description: min_overlap_len used in stage c
+  synonyms:
+  - --overlap_len_stage_c
+  args: !SimpleFlagArg
+    name: OVERLAP_STAGE_C
+  optional: true
+- !Flag
+  description: minimum contig length required for stage c input contigs
+  synonyms:
+  - --contig_len_stage_c
+  args: !SimpleFlagArg
+    name: CONTIG_LEN_STAGE_C
+  optional: true
+- !Flag
+  description: disable merging along branches by removing them from the graph (stage
+    b & c)
+  synonyms:
+  - --keep_branches
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'input parameter -e=SFO_MM for sfo: maximal mismatch rate 1/SFO_MM'
+  synonyms:
+  - --sfo_mm
+  args: !SimpleFlagArg
+    name: SFO_MM
+  optional: true
+- !Flag
+  description: use this option for diploid genome assembly
+  synonyms:
+  - --diploid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum contig length required for diploid step contigs
+  synonyms:
+  - --diploid_contig_len
+  args: !SimpleFlagArg
+    name: DIPLOID_CONTIG_LEN
+  optional: true
+- !Flag
+  description: min_overlap_len used in diploid assembly step
+  synonyms:
+  - --diploid_overlap_len
+  args: !SimpleFlagArg
+    name: DIPLOID_OVERLAP_LEN
+  optional: true
+- !Flag
+  description: average length of the input reads; will be computed from the input
+    if not specified
+  synonyms:
+  - --average_read_len
+  args: !SimpleFlagArg
+    name: AVERAGE_READ_LEN
+  optional: true
+- !Flag
+  description: disable kallisto-based filtering of contigs
+  synonyms:
+  - --no_filtering
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: maximum extension length for a sequence to be called a tip
+  synonyms:
+  - --max_tip_len
+  args: !SimpleFlagArg
+    name: MAX_TIP_LEN
+  optional: true
+command:
+- savage
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

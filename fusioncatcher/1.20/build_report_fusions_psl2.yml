@@ -1,0 +1,193 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The input FASTQ file containing all the reads.
+  synonyms:
+  - --input_fastq
+  args: !SimpleFlagArg
+    name: INPUT_FASTQ_FILENAME
+  optional: true
+- !Flag
+  description: The input PSL file containing the candidate fusion genes.
+  synonyms:
+  - --input_fusion_psl
+  args: !SimpleFlagArg
+    name: INPUT_FUSION_PSL_FILENAME
+  optional: true
+- !Flag
+  description: The input list of candidate fusion genes and ids of the supporting
+    reads, for example 'candidate_fusion- genes_not-filtered_supporting_paired-reads.txt'.
+    This is processed even further.
+  synonyms:
+  - --input_candidate_fusion_genes_reads
+  args: !SimpleFlagArg
+    name: INPUT_CANDIDATE_FUSION_GENES_READS_FILENAME
+  optional: true
+- !Flag
+  description: The input list of ids of reads that are unmapped (that are mapping
+    over the fusion junction).
+  synonyms:
+  - --input_unmapped_reads
+  args: !SimpleFlagArg
+    name: INPUT_UNMAPPED_READS_FILENAME
+  optional: true
+- !Flag
+  description: The output super summary report for candidate fusion genes.
+  synonyms:
+  - --output_super_summary
+  args: !SimpleFlagArg
+    name: OUTPUT_SUPER_SUMMARY_FILENAME
+  optional: true
+- !Flag
+  description: The ouput FASTQ file containing the reads which support each candidate
+    fusion gene.
+  synonyms:
+  - --output_zip_fasta
+  args: !SimpleFlagArg
+    name: OUTPUT_ZIP_FASTA_FILENAME
+  optional: true
+- !Flag
+  description: The minimum number of unique reads which overlap over an exon-exon
+    junction. Default is 1.
+  synonyms:
+  - --suporting_unique_reads
+  args: !SimpleFlagArg
+    name: SUPPORTING_UNIQUE_READS
+  optional: true
+- !Flag
+  description: For anchors longer (or equal) with this value it is enough to have
+    only one supporting read. Default is '150'.
+  synonyms:
+  - --anchor2
+  args: !SimpleFlagArg
+    name: ANCHOR2
+  optional: true
+- !Flag
+  description: This value will be used for trimming at the fusion junction left adn
+    right in order to be able to match the PSL mappings when they contain several
+    exon- introns. Default is '40'.
+  synonyms:
+  - --trim-complex
+  args: !SimpleFlagArg
+    name: COMPLEX
+  optional: true
+- !Flag
+  description: Path to the genome in 2bit format (generated with faToTwoBit) which
+    will be used for aligning using BLAT the supporting reads and their alignment
+    in PSL format is added to file specified with '--output_zip_fasta'.
+  synonyms:
+  - --input_genome_2bit
+  args: !SimpleFlagArg
+    name: INPUT_GENOME_2BIT
+  optional: true
+- !Flag
+  description: Path to the genome in BOWTIE2 index format which will be used for aligning
+    using BOWTIE2 the supporting reads and their alignment in PSL format is added
+    to file specified with '--output_zip_fasta'.
+  synonyms:
+  - --input_genome_bowtie2
+  args: !SimpleFlagArg
+    name: INPUT_GENOME_BOWTIE2
+  optional: true
+- !Flag
+  description: The type of BLAT alignment to be used for aligning the supporting reads
+    when BLAT is chosen. The choices are ['web','sensitive']. Default is 'web'.
+  synonyms:
+  - --psl_alignment_type
+  args: !SimpleFlagArg
+    name: PSL_SEARCH_TYPE
+  optional: true
+- !Flag
+  description: Path to Blat's executable.
+  synonyms:
+  - --blat-dir
+  args: !SimpleFlagArg
+    name: BLAT_DIRECTORY
+  optional: true
+- !Flag
+  description: If set then a SAM file will be generated using BOWTIE2. Default is
+    '10'.
+  synonyms:
+  - --sam_alignment
+  args: !SimpleFlagArg
+    name: SAM_ALIGNMENT
+  optional: true
+- !Flag
+  description: Path to Bowtie2's executable.
+  synonyms:
+  - --bowtie2-dir
+  args: !SimpleFlagArg
+    name: BOWTIE2_DIRECTORY
+  optional: true
+- !Flag
+  description: The minimum number of mismatches accepted in the alignment. Default
+    is '3'.
+  synonyms:
+  - --mismatches
+  args: !SimpleFlagArg
+    name: MISMATCHES
+  optional: true
+- !Flag
+  description: The minimum number of mismatches accepted in the gap alignment. Default
+    is '30'.
+  synonyms:
+  - --mismatches-gap
+  args: !SimpleFlagArg
+    name: MISMATCHES_GAP
+  optional: true
+- !Flag
+  description: If used then the junction sequence is added to the FASTA file with
+    the supporting reads. Default is 'False'.
+  synonyms:
+  - --junction
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number or processes to be used for running Bowtie2. Default is '1'.
+  synonyms:
+  - -p
+  - --threads
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: The directory which should be used as temporary directory. By default
+    is the OS temporary directory.
+  synonyms:
+  - -t
+  - --tmp_dir
+  args: !SimpleFlagArg
+    name: TMP_DIRECTORY
+  optional: true
+- !Flag
+  description: If used then the supporting reads from the FASTA file are assembled
+    using VELVET. Default is 'False'.
+  synonyms:
+  - --velvet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to Velvet's executable.
+  synonyms:
+  - --velvet-dir
+  args: !SimpleFlagArg
+    name: VELVET_DIRECTORY
+  optional: true
+command:
+- build_report_fusions_psl2.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

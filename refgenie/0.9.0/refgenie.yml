@@ -1,0 +1,665 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Silence logging. Overrides verbosity.
+  synonyms:
+  - --silent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set logging level (1-5 or logging module level name)
+  synonyms:
+  - --verbosity
+  args: !SimpleFlagArg
+    name: V
+  optional: true
+- !Flag
+  description: Expand content of logging message format.
+  synonyms:
+  - --logdev
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- refgenie
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Path to local genome configuration file. Optional if REFGENIE environment
+      variable is set.
+    synonyms:
+    - -c
+    - --genome-config
+    args: !SimpleFlagArg
+      name: GENOME_CONFIG
+    optional: true
+  - !Flag
+    description: 'URL(s) to use for the http://refgenomes.databio.org attribute in
+      config file. Default: genome_servers.'
+    synonyms:
+    - -s
+    - --genome-server
+    args: !RepeatFlagArg
+      name: GENOME_SERVER
+    optional: true
+  command:
+  - refgenie
+  - init
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Path to local genome configuration file. Optional if REFGENIE environment
+      variable is set.
+    synonyms:
+    - -c
+    - --genome-config
+    args: !SimpleFlagArg
+      name: GENOME_CONFIG
+    optional: true
+  - !Flag
+    description: '[GENOME [GENOME ...]], --genome [GENOME [GENOME ...]] Reference
+      assembly ID, e.g. mm10.'
+    synonyms:
+    - -g
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - refgenie
+  - list
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Path to local genome configuration file. Optional if REFGENIE environment
+      variable is set.
+    synonyms:
+    - -c
+    - --genome-config
+    args: !SimpleFlagArg
+      name: GENOME_CONFIG
+    optional: true
+  - !Flag
+    description: '[GENOME [GENOME ...]], --genome [GENOME [GENOME ...]] Reference
+      assembly ID, e.g. mm10.'
+    synonyms:
+    - -g
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - refgenie
+  - listr
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: One or more registry path strings that identify assets (e.g. hg38/fasta
+      or hg38/fasta:tag).
+    position: 0
+    name: asset-registry-paths
+    optional: false
+  named:
+  - !Flag
+    description: Path to local genome configuration file. Optional if REFGENIE environment
+      variable is set.
+    synonyms:
+    - -c
+    - --genome-config
+    args: !SimpleFlagArg
+      name: GENOME_CONFIG
+    optional: true
+  - !Flag
+    description: Reference assembly ID, e.g. mm10.
+    synonyms:
+    - -g
+    - --genome
+    args: !SimpleFlagArg
+      name: GENOME
+    optional: true
+  - !Flag
+    description: Do not extract tarballs.
+    synonyms:
+    - -u
+    - --no-untar
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - refgenie
+  - pull
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: One or more registry path strings that identify assets (e.g. hg38/fasta
+      or hg38/fasta:tag).
+    position: 0
+    name: asset-registry-paths
+    optional: false
+  named:
+  - !Flag
+    description: Path to local genome configuration file. Optional if REFGENIE environment
+      variable is set.
+    synonyms:
+    - -c
+    - --genome-config
+    args: !SimpleFlagArg
+      name: GENOME_CONFIG
+    optional: true
+  - !Flag
+    description: Overwrite locks to recover from previous failed run
+    synonyms:
+    - -R
+    - --recover
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Pipeline configuration file (YAML). Relative paths are with respect
+      to the pipeline script.
+    synonyms:
+    - -C
+    - --config
+    args: !SimpleFlagArg
+      name: CONFIG_FILE
+    optional: true
+  - !Flag
+    description: Overwrite all results to start a fresh run
+    synonyms:
+    - -N
+    - --new-start
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Add tag level description (e.g. built with version 0.3.2).
+    synonyms:
+    - --tag-description
+    args: !SimpleFlagArg
+      name: TAG_DESCRIPTION
+    optional: true
+  - !Flag
+    description: Add genome level description (e.g. The mouse mitochondrial genome,
+      released in Dec 2013).
+    synonyms:
+    - --genome-description
+    args: !SimpleFlagArg
+      name: GENOME_DESCRIPTION
+    optional: true
+  - !Flag
+    description: Run all commands in the refgenie docker container.
+    synonyms:
+    - -d
+    - --docker
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Override the default genome, asset and tag of the parents (e.g. fasta=hg38/fasta:default
+      gtf=mm10/gencode_gtf:default).
+    synonyms:
+    - --assets
+    args: !RepeatFlagArg
+      name: ASSETS
+    optional: true
+  - !Flag
+    description: Provide paths to the required files (e.g. fasta=/path/to/file.fa.gz).
+    synonyms:
+    - --files
+    args: !RepeatFlagArg
+      name: FILES
+    optional: true
+  - !Flag
+    description: Provide required parameter values (e.g. param1=value1).
+    synonyms:
+    - --params
+    args: !RepeatFlagArg
+      name: PARAMS
+    optional: true
+  - !Flag
+    description: If using docker, also mount these folders as volumes.
+    synonyms:
+    - -v
+    - --volumes
+    args: !RepeatFlagArg
+      name: VOLUMES
+    optional: true
+  - !Flag
+    description: Override the default path to genomes folder, which is the genome_folder
+      attribute in the genome configuration file.
+    synonyms:
+    - -o
+    - --outfolder
+    args: !SimpleFlagArg
+      name: OUTFOLDER
+    optional: true
+  - !Flag
+    description: Show the build requirements for the specified asset and exit.
+    synonyms:
+    - -q
+    - --requirements
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Provide a recipe to use.
+    synonyms:
+    - -r
+    - --recipe
+    args: !SimpleFlagArg
+      name: RECIPE
+    optional: true
+  - !Flag
+    description: Reference assembly ID, e.g. mm10.
+    synonyms:
+    - -g
+    - --genome
+    args: !SimpleFlagArg
+      name: GENOME
+    optional: true
+  command:
+  - refgenie
+  - build
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: One or more registry path strings that identify assets (e.g. hg38/fasta
+      or hg38/fasta:tag or hg38/fasta.fai:tag).
+    position: 0
+    name: asset-registry-paths
+    optional: false
+  named:
+  - !Flag
+    description: Path to local genome configuration file. Optional if REFGENIE environment
+      variable is set.
+    synonyms:
+    - -c
+    - --genome-config
+    args: !SimpleFlagArg
+      name: GENOME_CONFIG
+    optional: true
+  - !Flag
+    description: Reference assembly ID, e.g. mm10.
+    synonyms:
+    - -g
+    - --genome
+    args: !SimpleFlagArg
+      name: GENOME
+    optional: true
+  - !Flag
+    description: Whether the returned asset path should be checked for existence on
+      disk.
+    synonyms:
+    - -e
+    - --check-exists
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - refgenie
+  - seek
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: One or more registry path strings that identify assets (e.g. hg38/fasta
+      or hg38/fasta:tag).
+    position: 0
+    name: asset-registry-paths
+    optional: false
+  named:
+  - !Flag
+    description: Path to local genome configuration file. Optional if REFGENIE environment
+      variable is set.
+    synonyms:
+    - -c
+    - --genome-config
+    args: !SimpleFlagArg
+      name: GENOME_CONFIG
+    optional: true
+  - !Flag
+    description: Reference assembly ID, e.g. mm10.
+    synonyms:
+    - -g
+    - --genome
+    args: !SimpleFlagArg
+      name: GENOME
+    optional: true
+  - !Flag
+    description: Relative local path to asset.
+    synonyms:
+    - -p
+    - --path
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  command:
+  - refgenie
+  - add
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: One or more registry path strings that identify assets (e.g. hg38/fasta
+      or hg38/fasta:tag).
+    position: 0
+    name: asset-registry-paths
+    optional: false
+  named:
+  - !Flag
+    description: Path to local genome configuration file. Optional if REFGENIE environment
+      variable is set.
+    synonyms:
+    - -c
+    - --genome-config
+    args: !SimpleFlagArg
+      name: GENOME_CONFIG
+    optional: true
+  - !Flag
+    description: Reference assembly ID, e.g. mm10.
+    synonyms:
+    - -g
+    - --genome
+    args: !SimpleFlagArg
+      name: GENOME
+    optional: true
+  - !Flag
+    description: Do not prompt before removal, approve.
+    synonyms:
+    - -f
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - refgenie
+  - remove
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -c
+    args: !SimpleFlagArg
+      name: GENOME_CONFIG
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -g
+    args: !SimpleFlagArg
+      name: GENOME
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: LOCUS
+    optional: true
+  command:
+  - refgenie
+  - getseq
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: One or more registry path strings that identify assets (e.g. hg38/fasta
+      or hg38/fasta:tag).
+    position: 0
+    name: asset-registry-paths
+    optional: false
+  named:
+  - !Flag
+    description: Path to local genome configuration file. Optional if REFGENIE environment
+      variable is set.
+    synonyms:
+    - -c
+    - --genome-config
+    args: !SimpleFlagArg
+      name: GENOME_CONFIG
+    optional: true
+  - !Flag
+    description: Reference assembly ID, e.g. mm10.
+    synonyms:
+    - -g
+    - --genome
+    args: !SimpleFlagArg
+      name: GENOME
+    optional: true
+  - !Flag
+    description: Tag to assign to an asset.
+    synonyms:
+    - -t
+    - --tag
+    args: !SimpleFlagArg
+      name: TAG
+    optional: true
+  - !Flag
+    description: Set the selected asset tag as the default one.
+    synonyms:
+    - -d
+    - --default
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - refgenie
+  - tag
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: One or more registry path strings that identify assets (e.g. hg38/fasta
+      or hg38/fasta:tag).
+    position: 0
+    name: asset-registry-paths
+    optional: false
+  named:
+  - !Flag
+    description: Path to local genome configuration file. Optional if REFGENIE environment
+      variable is set.
+    synonyms:
+    - -c
+    - --genome-config
+    args: !SimpleFlagArg
+      name: GENOME_CONFIG
+    optional: true
+  - !Flag
+    description: Reference assembly ID, e.g. mm10.
+    synonyms:
+    - -g
+    - --genome
+    args: !SimpleFlagArg
+      name: GENOME
+    optional: true
+  command:
+  - refgenie
+  - id
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Path to local genome configuration file. Optional if REFGENIE environment
+      variable is set.
+    synonyms:
+    - -c
+    - --genome-config
+    args: !SimpleFlagArg
+      name: GENOME_CONFIG
+    optional: true
+  - !Flag
+    description: Overwrite the current list of server URLs.
+    synonyms:
+    - -r
+    - --reset
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: One or more URLs to add to the genome_servers attribute in config
+      file.
+    synonyms:
+    - -s
+    - --genome-server
+    args: !RepeatFlagArg
+      name: GENOME_SERVER
+    optional: true
+  command:
+  - refgenie
+  - subscribe
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Path to local genome configuration file. Optional if REFGENIE environment
+      variable is set.
+    synonyms:
+    - -c
+    - --genome-config
+    args: !SimpleFlagArg
+      name: GENOME_CONFIG
+    optional: true
+  - !Flag
+    description: One or more URLs to remove from the genome_servers attribute in config
+      file.
+    synonyms:
+    - -s
+    - --genome-server
+    args: !RepeatFlagArg
+      name: GENOME_SERVER
+    optional: true
+  command:
+  - refgenie
+  - unsubscribe
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

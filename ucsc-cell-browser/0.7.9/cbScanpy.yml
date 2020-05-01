@@ -1,0 +1,121 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'gene-cell expression matrix file, possible formats: .csv, .h5, .mtx,
+    .txt, .tab, .loom, .h5ad. Existing meta data from .loom and .h5ad will be kept
+    and exported.'
+  synonyms:
+  - -e
+  - --exprMatrix
+  args: !SimpleFlagArg
+    name: EXPRMATRIX
+  optional: true
+- !Flag
+  description: name of cell meta data table. A table like tsv or csv format, first
+    row has cellId and the cellId must match a sample name in the expression matrix.
+    Optional but required if you use --inCluster. 'inMeta' in scanpy.conf
+  synonyms:
+  - -m
+  - --meta
+  args: !SimpleFlagArg
+    name: META
+  optional: true
+- !Flag
+  description: output directory
+  synonyms:
+  - -o
+  - --outDir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: 'internal name of dataset in cell browser. No spaces or special characters.
+    default: name of output directory (-o)'
+  synonyms:
+  - -n
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: copy sample scanpy.conf to current directory
+  synonyms:
+  - --init
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: when reading the expression matrix from a text file, assume that samples
+    are on lines (default behavior is one-gene-per-line, one-sample-per-column). Also
+    in scanpy.conf.
+  synonyms:
+  - -s
+  - --samplesOnRows
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: config file from which settings are read, default is scanpy.conf
+  synonyms:
+  - -c
+  - --confFname
+  args: !SimpleFlagArg
+    name: CONFFNAME
+  optional: true
+- !Flag
+  description: Do not run louvain-clustering, but use this meta field from ad.obs
+    when calculating marker genes. The default is to use the louvain clustering results.
+    Can be specified also in scanpy.conf.
+  synonyms:
+  - --inCluster
+  args: !SimpleFlagArg
+    name: INCLUSTER
+  optional: true
+- !Flag
+  description: do not write the scanpy matrix to the destination directory as a file
+    exprMatrix.tsv.gz
+  synonyms:
+  - --skipMatrix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Instead of reading the input matrix into scanpy and then writing it
+    back out, just copy the input matrix. Only works if the input matrix is gzipped
+    and in the right format and a tsv or csv file, not mtx or h5-based files.
+  synonyms:
+  - --copyMatrix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: when reading 10X HDF5 files, the genome to read. Default is GRCh38.
+    Use h5ls <h5file> to show possible genomes
+  synonyms:
+  - -g
+  - --genome
+  args: !SimpleFlagArg
+    name: GENOME
+  optional: true
+- !Flag
+  description: run doctests
+  synonyms:
+  - --test
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: open an iPython shell when an exception occurs. also output debug messages
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- cbScanpy
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

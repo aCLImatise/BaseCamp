@@ -1,0 +1,707 @@
+!Command
+positional: []
+named: []
+command:
+- samtools
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.bam
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: out.prefix
+    optional: false
+  named:
+  - !Flag
+    description: sort by read name
+    synonyms:
+    - -n
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: use <out.prefix> as full file name instead of prefix
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: final output to stdout
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: compression level, from 0 to 9 [-1]
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: number of sorting and compression threads [1]
+    synonyms:
+    - -@
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: max memory per thread; suffix K/M/G recognized [768M]
+    synonyms:
+    - -m
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  command:
+  - samtools
+  - sort
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: count anomalous read pairs
+    synonyms:
+    - -A
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: disable BAQ computation
+    synonyms:
+    - -B
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: list of input BAM filenames, one per line [null]
+    synonyms:
+    - -b
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: parameter for adjusting mapQ; 0 to disable [0]
+    synonyms:
+    - -C
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: max per-BAM depth to avoid excessive memory usage [250]
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: recalculate extended BAQ on the fly thus ignoring existing BQs
+    synonyms:
+    - -E
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: faidx indexed reference sequence file [null]
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: exclude read groups listed in FILE [null]
+    synonyms:
+    - -G
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: list of positions (chr pos) or regions (BED) [null]
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: cap mapping quality at INT [60]
+    synonyms:
+    - -M
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: region in which pileup is generated [null]
+    synonyms:
+    - -r
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: ignore RG tags
+    synonyms:
+    - -R
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: skip alignments with mapQ smaller than INT [0]
+    synonyms:
+    - -q
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: skip bases with baseQ/BAQ smaller than INT [13]
+    synonyms:
+    - -Q
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'required flags: skip reads with mask bits unset []'
+    synonyms:
+    - --rf
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'filter flags: skip reads with mask bits set []'
+    synonyms:
+    - --ff
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: output per-sample DP in BCF (require -g/-u)
+    synonyms:
+    - -D
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: generate BCF output (genotype likelihoods)
+    synonyms:
+    - -g
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output base positions on reads (disabled by -g/-u)
+    synonyms:
+    - -O
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output mapping quality (disabled by -g/-u)
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output per-sample strand bias P-value in BCF (require -g/-u)
+    synonyms:
+    - -S
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: generate uncompress BCF output
+    synonyms:
+    - -u
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Phred-scaled gap extension seq error probability [20]
+    synonyms:
+    - -e
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: minimum fraction of gapped reads for candidates [0.002]
+    synonyms:
+    - -F
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: coefficient for homopolymer errors [100]
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: do not perform indel calling
+    synonyms:
+    - -I
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: max per-sample depth for INDEL calling [250]
+    synonyms:
+    - -L
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: minimum gapped reads for indel candidates [1]
+    synonyms:
+    - -m
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Phred-scaled gap open sequencing error probability [40]
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: apply -m and -F per-sample to increase sensitivity
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: comma separated list of platforms for indels [all]
+    synonyms:
+    - -P
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  command:
+  - samtools
+  - mpileup
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: list of positions or regions
+    synonyms:
+    - -b
+    args: !SimpleFlagArg
+      name: bed
+    optional: true
+  - !Flag
+    description: list of input BAM filenames, one per line [null]
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: list
+    optional: true
+  - !Flag
+    description: minQLen
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: base quality threshold
+    synonyms:
+    - -q
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: mapping quality threshold
+    synonyms:
+    - -Q
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: <chr:from-to>    region
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - samtools
+  - depth
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.bam
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: out.index
+    optional: true
+  named: []
+  command:
+  - samtools
+  - index
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.bam
+    optional: false
+  named: []
+  command:
+  - samtools
+  - idxstats
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.nameSrt.bam
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: out.nameSrt.bam
+    optional: false
+  named:
+  - !Flag
+    description: remove unmapped reads and secondary alignments
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - samtools
+  - fixmate
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.bam
+    optional: false
+  named: []
+  command:
+  - samtools
+  - flagstat
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: fillmd
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: aln.bam
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: ref.fasta
+    optional: false
+  named:
+  - !Flag
+    description: change identical bases to '='
+    synonyms:
+    - -e
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: uncompressed BAM output (for piping)
+    synonyms:
+    - -u
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: compressed BAM output
+    synonyms:
+    - -b
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: the input is SAM with header
+    synonyms:
+    - -S
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: modify the quality string
+    synonyms:
+    - -A
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: compute the BQ tag (without -A) or cap baseQ by BAQ (with -A)
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: extended BAQ for better sensitivity but lower specificity
+    synonyms:
+    - -E
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - samtools
+  - calmd
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: compression level, from 0 to 9 [-1]
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: number of BAM compression threads [0]
+    synonyms:
+    - -@
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: merge file in the specified region STR [all]
+    synonyms:
+    - -R
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: copy the header in FILE to <out.bam> [in1.bam]
+    synonyms:
+    - -h
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - samtools
+  - merge
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input.srt.bam
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: output.bam
+    optional: false
+  named:
+  - !Flag
+    description: rmdup for SE reads
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: treat PE reads as SE in rmdup (force -s)
+    synonyms:
+    - -S
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - samtools
+  - rmdup
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - samtools
+  - reheader
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: in.bam
+      optional: false
+    named: []
+    command:
+    - samtools
+    - reheader
+    - in.header.sam
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: in.header.sam
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: in.bam
+      optional: false
+    named: []
+    command:
+    - samtools
+    - reheader
+    - in.bam
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.bam
+    optional: false
+  named:
+  - !Flag
+    description: block length [13]
+    synonyms:
+    - -k
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: prefix of BAMs to output [null]
+    synonyms:
+    - -b
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: min het phred-LOD [37]
+    synonyms:
+    - -q
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: min base quality in het calling [13]
+    synonyms:
+    - -Q
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: max read depth [256]
+    synonyms:
+    - -D
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: do not attempt to fix chimeras
+    synonyms:
+    - -F
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: drop reads with ambiguous phase
+    synonyms:
+    - -A
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - samtools
+  - phase
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: bamshuf
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: in.bam
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: out.prefix
+    optional: false
+  named:
+  - !Flag
+    description: output to stdout
+    synonyms:
+    - -O
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: uncompressed BAM output
+    synonyms:
+    - -u
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: compression level [1]
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: number of temporary files [64]
+    synonyms:
+    - -n
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  command:
+  - samtools
+  - bamshuf
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

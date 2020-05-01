@@ -1,0 +1,608 @@
+!Command
+positional: []
+named: []
+command:
+- svim
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: Working and output directory. Existing files in the directory are
+      overwritten. If the directory does not exist, it is created.
+    position: 0
+    name: working_dir
+    optional: false
+  - !Positional
+    description: 'Read file (FASTA, FASTQ, gzipped FASTA, gzipped FASTQ or file list).
+      The read file has to have one of the following supported file endings: FASTA:
+      .fa, .fasta, .FA, .fa.gz, .fa.gzip, .fasta.gz, .fasta.gzip FASTQ: .fq, .fastq,
+      .FQ, .fq.gz, .fq.gzip, .fastq.gz, .fastq.gzip FILE LIST: .fa.fn, fq.fn'
+    position: 1
+    name: reads
+    optional: false
+  - !Positional
+    description: Reference genome file (FASTA)
+    position: 2
+    name: genome
+    optional: false
+  named:
+  - !Flag
+    description: 'Minimum mapping quality of reads to consider (default: 20). Reads
+      with a lower mapping quality are ignored.'
+    synonyms:
+    - --min_mapq
+    args: !SimpleFlagArg
+      name: MIN_MAPQ
+    optional: true
+  - !Flag
+    description: 'Minimum SV size to detect (default: 40). SVIM can potentially detect
+      events of any size but is limited by the signal-to-noise ratio in the input
+      alignments. That means that more accurate reads and alignments enable the detection
+      of smaller events. For current PacBio or Nanopore data, we would recommend a
+      minimum size of 40bp or larger.'
+    synonyms:
+    - --min_sv_size
+    args: !SimpleFlagArg
+      name: MIN_SV_SIZE
+    optional: true
+  - !Flag
+    description: 'Maximum SV size to detect (default: 100000). This parameter is used
+      to distinguish long deletions (and inversions) from translocations which cannot
+      be distinguished from the alignment alone. Split read segments mapping far apart
+      on the reference could either indicate a very long deletion (inversion) or a
+      translocation breakpoint. SVIM calls a translocation breakpoint if the mapping
+      distance is larger than this parameter and a deletion (or inversion) if it is
+      smaller or equal.'
+    synonyms:
+    - --max_sv_size
+    args: !SimpleFlagArg
+      name: MAX_SV_SIZE
+    optional: true
+  - !Flag
+    description: 'CPU cores to use for the alignment (default: 1)'
+    synonyms:
+    - --cores
+    args: !SimpleFlagArg
+      name: CORES
+    optional: true
+  - !Flag
+    description: 'Tool for read alignment: ngmlr or minimap2 (default: ngmlr)'
+    synonyms:
+    - --aligner
+    args: !ChoiceFlagArg
+      choices:
+      - ngmlr
+      - minimap2
+    optional: true
+  - !Flag
+    description: 'Use Nanopore settings for read alignment (default: False)'
+    synonyms:
+    - --nanopore
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Maximum tolerated gap between adjacent alignment segments (default:
+      10). This parameter applies to gaps on the reference and the read. Example:
+      Deletions are detected from two subsequent segments of a split read that are
+      mapped far apart from each other on the reference. The segment gap tolerance
+      determines the maximum tolerated length of the read gap between both segments.
+      If there is an unaligned read segment larger than this value between the two
+      segments, no deletion is called.'
+    synonyms:
+    - --segment_gap_tolerance
+    args: !SimpleFlagArg
+      name: SEGMENT_GAP_TOLERANCE
+    optional: true
+  - !Flag
+    description: 'Maximum tolerated overlap between adjacent alignment segments (default:
+      5). This parameter applies to overlaps on the reference and the read. Example:
+      Deletions are detected from two subsequent segments of a split read that are
+      mapped far apart from each other on the reference. The segment overlap tolerance
+      determines the maximum tolerated length of an overlap between both segments
+      on the read. If the overlap between the two segments on the read is larger than
+      this value, no deletion is called.'
+    synonyms:
+    - --segment_overlap_tolerance
+    args: !SimpleFlagArg
+      name: SEGMENT_OVERLAP_TOLERANCE
+    optional: true
+  - !Flag
+    description: 'Maximum distance in bp between SVs in a partition (default: 5000).
+      Before clustering, the SV signatures are divided into coarse partitions. This
+      parameter determines the maximum distance between two subsequent signatures
+      in the same partition. If the distance between two subsequent signatures is
+      larger than this parameter, they are distributed into separate partitions.'
+    synonyms:
+    - --partition_max_distance
+    args: !SimpleFlagArg
+      name: PARTITION_MAX_DISTANCE
+    optional: true
+  - !Flag
+    description: 'Distance normalizer used for span-position distance (default: 900).
+      SVIM clusters the SV signatures using an hierarchical clustering approach and
+      a novel distance metric called "span-position distance". Span- position distance
+      is the sum of two components, span distance and position distance. The span
+      distance is the difference in lengths between signatures normalized by the greater
+      length and always lies in the interval [0,1]. The position distance is the difference
+      in position between signatures normalized by the distance normalizer (this parameter).
+      For a position difference of 1.8kb and a distance normalizer of 900, the position
+      distance will be 2. A smaller distance normalizer leads to a higher position
+      distance and as a consequence increases the importance of the position distance
+      in the span-position distance relative to the span distance.'
+    synonyms:
+    - --distance_normalizer
+    args: !SimpleFlagArg
+      name: DISTANCE_NORMALIZER
+    optional: true
+  - !Flag
+    description: 'Maximum span-position distance between SVs in a cluster (default:
+      0.3). This is the most important parameter because it determines the strictness
+      of clustering. Choosing a large value leads to fewer but larger clusters with
+      larger distances between its members. Choosing a small value leads to more but
+      smaller clusters with smaller distances between its members. This parameter
+      determines the height of the cut-off in the hierarchical clustering dendrogram.'
+    synonyms:
+    - --cluster_max_distance
+    args: !SimpleFlagArg
+      name: CLUSTER_MAX_DISTANCE
+    optional: true
+  - !Flag
+    description: 'Maximum span-position distance between the origin of an insertion
+      and a deletion to be flagged as a potential cut&paste insertion (default: 1.0)'
+    synonyms:
+    - --del_ins_dup_max_distance
+    args: !SimpleFlagArg
+      name: DEL_INS_DUP_MAX_DISTANCE
+    optional: true
+  - !Flag
+    description: 'Maximum distance in bp between translocation breakpoint destinations
+      in a partition (default: 1000)'
+    synonyms:
+    - --trans_destination_partition_max_distance
+    args: !SimpleFlagArg
+      name: TRANS_DESTINATION_PARTITION_MAX_DISTANCE
+    optional: true
+  - !Flag
+    description: 'Maximum distance in bp between translocation breakpoints in a partition
+      (default: 200)'
+    synonyms:
+    - --trans_partition_max_distance
+    args: !SimpleFlagArg
+      name: TRANS_PARTITION_MAX_DISTANCE
+    optional: true
+  - !Flag
+    description: 'Maximum distance in bp between a translocation breakpoint and an
+      SV signature to be combined (default: 500)'
+    synonyms:
+    - --trans_sv_max_distance
+    args: !SimpleFlagArg
+      name: TRANS_SV_MAX_DISTANCE
+    optional: true
+  - !Flag
+    description: 'Disable genotyping (default: False)'
+    synonyms:
+    - --skip_genotyping
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum score for genotyping (default: 3). Only SV candidates with
+      a higher or equal score are genotyped. Depending on the score distribution among
+      the SV candidates, decreasing this value increases the runtime. We recommend
+      to choose a value close to the score threshold used for filtering the SV candidates.'
+    synonyms:
+    - --minimum_score
+    args: !SimpleFlagArg
+      name: MINIMUM_SCORE
+    optional: true
+  - !Flag
+    description: 'Minimum variant allele frequency to be called as homozygous (default:
+      0.8). Allele frequency is computed as the fraction of reads supporting the variant
+      over the total number of reads covering the variant. Variants with an allele
+      frequence greater than or equal to this threshold are called as homozygous alternative.'
+    synonyms:
+    - --homozygous_threshold
+    args: !SimpleFlagArg
+      name: HOMOZYGOUS_THRESHOLD
+    optional: true
+  - !Flag
+    description: 'Minimum variant allele frequency to be called as heterozygous (default:
+      0.2). Allele frequency is computed as the fraction of reads supporting the variant
+      over the total number of reads covering the variant. Variants with an allele
+      frequence greater than or equal to this threshold but lower than the homozygous
+      threshold are called as heterozygous alternative. Variants with an allele frequence
+      lower than this threshold are called as homozygous reference.'
+    synonyms:
+    - --heterozygous_threshold
+    args: !SimpleFlagArg
+      name: HETEROZYGOUS_THRESHOLD
+    optional: true
+  - !Flag
+    description: 'Minimum total read depth for genotyping (default: 4). Variants covered
+      by a total number of reads lower than this value are not assigned a genotype
+      (./. in the output VCF file).'
+    synonyms:
+    - --minimum_depth
+    args: !SimpleFlagArg
+      name: MINIMUM_DEPTH
+    optional: true
+  - !Flag
+    description: 'Sample ID to include in output vcf file (default: Sample)'
+    synonyms:
+    - --sample
+    args: !SimpleFlagArg
+      name: SAMPLE
+    optional: true
+  - !Flag
+    description: 'SV types to include in output VCF (default: DEL,INS,INV,DUP:TANDEM,DUP:INT,BND).
+      Give a comma- separated list of SV types. The possible SV types are: DEL (deletions),
+      INS (novel insertions), INV (inversions), DUP:TANDEM (tandem duplications),
+      DUP:INT (interspersed duplications), BND (breakends).'
+    synonyms:
+    - --types
+    args: !SimpleFlagArg
+      name: TYPES
+    optional: true
+  - !Flag
+    description: 'Use nucleotide sequences for alleles of deletions, inversions and
+      insertions in output VCF (default: False). By default, all SVs are represented
+      by symbolic alleles, such as <DEL>, <INV> or <INS>. If enabled, ALT alleles
+      of insertions are obtained from the sequence of a random read that supports
+      the variant.'
+    synonyms:
+    - --sequence_alleles
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Output insertion sequences in INFO tag of VCF (default: False).
+      If enabled, the INFO/SEQS tag contains a list of insertion sequences from the
+      supporting reads. However, the insertion sequences are not combined into a consensus
+      sequence.'
+    synonyms:
+    - --insertion_sequences
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Represent tandem duplications as insertions in output VCF (default:
+      False). By default, tandem duplications are represented by the SVTYPE=DUP:TANDEM
+      and the genomic source is given by the POS and END tags. When enabling this
+      option, duplications are instead represented by the SVTYPE=INS and POS and END
+      both give the insertion point of the duplication.'
+    synonyms:
+    - --tandem_duplications_as_insertions
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Represent interspersed duplications as insertions in output VCF
+      (default: False). By default, interspersed duplications are represented by the
+      SVTYPE=DUP:INT and the genomic source is given by the POS and END tags. When
+      enabling this option, duplications are instead represented by the SVTYPE=INS
+      and POS and END both give the insertion point of the duplication.'
+    synonyms:
+    - --interspersed_duplications_as_insertions
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Output names of supporting reads in INFO tag of VCF (default: False).
+      If enabled, the INFO/READS tag contains the list of names of the supporting
+      reads.'
+    synonyms:
+    - --read_names
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'look for information on ZMWs in PacBio read names (default: False).
+      If enabled, the INFO/ZMWS tag contains the number of ZMWs that produced supporting
+      reads.'
+    synonyms:
+    - --zmws
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - svim
+  - reads
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Working and output directory. Existing files in the directory are
+      overwritten. If the directory does not exist, it is created.
+    position: 0
+    name: working_dir
+    optional: false
+  - !Positional
+    description: Coordinate-sorted and indexed BAM file with aligned long reads
+    position: 1
+    name: bam_file
+    optional: false
+  - !Positional
+    description: Reference genome file that the long reads were aligned to (FASTA)
+    position: 2
+    name: genome
+    optional: false
+  named:
+  - !Flag
+    description: 'Minimum mapping quality of reads to consider (default: 20). Reads
+      with a lower mapping quality are ignored.'
+    synonyms:
+    - --min_mapq
+    args: !SimpleFlagArg
+      name: MIN_MAPQ
+    optional: true
+  - !Flag
+    description: 'Minimum SV size to detect (default: 40). SVIM can potentially detect
+      events of any size but is limited by the signal-to-noise ratio in the input
+      alignments. That means that more accurate reads and alignments enable the detection
+      of smaller events. For current PacBio or Nanopore data, we would recommend a
+      minimum size of 40bp or larger.'
+    synonyms:
+    - --min_sv_size
+    args: !SimpleFlagArg
+      name: MIN_SV_SIZE
+    optional: true
+  - !Flag
+    description: 'Maximum SV size to detect (default: 100000). This parameter is used
+      to distinguish long deletions (and inversions) from translocations which cannot
+      be distinguished from the alignment alone. Split read segments mapping far apart
+      on the reference could either indicate a very long deletion (inversion) or a
+      translocation breakpoint. SVIM calls a translocation breakpoint if the mapping
+      distance is larger than this parameter and a deletion (or inversion) if it is
+      smaller or equal.'
+    synonyms:
+    - --max_sv_size
+    args: !SimpleFlagArg
+      name: MAX_SV_SIZE
+    optional: true
+  - !Flag
+    description: 'Maximum tolerated gap between adjacent alignment segments (default:
+      10). This parameter applies to gaps on the reference and the read. Example:
+      Deletions are detected from two subsequent segments of a split read that are
+      mapped far apart from each other on the reference. The segment gap tolerance
+      determines the maximum tolerated length of the read gap between both segments.
+      If there is an unaligned read segment larger than this value between the two
+      segments, no deletion is called.'
+    synonyms:
+    - --segment_gap_tolerance
+    args: !SimpleFlagArg
+      name: SEGMENT_GAP_TOLERANCE
+    optional: true
+  - !Flag
+    description: 'Maximum tolerated overlap between adjacent alignment segments (default:
+      5). This parameter applies to overlaps on the reference and the read. Example:
+      Deletions are detected from two subsequent segments of a split read that are
+      mapped far apart from each other on the reference. The segment overlap tolerance
+      determines the maximum tolerated length of an overlap between both segments
+      on the read. If the overlap between the two segments on the read is larger than
+      this value, no deletion is called.'
+    synonyms:
+    - --segment_overlap_tolerance
+    args: !SimpleFlagArg
+      name: SEGMENT_OVERLAP_TOLERANCE
+    optional: true
+  - !Flag
+    description: 'Maximum distance in bp between SVs in a partition (default: 5000).
+      Before clustering, the SV signatures are divided into coarse partitions. This
+      parameter determines the maximum distance between two subsequent signatures
+      in the same partition. If the distance between two subsequent signatures is
+      larger than this parameter, they are distributed into separate partitions.'
+    synonyms:
+    - --partition_max_distance
+    args: !SimpleFlagArg
+      name: PARTITION_MAX_DISTANCE
+    optional: true
+  - !Flag
+    description: 'Distance normalizer used for span-position distance (default: 900).
+      SVIM clusters the SV signatures using an hierarchical clustering approach and
+      a novel distance metric called "span-position distance". Span- position distance
+      is the sum of two components, span distance and position distance. The span
+      distance is the difference in lengths between signatures normalized by the greater
+      length and always lies in the interval [0,1]. The position distance is the difference
+      in position between signatures normalized by the distance normalizer (this parameter).
+      For a position difference of 1.8kb and a distance normalizer of 900, the position
+      distance will be 2. A smaller distance normalizer leads to a higher position
+      distance and as a consequence increases the importance of the position distance
+      in the span-position distance relative to the span distance.'
+    synonyms:
+    - --distance_normalizer
+    args: !SimpleFlagArg
+      name: DISTANCE_NORMALIZER
+    optional: true
+  - !Flag
+    description: 'Maximum span-position distance between SVs in a cluster (default:
+      0.3). This is the most important parameter because it determines the strictness
+      of clustering. Choosing a large value leads to fewer but larger clusters with
+      larger distances between its members. Choosing a small value leads to more but
+      smaller clusters with smaller distances between its members. This parameter
+      determines the height of the cut-off in the hierarchical clustering dendrogram.'
+    synonyms:
+    - --cluster_max_distance
+    args: !SimpleFlagArg
+      name: CLUSTER_MAX_DISTANCE
+    optional: true
+  - !Flag
+    description: 'Maximum span-position distance between the origin of an insertion
+      and a deletion to be flagged as a potential cut&paste insertion (default: 1.0)'
+    synonyms:
+    - --del_ins_dup_max_distance
+    args: !SimpleFlagArg
+      name: DEL_INS_DUP_MAX_DISTANCE
+    optional: true
+  - !Flag
+    description: 'Maximum distance in bp between translocation breakpoint destinations
+      in a partition (default: 1000)'
+    synonyms:
+    - --trans_destination_partition_max_distance
+    args: !SimpleFlagArg
+      name: TRANS_DESTINATION_PARTITION_MAX_DISTANCE
+    optional: true
+  - !Flag
+    description: 'Maximum distance in bp between translocation breakpoints in a partition
+      (default: 200)'
+    synonyms:
+    - --trans_partition_max_distance
+    args: !SimpleFlagArg
+      name: TRANS_PARTITION_MAX_DISTANCE
+    optional: true
+  - !Flag
+    description: 'Maximum distance in bp between a translocation breakpoint and an
+      SV signature to be combined (default: 500)'
+    synonyms:
+    - --trans_sv_max_distance
+    args: !SimpleFlagArg
+      name: TRANS_SV_MAX_DISTANCE
+    optional: true
+  - !Flag
+    description: 'Disable genotyping (default: False)'
+    synonyms:
+    - --skip_genotyping
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum score for genotyping (default: 3). Only SV candidates with
+      a higher or equal score are genotyped. Depending on the score distribution among
+      the SV candidates, decreasing this value increases the runtime. We recommend
+      to choose a value close to the score threshold used for filtering the SV candidates.'
+    synonyms:
+    - --minimum_score
+    args: !SimpleFlagArg
+      name: MINIMUM_SCORE
+    optional: true
+  - !Flag
+    description: 'Minimum variant allele frequency to be called as homozygous (default:
+      0.8). Allele frequency is computed as the fraction of reads supporting the variant
+      over the total number of reads covering the variant. Variants with an allele
+      frequence greater than or equal to this threshold are called as homozygous alternative.'
+    synonyms:
+    - --homozygous_threshold
+    args: !SimpleFlagArg
+      name: HOMOZYGOUS_THRESHOLD
+    optional: true
+  - !Flag
+    description: 'Minimum variant allele frequency to be called as heterozygous (default:
+      0.2). Allele frequency is computed as the fraction of reads supporting the variant
+      over the total number of reads covering the variant. Variants with an allele
+      frequence greater than or equal to this threshold but lower than the homozygous
+      threshold are called as heterozygous alternative. Variants with an allele frequence
+      lower than this threshold are called as homozygous reference.'
+    synonyms:
+    - --heterozygous_threshold
+    args: !SimpleFlagArg
+      name: HETEROZYGOUS_THRESHOLD
+    optional: true
+  - !Flag
+    description: 'Minimum total read depth for genotyping (default: 4). Variants covered
+      by a total number of reads lower than this value are not assigned a genotype
+      (./. in the output VCF file).'
+    synonyms:
+    - --minimum_depth
+    args: !SimpleFlagArg
+      name: MINIMUM_DEPTH
+    optional: true
+  - !Flag
+    description: 'Sample ID to include in output vcf file (default: Sample)'
+    synonyms:
+    - --sample
+    args: !SimpleFlagArg
+      name: SAMPLE
+    optional: true
+  - !Flag
+    description: 'SV types to include in output VCF (default: DEL,INS,INV,DUP:TANDEM,DUP:INT,BND).
+      Give a comma- separated list of SV types. The possible SV types are: DEL (deletions),
+      INS (novel insertions), INV (inversions), DUP:TANDEM (tandem duplications),
+      DUP:INT (interspersed duplications), BND (breakends).'
+    synonyms:
+    - --types
+    args: !SimpleFlagArg
+      name: TYPES
+    optional: true
+  - !Flag
+    description: 'Use nucleotide sequences for alleles of deletions, inversions and
+      insertions in output VCF (default: False). By default, all SVs are represented
+      by symbolic alleles, such as <DEL>, <INV> or <INS>. If enabled, ALT alleles
+      of insertions are obtained from the sequence of a random read that supports
+      the variant.'
+    synonyms:
+    - --sequence_alleles
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Output insertion sequences in INFO tag of VCF (default: False).
+      If enabled, the INFO/SEQS tag contains a list of insertion sequences from the
+      supporting reads. However, the insertion sequences are not combined into a consensus
+      sequence.'
+    synonyms:
+    - --insertion_sequences
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Represent tandem duplications as insertions in output VCF (default:
+      False). By default, tandem duplications are represented by the SVTYPE=DUP:TANDEM
+      and the genomic source is given by the POS and END tags. When enabling this
+      option, duplications are instead represented by the SVTYPE=INS and POS and END
+      both give the insertion point of the duplication.'
+    synonyms:
+    - --tandem_duplications_as_insertions
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Represent interspersed duplications as insertions in output VCF
+      (default: False). By default, interspersed duplications are represented by the
+      SVTYPE=DUP:INT and the genomic source is given by the POS and END tags. When
+      enabling this option, duplications are instead represented by the SVTYPE=INS
+      and POS and END both give the insertion point of the duplication.'
+    synonyms:
+    - --interspersed_duplications_as_insertions
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Output names of supporting reads in INFO tag of VCF (default: False).
+      If enabled, the INFO/READS tag contains the list of names of the supporting
+      reads.'
+    synonyms:
+    - --read_names
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'look for information on ZMWs in PacBio read names (default: False).
+      If enabled, the INFO/ZMWS tag contains the number of ZMWs that produced supporting
+      reads.'
+    synonyms:
+    - --zmws
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - svim
+  - alignment
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true

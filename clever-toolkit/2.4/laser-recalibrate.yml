@@ -1,0 +1,136 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: insert-length-dist
+  optional: false
+named:
+- !Flag
+  description: '[ --insertion_length_dist ] arg    File name of empiric insertion
+    size  distribution.'
+  synonyms:
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --deletion_length_dist ] arg     File name of empiric deletion size  distribution.'
+  synonyms:
+  - -D
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --snp ] arg                      File to read SNP positions from.  Mismatches
+    at these positions will not  incur alignment costs.'
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --variations ] arg               File to read known indels from.
+    These  indels will not incur alignment costs.  Will also be taken into account
+    for  internal segment size probability.'
+  synonyms:
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --phred_offset ] arg (=33)       Value to subtract from ASCII code
+    to  get the PHRED quality.'
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --max_pair_distance ] arg (=50000) Maximum distance of reads in
+    a  "regular" pair. If distance is  larger/interchromosomal, reads can  still be
+    paired, but only if option  --distant-pairs is given and no pair  with smaller
+    distance is present.'
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Allow long distance and  interchromosomal alignments to be  paired.
+  synonyms:
+  - --distant-pairs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --omit_alt_cigars ]              Omit alternative cigar strings
+    stored  in YA tags.'
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --omit_secondary_aln ]           Omit secondary alignments.'
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --m_in_cigar ]                   Use M for matches and mismatches\
+    \ in  CIGAR strings (instead of '=' and 'X')."
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (=0)                Only report properly paired reads for  which each
+    read has a MAPQ above the  given level. Other alignments will be  omitted. Requires
+    option -s.
+  synonyms:
+  - --mapq_cutoff
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '[ --readgroup_from_name ]          Convert readnames of the format  <readgroup>_<name>
+    back to <name> and  set respective read group tag.'
+  synonyms:
+  - -R
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --readgroup_header ] arg         BAM file from which the @RG lines
+    in  the header are to be copied.'
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --readgroup_wise_stats ]         Use separate insert size distributions  for
+    every read group. If set,  <insert-length-dist> must be a two  column text file
+    contain read group  names and filenames of corresponding  insert size distributions.'
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --default_readgroup ]            Put all alignments into readgroup  "default".'
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (=35)       Cost for soft clipping a read.
+  synonyms:
+  - --soft_clip_open_cost
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=3)      Cost for "extending" a soft clip; i.e., softclipping k characters
+    from a read  will cost soft_clip_open_cost+k*soft_cl ip_extend_cost.
+  synonyms:
+  - --soft_clip_extend_cost
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+command:
+- laser-recalibrate
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

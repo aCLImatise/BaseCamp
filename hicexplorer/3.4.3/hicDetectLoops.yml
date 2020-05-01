@@ -1,0 +1,153 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The matrix to compute the loop detection on.
+  synonyms:
+  - --matrix
+  - -m
+  args: !SimpleFlagArg
+    name: MATRIX
+  optional: true
+- !Flag
+  description: Outfile name to store the detected loops. The file will in bedgraph
+    format.
+  synonyms:
+  - --outFileName
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+  optional: true
+- !Flag
+  description: The width of the peak region in bins. The square around the peak will
+    include (2 * peakWidth)^2 bins.
+  synonyms:
+  - --peakWidth
+  - -pw
+  args: !SimpleFlagArg
+    name: PEAKWIDTH
+  optional: true
+- !Flag
+  description: The window size for the neighborhood region the peak is located in.
+    All values from this region (exclude the values from the peak region) are tested
+    against the peak region for significant difference. The square will have the size
+    of (2 * windowSize)^2 bins
+  synonyms:
+  - --windowSize
+  - -w
+  args: !SimpleFlagArg
+    name: WINDOWSIZE
+  optional: true
+- !Flag
+  description: Only candidates with p-values less the given threshold will be considered
+    as candidates. For each genomic distance a negative binomial distribution is fitted
+    and for each pixel a p-value given by the cumulative density function is given.
+    This does NOT influence the p-value for the neighborhood testing.
+  synonyms:
+  - --pValuePreselection
+  - -pp
+  args: !SimpleFlagArg
+    name: PVALUEPRESELECTION
+  optional: true
+- !Flag
+  description: The minimum number of interactions a detected peaks needs to have to
+    be considered.
+  synonyms:
+  - --peakInteractionsThreshold
+  - -pit
+  args: !SimpleFlagArg
+    name: PEAKINTERACTIONSTHRESHOLD
+  optional: true
+- !Flag
+  description: For each distance the maximum value is considered and all candidates
+    need to have at least 'max_value * maximumInteractionPercentageThreshold' interactions.
+  synonyms:
+  - --maximumInteractionPercentageThreshold
+  - -mip
+  args: !SimpleFlagArg
+    name: MAXIMUMINTERACTIONPERCENTAGETHRESHOLD
+  optional: true
+- !Flag
+  description: Rejection level for Anderson-Darling test for H0. H0 is peak region
+    and background have the same distribution.
+  synonyms:
+  - --pValue
+  - -p
+  args: !SimpleFlagArg
+    name: PVALUE
+  optional: true
+- !Flag
+  description: Maximum genomic distance of a loop, usually loops are within a distance
+    of ~2MB.
+  synonyms:
+  - --maxLoopDistance
+  args: !SimpleFlagArg
+    name: MAXLOOPDISTANCE
+  optional: true
+- !Flag
+  description: Minimum genomic distance of a loop to be considered.
+  synonyms:
+  - --minLoopDistance
+  args: !SimpleFlagArg
+    name: MINLOOPDISTANCE
+  optional: true
+- !Flag
+  description: Chromosomes to include in the analysis. If not set, all chromosomes
+    are included.
+  synonyms:
+  - --chromosomes
+  args: !RepeatFlagArg
+    name: CHROMOSOMES
+  optional: true
+- !Flag
+  description: The format is chr:start-end.
+  synonyms:
+  - --region
+  args: !SimpleFlagArg
+    name: REGION
+  optional: true
+- !Flag
+  description: Number of threads to use, the parallelization is implemented per chromosome.
+  synonyms:
+  - --threads
+  - -t
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: Number of threads to use per parallel thread processing a chromosome.
+    E.g. --threads = 4 and --threadsPerChromosome = 4 makes 4 * 4 = 16 threads in
+    total.
+  synonyms:
+  - --threadsPerChromosome
+  - -tpc
+  args: !SimpleFlagArg
+    name: THREADSPERCHROMOSOME
+  optional: true
+- !Flag
+  description: Which statistical test should be used.
+  synonyms:
+  - --statisticalTest
+  - -st
+  args: !ChoiceFlagArg
+    choices:
+    - wilcoxon-rank-sum
+    - anderson-darling
+  optional: true
+command:
+- hicDetectLoops
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

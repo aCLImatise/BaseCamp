@@ -1,0 +1,106 @@
+!Command
+positional:
+- !Positional
+  description: Input to process. If more than a file is specified, all files will
+    be mapped and placed on --output, which should be a directory.
+  position: 0
+  name: input
+  optional: false
+- !Positional
+  description: Alignment file (.chain or .pkl)
+  position: 1
+  name: alignment
+  optional: false
+named:
+- !Flag
+  description: 'Output format. BED4 output reports all aligned blocks as separate
+    BED records. BED12 reports a single BED record for each mapped element, with individual
+    blocks given in the BED12 fields. NarrowPeak reports a single narrowPeak record
+    for each mapped element, in which the chromosome, start, end, and peak positions
+    are mapped to the target species and all other columns are passed through unchanged.
+    (default: BED4)'
+  synonyms:
+  - -f
+  - --format
+  args: !ChoiceFlagArg
+    choices:
+    - BED4
+    - BED12
+    - narrowPeak
+  optional: true
+- !Flag
+  description: 'Output file. Mandatory if more than on file in input. (default: stdout)'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'Mapping threshold i.e., |elem| * threshold <= |mapped_elem| (default:
+    0.0)'
+  synonyms:
+  - -t
+  - --threshold
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Only report elements in the alignment (without mapping). -t has not
+    effect here (TODO) (default: False)'
+  synonyms:
+  - -s
+  - --screen
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Ignore elements with an insertion/deletion of this or bigger size.
+    (default: -1)'
+  synonyms:
+  - -g
+  - --gap
+  args: !SimpleFlagArg
+    name: GAP
+  optional: true
+- !Flag
+  description: 'Verbosity level (default: info)'
+  synonyms:
+  - -v
+  - --verbose
+  args: !ChoiceFlagArg
+    choices:
+    - info
+    - debug
+    - silent
+  optional: true
+- !Flag
+  description: 'If elements span multiple chains, report the segment with the longest
+    overlap instead of silently dropping them. (This is the default behavior for liftOver.)
+    (default: False)'
+  synonyms:
+  - -k
+  - --keep_split
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Input file format. (default: BED)'
+  synonyms:
+  - -i
+  - --in_format
+  args: !ChoiceFlagArg
+    choices:
+    - BED
+    - narrowPeak
+  optional: true
+command:
+- bnMapper.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

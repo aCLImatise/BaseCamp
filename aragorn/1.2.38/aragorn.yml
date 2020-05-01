@@ -1,0 +1,315 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: <filename>
+  synonyms:
+  - -rp
+  - -ps
+  - -gc
+  - -tv
+  - -seq
+  - -br
+  - -fasta
+  - -fo
+  - -o
+  args: !SimpleFlagArg
+    name: outfile
+  optional: true
+- !Flag
+  description: Assume that each sequence has a circular topology. Search wraps around
+    each end. Default setting.
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assume that each sequence has a linear topology. Search does not wrap.
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Double. Search both strands of each sequence. Default setting.
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: or -s+    Single. Do not search the complementary (antisense) strand
+    of each sequence.
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Single complementary. Do not search the sense strand of each sequence.
+  synonyms:
+  - -sc
+  - -s-
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: Search for tRNA genes with introns in anticodon loop with maximum length
+    3000 bases. Minimum intron length is 0 bases. Ignored if -m is specified.
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <max>       Search for tRNA genes with introns in anticodon loop with
+    maximum length <max> bases. Minimum intron length is 0 bases. Ignored if -m is
+    specified.
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <min>,<max> Search for tRNA genes with introns in anticodon loop with
+    maximum length <max> bases, and minimum length <min> bases. Ignored if -m is specified.
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Same as -i, but allow tRNA genes with long introns to overlap shorter
+    tRNA genes.
+  synonyms:
+  - -io
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Same as -i, but fix intron between positions 37 and 38 on C-loop (one
+    base after anticodon).
+  synonyms:
+  - -if
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Same as -if and -io combined.
+  synonyms:
+  - -ifo
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Same as -i, but report tRNA genes with minimum length <min> bases rather
+    than search for tRNA genes with minimum length <min> bases. With this switch,
+    <min> acts as an output filter, minimum intron length for searching is still 0
+    bases.
+  synonyms:
+  - -ir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not search for mitochondrial TV replacement loop tRNA genes. Only
+    relevant if -mt used.
+  synonyms:
+  - -tv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Search for tRNA genes with 7 base C-loops only.
+  synonyms:
+  - -c7
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the stricter canonical 1-2 bp spacer1 and 1 bp spacer2. Ignored
+    if -mt set. Default is to allow 3 bp spacer1 and 0-2 bp spacer2, which may degrade
+    selectivity.
+  synonyms:
+  - -ss
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display 4-base sequence on 3' end of astem regardless of predicted
+    amino-acyl acceptor length.
+  synonyms:
+  - -j
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Allow some divergence of 3' amino-acyl acceptor sequence from NCCA.
+  synonyms:
+  - -jr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Allow some divergence of 3' amino-acyl acceptor sequence from NCCA,
+    and display 4 bases.
+  synonyms:
+  - -jr4
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print out score for each reported gene.
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Lower scoring thresholds to 95% of default levels.
+  synonyms:
+  - -ps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <num>      Change scoring thresholds to <num> percent of default levels.
+  synonyms:
+  - -ps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Flag possible pseudogenes (score < 100 or tRNA anticodon loop <> 7
+    bases long). Note that genes with score < 100 will not be detected or flagged
+    if scoring thresholds are not also changed to below 100% (see -ps switch).
+  synonyms:
+  - -rp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <num>      Flag possible pseudogenes and change score threshold to
+    <num> percent of default levels.
+  synonyms:
+  - -rp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print out primary sequence.
+  synonyms:
+  - -seq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show secondary structure of tRNA gene primary sequence using round
+    brackets.
+  synonyms:
+  - -br
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print out primary sequence in fasta format.
+  synonyms:
+  - -fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print out primary sequence in fasta format only (no secondary structure).
+  synonyms:
+  - -fo
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Same as -fo, with sequence and gene numbering in header.
+  synonyms:
+  - -fon
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Same as -fo, with no spaces in header.
+  synonyms:
+  - -fos
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Same as -fo, with sequence and gene numbering, but no spaces. as (<species>|<species>)
+    instead of ???
+  synonyms:
+  - -fons
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Verbose. Prints out information during search to STDERR.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print out tRNA domain for tmRNA genes.
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Restrict tRNA astem length to a maximum of 7 bases
+  synonyms:
+  - -a7
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display message if predicted iso-acceptor species does not match species
+    in sequence name (if present).
+  synonyms:
+  - -aa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <num>     Change annotated tRNA length mismatch reporting threshold
+    to <num> bases when searching GENBANK files. Default is 10 bases.
+  synonyms:
+  - -amt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <num>     Change annotated tmRNA length mismatch reporting threshold
+    to <num> bases when searching GENBANK files. Default is 30 bases.
+  synonyms:
+  - -amm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Dont print configuration line (which switches and files were used).
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Repeat sequence name before summary information.
+  synonyms:
+  - -rn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print output to <outfile>. If <outfile> already exists, it is overwritten.
+    By default all output goes to stdout.
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: outfile
+  optional: true
+- !Flag
+  description: Print out in batch mode.
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Same as -w, but for 6 or 8 base anticodon loops, print possible iso-acceptor
+    species For tRNA genes, batch mode output is in the form: Sequence name N genes
+    found 1 tRNA-<species> [locus 1] <Apos> (nnn) i(<intron position>,<intron length>)
+    .           .           N tRNA-<species> [Locus N] <Apos> (nnn) i(<intron position>,<intron
+    length>) N is the number of genes found <species> is the tRNA iso-acceptor species
+    <Apos> is the tRNA anticodon relative position (nnn) is the tRNA anticodon base
+    triplet i means the tRNA gene has a C-loop intron For tmRNA genes, output is in
+    the form: n tmRNA(p) [Locus n] <tag offset>,<tag end offset> <tag peptide> p means
+    the tmRNA gene is permuted'
+  synonyms:
+  - -wa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Get around problem with some windows gcc compilers (found so far in
+    Strawberry Perl and Active Perl) when reading Unix files. Execution speed may
+    be slower for large files. Execution speed will be a lot slower for files with
+    many small sequences.
+  synonyms:
+  - -wunix
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- aragorn
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

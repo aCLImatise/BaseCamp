@@ -1,0 +1,99 @@
+!Command
+positional:
+- !Positional
+  description: keeps the directories of sequencing reads in the fastq formats
+  position: 0
+  name: sequence_position_file
+  optional: false
+- !Positional
+  description: keeps the information of the library for sequencing reads
+  position: 1
+  name: libinfo_file
+  optional: false
+named:
+- !Flag
+  description: Output contig file
+  synonyms:
+  - -o
+  - --outfile
+  args: !SimpleFlagArg
+    name: OUTFILE
+  optional: true
+- !Flag
+  description: number of threads, default=2
+  synonyms:
+  - -t
+  - --thread_num
+  args: !SimpleFlagArg
+    name: THREAD_NUM
+  optional: true
+- !Flag
+  description: '{33,64}, --quality_start {33,64} Quality value ascii start, default=33'
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the high coverage length threashold, above which InteMAP will deem
+    that high-coverage species exist in the community, and run IDBA-UD and ABySS on
+    the corrected read set, default=1000000
+  synonyms:
+  - -l
+  - --minHighCovLength
+  args: !SimpleFlagArg
+    name: MINHIGHCOVLENGTH
+  optional: true
+- !Flag
+  description: kmer size for ABySS, default=61
+  synonyms:
+  - --k_for_abyss
+  args: !SimpleFlagArg
+    name: K_FOR_ABYSS
+  optional: true
+- !Flag
+  description: minimal kmer size for IDBA_UD, default=23
+  synonyms:
+  - --min_k_for_idba
+  args: !SimpleFlagArg
+    name: MIN_K_FOR_IDBA
+  optional: true
+- !Flag
+  description: lower bound for IDBA-contigs of high coverage, default=30
+  synonyms:
+  - --high_cov_idba
+  args: !SimpleFlagArg
+    name: HIGH_COV_IDBA
+  optional: true
+- !Flag
+  description: higher bound for IDBA-contigs of low coverage, default=50
+  synonyms:
+  - --low_cov_idba
+  args: !SimpleFlagArg
+    name: LOW_COV_IDBA
+  optional: true
+- !Flag
+  description: lower bound for ABySS-contigs of high coverage, default=20
+  synonyms:
+  - --high_cov_abyss
+  args: !SimpleFlagArg
+    name: HIGH_COV_ABYSS
+  optional: true
+- !Flag
+  description: make clearance of intermediate output files, default=False
+  synonyms:
+  - -c
+  - --clearance
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- runInteMAP.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

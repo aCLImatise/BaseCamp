@@ -1,0 +1,861 @@
+!Command
+positional: []
+named: []
+command:
+- bwa
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.fasta
+    optional: false
+  named: []
+  command:
+  - bwa
+  - index
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: idxbase
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: in1.fq
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: in2.fq
+    optional: true
+  named:
+  - !Flag
+    description: number of threads [1]
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: minimum seed length [19]
+    synonyms:
+    - -k
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: band width for banded alignment [100]
+    synonyms:
+    - -w
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: off-diagonal X-dropoff [100]
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: look for internal seeds inside a seed longer than {-k} * FLOAT [1.5]
+    synonyms:
+    - -r
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: seed occurrence for the 3rd round seeding [20]
+    synonyms:
+    - -y
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: skip seeds with more than INT occurrences [500]
+    synonyms:
+    - -c
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: drop chains shorter than FLOAT fraction of the longest overlapping
+      chain [0.50]
+    synonyms:
+    - -D
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: discard a chain if seeded bases shorter than INT [0]
+    synonyms:
+    - -W
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: perform at most INT rounds of mate rescues for each read [50]
+    synonyms:
+    - -m
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: skip mate rescue
+    synonyms:
+    - -S
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: skip pairing; mate rescue performed unless -S also in use
+    synonyms:
+    - -P
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: score for a sequence match, which scales options -TdBOELU unless
+      overridden [1]
+    synonyms:
+    - -A
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: penalty for a mismatch [4]
+    synonyms:
+    - -B
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: gap open penalties for deletions and insertions [6,6]
+    synonyms:
+    - -O
+    args: !OptionalFlagArg
+      names:
+      - INT
+      - INT
+    optional: true
+  - !Flag
+    description: gap extension penalty; a gap of size k cost '{-O} + {-E}*k' [1,1]
+    synonyms:
+    - -E
+    args: !OptionalFlagArg
+      names:
+      - INT
+      - INT
+    optional: true
+  - !Flag
+    description: penalty for 5'- and 3'-end clipping [5,5]
+    synonyms:
+    - -L
+    args: !OptionalFlagArg
+      names:
+      - INT
+      - INT
+    optional: true
+  - !Flag
+    description: penalty for an unpaired read pair [17]
+    synonyms:
+    - -U
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'read type. Setting -x changes multiple parameters unless overridden
+      [null] pacbio: -k17 -W40 -r10 -A1 -B1 -O1 -E1 -L0  (PacBio reads to ref) ont2d:
+      -k14 -W20 -r10 -A1 -B1 -O1 -E1 -L0  (Oxford Nanopore 2D-reads to ref) intractg:
+      -B9 -O16 -L5  (intra-species contigs to ref)'
+    synonyms:
+    - -x
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: don't modify mapQ of supplementary alignments
+    synonyms:
+    - -q
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: process INT input bases in each batch regardless of nThreads (for
+      reproducibility) []
+    synonyms:
+    - -K
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'verbosity level: 1=error, 2=warning, 3=message, 4+=debugging [3]'
+    synonyms:
+    - -v
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: minimum score to output [30]
+    synonyms:
+    - -T
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: if there are <INT hits with score >80% of the max score, output all
+      in XA [5,200]
+    synonyms:
+    - -h
+    args: !OptionalFlagArg
+      names:
+      - INT
+      - INT
+    optional: true
+  - !Flag
+    description: output all alignments for SE or unpaired PE
+    synonyms:
+    - -a
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: append FASTA/FASTQ comment to SAM output
+    synonyms:
+    - -C
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output the reference FASTA header in the XR tag
+    synonyms:
+    - -V
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: use soft clipping for supplementary alignments
+    synonyms:
+    - -Y
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: mark shorter split hits as secondary
+    synonyms:
+    - -M
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: specify the mean, standard deviation (10% of the mean if absent),
+      max (4 sigma from the mean if absent) and min of the insert size distribution.
+      FR orientation only. [inferred]
+    synonyms:
+    - -I
+    args: !OptionalFlagArg
+      names:
+      - FLOAT
+      - FLOAT
+      - INT
+      - INT
+    optional: true
+  command:
+  - bwa
+  - mem
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: idxbase
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: in.fq
+    optional: false
+  named:
+  - !Flag
+    description: min SMEM length to output [17]
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: max interval size to find coordiantes [20]
+    synonyms:
+    - -w
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: min SMEM interval size [1]
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: max MEM length [2147483647]
+    synonyms:
+    - -L
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: stop if MEM is longer than -l with a size less than INT [0]
+    synonyms:
+    - -I
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  command:
+  - bwa
+  - fastmap
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: read1.fq
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: read2.fq
+    optional: true
+  named:
+  - !Flag
+    description: output merged reads only
+    synonyms:
+    - -m
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output unmerged reads only
+    synonyms:
+    - -u
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: number of threads [1]
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: minimum end overlap [10]
+    synonyms:
+    - -T
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: max sum of errors [70]
+    synonyms:
+    - -Q
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  command:
+  - bwa
+  - pemerge
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: prefix
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: in.fq
+    optional: false
+  named:
+  - !Flag
+    description: filter Casava-filtered sequences
+    synonyms:
+    - -Y
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - bwa
+  - aln
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: prefix
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: in.sai
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: in.fq
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -n
+    args: !SimpleFlagArg
+      name: max_occ
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: out.sam
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -r
+    args: !SimpleFlagArg
+      name: RG_line
+    optional: true
+  command:
+  - bwa
+  - samse
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: prefix
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: in1.sai
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: in2.sai
+    optional: false
+  - !Positional
+    description: ''
+    position: 3
+    name: in1.fq
+    optional: false
+  - !Positional
+    description: ''
+    position: 4
+    name: in2.fq
+    optional: false
+  named:
+  - !Flag
+    description: maximum insert size [500]
+    synonyms:
+    - -a
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: maximum occurrences for one end [100000]
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: maximum hits to output for paired reads [3]
+    synonyms:
+    - -n
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: maximum hits to output for discordant pairs [10]
+    synonyms:
+    - -N
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: prior of chimeric rate (lower bound) [1.0e-05]
+    synonyms:
+    - -c
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: sam file to output results to [stdout]
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: read group header line such as `@RG\tID:foo\tSM:bar' [null]
+    synonyms:
+    - -r
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: preload index into memory (for base-space reads only)
+    synonyms:
+    - -P
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: disable Smith-Waterman for the unmapped mate
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: disable insert size estimate (force -s)
+    synonyms:
+    - -A
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - bwa
+  - sampe
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: target.prefix
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: query.fa
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: query2.fa
+    optional: true
+  named:
+  - !Flag
+    description: score for a match [1]
+    synonyms:
+    - -a
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: mismatch penalty [3]
+    synonyms:
+    - -b
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: gap open penalty [5]
+    synonyms:
+    - -q
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: gap extension penalty [2]
+    synonyms:
+    - -r
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: band width [50]
+    synonyms:
+    - -w
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: mask level [0.50]
+    synonyms:
+    - -m
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: number of threads [1]
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: file to output results to instead of stdout
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: in SAM output, use hard clipping instead of soft clipping
+    synonyms:
+    - -H
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: copy FASTA/Q comment to SAM output
+    synonyms:
+    - -C
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: mark multi-part alignments as secondary
+    synonyms:
+    - -M
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: skip Smith-Waterman read pairing
+    synonyms:
+    - -S
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ignore pairs with insert >=INT for inferring the size distr [20000]
+    synonyms:
+    - -I
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: score threshold divided by a [30]
+    synonyms:
+    - -T
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: coefficient of length-threshold adjustment [5.5]
+    synonyms:
+    - -c
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: Z-best [1]
+    synonyms:
+    - -z
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: maximum seeding interval size [3]
+    synonyms:
+    - -s
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: '# seeds to trigger rev aln; 2*INT is also the chaining threshold
+      [5]'
+    synonyms:
+    - -N
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: maximum gap size during chaining [10000]
+    synonyms:
+    - -G
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  command:
+  - bwa
+  - bwasw
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: destroy all indices in shared memory
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: list names of indices in shared memory
+    synonyms:
+    - -l
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: temporary file to reduce peak memory
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - bwa
+  - shm
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.fasta
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: out.prefix
+    optional: true
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - bwa
+  - fa2pac
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.pac
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: out.bwt
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - bwa
+  - pac2bwt
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: bwtgen
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: in.pac
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: out.bwt
+    optional: false
+  named: []
+  command:
+  - bwa
+  - pac2bwtgen
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: the.bwt
+    optional: false
+  named: []
+  command:
+  - bwa
+  - bwtupdate
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: '32'
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: in.bwt
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: out.sa
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -i
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - bwa
+  - bwt2sa
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

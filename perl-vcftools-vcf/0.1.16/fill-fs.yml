@@ -1,0 +1,74 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: OPTIONS
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: file.vcf
+  optional: false
+named:
+- !Flag
+  description: Regions to mask (tabix indexed), multiple files can be given
+  synonyms:
+  - -b
+  - --bed-mask
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Do self-masking of clustered variants within this range.
+  synonyms:
+  - -c
+  - --cluster
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Flanking sequence length [100]
+  synonyms:
+  - -l
+  - --length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: <char|lc>       The character to use or "lc" for lowercase. This option
+    must preceed -b, -v or -c in order to take effect. With multiple files works as
+    a switch on the command line, see the example below [N]
+  synonyms:
+  - -m
+  - --mask-char
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The reference sequence.
+  synonyms:
+  - -r
+  - --refseq
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Mask known variants in the flanking sequence, multiple files can be
+    given (tabix indexed)
+  synonyms:
+  - -v
+  - --vcf-mask
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+command:
+- fill-fs
+subcommands: []
+help_flag: !Flag
+  description: ', -?, --help                  This help message.'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

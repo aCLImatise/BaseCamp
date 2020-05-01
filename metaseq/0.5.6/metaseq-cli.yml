@@ -1,0 +1,85 @@
+!Command
+positional:
+- !Positional
+  description: One of (avgdensity, array)
+  position: 0
+  name: action
+  optional: false
+- !Positional
+  description: Data file to use.
+  position: 1
+  name: datafile
+  optional: false
+- !Positional
+  description: Type of data file. One of (bam, bed, bigwig, bigbed, gff, gtf, vcf)
+  position: 2
+  name: type
+  optional: false
+- !Positional
+  description: Windows within which to get data from `datafile`. Can be a filename
+    of intervals (bam, bed, gff, gtf, vcf), or, if `--fromstring` is specified, a
+    coord of the form "chrom:start-stop", which only works for a single interval')
+  position: 3
+  name: windows
+  optional: false
+named:
+- !Flag
+  description: =8
+  synonyms:
+  - --processes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assume `windows` specifies a genomic coordinate of the form 'chrom:start-stop'
+    or 'chrom:start-stop[strand]
+  synonyms:
+  - --fromstring
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of bins to divide each window into
+  synonyms:
+  - --bins
+  args: !SimpleFlagArg
+    name: BINS
+  optional: true
+- !Flag
+  description: Results will be saved to this file; default is to print to stdout.
+  synonyms:
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Create a simple plot of the results
+  synonyms:
+  - --plot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of processes to use
+  synonyms:
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: Each interval in `datafile` will be extended 3' to a total of `fragmentsize`
+    bp. This can have a dramatic smoothing effect.
+  synonyms:
+  - --fragmentsize
+  args: !SimpleFlagArg
+    name: FRAGMENTSIZE
+  optional: true
+command:
+- metaseq-cli
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

@@ -1,0 +1,79 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: "*               Input file (valid formats: 'consensusXML')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*              Output file (valid formats: 'consensusXML')"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "The normalization algorithm that is applied. 'robust_regression' scales\
+    \ each map by a fator computed from the ratios of non-differential background\
+    \ features (as determined by the  ratio_threshold parameter), 'quantile' performs\
+    \ quantile normalization, 'median' scales all maps to the same median intensity,\
+    \ 'median_shift' shifts the median instead of scaling (WARNING: if you have regular,\
+    \ log-normal MS data, 'median_shift' is probably the wrong choice. Use only if\
+    \ you know what you're doing!) (default: 'robust_regression' valid: 'robust_ regression',\
+    \ 'median', 'median_shift', 'quantile')"
+  synonyms:
+  - -algorithm_type
+  args: !SimpleFlagArg
+    name: type
+  optional: true
+- !Flag
+  description: "Only for 'robust_regression': the parameter is used to distinguish\
+    \ between non-outliers (ratio_threshold < intensity ratio < 1/ratio_threshold)\
+    \ and outliers. (default: '0.67' min:  '0.001' max: '1')"
+  synonyms:
+  - -ratio_threshold
+  args: !SimpleFlagArg
+    name: ratio
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- ConsensusMapNormalizer
+subcommands: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

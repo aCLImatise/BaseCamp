@@ -1,0 +1,102 @@
+!Command
+positional:
+- !Positional
+  description: An output file of map_chimeric_fragments.py with the chimeric fragments.
+  position: 0
+  name: reads_in
+  optional: false
+named:
+- !Flag
+  description: 'Plot only significant interactions that appear in the summary file.
+    (default: None)'
+  synonyms:
+  - -s
+  - --summary
+  args: !SimpleFlagArg
+    name: SUMMARY
+  optional: true
+- !Flag
+  description: 'Split the genome to windows of this size. (default: 200)'
+  synonyms:
+  - -r
+  - --region
+  args: !SimpleFlagArg
+    name: REGION
+  optional: true
+- !Flag
+  description: 'Color the lines going to or coming from sRNAs in orange. Must be used
+    with ec_dir. (default: False)'
+  synonyms:
+  - --sRNAs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Use this file to color the known interactions in red. Must give --refseq_dir
+    as well. (default: None)'
+  synonyms:
+  - --known
+  args: !SimpleFlagArg
+    name: KNOWN
+  optional: true
+- !Flag
+  description: 'RefSeq dir of organism to get the gene description from. Should be
+    given if --known is given. (default: /home/users/assafp/EC/)'
+  synonyms:
+  - --refseq_dir
+  args: !SimpleFlagArg
+    name: REFSEQ_DIR
+  optional: true
+- !Flag
+  description: 'EcoCyc data dir, used to map the regions to genes. If not given only
+    the regions will be reported (default: None)'
+  synonyms:
+  - --ec_dir
+  args: !SimpleFlagArg
+    name: EC_DIR
+  optional: true
+- !Flag
+  description: 'Name of chromosome to plot. (default: chr)'
+  synonyms:
+  - -c
+  - --chrn
+  args: !SimpleFlagArg
+    name: CHRN
+  optional: true
+- !Flag
+  description: 'Name of chromosome in circos. (default: ecmain)'
+  synonyms:
+  - -p
+  - --print_chr
+  args: !SimpleFlagArg
+    name: PRINT_CHR
+  optional: true
+- !Flag
+  description: 'Minimum number of interactions between two regions to plot. (default:
+    100)'
+  synonyms:
+  - -m
+  - --min_interactions
+  args: !SimpleFlagArg
+    name: MIN_INTERACTIONS
+  optional: true
+- !Flag
+  description: 'A comma separated dictionary of chromosome names from the EcoCyc names
+    to the bam file names. The names in the bam file should be the same as the UCSC
+    genome browser (they will be printed). (default: COLI-K12,chr)'
+  synonyms:
+  - --EC_chrlist
+  args: !SimpleFlagArg
+    name: EC_CHRLIST
+  optional: true
+command:
+- plot_circos_plot.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

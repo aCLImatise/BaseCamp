@@ -1,0 +1,87 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: "RNAs either in BED or FASTA format: If this is BED format file, '-r/--ref'\
+    \ must also be specified; if this is RNA sequence file in FASTA format, ignore\
+    \ the ' r/--ref ' option. The input BED or FASTA file could be regular text file\
+    \ or compressed file (*.gz, *.bz2) or accessible url (http://, https://, ftp://)."
+  synonyms:
+  - -g
+  - --gene
+  args: !SimpleFlagArg
+    name: GENE_FILE
+  optional: true
+- !Flag
+  description: 'output file. Tab separated text file: geneID <tab> mRNA size <tab>
+    ORF size <tab> Fickett Score <tab> Hexamer Score<tab>Coding Probability.'
+  synonyms:
+  - -o
+  - --outfile
+  args: !SimpleFlagArg
+    name: OUT_FILE
+  optional: true
+- !Flag
+  description: Prebuilt hexamer frequency table (Human, Mouse, Fly, Zebrafish). Run
+    'make_hexamer_tab.py' to make this table out of your own training dataset.
+  synonyms:
+  - -x
+  - --hex
+  args: !SimpleFlagArg
+    name: HEXAMER_DAT
+  optional: true
+- !Flag
+  description: Prebuilt training model (Human, Mouse, Fly, Zebrafish). Run 'make_logitModel.py'
+    to build logit model out of your own training datset
+  synonyms:
+  - -d
+  - --logitModel
+  args: !SimpleFlagArg
+    name: LOGIT_MODEL
+  optional: true
+- !Flag
+  description: Reference genome sequences in FASTA format. Ignore this option if FASTA
+    file was provided to '-g/--gene'. Reference genome file will be indexed automatically
+    (produce *.fai file along with the original *.fa file within the same directory)
+    if hasn't been done.
+  synonyms:
+  - -r
+  - --ref
+  args: !SimpleFlagArg
+    name: REF_GENOME
+  optional: true
+- !Flag
+  description: Start codon (DNA sequence, so use 'T' instead of 'U') used to define
+    open reading frame (ORF). default=ATG
+  synonyms:
+  - -s
+  - --start
+  args: !SimpleFlagArg
+    name: START_CODONS
+  optional: true
+- !Flag
+  description: Stop codon (DNA sequence, so use 'T' instead of 'U') used to define
+    open reading frame (ORF). Multiple stop codons should be separated by ','. default=TAG,TAA,TGA
+  synonyms:
+  - -t
+  - --stop
+  args: !SimpleFlagArg
+    name: STOP_CODONS
+  optional: true
+command:
+- cpat.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

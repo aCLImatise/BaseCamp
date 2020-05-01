@@ -1,0 +1,14 @@
+#!/usr/bin/env cwl-runner
+
+baseCommand:
+- _fcontml
+class: CommandLineTool
+cwlVersion: v1.0
+id: _fcontml
+inputs:
+- doc: 'menu       [g] Input type in infile (Values: g (Gene frequencies); i (Continuous
+    characters))'
+  id: datatype
+  inputBinding:
+    prefix: -datatype
+  type: boolean

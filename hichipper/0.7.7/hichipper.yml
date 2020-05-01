@@ -1,0 +1,218 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Output directory name; must not be already existing [Required]  [required]
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Keep temporary files?
+  synonyms:
+  - -z
+  - --keep-temp-files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Comma-separted list of interactions files for loop calling; option
+    valid only in `call` mode
+  synonyms:
+  - -ii
+  - --input-vi
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Filepath to restriction fragment files; will overwrite specification
+    of this file when a .yaml is supplied for mode
+  synonyms:
+  - -rf
+  - --restriction-frags
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Either 1 of 4 peak logic strings or a valid filepath to a .bed (or
+    similary formatted) file; defers to what is in the .yaml
+  synonyms:
+  - -p
+  - --peaks
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Comma separated list of sample names to keep; ALL (special string)
+    by default
+  synonyms:
+  - -k
+  - --keep-samples
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Comma separated list of sample names to ignore; NONE (special string)
+    by default
+  synonyms:
+  - -x
+  - --ignore-samples
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Length of reads from sequencing runs; default = 75
+  synonyms:
+  - -l
+  - --read-length
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Minimum distance for loop calls; default = 5000
+  synonyms:
+  - -mi
+  - --min-dist
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Maximum distance for loop calls; default = 2000000
+  synonyms:
+  - -ma
+  - --max-dist
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: String of arguments to pass to MACS2; only is called when peaks are
+    set to be called; default = "-q 0.01 --extsize 147 --nomodel"
+  synonyms:
+  - --macs2-string
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Argument to pass to the -g variable in MACS2 (mm for mouse genome;
+    hs for human genome); default = "hs"
+  synonyms:
+  - --macs2-genome
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Peak padding width (applied on both left and right); default = 500
+  synonyms:
+  - -pp
+  - --peak-pad
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Merge nearby peaks (after all padding is complete; default = 500
+  synonyms:
+  - -mg
+  - --merge-gap
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Completely skip anchor merging; will affect summary statistics. Not
+    recommended unless understood what is happening.
+  synonyms:
+  - -nm
+  - --no-merge
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Skip restriction fragment aware padding
+  synonyms:
+  - --skip-resfrag-pad
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Skip restriction fragment aware background correction?
+  synonyms:
+  - --skip-background-correction
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Make additional output files that can support viewing in UCSC genome
+    browser; requires tabix and bgzip; does the same thing as --make-washu.
+  synonyms:
+  - -mu
+  - --make-ucsc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Make additional output files that can support viewing in WashU genome
+    browser; requires tabix and bgzip; does the same thing as --make-ucsc.
+  synonyms:
+  - -mw
+  - --make-washu
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Create a simple QC report without Pandoc
+  synonyms:
+  - --basic-qc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Skip analyses in diffloop (e.g. Mango loop calling; .rds generation)
+  synonyms:
+  - --skip-diffloop
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to bedtools; by default, assumes that bedtools is in PATH
+  synonyms:
+  - --bedtools-path
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Path to macs2; by default, assumes that macs2 is in PATH
+  synonyms:
+  - --macs2-path
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Path to samtools; by default, assumes that tabix is in PATH
+  synonyms:
+  - --tabix-path
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Path to macs2; by default, assumes that bgzip is in PATH
+  synonyms:
+  - --bgzip-path
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Path to R; by default, assumes that R is in PATH
+  synonyms:
+  - --r-path
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+command:
+- hichipper
+subcommands: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show the version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

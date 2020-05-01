@@ -1,0 +1,148 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Number of threads. Default: 4'
+  synonyms:
+  - --threads
+  - -t
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: Configfile to run pipeline. Additional parameters in the commandline
+    will override arguments in configfile.
+  synonyms:
+  - --config
+  - -c
+  args: !SimpleFlagArg
+    name: CONFIG
+  optional: true
+- !Flag
+  description: input sample folder. Illumina filenames should end with _<lane>_<R1|R2>_number,
+    e.g. Sample_12_345_R1_001.fastq, to find the right paired set.
+  synonyms:
+  - --input
+  - -i
+  args: !RepeatFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: ', -1 R1     Read 1 file'
+  synonyms:
+  - --read1
+  args: !SimpleFlagArg
+    name: R1
+  optional: true
+- !Flag
+  description: ', -2 R2     Read 2 file'
+  synonyms:
+  - --read2
+  args: !SimpleFlagArg
+    name: R2
+  optional: true
+- !Flag
+  description: If not set, automatically determine technology and search for fastq
+    and bam files. Set technology to IonTorrent if all files are bam-files, else set
+    technology to Illumina.
+  synonyms:
+  - --technology
+  - -T
+  args: !ChoiceFlagArg
+    choices:
+    - Illumina
+    - IonTorrent
+  optional: true
+- !Flag
+  description: 'Adapter name for trimming. Default: all'
+  synonyms:
+  - --adapter
+  - -a
+  args: !ChoiceFlagArg
+    choices:
+    - TruSeq2-PE
+    - TruSeq2-SE
+    - TruSeq3-PE
+    - TruSeq3-SE
+    - TruSeq3-PE-2
+    - NexteraPE-PE
+  optional: true
+- !Flag
+  description: Map reads against reference. Reference needs to be in fasta-format.
+  synonyms:
+  - --reference
+  - -r
+  args: !SimpleFlagArg
+    name: REFERENCE
+  optional: true
+- !Flag
+  description: Bowtie2 index if available.
+  synonyms:
+  - --index
+  - -I
+  args: !SimpleFlagArg
+    name: INDEX
+  optional: true
+- !Flag
+  description: 'Custom Kraken database. Default value is taken from environment variable
+    KRAKEN_DB_PATH. Default: .'
+  synonyms:
+  - --kraken_db
+  - -d
+  args: !SimpleFlagArg
+    name: KRAKEN_DB
+  optional: true
+- !Flag
+  description: 'Illuminaclip option: <leading quality>:<trailing quality>:<sliding
+    window>. Default: 2:30:10'
+  synonyms:
+  - --illuminaclip
+  - -L
+  args: !SimpleFlagArg
+    name: ILLUMINACLIP
+  optional: true
+- !Flag
+  description: 'Minlen parameter for Trimmomatic. Drops read short than minlen. Default:
+    50'
+  synonyms:
+  - --minlen
+  - -m
+  args: !SimpleFlagArg
+    name: MINLEN
+  optional: true
+- !Flag
+  description: 'Additional Trimmomatic input. Default (if trimBetter is not set):
+    SLIDINGWINDOW:4:20'
+  synonyms:
+  - --trimOption
+  - -O
+  args: !SimpleFlagArg
+    name: TRIMOPTION
+  optional: true
+- !Flag
+  description: 'Set -trimBetter to use this option.Default setting for Illumina: 0.15
+    and for IonTorrent: 0.25.'
+  synonyms:
+  - --trimBetter_threshold
+  - -b
+  args: !SimpleFlagArg
+    name: TRIMBETTER_THRESHOLD
+  optional: true
+command:
+- QCumber-2
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true

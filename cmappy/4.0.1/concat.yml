@@ -1,0 +1,122 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'which direction to concatenate (default: None)'
+  synonyms:
+  - --concat_direction
+  - -d
+  args: !ChoiceFlagArg
+    choices:
+    - horiz
+    - vert
+  optional: true
+- !Flag
+  description: 'full paths to gct(x) files to be concatenated (default: None)'
+  synonyms:
+  - --input_filepaths
+  - -if
+  args: !RepeatFlagArg
+    name: INPUT_FILEPATHS
+  optional: true
+- !Flag
+  description: 'wildcard specifying where files should be found (make sure to surround
+    in quotes if calling from command line!) (default: None)'
+  synonyms:
+  - --file_wildcard
+  - -w
+  args: !SimpleFlagArg
+    name: FILE_WILDCARD
+  optional: true
+- !Flag
+  description: 'whether to save output as a gct or gctx (default: gctx)'
+  synonyms:
+  - --out_type
+  - -ot
+  args: !ChoiceFlagArg
+    choices:
+    - gct
+    - gctx
+  optional: true
+- !Flag
+  description: 'what to name the output file (default: concated.gctx)'
+  synonyms:
+  - --out_name
+  - -o
+  args: !SimpleFlagArg
+    name: OUT_NAME
+  optional: true
+- !Flag
+  description: 'fields to remove from the common metadata (default: [])'
+  synonyms:
+  - --fields_to_remove
+  - -ftr
+  args: !RepeatFlagArg
+    name: FIELDS_TO_REMOVE
+  optional: true
+- !Flag
+  description: 'remove all metadata fields during operation (default: False)'
+  synonyms:
+  - --remove_all_metadata_fields
+  - -ramf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'whether to reset ids (use this flag if ids are not unique) (default:
+    False)'
+  synonyms:
+  - --reset_ids
+  - -rsi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'how to represent missing values in the data (default: NaN)'
+  synonyms:
+  - -data_null
+  args: !SimpleFlagArg
+    name: DATA_NULL
+  optional: true
+- !Flag
+  description: 'how to represent missing values in the metadata (default: -666)'
+  synonyms:
+  - -metadata_null
+  args: !SimpleFlagArg
+    name: METADATA_NULL
+  optional: true
+- !Flag
+  description: 'what value to use for filling the top-left filler block if output
+    is a .gct (default: -666)'
+  synonyms:
+  - -filler_null
+  args: !SimpleFlagArg
+    name: FILLER_NULL
+  optional: true
+- !Flag
+  description: 'whether to print a bunch of output (default: False)'
+  synonyms:
+  - -verbose
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'destination file for writing out error report - currently information
+    about inconsistent metadata fields in the common dimension of the concat operation
+    (default: None)'
+  synonyms:
+  - --error_report_output_file
+  - -erof
+  args: !SimpleFlagArg
+    name: ERROR_REPORT_OUTPUT_FILE
+  optional: true
+command:
+- concat
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

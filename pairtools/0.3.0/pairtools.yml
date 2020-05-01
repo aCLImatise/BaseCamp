@@ -1,0 +1,1363 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Post mortem debugging
+  synonyms:
+  - --post-mortem
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Profile performance with Python cProfile and dump the statistics into
+    a binary file
+  synonyms:
+  - --output-profile
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+command:
+- pairtools
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: output file for pairs after duplicate removal. If the path ends with
+      .gz or .lz4, the output is pbgzip-/lz4c-compressed. By default, the output is
+      printed into stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: output file for duplicated pairs.  If the path ends with .gz or .lz4,
+      the output is pbgzip-/lz4c-compressed. If the path is the same as in --output
+      or -, output duplicates together  with deduped pairs. By default, duplicates
+      are dropped.
+    synonyms:
+    - --output-dups
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: output file for unmapped pairs. If the path ends with .gz or .lz4,
+      the output is pbgzip-/lz4c-compressed. If the path is the same as in --output
+      or -, output unmapped pairs together with deduped pairs. If the path is the
+      same as --output-dups, output unmapped reads together with dups. By default,
+      unmapped pairs are dropped.
+    synonyms:
+    - --output-unmapped
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: output file for duplicate statistics.  If file exists, it will be
+      open in the append mode. If the path ends with .gz or .lz4, the output is pbgzip-/lz4c-compressed.
+      By default, statistics are not printed.
+    synonyms:
+    - --output-stats
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'Pairs with both sides mapped within this distance (bp) from each
+      other are considered duplicates.  [default: 3]'
+    synonyms:
+    - --max-mismatch
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: '[max|sum]              define the mismatch as either the max or
+      the sum of the mismatches ofthe genomic locations of the both sides of the two
+      compared molecules  [default: max]'
+    synonyms:
+    - --method
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Separator (\t, \v, etc. characters are supported, pass them in quotes)
+    synonyms:
+    - --sep
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: The first character of comment lines
+    synonyms:
+    - --comment-char
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: '[dups|dedup|both|none] Which of the outputs should receive header
+      and comment lines'
+    synonyms:
+    - --send-header-to
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Chrom 1 column; default 1
+    synonyms:
+    - --c1
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Chrom 2 column; default 3
+    synonyms:
+    - --c2
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Position 1 column; default 2
+    synonyms:
+    - --p1
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Position 2 column; default 4
+    synonyms:
+    - --p2
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Strand 1 column; default 5
+    synonyms:
+    - --s1
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Strand 2 column; default 6
+    synonyms:
+    - --s2
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Placeholder for a chromosome on an unmapped side; default !
+    synonyms:
+    - --unmapped-chrom
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: If specified, duplicate pairs are marked as DD in "pair_type" and
+      as a duplicate in the sam entries.
+    synonyms:
+    - --mark-dups
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Extra columns that also must match for two pairs to be marked as
+      duplicates. Can be either provided as 0-based column indices or as column names
+      (requires the "#columns" header field). The option can be provided multiple
+      times if multiple column pairs must match. Example: --extra-col-pair "phase1"
+      "phase2"'
+    synonyms:
+    - --extra-col-pair
+    args: !SimpleFlagArg
+      name: TEXT...
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed input decompressing
+      command.  [default: 3]'
+    synonyms:
+    - --nproc-in
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed output compressing
+      command.  [default: 8]'
+    synonyms:
+    - --nproc-out
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'A command to decompress the input file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdin. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -dc -n 3'
+    synonyms:
+    - --cmd-in
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'A command to compress the output file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdout. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -c -n 8'
+    synonyms:
+    - --cmd-out
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - pairtools
+  - dedup
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: output file for pairs from low coverage regions. If the path ends
+      with .gz or .lz4, the output is pbgzip-/lz4c-compressed. By default, the output
+      is printed into stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: output file for pairs from high coverage regions. If the path ends
+      with .gz or .lz4, the output is pbgzip-/lz4c-compressed. If the path is the
+      same as in --output or -, output duplicates together  with deduped pairs. By
+      default, duplicates are dropped.
+    synonyms:
+    - --output-highcov
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: output file for unmapped pairs. If the path ends with .gz or .lz4,
+      the output is pbgzip-/lz4c-compressed. If the path is the same as in --output
+      or -, output unmapped pairs together with deduped pairs. If the path is the
+      same as --output-highcov, output unmapped reads together. By default, unmapped
+      pairs are dropped.
+    synonyms:
+    - --output-unmapped
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: output file for statistics of multiple interactors.  If file exists,
+      it will be open in the append mode. If the path ends with .gz or .lz4, the output
+      is pbgzip-/lz4c-compressed. By default, statistics are not printed.
+    synonyms:
+    - --output-stats
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: The maximum allowed coverage per region.
+    synonyms:
+    - --max-cov
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: The resolution for calculating coverage. For each pair, the local
+      coverage around each end is calculated as (1 + the number of neighbouring pairs
+      within +/- max_dist bp)
+    synonyms:
+    - --max-dist
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: '[max|sum]              calculate the number of neighbouring pairs
+      as either the sum or the max of the number of neighbours on the two sides  [default:
+      max]'
+    synonyms:
+    - --method
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Separator (\t, \v, etc. characters are supported, pass them in quotes)
+    synonyms:
+    - --sep
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: The first character of comment lines
+    synonyms:
+    - --comment-char
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: '[lowcov|highcov|both|none] Which of the outputs should receive header
+      and comment lines'
+    synonyms:
+    - --send-header-to
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Chrom 1 column; default 1
+    synonyms:
+    - --c1
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Chrom 2 column; default 3
+    synonyms:
+    - --c2
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Position 1 column; default 2
+    synonyms:
+    - --p1
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Position 2 column; default 4
+    synonyms:
+    - --p2
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Strand 1 column; default 5
+    synonyms:
+    - --s1
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Strand 2 column; default 6
+    synonyms:
+    - --s2
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Placeholder for a chromosome on an unmapped side; default !
+    synonyms:
+    - --unmapped-chrom
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: If specified, duplicate pairs are marked as FF in "pair_type" and
+      as a duplicate in the sam entries.
+    synonyms:
+    - --mark-multi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed input decompressing
+      command.  [default: 3]'
+    synonyms:
+    - --nproc-in
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed output compressing
+      command.  [default: 8]'
+    synonyms:
+    - --nproc-out
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'A command to decompress the input file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdin. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -dc -n 3'
+    synonyms:
+    - --cmd-in
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'A command to compress the output file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdout. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -c -n 8'
+    synonyms:
+    - --cmd-out
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - pairtools
+  - filterbycov
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Chromosome order used to flip interchromosomal mates: path to a
+      chromosomes file (e.g. UCSC chrom.sizes or similar) whose first column lists
+      scaffold names. Any scaffolds not listed will be ordered lexicographically following
+      the names provided.  [required]'
+    synonyms:
+    - -c
+    - --chroms-path
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: output file. If the path ends with .gz or .lz4, the output is pbgzip-/lz4c-compressed.
+      By default, the output is printed into stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed input decompressing
+      command.  [default: 3]'
+    synonyms:
+    - --nproc-in
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed output compressing
+      command.  [default: 8]'
+    synonyms:
+    - --nproc-out
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'A command to decompress the input file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdin. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -dc -n 3'
+    synonyms:
+    - --cmd-in
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'A command to compress the output file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdout. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -c -n 8'
+    synonyms:
+    - --cmd-out
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - pairtools
+  - flip
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: output .pairsam file. If the path ends with .gz or .lz4, the output
+      is pbgzip-/lz4c-compressed. By default, the output is printed into stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed input decompressing
+      command.  [default: 3]'
+    synonyms:
+    - --nproc-in
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed output compressing
+      command.  [default: 8]'
+    synonyms:
+    - --nproc-out
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'A command to decompress the input file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdin. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -dc -n 3'
+    synonyms:
+    - --cmd-in
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'A command to compress the output file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdout. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -c -n 8'
+    synonyms:
+    - --cmd-out
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - pairtools
+  - markasdup
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: output file. If the path ends with .gz/.lz4, the output is compressed
+      by pbgzip/lz4c. By default, the output is printed into stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'The maximal number of inputs merged at once. For more, store merged
+      intermediates in temporary files.  [default: 8]'
+    synonyms:
+    - --max-nmerge
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Custom temporary folder for merged intermediates.
+    synonyms:
+    - --tmpdir
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'The amount of memory used by default.  [default: 2G]'
+    synonyms:
+    - --memory
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'A binary to compress temporary merged chunks. Must decompress input
+      when the flag -d is provided. Suggested alternatives: lz4c, gzip, lzop, snzip.
+      NOTE: fails silently if the command syntax is wrong.   [default: ]'
+    synonyms:
+    - --compress-program
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'Number of threads for merging.  [default: 8]'
+    synonyms:
+    - --nproc
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed input decompressing
+      command.  [default: 1]'
+    synonyms:
+    - --nproc-in
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed output compressing
+      command.  [default: 8]'
+    synonyms:
+    - --nproc-out
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'A command to decompress the input. If provided, fully overrides
+      the auto-guessed command. Does not work with stdin. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -dc -n 3'
+    synonyms:
+    - --cmd-in
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'A command to compress the output. If provided, fully overrides the
+      auto-guessed command. Does not work with stdout. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -c -n 8'
+    synonyms:
+    - --cmd-out
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - pairtools
+  - merge
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Chromosome order used to flip interchromosomal mates: path to a
+      chromosomes file (e.g. UCSC chrom.sizes or similar) whose first column lists
+      scaffold names. Any scaffolds not listed will be ordered lexicographically following
+      the names provided.  [required]'
+    synonyms:
+    - -c
+    - --chroms-path
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: output file.  If the path ends with .gz or .lz4, the output is pbgzip-/lz4-compressed.By
+      default, the output is printed into stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Name of genome assembly (e.g. hg19, mm10) to store in the pairs header.
+    synonyms:
+    - --assembly
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'The minimal MAPQ score to consider a read as uniquely mapped  [default:
+      1]'
+    synonyms:
+    - --min-mapq
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'The maximal size of a Hi-C molecule; used to rescue single ligationsfrom
+      molecules with three alignments.  [default: 2000]'
+    synonyms:
+    - --max-molecule-size
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: If specified, do not add read ids to the output
+    synonyms:
+    - --drop-readid
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: If specified, remove sequences and PHREDs from the sam fields
+    synonyms:
+    - --drop-seq
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: If specified, do not add sams to the output
+    synonyms:
+    - --drop-sam
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Report extra columns describing alignments Possible values (can
+      take multiple values as a comma-separated list): a SAM tag (any pair of uppercase
+      letters) or mapq, pos5, pos3, cigar, read_len, matched_bp, algn_ref_span, algn_read_span,
+      dist_to_5, dist_to_3, seq.'
+    synonyms:
+    - --add-columns
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: output file for all parsed alignments, including walks. Useful for
+      debugging and rnalysis of walks. If file exists, it will be open in the append
+      mode. If the path ends with .gz or .lz4, the output is pbgzip-/lz4-compressed.
+      By default, not used.
+    synonyms:
+    - --output-parsed-alignments
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: output file for various statistics of pairs file.  By default, statistics
+      is not generated.
+    synonyms:
+    - --output-stats
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: "[5|3]    specifies whether the 5' or 3' end of the alignment is\
+      \ reported as the position of the Hi-C read."
+    synonyms:
+    - --report-alignment-end
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'read segments that are not covered by any alignment and longer than
+      the specified value are treated as "null" alignments. These null alignments
+      convert otherwise linear alignments into walks, and affect how they get reported
+      as a Hi-C pair (see --walks-policy).  [default: 20]'
+    synonyms:
+    - --max-inter-align-gap
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: "[mask|all|5any|5unique|3any|3unique] the policy for reporting unrescuable\
+      \ walks (reads containing more than one alignment on one or both sides, that\
+      \ can not be explained by a single ligation between two mappable DNA fragments).\
+      \ \"mask\" - mask walks (chrom=\"!\", pos=0, strand=\"-\");  \"all\" - report\
+      \ all pairs of consecutive alignments [NOT IMPLEMENTED];  \"5any\" - report\
+      \ the 5'-most alignment on each side; \"5unique\" - report the 5'-most unique\
+      \ alignment on each side, if present; \"3any\" - report the 3'-most alignment\
+      \ on each side; \"3unique\" - report the 3'-most unique alignment on each side,\
+      \ if present.  [default: mask]"
+    synonyms:
+    - --walks-policy
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: If specified, do not flip pairs in genomic order and instead preserve
+      the order in which they were sequenced.
+    synonyms:
+    - --no-flip
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed input decompressing
+      command.  [default: 3]'
+    synonyms:
+    - --nproc-in
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed output compressing
+      command.  [default: 8]'
+    synonyms:
+    - --nproc-out
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'A command to decompress the input file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdin. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -dc -n 3'
+    synonyms:
+    - --cmd-in
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'A command to compress the output file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdout. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -c -n 8'
+    synonyms:
+    - --cmd-out
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - pairtools
+  - parse
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: output file. If the path ends with .gz or .lz4, the output is pbgzip-/lz4c-compressed.
+      By default, the output is printed into stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: phase suffixes.
+    synonyms:
+    - --phase-suffixes
+    args: !SimpleFlagArg
+      name: TEXT...
+    optional: true
+  - !Flag
+    description: drop all columns besides the standard ones and phase1/2
+    synonyms:
+    - --clean-output
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed input decompressing
+      command.  [default: 3]'
+    synonyms:
+    - --nproc-in
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed output compressing
+      command.  [default: 8]'
+    synonyms:
+    - --nproc-out
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'A command to decompress the input file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdin. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -dc -n 3'
+    synonyms:
+    - --cmd-in
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'A command to compress the output file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdout. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -c -n 8'
+    synonyms:
+    - --cmd-out
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - pairtools
+  - phase
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: a tab-separated BED file with the positions of restriction fragments
+      (chrom, start, end). Can be generated using cooler digest.  [required]
+    synonyms:
+    - -f
+    - --frags
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: output .pairs/.pairsam file. If the path ends with .gz/.lz4, the
+      output is compressed by pbgzip/lz4c. By default, the output is printed into
+      stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed input decompressing
+      command.  [default: 3]'
+    synonyms:
+    - --nproc-in
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed output compressing
+      command.  [default: 8]'
+    synonyms:
+    - --nproc-out
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'A command to decompress the input file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdin. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -dc -n 3'
+    synonyms:
+    - --cmd-in
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'A command to compress the output file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdout. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -c -n 8'
+    synonyms:
+    - --cmd-out
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - pairtools
+  - restrict
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: output file. If the path ends with .gz or .lz4, the output is pbgzip-/lz4c-compressed.
+      By default, the output is printed into stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: the seed of the random number generator.
+    synonyms:
+    - -s
+    - --seed
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed input decompressing
+      command.  [default: 3]'
+    synonyms:
+    - --nproc-in
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed output compressing
+      command.  [default: 8]'
+    synonyms:
+    - --nproc-out
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'A command to decompress the input file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdin. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -dc -n 3'
+    synonyms:
+    - --cmd-in
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'A command to compress the output file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdout. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -c -n 8'
+    synonyms:
+    - --cmd-out
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - pairtools
+  - sample
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: output file. If the path ends with .gz or .lz4, the output is pbgzip-/lz4c-compressed.
+      By default, the output is printed into stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: output file for pairs of other types.  If the path ends with .gz
+      or .lz4, the output is pbgzip-/lz4c-compressed. By default, such pairs are dropped.
+    synonyms:
+    - --output-rest
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: '[selected|rest|both|none] Which of the outputs should receive header
+      and comment lines  [default: both]'
+    synonyms:
+    - --send-comments-to
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'A path to a chromosomes file (tab-separated, 1st column contains
+      chromosome names) containing a chromosome subset of interest. If provided, additionally
+      filter pairs with both sides originating from the provided subset of chromosomes.
+      This operation modifies the #chromosomes: and #chromsize: header fields accordingly.'
+    synonyms:
+    - --chrom-subset
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: An auxiliary code to execute before filtering. Use to define functions
+      that can be evaluated in the CONDITION statement
+    synonyms:
+    - --startup-code
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: '...  Cast a given column to a given type. By default, only pos and
+      mapq are cast to int, other columns are kept as str. Provide as -t <column_name>
+      <type>, e.g. -t read_len1 int. Multiple entries are allowed.'
+    synonyms:
+    - -t
+    - --type-cast
+    args: !SimpleFlagArg
+      name: TEXT TEXT
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed input decompressing
+      command.  [default: 3]'
+    synonyms:
+    - --nproc-in
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed output compressing
+      command.  [default: 8]'
+    synonyms:
+    - --nproc-out
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'A command to decompress the input file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdin. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -dc -n 3'
+    synonyms:
+    - --cmd-in
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'A command to compress the output file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdout. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -c -n 8'
+    synonyms:
+    - --cmd-out
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - pairtools
+  - select
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: output pairs file. If the path ends with .gz or .lz4, the output
+      is compressed by pbgzip or lz4, correspondingly. By default, the output is printed
+      into stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'Number of processes to split the sorting work between.  [default:
+      8]'
+    synonyms:
+    - --nproc
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Custom temporary folder for sorting intermediates.
+    synonyms:
+    - --tmpdir
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'The amount of memory used by default.  [default: 2G]'
+    synonyms:
+    - --memory
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'A binary to compress temporary sorted chunks. Must decompress input
+      when the flag -d is provided. Suggested alternatives: gzip, lzop, lz4c, snzip.
+      If "auto", then use lz4c if available, and gzip otherwise.  [default: auto]'
+    synonyms:
+    - --compress-program
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed input decompressing
+      command.  [default: 3]'
+    synonyms:
+    - --nproc-in
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed output compressing
+      command.  [default: 8]'
+    synonyms:
+    - --nproc-out
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'A command to decompress the input file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdin. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -dc -n 3'
+    synonyms:
+    - --cmd-in
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'A command to compress the output file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdout. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -c -n 8'
+    synonyms:
+    - --cmd-out
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - pairtools
+  - sort
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: stdin.
+    position: 0
+    name: from
+    optional: false
+  named:
+  - !Flag
+    description: output pairs file. If the path ends with .gz or .lz4, the output
+      is pbgzip-/lz4c-compressed. If -, pairs are printed to stdout. If not specified,
+      pairs are dropped.
+    synonyms:
+    - --output-pairs
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: output sam file. If the path ends with .bam, the output is compressed
+      into a bam file. If -, sam entries are printed to stdout. If not specified,
+      sam entries are dropped.
+    synonyms:
+    - --output-sam
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed input decompressing
+      command.  [default: 3]'
+    synonyms:
+    - --nproc-in
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed output compressing
+      command.  [default: 8]'
+    synonyms:
+    - --nproc-out
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'A command to decompress the input file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdin. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -dc -n 3'
+    synonyms:
+    - --cmd-in
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'A command to compress the output file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdout. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -c -n 8'
+    synonyms:
+    - --cmd-out
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - pairtools
+  - split
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: output stats tsv file.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: If specified, merge multiple input stats files instead of calculating
+      statistics of a .pairs/.pairsam file. Merging is performed via summation of
+      all overlapping statistics. Non-overlapping statistics are appended to the end
+      of the file.
+    synonyms:
+    - --merge
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed input decompressing
+      command.  [default: 3]'
+    synonyms:
+    - --nproc-in
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Number of processes used by the auto-guessed output compressing
+      command.  [default: 8]'
+    synonyms:
+    - --nproc-out
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'A command to decompress the input file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdin. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -dc -n 3'
+    synonyms:
+    - --cmd-in
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'A command to compress the output file. If provided, fully overrides
+      the auto-guessed command. Does not work with stdout. Must read input from stdin
+      and print output into stdout. EXAMPLE: pbgzip -c -n 8'
+    synonyms:
+    - --cmd-out
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - pairtools
+  - stats
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show the version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

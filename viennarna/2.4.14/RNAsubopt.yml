@@ -1,0 +1,256 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Print help, including all details and hidden options, and exit
+  synonyms:
+  - --detailed-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print help, including hidden options, and exit
+  synonyms:
+  - --full-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Be verbose (default=off)
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not automatically substitude nucleotide "T" with "U" (default=off)
+  synonyms:
+  - --noconv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Read a file instead of reading from stdin
+  synonyms:
+  - -i
+  - --infile
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: '[=<filename>]    Print output to file instead of stdout'
+  synonyms:
+  - -o
+  - --outfile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Automatically generate an ID for each sequence. (default=off)
+  synonyms:
+  - --auto-id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prefix for automatically generated IDs (as used in output file names)
+    (default=`sequence')
+  synonyms:
+  - --id-prefix
+  args: !SimpleFlagArg
+    name: prefix
+  optional: true
+- !Flag
+  description: Set the maximum base pair span (default=`-1')
+  synonyms:
+  - --maxBPspan
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "[=<filename>] Calculate structures subject to constraints. (default=`')"
+  synonyms:
+  - -C
+  - --constraint
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use constraints for multiple sequences. (default=off)
+  synonyms:
+  - --batch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Remove non-canonical base pairs from the structure constraint (default=off)
+  synonyms:
+  - --canonicalBPonly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enforce base pairs given by round brackets ( ) in structure constraint
+    (default=off)
+  synonyms:
+  - --enforceConstraint
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use SHAPE reactivity data in the folding recursions (does not work
+    for Zuker suboptimals and stochastic backtracking yet)
+  synonyms:
+  - --shape
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: =[D/Z/W] + [optional parameters] Specify the method how to convert
+    SHAPE reactivity data to pseudo energy contributions (default=`D')
+  synonyms:
+  - --shapeMethod
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: /C/S/L/O  + [optional parameters] Specify the method used to convert
+    SHAPE reactivities to pairing probabilities when using the SHAPE approach of Zarringhalam
+    et al. (default=`O')
+  synonyms:
+  - --shapeConversion
+  args: !SimpleFlagArg
+    name: M
+  optional: true
+- !Flag
+  description: Compute suboptimal structures with energy in a certain range of the
+    optimum (kcal/mol). Default is calculation of mfe structure only.
+  synonyms:
+  - -e
+  - --deltaEnergy
+  args: !SimpleFlagArg
+    name: range
+  optional: true
+- !Flag
+  description: Only print structures with energy within range of the mfe after post
+    reevaluation of energies.
+  synonyms:
+  - --deltaEnergyPost
+  args: !SimpleFlagArg
+    name: range
+  optional: true
+- !Flag
+  description: Sort the suboptimal structures by energy. (default=off)
+  synonyms:
+  - -s
+  - --sorted
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Instead of producing all suboptimals in an energy range, produce a
+    random sample of suboptimal structures, drawn with probabilities equal to their
+    Boltzmann weights via stochastic backtracking in the partition function. The -e
+    and -p options are mutually exclusive.
+  synonyms:
+  - -p
+  - --stochBT
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: Same as "--stochBT" but also print out the energies and probabilities
+    of the backtraced structures.
+  synonyms:
+  - --stochBT_en
+  args: !SimpleFlagArg
+    name: number
+  optional: true
+- !Flag
+  description: Enable non-redundant sampling strategy. (default=off)
+  synonyms:
+  - -N
+  - --nonRedundant
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assume a circular (instead of linear) RNA molecule. (default=off)
+  synonyms:
+  - -c
+  - --circ
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Compute density of states instead of secondary structures (default=off)
+  synonyms:
+  - -D
+  - --dos
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Compute Zuker suboptimals instead of all suboptimal structures within
+    an engery band around the MFE. (default=off)
+  synonyms:
+  - -z
+  - --zuker
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Incoorporate G-Quadruplex formation into the structure prediction algorithm
+    (no support of G-quadruplex prediction for stochastic backtracking and Zuker-style
+    suboptimals yet) (default=off)
+  synonyms:
+  - -g
+  - --gquad
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: How to treat "dangling end" energies for bases adjacent to helices
+    in free ends and multi-loops (default=`2')
+  synonyms:
+  - -d
+  - --dangles
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Produce structures without lonely pairs (helices of length 1). (default=off)
+  synonyms:
+  - --noLP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not allow GU pairs (default=off)
+  synonyms:
+  - --noGU
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not allow GU pairs at the end of helices (default=off)
+  synonyms:
+  - --noClosingGU
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Recalculate energies of structures using a logarithmic energy function
+    for multi-loops before output.  (default=off)
+  synonyms:
+  - --logML
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Read energy parameters from paramfile, instead of using the default
+    parameter set.
+  synonyms:
+  - -P
+  - --paramFile
+  args: !SimpleFlagArg
+    name: paramfile
+  optional: true
+command:
+- RNAsubopt
+subcommands: []
+help_flag: !Flag
+  description: Print help and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

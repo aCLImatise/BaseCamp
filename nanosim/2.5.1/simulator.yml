@@ -1,0 +1,319 @@
+!Command
+positional: []
+named: []
+command:
+- simulator.py
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Input reference genome
+    synonyms:
+    - -rg
+    - --ref_g
+    args: !SimpleFlagArg
+      name: REF_G
+    optional: true
+  - !Flag
+    description: Location and prefix of error profiles generated from characterization
+      step (Default = training)
+    synonyms:
+    - -c
+    - --model_prefix
+    args: !SimpleFlagArg
+      name: MODEL_PREFIX
+    optional: true
+  - !Flag
+    description: Output location and prefix for simulated reads (Default = simulated)
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Number of reads to be simulated (Default = 20000)
+    synonyms:
+    - -n
+    - --number
+    args: !SimpleFlagArg
+      name: NUMBER
+    optional: true
+  - !Flag
+    description: The maximum length for simulated reads (Default = Infinity)
+    synonyms:
+    - -max
+    - --max_len
+    args: !SimpleFlagArg
+      name: MAX_LEN
+    optional: true
+  - !Flag
+    description: The minimum length for simulated reads (Default = 50)
+    synonyms:
+    - -min
+    - --min_len
+    args: !SimpleFlagArg
+      name: MIN_LEN
+    optional: true
+  - !Flag
+    description: The median read length (Default = None)
+    synonyms:
+    - -med
+    - --median_len
+    args: !SimpleFlagArg
+      name: MEDIAN_LEN
+    optional: true
+  - !Flag
+    description: The standard deviation of read length in log scale (Default = None)
+    synonyms:
+    - -sd
+    - --sd_len
+    args: !SimpleFlagArg
+      name: SD_LEN
+    optional: true
+  - !Flag
+    description: Manually seeds the pseudo-random number generator
+    synonyms:
+    - --seed
+    args: !SimpleFlagArg
+      name: SEED
+    optional: true
+  - !Flag
+    description: Minimum homopolymer length to simulate homopolymer contraction and
+      expansion events in
+    synonyms:
+    - -k
+    - --KmerBias
+    args: !SimpleFlagArg
+      name: KMERBIAS
+    optional: true
+  - !Flag
+    description: 'Simulate homopolymers with respect to chosen basecaller: albacore,
+      guppy, or guppy-flipflop'
+    synonyms:
+    - -b
+    - --basecaller
+    args: !ChoiceFlagArg
+      choices:
+      - albacore
+      - guppy
+      - guppy-flipflop
+    optional: true
+  - !Flag
+    description: Percentage of antisense sequences. Overrides the value profiled in
+      characterization stage. Should be between 0 and 1
+    synonyms:
+    - -s
+    - --strandness
+    args: !SimpleFlagArg
+      name: STRANDNESS
+    optional: true
+  - !Flag
+    description: 'Specify the dna type: circular OR linear (Default = linear)'
+    synonyms:
+    - -dna_type
+    args: !ChoiceFlagArg
+      choices:
+      - linear
+      - circular
+    optional: true
+  - !Flag
+    description: Ignore error profiles and simulate perfect reads
+    synonyms:
+    - --perfect
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Number of threads for simulation (Default = 1)
+    synonyms:
+    - -t
+    - --num_threads
+    args: !SimpleFlagArg
+      name: NUM_THREADS
+    optional: true
+  command:
+  - simulator.py
+  - genome
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Input reference transcriptome
+    synonyms:
+    - -rt
+    - --ref_t
+    args: !SimpleFlagArg
+      name: REF_T
+    optional: true
+  - !Flag
+    description: Input reference genome, required if intron retention simulatin is
+      on
+    synonyms:
+    - -rg
+    - --ref_g
+    args: !SimpleFlagArg
+      name: REF_G
+    optional: true
+  - !Flag
+    description: Expression profile in the specified format as described in README
+    synonyms:
+    - -e
+    - --exp
+    args: !SimpleFlagArg
+      name: EXP
+    optional: true
+  - !Flag
+    description: Location and prefix of error profiles generated from characterization
+      step (Default = training)
+    synonyms:
+    - -c
+    - --model_prefix
+    args: !SimpleFlagArg
+      name: MODEL_PREFIX
+    optional: true
+  - !Flag
+    description: Output location and prefix for simulated reads (Default = simulated)
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Number of reads to be simulated (Default = 20000)
+    synonyms:
+    - -n
+    - --number
+    args: !SimpleFlagArg
+      name: NUMBER
+    optional: true
+  - !Flag
+    description: The maximum length for simulated reads (Default = Infinity)
+    synonyms:
+    - -max
+    - --max_len
+    args: !SimpleFlagArg
+      name: MAX_LEN
+    optional: true
+  - !Flag
+    description: The minimum length for simulated reads (Default = 50)
+    synonyms:
+    - -min
+    - --min_len
+    args: !SimpleFlagArg
+      name: MIN_LEN
+    optional: true
+  - !Flag
+    description: Manually seeds the pseudo-random number generator
+    synonyms:
+    - --seed
+    args: !SimpleFlagArg
+      name: SEED
+    optional: true
+  - !Flag
+    description: Minimum homopolymer length to simulate homopolymer contraction and
+      expansion events in
+    synonyms:
+    - -k
+    - --KmerBias
+    args: !SimpleFlagArg
+      name: KMERBIAS
+    optional: true
+  - !Flag
+    description: 'Simulate homopolymers with respect to chosen basecaller: albacore
+      or guppy'
+    synonyms:
+    - -b
+    - --basecaller
+    args: !ChoiceFlagArg
+      choices:
+      - albacore
+      - guppy
+    optional: true
+  - !Flag
+    description: 'Simulate homopolymers with respect to chosen read type: dRNA, cDNA_1D
+      or cDNA_1D2'
+    synonyms:
+    - -r
+    - --read_type
+    args: !ChoiceFlagArg
+      choices:
+      - dRNA
+      - cDNA_1D
+      - cDNA_1D2
+    optional: true
+  - !Flag
+    description: Percentage of antisense sequences. Overrides the value profiled in
+      characterization stage. Should be between 0 and 1
+    synonyms:
+    - -s
+    - --strandness
+    args: !SimpleFlagArg
+      name: STRANDNESS
+    optional: true
+  - !Flag
+    description: Ignore simulating intron retention events
+    synonyms:
+    - --no_model_ir
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Ignore profiles and simulate perfect reads
+    synonyms:
+    - --perfect
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Number of threads for simulation (Default = 1)
+    synonyms:
+    - -t
+    - --num_threads
+    args: !SimpleFlagArg
+      name: NUM_THREADS
+    optional: true
+  - !Flag
+    description: Converts the thymine (T) bases to uracil (U) in the output fasta
+      format
+    synonyms:
+    - --uracil
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - simulator.py
+  - transcriptome
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

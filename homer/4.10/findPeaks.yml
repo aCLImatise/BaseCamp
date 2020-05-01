@@ -1,0 +1,222 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: (Experiment to use as IgG/Input/Control)
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: input tag directory
+  optional: true
+- !Flag
+  description: '<#> (Peak size, default: auto)'
+  synonyms:
+  - -size
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (minimum distance between peaks, default: peak size x2)'
+  synonyms:
+  - -minDist
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Set effective mappable genome size, default: 2e9)'
+  synonyms:
+  - -gsize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#|auto> (Approximate fragment length, default: auto)'
+  synonyms:
+  - -fragLength
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#|auto> (Approximate fragment length of input tags, default: auto)'
+  synonyms:
+  - -inputFragLength
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Maximum tags per bp to count, 0 = no limit, default: auto)'
+  synonyms:
+  - -tbp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Maximum tags per bp to count in input, 0 = no limit, default:
+    auto)'
+  synonyms:
+  - -inputtbp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <both|separate> (find peaks using tags on both strands or separate,
+    default:both)
+  synonyms:
+  - -strand
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '# (Tag count to normalize to, default 10000000)'
+  synonyms:
+  - -norm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(extends start/stop coordinates to cover full region considered \"\
+    enriched\") -regionRes <#> (number of fractions peaks are divided in when extending\
+    \ 'regions', def: 4)"
+  synonyms:
+  - -region
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Centers peaks on maximum tag overlap and calculates focus ratios)
+  synonyms:
+  - -center
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Centers peaks on most likely nucleosome free region [works best with
+    mnase data]) (-center and -nfr can be performed later with "getPeakTags"
+  synonyms:
+  - -nfr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (fold enrichment over input tag count, default: 4.0)'
+  synonyms:
+  - -F
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (poisson p-value threshold relative to input tag count, default:
+    0.0001)'
+  synonyms:
+  - -P
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (fold enrichment over local tag count, default: 4.0)'
+  synonyms:
+  - -L
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (poisson p-value threshold relative to local tag count, default:
+    0.0001)'
+  synonyms:
+  - -LP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (fold enrichment limit of expected unique tag positions, default:
+    2.0)'
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (region to check for local tag enrichment, default: 10000)'
+  synonyms:
+  - -localSize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Size of region to search for control tags, default: 2x peak size)'
+  synonyms:
+  - -inputSize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <#> (False discovery rate, default = 0.001)
+  synonyms:
+  - -fdr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Set poisson p-value cutoff, default: uses fdr)'
+  synonyms:
+  - -poisson
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Set # of tags to define a peak, default: 25)'
+  synonyms:
+  - -tagThreshold
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Set # of normalized tags to define a peak, by default uses 1e7
+    for norm)'
+  synonyms:
+  - -ntagThreshold
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Absolute minimum tags per peak, default: expected tags per peak)'
+  synonyms:
+  - -minTagThreshold
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Slope threshold to identify super vs. typical enh., default:
+    1.00)'
+  synonyms:
+  - -superSlope
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (moving window/number of peaks to use to calculate slope, default:
+    10)'
+  synonyms:
+  - -superWindow
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(Output typical enhancers to this file, default: not used)'
+  synonyms:
+  - -typical
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: (initial peaks to use for super enhancer merging/scoring)
+  synonyms:
+  - -inputPeaks
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: (regions to exclude from analysis, i.e. TSS regions for H3K27ac)
+  synonyms:
+  - -excludePeaks
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: '/ -methylC (find unmethylated/methylated regions, default: -unmethyC)'
+  synonyms:
+  - -unmethylC
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (methylation threshold of regions, default: avg methylation/2)'
+  synonyms:
+  - -mCthresh
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<#> (Minimum number of cytosines per methylation peak, default: 6)'
+  synonyms:
+  - -minNumC
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- findPeaks
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

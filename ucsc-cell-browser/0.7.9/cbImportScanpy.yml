@@ -1,0 +1,103 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: to directory with tab-separated files
+  synonyms:
+  - '- cbImportScanpy'
+  - -i
+  - -o
+  - '- convert'
+  args: !SimpleFlagArg
+    name: pbmc3k.h5ad
+  optional: true
+- !Flag
+  description: show debug messages
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: input .h5ad file. Required parameter
+  synonyms:
+  - -i
+  - --inFile
+  args: !SimpleFlagArg
+    name: INFILE
+  optional: true
+- !Flag
+  description: when exporting, do not use the raw input data, instead use the normalized
+    and corrected matrix scanpy. This has no effect if the anndata.raw attribute is
+    not used in the anndata object
+  synonyms:
+  - --proc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output directory. Required parameter
+  synonyms:
+  - -o
+  - --outDir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: Dataset name for generated cellbrowser.conf. If not specified, the
+    last component of -o will be used.
+  synonyms:
+  - -n
+  - --name
+  args: !SimpleFlagArg
+    name: DATASETNAME
+  optional: true
+- !Flag
+  description: do not only convert to tab-sep files but also run cbBuild toconvert
+    the data and add the dataset under htmlDir
+  synonyms:
+  - --htmlDir
+  args: !SimpleFlagArg
+    name: HTMLDIR
+  optional: true
+- !Flag
+  description: 'only with --htmlDir: start webserver on port to serve htmlDir'
+  synonyms:
+  - -p
+  - --port
+  args: !SimpleFlagArg
+    name: PORT
+  optional: true
+- !Flag
+  description: 'name of the marker genes field, default: rank_genes_groups'
+  synonyms:
+  - --markerField
+  args: !SimpleFlagArg
+    name: MARKERFIELD
+  optional: true
+- !Flag
+  description: if no marker genes are present, use this field to calculate them
+  synonyms:
+  - --clusterField
+  args: !SimpleFlagArg
+    name: CLUSTERFIELD
+  optional: true
+- !Flag
+  description: do not convert the matrix, saves time if the same one has been exported
+    before to the same directory
+  synonyms:
+  - -m
+  - --skipMatrix
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- cbImportScanpy
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

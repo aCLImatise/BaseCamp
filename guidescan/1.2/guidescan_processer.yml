@@ -1,0 +1,135 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'path to fasta file or folder with fasta files (will use all .fa, .fasta,
+    .fa.gz, .fasta.gz files found in the folder) (default: None)'
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: 'project name, use in all output (will produce a folder with this name
+    containing intermediate and final files in it) (default: myguides)'
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: 'minimum chromosome length to consider, chromosomes in input FASTA
+    that are shorter than this will be excluded from analysis; simple way to exclude
+    scaffolds unassigned to known chromosomes etc. (default: 10000)'
+  synonyms:
+  - --minchr
+  args: !SimpleFlagArg
+    name: MINCHRLEN
+  optional: true
+- !Flag
+  description: 'list names of chromosomes (comma separated) that will be used in analysis,
+    or name of file where this list is stored (default: )'
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: CHROM
+  optional: true
+- !Flag
+  description: 'desired length of guideRNAs (not including PAM) (default: 20)'
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: 'PAM sequence (default: NGG)'
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: PAM
+  optional: true
+- !Flag
+  description: 'alternative PAM sequences (separate multiple ones by commas), will
+    not be used in primary guideRNAs, but will be considered in off-targets; all PAM
+    sequences should be mutually exclusive and of the same length (default: NAG)'
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: ALTPAM
+  optional: true
+- !Flag
+  description: 'position of PAM with respect to guideRNA (default: end)'
+  synonyms:
+  - --pampos
+  args: !ChoiceFlagArg
+    choices:
+    - start
+    - end
+  optional: true
+- !Flag
+  description: 'minimum mismatch similarity between guideRNAs; a candidate guideRNA
+    (with primary PAM) should not have alternative occurences in the genome (with
+    any PAM) with less than this many mismatches (not including PAM) (default: 2)'
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: SIM
+  optional: true
+- !Flag
+  description: 'maximum distance to consider from guideRNA to its off- target; off-target
+    is an alternative occurrence (with any PAM) of this guideRNA in the genome at
+    edit distance at most this number (including PAM); currently values larger than
+    4 are infeasible for large (e.g., mammalian) genomes, and value 3 will take long
+    time to compute; use -1 if do not want any off- target info in resulting database
+    (can add it later using bamdata) (default: 3)'
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: OFFDIST
+  optional: true
+- !Flag
+  description: 'maximum number of positions of k-mers to remember; for k-mer occurring
+    multiple times in the genome (such k-mers cannot be guideRNAs, but their positions
+    can be off-targets of guideRNAs) store at most this many arbitrary their occurrences
+    in the genome (default: 10)'
+  synonyms:
+  - --maxoffpos
+  args: !SimpleFlagArg
+    name: MAXOFFPOS
+  optional: true
+- !Flag
+  description: 'maximum number of off-targets to store for a guideRNA in a resulting
+    BAM library (default: 1000)'
+  synonyms:
+  - --maxoffcount
+  args: !SimpleFlagArg
+    name: MAXOFFCOUNT
+  optional: true
+- !Flag
+  description: 'path to gnu utilities, e.g. "/usr/local/bin"; if empty, use system
+    defaults; requires: cut, sort, uniq, shuf (default: )'
+  synonyms:
+  - --gnupath
+  args: !SimpleFlagArg
+    name: GNUPATH
+  optional: true
+- !Flag
+  description: 'how many threads to use; do not specify more than you have on your
+    system; currently not implemented (default: 1)'
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+command:
+- guidescan_processer
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

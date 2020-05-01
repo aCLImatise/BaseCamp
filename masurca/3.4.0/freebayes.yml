@@ -1,0 +1,352 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 50 aln.bam
+  synonyms:
+  - --haplotype-length
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0 --pooled-continuous --report-monomorphic >var.vcf
+  synonyms:
+  - --min-alternate-fraction
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Limit analysis to samples listed (one per line) in the FILE. By default
+    FreeBayes will analyze all samples in its input BAM files.
+  synonyms:
+  - -s
+  - --samples
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Each line of FILE should list a sample and a population which it is
+    part of.  The population-based bayesian inference model will then be partitioned
+    on the basis of the populations.
+  synonyms:
+  - --populations
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'Read a copy number map from the BED file FILE, which has either a
+    sample-level ploidy: sample_name copy_number or a region-specific format: seq_name
+    start end sample_name copy_number ... for each region in each sample which does
+    not have the default copy number as set by --ploidy. These fields can be delimited
+    by space or tab.'
+  synonyms:
+  - -A
+  - --cnv-map
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Use variants reported in VCF file as input to the algorithm. Variants
+    in this file will included in the output even if there is not enough support in
+    the data to pass input filters.
+  synonyms:
+  - -@
+  - --variant-input
+  args: !SimpleFlagArg
+    name: VCF
+  optional: true
+- !Flag
+  description: Only provide variant calls and genotype likelihoods for sites and alleles
+    which are provided in the VCF input, and provide output in the VCF for all input
+    alleles, not just those which have support in the data.
+  synonyms:
+  - -l
+  - --only-use-input-alleles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When specified, only variant alleles provided in this input VCF will
+    be used for the construction of complex or haplotype alleles.
+  synonyms:
+  - --haplotype-basis-alleles
+  args: !SimpleFlagArg
+    name: VCF
+  optional: true
+- !Flag
+  description: At sites where genotypes are made over haplotype alleles, provide information
+    about all alleles in output, not only those which are called.
+  synonyms:
+  - --report-all-haplotype-alleles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Report even loci which appear to be monomorphic, and report all considered
+    alleles, even those which are not in called genotypes. Loci which do not have
+    any potential alternates have '.' for ALT.
+  synonyms:
+  - --report-monomorphic
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Report sites if the probability that there is a polymorphism at the
+    site is greater than N.  default: 0.0.  Note that post- filtering is generally
+    recommended over the use of this parameter.'
+  synonyms:
+  - -P
+  - --pvar
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Generate strict VCF format (FORMAT/GQ will be an int)
+  synonyms:
+  - --strict-vcf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The expected mutation rate or pairwise nucleotide diversity among
+    the population under analysis.  This serves as the single parameter to the Ewens
+    Sampling Formula prior model default: 0.001'
+  synonyms:
+  - -T
+  - --theta
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'Sets the default ploidy for the analysis to N.  default: 2'
+  synonyms:
+  - -p
+  - --ploidy
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Assume that samples result from pooled sequencing. Model pooled samples
+    using discrete genotypes across pools. When using this flag, set --ploidy to the
+    number of alleles in each sample or use the --cnv-map to define per-sample ploidy.
+  synonyms:
+  - -J
+  - --pooled-discrete
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output all alleles which pass input filters, regardles of genotyping
+    outcome or model.
+  synonyms:
+  - -K
+  - --pooled-continuous
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Evaluate only the best N SNP alleles, ranked by sum of supporting
+    quality scores.  (Set to 0 to use all; default: all)'
+  synonyms:
+  - -n
+  - --use-best-n-alleles
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: '--haplotype-length N Allow haplotype calls with contiguous embedded
+    matches of up to this length. Set N=-1 to disable clumping. (default: 3)'
+  synonyms:
+  - -E
+  - --max-complex-gap
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'When assembling observations across repeats, require the total repeat
+    length at least this many bp.  (default: 5)'
+  synonyms:
+  - --min-repeat-size
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'To detect interrupted repeats, build across sequence until it has
+    entropy > N bits per bp. Set to 0 to turn off. (default: 1)'
+  synonyms:
+  - --min-repeat-entropy
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Exclude observations which do not fully span the dynamically-determined
+    detection window.  (default, use all observations, dividing partial support across
+    matching haplotypes when generating haplotypes.)
+  synonyms:
+  - --no-partial-observations
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Remove SNP observations from input.
+  synonyms:
+  - -I
+  - --throw-away-snp-obs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Remove indel observations from input.
+  synonyms:
+  - -i
+  - --throw-away-indels-obs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Remove MNP observations from input.
+  synonyms:
+  - -X
+  - --throw-away-mnp-obs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: complex allele observations from input.
+  synonyms:
+  - -u
+  - --throw-away-complex-obs
+  args: !SimpleFlagArg
+    name: Remove
+  optional: true
+- !Flag
+  description: Turn off left-alignment of indels, which is enabled by default.
+  synonyms:
+  - -O
+  - --dont-left-align-indels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Require at least this count of observations supporting an alternate
+    allele within the total population in order to use the allele in analysis.  default:
+    1'
+  synonyms:
+  - -G
+  - --min-alternate-total
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'Require at least this coverage to process a site. default: 0'
+  synonyms:
+  - --min-coverage
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'Downsample per-sample coverage to this level if greater than this
+    coverage. default: no limit'
+  synonyms:
+  - --limit-coverage
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'Skip processing of alignments overlapping positions with coverage
+    >N. This filters sites above this coverage, but will also reduce data nearby.
+    default: no limit'
+  synonyms:
+  - -g
+  - --skip-coverage
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Equivalent to --pooled-discrete --hwe-priors-off and removal of Ewens
+    Sampling Formula component of priors.
+  synonyms:
+  - -k
+  - --no-population-priors
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable estimation of the probability of the combination arising under
+    HWE given the allele frequency as estimated by observation frequency.
+  synonyms:
+  - -w
+  - --hwe-priors-off
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable incorporation of prior expectations about observations. Uses
+    read placement probability, strand balance probability, and read position (5'-3')
+    probability.
+  synonyms:
+  - -V
+  - --binomial-obs-priors-off
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable use of aggregate probability of observation balance between
+    alleles as a component of the priors.
+  synonyms:
+  - -a
+  - --allele-balance-priors-off
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Read length-dependent allele observation biases from FILE. The format
+    is [length] [alignment efficiency relative to reference] where the efficiency
+    is 1 if there is no relative observation bias.
+  synonyms:
+  - --observation-bias
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Limit estimated observation quality by capping base quality at Q.
+  synonyms:
+  - --base-quality-cap
+  args: !SimpleFlagArg
+    name: Q
+  optional: true
+- !Flag
+  description: 'An estimate of contamination to use for all samples.  default: 10e-9'
+  synonyms:
+  - --prob-contamination
+  args: !SimpleFlagArg
+    name: F
+  optional: true
+- !Flag
+  description: Use legacy (polybayes equivalent) genotype likelihood calculations
+  synonyms:
+  - --legacy-gls
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "A file containing per-sample estimates of contamination, such as those\
+    \ generated by VerifyBamID.  The format should be: sample p(read=R|genotype=AR)\
+    \ p(read=A|genotype=AA) Sample '*' can be used to set default contamination estimates."
+  synonyms:
+  - --contamination-estimates
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Print debugging output.
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print more verbose debugging output (requires "make DEBUG")
+  synonyms:
+  - -dd
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- freebayes
+subcommands: []
+help_flag: !Flag
+  description: Prints this help dialog.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Prints the release number and the git commit id.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

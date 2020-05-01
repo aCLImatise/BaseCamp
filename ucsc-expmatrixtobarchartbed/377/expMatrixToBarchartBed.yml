@@ -1,0 +1,67 @@
+!Command
+positional:
+- !Positional
+  description: Two column no header, the first column is the samples which should
+    match the matrix, the second is the grouping (cell type, tissue, etc)
+  position: 0
+  name: sampleFile
+  optional: false
+- !Positional
+  description: The input matrix file. The samples in the first row should exactly
+    match the ones in the sampleFile. The labels (ex ENST*****) in the first column
+    should exactly match the ones in the bed file.
+  position: 1
+  name: matrixFile
+  optional: false
+- !Positional
+  description: Bed6+1 format. File that maps the column labels from the matrix to
+    coordinates. Tab separated; chr, start coord, end coord, label, score, strand,
+    gene name. The score column is ignored.
+  position: 2
+  name: bedFile
+  optional: false
+- !Positional
+  description: The output file, bed 6+5 format. See the schema in kent/src/hg/lib/barChartBed.as.
+  position: 3
+  name: outputFile
+  optional: false
+named:
+- !Flag
+  description: Optional autoSql description of extra fields in the input bed.
+  synonyms:
+  - --autoSql
+  args: !SimpleFlagArg
+    name: AUTOSQL
+  optional: true
+- !Flag
+  description: Optional file to define the group order, list the groups in a single
+    column in the order desired. The default ordering is alphabetical.
+  synonyms:
+  - --groupOrderFile
+  args: !SimpleFlagArg
+    name: GROUPORDERFILE
+  optional: true
+- !Flag
+  description: Calculate the group values using mean rather than median.
+  synonyms:
+  - --useMean
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show runtime messages.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- expMatrixToBarchartBed
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

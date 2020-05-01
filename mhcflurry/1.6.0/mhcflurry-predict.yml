@@ -1,0 +1,135 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Prints the list of supported alleles and exits
+  synonyms:
+  - --list-supported-alleles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prints the list of supported peptide lengths and exits
+  synonyms:
+  - --list-supported-peptide-lengths
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Alleles to predict (exclusive with passing an input CSV)
+  synonyms:
+  - --alleles
+  args: !RepeatFlagArg
+    name: ALLELE
+  optional: true
+- !Flag
+  description: Peptides to predict (exclusive with passing an input CSV)
+  synonyms:
+  - --peptides
+  args: !RepeatFlagArg
+    name: PEPTIDE
+  optional: true
+- !Flag
+  description: "Input column name for alleles. Default: 'allele'"
+  synonyms:
+  - --allele-column
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "Input column name for peptides. Default: 'peptide'"
+  synonyms:
+  - --peptide-column
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "Column giving N-terminal flanking sequence. Default: 'n_flank'"
+  synonyms:
+  - --n-flank-column
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "Column giving C-terminal flanking sequence. Default: 'c_flank'"
+  synonyms:
+  - --c-flank-column
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: Return NaNs for unsupported alleles or peptides instead of raising
+  synonyms:
+  - --no-throw
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output CSV
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: OUTPUT.csv
+  optional: true
+- !Flag
+  description: "Prefix for output column names. Default: 'mhcflurry_'"
+  synonyms:
+  - --prediction-column-prefix
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "Delimiter character for results. Default: ','"
+  synonyms:
+  - --output-delimiter
+  args: !SimpleFlagArg
+    name: CHAR
+  optional: true
+- !Flag
+  description: Do not include affinity percentile rank
+  synonyms:
+  - --no-affinity-percentile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Always include the best_allele column even when it is identical to
+    the allele column (i.e. all queries are monoallelic).
+  synonyms:
+  - --always-include-best-allele
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Directory containing models. Either a binding affinity predictor or
+    a presentation predictor can be used. Default: /home/ubuntu/.local/share/mhcflurry/4/1.6.0/m
+    odels_class1_presentation/models'
+  synonyms:
+  - --models
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: Affinity prediction only (no antigen processing or presentation)
+  synonyms:
+  - --affinity-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not use flanking sequence information even when available
+  synonyms:
+  - --no-flanking
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- mhcflurry-predict
+subcommands: []
+help_flag: !Flag
+  description: Show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

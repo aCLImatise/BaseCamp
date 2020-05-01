@@ -1,0 +1,124 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Full path to csv output of pandas dataframe from BAM_ANALYSIS module
+  synonyms:
+  - --dataframe
+  args: !SimpleFlagArg
+    name: DATAFRAME
+  optional: true
+- !Flag
+  description: Full path to OPTIONAL external bed file with callable regions. This
+    script will plot based on filters only, callable sites only, and filters and callable
+    sites combined. Default is 'None', which will plot based on filters only.
+  synonyms:
+  - --callable_bed
+  args: !SimpleFlagArg
+    name: CALLABLE_BED
+  optional: true
+- !Flag
+  description: Full path to Platypus VCF output from BAM_ANALYSIS module
+  synonyms:
+  - --vcf
+  args: !SimpleFlagArg
+    name: VCF
+  optional: true
+- !Flag
+  description: Full path to and prefix of output files.
+  synonyms:
+  - --output_prefix
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+  optional: true
+- !Flag
+  description: Name of chromosome to analyze. Default is 'ALL', which will analyze
+    all chromosomes in dataframe together. Otherwise, will only plot for chromosome
+    listed.
+  synonyms:
+  - --chrom
+  args: !SimpleFlagArg
+    name: CHROM
+  optional: true
+- !Flag
+  description: If flag provided, use full dataset to calculate mean for filters. Otherwise,
+    will calculate mean per chromosome.
+  synonyms:
+  - --whole_genome_threshold
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[MIN_DEPTH_FILTER [MIN_DEPTH_FILTER ...]] Minimum depth threshold
+    for a window to be considered high quality. Calculated as mean depth * min_depth_filter.
+    So, a min_depth_filter of 0.2 would require at least a minimum depth of 2 if the
+    mean depth was 10. Default is 0.0 to consider all windows.'
+  synonyms:
+  - --min_depth_filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[MAX_DEPTH_FILTER [MAX_DEPTH_FILTER ...]] Maximum depth threshold
+    for a window to be considered high quality. Calculated as mean depth * max_depth_filter.
+    So, a max_depth_filter of 4 would require depths to be less than or equal to 40
+    if the mean depth was 10. Default is 100000.0 to consider all windows.'
+  synonyms:
+  - --max_depth_filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[MAPQ_CUTOFF [MAPQ_CUTOFF ...]] Minimum mean mapq threshold for a
+    window to be considered high quality. Default is 20.'
+  synonyms:
+  - --mapq_cutoff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Consider all SNPs with a site quality (QUAL) greater than or equal
+    to this value. Default is 30.
+  synonyms:
+  - --variant_site_quality
+  args: !SimpleFlagArg
+    name: VARIANT_SITE_QUALITY
+  optional: true
+- !Flag
+  description: Consider all SNPs with a sample genotype quality greater than or equal
+    to this value. Default is 30.
+  synonyms:
+  - --variant_genotype_quality
+  args: !SimpleFlagArg
+    name: VARIANT_GENOTYPE_QUALITY
+  optional: true
+- !Flag
+  description: Consider all SNPs with a sample depth greater than or equal to this
+    value. Default is 4.
+  synonyms:
+  - --variant_depth
+  args: !SimpleFlagArg
+    name: VARIANT_DEPTH
+  optional: true
+- !Flag
+  description: Sample ID or other identifier to be used in naming
+  synonyms:
+  - --sample_id
+  args: !SimpleFlagArg
+    name: SAMPLE_ID
+  optional: true
+- !Flag
+  description: If True, will also plot a histogram of distances between SNPs. Will
+    only run on a single chromosome. Default is False.
+  synonyms:
+  - --plot_snp_distance
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- explore_thresholds
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

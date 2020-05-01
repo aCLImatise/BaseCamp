@@ -1,0 +1,576 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Load aplication plugins [Multiple; Split by ","]
+  synonyms:
+  - --plugins
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Options for application plugins [Key-Value]
+  synonyms:
+  - --plugins_opts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --no_configs tells HPC::Runner not to load any configs [Flag]
+  synonyms:
+  - --no_configs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Override the search paths and supply your own config.
+  synonyms:
+  - --config
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Search for config files in ~/.config.(ext) and in your current working
+    directory. [Flag]
+  synonyms:
+  - --search
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable a search path for configs. Default is the home dir and your
+    cwd. [Multiple]
+  synonyms:
+  - --search_path
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Basename of config files [Default:".hpcrunner"]
+  synonyms:
+  - --config_base
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Give your jobnames an additional project name. #HPC jobname=gzip will
+    be submitted as 001_project_gzip'
+  synonyms:
+  - --project
+  - --pr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Opt out of writing the tar archive of JSON stats. This may be desirable
+    for especially large workflows. [Flag]
+  synonyms:
+  - --no_log_json
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- hpcrunner.pl
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: Prints this usage information
+    position: 0
+    name: help
+    optional: false
+  named: []
+  command:
+  - hpcrunner.pl
+  - archive
+  subcommands: []
+  help_flag: !Flag
+    description: -?  Prints this usage information. [Flag]
+    synonyms:
+    - --help
+    - -h
+    - --usage
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Prints this usage information
+    position: 0
+    name: help
+    optional: false
+  named:
+  - !Flag
+    description: 'Meta str passed from HPC::Runner::Command:: Scheduler'
+    synonyms:
+    - --metastr
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Show the process ID per logging message. This is useful when aggregating
+      logs. [Flag]
+    synonyms:
+    - --show_processid
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[Default:"000_hpcrunner_logs"]'
+    synonyms:
+    - --logname
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Directory where logfiles are written. Defaults to current_working_directory/prunner_current_date_time
+      /log1 .. log2 .. log3
+    synonyms:
+    - --logdir
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Annotate with tags. [Multiple; Split by ","]
+    synonyms:
+    - --tags
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Always commit files. [Flag]
+    synonyms:
+    - --autocommit
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Message to use for git commit [Default:"hpcrunner commit"]
+    synonyms:
+    - --message
+    - -m
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[Default:"1"; Number]'
+    synonyms:
+    - --commands
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Specify a job name, each job will be appended with its batch order
+    synonyms:
+    - --jobname
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Load job execution plugins [Multiple; Split by ","]
+    synonyms:
+    - --job_plugins
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Options for job_plugins [Key-Value]
+    synonyms:
+    - --job_plugins_opts
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Run a job from a single node or workstation. [Flag]
+    synonyms:
+    - --single_node
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Counter to tell execute_array where to start reading in the infile
+      [Required; Number]
+    synonyms:
+    - --batch_index_start
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - hpcrunner.pl
+  - execute_array
+  subcommands: []
+  help_flag: !Flag
+    description: -?  Prints this usage information. [Flag]
+    synonyms:
+    - --help
+    - -h
+    - --usage
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Submission version. Each version has a corresponding git tag. See
+      the difference between tags with `git diff tag1 tag2`. Tags are always version
+      numbers, starting with 0.01.
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional:
+  - !Positional
+    description: Prints this usage information
+    position: 0
+    name: help
+    optional: false
+  named:
+  - !Flag
+    description: '[Default:"000_hpcrunner_logs"]'
+    synonyms:
+    - --logname
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Directory where logfiles are written. Defaults to current_working_directory/prunner_current_date_time
+      /log1 .. log2 .. log3
+    synonyms:
+    - --logdir
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Meta str passed from HPC::Runner::Command:: Scheduler'
+    synonyms:
+    - --metastr
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Show the process ID per logging message. This is useful when aggregating
+      logs. [Flag]
+    synonyms:
+    - --show_processid
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Always commit files. [Flag]
+    synonyms:
+    - --autocommit
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Annotate with tags. [Multiple; Split by ","]
+    synonyms:
+    - --tags
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Message to use for git commit [Default:"hpcrunner commit"]
+    synonyms:
+    - --message
+    - -m
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Options for job_plugins [Key-Value]
+    synonyms:
+    - --job_plugins_opts
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[Default:"1"; Number]'
+    synonyms:
+    - --commands
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Load job execution plugins [Multiple; Split by ","]
+    synonyms:
+    - --job_plugins
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Run a job from a single node or workstation. [Flag]
+    synonyms:
+    - --single_node
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Specify a job name, each job will be appended with its batch order
+    synonyms:
+    - --jobname
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Counter to tell execute_array where to start reading in the infile.
+      Omit this option in order to run in single node. [Number]
+    synonyms:
+    - --batch_index_start
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - hpcrunner.pl
+  - execute_job
+  subcommands: []
+  help_flag: !Flag
+    description: -?  Prints this usage information. [Flag]
+    synonyms:
+    - --help
+    - -h
+    - --usage
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Submission version. Each version has a corresponding git tag. See
+      the difference between tags with `git diff tag1 tag2`. Tags are always version
+      numbers, starting with 0.01.
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional:
+  - !Positional
+    description: Prints this usage information
+    position: 0
+    name: help
+    optional: false
+  named:
+  - !Flag
+    description: 'Meta str passed from HPC::Runner::Command:: Scheduler'
+    synonyms:
+    - --metastr
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[Default:"000_hpcrunner_logs"]'
+    synonyms:
+    - --logname
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Show the process ID per logging message. This is useful when aggregating
+      logs. [Flag]
+    synonyms:
+    - --show_processid
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Directory where logfiles are written. Defaults to current_working_directory/prunner_current_date_time
+      /log1 .. log2 .. log3
+    synonyms:
+    - --logdir
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Always commit files. [Flag]
+    synonyms:
+    - --autocommit
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Annotate with tags. [Multiple; Split by ","]
+    synonyms:
+    - --tags
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Message to use for git commit [Default:"hpcrunner commit"]
+    synonyms:
+    - --message
+    - -m
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Load job execution plugins [Multiple; Split by ","]
+    synonyms:
+    - --job_plugins
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Options for job_plugins [Key-Value]
+    synonyms:
+    - --job_plugins_opts
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Run a job from a single node or workstation. [Flag]
+    synonyms:
+    - --single_node
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[Default:"1"; Number]'
+    synonyms:
+    - --commands
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Specify a job name, each job will be appended with its batch order
+    synonyms:
+    - --jobname
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Counter to tell execute_array where to start reading in the infile.
+      Omit this option in order to run in single node. [Number]
+    synonyms:
+    - --batch_index_start
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - hpcrunner.pl
+  - single_node
+  subcommands: []
+  help_flag: !Flag
+    description: -?  Prints this usage information. [Flag]
+    synonyms:
+    - --help
+    - -h
+    - --usage
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Submission version. Each version has a corresponding git tag. See
+      the difference between tags with `git diff tag1 tag2`. Tags are always version
+      numbers, starting with 0.01.
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional:
+  - !Positional
+    description: Prints this usage information
+    position: 0
+    name: help
+    optional: false
+  named:
+  - !Flag
+    description: --ntasks-per-node switch in slurm. total concurrent tasks on a node.
+      [Default:"1"; Integer]
+    synonyms:
+    - --ntasks_per_node
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Number of nodes requested. You should only use this if submitting
+      parallel jobs. [Default:"1"; Integer ]
+    synonyms:
+    - --nodes_count
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: List of modules to load ex. R2, samtools, etc [ Multiple; Split by
+      ","]
+    synonyms:
+    - --module
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Slurm partition to submit jobs to.
+    synonyms:
+    - --partition
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '--account switch in slurm. '
+    synonyms:
+    - --account
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Switch to use batches. The default is to use job arrays. Warning!
+      This was the default way of submitting before 3.0, but is not well supported.
+      [ Flag]
+    synonyms:
+    - --use_batches
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Use this if you wish to run each job run one after another, with
+      each job starting only after the previous has completed successfully [Flag]
+    synonyms:
+    - --serial
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[Default:"00:20:00"]'
+    synonyms:
+    - --walltime
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[Default:"200"; Integer]'
+    synonyms:
+    - --max_array_size
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: --ntasks switch in slurm. This is equal to the number of concurrent
+      tasks on each node * the number of nodes, not the total number of tasks [ Default:"1";
+      Integer]
+    synonyms:
+    - --ntasks
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Supply a memory limit [Default:"10GB"]
+    synonyms:
+    - --mem
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Conda env to activate.
+    synonyms:
+    - --conda_env
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: afterok switch in slurm. --afterok 123,134 will tell slurm to start
+      this job after 123,134 have exited successfully [Multiple; Split by ","]
+    synonyms:
+    - --afterok
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: This defaults to your current user ID. This can only be changed if
+      running as an admin user
+    synonyms:
+    - --user
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: --cpus-per-task switch in slurm [Default:"4"; Integer]
+    synonyms:
+    - --cpus_per_task
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Specify a job name, each job will be appended with its batch order
+      [Default:"hpcjob_001"]
+    synonyms:
+    - --jobname
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Commands to run on each node. If you have a low number of jobs you
+      can submit at a time you want this number much higher.  [Default:"1"; Integer]
+    synonyms:
+    - --commands_per_node
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do a dry run - do not submit to the scheduler. [ Flag]
+    synonyms:
+    - --dry_run
+    - --dr
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - hpcrunner.pl
+  - submit_jobs
+  subcommands: []
+  help_flag: !Flag
+    description: -?  Prints this usage information. [Flag]
+    synonyms:
+    - --help
+    - -h
+    - --usage
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: -?  Prints this usage information. [Flag]
+  synonyms:
+  - --help
+  - -h
+  - --usage
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

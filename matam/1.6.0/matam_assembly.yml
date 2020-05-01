@@ -1,0 +1,224 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Input reads file (fasta or fastq format)
+  synonyms:
+  - -i
+  - --input_fastq
+  args: !SimpleFlagArg
+    name: FASTQ
+  optional: true
+- !Flag
+  description: MATAM ref db. Default is $MATAM_DIR/db/SILVA_128_SSURef_NR95
+  synonyms:
+  - -d
+  - --ref_db
+  args: !SimpleFlagArg
+    name: DBPATH
+  optional: true
+- !Flag
+  description: Output directory.Default will be "matam_assembly"
+  synonyms:
+  - -o
+  - --out_dir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: Increase verbosity
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Max number of CPU to use. Default is 1 cpu
+  synonyms:
+  - --cpu
+  args: !SimpleFlagArg
+    name: CPU
+  optional: true
+- !Flag
+  description: Maximum memory to use (in MBi). Default is 10000 MBi
+  synonyms:
+  - --max_memory
+  args: !SimpleFlagArg
+    name: MAXMEM
+  optional: true
+- !Flag
+  description: Get up to --best good alignments per read. Default is 10
+  synonyms:
+  - --best
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Max e-value to keep an alignment for. Default is 1e-05
+  synonyms:
+  - --evalue
+  args: !SimpleFlagArg
+    name: REAL
+  optional: true
+- !Flag
+  description: Score threshold (real between 0 and 1). Default is 0.9
+  synonyms:
+  - --score_threshold
+  args: !SimpleFlagArg
+    name: REAL
+  optional: true
+- !Flag
+  description: Use straight mode filtering. Default is geometric mode
+  synonyms:
+  - --straight_mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ref coverage threshold. By default set to 0 to desactivate filtering
+  synonyms:
+  - --coverage_threshold
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Minimum identity of an overlap between 2 reads. Default is 1.0
+  synonyms:
+  - --min_identity
+  args: !SimpleFlagArg
+    name: REAL
+  optional: true
+- !Flag
+  description: Minimum length of an overlap. Default is 50
+  synonyms:
+  - --min_overlap_length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Minimum number of read to keep a node. Default is 1
+  synonyms:
+  - -N
+  - --min_read_node
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Minimum number of overlap to keep an edge. Default is 1
+  synonyms:
+  - -E
+  - --min_overlap_edge
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Seed to initialize random generator. Default is picking seed from system
+    time
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Quorum for LCA computing. Has to be between 0.51 and 1. Default is
+    0.51
+  synonyms:
+  - --quorum
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Select the assembler to be used. Default is SGA
+  synonyms:
+  - -a
+  - --assembler
+  args: !ChoiceFlagArg
+    choices:
+    - SGA
+  optional: true
+- !Flag
+  description: Set the assembler read correction step. 'auto' means assemble the components
+    with read correction enabled when the components coverage are sufficient (20X)
+    and assemble the other components without read correction. Default is auto
+  synonyms:
+  - --read_correction
+  args: !ChoiceFlagArg
+    choices:
+    - no
+    - yes
+    - auto
+  optional: true
+- !Flag
+  description: Experimental. Perform contigs binning during scaffolding.
+  synonyms:
+  - --contigs_binning
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Filter out small scaffolds
+  synonyms:
+  - --min_scaffold_length
+  args: !SimpleFlagArg
+    name: MIN_SCAFFOLD_LENGTH
+  optional: true
+- !Flag
+  description: Do the taxonomic assignment
+  synonyms:
+  - --perform_taxonomic_assignment
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '{16srrna,fungallsu,fungalits_warcup,fungalits_unite}  The training
+    model used for taxonomic assignment. Default is 16srrna'
+  synonyms:
+  - --training_model
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Sequences assigned (by RDP) with a confidence score < 0.8 (at genus
+    level) will be tagged as an artificial "unclassified" taxon
+  synonyms:
+  - --rdp_cutoff
+  args: !SimpleFlagArg
+    name: RDP_CUTOFF
+  optional: true
+- !Flag
+  description: Do not remove tmp files
+  synonyms:
+  - --keep_tmp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output debug infos
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Try to resume from given step. Steps are: reads_mapping, alignments_filtering,
+    overlap_graph_building, graph_compaction, contigs_assembly, scaffolding, abundance_calculation,
+    taxonomic_assignment'
+  synonyms:
+  - --resume_from
+  args: !SimpleFlagArg
+    name: STEP
+  optional: true
+- !Flag
+  description: Perform only the first step of MATAM (i.e Reads mapping against ref
+    db with sortmerna to filter the reads). Relevant options for this step correspond
+    to the "Read mapping" section.
+  synonyms:
+  - --filter_only
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- matam_assembly.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

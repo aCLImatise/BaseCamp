@@ -1,0 +1,222 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Base name of the index.
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Name of an input read file. If paired-end, this should be the first
+    read file (typically containing "R1"in the file name) and the second should be
+    provided via "-R". Acceptable formats include gzipped FASTQ, FASTQ, gzipped FASTA
+    and FASTA. These formats are identified automatically.
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'Type of input sequencing data. Its values include 0: RNA-seq data
+    1: genomic DNA-seq data.'
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Name of an output file. By default, the output is in BAM format. Omitting
+    this option makes the output be written to STDOUT.
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Name of the second read file in paired-end data (typically containing
+    "R2" the file name).
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Input reads are in SAM format.
+  synonyms:
+  - --SAMinput
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input reads are in BAM format.
+  synonyms:
+  - --BAMinput
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Save mapping results in SAM format.
+  synonyms:
+  - --SAMoutput
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <3:6>          Offset value added to the Phred quality score of each
+    read base. '3' for phred+33 and '6' for phred+64. '3' by default.
+  synonyms:
+  - -P
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of selected subreads, 10 by default.
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Consensus threshold for reporting a hit (minimal number of subreads
+    that map in consensus) . If paired-end, this gives the consensus threshold for
+    the anchor read (anchor read receives more votes than the other read in the same
+    pair). 3 by default
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Consensus threshold for the non- anchor read in a pair. 1 by default.
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Maximum number of mis-matched bases allowed in each reported alignment.
+    3 by default. Mis-matched bases found in soft- clipped bases are not counted.
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Report multi-mapping reads in addition to uniquely mapped reads. Use
+    "-B" to set the maximum number of equally-best alignments to be reported.
+  synonyms:
+  - --multiMapping
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Maximum number of equally-best alignments to be reported for a multi-mapping
+    read. Equally-best alignments have the same number of mis-matched bases. 1 by
+    default.
+  synonyms:
+  - -B
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Maximum length (in bp) of indels that can be detected. 5 by default.
+    Indels of up to 200bp long can be detected.
+  synonyms:
+  - -I
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Detect multiple short indels that are in close proximity (they can
+    be as close as 1bp apart from each other).
+  synonyms:
+  - --complexIndels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Trim off <int> number of bases from 5' end of each read. 0 by default.
+  synonyms:
+  - --trim5
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Trim off <int> number of bases from 3' end of each read. 0 by default.
+  synonyms:
+  - --trim3
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Minimum fragment/insert length, 50bp by default.
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Maximum fragment/insert length, 600bp by default.
+  synonyms:
+  - -D
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: <ff:fr:rf>     Orientation of first and second reads, 'fr' by default
+    ( forward/reverse).
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of CPU threads used, 1 by default.
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Add read group ID to the output.
+  synonyms:
+  - --rg-id
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Add <tag:value> to the read group (RG) header in the output.
+  synonyms:
+  - --rg
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Convert color-space read bases to base-space read bases in the mapping
+    output. Note that read mapping is performed at color-space.
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Score for matched bases in short indel detection. 2 by default.
+  synonyms:
+  - --DPMatch
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Detect structural variants (eg. long indel, inversion, duplication
+    and translocation) and report breakpoints. Refer to Users Guide for breakpoint
+    reporting.
+  synonyms:
+  - --sv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output version of the program.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- subread-align
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

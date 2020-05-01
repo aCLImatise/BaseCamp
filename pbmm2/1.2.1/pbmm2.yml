@@ -1,0 +1,387 @@
+!Command
+positional: []
+named: []
+command:
+- pbmm2
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'STR   Set alignment mode. See below for preset parameter details.
+      Valid choices: (SUBREAD, CCS, ISOSEQ, UNROLLED). [SUBREAD]'
+    synonyms:
+    - --preset
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT   k-mer size (no larger than 28). [-1]
+    synonyms:
+    - -k
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT   Minimizer window size. [-1]
+    synonyms:
+    - -w
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Disable homopolymer-compressed k-mer (compression is active for SUBREAD
+      & UNROLLED presets).
+    synonyms:
+    - -u
+    - --no-kmer-compression
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT   Number of threads to use, 0 means autodetection. [0]
+    synonyms:
+    - -j
+    - --num-threads
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
+      [WARN]'
+    synonyms:
+    - --log-level
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: FILE  Log to a file, instead of stderr.
+    synonyms:
+    - --log-file
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - pbmm2
+  - index
+  subcommands: []
+  help_flag: !Flag
+    description: Show this help and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Show application version and exit.
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional:
+  - !Positional
+    description: ': -k 15 -w 5  -u -o 2 -O 32 -e 1 -E 0 -A 1 -B 2 -z 200 -Z 100 -r
+      200000 -L 0.5 -g 2000 -C 5 -G 200000'
+    position: 0
+    name: ISOSEQ
+    optional: false
+  - !Positional
+    description: ': -k 15 -w 15    -o 2 -O 32 -e 1 -E 0 -A 1 -B 2 -z 200 -Z 100 -r
+      2000   -L 0.5 -g 10000'
+    position: 1
+    name: UNROLLED
+    optional: false
+  named:
+  - !Flag
+    description: INT    Process N records per chunk. [100]
+    synonyms:
+    - --chunk-size
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Generate sorted BAM file.
+    synonyms:
+    - --sort
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: STR    Memory per thread for sorting. [768M]
+    synonyms:
+    - -m
+    - --sort-memory
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT    Number of threads used for sorting; 0 means 25% of -j, maximum
+      8. [0]
+    synonyms:
+    - -J
+    - --sort-threads
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'STR    Set alignment mode. See below for preset parameter details.
+      Valid choices: (SUBREAD, CCS, HIFI, ISOSEQ, UNROLLED). [SUBREAD]'
+    synonyms:
+    - --preset
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT    k-mer size (no larger than 28). [-1]
+    synonyms:
+    - -k
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT    Minimizer window size. [-1]
+    synonyms:
+    - -w
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Disable homopolymer-compressed k-mer (compression is active for SUBREAD
+      & UNROLLED presets).
+    synonyms:
+    - -u
+    - --no-kmer-compression
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT    Matching score. [-1]
+    synonyms:
+    - -A
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT    Mismatch penalty. [-1]
+    synonyms:
+    - -B
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT    Z-drop score. [-1]
+    synonyms:
+    - -z
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT    Z-drop inversion score. [-1]
+    synonyms:
+    - -Z
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT    Bandwidth used in chaining and DP-based alignment. [-1]
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT    Stop chain enlongation if there are no minimizers in N bp.
+      [-1]
+    synonyms:
+    - -g
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT    Gap open penalty 1. [-1]
+    synonyms:
+    - -o
+    - --gap-open-1
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT    Gap open penalty 2. [-1]
+    synonyms:
+    - -O
+    - --gap-open-2
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT    Gap extension penalty 1. [-1]
+    synonyms:
+    - -e
+    - --gap-extend-1
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT    Gap extension penalty 2. [-1]
+    synonyms:
+    - -E
+    - --gap-extend-2
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: FLOAT  Long join flank ratio. [-1]
+    synonyms:
+    - -L
+    - --lj-min-ratio
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT    Max intron length (changes -r). [-1]
+    synonyms:
+    - -G
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT    Cost for a non-canonical GT-AG splicing (effective in ISOSEQ
+      preset). [-1]
+    synonyms:
+    - -C
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do not prefer splice flanks GT-AG (effective in ISOSEQ preset).
+    synonyms:
+    - --no-splice-flank
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'STR    Sample name for all read groups. Defaults, in order of precedence:
+      SM field in input read group, biosample name, well sample name, "UnnamedSample".'
+    synonyms:
+    - --sample
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: STR    Read group header line such as '@RG\tID:xyz\tSM:abc'. Only
+      for FASTA/Q inputs.
+    synonyms:
+    - --rg
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: FLOAT  Minimum alignment concordance in percent. [70]
+    synonyms:
+    - -c
+    - --min-concordance-perc
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: FLOAT  Minimum sequence identity in percent. [0]
+    synonyms:
+    - -x
+    - --min-id-perc
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: FLOAT  Minimum gap compressed sequence identity in percent. [0]
+    synonyms:
+    - -y
+    - --min-gap-comp-id-perc
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT    Minimum mapped read length in basepairs. [50]
+    synonyms:
+    - -l
+    - --min-length
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT    Output at maximum N alignments for each read, 0 means no maximum.
+      [0]
+    synonyms:
+    - -N
+    - --best-n
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Remove all kinetic and extra QV tags. Output cannot be polished.
+    synonyms:
+    - --strip
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: One output BAM per sample.
+    synonyms:
+    - --split-by-sample
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Include unmapped records in output.
+    synonyms:
+    - --unmapped
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'STR    Generate index for sorted BAM output. Valid choices: (NONE,
+      BAI, CSI). [BAI]'
+    synonyms:
+    - --bam-index
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Pick one read per ZMW of median length.
+    synonyms:
+    - --median-filter
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Process ZMW Reads, subreadset.xml input required (activates UNROLLED
+      preset).
+    synonyms:
+    - --zmw
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Process HQ region of each ZMW, subreadset.xml input required (activates
+      UNROLLED preset).
+    synonyms:
+    - --hqregion
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Collapse homopolymers in reads and reference.
+    synonyms:
+    - --collapse-homopolymers
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: INT    Number of threads to use, 0 means autodetection. [0]
+    synonyms:
+    - -j
+    - --num-threads
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'STR    Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN,
+      FATAL). [WARN]'
+    synonyms:
+    - --log-level
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: FILE   Log to a file, instead of stderr.
+    synonyms:
+    - --log-file
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - pbmm2
+  - align
+  subcommands: []
+  help_flag: !Flag
+    description: Show this help and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Show application version and exit.
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+help_flag: !Flag
+  description: Show this help and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show application version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

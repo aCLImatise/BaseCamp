@@ -1,0 +1,57 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: (S) [INPUT_BAM(S) ...], --input-files INPUT_BAM(S) [INPUT_BAM(S) ...]
+    Sorted and indexed BAM files to analyze. It is essential that all BAM files must
+    be the result of mappings against the same contigs.
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: INPUT_BAM
+  optional: true
+- !Flag
+  description: This is the file where you list the contigs, and nucleotide positions
+    you are interested in. This is supposed to be a TAB-delimited file with two columns.
+    In each line, the first column should be the contig name, and the second column
+    should be the comma- separated list of integers for nucleotide positions.
+  synonyms:
+  - --contigs-and-positions
+  args: !SimpleFlagArg
+    name: CONTIGS_AND_POS
+  optional: true
+- !Flag
+  description: When declared, only reads that cover all positions will be reported.
+    It is necessary to use this flag if you want to perform oligotyping-like analyses
+    on matching reads.
+  synonyms:
+  - --only-complete-links
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: File path to store results.
+  synonyms:
+  - -o
+  - --output-file
+  args: !SimpleFlagArg
+    name: FILE_PATH
+  optional: true
+- !Flag
+  description: When declared, the program will list contigs in the BAM file and exit
+    gracefully without any further analysis.
+  synonyms:
+  - --list-contigs
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- anvi-report-linkmers
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

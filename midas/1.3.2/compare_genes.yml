@@ -1,0 +1,68 @@
+!Command
+positional:
+- !Positional
+  description: Path to output from `merge_midas.py genes` for one species directory
+    should be named according to a species_id and contains files 'genes_*.txt')
+  position: 0
+  name: PATH
+  optional: false
+named:
+- !Flag
+  description: Path to output file
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Maximum number of genes to use. Useful for quick tests (use all)
+  synonyms:
+  - --max_genes
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Maximum number of samples to use. Useful for quick tests (use all)
+  synonyms:
+  - --max_samples
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Metric to use for computing distances (jaccard)
+  synonyms:
+  - --distance
+  args: !ChoiceFlagArg
+    choices:
+    - jaccard
+    - euclidean
+    - manhattan
+  optional: true
+- !Flag
+  description: Data type to use for comparing genes (presabs)
+  synonyms:
+  - --dtype
+  args: !ChoiceFlagArg
+    choices:
+    - presabs
+    - copynum
+  optional: true
+- !Flag
+  description: Cutoff to use for determining presence absence (0.35)
+  synonyms:
+  - --cutoff
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+command:
+- compare_genes.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

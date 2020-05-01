@@ -1,0 +1,97 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: level (0/default=1/2/3)
+  synonyms:
+  - -v
+  - --verbose
+  args: !SimpleFlagArg
+    name: verbosity
+  optional: true
+- !Flag
+  description: path to the binary 'eqtlbma_bf'
+  synonyms:
+  - --p2b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: directory with lists of features to analyze (BED files) file names
+    have to be like '<anything>_<batchId>.<anything>'
+  synonyms:
+  - --geneD
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: directory with lists of SNPs to analyze (optional) file names have
+    to be like '<anything>_<batchId>.<anything>' each SNP file should correspond to
+    a feature file, in the same order
+  synonyms:
+  - --snpD
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: directory with lists of files with absolute paths to files with summary
+    statistics file names have to be like '<anything>_<batchId>.<abything>' if --inssD
+    is given, neither --geneD nor --snpD are used (nor --geno, --scoord, --exp, etc)
+  synonyms:
+  - --inssD
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: file with seeds (as many as files in --geneD) optional, default=list_seeds.txt.gz
+    (should be gzipped)
+  synonyms:
+  - --seedF
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: task identifier (not for SGE, for SLURM only)
+  synonyms:
+  - --task
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: which BF to use as the test statistic for the joint-analysis permutations
+    default=none
+  synonyms:
+  - --pbf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use the maximum ABF over SNPs as test statistic for permutations
+  synonyms:
+  - --maxbf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: number of threads for the permutations default=1
+  synonyms:
+  - --thread
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: identifier of the subgroup to analyze
+  synonyms:
+  - --sbgrp
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- eqtlbma_bf_parallel.bash
+subcommands: []
+help_flag: !Flag
+  description: display the help and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: version information and exit
+  synonyms:
+  - -V
+  - --version
+  args: !SimpleFlagArg
+    name: output
+  optional: true

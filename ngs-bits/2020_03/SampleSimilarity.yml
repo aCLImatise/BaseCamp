@@ -1,0 +1,100 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Input variant lists in VCF format (two or more). If only one file is
+    given, each line in this file is interpreted as an input file path.
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: filelist
+  optional: true
+- !Flag
+  description: "Output file. If unset, writes to STDOUT. Default value: ''"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Mode (input format). Default value: 'vcf' Valid: 'vcf,bam'"
+  synonyms:
+  - -mode
+  args: !SimpleFlagArg
+    name: enum
+  optional: true
+- !Flag
+  description: "Restrict similarity calculation to variants in target region. Default\
+    \ value: ''"
+  synonyms:
+  - -roi
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Includes gonosomes into calculation (by default only variants on autosomes\
+    \ are considered). Default value: 'false'"
+  synonyms:
+  - -include_gonosomes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Skip multi-allelic variants instead of throwing an error (VCF mode).\
+    \ Default value: 'false'"
+  synonyms:
+  - -skip_multi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Minimum coverage to consider a SNP for the analysis (BAM mode). Default\
+    \ value: '30'"
+  synonyms:
+  - -min_cov
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "The maximum number of high-coverage SNPs to extract from BAM. 0 means\
+    \ unlimited (BAM mode). Default value: '2000'"
+  synonyms:
+  - -max_snps
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Genome build used to generate the input (BAM mode). Default value:\
+    \ 'hg19' Valid: 'hg19,hg38'"
+  synonyms:
+  - -build
+  args: !SimpleFlagArg
+    name: enum
+  optional: true
+- !Flag
+  description: Prints changeloge and exits.
+  synonyms:
+  - --changelog
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Writes a Tool Definition Xml file. The file name is the application
+    name with the suffix '.tdx'.
+  synonyms:
+  - --tdx
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- SampleSimilarity
+subcommands: []
+help_flag: !Flag
+  description: Shows this help and exits.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Prints version and exits.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,144 @@
+!Command
+positional:
+- !Positional
+  description: Directory containing raw fast5 (will be searched recursively).
+  position: 0
+  name: fast5s_dir
+  optional: false
+named:
+- !Flag
+  description: 'Guppy config. Default: dna_r9.4.1_450bps_modbases_dam- dcm-cpg_hac.cfg'
+  synonyms:
+  - --guppy-config
+  args: !SimpleFlagArg
+    name: GUPPY_CONFIG
+  optional: true
+- !Flag
+  description: 'Path to guppy server executable. Default: ./ont- guppy/bin/guppy_basecall_server'
+  synonyms:
+  - --guppy-server-path
+  args: !SimpleFlagArg
+    name: GUPPY_SERVER_PATH
+  optional: true
+- !Flag
+  description: 'Guppy server port. Default: 5555'
+  synonyms:
+  - --guppy-server-port
+  args: !SimpleFlagArg
+    name: GUPPY_SERVER_PORT
+  optional: true
+- !Flag
+  description: 'Directory to store output results. Default: megalodon_results'
+  synonyms:
+  - --output-directory
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+  optional: true
+- !Flag
+  description: Overwrite output directory if it exists.
+  synonyms:
+  - --overwrite
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Mappings output format. Choices: bam, cram, sam'
+  synonyms:
+  - --mappings-format
+  args: !ChoiceFlagArg
+    choices:
+    - bam
+    - cram
+    - sam
+  optional: true
+- !Flag
+  description: Reference FASTA or minimap2 index file used for mapping called reads.
+  synonyms:
+  - --reference
+  args: !SimpleFlagArg
+    name: REFERENCE
+  optional: true
+- !Flag
+  description: 'Compute variant aggregation for haploid genotypes. Default: diploid'
+  synonyms:
+  - --haploid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Sequence variants to call for each read in VCF/BCF format (required
+    for variant output).
+  synonyms:
+  - --variant-filename
+  args: !SimpleFlagArg
+    name: VARIANT_FILENAME
+  optional: true
+- !Flag
+  description: 'File containing emperical calibration for variant scores. See megalodon/scripts/calibrate_variant_llr_scores.py.
+    Default: Load default calibration for specified guppy config.'
+  synonyms:
+  - --variant-calibration-filename
+  args: !SimpleFlagArg
+    name: VARIANT_CALIBRATION_FILENAME
+  optional: true
+- !Flag
+  description: MOTIF REL_POSITION Restrict modified base calls to specified motif(s).
+    For example to restrict to CpG sites use "--mod-motif Z CG 0".
+  synonyms:
+  - --mod-motif
+  args: !SimpleFlagArg
+    name: BASE
+  optional: true
+- !Flag
+  description: 'File containing emperical calibration for modified base scores. See
+    megalodon/scripts/calibrate_mod_llr_scores.py. Default: Load default calibration
+    for specified guppy config.'
+  synonyms:
+  - --mod-calibration-filename
+  args: !SimpleFlagArg
+    name: MOD_CALIBRATION_FILENAME
+  optional: true
+- !Flag
+  description: Show all options.
+  synonyms:
+  - --help-long
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of parallel processes. Default: 1'
+  synonyms:
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: GPU devices for guppy or taiyaki basecalling backends.
+  synonyms:
+  - --devices
+  args: !RepeatFlagArg
+    name: DEVICES
+  optional: true
+- !Flag
+  description: 'Output verbose output on read progress. Outputs N most common points
+    where reads could not be processed further. Default: 3'
+  synonyms:
+  - --verbose-read-progress
+  args: !SimpleFlagArg
+    name: VERBOSE_READ_PROGRESS
+  optional: true
+command:
+- megalodon
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show megalodon version and exit.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

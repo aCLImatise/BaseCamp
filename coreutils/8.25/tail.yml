@@ -1,0 +1,104 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: =[+]NUM       output the last NUM bytes; or use -c +NUM to output starting
+    with byte NUM of each file
+  synonyms:
+  - -c
+  - --bytes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[={name|descriptor}] output appended data as the file grows; an absent\
+    \ option argument means 'descriptor'"
+  synonyms:
+  - -f
+  - --follow
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: same as --follow=name --retry
+  synonyms:
+  - -F
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =[+]NUM       output the last NUM lines, instead of the last 10; or
+    use -n +NUM to output starting with line NUM
+  synonyms:
+  - -n
+  - --lines
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: with --follow=name, reopen a FILE which has not changed size after
+    N (default 5) iterations to see if it has been unlinked or renamed (this is the
+    usual case of rotated log files); with inotify, this option is rarely useful
+  synonyms:
+  - --max-unchanged-stats
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: with -f, terminate after process ID, PID dies
+  synonyms:
+  - --pid
+  args: !SimpleFlagArg
+    name: PID
+  optional: true
+- !Flag
+  description: never output headers giving file names
+  synonyms:
+  - -q
+  - --quiet
+  - --silent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: keep trying to open a file if it is inaccessible
+  synonyms:
+  - --retry
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: with -f, sleep for approximately N seconds (default 1.0) between iterations;
+    with inotify and --pid=P, check process P at least once every N seconds
+  synonyms:
+  - -s
+  - --sleep-interval
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: always output headers giving file names
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: line delimiter is NUL, not newline
+  synonyms:
+  - -z
+  - --zero-terminated
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- tail
+subcommands: []
+help_flag: !Flag
+  description: this help and exit
+  synonyms:
+  - --help
+  args: !SimpleFlagArg
+    name: display
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: version information and exit
+  synonyms:
+  - --version
+  args: !SimpleFlagArg
+    name: output
+  optional: true

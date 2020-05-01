@@ -1,0 +1,310 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Phenotypes file (whitespace separated)
+  synonyms:
+  - --phenotypes
+  args: !SimpleFlagArg
+    name: PHENOTYPES
+  optional: true
+- !Flag
+  description: 'Phenotype file column to use [Default: last column]'
+  synonyms:
+  - --phenotype-column
+  args: !SimpleFlagArg
+    name: PHENOTYPE_COLUMN
+  optional: true
+- !Flag
+  description: Kmers file
+  synonyms:
+  - --kmers
+  args: !SimpleFlagArg
+    name: KMERS
+  optional: true
+- !Flag
+  description: VCF file. Will filter any non 'PASS' sites
+  synonyms:
+  - --vcf
+  args: !SimpleFlagArg
+    name: VCF
+  optional: true
+- !Flag
+  description: Presence/absence .Rtab matrix as produced by roary and piggy
+  synonyms:
+  - --pres
+  args: !SimpleFlagArg
+    name: PRES
+  optional: true
+- !Flag
+  description: VCF regions to group variants by for burden testing (requires --vcf).
+    Requires vcf to be indexed
+  synonyms:
+  - --burden
+  args: !SimpleFlagArg
+    name: BURDEN
+  optional: true
+- !Flag
+  description: Strains distance square matrix (fixed or lineage effects)
+  synonyms:
+  - --distances
+  args: !SimpleFlagArg
+    name: DISTANCES
+  optional: true
+- !Flag
+  description: Load an existing matrix decomposition
+  synonyms:
+  - --load-m
+  args: !SimpleFlagArg
+    name: LOAD_M
+  optional: true
+- !Flag
+  description: Strains similarity square matrix (for --lmm)
+  synonyms:
+  - --similarity
+  args: !SimpleFlagArg
+    name: SIMILARITY
+  optional: true
+- !Flag
+  description: Load an existing lmm cache
+  synonyms:
+  - --load-lmm
+  args: !SimpleFlagArg
+    name: LOAD_LMM
+  optional: true
+- !Flag
+  description: Prefix for saving matrix decomposition
+  synonyms:
+  - --save-m
+  args: !SimpleFlagArg
+    name: SAVE_M
+  optional: true
+- !Flag
+  description: Prefix for saving LMM cache
+  synonyms:
+  - --save-lmm
+  args: !SimpleFlagArg
+    name: SAVE_LMM
+  optional: true
+- !Flag
+  description: 'Type of multidimensional scaling [Default: classic]'
+  synonyms:
+  - --mds
+  args: !ChoiceFlagArg
+    choices:
+    - classic
+    - metric
+    - non-metric
+  optional: true
+- !Flag
+  description: 'Maximum number of dimensions to consider after MDS [Default: 10]'
+  synonyms:
+  - --max-dimensions
+  args: !SimpleFlagArg
+    name: MAX_DIMENSIONS
+  optional: true
+- !Flag
+  description: Allow run without a distance matrix
+  synonyms:
+  - --no-distances
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Force continuous phenotype [Default: binary auto- detect]'
+  synonyms:
+  - --continuous
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use random instead of fixed effects to correct for population structure.
+    Requires a similarity matrix
+  synonyms:
+  - --lmm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use a whole genome model for association and prediction. Population
+    structure correction is implicit.
+  synonyms:
+  - --wg
+  args: !ChoiceFlagArg
+    choices:
+    - enet
+    - rf
+    - blup
+  optional: true
+- !Flag
+  description: Report lineage effects
+  synonyms:
+  - --lineage
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Custom clusters to use as lineages [Default: MDS components]'
+  synonyms:
+  - --lineage-clusters
+  args: !SimpleFlagArg
+    name: LINEAGE_CLUSTERS
+  optional: true
+- !Flag
+  description: 'File to write lineage association to [Default: lineage_effects.txt]'
+  synonyms:
+  - --lineage-file
+  args: !SimpleFlagArg
+    name: LINEAGE_FILE
+  optional: true
+- !Flag
+  description: Use --lineage-clusters to downweight sequences.
+  synonyms:
+  - --sequence-reweighting
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prefix for saving variants
+  synonyms:
+  - --save-vars
+  args: !SimpleFlagArg
+    name: SAVE_VARS
+  optional: true
+- !Flag
+  description: Prefix for loading variants
+  synonyms:
+  - --load-vars
+  args: !SimpleFlagArg
+    name: LOAD_VARS
+  optional: true
+- !Flag
+  description: Prefix for saving model
+  synonyms:
+  - --save-model
+  args: !SimpleFlagArg
+    name: SAVE_MODEL
+  optional: true
+- !Flag
+  description: 'Set the mixing between l1 and l2 penalties [Default: 0.0069]'
+  synonyms:
+  - --alpha
+  args: !SimpleFlagArg
+    name: ALPHA
+  optional: true
+- !Flag
+  description: 'Number of folds cross-validation to perform [Default: 10]'
+  synonyms:
+  - --n-folds
+  args: !SimpleFlagArg
+    name: N_FOLDS
+  optional: true
+- !Flag
+  description: 'Minimum AF [Default: 0.01]'
+  synonyms:
+  - --min-af
+  args: !SimpleFlagArg
+    name: MIN_AF
+  optional: true
+- !Flag
+  description: 'Maximum AF [Default: 0.99]'
+  synonyms:
+  - --max-af
+  args: !SimpleFlagArg
+    name: MAX_AF
+  optional: true
+- !Flag
+  description: 'Maximum missing (vcf/Rtab) [Default: 0.05]'
+  synonyms:
+  - --max-missing
+  args: !SimpleFlagArg
+    name: MAX_MISSING
+  optional: true
+- !Flag
+  description: 'Prefiltering t-test pvalue threshold [Default: 1]'
+  synonyms:
+  - --filter-pvalue
+  args: !SimpleFlagArg
+    name: FILTER_PVALUE
+  optional: true
+- !Flag
+  description: 'Likelihood ratio test pvalue threshold [Default: 1]'
+  synonyms:
+  - --lrt-pvalue
+  args: !SimpleFlagArg
+    name: LRT_PVALUE
+  optional: true
+- !Flag
+  description: 'Correlation filter for elastic net (phenotype/variant correlation
+    quantile at which to start keeping variants) [Default: 0.25]'
+  synonyms:
+  - --cor-filter
+  args: !SimpleFlagArg
+    name: COR_FILTER
+  optional: true
+- !Flag
+  description: User-defined covariates file (tab-delimited, no header, first column
+    contains sample names)
+  synonyms:
+  - --covariates
+  args: !SimpleFlagArg
+    name: COVARIATES
+  optional: true
+- !Flag
+  description: "[USE_COVARIATES [USE_COVARIATES ...]] Covariates to use. Format is\
+    \ \"2 3q 4\" (q for quantitative) [Default: load covariates but don't use them]"
+  synonyms:
+  - --use-covariates
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Print sample lists [Default: hide samples]'
+  synonyms:
+  - --print-samples
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Print filtered variants (i.e. fitting errors) [Default: hide them]'
+  synonyms:
+  - --print-filtered
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: File to print patterns to, useful for finding pvalue threshold
+  synonyms:
+  - --output-patterns
+  args: !SimpleFlagArg
+    name: OUTPUT_PATTERNS
+  optional: true
+- !Flag
+  description: 'Uncompressed kmers file [Default: gzipped]'
+  synonyms:
+  - --uncompressed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Processes [Default: 1]'
+  synonyms:
+  - --cpu
+  args: !SimpleFlagArg
+    name: CPU
+  optional: true
+- !Flag
+  description: 'Number of variants per core [Default: 3000]'
+  synonyms:
+  - --block_size
+  args: !SimpleFlagArg
+    name: BLOCK_SIZE
+  optional: true
+command:
+- pyseer
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

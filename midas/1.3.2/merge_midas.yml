@@ -1,0 +1,350 @@
+!Command
+positional: []
+named: []
+command:
+- merge_midas.py
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: Directory for output files
+    position: 0
+    name: outdir
+    optional: false
+  named:
+  - !Flag
+    description: Input to sample directories output by run_midas.py; see '-t' for
+      details
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: 'Specify one of the following: list: -i is a comma-separated list
+      (ex: /samples/sample_1,/samples/sample_2) dir: -i is a directory containing
+      all samples (ex: /samples) file: -i is a file of paths to samples (ex: /sample_paths.txt)'
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: INPUT_TYPE
+    optional: true
+  - !Flag
+    description: Path to reference database By default the MIDAS_DB environmental
+      variable is used
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: DB
+    optional: true
+  - !Flag
+    description: Minimum per-sample marker-gene-depth for estimating species prevalence
+      (1.0)
+    synonyms:
+    - --sample_depth
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: Maximum number of samples to process. Useful for testing (use all)
+    synonyms:
+    - --max_samples
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  command:
+  - merge_midas.py
+  - species
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Directory for output files. A subdirectory will be created for each
+      species_id
+    position: 0
+    name: outdir
+    optional: false
+  named:
+  - !Flag
+    description: Input to sample directories output by run_midas.py; see '-t' for
+      details
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: 'Specify one of the following: list: -i is a comma-separated list
+      (ex: /samples/sample_1,/samples/sample_2) dir: -i is a directory containing
+      all samples (ex: /samples) file: -i is a file of paths to samples (ex: /sample_paths.txt)'
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: INPUT_TYPE
+    optional: true
+  - !Flag
+    description: Path to reference database. By default, the MIDAS_DB environmental
+      variable is used
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: DB
+    optional: true
+  - !Flag
+    description: All species with >= MIN_SAMPLES (1)
+    synonyms:
+    - --min_samples
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Comma-separated list of species ids
+    synonyms:
+    - --species_id
+    args: !SimpleFlagArg
+      name: CHAR
+    optional: true
+  - !Flag
+    description: Maximum number of species to merge. Useful for testing (use all)
+    synonyms:
+    - --max_species
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Minimum read-depth across all genes with non-zero coverage (1.0)
+    synonyms:
+    - --sample_depth
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: Maximum number of samples to process. Useful for testing (use all)
+    synonyms:
+    - --max_samples
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: '{75,80,85,90,95,99} In the database, pan-genomes are defined at
+      6 different % identity clustering cutoffs. CLUSTER_PID allows you to quantify
+      gene content for any of these sets of gene clusters. By default, gene content
+      is reported for genes clustered at 95% identity'
+    synonyms:
+    - --cluster_pid
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Genes >= MIN_COPY are classified as present Genes < MIN_COPY are
+      classified as absent (0.35)
+    synonyms:
+    - --min_copy
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  command:
+  - merge_midas.py
+  - genes
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Directory for output files.  A subdirectory will be created for each
+      species_id
+    position: 0
+    name: outdir
+    optional: false
+  named:
+  - !Flag
+    description: Number of CPUs to use (1)
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Input to sample directories output by run_midas.py; see '-t' for
+      details
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: 'Specify one of the following: list: -i is a comma-separated list
+      (ex: /samples/sample_1,/samples/sample_2) dir: -i is a directory containing
+      all samples (ex: /samples) file: -i is a file of paths to samples (ex: /sample_paths.txt)'
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: INPUT_TYPE
+    optional: true
+  - !Flag
+    description: Path to reference database By default, the MIDAS_DB environmental
+      variable is used
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: DB
+    optional: true
+  - !Flag
+    description: 'Same as: --snp_type bi --site_depth 1 --site_ratio 2.0 --site_prev
+      0.95 (default)'
+    synonyms:
+    - --core_snps
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Same as: --snp_type any --site_depth 1 --site_ratio 2.0 --site_prev
+      0.95'
+    synonyms:
+    - --core_sites
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Same as: --snp_type bi --site_prev 0.0'
+    synonyms:
+    - --all_snps
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Same as: --snp_type any --site_prev 0.0'
+    synonyms:
+    - --all_sites
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: All species with >= MIN_SAMPLES (1)
+    synonyms:
+    - --min_samples
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Comma-separated list of species ids
+    synonyms:
+    - --species_id
+    args: !SimpleFlagArg
+      name: CHAR
+    optional: true
+  - !Flag
+    description: Maximum number of species to call SNPs for (all with >= 1 sample)
+    synonyms:
+    - --max_species
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Minimum average read depth per sample (5.0)
+    synonyms:
+    - --sample_depth
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: Fraction of reference sites covered by at least 1 read (0.4)
+    synonyms:
+    - --fract_cov
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: Maximum number of samples to process. useful for quick tests (use
+      all)
+    synonyms:
+    - --max_samples
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Include all samples in output
+    synonyms:
+    - --all_samples
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ ...]    Specify one or more of the following: mono: keep sites
+      with 1 allele > ALLELE_FREQ bi: keep sites with 2 alleles > ALLELE_FREQ (default)
+      tri: keep sites with 3 alleles > ALLELE_FREQ quad: keep sites with 4 alleles
+      > ALLELE_FREQ any: keep sites regardless of observed alleles'
+    synonyms:
+    - --snp_type
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum frequency for calling an allele present (0.01) Values >
+      0.0 and < 0.5 are accepted. Ex: --snp_type=bi --allele_freq=0.01 keeps bi-allelic
+      SNPs with a minimum frequency of 1%'
+    synonyms:
+    - --allele_freq
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: Minimum number of reads mapped to genomic site (1) Used in combination
+      with --site_prev to determine if site is in core-genome
+    synonyms:
+    - --site_depth
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Maximum ratio of site depth to genome depth (2.0) This filter helps
+      to eliminate genomic sites with abnormally high read depth
+    synonyms:
+    - --site_ratio
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: Minimum fraction of sample where genomic site is >= SITE_DEPTH and
+      <= SITE_RATIO (0.95) A high value selects for sites in the core-genome (i.e.
+      present in nearly all strains). A low value includes sites in variable regions
+      and/or with abnormally high read depth
+    synonyms:
+    - --site_prev
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: 'Maximum number of sites to include in output (use all). Useful for
+      quick tests '
+    synonyms:
+    - --max_sites
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  command:
+  - merge_midas.py
+  - snps
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

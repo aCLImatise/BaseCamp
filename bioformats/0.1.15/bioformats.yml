@@ -1,0 +1,719 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- bioformats
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: a BED file
+    position: 0
+    name: bed_file
+    optional: false
+  - !Positional
+    description: an output file
+    position: 1
+    name: output_file
+    optional: false
+  named:
+  - !Flag
+    description: 'a table name (default: Table)'
+    synonyms:
+    - -n
+    - --name
+    args: !SimpleFlagArg
+      name: NAME
+    optional: true
+  - !Flag
+    description: 'a table description (default: Description)'
+    synonyms:
+    - -d
+    - --description
+    args: !SimpleFlagArg
+      name: DESCRIPTION
+    optional: true
+  - !Flag
+    description: 'the number of lines to analyzefrom the input file (default: 100)'
+    synonyms:
+    - -l
+    - --lines
+    args: !SimpleFlagArg
+      name: LINES
+    optional: true
+  command:
+  - bioformats
+  - bedautosql
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: a FASTA file of sequences to reorder
+    position: 0
+    name: fasta
+    optional: false
+  - !Positional
+    description: a file with the sequence order
+    position: 1
+    name: order_file
+    optional: false
+  - !Positional
+    description: an output FASTA file of reordered sequences
+    position: 2
+    name: output
+    optional: false
+  named:
+  - !Flag
+    description: ignore sequences in the specified order file that are missing in
+      the input FASTA file
+    synonyms:
+    - -i
+    - --ignore_missing
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - bioformats
+  - fastareorder
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: an input file of features to be filtered
+    position: 0
+    name: input_file
+    optional: false
+  - !Positional
+    description: a FASTA file of sequences the features are related to
+    position: 1
+    name: fasta_file
+    optional: false
+  - !Positional
+    description: an output file of filtered features
+    position: 2
+    name: output_file
+    optional: false
+  named:
+  - !Flag
+    description: 'the input file type (default: bed)'
+    synonyms:
+    - -t
+    - --type
+    args: !ChoiceFlagArg
+      choices:
+      - bed
+      - vcf
+    optional: true
+  - !Flag
+    description: 'the flanking region length (default: 100)'
+    synonyms:
+    - -l
+    - --length
+    args: !SimpleFlagArg
+      name: LENGTH
+    optional: true
+  - !Flag
+    description: 'require flanks to have exactly the specified length (it may be shorter
+      if a feature is located near a sequence start or end) (default: False)'
+    synonyms:
+    - -s
+    - --strict
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - bioformats
+  - flanknfilter
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: a GFF3 file
+    position: 0
+    name: gff_file
+    optional: false
+  - !Positional
+    description: type of features to be processed
+    position: 1
+    name: type
+    optional: false
+  - !Positional
+    description: the output file in the BED format
+    position: 2
+    name: output_file
+    optional: false
+  named:
+  - !Flag
+    description: '[ATTRIBUTES [ATTRIBUTES ...]], --attributes [ATTRIBUTES [ATTRIBUTES
+      ...]] attributes to include to the output BED file (default: None)'
+    synonyms:
+    - -a
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'an attribute tag of a feature name (default: None)'
+    synonyms:
+    - -n
+    - --name_tag
+    args: !SimpleFlagArg
+      name: NAME_TAG
+    optional: true
+  - !Flag
+    description: 'the missing tag value (default: NA)'
+    synonyms:
+    - -m
+    - --missing_value
+    args: !SimpleFlagArg
+      name: MISSING_VALUE
+    optional: true
+  - !Flag
+    description: 'output a BED12 file of genes (default: False)'
+    synonyms:
+    - -g
+    - --genes
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'an attribute tag of exon genes (default: Parent)'
+    synonyms:
+    - -p
+    - --parent_tag
+    args: !SimpleFlagArg
+      name: PARENT_TAG
+    optional: true
+  - !Flag
+    description: 'do not check the order of GFF3 file records (default: False)'
+    synonyms:
+    - --no_order_check
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - bioformats
+  - gff2bed
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: a GFF2 file
+    position: 0
+    name: gff2_file
+    optional: false
+  - !Positional
+    description: the output GFF3 file
+    position: 1
+    name: output_file
+    optional: false
+  named:
+  - !Flag
+    description: ignore incorrect records in the specified input GFF2 file
+    synonyms:
+    - -i
+    - --ignore_incorrect_records
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - bioformats
+  - gff2to3
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: a GFF3 file
+    position: 0
+    name: gff_file
+    optional: false
+  named:
+  - !Flag
+    description: filter GFF3 features by the specified source
+    synonyms:
+    - -s
+    - --source
+    args: !SimpleFlagArg
+      name: SOURCE
+    optional: true
+  - !Flag
+    description: filter GFF3 features by the specified type
+    synonyms:
+    - -t
+    - --type
+    args: !SimpleFlagArg
+      name: TYPE
+    optional: true
+  command:
+  - bioformats
+  - gfftagstat
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: command
+    optional: true
+  named:
+  - !Flag
+    description: the input file is of the FASTA format
+    synonyms:
+    - -f
+    - --fasta
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: the number of the column that contains sequence names to be changed
+      (1 by default)
+    synonyms:
+    - -c
+    - --column
+    args: !SimpleFlagArg
+      name: COLUMN
+    optional: true
+  - !Flag
+    description: a character designating comment lines in the specified plain text
+      file
+    synonyms:
+    - --comment_char
+    args: !SimpleFlagArg
+      name: COMMENT_CHAR
+    optional: true
+  - !Flag
+    description: a symbol separating columns in the specified plain text file
+    synonyms:
+    - -s
+    - --separator
+    args: !SimpleFlagArg
+      name: SEPARATOR
+    optional: true
+  - !Flag
+    description: a name of a file containing NCBI chromosome accession numbers
+    synonyms:
+    - --chr
+    args: !SimpleFlagArg
+      name: CHR
+    optional: true
+  - !Flag
+    description: a name of a file containing NCBI accession numbers of unlocalized
+      fragments
+    synonyms:
+    - --unloc
+    args: !SimpleFlagArg
+      name: UNLOC
+    optional: true
+  - !Flag
+    description: a name of a file containing NCBI accession numbers of unplaced fragments
+    synonyms:
+    - --unpl
+    args: !SimpleFlagArg
+      name: UNPL
+    optional: true
+  - !Flag
+    description: a prefix to be added to sequence names
+    synonyms:
+    - --prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  - !Flag
+    description: a prefix to be added to chromosome names
+    synonyms:
+    - --prefix_chr
+    args: !SimpleFlagArg
+      name: PREFIX_CHR
+    optional: true
+  - !Flag
+    description: a prefix to be added to unlocalized fragment names
+    synonyms:
+    - --prefix_unloc
+    args: !SimpleFlagArg
+      name: PREFIX_UNLOC
+    optional: true
+  - !Flag
+    description: a prefix to be added to unplaced fragment names
+    synonyms:
+    - --prefix_unpl
+    args: !SimpleFlagArg
+      name: PREFIX_UNPL
+    optional: true
+  - !Flag
+    description: a suffix to be added to sequence names
+    synonyms:
+    - --suffix
+    args: !SimpleFlagArg
+      name: SUFFIX
+    optional: true
+  - !Flag
+    description: a suffix to be added to chromosome names
+    synonyms:
+    - --suffix_chr
+    args: !SimpleFlagArg
+      name: SUFFIX_CHR
+    optional: true
+  - !Flag
+    description: a suffix to be added to unlocalized fragment names
+    synonyms:
+    - --suffix_unloc
+    args: !SimpleFlagArg
+      name: SUFFIX_UNLOC
+    optional: true
+  - !Flag
+    description: a suffix to be added to unplaced fragment names
+    synonyms:
+    - --suffix_unpl
+    args: !SimpleFlagArg
+      name: SUFFIX_UNPL
+    optional: true
+  - !Flag
+    description: perform reverse renaming, that is, change original and new names
+      in the renaming table
+    synonyms:
+    - -r
+    - --revert
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: remove a sequence version from an accession number
+    synonyms:
+    - --no_version
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: remove descriptions from FASTA sequence headers
+    synonyms:
+    - --no_description
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write the renaming table to the specified file
+    synonyms:
+    - --output_table
+    args: !SimpleFlagArg
+      name: OUTPUT_TABLE
+    optional: true
+  command:
+  - bioformats
+  - ncbirenameseq
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: a file containing a table of original and new sequence names
+    position: 0
+    name: renaming_table
+    optional: false
+  - !Positional
+    description: a file to change sequence names in
+    position: 1
+    name: input_file
+    optional: false
+  - !Positional
+    description: an output file with renamed sequences
+    position: 2
+    name: output_file
+    optional: false
+  named:
+  - !Flag
+    description: the input file is of the FASTA format
+    synonyms:
+    - -f
+    - --fasta
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: the number of the column that contains sequence names to be changed
+      staring from 1
+    synonyms:
+    - -c
+    - --column
+    args: !SimpleFlagArg
+      name: COLUMN
+    optional: true
+  - !Flag
+    description: perform reverse renaming, that is, change original and new names
+      in the renaming table
+    synonyms:
+    - -r
+    - --revert
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: remove descriptions from FASTA sequence names
+    synonyms:
+    - --no_description
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: a character that designates comment lines in the specified plain-text
+      file
+    synonyms:
+    - --comment_char
+    args: !SimpleFlagArg
+      name: COMMENT_CHAR
+    optional: true
+  - !Flag
+    description: a symbol that separates columns in the specified plain-text file
+    synonyms:
+    - -s
+    - --separator
+    args: !SimpleFlagArg
+      name: SEPARATOR
+    optional: true
+  command:
+  - bioformats
+  - renameseq
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: a RepeatMasker out file
+    position: 0
+    name: rmout_file
+    optional: false
+  - !Positional
+    description: the output BED file
+    position: 1
+    name: bed_file
+    optional: false
+  named:
+  - !Flag
+    description: 'how to choose colors of BED repeat records (default: class)'
+    synonyms:
+    - -c
+    - --color
+    args: !ChoiceFlagArg
+      choices:
+      - class
+      - identity
+      - class_identity
+    optional: true
+  - !Flag
+    description: 'how to choose names of BED repeat records (default: id)'
+    synonyms:
+    - -n
+    - --name
+    args: !ChoiceFlagArg
+      choices:
+      - id
+      - name
+      - class
+      - family
+      - class_family
+    optional: true
+  - !Flag
+    description: 'output only repeat loci (the output is a BED3 file) (default: False)'
+    synonyms:
+    - -s
+    - --short
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - bioformats
+  - rmout2bed
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: an snpEff-annotated VCF file
+    position: 0
+    name: vcf_file
+    optional: false
+  - !Positional
+    description: the output BED file of annotated variants
+    position: 1
+    name: bed_file
+    optional: false
+  named:
+  - !Flag
+    description: convert to the BED3 format
+    synonyms:
+    - --bed3
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - bioformats
+  - snpeff2bed
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: an snpEff-annotated VCF file
+    position: 0
+    name: vcf_file
+    optional: false
+  - !Positional
+    description: the output BED3+ file of sample effects
+    position: 1
+    name: output_file
+    optional: false
+  named:
+  - !Flag
+    description: '[{REFHET,COMHET,ALTHOM} ...], --genotypes {REFHET,COMHET,ALTHOM}
+      [{REFHET,COMHET,ALTHOM} ...]'
+    synonyms:
+    - -g
+    args: !ChoiceFlagArg
+      choices:
+      - REFHET
+      - COMHET
+      - ALTHOM
+    optional: true
+  - !Flag
+    description: ignore errors in an input file
+    synonyms:
+    - --ignore_errors
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - bioformats
+  - vcfeffect2bed
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: a VCF file
+    position: 0
+    name: vcf_file
+    optional: false
+  - !Positional
+    description: the output BED3+ file of genotype counts
+    position: 1
+    name: output_file
+    optional: false
+  named:
+  - !Flag
+    description: a file with the list of individuals to be considered for genotype
+      counting
+    synonyms:
+    - -i
+    - --individuals
+    args: !SimpleFlagArg
+      name: INDIVIDUALS
+    optional: true
+  command:
+  - bioformats
+  - vcfgeno2bed
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,228 @@
+!Command
+positional: []
+named: []
+command:
+- PyLOH.py
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: FASTA file for reference genome.
+    position: 0
+    name: reference_genome
+    optional: false
+  - !Positional
+    description: BAM file for normal sample.
+    position: 1
+    name: normal_bam
+    optional: false
+  - !Positional
+    description: BAM file for tumor sample.
+    position: 2
+    name: tumor_bam
+    optional: false
+  - !Positional
+    description: Base name of preprocessed files to be created.
+    position: 3
+    name: filename_base
+    optional: false
+  named:
+  - !Flag
+    description: BED file for segments. If not provided, use autosomes as segments.
+      Default is None.
+    synonyms:
+    - --segments_bed
+    args: !SimpleFlagArg
+      name: SEGMENTS_BED
+    optional: true
+  - !Flag
+    description: Flag indicating whether the BAM files are whole exome sequencing(WES)
+      or not. If not provided, the BAM files are assumed to be whole genome sequencing(WGS).
+      Default is False.
+    synonyms:
+    - --WES
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Minimum reads depth required for both normal and tumor samples. Default
+      is 20.
+    synonyms:
+    - --min_depth
+    args: !SimpleFlagArg
+      name: MIN_DEPTH
+    optional: true
+  - !Flag
+    description: Minimum base quality required. Default is 10.
+    synonyms:
+    - --min_base_qual
+    args: !SimpleFlagArg
+      name: MIN_BASE_QUAL
+    optional: true
+  - !Flag
+    description: Minimum mapping quality required. Default is 10.
+    synonyms:
+    - --min_map_qual
+    args: !SimpleFlagArg
+      name: MIN_MAP_QUAL
+    optional: true
+  - !Flag
+    description: Number of processes to launch for preprocessing. Default is 1.
+    synonyms:
+    - --process_num
+    args: !SimpleFlagArg
+      name: PROCESS_NUM
+    optional: true
+  command:
+  - PyLOH.py
+  - preprocess
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Base name of preprocessed files created.
+    position: 0
+    name: filename_base
+    optional: false
+  named:
+  - !Flag
+    description: Maximum copy number of each allele allows to take. Default is 2.
+    synonyms:
+    - --allelenumber_max
+    args: !SimpleFlagArg
+      name: ALLELENUMBER_MAX
+    optional: true
+  - !Flag
+    description: File of the prior distribution. If not provided, use uniform prior.
+      Default is None.
+    synonyms:
+    - --priors
+    args: !SimpleFlagArg
+      name: PRIORS
+    optional: true
+  - !Flag
+    description: Maximum number of iterations for training. Default is 100.
+    synonyms:
+    - --max_iters
+    args: !SimpleFlagArg
+      name: MAX_ITERS
+    optional: true
+  - !Flag
+    description: Stop value of the EM algorithm for training. If the change of log-likelihood
+      is lower than this value, stop training. Default is 1e-7.
+    synonyms:
+    - --stop_value
+    args: !SimpleFlagArg
+      name: STOP_VALUE
+    optional: true
+  command:
+  - PyLOH.py
+  - run_model
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - PyLOH.py
+  - BAF_heatmap
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: Base name of preprocessed files created.
+      position: 0
+      name: filename_base
+      optional: false
+    named: []
+    command:
+    - PyLOH.py
+    - BAF_heatmap
+    - PyLOH
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: Base name of preprocessed files created.
+      position: 0
+      name: filename_base
+      optional: false
+    named: []
+    command:
+    - PyLOH.py
+    - BAF_heatmap
+    - BAF_heatmap
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: Base name of preprocessed files created.
+      position: 0
+      name: filename_base
+      optional: false
+    named: []
+    command:
+    - PyLOH.py
+    - BAF_heatmap
+    - filename_base
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

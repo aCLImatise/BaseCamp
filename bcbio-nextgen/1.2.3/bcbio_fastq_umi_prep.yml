@@ -1,0 +1,123 @@
+!Command
+positional: []
+named: []
+command:
+- bcbio_fastq_umi_prep.py
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: All fastq files to pair and process
+    position: 0
+    name: files
+    optional: false
+  named:
+  - !Flag
+    description: Number of cores, allowing running samples in parallel
+    synonyms:
+    - -c
+    - --cores
+    args: !SimpleFlagArg
+      name: CORES
+    optional: true
+  - !Flag
+    description: Output directory to write UMI prepped fastqs
+    synonyms:
+    - --outdir
+    args: !SimpleFlagArg
+      name: OUTDIR
+    optional: true
+  - !Flag
+    description: Duplex read 1 tag -- bases to trim from 5' end
+    synonyms:
+    - --tag1
+    args: !SimpleFlagArg
+      name: TAG1
+    optional: true
+  - !Flag
+    description: Duplex read 2 tag -- bases to trim from 5' end
+    synonyms:
+    - --tag2
+    args: !SimpleFlagArg
+      name: TAG2
+    optional: true
+  command:
+  - bcbio_fastq_umi_prep.py
+  - autopair
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Base name for output files -- you get <base_name>_R1.fq.gz
+    position: 0
+    name: out_base
+    optional: false
+  - !Positional
+    description: Input fastq, read 1
+    position: 1
+    name: read1_fq
+    optional: false
+  - !Positional
+    description: Input fastq, read 2
+    position: 2
+    name: read2_fq
+    optional: false
+  - !Positional
+    description: Input fastq, UMIs
+    position: 3
+    name: umi_fq
+    optional: false
+  named:
+  - !Flag
+    description: Number of cores to use for parallel bgzip
+    synonyms:
+    - -c
+    - --cores
+    args: !SimpleFlagArg
+      name: CORES
+    optional: true
+  - !Flag
+    description: Duplex read 1 tag -- bases to trim from 5' end
+    synonyms:
+    - --tag1
+    args: !SimpleFlagArg
+      name: TAG1
+    optional: true
+  - !Flag
+    description: Duplex read 2 tag -- bases to trim from 5' end
+    synonyms:
+    - --tag2
+    args: !SimpleFlagArg
+      name: TAG2
+    optional: true
+  command:
+  - bcbio_fastq_umi_prep.py
+  - single
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

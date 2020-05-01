@@ -1,0 +1,194 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: <upper threshold> -o corrected_matrix
+  synonyms:
+  - --filterThreshold
+  args: !SimpleFlagArg
+    name: lower threshold
+  optional: true
+command:
+- hicCorrectMatrix
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Name of the Hi-C matrix to correct in .h5 format. (default: None)'
+    synonyms:
+    - --matrix
+    - -m
+    args: !SimpleFlagArg
+      name: MATRIX
+    optional: true
+  - !Flag
+    description: 'File name to save the diagnostic plot. (default: None)'
+    synonyms:
+    - --plotName
+    - -o
+    args: !SimpleFlagArg
+      name: PLOTNAME
+    optional: true
+  - !Flag
+    description: 'List of chromosomes to be included in the iterative correction.
+      The order of the given chromosomes will be then kept for the resulting corrected
+      matrix. (default: None)'
+    synonyms:
+    - --chromosomes
+    args: !RepeatFlagArg
+      name: CHROMOSOMES
+    optional: true
+  - !Flag
+    description: 'Max value for the x-axis in counts per bin. (default: None)'
+    synonyms:
+    - --xMax
+    args: !SimpleFlagArg
+      name: XMAX
+    optional: true
+  - !Flag
+    description: 'Compute histogram per chromosome. For samples from cells with uneven
+      number of chromosomes and/or translocations it is advisable to check the histograms
+      per chromosome to find the most conservative `filterThreshold`. (default: False)'
+    synonyms:
+    - --perchr
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Print processing status. (default: False)'
+    synonyms:
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - hicCorrectMatrix
+  - diagnostic_plot
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Name of the Hi-C matrix to correct in .h5 format. (default: None)'
+    synonyms:
+    - --matrix
+    - -m
+    args: !SimpleFlagArg
+      name: MATRIX
+    optional: true
+  - !Flag
+    description: 'File name to save the resulting matrix. The output is a .h5 file.
+      (default: None)'
+    synonyms:
+    - --outFileName
+    - -o
+    args: !SimpleFlagArg
+      name: OUTFILENAME
+    optional: true
+  - !Flag
+    description: 'Number of iterations to compute.only for ICE! (default: 500)'
+    synonyms:
+    - --iterNum
+    - -n
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'Value corresponding to the maximum number of times a bin can be
+      scaled up during the iterative correction. For example, an inflation cutoff
+      of 3 will filter out all bins that were expanded 3 times or more during the
+      iterative correctionself.Only for ICE! (default: None)'
+    synonyms:
+    - --inflationCutoff
+    args: !SimpleFlagArg
+      name: INFLATIONCUTOFF
+    optional: true
+  - !Flag
+    description: 'Clip high counts in the top -transcut trans regions (i.e. between
+      chromosomes). A usual value is 0.05. Only for ICE! (default: None)'
+    synonyms:
+    - --transCutoff
+    - -transcut
+    args: !SimpleFlagArg
+      name: TRANSCUTOFF
+    optional: true
+  - !Flag
+    description: 'Each bin receives a value indicating the fraction that is covered
+      by reads. A cutoff of 0.5 will discard all those bins that have less than half
+      of the bin covered. Only for ICE! (default: None)'
+    synonyms:
+    - --sequencedCountCutoff
+    args: !SimpleFlagArg
+      name: SEQUENCEDCOUNTCUTOFF
+    optional: true
+  - !Flag
+    description: 'List of chromosomes to be included in the iterative correction.
+      The order of the given chromosomes will be then kept for the resulting corrected
+      matrix (default: None)'
+    synonyms:
+    - --chromosomes
+    args: !RepeatFlagArg
+      name: CHROMOSOMES
+    optional: true
+  - !Flag
+    description: 'If set, diagonal counts are not included. Only for ICE! (default:
+      False)'
+    synonyms:
+    - --skipDiagonal
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Normalize each chromosome separately. This is useful for samples
+      from cells with uneven number of chromosomes and/or translocations. (default:
+      False)'
+    synonyms:
+    - --perchr
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Print processing status. (default: False)'
+    synonyms:
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - hicCorrectMatrix
+  - correct
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: show program's version number and exit
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

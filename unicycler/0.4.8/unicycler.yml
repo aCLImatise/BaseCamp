@@ -1,0 +1,111 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Show a help message with all program options
+  synonyms:
+  - --help_all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: FASTQ file of unpaired short reads (optional)
+  synonyms:
+  - -s
+  - --unpaired
+  args: !SimpleFlagArg
+    name: UNPAIRED
+  optional: true
+- !Flag
+  description: FASTQ or FASTA file of long reads (optional)
+  synonyms:
+  - -l
+  - --long
+  args: !SimpleFlagArg
+    name: LONG
+  optional: true
+- !Flag
+  description: Output directory (required)
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: OUT
+  optional: true
+- !Flag
+  description: 'Level of stdout and log file information (default: 1) 0 = no stdout,
+    1 = basic progress indicators, 2 = extra info, 3 = debugging info'
+  synonyms:
+  - --verbosity
+  args: !SimpleFlagArg
+    name: VERBOSITY
+  optional: true
+- !Flag
+  description: 'Exclude contigs from the FASTA file which are shorter than this length
+    (default: 100)'
+  synonyms:
+  - --min_fasta_length
+  args: !SimpleFlagArg
+    name: MIN_FASTA_LENGTH
+  optional: true
+- !Flag
+  description: 'Level of file retention (default: 1) 0 = only keep final files: assembly
+    (FASTA, GFA and log), 1 = also save graphs at main checkpoints, 2 = also keep
+    SAM (enables fast rerun in different mode), 3 = keep all temp files and save all
+    graphs (for debugging)'
+  synonyms:
+  - --keep
+  args: !SimpleFlagArg
+    name: KEEP
+  optional: true
+- !Flag
+  description: 'Produce a VCF by mapping the short reads to the final assembly (experimental,
+    default: do not produce a vcf file)'
+  synonyms:
+  - --vcf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of threads used (default: 8)'
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: 'Bridging mode (default: normal) conservative = smaller contigs, lowest
+    misassembly rate normal = moderate contig size and misassembly rate bold = longest
+    contigs, higher misassembly rate'
+  synonyms:
+  - --mode
+  args: !ChoiceFlagArg
+    choices:
+    - conservative
+    - normal
+    - bold
+  optional: true
+- !Flag
+  description: 'The expected number of linear (i.e. non-circular) sequences in the
+    underlying sequence (default: 0)'
+  synonyms:
+  - --linear_seqs
+  args: !SimpleFlagArg
+    name: LINEAR_SEQS
+  optional: true
+command:
+- unicycler
+subcommands: []
+help_flag: !Flag
+  description: Show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show Unicycler's version number
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

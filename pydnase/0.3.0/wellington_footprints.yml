@@ -1,0 +1,126 @@
+!Command
+positional:
+- !Positional
+  description: BED file of the regions you want to footprint
+  position: 0
+  name: regions
+  optional: false
+- !Positional
+  description: The BAM file containing the DNase-seq reads
+  position: 1
+  name: reads
+  optional: false
+- !Positional
+  description: A writeable directory to write the results to
+  position: 2
+  name: outputdir
+  optional: false
+named:
+- !Flag
+  description: 'Performs a bonferroni correction (default: False)'
+  synonyms:
+  - -b
+  - --bonferroni
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Range of shoulder sizes to try in format "from,to,step" (default:
+    35,36,1)'
+  synonyms:
+  - -sh
+  - --shoulder-sizes
+  args: !SimpleFlagArg
+    name: SHOULDER_SIZES
+  optional: true
+- !Flag
+  description: 'Range of footprint sizes to try in format "from,to,step" (default:
+    11,26,2)'
+  synonyms:
+  - -fp
+  - --footprint-sizes
+  args: !SimpleFlagArg
+    name: FOOTPRINT_SIZES
+  optional: true
+- !Flag
+  description: 'Use Wellington 1D instead of Wellington (default: False)'
+  synonyms:
+  - -d
+  - --one_dimension
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Write footprints using the FDR selection method at a specific FDR
+    (default: 0.01)'
+  synonyms:
+  - -fdr
+  - --FDR_cutoff
+  args: !SimpleFlagArg
+    name: FDR_CUTOFF
+  optional: true
+- !Flag
+  description: 'How many randomisations to use when performing FDR calculations (default:
+    100)'
+  synonyms:
+  - -fdriter
+  - --FDR_iterations
+  args: !SimpleFlagArg
+    name: FDR_ITERATIONS
+  optional: true
+- !Flag
+  description: 'Minimum p-value to be considered significant for FDR calculation (default:
+    -20)'
+  synonyms:
+  - -fdrlimit
+  - --FDR_limit
+  args: !SimpleFlagArg
+    name: FDR_LIMIT
+  optional: true
+- !Flag
+  description: '(Provide multiple values separated by spaces) Select footprints using
+    a range of pvalue cutoffs (default: -10 -20 -30 -40 -50 -75 -100 -300 -500 -700'
+  synonyms:
+  - -pv
+  - --pv_cutoffs
+  args: !RepeatFlagArg
+    name: PV_CUTOFFS
+  optional: true
+- !Flag
+  description: 'Disables merging of overlapping footprints (Default: False)'
+  synonyms:
+  - -dm
+  - --dont-merge-footprints
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The prefix for results files (default: <reads.regions>)'
+  synonyms:
+  - -o
+  - --output_prefix
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+  optional: true
+- !Flag
+  description: 'Number of processes to use, use 0 to use all cores (default: 1)'
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: P
+  optional: true
+- !Flag
+  description: 'ATAC-seq mode (default: False)'
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- wellington_footprints.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

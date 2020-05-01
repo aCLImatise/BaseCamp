@@ -1,0 +1,113 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The text separated file containing on each line two names of genes.
+  synonyms:
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT_FILENAME
+  optional: true
+- !Flag
+  description: The FASTA file containg the sequences of all genes.
+  synonyms:
+  - --input_database
+  args: !SimpleFlagArg
+    name: INPUT_DATABASE_FILENAME
+  optional: true
+- !Flag
+  description: Database with exons position on chromosomes, e.g. 'more_exons_ensembl.txt'.
+    This is used for filtering the UTRs extensions by removing any extension which
+    overlaps with any exons from the database. This is optional.
+  synonyms:
+  - --input_exons
+  args: !SimpleFlagArg
+    name: EXONS_FILENAME
+  optional: true
+- !Flag
+  description: A FASTA file containing the sequences of the two genes per line concatenated.
+  synonyms:
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME
+  optional: true
+- !Flag
+  description: A FASTA file containing the sequences of all genes from the input (a
+    gene will appear only once in the output).
+  synonyms:
+  - --output_genes
+  args: !SimpleFlagArg
+    name: OUTPUT_GENES_FILENAME
+  optional: true
+- !Flag
+  description: An output directory containing FASTA files containing the sequences
+    of the two genes per line concatenated. One Fasta file contains one sequence.
+  synonyms:
+  - --output_dir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+- !Flag
+  description: A junctions file which can be used further as input to TopHat.
+  synonyms:
+  - --output_tophat_juncs
+  args: !SimpleFlagArg
+    name: OUTPUT_TOPHAT_JUNCS_FILENAME
+  optional: true
+- !Flag
+  description: A text file where it will be written the size of the longest sequence
+    of two genes which have been concatenated.
+  synonyms:
+  - --longest
+  args: !SimpleFlagArg
+    name: OUTPUT_LONGEST
+  optional: true
+- !Flag
+  description: If this is True then for a given set of two genes A and B two sequences
+    will be generated for A+B and B+A. Default is 'False'.
+  synonyms:
+  - --reverse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If used then the number of nucleotides of all sequences from the output
+    FASTA file (i.e. --output_genes) will be reported.
+  synonyms:
+  - --output_genes_count_nuc
+  args: !SimpleFlagArg
+    name: OUTPUT_GENES_COUNT_NUC_FILENAME
+  optional: true
+- !Flag
+  description: If used then the number of sequences from the output FASTA file (i.e.
+    --output_genes) will be reported.
+  synonyms:
+  - --output_genes_count_seq
+  args: !SimpleFlagArg
+    name: OUTPUT_GENES_COUNT_SEQ_FILENAME
+  optional: true
+- !Flag
+  description: If this is larger than 0 than 'N' characters will be added at the end
+    of each sequence from the output (it might help for avoiding cross-scaffolding).
+    Default is '0'.
+  synonyms:
+  - --padding
+  args: !SimpleFlagArg
+    name: PADDING
+  optional: true
+command:
+- generate_gene-gene_junctions.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
