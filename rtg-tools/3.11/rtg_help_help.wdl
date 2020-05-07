@@ -1,0 +1,83 @@
+version 1.0
+
+task RtgHelpHelp {
+  input {
+    String? formatFormat
+    String? sdf2fastaSdf2fasta
+    String? sdf2fastqSdf2fastq
+    String? sdf2samSdf2sam
+    String? fastFastQTrim
+    String? genomeGenomeSim
+    String? cgCgSim
+    String? readReadSim
+    String? popPopSim
+    String? samplesSamplesIm
+    String? childChildSim
+    String? deDeNovoSim
+    String? pedPedSamplesIm
+    String? sampleSampleReplay
+    String? bBGzip
+    String? indexIndex
+    String? extractExtract
+    String? sdfSdfStats
+    String? sdfSdfSubset
+    String? sdfSdfSubseq
+    String? mendelianMendelian
+    String? vcfVcfStats
+    String? vcfVcfMerge
+    String? vcfVcfFilter
+    String? vcfVcfAnnotate
+    String? vcfVcfSubset
+    String? vcfVcfSplit
+    String? vcfVcfDecompose
+    String? vcfVcfEval
+    String? svSvDecompose
+    String? bndBndEval
+    String? pedPedFilter
+    String? pedPedStats
+    String? rocRocPlot
+    String? versionVersion
+    String? licenseLicense
+    String? helpHelp
+  }
+  command <<<
+    rtg help help \
+      ~{formatFormat} \
+      ~{genomeGenomeSim} \
+      ~{bBGzip} \
+      ~{sdf2fastaSdf2fasta} \
+      ~{cgCgSim} \
+      ~{indexIndex} \
+      ~{sdf2fastqSdf2fastq} \
+      ~{readReadSim} \
+      ~{extractExtract} \
+      ~{sdf2samSdf2sam} \
+      ~{popPopSim} \
+      ~{sdfSdfStats} \
+      ~{fastFastQTrim} \
+      ~{samplesSamplesIm} \
+      ~{sdfSdfSubset} \
+      ~{childChildSim} \
+      ~{sdfSdfSubseq} \
+      ~{deDeNovoSim} \
+      ~{mendelianMendelian} \
+      ~{pedPedSamplesIm} \
+      ~{vcfVcfStats} \
+      ~{sampleSampleReplay} \
+      ~{vcfVcfMerge} \
+      ~{vcfVcfFilter} \
+      ~{vcfVcfAnnotate} \
+      ~{vcfVcfSubset} \
+      ~{vcfVcfSplit} \
+      ~{vcfVcfDecompose} \
+      ~{vcfVcfEval} \
+      ~{svSvDecompose} \
+      ~{bndBndEval} \
+      ~{pedPedFilter} \
+      ~{pedPedStats} \
+      ~{rocRocPlot} \
+      ~{versionVersion} \
+      ~{licenseLicense} \
+      ~{helpHelp}
+  >>>
+}

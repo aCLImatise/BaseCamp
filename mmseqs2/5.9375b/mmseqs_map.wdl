@@ -1,0 +1,95 @@
+version 1.0
+
+task MmseqsMap {
+  input {
+    Boolean sS
+    Boolean kK
+    Boolean kKScore
+    Boolean alphAlphSize
+    Boolean offsetOffsetResult
+    Boolean splitSplit
+    Boolean splitSplitMode
+    Boolean splitSplitMemoryLimit
+    Boolean compCompBiasCorr
+    Boolean diagDiagScore
+    Boolean exactExactKmErMatching
+    Boolean maskMask
+    Boolean minMinUnGappedScore
+    Boolean addAddSelfMatches
+    Boolean spacedSpacedKmErMode
+    Boolean cC
+    Boolean covCovMode
+    Boolean eE
+    Boolean minMinSeqId
+    Boolean seqSeqIdMode
+    Boolean pcPcA
+    Boolean pcbPcb
+    Boolean noNoPreload
+    Boolean reReScoreMode
+    Boolean minMinLength
+    Boolean maxMaxLength
+    Boolean maxMaxGaps
+    Boolean contigContigStartMode
+    Boolean contigContigEndMode
+    Boolean orfOrfStartMode
+    Boolean forwardForwardFrames
+    Boolean reverseReverseFrames
+    Boolean translationTranslationTable
+    Boolean useUseAllTableStarts
+    Boolean idIdOffset
+    Boolean addAddOrfStop
+    Boolean startStartSens
+    Boolean sensSensSteps
+    Boolean subSubMat
+    Boolean maxMaxSeqLen
+    Boolean maxMaxSeqs
+    Boolean threadsThreads
+    Boolean vV
+  }
+  command <<<
+    mmseqs map \
+      ~{true="-s" false="" sS} \
+      ~{true="-k" false="" kK} \
+      ~{true="--k-score" false="" kKScore} \
+      ~{true="--alph-size" false="" alphAlphSize} \
+      ~{true="--offset-result" false="" offsetOffsetResult} \
+      ~{true="--split" false="" splitSplit} \
+      ~{true="--split-mode" false="" splitSplitMode} \
+      ~{true="--split-memory-limit" false="" splitSplitMemoryLimit} \
+      ~{true="--comp-bias-corr" false="" compCompBiasCorr} \
+      ~{true="--diag-score" false="" diagDiagScore} \
+      ~{true="--exact-kmer-matching" false="" exactExactKmErMatching} \
+      ~{true="--mask" false="" maskMask} \
+      ~{true="--min-ungapped-score" false="" minMinUnGappedScore} \
+      ~{true="--add-self-matches" false="" addAddSelfMatches} \
+      ~{true="--spaced-kmer-mode" false="" spacedSpacedKmErMode} \
+      ~{true="-c" false="" cC} \
+      ~{true="--cov-mode" false="" covCovMode} \
+      ~{true="-e" false="" eE} \
+      ~{true="--min-seq-id" false="" minMinSeqId} \
+      ~{true="--seq-id-mode" false="" seqSeqIdMode} \
+      ~{true="--pca" false="" pcPcA} \
+      ~{true="--pcb" false="" pcbPcb} \
+      ~{true="--no-preload" false="" noNoPreload} \
+      ~{true="--rescore-mode" false="" reReScoreMode} \
+      ~{true="--min-length" false="" minMinLength} \
+      ~{true="--max-length" false="" maxMaxLength} \
+      ~{true="--max-gaps" false="" maxMaxGaps} \
+      ~{true="--contig-start-mode" false="" contigContigStartMode} \
+      ~{true="--contig-end-mode" false="" contigContigEndMode} \
+      ~{true="--orf-start-mode" false="" orfOrfStartMode} \
+      ~{true="--forward-frames" false="" forwardForwardFrames} \
+      ~{true="--reverse-frames" false="" reverseReverseFrames} \
+      ~{true="--translation-table" false="" translationTranslationTable} \
+      ~{true="--use-all-table-starts" false="" useUseAllTableStarts} \
+      ~{true="--id-offset" false="" idIdOffset} \
+      ~{true="--add-orf-stop" false="" addAddOrfStop} \
+      ~{true="--start-sens" false="" startStartSens} \
+      ~{true="--sens-steps" false="" sensSensSteps} \
+      ~{true="--sub-mat" false="" subSubMat} \
+      ~{true="--max-seq-len" false="" maxMaxSeqLen} \
+      ~{true="--max-seqs" false="" maxMaxSeqs} \
+      ~{true="--threads" false="" threadsThreads} \
+      ~{true="-v" false="" vV}
+  >>>
+}

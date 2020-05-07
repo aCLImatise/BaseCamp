@@ -1,0 +1,200 @@
+class: CommandLineTool
+id: srst2.cwl
+inputs:
+- id: input_se
+  doc: Single end read file(s) for analysing (may be gzipped)
+  type: string[]
+  inputBinding:
+    prefix: --input_se
+- id: input_pe
+  doc: Paired end read files for analysing (may be gzipped)
+  type: string[]
+  inputBinding:
+    prefix: --input_pe
+- id: merge_paired
+  doc: Switch on if all the input read sets belong to a single sample, and you want
+    to merge their data to get a single result
+  type: boolean
+  inputBinding:
+    prefix: --merge_paired
+- id: forward
+  doc: Designator for forward reads (only used if NOT in MiSeq format sample_S1_L001_R1_001.fastq.gz;
+    otherwise default is _1, i.e. expect forward reads as sample_1.fastq.gz)
+  type: string
+  inputBinding:
+    prefix: --forward
+- id: reverse
+  doc: Designator for reverse reads (only used if NOT in MiSeq format sample_S1_L001_R2_001.fastq.gz;
+    otherwise default is _2, i.e. expect forward reads as sample_2.fastq.gz
+  type: string
+  inputBinding:
+    prefix: --reverse
+- id: read_type
+  doc: 'Read file type (for bowtie2; default is q=fastq; other options: qseq=solexa,
+    f=fasta).'
+  type: string
+  inputBinding:
+    prefix: --read_type
+- id: mlst_db
+  doc: Fasta file of MLST alleles (optional)
+  type: string
+  inputBinding:
+    prefix: --mlst_db
+- id: mlst_delimiter
+  doc: Character(s) separating gene name from allele number in MLST database (default
+    "-", as in arcc-1)
+  type: string
+  inputBinding:
+    prefix: --mlst_delimiter
+- id: mlst_definitions
+  doc: ST definitions for MLST scheme (required if mlst_db supplied and you want to
+    calculate STs)
+  type: string
+  inputBinding:
+    prefix: --mlst_definitions
+- id: mlst_max_mismatch
+  doc: Maximum number of mismatches per read for MLST allele calling (default 10)
+  type: string
+  inputBinding:
+    prefix: --mlst_max_mismatch
+- id: gene_db
+  doc: Fasta file/s for gene databases (optional)
+  type: string[]
+  inputBinding:
+    prefix: --gene_db
+- id: no_gene_details
+  doc: Switch OFF verbose reporting of gene typing
+  type: boolean
+  inputBinding:
+    prefix: --no_gene_details
+- id: gene_max_mismatch
+  doc: Maximum number of mismatches per read for gene detection and allele calling
+    (default 10)
+  type: string
+  inputBinding:
+    prefix: --gene_max_mismatch
+- id: min_coverage
+  doc: Minimum %coverage cutoff for gene reporting (default 90)
+  type: long
+  inputBinding:
+    prefix: --min_coverage
+- id: max_divergence
+  doc: Maximum %divergence cutoff for gene reporting (default 10)
+  type: long
+  inputBinding:
+    prefix: --max_divergence
+- id: min_depth
+  doc: Minimum mean depth to flag as dubious allele call (default 5)
+  type: long
+  inputBinding:
+    prefix: --min_depth
+- id: min_edge_depth
+  doc: Minimum edge depth to flag as dubious allele call (default 2)
+  type: long
+  inputBinding:
+    prefix: --min_edge_depth
+- id: prob_err
+  doc: Probability of sequencing error (default 0.01)
+  type: string
+  inputBinding:
+    prefix: --prob_err
+- id: truncation_score_tolerance
+  doc: '% increase in score allowed to choose non-truncated allele'
+  type: string
+  inputBinding:
+    prefix: --truncation_score_tolerance
+- id: stop_after
+  doc: Stop mapping after this number of reads have been mapped (otherwise map all)
+  type: string
+  inputBinding:
+    prefix: --stop_after
+- id: other
+  doc: Other arguments to pass to bowtie2 (must be escaped, e.g. "\--no-mixed".
+  type: string
+  inputBinding:
+    prefix: --other
+- id: max_unaligned_overlap
+  doc: Read discarded from alignment if either of its ends has unaligned overlap with
+    the reference that is longer than this value (default 10)
+  type: long
+  inputBinding:
+    prefix: --max_unaligned_overlap
+- id: mapq
+  doc: Samtools -q parameter (default 1)
+  type: string
+  inputBinding:
+    prefix: --mapq
+- id: base_q
+  doc: Samtools -Q parameter (default 20)
+  type: string
+  inputBinding:
+    prefix: --baseq
+- id: sam_tools_args
+  doc: Other arguments to pass to samtools mpileup (must be escaped, e.g. "\-A").
+  type: string
+  inputBinding:
+    prefix: --samtools_args
+- id: output
+  doc: Prefix for srst2 output files
+  type: string
+  inputBinding:
+    prefix: --output
+- id: log
+  doc: Switch ON logging to file (otherwise log to stdout)
+  type: boolean
+  inputBinding:
+    prefix: --log
+- id: save_scores
+  doc: Switch ON verbose reporting of all scores
+  type: boolean
+  inputBinding:
+    prefix: --save_scores
+- id: report_new_consensus
+  doc: If a matching alleles is not found, report the consensus allele. Note, only
+    SNP differences are considered, not indels.
+  type: boolean
+  inputBinding:
+    prefix: --report_new_consensus
+- id: report_all_consensus
+  doc: Report the consensus allele for the most likely allele. Note, only SNP differences
+    are considered, not indels.
+  type: boolean
+  inputBinding:
+    prefix: --report_all_consensus
+- id: use_existing_bowtie2_sam
+  doc: Use existing SAM file generated by Bowtie2 if available, otherwise they will
+    be generated
+  type: boolean
+  inputBinding:
+    prefix: --use_existing_bowtie2_sam
+- id: use_existing_pile_up
+  doc: Use existing pileups if available, otherwise they will be generated
+  type: boolean
+  inputBinding:
+    prefix: --use_existing_pileup
+- id: use_existing_scores
+  doc: Use existing scores files if available, otherwise they will be generated
+  type: boolean
+  inputBinding:
+    prefix: --use_existing_scores
+- id: keep_interim_alignment
+  doc: Keep interim files (sam & unsorted bam), otherwise they will be deleted after
+    sorted bam is created
+  type: boolean
+  inputBinding:
+    prefix: --keep_interim_alignment
+- id: threads
+  doc: Use multiple threads in Bowtie and Samtools
+  type: string
+  inputBinding:
+    prefix: --threads
+- id: prev_output
+  doc: SRST2 results files to compile (any new results from this run will also be
+    incorporated)
+  type: string[]
+  inputBinding:
+    prefix: --prev_output
+outputs: []
+cwlVersion: v1.1
+baseCommand:
+- srst2
