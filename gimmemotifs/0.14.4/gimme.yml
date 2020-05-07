@@ -1,0 +1,624 @@
+!Command
+positional: []
+named: []
+command:
+- gimme
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: FASTA, BED, narrowPeak or region file.
+    position: 0
+    name: INPUT
+    optional: false
+  - !Positional
+    description: Output directory.
+    position: 1
+    name: OUTDIR
+    optional: false
+  named:
+  - !Flag
+    description: Background type (random,genomic,gc,promoter,custom) or a file with
+      background sequences (FASTA, BED or regions)
+    synonyms:
+    - -b
+    - --background
+    args: !SimpleFlagArg
+      name: BACKGROUND
+    optional: true
+  - !Flag
+    description: Genome name or fasta file
+    synonyms:
+    - -g
+    args: !SimpleFlagArg
+      name: GENOME
+    optional: true
+  - !Flag
+    description: Only use de novo motifs
+    synonyms:
+    - --denovo
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Only use known motifs
+    synonyms:
+    - --known
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Don't create a HTML report.
+    synonyms:
+    - --noreport
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Don't z-score normalize motif scores
+    synonyms:
+    - --rawscore
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Don't use GC% bins
+    synonyms:
+    - --nogc
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Number of threads (default 12)
+    synonyms:
+    - -N
+    - --nthreads
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'PFM file with motifs.(default: gimme.vertebrate.v5.0.pfm)'
+    synonyms:
+    - -p
+    args: !SimpleFlagArg
+      name: PFMFILE
+    optional: true
+  - !Flag
+    description: Tools to use, any combination of MDmodule,MEME,MEMEW,D REME,Weeder,GADEM,MotifSampler,Trawler,Improbizer,BioP
+      rospector,Posmo,ChIPMunk,AMD,HMS,Homer,XXmotif,ProSamp ler,DiNAMO (default MEME,BioProspector,Homer)
+    synonyms:
+    - -t
+    - --tools
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'Analysis type: small, medium, large, xl (xl)'
+    synonyms:
+    - -a
+    - --analysis
+    args: !SimpleFlagArg
+      name: ANALYSIS
+    optional: true
+  - !Flag
+    description: Don't delete intermediate files
+    synonyms:
+    - -k
+    - --keepintermediate
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Only predict motifs for single + strand (default is both)
+    synonyms:
+    - -S
+    - --singlestrand
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Fraction of peaks to use for motif predicton (0.2)
+    synonyms:
+    - -f
+    - --fraction
+    args: !SimpleFlagArg
+      name: FRACTION
+    optional: true
+  - !Flag
+    description: Region size to use for motif prediction (200). Set to 0 to use the
+      size of the input regions.
+    synonyms:
+    - -s
+    - --size
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  command:
+  - gimme
+  - motifs
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: inputfile (FASTA, BED, regions)
+    position: 0
+    name: INPUTFILE
+    optional: false
+  named:
+  - !Flag
+    description: Genome
+    synonyms:
+    - -g
+    - --genome
+    args: !SimpleFlagArg
+      name: GENOME
+    optional: true
+  - !Flag
+    description: 'PFM file with motifs (default: gimme.vertebrate.v5.0.pfm)'
+    synonyms:
+    - -p
+    - --pfmfile
+    args: !SimpleFlagArg
+      name: pfmfile
+    optional: true
+  - !Flag
+    description: ', --fpr            FPR for motif scanning (default 0.01)'
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --bgfile         background file for threshold'
+    synonyms:
+    - -B
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --cutoff         motif score cutoff or file with cutoffs'
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: report the N best matches
+    synonyms:
+    - -n
+    - --nreport
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: don't scan reverse complement (- strand)
+    synonyms:
+    - -r
+    - --norc
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output bed format
+    synonyms:
+    - -b
+    - --bed
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output counts in tabular format
+    synonyms:
+    - -t
+    - --table
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output maximum score in tabular format
+    synonyms:
+    - -T
+    - --score_table
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: convert pfm logodds score to z-score
+    synonyms:
+    - -z
+    - --zscore
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: use GC frequency normalized z-score
+    synonyms:
+    - --gc
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Number of threads (default 12)
+    synonyms:
+    - -N
+    - --nthreads
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  command:
+  - gimme
+  - scan
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: File with pfms
+    position: 0
+    name: pfmfile
+    optional: false
+  named:
+  - !Flag
+    description: 'File with pfms to match against (default: gimme.vertebrate.v5.0.pfm)'
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: DBFILE
+    optional: true
+  - !Flag
+    description: Number of matches to return (default 1)
+    synonyms:
+    - -n
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Output file with graphical report (png, svg, ps, pdf)
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - gimme
+  - match
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: PFM file with motifs
+    synonyms:
+    - -p
+    - --pfmfile
+    args: !SimpleFlagArg
+      name: pfmfile
+    optional: true
+  - !Flag
+    description: Comma-separated list of motif ids (default is all ids)
+    synonyms:
+    - -i
+    - --ids
+    args: !SimpleFlagArg
+      name: IDS
+    optional: true
+  - !Flag
+    description: Type of motif (information, frequency, energy or ensembl)
+    synonyms:
+    - -k
+    - --kind
+    args: !SimpleFlagArg
+      name: TYPE
+    optional: true
+  - !Flag
+    description: Don't include motif ID as title
+    synonyms:
+    - --notitle
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gimme
+  - logo
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Inputfile (PFM format)
+    position: 0
+    name: INPUTFILE
+    optional: false
+  - !Positional
+    description: Name of output directory
+    position: 1
+    name: OUTDIR
+    optional: false
+  named:
+  - !Flag
+    description: Don't compare reverse complements of motifs
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Cluster threshold
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: THRESHOLD
+    optional: true
+  - !Flag
+    description: Number of threads (default 12)
+    synonyms:
+    - -N
+    - --nthreads
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  command:
+  - gimme
+  - cluster
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: outputfile
+    position: 0
+    name: FILE
+    optional: false
+  - !Positional
+    description: type of background sequences to generate (random,genomic,gc,promoter)
+    position: 1
+    name: TYPE
+    optional: false
+  named:
+  - !Flag
+    description: input sequences (BED or FASTA)
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: output format (BED or FASTA
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: TYPE
+    optional: true
+  - !Flag
+    description: size of random sequences
+    synonyms:
+    - -s
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: number of sequence to generate
+    synonyms:
+    - -n
+    args: !SimpleFlagArg
+      name: NUMBER
+    optional: true
+  - !Flag
+    description: genome version (not for type 'random')
+    synonyms:
+    - -g
+    args: !SimpleFlagArg
+      name: GENOME
+    optional: true
+  - !Flag
+    description: order of the Markov model (only for type 'random', default 1)
+    synonyms:
+    - -m
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  command:
+  - gimme
+  - background
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: subcommand
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: threshold
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: pfmfile
+    optional: false
+  - !Positional
+    description: ''
+    position: 3
+    name: FAFILE
+    optional: false
+  - !Positional
+    description: ''
+    position: 4
+    name: FPR
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gimme
+  - threshold
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: File with pfms
+    position: 0
+    name: pfmfile
+    optional: false
+  - !Positional
+    description: Fasta formatted file
+    position: 1
+    name: FAFILE
+    optional: false
+  named:
+  - !Flag
+    description: 'Set size to W (default: determined from fastafile)'
+    synonyms:
+    - -s
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Comma-separated list of motif ids to plot (default is all ids)
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: IDS
+    optional: true
+  - !Flag
+    description: Cutoff for motif scanning (default 0.95)
+    synonyms:
+    - -c
+    args: !SimpleFlagArg
+      name: CUTOFF
+    optional: true
+  command:
+  - gimme
+  - location
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: FASTA-formatted inputfiles OR a BED file with an identifier in the
+      4th column, for instance a cluster number.
+    position: 0
+    name: FAFILES
+    optional: false
+  - !Positional
+    description: FASTA-formatted background file
+    position: 1
+    name: BGFAFILE
+    optional: false
+  - !Positional
+    description: outputfile (image)
+    position: 2
+    name: PNGFILE
+    optional: false
+  named:
+  - !Flag
+    description: 'PFM file with motifs (default: gimme.vertebrate.v5.0.pfm)'
+    synonyms:
+    - -p
+    - --pfmfile
+    args: !SimpleFlagArg
+      name: pfmfile
+    optional: true
+  - !Flag
+    description: ', --cutoff         motif score cutoff or file with cutoffs (default
+      0.9)'
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: minimum enrichment in at least one of the datasets compared to background
+    synonyms:
+    - -e
+    - --enrichment
+    args: !SimpleFlagArg
+      name: MINENR
+    optional: true
+  - !Flag
+    description: minimum frequency in at least one of the datasets
+    synonyms:
+    - -f
+    - --frequency
+    args: !SimpleFlagArg
+      name: MINFREQ
+    optional: true
+  - !Flag
+    description: Genome; only necessary in combination with a BED file with clusters
+      as inputfile.
+    synonyms:
+    - -g
+    - --genome
+    args: !SimpleFlagArg
+      name: GENOME
+    optional: true
+  command:
+  - gimme
+  - diff
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

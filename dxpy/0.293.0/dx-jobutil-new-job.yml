@@ -1,0 +1,100 @@
+!Command
+positional:
+- !Positional
+  description: Name of the function to run
+  position: 0
+  name: function
+  optional: false
+named:
+- !Flag
+  description: An input to be added using "<input name>[:<class>]=<input value>" (provide
+    "class" if there is no input spec; it can be any job IO class, e.g. "string",
+    "array:string", or "array"; if "class" is "array" or not specified, the value
+    will be attempted to be parsed as JSON and is otherwise treated as a string)
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: The full input JSON (keys=input field names, values=input field values)
+  synonyms:
+  - -j
+  - --input-json
+  args: !SimpleFlagArg
+    name: INPUT_JSON
+  optional: true
+- !Flag
+  description: Load input JSON from FILENAME ("-" to use stdin)
+  synonyms:
+  - -f
+  - --input-json-file
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: Specify instance type(s) for jobs this executable will run; see --instance-type-help
+    for more details
+  synonyms:
+  - --instance-type
+  args: !SimpleFlagArg
+    name: INSTANCE_TYPE_OR_MAPPING
+  optional: true
+- !Flag
+  description: Print help for specifying instance types
+  synonyms:
+  - --instance-type-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Arguments (in JSON format) to pass to the underlying API method, overriding
+    the default settings
+  synonyms:
+  - --extra-args
+  args: !SimpleFlagArg
+    name: EXTRA_ARGS
+  optional: true
+- !Flag
+  description: =VALUE  Key-value pair to add as a property; repeat as necessary, e.g.
+    "--property key1=val1 --property key2=val2"
+  synonyms:
+  - --property
+  args: !SimpleFlagArg
+    name: KEY
+  optional: true
+- !Flag
+  description: Tag for the resulting execution; repeat as necessary, e.g. "--tag tag1
+    --tag tag2"
+  synonyms:
+  - --tag
+  args: !SimpleFlagArg
+    name: TAG
+  optional: true
+- !Flag
+  description: Name for the new job (default is the current job name, plus ":<function>")
+  synonyms:
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: '[JOB_OR_OBJECT_ID [JOB_OR_OBJECT_ID ...]] Job and/or data object IDs
+    that must finish or close before the new job should be run. WARNING: For proper
+    parsing, do not use this flag directly before the *function* parameter.'
+  synonyms:
+  - --depends-on
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- dx-jobutil-new-job
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

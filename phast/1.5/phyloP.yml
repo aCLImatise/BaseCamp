@@ -1,0 +1,126 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: (see below).
+  synonyms:
+  - --confidence-interval
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Optionally use with --wig-scores or --base-by-base) Chromosome name
+    for wig output.  Default is root of multiple alignment filename.
+  synonyms:
+  - --chrom
+  - -N
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: 'Write log to <fname> describing details of parameter optimization.
+    Useful for debugging.  (Warning: may produce large file.)'
+  synonyms:
+  - --log
+  - -l
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: Provide a random number seed, should be an integer >=1.  Random numbers
+    are used in some cases to generate starting values for optimization.  If not specified
+    will use a seed based on the current time.
+  synonyms:
+  - --seed
+  - -d
+  args: !SimpleFlagArg
+    name: seed
+  optional: true
+- !Flag
+  description: Do not prune species from tree which are not in alignment.  Rather,
+    treat these species as having missing data in the alignment.  Missing data does
+    have an effect on the results when --method SPH is used.
+  synonyms:
+  - --no-prune
+  - -P
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Compute just the null (prior) distribution of the number of substitutions,
+    as defined by the tree model and the given number of sites, and output as a table.  The
+    'alignment' argument will be ignored.  If used with --subtree, the joint distribution
+    over the number of substitutions in the specified supertree and subtree will be
+    output instead.
+  synonyms:
+  - --null
+  - -n
+  args: !SimpleFlagArg
+    name: nsites
+  optional: true
+- !Flag
+  description: Compute just the posterior distribution of the number of substitutions,
+    given the alignment and the model, and output as a table.  If used with --subtree,
+    the joint distribution over the number of substitutions in the specified supertree
+    and subtree will be output instead.
+  synonyms:
+  - --posterior
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Fit model to data before computing posterior distribution, by estimating
+    a scale factor for the whole tree or (if --subtree) separate scale factors for
+    the specified subtree and supertree. Makes p-values less conservative.  This option
+    has no effect with --null and currently cannot be used with --features.  It can
+    be used with --wig-scores and --base-by-base.
+  synonyms:
+  - --fit-model
+  - -F
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Default 1e-10 or 1e-6 if --wig-scores or --base-by-base) Threshold
+    used in truncating tails of distributions; tail probabilities less than this value
+    are discarded.  To get accurate p-values smaller than 1e-10, this option will
+    need to be used, at some cost in speed.  Note that truncation affects only *right*
+    tails, not left tails, so it should be an issue only with p-values of acceleration.
+  synonyms:
+  - --epsilon
+  - -e
+  args: !SimpleFlagArg
+    name: val
+  optional: true
+- !Flag
+  description: Allow for uncertainty in the estimate of the actual number of substitutions
+    by using a (central) confidence interval about the mean of the specified size
+    (0 < val < 1).  To be conservative, the maximum of this interval is used when
+    computing a p-value of conservation, and the minimum is used when computing a
+    p-value of acceleration.  The variance of the posterior is computed exactly, but
+    the confidence interval is based on the assumption that the combined distribution
+    will be approximately normal (true for large numbers of sites by central limit
+    theorem).
+  synonyms:
+  - --confidence-interval
+  - -c
+  args: !SimpleFlagArg
+    name: val
+  optional: true
+- !Flag
+  description: (For use with --null or --posterior) Report quantiles of distribution
+    rather than whole distribution.
+  synonyms:
+  - --quantiles
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- phyloP
+subcommands: []
+help_flag: !Flag
+  description: Produce this help message.
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

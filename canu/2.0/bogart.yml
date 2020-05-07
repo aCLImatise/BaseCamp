@@ -1,0 +1,196 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Mandatory path to an existing seqStore.
+  synonyms:
+  - -S
+  args: !SimpleFlagArg
+    name: seqPath
+  optional: true
+- !Flag
+  description: Mandatory path to an existing ovlStore.
+  synonyms:
+  - -O
+  args: !SimpleFlagArg
+    name: ovlPath
+  optional: true
+- !Flag
+  description: Mandatory path to an output tigStore (can exist or not).
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: tigPath
+  optional: true
+- !Flag
+  description: Mandatory prefix for the output files.
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: outPrefix
+  optional: true
+- !Flag
+  description: Use at most T compute threads.
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: T
+  optional: true
+- !Flag
+  description: Use at most 'gb' gigabytes of memory.
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: gb
+  optional: true
+- !Flag
+  description: Save the overlap graph to disk, and continue (not implemented).
+  synonyms:
+  - -save
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Genome size in bases.
+  synonyms:
+  - -gs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Force reads below 'len' bases to be singletons.
+  synonyms:
+  - -mr
+  args: !SimpleFlagArg
+    name: len
+  optional: true
+- !Flag
+  description: Ignore overlaps shorter than 'len' bases.
+  synonyms:
+  - -mo
+  args: !SimpleFlagArg
+    name: len
+  optional: true
+- !Flag
+  description: Create unitigs from contig intersections of at least 'len' bases.
+  synonyms:
+  - -mi
+  args: !SimpleFlagArg
+    name: len
+  optional: true
+- !Flag
+  description: Create unitigs from contig intersections with at most 'num' placements.
+  synonyms:
+  - -mp
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: "[coverageGap],[highError],[lopsided],[spur] Disable filtering of:\
+    \ coverageGap - reads that have a suspicious lack of overlaps in the middle highError\
+    \   - overlaps that have error rates well outside the observed lopsided    - reads\
+    \ that have unusually asymmetric best overlaps spur        - reads that have no\
+    \ overlaps on one end The value supplied to -nofilter must be one word, case,\
+    \ order and punctuation do not matter.  The following examples behave the same:\
+    \ '-nofilter coverageGap,higherror' '-nofilter coveragegap-and-HIGHERROR'"
+  synonyms:
+  - -nofilter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not use overlaps more than F fraction error when when finding initial
+    best edges.
+  synonyms:
+  - -eg
+  args: !SimpleFlagArg
+    name: F
+  optional: true
+- !Flag
+  description: Do not load overlaps more then F fraction error (useful only for -save).
+  synonyms:
+  - -eM
+  args: !SimpleFlagArg
+    name: F
+  optional: true
+- !Flag
+  description: 'Split a contig if there is an alternate path from an overlap of at
+    least L bases. Default: 2100.'
+  synonyms:
+  - -ca
+  args: !SimpleFlagArg
+    name: L
+  optional: true
+- !Flag
+  description: 'Split a contig if there is an alternate path from an overlap at most
+    P percent different from the length of the best overlap.  Default: 200.'
+  synonyms:
+  - -cp
+  args: !SimpleFlagArg
+    name: P
+  optional: true
+- !Flag
+  description: Use overlaps upto D standard deviations from the mean when building
+    the best overlap graph.  Default 6.0.
+  synonyms:
+  - -dg
+  args: !SimpleFlagArg
+    name: D
+  optional: true
+- !Flag
+  description: Like -dg, but for merging bubbles into primary contigs.  Default 6.0.
+  synonyms:
+  - -db
+  args: !SimpleFlagArg
+    name: D
+  optional: true
+- !Flag
+  description: Like -dg, but for breaking repeats.  Default 3.0.
+  synonyms:
+  - -dr
+  args: !SimpleFlagArg
+    name: D
+  optional: true
+- !Flag
+  description: Require overlaps to overlap by at least n bases.
+  synonyms:
+  - -covgapolap
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: n      Set how lopsided reads are detected and/or treated. m = off        -
+    don't detect at all (omit n parameter) m = noseed n   - detect, n% difference,
+    allow edges to but don't seed overlaps with them m = nobest n   - detect, n% difference,
+    exclude from bog graph completely
+  synonyms:
+  - -lopsided
+  args: !SimpleFlagArg
+    name: m
+  optional: true
+- !Flag
+  description: Set a minimum overlap length, per overlap, as f*min(readAlen, readBlen)
+  synonyms:
+  - -minolappercent
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: enable logging/debugging for a specific component.
+  synonyms:
+  - -D
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: disable logging/debugging for a specific component. overlapScoring
+    bestOverlaps errorProfiles optimizePositions chunkGraph buildUnitig placeUnplaced
+    orphans splitDiscontinuous intermediateTigs setParentAndHang stderr
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+command:
+- bogart
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

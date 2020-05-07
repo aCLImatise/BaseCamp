@@ -1,0 +1,156 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'FASTAFILE Long reads to correct. Required in mode 0 or 1. (default:
+    None)'
+  synonyms:
+  - --long_reads
+  args: !SimpleFlagArg
+    name: LONG_READS
+  optional: true
+- !Flag
+  description: '[SHORT_READS [SHORT_READS ...]] FASTA/FASTQ FILE Short reads used
+    to correct the long reads. Can be multiple files. If choice is cps reads, then
+    there must be 2 files, the cps and the idx file following --short reads. Required
+    in mode 0 or 1. (default: None)'
+  synonyms:
+  - --short_reads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Short read file type (default: fa)'
+  synonyms:
+  - --short_read_file_type
+  args: !ChoiceFlagArg
+    choices:
+    - fa
+    - fq
+    - cps
+  optional: true
+- !Flag
+  description: 'Number of threads (Default = cpu_count) (default: 0)'
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: 'FOLDERNAME where temporary files can be placed (default: /tmp)'
+  synonyms:
+  - --tempdir
+  args: !SimpleFlagArg
+    name: TEMPDIR
+  optional: true
+- !Flag
+  description: 'FOLDERNAME of exactly where to place temproary folders. Required in
+    mode 1, 2 or 3. Recommended for any run where you may want to look back at intermediate
+    files. (default: None)'
+  synonyms:
+  - --specific_tempdir
+  args: !SimpleFlagArg
+    name: SPECIFIC_TEMPDIR
+  optional: true
+- !Flag
+  description: 'FOLDERNAME where output is to be written. Required in mode 0 or 3.
+    (default: None)'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: '{0,1,2,3}      0: run through, 1: Prepare homopolymer compressed long
+    and short reads. 2: Execute correction on batches of long reads. Can be superseded
+    by --parallelized_mode_2 where you will only execute a single batch. 3: Combine
+    corrected batches into a final output folder. (default: 0)'
+  synonyms:
+  - --mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Mode 2, but you specify a sigle batch to execute. (default: None)'
+  synonyms:
+  - --parallelized_mode_2
+  args: !SimpleFlagArg
+    name: PARALLELIZED_MODE_2
+  optional: true
+- !Flag
+  description: 'Aligner choice. hisat parameters have not been optimized, so we recommend
+    bowtie2. (default: bowtie2)'
+  synonyms:
+  - --aligner
+  args: !ChoiceFlagArg
+    choices:
+    - hisat
+    - bowtie2
+  optional: true
+- !Flag
+  description: '-S option for memory in unix sort (default: None)'
+  synonyms:
+  - --sort_mem_max
+  args: !SimpleFlagArg
+    name: SORT_MEM_MAX
+  optional: true
+- !Flag
+  description: 'Minimum number of non-N characters in the compressed read (default:
+    40)'
+  synonyms:
+  - --minNumberofNonN
+  args: !SimpleFlagArg
+    name: MINNUMBEROFNONN
+  optional: true
+- !Flag
+  description: 'Maximum number of Ns in the compressed read (default: None)'
+  synonyms:
+  - --maxN
+  args: !SimpleFlagArg
+    name: MAXN
+  optional: true
+- !Flag
+  description: 'Maximum percent of errors in a read to use the alignment (default:
+    12)'
+  synonyms:
+  - --error_rate_threshold
+  args: !SimpleFlagArg
+    name: ERROR_RATE_THRESHOLD
+  optional: true
+- !Flag
+  description: 'Minimum short read coverage to do correction (default: 20)'
+  synonyms:
+  - --short_read_coverage_threshold
+  args: !SimpleFlagArg
+    name: SHORT_READ_COVERAGE_THRESHOLD
+  optional: true
+- !Flag
+  description: 'INT number of long reads to work on at a time. This is a key parameter
+    to adjusting performance. A smaller batch size keeps the sizes and runtimes of
+    intermediate steps tractable on large datasets, but can slow down execution on
+    small datasets. The default value should be suitable for large datasets. (default:
+    500)'
+  synonyms:
+  - --long_read_batch_size
+  args: !SimpleFlagArg
+    name: LONG_READ_BATCH_SIZE
+  optional: true
+- !Flag
+  description: 'Path to samtools by default assumes its installed. If not specified,
+    the included version will be used. (default: /tmp/tmpbf3ugpsu/bin)'
+  synonyms:
+  - --samtools_path
+  args: !SimpleFlagArg
+    name: SAMTOOLS_PATH
+  optional: true
+command:
+- runLSC.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

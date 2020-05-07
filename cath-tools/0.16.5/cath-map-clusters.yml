@@ -1,0 +1,96 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: input_file
+  optional: false
+named:
+- !Flag
+  description: '[ --version ]                      Output version information'
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Map numbers from previous clusters specified in <file> to their equivalents
+    in the working clusters where possible and if all the cluster names in <file>
+    are positive integers, renumber leftover new clusters from one plus the largest
+    or if not, rename with new_cmc_cluster_1, new_cmc_cluster_2, ... (of, if unspecified,
+    renumber all working clusters from 1 upwards)
+  synonyms:
+  - --map-from-clustmemb-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: 'Read batches of work from the input file with lines of format: `batch_id
+    working_clust_memb_file prev_clust_memb_file` where: * batch_id             is
+    a unique label for the batch (with no whitespace) * prev_clust_memb_file is optional'
+  synonyms:
+  - --read-batches-from-input
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(=60)    Define domain equivalence as: sharing more than <percent>%
+    of residues (over the longest domain) (where <percent> must be ≥ 50)'
+  synonyms:
+  - --min_equiv_dom_ol
+  args: !SimpleFlagArg
+    name: percent
+  optional: true
+- !Flag
+  description: "(=60)  Define cluster equivalence as: more than <percent>% of the\
+    \ map-from cluster's members having equivalents in the working cluster [and them\
+    \ being equivalent to > 20% of the working cluster's entries and > 50% of those\
+    \ that have an equivalence] (where <percent> must be ≥ 50%)"
+  synonyms:
+  - --min_equiv_clust_ol
+  args: !SimpleFlagArg
+    name: percent
+  optional: true
+- !Flag
+  description: Append batch ID <id> as an extra column in the results output (equivalent
+    to the first column in a --multi-batch-file input file)
+  synonyms:
+  - --append-batch-id
+  args: !SimpleFlagArg
+    name: id
+  optional: true
+- !Flag
+  description: Write output to file <file> (or, if unspecified, to stdout)
+  synonyms:
+  - --output-to-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Print a summary of the renumbering to file <file>
+  synonyms:
+  - --summarise-to-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Output the entry (domain)-level mapping results
+  synonyms:
+  - --print-entry-results
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show the criteria for sorting unmapped clusters
+  synonyms:
+  - --sorting-help
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- cath-map-clusters
+subcommands: []
+help_flag: !Flag
+  description: '[ --help ]                         Output help message'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

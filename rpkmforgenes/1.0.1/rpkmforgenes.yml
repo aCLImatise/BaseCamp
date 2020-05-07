@@ -1,0 +1,407 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: by output file
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: followed
+  optional: true
+- !Flag
+  description: by list of input files (by default, guesses format from file extension)
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: followed
+  optional: true
+- !Flag
+  description: by annotation file
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: followed
+  optional: true
+- !Flag
+  description: by a bigWig file, alternatively a directory for files for non-unique
+    positions (lower case for nonunique k-mers (where k is the read length), upper
+    case for unique; filenames are e.g. chr1.fa, can also be chr1_unique20-255.btxt
+    etc
+  synonyms:
+  - -u
+  args: !SimpleFlagArg
+    name: followed
+  optional: true
+- !Flag
+  description: remove 3'UTRs
+  synonyms:
+  - -no3utr
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: not remove 3'UTRs (default)
+  synonyms:
+  - -fulltranscript
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: by a distance to cut each transcript from the 3' end, from 5' if negative
+    (never seems to give better values)
+  synonyms:
+  - -maxlength
+  args: !SimpleFlagArg
+    name: followed
+  optional: true
+- !Flag
+  description: how many genes expression is calculated for (for testing purposes)
+  synonyms:
+  - -maxgenes
+  args: !SimpleFlagArg
+    name: limit
+  optional: true
+- !Flag
+  description: only consider overlap between isoform with the same gene identifier
+    (shaky)
+  synonyms:
+  - -namecollapse
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: get isoform expressions (shaky)
+  synonyms:
+  - -nocollapse
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: ignore that transcripts can overlap (will count some reads several
+    times)
+  synonyms:
+  - -nooverlap
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: ignore regions shared my multiple genes (seems to work well)
+  synonyms:
+  - -rmnameoverlap
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: by a bed file of regions which should be removed from genes
+  synonyms:
+  - -rmregions
+  args: !SimpleFlagArg
+    name: followed
+  optional: true
+- !Flag
+  description: flatten all isoforms to one gene model (likely to give too low RPKM
+    values)
+  synonyms:
+  - -flat
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: ignore regions shared by multiple gene isoforms
+  synonyms:
+  - -txunique
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: ignore noncoding transcripts
+  synonyms:
+  - -onlycoding
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: make reads on + strand map to genes on - and vice versa (and sets -strand)
+  synonyms:
+  - -swapstrands
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: gene expression from introns rather than exons (also removes exons
+    of other isoforms)
+  synonyms:
+  - -introns
+  args: !SimpleFlagArg
+    name: gives
+  optional: true
+- !Flag
+  description: not remove haplotype chromosome (_hap/_alt) annotation
+  synonyms:
+  - -keephap
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: remove genes on unplaced contigs
+  synonyms:
+  - -norandom
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: annotation file uses format of refGene.txt etc (default if cannot guess
+    from file name suffix)
+  synonyms:
+  - -genePred
+  args: !SimpleFlagArg
+    name: if
+  optional: true
+- !Flag
+  description: 0-based bed file, chromosome start end and 9 optional fields
+  synonyms:
+  - -bedann
+  args: !SimpleFlagArg
+    name: tab-separated
+  optional: true
+- !Flag
+  description: gtf format gene annotation (slow, generally better to convert to bed
+    or genepred)
+  synonyms:
+  - -ensgtfann
+  args: !SimpleFlagArg
+    name: for
+  optional: true
+- !Flag
+  description: change a read aligning to 1 to chr1, 2 to chr2 etc
+  synonyms:
+  - -addchr
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: separated bed file (default if cannot guess from file name suffix)
+  synonyms:
+  - -bed
+  args: !SimpleFlagArg
+    name: tab
+  optional: true
+- !Flag
+  description: file with number of reads in the score column
+  synonyms:
+  - -bedcompacted
+  args: !SimpleFlagArg
+    name: bed
+  optional: true
+- !Flag
+  description: separated bed file
+  synonyms:
+  - -bedspace
+  args: !SimpleFlagArg
+    name: space
+  optional: true
+- !Flag
+  description: default output format of bowtie
+  synonyms:
+  - -bowtie
+  args: !SimpleFlagArg
+    name: the
+  optional: true
+- !Flag
+  description: format, uniquely mapped reads (faster than -sam, , default for SAM))
+  synonyms:
+  - -samse
+  args: !SimpleFlagArg
+    name: SAM
+  optional: true
+- !Flag
+  description: or SAM format, uniquely mapped reads (faster than -bam or -samse, default
+    for BAM)
+  synonyms:
+  - -bamu
+  args: !SimpleFlagArg
+    name: BAM
+  optional: true
+- !Flag
+  description: file with reads, no groups
+  synonyms:
+  - -gff
+  args: !SimpleFlagArg
+    name: GFF
+  optional: true
+- !Flag
+  description: normalize by the number of reads matching mRNA exons (default)
+  synonyms:
+  - -mRNAnorm
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: normalize by the number of reads matching exons, including ncRNA
+  synonyms:
+  - -exonnorm
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: normalize by the total number of mapped reads (default if annotation
+    contains no mRNA)
+  synonyms:
+  - -allmapnorm
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: by a number of reads for each sample to set a constant to normalise
+    by
+  synonyms:
+  - -forcedtotal
+  args: !SimpleFlagArg
+    name: followed
+  optional: true
+- !Flag
+  description: add the number of reads to the output
+  synonyms:
+  - -readcount
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: output format
+  synonyms:
+  - -table
+  args: !SimpleFlagArg
+    name: another
+  optional: true
+- !Flag
+  description: output sorted by genome position
+  synonyms:
+  - -sortpos
+  args: !SimpleFlagArg
+    name: for
+  optional: true
+- !Flag
+  description: by a filename to write which exons have been used, also prints exon
+    read counts for the last input file
+  synonyms:
+  - -exportann
+  args: !SimpleFlagArg
+    name: followed
+  optional: true
+- !Flag
+  description: zero count entries - Ramu
+  synonyms:
+  - -readpresent
+  - '- to'
+  args: !SimpleFlagArg
+    name: suppress
+  optional: true
+- !Flag
+  description: use strand information of reads
+  synonyms:
+  - -strand
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: also map the end positions to genes, each end counted as 0.5 (or 0.25
+    for paired-end reads)
+  synonyms:
+  - -bothends
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: set -bothends but round the read count upward
+  synonyms:
+  - -bothendsceil
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: use middle of the read as read position
+  synonyms:
+  - -midread
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: count only one read if several have the same position, strand and length
+    (use with -bam or -sam if paired-end; samtools rmdup is generally better)
+  synonyms:
+  - -diffreads
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: by maximum number of reads to be used
+  synonyms:
+  - -maxreads
+  args: !SimpleFlagArg
+    name: followed
+  optional: true
+- !Flag
+  description: make -maxreads pick reads at random
+  synonyms:
+  - -randomreads
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: by an integer, to restrict reads to minimum this mapping quality (for
+    sam, bam) or score (for bed, gff), default use all
+  synonyms:
+  - -minqual
+  args: !SimpleFlagArg
+    name: followed
+  optional: true
+- !Flag
+  description: by an integer, to restrict reads to maximum this edit distance (nM
+    or NM flag in sam, bam), default use all
+  synonyms:
+  - -maxNM
+  args: !SimpleFlagArg
+    name: followed
+  optional: true
+- !Flag
+  description: add the text 'chr' to read chromosome field, to resolve Ensembl genome/UCSC
+    annotation mismatch
+  synonyms:
+  - -addchr
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: by list of sample names (input file names are otherwise used)
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: followed
+  optional: true
+- !Flag
+  description: by number of files to process in parallel
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: followed
+  optional: true
+- !Flag
+  description: skip progress messages and warnings
+  synonyms:
+  - -quite
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+- !Flag
+  description: print this message and quit
+  synonyms:
+  - -h
+  args: !SimpleFlagArg
+    name: to
+  optional: true
+command:
+- rpkmforgenes.py
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

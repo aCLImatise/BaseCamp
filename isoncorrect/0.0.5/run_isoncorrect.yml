@@ -1,0 +1,114 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Path to input fastq folder with reads in clusters (default: False)'
+  synonyms:
+  - --fastq_folder
+  args: !SimpleFlagArg
+    name: FASTQ_FOLDER
+  optional: true
+- !Flag
+  description: 'Number of cores allocated for clustering (default: 8)'
+  synonyms:
+  - --t
+  args: !SimpleFlagArg
+    name: NR_CORES
+  optional: true
+- !Flag
+  description: 'Kmer size (default: 9)'
+  synonyms:
+  - --k
+  args: !SimpleFlagArg
+    name: K
+  optional: true
+- !Flag
+  description: 'Window size (default: 10)'
+  synonyms:
+  - --w
+  args: !SimpleFlagArg
+    name: W
+  optional: true
+- !Flag
+  description: 'Lower interval length (default: 14)'
+  synonyms:
+  - --xmin
+  args: !SimpleFlagArg
+    name: XMIN
+  optional: true
+- !Flag
+  description: 'Upper interval length (default: 80)'
+  synonyms:
+  - --xmax
+  args: !SimpleFlagArg
+    name: XMAX
+  optional: true
+- !Flag
+  description: 'Minimum fraction keeping substitution (default: 0.1)'
+  synonyms:
+  - --T
+  args: !SimpleFlagArg
+    name: T
+  optional: true
+- !Flag
+  description: 'Do exact correction for clusters under this threshold (default: 50)'
+  synonyms:
+  - --exact_instance_limit
+  args: !SimpleFlagArg
+    name: EXACT_INSTANCE_LIMIT
+  optional: true
+- !Flag
+  description: 'Do not recompute previous results if corrected_reads.fq is found and
+    has the smae number of reads as input file (i.e., is complete). (default: False)'
+  synonyms:
+  - --keep_old
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Set w = k + max(2*k, floor(cluster_size/1000)). (default: False)'
+  synonyms:
+  - --set_w_dynamically
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Splits cluster ids in n (default=1) partitions by computing residual
+    of cluster_id divided by n. this parameter needs to be combined with --residual
+    to take effect. (default: 1)'
+  synonyms:
+  - --split_mod
+  args: !SimpleFlagArg
+    name: SPLIT_MOD
+  optional: true
+- !Flag
+  description: 'Run isONcorrect on cluster ids with residual (default 0) of cluster_id
+    divided by --split_mod. (default: 0)'
+  synonyms:
+  - --residual
+  args: !SimpleFlagArg
+    name: RESIDUAL
+  optional: true
+- !Flag
+  description: 'A fasta file with transcripts that are shared between samples and
+    have perfect illumina support. (default: None)'
+  synonyms:
+  - --outfolder
+  args: !SimpleFlagArg
+    name: OUTFOLDER
+  optional: true
+command:
+- run_isoncorrect
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,40 @@
+!Command
+positional:
+- !Positional
+  description: A SAM or BAM file produced by BLASR.
+  position: 0
+  name: input_alignment_file
+  optional: false
+- !Positional
+  description: Name of the SAM or BAM header file that will be created with chemistry
+    information loaded.
+  position: 1
+  name: output_header_file
+  optional: false
+named:
+- !Flag
+  description: 'Output detailed log information. (default: False)'
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The bas or bax files containing the reads that were aligned in the
+    input_alignment_file. Also can be a fofn of bas or bax files. (default: None)'
+  synonyms:
+  - --bas_files
+  args: !RepeatFlagArg
+    name: BAS_FILES
+  optional: true
+command:
+- createChemistryHeader.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

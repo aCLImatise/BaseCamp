@@ -1,0 +1,114 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: '[anndata|loom] Input object format.  [default: anndata]'
+  synonyms:
+  - -f
+  - --input-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[anndata|loom|zarr] Output object format.  [default: anndata]'
+  synonyms:
+  - -F
+  - --output-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Chunk size for writing output in zarr format.  [default: 1000]'
+  synonyms:
+  - -z
+  - --zarr-chunk-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: When specified, using it as prefix for exporting mtx files. If not
+    empty and not ending with "/" or "_", a "_" will be appended.
+  synonyms:
+  - -X
+  - --export-mtx
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: '[stdout|stderr]      Print output object summary info to specified
+    stream.'
+  synonyms:
+  - --show-obj
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use this many PCs. Use `.X` if --n-pcs is 0 when --use-rep is None.
+  synonyms:
+  - -n
+  - --n-pcs
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Use the indicated representation. If None, the representation is chosen\
+    \ automatically: for `.n_vars` < 50, `.X` is used, otherwise `X_pca` is used.\
+    \ If `X_pca` is not present, it's computed with default parameters."
+  synonyms:
+  - -u
+  - --use-rep
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: '[,TEXT...]      Key under which to add the computed results'
+  synonyms:
+  - --key-added
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: 'Seed for random number generator.  [default: 0]'
+  synonyms:
+  - -S
+  - --random-state
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: '[,INTEGER...] The size of local neighborhood (in terms of number of
+    neighboring data points) used for manifold approximation. Larger values result
+    in more global views of the manifold, while smaller values result in more local
+    data being preserved. In general values should be in the range 2 to 100.  If --knn
+    is set, number of nearest neighbors to be searched, othwise a Gaussian kernel
+    width is set to the distance of the --n-neighbors neighbor. [default: 15]'
+  synonyms:
+  - -k
+  - --n-neighbors
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'When NOT set, use a hard threshold to restrict the number of neighbors
+    to --n-neighbors. Otherwise, use a Gaussian kernel to assign low weights to neighbors
+    more distant than the --n-neighbors nearest neighbor  [default: True]'
+  synonyms:
+  - --no-knn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[umap|gauss]       Use umap or gauss with adaptive width for computing
+    connectivities.  [default: umap]'
+  synonyms:
+  - -m
+  - --method
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- scanpy-neighbors
+subcommands: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

@@ -1,0 +1,473 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Specify your apikey at SeedMe.org
+  synonyms:
+  - -a
+  - -apikey
+  args: !SimpleFlagArg
+    name: YOUR_APIKEY
+  optional: true
+- !Flag
+  description: 'Specify path to authorization file (default file at ~/seedme.txt or
+    ~/.seedme is searched when this option not specified) This file must contain the
+    following {"username" : "YourUserName", "apikey" : "YourApiKey"} Download this
+    file from https://www.seedme.org/user'
+  synonyms:
+  - -ap
+  - -auth_path
+  args: !SimpleFlagArg
+    name: AUTH_FILE_PATH
+  optional: true
+- !Flag
+  description: Set path to SSL certificate
+  synonyms:
+  - -ca
+  - -cacert
+  args: !SimpleFlagArg
+    name: SSL_CERTIFICATE_PATH
+  optional: true
+- !Flag
+  description: Show curl command line options
+  synonyms:
+  - -cmd
+  - -show_curl_commands
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show auth in curl command line options
+  synonyms:
+  - -CMD
+  - -show_auth_in_curl_commands
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Connection timeout duration in seconds (default: 60'
+  synonyms:
+  - -cto
+  - -connect_timeout
+  args: !SimpleFlagArg
+    name: CONNECT_TIMEOUT
+  optional: true
+- !Flag
+  description: '/usr/bin/curl, -curl_path /usr/bin/curl Specify absolute path to curl
+    executible (default: environment path)'
+  synonyms:
+  - -cp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "['COLLECTION_ID', 'filenames|node_ids'] [['COLLECTION_ID', 'filenames|node_ids']\
+    \ ...], -delete ['COLLECTION_ID', 'filenames|node_ids'] [['COLLECTION_ID', 'filenames|node_ids']\
+    \ ...] Delete a collection or its content Arguments: Collection_ID filenames|node_ids\
+    \ filenames: comma seperated string * wildcard allowed node_ids: comma seperated\
+    \ node_ids"
+  synonyms:
+  - -del
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify description for the collection
+  synonyms:
+  - -d
+  - -description
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "['ID', 'all|video|wildcard', 'DOWNLOAD_PATH', 'RETRY', 'INTERVAL']\
+    \ [['ID', 'all|video|wildcard', 'DOWNLOAD_PATH', 'RETRY', 'INTERVAL'] ...], -download\
+    \ ['ID', 'all|video|wildcard', 'DOWNLOAD_PATH', 'RETRY', 'INTERVAL'] [['ID', 'all|video|wildcard',\
+    \ 'DOWNLOAD_PATH', 'RETRY', 'INTERVAL'] ...] Download content from a collection\
+    \ Arguments: ID  all|video|wildcard DOWNLOAD_PATH RETRY INTERVAL(Requires first\
+    \ two arguments) (default DOWNLOAD_PATH: ~/Downloads ) (default RETRY: 3 ) (default\
+    \ INTERVAL: 60)"
+  synonyms:
+  - -dl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable dry run execution mode to check all  input except authorization
+  synonyms:
+  - -dry
+  - -dry_run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Add emails to share a collection (can be used multiple times)
+  synonyms:
+  - -e
+  - -email
+  args: !SimpleFlagArg
+    name: EMAIL
+  optional: true
+- !Flag
+  description: Add file description
+  synonyms:
+  - -fd
+  - -file_description
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Do not trigger video transcoding
+  synonyms:
+  - -fn
+  - -file_dont_encode
+  - -file_dont_transcode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Overwrite file if it exists (default:False)
+  synonyms:
+  - -fo
+  - -file_overwrite
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '{FILE, PATH/abc*, DIR}, -file_path {FILE, PATH/abc*, DIR} Specify
+    FILE | PATH with * wildcard | DIR'
+  synonyms:
+  - -fp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify FILE PATH
+  synonyms:
+  - -fpp
+  - -file_poster_path
+  args: !ChoiceFlagArg
+    choices:
+    - FILE
+  optional: true
+- !Flag
+  description: Set file title
+  synonyms:
+  - -ft
+  - -file_title
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Trigger video transcoding to create videos for different devices
+  synonyms:
+  - -fe
+  - -file_transcode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '"KEY:VALUE", -keyvalue "KEY:VALUE" Add key:value pairs to the collection
+    (can be used multiple times)'
+  synonyms:
+  - -kv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Appends output to specified log file
+  synonyms:
+  - -lf
+  - -logfile
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Disable SSL communication
+  synonyms:
+  - -k
+  - -insecure
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Send email to users about a shared collection (default: False)'
+  synonyms:
+  - -n
+  - -notify
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Overwrite existing files, if any
+  synonyms:
+  - -o
+  - -overwrite
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Overide post method (default: requests)'
+  synonyms:
+  - -post
+  args: !ChoiceFlagArg
+    choices:
+    - curl
+    - requests
+  optional: true
+- !Flag
+  description: 'Specify privacy to access the collection (default: private)'
+  synonyms:
+  - -p
+  - -privacy
+  args: !ChoiceFlagArg
+    choices:
+    - private
+    - group
+    - public
+  optional: true
+- !Flag
+  description: '[COLLECTION_ID (required with list args)], -query [COLLECTION_ID (required
+    with list args)] Query your collections with optional ID (default: Returns a list
+    of ID and Title)'
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'list content for a collection(default: ticker)Must be used with -query
+    ID option'
+  synonyms:
+  - -l
+  - -list
+  args: !ChoiceFlagArg
+    choices:
+    - all
+    - keyvalue
+    - kv
+    - tic
+    - ticker
+    - url
+  optional: true
+- !Flag
+  description: 'Read timeout duration in seconds (default: None'
+  synonyms:
+  - -rto
+  - -read_timeout
+  args: !SimpleFlagArg
+    name: read_TIMEOUT
+  optional: true
+- !Flag
+  description: Add sequence description
+  synonyms:
+  - -sd
+  - -sequence_description
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Trigger video encoding to create a video from image sequence
+  synonyms:
+  - -se
+  - -sequence_encode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 30.00, -sequence_frame_rate 30.00 Specify sequence frame rate for video
+    encoding
+  synonyms:
+  - -sr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Overwrite sequence if it exists (default:False)
+  synonyms:
+  - -so
+  - -sequence_overwrite
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '{DIR, PATH/vel*}, -sequence_path {DIR, PATH/vel*} Specify DIR | PATH
+    with * wildcard'
+  synonyms:
+  - -sp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify FILE PATH
+  synonyms:
+  - -spp
+  - -sequence_poster_path
+  args: !ChoiceFlagArg
+    choices:
+    - FILE
+  optional: true
+- !Flag
+  description: Set sequence title (Required)
+  synonyms:
+  - -st
+  - -sequence_title
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Silence all console output including errors (Not recommended during
+    collection creation)
+  synonyms:
+  - -s
+  - -silent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Add tag to the collection (can be used many times)
+  synonyms:
+  - -tag
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: N ITEMS, -tail LAST N ITEMS Only list last n items to show. Must be
+    used in conjunction with -list option
+  synonyms:
+  - -ta
+  args: !SimpleFlagArg
+    name: LAST
+  optional: true
+- !Flag
+  description: Add ticker text upto 128 char to the collection
+  synonyms:
+  - -tic
+  - -ticker
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Specify title for the collection (Required)
+  synonyms:
+  - -t
+  - -title
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Specify email to whom the collection ownership will be transferred
+  synonyms:
+  - -tr
+  - -transfer
+  args: !SimpleFlagArg
+    name: EMAIL
+  optional: true
+- !Flag
+  description: Specify collection id for update or query
+  synonyms:
+  - -up
+  - -update
+  args: !SimpleFlagArg
+    name: COLLECTION_ID
+  optional: true
+- !Flag
+  description: Overide default and set new webservices url
+  synonyms:
+  - -url
+  args: !SimpleFlagArg
+    name: URL
+  optional: true
+- !Flag
+  description: Specify your username at SeedMe.org
+  synonyms:
+  - -u
+  - -user
+  - -username
+  args: !SimpleFlagArg
+    name: YOUR_USER_NAME
+  optional: true
+- !Flag
+  description: 'verbosity level(default: ERROR)'
+  synonyms:
+  - -v
+  - -verbose
+  args: !ChoiceFlagArg
+    choices:
+    - INFO
+    - WARNING
+    - ERROR
+    - CRITICAL
+    - DEBUG
+  optional: true
+- !Flag
+  description: Show Web API Version and Web Services URL
+  synonyms:
+  - -V
+  - -version
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "'one@example.com' -e 'two@example.com' \\"
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "'CLI Test' \\"
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "'Using CLI to interact with SeedMe.org' \\"
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "'pressure:10pa' -kv 'temperature:300K' \\"
+  synonyms:
+  - -kv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "'YT' -tag 'visualizations' \\"
+  synonyms:
+  - -tag
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "'t1 is 5%' -tic 't2 is 10%' \\"
+  synonyms:
+  - -tic
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "'sample/sequences/plume_boundary/*' \\"
+  synonyms:
+  - -sp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "'seq title' -sd 'desc of seq' -sr 5 -se \\"
+  synonyms:
+  - -st
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "'sample/videos/air.mp4' \\"
+  synonyms:
+  - -fp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "'video title' -fd 'desc of video' -fr 1"
+  synonyms:
+  - -ft
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "'my sequence title'"
+  synonyms:
+  - -st
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "'sample/seqence/steam/steam_rotation0360.png'"
+  synonyms:
+  - -sp
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- seedme.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

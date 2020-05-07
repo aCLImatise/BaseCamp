@@ -1,0 +1,610 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Provide verbose output.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- merfishtools
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: OPTIONS
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: CODEBOOK-TSV
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: READOUTS
+    optional: false
+  named:
+  - !Flag
+    description: 'Path to write expected value and standard deviation estimates of
+      expression to. Output is formatted into columns: cell, feature, expected value,
+      standard deviation'
+    synonyms:
+    - -e
+    - --estimate
+    args: !SimpleFlagArg
+      name: TSV-FILE
+    optional: true
+  - !Flag
+    description: 'Path to write global statistics per cell to. Output is formatted
+      into columns: cell, noise-rate'
+    synonyms:
+    - --stats
+    args: !SimpleFlagArg
+      name: TSV-FILE
+    optional: true
+  - !Flag
+    description: Seed for shuffling that occurs in EM algorithm.
+    synonyms:
+    - --seed
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: '...              Prior probability of 0->1 error [default: 0.04]'
+    synonyms:
+    - --p0
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: '...              Prior probability of 1->0 error [default: 0.1]'
+    synonyms:
+    - --p1
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: 'Regular expression to select cells from cell column (see above).
+      [default: .*]'
+    synonyms:
+    - --cells
+    args: !SimpleFlagArg
+      name: REGEX
+    optional: true
+  - !Flag
+    description: '<INT,>    Width of the window to calculate PMF for. [default: 100]'
+    synonyms:
+    - --pmf-window-width
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Number of threads to use. [default: 1]'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  command:
+  - merfishtools
+  - exp
+  subcommands: []
+  help_flag: !Flag
+    description: Prints help information
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Prints version information
+    synonyms:
+    - -V
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: OPTIONS
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: group1
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: group2
+    optional: false
+  named:
+  - !Flag
+    description: Maximum absolute log2 fold change considered as no differential expression
+      [1.0].
+    synonyms:
+    - --max-null-log2fc
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: Pseudocounts to add to means before fold change calculation [1.0].
+    synonyms:
+    - --pseudocounts
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: Path to write CDFs of log2 fold changes to.
+    synonyms:
+    - --cdf
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: Number of threads to use.
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  command:
+  - merfishtools
+  - diffexp
+  subcommands: []
+  help_flag: !Flag
+    description: Prints help information
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Prints version information
+    synonyms:
+    - -V
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional: []
+  named: []
+  command:
+  - merfishtools
+  - multidiffexp
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Maximum coefficient of variation (CV) considered as no differential
+        expression [0.5].
+      synonyms:
+      - --max-null-cv
+      args: !SimpleFlagArg
+        name: FLOAT
+      optional: true
+    - !Flag
+      description: Pseudocounts to add to means before CV calculation [1.0].
+      synonyms:
+      - --pseudocounts
+      args: !SimpleFlagArg
+        name: FLOAT
+      optional: true
+    - !Flag
+      description: Path to write CDFs of CVs to.
+      synonyms:
+      - --cdf
+      args: !SimpleFlagArg
+        name: FILE
+      optional: true
+    - !Flag
+      description: Number of threads to use.
+      synonyms:
+      - -t
+      - --threads
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    command:
+    - merfishtools
+    - multidiffexp
+    - OPTIONS
+    subcommands: []
+    help_flag: !Flag
+      description: Prints help information
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: Prints version information
+      synonyms:
+      - -V
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: OPTIONS
+      optional: true
+    - !Positional
+      description: ''
+      position: 1
+      name: For
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: more
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
+      name: information
+      optional: false
+    - !Positional
+      description: ''
+      position: 4
+      name: try
+      optional: false
+    named: []
+    command:
+    - merfishtools
+    - multidiffexp
+    - For
+    subcommands: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: OPTIONS
+      optional: true
+    - !Positional
+      description: ''
+      position: 1
+      name: For
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: more
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
+      name: information
+      optional: false
+    - !Positional
+      description: ''
+      position: 4
+      name: try
+      optional: false
+    named: []
+    command:
+    - merfishtools
+    - multidiffexp
+    - more
+    subcommands: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: OPTIONS
+      optional: true
+    - !Positional
+      description: ''
+      position: 1
+      name: For
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: more
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
+      name: information
+      optional: false
+    - !Positional
+      description: ''
+      position: 4
+      name: try
+      optional: false
+    named: []
+    command:
+    - merfishtools
+    - multidiffexp
+    - information
+    subcommands: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: OPTIONS
+      optional: true
+    - !Positional
+      description: ''
+      position: 1
+      name: For
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: more
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
+      name: information
+      optional: false
+    - !Positional
+      description: ''
+      position: 4
+      name: try
+      optional: false
+    named: []
+    command:
+    - merfishtools
+    - multidiffexp
+    - try
+    subcommands: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Number of 1-bits.
+    synonyms:
+    - -m
+    - --onebits
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Regular expression pattern for features that should be marked as
+      not expressed. This is useful to correctly model, e.g., misidentification probes.
+    synonyms:
+    - --not-expressed
+    args: !SimpleFlagArg
+      name: PATTERN
+    optional: true
+  command:
+  - merfishtools
+  - gen-mhd4
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --onebits
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    command:
+    - merfishtools
+    - gen-mhd4
+    - OPTIONS
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: Prints help information
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Prints version information
+    synonyms:
+    - -V
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Number of bits.
+    synonyms:
+    - -N
+    - --bits
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Number of 1-bits.
+    synonyms:
+    - -m
+    - --onebits
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Regular expression pattern for features that should be marked as
+      not expressed. This is useful to correctly model, e.g., misidentification probes.
+    synonyms:
+    - --not-expressed
+    args: !SimpleFlagArg
+      name: PATTERN
+    optional: true
+  command:
+  - merfishtools
+  - gen-mhd2
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --bits
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - --onebits
+      args: !SimpleFlagArg
+        name: INT
+      optional: true
+    command:
+    - merfishtools
+    - gen-mhd2
+    - OPTIONS
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: Prints help information
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Prints version information
+    synonyms:
+    - -V
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional: []
+  named: []
+  command:
+  - merfishtools
+  - est-error-rates
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: RAW-DATA
+      optional: false
+    named: []
+    command:
+    - merfishtools
+    - est-error-rates
+    - TSV-FILE
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: TSV-FILE
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: RAW-DATA
+      optional: false
+    named: []
+    command:
+    - merfishtools
+    - est-error-rates
+    - RAW-DATA
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: Prints help information
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Prints version information
+    synonyms:
+    - -V
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+help_flag: !Flag
+  description: Prints help information
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Prints version information
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

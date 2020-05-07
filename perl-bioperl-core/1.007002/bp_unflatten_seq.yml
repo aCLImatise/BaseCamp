@@ -1,0 +1,96 @@
+!Command
+positional:
+- !Positional
+  description: 1..2701[+]
+  position: 0
+  name: databank_entry
+  optional: false
+- !Positional
+  description: mRNA                                            CDS hCHCR-G                                  80..1144[+]
+    exon                                         80..1144[+] five_prime_UTR                                 1..79[+]
+    located_sequence_feature                       137..196[+] located_sequence_feature                       239..292[+]
+    located_sequence_feature                       617..676[+] located_sequence_feature                       725..778[+]
+    three_prime_UTR                                1145..2659[+] polyA_site                                     1606..1606[+]
+    polyA_site                                     2660..2660[+]
+  position: 1
+  name: gene
+  optional: false
+- !Positional
+  description: mRNA CG3320-RA                                  CDS CG3320-PA                                53126..54971[-]
+    exon                                         52204..53323[-] exon                                         53404..53631[-]
+    exon                                         53688..53735[-] exon                                         53798..53918[-]
+    exon                                         54949..55287[-] mRNA CG3320-RB                                  CDS
+    CG3320-PB                                53383..54971[-] exon                                         52204..53631[-]
+    exon                                         53688..53735[-] exon                                         53798..53918[-]
+    exon                                         54949..55287[-]
+  position: 0
+  name: gene
+  optional: false
+named:
+- !Flag
+  description: '|input FILE input file (can also be specified as last argument)'
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: input format (defaults to genbank) probably doesn't make so much sense
+    to use this for non-flat formats; ie other than embl/genbank
+  synonyms:
+  - -from
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: output format (defaults to asciitree) should really be a format that
+    is nested SeqFeature aware; I think this is only asciitree, chadoxml and gff3
+  synonyms:
+  - -to
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: with export to GFF3 format (pre-3 GFFs make no sense with unflattened
+    sequences, as they have no set way of representing feature graphs)
+  synonyms:
+  - -gff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '|output FILE outfile defaults to STDOUT'
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: show extra detail on features (asciitree mode only)
+  synonyms:
+  - -detail
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '|ethresh INT sets the error threshold on unflattening by default this
+    script will throw a wobbly if it encounters weird stuff in the genbank file -
+    raise the error threshold to signal these to be ignored (and reported on STDERR)'
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: suppress use_magic in unflattening (see Bio::SeqFeature::Tools::Unflattener
+  synonyms:
+  - -nomagic
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: suppress type mapping (see Bio::SeqFeature::Tools::TypeMapper
+  synonyms:
+  - -notypemap
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- bp_unflatten_seq.pl
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

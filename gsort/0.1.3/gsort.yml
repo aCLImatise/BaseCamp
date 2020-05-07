@@ -1,0 +1,80 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - --chromosomemappings
+  args: !SimpleFlagArg
+    name: CHROMOSOMEMAPPINGS
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --memory
+  args: !SimpleFlagArg
+    name: MEMORY
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --parent
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- gsort
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: a tab-delimited file to sort
+    position: 0
+    name: PATH
+    optional: false
+  - !Positional
+    description: a genome file of chromosome sizes and order
+    position: 1
+    name: GENOME
+    optional: false
+  named:
+  - !Flag
+    description: a file used to re-map chromosome names for example from hg19 to GRCh37
+    synonyms:
+    - --chromosomemappings
+    - -c
+    args: !SimpleFlagArg
+      name: CHROMOSOMEMAPPINGS
+    optional: true
+  - !Flag
+    description: 'megabytes of memory to use before writing to temp files. [default:
+      2800]'
+    synonyms:
+    - --memory
+    - -m
+    args: !SimpleFlagArg
+      name: MEMORY
+    optional: true
+  - !Flag
+    description: for gff only. given rows with same chrom and start put those with
+      a 'Parent' attribute first
+    synonyms:
+    - --parent
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gsort
+  - PATH
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

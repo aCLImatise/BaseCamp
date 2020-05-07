@@ -1,0 +1,304 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: '[.gz], --reads_fwd filename[.gz] Name of forward reads fasta/q file.
+    Must be used in conjunction with --reads_rev'
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: '[.gz], --reads_rev filename[.gz] Name of reverse reads fasta/q file.
+    Must be used in conjunction with --reads_fwd'
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: '[.gz]    Name of interleaved fasta/q file'
+  synonyms:
+  - --fr
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: Keep intermediate files (could be many!). Default is to delete all
+    unnecessary files
+  synonyms:
+  - --keep_files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[.gz] Fasta file of contigs to be extended. Incompatible with --reference'
+  synonyms:
+  - --contigs
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: '[.gz] EXPERIMENTAL! This option is EXPERIMENTAL, not recommended,
+    and has not been tested! Fasta file of reference genome, or parts thereof. IVA
+    will try to assemble one contig per sequence in this file. Incompatible with --contigs'
+  synonyms:
+  - --reference
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: Be verbose by printing messages to stdout. Use up to three times for
+    increasing verbosity.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: kmer hash length in SMALT (the -k option in smalt index) [19]
+  synonyms:
+  - -k
+  - --smalt_k
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: kmer hash step size in SMALT (the -s option in smalt index) [11]
+  synonyms:
+  - -s
+  - --smalt_s
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Minimum identity threshold for mapping to be reported (the -y option
+    in smalt map) [0.5]
+  synonyms:
+  - -y
+  - --smalt_id
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Number of bases to trim off the end of every contig before extending
+    for the first time [25]
+  synonyms:
+  - --ctg_first_trim
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: During iterative extension, number of bases to trim off the end of
+    a contig when extension fails (then try extending again) [10]
+  synonyms:
+  - --ctg_iter_trim
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Minimum kmer depth needed to use that kmer to extend a contig [10]
+  synonyms:
+  - --ext_min_cov
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Sets N, where kmer for extension must be at least N times more abundant
+    than next most common kmer [4]
+  synonyms:
+  - --ext_min_ratio
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Maximum number of bases to try to extend on each iteration [100]
+  synonyms:
+  - --ext_max_bases
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Set minimum number of bases soft clipped off a read for those bases
+    to be used for extension [3]
+  synonyms:
+  - --ext_min_clip
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Maximum number of contigs allowed in the assembly. No more seeds generated
+    if the cutoff is reached [50]
+  synonyms:
+  - --max_contigs
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: When no more contigs can be extended, generate a new seed. This is
+    forced to be true when --contigs is not used
+  synonyms:
+  - --make_new_seeds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'When making a seed sequence, use the most common kmer of this length.
+    Default is to use the minimum of (median read length, 95). Warning: it is not
+    recommended to set this higher than 95'
+  synonyms:
+  - --seed_start_length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Stop extending seed using perfect matches from reads when this length
+    is reached. Future extensions are then made by treating the seed as a contig [0.9*max_insert]
+  synonyms:
+  - --seed_stop_length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Minimum kmer coverage of initial seed [25]
+  synonyms:
+  - --seed_min_kmer_cov
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Maximum kmer coverage of initial seed [1000000]
+  synonyms:
+  - --seed_max_kmer_cov
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Maximum number of bases to try to extend on each iteration [50]
+  synonyms:
+  - --seed_ext_max_bases
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Number of overlapping bases needed between read and seed to use that
+    read to extend [seed_start_length]
+  synonyms:
+  - --seed_overlap_length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Minimum kmer depth needed to use that kmer to extend a contig [10]
+  synonyms:
+  - --seed_ext_min_cov
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Sets N, where kmer for extension must be at least N times more abundant
+    than next most common kmer [4]
+  synonyms:
+  - --seed_ext_min_ratio
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Provide location of trimmomatic.jar file to enable read trimming. Required
+    if --adapters used
+  synonyms:
+  - --trimmomatic
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: Trimmomatic options used to quality trim reads [LEADING:10 TRAILING:10
+    SLIDINGWINDOW:4:20]
+  synonyms:
+  - --trimmo_qual
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Fasta file of adapter sequences to be trimmed off reads. If used, must
+    also use --trimmomatic. Default is file of adapters supplied with IVA
+  synonyms:
+  - --adapters
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: Minimum length of read after trimming [50]
+  synonyms:
+  - --min_trimmed_length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: FASTA file of primers. The first perfect match found to a sequence
+    in the primers file will be trimmed off the start of each read. This is run after
+    trimmomatic (if --trimmomatic used)
+  synonyms:
+  - --pcr_primers
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: Maximum insert size (includes read length). Reads with inferred insert
+    size more than the maximum will not be used to extend contigs [800]
+  synonyms:
+  - -i
+  - --max_insert
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Number of threads to use [1]
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Force kmc to use one thread. By default the value of -t/--threads is
+    used when running kmc
+  synonyms:
+  - --kmc_onethread
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: in [0,0.5] Set strand bias cutoff of mapped reads when trimming contig
+    ends, in the interval [0,0.5]. A value of x means that a base needs min(fwd_depth,
+    rev_depth) / total_depth <= x. The only time this should be used is with libraries
+    with overlapping reads (ie fragment length < 2*read length), and even then, it
+    can make results worse. If used, try a low value like 0.1 first [0]
+  synonyms:
+  - --strand_bias
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Run using built in test data. All other options will be ignored, except
+    the mandatory output directory, and --trimmomatic and --threads can be also be
+    used
+  synonyms:
+  - --test
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- iva
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

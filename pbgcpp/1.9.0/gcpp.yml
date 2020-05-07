@@ -1,0 +1,230 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: input.bam
+  optional: false
+named:
+- !Flag
+  description: FILE   The filename of the reference FASTA file.
+  synonyms:
+  - -r
+  - --reference
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: STR    The output filename(s), as a comma-separated list. Valid output
+    formats are .fa/.fasta, .fq/.fastq, .gff, .vcf
+  synonyms:
+  - -o
+  - --output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT    The minimum confidence for a variant call to be output to variants.{gff,vcf}
+    [40]
+  synonyms:
+  - -q
+  - --min-confidence
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT    The minimum site coverage that must be achieved for variant
+    calls and consensus to be calculated for a site. [5]
+  synonyms:
+  - -x
+  - --min-coverage
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'STR    The consensus base that will be output for sites with no effective
+    coverage. Valid choices: (nocall, reference, lowercasereference). [lowercasereference]'
+  synonyms:
+  - --no-evidence-call
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT    A designation of the maximum coverage level to be used for analysis.
+    Exact interpretation is algorithm-specific. The meaningful range of this argument
+    is [1, 250]. [100]
+  synonyms:
+  - -X
+  - --coverage
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: FLOAT  The minimum acceptable window-global alignment accuracy for
+    reads that will be used for the analysis (arrow-only). [0.82]
+  synonyms:
+  - --min-accuracy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT    The minimum MapQV for reads that will be used for analysis.
+    [10]
+  synonyms:
+  - -m
+  - --min-map-qv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: FLOAT  The minimum ReadScore for reads that will be used for analysis
+    (arrow-only). [0.65]
+  synonyms:
+  - --min-read-score
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: FLOAT  The minimum acceptable signal-to-noise over all channels for
+    reads that will be used for analysis (arrow-only). [2.5]
+  synonyms:
+  - --min-snr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'STR    The window (or multiple comma-delimited windows) of the reference
+    to be processed, in the format refGroup:refStart-refEnd (default: entire reference).'
+  synonyms:
+  - -w
+  - --windows
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'STR    The consensus algorithm used. Valid choices: (arrow, plurality,
+    poa). [arrow]'
+  synonyms:
+  - --algorithm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT    Radius of window to use when excluding local regions for exceeding
+    maskMinErrorRate, where 0 disables any filtering (arrow-only). [3]
+  synonyms:
+  - --mask-radius
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: FLOAT  Maximum local error rate before the local region defined bymaskRadius
+    is excluded from polishing (arrow-only). [0.7]
+  synonyms:
+  - --mask-error-rate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: STR    Path to a model file or directory containing model files.
+  synonyms:
+  - -P
+  - --parameters-file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: STR    Name of chemistry or model to use, overriding default selection.
+  synonyms:
+  - -p
+  - --parameters-spec
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT    Maximum number of iterations to polish the template. [40]
+  synonyms:
+  - --max-iterations
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT    Maximum number of sequences to use for consensus calling. [11]
+  synonyms:
+  - --max-poa-coverage
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT    Find the best mutations within a separation window for iterative
+    polishing. [10]
+  synonyms:
+  - --mutation-separation
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT    Find nearby mutations within neighborhood for iterative polishing.
+    [20]
+  synonyms:
+  - --mutation-neighborhood
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: FLOAT  Filter out reads whose aligned length along a subread is lower
+    than a percentage of its corresponding reference length. [0.1]
+  synonyms:
+  - --read-stumpiness-threshold
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT    Size of reference chunks. [500]
+  synonyms:
+  - -C
+  - --reference-chunk-size
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT    Size of reference chunk overlaps. [5]
+  synonyms:
+  - --reference-chunk-overlap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable adaptive reference chunking.
+  synonyms:
+  - --simple-chunking
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'STR    Read sorting strategy. Valid choices: (longest_and_strand_balanced,
+    longest, spanning, file_order). [longest_and_strand_balanced]'
+  synonyms:
+  - --sort-strategy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT    Minimum number of reads required within a window to call consensus
+    and variants using arrow or poa. [3]
+  synonyms:
+  - --min-poa-coverage
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT    Number of threads to use, 0 means autodetection. [0]
+  synonyms:
+  - -j
+  - --num-threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'STR    Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL).
+    [WARN]'
+  synonyms:
+  - --log-level
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: FILE   Log to a file, instead of stderr.
+  synonyms:
+  - --log-file
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- gcpp
+subcommands: []
+help_flag: !Flag
+  description: Show this help and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show application version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

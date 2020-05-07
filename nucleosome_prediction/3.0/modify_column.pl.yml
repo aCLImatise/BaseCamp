@@ -1,0 +1,239 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'The column to modify (default: 0; specify multiple columns using commas)
+    (zero-based)'
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: 'The rows to modify (default: All except -skipped; specify multiple
+    rows using commas) (zero-based)'
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Apply transformation to ALL columns
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Apply transformation only if entry is above (or equal) num
+  synonyms:
+  - -min
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Apply transformation only if entry is below (or equal) num
+  synonyms:
+  - -max
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Apply transformation only if entry is strictly above num
+  synonyms:
+  - -mins
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Apply transformation only if entry is strictly below num
+  synonyms:
+  - -maxs
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: <num1,num2> Apply transformation only if num1<=entry<=num2
+  synonyms:
+  - -rng
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <num1,num2> Apply transformation only if num1<entry<num2
+  synonyms:
+  - -rngs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':    Apply transformation only if entry is above <num> or below -<num>'
+  synonyms:
+  - -abs
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':   Apply transformation only if entry is above -<num> and below <num>'
+  synonyms:
+  - -babs
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':    Apply transformation only if entry contains <str>'
+  synonyms:
+  - -str
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ':   Apply transformation only if entry is equal to <str>'
+  synonyms:
+  - -estr
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ':   Apply transformation only if entry is *not* equal to <str>'
+  synonyms:
+  - -nstr
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: ':           Apply transormation only if entry is not empty'
+  synonyms:
+  - -ne
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':        Apply transormation only if entry is empty'
+  synonyms:
+  - -empty
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Apply transformation only if the entry is from a row and column  that
+    appear in a line of <file> as <row name> <tab> <column name> '
+  synonyms:
+  - -pairs
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: ':   Skip num rows in the file (default: 0)'
+  synonyms:
+  - -skip
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: ':  Skip num columns (when applying to all columns, can skip the first
+    few) (default: 0)'
+  synonyms:
+  - -skipc
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: makes the column a probability distribution by changing negative values
+    to zero and then dividing by the sum of the column.
+  synonyms:
+  - -pd
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Precision (take only <num> sig. digits. default: don't fix)"
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Convert numbers to a <num> resolution (e.g., 0.05)
+  synonyms:
+  - -res
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: 'Add <str> to the end of the column (default: "")'
+  synonyms:
+  - -astr
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: 'Add <str> to the beginning of the column (default: "")'
+  synonyms:
+  - -bstr
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: Set the entry to <str> (put EMPTY for getting an empty entry)
+  synonyms:
+  - -set
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: Remove string that matches the regular expression <regexp> from column
+  synonyms:
+  - -rmre
+  args: !SimpleFlagArg
+    name: regexp
+  optional: true
+- !Flag
+  description: Set numerical values around a given pivot (see -pv_val, -pv_high, -pv_low).
+    Activated when <bool> = 1. Non numerical values are not modified.
+  synonyms:
+  - -pv
+  args: !SimpleFlagArg
+    name: bool
+  optional: true
+- !Flag
+  description: '<num> The pivot value (default: 0.05)     '
+  synonyms:
+  - -pv_val
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The number to set values greater then the pivot value (default: 0)'
+  synonyms:
+  - -pv_high
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: '<num> The number to set values smaller equal then the pivot value
+    (default: 1)'
+  synonyms:
+  - -pv_low
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Split the column by the delimiter <del> (default: none).'
+  synonyms:
+  - -splt_d
+  args: !SimpleFlagArg
+    name: del
+  optional: true
+- !Flag
+  description: Accumulate (row i = row 1 + .. + row i)
+  synonyms:
+  - -cumul
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'When dividing by zero, uses <num> instead of giving an error (default:
+    999999)'
+  synonyms:
+  - -zero
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+command:
+- modify_column.pl.bak
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

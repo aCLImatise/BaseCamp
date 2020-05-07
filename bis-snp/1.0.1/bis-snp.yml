@@ -1,0 +1,488 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Type of analysis to run
+  synonyms:
+  - -T
+  - --analysis_type
+  args: !SimpleFlagArg
+    name: analysis_type
+  optional: true
+- !Flag
+  description: Input file containing sequence  data (BAM or CRAM)
+  synonyms:
+  - -I
+  - --input_file
+  args: !SimpleFlagArg
+    name: input_file
+  optional: true
+- !Flag
+  description: Emit list of input BAM/CRAM  files to log
+  synonyms:
+  - --showFullBamList
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of reads per SAM file  to buffer in memory
+  synonyms:
+  - -rbs
+  - --read_buffer_size
+  args: !SimpleFlagArg
+    name: read_buffer_size
+  optional: true
+- !Flag
+  description: Filters to apply to reads  before analysis
+  synonyms:
+  - -rf
+  - --read_filter
+  args: !SimpleFlagArg
+    name: read_filter
+  optional: true
+- !Flag
+  description: Read filters to disable
+  synonyms:
+  - -drf
+  - --disable_read_filter
+  args: !SimpleFlagArg
+    name: disable_read_filter
+  optional: true
+- !Flag
+  description: One or more genomic intervals  over which to operate
+  synonyms:
+  - -L
+  - --intervals
+  args: !SimpleFlagArg
+    name: intervals
+  optional: true
+- !Flag
+  description: One or more genomic intervals  to exclude from processing
+  synonyms:
+  - -XL
+  - --excludeIntervals
+  args: !SimpleFlagArg
+    name: excludeIntervals
+  optional: true
+- !Flag
+  description: Set merging approach to use  for combining interval inputs  (UNION|INTERSECTION)
+  synonyms:
+  - -isr
+  - --interval_set_rule
+  args: !SimpleFlagArg
+    name: interval_set_rule
+  optional: true
+- !Flag
+  description: Interval merging rule for  abutting intervals (ALL| OVERLAPPING_ONLY)
+  synonyms:
+  - -im
+  - --interval_merging
+  args: !SimpleFlagArg
+    name: interval_merging
+  optional: true
+- !Flag
+  description: Amount of padding (in bp) to  add to each interval
+  synonyms:
+  - -ip
+  - --interval_padding
+  args: !SimpleFlagArg
+    name: interval_padding
+  optional: true
+- !Flag
+  description: Reference sequence file
+  synonyms:
+  - -R
+  - --reference_sequence
+  args: !SimpleFlagArg
+    name: reference_sequence
+  optional: true
+- !Flag
+  description: Use a non-deterministic random  seed
+  synonyms:
+  - -ndrs
+  - --nonDeterministicRandomSeed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Stop execution cleanly as soon  as maxRuntime has been reached
+  synonyms:
+  - -maxRuntime
+  - --maxRuntime
+  args: !SimpleFlagArg
+    name: maxRuntime
+  optional: true
+- !Flag
+  description: Unit of time used by  maxRuntime (NANOSECONDS| MICROSECONDS|MILLISECONDS|
+    SECONDS|MINUTES|HOURS|DAYS)
+  synonyms:
+  - -maxRuntimeUnits
+  - --maxRuntimeUnits
+  args: !SimpleFlagArg
+    name: maxRuntimeUnits
+  optional: true
+- !Flag
+  description: Type of read downsampling to  employ at a given locus (NONE| ALL_READS|BY_SAMPLE)
+  synonyms:
+  - -dt
+  - --downsampling_type
+  args: !SimpleFlagArg
+    name: downsampling_type
+  optional: true
+- !Flag
+  description: Fraction of reads to  downsample to
+  synonyms:
+  - -dfrac
+  - --downsample_to_fraction
+  args: !SimpleFlagArg
+    name: downsample_to_fraction
+  optional: true
+- !Flag
+  description: Target coverage threshold for  downsampling to coverage
+  synonyms:
+  - -dcov
+  - --downsample_to_coverage
+  args: !SimpleFlagArg
+    name: downsample_to_coverage
+  optional: true
+- !Flag
+  description: Type of BAQ calculation to  apply in the engine (OFF| CALCULATE_AS_NECESSARY|
+    RECALCULATE)
+  synonyms:
+  - -baq
+  - --baq
+  args: !SimpleFlagArg
+    name: baq
+  optional: true
+- !Flag
+  description: BAQ gap open penalty
+  synonyms:
+  - -baqGOP
+  - --baqGapOpenPenalty
+  args: !SimpleFlagArg
+    name: baqGapOpenPenalty
+  optional: true
+- !Flag
+  description: Reduce NDN elements in CIGAR  string
+  synonyms:
+  - -fixNDN
+  - --refactor_NDN_cigar_string
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Fix mis-encoded base quality  scores
+  synonyms:
+  - -fixMisencodedQuals
+  - --fix_misencoded_quality_scores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ignore warnings about base  quality score encoding
+  synonyms:
+  - -allowPotentiallyMisencodedQuals
+  - --allow_potentially_misencoded_quality_scores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the base quality scores  from the OQ tag
+  synonyms:
+  - -OQ
+  - --useOriginalQualities
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assign a default base quality
+  synonyms:
+  - -DBQ
+  - --defaultBaseQualities
+  args: !SimpleFlagArg
+    name: defaultBaseQualities
+  optional: true
+- !Flag
+  description: Write GATK runtime performance  log to this file
+  synonyms:
+  - -PF
+  - --performanceLog
+  args: !SimpleFlagArg
+    name: performanceLog
+  optional: true
+- !Flag
+  description: Input covariates table file  for on-the-fly base quality  score recalibration
+  synonyms:
+  - -BQSR
+  - --BQSR
+  args: !SimpleFlagArg
+    name: BQSR
+  optional: true
+- !Flag
+  description: Quantize quality scores to a  given number of levels (with  -BQSR)
+  synonyms:
+  - -qq
+  - --quantize_quals
+  args: !SimpleFlagArg
+    name: quantize_quals
+  optional: true
+- !Flag
+  description: Use static quantized quality  scores to a given number of  levels (with
+    -BQSR)
+  synonyms:
+  - -SQQ
+  - --static_quantized_quals
+  args: !SimpleFlagArg
+    name: static_quantized_quals
+  optional: true
+- !Flag
+  description: Disable printing of base  insertion and deletion tags  (with -BQSR)
+  synonyms:
+  - -DIQ
+  - --disable_indel_quals
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Emit the OQ tag with the  original base qualities (with  -BQSR)
+  synonyms:
+  - -EOQ
+  - --emit_original_quals
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't recalibrate bases with  quality scores less than this  threshold
+    (with -BQSR)
+  synonyms:
+  - -preserveQ
+  - --preserve_qscores_less_than
+  args: !SimpleFlagArg
+    name: preserve_qscores_less_than
+  optional: true
+- !Flag
+  description: Global Qscore Bayesian prior  to use for BQSR
+  synonyms:
+  - -globalQScorePrior
+  - --globalQScorePrior
+  args: !SimpleFlagArg
+    name: globalQScorePrior
+  optional: true
+- !Flag
+  description: 'Time interval for process '
+  synonyms:
+  - -secondsBetweenProgressUpdates
+  - --secondsBetweenProgressUpdates
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: How strict should we be with  validation (STRICT|LENIENT| SILENT)
+  synonyms:
+  - -S
+  - --validation_strictness
+  args: !SimpleFlagArg
+    name: validation_strictness
+  optional: true
+- !Flag
+  description: Remove program records from  the SAM header
+  synonyms:
+  - -rpr
+  - --remove_program_records
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Keep program records in the  SAM header
+  synonyms:
+  - -kpr
+  - --keep_program_records
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Rename sample IDs on-the-fly  at runtime using the provided  mapping
+    file
+  synonyms:
+  - -sample_rename_mapping_file
+  - --sample_rename_mapping_file
+  args: !SimpleFlagArg
+    name: sample_rename_mapping_file
+  optional: true
+- !Flag
+  description: 'Enable unsafe operations:  nothing will be checked at  runtime (ALLOW_N_CIGAR_READS|
+    ALLOW_UNINDEXED_BAM| ALLOW_UNSET_BAM_SORT_ORDER| NO_READ_ORDER_VERIFICATION| ALLOW_SEQ_DICT_INCOMPATIBILITY|
+    LENIENT_VCF_PROCESSING|ALL)'
+  synonyms:
+  - -U
+  - --unsafe
+  args: !SimpleFlagArg
+    name: unsafe
+  optional: true
+- !Flag
+  description: Use the JDK Deflater instead  of the IntelDeflater for  writing BAMs
+  synonyms:
+  - -jdk_deflater
+  - --use_jdk_deflater
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the JDK Inflater instead  of the IntelInflater for  reading BAMs
+  synonyms:
+  - -jdk_inflater
+  - --use_jdk_inflater
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't include the command line  in output VCF headers
+  synonyms:
+  - -no_cmdline_in_header
+  - --no_cmdline_in_header
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output sites-only VCF
+  synonyms:
+  - -sites_only
+  - --sites_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Always output all the records  in VCF FORMAT fields, even if  some
+    are missing
+  synonyms:
+  - -writeFullFormat
+  - --never_trim_vcf_format_field
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Compression level to use for  writing BAM files (0 - 9,  higher is
+    more compressed)
+  synonyms:
+  - -compress
+  - --bam_compression
+  args: !SimpleFlagArg
+    name: bam_compression
+  optional: true
+- !Flag
+  description: Strip down read content and  tags
+  synonyms:
+  - -simplifyBAM
+  - --simplifyBAM
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Turn off on-the-fly creation  of indices for output BAM/CRAM  files
+  synonyms:
+  - --disable_bam_indexing
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable on-the-fly creation of  md5s for output BAM files.
+  synonyms:
+  - --generate_md5
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of data threads to  allocate to this analysis
+  synonyms:
+  - -nt
+  - --num_threads
+  args: !SimpleFlagArg
+    name: num_threads
+  optional: true
+- !Flag
+  description: Number of CPU threads to  allocate per data thread
+  synonyms:
+  - -nct
+  - --num_cpu_threads_per_data_thread
+  args: !SimpleFlagArg
+    name: num_cpu_threads_per_data_thread
+  optional: true
+- !Flag
+  description: Enable threading efficiency  monitoring
+  synonyms:
+  - -mte
+  - --monitorThreadEfficiency
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Exclude read groups based on  tags
+  synonyms:
+  - -rgbl
+  - --read_group_black_list
+  args: !SimpleFlagArg
+    name: read_group_black_list
+  optional: true
+- !Flag
+  description: Pedigree files for samples
+  synonyms:
+  - -ped
+  - --pedigree
+  args: !SimpleFlagArg
+    name: pedigree
+  optional: true
+- !Flag
+  description: Pedigree string for samples
+  synonyms:
+  - -pedString
+  - --pedigreeString
+  args: !SimpleFlagArg
+    name: pedigreeString
+  optional: true
+- !Flag
+  description: Validation strictness for  pedigree (STRICT|SILENT)
+  synonyms:
+  - -pedValidationType
+  - --pedigreeValidationType
+  args: !SimpleFlagArg
+    name: pedigreeValidationType
+  optional: true
+- !Flag
+  description: Type of IndexCreator to use  for VCF/BCF indices  (DYNAMIC_SEEK|DYNAMIC_SIZE|
+    LINEAR|INTERVAL)
+  synonyms:
+  - -variant_index_type
+  - --variant_index_type
+  args: !SimpleFlagArg
+    name: variant_index_type
+  optional: true
+- !Flag
+  description: Parameter to pass to the  VCF/BCF IndexCreator
+  synonyms:
+  - -variant_index_parameter
+  - --variant_index_parameter
+  args: !SimpleFlagArg
+    name: variant_index_parameter
+  optional: true
+- !Flag
+  description: Reference window stop
+  synonyms:
+  - -ref_win_stop
+  - --reference_window_stop
+  args: !SimpleFlagArg
+    name: reference_window_stop
+  optional: true
+- !Flag
+  description: Set the minimum level of  logging
+  synonyms:
+  - -l
+  - --logging_level
+  args: !SimpleFlagArg
+    name: logging_level
+  optional: true
+- !Flag
+  description: Set the logging location
+  synonyms:
+  - -log
+  - --log_to_file
+  args: !SimpleFlagArg
+    name: log_to_file
+  optional: true
+command:
+- bis-snp
+subcommands: []
+help_flag: !Flag
+  description: Generate the help message
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Output version information
+  synonyms:
+  - -version
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

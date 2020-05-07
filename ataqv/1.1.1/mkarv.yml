@@ -1,0 +1,119 @@
+!Command
+positional:
+- !Positional
+  description: The path to the directory where the web app will be created.
+  position: 0
+  name: directory
+  optional: false
+- !Positional
+  description: 'One or more ataqv metrics files in JSON format. (default: None)'
+  position: 1
+  name: metrics
+  optional: false
+named:
+- !Flag
+  description: 'The number of concurrent processes to use (default: 1). (default:
+    1)'
+  synonyms:
+  - -c
+  - --concurrency
+  args: !SimpleFlagArg
+    name: CONCURRENCY
+  optional: true
+- !Flag
+  description: 'A description for the viewer instance. (default: None)'
+  synonyms:
+  - -d
+  - --description
+  args: !SimpleFlagArg
+    name: DESCRIPTION
+  optional: true
+- !Flag
+  description: 'Overwrite the output directory if it exists. (default: False)'
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'If indent is given, JSON output will be pretty-printed and indented.
+    (default: False)'
+  synonyms:
+  - -i
+  - --indent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The maximum fragment length for which the distance to the reference
+    fragment length count distribution will be measured. (default: 1000)'
+  synonyms:
+  - -m
+  - --maximum-fragment-length
+  args: !SimpleFlagArg
+    name: MAXIMUM_FRAGMENT_LENGTH
+  optional: true
+- !Flag
+  description: 'A reference set of peak metrics to plot. The default value is "SRR891268",
+    the peak metrics of that sample in the ATAC-seq paper, as generated with MACS2
+    in our pipeline. It can be specified as "calculate", in which case these metrics
+    will be averaged from the given metrics. It can also be the name of a JSON file,
+    which must contain an object with two keys, "cumulative_fraction_of_hqaa" and
+    "cumulative_fraction_of_territory", the value of each being an array of fractions
+    of high-quality autosomal alignments (HQAA) or total peak territory, respectively.
+    A tab- or comma-separated value file may also be given, in which each line contains
+    two fractions, of HQAA and peak territory. All of these arrays should represent
+    values at percentiles from 1-100. (default: SRR891268)'
+  synonyms:
+  - -p
+  - --peak-reference
+  args: !SimpleFlagArg
+    name: PEAK_REFERENCE
+  optional: true
+- !Flag
+  description: 'How to make the reference fragment length count distribution. The
+    default value is "SRR891268", the fragment length distribution of that sample
+    in the ATAC-seq paper. It can be specified as "calculate", in which case a distance
+    will be calculated for each set of metrics from a reference distribution constructed
+    from the rest of the given metrics. It can also be the name of a file containing
+    a reference distribution. This file may be in JSON format, containing an object
+    mapping fragment lengths to counts (e.g. "{0: 0, 1: 10, 2: 17}", or it may be
+    a tab- or comma-separated value file in which each line contains a fragment length
+    and count. It may (default: SRR891268)'
+  synonyms:
+  - -r
+  - --reference
+  args: !SimpleFlagArg
+    name: REFERENCE
+  optional: true
+- !Flag
+  description: 'The location of the web app directory template. (default: /tmp/tmpfd17w363/web)'
+  synonyms:
+  - -t
+  - --template-directory
+  args: !SimpleFlagArg
+    name: TEMPLATE_DIRECTORY
+  optional: true
+- !Flag
+  description: 'Talk more. (default: False)'
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- mkarv
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

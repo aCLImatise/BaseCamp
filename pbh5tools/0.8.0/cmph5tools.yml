@@ -1,0 +1,193 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Set the verbosity level (default: None)'
+  synonyms:
+  - --verbose
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Print runtime profile at exit (default: False)'
+  synonyms:
+  - --profile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Catch exceptions in debugger (requires ipdb) (default: False)'
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- cmph5tools.py
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: output filename
+    synonyms:
+    - --outFile
+    args: !SimpleFlagArg
+      name: OUTCMP
+    optional: true
+  - !Flag
+    description: whether a deep sorting should be conducted, i.e. sort theAlignmentArrays
+      [False]
+    synonyms:
+    - --deep
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: temporary directory to use when sorting in-place [/tmp]
+    synonyms:
+    - --tmpDir
+    args: !SimpleFlagArg
+      name: TMPDIR
+    optional: true
+  - !Flag
+    description: Whether to use native indexing [False].
+    synonyms:
+    - --usePythonIndexer
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Whether to make a temporary copy of the original cmp.h5 file before
+      sorting.
+    synonyms:
+    - --inPlace
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - cmph5tools.py
+  - sort
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - cmph5tools.py
+  - equal
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: cmp.h5.2
+      optional: false
+    named: []
+    command:
+    - cmph5tools.py
+    - equal
+    - cmp.h5.1
+    subcommands: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: cmp.h5.1
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: cmp.h5.2
+      optional: false
+    named: []
+    command:
+    - cmph5tools.py
+    - equal
+    - cmp.h5.2
+    subcommands: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Should output be in JSON format
+    synonyms:
+    - --json
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - cmph5tools.py
+  - listMetrics
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input.cmp.h5
+    optional: false
+  named: []
+  command:
+  - cmph5tools.py
+  - validate
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

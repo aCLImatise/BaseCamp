@@ -1,0 +1,742 @@
+!Command
+positional: []
+named: []
+command:
+- mikado
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: List of labels for which splitting will be disabled (eg long reads
+      such as PacBio)
+    synonyms:
+    - --skip-split
+    args: !RepeatFlagArg
+      name: SKIP_SPLIT
+    optional: true
+  - !Flag
+    description: 'Output will be in JSON (default: inferred by filename, with TOML
+      as fallback).'
+    synonyms:
+    - -j
+    - --json
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Output will be in YAML (default: inferred by filename, with TOML
+      as fallback).'
+    synonyms:
+    - -y
+    - --yaml
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Output will be in TOML (default: inferred by filename, with TOML
+      as fallback).'
+    synonyms:
+    - --toml
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Destination directory for the output.
+    synonyms:
+    - -od
+    - --out-dir
+    args: !SimpleFlagArg
+      name: OUT_DIR
+    optional: true
+  - !Flag
+    description: Minimum cDNA length for transcripts.
+    synonyms:
+    - --minimum-cdna-length
+    args: !SimpleFlagArg
+      name: MINIMUM_CDNA_LENGTH
+    optional: true
+  - !Flag
+    description: Maximum intron length for transcripts.
+    synonyms:
+    - --max-intron-length
+    args: !SimpleFlagArg
+      name: MAX_INTRON_LENGTH
+    optional: true
+  - !Flag
+    description: 'Scoring file to use. Mikado provides the following: mammalian.yaml,
+      plant.yaml, HISTORIC/worm.yaml, HISTORIC/athaliana_scoring.yaml, HISTORIC/celegans_scoring.yaml,
+      HISTORIC/scerevisiae.yaml, HISTORIC/insects.yaml, HISTORIC/dmelanogaster_scoring.yaml,
+      HISTORIC/human.yaml, HISTORIC/plants.yaml, HISTORIC/hsapiens_scoring.yaml'
+    synonyms:
+    - --scoring
+    args: !SimpleFlagArg
+      name: SCORING
+    optional: true
+  - !Flag
+    description: File into which to copy the selected scoring file, for modification.
+    synonyms:
+    - --copy-scoring
+    args: !SimpleFlagArg
+      name: COPY_SCORING
+    optional: true
+  - !Flag
+    description: 'INTRON_RANGE, --intron-range INTRON_RANGE INTRON_RANGE Range into
+      which intron lengths should fall, as a couple of integers. Transcripts with
+      intron lengths outside of this range will be penalised. Default: (60, 900)'
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: INTRON_RANGE
+    optional: true
+  - !Flag
+    description: Name of the optional subloci output. By default, this will not be
+      produced.
+    synonyms:
+    - --subloci-out
+    args: !SimpleFlagArg
+      name: SUBLOCI_OUT
+    optional: true
+  - !Flag
+    description: Name of the optional monoloci output. By default, this will not be
+      produced.
+    synonyms:
+    - --monoloci-out
+    args: !SimpleFlagArg
+      name: MONOLOCI_OUT
+    optional: true
+  - !Flag
+    description: Disable transcript padding. On by default.
+    synonyms:
+    - --no-pad
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Flag. If switched on, Mikado will only keep loci where at least
+      one of the transcripts     is marked as "reference". CAUTION: new and experimental.
+      If no transcript has been marked as reference,     the output will be completely
+      empty!'
+    synonyms:
+    - --only-reference-update
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Exclude all retained intron alternative splicing events from the
+      final output. Default: False. Retained intron events that do not dirsupt the
+      CDS are kept by Mikado in the final output.'
+    synonyms:
+    - -eri
+    - --exclude-retained-introns
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Keep in the final output transcripts whose CDS is most probably
+      disrupted by a retained intron event. Default: False. Mikado will try to detect
+      these instances and exclude them from the final output.'
+    synonyms:
+    - -kdc
+    - --keep-disrupted-cds
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Flag. If switched on, Mikado will also check reference models against
+      the general transcript requirements, and will also consider them as potential
+      fragments. This is useful in the context of e.g. updating an *ab-initio* results
+      with data from RNASeq, protein alignments, etc. '
+    synonyms:
+    - --check-references
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Scheduler to use. Default: None - ie, either execute everything
+      on the local machine or use DRMAA to submit and control jobs (recommended).'
+    synonyms:
+    - --scheduler
+    args: !ChoiceFlagArg
+      choices:
+      - local
+      - SLURM
+      - LSF
+      - PBS
+    optional: true
+  - !Flag
+    description: Configuration file for the executables.
+    synonyms:
+    - --exe
+    args: !SimpleFlagArg
+      name: EXE
+    optional: true
+  - !Flag
+    description: Cluster configuration file to write to.
+    synonyms:
+    - -c
+    - --cluster_config
+    args: !SimpleFlagArg
+      name: CLUSTER_CONFIG
+    optional: true
+  command:
+  - mikado
+  - configure
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Input GFF/GTF file(s).
+    position: 0
+    name: gff
+    optional: false
+  named:
+  - !Flag
+    description: Multiprocessing start method.
+    synonyms:
+    - --start-method
+    args: !ChoiceFlagArg
+      choices:
+      - fork
+      - spawn
+      - forkserver
+    optional: true
+  - !Flag
+    description: Flag. If set, monoexonic transcripts will be left on their strand
+      rather than being moved to the unknown strand.
+    synonyms:
+    - -s
+    - --strand-specific
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Comma-delimited list of strand specific assemblies.
+    synonyms:
+    - -sa
+    - --strand-specific-assemblies
+    args: !SimpleFlagArg
+      name: STRAND_SPECIFIC_ASSEMBLIES
+    optional: true
+  - !Flag
+    description: 'Tab-delimited file containing rows with the following format: <file>
+      <label> <strandedness> <score(optional)> <is_reference(optional)> <always_keep(optional)
+      strandedness, is_reference and always_keep must be boolean values (True, False)
+      score must be a valid floating number.'
+    synonyms:
+    - --list
+    args: !SimpleFlagArg
+      name: LIST
+    optional: true
+  - !Flag
+    description: Log file. Optional.
+    synonyms:
+    - -l
+    - --log
+    args: !SimpleFlagArg
+      name: LOG
+    optional: true
+  - !Flag
+    description: Flag. If set, transcripts with only non-canonical splices will be
+      output as well.
+    synonyms:
+    - --lenient
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum length for transcripts. Default: 200 bps.'
+    synonyms:
+    - -m
+    - --minimum-cdna-length
+    args: !SimpleFlagArg
+      name: MINIMUM_CDNA_LENGTH
+    optional: true
+  - !Flag
+    description: 'Maximum intron length for transcripts. Default: 1,000,000 bps.'
+    synonyms:
+    - -MI
+    - --max-intron-size
+    args: !SimpleFlagArg
+      name: MAX_INTRON_LENGTH
+    optional: true
+  - !Flag
+    description: Number of processors to use (default None)
+    synonyms:
+    - -p
+    - --procs
+    args: !SimpleFlagArg
+      name: PROCS
+    optional: true
+  - !Flag
+    description: Boolean flag. If set, ignores any CDS/UTR segment.
+    synonyms:
+    - -scds
+    - --strip_cds
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Labels to attach to the IDs of the transcripts of the input files,
+      separated by comma.
+    synonyms:
+    - --labels
+    args: !SimpleFlagArg
+      name: LABELS
+    optional: true
+  - !Flag
+    description: Disable multi-threading. Useful for debugging.
+    synonyms:
+    - --single
+    - --single-thread
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Output directory. Default: current working directory'
+    synonyms:
+    - -od
+    - --output-dir
+    args: !SimpleFlagArg
+      name: OUTPUT_DIR
+    optional: true
+  - !Flag
+    description: 'Output file. Default: mikado_prepared.gtf.'
+    synonyms:
+    - -o
+    - --out
+    args: !SimpleFlagArg
+      name: OUT
+    optional: true
+  - !Flag
+    description: 'Output file. Default: mikado_prepared.fasta.'
+    synonyms:
+    - -of
+    - --out_fasta
+    args: !SimpleFlagArg
+      name: OUT_FASTA
+    optional: true
+  - !Flag
+    description: Configuration file.
+    synonyms:
+    - --json-conf
+    args: !SimpleFlagArg
+      name: JSON_CONF
+    optional: true
+  - !Flag
+    description: Boolean flag. If invoked, Mikado prepare will retain redundant models.
+    synonyms:
+    - -k
+    - --keep-redundant
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Random seed number.
+    synonyms:
+    - --seed
+    args: !SimpleFlagArg
+      name: SEED
+    optional: true
+  command:
+  - mikado
+  - prepare
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: 'Optional output database. Default: derived from json_conf'
+    position: 0
+    name: db
+    optional: false
+  named:
+  - !Flag
+    description: '[LOG], --log [LOG] Optional log file. Default: stderr'
+    synonyms:
+    - -l
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Log level. Default: derived from the configuration; if absent, INFO'
+    synonyms:
+    - -lv
+    - --log-level
+    args: !ChoiceFlagArg
+      choices:
+      - DEBUG
+      - INFO
+      - WARN
+      - ERROR
+    optional: true
+  - !Flag
+    description: Random seed number.
+    synonyms:
+    - --seed
+    args: !SimpleFlagArg
+      name: SEED
+    optional: true
+  command:
+  - mikado
+  - serialise
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Genome FASTA file. Required for transcript padding. (default: None)'
+    synonyms:
+    - --fasta
+    args: !SimpleFlagArg
+      name: FASTA
+    optional: true
+  - !Flag
+    description: 'Multiprocessing start method. (default: None)'
+    synonyms:
+    - --start-method
+    args: !ChoiceFlagArg
+      choices:
+      - fork
+      - spawn
+      - forkserver
+    optional: true
+  - !Flag
+    description: 'Flag. If switched, Mikado pick will copy the database to RAM (ie
+      SHM) for faster access during the run. (default: False)'
+    synonyms:
+    - --shm
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Number of processors to use. Default: look in the configuration
+      file (1 if undefined) (default: None)'
+    synonyms:
+    - -p
+    - --procs
+    args: !SimpleFlagArg
+      name: PROCS
+    optional: true
+  - !Flag
+    description: 'JSON/YAML configuration file for Mikado. (default: None)'
+    synonyms:
+    - --json-conf
+    args: !SimpleFlagArg
+      name: JSON_CONF
+    optional: true
+  - !Flag
+    description: 'Optional scoring file for the run. It will override the value set
+      in the configuration. (default: None)'
+    synonyms:
+    - --scoring-file
+    args: !SimpleFlagArg
+      name: SCORING_FILE
+    optional: true
+  - !Flag
+    description: 'INTRON_RANGE, --intron-range INTRON_RANGE INTRON_RANGE Range into
+      which intron lengths should fall, as a couple of integers. Transcripts with
+      intron lengths outside of this range will be penalised. Default: (60, 900) (default:
+      None)'
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: INTRON_RANGE
+    optional: true
+  - !Flag
+    description: 'Disable transcript padding. (default: None)'
+    synonyms:
+    - --no-pad
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Whether to pad transcripts in loci. (default: None)'
+    synonyms:
+    - --pad
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Maximum splice sites that can be crossed during transcript padding.
+      (default: None)'
+    synonyms:
+    - --pad-max-splices
+    args: !SimpleFlagArg
+      name: PAD_MAX_SPLICES
+    optional: true
+  - !Flag
+    description: 'Maximum amount of bps that transcripts can be padded with (per side).
+      (default: None)'
+    synonyms:
+    - --pad-max-distance
+    args: !SimpleFlagArg
+      name: PAD_MAX_DISTANCE
+    optional: true
+  - !Flag
+    description: 'Either a single region on the CLI or a file listing a series of
+      target regions. Mikado pick will only consider regions included in this string/file.
+      Regions should be provided in a WebApollo-like format: <chrom>:<start>..<end>
+      (default: None)'
+    synonyms:
+    - -r
+    - --regions
+    args: !SimpleFlagArg
+      name: REGIONS
+    optional: true
+  - !Flag
+    description: 'Flag. If set, not CDS information will be printed out in the GFF
+      output files. (default: False)'
+    synonyms:
+    - --no_cds
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Flanking distance (in bps) to group non-overlapping transcripts
+      into a single superlocus. Default: determined by the configuration file. (default:
+      None)'
+    synonyms:
+    - --flank
+    args: !SimpleFlagArg
+      name: FLANK
+    optional: true
+  - !Flag
+    description: 'Maximum intron length for a transcript. Default: inferred from the
+      configuration file (default value there is 1,000,000 bps). (default: None)'
+    synonyms:
+    - --max-intron-length
+    args: !SimpleFlagArg
+      name: MAX_INTRON_LENGTH
+    optional: true
+  - !Flag
+    description: 'Flag. If set, the pipeline will NOT suppress any loci whose transcripts
+      do not pass the requirements set in the JSON file. (default: False)'
+    synonyms:
+    - --no-purge
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '"Flag. If set, Mikado will only look for overlap in the coding features
+      when clustering transcripts (unless one transcript is non-coding, in which case
+      the whole transcript will be considered). Please note that Mikado will only
+      consider the **best** ORF for this. Default: False, Mikado will consider transcripts
+      in their entirety. (default: False)'
+    synonyms:
+    - --cds-only
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Flag. If switched on, Mikado will only keep loci where at least
+      one of the transcripts is marked as "reference". CAUTION: new and experimental.
+      If no transcript has been marked as reference, the output will be completely
+      empty! (default: None)'
+    synonyms:
+    - --only-reference-update
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Exclude all retained intron alternative splicing events from the
+      final output. Default: False. Retained intron events that do not dirsupt the
+      CDS are kept by Mikado in the final output. (default: None)'
+    synonyms:
+    - -eri
+    - --exclude-retained-introns
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Keep in the final output transcripts whose CDS is most probably
+      disrupted by a retained intron event. Default: False. Mikado will try to detect
+      these instances and exclude them from the final output. (default: None)'
+    synonyms:
+    - -kdc
+    - --keep-disrupted-cds
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Flag. If switched on, Mikado will also check reference models against
+      the general transcript requirements, and will also consider them as potential
+      fragments. This is useful in the context of e.g. updating an *ab- initio* results
+      with data from RNASeq, protein alignments, etc. (default: None)'
+    synonyms:
+    - --check-references
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Location of an SQLite database to overwrite what is specified in
+      the configuration file. (default: None)'
+    synonyms:
+    - -db
+    - --sqlite-db
+    args: !SimpleFlagArg
+      name: SQLITE_DB
+    optional: true
+  - !Flag
+    description: 'Output directory. Default: current working directory (default: None)'
+    synonyms:
+    - -od
+    - --output-dir
+    args: !SimpleFlagArg
+      name: OUTPUT_DIR
+    optional: true
+  - !Flag
+    description: 'Flag. If set, Creator will be launched with a single process, without
+      involving the multithreading apparatus. Useful for debugging purposes only.
+      (default: False)'
+    synonyms:
+    - --single
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Mode in which Mikado will treat transcripts with multiple ORFs.
+      - nosplit: keep the transcripts whole. - stringent: split multi-orf transcripts
+      if two consecutive ORFs have both BLAST hits and none of those hits is against
+      the same target. - lenient: split multi-orf transcripts as in stringent, and
+      additionally, also when either of the ORFs lacks a BLAST hit (but not both).
+      - permissive: like lenient, but also split when both ORFs lack BLAST hits -
+      split: split multi-orf transcripts regardless of what BLAST data is available.
+      (default: None)'
+    synonyms:
+    - --mode
+    args: !ChoiceFlagArg
+      choices:
+      - nosplit
+      - stringent
+      - lenient
+      - permissive
+      - split
+    optional: true
+  - !Flag
+    description: 'Random seed number. (default: None)'
+    synonyms:
+    - --seed
+    args: !SimpleFlagArg
+      name: SEED
+    optional: true
+  - !Flag
+    description: 'This output file is mandatory. If it is not specified in the configuration
+      file, it must be provided here. (default: None)'
+    synonyms:
+    - --loci-out
+    args: !SimpleFlagArg
+      name: LOCI_OUT
+    optional: true
+  - !Flag
+    description: 'Prefix for the genes. Default: Mikado (default: None)'
+    synonyms:
+    - --prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  - !Flag
+    description: 'Source field to use for the output files. (default: None)'
+    synonyms:
+    - --source
+    args: !SimpleFlagArg
+      name: SOURCE
+    optional: true
+  - !Flag
+    description: 'File to write the log to. Default: decided by the configuration
+      file. (default: None)'
+    synonyms:
+    - -l
+    - --log
+    args: !SimpleFlagArg
+      name: LOG
+    optional: true
+  - !Flag
+    description: 'Flag. If set, the debug mode will be activated. (default: False)'
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Flag. If set, the log will report only errors and critical events.
+      (default: False)'
+    synonyms:
+    - -nv
+    - --noverbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Logging level. Default: retrieved by the configuration file. (default:
+      None)'
+    synonyms:
+    - -lv
+    - --log-level
+    args: !ChoiceFlagArg
+      choices:
+      - DEBUG
+      - INFO
+      - WARNING
+      - ERROR
+      - CRITICAL
+    optional: true
+  command:
+  - mikado
+  - pick
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Reference annotation file. By default, an index will be crated and
+      saved with the suffix ".midx".
+    synonyms:
+    - -r
+    - --reference
+    args: !SimpleFlagArg
+      name: REFERENCE
+    optional: true
+  - !Flag
+    description: Prediction annotation file.
+    synonyms:
+    - -p
+    - --prediction
+    args: !SimpleFlagArg
+      name: PREDICTION
+    optional: true
+  - !Flag
+    description: Flag. If set, the reference will be compared with itself. Useful
+      for understanding how the reference transcripts interact with each other. If
+      this option is selected, the stats file will not be produced.
+    synonyms:
+    - --self
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Flag. If set, for each gene with more than one transcript isoform
+      each will be compared to the others. Useful for understanding the structural
+      relationships between the transcripts in each gene.
+    synonyms:
+    - --internal
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Flag. If set, compare will stop after having generated the GFF index
+      for the reference.
+    synonyms:
+    - --index
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - mikado
+  - compare
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print Mikado current version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

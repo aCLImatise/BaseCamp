@@ -1,0 +1,63 @@
+!Command
+positional:
+- !Positional
+  description: VCF file with snpEff annotations
+  position: 0
+  name: vcf
+  optional: false
+named:
+- !Flag
+  description: File with names of genes (one per line) for prioritisation
+  synonyms:
+  - --gene_list
+  - -g
+  args: !SimpleFlagArg
+    name: GENE_LIST
+  optional: true
+- !Flag
+  description: File with known fusion gene pairs, one pair per line delimited by comma
+  synonyms:
+  - --known_fusion_pairs
+  - -k
+  args: !SimpleFlagArg
+    name: KNOWN_FUSION_PAIRS
+  optional: true
+- !Flag
+  description: File with known promiscuous fusion genes, one gene name per line
+  synonyms:
+  - --known_fusion_promiscuous
+  - -p
+  args: !SimpleFlagArg
+    name: KNOWN_FUSION_PROMISCUOUS
+  optional: true
+- !Flag
+  description: Output file name (must not exist). Does not support bgzipped output.
+    Use "-" for stdout. [<invcf>.simpleann.vcf]
+  synonyms:
+  - --output
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: List of custom exon numbers. A transcript listed in this file will
+    be annotated with the numbers found in this file, not the numbers found in the
+    snpEff result
+  synonyms:
+  - --exonNums
+  - -e
+  args: !SimpleFlagArg
+    name: EXONNUMS
+  optional: true
+command:
+- simple_sv_annotation.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

@@ -1,0 +1,113 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: '[REQUIRED] Directory with raw sequences in gzipped FASTQ'
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: '[REQUIRED] Directory to output results'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: Tap separated file with three columns for sample ids, forward-read
+    filename and reverse-read filename. Only the files listed in this file will be
+    processed.
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'FASTX FASTQ_QUALITY_FILTER - Minimum quality score to keep [default:
+    30]'
+  synonyms:
+  - --FASTX-q
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'FASTX FASTQ_QUALITY_FILTER - Minimum percent of bases that must have
+    q quality [default: 80]'
+  synonyms:
+  - --FASTX-p
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'FASTX FASTQ_TO_FASTA - remove sequences with unknown (N) nucleotides
+    [default: false]'
+  synonyms:
+  - --FASTX-n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Base PHRED quality score [default: 33]'
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'Joiner method: "PEAR" and "FASTQJOIN" [default: VSEARCH]'
+  synonyms:
+  - --joiner_method
+  args: !ChoiceFlagArg
+    choices:
+    - VSEARCH
+    - PEAR
+    - FASTQJOIN
+  optional: true
+- !Flag
+  description: '= <STR> User customisable parameter: You can add/change PEAR parameters.
+    Please use "--PEAR_options=" followed by custom parameters wrapped around them.
+    E.g. --PEAR_options="-v 8 -t 2". Note that if you put two same parameters such
+    as "-v 8 -v 15", PEAR will use the later.'
+  synonyms:
+  - --PEAR_options
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Retain intermediate files (Beware intermediate files use excessive
+    disk space!)
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Verbose mode
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of Threads [default: 1]'
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Do NOT join paired-end sequences, but just use the forward reads.
+  synonyms:
+  - --forwardreadsonly
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- pispino_seqprep
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

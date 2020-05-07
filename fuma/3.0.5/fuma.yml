@@ -1,0 +1,127 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: show accepted dataset formats
+  synonyms:
+  - --formats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The used method to match two gene sets. Overlap matches when two gene
+    set have one or more genes overlapping. Subset matches when one gene set is a
+    subset of the other. EGM is exact gene matching; all genes in both sets need to
+    be identical to match.
+  synonyms:
+  - -m
+  - --matching-method
+  args: !ChoiceFlagArg
+    choices:
+    - overlap
+    - subset
+    - egm
+  optional: true
+- !Flag
+  description: 'Consider fusion genes distinct when the breakpoints have different
+    strands: (A<-,B<-) != (->A,B<-); default'
+  synonyms:
+  - --strand-specific-matching
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Consider fusion genes identical when the breakpoints have different
+    strands: (A<-,B<-) == (->A,B<-)'
+  synonyms:
+  - --no-strand-specific-matching
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Consider fusion genes distinct when the donor and acceptor sites are
+    swapped: (A,B) != (B,A)'
+  synonyms:
+  - --acceptor-donor-order-specific-matching
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Consider fusion genes identical when the donor and acceptor sites
+    are swapped: (A,B) == (B,A); default'
+  synonyms:
+  - --no-acceptor-donor-order-specific-matching
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: increase output verbosity
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ADD_GENE_ANNOTATION [ADD_GENE_ANNOTATION ...]], --add-gene-annotation
+    [ADD_GENE_ANNOTATION [ADD_GENE_ANNOTATION ...]] annotation_alias:filename * file
+    in BED format'
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'sample_alias:format:filename (available formats: fuma --formats)'
+  synonyms:
+  - -s
+  - --add-sample
+  args: !RepeatFlagArg
+    name: ADD_SAMPLE
+  optional: true
+- !Flag
+  description: '[LINK_SAMPLE_TO_ANNOTATION [LINK_SAMPLE_TO_ANNOTATION ...]], --link-sample-to-annotation
+    [LINK_SAMPLE_TO_ANNOTATION [LINK_SAMPLE_TO_ANNOTATION ...]] sample_alias:annotation_alias'
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output-format
+  synonyms:
+  - -f
+  - --format
+  args: !ChoiceFlagArg
+    choices:
+    - summary
+    - list
+    - extensive
+  optional: true
+- !Flag
+  description: Gene-name based matching is more sensitive to long genes. This is the
+    gene size used to mark fusion genes spanning a 'long gene' as reported the output.
+    Use 0 to disable this feature.
+  synonyms:
+  - -g
+  - --long-gene-size
+  args: !SimpleFlagArg
+    name: LONG_GENE_SIZE
+  optional: true
+- !Flag
+  description: output filename; '-' for stdout
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+command:
+- fuma
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

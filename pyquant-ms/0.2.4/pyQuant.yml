@@ -1,0 +1,633 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Threads to run (default: 1)'
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: P
+  optional: true
+- !Flag
+  description: '[SCAN_FILE [SCAN_FILE ...]] The scan file(s) for the raw data. If
+    not provided, assumed to be in the directory of the processed/tabbed/peaklist
+    file. (default: None)'
+  synonyms:
+  - --scan-file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The directory containing raw data. (default: None)'
+  synonyms:
+  - --scan-file-dir
+  args: !SimpleFlagArg
+    name: SCAN_FILE_DIR
+  optional: true
+- !Flag
+  description: 'The precision for storing m/z values. Defaults to 6 decimal places.
+    (default: 6)'
+  synonyms:
+  - --precision
+  args: !SimpleFlagArg
+    name: PRECISION
+  optional: true
+- !Flag
+  description: 'The mass accuracy for the first monoisotopic peak in ppm. (default:
+    5)'
+  synonyms:
+  - --precursor-ppm
+  args: !SimpleFlagArg
+    name: PRECURSOR_PPM
+  optional: true
+- !Flag
+  description: 'The mass accuracy for the isotopic cluster. (default: 2.5)'
+  synonyms:
+  - --isotope-ppm
+  args: !SimpleFlagArg
+    name: ISOTOPE_PPM
+  optional: true
+- !Flag
+  description: 'Assume there is spread of the isotopic label. (default: False)'
+  synonyms:
+  - --spread
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'A search output or Proteome Discoverer msf file (default: None)'
+  synonyms:
+  - --search-file
+  args: !SimpleFlagArg
+    name: SEARCH_FILE
+  optional: true
+- !Flag
+  description: 'If true, skip scans with missing files in the mapping. (default: False)'
+  synonyms:
+  - --skip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[PEPTIDE [PEPTIDE ...]] The peptide(s) to limit quantification to.
+    (default: None)'
+  synonyms:
+  - --peptide
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'A file of peptide(s) to limit quantification to. (default: None)'
+  synonyms:
+  - --peptide-file
+  args: !SimpleFlagArg
+    name: PEPTIDE_FILE
+  optional: true
+- !Flag
+  description: '[SCAN [SCAN ...]] The scan(s) to limit quantification to. (default:
+    None)'
+  synonyms:
+  - --scan
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Analyze files in 'missing value' mode. (default: False)"
+  synonyms:
+  - --mva
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "The maximal deviation of a scan's retention time to be considered\
+    \ for analysis. (default: 0.25)"
+  synonyms:
+  - --rt-window
+  args: !SimpleFlagArg
+    name: RT_WINDOW
+  optional: true
+- !Flag
+  description: 'The file corresponding to the labeling scheme utilized. (default:
+    None)'
+  synonyms:
+  - --label-scheme
+  args: !SimpleFlagArg
+    name: LABEL_SCHEME
+  optional: true
+- !Flag
+  description: 'Predefined labeling schemes to use. (default: None)'
+  synonyms:
+  - --label-method
+  args: !ChoiceFlagArg
+    choices:
+    - K4K8R6R10
+    - K6R6
+    - K8R10
+    - N15
+    - O18
+    - TMT10
+    - TMT6
+    - iTRAQ4
+    - iTRAQ8
+    - mTRAQ4
+    - mTRAQ48
+    - mTRAQ8
+  optional: true
+- !Flag
+  description: 'The label to use as a reference (by default all comparisons are taken).
+    (default: None)'
+  synonyms:
+  - --reference-label
+  args: !SimpleFlagArg
+    name: REFERENCE_LABEL
+  optional: true
+- !Flag
+  description: 'A delimited file containing scan information. (default: None)'
+  synonyms:
+  - --tsv
+  args: !SimpleFlagArg
+    name: TSV
+  optional: true
+- !Flag
+  description: 'The column indicating the label state of the peptide. If not found,
+    entry assumed to be light variant. (default: Labeling State)'
+  synonyms:
+  - --label
+  args: !SimpleFlagArg
+    name: LABEL
+  optional: true
+- !Flag
+  description: 'The column indicating the peptide. (default: Peptide)'
+  synonyms:
+  - --peptide-col
+  args: !SimpleFlagArg
+    name: PEPTIDE_COL
+  optional: true
+- !Flag
+  description: 'The column indicating the retention time. (default: Retention time)'
+  synonyms:
+  - --rt
+  args: !SimpleFlagArg
+    name: RT
+  optional: true
+- !Flag
+  description: 'The column indicating the MZ value of the precursor ion. This is not
+    the MH+. (default: Light Precursor)'
+  synonyms:
+  - --mz
+  args: !SimpleFlagArg
+    name: MZ
+  optional: true
+- !Flag
+  description: 'The column indicating the scan corresponding to the ion. (default:
+    MS2 Spectrum ID)'
+  synonyms:
+  - --scan-col
+  args: !SimpleFlagArg
+    name: SCAN_COL
+  optional: true
+- !Flag
+  description: 'The column indicating the charge state of the ion. (default: Charge)'
+  synonyms:
+  - --charge
+  args: !SimpleFlagArg
+    name: CHARGE
+  optional: true
+- !Flag
+  description: 'The column indicating the raw file the scan is contained in. (default:
+    Raw file)'
+  synonyms:
+  - --source
+  args: !SimpleFlagArg
+    name: SOURCE
+  optional: true
+- !Flag
+  description: 'The ms level to search for the ion in. Default: 2 (ms2) (default:
+    2)'
+  synonyms:
+  - --msn-id
+  args: !SimpleFlagArg
+    name: MSN_ID
+  optional: true
+- !Flag
+  description: 'The ms level to quantify values from. i.e. if we are identifying an
+    ion in ms2, we can quantify it in ms1 (or ms2). Default: msn value-1 (default:
+    None)'
+  synonyms:
+  - --msn-quant-from
+  args: !SimpleFlagArg
+    name: MSN_QUANT_FROM
+  optional: true
+- !Flag
+  description: 'M/Z values to search for in the scans. To search for multiple m/z
+    values for a given ion, separate m/z values with a comma. (default: None)'
+  synonyms:
+  - --msn-ion
+  args: !RepeatFlagArg
+    name: MSN_ION
+  optional: true
+- !Flag
+  description: 'RT values each ion is expected at. (default: None)'
+  synonyms:
+  - --msn-ion-rt
+  args: !RepeatFlagArg
+    name: MSN_ION_RT
+  optional: true
+- !Flag
+  description: 'A file containing peaks to search for in the scans. (default: None)'
+  synonyms:
+  - --msn-peaklist
+  args: !SimpleFlagArg
+    name: MSN_PEAKLIST
+  optional: true
+- !Flag
+  description: 'The error tolerance for identifying the ion(s). (default: 200)'
+  synonyms:
+  - --msn-ppm
+  args: !SimpleFlagArg
+    name: MSN_PPM
+  optional: true
+- !Flag
+  description: 'The range of retention times for identifying the ion(s). (ex: 7.54-9.43)
+    (default: None)'
+  synonyms:
+  - --msn-rt-window
+  args: !RepeatFlagArg
+    name: MSN_RT_WINDOW
+  optional: true
+- !Flag
+  description: 'Search for the ion across all scans (ie if you have 3 ions, you will
+    have 3 results with one long XIC) (default: False)'
+  synonyms:
+  - --msn-all-scans
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'If multiple ions are set (in the style of 93.15,105.15), all ions
+    must be found in a scan. (default: False)'
+  synonyms:
+  - --require-all-ions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The process to use for quantification. Default: Integrate for ms1,
+    sum for ms2+. (default: None)'
+  synonyms:
+  - --quant-method
+  args: !ChoiceFlagArg
+    choices:
+    - integrate
+    - sum
+  optional: true
+- !Flag
+  description: 'Indicates that reporter ions are being used. As such, we only analyze
+    a single scan. (default: False)'
+  synonyms:
+  - --reporter-ion
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'How many isotopologues to quantify (default: -1)'
+  synonyms:
+  - --isotopologue-limit
+  args: !SimpleFlagArg
+    name: ISOTOPOLOGUE_LIMIT
+  optional: true
+- !Flag
+  description: 'This declares the mz values of labels will overlap. It is useful for
+    data such as neucode, but not needed for only SILAC labeling. (default: False)'
+  synonyms:
+  - --overlapping-labels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'How many labels need to be detected to quantify a scan (ie if you
+    have a 2 state experiment and set this to 2, it will only quantify scans where
+    both occur. (default: 1)'
+  synonyms:
+  - --labels-needed
+  args: !SimpleFlagArg
+    name: LABELS_NEEDED
+  optional: true
+- !Flag
+  description: 'Merge labels together to a single XIC. (default: False)'
+  synonyms:
+  - --merge-labels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'How many quantification scans are needed to quantify a scan. (default:
+    1)'
+  synonyms:
+  - --min-scans
+  args: !SimpleFlagArg
+    name: MIN_SCANS
+  optional: true
+- !Flag
+  description: 'The minimal resolving power of a scan to consider for quantification.
+    Useful for skipping low-res scans (default: 0)'
+  synonyms:
+  - --min-resolution
+  args: !SimpleFlagArg
+    name: MIN_RESOLUTION
+  optional: true
+- !Flag
+  description: 'Disables the mass accuracy correction. (default: False)'
+  synonyms:
+  - --no-mass-accuracy-correction
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Disables routine to check if an ion is a contaminant of a nearby peptide
+    (checks if its a likely isotopologue). (default: False)'
+  synonyms:
+  - --no-contaminant-detection
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The method to use to identify peaks within data. For LC-MS, relative-max
+    is usually best. For smooth data, derivative is better. (default: relative-max)'
+  synonyms:
+  - --peak-find-method
+  args: !ChoiceFlagArg
+    choices:
+    - relative-max
+    - derivative
+  optional: true
+- !Flag
+  description: 'This picks some predefined parameters for various use cases. Fast
+    is good for robust data with few peaks, slow is good for complex data with overlapping
+    peaks of very different size. (default: average)'
+  synonyms:
+  - --peak-find-mode
+  args: !ChoiceFlagArg
+    choices:
+    - slow
+    - average
+    - fast
+  optional: true
+- !Flag
+  description: 'This interpolates missing data in scans. The parameter should be a
+    number that is the maximal gap size to fill (ie 2 means a gap of 2 scans). Can
+    be useful for low intensity LC-MS data. (default: 0)'
+  synonyms:
+  - --gap-interpolation
+  args: !SimpleFlagArg
+    name: GAP_INTERPOLATION
+  optional: true
+- !Flag
+  description: 'Fit a separate line for the baseline of each peak. (default: False)'
+  synonyms:
+  - --fit-baseline
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The threshold from the initial retention time a peak can fall by before
+    being discarded (default: 0.05)'
+  synonyms:
+  - --peak-cutoff
+  args: !SimpleFlagArg
+    name: PEAK_CUTOFF
+  optional: true
+- !Flag
+  description: 'The maximal number of peaks to detect per scan. A lower value can
+    help with very noisy data. (default: -1)'
+  synonyms:
+  - --max-peaks
+  args: !SimpleFlagArg
+    name: MAX_PEAKS
+  optional: true
+- !Flag
+  description: 'The number of peaks to report per scan. Useful for ions with multiple
+    elution times. (default: 1)'
+  synonyms:
+  - --peaks-n
+  args: !SimpleFlagArg
+    name: PEAKS_N
+  optional: true
+- !Flag
+  description: 'Do not use the retention time to bias for peaks containing the MS
+    trigger time. (default: False)'
+  synonyms:
+  - --no-rt-guide
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Filter peaks below a given SNR. (default: 0)'
+  synonyms:
+  - --snr-filter
+  args: !SimpleFlagArg
+    name: SNR_FILTER
+  optional: true
+- !Flag
+  description: 'Peaks below a given z-score are excluded. (default: 0)'
+  synonyms:
+  - --zscore-filter
+  args: !SimpleFlagArg
+    name: ZSCORE_FILTER
+  optional: true
+- !Flag
+  description: 'The window size for snr/zscore filtering. Default: entire scan (default:
+    0)'
+  synonyms:
+  - --filter-width
+  args: !SimpleFlagArg
+    name: FILTER_WIDTH
+  optional: true
+- !Flag
+  description: 'The minimal R^2 for a peak to be kept. Should be a value between 0
+    and 1 (default: None)'
+  synonyms:
+  - --r2-cutoff
+  args: !SimpleFlagArg
+    name: R2_CUTOFF
+  optional: true
+- !Flag
+  description: 'Filter peaks whose peak are below a given intensity. (default: 0)'
+  synonyms:
+  - --intensity-filter
+  args: !SimpleFlagArg
+    name: INTENSITY_FILTER
+  optional: true
+- !Flag
+  description: 'Filter peaks whose peak are below a given percentile of the data.
+    (default: 0)'
+  synonyms:
+  - --percentile-filter
+  args: !SimpleFlagArg
+    name: PERCENTILE_FILTER
+  optional: true
+- !Flag
+  description: 'Peaks separated by less than this distance will be combined. For very
+    crisp data, set this to a lower number. (minimal value is 1) (default: 5)'
+  synonyms:
+  - --min-peak-separation
+  args: !SimpleFlagArg
+    name: MIN_PEAK_SEPARATION
+  optional: true
+- !Flag
+  description: 'This will disable smoothing of data prior to peak finding. If you
+    have very good LC, this may be used to identify small peaks. (default: False)'
+  synonyms:
+  - --disable-peak-filtering
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Merge Isotopologues together prior to fitting. (default: False)'
+  synonyms:
+  - --merge-isotopes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The method to use to resolve peaks across multiple XICs (default:
+    common-peak)'
+  synonyms:
+  - --peak-resolution-mode
+  args: !ChoiceFlagArg
+    choices:
+    - rt
+    - common-peak
+  optional: true
+- !Flag
+  description: 'When the SNR of the XIC falls below this, stop searching for more
+    data. Useful for escaping from noisy shoulders and contaminants. (default: 1.0)'
+  synonyms:
+  - --xic-snr
+  args: !SimpleFlagArg
+    name: XIC_SNR
+  optional: true
+- !Flag
+  description: 'This specifies how many consequtive scans an ion can be missing for
+    until it is no longer considered. (default: 1)'
+  synonyms:
+  - --xic-missing-ion-count
+  args: !SimpleFlagArg
+    name: XIC_MISSING_ION_COUNT
+  optional: true
+- !Flag
+  description: 'When the number of scans in a given direction from the initial datapoint
+    of an XIC passes this, stop. Default is -1 (disabled). Useful for removing contaminants
+    (default: -1)'
+  synonyms:
+  - --xic-window-size
+  args: !SimpleFlagArg
+    name: XIC_WINDOW_SIZE
+  optional: true
+- !Flag
+  description: 'Prior to fitting, smooth data with a Gaussian filter. (default: False)'
+  synonyms:
+  - --xic-smooth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'This will export spectra of a given MSN that were used to provide
+    the quantification. (default: True)'
+  synonyms:
+  - --export-msn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'This will output debug information. (default: False)'
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output a HTML table summary. (default: False)'
+  synonyms:
+  - --html
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Will resume from the last run. Only works if not directing output
+    to stdout. (default: False)'
+  synonyms:
+  - --resume
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'How much of the data to sample. Enter as a decimal (ie 1.0 for everything,
+    0.1 for 10%) (default: 1.0)'
+  synonyms:
+  - --sample
+  args: !SimpleFlagArg
+    name: SAMPLE
+  optional: true
+- !Flag
+  description: 'Disable confidence statistics on data. (default: False)'
+  synonyms:
+  - --disable-stats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Disable reporting of ratios in output. (default: False)'
+  synonyms:
+  - --no-ratios
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[OUT], --out [OUT] The prefix for the file output (default: None)'
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Create an mzml file of spectra contained within each peak. (default:
+    False)'
+  synonyms:
+  - --export-mzml
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'How to export the scans. per-peak: A mzML per peak identified. per-id:
+    A mzML per ion identified (each row of the output gets an mzML). per-file: All
+    scans matched per raw file. (default: per-peak)'
+  synonyms:
+  - --export-mode
+  args: !ChoiceFlagArg
+    choices:
+    - per-file
+    - per-id
+    - per-peak
+  optional: true
+- !Flag
+  description: 'This will select parameters specific for neucode. Note: You still
+    must define a labeling scheme. (default: False)'
+  synonyms:
+  - --neucode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'This will select parameters specific for isobaric tag based labeling
+    (TMT/iTRAQ). (default: False)'
+  synonyms:
+  - --isobaric-tags
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'This will select parameters specific for ms3 based quantification.
+    (default: False)'
+  synonyms:
+  - --ms3
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'This will select parameters specific for a MaxQuant evidence file.
+    (default: False)'
+  synonyms:
+  - --maxquant
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'This will select parameters specific for ion identification and quantification
+    in GCMS experiments. (default: False)'
+  synonyms:
+  - --gcms
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- pyQuant
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

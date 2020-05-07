@@ -1,0 +1,74 @@
+!Command
+positional:
+- !Positional
+  description: tab delimited table of the selected annotations.
+  position: 0
+  name: table
+  optional: false
+named:
+- !Flag
+  description: 'Explicit output file name(s). Note, this argument cannot be used with
+    the --failed, --outdir, or --outname arguments. If unspecified, then the output
+    filename will be based on the input filename(s). (default: None)'
+  synonyms:
+  - -o
+  args: !RepeatFlagArg
+    name: OUT_FILES
+  optional: true
+- !Flag
+  description: 'Specify to changes the output directory to the location specified.
+    The input file directory is used if this is not specified. (default: None)'
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUT_DIR
+  optional: true
+- !Flag
+  description: 'Changes the prefix of the successfully processed output file to the
+    string specified. May not be specified with multiple input files. (default: None)'
+  synonyms:
+  - --outname
+  args: !SimpleFlagArg
+    name: OUT_NAME
+  optional: true
+- !Flag
+  description: "DELIMITER DELIMITER A list of the three delimiters that separate annotation\
+    \ blocks, field names and values, and values within a field, respectively. (default:\
+    \ ('|', '=', ','))"
+  synonyms:
+  - --delim
+  args: !SimpleFlagArg
+    name: DELIMITER
+  optional: true
+- !Flag
+  description: 'List of log files to parse. (default: None)'
+  synonyms:
+  - -l
+  args: !RepeatFlagArg
+    name: RECORD_FILES
+  optional: true
+- !Flag
+  description: 'List of fields to collect. The sequence identifier may be specified
+    using the hidden field name "ID". (default: None)'
+  synonyms:
+  - -f
+  args: !RepeatFlagArg
+    name: FIELDS
+  optional: true
+command:
+- ParseLog.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

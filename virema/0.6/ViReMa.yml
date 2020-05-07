@@ -1,0 +1,192 @@
+!Command
+positional:
+- !Positional
+  description: Virus genome reference index key. e.g. FHV_Genome
+  position: 0
+  name: Virus_Index
+  optional: false
+- !Positional
+  description: File containing single reads in FASTQ format
+  position: 1
+  name: Input_Data
+  optional: false
+- !Positional
+  description: Destination file for results
+  position: 2
+  name: Output_Data
+  optional: false
+named:
+- !Flag
+  description: Host genome reference index key, e.g. d_melanogaster_fb5_22
+  synonyms:
+  - --Host_Index
+  args: !SimpleFlagArg
+    name: HOST_INDEX
+  optional: true
+- !Flag
+  description: Number of mismatches tolerated in mapped seed and in mapped segments.
+    Default is 1.
+  synonyms:
+  - --N
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Number of nucleotides in the Seed region. Default is 25.
+  synonyms:
+  - --Seed
+  args: !SimpleFlagArg
+    name: SEED
+  optional: true
+- !Flag
+  description: Number of nucleotides not allowed to have mismatches at 3' end of segment.
+    Default is 5.
+  synonyms:
+  - --ThreePad
+  args: !SimpleFlagArg
+    name: THREEPAD
+  optional: true
+- !Flag
+  description: Number of nucleotides not allowed to have mismatches at 5' end of segment.
+    Default is 5.
+  synonyms:
+  - --FivePad
+  args: !SimpleFlagArg
+    name: FIVEPAD
+  optional: true
+- !Flag
+  description: Number of nucleotides not allowed to have mismatches at 3' end and
+    5' of segment. Overrides seperate ThreePad and FivePad settings. Default is 5.
+  synonyms:
+  - --X
+  args: !SimpleFlagArg
+    name: X
+  optional: true
+- !Flag
+  description: Number of nucleotides in the Seed region when mapping to the Host Genome.
+    Default is same as Seed value.
+  synonyms:
+  - --Host_Seed
+  args: !SimpleFlagArg
+    name: HOST_SEED
+  optional: true
+- !Flag
+  description: Select '-F' if data is in FASTA format fasta. Default is FASTQ.
+  synonyms:
+  - -F
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Choose how to defuzz data: '5' to report at 5' end of fuzzy region,\
+    \ '3' to report at 3' end, or '0' to report in centre of fuzzy region. Default\
+    \ is no fuzz handling (similar to choosing Right - see Routh et al)."
+  synonyms:
+  - --Defuzz
+  args: !SimpleFlagArg
+    name: DEFUZZ
+  optional: true
+- !Flag
+  description: Select maximum allowed length of fuzzy region. Recombination events
+    with longer fuzzy regions will not be reported. Default is Seed Length.
+  synonyms:
+  - --MaxFuzz
+  args: !SimpleFlagArg
+    name: MAXFUZZ
+  optional: true
+- !Flag
+  description: Remove potential PCR duplicates. Default is 'off'.
+  synonyms:
+  - -DeDup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Append Read Names contributing to each compiled result. Default is
+    off.
+  synonyms:
+  - -ReadNamesEntry
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Size of MicroInDels - these are common artifacts of cDNA preparation.
+    See Routh et al JMB 2012. Default size is 0)
+  synonyms:
+  - --MicroInDel_Length
+  args: !SimpleFlagArg
+    name: MICROINDEL_LENGTH
+  optional: true
+- !Flag
+  description: Select this option for compound recombination event mapping (see manual
+    for details). Enter number of nucleotides to map (must be less than Seed, and
+    greater than number of nts in MicroInDel). Default is off.
+  synonyms:
+  - --Compound_Handling
+  args: !SimpleFlagArg
+    name: COMPOUND_HANDLING
+  optional: true
+- !Flag
+  description: Enter a tag name that will be appended to end of each output file.
+  synonyms:
+  - --Output_Tag
+  args: !SimpleFlagArg
+    name: OUTPUT_TAG
+  optional: true
+- !Flag
+  description: Enter a directory name that all compiled output files will be saved
+    in.
+  synonyms:
+  - --Output_Dir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+- !Flag
+  description: Enter number of available processors. Default is 1.
+  synonyms:
+  - --p
+  args: !SimpleFlagArg
+    name: P
+  optional: true
+- !Flag
+  description: Enter number of reads to process together.
+  synonyms:
+  - --Chunk
+  args: !SimpleFlagArg
+    name: CHUNK
+  optional: true
+- !Flag
+  description: "Enter Alignment Software: 'bwa', 'bowtie'. Default is bowtie."
+  synonyms:
+  - --Aligner
+  args: !SimpleFlagArg
+    name: ALIGNER
+  optional: true
+- !Flag
+  description: Select this option if you do not wish to compile the results file into.
+    Maybe useful when combining results from different datasets.
+  synonyms:
+  - -No_Compile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output recombination data into BED files.
+  synonyms:
+  - -BED
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Select this option if running ViReMa from a Windows/Cygwin shell.
+  synonyms:
+  - -Win
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- ViReMa.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

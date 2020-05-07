@@ -1,0 +1,111 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Tab-separated with the fields: sequence id <tab> sequence length <tab>
+    taxonomic id [<tab> specialization]'
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: input_file
+  optional: true
+- !Flag
+  description: nodes.dmp from NCBI Taxonomy
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: nodes_file
+  optional: true
+- !Flag
+  description: merged.dmp from NCBI Taxonomy
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: merged_file
+  optional: true
+- !Flag
+  description: 'Approximate number of bins (estimated by total length/bin number).
+    Default: 50 [Mutually exclusive -l]'
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: bins
+  optional: true
+- !Flag
+  description: Maximum bin length (in bp). Use this parameter insted of -b to define
+    the number of bins [Mutually exclusive -b]
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: bin_len
+  optional: true
+- !Flag
+  description: 'Fragment sequences into pieces, output accession will be modified
+    with positions: ACCESION/start:end'
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: fragment_len
+  optional: true
+- !Flag
+  description: Overlap length between fragments [Only valid with -a]
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: overlap_len
+  optional: true
+- !Flag
+  description: "Pre-cluster sequences into rank/taxid/specialization, so they won't\
+    \ be splitted among bins [none,specialization name,taxid,species,genus,...] Default:\
+    \ none"
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: pre_cluster
+  optional: true
+- !Flag
+  description: "Make bins rank/taxid/specialization exclusive, so bins won't have\
+    \ mixed sequences. When the chosen rank is not present on a sequence lineage,\
+    \ this sequence will be taxid/specialization exclusive. [none,specialization name,taxid,species,genus,...]\
+    \ Default: none"
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: bin_exclusive
+  optional: true
+- !Flag
+  description: "Specialization name (e.g. assembly, strain). If given, TaxSBP will\
+    \ cluster entries on a specialized level after the taxonomic id. The specialization\
+    \ identifier should be provided as an extra collumn in the input_file ans should\
+    \ respect the taxonomic hiercharchy (one taxid -> multiple specializations / one\
+    \ specialization -> one taxid). Default: ''"
+  synonyms:
+  - -z
+  args: !SimpleFlagArg
+    name: specialization
+  optional: true
+- !Flag
+  description: "Previously generated files to be updated. Default: ''"
+  synonyms:
+  - -u
+  args: !SimpleFlagArg
+    name: update_file
+  optional: true
+- !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- taxsbp
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

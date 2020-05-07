@@ -1,0 +1,208 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Load this pipeline file or project on startup. If specifying a pipeline
+    file rather than a project, the -i flag is also needed unless the pipeline is
+    saved with the file list.
+  synonyms:
+  - -p
+  - --pipeline
+  - --project
+  args: !SimpleFlagArg
+    name: PIPELINE_FILENAME
+  optional: true
+- !Flag
+  description: Run headless (without the GUI)
+  synonyms:
+  - -c
+  - --run-headless
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Run the given pipeline on startup
+  synonyms:
+  - -r
+  - --run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Make this directory the default output folder
+  synonyms:
+  - -o
+  - --output-directory
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+  optional: true
+- !Flag
+  description: Make this directory the default input folder
+  synonyms:
+  - -i
+  - --image-directory
+  args: !SimpleFlagArg
+    name: IMAGE_DIRECTORY
+  optional: true
+- !Flag
+  description: The one-based index of the first image set to process
+  synonyms:
+  - -f
+  - --first-image-set
+  args: !SimpleFlagArg
+    name: FIRST_IMAGE_SET
+  optional: true
+- !Flag
+  description: The one-based index of the last image set to process
+  synonyms:
+  - -l
+  - --last-image-set
+  args: !SimpleFlagArg
+    name: LAST_IMAGE_SET
+  optional: true
+- !Flag
+  description: Restrict processing to one grouping in a grouped pipeline. For instance,
+    "-g ROW=H,COL=01", will process only the group of image sets that match the keys.
+  synonyms:
+  - -g
+  - --group
+  args: !SimpleFlagArg
+    name: GROUPS
+  optional: true
+- !Flag
+  description: CellProfiler will look for plugin modules in this directory (headless-only).
+  synonyms:
+  - --plugins-directory
+  args: !SimpleFlagArg
+    name: PLUGINS_DIRECTORY
+  optional: true
+- !Flag
+  description: Temporary directory. CellProfiler uses this for downloaded image files
+    and for the measurements file, if not specified. The default is /tmp
+  synonyms:
+  - -t
+  - --temporary-directory
+  args: !SimpleFlagArg
+    name: TEMP_DIR
+  optional: true
+- !Flag
+  description: The path to the "Done" file, written by CellProfiler shortly before
+    exiting
+  synonyms:
+  - -d
+  - --done-file
+  args: !SimpleFlagArg
+    name: DONE_FILE
+  optional: true
+- !Flag
+  description: Open the pipeline file specified by the -p switch and print the measurements
+    made by that pipeline
+  synonyms:
+  - --measurements
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Open the measurements file following the --print- groups switch and
+    print the groups in its image sets. The measurements file should be generated
+    using CreateBatchFiles. The output is a JSON-encoded data structure containing
+    the group keys and values and the image sets in each group.
+  synonyms:
+  - --print-groups
+  args: !SimpleFlagArg
+    name: PRINT_GROUPS_FILE
+  optional: true
+- !Flag
+  description: "Open the measurements file following the --get-batch- commands switch\
+    \ and print one line to the console per group. The measurements file should be\
+    \ generated using CreateBatchFiles and the image sets should be grouped into the\
+    \ units to be run. Each line is a command to invoke CellProfiler. You can use\
+    \ this option to generate a shell script that will invoke CellProfiler on a cluster\
+    \ by substituting \"CellProfiler\" with your invocation command in the script's\
+    \ text, for instance: CellProfiler --get-batch-commands Batch_data.h5 | sed s/CellProfiler/farm_jobs.sh.\
+    \ Note that CellProfiler will always run in headless mode when --get-batch- commands\
+    \ is present and will exit after generating the batch commands without processing\
+    \ any pipeline."
+  synonyms:
+  - --get-batch-commands
+  args: !SimpleFlagArg
+    name: BATCH_COMMANDS_FILE
+  optional: true
+- !Flag
+  description: For pipelines that do not use image grouping this option specifies
+    the number of images that should be processed in each batch if --get-batch-commands
+    is used. Defaults to 1.
+  synonyms:
+  - --images-per-batch
+  args: !SimpleFlagArg
+    name: IMAGES_PER_BATCH
+  optional: true
+- !Flag
+  description: Specify the location of a .csv file for LoadData. If this switch is
+    present, this file is used instead of the one specified in the LoadData module.
+  synonyms:
+  - --data-file
+  args: !SimpleFlagArg
+    name: DATA_FILE
+  optional: true
+- !Flag
+  description: Specify a file list of one file or URL per line to be used to initially
+    populate the Images module's file list.
+  synonyms:
+  - --file-list
+  args: !SimpleFlagArg
+    name: IMAGE_SET_FILE
+  optional: true
+- !Flag
+  description: Do not execute the schema definition and other per- experiment SQL
+    commands during initialization when running a pipeline in batch mode.
+  synonyms:
+  - --do-not-write-schema
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Create the experiment database schema and exit
+  synonyms:
+  - --write-schema-and-exit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Enter login credentials for OMERO. The credentials are entered as\
+    \ comma-separated key/value pairs with keys, \"host\" - the DNS host name for\
+    \ the OMERO server, \"port\" - the server's port # (typically 4064), \"user\"\
+    \ - the name of the connecting user, \"password\" - the connecting user's password,\
+    \ \"session-id\" - the session ID for an OMERO client session., \"config-file\"\
+    \ - the path to the OMERO credentials config file. A typical set of credentials\
+    \ might be: --omero-credentials host=demo.openmicroscopy.org,port=4064,session-\
+    \ id=atrvomvjcjfe7t01e8eu59amixmqqkfp"
+  synonyms:
+  - --omero-credentials
+  args: !SimpleFlagArg
+    name: OMERO_CREDENTIALS
+  optional: true
+- !Flag
+  description: 'Set the verbosity for logging messages: 10 or DEBUG for debugging,
+    20 or INFO for informational, 30 or WARNING for warning, 40 or ERROR for error,
+    50 or CRITICAL for critical, 50 or FATAL for fatal. Otherwise, the argument is
+    interpreted as the file name of a log configuration file (see http://docs.python.org/library/logging.config.html
+    for file format)'
+  synonyms:
+  - -L
+  - --log-level
+  args: !SimpleFlagArg
+    name: LOG_LEVEL
+  optional: true
+command:
+- cellprofiler
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print the version and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

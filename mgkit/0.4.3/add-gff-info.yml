@@ -1,0 +1,750 @@
+!Command
+positional: []
+named: []
+command:
+- add-gff-info
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: GIDs taxonomy table (e.g. gi_taxid_nucl.dmp.gz) or a similar file
+      where GENE/TAXON are tab separated and one per line
+    synonyms:
+    - -t
+    - --gene-taxon-table
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: In which attribute the GENEID in the table is stored (defaults to
+      *gene_id*)
+    synonyms:
+    - -a
+    - --gene-attr
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: HDF5 file and table name to use for taxon_id lookups. The format
+      to pass is the file name, colon and the table file hf5:taxa-table. The index
+      in the table is the accession_id, while the column `taxon_id` stores the taxon_id
+      as int
+    synonyms:
+    - -f
+    - --hdf-table
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Taxonomy file - If given, both *taxon_name* and *lineage* attributes
+      will be set
+    synonyms:
+    - -x
+    - --taxonomy
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'A serialised dictionary, where the key is the GENEID and the value
+      is TAXONID. It can be in json or msgpack format (can be a compressed file) *Note*:
+      the dictionary values takes precedence over the table files'
+    synonyms:
+    - -d
+    - --dictionary
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: If used, annotations with no taxon_id won't be outputted
+    synonyms:
+    - -e
+    - --skip-no-taxon
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: DB used to add the taxonomic information
+    synonyms:
+    - -db
+    - --taxon-db
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: If used, annotations are not preloaded, but the taxa table is cached,
+      instead
+    synonyms:
+    - -c
+    - --cache-table
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Shows Progress Bar
+    synonyms:
+    - --progress
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - add-gff-info
+  - addtaxa
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Sample names, in the same order as the count files [required]
+    synonyms:
+    - -s
+    - --samples
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Count file(s)  [required]
+    synonyms:
+    - -c
+    - --count-files
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: If the counts are FPKMS
+    synonyms:
+    - -f
+    - --fpkms
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: If the counts files are from featureCounts
+    synonyms:
+    - -e
+    - --featureCounts
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Shows Progress Bar
+    synonyms:
+    - --progress
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - add-gff-info
+  - counts
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: if one or more samples are provided, the average coverage is calculated
+    synonyms:
+    - -m
+    - --average
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Sample name, will add a `sample_cov` in the GFF file. If not passed,
+      the attribute will be `cov`
+    synonyms:
+    - -s
+    - --samples
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: '`samtools depth -aa` file  [required]'
+    synonyms:
+    - -d
+    - --depths
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'Number of sequences to update the log. If 0, no message is logged  [default:
+      0]'
+    synonyms:
+    - -n
+    - --num-seqs
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Shows Progress Bar
+    synonyms:
+    - --progress
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - add-gff-info
+  - cov_samtools
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - add-gff-info
+  - coverage
+  subcommands:
+  - !Command
+    positional: []
+    named: []
+    command:
+    - add-gff-info
+    - coverage
+    - OPTIONS
+    subcommands:
+    - !Command
+      positional: []
+      named: []
+      command:
+      - add-gff-info
+      - coverage
+      - OPTIONS
+      - INPUT_FILE
+      subcommands:
+      - !Command
+        positional: []
+        named:
+        - !Flag
+          description: sample name and correspondent alignment file separated by comma  [required]
+          synonyms:
+          - -a
+          - --sample-alignment
+          args: !SimpleFlagArg
+            name: TEXT
+          optional: true
+        command:
+        - add-gff-info
+        - coverage
+        - OPTIONS
+        - INPUT_FILE
+        - OUTPUT_FILE
+        subcommands: []
+        help_flag: !Flag
+          description: Show this message and exit.
+          synonyms:
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+      help_flag:
+      usage_flag:
+      version_flag:
+    - !Command
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: INPUT_FILE
+        optional: true
+      - !Positional
+        description: ''
+        position: 1
+        name: OUTPUT_FILE
+        optional: true
+      named: []
+      command:
+      - add-gff-info
+      - coverage
+      - OPTIONS
+      - OUTPUT_FILE
+      subcommands: []
+      help_flag:
+      usage_flag:
+      version_flag:
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: OPTIONS
+      optional: true
+    - !Positional
+      description: ''
+      position: 1
+      name: INPUT_FILE
+      optional: true
+    - !Positional
+      description: ''
+      position: 2
+      name: OUTPUT_FILE
+      optional: true
+    named: []
+    command:
+    - add-gff-info
+    - coverage
+    - INPUT_FILE
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: OPTIONS
+      optional: true
+    - !Positional
+      description: ''
+      position: 1
+      name: INPUT_FILE
+      optional: true
+    - !Positional
+      description: ''
+      position: 2
+      name: OUTPUT_FILE
+      optional: true
+    named: []
+    command:
+    - add-gff-info
+    - coverage
+    - OUTPUT_FILE
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - add-gff-info
+  - exp_syn
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: reference sequence in fasta format  [required]
+      synonyms:
+      - -r
+      - --reference
+      args: !SimpleFlagArg
+        name: FILENAME
+      optional: true
+    - !Flag
+      description: Split the sequence header of the reference at the first space,
+        to emulate BLAST behaviour
+      synonyms:
+      - -s
+      - --split
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Shows Progress Bar
+      synonyms:
+      - --progress
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - add-gff-info
+    - exp_syn
+    - OPTIONS
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: OPTIONS
+      optional: true
+    - !Positional
+      description: ''
+      position: 1
+      name: INPUT_FILE
+      optional: true
+    - !Positional
+      description: ''
+      position: 2
+      name: OUTPUT_FILE
+      optional: true
+    named: []
+    command:
+    - add-gff-info
+    - exp_syn
+    - INPUT_FILE
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: OPTIONS
+      optional: true
+    - !Positional
+      description: ''
+      position: 1
+      name: INPUT_FILE
+      optional: true
+    - !Positional
+      description: ''
+      position: 2
+      name: OUTPUT_FILE
+      optional: true
+    named: []
+    command:
+    - add-gff-info
+    - exp_syn
+    - OUTPUT_FILE
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Contact email  [required]
+    synonyms:
+    - -c
+    - --email
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Add Kegg description
+    synonyms:
+    - -d
+    - --description
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Add pathways ID involved
+    synonyms:
+    - -p
+    - --pathways
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: In which attribute the Kegg ID is stored (defaults to *gene_id*)
+    synonyms:
+    - -m
+    - --kegg-id
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - add-gff-info
+  - kegg
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - add-gff-info
+  - pfam
+  subcommands:
+  - !Command
+    positional: []
+    named: []
+    command:
+    - add-gff-info
+    - pfam
+    - OPTIONS
+    subcommands:
+    - !Command
+      positional: []
+      named:
+      - !Flag
+        description: In which attribute the Pfam ID/ACCESSION is stored (defaults
+          to *gene_id*)
+        synonyms:
+        - -i
+        - --id-attr
+        args: !SimpleFlagArg
+          name: TEXT
+        optional: true
+      - !Flag
+        description: If used, the attribute value is the Pfam ACCESSION (e.g. PF06894),
+          not ID (e.g. Phage_TAC_2)
+        synonyms:
+        - -a
+        - --use-accession
+        args: !EmptyFlagArg {}
+        optional: true
+      command:
+      - add-gff-info
+      - pfam
+      - OPTIONS
+      - INPUT_FILE
+      subcommands: []
+      help_flag: !Flag
+        description: Show this message and exit.
+        synonyms:
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+    - !Command
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: INPUT_FILE
+        optional: true
+      - !Positional
+        description: ''
+        position: 1
+        name: OUTPUT_FILE
+        optional: true
+      named: []
+      command:
+      - add-gff-info
+      - pfam
+      - OPTIONS
+      - OUTPUT_FILE
+      subcommands: []
+      help_flag:
+      usage_flag:
+      version_flag:
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: OPTIONS
+      optional: true
+    - !Positional
+      description: ''
+      position: 1
+      name: INPUT_FILE
+      optional: true
+    - !Positional
+      description: ''
+      position: 2
+      name: OUTPUT_FILE
+      optional: true
+    named: []
+    command:
+    - add-gff-info
+    - pfam
+    - INPUT_FILE
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: OPTIONS
+      optional: true
+    - !Positional
+      description: ''
+      position: 1
+      name: INPUT_FILE
+      optional: true
+    - !Positional
+      description: ''
+      position: 2
+      name: OUTPUT_FILE
+      optional: true
+    named: []
+    command:
+    - add-gff-info
+    - pfam
+    - OUTPUT_FILE
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Uniprot mapping file  [required]
+    synonyms:
+    - -i
+    - --mapping-file
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Overwrite taxon_id if already present
+    synonyms:
+    - -f
+    - --force-taxon-id
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[NCBI_TaxID|eggNOG|KO|KEGG|BioCyc|UniPathway|EMBL|EMBL-CDS|GI|STRING]
+      Mappings to add  [required]'
+    synonyms:
+    - -m
+    - --mapping
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Shows Progress Bar
+    synonyms:
+    - --progress
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - add-gff-info
+  - unipfile
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Contact email  [required]
+    synonyms:
+    - -c
+    - --email
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'Number of annotations to keep in memory  [default: 50]'
+    synonyms:
+    - --buffer
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Overwrite taxon_id if already present
+    synonyms:
+    - -f
+    - --force-taxon-id
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Add taxonomic ids to annotations, if taxon_id is found, it won't
+      be Overwritten.
+    synonyms:
+    - -t
+    - --taxon-id
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Add taxonomic lineage to annotations
+    synonyms:
+    - -l
+    - --lineage
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Add eggNOG mappings to annotations
+    synonyms:
+    - -e
+    - --eggnog
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Add EC mappings to annotations
+    synonyms:
+    - -ec
+    - --enzymes
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Add KO mappings to annotations
+    synonyms:
+    - -ko
+    - --kegg_orthologs
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Add Uniprot description
+    synonyms:
+    - -d
+    - --protein-names
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Add any DB mappings to annotations
+    synonyms:
+    - -m
+    - --mapping
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - add-gff-info
+  - uniprot
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

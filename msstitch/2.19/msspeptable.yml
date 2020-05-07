@@ -1,0 +1,301 @@
+!Command
+positional: []
+named: []
+command:
+- msspeptable
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Input file of TSV PSM table (MSGF+) format
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: FN
+    optional: true
+  - !Flag
+    description: Directory to output in
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: OUTDIR
+    optional: true
+  - !Flag
+    description: Output file
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: OUTFILE
+    optional: true
+  - !Flag
+    description: Specify this column number (first col. is 1) containing PSM table
+      spectrafiles (e.g. mzML) if you want to track PSMs when creating peptide tables
+    synonyms:
+    - --spectracol
+    args: !SimpleFlagArg
+      name: SPECTRACOL
+    optional: true
+  - !Flag
+    description: Regular expression pattern to find column where score to use (e.g.
+      percolator svm-score) is written.
+    synonyms:
+    - --scorecolpattern
+    args: !SimpleFlagArg
+      name: SCORECOLPATTERN
+    optional: true
+  - !Flag
+    description: Unique text pattern to identify isobaric quant columns in input table.Isobaric
+      quantification values will be removed from the table since they represent PSMs
+    synonyms:
+    - --isobquantcolpattern
+    args: !SimpleFlagArg
+      name: QUANTCOLPATTERN
+    optional: true
+  - !Flag
+    description: Unique text pattern to identify precursor quant column in input table.
+    synonyms:
+    - --ms1quantcolpattern
+    args: !SimpleFlagArg
+      name: PRECURSORQUANTCOLPATTERN
+    optional: true
+  command:
+  - msspeptable
+  - psm2pep
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: show program's version number and exit
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Input file of peptide table format
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: FN
+    optional: true
+  - !Flag
+    description: Directory to output in
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: OUTDIR
+    optional: true
+  - !Flag
+    description: Output file
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: OUTFILE
+    optional: true
+  - !Flag
+    description: File containing isobaric quant data to add to table.
+    synonyms:
+    - --quantfile
+    args: !SimpleFlagArg
+      name: QUANTFILE
+    optional: true
+  - !Flag
+    description: Unique text pattern to identify isobaric quant columns in input table.
+    synonyms:
+    - --isobquantcolpattern
+    args: !SimpleFlagArg
+      name: QUANTCOLPATTERN
+    optional: true
+  - !Flag
+    description: Unique text pattern to identify accession column in table containing
+      quant info.
+    synonyms:
+    - --qaccpattern
+    args: !SimpleFlagArg
+      name: QUANTACCCOLPATTERN
+    optional: true
+  command:
+  - msspeptable
+  - isoquant
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: show program's version number and exit
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Input file of format
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: FN
+    optional: true
+  - !Flag
+    description: Directory to output in
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: OUTDIR
+    optional: true
+  - !Flag
+    description: Output file
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: OUTFILE
+    optional: true
+  - !Flag
+    description: Regular expression pattern to find column where score to use (e.g.
+      percolator svm-score) is written.
+    synonyms:
+    - --scorecolpattern
+    args: !SimpleFlagArg
+      name: SCORECOLPATTERN
+    optional: true
+  - !Flag
+    description: Unique text pattern to identify FDR column in input table.
+    synonyms:
+    - --fdrcolpattern
+    args: !SimpleFlagArg
+      name: FDRCOLPATTERN
+    optional: true
+  - !Flag
+    description: Specifies the inclusion threshold for q-values to fit a linear model
+      to. Any scores/q-values below this threshold will not be used.
+    synonyms:
+    - --qvalthreshold
+    args: !SimpleFlagArg
+      name: QVALTHRESHOLD
+    optional: true
+  command:
+  - msspeptable
+  - modelqvals
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: show program's version number and exit
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Directory to output in
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: OUTDIR
+    optional: true
+  - !Flag
+    description: Output file
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: OUTFILE
+    optional: true
+  - !Flag
+    description: Database lookup file
+    synonyms:
+    - --dbfile
+    args: !SimpleFlagArg
+      name: LOOKUPFN
+    optional: true
+  - !Flag
+    description: Do not include protein group data in output, but use gene names instead.
+      These need to have been stored when creating a PSM lookup.
+    synonyms:
+    - --genecentric
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do not include protein group or gene data in output, just use accessions.
+    synonyms:
+    - --noncentric
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Specifies to add isobaric quant data from lookup DB to output table
+    synonyms:
+    - --isobaric
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Specifies to add precursor quant data from lookup DB to output table
+    synonyms:
+    - --precursor
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output FDR data to table
+    synonyms:
+    - --fdr
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output posterior error probabilities (PEP) to table.
+    synonyms:
+    - --pep
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - msspeptable
+  - build
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: show program's version number and exit
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

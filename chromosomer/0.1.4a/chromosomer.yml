@@ -1,0 +1,727 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: show debugging messages
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- chromosomer
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - chromosomer
+  - assemble
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: a fragment map file
+      position: 0
+      name: map
+      optional: false
+    - !Positional
+      description: a FASTA file of fragment sequences to be assembled
+      position: 1
+      name: fragment_fasta
+      optional: false
+    - !Positional
+      description: the output FASTA file of the assembled chromosome sequences
+      position: 2
+      name: output_fasta
+      optional: false
+    named:
+    - !Flag
+      description: 'keep soft masking from the original fragment sequences (default:
+        False)'
+      synonyms:
+      - -s
+      - --save_soft_mask
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - chromosomer
+    - assemble
+    - map
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: a BLAST tabular file of fragment alignments to reference chromosomes
+    position: 0
+    name: alignment_file
+    optional: false
+  - !Positional
+    description: a size of a gap inserted between mapped fragments
+    position: 1
+    name: gap_size
+    optional: false
+  - !Positional
+    description: a file containing lengths of fragment sequences; it can be obtained
+      using the 'chromosomer fastalength' tool
+    position: 2
+    name: fragment_lengths
+    optional: false
+  - !Positional
+    description: an output fragment map file name
+    position: 3
+    name: output_map
+    optional: false
+  named:
+  - !Flag
+    description: 'the least ratio of two greatest fragment alignment scores to determine
+      the fragment placed to a reference genome (default: 1.2)'
+    synonyms:
+    - -r
+    - --ratio_threshold
+    args: !SimpleFlagArg
+      name: RATIO_THRESHOLD
+    optional: true
+  - !Flag
+    description: 'shrink large interfragment gaps to the specified size (default:
+      False)'
+    synonyms:
+    - -s
+    - --shrink_gaps
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - chromosomer
+  - fragmentmap
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - chromosomer
+  - fragmentmapstat
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: a fragment map file
+      position: 0
+      name: map
+      optional: false
+    - !Positional
+      description: an output file of fragment map statistics
+      position: 1
+      name: output
+      optional: false
+    named: []
+    command:
+    - chromosomer
+    - fragmentmapstat
+    - map
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named: []
+    command:
+    - chromosomer
+    - fragmentmapstat
+    - output
+    subcommands:
+    - !Command
+      positional:
+      - !Positional
+        description: a fragment map file
+        position: 0
+        name: map
+        optional: false
+      - !Positional
+        description: an output file of fragment map statistics
+        position: 1
+        name: output
+        optional: false
+      named: []
+      command:
+      - chromosomer
+      - fragmentmapstat
+      - output
+      - map
+      subcommands: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+    - !Command
+      positional:
+      - !Positional
+        description: a fragment map file
+        position: 0
+        name: map
+        optional: false
+      - !Positional
+        description: an output file of fragment map statistics
+        position: 1
+        name: output
+        optional: false
+      named: []
+      command:
+      - chromosomer
+      - fragmentmapstat
+      - output
+      - output
+      subcommands: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - chromosomer
+  - fragmentmapbed
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: a fragment map file
+      position: 0
+      name: map
+      optional: false
+    - !Positional
+      description: an output BED file representing the fragment map
+      position: 1
+      name: output
+      optional: false
+    named: []
+    command:
+    - chromosomer
+    - fragmentmapbed
+    - map
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named: []
+    command:
+    - chromosomer
+    - fragmentmapbed
+    - output
+    subcommands:
+    - !Command
+      positional:
+      - !Positional
+        description: a fragment map file
+        position: 0
+        name: map
+        optional: false
+      - !Positional
+        description: an output BED file representing the fragment map
+        position: 1
+        name: output
+        optional: false
+      named: []
+      command:
+      - chromosomer
+      - fragmentmapbed
+      - output
+      - map
+      subcommands: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+    - !Command
+      positional:
+      - !Positional
+        description: a fragment map file
+        position: 0
+        name: map
+        optional: false
+      - !Positional
+        description: an output BED file representing the fragment map
+        position: 1
+        name: output
+        optional: false
+      named: []
+      command:
+      - chromosomer
+      - fragmentmapbed
+      - output
+      - output
+      subcommands: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -f
+    args: !ChoiceFlagArg
+      choices:
+      - bed
+      - gff3
+      - vcf
+    optional: true
+  command:
+  - chromosomer
+  - transfer
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: a fragment map file
+      position: 0
+      name: map
+      optional: false
+    - !Positional
+      description: a file of annotated genome features
+      position: 1
+      name: annotation
+      optional: false
+    - !Positional
+      description: an output file of the transfered annotation
+      position: 2
+      name: output
+      optional: false
+    named:
+    - !Flag
+      description: 'the format of a file of annotated features (bed, gff3 or vcf)
+        (default: bed)'
+      synonyms:
+      - -f
+      - --format
+      args: !ChoiceFlagArg
+        choices:
+        - bed
+        - gff3
+        - vcf
+      optional: true
+    command:
+    - chromosomer
+    - transfer
+    - map
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - chromosomer
+  - fastalength
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: a FASTA file which sequence lengths are to be obtained
+      position: 0
+      name: fasta
+      optional: false
+    - !Positional
+      description: an output file of sequence lengths
+      position: 1
+      name: output
+      optional: false
+    named: []
+    command:
+    - chromosomer
+    - fastalength
+    - fasta
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named: []
+    command:
+    - chromosomer
+    - fastalength
+    - output
+    subcommands:
+    - !Command
+      positional:
+      - !Positional
+        description: a FASTA file which sequence lengths are to be obtained
+        position: 0
+        name: fasta
+        optional: false
+      - !Positional
+        description: an output file of sequence lengths
+        position: 1
+        name: output
+        optional: false
+      named: []
+      command:
+      - chromosomer
+      - fastalength
+      - output
+      - fasta
+      subcommands: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+    - !Command
+      positional:
+      - !Positional
+        description: a FASTA file which sequence lengths are to be obtained
+        position: 0
+        name: fasta
+        optional: false
+      - !Positional
+        description: an output file of sequence lengths
+        position: 1
+        name: output
+        optional: false
+      named: []
+      command:
+      - chromosomer
+      - fastalength
+      - output
+      - output
+      subcommands: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: the number of chromosome fragments
+    position: 0
+    name: fr_num
+    optional: false
+  - !Positional
+    description: the length of fragments
+    position: 1
+    name: fr_len
+    optional: false
+  - !Positional
+    description: the number of chromosomes
+    position: 2
+    name: chr_num
+    optional: false
+  - !Positional
+    description: the directory for output files
+    position: 3
+    name: output_dir
+    optional: false
+  named:
+  - !Flag
+    description: the size of gaps between fragments on a chromosome
+    synonyms:
+    - -g
+    - --gap_size
+    args: !SimpleFlagArg
+      name: GAP_SIZE
+    optional: true
+  - !Flag
+    description: the number of unplaced fragments
+    synonyms:
+    - -p
+    - --unplaced
+    args: !SimpleFlagArg
+      name: UNPLACED
+    optional: true
+  - !Flag
+    description: the prefix for output file names
+    synonyms:
+    - --prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  command:
+  - chromosomer
+  - simulator
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - chromosomer
+  - agp2map
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: an AGP file
+      position: 0
+      name: agp_file
+      optional: false
+    - !Positional
+      description: the output fragment map file
+      position: 1
+      name: output_file
+      optional: false
+    named: []
+    command:
+    - chromosomer
+    - agp2map
+    - agp_file
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named: []
+    command:
+    - chromosomer
+    - agp2map
+    - output_file
+    subcommands:
+    - !Command
+      positional:
+      - !Positional
+        description: an AGP file
+        position: 0
+        name: agp_file
+        optional: false
+      - !Positional
+        description: the output fragment map file
+        position: 1
+        name: output_file
+        optional: false
+      named: []
+      command:
+      - chromosomer
+      - agp2map
+      - output_file
+      - agp_file
+      subcommands: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+    - !Command
+      positional:
+      - !Positional
+        description: an AGP file
+        position: 0
+        name: agp_file
+        optional: false
+      - !Positional
+        description: the output fragment map file
+        position: 1
+        name: output_file
+        optional: false
+      named: []
+      command:
+      - chromosomer
+      - agp2map
+      - output_file
+      - output_file
+      subcommands: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

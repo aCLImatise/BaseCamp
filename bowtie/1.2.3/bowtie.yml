@@ -1,0 +1,340 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: input quals are Phred+33 (default)
+  synonyms:
+  - --phred33-quals
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: input quals are Phred+64 (same as --solexa1.3-quals)
+  synonyms:
+  - --phred64-quals
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: input quals are from GA Pipeline ver. < 1.3
+  synonyms:
+  - --solexa-quals
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: .3-quals  input quals are from GA Pipeline ver. >= 1.3
+  synonyms:
+  - --solexa1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: qualities are given as space-separated integers (not ASCII)
+  synonyms:
+  - --integer-quals
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: force usage of a 'large' index, even if a small one is present
+  synonyms:
+  - --large-index
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '/--seedmms <int> max mismatches in seed (can be 0-3, default: -n 2)'
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '/--maqerr <int>  max sum of mismatch quals across alignment for -n
+    (def: 70)'
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '/--seedlen <int> seed length for -n (default: 28)'
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: disable Maq-like quality rounding for -n (nearest 10 <= 30)
+  synonyms:
+  - --nomaqround
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '/--minins <int>  minimum insert size for paired-end alignment (default:
+    0)'
+  synonyms:
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '/--maxins <int>  maximum insert size for paired-end alignment (default:
+    250)'
+  synonyms:
+  - -X
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '/--rf/--ff     -1, -2 mates align fw/rev, rev/fw, fw/fw (default:
+    --fr)'
+  synonyms:
+  - --fr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: /--norc      do not align to forward/reverse-complement reference strand
+  synonyms:
+  - --nofw
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'max # backtracks for -n 2/3 (default: 125, 800 for --best)'
+  synonyms:
+  - --maxbts
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'max # attempts to find mate for anchor hit (default: 100)'
+  synonyms:
+  - --pairtries
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: /--tryhard       try hard to find valid alignments, at the expense
+    of speed
+  synonyms:
+  - -y
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'max megabytes of RAM for best-first search frames (def: 64)'
+  synonyms:
+  - --chunkmbs
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: '# of reads to read from input file at once (default: 16)'
+  synonyms:
+  - --reads-per-batch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'report up to <int> good alignments per read (default: 1)'
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: /--all           report all alignments per read (much slower than low
+    -k)
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'suppress all alignments if > <int> exist (def: no limit)'
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: like -m, but reports 1 random hit (MAPQ=0); requires --best
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: hits guaranteed best stratum; ties broken by quality
+  synonyms:
+  - --best
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: hits in sub-optimal strata aren't reported (requires --best)
+  synonyms:
+  - --strata
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: /--time          print wall-clock time taken by search phases
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '/--offbase <int> leftmost ref offset = <int> in bowtie output (default:
+    0)'
+  synonyms:
+  - -B
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print nothing but the alignments
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: refer to ref. seqs by 0-based index rather than name
+  synonyms:
+  - --refidx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write aligned reads/pairs to file(s) <fname>
+  synonyms:
+  - --al
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: write unaligned reads/pairs to file(s) <fname>
+  synonyms:
+  - --un
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: suppress SAM records for unaligned reads
+  synonyms:
+  - --no-unal
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write reads/pairs over -m limit to file(s) <fname>
+  synonyms:
+  - --max
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: suppresses given columns (comma-delim'ed) in default output
+  synonyms:
+  - --suppress
+  args: !SimpleFlagArg
+    name: cols
+  optional: true
+- !Flag
+  description: 'write entire ref name (default: only up to 1st space)'
+  synonyms:
+  - --fullref
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: approx. fraction of SNP bases (e.g. 0.001); sets --snpphred
+  synonyms:
+  - --snpfrac
+  args: !SimpleFlagArg
+    name: dec
+  optional: true
+- !Flag
+  description: print aligned colorspace seqs as colors, not decoded bases
+  synonyms:
+  - --col-cseq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print original colorspace quals, not decoded quals
+  synonyms:
+  - --col-cqual
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: keep nucleotides at extreme ends of decoded alignment
+  synonyms:
+  - --col-keepends
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: /--sam           write hits in SAM format
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: default mapping quality (MAPQ) to print for SAM alignments
+  synonyms:
+  - --mapq
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: supppress header lines (starting with @) for SAM output
+  synonyms:
+  - --sam-nohead
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: supppress @SQ header lines for SAM output
+  synonyms:
+  - --sam-nosq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: add <text> (usually "lab=value") to @RG line of SAM header
+  synonyms:
+  - --sam-RG
+  args: !SimpleFlagArg
+    name: text
+  optional: true
+- !Flag
+  description: /--offrate <int> override offrate of index; must be >= index's offrate
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '/--threads <int> number of alignment threads to launch (default: 1)'
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use memory-mapped I/O for index; many 'bowtie's can share
+  synonyms:
+  - --mm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use shared mem for index; many 'bowtie's can share
+  synonyms:
+  - --shmem
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: seed for random number generator
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: verbose output (for debugging)
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- bowtie
+subcommands: []
+help_flag: !Flag
+  description: /--help          print this usage message
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print version information and quit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,67 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - --variants
+  args: !SimpleFlagArg
+    name: VARIANTS
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- addVariants.py
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: Input graph JSON file
+    position: 0
+    name: graph
+    optional: false
+  - !Positional
+    description: Output JSON file
+    position: 1
+    name: output
+    optional: false
+  named:
+  - !Flag
+    description: JSON file with variant calls to use instead of calls in input graph
+    synonyms:
+    - --variants
+    args: !SimpleFlagArg
+      name: VARIANTS
+    optional: true
+  - !Flag
+    description: More logging; May be given twice for even more logging
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - addVariants.py
+  - graph
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

@@ -1,0 +1,170 @@
+!Command
+positional: []
+named: []
+command:
+- cpinsim
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Files containing the underlying network: pairwise interactions without
+      constraints. Two columns InteractorA | InteractorB'
+    synonyms:
+    - --interactions_without_constraints
+    - -i
+    args: !RepeatFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: 'Files containing the competitions. Two columns: Host | Competitors
+      (comma separated)'
+    synonyms:
+    - --competitions
+    - -c
+    args: !RepeatFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: 'Files containing the allosteric effects. Four columns: Host | Interactor
+      | Activator | Inhibitor'
+    synonyms:
+    - --allosteric_effects
+    - -a
+    args: !RepeatFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Extended inference for missing domains in competitions.
+    synonyms:
+    - --extended_inference
+    - -e
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: One output file containing all annotated pairwise interactions.
+    synonyms:
+    - --output_interactions
+    - -oi
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: One output file containing all annotated competitions.
+    synonyms:
+    - --output_competitions
+    - -oc
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: One output file containing all annotated allosteric effects.
+    synonyms:
+    - --output_allosterics
+    - -oa
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  command:
+  - cpinsim
+  - annotate
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Files containing the annotated pairwise interactions.
+    synonyms:
+    - --interactions_without_constraints
+    - -i
+    args: !RepeatFlagArg
+      name: INTERACTIONS_WITHOUT_CONSTRAINTS
+    optional: true
+  - !Flag
+    description: Files containing the annotated competitions.
+    synonyms:
+    - --competitions
+    - -c
+    args: !RepeatFlagArg
+      name: COMPETITIONS
+    optional: true
+  - !Flag
+    description: Files containing the annotated allosteric effects.
+    synonyms:
+    - --allosteric_effects
+    - -a
+    args: !RepeatFlagArg
+      name: ALLOSTERIC_EFFECTS
+    optional: true
+  - !Flag
+    description: Output file containing the parsed proteins.
+    synonyms:
+    - --output
+    - -o
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  command:
+  - cpinsim
+  - parse
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Path to a csv-file containing the parsed proteins.
+    position: 0
+    name: proteins
+    optional: false
+  named:
+  - !Flag
+    description: Pickle the complete graph at the end of simulation (after last dissociation
+      step) and write it to the given path.
+    synonyms:
+    - --output-graph
+    - -og
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Write some log information of each simulation stept to the given
+      path. If not specified, std-out is used.
+    synonyms:
+    - --output-log
+    - -ol
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  command:
+  - cpinsim
+  - simulate
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

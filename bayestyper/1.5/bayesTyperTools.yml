@@ -1,0 +1,352 @@
+!Command
+positional: []
+named: []
+command:
+- bayesTyperTools
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[ --kmc-table-prefix ] arg       KMC kmer table prefix. Output is
+      written as <kmc-table-prefix>.bloomMeta and <kmc-table-prefix>.bloomData.'
+    synonyms:
+    - -k
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --num-threads ] arg (=1)       number of threads used (+= 1 I/O
+      thread).'
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (=0.001)  bloom filter false positive rate.
+    synonyms:
+    - --false-positive-rate
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - bayesTyperTools
+  - makeBloom
+  subcommands: []
+  help_flag: !Flag
+    description: '[ --help ]                       produce help message for options'
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[ --variant-file ] arg             variant file (vcf format).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --genome-file ] arg              reference genome file (fasta
+      format).'
+    synonyms:
+    - -g
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --output-prefix ] arg            output prefix.'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --gzip-output ] [=arg(=1)] (=0)  compress output file(s) using
+      gzip.'
+    synonyms:
+    - -z
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: alternative allele file (fasta format). Sequence name in fasta (>"name")
+      should match <"name">.
+    synonyms:
+    - --alt-file
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: mobile element insertion(s) file (fasta format). Sequence name in
+      fasta (>"name") should match <INS:ME:"name">.
+    synonyms:
+    - --mei-file
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: '[=arg(=1)] (=0)      do not filter imprecise variants'
+    synonyms:
+    - --keep-imprecise
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "[=arg(=1)] (=0)        keep partial insertions where the center\
+      \ and length is unknown (Manta output supported). The known left and right side\
+      \  is connected with ten N's."
+    synonyms:
+    - --keep-partial
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - bayesTyperTools
+  - convertAllele
+  subcommands: []
+  help_flag: !Flag
+    description: '[ --help ]                         produce help message for options'
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[ --variant-files ] arg            comma-separated list of name
+      and variant file (vcf format) pairs (<name>:<file>).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --output-prefix ] arg            output prefix.'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --gzip-output ] [=arg(=1)] (=0)  compress output file(s) using
+      gzip.'
+    synonyms:
+    - -z
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[=arg(=1)] (=0) filter alleles (including reference) with ambiguous
+      nucleotides (non ACGT).'
+    synonyms:
+    - --filter-ambiguous-alleles
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - bayesTyperTools
+  - combine
+  subcommands: []
+  help_flag: !Flag
+    description: '[ --help ]                         produce help message for options'
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[ --variant-file ] arg             variant file (vcf format).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --output-prefix ] arg            output prefix.'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --gzip-output ] [=arg(=1)] (=0)  compress output file(s) using
+      gzip.'
+    synonyms:
+    - -z
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (=0)   filter variants with less than <value> homozygote genotypes
+      (calculated before other filters).
+    synonyms:
+    - --min-homozygote-genotypes
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: (=0.99)  filter genotypes with a posterior probability (GPP) below
+      <value>.
+    synonyms:
+    - --min-genotype-posterior
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: (=1)        filter sampled alleles with less than <value> kmers (NAK).
+    synonyms:
+    - --min-number-of-kmers
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: (=bayestyper_genomic_parameters.txt) sample kmer coverage file used
+      for filtering sampled alleles with a low fraction of observed kmers (FAK).
+    synonyms:
+    - --kmer-coverage-file
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - bayesTyperTools
+  - filter
+  subcommands: []
+  help_flag: !Flag
+    description: '[ --help ]                         produce help message for options'
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[ --variant-file ] arg             variant file (vcf format).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --annotation-file ] arg          annotation file (vcf format).'
+    synonyms:
+    - -a
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --output-prefix ] arg            output prefix.'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --gzip-output ] [=arg(=1)] (=0)  compress output file(s) using
+      gzip.'
+    synonyms:
+    - -z
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --clear-prev-annotation ] [=arg(=1)] (=0) clear previous annotations
+      (variant id and AAI).'
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (=0.5)          minimum sequence overlap between input allele and
+      annotation allele.
+    synonyms:
+    - --match-threshold
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: (=3)          window size allele length scaling factor.
+    synonyms:
+    - --window-size-scale
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - bayesTyperTools
+  - annotate
+  subcommands: []
+  help_flag: !Flag
+    description: '[ --help ]                         produce help message for options'
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[ --variant-file ] arg             variant file (vcf format).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --output-prefix ] arg            output prefix.'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ --gzip-output ] [=arg(=1)] (=0)  compress output file(s) using
+      gzip.'
+    synonyms:
+    - -z
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: reference genome file (fasta format) used for homopolymer length
+      (HPL) calculation. If not specified HPL will not be  calculated.
+    synonyms:
+    - --genome-file
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: repeatmasker file used for repeat annotation (RMA). If not specified
+      RMA will not be annotated.
+    synonyms:
+    - --repeat-file
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: regular expression for matching independent samples (e.g. parents
+      in a trio) used for absolute inbreeding coefficient  (IBC) calculation. If not
+      specified IBC will not be calculated.
+    synonyms:
+    - --independent-samples-regex
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: trio sample id information used for concordance (CONC) calculation  (<father>,<mother>,<child>:<father>,<mother>,<child>:...).
+      If not specified CONC will not be calculated.
+    synonyms:
+    - --trio-sample-info
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - bayesTyperTools
+  - addAttributes
+  subcommands: []
+  help_flag: !Flag
+    description: '[ --help ]                         produce help message for options'
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

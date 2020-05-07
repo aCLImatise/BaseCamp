@@ -1,0 +1,378 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: directory for to write/read the GROOT index files
+  synonyms:
+  - -i
+  - --indexDir
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: filename for log file (default "groot.log")
+  synonyms:
+  - --log
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: number of processors to use (default 1)
+  synonyms:
+  - -p
+  - --processors
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: create the files needed to profile GROOT using the go tool pprof
+  synonyms:
+  - --profiling
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- groot
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: containment threshold for the LSH ensemble (default 0.95)
+    synonyms:
+    - -t
+    - --contThresh
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: if set, the input will be treated as fasta sequence(s) (experimental
+      feature)
+    synonyms:
+    - --fasta
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: FASTQ file(s) to align
+    synonyms:
+    - -f
+    - --fastq
+    args: !SimpleFlagArg
+      name: strings
+    optional: true
+  - !Flag
+    description: directory to save variation graphs to (default "./groot-graphs-20200504103757")
+    synonyms:
+    - -g
+    - --graphDir
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: minimum number of k-mers covering each base of a graph segment (default
+      1)
+    synonyms:
+    - -c
+    - --minKmerCov
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: directory for to write/read the GROOT index files
+    synonyms:
+    - -i
+    - --indexDir
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: filename for log file (default "groot.log")
+    synonyms:
+    - --log
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: number of processors to use (default 1)
+    synonyms:
+    - -p
+    - --processors
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: create the files needed to profile GROOT using the go tool pprof
+    synonyms:
+    - --profiling
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - groot
+  - align
+  subcommands: []
+  help_flag: !Flag
+    description: help for align
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: 'database to download (please choose: arg-annot/resfinder/card/groot-db/groot-core-db)
+      (default "arg-annot")'
+    synonyms:
+    - -d
+    - --database
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: the sequence identity used to cluster the database (only 90 available
+      atm) (default "90")
+    synonyms:
+    - --identity
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: directory to save the database to (default ".")
+    synonyms:
+    - -o
+    - --out
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: directory for to write/read the GROOT index files
+    synonyms:
+    - -i
+    - --indexDir
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: filename for log file (default "groot.log")
+    synonyms:
+    - --log
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: number of processors to use (default 1)
+    synonyms:
+    - -p
+    - --processors
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: create the files needed to profile GROOT using the go tool pprof
+    synonyms:
+    - --profiling
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - groot
+  - get
+  subcommands: []
+  help_flag: !Flag
+    description: help for get
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: size of k-mer (default 21)
+    synonyms:
+    - -k
+    - --kmerSize
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: maxK in the LSH Ensemble (default 4)
+    synonyms:
+    - -y
+    - --maxK
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: directory containing the clustered references (MSA files) - required
+    synonyms:
+    - -m
+    - --msaDir
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: number of partitions in the LSH Ensemble (default 8)
+    synonyms:
+    - -x
+    - --numPart
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: size of MinHash sketch (default 42)
+    synonyms:
+    - -s
+    - --sketchSize
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: size of window to sketch graph traversals with (default 100)
+    synonyms:
+    - -w
+    - --windowSize
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: directory for to write/read the GROOT index files
+    synonyms:
+    - -i
+    - --indexDir
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: filename for log file (default "groot.log")
+    synonyms:
+    - --log
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: number of processors to use (default 1)
+    synonyms:
+    - -p
+    - --processors
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: create the files needed to profile GROOT using the go tool pprof
+    synonyms:
+    - --profiling
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - groot
+  - index
+  subcommands: []
+  help_flag: !Flag
+    description: help for index
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: flags
+    optional: true
+  named:
+  - !Flag
+    description: BAM file generated by groot alignment (will use STDIN if not provided)
+    synonyms:
+    - --bamFile
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: coverage cutoff for reporting ARGs (default 0.97)
+    synonyms:
+    - -c
+    - --covCutoff
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: reports ARGs which don't have 5' or 3' coverage (overrides -c option)
+    synonyms:
+    - --lowCov
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: directory for to write/read the GROOT index files
+    synonyms:
+    - -i
+    - --indexDir
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: filename for log file (default "groot.log")
+    synonyms:
+    - --log
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: number of processors to use (default 1)
+    synonyms:
+    - -p
+    - --processors
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: create the files needed to profile GROOT using the go tool pprof
+    synonyms:
+    - --profiling
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - groot
+  - report
+  subcommands: []
+  help_flag: !Flag
+    description: help for report
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: help for groot
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

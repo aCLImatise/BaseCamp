@@ -1,0 +1,88 @@
+!Command
+positional:
+- !Positional
+  description: Sample BAM file(s) to test for target coverage.
+  position: 0
+  name: sample_bams
+  optional: false
+named:
+- !Flag
+  description: The inferred targets, in BED format.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: Filename to output average coverage depths in .cnn format.
+  synonyms:
+  - -c
+  - --coverage
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: '[CPU], --processes [CPU] Number of subprocesses to segment in parallel.
+    If given without an argument, use the maximum number of available CPUs. [Default:
+    use 1 process]'
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Potentially targeted genomic regions, e.g. all known exons in the reference
+    genome, in BED format. Each of these regions will be tested as a whole for enrichment.
+    (Faster method)
+  synonyms:
+  - -t
+  - --targets
+  args: !SimpleFlagArg
+    name: TARGET_BED
+  optional: true
+- !Flag
+  description: Sequencing-accessible genomic regions (e.g. from 'cnvkit.py access'),
+    or known genic regions in the reference genome, in BED format. All bases will
+    be tested for enrichment. (Slower method)
+  synonyms:
+  - -a
+  - --access
+  args: !SimpleFlagArg
+    name: ACCESS_BED
+  optional: true
+- !Flag
+  description: 'Minimum sequencing read depth to accept as captured. [Default: 5]'
+  synonyms:
+  - -d
+  - --min-depth
+  args: !SimpleFlagArg
+    name: DEPTH
+  optional: true
+- !Flag
+  description: 'Merge regions separated by gaps smaller than this. [Default: 25]'
+  synonyms:
+  - -g
+  - --min-gap
+  args: !SimpleFlagArg
+    name: GAP_SIZE
+  optional: true
+- !Flag
+  description: 'Minimum region length to accept as captured. [Default: 50]'
+  synonyms:
+  - -l
+  - --min-length
+  args: !SimpleFlagArg
+    name: TARGET_SIZE
+  optional: true
+command:
+- guess_baits.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

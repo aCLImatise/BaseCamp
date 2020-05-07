@@ -1,0 +1,1471 @@
+!Command
+positional: []
+named: []
+command:
+- tadbit
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: generate a Hi-C specific quality plot from FASTQ and exits
+    synonyms:
+    - --skip_mapping
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: path to an output folder.
+    synonyms:
+    - -w
+    - --workdir
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: path to a FASTQ files (can be compressed files)
+    synonyms:
+    - --fastq
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: (beta) path to a FASTQ file of read 2 (can be compressed files).
+      Needed for fast_fragment
+    synonyms:
+    - --fastq2
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: paths to file(s) with indexed FASTA files of the reference genome.
+    synonyms:
+    - --index
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: 'paths to file(s) with FASTA files of the reference genome. Needed
+      for fast_fragment mapping. If many, files will be concatenated. I.e.: --genome
+      chr_1.fa chr_2.fa In this last case, order is important or the rest of the analysis.
+      Note: it can also be the path to a previously parsed genome in pickle format.'
+    synonyms:
+    - --genome
+    args: !RepeatFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: read number
+    synonyms:
+    - --read
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: restriction enzyme name(s). Use "--renz CHECK" to search for most
+      probable and exit; and use "--renz NONE" to avoid using RE site information.
+    synonyms:
+    - --renz
+    args: !RepeatFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: '[fasta header] chromosome name(s). Used in the same order as data.'
+    synonyms:
+    - --chr_name
+    args: !RepeatFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: path to a temporary directory (default next to "workdir" directory)
+    synonyms:
+    - --tmp
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: if provided uses this directory to manipulate the database
+    synonyms:
+    - --tmpdb
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: no display server (X screen)
+    synonyms:
+    - --noX
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[DEBUG] in case already mapped.'
+    synonyms:
+    - --skip
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[DEBUG] keep temporary files.'
+    synonyms:
+    - --keep_tmp
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: default mapping strategy is fragment based use this flag for iterative
+      mapping
+    synonyms:
+    - --iterative
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (beta) use fast fragment mapping. Both fastq files are mapped using
+      fragment based mapping in GEM v3. The output file is an intersected read file
+      than can be used directly in tadbit filter (no tadbit parse needed). Access
+      to samtools is needed for fast_fragment to work. --fastq2 and --genome needs
+      to be specified and --read value should be 0.
+    synonyms:
+    - --fast_fragment
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'defines windows to be used to trim the input FASTQ reads, for example
+      an iterative mapping can be defined as: "--windows 1:20 1:25 1:30 1:35 1:40
+      1:45 1:50". But this parameter can also be used for fragment based mapping if
+      for example pair-end reads are both in the same FASTQ, for example: "--windows
+      1:50" (if the length of the reads is 100). Note: that the numbers are both inclusive.'
+    synonyms:
+    - --windows
+    args: !RepeatFlagArg
+      name: WINDOWS
+    optional: true
+  - !Flag
+    description: '[8] Maximum number of CPU cores available in the execution host.
+      If higher than 1, tasks with multi-threading capabilities will enabled (if 0
+      all available) cores will be used'
+    synonyms:
+    - -C
+    - --cpus
+    args: !SimpleFlagArg
+      name: CPUS
+    optional: true
+  - !Flag
+    description: '[gem] mapper used, options are gem, bowtie2 or hisat2'
+    synonyms:
+    - --mapper
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: '[None] path to mapper binary'
+    synonyms:
+    - --mapper_binary
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: 'any parameter that could be passed to the GEM, BOWTIE2 or HISAT2
+      mapper. e.g. if we want to set the proportion of mismatches to 0.05 and the
+      maximum indel length to 10, (in GEM it would be: -e 0.05 --max-big-indel-length
+      10), here we could write: "--gem_param e:0.05 max-big-indel-length:10". IMPORTANT:
+      some options are incompatible with 3C-derived experiments.'
+    synonyms:
+    - --mapper_param
+    args: !RepeatFlagArg
+      name: MAPPER_PARAM
+    optional: true
+  - !Flag
+    description: species name
+    synonyms:
+    - --species
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: 'extra descriptive fields each filed separated by coma, and inside
+      each, name and value separated by column: --descr=cell:lymphoblast,flowcell:C68AEACXX,index:24nf'
+    synonyms:
+    - --descr
+    args: !RepeatFlagArg
+      name: LIST
+    optional: true
+  command:
+  - tadbit
+  - map
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: path to working directory (generated with the tool tadbit mapper)
+    synonyms:
+    - -w
+    - --workdir
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: '[map]file type to be parser, MAP (GEM-mapper), SAM or BAM'
+    synonyms:
+    - --type
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: In case only one of the reads needs to be parsed
+    synonyms:
+    - --read
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'default: --filter_chrom "^(chr)?[A-Za-z]?[0-9]{0,3}[XVI]{0,3}(?:ito)?[A-Z-a-z]?(_dna)?$",
+      regexp to consider only chromosome names passing'
+    synonyms:
+    - --filter_chrom
+    args: !SimpleFlagArg
+      name: FILTER_CHROM
+    optional: true
+  - !Flag
+    description: '[DEBUG] in case already mapped.'
+    synonyms:
+    - --skip
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Compress input mapped files when parsing is done. This is done in
+      background, while next MAP file is processed, or while reads are sorted.
+    synonyms:
+    - --compress_input
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: if provided uses this directory to manipulate the database
+    synonyms:
+    - --tmpdb
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: 'paths to file(s) with FASTA files of the reference genome. If many,
+      files will be concatenated. I.e.: --genome chr_1.fa chr_2.fa In this last case,
+      order is important or the rest of the analysis. Note: it can also be the path
+      to a previously parsed genome in pickle format.'
+    synonyms:
+    - --genome
+    args: !RepeatFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Use as input data generated by a job with a given jobid(s). Use tadbit
+      describe to find out which. In this case one jobid can be passed per read.
+    synonyms:
+    - --jobids
+    args: !RepeatFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: no display server (X screen)
+    synonyms:
+    - --noX
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - tadbit
+  - parse
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: overwrite previously run job
+    synonyms:
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: use filters of previously run job
+    synonyms:
+    - --resume
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: path to working directory (generated with the tool tadbit mapper)
+    synonyms:
+    - -w
+    - --workdir
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: '[8] Maximum number of CPU cores available in the execution host.
+      If higher than 1, tasks with multi-threading capabilities will enabled (if 0
+      all available) cores will be used'
+    synonyms:
+    - -C
+    - --cpus
+    args: !SimpleFlagArg
+      name: CPUS
+    optional: true
+  - !Flag
+    description: no display server (X screen)
+    synonyms:
+    - --noX
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: if provided uses this directory to manipulate the database
+    synonyms:
+    - --tmpdb
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Use as input data generated by a job under a given pathids. Use tadbit
+      describe to find out which. To filter an intersected file produced with tadbit
+      map --fast_fragment only one PATHid is needed otherwise one per read is needed,
+      first for read 1, second for read 2.
+    synonyms:
+    - --pathids
+    args: !RepeatFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Compress input mapped files when parsing is done. This is done in
+      background, while next MAP file is processed, or while reads are sorted.
+    synonyms:
+    - --compress_input
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: path samtools binary
+    synonyms:
+    - --samtools
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: '[mid] for compression into pseudo-BAM format. Short contains only
+      positions of reads mapped, mid everything but restriction sites.'
+    synonyms:
+    - --format
+    args: !ChoiceFlagArg
+      choices:
+      - short
+      - mid
+      - long
+    optional: true
+  - !Flag
+    description: stores only valid-pairs discards filtered out reads.
+    synonyms:
+    - --valid
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'remove intermediate files. WARNING: together with format "short"
+      or valid options, this may results in losing data'
+    synonyms:
+    - --clean
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "[[1, 2, 3, 4, 6, 7, 9, 10]] Use filters to define a set os valid\
+      \ pair of reads e.g.: '--apply 1 2 3 4 6 7 8 9'. Where these numberscorrespond\
+      \ to: 1: self-circle, 2: dangling-end, 3: error, 4: extra dangling-end, 5: too\
+      \ close from RES, 6: too short, 7: too large, 8: over-represented, 9: duplicated,\
+      \ 10: random breaks"
+    synonyms:
+    - --apply
+    args: !RepeatFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: '[0.001%] percentage of restriction-enzyme (RE) genomic fragments
+      with more coverage to exclude (possible PCR artifact).'
+    synonyms:
+    - --over_represented
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  - !Flag
+    description: '[100000] to exclude large genomic RE fragments (probably resulting
+      from gaps in the reference genome)'
+    synonyms:
+    - --max_frag_size
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  - !Flag
+    description: '[50] to exclude small genomic RE fragments (smaller than sequenced
+      reads)'
+    synonyms:
+    - --min_frag_size
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  - !Flag
+    description: '[5] to exclude read-ends falling too close from RE site (pseudo-
+      dangling-ends)'
+    synonyms:
+    - --re_proximity
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  command:
+  - tadbit
+  - filter
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: path to working directory (generated with the tool tadbit map)
+    synonyms:
+    - -w
+    - --workdir
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: no display server (X screen)
+    synonyms:
+    - --noX
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "[ ...], --tables  [ ...] [['1', '2', '3', '4', '5', '6', '7', '8',\
+      \ '9', '10', '11', '12', '13']] what tables to show, write either the sequence\
+      \ of names or indexes, according to this list: 11: segment_outputs, 10: merge_outputs,\
+      \ 13: modeled_regions, 12: models, 1: paths, 3: mapped_outputs, 2: jobs, 5:\
+      \ parsed_outputs, 4: mapped_inputs, 7: filter_outputs, 6: intersection_outputs,\
+      \ 9: merge_stats, 8: normalize_outputs"
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ ...], --skip_tables  [ ...] [[]] what tables NOT to show, write
+      either the sequence of names or indexes, according to this list: 11: segment_outputs,
+      10: merge_outputs, 13: modeled_regions, 12: models, 1: paths, 3: mapped_outputs,
+      2: jobs, 5: parsed_outputs, 4: mapped_inputs, 7: filter_outputs, 6: intersection_outputs,
+      9: merge_stats, 8: normalize_outputs'
+    synonyms:
+    - -T
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Display only items matching these jobids.
+    synonyms:
+    - -j
+    - --jobids
+    args: !RepeatFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'Select rows. List pairs of keywords (column header) and values to
+      filter results. For example to get only results where "18" appears in the column
+      "Chromosome", the option should be set as: `-W Chromosome,18`'
+    synonyms:
+    - -W
+    - --where
+    args: !RepeatFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: 'Select columns. List the keyword (column headers) to be displayed.
+      E.g. to show only the colmns JobIds: `-s Jobids`'
+    synonyms:
+    - -s
+    - --select
+    args: !RepeatFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: if provided uses this directory to manipulate the database
+    synonyms:
+    - --tmpdb
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Print output in tab separated format
+    synonyms:
+    - --tsv
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Writes output in specified file.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  command:
+  - tadbit
+  - describe
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: In case folder was moved, input the new path
+    synonyms:
+    - --change_workdir
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: path to working directory (generated with the tool tadbit mapper)
+    synonyms:
+    - -w
+    - --workdir
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: jobids of the files and entries to be removed
+    synonyms:
+    - -j
+    - --jobids
+    args: !RepeatFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: delete files, otherwise only DB entries.
+    synonyms:
+    - --delete
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: compress files and update paths accordingly
+    synonyms:
+    - --compress
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: no display server (X screen)
+    synonyms:
+    - --noX
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: if provided uses this directory to manipulate the database
+    synonyms:
+    - --tmpdb
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  command:
+  - tadbit
+  - clean
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: path to working directory (generated with the tool tadbit mapper)
+    synonyms:
+    - -w
+    - --workdir
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: resolution at which to output matrices
+    synonyms:
+    - -r
+    - --resolution
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: path to a TADbit-generated BAM file with all reads (other wise the
+      tool will guess from the working directory database)
+    synonyms:
+    - --bam
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Use as input data generated by a job with a given jobid. Use tadbit
+      describe to find out which.
+    synonyms:
+    - -j
+    - --jobid
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: '[100] Define maximum number of jobs for reading BAM file (set to
+      higher numbers for large files and low RAM memory).'
+    synonyms:
+    - --max_njobs
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: overwrite previously run job
+    synonyms:
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: if provided uses this directory to manipulate the database
+    synonyms:
+    - --tmpdb
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: '[8] Maximum number of CPU cores available in the execution host.
+      If higher than 1, tasks with multi-threading capabilities will enabled (if 0
+      all available) cores will be used'
+    synonyms:
+    - -C
+    - --cpus
+    args: !SimpleFlagArg
+      name: CPUS
+    optional: true
+  - !Flag
+    description: skip calculation of Cis-percentage and decay
+    synonyms:
+    - --normalize_only
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: no display server (X screen)
+    synonyms:
+    - --noX
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[95%] maximum percentage of zeroes allowed per column.'
+    synonyms:
+    - --perc_zeros
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: '[None] minimum number of reads mapped to a bin (recommended value
+      could be 2500). If set this option overrides the perc_zero filtering... This
+      option is slightly slower.'
+    synonyms:
+    - --min_count
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: '[None] lower percentile from which consider bins as good.'
+    synonyms:
+    - --min_perc
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: '[None] upper percentile until which consider bins as good.'
+    synonyms:
+    - --max_perc
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: skip normalization
+    synonyms:
+    - --filter_only
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: only filter according to the percentage of zero count or minimum
+      count of reads
+    synonyms:
+    - --fast_filter
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ':POS1-POS2 [CHR:POS1-POS2 ...], --badcols CHR:POS1-POS2 [CHR:POS1-POS2
+      ...] extra regions to be added to bad-columns (ingenomic position). e.g.: --badcols
+      1:150000000-160000000 2:1200000-1300000'
+    synonyms:
+    - -B
+    args: !SimpleFlagArg
+      name: CHR
+    optional: true
+  - !Flag
+    description: "[[1, 2, 3, 4, 6, 7, 9, 10]] Use filters to define a set os valid\
+      \ pair of reads e.g.: '--apply 1 2 3 4 8 9 10'. Where these numberscorrespond\
+      \ to: 1: self-circle, 2: dangling-end, 3: error, 4: extra dangling-end, 5: too\
+      \ close from RES, 6: too short, 7: too large, 8: over-represented, 9: duplicated,\
+      \ 10: random breaks, 11: trans-chromosomic"
+    synonyms:
+    - -F
+    - --filter
+    args: !RepeatFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: input BAM file contains only valid pairs (already filtered).
+    synonyms:
+    - --valid
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[Vanilla] normalization(s) to apply. Order matters. Choices: Vanilla,
+      ICE, SQRT, oneD, custom'
+    synonyms:
+    - --normalization
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: 'biases file to compute decay. REQUIRED with "custom" normalization.
+      Format: single column with header'
+    synonyms:
+    - --biases_path
+    args: !SimpleFlagArg
+      name: BIASES_PATH
+    optional: true
+  - !Flag
+    description: 'Path to mappability bedGraph file, required for oneD normalization.
+      Mappability file can be generated with GEM (example from the genomic FASTA file
+      hg38.fa): gem-indexer -i hg38.fa -o hg38 gem-mappability -I hg38.gem -l 50 -o
+      hg38.50mer -T 8 gem-2-wig -I hg38.gem -i hg38.50mer.mappability -o hg38.50mer
+      wigToBigWig hg38.50mer.wig hg38.50mer.sizes hg38.50mer.bw bigWigToBedGraph hg38.50mer.bw  hg38.50mer.bedGraph'
+    synonyms:
+    - --mappability
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Path to FASTA file with genome sequence, to compute GC content and
+      number of restriction sites per bin. Required for oneD normalization
+    synonyms:
+    - --fasta
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: restriction enzyme name(s). Required for oneD normalization
+    synonyms:
+    - --renz
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: '[1] target mean value of a cell after normalization (can be used
+      to weight experiments before merging)'
+    synonyms:
+    - --factor
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  - !Flag
+    description: '[1] Only for oneD normalization: proportion of data to be used in
+      fitting (for very large datasets). Number between 0 and 1.'
+    synonyms:
+    - --prop_data
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: '[1] Only for oneD normalization: seed number for the random picking
+      of data when using the "prop_data" parameter'
+    synonyms:
+    - --seed
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  command:
+  - tadbit
+  - normalize
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: path to working directory (generated with the tool tadbit mapper)
+    synonyms:
+    - -w
+    - --workdir
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: resolution at which to output matrices
+    synonyms:
+    - -r
+    - --resolution
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: no display server (X screen)
+    synonyms:
+    - --noX
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: path to a TADbit-generated BAM file with all reads (other wise the
+      tool will guess from the working directory database)
+    synonyms:
+    - --bam
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Use as input data generated by a job with a given jobid. Use tadbit
+      describe to find out which.
+    synonyms:
+    - -j
+    - --jobid
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: overwrite previously run job
+    synonyms:
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: remove all messages
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: if provided uses this directory to manipulate the database
+    synonyms:
+    - --tmpdb
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: maximum number of chunks into which to cut the BAM
+    synonyms:
+    - --nchunks
+    args: !SimpleFlagArg
+      name: NCHUNKS
+    optional: true
+  - !Flag
+    description: '[8] Maximum number of CPU cores available in the execution host.
+      If higher than 1, tasks with multi-threading capabilities will enabled (if 0
+      all available) cores will be used'
+    synonyms:
+    - -C
+    - --cpus
+    args: !SimpleFlagArg
+      name: CPUS
+    optional: true
+  - !Flag
+    description: "[[1, 2, 3, 4, 6, 7, 9, 10]] Use filters to define a set os valid\
+      \ pair of reads e.g.: '--apply 1 2 3 4 8 9 10'. Where these numberscorrespond\
+      \ to: 0: nothing, 1: self-circle, 2: dangling-end, 3: error, 4: extra dangling-end,\
+      \ 5: too close from RES, 6: too short, 7: too large, 8: over-represented, 9:\
+      \ duplicated, 10: random breaks, 11: trans-chromosomic"
+    synonyms:
+    - -F
+    - --filter
+    args: !RepeatFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: path to file with pre-calculated biases by columns
+    synonyms:
+    - --biases
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: "[['raw']] normalization(s) to apply. Choices are: [norm, decay,\
+      \ raw, raw&decay]"
+    synonyms:
+    - --norm
+    args: !RepeatFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: Write text matrix in multiple columns (square). By defaults matrices
+      are written in BED-like format (also only way to get a raw matrix with all values
+      including the ones in masked columns).
+    synonyms:
+    - --matrix
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Write i,j,v matrix in cooler format instead of text.
+    synonyms:
+    - --cooler
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'To store row names in the output text matrix. WARNING: when non-
+      matrix, results in two extra columns'
+    synonyms:
+    - --rownames
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[False] Skip writing matrix in text format.'
+    synonyms:
+    - --only_plot
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[False] Open matplotlib interactive plot (nothing will be saved).'
+    synonyms:
+    - -i
+    - --interactive
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --coord             Coordinate of the region to retrieve. By default
+      all genome, arguments can be either one chromosome name, or the coordinate in
+      the form: "-c chr3:110000000-120000000"'
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --coord2           Coordinate of a second region to retrieve the
+      matrix in the intersection with the first region.'
+    synonyms:
+    - -c2
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Save only text file for matrices, not images
+    synonyms:
+    - --only_txt
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Plot matrix in desired format.
+    synonyms:
+    - --plot
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Force plotting even with demoniacally big matrices (more than 5000x5000,
+      or 1500x1500with interactive option).
+    synonyms:
+    - --force_plot
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[False] represents only half matrix. Note that this also results
+      in truly vectorial images of matrix.'
+    synonyms:
+    - --triangular
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[-25] x-tick rotation'
+    synonyms:
+    - --xtick_rotation
+    args: !SimpleFlagArg
+      name: XTICK_ROTATION
+    optional: true
+  - !Flag
+    description: '[viridis] Matplotlib color map to use.'
+    synonyms:
+    - --cmap
+    args: !SimpleFlagArg
+      name: CMAP
+    optional: true
+  - !Flag
+    description: '[white] Matplotlib color to use on bins filtered out (only used
+      with normalized matrices, not raw).'
+    synonyms:
+    - --bad_color
+    args: !SimpleFlagArg
+      name: BAD_COLOR
+    optional: true
+  - !Flag
+    description: '[png] plot file format.'
+    synonyms:
+    - --format
+    args: !SimpleFlagArg
+      name: FORMAT
+    optional: true
+  - !Flag
+    description: 'Range, in log2 scale of the color scale. i.e.: --zrange=-2,2'
+    synonyms:
+    - --zrange
+    args: !SimpleFlagArg
+      name: ZRANGE
+    optional: true
+  - !Flag
+    description: '[log2] can be any of [log2, log, none]'
+    synonyms:
+    - --transform
+    args: !ChoiceFlagArg
+      choices:
+      - log2
+      - log
+      - none
+    optional: true
+  - !Flag
+    description: 'Range, in log2 scale of the color scale. default for triangular
+      matrices: --figsize=16,10 and for square matrices: --figsize=16,14'
+    synonyms:
+    - --figsize
+    args: !SimpleFlagArg
+      name: FIGSIZE
+    optional: true
+  command:
+  - tadbit
+  - bin
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: path to a new output folder
+    synonyms:
+    - -w
+    - --workdir
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: path to working directory of the first HiC data sample to merge
+    synonyms:
+    - -w1
+    - --workdir1
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: path to working directory of the second HiC data sample to merge
+    synonyms:
+    - -w2
+    - --workdir2
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: path to the first TADbit-generated BAM file with all reads (other
+      wise the tool will guess from the working directory database)
+    synonyms:
+    - --bam1
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: no display server (X screen)
+    synonyms:
+    - --noX
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: path to the second TADbit-generated BAM file with all reads (other
+      wise the tool will guess from the working directory database)
+    synonyms:
+    - --bam2
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: '[8] Maximum number of CPU cores available in the execution host.
+      If higher than 1, tasks with multi-threading capabilities will enabled (if 0
+      all available) cores will be used'
+    synonyms:
+    - -C
+    - --cpus
+    args: !SimpleFlagArg
+      name: CPUS
+    optional: true
+  - !Flag
+    description: resolution at which to do the comparison, and generate the matrices.
+    synonyms:
+    - -r
+    - --resolution
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: skip the comparison between replicates (faster). Comparisons are
+      performed at 3 levels 1- comparing first diagonals of each experiment (and generating
+      SCC score and standard deviation see https://doi.org/10.1101/gr.220640.117)
+      2- Comparing the first eigenvectors of input experiments 3- Generates reproducibility
+      score using function from https://doi.org/10.1093/bioinformatics/btx152
+    synonyms:
+    - --skip_comparison
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: skip the merge of replicates (faster).
+    synonyms:
+    - --skip_merge
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[genome] save genomic or chromosomic matrix.'
+    synonyms:
+    - --save
+    args: !RepeatFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: Use as input data generated by a job with a given jobid. Use tadbit
+      describe to find out which.
+    synonyms:
+    - --jobid1
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Use as input data generated by a job with a given jobid. Use tadbit
+      describe to find out which.
+    synonyms:
+    - --jobid2
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: overwrite previously run job
+    synonyms:
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: compare normalized matrices
+    synonyms:
+    - --norm
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: path to file with precalculated biases by columns
+    synonyms:
+    - --biases1
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: path to file with precalculated biases by columns
+    synonyms:
+    - --biases2
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: "[[1, 2, 3, 4, 6, 7, 9, 10]] Use filters to define a set os valid\
+      \ pair of reads e.g.: '--apply 1 2 3 4 8 9 10'. Where these numberscorrespond\
+      \ to: 1: self-circle, 2: dangling-end, 3: error, 4: extra dangling-end, 5: too\
+      \ close from RES, 6: too short, 7: too large, 8: over-represented, 9: duplicated,\
+      \ 10: random breaks, 11: trans-chromosomic"
+    synonyms:
+    - --filter
+    args: !RepeatFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: path samtools binary
+    synonyms:
+    - --samtools
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: if provided uses this directory to manipulate the database
+    synonyms:
+    - --tmpdb
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  command:
+  - tadbit
+  - merge
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: path to working directory (generated with the tool tadbit mapper)
+    synonyms:
+    - -w
+    - --workdir
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: if provided uses this directory to manipulate the database
+    synonyms:
+    - --tmpdb
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: do not load/store data from/in sqlite database
+    synonyms:
+    - --nosql
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: skip the filtering of bins for detection of TADs
+    synonyms:
+    - --all_bins
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: path valid-pairs file (TADbit BAM format)
+    synonyms:
+    - --mreads
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: path to file with precalculated biases by columns
+    synonyms:
+    - --biases
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: resolution at which to output matrices
+    synonyms:
+    - -r
+    - --resolution
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: path to a matrix file with normalized read counts
+    synonyms:
+    - --norm_matrix
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: path to a matrix file with raw read counts
+    synonyms:
+    - --raw_matrix
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: "[[1, 2, 3, 4, 6, 7, 9, 10]] Use filters to define a set os valid\
+      \ pair of reads e.g.: '--apply 1 2 3 4 8 9 10'. Where these numberscorrespond\
+      \ to: 1: self-circle, 2: dangling-end, 3: error, 4: extra dangling-end, 5: too\
+      \ close from RES, 6: too short, 7: too large, 8: over-represented, 9: duplicated,\
+      \ 10: random breaks, 11: trans-chromosomic"
+    synonyms:
+    - -F
+    - --filter
+    args: !RepeatFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: no display server (X screen)
+    synonyms:
+    - --noX
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: search A/B compartments using first eigen vector of the correlation
+      matrix
+    synonyms:
+    - --only_compartments
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: search TAD boundaries break-point detection algorithm
+    synonyms:
+    - --only_tads
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: print more messages
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Use as input data generated by a job with a given jobid. Use tadbit
+      describe to find out which.
+    synonyms:
+    - -j
+    - --jobid
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Name of the chromosomes on which to search for TADs or compartments.
+    synonyms:
+    - -c
+    - --chromosomes
+    args: !RepeatFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: '[8] Maximum number of CPU cores available in the execution host.
+      If higher than 1, tasks with multi-threading capabilities will enabled (if 0
+      all available) cores will be used'
+    synonyms:
+    - -C
+    - --cpu
+    args: !SimpleFlagArg
+      name: CPUS
+    optional: true
+  - !Flag
+    description: overwrite previously run job
+    synonyms:
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: path to a BED or bedGraph file with list of protein coding gene or
+      other active epigenetic mark, to be used to label compartments instead of using
+      the relative interaction count.
+    synonyms:
+    - --rich_in_A
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Path to fasta file with genome sequence, to compute GC content and
+      use it to label compartments
+    synonyms:
+    - --fasta
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Save correlation matrix used to predict compartments.
+    synonyms:
+    - --savecorr
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Correlation matrix plot scaled between correlation 1 and -1 instead
+      of maximum observed values.
+    synonyms:
+    - --fix_corr_scale
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[png] file format for figures'
+    synonyms:
+    - --format
+    args: !SimpleFlagArg
+      name: FORMAT
+    optional: true
+  - !Flag
+    description: '[3] Number of eigenvectors to store. if "-1" all eigenvectors will
+      be calculated'
+    synonyms:
+    - --n_evs
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: "list of indexes of eigenvectors capturing compartments signal (one\
+      \ index per chromosome, in the same order as chromosomes in fasta file). Example\
+      \ picking the first eigenvector for all chromosomes but for chromosome 3: '--ev_index\
+      \ 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"
+    synonyms:
+    - --ev_index
+    args: !RepeatFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: an integer defining the maximum size of TAD. Default defines it as
+      the number of rows/columns
+    synonyms:
+    - --max_tad_size
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  command:
+  - tadbit
+  - segment
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

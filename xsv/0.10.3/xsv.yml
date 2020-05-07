@@ -1,0 +1,1437 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: List all commands available.
+  synonyms:
+  - --list
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- xsv
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: When concatenating columns, this flag will cause all records to appear.
+      It will pad each row if other CSV data isn't long enough.
+    synonyms:
+    - -p
+    - --pad
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Write output to <file> instead of stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: When set, the first row will NOT be interpreted as column names.
+      Note that this has no effect when concatenating columns.
+    synonyms:
+    - -n
+    - --no-headers
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The field delimiter for reading CSV data. Must be a single character.
+      (default: ,)'
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - xsv
+  - cat
+  subcommands: []
+  help_flag: !Flag
+    description: Display this message
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input
+    optional: true
+  named:
+  - !Flag
+    description: When set, the first row will not be included in the count.
+    synonyms:
+    - -n
+    - --no-headers
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The field delimiter for reading CSV data. Must be a single character.
+      (default: ,)'
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - xsv
+  - count
+  subcommands: []
+  help_flag: !Flag
+    description: Display this message
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input
+    optional: true
+  named:
+  - !Flag
+    description: Forcefully set the length of each record. If a record is not the
+      size given, then it is truncated or expanded as appropriate.
+    synonyms:
+    - -l
+    - --length
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Write output to <file> instead of stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: 'The field delimiter for reading CSV data. Must be a single character.
+      (default: ,)'
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - xsv
+  - fixlengths
+  subcommands: []
+  help_flag: !Flag
+    description: Display this message
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input
+    optional: true
+  named:
+  - !Flag
+    description: Limits the length of each field to the value specified. If the field
+      is UTF-8 encoded, then <arg> refers to the number of code points. Otherwise,
+      it refers to the number of bytes.
+    synonyms:
+    - -c
+    - --condense
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: 'A string of characters to write after each record. When non-empty,
+      a new line is automatically appended to the separator. [default: #]'
+    synonyms:
+    - -s
+    - --separator
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: When set, the first row will not be interpreted as headers. When
+      set, the name of each field will be its index.
+    synonyms:
+    - -n
+    - --no-headers
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The field delimiter for reading CSV data. Must be a single character.
+      (default: ,)'
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - xsv
+  - flatten
+  subcommands: []
+  help_flag: !Flag
+    description: Display this message
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input
+    optional: true
+  named:
+  - !Flag
+    description: 'The field delimiter for writing CSV data. [default: ,]'
+    synonyms:
+    - -t
+    - --out-delimiter
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Use '\r\n' line endings in the output.
+    synonyms:
+    - --crlf
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Use ASCII field and record separators.
+    synonyms:
+    - --ascii
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The quote character to use. [default: "]'
+    synonyms:
+    - --quote
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Put quotes around every value.
+    synonyms:
+    - --quote-always
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: The escape character to use. When not specified, quotes are escaped
+      by doubling them.
+    synonyms:
+    - --escape
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Write output to <file> instead of stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: 'The field delimiter for reading CSV data. Must be a single character.
+      [default: ,]'
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - xsv
+  - fmt
+  subcommands: []
+  help_flag: !Flag
+    description: Display this message
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input
+    optional: true
+  named:
+  - !Flag
+    description: Select a subset of columns to compute frequencies for. See 'xsv select
+      --help' for the format details. This is provided here because piping 'xsv select'
+      into 'xsv frequency' will disable the use of indexing.
+    synonyms:
+    - -s
+    - --select
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: "Limit the frequency table to the N most common items. Set to '0'\
+      \ to disable a limit. [default: 10]"
+    synonyms:
+    - -l
+    - --limit
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Sort the frequency tables in ascending order by count. The default
+      is descending order.
+    synonyms:
+    - -a
+    - --asc
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Don't include NULLs in the frequency table.
+    synonyms:
+    - --no-nulls
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "The number of jobs to run in parallel. This works better when the\
+      \ given CSV data has an index already created. Note that a file handle is opened\
+      \ for each job. When set to '0', the number of jobs is set to the number of\
+      \ CPUs detected. [default: 0]"
+    synonyms:
+    - -j
+    - --jobs
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Write output to <file> instead of stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: When set, the first row will NOT be included in the frequency table.
+      Additionally, the 'field' column will be 1-based indices instead of header names.
+    synonyms:
+    - -n
+    - --no-headers
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The field delimiter for reading CSV data. Must be a single character.
+      (default: ,)'
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - xsv
+  - frequency
+  subcommands: []
+  help_flag: !Flag
+    description: Display this message
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Only show the header names (hide column index). This is automatically
+      enabled if more than one input is given.
+    synonyms:
+    - -j
+    - --just-names
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Shows the intersection of all headers in all of the inputs given.
+    synonyms:
+    - --intersect
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The field delimiter for reading CSV data. Must be a single character.
+      (default: ,)'
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - xsv
+  - headers
+  subcommands: []
+  help_flag: !Flag
+    description: Display this message
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input
+    optional: false
+  named:
+  - !Flag
+    description: Write index to <file> instead of <input>.idx. Generally, this is
+      not currently useful because the only way to use an index is if it is specially
+      named <input>.idx.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: 'The field delimiter for reading CSV data. Must be a single character.
+      (default: ,)'
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - xsv
+  - index
+  subcommands: []
+  help_flag: !Flag
+    description: Display this message
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input
+    optional: true
+  named:
+  - !Flag
+    description: 'The quote character to use. [default: "]'
+    synonyms:
+    - --quote
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: The escape character to use. When not specified, quotes are escaped
+      by doubling them.
+    synonyms:
+    - --escape
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Write output to <file> instead of stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: 'The field delimiter for reading CSV data. Must be a single character.
+      [default: ,]'
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - xsv
+  - input
+  subcommands: []
+  help_flag: !Flag
+    description: Display this message
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: When set, joins are done case insensitively.
+    synonyms:
+    - --no-case
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do a 'left outer' join. This returns all rows in first CSV data set,
+      including rows with no corresponding row in the second data set. When no corresponding
+      row exists, it is padded out with empty fields.
+    synonyms:
+    - --left
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do a 'right outer' join. This returns all rows in second CSV data
+      set, including rows with no corresponding row in the first data set. When no
+      corresponding row exists, it is padded out with empty fields. (This is the reverse
+      of 'outer left'.)
+    synonyms:
+    - --right
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do a 'full outer' join. This returns all rows in both data sets with
+      matching records joined. If there is no match, the missing side will be padded
+      out with empty fields. (This is the combination of 'outer left' and 'outer right'.)
+    synonyms:
+    - --full
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: USE WITH CAUTION. This returns the cartesian product of the CSV data
+      sets given. The number of rows return is equal to N * M, where N and M correspond
+      to the number of rows in the given data sets, respectively.
+    synonyms:
+    - --cross
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: When set, joins will work on empty fields. Otherwise, empty fields
+      are completely ignored. (In fact, any row that has an empty field in the key
+      specified is ignored.)
+    synonyms:
+    - --nulls
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Write output to <file> instead of stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: When set, the first row will not be interpreted as headers. (i.e.,
+      They are not searched, analyzed, sliced, etc.)
+    synonyms:
+    - -n
+    - --no-headers
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The field delimiter for reading CSV data. Must be a single character.
+      (default: ,)'
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - xsv
+  - join
+  subcommands:
+  - !Command
+    positional: []
+    named: []
+    command:
+    - xsv
+    - join
+    - columns1
+    subcommands:
+    - !Command
+      positional: []
+      named: []
+      command:
+      - xsv
+      - join
+      - columns1
+      - input1
+      subcommands:
+      - !Command
+        positional: []
+        named: []
+        command:
+        - xsv
+        - join
+        - columns1
+        - input1
+        - columns2
+        subcommands:
+        - !Command
+          positional: []
+          named:
+          - !Flag
+            description: When set, joins are done case insensitively.
+            synonyms:
+            - --no-case
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Do a 'left outer' join. This returns all rows in first CSV
+              data set, including rows with no corresponding row in the second data
+              set. When no corresponding row exists, it is padded out with empty fields.
+            synonyms:
+            - --left
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Do a 'right outer' join. This returns all rows in second
+              CSV data set, including rows with no corresponding row in the first
+              data set. When no corresponding row exists, it is padded out with empty
+              fields. (This is the reverse of 'outer left'.)
+            synonyms:
+            - --right
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Do a 'full outer' join. This returns all rows in both data
+              sets with matching records joined. If there is no match, the missing
+              side will be padded out with empty fields. (This is the combination
+              of 'outer left' and 'outer right'.)
+            synonyms:
+            - --full
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: USE WITH CAUTION. This returns the cartesian product of the
+              CSV data sets given. The number of rows return is equal to N * M, where
+              N and M correspond to the number of rows in the given data sets, respectively.
+            synonyms:
+            - --cross
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: When set, joins will work on empty fields. Otherwise, empty
+              fields are completely ignored. (In fact, any row that has an empty field
+              in the key specified is ignored.)
+            synonyms:
+            - --nulls
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: Write output to <file> instead of stdout.
+            synonyms:
+            - -o
+            - --output
+            args: !SimpleFlagArg
+              name: file
+            optional: true
+          - !Flag
+            description: When set, the first row will not be interpreted as headers.
+              (i.e., They are not searched, analyzed, sliced, etc.)
+            synonyms:
+            - -n
+            - --no-headers
+            args: !EmptyFlagArg {}
+            optional: true
+          - !Flag
+            description: 'The field delimiter for reading CSV data. Must be a single
+              character. (default: ,)'
+            synonyms:
+            - -d
+            - --delimiter
+            args: !SimpleFlagArg
+              name: arg
+            optional: true
+          command:
+          - xsv
+          - join
+          - columns1
+          - input1
+          - columns2
+          - input2
+          subcommands: []
+          help_flag: !Flag
+            description: Display this message
+            synonyms:
+            - -h
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+        help_flag:
+        usage_flag:
+        version_flag:
+      - !Command
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: columns2
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: input2
+          optional: false
+        named: []
+        command:
+        - xsv
+        - join
+        - columns1
+        - input1
+        - input2
+        subcommands: []
+        help_flag:
+        usage_flag:
+        version_flag:
+      help_flag:
+      usage_flag:
+      version_flag:
+    - !Command
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: input1
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: columns2
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: input2
+        optional: false
+      named: []
+      command:
+      - xsv
+      - join
+      - columns1
+      - columns2
+      subcommands: []
+      help_flag:
+      usage_flag:
+      version_flag:
+    - !Command
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: input1
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: columns2
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: input2
+        optional: false
+      named: []
+      command:
+      - xsv
+      - join
+      - columns1
+      - input2
+      subcommands: []
+      help_flag:
+      usage_flag:
+      version_flag:
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: columns1
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: input1
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: columns2
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
+      name: input2
+      optional: false
+    named: []
+    command:
+    - xsv
+    - join
+    - input1
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: columns1
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: input1
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: columns2
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
+      name: input2
+      optional: false
+    named: []
+    command:
+    - xsv
+    - join
+    - columns2
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: columns1
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: input1
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: columns2
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
+      name: input2
+      optional: false
+    named: []
+    command:
+    - xsv
+    - join
+    - input2
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: Display this message
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: sample-size
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: input
+    optional: true
+  named:
+  - !Flag
+    description: Write output to <file> instead of stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: When set, the first row will be consider as part of the population
+      to sample from. (When not set, the first row is the header row and will always
+      appear in the output.)
+    synonyms:
+    - -n
+    - --no-headers
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The field delimiter for reading CSV data. Must be a single character.
+      (default: ,)'
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - xsv
+  - sample
+  subcommands: []
+  help_flag: !Flag
+    description: Display this message
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: regex
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: input
+    optional: true
+  named:
+  - !Flag
+    description: Case insensitive search. This is equivalent to prefixing the regex
+      with '(?i)'.
+    synonyms:
+    - -i
+    - --ignore-case
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Select the columns to search. See 'xsv select -h' for the full syntax.
+    synonyms:
+    - -s
+    - --select
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Select only rows that did not match
+    synonyms:
+    - -v
+    - --invert-match
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Write output to <file> instead of stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: When set, the first row will not be interpreted as headers. (i.e.,
+      They are not searched, analyzed, sliced, etc.)
+    synonyms:
+    - -n
+    - --no-headers
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The field delimiter for reading CSV data. Must be a single character.
+      (default: ,)'
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - xsv
+  - search
+  subcommands: []
+  help_flag: !Flag
+    description: Display this message
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Write output to <file> instead of stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: When set, the first row will not be interpreted as headers. (i.e.,
+      They are not searched, analyzed, sliced, etc.)
+    synonyms:
+    - -n
+    - --no-headers
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The field delimiter for reading CSV data. Must be a single character.
+      (default: ,)'
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - xsv
+  - select
+  subcommands: []
+  help_flag: !Flag
+    description: Display this message
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input
+    optional: true
+  named:
+  - !Flag
+    description: The index of the record to slice from.
+    synonyms:
+    - -s
+    - --start
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: The index of the record to slice to.
+    synonyms:
+    - -e
+    - --end
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: The length of the slice (can be used instead of --end).
+    synonyms:
+    - -l
+    - --len
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Slice a single record (shortcut for -s N -l 1).
+    synonyms:
+    - -i
+    - --index
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Write output to <file> instead of stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: When set, the first row will not be interpreted as headers. Otherwise,
+      the first row will always appear in the output as the header row.
+    synonyms:
+    - -n
+    - --no-headers
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The field delimiter for reading CSV data. Must be a single character.
+      (default: ,)'
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - xsv
+  - slice
+  subcommands: []
+  help_flag: !Flag
+    description: Display this message
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input
+    optional: true
+  named:
+  - !Flag
+    description: Select a subset of columns to sort. See 'xsv select --help' for the
+      format details.
+    synonyms:
+    - -s
+    - --select
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Write output to <file> instead of stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: When set, the first row will not be interpreted as headers. Namely,
+      it will be sorted with the rest of the rows. Otherwise, the first row will always
+      appear as the header row in the output.
+    synonyms:
+    - -n
+    - --no-headers
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The field delimiter for reading CSV data. Must be a single character.
+      (default: ,)'
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - xsv
+  - sort
+  subcommands: []
+  help_flag: !Flag
+    description: Display this message
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: outdir
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: input
+    optional: true
+  named:
+  - !Flag
+    description: 'The number of records to write into each chunk. [default: 500]'
+    synonyms:
+    - -s
+    - --size
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: "The number of spliting jobs to run in parallel. This only works\
+      \ when the given CSV data has an index already created. Note that a file handle\
+      \ is opened for each job. When set to '0', the number of jobs is set to the\
+      \ number of CPUs detected. [default: 0]"
+    synonyms:
+    - -j
+    - --jobs
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Write output to <file> instead of stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: When set, the first row will NOT be interpreted as column names.
+      Otherwise, the first row will appear in all chunks as the header row.
+    synonyms:
+    - -n
+    - --no-headers
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The field delimiter for reading CSV data. Must be a single character.
+      (default: ,)'
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - xsv
+  - split
+  subcommands: []
+  help_flag: !Flag
+    description: Display this message
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input
+    optional: true
+  named:
+  - !Flag
+    description: Select a subset of columns to compute stats for. See 'xsv select
+      --help' for the format details. This is provided here because piping 'xsv select'
+      into 'xsv stats' will disable the use of indexing.
+    synonyms:
+    - -s
+    - --select
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Show all statistics available.
+    synonyms:
+    - --everything
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Show the mode. This requires storing all CSV data in memory.
+    synonyms:
+    - --mode
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Show the cardinality. This requires storing all CSV data in memory.
+    synonyms:
+    - --cardinality
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Show the median. This requires storing all CSV data in memory.
+    synonyms:
+    - --median
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Include NULLs in the population size for computing mean and standard
+      deviation.
+    synonyms:
+    - --nulls
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "The number of jobs to run in parallel. This works better when the\
+      \ given CSV data has an index already created. Note that a file handle is opened\
+      \ for each job. When set to '0', the number of jobs is set to the number of\
+      \ CPUs detected. [default: 0]"
+    synonyms:
+    - -j
+    - --jobs
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Write output to <file> instead of stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: When set, the first row will NOT be interpreted as column names.
+      i.e., They will be included in statistics.
+    synonyms:
+    - -n
+    - --no-headers
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The field delimiter for reading CSV data. Must be a single character.
+      (default: ,)'
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - xsv
+  - stats
+  subcommands: []
+  help_flag: !Flag
+    description: Display this message
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input
+    optional: true
+  named:
+  - !Flag
+    description: 'The minimum width of each column. [default: 2]'
+    synonyms:
+    - -w
+    - --width
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: 'The minimum number of spaces between each column. [default: 2]'
+    synonyms:
+    - -p
+    - --pad
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Limits the length of each field to the value specified. If the field
+      is UTF-8 encoded, then <arg> refers to the number of code points. Otherwise,
+      it refers to the number of bytes.
+    synonyms:
+    - -c
+    - --condense
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Write output to <file> instead of stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: 'The field delimiter for reading CSV data. Must be a single character.
+      (default: ,)'
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - xsv
+  - table
+  subcommands: []
+  help_flag: !Flag
+    description: Display this message
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: Display this message
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version info and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

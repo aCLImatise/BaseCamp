@@ -1,0 +1,581 @@
+!Command
+positional:
+- !Positional
+  description: VariantAnnotator              Annotate variant calls with context information
+  position: 0
+  name: annotator
+  optional: false
+- !Positional
+  description: CallableLoci                  Collect statistics on callable, uncallable,
+    poorly mapped, and other parts of the  genome CompareCallableLoci           Compare
+    callability statistics DepthOfCoverage               Assess sequence coverage
+    by a wide array of metrics, partitioned by sample, read group,  or library GCContentByInterval           Calculates
+    the GC content of the reference sequence for each interval
+  position: 1
+  name: coverage
+  optional: false
+- !Positional
+  description: SomaticPindelFilter           Filters pindel output based on coverage
+    and Fisher's exact test (BH corrected).
+  position: 2
+  name: dakl
+  optional: false
+- !Positional
+  description: ErrorRatePerCycle             Compute the read error rate per position
+    ReadGroupProperties           Collect statistics about read groups and their properties
+    ReadLengthDistribution        Collect read length statistics
+  position: 3
+  name: diagnostics
+  optional: false
+- !Positional
+  description: DiffObjects                   A generic engine for comparing tree-structured
+    objects
+  position: 4
+  name: diffengine
+  optional: false
+- !Positional
+  description: GATKPaperGenotyper            Simple Bayesian genotyper used in the
+    original GATK paper
+  position: 5
+  name: examples
+  optional: false
+- !Positional
+  description: FastaAlternateReferenceMaker  Generate an alternative reference sequence
+    over the specified interval FastaReferenceMaker           Create a subset of a
+    FASTA reference sequence FastaStats                    Calculate basic statistics
+    about the reference sequence itself
+  position: 6
+  name: fasta
+  optional: false
+- !Positional
+  description: VariantFiltration             Filter variant calls based on INFO and
+    FORMAT annotations
+  position: 7
+  name: filters
+  optional: false
+- !Positional
+  description: IndelRealigner                Perform local realignment of reads around
+    indels LeftAlignIndels               Left-align indels within reads in a bam file
+    RealignerTargetCreator        Define intervals to target for local realignment
+  position: 8
+  name: indels
+  optional: false
+- !Positional
+  description: CheckPileup                   Compare GATK's internal pileup to a reference
+    Samtools pileup CountBases                    Count the number of bases in a set
+    of reads CountIntervals                Count contiguous regions in an interval
+    list CountLoci                     Count the total number of covered loci CountMales                    Count
+    the number of reads seen from male samples CountReadEvents               Count
+    the number of read events CountReads                    Count the number of reads
+    CountRODs                     Count the number of ROD objects encountered CountRODsByRef                Count
+    the number of ROD objects encountered along the reference CountTerminusEvent            Count
+    the number of reads ending in insertions, deletions or soft-clips ErrorThrowing                 A
+    walker that simply throws errors. FlagStat                      Collect statistics
+    about sequence reads based on their SAM flags Pileup                        Print
+    read alignments in Pileup-style format PrintRODs                     Print out
+    all of the RODs in the input data set QCRef                         Quality control
+    for the reference fasta ReadClippingStats             Collect read clipping statistics
+  position: 9
+  name: qc
+  optional: false
+- !Positional
+  description: ClipReads                     Read clipping based on quality, position
+    or sequence matching PrintReads                    Write out sequence read data
+    (for filtering, merging, subsetting etc) SplitSamFile                  Split a
+    BAM file by sample
+  position: 10
+  name: readutils
+  optional: false
+- !Positional
+  description: ASEReadCounter                Calculate read counts per allele for
+    allele-specific expression analysis
+  position: 11
+  name: rnaseq
+  optional: false
+- !Positional
+  description: VariantEval                   General-purpose tool for variant evaluation
+    (% in dbSNP, genotype concordance, Ti/Tv  ratios, and a lot more)
+  position: 12
+  name: varianteval
+  optional: false
+- !Positional
+  description: CombineVariants               Combine variant records from different
+    sources GenotypeConcordance           Genotype concordance between two callsets
+    LeftAlignAndTrimVariants      Left-align indels in a variant callset RandomlySplitVariants         Randomly
+    split variants into different sets SelectHeaders                 Selects headers
+    from a VCF source SelectVariants                Select a subset of variants from
+    a larger callset ValidateVariants              Validate a VCF file with an extra
+    strict set of criteria VariantsToAllelicPrimitives   Simplify multi-nucleotide
+    variants (MNPs) into more basic/primitive alleles. VariantsToBinaryPed           Convert
+    VCF to binary pedigree file VariantsToTable               Extract specific fields
+    from a VCF file to a tab-delimited table VariantsToVCF                 Convert
+    variants from other file formats to VCF format
+  position: 13
+  name: variantutils
+  optional: false
+named:
+- !Flag
+  description: Name of the tool to run
+  synonyms:
+  - -T
+  - --analysis_type
+  args: !SimpleFlagArg
+    name: analysis_type
+  optional: true
+- !Flag
+  description: Reads arguments from the  specified file
+  synonyms:
+  - -args
+  - --arg_file
+  args: !SimpleFlagArg
+    name: arg_file
+  optional: true
+- !Flag
+  description: Input file containing sequence  data (BAM or CRAM)
+  synonyms:
+  - -I
+  - --input_file
+  args: !SimpleFlagArg
+    name: input_file
+  optional: true
+- !Flag
+  description: Emit list of input BAM/CRAM  files to log
+  synonyms:
+  - --showFullBamList
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of reads per SAM file  to buffer in memory
+  synonyms:
+  - -rbs
+  - --read_buffer_size
+  args: !SimpleFlagArg
+    name: read_buffer_size
+  optional: true
+- !Flag
+  description: Filters to apply to reads  before analysis
+  synonyms:
+  - -rf
+  - --read_filter
+  args: !SimpleFlagArg
+    name: read_filter
+  optional: true
+- !Flag
+  description: Read filters to disable
+  synonyms:
+  - -drf
+  - --disable_read_filter
+  args: !SimpleFlagArg
+    name: disable_read_filter
+  optional: true
+- !Flag
+  description: One or more genomic intervals  over which to operate
+  synonyms:
+  - -L
+  - --intervals
+  args: !SimpleFlagArg
+    name: intervals
+  optional: true
+- !Flag
+  description: One or more genomic intervals  to exclude from processing
+  synonyms:
+  - -XL
+  - --excludeIntervals
+  args: !SimpleFlagArg
+    name: excludeIntervals
+  optional: true
+- !Flag
+  description: Set merging approach to use  for combining interval inputs  (UNION|INTERSECTION)
+  synonyms:
+  - -isr
+  - --interval_set_rule
+  args: !SimpleFlagArg
+    name: interval_set_rule
+  optional: true
+- !Flag
+  description: Interval merging rule for  abutting intervals (ALL| OVERLAPPING_ONLY)
+  synonyms:
+  - -im
+  - --interval_merging
+  args: !SimpleFlagArg
+    name: interval_merging
+  optional: true
+- !Flag
+  description: Amount of padding (in bp) to  add to each interval
+  synonyms:
+  - -ip
+  - --interval_padding
+  args: !SimpleFlagArg
+    name: interval_padding
+  optional: true
+- !Flag
+  description: Reference sequence file
+  synonyms:
+  - -R
+  - --reference_sequence
+  args: !SimpleFlagArg
+    name: reference_sequence
+  optional: true
+- !Flag
+  description: Use a non-deterministic random  seed
+  synonyms:
+  - -ndrs
+  - --nonDeterministicRandomSeed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Stop execution cleanly as soon  as maxRuntime has been reached
+  synonyms:
+  - -maxRuntime
+  - --maxRuntime
+  args: !SimpleFlagArg
+    name: maxRuntime
+  optional: true
+- !Flag
+  description: Unit of time used by  maxRuntime (NANOSECONDS| MICROSECONDS|MILLISECONDS|
+    SECONDS|MINUTES|HOURS|DAYS)
+  synonyms:
+  - -maxRuntimeUnits
+  - --maxRuntimeUnits
+  args: !SimpleFlagArg
+    name: maxRuntimeUnits
+  optional: true
+- !Flag
+  description: Type of read downsampling to  employ at a given locus (NONE| ALL_READS|BY_SAMPLE)
+  synonyms:
+  - -dt
+  - --downsampling_type
+  args: !SimpleFlagArg
+    name: downsampling_type
+  optional: true
+- !Flag
+  description: Fraction of reads to  downsample to
+  synonyms:
+  - -dfrac
+  - --downsample_to_fraction
+  args: !SimpleFlagArg
+    name: downsample_to_fraction
+  optional: true
+- !Flag
+  description: Target coverage threshold for  downsampling to coverage
+  synonyms:
+  - -dcov
+  - --downsample_to_coverage
+  args: !SimpleFlagArg
+    name: downsample_to_coverage
+  optional: true
+- !Flag
+  description: Type of BAQ calculation to  apply in the engine (OFF| CALCULATE_AS_NECESSARY|
+    RECALCULATE)
+  synonyms:
+  - -baq
+  - --baq
+  args: !SimpleFlagArg
+    name: baq
+  optional: true
+- !Flag
+  description: BAQ gap open penalty
+  synonyms:
+  - -baqGOP
+  - --baqGapOpenPenalty
+  args: !SimpleFlagArg
+    name: baqGapOpenPenalty
+  optional: true
+- !Flag
+  description: Reduce NDN elements in CIGAR  string
+  synonyms:
+  - -fixNDN
+  - --refactor_NDN_cigar_string
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Fix mis-encoded base quality  scores
+  synonyms:
+  - -fixMisencodedQuals
+  - --fix_misencoded_quality_scores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ignore warnings about base  quality score encoding
+  synonyms:
+  - -allowPotentiallyMisencodedQuals
+  - --allow_potentially_misencoded_quality_scores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the base quality scores  from the OQ tag
+  synonyms:
+  - -OQ
+  - --useOriginalQualities
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assign a default base quality
+  synonyms:
+  - -DBQ
+  - --defaultBaseQualities
+  args: !SimpleFlagArg
+    name: defaultBaseQualities
+  optional: true
+- !Flag
+  description: Write GATK runtime performance  log to this file
+  synonyms:
+  - -PF
+  - --performanceLog
+  args: !SimpleFlagArg
+    name: performanceLog
+  optional: true
+- !Flag
+  description: Input covariates table file  for on-the-fly base quality  score recalibration
+  synonyms:
+  - -BQSR
+  - --BQSR
+  args: !SimpleFlagArg
+    name: BQSR
+  optional: true
+- !Flag
+  description: Quantize quality scores to a  given number of levels (with  -BQSR)
+  synonyms:
+  - -qq
+  - --quantize_quals
+  args: !SimpleFlagArg
+    name: quantize_quals
+  optional: true
+- !Flag
+  description: Use static quantized quality  scores to a given number of  levels (with
+    -BQSR)
+  synonyms:
+  - -SQQ
+  - --static_quantized_quals
+  args: !SimpleFlagArg
+    name: static_quantized_quals
+  optional: true
+- !Flag
+  description: Disable printing of base  insertion and deletion tags  (with -BQSR)
+  synonyms:
+  - -DIQ
+  - --disable_indel_quals
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Emit the OQ tag with the  original base qualities (with  -BQSR)
+  synonyms:
+  - -EOQ
+  - --emit_original_quals
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't recalibrate bases with  quality scores less than this  threshold
+    (with -BQSR)
+  synonyms:
+  - -preserveQ
+  - --preserve_qscores_less_than
+  args: !SimpleFlagArg
+    name: preserve_qscores_less_than
+  optional: true
+- !Flag
+  description: Global Qscore Bayesian prior  to use for BQSR
+  synonyms:
+  - -globalQScorePrior
+  - --globalQScorePrior
+  args: !SimpleFlagArg
+    name: globalQScorePrior
+  optional: true
+- !Flag
+  description: How strict should we be with  validation (STRICT|LENIENT| SILENT)
+  synonyms:
+  - -S
+  - --validation_strictness
+  args: !SimpleFlagArg
+    name: validation_strictness
+  optional: true
+- !Flag
+  description: Remove program records from  the SAM header
+  synonyms:
+  - -rpr
+  - --remove_program_records
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Keep program records in the  SAM header
+  synonyms:
+  - -kpr
+  - --keep_program_records
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Rename sample IDs on-the-fly  at runtime using the provided  mapping
+    file
+  synonyms:
+  - -sample_rename_mapping_file
+  - --sample_rename_mapping_file
+  args: !SimpleFlagArg
+    name: sample_rename_mapping_file
+  optional: true
+- !Flag
+  description: 'Enable unsafe operations:  nothing will be checked at  runtime (ALLOW_N_CIGAR_READS|
+    ALLOW_UNINDEXED_BAM| ALLOW_UNSET_BAM_SORT_ORDER| NO_READ_ORDER_VERIFICATION| ALLOW_SEQ_DICT_INCOMPATIBILITY|
+    LENIENT_VCF_PROCESSING|ALL)'
+  synonyms:
+  - -U
+  - --unsafe
+  args: !SimpleFlagArg
+    name: unsafe
+  optional: true
+- !Flag
+  description: Output sites-only VCF
+  synonyms:
+  - -sites_only
+  - --sites_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Always output all the records  in VCF FORMAT fields, even if  some
+    are missing
+  synonyms:
+  - -writeFullFormat
+  - --never_trim_vcf_format_field
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Compression level to use for  writing BAM files (0 - 9,  higher is
+    more compressed)
+  synonyms:
+  - -compress
+  - --bam_compression
+  args: !SimpleFlagArg
+    name: bam_compression
+  optional: true
+- !Flag
+  description: Strip down read content and  tags
+  synonyms:
+  - -simplifyBAM
+  - --simplifyBAM
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Turn off on-the-fly creation  of indices for output BAM/CRAM  files
+  synonyms:
+  - --disable_bam_indexing
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable on-the-fly creation of  md5s for output BAM files.
+  synonyms:
+  - --generate_md5
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of data threads to  allocate to this analysis
+  synonyms:
+  - -nt
+  - --num_threads
+  args: !SimpleFlagArg
+    name: num_threads
+  optional: true
+- !Flag
+  description: Number of CPU threads to  allocate per data thread
+  synonyms:
+  - -nct
+  - --num_cpu_threads_per_data_thread
+  args: !SimpleFlagArg
+    name: num_cpu_threads_per_data_thread
+  optional: true
+- !Flag
+  description: Enable threading efficiency  monitoring
+  synonyms:
+  - -mte
+  - --monitorThreadEfficiency
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Exclude read groups based on  tags
+  synonyms:
+  - -rgbl
+  - --read_group_black_list
+  args: !SimpleFlagArg
+    name: read_group_black_list
+  optional: true
+- !Flag
+  description: Pedigree files for samples
+  synonyms:
+  - -ped
+  - --pedigree
+  args: !SimpleFlagArg
+    name: pedigree
+  optional: true
+- !Flag
+  description: Pedigree string for samples
+  synonyms:
+  - -pedString
+  - --pedigreeString
+  args: !SimpleFlagArg
+    name: pedigreeString
+  optional: true
+- !Flag
+  description: Validation strictness for  pedigree (STRICT|SILENT)
+  synonyms:
+  - -pedValidationType
+  - --pedigreeValidationType
+  args: !SimpleFlagArg
+    name: pedigreeValidationType
+  optional: true
+- !Flag
+  description: Type of IndexCreator to use  for VCF/BCF indices  (DYNAMIC_SEEK|DYNAMIC_SIZE|
+    LINEAR|INTERVAL)
+  synonyms:
+  - -variant_index_type
+  - --variant_index_type
+  args: !SimpleFlagArg
+    name: variant_index_type
+  optional: true
+- !Flag
+  description: Parameter to pass to the  VCF/BCF IndexCreator
+  synonyms:
+  - -variant_index_parameter
+  - --variant_index_parameter
+  args: !SimpleFlagArg
+    name: variant_index_parameter
+  optional: true
+- !Flag
+  description: Reference window stop
+  synonyms:
+  - -ref_win_stop
+  - --reference_window_stop
+  args: !SimpleFlagArg
+    name: reference_window_stop
+  optional: true
+- !Flag
+  description: Set the minimum level of  logging
+  synonyms:
+  - -l
+  - --logging_level
+  args: !SimpleFlagArg
+    name: logging_level
+  optional: true
+- !Flag
+  description: Set the logging location
+  synonyms:
+  - -log
+  - --log_to_file
+  args: !SimpleFlagArg
+    name: log_to_file
+  optional: true
+command:
+- gatk-framework
+subcommands: []
+help_flag: !Flag
+  description: Generate the help message
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Output version information
+  synonyms:
+  - -version
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

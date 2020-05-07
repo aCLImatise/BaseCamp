@@ -1,0 +1,369 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Percent identity threshold. In range [50..100]. Default: 95.'
+  synonyms:
+  - -i
+  - --percent-identity
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Percent recognition rate. In range [80..100]. Default: 99.'
+  synonyms:
+  - -rr
+  - --recognition-rate
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Allow only mismatches, no indels. Default: allow both.'
+  synonyms:
+  - -ng
+  - --no-gaps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Map reads only to forward strands.
+  synonyms:
+  - -f
+  - --forward
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Map reads only to reverse strands.
+  synonyms:
+  - -r
+  - --reverse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output only <NUM> of the best hits. In range [1..inf]. Default: 100.'
+  synonyms:
+  - -m
+  - --max-hits
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Output only unique best matches (-m 1 -dr 0 -pa).
+  synonyms:
+  - --unique
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Trim reads to given length. Default: off. In range [14..inf].'
+  synonyms:
+  - -tr
+  - --trim-reads
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Mapping result filename (use - to dump to stdout in razers format).
+    Default: <READS FILE>.razers. Valid filetypes are: .razers, .eland, .fa, .fasta,
+    .gff, .sam, .bam, and .afg.'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Verbose mode.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Very verbose mode.
+  synonyms:
+  - -vv
+  - --vverbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Paired-end library length. In range [1..inf]. Default: 220.'
+  synonyms:
+  - -ll
+  - --library-length
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Paired-end library length tolerance. In range [0..inf]. Default: 50.'
+  synonyms:
+  - -le
+  - --library-error
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Dump the alignment for each match (only razer or fasta format).
+  synonyms:
+  - -a
+  - --alignment
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Purge reads with more than <max-hits> best matches.
+  synonyms:
+  - -pa
+  - --purge-ambiguous
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Only consider matches with at most NUM more errors compared to the
+    best. Default: output all.'
+  synonyms:
+  - -dr
+  - --distance-range
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Select how genomes are named (see Naming section below). In range
+    [0..1]. Default: 0.'
+  synonyms:
+  - -gn
+  - --genome-naming
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Select how reads are named (see Naming section below). In range [0..3].
+    Default: 0.'
+  synonyms:
+  - -rn
+  - --read-naming
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Use the whole read id (don't clip after whitespace).
+  synonyms:
+  - --full-readid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Select how matches are sorted (see Sorting section below). In range
+    [0..1]. Default: 0.'
+  synonyms:
+  - -so
+  - --sort-order
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Select begin/end position numbering (see Coordinate section below).
+    In range [0..1]. Default: 0.'
+  synonyms:
+  - -pf
+  - --position-format
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Disable alignment shrinking in SAM. This is required for generating
+    a gold mapping for Rabema.
+  synonyms:
+  - -ds
+  - --dont-shrink-alignments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Select k-mer filter. One of pigeonhole and swift. Default: pigeonhole.'
+  synonyms:
+  - -fl
+  - --filter
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: 'Set the percent mutation rate (pigeonhole). In range [0..20]. Default:
+    5.'
+  synonyms:
+  - -mr
+  - --mutation-rate
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Manually set the overlap length of adjacent k-mers (pigeonhole). In
+    range [0..inf].
+  synonyms:
+  - -ol
+  - --overlap-length
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Read user-computed parameter files in the directory <DIR> (swift).
+  synonyms:
+  - -pd
+  - --param-dir
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: Manually set minimum k-mer count threshold (swift). In range [1..inf].
+  synonyms:
+  - -t
+  - --threshold
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Set taboo length (swift). In range [1..inf]. Default: 1.'
+  synonyms:
+  - -tl
+  - --taboo-length
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Manually set k-mer shape.
+  synonyms:
+  - -s
+  - --shape
+  args: !SimpleFlagArg
+    name: BITSTRING
+  optional: true
+- !Flag
+  description: 'Set k-mer overabundance cut ratio. In range [0..1]. Default: 1.'
+  synonyms:
+  - -oc
+  - --overabundance-cut
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Skip simple-repeats of length <NUM>. In range [1..inf]. Default: 1000.'
+  synonyms:
+  - -rl
+  - --repeat-length
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Set the load factor for the open addressing k-mer index. In range
+    [1..inf]. Default: 1.6.'
+  synonyms:
+  - -lf
+  - --load-factor
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'N matches all other characters. Default: N matches nothing.'
+  synonyms:
+  - -mN
+  - --match-N
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write error distribution to FILE.
+  synonyms:
+  - -ed
+  - --error-distr
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Write mismatch patterns to FILE.
+  synonyms:
+  - -mf
+  - --mismatch-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'Multiply compaction treshold by this value after reaching and compacting.
+    In range [0..inf]. Default: 2.2.'
+  synonyms:
+  - -cm
+  - --compact-mult
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "Don't compact if in this last fraction of genome. In range [0..1].\
+    \ Default: 0.05."
+  synonyms:
+  - -ncf
+  - --no-compact-frac
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Set the number of threads to use (0 to force sequential mode). In
+    range [0..inf]. Default: 1.'
+  synonyms:
+  - -tc
+  - --thread-count
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Collect candidates in windows of this length. In range [1..inf]. Default:
+    500000.'
+  synonyms:
+  - -pws
+  - --parallel-window-size
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Verify candidates in packages of this size. In range [1..inf]. Default:
+    100.'
+  synonyms:
+  - -pvs
+  - --parallel-verification-size
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Largest number of packages to create for verification per thread-1.
+    In range [1..inf]. Default: 100.'
+  synonyms:
+  - -pvmpc
+  - --parallel-verification-max-package-count
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Bytes of main memory available for storing matches. In range [-1..inf].
+    Default: 0.'
+  synonyms:
+  - -amms
+  - --available-matches-memory-size
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'When to start histogram. In range [1..inf]. Default: 5.'
+  synonyms:
+  - -mhst
+  - --match-histo-start-threshold
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+command:
+- razers3
+subcommands: []
+help_flag: !Flag
+  description: Display the help message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Display version information.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

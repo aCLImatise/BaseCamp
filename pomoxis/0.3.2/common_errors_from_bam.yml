@@ -1,0 +1,56 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+  optional: true
+command:
+- common_errors_from_bam
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: input bam file containing assemblies trimmed to a common alignment
+      window
+    position: 0
+    name: bam
+    optional: false
+  - !Positional
+    description: reference fasta file of the reference over that alignment window
+    position: 1
+    name: ref_fasta
+    optional: false
+  named:
+  - !Flag
+    description: 'Prefix for outputs. (default: common_errors)'
+    synonyms:
+    - -o
+    - --output_prefix
+    args: !SimpleFlagArg
+      name: OUTPUT_PREFIX
+    optional: true
+  command:
+  - common_errors_from_bam
+  - bam
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

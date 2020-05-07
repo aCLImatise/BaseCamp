@@ -1,0 +1,431 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: split sequences at N bases before computing length
+  synonyms:
+  - -split-n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output a simple 'length numSequences' histogram
+  synonyms:
+  - -simple
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output a list of the sequence lengths
+  synonyms:
+  - -lengths
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: load data as complete sequences (for testing)
+  synonyms:
+  - -assequences
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: load data as blocks of bases    (for testing)
+  synonyms:
+  - -asbases
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "print sequence if it is at least 'min' bases and at most 'max' bases\
+    \ long a 'baselist' is a set of integers formed from any combination of the following,\
+    \ seperated by a comma: num       a single number bgn-end   a range of numbers:\
+    \  bgn <= end bases are spaced-based; -bases 0-2,4 will print the bases between\
+    \ the first two spaces (the first two bases) and the base after the fourth space\
+    \ (the fifth base). a 'seqlist' is a set of integers formed from any combination\
+    \ of the following, seperated by a comma: num       a single number bgn-end  \
+    \ a range of numbers:  bgn <= end sequences are 1-based; -sequences 1,3-5 will\
+    \ print the first, third, fourth and fifth sequences."
+  synonyms:
+  - -length
+  args: !SimpleFlagArg
+    name: min-max
+  optional: true
+- !Flag
+  description: sample reads from these sequences
+  synonyms:
+  - -genome
+  args: !SimpleFlagArg
+    name: G
+  optional: true
+- !Flag
+  description: treat the sequences in G as circular
+  synonyms:
+  - -circular
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: genome size to use for deciding coverage below
+  synonyms:
+  - -genomesize
+  args: !SimpleFlagArg
+    name: g
+  optional: true
+- !Flag
+  description: generate approximately c coverage of output
+  synonyms:
+  - -coverage
+  args: !SimpleFlagArg
+    name: c
+  optional: true
+- !Flag
+  description: generate exactly n reads of output
+  synonyms:
+  - -nreads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: generate approximately n bases of output
+  synonyms:
+  - -nbases
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: generate read length by sampling the distribution in file F one column  -
+    each line is the length of a sequence two columns - each line has the 'length'
+    and 'number of sequences' if file F doesn't exist, use a built-in distribution
+    ultra-long-nanopore pacbio pacbio-hifi
+  synonyms:
+  - -distribution
+  args: !SimpleFlagArg
+    name: F
+  optional: true
+- !Flag
+  description: '[-max]   (not implemented)'
+  synonyms:
+  - -length
+  args: !SimpleFlagArg
+    name: min
+  optional: true
+- !Flag
+  description: (not implemented)
+  synonyms:
+  - -output
+  args: !SimpleFlagArg
+    name: x.fasta
+  optional: true
+- !Flag
+  description: output B bases.
+  synonyms:
+  - -bases
+  args: !SimpleFlagArg
+    name: B
+  optional: true
+- !Flag
+  description: output R reads.
+  synonyms:
+  - -reads
+  args: !SimpleFlagArg
+    name: R
+  optional: true
+- !Flag
+  description: output P pairs (only if -paired).
+  synonyms:
+  - -pairs
+  args: !SimpleFlagArg
+    name: P
+  optional: true
+- !Flag
+  description: output fraction F of the input bases.
+  synonyms:
+  - -fraction
+  args: !SimpleFlagArg
+    name: F
+  optional: true
+- !Flag
+  description: sets GC/AT composition (default 0.50)
+  synonyms:
+  - -gc
+  args: !SimpleFlagArg
+    name: bias
+  optional: true
+- !Flag
+  description: sets GC/AT composition (default 0.50)
+  synonyms:
+  - -at
+  args: !SimpleFlagArg
+    name: bias
+  optional: true
+- !Flag
+  description: sets frequency of A bases (default 0.25)
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: freq
+  optional: true
+- !Flag
+  description: sets frequency of C bases (default 0.25)
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: freq
+  optional: true
+- !Flag
+  description: sets frequency of G bases (default 0.25)
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: freq
+  optional: true
+- !Flag
+  description: sets frequency of T bases (default 0.25)
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: freq
+  optional: true
+- !Flag
+  description: 0.6 -a 0.1 -t 0.3 -- sets G = C = 0.3, A = 0.1, T = 0.3
+  synonyms:
+  - -gc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0.1 -t 0.3 -gc 0.6 -- sets G = C = 0.3, A = T = 0.15
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '1.25 -- results in a sum of 2.0 (1.25 + 0.25 + 0.25 + 0.25) so final
+    frequencies will be: A =         1.25/2 = 0.625 C = G = T = 0.25/2 = 0.125.'
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '0.8 -a 1.0 -t 0.2 -- sum is also 2.0, final frequencies will be: A
+    =         1.00/2 = 0.5 C = G =     0.40/2 = 0.2 T =         0.20/2 = 0.1'
+  synonyms:
+  - -gc
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- sequence
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: "print sequence if it is at least 'min' bases and at most 'max' bases\
+      \ long a 'baselist' is a set of integers formed from any combination of the\
+      \ following, seperated by a comma: num       a single number bgn-end   a range\
+      \ of numbers:  bgn <= end bases are spaced-based; -bases 0-2,4 will print the\
+      \ bases between the first two spaces (the first two bases) and the base after\
+      \ the fourth space (the fifth base). a 'seqlist' is a set of integers formed\
+      \ from any combination of the following, seperated by a comma: num       a single\
+      \ number bgn-end   a range of numbers:  bgn <= end sequences are 1-based; -sequences\
+      \ 1,3-5 will print the first, third, fourth and fifth sequences."
+    synonyms:
+    - -length
+    args: !SimpleFlagArg
+      name: min-max
+    optional: true
+  command:
+  - sequence
+  - extract
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: output B bases.
+    synonyms:
+    - -bases
+    args: !SimpleFlagArg
+      name: B
+    optional: true
+  - !Flag
+    description: output R reads.
+    synonyms:
+    - -reads
+    args: !SimpleFlagArg
+      name: R
+    optional: true
+  - !Flag
+    description: output P pairs (only if -paired).
+    synonyms:
+    - -pairs
+    args: !SimpleFlagArg
+      name: P
+    optional: true
+  - !Flag
+    description: output fraction F of the input bases.
+    synonyms:
+    - -fraction
+    args: !SimpleFlagArg
+      name: F
+    optional: true
+  command:
+  - sequence
+  - sample
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: sets GC/AT composition (default 0.50)
+    synonyms:
+    - -gc
+    args: !SimpleFlagArg
+      name: bias
+    optional: true
+  - !Flag
+    description: sets GC/AT composition (default 0.50)
+    synonyms:
+    - -at
+    args: !SimpleFlagArg
+      name: bias
+    optional: true
+  - !Flag
+    description: sets frequency of A bases (default 0.25)
+    synonyms:
+    - -a
+    args: !SimpleFlagArg
+      name: freq
+    optional: true
+  - !Flag
+    description: sets frequency of C bases (default 0.25)
+    synonyms:
+    - -c
+    args: !SimpleFlagArg
+      name: freq
+    optional: true
+  - !Flag
+    description: sets frequency of G bases (default 0.25)
+    synonyms:
+    - -g
+    args: !SimpleFlagArg
+      name: freq
+    optional: true
+  - !Flag
+    description: sets frequency of T bases (default 0.25)
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: freq
+    optional: true
+  - !Flag
+    description: 0.6 -a 0.1 -t 0.3 -- sets G = C = 0.3, A = 0.1, T = 0.3
+    synonyms:
+    - -gc
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 0.1 -t 0.3 -gc 0.6 -- sets G = C = 0.3, A = T = 0.15
+    synonyms:
+    - -a
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '1.25 -- results in a sum of 2.0 (1.25 + 0.25 + 0.25 + 0.25) so final
+      frequencies will be: A =         1.25/2 = 0.625 C = G = T = 0.25/2 = 0.125.'
+    synonyms:
+    - -a
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '0.8 -a 1.0 -t 0.2 -- sum is also 2.0, final frequencies will be:
+      A =         1.00/2 = 0.5 C = G =     0.40/2 = 0.2 T =         0.20/2 = 0.1'
+    synonyms:
+    - -gc
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - sequence
+  - generate
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: sample reads from these sequences
+    synonyms:
+    - -genome
+    args: !SimpleFlagArg
+      name: G
+    optional: true
+  - !Flag
+    description: treat the sequences in G as circular
+    synonyms:
+    - -circular
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: genome size to use for deciding coverage below
+    synonyms:
+    - -genomesize
+    args: !SimpleFlagArg
+      name: g
+    optional: true
+  - !Flag
+    description: generate approximately c coverage of output
+    synonyms:
+    - -coverage
+    args: !SimpleFlagArg
+      name: c
+    optional: true
+  - !Flag
+    description: generate exactly n reads of output
+    synonyms:
+    - -nreads
+    args: !SimpleFlagArg
+      name: n
+    optional: true
+  - !Flag
+    description: generate approximately n bases of output
+    synonyms:
+    - -nbases
+    args: !SimpleFlagArg
+      name: n
+    optional: true
+  - !Flag
+    description: generate read length by sampling the distribution in file F one column  -
+      each line is the length of a sequence two columns - each line has the 'length'
+      and 'number of sequences' if file F doesn't exist, use a built-in distribution
+      ultra-long-nanopore pacbio pacbio-hifi
+    synonyms:
+    - -distribution
+    args: !SimpleFlagArg
+      name: F
+    optional: true
+  - !Flag
+    description: '[-max]   (not implemented)'
+    synonyms:
+    - -length
+    args: !SimpleFlagArg
+      name: min
+    optional: true
+  - !Flag
+    description: (not implemented)
+    synonyms:
+    - -output
+    args: !SimpleFlagArg
+      name: x.fasta
+    optional: true
+  command:
+  - sequence
+  - simulate
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

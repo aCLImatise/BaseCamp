@@ -1,0 +1,193 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Adapter sequence/file (AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC)
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: Adapter sequence/file for pair-end reads (AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA),
+    implied by -x if -x is the only one specified explicitly.
+  synonyms:
+  - -y
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: File indicates valid adapter pairing (all-ones matrix).
+  synonyms:
+  - -M
+  - --matrix
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: Junction adapter sequence/file for Nextera Mate Pair reads (CTGTCTCTTATACACATCTAGATGTGTATAAGAGACAG)
+  synonyms:
+  - -j
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: "trimming mode; 1) single-end -- head: 5' end; tail: 3' end; any: anywhere\
+    \ (tail) 2) paired-end -- pe: paired-end; mp: mate-pair; ap: amplicon (pe)"
+  synonyms:
+  - -m
+  - --mode
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: Demultiplex reads according to adapters/primers (no)
+  synonyms:
+  - -b
+  - --barcode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Maximum allowed error rate (normalized #errors / length of aligned
+    region) [0, 0.5], (0.1)'
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Maximum allowed indel error rate [0, r], (0.03) reciprocal is used
+    for -r, -e and -d when num > or = 2
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Minimum overlap length for adapter detection [1, inf); (max(1, int(4-10*r))
+    for single-end; (<junction length>/2) for mate-pair)
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ",<int> Hard clip off the 5' leading bases as the barcodes in amplicon\
+    \ mode; (no)"
+  synonyms:
+  - -c
+  - --cut
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Hard clip off the 3' tailing bases if the read length is greater than
+    the maximum read length specified by -L; (no)
+  synonyms:
+  - -e
+  - --cut3
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <int> Trim 3' end until specified or higher quality reached; (0)
+  synonyms:
+  - -q
+  - --end-quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The lowest mean quality value allowed before trimming; (0)
+  synonyms:
+  - -Q
+  - --mean-quality
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: The minimum read length allowed after trimming; (18)
+  synonyms:
+  - -l
+  - --min
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: The maximum read length allowed after trimming; (no limit)
+  synonyms:
+  - -L
+  - --max
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Whether to filter out highly degenerative (many Ns) reads; (no)
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Whether to filter out undetermined mate-pair reads; (no)
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: to replace trimmed bases with Ns (has no effect with 'b' or '-m mp');
+    (no)
+  synonyms:
+  - -N
+  - --fillNs
+  args: !SimpleFlagArg
+    name: Whether
+  optional: true
+- !Flag
+  description: 'Prepare the "barcodes.fastq" and "mapping_file.txt" for processing
+    with QIIME; (default: no)'
+  synonyms:
+  - --qiime
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: No progress update (not quiet)
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write output file(s) for trimmed reads (trimmed bases converted to
+    lower case) (no)
+  synonyms:
+  - -A
+  - --masked-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output file(s) for excluded reads (no)
+  synonyms:
+  - -X
+  - --excluded-output
+  args: !SimpleFlagArg
+    name: Write
+  optional: true
+- !Flag
+  description: For mate-pair mode, whether to redistribute reads based on junction
+    information; (no)
+  synonyms:
+  - -i
+  - --intelligent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of concurrent threads [1, 32]; (1)
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+command:
+- skewer
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

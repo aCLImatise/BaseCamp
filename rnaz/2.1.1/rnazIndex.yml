@@ -1,0 +1,114 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: file
+  optional: true
+named:
+- !Flag
+  description: Generate GFF formatted output.
+  synonyms:
+  - -g
+  - --gff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Generate BED formatted output.
+  synonyms:
+  - -b
+  - --bed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '#:LABEL, --col #:LABEL Append a column named LABEL to the HTML-table
+    holding the data from the input file column with index #. e.g. "rnazIndex.pl --html
+    --col 19:Alifoldz --col 20:RNAmicro annotated.dat"'
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Get sequences in FASTA format for loci or windows. See options "--seq-dir",
+    "--forward", "--reverse"!
+  synonyms:
+  - -f
+  - --fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Directory with sequence files. You only need this for FASTA output
+    (see option "--fasta"). The files should be named with the sequence identifier
+    and the extension ".fa" or ".fasta". If your identifier in your input file is
+    for example "contig100" then you should have a file named "contig100.fa". (If
+    your identifier is of the form ``assembly.chromosome" as for example used by UCSC
+    alignments, it is also possible to name the file "chr22.fa" for a sequence identifier
+    "hg17.chr22").
+  synonyms:
+  - --seq-dir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Only relevant for FASTA output (see option "--fasta"). You can set
+    if you want the forward or reverse complement of the sequence corresponding to
+    a locus. Since loci don't have strand information you might consider both strands
+    for further analysis. Windows have strand information, so if you export windows
+    as FASTA these options are ignored.
+  synonyms:
+  - --forward
+  - --reverse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: In UCSC MAF alignment files it is common to use sequence identifiers
+    like for example ``hg17.chr22". However, in BED are usually specific for a given
+    assembly and therefore only ``chr22" is used in the BED files. With this option
+    you change any identifier of the form ``X.Y" into ``Y". Moreover, the scores are
+    multiplied by 1000 and rounded to integers since the UCSC genome browser expects
+    scores between 0 and 1000.
+  synonyms:
+  - --ucsc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the locus information to generate the lines for the GFF and BED
+    files. This is the default.
+  synonyms:
+  - -l
+  - --loci
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print the "windows" and not the "loci". Probably, rarely used function.
+  synonyms:
+  - -w
+  - --windows
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: With this option you get a HTML table which links to the the HTML pages
+    which you can create by using the "--html" option in "rnazCluster.pl". Redirect
+    the output to some file which resides in the "results" directory created by "rnazCluster.pl"
+    and open the file with your favourite web-browser.
+  synonyms:
+  - --html
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prints a detailed manual page and exits.
+  synonyms:
+  - --man
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- rnazIndex.pl
+subcommands: []
+help_flag: !Flag
+  description: Prints a short help message and exits.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

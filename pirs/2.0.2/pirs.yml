@@ -1,0 +1,294 @@
+!Command
+positional: []
+named: []
+command:
+- pirs
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: OPTIONS...
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: REFERENCE
+    optional: false
+  named:
+  - !Flag
+    description: 'A floating-point number in the interval [0, 1] that specifies the
+      heterozygous SNP rate.  Default: 0.001'
+    synonyms:
+    - -s
+    - --snp-rate
+    args: !SimpleFlagArg
+      name: RATE
+    optional: true
+  - !Flag
+    description: 'A floating-point number in the interval [0, 1] that specifies the
+      heterozygous indel rate. Default: 0.0001'
+    synonyms:
+    - -d
+    - --indel-rate
+    args: !SimpleFlagArg
+      name: RATE
+    optional: true
+  - !Flag
+    description: 'A floating-point number in the interval [0, 1] that specifies the
+      large-scale structural variation (insertion, deletion, inversion) rate in the
+      diploid genome. Default: 0.000001'
+    synonyms:
+    - -v
+    - --sv-rate
+    args: !SimpleFlagArg
+      name: RATE
+    optional: true
+  - !Flag
+    description: 'In a SNP, a transition is when a purine or pyrimidine is changed
+      to one of the same (A <=> G, C <=> T) while a transversion is when a purine
+      is changed into a pyrimidine or vice-versa.  This option specifies a floating-point
+      number RATIO that gives the ratio of the transition probability to the transversion
+      probability for simulated SNPs. Default: 2.0'
+    synonyms:
+    - -R
+    - --transition-to-transversion-ratio
+    args: !SimpleFlagArg
+      name: RATIO
+    optional: true
+  - !Flag
+    description: 'Use PREFIX as the prefix of the output file and logs. Default: "pirs_diploid"'
+    synonyms:
+    - -o
+    - --output-prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  - !Flag
+    description: Use FILE as the name of the output file. Use '-' for standard output;
+      this also moves the informational messages from stdout to stderr.
+    synonyms:
+    - -O
+    - --output-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: 'The string "text" or "gzip" to specify the type of the output FASTA
+      file containing the diploid copy of the genome, as well as the log files. Default:
+      "text"'
+    synonyms:
+    - -c
+    - --output-file-type
+    args: !SimpleFlagArg
+      name: TYPE
+    optional: true
+  - !Flag
+    description: Do not write the log files.
+    synonyms:
+    - -n
+    - --no-logs
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Use SEED as the random seed. Default: time(NULL) * getpid()'
+    synonyms:
+    - -S
+    - --random-seed
+    args: !SimpleFlagArg
+      name: SEED
+    optional: true
+  - !Flag
+    description: Do not print informational messages.
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '>pirs.out 2>pirs.err'
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: ref_sequence
+    optional: true
+  command:
+  - pirs
+  - diploid
+  subcommands: []
+  help_flag: !Flag
+    description: Show this help and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Show version information and exit.
+    synonyms:
+    - -V
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Set read length
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: LEN
+    optional: true
+  - !Flag
+    description: Set coverage
+    synonyms:
+    - -x
+    args: !SimpleFlagArg
+      name: COV
+    optional: true
+  - !Flag
+    description: Set insert length mean
+    synonyms:
+    - -m
+    args: !SimpleFlagArg
+      name: MEAN
+    optional: true
+  - !Flag
+    description: Set insert length standard deviation
+    synonyms:
+    - -v
+    args: !SimpleFlagArg
+      name: STDDEV
+    optional: true
+  - !Flag
+    description: Simulate jumping library
+    synonyms:
+    - -j
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Simulate from diploid genome produced by `pirs diploid'
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Set output prefix
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  command:
+  - pirs
+  - simulate
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Do not simulate GC bias.  The GC bias profile will not be used.
+      synonyms:
+      - --no-gc-content-bias
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Use PREFIX as the prefix of the output files.  Default: "pirs_reads"'
+      synonyms:
+      - -o
+      - --output-prefix
+      args: !SimpleFlagArg
+        name: PREFIX
+      optional: true
+    - !Flag
+      description: 'The string "text" or "gzip" to specify the type of the output
+        FASTQ files containing the simulated reads of the genome, as well as the log
+        files.  Default: "text"'
+      synonyms:
+      - -c
+      - --output-file-type
+      args: !SimpleFlagArg
+        name: TYPE
+      optional: true
+    - !Flag
+      description: Equivalent to -c gzip.
+      synonyms:
+      - -z
+      - --compress
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Do not write the log files.
+      synonyms:
+      - -n
+      - --no-logs
+      - --no-log-files
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "Use SEED as the random seed. Default: time(NULL) * getpid(). \
+        \ Note: If pIRS was not compiled with --disable-threads, each thread actually\
+        \ uses its own random number generator that is seeded by this base seed added\
+        \ to the thread number; also, if you need pIRS's output to be exactly reproducible,\
+        \ you must specify the random seed as well as use only 1 simulator thread\
+        \ (--threads=1, or configure with --disable-threads, or run on system with\
+        \ 4 or fewer processors)."
+      synonyms:
+      - -S
+      - --random-seed
+      args: !SimpleFlagArg
+        name: SEED
+      optional: true
+    - !Flag
+      description: 'Use NUM_THREADS threads to simulate reads.  This option is not
+        available if pIRS was compiled with the --disable-threads option.  Default:
+        number of processors minus 2 if writing uncompressed output, or number of
+        processors minus 3 if writing compressed output, or 1 if there are not this
+        many processors.'
+      synonyms:
+      - -t
+      - --threads
+      args: !SimpleFlagArg
+        name: NUM_THREADS
+      optional: true
+    - !Flag
+      description: Do not print informational messages.
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - pirs
+    - simulate
+    - OPTIONS...
+    subcommands: []
+    help_flag: !Flag
+      description: Show this help and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: Show version information and exit.
+      synonyms:
+      - -V
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+  help_flag: !Flag
+    description: Show detailed help
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

@@ -1,0 +1,230 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The directory in which all instance (reference and scenario) definitions
+    are stored. This option is required if no callback is found in the model file.
+  synonyms:
+  - -i
+  - --instance-directory
+  args: !SimpleFlagArg
+    name: INSTANCE_DIRECTORY
+  optional: true
+- !Flag
+  description: The directory in which all model (reference and scenario) definitions
+    are stored. Default is ".".
+  synonyms:
+  - -m
+  - --model-directory
+  args: !SimpleFlagArg
+    name: MODEL_DIRECTORY
+  optional: true
+- !Flag
+  description: The objective sense to use for the auto-generated scenario instance
+    objective, which is equal to the sum of the scenario-tree stage costs. Default
+    is None, indicating an Objective has been declared on the reference model.
+  synonyms:
+  - -o
+  - --objective-sense-stage-based
+  args: !SimpleFlagArg
+    name: OBJECTIVE_SENSE
+  optional: true
+- !Flag
+  description: The random seed associated with manipulation operations on the scenario
+    tree (e.g., down-sampling). Default is 0, indicating unassigned.
+  synonyms:
+  - --scenario-tree-seed
+  args: !SimpleFlagArg
+    name: SCENARIO_TREE_RANDOM_SEED
+  optional: true
+- !Flag
+  description: The proportion of the scenarios in the scenario tree that are actually
+    used. Specific scenarios are selected at random. Default is 1.0, indicating no
+    down-sampling.
+  synonyms:
+  - --scenario-tree-downsample-fraction
+  args: !SimpleFlagArg
+    name: SCENARIO_TREE_DOWNSAMPLE_FRACTION
+  optional: true
+- !Flag
+  description: The weight associated with the CVaR term in the risk- weighted objective
+    formulation. Default is 1.0. If the weight is 0, then *only* a non-weighted CVaR
+    cost will appear in the EF objective - the expected cost component will be dropped.
+  synonyms:
+  - --cvar-weight
+  args: !SimpleFlagArg
+    name: CVAR_WEIGHT
+  optional: true
+- !Flag
+  description: Add a weighted CVaR term to the primary objective
+  synonyms:
+  - --generate-weighted-cvar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The probability threshold associated with cvar (or any future) risk-oriented
+    performance metrics. Default is 0.95.
+  synonyms:
+  - --risk-alpha
+  args: !SimpleFlagArg
+    name: RISK_ALPHA
+  optional: true
+- !Flag
+  description: The probability threshold associated with a chance constraint. The
+    RHS will be one minus this value. Default is 0.
+  synonyms:
+  - --cc-alpha
+  args: !SimpleFlagArg
+    name: CC_ALPHA
+  optional: true
+- !Flag
+  description: The name of the binary variable to be used to construct a chance constraint.
+    Default is None, which indicates no chance constraint.
+  synonyms:
+  - --cc-indicator-var
+  args: !SimpleFlagArg
+    name: CC_INDICATOR_VAR
+  optional: true
+- !Flag
+  description: Specifies the mipgap for the EF solve.
+  synonyms:
+  - --mipgap
+  args: !SimpleFlagArg
+    name: MIPGAP
+  optional: true
+- !Flag
+  description: Following write of the extensive form model, solve it.
+  synonyms:
+  - --solve
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Specify the solver with which to solve the extensive form.  The following
+    solver types are currently supported: asl, baron, bilevel_blp_global, bilevel_blp_local,
+    bilevel_ld, cbc, cplex, glpk, gurobi, mpec_minlp, mpec_nlp, openopt, os, path,
+    pico, ps, py, scip, xpress; Default: cplex'
+  synonyms:
+  - --solver
+  args: !SimpleFlagArg
+    name: SOLVER_TYPE
+  optional: true
+- !Flag
+  description: 'The type of IO used to execute the solver.  Different solvers support
+    different types of IO, but the following are common options: lp - generate LP
+    files, nl - generate NL files, python - direct Python interface, os - generate
+    OSiL XML files.'
+  synonyms:
+  - --solver-io
+  args: !SimpleFlagArg
+    name: SOLVER_IO
+  optional: true
+- !Flag
+  description: The type of solver manager used to coordinate scenario sub-problem
+    solves. Default is serial.
+  synonyms:
+  - --solver-manager
+  args: !SimpleFlagArg
+    name: SOLVER_MANAGER_TYPE
+  optional: true
+- !Flag
+  description: Solver options for the extensive form problem.
+  synonyms:
+  - --solver-options
+  args: !SimpleFlagArg
+    name: SOLVER_OPTIONS
+  optional: true
+- !Flag
+  description: Disable warm-starts of EF solves. Default is False.
+  synonyms:
+  - --disable-warmstarts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Shut down all Pyro-related components associated with the Pyro solver
+    manager (if specified), including the dispatch server, name server, and any mip
+    servers. Default is False.
+  synonyms:
+  - --shutdown-pyro
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The name of the extensive form output file (currently only LP and NL
+    file formats are supported). If the option name does not end in '.lp' or '.nl',
+    then the output format will be determined by the value of the --solver-io option,
+    and the appropriate ending suffix will be added to the name. Default is 'efout'.
+  synonyms:
+  - --output-file
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+  optional: true
+- !Flag
+  description: When interfacing with the solver, use symbol names derived from the
+    model. For example, "my_special_variable[1_2_3]" instead of "v1". Useful for debugging.
+    When using the ASL interface (--solver- io=nl), generates corresponding .row (constraints)
+    and .col (variables) files. The ordering in these files provides a mapping from
+    ASL index to symbolic model names.
+  synonyms:
+  - --symbolic-solver-labels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output solver log during the extensive form solve.
+  synonyms:
+  - --output-solver-log
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The plugin invoked to write the scenario tree solution. Defaults to
+    the empty list.
+  synonyms:
+  - --solution-writer
+  args: !SimpleFlagArg
+    name: SOLUTION_WRITER
+  optional: true
+- !Flag
+  description: Generate verbose output, beyond the usual status output. Default is
+    False.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output timing statistics for various EF components
+  synonyms:
+  - --output-times
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable the python garbage collecter. Default is False.
+  synonyms:
+  - --disable-gc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Retain temporary input and output files for solve.
+  synonyms:
+  - -k
+  - --keep-solver-files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable profiling of Python code.  The value of this option is the number
+    of functions that are summarized.
+  synonyms:
+  - --profile
+  args: !SimpleFlagArg
+    name: PROFILE
+  optional: true
+- !Flag
+  description: When an exception is thrown, show the entire call stack. Ignored if
+    profiling is enabled. Default is False.
+  synonyms:
+  - --traceback
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- runef
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

@@ -1,0 +1,97 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Use the suffix array 'sa' for detecting matches between the reads and
+    the reference.  The suffix array has been prepared by the sawriter program.
+  synonyms:
+  - -sa
+  args: !SimpleFlagArg
+    name: suffixArrayFile
+  optional: true
+- !Flag
+  description: A table of tuple counts used to estimate match significance.  This
+    is  by the program 'printTupleCountTable'.  While it is quick to generate on  the
+    fly, if there are many invocations of blasr, it is useful to precompute the ctab.
+  synonyms:
+  - -ctab
+  args: !SimpleFlagArg
+    name: tab
+  optional: true
+- !Flag
+  description: Read in a read-region table in HDF format for masking portions of reads.
+    This may be a single table if there is just one input file,  or a fofn.  When
+    a region table is specified, any region table inside  the reads.plx.h5 or reads.bax.h5
+    files are ignored.
+  synonyms:
+  - -regionTable
+  args: !SimpleFlagArg
+    name: table
+  optional: true
+- !Flag
+  description: (false)Ignore any hq regions in the region table.
+  synonyms:
+  - -ignoreHQRegions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (false) Print quality values to sam files.
+  synonyms:
+  - -printSAMQV
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (false) Use a fast heuristic algorithm to speed up sparse dynamic programming.
+  synonyms:
+  - -fastSDP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (0) Maximum score to output (high is bad, negative good).
+  synonyms:
+  - -maxScore
+  args: !SimpleFlagArg
+    name: m
+  optional: true
+- !Flag
+  description: (1) Align using N processes.  All large data structures such as the
+    suffix array and  tuple count table are shared.
+  synonyms:
+  - -nproc
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: (0) Index of the first read to begin aligning. This is useful when
+    multiple instances  are running on the same data, for example when on a multi-rack
+    cluster.
+  synonyms:
+  - -start
+  args: !SimpleFlagArg
+    name: S
+  optional: true
+- !Flag
+  description: (1) Align one read every 'S' reads.
+  synonyms:
+  - -stride
+  args: !SimpleFlagArg
+    name: S
+  optional: true
+- !Flag
+  description: (0) Proportion of reads to randomly subsample (expressed as a decimal)
+    and align.
+  synonyms:
+  - -subsample
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- blasr
+subcommands: []
+help_flag: !Flag
+  description: Print this help file.
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

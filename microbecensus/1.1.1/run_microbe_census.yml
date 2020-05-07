@@ -1,0 +1,105 @@
+!Command
+positional:
+- !Positional
+  description: 'path to input metagenome(s); for paired-end metagenomes use commas
+    to specify each file (ex: read_1.fq.gz,read_2.fq.gz); can be FASTQ/FASTA; can
+    be gzip (.gz) or bzip (.bz2) compressed'
+  position: 0
+  name: SEQFILES
+  optional: false
+- !Positional
+  description: path to output file containing results
+  position: 1
+  name: OUTFILE
+  optional: false
+named:
+- !Flag
+  description: print program's progress to stdout (default = False)
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: path to external RAPsearch2 v2.15 binary; useful if precompiled RAPsearch2
+    v2.15 binary included with MicrobeCensus does not work on your system
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: RAPSEARCH
+  optional: true
+- !Flag
+  description: number of reads to sample from SEQFILES and use for average genome
+    size estimation. to use all reads set to 100000000. (default = 2000000)
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: NREADS
+  optional: true
+- !Flag
+  description: number of threads to use for database search (default = 1)
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: quit after average genome size is obtained and do not estimate the
+    number of genome equivalents in SEQFILES. useful in combination with -n for quick
+    tests (default = False)
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '{50,60,70,80,90,100,110,120,130,140,150,175,200,225,250,300,350,400,450,500}
+    all reads trimmed to this length; reads shorter than this discarded (default =
+    median read length)'
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum base-level PHRED quality score (default = -5; no filtering)
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: MIN_QUALITY
+  optional: true
+- !Flag
+  description: minimum read-level PHRED quality score (default = -5; no filtering)
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: MEAN_QUALITY
+  optional: true
+- !Flag
+  description: filter duplicate reads (default = False)
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: max percent of unknown bases per read (default = 100 percent; no filtering)
+  synonyms:
+  - -u
+  args: !SimpleFlagArg
+    name: MAX_UNKNOWN
+  optional: true
+command:
+- run_microbe_census.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

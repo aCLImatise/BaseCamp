@@ -1,0 +1,134 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: FLAGS
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: OPTIONS
+  optional: true
+- !Positional
+  description: ''
+  position: 2
+  name: IN_PATH
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: OUT_PATH
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: ERR_RATE
+  optional: false
+- !Positional
+  description: ''
+  position: 5
+  name: THRESH
+  optional: false
+named:
+- !Flag
+  description: Uses Levenshtein / edit distance instead of Hamming distance
+  synonyms:
+  - -e
+  - --edit_distance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The first line of the output file will contain a TSV header line.
+  synonyms:
+  - -f
+  - --format_line
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Threads print solutions to output greedily instead of storing them.
+    Limited duplication may arise
+  synonyms:
+  - -g
+  - --greedy_output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enables finding of inclusion overlaps (one string within another)
+  synonyms:
+  - -i
+  - --inclusions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Omits N symbol from alphabet saving time. Will remove N symbols from
+    input file (with a warning)
+  synonyms:
+  - -n
+  - --no_n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: For each solution printed to file, also prints a rough visualization
+    to stdout (mostly for debugging purposes)
+  synonyms:
+  - -p
+  - --print
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enables reversals of input strings
+  synonyms:
+  - -r
+  - --reversals
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prints progress bar for completed tasks and ETA to stdout
+  synonyms:
+  - -t
+  - --track_progress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prints completed steps of the run process
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Uses the filtering scheme mode given options {valimaki, kucherov}.\
+    \ Modes can also be supplied string arguments i.e. 'kucherov_2'. (Default : kucherov_2"
+  synonyms:
+  - -m
+  - --mode
+  args: !SimpleFlagArg
+    name: mode
+  optional: true
+- !Flag
+  description: Number of worker threads used. Defaults to number of logical cpu cores
+  synonyms:
+  - -w
+  - --worker_threads
+  args: !SimpleFlagArg
+    name: worker_threads
+  optional: true
+command:
+- rust-overlaps
+subcommands: []
+help_flag: !Flag
+  description: Prints help information
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Prints version information
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

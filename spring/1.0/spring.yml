@@ -1,0 +1,115 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: '[ --compress ]               compress'
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --decompress ]             decompress'
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --decompress-range start end (optional) decompress only reads (or read  pairs
+    for PE datasets) from start to end  (both inclusive) (1 <= start <= end <=  num_reads
+    (or num_read_pairs for PE)). If -r  was specified during compression, the range  of
+    reads does not correspond to the original  order of reads in the FASTQ file.
+  synonyms:
+  - --decompress-range
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '[ --input-file ] arg         input file name (two files for paired
+    end)'
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --output-file ] arg        output file name (for paired end  decompression,
+    if only one file is specified, two output files will be created by suffixing .1
+    and .2.)'
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --working-dir ] arg (=.)   directory to create temporary files (default  current
+    directory)'
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --num-threads ] arg (=8)   number of threads (default 8)'
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --allow-read-reordering ]  do not retain read order during compression  (paired
+    reads still remain paired)'
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not retain quality values during  compression
+  synonyms:
+  - --no-quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not retain read identifiers during  compression
+  synonyms:
+  - --no-ids
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --quality-opts ] arg       quality mode: possible modes are 1. -q
+    lossless (default) 2. -q qvz qv_ratio (QVZ lossy compression,  parameter qv_ratio
+    roughly corresponds to  bits used per quality value) 3. -q ill_bin (Illumina 8-level
+    binning) 4. -q binary thr high low (binary (2-level)  thresholding, quality binned
+    to high if >=  thr and to low if < thr)'
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --long ]                   Use for compression of arbitrarily long
+    read  lengths. Can also provide better compression  for reads with significant
+    number of indels.  -r disabled in this mode. For Illumina short  reads, compression
+    is better without -l flag.'
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --gzipped-fastq ]          enable if compression input is gzipped
+    fastq  or to output gzipped fastq during  decompression'
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: enable if compression input is fasta file  (i.e., no qualities)
+  synonyms:
+  - --fasta-input
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- spring
+subcommands: []
+help_flag: !Flag
+  description: '[ --help ]                   produce help message'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

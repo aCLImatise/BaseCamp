@@ -1,0 +1,162 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: full documentation
+  synonyms:
+  - --man
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: display the tool version
+  synonyms:
+  - --Version
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: look for and return xml chunks matching <cond> if neither "--root"
+    nor "--file" are used then the element(s) that trigger the "--cond" option is
+    (are) used. If "--cond" is not used then all elements matching the <cond> are
+    returned several "--root" can be provided
+  synonyms:
+  - --root
+  args: !SimpleFlagArg
+    name: cond
+  optional: true
+- !Flag
+  description: return the chunks (or file names) only if they contain elements matching
+    <cond> several "--cond" can be provided (in which case they are OR'ed)
+  synonyms:
+  - --cond
+  args: !SimpleFlagArg
+    name: cond
+  optional: true
+- !Flag
+  description: 'return only file names (do not generate an XML output) usage of this
+    option precludes using any of the options that define the XML output: "--roots",
+    "--encoding", "--wrap", "--group_by_file" or "--pretty_print"'
+  synonyms:
+  - --files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'return only the number of matches in each file usage of this option
+    precludes using any of the options that define the XML output: "--roots", "--encoding",
+    "--wrap", "--group_by_file" or "--pretty_print"'
+  synonyms:
+  - --count
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: without this option parsing errors are reported to STDOUT and the file
+    skipped
+  synonyms:
+  - --strict
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: when on (by default) the wrapping element get a "date" attribute that
+    gives the date the tool was run. with "--nodate" this attribute is not added,
+    which can be useful if you need to compare 2 runs.
+  synonyms:
+  - --date
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: encoding of the xml output (utf-8 by default)
+  synonyms:
+  - --encoding
+  args: !SimpleFlagArg
+    name: enc
+  optional: true
+- !Flag
+  description: output only <nb> results
+  synonyms:
+  - --nb_results
+  args: !SimpleFlagArg
+    name: nb
+  optional: true
+- !Flag
+  description: output only <nb> results by file
+  synonyms:
+  - --by_file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: wrap the xml result in the provided tag (defaults to 'xml_grep') If
+    wrap is set to an empty string ("--wrap ''") then the xml result is not wrapped
+    at all.
+  synonyms:
+  - --wrap
+  args: !SimpleFlagArg
+    name: tag
+  optional: true
+- !Flag
+  description: "same as using \"--wrap ''\": the xml result is not wrapped."
+  synonyms:
+  - --nowrap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: attributes of the wrap tag (defaults to "version="<VERSION>" date="<date>"")
+  synonyms:
+  - --descr
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: wrap results for each files into a separate element. By default that
+    element is named "file". It has an attribute named "filename" that gives the name
+    of the file. the short version of this option is -g
+  synonyms:
+  - --group_by_file
+  args: !SimpleFlagArg
+    name: optional_tag
+  optional: true
+- !Flag
+  description: 'same as using "-v" in grep: the elements that match the condition
+    are excluded from the result, the input file(s) is (are) otherwise unchanged the
+    short form of this option is -v'
+  synonyms:
+  - --exclude
+  args: !SimpleFlagArg
+    name: condition
+  optional: true
+- !Flag
+  description: pretty print the output using XML::Twig styles ('"indented"', '"record"'
+    or '"record_c"' are probably what you are looking for) if the option is used but
+    no style is given then '"indented"' is used short form for this argument is -s
+  synonyms:
+  - --pretty_print
+  args: !SimpleFlagArg
+    name: optional_style
+  optional: true
+- !Flag
+  description: Displays the text of the results, one by line.
+  synonyms:
+  - --text_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Allow HTML input, files are converted using HTML::TreeBuilder
+  synonyms:
+  - --html
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Allow HTML input, files are converted using HTML::Tidy
+  synonyms:
+  - --Tidy
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- xml_grep
+subcommands: []
+help_flag: !Flag
+  description: brief help message
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

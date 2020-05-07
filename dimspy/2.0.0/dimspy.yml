@@ -1,0 +1,953 @@
+!Command
+positional: []
+named: []
+command:
+- dimspy
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Directory (*.raw, *.mzml or tab-delimited peaklist files), single
+      *.mzml/*.raw file or zip archive (*.mzml only)
+    synonyms:
+    - -i
+    - --input
+    args: !SimpleFlagArg
+      name: source
+    optional: true
+  - !Flag
+    description: HDF5 file to save the peaklist objects to.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: 'Tab-delimited file that include the name of the data files (*.raw
+      or *.mzml) and meta data. Column names: filename, replicate, batch, injectionOrder,
+      classLabel.'
+    synonyms:
+    - -l
+    - --filelist
+    args: !SimpleFlagArg
+      name: FILELIST
+    optional: true
+  - !Flag
+    description: Select function to calculate noise.
+    synonyms:
+    - -m
+    - --function-noise
+    args: !ChoiceFlagArg
+      choices:
+      - median
+      - mean
+      - mad
+      - noise_packets
+    optional: true
+  - !Flag
+    description: Signal-to-noise threshold
+    synonyms:
+    - -s
+    - --snr-threshold
+    args: !SimpleFlagArg
+      name: SNR_THRESHOLD
+    optional: true
+  - !Flag
+    description: Mass tolerance in Parts per million to group peaks across scans /
+      mass spectra.
+    synonyms:
+    - -p
+    - --ppm
+    args: !SimpleFlagArg
+      name: PPM
+    optional: true
+  - !Flag
+    description: Minimum number of scans required for each m/z range or event.
+    synonyms:
+    - -n
+    - --min_scans
+    args: !SimpleFlagArg
+      name: MIN_SCANS
+    optional: true
+  - !Flag
+    description: Minimum fraction a peak has to be present. Use 0.0 to not apply this
+      filter.
+    synonyms:
+    - -a
+    - --min-fraction
+    args: !SimpleFlagArg
+      name: MIN_FRACTION
+    optional: true
+  - !Flag
+    description: Maximum threshold - relative standard deviation (Calculated for peaks
+      that have been measured across a minimum of two scans).
+    synonyms:
+    - -d
+    - --rsd-threshold
+    args: !SimpleFlagArg
+      name: RSD_THRESHOLD
+    optional: true
+  - !Flag
+    description: Skip the step where (SIM) windows are 'stitched' or 'joined' together.
+      Individual peaklists are generated for each window.
+    synonyms:
+    - -k
+    - --skip-stitching
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Ringing
+    synonyms:
+    - -r
+    - --ringing-threshold
+    args: !SimpleFlagArg
+      name: RINGING_THRESHOLD
+    optional: true
+  - !Flag
+    description: end scan_type, --include-scan-events start end scan_type Scan events
+      to select. E.g. 100.0 200.0 sim or 50.0 1000.0 full
+    synonyms:
+    - -e
+    args: !SimpleFlagArg
+      name: start
+    optional: true
+  - !Flag
+    description: end scan_type, --exclude-scan-events start end scan_type Scan events
+      to select. E.g. 100.0 200.0 sim or 50.0 1000.0 full
+    synonyms:
+    - -x
+    args: !SimpleFlagArg
+      name: start
+    optional: true
+  - !Flag
+    description: end, --remove-mz-range start end M/z range(s) to remove. E.g. 100.0
+      102.0 or 140.0 145.0.
+    synonyms:
+    - -z
+    args: !SimpleFlagArg
+      name: start
+    optional: true
+  - !Flag
+    description: Summary/Report of processed mass spectra
+    synonyms:
+    - -u
+    - --report
+    args: !SimpleFlagArg
+      name: REPORT
+    optional: true
+  - !Flag
+    description: The size of each block of peaks to perform clustering on.
+    synonyms:
+    - -b
+    - --block-size
+    args: !SimpleFlagArg
+      name: BLOCK_SIZE
+    optional: true
+  - !Flag
+    description: Number of central processing units (CPUs).
+    synonyms:
+    - -c
+    - --ncpus
+    args: !SimpleFlagArg
+      name: NCPUS
+    optional: true
+  command:
+  - dimspy
+  - process-scans
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: HDF5 file (Peaklist objects) from step 'process-scans' or directory
+      path that contains tab-delimited peaklists.
+    synonyms:
+    - -i
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: HDF5 file to save the peaklist objects to.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Mass tolerance in Parts per million to group peaks across scans /
+      mass spectra.
+    synonyms:
+    - -p
+    - --ppm
+    args: !SimpleFlagArg
+      name: PPM
+    optional: true
+  - !Flag
+    description: Number of technical replicates.
+    synonyms:
+    - -r
+    - --replicates
+    args: !SimpleFlagArg
+      name: REPLICATES
+    optional: true
+  - !Flag
+    description: Minimum number of times a peak has to be present (number) across
+      technical replicates.
+    synonyms:
+    - -m
+    - --min-peak-present
+    args: !SimpleFlagArg
+      name: MIN_PEAK_PRESENT
+    optional: true
+  - !Flag
+    description: Maximum threshold - Relative Standard Deviation.
+    synonyms:
+    - -d
+    - --rsd-threshold
+    args: !SimpleFlagArg
+      name: RSD_THRESHOLD
+    optional: true
+  - !Flag
+    description: Tab-delimited file that list all the data files (*.raw or *.mzml)
+      and meta data (filename, technical replicate, class, batch).
+    synonyms:
+    - -l
+    - --filelist
+    args: !SimpleFlagArg
+      name: FILELIST
+    optional: true
+  - !Flag
+    description: Summary/Report of processed mass spectra
+    synonyms:
+    - -u
+    - --report
+    args: !SimpleFlagArg
+      name: REPORT
+    optional: true
+  - !Flag
+    description: The size of each block of peaks to perform clustering on.
+    synonyms:
+    - -b
+    - --block-size
+    args: !SimpleFlagArg
+      name: BLOCK_SIZE
+    optional: true
+  - !Flag
+    description: Number of central processing units (CPUs).
+    synonyms:
+    - -c
+    - --ncpus
+    args: !SimpleFlagArg
+      name: NCPUS
+    optional: true
+  command:
+  - dimspy
+  - replicate-filter
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: HDF5 file (Peaklist objects) from step 'process-scans / replicate-filter'
+      or directory path that contains tab-delimited peaklists.
+    synonyms:
+    - -i
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: HDF5 file to save the peak matrix object to.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Mass tolerance in parts per million to group peaks across scans /
+      mass spectra.
+    synonyms:
+    - -p
+    - --ppm
+    args: !SimpleFlagArg
+      name: PPM
+    optional: true
+  - !Flag
+    description: 'Tab-delimited file that include the name of the samples and meta
+      data.Column names: filename, replicate, batch, injectionOrder, classLabel.'
+    synonyms:
+    - -l
+    - --filelist
+    args: !SimpleFlagArg
+      name: FILELIST
+    optional: true
+  - !Flag
+    description: The size of each block of peaks to perform clustering on.
+    synonyms:
+    - -b
+    - --block-size
+    args: !SimpleFlagArg
+      name: BLOCK_SIZE
+    optional: true
+  - !Flag
+    description: Number of central processing units (CPUs).
+    synonyms:
+    - -c
+    - --ncpus
+    args: !SimpleFlagArg
+      name: NCPUS
+    optional: true
+  command:
+  - dimspy
+  - align-samples
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: HDF5 file or tab-delimited file that contains a peak matrix (object).
+    synonyms:
+    - -i
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: HDF5 file to save the peak matrix object to.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Class label for blanks.
+    synonyms:
+    - -l
+    - --blank-label
+    args: !SimpleFlagArg
+      name: BLANK_LABEL
+    optional: true
+  - !Flag
+    description: Minium fold change blank versus sample.
+    synonyms:
+    - -m
+    - --min-fraction
+    args: !SimpleFlagArg
+      name: MIN_FRACTION
+    optional: true
+  - !Flag
+    description: Select function to calculate blank intenstiy.
+    synonyms:
+    - -f
+    - --function
+    args: !ChoiceFlagArg
+      choices:
+      - mean
+      - median
+      - max
+    optional: true
+  - !Flag
+    description: Minium fold change blank versus sample.
+    synonyms:
+    - -c
+    - --min-fold-change
+    args: !SimpleFlagArg
+      name: MIN_FOLD_CHANGE
+    optional: true
+  - !Flag
+    description: Remove blank samples from peak matrix.
+    synonyms:
+    - -r
+    - --remove-blank-samples
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Tab delimited file with at least two columns named 'filename' and
+      'classLabel'.
+    synonyms:
+    - -a
+    - --labels
+    args: !SimpleFlagArg
+      name: LABELS
+    optional: true
+  command:
+  - dimspy
+  - blank-filter
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: HDF5 file or tab-delimited file that contains a peak matrix.
+    synonyms:
+    - -i
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: HDF5 file to save the peak matrix object to.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Minimum percentage of samples a peak has to be present.
+    synonyms:
+    - -p
+    - --min-fraction
+    args: !SimpleFlagArg
+      name: MIN_FRACTION
+    optional: true
+  - !Flag
+    description: Apply sample filter within each sample class.
+    synonyms:
+    - -w
+    - --within
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Peaks where the associated QC peaks are above this threshold will
+      be removed.
+    synonyms:
+    - -d
+    - --rsd-threshold
+    args: !SimpleFlagArg
+      name: RSD_THRESHOLD
+    optional: true
+  - !Flag
+    description: Class label for QCs
+    synonyms:
+    - -q
+    - --qc-label
+    args: !SimpleFlagArg
+      name: QC_LABEL
+    optional: true
+  - !Flag
+    description: Tab delimited file with at least two columns named 'filename' and
+      'classLabel'.
+    synonyms:
+    - -a
+    - --labels
+    args: !SimpleFlagArg
+      name: LABELS
+    optional: true
+  command:
+  - dimspy
+  - sample-filter
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: HDF5 file that contains a peak matrix object or list of peaklist
+      objects from one of the processing steps.
+    synonyms:
+    - -i
+    - --input
+    args: !SimpleFlagArg
+      name: source
+    optional: true
+  - !Flag
+    description: HDF5 file to save the peak matrix object or peaklist objects to.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Sample name(s)
+    synonyms:
+    - -s
+    - --sample-names
+    args: !SimpleFlagArg
+      name: SAMPLE_NAMES
+    optional: true
+  command:
+  - dimspy
+  - remove-samples
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: HDF5 file file that contains a peak matrix object.
+    synonyms:
+    - -i
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: HDF5 file to save the peak matrix object to.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Maximum percentage of missing values allowed across a sample.
+    synonyms:
+    - -m
+    - --max-fraction
+    args: !SimpleFlagArg
+      name: MAX_FRACTION
+    optional: true
+  command:
+  - dimspy
+  - mv-sample-filter
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Multiple HDF5 files that contain peaklists or peak matrix from one
+      of the processing steps.
+    synonyms:
+    - -i
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: Directory (if using multilist column in filelist) or HDF5 file to
+      write to.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Tab-delimited file that list all the data files (*.raw or *.mzml)
+      and meta data (filename, technical replicate, class, batch, multiList).
+    synonyms:
+    - -l
+    - --filelist
+    args: !SimpleFlagArg
+      name: FILELIST
+    optional: true
+  command:
+  - dimspy
+  - merge-peaklists
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Single or Multiple HDF5 files that contain a peak matrix object from
+      one of the processing steps.
+    synonyms:
+    - -i
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: HDF5 file to save the peaklist objects to.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  command:
+  - dimspy
+  - get-peaklists
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Single or Multiple HDF5 files that contain a peak matrix object from
+      one of the processing steps.
+    synonyms:
+    - -i
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: HDF5 file to save the peaklist object to.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Name of the peaklist.
+    synonyms:
+    - -n
+    - --name-peaklist
+    args: !SimpleFlagArg
+      name: NAME_PEAKLIST
+    optional: true
+  command:
+  - dimspy
+  - get-average-peaklist
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: HDF5 file that contains a peak matrix object from one of the processing
+      steps.
+    synonyms:
+    - -i
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: Directory (peaklists) or text file (peak matrix) to write to.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Type of matrix to print.
+    synonyms:
+    - -a
+    - --attribute_name
+    args: !ChoiceFlagArg
+      choices:
+      - intensity
+      - mz
+      - snr
+    optional: true
+  - !Flag
+    description: Class label to select samples for RSD calculatons (e.g. QC).
+    synonyms:
+    - -l
+    - --class-label-rsd
+    args: !SimpleFlagArg
+      name: CLASS_LABEL_RSD
+    optional: true
+  - !Flag
+    description: Values on each line of the file are separated by this character.
+    synonyms:
+    - -d
+    - --delimiter
+    args: !ChoiceFlagArg
+      choices:
+      - tab
+      - comma
+    optional: true
+  - !Flag
+    description: Should the rows or columns respresent the samples?
+    synonyms:
+    - -s
+    - --representation-samples
+    args: !ChoiceFlagArg
+      choices:
+      - rows
+      - columns
+    optional: true
+  - !Flag
+    description: Comprehensive version of the peak matrix
+    synonyms:
+    - -c
+    - --comprehensive
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - dimspy
+  - hdf5-pm-to-txt
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: HDF5 file that contains a list of peaklist objects from one of the
+      processing steps.
+    synonyms:
+    - -i
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: Directory to write to.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Values on each line of the file are separated by this character.
+    synonyms:
+    - -d
+    - --delimiter
+    args: !ChoiceFlagArg
+      choices:
+      - tab
+      - comma
+    optional: true
+  command:
+  - dimspy
+  - hdf5-pls-to-txt
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: HDF5 file that contains a peak matrix object from one of the processing
+      steps.
+    synonyms:
+    - -i
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: Text file to write to.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Values on each line of the file are separated by this character.
+    synonyms:
+    - -d
+    - --delimiter
+    args: !ChoiceFlagArg
+      choices:
+      - tab
+      - comma
+    optional: true
+  command:
+  - dimspy
+  - create-sample-list
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: file[.zip]
+    synonyms:
+    - -i
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: Directory to write to.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  command:
+  - dimspy
+  - unzip
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: .CommonCore.BackgroundSubtraction.dll
+    synonyms:
+    - '- ThermoFisher'
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: .CommonCore.BackgroundSubtraction.XML
+    synonyms:
+    - '- ThermoFisher'
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: .CommonCore.Data.dll
+    synonyms:
+    - '- ThermoFisher'
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: .CommonCore.Data.XML
+    synonyms:
+    - '- ThermoFisher'
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: .CommonCore.MassPrecisionEstimator.dll
+    synonyms:
+    - '- ThermoFisher'
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: .CommonCore.MassPrecisionEstimator.XML
+    synonyms:
+    - '- ThermoFisher'
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: .CommonCore.RawFileReader.dll
+    synonyms:
+    - '- ThermoFisher'
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: .CommonCore.RawFileReader.XML
+    synonyms:
+    - '- ThermoFisher'
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - dimspy
+  - licenses
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

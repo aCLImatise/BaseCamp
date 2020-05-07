@@ -1,0 +1,73 @@
+!Command
+positional:
+- !Positional
+  description: List annotation file. The annotation file contains the repeat masker
+    annotation for the genome of interest and may be downloaded at RepeatMasker.org
+    Example /data/annotation/mm9/mm9.fa.out
+  position: 0
+  name: annotation_file
+  optional: false
+- !Positional
+  description: File name and path for genome of interest in fasta format. Example
+    /data/annotation/mm9/mm9.fa
+  position: 1
+  name: genomefasta
+  optional: false
+- !Positional
+  description: List folder to contain bamfiles for repeats and repeat element psuedogenomes.
+    Example /data/annotation/mm9/setup
+  position: 2
+  name: setup_folder
+  optional: false
+named:
+- !Flag
+  description: Output location of a description file that saves the number of fragments
+    processed per repname. Default ./repnames_nfragments.txt
+  synonyms:
+  - --nfragmentsfile1
+  args: !SimpleFlagArg
+    name: nfragmentsfile1
+  optional: true
+- !Flag
+  description: Length of the spacer used to build repeat psuedogeneomes. Default 200
+  synonyms:
+  - --gaplength
+  args: !SimpleFlagArg
+    name: gaplength
+  optional: true
+- !Flag
+  description: Length of the flanking region adjacent to the repeat element that is
+    used to build repeat psuedogeneomes. The flanking length should be set according
+    to the length of your reads. Default 25
+  synonyms:
+  - --flankinglength
+  args: !SimpleFlagArg
+    name: flankinglength
+  optional: true
+- !Flag
+  description: Is the annotation file a bed file. This is also a compatible format.
+    The file needs to be a tab seperated bed with optional fields. Ex. format chr
+    start end Name_element class family. The class and family should identical to
+    name_element if not applicable. Default FALSE change to TRUE
+  synonyms:
+  - --is_bed
+  args: !SimpleFlagArg
+    name: is_bed
+  optional: true
+command:
+- RepEnrich_setup.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

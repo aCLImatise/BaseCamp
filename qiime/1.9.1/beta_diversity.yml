@@ -1,0 +1,91 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Print information during execution -- useful for debugging [default:
+    False]'
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input OTU table in biom format or input directory containing OTU tables
+    in biom format for batch processing.
+  synonyms:
+  - -i
+  - --input_path
+  args: !SimpleFlagArg
+    name: INPUT_PATH
+  optional: true
+- !Flag
+  description: 'Compute for only these rows of the distance matrix. User should pass
+    a list of sample names (e.g. "s1,s3") [default: none; full n x n matrix is generated]'
+  synonyms:
+  - -r
+  - --rows
+  args: !SimpleFlagArg
+    name: ROWS
+  optional: true
+- !Flag
+  description: Output directory. One will be created if it doesn't exist.
+  synonyms:
+  - -o
+  - --output_dir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+- !Flag
+  description: 'Beta-diversity metric(s) to use. A comma-separated list should be
+    provided when multiple metrics are specified. [default: unweighted_unifrac,weighted_unifrac]'
+  synonyms:
+  - -m
+  - --metrics
+  args: !SimpleFlagArg
+    name: METRICS
+  optional: true
+- !Flag
+  description: 'Show the available beta-diversity metrics and exit. Metrics starting
+    with "binary..." specifies that a metric is qualitative, and considers only the
+    presence or absence of each taxon [default: False]'
+  synonyms:
+  - -s
+  - --show_metrics
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Input newick tree filepath, which is required when phylogenetic metrics
+    are specified. [default: none]'
+  synonyms:
+  - -t
+  - --tree_path
+  args: !SimpleFlagArg
+    name: TREE_PATH
+  optional: true
+- !Flag
+  description: By default, tips not corresponding to OTUs in the OTU table are removed
+    from the tree for diversity calculations. Pass to skip this step if you're already
+    passing a minimal tree. Beware with "full_tree" metrics, as extra tips in the
+    tree change the result
+  synonyms:
+  - -f
+  - --full_tree
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- beta_diversity.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

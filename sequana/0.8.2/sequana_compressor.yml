@@ -1,0 +1,102 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: set verbosity off
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Search for all source files with this extension. Valid extensions
+    are: fastq, fastq.gz, fastq.bz2, fastq.dscr, fq, fq.gz, fq.bz2 and fq.dsrc'
+  synonyms:
+  - --source
+  args: !SimpleFlagArg
+    name: SOURCE
+  optional: true
+- !Flag
+  description: Convert the source files to a new target format. Same extensions as
+    above.
+  synonyms:
+  - --target
+  args: !SimpleFlagArg
+    name: TARGET
+  optional: true
+- !Flag
+  description: recursive search
+  synonyms:
+  - --recursive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not execute anything
+  synonyms:
+  - --dryrun
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Maximum number of threads to use per task (4).
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: Maximum number of cores to use at the same time (4).
+  synonyms:
+  - --jobs
+  args: !SimpleFlagArg
+    name: JOBS
+  optional: true
+- !Flag
+  description: The number of jobs is limited to 20 to limit IO. If you want to bypass
+    this limitation, use this option.
+  synonyms:
+  - --bypass-job-limit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If you stopped the application, the underlying snakemake process are
+    interrupted and directories were snakemake was launch will be locked. If so please
+    use this option using the --source and --target as when you got the error message
+  synonyms:
+  - --unlock
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Any valid list of options accepted by snakemake except -s and -j (for
+    -j, use our --jobs argument). Note that by default --keep-going is used ; If you
+    set this argument yourself, you have to add --keep-going as well otherwise it
+    stops at the first error encountered
+  synonyms:
+  - --snakemake-options
+  args: !SimpleFlagArg
+    name: SNAKEMAKE
+  optional: true
+- !Flag
+  description: "a valid snakemake option dedicated to a cluster.   e.g on LSF cluster\
+    \ use: --cluster 'qsub -cwd -q<QUEUE> ' On a SLURM system use for example: --cluster\
+    \ 'sbatch --qos normal'"
+  synonyms:
+  - --snakemake-cluster
+  args: !SimpleFlagArg
+    name: CLUSTER
+  optional: true
+command:
+- sequana_compressor
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print version
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

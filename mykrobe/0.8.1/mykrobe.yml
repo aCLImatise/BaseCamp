@@ -1,0 +1,159 @@
+!Command
+positional: []
+named: []
+command:
+- mykrobe
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: sample id
+    position: 0
+    name: sample
+    optional: false
+  - !Positional
+    description: probe_set
+    position: 1
+    name: probe_set
+    optional: false
+  named:
+  - !Flag
+    description: cortex graph binary
+    synonyms:
+    - -c
+    - --ctx
+    args: !SimpleFlagArg
+      name: ctx
+    optional: true
+  - !Flag
+    description: force
+    synonyms:
+    - -f
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Set default for ONT data. Sets expected_error_rate to 0.15 and to
+      haploid
+    synonyms:
+    - --ont
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Guess if ONT or Illumia based on error rate. If error rate is > 10%,
+      ploidy is set to haploid and a confidence threshold is used
+    synonyms:
+    - --guess_sequence_method
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Ignore minor calls when running resistance prediction
+    synonyms:
+    - --ignore_minor_calls
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: don't include filtered genotypes
+    synonyms:
+    - --ignore_filtered
+    args: !SimpleFlagArg
+      name: IGNORE_FILTERED
+    optional: true
+  - !Flag
+    description: Genotype model used, default kmer_count. Options kmer_count, median_depth
+    synonyms:
+    - --model
+    args: !SimpleFlagArg
+      name: model
+    optional: true
+  - !Flag
+    description: Use a diploid (includes 0/1 calls) or haploid genotyping model
+    synonyms:
+    - --ploidy
+    args: !SimpleFlagArg
+      name: ploidy
+    optional: true
+  - !Flag
+    description: don't include filtered genotypes
+    synonyms:
+    - --filters
+    args: !RepeatFlagArg
+      name: FILTERS
+    optional: true
+  - !Flag
+    description: report all calls
+    synonyms:
+    - --report_all_calls
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Expected sequencing error rate. Set to 0.15 for ONT genotyping.
+    synonyms:
+    - --expected_error_rate
+    args: !SimpleFlagArg
+      name: EXPECTED_ERROR_RATE
+    optional: true
+  - !Flag
+    description: minimum genotype confidence for variant genotyping
+    synonyms:
+    - --min_variant_conf
+    args: !SimpleFlagArg
+      name: MIN_VARIANT_CONF
+    optional: true
+  - !Flag
+    description: minimum genotype confidence for gene genotyping
+    synonyms:
+    - --min_gene_conf
+    args: !SimpleFlagArg
+      name: MIN_GENE_CONF
+    optional: true
+  - !Flag
+    description: minimum depth required on the sum of both alleles. Default 0.3 (30%)
+    synonyms:
+    - --min_proportion_expected_depth
+    args: !SimpleFlagArg
+      name: MIN_PROPORTION_EXPECTED_DEPTH
+    optional: true
+  - !Flag
+    description: all genes alleles found above this percent coverage will be reported
+      (default 100 (only best alleles reported))
+    synonyms:
+    - --min_gene_percent_covg_threshold
+    args: !SimpleFlagArg
+      name: MIN_GENE_PERCENT_COVG_THRESHOLD
+    optional: true
+  - !Flag
+    description: File path to save output json file as. Default is to stdout.
+    synonyms:
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: do not output warnings to stderr
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - mykrobe
+  - genotype
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: mykrobe version
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

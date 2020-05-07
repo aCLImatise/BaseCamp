@@ -1,0 +1,190 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Write a log file (--log-level=DEBUG for debug mode, --log-level=INFO
+    for info mode)
+  synonyms:
+  - -ll
+  - --log-level
+  args: !SimpleFlagArg
+    name: LOG_LEVEL
+  optional: true
+- !Flag
+  description: Path to log file. (accepts "stdout")
+  synonyms:
+  - -l
+  - --log
+  args: !SimpleFlagArg
+    name: LOG
+  optional: true
+- !Flag
+  description: Flag for more verbose log output
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: gene FASTA file from extract_gene_seq script
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: DNA mutations file (MAF file)
+  synonyms:
+  - -m
+  - --mutations
+  args: !SimpleFlagArg
+    name: MUTATIONS
+  optional: true
+- !Flag
+  description: BED file annotation of genes
+  synonyms:
+  - -b
+  - --bed
+  args: !SimpleFlagArg
+    name: BED
+  optional: true
+- !Flag
+  description: 'Directory containing pre-compute score information in for VEST and
+    evolutionary conservation in pickle format (Default: None).'
+  synonyms:
+  - -s
+  - --score-dir
+  args: !SimpleFlagArg
+    name: SCORE_DIR
+  optional: true
+- !Flag
+  description: 'Number of processes to use. 0 indicates using a single process without
+    using a multiprocessing pool (more means Faster, default: 0).'
+  synonyms:
+  - -p
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: 'Number of iterations for null model simulations. If zero is specified
+    then output represents a result from actually observed mutations (provided by
+    -m parameter), otherwise results will be from simulated mutations. (Default: 0).'
+  synonyms:
+  - -n
+  - --num-iterations
+  args: !SimpleFlagArg
+    name: NUM_ITERATIONS
+  optional: true
+- !Flag
+  description: 'Number of DNA bases to use as context. 0 indicates no context. 1 indicates
+    only use the mutated base. 1.5 indicates using the base context used in CHASM
+    (http:/ /wiki.chasmsoftware.org/index.php/CHASM_Overview). 2 indicates using the
+    mutated base and the upstream base. 3 indicates using the mutated base and both
+    the upstream and downstream bases. (Default: 1.5)'
+  synonyms:
+  - -c
+  - --context
+  args: !SimpleFlagArg
+    name: CONTEXT
+  optional: true
+- !Flag
+  description: 'Flag for saving results as summarized features used (Default: True).'
+  synonyms:
+  - --summary
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Flag for saving results in MAF format (Default: False).'
+  synonyms:
+  - --maf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use mutations that are not mapped to the the single reference transcript
+    for a gene specified in the bed file indicated by the -b option.
+  synonyms:
+  - -u
+  - --use-unmapped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Path to the genome fasta file. Required if --use- unmapped flag is
+    used. (Default: None)'
+  synonyms:
+  - -g
+  - --genome
+  args: !SimpleFlagArg
+    name: GENOME
+  optional: true
+- !Flag
+  description: 'Minimum number of mutations at a position for it to be considered
+    a recurrently mutated position (Default: 3).'
+  synonyms:
+  - -r
+  - --recurrent
+  args: !SimpleFlagArg
+    name: RECURRENT
+  optional: true
+- !Flag
+  description: 'Fraction of total mutations in a gene. This define the minimumm number
+    of mutations for a position to be defined as recurrently mutated (Default: .02).'
+  synonyms:
+  - -f
+  - --fraction
+  args: !SimpleFlagArg
+    name: FRACTION
+  optional: true
+- !Flag
+  description: Only keep unique mutations for each tumor sample.Mutations reproted
+    from heterogeneous sources may contain duplicates, e.g. a tumor sample was sequenced
+    twice.
+  synonyms:
+  - --unique
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Drop silent mutations in simulations. Useful if provided mutations
+    don't include silent mutations
+  synonyms:
+  - --drop-silent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Important option for gene panels. Restrict simulated indels to only
+    occur within the same set of genes as provied in the mutation file.
+  synonyms:
+  - --restrict-genes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Specify the seed for the pseudo random number generator. By default,
+    the seed is randomly chosen based. The seed will be used for the monte carlo simulations
+    (Default: 101).'
+  synonyms:
+  - -seed
+  - --seed
+  args: !SimpleFlagArg
+    name: SEED
+  optional: true
+- !Flag
+  description: Output text file of results
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+command:
+- mut_annotate
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

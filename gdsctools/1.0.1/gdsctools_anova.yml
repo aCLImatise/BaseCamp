@@ -1,0 +1,162 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: A file in TSV format with IC50s. First column should be the COSMIC
+    identifiers Following columns contain the IC50s for a set of drugs. The header
+    must be COSMIC_ID, Drug_1_IC50, Drug_2_IC50, ...
+  synonyms:
+  - -I
+  - --input-ic50
+  args: !SimpleFlagArg
+    name: INPUT_IC50
+  optional: true
+- !Flag
+  description: A matrix of genomic features. One column with COSMIC identifiers should
+    match those from the IC50s matrix. Then columns named TISSUE_FACTOR, MSI_FACTOR,
+    MEDIA_FACTOR should be provided. Finally, other columns will be considered as
+    genomic features (e.g., mutation)
+  synonyms:
+  - -F
+  - --input-features
+  args: !SimpleFlagArg
+    name: INPUT_FEATURES
+  optional: true
+- !Flag
+  description: a decoder file
+  synonyms:
+  - -D
+  - --input-drug-decode
+  args: !SimpleFlagArg
+    name: INPUT_DRUG_DECODE
+  optional: true
+- !Flag
+  description: directory where to save images and HTML files.
+  synonyms:
+  - --output-directory
+  args: !SimpleFlagArg
+    name: DIRECTORY
+  optional: true
+- !Flag
+  description: verbose option.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: By default, opens the index.html page. Set this option if you do not
+    want to open the html page automatically.
+  synonyms:
+  - --do-not-open-report
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The name of a valid drug identifier to be found in the header of the
+    IC50 matrix
+  synonyms:
+  - -d
+  - --drug
+  args: !SimpleFlagArg
+    name: DRUG
+  optional: true
+- !Flag
+  description: The name of a valid feature to be found in the Genomic Feature matrix
+  synonyms:
+  - -f
+  - --feature
+  args: !SimpleFlagArg
+    name: FEATURE
+  optional: true
+- !Flag
+  description: Print the drug names
+  synonyms:
+  - --print-drug-names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print the features names
+  synonyms:
+  - --print-feature-names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print the unique tissue names
+  synonyms:
+  - --print-tissue-names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The name of a specific cancer type i.e., tissue to restrict the analysis
+    to.
+  synonyms:
+  - -t
+  - --tissue
+  args: !SimpleFlagArg
+    name: TISSUE
+  optional: true
+- !Flag
+  description: FDR (False discovery Rate) used in the multitesting analysis to correct
+    the pvalues
+  synonyms:
+  - --FDR-threshold
+  args: !SimpleFlagArg
+    name: FDR_THRESHOLD
+  optional: true
+- !Flag
+  description: Include msi factor in the analysis
+  synonyms:
+  - --exclude-msi
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Save settings into a json file
+  synonyms:
+  - --save-settings
+  args: !SimpleFlagArg
+    name: SAVE_SETTINGS
+  optional: true
+- !Flag
+  description: Read settings from a json file. Type --save-settings <filename.json>
+    to create an example. Note that the FDR-threshold and include_MSI_factor will
+    be replaced if --exclude-msi or fdr-threshold are used.
+  synonyms:
+  - --read-settings
+  args: !SimpleFlagArg
+    name: SETTINGS
+  optional: true
+- !Flag
+  description: Print summary about the data (e.g., tissue)
+  synonyms:
+  - --summary
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use a small IC50 data set and run the one-drug-one- feature analyse
+    with a couple of unit tests.
+  synonyms:
+  - --test
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If set, no images or HTML are created. For testing only
+  synonyms:
+  - --no-html
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- gdsctools_anova
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print current version of this application
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

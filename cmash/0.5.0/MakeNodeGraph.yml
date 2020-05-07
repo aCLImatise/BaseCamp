@@ -1,0 +1,61 @@
+!Command
+positional:
+- !Positional
+  description: 'Input file: FASTQ/A file (can be gzipped).'
+  position: 0
+  name: in_file
+  optional: false
+- !Positional
+  description: Output directory
+  position: 1
+  name: out_dir
+  optional: false
+named:
+- !Flag
+  description: 'False positive rate. (default: 0.0001)'
+  synonyms:
+  - -fp
+  - --fp_rate
+  args: !SimpleFlagArg
+    name: FP_RATE
+  optional: true
+- !Flag
+  description: 'Location of Node Graph. Will only insert query k-mers in bloom filter
+    if they appear anywhere in the training database. Note that the Jaccard estimates
+    will now be J(query intersect union_i training_i, training_i) instead of J(query,
+    training_i), but will use significantly less space (unfortunately will also disable
+    threading). (default: None)'
+  synonyms:
+  - -i
+  - --intersect_nodegraph
+  args: !SimpleFlagArg
+    name: INTERSECT_NODEGRAPH
+  optional: true
+- !Flag
+  description: 'K-mer size (default: 21)'
+  synonyms:
+  - -k
+  - --k_size
+  args: !SimpleFlagArg
+    name: K_SIZE
+  optional: true
+- !Flag
+  description: 'Number of threads to use (default: 8)'
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+command:
+- MakeNodeGraph.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

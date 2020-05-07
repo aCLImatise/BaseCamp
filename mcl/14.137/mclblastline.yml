@@ -1,0 +1,218 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: shows only what would be done.
+  synonyms:
+  - --whatif
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: skip the parse step, assume needed files exist already.
+  synonyms:
+  - --start-assemble
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: start running mcl immediately, as above.
+  synonyms:
+  - --start-mcl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: only (re)do the formatting stage, as above.
+  synonyms:
+  - --start-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: create the input file for mcl, then quit.
+  synonyms:
+  - --prepare-mcl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: name of parse script
+  synonyms:
+  - --parser
+  args: !SimpleFlagArg
+    name: script
+  optional: true
+- !Flag
+  description: tag of options to pass to parse script.
+  synonyms:
+  - --parser-tag
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: str in <add|max|mul|left|right>
+  synonyms:
+  - --ass-repeat
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: map file does not exist or should be ignored.
+  synonyms:
+  - --ass-nomap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <-opt[=val]> add '-opt [val]' to mcxassemble command line.
+  synonyms:
+  - --ass
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: start running mcxassemble with base-name.
+  synonyms:
+  - --start-assemble
+  args: !SimpleFlagArg
+    name: base-name
+  optional: true
+- !Flag
+  description: number of expansion threads.
+  synonyms:
+  - --mcl-te
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: inflation value, MAIN mcl handle.
+  synonyms:
+  - --mcl-I
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: initial inflation value.
+  synonyms:
+  - --mcl-i
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: initial loop length.
+  synonyms:
+  - --mcl-l
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: pre-inflation value.
+  synonyms:
+  - --mcl-pi
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: center value.
+  synonyms:
+  - --mcl-c
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: i in 1..5, resource allocation level.
+  synonyms:
+  - --mcl-scheme
+  args: !SimpleFlagArg
+    name: i
+  optional: true
+- !Flag
+  description: if you *need* to use this, I must be improved.
+  synonyms:
+  - --mcl-o
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: <-opt[=val]> add '-opt [val]' to mcl command line, e.g. --mcl-v=all
+    adds '-v all' to the mcl command line.
+  synonyms:
+  - --mcl
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: start running mcl with file-name.  optionally combines with the --xi
+    option.
+  synonyms:
+  - --start-mcl
+  args: !SimpleFlagArg
+    name: file-name
+  optional: true
+- !Flag
+  description: collect clusters of size lq <num> in a single file.
+  synonyms:
+  - --fmt-lump-size
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: make batches containing approximately <num> nodes.
+  synonyms:
+  - --fmt-lump-count
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: tab file does not exist or should be ignored.
+  synonyms:
+  - --fmt-notab
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use tab file fname.
+  synonyms:
+  - --fmt-tab
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: <-opt[=val]>       add '-opt [val]' to clmformat command line.
+  synonyms:
+  - --fmt
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- mclblastline
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: mcxassemble  mcl  clmformat
+    position: 0
+    name: mcxdeblast
+    optional: false
+  named: []
+  command:
+  - mclblastline
+  - mclpipeline
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: mcxassemble  mcl  clmformat
+    position: 0
+    name: mcxdeblast
+    optional: false
+  named: []
+  command:
+  - mclblastline
+  - file-name
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

@@ -1,0 +1,1535 @@
+!Command
+positional: []
+named: []
+command:
+- mimodd
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'redirect the output to the specified file (default: stdout)'
+    synonyms:
+    - -o
+    - --ofile
+    args: !SimpleFlagArg
+      name: OFILE
+    optional: true
+  - !Flag
+    description: verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '|txt    format for the output (default: txt)'
+    synonyms:
+    - --oformat
+    args: !SimpleFlagArg
+      name: html
+    optional: true
+  command:
+  - mimodd
+  - info
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'redirect the output to the specified file (default: stdout)'
+    synonyms:
+    - -o
+    - --ofile
+    args: !SimpleFlagArg
+      name: OFILE
+    optional: true
+  - !Flag
+    description: do not enforce a sample name to be specified for every read group
+    synonyms:
+    - -x
+    - --relaxed
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: one or more unique read group identifiers
+    synonyms:
+    - --rg-id
+    args: !RepeatFlagArg
+      name: RG_ID
+    optional: true
+  - !Flag
+    description: one sample name per read group identifier
+    synonyms:
+    - --rg-sm
+    args: !RepeatFlagArg
+      name: RG_SM
+    optional: true
+  - !Flag
+    description: one sequencing center name per read group
+    synonyms:
+    - --rg-cn
+    args: !RepeatFlagArg
+      name: RG_CN
+    optional: true
+  - !Flag
+    description: one description line per read group
+    synonyms:
+    - --rg-ds
+    args: !RepeatFlagArg
+      name: RG_DS
+    optional: true
+  - !Flag
+    description: date runs were produced (YYYY-MM-DD); one date per read group
+    synonyms:
+    - --rg-dt
+    args: !RepeatFlagArg
+      name: RG_DT
+    optional: true
+  - !Flag
+    description: library identifier for each read group
+    synonyms:
+    - --rg-lb
+    args: !RepeatFlagArg
+      name: RG_LB
+    optional: true
+  - !Flag
+    description: sequencing platform/technology used to produce each read group
+    synonyms:
+    - --rg-pl
+    args: !RepeatFlagArg
+      name: RG_PL
+    optional: true
+  - !Flag
+    description: predicted median insert size for the reads of each read group
+    synonyms:
+    - --rg-pi
+    args: !RepeatFlagArg
+      name: RG_PI
+    optional: true
+  - !Flag
+    description: platform unit, e.g., flowcell barcode or slide identifier, for each
+      read group
+    synonyms:
+    - --rg-pu
+    args: !RepeatFlagArg
+      name: RG_PU
+    optional: true
+  - !Flag
+    description: '[COMMENT [COMMENT ...]] an arbitrary number of one-line comment
+      strings'
+    synonyms:
+    - --co
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - mimodd
+  - header
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'the format of the input file(s) (default: bam)'
+    synonyms:
+    - --iformat
+    args: !ChoiceFlagArg
+      choices:
+      - fastq
+      - fastq_pe
+      - gz
+      - gz_pe
+      - sam
+      - bam
+    optional: true
+  - !Flag
+    description: 'redirect the output to the specified file (default: stdout)'
+    synonyms:
+    - -o
+    - --ofile
+    args: !SimpleFlagArg
+      name: OFILE
+    optional: true
+  - !Flag
+    description: 'the output format (default: sam)'
+    synonyms:
+    - --oformat
+    args: !ChoiceFlagArg
+      choices:
+      - sam
+      - bam
+      - fastq
+      - gz
+    optional: true
+  - !Flag
+    description: optional SAM file, the header information of which should be used
+      in the output (will overwrite pre- existing header information from the input
+      file); not allowed for input in SAM/BAM format
+    synonyms:
+    - -h
+    - --header
+    args: !SimpleFlagArg
+      name: HEADER
+    optional: true
+  - !Flag
+    description: if the input file has reads from different read groups, write them
+      to separate output files (using --ofile OFILE as a file name template); implied
+      for conversions to fastq format
+    synonyms:
+    - -r
+    - --split-on-rgs
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: the number of threads to use (overrides config setting; ignored if
+      not applicable to the conversion)
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  command:
+  - mimodd
+  - convert
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: template SAM file providing header information
+    position: 0
+    name: template
+    optional: false
+  - !Positional
+    description: input BAM file to reheader
+    position: 1
+    name: input_file
+    optional: false
+  named: []
+  command:
+  - mimodd
+  - reheader
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: the unsorted input file in SAM/BAM format
+    position: 0
+    name: input_file
+    optional: false
+  named:
+  - !Flag
+    description: 'redirect the output to the specified file (default: stdout)'
+    synonyms:
+    - -o
+    - --ofile
+    args: !SimpleFlagArg
+      name: OFILE
+    optional: true
+  - !Flag
+    description: '|sam     the format of the input file (default: assume bam)'
+    synonyms:
+    - --iformat
+    args: !SimpleFlagArg
+      name: bam
+    optional: true
+  - !Flag
+    description: '|sam     specify whether the output should be in sam or bam format
+      (default: bam)'
+    synonyms:
+    - --oformat
+    args: !SimpleFlagArg
+      name: bam
+    optional: true
+  - !Flag
+    description: sort by read name
+    synonyms:
+    - -n
+    - --by-name
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: compression level, from 0 to 9
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: COMPRESSION_LEVEL
+    optional: true
+  - !Flag
+    description: maximal amount of memory to be used in GB (overrides config setting)
+    synonyms:
+    - -m
+    - --memory
+    args: !SimpleFlagArg
+      name: MEMORY
+    optional: true
+  - !Flag
+    description: the number of threads to use (overrides config setting)
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  command:
+  - mimodd
+  - sort
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: the type of index to be generated; use "snap" to create a reference
+      genome index for the snap alignment tool, "fai" to produce a samtools-style
+      reference index, "bai" for a bam file index that can be used, e.g., with the
+      varcall tool and is required by third- party tools like IGV.
+    position: 0
+    name: INDEX_TYPE
+    optional: false
+  - !Positional
+    description: the fasta (reference genome) or bam (aligned reads) input file to
+      index
+    position: 1
+    name: FILE_TO_INDEX
+    optional: false
+  named:
+  - !Flag
+    description: 'specifies the location at which to save the index (default: save
+      the index alongside the input file as <input file>.<INDEX_TYPE> for indices
+      of type "fai" and "bai", or in a directory <input file>.snap_index)'
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: maximum number of threads to use (overrides config setting)
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  - !Flag
+    description: suppress original messages from underlying tools
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Seed size used in building the index (default: 20)'
+    synonyms:
+    - -s
+    - --seedsize
+    - --idx-seedsize
+    args: !SimpleFlagArg
+      name: SEEDSIZE
+    optional: true
+  - !Flag
+    description: 'Hash table slack for indexing (default: 0.3)'
+    synonyms:
+    - -h
+    - --slack
+    - --idx-slack
+    args: !SimpleFlagArg
+      name: SLACK
+    optional: true
+  - !Flag
+    description: 'factor (between 1 and 1000) to set the size of the index build overflow
+      space (default: 40)'
+    synonyms:
+    - -O
+    - --overflow
+    - --idx-overflow
+    args: !SimpleFlagArg
+      name: FACTOR
+    optional: true
+  command:
+  - mimodd
+  - index
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: name of the output file (required)
+    synonyms:
+    - -o
+    - --ofile
+    args: !SimpleFlagArg
+      name: OFILE
+    optional: true
+  - !Flag
+    description: 'input file format; must be fastq, gz, sam or bam (default: bam)'
+    synonyms:
+    - --iformat
+    args: !SimpleFlagArg
+      name: IFORMAT
+    optional: true
+  - !Flag
+    description: 'output file format (sam or bam; default: bam)'
+    synonyms:
+    - --oformat
+    args: !SimpleFlagArg
+      name: OFORMAT
+    optional: true
+  - !Flag
+    description: a SAM file providing header information to be used for the output
+      (required for input in fastq format and with unheadered SAM/BAM input, optional
+      for headered SAM/BAM input; replaces header information found in the input file
+    synonyms:
+    - --header
+    args: !SimpleFlagArg
+      name: HEADER
+    optional: true
+  - !Flag
+    description: number of threads to use (overrides config setting)
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  - !Flag
+    description: maximal amount of memory to be used in GB (overrides config setting);
+      will be respected during sorting only
+    synonyms:
+    - -m
+    - --memory
+    args: !SimpleFlagArg
+      name: MEMORY
+    optional: true
+  - !Flag
+    description: output reads in their original order, i.e., do not sort by alignment
+      location
+    synonyms:
+    - --no-sort
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: suppress original messages from SNAP
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: verbose output (independent of SNAP)
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: CIGAR strings in the output should use = and X to indicate matches/mismatches
+      rather than M (alignment match); USE OF THIS OPTION IS DISCOURAGED as =/X CIGAR
+      strings are still not fully supported by useful third- party tools like IGV
+    synonyms:
+    - -X
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: legacy option retained for backwards compatibility; indicates that
+      CIGAR strings in the output should use M (alignment match) rather than = and
+      X (sequence (mis-)match); -M is implied by default, use -X to turn off
+    synonyms:
+    - -M
+    - --mmatch-notation
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: legacy option retained for backwards compatibility; sort output file
+      by alignment location; implied by default, use --no-sort to turn off
+    synonyms:
+    - --sort
+    - --so
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[RF|FR|FF|RR|ALL [RF|FR|FF|RR|ALL ...]], --discard-overlapping-mates
+      [RF|FR|FF|RR|ALL [RF|FR|FF|RR|ALL ...]] consider overlapping mate pairs of the
+      given orientation type(s) anomalous and discard them; default: keep all overlapping
+      mate pairs'
+    synonyms:
+    - -D
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'MAX, --spacing MIN MAX min and max spacing to allow between paired
+      ends (default: 100 10000)'
+    synonyms:
+    - -s
+    args: !SimpleFlagArg
+      name: MIN
+    optional: true
+  - !Flag
+    description: 'DISTANCE, --maxdist EDIT DISTANCE maximum edit distance allowed
+      per read or pair (default: 8)'
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: EDIT
+    optional: true
+  - !Flag
+    description: 'number of seeds to use per read (default: 25)'
+    synonyms:
+    - -n
+    - --maxseeds
+    args: !SimpleFlagArg
+      name: SEEDS
+    optional: true
+  - !Flag
+    description: 'maximum hits to consider per seed (default: 250)'
+    synonyms:
+    - -h
+    - --maxhits
+    args: !SimpleFlagArg
+      name: HITS
+    optional: true
+  - !Flag
+    description: 'confidence threshold (default: 2)'
+    synonyms:
+    - -c
+    - --confdiff
+    args: !SimpleFlagArg
+      name: THRESHOLD
+    optional: true
+  - !Flag
+    description: 'confidence adaptation threshold (default: 7)'
+    synonyms:
+    - -a
+    - --confadapt
+    args: !SimpleFlagArg
+      name: THRESHOLD
+    optional: true
+  - !Flag
+    description: compute error rate assuming wgsim-generated reads
+    synonyms:
+    - -e
+    - --error-rep
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: explore some hits of overly popular seeds (useful for filtering)
+    synonyms:
+    - -x
+    - --explore
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: stop on first match within edit distance limit (filtering mode)
+    synonyms:
+    - -f
+    - --stop-on-first
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: retain only certain read classes in output (a=aligned only, s=single
+      hit only, u=unaligned only)
+    synonyms:
+    - -F
+    - --filter-output
+    args: !SimpleFlagArg
+      name: FILTER
+    optional: true
+  - !Flag
+    description: ignore non-matching IDs in the paired-end aligner
+    synonyms:
+    - -I
+    - --ignore
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: selectivity; randomly choose 1/selectivity of the reads to score
+    synonyms:
+    - -S
+    - --selectivity
+    args: !SimpleFlagArg
+      name: SELECTIVITY
+    optional: true
+  - !Flag
+    description: '++|+x|x+|xx, --clipping ++|+x|x+|xx specify a combination of two
+      + or x symbols to indicate whether to clip low-quality bases from the front
+      and back of reads respectively; default: clip from front and back (-C ++)'
+    synonyms:
+    - -C
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: specify a gap penalty to use when generating CIGAR strings
+    synonyms:
+    - -G
+    - --gap-penalty
+    args: !SimpleFlagArg
+      name: PENALTY
+    optional: true
+  - !Flag
+    description: 'SIZE Seed size used in building the index (default: 20)'
+    synonyms:
+    - --idx-seedsize
+    args: !SimpleFlagArg
+      name: SEED
+    optional: true
+  - !Flag
+    description: 'Hash table slack for indexing (default: 0.3)'
+    synonyms:
+    - --idx-slack
+    args: !SimpleFlagArg
+      name: SLACK
+    optional: true
+  - !Flag
+    description: 'factor (between 1 and 1000) to set the size of the index build overflow
+      space (default: 40)'
+    synonyms:
+    - --idx-overflow
+    args: !SimpleFlagArg
+      name: FACTOR
+    optional: true
+  - !Flag
+    description: DIR   name of the index directory to be created; if given, the index
+      directory will be permanent, otherwise a temporary directory will be used
+    synonyms:
+    - --idx-out
+    args: !SimpleFlagArg
+      name: INDEX
+    optional: true
+  - !Flag
+    description: disables cache prefetching in the genome; may be helpful for machines
+      with small caches or lots of cores/cache
+    synonyms:
+    - -P
+    - --no-prefetch
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: bind each thread to its processor (off by default)
+    synonyms:
+    - -b
+    - --bind-threads
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - mimodd
+  - snap
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '"COMMAND" ["COMMAND" ...] one or more completely specified command
+      line calls to the snap tool (use "" to enclose individual lines)'
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: an input file of completely specified command line calls to the snap
+      tool
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - mimodd
+  - snap-batch
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: FILE [INDEX FILE ...] pre-computed index files for all input files
+    synonyms:
+    - --index-files
+    args: !SimpleFlagArg
+      name: INDEX
+    optional: true
+  - !Flag
+    description: 'redirect the output (variant sites) to the specified file (default:
+      stdout)'
+    synonyms:
+    - -o
+    - --ofile
+    args: !SimpleFlagArg
+      name: OFILE
+    optional: true
+  - !Flag
+    description: optional flag to control handling of multi-sample input; if enabled,
+      reads from different read groups are analyzed as separate samples even if the
+      sample names associated with the read groups are identical; otherwise, the samtools
+      default is used (reads are grouped based on the sample names of their read groups)
+    synonyms:
+    - -i
+    - --group-by-id
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: turn off md5 checksum comparison between sequences in the reference
+      genome and those specified in the BAM input file header(s)
+    synonyms:
+    - -x
+    - --relaxed
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'average sample depth cap applied to input with extraordinarily large
+      numbers of samples sequenced at high coverage to limit memory usage (default:
+      250)'
+    synonyms:
+    - -d
+    - --max-depth
+    args: !SimpleFlagArg
+      name: MAX_DEPTH
+    optional: true
+  - !Flag
+    description: suppress original messages from samtools mpileup and bcftools call
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: verbose output independent of samtools/bcftools
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: the number of threads to use (overrides config setting)
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  command:
+  - mimodd
+  - varcall
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: keep all alternate allele candidates even if they do not appear in
+      any genotype
+    synonyms:
+    - -a
+    - --keep-alts
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'redirect the output (variant sites) to the specified file (default:
+      stdout)'
+    synonyms:
+    - -o
+    - --ofile
+    args: !SimpleFlagArg
+      name: OFILE
+    optional: true
+  command:
+  - mimodd
+  - varextract
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: covstats
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: input
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: file
+    optional: false
+  named:
+  - !Flag
+    description: 'redirect the output to the specified file (default: stdout)'
+    synonyms:
+    - -o
+    - --ofile
+    args: !SimpleFlagArg
+      name: OFILE
+    optional: true
+  command:
+  - mimodd
+  - covstats
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: FILE [INDEX FILE ...] pre-computed index files for all input files
+    synonyms:
+    - --index-files
+    args: !SimpleFlagArg
+      name: INDEX
+    optional: true
+  - !Flag
+    description: 'redirect the output to the specified file (default: stdout)'
+    synonyms:
+    - -o
+    - --ofile
+    args: !SimpleFlagArg
+      name: OFILE
+    optional: true
+  - !Flag
+    description: 'THRESHOLD maximal coverage allowed at any site within an uncovered
+      region (default: 0)'
+    synonyms:
+    - --max-cov
+    args: !SimpleFlagArg
+      name: COVERAGE
+    optional: true
+  - !Flag
+    description: 'THRESHOLD minimal size in nts for an uncovered region to be reported
+      (default: 100)'
+    synonyms:
+    - --min-size
+    args: !SimpleFlagArg
+      name: SIZE
+    optional: true
+  - !Flag
+    description: include uncovered regions in the output that did not get called as
+      deletions
+    synonyms:
+    - -u
+    - --include-uncovered
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: optional flag to control handling of multi-sample input; if enabled,
+      reads from different read groups will be treated strictly separate. If turned
+      off, read groups with identical sample names are used together for identifying
+      uncovered regions, but are still treated separately for the prediction of deletions.
+    synonyms:
+    - -i
+    - --group-by-id
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - mimodd
+  - delcall
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: 'a vcf input file (default: stdin)'
+    position: 0
+    name: input_file
+    optional: false
+  named:
+  - !Flag
+    description: 'redirect the output to the specified file (default: stdout)'
+    synonyms:
+    - -o
+    - --ofile
+    args: !SimpleFlagArg
+      name: OFILE
+    optional: true
+  - !Flag
+    description: one or more sample names that the sample-specific filters --gt, --dp,
+      and --gq should work on.
+    synonyms:
+    - -s
+    - --samples
+    args: !RepeatFlagArg
+      name: SAMPLE_NAME
+    optional: true
+  - !Flag
+    description: 'genotype patterns (one per sample, use ANY to skip the requirement
+      for a given sample) to be included in the output; format: x/x where x = 0 and
+      x = 1 stand for the reference and the variant allele, respectively; multiple
+      allowed genotypes for a sample can be specified as a comma-separated list'
+    synonyms:
+    - --gt
+    args: !RepeatFlagArg
+      name: GT_PATTERN
+    optional: true
+  - !Flag
+    description: minimal coverage (one per sample, use 0 to skip the requirement for
+      a given sample) required to include a site in the output
+    synonyms:
+    - --dp
+    args: !RepeatFlagArg
+      name: DP_THRESHOLD
+    optional: true
+  - !Flag
+    description: minimal genotype quality (one per sample, use 0 to skip the requirement
+      for a given sample) required to include a site in the output
+    synonyms:
+    - --gq
+    args: !RepeatFlagArg
+      name: GQ_THRESHOLD
+    optional: true
+  - !Flag
+    description: '#:MIN_FRACTION:MAX_FRACTION [ALLELE#:MIN_FRACTION:MAX_FRACTION ...]
+      the fraction of reads supporting a specific ALLELE# must be between MIN_FRACTION
+      and MAX_FRACTION to include the site in the output'
+    synonyms:
+    - --af
+    args: !SimpleFlagArg
+      name: ALLELE
+    optional: true
+  - !Flag
+    description: '[REGION_FILTER [REGION_FILTER ...]], --region [REGION_FILTER [REGION_FILTER
+      ...]] keep only variants that fall in one of the given chromsomal regions (specified
+      in the format CHROM:START-STOP or CHROM: for a whole chromosome)'
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: skip indels in the output
+    synonyms:
+    - -I
+    - --no-indels
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: keep only indels in the output
+    synonyms:
+    - -i
+    - --indels-only
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: vertical sample names filter; if given, only sample columns specified
+      by name will be retained in the output
+    synonyms:
+    - --vfilter
+    args: !RepeatFlagArg
+      name: V_FILTER
+    optional: true
+  command:
+  - mimodd
+  - vcf-filter
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: the VCF file to rebase
+    position: 0
+    name: input_file
+    optional: false
+  - !Positional
+    description: the UCSC chain file to calculate new coordinates from (the file may
+      be gzipped or uncompressed)
+    position: 1
+    name: chain_file
+    optional: false
+  named:
+  - !Flag
+    description: 'redirect the output to the specified file (default: stdout)'
+    synonyms:
+    - -o
+    - --ofile
+    args: !SimpleFlagArg
+      name: OFILE
+    optional: true
+  - !Flag
+    description: swap the genome versions specified in the chain file, i.e., assume
+      the coordinates in the input file are based on the chain file target genome
+      version and should be mapped to the source genome version
+    synonyms:
+    - -r
+    - --reverse
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'define which mapped variants to report: "unique": report only unambiguously
+      mapped variants, "best": for ambiguously mapping variants, report the mapping
+      with the highest score, "all": for ambiguously mapping variants, report all
+      mappings (default: unique)'
+    synonyms:
+    - -f
+    - --filter
+    args: !SimpleFlagArg
+      name: FILTER
+    optional: true
+  - !Flag
+    description: report remap statistics
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - mimodd
+  - rebase
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: a vcf input file
+    position: 0
+    name: input_file
+    optional: false
+  - !Positional
+    description: the name of an installed SnpEff genome annotation file (the snpeff-genomes
+      tool can be used to get a list of all such names)
+    position: 1
+    name: annotation_source
+    optional: false
+  named:
+  - !Flag
+    description: 'redirect the output to the specified file (default: stdout)'
+    synonyms:
+    - -o
+    - --ofile
+    args: !SimpleFlagArg
+      name: OFILE
+    optional: true
+  - !Flag
+    description: 'specify custom codon tables to be used in assessing variant effects
+      at the protein level; if a codon table should be used for only a specific chromosome,
+      use the format CHROM:TABLE_NAME. Use TABLE_NAME alone to specify a codon table
+      to be used for all chromosomes, for which no chromosome-specific table is provided.
+      Valid TABLE_NAMEs are those defined in the Codon tables section of the SnpEff
+      config file. NOTE: It is also possible to associate chromosomes with a codon
+      table permanently by editing the SnpEff config file.'
+    synonyms:
+    - --codon-tables
+    args: !RepeatFlagArg
+      name: TABLE_SPEC
+    optional: true
+  - !Flag
+    description: generate a results summary file of the specified name
+    synonyms:
+    - --stats
+    args: !SimpleFlagArg
+      name: SUMMARY_FILE
+    optional: true
+  - !Flag
+    description: do not include downstream effects in the output
+    synonyms:
+    - --no-downstream
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: do not include upstream effects in the output
+    synonyms:
+    - --no-upstream
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: do not include intron effects in the output
+    synonyms:
+    - --no-intron
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: do not include intergenic effects in the output
+    synonyms:
+    - --no-intergenic
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: do not include UTR effects in the output
+    synonyms:
+    - --no-utr
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: specify the upstream/downstream interval length, i.e., variants more
+      than DISTANCE nts from the next annotated gene are considered to be intergenic
+    synonyms:
+    - --ud
+    args: !SimpleFlagArg
+      name: DISTANCE
+    optional: true
+  - !Flag
+    description: location of the SnpEff installation directory. Will override MiModD
+      SNPEFF_PATH config setting if provided.
+    synonyms:
+    - -c
+    - --config
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: maximal memory to use in GB (overrides config setting)
+    synonyms:
+    - -m
+    - --memory
+    args: !SimpleFlagArg
+      name: MEMORY
+    optional: true
+  - !Flag
+    description: suppress original messages from SnpEff
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: verbose output (independent of SnpEff)
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - mimodd
+  - annotate
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: snpeff-genomes
+    optional: false
+  named:
+  - !Flag
+    description: location of the SnpEff installation directory. Will override MiModD
+      config settings if provided.
+    synonyms:
+    - -c
+    - --config
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: 'redirect the output to the specified file (default: stdout)'
+    synonyms:
+    - -o
+    - --ofile
+    args: !SimpleFlagArg
+      name: OFILE
+    optional: true
+  command:
+  - mimodd
+  - snpeff-genomes
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: a vcf input file
+    position: 0
+    name: input_file
+    optional: false
+  named:
+  - !Flag
+    description: 'redirect the output to the specified file (default: stdout)'
+    synonyms:
+    - -o
+    - --ofile
+    args: !SimpleFlagArg
+      name: OFILE
+    optional: true
+  - !Flag
+    description: '|text, --oformat html|text the format of the output file (default:
+      html)'
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: html
+    optional: true
+  - !Flag
+    description: the name of the species to be assumed when generating annotations
+    synonyms:
+    - -s
+    - --species
+    args: !SimpleFlagArg
+      name: SPECIES
+    optional: true
+  - !Flag
+    description: file to read species-specific hyperlink formatting instructions from
+    synonyms:
+    - -l
+    - --link
+    args: !SimpleFlagArg
+      name: link_formatter_file
+    optional: true
+  command:
+  - mimodd
+  - varreport
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: specify "SVD" for Simple Variant Density analysis, "VAF" for Variant
+      Allele Frequency analysis or "VAC" for Variant Allele Contrast analysis.
+    position: 0
+    name: analysis_mode
+    optional: false
+  - !Positional
+    description: valid input files are VCF files or per-variant report files (as generated
+      by this tool with the "-t" option or by the CloudMap Hawaiian Variant Density
+      Mapping tool).
+    position: 1
+    name: input_file
+    optional: false
+  named:
+  - !Flag
+    description: 'redirect the binned variant counts to this file (default: stdout).'
+    synonyms:
+    - -o
+    - --ofile
+    args: !SimpleFlagArg
+      name: OFILE
+    optional: true
+  - !Flag
+    description: suppress warning messages about plotting problems.
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'list of bin sizes to be used for histogram plots and linkage reports
+      (default: 1Mb and 500Kb)'
+    synonyms:
+    - -b
+    - --bin-sizes
+    args: !RepeatFlagArg
+      name: SIZE
+    optional: true
+  - !Flag
+    description: name of the sample (as appearing in the input vcf file) for which
+      variants should be mapped (cannot be used in SVD mode)
+    synonyms:
+    - -m
+    - --mapping-sample
+    args: !SimpleFlagArg
+      name: sample_name
+    optional: true
+  - !Flag
+    description: name of the sample to provide related parent strain (mutagenesis
+      strain) variants for the analysis in Variant Allele Frequency (VAF) mode.
+    synonyms:
+    - -r
+    - --related-parent
+    args: !SimpleFlagArg
+      name: parent_name
+    optional: true
+  - !Flag
+    description: name of the sample to provide unrelated parent strain (mapping strain)
+      variants for the analysis in Variant Allele Frequency (VAF) mode.
+    synonyms:
+    - -u
+    - --unrelated-parent
+    args: !SimpleFlagArg
+      name: parent_name
+    optional: true
+  - !Flag
+    description: if variant data for either the related or the unrelated parent strain
+      is not provided, the tool can try to infer the alleles present in that parent
+      from the allele spectrum found in the mapping sample. Use with caution on carefully
+      filtered variant lists only!
+    synonyms:
+    - -i
+    - --infer
+    - --infer-missing
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: name of the sample (as appearing in the input vcf file) that provides
+      the contrast for the mapping sample
+    synonyms:
+    - -c
+    - --contrast-sample
+    args: !SimpleFlagArg
+      name: sample_name
+    optional: true
+  - !Flag
+    description: generate text-based output for every variant position and save it
+      to the specified file. This file can be used as input during later runs of the
+      tool, which will speed up replotting.
+    synonyms:
+    - -t
+    - --text-file
+    args: !SimpleFlagArg
+      name: TEXT_FILE
+    optional: true
+  - !Flag
+    description: if an input file does not specify required contig information (chromosome
+      names and sizes), extract this information from SEQINFO_FILE. This file can
+      be a reference genome file in fasta format or a CloudMap- style sequence dictionary
+      file. This option is never necessary with MiModD-generated input, but can be
+      useful with input files generated by third-party tools that do not record contig
+      information in their output.
+    synonyms:
+    - -s
+    - --seqinfo
+    args: !SimpleFlagArg
+      name: SEQINFO_FILE
+    optional: true
+  - !Flag
+    description: generate valid input for the original CloudMap Mapping tools and
+      save it to the text output file specified by the "-t" option. This option can
+      only be used in "SVD" or "VAF" mode, which have an equivalent in CloudMap.
+    synonyms:
+    - --cloudmap
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'generate graphical output and store it in the given file (default:
+      no graphical output)'
+    synonyms:
+    - -p
+    - --plot-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: do not autoscale x-axes to size of largest contig
+    synonyms:
+    - --fit-width
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: do not produce scatter plots of observed segregation rates; just
+      plot histograms
+    synonyms:
+    - --no-scatter
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'span parameter for the Loess regression line through the linkage
+      data (default: 0.1, specify 0 to skip calculation)'
+    synonyms:
+    - -l
+    - --loess-span
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: 'upper limit for scatter plot y-axis (default: 1)'
+    synonyms:
+    - --ylim-scatter
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: color(s) for scatter plot data points
+    synonyms:
+    - -z
+    - --points-colors
+    args: !RepeatFlagArg
+      name: COLOR
+    optional: true
+  - !Flag
+    description: color(s) for regression line(s) through scatter plot data
+    synonyms:
+    - -k
+    - --loess-colors
+    args: !RepeatFlagArg
+      name: COLOR
+    optional: true
+  - !Flag
+    description: do not produce linkage histogram plots; only generate scatter plots
+    synonyms:
+    - --no-hist
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: do not add kernel density estimate lines to histogram plots
+    synonyms:
+    - --no-kde
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'upper limit for histogram plot y-axis (default: auto)'
+    synonyms:
+    - --ylim-hist
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: 'list of colors to be used for plotting histogram bars of different
+      width (default: darkgrey and red)'
+    synonyms:
+    - --hist-colors
+    args: !RepeatFlagArg
+      name: COLOR
+    optional: true
+  command:
+  - mimodd
+  - map
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

@@ -1,0 +1,93 @@
+!Command
+positional:
+- !Positional
+  description: folder with <chrom>.uint8.unique.gz files
+  position: 0
+  name: in_dir
+  optional: false
+- !Positional
+  description: Folder for writing the output files
+  position: 1
+  name: out_dir
+  optional: false
+- !Positional
+  description: File names would be kmer.<out_label>.bed.gz
+  position: 2
+  name: out_label
+  optional: false
+named:
+- !Flag
+  description: If using converted genomes specify -C2T or -G2A
+  synonyms:
+  - -C2T
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If using converted genomes specify -C2T or -G2A
+  synonyms:
+  - -G2A
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to a 2 column file of chromosome and length. By default it goes
+    to ../../chrsize.tsv from out_dir
+  synonyms:
+  - -chrsize_path
+  args: !SimpleFlagArg
+    name: CHRSIZE_PATH
+  optional: true
+- !Flag
+  description: If -Bismap is true and want to store the merged uint file, specify
+    this option
+  synonyms:
+  - -WriteUnique
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If specified, will generate wiggle files for each chromosome. Make
+    sure to specify -job_id or run in job array for parallel computation.
+  synonyms:
+  - -wiggle
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If specified, will generate bed files that specify all of the regions
+    in the genome that are uniquely mappable by each of the k-mers
+  synonyms:
+  - -bed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[KMERS [KMERS ...]] Specify kmers separated by space such as: -kmers
+    k10 k20'
+  synonyms:
+  - -kmers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If not using job array, specify this index which will be used for selecting
+    the chromosomes
+  synonyms:
+  - -job_id
+  args: !SimpleFlagArg
+    name: JOB_ID
+  optional: true
+- !Flag
+  description: Environmental variable for finding chromosome indices
+  synonyms:
+  - -var_id
+  args: !SimpleFlagArg
+    name: VAR_ID
+  optional: true
+command:
+- uint8_to_bed_parallel.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

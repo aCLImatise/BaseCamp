@@ -1,0 +1,260 @@
+!Command
+positional: []
+named: []
+command:
+- daijin
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Output will be in JSON (default: inferred by filename, with TOML
+      as fallback).'
+    synonyms:
+    - -j
+    - --json
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Output will be in YAML (default: inferred by filename, with TOML
+      as fallback).'
+    synonyms:
+    - -y
+    - --yaml
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Output will be in TOML (default: inferred by filename, with TOML
+      as fallback).'
+    synonyms:
+    - --toml
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[{gsnap,star,hisat,tophat} [{gsnap,star,hisat,tophat} ...]], --aligners
+      [{gsnap,star,hisat,tophat} [{gsnap,star,hisat,tophat} ...]] Aligner(s) to use
+      for the analysis. Choices: gsnap, star, hisat, tophat'
+    synonyms:
+    - -al
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[{star,gmap} [{star,gmap} ...]], --long-read-aligners [{star,gmap}
+      [{star,gmap} ...]] Aligner(s) to use for long reads. Choices: star, gmap'
+    synonyms:
+    - -lal
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[{class,cufflinks,stringtie,trinity,scallop} [{class,cufflinks,stringtie,trinity,scallop}
+      ...]], --assemblers [{class,cufflinks,stringtie,trinity,scallop} [{class,cufflinks,stringtie,trinity,scallop}
+      ...]] Assembler(s) to use for the analysis. Choices: class, cufflinks, stringtie,
+      trinity, scallop'
+    synonyms:
+    - -as
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Cluster configuration file to write to.
+    synonyms:
+    - -c
+    - --cluster_config
+    args: !SimpleFlagArg
+      name: CLUSTER_CONFIG
+    optional: true
+  - !Flag
+    description: 'Maximum number of threads per job. Default: 4'
+    synonyms:
+    - --threads
+    - -t
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'Output directory. Default if unspecified: chosen name.'
+    synonyms:
+    - -od
+    - --out-dir
+    args: !SimpleFlagArg
+      name: OUT_DIR
+    optional: true
+  - !Flag
+    description: Output file. If not specified, it will be printed to STDOUT.Daijin
+      will try to infer the type of configuration (TOML, YAML, JSON) from the output
+      file name, with TOML as thedefault. If one of --json, --yaml, --toml flags is
+      specified, it will override the filename inference.
+    synonyms:
+    - -o
+    - --out
+    args: !SimpleFlagArg
+      name: OUT
+    optional: true
+  - !Flag
+    description: 'Scheduler to use. Default: None - ie, either execute everything
+      on the local machine or use DRMAA to submit and control jobs (recommended).'
+    synonyms:
+    - --scheduler
+    args: !ChoiceFlagArg
+      choices:
+      - local
+      - SLURM
+      - LSF
+      - PBS
+    optional: true
+  - !Flag
+    description: Configuration file for the executables.
+    synonyms:
+    - --exe
+    args: !SimpleFlagArg
+      name: EXE
+    optional: true
+  - !Flag
+    description: Name of queue to be used in the HPC. Required if a scheduler has
+      been selected.
+    synonyms:
+    - -q
+    - --queue
+    args: !SimpleFlagArg
+      name: QUEUE
+    optional: true
+  - !Flag
+    description: Name of the species under analysis.
+    synonyms:
+    - --name
+    args: !SimpleFlagArg
+      name: NAME
+    optional: true
+  - !Flag
+    description: Reference genome for the analysis, in FASTA format. Required.
+    synonyms:
+    - --genome
+    - -g
+    args: !SimpleFlagArg
+      name: GENOME
+    optional: true
+  - !Flag
+    description: Reference annotation, in GFF3 or GTF format.
+    synonyms:
+    - --transcriptome
+    args: !SimpleFlagArg
+      name: TRANSCRIPTOME
+    optional: true
+  - !Flag
+    description: 'INTRON_RANGE, --intron-range INTRON_RANGE INTRON_RANGE Range into
+      which intron lengths should fall, as a couple of integers. Transcripts with
+      intron lengths outside of this range will be penalised. Default: (60, 900)'
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: INTRON_RANGE
+    optional: true
+  - !Flag
+    description: Amount of flanking for grouping transcripts in superloci during the
+      pick phase of Mikado.
+    synonyms:
+    - --flank
+    args: !SimpleFlagArg
+      name: FLANK
+    optional: true
+  - !Flag
+    description: Protein database to compare against, for Mikado.
+    synonyms:
+    - --prot-db
+    args: !RepeatFlagArg
+      name: PROT_DB
+    optional: true
+  - !Flag
+    description: Flag. If set, Daijin will use BLAST instead of DIAMOND.
+    synonyms:
+    - --use-blast
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Flag. If set, Daijin will use TransDecoder instead of Prodigal.
+    synonyms:
+    - --use-transdecoder
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - daijin
+  - configure
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Configuration file to use for running the transcript assembly pipeline.
+    position: 0
+    name: config
+    optional: false
+  named:
+  - !Flag
+    description: Force the re-execution or creation of the given rules or files. Use
+      this option if you changed a rule and want to have all its output in your workflow
+      updated.
+    synonyms:
+    - --forcerun
+    - -R
+    args: !RepeatFlagArg
+      name: TARGET
+    optional: true
+  - !Flag
+    description: List of files that are complete even if Daijin has lost track of
+      them because eg. they were generated by external processes.
+    synonyms:
+    - --cleanup-metadata
+    args: !RepeatFlagArg
+      name: CLEANUP_METADATA
+    optional: true
+  - !Flag
+    description: Optional prefix to prepend to job names while using DRMAA.
+    synonyms:
+    - --prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  - !Flag
+    description: Print detailed summary of all input and output files
+    synonyms:
+    - --detailed-summary
+    - -D
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: List resources used in the workflow
+    synonyms:
+    - --list
+    - -l
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do not execute anything and print the redirected acylic graph of
+      jobs in the dot language.
+    synonyms:
+    - --dag
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do not lock the working directory. Use with caution!
+    synonyms:
+    - --nolock
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - daijin
+  - assemble
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

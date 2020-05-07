@@ -1,0 +1,566 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Prints verbose text while running
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- pathoscope
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Specify reference genome(Download ftp://ftp.ncbi.nih.gov/blast/db/FASTA/nt.gz)
+    synonyms:
+    - -genomeFile
+    args: !SimpleFlagArg
+      name: LIB_REFERENCE
+    optional: true
+  - !Flag
+    description: Specify taxon ids of your interest with comma separated (if you have
+      multiple taxon ids). If you do not specify this option, it will work on all
+      entries in the reference file. For taxonomy id lookup, refer to http://www.ncbi.nlm.nih.gov/taxonomy
+    synonyms:
+    - -taxonIds
+    args: !SimpleFlagArg
+      name: LIB_TAXON_IDS
+    optional: true
+  - !Flag
+    description: Specify taxon ids to exclude with comma separated (if you have multiple
+      taxon ids to exclude).
+    synonyms:
+    - -excludeTaxonIds
+    args: !SimpleFlagArg
+      name: LIB_EXCLUDE_TAXON_IDS
+    optional: true
+  - !Flag
+    description: Do not keep an additional description in original fasta seq header.Depending
+      on NGS aligner, a long sequence header may slow down its mapping process.
+    synonyms:
+    - --noDesc
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: To include all sub taxonomies under the query taxonomy id. e.g.,
+      if you set -t 4751 --subtax, it will cover all sub taxonomies under taxon id
+      4751 (fungi).
+    synonyms:
+    - --subTax
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: To enable online searching in case you cannot find a correct taxonomy
+      id for a given gi. When there are many entries in nt whose gi is invalid, this
+      option may slow down the overall process.
+    synonyms:
+    - --online
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: specify hostname running mysql if you want to use mysql instead of
+      hash method in mapping gi to taxonomy id
+    synonyms:
+    - -dbhost
+    args: !SimpleFlagArg
+      name: LIB_DBHOST
+    optional: true
+  - !Flag
+    description: provide mysql server port if different from default (3306)
+    synonyms:
+    - -dbport
+    args: !SimpleFlagArg
+      name: LIB_DBPORT
+    optional: true
+  - !Flag
+    description: user name to access mysql
+    synonyms:
+    - -dbuser
+    args: !SimpleFlagArg
+      name: LIB_DBUSER
+    optional: true
+  - !Flag
+    description: provide password associate with user
+    synonyms:
+    - -dbpasswd
+    args: !SimpleFlagArg
+      name: LIB_DBPASSWD
+    optional: true
+  - !Flag
+    description: 'mysql pathoscope database name (default: pathodb)'
+    synonyms:
+    - -db
+    args: !SimpleFlagArg
+      name: LIB_DB
+    optional: true
+  - !Flag
+    description: Output Directory (Default=. (current directory))
+    synonyms:
+    - -outDir
+    args: !SimpleFlagArg
+      name: LIB_OUTDIR
+    optional: true
+  - !Flag
+    description: specify an output prefix to name your target database
+    synonyms:
+    - -outPrefix
+    args: !SimpleFlagArg
+      name: LIB_OUTPREFIX
+    optional: true
+  command:
+  - pathoscope
+  - LIB
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Target Reference Genome Fasta Files Full Path (Comma Separated)
+    synonyms:
+    - -targetRefFiles
+    args: !SimpleFlagArg
+      name: MAP_TARGETREF
+    optional: true
+  - !Flag
+    description: Filter Reference Genome Fasta Files Full Path (Comma Separated)
+    synonyms:
+    - -filterRefFiles
+    args: !SimpleFlagArg
+      name: MAP_FILTERREF
+    optional: true
+  - !Flag
+    description: 'Target Mapping Bowtie2 Parameters (Default: Pathoscope chosen best
+      parameters)'
+    synonyms:
+    - -targetAlignParams
+    args: !SimpleFlagArg
+      name: MAP_TARGETALIGNPARAMS
+    optional: true
+  - !Flag
+    description: 'Filter Mapping Bowtie2 Parameters (Default: Use the same Target
+      Mapping Bowtie2 parameters)'
+    synonyms:
+    - -filterAlignParams
+    args: !SimpleFlagArg
+      name: MAP_FILTERALIGNPARAMS
+    optional: true
+  - !Flag
+    description: Output Directory (Default=. (current directory))
+    synonyms:
+    - -outDir
+    args: !SimpleFlagArg
+      name: MAP_OUTDIR
+    optional: true
+  - !Flag
+    description: Output Alignment File Name (Default=outalign.sam)
+    synonyms:
+    - -outAlign
+    args: !SimpleFlagArg
+      name: MAP_OUTALIGN
+    optional: true
+  - !Flag
+    description: Index Directory (Default=. (current directory))
+    synonyms:
+    - -indexDir
+    args: !SimpleFlagArg
+      name: MAP_INDEXDIR
+    optional: true
+  - !Flag
+    description: Target Index Prefixes (Comma Separated)
+    synonyms:
+    - -targetIndexPrefixes
+    args: !SimpleFlagArg
+      name: MAP_TARGETINDEX
+    optional: true
+  - !Flag
+    description: Filter Index Prefixes (Comma Separated)
+    synonyms:
+    - -filterIndexPrefixes
+    args: !SimpleFlagArg
+      name: MAP_FILTERINDEX
+    optional: true
+  - !Flag
+    description: Target Alignment Files Full Path (Comma Separated)
+    synonyms:
+    - -targetAlignFiles
+    args: !SimpleFlagArg
+      name: MAP_TARGETALIGN
+    optional: true
+  - !Flag
+    description: Filter Alignment Files Full Path (Comma Separated)
+    synonyms:
+    - -filterAlignFiles
+    args: !SimpleFlagArg
+      name: MAP_FILTERALIGN
+    optional: true
+  - !Flag
+    description: 'Full Path to Bowtie2 binary directory (Default: Uses bowtie2 in
+      system path)'
+    synonyms:
+    - -btHome
+    args: !SimpleFlagArg
+      name: MAP_BTHOME
+    optional: true
+  - !Flag
+    description: Number of threads to use by aligner (bowtie2) if different from default
+      (8)
+    synonyms:
+    - -numThreads
+    args: !SimpleFlagArg
+      name: MAP_NUMTHREADS
+    optional: true
+  - !Flag
+    description: 'Experiment Tag added to files generated for identification (Default:
+      pathomap)'
+    synonyms:
+    - -expTag
+    args: !SimpleFlagArg
+      name: MAP_EXP_TAG
+    optional: true
+  command:
+  - pathoscope
+  - MAP
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Output alignment matrix
+    synonyms:
+    - --outMatrix
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do not generate an updated alignment file
+    synonyms:
+    - --noUpdatedAlignFile
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do not cutoff display of genomes, even if it is insignificant
+    synonyms:
+    - --noDisplayCutoff
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Score Cutoff
+    synonyms:
+    - -scoreCutoff
+    args: !SimpleFlagArg
+      name: ID_SCORE_CUTOFF
+    optional: true
+  - !Flag
+    description: EM Algorithm Epsilon cutoff
+    synonyms:
+    - -emEpsilon
+    args: !SimpleFlagArg
+      name: ID_EMEPSILON
+    optional: true
+  - !Flag
+    description: EM Algorithm maximum iterations
+    synonyms:
+    - -maxIter
+    args: !SimpleFlagArg
+      name: ID_MAXITER
+    optional: true
+  - !Flag
+    description: 'EM Algorithm Pi Prior equivalent to adding n unique reads (Default:
+      n=0)'
+    synonyms:
+    - -piPrior
+    args: !SimpleFlagArg
+      name: ID_PIPRIOR
+    optional: true
+  - !Flag
+    description: 'EM Algorithm Theta Prior equivalent to adding n non- unique reads
+      (Default: n=0)'
+    synonyms:
+    - -thetaPrior
+    args: !SimpleFlagArg
+      name: ID_THETAPRIOR
+    optional: true
+  - !Flag
+    description: 'Experiment tag added to output file for easy identification (Default:
+      pathoid)'
+    synonyms:
+    - -expTag
+    args: !SimpleFlagArg
+      name: ID_EXP_TAG
+    optional: true
+  - !Flag
+    description: Output Directory (Default=. (current directory))
+    synonyms:
+    - -outDir
+    args: !SimpleFlagArg
+      name: ID_OUTDIR
+    optional: true
+  - !Flag
+    description: 'Alignment Format: sam/bl8/gnu-sam (Default: sam)'
+    synonyms:
+    - -fileType
+    args: !SimpleFlagArg
+      name: ID_ALI_FORMAT
+    optional: true
+  - !Flag
+    description: Alignment file path
+    synonyms:
+    - -alignFile
+    args: !SimpleFlagArg
+      name: ID_ALI_FILE
+    optional: true
+  command:
+  - pathoscope
+  - ID
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Full Path to samtools binary directory (Default: Uses samtools in
+      system path)'
+    synonyms:
+    - -samtoolsHome
+    args: !SimpleFlagArg
+      name: REP_SAMTOOLSHOME
+    optional: true
+  - !Flag
+    description: specify hostname running mysql if you want to use mysql instead of
+      hash method in mapping gi to taxonomy id
+    synonyms:
+    - -dbhost
+    args: !SimpleFlagArg
+      name: REP_DBHOST
+    optional: true
+  - !Flag
+    description: provide mysql server port if different from default (3306)
+    synonyms:
+    - -dbport
+    args: !SimpleFlagArg
+      name: REP_DBPORT
+    optional: true
+  - !Flag
+    description: user name to access mysql
+    synonyms:
+    - -dbuser
+    args: !SimpleFlagArg
+      name: REP_DBUSER
+    optional: true
+  - !Flag
+    description: provide password associate with user
+    synonyms:
+    - -dbpasswd
+    args: !SimpleFlagArg
+      name: REP_DBPASSWD
+    optional: true
+  - !Flag
+    description: 'mysql pathoscope database name (default: pathodb)'
+    synonyms:
+    - -db
+    args: !SimpleFlagArg
+      name: REP_DB
+    optional: true
+  - !Flag
+    description: Output Directory
+    synonyms:
+    - -outDir
+    args: !SimpleFlagArg
+      name: REP_OUTDIR
+    optional: true
+  - !Flag
+    description: Generate Contig Information (Needs samtools package installed)
+    synonyms:
+    - --contig
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: SAM Alignment file path
+    synonyms:
+    - -samfile
+    args: !SimpleFlagArg
+      name: REP_ALI_FILE
+    optional: true
+  - !Flag
+    description: Do not cutoff display of genomes, even if it is insignificant
+    synonyms:
+    - --noDisplayCutoff
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - pathoscope
+  - REP
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: let us know a mean read length (0:ignore. [1]:I want to know the
+      range of read length after trimming, i:user_specified_mean_read_length)
+    synonyms:
+    - -r
+    args: !SimpleFlagArg
+      name: QC_READL
+    optional: true
+  - !Flag
+    description: specify a phred offset used in encoding base quality(0:not sure?,
+      [33]:phred+33, 64:phred+64)
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: QC_PHRED_OFFSET
+    optional: true
+  - !Flag
+    description: specify output directory in full path
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: QC_OUTDIR
+    optional: true
+  - !Flag
+    description: tell us which sequencer generates the reads ([Illumina], PacBio,
+      Roche454, IonTorrent)
+    synonyms:
+    - -s
+    args: !SimpleFlagArg
+      name: QC_SEQUENCER
+    optional: true
+  - !Flag
+    description: specify the min read length cutoff[35]
+    synonyms:
+    - -m
+    args: !SimpleFlagArg
+      name: QC_LEN_CUTOFF
+    optional: true
+  - !Flag
+    description: specify an adaptor (Y:have pathoQC detect it, [N]:ignore, ACGT:adaptor)
+    synonyms:
+    - -a
+    args: !SimpleFlagArg
+      name: QC_ADAPTOR
+    optional: true
+  - !Flag
+    description: specify a second adaptor if it is different from the first one (Y:have
+      pathoQC detect it, [N]:ignore, ACGT:adaptor)
+    synonyms:
+    - -a2
+    args: !SimpleFlagArg
+      name: QC_ADAPTOR2
+    optional: true
+  - !Flag
+    description: specify a cutoff of base quality value to trim at the end of reads([0]:ignore,
+      1:let pathoQC take care of it, i:user_specified_cutoff_value)
+    synonyms:
+    - -q
+    args: !SimpleFlagArg
+      name: QC_QUAL_CUTOFF
+    optional: true
+  - !Flag
+    description: set to 1 if you want to mask all lower case bases that may correspond
+      to sequence tag or adaptor in Roche454 or IonTorrent
+    synonyms:
+    - -R
+    args: !SimpleFlagArg
+      name: QC_LOWER454
+    optional: true
+  - !Flag
+    description: specify a cutoff of entropy of low sequence complexity to filter
+      out[0..100],default:30, set 0 to disable
+    synonyms:
+    - -e
+    args: !SimpleFlagArg
+      name: QC_COFF_ENTROPY
+    optional: true
+  - !Flag
+    description: "filtering duplicates: [1] (exact duplicate), 2 (5' duplicate), 3\
+      \ (3' duplicate), 4 (reverse complement exact duplicate), 5 (reverse complement\
+      \ 5'/3' duplicate)"
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: QC_DEREP
+    optional: true
+  - !Flag
+    description: Set to 1 if you want to add a valid single read into a reduced valid
+      PER set. Note that this option works only with PER
+    synonyms:
+    - -g
+    args: !SimpleFlagArg
+      name: QC_ADD_VALID_SINGLE
+    optional: true
+  - !Flag
+    description: to force to skip prinseq module
+    synonyms:
+    - --no_prinseq
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: specify a total number of cpus to use[1]
+    synonyms:
+    - -p
+    args: !SimpleFlagArg
+      name: QC_NUM_THREADS
+    optional: true
+  - !Flag
+    description: working on debug mode
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - pathoscope
+  - QC
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag: !Flag
+    description: show program's version number and exit
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

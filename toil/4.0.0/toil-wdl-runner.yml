@@ -1,0 +1,54 @@
+!Command
+positional:
+- !Positional
+  description: A WDL workflow file.
+  position: 0
+  name: wdl_file
+  optional: false
+- !Positional
+  description: A secondary data file (json).
+  position: 1
+  name: secondary_file
+  optional: false
+named:
+- !Flag
+  description: Optionally specify the directory that outputs are written to. Default
+    is the current working dir.
+  synonyms:
+  - -o
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: 1. Creates "AST.out", which holds the printed AST and "mappings.out",
+    which holds the parsed task, workflow dictionaries that were generated. 2. Saves
+    the compiled toil script generated from the wdl/json files from deletion. 3. Skips
+    autorunning the compiled python file.
+  synonyms:
+  - --dev_mode
+  args: !SimpleFlagArg
+    name: DEV_MODE
+  optional: true
+- !Flag
+  description: The user permissions that the docker containers will be run with (and
+    the permissions set on any output files produced). Default is "root". Setting
+    this to None will set this to the current user.
+  synonyms:
+  - --docker_user
+  args: !SimpleFlagArg
+    name: DOCKER_USER
+  optional: true
+- !Flag
+  description: Specify a cloud bucket endpoint for output files.
+  synonyms:
+  - --destBucket
+  args: !SimpleFlagArg
+    name: DESTBUCKET
+  optional: true
+command:
+- toil-wdl-runner
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

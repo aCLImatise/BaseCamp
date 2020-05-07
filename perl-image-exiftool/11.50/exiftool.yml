@@ -1,0 +1,765 @@
+!Command
+positional:
+- !Positional
+  description: r/w/c  |  ID3            r    |  (and more)
+  position: 0
+  name: GeoTIFF
+  optional: false
+- !Positional
+  description: Output
+  position: 0
+  name: FMT
+  optional: false
+- !Positional
+  description: Internal encoding of EXIF "ASCII" strings    (none)
+  position: 0
+  name: EXIF
+  optional: false
+- !Positional
+  description: Internal encoding of ID3v1 information       Latin
+  position: 1
+  name: ID3
+  optional: false
+- !Positional
+  description: Internal IPTC encoding to assume when        Latin IPTC:CodedCharacterSet
+    is not defined
+  position: 2
+  name: IPTC
+  optional: false
+- !Positional
+  description: Internal encoding of Photoshop IRB strings   Latin
+  position: 3
+  name: Photoshop
+  optional: false
+- !Positional
+  description: Internal encoding of QuickTime strings       MacRoman
+  position: 4
+  name: QuickTime
+  optional: false
+- !Positional
+  description: Internal encoding of RIFF strings            0
+  position: 5
+  name: RIFF
+  optional: false
+named:
+- !Flag
+  description: Extract or exclude specified tag
+  synonyms:
+  - -TAG
+  - --TAG
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: '[+-^]=[VALUE]                Write new value for tag'
+  synonyms:
+  - -TAG
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[+-]<=DATFILE                Write tag value from contents of file'
+  synonyms:
+  - -TAG
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[+-]<SRCTAG                  Copy tag value (see -tagsFromFile)'
+  synonyms:
+  - -TAG
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Copy tag values from file
+  synonyms:
+  - -tagsFromFile
+  args: !SimpleFlagArg
+    name: SRCFILE
+  optional: true
+- !Flag
+  description: (-exclude)           Exclude specified tag
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: TAG
+  optional: true
+- !Flag
+  description: (-argFormat)         Format metadata as exiftool arguments
+  synonyms:
+  - -args
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-binary)            Output metadata in binary format
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-coordFormat)       Set format for GPS coordinates
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: FMT
+  optional: true
+- !Flag
+  description: '[[TYPE=]CHARSET]        Specify encoding for special characters'
+  synonyms:
+  - -charset
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[[+]=CSVFILE]                Export/import tags in CSV format'
+  synonyms:
+  - -csv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-dateFormat)        Set format for date/time values
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: FMT
+  optional: true
+- !Flag
+  description: (-decimal)           Show tag ID numbers in decimal
+  synonyms:
+  - -D
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-escape(HTML|XML))  Escape values for HTML (-E) or XML (-ex)
+  synonyms:
+  - -E
+  - -ex
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-forcePrint)        Force printing of all specified tags
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[NUM...]  (-groupHeadings)     Organize output by tag group'
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[NUM...]  (-groupNames)        Print group name for each tag'
+  synonyms:
+  - -G
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-hex)               Show tag ID numbers in hexadecimal
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[OFFSET]                Generate HTML-format binary dump'
+  synonyms:
+  - -htmlDump
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[[+]=JSONFILE] (-json)         Export/import tags in JSON format'
+  synonyms:
+  - -j
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-long)              Use long 2-line output format
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-latin)             Use Windows Latin1 encoding
+  synonyms:
+  - -L
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[LANG]                     Set current language'
+  synonyms:
+  - -lang
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Extract specific item from a list
+  synonyms:
+  - -listItem
+  args: !SimpleFlagArg
+    name: INDEX
+  optional: true
+- !Flag
+  description: (--printConv)        No print conversion
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-printFormat)       Print output in specified format
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: FMTFILE
+  optional: true
+- !Flag
+  description: Export tags as a PHP Array
+  synonyms:
+  - -php
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[NUM]     (-short)             Short output format'
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-veryShort)         Very short output format
+  synonyms:
+  - -S
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-separator)         Set separator string for list items
+  synonyms:
+  - -sep
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: Sort output alphabetically
+  synonyms:
+  - -sort
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable output of structured information
+  synonyms:
+  - -struct
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-tab)               Output in tab-delimited list format
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-table)             Output in tabular format
+  synonyms:
+  - -T
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[NUM]     (-verbose)           Print verbose messages'
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[+|!] EXT (-textOut)           Write (or overwrite!) output text files'
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[+|!] FMT (-tagOut)            Write output text file for each tag'
+  synonyms:
+  - -W
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-tagOutExt)         Write only specified file types with -W
+  synonyms:
+  - -Wext
+  args: !SimpleFlagArg
+    name: EXT
+  optional: true
+- !Flag
+  description: (-xmlFormat)         Use RDF/XML output format
+  synonyms:
+  - -X
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-duplicates)        Allow duplicate tags to be extracted
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (--composite)        Do not calculate composite tags
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-extractEmbedded)   Extract information from embedded files
+  synonyms:
+  - -ee
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[+] EXT (-extension)         Process files with specified extension'
+  synonyms:
+  - -ext
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[OFFSET]  (-fixBase)           Fix the base for maker notes offsets'
+  synonyms:
+  - -F
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[NUM]                       Increase speed for slow devices'
+  synonyms:
+  - -fast
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[-]TAG                Set file processing order'
+  synonyms:
+  - -fileOrder
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-ignore)            Ignore specified directory name
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: '[NUM] EXPR                    Conditionally process files'
+  synonyms:
+  - -if
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-ignoreMinorErrors) Ignore minor errors and warnings
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-out)               Set output file or directory name
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILE
+  optional: true
+- !Flag
+  description: Overwrite original by renaming tmp file
+  synonyms:
+  - -overwrite_original
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Overwrite original by copying tmp file
+  synonyms:
+  - -overwrite_original_in_place
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-preserve)          Preserve file modification date/time
+  synonyms:
+  - -P
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Password for processing protected files
+  synonyms:
+  - -password
+  args: !SimpleFlagArg
+    name: PASSWD
+  optional: true
+- !Flag
+  description: '[:[TITLE]]              Show file progress count'
+  synonyms:
+  - -progress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-quiet)             Quiet processing
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[.]       (-recurse)           Recursively process subdirectories'
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Brute force XMP scan
+  synonyms:
+  - -scanForXMP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-unknown)           Extract unknown tags
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-unknown2)          Extract unknown binary tags too
+  synonyms:
+  - -U
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-writeMode)         Set mode for writing/creating tags
+  synonyms:
+  - -wm
+  args: !SimpleFlagArg
+    name: MODE
+  optional: true
+- !Flag
+  description: (-zip)               Read/write compressed information
+  synonyms:
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Read command-line arguments from file
+  synonyms:
+  - -@
+  args: !SimpleFlagArg
+    name: ARGFILE
+  optional: true
+- !Flag
+  description: (-pause)             Pause before terminating
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[w|f|wf|g[NUM]|d|x]         List various exiftool capabilities'
+  synonyms:
+  - -list
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print exiftool version number
+  synonyms:
+  - -ver
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[!]              Delete "_original" backups'
+  synonyms:
+  - -delete_original
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Restore from "_original" backups
+  synonyms:
+  - -restore_original
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[[^]=[VAL]]              Set ExifTool API option'
+  synonyms:
+  - -api
+  args: !SimpleFlagArg
+    name: OPT
+  optional: true
+- !Flag
+  description: Define common arguments
+  synonyms:
+  - -common_args
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify configuration file name
+  synonyms:
+  - -config
+  args: !SimpleFlagArg
+    name: CFGFILE
+  optional: true
+- !Flag
+  description: '[NUM] TEXT                  Echo text to stdout or stderr'
+  synonyms:
+  - -echo
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[NUM]                    Execute multiple commands on one line'
+  synonyms:
+  - -execute
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Process a different source file
+  synonyms:
+  - -srcfile
+  args: !SimpleFlagArg
+    name: FMT
+  optional: true
+- !Flag
+  description: Keep reading -@ argfile even after EOF
+  synonyms:
+  - -stay_open
+  args: !SimpleFlagArg
+    name: FLAG
+  optional: true
+- !Flag
+  description: '[[^]=[VAL]]      Set user parameter (API UserParam opt)'
+  synonyms:
+  - -userParam
+  args: !SimpleFlagArg
+    name: PARAM
+  optional: true
+- !Flag
+  description: of List-type tags with multiple items and Shortcut tags
+  synonyms:
+  - -- end
+  - "--\n\n         The"
+  args: !SimpleFlagArg
+    name: values
+  optional: true
+- !Flag
+  description: '- print tag names instead of descriptions'
+  synonyms:
+  - -s1
+  - -s
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: '- no extra spaces to column-align values'
+  synonyms:
+  - -s2
+  - -s
+  - -s
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: only (no tag names)
+  synonyms:
+  - -s3
+  - -s
+  - -s
+  - -s
+  - '- print'
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: '%d%f.txt       # same effect as "-w txt"'
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '/%f_%e.out  # write files to "dir" as "FILE_EXT.out"'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: dir
+  optional: true
+- !Flag
+  description: '/%d%f.txt  # write to "dir2", keeping dir structure'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: dir2
+  optional: true
+- !Flag
+  description: '%c.txt        # write to "a.txt" or "a1.txt" or "a2.txt"...'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: a
+  optional: true
+- !Flag
+  description: '%-cZ.txt      # AZ.txt, A-1Z.txt, A-2Z.txt ...'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: A
+  optional: true
+- !Flag
+  description: '%5c.txt       # B.txt, B00001.txt, B00002.txt ...'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: B
+  optional: true
+- !Flag
+  description: '%.c.txt       # C0.txt, C1.txt, C2.txt ...'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: C
+  optional: true
+- !Flag
+  description: '%-.c.txt      # D-0.txt, D-1.txt, D-2.txt ...'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: D
+  optional: true
+- !Flag
+  description: '%-.4c.txt     # E-0000.txt, E-0001.txt, E-0002.txt ...'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: E
+  optional: true
+- !Flag
+  description: '%-.4nc.txt    # F-0001.txt, F-0002.txt, F-0003.txt ...'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: F
+  optional: true
+- !Flag
+  description: '%+c.txt       # G.txt, G_1.txt G_2.txt ...'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: G
+  optional: true
+- !Flag
+  description: '%-lc.txt      # H.txt, H-b.txt, H-c.txt ...'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: H
+  optional: true
+- !Flag
+  description: '%.3uc.txt    # I.AAA.txt, I.AAB.txt, I.AAC.txt ...'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: I.
+  optional: true
+- !Flag
+  description: '%C%f.txt       # 0rose.txt, 1star.txt, 2jet.txt'
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '%f-%10C.txt    # rose-10.txt, star-11.txt, jet-12.txt'
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '%.3C-%f.txt    # 000-rose.txt, 001-star.txt, 002-jet.txt'
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '%57.4C%f.txt   # 0057rose.txt, 0058star.txt, 0059jet.txt'
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <Copyright $createdate, Phil Harvey
+  synonyms:
+  - -copyright
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '# list all tag names'
+  synonyms:
+  - -list
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':All     # list all EXIF tags'
+  synonyms:
+  - -list
+  - -EXIF
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':time:all # list all XMP tags relating to time'
+  synonyms:
+  - -list
+  - -xmp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':All  # list all writable XMP-dc tags'
+  synonyms:
+  - -listw
+  - -XMP-dc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '# list all supported file extensions'
+  synonyms:
+  - -listf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '# list all recognized file extensions'
+  synonyms:
+  - -listr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '# list all writable file extensions'
+  synonyms:
+  - -listwf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '# list all groups in family 1'
+  synonyms:
+  - -listg1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '# list all deletable groups'
+  synonyms:
+  - -listd
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':All    # list database of EXIF tags in XML format'
+  synonyms:
+  - -listx
+  - -EXIF
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ':All -s  # list short XML database of XMP tags'
+  synonyms:
+  - -listx
+  - -XMP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '%Y%m%d-%H%M%S.%%e dir'
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- exiftool
+subcommands: []
+help_flag: !Flag
+  description: (-htmlFormat)        Use HMTL formatting for output
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

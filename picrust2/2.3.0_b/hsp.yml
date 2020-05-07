@@ -1,0 +1,118 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The full reference tree in newick format containing both study sequences
+    (i.e. ASVs or OTUs) and reference sequences.
+  synonyms:
+  - -t
+  - --tree
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Output table with predicted abundances per study sequence in input
+    tree. If the extension ".gz" is added the table will automatically be gzipped.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: '{16S,COG,EC,KO,PFAM,TIGRFAM,PHENO}, --in_trait {16S,COG,EC,KO,PFAM,TIGRFAM,PHENO}
+    Specifies which default trait table should be used. Use the --observed_trait_table
+    option to input a non- default trait table.'
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The input trait table describing directly observed traits (e.g. sequenced
+    genomes) in tab-delimited format. Necessary if you want to use a custom table.
+  synonyms:
+  - --observed_trait_table
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: 'Number of functions to run at a time on one processor. Note that you
+    should consider how many processes you have specified before changing this option.
+    E.g. if you specify the chunk_size to be the total number of functions, 1 processor
+    will be used even if you specified more so the job will be substantially slower
+    (default: 500).'
+  synonyms:
+  - --chunk_size
+  args: !SimpleFlagArg
+    name: CHUNK_SIZE
+  optional: true
+- !Flag
+  description: 'HSP method to use."mp": predict discrete traits using max parsimony.
+    "emp_prob": predict discrete traits based on empirical state probabilities across
+    tips. "subtree_average": predict continuous traits using subtree averaging. "pic":
+    predict continuous traits with phylogentic independent contrast. "scp": reconstruct
+    continuous traits using squared-change parsimony (default: mp).'
+  synonyms:
+  - -m
+  - --hsp_method
+  args: !ChoiceFlagArg
+    choices:
+    - mp
+    - emp_prob
+    - pic
+    - scp
+    - subtree_average
+  optional: true
+- !Flag
+  description: Calculate NSTI and add to output file.
+  synonyms:
+  - -n
+  - --calculate_NSTI
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Check input trait table before HSP.
+  synonyms:
+  - --check
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of processes to run in parallel (default: 1).'
+  synonyms:
+  - -p
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: 'Seed to make output reproducible, which is necessary for the emp_prob
+    method (default: 100).'
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: SEED
+  optional: true
+- !Flag
+  description: If specified, print out wrapped commands and other details to screen.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- hsp.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

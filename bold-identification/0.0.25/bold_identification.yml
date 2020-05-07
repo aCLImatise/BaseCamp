@@ -1,0 +1,83 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: input file name
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: input file format [fasta]
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: outfile
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: database to search [COX1]
+  synonyms:
+  - -d
+  args: !ChoiceFlagArg
+    choices:
+    - COX1
+    - COX1_SPECIES
+    - COX1_SPECIES_PUBLIC
+    - COX1_L640bp
+    - ITS
+    - MATK_RBCL
+  optional: true
+- !Flag
+  description: how many first top hits will be output. [1]
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Maximum submission time for a sequence, useful for handling TimeOutException.
+    [4]
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: continuous mode, jump over the ones already in "-o" file, will resubmit
+    all the remained. use "-cc" to also jump over the ones in "*.NoBoldMatchError.fasta"
+    file. [0]
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: debug mode output [False]
+  synonyms:
+  - -D
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- bold_identification
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

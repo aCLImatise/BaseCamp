@@ -1,0 +1,3253 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: /BCF manipulation
+  synonyms:
+  - -- VCF
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: /BCF analysis
+  synonyms:
+  - -- VCF
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- bcftools
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: generate CSI-format index for VCF/BCF files [default]
+    synonyms:
+    - -c
+    - --csi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: overwrite index if it already exists
+    synonyms:
+    - -f
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: set minimal interval size for CSI indices to 2^INT [14]
+    synonyms:
+    - -m
+    - --min-shift
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: optional output index file name
+    synonyms:
+    - -o
+    - --output-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: generate TBI-format index for VCF files
+    synonyms:
+    - -t
+    - --tbi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: use multithreading with INT worker threads [0]
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: print number of records based on existing index file
+    synonyms:
+    - -n
+    - --nrecords
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: print per contig stats based on existing index file
+    synonyms:
+    - -s
+    - --stats
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - bcftools
+  - index
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.vcf.gz
+    optional: false
+  named:
+  - !Flag
+    description: 'VCF file or tabix-indexed file with annotations: CHR\tPOS[\tVALUE]+'
+    synonyms:
+    - -a
+    - --annotations
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: matching records by <snps|indels|both|all|some|none>, see man page
+      for details [some]
+    synonyms:
+    - --collapse
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: list of columns in the annotation file, e.g. CHROM,POS,REF,ALT,-,INFO/TAG.
+      See man page for details
+    synonyms:
+    - -c
+    - --columns
+    args: !SimpleFlagArg
+      name: list
+    optional: true
+  - !Flag
+    description: exclude sites for which the expression is true (see man page for
+      details)
+    synonyms:
+    - -e
+    - --exclude
+    args: !SimpleFlagArg
+      name: expr
+    optional: true
+  - !Flag
+    description: continue despite parsing error (at your own risk!)
+    synonyms:
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: lines which should be appended to the VCF header
+    synonyms:
+    - -h
+    - --header-lines
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: '[+]<format>       set ID column, see man page for details'
+    synonyms:
+    - -I
+    - --set-id
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: select sites for which the expression is true (see man page for details)
+    synonyms:
+    - -i
+    - --include
+    args: !SimpleFlagArg
+      name: expr
+    optional: true
+  - !Flag
+    description: leave -i/-e sites unchanged instead of discarding them
+    synonyms:
+    - -k
+    - --keep-sites
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: <tag:type>   merge logic for multiple overlapping regions (see man
+      page for details), EXPERIMENTAL
+    synonyms:
+    - -l
+    - --merge-logic
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[+-]<tag>     add INFO/tag flag to sites which are ("+") or are
+      not ("-") listed in the -a file'
+    synonyms:
+    - -m
+    - --mark-sites
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: do not append version and command line to the header
+    synonyms:
+    - --no-version
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write output to a file [standard output]
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: '<b|u|z|v>    b: compressed BCF, u: uncompressed BCF, z: compressed
+      VCF, v: uncompressed VCF [v]'
+    synonyms:
+    - -O
+    - --output-type
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: restrict to comma-separated list of regions
+    synonyms:
+    - -r
+    - --regions
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: restrict to regions listed in a file
+    synonyms:
+    - -R
+    - --regions-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: 'rename sequences according to map file: from\tto'
+    synonyms:
+    - --rename-chrs
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: '[^]<list>        comma separated list of samples to annotate (or
+      exclude with "^" prefix)'
+    synonyms:
+    - -s
+    - --samples
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[^]<file>   file of samples to annotate (or exclude with "^" prefix)'
+    synonyms:
+    - -S
+    - --samples-file
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: keep memory low by avoiding complexities arising from handling multiple
+      overlapping intervals
+    synonyms:
+    - --single-overlaps
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: list of annotations (e.g. ID,INFO/DP,FORMAT/DP,FILTER) to remove
+      (or keep with "^" prefix). See man page for details
+    synonyms:
+    - -x
+    - --remove
+    args: !SimpleFlagArg
+      name: list
+    optional: true
+  - !Flag
+    description: number of extra output compression threads [0]
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - bcftools
+  - annotate
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: First coordinate of the next file can precede last record of the
+      current file.
+    synonyms:
+    - -a
+    - --allow-overlaps
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do not output PS tag at each site, only at the start of a new phase
+      set block.
+    synonyms:
+    - -c
+    - --compact-PS
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Output duplicate records present in multiple files only once: <snps|indels|both|all|none>'
+    synonyms:
+    - -d
+    - --rm-dups
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: Alias for -d none
+    synonyms:
+    - -D
+    - --remove-duplicates
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Read the list of files from a file.
+    synonyms:
+    - -f
+    - --file-list
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Ligate phased VCFs by matching phase at overlapping haplotypes
+    synonyms:
+    - -l
+    - --ligate
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do not append version and command line to the header
+    synonyms:
+    - --no-version
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Concatenate files without recompression, a header check compatibility
+      is performed
+    synonyms:
+    - -n
+    - --naive
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Same as --naive, but header compatibility is not checked. Dangerous,
+      use with caution.
+    synonyms:
+    - --naive-force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Write output to a file [standard output]
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: '<b|u|z|v>    b: compressed BCF, u: uncompressed BCF, z: compressed
+      VCF, v: uncompressed VCF [v]'
+    synonyms:
+    - -O
+    - --output-type
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Break phase set if phasing quality is lower than <int> [30]
+    synonyms:
+    - -q
+    - --min-PQ
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: Restrict to comma-separated list of regions
+    synonyms:
+    - -r
+    - --regions
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: Restrict to regions listed in a file
+    synonyms:
+    - -R
+    - --regions-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Use multithreading with <int> worker threads [0]
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: <0|1>            Set verbosity level [1]
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - bcftools
+  - concat
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: OPTIONS
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: input_file
+    optional: false
+  named:
+  - !Flag
+    description: exclude sites for which the expression is true
+    synonyms:
+    - -e
+    - --exclude
+    args: !SimpleFlagArg
+      name: expr
+    optional: true
+  - !Flag
+    description: select sites for which the expression is true
+    synonyms:
+    - -i
+    - --include
+    args: !SimpleFlagArg
+      name: expr
+    optional: true
+  - !Flag
+    description: restrict to comma-separated list of regions
+    synonyms:
+    - -r
+    - --regions
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: restrict to regions listed in a file
+    synonyms:
+    - -R
+    - --regions-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: list of samples to include
+    synonyms:
+    - -s
+    - --samples
+    args: !SimpleFlagArg
+      name: list
+    optional: true
+  - !Flag
+    description: file of samples to include
+    synonyms:
+    - -S
+    - --samples-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: similar to -r but streams rather than index-jumps
+    synonyms:
+    - -t
+    - --targets
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: similar to -R but streams rather than index-jumps
+    synonyms:
+    - -T
+    - --targets-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: do not append version and command line to the header
+    synonyms:
+    - --no-version
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output file name [stdout]
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: '<b|u|z|v>    b: compressed BCF, u: uncompressed BCF, z: compressed
+      VCF, v: uncompressed VCF [v]'
+    synonyms:
+    - -O
+    - --output-type
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: use multithreading with <int> worker threads [0]
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: <...>   <prefix>|<gen-file>,<sample-file>
+    synonyms:
+    - -G
+    - --gensample2vcf
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: <...>       <prefix>|<gen-file>,<sample-file>
+    synonyms:
+    - -g
+    - --gensample
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'tag to take values for .gen file: GT,PL,GL,GP [GT]'
+    synonyms:
+    - --tag
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: output chromosome in first column instead of CHROM:POS_REF_ALT
+    synonyms:
+    - --chrom
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'output sex column in the sample-file, input format is: Sample\t[MF]'
+    synonyms:
+    - --sex
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: output VCF IDs in second column instead of CHROM:POS_REF_ALT
+    synonyms:
+    - --vcf-ids
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: expand gVCF reference blocks
+    synonyms:
+    - --gvcf2vcf
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: reference sequence in fasta format
+    synonyms:
+    - -f
+    - --fasta-ref
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: <...>   <prefix>|<hap-file>,<sample-file>
+    synonyms:
+    - --hapsample2vcf
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: <...>       <prefix>|<hap-file>,<sample-file>
+    synonyms:
+    - --hapsample
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: convert haploid genotypes to diploid homozygotes
+    synonyms:
+    - --haploid2diploid
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'output sex column in the sample-file, input format is: Sample\t[MF]'
+    synonyms:
+    - --sex
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: output VCF IDs instead of CHROM:POS_REF_ALT
+    synonyms:
+    - --vcf-ids
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: <...>  <prefix>|<hap-file>,<legend-file>,<sample-file>
+    synonyms:
+    - -H
+    - --haplegendsample2vcf
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: convert haploid genotypes to diploid homozygotes
+    synonyms:
+    - --haploid2diploid
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'output sex column in the sample-file, input format is: Sample\t[MF]'
+    synonyms:
+    - --sex
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: output VCF IDs instead of CHROM:POS_REF_ALT
+    synonyms:
+    - --vcf-ids
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: columns of the input tsv file [ID,CHROM,POS,AA]
+    synonyms:
+    - -c
+    - --columns
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: reference sequence in fasta format
+    synonyms:
+    - -f
+    - --fasta-ref
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: list of sample names
+    synonyms:
+    - -s
+    - --samples
+    args: !SimpleFlagArg
+      name: list
+    optional: true
+  - !Flag
+    description: file of sample names
+    synonyms:
+    - -S
+    - --samples-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  command:
+  - bcftools
+  - convert
+  subcommands: []
+  help_flag: !Flag
+    description: <...>      <prefix>|<hap-file>,<legend-file>,<sample-file>
+    synonyms:
+    - -h
+    - --haplegendsample
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: treat as identical records with <snps|indels|both|all|some|none>,
+      see man page for details [none]
+    synonyms:
+    - -c
+    - --collapse
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: output positions present only in the first file but missing in the
+      others
+    synonyms:
+    - -C
+    - --complement
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: exclude sites for which the expression is true
+    synonyms:
+    - -e
+    - --exclude
+    args: !SimpleFlagArg
+      name: expr
+    optional: true
+  - !Flag
+    description: require at least one of the listed FILTER strings (e.g. "PASS,.")
+    synonyms:
+    - -f
+    - --apply-filters
+    args: !SimpleFlagArg
+      name: list
+    optional: true
+  - !Flag
+    description: include only sites for which the expression is true
+    synonyms:
+    - -i
+    - --include
+    args: !SimpleFlagArg
+      name: expr
+    optional: true
+  - !Flag
+    description: do not append version and command line to the header
+    synonyms:
+    - --no-version
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[+-=~]<int>      output positions present in this many (=), this
+      many or more (+), this many or fewer (-), the exact (~) files'
+    synonyms:
+    - -n
+    - --nfiles
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write output to a file [standard output]
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: '<b|u|z|v>   b: compressed BCF, u: uncompressed BCF, z: compressed
+      VCF, v: uncompressed VCF [v]'
+    synonyms:
+    - -O
+    - --output-type
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: if given, subset each of the input files accordingly, see also -w
+    synonyms:
+    - -p
+    - --prefix
+    args: !SimpleFlagArg
+      name: dir
+    optional: true
+  - !Flag
+    description: restrict to comma-separated list of regions
+    synonyms:
+    - -r
+    - --regions
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: restrict to regions listed in a file
+    synonyms:
+    - -R
+    - --regions-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: similar to -r but streams rather than index-jumps
+    synonyms:
+    - -t
+    - --targets
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: similar to -R but streams rather than index-jumps
+    synonyms:
+    - -T
+    - --targets-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: use multithreading with <int> worker threads [0]
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: list of files to write with -p given as 1-based indexes. By default,
+      all files are written
+    synonyms:
+    - -w
+    - --write
+    args: !SimpleFlagArg
+      name: list
+    optional: true
+  command:
+  - bcftools
+  - isec
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: resolve duplicate sample names
+    synonyms:
+    - --force-samples
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: print only the merged header and exit
+    synonyms:
+    - --print-header
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: use the provided header
+    synonyms:
+    - --use-header
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: require at least one of the listed FILTER strings (e.g. "PASS,.")
+    synonyms:
+    - -f
+    - --apply-filters
+    args: !SimpleFlagArg
+      name: list
+    optional: true
+  - !Flag
+    description: <x|+>           remove filters if some input is PASS ("x"), or apply
+      all filters ("+") [+]
+    synonyms:
+    - -F
+    - --filter-logic
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: <-|ref.fa>              merge gVCF blocks, INFO/END tag is expected.
+      Implies -i QS:sum,MinDP:min,I16:sum,IDV:max,IMF:max
+    synonyms:
+    - -g
+    - --gvcf
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: <tag:method,..>   rules for merging INFO fields (method is one of
+      sum,avg,min,max,join) or "-" to turn off the default [DP:sum,DP4:sum]
+    synonyms:
+    - -i
+    - --info-rules
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: read file names from the file
+    synonyms:
+    - -l
+    - --file-list
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: allow multiallelic records for <snps|indels|both|all|none|id>, see
+      man page for details [both]
+    synonyms:
+    - -m
+    - --merge
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: do not append version and command line to the header
+    synonyms:
+    - --no-version
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write output to a file [standard output]
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: <b|u|z|v>        'b' compressed BCF; 'u' uncompressed BCF; 'z' compressed
+      VCF; 'v' uncompressed VCF [v]
+    synonyms:
+    - -O
+    - --output-type
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: restrict to comma-separated list of regions
+    synonyms:
+    - -r
+    - --regions
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: restrict to regions listed in a file
+    synonyms:
+    - -R
+    - --regions-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: use multithreading with <int> worker threads [0]
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - bcftools
+  - merge
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.vcf.gz
+    optional: false
+  named:
+  - !Flag
+    description: <e|w|x|s>         check REF alleles and exit (e), warn (w), exclude
+      (x), or set (s) bad sites [e]
+    synonyms:
+    - -c
+    - --check-ref
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: remove duplicate lines of the same type.
+    synonyms:
+    - -D
+    - --remove-duplicates
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: remove duplicate snps|indels|both|all|exact
+    synonyms:
+    - -d
+    - --rm-dup
+    args: !SimpleFlagArg
+      name: type
+    optional: true
+  - !Flag
+    description: reference sequence
+    synonyms:
+    - -f
+    - --fasta-ref
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: try to proceed even if malformed tags are encountered. Experimental,
+      use at your own risk
+    synonyms:
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '<-|+>[type]   split multiallelics (-) or join biallelics (+), type:
+      snps|indels|both|any [both]'
+    synonyms:
+    - -m
+    - --multiallelics
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: do not append version and command line to the header
+    synonyms:
+    - --no-version
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: do not normalize indels (with -m or -c s)
+    synonyms:
+    - -N
+    - --do-not-normalize
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write output to a file [standard output]
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: "'b' compressed BCF; 'u' uncompressed BCF; 'z' compressed VCF; 'v'\
+      \ uncompressed VCF [v]"
+    synonyms:
+    - -O
+    - --output-type
+    args: !SimpleFlagArg
+      name: type
+    optional: true
+  - !Flag
+    description: restrict to comma-separated list of regions
+    synonyms:
+    - -r
+    - --regions
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: restrict to regions listed in a file
+    synonyms:
+    - -R
+    - --regions-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: when merging (-m+), merged site is PASS only if all sites being merged
+      PASS
+    synonyms:
+    - -s
+    - --strict-filter
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: similar to -r but streams rather than index-jumps
+    synonyms:
+    - -t
+    - --targets
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: similar to -R but streams rather than index-jumps
+    synonyms:
+    - -T
+    - --targets-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: use multithreading with <int> worker threads [0]
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: buffer for sorting lines which changed position during realignment
+      [1000]
+    synonyms:
+    - -w
+    - --site-win
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - bcftools
+  - norm
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: exclude sites for which the expression is true
+    synonyms:
+    - -e
+    - --exclude
+    args: !SimpleFlagArg
+      name: expr
+    optional: true
+  - !Flag
+    description: select sites for which the expression is true
+    synonyms:
+    - -i
+    - --include
+    args: !SimpleFlagArg
+      name: expr
+    optional: true
+  - !Flag
+    description: restrict to comma-separated list of regions
+    synonyms:
+    - -r
+    - --regions
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: restrict to regions listed in a file
+    synonyms:
+    - -R
+    - --regions-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: similar to -r but streams rather than index-jumps
+    synonyms:
+    - -t
+    - --targets
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: similar to -R but streams rather than index-jumps
+    synonyms:
+    - -T
+    - --targets-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: do not append version and command line to the header
+    synonyms:
+    - --no-version
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write output to a file [standard output]
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: "'b' compressed BCF; 'u' uncompressed BCF; 'z' compressed VCF; 'v'\
+      \ uncompressed VCF [v]"
+    synonyms:
+    - -O
+    - --output-type
+    args: !SimpleFlagArg
+      name: type
+    optional: true
+  - !Flag
+    description: use multithreading with <int> worker threads [0]
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: list available plugins. See BCFTOOLS_PLUGINS environment variable
+      and man page for details
+    synonyms:
+    - -l
+    - --list-plugins
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: print verbose information, -vv increases verbosity
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - bcftools
+  - plugin
+  subcommands: []
+  help_flag: !Flag
+    description: list plugin's options
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: print version string and exit
+    synonyms:
+    - -V
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: exclude sites for which the expression is true (see man page for
+      details)
+    synonyms:
+    - -e
+    - --exclude
+    args: !SimpleFlagArg
+      name: expr
+    optional: true
+  - !Flag
+    description: see man page for details
+    synonyms:
+    - -f
+    - --format
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: print header
+    synonyms:
+    - -H
+    - --print-header
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: select sites for which the expression is true (see man page for details)
+    synonyms:
+    - -i
+    - --include
+    args: !SimpleFlagArg
+      name: expr
+    optional: true
+  - !Flag
+    description: print the list of samples and exit
+    synonyms:
+    - -l
+    - --list-samples
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output file name [stdout]
+    synonyms:
+    - -o
+    - --output-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: restrict to comma-separated list of regions
+    synonyms:
+    - -r
+    - --regions
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: restrict to regions listed in a file
+    synonyms:
+    - -R
+    - --regions-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: list of samples to include
+    synonyms:
+    - -s
+    - --samples
+    args: !SimpleFlagArg
+      name: list
+    optional: true
+  - !Flag
+    description: file of samples to include
+    synonyms:
+    - -S
+    - --samples-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: similar to -r but streams rather than index-jumps
+    synonyms:
+    - -t
+    - --targets
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: similar to -R but streams rather than index-jumps
+    synonyms:
+    - -T
+    - --targets-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: print "." for undefined tags
+    synonyms:
+    - -u
+    - --allow-undef-tags
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: process multiple VCFs listed in the file
+    synonyms:
+    - -v
+    - --vcf-list
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  command:
+  - bcftools
+  - query
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: OPTIONS
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: in.vcf.gz
+    optional: false
+  named:
+  - !Flag
+    description: update sequences and their lengths from the .fai file
+    synonyms:
+    - -f
+    - --fai
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: new header
+    synonyms:
+    - -h
+    - --header
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: write output to a file [standard output]
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: new sample names
+    synonyms:
+    - -s
+    - --samples
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: use multithreading with <int> worker threads (BCF only) [0]
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - bcftools
+  - reheader
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: OPTIONS
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: FILE.vcf
+    optional: false
+  named:
+  - !Flag
+    description: '[kMG]    maximum memory to use [768M]'
+    synonyms:
+    - -m
+    - --max-mem
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: output file name [stdout]
+    synonyms:
+    - -o
+    - --output-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: '<b|u|z|v>   b: compressed BCF, u: uncompressed BCF, z: compressed
+      VCF, v: uncompressed VCF [v]'
+    synonyms:
+    - -O
+    - --output-type
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: temporary files [/tmp/bcftools-sort.XXXXXX]
+    synonyms:
+    - -T
+    - --temp-dir
+    args: !SimpleFlagArg
+      name: dir
+    optional: true
+  command:
+  - bcftools
+  - sort
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ',   --drop-genotypes              drop individual genotype information
+      (after subsetting if -s option set)'
+    synonyms:
+    - -G
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ',   --compression-level [0-9]     compression level: 0 uncompressed,
+      1 best speed, 9 best compression [-1] --no-version                  do not append
+      version and command line to the header'
+    synonyms:
+    - -l
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ',   --output-file <file>          output file name [stdout]'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ',   --output-type <b|u|z|v>       b: compressed BCF, u: uncompressed
+      BCF, z: compressed VCF, v: uncompressed VCF [v]'
+    synonyms:
+    - -O
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: restrict to comma-separated list of regions
+    synonyms:
+    - -r
+    - --regions
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: restrict to regions listed in a file
+    synonyms:
+    - -R
+    - --regions-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: '[^]<region>           similar to -r but streams rather than index-jumps.
+      Exclude regions with "^" prefix'
+    synonyms:
+    - -t
+    - --targets
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[^]<file>        similar to -R but streams rather than index-jumps.
+      Exclude regions with "^" prefix'
+    synonyms:
+    - -T
+    - --targets-file
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: use multithreading with <int> worker threads [0]
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: trim ALT alleles not seen in the genotype fields (or their subset
+      with -s/-S)
+    synonyms:
+    - -a
+    - --trim-alt-alleles
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: do not (re)calculate INFO fields for the subset (currently INFO/AC
+      and INFO/AN)
+    synonyms:
+    - -I
+    - --no-update
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[^]<list>       comma separated list of samples to include (or exclude
+      with "^" prefix)'
+    synonyms:
+    - -s
+    - --samples
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[^]<file>  file of samples to include (or exclude with "^" prefix)'
+    synonyms:
+    - -S
+    - --samples-file
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: only warn about unknown subset samples
+    synonyms:
+    - --force-samples
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: /C, --min-ac/--max-ac <int>[:<type>]      minimum/maximum count for
+      non-reference (nref), 1st alternate (alt1), least frequent (minor), most frequent
+      (major) or sum of all but most frequent (nonmajor) alleles [nref]
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ',   --apply-filters <list>                require at least one of
+      the listed FILTER strings (e.g. "PASS,.")'
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ',   --genotype [^]<hom|het|miss>          require one or more hom/het/missing
+      genotype or, if prefixed with "^", exclude sites with hom/het/missing genotypes'
+    synonyms:
+    - -g
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: /e, --include/--exclude <expr>            select/exclude sites for
+      which the expression is true (see man page for details)
+    synonyms:
+    - -i
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: /n, --known/--novel                       select known/novel sites
+      only (ID is not/is '.')
+    synonyms:
+    - -k
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: /M, --min-alleles/--max-alleles <int>     minimum/maximum number
+      of alleles listed in REF and ALT (e.g. -m2 -M2 for biallelic sites)
+    synonyms:
+    - -m
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: /P, --phased/--exclude-phased             select/exclude sites where
+      all samples are phased
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: /Q, --min-af/--max-af <float>[:<type>]    minimum/maximum frequency
+      for non-reference (nref), 1st alternate (alt1), least frequent (minor), most
+      frequent (major) or sum of all but most frequent (nonmajor) alleles [nref]
+    synonyms:
+    - -q
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: /U, --uncalled/--exclude-uncalled         select/exclude sites without
+      a called genotype
+    synonyms:
+    - -u
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '/V, --types/--exclude-types <list>        select/exclude comma-separated
+      list of variant types: snps,indels,mnps,ref,bnd,other [null]'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: /X, --private/--exclude-private           select/exclude sites where
+      the non-reference alleles are exclusive (private) to the subset samples
+    synonyms:
+    - -x
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - bcftools
+  - view
+  subcommands: []
+  help_flag: !Flag
+    description: /H, --header-only/--no-header     print the header only/suppress
+      the header in VCF output
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.vcf.gz
+    optional: false
+  named:
+  - !Flag
+    description: do not append version and command line to the header
+    synonyms:
+    - --no-version
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write output to a file [standard output]
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: "<b|u|z|v>     output type: 'b' compressed BCF; 'u' uncompressed\
+      \ BCF; 'z' compressed VCF; 'v' uncompressed VCF [v]"
+    synonyms:
+    - -O
+    - --output-type
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "[?]      predefined ploidy, 'list' to print available settings,\
+      \ append '?' for details"
+    synonyms:
+    - --ploidy
+    args: !SimpleFlagArg
+      name: assembly
+    optional: true
+  - !Flag
+    description: space/tab-delimited list of CHROM,FROM,TO,SEX,PLOIDY
+    synonyms:
+    - --ploidy-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: restrict to comma-separated list of regions
+    synonyms:
+    - -r
+    - --regions
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: restrict to regions listed in a file
+    synonyms:
+    - -R
+    - --regions-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: list of samples to include [all samples]
+    synonyms:
+    - -s
+    - --samples
+    args: !SimpleFlagArg
+      name: list
+    optional: true
+  - !Flag
+    description: PED file or a file with an optional column with sex (see man page
+      for details) [all samples]
+    synonyms:
+    - -S
+    - --samples-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: similar to -r but streams rather than index-jumps
+    synonyms:
+    - -t
+    - --targets
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: similar to -R but streams rather than index-jumps
+    synonyms:
+    - -T
+    - --targets-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: use multithreading with <int> worker threads [0]
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: keep all possible alternate alleles at variant sites
+    synonyms:
+    - -A
+    - --keep-alts
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'output format fields: GQ,GP (lowercase allowed) []'
+    synonyms:
+    - -f
+    - --format-fields
+    args: !SimpleFlagArg
+      name: list
+    optional: true
+  - !Flag
+    description: <AN,AC>       use prior allele frequencies
+    synonyms:
+    - -F
+    - --prior-freqs
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: <file|->    group samples by population (file with "sample\tgroup")
+      or "-" for single-sample calling
+    synonyms:
+    - -G
+    - --group-samples
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ',[...]          group non-variant sites into gVCF blocks by minimum
+      per-sample DP'
+    synonyms:
+    - -g
+    - --gvcf
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: output also sites missed by mpileup but present in -T
+    synonyms:
+    - -i
+    - --insert-missed
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: keep sites with masked reference allele (REF=N)
+    synonyms:
+    - -M
+    - --keep-masked-ref
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: skip indels/snps
+    synonyms:
+    - -V
+    - --skip-variants
+    args: !SimpleFlagArg
+      name: type
+    optional: true
+  - !Flag
+    description: output variant sites only
+    synonyms:
+    - -v
+    - --variants-only
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: the original calling method (conflicts with -m)
+    synonyms:
+    - -c
+    - --consensus-caller
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'one of: alleles, trio (see manual)'
+    synonyms:
+    - -C
+    - --constrain
+    args: !SimpleFlagArg
+      name: str
+    optional: true
+  - !Flag
+    description: alternative model for multiallelic and rare-variant calling (conflicts
+      with -c)
+    synonyms:
+    - -m
+    - --multiallelic-caller
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ',[...]  likelihood of novel mutation for constrained trio calling,
+      see man page for details [1e-8,1e-9,1e-9]'
+    synonyms:
+    - -n
+    - --novel-rate
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: variant if P(ref|D)<FLOAT with -c [0.5]
+    synonyms:
+    - -p
+    - --pval-threshold
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: mutation rate (use bigger for greater sensitivity), use with -m [1.1e-3]
+    synonyms:
+    - -P
+    - --prior
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  command:
+  - bcftools
+  - call
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: OPTIONS
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: file.vcf.gz
+    optional: false
+  named:
+  - !Flag
+    description: write a chain file for liftover
+    synonyms:
+    - -c
+    - --chain
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: exclude sites for which the expression is true (see man page for
+      details)
+    synonyms:
+    - -e
+    - --exclude
+    args: !SimpleFlagArg
+      name: expr
+    optional: true
+  - !Flag
+    description: reference sequence in fasta format
+    synonyms:
+    - -f
+    - --fasta-ref
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: 'choose which allele to use from the FORMAT/GT field, note the codes
+      are case-insensitive: 1: first allele from GT, regardless of phasing 2: second
+      allele from GT, regardless of phasing R: REF allele in het genotypes A: ALT
+      allele LR,LA: longer allele and REF/ALT if equal length SR,SA: shorter allele
+      and REF/ALT if equal length 1pIu,2pIu: first/second allele for phased and IUPAC
+      code for unphased GTs'
+    synonyms:
+    - -H
+    - --haplotype
+    args: !SimpleFlagArg
+      name: which
+    optional: true
+  - !Flag
+    description: select sites for which the expression is true (see man page for details)
+    synonyms:
+    - -i
+    - --include
+    args: !SimpleFlagArg
+      name: expr
+    optional: true
+  - !Flag
+    description: output variants in the form of IUPAC ambiguity codes
+    synonyms:
+    - -I
+    - --iupac-codes
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: replace regions with N
+    synonyms:
+    - -m
+    - --mask
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: output <char> instead of skipping the missing genotypes
+    synonyms:
+    - -M
+    - --missing
+    args: !SimpleFlagArg
+      name: char
+    optional: true
+  - !Flag
+    description: write output to a file [standard output]
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: prefix to add to output sequence names
+    synonyms:
+    - -p
+    - --prefix
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: apply variants of the given sample
+    synonyms:
+    - -s
+    - --sample
+    args: !SimpleFlagArg
+      name: name
+    optional: true
+  command:
+  - bcftools
+  - consensus
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: OPTIONS
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: file.vcf
+    optional: false
+  named:
+  - !Flag
+    description: plot aberrant chromosomes with quality at least 'float'
+    synonyms:
+    - -p
+    - --plot-threshold
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: restrict to comma-separated list of regions
+    synonyms:
+    - -r
+    - --regions
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: restrict to regions listed in a file
+    synonyms:
+    - -R
+    - --regions-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: query samply name
+    synonyms:
+    - -s
+    - --query-sample
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: similar to -r but streams rather than index-jumps
+    synonyms:
+    - -t
+    - --targets
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: similar to -R but streams rather than index-jumps
+    synonyms:
+    - -T
+    - --targets-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: <float[,float]>     fraction of aberrant cells in query and control
+      [1.0,1.0]
+    synonyms:
+    - -a
+    - --aberrant
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: relative contribution from BAF [1]
+    synonyms:
+    - -b
+    - --BAF-weight
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: <float[,float]>      expected BAF deviation in query and control
+      [0.04,0.04]
+    synonyms:
+    - -d
+    - --BAF-dev
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: uniform error probability [1e-4]
+    synonyms:
+    - -e
+    - --err-prob
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: <float[,float]>      expected LRR deviation [0.2,0.2]
+    synonyms:
+    - -k
+    - --LRR-dev
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: relative contribution from LRR [0.2]
+    synonyms:
+    - -l
+    - --LRR-weight
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: window of LRR moving average smoothing [10]
+    synonyms:
+    - -L
+    - --LRR-smooth-win
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: estimate fraction of aberrant cells down to <float> [1.0]
+    synonyms:
+    - -O
+    - --optimize
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: prior probability of -s/-c being the same [0.5]
+    synonyms:
+    - -P
+    - --same-prob
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: P(x|y) transition probability [1e-9]
+    synonyms:
+    - -x
+    - --xy-prob
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  command:
+  - bcftools
+  - cnv
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.vcf
+    optional: false
+  named:
+  - !Flag
+    description: reference file in fasta format
+    synonyms:
+    - -f
+    - --fasta-ref
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: gff3 annotation file
+    synonyms:
+    - -g
+    - --gff-annot
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: annotate with abbreviated protein-changing predictions
+    synonyms:
+    - -b
+    - --brief-predictions
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: use this tag instead of the default BCSQ
+    synonyms:
+    - -c
+    - --custom-tag
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: localized predictions, consider only one VCF record at a time
+    synonyms:
+    - -l
+    - --local-csq
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: maximum number of consequences to consider per site [16]
+    synonyms:
+    - -n
+    - --ncsq
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: '<a|m|r|R|s>         how to handle unphased heterozygous genotypes:
+      [r] a: take GTs as is, create haplotypes regardless of phase (0/1 -> 0|1) m:
+      merge *all* GTs into a single haplotype (0/1 -> 1, 1/2 -> 1) r: require phased
+      GTs, throw an error on unphased het GTs R: create non-reference haplotypes if
+      possible (0/1 -> 1|1, 1/2 -> 1|2) s: skip unphased hets'
+    synonyms:
+    - -p
+    - --phase
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: exclude sites for which the expression is true
+    synonyms:
+    - -e
+    - --exclude
+    args: !SimpleFlagArg
+      name: expr
+    optional: true
+  - !Flag
+    description: run even if some sanity checks fail
+    synonyms:
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: select sites for which the expression is true
+    synonyms:
+    - -i
+    - --include
+    args: !SimpleFlagArg
+      name: expr
+    optional: true
+  - !Flag
+    description: do not append version and command line to the header
+    synonyms:
+    - --no-version
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write output to a file [standard output]
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: '<b|u|z|v|t>   b: compressed BCF, u: uncompressed BCF, z: compressed
+      VCF v: uncompressed VCF, t: plain tab-delimited text output [v]'
+    synonyms:
+    - -O
+    - --output-type
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: restrict to comma-separated list of regions
+    synonyms:
+    - -r
+    - --regions
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: restrict to regions listed in a file
+    synonyms:
+    - -R
+    - --regions-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: <-|list>          samples to include or "-" to apply all variants
+      and ignore samples
+    synonyms:
+    - -s
+    - --samples
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: samples to include
+    synonyms:
+    - -S
+    - --samples-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: similar to -r but streams rather than index-jumps
+    synonyms:
+    - -t
+    - --targets
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: similar to -R but streams rather than index-jumps
+    synonyms:
+    - -T
+    - --targets-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: use multithreading with <int> worker threads [0]
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: verbosity level 0-2 [1]
+    synonyms:
+    - -v
+    - --verbose
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - bcftools
+  - csq
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.vcf.gz
+    optional: false
+  named:
+  - !Flag
+    description: exclude sites for which the expression is true (see man page for
+      details)
+    synonyms:
+    - -e
+    - --exclude
+    args: !SimpleFlagArg
+      name: expr
+    optional: true
+  - !Flag
+    description: filter SNPs within <int> base pairs of an indel
+    synonyms:
+    - -g
+    - --SnpGap
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: filter clusters of indels separated by <int> or fewer base pairs
+      allowing only one to pass
+    synonyms:
+    - -G
+    - --IndelGap
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: include only sites for which the expression is true (see man page
+      for details
+    synonyms:
+    - -i
+    - --include
+    args: !SimpleFlagArg
+      name: expr
+    optional: true
+  - !Flag
+    description: '[+x]               "+": do not replace but add to existing FILTER;
+      "x": reset filters at sites which pass'
+    synonyms:
+    - -m
+    - --mode
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: do not append version and command line to the header
+    synonyms:
+    - --no-version
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write output to a file [standard output]
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: '<b|u|z|v>   b: compressed BCF, u: uncompressed BCF, z: compressed
+      VCF, v: uncompressed VCF [v]'
+    synonyms:
+    - -O
+    - --output-type
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: restrict to comma-separated list of regions
+    synonyms:
+    - -r
+    - --regions
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: restrict to regions listed in a file
+    synonyms:
+    - -R
+    - --regions-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: annotate FILTER column with <string> or unique filter name ("Filter%d")
+      made up by the program ("+")
+    synonyms:
+    - -s
+    - --soft-filter
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: <.|0>           set genotypes of failed samples to missing (.) or
+      ref (0)
+    synonyms:
+    - -S
+    - --set-GTs
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: similar to -r but streams rather than index-jumps
+    synonyms:
+    - -t
+    - --targets
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: similar to -R but streams rather than index-jumps
+    synonyms:
+    - -T
+    - --targets-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: use multithreading with <int> worker threads [0]
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - bcftools
+  - filter
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: query.vcf.gz
+    optional: false
+  named:
+  - !Flag
+    description: output comparison for all sites
+    synonyms:
+    - -a
+    - --all-sites
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: <min,max>         min inter- and max intra-sample error [0.23,-0.3]
+    synonyms:
+    - -c
+    - --cluster
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: genotypes to compare against
+    synonyms:
+    - -g
+    - --genotypes
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: use GTs, ignore PLs, using <int> for unseen genotypes [99]
+    synonyms:
+    - -G
+    - --GTs-only
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: homozygous genotypes only (useful for low coverage data)
+    synonyms:
+    - -H
+    - --homs-only
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: plot
+    synonyms:
+    - -p
+    - --plot
+    args: !SimpleFlagArg
+      name: prefix
+    optional: true
+  - !Flag
+    description: restrict to comma-separated list of regions
+    synonyms:
+    - -r
+    - --regions
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: restrict to regions listed in a file
+    synonyms:
+    - -R
+    - --regions-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: query sample (by default the first sample is checked)
+    synonyms:
+    - -s
+    - --query-sample
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: target sample in the -g file (used only for plotting)
+    synonyms:
+    - -S
+    - --target-sample
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: similar to -r but streams rather than index-jumps
+    synonyms:
+    - -t
+    - --targets
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: similar to -R but streams rather than index-jumps
+    synonyms:
+    - -T
+    - --targets-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  command:
+  - bcftools
+  - gtcheck
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: do not discard anomalous read pairs
+    synonyms:
+    - -A
+    - --count-orphans
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: list of input BAM filenames, one per line
+    synonyms:
+    - -b
+    - --bam-list
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: disable BAQ (per-Base Alignment Quality)
+    synonyms:
+    - -B
+    - --no-BAQ
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: adjust mapping quality; recommended:50, disable:0 [0]
+    synonyms:
+    - -C
+    - --adjust-MQ
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: max raw per-file depth; avoids excessive memory usage [250]
+    synonyms:
+    - -d
+    - --max-depth
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: recalculate BAQ on the fly, ignore existing BQs
+    synonyms:
+    - -E
+    - --redo-BAQ
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: faidx indexed reference sequence file
+    synonyms:
+    - -f
+    - --fasta-ref
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: do not require fasta reference file
+    synonyms:
+    - --no-reference
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: select or exclude read groups listed in the file
+    synonyms:
+    - -G
+    - --read-groups
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: skip alignments with mapQ smaller than INT [0]
+    synonyms:
+    - -q
+    - --min-MQ
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: skip bases with baseQ/BAQ smaller than INT [13]
+    synonyms:
+    - -Q
+    - --min-BQ
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: '[,...] comma separated list of regions in which pileup is generated'
+    synonyms:
+    - -r
+    - --regions
+    args: !SimpleFlagArg
+      name: REG
+    optional: true
+  - !Flag
+    description: restrict to regions listed in a file
+    synonyms:
+    - -R
+    - --regions-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: ignore RG tags (one BAM = one sample)
+    synonyms:
+    - --ignore-RG
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '|INT  required flags: skip reads with mask bits unset []'
+    synonyms:
+    - --rf
+    - --incl-flags
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: '|INT  filter flags: skip reads with mask bits set [UNMAP,SECONDARY,QCFAIL,DUP]'
+    synonyms:
+    - --ff
+    - --excl-flags
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: comma separated list of samples to include
+    synonyms:
+    - -s
+    - --samples
+    args: !SimpleFlagArg
+      name: LIST
+    optional: true
+  - !Flag
+    description: file of samples to include
+    synonyms:
+    - -S
+    - --samples-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: '[,...] similar to -r but streams rather than index-jumps'
+    synonyms:
+    - -t
+    - --targets
+    args: !SimpleFlagArg
+      name: REG
+    optional: true
+  - !Flag
+    description: similar to -R but streams rather than index-jumps
+    synonyms:
+    - -T
+    - --targets-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: disable read-pair overlap detection
+    synonyms:
+    - -x
+    - --ignore-overlaps
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: optional tags to output; '?' to list []
+    synonyms:
+    - -a
+    - --annotate
+    args: !SimpleFlagArg
+      name: LIST
+    optional: true
+  - !Flag
+    description: '[,...]    group non-variant sites into gVCF blocks according to
+      minimum per-sample DP'
+    synonyms:
+    - -g
+    - --gvcf
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: do not append version and command line to the header
+    synonyms:
+    - --no-version
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write output to FILE [standard output]
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: "'b' compressed BCF; 'u' uncompressed BCF; 'z' compressed VCF; 'v'\
+      \ uncompressed VCF [v]"
+    synonyms:
+    - -O
+    - --output-type
+    args: !SimpleFlagArg
+      name: TYPE
+    optional: true
+  - !Flag
+    description: use multithreading with INT worker threads [0]
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Phred-scaled gap extension seq error probability [20]
+    synonyms:
+    - -e
+    - --ext-prob
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: minimum fraction of gapped reads [0.002]
+    synonyms:
+    - -F
+    - --gap-frac
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: coefficient for homopolymer errors [100]
+    synonyms:
+    - -h
+    - --tandem-qual
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: do not perform indel calling
+    synonyms:
+    - -I
+    - --skip-indels
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: maximum per-file depth for INDEL calling [250]
+    synonyms:
+    - -L
+    - --max-idepth
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: minimum number gapped reads for indel candidates [1]
+    synonyms:
+    - -m
+    - --min-ireads
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Phred-scaled gap open seq error probability [40]
+    synonyms:
+    - -o
+    - --open-prob
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: apply -m and -F per-sample for increased sensitivity
+    synonyms:
+    - -p
+    - --per-sample-mF
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: comma separated list of platforms for indels [all]
+    synonyms:
+    - -P
+    - --platforms
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  command:
+  - bcftools
+  - mpileup
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: OPTIONS
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: file.vcf
+    optional: false
+  named:
+  - !Flag
+    description: minimum peak size (0-1, larger is stricter) [0.1]
+    synonyms:
+    - -b
+    - --peak-size
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: penalty for increasing CN (0-1, larger is stricter) [0.7]
+    synonyms:
+    - -c
+    - --cn-penalty
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: goodness of fit threshold (>0, smaller is stricter) [3.3]
+    synonyms:
+    - -f
+    - --fit-th
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: include the AA peak in CN2 and CN3 evaluation
+    synonyms:
+    - -i
+    - --include-aa
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: minimum distinguishable fraction of aberrant cells [0.1]
+    synonyms:
+    - -m
+    - --min-fraction
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: peak symmetry threshold (0-1, larger is stricter) [0.5]
+    synonyms:
+    - -p
+    - --peak-symmetry
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  command:
+  - bcftools
+  - polysomy
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.vcf.gz
+    optional: false
+  named:
+  - !Flag
+    description: if AF is not known, use this allele frequency [skip]
+    synonyms:
+    - --AF-dflt
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: use TAG for allele frequency
+    synonyms:
+    - --AF-tag
+    args: !SimpleFlagArg
+      name: TAG
+    optional: true
+  - !Flag
+    description: read allele frequencies from file (CHR\tPOS\tREF\tALT\tAF)
+    synonyms:
+    - --AF-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: <int[,int]>      buffer size and the number of overlapping sites,
+      0 for unlimited [0] If the first number is negative, it is interpreted as the
+      maximum memory to use, in MB. The default overlap is set to roughly 1% of the
+      buffer size.
+    synonyms:
+    - -b
+    - --buffer-size
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[TAG],<file>     estimate AF from FORMAT/TAG (GT or PL) of all samples
+      ("-") or samples listed in <file>. If TAG is not given, the frequency is estimated
+      from GT by default'
+    synonyms:
+    - -e
+    - --estimate-AF
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: exclude sites for which the expression is true
+    synonyms:
+    - --exclude
+    args: !SimpleFlagArg
+      name: expr
+    optional: true
+  - !Flag
+    description: use GTs and ignore PLs, instead using <float> for PL of the two least
+      likely genotypes. Safe value to use is 30 to account for GT errors.
+    synonyms:
+    - -G
+    - --GTs-only
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: select sites for which the expression is true
+    synonyms:
+    - --include
+    args: !SimpleFlagArg
+      name: expr
+    optional: true
+  - !Flag
+    description: skip hom-ref genotypes (0/0)
+    synonyms:
+    - -i
+    - --ignore-homref
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: skip indels as their genotypes are enriched for errors
+    synonyms:
+    - -I
+    - --skip-indels
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: genetic map in IMPUTE2 format, single file or mask, where string
+      "{CHROM}" is replaced with chromosome name
+    synonyms:
+    - -m
+    - --genetic-map
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: constant recombination rate per bp
+    synonyms:
+    - -M
+    - --rec-rate
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: write output to a file [standard output]
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: '[srz]            output s:per-site, r:regions, z:compressed [sr]'
+    synonyms:
+    - -O
+    - --output-type
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: restrict to comma-separated list of regions
+    synonyms:
+    - -r
+    - --regions
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: restrict to regions listed in a file
+    synonyms:
+    - -R
+    - --regions-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: list of samples to analyze [all samples]
+    synonyms:
+    - -s
+    - --samples
+    args: !SimpleFlagArg
+      name: list
+    optional: true
+  - !Flag
+    description: file of samples to analyze [all samples]
+    synonyms:
+    - -S
+    - --samples-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: similar to -r but streams rather than index-jumps
+    synonyms:
+    - -t
+    - --targets
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: similar to -R but streams rather than index-jumps
+    synonyms:
+    - -T
+    - --targets-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: use multithreading with <int> worker threads [0]
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: P(AZ|HW) transition probability from HW (Hardy-Weinberg) to AZ (autozygous)
+      state [6.7e-8]
+    synonyms:
+    - -a
+    - --hw-to-az
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: P(HW|AZ) transition probability from AZ to HW state [5e-9]
+    synonyms:
+    - -H
+    - --az-to-hw
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: estimate HMM parameters, <float> is the convergence threshold, e.g.
+      1e-10 (experimental)
+    synonyms:
+    - -V
+    - --viterbi-training
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  command:
+  - bcftools
+  - roh
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: A.vcf.gz
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: B.vcf.gz
+    optional: true
+  named:
+  - !Flag
+    description: allele frequency bins, a list (0.1,0.5,1) or a file (0.1\n0.5\n1)
+    synonyms:
+    - --af-bins
+    args: !SimpleFlagArg
+      name: list
+    optional: true
+  - !Flag
+    description: allele frequency tag to use, by default estimated from AN,AC or GT
+    synonyms:
+    - --af-tag
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: treat as identical records with <snps|indels|both|all|some|none>,
+      see man page for details [none]
+    synonyms:
+    - -c
+    - --collapse
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: '<int,int,int>          depth distribution: min,max,bin size [0,500,1]'
+    synonyms:
+    - -d
+    - --depth
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: exclude sites for which the expression is true (see man page for
+      details)
+    synonyms:
+    - -e
+    - --exclude
+    args: !SimpleFlagArg
+      name: expr
+    optional: true
+  - !Flag
+    description: tab-delimited file with exons for indel frameshifts (chr,from,to;
+      1-based, inclusive, bgzip compressed)
+    synonyms:
+    - -E
+    - --exons
+    args: !SimpleFlagArg
+      name: file.gz
+    optional: true
+  - !Flag
+    description: require at least one of the listed FILTER strings (e.g. "PASS,.")
+    synonyms:
+    - -f
+    - --apply-filters
+    args: !SimpleFlagArg
+      name: list
+    optional: true
+  - !Flag
+    description: faidx indexed reference sequence file to determine INDEL context
+    synonyms:
+    - -F
+    - --fasta-ref
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: select sites for which the expression is true (see man page for details)
+    synonyms:
+    - -i
+    - --include
+    args: !SimpleFlagArg
+      name: expr
+    optional: true
+  - !Flag
+    description: collect stats for sites with ID separately (known vs novel)
+    synonyms:
+    - -I
+    - --split-by-ID
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: restrict to comma-separated list of regions
+    synonyms:
+    - -r
+    - --regions
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: restrict to regions listed in a file
+    synonyms:
+    - -R
+    - --regions-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: list of samples for sample stats, "-" to include all samples
+    synonyms:
+    - -s
+    - --samples
+    args: !SimpleFlagArg
+      name: list
+    optional: true
+  - !Flag
+    description: file of samples to include
+    synonyms:
+    - -S
+    - --samples-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: similar to -r but streams rather than index-jumps
+    synonyms:
+    - -t
+    - --targets
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: similar to -R but streams rather than index-jumps
+    synonyms:
+    - -T
+    - --targets-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: <TAG[:min:max:n]>  collect Ts/Tv stats for any tag using the given
+      binning [0:1:100]
+    synonyms:
+    - -u
+    - --user-tstv
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: use multithreading with <int> worker threads [0]
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: produce verbose per-site and per-sample output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - bcftools
+  - stats
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

@@ -1,0 +1,142 @@
+!Command
+positional:
+- !Positional
+  description: Input genome FASTA file
+  position: 0
+  name: F
+  optional: false
+named:
+- !Flag
+  description: genome_name, --input-fasta-genome-name fasta_path genome_name fasta
+    file path to genome name pair
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: fasta_path
+  optional: true
+- !Flag
+  description: Output format (json, csv, pickle)
+  synonyms:
+  - -f
+  - --output-format
+  args: !SimpleFlagArg
+    name: OUTPUT_FORMAT
+  optional: true
+- !Flag
+  description: SISTR serovar prediction output path
+  synonyms:
+  - -o
+  - --output-prediction
+  args: !SimpleFlagArg
+    name: OUTPUT_PREDICTION
+  optional: true
+- !Flag
+  description: Output more detailed results (-M) and all antigen search blastn results
+    (-MM)
+  synonyms:
+  - -M
+  - --more-results
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output CSV file destination for cgMLST allelic profiles
+  synonyms:
+  - -p
+  - --cgmlst-profiles
+  args: !SimpleFlagArg
+    name: CGMLST_PROFILES
+  optional: true
+- !Flag
+  description: Output FASTA file destination of novel cgMLST alleles from input genomes
+  synonyms:
+  - -n
+  - --novel-alleles
+  args: !SimpleFlagArg
+    name: NOVEL_ALLELES
+  optional: true
+- !Flag
+  description: Output path of allele sequences and info to JSON
+  synonyms:
+  - -a
+  - --alleles-output
+  args: !SimpleFlagArg
+    name: ALLELES_OUTPUT
+  optional: true
+- !Flag
+  description: Base temporary working directory for intermediate analysis files.
+  synonyms:
+  - -T
+  - --tmp-dir
+  args: !SimpleFlagArg
+    name: TMP_DIR
+  optional: true
+- !Flag
+  description: Keep temporary analysis files.
+  synonyms:
+  - -K
+  - --keep-tmp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the full set of cgMLST alleles which can include highly similar
+    alleles. By default the smaller "centroid" alleles or representative alleles are
+    used for each marker.
+  synonyms:
+  - --use-full-cgmlst-db
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not run cgMLST serovar prediction
+  synonyms:
+  - --no-cgmlst
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Determine Mash MinHash genomic distances to Salmonella genomes with
+    trusted serovar designations. Mash binary must be in accessible via $PATH (e.g.
+    /usr/bin).
+  synonyms:
+  - -m
+  - --run-mash
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Perform basic QC to provide level of confidence in serovar prediction
+    results.
+  synonyms:
+  - --qc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of parallel threads to run sistr_cmd analysis.
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: Logging verbosity level (-v == show warnings; -vvv == show debug info)
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- sistr
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,142 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: '[anndata|loom] Input object format.  [default: anndata]'
+  synonyms:
+  - -f
+  - --input-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[anndata|loom|zarr] Output object format.  [default: anndata]'
+  synonyms:
+  - -F
+  - --output-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Chunk size for writing output in zarr format.  [default: 1000]'
+  synonyms:
+  - -z
+  - --zarr-chunk-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: When specified, using it as prefix for exporting mtx files. If not
+    empty and not ending with "/" or "_", a "_" will be appended.
+  synonyms:
+  - -X
+  - --export-mtx
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: '[stdout|stderr]      Print output object summary info to specified
+    stream.'
+  synonyms:
+  - --show-obj
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use this many PCs. Use `.X` if --n-pcs is 0 when --use-rep is None.
+  synonyms:
+  - -n
+  - --n-pcs
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: "Use the indicated representation. If None, the representation is chosen\
+    \ automatically: for `.n_vars` < 50, `.X` is used, otherwise `X_pca` is used.\
+    \ If `X_pca` is not present, it's computed with default parameters."
+  synonyms:
+  - -u
+  - --use-rep
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: 'Seed for random number generator.  [default: 0]'
+  synonyms:
+  - -S
+  - --random-state
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: '[,TEXT...]      Key under which to add the computed results'
+  synonyms:
+  - --key-added
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Number of jobs for parallel computation.
+  synonyms:
+  - -J
+  - --n-jobs
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Export embeddings in a tab-separated text table.
+  synonyms:
+  - -E
+  - --export-embedding
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'The perplexity is related to the number of nearest neighbors that
+    is used in other manifold learning algorithms. Larger datasets usually require
+    a larger perplexity. Consider selecting a value between 5 and 50. The choice is
+    not extremely critical since t-SNE is quite insensitive to this parameter.  [default:
+    30]'
+  synonyms:
+  - --perplexity
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Controls how tight natural clusters in the original space are in the
+    embedded space and how much space will be between them. For larger values, the
+    space between natural clusters will be larger in the embedded space. Again, the
+    choice of this parameter is not very critical. If the cost function increases
+    during initial optimization, the early exaggeration factor or the learning rate
+    might be too high.  [default: 12]'
+  synonyms:
+  - --early-exaggeration
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Note that the R-package "Rtsne" uses a default of 200. The learning
+    rate can be a critical parameter. It should be between 100 and 1000. If the cost
+    function increases during initial optimization, the early exaggeration factor
+    or the learning rate might be too high. If the cost function gets stuck in a bad
+    local minimum increasing the learning rate helps sometimes.  [default: 1000]'
+  synonyms:
+  - --learning-rate
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'When NOT set, use the MulticoreTSNE package by D. Ulyanov if installed.  [default:
+    True]'
+  synonyms:
+  - --no-fast-tsne
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- scanpy-run-tsne
+subcommands: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

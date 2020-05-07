@@ -1,0 +1,146 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: prefix to name files. Can be string or /path/to/string
+  synonyms:
+  - -p
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: indexed fasta (.fa)
+  synonyms:
+  - -r
+  - --fasta
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: gtf file. (.gtf)
+  synonyms:
+  - -g
+  - --gtf
+  args: !SimpleFlagArg
+    name: GTF
+  optional: true
+- !Flag
+  description: salmon library type(A, ISF, ISR, etc)
+  synonyms:
+  - -l
+  - --library
+  args: !SimpleFlagArg
+    name: LIBRARY
+  optional: true
+- !Flag
+  description: Number of threads to use for STAR and STAR-SEQR. 4-12 recommended.
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: Bed file to subset analysis
+  synonyms:
+  - -b
+  - --bed_file
+  args: !SimpleFlagArg
+    name: BED_FILE
+  optional: true
+- !Flag
+  description: allow fusions to pass with either one breakend in bed file or require
+    both. Must use -b.
+  synonyms:
+  - --subset_type
+  args: !ChoiceFlagArg
+    choices:
+    - either
+    - both
+  optional: true
+- !Flag
+  description: assembler to use
+  synonyms:
+  - -a
+  - --as_type
+  args: !ChoiceFlagArg
+    choices:
+    - velvet
+  optional: true
+- !Flag
+  description: keep read duplicates. Use for PCR data or with molecular tags
+  synonyms:
+  - --keep_dups
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: allow internal gene duplications to be considered
+  synonyms:
+  - --keep_gene_dups
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: allow RNA fusions to contain at least one breakpoint from Mitochondria
+  synonyms:
+  - --keep_mito
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: verbose level... repeat up to three times.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: path to STAR index folder
+  synonyms:
+  - -i
+  - --star_index
+  args: !SimpleFlagArg
+    name: STAR_INDEX
+  optional: true
+- !Flag
+  description: '{0,1}, --mode {0,1} STAR alignment mode. 0=More-specific, 1=More-Sensitive'
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: chimeric junctions file produced by STAR
+  synonyms:
+  - -sj
+  - --star_jxns
+  args: !SimpleFlagArg
+    name: STAR_JXNS
+  optional: true
+- !Flag
+  description: Chimeric.out.sam file produced by STAR. Either use this or -sb
+  synonyms:
+  - -ss
+  - --star_sam
+  args: !SimpleFlagArg
+    name: STAR_SAM
+  optional: true
+- !Flag
+  description: Aligned.sortedByCoord.out.bam file produced by STAR. Must contain chimeric
+    reads with ch tag.
+  synonyms:
+  - -sb
+  - --star_bam
+  args: !SimpleFlagArg
+    name: STAR_BAM
+  optional: true
+command:
+- starseqr.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

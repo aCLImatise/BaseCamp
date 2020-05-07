@@ -1,0 +1,146 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: '[anndata|loom] Input object format.  [default: anndata]'
+  synonyms:
+  - -f
+  - --input-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[anndata|loom|zarr] Output object format.  [default: anndata]'
+  synonyms:
+  - -F
+  - --output-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Chunk size for writing output in zarr format.  [default: 1000]'
+  synonyms:
+  - -z
+  - --zarr-chunk-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: When specified, using it as prefix for exporting mtx files. If not
+    empty and not ending with "/" or "_", a "_" will be appended.
+  synonyms:
+  - -X
+  - --export-mtx
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: '[stdout|stderr]      Print output object summary info to specified
+    stream.'
+  synonyms:
+  - --show-obj
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Slot name under `.uns` that contains the KNN graph of which sparse
+    adjacency matrix is used for clustering.  [default: neighbors]'
+  synonyms:
+  - --use-graph
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: 'Seed for random number generator.  [default: 0]'
+  synonyms:
+  - -S
+  - --random-state
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: '[,TEXT...]      Key under which to add the computed results'
+  synonyms:
+  - --key-added
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: Export embeddings in a tab-separated text table.
+  synonyms:
+  - -E
+  - --export-embedding
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'How to initialize the low dimensional embedding. Can be "spectral",
+    "paga" or "random", or any key of `.obsm`.  [default: spectral]'
+  synonyms:
+  - --init-pos
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: 'The effective minimum distance between embedded points. Smaller values
+    will result in a more clustered embedding, while larger values will results in
+    a more even dispersal of points.  [default: 0.5]'
+  synonyms:
+  - --min-dist
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'The effective scale of embedded points, which determines the scale
+    at which embedded points will be spread out.  [default: 1.0]'
+  synonyms:
+  - --spread
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'The number of dimensions of the embedding. [default: 2]'
+  synonyms:
+  - --n-components
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: The number of iterations of the optimization.
+  synonyms:
+  - --maxiter
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: 'The initial learning rate for the embedding optimization.  [default:
+    1.0]'
+  synonyms:
+  - --alpha
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Weighting applied to negative samples in low dimensional embedding
+    optimization. [default: 1.0]'
+  synonyms:
+  - --gamma
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'The number of negative edge samples to use per positive edge sample
+    in optimizing the low dimensional embedding.  [default: 5]'
+  synonyms:
+  - --negative-sample-rate
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+command:
+- scanpy-run-umap
+subcommands: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

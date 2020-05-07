@@ -1,0 +1,100 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: GFF3 file generated with CRISPRDetect (Local installation or web platform
+    http://brownlabtools.otag o.ac.nz/CRISPRDetect/predict_crispr_array.html).
+  synonyms:
+  - -i
+  - --inFile
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'CRISPR_Studio will generate the figure with a subset of isolates listed
+    in the file (Optional: By default, CRISPR_Studio will generate a figure with all
+    the isolates).'
+  synonyms:
+  - -l
+  - --listOfIsolates
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'The unique spacers will be grayed (Optional: by default, CRISPR_Studio
+    attributes a unique color to each group of spacer and unique spacers.)'
+  synonyms:
+  - -gU
+  - --grayOutUnique
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The conserved spacers will be grayed (Optional: by default, CRISPR_Studio
+    attributes a unique color to each group of spacer and unique spacers.)'
+  synonyms:
+  - -gS
+  - --grayOutSimilar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Verification of the fasta file generated from the GFF file will be
+    skipped if this flag is provided. The verification is mainly based on the length
+    of the spacer sequences. If a spacer is 1.5 time shorter or longer than the average
+    spacer size of the dataset, a warning is raised and the script stops (Verification
+    is ran by default). Correction can be either made in the initial gff file or in
+    the fasta file. If the later, provide the name of the fasta file after the flag
+    (ex. -f corrected_sequences.fasta
+  synonyms:
+  - -f
+  - --checkFasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The order of the isolates in the figure: Available option: CRISPRDetect,
+    DistMatrix or File providing a list of the isolates in the desired order. CRISPRDetect
+    = order in the gff file. DistMatrix = Order extracted from a distance matrix based
+    on the similarity of the arrays in the isolates. File = Order privided in a single
+    column file with the isolates names as the should appear in the figure. The option
+    -l override this option (Default: DistMatrix)'
+  synonyms:
+  - -s
+  - --sort
+  args: !SimpleFlagArg
+    name: SORT
+  optional: true
+- !Flag
+  description: Use this option to keep the same color attributed to the spacer during
+    a previous analysis
+  synonyms:
+  - -r
+  - --rerun
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set to score cutoff for pairing of the spacers (default = 2)
+  synonyms:
+  - -c
+  - --cutoff
+  args: !SimpleFlagArg
+    name: CUTOFF
+  optional: true
+- !Flag
+  description: Show the size of the spacers over the boxed diamonds. We recommend
+    to use this option only for experimental analysis of the data
+  synonyms:
+  - -n
+  - --spacerSize
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- CRISPR_Studio
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

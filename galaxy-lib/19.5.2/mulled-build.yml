@@ -1,0 +1,58 @@
+!Command
+positional:
+- !Positional
+  description: Command (build-and-test, build, all)
+  position: 0
+  name: COMMAND
+  optional: false
+- !Positional
+  description: Build a single container with specific package(s).
+  position: 1
+  name: TARGETS
+  optional: false
+named:
+- !Flag
+  description: Override mulled image name - this is not recommended since metadata
+    will not be detectable from the name of resulting images
+  synonyms:
+  - --name-override
+  args: !SimpleFlagArg
+    name: NAME_OVERRIDE
+  optional: true
+- !Flag
+  description: Build a versioned variant of this image.
+  synonyms:
+  - --image-build
+  args: !SimpleFlagArg
+    name: IMAGE_BUILD
+  optional: true
+- !Flag
+  description: Name of mulled container (leave blank to auto-generate based on packages
+    - recommended).
+  synonyms:
+  - --repository-name
+  args: !SimpleFlagArg
+    name: REPOSITORY_NAME
+  optional: true
+- !Flag
+  description: Provide a test command for the container.
+  synonyms:
+  - --test
+  args: !SimpleFlagArg
+    name: TEST
+  optional: true
+- !Flag
+  description: Provide test-files that may be required to run the test command. Individual
+    mounts are separated by comma.The source:dest docker syntax is respected. If relative
+    file paths are given, files will be mounted in /source/<relative_file_path>
+  synonyms:
+  - --test-files
+  args: !SimpleFlagArg
+    name: TEST_FILES
+  optional: true
+command:
+- mulled-build
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

@@ -1,0 +1,401 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Turn on verbose logging [False].
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- staramr
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: The organism to use for pointfinder {salmonella, campylobacter}.
+      Defaults to disabling search for point mutations. [None].
+    synonyms:
+    - --pointfinder-organism
+    args: !SimpleFlagArg
+      name: POINTFINDER_ORGANISM
+    optional: true
+  - !Flag
+    description: The database type to use for plasmidfinder {gram_positive, enterobacteriaceae}.
+      Defaults to using all available database types to search for plasmids. [None].
+    synonyms:
+    - --plasmidfinder-database-type
+    args: !SimpleFlagArg
+      name: PLASMIDFINDER_DATABASE_TYPE
+    optional: true
+  - !Flag
+    description: The directory containing the resfinder/pointfinder/plasmidfinder
+      databases [/tmp/tmp82x9w9yh/lib/python3.7/site-packages/staramr/databases/data].
+    synonyms:
+    - -d
+    - --database
+    args: !SimpleFlagArg
+      name: DATABASE
+    optional: true
+  - !Flag
+    description: The number of processing cores to use [8].
+    synonyms:
+    - -n
+    - --nprocs
+    args: !SimpleFlagArg
+      name: NPROCS
+    optional: true
+  - !Flag
+    description: Skips over invalid input files
+    synonyms:
+    - --ignore-invalid-files
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Specify scheme name, visit https://github.com/tseemann/mlst/blob/master/db/scheme_species_map.tab
+      for supported scheme genus available. [None] '
+    synonyms:
+    - --mlst-scheme
+    args: !SimpleFlagArg
+      name: MLST_SCHEME
+    optional: true
+  - !Flag
+    description: The lower bound for our genome size for the quality metrics. Defaults
+      to 4 Mbp. [4000000].
+    synonyms:
+    - --genome-size-lower-bound
+    args: !SimpleFlagArg
+      name: GENOME_SIZE_LOWER_BOUND
+    optional: true
+  - !Flag
+    description: The upper bound for our genome size for the quality metrics. Defaults
+      to 6 Mbp. [6000000].
+    synonyms:
+    - --genome-size-upper-bound
+    args: !SimpleFlagArg
+      name: GENOME_SIZE_UPPER_BOUND
+    optional: true
+  - !Flag
+    description: The minimum N50 value for the quality metrics. Defaults to 10000.
+      [10000].
+    synonyms:
+    - --minimum-N50-value
+    args: !SimpleFlagArg
+      name: MINIMUM_N50_VALUE
+    optional: true
+  - !Flag
+    description: The minimum contig length for the quality metrics. Defaults to 300
+      bp. [300].
+    synonyms:
+    - --minimum-contig-length
+    args: !SimpleFlagArg
+      name: MINIMUM_CONTIG_LENGTH
+    optional: true
+  - !Flag
+    description: The minimum, unacceptable number of contigs which are equal to or
+      above the minimum contig length for our quality metrics. Defaults to 1000. [1000].
+    synonyms:
+    - --unacceptable-number-contigs
+    args: !SimpleFlagArg
+      name: UNACCEPTABLE_NUM_CONTIGS
+    optional: true
+  - !Flag
+    description: The percent identity threshold [98.0].
+    synonyms:
+    - --pid-threshold
+    args: !SimpleFlagArg
+      name: PID_THRESHOLD
+    optional: true
+  - !Flag
+    description: The percent length overlap for resfinder results [60.0].
+    synonyms:
+    - --percent-length-overlap-resfinder
+    args: !SimpleFlagArg
+      name: PLENGTH_THRESHOLD_RESFINDER
+    optional: true
+  - !Flag
+    description: The percent length overlap for pointfinder results [95.0].
+    synonyms:
+    - --percent-length-overlap-pointfinder
+    args: !SimpleFlagArg
+      name: PLENGTH_THRESHOLD_POINTFINDER
+    optional: true
+  - !Flag
+    description: The percent length overlap for resfinder results [60.0].
+    synonyms:
+    - --percent-length-overlap-plasmidfinder
+    args: !SimpleFlagArg
+      name: PLENGTH_THRESHOLD_PLASMIDFINDER
+    optional: true
+  - !Flag
+    description: Disable the default exclusion of some genes from ResFinder/PointFinder/PlasmidFinder
+      [False].
+    synonyms:
+    - --no-exclude-genes
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: A containing a list of ResFinder/PointFinder/PlasmidFinder gene names
+      to exclude from results [/tmp/tmp82x9w9yh/lib/python3.7/site-packages/staramr/databases/exclude/data/genes_to_exclude.tsv].
+    synonyms:
+    - --exclude-genes-file
+    args: !SimpleFlagArg
+      name: EXCLUDE_GENES_FILE
+    optional: true
+  - !Flag
+    description: Exclude negative results (those sensitive to antimicrobials) [False].
+    synonyms:
+    - --exclude-negatives
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Exclude predicted antimicrobial resistances [False].
+    synonyms:
+    - --exclude-resistance-phenotypes
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Report all blast hits (vs. only top blast hits) [False].
+    synonyms:
+    - --report-all-blast
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: The output directory for results [None].
+    synonyms:
+    - -o
+    - --output-dir
+    args: !SimpleFlagArg
+      name: OUTPUT_DIR
+    optional: true
+  - !Flag
+    description: The name of the output file containing the summary results. Not be
+      be used with '--output-dir'. [None]
+    synonyms:
+    - --output-summary
+    args: !SimpleFlagArg
+      name: OUTPUT_SUMMARY
+    optional: true
+  - !Flag
+    description: The name of the output file containing the detailed summary results.
+      Not be be used with '--output-dir'. [None]
+    synonyms:
+    - --output-detailed-summary
+    args: !SimpleFlagArg
+      name: OUTPUT_DETAILED_SUMMARY
+    optional: true
+  - !Flag
+    description: The name of the output file containing the resfinder results. Not
+      be be used with '--output-dir'. [None]
+    synonyms:
+    - --output-resfinder
+    args: !SimpleFlagArg
+      name: OUTPUT_RESFINDER
+    optional: true
+  - !Flag
+    description: The name of the output file containing the pointfinder results. Not
+      be be used with '--output-dir'. [None]
+    synonyms:
+    - --output-pointfinder
+    args: !SimpleFlagArg
+      name: OUTPUT_POINTFINDER
+    optional: true
+  - !Flag
+    description: The name of the output file containing the plasmidfinder results.
+      Not be be used with '--output-dir'. [None]
+    synonyms:
+    - --output-plasmidfinder
+    args: !SimpleFlagArg
+      name: OUTPUT_PLASMIDFINDER
+    optional: true
+  - !Flag
+    description: The name of the output file containing the settings. Not be be used
+      with '--output-dir'. [None]
+    synonyms:
+    - --output-settings
+    args: !SimpleFlagArg
+      name: OUTPUT_SETTINGS
+    optional: true
+  - !Flag
+    description: The name of the output file containing the excel results. Not be
+      be used with '--output-dir'. [None]
+    synonyms:
+    - --output-excel
+    args: !SimpleFlagArg
+      name: OUTPUT_EXCEL
+    optional: true
+  - !Flag
+    description: The name of the directory to contain the BLAST hit files. Not be
+      be used with '--output-dir'. [None]
+    synonyms:
+    - --output-hits-dir
+    args: !SimpleFlagArg
+      name: HITS_OUTPUT_DIR
+    optional: true
+  - !Flag
+    description: The name of the output file containing the mlst results. Not be be
+      used with '--output-dir'. [None]
+    synonyms:
+    - --output-mlst
+    args: !SimpleFlagArg
+      name: OUTPUT_MLST
+    optional: true
+  command:
+  - staramr
+  - search
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - staramr
+  - db
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: The directory to download the databases into [/tmp/tmp82x9w9yh/lib/python3.7/site-packages/staramr/databases/data].
+      synonyms:
+      - --dir
+      args: !SimpleFlagArg
+        name: DESTINATION
+      optional: true
+    - !Flag
+      description: The specific git commit for the resfinder database [latest].
+      synonyms:
+      - --resfinder-commit
+      args: !SimpleFlagArg
+        name: RESFINDER_COMMIT
+      optional: true
+    - !Flag
+      description: The specific git commit for the pointfinder database [latest].
+      synonyms:
+      - --pointfinder-commit
+      args: !SimpleFlagArg
+        name: POINTFINDER_COMMIT
+      optional: true
+    - !Flag
+      description: The specific git commit for the plasmidfinder database [latest].
+      synonyms:
+      - --plasmidfinder-commit
+      args: !SimpleFlagArg
+        name: PLASMIDFINDER_COMMIT
+      optional: true
+    command:
+    - staramr
+    - db
+    - build
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Updates default database directory (/tmp/tmp82x9w9yh/lib/python3.7/site-packages/staramr/databases/data).
+      synonyms:
+      - -d
+      - --update-default
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: The specific git commit for the resfinder database [latest].
+      synonyms:
+      - --resfinder-commit
+      args: !SimpleFlagArg
+        name: RESFINDER_COMMIT
+      optional: true
+    - !Flag
+      description: The specific git commit for the pointfinder database [latest].
+      synonyms:
+      - --pointfinder-commit
+      args: !SimpleFlagArg
+        name: POINTFINDER_COMMIT
+      optional: true
+    - !Flag
+      description: The specific git commit for the plasmidfinder database [latest].
+      synonyms:
+      - --plasmidfinder-commit
+      args: !SimpleFlagArg
+        name: PLASMIDFINDER_COMMIT
+      optional: true
+    command:
+    - staramr
+    - db
+    - update
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Force restore without asking for confirmation.
+      synonyms:
+      - -f
+      - --force
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - staramr
+    - db
+    - restore-default
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

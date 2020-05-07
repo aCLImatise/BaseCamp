@@ -1,0 +1,94 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: input bigWIG file. Multiple bigWIG files can be given via -w (--bw)
+    individually (eg -w WIG1.bw, -w WIG2.bw). WARNING! multiple bigwig and bed files
+    are not allowed.
+  synonyms:
+  - -w
+  - --bw
+  args: !SimpleFlagArg
+    name: WIG
+  optional: true
+- !Flag
+  description: BED file of regions of interest. (eg, binding sites or motif locations)
+    Multiple BED files can be given via -b (--bed) individually (eg -b BED1.bed -b
+    BED2.bed). WARNING! multiple wig and bed files are not allowed.
+  synonyms:
+  - -b
+  - --bed
+  args: !SimpleFlagArg
+    name: BED
+  optional: true
+- !Flag
+  description: Span from the center of each BED region in both directions(+/-) (eg,
+    [c - span, c + span], where c is the center of a region), default:1000 bp
+  synonyms:
+  - --span
+  args: !SimpleFlagArg
+    name: SPAN
+  optional: true
+- !Flag
+  description: 'Profiling resolution, default: 50 bp'
+  synonyms:
+  - --pf-res
+  args: !SimpleFlagArg
+    name: PF_RES
+  optional: true
+- !Flag
+  description: If set, the direction (+/-) is considered in profiling. If no strand
+    info given in the BED, this option is ignored.
+  synonyms:
+  - --dir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If set, profiles are dumped as a TXT file
+  synonyms:
+  - --dump
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If set, it will draw 95% confidence interval for each step.
+  synonyms:
+  - --confid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Name of this run. If not given, the body of the bed file name will
+    be used,
+  synonyms:
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: Labels of the wig files. If given, they are used as the legends of
+    the plot and in naming the TXT files of profile dumps; otherwise, the bigWIG file
+    names will be used as the labels. Multiple labels can be given via -l (--label)
+    individually (eg, -l LABEL1 -l LABEL2). WARNING! The number and order of the labels
+    must be the same as the bigWIG files.
+  synonyms:
+  - -l
+  - --label
+  args: !SimpleFlagArg
+    name: LABEL
+  optional: true
+command:
+- siteproBW
+subcommands: []
+help_flag: !Flag
+  description: Show this help message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

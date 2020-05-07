@@ -1,0 +1,63 @@
+!Command
+positional:
+- !Positional
+  description: Expression matrix file in the TSV, CSV or Excel formats.
+  position: 0
+  name: input_file
+  optional: false
+- !Positional
+  description: Output TSV file containing tissue-specificity values.
+  position: 1
+  name: output_file
+  optional: false
+- !Positional
+  description: 'Tissue-specificity metric. Allowed values are: "counts", "tau", "gini",
+    "simpson", "shannon_specificity", "roku_specificity", "tsi", "zscore", "spm",
+    "spm_dpm", "js_specificity", "js_specificity_dpm".'
+  position: 2
+  name: method
+  optional: false
+named:
+- !Flag
+  description: 'Log-transform expression values. (default: False)'
+  synonyms:
+  - -l
+  - --log
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'By default, tissue-specificity values are transformed so that they
+    range from 0 (perfectly ubiquitous) to 1 (perfectly tissue-specific). If this
+    parameter is used, transformation will be disabled and each metric will have have
+    a diferent range of possible values. (default: False)'
+  synonyms:
+  - -d
+  - --disable_transformation
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Threshold to be used with the "counts" metric. If another method is
+    chosen, this parameter will be ignored. (default: 0)'
+  synonyms:
+  - -t
+  - --threshold
+  args: !SimpleFlagArg
+    name: THRESHOLD
+  optional: true
+command:
+- tspex
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

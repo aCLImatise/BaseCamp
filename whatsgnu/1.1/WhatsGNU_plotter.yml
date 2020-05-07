@@ -1,0 +1,205 @@
+!Command
+positional:
+- !Positional
+  description: prefix name for the the output folder and heatmap/volcano output files
+  position: 0
+  name: prefix_name
+  optional: false
+- !Positional
+  description: path to directory of WhatsGNU reports
+  position: 1
+  name: directory_path
+  optional: false
+named:
+- !Flag
+  description: heatmap of GNU scores for orthologous genes in multiple isolates
+  synonyms:
+  - -hp
+  - --heatmap
+  args: !ChoiceFlagArg
+    choices:
+    - ortholog
+    - basic
+  optional: true
+- !Flag
+  description: a txt file of ortholog group names from one of the WhatsGNU reports
+    for heatmap
+  synonyms:
+  - -l
+  - --list_genes
+  args: !SimpleFlagArg
+    name: LIST_GENES
+  optional: true
+- !Flag
+  description: a FASTA file of sequences for the proteins of interest for heatmap
+    or metadata barplot
+  synonyms:
+  - -q
+  - --fasta
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: get the output report of blastp run, it has to be used with -q
+  synonyms:
+  - -op
+  - --output_blastp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: list of strains order for heatmap
+  synonyms:
+  - -d
+  - --strains_order
+  args: !SimpleFlagArg
+    name: STRAINS_ORDER
+  optional: true
+- !Flag
+  description: 'Annotate heatmap cells with OVRI(default: off)'
+  synonyms:
+  - -r
+  - --rarity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: OVRI data text color in the heatmap
+  synonyms:
+  - -rc
+  - --rarity_color
+  args: !SimpleFlagArg
+    name: RARITY_COLOR
+  optional: true
+- !Flag
+  description: FIGURE_SIZE, --figure_size FIGURE_SIZE FIGURE_SIZE heatmap width and
+    height in inches w,h, respectively
+  synonyms:
+  - -fs
+  args: !SimpleFlagArg
+    name: FIGURE_SIZE
+  optional: true
+- !Flag
+  description: heatmap color
+  synonyms:
+  - -hc
+  - --heatmap_color
+  args: !SimpleFlagArg
+    name: HEATMAP_COLOR
+  optional: true
+- !Flag
+  description: missing data color in heatmap
+  synonyms:
+  - -mc
+  - --masked_color
+  args: !SimpleFlagArg
+    name: MASKED_COLOR
+  optional: true
+- !Flag
+  description: heatmap font size
+  synonyms:
+  - -f
+  - --font_size
+  args: !SimpleFlagArg
+    name: FONT_SIZE
+  optional: true
+- !Flag
+  description: title for the heatmap [Default:WhatsGNU heatmap]
+  synonyms:
+  - -t
+  - --title
+  args: !SimpleFlagArg
+    name: TITLE
+  optional: true
+- !Flag
+  description: Metadata percentage distribution for proteins in a FASTA file
+  synonyms:
+  - -mb
+  - --metadata_barplot
+  args: !ChoiceFlagArg
+    choices:
+    - ortholog
+    - basic
+  optional: true
+- !Flag
+  description: all metadata
+  synonyms:
+  - -w
+  - --all_metadata
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: select some metadata
+  synonyms:
+  - -s
+  - --select_metadata
+  args: !SimpleFlagArg
+    name: SELECT_METADATA
+  optional: true
+- !Flag
+  description: histogram of GNU scores
+  synonyms:
+  - -x
+  - --histogram
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: histogram color
+  synonyms:
+  - -e
+  - --histogram_color
+  args: !SimpleFlagArg
+    name: HISTOGRAM_COLOR
+  optional: true
+- !Flag
+  description: number of bins for the histograms [10]
+  synonyms:
+  - -b
+  - --histogram_bins
+  args: !SimpleFlagArg
+    name: HISTOGRAM_BINS
+  optional: true
+- !Flag
+  description: NOVEL_CONSERVED, --novel_conserved NOVEL_CONSERVED NOVEL_CONSERVED
+    upper and lower GNU score limits for novel and conserved proteins novel_GNU_upper_limit,
+    conserved_GNU_lower_limit, respectively [Default 10, 100]
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: NOVEL_CONSERVED
+  optional: true
+- !Flag
+  description: a csv file of the strains of the two groups to be compared with (case/control)
+    tag
+  synonyms:
+  - -st
+  - --strains_tag_volcano
+  args: !SimpleFlagArg
+    name: STRAINS_TAG_VOLCANO
+  optional: true
+- !Flag
+  description: 'a percentage of isolates a protein must be in [Default: 100]'
+  synonyms:
+  - -c
+  - --cutoff_volcano
+  args: !SimpleFlagArg
+    name: CUTOFF_VOLCANO
+  optional: true
+- !Flag
+  description: "CASE_CONTROL_NAME, --case_control_name CASE_CONTROL_NAME CASE_CONTROL_NAME\
+    \ case and control groups' names [Default: case control]"
+  synonyms:
+  - -cc
+  args: !SimpleFlagArg
+    name: CASE_CONTROL_NAME
+  optional: true
+command:
+- WhatsGNU_plotter.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

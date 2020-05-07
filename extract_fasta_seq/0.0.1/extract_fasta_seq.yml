@@ -1,0 +1,95 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: '[<str> ...]  query list. "-s1" and "-d1" have no effect on this option.'
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: query list file, one line should contain only one queryid! (but can
+    be mixed with others, and we can use "-s1" and "-d1" option to extract the queryid)
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: query file
+  optional: true
+- !Flag
+  description: '[<subject file>]   subject file [stdin]'
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: query file sep_pattern [\s+]
+  synonyms:
+  - -s1
+  args: !SimpleFlagArg
+    name: pattern
+  optional: true
+- !Flag
+  description: subject file sep_pattern [\s+]
+  synonyms:
+  - -s2
+  args: !SimpleFlagArg
+    name: pattern
+  optional: true
+- !Flag
+  description: '[<int>]           which field in the query_file is to used? [0]'
+  synonyms:
+  - -d1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[<int>]           which field in the subject_file is to used? useful
+    for finding out all sequences in the subject_file whose seqids equal to the queryids
+    [0]'
+  synonyms:
+  - -d2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[<outfile>]        outfile [stdout]'
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: invert the output [False]
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: verbose output
+  synonyms:
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Stop searching once each required seqid has at least one sequence found,
+    which can be problems if some required seqids have more than sequences! Works
+    only for non-invert mode. [False]
+  synonyms:
+  - --lazy
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- extract_fasta_seq
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,476 @@
+!Command
+positional: []
+named: []
+command:
+- rgt-hint
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Organism considered on the analysis. Must have been setup in the
+      RGTDATA folder. Common choices are hg19, hg38. mm9, and mm10. DEFAULT: hg19'
+    synonyms:
+    - --organism
+    args: !SimpleFlagArg
+      name: STRING
+    optional: true
+  - !Flag
+    description: If the argument is not given, then a default HMM will be used.
+    synonyms:
+    - --hmm-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: ',FILE_R List of files with all possible k-mers (for any k) and their
+      bias estimates. Each line should contain a kmer and the bias estimate separated
+      by tab.'
+    synonyms:
+    - --bias-table
+    args: !SimpleFlagArg
+      name: FILE_F
+    optional: true
+  - !Flag
+    description: 'Set it if your ATAC-seq data is paired-end sequenced. Note that
+      this option is only applied to ATAC-seq data. DEFAULT: False'
+    synonyms:
+    - --paired-end
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'If set, footprint calling will based on bias corrected DNase-seq
+      signal. This option is only applied to DNase-seq. DEFAULT: False'
+    synonyms:
+    - --bias-correction
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Type of protocol used to generate the DNase-seq. Available options\
+      \ are: 'SH' (DNase-seq single-hit protocol), 'DH' (DNase-seq double-hit protocol).\
+      \ DEFAULT: SH"
+    synonyms:
+    - --bias-type
+    args: !SimpleFlagArg
+      name: STRING
+    optional: true
+  - !Flag
+    description: 'Path where the output bias table files will be written. DEFAULT:
+      current directory'
+    synonyms:
+    - --output-location
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: 'The prefix for results files. DEFAULT: footprints'
+    synonyms:
+    - --output-prefix
+    args: !SimpleFlagArg
+      name: STRING
+    optional: true
+  - !Flag
+    description: 'If set, footprint calling will based on ATAC-seq model. DEFAULT:
+      False'
+    synonyms:
+    - --atac-seq
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'If set, footprint calling will based on DNase-seq model. DEFAULT:
+      False'
+    synonyms:
+    - --dnase-seq
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'If set, footprint calling will based on histone modification model.
+      DEFAULT: False'
+    synonyms:
+    - --histone
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - rgt-hint
+  - footprinting
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Organism considered on the analysis. Must have been setup in the
+      RGTDATA folder. Common choices are hg19, hg38. mm9, and mm10. DEFAULT: hg19'
+    synonyms:
+    - --organism
+    args: !SimpleFlagArg
+      name: STRING
+    optional: true
+  - !Flag
+    description: ',FILE2... Predicted motif binding sites for each condition.Files
+      should be separated with comma.'
+    synonyms:
+    - --mpbs-files
+    args: !SimpleFlagArg
+      name: FILE1
+    optional: true
+  - !Flag
+    description: ',FILE2... Reads for each condition. Files should be separated with
+      comma.'
+    synonyms:
+    - --reads-files
+    args: !SimpleFlagArg
+      name: FILE1
+    optional: true
+  - !Flag
+    description: 'Name for each condition. DEFAULT: condition1,condition2, ...'
+    synonyms:
+    - --conditions
+    args: !SimpleFlagArg
+      name: STRING
+    optional: true
+  - !Flag
+    description: 'Set color in line plot. DEFAULT: None, ...'
+    synonyms:
+    - --colors
+    args: !SimpleFlagArg
+      name: STRING
+    optional: true
+  - !Flag
+    description: 'The window size for differential analysis. DEFAULT: 200'
+    synonyms:
+    - --window-size
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'The false discovery rate. DEFAULT: 0.05'
+    synonyms:
+    - --fdr
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: 'If set, all analysis will be based on bias corrected signal. DEFAULT:
+      False'
+    synonyms:
+    - --bc
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The number of cores. DEFAULT: 1'
+    synonyms:
+    - --nc
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'Path where the output bias table files will be written. DEFAULT:
+      current directory'
+    synonyms:
+    - --output-location
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: 'The prefix for results files. DEFAULT: differential'
+    synonyms:
+    - --output-prefix
+    args: !SimpleFlagArg
+      name: STRING
+    optional: true
+  - !Flag
+    description: If set, the signal will be rescaled to (0, 1) for plotting.
+    synonyms:
+    - --standardize
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'If set, the footprint profiles will be writen into a text, in which
+      each row is a specific instance of the given motif. DEFAULT: False'
+    synonyms:
+    - --output-profiles
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - rgt-hint
+  - differential
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: A annotate file containing all the states.
+    synonyms:
+    - --annotate-file
+    args: !SimpleFlagArg
+      name: STRING
+    optional: true
+  - !Flag
+    description: ',FILE1_R'
+    synonyms:
+    - --bias-table
+    args: !SimpleFlagArg
+      name: FILE1_F
+    optional: true
+  - !Flag
+    description: If used, HMM model will be trained using semi- supervised learning.
+    synonyms:
+    - --semi-supervised
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: The txt file containing the DNase-seq or ATAC-seq signals used to
+      train HMM model.
+    synonyms:
+    - --signal-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: The states number of HMM model.
+    synonyms:
+    - --num-states
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Path where the output bias table files will be written.
+    synonyms:
+    - --output-location
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: The prefix for results files.
+    synonyms:
+    - --output-prefix
+    args: !SimpleFlagArg
+      name: STRING
+    optional: true
+  command:
+  - rgt-hint
+  - training
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Size of k-mer for bias estimation. DEFAULT: 8'
+    synonyms:
+    - --k-nb
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'Path where the output bias table files will be written. DEFAULT:
+      current directory'
+    synonyms:
+    - --output-location
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: 'The prefix for results files. DEFAULT: Bias'
+    synonyms:
+    - --output-prefix
+    args: !SimpleFlagArg
+      name: STRING
+    optional: true
+  command:
+  - rgt-hint
+  - estimation
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: If set, HINT will print the receiver operating characteristic curve.
+    synonyms:
+    - --print-roc-curve
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: If set, HINT will print the precision recall curve.
+    synonyms:
+    - --print-pr-curve
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - rgt-hint
+  - evaluation
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'motif predicted binding sites file. DEFAULT: None'
+    synonyms:
+    - --mpbs-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: 'the ChIP-seq peak files. DEFAULT: None'
+    synonyms:
+    - --chip-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: 'The number used to extend the ChIP-seq summit. DEFAULT: 100'
+    synonyms:
+    - --peak-ext
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'Path where the output bias table files will be written. DEFAULT:
+      current directory'
+    synonyms:
+    - --output-location
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: 'The prefix for results files. DEFAULT: evidence'
+    synonyms:
+    - --output-prefix
+    args: !SimpleFlagArg
+      name: STRING
+    optional: true
+  command:
+  - rgt-hint
+  - evidence
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Organism considered on the analysis. Must have been setup in the
+      RGTDATA folder. Common choices are hg19, hg38. mm9, and mm10. DEFAULT: hg19'
+    synonyms:
+    - --organism
+    args: !SimpleFlagArg
+      name: STRING
+    optional: true
+  - !Flag
+    description: ',FILE1_R Bias table files used to generate bias corrected tracks.
+      DEFAULT: None'
+    synonyms:
+    - --bias-table
+    args: !SimpleFlagArg
+      name: FILE1_F
+    optional: true
+  - !Flag
+    description: 'If set, the raw signals from DNase-seq or ATAC-seq data will be
+      generated. DEFAULT: False'
+    synonyms:
+    - --raw
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'If set, the bias corrected signals from DNase-seq or ATAC-seq data
+      will be generated. DEFAULT: False'
+    synonyms:
+    - --bc
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'If set, the normalised signals from DNase-seq or ATAC- seq data
+      will be generated. DEFAULT: False'
+    synonyms:
+    - --norm
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'If set, all .wig files will be converted to .bw files. DEFAULT:
+      False'
+    synonyms:
+    - --bigWig
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'If set, the tracks will be splitted into two files, one for forward
+      and another for reverse strand. DEFAULT: False'
+    synonyms:
+    - --strand-specific
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Path where the output bias table files will be written. DEFAULT:
+      current directory'
+    synonyms:
+    - --output-location
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: 'The prefix for results files. DEFAULT: tracks'
+    synonyms:
+    - --output-prefix
+    args: !SimpleFlagArg
+      name: STRING
+    optional: true
+  command:
+  - rgt-hint
+  - tracks
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

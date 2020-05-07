@@ -1,0 +1,479 @@
+!Command
+positional: []
+named: []
+command:
+- agfusion
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 5' gene partner
+    synonyms:
+    - -g5
+    - --gene5prime
+    args: !SimpleFlagArg
+      name: GENE5PRIME
+    optional: true
+  - !Flag
+    description: 3' gene partner
+    synonyms:
+    - -g3
+    - --gene3prime
+    args: !SimpleFlagArg
+      name: GENE3PRIME
+    optional: true
+  - !Flag
+    description: Genomic location of predicted fuins for the 5' gene partner. The
+      1-based position that is the last nucleotide included in the fusion before the
+      junction.
+    synonyms:
+    - -j5
+    - --junction5prime
+    args: !SimpleFlagArg
+      name: JUNCTION5PRIME
+    optional: true
+  - !Flag
+    description: Genomic location of predicted fuins for the 3' gene partner. The
+      1-based position that is the first nucleotide included in the fusion after the
+      junction.
+    synonyms:
+    - -j3
+    - --junction3prime
+    args: !SimpleFlagArg
+      name: JUNCTION3PRIME
+    optional: true
+  - !Flag
+    description: Path to the AGFusion database (e.g. --db /path/to/agfusion.homo_sapiens.87.db)
+    synonyms:
+    - -db
+    - --database
+    args: !SimpleFlagArg
+      name: DATABASE
+    optional: true
+  - !Flag
+    description: Directory to save results
+    synonyms:
+    - -o
+    - --out
+    args: !SimpleFlagArg
+      name: OUT
+    optional: true
+  - !Flag
+    description: (Optional) Include non-canonical gene transcripts in the analysis
+      (default False).
+    synonyms:
+    - -nc
+    - --noncanonical
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '(Optional) Space-delimited list of one or more protein feature databases
+      to include when visualizing proteins. Options are: pfam, smart, superfamily,
+      tigrfam, pfscan (Prosite_profiles), tmhmm (i.e. transmembrane), seg (low_complexity
+      regions), ncoils (coiled coil regions), prints, pirsf, and signalp (signal peptide
+      regions) (default: --protein_databases pfam and tmhmm).'
+    synonyms:
+    - --protein_databases
+    args: !RepeatFlagArg
+      name: PROTEIN_DATABASES
+    optional: true
+  - !Flag
+    description: (Optional) Re-color a domain. Provide the original name of the domain
+      then your color (semi-colon delimited, all in quotes). Can specify --recolor
+      multiples for each domain. (e.g. --color "Pkinase_Tyr;blue" --color "I-set;#006600").
+    synonyms:
+    - --recolor
+    args: !SimpleFlagArg
+      name: RECOLOR
+    optional: true
+  - !Flag
+    description: (Optional) Rename a domain. Provide the original name of the domain
+      then your new name (semi-colon delimited, all in quotes). Can specify --rename
+      multiples for each domain. (e.g. --rename "Pkinase_Tyr;Kinase").
+    synonyms:
+    - --rename
+    args: !SimpleFlagArg
+      name: RENAME
+    optional: true
+  - !Flag
+    description: (Optional) Exclude a certain domain(s) from plotting by providing
+      a space-separated list of domain names.
+    synonyms:
+    - --exclude_domain
+    args: !RepeatFlagArg
+      name: EXCLUDE_DOMAIN
+    optional: true
+  - !Flag
+    description: '(Optional) Image file type (png, jpeg, pdf). Default: png'
+    synonyms:
+    - --type
+    args: !SimpleFlagArg
+      name: TYPE
+    optional: true
+  - !Flag
+    description: (Optional) Image width in inches (default 10).
+    synonyms:
+    - -w
+    - --width
+    args: !SimpleFlagArg
+      name: WIDTH
+    optional: true
+  - !Flag
+    description: (Optional) Image file height in inches (default 3).
+    synonyms:
+    - -ht
+    - --height
+    args: !SimpleFlagArg
+      name: HEIGHT
+    optional: true
+  - !Flag
+    description: (Optional) Dots per inch.
+    synonyms:
+    - --dpi
+    args: !SimpleFlagArg
+      name: DPI
+    optional: true
+  - !Flag
+    description: (Optional) Fontsize (default 12).
+    synonyms:
+    - --fontsize
+    args: !SimpleFlagArg
+      name: FONTSIZE
+    optional: true
+  - !Flag
+    description: (Optional) Include this to plot wild-type architechtures of the 5'
+      and 3' genes
+    synonyms:
+    - --WT
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (Optional) Insert a * at the junction position for the cdna, cds,
+      and protein sequences (default False).
+    synonyms:
+    - -ms
+    - --middlestar
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (Optional) Do not label domains.
+    synonyms:
+    - -ndl
+    - --no_domain_labels
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (Optional) Enable debugging logging.
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '(Optional) Set maximum width (in amino acids) of the figure to rescale
+      the fusion (default: max length of fusion product)'
+    synonyms:
+    - --scale
+    args: !SimpleFlagArg
+      name: SCALE
+    optional: true
+  command:
+  - agfusion
+  - annotate
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Output file from fusion-finding algorithm.
+    synonyms:
+    - -f
+    - --file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: 'The fusion-finding algorithm. Can be one of the following: tophatfusion,
+      infusion, breakfusion, fusioncatcher, fusionhunter, fusionmap, starfusion, jaffa,
+      mapsplice, chimerascan, bellerophontes, fusioninspector, chimerscope, defuse,
+      ericscript.'
+    synonyms:
+    - -a
+    - --algorithm
+    args: !SimpleFlagArg
+      name: ALGORITHM
+    optional: true
+  - !Flag
+    description: Path to the AGFusion database (e.g. --db /path/to/agfusion.homo_sapiens.87.db)
+    synonyms:
+    - -db
+    - --database
+    args: !SimpleFlagArg
+      name: DATABASE
+    optional: true
+  - !Flag
+    description: Directory to save results
+    synonyms:
+    - -o
+    - --out
+    args: !SimpleFlagArg
+      name: OUT
+    optional: true
+  - !Flag
+    description: (Optional) Include non-canonical gene transcripts in the analysis
+      (default False).
+    synonyms:
+    - -nc
+    - --noncanonical
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '(Optional) Space-delimited list of one or more protein feature databases
+      to include when visualizing proteins. Options are: pfam, smart, superfamily,
+      tigrfam, pfscan (Prosite_profiles), tmhmm (i.e. transmembrane), seg (low_complexity
+      regions), ncoils (coiled coil regions), prints, pirsf, and signalp (signal peptide
+      regions) (default: --protein_databases pfam and tmhmm).'
+    synonyms:
+    - --protein_databases
+    args: !RepeatFlagArg
+      name: PROTEIN_DATABASES
+    optional: true
+  - !Flag
+    description: (Optional) Re-color a domain. Provide the original name of the domain
+      then your color (semi-colon delimited, all in quotes). Can specify --recolor
+      multiples for each domain. (e.g. --color "Pkinase_Tyr;blue" --color "I-set;#006600").
+    synonyms:
+    - --recolor
+    args: !SimpleFlagArg
+      name: RECOLOR
+    optional: true
+  - !Flag
+    description: (Optional) Rename a domain. Provide the original name of the domain
+      then your new name (semi-colon delimited, all in quotes). Can specify --rename
+      multiples for each domain. (e.g. --rename "Pkinase_Tyr;Kinase").
+    synonyms:
+    - --rename
+    args: !SimpleFlagArg
+      name: RENAME
+    optional: true
+  - !Flag
+    description: (Optional) Exclude a certain domain(s) from plotting by providing
+      a space-separated list of domain names.
+    synonyms:
+    - --exclude_domain
+    args: !RepeatFlagArg
+      name: EXCLUDE_DOMAIN
+    optional: true
+  - !Flag
+    description: '(Optional) Image file type (png, jpeg, pdf). Default: png'
+    synonyms:
+    - --type
+    args: !SimpleFlagArg
+      name: TYPE
+    optional: true
+  - !Flag
+    description: (Optional) Image width in inches (default 10).
+    synonyms:
+    - -w
+    - --width
+    args: !SimpleFlagArg
+      name: WIDTH
+    optional: true
+  - !Flag
+    description: (Optional) Image file height in inches (default 3).
+    synonyms:
+    - -ht
+    - --height
+    args: !SimpleFlagArg
+      name: HEIGHT
+    optional: true
+  - !Flag
+    description: (Optional) Dots per inch.
+    synonyms:
+    - --dpi
+    args: !SimpleFlagArg
+      name: DPI
+    optional: true
+  - !Flag
+    description: (Optional) Fontsize (default 12).
+    synonyms:
+    - --fontsize
+    args: !SimpleFlagArg
+      name: FONTSIZE
+    optional: true
+  - !Flag
+    description: (Optional) Include this to plot wild-type architechtures of the 5'
+      and 3' genes
+    synonyms:
+    - --WT
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (Optional) Insert a * at the junction position for the cdna, cds,
+      and protein sequences (default False).
+    synonyms:
+    - -ms
+    - --middlestar
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (Optional) Do not label domains.
+    synonyms:
+    - -ndl
+    - --no_domain_labels
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (Optional) Enable debugging logging.
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - agfusion
+  - batch
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: (Optional) Directory to the database will be downloaded to (defaults
+      to current working directory).
+    synonyms:
+    - -d
+    - --dir
+    args: !SimpleFlagArg
+      name: DIR
+    optional: true
+  - !Flag
+    description: Specify the genome shortcut (e.g. hg19). To see allavailable shortcuts
+      run 'agfusion download -a'. Either specify this or --species and --release.
+    synonyms:
+    - -g
+    - --genome
+    args: !SimpleFlagArg
+      name: GENOME
+    optional: true
+  - !Flag
+    description: The species (e.g. homo_sapiens).
+    synonyms:
+    - -s
+    - --species
+    args: !SimpleFlagArg
+      name: SPECIES
+    optional: true
+  - !Flag
+    description: The ensembl release (e.g. 87).
+    synonyms:
+    - -r
+    - --release
+    args: !SimpleFlagArg
+      name: RELEASE
+    optional: true
+  - !Flag
+    description: List available species and ensembl releases.
+    synonyms:
+    - -a
+    - --available
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - agfusion
+  - download
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Directory to write database file to.
+    synonyms:
+    - -d
+    - --dir
+    args: !SimpleFlagArg
+      name: DIR
+    optional: true
+  - !Flag
+    description: The species (e.g. homo_sapiens).
+    synonyms:
+    - -s
+    - --species
+    args: !SimpleFlagArg
+      name: SPECIES
+    optional: true
+  - !Flag
+    description: The ensembl release (e.g. 87).
+    synonyms:
+    - -r
+    - --release
+    args: !SimpleFlagArg
+      name: RELEASE
+    optional: true
+  - !Flag
+    description: File containing PFAM ID mappings.
+    synonyms:
+    - --pfam
+    args: !SimpleFlagArg
+      name: PFAM
+    optional: true
+  - !Flag
+    description: (optional) Ensembl server (default ensembldb.ensembl.org)
+    synonyms:
+    - --server
+    args: !SimpleFlagArg
+      name: SERVER
+    optional: true
+  command:
+  - agfusion
+  - build
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

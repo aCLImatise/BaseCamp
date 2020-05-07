@@ -1,0 +1,104 @@
+!Command
+positional:
+- !Positional
+  description: INPUT FASTA file
+  position: 0
+  name: INPUT
+  optional: false
+- !Positional
+  description: send BAM to OUTPUT
+  position: 1
+  name: OUTPUT
+  optional: false
+named:
+- !Flag
+  description: REFERENCE FASTA file or {HXB2_env, HXB2_gag, HXB2_int, HXB2_nef, HXB2_pol,
+    HXB2_pr, HXB2_prrt, HXB2_rev, HXB2_rt, HXB2_tat, HXB2_vif, HXB2_vpr, HXB2_vpu,
+    NL4-3_prrt}
+  synonyms:
+  - -r
+  - --reference
+  args: !SimpleFlagArg
+    name: REFERENCE
+  optional: true
+- !Flag
+  description: discard sequences that are insufficiently identical to the reference
+  synonyms:
+  - -e
+  - --expected-identity
+  args: !SimpleFlagArg
+    name: EXPECTED_IDENTITY
+  optional: true
+- !Flag
+  description: perform an alignment using one of {amino, dna, codon} [default=codon]
+  synonyms:
+  - -a
+  - --alphabet
+  args: !SimpleFlagArg
+    name: ALPHABET
+  optional: true
+- !Flag
+  description: parameterize using one of {BLOSUM62, DNA65, DNA70, DNA80, DNA88, DNA95,
+    HIV_BETWEEN_F, PAM200, PAM250} [default=BLOSUM62]
+  synonyms:
+  - -m
+  - --score-matrix
+  args: !SimpleFlagArg
+    name: SCOREMATRIX
+  optional: true
+- !Flag
+  description: discarded sequences are sent to DISCARD
+  synonyms:
+  - -D
+  - --discard
+  args: !SimpleFlagArg
+    name: DISCARD
+  optional: true
+- !Flag
+  description: also align the reverse complement of each query sequence, returning
+    it if the alignment is superior
+  synonyms:
+  - -R
+  - --reverse-complement
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do NOT sort the resulting BAM file [the default is to sort]
+  synonyms:
+  - -S
+  - --no-sort
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not print status update messages
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: include the reference sequence as the first one in the resulting BAM
+    file [the default is to strip it]
+  synonyms:
+  - -K
+  - --keep-reference
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- bealign
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print version information and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

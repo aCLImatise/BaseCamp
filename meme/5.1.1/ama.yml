@@ -1,0 +1,129 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Use Markov background model of order <order> derived from the sequence
+    to compute its likelihood ratios; overrides --pvalues, --gcbins and --rma; <background
+    file> is required unless --sdbg is given.
+  synonyms:
+  - --sdbg
+  args: !SimpleFlagArg
+    name: order
+  optional: true
+- !Flag
+  description: Use only the motif identified by <id>. This option may be repeated.
+  synonyms:
+  - --motif
+  args: !SimpleFlagArg
+    name: id
+  optional: true
+- !Flag
+  description: 'The value <float> times the background frequency is added to the count
+    of each letter when creating the likelihood  ratio matrix; default: 0.01'
+  synonyms:
+  - --motif-pseudo
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Disables the scanning of the reverse complement strand for complementable
+    alphabets. The switch is set automatically for alphabets without complements.
+  synonyms:
+  - --norc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[avg-odds|max-odds] Indicates whether the average or  the maximum
+    odds should be calculated default: avg-odds'
+  synonyms:
+  - --scoring
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Scale motif scores to the range [0,1]. (Relative Motif Affinity).
+    Motif scores are scaled by the maximum score achievable by that PWM; default:
+    Motif scores are not normalized.'
+  synonyms:
+  - --rma
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Print p-value of avg-odds score in cisml output. Ignored for max-odds
+    scoring; default: P-values are not printed.'
+  synonyms:
+  - --pvalues
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Compensate p-values for GC* content of each sequence using given number
+    of  GC range bins. Recommended bins: 41. This option only works with complementable
+    alphabets with exactly 2 complement pairs; default: P-values are based on frequencies
+    in background file. * GC refers to any complement pair, not actually G and C except
+    for the case of DNA.'
+  synonyms:
+  - --gcbins
+  args: !SimpleFlagArg
+    name: bins
+  optional: true
+- !Flag
+  description: Enable combining sequences with same identifier by taking the average
+    score and the Sidac corrected p-value.
+  synonyms:
+  - --cs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[gff|cisml]   Output file format; default: cisml. Ignored if --o or
+    --oc option used, and then CisML (.xml) and GFF (.txt) files are both output into
+    the specified directory.'
+  synonyms:
+  - --o-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output all available formats to <directory>; give up if <directory>
+    exists.
+  synonyms:
+  - --o
+  args: !SimpleFlagArg
+    name: directory
+  optional: true
+- !Flag
+  description: Output all available formats to <directory>; If <directory> exists
+    overwrite contents.
+  synonyms:
+  - --oc
+  args: !SimpleFlagArg
+    name: directory
+  optional: true
+- !Flag
+  description: '[1|2|3|4]    Controls amount of screen output; default: 2'
+  synonyms:
+  - --verbosity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Set the maximum length allowed for  input sequences; default: 250000000'
+  synonyms:
+  - --max-seq-length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Use only scores of (up to) last <n> sequence positions to compute AMA.
+  synonyms:
+  - --last
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+command:
+- ama
+subcommands: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

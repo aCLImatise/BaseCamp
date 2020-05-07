@@ -1,0 +1,231 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: overall memory budget for the assembly in bytes. Unit suffixes 'k'
+    (kilobytes), 'M' (megabytes), or 'G' (gigabytes) may be used. [required]
+  synonyms:
+  - -b
+  - --bloom-size
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: discard unchaste reads [default]
+  synonyms:
+  - --chastity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not discard unchaste reads
+  synonyms:
+  - --no-chastity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write de Bruijn graph to FILE (GraphViz)
+  synonyms:
+  - -g
+  - --graph
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: number of Bloom filter hash functions [1]
+  synonyms:
+  - -H
+  - --num-hashes
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: load Bloom filter from FILE
+  synonyms:
+  - -i
+  - --input-bloom
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: use N parallel threads [1]
+  synonyms:
+  - -j
+  - --threads
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: trim masked bases from the ends of reads
+  synonyms:
+  - --trim-masked
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not trim masked bases from the ends of reads [default]
+  synonyms:
+  - --no-trim-masked
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the size of a k-mer [<=128]
+  synonyms:
+  - -k
+  - --kmer
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: ignore k-mers having a count < N, using a counting Bloom filter [2]
+  synonyms:
+  - --kc
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: write the contigs to FILE [STDOUT]
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: trim bases from the ends of reads whose quality is less than the threshold
+  synonyms:
+  - -q
+  - --trim-quality
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: mask all low quality bases as `N'
+  synonyms:
+  - -Q
+  - --mask-quality
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: zero quality is `!' (33), typically for FASTQ and SAM files [default]
+  synonyms:
+  - --standard-quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: zero quality is `@' (64), typically for qseq and export files
+  synonyms:
+  - --illumina-quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: max branch length to trim, in k-mers [k]
+  synonyms:
+  - -t
+  - --trim-length
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: display verbose output
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use a spaced seed that consists of two k-mers separated by a gap. K
+    must be chosen such that K <= k/2
+  synonyms:
+  - -K
+  - --single-kmer
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'use a spaced seed than consists of two mirrored QR seeds separated
+    by a gap.  The following must hold: (a) N must be prime, (b) N >= 11, (c) N <=
+    k/2'
+  synonyms:
+  - --qr-seed
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: bitmask indicating k-mer positions to be ignored during hashing. The
+    pattern must be symmetric
+  synonyms:
+  - -s
+  - --spaced-seed
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: WIG track with 0/1 indicating k-mers with coverage above the -c threshold.
+    A reference must also be specified with -R.
+  synonyms:
+  - -C
+  - --cov-track
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: write outcome of processing each read to FILE
+  synonyms:
+  - --read-log
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: specify a reference genome. FILE may be FASTA, FASTQ, SAM, or BAM and
+    may be gzipped.
+  synonyms:
+  - -R
+  - --ref
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: write debugging info about generation of each read to FILE
+  synonyms:
+  - -T
+  - --trace-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: create a checkpoint every N reads [disabled=0]
+  synonyms:
+  - --checkpoint
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: do not delete checkpoint files after assembly completes successfully
+    [disabled]
+  synonyms:
+  - --keep-checkpoint
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: filename prefix for checkpoint files ['bloom-dbg-checkpoint']
+  synonyms:
+  - --checkpoint-prefix
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+command:
+- abyss-bloom-dbg
+subcommands: []
+help_flag: !Flag
+  description: display this help and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: output version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

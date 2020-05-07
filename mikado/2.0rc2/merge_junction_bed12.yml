@@ -1,0 +1,53 @@
+!Command
+positional:
+- !Positional
+  description: Input BED files. Use "-" for stdin.
+  position: 0
+  name: bed
+  optional: false
+named:
+- !Flag
+  description: 'Delimiter for merged names. Default: ;'
+  synonyms:
+  - --delim
+  args: !SimpleFlagArg
+    name: DELIM
+  optional: true
+- !Flag
+  description: 'Number of threads to use for multiprocessing. Default: 1'
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: Flag. If set, tophat-like junction style is assumed. This means that
+    junctions are defined using the blockSizes rather than thickStart/End. The script
+    will convert the lines to this latter format. By default, the script assumes that
+    the intron start/end are defined using thickStart/End like in portcullis. Mixed-type
+    input files are not supported.
+  synonyms:
+  - --tophat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output file. Default: stdout'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+command:
+- merge_junction_bed12.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

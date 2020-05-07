@@ -1,0 +1,217 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Input file of variants. Must be either JSON or VCF.
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: Manifest of samples with path and bam stats.
+  synonyms:
+  - -m
+  - --manifest
+  args: !SimpleFlagArg
+    name: MANIFEST
+  optional: true
+- !Flag
+  description: Output directory.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Write alignment JSON files into the output folder (large!).
+  synonyms:
+  - -A
+  - --write-alignments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Infer read haplotype paths
+  synonyms:
+  - --infer-read-haplotypes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Reference genome fasta file.
+  synonyms:
+  - -r
+  - --reference-sequence
+  args: !SimpleFlagArg
+    name: REFERENCE
+  optional: true
+- !Flag
+  description: Number of events to process in parallel.
+  synonyms:
+  - --threads
+  - -t
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: Do not delete temp files.
+  synonyms:
+  - --keep-scratch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Directory for temp files
+  synonyms:
+  - --scratch-dir
+  args: !SimpleFlagArg
+    name: SCRATCH_DIR
+  optional: true
+- !Flag
+  description: Path to the grmpy executable
+  synonyms:
+  - --grmpy
+  args: !SimpleFlagArg
+    name: GRMPY
+  optional: true
+- !Flag
+  description: Write logging information into file rather than to stderr
+  synonyms:
+  - --logfile
+  args: !SimpleFlagArg
+    name: LOGFILE
+  optional: true
+- !Flag
+  description: Use graph aligner.
+  synonyms:
+  - --graph-sequence-matching
+  args: !SimpleFlagArg
+    name: GRAPH_SEQUENCE_MATCHING
+  optional: true
+- !Flag
+  description: Use klib smith waterman aligner.
+  synonyms:
+  - --klib-sequence-matching
+  args: !SimpleFlagArg
+    name: KLIB_SEQUENCE_MATCHING
+  optional: true
+- !Flag
+  description: Use kmer aligner.
+  synonyms:
+  - --kmer-sequence-matching
+  args: !SimpleFlagArg
+    name: KMER_SEQUENCE_MATCHING
+  optional: true
+- !Flag
+  description: Kmer length for uniqueness check during read filtering.
+  synonyms:
+  - --bad-align-uniq-kmer-len
+  args: !SimpleFlagArg
+    name: BAD_ALIGN_UNIQ_KMER_LEN
+  optional: true
+- !Flag
+  description: Keep long insertion sequences in the graph rather than trimming them
+    at the read / padding length.
+  synonyms:
+  - --no-alt-splitting
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Raise logging level from warning to info.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set logging level to output errors only.
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Log debug level events.
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: JSON string or file with genotyping model parameters.
+  synonyms:
+  - -G
+  - --genotyping-parameters
+  args: !SimpleFlagArg
+    name: GENOTYPING_PARAMETERS
+  optional: true
+- !Flag
+  description: Maximum number of reads to process for a single event.
+  synonyms:
+  - -M
+  - --max-reads-per-event
+  args: !SimpleFlagArg
+    name: MAX_READS_PER_EVENT
+  optional: true
+- !Flag
+  description: 'Mode for splitting the input VCF: lines (default) -- one graph per
+    record ; full -- one graph for the whole VCF ; by_id -- use the VCF id column
+    to group adjacent records ; superloci -- split VCF into blocks where records are
+    separated by at least read-length characters'
+  synonyms:
+  - --vcf-split
+  args: !ChoiceFlagArg
+    choices:
+    - lines
+    - full
+    - by_id
+    - superloci
+  optional: true
+- !Flag
+  description: Read length -- this is used to add reference padding when converting
+    VCF to graphs.
+  synonyms:
+  - -p
+  - --read-length
+  args: !SimpleFlagArg
+    name: READ_LENGTH
+  optional: true
+- !Flag
+  description: Maximum length of reference nodes before they get padded and truncated.
+  synonyms:
+  - -l
+  - --max-ref-node-length
+  args: !SimpleFlagArg
+    name: MAX_REF_NODE_LENGTH
+  optional: true
+- !Flag
+  description: Retrieve reference sequence for REF nodes
+  synonyms:
+  - --retrieve-reference-sequence
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Type of complex graph to generate. Same as --graph- type in vcf2paragraph.
+  synonyms:
+  - --graph-type
+  args: !ChoiceFlagArg
+    choices:
+    - alleles
+    - haplotypes
+  optional: true
+- !Flag
+  description: Key in INFO field to indicate sequence of symbolic <INS>
+  synonyms:
+  - --ins-info-key
+  args: !SimpleFlagArg
+    name: INS_INFO_KEY
+  optional: true
+command:
+- multigrmpy.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

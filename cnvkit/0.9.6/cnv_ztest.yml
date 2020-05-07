@@ -1,0 +1,77 @@
+!Command
+positional:
+- !Positional
+  description: .cnr file
+  position: 0
+  name: cnarr
+  optional: false
+named:
+- !Flag
+  description: Segmentation calls (.cns), the output of the 'segment' command).
+  synonyms:
+  - -s
+  - --segment
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: 'Significance threhold. [Default: 0.005]'
+  synonyms:
+  - -a
+  - --alpha
+  args: !SimpleFlagArg
+    name: ALPHA
+  optional: true
+- !Flag
+  description: Test target bins only; ignore off-target bins.
+  synonyms:
+  - -t
+  - --target
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assume inputs were normalized to a male reference (i.e. female samples
+    will have +1 log-coverage of chrX; otherwise male samples would have -1 chrX).
+  synonyms:
+  - -y
+  - --male-reference
+  - --haploid-x-reference
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify the sample's chromosomal sex as male or female. (Otherwise
+    guessed from X and Y coverage).
+  synonyms:
+  - -x
+  - --sample-sex
+  args: !ChoiceFlagArg
+    choices:
+    - m
+    - y
+    - male
+    - Male
+    - f
+    - x
+    - female
+    - Female
+  optional: true
+- !Flag
+  description: Output filename.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+command:
+- cnv_ztest.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

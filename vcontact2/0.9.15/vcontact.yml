@@ -1,0 +1,395 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'FASTA-formatted proteins file. If provided alongside --proteins-fn,
+    vConTACT will start prior to PC generation. (default: None)'
+  synonyms:
+  - -r
+  - --raw-proteins
+  args: !SimpleFlagArg
+    name: RAW_PROTEINS
+  optional: true
+- !Flag
+  description: 'Method to use to create the protein-protein similarity edge file.
+    This is what the PC clustering is applied against. (default: Diamond)'
+  synonyms:
+  - --rel-mode
+  args: !ChoiceFlagArg
+    choices:
+    - BLASTP
+    - Diamond
+    - MMSeqs2
+  optional: true
+- !Flag
+  description: 'Blast results file in CSV or TSV format. Used for generating the protein
+    clusters. If provided alongside --proteins-fn, vConTACT will start from the PC-
+    generation step. If raw proteins are provided, THIS WILL BE SKIPPED. Reference
+    DBs CANNOT BE USED IF THIS OPTION IS ENABLED!! (default: None)'
+  synonyms:
+  - -b
+  - --blast-fp
+  args: !SimpleFlagArg
+    name: BLAST_FP
+  optional: true
+- !Flag
+  description: 'A file linking the protein name (as in the blast file) and the genome
+    names (csv or tsv). If provided alongside --blast-fp, vConTACT will start from
+    the PC- generation step. If provided alongside --raw-proteins, vConTACT will start
+    from creating the all-verses-all protein comparison and then generate protein
+    clusters. (default: None)'
+  synonyms:
+  - -p
+  - --proteins-fp
+  args: !SimpleFlagArg
+    name: PROTEINS_FP
+  optional: true
+- !Flag
+  description: "Select a reference database to de novo cluster proteins against. If\
+    \ 'None' selected, be aware that there will be no references included in the analysis.\
+    \ (default: ProkaryoticViralRefSeq85-ICTV)"
+  synonyms:
+  - --db
+  args: !ChoiceFlagArg
+    choices:
+    - None
+    - ProkaryoticViralRefSeq85-ICTV
+    - ProkaryoticViralRefSeq85-Merged
+    - ProkaryoticViralRefSeq88-Merged
+    - ProkaryoticViralRefSeq94-Merged
+    - ProkaryoticViralRefSeq97-Merged
+    - ArchaeaViralRefSeq85-Merged
+    - ArchaeaViralRefSeq94-Merged
+    - ArchaeaViralRefSeq97-Merged
+  optional: true
+- !Flag
+  description: 'Whether to use ClusterONE or MCL for Protein Cluster (PC) generation.
+    (default: MCL)'
+  synonyms:
+  - --pcs-mode
+  args: !ChoiceFlagArg
+    choices:
+    - ClusterONE
+    - MCL
+  optional: true
+- !Flag
+  description: 'Whether to use ClusterONE or MCL for Viral Cluster (VC) generation.
+    (default: ClusterONE)'
+  synonyms:
+  - --vcs-mode
+  args: !ChoiceFlagArg
+    choices:
+    - ClusterONE
+    - MCL
+  optional: true
+- !Flag
+  description: 'Location for clusterONE java file. This MUST SPECIFY the full path
+    to "cluster_one-1.0.jar". (default: None)'
+  synonyms:
+  - --c1-bin
+  args: !SimpleFlagArg
+    name: CLUSTER_ONE
+  optional: true
+- !Flag
+  description: 'Location for BLASTP executable. Path only used if vConTACT cant find
+    in $PATH. (default: None)'
+  synonyms:
+  - --blastp-bin
+  args: !SimpleFlagArg
+    name: BLASTP_FP
+  optional: true
+- !Flag
+  description: 'Location for DIAMOND executable. Path only used if vConTACT cant find
+    in $PATH. (default: None)'
+  synonyms:
+  - --diamond-bin
+  args: !SimpleFlagArg
+    name: DIAMOND_FP
+  optional: true
+- !Flag
+  description: 'Output directory (default: vContact_Output)'
+  synonyms:
+  - -o
+  - --output-dir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+- !Flag
+  description: 'Number of CPUs to use. If nothing is provided, vConTACT will attempt
+    to identify the number of available CPUs. (default: 1)'
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: 'E-value used by BLASTP when creating the protein- protein similarity
+    network. (--rel-mode BLASTP only) (default: 0.0001)'
+  synonyms:
+  - --blast-evalue
+  args: !SimpleFlagArg
+    name: EVALUE
+  optional: true
+- !Flag
+  description: 'Specifies the maximum allowed overlap between two clusters. (ClusterONE
+    only) (default: 0.8)'
+  synonyms:
+  - --max-overlap
+  args: !SimpleFlagArg
+    name: PC_OVERLAP
+  optional: true
+- !Flag
+  description: 'Sets a penalty value for the inclusion of each node. It can be used
+    to model the possibility of uncharted connections for each node, so nodes with
+    only a single weak connection to a cluster will not be added to the cluster as
+    the penalty value will outweigh the benefits of adding the node. (ClusterONE only)
+    (default: 2.0)'
+  synonyms:
+  - --penalty
+  args: !SimpleFlagArg
+    name: PC_PENALTY
+  optional: true
+- !Flag
+  description: 'Apply a haircut transformation as a post-processing step on the detected
+    clusters. A haircut transformation removes dangling nodes from a cluster. (ClusterONE
+    only) (default: 0.1)'
+  synonyms:
+  - --haircut
+  args: !SimpleFlagArg
+    name: PC_HAIRCUT
+  optional: true
+- !Flag
+  description: 'Inflation value to define proteins clusters with MCL. (default: 2.0)
+    (MCL only) (default: 2.0)'
+  synonyms:
+  - --pc-inflation
+  args: !SimpleFlagArg
+    name: PC_INFLATION
+  optional: true
+- !Flag
+  description: 'Inflation parameter to define contig clusters with MCL. (MCL only)
+    (default: 2.0)'
+  synonyms:
+  - --vc-inflation
+  args: !SimpleFlagArg
+    name: VC_INFLATION
+  optional: true
+- !Flag
+  description: 'Sets the minimum density of predicted complexes. (ClusterONE only)
+    (default: 0.3)'
+  synonyms:
+  - --min-density
+  args: !SimpleFlagArg
+    name: VC_DENSITY
+  optional: true
+- !Flag
+  description: 'Minimum size for the Viral Cluster. (default: 2)'
+  synonyms:
+  - --min-size
+  args: !SimpleFlagArg
+    name: VC_SIZE
+  optional: true
+- !Flag
+  description: 'Specifies the maximum allowed overlap between two clusters. (ClusterONE
+    only) (default: 0.9)'
+  synonyms:
+  - --vc-overlap
+  args: !SimpleFlagArg
+    name: VC_OVERLAP
+  optional: true
+- !Flag
+  description: 'Sets a penalty value for the inclusion of each node. It can be used
+    to model the possibility of uncharted connections for each node, so nodes with
+    only a single weak connection to a cluster will not be added to the cluster as
+    the penalty value will outweigh the benefits of adding the node. (ClusterONE only)
+    (default: 2.0)'
+  synonyms:
+  - --vc-penalty
+  args: !SimpleFlagArg
+    name: VC_PENALTY
+  optional: true
+- !Flag
+  description: 'Apply a haircut transformation as a post-processing step on the detected
+    clusters. A haircut transformation removes dangling nodes from a cluster. (ClusterONE
+    only) (default: 0.55)'
+  synonyms:
+  - --vc-haircut
+  args: !SimpleFlagArg
+    name: VC_HAIRCUT
+  optional: true
+- !Flag
+  description: 'Specifies the method to be used to merge highly overlapping complexes.
+    (ClusterONE only) (default: single)'
+  synonyms:
+  - --merge-method
+  args: !ChoiceFlagArg
+    choices:
+    - single
+    - multi
+  optional: true
+- !Flag
+  description: 'Specifies the similarity function to be used in the merging step.
+    (ClusterONE only) (default: match)'
+  synonyms:
+  - --similarity
+  args: !ChoiceFlagArg
+    choices:
+    - match
+    - simpson
+    - jaccard
+    - dice
+  optional: true
+- !Flag
+  description: 'Specifies the seed generation method to use. (ClusterONE only) (default:
+    nodes)'
+  synonyms:
+  - --seed-method
+  args: !ChoiceFlagArg
+    choices:
+    - unused_nodes
+    - nodes
+    - edges
+    - cliques
+  optional: true
+- !Flag
+  description: 'Optimize hierarchical distances during second-pass of the viral clusters
+    (default: False)'
+  synonyms:
+  - --optimize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Significance threshold in the contig similarity network. (default:
+    1.0)'
+  synonyms:
+  - --sig
+  args: !SimpleFlagArg
+    name: SIG
+  optional: true
+- !Flag
+  description: 'Significance threshold in the contig similarity network. (default:
+    300)'
+  synonyms:
+  - --max-sig
+  args: !SimpleFlagArg
+    name: MAX_SIG
+  optional: true
+- !Flag
+  description: 'Use permissive affiliation for associating VCs with reference sequences.
+    (default: False)'
+  synonyms:
+  - --permissive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Inflation parameter to define protein modules with MCL. (default:
+    5.0)'
+  synonyms:
+  - --mod-inflation
+  args: !SimpleFlagArg
+    name: MOD_INFLATION
+  optional: true
+- !Flag
+  description: 'Significance threshold in the protein cluster similarity network.
+    (default: 1.0)'
+  synonyms:
+  - --mod-sig
+  args: !SimpleFlagArg
+    name: MOD_SIG
+  optional: true
+- !Flag
+  description: 'Minimal number (inclusive) of contigs a PC must appear into to be
+    taken into account in the modules computing. (default: 3)'
+  synonyms:
+  - --mod-shared-min
+  args: !SimpleFlagArg
+    name: MOD_SHARED_MIN
+  optional: true
+- !Flag
+  description: 'Significitaivity threshold to link a cluster and a module (default:
+    1.0)'
+  synonyms:
+  - --link-sig
+  args: !SimpleFlagArg
+    name: LINK_SIG
+  optional: true
+- !Flag
+  description: "Proportion of a module's PC a contig must have to be considered as\
+    \ displaying this module. (default: 0.5)"
+  synonyms:
+  - --link-prop
+  args: !SimpleFlagArg
+    name: LINK_PROP
+  optional: true
+- !Flag
+  description: "[EXPORTS [EXPORTS ...]], --exports [EXPORTS [EXPORTS ...]] Export\
+    \ backend. Suported values are \"csv\", \"krona\" and \"cytoscape\" (default:\
+    \ ['csv'])"
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[CLUSTER_FILTER [CLUSTER_FILTER ...]] Id of the clusters to export
+    (Cytoscape export only). (default: [0])'
+  synonyms:
+  - --cluster-filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Pooling criterion for cluster export (Cytoscape export only). (default:
+    predicted_family)'
+  synonyms:
+  - --criterion
+  args: !SimpleFlagArg
+    name: CRITERION
+  optional: true
+- !Flag
+  description: 'Contig info file (tsv or csv) (default: None)'
+  synonyms:
+  - --contigs
+  args: !SimpleFlagArg
+    name: CONTIGS
+  optional: true
+- !Flag
+  description: 'Protein clusters info file (tsv or csv) (default: None)'
+  synonyms:
+  - --pcs
+  args: !SimpleFlagArg
+    name: PCS
+  optional: true
+- !Flag
+  description: 'Protein cluster profiles of the contigs (tsv or csv) (default: None)'
+  synonyms:
+  - --pc-profiles
+  args: !SimpleFlagArg
+    name: PCPROFILES
+  optional: true
+- !Flag
+  description: 'Verbosity level : -v warning, -vv info, -vvv debug, (default info)
+    (default: -2)'
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Overwrite existing files (default: False)'
+  synonyms:
+  - -f
+  - --force-overwrite
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- vcontact
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

@@ -1,0 +1,61 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Number of "rows" per dimension in the simplex grid.  Default is maximum
+    possible for code size.
+  synonyms:
+  - --nrows
+  - -n
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Number of bytes per encoded probabilistic base (default 1). The size
+    of the code will be 256^b - 1 (one letter in the code is reserved for gaps).  Values
+    as large as 4 are allowed for b, but in the current implementation, performance
+    considerations effectively limit it to 2 or 3.
+  synonyms:
+  - --nbytes
+  - -b
+  args: !SimpleFlagArg
+    name: b
+  optional: true
+- !Flag
+  description: Skip greedy optimization -- just assign a single representative point
+    to each region of the probability simplex, equal to the (weighted) mean of all
+    vectors from the training data that fall in that region.
+  synonyms:
+  - --no-greedy
+  - -G
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ignore the data entirely; just use the centroid of each simplex partition.  The
+    dimension of the simplex must be given (<dim>) but no data file is required.
+  synonyms:
+  - --no-train
+  - -x
+  args: !SimpleFlagArg
+    name: dim
+  optional: true
+- !Flag
+  description: write log of optimization procedure to specified file.
+  synonyms:
+  - --log
+  - -l
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+command:
+- pbsTrain
+subcommands: []
+help_flag: !Flag
+  description: Print this help message.
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

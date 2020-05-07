@@ -1,0 +1,195 @@
+!Command
+positional:
+- !Positional
+  description: Save the simulated reads as a fastq-file at OUTPUT_PREFIX.fastq
+  position: 0
+  name: OUTPUT_PREFIX
+  optional: false
+named:
+- !Flag
+  description: Save the random reference as fasta-file at given PATH. By default,
+    save at output path with '_reference.fasta' appended.
+  synonyms:
+  - --save-reference
+  - -sr
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Number of reads to simulate (1000).
+  synonyms:
+  - --num-reads
+  - -n
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Desired read coverage.
+  synonyms:
+  - --coverage
+  - -c
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: "PAR PAR PAR PAR, -xs PAR PAR PAR PAR PAR Parameters for the curve\
+    \ determining the parameter scale for the chi^2 distribution: m,b, z, c, a for\
+    \ 'm*x + b' if x <= z and 'c * x^-a' if x > z (default= (0.01214, -5.12, 675,\
+    \ 48303.0732881, 1.4691051212330266))"
+  synonyms:
+  - --chi2-params-s
+  args: !SimpleFlagArg
+    name: PAR
+  optional: true
+- !Flag
+  description: "PAR PAR, -xn PAR PAR PAR Parameters for the function determining the\
+    \ parameter n for the chi^2 distribution: m, b, z for 'm*x + b' if x < z and 'm*z\
+    \ + b' for x >=z (default= (0.00189237136, 2.5394497, 5500))."
+  synonyms:
+  - --chi2-params-n
+  args: !SimpleFlagArg
+    name: PAR
+  optional: true
+- !Flag
+  description: Maximal number of passes for one molecule (default= 40).
+  synonyms:
+  - --max-passes
+  - -mp
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "PAR, -sq PAR PAR Parameters for the sqare root function for the quality\
+    \ increase: a, b for 'sqrt(x+a) - b' (default= (0.5, 0.2247))"
+  synonyms:
+  - --sqrt-params
+  args: !SimpleFlagArg
+    name: PAR
+  optional: true
+- !Flag
+  description: PAR, -nd PAR PAR Parameters for normal distributed noise added to quality
+    increase sqare root function (default= (0, 0.2))
+  synonyms:
+  - --norm-params
+  args: !SimpleFlagArg
+    name: PAR
+  optional: true
+- !Flag
+  description: Upper bound for the modified total error probability (default= 0.2)
+  synonyms:
+  - --probability-threshold
+  - -t
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Probability for insertions for reads with one pass. (default= 0.11)
+  synonyms:
+  - --prob-ins
+  - -pi
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Probability for deletions for reads with one pass. (default= 0.04)
+  synonyms:
+  - --prob-del
+  - -pd
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Probability for substitutions for reads with one pass. (default= 0.01)
+  synonyms:
+  - --prob-sub
+  - -ps
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: Minium read length (default= 50) for lognormal distribution
+  synonyms:
+  - --min-readlength
+  - -mr
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: '[PARAMETER [PARAMETER ...]], -ln [PARAMETER [PARAMETER ...]] Parameters
+    for lognormal read length distribution: (sigma, loc, scale), empty for defaults'
+  synonyms:
+  - --lognorm-readlength
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Fixed read length for all reads.
+  synonyms:
+  - --fixed-readlength
+  - -fl
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Sample read length from a fastq-file at PATH containing reads.
+  synonyms:
+  - --sample-readlength-from-fastq
+  - -sf
+  args: !RepeatFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Sample read length from a text file (one length per line).
+  synonyms:
+  - --sample-readlength-from-text
+  - -st
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Save the alignments in a sam-file at SAM_OUTPUT. By default, use OUTPUT_PREFIX.sam.
+  synonyms:
+  - --sam-output
+  - -so
+  args: !SimpleFlagArg
+    name: SAM_OUTPUT
+  optional: true
+- !Flag
+  description: Do not calculate the alignment and write a sam file.
+  synonyms:
+  - --no-sam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Compress the simulated reads using gzip and save them at OUTPUT_PREFIX.fastq.gz
+  synonyms:
+  - --gzip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Skip regions containing Ns and sample reads only from parts completly
+    without Ns.
+  synonyms:
+  - --without-ns
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Sample chromosomes for reads equally distributed instead of weighted
+    by their length. (Was default behaviour up to version 1.0.1)
+  synonyms:
+  - --uniform-chromosome-probability
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use old long read names where all information is encoded in one large
+    string. New format is according to PacBio convention m\{\}/\{\}/CCS with read
+    information following after a whitespace.
+  synonyms:
+  - --old-read-names
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- simlord
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

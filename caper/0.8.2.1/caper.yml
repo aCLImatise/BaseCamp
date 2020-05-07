@@ -1,0 +1,1504 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Specify config file
+  synonyms:
+  - -c
+  - --conf
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+command:
+- caper
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: 'Path, URL or URI for WDL script Example: /scratch/my.wdl, gs://some/where/our.wdl,
+      http://hello.com/world/your.wdl'
+    position: 0
+    name: wdl
+    optional: false
+  named:
+  - !Flag
+    description: Caper does not take any action.
+    synonyms:
+    - --dry-run
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Prints all logs >= DEBUG level
+    synonyms:
+    - -D
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Workflow inputs JSON file
+    synonyms:
+    - -i
+    - --inputs
+    args: !SimpleFlagArg
+      name: INPUTS
+    optional: true
+  - !Flag
+    description: Workflow options JSON file
+    synonyms:
+    - -o
+    - --options
+    args: !SimpleFlagArg
+      name: OPTIONS
+    optional: true
+  - !Flag
+    description: Workflow labels JSON file
+    synonyms:
+    - -l
+    - --labels
+    args: !SimpleFlagArg
+      name: LABELS
+    optional: true
+  - !Flag
+    description: Zip file of imported subworkflows
+    synonyms:
+    - -p
+    - --imports
+    args: !SimpleFlagArg
+      name: IMPORTS
+    optional: true
+  - !Flag
+    description: Caper's special label for a workflow This label will be added to
+      a workflow labels JSON file as a value for a key "caper-label". DO NOT USE IRREGULAR
+      CHARACTERS. USE LETTERS, NUMBERS, DASHES AND UNDERSCORES ONLY (^[A-Za-z0-9\-\_]+$)
+      since this label is used to compose a path for workflow's temporary directory
+      (tmp_dir/label/timestamp/)
+    synonyms:
+    - -s
+    - --str-label
+    args: !SimpleFlagArg
+      name: STR_LABEL
+    optional: true
+  - !Flag
+    description: Put a hold on a workflow when submitted to a Cromwell server.
+    synonyms:
+    - --hold
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Singularity cache directory. Equivalent to exporting an environment
+      variable SINGULARITY_CACHEDIR. Define it to prevent repeatedly building a singularity
+      image for every pipeline task
+    synonyms:
+    - --singularity-cachedir
+    args: !SimpleFlagArg
+      name: SINGULARITY_CACHEDIR
+    optional: true
+  - !Flag
+    description: Use gsutil CLI for direct trasnfer between S3 and GCS buckets. Otherwise,
+      such file transfer will stream through local machine. Make sure that gsutil
+      is installed on your system and it has access to credentials for AWS (e.g. ~/.boto
+      or ~/.aws/credentials).
+    synonyms:
+    - --use-gsutil-for-s3
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (IMPORTANT) --deepcopy has been deprecated. Deepcopying is now activated
+      by default. This flag disables deepcopy for JSON (.json), TSV (.tsv) and CSV
+      (.csv) files specified in an input JSON file (--inputs). Find all path/URI string
+      values in an input JSON file and make copies of files on a local/remote storage
+      for a target backend. Make sure that you have installed gsutil for GCS and aws
+      for S3.
+    synonyms:
+    - --no-deepcopy
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Ignore warnings from womtool.jar.
+    synonyms:
+    - --ignore-womtool
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Path or URL for Cromwell's womtool JAR file
+    synonyms:
+    - --womtool
+    args: !SimpleFlagArg
+      name: WOMTOOL
+    optional: true
+  - !Flag
+    description: An optional directory path to output metadata JSON file
+    synonyms:
+    - -m
+    - --metadata-output
+    args: !SimpleFlagArg
+      name: METADATA_OUTPUT
+    optional: true
+  - !Flag
+    description: Cromwell Java heap size for "run" mode (java -Xmx)
+    synonyms:
+    - --java-heap-run
+    args: !SimpleFlagArg
+      name: JAVA_HEAP_RUN
+    optional: true
+  - !Flag
+    description: Backend to run a workflow
+    synonyms:
+    - -b
+    - --backend
+    args: !SimpleFlagArg
+      name: BACKEND
+    optional: true
+  - !Flag
+    description: '[DOCKER [DOCKER ...]] URI for Docker image (e.g. ubuntu:latest).
+      This can also be used as a flag to use Docker image address defined in your
+      WDL file as a comment ("#CAPER docker").'
+    synonyms:
+    - --docker
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[SINGULARITY [SINGULARITY ...]] URI or path for Singularity image
+      (e.g. ~/.singularity/ubuntu-latest.simg, docker://ubuntu:latest, shub://vsoch/hello-world).
+      This can also be used as a flag to use Docker image address defined in your
+      WDL file as a comment ("#CAPER singularity").'
+    synonyms:
+    - --singularity
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do not build singularity image before running a workflow.
+    synonyms:
+    - --no-build-singularity
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: SLURM partition
+    synonyms:
+    - --slurm-partition
+    args: !SimpleFlagArg
+      name: SLURM_PARTITION
+    optional: true
+  - !Flag
+    description: SLURM account
+    synonyms:
+    - --slurm-account
+    args: !SimpleFlagArg
+      name: SLURM_ACCOUNT
+    optional: true
+  - !Flag
+    description: SLURM extra parameters. Must be double-quoted
+    synonyms:
+    - --slurm-extra-param
+    args: !SimpleFlagArg
+      name: SLURM_EXTRA_PARAM
+    optional: true
+  - !Flag
+    description: SGE parallel environment. Check with "qconf -spl"
+    synonyms:
+    - --sge-pe
+    args: !SimpleFlagArg
+      name: SGE_PE
+    optional: true
+  - !Flag
+    description: SGE queue. Check with "qconf -sql"
+    synonyms:
+    - --sge-queue
+    args: !SimpleFlagArg
+      name: SGE_QUEUE
+    optional: true
+  - !Flag
+    description: SGE extra parameters. Must be double-quoted
+    synonyms:
+    - --sge-extra-param
+    args: !SimpleFlagArg
+      name: SGE_EXTRA_PARAM
+    optional: true
+  - !Flag
+    description: PBS queue
+    synonyms:
+    - --pbs-queue
+    args: !SimpleFlagArg
+      name: PBS_QUEUE
+    optional: true
+  - !Flag
+    description: PBS extra parameters. Must be double-quoted
+    synonyms:
+    - --pbs-extra-param
+    args: !SimpleFlagArg
+      name: PBS_EXTRA_PARAM
+    optional: true
+  - !Flag
+    description: Cromwell metadata database type
+    synonyms:
+    - --db
+    args: !ChoiceFlagArg
+      choices:
+      - in-memory
+      - file
+      - mysql
+      - postgresql
+    optional: true
+  - !Flag
+    description: Milliseconds to wait for DB connection.
+    synonyms:
+    - --db-timeout
+    args: !SimpleFlagArg
+      name: DB_TIMEOUT
+    optional: true
+  - !Flag
+    description: Default DB file for Cromwell's built-in HyperSQL database.
+    synonyms:
+    - --file-db
+    - -d
+    args: !SimpleFlagArg
+      name: FILE_DB
+    optional: true
+  - !Flag
+    description: MySQL Database IP address (e.g. localhost)
+    synonyms:
+    - --mysql-db-ip
+    args: !SimpleFlagArg
+      name: MYSQL_DB_IP
+    optional: true
+  - !Flag
+    description: MySQL Database TCP/IP port (e.g. 3306)
+    synonyms:
+    - --mysql-db-port
+    args: !SimpleFlagArg
+      name: MYSQL_DB_PORT
+    optional: true
+  - !Flag
+    description: MySQL DB username
+    synonyms:
+    - --mysql-db-user
+    args: !SimpleFlagArg
+      name: MYSQL_DB_USER
+    optional: true
+  - !Flag
+    description: MySQL DB password
+    synonyms:
+    - --mysql-db-password
+    args: !SimpleFlagArg
+      name: MYSQL_DB_PASSWORD
+    optional: true
+  - !Flag
+    description: MySQL DB name for Cromwell
+    synonyms:
+    - --mysql-db-name
+    args: !SimpleFlagArg
+      name: MYSQL_DB_NAME
+    optional: true
+  - !Flag
+    description: PostgreSQL DB IP address (e.g. localhost)
+    synonyms:
+    - --postgresql-db-ip
+    args: !SimpleFlagArg
+      name: POSTGRESQL_DB_IP
+    optional: true
+  - !Flag
+    description: PostgreSQL DB TCP/IP port (e.g. 5432)
+    synonyms:
+    - --postgresql-db-port
+    args: !SimpleFlagArg
+      name: POSTGRESQL_DB_PORT
+    optional: true
+  - !Flag
+    description: PostgreSQL DB username
+    synonyms:
+    - --postgresql-db-user
+    args: !SimpleFlagArg
+      name: POSTGRESQL_DB_USER
+    optional: true
+  - !Flag
+    description: PostgreSQL DB password
+    synonyms:
+    - --postgresql-db-password
+    args: !SimpleFlagArg
+      name: POSTGRESQL_DB_PASSWORD
+    optional: true
+  - !Flag
+    description: PostgreSQL DB name for Cromwell
+    synonyms:
+    - --postgresql-db-name
+    args: !SimpleFlagArg
+      name: POSTGRESQL_DB_NAME
+    optional: true
+  - !Flag
+    description: Path or URL for Cromwell JAR file
+    synonyms:
+    - --cromwell
+    args: !SimpleFlagArg
+      name: CROMWELL
+    optional: true
+  - !Flag
+    description: Number of concurrent tasks. "config.concurrent-job- limit" in Cromwell
+      backend configuration for each backend
+    synonyms:
+    - --max-concurrent-tasks
+    args: !SimpleFlagArg
+      name: MAX_CONCURRENT_TASKS
+    optional: true
+  - !Flag
+    description: Number of concurrent workflows. "system.max- concurrent-workflows"
+      in backend configuration
+    synonyms:
+    - --max-concurrent-workflows
+    args: !SimpleFlagArg
+      name: MAX_CONCURRENT_WORKFLOWS
+    optional: true
+  - !Flag
+    description: Number of retries for failing tasks. equivalent to "maxRetries" in
+      workflow options JSON file.
+    synonyms:
+    - --max-retries
+    args: !SimpleFlagArg
+      name: MAX_RETRIES
+    optional: true
+  - !Flag
+    description: Disable Cromwell's call caching, which re-uses outputs from previous
+      workflows
+    synonyms:
+    - --disable-call-caching
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Custom Cromwell backend configuration file to override all
+    synonyms:
+    - --backend-file
+    args: !SimpleFlagArg
+      name: BACKEND_FILE
+    optional: true
+  - !Flag
+    description: Use soft-linking when globbing outputs for a filesystem that does
+      not allow hard-linking. e.g. beeGFS. This flag does not work with backends based
+      on a Docker container. i.e. gcp and aws. Also, it does not work with local backends
+      (local/slurm/sge/pbs) with --docker. However, it works fine with --singularity.
+    synonyms:
+    - --soft-glob-output
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output directory for local backend
+    synonyms:
+    - --out-dir
+    args: !SimpleFlagArg
+      name: OUT_DIR
+    optional: true
+  - !Flag
+    description: Temporary directory for local backend
+    synonyms:
+    - --tmp-dir
+    args: !SimpleFlagArg
+      name: TMP_DIR
+    optional: true
+  - !Flag
+    description: GC project
+    synonyms:
+    - --gcp-prj
+    args: !SimpleFlagArg
+      name: GCP_PRJ
+    optional: true
+  - !Flag
+    description: GCP zones (e.g. us-west1-b,us-central1-b)
+    synonyms:
+    - --gcp-zones
+    args: !SimpleFlagArg
+      name: GCP_ZONES
+    optional: true
+  - !Flag
+    description: 'Duplication strategy for call-cached outputs for GCP backend: copy:
+      make a copy, reference: refer to old output in metadata.json.'
+    synonyms:
+    - --gcp-call-caching-dup-strat
+    args: !ChoiceFlagArg
+      choices:
+      - reference
+      - copy
+    optional: true
+  - !Flag
+    description: Output GCS bucket for GCP backend
+    synonyms:
+    - --out-gcs-bucket
+    args: !SimpleFlagArg
+      name: OUT_GCS_BUCKET
+    optional: true
+  - !Flag
+    description: Temporary GCS bucket for GCP backend
+    synonyms:
+    - --tmp-gcs-bucket
+    args: !SimpleFlagArg
+      name: TMP_GCS_BUCKET
+    optional: true
+  - !Flag
+    description: ARN for AWS Batch
+    synonyms:
+    - --aws-batch-arn
+    args: !SimpleFlagArg
+      name: AWS_BATCH_ARN
+    optional: true
+  - !Flag
+    description: AWS region (e.g. us-west-1)
+    synonyms:
+    - --aws-region
+    args: !SimpleFlagArg
+      name: AWS_REGION
+    optional: true
+  - !Flag
+    description: Output S3 bucket for AWS backend
+    synonyms:
+    - --out-s3-bucket
+    args: !SimpleFlagArg
+      name: OUT_S3_BUCKET
+    optional: true
+  - !Flag
+    description: Temporary S3 bucket for AWS backend
+    synonyms:
+    - --tmp-s3-bucket
+    args: !SimpleFlagArg
+      name: TMP_S3_BUCKET
+    optional: true
+  command:
+  - caper
+  - run
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Caper does not take any action.
+    synonyms:
+    - --dry-run
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Prints all logs >= DEBUG level
+    synonyms:
+    - -D
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Port for Caper server
+    synonyms:
+    - --port
+    args: !SimpleFlagArg
+      name: PORT
+    optional: true
+  - !Flag
+    description: IP address for Caper server
+    synonyms:
+    - --ip
+    args: !SimpleFlagArg
+      name: IP
+    optional: true
+  - !Flag
+    description: Disable server heartbeat file.
+    synonyms:
+    - --no-server-heartbeat
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Heartbeat file for Caper clients to get IP and port of a server
+    synonyms:
+    - --server-heartbeat-file
+    args: !SimpleFlagArg
+      name: SERVER_HEARTBEAT_FILE
+    optional: true
+  - !Flag
+    description: Timeout for a heartbeat file in Milliseconds. A heartbeat file older
+      than this interval will be ignored.
+    synonyms:
+    - --server-heartbeat-timeout
+    args: !SimpleFlagArg
+      name: SERVER_HEARTBEAT_TIMEOUT
+    optional: true
+  - !Flag
+    description: Cromwell Java heap size for "server" mode (java -Xmx)
+    synonyms:
+    - --java-heap-server
+    args: !SimpleFlagArg
+      name: JAVA_HEAP_SERVER
+    optional: true
+  - !Flag
+    description: Backend to run a workflow
+    synonyms:
+    - -b
+    - --backend
+    args: !SimpleFlagArg
+      name: BACKEND
+    optional: true
+  - !Flag
+    description: Cromwell metadata database type
+    synonyms:
+    - --db
+    args: !ChoiceFlagArg
+      choices:
+      - in-memory
+      - file
+      - mysql
+      - postgresql
+    optional: true
+  - !Flag
+    description: Milliseconds to wait for DB connection.
+    synonyms:
+    - --db-timeout
+    args: !SimpleFlagArg
+      name: DB_TIMEOUT
+    optional: true
+  - !Flag
+    description: Default DB file for Cromwell's built-in HyperSQL database.
+    synonyms:
+    - --file-db
+    - -d
+    args: !SimpleFlagArg
+      name: FILE_DB
+    optional: true
+  - !Flag
+    description: MySQL Database IP address (e.g. localhost)
+    synonyms:
+    - --mysql-db-ip
+    args: !SimpleFlagArg
+      name: MYSQL_DB_IP
+    optional: true
+  - !Flag
+    description: MySQL Database TCP/IP port (e.g. 3306)
+    synonyms:
+    - --mysql-db-port
+    args: !SimpleFlagArg
+      name: MYSQL_DB_PORT
+    optional: true
+  - !Flag
+    description: MySQL DB username
+    synonyms:
+    - --mysql-db-user
+    args: !SimpleFlagArg
+      name: MYSQL_DB_USER
+    optional: true
+  - !Flag
+    description: MySQL DB password
+    synonyms:
+    - --mysql-db-password
+    args: !SimpleFlagArg
+      name: MYSQL_DB_PASSWORD
+    optional: true
+  - !Flag
+    description: MySQL DB name for Cromwell
+    synonyms:
+    - --mysql-db-name
+    args: !SimpleFlagArg
+      name: MYSQL_DB_NAME
+    optional: true
+  - !Flag
+    description: PostgreSQL DB IP address (e.g. localhost)
+    synonyms:
+    - --postgresql-db-ip
+    args: !SimpleFlagArg
+      name: POSTGRESQL_DB_IP
+    optional: true
+  - !Flag
+    description: PostgreSQL DB TCP/IP port (e.g. 5432)
+    synonyms:
+    - --postgresql-db-port
+    args: !SimpleFlagArg
+      name: POSTGRESQL_DB_PORT
+    optional: true
+  - !Flag
+    description: PostgreSQL DB username
+    synonyms:
+    - --postgresql-db-user
+    args: !SimpleFlagArg
+      name: POSTGRESQL_DB_USER
+    optional: true
+  - !Flag
+    description: PostgreSQL DB password
+    synonyms:
+    - --postgresql-db-password
+    args: !SimpleFlagArg
+      name: POSTGRESQL_DB_PASSWORD
+    optional: true
+  - !Flag
+    description: PostgreSQL DB name for Cromwell
+    synonyms:
+    - --postgresql-db-name
+    args: !SimpleFlagArg
+      name: POSTGRESQL_DB_NAME
+    optional: true
+  - !Flag
+    description: Path or URL for Cromwell JAR file
+    synonyms:
+    - --cromwell
+    args: !SimpleFlagArg
+      name: CROMWELL
+    optional: true
+  - !Flag
+    description: Number of concurrent tasks. "config.concurrent-job- limit" in Cromwell
+      backend configuration for each backend
+    synonyms:
+    - --max-concurrent-tasks
+    args: !SimpleFlagArg
+      name: MAX_CONCURRENT_TASKS
+    optional: true
+  - !Flag
+    description: Number of concurrent workflows. "system.max- concurrent-workflows"
+      in backend configuration
+    synonyms:
+    - --max-concurrent-workflows
+    args: !SimpleFlagArg
+      name: MAX_CONCURRENT_WORKFLOWS
+    optional: true
+  - !Flag
+    description: Number of retries for failing tasks. equivalent to "maxRetries" in
+      workflow options JSON file.
+    synonyms:
+    - --max-retries
+    args: !SimpleFlagArg
+      name: MAX_RETRIES
+    optional: true
+  - !Flag
+    description: Disable Cromwell's call caching, which re-uses outputs from previous
+      workflows
+    synonyms:
+    - --disable-call-caching
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Custom Cromwell backend configuration file to override all
+    synonyms:
+    - --backend-file
+    args: !SimpleFlagArg
+      name: BACKEND_FILE
+    optional: true
+  - !Flag
+    description: Use soft-linking when globbing outputs for a filesystem that does
+      not allow hard-linking. e.g. beeGFS. This flag does not work with backends based
+      on a Docker container. i.e. gcp and aws. Also, it does not work with local backends
+      (local/slurm/sge/pbs) with --docker. However, it works fine with --singularity.
+    synonyms:
+    - --soft-glob-output
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output directory for local backend
+    synonyms:
+    - --out-dir
+    args: !SimpleFlagArg
+      name: OUT_DIR
+    optional: true
+  - !Flag
+    description: Temporary directory for local backend
+    synonyms:
+    - --tmp-dir
+    args: !SimpleFlagArg
+      name: TMP_DIR
+    optional: true
+  - !Flag
+    description: GC project
+    synonyms:
+    - --gcp-prj
+    args: !SimpleFlagArg
+      name: GCP_PRJ
+    optional: true
+  - !Flag
+    description: GCP zones (e.g. us-west1-b,us-central1-b)
+    synonyms:
+    - --gcp-zones
+    args: !SimpleFlagArg
+      name: GCP_ZONES
+    optional: true
+  - !Flag
+    description: 'Duplication strategy for call-cached outputs for GCP backend: copy:
+      make a copy, reference: refer to old output in metadata.json.'
+    synonyms:
+    - --gcp-call-caching-dup-strat
+    args: !ChoiceFlagArg
+      choices:
+      - reference
+      - copy
+    optional: true
+  - !Flag
+    description: Output GCS bucket for GCP backend
+    synonyms:
+    - --out-gcs-bucket
+    args: !SimpleFlagArg
+      name: OUT_GCS_BUCKET
+    optional: true
+  - !Flag
+    description: Temporary GCS bucket for GCP backend
+    synonyms:
+    - --tmp-gcs-bucket
+    args: !SimpleFlagArg
+      name: TMP_GCS_BUCKET
+    optional: true
+  - !Flag
+    description: ARN for AWS Batch
+    synonyms:
+    - --aws-batch-arn
+    args: !SimpleFlagArg
+      name: AWS_BATCH_ARN
+    optional: true
+  - !Flag
+    description: AWS region (e.g. us-west-1)
+    synonyms:
+    - --aws-region
+    args: !SimpleFlagArg
+      name: AWS_REGION
+    optional: true
+  - !Flag
+    description: Output S3 bucket for AWS backend
+    synonyms:
+    - --out-s3-bucket
+    args: !SimpleFlagArg
+      name: OUT_S3_BUCKET
+    optional: true
+  - !Flag
+    description: Temporary S3 bucket for AWS backend
+    synonyms:
+    - --tmp-s3-bucket
+    args: !SimpleFlagArg
+      name: TMP_S3_BUCKET
+    optional: true
+  command:
+  - caper
+  - server
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: 'Path, URL or URI for WDL script Example: /scratch/my.wdl, gs://some/where/our.wdl,
+      http://hello.com/world/your.wdl'
+    position: 0
+    name: wdl
+    optional: false
+  named:
+  - !Flag
+    description: Caper does not take any action.
+    synonyms:
+    - --dry-run
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Prints all logs >= DEBUG level
+    synonyms:
+    - -D
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Port for Caper server
+    synonyms:
+    - --port
+    args: !SimpleFlagArg
+      name: PORT
+    optional: true
+  - !Flag
+    description: IP address for Caper server
+    synonyms:
+    - --ip
+    args: !SimpleFlagArg
+      name: IP
+    optional: true
+  - !Flag
+    description: Disable server heartbeat file.
+    synonyms:
+    - --no-server-heartbeat
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Heartbeat file for Caper clients to get IP and port of a server
+    synonyms:
+    - --server-heartbeat-file
+    args: !SimpleFlagArg
+      name: SERVER_HEARTBEAT_FILE
+    optional: true
+  - !Flag
+    description: Timeout for a heartbeat file in Milliseconds. A heartbeat file older
+      than this interval will be ignored.
+    synonyms:
+    - --server-heartbeat-timeout
+    args: !SimpleFlagArg
+      name: SERVER_HEARTBEAT_TIMEOUT
+    optional: true
+  - !Flag
+    description: Workflow inputs JSON file
+    synonyms:
+    - -i
+    - --inputs
+    args: !SimpleFlagArg
+      name: INPUTS
+    optional: true
+  - !Flag
+    description: Workflow options JSON file
+    synonyms:
+    - -o
+    - --options
+    args: !SimpleFlagArg
+      name: OPTIONS
+    optional: true
+  - !Flag
+    description: Workflow labels JSON file
+    synonyms:
+    - -l
+    - --labels
+    args: !SimpleFlagArg
+      name: LABELS
+    optional: true
+  - !Flag
+    description: Zip file of imported subworkflows
+    synonyms:
+    - -p
+    - --imports
+    args: !SimpleFlagArg
+      name: IMPORTS
+    optional: true
+  - !Flag
+    description: Caper's special label for a workflow This label will be added to
+      a workflow labels JSON file as a value for a key "caper-label". DO NOT USE IRREGULAR
+      CHARACTERS. USE LETTERS, NUMBERS, DASHES AND UNDERSCORES ONLY (^[A-Za-z0-9\-\_]+$)
+      since this label is used to compose a path for workflow's temporary directory
+      (tmp_dir/label/timestamp/)
+    synonyms:
+    - -s
+    - --str-label
+    args: !SimpleFlagArg
+      name: STR_LABEL
+    optional: true
+  - !Flag
+    description: Put a hold on a workflow when submitted to a Cromwell server.
+    synonyms:
+    - --hold
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Singularity cache directory. Equivalent to exporting an environment
+      variable SINGULARITY_CACHEDIR. Define it to prevent repeatedly building a singularity
+      image for every pipeline task
+    synonyms:
+    - --singularity-cachedir
+    args: !SimpleFlagArg
+      name: SINGULARITY_CACHEDIR
+    optional: true
+  - !Flag
+    description: Use gsutil CLI for direct trasnfer between S3 and GCS buckets. Otherwise,
+      such file transfer will stream through local machine. Make sure that gsutil
+      is installed on your system and it has access to credentials for AWS (e.g. ~/.boto
+      or ~/.aws/credentials).
+    synonyms:
+    - --use-gsutil-for-s3
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (IMPORTANT) --deepcopy has been deprecated. Deepcopying is now activated
+      by default. This flag disables deepcopy for JSON (.json), TSV (.tsv) and CSV
+      (.csv) files specified in an input JSON file (--inputs). Find all path/URI string
+      values in an input JSON file and make copies of files on a local/remote storage
+      for a target backend. Make sure that you have installed gsutil for GCS and aws
+      for S3.
+    synonyms:
+    - --no-deepcopy
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Ignore warnings from womtool.jar.
+    synonyms:
+    - --ignore-womtool
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Path or URL for Cromwell's womtool JAR file
+    synonyms:
+    - --womtool
+    args: !SimpleFlagArg
+      name: WOMTOOL
+    optional: true
+  - !Flag
+    description: Backend to run a workflow
+    synonyms:
+    - -b
+    - --backend
+    args: !SimpleFlagArg
+      name: BACKEND
+    optional: true
+  - !Flag
+    description: '[DOCKER [DOCKER ...]] URI for Docker image (e.g. ubuntu:latest).
+      This can also be used as a flag to use Docker image address defined in your
+      WDL file as a comment ("#CAPER docker").'
+    synonyms:
+    - --docker
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[SINGULARITY [SINGULARITY ...]] URI or path for Singularity image
+      (e.g. ~/.singularity/ubuntu-latest.simg, docker://ubuntu:latest, shub://vsoch/hello-world).
+      This can also be used as a flag to use Docker image address defined in your
+      WDL file as a comment ("#CAPER singularity").'
+    synonyms:
+    - --singularity
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do not build singularity image before running a workflow.
+    synonyms:
+    - --no-build-singularity
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: SLURM partition
+    synonyms:
+    - --slurm-partition
+    args: !SimpleFlagArg
+      name: SLURM_PARTITION
+    optional: true
+  - !Flag
+    description: SLURM account
+    synonyms:
+    - --slurm-account
+    args: !SimpleFlagArg
+      name: SLURM_ACCOUNT
+    optional: true
+  - !Flag
+    description: SLURM extra parameters. Must be double-quoted
+    synonyms:
+    - --slurm-extra-param
+    args: !SimpleFlagArg
+      name: SLURM_EXTRA_PARAM
+    optional: true
+  - !Flag
+    description: SGE parallel environment. Check with "qconf -spl"
+    synonyms:
+    - --sge-pe
+    args: !SimpleFlagArg
+      name: SGE_PE
+    optional: true
+  - !Flag
+    description: SGE queue. Check with "qconf -sql"
+    synonyms:
+    - --sge-queue
+    args: !SimpleFlagArg
+      name: SGE_QUEUE
+    optional: true
+  - !Flag
+    description: SGE extra parameters. Must be double-quoted
+    synonyms:
+    - --sge-extra-param
+    args: !SimpleFlagArg
+      name: SGE_EXTRA_PARAM
+    optional: true
+  - !Flag
+    description: PBS queue
+    synonyms:
+    - --pbs-queue
+    args: !SimpleFlagArg
+      name: PBS_QUEUE
+    optional: true
+  - !Flag
+    description: PBS extra parameters. Must be double-quoted
+    synonyms:
+    - --pbs-extra-param
+    args: !SimpleFlagArg
+      name: PBS_EXTRA_PARAM
+    optional: true
+  command:
+  - caper
+  - submit
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: List of workflow IDs to find matching workflows to commit a specified
+      action (list, metadata and abort). Wildcards (* and ?) are allowed.
+    position: 0
+    name: wf_id_or_label
+    optional: false
+  named:
+  - !Flag
+    description: Caper does not take any action.
+    synonyms:
+    - --dry-run
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Prints all logs >= DEBUG level
+    synonyms:
+    - -D
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Port for Caper server
+    synonyms:
+    - --port
+    args: !SimpleFlagArg
+      name: PORT
+    optional: true
+  - !Flag
+    description: IP address for Caper server
+    synonyms:
+    - --ip
+    args: !SimpleFlagArg
+      name: IP
+    optional: true
+  - !Flag
+    description: Disable server heartbeat file.
+    synonyms:
+    - --no-server-heartbeat
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Heartbeat file for Caper clients to get IP and port of a server
+    synonyms:
+    - --server-heartbeat-file
+    args: !SimpleFlagArg
+      name: SERVER_HEARTBEAT_FILE
+    optional: true
+  - !Flag
+    description: Timeout for a heartbeat file in Milliseconds. A heartbeat file older
+      than this interval will be ignored.
+    synonyms:
+    - --server-heartbeat-timeout
+    args: !SimpleFlagArg
+      name: SERVER_HEARTBEAT_TIMEOUT
+    optional: true
+  command:
+  - caper
+  - abort
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: List of workflow IDs to find matching workflows to commit a specified
+      action (list, metadata and abort). Wildcards (* and ?) are allowed.
+    position: 0
+    name: wf_id_or_label
+    optional: false
+  named:
+  - !Flag
+    description: Caper does not take any action.
+    synonyms:
+    - --dry-run
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Prints all logs >= DEBUG level
+    synonyms:
+    - -D
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Port for Caper server
+    synonyms:
+    - --port
+    args: !SimpleFlagArg
+      name: PORT
+    optional: true
+  - !Flag
+    description: IP address for Caper server
+    synonyms:
+    - --ip
+    args: !SimpleFlagArg
+      name: IP
+    optional: true
+  - !Flag
+    description: Disable server heartbeat file.
+    synonyms:
+    - --no-server-heartbeat
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Heartbeat file for Caper clients to get IP and port of a server
+    synonyms:
+    - --server-heartbeat-file
+    args: !SimpleFlagArg
+      name: SERVER_HEARTBEAT_FILE
+    optional: true
+  - !Flag
+    description: Timeout for a heartbeat file in Milliseconds. A heartbeat file older
+      than this interval will be ignored.
+    synonyms:
+    - --server-heartbeat-timeout
+    args: !SimpleFlagArg
+      name: SERVER_HEARTBEAT_TIMEOUT
+    optional: true
+  command:
+  - caper
+  - unhold
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: List of workflow IDs to find matching workflows to commit a specified
+      action (list, metadata and abort). Wildcards (* and ?) are allowed.
+    position: 0
+    name: wf_id_or_label
+    optional: false
+  named:
+  - !Flag
+    description: Caper does not take any action.
+    synonyms:
+    - --dry-run
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Prints all logs >= DEBUG level
+    synonyms:
+    - -D
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Port for Caper server
+    synonyms:
+    - --port
+    args: !SimpleFlagArg
+      name: PORT
+    optional: true
+  - !Flag
+    description: IP address for Caper server
+    synonyms:
+    - --ip
+    args: !SimpleFlagArg
+      name: IP
+    optional: true
+  - !Flag
+    description: Disable server heartbeat file.
+    synonyms:
+    - --no-server-heartbeat
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Heartbeat file for Caper clients to get IP and port of a server
+    synonyms:
+    - --server-heartbeat-file
+    args: !SimpleFlagArg
+      name: SERVER_HEARTBEAT_FILE
+    optional: true
+  - !Flag
+    description: Timeout for a heartbeat file in Milliseconds. A heartbeat file older
+      than this interval will be ignored.
+    synonyms:
+    - --server-heartbeat-timeout
+    args: !SimpleFlagArg
+      name: SERVER_HEARTBEAT_TIMEOUT
+    optional: true
+  - !Flag
+    description: Comma-separated list of items to be shown for "list" subcommand.
+      Any key name in workflow JSON from Cromwell server's response is allowed. Available
+      keys are "id" (workflow ID), "status", "str_label", "name" (WDL/CWL name), "submission"
+      (date/time), "start", "end" and "user". "str_label" is a special key for Caper.
+      See help context of "--str-label" for details
+    synonyms:
+    - -f
+    - --format
+    args: !SimpleFlagArg
+      name: FORMAT
+    optional: true
+  - !Flag
+    description: Hide workflows submitted before this date/time. Use the same (or
+      shorter) date/time format shown in "caper list". e.g. 2019-06-13, 2019-06-13T10:07
+    synonyms:
+    - --hide-result-before
+    args: !SimpleFlagArg
+      name: HIDE_RESULT_BEFORE
+    optional: true
+  - !Flag
+    description: Hide subworkflows from "caper list".
+    synonyms:
+    - --hide-subworkflow
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - caper
+  - list
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: List of workflow IDs to find matching workflows to commit a specified
+      action (list, metadata and abort). Wildcards (* and ?) are allowed.
+    position: 0
+    name: wf_id_or_label
+    optional: false
+  named:
+  - !Flag
+    description: Caper does not take any action.
+    synonyms:
+    - --dry-run
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Prints all logs >= DEBUG level
+    synonyms:
+    - -D
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Port for Caper server
+    synonyms:
+    - --port
+    args: !SimpleFlagArg
+      name: PORT
+    optional: true
+  - !Flag
+    description: IP address for Caper server
+    synonyms:
+    - --ip
+    args: !SimpleFlagArg
+      name: IP
+    optional: true
+  - !Flag
+    description: Disable server heartbeat file.
+    synonyms:
+    - --no-server-heartbeat
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Heartbeat file for Caper clients to get IP and port of a server
+    synonyms:
+    - --server-heartbeat-file
+    args: !SimpleFlagArg
+      name: SERVER_HEARTBEAT_FILE
+    optional: true
+  - !Flag
+    description: Timeout for a heartbeat file in Milliseconds. A heartbeat file older
+      than this interval will be ignored.
+    synonyms:
+    - --server-heartbeat-timeout
+    args: !SimpleFlagArg
+      name: SERVER_HEARTBEAT_TIMEOUT
+    optional: true
+  command:
+  - caper
+  - metadata
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: List of workflow IDs to find matching workflows to commit a specified
+      action (list, metadata and abort). Wildcards (* and ?) are allowed.
+    position: 0
+    name: wf_id_or_label
+    optional: false
+  named:
+  - !Flag
+    description: Caper does not take any action.
+    synonyms:
+    - --dry-run
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Prints all logs >= DEBUG level
+    synonyms:
+    - -D
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Show information about completed tasks.
+    synonyms:
+    - --show-completed-task
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Port for Caper server
+    synonyms:
+    - --port
+    args: !SimpleFlagArg
+      name: PORT
+    optional: true
+  - !Flag
+    description: IP address for Caper server
+    synonyms:
+    - --ip
+    args: !SimpleFlagArg
+      name: IP
+    optional: true
+  - !Flag
+    description: Disable server heartbeat file.
+    synonyms:
+    - --no-server-heartbeat
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Heartbeat file for Caper clients to get IP and port of a server
+    synonyms:
+    - --server-heartbeat-file
+    args: !SimpleFlagArg
+      name: SERVER_HEARTBEAT_FILE
+    optional: true
+  - !Flag
+    description: Timeout for a heartbeat file in Milliseconds. A heartbeat file older
+      than this interval will be ignored.
+    synonyms:
+    - --server-heartbeat-timeout
+    args: !SimpleFlagArg
+      name: SERVER_HEARTBEAT_TIMEOUT
+    optional: true
+  command:
+  - caper
+  - troubleshoot
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: List of workflow IDs to find matching workflows to commit a specified
+      action (list, metadata and abort). Wildcards (* and ?) are allowed.
+    position: 0
+    name: wf_id_or_label
+    optional: false
+  named:
+  - !Flag
+    description: Caper does not take any action.
+    synonyms:
+    - --dry-run
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Prints all logs >= DEBUG level
+    synonyms:
+    - -D
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Show information about completed tasks.
+    synonyms:
+    - --show-completed-task
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Port for Caper server
+    synonyms:
+    - --port
+    args: !SimpleFlagArg
+      name: PORT
+    optional: true
+  - !Flag
+    description: IP address for Caper server
+    synonyms:
+    - --ip
+    args: !SimpleFlagArg
+      name: IP
+    optional: true
+  - !Flag
+    description: Disable server heartbeat file.
+    synonyms:
+    - --no-server-heartbeat
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Heartbeat file for Caper clients to get IP and port of a server
+    synonyms:
+    - --server-heartbeat-file
+    args: !SimpleFlagArg
+      name: SERVER_HEARTBEAT_FILE
+    optional: true
+  - !Flag
+    description: Timeout for a heartbeat file in Milliseconds. A heartbeat file older
+      than this interval will be ignored.
+    synonyms:
+    - --server-heartbeat-timeout
+    args: !SimpleFlagArg
+      name: SERVER_HEARTBEAT_TIMEOUT
+    optional: true
+  command:
+  - caper
+  - debug
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show version
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

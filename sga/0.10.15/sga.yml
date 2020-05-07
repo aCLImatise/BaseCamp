@@ -1,0 +1,2153 @@
+!Command
+positional: []
+named: []
+command:
+- sga
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: set random seed
+    synonyms:
+    - --seed
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'write the reads to FILE (default: stdout)'
+    synonyms:
+    - -o
+    - --out
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: 0 - do not treat reads as paired (default) 1 - reads are paired with
+      the first read in READS1 and the second read in READS2. The paired reads will
+      be interleaved in the output file 2 - reads are paired and the records are interleaved
+      within a single file.
+    synonyms:
+    - -p
+    - --pe-mode
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: if one half of a read pair fails filtering, write the passed half
+      to FILE
+    synonyms:
+    - --pe-orphans
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: convert quality values from phred-64 to phred-33.
+    synonyms:
+    - --phred64
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: do not output quality scores
+    synonyms:
+    - --discard-quality
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "perform Heng Li's BWA quality trim algorithm.  Reads are trimmed\
+      \ according to the formula: argmax_x{\\sum_{i=x+1}^l(INT-q_i)} if q_l<INT where\
+      \ l is the original read length."
+    synonyms:
+    - -q
+    - --quality-trim
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'discard the read if it contains more than INT low-quality bases.
+      Bases with phred score <= 3 are considered low quality. Default: no filtering.
+      The filtering is applied after trimming so bases removed are not counted. Do
+      not use this option if you are planning to use the BCR algorithm for indexing.'
+    synonyms:
+    - -f
+    - --quality-filter
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'discard sequences that are shorter than INT this is most useful
+      when used in conjunction with --quality-trim. Default: 40'
+    synonyms:
+    - -m
+    - --min-length
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: clip all reads to be length INT. In most cases it is better to use
+      the soft clip (quality-trim) option.
+    synonyms:
+    - -h
+    - --hard-clip
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Randomly change ambiguous base calls to one of possible bases. If
+      this option is not specified, the entire read will be discarded.
+    synonyms:
+    - --permute-ambiguous
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Randomly sample reads or pairs with acceptance probability FLOAT.
+    synonyms:
+    - -s
+    - --sample
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: Perform dust-style filtering of low complexity reads.
+    synonyms:
+    - --dust
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'filter out reads that have a dust score higher than FLOAT (default:
+      4.0).'
+    synonyms:
+    - --dust-threshold
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: append SUFFIX to each read ID
+    synonyms:
+    - --suffix
+    args: !SimpleFlagArg
+      name: SUFFIX
+    optional: true
+  - !Flag
+    description: Remove the adapter STRING from input reads.
+    synonyms:
+    - -c
+    - --remove-adapter-rev
+    args: !SimpleFlagArg
+      name: STRING
+    optional: true
+  command:
+  - sga
+  - preprocess
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'BWT construction algorithm. STR can be: sais - induced sort algorithm,
+      slower but works for very long sequences (default) ropebwt - very fast and memory
+      efficient. use this for short (<200bp) reads'
+    synonyms:
+    - -a
+    - --algorithm
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: use disk-based BWT construction algorithm. The suffix array/BWT will
+      be constructed for batchs of NUM reads at a time. To construct the suffix array
+      of 200 megabases of sequence requires ~2GB of memory, set this parameter accordingly.
+    synonyms:
+    - -d
+    - --disk
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  - !Flag
+    description: 'use NUM threads to construct the index (default: 1)'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  - !Flag
+    description: validate that the suffix array/bwt is correct
+    synonyms:
+    - -c
+    - --check
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write index to file using PREFIX instead of prefix of READSFILE
+    synonyms:
+    - -p
+    - --prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  - !Flag
+    description: suppress construction of the reverse BWT. Use this option when building
+      the index for reads that will be error corrected using the k-mer corrector,
+      which only needs the forward index
+    synonyms:
+    - --no-reverse
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: suppress construction of the forward BWT. Use this option when building
+      the forward and reverse index separately
+    synonyms:
+    - --no-forward
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: suppress construction of the SAI file. This option only applies to
+      -a ropebwt
+    synonyms:
+    - --no-sai
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: use N bits of storage for each element of the gap array. Acceptable
+      values are 4,8,16 or 32. Lower values can substantially reduce the amount of
+      memory required at the cost of less predictable memory usage. When this value
+      is set to 32, the memory requirement is essentially deterministic and requires
+      ~5N bytes where N is the size of the FM-index of READS2. The default value is
+      8.
+    synonyms:
+    - -g
+    - --gap-array
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  command:
+  - sga
+  - index
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'use NUM threads to merge the indices (default: 1)'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  - !Flag
+    description: write final index to files starting with PREFIX (the default is to
+      concatenate the input filenames)
+    synonyms:
+    - -p
+    - --prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  - !Flag
+    description: remove the original BWT, SAI and reads files after the merge
+    synonyms:
+    - -r
+    - --remove
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: use N bits of storage for each element of the gap array. Acceptable
+      values are 4,8,16 or 32. Lower values can substantially reduce the amount of
+      memory required at the cost of less predictable memory usage. When this value
+      is set to 32, the memory requirement is essentially deterministic and requires
+      ~5N bytes where N is the size of the FM-index of READS2. The default value is
+      4.
+    synonyms:
+    - -g
+    - --gap-array
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Suppress merging of the sequence files. Use this option when merging
+      the index(es) separate e.g. in parallel
+    synonyms:
+    - --no-sequence
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Suppress merging of the forward index. Use this option when merging
+      the index(es) separate e.g. in parallel
+    synonyms:
+    - --no-forward
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Suppress merging of the reverse index. Use this option when merging
+      the index(es) separate e.g. in parallel
+    synonyms:
+    - --no-reverse
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - sga
+  - merge
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write the sequences to FILE
+    synonyms:
+    - -o
+    - --outfile
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: prefix the names of the reads with STR
+    synonyms:
+    - -p
+    - --prefix
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  command:
+  - sga
+  - bwt2fa
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'use PREFIX for the names of the index files (default: prefix of
+      the input file)'
+    synonyms:
+    - -p
+    - --prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  - !Flag
+    description: 'write the corrected reads to FILE (default: READSFILE.ec.fa)'
+    synonyms:
+    - -o
+    - --outfile
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: 'use NUM threads for the computation (default: 1)'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  - !Flag
+    description: detect and discard low-quality reads
+    synonyms:
+    - --discard
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'use occurrence array sample rate of N in the FM-index. Higher values
+      use significantly less memory at the cost of higher runtime. This value must
+      be a power of 2 (default: 128)'
+    synonyms:
+    - -d
+    - --sample-rate
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'specify the correction algorithm to use. STR must be one of kmer,
+      hybrid, overlap. (default: kmer)'
+    synonyms:
+    - -a
+    - --algorithm
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: collect error correction metrics (error rate by position in read,
+      etc) and write them to FILE
+    synonyms:
+    - --metrics
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: 'The length of the kmer to use. (default: 31)'
+    synonyms:
+    - -k
+    - --kmer-size
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'Attempt to correct kmers that are seen less than N times. (default:
+      3)'
+    synonyms:
+    - -x
+    - --kmer-threshold
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'Perform N rounds of k-mer correction, correcting up to N bases (default:
+      10)'
+    synonyms:
+    - -i
+    - --kmer-rounds
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'When correcting a kmer, require the count of the new kmer is at
+      least +N higher than the count of the old kmer. (default: 1)'
+    synonyms:
+    - -O
+    - --count-offset
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Attempt to learn the k-mer correction threshold (experimental). Overrides
+      -x parameter.
+    synonyms:
+    - --learn
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'the maximum error rate allowed between two sequences to consider
+      them overlapped (default: 0.04)'
+    synonyms:
+    - -e
+    - --error-rate
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'minimum overlap required between two reads (default: 45)'
+    synonyms:
+    - -m
+    - --min-overlap
+    args: !SimpleFlagArg
+      name: LEN
+    optional: true
+  - !Flag
+    description: 'minimum count of the base that has the highest count in overlap
+      correction. The base of the read is only corrected if the maximum base has at
+      least this count. Should avoid mis-corrections in low coverage regions (default:
+      4)'
+    synonyms:
+    - -M
+    - --min-count-max-base
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'Attempt to correct bases in a read that are seen less than N times
+      (default: 2)'
+    synonyms:
+    - -X
+    - --base-threshold
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'use INT as the threshold to detect a conflicted base in the multi-overlap
+      (default: 5)'
+    synonyms:
+    - -c
+    - --conflict
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: force the seed length to be LEN. By default, the seed length in the
+      overlap step is calculated to guarantee all overlaps with --error-rate differences
+      are found. This option removes the guarantee but will be (much) faster. As SGA
+      can tolerate some missing edges, this option may be preferable for some data
+      sets.
+    synonyms:
+    - -l
+    - --seed-length
+    args: !SimpleFlagArg
+      name: LEN
+    optional: true
+  - !Flag
+    description: force the seed stride to be LEN. This parameter will be ignored unless
+      --seed-length is specified (see above). This parameter defaults to the same
+      value as --seed-length
+    synonyms:
+    - -s
+    - --seed-stride
+    args: !SimpleFlagArg
+      name: LEN
+    optional: true
+  - !Flag
+    description: stop the overlap search at N branches. This parameter is used to
+      control the search time for highly-repetitive reads. If the number of branches
+      exceeds N, the search stops and the read will not be corrected. This is not
+      enabled by default.
+    synonyms:
+    - -b
+    - --branch-cutoff
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'iteratively correct reads up to a maximum of NUM rounds (default:
+      1)'
+    synonyms:
+    - -r
+    - --rounds
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  command:
+  - sga
+  - correct
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'use PREFIX for the names of the index files (default: prefix of
+      the input file)'
+    synonyms:
+    - -p
+    - --prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  - !Flag
+    description: 'use NUM worker threads (default: no threading)'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  - !Flag
+    description: 'minimum overlap required between two reads to merge (default: 45)'
+    synonyms:
+    - -m
+    - --min-overlap
+    args: !SimpleFlagArg
+      name: LEN
+    optional: true
+  - !Flag
+    description: 'write the merged sequences to FILE (default: basename.merged.fa)'
+    synonyms:
+    - -o
+    - --outfile
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - sga
+  - fm-merge
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'use NUM worker threads to compute the overlaps (default: no threading)'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  - !Flag
+    description: 'the maximum error rate allowed to consider two sequences aligned
+      (default: exact matches only)'
+    synonyms:
+    - -e
+    - --error-rate
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'minimum overlap required between two reads (default: 45)'
+    synonyms:
+    - -m
+    - --min-overlap
+    args: !SimpleFlagArg
+      name: LEN
+    optional: true
+  - !Flag
+    description: 'use PREFIX for the names of the index files (default: prefix of
+      the input file)'
+    synonyms:
+    - -p
+    - --prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  - !Flag
+    description: perform the overlap queries against the reads in FILE
+    synonyms:
+    - -f
+    - --target-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: output all overlaps, including transitive edges
+    synonyms:
+    - -x
+    - --exhaustive
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: force the use of the exact-mode irreducible block algorithm. This
+      is faster but requires that no substrings are present in the input set.
+    synonyms:
+    - --exact
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: force the seed length to be LEN. By default, the seed length in the
+      overlap step is calculated to guarantee all overlaps with --error-rate differences
+      are found. This option removes the guarantee but will be (much) faster. As SGA
+      can tolerate some missing edges, this option may be preferable for some data
+      sets.
+    synonyms:
+    - -l
+    - --seed-length
+    args: !SimpleFlagArg
+      name: LEN
+    optional: true
+  - !Flag
+    description: force the seed stride to be LEN. This parameter will be ignored unless
+      --seed-length is specified (see above). This parameter defaults to the same
+      value as --seed-length
+    synonyms:
+    - -s
+    - --seed-stride
+    args: !SimpleFlagArg
+      name: LEN
+    optional: true
+  - !Flag
+    description: 'sample the symbol counts every N symbols in the FM-index. Higher
+      values use significantly less memory at the cost of higher runtime. This value
+      must be a power of 2 (default: 128)'
+    synonyms:
+    - -d
+    - --sample-rate
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  command:
+  - sga
+  - overlap
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: use NAME as the prefix of the output files (output files will be
+      NAME-contigs.fa, etc)
+    synonyms:
+    - -o
+    - --out-prefix
+    args: !SimpleFlagArg
+      name: NAME
+    optional: true
+  - !Flag
+    description: only use overlaps of at least LEN. This can be used to filter the
+      overlap set so that the overlap step only needs to be run once.
+    synonyms:
+    - -m
+    - --min-overlap
+    args: !SimpleFlagArg
+      name: LEN
+    optional: true
+  - !Flag
+    description: remove transitive edges from the graph. Off by default.
+    synonyms:
+    - --transitive-reduction
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'limit each vertex to a maximum of N edges. For highly repetitive
+      regions this helps save memory by culling excessive edges around unresolvable
+      repeats (default: 128)'
+    synonyms:
+    - --max-edges
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'perform N bubble removal steps (default: 3)'
+    synonyms:
+    - -b
+    - --bubble
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'only remove variation if the divergence between sequences is less
+      than F (default: 0.05)'
+    synonyms:
+    - -d
+    - --max-divergence
+    args: !SimpleFlagArg
+      name: F
+    optional: true
+  - !Flag
+    description: 'only remove variation if the divergence between sequences when only
+      counting indels is less than F (default: 0.01) Setting this to 0.0 will suppress
+      removing indel variation'
+    synonyms:
+    - -g
+    - --max-gap-divergence
+    args: !SimpleFlagArg
+      name: F
+    optional: true
+  - !Flag
+    description: 'do not remove variation that is an indel of length greater than
+      D (default: 20)'
+    synonyms:
+    - --max-indel
+    args: !SimpleFlagArg
+      name: D
+    optional: true
+  - !Flag
+    description: 'cut off terminal branches in N rounds (default: 10)'
+    synonyms:
+    - -x
+    - --cut-terminal
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'remove terminal branches only if they are less than LEN bases in
+      length (default: 150)'
+    synonyms:
+    - -l
+    - --min-branch-length
+    args: !SimpleFlagArg
+      name: LEN
+    optional: true
+  - !Flag
+    description: 'resolve small repeats using spanning overlaps when the difference
+      between the shortest and longest overlap is greater than LEN (default: not performed)'
+    synonyms:
+    - -r
+    - --resolve-small
+    args: !SimpleFlagArg
+      name: LEN
+    optional: true
+  command:
+  - sga
+  - assemble
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: only show overlaps for read with ID
+    synonyms:
+    - -i
+    - --id
+    args: !SimpleFlagArg
+      name: ID
+    optional: true
+  - !Flag
+    description: 'only show D overhanging bases of the alignments (default: 6)'
+    synonyms:
+    - -m
+    - --max-overhang
+    args: !SimpleFlagArg
+      name: D
+    optional: true
+  - !Flag
+    description: 'pad the overlap lines with D characters (default: 20)'
+    synonyms:
+    - -d
+    - --default-padding
+    args: !SimpleFlagArg
+      name: D
+    optional: true
+  command:
+  - sga
+  - oview
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'write the subgraph to FILE (default: subgraph.asqg.gz)'
+    synonyms:
+    - -o
+    - --out
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: 'the size of the subgraph to extract, all vertices that are at most
+      N hops away from the root will be included (default: 5)'
+    synonyms:
+    - -s
+    - --size
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  command:
+  - sga
+  - subgraph
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'use PREFIX for the names of the index files (default: prefix of
+      the input file)'
+    synonyms:
+    - -p
+    - --prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  - !Flag
+    description: 'write the qc-passed reads to FILE (default: READSFILE.filter.pass.fa)'
+    synonyms:
+    - -o
+    - --outfile
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: 'use NUM threads to compute the overlaps (default: 1)'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  - !Flag
+    description: 'use occurrence array sample rate of N in the FM-index. Higher values
+      use significantly less memory at the cost of higher runtime. This value must
+      be a power of 2 (default: 128)'
+    synonyms:
+    - -d
+    - --sample-rate
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: turn off duplicate removal
+    synonyms:
+    - --no-duplicate-check
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: when removing duplicates, only remove substring sequences, not full-length
+      matches
+    synonyms:
+    - --substring-only
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: turn off the kmer check
+    synonyms:
+    - --no-kmer-check
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: mimimum kmer coverage is required for both strand
+    synonyms:
+    - --kmer-both-strand
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: check reads for hompolymer run length sequencing errors
+    synonyms:
+    - --homopolymer-check
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: filter out low complexity reads
+    synonyms:
+    - --low-complexity-check
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The length of the kmer to use. (default: 27)'
+    synonyms:
+    - -k
+    - --kmer-size
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'Require at least N kmer coverage for each kmer in a read. (default:
+      3)'
+    synonyms:
+    - -x
+    - --kmer-threshold
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  command:
+  - sga
+  - filter
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'write the output to FILE (default: READFILE.rmdup.fa)'
+    synonyms:
+    - -o
+    - --out
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: use PREFIX instead of the prefix of the reads filename for the input/output
+      files
+    synonyms:
+    - -p
+    - --prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  - !Flag
+    description: 'the maximum error rate allowed to consider two sequences identical
+      (default: exact matches required)'
+    synonyms:
+    - -e
+    - --error-rate
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'use N threads (default: 1)'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'sample the symbol counts every N symbols in the FM-index. Higher
+      values use significantly less memory at the cost of higher runtime. This value
+      must be a power of 2 (default: 256)'
+    synonyms:
+    - -d
+    - --sample-rate
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  command:
+  - sga
+  - rmdup
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'use NUM threads to construct the index (default: 1)'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  - !Flag
+    description: validate that the suffix array/bwt is correct
+    synonyms:
+    - -c
+    - --check
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: only build the lexicographic index
+    synonyms:
+    - -s
+    - --sai-only
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - sga
+  - gen-ssa
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: load links derived from paired-end (short insert) libraries from
+      FILE
+    synonyms:
+    - --pe
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: load links derived from mate-pair (long insert) libraries from FILE
+    synonyms:
+    - --mate-pair
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: 'only use contigs at least N bp in length to build scaffolds (default:
+      no minimun).'
+    synonyms:
+    - -m
+    - --min-length
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: optionally load the sequence graph from FILE
+    synonyms:
+    - -g
+    - --asqg-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: load Myers' A-statistic values from FILE. This is used to determine
+      unique and repetitive contigs with the -u/--unique-astat and -r/--repeat-astat
+      parameters (required)
+    synonyms:
+    - -a
+    - --astatistic-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: 'Contigs with an a-statitic value about FLOAT will be considered
+      unique (default: 20.0)'
+    synonyms:
+    - -u
+    - --unique-astat
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: 'remove vertices with estimated copy number less than FLOAT (default:
+      0.5f)'
+    synonyms:
+    - -c
+    - --min-copy-number
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: 'collapse heterozygous structural variation if the event size is
+      less than N (default: 0)'
+    synonyms:
+    - -s
+    - --max-sv-size
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'write the scaffolds to FILE (default: CONTIGSFILE.scaf'
+    synonyms:
+    - -o
+    - --outfile
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: if two contigs have multiple distance estimates between them and
+      they do not agree, break the scaffold at this point
+    synonyms:
+    - --remove-conflicting
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: perform strict consistency checks on the scaffold links. If a vertex
+      X has multiple edges, a path will be searched for that contains every vertex
+      linked to X. If no such path can be found, the edge of X are removed. This builds
+      very conservative scaffolds that should be highly accurate.
+    synonyms:
+    - --strict
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - sga
+  - scaffold
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: read the contig sequences from FILE
+    synonyms:
+    - -f
+    - --contig-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: read the contig string graph from FILE. This supercedes --contig-file
+      this is usually the output from the sga-assemble step
+    synonyms:
+    - -a
+    - --asqg-file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: do not output scaffolds that consist of a single contig
+    synonyms:
+    - --no-singletons
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'write the scaffolds to FILE (default: scaffolds.fa)'
+    synonyms:
+    - -o
+    - --outfile
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: only output scaffolds longer than N bases
+    synonyms:
+    - -m
+    - --min-length
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: output unplaced contigs that are larger than minLength
+    synonyms:
+    - --write-unplaced
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write the name of contigs contained in the scaffold in the FASTA
+      header
+    synonyms:
+    - --write-names
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'separate contigs by at least N bases. All predicted gaps less than
+      N will be extended to N (default: 25)'
+    synonyms:
+    - --min-gap-length
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: attempt to merge contigs using predicted overlaps. This can help
+      close gaps in the scaffolds but comes with a small risk of collapsing tandem
+      repeats.
+    synonyms:
+    - --use-overlap
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'if an ASQG file is present, attempt to resolve the links between
+      contigs using walks through the graph. The MODE parameter is a string describing
+      the algorithm to use. The MODE parameter must be one of best-any|best-unique|unique|none.
+      best-any: The walk with length closest to the estimated distance between the
+      contigs will be chosen to resolve the gap. If multiple best walks are found,
+      the tie is broken arbitrarily. best-unique: as above but if there is a tie no
+      walk will be chosen. unique: only resolve the gap if there is a single walk
+      between the contigs none: do not resolve gaps using the graph The most conservative
+      most is unique, then best-unique with best-any being the most aggressive. The
+      default is unique'
+    synonyms:
+    - -g
+    - --graph-resolve
+    args: !SimpleFlagArg
+      name: MODE
+    optional: true
+  - !Flag
+    description: 'Accept a walk as correctly resolving a gap if the walk length is
+      within T standard  deviations from the estimated distance (default: 3.0f)'
+    synonyms:
+    - -d
+    - --distanceFactor
+    args: !SimpleFlagArg
+      name: T
+    optional: true
+  command:
+  - sga
+  - scaffold2fasta
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: OPTION
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: SCAFFOLDS.fa
+    optional: false
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: load the FM-index with prefix NAME
+    synonyms:
+    - -p
+    - --prefix
+    args: !SimpleFlagArg
+      name: NAME
+    optional: true
+  - !Flag
+    description: 'First kmer size used to attempt to resolve each gap (default: 91)'
+    synonyms:
+    - -s
+    - --start-kmer
+    args: !SimpleFlagArg
+      name: K
+    optional: true
+  - !Flag
+    description: 'Last kmer size used to attempt to resolve each gap (default: 51)'
+    synonyms:
+    - -e
+    - --end-kmer
+    args: !SimpleFlagArg
+      name: K
+    optional: true
+  - !Flag
+    description: only use kmers seen at least T times
+    synonyms:
+    - -x
+    - --kmer-threshold
+    args: !SimpleFlagArg
+      name: T
+    optional: true
+  - !Flag
+    description: use NUM computation threads
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  - !Flag
+    description: 'use occurrence array sample rate of N in the FM-index. Higher values
+      use significantly less memory at the cost of higher runtime. This value must
+      be a power of 2 (default: 128)'
+    synonyms:
+    - -d
+    - --sample-rate
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  command:
+  - sga
+  - gapfill
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: OPTION
+    optional: true
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: prefix the output files with NAME
+    synonyms:
+    - -p
+    - --prefix
+    args: !SimpleFlagArg
+      name: NAME
+    optional: true
+  - !Flag
+    description: use NUM computation threads
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  - !Flag
+    description: (optional) set the size of the genome to be N bases this is used
+      to determine the number of bits to use in the bloom filter if unset, it will
+      be calculated from the reference genome FASTA file
+    synonyms:
+    - --genome-size
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: precache the named chromosome of the reference genome If STR is "all"
+      the entire reference will be cached
+    synonyms:
+    - --precache-reference
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: call variants present in the read set in FILE
+    synonyms:
+    - -r
+    - --variant
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: use the read set in FILE as the base line for comparison if this
+      option is not given, reference-based calls will be made
+    synonyms:
+    - -b
+    - --base
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: use the reference sequence in FILE
+    synonyms:
+    - --reference
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: use K-mers to discover variants
+    synonyms:
+    - -k
+    - --kmer
+    args: !SimpleFlagArg
+      name: K
+    optional: true
+  - !Flag
+    description: require a variant k-mer to be seen at least T times
+    synonyms:
+    - -x
+    - --min-discovery-count
+    args: !SimpleFlagArg
+      name: T
+    optional: true
+  - !Flag
+    description: 'select the assembly algorithm to use from: debruijn, string'
+    synonyms:
+    - -a
+    - --algorithm
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: require at least N bp overlap when assembling using a string graph
+    synonyms:
+    - -m
+    - --min-overlap
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: only use k-mers seen T times when assembling using a de Bruijn graph
+    synonyms:
+    - --min-dbg-count
+    args: !SimpleFlagArg
+      name: T
+    optional: true
+  command:
+  - sga
+  - graph-diff
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: load the reference genome from FILE
+    synonyms:
+    - --reference
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: 'use NUM threads to compute the overlaps (default: 1)'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  - !Flag
+    description: load germline variants from FILE
+    synonyms:
+    - -g
+    - --germline
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - sga
+  - graph-concordance
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: parse the read names and sequences from the fastq file in F (required)
+    synonyms:
+    - -f
+    - --fastq
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: merge the evidence BAM alignments with the alignments in F
+    synonyms:
+    - -m
+    - --merge-bam
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: write the new BAM file to F
+    synonyms:
+    - -o
+    - --outfile
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - sga
+  - rewrite-evidence-bam
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: load the FM-index of the reads in FILE
+    synonyms:
+    - -r
+    - --reads
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: load the reference genome from FILE
+    synonyms:
+    - --reference
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: force use of the haploid model
+    synonyms:
+    - --haploid
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write the passed haplotypes and variants to STR.vcf and STR.fa
+    synonyms:
+    - -o
+    - --out-prefix
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: 'use NUM threads to compute the overlaps (default: 1)'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  command:
+  - sga
+  - haplotype-filter
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'use NUM threads (default: 1)'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  - !Flag
+    description: only compute the metrics that do not need the FM-index
+    synonyms:
+    - --simple
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'stop contig extension at N bp (default: 50000)'
+    synonyms:
+    - --max-contig-length
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: use the reference FILE to calculate GC plot
+    synonyms:
+    - --reference
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: generate metrics assuming that the input data is a reference genome,
+      not a collection of reads
+    synonyms:
+    - --diploid-reference-mode
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: force preqc to proceed even if the coverage model does not converge.
+      This allows the rest of the program to continue but the branch and genome size
+      estimates may be misleading
+    synonyms:
+    - --force-EM
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - sga
+  - preqc
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'use PREFIX for the names of the index files (default: prefix of
+      the input file)'
+    synonyms:
+    - -p
+    - --prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  - !Flag
+    description: 'use NUM threads to compute the overlaps (default: 1)'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  - !Flag
+    description: 'use occurrence array sample rate of N in the FM-index. Higher values
+      use significantly less memory at the cost of higher runtime. This value must
+      be a power of 2 (default: 128)'
+    synonyms:
+    - -d
+    - --sample-rate
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'The length of the kmer to use. (default: 27)'
+    synonyms:
+    - -k
+    - --kmer-size
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Only use N reads to compute the statistics
+    synonyms:
+    - -n
+    - --num-reads
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: stop the overlap search at N branches. This lowers the compute time
+      but will bias the statistics away from repetitive reads
+    synonyms:
+    - -b
+    - --branch-cutoff
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Print the run length distribution of the BWT
+    synonyms:
+    - --run-lengths
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Print the distribution of kmer counts
+    synonyms:
+    - --kmer-distribution
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Suppress the overlap-based error statistics (faster if you only want
+      the k-mer distribution)
+    synonyms:
+    - --no-overlap
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - sga
+  - stats
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: load an asqg file and filter pairs that are shorter than --max-distance
+    synonyms:
+    - -a
+    - --asqg
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: search the graph for a path completing the mate-pair fragment. If
+      the path is less than LEN then the pair will be discarded.
+    synonyms:
+    - -d
+    - --max-distance
+    args: !SimpleFlagArg
+      name: LEN
+    optional: true
+  - !Flag
+    description: 'filter out pairs where one read has an error rate higher than F
+      (default: no filter)'
+    synonyms:
+    - -e
+    - --error-rate
+    args: !SimpleFlagArg
+      name: F
+    optional: true
+  - !Flag
+    description: 'filter out pairs where one read has mapping quality less than F
+      (default: 10)'
+    synonyms:
+    - -q
+    - --min-quality
+    args: !SimpleFlagArg
+      name: F
+    optional: true
+  - !Flag
+    description: write the filtered reads to FILE
+    synonyms:
+    - -o
+    - --out-bam
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: load the FM-index with prefix STR
+    synonyms:
+    - -p
+    - --prefix
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: filter out pairs that contain a kmer that has been seen in the FM-index
+      more than N times
+    synonyms:
+    - -x
+    - --max-kmer-depth
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: filter out pairs aligning with FR orientation, which may be contiminates
+      in a mate pair library
+    synonyms:
+    - -c
+    - --mate-contamination
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - sga
+  - filterBAM
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: OPTION
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: READS
+    optional: false
+  named:
+  - !Flag
+    description: display verbose output
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'write the clusters to FILE (default: clusters.txt)'
+    synonyms:
+    - -o
+    - --out
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: 'only write clusters with at least N reads (default: 2)'
+    synonyms:
+    - -c
+    - --min-cluster-size
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: abort the search if the cluster size exceeds N
+    synonyms:
+    - -x
+    - --max-cluster-size
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'require an overlap of at least N bases between reads (default: 45)'
+    synonyms:
+    - -m
+    - --min-overlap
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'the maximum error rate allowed to consider two sequences aligned
+      (default: exact matches only)'
+    synonyms:
+    - -e
+    - --error-rate
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'use NUM worker threads to compute the overlaps (default: no threading)'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  - !Flag
+    description: limit cluster extension to NUM iterations
+    synonyms:
+    - -i
+    - --iterations
+    args: !SimpleFlagArg
+      name: NUM
+    optional: true
+  - !Flag
+    description: extend previously existing clusters in FILE
+    synonyms:
+    - --extend
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: do not extend through the sequences in FILE
+    synonyms:
+    - --limit
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - sga
+  - cluster
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'The length of the kmer to use. (default: 27)'
+    synonyms:
+    - -k
+    - --kmer-size
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'use occurrence array sample rate of N in the FM-index. Higher values
+      use significantly less memory at the cost of higher runtime. This value must
+      be a power of 2 (default: 128)'
+    synonyms:
+    - -d
+    - --sample-rate
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'Cache Length for bwt lookups (default: 10)'
+    synonyms:
+    - -c
+    - --cache-length
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  command:
+  - sga
+  - kmer-count
+  subcommands: []
+  help_flag: !Flag
+    description: display this help and exit
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: display program version
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+help_flag:
+usage_flag:
+version_flag:

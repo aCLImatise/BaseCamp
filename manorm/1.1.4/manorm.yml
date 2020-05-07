@@ -1,0 +1,147 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Peaks file of sample 1. BED and MACS format are currently supported.
+    Please refer to documents for details. (default: None)'
+  synonyms:
+  - --p1
+  args: !SimpleFlagArg
+    name: PEAKS_FILE1
+  optional: true
+- !Flag
+  description: 'Peaks file of sample 2. (default: None)'
+  synonyms:
+  - --p2
+  args: !SimpleFlagArg
+    name: PEAKS_FILE2
+  optional: true
+- !Flag
+  description: 'Reads file of sample 1. BED format are currently supported. (default:
+    None)'
+  synonyms:
+  - --r1
+  args: !SimpleFlagArg
+    name: READS_FILE1
+  optional: true
+- !Flag
+  description: 'Reads file of sample 2. (default: None)'
+  synonyms:
+  - --r2
+  args: !SimpleFlagArg
+    name: READS_FILE2
+  optional: true
+- !Flag
+  description: "Reads shift size of sample 1. This value is used to shift reads towards\
+    \ 3' direction to determine the precise binding site. Set as half of the fragment\
+    \ length. (default: 100)"
+  synonyms:
+  - --s1
+  args: !SimpleFlagArg
+    name: SHIFT_SIZE1
+  optional: true
+- !Flag
+  description: 'Reads shift size of sample 2. (default: 100)'
+  synonyms:
+  - --s2
+  args: !SimpleFlagArg
+    name: SHIFT_SIZE2
+  optional: true
+- !Flag
+  description: 'Width of the window to calculate read densities. Windows with unified
+    length of 2*width centered at peak summit/midpoint are used to quantify the binding
+    signal. This should match the typical length of peaks, a value of 1000 is recommended
+    for sharp histone marks like H3K4me3 and H3K9/27ac, and 500 for transcription
+    factors or DNase- Seq. (default: 1000)'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: WIDTH
+  optional: true
+- !Flag
+  description: 'Summit-to-summit distance cutoff for common peaks. Default=width/2.
+    Only overlapped peaks with summit-to- summit distance less than than this value
+    are considered as real common peaks of two samples when fitting M-A normalization
+    model. (default: None)'
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: DIS_CUTOFF
+  optional: true
+- !Flag
+  description: 'Number of simulation to test the enrichment of peak overlap between
+    two samples. (default: 10)'
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: N_RANDOM
+  optional: true
+- !Flag
+  description: 'M-value cutoff to distinguish biased peaks from unbiased peaks. Peaks
+    with M-value>=M_cutoff and P-value<=P_cutoff are defined as sample1-biased(specific)
+    peaks, while peaks with M-value<=-1*M_cutoff and P-value<=P_cutoff are defined
+    as sample2-biased peaks. (default: 1.0)'
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: M_CUTOFF
+  optional: true
+- !Flag
+  description: 'P-value cutoff to define biased (sample 1/2-specific) peaks. (default:
+    0.01)'
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: P_CUTOFF
+  optional: true
+- !Flag
+  description: 'By default, MAnorm will write the comparison results of unique and
+    merged common peaks in a single output file. With this option on, two extra files
+    which contains the results of the original(unmerged) peaks will also be outputted.
+    (default: False)'
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Name (experiment condition/cell-type etc.) of sample1. If specified,
+    it will be used to replace the peaks/reads input file name as the sample name
+    in output files. (default: None)'
+  synonyms:
+  - --name1
+  args: !SimpleFlagArg
+    name: NAME1
+  optional: true
+- !Flag
+  description: 'Name (experiment condition/cell-type etc.) of sample2. (default: None)'
+  synonyms:
+  - --name2
+  args: !SimpleFlagArg
+    name: NAME2
+  optional: true
+- !Flag
+  description: 'Output directory. When --name1 and --name2 are not specified, MAnorm
+    will use it as the prefix of comparison output file. (default: None)'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUT_NAME
+  optional: true
+command:
+- manorm
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

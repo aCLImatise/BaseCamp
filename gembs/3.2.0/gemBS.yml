@@ -1,0 +1,758 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Log level (error, warn, info, debug)
+  synonyms:
+  - --loglevel
+  args: !SimpleFlagArg
+    name: LOGLEVEL
+  optional: true
+- !Flag
+  description: Location of gemBS JSON file
+  synonyms:
+  - -j
+  - --json-file
+  args: !SimpleFlagArg
+    name: JSON
+  optional: true
+- !Flag
+  description: Set working directory
+  synonyms:
+  - -d
+  - --dir
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+command:
+- gemBS
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Text config file with gemBS parameters.
+    synonyms:
+    - -c
+    - --config
+    args: !SimpleFlagArg
+      name: CONFIG
+    optional: true
+  - !Flag
+    description: Sample metadata in csv file. See documentation for description of
+      file format.
+    synonyms:
+    - -t
+    - --text-metadata
+    args: !SimpleFlagArg
+      name: TEXT_METADATA
+    optional: true
+  - !Flag
+    description: Output JSON file. See documentation for description of file format.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Do not use disk base database.
+    synonyms:
+    - -D
+    - --no-db
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Specify location for database file.
+    synonyms:
+    - -d
+    - --db-file
+    args: !SimpleFlagArg
+      name: DBFILE
+    optional: true
+  - !Flag
+    description: Lims CNAG subproject JSON file.
+    synonyms:
+    - -l
+    - --lims-cnag-json
+    args: !SimpleFlagArg
+      name: LIMS_CNAG_JSON
+    optional: true
+  command:
+  - gemBS
+  - prepare
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Number of threads. By default GEM indexer will use the maximum available
+      on the system.
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  - !Flag
+    description: Text sampling rate. Increasing will decrease index size at the expense
+      of slower mapping performance.
+    synonyms:
+    - -s
+    - --sampling-rate
+    args: !SimpleFlagArg
+      name: SAMPLING_RATE
+    optional: true
+  - !Flag
+    description: List of dbSNP files (can be compressed) to create an index to later
+      use it at the bscall step. The bed files should have the name of the SNP in
+      column 4.
+    synonyms:
+    - -d
+    - --list-dbSNP-files
+    args: !RepeatFlagArg
+      name: FILES
+    optional: true
+  command:
+  - gemBS
+  - index
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Dataset to be mapped.
+    synonyms:
+    - -D
+    - --dataset
+    args: !SimpleFlagArg
+      name: DATASET
+    optional: true
+  - !Flag
+    description: Name of sample to be mapped.
+    synonyms:
+    - -n
+    - --sample-name
+    args: !SimpleFlagArg
+      name: SAMPLE
+    optional: true
+  - !Flag
+    description: Barcode of sample to be mapped.
+    synonyms:
+    - -b
+    - --barcode
+    args: !SimpleFlagArg
+      name: BARCODE
+    optional: true
+  - !Flag
+    description: 'Temporary folder to perform sorting operations. Default: /tmp'
+    synonyms:
+    - -d
+    - --tmp-dir
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Number of threads to perform sorting operations.
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  - !Flag
+    description: Type of data file (PAIRED, SINGLE, INTERLEAVED, STREAM, BAM)
+    synonyms:
+    - -T
+    - --type
+    args: !SimpleFlagArg
+      name: FTYPE
+    optional: true
+  - !Flag
+    description: Input data is Paired End
+    synonyms:
+    - -p
+    - --paired-end
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Remove individual BAM files after merging.
+    synonyms:
+    - -r
+    - --remove
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Automatically selects the proper C->T and G->A read conversions based
+      on the level of Cs and Gs on the read.
+    synonyms:
+    - -s
+    - --read-non-stranded
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Name of unmethylated sequencing control.
+    synonyms:
+    - -u
+    - --underconversion-sequence
+    args: !SimpleFlagArg
+      name: SEQUENCE
+    optional: true
+  - !Flag
+    description: Name of methylated sequencing control.
+    synonyms:
+    - -v
+    - --overconversion-sequence
+    args: !SimpleFlagArg
+      name: SEQUENCE
+    optional: true
+  - !Flag
+    description: Use regular (non bisulfite) index
+    synonyms:
+    - --non-bs
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do not automatically merge BAMs
+    synonyms:
+    - --no-merge
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output mapping commands without execution
+    synonyms:
+    - --dry-run
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: FILE      Output JSON file with details of pending commands
+    synonyms:
+    - --json
+    args: !SimpleFlagArg
+      name: JSON
+    optional: true
+  - !Flag
+    description: Ignore database for --dry-run and --json commands
+    synonyms:
+    - --ignore-db
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gemBS
+  - map
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Number of threads, Default: 1'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  - !Flag
+    description: Sample to be merged
+    synonyms:
+    - -n
+    - --sample_name
+    args: !SimpleFlagArg
+      name: SAMPLE
+    optional: true
+  - !Flag
+    description: Sample to be merged
+    synonyms:
+    - -b
+    - --barcode
+    args: !SimpleFlagArg
+      name: SAMPLE
+    optional: true
+  - !Flag
+    description: Remove individual BAM files after merging.
+    synonyms:
+    - -r
+    - --remove
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output mapping commands without execution
+    synonyms:
+    - --dry-run
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: FILE      Output JSON file with details of pending commands
+    synonyms:
+    - --json
+    args: !SimpleFlagArg
+      name: JSON
+    optional: true
+  - !Flag
+    description: Ignore database for --dry-run and --json commands
+    synonyms:
+    - --ignore-db
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gemBS
+  - merge-bams
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Set under and over conversion rates (under,over)
+    synonyms:
+    - -C
+    - --conversion
+    args: !SimpleFlagArg
+      name: CONVERSION
+    optional: true
+  - !Flag
+    description: Set bias to reference homozygote
+    synonyms:
+    - -R
+    - --reference-bias
+    args: !SimpleFlagArg
+      name: REF_BIAS
+    optional: true
+  - !Flag
+    description: Only perform merging BCF files.
+    synonyms:
+    - -x
+    - --concat-only
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do not automatically merge BCFs
+    synonyms:
+    - --no-merge
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Contig pool on which to perform the methylation calling.
+    synonyms:
+    - --pool
+    args: !SimpleFlagArg
+      name: POOL
+    optional: true
+  - !Flag
+    description: '[LEVEL]  List contig pools and exit. Level 1 - list names, level
+      > 1 - list pool composition'
+    synonyms:
+    - --list-pools
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output mapping commands without execution
+    synonyms:
+    - --dry-run
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: FILE      Output JSON file with details of pending commands
+    synonyms:
+    - --json
+    args: !SimpleFlagArg
+      name: JSON
+    optional: true
+  - !Flag
+    description: Ignore database for --dry-run and --json commands
+    synonyms:
+    - --ignore-db
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Ignore dependencies for --dry-run and --json commands
+    synonyms:
+    - --ignore-dep
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gemBS
+  - call
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Nmae of sample to be merged
+    synonyms:
+    - -n
+    - --sample-name
+    args: !SimpleFlagArg
+      name: SAMPLE
+    optional: true
+  - !Flag
+    description: Barcode of sample to be merged
+    synonyms:
+    - -b
+    - --sample-barcode
+    args: !SimpleFlagArg
+      name: BARCODE
+    optional: true
+  - !Flag
+    description: Number of threads
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  - !Flag
+    description: Remove individual BAM files after merging.
+    synonyms:
+    - -r
+    - --remove
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Number of parallel jobs
+    synonyms:
+    - -j
+    - --jobs
+    args: !SimpleFlagArg
+      name: JOBS
+    optional: true
+  - !Flag
+    description: Output mapping commands without execution
+    synonyms:
+    - --dry-run
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: FILE      Output JSON file with details of pending commands
+    synonyms:
+    - --json
+    args: !SimpleFlagArg
+      name: JSON
+    optional: true
+  - !Flag
+    description: Ignore database for --dry-run and --json commands
+    synonyms:
+    - --ignore-db
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gemBS
+  - merge-bcfs
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Number of parallel jobs
+    synonyms:
+    - -j
+    - --jobs
+    args: !SimpleFlagArg
+      name: JOBS
+    optional: true
+  - !Flag
+    description: Name of sample to be filtered
+    synonyms:
+    - -n
+    - --sample-name
+    args: !SimpleFlagArg
+      name: SAMPLE_NAME
+    optional: true
+  - !Flag
+    description: Barcode of sample to be filtered
+    synonyms:
+    - -b
+    - --barcode
+    args: !SimpleFlagArg
+      name: SAMPLE_BARCODE
+    optional: true
+  - !Flag
+    description: Output separate lines for each strand.
+    synonyms:
+    - -s
+    - --strand-specific
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Min threshold for genotype phred score.
+    synonyms:
+    - -q
+    - --phred-threshold
+    args: !SimpleFlagArg
+      name: PHRED
+    optional: true
+  - !Flag
+    description: Min threshold for informative reads.
+    synonyms:
+    - -I
+    - --min-inform
+    args: !SimpleFlagArg
+      name: INFORM
+    optional: true
+  - !Flag
+    description: Min threshold for non-converted reads for non CpG sites.
+    synonyms:
+    - -M
+    - --min-nc
+    args: !SimpleFlagArg
+      name: MIN_NC
+    optional: true
+  - !Flag
+    description: Allow both heterozygous and homozgyous sites.
+    synonyms:
+    - -H
+    - --allow-het
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Allow both heterozygous and homozgyous sites.
+    synonyms:
+    - -R
+    - --reference-bias
+    args: !SimpleFlagArg
+      name: REF_BIAS
+    optional: true
+  - !Flag
+    description: Output gemBS bed with cpg sites.
+    synonyms:
+    - -c
+    - --cpg
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output gemBS bed with non-cpg sites.
+    synonyms:
+    - -N
+    - --non-cpg
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output bedMethyl files (bed and bigBed)
+    synonyms:
+    - -B
+    - --bed-methyl
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output bigWig file
+    synonyms:
+    - -w
+    - --bigwig
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output SNPs
+    synonyms:
+    - -S
+    - --snps
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: List of SNPs to output
+    synonyms:
+    - --snp-list
+    args: !SimpleFlagArg
+      name: SNP_LIST
+    optional: true
+  - !Flag
+    description: dbSNP_idx processed SNP idx
+    synonyms:
+    - --snp-db
+    args: !SimpleFlagArg
+      name: SNP_DB
+    optional: true
+  - !Flag
+    description: Output mapping commands without execution
+    synonyms:
+    - --dry-run
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: FILE      Output JSON file with details of pending commands
+    synonyms:
+    - --json
+    args: !SimpleFlagArg
+      name: JSON
+    optional: true
+  - !Flag
+    description: Ignore database for --dry-run and --json commands
+    synonyms:
+    - --ignore-db
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Ignore dependencies for --dry-run and --json commands
+    synonyms:
+    - --ignore-dep
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gemBS
+  - extract
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Output title for report (project name)
+    synonyms:
+    - -p
+    - --project
+    args: !SimpleFlagArg
+      name: PROJECT
+    optional: true
+  - !Flag
+    description: Output directory to store html mapping report.
+    synonyms:
+    - -o
+    - --output-dir
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  command:
+  - gemBS
+  - map-report
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Output title for report (project name)
+    synonyms:
+    - -p
+    - --project
+    args: !SimpleFlagArg
+      name: PROJECT
+    optional: true
+  - !Flag
+    description: Output directory to store html and Sphinx Variants report.
+    synonyms:
+    - -o
+    - --output-dir
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Number of jobs to run in parallel.
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  command:
+  - gemBS
+  - call-report
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Confirm operation
+    synonyms:
+    - -y
+    - --yes
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gemBS
+  - db-sync
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

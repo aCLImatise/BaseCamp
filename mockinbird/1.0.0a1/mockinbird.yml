@@ -1,0 +1,243 @@
+!Command
+positional: []
+named: []
+command:
+- mockinbird
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: path to PAR-CLIP fastq reads
+    position: 0
+    name: parclip_fastq
+    optional: false
+  - !Positional
+    description: output directory - will be created if it does not exist
+    position: 1
+    name: output_dir
+    optional: false
+  - !Positional
+    description: filename prefix for newly created files
+    position: 2
+    name: prefix
+    optional: false
+  - !Positional
+    description: path to preprocessing config file
+    position: 3
+    name: config_file
+    optional: false
+  named:
+  - !Flag
+    description: 'verbosity level of the logger (default: info)'
+    synonyms:
+    - --log_level
+    args: !ChoiceFlagArg
+      choices:
+      - debug
+      - info
+      - warn
+      - error
+    optional: true
+  command:
+  - mockinbird
+  - preprocess
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: show program's version number and exit
+    synonyms:
+    - --version
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional:
+  - !Positional
+    description: folder to files created by the preprocessing
+    position: 0
+    name: preprocess_dir
+    optional: false
+  - !Positional
+    description: output directory - will be created if it does not exist
+    position: 1
+    name: output_dir
+    optional: false
+  - !Positional
+    description: path to the postprocessing config file
+    position: 2
+    name: config_file
+    optional: false
+  named:
+  - !Flag
+    description: 'preprocessing filename prefix - only required if there are multiple
+      table files in the specified preprocess directory (default: None)'
+    synonyms:
+    - --prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  - !Flag
+    description: 'verbosity level of the logger (default: info)'
+    synonyms:
+    - --log_level
+    args: !ChoiceFlagArg
+      choices:
+      - debug
+      - info
+      - warn
+      - error
+    optional: true
+  command:
+  - mockinbird
+  - postprocess
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: show program's version number and exit
+    synonyms:
+    - --version
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional: []
+  named: []
+  command:
+  - mockinbird
+  - flip_mate
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: path to paired-end bam file
+      position: 0
+      name: input_bam
+      optional: false
+    - !Positional
+      description: path to output bam file
+      position: 1
+      name: output_bam
+      optional: false
+    named: []
+    command:
+    - mockinbird
+    - flip_mate
+    - input_bam
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named: []
+    command:
+    - mockinbird
+    - flip_mate
+    - output_bam
+    subcommands:
+    - !Command
+      positional:
+      - !Positional
+        description: path to paired-end bam file
+        position: 0
+        name: input_bam
+        optional: false
+      - !Positional
+        description: path to output bam file
+        position: 1
+        name: output_bam
+        optional: false
+      named: []
+      command:
+      - mockinbird
+      - flip_mate
+      - output_bam
+      - input_bam
+      subcommands: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+    - !Command
+      positional:
+      - !Positional
+        description: path to paired-end bam file
+        position: 0
+        name: input_bam
+        optional: false
+      - !Positional
+        description: path to output bam file
+        position: 1
+        name: output_bam
+        optional: false
+      named: []
+      command:
+      - mockinbird
+      - flip_mate
+      - output_bam
+      - output_bam
+      subcommands: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

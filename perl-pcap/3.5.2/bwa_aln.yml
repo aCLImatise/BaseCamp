@@ -1,0 +1,89 @@
+!Command
+positional:
+- !Positional
+  description: A list of single lane BAM files, no information is taken from the headers.
+    This method has additional processing converted to *.fq.gz to give common start
+    point.
+  position: 0
+  name: bam
+  optional: false
+named:
+- !Flag
+  description: -o   Folder to output result to.
+  synonyms:
+  - -outdir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to reference genome file *.fa[.gz]
+  synonyms:
+  - -reference
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -s   Sample name to be applied to output file.
+  synonyms:
+  - -sample
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -t   Number of threads to use. [1]
+  synonyms:
+  - -threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -p   Only process this step then exit, optionally set -index bam2fq
+    - only applicable if input is bam aln - Run 'bwa aln' sampe - Run 'bwa sampe'
+    and sorting to BAM mark - Run duplicate marking (-index N/A)
+  synonyms:
+  - -process
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -i   Optionally restrict '-p' to single job bam2fq - 1..<lane_count>
+    aln - 1..<lane_count*2> sampe - 1..<lane_count>
+  synonyms:
+  - -index
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -m   Full documentation.
+  synonyms:
+  - -man
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of threads to be used in processing. If perl is not compiled
+    with threading some steps will not run in parallel, however much of the script
+    calls other tools that will still utilise this appropriately.
+  synonyms:
+  - -threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prints the manual page and exits.
+  synonyms:
+  - -man
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If you want to run the code in a more efficient manner then this allows
+    each procesing type to be executed in isolation. You can restrict to a single
+    process within the block by specifying -index as well.
+  synonyms:
+  - -process
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- bwa_aln.pl
+subcommands: []
+help_flag: !Flag
+  description: Print a brief help message and exits.
+  synonyms:
+  - -help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

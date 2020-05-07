@@ -1,0 +1,81 @@
+!Command
+positional:
+- !Positional
+  description: 'Input file: FASTA/Q file to be processes'
+  position: 0
+  name: in_file
+  optional: false
+- !Positional
+  description: Training database/reference file (in HDF5 format). Created with MakeStreamingDNADatabase.py
+  position: 1
+  name: reference_file
+  optional: false
+- !Positional
+  description: Output csv file with the containment indices.
+  position: 2
+  name: out_file
+  optional: false
+- !Positional
+  description: Range of k-mer sizes in the formate <start>-<end>-<increment>. So 5-10-2
+    means [5, 7, 9]. If <end> is larger than the k-mer sizeof the training data, this
+    will automatically be reduced.
+  position: 3
+  name: range
+  optional: false
+named:
+- !Flag
+  description: 'Number of threads to use (default: 8)'
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: 'Only return results with containment index above this threshold at
+    the maximum k-mer size. (default: 0.1)'
+  synonyms:
+  - -c
+  - --containment_threshold
+  args: !SimpleFlagArg
+    name: CONTAINMENT_THRESHOLD
+  optional: true
+- !Flag
+  description: 'Optional flag to specify that a plot of the k-mer curves should also
+    be saved (same basenameas the out_file). (default: False)'
+  synonyms:
+  - -p
+  - --plot_file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Location of pre-filter bloom filter. Use only if you absolutely know\
+    \ what you're doing (hard to error check bloom filters). (default: None)"
+  synonyms:
+  - -f
+  - --filter_file
+  args: !SimpleFlagArg
+    name: FILTER_FILE
+  optional: true
+- !Flag
+  description: 'Location in range to apply the threshold passed by the -c flag. -l
+    2 -c 5-50-10 means the threshold will be applied at k-size 25. Default is largest
+    size. (default: -1)'
+  synonyms:
+  - -l
+  - --location_of_thresh
+  args: !SimpleFlagArg
+    name: LOCATION_OF_THRESH
+  optional: true
+command:
+- StreamingQueryDNADatabase_queue.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

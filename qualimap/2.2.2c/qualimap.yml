@@ -1,0 +1,635 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Use this argument to set Java memory heap size. Example: qualimap
+    bamqc -bam very_large_alignment.bam --java-mem-size=4G'
+  synonyms:
+  - --java-mem-size
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- qualimap
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Input mapping file in BAM format
+    synonyms:
+    - -bam
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Paint chromosome limits inside charts
+    synonyms:
+    - -c
+    - --paint-chromosome-limits
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Species to compare with genome GC distribution. Possible values:
+      HUMAN - hg19; MOUSE - mm9(default), mm10'
+    synonyms:
+    - -gd
+    - --genome-gc-distr
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Feature file with regions of interest in GFF/GTF or BED format
+    synonyms:
+    - -gff
+    - --feature-file
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Minimum size for a homopolymer to be considered in indel analysis
+      (default is 3)
+    synonyms:
+    - -hm
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Activate this option to collect statistics of overlapping paired-end
+      reads
+    synonyms:
+    - -ip
+    - --collect-overlap-pairs
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Number of reads analyzed in a chunk (default is 1000)
+    synonyms:
+    - -nr
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Number of threads (default is 8)
+    synonyms:
+    - -nt
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Number of windows (default is 400)
+    synonyms:
+    - -nw
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: 'File to save per base non-zero coverage. Warning: large files are
+      expected for large genomes'
+    synonyms:
+    - -oc
+    - --output-genome-coverage
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Report information for the regions outside those defined by feature-file  (ignored
+      when -gff option is not set)
+    synonyms:
+    - -os
+    - --outside-stats
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output folder for HTML report and raw data.
+    synonyms:
+    - -outdir
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Output file for PDF report (default value is report.pdf).
+    synonyms:
+    - -outfile
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Format of the output report (PDF, HTML or both PDF:HTML, default
+      is HTML).
+    synonyms:
+    - -outformat
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: 'Sequencing library protocol: strand-specific-forward, strand-specific-reverse
+      or non-strand-specific (default)'
+    synonyms:
+    - -p
+    - --sequencing-protocol
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Activate this option to skip duplicated alignments from the analysis.
+      If the duplicates are not flagged in the BAM file, then they will be detected
+      by Qualimap and can be selected for skipping.
+    synonyms:
+    - -sd
+    - --skip-duplicated
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Specific type of duplicated alignments to skip (if this option is
+      activated). 0 : only flagged duplicates (default) 1 : only estimated by Qualimap
+      2 : both flagged and estimated'
+    synonyms:
+    - -sdmode
+    - --skip-dup-mode
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - qualimap
+  - bamqc
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Counting algorithm: uniquely-mapped-reads(default) or proportional.'
+    synonyms:
+    - -a
+    - --algorithm
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Input mapping file in BAM format.
+    synonyms:
+    - -bam
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Annotations file in Ensembl GTF format.
+    synonyms:
+    - -gtf
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Output file for computed counts. If only name of the file is provided,
+      then the file will be saved in the output folder.
+    synonyms:
+    - -oc
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Output folder for HTML report and raw data.
+    synonyms:
+    - -outdir
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Output file for PDF report (default value is report.pdf).
+    synonyms:
+    - -outfile
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Format of the output report (PDF, HTML or both PDF:HTML, default
+      is HTML).
+    synonyms:
+    - -outformat
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: 'Sequencing library protocol: strand-specific-forward, strand-specific-reverse
+      or non-strand-specific (default)'
+    synonyms:
+    - -p
+    - --sequencing-protocol
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Setting this flag for paired-end experiments will result in counting
+      fragments instead of reads
+    synonyms:
+    - -pe
+    - --paired
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: This flag indicates that the input file is already sorted by name.
+      If not set, additional sorting by name will be performed. Only required for
+      paired-end analysis.
+    synonyms:
+    - -s
+    - --sorted
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - qualimap
+  - rnaseq
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Perform comparison of conditions. Currently 2 maximum is possible.
+    synonyms:
+    - -c
+    - --compare
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'File describing the input data. Format of the file is a 4-column
+      tab-delimited table. Column 1: sample name Column 2: condition of the sample
+      Column 3: path to the counts data for the sample Column 4: index of the column
+      with counts'
+    synonyms:
+    - -d
+    - --data
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Path to info file containing genes GC-content, length and type.
+    synonyms:
+    - -i
+    - --info
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Threshold for the number of counts
+    synonyms:
+    - -k
+    - --threshold
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Output folder for HTML report and raw data.
+    synonyms:
+    - -outdir
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Output file for PDF report (default value is report.pdf).
+    synonyms:
+    - -outfile
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Format of the output report (PDF, HTML or both PDF:HTML, default
+      is HTML).
+    synonyms:
+    - -outformat
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Path to Rscript executable (by default it is assumed to be available
+      from system $PATH)
+    synonyms:
+    - -R
+    - --rscriptpath
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: 'Use built-in info file for the given species: HUMAN or MOUSE.'
+    synonyms:
+    - -s
+    - --species
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - qualimap
+  - counts
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Only for -r mode. Paint chromosome limits inside charts
+    synonyms:
+    - -c
+    - --paint-chromosome-limits
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'File describing the input data. Format of the file is a 2- or 3-column
+      tab-delimited table. Column 1: sample name Column 2: either path to the BAM
+      QC result or path to BAM file (-r mode) Column 3: group name (activates sample
+      group marking)'
+    synonyms:
+    - -d
+    - --data
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Only for -r mode. Feature file with regions of interest in GFF/GTF
+      or BED format
+    synonyms:
+    - -gff
+    - --feature-file
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Only for -r mode. Minimum size for a homopolymer to be considered
+      in indel analysis (default is 3)
+    synonyms:
+    - -hm
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Only for -r mode. Number of reads analyzed in a chunk (default is
+      1000)
+    synonyms:
+    - -nr
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Only for -r mode. Number of windows (default is 400)
+    synonyms:
+    - -nw
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Output folder for HTML report and raw data.
+    synonyms:
+    - -outdir
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Output file for PDF report (default value is report.pdf).
+    synonyms:
+    - -outfile
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Format of the output report (PDF, HTML or both PDF:HTML, default
+      is HTML).
+    synonyms:
+    - -outformat
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: 'Only for -r mode. Sequencing library protocol: strand-specific-forward,
+      strand-specific-reverse or non-strand-specific (default)'
+    synonyms:
+    - -p
+    - --sequencing-protocol
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Raw BAM files are provided as input. If this option is activated
+      BAM QC process first will be run for each sample, then multi-sample analysis
+      will be performed.
+    synonyms:
+    - -r
+    - --run-bamqc
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - qualimap
+  - multi-bamqc
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Size of the bin (default is 100)
+    synonyms:
+    - -b
+    - --bin-size
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Comma-separated list of cluster sizes
+    synonyms:
+    - -c
+    - --clusters
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Comma-separated list of control BAM files
+    synonyms:
+    - -control
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Name of the experiment
+    synonyms:
+    - -expr
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Smoothing length of a fragment
+    synonyms:
+    - -f
+    - --fragment-length
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Upstream offset (default is 2000)
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Comma-separated names of the replicates
+    synonyms:
+    - -name
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Output folder for HTML report and raw data.
+    synonyms:
+    - -outdir
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Output file for PDF report (default value is report.pdf).
+    synonyms:
+    - -outfile
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Format of the output report (PDF, HTML or both PDF:HTML, default
+      is HTML).
+    synonyms:
+    - -outformat
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Path to Rscript executable (by default it is assumed to be available
+      from system $PATH)
+    synonyms:
+    - -R
+    - --rscriptpath
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Downstream offset (default is 500)
+    synonyms:
+    - -r
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Path to regions file
+    synonyms:
+    - -regions
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Comma-separated list of sample BAM files
+    synonyms:
+    - -sample
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: 'Visualization type: heatmap or line'
+    synonyms:
+    - -viz
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - qualimap
+  - clustering
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Counting algorithm: uniquely-mapped-reads(default) or proportional'
+    synonyms:
+    - -a
+    - --algorithm
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Mapping file in BAM format
+    synonyms:
+    - -bam
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Region file in GTF, GFF or BED format. If GTF format is provided,
+      counting is based on attributes, otherwise based on feature name
+    synonyms:
+    - -gtf
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: 'GTF-specific. Attribute of the GTF to be used as feature ID. Regions
+      with the same ID will be aggregated as part of the same feature. Default: gene_id.'
+    synonyms:
+    - -id
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Output file of coverage report.
+    synonyms:
+    - -out
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: 'Sequencing library protocol: strand-specific-forward, strand-specific-reverse
+      or non-strand-specific (default)'
+    synonyms:
+    - -p
+    - --sequencing-protocol
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Setting this flag for paired-end experiments will result in counting
+      fragments instead of reads
+    synonyms:
+    - -pe
+    - --paired
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: This flag indicates that the input file is already sorted by name.
+      If not set, additional sorting by name will be performed. Only required for
+      paired-end analysis.
+    synonyms:
+    - -s
+    - --sorted
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'GTF-specific. Value of the third column of the GTF considered for
+      counting. Other types will be ignored. Default: exon'
+    synonyms:
+    - -type
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - qualimap
+  - comp-counts
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

@@ -1,0 +1,167 @@
+!Command
+positional: []
+named: []
+command:
+- rgi
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: input directory of prevalence data
+    synonyms:
+    - -i
+    - --input_directory
+    args: !SimpleFlagArg
+      name: INPUT_DIRECTORY
+    optional: true
+  - !Flag
+    description: fasta file of CARD reference sequences. If missing, run 'rgi card_annotation'
+      to generate.
+    synonyms:
+    - -c
+    - --card
+    args: !SimpleFlagArg
+      name: CARD_FASTA
+    optional: true
+  - !Flag
+    description: k-mer size (e.g., 61)
+    synonyms:
+    - -k
+    args: !SimpleFlagArg
+      name: K
+    optional: true
+  - !Flag
+    description: skips the concatenation and splitting of the CARD*R*V sequences.
+    synonyms:
+    - --skip
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: number of threads (CPUs) to use (default=1)
+    synonyms:
+    - -n
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  - !Flag
+    description: number of kmers to query at a time using pyahocorasick --the greater
+      the number the more memory usage (default=100,000)
+    synonyms:
+    - --batch_size
+    args: !SimpleFlagArg
+      name: BATCH_SIZE
+    optional: true
+  command:
+  - rgi
+  - kmer_build
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[--local] [--debug]'
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Input file (bam file from RGI*BWT, json file of RGI results, fasta
+      file of sequences)
+    synonyms:
+    - -i
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: Specify if the input file for analysis is a bam file generated from
+      RGI*BWT
+    synonyms:
+    - --bwt
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Specify if the input file is a RGI results json file
+    synonyms:
+    - --rgi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Specify if the input file is a fasta file of sequences
+    synonyms:
+    - --fasta
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: length of k
+    synonyms:
+    - -k
+    - --kmer_size
+    args: !SimpleFlagArg
+      name: K
+    optional: true
+  - !Flag
+    description: Minimum number of kmers in the called category for the classification
+      to be made (default=10).
+    synonyms:
+    - -m
+    - --minimum
+    args: !SimpleFlagArg
+      name: MIN
+    optional: true
+  - !Flag
+    description: number of threads (CPUs) to use (default=1)
+    synonyms:
+    - -n
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  - !Flag
+    description: Output file name.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: 'use local database (default: uses database in executable directory)'
+    synonyms:
+    - --local
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: debug mode
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - rgi
+  - kmer_query
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

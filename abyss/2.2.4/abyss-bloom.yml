@@ -1,0 +1,238 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: the size of a k-mer [<=128]
+  synonyms:
+  - -k
+  - --kmer
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: display verbose output
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: size of bloom filter [500M]
+  synonyms:
+  - -b
+  - --bloom-size
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: size of I/O buffer for each thread, in bytes [100000]
+  synonyms:
+  - -B
+  - --buffer-size
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: use N parallel threads [1]
+  synonyms:
+  - -j
+  - --threads
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: seed for hash function (only works with `-t konnector') [0]
+  synonyms:
+  - -h
+  - --hash-seed
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: number of hash functions (only works with `-t rolling-hash') [1]
+  synonyms:
+  - -H
+  - --num-hashes
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: build a cascading bloom filter with N levels and output the last level
+  synonyms:
+  - -l
+  - --levels
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: ='N=FILE'  initialize level N of cascading bloom filter from FILE
+  synonyms:
+  - -L
+  - --init-level
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: discard unchaste reads [default]
+  synonyms:
+  - --chastity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not discard unchaste reads
+  synonyms:
+  - --no-chastity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: trim masked bases from the ends of reads
+  synonyms:
+  - --trim-masked
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not trim masked bases from the ends of reads [default]
+  synonyms:
+  - --no-trim-masked
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: number of write locks on bloom filter [1000]
+  synonyms:
+  - -n
+  - --num-locks
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: trim bases from the ends of reads whose quality is less than the threshold
+  synonyms:
+  - -q
+  - --trim-quality
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: "'konnector', 'rolling-hash', or 'counting' [konnector]"
+  synonyms:
+  - -t
+  - --bloom-type
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: zero quality is `!' (33) default for FASTQ and SAM files
+  synonyms:
+  - --standard-quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: zero quality is `@' (64) default for qseq and export files
+  synonyms:
+  - --illumina-quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: /N           build a bloom filter for subwindow M of N
+  synonyms:
+  - -w
+  - --window
+  args: !SimpleFlagArg
+    name: M
+  optional: true
+- !Flag
+  description: =`String'      choose distance calculation method  [`jaccard'(default),
+    `forbes', `czekanowski']
+  synonyms:
+  - -m
+  - --method
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: depth of neighbouring from --root [k]
+  synonyms:
+  - -d
+  - --depth
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: root k-mer from graph traversal [required]
+  synonyms:
+  - -R
+  - --root
+  args: !SimpleFlagArg
+    name: KMER
+  optional: true
+- !Flag
+  description: get root k-mers from FASTA file
+  synonyms:
+  - -f
+  - --root-fasta
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: :FILE, assign a node attribute (e.g. 'color=blue')
+  synonyms:
+  - -a
+  - --fasta-attr
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: :FILE   to k-mers in the given FASTA
+  synonyms:
+  - --node-attr
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: :FILE  assign a node attribute (e.g. 'color=blue') to k-mers in the
+    given Bloom filter
+  synonyms:
+  - -A
+  - --bloom-attr
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: get k-mers that are *NOT* in the bloom filter
+  synonyms:
+  - -r
+  - --inverse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output k-mers in BED format
+  synonyms:
+  - --bed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output k-mers in FASTA format [default]
+  synonyms:
+  - --fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output k-mers in raw format (one per line)
+  synonyms:
+  - --raw
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- abyss-bloom
+subcommands: []
+help_flag: !Flag
+  description: display this help and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: output version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

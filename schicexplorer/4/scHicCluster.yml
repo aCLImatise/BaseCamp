@@ -1,0 +1,92 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'scHi-C matrix, -m scool scHi-C matrix The single cell Hi-C interaction
+    matrices to cluster. Needs to be in scool format (default: None)'
+  synonyms:
+  - --matrix
+  args: !SimpleFlagArg
+    name: scool
+  optional: true
+- !Flag
+  description: 'Number of to be computed clusters (default: 12)'
+  synonyms:
+  - --numberOfClusters
+  - -c
+  args: !SimpleFlagArg
+    name: NUMBEROFCLUSTERS
+  optional: true
+- !Flag
+  description: 'Algorithm to cluster the Hi-C matrices (default: spectral)'
+  synonyms:
+  - --clusterMethod
+  - -cm
+  args: !ChoiceFlagArg
+    choices:
+    - spectral
+    - kmeans
+  optional: true
+- !Flag
+  description: 'List of to be plotted chromosomes (default: None)'
+  synonyms:
+  - --chromosomes
+  args: !RepeatFlagArg
+    name: CHROMOSOMES
+  optional: true
+- !Flag
+  description: 'Dimension reduction methods, knn with euclidean distance, pca (default:
+    none)'
+  synonyms:
+  - --dimensionReductionMethod
+  - -drm
+  args: !ChoiceFlagArg
+    choices:
+    - none
+    - knn
+    - pca
+  optional: true
+- !Flag
+  description: 'Number of to be used computed nearest neighbors for the knn graph.
+    Default is either the default value or the number of the provided cells, whatever
+    is smaller. (default: 100)'
+  synonyms:
+  - --numberOfNearestNeighbors
+  - -k
+  args: !SimpleFlagArg
+    name: NUMBEROFNEARESTNEIGHBORS
+  optional: true
+- !Flag
+  description: 'File name to save the resulting clusters (default: clusters.txt)'
+  synonyms:
+  - --outFileName
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+  optional: true
+- !Flag
+  description: 'Number of threads. Using the python multiprocessing module. (default:
+    4)'
+  synonyms:
+  - --threads
+  - -t
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+command:
+- scHicCluster
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

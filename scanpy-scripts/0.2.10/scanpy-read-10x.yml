@@ -1,0 +1,94 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Input 10x data in Cell-Ranger hdf5 format.
+  synonyms:
+  - -i
+  - --input-10x-h5
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Path of input folder containing 10x data in mtx format.
+  synonyms:
+  - -x
+  - --input-10x-mtx
+  args: !SimpleFlagArg
+    name: DIRECTORY
+  optional: true
+- !Flag
+  description: '[anndata|loom|zarr] Output object format.  [default: anndata]'
+  synonyms:
+  - -F
+  - --output-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Chunk size for writing output in zarr format.  [default: 1000]'
+  synonyms:
+  - -z
+  - --zarr-chunk-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: When specified, using it as prefix for exporting mtx files. If not
+    empty and not ending with "/" or "_", a "_" will be appended.
+  synonyms:
+  - -X
+  - --export-mtx
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: '[stdout|stderr]      Print output object summary info to specified
+    stream.'
+  synonyms:
+  - --show-obj
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Name of the genome group in hdf5 file, required by "--input-10x-h5".  [default:
+    hg19]'
+  synonyms:
+  - -g
+  - --genome
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: '[gene_symbols|gene_ids] Attribute to be used as the index of the variable
+    table, required by "-- input-10x-mtx".  [default: gene_symbols]'
+  synonyms:
+  - -v
+  - --var-names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Extra cell metadata table, must be tab- separated with a header row
+    and an index column, and with matched dimension.
+  synonyms:
+  - --extra-obs
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Extra gene metadata table, must be tab- separated with a header row
+    and an index column, and with matched dimension.
+  synonyms:
+  - --extra-var
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+command:
+- scanpy-read-10x
+subcommands: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

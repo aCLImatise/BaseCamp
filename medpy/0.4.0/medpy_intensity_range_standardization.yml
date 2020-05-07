@@ -1,0 +1,113 @@
+!Command
+positional:
+- !Positional
+  description: The images used for training (in the learning case) or to transform
+    (in the transformation case)
+  position: 0
+  name: images
+  optional: false
+named:
+- !Flag
+  description: Verbose output
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display debug information.
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Overwrite existing files (both model and images)
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Location of the pickled intensity range model to load. Activated application
+    mode.
+  synonyms:
+  - --load-model
+  args: !SimpleFlagArg
+    name: LMODEL
+  optional: true
+- !Flag
+  description: Save the trained model under this name as a pickled object (should
+    end in .pkl). Activates training mode.
+  synonyms:
+  - --save-model
+  args: !SimpleFlagArg
+    name: SMODEL
+  optional: true
+- !Flag
+  description: Colon-separated lower and upper cut-off percentile values to exclude
+    intensity outliers during the model training.
+  synonyms:
+  - --cutoffp
+  args: !SimpleFlagArg
+    name: CUTOFFP
+  optional: true
+- !Flag
+  description: The landmark percentiles, based on which to train the model. Can be
+    L2, L3, L4 or a colon-separated, ordered list of percentiles.
+  synonyms:
+  - --landmarkp
+  args: !SimpleFlagArg
+    name: LANDMARKP
+  optional: true
+- !Flag
+  description: Two colon-separated intensity values to roughly define the average
+    intensity space to learn. In most cases should be left set to 'auto'
+  synonyms:
+  - --stdspace
+  args: !SimpleFlagArg
+    name: STDSPACE
+  optional: true
+- !Flag
+  description: Save the transformed images under this location. Required for the application
+    mode, optional for the learning mode.
+  synonyms:
+  - --save-images
+  args: !SimpleFlagArg
+    name: SIMAGES
+  optional: true
+- !Flag
+  description: All voxel with an intensity > threshold are considered as foreground.
+    Supply either this or a mask for each image.
+  synonyms:
+  - --threshold
+  args: !SimpleFlagArg
+    name: THRESHOLD
+  optional: true
+- !Flag
+  description: A number of binary foreground mask, one for each image. Alternative
+    to supplying a threshold. Overrides the threshold parameter if supplied.
+  synonyms:
+  - --masks
+  args: !RepeatFlagArg
+    name: MASKS
+  optional: true
+- !Flag
+  description: Ignore possible loss of information during the intensity transformation.
+    Should only be used when you know what you are doing.
+  synonyms:
+  - --ignore
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- medpy_intensity_range_standardization.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

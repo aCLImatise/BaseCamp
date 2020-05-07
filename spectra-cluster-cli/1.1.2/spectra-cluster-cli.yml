@@ -1,0 +1,224 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: if set, the similarity scores of each spectrum to the cluster's consensus
+    spectrum isadded to the output file.
+  synonyms:
+  - -add_scores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: path to the directory to (temporarily) store the binary files. By default
+    a temporary directory is being created
+  synonyms:
+  - -binary_directory
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: if this option is set the 'fast mode' is enabled. In this mode, the
+    radical peak filtering used for the comparison function is already applied during
+    spectrum conversion. Thereby, the clustering and consensus spectrum quality is
+    slightly decreased but speed increases 2-3 fold.
+  synonyms:
+  - -fast_mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: adds a filter to be applied to the input spectrum. Available values
+    are ['immonium_ions', 'mz_150', 'mz_200']
+  synonyms:
+  - -filter
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: fragment ion tolerance in m/z to use for fragment peak matching
+  synonyms:
+  - -fragment_tolerance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: if this options is set, the binary files are not deleted after clustering.
+  synonyms:
+  - -keep_binary_files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: number of threads to use for major peak clustering.
+  synonyms:
+  - -major_peak_jobs
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: if set, only identified spectra are considered for clustering.
+  synonyms:
+  - -only_identified
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: if set, only unidentified spectra are considered for clustering.
+  synonyms:
+  - -only_unidentified
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: path to the outputfile. Outputfile must not exist.
+  synonyms:
+  - -output_path
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: precursor tolerance (clustering window size) in m/z (default) or ppm
+    used during matching. The unit can be changed by setting the -precursor_tolerance_unit
+    parameter
+  synonyms:
+  - -precursor_tolerance
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: sets the precursor tolerance unit. Allowed values are "mz" and "ppm".
+    Default is "mz".
+  synonyms:
+  - -precursor_tolerance_unit
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: remove reporter ion peaks in quantitation experiments. Possible QUANTIATION
+    TYPES are 'ITRAQ', 'TMT' and 'ALL' ('TMT' and 'ITRAQ' peaks are removed.
+  synonyms:
+  - -remove_reporters
+  args: !SimpleFlagArg
+    name: QUANTITATION TYPE
+  optional: true
+- !Flag
+  description: if this option is set, the binary files found in the binary file directory
+    will be used for clustering.
+  synonyms:
+  - -reuse_binary_files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: number of clustering rounds to use.
+  synonyms:
+  - -rounds
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (lowest) final clustering threshold
+  synonyms:
+  - -threshold_end
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (highest) starting threshold
+  synonyms:
+  - -threshold_start
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: if set additional status information is printed.
+  synonyms:
+  - -verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Advanced option) It this option is set, the input file in CGF format
+    will be converted to the .clustering file. No other processing will be performed.
+  synonyms:
+  - -x_convert_cgf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Advanced option) If set, MGF comment strings are NOT supported. This
+    will increase performance but only works for MGF files that do not contain any
+    comments
+  synonyms:
+  - -x_disable_mgf_comments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Advanced option) If this option is set, the top 10 peaks per 100 m/z
+    are retained instead of the top N peaks overall.
+  synonyms:
+  - -x_filter_peaks_mz
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Experimental option) Learn the used cumulative distribution function
+    directly from the processed data. This is only recommended for high-resolution
+    data. The result will be written to the defined file.
+  synonyms:
+  - -x_learn_cdf
+  args: !SimpleFlagArg
+    name: output filename
+  optional: true
+- !Flag
+  description: (Experimental option) Loads the cumulative distribution function to
+    use from the specified file. These files can be created using the x_learn_cdf
+    parameter
+  synonyms:
+  - -x_load_cdf
+  args: !SimpleFlagArg
+    name: CDF filename
+  optional: true
+- !Flag
+  description: (Advanced option) If this option is set, the input files should be
+    binary result files from the clustering process. In this mode, the spectra-cluster-cli
+    only merges the binary files and creates the final output file.
+  synonyms:
+  - -x_merge_binary_files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Experimental option) Uses an adaptive function for the minimum comparisons
+    together with a minimum number always to return.
+  synonyms:
+  - -x_min_adapt_comparisons
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (Experimental option) Sets the minimum number of comparisons used to
+    calculate the probability that incorrect spectra are clustered.
+  synonyms:
+  - -x_min_comparisons
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (Advanced option) Sets the minimum number of peaks to keep in a consensus
+    spectrum. If the consensus spectrum contains fewer than these peaks, the noise
+    filtering which retains N peaks per M m/z is not used but all peaks are kept
+  synonyms:
+  - -x_min_consensus_peaks_to_keep
+  args: !SimpleFlagArg
+    name: number peaks
+  optional: true
+- !Flag
+  description: (Experimental option) Set the number of highest peaks that are kept
+    per spectrum during loading.
+  synonyms:
+  - -x_n_prefiltered_peaks
+  args: !SimpleFlagArg
+    name: number peaks
+  optional: true
+command:
+- spectra-cluster-cli
+subcommands: []
+help_flag: !Flag
+  description: print this message.
+  synonyms:
+  - -help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

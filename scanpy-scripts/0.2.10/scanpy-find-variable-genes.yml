@@ -1,0 +1,112 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: '[anndata|loom] Input object format.  [default: anndata]'
+  synonyms:
+  - -f
+  - --input-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[anndata|loom|zarr] Output object format.  [default: anndata]'
+  synonyms:
+  - -F
+  - --output-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Chunk size for writing output in zarr format.  [default: 1000]'
+  synonyms:
+  - -z
+  - --zarr-chunk-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: When specified, using it as prefix for exporting mtx files. If not
+    empty and not ending with "/" or "_", a "_" will be appended.
+  synonyms:
+  - -X
+  - --export-mtx
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: '[stdout|stderr]      Print output object summary info to specified
+    stream.'
+  synonyms:
+  - --show-obj
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '... Cutoffs for the mean of expressionin the format of "-m min max".  [default:
+    0.0125, 3]'
+  synonyms:
+  - -m
+  - --mean-limits
+  args: !SimpleFlagArg
+    name: FLOAT FLOAT
+  optional: true
+- !Flag
+  description: '... Cutoffs for the dispersion of expressionin the format of "-d min
+    max".  [default: 0.5, inf]'
+  synonyms:
+  - -d
+  - --disp-limits
+  args: !SimpleFlagArg
+    name: FLOAT FLOAT
+  optional: true
+- !Flag
+  description: 'Number of bins for binning the mean gene expression.  [default: 20]'
+  synonyms:
+  - -b
+  - --n-bins
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Number of highly-variable genes to keep.
+  synonyms:
+  - -t
+  - --n-top-genes
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: '[seurat|cellranger] Choose the flavor for computing normalized dispersion.  [default:
+    seurat]'
+  synonyms:
+  - -v
+  - --flavor
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When set, inplace subset to highly-variable genes, otherwise only flag
+    highly-variable genes.
+  synonyms:
+  - -s
+  - --subset
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '... Find highly variable genes within each batch defined by <TEXT>
+    then pool and keep those found in at least <INTEGER> batches. [default: None,
+    None]'
+  synonyms:
+  - -B
+  - --by-batch
+  args: !SimpleFlagArg
+    name: TEXT INTEGER
+  optional: true
+command:
+- scanpy-find-variable-genes
+subcommands: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

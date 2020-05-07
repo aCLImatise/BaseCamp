@@ -1,0 +1,90 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: FILE2 [FILE1 FILE2 ...], -b FILE1 FILE2 [FILE1 FILE2 ...] List of indexed
+    bam files separated by spaces.
+  synonyms:
+  - --bamfiles
+  args: !SimpleFlagArg
+    name: FILE1
+  optional: true
+- !Flag
+  description: The file to write results to. By default, results are printed to the
+    console
+  synonyms:
+  - --outFile
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILE
+  optional: true
+- !Flag
+  description: Labels for the samples. The default is to use the file name of the
+    sample. The sample labels should be separated by spaces and quoted if a label
+    itselfcontains a space E.g. --sampleLabels label-1 "label 2"
+  synonyms:
+  - --sampleLabels
+  args: !RepeatFlagArg
+    name: SAMPLELABELS
+  optional: true
+- !Flag
+  description: Instead of manually specifying labels for the input BAM files, this
+    causes deepTools to use the file name after removing the path and extension.
+  synonyms:
+  - --smartLabels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Length in bases of the window used to sample the genome. (Default:
+    1000000)'
+  synonyms:
+  - --binSize
+  - -bs
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'To reduce the computation time, not every possible genomic bin is
+    sampled. This option allows you to set the distance between bins actually sampled
+    from. Larger numbers are sufficient for high coverage samples, while smaller values
+    are useful for lower coverage samples. Note that if you specify a value that results
+    in too few (<1000) reads sampled, the value will be decreased. (Default: 10000)'
+  synonyms:
+  - --distanceBetweenBins
+  - -n
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'Number of processors to use. Type "max/2" to use half the maximum
+    number of processors or "max" to use all available processors. (Default: 1)'
+  synonyms:
+  - --numberOfProcessors
+  - -p
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Set to see processing messages.
+  synonyms:
+  - --verbose
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- estimateReadFiltering
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

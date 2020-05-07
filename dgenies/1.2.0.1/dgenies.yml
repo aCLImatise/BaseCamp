@@ -1,0 +1,281 @@
+!Command
+positional: []
+named: []
+command:
+- dgenies
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Mode into run the application
+    synonyms:
+    - -m
+    - --mode
+    args: !ChoiceFlagArg
+      choices:
+      - standalone
+      - webserver
+    optional: true
+  - !Flag
+    description: '[DEBUG], --debug [DEBUG] Run in debug mode'
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Host into run the application
+    synonyms:
+    - -o
+    - --host
+    args: !SimpleFlagArg
+      name: HOST
+    optional: true
+  - !Flag
+    description: Port into run the application
+    synonyms:
+    - -p
+    - --port
+    args: !SimpleFlagArg
+      name: PORT
+    optional: true
+  - !Flag
+    description: '[NO_CRONS] Do not run crons (for debug only, ignored for standalone
+      mode)'
+    synonyms:
+    - --no-crons
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[NO_BROWSER] Do not start the browser (Start of browser is always
+      disabled in debug mode)'
+    synonyms:
+    - --no-browser
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - dgenies
+  - run
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[CRONS], --crons [CRONS] Clear crons'
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[LOGS], --logs [LOGS] Clear logs'
+    synonyms:
+    - -l
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[JOBS], --jobs [JOBS] Clear jobs'
+    synonyms:
+    - -j
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Max age for job to delete (0 for all)
+    synonyms:
+    - -m
+    - --max-age
+    args: !SimpleFlagArg
+      name: MAX_AGE
+    optional: true
+  - !Flag
+    description: '[WEB], --web [WEB] Add this option with -j option, if you use the
+      webserver mode'
+    synonyms:
+    - -w
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - dgenies
+  - clear
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - dgenies
+  - gallery
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Id (name) of the job to add to the gallery
+      synonyms:
+      - -i
+      - --id-job
+      args: !SimpleFlagArg
+        name: ID_JOB
+      optional: true
+    - !Flag
+      description: Name to show in the gallery for the job
+      synonyms:
+      - -n
+      - --name
+      args: !SimpleFlagArg
+        name: NAME
+      optional: true
+    - !Flag
+      description: Name of the query
+      synonyms:
+      - -q
+      - --query
+      args: !SimpleFlagArg
+        name: QUERY
+      optional: true
+    - !Flag
+      description: Name of the target
+      synonyms:
+      - -t
+      - --target
+      args: !SimpleFlagArg
+        name: TARGET
+      optional: true
+    - !Flag
+      description: Name of the file that illustrate the job
+      synonyms:
+      - -p
+      - --pict
+      args: !SimpleFlagArg
+        name: PICT
+      optional: true
+    command:
+    - dgenies
+    - gallery
+    - add
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Id (name) of the job to delete from the gallery
+      synonyms:
+      - -i
+      - --id-job
+      args: !SimpleFlagArg
+        name: ID_JOB
+      optional: true
+    - !Flag
+      description: Name of the job shown in the gallery
+      synonyms:
+      - -n
+      - --name
+      args: !SimpleFlagArg
+        name: NAME
+      optional: true
+    - !Flag
+      description: Remove picture file
+      synonyms:
+      - --remove-pict
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - dgenies
+    - gallery
+    - del
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Message to add
+    synonyms:
+    - -m
+    - --message
+    args: !SimpleFlagArg
+      name: MESSAGE
+    optional: true
+  - !Flag
+    description: Type of message
+    synonyms:
+    - -t
+    - --type
+    args: !ChoiceFlagArg
+      choices:
+      - info
+      - warn
+      - critical
+      - success
+    optional: true
+  - !Flag
+    description: Remove message
+    synonyms:
+    - -c
+    - --clear
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - dgenies
+  - inforun
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

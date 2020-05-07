@@ -1,0 +1,126 @@
+!Command
+positional:
+- !Positional
+  description: ': A L<Bio::LocationI> compliant object'
+  position: 0
+  name: Args
+  optional: false
+named:
+- !Flag
+  description: '- (optional) inputfilename, will read either ARGV files or from STDIN'
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: infilename
+  optional: true
+- !Flag
+  description: '- the output filename [default STDOUT]'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: '- search result format (blast, fasta,waba,axt) (ssearch is fasta format).
+    default is blast.'
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: format
+  optional: true
+- !Flag
+  description: /--type seqtype  - if you want to see query or hit information in the
+    GFF report
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: /--source        - specify the source (will be algorithm name otherwise
+    like BLASTN)
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- the method tag (primary_tag) of the features (default is similarity)'
+  synonyms:
+  - --method
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- a string or a file that when parsed evaluates to a closure which
+    will be passed a feature object and that returns the score to be printed'
+  synonyms:
+  - --scorefunc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- a string or a file that when parsed evaluates to a closure which
+    will be passed two features, query and hit, and returns the location (Bio::LocationI
+    compliant) for the GFF3 feature created for each HSP; the closure may use the
+    clone_loc() and create_loc() functions for convenience, see their PODs'
+  synonyms:
+  - --locfunc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- only print the first HSP feature for each hit'
+  synonyms:
+  - --onehsp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: /--parent        - the parent to which HSP features should refer if
+    not the name of the hit or query (depending on --type)
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: /--notarget - whether to always add the Target tag or not
+  synonyms:
+  - --target
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- generate GFF component fields (chromosome)'
+  synonyms:
+  - --component
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: /--match         - generate a 'match' line which is a container of
+    all the similarity HSPs
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- add ID tag in the absence of --match'
+  synonyms:
+  - --addid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: /--cutoff        - specify an evalue cutoff
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- bp_search2gff.pl
+subcommands: []
+help_flag: !Flag
+  description: '- this help menu'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: '- GFF version to use (put a 3 here to use gff 3)'
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

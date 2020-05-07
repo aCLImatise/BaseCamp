@@ -1,0 +1,142 @@
+!Command
+positional:
+- !Positional
+  description: GenBank/EMBL/FASTA file(s) containing DNA.
+  position: 0
+  name: SEQUENCE
+  optional: false
+named:
+- !Flag
+  description: 'Taxonomic classification of input sequence. (default: bacteria)'
+  synonyms:
+  - --taxon
+  args: !ChoiceFlagArg
+    choices:
+    - bacteria
+    - fungi
+  optional: true
+- !Flag
+  description: Run a whole-genome HMMer analysis.
+  synonyms:
+  - --fullhmmer
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Motif based prediction of SM gene cluster regions.
+  synonyms:
+  - --cassis
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Only annotate borders of existing clusters.
+  synonyms:
+  - --cf-borders-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Find extra clusters.
+  synonyms:
+  - --cf-create-clusters
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Run a cluster-limited HMMer analysis.
+  synonyms:
+  - --clusterhmmer
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Generate phylogenetic trees of sec. met. cluster orthologous groups.
+  synonyms:
+  - --smcog-trees
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Lowest GC content to annotate TTA codons at (default: 0.65).'
+  synonyms:
+  - --tta-threshold
+  args: !SimpleFlagArg
+    name: TTA_THRESHOLD
+  optional: true
+- !Flag
+  description: Compare identified clusters against a database of antiSMASH-predicted
+    clusters.
+  synonyms:
+  - --cb-general
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Compare identified clusters against known subclusters responsible for
+    synthesising precursors.
+  synonyms:
+  - --cb-subclusters
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Compare identified clusters against known gene clusters from the MIBiG
+    database.
+  synonyms:
+  - --cb-knownclusters
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Run active site finder analysis.
+  synonyms:
+  - --asf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Run Pfam to Gene Ontology mapping module.
+  synonyms:
+  - --pfam2go
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Directory to write results to.
+  synonyms:
+  - --output-dir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+- !Flag
+  description: Custom title for the HTML output page (default is input filename).
+  synonyms:
+  - --html-title
+  args: !SimpleFlagArg
+    name: HTML_TITLE
+  optional: true
+- !Flag
+  description: Custom description to add to the output.
+  synonyms:
+  - --html-description
+  args: !SimpleFlagArg
+    name: HTML_DESCRIPTION
+  optional: true
+- !Flag
+  description: "Specify algorithm used for gene finding: GlimmerHMM, Prodigal, Prodigal\
+    \ Metagenomic/Anonymous mode, or none. The 'error' option will raise an error\
+    \ if genefinding is attempted. The 'none' option will not run genefinding. (default:\
+    \ error)."
+  synonyms:
+  - --genefinding-tool
+  args: !ChoiceFlagArg
+    choices:
+    - glimmerhmm
+    - prodigal
+    - prodigal-m
+    - none
+    - error
+  optional: true
+- !Flag
+  description: Specify GFF3 file to extract features from.
+  synonyms:
+  - --genefinding-gff3
+  args: !SimpleFlagArg
+    name: GFF3_FILE
+  optional: true
+command:
+- antismash
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

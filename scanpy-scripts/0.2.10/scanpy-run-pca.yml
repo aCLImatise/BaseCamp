@@ -1,0 +1,113 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: '[anndata|loom] Input object format.  [default: anndata]'
+  synonyms:
+  - -f
+  - --input-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[anndata|loom|zarr] Output object format.  [default: anndata]'
+  synonyms:
+  - -F
+  - --output-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Chunk size for writing output in zarr format.  [default: 1000]'
+  synonyms:
+  - -z
+  - --zarr-chunk-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: When specified, using it as prefix for exporting mtx files. If not
+    empty and not ending with "/" or "_", a "_" will be appended.
+  synonyms:
+  - -X
+  - --export-mtx
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: '[stdout|stderr]      Print output object summary info to specified
+    stream.'
+  synonyms:
+  - --show-obj
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When set, omit zero-centering variables to allow efficient handling
+    of sparse input.
+  synonyms:
+  - --no-zero-center
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Seed for random number generator.  [default: 0]'
+  synonyms:
+  - -S
+  - --random-state
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Export embeddings in a tab-separated text table.
+  synonyms:
+  - -E
+  - --export-embedding
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'Number of components to compute  [default: 50]'
+  synonyms:
+  - --n-comps
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: '[auto|arpack|randomized] SVD solver to use.  [default: auto]'
+  synonyms:
+  - -V
+  - --svd-solver
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When set, use all genes for PCA, otherwise use highly-variable genes
+    by default.
+  synonyms:
+  - -a
+  - --use-all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When set, perform an incremental PCA on segments of --chunk-size, which
+    automatically zero centers and ignore settings of --random-state and --svd-solver.
+  synonyms:
+  - -K
+  - --chunked
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of observations to include in each chunk, required by --chunked.
+  synonyms:
+  - -Z
+  - --chunk-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+command:
+- scanpy-run-pca
+subcommands: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

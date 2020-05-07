@@ -1,0 +1,670 @@
+!Command
+positional: []
+named: []
+command:
+- CAT
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Start with a fresh database.
+    synonyms:
+    - --fresh
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Start with an existing database. CAT prepare will search the supplied
+      database and taxonomy folders and only construct files that do not exist yet.
+    synonyms:
+    - --existing
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --database_folder  Name of folder to which database files will
+      be written (default: {date}_CAT_database).'
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --taxonomy_folder  Name of folder to which taxonomy files will
+      be downloaded (default: {date}_taxonomy).'
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Path to DIAMOND binaries. Please supply if CAT prepare can not find
+      DIAMOND.
+    synonyms:
+    - --path_to_diamond
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Suppress verbosity.
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Suppress log file.
+    synonyms:
+    - --no_log
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --nproc          Number of cores to deploy by DIAMOND makedb (default:
+      maximum).'
+    synonyms:
+    - -n
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - CAT
+  - prepare
+  subcommands: []
+  help_flag: !Flag
+    description: Show this help message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ', --contigs_fasta  Path to contigs fasta file.'
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --database_folder  Path to folder that contains database files.'
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --taxonomy_folder  Path to folder that contains taxonomy files.'
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --range          r parameter [0-49] (default: 10).'
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --fraction       f parameter [0-0.99] (default: 0.5).'
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --out_prefix     Prefix for output files (default: out.CAT).'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --proteins_fasta  Path to predicted proteins fasta file. If supplied,
+      CAT will skip the protein prediction step.'
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --diamond_alignment  Path to DIAMOND alignment table. If supplied,
+      CAT will skip the DIAMOND alignment step and directly classify the contigs.
+      A predicted proteins fasta file should also be supplied with argument [-p /
+      --proteins].'
+    synonyms:
+    - -a
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Path to Prodigal binaries. Please supply if CAT can not find Prodigal.
+    synonyms:
+    - --path_to_prodigal
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Path to DIAMOND binaries. Please supply if CAT can not find DIAMOND.
+    synonyms:
+    - --path_to_diamond
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Suppress marking of suggestive classifications.
+    synonyms:
+    - --no_stars
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Force overwrite existing files.
+    synonyms:
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Suppress verbosity.
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Suppress log file.
+    synonyms:
+    - --no_log
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Flag for experimental features.
+    synonyms:
+    - --I_know_what_Im_doing
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --nproc          Number of cores to deploy by DIAMOND (default:
+      maximum).'
+    synonyms:
+    - -n
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Run DIAMOND in sensitive mode (default: not enabled).'
+    synonyms:
+    - --sensitive
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'DIAMOND block-size parameter (default: 2.0). Lower numbers will
+      decrease memory and temporary disk space usage.'
+    synonyms:
+    - --block_size
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'DIAMOND index-chunks parameter (default: 4). Set to 1 on high memory
+      machines. The parameter has no effect on temporary disk space usage.'
+    synonyms:
+    - --index_chunks
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Directory for temporary DIAMOND files (default: directory to which
+      output files are written).'
+    synonyms:
+    - --tmpdir
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'DIAMOND top parameter [0-50] (default: 50). Governs hits within
+      range of best hit that are written to the alignment file. This is not the [-r
+      / --range] parameter! Can only be set with the [--I_know_what_Im_doing] flag,
+      see README.md.'
+    synonyms:
+    - --top
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - CAT
+  - contigs
+  subcommands: []
+  help_flag: !Flag
+    description: Show this help message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ', --bin_fasta      Path to bin fasta file.'
+    synonyms:
+    - -b
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --database_folder  Path to folder that contains database files.'
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --taxonomy_folder  Path to folder that contains taxonomy files.'
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --range          r parameter [0-49] (default: 5).'
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --fraction       f parameter [0-0.99] (default: 0.3).'
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --out_prefix     Prefix for output files (default: out.BAT).'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --proteins_fasta  Path to predicted proteins fasta file. If supplied,
+      BAT will skip the protein prediction step.'
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --diamond_alignment  Path to DIAMOND alignment table. If supplied,
+      BAT will skip the DIAMOND alignment step and directly classify the bin. A predicted
+      proteins fasta file should also be supplied with argument [-p / --proteins].'
+    synonyms:
+    - -a
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Path to Prodigal binaries. Please supply if BAT can not find Prodigal.
+    synonyms:
+    - --path_to_prodigal
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Path to DIAMOND binaries. Please supply if BAT can not find DIAMOND.
+    synonyms:
+    - --path_to_diamond
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Suppress marking of suggestive classifications.
+    synonyms:
+    - --no_stars
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Force overwrite existing files.
+    synonyms:
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Suppress verbosity.
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Suppress log file.
+    synonyms:
+    - --no_log
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Flag for experimental features.
+    synonyms:
+    - --I_know_what_Im_doing
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --nproc          Number of cores to deploy by DIAMOND (default:
+      maximum).'
+    synonyms:
+    - -n
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Run DIAMOND in sensitive mode (default: not enabled).'
+    synonyms:
+    - --sensitive
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'DIAMOND block-size parameter (default: 2.0). Lower numbers will
+      decrease memory and temporary disk space usage.'
+    synonyms:
+    - --block_size
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'DIAMOND index-chunks parameter (default: 4). Set to 1 on high memory
+      machines. The parameter has no effect on temporary disk space usage.'
+    synonyms:
+    - --index_chunks
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Directory for temporary DIAMOND files (default: directory to which
+      output files are written).'
+    synonyms:
+    - --tmpdir
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'DIAMOND top parameter [0-50] (default: 50). Governs hits within
+      range of best hit that are written to the alignment file. This is not the [-r
+      / --range] parameter! Can only be set with the [--I_know_what_Im_doing] flag,
+      see README.md.'
+    synonyms:
+    - --top
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - CAT
+  - bin
+  subcommands: []
+  help_flag: !Flag
+    description: Show this help message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ', --bin_folder     Path to directory containing bins.'
+    synonyms:
+    - -b
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --database_folder  Path to folder that contains database files.'
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --taxonomy_folder  Path to folder that contains taxonomy files.'
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --bin_suffix     Suffix of bins in bin folder (default: .fna).'
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --range          r parameter [0-49] (default: 5).'
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --fraction       f parameter [0-0.99] (default: 0.3).'
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --out_prefix     Prefix for output files (default: out.BAT).'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --proteins_fasta  Path to concatenated predicted proteins fasta
+      file generated during an earlier run of BAT. If supplied, BAT will skip the
+      protein prediction step.'
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --diamond_alignment  Path to DIAMOND alignment table generated
+      during an earlier run of BAT. If supplied, BAT will skip the DIAMOND alignment
+      step and directly classify the bins. A concatenated predicted proteins fasta
+      file should also be supplied with argument [-p / --proteins].'
+    synonyms:
+    - -a
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Path to Prodigal binaries. Please supply if BAT can not find Prodigal.
+    synonyms:
+    - --path_to_prodigal
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Path to DIAMOND binaries. Please supply if BAT can not find DIAMOND.
+    synonyms:
+    - --path_to_diamond
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Suppress marking of suggestive classifications.
+    synonyms:
+    - --no_stars
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Force overwrite existing files.
+    synonyms:
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Suppress verbosity.
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Suppress log file.
+    synonyms:
+    - --no_log
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Flag for experimental features.
+    synonyms:
+    - --I_know_what_Im_doing
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --nproc          Number of cores to deploy by DIAMOND (default:
+      maximum).'
+    synonyms:
+    - -n
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Run DIAMOND in sensitive mode (default: not enabled).'
+    synonyms:
+    - --sensitive
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'DIAMOND block-size parameter (default: 2.0). Lower numbers will
+      decrease memory and temporary disk space usage.'
+    synonyms:
+    - --block_size
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'DIAMOND index-chunks parameter (default: 4). Set to 1 on high memory
+      machines. The parameter has no effect on temporary disk space usage.'
+    synonyms:
+    - --index_chunks
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Directory for temporary DIAMOND files (default: directory to which
+      output files are written).'
+    synonyms:
+    - --tmpdir
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'DIAMOND top parameter [0-50] (default: 50). Governs hits within
+      range of best hit that are written to the alignment file. This is not the [-r
+      / --range] parameter! Can only be set with the [--I_know_what_Im_doing] flag,
+      see README.md.'
+    synonyms:
+    - --top
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - CAT
+  - bins
+  subcommands: []
+  help_flag: !Flag
+    description: Show this help message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ', --input_file     Path to input file. Can be either classification
+      output file or ORF2LCA output file.'
+    synonyms:
+    - -i
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --output_file    Path to output file.'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --taxonomy_folder  Path to folder that contains taxonomy files.'
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Only output official level names.
+    synonyms:
+    - --only_official
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do not include bit-score support scores in the lineage.
+    synonyms:
+    - --exclude_scores
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Force overwrite existing files.
+    synonyms:
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Suppress verbosity.
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - CAT
+  - add_names
+  subcommands: []
+  help_flag: !Flag
+    description: Show this help message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ', --input_file     Path to named CAT contig classification file
+      or BAT bin classification file. Currently only official ranks are supported,
+      and only classification files containing a single classification per contig
+      / bin.'
+    synonyms:
+    - -i
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --output_file    Path to output file.'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --contigs_fasta  Path to contigs fasta file. This is required
+      if you want to summarise a contig classification file.'
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Force overwrite existing files.
+    synonyms:
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Suppress verbosity.
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - CAT
+  - summarise
+  subcommands: []
+  help_flag: !Flag
+    description: Show this help message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: Show this help message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version information and exit.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

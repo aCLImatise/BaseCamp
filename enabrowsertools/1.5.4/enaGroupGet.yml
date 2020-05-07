@@ -1,0 +1,124 @@
+!Command
+positional:
+- !Positional
+  description: Study or sample accession or NCBI tax ID to fetch data for
+  position: 0
+  name: accession
+  optional: false
+named:
+- !Flag
+  description: Data group to be downloaded for this study/sample/taxon (default is
+    read)
+  synonyms:
+  - -g
+  - --group
+  args: !ChoiceFlagArg
+    choices:
+    - sequence
+    - wgs
+    - assembly
+    - read
+    - analysis
+  optional: true
+- !Flag
+  description: 'File format required. Format requested must be permitted for data
+    group selected. sequence, assembly and wgs groups: embl and fasta formats. read
+    group: submitted, fastq and sra formats. analysis group: submitted only.'
+  synonyms:
+  - -f
+  - --format
+  args: !ChoiceFlagArg
+    choices:
+    - embl
+    - fasta
+    - submitted
+    - fastq
+    - sra
+  optional: true
+- !Flag
+  description: Destination directory (default is current running directory)
+  synonyms:
+  - -d
+  - --dest
+  args: !SimpleFlagArg
+    name: DEST
+  optional: true
+- !Flag
+  description: Download WGS set for each assembly if available (default is false)
+  synonyms:
+  - -w
+  - --wgs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Extract WGS scaffolds for each assembly if available (default is false)
+  synonyms:
+  - -e
+  - --extract-wgs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Expand CON scaffolds when downloading embl format (default is false)
+  synonyms:
+  - -exp
+  - --expanded
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Download read or analysis XML in addition to data files (default is
+    false)
+  synonyms:
+  - -m
+  - --meta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Download CRAM index files with submitted CRAM files, if any (default
+    is false). This flag is ignored for fastq and sra format options.
+  synonyms:
+  - -i
+  - --index
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the aspera command line client to download, instead of FTP.
+  synonyms:
+  - -a
+  - --aspera
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the provided settings file, will otherwise check for environment
+    variable or default settings file location.
+  synonyms:
+  - -as
+  - --aspera-settings
+  args: !SimpleFlagArg
+    name: ASPERA_SETTINGS
+  optional: true
+- !Flag
+  description: Include subordinate taxa (taxon subtree) when querying with NCBI tax
+    ID (default is false)
+  synonyms:
+  - -t
+  - --subtree
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- enaGroupGet
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

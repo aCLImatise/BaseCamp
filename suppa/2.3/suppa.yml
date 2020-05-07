@@ -1,0 +1,532 @@
+!Command
+positional: []
+named: []
+command:
+- suppa.py
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: specify input file
+    synonyms:
+    - -i
+    - --input-file
+    args: !SimpleFlagArg
+      name: INPUT_FILE
+    optional: true
+  - !Flag
+    description: specify output path and name without extension
+    synonyms:
+    - -o
+    - --output-file
+    args: !SimpleFlagArg
+      name: OUTPUT_FILE
+    optional: true
+  - !Flag
+    description: "[{SE,SS,MX,RI,FL} ...], --event-type {SE,SS,MX,RI,FL} [{SE,SS,MX,RI,FL}\
+      \ ...] list of events to analyze. (space separated) Options: SE -- Skipping\
+      \ Exon SS -- Alternative Splice Site (5'/3') MX -- Mutually Exclusive Exon RI\
+      \ -- Retained Intron FL -- Alternative First/Last Exon"
+    synonyms:
+    - -e
+    args: !ChoiceFlagArg
+      choices:
+      - SE
+      - SS
+      - MX
+      - RI
+      - FL
+    optional: true
+  - !Flag
+    description: 'Boundary type.Options: S -- Strict (Default) V -- Variable'
+    synonyms:
+    - -b
+    - --boundary
+    args: !ChoiceFlagArg
+      choices:
+      - S
+      - V
+    optional: true
+  - !Flag
+    description: 'Variability treshold. In case of strict boundaries this argument
+      is ignored(Default: 10nt).'
+    synonyms:
+    - -t
+    - --threshold
+    args: !SimpleFlagArg
+      name: THRESHOLD
+    optional: true
+  - !Flag
+    description: pool together overlapping genes.
+    synonyms:
+    - -p
+    - --pool-genes
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'length of the exons for its visualization. (Default: 100nt)'
+    synonyms:
+    - -l
+    - --exon-length
+    args: !SimpleFlagArg
+      name: EXON_LENGTH
+    optional: true
+  - !Flag
+    description: to choose from DEBUG, INFO, WARNING, ERROR and CRITICAL
+    synonyms:
+    - -m
+    - --mode
+    args: !SimpleFlagArg
+      name: MODE
+    optional: true
+  - !Flag
+    description: Format of the annotation file. Required.
+    synonyms:
+    - -f
+    - --format
+    args: !ChoiceFlagArg
+      choices:
+      - ioe
+      - ioi
+    optional: true
+  command:
+  - suppa.py
+  - generateEvents
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Input file with the event-transcripts equivalence (.ioe format).
+    synonyms:
+    - -i
+    - --ioe-file
+    args: !SimpleFlagArg
+      name: IOE_FILE
+    optional: true
+  - !Flag
+    description: Input transcript expression file.
+    synonyms:
+    - -e
+    - --expression-file
+    args: !SimpleFlagArg
+      name: EXPRESSION_FILE
+    optional: true
+  - !Flag
+    description: Output psi file.
+    synonyms:
+    - -o
+    - --output-file
+    args: !SimpleFlagArg
+      name: OUTPUT_FILE
+    optional: true
+  - !Flag
+    description: Minimum total expression of the transcripts involved in the event.
+    synonyms:
+    - -f
+    - --total-filter
+    args: !SimpleFlagArg
+      name: TOTAL_FILTER
+    optional: true
+  - !Flag
+    description: 'Boolean. If True, save the TPM of the events in an external file
+      (Default: False).'
+    synonyms:
+    - -s
+    - --save_tpm_events
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: to choose from DEBUG, INFO, WARNING, ERROR and CRITICAL
+    synonyms:
+    - -m
+    - --mode
+    args: !SimpleFlagArg
+      name: MODE
+    optional: true
+  command:
+  - suppa.py
+  - psiPerEvent
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Input gtf file
+    synonyms:
+    - -g
+    - --gtf-file
+    args: !SimpleFlagArg
+      name: GTF_FILE
+    optional: true
+  - !Flag
+    description: Input expression file
+    synonyms:
+    - -e
+    - --expression-file
+    args: !SimpleFlagArg
+      name: EXPRESSION_FILE
+    optional: true
+  - !Flag
+    description: Path and name of the ouput file
+    synonyms:
+    - -o
+    - --output-file
+    args: !SimpleFlagArg
+      name: OUTPUT_FILE
+    optional: true
+  - !Flag
+    description: to choose from DEBUG, INFO, WARNING, ERROR and CRITICAL
+    synonyms:
+    - -m
+    - --mode
+    args: !SimpleFlagArg
+      name: MODE
+    optional: true
+  command:
+  - suppa.py
+  - psiPerIsoform
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Method to test significance. Required.
+    synonyms:
+    - -m
+    - --method
+    args: !ChoiceFlagArg
+      choices:
+      - empirical
+      - classical
+    optional: true
+  - !Flag
+    description: Path of the PSI files. PSI files and the transcript expression (TPM)
+      files must have the same order.The conditions files and the tpm files must have
+      the same order.
+    synonyms:
+    - -p
+    - --psi
+    args: !RepeatFlagArg
+      name: CONDS
+    optional: true
+  - !Flag
+    description: Path of the transcript expression (TPM) files. Conditions files and
+      the transcript expression (TPM) files must have the same order.The conditions
+      files and the tpm files must have the same order.
+    synonyms:
+    - -e
+    - --tpm
+    args: !RepeatFlagArg
+      name: TPMS
+    optional: true
+  - !Flag
+    description: Input file with the event-transcripts equivalence (.ioe or .ioi format)
+    synonyms:
+    - -i
+    - --input
+    args: !SimpleFlagArg
+      name: IOX
+    optional: true
+  - !Flag
+    description: 'Number indicating the number of points in the local area distribution.
+      (default: 1000)'
+    synonyms:
+    - -a
+    - --area
+    args: !SimpleFlagArg
+      name: AREA
+    optional: true
+  - !Flag
+    description: 'Lower-bound for the absolute delta PSI value to test for significance.
+      (Default: 0).'
+    synonyms:
+    - -l
+    - --lower-bound
+    args: !SimpleFlagArg
+      name: LOWER_BOUND
+    optional: true
+  - !Flag
+    description: 'Boolean. Indicates if replicates in conditions are paired. (Default:
+      False).'
+    synonyms:
+    - -pa
+    - --paired
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Boolean. If True, SUPPA correct the p-values by gene. (Default:
+      False).'
+    synonyms:
+    - -gc
+    - --gene-correction
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Family-wise error rate to use for the multiple test correction.
+      (Default: 0.05).'
+    synonyms:
+    - -al
+    - --alpha
+    args: !SimpleFlagArg
+      name: ALPHA
+    optional: true
+  - !Flag
+    description: 'Boolean. If True, the average log TPM of the events will be saved
+      in an external file (Default: False).'
+    synonyms:
+    - -s
+    - --save_tpm_events
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Boolean. If True, SUPPA perform the analysis between all the possible
+      combinations of conditions (Default: False).'
+    synonyms:
+    - -c
+    - --combination
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Boolean. If True, SUPPA use the median to calculate the Delta PSI.
+      (Default: False).'
+    synonyms:
+    - -me
+    - --median
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum transcript average TPM value within-replicates and between-conditions
+      to be included in the analysis. (Default: 1.0).'
+    synonyms:
+    - -th
+    - --tpm-threshold
+    args: !SimpleFlagArg
+      name: TPM_TH
+    optional: true
+  - !Flag
+    description: 'Percentage allowed of samples per condition with nan values for
+      returning a DeltaPSI (Default: 0, no missing values allowed).'
+    synonyms:
+    - -nan
+    - --nan-threshold
+    args: !SimpleFlagArg
+      name: NAN_TH
+    optional: true
+  - !Flag
+    description: Name of the output files.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: to choose from DEBUG, INFO, WARNING, ERROR and CRITICAL
+    synonyms:
+    - -mo
+    - --mode
+    args: !SimpleFlagArg
+      name: MODE
+    optional: true
+  command:
+  - suppa.py
+  - diffSplice
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Input file of delta-PSI values (.dpsi format)
+    synonyms:
+    - -d
+    - --dpsi
+    args: !SimpleFlagArg
+      name: DPSI
+    optional: true
+  - !Flag
+    description: Input file with PSI values (.psivec format)
+    synonyms:
+    - -p
+    - --psivec
+    args: !SimpleFlagArg
+      name: PSIVEC
+    optional: true
+  - !Flag
+    description: 'P-value cut-off for significant events. (Default: 0.05).'
+    synonyms:
+    - -st
+    - --sig-threshold
+    args: !SimpleFlagArg
+      name: SIG_THRESHOLD
+    optional: true
+  - !Flag
+    description: 'Lower-bound for the absolute delta PSI value to cluster. (Default:
+      0.05).'
+    synonyms:
+    - -dt
+    - --dpsi-threshold
+    args: !SimpleFlagArg
+      name: DPSI_THRESHOLD
+    optional: true
+  - !Flag
+    description: 'Maximum (Euclidean) distance (between 0 and 1) to consider two events
+      as members of the same cluster. (Default: 0.05).'
+    synonyms:
+    - -e
+    - --eps
+    args: !SimpleFlagArg
+      name: EPS
+    optional: true
+  - !Flag
+    description: 'Minimum separation for considering two points in different clusters.
+      (Default: 0).'
+    synonyms:
+    - -s
+    - --separation
+    args: !SimpleFlagArg
+      name: SEPARATION
+    optional: true
+  - !Flag
+    description: 'Minimum number of events required per cluster. (Default: 20).'
+    synonyms:
+    - -n
+    - --min-pts
+    args: !SimpleFlagArg
+      name: MINPTS
+    optional: true
+  - !Flag
+    description: 'Distance function to be used.Options: euclidean (Default), manhattan,
+      cosine.'
+    synonyms:
+    - -m
+    - --metric
+    args: !ChoiceFlagArg
+      choices:
+      - euclidean
+      - manhattan
+      - cosine
+    optional: true
+  - !Flag
+    description: 'Clustering method to use.Options: OPTICS , DBSCAN (Default).'
+    synonyms:
+    - -c
+    - --clustering
+    args: !ChoiceFlagArg
+      choices:
+      - OPTICS
+      - DBSCAN
+    optional: true
+  - !Flag
+    description: '[INDEXES [INDEXES ...]], --groups [INDEXES [INDEXES ...]] Ranges
+      of column numbers specifying the replicates per condition. Column numbers have
+      to be continuous, with no overlapping or missing columns between them. Ex: 1-3,4-6'
+    synonyms:
+    - -g
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Name of the output file.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  command:
+  - suppa.py
+  - clusterEvents
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -i
+    args: !RepeatFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -f
+    args: !ChoiceFlagArg
+      choices:
+      - psi
+      - tpm
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  command:
+  - suppa.py
+  - joinFiles
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

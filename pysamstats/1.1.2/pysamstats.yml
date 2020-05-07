@@ -1,0 +1,223 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: FILE
+  optional: false
+named:
+- !Flag
+  description: 'Type of statistics to print, one of: alignment_binned, baseq, baseq_ext,
+    baseq_ext_strand, baseq_strand, coverage, coverage_binned, coverage_ext, coverage_ext_binned,
+    coverage_ext_strand, coverage_gc, coverage_strand, mapq, mapq_binned, mapq_strand,
+    tlen, tlen_binned, tlen_strand, variation, variation_strand.'
+  synonyms:
+  - -t
+  - --type
+  args: !SimpleFlagArg
+    name: TYPE
+  optional: true
+- !Flag
+  description: Chromosome name.
+  synonyms:
+  - -c
+  - --chromosome
+  args: !SimpleFlagArg
+    name: CHROMOSOME
+  optional: true
+- !Flag
+  description: Start position (1-based).
+  synonyms:
+  - -s
+  - --start
+  args: !SimpleFlagArg
+    name: START
+  optional: true
+- !Flag
+  description: End position (1-based).
+  synonyms:
+  - -e
+  - --end
+  args: !SimpleFlagArg
+    name: END
+  optional: true
+- !Flag
+  description: Use zero-based coordinates (default is false, i.e., use one-based coords).
+  synonyms:
+  - -z
+  - --zero-based
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Truncate pileup-based stats so no records are emitted outside the specified
+    range.
+  synonyms:
+  - -u
+  - --truncate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Stepper to provide to underlying pysam call. Options are:"all" (default):
+    all reads are returned, except where flags BAM_FUNMAP, BAM_FSECONDARY, BAM_FQCFAIL,
+    BAM_FDUP set; "nofilter" applies no filter to returned reads; "samtools": filter
+    & read processing as in _csamtools_ pileup. This requires a fasta file. For complete
+    details see the pysam documentation.'
+  synonyms:
+  - -S
+  - --stepper
+  args: !SimpleFlagArg
+    name: STEPPER
+  optional: true
+- !Flag
+  description: Pad pileup-based stats so a record is emitted for every position (default
+    is only covered positions).
+  synonyms:
+  - -d
+  - --pad
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Maximum read depth permitted in pileup-based statistics. The default
+    limit is 8000.
+  synonyms:
+  - -D
+  - --max-depth
+  args: !SimpleFlagArg
+    name: MAX_DEPTH
+  optional: true
+- !Flag
+  description: Reference sequence file, only required for some statistics.
+  synonyms:
+  - -f
+  - --fasta
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: Omit header row from output.
+  synonyms:
+  - -o
+  - --omit-header
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Report progress every N rows.
+  synonyms:
+  - -p
+  - --progress
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Size of window for binned statistics (default is 300).
+  synonyms:
+  - --window-size
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Window offset to use for deciding which genome position to report binned
+    statistics against. The default is 150, i.e., the middle of 300bp window.
+  synonyms:
+  - --window-offset
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Output format, one of {tsv, csv, hdf5} (defaults to tsv). N.B., hdf5
+    requires PyTables to be installed.
+  synonyms:
+  - --format
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: Path to output file. If not provided, write to stdout.
+  synonyms:
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Comma-separated list of fields to output (defaults to all fields).
+  synonyms:
+  - --fields
+  args: !SimpleFlagArg
+    name: FIELDS
+  optional: true
+- !Flag
+  description: Name of HDF5 group to write to (defaults to the root group).
+  synonyms:
+  - --hdf5-group
+  args: !SimpleFlagArg
+    name: HDF5_GROUP
+  optional: true
+- !Flag
+  description: Name of HDF5 dataset to create (defaults to "data").
+  synonyms:
+  - --hdf5-dataset
+  args: !SimpleFlagArg
+    name: HDF5_DATASET
+  optional: true
+- !Flag
+  description: HDF5 compression library (defaults to zlib).
+  synonyms:
+  - --hdf5-complib
+  args: !SimpleFlagArg
+    name: HDF5_COMPLIB
+  optional: true
+- !Flag
+  description: HDF5 compression level (defaults to 5).
+  synonyms:
+  - --hdf5-complevel
+  args: !SimpleFlagArg
+    name: HDF5_COMPLEVEL
+  optional: true
+- !Flag
+  description: Size of chunks in number of bytes (defaults to 2**20).
+  synonyms:
+  - --hdf5-chunksize
+  args: !SimpleFlagArg
+    name: HDF5_CHUNKSIZE
+  optional: true
+- !Flag
+  description: Only reads with mapping quality equal to or greater than this value
+    will be counted (0 by default).
+  synonyms:
+  - --min-mapq
+  args: !SimpleFlagArg
+    name: MIN_MAPQ
+  optional: true
+- !Flag
+  description: Only reads with base quality equal to or greater than this value will
+    be counted (0 by default). Only applies to pileup-based statistics.
+  synonyms:
+  - --min-baseq
+  args: !SimpleFlagArg
+    name: MIN_BASEQ
+  optional: true
+- !Flag
+  description: Don't count reads flagged as duplicate.
+  synonyms:
+  - --no-dup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't count reads aligned with a deletion at the given position. Only
+    applies to pileup-based statistics.
+  synonyms:
+  - --no-del
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- pysamstats
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

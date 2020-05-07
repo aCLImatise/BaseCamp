@@ -1,0 +1,247 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: python
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: slim_fastg.py
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: your_fastg_files
+  optional: false
+named:
+- !Flag
+  description: 'followed with mode embplant_pt, other_pt, embplant_mt, embplant_nr,
+    animal_mt, fungus_mt (which means embryophyta plastome, non-embryophyta plastome,
+    plant mitochondrion, plant nrDNA, animal mitochondrion, fungus mitochondrion separately),
+    or a combination of above split by comma(s) (corresponds to certain arguments
+    as following listed). ------------------------------------------------------ embplant_pt      "
+    --include-priority /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/embplant_pt.fasta"
+    ------------------------------------------------------ other_pt         " --include-priority
+    /tmp/tmphg2suakg/lib/python3.8/site- packages/GetOrganelleLib/LabelDatabase/other_pt.fasta"
+    ------------------------------------------------------ embplant_mt      " --include-priority
+    /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/embplant_mt.fasta"
+    ------------------------------------------------------ embplant_nr      " --include-priority
+    /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/embplant_nr.fasta"
+    ------------------------------------------------------ animal_mt        " --include-priority
+    /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/animal_mt.fasta"
+    ------------------------------------------------------ fungus_mt        " --include-priority
+    /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/fungus_mt.fasta"
+    ------------------------------------------------------ other_pt,embplant_mt,fungus_mt   "
+    --include-priority /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/other_pt.fasta,/tmp/tmphg2suakg/l
+    ib/python3.8/site-packages/GetOrganelleLib/LabelDataba se/embplant_mt.fasta,/tmp/tmphg2suakg/lib/python3.8/si
+    te-packages/GetOrganelleLib/LabelDatabase/fungus_mt.fa sta" ------------------------------------------------------
+    For easy usage and compatibility of old versions, following redirection would
+    be automatically fulfilled without warning:        plant_cp->embplant_pt; plant_pt->embplant_pt;  plant_mt->embplant_mt;
+    plant_nr->embplant_nr'
+  synonyms:
+  - -F
+  args: !SimpleFlagArg
+    name: ORGANELLE_TYPES
+  optional: true
+- !Flag
+  description: 'followed with mode embplant_pt, other_pt, embplant_mt, embplant_nr,
+    animal_mt, fungus_mt (which means embryophyta plastome, non-embryophyta plastome,
+    plant mitochondrion, plant nrDNA, animal mitochondrion, fungus mitochondrion separately),
+    or a combination of above split by comma(s) (be similar to -F and corresponds
+    to certain arguments as following listed). ------------------------------------------------------
+    embplant_pt      " --exclude /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane
+    lleLib/LabelDatabase/embplant_pt.fasta" ------------------------------------------------------
+    embplant_mt      " --exclude /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane
+    lleLib/LabelDatabase/embplant_mt.fasta" ------------------------------------------------------
+    embplant_nr      " --exclude /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane
+    lleLib/LabelDatabase/embplant_nr.fasta" ------------------------------------------------------
+    animal_mt        " --exclude /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane
+    lleLib/LabelDatabase/animal_mt.fasta" ------------------------------------------------------
+    fungus_mt        " --exclude /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane
+    lleLib/LabelDatabase/fungus_mt.fasta" ------------------------------------------------------
+    embplant_mt,embplant_nr          " --exclude /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane
+    lleLib/LabelDatabase/embplant_mt.fasta,/tmp/tmphg2suak g/lib/python3.8/site-packages/GetOrganelleLib/LabelDat
+    abase/embplant_nr.fasta" ------------------------------------------------------
+    For easy usage and compatibility of old versions, following redirection would
+    be automatically fulfilled without warning:         plant_cp->embplant_pt; plant_pt->embplant_pt;  plant_mt->embplant_mt;
+    plant_nr->embplant_nr'
+  synonyms:
+  - -E
+  args: !SimpleFlagArg
+    name: EXCLUDE_ORGANELLE_TYPES
+  optional: true
+- !Flag
+  description: Provide treatment for non-hitting contigs. ------------------------------------------------------
+    ex_no_con        keep those connect with hitting- include contigs. (Default) ------------------------------------------------------
+    ex_no_hit        exclude all. ------------------------------------------------------
+    keep_all         keep all ------------------------------------------------------
+  synonyms:
+  - --no-hits
+  args: !SimpleFlagArg
+    name: TREAT_NO_HITS
+  optional: true
+- !Flag
+  description: 'Within a contig, if the query-score of hitting A is more than given
+    times (Default: 3.0) of the query- score of hitting B, this contig would be treated
+    as only A related, rather than both.'
+  synonyms:
+  - --significant
+  args: !SimpleFlagArg
+    name: SIGNIFICANT
+  optional: true
+- !Flag
+  description: Remove redundant low-coverage contigs that largely overlap some high-coverage
+    contigs.
+  synonyms:
+  - --remove-low-dup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'After detection for target coverage, those beyond certain times (depth
+    cutoff) of the detected coverage would be excluded. Default: 10000.0'
+  synonyms:
+  - --depth-cutoff
+  args: !SimpleFlagArg
+    name: DEPTH_CUTOFF
+  optional: true
+- !Flag
+  description: 'Input a float or integer number. Filter fastg file by a minimum depth.
+    Default: 0.0.'
+  synonyms:
+  - --min-depth
+  args: !SimpleFlagArg
+    name: MIN_DEPTH
+  optional: true
+- !Flag
+  description: 'Input a float or integer number. filter fastg file by a maximum depth.
+    Default: inf.'
+  synonyms:
+  - --max-depth
+  args: !SimpleFlagArg
+    name: MAX_DEPTH
+  optional: true
+- !Flag
+  description: Merge all possible contigs.
+  synonyms:
+  - --merge
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: followed by Blastn database(s)
+  synonyms:
+  - --include
+  args: !SimpleFlagArg
+    name: INCLUDE
+  optional: true
+- !Flag
+  description: followed by Blastn database(s).
+  synonyms:
+  - --include-priority
+  args: !SimpleFlagArg
+    name: INCLUDE_PRIORITY
+  optional: true
+- !Flag
+  description: followed by Blastn database(s).
+  synonyms:
+  - --exclude
+  args: !SimpleFlagArg
+    name: EXCLUDE
+  optional: true
+- !Flag
+  description: followed by Blastn database(s)
+  synonyms:
+  - --exclude-priority
+  args: !SimpleFlagArg
+    name: EXCLUDE_PRIORITY
+  optional: true
+- !Flag
+  description: Choose to disable producing tab file
+  synonyms:
+  - --no-hits-labeled-tab
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Choose to disable deleting temp files produced by blast and this script
+  synonyms:
+  - --keep-temp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: By default the output would be along with the input fastg file. But
+    you could assign a new directory with this option.
+  synonyms:
+  - -o
+  - --out-dir
+  args: !SimpleFlagArg
+    name: OUT_DIR
+  optional: true
+- !Flag
+  description: Add prefix to the output basename. Conflict with "-- out-base".
+  synonyms:
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: By default the output basename would be modified based on the input
+    fastg file. But you could assign a new basename with this option. Conflict with
+    "--prefix".
+  synonyms:
+  - --out-base
+  args: !SimpleFlagArg
+    name: OUT_BASE
+  optional: true
+- !Flag
+  description: Generate log file.
+  synonyms:
+  - --log
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: For debug usage.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specified for calling from get_organelle_from_reads.py
+  synonyms:
+  - --continue
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Overwrite existing output result.
+  synonyms:
+  - --no-overwrite
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Assign the path to BLAST binary files if not added to the path. Default:
+    try GetOrganelleDep/linux/ncbi- blast first, then $PATH'
+  synonyms:
+  - --which-blast
+  args: !SimpleFlagArg
+    name: WHICH_BLAST
+  optional: true
+- !Flag
+  description: Threads for blastn.
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+command:
+- slim_fastg.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

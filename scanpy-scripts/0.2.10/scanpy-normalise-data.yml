@@ -1,0 +1,83 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: '[anndata|loom] Input object format.  [default: anndata]'
+  synonyms:
+  - -f
+  - --input-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[anndata|loom|zarr] Output object format.  [default: anndata]'
+  synonyms:
+  - -F
+  - --output-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Chunk size for writing output in zarr format.  [default: 1000]'
+  synonyms:
+  - -z
+  - --zarr-chunk-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: When specified, using it as prefix for exporting mtx files. If not
+    empty and not ending with "/" or "_", a "_" will be appended.
+  synonyms:
+  - -X
+  - --export-mtx
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: '[stdout|stderr]      Print output object summary info to specified
+    stream.'
+  synonyms:
+  - --show-obj
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[yes|no|counts]  Save raw data existing raw data.  [default: yes]'
+  synonyms:
+  - -r
+  - --save-raw
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'When set, do not apply (natural) log transform following normalisation.
+    [default: True]'
+  synonyms:
+  - --no-log-transform
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Normalize per cell nUMI to this number. [default: 10000]'
+  synonyms:
+  - -t
+  - --normalize-to
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Only use genes that make up less than this fraction of the total count
+    in every cell. So only these genes will sum up to the number specified by --normalize-to.
+    [default: 0.9]'
+  synonyms:
+  - --fraction
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+command:
+- scanpy-normalise-data
+subcommands: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

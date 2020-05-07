@@ -1,0 +1,103 @@
+!Command
+positional:
+- !Positional
+  description: PAR-CLIP file *.table
+  position: 0
+  name: inputfile
+  optional: false
+- !Positional
+  description: path to genome
+  position: 1
+  name: genome
+  optional: false
+- !Positional
+  description: output directory
+  position: 2
+  name: outdir
+  optional: false
+- !Positional
+  description: prefix
+  position: 3
+  name: prefix
+  optional: false
+named:
+- !Flag
+  description: kmer-length
+  synonyms:
+  - --kmer
+  args: !SimpleFlagArg
+    name: KMER
+  optional: true
+- !Flag
+  description: start index of PAR-CLIP sites
+  synonyms:
+  - --start
+  args: !SimpleFlagArg
+    name: START
+  optional: true
+- !Flag
+  description: stop index of PAR-CLIP sites
+  synonyms:
+  - --stop
+  args: !SimpleFlagArg
+    name: STOP
+  optional: true
+- !Flag
+  description: number of nt +/- the crosslink site
+  synonyms:
+  - --width
+  args: !SimpleFlagArg
+    name: WIDTH
+  optional: true
+- !Flag
+  description: set key that is used for PAR-CLIP site ordering
+  synonyms:
+  - --key
+  args: !ChoiceFlagArg
+    choices:
+    - occupancy
+    - transitions
+    - coverage
+    - score
+  optional: true
+- !Flag
+  description: set path to GFF if sites should be removed that overlap with the GFF.
+    By default no sites are filtered out.
+  synonyms:
+  - --filterGFF
+  args: !SimpleFlagArg
+    name: FILTERGFF
+  optional: true
+- !Flag
+  description: number of nt that are added to the start/stop indices of the GFF annotations
+  synonyms:
+  - --awidth
+  args: !SimpleFlagArg
+    name: AWIDTH
+  optional: true
+- !Flag
+  description: remove temporary text files
+  synonyms:
+  - --remove
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: verbose output
+  synonyms:
+  - --verbose
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- mb-plot-kmer-enrichment
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

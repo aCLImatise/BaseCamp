@@ -1,0 +1,85 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: fasta file with DNA sequences
+  synonyms:
+  - --genome
+  args: !SimpleFlagArg
+    name: genome.fa
+  optional: true
+- !Flag
+  description: bam file with spliced alignments from RNA-Seq
+  synonyms:
+  - --bam
+  args: !SimpleFlagArg
+    name: rnaseq.bam
+  optional: true
+- !Flag
+  description: 'Skip GeneMark-ET and use provided GeneMark-ET output (e.g. from a
+    different source) '
+  synonyms:
+  - --skipGeneMark-ET
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Skip optimize parameter step (not recommended).
+  synonyms:
+  - --skipOptimize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Softmasking option for soft masked genome files. Set to 'on' or '1'
+  synonyms:
+  - --softmasking
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Species name. Existing species will not be overwritten.  Uses Sp_1
+    etc., if no species is assigned                          '
+  synonyms:
+  - --species
+  args: !SimpleFlagArg
+    name: sname
+  optional: true
+- !Flag
+  description: Use the present config and parameter files if they exist for  'species'
+  synonyms:
+  - --useexisting
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Predict untranslated regions. Default is off.
+  synonyms:
+  - --UTR
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =/path/to/wd/            Set path to working directory. In the working
+    directory results and temporary files are stored
+  synonyms:
+  - --workingdir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: It may happen that a "good" training gene, i.e. one that has intron
+    support from RNA-Seq in all introns predicted by GeneMark, is in fact too short.
+    This flag will discard such genes that have supported introns and a neighboring
+    RNA-Seq supported intron upstream of the start codon within  the range of the
+    maximum CDS size of that gene and with a multiplicity that is at least as high
+    as 20% of the average intron multiplicity of that gene.
+  synonyms:
+  - --filterOutShort
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- braker.pl
+subcommands: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  description: print version number of braker.pl
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

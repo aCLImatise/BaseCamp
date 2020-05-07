@@ -1,0 +1,122 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: OPTIONS
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: file.hmm
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: cmap.cm
+  optional: false
+named:
+- !Flag
+  description: Operate on transitions *from* states corresponding to the  specified
+    category names (default all)
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: cats
+  optional: true
+- !Flag
+  description: Operate on transitions *to* states corresponding to the  specified
+    category names (default all)
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: cats
+  optional: true
+- !Flag
+  description: Multiply transition probabilities by the specified factor.
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: fact
+  optional: true
+- !Flag
+  description: Add the specified constant to transition probabilities.
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: const
+  optional: true
+- !Flag
+  description: Set transition probabilities equal to the specified value.
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: val
+  optional: true
+- !Flag
+  description: Assume a phylo-HMM indel model for states corresponding to  the specified
+    category names.
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: icats
+  optional: true
+- !Flag
+  description: (Required with -i) Assume given tree topology (.nh file).
+  synonyms:
+  - -u
+  args: !SimpleFlagArg
+    name: tree
+  optional: true
+- !Flag
+  description: (For use with -i) Operate on transitions from states corresp. to the
+    specified gap-pattern numbers (ANDed with -f).
+  synonyms:
+  - -F
+  args: !SimpleFlagArg
+    name: gps
+  optional: true
+- !Flag
+  description: (For use with -i) Operate on transitions to states corresp. to the
+    specified gap-pattern numbers (ANDed with -t).
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: gps
+  optional: true
+- !Flag
+  description: Equalize transition probabilities.  Set all transition probabilities
+    indicated by -f/-t/-F/-T to their overall average value.  Options -m and/or -a
+    can be used to adjust this average value.
+  synonyms:
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Restrict to successive transitions within a category range.
+  synonyms:
+  - -R
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Like -z, except compute separate averages for five classes of transitions,
+    based on the gap patterns of the states involved: between null gap patterns, between
+    equal non-null gap patterns, from null to non-null gap patterns, from non-null
+    to null gap patterns, and all others.  Useful with the indel model when training
+    data is sparse (e.g., for splice-site states).  Options -m and -a will be applied
+    to transitions of the 3rd and 5th classes described.'
+  synonyms:
+  - -y
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- hmm_tweak
+subcommands: []
+help_flag: !Flag
+  description: Print this help message.
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

@@ -1,0 +1,548 @@
+!Command
+positional: []
+named: []
+command:
+- shed-tools
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Tools file to use (see tool_list.yaml.sample)
+    synonyms:
+    - -t
+    - --toolsfile
+    args: !SimpleFlagArg
+      name: TOOL_LIST_FILE
+    optional: true
+  - !Flag
+    description: Install tool represented by yaml string
+    synonyms:
+    - -y
+    - --yaml_tool
+    args: !SimpleFlagArg
+      name: TOOL_YAML
+    optional: true
+  - !Flag
+    description: The name of the tool to install (only applicable if the tools file
+      is not provided).
+    synonyms:
+    - --name
+    args: !SimpleFlagArg
+      name: NAME
+    optional: true
+  - !Flag
+    description: The owner of the tool to install (only applicable if the tools file
+      is not provided).
+    synonyms:
+    - --owner
+    args: !SimpleFlagArg
+      name: OWNER
+    optional: true
+  - !Flag
+    description: '[REVISIONS [REVISIONS ...]] The revisions of the tool repository
+      that will be installed. All revisions must be specified after this flag by a
+      space.Example: --revisions 0a5c7992b1ac f048033da666(Only applicable if the
+      tools file is not provided).'
+    synonyms:
+    - --revisions
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: The Tool Shed URL where to install the tool from. This is applicable
+      only if the tool info is provided as an option vs. in the tools file.
+    synonyms:
+    - --toolshed
+    args: !SimpleFlagArg
+      name: TOOL_SHED_URL
+    optional: true
+  - !Flag
+    description: Turn on installation of tool dependencies using classic toolshed
+      packages. Can be overwritten on a per-tool basis in the tools file.
+    synonyms:
+    - --install_tool_dependencies
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Skip installing tool dependencies through resolver (e.g. conda).
+      Will be ignored on galaxy releases older than 16.07. Can be overwritten on a
+      per-tool basis in the tools file
+    synonyms:
+    - --skip_install_resolver_dependencies
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Skip installing the repository dependencies.
+    synonyms:
+    - --skip_install_repository_dependencies
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Run tool tests on install tools, requires Galaxy 18.05 or newer.
+    synonyms:
+    - --test
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: If testing tools during install, also run tool tests on repositories
+      already installed (i.e. skipped repositories).
+    synonyms:
+    - --test_existing
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: If testing tools, record tool test output to specified file. This
+      file can be turned into reports with ``planemo test_reports <output.json>``.
+    synonyms:
+    - --test_json
+    args: !SimpleFlagArg
+      name: TEST_JSON
+    optional: true
+  - !Flag
+    description: If testing tools, a user is needed to execute the tests. This can
+      be different the --api_key which is assumed to be an admin key. If --api_key
+      is a valid user (e.g. it is not a master API key) this does not need to be specified
+      and --api_key will be reused.
+    synonyms:
+    - --test_user_api_key
+    args: !SimpleFlagArg
+      name: TEST_USER
+    optional: true
+  - !Flag
+    description: If testing tools, a user is needed to execute the tests. If --api_key
+      is a master api key (i.e. not tied to a real user) and --test_user_api_key isn't
+      specified, this user email will be used. This user will be created if needed.
+    synonyms:
+    - --test_user
+    args: !SimpleFlagArg
+      name: TEST_USER
+    optional: true
+  - !Flag
+    description: Specify the maximum number of tests that will be run in parallel.
+    synonyms:
+    - --parallel_tests
+    args: !SimpleFlagArg
+      name: PARALLEL_TESTS
+    optional: true
+  - !Flag
+    description: Galaxy tool panel section ID where the tool will be installed (the
+      section must exist in Galaxy; only applicable if the tools file is not provided).
+    synonyms:
+    - --section
+    args: !SimpleFlagArg
+      name: TOOL_PANEL_SECTION_ID
+    optional: true
+  - !Flag
+    description: Galaxy tool panel section label where tool will be installed (if
+      the section does not exist, it will be created; only applicable if the tools
+      file is not provided).
+    synonyms:
+    - --section_label
+    args: !SimpleFlagArg
+      name: TOOL_PANEL_SECTION_LABEL
+    optional: true
+  - !Flag
+    description: Will override the revisions in the tools file and always install
+      the latest revision.
+    synonyms:
+    - --latest
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Increase output verbosity.
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Where the log file should be stored. Default is a file in your system's
+      temp folder
+    synonyms:
+    - --log_file
+    args: !SimpleFlagArg
+      name: LOG_FILE
+    optional: true
+  - !Flag
+    description: Target Galaxy instance URL/IP address
+    synonyms:
+    - -g
+    - --galaxy
+    args: !SimpleFlagArg
+      name: GALAXY
+    optional: true
+  - !Flag
+    description: Galaxy user email address
+    synonyms:
+    - -u
+    - --user
+    args: !SimpleFlagArg
+      name: USER
+    optional: true
+  - !Flag
+    description: Password for the Galaxy user
+    synonyms:
+    - -p
+    - --password
+    args: !SimpleFlagArg
+      name: PASSWORD
+    optional: true
+  - !Flag
+    description: Galaxy admin user API key (required if not defined in the tools list
+      file)
+    synonyms:
+    - -a
+    - --api_key
+    args: !SimpleFlagArg
+      name: API_KEY
+    optional: true
+  command:
+  - shed-tools
+  - install
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Tools file to use (see tool_list.yaml.sample)
+    synonyms:
+    - -t
+    - --toolsfile
+    args: !SimpleFlagArg
+      name: TOOL_LIST_FILE
+    optional: true
+  - !Flag
+    description: Install tool represented by yaml string
+    synonyms:
+    - -y
+    - --yaml_tool
+    args: !SimpleFlagArg
+      name: TOOL_YAML
+    optional: true
+  - !Flag
+    description: The name of the tool to install (only applicable if the tools file
+      is not provided).
+    synonyms:
+    - --name
+    args: !SimpleFlagArg
+      name: NAME
+    optional: true
+  - !Flag
+    description: The owner of the tool to install (only applicable if the tools file
+      is not provided).
+    synonyms:
+    - --owner
+    args: !SimpleFlagArg
+      name: OWNER
+    optional: true
+  - !Flag
+    description: '[REVISIONS [REVISIONS ...]] The revisions of the tool repository
+      that will be installed. All revisions must be specified after this flag by a
+      space.Example: --revisions 0a5c7992b1ac f048033da666(Only applicable if the
+      tools file is not provided).'
+    synonyms:
+    - --revisions
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: The Tool Shed URL where to install the tool from. This is applicable
+      only if the tool info is provided as an option vs. in the tools file.
+    synonyms:
+    - --toolshed
+    args: !SimpleFlagArg
+      name: TOOL_SHED_URL
+    optional: true
+  - !Flag
+    description: Turn on installation of tool dependencies using classic toolshed
+      packages. Can be overwritten on a per-tool basis in the tools file.
+    synonyms:
+    - --install_tool_dependencies
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Skip installing tool dependencies through resolver (e.g. conda).
+      Will be ignored on galaxy releases older than 16.07. Can be overwritten on a
+      per-tool basis in the tools file
+    synonyms:
+    - --skip_install_resolver_dependencies
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Skip installing the repository dependencies.
+    synonyms:
+    - --skip_install_repository_dependencies
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Run tool tests on install tools, requires Galaxy 18.05 or newer.
+    synonyms:
+    - --test
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: If testing tools during install, also run tool tests on repositories
+      already installed (i.e. skipped repositories).
+    synonyms:
+    - --test_existing
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: If testing tools, record tool test output to specified file. This
+      file can be turned into reports with ``planemo test_reports <output.json>``.
+    synonyms:
+    - --test_json
+    args: !SimpleFlagArg
+      name: TEST_JSON
+    optional: true
+  - !Flag
+    description: If testing tools, a user is needed to execute the tests. This can
+      be different the --api_key which is assumed to be an admin key. If --api_key
+      is a valid user (e.g. it is not a master API key) this does not need to be specified
+      and --api_key will be reused.
+    synonyms:
+    - --test_user_api_key
+    args: !SimpleFlagArg
+      name: TEST_USER
+    optional: true
+  - !Flag
+    description: If testing tools, a user is needed to execute the tests. If --api_key
+      is a master api key (i.e. not tied to a real user) and --test_user_api_key isn't
+      specified, this user email will be used. This user will be created if needed.
+    synonyms:
+    - --test_user
+    args: !SimpleFlagArg
+      name: TEST_USER
+    optional: true
+  - !Flag
+    description: Specify the maximum number of tests that will be run in parallel.
+    synonyms:
+    - --parallel_tests
+    args: !SimpleFlagArg
+      name: PARALLEL_TESTS
+    optional: true
+  - !Flag
+    description: Increase output verbosity.
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Where the log file should be stored. Default is a file in your system's
+      temp folder
+    synonyms:
+    - --log_file
+    args: !SimpleFlagArg
+      name: LOG_FILE
+    optional: true
+  - !Flag
+    description: Target Galaxy instance URL/IP address
+    synonyms:
+    - -g
+    - --galaxy
+    args: !SimpleFlagArg
+      name: GALAXY
+    optional: true
+  - !Flag
+    description: Galaxy user email address
+    synonyms:
+    - -u
+    - --user
+    args: !SimpleFlagArg
+      name: USER
+    optional: true
+  - !Flag
+    description: Password for the Galaxy user
+    synonyms:
+    - -p
+    - --password
+    args: !SimpleFlagArg
+      name: PASSWORD
+    optional: true
+  - !Flag
+    description: Galaxy admin user API key (required if not defined in the tools list
+      file)
+    synonyms:
+    - -a
+    - --api_key
+    args: !SimpleFlagArg
+      name: API_KEY
+    optional: true
+  command:
+  - shed-tools
+  - update
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Tools file to use (see tool_list.yaml.sample)
+    synonyms:
+    - -t
+    - --toolsfile
+    args: !SimpleFlagArg
+      name: TOOL_LIST_FILE
+    optional: true
+  - !Flag
+    description: Install tool represented by yaml string
+    synonyms:
+    - -y
+    - --yaml_tool
+    args: !SimpleFlagArg
+      name: TOOL_YAML
+    optional: true
+  - !Flag
+    description: The name of the tool to install (only applicable if the tools file
+      is not provided).
+    synonyms:
+    - --name
+    args: !SimpleFlagArg
+      name: NAME
+    optional: true
+  - !Flag
+    description: The owner of the tool to install (only applicable if the tools file
+      is not provided).
+    synonyms:
+    - --owner
+    args: !SimpleFlagArg
+      name: OWNER
+    optional: true
+  - !Flag
+    description: '[REVISIONS [REVISIONS ...]] The revisions of the tool repository
+      that will be installed. All revisions must be specified after this flag by a
+      space.Example: --revisions 0a5c7992b1ac f048033da666(Only applicable if the
+      tools file is not provided).'
+    synonyms:
+    - --revisions
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: The Tool Shed URL where to install the tool from. This is applicable
+      only if the tool info is provided as an option vs. in the tools file.
+    synonyms:
+    - --toolshed
+    args: !SimpleFlagArg
+      name: TOOL_SHED_URL
+    optional: true
+  - !Flag
+    description: Record tool test output to specified file. This file can be turned
+      into reports with ``planemo test_reports <output.json>``.
+    synonyms:
+    - --test_json
+    args: !SimpleFlagArg
+      name: TEST_JSON
+    optional: true
+  - !Flag
+    description: A user is needed to execute the tests. This can be different the
+      --api_key which is assumed to be an admin key. If --api_key is a valid user
+      (e.g. it is not a master API key) this does not need to be specified and --api_key
+      will be reused.
+    synonyms:
+    - --test_user_api_key
+    args: !SimpleFlagArg
+      name: TEST_USER_API_KEY
+    optional: true
+  - !Flag
+    description: A user is needed to execute the tests. If --api_key is a master api
+      key (i.e. not tied to a real user) and --test_user_api_key isn't specified,
+      this user email will be used. This user will be created if needed.
+    synonyms:
+    - --test_user
+    args: !SimpleFlagArg
+      name: TEST_USER
+    optional: true
+  - !Flag
+    description: Specify the maximum number of tests that will be run in parallel.
+    synonyms:
+    - --parallel_tests
+    args: !SimpleFlagArg
+      name: PARALLEL_TESTS
+    optional: true
+  - !Flag
+    description: Increase output verbosity.
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Where the log file should be stored. Default is a file in your system's
+      temp folder
+    synonyms:
+    - --log_file
+    args: !SimpleFlagArg
+      name: LOG_FILE
+    optional: true
+  - !Flag
+    description: Target Galaxy instance URL/IP address
+    synonyms:
+    - -g
+    - --galaxy
+    args: !SimpleFlagArg
+      name: GALAXY
+    optional: true
+  - !Flag
+    description: Galaxy user email address
+    synonyms:
+    - -u
+    - --user
+    args: !SimpleFlagArg
+      name: USER
+    optional: true
+  - !Flag
+    description: Password for the Galaxy user
+    synonyms:
+    - -p
+    - --password
+    args: !SimpleFlagArg
+      name: PASSWORD
+    optional: true
+  - !Flag
+    description: Galaxy admin user API key (required if not defined in the tools list
+      file)
+    synonyms:
+    - -a
+    - --api_key
+    args: !SimpleFlagArg
+      name: API_KEY
+    optional: true
+  command:
+  - shed-tools
+  - test
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

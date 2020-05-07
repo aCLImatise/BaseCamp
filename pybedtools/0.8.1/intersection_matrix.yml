@@ -1,0 +1,71 @@
+!Command
+positional:
+- !Positional
+  description: BED/GTF/GFF/VCF filenames, e.g., in a directory of bed files, you can
+    use *.bed
+  position: 0
+  name: beds
+  optional: false
+named:
+- !Flag
+  description: Instead of counts, report fraction overlapped
+  synonyms:
+  - --frac
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Run randomizations (default 1000, specify otherwise with --iterations)
+    on each pairwise comparison and compute the enrichment score as (actual intersection
+    count + 1) / (median randomized + 1)
+  synonyms:
+  - --enrichment
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Required argument if --enrichment is used. Needs to be a string assembly
+    name like "dm3" or "hg19"
+  synonyms:
+  - --genome
+  args: !SimpleFlagArg
+    name: GENOME
+  optional: true
+- !Flag
+  description: Number of randomizations to perform for enrichement scores
+  synonyms:
+  - --iterations
+  args: !SimpleFlagArg
+    name: ITERATIONS
+  optional: true
+- !Flag
+  description: Number of CPUs to use for randomization
+  synonyms:
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: Ignore any input BED files and use test BED files
+  synonyms:
+  - --test
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Be verbose: print which files are currently being intersected and
+    timing info at the end.'
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- intersection_matrix.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

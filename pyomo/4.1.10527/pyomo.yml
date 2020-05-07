@@ -1,0 +1,454 @@
+!Command
+positional: []
+named: []
+command:
+- pyomo
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: A Pyomo script that is checked
+    position: 0
+    name: SCRIPT
+    optional: false
+  named:
+  - !Flag
+    description: Enable additional output messages
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Activate a specific checker
+    synonyms:
+    - -c
+    - --enable-checker
+    args: !SimpleFlagArg
+      name: CHECKER
+    optional: true
+  - !Flag
+    description: Activate an entire checker package
+    synonyms:
+    - -C
+    - --enable-package
+    args: !SimpleFlagArg
+      name: PACKAGE
+    optional: true
+  - !Flag
+    description: Disable a specific checker
+    synonyms:
+    - -x
+    - --disable-checker
+    args: !SimpleFlagArg
+      name: CHECKER
+    optional: true
+  - !Flag
+    description: Disable an entire checker package
+    synonyms:
+    - -X
+    - --disable-package
+    args: !SimpleFlagArg
+      name: PACKAGE
+    optional: true
+  - !Flag
+    description: Show enabled checkers
+    synonyms:
+    - -s
+    - --show-checkers
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - pyomo
+  - check
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: A Python module that defines a Pyomo model, or a configuration file
+      that defines options for 'pyomo convert' (in either YAML or JSON format)
+    position: 0
+    name: model_or_config_file
+    optional: false
+  - !Positional
+    description: Pyomo data files that defined data used to initialize the model (specified
+      in the first argument)
+    position: 1
+    name: data_files
+    optional: false
+  named:
+  - !Flag
+    description: Create a configuration template file in YAML or JSON and exit.
+    synonyms:
+    - --generate-config-template
+    args: !SimpleFlagArg
+      name: TEMPLATE
+    optional: true
+  - !Flag
+    description: Output file name. This option is required unless the file name is
+      specified in a configuration file.
+    synonyms:
+    - --output
+    args: !SimpleFlagArg
+      name: FILENAME
+    optional: true
+  - !Flag
+    description: Output format
+    synonyms:
+    - --format
+    args: !SimpleFlagArg
+      name: FORMAT
+    optional: true
+  - !Flag
+    description: A namespace that is used to select data in Pyomo data files.
+    synonyms:
+    - --namespace
+    args: !SimpleFlagArg
+      name: NAMESPACES
+    optional: true
+  - !Flag
+    description: The name of the model object that is created in the specified Pyomo
+      module
+    synonyms:
+    - --model-name
+    args: !SimpleFlagArg
+      name: MODEL_NAME
+    optional: true
+  - !Flag
+    description: When interfacing with the solver, use symbol names derived from the
+      model. For example, "my_special_variable[1_2_3]" instead of "v1". Useful for
+      debugging. When using the ASL interface (--solver- io=nl), generates corresponding
+      .row (constraints) and .col (variables) files. The ordering in these files provides
+      a mapping from ASL index to symbolic model names.
+    synonyms:
+    - --symbolic-solver-labels
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: When interfacing with a solver using file based I/O, set the effort
+      level for ensuring the file creation process is determistic. The default (1)
+      sorts the index of components when transforming the model. Anything less than
+      1 disables index sorting. Anything greater than 1 additionaly sorts by component
+      name to override declartion order.
+    synonyms:
+    - --file-determinism
+    args: !SimpleFlagArg
+      name: FILE_DETERMINISM
+    optional: true
+  - !Flag
+    description: List of model transformations
+    synonyms:
+    - --transform
+    args: !SimpleFlagArg
+      name: TRANSFORMATIONS
+    optional: true
+  - !Flag
+    description: Specify a Python module that gets immediately executed (before the
+      optimization model is setup).
+    synonyms:
+    - --preprocess
+    args: !SimpleFlagArg
+      name: PREPROCESS
+    optional: true
+  - !Flag
+    description: 'Logging level: quiet, warning, info, verbose, debug'
+    synonyms:
+    - --logging
+    args: !SimpleFlagArg
+      name: LOGGING
+    optional: true
+  - !Flag
+    description: Redirect output to the specified file.
+    synonyms:
+    - --logfile
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Trigger failures for exceptions to print the program stack.
+    synonyms:
+    - -c
+    - --catch-errors
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Disable the garbage collecter.
+    synonyms:
+    - --disable-gc
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Keep temporary files
+    synonyms:
+    - -k
+    - --keepfiles
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Give a path that is used to find the Pyomo python files.
+    synonyms:
+    - --path
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Enable profiling of Python code. The value of this option is the
+      number of functions that are summarized.
+    synonyms:
+    - --profile-count
+    args: !SimpleFlagArg
+      name: PROFILE_COUNT
+    optional: true
+  - !Flag
+    description: Report various timing statistics during model construction.
+    synonyms:
+    - --report-timing
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Specify the directory where temporary files are generated.
+    synonyms:
+    - --tempdir
+    args: !SimpleFlagArg
+      name: TEMPDIR
+    optional: true
+  - !Flag
+    description: operations (e.g. import Python packages)
+    synonyms:
+    - '- Apply'
+    args: !SimpleFlagArg
+      name: pre-solve
+    optional: true
+  - !Flag
+    description: model
+    synonyms:
+    - '- Create'
+    args: !SimpleFlagArg
+      name: the
+    optional: true
+  - !Flag
+    description: transformations
+    synonyms:
+    - '- Apply'
+    args: !SimpleFlagArg
+      name: model
+    optional: true
+  command:
+  - pyomo
+  - convert
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: List the components that are available in Pyomo's modeling environment
+    synonyms:
+    - --components
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: List the commands that are installed with Pyomo
+    synonyms:
+    - -c
+    - --commands
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Print a summary of the Pyomo Library API
+    synonyms:
+    - -a
+    - --api
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Print a summary of the data managers in Pyomo
+    synonyms:
+    - -d
+    - --data-managers
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Generate output that is compatible with asciidoc's markup language
+    synonyms:
+    - --asciidoc
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: List the available model transformations
+    synonyms:
+    - -t
+    - --transformations
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Summarize the available solvers and solver interfaces
+    synonyms:
+    - -s
+    - --solvers
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - pyomo
+  - help
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: The command and command-line options
+    position: 0
+    name: command
+    optional: false
+  named:
+  - !Flag
+    description: List the commands that are installed with Pyomo
+    synonyms:
+    - --list
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - pyomo
+  - run
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: A Python module that defines a Pyomo model, or a configuration file
+      that defines options for 'pyomo solve' (in either YAML or JSON format)
+    position: 0
+    name: model_or_config_file
+    optional: false
+  - !Positional
+    description: Pyomo data files that defined data used to initialize the model (specified
+      in the first argument)
+    position: 1
+    name: data_files
+    optional: false
+  named:
+  - !Flag
+    description: Create a configuration template file in YAML or JSON and exit.
+    synonyms:
+    - --generate-config-template
+    args: !SimpleFlagArg
+      name: TEMPLATE
+    optional: true
+  - !Flag
+    description: Solver name. This option is required unless the solver name is specified
+      in a configuration file.
+    synonyms:
+    - --solver
+    args: !SimpleFlagArg
+      name: SOLVER
+    optional: true
+  - !Flag
+    description: operations (e.g. save optimal solutions)
+    synonyms:
+    - '- Apply'
+    args: !SimpleFlagArg
+      name: post-solve
+    optional: true
+  command:
+  - pyomo
+  - solve
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: a solver name
+    position: 0
+    name: SOLVER
+    optional: false
+  named:
+  - !Flag
+    description: Save test results to this file in a CSV format
+    synonyms:
+    - --csv-file
+    - --csv
+    args: !SimpleFlagArg
+      name: CSV
+    optional: true
+  - !Flag
+    description: Show debugging information and text generated during tests.
+    synonyms:
+    - -d
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Show verbose results output.
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - pyomo
+  - test-solvers
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

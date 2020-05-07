@@ -1,0 +1,349 @@
+!Command
+positional: []
+named: []
+command:
+- iucn_sim
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: "Name of taxonomic group (or list of groups) to be used for calculating\
+      \ status transition rates (e.g. 'Mammalia' or 'Rodentia,Chiroptera'). Alternatively\
+      \ provide path to text file containing a list of species names, compatible with\
+      \ IUCN taxonomy (>1000 species recommended). If none provided, the target species\
+      \ list ('--target_species_list') will be used for calculating transition rates.\
+      \ Tip: Use precompiled group for faster processing and in case you don't have\
+      \ an IUCN key (see available groups at github.com/tobias hofmann88/iucn_extinction_simulator/data/precompiled/i\
+      \ ucn_history/ or request specific groups to be added: tobias.andermann@bioenv.gu.se)"
+    synonyms:
+    - --reference_group
+    args: !SimpleFlagArg
+      name: taxon-group
+    optional: true
+  - !Flag
+    description: Provide the taxonomic rank of the provided reference group(s). E.g.
+      in case of 'Mammalia', provide 'class' for this flag, in case of 'Rodentia,Chiroptera'
+      provide 'order,order'. Has to be at least 'Family' or above. This flag is not
+      needed if species list is provided as reference_group or if reference group
+      is already pre-compiled.
+    synonyms:
+    - --reference_rank
+    args: !SimpleFlagArg
+      name: rank
+    optional: true
+  - !Flag
+    description: File containing the list of species that you want to simulate future
+      extinctions for. In case you have generation length (GL) data available, provide
+      the file containing the GL data for each species here (including the species
+      names). This function will output one central data file for downstream processing
+      that contains the current status information as well as the GL data (if available)
+      for each species. You can provide multiple GL values for each species, e.g.
+      several randomely sampled values from the GL uncertainty interval of a given
+      species. Set this flag to 0 if you want to supress downloading of current status
+      information, e.g. if you already have current status information for your species
+      (may be necessary if you don't have a valid IUCN key). Set to 1 if you want
+      to use the same taxa that are present in the reference group. See https://github.com/tobiashofmann8
+      8/iucn_extinction_simulator/data/precompiled/ for examples of the format of
+      GL data input files and the format of the output file conataining current status
+      information.
+    synonyms:
+    - --target_species_list
+    args: !SimpleFlagArg
+      name: path
+    optional: true
+  - !Flag
+    description: Provide path to outdir where results will be saved.
+    synonyms:
+    - --outdir
+    args: !SimpleFlagArg
+      name: path
+    optional: true
+  - !Flag
+    description: Provide your IUCN API key (see https://apiv3.iucnredlist.org/api/v3/token)
+      for downloading IUCN history of your provided reference group. Not required
+      if using precompiled reference group and a manually compiled current status
+      list (to be used in the 'transition_rates' function). Also not required if all
+      species in your target_species_list are present in the precompiled reference_group).
+    synonyms:
+    - --iucn_key
+    args: !SimpleFlagArg
+      name: IUCN-key
+    optional: true
+  - !Flag
+    description: Turn off the online-search for precompiled IUCN history files for
+      your reference group.
+    synonyms:
+    - --no_online_sync
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - iucn_sim
+  - get_iucn_data
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: File containing species list and current IUCN status of species,
+      as well as generation length (GL) data estimates if available. GL data is only
+      used for '-- extinction_probs_mode 0' ('species_data.txt' output from get_iucn_data
+      function).
+    synonyms:
+    - --species_data
+    args: !SimpleFlagArg
+      name: path
+    optional: true
+  - !Flag
+    description: File containing IUCN history of the reference group for transition
+      rate estimation ('*_iucn_history.txt' output of get_iucn_data function).
+    synonyms:
+    - --iucn_history
+    args: !SimpleFlagArg
+      name: path
+    optional: true
+  - !Flag
+    description: Provide path to outdir where results will be saved.
+    synonyms:
+    - --outdir
+    args: !SimpleFlagArg
+      name: path
+    optional: true
+  - !Flag
+    description: Set to '0' to use IUCN defined extinction probabilities (e.g. Mooers
+      et al, 2008 approach), also using available GL data to estimate species-specific
+      extinction probabilities. Set to '1' to simulate extinctions based on recorded
+      extinctions in IUCN history (e.g. Monroe et al, 2019 approach, no GL data is
+      being used).
+    synonyms:
+    - --extinction_probs_mode
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: File containing list of taxa that are likely extinct, but that are
+      listed as extant in IUCN, including the year of their assessment as possibly
+      extinct ('possibly_extinct_reference_taxa.txt' output from get_iucn_data function).
+      These species will then be modeled as extinct by the esimate_rates function,
+      which will effect the estimated extinction probabilities when chosing `--extinction_probs_mode
+      1`
+    synonyms:
+    - --possibly_extinct_list
+    args: !SimpleFlagArg
+      name: path
+    optional: true
+  - !Flag
+    description: How many rates to sample from the posterior transition rate estimates.
+      These rates will be used to populate transition rate q-matrices for downstream
+      simulations. Later on you can still chose to run more simulation replicates
+      than the here specified number of produced transition rate q-matrices, in which
+      case the `run_sim` function will randomely resample from the available q-matrices
+      (default=100, this is ususally sufficient, larger numbers can lead to very high
+      output file size volumes).
+    synonyms:
+    - --rate_samples
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Number of generations for MCMC for transition rate estimation (default=100000).
+    synonyms:
+    - --n_gen
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Burn-in for MCMC for transition rate estimation (default=1000).
+    synonyms:
+    - --burnin
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Set random seed for the MCMC.
+    synonyms:
+    - --seed
+    args: !SimpleFlagArg
+      name: SEED
+    optional: true
+  command:
+  - iucn_sim
+  - transition_rates
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Path to 'simulation_input_data.pkl' file created by esimate_rates
+      function.
+    synonyms:
+    - --input_data
+    args: !SimpleFlagArg
+      name: INPUT_DATA
+    optional: true
+  - !Flag
+    description: Provide path to outdir where results will be saved.
+    synonyms:
+    - --outdir
+    args: !SimpleFlagArg
+      name: OUTDIR
+    optional: true
+  - !Flag
+    description: How many years to simulate into the future.
+    synonyms:
+    - --n_years
+    args: !SimpleFlagArg
+      name: N_YEARS
+    optional: true
+  - !Flag
+    description: How many simulation replicates to run. If the number of simulation
+      replicates exceeds the number of available transition rate estimates (produced
+      by the 'transition_rates' function), these rates will be randomely resampled
+      for the remaining simulations.
+    synonyms:
+    - --n_sim
+    args: !SimpleFlagArg
+      name: N_SIM
+    optional: true
+  - !Flag
+    description: Model IUCN status changes in future simulations. 0=off, 1=on (default=1).
+    synonyms:
+    - --status_change
+    args: !SimpleFlagArg
+      name: STATUS_CHANGE
+    optional: true
+  - !Flag
+    description: The transition rates leading to improvements in IUCN conservation
+      status are multiplied by this factor.
+    synonyms:
+    - --conservation_increase_factor
+    args: !SimpleFlagArg
+      name: CONSERVATION_INCREASE_FACTOR
+    optional: true
+  - !Flag
+    description: Opposite of conservation_increase_factor, multiplies the transition
+      rates leading to worsening in IUCN conservation status.
+    synonyms:
+    - --threat_increase_factor
+    args: !SimpleFlagArg
+      name: THREAT_INCREASE_FACTOR
+    optional: true
+  - !Flag
+    description: Model new status for all DD and NE species as LC (best case scenario).
+      0=off, 1=on (default=0).
+    synonyms:
+    - --model_unknown_as_lc
+    args: !SimpleFlagArg
+      name: MODEL_UNKNOWN_AS_LC
+    optional: true
+  - !Flag
+    description: 'Estimation of extinction rates from simulation results: 0=off, 1=on
+      (default=1).'
+    synonyms:
+    - --extinction_rates
+    args: !SimpleFlagArg
+      name: EXTINCTION_RATES
+    optional: true
+  - !Flag
+    description: Number of generations for MCMC for extinction rate estimation (default=100000).
+    synonyms:
+    - --n_gen
+    args: !SimpleFlagArg
+      name: N_GEN
+    optional: true
+  - !Flag
+    description: Burn-in for MCMC for extinction rate estimation (default=1000).
+    synonyms:
+    - --burnin
+    args: !SimpleFlagArg
+      name: BURNIN
+    optional: true
+  - !Flag
+    description: 'Plots the simulated diversity trajectory: 0=off, 1=on (default=1).'
+    synonyms:
+    - --plot_diversity_trajectory
+    args: !SimpleFlagArg
+      name: PLOT_DIVERSITY_TRAJECTORY
+    optional: true
+  - !Flag
+    description: 'Plots the simulated IUCN status trajectory: 0=off, 1=on (default=0).'
+    synonyms:
+    - --plot_status_trajectories
+    args: !SimpleFlagArg
+      name: PLOT_STATUS_TRAJECTORIES
+    optional: true
+  - !Flag
+    description: 'Plots histograms of simulated extinction times for each species:
+      0=off, 1=on (default=0).'
+    synonyms:
+    - --plot_histograms
+    args: !SimpleFlagArg
+      name: PLOT_HISTOGRAMS
+    optional: true
+  - !Flag
+    description: 'Plots histograms of posterior rate estimates for each species: 0=off,
+      1=on (default=0).'
+    synonyms:
+    - --plot_posterior
+    args: !SimpleFlagArg
+      name: PLOT_POSTERIOR
+    optional: true
+  - !Flag
+    description: 'Plots pie charts of status distribution: 0=off, 1=on (default=1).'
+    synonyms:
+    - --plot_status_piechart
+    args: !SimpleFlagArg
+      name: PLOT_STATUS_PIECHART
+    optional: true
+  - !Flag
+    description: Set random seed for future simulations.
+    synonyms:
+    - --seed
+    args: !SimpleFlagArg
+      name: SEED
+    optional: true
+  command:
+  - iucn_sim
+  - run_sim
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

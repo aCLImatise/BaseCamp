@@ -1,0 +1,76 @@
+!Command
+positional:
+- !Positional
+  description: Source volume.
+  position: 0
+  name: input
+  optional: false
+- !Positional
+  description: Target volume.
+  position: 1
+  name: output
+  optional: false
+named:
+- !Flag
+  description: The type of the morphological operation.
+  synonyms:
+  - -t
+  - --type
+  args: !ChoiceFlagArg
+    choices:
+    - erosion
+    - dilation
+    - opening
+    - closing
+  optional: true
+- !Flag
+  description: The number of iteration to execute. Supply a value of 1 or higher to
+    restrict the effect of the morphological operation. Otherwise it is applied until
+    saturation.
+  synonyms:
+  - -i
+  - --iterations
+  args: !SimpleFlagArg
+    name: ITERATIONS
+  optional: true
+- !Flag
+  description: Size of the closing element (>=1). The higher this value, the bigger
+    the wholes that get closed (closing) resp. unconnected elements that are removed
+    (opening). In the 3D case, 1 equals a 6-connectedness, 2 a 12-connectedness, 3
+    a 18-connectedness, etc.
+  synonyms:
+  - -s
+  - --size
+  args: !SimpleFlagArg
+    name: SIZE
+  optional: true
+- !Flag
+  description: Display more information.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display debug information.
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Silently override existing output images.
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- medpy_morphology.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

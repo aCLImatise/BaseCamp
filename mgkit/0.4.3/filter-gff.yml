@@ -1,0 +1,262 @@
+!Command
+positional: []
+named: []
+command:
+- filter-gff
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Reference FASTA file for the GFF  [required]
+    synonyms:
+    - -f
+    - --reference
+    args: !SimpleFlagArg
+      name: FILENAME
+    optional: true
+  - !Flag
+    description: If the coverage must be calculated on each strand
+    synonyms:
+    - -s
+    - --strand-specific
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Assumes the GFF to be correctly sorted
+    synonyms:
+    - -t
+    - --sorted
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Minimum coverage for the contig/strand
+    synonyms:
+    - -c
+    - --min-coverage
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: Emulates BLAST in reading the FASTA file (keeps only the header before
+      the first space)
+    synonyms:
+    - -r
+    - --rename
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Shows Progress Bar
+    synonyms:
+    - --progress
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - filter-gff
+  - cov
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Size of the overlap that triggers the filter [default: 100]'
+    synonyms:
+    - -s
+    - --size
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: If the GFF file is sorted (all of a sequence annotations are contiguos
+      and sorted by strand) can use less memory, `sort -s -k 1,1 -k 7,7` can be used
+    synonyms:
+    - -t
+    - --sorted
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Function to choose between two overlapping annotations
+    synonyms:
+    - -c
+    - --choose-func
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: '[bitscore|identity|length] Attribute to sort annotations before
+      filtering (default bitscore)  [default: bitscore]'
+    synonyms:
+    - -a
+    - --sort-attr
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Shows Progress Bar
+    synonyms:
+    - --progress
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - filter-gff
+  - overlap
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: If the GFF file is sorted (all of a sequence annotations are contiguos)
+      can use less memory, `sort -s -k 1,1` can be used
+    synonyms:
+    - -t
+    - --sorted
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[evalue|bitscore|identity|length] Attribute on which to apply the
+      filter [default: bitscore]'
+    synonyms:
+    - -a
+    - --attribute
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[mean|median|quantile|std|max|min] Function for filtering  [default:
+      mean]'
+    synonyms:
+    - -f
+    - --function
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Value for the function (used for *std* and *quantile*)
+    synonyms:
+    - -l
+    - --value
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: '[gt|ge|lt|le]  Type of comparison (e.g. ge -> greater than or equal
+      to)  [default: ge]'
+    synonyms:
+    - -c
+    - --comparison
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Shows Progress Bar
+    synonyms:
+    - --progress
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - filter-gff
+  - sequence
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: filter by custom key:value, if the argument is 'key:value' the annotation
+      is kept if it contains an attribute 'key' whose value is exactly 'value' as
+      a string
+    synonyms:
+    - --str-eq
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Same as '--str-eq' but 'value' is contained in the attribute
+    synonyms:
+    - --str-in
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Same as '--str-eq' but 'value' is a number which is equal or greater
+      than
+    synonyms:
+    - --num-eq
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Same as '--str-eq' but 'value' is a number which is equal or greater
+      than
+    synonyms:
+    - --num-ge
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Same as '--num-ge' but 'value' is a number which is equal or less
+      than
+    synonyms:
+    - --num-le
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Same as '--str-eq' but 'value' is a number which is greater than
+    synonyms:
+    - --num-gt
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Same as '--num-ge' but 'value' is a number which is less than
+    synonyms:
+    - --num-lt
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Shows Progress Bar
+    synonyms:
+    - --progress
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - filter-gff
+  - values
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

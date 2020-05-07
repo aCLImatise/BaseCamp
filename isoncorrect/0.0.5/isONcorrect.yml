@@ -1,0 +1,129 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Path to input fastq file with reads (default: False)'
+  synonyms:
+  - --fastq
+  args: !SimpleFlagArg
+    name: FASTQ
+  optional: true
+- !Flag
+  description: 'Kmer size (default: 9)'
+  synonyms:
+  - --k
+  args: !SimpleFlagArg
+    name: K
+  optional: true
+- !Flag
+  description: 'Window size (default: 10)'
+  synonyms:
+  - --w
+  args: !SimpleFlagArg
+    name: W
+  optional: true
+- !Flag
+  description: 'Upper interval length (default: 14)'
+  synonyms:
+  - --xmin
+  args: !SimpleFlagArg
+    name: XMIN
+  optional: true
+- !Flag
+  description: 'Lower interval length (default: 80)'
+  synonyms:
+  - --xmax
+  args: !SimpleFlagArg
+    name: XMAX
+  optional: true
+- !Flag
+  description: 'Minimum fraction keeping substitution (default: 0.1)'
+  synonyms:
+  - --T
+  args: !SimpleFlagArg
+    name: T
+  optional: true
+- !Flag
+  description: 'Get exact solution for WIS for evary read (recalculating weights for
+    each read (much slower but slightly more accuracy, not to be used for clusters
+    with over ~500 reads) (default: False)'
+  synonyms:
+  - --exact
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Do not require numpy to be installed, but this version is about 1.5x
+    slower than with numpy. (default: False)'
+  synonyms:
+  - --disable_numpy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Maximum number of seqs to spoa (default: 200)'
+  synonyms:
+  - --max_seqs_to_spoa
+  args: !SimpleFlagArg
+    name: MAX_SEQS_TO_SPOA
+  optional: true
+- !Flag
+  description: 'Maximum number of seqs to correct at a time (in case of large clusters).
+    (default: 1000)'
+  synonyms:
+  - --max_seqs
+  args: !SimpleFlagArg
+    name: MAX_SEQS
+  optional: true
+- !Flag
+  description: 'Activates slower exact mode for instance smaller than this limit (default:
+    0)'
+  synonyms:
+  - --exact_instance_limit
+  args: !SimpleFlagArg
+    name: EXACT_INSTANCE_LIMIT
+  optional: true
+- !Flag
+  description: 'Set w = k + max(2*k, floor(cluster_size/1000)). (default: False)'
+  synonyms:
+  - --set_w_dynamically
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Print various developer stats. (default: False)'
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Use homopolymenr compressed reads. (Deprecated, because we will have
+    fewer minmimizer combinations to span regions in homopolymenr dense regions. Solution
+    could be to adjust upper interval legnth dynamically to guarantee a certain number
+    of spanning intervals. (default: False)'
+  synonyms:
+  - --compression
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'A fasta file with transcripts that are shared between samples and
+    have perfect illumina support. (default: None)'
+  synonyms:
+  - --outfolder
+  args: !SimpleFlagArg
+    name: OUTFOLDER
+  optional: true
+command:
+- isONcorrect
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

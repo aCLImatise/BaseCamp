@@ -1,0 +1,63 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: number of threads to use (default=1)
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: N_CPU
+  optional: true
+- !Flag
+  description: the type of graph to generate (default='all')
+  synonyms:
+  - --graph_type
+  args: !ChoiceFlagArg
+    choices:
+    - all
+    - contam
+    - ncontigs
+    - ngenes
+    - mds
+  optional: true
+- !Flag
+  description: reference mash database for contamination quantification.
+  synonyms:
+  - --ref_db
+  args: !SimpleFlagArg
+    name: REF_DB
+  optional: true
+- !Flag
+  description: input GFF3 files (usually output from running Prokka)
+  synonyms:
+  - -i
+  - --input
+  args: !RepeatFlagArg
+    name: INPUT_FILES
+  optional: true
+- !Flag
+  description: location of an output directory
+  synonyms:
+  - -o
+  - --out_dir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+command:
+- panaroo-qc
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

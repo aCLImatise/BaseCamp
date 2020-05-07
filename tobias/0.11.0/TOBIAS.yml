@@ -1,0 +1,1401 @@
+!Command
+positional: []
+named: []
+command:
+- TOBIAS
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: A .bam-file containing reads to be corrected
+    synonyms:
+    - -b
+    - --bam
+    args: !SimpleFlagArg
+      name: bam
+    optional: true
+  - !Flag
+    description: A .fasta-file containing whole genomic sequence
+    synonyms:
+    - -g
+    - --genome
+    args: !SimpleFlagArg
+      name: fasta
+    optional: true
+  - !Flag
+    description: A .bed-file containing ATAC peak regions
+    synonyms:
+    - -p
+    - --peaks
+    args: !SimpleFlagArg
+      name: bed
+    optional: true
+  - !Flag
+    description: 'Input regions for estimating bias (default: regions not in peaks.bed)'
+    synonyms:
+    - --regions-in
+    args: !SimpleFlagArg
+      name: bed
+    optional: true
+  - !Flag
+    description: 'Output regions (default: peaks.bed)'
+    synonyms:
+    - --regions-out
+    args: !SimpleFlagArg
+      name: bed
+    optional: true
+  - !Flag
+    description: 'Blacklisted regions in .bed-format (default: None)'
+    synonyms:
+    - --blacklist
+    args: !SimpleFlagArg
+      name: bed
+    optional: true
+  - !Flag
+    description: 'Extend output regions with basepairs upstream/downstream (default:
+      100)'
+    synonyms:
+    - --extend
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: Write out tracks per strand
+    synonyms:
+    - --split-strands
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Switches off normalization based on number of reads
+    synonyms:
+    - --norm-off
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[<track> [<track> ...]] Switch off writing of individual .bigwig-tracks
+      (uncorrected/bias/expected/corrected)'
+    synonyms:
+    - --track-off
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Flank +/- of cutsite to estimate bias from (default: 12)'
+    synonyms:
+    - --k_flank
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: '<int>         Read shift for forward and reverse reads (default:
+      4 -5)'
+    synonyms:
+    - --read_shift
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'Read shift for estimation of background frequencies (default: 100)'
+    synonyms:
+    - --bg_shift
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'Window size for calculating expected signal (default: 100)'
+    synonyms:
+    - --window
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'Type of matrix to use for bias estimation (PWM/DWM) (default: DWM)'
+    synonyms:
+    - --score_mat
+    args: !SimpleFlagArg
+      name: mat
+    optional: true
+  - !Flag
+    description: 'Prefix for output files (default: same as .bam file)'
+    synonyms:
+    - --prefix
+    args: !SimpleFlagArg
+      name: prefix
+    optional: true
+  - !Flag
+    description: 'Output directory for files (default: current working directory)'
+    synonyms:
+    - --outdir
+    args: !SimpleFlagArg
+      name: directory
+    optional: true
+  - !Flag
+    description: 'Number of cores to use for computation (default: 1)'
+    synonyms:
+    - --cores
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'Split of multiprocessing jobs (default: 100)'
+    synonyms:
+    - --split
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'Level of output logging (0: silent, 1: errors/warnings, 2: info,
+      3: stats, 4: debug, 5: spam) (default: 3)'
+    synonyms:
+    - --verbosity
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - TOBIAS
+  - ATACorrect
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: ScoreBigwig
+    optional: false
+  named:
+  - !Flag
+    description: A .bw file of ATAC-seq cutsite signal
+    synonyms:
+    - -s
+    - --signal
+    args: !SimpleFlagArg
+      name: bigwig
+    optional: true
+  - !Flag
+    description: Full path to output bigwig
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: bigwig
+    optional: true
+  - !Flag
+    description: Genomic regions to run footprinting within
+    synonyms:
+    - -r
+    - --regions
+    args: !SimpleFlagArg
+      name: bed
+    optional: true
+  - !Flag
+    description: 'Type of scoring to perform on cutsites (footprint/sum/mean/none)
+      (default: footprint)'
+    synonyms:
+    - --score
+    args: !SimpleFlagArg
+      name: score
+    optional: true
+  - !Flag
+    description: Convert bigwig signal to absolute values before calculating score
+    synonyms:
+    - --absolute
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Extend input regions with bp (default: 100)'
+    synonyms:
+    - --extend
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'Smooth output signal by mean in <bp> windows (default: no smoothing)'
+    synonyms:
+    - --smooth
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'Limit input bigwig value range (default: no lower limit)'
+    synonyms:
+    - --min-limit
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: 'Limit input bigwig value range (default: no upper limit)'
+    synonyms:
+    - --max-limit
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: 'Minimum footprint width (default: 20)'
+    synonyms:
+    - --fp-min
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'Maximum footprint width (default: 50)'
+    synonyms:
+    - --fp-max
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'Minimum range of flanking regions (default: 10)'
+    synonyms:
+    - --flank-min
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'Maximum range of flanking regions (default: 30)'
+    synonyms:
+    - --flank-max
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'The window for calculation of sum (default: 100)'
+    synonyms:
+    - --window
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'Number of cores to use for computation (default: 1)'
+    synonyms:
+    - --cores
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'Split of multiprocessing jobs (default: 100)'
+    synonyms:
+    - --split
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'Level of output logging (0: silent, 1: errors/warnings, 2: info,
+      3: stats, 4: debug, 5: spam) (default: 3)'
+    synonyms:
+    - --verbosity
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - TOBIAS
+  - ScoreBigwig
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[<bigwig> [<bigwig> ...]] Signal per condition (.bigwig format)'
+    synonyms:
+    - --signals
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Peaks.bed containing open chromatin regions across all conditions
+    synonyms:
+    - --peaks
+    args: !SimpleFlagArg
+      name: bed
+    optional: true
+  - !Flag
+    description: '[<motifs> [<motifs> ...]] Motif file(s) in pfm/jaspar/meme format'
+    synonyms:
+    - --motifs
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Genome .fasta file
+    synonyms:
+    - --genome
+    args: !SimpleFlagArg
+      name: fasta
+    optional: true
+  - !Flag
+    description: '[<name> [<name> ...]] Names of conditions fitting to --signals (default:
+      prefix of --signals)'
+    synonyms:
+    - --cond-names
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'File containing the header of --peaks separated by whitespace or
+      newlines (default: peak columns are named "_additional_<count>")'
+    synonyms:
+    - --peak-header
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: "Naming convention for TF output files ('id', 'name', 'name_id',\
+      \ 'id_name') (default: 'name_id')"
+    synonyms:
+    - --naming
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: 'Set p-value threshold for motif scanning (default: 1e-4)'
+    synonyms:
+    - --motif-pvalue
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: 'Set p-value threshold for bound/unbound split (default: 0.001)'
+    synonyms:
+    - --bound-pvalue
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: 'Pseudocount for calculating log2fcs (default: estimated from data)'
+    synonyms:
+    - --pseudo
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: Will only compare signals1<->signals2<->signals3 (...) in order of
+      input, and skip all-against-all comparison.
+    synonyms:
+    - --time-series
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Skip creation of excel files - for large datasets, this will speed
+      up BINDetect considerably
+    synonyms:
+    - --skip-excel
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Prefix for overview files in --outdir folder (default: bindetect)'
+    synonyms:
+    - --prefix
+    args: !SimpleFlagArg
+      name: prefix
+    optional: true
+  - !Flag
+    description: 'Output directory to place TFBS/plots in (default: bindetect_output)'
+    synonyms:
+    - --outdir
+    args: !SimpleFlagArg
+      name: directory
+    optional: true
+  - !Flag
+    description: 'Number of cores to use for computation (default: 1)'
+    synonyms:
+    - --cores
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'Split of multiprocessing jobs (default: 100)'
+    synonyms:
+    - --split
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'Level of output logging (0: silent, 1: errors/warnings, 2: info,
+      3: stats, 4: debug, 5: spam) (default: 3)'
+    synonyms:
+    - --verbosity
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - TOBIAS
+  - BINDetect
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ', --motifs         File containing motifs in either MEME, PFM or
+      JASPAR format'
+    synonyms:
+    - -m
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --fasta          A fasta file of sequences to use for scanning
+      motifs'
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --regions        Subset scanning to regions of interest'
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Output directory for TFBS sites in one file per motif (default:
+      ./tfbscan_output/). NOTE: Select either --outdir or --outfile.'
+    synonyms:
+    - --outdir
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Output file for TFBS sites joined in one bed-file (default: not
+      set). NOTE: Select either --outdir or --outfile.'
+    synonyms:
+    - --outfile
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Naming convention for bed-ids and output files ('id', 'name', 'name_id',\
+      \ 'id_name') (default: 'name_id')"
+    synonyms:
+    - --naming
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Set the gc content for background regions (default: will be estimated
+      from fasta)'
+    synonyms:
+    - --gc
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Set p-value for motif matches (default: 0.0001)'
+    synonyms:
+    - --pvalue
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Keep overlaps of same motifs (default: overlaps are resolved by
+      keeping best-scoring site)'
+    synonyms:
+    - --keep-overlaps
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Add extra information columns (starting from 4th column) from --regions
+      to the output .bed-file(s) (default: off)'
+    synonyms:
+    - --add-region-columns
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Level of output logging (0: silent, 1: errors/warnings, 2: info,
+      3: stats, 4: debug, 5: spam) (default: 3)'
+    synonyms:
+    - --verbosity
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'Split of multiprocessing jobs (default: 100)'
+    synonyms:
+    - --split
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'Number of cores to use (default: 1)'
+    synonyms:
+    - --cores
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - TOBIAS
+  - TFBScan
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[ [ ...]]  One or more input motif files (required)'
+    synonyms:
+    - --input
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: If task == join, output is the joined output file; if task == split,
+      output is a directory (required)
+    synonyms:
+    - --output
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Desired motif output format (pfm, jaspar, meme) (default: "jaspar")'
+    synonyms:
+    - --format
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Which task to perform on motif files (join/split) (default: join)'
+    synonyms:
+    - --task
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: File containing list of motif names/ids to filter on. Only motifs
+      fitting entries in filter will be output.
+    synonyms:
+    - --filter
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Level of output logging (0: silent, 1: errors/warnings, 2: info,
+      3: stats, 4: debug, 5: spam) (default: 3)'
+    synonyms:
+    - --verbosity
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - TOBIAS
+  - FormatMotifs
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[ [ ...]], --motifs [ [ ...]]      One or more motif files to compare
+      and cluster'
+    synonyms:
+    - -m
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --threshold                      Clustering threshold (Default
+      = 0.3)'
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Method for calculating similarity between motifs (default: pcc)'
+    synonyms:
+    - --dist_method
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Method for clustering (See: https://docs.scipy.org /doc/scipy/reference/generated/scipy.cluster.hiera
+      rchy.linkage.html)'
+    synonyms:
+    - --clust_method
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ", --cons_format                    Format of consensus motif file\
+      \ [‘transfac’, ‘meme’, ‘pwm’, 'pfm', 'jaspar'] (Default: jaspar)"
+    synonyms:
+    - -a
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ", --prefix                         Output prefix (default: 'motif_comparison')"
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ", --outdir                         Output directory (default: 'clustermotifs_output')"
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Level of output logging (0: silent, 1: errors/warnings, 2: info,
+      3: stats, 4: debug, 5: spam) (default: 3)'
+    synonyms:
+    - --verbosity
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'Plot file type [png, pdf, jpg] (Default: pdf)'
+    synonyms:
+    - -e
+    - --type
+    args: !ChoiceFlagArg
+      choices:
+      - png
+      - pdf
+      - jpg
+    optional: true
+  - !Flag
+    description: 'Dpi for plots (Default: 100)'
+    synonyms:
+    - -d
+    - --dpi
+    args: !SimpleFlagArg
+      name: DPI
+    optional: true
+  - !Flag
+    description: "Color palette (All possible paletts: https://python-graph-gallery.com/197-available-\
+      \ color-palettes-with-matplotlib/. Add '_r' to reverse palette.)"
+    synonyms:
+    - -c
+    - --color_palette
+    args: !SimpleFlagArg
+      name: COLOR
+    optional: true
+  command:
+  - TOBIAS
+  - ClusterMotifs
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Sites to score (.bed file)
+    synonyms:
+    - --bed
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ [ ...]]  Scores to assign to regions in .bed (.bw file(s))'
+    synonyms:
+    - --bigwigs
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Path to output .bed-file (default: scored sites are written to stdout)'
+    synonyms:
+    - --output
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Subset scoring to .bed regions and set all other sites to --null
+      value (default: all sites in input file will be scored)'
+    synonyms:
+    - --subset
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'If --subset is given, which score/label to add to non-scored regions
+      (default: 0)'
+    synonyms:
+    - --null
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Position in sites to score (start/mid/end/full) (default: full)'
+    synonyms:
+    - --position
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'If position == full, choose math to perform on signal (min/max/mean/sum)
+      (default: mean)'
+    synonyms:
+    - --math
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Level of output logging (0: silent, 1: errors/warnings, 2: info,
+      3: stats, 4: debug, 5: spam) (default: 3)'
+    synonyms:
+    - --verbosity
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - TOBIAS
+  - ScoreBed
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[<bed> [<bed> ...]]           TFBS sites (*required)'
+    synonyms:
+    - --TFBS
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[<bigwig> [<bigwig> ...]]  Signals in bigwig format (*required)'
+    synonyms:
+    - --signals
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[<bed> [<bed> ...]]        Regions to overlap with TFBS (optional)'
+    synonyms:
+    - --regions
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[<bed> [<bed> ...]]      Only plot sites overlapping whitelist (optional)'
+    synonyms:
+    - --whitelist
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[<bed> [<bed> ...]]      Exclude sites overlapping blacklist (optional)'
+    synonyms:
+    - --blacklist
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Path to output (default: TOBIAS_aggregate.pdf)'
+    synonyms:
+    - --output
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Title of plot (default: "Aggregated signals")'
+    synonyms:
+    - --title
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Flanking basepairs (+/-) to show in plot (counted from middle of
+      the TFBS) (default: 60)'
+    synonyms:
+    - --flank
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ [ ...]]              Labels used for each TFBS file (default:
+      prefix of each --TFBS)'
+    synonyms:
+    - --TFBS-labels
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ [ ...]]            Labels used for each signal file (default:
+      prefix of each --signals)'
+    synonyms:
+    - --signal-labels
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ [ ...]]            Labels used for each regions file (default:
+      prefix of each --regions)'
+    synonyms:
+    - --region-labels
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Share y-axis range across plots (none/signals/sites/both). Use \"\
+      --share-y signals\" if bigwig signals have similar ranges. Use \"-- share_y\
+      \ sites\" if sites per bigwig are comparable, but bigwigs themselves aren't\
+      \ comparable (default: none)"
+    synonyms:
+    - --share-y
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Normalize the aggregate signal(s) to be between 0-1 (default: the
+      true range of values is shown)'
+    synonyms:
+    - --normalize
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Negate overlap with regions
+    synonyms:
+    - --negate
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Smooth output signal by taking the mean of <smooth> bp windows (default:
+      1 (no smooth)'
+    synonyms:
+    - --smooth
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: Log transform the signals before aggregation
+    synonyms:
+    - --log-transform
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Plot TFBS boundaries (Note: estimated from first region in each
+      --TFBS)'
+    synonyms:
+    - --plot-boundaries
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Show signals on x-axis and TFBSs on y-axis (default: signal is on
+      y-axis)'
+    synonyms:
+    - --signal-on-x
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Value between 0-1 indicating the percentile of regions to include,
+      e.g. 0.99 to remove the sites with 1% highest values (default: 1)'
+    synonyms:
+    - --remove-outliers
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: 'Level of output logging (0: silent, 1: errors/warnings, 2: info,
+      3: stats, 4: debug, 5: spam) (default: 3)'
+    synonyms:
+    - --verbosity
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - TOBIAS
+  - PlotAggregate
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[ [ ...]]           TFBS sites per column (*required)'
+    synonyms:
+    - --TFBS
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ [ ...]]        Signals in bigwig format (*required)'
+    synonyms:
+    - --signals
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Output filename (default: TOBIAS_heatmap.pdf)'
+    synonyms:
+    - --output
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Plot TFBS boundaries
+    synonyms:
+    - --plot-boundaries
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Share colorbar across all bigwigs (default: estimate colorbar per
+      bigwig)'
+    synonyms:
+    - --share-colorbar
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ [ ...]]    Labels of TFBS (default: basename of --TFBS)'
+    synonyms:
+    - --flank
+    - --title
+    - --TFBS-labels
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ [ ...]]  Labels of signals (default: basename of --signals)'
+    synonyms:
+    - --signal-labels
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ [ ...]]   Show scores from TFBS column besides heatmap. Set to
+      0-based python coordinates (for example -1 for last column) (default: None)'
+    synonyms:
+    - --show-columns
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Columns in .bed to sort heatmap by (default: input .beds are not
+      sorted)'
+    synonyms:
+    - --sort-by
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Level of output logging (0: silent, 1: errors/warnings, 2: info,
+      3: stats, 4: debug, 5: spam) (default: 3)'
+    synonyms:
+    - --verbosity
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - TOBIAS
+  - PlotHeatmap
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Bindetect_results.txt file from BINDetect run
+    synonyms:
+    - --bindetect
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Text file containing names of TFs to show in plot (one per line)
+    synonyms:
+    - --TFS
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Output file for plot (default: bindetect_changes.pdf)'
+    synonyms:
+    - --output
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ [ ...]]  Ordered list of conditions to show (default: conditions
+      are ordered as within the bindetect file)'
+    synonyms:
+    - --conditions
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Level of output logging (0: silent, 1: errors/warnings, 2: info,
+      3: stats, 4: debug, 5: spam) (default: 3)'
+    synonyms:
+    - --verbosity
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - TOBIAS
+  - PlotChanges
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[ [ ...]]  One or more bigwigs to show. Note: All bigwigs within
+      one "-- bigwigs" argument will be normalized to each other. It is possible to
+      give multiple "--bigwigs" arguments, which will be normalized independently
+      per group (required)'
+    synonyms:
+    - --bigwigs
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Genomic regions to plot (required)
+    synonyms:
+    - --regions
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Genomic sites to show in plot (optional)
+    synonyms:
+    - --sites
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Regions to highlight in plot (optional)
+    synonyms:
+    - --highlight
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: GTF file containing genes to show (optional)
+    synonyms:
+    - --gtf
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Width of plot in cm (default 15)
+    synonyms:
+    - --width
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ [ ...]]   List of specific colors to use for plotting tracks'
+    synonyms:
+    - --colors
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ [ ...]]   Labels for tracks (default: prefix of bigwig)'
+    synonyms:
+    - --labels
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Set a limit on number of transcripts per gene shown in plot (default:
+      1)'
+    synonyms:
+    - --max-transcripts
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Output folder (default: plottracks_output)'
+    synonyms:
+    - --outdir
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Level of output logging (0: silent, 1: errors/warnings, 2: info,
+      3: stats, 4: debug, 5: spam) (default: 3)'
+    synonyms:
+    - --verbosity
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - TOBIAS
+  - PlotTracks
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Link to the s3 server (default: The loosolab s3 server)'
+    synonyms:
+    - --endpoint
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Name of bucket to download (default: data-tobias-2020)'
+    synonyms:
+    - --bucket
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "List of patterns for files to download e.g. '*.txt' (default: *)"
+    synonyms:
+    - --patterns
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Username for endpoint (default: None set)'
+    synonyms:
+    - --username
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Access key for endpoint (default: None set)'
+    synonyms:
+    - --key
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Set the endpoint/bucket/access information through a config file
+      in .yaml format (NOTE: overwrites commandline arguments)'
+    synonyms:
+    - --yaml
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Force download of already existing files (default: warn and skip)'
+    synonyms:
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Level of output logging (0: silent, 1: errors/warnings, 2: info,
+      3: stats, 4: debug, 5: spam) (default: 3)'
+    synonyms:
+    - --verbosity
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - TOBIAS
+  - DownloadData
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[ [ ...]]  PDF files to join'
+    synonyms:
+    - --input
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Path to output file (default: ./merged.pdf)'
+    synonyms:
+    - --output
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - TOBIAS
+  - MergePDF
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Regions to search for max position within
+    synonyms:
+    - --bed
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Scores used to identify maximum value
+    synonyms:
+    - --bigwig
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Path to output .bed-file (default: scored sites are written to stdout)'
+    synonyms:
+    - --output
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Find minimum position instead of maximum position
+    synonyms:
+    - --invert
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - TOBIAS
+  - MaxPos
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Path to .bam-file
+    synonyms:
+    - --bam
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Number of randomizations (per step) (default: 3)'
+    synonyms:
+    - --no_rand
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Start of percent subsample (default: 0)'
+    synonyms:
+    - --start
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'End of percent subsample (default: 100)'
+    synonyms:
+    - --end
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Step between --start and --end (default: 10)'
+    synonyms:
+    - --step
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Cores for multiprocessing (default: 1)'
+    synonyms:
+    - --cores
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Output directory (default: subsamplebam_output)'
+    synonyms:
+    - --outdir
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Prefix for output files (default: prefix of .bam)'
+    synonyms:
+    - --prefix
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Force creation of subsampled .bam-files (default: only create if
+      not existing)'
+    synonyms:
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Level of output logging (0: silent, 1: errors/warnings, 2: info,
+      3: stats, 4: debug, 5: spam) (default: 3)'
+    synonyms:
+    - --verbosity
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - TOBIAS
+  - SubsampleBam
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[ [ ...]]   File(s) containing TFBS (with annotation) to create
+      network from'
+    synonyms:
+    - --TFBS
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: File containing mapping of TF <-> origin gene
+    synonyms:
+    - --origin
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Name of node to start in (default: all nodes)'
+    synonyms:
+    - --start
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Maximum number of nodes in paths through graph (default: 4)'
+    synonyms:
+    - --max-len
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Path to output directory (default: createnetwork_output)'
+    synonyms:
+    - --outdir
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Level of output logging (0: silent, 1: errors/warnings, 2: info,
+      3: stats, 4: debug, 5: spam) (default: 3)'
+    synonyms:
+    - --verbosity
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - TOBIAS
+  - CreateNetwork
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[ [ ...]]  Logfiles from PlotAggregate'
+    synonyms:
+    - --logfiles
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Output directory for tables (default: current dir)'
+    synonyms:
+    - --outdir
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Prefix of output files
+    synonyms:
+    - --prefix
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - TOBIAS
+  - Log2Table
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: .bam-file to filter
+    synonyms:
+    - --bam
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: .bed-file containing regions to filter fragments from
+    synonyms:
+    - --regions
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '{1,2}       Mode 1: Remove fragment if both reads overlap .bed-regions.
+      Mode 2: Remove whole fragment if one read is overlapping .bed-regions (default:
+      1)'
+    synonyms:
+    - --mode
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Path to the filtered .bam-file (default: <prefix of --bam>_filtered.bam)'
+    synonyms:
+    - --output
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Number of threads used for decompressing/compressing bam (default:
+      10)'
+    synonyms:
+    - --threads
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Level of output logging (0: silent, 1: errors/warnings, 2: info,
+      3: stats, 4: debug, 5: spam) (default: 3)'
+    synonyms:
+    - --verbosity
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  command:
+  - TOBIAS
+  - FilterFragments
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

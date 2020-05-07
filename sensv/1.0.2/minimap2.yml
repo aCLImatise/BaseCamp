@@ -1,0 +1,253 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: use homopolymer-compressed k-mer (preferrable for PacBio)
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: k-mer size (no larger than 28) [15]
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: minimizer window size [10]
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: split index for every ~NUM input bases [4G]
+  synonyms:
+  - -I
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: dump index to FILE []
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: filter out top FLOAT fraction of repetitive minimizers [0.0002]
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: stop chain enlongation if there are no minimizers in INT-bp [5000]
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: max intron length (effective with -xsplice; changing -r) [200k]
+  synonyms:
+  - -G
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: max fragment length (effective with -xsr or in the fragment mode) [800]
+  synonyms:
+  - -F
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: bandwidth used in chaining and DP-based alignment [500]
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: minimal number of minimizers on a chain [3]
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: minimal chaining score (matching bases minus log gap penalty) [40]
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: skip self and dual mappings (for the all-vs-all mode)
+  synonyms:
+  - -X
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: min secondary-to-primary score ratio [0.8]
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: retain at most INT secondary alignments [5]
+  synonyms:
+  - -N
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: matching score [2]
+  synonyms:
+  - -A
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: mismatch penalty [4]
+  synonyms:
+  - -B
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: gap open penalty [4,24]
+  synonyms:
+  - -O
+  args: !OptionalFlagArg
+    names:
+    - INT
+    - INT
+  optional: true
+- !Flag
+  description: gap extension penalty; a k-long gap costs min{O1+k*E1,O2+k*E2} [2,1]
+  synonyms:
+  - -E
+  args: !OptionalFlagArg
+    names:
+    - INT
+    - INT
+  optional: true
+- !Flag
+  description: Z-drop score and inversion Z-drop score [400,200]
+  synonyms:
+  - -z
+  args: !OptionalFlagArg
+    names:
+    - INT
+    - INT
+  optional: true
+- !Flag
+  description: minimal peak DP alignment score [80]
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: how to find GT-AG. f:transcript strand, b:both strands, n:don't match
+    GT-AG [n]
+  synonyms:
+  - -u
+  args: !SimpleFlagArg
+    name: CHAR
+  optional: true
+- !Flag
+  description: output in the SAM format (PAF by default)
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output alignments to FILE [stdout]
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: write CIGAR with >65535 ops at the CG tag
+  synonyms:
+  - -L
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: SAM read group line in a format like '@RG\tID:foo\tSM:bar' []
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: output CIGAR in PAF
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[=STR]   output the cs tag; STR is 'short' (if absent) or 'long' [none]"
+  synonyms:
+  - --cs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output the MD tag
+  synonyms:
+  - --MD
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write =/X CIGAR operators
+  synonyms:
+  - --eqx
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use soft clipping for supplementary alignments
+  synonyms:
+  - -Y
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: number of threads [3]
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: minibatch size for mapping [500M]
+  synonyms:
+  - -K
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'preset (always applied before other options; see minimap2.1 for details)
+    [] - map-pb/map-ont: PacBio/Nanopore vs reference mapping - ava-pb/ava-ont: PacBio/Nanopore
+    read overlap - asm5/asm10/asm20: asm-to-ref mapping, for ~0.1/1/5% sequence divergence
+    - splice: long-read spliced alignment - sr: genomic short-read mapping'
+  synonyms:
+  - -x
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+command:
+- minimap2
+subcommands: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  description: show version number
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

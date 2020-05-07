@@ -1,0 +1,637 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: quiet mode (do not show banner)
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- sambamba
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: output only header to stdout (if format=bam, the header is printed
+      as SAM)
+    synonyms:
+    - -H
+    - --header
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output to stdout only reference names and lengths in JSON
+    synonyms:
+    - -I
+    - --reference-info
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output only reads overlapping one of regions from the BED file
+    synonyms:
+    - -L
+    - --regions
+    args: !SimpleFlagArg
+      name: FILENAME
+    optional: true
+  - !Flag
+    description: output to stdout only count of matching records, hHI are ignored
+    synonyms:
+    - -c
+    - --count
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output only valid alignments
+    synonyms:
+    - -v
+    - --valid
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: specify that input is in SAM format
+    synonyms:
+    - -S
+    - --sam-input
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: specify that input is in CRAM format
+    synonyms:
+    - -C
+    - --cram-input
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: specify reference for writing CRAM
+    synonyms:
+    - -T
+    - --ref-filename
+    args: !SimpleFlagArg
+      name: FASTA
+    optional: true
+  - !Flag
+    description: show progressbar in STDERR (works only for BAM files with no regions
+      specified)
+    synonyms:
+    - -p
+    - --show-progress
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: specify compression level (from 0 to 9, works only for BAM output)
+    synonyms:
+    - -l
+    - --compression-level
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: specify output filename
+    synonyms:
+    - -o
+    - --output-filename
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: maximum number of threads to use
+    synonyms:
+    - -t
+    - --nthreads
+    args: !SimpleFlagArg
+      name: NTHREADS
+    optional: true
+  - !Flag
+    description: subsample reads (read pairs)
+    synonyms:
+    - -s
+    - --subsample
+    args: !SimpleFlagArg
+      name: FRACTION
+    optional: true
+  - !Flag
+    description: set seed for subsampling
+    synonyms:
+    - --subsampling-seed
+    args: !SimpleFlagArg
+      name: SEED
+    optional: true
+  command:
+  - sambamba
+  - view
+  subcommands: []
+  help_flag: !Flag
+    description: print header before reads (always done for BAM output)
+    synonyms:
+    - -h
+    - --with-header
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: number of threads to use for decompression
+    synonyms:
+    - -t
+    - --nthreads
+    args: !SimpleFlagArg
+      name: NTHREADS
+    optional: true
+  - !Flag
+    description: show progress bar in STDERR
+    synonyms:
+    - -p
+    - --show-progress
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: check that bins are set correctly
+    synonyms:
+    - -c
+    - --check-bins
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: specify that input is in CRAM format
+    synonyms:
+    - -C
+    - --cram-input
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - sambamba
+  - index
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: number of threads to use for compression/decompression
+    synonyms:
+    - -t
+    - --nthreads
+    args: !SimpleFlagArg
+      name: NTHREADS
+    optional: true
+  - !Flag
+    description: level of compression for merged BAM file, number from 0 to 9
+    synonyms:
+    - -l
+    - --compression-level
+    args: !SimpleFlagArg
+      name: COMPRESSION_LEVEL
+    optional: true
+  - !Flag
+    description: output merged header to stdout in SAM format, other options are ignored;
+      mainly for debug purposes
+    synonyms:
+    - -H
+    - --header
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: show progress bar in STDERR
+    synonyms:
+    - -p
+    - --show-progress
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: keep only reads that satisfy FILTER
+    synonyms:
+    - -F
+    - --filter
+    args: !SimpleFlagArg
+      name: FILTER
+    optional: true
+  command:
+  - sambamba
+  - merge
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: sambamba-sort
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: input.bam
+    optional: false
+  named:
+  - !Flag
+    description: approximate total memory limit for all threads (by default 2GB)
+    synonyms:
+    - -m
+    - --memory-limit
+    args: !SimpleFlagArg
+      name: LIMIT
+    optional: true
+  - !Flag
+    description: directory for storing intermediate files; default is system directory
+      for temporary files
+    synonyms:
+    - --tmpdir
+    args: !SimpleFlagArg
+      name: TMPDIR
+    optional: true
+  - !Flag
+    description: output file name; if not provided, the result is written to a file
+      with .sorted.bam extension
+    synonyms:
+    - -o
+    - --out
+    args: !SimpleFlagArg
+      name: OUTPUTFILE
+    optional: true
+  - !Flag
+    description: sort by read name instead of coordinate (lexicographical order)
+    synonyms:
+    - -n
+    - --sort-by-name
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sort by query name like in picard
+    synonyms:
+    - --sort-picard
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sort by read name instead of coordinate (so-called 'natural' sort
+      as in samtools)
+    synonyms:
+    - -N
+    - --natural-sort
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: pull mates of the same alignment together when sorting by read name
+    synonyms:
+    - -M
+    - --match-mates
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: level of compression for sorted BAM, from 0 to 9
+    synonyms:
+    - -l
+    - --compression-level
+    args: !SimpleFlagArg
+      name: COMPRESSION_LEVEL
+    optional: true
+  - !Flag
+    description: write sorted chunks as uncompressed BAM (default is writing with
+      compression level 1), that might be faster in some cases but uses more disk
+      space
+    synonyms:
+    - -u
+    - --uncompressed-chunks
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: show progressbar in STDERR
+    synonyms:
+    - -p
+    - --show-progress
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: use specified number of threads
+    synonyms:
+    - -t
+    - --nthreads
+    args: !SimpleFlagArg
+      name: NTHREADS
+    optional: true
+  - !Flag
+    description: keep only reads that satisfy FILTER
+    synonyms:
+    - -F
+    - --filter
+    args: !SimpleFlagArg
+      name: FILTER
+    optional: true
+  command:
+  - sambamba
+  - sort
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: output BAM filename
+    synonyms:
+    - -o
+    - --output-filename
+    args: !SimpleFlagArg
+      name: OUTPUT_FILENAME
+    optional: true
+  - !Flag
+    description: output only reads overlapping one of regions from the BED file
+    synonyms:
+    - -L
+    - --regions
+    args: !SimpleFlagArg
+      name: FILENAME
+    optional: true
+  command:
+  - sambamba
+  - slice
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: remove duplicates instead of just marking them
+    synonyms:
+    - -r
+    - --remove-duplicates
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: number of threads to use
+    synonyms:
+    - -t
+    - --nthreads
+    args: !SimpleFlagArg
+      name: NTHREADS
+    optional: true
+  - !Flag
+    description: specify compression level of the resulting file (from 0 to 9)
+    synonyms:
+    - -l
+    - --compression-level
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: show progressbar in STDERR
+    synonyms:
+    - -p
+    - --show-progress
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: specify directory for temporary files
+    synonyms:
+    - --tmpdir
+    args: !SimpleFlagArg
+      name: TMPDIR
+    optional: true
+  - !Flag
+    description: size of hash table for finding read pairs (default is 262144 reads);
+      will be rounded down to the nearest power of two; should be > (average coverage)
+      * (insert size) for good performance
+    synonyms:
+    - --hash-table-size
+    args: !SimpleFlagArg
+      name: HASH_TABLE_SIZE
+    optional: true
+  - !Flag
+    description: size of the overflow list where reads, thrown from the hash table,
+      get a second chance to meet their pairs (default is 200000 reads); increasing
+      the size reduces the number of temporary files created
+    synonyms:
+    - --overflow-list-size
+    args: !SimpleFlagArg
+      name: OVERFLOW_LIST_SIZE
+    optional: true
+  - !Flag
+    description: total amount of memory (in *megabytes*) used for sorting purposes;
+      the default is 2048, increasing it will reduce the number of created temporary
+      files and the time spent in the main thread
+    synonyms:
+    - --sort-buffer-size
+    args: !SimpleFlagArg
+      name: SORT_BUFFER_SIZE
+    optional: true
+  - !Flag
+    description: two buffers of BUFFER_SIZE *megabytes* each are used for reading
+      and writing BAM during the second pass (default is 128)
+    synonyms:
+    - --io-buffer-size
+    args: !SimpleFlagArg
+      name: BUFFER_SIZE
+    optional: true
+  command:
+  - sambamba
+  - markdup
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[fasthash]   Algorithm for subsampling (fasthash, default is none)'
+    synonyms:
+    - --type
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[depth]   Maximum coverage (approx)'
+    synonyms:
+    - --max-cov
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Set output file (default stdout)
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: fn
+    optional: true
+  - !Flag
+    description: Remove over sampled reads from output
+    synonyms:
+    - -r
+    - --remove
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Set logging to debug|info|warning|critical -nyi
+    synonyms:
+    - --logging
+    args: !SimpleFlagArg
+      name: type
+    optional: true
+  command:
+  - sambamba
+  - subsample
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: sambamba-flagstat
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: input.bam
+    optional: false
+  named:
+  - !Flag
+    description: use NTHREADS for decompression
+    synonyms:
+    - -t
+    - --nthreads
+    args: !SimpleFlagArg
+      name: NTHREADS
+    optional: true
+  - !Flag
+    description: show progressbar in STDERR
+    synonyms:
+    - -p
+    - --show-progress
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - sambamba
+  - flagstat
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: set custom filter for alignments; the default value is 'mapping_quality
+      > 0 and not duplicate and not failed_quality_control'
+    synonyms:
+    - -F
+    - --filter
+    args: !SimpleFlagArg
+      name: FILTER
+    optional: true
+  - !Flag
+    description: output filename (by default /dev/stdout)
+    synonyms:
+    - -o
+    - --output-file
+    args: !SimpleFlagArg
+      name: FILENAME
+    optional: true
+  - !Flag
+    description: maximum number of threads to use
+    synonyms:
+    - -t
+    - --nthreads
+    args: !SimpleFlagArg
+      name: NTHREADS
+    optional: true
+  - !Flag
+    description: 'minimum mean coverage for output (default: 0 for region/window,
+      1 for base)'
+    synonyms:
+    - -c
+    - --min-coverage
+    args: !SimpleFlagArg
+      name: MINCOVERAGE
+    optional: true
+  - !Flag
+    description: maximum mean coverage for output
+    synonyms:
+    - -C
+    - --max-coverage
+    args: !SimpleFlagArg
+      name: MAXCOVERAGE
+    optional: true
+  - !Flag
+    description: don't count bases with lower base quality
+    synonyms:
+    - -q
+    - --min-base-quality
+    args: !SimpleFlagArg
+      name: QUAL
+    optional: true
+  - !Flag
+    description: output combined statistics for all samples
+    synonyms:
+    - --combined
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: add additional column of y/n instead of skipping records not satisfying
+      the criteria
+    synonyms:
+    - -a
+    - --annotate
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: detect overlaps of mate reads and handle them on per-base basis
+    synonyms:
+    - -m
+    - --fix-mate-overlaps
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: multiple thresholds can be provided, for each one an extra column
+      will be added, the percentage of bases in the region where coverage is more
+      than this value
+    synonyms:
+    - -T
+    - --cov-threshold
+    args: !SimpleFlagArg
+      name: COVTHRESHOLD
+    optional: true
+  - !Flag
+    description: breadth of the window, in bp (required)
+    synonyms:
+    - -w
+    - --window-size
+    args: !SimpleFlagArg
+      name: WINDOWSIZE
+    optional: true
+  - !Flag
+    description: overlap of successive windows, in bp (default is 0)
+    synonyms:
+    - --overlap
+    args: !SimpleFlagArg
+      name: OVERLAP
+    optional: true
+  - !Flag
+    description: same meaning as in 'region' subcommand
+    synonyms:
+    - -T
+    - --cov-threshold
+    args: !SimpleFlagArg
+      name: COVTHRESHOLD
+    optional: true
+  command:
+  - sambamba
+  - depth
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

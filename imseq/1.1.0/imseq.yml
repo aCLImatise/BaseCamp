@@ -1,0 +1,366 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: FASTA file with gene segment reference sequences.
+  synonyms:
+  - -ref
+  - --reference
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Output file path for translated clonotypes.
+  synonyms:
+  - -oa
+  - --out-amino
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: Output file path for untranslated clonotypes.
+  synonyms:
+  - -on
+  - --out-nuc
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: Output file path for verbose output per analyzed read.
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: By default, V-reads are read as they are and V(D)J-reads are reverse
+    complemented. Use this switch for the opposite behaviour.
+  synonyms:
+  - -r
+  - --reverse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Truncate reads to the specified length. 0 leaves them at their original
+    lengths. Default: 0.'
+  synonyms:
+  - -tr
+  - --truncate-reads
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Log file for rejected reads. If empty, no log file is written.
+  synonyms:
+  - -rlog
+  - --reject-log
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Keep allele information in detailed output file specified with -o.
+  synonyms:
+  - -al
+  - --with-alleles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Maximum error rate allowed within the V segment alignment In range
+    [0..inf]. Default: 0.05.'
+  synonyms:
+  - -ev
+  - --v-err-rate
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Maximum error rate allowed within the J segment alignment In range
+    [0..inf]. Default: 0.15.'
+  synonyms:
+  - -ej
+  - --j-err-rate
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Maximum error rate in the alignment between the forward-read identified
+    V segment and the reverse read. Default: Use value from -ev. In range [0..1].'
+  synonyms:
+  - -pve
+  - --paired-v-error
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Crop NUM bases from the beginning of the V read before processing
+    it In range [0..inf]. Default: 0.'
+  synonyms:
+  - -vcr
+  - --v-read-crop
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Length of the J core fragment. In range [5..20]. Default: 12.'
+  synonyms:
+  - -jcl
+  - --j-core-length
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Offset of the V core fragment. Default: -6.'
+  synonyms:
+  - -jco
+  - --j-core-offset
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Length of the V core fragment. Default: Automatically select value
+    between 10 and 20 based on minimum observed read length. In range [5..inf].'
+  synonyms:
+  - -vcl
+  - --v-core-length
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Offset of the V core fragment. Default: 0.'
+  synonyms:
+  - -vco
+  - --v-core-offset
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Maximum number of errors when matching the V core fragments. In range
+    [0..inf]. Default: 1.'
+  synonyms:
+  - -vce
+  - --v-core-errors
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Maximum number of errors when matching the J core fragments. In range
+    [0..inf]. Default: 2.'
+  synonyms:
+  - -jce
+  - --j-core-errors
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "Minimum average read phred score. In paired end mode, this is applied\
+    \ to both reads. See '-sfb'. In range [0..60]. Default: 30."
+  synonyms:
+  - -mq
+  - --min-qual
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Minimum average cluster phred score. In range [0..60]. Default: 30.'
+  synonyms:
+  - -mcq
+  - --min-clust-qual
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "Minimum read length. In paired end mode, this is applied to both reads.\
+    \ See '-sfb'. In range [0..inf]. Default: 75."
+  synonyms:
+  - -mrl
+  - --min-read-length
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Minimum CDR3 length in amino acids. In range [0..inf]. Default: 5.'
+  synonyms:
+  - -mcl
+  - --min-cdr3-length
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Fall back to single end analysis based on VDJ read if V read fails
+    -mq or -mrl.
+  synonyms:
+  - -sfb
+  - --single-end-fallback
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'In paired end mode: Read the barcode from the VDJ read instead of
+    the V read.'
+  synonyms:
+  - -bvdj
+  - --barcode-vdj
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Maximum number of errors allowed in the barcode sequence In range
+    [0..inf]. Default: 1.'
+  synonyms:
+  - -bse
+  - --bcseq-max-err
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Minimum per base quality in molecular barcode region In range [0..60].
+    Default: 30.'
+  synonyms:
+  - -bmq
+  - --bc-min-qual
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "Length of random barcode at the beginning of the read. A value of\
+    \ '0' disables barcode based correction. In range [0..inf]. Default: 0."
+  synonyms:
+  - -bcl
+  - --barcode-length
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Maximum error rate between reads in order to be merged based on barcode
+    sequence In range [0..1]. Default: 0.05.'
+  synonyms:
+  - -ber
+  - --barcode-err-rate
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Inclusive maximum frequency ratio between smaller and larger cluster
+    during barcode clustering In range [0..1]. Default: 0.2.'
+  synonyms:
+  - -bfr
+  - --barcode-freq-rate
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Path to barcode stats output file. If empty, no file is written. Ignored
+    if -bcl is 0.
+  synonyms:
+  - -bst
+  - --barcode-stats
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Output file path for translated clonotypes with barcode corrected counts.
+    Ignored if -bcl is 0.
+  synonyms:
+  - -oab
+  - --out-amino-bc
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Output file path for untranslated clonotypes with barcode corrected
+    counts. Ignored if -bcl is 0.
+  synonyms:
+  - -onb
+  - --out-nuc-bc
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Merge clonotypes with identical CDR3 sequences separated by ambiguous
+    segment identification
+  synonyms:
+  - -ma
+  - --merge-ambiguous-seg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable quality score based clustering.
+  synonyms:
+  - -qc
+  - --qual-clust
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable simple distance-based clustering
+  synonyms:
+  - -sc
+  - --simple-clust
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Maximum edit-distance for two clusters to be clustered without low
+    quality correlation In range [0..inf]. Default: 4.'
+  synonyms:
+  - -qcme
+  - --max-err-hq
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'How many standard deviations must an error positions quality value
+    be below the mean to be considered for clustering. Default: 1.'
+  synonyms:
+  - -qcsd
+  - --min-sd-diff
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Maximum edit-distance for two clusters to be potentially clustered
+    without low quality correlation In range [0..inf]. Default: 2.'
+  synonyms:
+  - -scme
+  - --max-err-lq
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Maximum abundance ratio for two clonotypes to be clustered In range
+    [0..1]. Default: 1.'
+  synonyms:
+  - -mcr
+  - --max-clust-ratio
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Number of parallel jobs (threads). Default: 1.'
+  synonyms:
+  - -j
+  - --jobs
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Print the V/J alignments for each read. Implies -j 1.
+  synonyms:
+  - -pa
+  - --print-alignments
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- imseq
+subcommands: []
+help_flag: !Flag
+  description: Display the help message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Display version information.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

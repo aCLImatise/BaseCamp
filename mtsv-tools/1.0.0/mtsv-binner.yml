@@ -1,0 +1,153 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Include this flag to trigger debug-level logging.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Edit distance to tolerate in matched reference sites [default: 3]'
+  synonyms:
+  - -e
+  - --edits
+  args: !SimpleFlagArg
+    name: EDIT_TOLERANCE
+  optional: true
+- !Flag
+  description: Absolute path to FASTA query file.
+  synonyms:
+  - -f
+  - --fasta
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: Absolute path to mtsv index file.
+  synonyms:
+  - -i
+  - --index
+  args: !SimpleFlagArg
+    name: INDEX
+  optional: true
+- !Flag
+  description: 'Set to override minimum number of seeds to perform alignment of a
+    candidate site. [default: 2]'
+  synonyms:
+  - --min-seeds
+  args: !SimpleFlagArg
+    name: MIN_SEEDS
+  optional: true
+- !Flag
+  description: 'Number of worker threads to spawn. [default: 4]'
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+  optional: true
+- !Flag
+  description: Path to write results file to.
+  synonyms:
+  - -r
+  - --results
+  args: !SimpleFlagArg
+    name: RESULTS_PATH
+  optional: true
+- !Flag
+  description: 'Set to override gap between seeds used for initial exact match. [default:
+    3]'
+  synonyms:
+  - --seed-gap
+  args: !SimpleFlagArg
+    name: SEED_GAP
+  optional: true
+- !Flag
+  description: 'Set to override inital exact match query size. [default: 20]'
+  synonyms:
+  - --seed-size
+  args: !SimpleFlagArg
+    name: SEED_SIZE
+  optional: true
+command:
+- mtsv-binner
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: OPTIONS
+    optional: true
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --fasta
+    args: !SimpleFlagArg
+      name: FASTA
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --index
+    args: !SimpleFlagArg
+      name: INDEX
+    optional: true
+  command:
+  - mtsv-binner
+  - FLAGS
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: FLAGS
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: OPTIONS
+    optional: true
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --fasta
+    args: !SimpleFlagArg
+      name: FASTA
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --index
+    args: !SimpleFlagArg
+      name: INDEX
+    optional: true
+  command:
+  - mtsv-binner
+  - OPTIONS
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: Prints help information
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Prints version information
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

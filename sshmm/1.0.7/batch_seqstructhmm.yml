@@ -1,0 +1,100 @@
+!Command
+positional:
+- !Positional
+  description: data directory; must contain the sequence files under fasta/<protein>/positive.fasta
+    and structure files under <structure_type>/<protein>/positive.txt
+  position: 0
+  name: data_directory
+  optional: false
+- !Positional
+  description: list of RNA-binding proteins to analyze (surrounded by quotation marks,
+    separated by whitespace)
+  position: 1
+  name: proteins
+  optional: false
+- !Positional
+  description: directory for batch output
+  position: 2
+  name: batch_directory
+  optional: false
+named:
+- !Flag
+  description: number of cores to use (if not given, all cores are used)
+  synonyms:
+  - --cores
+  - -c
+  args: !SimpleFlagArg
+    name: CORES
+  optional: true
+- !Flag
+  description: 'structure type to use; must match location of structure files (see
+    data_directory argument above) (default: shapes)'
+  synonyms:
+  - --structure_type
+  - -s
+  args: !SimpleFlagArg
+    name: STRUCTURE_TYPE
+  optional: true
+- !Flag
+  description: 'length of the motifs that shall be found (default: 6)'
+  synonyms:
+  - --motif_length
+  - -n
+  args: !SimpleFlagArg
+    name: MOTIF_LENGTH
+  optional: true
+- !Flag
+  description: 'should the models be initialized with a Baum-Welch optimized sequence
+    motif (default: yes)'
+  synonyms:
+  - --baum_welch
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'greedyness of Gibbs sampler: model parameters are sampled from among
+    the top f configurations (default: f=10), set f to 0 in order to include all possible
+    configurations'
+  synonyms:
+  - --flexibility
+  - -f
+  args: !SimpleFlagArg
+    name: FLEXIBILITY
+  optional: true
+- !Flag
+  description: 'number of sequences to be held-out in each iteration (default: 1)'
+  synonyms:
+  - --block_size
+  args: !SimpleFlagArg
+    name: BLOCK_SIZE
+  optional: true
+- !Flag
+  description: 'the iterative algorithm is terminated if this reduction in sequence
+    structure loglikelihood is not reached for any of the 3 last measurements (default:
+    10)'
+  synonyms:
+  - --threshold
+  - -t
+  args: !SimpleFlagArg
+    name: THRESHOLD
+  optional: true
+- !Flag
+  description: 'produce output every <i> iterations (default: i=100)'
+  synonyms:
+  - --termination_interval
+  - -i
+  args: !SimpleFlagArg
+    name: TERMINATION_INTERVAL
+  optional: true
+command:
+- batch_seqstructhmm
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

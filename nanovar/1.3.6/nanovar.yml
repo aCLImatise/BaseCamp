@@ -1,0 +1,175 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: type of long-read data [ont] ont - Oxford Nanopore Technologies pacbio-clr
+    - Pacific Biosciences CLR pacbio-ccs - Pacific Biosciences CCS
+  synonyms:
+  - -x
+  - --data_type
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: BED file with genomic regions to be excluded [None] (e.g. telomeres
+    and centromeres) Either specify name of in-built  reference genome filter (i.e.
+    hg38, hg19, mm10) or provide full  path to own BED file.
+  synonyms:
+  - -f
+  - --filter_bed
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: minimum number of reads required to call a breakend [2]
+  synonyms:
+  - -c
+  - --mincov
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: minimum length of SV to be detected [25]
+  synonyms:
+  - -l
+  - --minlen
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: minimum percentage of unmapped bases within a long read  to be considered
+    as a split-read. 0.05<=p<=0.50 [0.05]
+  synonyms:
+  - -p
+  - --splitpct
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: minimum alignment length for single alignment reads [200]
+  synonyms:
+  - -a
+  - --minalign
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: nucleotide length buffer for SV breakend clustering [50]
+  synonyms:
+  - -b
+  - --buffer
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'score threshold for defining PASS/FAIL SVs in VCF [1.0] Default score
+    1.0 was estimated from simulated analysis. '
+  synonyms:
+  - -s
+  - --score
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: lower limit of a breakend read ratio to classify a homozygous state
+    [0.75] (i.e. Any breakend with homo<=ratio<=1.00 is classified as homozygous)
+  synonyms:
+  - --homo
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: lower limit of a breakend read ratio to classify a heterozygous state
+    [0.35] (i.e. Any breakend with hetero<=ratio<homo is classified as heterozygous)
+  synonyms:
+  - --hetero
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: run in debug mode
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: run full pipeline (i.e. do not skip index generation)
+  synonyms:
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: hide verbose
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: number of available threads for use [1]
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: specify path to custom-built model
+  synonyms:
+  - --model
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: specify path to 'minimap2' executable
+  synonyms:
+  - --mm
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: specify path to 'samtools' executable
+  synonyms:
+  - --st
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: specify path to 'makeblastdb' executable
+  synonyms:
+  - --mdb
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: specify path to 'windowmasker' executable
+  synonyms:
+  - --wmk
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: specify path to 'hs-blastn' executable
+  synonyms:
+  - --hsb
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+command:
+- nanovar
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show version and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

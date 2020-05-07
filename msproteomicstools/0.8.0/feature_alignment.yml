@@ -1,0 +1,204 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: A list of mProphet output files containing all peakgroups (use quotes
+    around the filenames)
+  synonyms:
+  - --in
+  args: !RepeatFlagArg
+    name: INP
+  optional: true
+- !Flag
+  description: Input file format (openswath, mprophet or peakview)
+  synonyms:
+  - --file_format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output file with filtered peakgroups
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: OUTFILE
+  optional: true
+- !Flag
+  description: Matrix containing one peak group per row (supports .csv, .tsv or .xlsx)
+  synonyms:
+  - --out_matrix
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Id file only containing the ids
+  synonyms:
+  - --out_ids
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Outfile containing meta information
+  synonyms:
+  - --out_meta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0.01     Fixed FDR cutoff used for seeding (only assays where at least
+    one peakgroup in one run is below this cutoff will be included in the result),
+    see also target_fdr for a non-fixed cutoff
+  synonyms:
+  - --fdr_cutoff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0.01     If parameter estimation is used, which target FDR should be
+    optimized for. If set to lower than 0, parameter estimation is turned off.
+  synonyms:
+  - --target_fdr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -1  Extension m-score score cutoff, peakgroups of this quality will
+    still be considered for alignment during extension
+  synonyms:
+  - --max_fdr_quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 30      Maximal difference in RT (in seconds) for two aligned features
+  synonyms:
+  - --max_rt_diff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 30  Maximal difference in RT (in seconds) for two isotopic channels
+    in the same run
+  synonyms:
+  - --iso_max_rt_diff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 0     Do not write peakgroup if selected in less than this fraction
+    of runs (range 0 to 1)
+  synonyms:
+  - --frac_selected
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Method to use for the clustering (best_overall, best_cluster_score
+    or global_best_cluster_score, global_best_overall, LocalMST, LocalMSTAllCluster).
+  synonyms:
+  - --method
+  args: !SimpleFlagArg
+    name: METHOD
+  optional: true
+- !Flag
+  description: 0         Verbosity (0 = little)
+  synonyms:
+  - --verbosity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Which columns are written besides Intensity (none, RT, score, source
+    or full)
+  synonyms:
+  - --matrix_output_method
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: RT alignment method (diRT, linear, splineR, splineR_external, splinePy,
+    lowess, lowess_biostats, lowess_statsmodels, lowess_cython, nonCVSpline, CVSpline,
+    Earth, WeightedNearestNeighbour, SmoothLLDMedian, None)
+  synonyms:
+  - --realign_method
+  args: !SimpleFlagArg
+    name: diRT
+  optional: true
+- !Flag
+  description: Force alignment
+  synonyms:
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: :useRTCorrection True Use aligned peakgroup RT to continue threading
+  synonyms:
+  - --mst
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: :Stdev_multiplier -1.0 How many standard deviations the peakgroup can
+    deviate in RT during the alignment (if less than max_rt_diff, then max_rt_diff
+    is used)
+  synonyms:
+  - --mst
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: :useLocalStdev False Use local standard deviation of the alignment
+  synonyms:
+  - --mst
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: :useReference False Use a reference-based tree for alignment
+  synonyms:
+  - --mst
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 1.96  Discard all peakgroups below this d-score
+  synonyms:
+  - --dscore_cutoff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 1  Number of experiments in which the peptide needs to be identified
+    with confidence above fdr_cutoff
+  synonyms:
+  - --nr_high_conf_exp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Read full or minimal transition groups (cminimal,minimal,full)
+  synonyms:
+  - --readmethod
+  args: !SimpleFlagArg
+    name: minimal
+  optional: true
+- !Flag
+  description: Temporary directory
+  synonyms:
+  - --tmpdir
+  args: !SimpleFlagArg
+    name: TMPDIR
+  optional: true
+- !Flag
+  description: 0.0001 Minimal score needed for a feature to be considered for alignment
+    between runs
+  synonyms:
+  - --alignment_score
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Deprecated option (equals '--realign_method external_r')
+  synonyms:
+  - --realign_runs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Deprecated option (equals '--realign_method external_r')
+  synonyms:
+  - --use_external_r
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- feature_alignment.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

@@ -1,0 +1,277 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: want to use the pseudoknot functionality, pKiss_mfe of the RNAshapes
+    studio OR HotKnots OR IPKnot must be installed and callable as standalone in order
+    to execute antaRNA.
+  synonyms:
+  - '- If'
+  args: !SimpleFlagArg
+    name: you
+  optional: true
+- !Flag
+  description: only tested under Linux.
+  synonyms:
+  - '- antaRNA'
+  args: !SimpleFlagArg
+    name: was
+  optional: true
+- !Flag
+  description: and remarks please feel free to contact us at http://www.bioinf.uni-freiburg.de/
+  synonyms:
+  - '- For'
+  args: !SimpleFlagArg
+    name: questions
+  optional: true
+- !Flag
+  description: 'Sequence constraint using RNA nucleotide alphabet {A,C,G,U} and wild-card
+    "N".  (TYPE: str)'
+  synonyms:
+  - -Cseq
+  - --Cseq
+  args: !SimpleFlagArg
+    name: CSEQ
+  optional: true
+- !Flag
+  description: 'Sets the level of allowed influence of sequence constraint on the
+    structure constraint [0:no influence; 3:extensive influence]. (TYPE: int)'
+  synonyms:
+  - -l
+  - --level
+  args: !SimpleFlagArg
+    name: LEVEL
+  optional: true
+- !Flag
+  description: 'Objective target GC content in [0,1]. (TYPE: parseGC)'
+  synonyms:
+  - -tGC
+  - --tGC
+  args: !SimpleFlagArg
+    name: TGC
+  optional: true
+- !Flag
+  description: 'Provides a maximum tGC value [0,1] for the case of uniform distribution
+    sampling. The regular tGC value serves as minimum value. (DEFAULT: -1.0, TYPE:
+    float)'
+  synonyms:
+  - -tGCmax
+  - --tGCmax
+  args: !SimpleFlagArg
+    name: TGCMAX
+  optional: true
+- !Flag
+  description: 'Provides a tGC variance (sigma square) for the case of normal distribution
+    sampling. The regular tGC value serves as expectation value (mu). (DEFAULT: -1.0,
+    TYPE: float)'
+  synonyms:
+  - -tGCvar
+  - --tGCvar
+  args: !SimpleFlagArg
+    name: TGCVAR
+  optional: true
+- !Flag
+  description: 'Provides a temperature for the folding algorithms. (DEFAULT: 37.0,
+    TYPE: float)'
+  synonyms:
+  - -T
+  - --temperature
+  args: !SimpleFlagArg
+    name: TEMPERATURE
+  optional: true
+- !Flag
+  description: 'Changes the energy parameterfile of RNAfold. If using this explicitly,
+    please provide a suitable energy file delivered by RNAfold.  (DEFAULT: , TYPE:
+    str)'
+  synonyms:
+  - -P
+  - --paramFile
+  args: !SimpleFlagArg
+    name: PARAMFILE
+  optional: true
+- !Flag
+  description: 'Forbid GU base pairs. '
+  synonyms:
+  - -noGU
+  - --noGUBasePair
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Disallowing antaRNA lonely base pair-management. '
+  synonyms:
+  - -noLBP
+  - --noLBPmanagement
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of sequences which shall be produced.  (TYPE: int)'
+  synonyms:
+  - -n
+  - --noOfColonies
+  args: !SimpleFlagArg
+    name: NOOFCOLONIES
+  optional: true
+- !Flag
+  description: 'Provide a path and an output file, e.g. "/path/to/the/target_file".  (DEFAULT:
+    STDOUT, TYPE: str)'
+  synonyms:
+  - -of
+  - --output_file
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+  optional: true
+- !Flag
+  description: 'Switch on PYTHON compatible behavior.  (DEFAULT: False)'
+  synonyms:
+  - -rPY
+  - --py
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Defines a name which is used in the sequence output.  (DEFAULT: antaRNA,
+    TYPE: str)'
+  synonyms:
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: Displayes intermediate output.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prints additional features and stats to the headers of the produced
+    sequences. Also adds the structure of the sequence.
+  synonyms:
+  - -ov
+  - --output_verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print Terrain Nodes and edges files.
+  synonyms:
+  - --plot
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- antarna.py
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Structure constraint using RNA dotbracket notation with fuzzy block
+      constraint. (TYPE: str)'
+    synonyms:
+    - -Cstr
+    - --Cstr
+    args: !SimpleFlagArg
+      name: CSTR
+    optional: true
+  - !Flag
+    description: Switch to pseudoknot based prediction using pKiss. Check the pseudoknot
+      parameter usage!!!
+    synonyms:
+    - -p
+    - --pseudoknots
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Enable optimized parameters for the usage of pseudo knots (Further
+      parameter input ignored).
+    synonyms:
+    - -pkPar
+    - --pkparameter
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Select a pseudoknot prediction program. If HotKnots is used, please
+      specify the bin folder of Hotknots with absolute path using HK_PATH argument.
+      (DEFAULT: pKiss, TYPE: str, Choice: [pKiss|HotKnots|IPKnot])'
+    synonyms:
+    - -pkP
+    - --pkprogram
+    args: !SimpleFlagArg
+      name: PKPROGRAM
+    optional: true
+  - !Flag
+    description: 'Set HotKnots absolute path, like /path/to/HotKnots/bin. If HotKnots
+      is used, please specify the bin folder of Hotknots with absolute path using
+      HK_PATH argument. (DEFAULT: , TYPE: str'
+    synonyms:
+    - -HKPATH
+    - --HotKnots_PATH
+    args: !SimpleFlagArg
+      name: HOTKNOTS_PATH
+    optional: true
+  - !Flag
+    description: 'Defining the pKiss folding strategy. (DEFAULT: A, TYPE: str)'
+    synonyms:
+    - --strategy
+    args: !SimpleFlagArg
+      name: STRATEGY
+    optional: true
+  command:
+  - antarna.py
+  - MFE
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Define an differential accessibility evaluation block.
+    synonyms:
+    - --diff-accessibility
+    args: !SimpleFlagArg
+      name: DIFF_ACCESSIBILITY
+    optional: true
+  - !Flag
+    description: Define fuzzy structure constraint wihtin DP mode
+    synonyms:
+    - --fuzzyConstraint
+    args: !SimpleFlagArg
+      name: FUZZYCONSTRAINT
+    optional: true
+  - !Flag
+    description: Define a differential fuzzy structure constraint wihtin DP mode
+    synonyms:
+    - --diff-fuzzyConstraint
+    args: !SimpleFlagArg
+      name: DIFF_FUZZYCONSTRAINT
+    optional: true
+  - !Flag
+    description: Define the threshold whic need to be passed in order to bonify certain
+      elements in the terrain graph.
+    synonyms:
+    - --trailblaze_threshold
+    args: !SimpleFlagArg
+      name: TRAILBLAZE_THRESHOLD
+    optional: true
+  command:
+  - antarna.py
+  - DP
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

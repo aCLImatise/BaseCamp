@@ -1,0 +1,92 @@
+!Command
+positional:
+- !Positional
+  description: '2 files containing one RNA each. Supported Filetypes are: pdb files,
+    forgi cg files'
+  position: 0
+  name: rna
+  optional: false
+named:
+- !Flag
+  description: For all input formats except forgi bg/cg files, this controlls whether
+    stems of length one are dissolved to unpaired regions (default) or kept (if this
+    option is present). In the case of input in forgi-format, the RNA from the file
+    is not modified.
+  synonyms:
+  - --keep-length-one-stems
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Allow pseudoknots when extracting the structure from PDB files.
+  synonyms:
+  - --pseudoknots
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'When reading pdb-files: Only extract the given chain.'
+  synonyms:
+  - --chain
+  args: !SimpleFlagArg
+    name: CHAIN
+  optional: true
+- !Flag
+  description: 'When reading a single chain from a pdb-files: Enforce the secondary
+    structure given as dotbracket string. (This only works, if --chain is given!)'
+  synonyms:
+  - --pdb-secondary-structure
+  args: !SimpleFlagArg
+    name: PDB_SECONDARY_STRUCTURE
+  optional: true
+- !Flag
+  description: Show verbose output (Output logged at level logging.INFO)
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[DEBUG]       A comma-seperated list of logger names for which debug
+    output will be activated.WARNING: If you misspell the logger name, this argument
+    will be ignored'
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[QUIET], --quiet [QUIET] A comma-seperated list of logger names for\
+    \ which only messages logged at the level 'CRITICAL' will be shown.Use this without\
+    \ arguments if everything should be quiet."
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Compare based on the Adjacency correlation coefficient ACC
+  synonyms:
+  - --acc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Compare based on CG-RMSD
+  synonyms:
+  - --rmsd
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Compare based on PDB-RMSD
+  synonyms:
+  - --pdb-rmsd
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- compare_RNA.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

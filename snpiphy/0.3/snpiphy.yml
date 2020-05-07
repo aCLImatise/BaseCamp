@@ -1,0 +1,121 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Path to a directory with your interleaved fastq sequencing reads or
+    fasta assemblies.
+  synonyms:
+  - -q
+  - --fastq-dir
+  args: !SimpleFlagArg
+    name: READS_DIR
+  optional: true
+- !Flag
+  description: Path to the output directory. A directory will be created if one does
+    not exist.
+  synonyms:
+  - -o
+  - --output-directory
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: Path to the reference sequence. Only fasta format is accepted currently.
+  synonyms:
+  - -r
+  - --reference
+  args: !SimpleFlagArg
+    name: REFERENCE
+  optional: true
+- !Flag
+  description: Percent coverage of reference sequence (0-100%) used to reject a sample.
+    Samples lower than this threshold will be excluded from phylogenetic pipeline
+    steps. Defaults to 85%.
+  synonyms:
+  - -c
+  - --cov-cutoff
+  args: !SimpleFlagArg
+    name: CUTOFF
+  optional: true
+- !Flag
+  description: Prefix for output files
+  synonyms:
+  - -p
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: Number of threads to use for multiprocessing.
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: Use GNU parallel to run multiple instances of snippy (can speed things
+    up if you have multiple cores available)
+  synonyms:
+  - -j
+  - --parallel
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: fastq reads are single end instead of paired-end. Use for ion torrent
+    or non-paired end illumina data
+  synonyms:
+  - -s
+  - --single_end
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use GTRGAMMA model instead of GTRCAT during the gubbins and RAxML tree
+    building steps.
+  synonyms:
+  - -m
+  - --gamma_model
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Algorithm used for building the phylogenetic tree (default: raxml)'
+  synonyms:
+  - -b
+  - --tree_builder
+  args: !ChoiceFlagArg
+    choices:
+    - raxml
+    - fasttree
+  optional: true
+- !Flag
+  description: Overwrite files in the output directories.
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Increase verbosity on command line output (n.b. verbose output is always
+    saved to snpiphy.log in the output directory).
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- snpiphy
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

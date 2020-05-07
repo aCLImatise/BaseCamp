@@ -1,0 +1,59 @@
+!Command
+positional:
+- !Positional
+  description: sequence file in fasta format
+  position: 0
+  name: seqfile
+  optional: false
+- !Positional
+  description: directory where proteome (each line corresponds to a protein sequence
+    database translated from a genome) files will be placed
+  position: 1
+  name: path2proteome
+  optional: false
+- !Positional
+  description: directory where the results of hmmsearch will be placed
+  position: 2
+  name: path2hmm
+  optional: false
+named:
+- !Flag
+  description: remove incomplete (partial) IS elements which include IS element with
+    length < 400 or single copy IS element without perfect TIR.
+  synonyms:
+  - --removeShortIS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use the annotated protein sequences in NCBI GenBank file (.gbk which
+    must be in the same folder with genome sequence file), instead of the protein
+    sequences predicted/translated by FragGeneScan. (Experimental feature!)
+  synonyms:
+  - --no-FragGeneScan
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: number of CPU cores used for FragGeneScan and hmmer. By default one
+    will be used.
+  synonyms:
+  - --nthread
+  args: !SimpleFlagArg
+    name: NTHREAD
+  optional: true
+command:
+- isescan.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,131 @@
+!Command
+positional:
+- !Positional
+  description: ': report an alignment which has the best alignmentscore and has the
+    smallest mapping coordinate in any reference.'
+  position: 0
+  name: leftmost
+  optional: false
+named:
+- !Flag
+  description: Do not split subreads at adapters. This is typically only  useful when
+    the genome in an unrolled version of a known template, and  contains template-adapter-reverse_template
+    sequence. For BAM input it reconstitutes full ZMW reads.
+  synonyms:
+  - --noSplitSubreads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Instead of reconstituting ZMW reads, this option reconstitutes polymerase
+    reads, omitting LQ regions. Polymerase reads are aligned, if at least one subread
+    is present.
+  synonyms:
+  - --polymerase
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (false)Ignore any hq regions in the region table.
+  synonyms:
+  - --ignoreHQRegions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (false)
+  synonyms:
+  - --placeRepeatsRandomly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When specified, adjacent insertion or deletions are allowed. Otherwise,
+    adjacent  insertion and deletions are merged into one operation.  Using quality
+    values  to guide pairwise alignments may dictate that the higher probability alignment  contains
+    adjacent insertions or deletions.  Current tools such as GATK do not permit this
+    and so they are not reported by default.
+  synonyms:
+  - --allowAdjacentIndels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (false) Use a fast heuristic algorithm to speed up sparse dynamic programming.
+  synonyms:
+  - --fastSDP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (-200) Maximum score to output (high is bad, negative good).
+  synonyms:
+  - --maxScore
+  args: !SimpleFlagArg
+    name: m
+  optional: true
+- !Flag
+  description: (0) Report alignments only if their lengths are greater than minAlnLength.
+  synonyms:
+  - --minAlnLength
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (0) Report alignments only if their percentage similarity is greater
+    than minPctSimilarity.
+  synonyms:
+  - --minPctSimilarity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (0) Report alignments only if their percentage accuracy is greater
+    than minAccuracy.
+  synonyms:
+  - --minPctAccuracy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (1) Align using N processes.  All large data structures such as the
+    suffix array and  tuple count table are shared.
+  synonyms:
+  - --nproc
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: (0) Index of the first read to begin aligning. This is useful when
+    multiple instances  are running on the same data, for example when on a multi-rack
+    cluster.
+  synonyms:
+  - --start
+  args: !SimpleFlagArg
+    name: S
+  optional: true
+- !Flag
+  description: (1) Align one read every 'S' reads.
+  synonyms:
+  - --stride
+  args: !SimpleFlagArg
+    name: S
+  optional: true
+- !Flag
+  description: (0) Proportion of reads to randomly subsample (expressed as a decimal)
+    and align.
+  synonyms:
+  - --subsample
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When specified, only align reads whose ZMW hole numbers are in LIST.
+    LIST is a comma-delimited string of ranges, such as '1,2,3,10-13'. This option
+    only works when reads are in bam, bax.h5 or plx.h5 format.
+  synonyms:
+  - --holeNumbers
+  args: !SimpleFlagArg
+    name: LIST
+  optional: true
+command:
+- blasr
+subcommands: []
+help_flag: !Flag
+  description: Print this help file.
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

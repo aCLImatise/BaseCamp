@@ -1,0 +1,134 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Write a log file (--log-level=DEBUG for debug mode, --log-level=INFO
+    for info mode)
+  synonyms:
+  - -ll
+  - --log-level
+  args: !SimpleFlagArg
+    name: LOG_LEVEL
+  optional: true
+- !Flag
+  description: Path to log file. (accepts "stdout")
+  synonyms:
+  - -l
+  - --log
+  args: !SimpleFlagArg
+    name: LOG
+  optional: true
+- !Flag
+  description: gene FASTA file from extract_gene_seq.py script
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: DNA mutations file
+  synonyms:
+  - -m
+  - --mutations
+  args: !SimpleFlagArg
+    name: MUTATIONS
+  optional: true
+- !Flag
+  description: BED file annotation of genes
+  synonyms:
+  - -b
+  - --bed
+  args: !SimpleFlagArg
+    name: BED
+  optional: true
+- !Flag
+  description: 'Number of processes to use. 0 indicates using a single process without
+    using a multiprocessing pool (more means Faster, default: 0).'
+  synonyms:
+  - -p
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: 'Number of permutations for null model. p-value precision increases
+    with more permutations (Default: 10000).'
+  synonyms:
+  - -n
+  - --num-permutations
+  args: !SimpleFlagArg
+    name: NUM_PERMUTATIONS
+  optional: true
+- !Flag
+  description: 'Number of DNA bases to use as context. 0 indicates no context. 1 indicates
+    only use the mutated base. 1.5 indicates using the base context used in CHASM
+    (http:/ /wiki.chasmsoftware.org/index.php/CHASM_Overview). 2 indicates using the
+    mutated base and the upstream base. 3 indicates using the mutated base and both
+    the upstream and downstream bases. (Default: 1.5)'
+  synonyms:
+  - -c
+  - --context
+  args: !SimpleFlagArg
+    name: CONTEXT
+  optional: true
+- !Flag
+  description: 'Directory containing score information in pickle files (Default: None).'
+  synonyms:
+  - -s
+  - --score-dir
+  args: !SimpleFlagArg
+    name: SCORE_DIR
+  optional: true
+- !Flag
+  description: Report counts for observed mutations stratified by the tumor sample
+  synonyms:
+  - -bs
+  - --by-sample
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use mutations that are not mapped to the the single reference transcript
+    for a gene specified in the bed file indicated by the -b option.
+  synonyms:
+  - -u
+  - --use-unmapped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Path to the genome fasta file. Required if --use- unmapped flag is
+    used. (Default: None)'
+  synonyms:
+  - -g
+  - --genome
+  args: !SimpleFlagArg
+    name: GENOME
+  optional: true
+- !Flag
+  description: Output text file of observed results (optional).
+  synonyms:
+  - -oo
+  - --observed-output
+  args: !SimpleFlagArg
+    name: OBSERVED_OUTPUT
+  optional: true
+- !Flag
+  description: Output text file of simulation results
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+command:
+- simulate_non_silent_ratio
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

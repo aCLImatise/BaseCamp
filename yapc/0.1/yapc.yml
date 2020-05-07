@@ -1,0 +1,84 @@
+!Command
+positional:
+- !Positional
+  description: Prefix to use for all output files
+  position: 0
+  name: OUTPUT_PREFIX
+  optional: false
+- !Positional
+  description: 'Name of the condition, BigWig files of first and second replicates;
+    all separated by spaces. (default: None)'
+  position: 1
+  name: CONDITION_REP1_REP2
+  optional: false
+named:
+- !Flag
+  description: "Width of the smoothing window used for the second derivative track.\
+    \ If the peak calls aren't capturing the peak shape well, try setting this to\
+    \ different values ranging from 75 to 200. (default: 150)"
+  synonyms:
+  - --smoothing-window-width
+  args: !SimpleFlagArg
+    name: SMOOTHING_WINDOW_WIDTH
+  optional: true
+- !Flag
+  description: 'Number of times smoothing is applied to the second derivative. (default:
+    3)'
+  synonyms:
+  - --smoothing-times
+  args: !SimpleFlagArg
+    name: SMOOTHING_TIMES
+  optional: true
+- !Flag
+  description: 'Discard concave regions smaller than the threshold specified. (default:
+    75)'
+  synonyms:
+  - --min-concave-region-width
+  args: !SimpleFlagArg
+    name: MIN_CONCAVE_REGION_WIDTH
+  optional: true
+- !Flag
+  description: 'Truncate IDR input to the number of peaks specified. (default: 100000)'
+  synonyms:
+  - --truncate-idr-input
+  args: !SimpleFlagArg
+    name: TRUNCATE_IDR_INPUT
+  optional: true
+- !Flag
+  description: 'Set final peak coordinates to the specified number of base pairs on
+    either side of the concave region mode. (default: None)'
+  synonyms:
+  - --fixed-peak-halfwidth
+  args: !SimpleFlagArg
+    name: FIXED_PEAK_HALFWIDTH
+  optional: true
+- !Flag
+  description: 'Use pseudoreplicates as implemented in modENCODE (Landt et al 2012;
+    around Fig 7): for each condition, assess peak reproducibility in replicates and
+    pseudoreplicates; report globalIDRs for the set with a larger number of peak calls
+    (at IDR=0.001). Pseudoreplicates are specified as the 3rd and 4th file name after
+    every condition. (default: False)'
+  synonyms:
+  - --pseudoreplicates
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Do not recompute (intermediate) output files if a file with the expected
+    name is already present. Enabling this can lead to funky behaviour e.g. in the
+    case of a previously interrupted run. (default: False)'
+  synonyms:
+  - --recycle
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- yapc
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

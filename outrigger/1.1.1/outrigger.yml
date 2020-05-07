@@ -1,0 +1,397 @@
+!Command
+positional: []
+named: []
+command:
+- outrigger
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Name of the folder where you saved the output from "outrigger index"
+      (default is ./outrigger_output, which is relative to the directory where you
+      called the program)". You will need this file for the next step, "outrigger
+      psi"
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: '[SJ_OUT_TAB [SJ_OUT_TAB ...]], --sj-out-tab [SJ_OUT_TAB [SJ_OUT_TAB
+      ...]] SJ.out.tab files from STAR aligner output. Not required if you specify
+      "--compiled-junction-reads"'
+    synonyms:
+    - -j
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Name of the splice junction files to detect novel exons and build
+      an index of alternative splicing events from. Not required if you specify SJ.out.tab
+      file with '--sj-out-tab'
+    synonyms:
+    - -c
+    - --junction-reads-csv
+    args: !SimpleFlagArg
+      name: JUNCTION_READS_CSV
+    optional: true
+  - !Flag
+    description: '[BAM [BAM ...]], --bam [BAM [BAM ...]] Location of bam files to
+      use for finding events.'
+    synonyms:
+    - -b
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Minimum number of reads per junction for that junction to count in
+      creating the index of splicing events (default=10)
+    synonyms:
+    - -m
+    - --min-reads
+    args: !SimpleFlagArg
+      name: MIN_READS
+    optional: true
+  - !Flag
+    description: Applies to STAR SJ.out.tab files only. If this flag is used, then
+      do not include reads that mapped to multiple locations in the genome, not uniquely
+      to a locus, in the read count for a junction. If inputting "bam" files, then
+      this means that reads with a mapping quality (MAPQ) of less than 255 are considered
+      "multimapped." This is the same thing as what the STAR aligner does. By default,
+      this is off, and all reads are used.
+    synonyms:
+    - --ignore-multimapping
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Maximum length of an exon detected *de novo* from the dataset. This
+      is to prevent multiple kilobase long exons from being accidentally created.
+      (default=100)
+    synonyms:
+    - -l
+    - --max-de-novo-exon-length
+    args: !SimpleFlagArg
+      name: MAX_DE_NOVO_EXON_LENGTH
+    optional: true
+  - !Flag
+    description: Name of the gtf file you want to use. If a gffutils feature database
+      doesn't already exist at this location plus '.db' (e.g. if your gtf is gencode.v19.annotation.gtf,
+      then the database is inferred to be gencode.v19.annotation.gtf.db), then a database
+      will be auto-created. Not required if you provide a pre-built database with
+      '--gffutils-db'
+    synonyms:
+    - -g
+    - --gtf-filename
+    args: !SimpleFlagArg
+      name: GTF_FILENAME
+    optional: true
+  - !Flag
+    description: Name of the gffutils database file you want to use. The exon IDs
+      defined here will be used in the function when creating splicing event names.
+      Not required if you provide a gtf file with '--gtf-filename'
+    synonyms:
+    - -d
+    - --gffutils-db
+    args: !SimpleFlagArg
+      name: GFFUTILS_DB
+    optional: true
+  - !Flag
+    description: 'If given, print debugging logging information to standard out (Warning:
+      LOTS of output. Not recommended unless you think something is going wrong)'
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Number of threads to use when parallelizing exon finding and file
+      reading. Default is -1, which means to use as many threads as are available.
+    synonyms:
+    - --n-jobs
+    args: !SimpleFlagArg
+      name: N_JOBS
+    optional: true
+  - !Flag
+    description: If set, then use a smaller memory footprint. By default, this is
+      off.
+    synonyms:
+    - --low-memory
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Which splice types to find. By default, "all" are used which at this
+      point is skipped exon (SE) and mutually exclusive exon (MXE) events. Can also
+      specify only one, e.g. "se" or both "se,mxe"
+    synonyms:
+    - --splice-types
+    args: !SimpleFlagArg
+      name: SPLICE_TYPES
+    optional: true
+  - !Flag
+    description: If the 'outrigger index' command was interrupted, there will be intermediate
+      files remaining. If you wish to restart outrigger and overwrite them all, use
+      this flag. If you want to continue from where you left off, use the '--resume'
+      flag. If neither is specified, the program exits and complains to the user.
+    synonyms:
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: If the 'outrigger index' command was interrupted, there will be intermediate
+      files remaining. If you want to continue from where you left off, use this flag.
+      The default action is to do nothing and ask the user for input.
+    synonyms:
+    - --resume
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - outrigger
+  - index
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Location of the genome fasta file for which to get the splice site
+      sequences from
+    synonyms:
+    - -f
+    - --fasta
+    args: !SimpleFlagArg
+      name: FASTA
+    optional: true
+  - !Flag
+    description: Either the genome name (e.g. "mm10" or "hg19") or location of the
+      genome chromosome sizes file for "bedtools flank" to make sure we do not accidentally
+      ask for genome positions that are outside of the defined range
+    synonyms:
+    - -g
+    - --genome
+    args: !SimpleFlagArg
+      name: GENOME
+    optional: true
+  - !Flag
+    description: Name of the folder where you saved the output from "outrigger index"
+      (default is ./outrigger_output/index, which is relative to the directory where
+      you called this program, assuming you have called "outrigger psi" in the same
+      folder as you called "outrigger index").
+    synonyms:
+    - -i
+    - --index
+    args: !SimpleFlagArg
+      name: INDEX
+    optional: true
+  - !Flag
+    description: Name of the folder where you saved the output from "outrigger index"
+      (default is ./outrigger_output, which is relative to the directory where you
+      called the program).
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: The intron-definition based splice sites that are allowed in the
+      data, which is in the format 5'/3' of the intron, and separated by commas for
+      different types. Default is GT/AG,GC/AG,AT/AC, which are the major and minor
+      spliceosome splice sites in mammalian systems.
+    synonyms:
+    - -s
+    - --valid-splice-sites
+    args: !SimpleFlagArg
+      name: VALID_SPLICE_SITES
+    optional: true
+  - !Flag
+    description: If given, print debugging logging information to standard out
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: If set, then use a smaller memory footprint. By default, this is
+      off.
+    synonyms:
+    - --low-memory
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - outrigger
+  - validate
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Name of the folder where you saved the output from "outrigger index"
+      (default is ./outrigger_output/index, which is relative to the directory where
+      you called this program, assuming you have called "outrigger psi" in the same
+      folder as you called "outrigger index")
+    synonyms:
+    - -i
+    - --index
+    args: !SimpleFlagArg
+      name: INDEX
+    optional: true
+  - !Flag
+    description: Name of the folder where you saved the output from "outrigger index"
+      (default is ./outrigger_output, which is relative to the directory where you
+      called the program). Cannot specify both an --index and --output with "psi"
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Name of the compiled splice junction file to calculate psi scores
+      on. Default is the '--output' folder's junctions/reads.csv file. Not required
+      if you specify SJ.out.tab files with '--sj-out-tab'
+    synonyms:
+    - -c
+    - --junction-reads-csv
+    args: !SimpleFlagArg
+      name: JUNCTION_READS_CSV
+    optional: true
+  - !Flag
+    description: '[SJ_OUT_TAB [SJ_OUT_TAB ...]], --sj-out-tab [SJ_OUT_TAB [SJ_OUT_TAB
+      ...]] SJ.out.tab files from STAR aligner output. Not required if you specify
+      a file with "--compiled- junction-reads"'
+    synonyms:
+    - -j
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[BAM [BAM ...]], --bam [BAM [BAM ...]] Bam files to use to calculate
+      psi on'
+    synonyms:
+    - -b
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Minimum number of reads per junction for calculating Psi (default=10)
+    synonyms:
+    - -m
+    - --min-reads
+    args: !SimpleFlagArg
+      name: MIN_READS
+    optional: true
+  - !Flag
+    description: How to deal with multiple junctions on an event - take the mean (default)
+      or the min? (the other option)
+    synonyms:
+    - -e
+    - --method
+    args: !SimpleFlagArg
+      name: METHOD
+    optional: true
+  - !Flag
+    description: If a junction one one side of an exon is bigger than the other side
+      of the exon by this amount, (default is 10, so 10x bigger), then do not use
+      this event
+    synonyms:
+    - -u
+    - --uneven-coverage-multiplier
+    args: !SimpleFlagArg
+      name: UNEVEN_COVERAGE_MULTIPLIER
+    optional: true
+  - !Flag
+    description: Applies to STAR SJ.out.tab files only. If this flag is used, then
+      do not include reads that mapped to multiple locations in the genome, not uniquely
+      to a locus, in the read count for a junction. If inputting "bam" files, then
+      this means that reads with a mapping quality (MAPQ) of less than 255 are considered
+      "multimapped." This is the same thing as what the STAR aligner does. By default,
+      this is off, and all reads are used.
+    synonyms:
+    - --ignore-multimapping
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Name of column in --splice-junction-csv containing reads to use.
+      (default='reads')
+    synonyms:
+    - --reads-col
+    args: !SimpleFlagArg
+      name: READS_COL
+    optional: true
+  - !Flag
+    description: Name of column in --splice-junction-csv containing sample ids to
+      use. (default='sample_id')
+    synonyms:
+    - --sample-id-col
+    args: !SimpleFlagArg
+      name: SAMPLE_ID_COL
+    optional: true
+  - !Flag
+    description: Name of column in --splice-junction-csv containing the ID of the
+      junction to use. Must match exactly with the junctions in the index.(default='junction_id')
+    synonyms:
+    - --junction-id-col
+    args: !SimpleFlagArg
+      name: JUNCTION_ID_COL
+    optional: true
+  - !Flag
+    description: If given, print debugging logging information to standard out
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Number of threads to use when parallelizing psi calculation and file
+      reading. Default is -1, which means to use as many threads as are available.
+    synonyms:
+    - --n-jobs
+    args: !SimpleFlagArg
+      name: N_JOBS
+    optional: true
+  - !Flag
+    description: If set, then use a smaller memory footprint. By default, this is
+      off.
+    synonyms:
+    - --low-memory
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - outrigger
+  - psi
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

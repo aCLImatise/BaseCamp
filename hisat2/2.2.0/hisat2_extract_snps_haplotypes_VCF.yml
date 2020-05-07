@@ -1,0 +1,86 @@
+!Command
+positional:
+- !Positional
+  description: input genome file (e.g. genome.fa)
+  position: 0
+  name: genome_file
+  optional: false
+- !Positional
+  description: 'A comma-seperated VCF files (plain text or gzipped file is accepted:
+    GRCh38_dbSNP_no_SVs.vcf or GRCh38_dbSNP_no_SVs.vcf.gz'
+  position: 1
+  name: VCF_fnames
+  optional: false
+- !Positional
+  description: base filename for SNPs and haplotypes
+  position: 2
+  name: base_fname
+  optional: false
+named:
+- !Flag
+  description: 'Reference type: gene, chromosome, and genome (default: genome)'
+  synonyms:
+  - --reference-type
+  args: !SimpleFlagArg
+    name: REFERENCE_TYPE
+  optional: true
+- !Flag
+  description: 'Maximum distance for variants to be in the same haplotype (default:
+    30)'
+  synonyms:
+  - --inter-gap
+  args: !SimpleFlagArg
+    name: INTER_GAP
+  optional: true
+- !Flag
+  description: 'Break a haplotype into several haplotypes (default: 50)'
+  synonyms:
+  - --intra-gap
+  args: !SimpleFlagArg
+    name: INTRA_GAP
+  optional: true
+- !Flag
+  description: Allow SNP IDs not beginning with rs
+  synonyms:
+  - --non-rs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'VCF file name for genotyping (default: empty)'
+  synonyms:
+  - --genotype-vcf
+  args: !SimpleFlagArg
+    name: GENOTYPE_VCF
+  optional: true
+- !Flag
+  description: 'A comma-separated list of genes to be genotyped (default: empty)'
+  synonyms:
+  - --genotype-gene-list
+  args: !SimpleFlagArg
+    name: GENOTYPE_GENE_LIST
+  optional: true
+- !Flag
+  description: Output extra files such as _backbone.fa and .ref
+  synonyms:
+  - --extra-files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: also print some statistics to stderr
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- hisat2_extract_snps_haplotypes_VCF.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

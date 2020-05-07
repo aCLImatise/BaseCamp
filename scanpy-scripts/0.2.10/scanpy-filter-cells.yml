@@ -1,0 +1,104 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: '[anndata|loom] Input object format.  [default: anndata]'
+  synonyms:
+  - -f
+  - --input-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[anndata|loom|zarr] Output object format.  [default: anndata]'
+  synonyms:
+  - -F
+  - --output-format
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Chunk size for writing output in zarr format.  [default: 1000]'
+  synonyms:
+  - -z
+  - --zarr-chunk-size
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: When specified, using it as prefix for exporting mtx files. If not
+    empty and not ending with "/" or "_", a "_" will be appended.
+  synonyms:
+  - -X
+  - --export-mtx
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: '[stdout|stderr]      Print output object summary info to specified
+    stream.'
+  synonyms:
+  - --show-obj
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Name of the variable that contains gene names, used for flagging mitochondria
+    genes when column "mito" is absent from `.var`. [default: index]'
+  synonyms:
+  - -g
+  - --gene-name
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: When set, list attributes that can be filtered on.
+  synonyms:
+  - -l
+  - --list-attr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '... Numerical parameters used to filter the data, in the format of
+    "-p name min max". Multiple -p entries allowed.'
+  synonyms:
+  - -p
+  - --param
+  args: !SimpleFlagArg
+    name: TEXT FLOAT FLOAT
+  optional: true
+- !Flag
+  description: <TEXT TEXT[,TEXT...]>... Categorical attributes used to filter the
+    data, in the format of "-c <name> <values>", where entries with attribute <name>
+    with value in <values> are kept. If <values> is preceded by "!", entries with
+    value in <values> are removed. Multiple -c entries allowed.
+  synonyms:
+  - -c
+  - --category
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '... Similar to --category in the format of "-s <name> <file>", but
+    the <file> to be a one- column table that provides the values. Multiple -s entries
+    allowed.'
+  synonyms:
+  - -s
+  - --subset
+  args: !SimpleFlagArg
+    name: TEXT FILENAME
+  optional: true
+- !Flag
+  description: When set, re-calculate `pct_counts_<qc_variable>` and `pct_counts_in_top_<n>_genes`
+    even if they exist.
+  synonyms:
+  - --force-recalc
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- scanpy-filter-cells
+subcommands: []
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

@@ -1,0 +1,183 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Prefix to use for output files. Required.
+  synonyms:
+  - --outprefix
+  args: !SimpleFlagArg
+    name: OUTPREFIX
+  optional: true
+- !Flag
+  description: Reference sequence in fasta format. If not already indexed with bwa,
+    this will be created automatically. A blast database is also required, again this
+    will be created automatically if it does not already exist. Required.
+  synonyms:
+  - --ref
+  args: !SimpleFlagArg
+    name: REF
+  optional: true
+- !Flag
+  description: Blast database corresponding to reference file (this argument is only
+    needed if the blast database was created with a different name).
+  synonyms:
+  - --refdb
+  args: !SimpleFlagArg
+    name: REFDB
+  optional: true
+- !Flag
+  description: Forward reads. Can be gzipped.
+  synonyms:
+  - --fq1
+  args: !SimpleFlagArg
+    name: FQ1
+  optional: true
+- !Flag
+  description: Reverse reads. Can be gzipped.
+  synonyms:
+  - --fq2
+  args: !SimpleFlagArg
+    name: FQ2
+  optional: true
+- !Flag
+  description: Interleaved forward and reverse reads.
+  synonyms:
+  - --fq12
+  args: !SimpleFlagArg
+    name: FQ12
+  optional: true
+- !Flag
+  description: Bam file containing reads mapped to the given reference. If the reads
+    have already been mapped, this option saves time compared to specifying the reads
+    in fastq format. If this option is specified then --fq* are ignored.
+  synonyms:
+  - --bam
+  args: !SimpleFlagArg
+    name: BAM
+  optional: true
+- !Flag
+  description: Use this assembly (fasta format) for detecting structural variants
+    instead of generating a new one. This option saves time if an assembly is already
+    available.
+  synonyms:
+  - --assembly
+  args: !SimpleFlagArg
+    name: ASSEMBLY
+  optional: true
+- !Flag
+  description: 'Additional parameters for running spades assembly. Enclose in quotes
+    and precede with a space. Default: " --cov-cutoff auto --disable-rr". Ignored
+    if --assembly is specified.'
+  synonyms:
+  - --spades_params
+  args: !SimpleFlagArg
+    name: SPADES_PARAMS
+  optional: true
+- !Flag
+  description: File containing known structural variants. Tab separated format with
+    two columns. First column is variant name. Second column contains a list of sequence
+    ranges representing deletions relative to the reference, or "none" for no deletions.
+    Each range should be written as "startpos-endpos", with multiple ranges ordered
+    by start position and separated by a "|" with no extra whitespace.
+  synonyms:
+  - --struct_profiles
+  args: !SimpleFlagArg
+    name: STRUCT_PROFILES
+  optional: true
+- !Flag
+  description: 'File containing known SNP profiles. Tab separated format with three
+    columns. First column: variant name, second column: homozygous SNPs, third column:
+    heterozygous SNPs. SNPs should be written as "refPOSalt", where "POS" is the position
+    of that SNP within the reference, "ref" is the reference base at that position
+    (A, C, G or T), and "alt" is the variant base at that position (A, C, G or T for
+    a homozygous SNP; M, R, W, S, Y or K for a heterozygous SNP). Multiple SNPs of
+    the same type (homozygous or heterozygous) should be ordered by position and separated
+    by a "|". "none" indicates no SNPs of the given type.'
+  synonyms:
+  - --snp_profiles
+  args: !SimpleFlagArg
+    name: SNP_PROFILES
+  optional: true
+- !Flag
+  description: Length of flanking region to extract. Required.
+  synonyms:
+  - --flank_len
+  args: !SimpleFlagArg
+    name: FLANK_LEN
+  optional: true
+- !Flag
+  description: Minimum read number for including a specific flanking sequence. Default
+    10.
+  synonyms:
+  - --min_reads
+  args: !SimpleFlagArg
+    name: MIN_READS
+  optional: true
+- !Flag
+  description: Minimum read number for each strand for including a specific flanking
+    sequence. Default 1.
+  synonyms:
+  - --min_each_strand
+  args: !SimpleFlagArg
+    name: MIN_EACH_STRAND
+  optional: true
+- !Flag
+  description: Minimum length of mapping for a read to be used in determining flanking
+    sequences. Higher values are more robust to spurious mapping. Lower values will
+    recover more reads. Default 30.
+  synonyms:
+  - --min_mapped_len
+  args: !SimpleFlagArg
+    name: MIN_MAPPED_LEN
+  optional: true
+- !Flag
+  description: Minimum quality value across extracted flanking sequence. Default 10.
+  synonyms:
+  - --min_qual
+  args: !SimpleFlagArg
+    name: MIN_QUAL
+  optional: true
+- !Flag
+  description: Display presence/absence for a specific region of interest within the
+    reference (e.g. to display blaKPC presence/absence with the Tn4401b-1 reference,
+    use "7202-8083")
+  synonyms:
+  - --show_region
+  args: !SimpleFlagArg
+    name: SHOW_REGION
+  optional: true
+- !Flag
+  description: 'Number of threads to use for mapping and assembly steps. Default:
+    1'
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: '{1,2,3,4}, --verbosity {1,2,3,4} Verbosity level for logging to stderr.
+    1 = ERROR, 2 = WARNING, 3 = INFO, 4 = DUBUG. Default: 3.'
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Flag to prevent accidental overwriting of previous output files. In
+    this mode, the pipeline checks for a log file named according to the given output
+    prefix. If it exists then the pipeline exits without modifying any files.
+  synonyms:
+  - --no_overwrite
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- TETyper.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

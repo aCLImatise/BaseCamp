@@ -1,0 +1,304 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Name of the BAM files used to create the mpileup.
+  synonyms:
+  - --in
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Directory from which to read intermediate results.
+  synonyms:
+  - --il
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: File name of exclusion list (VCF format), containing  loci which should
+    be ignored.
+  synonyms:
+  - --ex
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: File name of mutations to exclude during the  sequencing error rate
+    estimation (VCF format).
+  synonyms:
+  - --me
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: File name of inclusion list (VCF format) containing  Variants (CHROM,
+    POS, REF, ALT) that should be  included.
+  synonyms:
+  - --inc
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Prefix of output files.
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: This option is deprecated. The index will be saved in  a folder specified
+    with -o in "last_index". If  desired, one can continue from here to explore more  search
+    space.
+  synonyms:
+  - --ol
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Sampling step. If a value x different from 0 is  specified, every x
+    iteration, after the burn in phase, an index will be writen to disk to provide
+    a posterior sampling. [0]
+  synonyms:
+  - --sa
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Maximal number of iterations before sampling form the  posterior distribution
+    of the mutation to cell  assignment. [1000000]
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Number of iterations in which the mutation to cell  assignment is sampled.
+    [100000]
+  synonyms:
+  - --ls
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Set to 1 if zygosity should be learned. The zygosity  rate is the fraction
+    of mutations which are homozygous in all cells. [0]
+  synonyms:
+  - --lz
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Zygosity rate. [0]
+  synonyms:
+  - --zyg
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Prior mutation rate [0.0001].
+  synonyms:
+  - --pr
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '[ --uniq ] arg      Mark loci with this number of cells being mutated
+    as  "PASS". [1]'
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Parameter estimation rate, i.e. the fraction of loops  used to estimate
+    the different parameters. [0.2]
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Data usage rate increment steps. In order to speed up  the algorithm
+    one can choose to iteratively add more  and more of the candidate loci while learning
+    the tree model. For example, 0.1 would mean to start with 10%  of the data, then
+    use 20%, and so on. Per default, all data is used from the start. [1]
+  synonyms:
+  - --ur
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Seed for the random number generator. [42]
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Tree score type [m (max), s (sum)]. [s]
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Mean error rate. If the sequencing error rate should  not be learned
+    "--ese 0" one can specify it. [0.001]
+  synonyms:
+  - --wildMean
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Initial overdispersion for wild type. The  overdispersion is learned
+    during the tree traversal.  [100]
+  synonyms:
+  - --wildOverDis
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Initial overdispersion for mutant type. The  overdispersion is learned
+    during the tree  traversal.[2]
+  synonyms:
+  - --mutationOverDis
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Estimate the sequencing error rate. [1]
+  synonyms:
+  - --ese
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: PCR substitution rate. An error early during the PCR  amplification
+    can result in high allele fractions.  These are typically filtered out by requiring
+    at least two cells to be mutated. However, sometimes the PCR  error in one cell
+    is a real mutation in others. If in  such a scenario the coverage for the cell
+    with the PCR error is high, SCIPhI will introduce false positives.  This can be
+    avoided by specifying the PCR error rate.  As these events are rather unlikely
+    very small values, such as 0.0000001 should be chosen. In practice 0  works very
+    well.  [0]
+  synonyms:
+  - --sub
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Window size in which only x (see option "--mmw")  mutations are allowed
+    to be present. Some sequences  are prone to produce sequencing errors, which can
+    be  avoided by specifying a range in which only x  mutations are allowed. [1]
+  synonyms:
+  - --md
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Maximum number of mutations allowed per window. [1]
+  synonyms:
+  - --mmw
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Number of tumor cells required to have a mutation in  order to be called.
+    [2]
+  synonyms:
+  - --cwm
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Number of cells which need to pass the filters  described below. [2]
+  synonyms:
+  - --mnp
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Minimum coverage required per cell. [1]
+  synonyms:
+  - --mc
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Minimum number of reads required to support the  alternative. [3]
+  synonyms:
+  - --ms
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Minimum required frequency of reads supporting the  alternative per
+    cell. [0]
+  synonyms:
+  - --mf
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Mean of acceptable variant allele frequency across all cells for a
+    specific locus. Mapping artifacts may  result in low allele frequencies across
+    cells. In  order to filter these events out we apply a  log-likelihood ratio test
+    where the sequencing error  model has a mean of this value. [0.25]
+  synonyms:
+  - --mff
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Loci with up to this number of alternative supporting  reads in the
+    bulk control sample will be skipped as  germline. [2]
+  synonyms:
+  - --bns
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Minimum required coverage of reads in the bulk control sample. [6]
+  synonyms:
+  - --bnc
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Normal cell filter. Currently there are three options: (0) Do not
+    use the normal cells for filtering; (1) use a simple filtering scheme excluding
+    mutations if the  probability of being mutated is higher than not being  mutated
+    for any cell independently; (2) filter  mutations where the probability that at
+    least one cell is mutated is higher than no cell is mutated. Note  that in contrast
+    to (1) the cells are not independent  and cells with no alternative support need
+    to be  explained via dropout events. [1]'
+  synonyms:
+  - --ncf
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Maximum number of control cells allowed to be mutated. [0]
+  synonyms:
+  - --mnc
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Use normal cells for tree reconstruction. [false]
+  synonyms:
+  - --unc
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+command:
+- sciphi
+subcommands: []
+help_flag: !Flag
+  description: '[ --help ]          Print this help'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
