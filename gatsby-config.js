@@ -35,7 +35,7 @@ module.exports = {
         branch: 'master',
         remote: `git@github.com:aCLImatise/ToolDefinitions.git`,
         patterns: 'bwa/**',
-        local: 'ToolDefinitions'
+        local: `${__dirname}/ToolDefinitions`
       }
     },
     {
@@ -45,7 +45,7 @@ module.exports = {
         branch: 'master',
         remote: `git@github.com:aCLImatise/ToolWrappers.git`,
         patterns: 'bwa/**',
-        local: 'ToolWrappers'
+        local: `${__dirname}/ToolWrappers`
       }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
