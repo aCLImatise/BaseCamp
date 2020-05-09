@@ -5,6 +5,7 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -26,6 +27,26 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
+    },
+    {
+      resolve: `gatsby-source-git`,
+      options: {
+        name: `Definitions`,
+        branch: 'master',
+        remote: `git@github.com:aCLImatise/ToolDefinitions.git`,
+        patterns: 'bwa/**',
+        local: 'ToolDefinitions'
+      }
+    },
+    {
+      resolve: `gatsby-source-git`,
+      options: {
+        name: `Wrappers`,
+        branch: 'master',
+        remote: `git@github.com:aCLImatise/ToolWrappers.git`,
+        patterns: 'bwa/**',
+        local: 'ToolWrappers'
+      }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
