@@ -21,6 +21,7 @@ exports.createSchemaCustomization = ({ actions: {createTypes}, schema }) => {
     schema.buildObjectType({
       name: "CondaExecutable",
       fields: {
+		wrappers: "[File]",
         name: "String!",
         path: "String!",
         publicURL: "String!",
@@ -32,12 +33,13 @@ exports.createSchemaCustomization = ({ actions: {createTypes}, schema }) => {
 
 // You can delete this file if you're not using it
 exports.createPages = async ({ graphql, actions, getNode, createContentDigest, createNodeId}) => {
-  const { createNode, createPage, createParentChildLink } = actions
+  const { createNode, createNodeField, createPage, createParentChildLink } = actions
   const result = await graphql(`
         {
           allFile(filter: {sourceInstanceName: {in: ["Wrappers", "Definitions"]}}) {
             edges {
               node {
+			  	id
                 relativePath
                 extension
                 publicURL
@@ -99,6 +101,7 @@ exports.createPages = async ({ graphql, actions, getNode, createContentDigest, c
         path: node.relativePath.split('.')[0],
         publicURL: exeUrl,
         parent: versionId,
+		wrappers: [],
         internal: {
           type: "CondaExecutable",
           contentDigest: node.relativePath
@@ -110,7 +113,10 @@ exports.createPages = async ({ graphql, actions, getNode, createContentDigest, c
     createParentChildLink({parent: version, child: exe});
 
     // Link the executable to the wrapper
-    createParentChildLink({parent: exe, child: node});
+	const wrappers = exe.wrappers || [];
+	wrappers.push(node.id)
+	createNodeField({node: exe, name: 'wrappers___NODE', value: wrappers});
+	createNodeField({node: exe, name: 'children___NODE', value: wrappers});
 
     // Create the package components
     await createPage({

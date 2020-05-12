@@ -6,9 +6,9 @@ import Table from "react-bulma-components/lib/components/table"
 import Card from "react-bulma-components/lib/components/card"
 import Heading from "react-bulma-components/lib/components/heading"
 import List from "react-bulma-components/lib/components/list"
-import SyntaxHighlighter from "react-syntax-highlighter"
-import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs"
 import axios from "axios"
+import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
 const useAxios = (config) => {
   const [data, updateData] = useState(undefined)
@@ -21,7 +21,7 @@ const useAxios = (config) => {
     }
 
     fetchData()
-  }, [url])
+  }, [config])
 
   return data
 }
@@ -42,19 +42,24 @@ export const query = graphql`
                     }
                 }
             }
-            children {
-                ... on File {
-                    id
-                    relativePath
-                    publicURL
-                }
+			children {
+				...on File {
+					id
+					relativePath
+					publicURL
+				}
+			}
+            wrappers {
+				id
+				relativePath
+				publicURL
             }
         }
     }
 `
 
 function Wrapper({ file }) {
-  const data = useAxios({ url: file.public, method: "get", responseType: "text" });
+  const data = useAxios({ url: file.publicURL, method: "get", responseType: "text" });
   return (
     <Card>
       <Card.Image>
@@ -73,9 +78,9 @@ export default function Executable({ data }) {
   return (
     <Section>
       <Container>
-        <Heading level={2}>`${pack.name} ${version.name} ${exe.name}`</Heading>
+        <Heading level={2}>{`${pack.name} ${version.name} ${exe.name}`}</Heading>
         <Heading level={3}>Wrappers</Heading>
-        {exe.children.map(wrapper => {
+        {exe.wrappers.map(wrapper => {
           return <Wrapper file={wrapper}/>
         })}
       </Container>
