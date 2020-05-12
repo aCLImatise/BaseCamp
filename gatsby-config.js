@@ -38,7 +38,7 @@ module.exports = {
       options: {
         name: `Definitions`,
         branch: 'master',
-        remote: `git@github.com:aCLImatise/ToolDefinitions.git`,
+        remote: `https://github.com/aCLImatise/ToolDefinitions.git`,
         patterns: 'bwa/**',
         local: `${__dirname}/ToolDefinitions`
       }
@@ -48,7 +48,7 @@ module.exports = {
       options: {
         name: `Wrappers`,
         branch: 'master',
-        remote: `git@github.com:aCLImatise/ToolWrappers.git`,
+        remote: `https://github.com/aCLImatise/ToolWrappers.git`,
         patterns: 'bwa/**',
         local: `${__dirname}/ToolWrappers`
       }
