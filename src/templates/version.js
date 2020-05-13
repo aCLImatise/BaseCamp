@@ -5,6 +5,7 @@ import Section from "react-bulma-components/lib/components/section"
 import Table from 'react-bulma-components/lib/components/table';
 import Heading from 'react-bulma-components/lib/components/heading';
 import List from "react-bulma-components/lib/components/list"
+import Breadcrumb from "react-bulma-components/lib/components/breadcrumb"
 
 export const query = graphql`
     query version($version: String) {
@@ -30,10 +31,28 @@ export const query = graphql`
 
 export default function Version({data}) {
   const version = data.condaVersion;
+  const pack = version.parent;
   return (
     <Section>
       <Container>
         <Heading level={2}>{`${version.parent.name} ${version.name}`}</Heading>
+        <Breadcrumb
+          hrefAttr="href"
+          items={[
+            {
+              name: 'Home',
+              url: '/'
+            },
+            {
+              name: pack.name,
+              url: pack.publicURL
+            },
+            {
+              name: version.name,
+              url: version.publicURL
+            }
+          ]}
+        />
         <Heading level={3}>Executables</Heading>
         <List>
           {version.children.map(child => {

@@ -146,6 +146,6 @@ exports.createPages = async ({ graphql, actions, getNode, createContentDigest, c
     // Link the executable to the wrapper
     const wrappers = exe.wrappers || [];
     wrappers.push(node.id)
-    createNodeField({node: exe, name: 'wrappers___NODE', value: wrappers});
+    createNodeField({node: exe, name: 'wrappers', value: wrappers});
   }));
 }

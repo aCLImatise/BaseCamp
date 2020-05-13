@@ -6,6 +6,7 @@ import Table from 'react-bulma-components/lib/components/table';
 import Heading from 'react-bulma-components/lib/components/heading';
 import Box from 'react-bulma-components/lib/components/box';
 import List from 'react-bulma-components/lib/components/list';
+import Breadcrumb from "react-bulma-components/lib/components/breadcrumb"
 
 export const query = graphql`
     query package($package: String) {
@@ -28,6 +29,19 @@ export default function Package({path, location, pageResources, data}) {
   return (
     <Section>
       <Container>
+        <Breadcrumb
+          hrefAttr="href"
+          items={[
+            {
+              name: 'Home',
+              url: '/'
+            },
+            {
+              name: pack.name,
+              url: pack.publicURL
+            }
+          ]}
+        />
         <Heading size={2}>{pack.name} Package</Heading>
         <Heading size={3}>Detail</Heading>
         <Table>
