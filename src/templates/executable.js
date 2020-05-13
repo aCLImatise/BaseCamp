@@ -75,6 +75,7 @@ function Wrapper({ file }) {
     <Card>
     <Card.Header>
       <Card.Header.Title>{file.extension}</Card.Header.Title>
+      <Card.Header.Icon></Card.Header.Icon>
     </Card.Header>
       <Card.Content>
         <SyntaxHighlighter style={dark} language={chooseLanguage(file.extension)}>

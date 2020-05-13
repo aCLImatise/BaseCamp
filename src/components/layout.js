@@ -11,6 +11,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Container from "react-bulma-components/lib/components/container"
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import Header from "./header"
+import {Helmet} from "react-helmet";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -25,6 +26,9 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <Helmet>
+        <title>BaseCamp</title>
+      </Helmet>
       <Header siteTitle={data.site.siteMetadata.title} />
       <Container>
         {children}
