@@ -46,7 +46,7 @@ exports.createPages = async ({ graphql, actions, getNode, createContentDigest, c
   // Only select files 3 levels deep, from the git repos
   const result = await graphql(`
         {
-          allFile(filter: {filter: {relativePath: {regex: "/.*/.*/.*/"}}, sourceInstanceName: {in: ["Wrappers", "Definitions"]}}) {
+          allFile(filter: {relativePath: {regex: "/.*/.*/.*/"}, sourceInstanceName: {in: ["Wrappers", "Definitions"]}}) {
             edges {
               node {
                 id
