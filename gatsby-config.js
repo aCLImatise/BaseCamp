@@ -18,21 +18,21 @@ module.exports = {
       resolve: `gatsby-source-git`,
       options: {
         name: `Definitions`,
-        branch: 'master',
+        branch: "master",
         remote: `https://github.com/aCLImatise/ToolDefinitions.git`,
         // patterns: 'bwa/**',
-        local: `${__dirname}/ToolDefinitions`
-      }
+        local: `${__dirname}/ToolDefinitions`,
+      },
     },
     {
       resolve: `gatsby-source-git`,
       options: {
         name: `Wrappers`,
-        branch: 'master',
+        branch: "master",
         remote: `https://github.com/aCLImatise/ToolWrappers.git`,
         // patterns: 'bwa/**',
-        local: `${__dirname}/ToolWrappers`
-      }
+        local: `${__dirname}/ToolWrappers`,
+      },
     },
   ],
 }

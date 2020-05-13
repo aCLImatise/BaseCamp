@@ -10,34 +10,34 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 export const query = graphql`
-    query version($version: String) {
-        condaVersion(id: {eq: $version}) {
-            name
-            parent {
-                ...on CondaPackage {
-                    name
-                    publicURL
-                }
-            }
-            children {
-                ... on CondaExecutable {
-                    id
-                    path
-                    name
-                    publicURL
-                }
-            }
+  query version($version: String) {
+    condaVersion(id: { eq: $version }) {
+      name
+      parent {
+        ... on CondaPackage {
+          name
+          publicURL
         }
+      }
+      children {
+        ... on CondaExecutable {
+          id
+          path
+          name
+          publicURL
+        }
+      }
     }
+  }
 `
 
 export default function Version({ data }) {
   const version = data.condaVersion
-  const title = `${version.parent.name} ${version.name}`;
+  const title = `${version.parent.name} ${version.name}`
   const pack = version.parent
   return (
     <Layout>
-      <SEO title={`BaseCamp | ${title}`} description={title}/>
+      <SEO title={`BaseCamp | ${title}`} description={title} />
       <Section>
         <Container>
           <Breadcrumb
@@ -45,19 +45,23 @@ export default function Version({ data }) {
             items={[
               {
                 name: pack.name,
-                url: pack.publicURL
+                url: pack.publicURL,
               },
               {
                 name: version.name,
-                url: version.publicURL
-              }
+                url: version.publicURL,
+              },
             ]}
           />
           <Heading level={2}>{}</Heading>
           <Heading level={3}>Executables</Heading>
           <List>
             {version.children.map(child => {
-              return <List.Item renderAs={"a"} href={withPrefix(child.publicURL)}>{child.name}</List.Item>
+              return (
+                <List.Item renderAs={"a"} href={withPrefix(child.publicURL)}>
+                  {child.name}
+                </List.Item>
+              )
             })}
           </List>
         </Container>
