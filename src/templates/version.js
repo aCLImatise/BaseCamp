@@ -45,11 +45,11 @@ export default function Version({ data }) {
             items={[
               {
                 name: pack.name,
-                url: pack.publicURL,
+                url: withPrefix(pack.publicURL),
               },
               {
                 name: version.name,
-                url: version.publicURL,
+                url: withPrefix(version.publicURL),
               },
             ]}
           />

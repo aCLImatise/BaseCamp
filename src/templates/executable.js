@@ -84,7 +84,7 @@ function Wrapper({ file }) {
       <Card.Header>
         <Card.Header.Title>{file.extension}</Card.Header.Title>
         <Card.Header.Icon>
-          <a href={withPrefix(file.publicURL)} download>
+          <a href={file.publicURL} download>
             <Icon>
               <FontAwesomeIcon icon={faDownload} />
             </Icon>
