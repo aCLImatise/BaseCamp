@@ -53,7 +53,7 @@ export default function Version({ data }) {
               },
             ]}
           />
-          <Heading level={2}>{}</Heading>
+          <Heading level={2}>{title}</Heading>
           <Heading level={3}>Executables</Heading>
           <List>
             {version.children.map(child => {

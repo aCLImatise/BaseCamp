@@ -131,7 +131,7 @@ export default function Executable({ data }) {
               },
             ]}
           />
-          <Heading level={2}>{}</Heading>
+          <Heading level={2}>{title}</Heading>
           <Heading level={3}>Wrappers</Heading>
           {exe.wrappers.map(wrapper => {
             return <Wrapper file={wrapper} />
