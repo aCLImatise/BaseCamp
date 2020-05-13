@@ -110,7 +110,7 @@ export default function Executable({ data }) {
   const title = `${pack.name} ${version.name} ${exe.name}`
   return (
     <Layout>
-      <SEO title={`BaseCamp | ${title}`} description={title} />
+      <SEO title={title} />
       <Section>
         <Container>
           <Breadcrumb
