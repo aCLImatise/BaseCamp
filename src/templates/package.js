@@ -30,7 +30,7 @@ export default function Package({ path, location, pageResources, data }) {
   const condaUrl = `https://anaconda.org/bioconda/${pack.name}`
   return (
     <Layout>
-      <SEO title={`BaseCamp | ${pack.name}`} description={title} />
+      <SEO title={`BaseCamp | ${pack.name}`} description={pack.name} />
       <Section>
         <Container>
           <Heading size={2}>{pack.name} Package</Heading>

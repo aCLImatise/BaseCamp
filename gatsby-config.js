@@ -13,7 +13,14 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    `gatsby-source-filesystem`,
+    {
+      // We need this so that gatsby-source-git works properly 
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `dummy`,
+        path: `${__dirname}/src/dummy`,
+      },
+    },
     {
       resolve: `gatsby-source-git`,
       options: {
