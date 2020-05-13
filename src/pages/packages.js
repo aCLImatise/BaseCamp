@@ -1,6 +1,7 @@
 // Gatsby supports TypeScript natively!
 import React from "react"
 import { PageProps, Link, useStaticQuery } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import { List } from "react-bulma-components/src"
