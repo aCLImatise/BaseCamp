@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, withPrefix } from "gatsby"
 import Container from "react-bulma-components/lib/components/container"
 import Section from "react-bulma-components/lib/components/section"
 import Table from "react-bulma-components/lib/components/table"
@@ -46,7 +46,7 @@ export default function Package({ path, location, pageResources, data }) {
           <Heading size={3}>Versions</Heading>
           <List>
             {pack.children.map(child => {
-              return <List.Item renderAs={"a"} href={child.publicURL}>{child.name}</List.Item>
+              return <List.Item renderAs={"a"} href={withPrefix(child.publicURL)}>{child.name}</List.Item>
             })}
           </List>
         </Container>

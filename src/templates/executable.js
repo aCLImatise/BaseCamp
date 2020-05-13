@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { graphql } from "gatsby"
+import { graphql, withPrefix } from "gatsby"
 import Container from "react-bulma-components/lib/components/container"
 import Section from "react-bulma-components/lib/components/section"
 import Table from "react-bulma-components/lib/components/table"
@@ -98,13 +98,13 @@ export default function Executable({ data }) {
             items={[
               {
                 name: pack.name,
-                url: pack.publicURL
+                url: withPrefix(pack.publicURL)
               }, {
                 name: version.name,
-                url: version.publicURL
+                url: withPrefix(version.publicURL)
               }, {
                 name: exe.name,
-                url: exe.publicURL,
+                url: withPrefix(exe.publicURL),
                 active: true
               }
             ]}

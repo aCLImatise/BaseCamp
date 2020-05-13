@@ -1,6 +1,6 @@
 // Gatsby supports TypeScript natively!
 import React from "react"
-import { PageProps, Link, useStaticQuery } from "gatsby"
+import { useStaticQuery, withPrefix } from "gatsby"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
@@ -30,7 +30,7 @@ export default function SecondPage() {
               </Heading>
               <List>
                 {data.allCondaPackage.nodes.map(pack => {
-                  return <List.Item renderAs={'a'} href={pack.publicURL}>
+                  return <List.Item renderAs={'a'} href={withPrefix(pack.publicURL)}>
                     {pack.name}
                   </List.Item>
                 })}
