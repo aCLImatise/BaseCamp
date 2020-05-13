@@ -2,10 +2,11 @@ import React from "react"
 import { graphql } from "gatsby"
 import Container from "react-bulma-components/lib/components/container"
 import Section from "react-bulma-components/lib/components/section"
-import Table from 'react-bulma-components/lib/components/table';
-import Heading from 'react-bulma-components/lib/components/heading';
+import Table from "react-bulma-components/lib/components/table"
+import Heading from "react-bulma-components/lib/components/heading"
 import List from "react-bulma-components/lib/components/list"
 import Breadcrumb from "react-bulma-components/lib/components/breadcrumb"
+import Layout from "../components/layout"
 
 export const query = graphql`
     query version($version: String) {
@@ -27,39 +28,41 @@ export const query = graphql`
             }
         }
     }
-`;
+`
 
-export default function Version({data}) {
-  const version = data.condaVersion;
-  const pack = version.parent;
+export default function Version({ data }) {
+  const version = data.condaVersion
+  const pack = version.parent
   return (
-    <Section>
-      <Container>
-        <Heading level={2}>{`${version.parent.name} ${version.name}`}</Heading>
-        <Breadcrumb
-          hrefAttr="href"
-          items={[
-            {
-              name: 'Home',
-              url: '/'
-            },
-            {
-              name: pack.name,
-              url: pack.publicURL
-            },
-            {
-              name: version.name,
-              url: version.publicURL
-            }
-          ]}
-        />
-        <Heading level={3}>Executables</Heading>
-        <List>
-          {version.children.map(child => {
-            return <List.Item renderAs={"a"} href={child.publicURL}>{child.name}</List.Item>
-          })}
-        </List>
-      </Container>
-    </Section>
+    <Layout>
+      <Section>
+        <Container>
+          <Breadcrumb
+            hrefAttr="href"
+            items={[
+              {
+                name: "Home",
+                url: "/"
+              },
+              {
+                name: pack.name,
+                url: pack.publicURL
+              },
+              {
+                name: version.name,
+                url: version.publicURL
+              }
+            ]}
+          />
+          <Heading level={2}>{`${version.parent.name} ${version.name}`}</Heading>
+          <Heading level={3}>Executables</Heading>
+          <List>
+            {version.children.map(child => {
+              return <List.Item renderAs={"a"} href={child.publicURL}>{child.name}</List.Item>
+            })}
+          </List>
+        </Container>
+      </Section>
+    </Layout>
   )
 }

@@ -11,6 +11,8 @@ import { dark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import Breadcrumb from "react-bulma-components/lib/components/breadcrumb"
 
+import Layout from "../components/layout"
+
 /**
  * Choose a syntax highlighting language based on the file extension
  */
@@ -85,34 +87,36 @@ export default function Executable({ data }) {
   const version = exe.parent
   const pack = exe.parent.parent
   return (
-    <Section>
-      <Container>
-        <Breadcrumb
-          hrefAttr="href"
-          items={[
-            {
-              name: "Home",
-              url: "/"
-            },
-            {
-              name: pack.name,
-              url: pack.publicURL
-            }, {
-              name: version.name,
-              url: version.publicURL
-            }, {
-              name: exe.name,
-              url: exe.publicURL,
-              active: true
-            }
-          ]}
-        />
-        <Heading level={2}>{`${pack.name} ${version.name} ${exe.name}`}</Heading>
-        <Heading level={3}>Wrappers</Heading>
-        {exe.wrappers.map(wrapper => {
-          return <Wrapper file={wrapper}/>
-        })}
-      </Container>
-    </Section>
+    <Layout>
+      <Section>
+        <Container>
+          <Breadcrumb
+            hrefAttr="href"
+            items={[
+              {
+                name: "Home",
+                url: "/"
+              },
+              {
+                name: pack.name,
+                url: pack.publicURL
+              }, {
+                name: version.name,
+                url: version.publicURL
+              }, {
+                name: exe.name,
+                url: exe.publicURL,
+                active: true
+              }
+            ]}
+          />
+          <Heading level={2}>{`${pack.name} ${version.name} ${exe.name}`}</Heading>
+          <Heading level={3}>Wrappers</Heading>
+          {exe.wrappers.map(wrapper => {
+            return <Wrapper file={wrapper}/>
+          })}
+        </Container>
+      </Section>
+    </Layout>
   )
 }
