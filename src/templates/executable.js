@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { graphql, withPrefix } from "gatsby"
+import { graphql, withPrefix, Link } from "gatsby"
 import Container from "react-bulma-components/lib/components/container"
 import Section from "react-bulma-components/lib/components/section"
 import Table from "react-bulma-components/lib/components/table"
@@ -10,6 +10,7 @@ import axios from "axios"
 import { dark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import Breadcrumb from "react-bulma-components/lib/components/breadcrumb"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import Layout from "../components/layout"
 
@@ -73,10 +74,14 @@ function Wrapper({ file }) {
   const data = useAxios({ url: file.publicURL, method: "get", responseType: "text" })
   return (
     <Card>
-    <Card.Header>
-      <Card.Header.Title>{file.extension}</Card.Header.Title>
-      <Card.Header.Icon></Card.Header.Icon>
-    </Card.Header>
+      <Card.Header>
+        <Card.Header.Title>{file.extension}</Card.Header.Title>
+        <Card.Header.Icon>
+          <a href={withPrefix(file.publicURL)} download>
+            <FontAwesomeIcon icon={"download"}/>
+          </a>
+        </Card.Header.Icon>
+      </Card.Header>
       <Card.Content>
         <SyntaxHighlighter style={dark} language={chooseLanguage(file.extension)}>
           {data}
