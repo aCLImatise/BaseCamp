@@ -31,19 +31,6 @@ export default function Package({ path, location, pageResources, data }) {
     <Layout>
       <Section>
         <Container>
-          <Breadcrumb
-            hrefAttr="href"
-            items={[
-              {
-                name: "Home",
-                url: "/"
-              },
-              {
-                name: pack.name,
-                url: pack.publicURL
-              }
-            ]}
-          />
           <Heading size={2}>{pack.name} Package</Heading>
           <Heading size={3}>Detail</Heading>
           <Table>

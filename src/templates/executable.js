@@ -73,6 +73,9 @@ function Wrapper({ file }) {
   const data = useAxios({ url: file.publicURL, method: "get", responseType: "text" })
   return (
     <Card>
+    <Card.Header>
+      <Card.Header.Title>{file.extension}</Card.Header.Title>
+    </Card.Header>
       <Card.Content>
         <SyntaxHighlighter style={dark} language={chooseLanguage(file.extension)}>
           {data}
@@ -93,10 +96,6 @@ export default function Executable({ data }) {
           <Breadcrumb
             hrefAttr="href"
             items={[
-              {
-                name: "Home",
-                url: "/"
-              },
               {
                 name: pack.name,
                 url: pack.publicURL

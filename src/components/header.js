@@ -2,13 +2,13 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import Navbar from 'react-bulma-components/lib/components/navbar';
-import { Heading } from "react-bulma-components/src"
+import Heading from 'react-bulma-components/lib/components/heading';
 
 const Header = ({ siteTitle }) => (
-  <Navbar>
+  <Navbar color="primary">
     <Navbar.Brand>
-      <Navbar.Item renderAs="a" href="#">
-        <Heading>
+      <Navbar.Item renderAs="a" href="/">
+        <Heading style={{color: "white"}}>
           {siteTitle}
         </Heading>
       </Navbar.Item>
@@ -20,11 +20,6 @@ const Header = ({ siteTitle }) => (
           Packages
         </Navbar.Item>
       </Navbar.Container>
-      {/*<Navbar.Container position="end">*/}
-      {/*  <Navbar.Item href="#">*/}
-      {/*    At the end*/}
-      {/*  </Navbar.Item>*/}
-      {/*</Navbar.Container>*/}
     </Navbar.Menu>
   </Navbar>
 )

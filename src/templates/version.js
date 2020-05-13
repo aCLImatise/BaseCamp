@@ -41,10 +41,6 @@ export default function Version({ data }) {
             hrefAttr="href"
             items={[
               {
-                name: "Home",
-                url: "/"
-              },
-              {
                 name: pack.name,
                 url: pack.publicURL
               },
