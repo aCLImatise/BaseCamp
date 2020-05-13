@@ -11,6 +11,8 @@ import { dark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import Breadcrumb from "react-bulma-components/lib/components/breadcrumb"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Icon from 'react-bulma-components/lib/components/icon';
+import { faDownload } from '@fortawesome/free-solid-svg-icons'
 
 import Layout from "../components/layout"
 
@@ -78,7 +80,9 @@ function Wrapper({ file }) {
         <Card.Header.Title>{file.extension}</Card.Header.Title>
         <Card.Header.Icon>
           <a href={withPrefix(file.publicURL)} download>
-            <FontAwesomeIcon icon={"download"}/>
+            <Icon>
+                <FontAwesomeIcon icon={faDownload}/>
+            </Icon>
           </a>
         </Card.Header.Icon>
       </Card.Header>
