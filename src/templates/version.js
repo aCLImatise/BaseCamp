@@ -37,7 +37,7 @@ export default function Version({ data }) {
   const pack = version.parent
   return (
     <Layout>
-      <SEO title={`BaseCamp | ${title}`} description={title} />
+      <SEO title={title} />
       <Section>
         <Container>
           <Breadcrumb
