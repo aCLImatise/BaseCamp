@@ -40,7 +40,7 @@ module.exports = {
         name: `Definitions`,
         branch: 'master',
         remote: `https://github.com/aCLImatise/ToolDefinitions.git`,
-        patterns: 'bwa/**',
+        // patterns: 'bwa/**',
         local: `${__dirname}/ToolDefinitions`
       }
     },
@@ -50,12 +50,9 @@ module.exports = {
         name: `Wrappers`,
         branch: 'master',
         remote: `https://github.com/aCLImatise/ToolWrappers.git`,
-        patterns: 'bwa/**',
+        // patterns: 'bwa/**',
         local: `${__dirname}/ToolWrappers`
       }
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }
