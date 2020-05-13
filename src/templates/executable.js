@@ -11,10 +11,11 @@ import { dark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import Breadcrumb from "react-bulma-components/lib/components/breadcrumb"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import Icon from 'react-bulma-components/lib/components/icon';
-import { faDownload } from '@fortawesome/free-solid-svg-icons'
+import Icon from "react-bulma-components/lib/components/icon"
+import { faDownload } from "@fortawesome/free-solid-svg-icons"
 
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 /**
  * Choose a syntax highlighting language based on the file extension
@@ -30,7 +31,7 @@ function chooseLanguage(extension) {
   }
 }
 
-const useAxios = (config) => {
+const useAxios = config => {
   const [data, updateData] = useState(undefined)
 
   // empty array as second argument equivalent to componentDidMount
@@ -47,47 +48,54 @@ const useAxios = (config) => {
 }
 
 export const query = graphql`
-    query executable($exe: String) {
-        condaExecutable(id: {eq: $exe}) {
-            name
-            parent {
-                ...on CondaVersion {
-                    name
-                    publicURL
-                    parent {
-                        ...on CondaPackage {
-                            name
-                            publicURL
-                        }
-                    }
-                }
+  query executable($exe: String) {
+    condaExecutable(id: { eq: $exe }) {
+      name
+      parent {
+        ... on CondaVersion {
+          name
+          publicURL
+          parent {
+            ... on CondaPackage {
+              name
+              publicURL
             }
-            wrappers {
-                id
-                relativePath
-                publicURL
-                extension
-            }
+          }
         }
+      }
+      wrappers {
+        id
+        relativePath
+        publicURL
+        extension
+      }
     }
+  }
 `
 
 function Wrapper({ file }) {
-  const data = useAxios({ url: file.publicURL, method: "get", responseType: "text" })
+  const data = useAxios({
+    url: file.publicURL,
+    method: "get",
+    responseType: "text",
+  })
   return (
     <Card>
       <Card.Header>
         <Card.Header.Title>{file.extension}</Card.Header.Title>
         <Card.Header.Icon>
-          <a href={withPrefix(file.publicURL)} download>
+          <a href={file.publicURL} download>
             <Icon>
-                <FontAwesomeIcon icon={faDownload}/>
+              <FontAwesomeIcon icon={faDownload} />
             </Icon>
           </a>
         </Card.Header.Icon>
       </Card.Header>
       <Card.Content>
-        <SyntaxHighlighter style={dark} language={chooseLanguage(file.extension)}>
+        <SyntaxHighlighter
+          style={dark}
+          language={chooseLanguage(file.extension)}
+        >
           {data}
         </SyntaxHighlighter>
       </Card.Content>
@@ -99,8 +107,10 @@ export default function Executable({ data }) {
   const exe = data.condaExecutable
   const version = exe.parent
   const pack = exe.parent.parent
+  const title = `${pack.name} ${version.name} ${exe.name}`
   return (
     <Layout>
+      <SEO title={`BaseCamp | ${title}`} description={title} />
       <Section>
         <Container>
           <Breadcrumb
@@ -108,21 +118,23 @@ export default function Executable({ data }) {
             items={[
               {
                 name: pack.name,
-                url: withPrefix(pack.publicURL)
-              }, {
+                url: withPrefix(pack.publicURL),
+              },
+              {
                 name: version.name,
-                url: withPrefix(version.publicURL)
-              }, {
+                url: withPrefix(version.publicURL),
+              },
+              {
                 name: exe.name,
                 url: withPrefix(exe.publicURL),
-                active: true
-              }
+                active: true,
+              },
             ]}
           />
-          <Heading level={2}>{`${pack.name} ${version.name} ${exe.name}`}</Heading>
+          <Heading level={2}>{}</Heading>
           <Heading level={3}>Wrappers</Heading>
           {exe.wrappers.map(wrapper => {
-            return <Wrapper file={wrapper}/>
+            return <Wrapper file={wrapper} />
           })}
         </Container>
       </Section>

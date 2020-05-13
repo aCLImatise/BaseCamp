@@ -14,45 +14,32 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     {
+      // We need this so that gatsby-source-git works properly 
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        name: `dummy`,
+        path: `${__dirname}/src/dummy`,
       },
     },
     {
       resolve: `gatsby-source-git`,
       options: {
         name: `Definitions`,
-        branch: 'master',
+        branch: "master",
         remote: `https://github.com/aCLImatise/ToolDefinitions.git`,
         // patterns: 'bwa/**',
-        local: `${__dirname}/ToolDefinitions`
-      }
+        local: `${__dirname}/ToolDefinitions`,
+      },
     },
     {
       resolve: `gatsby-source-git`,
       options: {
         name: `Wrappers`,
-        branch: 'master',
+        branch: "master",
         remote: `https://github.com/aCLImatise/ToolWrappers.git`,
         // patterns: 'bwa/**',
-        local: `${__dirname}/ToolWrappers`
-      }
+        local: `${__dirname}/ToolWrappers`,
+      },
     },
   ],
 }

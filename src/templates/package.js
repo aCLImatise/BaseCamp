@@ -8,20 +8,21 @@ import Box from "react-bulma-components/lib/components/box"
 import List from "react-bulma-components/lib/components/list"
 import Breadcrumb from "react-bulma-components/lib/components/breadcrumb"
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 export const query = graphql`
-    query package($package: String) {
-        condaPackage(id: {eq: $package}) {
-            children {
-                ... on CondaVersion {
-                    name
-                    publicURL
-                }
-            }
-            name
-            publicURL
+  query package($package: String) {
+    condaPackage(id: { eq: $package }) {
+      children {
+        ... on CondaVersion {
+          name
+          publicURL
         }
+      }
+      name
+      publicURL
     }
+  }
 `
 
 export default function Package({ path, location, pageResources, data }) {
@@ -29,6 +30,7 @@ export default function Package({ path, location, pageResources, data }) {
   const condaUrl = `https://anaconda.org/bioconda/${pack.name}`
   return (
     <Layout>
+      <SEO title={`BaseCamp | ${pack.name}`} description={pack.name} />
       <Section>
         <Container>
           <Heading size={2}>{pack.name} Package</Heading>
@@ -36,7 +38,9 @@ export default function Package({ path, location, pageResources, data }) {
           <Table>
             <tr>
               <td>Conda URL</td>
-              <td><a href={condaUrl}>{condaUrl}</a></td>
+              <td>
+                <a href={condaUrl}>{condaUrl}</a>
+              </td>
             </tr>
             <tr>
               <td>Versions in Database</td>
@@ -46,7 +50,11 @@ export default function Package({ path, location, pageResources, data }) {
           <Heading size={3}>Versions</Heading>
           <List>
             {pack.children.map(child => {
-              return <List.Item renderAs={"a"} href={withPrefix(child.publicURL)}>{child.name}</List.Item>
+              return (
+                <List.Item renderAs={"a"} href={withPrefix(child.publicURL)}>
+                  {child.name}
+                </List.Item>
+              )
             })}
           </List>
         </Container>
