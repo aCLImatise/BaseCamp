@@ -21,7 +21,15 @@ exports.createSchemaCustomization = ({ actions: {createTypes}, schema }) => {
     schema.buildObjectType({
       name: "CondaExecutable",
       fields: {
-		wrappers: "[File]",
+        wrappers: {
+          type: "[File]",
+          resolve(source, args, context, info){
+            return context.nodeModel.getNodesByIds({
+              ids: source.wrappers,
+              type: 'File'
+            })
+          }
+        },
         name: "String!",
         path: "String!",
         publicURL: "String!",
@@ -39,7 +47,7 @@ exports.createPages = async ({ graphql, actions, getNode, createContentDigest, c
           allFile(filter: {sourceInstanceName: {in: ["Wrappers", "Definitions"]}}) {
             edges {
               node {
-			  	id
+                id
                 relativePath
                 extension
                 publicURL
@@ -69,6 +77,13 @@ exports.createPages = async ({ graphql, actions, getNode, createContentDigest, c
         }
       }
       await createNode(pack);
+      await createPage({
+        component: path.resolve(`./src/templates/package.js`),
+        path: packageUrl,
+        context: {
+          package: packageId
+        }
+      });
     }
 
     // Fetch the version node if it exists, otherwise create it
@@ -87,12 +102,20 @@ exports.createPages = async ({ graphql, actions, getNode, createContentDigest, c
         }
       }
       await createNode(version);
+      await createPage({
+        component: path.resolve(`./src/templates/version.js`),
+        path: versionUrl,
+        context: {
+          version: versionId
+        }
+      });
     }
     createParentChildLink({parent: pack, child: version});
 
     // Now create the node for the single file within that package
     const exeUrl = `${versionUrl}/${stem}`
-    const exeId = createNodeId(stem);
+    const exeId = createNodeId(exeUrl);
+    let createdExe = false;
     let exe = getNode(exeId);
     if (!exe) {
       exe = {
@@ -101,48 +124,28 @@ exports.createPages = async ({ graphql, actions, getNode, createContentDigest, c
         path: node.relativePath.split('.')[0],
         publicURL: exeUrl,
         parent: versionId,
-		wrappers: [],
+        wrappers: [],
         internal: {
           type: "CondaExecutable",
           contentDigest: node.relativePath
         }
       };
       await createNode(exe);
+      await createPage({
+        component: path.resolve(`./src/templates/executable.js`),
+        path: exeUrl,
+        context: {
+          exe: exeId
+        }
+      });
     }
+
     // Link the version to the executable
     createParentChildLink({parent: version, child: exe});
 
     // Link the executable to the wrapper
-	const wrappers = exe.wrappers || [];
-	wrappers.push(node.id)
-	createNodeField({node: exe, name: 'wrappers___NODE', value: wrappers});
-	createNodeField({node: exe, name: 'children___NODE', value: wrappers});
-
-    // Create the package components
-    await createPage({
-      component: path.resolve(`./src/templates/package.js`),
-      path: packageUrl,
-      context: {
-        package: packageId
-      }
-    });
-    
-    // Create the version components
-    await createPage({
-      component: path.resolve(`./src/templates/version.js`),
-      path: versionUrl,
-      context: {
-        version: versionId
-      }
-    });
-    
-    // Create the exe components
-    await createPage({
-      component: path.resolve(`./src/templates/executable.js`),
-      path: exeUrl,
-      context: {
-        exe: exeId
-      }
-    });
+    const wrappers = exe.wrappers || [];
+    wrappers.push(node.id)
+    createNodeField({node: exe, name: 'wrappers___NODE', value: wrappers});
   }));
 }

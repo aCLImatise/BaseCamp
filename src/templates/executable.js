@@ -9,6 +9,7 @@ import List from "react-bulma-components/lib/components/list"
 import axios from "axios"
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import Breadcrumb from 'react-bulma-components/lib/components/breadcrumb';
 
 const useAxios = (config) => {
   const [data, updateData] = useState(undefined)
@@ -16,7 +17,7 @@ const useAxios = (config) => {
   // empty array as second argument equivalent to componentDidMount
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(config)
+      const response = await axios(config)
       updateData(response.data)
     }
 
@@ -27,8 +28,8 @@ const useAxios = (config) => {
 }
 
 export const query = graphql`
-    query executable($id: String) {
-        condaExecutable(id: {eq: $id}) {
+    query executable($exe: String) {
+        condaExecutable(id: {eq: $exe}) {
             name
             parent {
                 ...on CondaVersion {
@@ -42,17 +43,10 @@ export const query = graphql`
                     }
                 }
             }
-			children {
-				...on File {
-					id
-					relativePath
-					publicURL
-				}
-			}
             wrappers {
-				id
-				relativePath
-				publicURL
+                id
+                relativePath
+                publicURL
             }
         }
     }
@@ -62,11 +56,11 @@ function Wrapper({ file }) {
   const data = useAxios({ url: file.publicURL, method: "get", responseType: "text" });
   return (
     <Card>
-      <Card.Image>
+      <Card.Content>
         <SyntaxHighlighter>
           {data}
         </SyntaxHighlighter>
-      </Card.Image>
+      </Card.Content>
     </Card>
   )
 }
@@ -78,6 +72,22 @@ export default function Executable({ data }) {
   return (
     <Section>
       <Container>
+		<Breadcrumb
+		  hrefAttr="href"
+		  items={[
+			{
+			  name: pack.name,
+			  url: pack.publicURL,
+			}, {
+			  name: version.name,
+			  url: version.publicURL,
+			}, {
+			  name: exe.name,
+			  url: exe.publicURL,
+			  active: true,
+			}
+		  ]}
+		/>
         <Heading level={2}>{`${pack.name} ${version.name} ${exe.name}`}</Heading>
         <Heading level={3}>Wrappers</Heading>
         {exe.wrappers.map(wrapper => {
