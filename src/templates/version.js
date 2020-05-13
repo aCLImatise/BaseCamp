@@ -7,6 +7,7 @@ import Heading from "react-bulma-components/lib/components/heading"
 import List from "react-bulma-components/lib/components/list"
 import Breadcrumb from "react-bulma-components/lib/components/breadcrumb"
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 export const query = graphql`
     query version($version: String) {
@@ -32,9 +33,11 @@ export const query = graphql`
 
 export default function Version({ data }) {
   const version = data.condaVersion
+  const title = `${version.parent.name} ${version.name}`;
   const pack = version.parent
   return (
     <Layout>
+      <SEO title={`BaseCamp | ${title}`} description={title}/>
       <Section>
         <Container>
           <Breadcrumb
@@ -50,7 +53,7 @@ export default function Version({ data }) {
               }
             ]}
           />
-          <Heading level={2}>{`${version.parent.name} ${version.name}`}</Heading>
+          <Heading level={2}>{}</Heading>
           <Heading level={3}>Executables</Heading>
           <List>
             {version.children.map(child => {

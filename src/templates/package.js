@@ -8,6 +8,7 @@ import Box from "react-bulma-components/lib/components/box"
 import List from "react-bulma-components/lib/components/list"
 import Breadcrumb from "react-bulma-components/lib/components/breadcrumb"
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 export const query = graphql`
     query package($package: String) {
@@ -29,6 +30,7 @@ export default function Package({ path, location, pageResources, data }) {
   const condaUrl = `https://anaconda.org/bioconda/${pack.name}`
   return (
     <Layout>
+      <SEO title={`BaseCamp | ${pack.name}`} description={title}/>
       <Section>
         <Container>
           <Heading size={2}>{pack.name} Package</Heading>

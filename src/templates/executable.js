@@ -15,6 +15,7 @@ import Icon from 'react-bulma-components/lib/components/icon';
 import { faDownload } from '@fortawesome/free-solid-svg-icons'
 
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 /**
  * Choose a syntax highlighting language based on the file extension
@@ -99,8 +100,10 @@ export default function Executable({ data }) {
   const exe = data.condaExecutable
   const version = exe.parent
   const pack = exe.parent.parent
+  const title = `${pack.name} ${version.name} ${exe.name}`;
   return (
     <Layout>
+      <SEO title={`BaseCamp | ${title}`} description={title}/>
       <Section>
         <Container>
           <Breadcrumb
@@ -119,7 +122,7 @@ export default function Executable({ data }) {
               }
             ]}
           />
-          <Heading level={2}>{`${pack.name} ${version.name} ${exe.name}`}</Heading>
+          <Heading level={2}>{}</Heading>
           <Heading level={3}>Wrappers</Heading>
           {exe.wrappers.map(wrapper => {
             return <Wrapper file={wrapper}/>
