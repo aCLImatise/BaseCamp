@@ -1,0 +1,120 @@
+!Command
+positional:
+- !Positional
+  description: BAM, FASTA, or DataSet XML file
+  position: 0
+  name: file
+  optional: false
+named:
+- !Flag
+  description: 'Limits validation to the first 100 records (plus file header); equivalent
+    to --max-records=100 (default: False)'
+  synonyms:
+  - --quick
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Exit after MAX_ERRORS have been recorded (DEFAULT: check entire file)
+    (default: None)'
+  synonyms:
+  - --max
+  args: !SimpleFlagArg
+    name: MAX_ERRORS
+  optional: true
+- !Flag
+  description: 'Exit after MAX_RECORDS have been inspected (DEFAULT: check entire
+    file) (default: None)'
+  synonyms:
+  - --max-records
+  args: !SimpleFlagArg
+    name: MAX_RECORDS
+  optional: true
+- !Flag
+  description: 'Use the specified file type instead of guessing (default: None)'
+  synonyms:
+  - --type
+  args: !ChoiceFlagArg
+    choices:
+    - BAM
+    - Fasta
+    - AlignmentSet
+    - ConsensusSet
+    - ConsensusAlignmentSet
+    - SubreadSet
+    - TranscriptSet
+    - BarcodeSet
+    - ContigSet
+    - ReferenceSet
+    - GmapReferenceSet
+    - HdfSubreadSet
+  optional: true
+- !Flag
+  description: 'Require index files (.fai or .pbi) (default: False)'
+  synonyms:
+  - --index
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Turn on additional validation, primarily for DataSet XML (default:
+    False)'
+  synonyms:
+  - --strict
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Xunit test results for Jenkins (default: None)'
+  synonyms:
+  - -x
+  - --xunit-out
+  args: !SimpleFlagArg
+    name: XUNIT_OUT
+  optional: true
+- !Flag
+  description: 'Specify that the file should contain only unmapped alignments (DEFAULT:
+    no requirement) (default: None)'
+  synonyms:
+  - --unaligned
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Alias for --unaligned (default: None)'
+  synonyms:
+  - --unmapped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Specify that the file should contain only mapped alignments (DEFAULT:
+    no requirement) (default: None)'
+  synonyms:
+  - --aligned
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Alias for --aligned (default: None)'
+  synonyms:
+  - --mapped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Enforce read type (default: None)'
+  synonyms:
+  - --contents
+  args: !ChoiceFlagArg
+    choices:
+    - SUBREAD
+    - CCS
+  optional: true
+- !Flag
+  description: 'Path to optional reference FASTA file, used for additional validation
+    of mapped BAM records (default: None)'
+  synonyms:
+  - --reference
+  args: !SimpleFlagArg
+    name: REFERENCE
+  optional: true
+command:
+- pbvalidate
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

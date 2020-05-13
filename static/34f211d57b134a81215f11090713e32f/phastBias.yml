@@ -1,0 +1,68 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Set the scaling factor for branch lengths in conserved states.  Rho
+    should be between 0 and 1. Default: 0.31'
+  synonyms:
+  - --rho
+  args: !SimpleFlagArg
+    name: rho
+  optional: true
+- !Flag
+  description: 'Set the prior expected length of conserved elements.  This parameter
+    is held constant; if you want to tune it, it is recommended to do this with the
+    phastCons program under a non-gBGC model (see the  --expected-length option in
+    phastCons). Default: 45'
+  synonyms:
+  - --cons-exp-length
+  args: !SimpleFlagArg
+    name: length
+  optional: true
+- !Flag
+  description: 'Set the prior for coverage of conserved elements (as a fraction  between
+    0 and 1).  Like the --cons-exp-length above, this parameter is also held constant,
+    but can be tuned with phastCons (see phastCons --transitions). Default: 0.3'
+  synonyms:
+  - --cons-target-coverage
+  args: !SimpleFlagArg
+    name: cov
+  optional: true
+- !Flag
+  description: Print out the tree models for all four states to <output_root>.cons.mod,
+    <output_root>.neutral.mod, <output_root>.gBGC_cons.mod, and <output_root>.gBGC_neutral.mod.
+  synonyms:
+  - --output-mods
+  args: !SimpleFlagArg
+    name: output_root
+  optional: true
+- !Flag
+  description: 'Print a GFF containing regions of the alignment which are informative
+    for gBGC. Note: only works properly if foreground branch is a single branch (not
+    a group of branches). '
+  synonyms:
+  - --informative-fn
+  - -i
+  args: !SimpleFlagArg
+    name: file.gff
+  optional: true
+- !Flag
+  description: (To be used with --informative-fn). Print the informative regions,
+    then quit.
+  synonyms:
+  - --informative-only
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- phastBias
+subcommands: []
+help_flag: !Flag
+  description: Print this help message.
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

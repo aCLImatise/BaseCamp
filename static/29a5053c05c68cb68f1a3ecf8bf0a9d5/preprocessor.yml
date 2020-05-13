@@ -1,0 +1,94 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Input file in BAM format. BAM file must be sorted and indexed using
+    samTools. Replicates separated by comma(',') e.g. "-i rep1.bam,rep2.bam,rep3.bam"
+  synonyms:
+  - -i
+  - --inputFile
+  args: !SimpleFlagArg
+    name: INPUT_FILE
+  optional: true
+- !Flag
+  description: 'Chromosome size file. Tab or space separated text file with 2 columns:
+    first column is chromosome name, second column is size of the chromosome.'
+  synonyms:
+  - -r
+  - --chromSize
+  args: !SimpleFlagArg
+    name: CHROMSIZE
+  optional: true
+- !Flag
+  description: Prefix of output wig files(s). "Prefix_Forward.wig" and "Prefix_Reverse.wig"
+    will be generated
+  synonyms:
+  - -o
+  - --outPrefix
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+  optional: true
+- !Flag
+  description: Kmer size [6,12] to correct nucleotide composition bias. kmerSize <
+    0.5*read_lenght. larger KmerSize might make program slower. Set kmerSize = 0 to
+    turn off nucleotide compsition bias correction. default=6
+  synonyms:
+  - -w
+  - --kmerSize
+  args: !SimpleFlagArg
+    name: WORD_SIZE
+  optional: true
+- !Flag
+  description: Chromosome chunk size. Each chomosome will be cut into small chunks
+    of this size. Decrease chunk size will save more RAM. default=100000 (bp)
+  synonyms:
+  - -b
+  - --bin
+  args: !SimpleFlagArg
+    name: BIN
+  optional: true
+- !Flag
+  description: Reference reads count (default = 10 million). Sequencing depth will
+    be normailzed to this number, so that wig files are comparable between replicates.
+  synonyms:
+  - -d
+  - --depth
+  args: !SimpleFlagArg
+    name: REFREADN
+  optional: true
+- !Flag
+  description: phred scaled mapping quality threshhold to determine "uniqueness" of
+    alignments. default=30
+  synonyms:
+  - -q
+  - --qCut
+  args: !SimpleFlagArg
+    name: QUAL_CUT
+  optional: true
+- !Flag
+  description: methods ("EM", "AM", "GM", or "SNR") used to consolidate replicates
+    and reduce noise. "EM" = Entropy weighted mean, "AM"=Arithmetic mean, "GM"=Geometric
+    mean, "SNR"=Signal-to-noise ratio. default=EM
+  synonyms:
+  - -m
+  - --method
+  args: !SimpleFlagArg
+    name: NORM_METHOD
+  optional: true
+command:
+- preprocessor.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,55 @@
+!Command
+positional:
+- !Positional
+  description: folder to files created by the preprocessing
+  position: 0
+  name: preprocess_dir
+  optional: false
+- !Positional
+  description: output directory - will be created if it does not exist
+  position: 1
+  name: output_dir
+  optional: false
+- !Positional
+  description: path to the postprocessing config file
+  position: 2
+  name: config_file
+  optional: false
+named:
+- !Flag
+  description: preprocessing filename prefix - only required if there are multiple
+    table files in the specified preprocess directory
+  synonyms:
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: verbosity level of the logger
+  synonyms:
+  - --log_level
+  args: !ChoiceFlagArg
+    choices:
+    - debug
+    - info
+    - warn
+    - error
+  optional: true
+command:
+- mb-postprocess
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true

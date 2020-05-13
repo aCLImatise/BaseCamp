@@ -1,0 +1,132 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: discard transcripts having an intron larger than <maxintron>
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: discard transcripts shorter than <minlen> bases
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: only show transcripts overlapping coordinate range <start>..<end> (on
+    chromosome/contig <chr>, strand <strand> if provided)
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: for -r option, discard all transcripts that are not fully  contained
+    within the given range
+  synonyms:
+  - -R
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: discard single-exon transcripts
+  synonyms:
+  - -U
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'coding only: discard mRNAs that have no CDS features'
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'only: discard mRNAs that have CDS features'
+  synonyms:
+  - --nc
+  args: !SimpleFlagArg
+    name: non-coding
+  optional: true
+- !Flag
+  description: ': discard locus features and attributes found in the input'
+  synonyms:
+  - --ignore-locus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use the description field from <seq_info.fsize> and add it as the value
+    for a 'descr' attribute to the GFF record
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<seq_info.fsize> is a tab-delimited file providing this info for each
+    of the mapped sequences: <seq-name> <seq-length> <seq-description> (useful for
+    -A option with mRNA/EST/protein mappings)'
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: discard multi-exon mRNAs that have any intron with a non-canonical
+    splice site consensus (i.e. not GT-AG, GC-AG or AT-AC)
+  synonyms:
+  - -N
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: discard any mRNAs that either lack initial START codon or the terminal
+    STOP codon, or have an in-frame stop codon (i.e. only print mRNAs with a complete
+    CDS)
+  synonyms:
+  - -J
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": filter out records matching the 'pseudo' keyword"
+  synonyms:
+  - --no-pseudo
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': input should be parsed as BED format (automatic if the input filename
+    ends with .bed*)'
+  synonyms:
+  - --in-bed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': input GFF-like one-line-per-transcript format without exon/CDS features
+    (see --tlf option below); automatic if the input filename ends with .tlf)'
+  synonyms:
+  - --in-tlf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'for -M option: also discard as redundant the shorter, fully contained
+    transcripts (intron chains matching a part of the container)'
+  synonyms:
+  - -K
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: for -M option, no longer require boundary containment when assessing
+    redundancy (can be combined with -K); only introns have to match for multi-exon
+    transcripts, and >=80% overlap for single-exon transcripts
+  synonyms:
+  - -Q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: for -M option, enforce -Q but also discard overlapping single-exon  transcripts,
+    even on the opposite strand (can be combined with -K)
+  synonyms:
+  - -Y
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- gffread
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

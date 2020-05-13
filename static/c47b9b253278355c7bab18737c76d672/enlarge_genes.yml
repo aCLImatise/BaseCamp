@@ -1,0 +1,69 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The size of the region, which will be used for enlarging the genes
+    at 5'end and 3'end. One region will be added to the 5' end and a second one to
+    the 3' end. Default is '5000'.
+  synonyms:
+  - -e
+  - --enlargement-size
+  args: !SimpleFlagArg
+    name: SIZE
+  optional: true
+- !Flag
+  description: If this is specified then only the genes from this list will be enlarged/covered.
+    If this is not specified then all the genes will be enlarged (only where is possible,
+    for example the genes which overlaps each other will be skipped from enlarging).
+    If the file is empty then no gene will be enlarged!
+  synonyms:
+  - -g
+  - --genes
+  args: !SimpleFlagArg
+    name: GENES
+  optional: true
+- !Flag
+  description: Genes having their lengths strictly less than this will have the enlargment
+    done as one continuous region. For the rest of genes two regions will be added
+    at the 5'end and 3'end of the gene. Default is '1000'.
+  synonyms:
+  - -l
+  - --full-cover
+  args: !SimpleFlagArg
+    name: GENE_LENGTH
+  optional: true
+- !Flag
+  description: Genes having their lengths strictly less than this will be skipped
+    from the enlargement. Default is '200'.
+  synonyms:
+  - -s
+  - --gene-short
+  args: !SimpleFlagArg
+    name: GENE_SHORT
+  optional: true
+- !Flag
+  description: The output directory where the genes sequences are written. Default
+    is 'none'.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+  optional: true
+command:
+- enlarge_genes.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,73 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: specify an Eigenstrat SNP file with the positions and alleles of a
+    reference set. All positions in the SNP file will be output, adding missing data
+    or hom-ref where necessary.
+  synonyms:
+  - -f
+  - --snpFile
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Input a reference sequence (uncompressed fasta format) to use to declare
+    missing sites in the VCF as Hom-Ref instead of missing. This is useful if your
+    VCF only contains non-ref sites. This option only makes sense if you use a SNP
+    file.
+  synonyms:
+  - -r
+  - --fillHomRef
+  args: !SimpleFlagArg
+    name: ARG
+  optional: true
+- !Flag
+  description: 'specify the filenames for the EigenStrat SNP and IND file outputs:
+    <FILE_PREFIX>.snp.txt and <FILE_PREFIX>.ind.txt'
+  synonyms:
+  - -e
+  - --outPrefix
+  args: !SimpleFlagArg
+    name: FILE_PREFIX
+  optional: true
+- !Flag
+  description: specify the chromosome in the VCF file to call from. This is important
+    if a SNP file has been given.
+  synonyms:
+  - -c
+  - --chrom
+  args: !SimpleFlagArg
+    name: CHROM
+  optional: true
+- !Flag
+  description: specify the output chromosome name
+  synonyms:
+  - --outChrom
+  args: !SimpleFlagArg
+    name: CHROM
+  optional: true
+- !Flag
+  description: Remove transition SNPs from the output
+  synonyms:
+  - -t
+  - --transversionsOnly
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- vcf2eigenstrat
+subcommands: []
+help_flag: !Flag
+  description: Show this help text
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

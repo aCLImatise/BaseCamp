@@ -1,0 +1,99 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: ': output the final alignment to file <f>, not stdout'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: ': print info on merge to stdout; requires -o'
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': use minimal RAM (RAM usage will be independent of aln sizes)'
+  synonyms:
+  - --small
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': remove all columns that are gaps in GC RF annotation'
+  synonyms:
+  - --rfonly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': specify that output aln be format <s> (see choices above)'
+  synonyms:
+  - --outformat
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+- !Flag
+  description: ': alignments to merge are RNA alignments'
+  synonyms:
+  - --rna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': alignments to merge are DNA alignments'
+  synonyms:
+  - --dna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': alignments to merge are protein alignments'
+  synonyms:
+  - --amino
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- esl-alimerge
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: alignment file 2
+    optional: false
+  named: []
+  command:
+  - esl-alimerge
+  - alignment file 1
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: alignment file 1
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: alignment file 2
+    optional: false
+  named: []
+  command:
+  - esl-alimerge
+  - alignment file 2
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: ': help; show brief info on version and usage'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

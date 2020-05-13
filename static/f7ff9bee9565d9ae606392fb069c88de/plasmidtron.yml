@@ -1,0 +1,167 @@
+!Command
+positional:
+- !Positional
+  description: Output directory
+  position: 0
+  name: output_directory
+  optional: false
+- !Positional
+  description: File of filenames of trait (case) FASTQs
+  position: 1
+  name: file_of_traits
+  optional: false
+- !Positional
+  description: File of filenames of nontrait (control) FASTQs
+  position: 2
+  name: file_of_nontraits
+  optional: false
+named:
+- !Flag
+  description: Control how the traits kmers are filtered for assembly [union]
+  synonyms:
+  - --action
+  - -a
+  args: !ChoiceFlagArg
+    choices:
+    - intersection
+    - union
+  optional: true
+- !Flag
+  description: Keep intermediate files [False]
+  synonyms:
+  - --keep_files
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Kmer to use, depends on read length [51]
+  synonyms:
+  - --kmer
+  - -k
+  args: !SimpleFlagArg
+    name: KMER
+  optional: true
+- !Flag
+  description: Minimum contig length in final assembly [300]
+  synonyms:
+  - --min_contig_len
+  - -l
+  args: !SimpleFlagArg
+    name: MIN_CONTIG_LEN
+  optional: true
+- !Flag
+  description: Filter out contigs with low coverage. Set to 0 to keep all. [5]
+  synonyms:
+  - --min_spades_contig_coverage
+  - -c
+  args: !SimpleFlagArg
+    name: MIN_SPADES_CONTIG_COVERAGE
+  optional: true
+- !Flag
+  description: Filter out contigs with high coverage. Set to 0 to keep all. [500]
+  synonyms:
+  - --max_spades_contig_coverage
+  - -e
+  args: !SimpleFlagArg
+    name: MAX_SPADES_CONTIG_COVERAGE
+  optional: true
+- !Flag
+  description: Exclude traits k-mers occurring less than this [10]
+  synonyms:
+  - --min_kmers_threshold
+  - -m
+  args: !SimpleFlagArg
+    name: MIN_KMERS_THRESHOLD
+  optional: true
+- !Flag
+  description: Exclude traits k-mers occurring more than this [254]
+  synonyms:
+  - --max_kmers_threshold
+  - -x
+  args: !SimpleFlagArg
+    name: MAX_KMERS_THRESHOLD
+  optional: true
+- !Flag
+  description: Exclude nontraits k-mers occurring less than this [5]
+  synonyms:
+  - --min_controls_kmers_threshold
+  args: !SimpleFlagArg
+    name: MIN_CONTROLS_KMERS_THRESHOLD
+  optional: true
+- !Flag
+  description: Exclude nontraits k-mers occurring more than this [254]
+  synonyms:
+  - --max_controls_kmers_threshold
+  args: !SimpleFlagArg
+    name: MAX_CONTROLS_KMERS_THRESHOLD
+  optional: true
+- !Flag
+  description: Min percentage kmer coverage of read to keep it[0.2]
+  synonyms:
+  - --min_kmers_per_read
+  - -r
+  args: !SimpleFlagArg
+    name: MIN_KMERS_PER_READ
+  optional: true
+- !Flag
+  description: Match both pairs to keep them in assembly [False]
+  synonyms:
+  - --match_both_pairs
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Kmer to use, depends on read length [kmerplot.png]
+  synonyms:
+  - --plot_filename
+  - -p
+  args: !SimpleFlagArg
+    name: PLOT_FILENAME
+  optional: true
+- !Flag
+  description: Create kmer plot [False]
+  synonyms:
+  - --kmer_plot
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set the SPAdes executable [spades.py]
+  synonyms:
+  - --spades_exec
+  - -s
+  args: !SimpleFlagArg
+    name: SPADES_EXEC
+  optional: true
+- !Flag
+  description: Number of threads [1]
+  synonyms:
+  - --threads
+  - -t
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: Turn on debugging [0]
+  synonyms:
+  - --verbose
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- plasmidtron
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

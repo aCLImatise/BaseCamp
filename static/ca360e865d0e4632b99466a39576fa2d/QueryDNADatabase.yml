@@ -1,0 +1,99 @@
+!Command
+positional:
+- !Positional
+  description: 'Input file: FASTQ/A file (can be gzipped).'
+  position: 0
+  name: in_file
+  optional: false
+- !Positional
+  description: Training/reference data (HDF5 file created by MakeTrainingDatabase.py)
+  position: 1
+  name: training_data
+  optional: false
+- !Positional
+  description: Output CSV file
+  position: 2
+  name: out_csv
+  optional: false
+named:
+- !Flag
+  description: 'Number of threads to use (default: 8)'
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: 'Force creation of new NodeGraph. (default: False)'
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'False positive rate. (default: 0.0001)'
+  synonyms:
+  - -fp
+  - --fp_rate
+  args: !SimpleFlagArg
+    name: FP_RATE
+  optional: true
+- !Flag
+  description: 'Only return results with containment index above this value (default:
+    0.02)'
+  synonyms:
+  - -ct
+  - --containment_threshold
+  args: !SimpleFlagArg
+    name: CONTAINMENT_THRESHOLD
+  optional: true
+- !Flag
+  description: 'Desired probability that all results were returned with containment
+    index above threshold [-ct] (default: 0.95)'
+  synonyms:
+  - -c
+  - --confidence
+  args: !SimpleFlagArg
+    name: CONFIDENCE
+  optional: true
+- !Flag
+  description: 'NodeGraph/bloom filter location. Used if it exists; if not, one will
+    be created and put in the same directory as the specified output CSV file. (default:
+    None)'
+  synonyms:
+  - -ng
+  - --node_graph
+  args: !SimpleFlagArg
+    name: NODE_GRAPH
+  optional: true
+- !Flag
+  description: 'Flag to indicate that only the base names (not the full path) should
+    be saved in the output CSV file (default: False)'
+  synonyms:
+  - -b
+  - --base_name
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Option to only insert query k-mers in bloom filter if they appear
+    anywhere in the training database. Note that the Jaccard estimates will now be
+    J(query intersect union_i training_i, training_i) instead of J(query, training_i),
+    but will use significantly less space. (default: False)'
+  synonyms:
+  - -i
+  - --intersect_nodegraph
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- QueryDNADatabase.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

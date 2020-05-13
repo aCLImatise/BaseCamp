@@ -1,0 +1,264 @@
+!Command
+positional:
+- !Positional
+  description: nucleotide
+  position: 0
+  name: nt
+  optional: false
+- !Positional
+  description: amino acid
+  position: 1
+  name: aa
+  optional: false
+- !Positional
+  description: maximum likelihood
+  position: 2
+  name: ml
+  optional: false
+- !Positional
+  description: maximum parsimony
+  position: 3
+  name: mp
+  optional: false
+- !Positional
+  description: fixed maximum likelihood (JC)
+  position: 4
+  name: fixed-ml-jc
+  optional: false
+- !Positional
+  description: fixed maximum likelihood (GTR)
+  position: 5
+  name: fixed-ml-gtr
+  optional: false
+- !Positional
+  description: fixed maximum parsimony (default)
+  position: 6
+  name: fixed-mp
+  optional: false
+- !Positional
+  description: random generated tree
+  position: 7
+  name: random
+  optional: false
+- !Positional
+  description: fixed user defined (requires -u argument)
+  position: 8
+  name: user
+  optional: false
+- !Positional
+  description: Lewis (2001)
+  position: 0
+  name: lewis
+  optional: false
+- !Positional
+  description: Felsenstein requires number of invariant sites
+  position: 1
+  name: felsenstein
+  optional: false
+- !Positional
+  description: Leaché et al. (2015) requires invariant sites composition
+  position: 2
+  name: stamatakis
+  optional: false
+named:
+- !Flag
+  description: sets the data type
+  synonyms:
+  - -d
+  - --datatype
+  args: !SimpleFlagArg
+    name: data_type_t
+  optional: true
+- !Flag
+  description: sets the input alignment file (FASTA or PHYLIP format, required)
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: input_msa
+  optional: true
+- !Flag
+  description: pipes the output into a file
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: output_file
+  optional: true
+- !Flag
+  description: sets the number of processors to use (shared memory)
+  synonyms:
+  - -p
+  - --processes
+  args: !SimpleFlagArg
+    name: n_procs
+  optional: true
+- !Flag
+  description: sets a partitioning scheme
+  synonyms:
+  - -q
+  - --partitions
+  args: !SimpleFlagArg
+    name: partitions_file
+  optional: true
+- !Flag
+  description: sets the seed for the random number generator
+  synonyms:
+  - -r
+  - --rngseed
+  args: !SimpleFlagArg
+    name: seed
+  optional: true
+- !Flag
+  description: sets the starting topology
+  synonyms:
+  - -t
+  - --topology
+  args: !SimpleFlagArg
+    name: type
+  optional: true
+- !Flag
+  description: sets a user tree
+  synonyms:
+  - -u
+  - --utree
+  args: !SimpleFlagArg
+    name: tree_file
+  optional: true
+- !Flag
+  description: force output overriding
+  synonyms:
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: disable checkpoint writing
+  synonyms:
+  - --disable-checkpoint
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[:values]     includes ascertainment bias correction check modeltest
+    manual for more information'
+  synonyms:
+  - -a
+  - --asc-bias
+  args: !SimpleFlagArg
+    name: algorithm
+  optional: true
+- !Flag
+  description: '[ef]                sets the candidate models frequencies e: estimated
+    - maximum likelihood (DNA) / empirical (AA) f: fixed - equal (DNA) / model defined
+    (AA)'
+  synonyms:
+  - -f
+  - --frequencies
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "sets the candidate model matrices separated by commas. use '+' or\
+    \ '-' prefix for updating the default list. e.g., \"-m JTT,LG\" evaluates JTT\
+    \ and LG only . \"-m +LG4X,+LG4M,-LG\" adds LG4 models and removes LG and from\
+    \ the list. dna: *JC *HKY *TrN *TPM1 *TPM2 *TPM3 *TIM1 *TIM2 *TIM3 *TVM *GTR protein:\
+    \ *DAYHOFF *LG *DCMUT *JTT *MTREV *WAG *RTREV *CPREV *VT *BLOSUM62 *MTMAM *MTART\
+    \ *MTZOA *PMB *HIVB *HIVW *JTT-DCMUT *FLU *STMTREV LG4M LG4X GTR * included by\
+    \ default"
+  synonyms:
+  - -m
+  - --models
+  args: !SimpleFlagArg
+    name: list
+  optional: true
+- !Flag
+  description: '[3|5|7|11|203]          sets the number of predefined DNA substitution
+    schemes evaluated 3:   JC/F81, K80/HKY, SYM/GTR 5:   + TrNef/TrN, TPM1/TPM1uf
+    7:   + TIM1ef/TIM1, TVMef/TVM 11:  + TPM2/TPM2uf, TPM3/TPM3uf, TIM2ef/TIM2, TIM3ef/TIM3
+    203: All possible GTR submatrices'
+  synonyms:
+  - -s
+  - --schemes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[tool]                 sets candidate models according to a specified
+    tool raxml                  RAxML (DNA 3 schemes / AA full search) phyml                  PhyML
+    (DNA full search / 14 AA matrices) mrbayes                MrBayes (DNA 3 schemes
+    / 8 AA matrices) paup                   PAUP* (DNA full search / AA full search)'
+  synonyms:
+  - -T
+  - --template
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: sets the model optimization epsilon
+  synonyms:
+  - --eps
+  args: !SimpleFlagArg
+    name: epsilon_value
+  optional: true
+- !Flag
+  description: sets the parameter optimization tolerance
+  synonyms:
+  - --tol
+  args: !SimpleFlagArg
+    name: tolerance_value
+  optional: true
+- !Flag
+  description: forces frequencies smoothing
+  synonyms:
+  - --smooth-frequencies
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[a|g]               sets gamma rates mode a                  uses
+    the average (or mean) per category (default) m                  uses the median
+    per category'
+  synonyms:
+  - -g
+  - --gamma-rates
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: does not create checkpoint files
+  synonyms:
+  - --disable-checkpoint
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: disables pattern compression modeltest ignores if there are missing
+    states
+  synonyms:
+  - -H
+  - --no-compress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: keep branch lengths fixed
+  synonyms:
+  - -k
+  - --keep-params
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: run in verbose mode
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- modeltest-ng
+subcommands: []
+help_flag: !Flag
+  description: display this help message and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: output version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,142 @@
+!Command
+positional:
+- !Positional
+  description: "One or more files containing one or more RNAs each. Supported Filetypes\
+    \ are: pdb files, forgi cg files, forgi bg files, fasta files, dotbracketfilesAlternatively\
+    \ you can supply a dotbracket-string (containing only the characters '.()[]{}&')\
+    \ from the commandline."
+  position: 0
+  name: rna
+  optional: false
+named:
+- !Flag
+  description: For all input formats except forgi bg/cg files, this controlls whether
+    stems of length one are dissolved to unpaired regions (default) or kept (if this
+    option is present). In the case of input in forgi-format, the RNA from the file
+    is not modified.
+  synonyms:
+  - --keep-length-one-stems
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Store dataframe under this filename. (Prints to stdout if not given)
+  synonyms:
+  - --csv
+  args: !SimpleFlagArg
+    name: CSV
+  optional: true
+- !Flag
+  description: Only print the following properties. (A comma- seperated list of column
+    headers, e.g. rog_vres
+  synonyms:
+  - -k
+  - --keys
+  args: !SimpleFlagArg
+    name: KEYS
+  optional: true
+- !Flag
+  description: "Store the angles between the given pairs of elements. Comma-seperated\
+    \ element tuples, seperated by colons. (e.g.: 's0,s1:s1,s2')"
+  synonyms:
+  - --angles
+  args: !SimpleFlagArg
+    name: ANGLES
+  optional: true
+- !Flag
+  description: "Store the distances between the given nucleotides. Comma-seperated\
+    \ nucleotide tuples, seperated by colons. (e.g.: '1,20:2,19')"
+  synonyms:
+  - --distances
+  args: !SimpleFlagArg
+    name: DISTANCES
+  optional: true
+- !Flag
+  description: Describe junction segments instead of the whole cg (one entry per segment)
+  synonyms:
+  - --per-ml
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "For use with --csv. Either 'a' for append or 'o' for overwrite. Default:\
+    \ Abort if file exists."
+  synonyms:
+  - --mode
+  args: !SimpleFlagArg
+    name: MODE
+  optional: true
+- !Flag
+  description: Allow pseudoknots when extracting the structure from PDB files.
+  synonyms:
+  - --pseudoknots
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'When reading pdb-files: Only extract the given chain(s). Comma-seperated'
+  synonyms:
+  - --chains
+  args: !SimpleFlagArg
+    name: CHAINS
+  optional: true
+- !Flag
+  description: 'When reading a single chain from a pdb-files: Enforce the secondary
+    structure given as dotbracket string. (This only works, if --chain is given!)'
+  synonyms:
+  - --pdb-secondary-structure
+  args: !SimpleFlagArg
+    name: PDB_SECONDARY_STRUCTURE
+  optional: true
+- !Flag
+  description: What program to use for detecting basepairs in PDB/ MMCIF structures.
+    This commandline option overrides the value in the config file (if present).If
+    this is not present and no config-file is given, we try to detect the installed
+    programs.
+  synonyms:
+  - --pdb-annotation-tool
+  args: !SimpleFlagArg
+    name: PDB_ANNOTATION_TOOL
+  optional: true
+- !Flag
+  description: Usually, if modified residues/ ligand with an unknown 3-letter code
+    are encountered in PDB files, they are removed from the chain and a log message
+    of severity INFO is issued. With this option, we first try to query the PDBeChem
+    database for the 3-letter code, to see whether or not it is a modified residue
+    that can be converted to its standard parent and should be part of the chain.
+  synonyms:
+  - --pdb-allow-www-query
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show verbose output (Output logged at level logging.INFO)
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[DEBUG]       A comma-seperated list of logger names for which debug
+    output will be activated.WARNING: If you misspell the logger name, this argument
+    will be ignored'
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[QUIET], --quiet [QUIET] A comma-seperated list of logger names for\
+    \ which only messages logged at the level 'CRITICAL' will be shown.Use this without\
+    \ arguments if everything should be quiet."
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- describe_cg.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

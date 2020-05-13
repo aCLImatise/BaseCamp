@@ -1,0 +1,1758 @@
+!Command
+positional: []
+named: []
+command:
+- vtools
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: Name of a new project. This will create a new .proj file under the
+      current directory. Only one project is allowed in a directory.
+    position: 0
+    name: project
+    optional: false
+  named:
+  - !Flag
+    description: Remove a project if it already exists.
+    synonyms:
+    - -f
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Set the build (hg18 or hg19) of the primary reference genome of the
+      project.
+    synonyms:
+    - --build
+    args: !SimpleFlagArg
+      name: BUILD
+    optional: true
+  - !Flag
+    description: Storage model used to storage variants and genotype. The default
+      value is the value set by environmental variable STOREMODE or sqlite if the
+      variable is not set.
+    synonyms:
+    - -s
+    - --store
+    args: !ChoiceFlagArg
+      choices:
+      - sqlite
+      - hdf5
+    optional: true
+  - !Flag
+    description: '{0,1,2,3}, --verbosity {0,1,2,3} Output error and warning (0), info
+      (1), debug (2) and trace (3) information to standard output (default to 1).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Directory or snapshot file of a parent project (e.g. --parent ../main)
+      from which all or part of variants (--variants), samples (--samples) and genotypes
+      (--genotypes) will be copied to the newly created project.
+    synonyms:
+    - --parent
+    args: !SimpleFlagArg
+      name: DIR_or_SNAPSHOT
+    optional: true
+  - !Flag
+    description: '[TABLE]    A variant table of the parental project whose variants
+      will be copied to the new project. Default to variant (all variants).'
+    synonyms:
+    - --variants
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[COND [COND ...]] Copy only samples of the parental project that
+      match specified conditions.'
+    synonyms:
+    - --samples
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[COND [COND ...]] Copy only genotypes that match specified conditions.'
+    synonyms:
+    - --genotypes
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: A list of a subprojects (directories or snapshot files of projects)
+      that will be merged to create this new project. The subprojects must have the
+      same primary and alternative reference genome. Variant tables with the same
+      names from multiple samples will be merged. Samples from the children projects
+      will be copied even if they were identical samples imported from the same source
+      files.
+    synonyms:
+    - --children
+    args: !RepeatFlagArg
+      name: DIR_OR_SNAPSHOT
+    optional: true
+  command:
+  - vtools
+  - init
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: A list of files that will be imported. The file should be delimiter
+      separated with format described by parameter --format. Gzipped files are acceptable.
+      If a preprocessor is defined in the format, input files will be processed by
+      the preprocessor before they are imported.
+    position: 0
+    name: input_files
+    optional: false
+  named:
+  - !Flag
+    description: Build version of the reference genome (e.g. hg18) of the input data.
+      If unspecified, it is assumed to be the primary reference genome of the project.
+      If a reference genome that is different from the primary reference genome of
+      the project is specified, it will become the alternative reference genome of
+      the project. The UCSC liftover tool will be automatically called to map input
+      coordinates between the primary and alternative reference genomes. If you are
+      uncertain about the reference genome used in the data, use a recent standard
+      reference genome (e.g. hg19) and validate it after the data is imported (c.f.
+      "vtools admin --validate_build").
+    synonyms:
+    - --build
+    args: !SimpleFlagArg
+      name: BUILD
+    optional: true
+  - !Flag
+    description: Format of the input text file. It can be one of the variant tools
+      supported file types such as VCF (cf. 'vtools show formats'), or a local format
+      specification file (with extension .fmt). If unspecified, variant tools will
+      try to guess format from file extension. Some file formats accept parameters
+      (cf. 'vtools show format FMT') and allow you to import additional or alternative
+      fields defined for the format.
+    synonyms:
+    - --format
+    args: !SimpleFlagArg
+      name: FORMAT
+    optional: true
+  - !Flag
+    description: '[SAMPLE_NAME [SAMPLE_NAME ...]], --sample-name [SAMPLE_NAME [SAMPLE_NAME
+      ...]] Name of the samples imported by the input files. The same names will be
+      used for all files if multiple files are imported. If unspecified, headers of
+      the genotype columns of the last comment line (line starts with #) of the input
+      files will be used (and thus allow different sample names for input files).
+      If sample names are specified for input files without genotype, samples will
+      be created without genotype. If sample names cannot be determined from input
+      file and their is no ambiguity (only one sample is imported), a sample with
+      empty sample name will be created.'
+    synonyms:
+    - --sample_name
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Import files even if the files have been imported before. This option
+      can be used to import from updated file or continue disrupted import, but will
+      not remove wrongfully imported variants from the master variant table.
+    synonyms:
+    - -f
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Number of processes to import input file. Variant tools by default
+      uses four processes to import variants and samples genotypes in parallel, and
+      you can use more or less processes by adjusting this parameter. Due to the overhead
+      of inter-process communication, more jobs do not automatically lead to better
+      performance.
+    synonyms:
+    - -j
+    - --jobs
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Import another VCF file.
+    synonyms:
+    - --sort
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '{0,1,2,3}, --verbosity {0,1,2,3} Output error and warning (0), info
+      (1), debug (2) and trace (3) information to standard output (default to 1).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - vtools
+  - import
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: "[INPUT_FILE [INPUT_FILE ...]], --from_file [INPUT_FILE [INPUT_FILE\
+      \ ...]], --from-file [INPUT_FILE [INPUT_FILE ...]] Import phenotype from a tab\
+      \ or space delimited file, which can be standard input if a name - is specified.\
+      \ Samples are determined by sample names in the first column, or jointly by\
+      \ sample name and filename if there is another column with header 'filename'.\
+      \ Names of phenotype fields are determined by header of the input file, or by\
+      \ names provided from option --header. Non-alphanumeric characters in input\
+      \ filed names will be replaced by '_'. If multiple samples in a project share\
+      \ the same names, they will shared the imported phenotypes. Optionally, a list\
+      \ of phenotypes (columns of the file) can be specified after filename, in which\
+      \ case only the specified phenotypes will be imported. Parameter --samples could\
+      \ be used to limit the samples for which phenotypes are imported. Values that\
+      \ match value of parameter --na and cannot be converted to the probed type of\
+      \ phenotype (e.g. '' in a column of numbers) are recorded as missing values."
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[EXPRESSION [EXPRESSION ...]] Set a phenotype to a constant (e.g.
+      --set aff=1), or an expression using other existing phenotypes (e.g. --set ratio_qt=high_qt/all_qt
+      (the ratio of the number of high quality variants to the number of all variants,
+      where high_qt and all_qt are obtained from sample statistics using parameter
+      --from_stat). Parameter --samples could be used to limit the samples for which
+      genotypes will be set.'
+    synonyms:
+    - --set
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "[EXPRESSION [EXPRESSION ...]], --from-stat [EXPRESSION [EXPRESSION\
+      \ ...]] Set a phenotype to a summary statistics of a genotype field. For example,\
+      \ \"num=count(*)\" sets phenotype num to be the number of genotypes of a sample,\
+      \ \"GD=avg(DP)\" sets phenotype DP to be the average depth (if DP is one of\
+      \ the genotype fields) of the sample. Multiple fields (e.g. '--from-stat \"\
+      num=count(*)\" \"GD=avg(DP)\"') are also allowed. In addition to standard SQL\
+      \ aggregation functions, variant tools supports special functions #(GT), #(wtGT),\
+      \ #(mutGT), #(alt), #(hom), #(het) and #(other), which counts the number of\
+      \ genotypes (the same as count(*)), wildtype genotypes, mutant genotypes alternative\
+      \ alleles, homozygotes, heterozygotes, and genotypes with two different alternative\
+      \ alleles. Parameters --genotypes and --samples could be used to limit the genotypes\
+      \ to be considered and the samples for which genotypes will be set."
+    synonyms:
+    - --from_stat
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[EXPRESSION [EXPRESSION ...]] A list of phenotype to be outputted.
+      SQL-compatible expressions or functions such as "DP/DP_all" and "avg(DP)" are
+      also allowed'
+    synonyms:
+    - --output
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Allow at most N concurrent jobs to obtain sample statistics for parameter
+      --from-stat.
+    synonyms:
+    - -j
+    - --jobs
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: "[COND [COND ...]], --genotypes [COND [COND ...]] Limit the operation\
+      \ to genotypes that match specified conditions. Use 'vtools show genotypes'\
+      \ to list usable fields for each sample."
+    synonyms:
+    - -g
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "[COND [COND ...]], --samples [COND [COND ...]] Update phenotype\
+      \ for samples that match specified conditions. Use 'vtools show samples' to\
+      \ list usable fields in the sample table."
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '{0,1,2,3}, --verbosity {0,1,2,3} Output error and warning (0), info
+      (1), debug (2) and trace (3) information to standard output (default to 1).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[HEADER [HEADER ...]] A list of header names for input file if used
+      with option --from-file. Otherwise a complete header or a list of names that
+      will be joined by a delimiter (parameter --delimiter), for option --output.
+      If a special name - is specified, the header will be read from the standard
+      input, which is the preferred way to specify large multi-line headers (e.g.
+      cat myheader | vtools export --header -). If this parameter is given without
+      parameter, a default header will be derived from field names.'
+    synonyms:
+    - --header
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Delimiter, default to tab, a popular alternative is ',' for csv output
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: DELIMITER
+    optional: true
+  - !Flag
+    description: Input or output string for missing value..
+    synonyms:
+    - --na
+    args: !SimpleFlagArg
+      name: NA
+    optional: true
+  - !Flag
+    description: Number of record to display. Default to all record.
+    synonyms:
+    - -l
+    - --limit
+    args: !SimpleFlagArg
+      name: LIMIT
+    optional: true
+  command:
+  - vtools
+  - phenotype
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Items to display, which can be, for example, name of table for type
+      'table', conditions to select samples for type 'samples', a list of phenotypes
+      for type 'phenotypes', name of an annotation database for type 'annotation',
+      a pattern to selected annotation databases for type 'annotations', name of a
+      format for type 'format', and name of an association test for type 'test'.
+    position: 0
+    name: items
+    optional: false
+  named:
+  - !Flag
+    description: Limit output to the first N records.
+    synonyms:
+    - -l
+    - --limit
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: '{0,1,2,3}, --verbosity {0,1,2,3} Output error and warning (0), info
+      (1), debug (2) and trace (3) information to standard output (default to 1).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - vtools
+  - show
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Name of the alternative reference genome
+    position: 0
+    name: build
+    optional: false
+  named:
+  - !Flag
+    description: Flip primary and alternative reference genomes so that the specified
+      build will become the primary reference genome of the project.
+    synonyms:
+    - --flip
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '{0,1,2,3}, --verbosity {0,1,2,3} Output error and warning (0), info
+      (1), debug (2) and trace (3) information to standard output (default to 1).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - vtools
+  - liftover
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Use an annotation database ($source.DB or $source.DB.gz) if it is
+      available, download or build the database if a description file ($source.ann)
+      is available. Otherwise, this command will download a description file and the
+      corresponding database from web (c.f. runtime variable $search_path) and the
+      latest version of the datavase). If all means fail, this command will try to
+      download the source of the annotation database (or use source files provided
+      by option --files).
+    position: 0
+    name: source
+    optional: false
+  named:
+  - !Flag
+    description: '{0,1,2,3}, --verbosity {0,1,2,3} Output error and warning (0), info
+      (1), debug (2) and trace (3) information to standard output (default to 1).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: An alternative name for the linked database. This option allows the
+      use of shorter field names (e.g. tg.chr instead of thousandGenomes.chr) and
+      the use of multiple versions of the same database.
+    synonyms:
+    - --as
+    args: !SimpleFlagArg
+      name: NAME
+    optional: true
+  - !Flag
+    description: "[FIELD [FIELD ...]], --linked_by [FIELD [FIELD ...]], --linked-by\
+      \ [FIELD [FIELD ...]] A list of fields that are used to link the annotation\
+      \ database to tables in the existing project. This parameter is required only\
+      \ for 'field' type of annotation databases that link to fields of existing tables."
+    synonyms:
+    - -l
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: This option overrides type of an existing annotation database when
+      it is attached to a project. It corresponds to key anno_type of the data sources
+      section of an annotation file (with suffix .ann) but does not affect the .ann
+      file or the database built from it.
+    synonyms:
+    - --anno_type
+    - --anno-type
+    args: !ChoiceFlagArg
+      choices:
+      - variant
+      - position
+      - range
+      - field
+    optional: true
+  - !Flag
+    description: '[LINKED_FIELDS [LINKED_FIELDS ...]], --linked-fields [LINKED_FIELDS
+      [LINKED_FIELDS ...]] An alternative set of fields that are used to link the
+      annotation database to the master variant table. It should have four, two, and
+      three values for database of type variant, position, and range. Similar to anno_type,
+      this option does not affect the .ann file or the database built from it.'
+    synonyms:
+    - --linked_fields
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[FILES [FILES ...]], --files [FILES [FILES ...]] A list of source
+      files. If specified, vtools will not try to download and select source files.
+      These source files will be compiled into a local annotation database. This is
+      used only when no local annotation database is specified.'
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: If set, variant tools will always rebuild the annotation database
+      from source, ignoring existing local and online database. In addition to $name.DB,
+      variant tools will also create $name-$version.DB.gz that can be readily distributed.
+    synonyms:
+    - --rebuild
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: If need to build database from source, maximum number of processes
+      to use.
+    synonyms:
+    - -j
+    - --jobs
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  command:
+  - vtools
+  - use
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: variants to be updated.
+    position: 0
+    name: table
+    optional: false
+  named:
+  - !Flag
+    description: '{0,1,2,3}, --verbosity {0,1,2,3} Output error and warning (0), info
+      (1), debug (2) and trace (3) information to standard output (default to 1).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: A list of files that will be used to add or update existing fields
+      of variants. The file should be delimiter separated with format described by
+      parameter --format. Gzipped files are acceptable. If input files contains genotype
+      information, have been inputted before, and can be linked to the samples they
+      created without ambiguity (e.g. single sample, or samples with detectable sample
+      names), genotypes and their information will also be updated.
+    synonyms:
+    - --from_file
+    - --from-file
+    args: !RepeatFlagArg
+      name: FROM_FILE
+    optional: true
+  - !Flag
+    description: Build version of the reference genome (e.g. hg18) of the input files,
+      which should be the primary (used by default) or alternative (if available)
+      reference genome of the project. An alternative reference genome will be added
+      to the project if needed.
+    synonyms:
+    - --build
+    args: !SimpleFlagArg
+      name: BUILD
+    optional: true
+  - !Flag
+    description: Format of the input text file. It can be one of the variant tools
+      supported file types such as ANNOVAR_output (cf. 'vtools show formats'), or
+      a local format specification file (with extension .fmt). Some formats accept
+      parameters (cf. 'vtools show format FMT') and allow you to update additional
+      or alternative fields from the input file.
+    synonyms:
+    - --format
+    args: !SimpleFlagArg
+      name: FORMAT
+    optional: true
+  - !Flag
+    description: Number of processes to import input file. Variant tools by default
+      uses a single process for reading and writing, and can use one or more dedicated
+      reader processes (jobs=2 or more) to process input files. Due to the overhead
+      of inter-process communication, more jobs do not automatically lead to better
+      performance.
+    synonyms:
+    - -j
+    - --jobs
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: '[SAMPLE_NAME [SAMPLE_NAME ...]], --sample-name [SAMPLE_NAME [SAMPLE_NAME
+      ...]] Name of the samples to be updated by the input files. If unspecified,
+      headers of the genotype columns of the last comment line (line starts with #)
+      of the input files will be used (and thus allow different sample names for input
+      files). Sample names will be used to identify samples to be updated. Filename
+      will be used to uniquely identify a sample if mutliple samples with the same
+      name exist in the project. No genotype info will be updated if samples cannot
+      be unquely determined.'
+    synonyms:
+    - --sample_name
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "[EXPR [EXPR ...]] Add a new field or updating an existing field\
+      \ using a constant (e.g. mark=1) or an expression using other fields (e.g. freq=num/120,\
+      \ refgene=refGene.name). If multiple values are returned for a variant, only\
+      \ one of them will be used. Parameter samples could be used to limit the affected\
+      \ variants. In addition, special function are provided, including 'HWE_exact'\
+      \ (exact test of Hardy-Weinberg Equilibrium) and 'Fisher_exact' (Fisher's exact\
+      \ test for case/ctrl association)."
+    synonyms:
+    - --set
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[EXPR [EXPR ...]], --from-stat [EXPR [EXPR ...]] One or more expressions
+      such as meanQT=avg(QT) that aggregate genotype info (e.g. QT) of variants in
+      all or selected samples to specified fields (e.g. meanQT). Functions sum, avg,
+      max, and min are currently supported. In addition, special functions #(GT),
+      #(hom), #(het), #(alt), #(other), #(missing), #(wtGT), #(mutGT), and maf(),
+      are provided to count the number of valid genotypes (not missing), homozygote
+      genotypes, heterozygote genotypes, alternative alleles (#(het) + 2*#(hom) +
+      #(other)), genotypes with two different alternative alleles, missing genotypes
+      (number of samples - #(GT)), number of non-missing wildtype genotypes (#(GT)
+      - #(hom) - #(het) - #(other)), number of non-wildtype genotypes (#(hom) + #(het)
+      + #(other)), and minor allele frequency. The maf() function treats chromosomes
+      1 to 22 as autosomes, X and Y as sex chromosomes, and other chromosomes as single-copy
+      manifolds. It requires a phenotype named sex or gender that codes male/female
+      by 1/2, M/F or Male/Female if maf of variants on sex chromosomes are calculated.
+      This function by default calculates allele frequency among existing-alleles,
+      but will treat all missing values as wild type alleles if runtime option treat_missing_as_wildtype
+      is set to true.'
+    synonyms:
+    - --from_stat
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "[COND [COND ...]], --samples [COND [COND ...]] Limiting variants\
+      \ from samples that match conditions that use columns shown in command 'vtools\
+      \ show sample' (e.g. 'aff=1', 'filename like \"MG%\"')."
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "[COND [COND ...]] Limiting variants from samples that match conditions\
+      \ that use columns shown in command 'vtools show genotypes' (e.g. 'GQ>15')."
+    synonyms:
+    - --genotypes
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - vtools
+  - update
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Source variant table.
+    position: 0
+    name: from_table
+    optional: false
+  - !Positional
+    description: Conditions by which variants are selected. Multiple arguments are
+      automatically joined by 'AND' so 'OR' conditions should be provided by a single
+      argument with conditions joined by 'OR'. If unspecified, all variants (except
+      those excluded by parameter --samples) will be selected.
+    position: 1
+    name: condition
+    optional: false
+  named:
+  - !Flag
+    description: "[COND [COND ...]], --samples [COND [COND ...]] Limiting variants\
+      \ from samples that match conditions that use columns shown in command 'vtools\
+      \ show sample' (e.g. 'aff=1', 'filename like \"MG%\"')."
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[TABLE [DESC ...]], --to_table [TABLE [DESC ...]] Destination variant
+      table.'
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output number of variant, which is a shortcut to '-- output count(1)'.
+    synonyms:
+    - -c
+    - --count
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[FIELDS [FIELDS ...]], --output [FIELDS [FIELDS ...]] A list of
+      fields that will be outputted. SQL- compatible expressions or functions such
+      as "pos-1", "count(1)" or "sum(num)" are also allowed.'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '{0,1,2,3}, --verbosity {0,1,2,3} Output error and warning (0), info
+      (1), debug (2) and trace (3) information to standard output (default to 1).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[HEADER [HEADER ...]] A complete header or a list of names that
+      will be joined by a delimiter (parameter --delimiter). If a special name - is
+      specified, the header will be read from the standard input, which is the preferred
+      way to specify large multi-line headers (e.g. cat myheader | vtools export --header
+      -). If this parameter is given without parameter, a default header will be derived
+      from field names.'
+    synonyms:
+    - --header
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Delimiter use to separate columns of output. The default output uses
+      tabs to delimit columns padded to the same width by spaces. You can use '-d,'
+      for csv output, or -d'\t' for unpadded tab-delimited output.
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: DELIMITER
+    optional: true
+  - !Flag
+    description: Precision used to output float numbers. The default value is None
+      which uses system default (e.g. whatever str(number) outputs). You can set it
+      to a positive number (e.g. 4) to limit the number of digits to output.
+    synonyms:
+    - --precision
+    args: !SimpleFlagArg
+      name: PRECISION
+    optional: true
+  - !Flag
+    description: Output string for missing value
+    synonyms:
+    - --na
+    args: !SimpleFlagArg
+      name: NA
+    optional: true
+  - !Flag
+    description: Limit output to the first N records.
+    synonyms:
+    - -l
+    - --limit
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Output reference genome. If set to alternative build, chr and pos
+      in the fields will be replaced by alt_chr and alt_pos
+    synonyms:
+    - --build
+    args: !SimpleFlagArg
+      name: BUILD
+    optional: true
+  - !Flag
+    description: '[FIELD [FIELD ...]], --group_by [FIELD [FIELD ...]], --group-by
+      [FIELD [FIELD ...]] Group output by fields. This option is useful for aggregation
+      output where summary statistics are grouped by one or more fields.'
+    synonyms:
+    - -g
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Variant tools by default output only one of the records if a variant
+      matches multiple records in an annotation database. This option tells variant
+      tools to output all matching records.
+    synonyms:
+    - --all
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Order output by specified fields in ascending order, or descending
+      order if field name is followed by DESC (e.g. --order_by 'num DESC')
+    synonyms:
+    - --order_by
+    - --order-by
+    args: !RepeatFlagArg
+      name: FIELD
+    optional: true
+  command:
+  - vtools
+  - select
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Source variant table.
+    position: 0
+    name: from_table
+    optional: false
+  - !Positional
+    description: Conditions by which variants are excluded. Multiple arguments are
+      automatically joined by 'AND' so 'OR' conditions should be provided by a single
+      argument with conditions joined by 'OR'. If unspecified, all variants (except
+      those excluded by parameter --samples) will be excluded.
+    position: 1
+    name: condition
+    optional: false
+  named:
+  - !Flag
+    description: "[COND [COND ...]], --samples [COND [COND ...]] Limiting variants\
+      \ from samples that match conditions that use columns shown in command 'vtools\
+      \ show sample' (e.g. 'aff=1', 'filename like \"MG%\"'). Variants with homozygous\
+      \ wildtype genotype are not selected if the sample contains genotype information."
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[TABLE [DESC ...]], --to_table [TABLE [DESC ...]] Destination variant
+      table.'
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output number of variant, which is a shortcut to '-- output count(1)'.
+    synonyms:
+    - -c
+    - --count
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[FIELDS [FIELDS ...]], --output [FIELDS [FIELDS ...]] A list of
+      fields that will be outputted. SQL- compatible expressions or functions such
+      as "pos-1", "count(1)" or "sum(num)" are also allowed.'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '{0,1,2,3}, --verbosity {0,1,2,3} Output error and warning (0), info
+      (1), debug (2) and trace (3) information to standard output (default to 1).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[HEADER [HEADER ...]] A complete header or a list of names that
+      will be joined by a delimiter (parameter --delimiter). If a special name - is
+      specified, the header will be read from the standard input, which is the preferred
+      way to specify large multi-line headers (e.g. cat myheader | vtools export --header
+      -). If this parameter is given without parameter, a default header will be derived
+      from field names.'
+    synonyms:
+    - --header
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Delimiter use to separate columns of output. The default output uses
+      tabs to delimit columns padded to the same width by spaces. You can use '-d,'
+      for csv output, or -d'\t' for unpadded tab-delimited output.
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: DELIMITER
+    optional: true
+  - !Flag
+    description: Precision used to output float numbers. The default value is None
+      which uses system default (e.g. whatever str(number) outputs). You can set it
+      to a positive number (e.g. 4) to limit the number of digits to output.
+    synonyms:
+    - --precision
+    args: !SimpleFlagArg
+      name: PRECISION
+    optional: true
+  - !Flag
+    description: Output string for missing value
+    synonyms:
+    - --na
+    args: !SimpleFlagArg
+      name: NA
+    optional: true
+  - !Flag
+    description: Limit output to the first N records.
+    synonyms:
+    - -l
+    - --limit
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Output reference genome. If set to alternative build, chr and pos
+      in the fields will be replaced by alt_chr and alt_pos
+    synonyms:
+    - --build
+    args: !SimpleFlagArg
+      name: BUILD
+    optional: true
+  - !Flag
+    description: '[FIELD [FIELD ...]], --group_by [FIELD [FIELD ...]], --group-by
+      [FIELD [FIELD ...]] Group output by fields. This option is useful for aggregation
+      output where summary statistics are grouped by one or more fields.'
+    synonyms:
+    - -g
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Variant tools by default output only one of the records if a variant
+      matches multiple records in an annotation database. This option tells variant
+      tools to output all matching records.
+    synonyms:
+    - --all
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Order output by specified fields in ascending order, or descending
+      order if field name is followed by DESC (e.g. --order_by 'num DESC')
+    synonyms:
+    - --order_by
+    - --order-by
+    args: !RepeatFlagArg
+      name: FIELD
+    optional: true
+  command:
+  - vtools
+  - exclude
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: variant tables to compare. Wildcard characters * and ? can be used
+      to specify multiple tables. A table name will be automatically repeated for
+      the comparison of genotype of multiple samples if only one table is specified.
+    position: 0
+    name: tables
+    optional: false
+  named:
+  - !Flag
+    description: '[TABLE [DESC ...]] Print the number (default) or save variants with
+      TYPE in the TYPE of any of the tables (T1 | T2 | T3 ...) to TABLE if a name
+      is specified. An optional message can be added to describe the table.'
+    synonyms:
+    - --union
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[TABLE [DESC ...]] Print the number (default) or save variants with
+      TYPE in the TYPE of all the tables (T1 & T2 & T3 ...) to TABLE if a name is
+      specified. An optional message can be added to describe the table.'
+    synonyms:
+    - --intersection
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[TABLE [DESC ...]] Print the number (default) or save variants with
+      TYPE in the TYPE of the first, but not in the TYPE of others (T1 - T2 - T3...)
+      to TABLE if a name is specified. An optional message can be added to describe
+      the table.'
+    synonyms:
+    - --difference
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "[DESC ...] Evaluate a set expression with table names representing\
+      \ variants in these tables. Operators | (or), & (and), - (difference) and ^\
+      \ (A or B but not both) are allowed. The results will be saved to table if the\
+      \ result is assigned to a name (e.g. --expression 'D=A-(B&C)'). The table names\
+      \ in the expression can be written as _1, _2 etc if tables are listed before\
+      \ the option, and be used to populate the list of tables if it was left unspecified."
+    synonyms:
+    - --expression
+    args: !SimpleFlagArg
+      name: EXPR
+    optional: true
+  - !Flag
+    description: Compare variants (chr, pos, ref, alt), site (chr, pos), or genotype
+      (chr, pos, ref, alt, GT for a specified sample) of variants. The results are
+      variants from all input tables that match specified condition. The default comparison
+      TYPE compares variants in input variant tables. For the comparison of sites,
+      the position of all variants are collected and compared, and variants (in all
+      tables) with site in resulting set of sites are returned. For the comparison
+      of genotypes, the genotypes of specified samples for all variants (see option
+      --samples) are collected and compared, and variants with genotype in resulting
+      set of genotypes are returned. The results of genotype comparisons are affected
+      by runtime option treat_missing_as_wildtype because items with missing genotype
+      (chr, pos, ref, alt, NULL) are excluded if treat_missing_as_wildtype is false
+      (default), and are treated as (chr, pos, ref, alt, 0) otherwise. The default
+      comparison type is variant, or genotype if option --samples is specified.
+    synonyms:
+    - --mode
+    args: !ChoiceFlagArg
+      choices:
+      - variant
+      - site
+      - genotype
+    optional: true
+  - !Flag
+    description: '[SAMPLES [SAMPLES ...]] A list of sample names corresponding to
+      the variant tables to compare. An error will be raised if a sample name matches
+      no or multiple samples or if a sample does not have any genotype.'
+    synonyms:
+    - --samples
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '{0,1,2,3}, --verbosity {0,1,2,3} Output error and warning (0), info
+      (1), debug (2) and trace (3) information to standard output (default to 1).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - vtools
+  - compare
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: variants to output.
+    position: 0
+    name: table
+    optional: false
+  - !Positional
+    description: A list of fields that will be outputted. SQL- compatible expressions
+      or functions such as "pos-1", "count(1)" or "sum(num)" are also allowed.
+    position: 1
+    name: fields
+    optional: false
+  named:
+  - !Flag
+    description: '{0,1,2,3}, --verbosity {0,1,2,3} Output error and warning (0), info
+      (1), debug (2) and trace (3) information to standard output (default to 1).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[HEADER [HEADER ...]] A complete header or a list of names that
+      will be joined by a delimiter (parameter --delimiter). If a special name - is
+      specified, the header will be read from the standard input, which is the preferred
+      way to specify large multi-line headers (e.g. cat myheader | vtools export --header
+      -). If this parameter is given without parameter, a default header will be derived
+      from field names.'
+    synonyms:
+    - --header
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Delimiter use to separate columns of output. The default output uses
+      tabs to delimit columns padded to the same width by spaces. You can use '-d,'
+      for csv output, or -d'\t' for unpadded tab-delimited output.
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: DELIMITER
+    optional: true
+  - !Flag
+    description: Precision used to output float numbers. The default value is None
+      which uses system default (e.g. whatever str(number) outputs). You can set it
+      to a positive number (e.g. 4) to limit the number of digits to output.
+    synonyms:
+    - --precision
+    args: !SimpleFlagArg
+      name: PRECISION
+    optional: true
+  - !Flag
+    description: Output string for missing value
+    synonyms:
+    - --na
+    args: !SimpleFlagArg
+      name: NA
+    optional: true
+  - !Flag
+    description: Limit output to the first N records.
+    synonyms:
+    - -l
+    - --limit
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Output reference genome. If set to alternative build, chr and pos
+      in the fields will be replaced by alt_chr and alt_pos
+    synonyms:
+    - --build
+    args: !SimpleFlagArg
+      name: BUILD
+    optional: true
+  - !Flag
+    description: '[FIELD [FIELD ...]], --group_by [FIELD [FIELD ...]], --group-by
+      [FIELD [FIELD ...]] Group output by fields. This option is useful for aggregation
+      output where summary statistics are grouped by one or more fields.'
+    synonyms:
+    - -g
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Variant tools by default output only one of the records if a variant
+      matches multiple records in an annotation database. This option tells variant
+      tools to output all matching records.
+    synonyms:
+    - --all
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Order output by specified fields in ascending order, or descending
+      order if field name is followed by DESC (e.g. --order_by 'num DESC')
+    synonyms:
+    - --order_by
+    - --order-by
+    args: !RepeatFlagArg
+      name: FIELD
+    optional: true
+  command:
+  - vtools
+  - output
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: A variant table whose variants will be exported. If parameter --samples
+      is specified, only variants belong to one or more of the samples will be exported.
+    position: 0
+    name: table
+    optional: false
+  named:
+  - !Flag
+    description: '[OUTPUT], --output [OUTPUT] Name of output file. Output will be
+      written to the standard output if this parameter is left unspecified.'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "[COND [COND ...]], --samples [COND [COND ...]] Samples that will\
+      \ be exported, specified by conditions such as 'aff=1' and 'filename like \"\
+      MG%\"'. Multiple samples could be exported to a file if the output format allows.\
+      \ No sample will be outputted if this parameter is ignored."
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Format of the exported file. It can be one of the variant tools supported
+      file types such as VCF (cf. 'vtools show formats') or a local format specification
+      file (with extension .fmt). Some formats accept additional parameters (cf. 'vtools
+      show format FMT') and allows you to export additional or alternative fields.
+    synonyms:
+    - --format
+    args: !SimpleFlagArg
+      name: FORMAT
+    optional: true
+  - !Flag
+    description: Build version of the reference genome (e.g. hg18) of the exported
+      data. It can only be one of the primary (default) of alternative (if exists)
+      reference genome of the project.
+    synonyms:
+    - --build
+    args: !SimpleFlagArg
+      name: BUILD
+    optional: true
+  - !Flag
+    description: '[HEADER [HEADER ...]] A complete header or a list of names that
+      will be joined by a delimiter specified by the file format to form a header.
+      If a special name - is specified, the header will be read from the standard
+      input, which is the preferred way to specify large multi-line headers (e.g.
+      cat myheader | vtools export --header -). Strings in the form of %(VAR)s will
+      be interpolated to values of variable VAR, which can be "sample_names" for list
+      of sample names, "datetime" for current date and time, and "command" for the
+      command used to create output.'
+    synonyms:
+    - --header
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Number of processes to export data. Multiple threads will be automatically
+      used if there are a large number of samples.
+    synonyms:
+    - -j
+    - --jobs
+    args: !SimpleFlagArg
+      name: JOBS
+    optional: true
+  - !Flag
+    description: '{0,1,2,3}, --verbosity {0,1,2,3} Output error and warning (0), info
+      (1), debug (2) and trace (3) information to standard output (default to 1).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - vtools
+  - export
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Items to be removed, which should be, for 'project' the name of project
+      to be removed (optional), for 'tables' names of one or more variant tables (wildcard
+      characters ? and * are allowed), for 'samples' patterns using which matching
+      samples are removed, for 'fields' name of fields to be removed, for 'geno_fields'
+      name of genotype fields to be removed (cf. 'vtools show genotypes'), for 'annotations'
+      names of annotation databases, for 'variants' variant tables whose variants
+      will be removed from all variant tables and genotypes, for 'genotypes' conditions
+      using which matching genotypes are removed, and for 'phenotypes' columns in
+      the output of 'vtools show samples'. Note that removal of samples will only
+      remove sample name, filename (if all related samples are removed), and related
+      genotypes, but not variants themselves; removal of annotation databases will
+      stop using these databases in the project, but will not delete them from disk.
+    position: 0
+    name: items
+    optional: false
+  named:
+  - !Flag
+    description: '{0,1,2,3}, --verbosity {0,1,2,3} Output error and warning (0), info
+      (1), debug (2) and trace (3) information to standard output (default to 1).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - vtools
+  - remove
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Table of variants to be tested.
+    position: 0
+    name: variants
+    optional: false
+  - !Positional
+    description: A list of phenotypes that will be passed to the association statistics
+      calculator. Currently only a single phenotype is allowed.
+    position: 1
+    name: phenotypes
+    optional: false
+  named:
+  - !Flag
+    description: Number of processes to carry out association tests.
+    synonyms:
+    - -j
+    - --jobs
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Submit vtools association job to cluster, please check bash script.
+    synonyms:
+    - -mpi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '{0,1,2,3}, --verbosity {0,1,2,3} Output error and warning (0), info
+      (1), debug (2) and trace (3) information to standard output (default to 1).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[COVARIATES [COVARIATES ...]] Optional phenotypes that will be passed
+      to statistical tests as covariates. Values of these phenotypes should be integer
+      or float.'
+    synonyms:
+    - --covariates
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[VAR_INFO [VAR_INFO ...]], --var-info [VAR_INFO [VAR_INFO ...]]
+      Optional variant information fields (e.g. minor allele frequency from 1000 genomes
+      project) that will be passed to statistical tests. The fields could be any annotation
+      fields of with integer or float values, including those from used annotation
+      databases (use "vtools show fields" to see a list of usable fields).'
+    synonyms:
+    - --var_info
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[GENO_INFO [GENO_INFO ...]], --geno-info [GENO_INFO [GENO_INFO ...]]
+      Optional genotype fields (e.g. quality score of genotype calls, cf. "vtools
+      show genotypes") that will be passed to statistical tests. Note that the fields
+      should exist for all samples that are tested.'
+    synonyms:
+    - --geno_info
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Field name of genotype, default to 'GT'. If another field name is
+      specified, for example if imputation scores are available as 'DS' (dosage),
+      then the given field 'DS' will be used as genotype data for association analysis.
+    synonyms:
+    - --geno_name
+    - --geno-name
+    args: !SimpleFlagArg
+      name: GENO_NAME
+    optional: true
+  - !Flag
+    description: Method of one or more association tests. Parameters for each method
+      should be specified together as a quoted long argument (e.g. --methods "m --alternative
+      2" "m1 --permute 1000"), although the common method parameters can be specified
+      separately, as long as they do not conflict with command arguments. (e.g. --methods
+      m1 m2 -p 1000 is equivalent to --methods "m1 -p 1000" "m2 -p 1000".). You can
+      use command 'vtools show tests' for a list of association tests, and 'vtools
+      show test TST' for details about a test. Customized association tests can be
+      specified as mod_name.test_name where mod_name should be a Python module (system
+      wide or in the current directory), and test_name should be a subclass of NullTest.
+    synonyms:
+    - -m
+    - --methods
+    args: !RepeatFlagArg
+      name: METHODS
+    optional: true
+  - !Flag
+    description: '[GROUP_BY [GROUP_BY ...]], --group_by [GROUP_BY [GROUP_BY ...]],
+      --group-by [GROUP_BY [GROUP_BY ...]] Group variants by fields. If specified,
+      variants will be separated into groups and are tested one by one.'
+    synonyms:
+    - -g
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "[COND [COND ...]], --samples [COND [COND ...]] Limiting variants\
+      \ from samples that match conditions that use columns shown in command 'vtools\
+      \ show sample' (e.g. 'aff=1', 'filename like \"MG%\"'). Each line of the sample\
+      \ table (vtools show samples) is considered as samples. If genotype of a physical\
+      \ sample is scattered into multiple samples (e.g. imported chromosome by chromosome),\
+      \ they should be merged using command vtools admin."
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "[COND [COND ...]] Limiting genotypes to those matching conditions\
+      \ that use columns shown in command 'vtools show genotypes' (e.g. 'GQ>15').\
+      \ Genotypes failing such conditions will be regarded as missing genotypes."
+    synonyms:
+    - --genotypes
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[EXPR [EXPR ...]], --discard-samples [EXPR [EXPR ...]] Discard samples
+      that match specified conditions within each test group (defined by parameter
+      --group_by). Currently only expressions in the form of "%(NA)>p" is providedted
+      to remove samples that have more 100*p percent of missing values.'
+    synonyms:
+    - --discard_samples
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "[EXPR [EXPR ...]], --discard-variants [EXPR [EXPR ...]] Discard\
+      \ variant sites based on specified conditions within each test group. Currently\
+      \ only expressions in the form of '%(NA)>p' is provided to remove variant sites\
+      \ that have more than 100*p percent of missing genotypes. Note that this filter\
+      \ will be applied after \"--discard_samples\" is applied, if the latter also\
+      \ is specified."
+    synonyms:
+    - --discard_variants
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Name of a database to which results from association tests will be
+      written. Groups with existing results in the database will be ignored unless
+      parameter --force is used.
+    synonyms:
+    - --to_db
+    - --to-db
+    args: !SimpleFlagArg
+      name: annoDB
+    optional: true
+  - !Flag
+    description: Delimiter use to separate columns of output. The default output uses
+      multiple spaces to align columns of output. Use '-d,' for csv output, or -d'\t'
+      for tab-delimited output.
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: DELIMITER
+    optional: true
+  - !Flag
+    description: Analyze all groups including those that have recorded results in
+      the result database.
+    synonyms:
+    - -f
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - vtools
+  - associate
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '{0,1,2,3}, --verbosity {0,1,2,3} Output error and warning (0), info
+      (1), debug (2) and trace (3) information to standard output (default to 1).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "[TYPE], --update-resource [TYPE] Download resources of specified\
+      \ type, which can be 'current' (latest version of all resources), 'all' (all\
+      \ resources including obsolete databases), 'existing' (only update resources\
+      \ that exist locally), 'hg18' or 'hg19' (all resources for reference genome\
+      \ hg18 or hg19), 'annotation' (all current annotation databases), 'format' (all\
+      \ formats), and 'snapshot' (all online snapshots). Identical resources that\
+      \ are available locally (under ~/.variant_tools or runtime option $local_resource)\
+      \ are ignored. Note that option 'all' will download all versions of annotation\
+      \ databases which can be slow and take a lot of disk spaces."
+    synonyms:
+    - --update_resource
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Mirror the main variant tools repository to a local directory. This
+      command will check files under dest, download all missing or outdated files.
+      Existing files that do not belong to the repository will not be removed.
+    synonyms:
+    - --mirror_repository
+    - --mirror-repository
+    args: !SimpleFlagArg
+      name: dest
+    optional: true
+  - !Flag
+    description: Merge samples with the same sample names by combining genotypes belonging
+      to these samples. Phenotypes related to individual samples will be merged.
+    synonyms:
+    - --merge_samples
+    - --merge-samples
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: This argument takes a condition by which samples are selected, followed
+      by either a new sample name (assign a new name to selected samples) or an OLDNAME
+      NEWNAME pair of patterns for which the first instance of OLDNAME in sample names
+      will be replaced by NEWNAME.
+    synonyms:
+    - --rename_samples
+    - --rename-samples
+    args: !RepeatFlagArg
+      name: COND
+    optional: true
+  - !Flag
+    description: Validate the build of project's reference genome by checking if the
+      reference alleles of variants agree with the reference genome sequence. A reference
+      genome will be automatically downloaded if it does not exist in the local resource
+      directory.
+    synonyms:
+    - --validate_build
+    - --validate-build
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "[{report,force-heterozygote}], --validate-sex [{report,force-heterozygote}]\
+      \ Validate the sex of samples by checking the genotypes of samples on sex chromosomes\
+      \ (excluding pseudo- autosomal regions). Sex of samples are determined by a\
+      \ phenotype named sex or gender with values 1/2, M/F or Male/Female. Inconsistency\
+      \ will be reported if, for example, a female sample has genotypes on chromosome\
+      \ Y. This argument accepts an option argument, which is report by default (report\
+      \ inconsistent genotype or sex), but can also be 'force-heterozygote' for male\
+      \ individuals on chromosome X."
+    synonyms:
+    - --validate_sex
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: MESSAGE, --save-snapeshot NAME MESSAGE Create a snapshot of the current
+      project with NAME, which could be re-loaded using command 'vtools admin --load_snapshot'.
+      A filename with extension .tar, .tgz or .tar.gz can be used to save the snapshot
+      to a specific directory with compression but such snapshots are not listed by
+      command 'vtools show snapshots'.
+    synonyms:
+    - --save_snapshot
+    args: !SimpleFlagArg
+      name: NAME
+    optional: true
+  - !Flag
+    description: '[FILE [FILE ...]], --extra-files [FILE [FILE ...]] Additional files
+      that will be saved along with the project and genotype databases. This could
+      include customized format files, project-specific annotations, and results.
+      Files outside of the current project directory are not allowed due to security
+      considerations.'
+    synonyms:
+    - --extra_files
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Revert the current project to specified snapshot. All changes since
+      the that snapshot will be lost. The NAME should be one of the project snapshots
+      or online snapshots listed by command 'vtools show snapshots', or name of a
+      local snapshot file (with extension .tar, .tgz or .tar.gz).
+    synonyms:
+    - --load_snapshot
+    - --load-snapshot
+    args: !SimpleFlagArg
+      name: NAME
+    optional: true
+  - !Flag
+    description: Set value to internal options such as the batch size for database
+      options. The default values of these options were chosen to fit most usage patterns
+      but tweaking them might provide better performance under certain circumstances.
+      Please use command "vtools show runtime_options" to list all currently supported
+      runtime options.
+    synonyms:
+    - --set_runtime_option
+    - --set-runtime-option
+    args: !RepeatFlagArg
+      name: OPTION
+    optional: true
+  - !Flag
+    description: Reset value to a runtime option to its default value.
+    synonyms:
+    - --reset_runtime_option
+    - --reset-runtime-option
+    args: !SimpleFlagArg
+      name: OPT
+    optional: true
+  - !Flag
+    description: Save option to user_options.py so that it will be automatically set
+      for all user projects.
+    synonyms:
+    - -g
+    - --global
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Convert fasta files to a crr file (a binary format for faster access)
+      that can be used by variant tools. This is only needed if you are working with
+      a reference genome that is not supported by variant tools. This parameter accepts
+      a list of fastq files (URLs and .gz format are acceptable) followed by the name
+      of the .crr file. The .crr file should be put under the project directory or
+      the local resource directory (under directory reference) to be usable by variant
+      tools.
+    synonyms:
+    - --fasta2crr
+    args: !RepeatFlagArg
+      name: FASTA
+    optional: true
+  command:
+  - vtools
+  - admin
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Name of a pipeline configuration file, which can be a path to a .pipeline
+      file (with or without extension) or one of the online pipelines listed by command
+      "vtools show pipelines". For backward compatibility, if no input and output
+      files are specified (options --input and --output), values of this option is
+      treated as a SQL query that will be executed against the project database, with
+      project genotype database attached as "genotype" and annotation databases attached
+      by their names.
+    position: 0
+    name: SPECFILE
+    optional: false
+  - !Positional
+    description: Name of one or more pipelines defined in SPECFILE, which can be ignored
+      if the SPECFILE only defines one pipeline. One or more steps can be specified
+      in the form of 'pipeline:5' (step_5 only), 'pipeline:-5' (up to step 5), 'pipeline:5-'
+      (from step 5), 'pipeline:2,5' (step 2 and 5), 'pipeline:2-5' (step 2 to 5).
+      This essentially adds an option "skip" to the unselected pipeline steps and
+      it is up to the user to ensure that the pipeline is executable with only a subset
+      of steps. Please use command "vtools show pipeline SPECFILE" for details of
+      available pipelines in SPECFILE, including pipeline-specific parameters that
+      could be used to change the default behavior of the pipelines.
+    position: 1
+    name: PIPELINES
+    optional: false
+  named:
+  - !Flag
+    description: Execute the pipeline in parallel model if a number other than 1 is
+      specified. In this mode, the RunCommand action will create a shell script and
+      submit the job using a command specified by option ``submitter``, if this parameter
+      is defined.
+    synonyms:
+    - -j
+    - --jobs
+    args: !SimpleFlagArg
+      name: JOBS
+    optional: true
+  - !Flag
+    description: Delimiter used to output results of a SQL query.
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: DELIMITER
+    optional: true
+  - !Flag
+    description: '{0,1,2,3}, --verbosity {0,1,2,3} Output error and warning (0), info
+      (1), debug (2) and trace (3) information to standard output (default to 1).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - vtools
+  - execute
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Name of a model specification file, which can be the name of an online
+      specification file, or path to a local .pipeline file. Please use command "vtools
+      show simulations" to get a list all available simulation models.
+    position: 0
+    name: SPECFILE
+    optional: false
+  - !Positional
+    description: Name of one or more simulation models defined in SPECFILE, which
+      can be ignored if the SPECFILE only defines one simulation model. Please use
+      command "vtools show simulation SPECFILE" for details of available models in
+      SPECFILE, including model-specific parameters that could be used to change the
+      default behavior of these models.
+    position: 1
+    name: MODELS
+    optional: false
+  named:
+  - !Flag
+    description: Random seed for the simulation. A random seed will be used by default
+      but a specific seed could be used to reproduce a previously executed simulation.
+    synonyms:
+    - --seed
+    args: !SimpleFlagArg
+      name: SEED
+    optional: true
+  - !Flag
+    description: Number of consecutive replications to simulate
+    synonyms:
+    - --replicates
+    args: !SimpleFlagArg
+      name: REPLICATES
+    optional: true
+  - !Flag
+    description: Maximum number of concurrent jobs to execute, for steps of a pipeline
+      that allows multi-processing.
+    synonyms:
+    - -j
+    - --jobs
+    args: !SimpleFlagArg
+      name: JOBS
+    optional: true
+  - !Flag
+    description: '{0,1,2,3}, --verbosity {0,1,2,3} Output error and warning (0), info
+      (1), debug (2) and trace (3) information to standard output (default to 1).'
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - vtools
+  - simulate
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

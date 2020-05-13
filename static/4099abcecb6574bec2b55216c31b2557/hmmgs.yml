@@ -1,0 +1,192 @@
+!Command
+positional: []
+named: []
+command:
+- hmmgs
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: 'fasta or fastq files containing the reads to build the graph from '
+    position: 0
+    name: read_file
+    optional: false
+  - !Positional
+    description: 'file to write the bloom filter to '
+    position: 1
+    name: bloom_out
+    optional: false
+  - !Positional
+    description: 'should be multiple of 3, (recommend 45, maximum 63) '
+    position: 2
+    name: kmerSize
+    optional: false
+  - !Positional
+    description: the size of the bloom filter (or memory needed) is 2^bloomSizeLog2
+      bits, increase if the predicted false positive rate is greater than 1%
+    position: 3
+    name: bloomSizeLog2
+    optional: false
+  - !Positional
+    description: minimum number of times a kmer has to be observed in SEQFILE to be
+      included in the final bloom filter
+    position: 4
+    name: cutoff
+    optional: false
+  - !Positional
+    description: number of hash functions, default 4
+    position: 5
+    name: hashCount
+    optional: false
+  - !Positional
+    description: the size of one bitSet 2^bitsetSizeLog2, recommend 30, usually not
+      changed
+    position: 6
+    name: bitsetSizeLog2
+    optional: false
+  named: []
+  command:
+  - hmmgs
+  - build
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: BloomFilterStats
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: bloom_filter
+    optional: false
+  named: []
+  command:
+  - hmmgs
+  - stats
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: starting kmers (can use KmerFilter's fast_kmer_filter to identify
+      starting kmers)
+    position: 0
+    name: kmers
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -u
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -p
+    args: !SimpleFlagArg
+      name: n_nodes
+    optional: true
+  command:
+  - hmmgs
+  - search
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Generate all combinations for multiple paths, instead of just the
+      best
+    synonyms:
+    - -a
+    - --all
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Minimum bits score
+    synonyms:
+    - -b
+    - --min-bits
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Minimum length
+    synonyms:
+    - -l
+    - --min-length
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: Write output to file instead of stdout
+    synonyms:
+    - -o
+    - --out
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  - !Flag
+    description: short sample name, to be used as part of contig identifiers. This
+      allow analyzing contigs together from different samples in downstream analysis
+    synonyms:
+    - -s
+    - --short_samplename
+    args: !SimpleFlagArg
+      name: arg
+    optional: true
+  command:
+  - hmmgs
+  - merge
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: CutFinder
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: kmer size
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: bloom filter
+    optional: false
+  - !Positional
+    description: ''
+    position: 3
+    name: query files
+    optional: false
+  named: []
+  command:
+  - hmmgs
+  - find-cuts
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

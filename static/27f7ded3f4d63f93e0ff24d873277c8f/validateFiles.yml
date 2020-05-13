@@ -1,0 +1,173 @@
+!Command
+positional:
+- !Positional
+  description: ': ENCODE Peak formats'
+  position: 0
+  name: broadPeak
+  optional: false
+- !Positional
+  description: These are specialized bedN+P formats.
+  position: 1
+  name: narrowPeak
+  optional: false
+- !Positional
+  description: See http://genomewiki.soe.ucsc.edu/EncodeDCC/index.php/File_Formats
+  position: 2
+  name: gappedPeak
+  optional: false
+- !Positional
+  description: ':  BED Graph'
+  position: 3
+  name: bedGraph
+  optional: false
+- !Positional
+  description: ':  NanoString RCC'
+  position: 4
+  name: rcc
+  optional: false
+- !Positional
+  description: ':  Illumina IDAT'
+  position: 5
+  name: idat
+  optional: false
+named:
+- !Flag
+  description: If you have extra "bedPlus" fields, it's great to put a definition
+    of each field in a row in AutoSql format here. Applies to bed-related types.
+  synonyms:
+  - -as
+  args: !SimpleFlagArg
+    name: fields.as
+  optional: true
+- !Flag
+  description: If set, expect fields to be tab separated, normally expects white space
+    separator. Applies to bed-related types.
+  synonyms:
+  - -tab
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify DB containing chromInfo table to validate chrom names and sizes
+  synonyms:
+  - -chromDb
+  args: !SimpleFlagArg
+    name: db
+  optional: true
+- !Flag
+  description: Specify chromInfo file to validate chrom names and sizes
+  synonyms:
+  - -chromInfo
+  args: !SimpleFlagArg
+    name: file.txt
+  optional: true
+- !Flag
+  description: Sequences include colorspace values [0-3] (can be used  with formats
+    such as tagAlign and pairedTagAlign)
+  synonyms:
+  - -colorSpace
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Input is sorted by chrom, only affects types tagAlign and pairedTagAlign
+  synonyms:
+  - -isSorted
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output report in filename.report
+  synonyms:
+  - -doReport
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print version
+  synonyms:
+  - -version
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: /to/hg18.2bit    REQUIRED to validate sequence mappings match the genome
+    specified in the .2bit file. (BAM, tagAlign, pairedTagAlign)
+  synonyms:
+  - -genome
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: N's do not count as a mismatch
+  synonyms:
+  - -nMatch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Only check the first N bases of the sequence
+  synonyms:
+  - -matchFirst
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: 'Maximum number of mismatches in sequence (or read pair) '
+  synonyms:
+  - -mismatches
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Maximum total quality score at mismatching positions
+  synonyms:
+  - -mismatchTotalQuality
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Check either pair dont exceed mismatch count if validating pairedTagAlign
+    files (default is the total for the pair)
+  synonyms:
+  - -mmPerPair
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Check mismatches in only one in 'n' lines (default=1, all)
+  synonyms:
+  - -mmCheckOneInN
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Allow chromosomes that aren't native in BAM's
+  synonyms:
+  - -allowOther
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Allow chromosomes that have the wrong length in BAM
+  synonyms:
+  - -allowBadLength
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Complement the query sequence on the minus strand (for testing BAM)
+  synonyms:
+  - -complementMinus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Percentage of BAM alignments that must be compliant
+  synonyms:
+  - -bamPercent
+  args: !SimpleFlagArg
+    name: N.N
+  optional: true
+- !Flag
+  description: Private data so empty sequence is tolerated
+  synonyms:
+  - -privateData
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- validateFiles
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

@@ -1,0 +1,448 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Show all logging information
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- sequenza-utils
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Use pileups as input files instead of BAMs.
+    synonyms:
+    - -p
+    - --pileup
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Name of the BAM/pileup file from the reference/normal sample
+    synonyms:
+    - -n
+    - --normal
+    args: !SimpleFlagArg
+      name: NORMAL
+    optional: true
+  - !Flag
+    description: Name of the BAM/pileup file from the tumor sample
+    synonyms:
+    - -t
+    - --tumor
+    args: !SimpleFlagArg
+      name: TUMOR
+    optional: true
+  - !Flag
+    description: The GC-content wiggle file
+    synonyms:
+    - -gc
+    args: !SimpleFlagArg
+      name: GC
+    optional: true
+  - !Flag
+    description: The reference FASTA file used to generate the intermediate pileup.
+      Required when input are BAM
+    synonyms:
+    - -F
+    - --fasta
+    args: !SimpleFlagArg
+      name: FASTA
+    optional: true
+  - !Flag
+    description: Name of the output file. To use gzip compression name the file ending
+      in .gz. Default STDOUT.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUT
+    optional: true
+  - !Flag
+    description: Optional BAM/pileup file used to compute the depth.normal and depth-ratio,
+      instead of using the normal BAM.
+    synonyms:
+    - -n2
+    - --normal2
+    args: !SimpleFlagArg
+      name: NORMAL2
+    optional: true
+  - !Flag
+    description: Threshold to select homozygous positions. Default 0.9.
+    synonyms:
+    - --hom
+    args: !SimpleFlagArg
+      name: HOM
+    optional: true
+  - !Flag
+    description: Threshold to select heterozygous positions. Default 0.25.
+    synonyms:
+    - --het
+    args: !SimpleFlagArg
+      name: HET
+    optional: true
+  - !Flag
+    description: Threshold of frequency in the forward strand to trust heterozygous
+      calls. Default -0.2 (Disabled, effective with values >= 0).
+    synonyms:
+    - --het_f
+    args: !SimpleFlagArg
+      name: HET_F
+    optional: true
+  - !Flag
+    description: 'Argument to restrict the input/output to a chromosome or a chromosome
+      region. Coordinate format is Name:pos.start-pos.end, eg: chr17:7565097-7590856,
+      for a particular region; eg: chr17, for the entire chromosome. Chromosome names
+      can checked in the BAM/pileup files and are depending on the FASTA reference
+      used for alignment. Default behavior is to not selecting any chromosome.'
+    synonyms:
+    - -C
+    - --chromosome
+    args: !RepeatFlagArg
+      name: CHR
+    optional: true
+  - !Flag
+    description: Defines the number of chromosomes to run in parallel. The output
+      will be divided in multiple files, one for each chromosome. The file name will
+      be composed by the output argument (used as prefix) and a chromosome name given
+      by the chromosome argument list. This imply that both output and chromosome
+      argument need to be set correctly.
+    synonyms:
+    - --parallel
+    args: !SimpleFlagArg
+      name: NPROC
+    optional: true
+  - !Flag
+    description: Path of samtools exec file to access the indexes and compute the
+      pileups. Default "samtools"
+    synonyms:
+    - -S
+    - --samtools
+    args: !SimpleFlagArg
+      name: SAMTOOLS
+    optional: true
+  - !Flag
+    description: Path of the tabix binary. Default "tabix"
+    synonyms:
+    - -T
+    - --tabix
+    args: !SimpleFlagArg
+      name: TABIX
+    optional: true
+  - !Flag
+    description: Minimum nucleotide quality score for inclusion in the counts. Default
+      20.
+    synonyms:
+    - -q
+    - --qlimit
+    args: !SimpleFlagArg
+      name: QLIMIT
+    optional: true
+  - !Flag
+    description: Quality format, options are "sanger" or "illumina". This will add
+      an offset of 33 or 64 respectively to the qlimit value. Default "sanger".
+    synonyms:
+    - -f
+    - --qformat
+    args: !SimpleFlagArg
+      name: QFORMAT
+    optional: true
+  - !Flag
+    description: Threshold to filter positions by the sum of read depth of the two
+      samples. Default 20.
+    synonyms:
+    - -N
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  command:
+  - sequenza-utils
+  - bam2seqz
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: the fasta file. It can be a file name or "-" to use STDIN
+    synonyms:
+    - -f
+    - --fasta
+    args: !SimpleFlagArg
+      name: FASTA
+    optional: true
+  - !Flag
+    description: Output file "-" for STDOUT
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: OUT
+    optional: true
+  - !Flag
+    description: The window size to calculate the GC-content percentage
+    synonyms:
+    - -w
+    args: !SimpleFlagArg
+      name: WINDOW
+    optional: true
+  command:
+  - sequenza-utils
+  - gc_wiggle
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Name of the input mpileup (SAMtools) file. If the filename ends in
+      .gz it will be opened in gzip mode. If the file name is - it will be read from
+      STDIN.
+    synonyms:
+    - -p
+    - --mpileup
+    args: !SimpleFlagArg
+      name: MPILEUP
+    optional: true
+  - !Flag
+    description: Name of the output file. To use gzip compression name the file ending
+      in .gz. Default STDOUT.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: The minimum required read depth on a position to test for mutation.
+    synonyms:
+    - -n
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Minimum nucleotide quality score filter.
+    synonyms:
+    - -q
+    - --qlimit
+    args: !SimpleFlagArg
+      name: QLIMIT
+    optional: true
+  - !Flag
+    description: Discard the base located at the end of the read
+    synonyms:
+    - --no-end
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Discard the base located at the start of the read
+    synonyms:
+    - --no-start
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Quality format, options are "sanger" or "illumina". This will add
+      an offset of 33 or 64 respectively to the qlimit value.
+    synonyms:
+    - -f
+    - --qformat
+    args: !SimpleFlagArg
+      name: QFORMAT
+    optional: true
+  command:
+  - sequenza-utils
+  - pileup2acgt
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: A seqz file.
+    synonyms:
+    - -s
+    - --seqz
+    args: !SimpleFlagArg
+      name: SEQZ
+    optional: true
+  - !Flag
+    description: Window size used for binning the original seqz file. Default is 50.
+    synonyms:
+    - -w
+    - --window
+    args: !SimpleFlagArg
+      name: WINDOW
+    optional: true
+  - !Flag
+    description: Output file "-" for STDOUT
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: OUT
+    optional: true
+  - !Flag
+    description: Path of the tabix binary. Default "tabix"
+    synonyms:
+    - -T
+    - --tabix
+    args: !SimpleFlagArg
+      name: TABIX
+    optional: true
+  command:
+  - sequenza-utils
+  - seqz_binning
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Output file. For gzip compressed output name the file ending in .gz.
+      Default STDOUT
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Path of the tabix binary. Default "tabix"
+    synonyms:
+    - -T
+    - --tabix
+    args: !SimpleFlagArg
+      name: TABIX
+    optional: true
+  command:
+  - sequenza-utils
+  - seqz_merge
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Output file. For gzip compressed output name the file ending in .gz.
+      Default STDOUT
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: VCF input file
+    synonyms:
+    - -v
+    - --vcf
+    args: !SimpleFlagArg
+      name: VCF
+    optional: true
+  - !Flag
+    description: The GC-content wiggle file
+    synonyms:
+    - -gc
+    args: !SimpleFlagArg
+      name: GC
+    optional: true
+  - !Flag
+    description: Column separated VCF tags in the format column for the read depth
+      for the normal and for the tumor. Default "DP:DP"
+    synonyms:
+    - --vcf-depth
+    args: !SimpleFlagArg
+      name: VCF_DEPTH_TAG
+    optional: true
+  - !Flag
+    description: '{n/t,t/n} Order of the normal and tumor sample in the VCF column,
+      choices are "n/t" or "t/n". Default "n/t"'
+    synonyms:
+    - --vcf-samples
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Column separated VCF tags in the format column for the alleles depth
+      for the normal and for the tumor. Default "AD:AD"
+    synonyms:
+    - --vcf-alleles
+    args: !SimpleFlagArg
+      name: VCF_ALLELES_TAG
+    optional: true
+  - !Flag
+    description: Preset set of options to parse VCF from popular variant callers
+    synonyms:
+    - --preset
+    args: !ChoiceFlagArg
+      choices:
+      - caveman
+      - mutect
+      - mpileup
+      - strelka2_som
+    optional: true
+  - !Flag
+    description: Threshold to select homozygous positions. Default 0.9
+    synonyms:
+    - --hom
+    args: !SimpleFlagArg
+      name: HOM
+    optional: true
+  - !Flag
+    description: Threshold to select heterozygous positions. Default 0.25.
+    synonyms:
+    - --het
+    args: !SimpleFlagArg
+      name: HET
+    optional: true
+  - !Flag
+    description: Threshold of frequency in the forward strand to trust heterozygous
+      calls. Default -0.2 (Disabled, effective with values >= 0).
+    synonyms:
+    - --het_f
+    args: !SimpleFlagArg
+      name: HET_F
+    optional: true
+  - !Flag
+    description: Path of the tabix binary. Default "tabix"
+    synonyms:
+    - -T
+    - --tabix
+    args: !SimpleFlagArg
+      name: TABIX
+    optional: true
+  - !Flag
+    description: Threshold to filter positions by the sum of read depth of the two
+      samples. Default 20.
+    synonyms:
+    - -N
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  command:
+  - sequenza-utils
+  - snp2seqz
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

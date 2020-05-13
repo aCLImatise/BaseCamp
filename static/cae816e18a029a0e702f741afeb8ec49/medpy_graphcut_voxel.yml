@@ -1,0 +1,76 @@
+!Command
+positional:
+- !Positional
+  description: The sigma required for the boundary terms.
+  position: 0
+  name: sigma
+  optional: false
+- !Positional
+  description: The additional image required by the boundary term. See there for details.
+  position: 1
+  name: badditional
+  optional: false
+- !Positional
+  description: Image containing the foreground (=1) and background (=2) markers.
+  position: 2
+  name: markers
+  optional: false
+- !Positional
+  description: The output image containing the segmentation.
+  position: 3
+  name: output
+  optional: false
+named:
+- !Flag
+  description: The boundary term to use. Note that the ones prefixed with diff_ require
+    the original image, while the ones prefixed with max_ require the gradient image.
+  synonyms:
+  - --boundary
+  args: !ChoiceFlagArg
+    choices:
+    - diff_linear
+    - diff_exp
+    - diff_div
+    - diff_pow
+    - max_linear
+    - max_exp
+    - max_div
+    - max_pow
+  optional: true
+- !Flag
+  description: Set this flag to take the pixel spacing of the image into account.
+    The spacing data will be extracted from the baddtional image.
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set this flag to silently override files that exist.
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display more information.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display debug information.
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- medpy_graphcut_voxel.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

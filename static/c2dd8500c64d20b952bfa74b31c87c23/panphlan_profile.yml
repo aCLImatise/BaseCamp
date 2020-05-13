@@ -1,0 +1,231 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Input directory of panphlan_map.py results, containing SAMPLE.csv.bz2
+    files
+  synonyms:
+  - -i
+  - --i_dna
+  args: !SimpleFlagArg
+    name: INPUT_DNA_FOLDER
+  optional: true
+- !Flag
+  description: Input directory of bowtie2 indexes
+  synonyms:
+  - --i_bowtie2_indexes
+  args: !SimpleFlagArg
+    name: INPUT_BOWTIE2_INDEXES
+  optional: true
+- !Flag
+  description: 'Panphlan species/clade database (e.g.: ecoli16)'
+  synonyms:
+  - -c
+  - --clade
+  args: !SimpleFlagArg
+    name: CLADE_NAME
+  optional: true
+- !Flag
+  description: 'Write gene family presence/absence matrix: gene_presence_absence.csv'
+  synonyms:
+  - -o
+  - --o_dna
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+  optional: true
+- !Flag
+  description: 'RNA-seq: input directory of RNA mapping results SAMPLE_RNA.csv.bz2'
+  synonyms:
+  - --i_rna
+  args: !SimpleFlagArg
+    name: INPUT_RNA_FOLDER
+  optional: true
+- !Flag
+  description: 'RNA-seq: list of DNA-RNA sequencing pairs from the same biological
+    sample.'
+  synonyms:
+  - --sample_pairs
+  args: !SimpleFlagArg
+    name: DNA_RNA_MAPPING
+  optional: true
+- !Flag
+  description: 'Gene family presence/absence threshold: lower are non- present gene
+    families.'
+  synonyms:
+  - --th_zero
+  args: !SimpleFlagArg
+    name: MINIMUM_THRESHOLD
+  optional: true
+- !Flag
+  description: 'Gene family presence/absence threshold: higher are present gene families.'
+  synonyms:
+  - --th_present
+  args: !SimpleFlagArg
+    name: MEDIUM_THRESHOLD
+  optional: true
+- !Flag
+  description: 'Gene family presence/absence threshold: higher are multicopy gene
+    families.'
+  synonyms:
+  - --th_multicopy
+  args: !SimpleFlagArg
+    name: MAXIMUM_THRESHOLD
+  optional: true
+- !Flag
+  description: 'Minimum coverage threshold, default: 2X'
+  synonyms:
+  - --min_coverage
+  args: !SimpleFlagArg
+    name: MIN_COVERAGE_MEDIAN
+  optional: true
+- !Flag
+  description: 'Strain presence/absence plateau curve threshold: left max [1.25]'
+  synonyms:
+  - --left_max
+  args: !SimpleFlagArg
+    name: LEFT_MAX
+  optional: true
+- !Flag
+  description: 'Strain presence/absence plateau curve threshold: right min [0.75]'
+  synonyms:
+  - --right_min
+  args: !SimpleFlagArg
+    name: RIGHT_MIN
+  optional: true
+- !Flag
+  description: 'Max accepted percent of zero coveraged gene-families (default: <10
+    %).'
+  synonyms:
+  - --rna_max_zeros
+  args: !SimpleFlagArg
+    name: RNA_MAX_ZEROES
+  optional: true
+- !Flag
+  description: Percentile for normalizing RNA/DNA ratios
+  synonyms:
+  - --rna_norm_percentile
+  args: !SimpleFlagArg
+    name: RNA_NORM_PERCENTILE
+  optional: true
+- !Flag
+  description: 'Minimum threshold (percentage) for genome length to add a reference
+    genome to presence/absence matrix (default: 50).'
+  synonyms:
+  - --strain_similarity_perc
+  args: !SimpleFlagArg
+    name: SIMILARITY_PERCENTAGE
+  optional: true
+- !Flag
+  description: User-defined string to mark non-present genes. [NP]
+  synonyms:
+  - --np
+  args: !SimpleFlagArg
+    name: NON_PRESENCE_TOKEN
+  optional: true
+- !Flag
+  description: User-defined string to mark multicopy and undefined genes. [NaN]
+  synonyms:
+  - --nan
+  args: !SimpleFlagArg
+    name: NOT_A_NUMBER_TOKEN
+  optional: true
+- !Flag
+  description: Filename for gene-family coverage plot.
+  synonyms:
+  - --o_covplot
+  args: !SimpleFlagArg
+    name: COV_PLOT_NAME
+  optional: true
+- !Flag
+  description: Filename for normalized gene-family coverage plot.
+  synonyms:
+  - --o_covplot_normed
+  args: !SimpleFlagArg
+    name: NOR_PLOT_NAME
+  optional: true
+- !Flag
+  description: Write raw gene-family coverage matrix.
+  synonyms:
+  - --o_cov
+  args: !SimpleFlagArg
+    name: PANCOVERAGE_FILE
+  optional: true
+- !Flag
+  description: Write gene-family plateau definitions (1, -1, -2, -3)
+  synonyms:
+  - --o_idx
+  args: !SimpleFlagArg
+    name: DNA_INDEX_FILE
+  optional: true
+- !Flag
+  description: Write normalized gene-family transcription values (RNA-seq).
+  synonyms:
+  - --o_rna
+  args: !SimpleFlagArg
+    name: RNA_EXPRS_FILE
+  optional: true
+- !Flag
+  description: Write overlap of gene-families between samples-strains and reference
+    genomes.
+  synonyms:
+  - --strain_hit_genes_perc
+  args: !SimpleFlagArg
+    name: GENEHIT_PERC_PER_STRAIN
+  optional: true
+- !Flag
+  description: Read coverage matrix (option --o_cov) for re-analysis using other thresholds
+  synonyms:
+  - --i_cov
+  args: !SimpleFlagArg
+    name: INPUT_COV_MATRIX
+  optional: true
+- !Flag
+  description: 'In addition to option --i_cov: number of reference genomes'
+  synonyms:
+  - --num_genomes
+  args: !SimpleFlagArg
+    name: INPUT_COV_GENOMES
+  optional: true
+- !Flag
+  description: 'In addition to option --i_cov: average number of gene- families'
+  synonyms:
+  - --genome_avg_length
+  args: !SimpleFlagArg
+    name: INPUT_COV_LENGTH
+  optional: true
+- !Flag
+  description: Add reference genomes to gene-family presence/absence matrix.
+  synonyms:
+  - --add_strains
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Plot coverage curves to screen, and not to a file.
+  synonyms:
+  - --interactive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display progress information.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- panphlan_profile.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Prints the current PanPhlAn version and exits.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

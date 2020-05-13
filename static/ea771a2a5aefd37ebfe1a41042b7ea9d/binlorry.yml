@@ -1,0 +1,120 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: FASTA/FASTQ of input reads or a directory which will be recursively
+    searched for FASTQ files (required).
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT_PATH
+  optional: true
+- !Flag
+  description: A CSV file with metadata fields for reads or a directory of csv files
+    that will be recursively searched for names corresponding to a matching input
+    FASTA/FASTQ files.
+  synonyms:
+  - -t
+  - --data
+  args: !SimpleFlagArg
+    name: CSV_FILE
+  optional: true
+- !Flag
+  description: 'The metadata tables are not in the same order as the reads - they
+    will all beloaded and then looked up as needed (slower). (default: False)'
+  synonyms:
+  - -u
+  - --unordered_data
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output filename (or filename prefix)
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: 'Output a report along with FASTA/FASTQ. (default: False)'
+  synonyms:
+  - -r
+  - --out-report
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output binned/filtered files even if empty. (default: False)'
+  synonyms:
+  - -f
+  - --force-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Level of output information: 0 = none, 1 = some, 2 = lots (default:
+    1)'
+  synonyms:
+  - -v
+  - --verbosity
+  args: !SimpleFlagArg
+    name: VERBOSITY
+  optional: true
+- !Flag
+  description: Specify header field(s) to bin the reads by. For multiple fields these
+    will be nested in order specified. e.g. `--bin-by barcode reference`
+  synonyms:
+  - --bin-by
+  args: !RepeatFlagArg
+    name: FIELD
+  optional: true
+- !Flag
+  description: Specify header field and accepted values to filter the reads by. Multiple
+    instances of this option can be specified. e.g. `--filter-by barcode BC01 BC02--
+    filter-by genotype Type1`
+  synonyms:
+  - --filter-by
+  args: !RepeatFlagArg
+    name: FILTER
+  optional: true
+- !Flag
+  description: Filter the reads by their length, specifying the minimum length.
+  synonyms:
+  - -n
+  - --min-length
+  args: !SimpleFlagArg
+    name: MIN
+  optional: true
+- !Flag
+  description: Filter the reads by their length, specifying the maximum length.
+  synonyms:
+  - -x
+  - --max-length
+  args: !SimpleFlagArg
+    name: MAX
+  optional: true
+- !Flag
+  description: 'Delimiters to use when searching for key:value pairs in FASTA/FASTQ
+    header. (default: =)'
+  synonyms:
+  - -d
+  - --header-delimiters
+  args: !SimpleFlagArg
+    name: DELIM
+  optional: true
+command:
+- binlorry
+subcommands: []
+help_flag: !Flag
+  description: Show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

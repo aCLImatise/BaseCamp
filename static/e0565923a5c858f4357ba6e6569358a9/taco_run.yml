@@ -1,0 +1,193 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: directory where output files will be stored (if already exists then
+    --resume must be specified) [default=output]
+  synonyms:
+  - -o
+  - --output-dir
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: Run TACO in parallel with N processes [default=1]
+  synonyms:
+  - -p
+  - --num-processes
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Enabled detailed logging (for debugging)
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Resumes an existing run that may have ended prematurely. Specify the
+    location of the run using the -o/--output-dir option.
+  synonyms:
+  - --resume
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assemble transfrags produced by a previous TACO run, bypassing the
+    GTF aggregation step. Accepts a taco- formatted BED file.
+  synonyms:
+  - --assemble
+  args: !SimpleFlagArg
+    name: BED
+  optional: true
+- !Flag
+  description: GTF attribute field containing expression [default=FPKM]
+  synonyms:
+  - --gtf-expr-attr
+  args: !SimpleFlagArg
+    name: ATTR
+  optional: true
+- !Flag
+  description: Filter input transfrags with length < N prior to assembly [default=200]
+  synonyms:
+  - --filter-min-length
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Filter input transfrags with expression (FPKM/TPM) < X prior to assembly
+    [default=0.5]
+  synonyms:
+  - --filter-min-expr
+  args: !SimpleFlagArg
+    name: X
+  optional: true
+- !Flag
+  description: Filter input transfrags that possess non-canonical splice motifs prior
+    to assembly. Splice motifs are GTAG, GCAG, and ATAC are allowed [default=False].
+    Requires genome sequence to be specified using --ref- genome-fasta.
+  synonyms:
+  - --filter-splice-juncs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Add additional splice junction motifs to permit when using the --filter-splice-juncs
+    flag. Use this flag multiple times for each additional junction motif. Motif must
+    be 4 bases.
+  synonyms:
+  - --add-splice-motif
+  args: !SimpleFlagArg
+    name: ADD_SPLICE_MOTIF
+  optional: true
+- !Flag
+  description: Reference genome sequence in FASTA format needed to assess splice junction
+    motif sequences. Use in conjunction with --filter-splice-juncs.
+  synonyms:
+  - --ref-genome-fasta
+  args: !SimpleFlagArg
+    name: REF_GENOME_FASTA_FILE
+  optional: true
+- !Flag
+  description: Report transcript isoforms with expression fraction >= FRAC (0.0-1.0)
+    relative to the major isoform within each gene [default=0.05]
+  synonyms:
+  - --isoform-frac
+  args: !SimpleFlagArg
+    name: FRAC
+  optional: true
+- !Flag
+  description: Maximum isoforms to report for each gene [default=0]
+  synonyms:
+  - --max-isoforms
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Enable assembly of unstranded transfrags [default=False]
+  synonyms:
+  - --assemble-unstranded
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable assembly of unstranded transfrags
+  synonyms:
+  - --no-assemble-unstranded
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable change point detection [default=True]
+  synonyms:
+  - --change-point
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable change point detection
+  synonyms:
+  - --no-change-point
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Mann-Whitney-U p-value threshold for calling change points [default=0.01]
+  synonyms:
+  - --change-point-pvalue
+  args: !SimpleFlagArg
+    name: float 0.0-1.0
+  optional: true
+- !Flag
+  description: Fold change threshold between the means of two putative segments on
+    either side of a change point. A value of 0.0 is the most strict setting, effectively
+    calling no change points. Conversely, setting the value to 1.0 calls allchange
+    points [default=0.85]
+  synonyms:
+  - --change-point-fold-change
+  args: !SimpleFlagArg
+    name: float 0.0-1.0
+  optional: true
+- !Flag
+  description: Trim transfrags around change points [default=True]
+  synonyms:
+  - --change-point-trim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable trimming around change points
+  synonyms:
+  - --no-change-point-trim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Limit optimization for choosing parameter k for path graph (DeBruijn
+    graph) to k <= kmax [default=0]
+  synonyms:
+  - --path-kmax
+  args: !SimpleFlagArg
+    name: kmax
+  optional: true
+- !Flag
+  description: dynamic programming algorithm will stop finding suboptimal paths when
+    path expression drops below a fraction X (0.0-1.0) of the total locus expression
+    [default=0.0]
+  synonyms:
+  - --path-frac
+  args: !SimpleFlagArg
+    name: X
+  optional: true
+- !Flag
+  description: dynamic programming algorithm will stop after finding N paths [default=0]
+  synonyms:
+  - --max-paths
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+command:
+- taco_run
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

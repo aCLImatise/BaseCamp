@@ -1,0 +1,101 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: "|output     Directory to store obtained results [/path/to/output_dir].\
+    \ While not provided, the following default name will be taken: 'input_directory'_'sraX'_'id'_'aln_cov'_'seqal'\
+    \ Example: -------- Input directory: 'Test' Options: -id 85; -c 95; -p dblastx\
+    \ Output directory: 'Test_sraX_85_95_dblastx'"
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|seqal      The preferred algorithm for aligning the assembled genome(s)\
+    \ to a locally compiled AMR DB. The possible choices are: 'dblastx' (DIAMOND blastx)\
+    \ or 'blastx' (NCBI blastx). In any case, the process is parallelized (up to 100\
+    \ genome files are run simultaneously) for reducing computing times. [string]\
+    \ Default: dblastx"
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|msa        The preferred algorithm for producing the alignment of\
+    \ clustered homologous sequences (multiple-sequence files). The possible choices\
+    \ are: 'muscle', 'clustalo' or 'mafft'. [string] Default: muscle Note: The accuracy\
+    \ and computing times are both dependent on the selected algorithm."
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '|eval       Minimum evalue cut-off to filter false positives. [number]
+    Default: 1e-05'
+  synonyms:
+  - -e
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Minimum identity cut-off to filter false positives. [number] Default:
+    85'
+  synonyms:
+  - -id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '|aln_cov    Minimum length of the query which must align to the reference
+    sequence. [number] Default: 60'
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|dbsearch  The level of the ARG search, on account of the number and\
+    \ type of employed AMR DB. The possible choices are: 'basic' or 'ext'. The 'basic'\
+    \ option only applies 'CARD', while the 'ext' option utilizes as well the 'ARGminer'\
+    \ (compilation of multiple AMR DBs) and 'BACMET' (biocides and metal resistance)\
+    \ repositories. [string] Default: basic Note: In operational terms, the extensive\
+    \ search ('ext' option) takes much longer computing times. "
+  synonyms:
+  - -db
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '|user_sq    Customary AMR DB provided by the user. The sequences must
+    be in FASTA format.'
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '|threads    Number of threads when running sraX. [number] Default:
+    6'
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '|version    Displays version information and exits.'
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "|debug      Verbose output (for debugging). 'sraX' was last modified:\
+    \ 05th February 2020"
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- sraX
+subcommands: []
+help_flag: !Flag
+  description: '|help       Displays this help information and exits.'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

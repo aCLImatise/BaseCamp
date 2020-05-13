@@ -1,0 +1,691 @@
+!Command
+positional: []
+named: []
+command:
+- mglex-cli
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: (--help | --version)
+    position: 0
+    name: buildmatrix
+    optional: false
+  - !Positional
+    description: (--seeds <file>) [--identifiers <file>]
+    position: 1
+    name: buildmatrix
+    optional: false
+  named:
+  - !Flag
+    description: Space-separated sequence identifier per line
+    synonyms:
+    - -s
+    - --seeds
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Sequence identifiers; one per line; default standard input
+    synonyms:
+    - -i
+    - --identifiers
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  command:
+  - mglex-cli
+  - buildmatrix
+  subcommands: []
+  help_flag: !Flag
+    description: Show this screen
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Show version
+    synonyms:
+    - -v
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional:
+  - !Positional
+    description: (--help | --version)
+    position: 0
+    name: train
+    optional: false
+  - !Positional
+    description: (--weight <file>) (--outmodel <file>) [--responsibility <file>] [--abcoverage
+      <file>] [--diffcoverage <file>] [--composition <file>] [--labels <file>] [--logfile
+      <file>]
+    position: 1
+    name: train
+    optional: false
+  named:
+  - !Flag
+    description: Responsibility (weight) matrix file; default standard input
+    synonyms:
+    - -r
+    - --responsibility
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Output classificaton model file
+    synonyms:
+    - -o
+    - --outmodel
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Weights (sequence length) file
+    synonyms:
+    - -w
+    - --weight
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Absolute mean coverage data file for Poisson Model
+    synonyms:
+    - -a
+    - --abcoverage
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Differential mean coverage data file for Multinomial Model
+    synonyms:
+    - -d
+    - --diffcoverage
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Compositional data (numeric) file for Naive Bayes Model
+    synonyms:
+    - -c
+    - --composition
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Label-type data file (e.g. a taxonomic path) for Hierarchical Naive
+      Bayes Model
+    synonyms:
+    - -t
+    - --labels
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: File for logging
+    synonyms:
+    - -l
+    - --logfile
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  command:
+  - mglex-cli
+  - train
+  subcommands: []
+  help_flag: !Flag
+    description: Show this screen
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Show version
+    synonyms:
+    - -v
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional:
+  - !Positional
+    description: (--help | --version)
+    position: 0
+    name: classify
+    optional: false
+  - !Positional
+    description: (--model <file>) [--abcoverage <file>] [--diffcoverage <file>] [--composition
+      <file>] [--labels <file>] [--beta <float>] [--logfile <file>] [--normalize]
+    position: 1
+    name: classify
+    optional: false
+  named:
+  - !Flag
+    description: Output class posterior instead of the raw likelihood
+    synonyms:
+    - -n
+    - --normalize
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Pre-calculated classificaton model file
+    synonyms:
+    - -m
+    - --model
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Absolute mean coverage data file for Poisson Model
+    synonyms:
+    - -a
+    - --abcoverage
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Differential mean coverage data file for Multinomial Model
+    synonyms:
+    - -d
+    - --diffcoverage
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Compositional data (numeric) file for Naive Bayes Model
+    synonyms:
+    - -c
+    - --composition
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Label-type data file (e.g. a taxonomic path) for Hierarchical Naive
+      Bayes Model
+    synonyms:
+    - -t
+    - --labels
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Beta correction factor (e.g. determined via MSE evaluation); default
+      1.0
+    synonyms:
+    - -b
+    - --beta
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: File for logging
+    synonyms:
+    - -l
+    - --logfile
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  command:
+  - mglex-cli
+  - classify
+  subcommands: []
+  help_flag: !Flag
+    description: Show this screen
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Show version
+    synonyms:
+    - -v
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional:
+  - !Positional
+    description: (--help | --version)
+    position: 0
+    name: evaluate
+    optional: false
+  - !Positional
+    description: (--responsibility <file>) (--method <method>) (--weight <file>) [--data
+      <file>] [--subsample <int>] [--random-seed <int>] [--beta <from(:to:step)>]...
+    position: 1
+    name: evaluate
+    optional: false
+  named:
+  - !Flag
+    description: Likelihood matrix; default standard input
+    synonyms:
+    - -d
+    - --data
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Responsibility (weight) matrix file
+    synonyms:
+    - -r
+    - --responsibility
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Weights (sequence length) file
+    synonyms:
+    - -w
+    - --weight
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Evaluation method; one of "mse", "mse-flex", "co-clustering", "separation"
+    synonyms:
+    - -m
+    - --method
+    args: !SimpleFlagArg
+      name: method
+    optional: true
+  - !Flag
+    description: Subsample this number of data points for faster calculation
+    synonyms:
+    - -s
+    - --subsample
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: Seed for random operations
+    synonyms:
+    - -z
+    - --random-seed
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: <from(:to:step)>, --beta <from(:to:step)>  Beta correction factor(s)
+      to evaluate; default 1.0
+    synonyms:
+    - -b
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - mglex-cli
+  - evaluate
+  subcommands: []
+  help_flag: !Flag
+    description: Show this screen
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Show version
+    synonyms:
+    - -v
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional:
+  - !Positional
+    description: (--help | --version)
+    position: 0
+    name: significance
+    optional: false
+  - !Positional
+    description: (--weight <file>) (--nulldata <file>) (--responsibility <file>) [--data
+      <file>]
+    position: 1
+    name: significance
+    optional: false
+  named:
+  - !Flag
+    description: Log-likelihood matrix for which to calculate p-values; default standard
+      input
+    synonyms:
+    - -d
+    - --data
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Weights (sequence length) file
+    synonyms:
+    - -w
+    - --weight
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Log-likelihood matrix with reference (null hypothesis) values
+    synonyms:
+    - -n
+    - --nulldata
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Log-likelihood responsibility matrix
+    synonyms:
+    - -r
+    - --responsibility
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  command:
+  - mglex-cli
+  - significance
+  subcommands: []
+  help_flag: !Flag
+    description: Show this screen
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Show version
+    synonyms:
+    - -v
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional:
+  - !Positional
+    description: (--help | --version)
+    position: 0
+    name: bincompare
+    optional: false
+  - !Positional
+    description: '[--weight <file> --data <file> --subset-1 <file> --subset-2 <file>
+      --beta <float> --posterior-ratio] [--prefilter-thresh <float> --edge-thresh
+      <float>]'
+    position: 1
+    name: bincompare
+    optional: false
+  named:
+  - !Flag
+    description: 'Weigh sequences by (subset) bin posterior [default: False]'
+    synonyms:
+    - -q
+    - --posterior-ratio
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Likelihood matrix [standard input]
+    synonyms:
+    - -d
+    - --data
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Optional weights (sequence length) file [None]
+    synonyms:
+    - -w
+    - --weight
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: <file, --subset-1 <file>          Use subset of column indices (1-based)
+      [None]
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: <file, --subset-2 <file>          Use subset of column indices (1-based)
+      [None]
+    synonyms:
+    - -S
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Beta correction factor (e.g. determined via MSE evaluation) [default:
+      1.0]'
+    synonyms:
+    - -b
+    - --beta
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: 'Contig overlap similarity used to avoid likelihood calculations
+      [default: 0.5]'
+    synonyms:
+    - -p
+    - --prefilter-thresh
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: 'Only distances <= threshold are reported; use "inf" to show all
+      [default: 30]'
+    synonyms:
+    - -e
+    - --edge-thresh
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  command:
+  - mglex-cli
+  - bincompare
+  subcommands: []
+  help_flag: !Flag
+    description: Show this screen
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Show version
+    synonyms:
+    - -v
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional:
+  - !Positional
+    description: (--help | --version)
+    position: 0
+    name: transform
+    optional: false
+  - !Positional
+    description: '[--data <file>] [--beta <float> --precision <int>] [--logarithm|--maximum-likelihood|--posterior|--posterior-ratio|--class-index
+      <float>] [--raw-probability]'
+    position: 1
+    name: transform
+    optional: false
+  named:
+  - !Flag
+    description: Likelihood matrix; default standard input
+    synonyms:
+    - -d
+    - --data
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Output precision; default 2
+    synonyms:
+    - -i
+    - --precision
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: Beta correction factor (e.g. determined via MSE evaluation); default
+      1.0
+    synonyms:
+    - -b
+    - --beta
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: Show output in normal representation (small number become zero)
+    synonyms:
+    - -r
+    - --raw-probability
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Give only the class(es) with the maximum likelihood a non-zero probability
+    synonyms:
+    - -m
+    - --maximum-likelihood
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Normalize the likelihood values over classes (uniform class prior)
+    synonyms:
+    - -p
+    - --posterior
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Divide all likelihoods by the maximum likelihood
+    synonyms:
+    - -q
+    - --posterior-ratio
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Convert from simple to logarithmic format
+    synonyms:
+    - -l
+    - --logarithm
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Report only class indices (one-based) with likelihoods above threshold;
+      default 1.0
+    synonyms:
+    - -c
+    - --class-index
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  command:
+  - mglex-cli
+  - transform
+  subcommands: []
+  help_flag: !Flag
+    description: Show this screen
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Show version
+    synonyms:
+    - -v
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional:
+  - !Positional
+    description: (--help | --version)
+    position: 0
+    name: spread
+    optional: false
+  - !Positional
+    description: (--responsibility <file>) [--data <file> --normalize --weight <file>]
+    position: 1
+    name: spread
+    optional: false
+  named:
+  - !Flag
+    description: Feature matrix; default standard input
+    synonyms:
+    - -d
+    - --data
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Responsibility (weight) matrix file
+    synonyms:
+    - -r
+    - --responsibility
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Weights (sequence length) file for normalization
+    synonyms:
+    - -w
+    - --weight
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: Output precision; default 2
+    synonyms:
+    - -i
+    - --precision
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: Report (weighted) average instead of sum
+    synonyms:
+    - -n
+    - --normalize
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - mglex-cli
+  - spread
+  subcommands: []
+  help_flag: !Flag
+    description: Show this screen
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Show version
+    synonyms:
+    - -v
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+help_flag: !Flag
+  description: Show this screen
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show version
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

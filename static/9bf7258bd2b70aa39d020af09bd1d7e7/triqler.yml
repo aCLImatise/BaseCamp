@@ -1,0 +1,98 @@
+!Command
+positional:
+- !Positional
+  description: List of PSMs with abundances (not log transformed!) and search engine
+    score. See README for a detailed description of the columns.
+  position: 0
+  name: IN_FILE
+  optional: false
+named:
+- !Flag
+  description: 'Path to output file (writing in TSV format). N.B. if more than 2 treatment
+    groups are present, suffixes will be added before the file extension. (default:
+    proteins.tsv)'
+  synonyms:
+  - --out_file
+  args: !SimpleFlagArg
+    name: OUT
+  optional: true
+- !Flag
+  description: 'log2 fold change evaluation threshold. (default: 1.0)'
+  synonyms:
+  - --fold_change_eval
+  args: !SimpleFlagArg
+    name: F
+  optional: true
+- !Flag
+  description: 'Prefix for decoy proteins. (default: decoy_)'
+  synonyms:
+  - --decoy_pattern
+  args: !SimpleFlagArg
+    name: P
+  optional: true
+- !Flag
+  description: 'Minimum number of samples a peptide needed to be quantified in. (default:
+    2)'
+  synonyms:
+  - --min_samples
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'Number of threads, by default this is equal to the number of CPU cores
+    available on the device. (default: 8)'
+  synonyms:
+  - --num_threads
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'Use t-test for evaluating differential expression instead of posterior
+    probabilities. (default: False)'
+  synonyms:
+  - --ttest
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Write quantifications for consensus spectra. Only works if consensus
+    spectrum index are given in input. (default: False)'
+  synonyms:
+  - --write_spectrum_quants
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Write raw data of protein posteriors to the specified file in TSV
+    format. (default: )'
+  synonyms:
+  - --write_protein_posteriors
+  args: !SimpleFlagArg
+    name: P_OUT
+  optional: true
+- !Flag
+  description: 'Write raw data of treatment group posteriors to the specified file
+    in TSV format. (default: )'
+  synonyms:
+  - --write_group_posteriors
+  args: !SimpleFlagArg
+    name: G_OUT
+  optional: true
+- !Flag
+  description: 'Write raw data of fold change posteriors to the specified file in
+    TSV format. (default: )'
+  synonyms:
+  - --write_fold_change_posteriors
+  args: !SimpleFlagArg
+    name: F_OUT
+  optional: true
+command:
+- triqler
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

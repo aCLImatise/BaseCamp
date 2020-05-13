@@ -1,0 +1,54 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The name of the organism for which the known fusion genes are downloaded,
+    e.g. homo_sapiens, mus_musculus, etc. Default is 'homo_sapiens'.
+  synonyms:
+  - -g
+  - --organism
+  args: !SimpleFlagArg
+    name: ORGANISM
+  optional: true
+- !Flag
+  description: The output directory where the known fusion genes are stored. Default
+    is '.'.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+  optional: true
+- !Flag
+  description: The input Excel file containg the data from the article. It should
+    be used when there is no internet connection to the site which hosts the article.
+  synonyms:
+  - --data
+  args: !SimpleFlagArg
+    name: DATA_FILENAME
+  optional: true
+- !Flag
+  description: If set then it filters out the known fusion genes where the (i) genes
+    are fully overlapping, or (ii) the genes are partially overlapping and are on
+    the same strand. Default is 'False'.
+  synonyms:
+  - --skip-filter-overlap
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- get_pancreases.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

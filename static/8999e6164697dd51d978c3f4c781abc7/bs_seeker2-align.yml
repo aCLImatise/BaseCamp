@@ -1,0 +1,230 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Input read file (FORMAT: sequences, qseq, fasta, fastq). Ex: read.fa
+    or read.fa.gz'
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INFILE
+  optional: true
+- !Flag
+  description: 'The minimum insert size for valid paired-end alignments [Default:
+    0]'
+  synonyms:
+  - -I
+  - --minins
+  args: !SimpleFlagArg
+    name: MIN_INSERT_SIZE
+  optional: true
+- !Flag
+  description: 'The maximum insert size for valid paired-end alignments [Default:
+    500]'
+  synonyms:
+  - -X
+  - --maxins
+  args: !SimpleFlagArg
+    name: MAX_INSERT_SIZE
+  optional: true
+- !Flag
+  description: Map reads to the Reduced Representation genome
+  synonyms:
+  - -r
+  - --rrbs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Cutting sites of restriction enzyme. Ex: MspI(C-CGG), Mael:(C-TAG),
+    double-enzyme MspI&Mael:(C-CGG,C-TAG). [Default: C-CGG]'
+  synonyms:
+  - -c
+  - --cut-site
+  args: !SimpleFlagArg
+    name: pattern
+  optional: true
+- !Flag
+  description: 'Lower bound of fragment length (excluding C-CGG ends) [Default: 20]'
+  synonyms:
+  - -L
+  - --low
+  args: !SimpleFlagArg
+    name: RRBS_LOW_BOUND
+  optional: true
+- !Flag
+  description: 'Upper bound of fragment length (excluding C-CGG ends) [Default: 500]'
+  synonyms:
+  - -U
+  - --up
+  args: !SimpleFlagArg
+    name: RRBS_UP_BOUND
+  optional: true
+- !Flag
+  description: '[Y]es for undirectional lib, [N]o for directional [Default: N]'
+  synonyms:
+  - -t
+  - --tag
+  args: !SimpleFlagArg
+    name: TAG
+  optional: true
+- !Flag
+  description: 'The first cycle of the read to be mapped [Default: 1]'
+  synonyms:
+  - -s
+  - --start_base
+  args: !SimpleFlagArg
+    name: CUTNUMBER1
+  optional: true
+- !Flag
+  description: 'The last cycle of the read to be mapped [Default: 200]'
+  synonyms:
+  - -e
+  - --end_base
+  args: !SimpleFlagArg
+    name: CUTNUMBER2
+  optional: true
+- !Flag
+  description: Input text file of your adaptor sequences (to be trimmed from the 3'end
+    of the reads, ). Input one seq for dir. lib., twon seqs for undir. lib. One line
+    per sequence. Only the first 10bp will be used
+  synonyms:
+  - -a
+  - --adapter
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'Number of mismatches allowed in adapter [Default: 0]'
+  synonyms:
+  - --am
+  args: !SimpleFlagArg
+    name: ADAPTER_MISMATCH
+  optional: true
+- !Flag
+  description: Name of the reference genome (should be the same as "-f" in bs_seeker2-build.py
+    ) [ex. chr21_hg18.fa]
+  synonyms:
+  - -g
+  - --genome
+  args: !SimpleFlagArg
+    name: GENOME
+  optional: true
+- !Flag
+  description: 'Number(>=1)/Percentage([0, 1)) of mismatches in one read. Ex: 4 (allow
+    4 mismatches) or 0.04 (allow 4% mismatches) [Default: 4]'
+  synonyms:
+  - -m
+  - --mismatches
+  args: !SimpleFlagArg
+    name: NO_MISMATCHES
+  optional: true
+- !Flag
+  description: 'Aligner program for short reads mapping: bowtie, bowtie2, soap, rmap
+    [Default: bowtie]'
+  synonyms:
+  - --aligner
+  args: !SimpleFlagArg
+    name: ALIGNER
+  optional: true
+- !Flag
+  description: 'Path to the aligner program. Detected: bowtie: None bowtie2: /tmp/tmp6_ed8_xm/bin
+    rmap: None soap: None'
+  synonyms:
+  - -p
+  - --path
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: 'Path to the reference genome library (generated in preprocessing genome)
+    [Default: /tmp/tmp6_ed8_xm/bin/bs_utils/reference_genomes]'
+  synonyms:
+  - -d
+  - --db
+  args: !SimpleFlagArg
+    name: DBPATH
+  optional: true
+- !Flag
+  description: 'Number of lines per split (the read file will be split into small
+    files for mapping. The result will be merged. [Default: 4000000]'
+  synonyms:
+  - -l
+  - --split_line
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: The name of output file [INFILE.bs(se|pe|rrbs)]
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTFILE
+  optional: true
+- !Flag
+  description: 'Output format: bam, sam, bs_seeker1 [Default: bam]'
+  synonyms:
+  - -f
+  - --output-format
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: 'Suppress SAM header lines [Default: False]'
+  synonyms:
+  - --no-header
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The path to your temporary directory [Detected: /tmp]'
+  synonyms:
+  - --temp_dir
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: 'Filter definition for tag XS, format X,Y. X=0.8 and y=5 indicate that
+    for one read, if #(mCH sites)/#(all CH sites)>0.8 and #(mCH sites)>5, then tag
+    XS:i:1; or else tag XS:i:0. [Default: 0.5,5]'
+  synonyms:
+  - --XS
+  args: !SimpleFlagArg
+    name: XS_FILTER
+  optional: true
+- !Flag
+  description: Filter definition for tag XS, proposed by Prof. Steve Jacobsen, reads
+    with at least 3 successive mCHH will be labeled as XS:i:1,useful for plant genome,
+    which have high mCHG level. Will override --XS option.
+  synonyms:
+  - --XSteve
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: File to store reads with multiple-hits
+  synonyms:
+  - -M
+  - --multiple-hit
+  args: !SimpleFlagArg
+    name: FileName
+  optional: true
+- !Flag
+  description: File to store unmapped reads
+  synonyms:
+  - -u
+  - --unmapped
+  args: !SimpleFlagArg
+    name: FileName
+  optional: true
+command:
+- bs_seeker2-align.py
+subcommands: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  description: show version of BS-Seeker2
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

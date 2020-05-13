@@ -1,0 +1,54 @@
+!Command
+positional:
+- !Positional
+  description: Output directory (created if non-existant)
+  position: 0
+  name: OUTPUT
+  optional: false
+- !Positional
+  description: Input directory(s) or files
+  position: 1
+  name: INPUT
+  optional: false
+named:
+- !Flag
+  description: Which command should be used to gzip? (try pigz!)
+  synonyms:
+  - --gzip
+  args: !SimpleFlagArg
+    name: GZIP
+  optional: true
+- !Flag
+  description: number of parallel jobs
+  synonyms:
+  - -j
+  - --jobs
+  args: !SimpleFlagArg
+    name: JOBS
+  optional: true
+- !Flag
+  description: Force creation of merged outputs even if they exist
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't actually do anything, just print what would be done
+  synonyms:
+  - -n
+  - --dry-run
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- pecheck-wrapper.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

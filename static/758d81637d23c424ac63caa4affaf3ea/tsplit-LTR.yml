@@ -1,0 +1,120 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Multifasta containing complete elements.
+  synonyms:
+  - -i
+  - --infile
+  args: !SimpleFlagArg
+    name: INFILE
+  optional: true
+- !Flag
+  description: 'All output files begin with this string. (Default: [infile name])'
+  synonyms:
+  - -p
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: 'Write output files to this directory. (Default: cwd)'
+  synonyms:
+  - -d
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: 'all= Report input sequence as well as internal and external segments.
+    split= Report internal and external segments after splitting. internal = Report
+    only internal segments external = Report only terminal repeat segments. If set
+    to "None" then only synthetic MITES will be reported if --makemites is also set.
+    (Default: split)'
+  synonyms:
+  - --splitmode
+  args: !ChoiceFlagArg
+    choices:
+    - all
+    - split
+    - internal
+    - external
+    - None
+  optional: true
+- !Flag
+  description: If set do not remove temp directory on completion.
+  synonyms:
+  - --keeptemp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If set, report progress.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Terminal repeat candidates must be no more than this many bases from
+    end of input element. (Default: 10) Note: Increase this value if you suspect that
+    your element is nested within some flanking sequence.'
+  synonyms:
+  - -m
+  - --maxdist
+  args: !SimpleFlagArg
+    name: MAXDIST
+  optional: true
+- !Flag
+  description: 'Minimum identity between terminal repeat pairs. As float. (Default:
+    80.0)'
+  synonyms:
+  - --minid
+  args: !SimpleFlagArg
+    name: MINID
+  optional: true
+- !Flag
+  description: 'Minimum length for a terminal repeat to be considered. Equivalent
+    to nucmer "--mincluster" (Default: 10)'
+  synonyms:
+  - --minterm
+  args: !SimpleFlagArg
+    name: MINTERM
+  optional: true
+- !Flag
+  description: 'Minimum length of a maximal exact match to be included in final match
+    cluster. Equivalent to nucmer "-- minmatch". (Default: 5)'
+  synonyms:
+  - --minseed
+  args: !SimpleFlagArg
+    name: MINSEED
+  optional: true
+- !Flag
+  description: 'Maximum diagonal difference factor for clustering of matches within
+    nucmer, i.e. diagonal difference / match separation (default 0.20) Note: Increase
+    value for greater tolerance of indels between terminal repeats.'
+  synonyms:
+  - --diagfactor
+  args: !SimpleFlagArg
+    name: DIAGFACTOR
+  optional: true
+- !Flag
+  description: 'Select alignment method: "blastn" or "nucmer".(Default: nucmer)'
+  synonyms:
+  - --method
+  args: !ChoiceFlagArg
+    choices:
+    - blastn
+    - nucmer
+  optional: true
+command:
+- tsplit-LTR
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

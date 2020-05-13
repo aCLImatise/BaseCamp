@@ -1,0 +1,97 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: A FASTA-formatted input file
+  synonyms:
+  - -f
+  - --fasta-file
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: Directory path for output files
+  synonyms:
+  - -o
+  - --output-dir
+  args: !SimpleFlagArg
+    name: DIR_PATH
+  optional: true
+- !Flag
+  description: Anvi'o pan database
+  synonyms:
+  - -p
+  - --pan-db
+  args: !SimpleFlagArg
+    name: PAN_DB
+  optional: true
+- !Flag
+  description: Maximum number of threads to use for multithreading whenever possible.
+    Very conservatively, the default is 1. It is a good idea to not exceed the number
+    of CPUs / cores on your system. Plus, please be careful with this option if you
+    are running your commands on a SGE --if you are clusterizing your runs, and asking
+    for multiple threads to use, you may deplete your resources very fast.
+  synonyms:
+  - -T
+  - --num-threads
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+  optional: true
+- !Flag
+  description: File path to store debug/output messages.
+  synonyms:
+  - --log-file
+  args: !SimpleFlagArg
+    name: FILE_PATH
+  optional: true
+- !Flag
+  description: "Method for pyANI. The default is ANIb. You must have the necessary\
+    \ binary in path for whichever method you choose. According to the pyANI help\
+    \ for v0.2.7 at https://github.com/widdowquinn/pyani, the method 'ANIm' uses MUMmer\
+    \ (NUCmer) to align the input sequences. 'ANIb' uses BLASTN+ to align 1020nt fragments\
+    \ of the input sequences. 'ANIblastall': uses the legacy BLASTN to align 1020nt\
+    \ fragments Finally, 'TETRA': calculates tetranucleotide frequencies of each input\
+    \ sequence"
+  synonyms:
+  - --method
+  args: !ChoiceFlagArg
+    choices:
+    - ANIm
+    - ANIb
+    - ANIblastall
+    - TETRA
+  optional: true
+- !Flag
+  description: The distance metric for the hierarchical clustering. The default is
+    "euclidean".
+  synonyms:
+  - --distance
+  args: !SimpleFlagArg
+    name: DISTANCE_METRIC
+  optional: true
+- !Flag
+  description: The linkage method for the hierarchical clustering. The default is
+    "ward".
+  synonyms:
+  - --linkage
+  args: !SimpleFlagArg
+    name: LINKAGE_METHOD
+  optional: true
+- !Flag
+  description: Don't bother me with questions or warnings, just do it.
+  synonyms:
+  - --just-do-it
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- anvi-script-compute-ani-for-fasta
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

@@ -1,0 +1,96 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'The tabix indexed file with the annotations: CHR\tFROM[\tTO][\tVALUE]+.'
+  synonyms:
+  - -a
+  - --annotations
+  args: !SimpleFlagArg
+    name: file.gz
+  optional: true
+- !Flag
+  description: The list of columns in the annotation file, e.g. CHROM,FROM,TO,-,QUAL,INFO/STR,INFO/GN.
+    The dash in this example indicates that the third column should be ignored. If
+    TO is not present, it is assumed that TO equals to FROM. When REF and ALT columns
+    are present, only matching lines are annotated.
+  synonyms:
+  - -c
+  - --columns
+  args: !SimpleFlagArg
+    name: list
+  optional: true
+- !Flag
+  description: <file|string>     Header annotation, e.g. key=INFO,ID=HM2,Number=0,Type=Flag,Description='HapMap2
+    membership'. The descriptions can be read from a file, one annotation per line.
+  synonyms:
+  - -d
+  - --description
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Re)Calculate AC and AN tags
+  synonyms:
+  - --fill-AC-AN
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Re)Calculate HWE, AC and AN tags
+  synonyms:
+  - --fill-HWE
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Re)Calculate Inbreeding Coefficient F, HWE, AC and AN
+  synonyms:
+  - --fill-ICF
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Annotate INFO/TYPE with snp,del,ins,mnp,complex
+  synonyms:
+  - --fill-type
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <file|list>            Apply filters, list is in the format flt1=value/flt2/flt3=value/etc.
+    If argument to -f is a file, user-defined filters be applied. See User Defined
+    Filters below.
+  synonyms:
+  - -f
+  - --filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Remove lines with FILTER anything else than PASS or "."
+  synonyms:
+  - -H
+  - --hard-filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Make REF and ALT alleles more compact if possible (e.g. TA,TAA -> T,TA).
+  synonyms:
+  - -n
+  - --normalize-alleles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Comma-separated list of tags to be removed (e.g. ID,INFO/DP,FORMAT/DP,FILTER).
+  synonyms:
+  - -r
+  - --remove
+  args: !SimpleFlagArg
+    name: list
+  optional: true
+command:
+- vcf-annotate
+subcommands: []
+help_flag: !Flag
+  description: ', -?, --help                      This help message.'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

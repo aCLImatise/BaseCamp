@@ -1,0 +1,1181 @@
+!Command
+positional: []
+named: []
+command:
+- smof
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: input fasta sequence (default = stdin)
+    position: 0
+    name: INPUT
+    optional: false
+  named:
+  - !Flag
+    description: Indices to print, comma delimited, with ranges
+    synonyms:
+    - -f
+    - --fields
+    args: !SimpleFlagArg
+      name: FIELDS
+    optional: true
+  - !Flag
+    description: Invert selection
+    synonyms:
+    - -v
+    - --complement
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - smof
+  - cut
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: input fasta sequence (default = stdin)
+    position: 0
+    name: INPUT
+    optional: false
+  named:
+  - !Flag
+    description: '|p, --type n|p    sequence type'
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: n
+    optional: true
+  - !Flag
+    description: convert to uppercase
+    synonyms:
+    - -u
+    - --toupper
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: convert to lowercase
+    synonyms:
+    - -l
+    - --tolower
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: removes all non-letter characters (gaps, stops, etc.)
+    synonyms:
+    - -x
+    - --toseq
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Remove all text from header that follows the first word (delimited
+      by [ |])
+    synonyms:
+    - -s
+    - --reduce-header
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: converts irregular letters to unknown
+    synonyms:
+    - -r
+    - --mask-irregular
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: convert lower-case to unknown
+    synonyms:
+    - -m
+    - --mask-lowercase
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: width of the sequence output (0 indicates no wrapping)
+    synonyms:
+    - -w
+    - --col_width
+    args: !SimpleFlagArg
+      name: W
+    optional: true
+  - !Flag
+    description: Convert 'X' in DNA to 'N' and '[._]' to '-' (for gaps)
+    synonyms:
+    - -d
+    - --standardize
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - smof
+  - clean
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: input fasta sequence (default = stdin)
+    position: 0
+    name: INPUT
+    optional: false
+  named:
+  - !Flag
+    description: Print count table instead of consensus
+    synonyms:
+    - -t
+    - --table
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - smof
+  - consensus
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: input fasta sequence (default = stdin)
+    position: 0
+    name: INPUT
+    optional: false
+  named:
+  - !Flag
+    description: keep only if length is less than or equal to LEN
+    synonyms:
+    - -s
+    - --shorter-than
+    args: !SimpleFlagArg
+      name: LEN
+    optional: true
+  - !Flag
+    description: keep only if length is greater than or equal to LEN
+    synonyms:
+    - -l
+    - --longer-than
+    args: !SimpleFlagArg
+      name: LEN
+    optional: true
+  - !Flag
+    description: keep only if composition meets the condition (e.g. 'GC > .5')
+    synonyms:
+    - -c
+    - --composition
+    args: !SimpleFlagArg
+      name: EXPR
+    optional: true
+  command:
+  - smof
+  - filter
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: pattern to match
+    position: 0
+    name: PATTERN
+    optional: false
+  - !Positional
+    description: input fasta sequence (default = stdin)
+    position: 1
+    name: INPUT
+    optional: false
+  named:
+  - !Flag
+    description: match sequence rather than header
+    synonyms:
+    - -q
+    - --match-sequence
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: obtain patterns from FILE, one per line
+    synonyms:
+    - -f
+    - --file
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: print names files with no matches
+    synonyms:
+    - -L
+    - --files-without-match
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: print names input files with matches
+    synonyms:
+    - -l
+    - --files-with-matches
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: a regular expression to capture patterns
+    synonyms:
+    - -w
+    - --wrap
+    args: !SimpleFlagArg
+      name: REG
+    optional: true
+  - !Flag
+    description: treat patterns as perl regular expressions
+    synonyms:
+    - -P
+    - --perl-regexp
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: parse extended nucleotide alphabet
+    synonyms:
+    - -G
+    - --ambiguous-nucl
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: DO NOT ignore case distinctions (ignore by default)
+    synonyms:
+    - -I
+    - --case-sensitive
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: print non-matching entries
+    synonyms:
+    - -v
+    - --invert-match
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: show only the part that matches
+    synonyms:
+    - -o
+    - --only-matching
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Include N characters before match
+    synonyms:
+    - -B
+    - --before-context
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Include N characters after match
+    synonyms:
+    - -A
+    - --after-context
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Include N characters before and after match
+    synonyms:
+    - -C
+    - --context
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: print number of entries with matches
+    synonyms:
+    - -c
+    - --count
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: print number of non-overlapping matches
+    synonyms:
+    - -m
+    - --count-matches
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: force PATTERN to match the whole text (regex allowed)
+    synonyms:
+    - -x
+    - --line-regexp
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: force PATTERN to literally equal the text (fast)
+    synonyms:
+    - -X
+    - --exact
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: match across gaps when searching aligned sequences
+    synonyms:
+    - -g
+    - --gapped
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: search both strands
+    synonyms:
+    - -b
+    - --both-strands
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: only search the reverse strand
+    synonyms:
+    - -r
+    - --reverse-only
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: do not print in color
+    synonyms:
+    - -y
+    - --no-color
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: print in color even to non-tty (DANGEROUS)
+    synonyms:
+    - -Y
+    - --force-color
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Preserve incoming color
+    synonyms:
+    - -S
+    - --preserve-color
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Choose a highlight color
+    synonyms:
+    - --color
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: output matches in gff format
+    synonyms:
+    - --gff
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: name of searched feature
+    synonyms:
+    - --gff-type
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: Search for exact sequence matches against FASTA
+    synonyms:
+    - --fastain
+    args: !SimpleFlagArg
+      name: FASTA
+    optional: true
+  command:
+  - smof
+  - grep
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: input fasta sequence (default = stdin)
+    position: 0
+    name: INPUT
+    optional: false
+  named:
+  - !Flag
+    description: convert all to uppercase, before hashing
+    synonyms:
+    - -i
+    - --ignore-case
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: calculate md5sum for each sequence (TAB delimited)
+    synonyms:
+    - -q
+    - --each-sequence
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: calculate one md5sum for all concatenated sequences
+    synonyms:
+    - -s
+    - --all-sequences
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: calculate one md5sum for all concatenated headers
+    synonyms:
+    - -d
+    - --all-headers
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: replace the header of each entry with the checksum of the sequence
+    synonyms:
+    - -r
+    - --replace-header
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - smof
+  - md5sum
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: -K print first K entries
+    position: 0
+    name: K
+    optional: false
+  - !Positional
+    description: input fasta sequence (default = stdin)
+    position: 1
+    name: INPUT
+    optional: false
+  named:
+  - !Flag
+    description: print first K entries; or use -n -K to print all but the last K entries
+    synonyms:
+    - -n
+    - --entries
+    args: !SimpleFlagArg
+      name: K
+    optional: true
+  - !Flag
+    description: print first K letters of each sequence
+    synonyms:
+    - -f
+    - --first
+    args: !SimpleFlagArg
+      name: K
+    optional: true
+  - !Flag
+    description: print last K letters of each sequence
+    synonyms:
+    - -l
+    - --last
+    args: !SimpleFlagArg
+      name: K
+    optional: true
+  command:
+  - smof
+  - head
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: input fasta sequence (default = stdin)
+    position: 0
+    name: INPUT
+    optional: false
+  named:
+  - !Flag
+    description: size of each word (default=1)
+    synonyms:
+    - -w
+    - --word-size
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: number of letters to ignore at beginning (default=0)
+    synonyms:
+    - -s
+    - --start-offset
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: number of letters to ignore at end (default=0)
+    synonyms:
+    - -e
+    - --end-offset
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: set random seed (for reproducibility/debugging)
+    synonyms:
+    - --seed
+    args: !SimpleFlagArg
+      name: SEED
+    optional: true
+  command:
+  - smof
+  - permute
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: input fasta sequence (default = stdin)
+    position: 0
+    name: INPUT
+    optional: false
+  named:
+  - !Flag
+    description: take the reverse complement of the sequence
+    synonyms:
+    - -c
+    - --complement
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: do not check whether the sequence is DNA before reverse complement
+    synonyms:
+    - -V
+    - --no-validate
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Preserve incoming color
+    synonyms:
+    - -S
+    - --preserve-color
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: print in color even to non-tty (DANGEROUS)
+    synonyms:
+    - -Y
+    - --force-color
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - smof
+  - reverse
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: input fasta sequence (default = stdin)
+    position: 0
+    name: INPUT
+    optional: false
+  named:
+  - !Flag
+    description: sample size (default=1)
+    synonyms:
+    - -n
+    - --number
+    args: !SimpleFlagArg
+      name: NUMBER
+    optional: true
+  - !Flag
+    description: set random seed (for reproducibility/debugging)
+    synonyms:
+    - --seed
+    args: !SimpleFlagArg
+      name: SEED
+    optional: true
+  command:
+  - smof
+  - sample
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: input fasta sequence (default = stdin)
+    position: 0
+    name: INPUT
+    optional: false
+  named: []
+  command:
+  - smof
+  - sniff
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: input fasta sequence (default = stdin)
+    position: 0
+    name: INPUT
+    optional: false
+  named:
+  - !Flag
+    description: sort by single regex capture
+    synonyms:
+    - -x
+    - --regex
+    args: !SimpleFlagArg
+      name: REG
+    optional: true
+  - !Flag
+    description: reverse sort
+    synonyms:
+    - -r
+    - --reverse
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: numeric sort
+    synonyms:
+    - -n
+    - --numeric-sort
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: sort by sequence length
+    synonyms:
+    - -l
+    - --length-sort
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: randomly sort sequences
+    synonyms:
+    - -R
+    - --random-sort
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Key to sort on (column number or tag)
+    synonyms:
+    - -k
+    - --key
+    args: !SimpleFlagArg
+      name: KEY
+    optional: true
+  - !Flag
+    description: "The field separator (default: '|')"
+    synonyms:
+    - -t
+    - --field-separator
+    args: !SimpleFlagArg
+      name: FIELD_SEPARATOR
+    optional: true
+  - !Flag
+    description: "The separator between a tag and value (default: '=')"
+    synonyms:
+    - -p
+    - --pair-separator
+    args: !SimpleFlagArg
+      name: PAIR_SEPARATOR
+    optional: true
+  command:
+  - smof
+  - sort
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: input fasta sequence (default = stdin)
+    position: 0
+    name: INPUT
+    optional: false
+  named:
+  - !Flag
+    description: Number of output files or sequences per file
+    synonyms:
+    - -n
+    - --number
+    args: !SimpleFlagArg
+      name: NUMBER
+    optional: true
+  - !Flag
+    description: split by maximum sequences per file
+    synonyms:
+    - -q
+    - --seqs
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: prefix for output files (default="xxx")
+    synonyms:
+    - -p
+    - --prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  command:
+  - smof
+  - split
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: input fasta sequence (default = stdin)
+    position: 0
+    name: INPUT
+    optional: false
+  named:
+  - !Flag
+    description: output delimiter
+    synonyms:
+    - -d
+    - --delimiter
+    args: !SimpleFlagArg
+      name: DELIMITER
+    optional: true
+  - !Flag
+    description: write a line for each sequence
+    synonyms:
+    - -q
+    - --byseq
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: match case
+    synonyms:
+    - -I
+    - --case-sensitive
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: count the number of lowercase characters
+    synonyms:
+    - -m
+    - --count-lower
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write counts of all characters
+    synonyms:
+    - -c
+    - --counts
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: guess sequence type
+    synonyms:
+    - -t
+    - --type
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write sequence length
+    synonyms:
+    - -l
+    - --length
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write proportion of each character
+    synonyms:
+    - -p
+    - --proportion
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: display protein profile
+    synonyms:
+    - -C
+    - --aa-profile
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write ascii histogram of sequence lengths
+    synonyms:
+    - -g
+    - --hist
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: write ascii histogram of sequence log2 lengths
+    synonyms:
+    - -G
+    - --log-hist
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - smof
+  - stat
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: input fasta sequence (default = stdin)
+    position: 0
+    name: INPUT
+    optional: false
+  named:
+  - !Flag
+    description: N, --bounds N N  from and to values (indexed from 1)
+    synonyms:
+    - -b
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: get bounds from this gff3 file
+    synonyms:
+    - -f
+    - --gff
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: With --gff, keep sequences with no matches
+    synonyms:
+    - -k
+    - --keep
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: color subsequence (do not extract)
+    synonyms:
+    - -c
+    - --color
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: print in color even to non-tty (DANGEROUS)
+    synonyms:
+    - -Y
+    - --force-color
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - smof
+  - subseq
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: -K print last K entries
+    position: 0
+    name: K
+    optional: false
+  - !Positional
+    description: input fasta sequence (default = stdin)
+    position: 1
+    name: INPUT
+    optional: false
+  named:
+  - !Flag
+    description: print last K entries; or use -n +K to output starting with the Kth
+    synonyms:
+    - -n
+    - --entries
+    args: !SimpleFlagArg
+      name: K
+    optional: true
+  - !Flag
+    description: print first K letters of each sequence
+    synonyms:
+    - -f
+    - --first
+    args: !SimpleFlagArg
+      name: K
+    optional: true
+  - !Flag
+    description: print last K letters of each sequence
+    synonyms:
+    - -l
+    - --last
+    args: !SimpleFlagArg
+      name: K
+    optional: true
+  command:
+  - smof
+  - tail
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: input fasta sequence (default = stdin)
+    position: 0
+    name: INPUT
+    optional: false
+  named:
+  - !Flag
+    description: Require each product begin with a start codon
+    synonyms:
+    - -s
+    - --from-start
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Translate in all frames, keep longest
+    synonyms:
+    - -f
+    - --all-frames
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Write the DNA coding sequence
+    synonyms:
+    - -c
+    - --cds
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - smof
+  - translate
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: input fasta sequence (default = stdin)
+    position: 0
+    name: INPUT
+    optional: false
+  named:
+  - !Flag
+    description: writes (count|header) in tab-delimited format
+    synonyms:
+    - -c
+    - --count
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: print only repeated entries
+    synonyms:
+    - -d
+    - --repeated
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: print only unique entries
+    synonyms:
+    - -u
+    - --uniq
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: combine redundant sequences by concatenating the headers
+    synonyms:
+    - -p
+    - --pack
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: reverse the pack operation
+    synonyms:
+    - -P
+    - --unpack
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: set delimiting string for pack/unpack operations (SOH, 0x01, by default)
+    synonyms:
+    - -z
+    - --pack-sep
+    args: !SimpleFlagArg
+      name: PACK_SEP
+    optional: true
+  - !Flag
+    description: make headers unique by deleting all but the final entry with a given
+      header (the sequence is ignored, so order matters, you may want to sort by sequence
+      first for reproducibility)
+    synonyms:
+    - -f
+    - --final-header
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - smof
+  - uniq
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: input fasta sequence (default = stdin)
+    position: 0
+    name: INPUT
+    optional: false
+  named:
+  - !Flag
+    description: writes the summed length of all sequences
+    synonyms:
+    - -m
+    - --chars
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: writes the total number of sequences
+    synonyms:
+    - -l
+    - --lines
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - smof
+  - wc
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

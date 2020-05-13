@@ -1,0 +1,230 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: discard unchaste reads [default]
+  synonyms:
+  - --chastity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not discard unchaste reads
+  synonyms:
+  - --no-chastity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: trim masked bases from the ends of reads [default]
+  synonyms:
+  - --trim-masked
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not trim masked bases from the ends of reads
+  synonyms:
+  - --no-trim-masked
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: trim bases from the ends of reads whose quality is less than the threshold
+  synonyms:
+  - -q
+  - --trim-quality
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: mask all low quality bases as `N'
+  synonyms:
+  - -Q
+  - --mask-quality
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: zero quality is `!' (33) default for FASTQ and SAM files
+  synonyms:
+  - --standard-quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: zero quality is `@' (64) default for qseq and export files
+  synonyms:
+  - --illumina-quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: assemble in strand-specific mode
+  synonyms:
+  - --SS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not assemble in strand-specific mode
+  synonyms:
+  - --no-SS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write the contigs to FILE
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: the length of a k-mer (when -K is not set) [<=128] or the span of a
+    k-mer pair (when -K is set)
+  synonyms:
+  - -k
+  - --kmer
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: the length of a single k-mer in a k-mer pair
+  synonyms:
+  - -K
+  - --single-kmer
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: maximum length of blunt contigs to trim [k]
+  synonyms:
+  - -t
+  - --trim-length
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: remove contigs with mean k-mer coverage less than this threshold
+  synonyms:
+  - -c
+  - --coverage
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: remove all k-mers with multiplicity < N [0]
+  synonyms:
+  - --kc
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: pop bubbles shorter than N bp [3*k]
+  synonyms:
+  - -b
+  - --bubbles
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: do not pop bubbles
+  synonyms:
+  - -b0
+  - --no-bubbles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: erode bases at the ends of blunt contigs with coverage less than this
+    threshold [round(sqrt(median))]
+  synonyms:
+  - -e
+  - --erode
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: erode bases at the ends of blunt contigs with coverage less than this
+    threshold on either strand [1 if sqrt(median) > 2 else 0]
+  synonyms:
+  - -E
+  - --erode-strand
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: write the k-mer coverage histogram to FILE
+  synonyms:
+  - --coverage-hist
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: do not include kmers containing masked bases in coverage calculations
+    [experimental]
+  synonyms:
+  - -m
+  - --mask-cov
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: record popped bubbles in FILE
+  synonyms:
+  - -s
+  - --snp
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: display verbose output
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: specify path of database repository in FILE
+  synonyms:
+  - --db
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: specify library NAME for database
+  synonyms:
+  - --library
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: specify strain NAME for database
+  synonyms:
+  - --strain
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: specify species NAME for database
+  synonyms:
+  - --species
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: generate a graph in dot format
+  synonyms:
+  - -g
+  - --graph
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+command:
+- abyss-paired-dbg-mpi
+subcommands: []
+help_flag: !Flag
+  description: display this help and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: output version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

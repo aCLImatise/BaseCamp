@@ -1,0 +1,119 @@
+!Command
+positional:
+- !Positional
+  description: Collection locator, optionally with a file path or prefix.
+  position: 0
+  name: locator
+  optional: false
+- !Positional
+  description: 'Local file or directory where the data is to be written. Default:
+    stdout.'
+  position: 1
+  name: destination
+  optional: false
+named:
+- !Flag
+  description: Maximum number of times to retry server requests that encounter temporary
+    failures (e.g., server down). Default 3.
+  synonyms:
+  - --retries
+  args: !SimpleFlagArg
+    name: RETRIES
+  optional: true
+- !Flag
+  description: 'Display human-readable progress on stderr (bytes and, if possible,
+    percentage of total data size). This is the default behavior when it is not expected
+    to interfere with the output: specifically, stderr is a tty _and_ either stdout
+    is not a tty, or output is being written to named files rather than stdout.'
+  synonyms:
+  - --progress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not display human-readable progress on stderr.
+  synonyms:
+  - --no-progress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display machine-readable progress on stderr (bytes and, if known, total
+    data size).
+  synonyms:
+  - --batch-progress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display the hash of each file as it is read from Keep, using the given
+    hash algorithm. Supported algorithms include md5, sha1, sha224, sha256, sha384,
+    and sha512.
+  synonyms:
+  - --hash
+  args: !SimpleFlagArg
+    name: HASH
+  optional: true
+- !Flag
+  description: Display the MD5 hash of each file as it is read from Keep.
+  synonyms:
+  - --md5sum
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not write any data -- just read from Keep, and report md5sums if
+    requested.
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Retrieve all files in the specified collection/prefix. This is the
+    default behavior if the "locator" argument ends with a forward slash.
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Overwrite existing files while writing. The default behavior is to
+    refuse to write *anything* if any of the output files already exist. As a special
+    case, -f is not needed to write to stdout.
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Once for verbose mode, twice for debug mode.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Skip files that already exist. The default behavior is to refuse to
+    write *anything* if any files exist that would have to be overwritten. This option
+    causes even devices, sockets, and fifos to be skipped.
+  synonyms:
+  - --skip-existing
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When getting a collection manifest, strip its access tokens before
+    writing it.
+  synonyms:
+  - --strip-manifest
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- arv-get
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,122 @@
+!Command
+positional: []
+named: []
+command:
+- refgenieserver
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: "A path to the refgenie config file (YAML). If not provided, the\
+      \ first available environment variable among: 'REFGENIE' will be used if set.\
+      \ Currently: not set"
+    synonyms:
+    - -c
+    - --config
+    args: !SimpleFlagArg
+      name: CONFIG
+    optional: true
+  - !Flag
+    description: Set logger verbosity to debug
+    synonyms:
+    - -d
+    - --dbg
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: The port the webserver should be run on.
+    synonyms:
+    - -p
+    - --port
+    args: !SimpleFlagArg
+      name: PORT
+    optional: true
+  command:
+  - refgenieserver
+  - serve
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: One or more registry path strings that identify assets, e.g. hg38/fasta:tag
+    position: 0
+    name: asset-registry-paths
+    optional: false
+  named:
+  - !Flag
+    description: "A path to the refgenie config file (YAML). If not provided, the\
+      \ first available environment variable among: 'REFGENIE' will be used if set.\
+      \ Currently: not set"
+    synonyms:
+    - -c
+    - --config
+    args: !SimpleFlagArg
+      name: CONFIG
+    optional: true
+  - !Flag
+    description: Set logger verbosity to debug
+    synonyms:
+    - -d
+    - --dbg
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Path to a CSV file with genomes descriptions. Format: genome_name,
+      genome description'
+    synonyms:
+    - --genomes-desc
+    args: !SimpleFlagArg
+      name: GENOMES_DESC
+    optional: true
+  - !Flag
+    description: whether the server file tree should be rebuilt even if exists
+    synonyms:
+    - -f
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Remove selected genome, genome/asset or genome/asset:tag
+    synonyms:
+    - -r
+    - --remove
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - refgenieserver
+  - archive
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

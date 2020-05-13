@@ -1,0 +1,804 @@
+!Command
+positional: []
+named: []
+command:
+- inStrain
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: Sorted .bam file
+    position: 0
+    name: bam
+    optional: false
+  - !Positional
+    description: Fasta file the bam is mapped to
+    position: 1
+    name: fasta
+    optional: false
+  named:
+  - !Flag
+    description: 'Output prefix (default: inStrain)'
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: 'Instead of using the fasta ID (space in header before space), use
+      the full header. Needed for some mapping tools (including bbMap) (default: False)'
+    synonyms:
+    - --use_full_fasta_header
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Number of processes to use (default: 6)'
+    synonyms:
+    - -p
+    - --processes
+    args: !SimpleFlagArg
+      name: PROCESSES
+    optional: true
+  - !Flag
+    description: 'Make extra debugging output (default: False)'
+    synonyms:
+    - -d
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum percent identity of read pairs to consensus to use the reads.
+      Must be >, not >= (default: 0.95)'
+    synonyms:
+    - -l
+    - --filter_cutoff
+    args: !SimpleFlagArg
+      name: FILTER_CUTOFF
+    optional: true
+  - !Flag
+    description: 'Minimum mapq score of EITHER read in a pair to use that pair. Must
+      be >, not >= (default: -1)'
+    synonyms:
+    - --min_mapq
+    args: !SimpleFlagArg
+      name: MIN_MAPQ
+    optional: true
+  - !Flag
+    description: 'Multiplier to determine maximum insert size between two reads -
+      default is to use 3x median insert size. Must be >, not >= (default: 3)'
+    synonyms:
+    - --max_insert_relative
+    args: !SimpleFlagArg
+      name: MAX_INSERT_RELATIVE
+    optional: true
+  - !Flag
+    description: 'Minimum insert size between two reads - default is 50 bp. If two
+      reads are 50bp each and overlap completely, their insert will be 50. Must be
+      >, not >= (default: 50)'
+    synonyms:
+    - --min_insert
+    args: !SimpleFlagArg
+      name: MIN_INSERT
+    optional: true
+  - !Flag
+    description: 'How should paired reads be handled? paired_only = Only paired reads
+      are retained non_discordant = Keep all paired reads and singleton reads that
+      map to a single scaffold all_reads = Keep all reads regardless of pairing status
+      (NOT RECOMMENDED; See documentation for deatils) (default: paired_only)'
+    synonyms:
+    - --pairing_filter
+    args: !ChoiceFlagArg
+      choices:
+      - paired_only
+      - all_reads
+      - non_discordant
+    optional: true
+  - !Flag
+    description: 'The location of a list of reads that should be retained regardless
+      of pairing status (for example long reads or merged reads). This can be a .fastq
+      file or text file with list of read names (will assume file is compressed if
+      ends in .gz (default: None)'
+    synonyms:
+    - --priority_reads
+    args: !SimpleFlagArg
+      name: PRIORITY_READS
+    optional: true
+  - !Flag
+    description: 'Store read filtering info for each scaffold (default: False)'
+    synonyms:
+    - --scaffold_level_read_report
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Make a detailed read report indicating deatils about each individual
+      mapped read (default: False)'
+    synonyms:
+    - --deatiled_read_report
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum coverage to call an variant (default: 5)'
+    synonyms:
+    - -c
+    - --min_cov
+    args: !SimpleFlagArg
+      name: MIN_COV
+    optional: true
+  - !Flag
+    description: 'Minimum SNP frequency to confirm a SNV (both this AND the FDR snp
+      count cutoff must be true to call a SNP). (default: 0.05)'
+    synonyms:
+    - -f
+    - --min_freq
+    args: !SimpleFlagArg
+      name: MIN_FREQ
+    optional: true
+  - !Flag
+    description: 'SNP false discovery rate- based on simulation data with a 0.1 percent
+      error rate (Q30) (default: 1e-06)'
+    synonyms:
+    - -fdr
+    - --fdr
+    args: !SimpleFlagArg
+      name: FDR
+    optional: true
+  - !Flag
+    description: 'Path to prodigal .fna genes file. If file ends in .gb or .gbk, will
+      treat as a genbank file (EXPERIMENTAL; the name of the gene must be in the gene
+      qualifier) (default: None)'
+    synonyms:
+    - -g
+    - --gene_file
+    args: !SimpleFlagArg
+      name: GENE_FILE
+    optional: true
+  - !Flag
+    description: '[STB [STB ...]], --stb [STB [STB ...]] Scaffold to bin. This can
+      be a file with each line listing a scaffold and a bin name, tab-seperated. This
+      can also be a space-seperated list of .fasta files, with one genome per .fasta
+      file. If nothing is provided, all scaffolds will be treated as belonging to
+      the same genome (default: [])'
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Create files on the mm level (see documentation for info) (default:
+      False)'
+    synonyms:
+    - --mm_level
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Absolute minimum number of reads connecting two SNPs to calculate
+      LD between them. (default: 20)'
+    synonyms:
+    - --min_snp
+    args: !SimpleFlagArg
+      name: MIN_SNP
+    optional: true
+  - !Flag
+    description: 'Minimum number of reads mapping to a scaffold to proceed with profiling
+      it (default: 0)'
+    synonyms:
+    - --min_fasta_reads
+    args: !SimpleFlagArg
+      name: MIN_FASTA_READS
+    optional: true
+  - !Flag
+    description: 'Store intermediate dictionaries in the pickle file; will result
+      in significantly more RAM and disk usage (default: False)'
+    synonyms:
+    - --store_everything
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Dont perform analysis on an mm level; saves RAM and time (default:
+      False)'
+    synonyms:
+    - --skip_mm_profiling
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Path to a file containing a list of scaffolds to profile- if provided
+      will ONLY profile those scaffolds (default: None)'
+    synonyms:
+    - --scaffolds_to_profile
+    args: !SimpleFlagArg
+      name: SCAFFOLDS_TO_PROFILE
+    optional: true
+  - !Flag
+    description: 'When calculating nucleotide diversity, also calculate a rarefied
+      version with this much coverage (default: 50)'
+    synonyms:
+    - --rarefied_coverage
+    args: !SimpleFlagArg
+      name: RAREFIED_COVERAGE
+    optional: true
+  - !Flag
+    description: 'Do not generate tables that consider groups of scaffolds belonging
+      to genomes (default: False)'
+    synonyms:
+    - --skip_genome_wide
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Do not make plots (default: False)'
+    synonyms:
+    - --skip_plot_generation
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - inStrain
+  - profile
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[INPUT [INPUT ...]], --input [INPUT [INPUT ...]] A list of inStrain
+      objects, all mapped to the same .fasta file (default: None)'
+    synonyms:
+    - -i
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Output prefix (default: instrainComparer)'
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: 'Number of processes to use (default: 6)'
+    synonyms:
+    - -p
+    - --processes
+    args: !SimpleFlagArg
+      name: PROCESSES
+    optional: true
+  - !Flag
+    description: 'Make extra debugging output (default: False)'
+    synonyms:
+    - -d
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum coverage to call an variant (default: 5)'
+    synonyms:
+    - -c
+    - --min_cov
+    args: !SimpleFlagArg
+      name: MIN_COV
+    optional: true
+  - !Flag
+    description: 'Minimum SNP frequency to confirm a SNV (both this AND the FDR snp
+      count cutoff must be true to call a SNP). (default: 0.05)'
+    synonyms:
+    - -f
+    - --min_freq
+    args: !SimpleFlagArg
+      name: MIN_FREQ
+    optional: true
+  - !Flag
+    description: 'SNP false discovery rate- based on simulation data with a 0.1 percent
+      error rate (Q30) (default: 1e-06)'
+    synonyms:
+    - -fdr
+    - --fdr
+    args: !SimpleFlagArg
+      name: FDR
+    optional: true
+  - !Flag
+    description: 'Location to a list of scaffolds to compare. You can also make this
+      a .fasta file and it will load the scaffold names (default: None)'
+    synonyms:
+    - -s
+    - --scaffolds
+    args: !SimpleFlagArg
+      name: SCAFFOLDS
+    optional: true
+  - !Flag
+    description: 'Also store coverage overlap on an mm level (default: False)'
+    synonyms:
+    - --store_coverage_overlap
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Store the locations of SNPs (default: False)'
+    synonyms:
+    - --store_mismatch_locations
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Also compare IS profiles against themself (default: False)'
+    synonyms:
+    - --include_self_comparisons
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Dont do pair-wise comparisons, do greedy clustering to only find
+      the number of clsuters. If this is set, use the parameters below as well (default:
+      False)'
+    synonyms:
+    - --greedy_clustering
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'ANI threshold for greedy clustering- put the fraction not the percentage
+      (e.g. 0.99, not 99) (default: 0.99)'
+    synonyms:
+    - --g_ani
+    args: !SimpleFlagArg
+      name: G_ANI
+    optional: true
+  - !Flag
+    description: 'Alignment coverage for greedy clustering- put the fraction not the
+      percentage (e.g. 0.5, not 10) (default: 0.99)'
+    synonyms:
+    - --g_cov
+    args: !SimpleFlagArg
+      name: G_COV
+    optional: true
+  - !Flag
+    description: 'Maximum read mismatch level (default: 100)'
+    synonyms:
+    - --g_mm
+    args: !SimpleFlagArg
+      name: G_MM
+    optional: true
+  command:
+  - inStrain
+  - compare
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Path to prodigal .fna genes file. If file ends in .gb or .gbk, will
+      treat as a genbank file (EXPERIMENTAL; the name of the gene must be in the gene
+      qualifier) (default: None)'
+    synonyms:
+    - -g
+    - --gene_file
+    args: !SimpleFlagArg
+      name: GENE_FILE
+    optional: true
+  - !Flag
+    description: 'an inStrain profile object (default: None)'
+    synonyms:
+    - -i
+    - --IS
+    args: !SimpleFlagArg
+      name: IS
+    optional: true
+  - !Flag
+    description: 'Store gene sequences in the IS object (default: False)'
+    synonyms:
+    - --store_everything
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Number of processes to use (default: 6)'
+    synonyms:
+    - -p
+    - --processes
+    args: !SimpleFlagArg
+      name: PROCESSES
+    optional: true
+  - !Flag
+    description: 'Make extra debugging output (default: False)'
+    synonyms:
+    - -d
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - inStrain
+  - profile_genes
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[STB [STB ...]], --stb [STB [STB ...]] Scaffold to bin. This can
+      be a file with each line listing a scaffold and a bin name, tab-seperated. This
+      can also be a space-seperated list of .fasta files, with one genome per .fasta
+      file. If nothing is provided, all scaffolds will be treated as belonging to
+      the same genome (default: [])'
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Create files on the mm level (see documentation for info) (default:
+      False)'
+    synonyms:
+    - --mm_level
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'an inStrain profile object (default: None)'
+    synonyms:
+    - -i
+    - --IS
+    args: !SimpleFlagArg
+      name: IS
+    optional: true
+  - !Flag
+    description: 'Store gene sequences in the IS object (default: False)'
+    synonyms:
+    - --store_everything
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Number of processes to use (default: 6)'
+    synonyms:
+    - -p
+    - --processes
+    args: !SimpleFlagArg
+      name: PROCESSES
+    optional: true
+  - !Flag
+    description: 'Make extra debugging output (default: False)'
+    synonyms:
+    - -d
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - inStrain
+  - genome_wide
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'A bam file to profile (default: None)'
+    synonyms:
+    - -b
+    - --bam
+    args: !SimpleFlagArg
+      name: BAM
+    optional: true
+  - !Flag
+    description: 'The .fasta file to profile (default: None)'
+    synonyms:
+    - -f
+    - --fasta
+    args: !SimpleFlagArg
+      name: FASTA
+    optional: true
+  - !Flag
+    description: 'Scaffold to bin file for genome-wide coverage and breadth (default:
+      None)'
+    synonyms:
+    - -s
+    - --stb
+    args: !SimpleFlagArg
+      name: STB
+    optional: true
+  - !Flag
+    description: 'Output prefix (default: None)'
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: 'Number of processes to use (default: 6)'
+    synonyms:
+    - -p
+    - --processes
+    args: !SimpleFlagArg
+      name: PROCESSES
+    optional: true
+  - !Flag
+    description: 'Make extra debugging output (default: False)'
+    synonyms:
+    - -d
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum breadth to pull scaffolds (default: 0.5)'
+    synonyms:
+    - --breadth_cutoff
+    args: !SimpleFlagArg
+      name: BREADTH_CUTOFF
+    optional: true
+  - !Flag
+    description: 'Minimum breadth to let scaffold into coverm raw results (default:
+      0.01)'
+    synonyms:
+    - --stringent_breadth_cutoff
+    args: !SimpleFlagArg
+      name: STRINGENT_BREADTH_CUTOFF
+    optional: true
+  command:
+  - inStrain
+  - quick_profile
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Sorted .bam file
+    position: 0
+    name: bam
+    optional: false
+  - !Positional
+    description: Fasta file the bam is mapped to
+    position: 1
+    name: fasta
+    optional: false
+  named:
+  - !Flag
+    description: 'Location of folder to store read report(s) (default: None)'
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: 'Number of processes to use (default: 6)'
+    synonyms:
+    - -p
+    - --processes
+    args: !SimpleFlagArg
+      name: PROCESSES
+    optional: true
+  - !Flag
+    description: 'Make extra debugging output (default: False)'
+    synonyms:
+    - -d
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum percent identity of read pairs to consensus to use the reads.
+      Must be >, not >= (default: 0.95)'
+    synonyms:
+    - -l
+    - --filter_cutoff
+    args: !SimpleFlagArg
+      name: FILTER_CUTOFF
+    optional: true
+  - !Flag
+    description: 'Minimum mapq score of EITHER read in a pair to use that pair. Must
+      be >, not >= (default: -1)'
+    synonyms:
+    - --min_mapq
+    args: !SimpleFlagArg
+      name: MIN_MAPQ
+    optional: true
+  - !Flag
+    description: 'Multiplier to determine maximum insert size between two reads -
+      default is to use 3x median insert size. Must be >, not >= (default: 3)'
+    synonyms:
+    - --max_insert_relative
+    args: !SimpleFlagArg
+      name: MAX_INSERT_RELATIVE
+    optional: true
+  - !Flag
+    description: 'Minimum insert size between two reads - default is 50 bp. If two
+      reads are 50bp each and overlap completely, their insert will be 50. Must be
+      >, not >= (default: 50)'
+    synonyms:
+    - --min_insert
+    args: !SimpleFlagArg
+      name: MIN_INSERT
+    optional: true
+  - !Flag
+    description: 'How should paired reads be handled? paired_only = Only paired reads
+      are retained non_discordant = Keep all paired reads and singleton reads that
+      map to a single scaffold all_reads = Keep all reads regardless of pairing status
+      (NOT RECOMMENDED; See documentation for deatils) (default: paired_only)'
+    synonyms:
+    - --pairing_filter
+    args: !ChoiceFlagArg
+      choices:
+      - all_reads
+      - non_discordant
+      - paired_only
+    optional: true
+  - !Flag
+    description: 'The location of a list of reads that should be retained regardless
+      of pairing status (for example long reads or merged reads). This can be a .fastq
+      file or text file with list of read names (will assume file is compressed if
+      ends in .gz (default: None)'
+    synonyms:
+    - --priority_reads
+    args: !SimpleFlagArg
+      name: PRIORITY_READS
+    optional: true
+  - !Flag
+    description: 'Store read filtering info for each scaffold (default: False)'
+    synonyms:
+    - --scaffold_level_read_report
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Make a detailed read report indicating deatils about each individual
+      mapped read (default: False)'
+    synonyms:
+    - --deatiled_read_report
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - inStrain
+  - filter_reads
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'an inStrain profile object (default: None)'
+    synonyms:
+    - -i
+    - --IS
+    args: !SimpleFlagArg
+      name: IS
+    optional: true
+  - !Flag
+    description: "[PLOTS [PLOTS ...]], --plots [PLOTS [PLOTS ...]] Plots. Input 'all'\
+      \ or 'a' to plot all 1) Coverage and breadth vs. read mismatches 2) Genome-wide\
+      \ microdiversity metrics 3) Read-level ANI distribution 4) Major allele frequencies\
+      \ 5) Linkage decay 6) Read filtering plots 7) Scaffold inspection plot (large)\
+      \ 8) Linkage with SNP type (GENES REQUIRED) 9) Gene histograms (GENES REQUIRED)\
+      \ 10) Compare dendrograms (RUN ON COMPARE; NOT PROFILE) (default: a)"
+    synonyms:
+    - -pl
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum breadth of coverage for genome to make it into plot (from
+      0-1). (default: 0)'
+    synonyms:
+    - -mb
+    - --minimum_breadth
+    args: !SimpleFlagArg
+      name: MINIMUM_BREADTH
+    optional: true
+  - !Flag
+    description: '[GENOMES [GENOMES ...]], --genomes [GENOMES [GENOMES ...]] Only
+      plot genomes with the names provided in this argument (default: None)'
+    synonyms:
+    - -g
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Number of processes to use (default: 6)'
+    synonyms:
+    - -p
+    - --processes
+    args: !SimpleFlagArg
+      name: PROCESSES
+    optional: true
+  - !Flag
+    description: 'Make extra debugging output (default: False)'
+    synonyms:
+    - -d
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - inStrain
+  - plot
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Number of processes to use (default: 6)'
+    synonyms:
+    - -p
+    - --processes
+    args: !SimpleFlagArg
+      name: PROCESSES
+    optional: true
+  - !Flag
+    description: 'Make extra debugging output (default: False)'
+    synonyms:
+    - -d
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Convert an old inStrain version object to the newer version. (default:
+      None)'
+    synonyms:
+    - --old_IS
+    args: !SimpleFlagArg
+      name: OLD_IS
+    optional: true
+  - !Flag
+    description: 'Generate runtime reports for an inStrain run. (default: None)'
+    synonyms:
+    - --run_statistics
+    args: !SimpleFlagArg
+      name: RUN_STATISTICS
+    optional: true
+  command:
+  - inStrain
+  - other
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

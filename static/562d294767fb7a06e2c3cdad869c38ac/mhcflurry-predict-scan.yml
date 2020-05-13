@@ -1,0 +1,179 @@
+!Command
+positional:
+- !Positional
+  description: Input CSV or FASTA
+  position: 0
+  name: INPUT
+  optional: false
+named:
+- !Flag
+  description: Print the list of supported alleles and exits
+  synonyms:
+  - --list-supported-alleles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print the list of supported peptide lengths and exits
+  synonyms:
+  - --list-supported-peptide-lengths
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Format of input file. By default, it is guessed from the file extension.
+  synonyms:
+  - --input-format
+  args: !ChoiceFlagArg
+    choices:
+    - guess
+    - csv
+    - fasta
+  optional: true
+- !Flag
+  description: Alleles to predict
+  synonyms:
+  - --alleles
+  args: !RepeatFlagArg
+    name: ALLELE
+  optional: true
+- !Flag
+  description: Sequences to predict (exclusive with passing an input file)
+  synonyms:
+  - --sequences
+  args: !RepeatFlagArg
+    name: SEQ
+  optional: true
+- !Flag
+  description: "Input CSV column name for sequence IDs. Default: 'sequence_id'"
+  synonyms:
+  - --sequence-id-column
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: "Input CSV column name for sequences. Default: 'sequence'"
+  synonyms:
+  - --sequence-column
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: Return NaNs for unsupported alleles or peptides instead of raising
+  synonyms:
+  - --no-throw
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Peptide lengths to consider. Default: [8, 9, 10, 11].'
+  synonyms:
+  - --peptide-lengths
+  args: !RepeatFlagArg
+    name: PEPTIDE_LENGTHS
+  optional: true
+- !Flag
+  description: Return results for all peptides regardless of affinity, etc.
+  synonyms:
+  - --results-all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Take the top result for each sequence according to the specified predicted
+    quantity
+  synonyms:
+  - --results-best
+  args: !ChoiceFlagArg
+    choices:
+    - presentation_score
+    - processing_score
+    - affinity
+    - affinity_percentile
+  optional: true
+- !Flag
+  description: Filter results by the specified quantity.
+  synonyms:
+  - --results-filtered
+  args: !ChoiceFlagArg
+    choices:
+    - presentation_score
+    - processing_score
+    - affinity
+    - affinity_percentile
+  optional: true
+- !Flag
+  description: 'Threshold if filtering by presentation score. Default: 0.7'
+  synonyms:
+  - --threshold-presentation-score
+  args: !SimpleFlagArg
+    name: THRESHOLD_PRESENTATION_SCORE
+  optional: true
+- !Flag
+  description: 'Threshold if filtering by processing score. Default: 0.5'
+  synonyms:
+  - --threshold-processing-score
+  args: !SimpleFlagArg
+    name: THRESHOLD_PROCESSING_SCORE
+  optional: true
+- !Flag
+  description: 'Threshold if filtering by affinity. Default: 500'
+  synonyms:
+  - --threshold-affinity
+  args: !SimpleFlagArg
+    name: THRESHOLD_AFFINITY
+  optional: true
+- !Flag
+  description: 'Threshold if filtering by affinity percentile. Default: 2.0'
+  synonyms:
+  - --threshold-affinity-percentile
+  args: !SimpleFlagArg
+    name: THRESHOLD_AFFINITY_PERCENTILE
+  optional: true
+- !Flag
+  description: Output CSV
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: OUTPUT.csv
+  optional: true
+- !Flag
+  description: "Delimiter character for results. Default: ','"
+  synonyms:
+  - --output-delimiter
+  args: !SimpleFlagArg
+    name: CHAR
+  optional: true
+- !Flag
+  description: Do not include affinity percentile rank
+  synonyms:
+  - --no-affinity-percentile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Directory containing presentation models.Default: /hom e/ubuntu/.local/share/mhcflurry/4/1.6.0/models_class1_
+    presentation/models'
+  synonyms:
+  - --models
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: Do not use flanking sequence information in predictions
+  synonyms:
+  - --no-flanking
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- mhcflurry-predict-scan
+subcommands: []
+help_flag: !Flag
+  description: Show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

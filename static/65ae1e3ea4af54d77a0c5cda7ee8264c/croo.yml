@@ -1,0 +1,152 @@
+!Command
+positional:
+- !Positional
+  description: 'Path, URL or URI for metadata.json for a workflow Example: /scratch/sample1/metadata.json,
+    gs://some/where/metadata.json, http://hello.com/world/metadata.json'
+  position: 0
+  name: metadata_json
+  optional: false
+named:
+- !Flag
+  description: Output definition JSON file for a WDL file corresponding to the specified
+    metadata.json file
+  synonyms:
+  - --out-def-json
+  args: !SimpleFlagArg
+    name: OUT_DEF_JSON
+  optional: true
+- !Flag
+  description: Method to localize files on output directory/bucket. "link" means a
+    soft-linking and it's for local directory only. Original output files will be
+    kept in Cromwell's output directory. "copy" makes copies of Cromwell's original
+    outputs
+  synonyms:
+  - --method
+  args: !ChoiceFlagArg
+    choices:
+    - link
+    - copy
+  optional: true
+- !Flag
+  description: UCSC genome browser's "db=" parameter. (e.g. hg38 for GRCh38 and mm10
+    for mm10)
+  synonyms:
+  - --ucsc-genome-db
+  args: !SimpleFlagArg
+    name: UCSC_GENOME_DB
+  optional: true
+- !Flag
+  description: UCSC genome browser's "position=" parameter. (e.g. chr1:35000-40000)
+  synonyms:
+  - --ucsc-genome-pos
+  args: !SimpleFlagArg
+    name: UCSC_GENOME_POS
+  optional: true
+- !Flag
+  description: Your GCS (gs://) bucket is public.
+  synonyms:
+  - --public-gcs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Generate presigned URLS for files on s3://.
+  synonyms:
+  - --use-presigned-url-s3
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Generate presigned URLS for files on gs://. --gcp- private-key must
+    be provided.
+  synonyms:
+  - --use-presigned-url-gcs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Private key file (JSON/PKCS12) of a service account on Google Cloud
+    Platform (GCP). This key will be used to make presigned URLs on files on gs://.
+  synonyms:
+  - --gcp-private-key
+  args: !SimpleFlagArg
+    name: GCP_PRIVATE_KEY
+  optional: true
+- !Flag
+  description: Duration for presigned URLs for files on s3:// in seconds.
+  synonyms:
+  - --duration-presigned-url-s3
+  args: !SimpleFlagArg
+    name: DURATION_PRESIGNED_URL_S3
+  optional: true
+- !Flag
+  description: Duration for presigned URLs for files on gs:// in seconds.
+  synonyms:
+  - --duration-presigned-url-gcs
+  args: !SimpleFlagArg
+    name: DURATION_PRESIGNED_URL_GCS
+  optional: true
+- !Flag
+  description: A 2-column TSV file with local path prefix and corresponding URL prefix.
+    For example, using 1-line 2-col TSV file with /var/www[TAB]http://my.server.com
+    will replace a local path /var/www/here/a.txt to a URL http://my.server.com/here/a.txt.
+  synonyms:
+  - --tsv-mapping-path-to-url
+  args: !SimpleFlagArg
+    name: TSV_MAPPING_PATH_TO_URL
+  optional: true
+- !Flag
+  description: Output directory/bucket (LOCAL OR REMOTE). This can be a local path,
+    gs:// or s3://.
+  synonyms:
+  - --out-dir
+  args: !SimpleFlagArg
+    name: OUT_DIR
+  optional: true
+- !Flag
+  description: LOCAL temporary cache directory. All temporary files for auto-inter-storage
+    transfer will be stored here. You can clean it up but will lose all cached files
+    so that remote files will be re-downloaded.
+  synonyms:
+  - --tmp-dir
+  args: !SimpleFlagArg
+    name: TMP_DIR
+  optional: true
+- !Flag
+  description: Use gsutil for direct tranfer between GCS and S3 buckets. Make sure
+    that you have "gsutil" installed and configured to have access to credentials
+    for GCS and S3 (e.g. ~/.boto or ~/.aws/credientials)
+  synonyms:
+  - --use-gsutil-for-s3
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Always overwrite on output directory/bucket (--out- dir) even if md5-identical
+    files (or soft links) already exist there. Md5 hash/filename/filesize checking
+    will be skipped.
+  synonyms:
+  - --no-checksum
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prints all logs >= DEBUG level
+  synonyms:
+  - -D
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- croo
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show version
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,150 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: calculator mode; causes HyPhy to drop into an expression evaluation
+    until 'exit' is typed
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: debug mode; causes HyPhy to drop into an expression evaluation mode
+    upon script error
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: interactive mode; causes HyPhy to always prompt the user for analysis
+    options, even when defaults are available
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: postprocessor mode; drops HyPhy into an interactive mode where general
+    post-processing scripts can be selected upon analysis completion
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write diagnostic messages to messages.log
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: will be passed to the analysis (which uses KeywordArgument directives)
+    multiple values for the same keywords are treated as an array of values for multiple
+    selectors
+  synonyms:
+  - --keyword
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+command:
+- hyphy
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: i=0;
+    position: 0
+    name: to
+    optional: false
+  - !Positional
+    description: Branch under condition 'echoFlag'
+    position: 1
+    name: else
+    optional: false
+  - !Positional
+    description: fprintf(stdout, "\n|------------|-------|-----------|------------|");
+    position: 2
+    name: to
+    optional: false
+  - !Positional
+    description: return 0;
+    position: 3
+    name: else
+    optional: false
+  named: []
+  command:
+  - hyphy
+  - mt
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: MPIReceive(-1, fromNode, result_String);
+    position: 0
+    name: to
+    optional: false
+  - !Positional
+    description: Branch under condition 'firstTime'
+    position: 1
+    name: else
+    optional: false
+  - !Positional
+    description: firstTime=0;
+    position: 2
+    name: to
+    optional: false
+  - !Positional
+    description: fprintf(stdout, "Finshed Segment ", Format(segmentStart,0,0), " -
+      ", Format(segmentEnd,0,0), "\n");
+    position: 3
+    name: else
+    optional: false
+  named: []
+  command:
+  - hyphy
+  - sw
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: fprintf(stdout, "Input file contained 3 or fewer sequences - not
+      much inference to be done!\n");
+    position: 0
+    name: to
+    optional: false
+  - !Positional
+    description: Branch under condition 'randomOption==1'
+    position: 1
+    name: else
+    optional: false
+  - !Positional
+    description: treeNodes={filteredData.species,1};
+    position: 2
+    name: to
+    optional: false
+  - !Positional
+    description: additionOrder={filteredData.species,1};
+    position: 3
+    name: else
+    optional: false
+  named: []
+  command:
+  - hyphy
+  - sa
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

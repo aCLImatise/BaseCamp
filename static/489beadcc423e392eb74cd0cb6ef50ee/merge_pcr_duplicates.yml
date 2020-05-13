@@ -1,0 +1,81 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILE
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -d
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- merge_pcr_duplicates.py
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: Path to bed6 file containing alignments.
+    position: 0
+    name: alignments
+    optional: false
+  - !Positional
+    description: Path to fastq barcode library.
+    position: 1
+    name: bclib
+    optional: false
+  named:
+  - !Flag
+    description: Write results to this file.
+    synonyms:
+    - -o
+    - --outfile
+    args: !SimpleFlagArg
+      name: OUTFILE
+    optional: true
+  - !Flag
+    description: Be verbose.
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Print lots of debugging information
+    synonyms:
+    - -d
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - merge_pcr_duplicates.py
+  - alignments
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

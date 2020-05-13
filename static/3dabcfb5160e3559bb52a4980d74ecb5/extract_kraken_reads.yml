@@ -1,0 +1,97 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: ', -2 SEQ_FILE2 2nd FASTA/FASTQ File containing the raw sequence letters
+    (paired).'
+  synonyms:
+  - -s2
+  args: !SimpleFlagArg
+    name: SEQ_FILE2
+  optional: true
+- !Flag
+  description: Taxonomy ID[s] of reads to extract (space-delimited)
+  synonyms:
+  - -t
+  - --taxid
+  args: !RepeatFlagArg
+    name: TAXID
+  optional: true
+- !Flag
+  description: Output FASTA/Q file containing the reads and sample IDs
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+  optional: true
+- !Flag
+  description: Output FASTA/Q file containig the second pair of reads [required for
+    paired input]
+  synonyms:
+  - -o2
+  - --output2
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE2
+  optional: true
+- !Flag
+  description: Append the sequences to the end of the output FASTA file specified.
+  synonyms:
+  - --append
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Create a new FASTA file containing sample sequences and IDs (rewrite
+    if existing) [default].
+  synonyms:
+  - --noappend
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Maximum number of reads to save [default: 100,000,000]'
+  synonyms:
+  - --max
+  args: !SimpleFlagArg
+    name: MAX_READS
+  optional: true
+- !Flag
+  description: Kraken report file. [required only if --include- parents/children is
+    specified]
+  synonyms:
+  - -r
+  - --report
+  args: !SimpleFlagArg
+    name: REPORT_FILE
+  optional: true
+- !Flag
+  description: Include reads classified at parent levels of the specified taxids
+  synonyms:
+  - --include-parents
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Include reads classified more specifically than the specified taxids
+  synonyms:
+  - --include-children
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Instead of finding reads matching specified taxids, finds all reads
+    NOT matching specified taxids
+  synonyms:
+  - --exclude
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Print output FASTQ reads [requires input FASTQ, default: output is
+    FASTA]'
+  synonyms:
+  - --fastq-output
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- extract_kraken_reads.py
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

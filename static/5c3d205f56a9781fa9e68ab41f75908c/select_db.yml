@@ -1,0 +1,103 @@
+!Command
+positional:
+- !Positional
+  description: Path to reads file.
+  position: 0
+  name: reads
+  optional: false
+- !Positional
+  description: Path to data/ directory with the files from setup_data.sh
+  position: 1
+  name: data
+  optional: false
+named:
+- !Flag
+  description: Can specify location of CMash query results if already done.
+  synonyms:
+  - --cmash_results
+  args: !SimpleFlagArg
+    name: CMASH_RESULTS
+  optional: true
+- !Flag
+  description: CMash cutoff value. Default is 1/(log10(reads file bytes)**2).
+  synonyms:
+  - --cutoff
+  args: !SimpleFlagArg
+    name: CUTOFF
+  optional: true
+- !Flag
+  description: 'Where to write subset database. Default: temp_dir/cmashed_db.fna'
+  synonyms:
+  - --db
+  args: !SimpleFlagArg
+    name: DB
+  optional: true
+- !Flag
+  description: Directory with all organism files in the full database.
+  synonyms:
+  - --db_dir
+  args: !SimpleFlagArg
+    name: DB_DIR
+  optional: true
+- !Flag
+  description: Specify location of db_info file. Default is data/db_info.txt
+  synonyms:
+  - --dbinfo_in
+  args: !SimpleFlagArg
+    name: DBINFO_IN
+  optional: true
+- !Flag
+  description: 'Where to write subset db_info. Default: temp_dir/subset_db_info.txt'
+  synonyms:
+  - --dbinfo_out
+  args: !SimpleFlagArg
+    name: DBINFO_OUT
+  optional: true
+- !Flag
+  description: 'Type of input file (fastq/fasta). Default: try to auto-determine'
+  synonyms:
+  - --input_type
+  args: !ChoiceFlagArg
+    choices:
+    - fastq
+    - fasta
+    - AUTO
+  optional: true
+- !Flag
+  description: Keep KMC files instead of deleting after this script finishes.
+  synonyms:
+  - --keep_temp_files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Include all strains above cutoff. Default: 1 strain per species.'
+  synonyms:
+  - --strain_level
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Directory to write temporary files to.
+  synonyms:
+  - --temp_dir
+  args: !SimpleFlagArg
+    name: TEMP_DIR
+  optional: true
+- !Flag
+  description: 'How many compute threads for KMC to use. Default: 4'
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+command:
+- select_db.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

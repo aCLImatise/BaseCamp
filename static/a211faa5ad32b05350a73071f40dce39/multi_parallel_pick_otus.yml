@@ -1,0 +1,80 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The names of the sequence files that will be have job scripts generated
+    to process them. The expected input is from the split_sequence_data.py script
+    (e.g. 0.fna, 1.fna, ..., n.fna).
+  synonyms:
+  - -i
+  - --input_fna
+  args: !RepeatFlagArg
+    name: INPUT_FNA
+  optional: true
+- !Flag
+  description: 'Sequence similarity threshold [default: 0.97]'
+  synonyms:
+  - -s
+  - --similarity
+  args: !SimpleFlagArg
+    name: SIMILARITY
+  optional: true
+- !Flag
+  description: A file template containing placeholders for variables that this script
+    will fill in when creating a new job script for each input FASTA query file. An
+    example file for PBS systems is included with phylotoast.
+  synonyms:
+  - -j
+  - --job_script_template
+  args: !SimpleFlagArg
+    name: JOB_SCRIPT_TEMPLATE
+  optional: true
+- !Flag
+  description: The path to the sequence database file to run the BLAST against.
+  synonyms:
+  - -d
+  - --database
+  args: !SimpleFlagArg
+    name: DATABASE
+  optional: true
+- !Flag
+  description: The maximum running time in hours for each script. Default is 10 hours.
+  synonyms:
+  - -t
+  - --walltime
+  args: !SimpleFlagArg
+    name: WALLTIME
+  optional: true
+- !Flag
+  description: A descriptive name for the job script that will appear when checking
+    the job status. Max length is 15 characters, but '_#' will be appended to the
+    name you provide to differentiate among all the jobs, so this parameter will be
+    truncated if necessary to accommodate for the number of input files.
+  synonyms:
+  - -n
+  - --job_name
+  args: !SimpleFlagArg
+    name: JOB_NAME
+  optional: true
+- !Flag
+  description: This will cause the program to print the full path for each output
+    file to the command line. This can be used for informational purposes or to pipe
+    (|) to the PBS multi-submission script to automate job submission as soon as the
+    scripts are created.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- multi_parallel_pick_otus.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

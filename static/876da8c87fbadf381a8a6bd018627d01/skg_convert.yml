@@ -1,0 +1,84 @@
+!Command
+positional:
+- !Positional
+  description: 'Input filename. [Default: stdin]'
+  position: 0
+  name: FILE
+  optional: false
+named:
+- !Flag
+  description: 'Output filename. [Default: stdout]'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'Input format. [Default: auto-detect]'
+  synonyms:
+  - -f
+  - --from
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: Output format. [Required]
+  synonyms:
+  - -t
+  - --to
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: Flatten overlapping regions, keeping original boundaries. Not recommended
+    with --exons.
+  synonyms:
+  - --flatten
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[BASEPAIRS]   Merge overlapping regions with different names. Recommended
+    with --exons. Optional argument value is the number of overlapping bases between
+    two regions to trigger a merge. [Default: 1]'
+  synonyms:
+  - --merge
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: GFF attributes tag to use for gene names.
+  synonyms:
+  - --gff-tag
+  args: !SimpleFlagArg
+    name: GFF_TAG
+  optional: true
+- !Flag
+  description: GFF record type (column 3) to use exclusively. E.g. for GFF3 files,
+    'exon', 'gene', and other SOFA terms can be used here.
+  synonyms:
+  - --gff-type
+  args: !SimpleFlagArg
+    name: GFF_TYPE
+  optional: true
+- !Flag
+  description: Emit each exon instead of the whole gene regions.
+  synonyms:
+  - --refflat-type
+  args: !ChoiceFlagArg
+    choices:
+    - exon
+    - cds
+    - transcript
+  optional: true
+command:
+- skg_convert.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

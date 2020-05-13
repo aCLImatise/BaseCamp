@@ -1,0 +1,168 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: File name in which a serialized R SingleCellExperiment object where
+    object matrix found
+  synonyms:
+  - -i
+  - --input-object-file
+  args: !SimpleFlagArg
+    name: INPUT-OBJECT-FILE
+  optional: true
+- !Flag
+  description: A comma-separated string or single value representing the number of
+    clusters k to be used for SC3 clustering.
+  synonyms:
+  - -c
+  - --ks
+  args: !SimpleFlagArg
+    name: KS
+  optional: true
+- !Flag
+  description: A boolean variable which defines whether to perform gene filtering
+    before SC3 clustering.
+  synonyms:
+  - -f
+  - --gene-filter
+  args: !SimpleFlagArg
+    name: GENE-FILTER
+  optional: true
+- !Flag
+  description: If gene_filter = TRUE, then genes with percent of dropouts smaller
+    than pct_dropout_min are filtered out before clustering.
+  synonyms:
+  - -p
+  - --pct-dropout-min
+  args: !SimpleFlagArg
+    name: PCT-DROPOUT-MIN
+  optional: true
+- !Flag
+  description: If gene_filter = TRUE, then genes with percent of dropouts larger than
+    pct_dropout_max are filtered out before clustering.
+  synonyms:
+  - -q
+  - --pct-dropout-max
+  args: !SimpleFlagArg
+    name: PCT-DROPOUT-MAX
+  optional: true
+- !Flag
+  description: Defines the minimum number of eigenvectors used for kmeans clustering
+    as a fraction of the total number of cells. Default is 0.04. See SC3 paper for
+    more details.
+  synonyms:
+  - -d
+  - --d-region-min
+  args: !SimpleFlagArg
+    name: D-REGION-MIN
+  optional: true
+- !Flag
+  description: Defines the maximum number of eigenvectors used for kmeans clustering
+    as a fraction of the total number of cells. Default is 0.07. See SC3 paper for
+    more details.
+  synonyms:
+  - -e
+  - --d-region-max
+  args: !SimpleFlagArg
+    name: D-REGION-MAX
+  optional: true
+- !Flag
+  description: Number of randomly selected training cells to be used for SVM prediction.
+    Default is NULL.
+  synonyms:
+  - -n
+  - --svm-num-cells
+  args: !SimpleFlagArg
+    name: SVM-NUM-CELLS
+  optional: true
+- !Flag
+  description: Text file with one integer per line. Will be used to create a numeric
+    vector defining indices of training cells that should be used for SVM training.
+    The default is NULL.
+  synonyms:
+  - -r
+  - --svm-train-inds
+  args: !SimpleFlagArg
+    name: SVM-TRAIN-INDS
+  optional: true
+- !Flag
+  description: Define the maximum number of cells below which SVM are not run.
+  synonyms:
+  - -m
+  - --svm-max
+  args: !SimpleFlagArg
+    name: SVM-MAX
+  optional: true
+- !Flag
+  description: Number of threads/cores to be used in the user's machine.
+  synonyms:
+  - -t
+  - --n-cores
+  args: !SimpleFlagArg
+    name: N-CORES
+  optional: true
+- !Flag
+  description: nstart parameter passed to kmeans function. Default is 1000 for up
+    to 2000 cells and 50 for more than 2000 cells.
+  synonyms:
+  - -k
+  - --kmeans-nstart
+  args: !SimpleFlagArg
+    name: KMEANS-NSTART
+  optional: true
+- !Flag
+  description: iter.max parameter passed to kmeans function. Default is 1e+09.
+  synonyms:
+  - -a
+  - --kmeans-iter-max
+  args: !SimpleFlagArg
+    name: KMEANS-ITER-MAX
+  optional: true
+- !Flag
+  description: A boolean variable which defines whether to estimate an optimal number
+    of clusters. If user has already defined the ks parameter the estimation does
+    not affect the user's paramater.
+  synonyms:
+  - -g
+  - --k_estimator
+  args: !SimpleFlagArg
+    name: K_ESTIMATOR
+  optional: true
+- !Flag
+  description: A boolean variable which defines whether to compute differentially
+    expressed genes, marker genes and cell outliers.
+  synonyms:
+  - -b
+  - --biology
+  args: !SimpleFlagArg
+    name: BIOLOGY
+  optional: true
+- !Flag
+  description: sets the seed of the random number generator. SC3 is a stochastic method,
+    so setting the rand_seed to a fixed values can be used for reproducibility purposes.
+  synonyms:
+  - -s
+  - --rand-seed
+  args: !SimpleFlagArg
+    name: RAND-SEED
+  optional: true
+- !Flag
+  description: File name in which to store serialized R object of type 'SingleCellExperiment'.
+  synonyms:
+  - -o
+  - --output-object-file
+  args: !SimpleFlagArg
+    name: OUTPUT-OBJECT-FILE
+  optional: true
+command:
+- sc3-sc3.R
+subcommands: []
+help_flag: !Flag
+  description: Show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

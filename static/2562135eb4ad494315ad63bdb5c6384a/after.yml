@@ -1,0 +1,279 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: the input dir to process automatically. If read1_file are input_dir
+    are not specified, then current dir (.) is specified to input_dir
+  synonyms:
+  - -d
+  - --input_dir
+  args: !SimpleFlagArg
+    name: INPUT_DIR
+  optional: true
+- !Flag
+  description: the folder to store good reads, by default it is named 'good', in the
+    current directory
+  synonyms:
+  - -g
+  - --good_output_folder
+  args: !SimpleFlagArg
+    name: GOOD_OUTPUT_FOLDER
+  optional: true
+- !Flag
+  description: the folder to store bad reads, by default it is named 'bad', in the
+    same folder as good_output_folder
+  synonyms:
+  - -b
+  - --bad_output_folder
+  args: !SimpleFlagArg
+    name: BAD_OUTPUT_FOLDER
+  optional: true
+- !Flag
+  description: the folder to store QC reports, by default it is named 'QC', in the
+    same folder as good_output_folder
+  synonyms:
+  - -r
+  - --report_output_folder
+  args: !SimpleFlagArg
+    name: REPORT_OUTPUT_FOLDER
+  optional: true
+- !Flag
+  description: specify the name flag of read1, default is R1, which means a file with
+    name *R1* is read1 file
+  synonyms:
+  - --read1_flag
+  args: !SimpleFlagArg
+    name: READ1_FLAG
+  optional: true
+- !Flag
+  description: specify the name flag of read2, default is R2, which means a file with
+    name *R2* is read2 file
+  synonyms:
+  - --read2_flag
+  args: !SimpleFlagArg
+    name: READ2_FLAG
+  optional: true
+- !Flag
+  description: specify the name flag of index1, default is I1, which means a file
+    with name *I1* is index2 file
+  synonyms:
+  - --index1_flag
+  args: !SimpleFlagArg
+    name: INDEX1_FLAG
+  optional: true
+- !Flag
+  description: specify the name flag of index2, default is I2, which means a file
+    with name *I2* is index2 file
+  synonyms:
+  - --index2_flag
+  args: !SimpleFlagArg
+    name: INDEX2_FLAG
+  optional: true
+- !Flag
+  description: number of bases to be trimmed in the head of read. -1 means auto detect
+  synonyms:
+  - -f
+  - --trim_front
+  args: !SimpleFlagArg
+    name: TRIM_FRONT
+  optional: true
+- !Flag
+  description: number of bases to be trimmed in the tail of read. -1 means auto detect
+  synonyms:
+  - -t
+  - --trim_tail
+  args: !SimpleFlagArg
+    name: TRIM_TAIL
+  optional: true
+- !Flag
+  description: use same trimming configuration for read1 and read2 to keep their sequence
+    length identical, default is true
+  synonyms:
+  - --trim_pair_same
+  args: !SimpleFlagArg
+    name: TRIM_PAIR_SAME
+  optional: true
+- !Flag
+  description: the quality value that a base is qualifyed. Default 15 means phred
+    base quality >=Q15 is qualified.
+  synonyms:
+  - -q
+  - --qualified_quality_phred
+  args: !SimpleFlagArg
+    name: QUALIFIED_QUALITY_PHRED
+  optional: true
+- !Flag
+  description: if exists more than unqualified_base_limit bases that quality is lower
+    than qualified quality, then this read/pair is bad. Default is 60
+  synonyms:
+  - -u
+  - --unqualified_base_limit
+  args: !SimpleFlagArg
+    name: UNQUALIFIED_BASE_LIMIT
+  optional: true
+- !Flag
+  description: if exists one polyX(polyG means GGGGGGGGG...), and its length is >=
+    poly_size_limit, then this read/pair is bad. Default is 35
+  synonyms:
+  - -p
+  - --poly_size_limit
+  args: !SimpleFlagArg
+    name: POLY_SIZE_LIMIT
+  optional: true
+- !Flag
+  description: the count of allowed mismatches when detection polyX. Default 2 means
+    allow 2 mismatches for polyX detection
+  synonyms:
+  - -a
+  - --allow_mismatch_in_poly
+  args: !SimpleFlagArg
+    name: ALLOW_MISMATCH_IN_POLY
+  optional: true
+- !Flag
+  description: if exists more than maxn bases have N, then this read/pair is bad.
+    Default is 5
+  synonyms:
+  - -n
+  - --n_base_limit
+  args: !SimpleFlagArg
+    name: N_BASE_LIMIT
+  optional: true
+- !Flag
+  description: if the trimmed read is shorter than seq_len_req, then this read/pair
+    is bad. Default is 35
+  synonyms:
+  - -s
+  - --seq_len_req
+  args: !SimpleFlagArg
+    name: SEQ_LEN_REQ
+  optional: true
+- !Flag
+  description: specify whether apply debubble algorithm to remove the reads in the
+    bubbles. Default is False
+  synonyms:
+  - --debubble
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: specify the folder to store output of debubble algorithm, default is
+    debubble
+  synonyms:
+  - --debubble_dir
+  args: !SimpleFlagArg
+    name: DEBUBBLE_DIR
+  optional: true
+- !Flag
+  description: specify whether draw the pictures or not, when use debubble or QC.
+    Default is on
+  synonyms:
+  - --draw
+  args: !SimpleFlagArg
+    name: DRAW
+  optional: true
+- !Flag
+  description: specify whether deal with barcode sequencing files, default is on,
+    which means all files with barcode_flag in filename will be treated as barcode
+    sequencing files
+  synonyms:
+  - --barcode
+  args: !SimpleFlagArg
+    name: BARCODE
+  optional: true
+- !Flag
+  description: specify the designed length of barcode
+  synonyms:
+  - --barcode_length
+  args: !SimpleFlagArg
+    name: BARCODE_LENGTH
+  optional: true
+- !Flag
+  description: specify the name flag of a barcoded file, default is barcode, which
+    means a file with name *barcode* is a barcoded file
+  synonyms:
+  - --barcode_flag
+  args: !SimpleFlagArg
+    name: BARCODE_FLAG
+  optional: true
+- !Flag
+  description: specify the verify sequence of a barcode which is adjunct to the barcode
+  synonyms:
+  - --barcode_verify
+  args: !SimpleFlagArg
+    name: BARCODE_VERIFY
+  optional: true
+- !Flag
+  description: specify whether store only overlapped bases of the good reads
+  synonyms:
+  - --store_overlap
+  args: !SimpleFlagArg
+    name: STORE_OVERLAP
+  optional: true
+- !Flag
+  description: the folder to store only overlapped bases of the good reads
+  synonyms:
+  - --overlap_output_folder
+  args: !SimpleFlagArg
+    name: OVERLAP_OUTPUT_FOLDER
+  optional: true
+- !Flag
+  description: if qconly is true, only QC result will be output, this can be much
+    fast
+  synonyms:
+  - --qc_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: sample up to qc_sample reads when do QC, 0 means sample all reads.
+    Default is 200,000
+  synonyms:
+  - --qc_sample
+  args: !SimpleFlagArg
+    name: QC_SAMPLE
+  optional: true
+- !Flag
+  description: specify the kmer length for KMER statistics for QC, default is 8
+  synonyms:
+  - --qc_kmer
+  args: !SimpleFlagArg
+    name: QC_KMER
+  optional: true
+- !Flag
+  description: disable base correction for mismatched base pairs in overlapped areas
+  synonyms:
+  - --no_correction
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: set the qual num to 0 for mismatched base pairs in overlapped areas
+    to mask them out
+  synonyms:
+  - --mask_mismatch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: disable overlap analysis (usually much faster with this option)
+  synonyms:
+  - --no_overlap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: force gzip compression for output, even the input is not gzip compressed
+  synonyms:
+  - -z
+  - --gzip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: set compression level (0~9) for gzip output, default is 2 (0 = best
+    speed, 9 = best compression).
+  synonyms:
+  - --compression
+  args: !SimpleFlagArg
+    name: COMPRESSION
+  optional: true
+command:
+- after.py
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

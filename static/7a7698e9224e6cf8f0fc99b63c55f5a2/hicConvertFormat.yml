@@ -1,0 +1,124 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'input file(s). Could be one or many files. (default: None)'
+  synonyms:
+  - --matrices
+  - -m
+  args: !RepeatFlagArg
+    name: MATRICES
+  optional: true
+- !Flag
+  description: 'File name to save the exported matrix. (default: None)'
+  synonyms:
+  - --outFileName
+  - -o
+  args: !RepeatFlagArg
+    name: OUTFILENAME
+  optional: true
+- !Flag
+  description: 'File format of the input matrix file. The following options are available:
+    `h5` (native HiCExplorer format based on hdf5 storage format), `cool`, `hic`,
+    `homer`, `hicpro`. (default: None)'
+  synonyms:
+  - --inputFormat
+  args: !ChoiceFlagArg
+    choices:
+    - h5
+    - cool
+    - hic
+    - homer
+    - hicpro
+  optional: true
+- !Flag
+  description: 'Output format. The following options are available: `h5` (native HiCExplorer
+    format based on hdf5 storage format). `cool` and `ginteractions`. (default: cool)'
+  synonyms:
+  - --outputFormat
+  args: !ChoiceFlagArg
+    choices:
+    - cool
+    - h5
+    - homer
+    - ginteractions
+    - mcool
+  optional: true
+- !Flag
+  description: 'Name of the column which stores the correction factors. The information
+    about the column names can be figured out with the tool hicInfo. Option only for
+    cool input files. (default: weight)'
+  synonyms:
+  - --correction_name
+  args: !SimpleFlagArg
+    name: CORRECTION_NAME
+  optional: true
+- !Flag
+  description: 'If set, division is applied for correction. Default is a multiplication.
+    Option only for cool input files. (default: False)'
+  synonyms:
+  - --correction_division
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Store the applied correction and do not set correction factors. Option
+    only for cool input files. (default: False)'
+  synonyms:
+  - --store_applied_correction
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Load only one chromosome. Option only for cool input files. (default:
+    None)'
+  synonyms:
+  - --chromosome
+  args: !SimpleFlagArg
+    name: CHROMOSOME
+  optional: true
+- !Flag
+  description: 'Enforce datatype of counts to integer. Option only for cool input
+    files. (default: False)'
+  synonyms:
+  - --enforce_integer
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Load only 'count' data and do not apply a correction. Option only\
+    \ for cool input files. (default: False)"
+  synonyms:
+  - --load_raw_values
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'List of resolutions that should be added. (default: None)'
+  synonyms:
+  - --resolutions
+  - -r
+  args: !RepeatFlagArg
+    name: RESOLUTIONS
+  optional: true
+- !Flag
+  description: 'Bed file(s) of hicpro file format. (default: None)'
+  synonyms:
+  - --bedFileHicpro
+  - -bf
+  args: !RepeatFlagArg
+    name: BEDFILEHICPRO
+  optional: true
+command:
+- hicConvertFormat
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit.
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

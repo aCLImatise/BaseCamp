@@ -1,0 +1,161 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: task
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: option
+  optional: true
+named:
+- !Flag
+  description: Download NCBI taxonomic information
+  synonyms:
+  - --download-taxonomy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Download partial library (TYPE = one of "archaea", "bacteria", "plasmid",  "viral",
+    "human")
+  synonyms:
+  - --download-library
+  args: !SimpleFlagArg
+    name: TYPE
+  optional: true
+- !Flag
+  description: Add FILE to library
+  synonyms:
+  - --add-to-library
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Create DB from library (requires taxonomy d/l'ed and at least one file
+    in library)
+  synonyms:
+  - --build
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Create DB from library like --build, but remove existing non-library/taxonomy
+    files before build
+  synonyms:
+  - --rebuild
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Remove unneeded files from a built database
+  synonyms:
+  - --clean
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Shrink an existing DB to have only NEW_CT k-mers
+  synonyms:
+  - --shrink
+  args: !SimpleFlagArg
+    name: NEW_CT
+  optional: true
+- !Flag
+  description: Download and create default database
+  synonyms:
+  - --standard
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Upgrade an existing older database to use scrambled minimizer ordering
+    (see README for details)
+  synonyms:
+  - --upgrade
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Kraken DB/library name (mandatory except for --help/--version)
+  synonyms:
+  - --db
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: '#                Number of threads (def: 1)'
+  synonyms:
+  - --threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: New Kraken DB name (shrink task only; mandatory for shrink task)
+  synonyms:
+  - --new-db
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: 'K-mer length in bp (build/shrink tasks only; def: 31)'
+  synonyms:
+  - --kmer-len
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Minimizer length in bp (build/shrink tasks only; def: 15)'
+  synonyms:
+  - --minimizer-len
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Pass a specific hash size argument to jellyfish when building database
+    (build task only)
+  synonyms:
+  - --jellyfish-hash-size
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: Shrink the DB before full build, making sure database and index together
+    use <= SIZE gigabytes (build task only)
+  synonyms:
+  - --max-db-size
+  args: !SimpleFlagArg
+    name: SIZE
+  optional: true
+- !Flag
+  description: Use wget for downloading instead of RSYNC; used with --download-library/--standard
+  synonyms:
+  - --use-wget
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'When shrinking, select the k-mer that is NUM positions from the end
+    of a block of k-mers (default: 1)'
+  synonyms:
+  - --shrink-block-offset
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Perform most operations on disk rather than in RAM (will slow down
+    build in most cases)
+  synonyms:
+  - --work-on-disk
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- kraken-build
+subcommands: []
+help_flag: !Flag
+  description: Print this message
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version information
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

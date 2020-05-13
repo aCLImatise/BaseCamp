@@ -1,0 +1,140 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Save the single-strand consensus sequences (mate 1) in this file (FASTA
+    format). Warning: This will be overwritten if it exists!'
+  synonyms:
+  - --sscs1
+  args: !SimpleFlagArg
+    name: sscs_1.fa
+  optional: true
+- !Flag
+  description: 'Save the single-strand consensus sequences (mate 2) in this file (FASTA
+    format). Warning: This will be overwritten if it exists!'
+  synonyms:
+  - --sscs2
+  args: !SimpleFlagArg
+    name: sscs_2.fa
+  optional: true
+- !Flag
+  description: "FASTQ quality score format. Sanger scores are assumed to begin at\
+    \ '33' (!). Default: sanger."
+  synonyms:
+  - -F
+  - --qual-format
+  args: !ChoiceFlagArg
+    choices:
+    - solexa
+    - sanger
+  optional: true
+- !Flag
+  description: Output in FASTQ instead of FASTA. You must specify the quality score
+    to give to all bases. There is no meaningful quality score we can automatically
+    give, so you will have to specify an artificial one. A good choice is 40, the
+    maximum score normally output by sequencers.
+  synonyms:
+  - --fastq-out
+  args: !SimpleFlagArg
+    name: PHRED_SCORE
+  optional: true
+- !Flag
+  description: 'The minimum number of reads (from each strand) required to form a
+    single-strand consensus. Strands with fewer reads will be skipped. Default: 3.'
+  synonyms:
+  - -r
+  - --min-reads
+  args: !SimpleFlagArg
+    name: MIN_READS
+  optional: true
+- !Flag
+  description: 'Base quality threshold. Bases below this quality will not be counted.
+    Default: 20.'
+  synonyms:
+  - -q
+  - --qual
+  args: !SimpleFlagArg
+    name: PHRED_SCORE
+  optional: true
+- !Flag
+  description: 'The fractional threshold to use when making consensus sequences. The
+    consensus base must be present in more than this fraction of the reads, or N will
+    be used as the consensus base instead. Default: 0.5'
+  synonyms:
+  - -c
+  - --cons-thres
+  args: !SimpleFlagArg
+    name: THRES
+  optional: true
+- !Flag
+  description: 'The absolute threshold to use when making consensus sequences. The
+    consensus base must be present in more than this number of reads, or N will be
+    used as the consensus base instead. Default: 0'
+  synonyms:
+  - -C
+  - --min-cons-reads
+  args: !SimpleFlagArg
+    name: MIN_CONS_READS
+  optional: true
+- !Flag
+  description: Report helpful usage data to the developer, to better understand the
+    use cases and performance of the tool. The only data which will be recorded is
+    the name and version of the tool, the size of the input data, the time and memory
+    taken to process it, and the IP address of the machine running it. Also, if the
+    script fails, it will report the name of the exception thrown and the line of
+    code it occurred in. No filenames are sent, and the only parameters reported are
+    the number of --processes and the --queue-size. All the reporting and recording
+    code is available at https://github.com/NickSto/ET.
+  synonyms:
+  - --phone-home
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Tell the script it's running on Galaxy. Currently this only affects
+    data reported when phoning home.
+  synonyms:
+  - --galaxy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If reporting usage data, mark this as a test run.
+  synonyms:
+  - --test
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of worker subprocesses to use. If 0, no subprocesses will be
+    started and everything will be done inside one process. Give "auto" to use as
+    many processes as there are CPU cores. Default: 0.'
+  synonyms:
+  - -p
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: 'How long to go accumulating responses from worker subprocesses before
+    dealing with all of them. Default: 8 * the number of worker --processes.'
+  synonyms:
+  - --queue-size
+  args: !SimpleFlagArg
+    name: QUEUE_SIZE
+  optional: true
+command:
+- make-consensi.py
+subcommands: []
+help_flag: !Flag
+  description: Print this text on usage and arguments.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print the version number and exit.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

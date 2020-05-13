@@ -1,0 +1,513 @@
+!Command
+positional: []
+named: []
+command:
+- MaskPrimers.py
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'A list of FASTA/FASTQ files containing sequences to process. (default:
+      None)'
+    synonyms:
+    - -s
+    args: !RepeatFlagArg
+      name: SEQ_FILES
+    optional: true
+  - !Flag
+    description: 'Explicit output file name(s). Note, this argument cannot be used
+      with the --failed, --outdir, or --outname arguments. If unspecified, then the
+      output filename will be based on the input filename(s). (default: None)'
+    synonyms:
+    - -o
+    args: !RepeatFlagArg
+      name: OUT_FILES
+    optional: true
+  - !Flag
+    description: 'Specify to changes the output directory to the location specified.
+      The input file directory is used if this is not specified. (default: None)'
+    synonyms:
+    - --outdir
+    args: !SimpleFlagArg
+      name: OUT_DIR
+    optional: true
+  - !Flag
+    description: 'Changes the prefix of the successfully processed output file to
+      the string specified. May not be specified with multiple input files. (default:
+      None)'
+    synonyms:
+    - --outname
+    args: !SimpleFlagArg
+      name: OUT_NAME
+    optional: true
+  - !Flag
+    description: 'Specify to write verbose logging to a file. May not be specified
+      with multiple input files. (default: None)'
+    synonyms:
+    - --log
+    args: !SimpleFlagArg
+      name: LOG_FILE
+    optional: true
+  - !Flag
+    description: 'If specified create files containing records that fail processing.
+      (default: False)'
+    synonyms:
+    - --failed
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Specify to force output as FASTA rather than FASTQ. (default: None)'
+    synonyms:
+    - --fasta
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "DELIMITER DELIMITER A list of the three delimiters that separate\
+      \ annotation blocks, field names and values, and values within a field, respectively.\
+      \ (default: ('|', '=', ','))"
+    synonyms:
+    - --delim
+    args: !SimpleFlagArg
+      name: DELIMITER
+    optional: true
+  - !Flag
+    description: 'The number of simultaneous computational processes to execute (CPU
+      cores to utilized). (default: 8)'
+    synonyms:
+    - --nproc
+    args: !SimpleFlagArg
+      name: NPROC
+    optional: true
+  - !Flag
+    description: 'A FASTA file containing primer sequences. (default: None)'
+    synonyms:
+    - -p
+    args: !SimpleFlagArg
+      name: PRIMER_FILE
+    optional: true
+  - !Flag
+    description: 'Maximum allowable error rate. (default: 0.2)'
+    synonyms:
+    - --maxerror
+    args: !SimpleFlagArg
+      name: MAX_ERROR
+    optional: true
+  - !Flag
+    description: 'Length of the sequence window to scan for primers. (default: 50)'
+    synonyms:
+    - --maxlen
+    args: !SimpleFlagArg
+      name: MAX_LEN
+    optional: true
+  - !Flag
+    description: 'GAP_PENALTY A list of two positive values defining the gap open
+      and gap extension penalties for aligning the primers. Note: the error rate is
+      calculated as the percentage of mismatches from the primer sequence with gap
+      penalties reducing the match count accordingly; this may lead to error rates
+      that differ from strict mismatch percentage when gaps are present in the alignment.
+      (default: (1, 1))'
+    synonyms:
+    - --gap
+    args: !SimpleFlagArg
+      name: GAP_PENALTY
+    optional: true
+  - !Flag
+    description: 'Specify to match the tail-end of the sequence against the reverse
+      complement of the primers. This also reverses the behavior of the --maxlen argument,
+      such that the search window begins at the tail-end of the sequence. (default:
+      False)'
+    synonyms:
+    - --revpr
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Specify to prevent checking of sample reverse complement sequences.
+      (default: False)'
+    synonyms:
+    - --skiprc
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Specifies the action to take with the primer sequence. The "cut"
+      mode will remove both the primer region and the preceding sequence. The "mask"
+      mode will replace the primer region with Ns and remove the preceding sequence.
+      The "trim" mode will remove the region preceding the primer, but leave the primer
+      region intact. The "tag" mode will leave the input sequence unmodified. (default:
+      mask)'
+    synonyms:
+    - --mode
+    args: !ChoiceFlagArg
+      choices:
+      - cut
+      - mask
+      - trim
+      - tag
+    optional: true
+  - !Flag
+    description: 'Specify to annotate reads sequences with barcode sequences (unique
+      molecular identifiers) found preceding the primer. (default: False)'
+    synonyms:
+    - --barcode
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Name of the barcode annotation field. (default: BARCODE)'
+    synonyms:
+    - --bf
+    args: !SimpleFlagArg
+      name: BARCODE_FIELD
+    optional: true
+  - !Flag
+    description: 'Name of the annotation field containing the primer name. (default:
+      PRIMER)'
+    synonyms:
+    - --pf
+    args: !SimpleFlagArg
+      name: PRIMER_FIELD
+    optional: true
+  command:
+  - MaskPrimers.py
+  - align
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: show program's version number and exit
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'A list of FASTA/FASTQ files containing sequences to process. (default:
+      None)'
+    synonyms:
+    - -s
+    args: !RepeatFlagArg
+      name: SEQ_FILES
+    optional: true
+  - !Flag
+    description: 'Explicit output file name(s). Note, this argument cannot be used
+      with the --failed, --outdir, or --outname arguments. If unspecified, then the
+      output filename will be based on the input filename(s). (default: None)'
+    synonyms:
+    - -o
+    args: !RepeatFlagArg
+      name: OUT_FILES
+    optional: true
+  - !Flag
+    description: 'Specify to changes the output directory to the location specified.
+      The input file directory is used if this is not specified. (default: None)'
+    synonyms:
+    - --outdir
+    args: !SimpleFlagArg
+      name: OUT_DIR
+    optional: true
+  - !Flag
+    description: 'Changes the prefix of the successfully processed output file to
+      the string specified. May not be specified with multiple input files. (default:
+      None)'
+    synonyms:
+    - --outname
+    args: !SimpleFlagArg
+      name: OUT_NAME
+    optional: true
+  - !Flag
+    description: 'Specify to write verbose logging to a file. May not be specified
+      with multiple input files. (default: None)'
+    synonyms:
+    - --log
+    args: !SimpleFlagArg
+      name: LOG_FILE
+    optional: true
+  - !Flag
+    description: 'If specified create files containing records that fail processing.
+      (default: False)'
+    synonyms:
+    - --failed
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Specify to force output as FASTA rather than FASTQ. (default: None)'
+    synonyms:
+    - --fasta
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "DELIMITER DELIMITER A list of the three delimiters that separate\
+      \ annotation blocks, field names and values, and values within a field, respectively.\
+      \ (default: ('|', '=', ','))"
+    synonyms:
+    - --delim
+    args: !SimpleFlagArg
+      name: DELIMITER
+    optional: true
+  - !Flag
+    description: 'The number of simultaneous computational processes to execute (CPU
+      cores to utilized). (default: 8)'
+    synonyms:
+    - --nproc
+    args: !SimpleFlagArg
+      name: NPROC
+    optional: true
+  - !Flag
+    description: 'A FASTA file containing primer sequences. (default: None)'
+    synonyms:
+    - -p
+    args: !SimpleFlagArg
+      name: PRIMER_FILE
+    optional: true
+  - !Flag
+    description: 'The starting position of the primer. (default: 0)'
+    synonyms:
+    - --start
+    args: !SimpleFlagArg
+      name: START
+    optional: true
+  - !Flag
+    description: 'Maximum allowable error rate. (default: 0.2)'
+    synonyms:
+    - --maxerror
+    args: !SimpleFlagArg
+      name: MAX_ERROR
+    optional: true
+  - !Flag
+    description: 'Specify to match the tail-end of the sequence against the reverse
+      complement of the primers. This also reverses the behavior of the --start argument,
+      such that start position is relative to the tail-end of the sequence. (default:
+      False)'
+    synonyms:
+    - --revpr
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Specifies the action to take with the primer sequence. The "cut"
+      mode will remove both the primer region and the preceding sequence. The "mask"
+      mode will replace the primer region with Ns and remove the preceding sequence.
+      The "trim" mode will remove the region preceding the primer, but leave the primer
+      region intact. The "tag" mode will leave the input sequence unmodified. (default:
+      mask)'
+    synonyms:
+    - --mode
+    args: !ChoiceFlagArg
+      choices:
+      - cut
+      - mask
+      - trim
+      - tag
+    optional: true
+  - !Flag
+    description: 'Specify to annotate reads sequences with barcode sequences (unique
+      molecular identifiers) found preceding the primer. (default: False)'
+    synonyms:
+    - --barcode
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Name of the barcode annotation field. (default: BARCODE)'
+    synonyms:
+    - --bf
+    args: !SimpleFlagArg
+      name: BARCODE_FIELD
+    optional: true
+  - !Flag
+    description: 'Name of the annotation field containing the primer name. (default:
+      PRIMER)'
+    synonyms:
+    - --pf
+    args: !SimpleFlagArg
+      name: PRIMER_FIELD
+    optional: true
+  command:
+  - MaskPrimers.py
+  - score
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: show program's version number and exit
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'A list of FASTA/FASTQ files containing sequences to process. (default:
+      None)'
+    synonyms:
+    - -s
+    args: !RepeatFlagArg
+      name: SEQ_FILES
+    optional: true
+  - !Flag
+    description: 'Explicit output file name(s). Note, this argument cannot be used
+      with the --failed, --outdir, or --outname arguments. If unspecified, then the
+      output filename will be based on the input filename(s). (default: None)'
+    synonyms:
+    - -o
+    args: !RepeatFlagArg
+      name: OUT_FILES
+    optional: true
+  - !Flag
+    description: 'Specify to changes the output directory to the location specified.
+      The input file directory is used if this is not specified. (default: None)'
+    synonyms:
+    - --outdir
+    args: !SimpleFlagArg
+      name: OUT_DIR
+    optional: true
+  - !Flag
+    description: 'Changes the prefix of the successfully processed output file to
+      the string specified. May not be specified with multiple input files. (default:
+      None)'
+    synonyms:
+    - --outname
+    args: !SimpleFlagArg
+      name: OUT_NAME
+    optional: true
+  - !Flag
+    description: 'Specify to write verbose logging to a file. May not be specified
+      with multiple input files. (default: None)'
+    synonyms:
+    - --log
+    args: !SimpleFlagArg
+      name: LOG_FILE
+    optional: true
+  - !Flag
+    description: 'If specified create files containing records that fail processing.
+      (default: False)'
+    synonyms:
+    - --failed
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Specify to force output as FASTA rather than FASTQ. (default: None)'
+    synonyms:
+    - --fasta
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "DELIMITER DELIMITER A list of the three delimiters that separate\
+      \ annotation blocks, field names and values, and values within a field, respectively.\
+      \ (default: ('|', '=', ','))"
+    synonyms:
+    - --delim
+    args: !SimpleFlagArg
+      name: DELIMITER
+    optional: true
+  - !Flag
+    description: 'The number of simultaneous computational processes to execute (CPU
+      cores to utilized). (default: 8)'
+    synonyms:
+    - --nproc
+    args: !SimpleFlagArg
+      name: NPROC
+    optional: true
+  - !Flag
+    description: 'The starting position of the sequence region to extract. (default:
+      0)'
+    synonyms:
+    - --start
+    args: !SimpleFlagArg
+      name: START
+    optional: true
+  - !Flag
+    description: 'The length of the sequence to extract. (default: None)'
+    synonyms:
+    - --len
+    args: !SimpleFlagArg
+      name: LENGTH
+    optional: true
+  - !Flag
+    description: 'Specify to extract from the tail end of the sequence with the start
+      position relative to the end of the sequence. (default: False)'
+    synonyms:
+    - --revpr
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Specifies the action to take with the sequence region. The "cut"
+      mode will remove the region. The "mask" mode will replace the specified region
+      with Ns. The "trim" mode will remove the sequence preceding the specified region,
+      but leave the region intact. The "tag" mode will leave the input sequence unmodified.
+      (default: mask)'
+    synonyms:
+    - --mode
+    args: !ChoiceFlagArg
+      choices:
+      - cut
+      - mask
+      - trim
+      - tag
+    optional: true
+  - !Flag
+    description: 'Specify to remove the sequence preceding the extracted region and
+      annotate the read with that sequence. (default: False)'
+    synonyms:
+    - --barcode
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Name of the barcode annotation field. (default: BARCODE)'
+    synonyms:
+    - --bf
+    args: !SimpleFlagArg
+      name: BARCODE_FIELD
+    optional: true
+  - !Flag
+    description: 'Name of the annotation field containing the extracted sequence region.
+      (default: PRIMER)'
+    synonyms:
+    - --pf
+    args: !SimpleFlagArg
+      name: PRIMER_FIELD
+    optional: true
+  command:
+  - MaskPrimers.py
+  - extract
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: show program's version number and exit
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

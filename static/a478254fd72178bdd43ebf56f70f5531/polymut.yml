@@ -1,0 +1,83 @@
+!Command
+positional:
+- !Positional
+  description: The file on which to operate
+  position: 0
+  name: BAMFILE
+  optional: false
+named:
+- !Flag
+  description: ID, --contig REFERENCE ID Focus on a subset of references in the BAM
+    file. Can be a list of references separated by commas or a FASTA file (the IDs
+    are used to subset)
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: REFERENCE
+  optional: true
+- !Flag
+  description: 'If set unmapped (FUNMAP), secondary (FSECONDARY), qc- fail (FQCFAIL)
+    and duplicate (FDUP) are excluded. If unset ALL reads are considered (bedtools
+    genomecov style). Default: unset'
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Sort and index the file
+  synonyms:
+  - --sortindex
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Minimum Reference Length for a reference to be considered. Default:
+    0'
+  synonyms:
+  - --minlen
+  args: !SimpleFlagArg
+    name: MINLEN
+  optional: true
+- !Flag
+  description: 'Minimum base quality. Bases with quality score lower than this will
+    be discarded. This is performed BEFORE --mincov. Default: 30'
+  synonyms:
+  - --minqual
+  args: !SimpleFlagArg
+    name: MINQUAL
+  optional: true
+- !Flag
+  description: Minimum position coverage to perform the polymorphism calculation.
+    Position with a lower depth of coverage will be discarded (i.e. considered as
+    zero-coverage positions). This is calculated AFTER --minqual. Default:1
+  synonyms:
+  - --mincov
+  args: !SimpleFlagArg
+    name: MINCOV
+  optional: true
+- !Flag
+  description: 'Cutoff for degree of `allele dominance` for a position to be considered
+    polymorphic. Default: 0.8'
+  synonyms:
+  - --dominant_frq_thrsh
+  args: !SimpleFlagArg
+    name: DOMINANT_FRQ_THRSH
+  optional: true
+- !Flag
+  description: GFF file used to extract protein-coding genes
+  synonyms:
+  - --gff_file
+  args: !SimpleFlagArg
+    name: GFF_FILE
+  optional: true
+command:
+- polymut.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

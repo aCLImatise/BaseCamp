@@ -1,0 +1,272 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: file1.bw
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: results.npz
+  optional: true
+command:
+- multiBigwigSummary
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: file2.bw
+    optional: false
+  named:
+  - !Flag
+    description: 'FILE2 [FILE1 FILE2 ...], -b FILE1 FILE2 [FILE1 FILE2 ...] List of
+      bigWig files, separated by spaces. (default: None)'
+    synonyms:
+    - --bwfiles
+    args: !SimpleFlagArg
+      name: FILE1
+    optional: true
+  - !Flag
+    description: 'File name to save the compressed matrix file (npz format) needed
+      by the "plotPCA" and "plotCorrelation" tools. (default: None)'
+    synonyms:
+    - --outFileName
+    - -out
+    - -o
+    args: !SimpleFlagArg
+      name: OUTFILENAME
+    optional: true
+  - !Flag
+    description: 'Number of processors to use. Type "max/2" to use half the maximum
+      number of processors or "max" to use all available processors. (Default: 1)'
+    synonyms:
+    - --numberOfProcessors
+    - -p
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'Set to see processing messages. (default: False)'
+    synonyms:
+    - --verbose
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Save average scores per region for each bigWig file to a single
+      tab-delimited file. (default: None)'
+    synonyms:
+    - --outRawCounts
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: 'For remote files bedgraph/wiggle files hosted on deepBlue, this
+      specifies the server URL. The default is "http://deepblue.mpi-inf.mpg.de/xmlrpc",
+      which should not be changed without good reason. (default: http://deepblue.mpi-inf.mpg.de/xmlrpc)'
+    synonyms:
+    - --deepBlueURL
+    args: !SimpleFlagArg
+      name: DEEPBLUEURL
+    optional: true
+  - !Flag
+    description: 'For remote files bedgraph/wiggle files hosted on deepBlue, this
+      specifies the user key to use for access. The default is "anonymous_key", which
+      suffices for public datasets. If you need access to a restricted access/private
+      dataset, then request a key from deepBlue and specify it here. (default: anonymous_key)'
+    synonyms:
+    - --userKey
+    args: !SimpleFlagArg
+      name: USERKEY
+    optional: true
+  - !Flag
+    description: 'If specified, temporary files from preloading datasets from deepBlue
+      will be written here (note, this directory must exist). If not specified, where
+      ever temporary files would normally be written on your system is used. (default:
+      None)'
+    synonyms:
+    - --deepBlueTempDir
+    args: !SimpleFlagArg
+      name: DEEPBLUETEMPDIR
+    optional: true
+  - !Flag
+    description: 'If specified, temporary bigWig files from preloading deepBlue datasets
+      are not deleted. A message will be printed noting where these files are and
+      what sample they correspond to. These can then be used if you wish to analyse
+      the same sample with the same regions again. (default: False)'
+    synonyms:
+    - --deepBlueKeepTemp
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - multiBigwigSummary
+  - bins
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: file2.bw
+    optional: false
+  named:
+  - !Flag
+    description: 'FILE2 [FILE1 FILE2 ...], -b FILE1 FILE2 [FILE1 FILE2 ...] List of
+      bigWig files, separated by spaces. (default: None)'
+    synonyms:
+    - --bwfiles
+    args: !SimpleFlagArg
+      name: FILE1
+    optional: true
+  - !Flag
+    description: 'File name to save the compressed matrix file (npz format) needed
+      by the "plotPCA" and "plotCorrelation" tools. (default: None)'
+    synonyms:
+    - --outFileName
+    - -out
+    - -o
+    args: !SimpleFlagArg
+      name: OUTFILENAME
+    optional: true
+  - !Flag
+    description: 'file2.bed [file1.bed file2.bed ...] Limits the analysis to the regions
+      specified in this file. (default: None)'
+    synonyms:
+    - --BED
+    args: !SimpleFlagArg
+      name: file1.bed
+    optional: true
+  - !Flag
+    description: 'Number of processors to use. Type "max/2" to use half the maximum
+      number of processors or "max" to use all available processors. (Default: 1)'
+    synonyms:
+    - --numberOfProcessors
+    - -p
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'Set to see processing messages. (default: False)'
+    synonyms:
+    - --verbose
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Save average scores per region for each bigWig file to a single
+      tab-delimited file. (default: None)'
+    synonyms:
+    - --outRawCounts
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: 'When either a BED12 or GTF file are used to provide regions, perform
+      the computation on the merged exons, rather than using the genomic interval
+      defined by the 5-prime and 3-prime most transcript bound (i.e., columns 2 and
+      3 of a BED file). If a BED3 or BED6 file is used as input, then columns 2 and
+      3 are used as an exon. (Default: False)'
+    synonyms:
+    - --metagene
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'When a GTF file is used to provide regions, only entries with this
+      value as their feature (column 3) will be processed as transcripts. (Default:
+      transcript)'
+    synonyms:
+    - --transcriptID
+    args: !SimpleFlagArg
+      name: TRANSCRIPTID
+    optional: true
+  - !Flag
+    description: 'When a GTF file is used to provide regions, only entries with this
+      value as their feature (column 3) will be processed as exons. CDS would be another
+      common value for this. (Default: exon)'
+    synonyms:
+    - --exonID
+    args: !SimpleFlagArg
+      name: EXONID
+    optional: true
+  - !Flag
+    description: "Each region has an ID (e.g., ACTB) assigned to it, which for BED\
+      \ files is either column 4 (if it exists) or the interval bounds. For GTF files\
+      \ this is instead stored in the last column as a key:value pair (e.g., as 'transcript_id\
+      \ \"ACTB\"', for a key of transcript_id and a value of ACTB). In some cases\
+      \ it can be convenient to use a different identifier. To do so, set this to\
+      \ the desired key. (Default: transcript_id)"
+    synonyms:
+    - --transcript_id_designator
+    args: !SimpleFlagArg
+      name: TRANSCRIPT_ID_DESIGNATOR
+    optional: true
+  - !Flag
+    description: 'For remote files bedgraph/wiggle files hosted on deepBlue, this
+      specifies the server URL. The default is "http://deepblue.mpi-inf.mpg.de/xmlrpc",
+      which should not be changed without good reason. (default: http://deepblue.mpi-inf.mpg.de/xmlrpc)'
+    synonyms:
+    - --deepBlueURL
+    args: !SimpleFlagArg
+      name: DEEPBLUEURL
+    optional: true
+  - !Flag
+    description: 'For remote files bedgraph/wiggle files hosted on deepBlue, this
+      specifies the user key to use for access. The default is "anonymous_key", which
+      suffices for public datasets. If you need access to a restricted access/private
+      dataset, then request a key from deepBlue and specify it here. (default: anonymous_key)'
+    synonyms:
+    - --userKey
+    args: !SimpleFlagArg
+      name: USERKEY
+    optional: true
+  - !Flag
+    description: 'If specified, temporary files from preloading datasets from deepBlue
+      will be written here (note, this directory must exist). If not specified, where
+      ever temporary files would normally be written on your system is used. (default:
+      None)'
+    synonyms:
+    - --deepBlueTempDir
+    args: !SimpleFlagArg
+      name: DEEPBLUETEMPDIR
+    optional: true
+  - !Flag
+    description: 'If specified, temporary bigWig files from preloading deepBlue datasets
+      are not deleted. A message will be printed noting where these files are and
+      what sample they correspond to. These can then be used if you wish to analyse
+      the same sample with the same regions again. (default: False)'
+    synonyms:
+    - --deepBlueKeepTemp
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - multiBigwigSummary
+  - BED-file
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

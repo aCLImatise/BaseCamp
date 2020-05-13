@@ -1,0 +1,132 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'alignment mode [0] 0: global, 1: local, 2: extension'
+  synonyms:
+  - -m
+  - --aln-mode
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: INT       match score [2]
+  synonyms:
+  - -M
+  - --match
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: mismatch penalty [4]
+  synonyms:
+  - -X
+  - --mismatch
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: (,INT) gap opening penalty (O1,O2) [4,24]
+  synonyms:
+  - -O
+  - --gap-open
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'INT(,INT) gap extension penalty (E1,E2) [2,1] abpoa provides 3 gap
+    penalty modes, penalty of a g-long gap: - convex (default): min{O1+g*E1, O2+g*E2}
+    - affine (set O2 as 0): O1+g*E1 - linear (set O1 as 0): g*E1'
+  synonyms:
+  - -E
+  - --gap-ext
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: INT       first part of extra band [10] set b as < 0 to disable adaptive
+    banded DP
+  synonyms:
+  - -b
+  - --extra-b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'FLOAT     second part of extra band: f * L, L is the length of input
+    sequence [0.01] width of extra bind is b + f * L'
+  synonyms:
+  - -f
+  - --extra-f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: input file is a list of sequence file [False] each line is one sequence
+    file
+  synonyms:
+  - -l
+  - --in-list
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: FILE      ouput to FILE [stdout]
+  synonyms:
+  - -o
+  - --output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'INT       output result mode [0] - 0: consensus (FASTA format) - 1:
+    MSA (PIR format) - 2: both 0 & 1'
+  synonyms:
+  - -r
+  - --result
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: FILE      dump partial order graph to FILE (.pdf/.png) [Null]
+  synonyms:
+  - -g
+  - --out-pog
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'algorithm for consensus calling [0] - 0: heaviest bundling - 1: heaviest
+    in column'
+  synonyms:
+  - -a
+  - --cons-alg
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: input is diploid [False] -a/--cons-alg is forced to be 1 when input
+    is diploid
+  synonyms:
+  - -d
+  - --diploid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: min frequency of each consensus for diploid input [0.30]
+  synonyms:
+  - -q
+  - --min-freq
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+command:
+- abpoa
+subcommands: []
+help_flag: !Flag
+  description: print this help usage information
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show version number
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

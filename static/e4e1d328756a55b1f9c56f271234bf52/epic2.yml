@@ -1,0 +1,208 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Treatment (pull-down) file(s) in one of these formats: bed, bedpe,
+    bed.gz, bedpe.gz or (single-end) bam, sam. Mixing file formats is allowed.'
+  synonyms:
+  - --treatment
+  - -t
+  args: !RepeatFlagArg
+    name: TREATMENT
+  optional: true
+- !Flag
+  description: 'Control (input) file(s) in one of these formats: bed, bedpe, bed.gz,
+    bedpe.gz or (single-end) bam, sam. Mixing file formats is allowed.'
+  synonyms:
+  - --control
+  - -c
+  args: !RepeatFlagArg
+    name: CONTROL
+  optional: true
+- !Flag
+  description: 'Which genome to analyze. Default: hg19. If --chromsizes and --egf
+    flag is given, --genome is not required.'
+  synonyms:
+  - --genome
+  - -gn
+  args: !SimpleFlagArg
+    name: GENOME
+  optional: true
+- !Flag
+  description: 'Keep reads mapping to the same position on the same strand within
+    a library. Default: False.'
+  synonyms:
+  - --keep-duplicates
+  - -kd
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the original SICER algorithm, without the epic2 fix. This will
+    use all reads in your files to compute the p-values, including those falling outside
+    the genome boundaries.
+  synonyms:
+  - --original-algorithm
+  - -oa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Size of the windows to scan the genome. BIN-SIZE is the smallest possible
+    island. Default 200.
+  synonyms:
+  - --bin-size
+  - -bin
+  args: !SimpleFlagArg
+    name: BIN_SIZE
+  optional: true
+- !Flag
+  description: 'This number is multiplied by the window size to determine the number
+    of gaps (ineligible windows) allowed between two eligible windows. Must be an
+    integer. Default: 3.'
+  synonyms:
+  - --gaps-allowed
+  - -g
+  args: !SimpleFlagArg
+    name: GAPS_ALLOWED
+  optional: true
+- !Flag
+  description: (Single end reads only) Size of the sequenced fragment. Each read is
+    extended half the fragment size from the 5' end. Default 150 (i.e. extend by 75).
+  synonyms:
+  - --fragment-size
+  - -fs
+  args: !SimpleFlagArg
+    name: FRAGMENT_SIZE
+  optional: true
+- !Flag
+  description: Remove all islands with an FDR above cutoff. Default 0.05.
+  synonyms:
+  - --false-discovery-rate-cutoff
+  - -fdr
+  args: !SimpleFlagArg
+    name: FALSE_DISCOVERY_RATE_CUTOFF
+  optional: true
+- !Flag
+  description: Use a different effective genome fraction than the one included in
+    epic2. The default value depends on the genome and readlength, but is a number
+    between 0 and 1.
+  synonyms:
+  - --effective-genome-fraction
+  - -egf
+  args: !SimpleFlagArg
+    name: EFFECTIVE_GENOME_FRACTION
+  optional: true
+- !Flag
+  description: 'Set the chromosome lengths yourself in a file with two columns: chromosome
+    names and sizes. Useful to analyze custom genomes, assemblies or simulated data.
+    Only chromosomes included in the file will be analyzed.'
+  synonyms:
+  - --chromsizes
+  - -cs
+  args: !SimpleFlagArg
+    name: CHROMSIZES
+  optional: true
+- !Flag
+  description: 'The E-value controls the genome-wide error rate of identified islands
+    under the random background assumption. Should be used when not using a control
+    library. Default: 1000.'
+  synonyms:
+  - --e-value
+  - -e
+  args: !SimpleFlagArg
+    name: E_VALUE
+  optional: true
+- !Flag
+  description: (bam only.) Keep reads with these bits set in flag. Same as `samtools
+    view -f`. Default 0
+  synonyms:
+  - --required-flag
+  - -f
+  args: !SimpleFlagArg
+    name: REQUIRED_FLAG
+  optional: true
+- !Flag
+  description: '(bam only.) Discard reads with these bits set in flag. Same as `samtools
+    view -F`. Default 1540 (hex: 0x604). See https://broadinstitute.github.io/picard/explain-
+    flags.html for more info.'
+  synonyms:
+  - --filter-flag
+  - -F
+  args: !SimpleFlagArg
+    name: FILTER_FLAG
+  optional: true
+- !Flag
+  description: (bam only.) Discard reads with mapping quality lower than this. Default
+    5.
+  synonyms:
+  - --mapq
+  - -m
+  args: !SimpleFlagArg
+    name: MAPQ
+  optional: true
+- !Flag
+  description: (bam only.) Autodetect chromosomes from bam file. Use with --discard-chromosomes
+    flag to avoid non-canonical chromosomes.
+  synonyms:
+  - --autodetect-chroms
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (bam only.) Discard reads from chromosomes matching this pattern. Default
+    '_'. Note that if you are not interested in the results from non-canonical chromosomes,
+    you should ensure they are removed with this flag, otherwise they will make the
+    statistical analysis too stringent.
+  synonyms:
+  - --discard-chromosomes-pattern
+  - -d
+  args: !SimpleFlagArg
+    name: DISCARD_CHROMOSOMES_PATTERN
+  optional: true
+- !Flag
+  description: 'File to write results to. Default: stdout.'
+  synonyms:
+  - --output
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Use the original SICER way of computing the statistics. Like SICER
+    itself, this method raises an error on large datasets. Only included for debugging-
+    purposes.
+  synonyms:
+  - --original-statistics
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not write output messages to stderr.
+  synonyms:
+  - --quiet
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show the paths of the example data and an example command.
+  synonyms:
+  - --example
+  - -ex
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- epic2
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true

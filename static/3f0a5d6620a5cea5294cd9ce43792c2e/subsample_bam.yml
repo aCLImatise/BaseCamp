@@ -1,0 +1,148 @@
+!Command
+positional:
+- !Positional
+  description: input bam file.
+  position: 0
+  name: bam
+  optional: false
+- !Positional
+  description: Target depth.
+  position: 1
+  name: depth
+  optional: false
+named:
+- !Flag
+  description: 'Output prefix (default: sub_sampled)'
+  synonyms:
+  - -o
+  - --output_prefix
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+  optional: true
+- !Flag
+  description: 'Only process given regions. (default: None)'
+  synonyms:
+  - -r
+  - --regions
+  args: !RepeatFlagArg
+    name: REGIONS
+  optional: true
+- !Flag
+  description: 'Stride in genomic coordinates for depth profile. (default: 1000)'
+  synonyms:
+  - -p
+  - --profile
+  args: !SimpleFlagArg
+    name: PROFILE
+  optional: true
+- !Flag
+  description: 'Sample only forward or reverse reads. (default: None)'
+  synonyms:
+  - -O
+  - --orientation
+  args: !ChoiceFlagArg
+    choices:
+    - fwd
+    - rev
+  optional: true
+- !Flag
+  description: 'Number of threads to use. (default: -1)'
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: 'Filter reads by mean qscore. (default: None)'
+  synonyms:
+  - -q
+  - --quality
+  args: !SimpleFlagArg
+    name: QUALITY
+  optional: true
+- !Flag
+  description: 'Filter reads by accuracy. (default: None)'
+  synonyms:
+  - -a
+  - --accuracy
+  args: !SimpleFlagArg
+    name: ACCURACY
+  optional: true
+- !Flag
+  description: 'Filter reads by coverage (what fraction of the read aligns). (default:
+    None)'
+  synonyms:
+  - -c
+  - --coverage
+  args: !SimpleFlagArg
+    name: COVERAGE
+  optional: true
+- !Flag
+  description: 'Filter reads by read length. (default: None)'
+  synonyms:
+  - -l
+  - --length
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: 'Exit with an error if any region has insufficient coverage. (default:
+    False)'
+  synonyms:
+  - --any_fail
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Exit with an error if all regions have insufficient coverage. (default:
+    False)'
+  synonyms:
+  - --all_fail
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Maximum iterations with no change in median coverage before aborting.
+    (default: 5)'
+  synonyms:
+  - -x
+  - --patience
+  args: !SimpleFlagArg
+    name: PATIENCE
+  optional: true
+- !Flag
+  description: 'Stride in genomic coordinates when searching for new reads. Smaller
+    can lead to more compact pileup. (default: 1000)'
+  synonyms:
+  - -s
+  - --stride
+  args: !SimpleFlagArg
+    name: STRIDE
+  optional: true
+- !Flag
+  description: 'Activate proportional sampling, thus keeping depth variations of the
+    pileup. (default: False)'
+  synonyms:
+  - -P
+  - --proportional
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Random seed for proportional downsampling of reads. (default: None)'
+  synonyms:
+  - -S
+  - --seed
+  args: !SimpleFlagArg
+    name: SEED
+  optional: true
+command:
+- subsample_bam
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

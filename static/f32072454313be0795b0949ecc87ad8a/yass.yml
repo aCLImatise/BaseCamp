@@ -1,0 +1,206 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: '0 : Display alignment positions (kept for compatibility) 1 : Display
+    alignment positions + alignments + stats (default) 2 : Display blast-like tabular
+    output 3 : Display light tabular output (better for post-processing) 4 : Display
+    BED file output 5 : Display PSL file output'
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: '0 : process forward (query) strand 1 : process Reverse complement
+    strand 2 : process both forward and Reverse complement strands (default)'
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Output file
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: mask Lowercase regions (seed algorithm only)
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Sort according to 0 : alignment scores 1 : entropy 2 : mutual information
+    (experimental) 3 : both entropy and score 4 : positions on the 1st file 5 : positions
+    on the 2nd file 6 : alignment % id 7 : 1st file sequence % id 8 : 2nd file sequence
+    % id 10-18 : (0-8) + sort by first fasta chunks first 20-28 : (0-8) + sort by
+    second fasta chunks first 30-38 : (0-8) + sort by both first/second chunks first
+    40-48 : (10-18) + sort chunk results with (0-8) criterion (first fasta file) 50-58
+    : (20-28) + sort chunk results with (0-8) criterion (second fasta file) 60-68
+    : (30-38) + sort chunk results with (0-8) criterion (first fasta file) 70-75 :
+    (30-38) + sort chunk results with (0-8) criterion (second fasta file) 80-85 :
+    (30-38) + sort chunk results with (0-8) criterion (both fasta files)'
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: display the current Version
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'select a scoring Matrix (default 3): [Match,Transversion,Transition],(Gopen,Gext)
+    0 : [  1, -3, -2],( -8, -2)   1 : [  2, -3, -2],(-12, -4) 2 : [  3, -3, -2],(-16,
+    -4)   3 : [  5, -4, -3],(-16, -4) 4 : [  5, -4, -2],(-16, -4)'
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: '[,<int>[,<int>[,<int>]]] reset match/mismatch/transistion/other Costs
+    (penalties) you can also give the 16 values of matrix (ACGT order)'
+  synonyms:
+  - -C
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ',<int> reset Gap opening/extension penalties'
+  synonyms:
+  - -G
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ',<real> reset Lambda and K parameters of Gumbel law'
+  synonyms:
+  - -L
+  args: !SimpleFlagArg
+    name: real
+  optional: true
+- !Flag
+  description: Xdrop threshold score (default 25)
+  synonyms:
+  - -X
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: E-value threshold (default 10)
+  synonyms:
+  - -E
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'low complexity filter : minimal allowed Entropy of trinucleotide distribution
+    ranging between 0 (no filter) and 6 (default 2.80)'
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: real
+  optional: true
+- !Flag
+  description: limit number of Output alignments (default 1000000)
+  synonyms:
+  - -O
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Select sequence from the first multi-fasta file (default 0) * use 0
+    to select the full first multi-fasta file
+  synonyms:
+  - -S
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: forbid aligning too close regions (e.g. Tandem repeats) valid for single
+    sequence comparison only (default 16 bp)
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "seed Pattern(s) * use '#' for match * use '@' for match or transition\
+    \ * use '-' or '_' for joker * use ',' for seed separator (max: 32 seeds) - example\
+    \ with one seed : yass file.fas -p  \"#@#--##--#-##@#\" - example with two complementary\
+    \ seeds : yass file.fas -p \"##-#-#@#-##@-##,##@#--@--##-#--###\" (default  \"\
+    ###-#@-##@##,###--#-#--#-###\")"
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: str
+  optional: true
+- !Flag
+  description: 'seed hit Criterion : 1 or 2 seeds to consider a hit (default 2)'
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Trim out over-represented seeds codes ranging between 0.0 (no trim)
+    and +inf (default 0.001)
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: real
+  optional: true
+- !Flag
+  description: statistical tolerance Alpha (%) (default 5%)
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Indel rate (%)                  (default 8%)
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Mutation rate (%)               (default 25%)
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ',<int> Window <min,max> range for post-processing and grouping alignments
+    (default <64,65536>)'
+  synonyms:
+  - -W
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Window size coefficient for post-processing and grouping alignments
+    (default 16) NOTE : -w 0 disables post-processing'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: real
+  optional: true
+command:
+- yass
+subcommands: []
+help_flag: !Flag
+  description: display this Help screen
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

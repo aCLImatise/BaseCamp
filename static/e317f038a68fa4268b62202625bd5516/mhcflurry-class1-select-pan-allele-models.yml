@@ -1,0 +1,121 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Model selection data CSV. Expected columns: allele, peptide, measurement_value'
+  synonyms:
+  - --data
+  args: !SimpleFlagArg
+    name: FILE.csv
+  optional: true
+- !Flag
+  description: Directory to read models
+  synonyms:
+  - --models-dir
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: Directory to write selected models
+  synonyms:
+  - --out-models-dir
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: Min number of models to select per fold
+  synonyms:
+  - --min-models-per-fold
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Max number of models to select per fold
+  synonyms:
+  - --max-models-per-fold
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'Regular expression for mass-spec data. Runs on measurement_source
+    col.Default: mass[- ]spec.'
+  synonyms:
+  - --mass-spec-regex
+  args: !SimpleFlagArg
+    name: REGEX
+  optional: true
+- !Flag
+  description: 'Keras verbosity. Default: 0'
+  synonyms:
+  - --verbosity
+  args: !SimpleFlagArg
+    name: VERBOSITY
+  optional: true
+- !Flag
+  description: 'Number of local processes to parallelize training over. Set to 0 for
+    serial run. Default: 0.'
+  synonyms:
+  - --num-jobs
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Keras backend. If not specified will use system default.
+  synonyms:
+  - --backend
+  args: !ChoiceFlagArg
+    choices:
+    - tensorflow-gpu
+    - tensorflow-cpu
+    - tensorflow-default
+  optional: true
+- !Flag
+  description: Number of GPUs to attempt to parallelize across. Requires running in
+    parallel.
+  synonyms:
+  - --gpus
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Maximum number of workers to assign to a GPU. Additional tasks will
+    run on CPU.
+  synonyms:
+  - --max-workers-per-gpu
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Restart workers after N tasks. Workaround for tensorflow memory leaks.
+    Requires Python >=3.2.
+  synonyms:
+  - --max-tasks-per-worker
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Write worker stdout and stderr logs to given directory.
+  synonyms:
+  - --worker-log-dir
+  args: !SimpleFlagArg
+    name: WORKER_LOG_DIR
+  optional: true
+- !Flag
+  description: 'How many times to rerun failing jobs. Default: 3'
+  synonyms:
+  - --cluster-max-retries
+  args: !SimpleFlagArg
+    name: CLUSTER_MAX_RETRIES
+  optional: true
+command:
+- mhcflurry-class1-select-pan-allele-models
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

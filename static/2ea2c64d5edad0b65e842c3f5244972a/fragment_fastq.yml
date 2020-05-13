@@ -1,0 +1,111 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The output FASTQ file where the reads are trimmed.
+  synonyms:
+  - -f
+  - --output_1
+  args: !SimpleFlagArg
+    name: OUTPUT_1_FILENAME
+  optional: true
+- !Flag
+  description: The output FASTQ file where the reads are trimmed. If this is not used
+    then all the output reads are written in '-f' as interleaved.
+  synonyms:
+  - -r
+  - --output_2
+  args: !SimpleFlagArg
+    name: OUTPUT_2_FILENAME
+  optional: true
+- !Flag
+  description: It outputs a detalied statistics of the trimming.
+  synonyms:
+  - -l
+  - --log
+  args: !SimpleFlagArg
+    name: LOG_FILENAME
+  optional: true
+- !Flag
+  description: The size of the new reads. This should be shorter than the size of
+    input reads. Default is 82.
+  synonyms:
+  - -w
+  - --window-size
+  args: !SimpleFlagArg
+    name: WINDOW_SIZE
+  optional: true
+- !Flag
+  description: The size of step for the sliding window used to fragment the input
+    reads. This should be shorter than the size of input reads. Default is 60.
+  synonyms:
+  - -s
+  - --step-size
+  args: !SimpleFlagArg
+    name: STEP_SIZE
+  optional: true
+- !Flag
+  description: The reads shorter than this will not be fragmented. If it is set then
+    it should be higher than window size. By default reads shorter than the window
+    size will not be fragmented.
+  synonyms:
+  - -t
+  - --threshold-read
+  args: !SimpleFlagArg
+    name: THRESHOLD_SIZE_READ
+  optional: true
+- !Flag
+  description: Number of anchors. Default is 4.
+  synonyms:
+  - -a
+  - --anchors
+  args: !SimpleFlagArg
+    name: ANCHORS
+  optional: true
+- !Flag
+  description: The paired-end where both reads are shorter than this will be filtered
+    out. Default is '0'.
+  synonyms:
+  - -k
+  - --skip-short
+  args: !SimpleFlagArg
+    name: SKIP_SHORT
+  optional: true
+- !Flag
+  description: The last fragment will not be generated if it overlaps with the previous
+    generated fragment and the non- overlapping segment is strictly shorter than this
+    threshold. This applies only for paired-end reads. Default is '16'.
+  synonyms:
+  - -e
+  - --wiggle-end
+  args: !SimpleFlagArg
+    name: WIGGLE_END
+  optional: true
+- !Flag
+  description: If it is set then Ns from both ends of the read are trimmed.
+  synonyms:
+  - -n
+  - --trim-n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not print status messages to stdout.
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Daniel Nicorici, E-mail: Daniel.Nicorici@gmail.com'
+  synonyms:
+  - -u
+  - --author
+  args: !SimpleFlagArg
+    name: AUTHOR
+  optional: true
+command:
+- fragment_fastq.py
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

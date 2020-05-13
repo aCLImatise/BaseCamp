@@ -1,0 +1,82 @@
+!Command
+positional:
+- !Positional
+  description: full path to the first structure
+  position: 0
+  name: pdb1
+  optional: false
+- !Positional
+  description: full path to the second structure
+  position: 1
+  name: pdb2
+  optional: false
+named:
+- !Flag
+  description: Chain of the first structure (default=A)
+  synonyms:
+  - -c
+  - --chain1
+  args: !SimpleFlagArg
+    name: CHAIN1
+  optional: true
+- !Flag
+  description: Chain of the second structure (default=A)
+  synonyms:
+  - -d
+  - --chain2
+  args: !SimpleFlagArg
+    name: CHAIN2
+  optional: true
+- !Flag
+  description: Scale mixture distribution (default=student)
+  synonyms:
+  - -s
+  - --scalemixture
+  args: !ChoiceFlagArg
+    choices:
+    - student
+    - k
+  optional: true
+- !Flag
+  description: Alignment in fasta format defining equivalent positions Assumes that
+    chain1 is the first sequence of the alignment and chain2 the second sequence
+  synonyms:
+  - -a
+  - --alignment
+  args: !SimpleFlagArg
+    name: ALIGNMENT
+  optional: true
+- !Flag
+  description: file to which the rotated second structure will be written (default=bfit.pdb)
+  synonyms:
+  - -o
+  - --outfile
+  args: !SimpleFlagArg
+    name: OUTFILE
+  optional: true
+- !Flag
+  description: Number of optimization steps (default=200)
+  synonyms:
+  - -n
+  - --niter
+  args: !SimpleFlagArg
+    name: NITER
+  optional: true
+- !Flag
+  description: Use the EM algorithm for optimsation (default=False)
+  synonyms:
+  - --em
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- csb-bfit
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

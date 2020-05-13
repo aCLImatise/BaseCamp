@@ -1,0 +1,213 @@
+!Command
+positional:
+- !Positional
+  description: data/study data/population data/association
+  position: 0
+  name: filenames
+  optional: false
+named:
+- !Flag
+  description: 'Annotation file format. Not needed if type can be determined using
+    filename (default: None)'
+  synonyms:
+  - --annofmt
+  args: !ChoiceFlagArg
+    choices:
+    - gene2go
+    - gaf
+    - gpad
+    - id2gos
+  optional: true
+- !Flag
+  description: "When using NCBI's gene2go annotation file, specify desired taxid (default:\
+    \ 9606)"
+  synonyms:
+  - --taxid
+  args: !SimpleFlagArg
+    name: TAXID
+  optional: true
+- !Flag
+  description: 'Test-wise alpha for multiple testing (default: 0.05)'
+  synonyms:
+  - --alpha
+  args: !SimpleFlagArg
+    name: ALPHA
+  optional: true
+- !Flag
+  description: 'Only print results with uncorrected p-value < PVAL. (default: 0.05)'
+  synonyms:
+  - --pval
+  args: !SimpleFlagArg
+    name: PVAL
+  optional: true
+- !Flag
+  description: 'Only print results when PVAL_FIELD < PVAL. (default: None)'
+  synonyms:
+  - --pval_field
+  args: !SimpleFlagArg
+    name: PVAL_FIELD
+  optional: true
+- !Flag
+  description: 'Write enrichment results into xlsx or tsv file (default: None)'
+  synonyms:
+  - --outfile
+  args: !SimpleFlagArg
+    name: OUTFILE
+  optional: true
+- !Flag
+  description: 'Limit GOEA to specified branch categories. BP=Biological Process;
+    MF=Molecular Function; CC=Cellular Component (default: BP,MF,CC)'
+  synonyms:
+  - --ns
+  args: !SimpleFlagArg
+    name: NS
+  optional: true
+- !Flag
+  description: 'ASCII file containing one geneid and its symbol per line (default:
+    None)'
+  synonyms:
+  - --id2sym
+  args: !SimpleFlagArg
+    name: ID2SYM
+  optional: true
+- !Flag
+  description: 'Use sections file for printing grouped GOEA results. Example SECTIONS
+    values: goatools.test_data.sections.gjoneska_pfenning goatools/test_data/sections/gjoneska_pfenning.py
+    data/gjoneska_pfenning/sections_in.txt (default: None)'
+  synonyms:
+  - --sections
+  args: !SimpleFlagArg
+    name: SECTIONS
+  optional: true
+- !Flag
+  description: 'Write enrichment results into a text file containing the following
+    information: 1) GOEA GO terms, grouped into sections 2) List of genes and ASCII
+    art showing section membership 3) Detailed list of each gene and GO terms w/their
+    P-values (default: None)'
+  synonyms:
+  - --outfile_detail
+  args: !SimpleFlagArg
+    name: OUTFILE_DETAIL
+  optional: true
+- !Flag
+  description: 'the population file as a comparison group. if this flag is specified,
+    the population is used as the study plus the `population/comparison` (default:
+    False)'
+  synonyms:
+  - --compare
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'only show values where the difference between study and population
+    ratios is greater than this. useful for excluding GO categories with small differences,
+    but containing large numbers of genes. should be a value between 1 and 2. (default:
+    None)'
+  synonyms:
+  - --ratio
+  args: !SimpleFlagArg
+    name: RATIO
+  optional: true
+- !Flag
+  description: 'indent GO terms (default: False)'
+  synonyms:
+  - --indent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Specifies location and name of the obo file (default: go-basic.obo)'
+  synonyms:
+  - --obo
+  args: !SimpleFlagArg
+    name: OBO
+  optional: true
+- !Flag
+  description: 'Do not propagate counts to parent terms (default: False)'
+  synonyms:
+  - --no_propagate_counts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Propagate counts up all relationships (default: False)'
+  synonyms:
+  - -r
+  - --relationship
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[RELATIONSHIPS [RELATIONSHIPS ...]] Propagate counts up user-specified
+    relationships (default: None)'
+  synonyms:
+  - --relationships
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Available methods: local( bonferroni sidak holm fdr ) statsmodels(
+    sm_bonferroni sm_sidak holm_sidak sm_holm simes_hochberg hommel fdr_bh fdr_by
+    fdr_tsbh fdr_tsbky fdr_gbs ) (default: bonferroni,sidak,holm,fdr_bh)'
+  synonyms:
+  - --method
+  args: !SimpleFlagArg
+    name: METHOD
+  optional: true
+- !Flag
+  description: 'fisher fisher_scipy_stats (default: fisher)'
+  synonyms:
+  - --pvalcalc
+  args: !SimpleFlagArg
+    name: PVALCALC
+  optional: true
+- !Flag
+  description: 'Check that a minimum amount of study genes are in the population (default:
+    0.7)'
+  synonyms:
+  - --min_overlap
+  args: !SimpleFlagArg
+    name: MIN_OVERLAP
+  optional: true
+- !Flag
+  description: 'The GO slim file is used when grouping GO terms. (default: goslim_generic.obo)'
+  synonyms:
+  - --goslim
+  args: !SimpleFlagArg
+    name: GOSLIM
+  optional: true
+- !Flag
+  description: 'Include specified evidence codes and groups separated by commas (default:
+    None)'
+  synonyms:
+  - --ev_inc
+  args: !SimpleFlagArg
+    name: EV_INC
+  optional: true
+- !Flag
+  description: 'Exclude specified evidence codes and groups separated by commas (default:
+    None)'
+  synonyms:
+  - --ev_exc
+  args: !SimpleFlagArg
+    name: EV_EXC
+  optional: true
+- !Flag
+  description: 'Print all Evidence codes, with descriptions (default: True)'
+  synonyms:
+  - --ev_help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Print all Evidence codes (default: True)'
+  synonyms:
+  - --ev_help_short
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- find_enrichment.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

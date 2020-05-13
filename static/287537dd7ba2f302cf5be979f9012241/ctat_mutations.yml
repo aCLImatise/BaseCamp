@@ -1,0 +1,196 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Path to one of the two paired RNAseq samples (left)
+  synonyms:
+  - --left
+  args: !SimpleFlagArg
+    name: Left_sample_file
+  optional: true
+- !Flag
+  description: Path to one of the two paired RNAseq samples (right)
+  synonyms:
+  - --right
+  args: !SimpleFlagArg
+    name: Right_sample_file
+  optional: true
+- !Flag
+  description: output directory
+  synonyms:
+  - --out_dir
+  args: !SimpleFlagArg
+    name: STR_OUT_DIR
+  optional: true
+- !Flag
+  description: Path to the reference genome to use in the analysis pipeline.
+  synonyms:
+  - --reference
+  args: !SimpleFlagArg
+    name: Reference_genome
+  optional: true
+- !Flag
+  description: The initial index is made only from the reference genome and can be
+    shared. If premade, supply a path here to the index directory so that it is not
+    rebuilt for every alignment. Please provide the full path.
+  synonyms:
+  - --index
+  args: !SimpleFlagArg
+    name: Use_premade_index
+  optional: true
+- !Flag
+  description: dbsnp vcf file for the reference genome.
+  synonyms:
+  - --dbsnp_vcf
+  args: !SimpleFlagArg
+    name: Variant_calling_file_for_the_reference_genome
+  optional: true
+- !Flag
+  description: The number of threads to use for multi-threaded steps.
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: Process_threads
+  optional: true
+- !Flag
+  description: Specifies the variant filtering method.
+  synonyms:
+  - --variant_filtering_mode
+  args: !SimpleFlagArg
+    name: Filter_mode
+  optional: true
+- !Flag
+  description: Specifies the variant calling method to use.
+  synonyms:
+  - --variant_call_mode
+  args: !SimpleFlagArg
+    name: Call_mode
+  optional: true
+- !Flag
+  description: BED file Bed file for reference genome, required only if making the
+    mutation inspector json. If given the json file will be made. Please make sure
+    the bed file is indexed and that bed.idx file is in the same folder with the same
+    file basename as the related bed file.
+  synonyms:
+  - --ref_bed
+  args: !SimpleFlagArg
+    name: Reference
+  optional: true
+- !Flag
+  description: Turns off plotting recalibration of alignments.
+  synonyms:
+  - --plot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Coding Cosmic Mutation VCF annotated with Phenotype Information and
+    zipped using bgzip.
+  synonyms:
+  - --cosmic_vcf_gz
+  args: !SimpleFlagArg
+    name: cosmic_reference_vcf
+  optional: true
+- !Flag
+  description: if enabled, turns off filtering based on known rna- editing sites from
+    radar and rediportal
+  synonyms:
+  - --no_filter_rna_editing
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Tissue type (used in CRAVAT variant prioritation). Supported classifiers
+    can be found at http://www.cravat.us/help.jsp)
+  synonyms:
+  - --tissue_type
+  args: !SimpleFlagArg
+    name: cravat_tissue
+  optional: true
+- !Flag
+  description: Email used to notify of errors associated with cravat.
+  synonyms:
+  - --email
+  args: !SimpleFlagArg
+    name: email_contact
+  optional: true
+- !Flag
+  description: Cromwell/WDL requires execution to happen relative to an output directory
+    of dynaically created without giving the directory path to the underlying tools/pipelines.
+    This requires a pipeline to use relative paths which can be dangerous outside
+    of Cromwell/WDL. This will ignore any output directory specified in the command
+    line and force the output to be relative paths. DO NOT USE outside of Cromwell/WDL.
+  synonyms:
+  - --wdl_compatible_run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Headers for each CRAVAT feature annotated to the VCF file (used in
+    BCFtools).
+  synonyms:
+  - --cravat_annotation_header
+  args: !SimpleFlagArg
+    name: cravat_headers
+  optional: true
+- !Flag
+  description: Sample file in the form of a bam, if this is given NO alignment will
+    be performed; the alignment mode command line will be ignored; let and right sample
+    files will be ignored. Normal pipeline processing will pick up directly after
+    alignment in the pipeline with the supplied bam.
+  synonyms:
+  - --bam
+  args: !SimpleFlagArg
+    name: bam_file
+  optional: true
+- !Flag
+  description: Specifies the alignment and indexing algorithm to use.
+  synonyms:
+  - --alignment_mode
+  args: !SimpleFlagArg
+    name: Alignment_mode
+  optional: true
+- !Flag
+  description: Calculates the base coverage per base.
+  synonyms:
+  - --base_depth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Memory limit for star index. This should be used to increase memory
+    if needed. Reducing memory consumption should be performed with the STAR Limited
+    mod.
+  synonyms:
+  - --star_memory
+  args: !SimpleFlagArg
+    name: Star_memory
+  optional: true
+- !Flag
+  description: sets debug mode for logger
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: genome lib directory - see http://FusionFilter.github.io for details.
+    Uses env var CTAT_GENOME_LIB as default
+  synonyms:
+  - --genome_lib_dir
+  args: !SimpleFlagArg
+    name: GENOME_LIB_DIR
+  optional: true
+- !Flag
+  description: Skips CRAVAT services.
+  synonyms:
+  - --skip_cravat
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- ctat_mutations
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

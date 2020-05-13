@@ -1,0 +1,360 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: 'sequence_data.fa '
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: sequence_logo.eps
+  optional: false
+named:
+- !Flag
+  description: 'Sequence input file (default: stdin)'
+  synonyms:
+  - -f
+  - --fin
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: 'Type of multiple sequence alignment or position weight matrix file:
+    (clustal, fasta, plain, msf, genbank, nbrf, nexus, phylip, stockholm, intelligenetics,
+    table, array, transfac)'
+  synonyms:
+  - -D
+  - --datatype
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: 'Output file (default: stdout)'
+  synonyms:
+  - -o
+  - --fout
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: 'Format of output: eps (default), png, png_print, pdf, jpeg, svg, logodata'
+  synonyms:
+  - -F
+  - --format
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: "The type of sequence data: 'protein', 'rna' or 'dna'."
+  synonyms:
+  - -A
+  - --sequence-type
+  args: !SimpleFlagArg
+    name: TYPE
+  optional: true
+- !Flag
+  description: The set of symbols to count, e.g. 'AGTC'. All characters not in the
+    alphabet are ignored. If neither the alphabet nor sequence-type are specified
+    then weblogo will examine the input data and make an educated guess. See also
+    --sequence-type, --ignore-lower-case
+  synonyms:
+  - -a
+  - --alphabet
+  args: !SimpleFlagArg
+    name: ALPHABET
+  optional: true
+- !Flag
+  description: A unit of entropy ('bits' (default), 'nats', 'digits'), or a unit of
+    free energy ('kT', 'kJ/mol', 'kcal/mol'), or 'probability' for probabilities
+  synonyms:
+  - -U
+  - --units
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: "The expected composition of the sequences: 'auto' (default), 'equiprobable',\
+    \ 'none' (do not perform any compositional adjustment), a CG percentage, a species\
+    \ name (e.g. 'E. coli', 'H. sapiens'), or an explicit distribution (e.g. \"{'A':10,\
+    \ 'C':40, 'G':40, 'T':10}\"). The automatic option uses a typical distribution\
+    \ for proteins and equiprobable distribution for everything else."
+  synonyms:
+  - --composition
+  args: !SimpleFlagArg
+    name: COMP.
+  optional: true
+- !Flag
+  description: The weight of prior data.  Default depends on alphabet length
+  synonyms:
+  - --weight
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: 'Index of first position in sequence data (default: 1)'
+  synonyms:
+  - -i
+  - --first-index
+  args: !SimpleFlagArg
+    name: INDEX
+  optional: true
+- !Flag
+  description: Lower bound of sequence to display
+  synonyms:
+  - -l
+  - --lower
+  args: !SimpleFlagArg
+    name: INDEX
+  optional: true
+- !Flag
+  description: Upper bound of sequence to display
+  synonyms:
+  - -u
+  - --upper
+  args: !SimpleFlagArg
+    name: INDEX
+  optional: true
+- !Flag
+  description: Disregard lower case letters and only count upper case letters in sequences.
+  synonyms:
+  - --ignore-lower-case
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: reverse sequences
+  synonyms:
+  - --reverse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: complement nucleic sequences
+  synonyms:
+  - --complement
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: reverse complement nucleic sequences
+  synonyms:
+  - --revcomp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify a standard logo size (small, medium (default), large)
+  synonyms:
+  - -s
+  - --size
+  args: !SimpleFlagArg
+    name: LOGOSIZE
+  optional: true
+- !Flag
+  description: 'Maximum number of logo stacks per logo line. (default: 40)'
+  synonyms:
+  - -n
+  - --stacks-per-line
+  args: !SimpleFlagArg
+    name: COUNT
+  optional: true
+- !Flag
+  description: Logo title text.
+  synonyms:
+  - -t
+  - --title
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: A figure label, e.g. '2a'
+  synonyms:
+  - --label
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: '/NO      Display sequence numbers along x-axis? (default: True)'
+  synonyms:
+  - -X
+  - --show-xaxis
+  args: !SimpleFlagArg
+    name: YES
+  optional: true
+- !Flag
+  description: X-axis label
+  synonyms:
+  - -x
+  - --xlabel
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: A comma separated list of custom stack annotations, e.g. '1,3,4,5,6,7'.  Annotation
+    list must be same length as sequences.
+  synonyms:
+  - --annotate
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: 'Height of yaxis in units. (Default: Maximum value with uninformative
+    prior.)'
+  synonyms:
+  - -S
+  - --yaxis
+  args: !SimpleFlagArg
+    name: UNIT
+  optional: true
+- !Flag
+  description: '/NO      Display entropy scale along y-axis? (default: True)'
+  synonyms:
+  - -Y
+  - --show-yaxis
+  args: !SimpleFlagArg
+    name: YES
+  optional: true
+- !Flag
+  description: Y-axis label (default depends on plot type and units)
+  synonyms:
+  - -y
+  - --ylabel
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: '/NO       Label the ends of the sequence? (default: False)'
+  synonyms:
+  - -E
+  - --show-ends
+  args: !SimpleFlagArg
+    name: YES
+  optional: true
+- !Flag
+  description: 'The fine print (default: weblogo version)'
+  synonyms:
+  - -P
+  - --fineprint
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: 'Distance between ticmarks (default: 1.0)'
+  synonyms:
+  - --ticmarks
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: '/NO       Display error bars? (default: True)'
+  synonyms:
+  - --errorbars
+  args: !SimpleFlagArg
+    name: YES
+  optional: true
+- !Flag
+  description: '/NO  Draw stacks with largest letters on top? (default: True)'
+  synonyms:
+  - --reverse-stacks
+  args: !SimpleFlagArg
+    name: YES
+  optional: true
+- !Flag
+  description: Specify a standard color scheme (auto, base pairing, charge, chemistry,
+    classic, hydrophobicity, monochrome)
+  synonyms:
+  - -c
+  - --color-scheme
+  args: !SimpleFlagArg
+    name: SCHEME
+  optional: true
+- !Flag
+  description: SYMBOLS DESCRIPTION  Specify symbol colors, e.g. --color black AG 'Purine'
+    --color red TC 'Pyrimidine'
+  synonyms:
+  - -C
+  - --color
+  args: !SimpleFlagArg
+    name: COLOR
+  optional: true
+- !Flag
+  description: Symbol color if not otherwise specified.
+  synonyms:
+  - --default-color
+  args: !SimpleFlagArg
+    name: COLOR
+  optional: true
+- !Flag
+  description: 'Width of a logo stack (default: 10.8)'
+  synonyms:
+  - -W
+  - --stack-width
+  args: !SimpleFlagArg
+    name: POINTS
+  optional: true
+- !Flag
+  description: 'Ratio of stack height to width (default: 5)'
+  synonyms:
+  - --aspect-ratio
+  args: !SimpleFlagArg
+    name: POINTS
+  optional: true
+- !Flag
+  description: '/NO             Draw boxes around symbols? (default: no)'
+  synonyms:
+  - --box
+  args: !SimpleFlagArg
+    name: YES
+  optional: true
+- !Flag
+  description: 'Bitmap resolution in dots per inch (DPI). (Default: 96 DPI, except
+    png_print, 600 DPI) Low resolution bitmaps (DPI<300) are antialiased.'
+  synonyms:
+  - --resolution
+  args: !SimpleFlagArg
+    name: DPI
+  optional: true
+- !Flag
+  description: '/NO     Scale the visible stack width by the fraction of symbols in
+    the column?  (I.e. columns with many gaps of unknowns are narrow.)  (Default:
+    yes)'
+  synonyms:
+  - --scale-width
+  args: !SimpleFlagArg
+    name: YES
+  optional: true
+- !Flag
+  description: '/NO           Output additional diagnostic information. (Default:
+    False)'
+  synonyms:
+  - --debug
+  args: !SimpleFlagArg
+    name: YES
+  optional: true
+- !Flag
+  description: Start a standalone WebLogo server for creating sequence logos.
+  synonyms:
+  - --serve
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Listen to this local port. (Default: 8080)'
+  synonyms:
+  - --port
+  args: !SimpleFlagArg
+    name: PORT
+  optional: true
+command:
+- weblogo
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

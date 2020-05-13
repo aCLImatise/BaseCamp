@@ -1,0 +1,81 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The input file (in FASTQ format) containing the short reads to be processed.
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT_FILENAME
+  optional: true
+- !Flag
+  description: The output FASTQ file containing the short reads where the nucleotides
+    with low quality score 'B' have been converted to ambigous nucleotide N.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME
+  optional: true
+- !Flag
+  description: By default the only tails of B quality are removed. If this is used
+    then the first occurence of B is used to trim the read.
+  synonyms:
+  - -f
+  - --find
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: By default the ambigous nucleotides are not convert to As. If this
+    is set then all ambigous nucleotides will be converted to As.
+  synonyms:
+  - -a
+  - --ambiguous
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: By default read qualities are in Illumina v1.5 format and the character
+    'B' is used to search qualities. If this is used than the character '#' (that
+    is B in Sanger format) is used to search the qualities.
+  synonyms:
+  - -s
+  - --sanger
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The character to be use for replacing the nucleotide which have the
+    quality score Q2. Default is 'N'.
+  synonyms:
+  - -r
+  - --replacement
+  args: !SimpleFlagArg
+    name: REPLACEMENT
+  optional: true
+- !Flag
+  description: If if this is larger than zero then all the short reads strictly shorter
+    than this threshold (if the trimming of Bs would be done) are removed. Default
+    is '0'.
+  synonyms:
+  - -t
+  - --threshold
+  args: !SimpleFlagArg
+    name: THRESHOLD
+  optional: true
+command:
+- fastq_b2n.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

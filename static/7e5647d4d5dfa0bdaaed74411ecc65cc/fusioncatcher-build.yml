@@ -1,0 +1,184 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: arg
+  optional: false
+named:
+- !Flag
+  description: The output directory where all the outputs files  and directories will
+    be written.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+  optional: true
+- !Flag
+  description: "Organism for which the data is downloaded from Ensembl database and\
+    \ built, for example: 'homo_sapiens', 'mus_musculus', 'rattus_norvegicus', 'canis_familiaris',\
+    \ etc. Default is 'homo_sapiens'."
+  synonyms:
+  - -g
+  - --organism
+  args: !SimpleFlagArg
+    name: ORGANISM
+  optional: true
+- !Flag
+  description: Configuration file containing the paths to external tools (e.g. Bowtie,
+    etc.) in case that they are not in PATH! Default is '/tmp/tmpg5gctayr/bin/../etc/configur
+    ation.cfg,/tmp/tmpg5gctayr/bin/configuration.cfg'.
+  synonyms:
+  - -c
+  - --config
+  args: !SimpleFlagArg
+    name: CONFIGURATION_FILENAME
+  optional: true
+- !Flag
+  description: If it is specified then all external tools and all Python tools will
+    be executed by FusionCatcher by using their corresponding absolute paths, which
+    will be obined from the fusioncatcher/bin/configuration.cfg file. By default no
+    paths are specified when executing tools/scripts. Default is 'False'.
+  synonyms:
+  - -F
+  - --force-paths
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ensembl database web site from where the data is downloaded.  e.g.
+    'www.ensembl.org', 'uswest.ensembl.org', 'useast.ensembl.org', 'asia.ensembl.org',
+    etc. Default is 'www.ensembl.org'.
+  synonyms:
+  - -w
+  - --web
+  args: !SimpleFlagArg
+    name: WEB_ENSEMBL
+  optional: true
+- !Flag
+  description: Ensembl database FTP site from where the data is downloaded. Default
+    is 'ftp.ensembl.org'.
+  synonyms:
+  - -e
+  - --ftp-ensembl
+  args: !SimpleFlagArg
+    name: FTP_ENSEMBL
+  optional: true
+- !Flag
+  description: The path for Ensembl database FTP site from where the data is downloaded.
+  synonyms:
+  - --ftp-ensembl-path
+  args: !SimpleFlagArg
+    name: FTP_ENSEMBL_PATH
+  optional: true
+- !Flag
+  description: UCSC database FTP site from where the data is downloaded. Default is
+    'hgdownload.cse.ucsc.edu'.
+  synonyms:
+  - -x
+  - --ftp-ucsc
+  args: !SimpleFlagArg
+    name: FTP_UCSC
+  optional: true
+- !Flag
+  description: NCBI database FTP site from where the data is downloaded. Default is
+    'ftp.ncbi.nlm.nih.gov'.
+  synonyms:
+  - -n
+  - --ftp-ncbi
+  args: !SimpleFlagArg
+    name: FTP_NCBI
+  optional: true
+- !Flag
+  description: "If it is set then the pipeline will NOT use the BLAT aligner and all\
+    \ options and methods which make use of BLAT will be disabled. BLAT aligner is\
+    \ used by default. Please, note that BLAT license does not allow BLAT to be used\
+    \ for commercial activities. Fore more information regarding BLAT please see its\
+    \ license: <http://users.soe.ucsc.edu/~kent/src/>. Default is 'False'."
+  synonyms:
+  - --skip-blat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If it is set then the genes are enlarged (i.e. their introns include
+    also in the transcriptome). Default is 'False'.
+  synonyms:
+  - --enlarge-genes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number or processes/threads to be used. Default is '0'.
+  synonyms:
+  - -p
+  - --threads
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: If it is set then the pipeline will skip the specified database(s).
+    The choices are ['cosmic','conjoing','chi merdb2','chimerdb3','ticdb','cgp','cacg'].
+    If several databases should be skipped, then their names shall be separated by
+    comma. Default is ''.
+  synonyms:
+  - --skip-database
+  args: !SimpleFlagArg
+    name: SKIP_DATABASE
+  optional: true
+- !Flag
+  description: It starts executing the workflow from the given step number. This can
+    be used when the pipeline has crashed/stopped and one wants to re-run it from
+    from the step where it stopped without re-running from the beginning the entire
+    pipeline. 0 is for restarting automatically and 1 is the first step. This is intended
+    to be used for debugging. Default is '0'.
+  synonyms:
+  - -s
+  - --start
+  args: !SimpleFlagArg
+    name: START_STEP
+  optional: true
+- !Flag
+  description: Hash to be used for computing checksum. The choices are ['no','crc32','md5','adler32','sha512','sha256'].
+    If it is set up to 'no' then no checksum is used and the entire pipeline is executed
+    as a normal shell script. For more information see 'hash_library' in 'workflow.py'.
+    This is intended to be used for debugging. Default is 'no'.
+  synonyms:
+  - -l
+  - --hash
+  args: !SimpleFlagArg
+    name: HASH
+  optional: true
+- !Flag
+  description: Preserve intermediate files produced during the run. By default, they
+    are NOT deleted upon exit. This is intended to be used for debugging. Default
+    value is 'False'.
+  synonyms:
+  - -k
+  - --keep
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The name of the checksums file. This is intended to be used for debugging.
+    Default value is 'checksums.txt'.
+  synonyms:
+  - -u
+  - --checksums
+  args: !SimpleFlagArg
+    name: CHECKSUMS_FILENAME
+  optional: true
+command:
+- fusioncatcher-build.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

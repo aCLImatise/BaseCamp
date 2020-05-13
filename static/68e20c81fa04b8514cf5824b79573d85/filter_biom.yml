@@ -1,0 +1,42 @@
+!Command
+positional:
+- !Positional
+  description: BIOM file path.
+  position: 0
+  name: input_biom_fnh
+  optional: false
+- !Positional
+  description: Filtered biom output file.
+  position: 1
+  name: output_biom_fnh
+  optional: false
+- !Positional
+  description: Mapping file with sampleIDs to retain in it. The '#SampleID' column
+    will be used to get the list of all ids to retain.
+  position: 2
+  name: mapping_fnh
+  optional: false
+named:
+- !Flag
+  description: Path to file to write out the list of OTUIDs not present in any SampleIDs
+    in mapping file. This output is usually used to filter out unwanted otuids from
+    .tre file. If not given, the discarded OTUIDs list will be saved in the current
+    working directory.
+  synonyms:
+  - -fo
+  - --filter_otuids_fnh
+  args: !SimpleFlagArg
+    name: FILTER_OTUIDS_FNH
+  optional: true
+command:
+- filter_biom.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

@@ -1,0 +1,613 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The directory in which all model (reference and scenario) definitions
+    are stored. Default is ".".
+  synonyms:
+  - -m
+  - --model-directory
+  args: !SimpleFlagArg
+    name: MODEL_DIRECTORY
+  optional: true
+- !Flag
+  description: The directory in which all instance (reference and scenario) definitions
+    are stored. This option is required if no callback is found in the model file.
+  synonyms:
+  - -i
+  - --instance-directory
+  args: !SimpleFlagArg
+    name: INSTANCE_DIRECTORY
+  optional: true
+- !Flag
+  description: The objective sense to use for the auto-generated scenario instance
+    objective, which is equal to the sum of the scenario-tree stage costs. Default
+    is None, indicating an Objective has been declared on the reference model.
+  synonyms:
+  - -o
+  - --objective-sense-stage-based
+  args: !SimpleFlagArg
+    name: OBJECTIVE_SENSE
+  optional: true
+- !Flag
+  description: Disable iteration 0 solves and warmstarts rho, weight, and xbar parameters
+    from solution file.
+  synonyms:
+  - --ph-warmstart-file
+  args: !SimpleFlagArg
+    name: PH_WARMSTART_FILE
+  optional: true
+- !Flag
+  description: Indicates the index (ph iteration) of the warmstart that should be
+    loaded from a ph history file.
+  synonyms:
+  - --ph-warmstart-index
+  args: !SimpleFlagArg
+    name: PH_WARMSTART_INDEX
+  optional: true
+- !Flag
+  description: The name of python script containing a ph_boundsetter_callback function
+    to compute and update scenario variable bounds. Default is None.
+  synonyms:
+  - --bounds-cfgfile
+  args: !SimpleFlagArg
+    name: BOUNDS_CFGFILE
+  optional: true
+- !Flag
+  description: The random seed associated with manipulation operations on the scenario
+    tree (e.g., down-sampling or bundle creation). Default is 0, indicating unassigned.
+  synonyms:
+  - --scenario-tree-seed
+  args: !SimpleFlagArg
+    name: SCENARIO_TREE_RANDOM_SEED
+  optional: true
+- !Flag
+  description: The proportion of the scenarios in the scenario tree that are actually
+    used. Specific scenarios are selected at random. Default is 1.0, indicating no
+    down-sampling.
+  synonyms:
+  - --scenario-tree-downsample-fraction
+  args: !SimpleFlagArg
+    name: SCENARIO_TREE_DOWNSAMPLE_FRACTION
+  optional: true
+- !Flag
+  description: The name of the scenario bundling specification to be used when executing
+    Progressive Hedging. Default is None, indicating no bundling is employed. If the
+    specified name ends with a .dat suffix, the argument is interpreted as a filename.
+    Otherwise, the name is interpreted as a file in the instance directory, constructed
+    by adding the .dat suffix automatically
+  synonyms:
+  - --scenario-bundle-specification
+  args: !SimpleFlagArg
+    name: SCENARIO_BUNDLE_SPECIFICATION
+  optional: true
+- !Flag
+  description: Specification to create the indicated number of random, equally-sized
+    (to the degree possible) scenario bundles. Default is 0, indicating disabled.
+  synonyms:
+  - --create-random-bundles
+  args: !SimpleFlagArg
+    name: CREATE_RANDOM_BUNDLES
+  optional: true
+- !Flag
+  description: Run PH in asychronous mode after iteration 0. Default is False.
+  synonyms:
+  - --async
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of scenarios to collect, if in async mode, before doing statistics
+    and weight updates. Default is 1.
+  synonyms:
+  - --async-buffer-length
+  args: !SimpleFlagArg
+    name: ASYNC_BUFFER_LENGTH
+  optional: true
+- !Flag
+  description: The name of python script containing a ph_rhosetter_callback function
+    to compute and update PH rho values. Default is None.
+  synonyms:
+  - --rho-cfgfile
+  args: !SimpleFlagArg
+    name: RHO_CFGFILE
+  optional: true
+- !Flag
+  description: The name of python script containing a ph_aggregategetter_callback
+    function to collect and store aggregate scenario data on PH. Default is None.
+  synonyms:
+  - --aggregate-cfgfile
+  args: !SimpleFlagArg
+    name: AGGREGATE_CFGFILE
+  optional: true
+- !Flag
+  description: The maximal number of PH iterations. Default is 100.
+  synonyms:
+  - --max-iterations
+  args: !SimpleFlagArg
+    name: MAX_ITERATIONS
+  optional: true
+- !Flag
+  description: The convergence threshold used in the term-diff and normalized term-diff
+    convergence criteria. Default is 0.0001.
+  synonyms:
+  - --termdiff-threshold
+  args: !SimpleFlagArg
+    name: TERMDIFF_THRESHOLD
+  optional: true
+- !Flag
+  description: Terminate PH based on the free discrete variable count convergence
+    metric. Default is False.
+  synonyms:
+  - --enable-free-discrete-count-convergence
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The convergence threshold used in the criterion based on when the free
+    discrete variable count convergence criterion. Default is 20.
+  synonyms:
+  - --free-discrete-count-threshold
+  args: !SimpleFlagArg
+    name: FREE_DISCRETE_COUNT_THRESHOLD
+  optional: true
+- !Flag
+  description: Terminate PH based on the normalized termdiff convergence metric. Default
+    is True.
+  synonyms:
+  - --enable-normalized-termdiff-convergence
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Terminate PH based on the termdiff convergence metric. Default is False.
+  synonyms:
+  - --enable-termdiff-convergence
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Terminate PH based on the outer bound convergence metric. Default is
+    False.
+  synonyms:
+  - --enable-outer-bound-convergence
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The convergence threshold used in the outer bound convergerence criterion.
+    Default is None, indicating unassigned
+  synonyms:
+  - --outer-bound-convergence-threshold
+  args: !SimpleFlagArg
+    name: OUTER_BOUND_CONVERGENCE_THRESHOLD
+  optional: true
+- !Flag
+  description: Approximate the PH quadratic term for non-binary variables with a piece-wise
+    linear function, using the supplied number of equal-length pieces from each bound
+    to the average
+  synonyms:
+  - --linearize-nonbinary-penalty-terms
+  args: !SimpleFlagArg
+    name: LINEARIZE_NONBINARY_PENALTY_TERMS
+  optional: true
+- !Flag
+  description: Specify the strategy to distribute breakpoints on the [lb, ub] interval
+    of each variable when linearizing. 0 indicates uniform distribution. 1 indicates
+    breakpoints at the node min and max, uniformly in- between. 2 indicates more aggressive
+    concentration of breakpoints near the observed node min/max.
+  synonyms:
+  - --breakpoint-strategy
+  args: !SimpleFlagArg
+    name: BREAKPOINT_STRATEGY
+  optional: true
+- !Flag
+  description: Do not linearize PH objective terms involving binary decision variables
+  synonyms:
+  - --retain-quadratic-binary-terms
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Eliminate proximal terms (i.e., the quadratic penalty terms) from the
+    weighted PH objective. Default is False.
+  synonyms:
+  - --drop-proximal-terms
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable the Watson-Woodruff PH extensions plugin. Default is False.
+  synonyms:
+  - --enable-ww-extensions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The name of a configuration file for the Watson- Woodruff PH extensions
+    plugin.
+  synonyms:
+  - --ww-extension-cfgfile
+  args: !SimpleFlagArg
+    name: WW_EXTENSION_CFGFILE
+  optional: true
+- !Flag
+  description: The name of a variable suffix file for the Watson- Woodruff PH extensions
+    plugin.
+  synonyms:
+  - --ww-extension-suffixfile
+  args: !SimpleFlagArg
+    name: WW_EXTENSION_SUFFIXFILE
+  optional: true
+- !Flag
+  description: The name of a variable annotation file for the Watson- Woodruff PH
+    extensions plugin.
+  synonyms:
+  - --ww-extension-annotationfile
+  args: !SimpleFlagArg
+    name: WW_EXTENSION_ANNOTATIONFILE
+  optional: true
+- !Flag
+  description: The name of a python module specifying a user-defined PH extension
+    plugin.
+  synonyms:
+  - --user-defined-extension
+  args: !SimpleFlagArg
+    name: USER_DEFINED_EXTENSIONS
+  optional: true
+- !Flag
+  description: Preprocess fixed/freed variables in scenario instances, rather than
+    write them to solver plugins. Default is False.
+  synonyms:
+  - --preprocess-fixed-variables
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specifies the mipgap for all PH scenario sub-problems
+  synonyms:
+  - --scenario-mipgap
+  args: !SimpleFlagArg
+    name: SCENARIO_MIPGAP
+  optional: true
+- !Flag
+  description: Solver options for all PH scenario sub-problems
+  synonyms:
+  - --scenario-solver-options
+  args: !SimpleFlagArg
+    name: SCENARIO_SOLVER_OPTIONS
+  optional: true
+- !Flag
+  description: 'Specify the solver with which to solve scenario sub- problems.  The
+    following solver types are currently supported: asl, baron, bilevel_blp_global,
+    bilevel_blp_local, bilevel_ld, cbc, cplex, glpk, gurobi, mpec_minlp, mpec_nlp,
+    openopt, os, path, pico, ps, py, scip, xpress; Default: cplex'
+  synonyms:
+  - --solver
+  args: !SimpleFlagArg
+    name: SOLVER_TYPE
+  optional: true
+- !Flag
+  description: 'The type of IO used to execute the solver.  Different solvers support
+    different types of IO, but the following are common options: lp - generate LP
+    files, nl - generate NL files, python - direct Python interface, os - generate
+    OSiL XML files.'
+  synonyms:
+  - --solver-io
+  args: !SimpleFlagArg
+    name: SOLVER_IO
+  optional: true
+- !Flag
+  description: The type of solver manager used to coordinate scenario sub-problem
+    solves. Default is serial.
+  synonyms:
+  - --solver-manager
+  args: !SimpleFlagArg
+    name: SOLVER_MANAGER_TYPE
+  optional: true
+- !Flag
+  description: The hostname to bind on. By default, the first dispatcher found will
+    be used. This option can also help speed up initialization time if the hostname
+    is known (e.g., localhost)
+  synonyms:
+  - --pyro-hostname
+  args: !SimpleFlagArg
+    name: PYRO_MANAGER_HOSTNAME
+  optional: true
+- !Flag
+  description: When updating weights, xbars, and rhos across the PHPyro solver manager,
+    it is often expedient to ignore the simple acknowledgement results returned by
+    PH solver servers. Enabling this option instead enables hand-shaking, to ensure
+    message receipt. Clearly only makes sense if the PHPyro solver manager is selected
+  synonyms:
+  - --handshake-with-phpyro
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set the number of idle phsolverserver worker processes expected to
+    be available when the PHPyro solver manager is selected. This option should be
+    used when the number of worker threads is less than the total number of scenarios
+    (or bundles). When this option is not used, PH will attempt to assign each scenario
+    (or bundle) to a single phsolverserver until the timeout indicated by the --phpyro-workers-timeout
+    option occurs.
+  synonyms:
+  - --phpyro-required-workers
+  args: !SimpleFlagArg
+    name: PHPYRO_REQUIRED_WORKERS
+  optional: true
+- !Flag
+  description: Set the time limit (seconds) for finding idle phsolverserver worker
+    processes to be used when the PHPyro solver manager is selected. This option is
+    ignored when --phpyro-required-workers is set manually. Default is 30.
+  synonyms:
+  - --phpyro-workers-timeout
+  args: !SimpleFlagArg
+    name: PHPYRO_WORKERS_TIMEOUT
+  optional: true
+- !Flag
+  description: By default, when running PH using the PHPyro solver manager, leaf-stage
+    variable solutions are not transmitted back to the master PH instance during intermediate
+    PH iterations. This flag will override that behavior for the rare cases where
+    these values are needed. Using this option will possibly have a negative impact
+    on runtime for PH iterations. When PH exits, variable values are collected from
+    all stages whether or not this option was used. Also, note that PH extensions
+    have the ability to override this flag at runtime.
+  synonyms:
+  - --phpyro-transmit-leaf-stage-variable-solution
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable warm-start of scenario sub-problem solves in PH iterations
+    >= 1. Default is False.
+  synonyms:
+  - --disable-warmstarts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Shut down all Pyro-related components associated with the Pyro and
+    PH Pyro solver managers (if specified), including the dispatch server, name server,
+    and any solver servers. Default is False.
+  synonyms:
+  - --shutdown-pyro
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Override the runph option of the same name during the EF solve.
+  synonyms:
+  - --ef-disable-warmstarts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The basename of the extensive form output file (currently only LP and
+    NL formats are supported), if writing or solving of the extensive form is enabled.
+    The full output filename will be of the form '<basename>.{lp,nl}', where the suffix
+    type is determined by the value of the --ef-solver-io or --solver-io option. Default
+    is 'efout'.
+  synonyms:
+  - --ef-output-file
+  args: !SimpleFlagArg
+    name: EF_OUTPUT_FILE
+  optional: true
+- !Flag
+  description: Upon termination, create the extensive-form model and solve it - accounting
+    for all fixed variables.
+  synonyms:
+  - --solve-ef
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Override the runph option of the same name during the EF solve.
+  synonyms:
+  - --ef-solver
+  args: !SimpleFlagArg
+    name: EF_SOLVER_TYPE
+  optional: true
+- !Flag
+  description: The plugin invoked to write the scenario tree solution following the
+    EF solve. If specified, overrides the runph option of the same name; otherwise,
+    the runph option value will be used.
+  synonyms:
+  - --ef-solution-writer
+  args: !SimpleFlagArg
+    name: EF_SOLUTION_WRITER
+  optional: true
+- !Flag
+  description: Override the runph option of the same name during the EF solve.
+  synonyms:
+  - --ef-solver-io
+  args: !SimpleFlagArg
+    name: EF_SOLVER_IO
+  optional: true
+- !Flag
+  description: The type of solver manager used to execute the extensive form solve.
+    Default is serial. This option is not inherited from the runph scenario-based
+    option.
+  synonyms:
+  - --ef-solver-manager
+  args: !SimpleFlagArg
+    name: EF_SOLVER_MANAGER_TYPE
+  optional: true
+- !Flag
+  description: Specifies the mipgap for the EF solve. This option is not inherited
+    from the runph scenario-based option.
+  synonyms:
+  - --ef-mipgap
+  args: !SimpleFlagArg
+    name: EF_MIPGAP
+  optional: true
+- !Flag
+  description: Disable warm-start of the post-PH EF solve. Default is False. This
+    option is not inherited from the runph scenario-based option.
+  synonyms:
+  - --ef-disable-warmstart
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Solver options for the EF problem. This option is not inherited from
+    the runph scenario-based option.
+  synonyms:
+  - --ef-solver-options
+  args: !SimpleFlagArg
+    name: EF_SOLVER_OPTIONS
+  optional: true
+- !Flag
+  description: Override the runph option of the same name during the EF solve.
+  synonyms:
+  - --ef-output-solver-log
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Override the runph option of the same name during the EF solve.
+  synonyms:
+  - --ef-keep-solver-files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Override the runph option of the same name during the EF solve.
+  synonyms:
+  - --ef-symbolic-solver-labels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If a feasible solution can be found, report it (even leaves) in scenario
+    tree format upon termination. Default is False.
+  synonyms:
+  - --output-scenario-tree-solution
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output solver logs during scenario sub-problem solves
+  synonyms:
+  - --output-solver-logs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When interfacing with the solver, use symbol names derived from the
+    model. For example, "my_special_variable[1_2_3]" instead of "v1". Useful for debugging.
+    When using the ASL interface (--solver- io=nl), generates corresponding .row (constraints)
+    and .col (variables) files. The ordering in these files provides a mapping from
+    ASL index to symbolic model names.
+  synonyms:
+  - --symbolic-solver-labels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output solutions obtained after each scenario sub- problem solve
+  synonyms:
+  - --output-solver-results
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output timing statistics for various PH components
+  synonyms:
+  - --output-times
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output timing statistics for instance construction (client-side only
+    when using PHPyro
+  synonyms:
+  - --output-instance-construction-times
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When reporting solutions (if enabled), only output per-variable statistics
+    - not the individual scenario values. Default is False.
+  synonyms:
+  - --report-only-statistics
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Always report PH solutions after each iteration. Enabled if --verbose
+    is enabled. Default is False.
+  synonyms:
+  - --report-solutions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Always report PH weights prior to each iteration. Enabled if --verbose
+    is enabled. Default is False.
+  synonyms:
+  - --report-weights
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Always report PH rhos prior to each iteration. Default is False.
+  synonyms:
+  - --report-rhos-all-iterations
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Report rhos prior to PH iteration 1. Enabled if --verbose is enabled.
+    Default is False.
+  synonyms:
+  - --report-rhos-first-iterations
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Report statistics (variables and weights) for all variables, not just
+    those with values differing from 0. Default is False.
+  synonyms:
+  - --report-for-zero-variable-values
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Report statistics (variables and weights) only for non-converged variables.
+    Default is False.
+  synonyms:
+  - --report-only-nonconverged-variables
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The plugin invoked to write the scenario tree solution. Defaults to
+    the empty list.
+  synonyms:
+  - --solution-writer
+  args: !SimpleFlagArg
+    name: SOLUTION_WRITER
+  optional: true
+- !Flag
+  description: Eliminate PH-related output involving continuous variables.
+  synonyms:
+  - --suppress-continuous-variable-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Generate verbose output for both initialization and execution. Default
+    is False.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Upon termination, create the extensive-form model and write it to a
+    file - accounting for all fixed variables.
+  synonyms:
+  - --write-ef
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable the python garbage collecter. Default is False.
+  synonyms:
+  - --disable-gc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Retain temporary input and output files for scenario sub-problem solves
+  synonyms:
+  - -k
+  - --keep-solver-files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable profiling of Python code.  The value of this option is the number
+    of functions that are summarized.
+  synonyms:
+  - --profile
+  args: !SimpleFlagArg
+    name: PROFILE
+  optional: true
+- !Flag
+  description: When an exception is thrown, show the entire call stack. Ignored if
+    profiling is enabled. Default is False.
+  synonyms:
+  - --traceback
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- runph
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

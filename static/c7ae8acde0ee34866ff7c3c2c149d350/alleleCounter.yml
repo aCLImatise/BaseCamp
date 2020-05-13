@@ -1,0 +1,99 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: '[file]           Path to loci file.'
+  synonyms:
+  - -l
+  - --loci-file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[file]            Path to sample HTS file.'
+  synonyms:
+  - -b
+  - --hts-file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[file]         Path write output file.'
+  synonyms:
+  - -o
+  - --output-file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[file]           Path to reference fasta index file. NB. If cram format\
+    \ is supplied via -b and the reference listed in the cram header can't be found\
+    \ alleleCounter may fail to work correctly."
+  synonyms:
+  - -r
+  - --ref-file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[int]       Minimum base quality [Default: 20].'
+  synonyms:
+  - -m
+  - --min-base-qual
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[int]        Minimum mapping quality [Default: 35].'
+  synonyms:
+  - -q
+  - --min-map-qual
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[string]           Limit calling to named contig.'
+  synonyms:
+  - -c
+  - --contig
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Improves performance where many positions are close together '
+  synonyms:
+  - -d
+  - --dense-snps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enables 10X processing mode. In this mode the HTS input file must be
+    a cellranger produced BAM file.  Allele counts are then given on a per-cellular
+    barcode basis, with each count representing the consensus base for that UMI.  by
+    iterating through bam file rather than using a 'fetch' approach.
+  synonyms:
+  - -x
+  - --is-10x
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[int]       Flag value of reads to retain in allele counting default:
+    [3]. N.B. if the proper-pair flag is are selected, alleleCounter will assume paired-end
+    and filter out any proper-pair flagged reads not in F/R orientation. -F  --filtered-flag
+    [int]       Flag value of reads to exclude in allele counting default: [3852].'
+  synonyms:
+  - -f
+  - --required-flag
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- alleleCounter
+subcommands: []
+help_flag: !Flag
+  description: Display this usage information.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Display version number.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

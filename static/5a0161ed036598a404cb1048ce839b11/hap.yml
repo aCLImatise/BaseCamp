@@ -1,0 +1,462 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Specify a reference file.
+  synonyms:
+  - -r
+  - --reference
+  args: !SimpleFlagArg
+    name: REF
+  optional: true
+- !Flag
+  description: Filename prefix for report output.
+  synonyms:
+  - -o
+  - --report-prefix
+  args: !SimpleFlagArg
+    name: REPORTS_PREFIX
+  optional: true
+- !Flag
+  description: Directory for scratch files.
+  synonyms:
+  - --scratch-prefix
+  args: !SimpleFlagArg
+    name: SCRATCH_PREFIX
+  optional: true
+- !Flag
+  description: Filename prefix for scratch report output.
+  synonyms:
+  - --keep-scratch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Annotation format in input VCF file.
+  synonyms:
+  - -t
+  - --type
+  args: !ChoiceFlagArg
+    choices:
+    - xcmp
+    - ga4gh
+  optional: true
+- !Flag
+  description: False positive / confident call regions (.bed or .bed.gz). Calls outside
+    these regions will be labelled as UNK.
+  synonyms:
+  - -f
+  - --false-positives
+  args: !SimpleFlagArg
+    name: FP_BEDFILE
+  optional: true
+- !Flag
+  description: Stratification file list (TSV format -- first column is region name,
+    second column is file name).
+  synonyms:
+  - --stratification
+  args: !SimpleFlagArg
+    name: STRAT_TSV
+  optional: true
+- !Flag
+  description: Add single stratification region, e.g. --stratification-region TEST:test.bed
+  synonyms:
+  - --stratification-region
+  args: !SimpleFlagArg
+    name: STRAT_REGIONS
+  optional: true
+- !Flag
+  description: Add chr prefix to stratification files if necessary
+  synonyms:
+  - --stratification-fixchr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write an annotated VCF.
+  synonyms:
+  - -V
+  - --write-vcf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write advanced counts and metrics.
+  synonyms:
+  - -X
+  - --write-counts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not write advanced counts and metrics.
+  synonyms:
+  - --no-write-counts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write VTC field in the final VCF which gives the counts each position
+    has contributed to.
+  synonyms:
+  - --output-vtc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When using XCMP, preserve and merge the INFO fields in truth and query.
+    Useful for ROC computation.
+  synonyms:
+  - --preserve-info
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Select a feature to produce a ROC on (INFO feature, QUAL, GQX, ...).
+  synonyms:
+  - --roc
+  args: !SimpleFlagArg
+    name: ROC
+  optional: true
+- !Flag
+  description: Disable ROC computation and only output summary statistics for more
+    concise output.
+  synonyms:
+  - --no-roc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Select a list of regions to compute ROCs in. By default, only the '*'
+    region will produce ROC output (aggregate variant counts).
+  synonyms:
+  - --roc-regions
+  args: !SimpleFlagArg
+    name: ROC_REGIONS
+  optional: true
+- !Flag
+  description: Select a filter to ignore when making ROCs.
+  synonyms:
+  - --roc-filter
+  args: !SimpleFlagArg
+    name: ROC_FILTER
+  optional: true
+- !Flag
+  description: Minimum spacing between ROC QQ levels.
+  synonyms:
+  - --roc-delta
+  args: !SimpleFlagArg
+    name: ROC_DELTA
+  optional: true
+- !Flag
+  description: Confidence level for Jeffrey's CI for recall, precision and fraction
+    of non-assessed calls.
+  synonyms:
+  - --ci-alpha
+  args: !SimpleFlagArg
+    name: CI_ALPHA
+  optional: true
+- !Flag
+  description: Disable JSON file output.
+  synonyms:
+  - --no-json
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Comma-separated list of locations [use naming after preprocessing],
+    when not specified will use whole VCF.
+  synonyms:
+  - --location
+  - -l
+  args: !SimpleFlagArg
+    name: LOCATIONS
+  optional: true
+- !Flag
+  description: Keep only PASS variants.
+  synonyms:
+  - --pass-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify a comma-separated list of filters to apply (by default all
+    filters are ignored / passed on.
+  synonyms:
+  - --filters-only
+  args: !SimpleFlagArg
+    name: FILTERS_ONLY
+  optional: true
+- !Flag
+  description: Restrict analysis to given (sparse) regions (using -R in bcftools).
+  synonyms:
+  - -R
+  - --restrict-regions
+  args: !SimpleFlagArg
+    name: REGIONS_BEDFILE
+  optional: true
+- !Flag
+  description: Restrict analysis to given (dense) regions (using -T in bcftools).
+  synonyms:
+  - -T
+  - --target-regions
+  args: !SimpleFlagArg
+    name: TARGETS_BEDFILE
+  optional: true
+- !Flag
+  description: Left-shift variants safely.
+  synonyms:
+  - -L
+  - --leftshift
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not left-shift variants safely.
+  synonyms:
+  - --no-leftshift
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Decompose variants into primitives. This results in more granular counts.
+  synonyms:
+  - --decompose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not decompose variants into primitives.
+  synonyms:
+  - -D
+  - --no-decompose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable preprocessing through bcftools norm -c x -D (requires external
+    preprocessing to be switched on).
+  synonyms:
+  - --bcftools-norm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Add chr prefix to VCF records where necessary (default: auto, attempt
+    to match reference).'
+  synonyms:
+  - --fixchr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Do not add chr prefix to VCF records (default: auto, attempt to match
+    reference).'
+  synonyms:
+  - --no-fixchr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use BCF internally. This is the default when the input file is in BCF
+    format already. Using BCF can speed up temp file access, but may fail for VCF
+    files that have broken headers or records that don't comply with the header.
+  synonyms:
+  - --bcf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assume the input file is a somatic call file and squash all columns
+    into one, putting all FORMATs into INFO + use half genotypes (see also --set-gt).
+    This will replace all sample columns and replace them with a single one.
+  synonyms:
+  - --somatic
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'This is used to treat Strelka somatic files Possible values for this
+    parameter: half / hemi / het / hom / half to assign one of the following genotypes
+    to the resulting sample: 1 | 0/1 | 1/1 | ./1. This will replace all sample columns
+    and replace them with a single one.'
+  synonyms:
+  - --set-gt
+  args: !ChoiceFlagArg
+    choices:
+    - half
+    - hemi
+    - het
+    - hom
+    - first
+  optional: true
+- !Flag
+  description: Remove any variants genotyped as <NON_REF>.
+  synonyms:
+  - --filter-nonref
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Convert the truth set from genome VCF format to a VCF before processing.
+  synonyms:
+  - --convert-gvcf-truth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Convert the query set from genome VCF format to a VCF before processing.
+  synonyms:
+  - --convert-gvcf-query
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Specify sex. This determines how haploid calls on chrX get treated:
+    for male samples, all non-ref calls (in the truthset only when running through
+    hap.py) are given a 1/1 genotype.'
+  synonyms:
+  - --gender
+  args: !ChoiceFlagArg
+    choices:
+    - male
+    - female
+    - auto
+    - none
+  optional: true
+- !Flag
+  description: Preprocess truth file with same settings as query (default is to accept
+    truth in original format).
+  synonyms:
+  - --preprocess-truth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use filtered variant calls in truth file (by default, only PASS calls
+    in the truth file are used)
+  synonyms:
+  - --usefiltered-truth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Preprocessing window size (variants further apart than that size are
+    not expected to interfere).
+  synonyms:
+  - --preprocessing-window-size
+  args: !SimpleFlagArg
+    name: PREPROCESS_WINDOW
+  optional: true
+- !Flag
+  description: Adjust confident regions to include variant locations. Note this will
+    only include variants that are included in the CONF regions already when viewing
+    with bcftools; this option only makes sure insertions are padded correctly in
+    the CONF regions (to capture these, both the base before and after must be contained
+    in the bed file).
+  synonyms:
+  - --adjust-conf-regions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not adjust confident regions for insertions.
+  synonyms:
+  - --no-adjust-conf-regions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable haplotype comparison (only count direct GT matches as TP).
+  synonyms:
+  - --unhappy
+  - --no-haplotype-comparison
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum distance between variants such that they fall into the same
+    superlocus.
+  synonyms:
+  - -w
+  - --window-size
+  args: !SimpleFlagArg
+    name: WINDOW
+  optional: true
+- !Flag
+  description: Enumeration threshold / maximum number of sequences to enumerate per
+    block.
+  synonyms:
+  - --xcmp-enumeration-threshold
+  args: !SimpleFlagArg
+    name: MAX_ENUM
+  optional: true
+- !Flag
+  description: Expand haplotype blocks by this many basepairs left and right.
+  synonyms:
+  - --xcmp-expand-hapblocks
+  args: !SimpleFlagArg
+    name: HB_EXPAND
+  optional: true
+- !Flag
+  description: Number of threads to use.
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: Comparison engine to use.
+  synonyms:
+  - --engine
+  args: !ChoiceFlagArg
+    choices:
+    - xcmp
+    - vcfeval
+    - scmp-somatic
+    - scmp-distance
+  optional: true
+- !Flag
+  description: This parameter should give the path to the "rtg" executable. The default
+    is rtg
+  synonyms:
+  - --engine-vcfeval-path
+  args: !SimpleFlagArg
+    name: ENGINE_VCFEVAL
+  optional: true
+- !Flag
+  description: Vcfeval needs the reference sequence formatted in its own file format
+    (SDF -- run rtg format -o ref.SDF ref.fa). You can specify this here to save time
+    when running hap.py with vcfeval. If no SDF folder is specified, hap.py will create
+    a temporary one.
+  synonyms:
+  - --engine-vcfeval-template
+  args: !SimpleFlagArg
+    name: ENGINE_VCFEVAL_TEMPLATE
+  optional: true
+- !Flag
+  description: For distance-based matching (vcfeval and scmp), this is the distance
+    between variants to use.
+  synonyms:
+  - --scmp-distance
+  args: !SimpleFlagArg
+    name: ENGINE_SCMP_DISTANCE
+  optional: true
+- !Flag
+  description: For distance-based matching (vcfeval and scmp), this is the distance
+    between variants to use.
+  synonyms:
+  - --lose-match-distance
+  args: !SimpleFlagArg
+    name: ENGINE_SCMP_DISTANCE
+  optional: true
+- !Flag
+  description: Write logging information into file rather than to stderr
+  synonyms:
+  - --logfile
+  args: !SimpleFlagArg
+    name: LOGFILE
+  optional: true
+- !Flag
+  description: Raise logging level from warning to info.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set logging level to output errors only.
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- hap.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show version number and exit.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

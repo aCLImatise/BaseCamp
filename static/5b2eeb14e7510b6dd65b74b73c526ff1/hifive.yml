@@ -1,0 +1,3043 @@
+!Command
+positional: []
+named: []
+command:
+- hifive
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: The name of the file to write HiFive Fends to.
+    position: 0
+    name: output
+    optional: false
+  named:
+  - !Flag
+    description: Fend file in HiCPipe-compatible tabular format, optionally containing
+      fend characteristics (GC content and/or mappability).
+    synonyms:
+    - -F
+    - --fend
+    args: !SimpleFlagArg
+      name: FEND
+    optional: true
+  - !Flag
+    description: Bed file containing either RE fragment boundary data or RE cutsites.
+    synonyms:
+    - -B
+    - --bed
+    args: !SimpleFlagArg
+      name: BED
+    optional: true
+  - !Flag
+    description: Text file containing chromosome names and lengths.
+    synonyms:
+    - -L
+    - --length
+    args: !SimpleFlagArg
+      name: LENGTH
+    optional: true
+  - !Flag
+    description: Interval to bin data into.
+    synonyms:
+    - --binned
+    args: !SimpleFlagArg
+      name: BINNED
+    optional: true
+  - !Flag
+    description: The name of the restriction enzyme used to produce the RE fragments.
+    synonyms:
+    - -r
+    - --re
+    args: !SimpleFlagArg
+      name: RE
+    optional: true
+  - !Flag
+    description: The name of the genome RE fragments correspond to.
+    synonyms:
+    - -g
+    - --genome
+    args: !SimpleFlagArg
+      name: GENOME
+    optional: true
+  - !Flag
+    description: 'Silence output messages. [default: False]'
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - hifive
+  - fends
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: The file name of an appropriate HiFive Fend file.
+    position: 0
+    name: fend
+    optional: false
+  - !Positional
+    description: The name of the file to write HiFive HiCData to.
+    position: 1
+    name: output
+    optional: false
+  named:
+  - !Flag
+    description: BAM, --bam BAM BAM A pair of BAM read end files from a single sequencing
+      run. For multiple runs, this option can be passed multiple times.
+    synonyms:
+    - -S
+    args: !SimpleFlagArg
+      name: BAM
+    optional: true
+  - !Flag
+    description: A tab-separated text file containing pairs of read ends (chr1 pos1
+      strand1 chr2 pos2 strand2), one per line. For multiple files, this option can
+      be passed multiple times.
+    synonyms:
+    - -R
+    - --raw
+    args: !SimpleFlagArg
+      name: RAW
+    optional: true
+  - !Flag
+    description: A HiCPipe-style tabular MAT file containing fend pair counts.
+    synonyms:
+    - -M
+    - --mat
+    args: !SimpleFlagArg
+      name: MAT
+    optional: true
+  - !Flag
+    description: Binned matrix containing summed fend interactions.
+    synonyms:
+    - -X
+    - --matrix
+    args: !SimpleFlagArg
+      name: MATRIX
+    optional: true
+  - !Flag
+    description: 'The maximum allowable distance sum between both fend ends and cutsites.
+      [default: 500]'
+    synonyms:
+    - -i
+    - --insert
+    args: !SimpleFlagArg
+      name: INSERT
+    optional: true
+  - !Flag
+    description: 'Skip filtering of PCR duplicates. [default: False]'
+    synonyms:
+    - --skip-duplicate-filtering
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Silence output messages. [default: False]'
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - hifive
+  - hic-data
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: The file name of an appropriate HiFive HiCData file.
+    position: 0
+    name: data
+    optional: false
+  - !Positional
+    description: The name of the file to write HiFive HiC project to.
+    position: 1
+    name: output
+    optional: false
+  named:
+  - !Flag
+    description: 'A comma-separated list of chromosomes to learn correction values
+      for (None indicates all chromosomes). [default: None]'
+    synonyms:
+    - -c
+    - --chromosomes
+    args: !SimpleFlagArg
+      name: CHROMS
+    optional: true
+  - !Flag
+    description: 'The minimum number of interactions needed for valid fragment. [default:
+      20]'
+    synonyms:
+    - -f
+    - --min-interactions
+    args: !SimpleFlagArg
+      name: MININT
+    optional: true
+  - !Flag
+    description: 'The minimum interaction distance to include in fragment filtering.
+      [default: 0]'
+    synonyms:
+    - -m
+    - --min-distance
+    args: !SimpleFlagArg
+      name: MINDIST
+    optional: true
+  - !Flag
+    description: 'The maximum interaction distance to include in fragment filtering
+      (None or zero indicate no maximum). [default: 0]'
+    synonyms:
+    - -x
+    - --max-distance
+    args: !SimpleFlagArg
+      name: MAXDIST
+    optional: true
+  - !Flag
+    description: 'The smallest interaction distance bin size for the distance-dependence
+      function. [default: 1000]'
+    synonyms:
+    - -j
+    - --min-binsize
+    args: !SimpleFlagArg
+      name: MINBIN
+    optional: true
+  - !Flag
+    description: 'The number of bins to partion the interaction distance range into
+      for distance-dependence function. A value of zero indicates that finding the
+      distance dependence function should be skipped. [default: 100]'
+    synonyms:
+    - -n
+    - --num-bins
+    args: !SimpleFlagArg
+      name: NUMBINS
+    optional: true
+  - !Flag
+    description: 'Silence output messages. [default: False]'
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - hifive
+  - hic-project
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - hifive
+  - hic-normalize
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: The name of the HiFive HiC project to normalize.
+      position: 0
+      name: project
+      optional: false
+    named:
+    - !Flag
+      description: 'The minimum interaction distance to include in normalization.
+        [default: 0]'
+      synonyms:
+      - -m
+      - --min-distance
+      args: !SimpleFlagArg
+        name: MINDIST
+      optional: true
+    - !Flag
+      description: 'The maximum interaction distance to include in normalization (None
+        or zero indicate no maximum). [default: None]'
+      synonyms:
+      - -x
+      - --max-distance
+      args: !SimpleFlagArg
+        name: MAXDIST
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of chromosomes to learn correction values
+        for (None indicates all chromosomes). [default: None]'
+      synonyms:
+      - -c
+      - --chromosomes
+      args: !SimpleFlagArg
+        name: CHROMS
+      optional: true
+    - !Flag
+      description: 'An alternate filename to save the normalized project to. If not
+        given, the original project file will be overwritten. [default: None]'
+      synonyms:
+      - -o
+      - --output-file
+      args: !SimpleFlagArg
+        name: OUTPUT
+      optional: true
+    - !Flag
+      description: 'Silence output messages. [default: False]'
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'The maximum number of iterations to carry on gradient descent
+        for. [default: 1000]'
+      synonyms:
+      - -b
+      - --max-iterations
+      args: !SimpleFlagArg
+        name: PROBITER
+      optional: true
+    - !Flag
+      description: 'The minimum allowable absolute gradient size to coninute learning
+        process. [default: 0.0005]'
+      synonyms:
+      - -g
+      - --min-change
+      args: !SimpleFlagArg
+        name: CHANGE
+      optional: true
+    - !Flag
+      description: 'Precalculate correction values from fend means for the probability
+        algorithm. [default: False]'
+      synonyms:
+      - -p
+      - --precalculate
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "The scaling factor for decreasing learning rate by if step doesn't\
+        \ meet armijo criterion. [default: 0.4]"
+      synonyms:
+      - -l
+      - --learning-step
+      args: !SimpleFlagArg
+        name: STEP
+      optional: true
+    - !Flag
+      description: 'Which probability model to use for normalization. [default: binomial]'
+      synonyms:
+      - -a
+      - --probability-model
+      args: !ChoiceFlagArg
+        choices:
+        - binomial
+        - poisson
+      optional: true
+    command:
+    - hifive
+    - hic-normalize
+    - probability
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: The name of the HiFive HiC project to normalize.
+      position: 0
+      name: project
+      optional: false
+    named:
+    - !Flag
+      description: 'The minimum interaction distance to include in normalization.
+        [default: 0]'
+      synonyms:
+      - -m
+      - --min-distance
+      args: !SimpleFlagArg
+        name: MINDIST
+      optional: true
+    - !Flag
+      description: 'The maximum interaction distance to include in normalization (None
+        or zero indicate no maximum). [default: None]'
+      synonyms:
+      - -x
+      - --max-distance
+      args: !SimpleFlagArg
+        name: MAXDIST
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of chromosomes to learn correction values
+        for (None indicates all chromosomes). [default: None]'
+      synonyms:
+      - -c
+      - --chromosomes
+      args: !SimpleFlagArg
+        name: CHROMS
+      optional: true
+    - !Flag
+      description: 'An alternate filename to save the normalized project to. If not
+        given, the original project file will be overwritten. [default: None]'
+      synonyms:
+      - -o
+      - --output-file
+      args: !SimpleFlagArg
+        name: OUTPUT
+      optional: true
+    - !Flag
+      description: 'Silence output messages. [default: False]'
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'The minimum number of iterations to run the express learning phase
+        for. [default: 1000]'
+      synonyms:
+      - -e
+      - --express-iterations
+      args: !SimpleFlagArg
+        name: EXPITER
+      optional: true
+    - !Flag
+      description: 'The maximum allowable change per iteration in fend correction
+        parameter values allowable to terminate learning. [default: 0.0001]'
+      synonyms:
+      - -g
+      - --min-change
+      args: !SimpleFlagArg
+        name: CHANGE
+      optional: true
+    - !Flag
+      description: 'Remove the distant-dependent portion of the signal prior to learning
+        corrections with the express algorithm. [default: False]'
+      synonyms:
+      - -d
+      - --remove-distance
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Which set of reads to use for express normalization. [default:
+        cis]'
+      synonyms:
+      - -w
+      - --express-reads
+      args: !ChoiceFlagArg
+        choices:
+        - cis
+        - trans
+        - all
+      optional: true
+    - !Flag
+      description: 'Use binary indicator instead of counts. [default: False]'
+      synonyms:
+      - -k
+      - --binary
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Use Knight-Ruiz algorithm for unweighted matrix balancing. [default:
+        False]'
+      synonyms:
+      - -z
+      - --knight-ruiz
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'The minimum number of interactions for fend filtering, if refiltering
+        is required due to distance cutoff or selected reads. [default: 20]'
+      synonyms:
+      - -f
+      - --min-interactions
+      args: !SimpleFlagArg
+        name: MININT
+      optional: true
+    command:
+    - hifive
+    - hic-normalize
+    - express
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: The name of the HiFive HiC project to normalize.
+      position: 0
+      name: project
+      optional: false
+    named:
+    - !Flag
+      description: 'The minimum interaction distance to include in normalization.
+        [default: 0]'
+      synonyms:
+      - -m
+      - --min-distance
+      args: !SimpleFlagArg
+        name: MINDIST
+      optional: true
+    - !Flag
+      description: 'The maximum interaction distance to include in normalization (None
+        or zero indicate no maximum). [default: None]'
+      synonyms:
+      - -x
+      - --max-distance
+      args: !SimpleFlagArg
+        name: MAXDIST
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of chromosomes to learn correction values
+        for (None indicates all chromosomes). [default: None]'
+      synonyms:
+      - -c
+      - --chromosomes
+      args: !SimpleFlagArg
+        name: CHROMS
+      optional: true
+    - !Flag
+      description: 'An alternate filename to save the normalized project to. If not
+        given, the original project file will be overwritten. [default: None]'
+      synonyms:
+      - -o
+      - --output-file
+      args: !SimpleFlagArg
+        name: OUTPUT
+      optional: true
+    - !Flag
+      description: 'Silence output messages. [default: False]'
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'The maximum number of iterations to run binning modeling for.
+        [default: 1000]'
+      synonyms:
+      - -r
+      - --binning-iterations
+      args: !SimpleFlagArg
+        name: BINITER
+      optional: true
+    - !Flag
+      description: 'The learning threshold cutoff for binning algorithm. [default:
+        1.0]'
+      synonyms:
+      - -t
+      - --learning-threshold
+      args: !SimpleFlagArg
+        name: THRESHOLD
+      optional: true
+    - !Flag
+      description: 'Which set of reads to use for binning normalization. [default:
+        cis]'
+      synonyms:
+      - -y
+      - --binning-reads
+      args: !ChoiceFlagArg
+        choices:
+        - cis
+        - trans
+        - all
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of parameters to include in binning model.
+        [default: len,distance]'
+      synonyms:
+      - -v
+      - --model
+      args: !SimpleFlagArg
+        name: MODEL
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of the number of bins to separate model
+        parameters into. [default: 20,20]'
+      synonyms:
+      - -s
+      - --model-bins
+      args: !SimpleFlagArg
+        name: MODELBINS
+      optional: true
+    - !Flag
+      description: "A comma-separated list parameter types ('even' or 'fixed', depending\
+        \ on whether bins should contain equal numbers of fends or be equally spaced\
+        \ along the parameter range, and a '-const' suffix to indicate the values\
+        \ are not to be optimized). [default: even,fixed- const]"
+      synonyms:
+      - -u
+      - --parameter-types
+      args: !SimpleFlagArg
+        name: PARAMETERS
+      optional: true
+    - !Flag
+      description: 'The number of pseudo-counts to add to each bin prior to learning.
+        [default: None]'
+      synonyms:
+      - --pseudocounts
+      args: !SimpleFlagArg
+        name: PSEUDO
+      optional: true
+    command:
+    - hifive
+    - hic-normalize
+    - binning
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: The name of the HiFive HiC project to normalize.
+      position: 0
+      name: project
+      optional: false
+    named:
+    - !Flag
+      description: 'The minimum interaction distance to include in normalization.
+        [default: 0]'
+      synonyms:
+      - -m
+      - --min-distance
+      args: !SimpleFlagArg
+        name: MINDIST
+      optional: true
+    - !Flag
+      description: 'The maximum interaction distance to include in normalization (None
+        or zero indicate no maximum). [default: None]'
+      synonyms:
+      - -x
+      - --max-distance
+      args: !SimpleFlagArg
+        name: MAXDIST
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of chromosomes to learn correction values
+        for (None indicates all chromosomes). [default: None]'
+      synonyms:
+      - -c
+      - --chromosomes
+      args: !SimpleFlagArg
+        name: CHROMS
+      optional: true
+    - !Flag
+      description: 'An alternate filename to save the normalized project to. If not
+        given, the original project file will be overwritten. [default: None]'
+      synonyms:
+      - -o
+      - --output-file
+      args: !SimpleFlagArg
+        name: OUTPUT
+      optional: true
+    - !Flag
+      description: 'Silence output messages. [default: False]'
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'The maximum number of iterations to carry on gradient descent
+        for. [default: 1000]'
+      synonyms:
+      - -b
+      - --max-iterations
+      args: !SimpleFlagArg
+        name: PROBITER
+      optional: true
+    - !Flag
+      description: 'The minimum allowable absolute gradient size to coninute learning
+        process. [default: 0.0005]'
+      synonyms:
+      - -g
+      - --min-change
+      args: !SimpleFlagArg
+        name: CHANGE
+      optional: true
+    - !Flag
+      description: 'Precalculate correction values from fend means for the probability
+        algorithm. [default: False]'
+      synonyms:
+      - -p
+      - --precalculate
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "The scaling factor for decreasing learning rate by if step doesn't\
+        \ meet armijo criterion. [default: 0.4]"
+      synonyms:
+      - -l
+      - --learning-step
+      args: !SimpleFlagArg
+        name: STEP
+      optional: true
+    - !Flag
+      description: 'Which probability model to use for normalization. [default: binomial]'
+      synonyms:
+      - -a
+      - --probability-model
+      args: !ChoiceFlagArg
+        choices:
+        - binomial
+        - poisson
+      optional: true
+    - !Flag
+      description: 'The maximum number of iterations to run binning modeling for.
+        [default: 1000]'
+      synonyms:
+      - -r
+      - --binning-iterations
+      args: !SimpleFlagArg
+        name: BINITER
+      optional: true
+    - !Flag
+      description: 'The learning threshold cutoff for binning algorithm. [default:
+        1.0]'
+      synonyms:
+      - -t
+      - --learning-threshold
+      args: !SimpleFlagArg
+        name: THRESHOLD
+      optional: true
+    - !Flag
+      description: 'Which set of reads to use for binning normalization. [default:
+        cis]'
+      synonyms:
+      - -y
+      - --binning-reads
+      args: !ChoiceFlagArg
+        choices:
+        - cis
+        - trans
+        - all
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of parameters to include in binning model.
+        [default: len,distance]'
+      synonyms:
+      - -v
+      - --model
+      args: !SimpleFlagArg
+        name: MODEL
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of the number of bins to separate model
+        parameters into. [default: 20,20]'
+      synonyms:
+      - -s
+      - --model-bins
+      args: !SimpleFlagArg
+        name: MODELBINS
+      optional: true
+    - !Flag
+      description: "A comma-separated list parameter types ('even' or 'fixed', depending\
+        \ on whether bins should contain equal numbers of fends or be equally spaced\
+        \ along the parameter range, and a '-const' suffix to indicate the values\
+        \ are not to be optimized). [default: even,fixed- const]"
+      synonyms:
+      - -u
+      - --parameter-types
+      args: !SimpleFlagArg
+        name: PARAMETERS
+      optional: true
+    - !Flag
+      description: 'The number of pseudo-counts to add to each bin prior to learning.
+        [default: None]'
+      synonyms:
+      - --pseudocounts
+      args: !SimpleFlagArg
+        name: PSEUDO
+      optional: true
+    command:
+    - hifive
+    - hic-normalize
+    - binning-probability
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: The name of the HiFive HiC project to normalize.
+      position: 0
+      name: project
+      optional: false
+    named:
+    - !Flag
+      description: 'The minimum interaction distance to include in normalization.
+        [default: 0]'
+      synonyms:
+      - -m
+      - --min-distance
+      args: !SimpleFlagArg
+        name: MINDIST
+      optional: true
+    - !Flag
+      description: 'The maximum interaction distance to include in normalization (None
+        or zero indicate no maximum). [default: None]'
+      synonyms:
+      - -x
+      - --max-distance
+      args: !SimpleFlagArg
+        name: MAXDIST
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of chromosomes to learn correction values
+        for (None indicates all chromosomes). [default: None]'
+      synonyms:
+      - -c
+      - --chromosomes
+      args: !SimpleFlagArg
+        name: CHROMS
+      optional: true
+    - !Flag
+      description: 'An alternate filename to save the normalized project to. If not
+        given, the original project file will be overwritten. [default: None]'
+      synonyms:
+      - -o
+      - --output-file
+      args: !SimpleFlagArg
+        name: OUTPUT
+      optional: true
+    - !Flag
+      description: 'Silence output messages. [default: False]'
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'The minimum number of iterations to run the express learning phase
+        for. [default: 1000]'
+      synonyms:
+      - -e
+      - --express-iterations
+      args: !SimpleFlagArg
+        name: EXPITER
+      optional: true
+    - !Flag
+      description: 'The maximum allowable change per iteration in fend correction
+        parameter values allowable to terminate learning. [default: 0.0001]'
+      synonyms:
+      - -g
+      - --min-change
+      args: !SimpleFlagArg
+        name: CHANGE
+      optional: true
+    - !Flag
+      description: 'Remove the distant-dependent portion of the signal prior to learning
+        corrections with the express algorithm. [default: False]'
+      synonyms:
+      - -d
+      - --remove-distance
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Which set of reads to use for express normalization. [default:
+        cis]'
+      synonyms:
+      - -w
+      - --express-reads
+      args: !ChoiceFlagArg
+        choices:
+        - cis
+        - trans
+        - all
+      optional: true
+    - !Flag
+      description: 'Use binary indicator instead of counts. [default: False]'
+      synonyms:
+      - -k
+      - --binary
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Use Knight-Ruiz algorithm for unweighted matrix balancing. [default:
+        False]'
+      synonyms:
+      - -z
+      - --knight-ruiz
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'The minimum number of interactions for fend filtering, if refiltering
+        is required due to distance cutoff or selected reads. [default: 20]'
+      synonyms:
+      - -f
+      - --min-interactions
+      args: !SimpleFlagArg
+        name: MININT
+      optional: true
+    - !Flag
+      description: 'The maximum number of iterations to run binning modeling for.
+        [default: 1000]'
+      synonyms:
+      - -r
+      - --binning-iterations
+      args: !SimpleFlagArg
+        name: BINITER
+      optional: true
+    - !Flag
+      description: 'The learning threshold cutoff for binning algorithm. [default:
+        1.0]'
+      synonyms:
+      - -t
+      - --learning-threshold
+      args: !SimpleFlagArg
+        name: THRESHOLD
+      optional: true
+    - !Flag
+      description: 'Which set of reads to use for binning normalization. [default:
+        cis]'
+      synonyms:
+      - -y
+      - --binning-reads
+      args: !ChoiceFlagArg
+        choices:
+        - cis
+        - trans
+        - all
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of parameters to include in binning model.
+        [default: len,distance]'
+      synonyms:
+      - -v
+      - --model
+      args: !SimpleFlagArg
+        name: MODEL
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of the number of bins to separate model
+        parameters into. [default: 20,20]'
+      synonyms:
+      - -s
+      - --model-bins
+      args: !SimpleFlagArg
+        name: MODELBINS
+      optional: true
+    - !Flag
+      description: "A comma-separated list parameter types ('even' or 'fixed', depending\
+        \ on whether bins should contain equal numbers of fends or be equally spaced\
+        \ along the parameter range, and a '-const' suffix to indicate the values\
+        \ are not to be optimized). [default: even,fixed- const]"
+      synonyms:
+      - -u
+      - --parameter-types
+      args: !SimpleFlagArg
+        name: PARAMETERS
+      optional: true
+    - !Flag
+      description: 'The number of pseudo-counts to add to each bin prior to learning.
+        [default: None]'
+      synonyms:
+      - --pseudocounts
+      args: !SimpleFlagArg
+        name: PSEUDO
+      optional: true
+    command:
+    - hifive
+    - hic-normalize
+    - binning-express
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - hifive
+  - hic-complete
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Fend file in HiCPipe-compatible tabular format, optionally containing
+        fend characteristics (GC content and/or mappability).
+      synonyms:
+      - -F
+      - --fend
+      args: !SimpleFlagArg
+        name: FEND
+      optional: true
+    - !Flag
+      description: Bed file containing either RE fragment boundary data or RE cutsites.
+      synonyms:
+      - -B
+      - --bed
+      args: !SimpleFlagArg
+        name: BED
+      optional: true
+    - !Flag
+      description: Text file containing chromosome names and lengths.
+      synonyms:
+      - -L
+      - --length
+      args: !SimpleFlagArg
+        name: LENGTH
+      optional: true
+    - !Flag
+      description: Interval to bin data into. If set to zero, indicates non-uniform
+        binning to be read from bed file.
+      synonyms:
+      - --binned
+      args: !SimpleFlagArg
+        name: BINNED
+      optional: true
+    - !Flag
+      description: The name of the restriction enzyme used to produce the RE fragments.
+      synonyms:
+      - --re
+      args: !SimpleFlagArg
+        name: RE
+      optional: true
+    - !Flag
+      description: The name of the genome RE fragments correspond to.
+      synonyms:
+      - --genome
+      args: !SimpleFlagArg
+        name: GENOME
+      optional: true
+    - !Flag
+      description: BAM, --bam BAM BAM A pair of BAM read end files from a single sequencing
+        run. For multiple runs, this option can be passed multiple times.
+      synonyms:
+      - -S
+      args: !SimpleFlagArg
+        name: BAM
+      optional: true
+    - !Flag
+      description: A tab-separated text file containing pairs of read ends (chr1 pos1
+        strand1 chr2 pos2 strand2), one per line. For multiple files, this option
+        can be passed multiple times.
+      synonyms:
+      - -R
+      - --raw
+      args: !SimpleFlagArg
+        name: RAW
+      optional: true
+    - !Flag
+      description: A HiCPipe-style tabular MAT file containing fend pair counts.
+      synonyms:
+      - -M
+      - --mat
+      args: !SimpleFlagArg
+        name: MAT
+      optional: true
+    - !Flag
+      description: Binned matrix containing summed fend interactions.
+      synonyms:
+      - -X
+      - --matrix
+      args: !SimpleFlagArg
+        name: MATRIX
+      optional: true
+    - !Flag
+      description: 'The maximum allowable distance sum between both fend ends and
+        cutsites. [default: 500]'
+      synonyms:
+      - -i
+      - --insert
+      args: !SimpleFlagArg
+        name: INSERT
+      optional: true
+    - !Flag
+      description: 'Skip filtering of PCR duplicates. [default: False]'
+      synonyms:
+      - --skip-duplicate-filtering
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'The minimum number of interactions needed for valid fragment.
+        [default: 20]'
+      synonyms:
+      - -f
+      - --min-interactions
+      args: !SimpleFlagArg
+        name: MININT
+      optional: true
+    - !Flag
+      description: 'The minimum interaction distance to include in fragment filtering.
+        [default: 0]'
+      synonyms:
+      - -m
+      - --min-distance
+      args: !SimpleFlagArg
+        name: MINDIST
+      optional: true
+    - !Flag
+      description: 'The maximum interaction distance to include in fragment filtering
+        (None or zero indicate no maximum). [default: None]'
+      synonyms:
+      - -x
+      - --max-distance
+      args: !SimpleFlagArg
+        name: MAXDIST
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of chromosomes to learn correction values
+        for (None indicates all chromosomes). [default: None]'
+      synonyms:
+      - -c
+      - --chromosomes
+      args: !SimpleFlagArg
+        name: CHROMS
+      optional: true
+    - !Flag
+      description: 'The smallest interaction distance bin size for the distance-dependence
+        function. [default: 1000]'
+      synonyms:
+      - -j
+      - --min-binsize
+      args: !SimpleFlagArg
+        name: MINBIN
+      optional: true
+    - !Flag
+      description: 'The number of bins to partion the interaction distance range into
+        for distance-dependence function. A value of zero indicates that finding the
+        distance dependence function should be skipped. [default: 100]'
+      synonyms:
+      - -n
+      - --num-bins
+      args: !SimpleFlagArg
+        name: NUMBINS
+      optional: true
+    - !Flag
+      description: 'Silence output messages. [default: False]'
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: A prefix for the output files (*.fends, *.hcd, and *.hcp).
+      synonyms:
+      - -P
+      - --prefix
+      args: !SimpleFlagArg
+        name: PREFIX
+      optional: true
+    - !Flag
+      description: OUTPUT OUTPUT, --output OUTPUT OUTPUT OUTPUT File names for the
+        Fend, HiCData, and HiC project files to be created.
+      synonyms:
+      - -o
+      args: !SimpleFlagArg
+        name: OUTPUT
+      optional: true
+    - !Flag
+      description: 'The maximum number of iterations to carry on gradient descent
+        for. [default: 1000]'
+      synonyms:
+      - -b
+      - --max-iterations
+      args: !SimpleFlagArg
+        name: PROBITER
+      optional: true
+    - !Flag
+      description: 'The minimum allowable absolute gradient size to coninute learning
+        process. [default: 0.0005]'
+      synonyms:
+      - -g
+      - --min-change
+      args: !SimpleFlagArg
+        name: CHANGE
+      optional: true
+    - !Flag
+      description: 'Precalculate correction values from fend means for the probability
+        algorithm. [default: False]'
+      synonyms:
+      - -p
+      - --precalculate
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "The scaling factor for decreasing learning rate by if step doesn't\
+        \ meet armijo criterion. [default: 0.4]"
+      synonyms:
+      - -l
+      - --learning-step
+      args: !SimpleFlagArg
+        name: STEP
+      optional: true
+    - !Flag
+      description: 'Which probability model to use for normalization. [default: binomial]'
+      synonyms:
+      - -a
+      - --probability-model
+      args: !ChoiceFlagArg
+        choices:
+        - binomial
+        - poisson
+      optional: true
+    command:
+    - hifive
+    - hic-complete
+    - probability
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Fend file in HiCPipe-compatible tabular format, optionally containing
+        fend characteristics (GC content and/or mappability).
+      synonyms:
+      - -F
+      - --fend
+      args: !SimpleFlagArg
+        name: FEND
+      optional: true
+    - !Flag
+      description: Bed file containing either RE fragment boundary data or RE cutsites.
+      synonyms:
+      - -B
+      - --bed
+      args: !SimpleFlagArg
+        name: BED
+      optional: true
+    - !Flag
+      description: Text file containing chromosome names and lengths.
+      synonyms:
+      - -L
+      - --length
+      args: !SimpleFlagArg
+        name: LENGTH
+      optional: true
+    - !Flag
+      description: Interval to bin data into. If set to zero, indicates non-uniform
+        binning to be read from bed file.
+      synonyms:
+      - --binned
+      args: !SimpleFlagArg
+        name: BINNED
+      optional: true
+    - !Flag
+      description: The name of the restriction enzyme used to produce the RE fragments.
+      synonyms:
+      - --re
+      args: !SimpleFlagArg
+        name: RE
+      optional: true
+    - !Flag
+      description: The name of the genome RE fragments correspond to.
+      synonyms:
+      - --genome
+      args: !SimpleFlagArg
+        name: GENOME
+      optional: true
+    - !Flag
+      description: BAM, --bam BAM BAM A pair of BAM read end files from a single sequencing
+        run. For multiple runs, this option can be passed multiple times.
+      synonyms:
+      - -S
+      args: !SimpleFlagArg
+        name: BAM
+      optional: true
+    - !Flag
+      description: A tab-separated text file containing pairs of read ends (chr1 pos1
+        strand1 chr2 pos2 strand2), one per line. For multiple files, this option
+        can be passed multiple times.
+      synonyms:
+      - -R
+      - --raw
+      args: !SimpleFlagArg
+        name: RAW
+      optional: true
+    - !Flag
+      description: A HiCPipe-style tabular MAT file containing fend pair counts.
+      synonyms:
+      - -M
+      - --mat
+      args: !SimpleFlagArg
+        name: MAT
+      optional: true
+    - !Flag
+      description: Binned matrix containing summed fend interactions.
+      synonyms:
+      - -X
+      - --matrix
+      args: !SimpleFlagArg
+        name: MATRIX
+      optional: true
+    - !Flag
+      description: 'The maximum allowable distance sum between both fend ends and
+        cutsites. [default: 500]'
+      synonyms:
+      - -i
+      - --insert
+      args: !SimpleFlagArg
+        name: INSERT
+      optional: true
+    - !Flag
+      description: 'Skip filtering of PCR duplicates. [default: False]'
+      synonyms:
+      - --skip-duplicate-filtering
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'The minimum number of interactions needed for valid fragment.
+        [default: 20]'
+      synonyms:
+      - -f
+      - --min-interactions
+      args: !SimpleFlagArg
+        name: MININT
+      optional: true
+    - !Flag
+      description: 'The minimum interaction distance to include in fragment filtering.
+        [default: 0]'
+      synonyms:
+      - -m
+      - --min-distance
+      args: !SimpleFlagArg
+        name: MINDIST
+      optional: true
+    - !Flag
+      description: 'The maximum interaction distance to include in fragment filtering
+        (None or zero indicate no maximum). [default: None]'
+      synonyms:
+      - -x
+      - --max-distance
+      args: !SimpleFlagArg
+        name: MAXDIST
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of chromosomes to learn correction values
+        for (None indicates all chromosomes). [default: None]'
+      synonyms:
+      - -c
+      - --chromosomes
+      args: !SimpleFlagArg
+        name: CHROMS
+      optional: true
+    - !Flag
+      description: 'The smallest interaction distance bin size for the distance-dependence
+        function. [default: 1000]'
+      synonyms:
+      - -j
+      - --min-binsize
+      args: !SimpleFlagArg
+        name: MINBIN
+      optional: true
+    - !Flag
+      description: 'The number of bins to partion the interaction distance range into
+        for distance-dependence function. A value of zero indicates that finding the
+        distance dependence function should be skipped. [default: 100]'
+      synonyms:
+      - -n
+      - --num-bins
+      args: !SimpleFlagArg
+        name: NUMBINS
+      optional: true
+    - !Flag
+      description: 'Silence output messages. [default: False]'
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: A prefix for the output files (*.fends, *.hcd, and *.hcp).
+      synonyms:
+      - -P
+      - --prefix
+      args: !SimpleFlagArg
+        name: PREFIX
+      optional: true
+    - !Flag
+      description: OUTPUT OUTPUT, --output OUTPUT OUTPUT OUTPUT File names for the
+        Fend, HiCData, and HiC project files to be created.
+      synonyms:
+      - -o
+      args: !SimpleFlagArg
+        name: OUTPUT
+      optional: true
+    - !Flag
+      description: 'The minimum number of iterations to run the express learning phase
+        for. [default: 1000]'
+      synonyms:
+      - -e
+      - --express-iterations
+      args: !SimpleFlagArg
+        name: EXPITER
+      optional: true
+    - !Flag
+      description: 'The maximum allowable change per iteration in fend correction
+        parameter values allowable to terminate learning. [default: 0.0001]'
+      synonyms:
+      - -g
+      - --min-change
+      args: !SimpleFlagArg
+        name: CHANGE
+      optional: true
+    - !Flag
+      description: 'Remove the distant-dependent portion of the signal prior to learning
+        corrections with the express algorithm. [default: False]'
+      synonyms:
+      - -d
+      - --remove-distance
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Which set of reads to use for express normalization. [default:
+        cis]'
+      synonyms:
+      - -w
+      - --express-reads
+      args: !ChoiceFlagArg
+        choices:
+        - cis
+        - trans
+        - all
+      optional: true
+    - !Flag
+      description: 'Use binary indicator instead of counts. [default: False]'
+      synonyms:
+      - -k
+      - --binary
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Use Knight-Ruiz algorithm for unweighted matrix balancing. [default:
+        False]'
+      synonyms:
+      - -z
+      - --knight-ruiz
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - hifive
+    - hic-complete
+    - express
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Fend file in HiCPipe-compatible tabular format, optionally containing
+        fend characteristics (GC content and/or mappability).
+      synonyms:
+      - -F
+      - --fend
+      args: !SimpleFlagArg
+        name: FEND
+      optional: true
+    - !Flag
+      description: Bed file containing either RE fragment boundary data or RE cutsites.
+      synonyms:
+      - -B
+      - --bed
+      args: !SimpleFlagArg
+        name: BED
+      optional: true
+    - !Flag
+      description: Text file containing chromosome names and lengths.
+      synonyms:
+      - -L
+      - --length
+      args: !SimpleFlagArg
+        name: LENGTH
+      optional: true
+    - !Flag
+      description: Interval to bin data into. If set to zero, indicates non-uniform
+        binning to be read from bed file.
+      synonyms:
+      - --binned
+      args: !SimpleFlagArg
+        name: BINNED
+      optional: true
+    - !Flag
+      description: The name of the restriction enzyme used to produce the RE fragments.
+      synonyms:
+      - --re
+      args: !SimpleFlagArg
+        name: RE
+      optional: true
+    - !Flag
+      description: The name of the genome RE fragments correspond to.
+      synonyms:
+      - --genome
+      args: !SimpleFlagArg
+        name: GENOME
+      optional: true
+    - !Flag
+      description: BAM, --bam BAM BAM A pair of BAM read end files from a single sequencing
+        run. For multiple runs, this option can be passed multiple times.
+      synonyms:
+      - -S
+      args: !SimpleFlagArg
+        name: BAM
+      optional: true
+    - !Flag
+      description: A tab-separated text file containing pairs of read ends (chr1 pos1
+        strand1 chr2 pos2 strand2), one per line. For multiple files, this option
+        can be passed multiple times.
+      synonyms:
+      - -R
+      - --raw
+      args: !SimpleFlagArg
+        name: RAW
+      optional: true
+    - !Flag
+      description: A HiCPipe-style tabular MAT file containing fend pair counts.
+      synonyms:
+      - -M
+      - --mat
+      args: !SimpleFlagArg
+        name: MAT
+      optional: true
+    - !Flag
+      description: Binned matrix containing summed fend interactions.
+      synonyms:
+      - -X
+      - --matrix
+      args: !SimpleFlagArg
+        name: MATRIX
+      optional: true
+    - !Flag
+      description: 'The maximum allowable distance sum between both fend ends and
+        cutsites. [default: 500]'
+      synonyms:
+      - -i
+      - --insert
+      args: !SimpleFlagArg
+        name: INSERT
+      optional: true
+    - !Flag
+      description: 'Skip filtering of PCR duplicates. [default: False]'
+      synonyms:
+      - --skip-duplicate-filtering
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'The minimum number of interactions needed for valid fragment.
+        [default: 20]'
+      synonyms:
+      - -f
+      - --min-interactions
+      args: !SimpleFlagArg
+        name: MININT
+      optional: true
+    - !Flag
+      description: 'The minimum interaction distance to include in fragment filtering.
+        [default: 0]'
+      synonyms:
+      - -m
+      - --min-distance
+      args: !SimpleFlagArg
+        name: MINDIST
+      optional: true
+    - !Flag
+      description: 'The maximum interaction distance to include in fragment filtering
+        (None or zero indicate no maximum). [default: None]'
+      synonyms:
+      - -x
+      - --max-distance
+      args: !SimpleFlagArg
+        name: MAXDIST
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of chromosomes to learn correction values
+        for (None indicates all chromosomes). [default: None]'
+      synonyms:
+      - -c
+      - --chromosomes
+      args: !SimpleFlagArg
+        name: CHROMS
+      optional: true
+    - !Flag
+      description: 'The smallest interaction distance bin size for the distance-dependence
+        function. [default: 1000]'
+      synonyms:
+      - -j
+      - --min-binsize
+      args: !SimpleFlagArg
+        name: MINBIN
+      optional: true
+    - !Flag
+      description: 'The number of bins to partion the interaction distance range into
+        for distance-dependence function. A value of zero indicates that finding the
+        distance dependence function should be skipped. [default: 100]'
+      synonyms:
+      - -n
+      - --num-bins
+      args: !SimpleFlagArg
+        name: NUMBINS
+      optional: true
+    - !Flag
+      description: 'Silence output messages. [default: False]'
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: A prefix for the output files (*.fends, *.hcd, and *.hcp).
+      synonyms:
+      - -P
+      - --prefix
+      args: !SimpleFlagArg
+        name: PREFIX
+      optional: true
+    - !Flag
+      description: OUTPUT OUTPUT, --output OUTPUT OUTPUT OUTPUT File names for the
+        Fend, HiCData, and HiC project files to be created.
+      synonyms:
+      - -o
+      args: !SimpleFlagArg
+        name: OUTPUT
+      optional: true
+    - !Flag
+      description: 'The maximum number of iterations to run binning modeling for.
+        [default: 1000]'
+      synonyms:
+      - -r
+      - --binning-iterations
+      args: !SimpleFlagArg
+        name: BINITER
+      optional: true
+    - !Flag
+      description: 'The learning threshold cutoff for binning algorithm. [default:
+        1.0]'
+      synonyms:
+      - -t
+      - --learning-threshold
+      args: !SimpleFlagArg
+        name: THRESHOLD
+      optional: true
+    - !Flag
+      description: 'Which set of reads to use for binning normalization. [default:
+        cis]'
+      synonyms:
+      - -y
+      - --binning-reads
+      args: !ChoiceFlagArg
+        choices:
+        - cis
+        - trans
+        - all
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of parameters to include in binning model.
+        [default: len,distance]'
+      synonyms:
+      - -v
+      - --model
+      args: !SimpleFlagArg
+        name: MODEL
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of the number of bins to separate model
+        parameters into. [default: 20,20]'
+      synonyms:
+      - -s
+      - --model-bins
+      args: !SimpleFlagArg
+        name: MODELBINS
+      optional: true
+    - !Flag
+      description: "A comma-separated list parameter types ('even' or 'fixed', depending\
+        \ on whether bins should contain equal numbers of fends or be equally spaced\
+        \ along the parameter range, and a '-const' suffix to indicate the values\
+        \ are not to be optimized). [default: even,fixed- const]"
+      synonyms:
+      - -u
+      - --parameter-types
+      args: !SimpleFlagArg
+        name: PARAMETERS
+      optional: true
+    - !Flag
+      description: 'The number of pseudo-counts to add to each bin prior to learning.
+        [default: None]'
+      synonyms:
+      - --pseudocounts
+      args: !SimpleFlagArg
+        name: PSEUDO
+      optional: true
+    command:
+    - hifive
+    - hic-complete
+    - binning
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Fend file in HiCPipe-compatible tabular format, optionally containing
+        fend characteristics (GC content and/or mappability).
+      synonyms:
+      - -F
+      - --fend
+      args: !SimpleFlagArg
+        name: FEND
+      optional: true
+    - !Flag
+      description: Bed file containing either RE fragment boundary data or RE cutsites.
+      synonyms:
+      - -B
+      - --bed
+      args: !SimpleFlagArg
+        name: BED
+      optional: true
+    - !Flag
+      description: Text file containing chromosome names and lengths.
+      synonyms:
+      - -L
+      - --length
+      args: !SimpleFlagArg
+        name: LENGTH
+      optional: true
+    - !Flag
+      description: Interval to bin data into. If set to zero, indicates non-uniform
+        binning to be read from bed file.
+      synonyms:
+      - --binned
+      args: !SimpleFlagArg
+        name: BINNED
+      optional: true
+    - !Flag
+      description: The name of the restriction enzyme used to produce the RE fragments.
+      synonyms:
+      - --re
+      args: !SimpleFlagArg
+        name: RE
+      optional: true
+    - !Flag
+      description: The name of the genome RE fragments correspond to.
+      synonyms:
+      - --genome
+      args: !SimpleFlagArg
+        name: GENOME
+      optional: true
+    - !Flag
+      description: BAM, --bam BAM BAM A pair of BAM read end files from a single sequencing
+        run. For multiple runs, this option can be passed multiple times.
+      synonyms:
+      - -S
+      args: !SimpleFlagArg
+        name: BAM
+      optional: true
+    - !Flag
+      description: A tab-separated text file containing pairs of read ends (chr1 pos1
+        strand1 chr2 pos2 strand2), one per line. For multiple files, this option
+        can be passed multiple times.
+      synonyms:
+      - -R
+      - --raw
+      args: !SimpleFlagArg
+        name: RAW
+      optional: true
+    - !Flag
+      description: A HiCPipe-style tabular MAT file containing fend pair counts.
+      synonyms:
+      - -M
+      - --mat
+      args: !SimpleFlagArg
+        name: MAT
+      optional: true
+    - !Flag
+      description: Binned matrix containing summed fend interactions.
+      synonyms:
+      - -X
+      - --matrix
+      args: !SimpleFlagArg
+        name: MATRIX
+      optional: true
+    - !Flag
+      description: 'The maximum allowable distance sum between both fend ends and
+        cutsites. [default: 500]'
+      synonyms:
+      - -i
+      - --insert
+      args: !SimpleFlagArg
+        name: INSERT
+      optional: true
+    - !Flag
+      description: 'Skip filtering of PCR duplicates. [default: False]'
+      synonyms:
+      - --skip-duplicate-filtering
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'The minimum number of interactions needed for valid fragment.
+        [default: 20]'
+      synonyms:
+      - -f
+      - --min-interactions
+      args: !SimpleFlagArg
+        name: MININT
+      optional: true
+    - !Flag
+      description: 'The minimum interaction distance to include in fragment filtering.
+        [default: 0]'
+      synonyms:
+      - -m
+      - --min-distance
+      args: !SimpleFlagArg
+        name: MINDIST
+      optional: true
+    - !Flag
+      description: 'The maximum interaction distance to include in fragment filtering
+        (None or zero indicate no maximum). [default: None]'
+      synonyms:
+      - -x
+      - --max-distance
+      args: !SimpleFlagArg
+        name: MAXDIST
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of chromosomes to learn correction values
+        for (None indicates all chromosomes). [default: None]'
+      synonyms:
+      - -c
+      - --chromosomes
+      args: !SimpleFlagArg
+        name: CHROMS
+      optional: true
+    - !Flag
+      description: 'The smallest interaction distance bin size for the distance-dependence
+        function. [default: 1000]'
+      synonyms:
+      - -j
+      - --min-binsize
+      args: !SimpleFlagArg
+        name: MINBIN
+      optional: true
+    - !Flag
+      description: 'The number of bins to partion the interaction distance range into
+        for distance-dependence function. A value of zero indicates that finding the
+        distance dependence function should be skipped. [default: 100]'
+      synonyms:
+      - -n
+      - --num-bins
+      args: !SimpleFlagArg
+        name: NUMBINS
+      optional: true
+    - !Flag
+      description: 'Silence output messages. [default: False]'
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: A prefix for the output files (*.fends, *.hcd, and *.hcp).
+      synonyms:
+      - -P
+      - --prefix
+      args: !SimpleFlagArg
+        name: PREFIX
+      optional: true
+    - !Flag
+      description: OUTPUT OUTPUT, --output OUTPUT OUTPUT OUTPUT File names for the
+        Fend, HiCData, and HiC project files to be created.
+      synonyms:
+      - -o
+      args: !SimpleFlagArg
+        name: OUTPUT
+      optional: true
+    - !Flag
+      description: 'The maximum number of iterations to carry on gradient descent
+        for. [default: 1000]'
+      synonyms:
+      - -b
+      - --max-iterations
+      args: !SimpleFlagArg
+        name: PROBITER
+      optional: true
+    - !Flag
+      description: 'The minimum allowable absolute gradient size to coninute learning
+        process. [default: 0.0005]'
+      synonyms:
+      - -g
+      - --min-change
+      args: !SimpleFlagArg
+        name: CHANGE
+      optional: true
+    - !Flag
+      description: 'Precalculate correction values from fend means for the probability
+        algorithm. [default: False]'
+      synonyms:
+      - -p
+      - --precalculate
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "The scaling factor for decreasing learning rate by if step doesn't\
+        \ meet armijo criterion. [default: 0.4]"
+      synonyms:
+      - -l
+      - --learning-step
+      args: !SimpleFlagArg
+        name: STEP
+      optional: true
+    - !Flag
+      description: 'Which probability model to use for normalization. [default: binomial]'
+      synonyms:
+      - -a
+      - --probability-model
+      args: !ChoiceFlagArg
+        choices:
+        - binomial
+        - poisson
+      optional: true
+    - !Flag
+      description: 'The maximum number of iterations to run binning modeling for.
+        [default: 1000]'
+      synonyms:
+      - -r
+      - --binning-iterations
+      args: !SimpleFlagArg
+        name: BINITER
+      optional: true
+    - !Flag
+      description: 'The learning threshold cutoff for binning algorithm. [default:
+        1.0]'
+      synonyms:
+      - -t
+      - --learning-threshold
+      args: !SimpleFlagArg
+        name: THRESHOLD
+      optional: true
+    - !Flag
+      description: 'Which set of reads to use for binning normalization. [default:
+        cis]'
+      synonyms:
+      - -y
+      - --binning-reads
+      args: !ChoiceFlagArg
+        choices:
+        - cis
+        - trans
+        - all
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of parameters to include in binning model.
+        [default: len,distance]'
+      synonyms:
+      - -v
+      - --model
+      args: !SimpleFlagArg
+        name: MODEL
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of the number of bins to separate model
+        parameters into. [default: 20,20]'
+      synonyms:
+      - -s
+      - --model-bins
+      args: !SimpleFlagArg
+        name: MODELBINS
+      optional: true
+    - !Flag
+      description: "A comma-separated list parameter types ('even' or 'fixed', depending\
+        \ on whether bins should contain equal numbers of fends or be equally spaced\
+        \ along the parameter range, and a '-const' suffix to indicate the values\
+        \ are not to be optimized). [default: even,fixed- const]"
+      synonyms:
+      - -u
+      - --parameter-types
+      args: !SimpleFlagArg
+        name: PARAMETERS
+      optional: true
+    - !Flag
+      description: 'The number of pseudo-counts to add to each bin prior to learning.
+        [default: None]'
+      synonyms:
+      - --pseudocounts
+      args: !SimpleFlagArg
+        name: PSEUDO
+      optional: true
+    command:
+    - hifive
+    - hic-complete
+    - binning-probability
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Fend file in HiCPipe-compatible tabular format, optionally containing
+        fend characteristics (GC content and/or mappability).
+      synonyms:
+      - -F
+      - --fend
+      args: !SimpleFlagArg
+        name: FEND
+      optional: true
+    - !Flag
+      description: Bed file containing either RE fragment boundary data or RE cutsites.
+      synonyms:
+      - -B
+      - --bed
+      args: !SimpleFlagArg
+        name: BED
+      optional: true
+    - !Flag
+      description: Text file containing chromosome names and lengths.
+      synonyms:
+      - -L
+      - --length
+      args: !SimpleFlagArg
+        name: LENGTH
+      optional: true
+    - !Flag
+      description: Interval to bin data into. If set to zero, indicates non-uniform
+        binning to be read from bed file.
+      synonyms:
+      - --binned
+      args: !SimpleFlagArg
+        name: BINNED
+      optional: true
+    - !Flag
+      description: The name of the restriction enzyme used to produce the RE fragments.
+      synonyms:
+      - --re
+      args: !SimpleFlagArg
+        name: RE
+      optional: true
+    - !Flag
+      description: The name of the genome RE fragments correspond to.
+      synonyms:
+      - --genome
+      args: !SimpleFlagArg
+        name: GENOME
+      optional: true
+    - !Flag
+      description: BAM, --bam BAM BAM A pair of BAM read end files from a single sequencing
+        run. For multiple runs, this option can be passed multiple times.
+      synonyms:
+      - -S
+      args: !SimpleFlagArg
+        name: BAM
+      optional: true
+    - !Flag
+      description: A tab-separated text file containing pairs of read ends (chr1 pos1
+        strand1 chr2 pos2 strand2), one per line. For multiple files, this option
+        can be passed multiple times.
+      synonyms:
+      - -R
+      - --raw
+      args: !SimpleFlagArg
+        name: RAW
+      optional: true
+    - !Flag
+      description: A HiCPipe-style tabular MAT file containing fend pair counts.
+      synonyms:
+      - -M
+      - --mat
+      args: !SimpleFlagArg
+        name: MAT
+      optional: true
+    - !Flag
+      description: Binned matrix containing summed fend interactions.
+      synonyms:
+      - -X
+      - --matrix
+      args: !SimpleFlagArg
+        name: MATRIX
+      optional: true
+    - !Flag
+      description: 'The maximum allowable distance sum between both fend ends and
+        cutsites. [default: 500]'
+      synonyms:
+      - -i
+      - --insert
+      args: !SimpleFlagArg
+        name: INSERT
+      optional: true
+    - !Flag
+      description: 'Skip filtering of PCR duplicates. [default: False]'
+      synonyms:
+      - --skip-duplicate-filtering
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'The minimum number of interactions needed for valid fragment.
+        [default: 20]'
+      synonyms:
+      - -f
+      - --min-interactions
+      args: !SimpleFlagArg
+        name: MININT
+      optional: true
+    - !Flag
+      description: 'The minimum interaction distance to include in fragment filtering.
+        [default: 0]'
+      synonyms:
+      - -m
+      - --min-distance
+      args: !SimpleFlagArg
+        name: MINDIST
+      optional: true
+    - !Flag
+      description: 'The maximum interaction distance to include in fragment filtering
+        (None or zero indicate no maximum). [default: None]'
+      synonyms:
+      - -x
+      - --max-distance
+      args: !SimpleFlagArg
+        name: MAXDIST
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of chromosomes to learn correction values
+        for (None indicates all chromosomes). [default: None]'
+      synonyms:
+      - -c
+      - --chromosomes
+      args: !SimpleFlagArg
+        name: CHROMS
+      optional: true
+    - !Flag
+      description: 'The smallest interaction distance bin size for the distance-dependence
+        function. [default: 1000]'
+      synonyms:
+      - -j
+      - --min-binsize
+      args: !SimpleFlagArg
+        name: MINBIN
+      optional: true
+    - !Flag
+      description: 'The number of bins to partion the interaction distance range into
+        for distance-dependence function. A value of zero indicates that finding the
+        distance dependence function should be skipped. [default: 100]'
+      synonyms:
+      - -n
+      - --num-bins
+      args: !SimpleFlagArg
+        name: NUMBINS
+      optional: true
+    - !Flag
+      description: 'Silence output messages. [default: False]'
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: A prefix for the output files (*.fends, *.hcd, and *.hcp).
+      synonyms:
+      - -P
+      - --prefix
+      args: !SimpleFlagArg
+        name: PREFIX
+      optional: true
+    - !Flag
+      description: OUTPUT OUTPUT, --output OUTPUT OUTPUT OUTPUT File names for the
+        Fend, HiCData, and HiC project files to be created.
+      synonyms:
+      - -o
+      args: !SimpleFlagArg
+        name: OUTPUT
+      optional: true
+    - !Flag
+      description: 'The minimum number of iterations to run the express learning phase
+        for. [default: 1000]'
+      synonyms:
+      - -e
+      - --express-iterations
+      args: !SimpleFlagArg
+        name: EXPITER
+      optional: true
+    - !Flag
+      description: 'The maximum allowable change per iteration in fend correction
+        parameter values allowable to terminate learning. [default: 0.0001]'
+      synonyms:
+      - -g
+      - --min-change
+      args: !SimpleFlagArg
+        name: CHANGE
+      optional: true
+    - !Flag
+      description: 'Remove the distant-dependent portion of the signal prior to learning
+        corrections with the express algorithm. [default: False]'
+      synonyms:
+      - -d
+      - --remove-distance
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Which set of reads to use for express normalization. [default:
+        cis]'
+      synonyms:
+      - -w
+      - --express-reads
+      args: !ChoiceFlagArg
+        choices:
+        - cis
+        - trans
+        - all
+      optional: true
+    - !Flag
+      description: 'Use binary indicator instead of counts. [default: False]'
+      synonyms:
+      - -k
+      - --binary
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Use Knight-Ruiz algorithm for unweighted matrix balancing. [default:
+        False]'
+      synonyms:
+      - -z
+      - --knight-ruiz
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'The maximum number of iterations to run binning modeling for.
+        [default: 1000]'
+      synonyms:
+      - -r
+      - --binning-iterations
+      args: !SimpleFlagArg
+        name: BINITER
+      optional: true
+    - !Flag
+      description: 'The learning threshold cutoff for binning algorithm. [default:
+        1.0]'
+      synonyms:
+      - -t
+      - --learning-threshold
+      args: !SimpleFlagArg
+        name: THRESHOLD
+      optional: true
+    - !Flag
+      description: 'Which set of reads to use for binning normalization. [default:
+        cis]'
+      synonyms:
+      - -y
+      - --binning-reads
+      args: !ChoiceFlagArg
+        choices:
+        - cis
+        - trans
+        - all
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of parameters to include in binning model.
+        [default: len,distance]'
+      synonyms:
+      - -v
+      - --model
+      args: !SimpleFlagArg
+        name: MODEL
+      optional: true
+    - !Flag
+      description: 'A comma-separated list of the number of bins to separate model
+        parameters into. [default: 20,20]'
+      synonyms:
+      - -s
+      - --model-bins
+      args: !SimpleFlagArg
+        name: MODELBINS
+      optional: true
+    - !Flag
+      description: "A comma-separated list parameter types ('even' or 'fixed', depending\
+        \ on whether bins should contain equal numbers of fends or be equally spaced\
+        \ along the parameter range, and a '-const' suffix to indicate the values\
+        \ are not to be optimized). [default: even,fixed- const]"
+      synonyms:
+      - -u
+      - --parameter-types
+      args: !SimpleFlagArg
+        name: PARAMETERS
+      optional: true
+    - !Flag
+      description: 'The number of pseudo-counts to add to each bin prior to learning.
+        [default: None]'
+      synonyms:
+      - --pseudocounts
+      args: !SimpleFlagArg
+        name: PSEUDO
+      optional: true
+    command:
+    - hifive
+    - hic-complete
+    - binning-express
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: The name of a HiFive HiC project file to pull data from.
+    position: 0
+    name: project
+    optional: false
+  - !Positional
+    description: The name of the file to write HiC heatmaps to.
+    position: 1
+    name: output
+    optional: false
+  named:
+  - !Flag
+    description: 'Calculate and include trans interactions in heatmaps. [default:
+      False]'
+    synonyms:
+    - -t
+    - --trans
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'A comma-separated list of chromosomes to include in the heatmaps
+      (None indicates all chromosomes). [default: None]'
+    synonyms:
+    - -c
+    - --chromosomes
+    args: !SimpleFlagArg
+      name: CHROMS
+    optional: true
+  - !Flag
+    description: 'The minimum number of observed reads in a bin for it to be considered
+      valid. [default: 20]'
+    synonyms:
+    - -f
+    - --minobservations
+    args: !SimpleFlagArg
+      name: MINOBS
+    optional: true
+  - !Flag
+    description: 'The size of bins, in base pairs, to group data into. [default: 10000]'
+    synonyms:
+    - -b
+    - --binsize
+    args: !SimpleFlagArg
+      name: BINSIZE
+    optional: true
+  - !Flag
+    description: 'Which corrections (if any) to apply to counts. [default: fend]'
+    synonyms:
+    - -d
+    - --datatype
+    args: !ChoiceFlagArg
+      choices:
+      - raw
+      - fend
+      - distance
+      - enrichment
+      - expected
+    optional: true
+  - !Flag
+    description: 'Format of output. [default: hdf5]'
+    synonyms:
+    - -F
+    - --format
+    args: !ChoiceFlagArg
+      choices:
+      - hdf5
+      - txt
+      - npz
+    optional: true
+  - !Flag
+    description: Dynamically bin heatmap.
+    synonyms:
+    - -y
+    - --dynamically-bin
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The size of bins, in base pairs, to group data into for expanding
+      under-populated bins. [default: 10000]'
+    synonyms:
+    - -x
+    - --expansion-binsize
+    args: !SimpleFlagArg
+      name: EXPBINSIZE
+    optional: true
+  - !Flag
+    description: 'The furthest distance from the bin minpoint to expand bounds. If
+      set to zero, there is no limit on expansion distance. [default: 0]'
+    synonyms:
+    - -a
+    - --search-distance
+    args: !SimpleFlagArg
+      name: SEARCH
+    optional: true
+  - !Flag
+    description: If a non-zero 'search-distance' is given, it is possible for a bin
+      not to meet the 'minobservations' criteria before stopping looking. If this
+      occurs and 'remove-failed' is set, the observed and expected values for that
+      bin are zero.
+    synonyms:
+    - -v
+    - --remove-failed
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Save the data as an image to this file.
+    synonyms:
+    - -i
+    - --image-file
+    args: !SimpleFlagArg
+      name: IMAGE
+    optional: true
+  - !Flag
+    description: 'Format the image in PDF format. [default: False]'
+    synonyms:
+    - -p
+    - --pdf
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Add color scale to the plot (pdf format only). [default: False]'
+    synonyms:
+    - -l
+    - --legend
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Add chromosome labels to the plot (pdf format only). [default: False]'
+    synonyms:
+    - -n
+    - --names
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Additional keyword arguments to pass to plotting function.
+    synonyms:
+    - -k
+    - --keyword
+    args: !SimpleFlagArg
+      name: KEYWORDS
+    optional: true
+  - !Flag
+    description: 'Silence output messages. [default: False]'
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - hifive
+  - hic-heatmap
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: The name of a HiFive HiC project file to pull data from.
+    position: 0
+    name: project
+    optional: false
+  - !Positional
+    description: The name of the file to write HiC multi-resolution heatmaps to.
+    position: 1
+    name: output
+    optional: false
+  named:
+  - !Flag
+    description: 'Calculate and include trans interactions in heatmaps. [default:
+      False]'
+    synonyms:
+    - -t
+    - --trans
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'A comma-separated list of chromosomes to include in the heatmaps
+      (None indicates all chromosomes). [default: None]'
+    synonyms:
+    - -c
+    - --chromosomes
+    args: !SimpleFlagArg
+      name: CHROMS
+    optional: true
+  - !Flag
+    description: 'The minimum number of observed reads in a bin for it to be considered
+      valid. [default: 20]'
+    synonyms:
+    - -f
+    - --minobservations
+    args: !SimpleFlagArg
+      name: MINOBS
+    optional: true
+  - !Flag
+    description: 'The largest sized bin to use (minimum resolution), in base pairs.
+      [default: 1280000]'
+    synonyms:
+    - -B
+    - --maximum-binsize
+    args: !SimpleFlagArg
+      name: MAXBIN
+    optional: true
+  - !Flag
+    description: 'The smallest sized bin to use (maximum resolution), in base pairs.
+      [default: 10000]'
+    synonyms:
+    - -b
+    - --minimum-binsize
+    args: !SimpleFlagArg
+      name: MINBIN
+    optional: true
+  - !Flag
+    description: 'The largest sized bin to use for trans interactions (minimum resolution),
+      in base pairs. [default: None]'
+    synonyms:
+    - -R
+    - --maximum-trans-binsize
+    args: !SimpleFlagArg
+      name: MAXTRANSBIN
+    optional: true
+  - !Flag
+    description: 'The smallest sized bin to use for trans interactions (maximum resolution),
+      in base pairs. [default: None]'
+    synonyms:
+    - -r
+    - --minimum-trans-binsize
+    args: !SimpleFlagArg
+      name: MINTRANSBIN
+    optional: true
+  - !Flag
+    description: 'The smallest sized bin to use for the entire chromosome(s), in base
+      pairs. This is used to balance memory usage vs. speed. [default: 40000]'
+    synonyms:
+    - -m
+    - --mid-binsize
+    args: !SimpleFlagArg
+      name: MIDBIN
+    optional: true
+  - !Flag
+    description: 'Which corrections (if any) to apply to counts. [default: fend]'
+    synonyms:
+    - -d
+    - --datatype
+    args: !ChoiceFlagArg
+      choices:
+      - raw
+      - fend
+      - distance
+      - enrichment
+    optional: true
+  - !Flag
+    description: 'Silence output messages. [default: False]'
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - hifive
+  - hic-mrheatmap
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: The name of a HiFive HiC project file to pull data from.
+    position: 0
+    name: project
+    optional: false
+  - !Positional
+    description: The name of the file to write HiC interval to.
+    position: 1
+    name: output
+    optional: false
+  named:
+  - !Flag
+    description: The chromosome from which to pull interaction data from.
+    synonyms:
+    - -c
+    - --chromosome
+    args: !SimpleFlagArg
+      name: CHROM
+    optional: true
+  - !Flag
+    description: The second chromosome from which to pull interaction data from if
+      pulling trans data.
+    synonyms:
+    - --chromosome2
+    args: !SimpleFlagArg
+      name: CHROM2
+    optional: true
+  - !Flag
+    description: The start coordinate of the pulled region to return. (None indicates
+      the first valid bin on the chromosome) [default None]
+    synonyms:
+    - -s
+    - --start
+    args: !SimpleFlagArg
+      name: START
+    optional: true
+  - !Flag
+    description: The stop coordinate of the pulled region to return. (None indicates
+      the last valid bin on the chromosome) [default None]
+    synonyms:
+    - -e
+    - --stop
+    args: !SimpleFlagArg
+      name: STOP
+    optional: true
+  - !Flag
+    description: The start coordinate of the second chromosome pulled region to return.
+      (None indicates the first valid bin on the chromosome) [default None]
+    synonyms:
+    - --start2
+    args: !SimpleFlagArg
+      name: START2
+    optional: true
+  - !Flag
+    description: The stop coordinate of the second chromosome pulled region to return.
+      (None indicates the last valid bin on the chromosome) [default None]
+    synonyms:
+    - --stop2
+    args: !SimpleFlagArg
+      name: STOP2
+    optional: true
+  - !Flag
+    description: 'The size of bins, in base pairs, to group data into. [default: 10000]'
+    synonyms:
+    - -b
+    - --binsize
+    args: !SimpleFlagArg
+      name: BINSIZE
+    optional: true
+  - !Flag
+    description: 'The maximum interaction distance to return (None indicates no maximum).
+      [default: None]'
+    synonyms:
+    - -m
+    - --max-distance
+    args: !SimpleFlagArg
+      name: MAXDIST
+    optional: true
+  - !Flag
+    description: 'Which corrections (if any) to apply to counts. [default: fend]'
+    synonyms:
+    - -d
+    - --data-type
+    args: !ChoiceFlagArg
+      choices:
+      - raw
+      - fend
+      - distance
+      - enrichment
+      - expected
+    optional: true
+  - !Flag
+    description: Store output as a tab-separated matrix of values.
+    synonyms:
+    - -M
+    - --matrix
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Dynamically bin heatmap.
+    synonyms:
+    - -y
+    - --dynamically-bin
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The size of bins, in base pairs, to group data into for expanding
+      under-populated bins. [default: 10000]'
+    synonyms:
+    - -x
+    - --expansion-binsize
+    args: !SimpleFlagArg
+      name: EXPBINSIZE
+    optional: true
+  - !Flag
+    description: 'The minimum number of observed reads in a bin for it to be considered
+      valid. [default: 20]'
+    synonyms:
+    - -f
+    - --minobservations
+    args: !SimpleFlagArg
+      name: MINOBS
+    optional: true
+  - !Flag
+    description: 'The furthest distance from the bin minpoint to expand bounds. If
+      set to zero, there is no limit on expansion distance. [default: 0]'
+    synonyms:
+    - -a
+    - --search-distance
+    args: !SimpleFlagArg
+      name: SEARCH
+    optional: true
+  - !Flag
+    description: If a non-zero 'search-distance' is given, it is possible for a bin
+      not to meet the 'minobservations' criteria before stopping looking. If this
+      occurs and 'remove-failed' is set, the observed and expected values for that
+      bin are zero.
+    synonyms:
+    - -v
+    - --remove-failed
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Save the data as an image to this file.
+    synonyms:
+    - -i
+    - --image-file
+    args: !SimpleFlagArg
+      name: IMAGE
+    optional: true
+  - !Flag
+    description: 'Format the image in PDF format. [default: False]'
+    synonyms:
+    - -p
+    - --pdf
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Rotate the plot 45 degrees (cis binned only). [default: False]'
+    synonyms:
+    - -r
+    - --rotate
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Add tick marks and labels to the plot (pdf format and binned only).
+      [default: False]'
+    synonyms:
+    - -t
+    - --ticks
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Add color scale to the plot (pdf format only). [default: False]'
+    synonyms:
+    - -l
+    - --legend
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Additional keyword arguments to pass to plotting function.
+    synonyms:
+    - -k
+    - --keyword
+    args: !SimpleFlagArg
+      name: KEYWORDS
+    optional: true
+  - !Flag
+    description: 'Silence output messages. [default: False]'
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - hifive
+  - hic-interval
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -q
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - hifive
+  - hic-combine-replicates
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: Name of the first HiFive HiCDataset replicate file to be combined.
+      position: 0
+      name: replicate1
+      optional: false
+    - !Positional
+      description: Name of the second HiFive HiCDataset replicate file to be combined.
+      position: 1
+      name: replicate2
+      optional: false
+    - !Positional
+      description: Name of file in which to write combined data.
+      position: 2
+      name: output
+      optional: false
+    named:
+    - !Flag
+      description: 'Silence output messages. [default: False]'
+      synonyms:
+      - -q
+      - --quiet
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - hifive
+    - hic-combine-replicates
+    - replicate1
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: The name of the HiFive QuASAR file to write to and pull data from.
+    position: 0
+    name: quasar
+    optional: false
+  named:
+  - !Flag
+    description: The name of the HiFive HiC project to use for QuASAR transformation.
+    synonyms:
+    - -p
+    - --hic
+    args: !SimpleFlagArg
+      name: HIC
+    optional: true
+  - !Flag
+    description: The name of the second HiFive HiC project to use for QuASAR replicate
+      scoring.
+    synonyms:
+    - -P
+    - --hic2
+    args: !SimpleFlagArg
+      name: HIC2
+    optional: true
+  - !Flag
+    description: The name of the second HiFive QuASAR file to write to and pull data
+      from for QuASAR replicate scoring.
+    synonyms:
+    - -Q
+    - --quasar2
+    args: !SimpleFlagArg
+      name: QUASAR2
+    optional: true
+  - !Flag
+    description: The name of the file to write all scoring results to. This can be
+      either a txt or PDF file and format will be determined by the file suffix.
+    synonyms:
+    - -o
+    - --report
+    args: !SimpleFlagArg
+      name: REPORT
+    optional: true
+  - !Flag
+    description: 'A comma-separated list of chromosomes to find QuASAR transformations
+      for (None indicates all chromosomes). [default: None]'
+    synonyms:
+    - -c
+    - --chromosomes
+    args: !SimpleFlagArg
+      name: CHROMS
+    optional: true
+  - !Flag
+    description: 'A comma-separated list of resolutions to find QuASAR transformations
+      for. [default: 10000,40000,200000,1000000]'
+    synonyms:
+    - -r
+    - --resolutions
+    args: !SimpleFlagArg
+      name: RESOLUTIONS
+    optional: true
+  - !Flag
+    description: 'A comma-separated list of coverages to find QuASAR transformations
+      for. [default: 0,1000000,2000000,4000000,8000000,16000000,32000000]'
+    synonyms:
+    - -d
+    - --coverages
+    args: !SimpleFlagArg
+      name: COVERAGES
+    optional: true
+  - !Flag
+    description: 'Report only scores in report, no additional analyses. [default:
+      False]'
+    synonyms:
+    - --scores_only
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The seed value for the random number generating function. [default:
+      None]'
+    synonyms:
+    - --seed
+    args: !SimpleFlagArg
+      name: SEED
+    optional: true
+  - !Flag
+    description: 'Silence output messages. [default: False]'
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - hifive
+  - quasar
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

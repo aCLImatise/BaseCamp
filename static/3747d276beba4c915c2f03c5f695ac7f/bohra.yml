@@ -1,0 +1,296 @@
+!Command
+positional: []
+named: []
+command:
+- bohra
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Input file = tab-delimited with 3 columns <isolatename> <path_to_read1>
+      <path_to_read2> (default: )'
+    synonyms:
+    - --input_file
+    - -i
+    args: !SimpleFlagArg
+      name: INPUT_FILE
+    optional: true
+  - !Flag
+    description: 'Job ID, will be the name of the output directory (default: )'
+    synonyms:
+    - --job_id
+    - -j
+    args: !SimpleFlagArg
+      name: JOB_ID
+    optional: true
+  - !Flag
+    description: 'Path to reference (.gbk or .fa) (default: )'
+    synonyms:
+    - --reference
+    - -r
+    args: !SimpleFlagArg
+      name: REFERENCE
+    optional: true
+  - !Flag
+    description: 'Path to mask file if used (.bed) (default: False)'
+    synonyms:
+    - --mask
+    - -m
+    args: !SimpleFlagArg
+      name: MASK
+    optional: true
+  - !Flag
+    description: 'Path to DB for use with kraken2, if no DB present speciation will
+      not be performed. [env var: KRAKEN2_DEFAULT_DB] (default: None)'
+    synonyms:
+    - --kraken_db
+    - -k
+    args: !SimpleFlagArg
+      name: KRAKEN_DB
+    optional: true
+  - !Flag
+    description: "The pipeline to run. Preview (--preview - default) will calculate\
+      \ mash-distances and a mash-tree for quick inspection of your dataset. SNPs\
+      \ and ASSEMBLIES ('sa') will perform SNPs and ASSEMBLIES. ALL ('all') will perform\
+      \ SNPS, ASSEMBLIES and ROARY for pan-genome analysis (default: preview)"
+    synonyms:
+    - --pipeline
+    - -p
+    args: !ChoiceFlagArg
+      choices:
+      - preview
+      - sa
+      - all
+    optional: true
+  - !Flag
+    description: 'Assembler to use. (default: shovill)'
+    synonyms:
+    - --assembler
+    - -a
+    args: !ChoiceFlagArg
+      choices:
+      - shovill
+      - skesa
+      - spades
+    optional: true
+  - !Flag
+    description: 'Number of CPU cores to run, will define how many rules are run at
+      a time (default: 16)'
+    synonyms:
+    - --cpus
+    - -c
+    args: !SimpleFlagArg
+      name: CPUS
+    optional: true
+  - !Flag
+    description: 'Minimum percent alignment. Isolates which do not align to reference
+      at this threshold will not be included in core phylogeny. (default: 80)'
+    synonyms:
+    - --minaln
+    - -ma
+    args: !SimpleFlagArg
+      name: MINALN
+    optional: true
+  - !Flag
+    description: 'Minimum percent alignment. Isolates which do not have average read
+      coverage above this threshold will not be included further analysis. (default:
+      40)'
+    synonyms:
+    - --mincov
+    - -mc
+    args: !SimpleFlagArg
+      name: MINCOV
+    optional: true
+  - !Flag
+    description: 'Path to existing assemblies - in the form path_to_somewhere/isolatename/contigs.fa
+      (default: None)'
+    synonyms:
+    - --prefillpath
+    - -pf
+    args: !SimpleFlagArg
+      name: PREFILLPATH
+    optional: true
+  - !Flag
+    description: 'If running on MDU data (default: False)'
+    synonyms:
+    - -mdu
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The directory where Bohra will be run, default is current directory
+      (default: /tmp/tmpwhu0e7qn)'
+    synonyms:
+    - -workdir
+    - -w
+    args: !SimpleFlagArg
+      name: WORKDIR
+    optional: true
+  - !Flag
+    description: 'Directory where templates are stored (default: /tmp/tmpwhu0e7qn/lib/python3.7/site-
+      packages/bohra/templates)'
+    synonyms:
+    - -resources
+    - -s
+    args: !SimpleFlagArg
+      name: RESOURCES
+    optional: true
+  - !Flag
+    description: 'Add if you would like to force a complete restart of the pipeline.
+      All previous logs will be lost. (default: False)'
+    synonyms:
+    - -force
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'If you would like to see a dry run of commands to be executed. (default:
+      False)'
+    synonyms:
+    - -dry-run
+    - -n
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'If you are running Bohra on a cluster. (default: False)'
+    synonyms:
+    - --cluster
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Path to cluster.json - required if --cluster is set (default: )'
+    synonyms:
+    - --json
+    args: !SimpleFlagArg
+      name: JSON
+    optional: true
+  - !Flag
+    description: 'Type of queue (sbatch or qsub currently supported) - required if
+      --cluster is set. (default: )'
+    synonyms:
+    - --queue
+    args: !SimpleFlagArg
+      name: QUEUE
+    optional: true
+  - !Flag
+    description: 'Set to use gubbins for recombination correction. (default: False)'
+    synonyms:
+    - --gubbins
+    - -g
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "If you are rerunning bohra over an exisiting directory set --keep\
+      \ to 'Y' to archive report files - otherwise previous reprot files will be removed.\
+      \ (default: N)"
+    synonyms:
+    - --keep
+    args: !ChoiceFlagArg
+      choices:
+      - Y
+      - N
+    optional: true
+  command:
+  - bohra
+  - run
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Working directory, default is current directory (default: /tmp/tmpwhu0e7qn)'
+    synonyms:
+    - -workdir
+    - -w
+    args: !SimpleFlagArg
+      name: WORKDIR
+    optional: true
+  - !Flag
+    description: 'Job directory - the --name you used for nullarbor, will be the name
+      of the output directory (default: )'
+    synonyms:
+    - --job_id
+    - -j
+    args: !SimpleFlagArg
+      name: JOB_ID
+    optional: true
+  - !Flag
+    description: 'Input file = tab-delimited with 3 columns <isolatename> <path_to_read1>
+      <path_to_read2> (default: )'
+    synonyms:
+    - --input_file
+    - -i
+    args: !SimpleFlagArg
+      name: INPUT_FILE
+    optional: true
+  - !Flag
+    description: 'The reference that was used in the previous run/ nullarbor job (default:
+      )'
+    synonyms:
+    - --reference
+    - -r
+    args: !SimpleFlagArg
+      name: REFERENCE
+    optional: true
+  command:
+  - bohra
+  - nulla2bohra
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Path to DB for use with kraken2, if no DB present speciation will
+      not be performed. [env var: KRAKEN2_DEFAULT_DB]'
+    synonyms:
+    - --kraken_db
+    - -k
+    args: !SimpleFlagArg
+      name: KRAKEN_DB
+    optional: true
+  command:
+  - bohra
+  - check
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,377 @@
+!Command
+positional: []
+named: []
+command:
+- taxmapper
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Forward reads in fasta or fastq format
+    synonyms:
+    - -f
+    - --forward
+    args: !SimpleFlagArg
+      name: FILE1
+    optional: true
+  - !Flag
+    description: Reads in fasta or fastq format [optional]
+    synonyms:
+    - -r
+    - --reverse
+    args: !SimpleFlagArg
+      name: FILE2
+    optional: true
+  - !Flag
+    description: 'Rapsearch path, version >=2.24 [default: rapsearch set in PATH variable]'
+    synonyms:
+    - --rapsearch
+    args: !SimpleFlagArg
+      name: RAPSEARCH
+    optional: true
+  - !Flag
+    description: Path to RAPSearch database index
+    synonyms:
+    - -d
+    - --database
+    args: !SimpleFlagArg
+      name: DATABASE
+    optional: true
+  - !Flag
+    description: 'Basename for output files [default: <input>_hits]'
+    synonyms:
+    - -o
+    - --out
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: 'Number of threads [default: 4]'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  command:
+  - taxmapper
+  - search
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Maximum read length
+    synonyms:
+    - -m
+    args: !SimpleFlagArg
+      name: LENGTH
+    optional: true
+  - !Flag
+    description: Forward read aln file
+    synonyms:
+    - -f
+    - --forward
+    args: !SimpleFlagArg
+      name: FILE1
+    optional: true
+  - !Flag
+    description: Reverse read aln file [optional]
+    synonyms:
+    - -r
+    - --reverse
+    args: !SimpleFlagArg
+      name: FILE2
+    optional: true
+  - !Flag
+    description: 'Output file [default: taxa.tsv]'
+    synonyms:
+    - -o
+    - --out
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: 'How to combine forward and reverse hits, for "concordant" forward
+      and reverse have to map to the same taxon, for "best" the best hit from forward
+      and reverse is returned [default: best]'
+    synonyms:
+    - -c
+    - --combine
+    args: !SimpleFlagArg
+      name: COMBINE
+    optional: true
+  - !Flag
+    description: 'Number of threads, used to map forward and reverse reads in parallel
+      [default: 2]'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  command:
+  - taxmapper
+  - map
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Taxonomy mapping file (taxa.tsv if not specified otherwise).
+    synonyms:
+    - -i
+    - --tax
+    args: !SimpleFlagArg
+      name: TAXA
+    optional: true
+  - !Flag
+    description: 'Output file [default: taxa_filtered.tsv]'
+    synonyms:
+    - -o
+    - --out
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: 'Automatic filter with probability threshold, if automatic filter
+      is chosen all other thresholds will be ignored [nan or 0 - 1, default: 0.4]'
+    synonyms:
+    - -a
+    - --auto
+    args: !SimpleFlagArg
+      name: AUTOMATIC
+    optional: true
+  - !Flag
+    description: 'Threshold for identity of best hit [default: nan]'
+    synonyms:
+    - --identity
+    args: !SimpleFlagArg
+      name: IDENTITY
+    optional: true
+  - !Flag
+    description: 'Threshold for identity ratio [1 - 10, default: nan]'
+    synonyms:
+    - -r
+    - --identity-ratio
+    args: !SimpleFlagArg
+      name: RATIO
+    optional: true
+  - !Flag
+    description: 'Threshold for log e-values of best hit [default: nan]'
+    synonyms:
+    - --evalue
+    args: !SimpleFlagArg
+      name: EVALUE
+    optional: true
+  - !Flag
+    description: 'Threshold for absolute difference in e-values [0 - 100, default:
+      nan]'
+    synonyms:
+    - -d
+    - --evalue-diff
+    args: !SimpleFlagArg
+      name: DIFF
+    optional: true
+  command:
+  - taxmapper
+  - filter
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: TAXA
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --out1
+    args: !SimpleFlagArg
+      name: OUTPUT1
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --out2
+    args: !SimpleFlagArg
+      name: OUTPUT2
+    optional: true
+  command:
+  - taxmapper
+  - count
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Taxonomy file(s), counted taxa for a taxonomic hierarchy
+    synonyms:
+    - -t
+    - --taxa
+    args: !RepeatFlagArg
+      name: TAXA
+    optional: true
+  - !Flag
+    description: Optional sample names, sample names have to be in the same order
+      as taxonomy input files. If no samplenames are provided, the base names of the
+      taxa file(s) will be used.
+    synonyms:
+    - -s
+    - --samples
+    args: !RepeatFlagArg
+      name: SAMPLES
+    optional: true
+  - !Flag
+    description: 'Output file 1, taxon matrix with normalized frequencies [default:
+      taxa_freq_norm.tsv]'
+    synonyms:
+    - -f
+    - --freq
+    args: !SimpleFlagArg
+      name: FREQ
+    optional: true
+  - !Flag
+    description: 'Output file 2, taxon matrix with counts [default: taxa_counts.tsv]'
+    synonyms:
+    - -c
+    - --counts
+    args: !SimpleFlagArg
+      name: COUNTS
+    optional: true
+  - !Flag
+    description: 'Output file 3, stacked barplot of total count normalized taxa [default:
+      taxa_freq_norm.svg]'
+    synonyms:
+    - -p
+    - --plot
+    args: !SimpleFlagArg
+      name: PLOT
+    optional: true
+  command:
+  - taxmapper
+  - plot
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Database path for RAPseach database index
+    synonyms:
+    - -d
+    - --database
+    args: !SimpleFlagArg
+      name: DATABASE
+    optional: true
+  - !Flag
+    description: Folder with reads in fasta or fastq format
+    synonyms:
+    - -f
+    - --folder
+    args: !SimpleFlagArg
+      name: FOLDER
+    optional: true
+  - !Flag
+    description: 'Reads also contain reverse read, [default: True]'
+    synonyms:
+    - -r
+    - --reverse
+    args: !SimpleFlagArg
+      name: REVERSE
+    optional: true
+  - !Flag
+    description: 'Suffix of paired end reads, [default: "_R1,_R2"]'
+    synonyms:
+    - -s
+    - --suffix
+    args: !SimpleFlagArg
+      name: SUFFIX
+    optional: true
+  - !Flag
+    description: Maximum read length
+    synonyms:
+    - -m
+    args: !SimpleFlagArg
+      name: LENGTH
+    optional: true
+  - !Flag
+    description: 'Output folder, [default: "results"]'
+    synonyms:
+    - -o
+    - --out
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: 'Number of threads, [default: 4]'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  command:
+  - taxmapper
+  - run
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

@@ -1,0 +1,221 @@
+!Command
+positional: []
+named: []
+command:
+- eagle
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'port (default: 8000)'
+    synonyms:
+    - --port
+    - -p
+    args: !SimpleFlagArg
+      name: PORT
+    optional: true
+  - !Flag
+    description: listen for external connections
+    synonyms:
+    - --public
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: disable debug messages
+    synonyms:
+    - --nodebug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: config file to use.
+    synonyms:
+    - --config
+    - -c
+    args: !SimpleFlagArg
+      name: CONFIG
+    optional: true
+  - !Flag
+    description: use up to M parallel processes to serve HTTP requests (default=1).
+    synonyms:
+    - --processes
+    - -m
+    args: !SimpleFlagArg
+      name: PROCESSES
+    optional: true
+  command:
+  - eagle
+  - interface
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: the input in vcf format
+    position: 0
+    name: input
+    optional: false
+  - !Positional
+    description: the output directory
+    position: 1
+    name: outdir
+    optional: false
+  named:
+  - !Flag
+    description: '[SAMPLES [SAMPLES ...]] limit the output creation to these samples'
+    synonyms:
+    - --samples
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: the reference in fasta format to extract a variant motifs information
+    synonyms:
+    - --ref
+    args: !SimpleFlagArg
+      name: REF
+    optional: true
+  command:
+  - eagle
+  - convert
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: the eagle-data-file
+    position: 0
+    name: input
+    optional: false
+  - !Positional
+    description: the name of the meta information
+    position: 1
+    name: name
+    optional: false
+  named:
+  - !Flag
+    description: write this value as meta information
+    synonyms:
+    - -s
+    args: !SimpleFlagArg
+      name: S
+    optional: true
+  - !Flag
+    description: delete the meta information
+    synonyms:
+    - --delete
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[STORELIST] a list containing key value pairs to store'
+    synonyms:
+    - --storelist
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - eagle
+  - meta
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --samplerate
+    args: !SimpleFlagArg
+      name: SAMPLERATE
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -w
+    args: !SimpleFlagArg
+      name: W
+    optional: true
+  command:
+  - eagle
+  - extract
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: a bam/sam/cram file
+      position: 0
+      name: bam
+      optional: false
+    - !Positional
+      description: a capturekit gff or bed file
+      position: 1
+      name: capturekit
+      optional: false
+    named:
+    - !Flag
+      description: only use this fraction of regions
+      synonyms:
+      - --samplerate
+      args: !SimpleFlagArg
+        name: SAMPLERATE
+      optional: true
+    - !Flag
+      description: directly write the stats to this eagle file
+      synonyms:
+      - -w
+      args: !SimpleFlagArg
+        name: W
+      optional: true
+    command:
+    - eagle
+    - extract
+    - bam
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

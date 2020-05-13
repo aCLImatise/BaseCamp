@@ -1,0 +1,7 @@
+class: CommandLineTool
+id: icecreammaker.sh.cwl
+inputs: []
+outputs: []
+cwlVersion: v1.1
+baseCommand:
+- icecreammaker.sh

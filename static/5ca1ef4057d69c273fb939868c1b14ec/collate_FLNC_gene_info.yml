@@ -1,0 +1,57 @@
+!Command
+positional:
+- !Positional
+  description: Collapse .group.txt
+  position: 0
+  name: group_filename
+  optional: false
+- !Positional
+  description: Trimmed UMI/BC CSV info
+  position: 1
+  name: csv_filename
+  optional: false
+- !Positional
+  description: SQANTI classification.txt
+  position: 2
+  name: class_filename
+  optional: false
+- !Positional
+  description: Output filename
+  position: 3
+  name: output_filename
+  optional: false
+named:
+- !Flag
+  description: (Optional) on target information text
+  synonyms:
+  - -i
+  - --ontarget_filename
+  args: !SimpleFlagArg
+    name: ONTARGET_FILENAME
+  optional: true
+- !Flag
+  description: (Optional) dedup-ed ORF group prefix, must have <pre>.faa and <pre>.group.txt
+  synonyms:
+  - -p
+  - --dedup_ORF_prefix
+  args: !SimpleFlagArg
+    name: DEDUP_ORF_PREFIX
+  optional: true
+- !Flag
+  description: Drop all reads where there are extra bases
+  synonyms:
+  - --no-extra-base
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- collate_FLNC_gene_info.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

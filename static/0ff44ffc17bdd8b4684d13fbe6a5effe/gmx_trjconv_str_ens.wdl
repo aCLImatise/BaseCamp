@@ -1,0 +1,19 @@
+version 1.0
+
+task GmxTrjconvStrEns {
+  input {
+    String configConfig
+    String inputInputTRajPath
+    String inputInputTopPath
+    String inputInputIndexPath
+    String outputOutputStrEnsPath
+  }
+  command <<<
+    gmx_trjconv_str_ens \
+      ~{if defined(configConfig) then ("--config " +  '"' + configConfig + '"') else ""} \
+      ~{if defined(inputInputTRajPath) then ("--input_traj_path " +  '"' + inputInputTRajPath + '"') else ""} \
+      ~{if defined(inputInputTopPath) then ("--input_top_path " +  '"' + inputInputTopPath + '"') else ""} \
+      ~{if defined(inputInputIndexPath) then ("--input_index_path " +  '"' + inputInputIndexPath + '"') else ""} \
+      ~{if defined(outputOutputStrEnsPath) then ("--output_str_ens_path " +  '"' + outputOutputStrEnsPath + '"') else ""}
+  >>>
+}

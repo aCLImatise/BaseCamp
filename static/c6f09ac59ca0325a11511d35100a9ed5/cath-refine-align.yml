@@ -1,0 +1,263 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: alignment_source
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: protein_file_source
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: superposition_outputs
+  optional: true
+named:
+- !Flag
+  description: '[ --version ]                   Output version information'
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Align residues by simply matching their names (numbers+insert) (for
+    multiple models of the same structure)
+  synonyms:
+  - --res-name-align
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Read FASTA alignment from file <file>
+  synonyms:
+  - --fasta-aln-infile
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Read SSAP alignment from file <file>
+  synonyms:
+  - --ssap-aln-infile
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Read CORA alignment from file <file>
+  synonyms:
+  - --cora-aln-infile
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Glue pairwise alignments together using SSAP scores in file <file>
+    Assumes all .list alignment files in same directory
+  synonyms:
+  - --ssap-scores-infile
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: '[=<dir>(="")]       Do the required SSAPs in directory <dir>; use
+    results as with --ssap-scores-infile Use a suitable temp directory if none is
+    specified'
+  synonyms:
+  - --do-the-ssaps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(=HEAVY)   Apply <refn> refining to the alignment, one of available\
+    \ values: NO    - Don't refine the alignment LIGHT - Refine any alignments with\
+    \ few entries; glue alignments one more entry at a time HEAVY - Perform heavy\
+    \ (slow) refining on the alignment, including when gluing alignments together\
+    \ This can change the method of gluing alignments under --ssap-scores-infile and\
+    \ --do-the-ssaps"
+  synonyms:
+  - --align-refining
+  args: !SimpleFlagArg
+    name: refn
+  optional: true
+- !Flag
+  description: Structure ids
+  synonyms:
+  - --id
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Read PDB from file <pdbfile> (may be specified multiple times)
+  synonyms:
+  - --pdb-infile
+  args: !SimpleFlagArg
+    name: pdbfile
+  optional: true
+- !Flag
+  description: 'Read PDBs from stdin (separated by line: "END   ")'
+  synonyms:
+  - --pdbs-from-stdin
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Handle region(s) <regions> as the alignment part of the structure.
+    May be specified multiple times, in correspondence with the structures. Format
+    is: D[5inwB02]251-348:B,408-416A:B (Put <regions> in quotes to prevent the square
+    brackets confusing your shell ("No match"))'
+  synonyms:
+  - --align-regions
+  args: !SimpleFlagArg
+    name: regions
+  optional: true
+- !Flag
+  description: '[EXPERIMENTAL] Write the alignment to a CATH alignment file'
+  synonyms:
+  - --aln-to-cath-aln-file
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '[EXPERIMENTAL] Print the alignment to stdout in CATH alignment format'
+  synonyms:
+  - --aln-to-cath-aln-stdout
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write the alignment to a FASTA file
+  synonyms:
+  - --aln-to-fasta-file
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Print the alignment to stdout in FASTA format
+  synonyms:
+  - --aln-to-fasta-stdout
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write the alignment to a SSAP file
+  synonyms:
+  - --aln-to-ssap-file
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Print the alignment to stdout as SSAP
+  synonyms:
+  - --aln-to-ssap-stdout
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write the alignment to a HTML file
+  synonyms:
+  - --aln-to-html-file
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Print the alignment to stdout as HTML
+  synonyms:
+  - --aln-to-html-stdout
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write the superposed structures to a single PDB file arg, separated
+    using faked chain codes
+  synonyms:
+  - --sup-to-pdb-file
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Write the superposed structures to separate PDB files in directory
+    arg
+  synonyms:
+  - --sup-to-pdb-files-dir
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Print the superposed structures to stdout, separated using faked chain
+    codes
+  synonyms:
+  - --sup-to-stdout
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Start up PyMOL for viewing the superposition
+  synonyms:
+  - --sup-to-pymol
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (="pymol")     Use arg as the PyMOL executable for viewing; may optionally
+    include the full path
+  synonyms:
+  - --pymol-program
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Write the superposition to a PyMOL script arg (Recommended filename
+    extension: .pml)'
+  synonyms:
+  - --sup-to-pymol-file
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Write the superposition to JSON superposition file (Recommended filename
+    extension: .sup_json)'
+  synonyms:
+  - --sup-to-json-file
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Use <colrs> to colour successive entries in the viewer (format: colon-separated
+    list of comma-separated triples of RGB values between 0 and 1) (will wrap-around
+    when it runs out of colours)'
+  synonyms:
+  - --viewer-colours
+  args: !SimpleFlagArg
+    name: colrs
+  optional: true
+- !Flag
+  description: Colour the length of the alignment with a rainbow gradient (blue ->
+    red)
+  synonyms:
+  - --gradient-colour-alignment
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show the alignment scores (use with gradient-colour-alignment)
+  synonyms:
+  - --show-scores-if-present
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show the alignment scores to equivalent positions, which increases
+    relative scores where few entries are aligned (use with --gradient-colour-alignment
+    and --show-scores-if-present)
+  synonyms:
+  - --scores-to-equivs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When showing scores, normalise them to the highest score in the alignment
+    (use with --gradient-colour-alignment and --show-scores-if-present)
+  synonyms:
+  - --normalise-scores
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- cath-refine-align
+subcommands: []
+help_flag: !Flag
+  description: '[ --help ]                      Output help message'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

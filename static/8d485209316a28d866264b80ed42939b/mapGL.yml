@@ -1,0 +1,117 @@
+!Command
+positional:
+- !Positional
+  description: Input regions to process. Should be in standard bed format. Only the
+    first four bed fields will be used.
+  position: 0
+  name: input
+  optional: false
+- !Positional
+  description: Tree, in standard Newick format, with or without branch lengths, describing
+    relationships of query and target species to outgroups. May be given as a string
+    or file.
+  position: 1
+  name: tree
+  optional: false
+- !Positional
+  description: Name of the query species. Regions from this species will be mapped
+    to target species coordinates.
+  position: 2
+  name: qname
+  optional: false
+- !Positional
+  description: Name of the target species. Regions from the query species will be
+    mapped to coordinates from this species.
+  position: 3
+  name: tname
+  optional: false
+- !Positional
+  description: 'Alignment files (.chain or .pkl): One for the target species and one
+    per outgroup species. Files should be named according to the convention: qname.tname[...].chain.gz,
+    where qname is the query species name and tname is the name of the target/outgroup
+    species. Names used for qname and tname must match names used in the newick tree.'
+  position: 4
+  name: alignments
+  optional: false
+named:
+- !Flag
+  description: 'Output file. Default stdout. (default: stdout)'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'Mapping threshold i.e., |elem| * threshold <= |mapped_elem|. Default
+    = 0.0 -- equivalent to accepting a single-base overlap. On the other end of the
+    spectrum, setting this value to 1 is equivalent to only accepting full-length
+    overlaps. (default: 0.0)'
+  synonyms:
+  - -t
+  - --threshold
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Ignore elements with an insertion/deletion of this or bigger size.
+    Using the default value (-1) will allow gaps of any size. (default: -1)'
+  synonyms:
+  - -g
+  - --gap
+  args: !SimpleFlagArg
+    name: GAP
+  optional: true
+- !Flag
+  description: 'Verbosity level (default: info)'
+  synonyms:
+  - -v
+  - --verbose
+  args: !ChoiceFlagArg
+    choices:
+    - info
+    - debug
+    - silent
+  optional: true
+- !Flag
+  description: 'If elements span multiple chains, report them as non- mapping. These
+    will then be reported as gains or losses, according to the maximum-parsimony predictions.
+    This is the default mapping behavior for bnMapper. By default, mapGL.pys will
+    follow the mapping convention used by liftOver, whereas the longest mapped alignment
+    is reported for split elements. (default: False)'
+  synonyms:
+  - -d
+  - --drop_split
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Input file format. (Default: BED) (default: BED)'
+  synonyms:
+  - -i
+  - --in_format
+  args: !ChoiceFlagArg
+    choices:
+    - BED
+    - narrowPeak
+  optional: true
+- !Flag
+  description: 'Attempt to predict gain/loss events on all branches of the tree, not
+    just query/target branches. Output will include a comma-delimited list of gain/loss
+    events from any/all affected branches. (default: False)'
+  synonyms:
+  - -f
+  - --full_labels
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- mapGL.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

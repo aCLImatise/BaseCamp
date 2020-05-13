@@ -1,0 +1,195 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: '[ --input_file_path ] arg          Path to the input file'
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --output_clusters_file_path ] arg Path to file to which clusters
+    will be  written'
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --output_cluster_profiles_file ] arg Path to file to which cluster
+    profiles  will be written'
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --cluster_name_prefix ] arg (=CAG) Prefix prepended to output cluster  names'
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --num_threads ] arg (=4)         IMPORTANT! Number of cpu threads
+    to  use.'
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --verbosity ] arg (=info)        Control how much information should
+    be  printed to the screen. Available levels according to their verbosity: error,  progress,
+    warn, info, debug, debug1.'
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (=0.1)          Max pearson correlation difference  between a canopy
+    center and a point  included to the canopy
+  synonyms:
+  - --max_canopy_dist
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=0.4)           Max pearson correlation difference  between a canopy
+    center and a point in  which the point will be considered  close to the canopy.
+    As a heuristc,  only points within this distance will  be considered as potential
+    neighbours  during the canopy walk.
+  synonyms:
+  - --max_close_dist
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=0.05)          Max pearson correlation difference  between two canopy
+    centers in which the canopies should be merged. Please note, that the final canopy
+    profiles are  calculated after the merge step and  consequently some final canopies
+    might  have profiles that are closer then  max_merge_dist specifies.
+  synonyms:
+  - --max_merge_dist
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=0.01)           Min pearson correlation difference  between canopy
+    center and canopy  centroid in which the centroid will be  used as an origin for
+    a new canpy  (canopy walk). This is a stop criterion for canopy walk.
+  synonyms:
+  - --min_step_dist
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=3)       Max number of times the canopy will  walk. This is a stop
+    criterion for  canopy walk.
+  synonyms:
+  - --max_num_canopy_walks
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=3)             Discard those points which have fewer  than N non-zero
+    data points  (observations). Setting it to 0 will  disable the filter.
+  synonyms:
+  - --filter_min_obs
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=0.9)  Discard those points for which top 3  data points constitute
+    more than X  fraction of the total signal. Setting  it to 1 will disable the filter
+  synonyms:
+  - --filter_max_dominant_obs
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: File to which write out those files  that didn't match the filter_min_obs  filter
+  synonyms:
+  - --filtered_out_points_min_obs_file
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: File to which write out those files  that didn't match the  filter_max_dominant_obs
+    filter.
+  synonyms:
+  - --filtered_out_points_max_dominant_obs_file
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=3)        Return only those canopies that have at least N non-zero
+    cluster profile  observations. Setting it to 0 will  disable the filter.
+  synonyms:
+  - --filter_zero_medians
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=0.9)      Don't return canopies containing a  single profile observation
+    which  constitutes to more than X fraction of  the total profile. Setting it to
+    1  disables the filter.
+  synonyms:
+  - --filter_single_point
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: (=1.0)            Stop clustering after X fraction of all points have
+    been clustered. Setting it  to 1 will disable this stop criterion.
+  synonyms:
+  - --stop_fraction
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: If set, after receiving a KILL signal,  the program will die and no
+    results  will be produced. By default clustering will stop but clusters will be
+    merged  and partial results will be printed as  usual.
+  synonyms:
+  - --die_on_kill
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to file to which unprocessed  origins will be dumped at KILL signal
+  synonyms:
+  - --not_processed_points_file
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "[ --print_time_statistics ]        Print wall clock time profiles\
+    \ of  various analysis parts. This is not  aggressive and won't increase  compuatation\
+    \ time."
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --show_progress_bar ]            Show progress bar, nice if output\
+    \ is  printed to console, don't use if you  are redirecting to a file. Verbosity\
+    \  must be set to at least PROGRESS for it to have an effect."
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If set, to this file current progress  after each processed origin
+    will be  dumped in format <index>  <num_left_origins> <this_canopy_size>  <total_num_thread_collisions>
+  synonyms:
+  - --canopy_size_stats_file
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+command:
+- canopy
+subcommands: []
+help_flag: !Flag
+  description: write help message
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

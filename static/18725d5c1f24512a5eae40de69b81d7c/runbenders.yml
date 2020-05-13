@@ -1,0 +1,331 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The directory in which all model (reference and scenario) definitions
+    are stored. Default is ".".
+  synonyms:
+  - -m
+  - --model-directory
+  args: !SimpleFlagArg
+    name: MODEL_DIRECTORY
+  optional: true
+- !Flag
+  description: The directory in which all instance (reference and scenario) definitions
+    are stored. This option is required if no callback is found in the model file.
+  synonyms:
+  - -i
+  - --instance-directory
+  args: !SimpleFlagArg
+    name: INSTANCE_DIRECTORY
+  optional: true
+- !Flag
+  description: The objective sense to use for the auto-generated scenario instance
+    objective, which is equal to the sum of the scenario-tree stage costs. Default
+    is None, indicating an Objective has been declared on the reference model.
+  synonyms:
+  - -o
+  - --objective-sense-stage-based
+  args: !SimpleFlagArg
+    name: OBJECTIVE_SENSE
+  optional: true
+- !Flag
+  description: The random seed associated with manipulation operations on the scenario
+    tree (e.g., down-sampling or bundle creation). Default is 0, indicating unassigned.
+  synonyms:
+  - --scenario-tree-seed
+  args: !SimpleFlagArg
+    name: SCENARIO_TREE_RANDOM_SEED
+  optional: true
+- !Flag
+  description: The proportion of the scenarios in the scenario tree that are actually
+    used. Specific scenarios are selected at random. Default is 1.0, indicating no
+    down-sampling.
+  synonyms:
+  - --scenario-tree-downsample-fraction
+  args: !SimpleFlagArg
+    name: SCENARIO_TREE_DOWNSAMPLE_FRACTION
+  optional: true
+- !Flag
+  description: The name of the scenario bundling specification to be used when executing
+    Progressive Hedging. Default is None, indicating no bundling is employed. If the
+    specified name ends with a .dat suffix, the argument is interpreted as a filename.
+    Otherwise, the name is interpreted as a file in the instance directory, constructed
+    by adding the .dat suffix automatically
+  synonyms:
+  - --scenario-bundle-specification
+  args: !SimpleFlagArg
+    name: SCENARIO_BUNDLE_SPECIFICATION
+  optional: true
+- !Flag
+  description: Specification to create the indicated number of random, equally-sized
+    (to the degree possible) scenario bundles. Default is 0, indicating disabled.
+  synonyms:
+  - --create-random-bundles
+  args: !SimpleFlagArg
+    name: CREATE_RANDOM_BUNDLES
+  optional: true
+- !Flag
+  description: The maximal number of benders iterations. Default is 100.
+  synonyms:
+  - --max-iterations
+  args: !SimpleFlagArg
+    name: MAX_ITERATIONS
+  optional: true
+- !Flag
+  description: Percent optimality gap required for convergence. Default is 0.0001%.
+  synonyms:
+  - --percent-gap
+  args: !SimpleFlagArg
+    name: PERCENT_GAP
+  optional: true
+- !Flag
+  description: The number of cut groups added to the master benders problem each iteration.
+    Default is 1.
+  synonyms:
+  - --multicut-level
+  args: !SimpleFlagArg
+    name: MULTICUTS
+  optional: true
+- !Flag
+  description: A user provided best bound for the relaxed (master) problem. When provided,
+    will be used in the optimality gap calculation if appropriate.
+  synonyms:
+  - --user-bound
+  args: !SimpleFlagArg
+    name: USER_BOUND
+  optional: true
+- !Flag
+  description: Disable warm-start of the benders master problem solves. Default is
+    False.
+  synonyms:
+  - --master-disable-warmstarts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Specify the solver with which to solve the master benders problem.
+    The following solver types are currently supported: asl, baron, bilevel_blp_global,
+    bilevel_blp_local, bilevel_ld, cbc, cplex, glpk, gurobi, mpec_minlp, mpec_nlp,
+    openopt, os, path, pico, ps, py, scip, xpress; Default: cplex'
+  synonyms:
+  - --master-solver
+  args: !SimpleFlagArg
+    name: MASTER_SOLVER_TYPE
+  optional: true
+- !Flag
+  description: 'The type of IO used to execute the master solver. Different solvers
+    support different types of IO, but the following are common options: lp - generate
+    LP files, nl - generate NL files, python - direct Python interface, os - generate
+    OSiL XML files.'
+  synonyms:
+  - --master-solver-io
+  args: !SimpleFlagArg
+    name: MASTER_SOLVER_IO
+  optional: true
+- !Flag
+  description: Specifies the mipgap for the master benders solves.
+  synonyms:
+  - --master-mipgap
+  args: !SimpleFlagArg
+    name: MASTER_MIPGAP
+  optional: true
+- !Flag
+  description: Solver options for the master benders problem.
+  synonyms:
+  - --master-solver-options
+  args: !SimpleFlagArg
+    name: MASTER_SOLVER_OPTIONS
+  optional: true
+- !Flag
+  description: Output solver logs during master benders solves solves
+  synonyms:
+  - --master-output-solver-log
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Retain temporary input and output files for master benders solves
+  synonyms:
+  - --master-keep-solver-files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When interfacing with the solver, use symbol names derived from the
+    model. For example, "my_special_variable[1_2_3]" instead of "v1". Useful for debugging.
+    When using the ASL interface (--solver- io=nl), generates corresponding .row (constraints)
+    and .col (variables) files. The ordering in these files provides a mapping from
+    ASL index to symbolic model names.
+  synonyms:
+  - --master-symbolic-solver-labels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output solver logs during scenario sub-problem solves
+  synonyms:
+  - --output-solver-logs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When interfacing with the solver, use symbol names derived from the
+    model. For example, "my_special_variable[1_2_3]" instead of "v1". Useful for debugging.
+    When using the ASL interface (--solver- io=nl), generates corresponding .row (constraints)
+    and .col (variables) files. The ordering in these files provides a mapping from
+    ASL index to symbolic model names.
+  synonyms:
+  - --symbolic-solver-labels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specifies the mipgap for all sub-problems
+  synonyms:
+  - --scenario-mipgap
+  args: !SimpleFlagArg
+    name: SCENARIO_MIPGAP
+  optional: true
+- !Flag
+  description: Solver options for all sub-problems
+  synonyms:
+  - --scenario-solver-options
+  args: !SimpleFlagArg
+    name: SCENARIO_SOLVER_OPTIONS
+  optional: true
+- !Flag
+  description: 'Specify the solver with which to solve scenario sub- problems.  The
+    following solver types are currently supported: asl, baron, bilevel_blp_global,
+    bilevel_blp_local, bilevel_ld, cbc, cplex, glpk, gurobi, mpec_minlp, mpec_nlp,
+    openopt, os, path, pico, ps, py, scip, xpress; Default: cplex'
+  synonyms:
+  - --solver
+  args: !SimpleFlagArg
+    name: SOLVER_TYPE
+  optional: true
+- !Flag
+  description: 'The type of IO used to execute the solver.  Different solvers support
+    different types of IO, but the following are common options: lp - generate LP
+    files, nl - generate NL files, python - direct Python interface, os - generate
+    OSiL XML files.'
+  synonyms:
+  - --solver-io
+  args: !SimpleFlagArg
+    name: SOLVER_IO
+  optional: true
+- !Flag
+  description: The type of solver manager used to coordinate scenario sub-problem
+    solves. Default is serial.
+  synonyms:
+  - --solver-manager
+  args: !SimpleFlagArg
+    name: SOLVER_MANAGER_TYPE
+  optional: true
+- !Flag
+  description: Set the number of idle phsolverserver worker processes expected to
+    be available when the PHPyro solver manager is selected. This option should be
+    used when the number of worker threads is less than the total number of scenarios
+    (or bundles). When this option is not used, PH will attempt to assign each scenario
+    (or bundle) to a single phsolverserver until the timeout indicated by the --phpyro-workers-timeout
+    option occurs.
+  synonyms:
+  - --phpyro-required-workers
+  args: !SimpleFlagArg
+    name: PHPYRO_REQUIRED_WORKERS
+  optional: true
+- !Flag
+  description: Set the time limit (seconds) for finding idle phsolverserver worker
+    processes to be used when the PHPyro solver manager is selected. This option is
+    ignored when --phpyro-required-workers is set manually. Default is 30.
+  synonyms:
+  - --phpyro-workers-timeout
+  args: !SimpleFlagArg
+    name: PHPYRO_WORKERS_TIMEOUT
+  optional: true
+- !Flag
+  description: The hostname to bind on. By default, the first dispatcher found will
+    be used. This option can also help speed up initialization time if the hostname
+    is known (e.g., localhost)
+  synonyms:
+  - --pyro-hostname
+  args: !SimpleFlagArg
+    name: PYRO_MANAGER_HOSTNAME
+  optional: true
+- !Flag
+  description: Disable warm-start of scenario sub-problem solves in iterations >=
+    1. Default is False.
+  synonyms:
+  - --disable-warmstarts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Shut down all Pyro-related components associated with the Pyro and
+    PH Pyro solver managers (if specified), including the dispatch server, name server,
+    and any solver servers. Default is False.
+  synonyms:
+  - --shutdown-pyro
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Report the full solution (even leaves) in scenario tree format upon
+    termination. Values represent averages, so convergence is not an issue. Default
+    is False.
+  synonyms:
+  - --output-scenario-tree-solution
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output solutions obtained after each scenario sub- problem solve
+  synonyms:
+  - --output-solver-results
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output timing statistics for various components
+  synonyms:
+  - --output-times
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output timing statistics for instance construction timing statistics
+    (client-side only when using PHPyro
+  synonyms:
+  - --output-instance-construction-times
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Generate verbose output for both initialization and execution. Default
+    is False.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable the python garbage collecter. Default is False.
+  synonyms:
+  - --disable-gc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Retain temporary input and output files for scenario sub-problem solves
+  synonyms:
+  - -k
+  - --keep-solver-files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable profiling of Python code.  The value of this option is the number
+    of functions that are summarized.
+  synonyms:
+  - --profile
+  args: !SimpleFlagArg
+    name: PROFILE
+  optional: true
+- !Flag
+  description: When an exception is thrown, show the entire call stack. Ignored if
+    profiling is enabled. Default is False.
+  synonyms:
+  - --traceback
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- runbenders
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

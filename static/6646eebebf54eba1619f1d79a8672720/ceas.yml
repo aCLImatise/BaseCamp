@@ -1,0 +1,153 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: 'input files '
+  optional: false
+named:
+- !Flag
+  description: BED file of ChIP regions.
+  synonyms:
+  - -b
+  - --bed
+  args: !SimpleFlagArg
+    name: BED
+  optional: true
+- !Flag
+  description: 'WIG file for either wig profiling or genome background annotation.
+    WARNING: --bg flag must be set for genome background re-annotation.'
+  synonyms:
+  - -w
+  - --wig
+  args: !SimpleFlagArg
+    name: WIG
+  optional: true
+- !Flag
+  description: BED file of extra regions of interest (eg, non-coding regions)
+  synonyms:
+  - -e
+  - --ebed
+  args: !SimpleFlagArg
+    name: EBED
+  optional: true
+- !Flag
+  description: Gene annotation table (eg, a refGene table in sqlite3 db format provided
+    through the CEAS web, http://liulab.dfci.harvard.edu/CEAS/download.html).
+  synonyms:
+  - -g
+  - --gt
+  args: !SimpleFlagArg
+    name: GDB
+  optional: true
+- !Flag
+  description: Experiment name. This will be used to name the output files. If an
+    experiment name is not given, the stem of the input BED file name will be used
+    instead (eg, if 'peaks.bed', 'peaks' will be used as a name.)
+  synonyms:
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: 'Promoter (also dowsntream) sizes for ChIP region annotation. Comma-separated
+    three values or a single value can be given. If a single value is given, it will
+    be segmented into three equal fractions (ie, 3000 is equivalent to 1000,2000,3000),
+    DEFAULT: 1000,2000,3000. WARNING: Values > 10000bp are automatically set to 10000bp.'
+  synonyms:
+  - --sizes
+  args: !SimpleFlagArg
+    name: SIZES
+  optional: true
+- !Flag
+  description: 'Bidirectional-promoter sizes for ChIP region annotation Comma-separated
+    two values or a single value can be given. If a single value is given, it will
+    be segmented into two equal fractions (ie, 5000 is equivalent to 2500,5000) DEFAULT:
+    2500,5000bp. WARNING: Values > 20000bp are automatically set to 20000bp.'
+  synonyms:
+  - --bisizes
+  args: !SimpleFlagArg
+    name: BISIZES
+  optional: true
+- !Flag
+  description: 'Run genome BG annotation again. WARNING: This flag is effective only
+    if a WIG file is given through -w (--wig). Otherwise, ignored.'
+  synonyms:
+  - --bg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Span from TSS and TTS in the gene-centered annotation. ChIP regions
+    within this range from TSS and TTS are considered when calculating the coverage
+    rates in promoter and downstream, DEFAULT=3000bp
+  synonyms:
+  - --span
+  args: !SimpleFlagArg
+    name: SPAN
+  optional: true
+- !Flag
+  description: 'Wig profiling resolution, DEFAULT: 50bp. WARNING: Value smaller than
+    the wig interval (resolution) may cause aliasing error.'
+  synonyms:
+  - --pf-res
+  args: !SimpleFlagArg
+    name: PF_RES
+  optional: true
+- !Flag
+  description: 'Relative distance to TSS/TTS in wig profiling, DEFAULT: 3000bp'
+  synonyms:
+  - --rel-dist
+  args: !SimpleFlagArg
+    name: REL_DIST
+  optional: true
+- !Flag
+  description: Gene-groups of particular interest in wig profiling. Each gene group
+    file must have gene names in the 1st column. The file names are separated by commas
+    w/ no space (eg, --gn-groups=top10.txt,bottom10.txt)
+  synonyms:
+  - --gn-groups
+  args: !SimpleFlagArg
+    name: GN_GROUPS
+  optional: true
+- !Flag
+  description: The names of the gene groups in --gn-groups. The gene group names are
+    separated by commas. (eg, --gn-group- names='top 10%,bottom 10%'). These group
+    names appear in the legends of the wig profiling plots. If no group names given,
+    the groups are represented as 'Group 1, Group2,...Group n'.
+  synonyms:
+  - --gn-group-names
+  args: !SimpleFlagArg
+    name: GN_NAMES
+  optional: true
+- !Flag
+  description: Whether or not use the 'name2' column of the gene annotation table
+    when reading the gene IDs in the files given through --gn-groups. This flag is
+    meaningful only with --gn-groups.
+  synonyms:
+  - --gname2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Whether to save the raw profiles of near TSS, TTS, and gene body. The
+    file names have a suffix of 'TSS', 'TTS', and 'gene' after the name.
+  synonyms:
+  - --dump
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- ceas
+subcommands: []
+help_flag: !Flag
+  description: Show this help message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

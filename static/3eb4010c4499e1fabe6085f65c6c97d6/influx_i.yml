@@ -1,0 +1,267 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: no optimization, just use free parameters as is (after a projection
+    on feasibility domain), to calculate dependent fluxes, cumomers, stats and so
+    on
+  synonyms:
+  - --noopt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: no scaling factors to optimize => all scaling factors are assumed to
+    be 1
+  synonyms:
+  - --noscale
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'method for optimization, one of nlsic|BFGS|Nelder- Mead. Default:
+    nlsic'
+  synonyms:
+  - --meth
+  args: !SimpleFlagArg
+    name: METH
+  optional: true
+- !Flag
+  description: calculate all cumomer set (not just the reduced one necesary to simulate
+    measurements)
+  synonyms:
+  - --fullsys
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: simulate labeling in EMU approach
+  synonyms:
+  - --emu
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ignore initial approximation for free parameters (free fluxes and metabolite
+    concentrations) from the FTBL file or from a dedicated file (cf --fseries and
+    --iseries option) and use random values drawn uniformly from [0,1] interval
+  synonyms:
+  - --irand
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "sensitivity method: SENS can be 'mc[=N]', mc stands for Monte-Carlo.\
+    \ N is an optional number of Monte- Carlo simulations. Default for N: 10"
+  synonyms:
+  - --sens
+  args: !SimpleFlagArg
+    name: SENS
+  optional: true
+- !Flag
+  description: 'upper limit for reverse fluxes. Must be in interval [0, 1]. Default:
+    0.999'
+  synonyms:
+  - --cupx
+  args: !SimpleFlagArg
+    name: CUPX
+  optional: true
+- !Flag
+  description: 'absolute limit for net fluxes: -cupn <= netflux <= cupn. Must be non
+    negative. Value 0 means no limit. Default: 1.e3'
+  synonyms:
+  - --cupn
+  args: !SimpleFlagArg
+    name: CUPN
+  optional: true
+- !Flag
+  description: 'upper limit for metabolite pool. Default: 1.e5'
+  synonyms:
+  - --cupp
+  args: !SimpleFlagArg
+    name: CUPP
+  optional: true
+- !Flag
+  description: lower limit for not reversible free and dependent fluxes. Zero value
+    (default) means no lower limit
+  synonyms:
+  - --clownr
+  args: !SimpleFlagArg
+    name: CLOWNR
+  optional: true
+- !Flag
+  description: 'lower limit for input/output free and dependent fluxes. Must be non
+    negative. Default: 0'
+  synonyms:
+  - --cinout
+  args: !SimpleFlagArg
+    name: CINOUT
+  optional: true
+- !Flag
+  description: lower limit for free metabolite pools. Must be positive. Default 1.e-8
+  synonyms:
+  - --clowp
+  args: !SimpleFlagArg
+    name: CLOWP
+  optional: true
+- !Flag
+  description: When integer >= 1, it is a number of parallel subprocesses used in
+    Monte-Carlo (MC) simulations or for multiple FTBL inputs. When NP is a float number
+    between 0 and 1, it gives a fraction of available cores (rounded to closest integer)
+    to be used. Without this option or for NP=0, all available cores in a given node
+    are used for MC simulations.
+  synonyms:
+  - --np
+  args: !SimpleFlagArg
+    name: NP
+  optional: true
+- !Flag
+  description: Least norm solution is used for increments during the non-linear iterations
+    when Jacobian is rank deficient
+  synonyms:
+  - --ln
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Least norm of the solution of linearized problem (and not just of increments)
+    is used when Jacobian is rank deficient
+  synonyms:
+  - --sln
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Approximate least norm solution is used for increments during the non-linear
+    iterations when Jacobian is rank deficient
+  synonyms:
+  - --tikhreg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The same as --ln but with a function limSolve::lsei()
+  synonyms:
+  - --lim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Apply zero crossing strategy with non negative threshold for net fluxes
+  synonyms:
+  - --zc
+  args: !SimpleFlagArg
+    name: ZC
+  optional: true
+- !Flag
+  description: Don't use free/dependent flux definitions from FTBL file(s). Make an
+    automatic guess.
+  synonyms:
+  - --ffguess
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "File name with free parameter values for multiple starting points.\
+    \ Default: '' (empty, i.e. only one starting point from the FTBL file is used)"
+  synonyms:
+  - --fseries
+  args: !SimpleFlagArg
+    name: FSERIES
+  optional: true
+- !Flag
+  description: "Indexes of starting points to use. Format: '1:10' -- use only first\
+    \ ten starting points; '1,3' -- use the the first and third starting points; '1:10,15,91:100'\
+    \ -- a mix of both formats is allowed. Default: '' (empty, i.e. all provided starting\
+    \ points are used)"
+  synonyms:
+  - --iseries
+  args: !SimpleFlagArg
+    name: ISERIES
+  optional: true
+- !Flag
+  description: 'Integer (preferably a prime integer) used for reproducible random
+    number generating. It makes reproducible random starting points (--irand) but
+    also Monte-Carlo simulations for sensitivity analysis. Default: none, i.e. current
+    system value is used, so random drawing will be varying at each run.'
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: SEED
+  optional: true
+- !Flag
+  description: 'This option takes an optional argument, a p-value between 0 and 1
+    which is used to filter out measurement outliers. The filtering is based on Z
+    statistics calculated on reduced residual distribution. Default: 0.01.'
+  synonyms:
+  - --excl_outliers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: generate an R code but not execute it.
+  synonyms:
+  - --nocalc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Add centered gaussian noise to simulated measurements written to _res.kvh
+    file. SD of this noise is taken from FTBL file
+  synonyms:
+  - --addnoise
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Time order for ODE solving (1 (default), 2 or 1,2). Order 2 is more
+    precise but more time consuming. The value '1,2' makes to start solving the ODE
+    with the first order scheme then continues with the order 2.
+  synonyms:
+  - --time_order
+  args: !SimpleFlagArg
+    name: TIME_ORDER
+  optional: true
+- !Flag
+  description: copy documentation directory in the current directory and exit. If
+    ./doc exists, its content is silently owerriten.
+  synonyms:
+  - --copy_doc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: copy test directory in the current directory and exit. If ./test exists,
+    its content is silently owerriten.
+  synonyms:
+  - --copy_test
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: install R dependencies and exit.
+  synonyms:
+  - --install_rdep
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'developer option: measure cpu time or not'
+  synonyms:
+  - --TIMEIT
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'developer option: do time profiling or not'
+  synonyms:
+  - --prof
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'developer option: set trace back limit for python error messages'
+  synonyms:
+  - --tblimit
+  args: !SimpleFlagArg
+    name: TBLIMIT
+  optional: true
+command:
+- influx_i
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

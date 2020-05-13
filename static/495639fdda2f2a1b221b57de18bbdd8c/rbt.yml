@@ -1,0 +1,835 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Verbose output.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- rbt
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: OPTIONS
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: bam-path
+    optional: false
+  named:
+  - !Flag
+    description: Skip reads with mask bits set [UNMAP, SECONDARY, QCFAIL, DUP].
+    synonyms:
+    - -e
+    - --excl-flags
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: Skip reads with mask bits unset [].
+    synonyms:
+    - -i
+    - --incl-flags
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'Maximum read length to consider. This affects the speed of the involved
+      pileup. Reads longer than this length can be missed when calculating the depth.
+      [default: 1000]'
+    synonyms:
+    - -m
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'Minimum mapping quality. [default: 0]'
+    synonyms:
+    - -q
+    - --min-mapq
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  command:
+  - rbt
+  - bam-depth
+  subcommands: []
+  help_flag: !Flag
+    description: Prints help information
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Prints version information
+    synonyms:
+    - -V
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional: []
+  named: []
+  command:
+  - rbt
+  - collapse-reads-to-fragments
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: FLAGS
+      optional: true
+    - !Positional
+      description: ''
+      position: 1
+      name: OPTIONS
+      optional: true
+    - !Positional
+      description: ''
+      position: 2
+      name: bam
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
+      name: consensus-bam
+      optional: false
+    named:
+    - !Flag
+      description: of equal length
+      synonyms:
+      - '- Reads'
+      args: !SimpleFlagArg
+        name: are
+      optional: true
+    - !Flag
+      description: marked by Picard Tools
+      synonyms:
+      - '- Reads'
+      args: !SimpleFlagArg
+        name: are
+      optional: true
+    - !Flag
+      description: Add list of reads that were merged for each consensus read. Note
+        that this can yield very long FASTQ name lines which cannot be handled by
+        some tools.
+      synonyms:
+      - --verbose-read-names
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Maximum hamming distance between the sequences of any pair of
+        reads in the same cluster. [default: 2]  [possible values: 1, 2, 3, 4, 5,
+        6, 7, 8]'
+      synonyms:
+      - -D
+      - --max-seq-dist
+      args: !SimpleFlagArg
+        name: max-seq-dist
+      optional: true
+    command:
+    - rbt
+    - collapse-reads-to-fragments
+    - bam
+    subcommands: []
+    help_flag: !Flag
+      description: Prints help information
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: Prints version information
+      synonyms:
+      - -V
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: FLAGS
+      optional: true
+    - !Positional
+      description: ''
+      position: 1
+      name: OPTIONS
+      optional: true
+    - !Positional
+      description: ''
+      position: 2
+      name: fq1
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
+      name: fq2
+      optional: false
+    - !Positional
+      description: ''
+      position: 4
+      name: consensus-fq1
+      optional: false
+    - !Positional
+      description: ''
+      position: 5
+      name: consensus-fq2
+      optional: false
+    - !Positional
+      description: ''
+      position: 6
+      name: consensus-fq3
+      optional: true
+    named:
+    - !Flag
+      description: of equal length
+      synonyms:
+      - '- Reads'
+      args: !SimpleFlagArg
+        name: are
+      optional: true
+    - !Flag
+      description: the prefix of the reads
+      synonyms:
+      - '- UMI'
+      args: !SimpleFlagArg
+        name: is
+      optional: true
+    - !Flag
+      description: '13 \                    # length of UMI'
+      synonyms:
+      - -l
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '1 \                     # max hamming distance of UMIs within
+        a cluster'
+      synonyms:
+      - -d
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '2 \                     # max hamming distance of sequences within
+        a cluster'
+      synonyms:
+      - -D
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '# UMI is the prefix of the reverse read'
+      synonyms:
+      - --umi-on-reverse
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Set if UMI is on reverse read
+      synonyms:
+      - -u
+      - --umi-on-reverse
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Add list of reads that were merged for each consensus read. Note
+        that this can yield very long FASTQ name lines which cannot be handled by
+        some tools.
+      synonyms:
+      - --verbose-read-names
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Expected insert size of sequenced fragment (Required for calculating
+        overlapping consensus only)
+      synonyms:
+      - -i
+      - --insert-size
+      args: !SimpleFlagArg
+        name: insert-size
+      optional: true
+    - !Flag
+      description: 'Maximum hamming distance between the sequences of any pair of
+        reads in the same cluster. [default: 2]  [possible values: 1, 2, 3, 4, 5,
+        6, 7, 8]'
+      synonyms:
+      - -D
+      - --max-seq-dist
+      args: !SimpleFlagArg
+        name: max-seq-dist
+      optional: true
+    - !Flag
+      description: 'Maximum hamming distance between the UMIs of any pair of reads
+        in the same cluster. [default: 1]'
+      synonyms:
+      - -d
+      - --max-umi-dist
+      args: !SimpleFlagArg
+        name: max-umi-dist
+      optional: true
+    - !Flag
+      description: Standard deviation of expected insert size. Defines search space
+        of the most likely overlap. (Required for calculating overlapping consensus
+        only)
+      synonyms:
+      - -s
+      - --std-dev
+      args: !SimpleFlagArg
+        name: std-dev
+      optional: true
+    - !Flag
+      description: 'Length of UMI in read. [default: 8]'
+      synonyms:
+      - -l
+      - --umi-len
+      args: !SimpleFlagArg
+        name: umi-len
+      optional: true
+    command:
+    - rbt
+    - collapse-reads-to-fragments
+    - fastq
+    subcommands: []
+    help_flag: !Flag
+      description: Prints help information
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: Prints version information
+      synonyms:
+      - -V
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+  - !Command
+    positional: []
+    named: []
+    command:
+    - rbt
+    - collapse-reads-to-fragments
+    - help
+    subcommands:
+    - !Command
+      positional: []
+      named: []
+      command:
+      - rbt
+      - collapse-reads-to-fragments
+      - help
+      - For
+      subcommands:
+      - !Command
+        positional: []
+        named: []
+        command:
+        - rbt
+        - collapse-reads-to-fragments
+        - help
+        - For
+        - more
+        subcommands:
+        - !Command
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: try
+            optional: false
+          named: []
+          command:
+          - rbt
+          - collapse-reads-to-fragments
+          - help
+          - For
+          - more
+          - information
+          subcommands: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+        - !Command
+          positional:
+          - !Positional
+            description: ''
+            position: 0
+            name: information
+            optional: false
+          - !Positional
+            description: ''
+            position: 1
+            name: try
+            optional: false
+          named: []
+          command:
+          - rbt
+          - collapse-reads-to-fragments
+          - help
+          - For
+          - more
+          - try
+          subcommands: []
+          help_flag: !Flag
+            description: ''
+            synonyms:
+            - --help
+            args: !EmptyFlagArg {}
+            optional: true
+          usage_flag:
+          version_flag:
+        help_flag: !Flag
+          description: ''
+          synonyms:
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+      - !Command
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: more
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: information
+          optional: false
+        - !Positional
+          description: ''
+          position: 2
+          name: try
+          optional: false
+        named: []
+        command:
+        - rbt
+        - collapse-reads-to-fragments
+        - help
+        - For
+        - information
+        subcommands: []
+        help_flag: !Flag
+          description: ''
+          synonyms:
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+      - !Command
+        positional:
+        - !Positional
+          description: ''
+          position: 0
+          name: more
+          optional: false
+        - !Positional
+          description: ''
+          position: 1
+          name: information
+          optional: false
+        - !Positional
+          description: ''
+          position: 2
+          name: try
+          optional: false
+        named: []
+        command:
+        - rbt
+        - collapse-reads-to-fragments
+        - help
+        - For
+        - try
+        subcommands: []
+        help_flag: !Flag
+          description: ''
+          synonyms:
+          - --help
+          args: !EmptyFlagArg {}
+          optional: true
+        usage_flag:
+        version_flag:
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+    - !Command
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: For
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: more
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: information
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: try
+        optional: false
+      named: []
+      command:
+      - rbt
+      - collapse-reads-to-fragments
+      - help
+      - more
+      subcommands: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+    - !Command
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: For
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: more
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: information
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: try
+        optional: false
+      named: []
+      command:
+      - rbt
+      - collapse-reads-to-fragments
+      - help
+      - information
+      subcommands: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+    - !Command
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: For
+        optional: false
+      - !Positional
+        description: ''
+        position: 1
+        name: more
+        optional: false
+      - !Positional
+        description: ''
+        position: 2
+        name: information
+        optional: false
+      - !Positional
+        description: ''
+        position: 3
+        name: try
+        optional: false
+      named: []
+      command:
+      - rbt
+      - collapse-reads-to-fragments
+      - help
+      - try
+      subcommands: []
+      help_flag: !Flag
+        description: ''
+        synonyms:
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: Prints help information
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Prints version information
+    synonyms:
+    - -V
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: ids
+    optional: false
+  named: []
+  command:
+  - rbt
+  - fastq-filter
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: OPTIONS
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: vcf
+    optional: false
+  named:
+  - !Flag
+    description: 'url prefix for requesting interaction drugs by gene names. [default:
+      http://dgidb.org/api/v2/interactions.json?genes=]'
+    synonyms:
+    - -p
+    - --api-path
+    args: !SimpleFlagArg
+      name: api-path
+    optional: true
+  - !Flag
+    description: 'Info field name to be used for annotation. [default: dgiDB_drugs]'
+    synonyms:
+    - -f
+    - --field
+    args: !SimpleFlagArg
+      name: field
+    optional: true
+  - !Flag
+    description: 'Number of genes to submit per api request. A lower value increases
+      the number of api requests in return.  Too many requests could be rejected by
+      the DGIdb server. [default: 500]'
+    synonyms:
+    - -g
+    - --genes-per-request
+    args: !SimpleFlagArg
+      name: genes-per-request
+    optional: true
+  command:
+  - rbt
+  - vcf-annotate-dgidb
+  subcommands: []
+  help_flag: !Flag
+    description: Prints help information
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Prints version information
+    synonyms:
+    - -V
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: OPTIONS
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: vcf
+    optional: false
+  named:
+  - !Flag
+    description: 'Maximum distance between centres of two indels considered to match.
+      [default: 20]'
+    synonyms:
+    - -d
+    - --max-dist
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'Maximum difference between lengths of two indels. [default: 10]'
+    synonyms:
+    - -l
+    - --max-len-diff
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  command:
+  - rbt
+  - vcf-match
+  subcommands: []
+  help_flag: !Flag
+    description: Prints help information
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Prints version information
+    synonyms:
+    - -V
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Display genotypes.
+    synonyms:
+    - -g
+    - --genotypes
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '...     Select FORMAT tags.'
+    synonyms:
+    - -f
+    - --fmt
+    args: !SimpleFlagArg
+      name: NAME
+    optional: true
+  - !Flag
+    description: '...    Select INFO tags.'
+    synonyms:
+    - -i
+    - --info
+    args: !SimpleFlagArg
+      name: NAME
+    optional: true
+  command:
+  - rbt
+  - vcf-to-txt
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: OPTIONS
+      optional: true
+    named: []
+    command:
+    - rbt
+    - vcf-to-txt
+    - FLAGS
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: FLAGS
+      optional: true
+    - !Positional
+      description: ''
+      position: 1
+      name: OPTIONS
+      optional: true
+    named: []
+    command:
+    - rbt
+    - vcf-to-txt
+    - OPTIONS
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: Prints help information
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Prints version information
+    synonyms:
+    - -V
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+help_flag: !Flag
+  description: Prints help information
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Prints version information
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

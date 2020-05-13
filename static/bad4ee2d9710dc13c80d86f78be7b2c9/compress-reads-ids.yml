@@ -1,0 +1,72 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The input file in FASTQ Solexa file (also given thru STDOUT or as gzipped
+    file). By default, it is assumed that the input reads are shuffled/interleaved
+    (that is read id 1 is followed by read id 2 where read 1 and read 2 form a pair).
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT_FILENAME
+  optional: true
+- !Flag
+  description: The output text file containg the changed reads ids (also given thru
+    STDOUT or as gzipped file).
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME
+  optional: true
+- !Flag
+  description: The total number of reads in the input file. This is used in order
+    to compress the best the reads ids.
+  synonyms:
+  - -n
+  - --count-reads
+  args: !SimpleFlagArg
+    name: COUNT
+  optional: true
+- !Flag
+  description: If this is set than no /1 and /2 will be added to the compressed reads
+    ids. It has an effect only on interleaved inputs.
+  synonyms:
+  - -s
+  - --no12
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If it is set then the input reads from the input FASTQ files are not
+    interleaved. Also no /1 or /2 is added to the reads ids.
+  synonyms:
+  - -x
+  - --not-interleaved
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If this is set then also lowercase charcaters will be used for read
+    ids in FASTQ files.
+  synonyms:
+  - -l
+  - --lowercase
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- compress-reads-ids.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,90 @@
+!Command
+positional:
+- !Positional
+  description: The file to count reads in (SAM/BAM or Fastq)
+  position: 0
+  name: readfilename
+  optional: false
+named:
+- !Flag
+  description: 'type of read_file (one of: sam [default], bam, solexa- export, fastq,
+    solexa-fastq)'
+  synonyms:
+  - -t
+  - --type
+  args: !ChoiceFlagArg
+    choices:
+    - sam
+    - bam
+    - solexa-export
+    - fastq
+    - solexa-fastq
+  optional: true
+- !Flag
+  description: output filename (default is <read_file>.pdf)
+  synonyms:
+  - -o
+  - --outfile
+  args: !SimpleFlagArg
+    name: OUTFILE
+  optional: true
+- !Flag
+  description: the maximum read length (when not specified, the script guesses from
+    the file
+  synonyms:
+  - -r
+  - --readlength
+  args: !SimpleFlagArg
+    name: READLEN
+  optional: true
+- !Flag
+  description: the gamma factor for the contrast adjustment of the quality score plot
+  synonyms:
+  - -g
+  - --gamma
+  args: !SimpleFlagArg
+    name: GAMMA
+  optional: true
+- !Flag
+  description: do not split reads in unaligned and aligned ones
+  synonyms:
+  - -n
+  - --nosplit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'the maximum quality score that appears in the data (default: 41)'
+  synonyms:
+  - -m
+  - --maxqual
+  args: !SimpleFlagArg
+    name: MAXQUAL
+  optional: true
+- !Flag
+  description: For SAM/BAM input files, ignore alignments that are not primary. This
+    only affects 'multimapper' reads that align to several regions in the genome.
+    By choosing this option, each read will only count as one; without this option,
+    each of its alignments counts as one.
+  synonyms:
+  - --primary-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Limit the analysis to the first N reads/alignments.
+  synonyms:
+  - --max-records
+  args: !SimpleFlagArg
+    name: MAX_RECORDS
+  optional: true
+command:
+- htseq-qa
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

@@ -1,0 +1,390 @@
+!Command
+positional: []
+named: []
+command:
+- secapr
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Call the folder that contains the trimmed reads, organized in a separate
+      subfolder for each sample. The name of the subfolder has to start with the sample
+      name, delimited with an underscore [_] (default output of clean_reads function).
+    synonyms:
+    - --reads
+    args: !SimpleFlagArg
+      name: READS
+    optional: true
+  - !Flag
+    description: Please choose which type of reference you want to map the samples
+      to. "alignment-consensus" will create a consensus sequence for each alignment
+      file which will be used as a reference for all samples. This is recommendable
+      when all samples are rather closely related to each other. "sample-specific"
+      will extract the sample specific sequences from an alignment and use these as
+      a separate reference for each individual sample. "user-ref-lib" enables to input
+      one single fasta file created by the user which will be used as a reference
+      library for all samples.
+    synonyms:
+    - --reference_type
+    args: !ChoiceFlagArg
+      choices:
+      - alignment-consensus
+      - sample-specific
+      - user-ref-lib
+    optional: true
+  - !Flag
+    description: When choosing "alignment-consensus" or "sample- specific" as reference_type,
+      this flag calls the folder containing the alignment files for your target loci
+      (fasta-format). In case of "user-ref-lib" as reference_type, this flag calls
+      one single fasta file that contains a user-prepared reference library which
+      will be applied to all samples.
+    synonyms:
+    - --reference
+    args: !SimpleFlagArg
+      name: REFERENCE
+    optional: true
+  - !Flag
+    description: The output directory where results will be safed.
+    synonyms:
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Use this flag if you do not want to discard all duplicate reads with
+      Picard.
+    synonyms:
+    - --keep_duplicates
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Set the minimum read coverage. Only positions that are covered by
+      this number of reads will be called in the consensus sequence, otherwise the
+      program will add an ambiguity at this position.
+    synonyms:
+    - --min_coverage
+    args: !SimpleFlagArg
+      name: MIN_COVERAGE
+    optional: true
+  - !Flag
+    description: Number of computational cores for parallelization of computation.
+    synonyms:
+    - --cores
+    args: !SimpleFlagArg
+      name: CORES
+    optional: true
+  - !Flag
+    description: If the part of the read that sufficiently matches the reference is
+      shorter than this threshold, it will be discarded (minSeedLen).
+    synonyms:
+    - --k
+    args: !SimpleFlagArg
+      name: K
+    optional: true
+  - !Flag
+    description: Avoid introducing gaps in reads that are longer than this threshold.
+    synonyms:
+    - --w
+    args: !SimpleFlagArg
+      name: W
+    optional: true
+  - !Flag
+    description: Stop extension when the difference between the best and the current
+      extension score is above |i-j|*A+INT, where i and j are the current positions
+      of the query and reference, respectively, and A is the matching score.
+    synonyms:
+    - --d
+    args: !SimpleFlagArg
+      name: D
+    optional: true
+  - !Flag
+    description: Trigger re-seeding for a MEM longer than minSeedLen*FLOAT.
+    synonyms:
+    - --r
+    args: !SimpleFlagArg
+      name: R
+    optional: true
+  - !Flag
+    description: Discard a match if it has more than INT occurence in the genome
+    synonyms:
+    - --c
+    args: !SimpleFlagArg
+      name: C
+    optional: true
+  - !Flag
+    description: Matching score. Acts as a factor enhancing any match (higher value
+      makes it less conservative = allows reads that have fewer matches, since every
+      match is scored higher).
+    synonyms:
+    - --a
+    args: !SimpleFlagArg
+      name: A
+    optional: true
+  - !Flag
+    description: 'Mismatch penalty. The accepted mismatch rate per read on length
+      k is approximately: {.75 * exp[-log(4) * B/A]}'
+    synonyms:
+    - --b
+    args: !SimpleFlagArg
+      name: B
+    optional: true
+  - !Flag
+    description: Gap opening penalty
+    synonyms:
+    - --o
+    args: !SimpleFlagArg
+      name: O
+    optional: true
+  - !Flag
+    description: Gap extension penalty
+    synonyms:
+    - --e
+    args: !SimpleFlagArg
+      name: E
+    optional: true
+  - !Flag
+    description: Clipping penalty. During extension, the algorithm keeps track of
+      the best score reaching the end of query. If this score is larger than the best
+      extension score minus the clipping penalty, clipping will not be applied.
+    synonyms:
+    - --l
+    args: !SimpleFlagArg
+      name: L
+    optional: true
+  - !Flag
+    description: Penalty for an unpaired read pair. The lower the value, the more
+      unpaired reads will be allowed in the mapping.
+    synonyms:
+    - --u
+    args: !SimpleFlagArg
+      name: U
+    optional: true
+  command:
+  - secapr
+  - reference_assembly
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Call the folder that contains the results of the reference based
+      assembly (output of reference_assembly function, containing the bam-files).
+    synonyms:
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: The output directory where results will be safed.
+    synonyms:
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Set the minimum read coverage. Only positions that are covered by
+      this number of reads will be called in the consensus sequence, otherwise the
+      program will add an ambiguity at this position.
+    synonyms:
+    - --min_coverage
+    args: !SimpleFlagArg
+      name: MIN_COVERAGE
+    optional: true
+  - !Flag
+    description: Provide the reference that was used for read-mapping. If you used
+      the alignment-consensus method, provide the joined_fasta_library.fasta which
+      is found in the reference_seqs folder within the reference-assembly output.
+    synonyms:
+    - --reference
+    args: !SimpleFlagArg
+      name: REFERENCE
+    optional: true
+  command:
+  - secapr
+  - phase_alleles
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  command:
+  - secapr
+  - add_missing_sequences
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: The folder with the results of the reference based assembly.
+    synonyms:
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: The output directory where results will be safed.
+    synonyms:
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: The n loci that are best represented accross all samples will be
+      extracted.
+    synonyms:
+    - --n
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: The threshold for what average read coverage the selected target
+      loci should at least have.
+    synonyms:
+    - --read_cov
+    args: !SimpleFlagArg
+      name: READ_COV
+    optional: true
+  - !Flag
+    description: Path to reference library fasta file (secapr will find it by itself
+      if the reference assembly was executed with secapr).
+    synonyms:
+    - --reference
+    args: !SimpleFlagArg
+      name: REFERENCE
+    optional: true
+  command:
+  - secapr
+  - locus_selection
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: The directory containing cleaned fastq files
+    synonyms:
+    - --input
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: The output directory where all intermediate and final data files
+      will be stored
+    synonyms:
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Provide a reference library (FASTA) containing sequences for the
+      genes of interest (required to find contigs matching targeted regions).
+    synonyms:
+    - --reference
+    args: !SimpleFlagArg
+      name: REFERENCE
+    optional: true
+  - !Flag
+    description: The setting you want to run SECAPR on. "relaxed" uses very non-restrictive
+      default values (use when samples are expected to differ considerably from provided
+      reference or are covering wide evolutionary range, e.g. different families or
+      orders). "conservative" is very restrictive and can be used when samples are
+      closely related and match provided reference very well.
+    synonyms:
+    - --setting
+    args: !ChoiceFlagArg
+      choices:
+      - relaxed
+      - medium
+      - conservative
+    optional: true
+  - !Flag
+    description: The assembler to use for de-novo assembly (default=abyss).
+    synonyms:
+    - --assembler
+    args: !ChoiceFlagArg
+      choices:
+      - abyss
+      - trinity
+    optional: true
+  - !Flag
+    description: Number of computational cores for parallelization of computation.
+    synonyms:
+    - --cores
+    args: !SimpleFlagArg
+      name: CORES
+    optional: true
+  command:
+  - secapr
+  - automate_all
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

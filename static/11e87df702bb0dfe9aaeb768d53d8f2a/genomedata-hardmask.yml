@@ -1,0 +1,66 @@
+!Command
+positional:
+- !Positional
+  description: input mask file
+  position: 0
+  name: maskfile
+  optional: false
+- !Positional
+  description: genomedata archive
+  position: 1
+  name: gdarchive
+  optional: false
+named:
+- !Flag
+  description: 'Track(s) to be filtered (default: all)'
+  synonyms:
+  - -t
+  - --trackname
+  args: !RepeatFlagArg
+    name: TRACKNAME
+  optional: true
+- !Flag
+  description: 'Specify a comparison operation on a value to mask out (e.g. "lt0.5"
+    will mask all values less than 0.5). See the bash comparison operators for the
+    two letter operations (default: all values masked)'
+  synonyms:
+  - --hardmask
+  args: !SimpleFlagArg
+    name: OPERATOR
+  optional: true
+- !Flag
+  description: Do not close the genomedata archive after masking
+  synonyms:
+  - --no-close
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not perform any masking. Useful with verbosity set to see what regions
+    would be filtered
+  synonyms:
+  - --dry-run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print status and diagnostic messages
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- genomedata-hardmask
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

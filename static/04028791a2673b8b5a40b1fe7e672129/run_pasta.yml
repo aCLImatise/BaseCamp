@@ -1,0 +1,231 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: If used, then the input file be will treated as aligned for the purposes
+    of the first round of tree inference (the algorithm will start with tree searching
+    on the input before re-aligning). This option only applies if a starting tree
+    is NOT given.
+  synonyms:
+  - -a
+  - --aligned
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: This option is mostly for backward compatibility. If used, then automatically
+    identified default values for the max_subproblem_size, number of cpus, tools,
+    breaking strategy, masking criteria, and stopping criteria will be used. This
+    is just like using the default options. However, [WARNING] when auto option is
+    used PASTA overrides the value of these options even if you have supplied them;
+    we recommend that you run this option with --exportconfig to see the exact set
+    of options that will be used in your analysis.
+  synonyms:
+  - --auto
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Specify DNA, RNA, or Protein to indicate what type of data is specified.
+    Note that this option is NOT automatically determined [default: dna]'
+  synonyms:
+  - -d
+  - --datatype
+  args: !SimpleFlagArg
+    name: DATATYPE
+  optional: true
+- !Flag
+  description: Export the configuration to the specified file and exit. This is useful
+    if you want to combine several configurations and command line settings into a
+    single configuration file to be used in other analyses.
+  synonyms:
+  - --exportconfig
+  args: !SimpleFlagArg
+    name: EXPORTCONFIG
+  optional: true
+- !Flag
+  description: input sequence file
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: job name [pastajob]
+  synonyms:
+  - -j
+  - --job
+  args: !SimpleFlagArg
+    name: JOB
+  optional: true
+- !Flag
+  description: Keep even the realignment temporary running files (this only has an
+    effect if keeptemp is also selected).
+  synonyms:
+  - --keepalignmenttemps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Keep temporary running files? [default: disabled]'
+  synonyms:
+  - -k
+  - --keeptemp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: How to deal with missing data symbols. Specify either "Ambiguous" or
+    "Absent" if the input data contains ?-symbols
+  synonyms:
+  - --missing
+  args: !SimpleFlagArg
+    name: MISSING
+  optional: true
+- !Flag
+  description: Analyze multi-locus data? NOT SUPPORTED IN CURRENT PASTA version.
+  synonyms:
+  - -m
+  - --multilocus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'If used, the completion of the PASTA algorithm will be followed by
+    a tree search using RAxML on the masked alignment. This can be useful if a very
+    fast and approximate tree estimator is used during the PASTA algorithm. [default:
+    disabled]'
+  synonyms:
+  - --raxml-search-after
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: directory that will be the parent for this job's temporary file [default
+    in PASTA home]
+  synonyms:
+  - --temporaries
+  args: !SimpleFlagArg
+    name: TEMPORARIES
+  optional: true
+- !Flag
+  description: optional file that will store the times of events during the PASTA
+    run. If the file exists, new lines will be
+  synonyms:
+  - --timesfile
+  args: !SimpleFlagArg
+    name: TIMESFILE
+  optional: true
+- !Flag
+  description: starting tree file
+  synonyms:
+  - -t
+  - --treefile
+  args: !SimpleFlagArg
+    name: TREEFILE
+  optional: true
+- !Flag
+  description: If used, then the program will not perform the PASTA algorithm. Instead
+    it will simply call the sequence aligner to align the entire dataset then will
+    call the tree estimator to obtain the tree.
+  synonyms:
+  - --two-phase
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If used, then the data in the input file will be parsed using a more
+    careful procedure. This will generate more helpful error messages, but will use
+    more memory and be much slower for large inputs. If this option is omitted, the
+    error messages resulting from invalid input data will be more cryptic.
+  synonyms:
+  - --untrusted
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When the blind mode is final, then PASTA will never leave blind mode
+    once it is has entered blind mode.
+  synonyms:
+  - --no-blind-mode-is-final
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If True then PASTA will move to the blind mode as soon it encounters
+    a tree/alignment pair with a worse score. This is essentially the same as running
+    in blind mode from the beginning, but it does allow one to terminate a run at
+    an interval from the first time the algorithm fails to improve the score.
+  synonyms:
+  - --move-to-blind-on-worse-score
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: directory for output files (defaults to input file directory)
+  synonyms:
+  - -o
+  - --output-directory
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+  optional: true
+- !Flag
+  description: Return the best likelihood tree and alignment pair instead of those
+    from the last iteration; this is discouraged with masking option enabled.
+  synonyms:
+  - --no-return-final-tree-and-alignment
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =#      The maximum memory available to OPAL (for the Java heap size
+    when running Java tools).
+  synonyms:
+  - --max-mem-mb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '=#        The number of processing cores that you would like to assign
+    to PASTA.  This number should not exceed the number of cores on your machine.
+    [default: number of cores available on the machine]'
+  synonyms:
+  - --num-cpus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '=# The minimum number of non-gap characters required in each column
+    passed to the tree estimation step. Columns with fewer non-gap characters than
+    the given threshold will be masked out before passing the alignment into the tree
+    estimation module. These columns will be present in the final alignment. [default:
+    0.1% of alignment size]'
+  synonyms:
+  - --mask-gappy-sites
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If selected that the tree from the previous iteration will be given
+    to the tree searching tool as a starting tree.
+  synonyms:
+  - --start-tree-search-from-current
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The name of the alignment program to use for subproblems. [default:
+    mafft]'
+  synonyms:
+  - --aligner
+  args: !SimpleFlagArg
+    name: ALIGNER
+  optional: true
+- !Flag
+  description: 'The name of the alignment program to use to merge subproblems. [default:
+    OPAL]'
+  synonyms:
+  - --merger
+  args: !SimpleFlagArg
+    name: MERGER
+  optional: true
+- !Flag
+  description: 'The name of the tree inference program to use to find trees on fixed
+    alignments. [default: fasttree]'
+  synonyms:
+  - --tree-estimator
+  args: !SimpleFlagArg
+    name: TREE_ESTIMATOR
+  optional: true
+command:
+- run_pasta.py
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

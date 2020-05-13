@@ -1,0 +1,154 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: sh
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: short_read_connector.sh
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: OPTIONS
+  optional: true
+named:
+- !Flag
+  description: /c1.fasta.gz
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: data
+  optional: true
+- !Flag
+  description: for query
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: read_file_of_files
+  optional: true
+- !Flag
+  description: short_read_connector_counter (SRC_counter)
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: use
+  optional: true
+- !Flag
+  description: window_size. See option -s. If the windows size is zero (default value),
+    then the full read is considered. Default=0
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: prefix. All out files will start with this prefix. Default="short_read_connector_res"
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: this option, if a file of solid kmer exists with same prefix name and
+    same k value, then it is re-used and not re-computed.
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: with
+  optional: true
+- !Flag
+  description: value. Set the length of used kmers. Must fit the compiled value. Default=31
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: value. Fingerprint size. Size of the key associated to each indexed
+    value, limiting false positives. Default=12
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: value. gamma value. MPHF expert users parameter - Default=2
+  synonyms:
+  - -G
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: kmer_abundance_min (kmer from bank seen less than this value both in
+    the bank are not indexed). Default=2
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: low complexity regions (default false)
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: Keep
+  optional: true
+- !Flag
+  description: number of thread used. Default=0 (all)
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'kmer_threshold: Minimal percentage of shared kmer span for considering
+    a query read as similar to a data set.   The kmer span is the number of bases
+    from the read query covered by a kmer shared with the bank. If a read of length
+    80 has a kmer-span of 60, then the percentage of shared kmer span is 75%. If a
+    least a windows (of size "windows_size") contains at least kmer_threshold percent
+    of positions covered by shared kmers, the read is output.'
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'kmer_threshold: Minimal percentage of shared kmer span for considering
+    2 reads as similar.   The kmer span is the number of bases from the read query
+    covered by a kmer shared with the target read. If a read of length 80 has a kmer-span
+    of 60 with another read (of unkonwn size) from the bank, then the percentage of
+    shared kmer span is 75%. If a least a windows (of size "windows_size") contains
+    at least kmer_threshold percent of position covered by shared kmers, the read
+    couple is output. TRICK: with kmer_threshold<=0 a single kmer is sufficient in
+    the linker mode to link two reads. '
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: kmers present at least 'kmer_abundance_min' times in the bank AND in
+    the queries.
+  synonyms:
+  - -A
+  args: !SimpleFlagArg
+    name: index
+  optional: true
+- !Flag
+  description: (incompatible with SRC_counter), do not output precision about pair
+    of similar reads. Only ids of reads from queries similar to at least one read
+    from bank are output.
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- short_read_connector.sh
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

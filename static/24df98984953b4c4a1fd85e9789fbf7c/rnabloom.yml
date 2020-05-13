@@ -1,0 +1,476 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: left reads file(s)
+  synonyms:
+  - -l
+  - --left
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: right reads file(s)
+  synonyms:
+  - -r
+  - --right
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: list of read files for pooled assembly
+  synonyms:
+  - -pool
+  - --pool
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: long reads file(s) (Requires `minimap2` and `racon` in PATH. Presets
+    `-k 17 -c 3 -indel 10 -e 3 -p 0.8` unless each option is defined otherwise.)
+  synonyms:
+  - -long
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: reference transcripts file(s) for guiding the assembly process
+  synonyms:
+  - -ref
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: reverse-complement left reads [false]
+  synonyms:
+  - -rcl
+  - --revcomp-left
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: reverse-complement right reads [false]
+  synonyms:
+  - -rcr
+  - --revcomp-right
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: reverse-complement long reads [false]
+  synonyms:
+  - -rc
+  - --revcomp-long
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: reads are strand specific [false]
+  synonyms:
+  - -ss
+  - --stranded
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: assembly name [rnabloom]
+  synonyms:
+  - -n
+  - --name
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: name prefix in FASTA header for assembled transcripts
+  synonyms:
+  - -prefix
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: output uracils (U) in place of thymines (T) in assembled transcripts
+    [false]
+  synonyms:
+  - -u
+  - --uracil
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: number of threads to run [2]
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: output directory [/tmp/tmpjkifujqe/rnabloom_a ssembly]
+  synonyms:
+  - -o
+  - --outdir
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: force overwrite existing files [false]
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: k-mer size [25]
+  synonyms:
+  - -k
+  - --kmer
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'assembly termination stage short reads: [3] 1. construct graph 2.
+    assemble fragments 3. assemble transcripts long reads: [4] 1. construct graph
+    2. correct reads 3. cluster reads 4. assemble transcripts'
+  synonyms:
+  - -stage
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: minimum base quality in reads for constructing DBG [3]
+  synonyms:
+  - -q
+  - --qual-dbg
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: minimum base quality in reads for fragment reconstruction [3]
+  synonyms:
+  - -Q
+  - --qual-frag
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: minimum k-mer coverage [1]
+  synonyms:
+  - -c
+  - --mincov
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: number of hash functions for all Bloom filters [2]
+  synonyms:
+  - -hash
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: number of hash functions for screening Bloom filter [2]
+  synonyms:
+  - -sh
+  - --sbf-hash
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: number of hash functions for de Bruijn graph Bloom filter [2]
+  synonyms:
+  - -dh
+  - --dbgbf-hash
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: number of hash functions for k-mer counting Bloom filter [2]
+  synonyms:
+  - -ch
+  - --cbf-hash
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: number of hash functions for paired k-mers Bloom filter [2]
+  synonyms:
+  - -ph
+  - --pkbf-hash
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: expected number of unique k-mers in input reads
+  synonyms:
+  - -nk
+  - --num-kmers
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: count unique k-mers in input reads with ntCard [false] (Requires `ntcard`
+    in PATH. If this option is used along with `-long`, the value for `-c` is set
+    automatically based on the ntCard histogram, unless `-c` is defined otherwise)
+  synonyms:
+  - -ntcard
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: total amount of memory (GB) for all Bloom filters [auto]
+  synonyms:
+  - -mem
+  - --memory
+  args: !SimpleFlagArg
+    name: DECIMAL
+  optional: true
+- !Flag
+  description: amount of memory (GB) for screening Bloom filter [auto]
+  synonyms:
+  - -sm
+  - --sbf-mem
+  args: !SimpleFlagArg
+    name: DECIMAL
+  optional: true
+- !Flag
+  description: amount of memory (GB) for de Bruijn graph Bloom filter [auto]
+  synonyms:
+  - -dm
+  - --dbgbf-mem
+  args: !SimpleFlagArg
+    name: DECIMAL
+  optional: true
+- !Flag
+  description: amount of memory (GB) for k-mer counting Bloom filter [auto]
+  synonyms:
+  - -cm
+  - --cbf-mem
+  args: !SimpleFlagArg
+    name: DECIMAL
+  optional: true
+- !Flag
+  description: amount of memory (GB) for paired kmers Bloom filter [auto]
+  synonyms:
+  - -pm
+  - --pkbf-mem
+  args: !SimpleFlagArg
+    name: DECIMAL
+  optional: true
+- !Flag
+  description: maximum allowable false-positive rate of Bloom filters [0.01]
+  synonyms:
+  - -fpr
+  - --fpr
+  args: !SimpleFlagArg
+    name: DECIMAL
+  optional: true
+- !Flag
+  description: save graph (Bloom filters) from stage 1 to disk [false]
+  synonyms:
+  - -savebf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: maximum branch length to be considered a tip [5]
+  synonyms:
+  - -tiplength
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: number of k-mers to look ahead during graph traversal [3]
+  synonyms:
+  - -lookahead
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: sample size for estimating read/fragment lengths [1000]
+  synonyms:
+  - -sample
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: number of iterations of error-correction in reads [1]
+  synonyms:
+  - -e
+  - --errcorritr
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: maximum k-mer coverage gradient for error correction [0.50]
+  synonyms:
+  - -grad
+  - --maxcovgrad
+  args: !SimpleFlagArg
+    name: DECIMAL
+  optional: true
+- !Flag
+  description: maximum size of indels to be collapsed [1]
+  synonyms:
+  - -indel
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: minimum percent identity of sequences to be collapsed [0.90]
+  synonyms:
+  - -p
+  - --percent
+  args: !SimpleFlagArg
+    name: DECIMAL
+  optional: true
+- !Flag
+  description: minimum transcript length in output assembly [200]
+  synonyms:
+  - -length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: skip redundancy reduction for assembled transcripts [false] (will not
+    create 'transcripts.nr.fa')
+  synonyms:
+  - -norr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: merge pooled assemblies [false] (Requires `-pool`; overrides `-norr`)
+  synonyms:
+  - -mergepool
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum number of overlapping bases between read mates [10]
+  synonyms:
+  - -overlap
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: maximum distance between read mates [500]
+  synonyms:
+  - -bound
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: extend fragments outward during fragment reconstruction [false]
+  synonyms:
+  - -extend
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: turn off assembly consistency with fragment paired k-mers [false]
+  synonyms:
+  - -nofc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: assemble transcripts in sensitive mode [false]
+  synonyms:
+  - -sensitive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: keep potential sequencing artifacts [false]
+  synonyms:
+  - -artifact
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: keep potential chimeras [false]
+  synonyms:
+  - -chimera
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <01|e0|e1|e2|e3|e4|e5>              fragments lower than the specified
+    stratum are extended only if they are branch-free in the graph [e0]
+  synonyms:
+  - -stratum
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum number of consecutive k-mer pairs for assembling transcripts
+    [10]
+  synonyms:
+  - -pair
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: prioritize assembly of transcripts with poly-A tails of the minimum
+    length specified [0]
+  synonyms:
+  - -a
+  - --polya
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: options for minimap2 [-r 150] (`-x` and `-t` are already in use)
+  synonyms:
+  - -mmopt
+  args: !SimpleFlagArg
+    name: OPTIONS
+  optional: true
+- !Flag
+  description: print debugging information [false]
+  synonyms:
+  - -debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use homopolymer-compressed minimizers in long-read clustering [false]
+    (Requires `-long`)
+  synonyms:
+  - -hpc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimizer size [13]
+  synonyms:
+  - -m
+  - --minimizer
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: minimizer window size [15]
+  synonyms:
+  - -mw
+  - --minimizer-window
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: minimum proportion of sketch overlap minimizers [0.7]
+  synonyms:
+  - -sop
+  - --sketch-overlap-proportion
+  args: !SimpleFlagArg
+    name: DECIMAL
+  optional: true
+- !Flag
+  description: minimum number of sketch overlap minimizers [30]
+  synonyms:
+  - -son
+  - --sketch-overlap-number
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+command:
+- rnabloom
+subcommands: []
+help_flag: !Flag
+  description: print this message and exits
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print version information and exits
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

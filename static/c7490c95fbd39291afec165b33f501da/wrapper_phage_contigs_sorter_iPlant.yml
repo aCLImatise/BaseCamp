@@ -1,0 +1,95 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Fasta file of contigs
+  synonyms:
+  - -f
+  - --fna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Code dataset (DEFAULT "VIRSorter")
+  synonyms:
+  - -d
+  - --dataset
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Custom phage sequence '
+  synonyms:
+  - --cp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Either "1" (DEFAULT Refseqdb) or "2" (Viromedb)
+  synonyms:
+  - --db
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Working directory (DEFAULT $PWD/virsorter-out/) Will be created if
+    not existing.
+  synonyms:
+  - --wdir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of CPUs (default: 4)'
+  synonyms:
+  - --ncpu
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Add this flag to enable virome decontamination mode, for datasets
+    mostly viral to force the use of generic metrics instead of  calculated from the
+    whole dataset. (default: off)'
+  synonyms:
+  - --virome
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to "virsorter-data" directory (e.g. /path/to/virsorter-data)
+  synonyms:
+  - --data-dir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use diamond (in "--more-sensitive" mode) instead of blastp.  Diamond
+    is much faster than blastp and may be useful for adding  many custom phages, or
+    for processing extremely large Fasta files.  Unless you specify --diamond, VirSorter
+    will use blastp.
+  synonyms:
+  - --diamond
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specifying this flag keeps the new HMM and BLAST databases created  after
+    adding custom phages. This is useful if you have custom phages that you want to
+    be included in several different analyses and want  to save the database and point
+    VirSorter to it in subsequent runs. By default, this is off, and you should only
+    specify this flag if  you're SURE you need it.
+  synonyms:
+  - --keep-db
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use this option if you have issues with empty output files, i.e. 0
+    viruses predicted by VirSorter. This make VirSorter use a perl function  instead
+    of the C script to calculate enrichment statistics. Note that  VirSorter will
+    be slower with this option.
+  synonyms:
+  - --no_c
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- wrapper_phage_contigs_sorter_iPlant.pl
+subcommands: []
+help_flag: !Flag
+  description: Show help and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

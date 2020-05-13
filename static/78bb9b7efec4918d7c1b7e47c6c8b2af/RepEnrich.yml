@@ -1,0 +1,126 @@
+!Command
+positional:
+- !Positional
+  description: 'List RepeatMasker.org annotation file for your organism. The file
+    may be downloaded from the RepeatMasker.org website. Example: /data/annotation/hg19/hg19_repeatmasker.txt'
+  position: 0
+  name: annotation_file
+  optional: false
+- !Positional
+  description: 'List folder to contain results. Example: /outputfolder'
+  position: 1
+  name: outputfolder
+  optional: false
+- !Positional
+  description: 'Enter prefix name for data. Example: HeLa_InputChIPseq_Rep1'
+  position: 2
+  name: outputprefix
+  optional: false
+- !Positional
+  description: List folder that contains the repeat element psuedogenomes. Example
+    /data/annotation/hg19/setup_folder
+  position: 3
+  name: setup_folder
+  optional: false
+- !Positional
+  description: Enter file for the fastq reads that map to multiple locations. Example
+    /data/multimap.fastq
+  position: 4
+  name: fastqfile
+  optional: false
+- !Positional
+  description: Enter bamfile output for reads that map uniquely. Example /bamfiles/old.bam
+  position: 5
+  name: alignment_bam
+  optional: false
+named:
+- !Flag
+  description: Designate this option for paired-end sequencing. Default FALSE change
+    to TRUE
+  synonyms:
+  - --pairedend
+  args: !SimpleFlagArg
+    name: PAIREDEND
+  optional: true
+- !Flag
+  description: Designate this option to generate a collapsed repeat type. Uncollapsed
+    output is generated in addition to collapsed repeat type. Simple_repeat is default
+    to simplify downstream analysis. You can change the default to another repeat
+    name to collapse a seperate specific repeat instead or if the name of Simple_repeat
+    is different for your organism. Default Simple_repeat
+  synonyms:
+  - --collapserepeat
+  args: !SimpleFlagArg
+    name: collapserepeat
+  optional: true
+- !Flag
+  description: This option specifies overlap between repetitive elements and reads
+    that map uniquely to the genome. You should change the option depending on the
+    read length. We felt that the the value should be close to half read length. Default
+    21
+  synonyms:
+  - --threshold
+  args: !SimpleFlagArg
+    name: threshold
+  optional: true
+- !Flag
+  description: This option helps to modifies the scrutiny of the region sorter. Default
+    500
+  synonyms:
+  - --tolerance
+  args: !SimpleFlagArg
+    name: tolerance
+  optional: true
+- !Flag
+  description: Enter fastqfile2 when using paired-end option. Default none
+  synonyms:
+  - --fastqfile2
+  args: !SimpleFlagArg
+    name: fastqfile2
+  optional: true
+- !Flag
+  description: 'Enter available cpus per node. The more cpus the faster RepEnrich
+    performs. RepEnrich is designed to only work on one node. Default: "1"'
+  synonyms:
+  - --cpus
+  args: !SimpleFlagArg
+    name: cpus
+  optional: true
+- !Flag
+  description: By default the pipeline only outputs the fraction count method. Consdidered
+    to be the best way to count multimapped reads. Changing this option will include
+    the unique count method, a conservative count, and the total count method, a liberal
+    counting strategy. Our evaluation of simulated data indicated fraction counting
+    is best. Default = FALSE, change to TRUE
+  synonyms:
+  - --allcountmethod
+  args: !SimpleFlagArg
+    name: allcountmethod
+  optional: true
+- !Flag
+  description: Is the annotation file a bed file. This is also a compatible format.
+    The file needs to be a tab seperated bed with optional fields. Ex. format chr
+    start end Name_element class family. The class and family should identical to
+    name_element if not applicable. Default FALSE change to TRUE
+  synonyms:
+  - --is_bed
+  args: !SimpleFlagArg
+    name: is_bed
+  optional: true
+command:
+- RepEnrich.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,284 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Anvi'o pan database
+  synonyms:
+  - -p
+  - --pan-db
+  args: !SimpleFlagArg
+    name: PAN_DB
+  optional: true
+- !Flag
+  description: Anvi'o genomes storage file
+  synonyms:
+  - -g
+  - --genomes-storage
+  args: !SimpleFlagArg
+    name: GENOMES_STORAGE
+  optional: true
+- !Flag
+  description: File path to store results.
+  synonyms:
+  - -o
+  - --output-file
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: By default, this program reports amino acid sequences. Use this flag
+    to report DNA sequences instead.
+  synonyms:
+  - --report-DNA-sequences
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Gene cluster ID you are interested in.
+  synonyms:
+  - --gene-cluster-id
+  args: !SimpleFlagArg
+    name: GENE_CLUSTER_ID
+  optional: true
+- !Flag
+  description: Text file for gene clusters (each line should contain be a unique gene
+    cluster id).
+  synonyms:
+  - --gene-cluster-ids-file
+  args: !SimpleFlagArg
+    name: FILE_PATH
+  optional: true
+- !Flag
+  description: Collection name.
+  synonyms:
+  - -C
+  - --collection-name
+  args: !SimpleFlagArg
+    name: COLLECTION_NAME
+  optional: true
+- !Flag
+  description: Bin name you are interested in.
+  synonyms:
+  - -b
+  - --bin-id
+  args: !SimpleFlagArg
+    name: BIN_NAME
+  optional: true
+- !Flag
+  description: This filter will remove gene clusters from your report. Let's assume
+    you have 100 genomes in your pan genome analysis. You can use this parameter if
+    you want to work only with gene clusters that occur in at least X number of genomes.
+    If you say '--min-num- genomes-gene-cluster-occurs 90', each gene cluster in the
+    analysis will be required at least to appear in 90 genomes. If a gene occurs in
+    less than that number of genomes, it simply will not be reported. This is especially
+    useful for phylogenomic analyses, where you may want to only focus on gene clusters
+    that are prevalent across the set of genomes you wish to analyze.
+  synonyms:
+  - --min-num-genomes-gene-cluster-occurs
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: This filter will remove gene clusters from your report. Let's assume
+    you have 100 genomes in your pan genome analysis. You can use this parameter if
+    you want to work only with gene clusters that occur in at most X number of genomes.
+    If you say '--max-num- genomes-gene-cluster-occurs 1', you will get gene clusters
+    that are singletons. Combining this parameter with --min-num-genomes-gene-cluster-occurs
+    can give you a very precise way to filter your gene clusters.
+  synonyms:
+  - --max-num-genomes-gene-cluster-occurs
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: This filter will remove gene clusters from your report. If you say
+    '--min-num-genes-from-each-genome 2', this filter will remove every gene cluster,
+    to which every genome in your analysis contributed less than 2 genes. This can
+    be useful to find out gene clusters with many genes from many genomes (such as
+    conserved multi-copy genes within a clade).
+  synonyms:
+  - --min-num-genes-from-each-genome
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: This filter will remove gene clusters from your report. If you say
+    '--max-num-genes-from-each-genome 1', every gene cluster that has more than one
+    gene from any genome that contributes to it will be removed from your analysis.
+    This could be useful to remove gene clusters with paralogs from your report for
+    appropriate phylogenomic analyses. For instance, using '--max-num-genes-from-each-genome
+    1' and 'min-num- genomes-gene-cluster-occurs X' where X is the total number of
+    your genomes, would give you the single-copy gene clusters in your pan genome.
+  synonyms:
+  - --max-num-genes-from-each-genome
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: This filter will remove genomes from your report. If you have a list
+    of gene cluster names, you can use this parameter to omit any genome from your
+    report if it is missing more than a number of genes you desire. For instance,
+    if you have 100 genomes in your pan genome, and you are interested in working
+    only with genomes that have all 5 specific gene clusters of your choice, you can
+    use '--max-num-gene-clusters-missing- from-genome 4' to remove remove the bins
+    that are missing more than 4 of those 5 genes. This is especially useful for phylogenomic
+    analyses. Parameter 0 will remove any genome that is missing any of the genes.
+  synonyms:
+  - --max-num-gene-clusters-missing-from-genome
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: This filter will remove gene clusters from your report. If you say
+    '--min-functional-homogeneity-index 0.3', every gene cluster with a functional
+    homogeneity index less than 0.3 will be removed from your analysis. This can be
+    useful if you only want to look at gene clusters that are highly conserved in
+    resulting function
+  synonyms:
+  - --min-functional-homogeneity-index
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: This filter will remove gene clusters from your report. If you say
+    '--max-functional-homogeneity-index 0.5', every gene cluster with a functional
+    homogeneity index greater than 0.5 will be removed from your analysis. This can
+    be useful if you only want to look at gene clusters that don't seem to be functionally
+    conserved
+  synonyms:
+  - --max-functional-homogeneity-index
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: This filter will remove gene clusters from your report. If you say
+    '--min-geometric-homogeneity-index 0.3', every gene cluster with a geometric homogeneity
+    index less than 0.3 will be removed from your analysis. This can be useful if
+    you only want to look at gene clusters that are highly conserved in geometric
+    configuration
+  synonyms:
+  - --min-geometric-homogeneity-index
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: This filter will remove gene clusters from your report. If you say
+    '--max-geometric-homogeneity-index 0.5', every gene cluster with a geometric homogeneity
+    index greater than 0.5 will be removed from your analysis. This can be useful
+    if you only want to look at gene clusters that have many not be as conserved as
+    others
+  synonyms:
+  - --max-geometric-homogeneity-index
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: This filter will remove gene clusters from your report. If you say
+    '--min-combined-homogeneity-index 0.3', every gene cluster with a combined homogeneity
+    index less than 0.3 will be removed from your analysis. This can be useful if
+    you only want to look at gene clusters that are highly conserved overall
+  synonyms:
+  - --min-combined-homogeneity-index
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: This filter will remove gene clusters from your report. If you say
+    '--max-combined-homogeneity-index 0.5', every gene cluster with a combined homogeneity
+    index greater than 0.5 will be removed from your analysis. This can be useful
+    if you only want to look at gene clusters that have many not be as conserved overall
+    as others
+  synonyms:
+  - --max-combined-homogeneity-index
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: If you use any of the filters, and would like to add the resulting
+    item names into the items additional data table of your database, you can use
+    this parameter. You will need to give a name for these results to be saved. If
+    the given name is already in the items additional data table, its contents will
+    be replaced with the new one. Then you can run anvi- interactive or anvi-display-pan
+    to 'see' the results of your filters.
+  synonyms:
+  - --add-into-items-additional-data-table
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: Show available collections and exit.
+  synonyms:
+  - --list-collections
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: List available bins in a collection and exit.
+  synonyms:
+  - --list-bins
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Concatenate output gene clusters in the same order to create a multi-gene
+    alignment output that is suitable for phylogenomic analyses.
+  synonyms:
+  - --concatenate-gene-clusters
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Some commonly used software for phylogenetic analyses (e.g., IQ-TREE,\
+    \ RAxML, etc) allow users to specify/test different substitution models for each\
+    \ gene of a concatenated multiple sequence alignments. For this, they use a special\
+    \ file format called a 'partition file', which indicates the site for each gene\
+    \ in the alignment. You can use this parameter to declare an output path for anvi'o\
+    \ to report a NEXUS format partition file in addition to your FASTA output (requested\
+    \ by Massimiliano Molari in #1333)."
+  synonyms:
+  - --partition-file
+  args: !SimpleFlagArg
+    name: FILE_PATH
+  optional: true
+- !Flag
+  description: Characters to separate things (the default is whatever is most suitable).
+  synonyms:
+  - --separator
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: The multiple sequence alignment program to use when multiple sequence
+    alignment is necessary. To see all available options, use the flag `--list-aligners`.
+  synonyms:
+  - --align-with
+  args: !SimpleFlagArg
+    name: ALIGNER
+  optional: true
+- !Flag
+  description: Show available software for multiple sequence alignment.
+  synonyms:
+  - --list-aligners
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't bother me with questions or warnings, just do it.
+  synonyms:
+  - --just-do-it
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't do anything real. Test everything, and stop right before wherever
+    the developer said 'well, this is enough testing', and decided to print out results.
+  synonyms:
+  - --dry-run
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- anvi-get-sequences-for-gene-clusters
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

@@ -1,0 +1,330 @@
+!Command
+positional: []
+named: []
+command:
+- easypqp
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: The input MSFragger TSV file.  [required]
+    synonyms:
+    - --pepxml
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: The input mzXML or MGF (timsTOF only) file. [required]
+    synonyms:
+    - --spectra
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: The input UniMod XML file.
+    synonyms:
+    - --unimod
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Output PSMs file.
+    synonyms:
+    - --psms
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Output peaks file.
+    synonyms:
+    - --peaks
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: 'massdiff in this range will not be mapped to UniMod.  [default:
+      -1.5,3.5]'
+    synonyms:
+    - --exclude-range
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'Maximum delta mass (Dalton) for UniMod annotation.  [default: 0.02]'
+    synonyms:
+    - --max_delta_unimod
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: 'Maximum delta mass (PPM) for annotation. [default: 15]'
+    synonyms:
+    - --max_delta_ppm
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: 'Allowed fragment ion types (a,b,c,x,y,z). [default: b, y]'
+    synonyms:
+    - --fragment_types
+    args: !SimpleFlagArg
+      name: LIST
+    optional: true
+  - !Flag
+    description: 'Allowed fragment ion charges.  [default: 1, 2, 3, 4]'
+    synonyms:
+    - --fragment_charges
+    args: !SimpleFlagArg
+      name: LIST
+    optional: true
+  - !Flag
+    description: '/ --no-enable_specific_losses Enable specific fragment ion losses.
+      [default: False]'
+    synonyms:
+    - --enable_specific_losses
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '/ --no-enable_unspecific_losses Enable unspecific fragment ion losses.
+      [default: False]'
+    synonyms:
+    - --enable_unspecific_losses
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Data fraction used for subsampling. [default: 1.0]'
+    synonyms:
+    - --subsample_fraction
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  command:
+  - easypqp
+  - convert
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Output TSV peptide query parameter file. [required]
+    synonyms:
+    - --out
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: psm.tsv file from Philosopher.
+    synonyms:
+    - --psmtsv
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: peptide.tsv file from Philosopher.
+    synonyms:
+    - --peptidetsv
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Optional iRT/CiRT reference file.
+    synonyms:
+    - --rt_reference
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Optional tag to filter candidate RT reference runs.
+    synonyms:
+    - --rt_filter
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Optional IM reference file.
+    synonyms:
+    - --im_reference
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Optional tag to filter candidate IM reference runs.
+    synonyms:
+    - --im_filter
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'PSM FDR threshold.  [default: 0.01]'
+    synonyms:
+    - --psm_fdr_threshold
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: 'Peptide FDR threshold.  [default: 0.01]'
+    synonyms:
+    - --peptide_fdr_threshold
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: 'Protein FDR threshold.  [default: 0.01]'
+    synonyms:
+    - --protein_fdr_threshold
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: 'Fraction of data points to use for RT lowess regression.  [default:
+      0.05]'
+    synonyms:
+    - --rt_lowess_fraction
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: 'PSM FDR threshold used for RT alignment. [default: 0.001]'
+    synonyms:
+    - --rt_psm_fdr_threshold
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: 'Fraction of data points to use for IM lowess regression.  [default:
+      1.0]'
+    synonyms:
+    - --im_lowess_fraction
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: 'PSM FDR threshold used for IM alignment. [default: 0.001]'
+    synonyms:
+    - --im_psm_fdr_threshold
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: '... Use non-parametric estimation of p-values. Either use <START
+      END STEPS>, e.g. 0.1, 1.0, 0.1 or set to fixed value, e.g. 0.4, 0, 0. [default:
+      0.1, 0.5, 0.05]'
+    synonyms:
+    - --pi0_lambda
+    args: !SimpleFlagArg
+      name: FLOAT FLOAT FLOAT
+    optional: true
+  - !Flag
+    description: 'Output peptide-level PDF report.  [default: easypqp_peptide_report.pdf;
+      required]'
+    synonyms:
+    - --peptide_plot
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: 'Output protein-level PDF report.  [default: easypqp_protein_report.pdf;
+      required]'
+    synonyms:
+    - --protein_plot
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: 'Minimum peptides required for successful alignment.  [default: 5]'
+    synonyms:
+    - --min_peptides
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: '/ --no-proteotypic Use only proteotypic, unique, non-shared peptides.  [default:
+      True]'
+    synonyms:
+    - --proteotypic
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '/ --no-consensus    Generate consensus instead of best replicate
+      spectra.  [default: True]'
+    synonyms:
+    - --consensus
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - easypqp
+  - library
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Input PQP file.  [required]
+    synonyms:
+    - --in
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Output PQP file.  [required]
+    synonyms:
+    - --out
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: 'Number of bins to fill along gradient.  [default: 10]'
+    synonyms:
+    - --bins
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Number of peptides to sample.  [default: 5]'
+    synonyms:
+    - --peptides
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  command:
+  - easypqp
+  - reduce
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show the version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

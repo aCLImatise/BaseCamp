@@ -1,0 +1,101 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The biom-format file with OTU-Sample abundance data.
+  synonyms:
+  - -i
+  - --otu_table
+  args: !SimpleFlagArg
+    name: OTU_TABLE
+  optional: true
+- !Flag
+  description: The mapping file specifying group information for each sample.
+  synonyms:
+  - -m
+  - --mapping
+  args: !SimpleFlagArg
+    name: MAPPING
+  optional: true
+- !Flag
+  description: A phylogenetic tree in Newick format to be modified by exchanging the
+    OTU ID node names for taxonomic names.
+  synonyms:
+  - -t
+  - --input_tree
+  args: !SimpleFlagArg
+    name: INPUT_TREE
+  optional: true
+- !Flag
+  description: The output .tre file
+  synonyms:
+  - -e
+  - --output_tre
+  args: !SimpleFlagArg
+    name: OUTPUT_TRE
+  optional: true
+- !Flag
+  description: Other than a phylogenetic tree, the main input to iTol is a dataset
+    file containing some representation of the abundance of every OTU across the specified
+    data groups. This program provides multiple calculation methods. See the --analysis_metric
+    option for details.
+  synonyms:
+  - -o
+  - --output_itol_table
+  args: !SimpleFlagArg
+    name: OUTPUT_ITOL_TABLE
+  optional: true
+- !Flag
+  description: Any mapping categories, such as treatment type, that will be used to
+    group the data in the output iTol table. For example, one category with three
+    types will result in three data columns in the final output. Two categories with
+    three types each will result in six data columns. Default is no categories and
+    all the data will be treated as a single group.
+  synonyms:
+  - -c
+  - --map_categories
+  args: !SimpleFlagArg
+    name: MAP_CATEGORIES
+  optional: true
+- !Flag
+  description: 'Specifies which metric is calculated on the abundance data in the
+    OTU table. Available options: MRE - mean relative abundance (Abundance data is
+    normalized by total sample abundance, then averaged across OTU), NMRE - normalized
+    mean relative abundance (MRE normalized by the total MRE across the groups as
+    specified in --map_categories), raw (outputs the actual sequence abundance data
+    for each OTU).'
+  synonyms:
+  - -a
+  - --analysis_metric
+  args: !ChoiceFlagArg
+    choices:
+    - MRA
+    - NMRA
+    - raw
+  optional: true
+- !Flag
+  description: Apply the variance-stabilizing arcsine square root transformation to
+    the OTU proportion data.
+  synonyms:
+  - --stabilize_variance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Keep OTU IDs in the output files instead of.replacing them with shortened
+    taxonomic names.
+  synonyms:
+  - --keep_otuids
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- iTol.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

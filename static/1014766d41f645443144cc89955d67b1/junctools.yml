@@ -1,0 +1,389 @@
+!Command
+positional: []
+named: []
+command:
+- junctools
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: The junction file to treat as the reference
+    position: 0
+    name: reference
+    optional: false
+  - !Positional
+    description: One or more junction files to compare against the reference
+    position: 1
+    name: input
+    optional: false
+  named:
+  - !Flag
+    description: Whether to use strand information when building keys
+    synonyms:
+    - -s
+    - --use_strand
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Path to a file containing labels for the reference indicating whether
+      or not each reference junction is genuine (as generated using the markup tool).
+      If provided this script produces a much richer performance analysis. Not compatible
+      with '-- multiclass'
+    synonyms:
+    - -l
+    - --labels
+    args: !SimpleFlagArg
+      name: LABELS
+    optional: true
+  - !Flag
+    description: 'Breakdown results into multiple classes: 1) Matching intron 2) Two
+      matching splice sites but no matching intron (i.e. splice sites from different
+      introns) 3) One matching splice site 4) No matching splice sites'
+    synonyms:
+    - -m
+    - --multiclass
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - junctools
+  - compare
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: This
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: script
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: contains
+    optional: false
+  - !Positional
+    description: ''
+    position: 3
+    name: a
+    optional: false
+  - !Positional
+    description: ''
+    position: 4
+    name: number
+    optional: false
+  - !Positional
+    description: ''
+    position: 5
+    name: of
+    optional: false
+  - !Positional
+    description: ''
+    position: 6
+    name: tools
+    optional: false
+  - !Positional
+    description: ''
+    position: 7
+    name: for
+    optional: false
+  - !Positional
+    description: ''
+    position: 8
+    name: manipulating
+    optional: false
+  - !Positional
+    description: ''
+    position: 9
+    name: junction
+    optional: false
+  - !Positional
+    description: ''
+    position: 10
+    name: files.
+    optional: false
+  - !Positional
+    description: ''
+    position: 11
+    name: convert
+    optional: false
+  named: []
+  command:
+  - junctools
+  - convert
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: 'GTF operation to apply.  See above for details.  Available options:
+      - filter - markup - compare'
+    position: 0
+    name: mode
+    optional: false
+  - !Positional
+    description: The input GTF file(s) to process
+    position: 1
+    name: input
+    optional: false
+  named:
+  - !Flag
+    description: Whether or not to ignore strand when looking for junctions
+    synonyms:
+    - -is
+    - --ignore_strand
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: The file containing junctions that should be found in the GTF.  Either
+      this or '-t' must be used.
+    synonyms:
+    - -j
+    - --junctions
+    args: !SimpleFlagArg
+      name: JUNCTIONS
+    optional: true
+  - !Flag
+    description: The file containing transcripts that should be found in the GTF.  Either
+      this or '-j' must be used.
+    synonyms:
+    - -t
+    - --transcripts
+    args: !SimpleFlagArg
+      name: TRANSCRIPTS
+    optional: true
+  - !Flag
+    description: The filtered or markedup GTF output.  By default we print to stdout.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  command:
+  - junctools
+  - gtf
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: The junction file to treat as the reference
+    position: 0
+    name: reference
+    optional: false
+  - !Positional
+    description: One or more junction files to compare against the reference
+    position: 1
+    name: input
+    optional: false
+  named:
+  - !Flag
+    description: If output dir is specified this will create output files for each
+      input file with a .res extension indicating whether or not the junction was
+      found in the reference. By default we write out a .res file in the same directory
+      as the input file was found in.
+    synonyms:
+    - -o
+    - --output_dir
+    args: !SimpleFlagArg
+      name: OUTPUT_DIR
+    optional: true
+  - !Flag
+    description: Whether to use strand information when building keys
+    synonyms:
+    - -s
+    - --use_strand
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - junctools
+  - markup
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: 'Set operation to apply.  See above for details.  Available options:
+      - intersection - union - consensus - subtract - filter - symmetric_difference
+      - is_subset - is_superset - is_disjoint'
+    position: 0
+    name: mode
+    optional: false
+  - !Positional
+    description: List of junction files to merge (must all be the same file format)
+    position: 1
+    name: input
+    optional: false
+  named:
+  - !Flag
+    description: Minimum number of files the entry is require to be in.  0 means entry
+      must be present in all files, i.e. true intersection.  1 means a union of all
+      input files
+    synonyms:
+    - -m
+    - --min_entry
+    args: !SimpleFlagArg
+      name: MIN_ENTRY
+    optional: true
+  - !Flag
+    description: "Operator to use for calculating the score in the merged file. This\
+      \ option is only applicable to 'intersection', 'union' and 'consensus' modes.\
+      \ Available values: - min - max - sum - mean"
+    synonyms:
+    - --operator
+    args: !SimpleFlagArg
+      name: OPERATOR
+    optional: true
+  - !Flag
+    description: Output junction file.  Required for operations that produce an output
+      file.
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Prefix to apply to name column in BED output file
+    synonyms:
+    - -p
+    - --prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  - !Flag
+    description: Whether or not to ignore strand when creating a key for the junction
+    synonyms:
+    - -is
+    - --ignore_strand
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - junctools
+  - set
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: This
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: script
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: contains
+    optional: false
+  - !Positional
+    description: ''
+    position: 3
+    name: a
+    optional: false
+  - !Positional
+    description: ''
+    position: 4
+    name: number
+    optional: false
+  - !Positional
+    description: ''
+    position: 5
+    name: of
+    optional: false
+  - !Positional
+    description: ''
+    position: 6
+    name: tools
+    optional: false
+  - !Positional
+    description: ''
+    position: 7
+    name: for
+    optional: false
+  - !Positional
+    description: ''
+    position: 8
+    name: manipulating
+    optional: false
+  - !Positional
+    description: ''
+    position: 9
+    name: junction
+    optional: false
+  - !Positional
+    description: ''
+    position: 10
+    name: files.
+    optional: false
+  - !Positional
+    description: ''
+    position: 11
+    name: split
+    optional: false
+  named: []
+  command:
+  - junctools
+  - split
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Output the version of junctools
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

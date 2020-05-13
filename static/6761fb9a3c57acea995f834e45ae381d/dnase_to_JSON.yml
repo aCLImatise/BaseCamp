@@ -1,0 +1,84 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: WINDOW_SIZE
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -A
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- dnase_to_JSON.py
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: BED file of the regions
+    position: 0
+    name: regions
+    optional: false
+  - !Positional
+    description: BAM file containing the read data
+    position: 1
+    name: reads
+    optional: false
+  - !Positional
+    description: filename to write the JSON output to
+    position: 2
+    name: output
+    optional: false
+  named:
+  - !Flag
+    description: Resize all regions to a specific length
+    synonyms:
+    - -w
+    - --window_size
+    args: !SimpleFlagArg
+      name: WINDOW_SIZE
+    optional: true
+  - !Flag
+    description: Ignores strand information in BED file
+    synonyms:
+    - -i
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'ATAC-seq mode (default: False)'
+    synonyms:
+    - -A
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - dnase_to_JSON.py
+  - regions
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

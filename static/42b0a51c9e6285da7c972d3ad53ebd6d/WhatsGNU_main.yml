@@ -1,0 +1,181 @@
+!Command
+positional:
+- !Positional
+  description: Query protein FASTA file/s to analyze (.faa)
+  position: 0
+  name: query_faa
+  optional: false
+named:
+- !Flag
+  description: you have to provide path to faa file or a folder of multiple faa files
+    for compression
+  synonyms:
+  - -m
+  - --mkdatabase
+  args: !SimpleFlagArg
+    name: MKDATABASE
+  optional: true
+- !Flag
+  description: you have to provide path to your compressed database
+  synonyms:
+  - -d
+  - --database
+  args: !SimpleFlagArg
+    name: DATABASE
+  optional: true
+- !Flag
+  description: Save database in pickle format [Default only txt file]
+  synonyms:
+  - -a
+  - --pickle
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Save database in SQL format for large Databases [Default only txt file]
+  synonyms:
+  - -j
+  - --sql
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ROARY_CLUSTERED_PROTEINS], --roary_clustered_proteins [ROARY_CLUSTERED_PROTEINS]
+    clustered_proteins output file from roary to be used with -m'
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: select a mode from 'ortholog' or 'basic' to be used with -d
+  synonyms:
+  - -dm
+  - --database_mode
+  args: !ChoiceFlagArg
+    choices:
+    - ortholog
+    - basic
+  optional: true
+- !Flag
+  description: '[RARITY_INDEX], --rarity_index [RARITY_INDEX] select an ortholog variant
+    rarity index (OVRI) cutoff value in range (0-1)[0.045] for ortholog mode'
+  synonyms:
+  - -ri
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Database output prefix to be created for results (default: timestamped
+    WhatsGNU_results in the current directory)'
+  synonyms:
+  - -o
+  - --output_folder
+  args: !SimpleFlagArg
+    name: OUTPUT_FOLDER
+  optional: true
+- !Flag
+  description: 'Force overwriting existing results folder assigned with -o (default:
+    off)'
+  synonyms:
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Prefix for output compressed database (default: WhatsGNU_compressed_database)'
+  synonyms:
+  - -p
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: create a file of top 10 genomes with hits
+  synonyms:
+  - -t
+  - --topgenomes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: check how many hits you get from a particular strain,it has to be used
+    with -t
+  synonyms:
+  - -s
+  - --strainhits
+  args: !SimpleFlagArg
+    name: STRAINHITS
+  optional: true
+- !Flag
+  description: get the metadata composition of your hits, use the metadata_frequency.csv
+    file produced by the WhatsGNU customizer script
+  synonyms:
+  - -e
+  - --metadata
+  args: !SimpleFlagArg
+    name: METADATA
+  optional: true
+- !Flag
+  description: create a file of each protein with locus_tags (ids) of all hits from
+    the database, large file (~ 1 Gb for 3000 pts)
+  synonyms:
+  - -i
+  - --ids_hits
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: get a fasta (.faa) file of all proteins with GNU score of zero
+  synonyms:
+  - -f
+  - --faa_GNU_0
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: run blastp on the proteins with GNU score of zero and modify the report
+    with ortholog_info, blastp has to be installed
+  synonyms:
+  - -b
+  - --blastp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: get the output report of blastp run, it has to be used with -b
+  synonyms:
+  - -op
+  - --output_blastp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[PERCENT_IDENTITY], --percent_identity [PERCENT_IDENTITY] select a
+    blastp percent identity cutoff value [80], range(0,100)'
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[PERCENT_COVERAGE], --percent_coverage [PERCENT_COVERAGE] select a
+    blastp percent coverage cutoff value [80], range(0,100)'
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: No screen output [default OFF]
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- WhatsGNU_main.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print version and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

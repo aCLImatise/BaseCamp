@@ -1,0 +1,793 @@
+!Command
+positional: []
+named: []
+command:
+- magpurify
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: Path to input genome in FASTA format
+    position: 0
+    name: fna
+    optional: false
+  - !Positional
+    description: Output directory to store results and intermediate files
+    position: 1
+    name: out
+    optional: false
+  named:
+  - !Flag
+    description: 'Path to reference database. By default, the MAGPURIFYDB environmental
+      variable is used (default: None)'
+    synonyms:
+    - --db
+    args: !SimpleFlagArg
+      name: DB
+    optional: true
+  - !Flag
+    description: 'Go straight to quality estimation and skip all previous steps (default:
+      False)'
+    synonyms:
+    - --continue
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Maximum number of targets reported in BLAST table (default: 1)'
+    synonyms:
+    - --max_target_seqs
+    args: !SimpleFlagArg
+      name: MAX_TARGET_SEQS
+    optional: true
+  - !Flag
+    description: 'Use strict or sensitive %ID cutoff for taxonomically annotating
+      genes (default: strict)'
+    synonyms:
+    - --cutoff_type
+    args: !ChoiceFlagArg
+      choices:
+      - strict
+      - sensitive
+      - none
+    optional: true
+  - !Flag
+    description: 'Choose to search genes versus DNA or protein database (default:
+      protein)'
+    synonyms:
+    - --seq_type
+    args: !ChoiceFlagArg
+      choices:
+      - dna
+      - protein
+      - both
+      - either
+    optional: true
+  - !Flag
+    description: 'Transfer taxonomy of all hits or top hit per gene (default: top_hit)'
+    synonyms:
+    - --hit_type
+    args: !ChoiceFlagArg
+      choices:
+      - all_hits
+      - top_hit
+    optional: true
+  - !Flag
+    description: 'List of clades to exclude (ex: s__1300164.4) (default: None)'
+    synonyms:
+    - --exclude_clades
+    args: !RepeatFlagArg
+      name: EXCLUDE_CLADES
+    optional: true
+  - !Flag
+    description: 'Min fraction of genes in bin that agree with consensus taxonomy
+      for bin annotation (default: 0.7)'
+    synonyms:
+    - --bin_fract
+    args: !SimpleFlagArg
+      name: BIN_FRACT
+    optional: true
+  - !Flag
+    description: 'Min fraction of genes in that disagree with bin taxonomy for filtering
+      (default: 1.0)'
+    synonyms:
+    - --contig_fract
+    args: !SimpleFlagArg
+      name: CONTIG_FRACT
+    optional: true
+  - !Flag
+    description: 'Allow a bin to be unclassfied and flag any classified contigs (default:
+      False)'
+    synonyms:
+    - --allow_noclass
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Number of CPUs to use (default: 1)'
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  command:
+  - magpurify
+  - phylo-markers
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Path to input genome in FASTA format
+    position: 0
+    name: fna
+    optional: false
+  - !Positional
+    description: Output directory to store results and intermediate files
+    position: 1
+    name: out
+    optional: false
+  named:
+  - !Flag
+    description: 'Path to reference database. By default, the MAGPURIFY environmental
+      variable is used (default: None)'
+    synonyms:
+    - --db
+    args: !SimpleFlagArg
+      name: DB
+    optional: true
+  - !Flag
+    description: 'List of clades to exclude (ex: s__Variovorax_sp_CF313) (default:
+      None)'
+    synonyms:
+    - --exclude_clades
+    args: !RepeatFlagArg
+      name: EXCLUDE_CLADES
+    optional: true
+  - !Flag
+    description: 'Min fraction of bin length supported by contigs that agree with
+      consensus taxonomy (default: 0.6)'
+    synonyms:
+    - --min_bin_fract
+    args: !SimpleFlagArg
+      name: MIN_BIN_FRACT
+    optional: true
+  - !Flag
+    description: 'Min fraction of classified contig length that agree with consensus
+      taxonomy (default: 0.75)'
+    synonyms:
+    - --min_contig_fract
+    args: !SimpleFlagArg
+      name: MIN_CONTIG_FRACT
+    optional: true
+  - !Flag
+    description: 'Min fraction of classified genes that agree with consensus taxonomy
+      (default: 0.0)'
+    synonyms:
+    - --min_gene_fract
+    args: !SimpleFlagArg
+      name: MIN_GENE_FRACT
+    optional: true
+  - !Flag
+    description: 'Min number of genes that agree with consensus taxonomy (default=rank-specific-cutoffs)
+      (default: None)'
+    synonyms:
+    - --min_genes
+    args: !SimpleFlagArg
+      name: MIN_GENES
+    optional: true
+  - !Flag
+    description: 'Lowest rank for bin classification (default: None)'
+    synonyms:
+    - --lowest_rank
+    args: !ChoiceFlagArg
+      choices:
+      - s
+      - g
+      - f
+      - o
+      - c
+      - p
+      - k
+    optional: true
+  - !Flag
+    description: 'Number of CPUs to use (default: 1)'
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  command:
+  - magpurify
+  - clade-markers
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Path to input genome in FASTA format
+    position: 0
+    name: fna
+    optional: false
+  - !Positional
+    description: Output directory to store results and intermediate files
+    position: 1
+    name: out
+    optional: false
+  - !Positional
+    description: Path to Mash sketch of reference genomes
+    position: 2
+    name: mash_sketch
+    optional: false
+  named:
+  - !Flag
+    description: 'Mash distance to reference genomes (default: 0.05)'
+    synonyms:
+    - --mash-dist
+    args: !SimpleFlagArg
+      name: MASH_DIST
+    optional: true
+  - !Flag
+    description: 'Max number of genomes to use (default: 25)'
+    synonyms:
+    - --max-genomes
+    args: !SimpleFlagArg
+      name: MAX_GENOMES
+    optional: true
+  - !Flag
+    description: 'Min number of genomes to use (default: 1)'
+    synonyms:
+    - --min-genomes
+    args: !SimpleFlagArg
+      name: MIN_GENOMES
+    optional: true
+  - !Flag
+    description: 'Minimum fraction of contig aligned to reference (default: 0.5)'
+    synonyms:
+    - --contig-aln
+    args: !SimpleFlagArg
+      name: CONTIG_ALN
+    optional: true
+  - !Flag
+    description: 'Minimum percent identity of contig aligned to reference (default:
+      95.0)'
+    synonyms:
+    - --contig-pid
+    args: !SimpleFlagArg
+      name: CONTIG_PID
+    optional: true
+  - !Flag
+    description: 'Hit rate for flagging contigs (default: 0.0)'
+    synonyms:
+    - --hit-rate
+    args: !SimpleFlagArg
+      name: HIT_RATE
+    optional: true
+  - !Flag
+    description: 'List of references to exclude (default: )'
+    synonyms:
+    - --exclude
+    args: !RepeatFlagArg
+      name: EXCLUDE
+    optional: true
+  - !Flag
+    description: 'Number of CPUs to use (default: 1)'
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  command:
+  - magpurify
+  - conspecific
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Cutoff (default: 0.06)'
+    synonyms:
+    - --cutoff
+    args: !SimpleFlagArg
+      name: CUTOFF
+    optional: true
+  - !Flag
+    description: 'Compute the mean weighted by the contig length (default: False)'
+    synonyms:
+    - --weighted-mean
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - magpurify
+  - tetra-freq
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --cutoff
+      args: !SimpleFlagArg
+        name: CUTOFF
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - --weighted-mean
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - magpurify
+    - tetra-freq
+    - out
+    subcommands:
+    - !Command
+      positional:
+      - !Positional
+        description: Path to input genome in FASTA format
+        position: 0
+        name: fna
+        optional: false
+      - !Positional
+        description: Output directory to store results and intermediate files
+        position: 1
+        name: out
+        optional: false
+      named:
+      - !Flag
+        description: 'Cutoff (default: 0.06)'
+        synonyms:
+        - --cutoff
+        args: !SimpleFlagArg
+          name: CUTOFF
+        optional: true
+      - !Flag
+        description: 'Compute the mean weighted by the contig length (default: False)'
+        synonyms:
+        - --weighted-mean
+        args: !EmptyFlagArg {}
+        optional: true
+      command:
+      - magpurify
+      - tetra-freq
+      - out
+      - fna
+      subcommands: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+    - !Command
+      positional:
+      - !Positional
+        description: Path to input genome in FASTA format
+        position: 0
+        name: fna
+        optional: false
+      - !Positional
+        description: Output directory to store results and intermediate files
+        position: 1
+        name: out
+        optional: false
+      named:
+      - !Flag
+        description: 'Cutoff (default: 0.06)'
+        synonyms:
+        - --cutoff
+        args: !SimpleFlagArg
+          name: CUTOFF
+        optional: true
+      - !Flag
+        description: 'Compute the mean weighted by the contig length (default: False)'
+        synonyms:
+        - --weighted-mean
+        args: !EmptyFlagArg {}
+        optional: true
+      command:
+      - magpurify
+      - tetra-freq
+      - out
+      - out
+      subcommands: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Cutoff (default: 15.75)'
+    synonyms:
+    - --cutoff
+    args: !SimpleFlagArg
+      name: CUTOFF
+    optional: true
+  - !Flag
+    description: 'Compute the mean weighted by the contig length (default: False)'
+    synonyms:
+    - --weighted-mean
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - magpurify
+  - gc-content
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - --cutoff
+      args: !SimpleFlagArg
+        name: CUTOFF
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - --weighted-mean
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - magpurify
+    - gc-content
+    - out
+    subcommands:
+    - !Command
+      positional:
+      - !Positional
+        description: Path to input genome in FASTA format
+        position: 0
+        name: fna
+        optional: false
+      - !Positional
+        description: Output directory to store results and intermediate files
+        position: 1
+        name: out
+        optional: false
+      named:
+      - !Flag
+        description: 'Cutoff (default: 15.75)'
+        synonyms:
+        - --cutoff
+        args: !SimpleFlagArg
+          name: CUTOFF
+        optional: true
+      - !Flag
+        description: 'Compute the mean weighted by the contig length (default: False)'
+        synonyms:
+        - --weighted-mean
+        args: !EmptyFlagArg {}
+        optional: true
+      command:
+      - magpurify
+      - gc-content
+      - out
+      - fna
+      subcommands: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+    - !Command
+      positional:
+      - !Positional
+        description: Path to input genome in FASTA format
+        position: 0
+        name: fna
+        optional: false
+      - !Positional
+        description: Output directory to store results and intermediate files
+        position: 1
+        name: out
+        optional: false
+      named:
+      - !Flag
+        description: 'Cutoff (default: 15.75)'
+        synonyms:
+        - --cutoff
+        args: !SimpleFlagArg
+          name: CUTOFF
+        optional: true
+      - !Flag
+        description: 'Compute the mean weighted by the contig length (default: False)'
+        synonyms:
+        - --weighted-mean
+        args: !EmptyFlagArg {}
+        optional: true
+      command:
+      - magpurify
+      - gc-content
+      - out
+      - out
+      subcommands: []
+      help_flag: !Flag
+        description: show this help message and exit
+        synonyms:
+        - -h
+        - --help
+        args: !EmptyFlagArg {}
+        optional: true
+      usage_flag:
+      version_flag:
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Path to input genome in FASTA format
+    position: 0
+    name: fna
+    optional: false
+  - !Positional
+    description: Output directory to store results and intermediate files
+    position: 1
+    name: out
+    optional: false
+  - !Positional
+    description: Path to input sorted BAM file(s)
+    position: 2
+    name: bams
+    optional: false
+  named:
+  - !Flag
+    description: 'Contigs with coverage greater than [max-deviation * mean coverage]
+      or less than [(1/max-deviation) * mean coverage] will be flagged as outliers
+      (default: 5.0)'
+    synonyms:
+    - --max-deviation
+    args: !SimpleFlagArg
+      name: MAX_DEVIATION
+    optional: true
+  - !Flag
+    description: 'Compute the mean weighted by the contig length (default: False)'
+    synonyms:
+    - --weighted-mean
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Number of CPUs to use (default: 1)'
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  command:
+  - magpurify
+  - coverage
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Path to input genome in FASTA format
+    position: 0
+    name: fna
+    optional: false
+  - !Positional
+    description: Output directory to store results and intermediate files
+    position: 1
+    name: out
+    optional: false
+  named:
+  - !Flag
+    description: 'Path to reference database. By default, the IMAGEN_DB environmental
+      variable is used (default: None)'
+    synonyms:
+    - --db
+    args: !SimpleFlagArg
+      name: DB
+    optional: true
+  - !Flag
+    description: 'Minimum % identity to reference (default: 98)'
+    synonyms:
+    - --pid
+    args: !SimpleFlagArg
+      name: PID
+    optional: true
+  - !Flag
+    description: 'Maximum evalue (default: 1e-05)'
+    synonyms:
+    - --evalue
+    args: !SimpleFlagArg
+      name: EVALUE
+    optional: true
+  - !Flag
+    description: 'Minimum percent query coverage (default: 25)'
+    synonyms:
+    - --qcov
+    args: !SimpleFlagArg
+      name: QCOV
+    optional: true
+  - !Flag
+    description: 'Number of CPUs to use (default: 1)'
+    synonyms:
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  command:
+  - magpurify
+  - known-contam
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - magpurify
+  - clean-bin
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: fna
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: out
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: out_fna
+      optional: false
+    named: []
+    command:
+    - magpurify
+    - clean-bin
+    - out
+    subcommands: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: fna
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: out
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: out_fna
+      optional: false
+    named: []
+    command:
+    - magpurify
+    - clean-bin
+    - out_fna
+    subcommands: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

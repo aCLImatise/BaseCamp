@@ -1,0 +1,89 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: a file that contains a list of file paths of BAMs. It should has only
+    one column,  with each row a BAM file path. -f has higher priority than <in.bam>.
+    When specified,  <in.bam> are ignored.
+  synonyms:
+  - -f
+  - --bamlist
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: 'output file for results. Ignored when input is from stdin, in which
+    case output will be stdout. '
+  synonyms:
+  - -o
+  - --output_dir
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: remove header line, which is printed by default.
+  synonyms:
+  - -H
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: merge read groups by taking a weighted average across read groups of
+    a sample, weighted by  the total number of reads in read group. Default is to
+    output each readgroup separately.
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ignore read groups. Treat all reads in BAM as if they were from a same
+    read group.
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: threshold of the amount of TTAGGG/CCCTAA repeats in read for a read
+    to be considered telomeric. default = 7.
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: read length. default = 100
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use user specified pattern for searching [ATGC]*.
+  synonyms:
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'specifiy exome regions in BED format. These regions will be excluded '
+  synonyms:
+  - -e
+  - --exomebed
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: ',                      consider BAMs in the speicfied bamlist as one
+    single BAM. This is useful when  the initial alignemt is separated for some reason,
+    such as one for mapped and one for ummapped reads. '
+  synonyms:
+  - -w
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- telseq
+subcommands: []
+help_flag: !Flag
+  description: display this help and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

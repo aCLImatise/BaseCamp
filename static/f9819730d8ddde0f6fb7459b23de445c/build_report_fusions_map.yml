@@ -1,0 +1,219 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The input FASTQ file containing all the reads (can be given as gzipped
+    file too).
+  synonyms:
+  - --input_fastq
+  args: !SimpleFlagArg
+    name: INPUT_FASTQ_FILENAME
+  optional: true
+- !Flag
+  description: The input FASTA file containing all the sequences of the exon-exon
+    junctions.
+  synonyms:
+  - --input_fasta_juncs
+  args: !SimpleFlagArg
+    name: INPUT_FASTA_JUNCS_FILENAME
+  optional: true
+- !Flag
+  description: The input summary for fusion genes which is processed further, for
+    example 'candidate_fusion-genes_exon- exon-junctions_summary.txt'.
+  synonyms:
+  - --input_fusion_summary
+  args: !SimpleFlagArg
+    name: INPUT_FUSION_SUMMARY_FILENAME
+  optional: true
+- !Flag
+  description: The input summary for fusion genes with even more information, for
+    example 'candidate_fusion-genes_exon- exon-junctions_reads-positions.txt'. This
+    is processed even further.
+  synonyms:
+  - --input_fusion_summary_more
+  args: !SimpleFlagArg
+    name: INPUT_FUSION_SUMMARY_MORE_FILENAME
+  optional: true
+- !Flag
+  description: The input list of candidate fusion genes, for example 'candidate_fusion-genes_no-offending-reads_label-no-
+    proteins-paralogs-readthrough-similar- pseudogenes_further.txt'. This is processed
+    even further.
+  synonyms:
+  - --input_candidate_fusion_genes
+  args: !SimpleFlagArg
+    name: INPUT_CANDIDATE_FUSION_GENES_FILENAME
+  optional: true
+- !Flag
+  description: The input list of candidate fusion genes and ids of the supporting
+    reads, for example 'candidate_fusion- genes_not-filtered_supporting_paired-reads.txt'.
+    This is processed even further.
+  synonyms:
+  - --input_candidate_fusion_genes_reads
+  args: !SimpleFlagArg
+    name: INPUT_CANDIDATE_FUSION_GENES_READS_FILENAME
+  optional: true
+- !Flag
+  description: The input list of ids of reads that are unmapped (that are mapping
+    over the fusion junction).
+  synonyms:
+  - --input_unmapped_reads
+  args: !SimpleFlagArg
+    name: INPUT_UNMAPPED_READS_FILENAME
+  optional: true
+- !Flag
+  description: The input list mate reads from pairs of reads together with their mappings
+    on the genes, for example 'candidate_fusion-genes_missing_mates.txt'.
+  synonyms:
+  - --input_candidate_fusions_missing_mates
+  args: !SimpleFlagArg
+    name: INPUT_CANDIDATE_FUSIONS_MISSING_MATES_FILENAME
+  optional: true
+- !Flag
+  description: Database with exons position on chromosomes, e.g. 'more_exons_ensembl.txt'.
+    This is used for filtering the UTRs extensions by removing any extension which
+    overlaps with any exons from the database. This is optional.
+  synonyms:
+  - --input_exons
+  args: !SimpleFlagArg
+    name: INPUT_EXONS_FILENAME
+  optional: true
+- !Flag
+  description: The output super summary report for candidate fusion genes.
+  synonyms:
+  - --output_super_summary
+  args: !SimpleFlagArg
+    name: OUTPUT_SUPER_SUMMARY_FILENAME
+  optional: true
+- !Flag
+  description: The ouput FASTQ file containing the reads which support each candidate
+    fusion gene.
+  synonyms:
+  - --output_zip_fasta
+  args: !SimpleFlagArg
+    name: OUTPUT_ZIP_FASTA_FILENAME
+  optional: true
+- !Flag
+  description: The minimum number of unique reads which overlap over an exon-exon
+    junction. Default is '1'.
+  synonyms:
+  - --suporting_unique_reads
+  args: !SimpleFlagArg
+    name: SUPPORTING_UNIQUE_READS
+  optional: true
+- !Flag
+  description: For anchors longer (or equal) with this value it is enough to have
+    only one supporting read. Default is '40'.
+  synonyms:
+  - --anchor2
+  args: !SimpleFlagArg
+    name: ANCHOR2
+  optional: true
+- !Flag
+  description: Path to the genome in 2bit format (generated with faToTwoBit) which
+    will be used for aligning using BLAT the supporting reads and their alignment
+    in PSL format is added to file specified with '--output_zip_fasta'.
+  synonyms:
+  - --input_genome_2bit
+  args: !SimpleFlagArg
+    name: INPUT_GENOME_2BIT
+  optional: true
+- !Flag
+  description: Path to Blat's executable.
+  synonyms:
+  - --blat-dir
+  args: !SimpleFlagArg
+    name: BLAT_DIRECTORY
+  optional: true
+- !Flag
+  description: Path to the genome BOWTIE2 index which is used to generate the alignments
+    in SAM format which is added to file specified with '--output_zip_fasta'.
+  synonyms:
+  - --input_genome_bowtie2
+  args: !SimpleFlagArg
+    name: INPUT_GENOME_BOWTIE2
+  optional: true
+- !Flag
+  description: Path to Bowtie2's executable.
+  synonyms:
+  - --bowtie2-dir
+  args: !SimpleFlagArg
+    name: BOWTIE2_DIRECTORY
+  optional: true
+- !Flag
+  description: Number or processes to be used for running Bowtie2. Default is '1'.
+  synonyms:
+  - -p
+  - --threads
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: The directory which should be used as temporary directory. By default
+    is the OS temporary directory.
+  synonyms:
+  - -t
+  - --tmp_dir
+  args: !SimpleFlagArg
+    name: TMP_DIRECTORY
+  optional: true
+- !Flag
+  description: The type of BLAT alignment to be used for aligning the supporting reads
+    when BLAT is chosen. The choices are ['web','sensitive']. Default is 'web'.
+  synonyms:
+  - --psl_alignment_type
+  args: !SimpleFlagArg
+    name: PSL_SEARCH_TYPE
+  optional: true
+- !Flag
+  description: If set then a SAM file will be generated using BOWTIE2. Default is
+    '10'.
+  synonyms:
+  - --sam_alignment
+  args: !SimpleFlagArg
+    name: SAM_ALIGNMENT
+  optional: true
+- !Flag
+  description: If used then the junction sequence is added to the FASTA file with
+    the supporting reads. Default is 'False'.
+  synonyms:
+  - --junction
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If used then the supporting reads from the FASTA file are assembled
+    using VELVET. Default is 'False'.
+  synonyms:
+  - --velvet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to Velvet's executable.
+  synonyms:
+  - --velvet-dir
+  args: !SimpleFlagArg
+    name: VELVET_DIRECTORY
+  optional: true
+- !Flag
+  description: The output list of candidate fusion genes and the supporting reads.
+  synonyms:
+  - --output_all_candidate_fusion_genes_reads
+  args: !SimpleFlagArg
+    name: OUTPUT_ALL_CANDIDATE_FUSION_GENES_READS_FILENAME
+  optional: true
+command:
+- build_report_fusions_map.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

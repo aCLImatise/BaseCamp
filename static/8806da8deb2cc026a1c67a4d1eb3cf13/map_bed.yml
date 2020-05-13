@@ -1,0 +1,49 @@
+!Command
+positional:
+- !Positional
+  description: Path to gzipped bed file
+  position: 0
+  name: bed_path
+  optional: false
+- !Positional
+  description: Path to gzipped output file
+  position: 1
+  name: out_path
+  optional: false
+- !Positional
+  description: Path to directory with uint8 binary files produced by Umap/Bismap.
+  position: 2
+  name: umap_dir
+  optional: false
+- !Positional
+  description: The read length for defining single-read and multi-read mappability.
+  position: 3
+  name: kmer
+  optional: false
+named:
+- !Flag
+  description: If specified, assumes each region is only one nucleotide. You must
+    specify -wig as well.
+  synonyms:
+  - -SingleNucleotide
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to directory with <chrom>.<kmer>.MultiReadMappability.wg.gz files.
+  synonyms:
+  - -wigdir
+  args: !SimpleFlagArg
+    name: WIGDIR
+  optional: true
+command:
+- map_bed.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

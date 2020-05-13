@@ -1,0 +1,49 @@
+!Command
+positional:
+- !Positional
+  description: fasta file of transcripts, CDS start and end may be provided on description
+    line using tab separation e.g. >NM_0001 10 5000, otherwise it searches for longest
+    ORF
+  position: 0
+  name: transcriptome
+  optional: false
+- !Positional
+  description: sorted bam file of alignments to transcriptome
+  position: 1
+  name: alignment
+  optional: false
+- !Positional
+  description: nucleotide offset to A-site
+  position: 2
+  name: offset
+  optional: false
+- !Positional
+  description: lengths of footprints included, for example 28:32 is 28,29,30,31,32
+  position: 3
+  name: lengths
+  optional: false
+named:
+- !Flag
+  description: directory  path to outputfile, default is "dipeptide"
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: outfile
+  optional: true
+command:
+- rust_dipeptide.bak
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

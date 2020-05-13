@@ -1,0 +1,106 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Input table of sequence abundances (BIOM, TSV, or mothur shared file
+    format).
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Table of predicted gene family copy numbers (output of hsp.py).
+  synonyms:
+  - -f
+  - --function
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Table of predicted marker gene copy numbers (output of hsp.py - typically
+    for 16S).
+  synonyms:
+  - -m
+  - --marker
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: 'Sequences with NSTI values above this value will be excluded (default:
+    2).'
+  synonyms:
+  - --max_nsti
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Minimum number of reads across all samples for each input ASV. ASVs
+    below this cut-off will be counted as part of the "RARE" category in the stratified
+    output (default: 1).'
+  synonyms:
+  - --min_reads
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'Minimum number of samples that an ASV needs to be identfied within.
+    ASVs below this cut-off will be counted as part of the "RARE" category in the
+    stratified output (default: 1).'
+  synonyms:
+  - --min_samples
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Output table stratified by sequences as well. By default this will
+    be in "contributional" format (i.e. long-format) unless the "--wide_table" option
+    is set. The startified outfile is named "metagenome_contrib.tsv.gz" when in long-format.
+  synonyms:
+  - --strat_out
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output wide-format stratified table of metagenome predictions when
+    "--strat_out" is set. This is the deprecated method of generating stratified tables
+    since it is extremely memory intensive. The startified outfile is named "pred_metagenome_strat.tsv.gz"
+    when this option is set.
+  synonyms:
+  - --wide_table
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Skip normalizing sequence abundances by predicted marker gene copy
+    numbers (typically 16S rRNA genes). This step will be performed automatically
+    unless this option is specified.
+  synonyms:
+  - --skip_norm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output directory for metagenome predictions. (default: metagenome_out).'
+  synonyms:
+  - -o
+  - --out_dir
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+command:
+- metagenome_pipeline.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,117 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'scHi-C matrix, -m scool scHi-C matrix The single cell Hi-C interaction
+    matrices to cluster. Needs to be in scool format (default: None)'
+  synonyms:
+  - --matrix
+  args: !SimpleFlagArg
+    name: scool
+  optional: true
+- !Flag
+  description: 'Number of to be computed clusters (default: 12)'
+  synonyms:
+  - --numberOfClusters
+  - -c
+  args: !SimpleFlagArg
+    name: NUMBEROFCLUSTERS
+  optional: true
+- !Flag
+  description: 'Algorithm to cluster the Hi-C matrices (default: spectral)'
+  synonyms:
+  - --clusterMethod
+  - -cm
+  args: !ChoiceFlagArg
+    choices:
+    - spectral
+    - kmeans
+  optional: true
+- !Flag
+  description: 'File name to save the resulting clusters (default: clusters.txt)'
+  synonyms:
+  - --outFileName
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+  optional: true
+- !Flag
+  description: 'This option increases the runtime significantly, from a few minutes
+    to half an hour or longer. If set, the number of hash collisions is only used
+    for candidate set creation and the euclidean distance is considered too. (default:
+    True)'
+  synonyms:
+  - --exactModeMinHash
+  - -em
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'This option activates the save of the intermediate raw scHi-C matrix.
+    (default: None)'
+  synonyms:
+  - --saveIntermediateRawMatrix
+  - -sm
+  args: !SimpleFlagArg
+    name: SAVEINTERMEDIATERAWMATRIX
+  optional: true
+- !Flag
+  description: 'Number of to be used hash functions for minHash (default: 800)'
+  synonyms:
+  - --numberOfHashFunctions
+  - -nh
+  args: !SimpleFlagArg
+    name: NUMBEROFHASHFUNCTIONS
+  optional: true
+- !Flag
+  description: 'Number of to be used computed nearest neighbors for the knn graph.
+    (default: 100)'
+  synonyms:
+  - --numberOfNearestNeighbors
+  - -k
+  args: !SimpleFlagArg
+    name: NUMBEROFNEARESTNEIGHBORS
+  optional: true
+- !Flag
+  description: 'Which share of rows shall be transferred from Python to C++ at once.
+    Values between 0 and 1, the more are transferred at once, the larger the memory
+    usage is. The less rows are transferred, the slower the computation is. (default:
+    0.25)'
+  synonyms:
+  - --shareOfMatrixToBeTransferred
+  - -s
+  args: !SimpleFlagArg
+    name: SHAREOFMATRIXTOBETRANSFERRED
+  optional: true
+- !Flag
+  description: 'List of to be plotted chromosomes (default: None)'
+  synonyms:
+  - --chromosomes
+  args: !RepeatFlagArg
+    name: CHROMOSOMES
+  optional: true
+- !Flag
+  description: 'Number of threads. Using the python multiprocessing module. (default:
+    4)'
+  synonyms:
+  - --threads
+  - -t
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+command:
+- scHicClusterMinHash
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

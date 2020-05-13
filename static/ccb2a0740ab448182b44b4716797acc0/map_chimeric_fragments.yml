@@ -1,0 +1,188 @@
+!Command
+positional:
+- !Positional
+  description: Name of genome fasta file. The file must be indexed usingbwa index
+    command prior to this run.
+  position: 0
+  name: genome_fasta
+  optional: false
+- !Positional
+  description: One or more bam files.
+  position: 1
+  name: bamfiles
+  optional: false
+named:
+- !Flag
+  description: "Treat the reads as reverse complement. This means that the first read\
+    \ is actually the 3' end of the fragment. Use this when using Jonathan Livny's\
+    \ protocol for library construction (default: False)"
+  synonyms:
+  - -r
+  - --reverse_complement
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'A gff file of transcripts. If given, screen reads that might reside
+    from the same transcript. Very useful for screening ribosomal RNAs. Otherwise
+    use only the size limit. (default: None)'
+  synonyms:
+  - -t
+  - --transcripts
+  args: !SimpleFlagArg
+    name: TRANSCRIPTS
+  optional: true
+- !Flag
+  description: 'Maximal distance between concordant reads. If they are generated from
+    the same strand but larger than this distance they will be considered as chimeric.
+    (default: 1000)'
+  synonyms:
+  - -s
+  - --distance
+  args: !SimpleFlagArg
+    name: DISTANCE
+  optional: true
+- !Flag
+  description: 'Threshold for dust filter. If 0 skip. (default: 10)'
+  synonyms:
+  - --dust_thr
+  args: !SimpleFlagArg
+    name: DUST_THR
+  optional: true
+- !Flag
+  description: 'Output directory, default is this directory. (default: ./remapped-data/)'
+  synonyms:
+  - -d
+  - --dirout
+  args: !SimpleFlagArg
+    name: DIROUT
+  optional: true
+- !Flag
+  description: 'Map all reads in the BAM file, write all the fragments that are not
+    chimeric to the file specified here e.g. -a single_fragments_mapping.txt. By default
+    these reads will be written to the standard output. (default: None)'
+  synonyms:
+  - -a
+  - --all_reads
+  args: !SimpleFlagArg
+    name: ALL_READS
+  optional: true
+- !Flag
+  description: "By default map all reads in the BAM file, write all the fragments,\
+    \ either chimeric ro single to the output file (stdout). If this option is selected\
+    \ don't wirte the single reads. (default: True)"
+  synonyms:
+  - -A
+  - --add_all_reads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Remove reads that are probably a result of circular RNAs by default.
+    If the reads are close but in opposite order they will be removed unless this
+    argument is set. (default: False)'
+  synonyms:
+  - --keep_circular
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Length of sequence to map. Take the ends of the fragment and map each
+    to the genome. The length of the region will be this length. (default: 25)'
+  synonyms:
+  - -l
+  - --length
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: 'Find alignment allowing this number of mismatches. If there are more
+    than one match with this number of mismatches the read will be treated as if it
+    might match all of them and if there is one scenario in which the two ends are
+    concordant it will be removed. (default: 3)'
+  synonyms:
+  - --max_mismatches
+  args: !SimpleFlagArg
+    name: MAX_MISMATCHES
+  optional: true
+- !Flag
+  description: 'This number of mismatches is allowed between the a match and the genome.
+    If there are mapped reads with less than --max_mismatches mismatches but more
+    than this number the read will be ignored. (default: 1)'
+  synonyms:
+  - --allowed_mismatches
+  args: !SimpleFlagArg
+    name: ALLOWED_MISMATCHES
+  optional: true
+- !Flag
+  description: 'Skip the mapping step, use previously mapped files. (default: False)'
+  synonyms:
+  - --skip_mapping
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'If a read has more than this fraction of Gs remove this readfrom the
+    screen. This is due to nextseq technology which puts G where there is no signal,
+    the poly G might just be noise. When using other sequencing technologies set to
+    1. (default: 0.8)'
+  synonyms:
+  - --maxG
+  args: !SimpleFlagArg
+    name: MAXG
+  optional: true
+- !Flag
+  description: 'Name of features to count on the GTF file (column 2). (default: exon)'
+  synonyms:
+  - -f
+  - --feature
+  args: !SimpleFlagArg
+    name: FEATURE
+  optional: true
+- !Flag
+  description: 'Name of identifier to print (in column 8 of the GTF file). (default:
+    gene_id)'
+  synonyms:
+  - -i
+  - --identifier
+  args: !SimpleFlagArg
+    name: IDENTIFIER
+  optional: true
+- !Flag
+  description: 'bwa command (default: bwa)'
+  synonyms:
+  - --bwa_exec
+  args: !SimpleFlagArg
+    name: BWA_EXEC
+  optional: true
+- !Flag
+  description: 'Samtools executable. (default: samtools)'
+  synonyms:
+  - -S
+  - --samtools_cmd
+  args: !SimpleFlagArg
+    name: SAMTOOLS_CMD
+  optional: true
+- !Flag
+  description: 'Additional parameters for aln function of bwa. (default: -t 8 -N -M
+    0)'
+  synonyms:
+  - --params_aln
+  args: !SimpleFlagArg
+    name: PARAMS_ALN
+  optional: true
+- !Flag
+  description: 'Additional parameters for samse function of bwa. (default: -n 1000)'
+  synonyms:
+  - --samse_params
+  args: !SimpleFlagArg
+    name: SAMSE_PARAMS
+  optional: true
+command:
+- map_chimeric_fragments.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

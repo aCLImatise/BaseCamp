@@ -1,0 +1,60 @@
+!Command
+positional:
+- !Positional
+  description: Name of gff file to count the reads per gene.
+  position: 0
+  name: genes_gff
+  optional: false
+- !Positional
+  description: Reads files, output of map_chimeric_fragments.py
+  position: 1
+  name: reads_files
+  optional: false
+named:
+- !Flag
+  description: 'Count the fragments marked as "single", by default count only the
+    chimeric ones. This option forces -1 otherwise the counts will be doubled. (default:
+    False)'
+  synonyms:
+  - -s
+  - --singles
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Don't print header and antisense/IGR statistics. (default: False)"
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Name of features to count on the GTF file (column 2). (default: exon)'
+  synonyms:
+  - -f
+  - --feature
+  args: !SimpleFlagArg
+    name: FEATURE
+  optional: true
+- !Flag
+  description: 'Name of identifier to print (in column 8 of the GTF file). (default:
+    gene_id)'
+  synonyms:
+  - -i
+  - --identifier
+  args: !SimpleFlagArg
+    name: IDENTIFIER
+  optional: true
+- !Flag
+  description: 'Minimal overlap between gene and read. (default: 5)'
+  synonyms:
+  - -o
+  - --overlap
+  args: !SimpleFlagArg
+    name: OVERLAP
+  optional: true
+command:
+- count_chimeric_reads_per_gene.py
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

@@ -1,0 +1,210 @@
+!Command
+positional:
+- !Positional
+  description: Comparison intermediate VCF file to quantify (two column TRUTH/QUERY
+    format)
+  position: 0
+  name: in_vcf
+  optional: false
+named:
+- !Flag
+  description: When hap.py was run with --adjust-conf-regions, on the original VCF,
+    then quantify needs the truthset VCF in order to correctly reproduce the results.
+    This switch allows us to pass the truth VCF into quantify.
+  synonyms:
+  - --adjust-conf-regions
+  args: !SimpleFlagArg
+    name: PREPROCESSING_TRUTH_CONFREGIONS
+  optional: true
+- !Flag
+  description: Annotation format in input VCF file.
+  synonyms:
+  - -t
+  - --type
+  args: !ChoiceFlagArg
+    choices:
+    - xcmp
+    - ga4gh
+  optional: true
+- !Flag
+  description: False positive / confident call regions (.bed or .bed.gz). Calls outside
+    these regions will be labelled as UNK.
+  synonyms:
+  - -f
+  - --false-positives
+  args: !SimpleFlagArg
+    name: FP_BEDFILE
+  optional: true
+- !Flag
+  description: Stratification file list (TSV format -- first column is region name,
+    second column is file name).
+  synonyms:
+  - --stratification
+  args: !SimpleFlagArg
+    name: STRAT_TSV
+  optional: true
+- !Flag
+  description: Add single stratification region, e.g. --stratification-region TEST:test.bed
+  synonyms:
+  - --stratification-region
+  args: !SimpleFlagArg
+    name: STRAT_REGIONS
+  optional: true
+- !Flag
+  description: Add chr prefix to stratification files if necessary
+  synonyms:
+  - --stratification-fixchr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write an annotated VCF.
+  synonyms:
+  - -V
+  - --write-vcf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write advanced counts and metrics.
+  synonyms:
+  - -X
+  - --write-counts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not write advanced counts and metrics.
+  synonyms:
+  - --no-write-counts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write VTC field in the final VCF which gives the counts each position
+    has contributed to.
+  synonyms:
+  - --output-vtc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When using XCMP, preserve and merge the INFO fields in truth and query.
+    Useful for ROC computation.
+  synonyms:
+  - --preserve-info
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Select a feature to produce a ROC on (INFO feature, QUAL, GQX, ...).
+  synonyms:
+  - --roc
+  args: !SimpleFlagArg
+    name: ROC
+  optional: true
+- !Flag
+  description: Disable ROC computation and only output summary statistics for more
+    concise output.
+  synonyms:
+  - --no-roc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Select a list of regions to compute ROCs in. By default, only the '*'
+    region will produce ROC output (aggregate variant counts).
+  synonyms:
+  - --roc-regions
+  args: !SimpleFlagArg
+    name: ROC_REGIONS
+  optional: true
+- !Flag
+  description: Select a filter to ignore when making ROCs.
+  synonyms:
+  - --roc-filter
+  args: !SimpleFlagArg
+    name: ROC_FILTER
+  optional: true
+- !Flag
+  description: Minimum spacing between ROC QQ levels.
+  synonyms:
+  - --roc-delta
+  args: !SimpleFlagArg
+    name: ROC_DELTA
+  optional: true
+- !Flag
+  description: Confidence level for Jeffrey's CI for recall, precision and fraction
+    of non-assessed calls.
+  synonyms:
+  - --ci-alpha
+  args: !SimpleFlagArg
+    name: CI_ALPHA
+  optional: true
+- !Flag
+  description: Disable JSON file output.
+  synonyms:
+  - --no-json
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Filename prefix for report output.
+  synonyms:
+  - -o
+  - --report-prefix
+  args: !SimpleFlagArg
+    name: REPORTS_PREFIX
+  optional: true
+- !Flag
+  description: Specify a reference file.
+  synonyms:
+  - -r
+  - --reference
+  args: !SimpleFlagArg
+    name: REF
+  optional: true
+- !Flag
+  description: Number of threads to use.
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: Write logging information into file rather than to stderr
+  synonyms:
+  - --logfile
+  args: !SimpleFlagArg
+    name: LOGFILE
+  optional: true
+- !Flag
+  description: Use BCF internally. This is the default when the input file is in BCF
+    format already. Using BCF can speed up temp file access, but may fail for VCF
+    files that have broken headers or records that don't comply with the header.
+  synonyms:
+  - --bcf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Raise logging level from warning to info.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set logging level to output errors only.
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- qfy.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show version number and exit.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

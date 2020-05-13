@@ -1,0 +1,82 @@
+!Command
+positional:
+- !Positional
+  description: Input abundance file to correct
+  position: 0
+  name: input_file
+  optional: false
+named:
+- !Flag
+  description: 'Output destination for corrected abundance (default: MUSiCC.tab)'
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: OUTPUT_FILE
+  optional: true
+- !Flag
+  description: 'Option indicating the format of the input file (default: tab)'
+  synonyms:
+  - -if
+  - --input_format
+  args: !ChoiceFlagArg
+    choices:
+    - tab
+    - csv
+    - biom
+  optional: true
+- !Flag
+  description: 'Option indicating the format of the output file (default: tab)'
+  synonyms:
+  - -of
+  - --output_format
+  args: !ChoiceFlagArg
+    choices:
+    - tab
+    - csv
+    - biom
+  optional: true
+- !Flag
+  description: 'Apply MUSiCC normalization (default: false)'
+  synonyms:
+  - -n
+  - --normalize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Correct abundance per-sample using MUSiCC (default: false)'
+  synonyms:
+  - -c
+  - --correct
+  args: !ChoiceFlagArg
+    choices:
+    - use_generic
+    - learn_model
+  optional: true
+- !Flag
+  description: 'Calculate model performance on various gene sets (may add to running
+    time) (default: false)'
+  synonyms:
+  - -perf
+  - --performance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Increase verbosity of module (default: false)'
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- run_musicc.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

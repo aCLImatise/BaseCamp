@@ -1,0 +1,111 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The input file in Bowtie MAP format (sorted by read name) containing
+    the short reads mapped on the transcripts (can be also STDIN).
+  synonyms:
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT_MAP_FILENAME
+  optional: true
+- !Flag
+  description: The output text tab-separated file containing the candidate homologous
+    genes (the genes are sorted alphabetically on the each line).
+  synonyms:
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME
+  optional: true
+- !Flag
+  description: The minimum number of reads which map simultaneously on two genes in
+    order to be considered as homolog genes. Default is 1.
+  synonyms:
+  - --reads
+  args: !SimpleFlagArg
+    name: READS
+  optional: true
+- !Flag
+  description: The output text file containing the reads names (and its mate) which
+    mapp simultaneously on transcripts from at least two genes.
+  synonyms:
+  - --output_offending_pair_reads
+  args: !SimpleFlagArg
+    name: OUTPUT_OFFENDING_PAIR_READS_FILENAME
+  optional: true
+- !Flag
+  description: Database with exons position on chromosomes, e.g. 'more_exons_ensembl.txt'.
+    This is used for filtering the UTRs extensions by removing any extension which
+    overlaps with any exons from the database. This is optional.
+  synonyms:
+  - --input_exons
+  args: !SimpleFlagArg
+    name: EXONS_FILENAME
+  optional: true
+- !Flag
+  description: Input file which contain a pattern for genes which should be ignored/skipped
+    from the analysis.
+  synonyms:
+  - --filter
+  args: !SimpleFlagArg
+    name: FILTER_FILENAME
+  optional: true
+- !Flag
+  description: If it set then only the alignments of a read are taken into consideration
+    which are at maximum zero mismatches away. This expects that the input has 4 columns
+    instead of 3, and the fourth column contains the mismatches from Bowtie.
+  synonyms:
+  - --d0
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If it set then only the alignments of a read are taken into consideration
+    which are at maximum one mismatch away. This works only for maximum two mismatches.
+    This expects that the input has 4 columns instead of 3, and the fourth column
+    contains the mismatches from Bowtie.
+  synonyms:
+  - --d1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: A file containing paths to candidate fusion genes and transcripts together
+    with the ids/names of supporting reads.
+  synonyms:
+  - --output_saved_from_pseudogenes
+  args: !SimpleFlagArg
+    name: OUTPUT_SAVED_FROM_PSEUDOGENES_FILENAME
+  optional: true
+- !Flag
+  description: The input database with gene ids of the pseudogenes.
+  synonyms:
+  - --input_pseudogenes
+  args: !SimpleFlagArg
+    name: INPUT_PSEUDOGENES_FILENAME
+  optional: true
+- !Flag
+  description: Number of parallel processes/CPUs to be used for computations. In case
+    of value 0 then the program will use all the CPUs which are found. The default
+    value is 0.
+  synonyms:
+  - -p
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+command:
+- find_homolog_genes.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

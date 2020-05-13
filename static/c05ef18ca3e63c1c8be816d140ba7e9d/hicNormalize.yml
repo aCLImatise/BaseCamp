@@ -1,0 +1,69 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'The matrix (or multiple matrices) to get information about. HiCExplorer
+    supports the following file formats: h5 (native HiCExplorer format) and cool.'
+  synonyms:
+  - --matrices
+  - -m
+  args: !RepeatFlagArg
+    name: MATRICES
+  optional: true
+- !Flag
+  description: Normalize to a) 0 to 1 range, b) all matrices to the lowest read count
+    of the given matrices.
+  synonyms:
+  - --normalize
+  - -n
+  args: !ChoiceFlagArg
+    choices:
+    - norm_range
+    - smallest
+    - multiplicative
+  optional: true
+- !Flag
+  description: Output file name for the Hi-C matrix.
+  synonyms:
+  - --outFileName
+  - -o
+  args: !RepeatFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: show this help message and exit
+  synonyms:
+  - --multiplicativeValue
+  - -mv
+  args: !SimpleFlagArg
+    name: MULTIPLICATIVEVALUE
+  optional: true
+- !Flag
+  description: A threshold to set all values after normalization to 0 if smaller this
+    threshold. Default value is 0 i.e. there is no effect.It is recommended to set
+    it for the normalize mode "smallest" to 1.0. This parameter will influence the
+    sparsity of the matrix by removing many values close to 0 in smallest normalization
+    mode.
+  synonyms:
+  - --setToZeroThreshold
+  - -sz
+  args: !SimpleFlagArg
+    name: SETTOZEROTHRESHOLD
+  optional: true
+command:
+- hicNormalize
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

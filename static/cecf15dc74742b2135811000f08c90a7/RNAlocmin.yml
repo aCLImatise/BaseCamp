@@ -1,0 +1,240 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Print help, including all details and hidden options, and exit
+  synonyms:
+  - --detailed-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print help, including hidden options, and exit
+  synonyms:
+  - --full-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Sequence file in FASTA format. If the sequence is the first line of
+    the input file, this is not needed  (default=`seq.txt')
+  synonyms:
+  - -s
+  - --seq
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Previously found LM (output from RNAlocmin or barriers), if specified
+    does not need --seq option
+  synonyms:
+  - -p
+  - --previous
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: "Move set: I ==> insertion & deletion of base pairs S ==> I&D& switch\
+    \ of base pairs  (possible values=\"I\", \"S\" default=`I')"
+  synonyms:
+  - -m
+  - --move
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Maximal number of local minima returned (0 == unlimited)  (default=`100000')
+  synonyms:
+  - -n
+  - --min-num
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Maximal number of local minima found (default = unlimited - crawl through
+    whole input file)
+  synonyms:
+  - --find-num
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "Level of verbosity (0 = nothing, 4 = full) WARNING: higher verbose\
+    \ levels increase the computation time  (default=`0')"
+  synonyms:
+  - -v
+  - --verbose-lvl
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Depth of findpath search (higher value increases running time linearly)  (default=`10')
+  synonyms:
+  - --depth
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Print only minima with energy barrier greater than this  (default=`0.0')
+  synonyms:
+  - --minh
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: Walking method used D ==> gradient descent F ==> use first found lower
+    energy structure R ==> use random lower energy structure (does not work with --noLP
+    and -m S options) (possible values="D", "F", "R" default=`D')
+  synonyms:
+  - -w
+  - --walk
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Work only with canonical RNA structures (w/o isolated base pairs, cannot
+    be combined with ranodm walk (-w R option) and shift move set (-m S))  (default=off)
+  synonyms:
+  - --noLP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Read energy parameters from paramfile, instead of using the default
+    parameter set
+  synonyms:
+  - -P
+  - --paramFile
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: How to treat "dangling end" energies for bases adjacent to helices
+    in free ends and multi-loops (default=`2')
+  synonyms:
+  - -d
+  - --dangles
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Allow for pseudoknots according to "gfold" model - H, K, L, and M types
+    (genus one) of pseudoknots are allowed (increases computation time greatly), cannot
+    be combined with shift move set (-m S)  (default=off)
+  synonyms:
+  - -k
+  - --pseudoknots
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not expect input from stdin, just do postprocessing.  (default=off)
+  synonyms:
+  - --just-read
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the Neighborhood routines to perform gradient descend. Cannot be
+    combined with shift move set (-m S) and pseudoknots (-k). Test option. (default=off)
+  synonyms:
+  - -N
+  - --neighborhood
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not deal with degeneracy, select the lexicographically first from
+    the same energy neighbors.  (default=off)
+  synonyms:
+  - --degeneracy-off
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not store the minima and optimize, just compute directly minima
+    and output them. Output file can contain duplicates.  (default=off)
+  synonyms:
+  - --just-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Generate an approximate barrier tree. (default=off)
+  synonyms:
+  - -b
+  - --bartree
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Name of barrier tree output file, switches on -b flag.  (default=`treeRNAloc.ps')
+  synonyms:
+  - --barr-name
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: File for saddle heights between LM (simulates the output format of
+    barriers program)
+  synonyms:
+  - --barrier-file
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Create rates for treekin  (default=off)
+  synonyms:
+  - -r
+  - --rates
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: File where to write rates, switches on -r flag (default=`rates.out')
+  synonyms:
+  - -f
+  - --rates-file
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: Temperature in Celsius (only for rates) (default=`37.0')
+  synonyms:
+  - -T
+  - --temp
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: Fraction of minima to flood (floods first minima with low number of
+    inwalking sample structures) (0.0 -> no flood; 1.0 -> try to flood all) Usable
+    only with -r or -b options. (default=`0.95')
+  synonyms:
+  - --floodPortion
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: Flood cap - how many structures to flood in one basin  (default=`1000')
+  synonyms:
+  - --floodMax
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Report only LM, which energy is in range <MFE (or lowest found LM),
+    MFE+eRange> in kcal/mol.
+  synonyms:
+  - --eRange
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+command:
+- RNAlocmin
+subcommands: []
+help_flag: !Flag
+  description: Print help and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,193 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: "*                        Input file: LC-MS raw data (valid formats:\
+    \ 'mzML')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*                        Input file: Peptide identifications derived\
+    \ directly from 'in' (valid formats: 'idXML')"
+  synonyms:
+  - -id
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Input file: 'External' peptide identifications (e.g. from aligned\
+    \ runs) (valid formats: 'idXML')"
+  synonyms:
+  - -id_ext
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*                       Output file: Features (valid formats: 'featureXML')"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Output file: Assay library (valid formats: 'traML')"
+  synonyms:
+  - -lib_out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Output file: Chromatograms (valid formats: 'mzML')"
+  synonyms:
+  - -chrom_out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Output file: Feature candidates (before filtering and model fitting)\
+    \ (valid formats: 'featureXML')"
+  synonyms:
+  - -candidates_out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Optional output file with feature candidates.
+  synonyms:
+  - -candidates_out
+  args: !SimpleFlagArg
+    name: text
+  optional: true
+- !Flag
+  description: ":mz_window <value>         M/z window size for chromatogram extraction\
+    \ (unit: ppm if 1 or greater, else Da/Th) (default: '10' min: '0')"
+  synonyms:
+  - -extract
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":n_isotopes <number>       Number of isotopes to include in each peptide\
+    \ assay. (default: '2' min: '2')"
+  synonyms:
+  - -extract
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":peak_width <value>         Expected elution peak width in seconds,\
+    \ for smoothing (Gauss filter). Also determines the RT extration window, unless\
+    \ set explicitly via 'extract:rt_window'. (default: '60'  min: '0')"
+  synonyms:
+  - -detect
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":mapping_tolerance <value>  RT tolerance (plus/minus) for mapping\
+    \ peptide IDs to features. Absolute value in seconds if 1 or greater, else relative\
+    \ to the RT span of the feature. (default: '0' min:  '0')"
+  synonyms:
+  - -detect
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":samples <number>              Number of observations to use for training\
+    \ ('0' for all) (default: '0' min: '0')"
+  synonyms:
+  - -svm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: :no_selection                  By default, roughly the same number
+    of positive and negative observations, with the same intensity distribution, are
+    selected for training. This aims to reduce biases, but  also reduces the amount
+    of training data. Set this flag to skip this procedure and consider all available
+    observations (subject to 'svm:samples').
+  synonyms:
+  - -svm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":xval_out <choice>             Output file: SVM cross-validation (parameter\
+    \ optimization) results (valid formats: 'csv')"
+  synonyms:
+  - -svm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":kernel <choice>               SVM kernel (default: 'RBF' valid: 'RBF',\
+    \ 'linear')"
+  synonyms:
+  - -svm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":xval <number>                 Number of partitions for cross-validation\
+    \ (parameter optimization) (default: '5' min: '1')"
+  synonyms:
+  - -svm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":log2_C <values>               Values to try for the SVM parameter\
+    \ 'C' during parameter optimization. A value 'x' is used as 'C = 2^x'. (default:\
+    \ '[-5 -3 -1 1 3 5 7 9 11 13 15]')"
+  synonyms:
+  - -svm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":log2_gamma <values>           Values to try for the SVM parameter\
+    \ 'gamma' during parameter optimization (RBF kernel only). A value 'x' is used\
+    \ as 'gamma = 2^x'. (default: '[-15 -13 -11 -9 -7 -5 -3 -1 1  3]')"
+  synonyms:
+  - -svm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":type <choice>               Type of elution model to fit to features\
+    \ (default: 'symmetric' valid: 'symmetric', 'asymmetric', 'none')"
+  synonyms:
+  - -model
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- FeatureFinderIdentification
+subcommands: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

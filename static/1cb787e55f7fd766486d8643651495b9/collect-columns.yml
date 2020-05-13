@@ -1,0 +1,98 @@
+!Command
+positional:
+- !Positional
+  description: The path the output will be written to.
+  position: 0
+  name: output
+  optional: false
+- !Positional
+  description: The tables to be merged.
+  position: 1
+  name: table
+  optional: false
+named:
+- !Flag
+  description: The position of the column with the (unique) feature ids. Default to
+    0.
+  synonyms:
+  - -f
+  - --feature-column
+  args: !SimpleFlagArg
+    name: I
+  optional: true
+- !Flag
+  description: The position of the column with the values of interest. Defaults to
+    1.
+  synonyms:
+  - -c
+  - --value-column
+  args: !SimpleFlagArg
+    name: I
+  optional: true
+- !Flag
+  description: The separator used in the tables. This will also be used in the output
+    table. Defaults to a tab.
+  synonyms:
+  - -s
+  - --sep
+  - --separator
+  args: !SimpleFlagArg
+    name: SEP
+  optional: true
+- !Flag
+  description: '[NAME [NAME ...]], --names [NAME [NAME ...]] The names of the samples
+    corresponding to the tables (in the same order as the tables). These will be used
+    as headers in the merged table. If not specified the basenames of tables will
+    be used.'
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Whether or not the tables have a header. Defaults to false.
+  synonyms:
+  - -H
+  - --header
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: A list of attributes which will be added to the merged table. These
+    attributes will be retrieved from the GTF or GFF file specified with the -g option.
+    Multiple values will be separator by a ';'. Requires -g to be specified.
+  synonyms:
+  - -a
+  - --additional-attributes
+  args: !RepeatFlagArg
+    name: ATTR
+  optional: true
+- !Flag
+  description: The GTF or GFF file from which the additional attributes (see -a) will
+    be retrieved. Ignored if -a is not specified. Required if -a is specified.
+  synonyms:
+  - -g
+  - --gtf
+  - --gff
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: The attribute from the GTF/GFF used for matching the feature records
+    with the rows in the table. Ignored if -a is not specified. Defaults to 'gene_id'.
+  synonyms:
+  - -F
+  - --feature-attribute
+  args: !SimpleFlagArg
+    name: ATTR
+  optional: true
+command:
+- collect-columns
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

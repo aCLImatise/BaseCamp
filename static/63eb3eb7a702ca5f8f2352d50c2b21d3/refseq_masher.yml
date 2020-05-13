@@ -1,0 +1,160 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Logging verbosity (-v for logging warnings; -vvv for logging debug
+    info)
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- refseq_masher
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Mash binary path (default="mash")
+    synonyms:
+    - --mash-bin
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Output file path (default="-"/stdout)
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: '[tab|csv]      Output file type (tab|csv)'
+    synonyms:
+    - --output-type
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output top N results sorted by identity in ascending order (default=0/all)
+    synonyms:
+    - -n
+    - --top-n-results
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Mash screen min identity to report (default=0.9)
+    synonyms:
+    - -i
+    - --min-identity
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: Mash screen max p-value to report (default=0.01)
+    synonyms:
+    - -v
+    - --max-pvalue
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: Mash screen parallelism; number of threads to spawn (default=1)
+    synonyms:
+    - -p
+    - --parallelism
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  command:
+  - refseq_masher
+  - contains
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Mash binary path (default="mash")
+    synonyms:
+    - --mash-bin
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Output file path (default="-"/stdout)
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: '[tab|csv]         Output file type (tab|csv)'
+    synonyms:
+    - --output-type
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output top N results sorted by distance in ascending order (default=5)
+    synonyms:
+    - -n
+    - --top-n-results
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Mash sketch of reads: "Minimum copies of each k-mer required to
+      pass noise filter for reads" (default=8)'
+    synonyms:
+    - -m
+    - --min-kmer-threshold
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Temporary analysis files path (where to save temp Mash sketch file)
+      (default="/tmp")
+    synonyms:
+    - -T
+    - --tmp-dir
+    args: !SimpleFlagArg
+      name: DIRECTORY
+    optional: true
+  command:
+  - refseq_masher
+  - matches
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show the version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

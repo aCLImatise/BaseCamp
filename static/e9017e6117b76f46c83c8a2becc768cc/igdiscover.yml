@@ -1,0 +1,3268 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Save profiling information to igdiscover.prof
+  synonyms:
+  - --profile
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- igdiscover
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: Reference table with parsed and filtered IgBLAST results (filtered.tab)
+    position: 0
+    name: reftable
+    optional: false
+  - !Positional
+    description: Query table with IgBLAST results (assigned.tab or filtered.tab)
+    position: 1
+    name: querytable
+    optional: false
+  named:
+  - !Flag
+    description: 'Discard all rows with count less than N. Default: 1'
+    synonyms:
+    - --minimum-count
+    - -c
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: ':END START:END defines the non-junction region of CDR3 sequences.
+      Use negative numbers for END to count from the end. Regions before and after
+      are considered to be junction sequence, and for two CDR3s to be considered similar,
+      at least one of the junctions must be identical. Default: no junction region.'
+    synonyms:
+    - --cdr3-core
+    args: !SimpleFlagArg
+      name: START
+    optional: true
+  - !Flag
+    description: 'No. of allowed mismatches between CDR3 sequences. Can also be a
+      fraction between 0 and 1 (such as 0.15), interpreted relative to the length
+      of the CDR3 (minus the front non-core). Default: 1'
+    synonyms:
+    - --mismatches
+    args: !SimpleFlagArg
+      name: MISMATCHES
+    optional: true
+  - !Flag
+    description: 'Count CDR3 mismatches on amino-acid level. Default: Compare nucleotides.'
+    synonyms:
+    - --aa
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Write summary table to FILE
+    synonyms:
+    - --summary
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - igdiscover
+  - clonoquery
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Sort by group size (largest first). Default: Sort by V/D/J gene
+      names'
+    synonyms:
+    - --sort
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Print out only the first N groups
+    synonyms:
+    - --limit
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: V SHM threshold for _mindiffrate computations
+    synonyms:
+    - --v-shm-threshold
+    args: !SimpleFlagArg
+      name: V_SHM_THRESHOLD
+    optional: true
+  - !Flag
+    description: ':END START:END defines the non-junction region of CDR3 sequences.
+      Use negative numbers for END to count from the end. Regions before and after
+      are considered to be junction sequence, and for two CDR3s to be considered similar,
+      at least one of the junctions must be identical. Default: no junction region.'
+    synonyms:
+    - --cdr3-core
+    args: !SimpleFlagArg
+      name: START
+    optional: true
+  - !Flag
+    description: 'No. of allowed mismatches between CDR3 sequences. Can also be a
+      fraction between 0 and 1 (such as 0.15), interpreted relative to the length
+      of the CDR3 (minus the front non-core). Default: 1'
+    synonyms:
+    - --mismatches
+    args: !SimpleFlagArg
+      name: MISMATCHES
+    optional: true
+  - !Flag
+    description: 'Count CDR3 mismatches on amino-acid level. Default: Compare nucleotides.'
+    synonyms:
+    - --aa
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Write member table to FILE
+    synonyms:
+    - --members
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - igdiscover
+  - clonotypes
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: Query a table of assigned sequences by clonotype
+      position: 0
+      name: clonoquery
+      optional: false
+    - !Positional
+      description: Group assigned sequences by clonotype
+      position: 1
+      name: clonotypes
+      optional: false
+    - !Positional
+      description: Plot a clustermap of all sequences assigned to a gene
+      position: 2
+      name: clusterplot
+      optional: false
+    - !Positional
+      description: Find common V genes between two different antibody libraries.
+      position: 3
+      name: commonv
+      optional: false
+    - !Positional
+      description: Change configuration file
+      position: 4
+      name: config
+      optional: false
+    - !Positional
+      description: Compute expression counts
+      position: 5
+      name: count
+      optional: false
+    - !Positional
+      description: Compare two FASTA files based on sequences
+      position: 6
+      name: dbdiff
+      optional: false
+    - !Positional
+      description: Draw a dendrogram of sequences in a FASTA file.
+      position: 7
+      name: dendrogram
+      optional: false
+    - !Positional
+      description: Dereplicate sequences and remove barcodes
+      position: 8
+      name: dereplicate
+      optional: false
+    - !Positional
+      description: Discover candidate new V genes within a single antibody library
+      position: 9
+      name: discover
+      optional: false
+    - !Positional
+      description: Discover D and J genes
+      position: 10
+      name: discoverjd
+      optional: false
+    - !Positional
+      description: Plot histograms of differences to reference V gene
+      position: 11
+      name: errorplot
+      optional: false
+    - !Positional
+      description: Filter table with parsed IgBLAST results
+      position: 12
+      name: filter
+      optional: false
+    - !Positional
+      description: Filter V gene candidates (germline and pre-germline filter)
+      position: 13
+      name: germlinefilter
+      optional: false
+    - !Positional
+      description: Group sequences that share a unique molecular identifier (UMI,
+        barcode)
+      position: 14
+      name: group
+      optional: false
+    - !Positional
+      description: Determine haplotypes based on co-occurrences of alleles
+      position: 15
+      name: haplotype
+      optional: false
+    - !Positional
+      description: Run IgBLAST and output a result table
+      position: 16
+      name: igblast
+      optional: false
+    - !Positional
+      description: Create and initialize a new analysis directory.
+      position: 17
+      name: init
+      optional: false
+    - !Positional
+      description: Merge paired-end reads (a wrapper around PEAR)
+      position: 18
+      name: merge
+      optional: false
+    - !Positional
+      description: Find V gene sister sequences shared by multiple libraries.
+      position: 19
+      name: multidiscover
+      optional: false
+    - !Positional
+      description: Plot allele usage
+      position: 20
+      name: plotalleles
+      optional: false
+    - !Positional
+      description: Rename and reorder records in a FASTA file
+      position: 21
+      name: rename
+      optional: false
+    - !Positional
+      description: Run IgDiscover
+      position: 22
+      name: run
+      optional: false
+    - !Positional
+      description: Compute union of sequences in multiple FASTA files
+      position: 23
+      name: union
+      optional: false
+    - !Positional
+      description: Cluster upstream sequences (UTR and leader) for each gene
+      position: 24
+      name: upstream
+      optional: false
+    named:
+    - !Flag
+      description: Save profiling information to igdiscover.prof
+      synonyms:
+      - --profile
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - igdiscover
+    - clonotypes
+    - table
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Table with parsed and filtered IgBLAST results
+    position: 0
+    name: table
+    optional: false
+  - !Positional
+    description: Save clustermaps as PNG into this directory
+    position: 1
+    name: directory
+    optional: false
+  named:
+  - !Flag
+    description: 'Do not plot if there are less than N sequences for a gene. Default:
+      200'
+    synonyms:
+    - --minimum-group-size
+    - -m
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'Plot GENE. Can be given multiple times. Default: Plot all genes.'
+    synonyms:
+    - --gene
+    - -g
+    args: !SimpleFlagArg
+      name: GENE
+    optional: true
+  - !Flag
+    description: 'Gene type. Default: V'
+    synonyms:
+    - --type
+    args: !ChoiceFlagArg
+      choices:
+      - V
+      - D
+      - J
+    optional: true
+  - !Flag
+    description: 'Show at most N sequences (with a matrix of size N x N). Default:
+      300'
+    synonyms:
+    - --size
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Include also rows without J assignment or J%SHM>0.
+    synonyms:
+    - --ignore-J
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Resolution of output file. Default: 200'
+    synonyms:
+    - --dpi
+    args: !SimpleFlagArg
+      name: DPI
+    optional: true
+  - !Flag
+    description: Do not add a title to the plot
+    synonyms:
+    - --no-title
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - igdiscover
+  - clusterplot
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Minimum number of datasets in which sequence must occur (default
+      is no. of files divided by two)
+    synonyms:
+    - --minimum-frequency
+    - -n
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  command:
+  - igdiscover
+  - commonv
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: Query a table of assigned sequences by clonotype
+      position: 0
+      name: clonoquery
+      optional: false
+    - !Positional
+      description: Group assigned sequences by clonotype
+      position: 1
+      name: clonotypes
+      optional: false
+    - !Positional
+      description: Plot a clustermap of all sequences assigned to a gene
+      position: 2
+      name: clusterplot
+      optional: false
+    - !Positional
+      description: Find common V genes between two different antibody libraries.
+      position: 3
+      name: commonv
+      optional: false
+    - !Positional
+      description: Change configuration file
+      position: 4
+      name: config
+      optional: false
+    - !Positional
+      description: Compute expression counts
+      position: 5
+      name: count
+      optional: false
+    - !Positional
+      description: Compare two FASTA files based on sequences
+      position: 6
+      name: dbdiff
+      optional: false
+    - !Positional
+      description: Draw a dendrogram of sequences in a FASTA file.
+      position: 7
+      name: dendrogram
+      optional: false
+    - !Positional
+      description: Dereplicate sequences and remove barcodes
+      position: 8
+      name: dereplicate
+      optional: false
+    - !Positional
+      description: Discover candidate new V genes within a single antibody library
+      position: 9
+      name: discover
+      optional: false
+    - !Positional
+      description: Discover D and J genes
+      position: 10
+      name: discoverjd
+      optional: false
+    - !Positional
+      description: Plot histograms of differences to reference V gene
+      position: 11
+      name: errorplot
+      optional: false
+    - !Positional
+      description: Filter table with parsed IgBLAST results
+      position: 12
+      name: filter
+      optional: false
+    - !Positional
+      description: Filter V gene candidates (germline and pre-germline filter)
+      position: 13
+      name: germlinefilter
+      optional: false
+    - !Positional
+      description: Group sequences that share a unique molecular identifier (UMI,
+        barcode)
+      position: 14
+      name: group
+      optional: false
+    - !Positional
+      description: Determine haplotypes based on co-occurrences of alleles
+      position: 15
+      name: haplotype
+      optional: false
+    - !Positional
+      description: Run IgBLAST and output a result table
+      position: 16
+      name: igblast
+      optional: false
+    - !Positional
+      description: Create and initialize a new analysis directory.
+      position: 17
+      name: init
+      optional: false
+    - !Positional
+      description: Merge paired-end reads (a wrapper around PEAR)
+      position: 18
+      name: merge
+      optional: false
+    - !Positional
+      description: Find V gene sister sequences shared by multiple libraries.
+      position: 19
+      name: multidiscover
+      optional: false
+    - !Positional
+      description: Plot allele usage
+      position: 20
+      name: plotalleles
+      optional: false
+    - !Positional
+      description: Rename and reorder records in a FASTA file
+      position: 21
+      name: rename
+      optional: false
+    - !Positional
+      description: Run IgDiscover
+      position: 22
+      name: run
+      optional: false
+    - !Positional
+      description: Compute union of sequences in multiple FASTA files
+      position: 23
+      name: union
+      optional: false
+    - !Positional
+      description: Cluster upstream sequences (UTR and leader) for each gene
+      position: 24
+      name: upstream
+      optional: false
+    named:
+    - !Flag
+      description: Save profiling information to igdiscover.prof
+      synonyms:
+      - --profile
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - igdiscover
+    - commonv
+    - table
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Which gene type: Choose V, D or J. Default: Default: V'
+    synonyms:
+    - --gene
+    args: !ChoiceFlagArg
+      choices:
+      - V
+      - D
+      - J
+    optional: true
+  - !Flag
+    description: Compute expressions for the sequences that are named in the FASTA
+      file. Only the sequence names in the file are used! This is the only way to
+      also include genes with an expression of zero.
+    synonyms:
+    - --database
+    args: !SimpleFlagArg
+      name: FASTA
+    optional: true
+  - !Flag
+    description: Plot expressions to FILE (PDF or PNG)
+    synonyms:
+    - --plot
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: 'Maximal allowed E-value for D gene match. Default: 1E-4 if --gene=D,
+      no restriction otherwise.'
+    synonyms:
+    - --d-evalue
+    args: !SimpleFlagArg
+      name: D_EVALUE
+    optional: true
+  - !Flag
+    description: 'Minimum D coverage (in percent). Default: 70 if --gene=D, no restriction
+      otherwise.'
+    synonyms:
+    - --d-coverage
+    - --D-coverage
+    args: !SimpleFlagArg
+      name: D_COVERAGE
+    optional: true
+  - !Flag
+    description: 'Maximum allowed D errors. Default: No limit.'
+    synonyms:
+    - --d-errors
+    args: !SimpleFlagArg
+      name: D_ERRORS
+    optional: true
+  - !Flag
+    description: 'Required allele ratio. Works only for genes named "NAME*ALLELE".
+      Default: Do not check allele ratio.'
+    synonyms:
+    - --allele-ratio
+    args: !SimpleFlagArg
+      name: RATIO
+    optional: true
+  command:
+  - igdiscover
+  - count
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: Query a table of assigned sequences by clonotype
+      position: 0
+      name: clonoquery
+      optional: false
+    - !Positional
+      description: Group assigned sequences by clonotype
+      position: 1
+      name: clonotypes
+      optional: false
+    - !Positional
+      description: Plot a clustermap of all sequences assigned to a gene
+      position: 2
+      name: clusterplot
+      optional: false
+    - !Positional
+      description: Find common V genes between two different antibody libraries.
+      position: 3
+      name: commonv
+      optional: false
+    - !Positional
+      description: Change configuration file
+      position: 4
+      name: config
+      optional: false
+    - !Positional
+      description: Compute expression counts
+      position: 5
+      name: count
+      optional: false
+    - !Positional
+      description: Compare two FASTA files based on sequences
+      position: 6
+      name: dbdiff
+      optional: false
+    - !Positional
+      description: Draw a dendrogram of sequences in a FASTA file.
+      position: 7
+      name: dendrogram
+      optional: false
+    - !Positional
+      description: Dereplicate sequences and remove barcodes
+      position: 8
+      name: dereplicate
+      optional: false
+    - !Positional
+      description: Discover candidate new V genes within a single antibody library
+      position: 9
+      name: discover
+      optional: false
+    - !Positional
+      description: Discover D and J genes
+      position: 10
+      name: discoverjd
+      optional: false
+    - !Positional
+      description: Plot histograms of differences to reference V gene
+      position: 11
+      name: errorplot
+      optional: false
+    - !Positional
+      description: Filter table with parsed IgBLAST results
+      position: 12
+      name: filter
+      optional: false
+    - !Positional
+      description: Filter V gene candidates (germline and pre-germline filter)
+      position: 13
+      name: germlinefilter
+      optional: false
+    - !Positional
+      description: Group sequences that share a unique molecular identifier (UMI,
+        barcode)
+      position: 14
+      name: group
+      optional: false
+    - !Positional
+      description: Determine haplotypes based on co-occurrences of alleles
+      position: 15
+      name: haplotype
+      optional: false
+    - !Positional
+      description: Run IgBLAST and output a result table
+      position: 16
+      name: igblast
+      optional: false
+    - !Positional
+      description: Create and initialize a new analysis directory.
+      position: 17
+      name: init
+      optional: false
+    - !Positional
+      description: Merge paired-end reads (a wrapper around PEAR)
+      position: 18
+      name: merge
+      optional: false
+    - !Positional
+      description: Find V gene sister sequences shared by multiple libraries.
+      position: 19
+      name: multidiscover
+      optional: false
+    - !Positional
+      description: Plot allele usage
+      position: 20
+      name: plotalleles
+      optional: false
+    - !Positional
+      description: Rename and reorder records in a FASTA file
+      position: 21
+      name: rename
+      optional: false
+    - !Positional
+      description: Run IgDiscover
+      position: 22
+      name: run
+      optional: false
+    - !Positional
+      description: Compute union of sequences in multiple FASTA files
+      position: 23
+      name: union
+      optional: false
+    - !Positional
+      description: Cluster upstream sequences (UTR and leader) for each gene
+      position: 24
+      name: upstream
+      optional: false
+    named:
+    - !Flag
+      description: Save profiling information to igdiscover.prof
+      synonyms:
+      - --profile
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - igdiscover
+    - count
+    - table
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: FASTA file with expected sequences
+    position: 0
+    name: a
+    optional: false
+  - !Positional
+    description: FASTA file with actual sequences
+    position: 1
+    name: b
+    optional: false
+  named:
+  - !Flag
+    description: Whether to colorize output
+    synonyms:
+    - --color
+    args: !ChoiceFlagArg
+      choices:
+      - auto
+      - never
+      - always
+    optional: true
+  command:
+  - igdiscover
+  - dbdiff
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Path to input FASTA file
+    position: 0
+    name: fasta
+    optional: false
+  - !Positional
+    description: Path to output PDF or PNG
+    position: 1
+    name: plot
+    optional: false
+  named:
+  - !Flag
+    description: Path to a FASTA file with a set of "known" sequences. Sequences in
+      the main file that do *not* occur here will be marked with (new). If not given,
+      no sequences will be marked (use this to compare two databases).
+    synonyms:
+    - --mark
+    - --db
+    args: !SimpleFlagArg
+      name: FASTA
+    optional: true
+  - !Flag
+    description: 'Linkage method. Default: "average" (=UPGMA)'
+    synonyms:
+    - --method
+    args: !ChoiceFlagArg
+      choices:
+      - single
+      - complete
+      - weighted
+      - average
+    optional: true
+  command:
+  - igdiscover
+  - dendrogram
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Limit processing to the first N reads
+    synonyms:
+    - --limit
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Trim 'G' nucleotides at 5' end
+    synonyms:
+    - --trim-g
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Minimum sequence length
+    synonyms:
+    - --minimum-length
+    - -l
+    args: !SimpleFlagArg
+      name: MINIMUM_LENGTH
+    optional: true
+  - !Flag
+    description: "Length of barcode. Positive for 5' barcode, negative for 3' barcode.\
+      \ Default: 0"
+    synonyms:
+    - --barcode-length
+    - -b
+    args: !SimpleFlagArg
+      name: BARCODE_LENGTH
+    optional: true
+  - !Flag
+    description: Write statistics to FILE
+    synonyms:
+    - --json
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - igdiscover
+  - dereplicate
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Number of threads. Default: no. of available CPUs, but at most 4'
+    synonyms:
+    - --threads
+    - -j
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  - !Flag
+    description: Seed value for random numbers for reproducible runs.
+    synonyms:
+    - --seed
+    args: !SimpleFlagArg
+      name: SEED
+    optional: true
+  - !Flag
+    description: 'Threshold for consensus computation. Default: 60%'
+    synonyms:
+    - --consensus-threshold
+    - -t
+    args: !SimpleFlagArg
+      name: PERCENT
+    optional: true
+  - !Flag
+    description: 'Compute consensus for this gene. Can be given multiple times. Default:
+      Compute for all genes.'
+    synonyms:
+    - --gene
+    - -g
+    args: !SimpleFlagArg
+      name: GENE
+    optional: true
+  - !Flag
+    description: 'Skip remaining genes as soon as at least N candidates were generated.
+      Default: No limit'
+    synonyms:
+    - --limit
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'For consensus, include only sequences that have at least this error
+      rate (in percent). Default: 0'
+    synonyms:
+    - --left
+    - -l
+    args: !SimpleFlagArg
+      name: ERROR-RATE
+    optional: true
+  - !Flag
+    description: 'For consensus, include only sequences that have at most this error
+      rate (in percent). Default: 100'
+    synonyms:
+    - --right
+    - -r
+    args: !SimpleFlagArg
+      name: ERROR-RATE
+    optional: true
+  - !Flag
+    description: 'Compute consensus for all PERCENT-wide windows. Set to 0 to disable.
+      Default: 2'
+    synonyms:
+    - --window-width
+    - -w
+    args: !SimpleFlagArg
+      name: PERCENT
+    optional: true
+  - !Flag
+    description: Do not run linkage cluster analysis.
+    synonyms:
+    - --no-cluster
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Treat N exact occurrences of a sequence as a cluster. Default: Do
+      not cluster exact occurrences'
+    synonyms:
+    - --cluster-exact
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'Remove rows that have more than MAXN "N" nucleotides. If >0, an
+      N_bases column is added. Default: 0'
+    synonyms:
+    - --max-n-bases
+    args: !SimpleFlagArg
+      name: MAXN
+    optional: true
+  - !Flag
+    description: 'When clustering, use N randomly chosen sequences. Default: 1000'
+    synonyms:
+    - --subsample
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Include also rows without J assignment or J%SHM>0.
+    synonyms:
+    - --ignore-J
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'When subsampling, first pick rows whose V gene sequenceshave at
+      least N exact copies in the input. Default: 1'
+    synonyms:
+    - --exact-copies
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'For Ds_exact, require D matches with an E-value of at most EVALUE.
+      Default: 0.0001'
+    synonyms:
+    - --d-evalue
+    args: !SimpleFlagArg
+      name: EVALUE
+    optional: true
+  - !Flag
+    description: 'For Ds_exact, require D matches with a minimum D coverage of COVERAGE
+      (in percent). Default: 70)'
+    synonyms:
+    - --d-coverage
+    - --D-coverage
+    args: !SimpleFlagArg
+      name: COVERAGE
+    optional: true
+  - !Flag
+    description: 'When clustering CDR3s to computer the no. of clonotypes, allow DIFFERENCES
+      between (nucleotide-)sequences. Default: 6'
+    synonyms:
+    - --clonotype-diff
+    args: !SimpleFlagArg
+      name: DIFFERENCES
+    optional: true
+  - !Flag
+    description: Output tables for all analyzed genes to DIRECTORY. Files will be
+      named <GENE>.tab.
+    synonyms:
+    - --table-output
+    - -o
+    args: !SimpleFlagArg
+      name: DIRECTORY
+    optional: true
+  - !Flag
+    description: FASTA file with V genes. If provided, differences between consensus
+      and database will be computed.
+    synonyms:
+    - --database
+    args: !SimpleFlagArg
+      name: FASTA
+    optional: true
+  - !Flag
+    description: Write names of reads with exact matches used in discovering each
+      candidate to FILE
+    synonyms:
+    - --read-names
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - igdiscover
+  - discover
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: Query a table of assigned sequences by clonotype
+      position: 0
+      name: clonoquery
+      optional: false
+    - !Positional
+      description: Group assigned sequences by clonotype
+      position: 1
+      name: clonotypes
+      optional: false
+    - !Positional
+      description: Plot a clustermap of all sequences assigned to a gene
+      position: 2
+      name: clusterplot
+      optional: false
+    - !Positional
+      description: Find common V genes between two different antibody libraries.
+      position: 3
+      name: commonv
+      optional: false
+    - !Positional
+      description: Change configuration file
+      position: 4
+      name: config
+      optional: false
+    - !Positional
+      description: Compute expression counts
+      position: 5
+      name: count
+      optional: false
+    - !Positional
+      description: Compare two FASTA files based on sequences
+      position: 6
+      name: dbdiff
+      optional: false
+    - !Positional
+      description: Draw a dendrogram of sequences in a FASTA file.
+      position: 7
+      name: dendrogram
+      optional: false
+    - !Positional
+      description: Dereplicate sequences and remove barcodes
+      position: 8
+      name: dereplicate
+      optional: false
+    - !Positional
+      description: Discover candidate new V genes within a single antibody library
+      position: 9
+      name: discover
+      optional: false
+    - !Positional
+      description: Discover D and J genes
+      position: 10
+      name: discoverjd
+      optional: false
+    - !Positional
+      description: Plot histograms of differences to reference V gene
+      position: 11
+      name: errorplot
+      optional: false
+    - !Positional
+      description: Filter table with parsed IgBLAST results
+      position: 12
+      name: filter
+      optional: false
+    - !Positional
+      description: Filter V gene candidates (germline and pre-germline filter)
+      position: 13
+      name: germlinefilter
+      optional: false
+    - !Positional
+      description: Group sequences that share a unique molecular identifier (UMI,
+        barcode)
+      position: 14
+      name: group
+      optional: false
+    - !Positional
+      description: Determine haplotypes based on co-occurrences of alleles
+      position: 15
+      name: haplotype
+      optional: false
+    - !Positional
+      description: Run IgBLAST and output a result table
+      position: 16
+      name: igblast
+      optional: false
+    - !Positional
+      description: Create and initialize a new analysis directory.
+      position: 17
+      name: init
+      optional: false
+    - !Positional
+      description: Merge paired-end reads (a wrapper around PEAR)
+      position: 18
+      name: merge
+      optional: false
+    - !Positional
+      description: Find V gene sister sequences shared by multiple libraries.
+      position: 19
+      name: multidiscover
+      optional: false
+    - !Positional
+      description: Plot allele usage
+      position: 20
+      name: plotalleles
+      optional: false
+    - !Positional
+      description: Rename and reorder records in a FASTA file
+      position: 21
+      name: rename
+      optional: false
+    - !Positional
+      description: Run IgDiscover
+      position: 22
+      name: run
+      optional: false
+    - !Positional
+      description: Compute union of sequences in multiple FASTA files
+      position: 23
+      name: union
+      optional: false
+    - !Positional
+      description: Cluster upstream sequences (UTR and leader) for each gene
+      position: 24
+      name: upstream
+      optional: false
+    named:
+    - !Flag
+      description: Save profiling information to igdiscover.prof
+      synonyms:
+      - --profile
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - igdiscover
+    - discover
+    - table
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: FASTA file with reference gene sequences
+    synonyms:
+    - --database
+    args: !SimpleFlagArg
+      name: FASTA
+    optional: true
+  - !Flag
+    description: 'Merge overlapping genes. Default: Enabled for D, disabled for J
+      and V.'
+    synonyms:
+    - --merge
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do not merge overlapping genes
+    synonyms:
+    - --no-merge
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Which gene category to discover. Default: J'
+    synonyms:
+    - --gene
+    args: !ChoiceFlagArg
+      choices:
+      - V
+      - D
+      - J
+    optional: true
+  - !Flag
+    description: 'Require that the sequence covers at least PERCENT of the J gene.
+      Default: 90 when --gene=J; 0 otherwise'
+    synonyms:
+    - --j-coverage
+    args: !SimpleFlagArg
+      name: PERCENT
+    optional: true
+  - !Flag
+    description: 'Required allele ratio. Works only for genes named "NAME*ALLELE".
+      Default: 0.2'
+    synonyms:
+    - --allele-ratio
+    args: !SimpleFlagArg
+      name: RATIO
+    optional: true
+  - !Flag
+    description: 'Ratio for detection of cross-mapping artifacts. Default: 0.1'
+    synonyms:
+    - --cross-mapping-ratio
+    args: !SimpleFlagArg
+      name: RATIO
+    optional: true
+  - !Flag
+    description: 'Omit candidates with fewer than N exact occurrences in the input
+      table. Default: 1 for J; 10 for D; 100 for V'
+    synonyms:
+    - --min-count
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Do not filter out sequences for which the V assignment (or J for
+      --gene=V) has at least one error
+    synonyms:
+    - --no-perfect-matches
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Use only D core regions that have at least length L (only applies
+      when --gene=D). Default: 6'
+    synonyms:
+    - --d-core-length
+    args: !SimpleFlagArg
+      name: L
+    optional: true
+  - !Flag
+    description: 'D core region location (only applies when --gene=D). Default: slice(2,
+      -2, None)'
+    synonyms:
+    - --d-core
+    args: !SimpleFlagArg
+      name: D_CORE
+    optional: true
+  - !Flag
+    description: Write discovered sequences to FASTA file
+    synonyms:
+    - --fasta
+    args: !SimpleFlagArg
+      name: FASTA
+    optional: true
+  command:
+  - igdiscover
+  - discoverjd
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: Query a table of assigned sequences by clonotype
+      position: 0
+      name: clonoquery
+      optional: false
+    - !Positional
+      description: Group assigned sequences by clonotype
+      position: 1
+      name: clonotypes
+      optional: false
+    - !Positional
+      description: Plot a clustermap of all sequences assigned to a gene
+      position: 2
+      name: clusterplot
+      optional: false
+    - !Positional
+      description: Find common V genes between two different antibody libraries.
+      position: 3
+      name: commonv
+      optional: false
+    - !Positional
+      description: Change configuration file
+      position: 4
+      name: config
+      optional: false
+    - !Positional
+      description: Compute expression counts
+      position: 5
+      name: count
+      optional: false
+    - !Positional
+      description: Compare two FASTA files based on sequences
+      position: 6
+      name: dbdiff
+      optional: false
+    - !Positional
+      description: Draw a dendrogram of sequences in a FASTA file.
+      position: 7
+      name: dendrogram
+      optional: false
+    - !Positional
+      description: Dereplicate sequences and remove barcodes
+      position: 8
+      name: dereplicate
+      optional: false
+    - !Positional
+      description: Discover candidate new V genes within a single antibody library
+      position: 9
+      name: discover
+      optional: false
+    - !Positional
+      description: Discover D and J genes
+      position: 10
+      name: discoverjd
+      optional: false
+    - !Positional
+      description: Plot histograms of differences to reference V gene
+      position: 11
+      name: errorplot
+      optional: false
+    - !Positional
+      description: Filter table with parsed IgBLAST results
+      position: 12
+      name: filter
+      optional: false
+    - !Positional
+      description: Filter V gene candidates (germline and pre-germline filter)
+      position: 13
+      name: germlinefilter
+      optional: false
+    - !Positional
+      description: Group sequences that share a unique molecular identifier (UMI,
+        barcode)
+      position: 14
+      name: group
+      optional: false
+    - !Positional
+      description: Determine haplotypes based on co-occurrences of alleles
+      position: 15
+      name: haplotype
+      optional: false
+    - !Positional
+      description: Run IgBLAST and output a result table
+      position: 16
+      name: igblast
+      optional: false
+    - !Positional
+      description: Create and initialize a new analysis directory.
+      position: 17
+      name: init
+      optional: false
+    - !Positional
+      description: Merge paired-end reads (a wrapper around PEAR)
+      position: 18
+      name: merge
+      optional: false
+    - !Positional
+      description: Find V gene sister sequences shared by multiple libraries.
+      position: 19
+      name: multidiscover
+      optional: false
+    - !Positional
+      description: Plot allele usage
+      position: 20
+      name: plotalleles
+      optional: false
+    - !Positional
+      description: Rename and reorder records in a FASTA file
+      position: 21
+      name: rename
+      optional: false
+    - !Positional
+      description: Run IgDiscover
+      position: 22
+      name: run
+      optional: false
+    - !Positional
+      description: Compute union of sequences in multiple FASTA files
+      position: 23
+      name: union
+      optional: false
+    - !Positional
+      description: Cluster upstream sequences (UTR and leader) for each gene
+      position: 24
+      name: upstream
+      optional: false
+    named:
+    - !Flag
+      description: Save profiling information to igdiscover.prof
+      synonyms:
+      - --profile
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - igdiscover
+    - discoverjd
+    - table
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Plot only genes with at least N assigned sequences. Default: 0.1%
+      of assigned sequences or 100, whichever is smaller.'
+    synonyms:
+    - --minimum-group-size
+    - -m
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Use only rows with J%SHM >= VALUE
+    synonyms:
+    - --max-j-shm
+    args: !SimpleFlagArg
+      name: VALUE
+    optional: true
+  - !Flag
+    description: Plot individual error frequency histograms (for each V gene) to this
+      PDF file
+    synonyms:
+    - --multi
+    args: !SimpleFlagArg
+      name: PDF
+    optional: true
+  - !Flag
+    description: Plot a single page with box(en)plots of V SHM for multiple genes
+    synonyms:
+    - --boxplot
+    args: !SimpleFlagArg
+      name: PDF
+    optional: true
+  command:
+  - igdiscover
+  - errorplot
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Require that the sequence covers at least PERCENT of the V gene.
+      Default: 90'
+    synonyms:
+    - --v-coverage
+    args: !SimpleFlagArg
+      name: PERCENT
+    optional: true
+  - !Flag
+    description: 'Require that the E-value for the V gene match is at most EVALUE.
+      Default: 0.001'
+    synonyms:
+    - --v-evalue
+    args: !SimpleFlagArg
+      name: EVALUE
+    optional: true
+  - !Flag
+    description: 'Require that the sequence covers at least PERCENT of the J gene.
+      Default: 60'
+    synonyms:
+    - --j-coverage
+    args: !SimpleFlagArg
+      name: PERCENT
+    optional: true
+  - !Flag
+    description: Write statistics to FILE
+    synonyms:
+    - --json
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - igdiscover
+  - filter
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: Query a table of assigned sequences by clonotype
+      position: 0
+      name: clonoquery
+      optional: false
+    - !Positional
+      description: Group assigned sequences by clonotype
+      position: 1
+      name: clonotypes
+      optional: false
+    - !Positional
+      description: Plot a clustermap of all sequences assigned to a gene
+      position: 2
+      name: clusterplot
+      optional: false
+    - !Positional
+      description: Find common V genes between two different antibody libraries.
+      position: 3
+      name: commonv
+      optional: false
+    - !Positional
+      description: Change configuration file
+      position: 4
+      name: config
+      optional: false
+    - !Positional
+      description: Compute expression counts
+      position: 5
+      name: count
+      optional: false
+    - !Positional
+      description: Compare two FASTA files based on sequences
+      position: 6
+      name: dbdiff
+      optional: false
+    - !Positional
+      description: Draw a dendrogram of sequences in a FASTA file.
+      position: 7
+      name: dendrogram
+      optional: false
+    - !Positional
+      description: Dereplicate sequences and remove barcodes
+      position: 8
+      name: dereplicate
+      optional: false
+    - !Positional
+      description: Discover candidate new V genes within a single antibody library
+      position: 9
+      name: discover
+      optional: false
+    - !Positional
+      description: Discover D and J genes
+      position: 10
+      name: discoverjd
+      optional: false
+    - !Positional
+      description: Plot histograms of differences to reference V gene
+      position: 11
+      name: errorplot
+      optional: false
+    - !Positional
+      description: Filter table with parsed IgBLAST results
+      position: 12
+      name: filter
+      optional: false
+    - !Positional
+      description: Filter V gene candidates (germline and pre-germline filter)
+      position: 13
+      name: germlinefilter
+      optional: false
+    - !Positional
+      description: Group sequences that share a unique molecular identifier (UMI,
+        barcode)
+      position: 14
+      name: group
+      optional: false
+    - !Positional
+      description: Determine haplotypes based on co-occurrences of alleles
+      position: 15
+      name: haplotype
+      optional: false
+    - !Positional
+      description: Run IgBLAST and output a result table
+      position: 16
+      name: igblast
+      optional: false
+    - !Positional
+      description: Create and initialize a new analysis directory.
+      position: 17
+      name: init
+      optional: false
+    - !Positional
+      description: Merge paired-end reads (a wrapper around PEAR)
+      position: 18
+      name: merge
+      optional: false
+    - !Positional
+      description: Find V gene sister sequences shared by multiple libraries.
+      position: 19
+      name: multidiscover
+      optional: false
+    - !Positional
+      description: Plot allele usage
+      position: 20
+      name: plotalleles
+      optional: false
+    - !Positional
+      description: Rename and reorder records in a FASTA file
+      position: 21
+      name: rename
+      optional: false
+    - !Positional
+      description: Run IgDiscover
+      position: 22
+      name: run
+      optional: false
+    - !Positional
+      description: Compute union of sequences in multiple FASTA files
+      position: 23
+      name: union
+      optional: false
+    - !Positional
+      description: Cluster upstream sequences (UTR and leader) for each gene
+      position: 24
+      name: upstream
+      optional: false
+    named:
+    - !Flag
+      description: Save profiling information to igdiscover.prof
+      synonyms:
+      - --profile
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - igdiscover
+    - filter
+    - table
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Consensus must represent at least N sequences. Default: 0'
+    synonyms:
+    - --cluster-size
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'Ratio for detection of cross-mapping artifacts. Default: 0.02'
+    synonyms:
+    - --cross-mapping-ratio
+    args: !SimpleFlagArg
+      name: RATIO
+    optional: true
+  - !Flag
+    description: 'Required ratio of "clonotypes" counts between alleles. Works only
+      for genes named "NAME*ALLELE". Default: 0.1'
+    synonyms:
+    - --clonotype-ratio
+    - --allele-ratio
+    args: !SimpleFlagArg
+      name: RATIO
+    optional: true
+  - !Flag
+    description: 'Required ratio of "exact" counts between alleles. Works only for
+      genes named "NAME*ALLELE". Default: 0.1'
+    synonyms:
+    - --exact-ratio
+    args: !SimpleFlagArg
+      name: RATIO
+    optional: true
+  - !Flag
+    description: 'Maximum allowed CDR3_shared_ratio. Default: 1.0'
+    synonyms:
+    - --cdr3-shared-ratio
+    args: !SimpleFlagArg
+      name: RATIO
+    optional: true
+  - !Flag
+    description: 'Sequences must have at least N differences to the database sequence.
+      Default: 0'
+    synonyms:
+    - --minimum-db-diff
+    - -b
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'Sequences must have at most COUNT "N" bases. Default: 0'
+    synonyms:
+    - --maximum-N
+    - -N
+    args: !SimpleFlagArg
+      name: COUNT
+    optional: true
+  - !Flag
+    description: 'Sequences must have at least N unique CDR3s within exact sequence
+      matches. Default: 1'
+    synonyms:
+    - --unique-cdr3s
+    - --unique-CDR3
+    - --cdr3s
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'Sequences must have at least N unique Js within exact sequence matches.
+      Default: 0'
+    synonyms:
+    - --unique-J
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Discard a sequence if another allele of this gene exists such that
+      the ratio between their Ds_exact is less than RATIO
+    synonyms:
+    - --unique-D-ratio
+    args: !SimpleFlagArg
+      name: RATIO
+    optional: true
+  - !Flag
+    description: Apply the --unique-D-ratio filter only if the Ds_exact of the other
+      allele is at least THRESHOLD
+    synonyms:
+    - --unique-D-threshold
+    args: !SimpleFlagArg
+      name: THRESHOLD
+    optional: true
+  - !Flag
+    description: 'Allow stop codons in sequences (uses the has_stop column).Default:
+      Do not allow stop codons.'
+    synonyms:
+    - --allow-stop
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Sequences that are never discarded or merged with others, even if
+      criteria for discarding them would apply (except cross-mapping artifact removal,
+      which is always performed).
+    synonyms:
+    - --whitelist
+    args: !SimpleFlagArg
+      name: FASTA
+    optional: true
+  - !Flag
+    description: Write new database in FASTA format to FILE
+    synonyms:
+    - --fasta
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: Write candidates.tab with filter annotations to FILE
+    synonyms:
+    - --annotate
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - igdiscover
+  - germlinefilter
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: In addition to barcode, group sequences by real CDR3 (detected with
+      regex).
+    synonyms:
+    - --real-cdr3
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[START:END] In addition to barcode, group sequences by pseudo CDR3.
+      If START:END is omitted, use -80:-60.'
+    synonyms:
+    - --pseudo-cdr3
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Write tab-separated table with groups to FILE
+    synonyms:
+    - --groups-output
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: Plot group sizes to FILE (.png or .pdf)
+    synonyms:
+    - --plot-sizes
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: Limit processing to the first N reads
+    synonyms:
+    - --limit
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Trim 'G' nucleotides at 5' end
+    synonyms:
+    - --trim-g
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Minimum sequence length
+    synonyms:
+    - --minimum-length
+    - -l
+    args: !SimpleFlagArg
+      name: MINIMUM_LENGTH
+    optional: true
+  - !Flag
+    description: "Length of barcode. Positive for 5' barcode, negative for 3' barcode.\
+      \ Default: 12"
+    synonyms:
+    - --barcode-length
+    - -b
+    args: !SimpleFlagArg
+      name: BARCODE_LENGTH
+    optional: true
+  - !Flag
+    description: Write statistics to FILE
+    synonyms:
+    - --json
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - igdiscover
+  - group
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'V gene to use for haplotyping J. Default: Auto- detected'
+    synonyms:
+    - --v-gene
+    args: !SimpleFlagArg
+      name: V_GENE
+    optional: true
+  - !Flag
+    description: 'Maximal allowed E-value for D gene match. Default: 0.0001'
+    synonyms:
+    - --d-evalue
+    args: !SimpleFlagArg
+      name: D_EVALUE
+    optional: true
+  - !Flag
+    description: 'Minimum D coverage (in percent). Default: 65%)'
+    synonyms:
+    - --d-coverage
+    - --D-coverage
+    args: !SimpleFlagArg
+      name: D_COVERAGE
+    optional: true
+  - !Flag
+    description: Restrict analysis to the genes named in the FASTA file. Only the
+      sequence names are used!
+    synonyms:
+    - --restrict
+    args: !SimpleFlagArg
+      name: FASTA
+    optional: true
+  - !Flag
+    description: Sort the output according to the order of the records in the given
+      FASTA file.
+    synonyms:
+    - --order
+    args: !SimpleFlagArg
+      name: FASTA
+    optional: true
+  - !Flag
+    description: Write a haplotype plot to FILE
+    synonyms:
+    - --plot
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: Write a haplotype structure plot (counts binarized 0 and 1) to FILE
+    synonyms:
+    - --structure-plot
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - igdiscover
+  - haplotype
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: Query a table of assigned sequences by clonotype
+      position: 0
+      name: clonoquery
+      optional: false
+    - !Positional
+      description: Group assigned sequences by clonotype
+      position: 1
+      name: clonotypes
+      optional: false
+    - !Positional
+      description: Plot a clustermap of all sequences assigned to a gene
+      position: 2
+      name: clusterplot
+      optional: false
+    - !Positional
+      description: Find common V genes between two different antibody libraries.
+      position: 3
+      name: commonv
+      optional: false
+    - !Positional
+      description: Change configuration file
+      position: 4
+      name: config
+      optional: false
+    - !Positional
+      description: Compute expression counts
+      position: 5
+      name: count
+      optional: false
+    - !Positional
+      description: Compare two FASTA files based on sequences
+      position: 6
+      name: dbdiff
+      optional: false
+    - !Positional
+      description: Draw a dendrogram of sequences in a FASTA file.
+      position: 7
+      name: dendrogram
+      optional: false
+    - !Positional
+      description: Dereplicate sequences and remove barcodes
+      position: 8
+      name: dereplicate
+      optional: false
+    - !Positional
+      description: Discover candidate new V genes within a single antibody library
+      position: 9
+      name: discover
+      optional: false
+    - !Positional
+      description: Discover D and J genes
+      position: 10
+      name: discoverjd
+      optional: false
+    - !Positional
+      description: Plot histograms of differences to reference V gene
+      position: 11
+      name: errorplot
+      optional: false
+    - !Positional
+      description: Filter table with parsed IgBLAST results
+      position: 12
+      name: filter
+      optional: false
+    - !Positional
+      description: Filter V gene candidates (germline and pre-germline filter)
+      position: 13
+      name: germlinefilter
+      optional: false
+    - !Positional
+      description: Group sequences that share a unique molecular identifier (UMI,
+        barcode)
+      position: 14
+      name: group
+      optional: false
+    - !Positional
+      description: Determine haplotypes based on co-occurrences of alleles
+      position: 15
+      name: haplotype
+      optional: false
+    - !Positional
+      description: Run IgBLAST and output a result table
+      position: 16
+      name: igblast
+      optional: false
+    - !Positional
+      description: Create and initialize a new analysis directory.
+      position: 17
+      name: init
+      optional: false
+    - !Positional
+      description: Merge paired-end reads (a wrapper around PEAR)
+      position: 18
+      name: merge
+      optional: false
+    - !Positional
+      description: Find V gene sister sequences shared by multiple libraries.
+      position: 19
+      name: multidiscover
+      optional: false
+    - !Positional
+      description: Plot allele usage
+      position: 20
+      name: plotalleles
+      optional: false
+    - !Positional
+      description: Rename and reorder records in a FASTA file
+      position: 21
+      name: rename
+      optional: false
+    - !Positional
+      description: Run IgDiscover
+      position: 22
+      name: run
+      optional: false
+    - !Positional
+      description: Compute union of sequences in multiple FASTA files
+      position: 23
+      name: union
+      optional: false
+    - !Positional
+      description: Cluster upstream sequences (UTR and leader) for each gene
+      position: 24
+      name: upstream
+      optional: false
+    named:
+    - !Flag
+      description: Save profiling information to igdiscover.prof
+      synonyms:
+      - --profile
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - igdiscover
+    - haplotype
+    - table
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Database directory with V.fasta, D.fasta, J.fasta.
+    position: 0
+    name: database
+    optional: false
+  - !Positional
+    description: File with original reads
+    position: 1
+    name: fasta
+    optional: false
+  named:
+  - !Flag
+    description: 'Number of threads. Default: 1. Use 0 for no. of available CPUs.'
+    synonyms:
+    - --threads
+    - -t
+    - -j
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  - !Flag
+    description: Use the cache
+    synonyms:
+    - --cache
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do not use the cache
+    synonyms:
+    - --no-cache
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '{-1,-2,-3,-4} BLAST mismatch penalty (default: -1)'
+    synonyms:
+    - --penalty
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Tell IgBLAST which species to use. Note that this setting does not
+      seem to have any effect since we provide our own database to IgBLAST. Default:
+      Use IgBLAST’s default'
+    synonyms:
+    - --species
+    args: !SimpleFlagArg
+      name: SPECIES
+    optional: true
+  - !Flag
+    description: 'Sequence type. Default: Ig'
+    synonyms:
+    - --sequence-type
+    args: !ChoiceFlagArg
+      choices:
+      - Ig
+      - TCR
+    optional: true
+  - !Flag
+    description: Write raw IgBLAST output to FILE (add .gz to compress)
+    synonyms:
+    - --raw
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: Limit processing to first N records
+    synonyms:
+    - --limit
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Rename reads to PREFIXseqN (where N is a number starting at 1)
+    synonyms:
+    - --rename
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  - !Flag
+    description: Write statistics in JSON format to FILE
+    synonyms:
+    - --stats
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - igdiscover
+  - igblast
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Directory with V.fasta, D.fasta and J.fasta files. If not given,
+      a dialog is shown.
+    synonyms:
+    - --database
+    - --db
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: File with single-end reads (.fasta.gz or .fastq.gz)
+    synonyms:
+    - --single-reads
+    args: !SimpleFlagArg
+      name: READS
+    optional: true
+  - !Flag
+    description: First paired-end read file. The second is found automatically. Must
+      be a .fastq.gz file. If not given, a dialog is shown.
+    synonyms:
+    - --reads1
+    args: !SimpleFlagArg
+      name: READS1
+    optional: true
+  command:
+  - igdiscover
+  - init
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: Query a table of assigned sequences by clonotype
+      position: 0
+      name: clonoquery
+      optional: false
+    - !Positional
+      description: Group assigned sequences by clonotype
+      position: 1
+      name: clonotypes
+      optional: false
+    - !Positional
+      description: Plot a clustermap of all sequences assigned to a gene
+      position: 2
+      name: clusterplot
+      optional: false
+    - !Positional
+      description: Find common V genes between two different antibody libraries.
+      position: 3
+      name: commonv
+      optional: false
+    - !Positional
+      description: Change configuration file
+      position: 4
+      name: config
+      optional: false
+    - !Positional
+      description: Compute expression counts
+      position: 5
+      name: count
+      optional: false
+    - !Positional
+      description: Compare two FASTA files based on sequences
+      position: 6
+      name: dbdiff
+      optional: false
+    - !Positional
+      description: Draw a dendrogram of sequences in a FASTA file.
+      position: 7
+      name: dendrogram
+      optional: false
+    - !Positional
+      description: Dereplicate sequences and remove barcodes
+      position: 8
+      name: dereplicate
+      optional: false
+    - !Positional
+      description: Discover candidate new V genes within a single antibody library
+      position: 9
+      name: discover
+      optional: false
+    - !Positional
+      description: Discover D and J genes
+      position: 10
+      name: discoverjd
+      optional: false
+    - !Positional
+      description: Plot histograms of differences to reference V gene
+      position: 11
+      name: errorplot
+      optional: false
+    - !Positional
+      description: Filter table with parsed IgBLAST results
+      position: 12
+      name: filter
+      optional: false
+    - !Positional
+      description: Filter V gene candidates (germline and pre-germline filter)
+      position: 13
+      name: germlinefilter
+      optional: false
+    - !Positional
+      description: Group sequences that share a unique molecular identifier (UMI,
+        barcode)
+      position: 14
+      name: group
+      optional: false
+    - !Positional
+      description: Determine haplotypes based on co-occurrences of alleles
+      position: 15
+      name: haplotype
+      optional: false
+    - !Positional
+      description: Run IgBLAST and output a result table
+      position: 16
+      name: igblast
+      optional: false
+    - !Positional
+      description: Create and initialize a new analysis directory.
+      position: 17
+      name: init
+      optional: false
+    - !Positional
+      description: Merge paired-end reads (a wrapper around PEAR)
+      position: 18
+      name: merge
+      optional: false
+    - !Positional
+      description: Find V gene sister sequences shared by multiple libraries.
+      position: 19
+      name: multidiscover
+      optional: false
+    - !Positional
+      description: Plot allele usage
+      position: 20
+      name: plotalleles
+      optional: false
+    - !Positional
+      description: Rename and reorder records in a FASTA file
+      position: 21
+      name: rename
+      optional: false
+    - !Positional
+      description: Run IgDiscover
+      position: 22
+      name: run
+      optional: false
+    - !Positional
+      description: Compute union of sequences in multiple FASTA files
+      position: 23
+      name: union
+      optional: false
+    - !Positional
+      description: Cluster upstream sequences (UTR and leader) for each gene
+      position: 24
+      name: upstream
+      optional: false
+    named:
+    - !Flag
+      description: Save profiling information to igdiscover.prof
+      synonyms:
+      - --profile
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - igdiscover
+    - init
+    - directory
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Forward reads FASTQ file
+    position: 0
+    name: reads1
+    optional: false
+  - !Positional
+    description: Reverse reads FASTQ file
+    position: 1
+    name: reads2
+    optional: false
+  - !Positional
+    description: Output file (compressed FASTQ)
+    position: 2
+    name: output
+    optional: false
+  named:
+  - !Flag
+    description: Number of threads
+    synonyms:
+    - --threads
+    - -j
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  - !Flag
+    description: 'Disable cache. Default: Determined by configuration'
+    synonyms:
+    - --no-cache
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - igdiscover
+  - merge
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Minimum number of datasets in which sequence must occur (default
+      is no. of files divided by two)
+    synonyms:
+    - --minimum-frequency
+    - -n
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'Use only sequences that have at least DIST differences to the database
+      sequence. Default: 1'
+    synonyms:
+    - --minimum-db-diff
+    - -b
+    args: !SimpleFlagArg
+      name: DIST
+    optional: true
+  command:
+  - igdiscover
+  - multidiscover
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: List of alleles to plot on y axis, separated by comma
+    position: 0
+    name: alleles
+    optional: false
+  - !Positional
+    description: Table with parsed and filtered IgBLAST results
+    position: 1
+    name: table
+    optional: false
+  - !Positional
+    description: Path to output PDF or PNG
+    position: 2
+    name: plot
+    optional: false
+  named:
+  - !Flag
+    description: 'Maximal allowed E-value for D gene match. Default: 0.0001'
+    synonyms:
+    - --d-evalue
+    args: !SimpleFlagArg
+      name: D_EVALUE
+    optional: true
+  - !Flag
+    description: 'Minimum D coverage (in percent). Default: 65%)'
+    synonyms:
+    - --d-coverage
+    - --D-coverage
+    args: !SimpleFlagArg
+      name: D_COVERAGE
+    optional: true
+  - !Flag
+    description: Restrict plotting to the sequences named in the FASTA file. Only
+      the sequence names are used!
+    synonyms:
+    - --database
+    args: !SimpleFlagArg
+      name: FASTA
+    optional: true
+  - !Flag
+    description: Sort genes according to the order of the records in the FASTA file.
+    synonyms:
+    - --order
+    args: !SimpleFlagArg
+      name: FASTA
+    optional: true
+  - !Flag
+    description: 'Type of gene on x axis. Default: V'
+    synonyms:
+    - --x
+    args: !ChoiceFlagArg
+      choices:
+      - V
+      - D
+      - J
+    optional: true
+  - !Flag
+    description: 'Type of gene on y axis. Default: J'
+    synonyms:
+    - --gene
+    args: !ChoiceFlagArg
+      choices:
+      - V
+      - D
+      - J
+    optional: true
+  command:
+  - igdiscover
+  - plotalleles
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Do not sort sequences by name
+    synonyms:
+    - --no-sort
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Append this text to the record name when the sequence was not found\
+      \ in the template. Default: ' (not found)'"
+    synonyms:
+    - --not-found
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: FASTA template file with correctly named sequences. If a sequence
+      in the target file is identical to one in the template, it is assigned the name
+      of the sequence in the template.
+    synonyms:
+    - --rename-from
+    args: !SimpleFlagArg
+      name: TEMPLATE
+    optional: true
+  - !Flag
+    description: FASTA template that contains genes in the desired order. If a name
+      contains a "*" (asterisk), only the preceding part is used. Thus, VH4-4*01 and
+      VH4-4*02 are equivalent.
+    synonyms:
+    - --order-by
+    args: !SimpleFlagArg
+      name: TEMPLATE
+    optional: true
+  command:
+  - igdiscover
+  - rename
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: Query a table of assigned sequences by clonotype
+      position: 0
+      name: clonoquery
+      optional: false
+    - !Positional
+      description: Group assigned sequences by clonotype
+      position: 1
+      name: clonotypes
+      optional: false
+    - !Positional
+      description: Plot a clustermap of all sequences assigned to a gene
+      position: 2
+      name: clusterplot
+      optional: false
+    - !Positional
+      description: Find common V genes between two different antibody libraries.
+      position: 3
+      name: commonv
+      optional: false
+    - !Positional
+      description: Change configuration file
+      position: 4
+      name: config
+      optional: false
+    - !Positional
+      description: Compute expression counts
+      position: 5
+      name: count
+      optional: false
+    - !Positional
+      description: Compare two FASTA files based on sequences
+      position: 6
+      name: dbdiff
+      optional: false
+    - !Positional
+      description: Draw a dendrogram of sequences in a FASTA file.
+      position: 7
+      name: dendrogram
+      optional: false
+    - !Positional
+      description: Dereplicate sequences and remove barcodes
+      position: 8
+      name: dereplicate
+      optional: false
+    - !Positional
+      description: Discover candidate new V genes within a single antibody library
+      position: 9
+      name: discover
+      optional: false
+    - !Positional
+      description: Discover D and J genes
+      position: 10
+      name: discoverjd
+      optional: false
+    - !Positional
+      description: Plot histograms of differences to reference V gene
+      position: 11
+      name: errorplot
+      optional: false
+    - !Positional
+      description: Filter table with parsed IgBLAST results
+      position: 12
+      name: filter
+      optional: false
+    - !Positional
+      description: Filter V gene candidates (germline and pre-germline filter)
+      position: 13
+      name: germlinefilter
+      optional: false
+    - !Positional
+      description: Group sequences that share a unique molecular identifier (UMI,
+        barcode)
+      position: 14
+      name: group
+      optional: false
+    - !Positional
+      description: Determine haplotypes based on co-occurrences of alleles
+      position: 15
+      name: haplotype
+      optional: false
+    - !Positional
+      description: Run IgBLAST and output a result table
+      position: 16
+      name: igblast
+      optional: false
+    - !Positional
+      description: Create and initialize a new analysis directory.
+      position: 17
+      name: init
+      optional: false
+    - !Positional
+      description: Merge paired-end reads (a wrapper around PEAR)
+      position: 18
+      name: merge
+      optional: false
+    - !Positional
+      description: Find V gene sister sequences shared by multiple libraries.
+      position: 19
+      name: multidiscover
+      optional: false
+    - !Positional
+      description: Plot allele usage
+      position: 20
+      name: plotalleles
+      optional: false
+    - !Positional
+      description: Rename and reorder records in a FASTA file
+      position: 21
+      name: rename
+      optional: false
+    - !Positional
+      description: Run IgDiscover
+      position: 22
+      name: run
+      optional: false
+    - !Positional
+      description: Compute union of sequences in multiple FASTA files
+      position: 23
+      name: union
+      optional: false
+    - !Positional
+      description: Cluster upstream sequences (UTR and leader) for each gene
+      position: 24
+      name: upstream
+      optional: false
+    named:
+    - !Flag
+      description: Save profiling information to igdiscover.prof
+      synonyms:
+      - --profile
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - igdiscover
+    - rename
+    - target
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - igdiscover
+  - union
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: Query a table of assigned sequences by clonotype
+      position: 0
+      name: clonoquery
+      optional: false
+    - !Positional
+      description: Group assigned sequences by clonotype
+      position: 1
+      name: clonotypes
+      optional: false
+    - !Positional
+      description: Plot a clustermap of all sequences assigned to a gene
+      position: 2
+      name: clusterplot
+      optional: false
+    - !Positional
+      description: Find common V genes between two different antibody libraries.
+      position: 3
+      name: commonv
+      optional: false
+    - !Positional
+      description: Change configuration file
+      position: 4
+      name: config
+      optional: false
+    - !Positional
+      description: Compute expression counts
+      position: 5
+      name: count
+      optional: false
+    - !Positional
+      description: Compare two FASTA files based on sequences
+      position: 6
+      name: dbdiff
+      optional: false
+    - !Positional
+      description: Draw a dendrogram of sequences in a FASTA file.
+      position: 7
+      name: dendrogram
+      optional: false
+    - !Positional
+      description: Dereplicate sequences and remove barcodes
+      position: 8
+      name: dereplicate
+      optional: false
+    - !Positional
+      description: Discover candidate new V genes within a single antibody library
+      position: 9
+      name: discover
+      optional: false
+    - !Positional
+      description: Discover D and J genes
+      position: 10
+      name: discoverjd
+      optional: false
+    - !Positional
+      description: Plot histograms of differences to reference V gene
+      position: 11
+      name: errorplot
+      optional: false
+    - !Positional
+      description: Filter table with parsed IgBLAST results
+      position: 12
+      name: filter
+      optional: false
+    - !Positional
+      description: Filter V gene candidates (germline and pre-germline filter)
+      position: 13
+      name: germlinefilter
+      optional: false
+    - !Positional
+      description: Group sequences that share a unique molecular identifier (UMI,
+        barcode)
+      position: 14
+      name: group
+      optional: false
+    - !Positional
+      description: Determine haplotypes based on co-occurrences of alleles
+      position: 15
+      name: haplotype
+      optional: false
+    - !Positional
+      description: Run IgBLAST and output a result table
+      position: 16
+      name: igblast
+      optional: false
+    - !Positional
+      description: Create and initialize a new analysis directory.
+      position: 17
+      name: init
+      optional: false
+    - !Positional
+      description: Merge paired-end reads (a wrapper around PEAR)
+      position: 18
+      name: merge
+      optional: false
+    - !Positional
+      description: Find V gene sister sequences shared by multiple libraries.
+      position: 19
+      name: multidiscover
+      optional: false
+    - !Positional
+      description: Plot allele usage
+      position: 20
+      name: plotalleles
+      optional: false
+    - !Positional
+      description: Rename and reorder records in a FASTA file
+      position: 21
+      name: rename
+      optional: false
+    - !Positional
+      description: Run IgDiscover
+      position: 22
+      name: run
+      optional: false
+    - !Positional
+      description: Compute union of sequences in multiple FASTA files
+      position: 23
+      name: union
+      optional: false
+    - !Positional
+      description: Cluster upstream sequences (UTR and leader) for each gene
+      position: 24
+      name: upstream
+      optional: false
+    named:
+    - !Flag
+      description: Save profiling information to igdiscover.prof
+      synonyms:
+      - --profile
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - igdiscover
+    - union
+    - fasta
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Allow PERCENT errors in V gene match. Default: 1'
+    synonyms:
+    - --max-V-errors
+    - --max-error-percentage
+    - -e
+    args: !SimpleFlagArg
+      name: PERCENT
+    optional: true
+  - !Flag
+    description: Allow PERCENT errors in FR1 region.
+    synonyms:
+    - --max-FR1-errors
+    args: !SimpleFlagArg
+      name: PERCENT
+    optional: true
+  - !Flag
+    description: Allow PERCENT errors in CDR1 region.
+    synonyms:
+    - --max-CDR1-errors
+    args: !SimpleFlagArg
+      name: PERCENT
+    optional: true
+  - !Flag
+    description: 'Require at least N sequences for consensus. Default: 1'
+    synonyms:
+    - --min-consensus-size
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: 'Threshold for consensus computation. Default: 75%'
+    synonyms:
+    - --consensus-threshold
+    - -t
+    args: !SimpleFlagArg
+      name: PERCENT
+    optional: true
+  - !Flag
+    description: Discard consensus sequences with ambiguous bases
+    synonyms:
+    - --no-ambiguous
+    - --no-N
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '{UTR,leader,UTR+leader} Which part of the sequence before the V
+      gene match to analyze. Default: UTR+leader'
+    synonyms:
+    - --part
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Enable debugging output
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - igdiscover
+  - upstream
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: Query a table of assigned sequences by clonotype
+      position: 0
+      name: clonoquery
+      optional: false
+    - !Positional
+      description: Group assigned sequences by clonotype
+      position: 1
+      name: clonotypes
+      optional: false
+    - !Positional
+      description: Plot a clustermap of all sequences assigned to a gene
+      position: 2
+      name: clusterplot
+      optional: false
+    - !Positional
+      description: Find common V genes between two different antibody libraries.
+      position: 3
+      name: commonv
+      optional: false
+    - !Positional
+      description: Change configuration file
+      position: 4
+      name: config
+      optional: false
+    - !Positional
+      description: Compute expression counts
+      position: 5
+      name: count
+      optional: false
+    - !Positional
+      description: Compare two FASTA files based on sequences
+      position: 6
+      name: dbdiff
+      optional: false
+    - !Positional
+      description: Draw a dendrogram of sequences in a FASTA file.
+      position: 7
+      name: dendrogram
+      optional: false
+    - !Positional
+      description: Dereplicate sequences and remove barcodes
+      position: 8
+      name: dereplicate
+      optional: false
+    - !Positional
+      description: Discover candidate new V genes within a single antibody library
+      position: 9
+      name: discover
+      optional: false
+    - !Positional
+      description: Discover D and J genes
+      position: 10
+      name: discoverjd
+      optional: false
+    - !Positional
+      description: Plot histograms of differences to reference V gene
+      position: 11
+      name: errorplot
+      optional: false
+    - !Positional
+      description: Filter table with parsed IgBLAST results
+      position: 12
+      name: filter
+      optional: false
+    - !Positional
+      description: Filter V gene candidates (germline and pre-germline filter)
+      position: 13
+      name: germlinefilter
+      optional: false
+    - !Positional
+      description: Group sequences that share a unique molecular identifier (UMI,
+        barcode)
+      position: 14
+      name: group
+      optional: false
+    - !Positional
+      description: Determine haplotypes based on co-occurrences of alleles
+      position: 15
+      name: haplotype
+      optional: false
+    - !Positional
+      description: Run IgBLAST and output a result table
+      position: 16
+      name: igblast
+      optional: false
+    - !Positional
+      description: Create and initialize a new analysis directory.
+      position: 17
+      name: init
+      optional: false
+    - !Positional
+      description: Merge paired-end reads (a wrapper around PEAR)
+      position: 18
+      name: merge
+      optional: false
+    - !Positional
+      description: Find V gene sister sequences shared by multiple libraries.
+      position: 19
+      name: multidiscover
+      optional: false
+    - !Positional
+      description: Plot allele usage
+      position: 20
+      name: plotalleles
+      optional: false
+    - !Positional
+      description: Rename and reorder records in a FASTA file
+      position: 21
+      name: rename
+      optional: false
+    - !Positional
+      description: Run IgDiscover
+      position: 22
+      name: run
+      optional: false
+    - !Positional
+      description: Compute union of sequences in multiple FASTA files
+      position: 23
+      name: union
+      optional: false
+    - !Positional
+      description: Cluster upstream sequences (UTR and leader) for each gene
+      position: 24
+      name: upstream
+      optional: false
+    named:
+    - !Flag
+      description: Save profiling information to igdiscover.prof
+      synonyms:
+      - --profile
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - igdiscover
+    - upstream
+    - table
+    subcommands: []
+    help_flag: !Flag
+      description: show this help message and exit
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag: !Flag
+      description: show program's version number and exit
+      synonyms:
+      - --version
+      args: !EmptyFlagArg {}
+      optional: true
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

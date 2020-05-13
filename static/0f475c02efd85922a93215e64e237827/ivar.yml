@@ -1,0 +1,288 @@
+!Command
+positional: []
+named: []
+command:
+- ivar
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: (Required) Sorted bam file, with aligned reads, to trim primers and
+      quality
+    synonyms:
+    - -i
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: BED file with primer sequences and positions. If no BED file is specified,
+      only quality trimming will be done.
+    synonyms:
+    - -b
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum length of read to retain after trimming (Default: 30)'
+    synonyms:
+    - -m
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum quality threshold for sliding window to pass (Default: 20)'
+    synonyms:
+    - -q
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Width of sliding window (Default: 4)'
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Include reads with no primers. By default, reads with no primers
+      are excluded
+    synonyms:
+    - -e
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (Required) Prefix for the output BAM file
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - ivar
+  - trim
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Minimum quality score threshold to count base (Default: 20)'
+    synonyms:
+    - -q
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum frequency threshold(0 - 1) to call variants (Default: 0.03)'
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum read depth to call variants (Default: 0)'
+    synonyms:
+    - -m
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Reference file used for alignment. This is used to translate the
+      nucleotide sequences and identify intra host single nucleotide variants
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: A GFF file in the GFF3 format can be supplied to specify coordinates
+      of open reading frames (ORFs). In absence of GFF file, amino acid translation
+      will not be done.
+    synonyms:
+    - -g
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (Required) Prefix for the output tsv variant file
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - ivar
+  - variants
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: replicate-one.tsv
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: OR
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: ivar
+    optional: false
+  - !Positional
+    description: ''
+    position: 3
+    name: filtervariants
+    optional: false
+  named:
+  - !Flag
+    description: 'Minimum fration of files required to contain the same variant. Specify
+      value within [0,1]. (Default: 1)'
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: A text file with one variant file per line.
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (Required) Prefix for the output filtered tsv file
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - ivar
+  - filtervariants
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Minimum quality score threshold to count base (Default: 20)'
+    synonyms:
+    - -q
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum frequency threshold(0 - 1) to call consensus. (Default:
+      0) Frequently used thresholds | Description ---------------------------|------------
+      0 | Majority or most common base 0.2 | Bases that make up atleast 20% of the
+      depth at a position 0.5 | Strict or bases that make up atleast 50% of the depth
+      at a position 0.9 | Strict or bases that make up atleast 90% of the depth at
+      a position 1 | Identical or bases that make up 100% of the depth at a position.
+      Will have highest ambiguities'
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum depth to call consensus(Default: 10)'
+    synonyms:
+    - -m
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "If '-k' flag is added, regions with depth less than minimum depth\
+      \ will not be added to the consensus sequence. Using '-k' will override any\
+      \ option specified using -n "
+    synonyms:
+    - -k
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '(N/-) Character to print in regions with less than minimum coverage(Default:
+      N)'
+    synonyms:
+    - -n
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (Required) Prefix for the output fasta file and quality file
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - ivar
+  - consensus
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: (Required) Input filtered variants tsv generated from `ivar filtervariants`
+    synonyms:
+    - -i
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (Required) BED file with primer sequences and positions
+    synonyms:
+    - -b
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (Required) Primer pair information file containing left and right
+      primer names for the same amplicon separated by a tab
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (Required) Prefix for the output text file
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - ivar
+  - getmasked
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: (Required) Input BAM file  trimmed with ‘ivar trim’. Must be sorted
+      which can be done using `samtools sort`.
+    synonyms:
+    - -i
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (Required) Text file with primer indices separated by spaces. This
+      is the output of `getmasked` command.
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (Required) BED file with primer sequences and positions.
+    synonyms:
+    - -b
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: (Required) Prefix for the output filtered BAM file
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - ivar
+  - removereads
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

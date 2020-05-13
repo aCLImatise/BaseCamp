@@ -1,0 +1,356 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Jump to and process data for given <chromosome> only.                   '
+  synonyms:
+  - --chrom
+  args: !SimpleFlagArg
+    name: chromosome
+  optional: true
+- !Flag
+  description: Change output delimiter from '|' to <delim> between columns (e.g. '\t').
+  synonyms:
+  - --delim
+  args: !SimpleFlagArg
+    name: delim
+  optional: true
+- !Flag
+  description: 'Error check all input files (slower).                                   '
+  synonyms:
+  - --ec
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(advanced) Strong input assumptions are made.  Compatible with:          --bp-ovr,
+    --range, --fraction-both, and --exact overlap options only. '
+  synonyms:
+  - --faster
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Accept headers (VCF, GFF, SAM, BED, WIG) in any input file.             '
+  synonyms:
+  - --header
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Minimize memory usage (slower).                                         '
+  synonyms:
+  - --min-memory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Change delimiter of multi-value output columns from ';' to <delim>.\
+    \     "
+  synonyms:
+  - --multidelim
+  args: !SimpleFlagArg
+    name: delim
+  optional: true
+- !Flag
+  description: 'Change the post-decimal precision of scores to <int>.  0 <= <int>.      '
+  synonyms:
+  - --prec
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'Use scientific notation for score outputs.                              '
+  synonyms:
+  - --sci
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Print no output for a row with no mapped elements.                      '
+  synonyms:
+  - --skip-unmapped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Ensure <map-file> is read completely (helps to prevent broken pipes).   '
+  synonyms:
+  - --sweep-all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Print <val> on unmapped --echo-map* and --min/max-element* operations.   The
+    default is to print nothing.                                      '
+  synonyms:
+  - --unmapped-val
+  args: !SimpleFlagArg
+    name: val
+  optional: true
+- !Flag
+  description: 'Require <int> bp overlap between elements of input files.            '
+  synonyms:
+  - --bp-ovr
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "First 3 fields from <map-file> must be identical to <ref-file>'s.\
+    \    "
+  synonyms:
+  - --exact
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Both --fraction-ref <val> and --fraction-map <val> must be true to    qualify
+    as overlapping.  Expect 0 < val <= 1.                      '
+  synonyms:
+  - --fraction-both
+  args: !SimpleFlagArg
+    name: val
+  optional: true
+- !Flag
+  description: 'Either --fraction-ref <val> or --fraction-map <val> must be true to   qualify
+    as overlapping.  Expect 0 < val <= 1.                      '
+  synonyms:
+  - --fraction-either
+  args: !SimpleFlagArg
+    name: val
+  optional: true
+- !Flag
+  description: "The fraction of the element's size from <map-file> that must overlap\
+    \  the element in <ref-file>.  Expect 0 < val <= 1.                   "
+  synonyms:
+  - --fraction-map
+  args: !SimpleFlagArg
+    name: val
+  optional: true
+- !Flag
+  description: "The fraction of the element's size from <ref-file> that must overlap\
+    \  an element in <map-file>.  Expect 0 < val <= 1.                    "
+  synonyms:
+  - --fraction-ref
+  args: !SimpleFlagArg
+    name: val
+  optional: true
+- !Flag
+  description: "Grab <map-file> elements within <int> bp of <ref-file>'s element,\
+    \     where 0 <= int.  --range 0 is an alias for --bp-ovr 1.             "
+  synonyms:
+  - --range
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: The result of --stdev divided by the result of --mean.
+  synonyms:
+  - --cv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Generalized median. Report the value, x, such that the fraction <val>
+    of overlapping elements' scores from <map-file> is less than x, and the fraction
+    1-<val> of scores is greater than x.  0 < val <= 1.
+  synonyms:
+  - --kth
+  args: !SimpleFlagArg
+    name: val
+  optional: true
+- !Flag
+  description: <mult=1>      The median absolute deviation of overlapping elements
+    in <map-file>. Multiply mad score by <mult>.  0 < mult, and mult is 1 by default.
+  synonyms:
+  - --mad
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The highest score from overlapping elements in <map-file>.
+  synonyms:
+  - --max
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: A (non-random) highest-scoring and overlapping element in <map-file>.
+  synonyms:
+  - --max-element
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: A random highest-scoring and overlapping element in <map-file>.
+  synonyms:
+  - --max-element-rand
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The average score from overlapping elements in <map-file>.
+  synonyms:
+  - --mean
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The median score from overlapping elements in <map-file>.
+  synonyms:
+  - --median
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The lowest score from overlapping elements in <map-file>.
+  synonyms:
+  - --min
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: A (non-random) lowest-scoring and overlapping element in <map-file>.
+  synonyms:
+  - --min-element
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: A random lowest-scoring and overlapping element in <map-file>.
+  synonyms:
+  - --min-element-rand
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The square root of the result of --variance.
+  synonyms:
+  - --stdev
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Accumulated scores from overlapping elements in <map-file>.
+  synonyms:
+  - --sum
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <hi>  The mean score from overlapping elements in <map-file>, after
+    ignoring the bottom <low> and top <hi> fractions of those scores. 0 <= low <=
+    1.  0 <= hi <= 1.  low+hi <= 1.
+  synonyms:
+  - --tmean
+  args: !SimpleFlagArg
+    name: low
+  optional: true
+- !Flag
+  description: The variance of scores from overlapping elements in <map-file>.
+  synonyms:
+  - --variance
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Weighted mean, scaled in proportion to the coverage of the <ref-file>
+    element by each overlapping <map-file> element.
+  synonyms:
+  - --wmean
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The total number of overlapping bases from <map-file>.
+  synonyms:
+  - --bases
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The number of distinct bases from <ref-file>'s element covered by overlapping
+    elements in <map-file>.
+  synonyms:
+  - --bases-uniq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The fraction of distinct bases from <ref-file>'s element covered by
+    overlapping elements in <map-file>.
+  synonyms:
+  - --bases-uniq-f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The number of overlapping elements in <map-file>.
+  synonyms:
+  - --count
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print each line from <ref-file>.
+  synonyms:
+  - --echo
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: List all overlapping elements from <map-file>.
+  synonyms:
+  - --echo-map
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: List IDs from all overlapping <map-file> elements.
+  synonyms:
+  - --echo-map-id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: List unique IDs from overlapping <map-file> elements.
+  synonyms:
+  - --echo-map-id-uniq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print genomic range of overlapping elements from <map-file>.
+  synonyms:
+  - --echo-map-range
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: List scores from overlapping <map-file> elements.
+  synonyms:
+  - --echo-map-score
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: List the full length of every overlapping element.
+  synonyms:
+  - --echo-map-size
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: lengths of overlaps.
+  synonyms:
+  - --echo-overlap-size
+  args: !SimpleFlagArg
+    name: List
+  optional: true
+- !Flag
+  description: Print the first 3 fields of <ref-file> using chrom:start-end format.
+  synonyms:
+  - --echo-ref-name
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print 'id-' followed by the line number of <ref-file>.
+  synonyms:
+  - --echo-ref-row-id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print the length of each line from <ref-file>.
+  synonyms:
+  - --echo-ref-size
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print 1 if there exists an overlapping element in <map-file>, 0 otherwise.
+  synonyms:
+  - --indicator
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- bedmap-float128
+subcommands: []
+help_flag: !Flag
+  description: 'Print this message and exit successfully.                               '
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: 'Print program information.                                              '
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

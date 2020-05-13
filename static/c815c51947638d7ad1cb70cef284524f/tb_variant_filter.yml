@@ -1,0 +1,71 @@
+!Command
+positional:
+- !Positional
+  description: VCF input file (relative to H37Rv)
+  position: 0
+  name: input_file
+  optional: false
+- !Positional
+  description: Output file (VCF format)
+  position: 1
+  name: output_file
+  optional: false
+named:
+- !Flag
+  description: Mask out single nucleotide variants that are too close to indels
+  synonyms:
+  - --close_to_indel_filter
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Window around indel to mask out (mask this number of bases upstream/downstream
+    from the indel. Requires -I option to selected)
+  synonyms:
+  - --indel_window_size
+  args: !SimpleFlagArg
+    name: INDEL_WINDOW_SIZE
+  optional: true
+- !Flag
+  description: Mask out variants with less than a given percentage variant allele
+    at this site
+  synonyms:
+  - --min_percentage_alt_filter
+  - -P
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Variants with less than this percentage variants at a site will be
+    masked out
+  synonyms:
+  - --min_percentage_alt
+  args: !SimpleFlagArg
+    name: MIN_PERCENTAGE_ALT
+  optional: true
+- !Flag
+  description: Mask out variants with less than a given depth of reads
+  synonyms:
+  - --min_depth_filter
+  - -D
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Variants at sites with less than this depth of reads will be masked
+    out
+  synonyms:
+  - --min_depth
+  args: !SimpleFlagArg
+    name: MIN_DEPTH
+  optional: true
+- !Flag
+  description: Mask out variants that are not SNVs
+  synonyms:
+  - --snv_only_filter
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- tb_variant_filter
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

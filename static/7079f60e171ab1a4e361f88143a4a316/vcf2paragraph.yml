@@ -1,0 +1,108 @@
+!Command
+positional:
+- !Positional
+  description: Input VCF / BCF file
+  position: 0
+  name: input
+  optional: false
+- !Positional
+  description: Output JSON file
+  position: 1
+  name: output
+  optional: false
+named:
+- !Flag
+  description: Reference FASTA for checking REF and resolving <DEL>
+  synonyms:
+  - -r
+  - --reference-sequence
+  args: !SimpleFlagArg
+    name: REF
+  optional: true
+- !Flag
+  description: More logging; May be given twice for even more logging.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Select the type of graph to generate.
+  synonyms:
+  - -g
+  - --graph-type
+  args: !ChoiceFlagArg
+    choices:
+    - alleles
+    - haplotypes
+  optional: true
+- !Flag
+  description: Retrieve reference sequence for REF nodes
+  synonyms:
+  - -R
+  - --retrieve-reference-sequence
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Maximum length of reference nodes before they get padded and truncated.
+  synonyms:
+  - -l
+  - --max-ref-node-length
+  args: !SimpleFlagArg
+    name: MAX_REF_LEN
+  optional: true
+- !Flag
+  description: Read length -- this can be used to add reference padding for disambiguation.
+  synonyms:
+  - -p
+  - --read-length
+  args: !SimpleFlagArg
+    name: READ_LEN
+  optional: true
+- !Flag
+  description: Target regions for read retrieval
+  synonyms:
+  - -T
+  - --target-region
+  args: !SimpleFlagArg
+    name: TARGET_REGIONS
+  optional: true
+- !Flag
+  description: Key for symbolic <INS> in INFO field
+  synonyms:
+  - --ins-info-key
+  args: !SimpleFlagArg
+    name: INS_INFO_KEY
+  optional: true
+- !Flag
+  description: Create all possible ALT paths in addition to reference paths.
+  synonyms:
+  - --alt-paths
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Also split long alternate alleles (e.g. long insertions)
+  synonyms:
+  - --alt-splitting
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set the recursion limit ( O(expected number of nodes of the graph)
+    for large graphs -- this is required for sorting )
+  synonyms:
+  - --recursion-limit
+  args: !SimpleFlagArg
+    name: RECURSION_LIMIT
+  optional: true
+command:
+- vcf2paragraph.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

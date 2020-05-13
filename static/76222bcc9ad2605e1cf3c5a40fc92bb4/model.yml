@@ -1,0 +1,478 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Increase output verbosity (default: None)'
+  synonyms:
+  - -v
+  - --verbosity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'If set, do not log on file. (default: False)'
+  synonyms:
+  - -x
+  - --no-logging
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- model
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Path tofile containing input for the positive class. (default: None)'
+    synonyms:
+    - -p
+    - --positive-input-file
+    args: !SimpleFlagArg
+      name: POSITIVE_INPUT_FILE
+    optional: true
+  - !Flag
+    description: 'Path to file containing input for the negative class. (default:
+      None)'
+    synonyms:
+    - -n
+    - --negative-input-file
+    args: !SimpleFlagArg
+      name: NEGATIVE_INPUT_FILE
+    optional: true
+  - !Flag
+    description: 'Path to output directory. (default: out)'
+    synonyms:
+    - -o
+    - --output-dir
+    args: !SimpleFlagArg
+      name: OUTPUT_DIR_PATH
+    optional: true
+  - !Flag
+    description: 'Model file name. Note: it will be located in the output directory.
+      (default: model)'
+    synonyms:
+    - -m
+    - --model-file
+    args: !SimpleFlagArg
+      name: MODEL_FILE
+    optional: true
+  - !Flag
+    description: 'Number of randomly generated hyper parameter configurations tried
+      during the discriminative model optimization. A value of 1 implies using the
+      estimator default values. (default: 20)'
+    synonyms:
+    - -e
+    - --n-iter
+    args: !SimpleFlagArg
+      name: N_ITER
+    optional: true
+  - !Flag
+    description: 'Number of randomly generated hyper parameter configurations tried
+      for the estimator for each parameter configuration of the pre-processor and
+      vectorizer during optimization. (default: 5)'
+    synonyms:
+    - --n-inner-iter-estimator
+    args: !SimpleFlagArg
+      name: N_INNER_ITER_ESTIMATOR
+    optional: true
+  - !Flag
+    description: 'Number of iterations in the active learning cycle. A value of 0
+      means to avoid active learning. (default: 0)'
+    synonyms:
+    - --n-active-learning-iterations
+    args: !SimpleFlagArg
+      name: N_ACTIVE_LEARNING_ITERATIONS
+    optional: true
+  - !Flag
+    description: 'Number of positive instances that have to be sampled in the active
+      learning cycle. A value of -1 means to use all instances, i.e. not to use active
+      learning for the positive instances. (default: -1)'
+    synonyms:
+    - --size-positive
+    args: !SimpleFlagArg
+      name: SIZE_POSITIVE
+    optional: true
+  - !Flag
+    description: 'Number of negative instances that have to be sampled in the active
+      learning cycle. A value of -1 means to use all instances, i.e. not to use active
+      learning for the negative instances. (default: -1)'
+    synonyms:
+    - --size-negative
+    args: !SimpleFlagArg
+      name: SIZE_NEGATIVE
+    optional: true
+  - !Flag
+    description: 'Value of the score threshold to determine when to accept positive
+      instances: positive instances with a score higher than the specified value will
+      be accepted as candidates. (default: -1)'
+    synonyms:
+    - --lower-bound-threshold-positive
+    args: !SimpleFlagArg
+      name: LOWER_BOUND_THRESHOLD_POSITIVE
+    optional: true
+  - !Flag
+    description: 'Value of the score threshold to determine when to accept negative
+      instances: negative instances with a score higher than the specified value will
+      be accepted as candidates. (default: -1)'
+    synonyms:
+    - --lower-bound-threshold-negative
+    args: !SimpleFlagArg
+      name: LOWER_BOUND_THRESHOLD_NEGATIVE
+    optional: true
+  - !Flag
+    description: 'Value of the score threshold to determine when to accept positive
+      instances: positive instances with a score lower than the specified value will
+      be accepted as candidates. (default: 1)'
+    synonyms:
+    - --upper-bound-threshold-positive
+    args: !SimpleFlagArg
+      name: UPPER_BOUND_THRESHOLD_POSITIVE
+    optional: true
+  - !Flag
+    description: 'Value of the score threshold to determine when to accept negative
+      instances: negative instances with a score lower than the specified value will
+      be accepted as candidates. (default: 1)'
+    synonyms:
+    - --upper-bound-threshold-negative
+    args: !SimpleFlagArg
+      name: UPPER_BOUND_THRESHOLD_NEGATIVE
+    optional: true
+  - !Flag
+    description: 'If set, activate the fitting procedure for the vectorizer on positive
+      instances only. (default: False)'
+    synonyms:
+    - --fit-vectorizer
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Maximal number of seconds for the duration of the optimization phase.
+      After that the procedure is forcefully stopped. A value of -1 means no time
+      limit. (default: -1)'
+    synonyms:
+    - --max-total-time
+    args: !SimpleFlagArg
+      name: MAX_TOTAL_TIME
+    optional: true
+  - !Flag
+    description: 'If set, activate a refinement procedure anfter n_iter/2 steps that
+      samples only among the parameters that have previously improved the results.
+      (default: False)'
+    synonyms:
+    - --two-steps-optimization
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'The scoring strategy for evaluating in cross validation the quality
+      of a hyper parameter combination. (default: roc_auc)'
+    synonyms:
+    - --scoring
+    args: !ChoiceFlagArg
+      choices:
+      - accuracy
+      - roc_auc
+      - average_precision
+      - f1
+      - f1_micro
+      - f1_macro
+      - f1_weighted
+      - f1_samples
+      - log_loss
+      - precision
+      - recall
+    optional: true
+  - !Flag
+    description: 'Cross validation size. (default: 10)'
+    synonyms:
+    - --cv
+    args: !SimpleFlagArg
+      name: CV
+    optional: true
+  - !Flag
+    description: 'Number of bits used to express the graph kernel features. A value
+      of 20 corresponds to 2**20=1 million possible features. (default: 20)'
+    synonyms:
+    - -B
+    - --nbits
+    args: !SimpleFlagArg
+      name: NBITS
+    optional: true
+  - !Flag
+    description: 'Random seed. (default: 1)'
+    synonyms:
+    - -r
+    - --random-state
+    args: !SimpleFlagArg
+      name: RANDOM_STATE
+    optional: true
+  - !Flag
+    description: 'Number of cores to use in multiprocessing. (default: 2)'
+    synonyms:
+    - -j
+    - --n-jobs
+    args: !SimpleFlagArg
+      name: N_JOBS
+    optional: true
+  - !Flag
+    description: 'Number of blocks in which to divide the input for the multiprocessing
+      elaboration. (default: 8)'
+    synonyms:
+    - -b
+    - --n-blocks
+    args: !SimpleFlagArg
+      name: N_BLOCKS
+    optional: true
+  - !Flag
+    description: 'Number of instances per block for the multiprocessing elaboration.
+      (default: None)'
+    synonyms:
+    - -k
+    - -block-size
+    args: !SimpleFlagArg
+      name: BLOCK_SIZE
+    optional: true
+  - !Flag
+    description: 'Number of cores to use in multiprocessing. (default: 4)'
+    synonyms:
+    - --pre-processor-n-jobs
+    args: !SimpleFlagArg
+      name: PRE_PROCESSOR_N_JOBS
+    optional: true
+  - !Flag
+    description: 'Number of blocks in which to divide the input for the multiprocessing
+      elaboration. (default: 10)'
+    synonyms:
+    - --pre-processor-n-blocks
+    args: !SimpleFlagArg
+      name: PRE_PROCESSOR_N_BLOCKS
+    optional: true
+  - !Flag
+    description: 'Number of instances per block for the multiprocessing elaboration.
+      (default: None)'
+    synonyms:
+    - --pre-processor-block-size
+    args: !SimpleFlagArg
+      name: PRE_PROCESSOR_BLOCK_SIZE
+    optional: true
+  command:
+  - model
+  - fit
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Path tofile containing input for the positive class. (default: None)'
+    synonyms:
+    - -p
+    - --positive-input-file
+    args: !SimpleFlagArg
+      name: POSITIVE_INPUT_FILE
+    optional: true
+  - !Flag
+    description: 'Path to file containing input for the negative class. (default:
+      None)'
+    synonyms:
+    - -n
+    - --negative-input-file
+    args: !SimpleFlagArg
+      name: NEGATIVE_INPUT_FILE
+    optional: true
+  - !Flag
+    description: 'Path to a fit model file. (default: None)'
+    synonyms:
+    - -m
+    - --model-file
+    args: !SimpleFlagArg
+      name: MODEL_FILE
+    optional: true
+  - !Flag
+    description: 'Path to output directory. (default: out)'
+    synonyms:
+    - -o
+    - --output-dir
+    args: !SimpleFlagArg
+      name: OUTPUT_DIR_PATH
+    optional: true
+  - !Flag
+    description: "If set, report cross validated performance measures. The model's\
+      \ parameters are re-trained in each fold keeping the hyper-parameters of the\
+      \ given model. (default: False)"
+    synonyms:
+    - --cross-validation
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - model
+  - estimate
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: INPUT_FILE
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -m
+    args: !SimpleFlagArg
+      name: MODEL_FILE
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: OUTPUT_DIR_PATH
+    optional: true
+  command:
+  - model
+  - predict
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Path to file containing input. (default: None)'
+    synonyms:
+    - -i
+    - --input-file
+    args: !SimpleFlagArg
+      name: INPUT_FILE
+    optional: true
+  - !Flag
+    description: 'Path to a fit model file. (default: model)'
+    synonyms:
+    - -m
+    - --model-file
+    args: !SimpleFlagArg
+      name: MODEL_FILE
+    optional: true
+  - !Flag
+    description: 'Path to output directory. (default: out)'
+    synonyms:
+    - -o
+    - --output-dir
+    args: !SimpleFlagArg
+      name: OUTPUT_DIR_PATH
+    optional: true
+  - !Flag
+    description: 'Output file format. (default: MatrixMarket)'
+    synonyms:
+    - -t
+    - --output-format
+    args: !ChoiceFlagArg
+      choices:
+      - text
+      - numpy
+      - MatrixMarket
+      - joblib
+    optional: true
+  command:
+  - model
+  - matrix
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Path to file containing input. (default: None)'
+    synonyms:
+    - -i
+    - --input-file
+    args: !SimpleFlagArg
+      name: INPUT_FILE
+    optional: true
+  - !Flag
+    description: 'Path to a fit model file. (default: model)'
+    synonyms:
+    - -m
+    - --model-file
+    args: !SimpleFlagArg
+      name: MODEL_FILE
+    optional: true
+  - !Flag
+    description: 'Path to output directory. (default: out)'
+    synonyms:
+    - -o
+    - --output-dir
+    args: !SimpleFlagArg
+      name: OUTPUT_DIR_PATH
+    optional: true
+  - !Flag
+    description: 'Output file format. (default: MatrixMarket)'
+    synonyms:
+    - -t
+    - --output-format
+    args: !ChoiceFlagArg
+      choices:
+      - text
+      - numpy
+      - MatrixMarket
+      - joblib
+    optional: true
+  command:
+  - model
+  - feature
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

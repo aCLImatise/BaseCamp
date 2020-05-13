@@ -1,0 +1,44 @@
+!Command
+positional:
+- !Positional
+  description: BED file of the regions you want to exclude from calculating the bias.
+    This is usually the DHSs.
+  position: 0
+  name: regions
+  optional: false
+- !Positional
+  description: The sorted, indexed BAM file containing the DNase-seq data
+  position: 1
+  name: reads
+  optional: false
+- !Positional
+  description: The sorted, indexed FASTA file containing the genome sequence
+  position: 2
+  name: genome_sequence
+  optional: false
+- !Positional
+  description: The .chrom.sizes file containing chromosome sizes generated using something
+    like "mysql --user=genome --host=genome- mysql.cse.ucsc.edu -A -e "select chrom,
+    size from hg19.chromInfo" > hg19.chrom.sizes"
+  position: 3
+  name: genome_size
+  optional: false
+- !Positional
+  description: output file prefix to write the observed/expected ratios to (will append
+    .txt and .pickle)
+  position: 4
+  name: output
+  optional: false
+named: []
+command:
+- dnase_bias_estimator.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

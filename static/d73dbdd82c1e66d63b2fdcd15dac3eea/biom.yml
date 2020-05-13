@@ -1,0 +1,629 @@
+!Command
+positional: []
+named: []
+command:
+- biom
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: The input BIOM table  [required]
+    synonyms:
+    - -i
+    - --input-fp
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: The output BIOM table  [required]
+    synonyms:
+    - -o
+    - --output-fp
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: The sample metadata mapping file (will add sample metadata to the
+      input BIOM table, if provided).
+    synonyms:
+    - -m
+    - --sample-metadata-fp
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: The observation metadata mapping file (will add observation metadata
+      to the input BIOM table, if provided).
+    synonyms:
+    - --observation-metadata-fp
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: Comma-separated list of the metadata fields to split on semicolons.
+      This is useful for hierarchical data such as taxonomy or functional categories.
+    synonyms:
+    - --sc-separated
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Comma-separated list of the metadata fields to split on semicolons
+      and pipes ("|"). This is useful for hierarchical data such as functional categories
+      with one-to-many mappings (e.g. x;y;z|x;y;w)).
+    synonyms:
+    - --sc-pipe-separated
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Comma-separated list of the metadata fields to cast to integers.
+      This is useful for integer data such as "DaysSinceStart".
+    synonyms:
+    - --int-fields
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Comma-separated list of the metadata fields to cast to floating point
+      numbers. This is useful for real number data such as "pH".
+    synonyms:
+    - --float-fields
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Comma-separated list of the sample metadata field names. This is
+      useful if a header line is not provided with the metadata, if you want to rename
+      the fields, or if you want to include only the first n fields where n is the
+      number of entries provided here.
+    synonyms:
+    - --sample-header
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Comma-separated list of the observation metadata field names. This
+      is useful if a header line is not provided with the metadata, if you want to
+      rename the fields, or if you want to include only the first n fields where n
+      is the number of entries provided here.
+    synonyms:
+    - --observation-header
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Write the output file in JSON format.
+    synonyms:
+    - --output-as-json
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - biom
+  - add-metadata
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: The input BIOM table  [required]
+    synonyms:
+    - -i
+    - --input-fp
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: The output BIOM table  [required]
+    synonyms:
+    - -o
+    - --output-fp
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: The sample metadata mapping file (will add sample metadata to the
+      input BIOM table, if provided).
+    synonyms:
+    - -m
+    - --sample-metadata-fp
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: The observation metadata mapping file (will add observation metadata
+      to the input BIOM table, if provided).
+    synonyms:
+    - --observation-metadata-fp
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: Output as JSON-formatted table.
+    synonyms:
+    - --to-json
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output as HDF5-formatted table.
+    synonyms:
+    - --to-hdf5
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output as TSV-formatted (classic) table.
+    synonyms:
+    - --to-tsv
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: If --to_hdf5 is passed and the original table is a BIOM table with
+      collapsed samples, this will update the sample metadata of the table to the
+      supported HDF5 collapsed format.
+    synonyms:
+    - --collapsed-samples
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: If --to_hdf5 is passed and the original table is a BIOM table with
+      collapsed observations, this will update the observation metadata of the table
+      to the supported HDF5 collapsed format.
+    synonyms:
+    - --collapsed-observations
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: The observation metadata to include from the input BIOM table file
+      when creating a tsv table file. By default no observation metadata will be included.
+    synonyms:
+    - --header-key
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: The name to be given to the observation metadata column when creating
+      a tsv table file if the column should be renamed.
+    synonyms:
+    - --output-metadata-id
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: '[OTU table|Pathway table|Function table|Ortholog table|Gene table|Metabolite
+      table|Taxon table|Table] The type of the table.'
+    synonyms:
+    - --table-type
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[taxonomy|naive|sc_separated] Process metadata associated with observations
+      when converting from a classic table.'
+    synonyms:
+    - --process-obs-metadata
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[naive|sc_separated] Method for formatting the observation metadata.'
+    synonyms:
+    - --tsv-metadata-formatter
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - biom
+  - convert
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: The input uc filepath.  [required]
+    synonyms:
+    - -i
+    - --input-fp
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: The output BIOM filepath  [required]
+    synonyms:
+    - -o
+    - --output-fp
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Fasta file containing representative sequences with where sequences
+      are labeled with OTU identifiers, and description fields contain original sequence
+      identifiers. This output is created, for example, by vsearch with the --relabel_sha1
+      --relabel_keep options.
+    synonyms:
+    - --rep-set-fp
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - biom
+  - from-uc
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: The input BIOM table  [required]
+    synonyms:
+    - -i
+    - --input-fp
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: An output file-path
+    synonyms:
+    - -o
+    - --output-fp
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: The number of observations to show
+    synonyms:
+    - -n
+    - --n-obs
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: The number of samples to show
+    synonyms:
+    - -m
+    - --n-samp
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  command:
+  - biom
+  - head
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: The input BIOM table  [required]
+    synonyms:
+    - -i
+    - --input-fp
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: An output file-path
+    synonyms:
+    - -o
+    - --output-fp
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: convert table to relative abundance
+    synonyms:
+    - -r
+    - --relative-abund
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: convert table to presence/absence
+    synonyms:
+    - -p
+    - --presence-absence
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[sample|observation] The axis to normalize over'
+    synonyms:
+    - -a
+    - --axis
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - biom
+  - normalize-table
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: OPTIONS
+    optional: true
+  named: []
+  command:
+  - biom
+  - show-install-info
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: the input hdf5 BIOM table filepath to subset
+    synonyms:
+    - -i
+    - --input-hdf5-fp
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: the input json BIOM table filepath to subset
+    synonyms:
+    - -j
+    - --input-json-fp
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: '[sample|observation] the axis to subset over, either sample or observation  [required]'
+    synonyms:
+    - -a
+    - --axis
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: a file containing a single column of IDs to retain (either sample
+      IDs or observation IDs, depending on the axis)  [required]
+    synonyms:
+    - -s
+    - --ids
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: the output BIOM table filepath  [required]
+    synonyms:
+    - -o
+    - --output-fp
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - biom
+  - subset-table
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: The input BIOM table  [required]
+    synonyms:
+    - -i
+    - --input-fp
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: An output file-path
+    synonyms:
+    - -o
+    - --output-fp
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: Present counts as number of unique observation ids per sample, rather
+      than counts of observations per sample.
+    synonyms:
+    - --qualitative
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Summarize over observations
+    synonyms:
+    - --observations
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - biom
+  - summarize-table
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: The input BIOM table  [required]
+    synonyms:
+    - -i
+    - --input-fp
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: Grab observation IDs
+    synonyms:
+    - --observations
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - biom
+  - table-ids
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: Validate
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: the
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: contents
+    optional: false
+  - !Positional
+    description: ''
+    position: 3
+    name: of
+    optional: false
+  - !Positional
+    description: ''
+    position: 4
+    name: table.biom
+    optional: false
+  - !Positional
+    description: ''
+    position: 5
+    name: for
+    optional: false
+  - !Positional
+    description: ''
+    position: 6
+    name: adherence
+    optional: false
+  - !Positional
+    description: ''
+    position: 7
+    name: to
+    optional: false
+  - !Positional
+    description: ''
+    position: 8
+    name: the
+    optional: false
+  - !Positional
+    description: ''
+    position: 9
+    name: BIOM
+    optional: false
+  - !Positional
+    description: ''
+    position: 10
+    name: format
+    optional: false
+  named:
+  - !Flag
+    description: The input filpath to validate against the BIOM format specification  [required]
+    synonyms:
+    - -i
+    - --input-fp
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: The specific format version to validate against
+    synonyms:
+    - -f
+    - --format-version
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Include more details in the output report
+    synonyms:
+    - --detailed-report
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - biom
+  - validate-table
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show the version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

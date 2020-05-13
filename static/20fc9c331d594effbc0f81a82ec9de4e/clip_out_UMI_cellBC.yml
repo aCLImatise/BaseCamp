@@ -1,0 +1,74 @@
+!Command
+positional:
+- !Positional
+  description: CCS BAM with cDNA primer removed (post LIMA)
+  position: 0
+  name: bam_filename
+  optional: false
+- !Positional
+  description: Output prefix
+  position: 1
+  name: output_prefix
+  optional: false
+named:
+- !Flag
+  description: Length of UMI
+  synonyms:
+  - -u
+  - --umi_len
+  args: !SimpleFlagArg
+    name: UMI_LEN
+  optional: true
+- !Flag
+  description: Length of cell barcode
+  synonyms:
+  - -b
+  - --bc_len
+  args: !SimpleFlagArg
+    name: BC_LEN
+  optional: true
+- !Flag
+  description: Length of TSO (for G5-10X only)
+  synonyms:
+  - -t
+  - --tso_len
+  args: !SimpleFlagArg
+    name: TSO_LEN
+  optional: true
+- !Flag
+  description: Location of the UMI
+  synonyms:
+  - --umi_type
+  args: !ChoiceFlagArg
+    choices:
+    - A3
+    - G5
+    - G5-10X
+    - G5-clip
+  optional: true
+- !Flag
+  description: Sequence before UMI for G5-clip (for G5-clip only)
+  synonyms:
+  - --g5_clip_seq
+  args: !SimpleFlagArg
+    name: G5_CLIP_SEQ
+  optional: true
+- !Flag
+  description: (Optional) cell barcode rank file from short read data
+  synonyms:
+  - --bc_rank_file
+  args: !SimpleFlagArg
+    name: BC_RANK_FILE
+  optional: true
+command:
+- clip_out_UMI_cellBC.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

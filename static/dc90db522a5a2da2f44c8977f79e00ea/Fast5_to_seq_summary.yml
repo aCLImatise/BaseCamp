@@ -1,0 +1,87 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Directory containing fast5 files. Can contain multiple subdirectories
+  synonyms:
+  - --fast5_dir
+  - -f
+  args: !SimpleFlagArg
+    name: FAST5_DIR
+  optional: true
+- !Flag
+  description: path of the summary sequencing file where to write the data extracted
+    from the fast5 files
+  synonyms:
+  - --seq_summary_fn
+  - -s
+  args: !SimpleFlagArg
+    name: SEQ_SUMMARY_FN
+  optional: true
+- !Flag
+  description: 'Maximum number of file to try to parse. 0 to deactivate (default:
+    0)'
+  synonyms:
+  - --max_fast5
+  args: !SimpleFlagArg
+    name: MAX_FAST5
+  optional: true
+- !Flag
+  description: 'Total number of threads to use. 1 thread is used for the reader and
+    1 for the writer. Minimum 3 (default: 4)'
+  synonyms:
+  - --threads
+  - -t
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: 'id of the basecalling group. By default leave to 0, but if you perfome
+    multiple basecalling on the same fast5 files, this can be used to indicate the
+    corresponding group (1, 2 ...) (default: 0)'
+  synonyms:
+  - --basecall_id
+  args: !SimpleFlagArg
+    name: BASECALL_ID
+  optional: true
+- !Flag
+  description: "list of field names corresponding to attributes to try to fetch from\
+    \ the fast5 files (default: ['read_id', 'run_id', 'channel', 'start_time', 'sequence_length_template',\
+    \ 'mean_qscore_template', 'calibration_strand_genome_template', 'barcode_arrangement'])"
+  synonyms:
+  - --fields
+  args: !RepeatFlagArg
+    name: FIELDS
+  optional: true
+- !Flag
+  description: 'If given, the absolute path to the corresponding file is added in
+    an extra column (default: False)'
+  synonyms:
+  - --include_path
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Level of verbosity, from 2 (Chatty) to 0 (Nothing) (default: 0)'
+  synonyms:
+  - --verbose_level
+  args: !SimpleFlagArg
+    name: VERBOSE_LEVEL
+  optional: true
+command:
+- Fast5_to_seq_summary
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true

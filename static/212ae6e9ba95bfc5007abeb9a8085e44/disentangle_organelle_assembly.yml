@@ -1,0 +1,224 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: input fastg format file.
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: FASTG_FILE
+  optional: true
+- !Flag
+  description: input tab format file (*.csv; the postfix 'csv' was in conformity with
+    Bandage) produced by slim_fastg.py.
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: TAB_FILE
+  optional: true
+- !Flag
+  description: output directory.
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+  optional: true
+- !Flag
+  description: 'organelle type: embplant_pt/other_pt/embplant_mt/embpl ant_nr/animal_mt/fungus_mt/anonym.'
+  synonyms:
+  - -F
+  args: !SimpleFlagArg
+    name: MODE
+  optional: true
+- !Flag
+  description: By default, this script would only disentangle the circular graph (the
+    complete circular organelle genome), and would directly give up linear/broken
+    graphs). Choose this option to try for linear/broken cases.
+  synonyms:
+  - --linear
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: weight factor for excluding non-target contigs. Default:100.0
+  synonyms:
+  - --weight-f
+  args: !SimpleFlagArg
+    name: WEIGHT_FACTOR
+  optional: true
+- !Flag
+  description: Depth factor for excluding non-target contigs. Default:10.0
+  synonyms:
+  - --depth-f
+  args: !SimpleFlagArg
+    name: DEPTH_FACTOR
+  optional: true
+- !Flag
+  description: Type factor for identifying genome type tag. Default:3.0
+  synonyms:
+  - --type-f
+  args: !SimpleFlagArg
+    name: TYPE_FACTOR
+  optional: true
+- !Flag
+  description: Depth factor for confirming contaminating contigs. Default:3.0
+  synonyms:
+  - --contamination-depth
+  args: !SimpleFlagArg
+    name: CONTAMINATION_DEPTH
+  optional: true
+- !Flag
+  description: Similarity threshold for confirming contaminating contigs. Default:0.9
+  synonyms:
+  - --contamination-similarity
+  args: !SimpleFlagArg
+    name: CONTAMINATION_SIMILARITY
+  optional: true
+- !Flag
+  description: Disable making consensus from parallel contig based on nucleotide degenerate
+    table.
+  synonyms:
+  - --no-degenerate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Depth factor for confirming parallel contigs. Default:1.5
+  synonyms:
+  - --degenerate-depth
+  args: !SimpleFlagArg
+    name: DEGENERATE_DEPTH
+  optional: true
+- !Flag
+  description: Similarity threshold for confirming parallel contigs. Default:0.98
+  synonyms:
+  - --degenerate-similarity
+  args: !SimpleFlagArg
+    name: DEGENERATE_SIMILARITY
+  optional: true
+- !Flag
+  description: 'Expected maximum target genome size. Default: 200000 (-F embplant_pt/fungus_mt),
+    25000 (-F embplant_nr/animal_mt/fungus_mt), 600000 (-F embplant_mt/other_pt)'
+  synonyms:
+  - --expected-max-size
+  args: !SimpleFlagArg
+    name: EXPECTED_MAX_SIZE
+  optional: true
+- !Flag
+  description: 'Expected mininum target genome size. Default: 10000'
+  synonyms:
+  - --expected-min-size
+  args: !SimpleFlagArg
+    name: EXPECTED_MIN_SIZE
+  optional: true
+- !Flag
+  description: For '-F embplant_pt' with complete circular result, by default, the
+    direction of the starting contig (usually the LSC contig) is determined as the
+    direction with less ORFs. Choose this option to reverse the direction of the starting
+    contig when result is circular. Actually, both directions are biologically equivalent
+    to each other. The reordering of the direction is only for easier downstream analysis.
+  synonyms:
+  - --reverse-lsc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Repeats would dramatically increase the number of potential isomers
+    (paths). This option was used to export a certain amount of paths out of all possible
+    paths per assembly graph. Default: 1000'
+  synonyms:
+  - --max-paths-num
+  args: !SimpleFlagArg
+    name: MAX_PATHS_NUM
+  optional: true
+- !Flag
+  description: By default, this script would pick the contig with highest coverage
+    among all parallel (polymorphic) contigs when degenerating was not applicable.
+    Choose this flag to export all combinations.
+  synonyms:
+  - --keep-all-polymorphic
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum deviation factor for excluding non-target contigs. Default:0.1
+  synonyms:
+  - --min-sigma
+  args: !SimpleFlagArg
+    name: MIN_SIGMA_FACTOR
+  optional: true
+- !Flag
+  description: Minimum coverage for a contig to be included in disentangling. Default:0.0
+  synonyms:
+  - --min-depth
+  args: !SimpleFlagArg
+    name: MIN_COV
+  optional: true
+- !Flag
+  description: Minimum coverage for a contig to be included in disentangling. Default:inf
+  synonyms:
+  - --max-depth
+  args: !SimpleFlagArg
+    name: MAX_COV
+  optional: true
+- !Flag
+  description: Maximum multiplicity of contigs for disentangling genome paths. Should
+    be 1~12. Default:8
+  synonyms:
+  - --max-multiplicity
+  args: !SimpleFlagArg
+    name: MAX_MULTIPLICITY
+  optional: true
+- !Flag
+  description: Prefix of output files inside output directory. Default:target
+  synonyms:
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: export intermediate graph file.
+  synonyms:
+  - --keep-temp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: time limit for the disentangling process. Default:3600
+  synonyms:
+  - --time-limit
+  args: !SimpleFlagArg
+    name: TIME_LIMIT
+  optional: true
+- !Flag
+  description: 'Random seed (only for disentangling at this moment). Default: 12345'
+  synonyms:
+  - --random-seed
+  args: !SimpleFlagArg
+    name: RANDOM_SEED
+  optional: true
+- !Flag
+  description: continue mode.
+  synonyms:
+  - --continue
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: verbose logging.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: for debug.
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- disentangle_organelle_assembly.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

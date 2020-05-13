@@ -1,0 +1,95 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Original output table (tsv or biom format); default=[TSV/STDIN]
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: Built-in grouping options
+  synonyms:
+  - -g
+  - --groups
+  args: !ChoiceFlagArg
+    choices:
+    - uniref90_rxn
+    - uniref50_rxn
+  optional: true
+- !Flag
+  description: Custom groups file (.tsv or .tsv.gz format)
+  synonyms:
+  - -c
+  - --custom
+  args: !SimpleFlagArg
+    name: CUSTOM
+  optional: true
+- !Flag
+  description: 'Custom groups file is reversed: mapping from features to groups'
+  synonyms:
+  - -r
+  - --reversed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: How to combine grouped features; default=sum
+  synonyms:
+  - -f
+  - --function
+  args: !ChoiceFlagArg
+    choices:
+    - sum
+    - mean
+  optional: true
+- !Flag
+  description: Decimal places to round to after applying function; default=3
+  synonyms:
+  - -e
+  - --precision
+  args: !SimpleFlagArg
+    name: PRECISION
+  optional: true
+- !Flag
+  description: Include an 'UNGROUPED' group to capture features that did not belong
+    to other groups? default=Y
+  synonyms:
+  - -u
+  - --ungrouped
+  args: !ChoiceFlagArg
+    choices:
+    - Y
+    - N
+  optional: true
+- !Flag
+  description: Carry through protected features, such as 'UNMAPPED'? default=Y
+  synonyms:
+  - -p
+  - --protected
+  args: !ChoiceFlagArg
+    choices:
+    - Y
+    - N
+  optional: true
+- !Flag
+  description: Path for modified output table; default=STDOUT
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+command:
+- humann2_regroup_table
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

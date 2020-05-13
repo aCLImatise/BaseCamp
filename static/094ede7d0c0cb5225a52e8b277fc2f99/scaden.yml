@@ -1,0 +1,129 @@
+!Command
+positional: []
+named: []
+command:
+- scaden
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Path to trained model
+    synonyms:
+    - --model_dir
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Name of predictions file.
+    synonyms:
+    - --outname
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - scaden
+  - predict
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Path of processed file. Must end with .h5ad
+    synonyms:
+    - --processed_path
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Filter out genes with a variance less than the specified cutoff.
+      A low cutoff is recommended,this should only remove genes that are obviously
+      uninformative.
+    synonyms:
+    - --var_cutoff
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  command:
+  - scaden
+  - process
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Datasets used for training. Uses all by default.
+    synonyms:
+    - --train_datasets
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Path to store the model in
+    synonyms:
+    - --model_dir
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'Batch size to use for training. Default: 128'
+    synonyms:
+    - --batch_size
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Learning rate used for training. Default: 0.0001'
+    synonyms:
+    - --learning_rate
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: Number of training steps
+    synonyms:
+    - --steps
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  command:
+  - scaden
+  - train
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show the version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

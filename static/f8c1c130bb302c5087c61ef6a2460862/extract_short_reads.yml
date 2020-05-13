@@ -1,0 +1,58 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The input file in FASTQ format (Solexa). Can be given as gzipped file
+    too.
+  synonyms:
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT_FILENAME
+  optional: true
+- !Flag
+  description: A text file containing on each line a name of short read which should
+    be extracted from the input FASTQ file.
+  synonyms:
+  - --list
+  args: !SimpleFlagArg
+    name: INPUT_LIST_FILENAME
+  optional: true
+- !Flag
+  description: The output FASTQ file.
+  synonyms:
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME
+  optional: true
+- !Flag
+  description: If specified then only the mate reads from the input list '--list'
+    are extracted. Default is False.
+  synonyms:
+  - --mate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The size of the buffer used for keeping the list of reads ids (given
+    by --list). Default is 2000000000.
+  synonyms:
+  - --buffer-size
+  args: !SimpleFlagArg
+    name: BUCKET
+  optional: true
+command:
+- extract_short_reads.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

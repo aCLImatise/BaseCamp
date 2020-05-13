@@ -1,0 +1,138 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: '*.bed, --input_bed *.bed Path to the peak file in bed6 format.'
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '*.bam/*.bed, --input_bam *.bam/*.bed Path to the read file used for
+    the peak calling in bed or bam format.'
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '*.txt, --chr_file *.txt Path to the chromosome length file.'
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '/, --output_folder path/ Write results to this path. [Default: Operating
+    Path]'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: 'Set a normalized CV threshold to divide the peak profiles into more
+    specific (0) and more unspecific (1). [Default: 1.0]'
+  synonyms:
+  - -t
+  - --thresh
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Activate peak correction. The peaks are recentered (shifted) for the
+    correct sumit.
+  synonyms:
+  - --peak_correction
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set this flag if you want to shift the peak profiles based on the maximum
+    value inside the profile instead of a Gaussian blur translocation.
+  synonyms:
+  - --max_translocate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set maximum peak length for the constant peak length.
+  synonyms:
+  - --peak_length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Provide a maximum value for CV to make the normalized CV plot more
+    comparable.
+  synonyms:
+  - --max_norm_value
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Adds a penalty for non-centered peaks.
+  synonyms:
+  - --border_penalty
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Provide a maximum value for the CV plot.
+  synonyms:
+  - --scale_max
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: 'Maximal number of clusters of the kmeans clustering of the peak profiles.
+    The algorithm will be optimized, i.e., the parameter is just a constraint and
+    not absolute. [Default: 15]'
+  synonyms:
+  - --maxcl
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: You can forcefully set the number of cluster of peak profiles.
+  synonyms:
+  - -k
+  - --numcl
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: Turn on the peak profile smoothing for the peak profile classification.
+    It is recommended to turn it on.
+  synonyms:
+  - --sm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Parameter for the peak profile classification. Set lambda for the
+    smoothing of the peak profiles. A higher value (> default) will underfit. A lower
+    value (< default) will overfit. [Default: 0.3]'
+  synonyms:
+  - --lam
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: Turn off the peak profile classification.
+  synonyms:
+  - --turn_off_classification
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- StoatyDive.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

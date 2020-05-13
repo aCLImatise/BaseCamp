@@ -1,0 +1,203 @@
+!Command
+positional:
+- !Positional
+  description: 'One or more files containing one or more RNAs each. Supported Filetypes
+    are: pdb files, forgi cg files'
+  position: 0
+  name: rna
+  optional: false
+named:
+- !Flag
+  description: For all input formats except forgi bg/cg files, this controlls whether
+    stems of length one are dissolved to unpaired regions (default) or kept (if this
+    option is present). In the case of input in forgi-format, the RNA from the file
+    is not modified.
+  synonyms:
+  - --keep-length-one-stems
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Make coarse_grain RNA thinner
+  synonyms:
+  - --thin-cylinders
+  args: !SimpleFlagArg
+    name: THIN_CYLINDERS
+  optional: true
+- !Flag
+  description: Display the virtual atoms
+  synonyms:
+  - --virtual-atoms
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display the virtual residues as spheres
+  synonyms:
+  - --virtual-residues
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display only these elements, separated by commas
+  synonyms:
+  - --only-elements
+  args: !SimpleFlagArg
+    name: ONLY_ELEMENTS
+  optional: true
+- !Flag
+  description: Don't display the coarse-grain hairpin loops
+  synonyms:
+  - --no-loops
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Display long-range interactions
+  synonyms:
+  - --longrange
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The default stem color in coarse-grain drawings
+  synonyms:
+  - --stem-color
+  args: !SimpleFlagArg
+    name: STEM_COLOR
+  optional: true
+- !Flag
+  description: The default multiloop color in coarse-grain drawings
+  synonyms:
+  - --multiloop-color
+  args: !SimpleFlagArg
+    name: MULTILOOP_COLOR
+  optional: true
+- !Flag
+  description: Add labels indicating the element names to the figure.
+  synonyms:
+  - -x
+  - --text
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Add labels to elements. Expects a comma seperated string of element:label,
+    like 'm0:LookHere' to display 'LookHere' at the center of 'm0'.
+  synonyms:
+  - --labels
+  args: !SimpleFlagArg
+    name: LABELS
+  optional: true
+- !Flag
+  description: Include the sidechain atoms. Automatically enables --virtual-atoms
+  synonyms:
+  - --sidechain-atoms
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Color virtual atoms (if displayed) depending on the nucleotide position.
+  synonyms:
+  - --rainbow
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Specify a color for certain elements (comma-separated element names
+    or element_name:color)Example: "m1,m2" (makes m1, m2 purple) or "m0:red,m1:green,s0:AA11GG,default:black",
+    where "AA11GG" is a hex value and "default" addresses all other elements. Warning:
+    colors not understood by PYMOL will be interpreted as black.'
+  synonyms:
+  - --element-colors
+  args: !SimpleFlagArg
+    name: ELEMENT_COLORS
+  optional: true
+- !Flag
+  description: Align the RNAs (if multiple are provided)
+  synonyms:
+  - --align
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Create a picture of the scene and exit
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Start pymol in batch mode
+  synonyms:
+  - --batch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Allow pseudoknots when extracting the structure from PDB files.
+  synonyms:
+  - --pseudoknots
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'When reading pdb-files: Only extract the given chain(s). Comma-seperated'
+  synonyms:
+  - --chains
+  args: !SimpleFlagArg
+    name: CHAINS
+  optional: true
+- !Flag
+  description: 'When reading a single chain from a pdb-files: Enforce the secondary
+    structure given as dotbracket string. (This only works, if --chain is given!)'
+  synonyms:
+  - --pdb-secondary-structure
+  args: !SimpleFlagArg
+    name: PDB_SECONDARY_STRUCTURE
+  optional: true
+- !Flag
+  description: What program to use for detecting basepairs in PDB/ MMCIF structures.
+    This commandline option overrides the value in the config file (if present).If
+    this is not present and no config-file is given, we try to detect the installed
+    programs.
+  synonyms:
+  - --pdb-annotation-tool
+  args: !SimpleFlagArg
+    name: PDB_ANNOTATION_TOOL
+  optional: true
+- !Flag
+  description: Usually, if modified residues/ ligand with an unknown 3-letter code
+    are encountered in PDB files, they are removed from the chain and a log message
+    of severity INFO is issued. With this option, we first try to query the PDBeChem
+    database for the 3-letter code, to see whether or not it is a modified residue
+    that can be converted to its standard parent and should be part of the chain.
+  synonyms:
+  - --pdb-allow-www-query
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show verbose output (Output logged at level logging.INFO)
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[DEBUG]       A comma-seperated list of logger names for which debug
+    output will be activated.WARNING: If you misspell the logger name, this argument
+    will be ignored'
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[QUIET], --quiet [QUIET] A comma-seperated list of logger names for\
+    \ which only messages logged at the level 'CRITICAL' will be shown.Use this without\
+    \ arguments if everything should be quiet."
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- visualize_rna.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

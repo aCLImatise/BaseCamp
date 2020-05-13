@@ -1,0 +1,208 @@
+!Command
+positional: []
+named: []
+command:
+- phylorank
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: input tree to mark
+    position: 0
+    name: input_tree
+    optional: false
+  - !Positional
+    description: output tree with assigned taxonomic ranks
+    position: 1
+    name: output_tree
+    optional: false
+  named:
+  - !Flag
+    description: 'relative divergence thresholds for taxonomic ranks (default: {"d":
+      0.33, "p": 0.56, "c": 0.65, "o": 0.78, "f": 0.92, "g": 0.99})'
+    synonyms:
+    - -t
+    - --thresholds
+    args: !SimpleFlagArg
+      name: THRESHOLDS
+    optional: true
+  - !Flag
+    description: 'only mark nodes above the specified support value (default=0) (default:
+      0)'
+    synonyms:
+    - -s
+    - --min_support
+    args: !SimpleFlagArg
+      name: MIN_SUPPORT
+    optional: true
+  - !Flag
+    description: only mark nodes with an existing label
+    synonyms:
+    - -n
+    - --only_named_clades
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'only mark nodes with a parent branch above the specified length
+      (default=0) (default: 0.0)'
+    synonyms:
+    - -l
+    - --min_length
+    args: !SimpleFlagArg
+      name: MIN_LENGTH
+    optional: true
+  - !Flag
+    description: do not mark with percentile information
+    synonyms:
+    - --no_percentile
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: do not mark with relative divergence information
+    synonyms:
+    - --no_relative_divergence
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: do not mark with predicted rank information
+    synonyms:
+    - --no_prediction
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - phylorank
+  - mark_tree
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: directory containing trees to assess incongruence over
+    position: 0
+    name: input_tree_dir
+    optional: false
+  - !Positional
+    description: file indicating taxonomy of extant taxa
+    position: 1
+    name: taxonomy_file
+    optional: false
+  - !Positional
+    description: desired output directory for generated files
+    position: 2
+    name: output_dir
+    optional: false
+  named:
+  - !Flag
+    description: taxon to use as outgroup (e.g., d__Archaea); imples tree should be
+      rooted
+    synonyms:
+    - --outgroup_taxon
+    args: !SimpleFlagArg
+      name: OUTGROUP_TAXON
+    optional: true
+  - !Flag
+    description: indicates trees should be decorated
+    synonyms:
+    - --decorate
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - phylorank
+  - rogue_test
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: decorated tree
+    position: 0
+    name: input_tree
+    optional: false
+  - !Positional
+    description: file with taxonomy for extant taxa
+    position: 1
+    name: taxonomy_file
+    optional: false
+  - !Positional
+    description: output file with resolution of taxa at each rank
+    position: 2
+    name: output_file
+    optional: false
+  named:
+  - !Flag
+    description: output file indicating taxa within each resolution category
+    synonyms:
+    - --taxa_file
+    args: !SimpleFlagArg
+      name: TAXA_FILE
+    optional: true
+  command:
+  - phylorank
+  - rank_res
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: input tree to calculate branch length distributions
+    position: 0
+    name: input_tree
+    optional: false
+  - !Positional
+    description: file indicating category for each taxon in the tree
+    position: 1
+    name: taxon_category
+    optional: false
+  - !Positional
+    description: desired named of output table
+    position: 2
+    name: output_table
+    optional: false
+  named:
+  - !Flag
+    description: 'step size for mean branch length criterion (default: 0.01)'
+    synonyms:
+    - --step_size
+    args: !SimpleFlagArg
+      name: STEP_SIZE
+    optional: true
+  command:
+  - phylorank
+  - bl_table
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

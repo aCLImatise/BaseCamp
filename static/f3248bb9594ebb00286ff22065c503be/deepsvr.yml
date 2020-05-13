@@ -1,0 +1,171 @@
+!Command
+positional: []
+named: []
+command:
+- deepsvr
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Specify the 'train.pkl' file produced by the 'prepare_data' to perform
+      inference on. Ignore the call.pkl used in training classifiers
+    synonyms:
+    - -pdp
+    - --prepared-data-path
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Specify the file path for the model json file. Created by the train_classifier
+      command.
+    synonyms:
+    - -mfp
+    - --model-file-path
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Specify the file path for the model weights file. Created by the
+      train_classifier command.
+    synonyms:
+    - -mwp
+    - --model-weights-path
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Specify the file path for the predictions tab separated file.
+    synonyms:
+    - -pop
+    - --predictions-out-path
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - deepsvr
+  - classify-data
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: / --no-header          Specify whether header is present in sample
+      file
+    synonyms:
+    - --header
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: / --no-skip_bam_readcount If bam readcount files already exist in
+      output directory as a result of a prior run of the prepare_data command, skip
+      the bam- readcount step
+    synonyms:
+    - --skip_bam_readcount
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'File path of tsv file with sample information. File shouldhave the
+      following columns in order: sample_name, tumor_bam_path, normal_bam_path, manual_review_file_path,
+      reviewer, solid_tumor, reference_genome_fasta_file_path.If the reviewer is specified
+      in the manual review file or not available for the dataset leave the column
+      blank.The manual review file should have the following columnsin order: chromosome,
+      start, stop, reference, variant,call, tag, notes, reviewer. For the manual review
+      filethe reviewer column is optional. The solid tumor column should be 0 or 1,
+      0 denotes a blood based tumor and 1 a solid tumor. Labels need to matchabove.'
+    synonyms:
+    - -sfp
+    - --samples-file-path
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'Specify output directory: Readcount files and compressed pandas
+      dataframe will be output here (default:~/training_data)'
+    synonyms:
+    - -odp
+    - --output-dir-path
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - deepsvr
+  - prepare-data
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Specify the pickle file produced by the 'prepare_data' command to
+      be used to train a new classifier.
+    synonyms:
+    - -tfp
+    - --training-file-path
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Specify the label (manual review call) pickle file produced by the
+      'prepare_data' command to be used to train a new classifier.
+    synonyms:
+    - -lfp
+    - --label-file-path
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Specify output file path for model json file(default:./deepsvr_model.json)
+    synonyms:
+    - -mop
+    - --model-out-file-path
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Specify output file path for model weights file(default:data/deepsvr_model_weights.h5)
+    synonyms:
+    - -wop
+    - --weights-out-file-path
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - deepsvr
+  - train-classifier
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

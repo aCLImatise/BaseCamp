@@ -1,0 +1,313 @@
+!Command
+positional: []
+named: []
+command:
+- watchmedo
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: "directories to watch. (default: '.')"
+    position: 0
+    name: directories
+    optional: false
+  named:
+  - !Flag
+    description: "matches event paths with these patterns (separated by ;). (default:\
+      \ '*')"
+    synonyms:
+    - -p
+    - --pattern
+    - --patterns
+    args: !SimpleFlagArg
+      name: PATTERNS
+    optional: true
+  - !Flag
+    description: "ignores event paths with these patterns (separated by ;). (default:\
+      \ '')"
+    synonyms:
+    - -i
+    - --ignore-pattern
+    - --ignore-patterns
+    args: !SimpleFlagArg
+      name: IGNORE_PATTERNS
+    optional: true
+  - !Flag
+    description: 'ignores events for directories (default: False)'
+    synonyms:
+    - -D
+    - --ignore-directories
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'monitors the directories recursively (default: False)'
+    synonyms:
+    - -R
+    - --recursive
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'use this as the polling interval/blocking timeout (default: 1.0)'
+    synonyms:
+    - --interval
+    - --timeout
+    args: !SimpleFlagArg
+      name: TIMEOUT
+    optional: true
+  - !Flag
+    description: 'dumps complete dispatching trace (default: False)'
+    synonyms:
+    - --trace
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[debug] forces polling (default: False)'
+    synonyms:
+    - --debug-force-polling
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[debug] forces BSD kqueue(2) (default: False)'
+    synonyms:
+    - --debug-force-kqueue
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[debug] forces Windows API (default: False)'
+    synonyms:
+    - --debug-force-winapi
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[debug] forces Windows API + I/O completion (default: False)'
+    synonyms:
+    - --debug-force-winapi-async
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[debug] forces Mac OS X FSEvents (default: False)'
+    synonyms:
+    - --debug-force-fsevents
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[debug] forces Linux inotify(7) (default: False)'
+    synonyms:
+    - --debug-force-inotify
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - watchmedo
+  - log
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: "directories to watch (default: '.')"
+    position: 0
+    name: directories
+    optional: false
+  named:
+  - !Flag
+    description: "shell command executed in response to matching events. These interpolation\
+      \ variables are available to your command string:: ${watch_src_path} - event\
+      \ source path; ${watch_dest_path} - event destination path (for moved events);\
+      \ ${watch_event_type} - event type; ${watch_object} - ``file`` or ``directory``\
+      \ Note:: Please ensure you do not use double quotes (\") to quote your command\
+      \ string. That will force your shell to interpolate before the command is processed\
+      \ by this subcommand. Example option usage:: --command='echo \"${watch_src_path}\"\
+      ' (default: -)"
+    synonyms:
+    - -c
+    - --command
+    args: !SimpleFlagArg
+      name: COMMAND
+    optional: true
+  - !Flag
+    description: "matches event paths with these patterns (separated by ;). (default:\
+      \ '*')"
+    synonyms:
+    - -p
+    - --pattern
+    - --patterns
+    args: !SimpleFlagArg
+      name: PATTERNS
+    optional: true
+  - !Flag
+    description: "ignores event paths with these patterns (separated by ;). (default:\
+      \ '')"
+    synonyms:
+    - -i
+    - --ignore-pattern
+    - --ignore-patterns
+    args: !SimpleFlagArg
+      name: IGNORE_PATTERNS
+    optional: true
+  - !Flag
+    description: 'ignores events for directories (default: False)'
+    synonyms:
+    - -D
+    - --ignore-directories
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'monitors the directories recursively (default: False)'
+    synonyms:
+    - -R
+    - --recursive
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'use this as the polling interval/blocking timeout (default: 1.0)'
+    synonyms:
+    - --interval
+    - --timeout
+    args: !SimpleFlagArg
+      name: TIMEOUT
+    optional: true
+  - !Flag
+    description: 'wait for process to finish to avoid multiple simultaneous instances
+      (default: False)'
+    synonyms:
+    - -w
+    - --wait
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Ignore events that occur while command is still being executed to
+      avoid multiple simultaneous instances (default: False)'
+    synonyms:
+    - -W
+    - --drop
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - watchmedo
+  - shell-command
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Long-running command to run in a subprocess.
+    position: 0
+    name: command
+    optional: false
+  - !Positional
+    description: 'Command arguments. Note: Use -- before the command arguments, otherwise
+      watchmedo will try to interpret them. (default: -)'
+    position: 1
+    name: arg
+    optional: false
+  named:
+  - !Flag
+    description: 'Directory to watch. Use another -d or --directory option for each
+      directory. (default: -)'
+    synonyms:
+    - -d
+    - --directory
+    args: !SimpleFlagArg
+      name: directory
+    optional: true
+  - !Flag
+    description: "matches event paths with these patterns (separated by ;). (default:\
+      \ '*')"
+    synonyms:
+    - -p
+    - --pattern
+    - --patterns
+    args: !SimpleFlagArg
+      name: PATTERNS
+    optional: true
+  - !Flag
+    description: "ignores event paths with these patterns (separated by ;). (default:\
+      \ '')"
+    synonyms:
+    - -i
+    - --ignore-pattern
+    - --ignore-patterns
+    args: !SimpleFlagArg
+      name: IGNORE_PATTERNS
+    optional: true
+  - !Flag
+    description: 'ignores events for directories (default: False)'
+    synonyms:
+    - -D
+    - --ignore-directories
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'monitors the directories recursively (default: False)'
+    synonyms:
+    - -R
+    - --recursive
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'use this as the polling interval/blocking timeout (default: 1.0)'
+    synonyms:
+    - --interval
+    - --timeout
+    args: !SimpleFlagArg
+      name: TIMEOUT
+    optional: true
+  - !Flag
+    description: "stop the subprocess with this signal (default SIGINT) (default:\
+      \ 'SIGINT')"
+    synonyms:
+    - --signal
+    args: !SimpleFlagArg
+      name: SIGNAL
+    optional: true
+  - !Flag
+    description: 'when stopping, kill the subprocess after the specified timeout (default
+      10) (default: 10.0)'
+    synonyms:
+    - --kill-after
+    args: !SimpleFlagArg
+      name: KILL_AFTER
+    optional: true
+  command:
+  - watchmedo
+  - auto-restart
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

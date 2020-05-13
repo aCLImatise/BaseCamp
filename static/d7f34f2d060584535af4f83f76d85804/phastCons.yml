@@ -1,0 +1,195 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 0.4 mydata.ss noncons.mod > scores.wig
+  synonyms:
+  - --score
+  - --rho
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: noncons.mod
+  synonyms:
+  - --estimate-rho
+  - --no-post-probs
+  args: !SimpleFlagArg
+    name: newtree
+  optional: true
+- !Flag
+  description: noncons.mod
+  synonyms:
+  - --estimate-trees
+  - --no-post-probs
+  args: !SimpleFlagArg
+    name: newtree
+  optional: true
+- !Flag
+  description: (Optionally use with --viterbi) Assign a log-odds score to each prediction.
+  synonyms:
+  - --score
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Compute total log likelihood using the forward algorithm and write
+    to specified file.
+  synonyms:
+  - --lnl
+  - -L
+  args: !SimpleFlagArg
+    name: fname
+  optional: true
+- !Flag
+  description: Suppress output of posterior probabilities.  Useful if only discrete
+    elements or likelihood is of interest.
+  synonyms:
+  - --no-post-probs
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (Optionally use when estimating free parameters) Write log of optimization
+    procedure to specified file.
+  synonyms:
+  - --log
+  - -g
+  args: !SimpleFlagArg
+    name: log_fname
+  optional: true
+- !Flag
+  description: Use coordinate frame of specified sequence in output.  Default value
+    is 1, first sequence in alignment; 0 indicates coordinate frame of entire multiple
+    alignment.
+  synonyms:
+  - --refidx
+  - -r
+  args: !SimpleFlagArg
+    name: refseq_idx
+  optional: true
+- !Flag
+  description: (Optionally use with --viterbi) Use specified string for 'seqname'
+    (GFF) or 'chrom' field in output file.  Default is obtained from input file name
+    (double filename root, e.g., "chr22" if input file is "chr22.35.ss").
+  synonyms:
+  - --seqname
+  - -N
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: (Optionally use with --viterbi) Use specified string as prefix of generated
+    ids in output file.  Can be used to ensure ids are unique.  Default is obtained
+    from input file name (single filename root, e.g., "chr22.35" if input file is
+    "chr22.35.ss").
+  synonyms:
+  - --idpref
+  - -P
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: Proceed quietly (without updates to stderr).
+  synonyms:
+  - --quiet
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Like --indels but force the use of a single-state HMM.  This option
+    allows the effect of the indel model in isolation to be observed.  Implies --no-post-probs.  Use
+    with --lnl.
+  synonyms:
+  - --indels-only
+  - -J
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Alias names in input alignment according to given definition, e.g.,
+    "hg17=human; mm5=mouse; rn3=rat".  Useful with default *.mod files, e.g., with
+    --coding-potential.  (Default models use generic common names such as "human",
+    "mouse", and "rat".  This option allows a mapping to be established between the
+    leaves of trees in these files and the sequences of an alignment that uses an
+    alternative naming convention.)
+  synonyms:
+  - --alias
+  - -A
+  args: !SimpleFlagArg
+    name: alias_def
+  optional: true
+- !Flag
+  description: States of interest in the phylo-HMM, specified by number (indexing
+    starts with 0), or if --catmap, by category name. Default value is 1.  Choosing
+    --states "0,1,2" will cause output of the sum of the posterior probabilities for
+    states 0, 1, and 2, and/or of regions in which the Viterbi path coincides with
+    (any of) states 0, 1, or 2 (see --viterbi).
+  synonyms:
+  - --states
+  - -S
+  args: !SimpleFlagArg
+    name: state_list
+  optional: true
+- !Flag
+  description: (Optionally use with --hmm) Given an HMM describing the forward strand,
+    create a larger HMM that allows for features on both strands by "reflecting" the
+    original HMM about the specified "pivot" states.  The new HMM will be used for
+    prediction on both strands.  States can be specified by number (indexing starts
+    with 0), or if --catmap, by category name.
+  synonyms:
+  - --reflect-strand
+  - -U
+  args: !SimpleFlagArg
+    name: pivot_states
+  optional: true
+- !Flag
+  description: 'Require "informative" columns (i.e., columns with more than two non-missing-data
+    characters, excluding sequences specified by --not-informative) in specified HMM
+    states, to help eliminate false positive predictions.  States can be specified
+    by number (indexing starts with 0) or, if --catmap is used, by category name.  Non-informative
+    columns will be given emission probabilities of zero.  By default, this option
+    is active, with <states> equal to the set of states of interest for prediction
+    (as specified by --states).  Use "none" to disable completely.  '
+  synonyms:
+  - --require-informative
+  - -M
+  args: !SimpleFlagArg
+    name: states
+  optional: true
+- !Flag
+  description: Do not consider the specified sequences (listed by name) when deciding
+    whether a column is informative.  This option may be useful when sequences are
+    present that are very close to the reference sequence and thus do not contribute
+    much in the way of phylogenetic information.  E.g., one might use "--not-informative
+    chimp" with a human-referenced multiple alignment including chimp sequence, to
+    avoid false-positive predictions based only on human/chimp alignments (can be
+    a problem, e.g., with --coding-potential).
+  synonyms:
+  - --not-informative
+  - -F
+  args: !SimpleFlagArg
+    name: list
+  optional: true
+- !Flag
+  description: '(For use when estimating transition probabilities) Ignore regions
+    of missing data in all sequences but the reference sequence (excluding sequences
+    specified by --not-informative) when estimating transition probabilities.  Can
+    help avoid too-low estimates of <mu> and <nu> or too-high estimates of <lambda>.  Warning:
+    this option should not be used with --viterbi because coordinates in output will
+    be unrecognizable.'
+  synonyms:
+  - --ignore-missing
+  - -z
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- phastCons
+subcommands: []
+help_flag: !Flag
+  description: Print this help message.
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

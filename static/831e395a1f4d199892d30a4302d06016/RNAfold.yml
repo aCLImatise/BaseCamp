@@ -1,0 +1,220 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Print help, including all details and hidden options, and exit
+  synonyms:
+  - --detailed-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print help, including hidden options, and exit
+  synonyms:
+  - --full-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Be verbose. (default=off)
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[=number]           Split batch input into jobs and start processing\
+    \ in parallel using multiple threads. A value of 0 indicates to use as many parallel\
+    \ threads as computation cores are available. (default=`0')"
+  synonyms:
+  - -j
+  - --jobs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Read a file instead of reading from stdin
+  synonyms:
+  - -i
+  - --infile
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: '[=<filename>]    Print output to file instead of stdout'
+  synonyms:
+  - -o
+  - --outfile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not produce postscript drawing of the mfe structure. (default=off)
+  synonyms:
+  - --noPS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not produce dot-plot postscript file containing base pair or stack
+    probabilitities. (default=off)
+  synonyms:
+  - --noDP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not automatically substitute nucleotide "T" with "U" (default=off)
+  synonyms:
+  - --noconv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Automatically generate an ID for each sequence. (default=off)
+  synonyms:
+  - --auto-id
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Prefix for automatically generated IDs (as used in output file names)
+    (default=`sequence')
+  synonyms:
+  - --id-prefix
+  args: !SimpleFlagArg
+    name: prefix
+  optional: true
+- !Flag
+  description: Set the maximum base pair span (default=`-1')
+  synonyms:
+  - --maxBPspan
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: "[=<filename>] Calculate structures subject to constraints. (default=`')"
+  synonyms:
+  - -C
+  - --constraint
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use constraints for multiple sequences. (default=off)
+  synonyms:
+  - --batch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Remove non-canonical base pairs from the structure constraint (default=off)
+  synonyms:
+  - --canonicalBPonly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enforce base pairs given by round brackets ( ) in structure constraint
+    (default=off)
+  synonyms:
+  - --enforceConstraint
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use SHAPE reactivity data to guide structure predictions
+  synonyms:
+  - --shape
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: "|Z|W       Select SHAPE reactivity data incorporation strategy. (default=`D')"
+  synonyms:
+  - --shapeMethod
+  args: !SimpleFlagArg
+    name: D
+  optional: true
+- !Flag
+  description: "|C|S|L|O Select method to convert SHAPE reactivities to pairing probabilities.\
+    \ (default=`O')"
+  synonyms:
+  - --shapeConversion
+  args: !SimpleFlagArg
+    name: M
+  optional: true
+- !Flag
+  description: "[=INT]          Calculate the partition function and base pairing\
+    \ probability matrix. (default=`1')"
+  synonyms:
+  - -p
+  - --partfunc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[=gamma]             Calculate an MEA (maximum expected accuracy)\
+    \ structure, where the expected accuracy is computed from the pair probabilities:\
+    \ each base pair (i,j) gets a score 2*gamma*p_ij and the score of an unpaired\
+    \ base is given by the probability of not forming a pair. (default=`1.')"
+  synonyms:
+  - --MEA
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assume a circular (instead of linear) RNA molecule. (default=off)
+  synonyms:
+  - -c
+  - --circ
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Incoorporate G-Quadruplex formation into the structure prediction algorithm.
+    (default=off)
+  synonyms:
+  - -g
+  - --gquad
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: How to treat "dangling end" energies for bases adjacent to helices
+    in free ends and multi-loops (default=`2')
+  synonyms:
+  - -d
+  - --dangles
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Produce structures without lonely pairs (helices of length 1). (default=off)
+  synonyms:
+  - --noLP
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not allow GU pairs (default=off)
+  synonyms:
+  - --noGU
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not allow GU pairs at the end of helices (default=off)
+  synonyms:
+  - --noClosingGU
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Read energy parameters from paramfile, instead of using the default
+    parameter set.
+  synonyms:
+  - -P
+  - --paramFile
+  args: !SimpleFlagArg
+    name: paramfile
+  optional: true
+command:
+- RNAfold
+subcommands: []
+help_flag: !Flag
+  description: Print help and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

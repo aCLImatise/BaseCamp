@@ -1,0 +1,1974 @@
+!Command
+positional: []
+named: []
+command:
+- methylpy
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'List of genome fasta files to build a reference from. (default:
+      None)'
+    synonyms:
+    - --input-files
+    args: !RepeatFlagArg
+      name: INPUT_FILES
+    optional: true
+  - !Flag
+    description: 'the prefix of the two output reference files that will be created.
+      (default: None)'
+    synonyms:
+    - --output-prefix
+    args: !SimpleFlagArg
+      name: OUTPUT_PREFIX
+    optional: true
+  - !Flag
+    description: 'Number of processors you wish to use to parallelize this function
+      (default: 1)'
+    synonyms:
+    - --num-procs
+    args: !SimpleFlagArg
+      name: NUM_PROCS
+    optional: true
+  - !Flag
+    description: 'Aligner to use. Currently, methylpy supports bowtie, bowtie2 and
+      minimap2. (default: bowtie2)'
+    synonyms:
+    - --aligner
+    args: !SimpleFlagArg
+      name: ALIGNER
+    optional: true
+  - !Flag
+    description: 'Path to bowtie/bowtie2 installation (default: )'
+    synonyms:
+    - --path-to-aligner
+    args: !SimpleFlagArg
+      name: PATH_TO_ALIGNER
+    optional: true
+  - !Flag
+    description: 'The number of bytes that will be read in from the reference at once.
+      (default: 100)'
+    synonyms:
+    - --buffsize
+    args: !SimpleFlagArg
+      name: BUFFSIZE
+    optional: true
+  command:
+  - methylpy
+  - build-reference
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'list of all the fastq files you would like to run through the pipeline.
+      Note that globbing is supported here (i.e., you can use * in your paths) (default:
+      None)'
+    synonyms:
+    - --read-files
+    args: !RepeatFlagArg
+      name: READ_FILES
+    optional: true
+  - !Flag
+    description: 'String indicating the name of the sample you are processing. It
+      will be included in the output files. (default: None)'
+    synonyms:
+    - --sample
+    args: !SimpleFlagArg
+      name: SAMPLE
+    optional: true
+  - !Flag
+    description: 'string indicating the path to the forward strand reference created
+      by build_ref (default: None)'
+    synonyms:
+    - --forward-ref
+    args: !SimpleFlagArg
+      name: FORWARD_REF
+    optional: true
+  - !Flag
+    description: 'string indicating the path to the reverse strand reference created
+      by build_ref (default: None)'
+    synonyms:
+    - --reverse-ref
+    args: !SimpleFlagArg
+      name: REVERSE_REF
+    optional: true
+  - !Flag
+    description: 'string indicating the path to a fasta file containing the sequences
+      you used for mapping (default: None)'
+    synonyms:
+    - --ref-fasta
+    args: !SimpleFlagArg
+      name: REF_FASTA
+    optional: true
+  - !Flag
+    description: "list of library IDs (in the same order as the files list) indiciating\
+      \ which libraries each set of fastq files belong to. If you use a glob, you\
+      \ only need to indicate the library ID for those fastqs once (i.e., the length\
+      \ of files and libraries should be the same) (default: ['libA'])"
+    synonyms:
+    - --libraries
+    args: !RepeatFlagArg
+      name: LIBRARIES
+    optional: true
+  - !Flag
+    description: 'Path to a directory where you would like the output to be stored.
+      The default is the same directory as the input fastqs. (default: )'
+    synonyms:
+    - --path-to-output
+    args: !SimpleFlagArg
+      name: PATH_TO_OUTPUT
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to process data in PBAT (Post-Bisulfite
+      Adaptor Tagging) mode, in which reads will be mapped to opposite strand of C-T
+      converted genome and the forward strand of G-A converted genome. (default: False)'
+    synonyms:
+    - --pbat
+    args: !SimpleFlagArg
+      name: PBAT
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to check dependency requirements are
+      met. (default: False)'
+    synonyms:
+    - --check-dependency
+    args: !SimpleFlagArg
+      name: CHECK_DEPENDENCY
+    optional: true
+  - !Flag
+    description: 'Number of processors you wish to use to parallelize this function
+      (default: 1)'
+    synonyms:
+    - --num-procs
+    args: !SimpleFlagArg
+      name: NUM_PROCS
+    optional: true
+  - !Flag
+    description: 'Parameter to pass to unix sort with -S/--buffer-size command (default:
+      500M)'
+    synonyms:
+    - --sort-mem
+    args: !SimpleFlagArg
+      name: SORT_MEM
+    optional: true
+  - !Flag
+    description: 'Number of base(s) upstream of each cytosine that you wish to include
+      in output file. Recommend value 1 for NOMe-seq processing since the upstream
+      base is required to tell apart cytosine at GC context. (default: 0)'
+    synonyms:
+    - --num-upstream-bases
+    args: !SimpleFlagArg
+      name: NUM_UPSTREAM_BASES
+    optional: true
+  - !Flag
+    description: 'Number of base(s) downstream of each cytosine that you wish to include
+      in output file. Recommend value to be at least 1 to separate cytosines at different
+      sequence context. (default: 2)'
+    synonyms:
+    - --num-downstream-bases
+    args: !SimpleFlagArg
+      name: NUM_DOWNSTREAM_BASES
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to generate the final output file that
+      contains the methylation state of each cytosine. If set to be false, only alignment
+      file (in BAM format) will be generated. (default: True)'
+    synonyms:
+    - --generate-allc-file
+    args: !SimpleFlagArg
+      name: GENERATE_ALLC_FILE
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to generate intermediate mpileup file
+      to save space. However, skipping mpileup step may cause problem due to the nature
+      of python. Not skipping this step is recommended. (default: True)'
+    synonyms:
+    - --generate-mpileup-file
+    args: !SimpleFlagArg
+      name: GENERATE_MPILEUP_FILE
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to compress (by gzip) the final output
+      (allc file(s)). (default: True)'
+    synonyms:
+    - --compress-output
+    args: !SimpleFlagArg
+      name: COMPRESS_OUTPUT
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to bgzip compressed allc files and tabix
+      index. (default: False)'
+    synonyms:
+    - --bgzip
+    args: !SimpleFlagArg
+      name: BGZIP
+    optional: true
+  - !Flag
+    description: 'Path to bgzip installation (default: )'
+    synonyms:
+    - --path-to-bgzip
+    args: !SimpleFlagArg
+      name: PATH_TO_BGZIP
+    optional: true
+  - !Flag
+    description: 'Path to tabix installation (default: )'
+    synonyms:
+    - --path-to-tabix
+    args: !SimpleFlagArg
+      name: PATH_TO_TABIX
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to trim reads using cutadapt. (default:
+      True)'
+    synonyms:
+    - --trim-reads
+    args: !SimpleFlagArg
+      name: TRIM_READS
+    optional: true
+  - !Flag
+    description: 'Path to cutadapt installation (default: )'
+    synonyms:
+    - --path-to-cutadapt
+    args: !SimpleFlagArg
+      name: PATH_TO_CUTADAPT
+    optional: true
+  - !Flag
+    description: 'Path to bowtie/bowtie2 installation (default: )'
+    synonyms:
+    - --path-to-aligner
+    args: !SimpleFlagArg
+      name: PATH_TO_ALIGNER
+    optional: true
+  - !Flag
+    description: 'Aligner to use. Currently, methylpy supports bowtie, bowtie2 and
+      minimap2. (default: bowtie2)'
+    synonyms:
+    - --aligner
+    args: !SimpleFlagArg
+      name: ALIGNER
+    optional: true
+  - !Flag
+    description: 'list of strings indicating options you would like passed to bowtie
+      (e.g., "-k 1 -l 2") (default: None)'
+    synonyms:
+    - --aligner-options
+    args: !RepeatFlagArg
+      name: ALIGNER_OPTIONS
+    optional: true
+  - !Flag
+    description: 'Boolean indicates whether to merge alignment results from two converted
+      genomes by MAPQ score. Be default, we only keep reads that are mapped to only
+      one of the two converted genomes. If this option is set to True, for a read
+      that could be mapped to both converted genomes, the alignment that achieves
+      larger MAPQ score will be kept. (default: False)'
+    synonyms:
+    - --merge-by-max-mapq
+    args: !SimpleFlagArg
+      name: MERGE_BY_MAX_MAPQ
+    optional: true
+  - !Flag
+    description: 'Boolean indicates whether to remove clonal reads or not (default:
+      False)'
+    synonyms:
+    - --remove-clonal
+    args: !SimpleFlagArg
+      name: REMOVE_CLONAL
+    optional: true
+  - !Flag
+    description: 'The path to the picard.jar in picard tools. The jar file can be
+      downloaded from https://broadinstitute.github.io/picard/index.html (default
+      is current dir) (default: )'
+    synonyms:
+    - --path-to-picard
+    args: !SimpleFlagArg
+      name: PATH_TO_PICARD
+    optional: true
+  - !Flag
+    description: 'Boolean indicates whether to store the metric file from picard.
+      (default: True)'
+    synonyms:
+    - --keep-clonal-stats
+    args: !SimpleFlagArg
+      name: KEEP_CLONAL_STATS
+    optional: true
+  - !Flag
+    description: 'String indicating the option pass the java when running picard.
+      (default: -Xmx20g)'
+    synonyms:
+    - --java-options
+    args: !SimpleFlagArg
+      name: JAVA_OPTIONS
+    optional: true
+  - !Flag
+    description: 'Path to samtools installation (default: )'
+    synonyms:
+    - --path-to-samtools
+    args: !SimpleFlagArg
+      name: PATH_TO_SAMTOOLS
+    optional: true
+  - !Flag
+    description: "sequence of an adapter that was ligated to the 3' end. The adapter\
+      \ itself and anything that follows is trimmed. (default: AGATCGGAAGAGCACACGTCTG)"
+    synonyms:
+    - --adapter-seq
+    args: !SimpleFlagArg
+      name: ADAPTER_SEQ
+    optional: true
+  - !Flag
+    description: 'Boolean indicates whether to remove in the final output the "chr"
+      prefix in the chromosome name (default: True)'
+    synonyms:
+    - --remove-chr-prefix
+    args: !SimpleFlagArg
+      name: REMOVE_CHR_PREFIX
+    optional: true
+  - !Flag
+    description: 'Boolean indicates whether to add extra two columns in the output
+      (allc) file regarding the genotype information of each site. The first (second)
+      column contain the number of basecalls that support the reference gentype (variant)
+      for nucleotides in the sequence context. (default: False)'
+    synonyms:
+    - --add-snp-info
+    args: !SimpleFlagArg
+      name: ADD_SNP_INFO
+    optional: true
+  - !Flag
+    description: 'name of the chromosome/region that you want to use to estimate the
+      non-conversion rate of your sample, or the non-conversion rate you would like
+      to use. Consequently, control is either a string, or a decimal. If control is
+      a string then it should be in the following format: "chrom:start-end". If you
+      would like to specify an entire chromosome simply use "chrom:" (default: None)'
+    synonyms:
+    - --unmethylated-control
+    args: !SimpleFlagArg
+      name: UNMETHYLATED_CONTROL
+    optional: true
+  - !Flag
+    description: 'Indicates that you would like to perform a binomial test on each
+      cytosine to delineate cytosines that are significantly methylated than noise
+      due to the failure of bisulfite conversion. (default: False)'
+    synonyms:
+    - --binom-test
+    args: !SimpleFlagArg
+      name: BINOM_TEST
+    optional: true
+  - !Flag
+    description: 'float indicating the adjusted p-value cutoff you wish to use for
+      determining whether or not a site is methylated (default: 0.01)'
+    synonyms:
+    - --sig-cutoff
+    args: !SimpleFlagArg
+      name: SIG_CUTOFF
+    optional: true
+  - !Flag
+    description: 'Minimum MAPQ for reads to be included. (default: 30)'
+    synonyms:
+    - --min-mapq
+    args: !SimpleFlagArg
+      name: MIN_MAPQ
+    optional: true
+  - !Flag
+    description: 'Integer indicating the minimum number of reads for a site to be
+      tested. (default: 0)'
+    synonyms:
+    - --min-cov
+    args: !SimpleFlagArg
+      name: MIN_COV
+    optional: true
+  - !Flag
+    description: 'Indicates the maximum number of times to try to remove adapters.
+      Useful when an adapter gets appended multiple times. (default: None)'
+    synonyms:
+    - --max-adapter-removal
+    args: !SimpleFlagArg
+      name: MAX_ADAPTER_REMOVAL
+    optional: true
+  - !Flag
+    description: 'Minimum overlap length. If the overlap between the read and the
+      adapter is shorter than LENGTH, the read is not modified. This reduces the no.
+      of bases trimmed purely due to short random adapter matches. (default: None)'
+    synonyms:
+    - --overlap-length
+    args: !SimpleFlagArg
+      name: OVERLAP_LENGTH
+    optional: true
+  - !Flag
+    description: 'Flag that causes negative quality values to be set to zero (workaround
+      to avoid segmentation faults in BWA) (default: None)'
+    synonyms:
+    - --zero-cap
+    args: !SimpleFlagArg
+      name: ZERO_CAP
+    optional: true
+  - !Flag
+    description: 'maximum allowed error rate (no. of errors divided by the length
+      of the matching region) (default: None)'
+    synonyms:
+    - --error-rate
+    args: !SimpleFlagArg
+      name: ERROR_RATE
+    optional: true
+  - !Flag
+    description: 'allows you to trim low-quality ends from reads before adapter removal.
+      The algorithm is the same as the one used by BWA (Subtract CUTOFF from all qualities;
+      compute partial sums from all indices to the end of the sequence; cut sequence
+      at the index at which the sum is minimal). (default: 10)'
+    synonyms:
+    - --min-qual-score
+    args: !SimpleFlagArg
+      name: MIN_QUAL_SCORE
+    optional: true
+  - !Flag
+    description: 'indicates the minimum length a read must be to be kept. Reads that
+      are too short even before adapter removal are also discarded. In colorspace,
+      an initial primer is not counted. (default: 30)'
+    synonyms:
+    - --min-read-len
+    args: !SimpleFlagArg
+      name: MIN_READ_LEN
+    optional: true
+  - !Flag
+    description: 'Integer indicating the minimum PHRED quality score for a base to
+      be included in the mpileup file (and subsequently to be considered for methylation
+      calling). (default: 1)'
+    synonyms:
+    - --min-base-quality
+    args: !SimpleFlagArg
+      name: MIN_BASE_QUALITY
+    optional: true
+  - !Flag
+    description: 'Boolean indicating that you would like to keep the intermediate
+      files generated by this function. This can be useful for debugging, but in general
+      should be left False. (default: False)'
+    synonyms:
+    - --keep-temp-files
+    args: !SimpleFlagArg
+      name: KEEP_TEMP_FILES
+    optional: true
+  command:
+  - methylpy
+  - single-end-pipeline
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'list of all the read 1 fastq files you would like to run through
+      the pipeline. Note that globbing is supported here (i.e., you can use * in your
+      paths) (default: None)'
+    synonyms:
+    - --read1-files
+    args: !RepeatFlagArg
+      name: READ1_FILES
+    optional: true
+  - !Flag
+    description: 'list of all the read 2 fastq files you would like to run through
+      the pipeline. Note that globbing is supported here (i.e., you can use * in your
+      paths) (default: None)'
+    synonyms:
+    - --read2-files
+    args: !RepeatFlagArg
+      name: READ2_FILES
+    optional: true
+  - !Flag
+    description: 'String indicating the name of the sample you are processing. It
+      will be included in the output files. (default: None)'
+    synonyms:
+    - --sample
+    args: !SimpleFlagArg
+      name: SAMPLE
+    optional: true
+  - !Flag
+    description: 'string indicating the path to the forward strand reference created
+      by build_ref (default: None)'
+    synonyms:
+    - --forward-ref
+    args: !SimpleFlagArg
+      name: FORWARD_REF
+    optional: true
+  - !Flag
+    description: 'string indicating the path to the reverse strand reference created
+      by build_ref (default: None)'
+    synonyms:
+    - --reverse-ref
+    args: !SimpleFlagArg
+      name: REVERSE_REF
+    optional: true
+  - !Flag
+    description: 'string indicating the path to a fasta file containing the sequences
+      you used for mapping (default: None)'
+    synonyms:
+    - --ref-fasta
+    args: !SimpleFlagArg
+      name: REF_FASTA
+    optional: true
+  - !Flag
+    description: "list of library IDs (in the same order as the files list) indiciating\
+      \ which libraries each set of fastq files belong to. If you use a glob, you\
+      \ only need to indicate the library ID for those fastqs once (i.e., the length\
+      \ of files and libraries should be the same) (default: ['libA'])"
+    synonyms:
+    - --libraries
+    args: !RepeatFlagArg
+      name: LIBRARIES
+    optional: true
+  - !Flag
+    description: 'Path to a directory where you would like the output to be stored.
+      The default is the same directory as the input fastqs. (default: )'
+    synonyms:
+    - --path-to-output
+    args: !SimpleFlagArg
+      name: PATH_TO_OUTPUT
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to process data in PBAT (Post-Bisulfite
+      Adaptor Tagging) mode, in which reads will be mapped to opposite strand of C-T
+      converted genome and the forward strand of G-A converted genome. (default: False)'
+    synonyms:
+    - --pbat
+    args: !SimpleFlagArg
+      name: PBAT
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to check dependency requirements are
+      met. (default: False)'
+    synonyms:
+    - --check-dependency
+    args: !SimpleFlagArg
+      name: CHECK_DEPENDENCY
+    optional: true
+  - !Flag
+    description: 'Number of processors you wish to use to parallelize this function
+      (default: 1)'
+    synonyms:
+    - --num-procs
+    args: !SimpleFlagArg
+      name: NUM_PROCS
+    optional: true
+  - !Flag
+    description: 'Parameter to pass to unix sort with -S/--buffer-size command (default:
+      500M)'
+    synonyms:
+    - --sort-mem
+    args: !SimpleFlagArg
+      name: SORT_MEM
+    optional: true
+  - !Flag
+    description: 'Number of base(s) upstream of each cytosine that you wish to include
+      in output file. Recommend value 1 for NOMe-seq processing since the upstream
+      base is required to tell apart cytosine at GC context. (default: 0)'
+    synonyms:
+    - --num-upstream-bases
+    args: !SimpleFlagArg
+      name: NUM_UPSTREAM_BASES
+    optional: true
+  - !Flag
+    description: 'Number of base(s) downstream of each cytosine that you wish to include
+      in output file. Recommend value to be at least 1 to separate cytosines at different
+      sequence contexts. (default: 2)'
+    synonyms:
+    - --num-downstream-bases
+    args: !SimpleFlagArg
+      name: NUM_DOWNSTREAM_BASES
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to generate the final output file that
+      contains the methylation state of each cytosine. If set to be false, only alignment
+      file (in BAM format) will be generated. (default: True)'
+    synonyms:
+    - --generate-allc-file
+    args: !SimpleFlagArg
+      name: GENERATE_ALLC_FILE
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to generate intermediate mpileup file
+      to save space. However, skipping mpileup step may cause problem due to the nature
+      of python. Not skipping this step is recommended. (default: True)'
+    synonyms:
+    - --generate-mpileup-file
+    args: !SimpleFlagArg
+      name: GENERATE_MPILEUP_FILE
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to compress (by gzip) the final output
+      (allc file(s)). (default: True)'
+    synonyms:
+    - --compress-output
+    args: !SimpleFlagArg
+      name: COMPRESS_OUTPUT
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to bgzip compressed allc files and tabix
+      index. (default: False)'
+    synonyms:
+    - --bgzip
+    args: !SimpleFlagArg
+      name: BGZIP
+    optional: true
+  - !Flag
+    description: 'Path to bgzip installation (default: )'
+    synonyms:
+    - --path-to-bgzip
+    args: !SimpleFlagArg
+      name: PATH_TO_BGZIP
+    optional: true
+  - !Flag
+    description: 'Path to tabix installation (default: )'
+    synonyms:
+    - --path-to-tabix
+    args: !SimpleFlagArg
+      name: PATH_TO_TABIX
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to trim reads using cutadapt. (default:
+      True)'
+    synonyms:
+    - --trim-reads
+    args: !SimpleFlagArg
+      name: TRIM_READS
+    optional: true
+  - !Flag
+    description: 'Path to cutadapt installation (default: )'
+    synonyms:
+    - --path-to-cutadapt
+    args: !SimpleFlagArg
+      name: PATH_TO_CUTADAPT
+    optional: true
+  - !Flag
+    description: 'Path to bowtie/bowtie2 installation (default: )'
+    synonyms:
+    - --path-to-aligner
+    args: !SimpleFlagArg
+      name: PATH_TO_ALIGNER
+    optional: true
+  - !Flag
+    description: 'Aligner to use. Currently, methylpy supports bowtie, bowtie2 and
+      minimap2. (default: bowtie2)'
+    synonyms:
+    - --aligner
+    args: !SimpleFlagArg
+      name: ALIGNER
+    optional: true
+  - !Flag
+    description: 'list of strings indicating options you would like passed to bowtie
+      (e.g., "-k 1 -l 2") (default: None)'
+    synonyms:
+    - --aligner-options
+    args: !RepeatFlagArg
+      name: ALIGNER_OPTIONS
+    optional: true
+  - !Flag
+    description: 'Boolean indicates whether to merge alignment results from two converted
+      genomes by MAPQ score. Be default, we only keep read pairs that are mapped to
+      only one of the two converted genomes. If this option is set to True, for a
+      read pair that could be mapped to both converted genomes, the alignment that
+      achieves larger MAPQ score will be kept. (default: False)'
+    synonyms:
+    - --merge-by-max-mapq
+    args: !SimpleFlagArg
+      name: MERGE_BY_MAX_MAPQ
+    optional: true
+  - !Flag
+    description: 'Boolean indicates whether to remove clonal reads or not (default:
+      False)'
+    synonyms:
+    - --remove-clonal
+    args: !SimpleFlagArg
+      name: REMOVE_CLONAL
+    optional: true
+  - !Flag
+    description: 'The path to the picard.jar in picard tools. The jar file can be
+      downloaded from https://broadinstitute.github.io/picard/index.html (default
+      is current dir) (default: )'
+    synonyms:
+    - --path-to-picard
+    args: !SimpleFlagArg
+      name: PATH_TO_PICARD
+    optional: true
+  - !Flag
+    description: 'Boolean indicates whether to store the metric file from picard.
+      (default: True)'
+    synonyms:
+    - --keep-clonal-stats
+    args: !SimpleFlagArg
+      name: KEEP_CLONAL_STATS
+    optional: true
+  - !Flag
+    description: 'String indicating the option pass the java when running picard.
+      (default: -Xmx20g)'
+    synonyms:
+    - --java-options
+    args: !SimpleFlagArg
+      name: JAVA_OPTIONS
+    optional: true
+  - !Flag
+    description: 'Path to samtools installation (default: )'
+    synonyms:
+    - --path-to-samtools
+    args: !SimpleFlagArg
+      name: PATH_TO_SAMTOOLS
+    optional: true
+  - !Flag
+    description: "sequence of an adapter that was ligated to the 3' end of read 1.\
+      \ The adapter itself and anything that follows is trimmed. (default: AGATCGGAAGAGCACACGTCTGAAC)"
+    synonyms:
+    - --adapter-seq-read1
+    args: !SimpleFlagArg
+      name: ADAPTER_SEQ_READ1
+    optional: true
+  - !Flag
+    description: "sequence of an adapter that was ligated to the 3' end of read 2.\
+      \ The adapter itself and anything that follows is trimmed. (default: AGATCGGAAGAGCGTCGTGTAGGGA)"
+    synonyms:
+    - --adapter-seq-read2
+    args: !SimpleFlagArg
+      name: ADAPTER_SEQ_READ2
+    optional: true
+  - !Flag
+    description: 'Boolean indicates whether to remove in the final output the "chr"
+      prefix in the chromosome name (default: True)'
+    synonyms:
+    - --remove-chr-prefix
+    args: !SimpleFlagArg
+      name: REMOVE_CHR_PREFIX
+    optional: true
+  - !Flag
+    description: 'Boolean indicates whether to add extra two columns in the output
+      (allc) file regarding the genotype information of each site. The first (second)
+      column contain the number of basecalls that support the reference gentype (variant)
+      for nucleotides in the sequence context. (default: False)'
+    synonyms:
+    - --add-snp-info
+    args: !SimpleFlagArg
+      name: ADD_SNP_INFO
+    optional: true
+  - !Flag
+    description: 'name of the chromosome/region that you want to use to estimate the
+      non-conversion rate of your sample, or the non-conversion rate you would like
+      to use. Consequently, control is either a string, or a decimal. If control is
+      a string then it should be in the following format: "chrom:start-end". If you
+      would like to specify an entire chromosome simply use "chrom:" (default: None)'
+    synonyms:
+    - --unmethylated-control
+    args: !SimpleFlagArg
+      name: UNMETHYLATED_CONTROL
+    optional: true
+  - !Flag
+    description: 'Indicates that you would like to perform a binomial test on each
+      cytosine to delineate cytosines that are significantly methylated than noise
+      due to the failure of bisulfite conversion. (default: False)'
+    synonyms:
+    - --binom-test
+    args: !SimpleFlagArg
+      name: BINOM_TEST
+    optional: true
+  - !Flag
+    description: 'float indicating the adjusted p-value cutoff you wish to use for
+      determining whether or not a site is methylated (default: 0.01)'
+    synonyms:
+    - --sig-cutoff
+    args: !SimpleFlagArg
+      name: SIG_CUTOFF
+    optional: true
+  - !Flag
+    description: 'Minimum MAPQ for reads to be included. (default: 30)'
+    synonyms:
+    - --min-mapq
+    args: !SimpleFlagArg
+      name: MIN_MAPQ
+    optional: true
+  - !Flag
+    description: 'Integer indicating the minimum number of reads for a site to be
+      tested. (default: 0)'
+    synonyms:
+    - --min-cov
+    args: !SimpleFlagArg
+      name: MIN_COV
+    optional: true
+  - !Flag
+    description: 'Indicates the maximum number of times to try to remove adapters.
+      Useful when an adapter gets appended multiple times. (default: None)'
+    synonyms:
+    - --max-adapter-removal
+    args: !SimpleFlagArg
+      name: MAX_ADAPTER_REMOVAL
+    optional: true
+  - !Flag
+    description: 'Minimum overlap length. If the overlap between the read and the
+      adapter is shorter than LENGTH, the read is not modified. This reduces the no.
+      of bases trimmed purely due to short random adapter matches. (default: None)'
+    synonyms:
+    - --overlap-length
+    args: !SimpleFlagArg
+      name: OVERLAP_LENGTH
+    optional: true
+  - !Flag
+    description: 'Flag that causes negative quality values to be set to zero (workaround
+      to avoid segmentation faults in BWA) (default: None)'
+    synonyms:
+    - --zero-cap
+    args: !SimpleFlagArg
+      name: ZERO_CAP
+    optional: true
+  - !Flag
+    description: 'maximum allowed error rate (no. of errors divided by the length
+      of the matching region) (default: None)'
+    synonyms:
+    - --error-rate
+    args: !SimpleFlagArg
+      name: ERROR_RATE
+    optional: true
+  - !Flag
+    description: 'allows you to trim low-quality ends from reads before adapter removal.
+      The algorithm is the same as the one used by BWA (Subtract CUTOFF from all qualities;
+      compute partial sums from all indices to the end of the sequence; cut sequence
+      at the index at which the sum is minimal). (default: 10)'
+    synonyms:
+    - --min-qual-score
+    args: !SimpleFlagArg
+      name: MIN_QUAL_SCORE
+    optional: true
+  - !Flag
+    description: 'indicates the minimum length a read must be to be kept. Reads that
+      are too short even before adapter removal are also discarded. In colorspace,
+      an initial primer is not counted. (default: 30)'
+    synonyms:
+    - --min-read-len
+    args: !SimpleFlagArg
+      name: MIN_READ_LEN
+    optional: true
+  - !Flag
+    description: 'Integer indicating the minimum PHRED quality score for a base to
+      be included in the mpileup file (and subsequently to be considered for methylation
+      calling). (default: 1)'
+    synonyms:
+    - --min-base-quality
+    args: !SimpleFlagArg
+      name: MIN_BASE_QUALITY
+    optional: true
+  - !Flag
+    description: 'Boolean indicating that you would like to keep the intermediate
+      files generated by this function. This can be useful for debugging, but in general
+      should be left False. (default: False)'
+    synonyms:
+    - --keep-temp-files
+    args: !SimpleFlagArg
+      name: KEEP_TEMP_FILES
+    optional: true
+  command:
+  - methylpy
+  - paired-end-pipeline
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'List of allc files. (default: None)'
+    synonyms:
+    - --allc-files
+    args: !RepeatFlagArg
+      name: ALLC_FILES
+    optional: true
+  - !Flag
+    description: 'String indicating the prefix for output files (default: None)'
+    synonyms:
+    - --output-prefix
+    args: !SimpleFlagArg
+      name: OUTPUT_PREFIX
+    optional: true
+  - !Flag
+    description: 'List of space separated samples matching allc files. By default
+      sample names will be inferred from allc filenames (default: None)'
+    synonyms:
+    - --samples
+    args: !RepeatFlagArg
+      name: SAMPLES
+    optional: true
+  - !Flag
+    description: 'Space separated listing of chromosomes where DMRs will be called.
+      If not specified, DMRs will be called across the chromosomes/contigs that contained
+      any data in all allc files. (default: None)'
+    synonyms:
+    - --chroms
+    args: !RepeatFlagArg
+      name: CHROMS
+    optional: true
+  - !Flag
+    description: "List of space separated mc nucleotide contexts for which you want\
+      \ to look for DMRs. These classifications may use the wildcards H (indicating\
+      \ anything but a G) and N (indicating any nucleotide). (default: ['CGN'])"
+    synonyms:
+    - --mc-type
+    args: !RepeatFlagArg
+      name: MC_TYPE
+    optional: true
+  - !Flag
+    description: 'Number of processors you wish to use to parallelize this function
+      (default: 1)'
+    synonyms:
+    - --num-procs
+    args: !SimpleFlagArg
+      name: NUM_PROCS
+    optional: true
+  - !Flag
+    description: 'Minimum number of reads that must cover a site for it to be considered.
+      (default: 0)'
+    synonyms:
+    - --min-cov
+    args: !SimpleFlagArg
+      name: MIN_COV
+    optional: true
+  - !Flag
+    description: 'Maximum distance two significant sites can be to be included in
+      the same block. (default: 250)'
+    synonyms:
+    - --dmr-max-dist
+    args: !SimpleFlagArg
+      name: DMR_MAX_DIST
+    optional: true
+  - !Flag
+    description: 'Float indicating at what FDR you want to consider a result significant.
+      (default: 0.01)'
+    synonyms:
+    - --sig-cutoff
+    args: !SimpleFlagArg
+      name: SIG_CUTOFF
+    optional: true
+  - !Flag
+    description: 'Number of permutation tests you would like to run to estimate the
+      p-values of the differential methylation tests (default: 3000)'
+    synonyms:
+    - --num-sims
+    args: !SimpleFlagArg
+      name: NUM_SIMS
+    optional: true
+  - !Flag
+    description: 'Minimum number of permuation tests you\ would d like to run for
+      each mC (default: 100)'
+    synonyms:
+    - --min-tests
+    args: !SimpleFlagArg
+      name: MIN_TESTS
+    optional: true
+  - !Flag
+    description: 'The minimum number of differentially methylated sites that a differentially
+      methylated region needs to contain to be reported (default: 0)'
+    synonyms:
+    - --min-num-dms
+    args: !SimpleFlagArg
+      name: MIN_NUM_DMS
+    optional: true
+  - !Flag
+    description: 'A list of categories that each respective sample belongs to; the
+      categories must begin at 0 and increase by 1 for each category added. ex: samples
+      [A,B,C] categories [0,1,2] or categories [0, 1, 0] (default: False)'
+    synonyms:
+    - --sample-category
+    args: !RepeatFlagArg
+      name: SAMPLE_CATEGORY
+    optional: true
+  - !Flag
+    description: 'Integer indicating the maximum distance two sites can be from one
+      another for their methylation counts to be combined. This option helps with
+      low coverage experiments where you may want to leverage the correlation of methylation
+      between sites to get more statistical power. (default: 0)'
+    synonyms:
+    - --mc-max-dist
+    args: !SimpleFlagArg
+      name: MC_MAX_DIST
+    optional: true
+  - !Flag
+    description: 'Results will have to show deviations in the contingency table in
+      the same direction as the rest of the window (default: 0.01)'
+    synonyms:
+    - --resid-cutoff
+    args: !SimpleFlagArg
+      name: RESID_CUTOFF
+    optional: true
+  - !Flag
+    description: 'Boolean indicating that you would like to keep the intermediate
+      files generated by this function. This can be useful for debugging, but in general
+      should be left False. (default: False)'
+    synonyms:
+    - --keep-temp-files
+    args: !SimpleFlagArg
+      name: KEEP_TEMP_FILES
+    optional: true
+  - !Flag
+    description: 'The minimum number of each sample category that must be present
+      in every block that is output. (default: 2)'
+    synonyms:
+    - --min-cluster
+    args: !SimpleFlagArg
+      name: MIN_CLUSTER
+    optional: true
+  - !Flag
+    description: 'A seed to provide to the random number generator for permutation
+      testing. Only change this if you are debugging and want to make sure the permutation
+      output is consistent (default: -1)'
+    synonyms:
+    - --seed
+    args: !SimpleFlagArg
+      name: SEED
+    optional: true
+  command:
+  - methylpy
+  - DMRfind
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'File storing the results of RMS tests (from DMRfind function. (default:
+      None)'
+    synonyms:
+    - --input-rms-file
+    args: !SimpleFlagArg
+      name: INPUT_RMS_FILE
+    optional: true
+  - !Flag
+    description: 'String indicating the name of output file (default: None)'
+    synonyms:
+    - --output-file
+    args: !SimpleFlagArg
+      name: OUTPUT_FILE
+    optional: true
+  - !Flag
+    description: 'A list of samples for collapsing blocks (default: False)'
+    synonyms:
+    - --collapse-samples
+    args: !RepeatFlagArg
+      name: COLLAPSE_SAMPLES
+    optional: true
+  - !Flag
+    description: 'A list of categories that each respective sample belongs to; the
+      categories must begin at 0 and increase by 1 for each category added. ex: samples
+      [A,B,C] categories [0,1,2] or categories [0, 1, 0] (default: False)'
+    synonyms:
+    - --sample-category
+    args: !RepeatFlagArg
+      name: SAMPLE_CATEGORY
+    optional: true
+  - !Flag
+    description: 'The minimum number of each sample category that must be present
+      in every block that is output. (default: 2)'
+    synonyms:
+    - --min-cluster
+    args: !SimpleFlagArg
+      name: MIN_CLUSTER
+    optional: true
+  - !Flag
+    description: 'Float indicating at what FDR you want to consider a result significant.
+      (default: 0.01)'
+    synonyms:
+    - --sig-cutoff
+    args: !SimpleFlagArg
+      name: SIG_CUTOFF
+    optional: true
+  - !Flag
+    description: 'Maximum distance two significant sites can be to be included in
+      the same block. (default: 250)'
+    synonyms:
+    - --dmr-max-dist
+    args: !SimpleFlagArg
+      name: DMR_MAX_DIST
+    optional: true
+  - !Flag
+    description: 'The minimum number of differentially methylated sites that a differentially
+      methylated region needs to contain to be reported (default: 0)'
+    synonyms:
+    - --min-num-dms
+    args: !SimpleFlagArg
+      name: MIN_NUM_DMS
+    optional: true
+  - !Flag
+    description: 'Results will have to show deviations in the contingency table in
+      the same direction as the rest of the window (default: 0.01)'
+    synonyms:
+    - --resid-cutoff
+    args: !SimpleFlagArg
+      name: RESID_CUTOFF
+    optional: true
+  - !Flag
+    description: 'Number of permutation tests you would like to run to estimate the
+      p-values of the differential methylation tests (default: 3000)'
+    synonyms:
+    - --num-sims
+    args: !SimpleFlagArg
+      name: NUM_SIMS
+    optional: true
+  - !Flag
+    description: 'Minimum number of permuation tests you\ would d like to run for
+      each mC (default: 100)'
+    synonyms:
+    - --min-tests
+    args: !SimpleFlagArg
+      name: MIN_TESTS
+    optional: true
+  command:
+  - methylpy
+  - reidentify-DMR
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'A tab-separate file that specifies genomic intervals. The file contains
+      a header.First three columns are required to be chromosome, start and end, which
+      are 1-based cooridates. It may contain additional column(s). (default: None)'
+    synonyms:
+    - --input-tsv-file
+    args: !SimpleFlagArg
+      name: INPUT_TSV_FILE
+    optional: true
+  - !Flag
+    description: 'Name of output file (default: None)'
+    synonyms:
+    - --output-file
+    args: !SimpleFlagArg
+      name: OUTPUT_FILE
+    optional: true
+  - !Flag
+    description: 'List of allc files. (default: None)'
+    synonyms:
+    - --allc-files
+    args: !RepeatFlagArg
+      name: ALLC_FILES
+    optional: true
+  - !Flag
+    description: 'List of space separated samples matching allc files. By default
+      sample names will be inferred from allc filenames (default: None)'
+    synonyms:
+    - --samples
+    args: !RepeatFlagArg
+      name: SAMPLES
+    optional: true
+  - !Flag
+    description: "List of space separated mc nucleotide contexts for which you want\
+      \ to look for DMRs. These classifications may use the wildcards H (indicating\
+      \ anything but a G) and N (indicating any nucleotide). (default: ['CGN'])"
+    synonyms:
+    - --mc-type
+    args: !RepeatFlagArg
+      name: MC_TYPE
+    optional: true
+  - !Flag
+    description: 'Boolean to indicate whether to generate two output extra files with
+      the total basecalls and covered sites in each of the regions. (default: False)'
+    synonyms:
+    - --extra-info
+    args: !SimpleFlagArg
+      name: EXTRA_INFO
+    optional: true
+  - !Flag
+    description: 'Number of processors you wish to use to parallelize this function
+      (default: 1)'
+    synonyms:
+    - --num-procs
+    args: !SimpleFlagArg
+      name: NUM_PROCS
+    optional: true
+  - !Flag
+    description: 'Minimum coverage for a site to be included (default: 0)'
+    synonyms:
+    - --min-cov
+    args: !SimpleFlagArg
+      name: MIN_COV
+    optional: true
+  - !Flag
+    description: 'Maximum coverage for a site to be included. By default this cutoff
+      is not applied. (default: None)'
+    synonyms:
+    - --max-cov
+    args: !SimpleFlagArg
+      name: MAX_COV
+    optional: true
+  - !Flag
+    description: 'size of buffer for reads to be written on hard drive. (default:
+      100000)'
+    synonyms:
+    - --buffer-line-number
+    args: !SimpleFlagArg
+      name: BUFFER_LINE_NUMBER
+    optional: true
+  - !Flag
+    description: 'Indicating whether input tsv file contains a header. If this is
+      set to True, a header will be automatically generated in the output file. (default:
+      False)'
+    synonyms:
+    - --input-no-header
+    args: !SimpleFlagArg
+      name: INPUT_NO_HEADER
+    optional: true
+  command:
+  - methylpy
+  - add-methylation-level
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'BAM file to filter. (default: None)'
+    synonyms:
+    - --input-file
+    args: !SimpleFlagArg
+      name: INPUT_FILE
+    optional: true
+  - !Flag
+    description: 'Name of output file (default: None)'
+    synonyms:
+    - --output-file
+    args: !SimpleFlagArg
+      name: OUTPUT_FILE
+    optional: true
+  - !Flag
+    description: 'string indicating the path to a fasta file containing the sequences
+      you used for mapping (default: None)'
+    synonyms:
+    - --ref-fasta
+    args: !SimpleFlagArg
+      name: REF_FASTA
+    optional: true
+  - !Flag
+    description: 'Minimum MAPQ for reads to be included. (default: 30)'
+    synonyms:
+    - --min-mapq
+    args: !SimpleFlagArg
+      name: MIN_MAPQ
+    optional: true
+  - !Flag
+    description: 'Minimum number of CH sites for mCH level filter to be applied. (default:
+      30)'
+    synonyms:
+    - --min-num-ch
+    args: !SimpleFlagArg
+      name: MIN_NUM_CH
+    optional: true
+  - !Flag
+    description: 'Maximum mCH level for reads to be included. (default: 0.7)'
+    synonyms:
+    - --max-mch-level
+    args: !SimpleFlagArg
+      name: MAX_MCH_LEVEL
+    optional: true
+  - !Flag
+    description: 'size of buffer for reads to be written on hard drive. (default:
+      100000)'
+    synonyms:
+    - --buffer-line-number
+    args: !SimpleFlagArg
+      name: BUFFER_LINE_NUMBER
+    optional: true
+  command:
+  - methylpy
+  - bam-quality-filter
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'bam file that contains mapped bisulfite sequencing reads. (default:
+      None)'
+    synonyms:
+    - --input-file
+    args: !SimpleFlagArg
+      name: INPUT_FILE
+    optional: true
+  - !Flag
+    description: 'String indicating the name of the sample you are processing. It
+      will be included in the output files. (default: None)'
+    synonyms:
+    - --sample
+    args: !SimpleFlagArg
+      name: SAMPLE
+    optional: true
+  - !Flag
+    description: 'string indicating the path to a fasta file containing the sequences
+      you used for mapping (default: None)'
+    synonyms:
+    - --ref-fasta
+    args: !SimpleFlagArg
+      name: REF_FASTA
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether the input BAM file is from paired-end
+      data. (default: False)'
+    synonyms:
+    - --paired-end
+    args: !SimpleFlagArg
+      name: PAIRED_END
+    optional: true
+  - !Flag
+    description: 'Path to a directory where you would like the output to be stored.
+      The default is the same directory as the input fastqs. (default: )'
+    synonyms:
+    - --path-to-output
+    args: !SimpleFlagArg
+      name: PATH_TO_OUTPUT
+    optional: true
+  - !Flag
+    description: 'Number of processors you wish to use to parallelize this function
+      (default: 1)'
+    synonyms:
+    - --num-procs
+    args: !SimpleFlagArg
+      name: NUM_PROCS
+    optional: true
+  - !Flag
+    description: 'Number of base(s) upstream of each cytosine that you wish to include
+      in output file. Recommend value 1 for NOMe-seq processing since the upstream
+      base is required to tell apart cytosine at GC context. (default: 0)'
+    synonyms:
+    - --num-upstream-bases
+    args: !SimpleFlagArg
+      name: NUM_UPSTREAM_BASES
+    optional: true
+  - !Flag
+    description: 'Number of base(s) downstream of each cytosine that you wish to include
+      in output file. Recommend value to be at least 1 to separate cytosines at different
+      sequence contexts. (default: 2)'
+    synonyms:
+    - --num-downstream-bases
+    args: !SimpleFlagArg
+      name: NUM_DOWNSTREAM_BASES
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to generate the final output file that
+      contains the methylation state of each cytosine. If set to be false, only alignment
+      file (in BAM format) will be generated. (default: True)'
+    synonyms:
+    - --generate-allc-file
+    args: !SimpleFlagArg
+      name: GENERATE_ALLC_FILE
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to generate intermediate mpileup file
+      to save space. However, skipping mpileup step may cause problem due to the nature
+      of python. Not skipping this step is recommended. (default: True)'
+    synonyms:
+    - --generate-mpileup-file
+    args: !SimpleFlagArg
+      name: GENERATE_MPILEUP_FILE
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to compress (by gzip) the final output
+      (allc file(s)). (default: True)'
+    synonyms:
+    - --compress-output
+    args: !SimpleFlagArg
+      name: COMPRESS_OUTPUT
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to bgzip compressed allc files and tabix
+      index. (default: False)'
+    synonyms:
+    - --bgzip
+    args: !SimpleFlagArg
+      name: BGZIP
+    optional: true
+  - !Flag
+    description: 'Path to bgzip installation (default: )'
+    synonyms:
+    - --path-to-bgzip
+    args: !SimpleFlagArg
+      name: PATH_TO_BGZIP
+    optional: true
+  - !Flag
+    description: 'Path to tabix installation (default: )'
+    synonyms:
+    - --path-to-tabix
+    args: !SimpleFlagArg
+      name: PATH_TO_TABIX
+    optional: true
+  - !Flag
+    description: 'Path to samtools installation (default: )'
+    synonyms:
+    - --path-to-samtools
+    args: !SimpleFlagArg
+      name: PATH_TO_SAMTOOLS
+    optional: true
+  - !Flag
+    description: 'Boolean indicates whether to remove in the final output the "chr"
+      prefix in the chromosome name (default: True)'
+    synonyms:
+    - --remove-chr-prefix
+    args: !SimpleFlagArg
+      name: REMOVE_CHR_PREFIX
+    optional: true
+  - !Flag
+    description: 'Boolean indicates whether to add extra two columns in the output
+      (allc) file regarding the genotype information of each site. The first (second)
+      column contain the number of basecalls that support the reference gentype (variant)
+      for nucleotides in the sequence context. (default: False)'
+    synonyms:
+    - --add-snp-info
+    args: !SimpleFlagArg
+      name: ADD_SNP_INFO
+    optional: true
+  - !Flag
+    description: 'name of the chromosome/region that you want to use to estimate the
+      non-conversion rate of your sample, or the non-conversion rate you would like
+      to use. Consequently, control is either a string, or a decimal. If control is
+      a string then it should be in the following format: "chrom:start-end". If you
+      would like to specify an entire chromosome simply use "chrom:" (default: None)'
+    synonyms:
+    - --unmethylated-control
+    args: !SimpleFlagArg
+      name: UNMETHYLATED_CONTROL
+    optional: true
+  - !Flag
+    description: 'Indicates that you would like to perform a binomial test on each
+      cytosine to delineate cytosines that are significantly methylated than noise
+      due to the failure of bisulfite conversion. (default: False)'
+    synonyms:
+    - --binom-test
+    args: !SimpleFlagArg
+      name: BINOM_TEST
+    optional: true
+  - !Flag
+    description: 'float indicating the adjusted p-value cutoff you wish to use for
+      determining whether or not a site is methylated (default: 0.01)'
+    synonyms:
+    - --sig-cutoff
+    args: !SimpleFlagArg
+      name: SIG_CUTOFF
+    optional: true
+  - !Flag
+    description: 'Minimum MAPQ for reads to be included. (default: 30)'
+    synonyms:
+    - --min-mapq
+    args: !SimpleFlagArg
+      name: MIN_MAPQ
+    optional: true
+  - !Flag
+    description: 'Integer indicating the minimum number of reads for a site to be
+      tested. (default: 0)'
+    synonyms:
+    - --min-cov
+    args: !SimpleFlagArg
+      name: MIN_COV
+    optional: true
+  - !Flag
+    description: 'Integer indicating the minimum PHRED quality score for a base to
+      be included in the mpileup file (and subsequently to be considered for methylation
+      calling). (default: 1)'
+    synonyms:
+    - --min-base-quality
+    args: !SimpleFlagArg
+      name: MIN_BASE_QUALITY
+    optional: true
+  - !Flag
+    description: 'Boolean indicating that you would like to keep the intermediate
+      files generated by this function. This can be useful for debugging, but in general
+      should be left False. (default: False)'
+    synonyms:
+    - --keep-temp-files
+    args: !SimpleFlagArg
+      name: KEEP_TEMP_FILES
+    optional: true
+  command:
+  - methylpy
+  - call-methylation-state
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'input allc file to be converted to bigwig format (default: None)'
+    synonyms:
+    - --allc-file
+    args: !SimpleFlagArg
+      name: ALLC_FILE
+    optional: true
+  - !Flag
+    description: 'Name of output file (default: None)'
+    synonyms:
+    - --output-file
+    args: !SimpleFlagArg
+      name: OUTPUT_FILE
+    optional: true
+  - !Flag
+    description: 'string indicating the path to a fasta file containing the genome
+      sequences (default: None)'
+    synonyms:
+    - --ref-fasta
+    args: !SimpleFlagArg
+      name: REF_FASTA
+    optional: true
+  - !Flag
+    description: "List of space separated mc nucleotide contexts for which you want\
+      \ to look for DMRs. These classifications may use the wildcards H (indicating\
+      \ anything but a G) and N (indicating any nucleotide). (default: ['CGN'])"
+    synonyms:
+    - --mc-type
+    args: !RepeatFlagArg
+      name: MC_TYPE
+    optional: true
+  - !Flag
+    description: 'Genomic bin size for calculating methylation level (default: 100)'
+    synonyms:
+    - --bin-size
+    args: !SimpleFlagArg
+      name: BIN_SIZE
+    optional: true
+  - !Flag
+    description: 'Minimum sites in a bin for it to be included. (default: 0)'
+    synonyms:
+    - --min-bin-sites
+    args: !SimpleFlagArg
+      name: MIN_BIN_SITES
+    optional: true
+  - !Flag
+    description: 'Minimum total coverage of all sites in a bin for methylation level
+      to be calculated. (default: 0)'
+    synonyms:
+    - --min-bin-cov
+    args: !SimpleFlagArg
+      name: MIN_BIN_COV
+    optional: true
+  - !Flag
+    description: 'Minimum total coverage of a site for it to be included. (default:
+      0)'
+    synonyms:
+    - --min-site-cov
+    args: !SimpleFlagArg
+      name: MIN_SITE_COV
+    optional: true
+  - !Flag
+    description: 'Maximum total coverage of a site for it to be included. (default:
+      None)'
+    synonyms:
+    - --max-site-cov
+    args: !SimpleFlagArg
+      name: MAX_SITE_COV
+    optional: true
+  - !Flag
+    description: 'Path to wigToBigWig executable (default: )'
+    synonyms:
+    - --path-to-wigToBigWig
+    args: !SimpleFlagArg
+      name: PATH_TO_WIGTOBIGWIG
+    optional: true
+  - !Flag
+    description: 'Path to samtools installation (default: )'
+    synonyms:
+    - --path-to-samtools
+    args: !SimpleFlagArg
+      name: PATH_TO_SAMTOOLS
+    optional: true
+  - !Flag
+    description: 'Boolean indicates whether to remove "chr" in the chromosome names
+      in genome sequence file to match chromosome names in input allc file. (default:
+      True)'
+    synonyms:
+    - --remove-chr-prefix
+    args: !SimpleFlagArg
+      name: REMOVE_CHR_PREFIX
+    optional: true
+  - !Flag
+    description: 'Boolean indicates whether to add "chr" in the chromosome names in
+      input allc file to match chromosome names in genome sequence file. This option
+      overrides --remove-chr-prefix. (default: False)'
+    synonyms:
+    - --add-chr-prefix
+    args: !SimpleFlagArg
+      name: ADD_CHR_PREFIX
+    optional: true
+  command:
+  - methylpy
+  - allc-to-bigwig
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'List of allc files to merge. (default: None)'
+    synonyms:
+    - --allc-files
+    args: !RepeatFlagArg
+      name: ALLC_FILES
+    optional: true
+  - !Flag
+    description: 'String indicating the name of output file (default: None)'
+    synonyms:
+    - --output-file
+    args: !SimpleFlagArg
+      name: OUTPUT_FILE
+    optional: true
+  - !Flag
+    description: 'Number of processors to use (default: 1)'
+    synonyms:
+    - --num-procs
+    args: !SimpleFlagArg
+      name: NUM_PROCS
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to compress (by gzip) the final output
+      (default: True)'
+    synonyms:
+    - --compress-output
+    args: !SimpleFlagArg
+      name: COMPRESS_OUTPUT
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to skip the merging of SNP information
+      (default: True)'
+    synonyms:
+    - --skip-snp-info
+    args: !SimpleFlagArg
+      name: SKIP_SNP_INFO
+    optional: true
+  - !Flag
+    description: 'The maximum number of allc files to be merged at the same time.
+      Since OS or python may limit the number of files that can be open at once, value
+      larger than 200 is not recommended (default: 100)'
+    synonyms:
+    - --mini-batch
+    args: !SimpleFlagArg
+      name: MINI_BATCH
+    optional: true
+  command:
+  - methylpy
+  - merge-allc
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'List of allc files to index. (default: None)'
+    synonyms:
+    - --allc-files
+    args: !RepeatFlagArg
+      name: ALLC_FILES
+    optional: true
+  - !Flag
+    description: 'Number of processors to use (default: 1)'
+    synonyms:
+    - --num-procs
+    args: !SimpleFlagArg
+      name: NUM_PROCS
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to index allc files whose index files
+      already exist. (default: True)'
+    synonyms:
+    - --reindex
+    args: !SimpleFlagArg
+      name: REINDEX
+    optional: true
+  command:
+  - methylpy
+  - index-allc
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'allc files to filter. (default: None)'
+    synonyms:
+    - --allc-files
+    args: !RepeatFlagArg
+      name: ALLC_FILES
+    optional: true
+  - !Flag
+    description: 'Name of output files. Each output file matches each allc file. (default:
+      None)'
+    synonyms:
+    - --output-files
+    args: !RepeatFlagArg
+      name: OUTPUT_FILES
+    optional: true
+  - !Flag
+    description: 'Number of processors you wish to use to parallelize this function
+      (default: 1)'
+    synonyms:
+    - --num-procs
+    args: !SimpleFlagArg
+      name: NUM_PROCS
+    optional: true
+  - !Flag
+    description: 'List of space separated cytosine nucleotide contexts for sites to
+      be included in output file. These classifications may use the wildcards H (indicating
+      anything but a G) and N (indicating any nucleotide). (default: None)'
+    synonyms:
+    - --mc-type
+    args: !RepeatFlagArg
+      name: MC_TYPE
+    optional: true
+  - !Flag
+    description: 'Minimum number of reads that must cover a site for it to be included
+      in the output file. (default: 0)'
+    synonyms:
+    - --min-cov
+    args: !SimpleFlagArg
+      name: MIN_COV
+    optional: true
+  - !Flag
+    description: 'Maximum number of reads that must cover a site for it to be included
+      in the output file. By default this cutoff is not applied. (default: None)'
+    synonyms:
+    - --max-cov
+    args: !SimpleFlagArg
+      name: MAX_COV
+    optional: true
+  - !Flag
+    description: 'Maximum numbers of mismatch basecalls allowed in each nucleotide
+      in the sequence context of a site for it to be included in output file. If the
+      sequence context has three nucleotides, an example of this option is "0 1 2".
+      It requires no mismatch basecall at the first nucleotide, at most one mismatch
+      basecall at the second nucleotide, and at most two at the third nucleotide for
+      a site to be reported. (default: None)'
+    synonyms:
+    - --max-mismatch
+    args: !RepeatFlagArg
+      name: MAX_MISMATCH
+    optional: true
+  - !Flag
+    description: 'Maximum fraction of mismatch basecalls out of unambiguous basecalls
+      allowed in each nucleotide in the sequence context of a site for it to be included
+      in output file. If the sequence context has three nucleotides, an example of
+      this option is "0 0 0.1". It requires no mismatch basecall at the first and
+      second nucleotide, and at most 10% mismatches out of unambiguous basecalls at
+      the third nucleotide for a site to be reported. (default: None)'
+    synonyms:
+    - --max-mismatch-frac
+    args: !RepeatFlagArg
+      name: MAX_MISMATCH_FRAC
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to compress (by gzip) the final output
+      (default: True)'
+    synonyms:
+    - --compress-output
+    args: !SimpleFlagArg
+      name: COMPRESS_OUTPUT
+    optional: true
+  - !Flag
+    description: 'Space separated listing of chromosomes to be included in the output.
+      By default, data of all chromosomes in input allc file will be included. (default:
+      None)'
+    synonyms:
+    - --chroms
+    args: !RepeatFlagArg
+      name: CHROMS
+    optional: true
+  command:
+  - methylpy
+  - filter-allc
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'allc file to be tested. (default: None)'
+    synonyms:
+    - --allc-file
+    args: !SimpleFlagArg
+      name: ALLC_FILE
+    optional: true
+  - !Flag
+    description: 'sample name (default: None)'
+    synonyms:
+    - --sample
+    args: !SimpleFlagArg
+      name: SAMPLE
+    optional: true
+  - !Flag
+    description: 'name of the chromosome/region that you want to use to estimate the
+      non-conversion rate of your sample, or the non-conversion rate you would like
+      to use. Consequently, control is either a string, or a decimal. If control is
+      a string then it should be in the following format: "chrom:start-end". If you
+      would like to specify an entire chromosome simply use "chrom:" (default: None)'
+    synonyms:
+    - --unmethylated-control
+    args: !SimpleFlagArg
+      name: UNMETHYLATED_CONTROL
+    optional: true
+  - !Flag
+    description: 'Path to a directory where you would like the output to be stored.
+      The default is the same directory as the input fastqs. (default: )'
+    synonyms:
+    - --path-to-output
+    args: !SimpleFlagArg
+      name: PATH_TO_OUTPUT
+    optional: true
+  - !Flag
+    description: 'Number of processors you wish to use to parallelize this function
+      (default: 1)'
+    synonyms:
+    - --num-procs
+    args: !SimpleFlagArg
+      name: NUM_PROCS
+    optional: true
+  - !Flag
+    description: 'Minimum number of reads that must cover a site for it to be tested.
+      (default: 2)'
+    synonyms:
+    - --min-cov
+    args: !SimpleFlagArg
+      name: MIN_COV
+    optional: true
+  - !Flag
+    description: 'Boolean indicating whether to compress (by gzip) the final output
+      (default: True)'
+    synonyms:
+    - --compress-output
+    args: !SimpleFlagArg
+      name: COMPRESS_OUTPUT
+    optional: true
+  - !Flag
+    description: 'Float indicating at what FDR you want to consider a result significant.
+      (default: 0.01)'
+    synonyms:
+    - --sig-cutoff
+    args: !SimpleFlagArg
+      name: SIG_CUTOFF
+    optional: true
+  - !Flag
+    description: 'Parameter to pass to unix sort with -S/--buffer-size command (default:
+      500M)'
+    synonyms:
+    - --sort-mem
+    args: !SimpleFlagArg
+      name: SORT_MEM
+    optional: true
+  - !Flag
+    description: 'Boolean indicates whether to remove in the final output the "chr"
+      prefix in the chromosome name (default: True)'
+    synonyms:
+    - --remove-chr-prefix
+    args: !SimpleFlagArg
+      name: REMOVE_CHR_PREFIX
+    optional: true
+  command:
+  - methylpy
+  - test-allc
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

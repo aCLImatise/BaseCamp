@@ -1,0 +1,93 @@
+!Command
+positional:
+- !Positional
+  description: successfully paired reads with modified annotations.
+  position: 0
+  name: pair-pass
+  optional: false
+- !Positional
+  description: raw reads that could not be assigned to a mate-pair.
+  position: 1
+  name: pair-fail
+  optional: false
+named:
+- !Flag
+  description: 'Specify to changes the output directory to the location specified.
+    The input file directory is used if this is not specified. (default: None)'
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUT_DIR
+  optional: true
+- !Flag
+  description: 'Changes the prefix of the successfully processed output file to the
+    string specified. May not be specified with multiple input files. (default: None)'
+  synonyms:
+  - --outname
+  args: !SimpleFlagArg
+    name: OUT_NAME
+  optional: true
+- !Flag
+  description: 'If specified create files containing records that fail processing.
+    (default: False)'
+  synonyms:
+  - --failed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Specify to force output as FASTA rather than FASTQ. (default: None)'
+  synonyms:
+  - --fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "DELIMITER DELIMITER A list of the three delimiters that separate annotation\
+    \ blocks, field names and values, and values within a field, respectively. (default:\
+    \ ('|', '=', ','))"
+  synonyms:
+  - --delim
+  args: !SimpleFlagArg
+    name: DELIMITER
+  optional: true
+- !Flag
+  description: 'The collapse actions to take on all fields copied between files to
+    combine duplicate fields into a single value. The actions "min", "max", "sum"
+    perform the corresponding mathematical operation on numeric annotations. The action
+    "set" collapses annotations into a comma delimited list of unique values. The
+    action "cat" concatenates the values together into a single string. Only applies
+    if the field already exists in the header before being copying from the other
+    file. (default: None)'
+  synonyms:
+  - --act
+  args: !ChoiceFlagArg
+    choices:
+    - min
+    - max
+    - sum
+    - set
+    - cat
+  optional: true
+- !Flag
+  description: '{illumina,solexa,sra,454,presto} The format of the sequence identifier
+    which defines shared coordinate information across mate pairs. (default: presto)'
+  synonyms:
+  - --coord
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- PairSeq.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

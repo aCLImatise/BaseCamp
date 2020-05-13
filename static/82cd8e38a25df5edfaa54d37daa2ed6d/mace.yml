@@ -1,0 +1,103 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: BigWig format file containing coverage calcualted from reads mapped
+    to *forward* strand.
+  synonyms:
+  - -f
+  - --forward
+  args: !SimpleFlagArg
+    name: FORWARD_BW
+  optional: true
+- !Flag
+  description: BigWig format file containing coverage calcualted from reads mapped
+    to *reverse* strand.
+  synonyms:
+  - -r
+  - --reverse
+  args: !SimpleFlagArg
+    name: REVERSE_BW
+  optional: true
+- !Flag
+  description: 'Chromosome size file. Tab or space separated text file with 2 columns:
+    first column contains chromosome name, second column contains chromosome size.
+    Example:chr1 249250621 <NewLine> chr2        243199373 <NewLine> chr3        198022430
+    <NewLine> ...'
+  synonyms:
+  - -s
+  - --chromSize
+  args: !SimpleFlagArg
+    name: CHROMSIZE
+  optional: true
+- !Flag
+  description: "Prefix of output files. NOTE: if 'prefix.border.bed' exists and was\
+    \ non-empty, peak calling step will be skipped! So if you want to rerun mace.py\
+    \ from scratch, use different 'prefix' or delete old 'prefix.border.bed' before\
+    \ starting."
+  synonyms:
+  - -o
+  - --out-prefix
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+  optional: true
+- !Flag
+  description: Pvalue cutoff for border detection and subsequent border pairing. default=0.05
+  synonyms:
+  - -p
+  - --pvalue
+  args: !SimpleFlagArg
+    name: PVALUE_CUTOFF
+  optional: true
+- !Flag
+  description: Maximum distance allowed for border pairing. default=100
+  synonyms:
+  - -m
+  - --max-dist
+  args: !SimpleFlagArg
+    name: MAX_DISTANCE
+  optional: true
+- !Flag
+  description: Peaks located closely within this window will be merged. default=5
+    (bp)
+  synonyms:
+  - -e
+  - --fz-window
+  args: !SimpleFlagArg
+    name: FUZZY_SIZE
+  optional: true
+- !Flag
+  description: Background window size used to determine background signal level. default=100
+    (bp)
+  synonyms:
+  - -w
+  - --bg-window
+  args: !SimpleFlagArg
+    name: WINDOW_SIZE
+  optional: true
+- !Flag
+  description: Minmum coverage signal used to build model (i.e. estimate optimal peak
+    pair size). default=2.0
+  synonyms:
+  - -n
+  - --fold
+  args: !SimpleFlagArg
+    name: SIGNAL_FOLD
+  optional: true
+command:
+- mace.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

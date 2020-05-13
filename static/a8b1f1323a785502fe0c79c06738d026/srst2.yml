@@ -1,0 +1,281 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Single end read file(s) for analysing (may be gzipped)
+  synonyms:
+  - --input_se
+  args: !RepeatFlagArg
+    name: INPUT_SE
+  optional: true
+- !Flag
+  description: Paired end read files for analysing (may be gzipped)
+  synonyms:
+  - --input_pe
+  args: !RepeatFlagArg
+    name: INPUT_PE
+  optional: true
+- !Flag
+  description: Switch on if all the input read sets belong to a single sample, and
+    you want to merge their data to get a single result
+  synonyms:
+  - --merge_paired
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Designator for forward reads (only used if NOT in MiSeq format sample_S1_L001_R1_001.fastq.gz;
+    otherwise default is _1, i.e. expect forward reads as sample_1.fastq.gz)
+  synonyms:
+  - --forward
+  args: !SimpleFlagArg
+    name: FORWARD
+  optional: true
+- !Flag
+  description: Designator for reverse reads (only used if NOT in MiSeq format sample_S1_L001_R2_001.fastq.gz;
+    otherwise default is _2, i.e. expect forward reads as sample_2.fastq.gz
+  synonyms:
+  - --reverse
+  args: !SimpleFlagArg
+    name: REVERSE
+  optional: true
+- !Flag
+  description: 'Read file type (for bowtie2; default is q=fastq; other options: qseq=solexa,
+    f=fasta).'
+  synonyms:
+  - --read_type
+  args: !ChoiceFlagArg
+    choices:
+    - q
+    - qseq
+    - f
+  optional: true
+- !Flag
+  description: Fasta file of MLST alleles (optional)
+  synonyms:
+  - --mlst_db
+  args: !SimpleFlagArg
+    name: MLST_DB
+  optional: true
+- !Flag
+  description: Character(s) separating gene name from allele number in MLST database
+    (default "-", as in arcc-1)
+  synonyms:
+  - --mlst_delimiter
+  args: !SimpleFlagArg
+    name: MLST_DELIMITER
+  optional: true
+- !Flag
+  description: ST definitions for MLST scheme (required if mlst_db supplied and you
+    want to calculate STs)
+  synonyms:
+  - --mlst_definitions
+  args: !SimpleFlagArg
+    name: MLST_DEFINITIONS
+  optional: true
+- !Flag
+  description: Maximum number of mismatches per read for MLST allele calling (default
+    10)
+  synonyms:
+  - --mlst_max_mismatch
+  args: !SimpleFlagArg
+    name: MLST_MAX_MISMATCH
+  optional: true
+- !Flag
+  description: Fasta file/s for gene databases (optional)
+  synonyms:
+  - --gene_db
+  args: !RepeatFlagArg
+    name: GENE_DB
+  optional: true
+- !Flag
+  description: Switch OFF verbose reporting of gene typing
+  synonyms:
+  - --no_gene_details
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Maximum number of mismatches per read for gene detection and allele
+    calling (default 10)
+  synonyms:
+  - --gene_max_mismatch
+  args: !SimpleFlagArg
+    name: GENE_MAX_MISMATCH
+  optional: true
+- !Flag
+  description: Minimum %coverage cutoff for gene reporting (default 90)
+  synonyms:
+  - --min_coverage
+  args: !SimpleFlagArg
+    name: MIN_COVERAGE
+  optional: true
+- !Flag
+  description: Maximum %divergence cutoff for gene reporting (default 10)
+  synonyms:
+  - --max_divergence
+  args: !SimpleFlagArg
+    name: MAX_DIVERGENCE
+  optional: true
+- !Flag
+  description: Minimum mean depth to flag as dubious allele call (default 5)
+  synonyms:
+  - --min_depth
+  args: !SimpleFlagArg
+    name: MIN_DEPTH
+  optional: true
+- !Flag
+  description: Minimum edge depth to flag as dubious allele call (default 2)
+  synonyms:
+  - --min_edge_depth
+  args: !SimpleFlagArg
+    name: MIN_EDGE_DEPTH
+  optional: true
+- !Flag
+  description: Probability of sequencing error (default 0.01)
+  synonyms:
+  - --prob_err
+  args: !SimpleFlagArg
+    name: PROB_ERR
+  optional: true
+- !Flag
+  description: '% increase in score allowed to choose non-truncated allele'
+  synonyms:
+  - --truncation_score_tolerance
+  args: !SimpleFlagArg
+    name: TRUNCATION_SCORE_TOLERANCE
+  optional: true
+- !Flag
+  description: Stop mapping after this number of reads have been mapped (otherwise
+    map all)
+  synonyms:
+  - --stop_after
+  args: !SimpleFlagArg
+    name: STOP_AFTER
+  optional: true
+- !Flag
+  description: Other arguments to pass to bowtie2 (must be escaped, e.g. "\--no-mixed".
+  synonyms:
+  - --other
+  args: !SimpleFlagArg
+    name: OTHER
+  optional: true
+- !Flag
+  description: Read discarded from alignment if either of its ends has unaligned overlap
+    with the reference that is longer than this value (default 10)
+  synonyms:
+  - --max_unaligned_overlap
+  args: !SimpleFlagArg
+    name: MAX_UNALIGNED_OVERLAP
+  optional: true
+- !Flag
+  description: Samtools -q parameter (default 1)
+  synonyms:
+  - --mapq
+  args: !SimpleFlagArg
+    name: MAPQ
+  optional: true
+- !Flag
+  description: Samtools -Q parameter (default 20)
+  synonyms:
+  - --baseq
+  args: !SimpleFlagArg
+    name: BASEQ
+  optional: true
+- !Flag
+  description: Other arguments to pass to samtools mpileup (must be escaped, e.g.
+    "\-A").
+  synonyms:
+  - --samtools_args
+  args: !SimpleFlagArg
+    name: SAMTOOLS_ARGS
+  optional: true
+- !Flag
+  description: Prefix for srst2 output files
+  synonyms:
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Switch ON logging to file (otherwise log to stdout)
+  synonyms:
+  - --log
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Switch ON verbose reporting of all scores
+  synonyms:
+  - --save_scores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If a matching alleles is not found, report the consensus allele. Note,
+    only SNP differences are considered, not indels.
+  synonyms:
+  - --report_new_consensus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Report the consensus allele for the most likely allele. Note, only
+    SNP differences are considered, not indels.
+  synonyms:
+  - --report_all_consensus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use existing SAM file generated by Bowtie2 if available, otherwise
+    they will be generated
+  synonyms:
+  - --use_existing_bowtie2_sam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use existing pileups if available, otherwise they will be generated
+  synonyms:
+  - --use_existing_pileup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use existing scores files if available, otherwise they will be generated
+  synonyms:
+  - --use_existing_scores
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Keep interim files (sam & unsorted bam), otherwise they will be deleted
+    after sorted bam is created
+  synonyms:
+  - --keep_interim_alignment
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use multiple threads in Bowtie and Samtools
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: SRST2 results files to compile (any new results from this run will
+    also be incorporated)
+  synonyms:
+  - --prev_output
+  args: !RepeatFlagArg
+    name: PREV_OUTPUT
+  optional: true
+command:
+- srst2
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

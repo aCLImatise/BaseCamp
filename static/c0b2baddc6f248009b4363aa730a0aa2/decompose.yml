@@ -1,0 +1,232 @@
+!Command
+positional:
+- !Positional
+  description: Alignment file that contains all samples and sequences in FASTA format
+  position: 0
+  name: FILEPATH
+  optional: false
+named:
+- !Flag
+  description: 'Minimum entropy for a component to have in order to be picked as a
+    discriminant. Defeault: 0.096500'
+  synonyms:
+  - -m
+  - --min-entropy
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Skip the m normalization heuristics. Normalization heuristics normalize
+    --min-entropy parameter per node before decomposition depending on the node size,
+    and the most abundant sequence in the dataset. Please see the documentation for
+    more comprehensive description and best practices. Default: False'
+  synonyms:
+  - -X
+  - --skip-m-normalization
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Number of discriminant locations to be used for entropy decomposition
+    discriminant. Defeault: 4'
+  synonyms:
+  - -d
+  - --number-of-discriminants
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Minimum number of reads in a node for decomposition to continue. Decomposition
+    will continue for any node that has more reads than this number as far as they
+    present an entropy that is larger than --min-entropy. This number should be chosen
+    carefully depending on the size of the sample. Althought this parameter is available
+    to you for historical reasons, For noise filtering, you are encouraged to use
+    --min- substantive-abundance parameter instead.
+  synonyms:
+  - -A
+  - --min-actual-abundance
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Unlike "actual" abundance, "substantive" abundance is interested in
+    the abundance of the most abundant read in a node. If the abundance of the most
+    abundant unique sequence in a node is smaller than the number given with this
+    parameter the node will be eliminated and not included in downstream analyses.
+    This is the most appropriate, and most cases, the only noise filtering parameter.
+    If the user does not set a value for minimum substantive abudnance, MED algorithm
+    will set one by default by dividing the number of reads in the input dataset by
+    5,000.
+  synonyms:
+  - -M
+  - --min-substantive-abundance
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: This parameter is being used to remove "outliers" from nodes. The similarity
+    of a read in a node is less than --maximum-variation-allowed than the representative
+    sequence of the node, it is identified as an outlier. If not set, this value is
+    being computed depending on the average read length.
+  synonyms:
+  - -V
+  - --maximum-variation-allowed
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: Character that separates sample name from unique info in the defline.
+    For insatnce if the defline says >sample-1_GD7BRW402IVMZE, the separator should
+    be set to "_" (which is the default character).
+  synonyms:
+  - -t
+  - --sample-name-separator
+  args: !SimpleFlagArg
+    name: CHAR
+  optional: true
+- !Flag
+  description: Output directory
+  synonyms:
+  - -o
+  - --output-directory
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+  optional: true
+- !Flag
+  description: When a project name is set, given name will be used in figures whenever
+    possible.
+  synonyms:
+  - -p
+  - --project
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: When set, figure with frequency curve for unique reads and entropy
+    distribution will be generated for each node. Depending on the number of nodes,
+    this might be a time consuming step.
+  synonyms:
+  - -g
+  - --generate-frequency-curves
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When set, outliers will not be removed from nodes.
+  synonyms:
+  - -S
+  - --skip-removing-outliers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When set, nodes that differ from each other by only one nucleotide
+    that happens to be observed as an insertion at the upstream or downstream of a
+    homopolymer region will be merged.
+  synonyms:
+  - -H
+  - --merge-homopolymer-splits
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Outliers are identified in two places: (1) during the raw topology
+    computation and (2) during the refinement step where distant reads are removed
+    from nodes. This parameter, when set, makes the pipeline go through each read
+    identified as an outlier and try to find the best nodes for them. Please read
+    the documentation for details. This step might take a long time. Default: False'
+  synonyms:
+  - -R
+  - --relocate-outliers
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When set, topology dict with read ids will be generated. This may take
+    a very large disk space and computation time for large data sets
+  synonyms:
+  - -F
+  - --store-topology-dict
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When set, directory with temporary BLAST results will not be deleted
+    at the end of the run. It may be necessary to debug the results
+  synonyms:
+  - -K
+  - --keep-tmp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When set, decomposer does not spawn multiple threads. Default behavior
+    is multi-threaded.
+  synonyms:
+  - -T
+  - --no-threading
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of threads to use. It is a good idea to keep this number smaller
+    than the number of CPU cores available. If not set, this number will be set to
+    90% of available cores, or (available cores - 1) if 10% of the cores is a number
+    smaller than 1
+  synonyms:
+  - -N
+  - --number-of-threads
+  args: !SimpleFlagArg
+    name: INTEGER
+  optional: true
+- !Flag
+  description: TAB delimited categorical mapping of samples to be used for post-analysis
+    visualizations. Refer to the tutorial for the file format
+  synonyms:
+  - -E
+  - --sample-mapping
+  args: !SimpleFlagArg
+    name: FILEPATH
+  optional: true
+- !Flag
+  description: When set, decomposer will generate a static HTML output to browse analysis
+    results
+  synonyms:
+  - --skip-gen-html
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When set, decomposer will not attempt to generate figures post analysis
+  synonyms:
+  - --skip-gen-figures
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When set, input FASTA will not be checked for potential errors
+  synonyms:
+  - --skip-check-input-file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When set, GEXF files for network and topology will not be generated
+  synonyms:
+  - --skip-gexf-files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When set, the pipeline will do only the essential steps, skipping anything
+    auxiliary, even if other parameters require otherwise. Please do not use it other
+    than benchmarking or testing purposes
+  synonyms:
+  - --quick
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- decompose
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

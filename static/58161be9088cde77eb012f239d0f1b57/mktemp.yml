@@ -1,0 +1,68 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: create a directory, not a file
+  synonyms:
+  - -d
+  - --directory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not create anything; merely print a name (unsafe)
+  synonyms:
+  - -u
+  - --dry-run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: suppress diagnostics about file/dir-creation failure
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: append SUFF to TEMPLATE; SUFF must not contain a slash. This option
+    is implied if TEMPLATE does not end in X
+  synonyms:
+  - --suffix
+  args: !SimpleFlagArg
+    name: SUFF
+  optional: true
+- !Flag
+  description: '[=DIR]  interpret TEMPLATE relative to DIR; if DIR is not specified,
+    use $TMPDIR if set, else /tmp.  With this option, TEMPLATE must not be an absolute
+    name; unlike with -t, TEMPLATE may contain slashes, but mktemp creates only the
+    final component'
+  synonyms:
+  - -p
+  - --tmpdir
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: 'interpret TEMPLATE as a single file name component, relative to a
+    directory: $TMPDIR, if set; else the directory specified via -p; else /tmp [deprecated]'
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- mktemp
+subcommands: []
+help_flag: !Flag
+  description: this help and exit
+  synonyms:
+  - --help
+  args: !SimpleFlagArg
+    name: display
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: version information and exit
+  synonyms:
+  - --version
+  args: !SimpleFlagArg
+    name: output
+  optional: true

@@ -1,0 +1,59 @@
+!Command
+positional:
+- !Positional
+  description: Directory with subfolders named as k<read length>)
+  position: 0
+  name: kmer_dir
+  optional: false
+- !Positional
+  description: Path to 2 column tsv file with first column as chromosome and second
+    column as its size. Will be used to identify order of the chromosomes.
+  position: 1
+  name: chrsize_path
+  optional: false
+named:
+- !Flag
+  description: If not specified, a subfolder will be created in kmer_dir names as
+    globalmap_k<smallestkmer>tok<largestkmer>
+  synonyms:
+  - -out_dir
+  args: !SimpleFlagArg
+    name: OUT_DIR
+  optional: true
+- !Flag
+  description: 1-based index for finding chromosome from -chrsize_path. If not specified,
+    it will user -var_id to infer the chromosome for combining mappabilitiy of different
+    kmers.
+  synonyms:
+  - -job_id
+  args: !SimpleFlagArg
+    name: JOB_ID
+  optional: true
+- !Flag
+  description: If -job_id is not specified, job_id will be inferred from environmental
+    variable -var_id.
+  synonyms:
+  - -var_id
+  args: !SimpleFlagArg
+    name: VAR_ID
+  optional: true
+- !Flag
+  description: Specify to merge kmers of two different directories by logical operation
+    AND.
+  synonyms:
+  - -kmer_dir_2
+  args: !SimpleFlagArg
+    name: KMER_DIR_2
+  optional: true
+command:
+- combine_umaps.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

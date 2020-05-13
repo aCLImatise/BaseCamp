@@ -1,0 +1,123 @@
+!Command
+positional:
+- !Positional
+  description: including stdin or compressed file {zip,gz,tar,bz}
+  position: 0
+  name: FASTQ
+  optional: false
+named:
+- !Flag
+  description: "[KMER_BEG:KMER_END:INCREMENT | KMER_LEN] range of kmers or a single\
+    \ kmer to predict 3'adapters (default: 9:11:2)"
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[RATIO_BEG:RATIO_END:INTCREMENT | RATIO] range of ratios or a single
+    ratio to filter less abundant kmers (default: 1.2:1.4:0.1)'
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: show other candidates if any
+  synonyms:
+  - --show-all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: read mapping command to be tested
+  synonyms:
+  - --map-command
+  args: !SimpleFlagArg
+    name: COMMAND
+  optional: true
+- !Flag
+  description: 'subsampling fraction of reads (default: 1.0)'
+  synonyms:
+  - --subsample-rate
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'output directory to write report and cleansed reads (default: ./dnapi_out)'
+  synonyms:
+  - --output-dir
+  args: !SimpleFlagArg
+    name: DIRECTORY
+  optional: true
+- !Flag
+  description: only display report and suppress output files
+  synonyms:
+  - --no-output-files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'place to make temporary directory (default: /tmp)'
+  synonyms:
+  - --temp-dir
+  args: !SimpleFlagArg
+    name: DIRECTORY
+  optional: true
+- !Flag
+  description: list of 3'adapters for evaluation
+  synonyms:
+  - --adapter-seq
+  args: !RepeatFlagArg
+    name: SEQ
+  optional: true
+- !Flag
+  description: "3'adapter match length to trim (default: 7)"
+  synonyms:
+  - --prefix-match
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: 'minimum read length to keep for mapping (default: 16)'
+  synonyms:
+  - --min-len
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: 'maximum read length to keep for mapping (default: 36)'
+  synonyms:
+  - --max-len
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: "trim specified number of bases from 5'ends after adapter removal (default:\
+    \ 0)"
+  synonyms:
+  - --trim-5p
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: "trim specified number of bases from 3'ends after adapter removal (default:\
+    \ 0)"
+  synonyms:
+  - --trim-3p
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+command:
+- dnapi.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

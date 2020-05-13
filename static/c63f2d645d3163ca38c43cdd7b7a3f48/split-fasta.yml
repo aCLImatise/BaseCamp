@@ -1,0 +1,84 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The input file in FASTA format.
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT_FILENAME
+  optional: true
+- !Flag
+  description: Any splitted file should not have the size (in bytes) over this threshold
+    if that is possible. If this is set to 1 then one sequence will be written in
+    each output FASTA file. Default is 2147482648.
+  synonyms:
+  - -t
+  - --threshold
+  args: !SimpleFlagArg
+    name: THRESHOLD
+  optional: true
+- !Flag
+  description: This is another way to split the input FASTA file by giving the number
+    of sequences per output FASTA file. If this option is used it will over ride the
+    '-- threshold'.
+  synonyms:
+  - -f
+  - --seq_per_fasta
+  args: !SimpleFlagArg
+    name: SEQ_PER_FASTA
+  optional: true
+- !Flag
+  description: A file containing the number of nucleotides which are in the input
+    FASTA file. If it is not given then the file size will be used.
+  synonyms:
+  - -s
+  - --size
+  args: !SimpleFlagArg
+    name: SIZE_INPUT_FASTA_FILENAME
+  optional: true
+- !Flag
+  description: A file containing the number of sequences which are in the input FASTA
+    file. If it is not given then the file size divided by 50 will be used. It is
+    used/needed by '--seq_per_fasta'
+  synonyms:
+  - -q
+  - --seqs
+  args: !SimpleFlagArg
+    name: SEQS_INPUT_FASTA_FILENAME
+  optional: true
+- !Flag
+  description: The output file which contains the paths to the splitted FASTA files.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME
+  optional: true
+- !Flag
+  description: The output file which contains the paths to the maximum lengths of
+    the splitted FASTA files.
+  synonyms:
+  - -x
+  - --output-max-lens
+  args: !SimpleFlagArg
+    name: OUTPUT_MAX_LENS_FILENAME
+  optional: true
+command:
+- split-fasta.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,130 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: prefix
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: BAM-or-CRAM
+  optional: false
+named:
+- !Flag
+  description: 'number of BAM decompression threads [default: 0]'
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: threads
+  optional: true
+- !Flag
+  description: chromosome to restrict depth calculation.
+  synonyms:
+  - -c
+  - --chrom
+  args: !SimpleFlagArg
+    name: chrom
+  optional: true
+- !Flag
+  description: '<bed|window>       optional BED file or (integer) window-sizes. '
+  synonyms:
+  - -b
+  - --by
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: dont output per-base depth. skipping this output will speed execution
+    substantially. prefer quantized or thresholded values if possible.
+  synonyms:
+  - -n
+  - --no-per-base
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'fasta file for use with CRAM files [default: ].'
+  synonyms:
+  - -f
+  - --fasta
+  args: !SimpleFlagArg
+    name: fasta
+  optional: true
+- !Flag
+  description: 'exclude reads with any of the bits in FLAG set [default: 1796]'
+  synonyms:
+  - -F
+  - --flag
+  args: !SimpleFlagArg
+    name: FLAG
+  optional: true
+- !Flag
+  description: 'only include reads with any of the bits in FLAG set. default is unset.
+    [default: 0]'
+  synonyms:
+  - -i
+  - --include-flag
+  args: !SimpleFlagArg
+    name: FLAG
+  optional: true
+- !Flag
+  description: dont look at internal cigar operations or correct mate overlaps (recommended
+    for most use-cases).
+  synonyms:
+  - -x
+  - --fast-mode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: write quantized output see docs for description.
+  synonyms:
+  - -q
+  - --quantize
+  args: !SimpleFlagArg
+    name: segments
+  optional: true
+- !Flag
+  description: 'mapping quality threshold. reads with a quality less than this value
+    are ignored [default: 0]'
+  synonyms:
+  - -Q
+  - --mapq
+  args: !SimpleFlagArg
+    name: mapq
+  optional: true
+- !Flag
+  description: for each interval in --by, write number of bases covered by at least
+    threshold bases. Specify multiple integer values separated by ','.
+  synonyms:
+  - -T
+  - --thresholds
+  args: !SimpleFlagArg
+    name: thresholds
+  optional: true
+- !Flag
+  description: output median of each region (in --by) instead of mean.
+  synonyms:
+  - -m
+  - --use-median
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: only calculate depth for these comma-separated read groups IDs.
+  synonyms:
+  - -R
+  - --read-groups
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+command:
+- mosdepth
+subcommands: []
+help_flag: !Flag
+  description: show help
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

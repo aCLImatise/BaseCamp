@@ -1,0 +1,112 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The fasta file that was used as the reference for the two VCF files
+    being compared.
+  synonyms:
+  - --ref
+  args: !SimpleFlagArg
+    name: path to reference FASTA file
+  optional: true
+- !Flag
+  description: The file of variants to be compared to the variants in the truth file.
+  synonyms:
+  - --test
+  args: !SimpleFlagArg
+    name: path to VCF file of test variants
+  optional: true
+- !Flag
+  description: The file of variants to which the test variants will be compared.
+  synonyms:
+  - --truth
+  args: !SimpleFlagArg
+    name: path to VCF file of true variants
+  optional: true
+- !Flag
+  description: Maximum number of base pairs separating the POS values for two variants
+    to be compared. Variants farther than this distance apart will be considered not
+    to be matching.
+  synonyms:
+  - --maxdist
+  args: !SimpleFlagArg
+    name: maximum distance
+  optional: true
+- !Flag
+  description: Minimum size of a variant to be included in a benchmarking comparison.
+    In calculations of recall/sensitivity, this minimum is applied to the size of
+    the "true" variant. In calculations of precision, this minimum is applied to the
+    size of the test variant.
+  synonyms:
+  - --minsize
+  args: !SimpleFlagArg
+    name: minimum size
+  optional: true
+- !Flag
+  description: Prefix to be used in the naming of all output files. A directory name
+    can be included (e.g., "myresults/sampleA") so long as the directory already exists.
+  synonyms:
+  - --prefix
+  args: !SimpleFlagArg
+    name: prefix
+  optional: true
+- !Flag
+  description: File of regions from which to include variants. Used to filter both
+    test and truth variants.
+  synonyms:
+  - --includebed
+  args: !SimpleFlagArg
+    name: BED file of regions to include
+  optional: true
+- !Flag
+  description: String specifying the value in the test VCF record's "FILTER" field
+    in order for a variant to be included in the comparison.
+  synonyms:
+  - --testfilter
+  args: !SimpleFlagArg
+    name: filter string
+  optional: true
+- !Flag
+  description: String specifying the value in the truth VCF record's "FILTER" field
+    in order for a variant to be included in the comparison.
+  synonyms:
+  - --truthfilter
+  args: !SimpleFlagArg
+    name: filter string
+  optional: true
+- !Flag
+  description: Maximum allowable normalized shift between matching test and true variants.
+  synonyms:
+  - --normshift
+  args: !SimpleFlagArg
+    name: normalized shift value
+  optional: true
+- !Flag
+  description: Maximum allowable normalized size difference between matching test
+    and true variants.
+  synonyms:
+  - --normsizediff
+  args: !SimpleFlagArg
+    name: normalized size difference
+  optional: true
+- !Flag
+  description: Maximum allowable normalized edit distance between matching test and
+    true variants.
+  synonyms:
+  - --normsizedist
+  args: !SimpleFlagArg
+    name: normalized edit distance
+  optional: true
+command:
+- SVbenchmark
+subcommands: []
+help_flag: !Flag
+  description: Display documentation. One "--help" gives a brief synopsis, "-h -h"
+    shows all options, "--manual" provides complete documentation.
+  synonyms:
+  - --help
+  - --manual
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

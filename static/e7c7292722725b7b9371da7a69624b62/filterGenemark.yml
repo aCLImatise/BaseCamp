@@ -1,0 +1,52 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Corresponding intron file in gff format
+  synonyms:
+  - --introns
+  args: !SimpleFlagArg
+    name: introns.gff
+  optional: true
+- !Flag
+  description: File in gtf format
+  synonyms:
+  - --genemark
+  args: !SimpleFlagArg
+    name: genemark.gtf
+  optional: true
+- !Flag
+  description: Specifies output file name. Default is 'genemark-input_file_name.c.gtf'  and
+    'genemark-input_file_name.f.good.gtf' and 'genemark-input_file_name.f.bad.gtf'
+    for filtered genes included and not included  in intron file respectively
+  synonyms:
+  - --output
+  args: !SimpleFlagArg
+    name: newfile.gtf
+  optional: true
+- !Flag
+  description: Suppress file output
+  synonyms:
+  - --suppress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Filters intron containing genes as "bad" that have an RNA-Seq supported
+    intron within 2*maximal CDS length of the gene with at least 20% of average intron  multiplicity
+    for that gene (screens also downstream of stop, which either indicates  wrong
+    reading frame, or a downstream UTR)
+  synonyms:
+  - --filterOutShort
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- filterGenemark.pl
+subcommands: []
+help_flag: !Flag
+  description: Print this help message
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

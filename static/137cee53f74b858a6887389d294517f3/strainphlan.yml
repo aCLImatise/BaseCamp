@@ -1,0 +1,345 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The list of sample files (space separated).The wildcard can also be
+    used.
+  synonyms:
+  - --ifn_samples
+  args: !RepeatFlagArg
+    name: IFN_SAMPLES
+  optional: true
+- !Flag
+  description: The list of second sample files (space separated).The wildcard can
+    also be used. Note that only the markers found in the samples or reference genomes
+    specified by --ifn_samples or --ifn_representative_sample or --ifn_ref_genomes
+    with add_reference_genomes_as_second_samples=False will be used to build the phylogenetic
+    trees.
+  synonyms:
+  - --ifn_second_samples
+  args: !RepeatFlagArg
+    name: IFN_SECOND_SAMPLES
+  optional: true
+- !Flag
+  description: The representative sample. The marker list of each species extracted
+    from this sample will be used for all other samples.
+  synonyms:
+  - --ifn_representative_sample
+  args: !SimpleFlagArg
+    name: IFN_REPRESENTATIVE_SAMPLE
+  optional: true
+- !Flag
+  description: Specify the id of the database version to use. If the database files
+    are not found on the local MetaPhlAn2 installation they will be automatically
+    downloaded
+  synonyms:
+  - -x
+  - --index
+  args: !SimpleFlagArg
+    name: INDEX
+  optional: true
+- !Flag
+  description: The database of metaphlan2.py
+  synonyms:
+  - --mpa_pkl
+  args: !SimpleFlagArg
+    name: MPA_PKL
+  optional: true
+- !Flag
+  description: The output directory.
+  synonyms:
+  - --output_dir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+- !Flag
+  description: The marker file in fasta format.
+  synonyms:
+  - --ifn_markers
+  args: !SimpleFlagArg
+    name: IFN_MARKERS
+  optional: true
+- !Flag
+  description: The number of processors are used for the main threads. Default 1.
+  synonyms:
+  - --nprocs_main
+  args: !SimpleFlagArg
+    name: NPROCS_MAIN
+  optional: true
+- !Flag
+  description: The number of processors are used for loading samples. Default nprocs_main.
+  synonyms:
+  - --nprocs_load_samples
+  args: !SimpleFlagArg
+    name: NPROCS_LOAD_SAMPLES
+  optional: true
+- !Flag
+  description: The number of processors are used for aligning and cleaning markers.
+    Default nprocs_main.
+  synonyms:
+  - --nprocs_align_clean
+  args: !SimpleFlagArg
+    name: NPROCS_ALIGN_CLEAN
+  optional: true
+- !Flag
+  description: The number of processors are used for running raxml. Default nprocs_main.
+  synonyms:
+  - --nprocs_raxml
+  args: !SimpleFlagArg
+    name: NPROCS_RAXML
+  optional: true
+- !Flag
+  description: The number of runs for bootstraping when building the tree. Default
+    0.
+  synonyms:
+  - --bootstrap_raxml
+  args: !SimpleFlagArg
+    name: BOOTSTRAP_RAXML
+  optional: true
+- !Flag
+  description: The reference genome file names. They are separated by spaces.
+  synonyms:
+  - --ifn_ref_genomes
+  args: !RepeatFlagArg
+    name: IFN_REF_GENOMES
+  optional: true
+- !Flag
+  description: Add reference genomes as second samples. Default "False". Note that
+    only the markers found in the samples or reference genomes specified by --ifn_samples
+    or --ifn_representative_sample or --ifn_ref_genomes with add_reference_genomes_as_second_samples=False
+    will be used to build the phylogenetic trees.
+  synonyms:
+  - --add_reference_genomes_as_second_samples
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The consensus markers with the rate of N nucleotides greater than this
+    threshold are removed. Default 0.2.
+  synonyms:
+  - --N_in_marker
+  args: !SimpleFlagArg
+    name: N_IN_MARKER
+  optional: true
+- !Flag
+  description: The number of nucleotides will be deleted from each of two ends of
+    a marker. Default 50.
+  synonyms:
+  - --marker_strip_length
+  args: !SimpleFlagArg
+    name: MARKER_STRIP_LENGTH
+  optional: true
+- !Flag
+  description: In each sample, the clades with the rate of present markers less than
+    this threshold are removed. Default 0.8.
+  synonyms:
+  - --marker_in_clade
+  args: !SimpleFlagArg
+    name: MARKER_IN_CLADE
+  optional: true
+- !Flag
+  description: In each sample/reference genomes specified by --ifn_second_samples,
+    or --add_reference_genomes_as_second_samples, the clades with the rate of present
+    markers less than this threshold are removed. Default 0.8.
+  synonyms:
+  - --second_marker_in_clade
+  args: !SimpleFlagArg
+    name: SECOND_MARKER_IN_CLADE
+  optional: true
+- !Flag
+  description: Only clades present in at least sample_in_clade samples are kept. Default
+    2.
+  synonyms:
+  - --sample_in_clade
+  args: !SimpleFlagArg
+    name: SAMPLE_IN_CLADE
+  optional: true
+- !Flag
+  description: If the percentage of samples that a marker present in is less than
+    this threshold, that marker is removed. Default 0.8.
+  synonyms:
+  - --sample_in_marker
+  args: !SimpleFlagArg
+    name: SAMPLE_IN_MARKER
+  optional: true
+- !Flag
+  description: If the number of the trailing nucleotide columns in aligned markers
+    with the percentage of gaps greater than gap_in_trailing_col is less than gap_trailing_col_limit,
+    these columns will be removed. Default 0.2.
+  synonyms:
+  - --gap_in_trailing_col
+  args: !SimpleFlagArg
+    name: GAP_IN_TRAILING_COL
+  optional: true
+- !Flag
+  description: If the number of the trailing nucleotide columns in aligned markers
+    with the percentage of gaps greater than gap_in_trailing_col is less than gap_trailing_col_limit,
+    these columns will be removed. Default 101.
+  synonyms:
+  - --gap_trailing_col_limit
+  args: !SimpleFlagArg
+    name: GAP_TRAILING_COL_LIMIT
+  optional: true
+- !Flag
+  description: The internal nucleotide columns in aligned markers with the percentage
+    of gaps greater than gap_in_internal_col will be removed. Default 0.3.
+  synonyms:
+  - --gap_in_internal_col
+  args: !SimpleFlagArg
+    name: GAP_IN_INTERNAL_COL
+  optional: true
+- !Flag
+  description: The samples with full sequences from all markers and having the percentage
+    of gaps greater than this threshold will be removed. Default 0.2.
+  synonyms:
+  - --gap_in_sample
+  args: !SimpleFlagArg
+    name: GAP_IN_SAMPLE
+  optional: true
+- !Flag
+  description: The samples specified by --ifn_second_samples with full sequences from
+    all markers and having the percentage of gaps greater than this threshold will
+    be removed. Default 0.2.
+  synonyms:
+  - --second_gap_in_sample
+  args: !SimpleFlagArg
+    name: SECOND_GAP_IN_SAMPLE
+  optional: true
+- !Flag
+  description: In aligned markers, if the percentage of nucleotide columns containing
+    more than N_count Ns less than this threshold, these columns will be removed.
+    Default 0.8.
+  synonyms:
+  - --N_col
+  args: !SimpleFlagArg
+    name: N_COL
+  optional: true
+- !Flag
+  description: In aligned markers, if the percentage of nucleotide columns containing
+    more than N_count Ns less than N_col threshold, these columns will be removed.
+    Default 0.
+  synonyms:
+  - --N_count
+  args: !SimpleFlagArg
+    name: N_COUNT
+  optional: true
+- !Flag
+  description: In each concatenated sequence of a sample, sequential gap positions
+    is a gap group. A gap group with length greater than this threshold is considered
+    as a long gap group. If the ratio between the number of unique positions in all
+    long gap groups and the concatenated sequence length is less than long_gap_percentage,
+    these positions will be removed from all concatenated sequences. Default 2.
+  synonyms:
+  - --long_gap_length
+  args: !SimpleFlagArg
+    name: LONG_GAP_LENGTH
+  optional: true
+- !Flag
+  description: Combining this threshold with long_gap_length to removed long gaps.
+    Default 0.8.
+  synonyms:
+  - --long_gap_percentage
+  args: !SimpleFlagArg
+    name: LONG_GAP_PERCENTAGE
+  optional: true
+- !Flag
+  description: The p_value to reject a non-polymorphic site.Default 0.05.
+  synonyms:
+  - --p_value
+  args: !SimpleFlagArg
+    name: P_VALUE
+  optional: true
+- !Flag
+  description: The clades (space seperated) for which the script will compute the
+    marker alignments in fasta format and the phylogenetic trees. If a file name is
+    specified, the clade list in that file where each clade name is on a line will
+    be read.Default "automatically identify all clades".
+  synonyms:
+  - --clades
+  args: !RepeatFlagArg
+    name: CLADES
+  optional: true
+- !Flag
+  description: The file name containing the list of considered markers. The other
+    markers will be discarded. Default "None".
+  synonyms:
+  - --marker_list_fn
+  args: !SimpleFlagArg
+    name: MARKER_LIST_FN
+  optional: true
+- !Flag
+  description: Only print the potential clades and stop without building any tree.
+    This option is useful when you want to check quickly all possible clades and rerun
+    only for some specific ones. Default "False".
+  synonyms:
+  - --print_clades_only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The alignment program. Default "muscle".
+  synonyms:
+  - --alignment_program
+  args: !ChoiceFlagArg
+    choices:
+    - muscle
+    - mafft
+  optional: true
+- !Flag
+  description: Set marker_in_clade=0.5, sample_in_marker=0.5, N_in_marker=0.5, gap_in_sample=0.5.
+    Default "False".
+  synonyms:
+  - --relaxed_parameters
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set marker_in_clade=0.2, sample_in_marker=0.2, N_in_marker=0.8, gap_in_sample=0.8.
+    Default "False".
+  synonyms:
+  - --relaxed_parameters2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set gap_in_trailing_col=0.9, gap_in_internal_col=0.9, gap_in_sample=0.9,
+    second_gap_in_sample=0.5, sample_in_marker=0.1, marker_in_clade=0.1, second_marker_in_clade=0.1,
+    Default "False".
+  synonyms:
+  - --relaxed_parameters3
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Keep the alignment files of all markers before cleaning step.
+  synonyms:
+  - --keep_alignment_files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Keep the alignment files of all markers before truncating the starting
+    and ending parts, and cleaning step. This is equivalent to --keep_alignment_files
+    --marker_strip_length 0
+  synonyms:
+  - --keep_full_alignment_files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Save sample2fullfreq to a msgpack file sample2fullfreq.msgpack.
+  synonyms:
+  - --save_sample2fullfreq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use multithreading. Default "Use multiprocessing".
+  synonyms:
+  - --use_threads
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- strainphlan.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

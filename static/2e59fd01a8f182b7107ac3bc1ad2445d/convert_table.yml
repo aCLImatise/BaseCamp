@@ -1,0 +1,55 @@
+!Command
+positional:
+- !Positional
+  description: 'Input table to convert. If there are multiple input files (e.g. if
+    multiple HUMAnN2 gene tables for different samples should be converted to a single
+    PICRUSt2 table) then specify them all: file1 file2 file3...'
+  position: 0
+  name: INPUT
+  optional: false
+named:
+- !Flag
+  description: Path to output. Corresponds to folder name if multiple files are output,
+    otherwise it will be a filename.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Type of conversion to perform ('contrib_to_legacy', 'humann2_unstrat_to_picrust2',
+    'humann2_strat_to_picrust2', 'picrust2_unstrat_to_humann2_split', 'picrust2_strat_to_humann2_split',
+    or 'picrust2_to_humann2_merged').
+  synonyms:
+  - -c
+  - --conversion
+  args: !SimpleFlagArg
+    name: CONVERSION
+  optional: true
+- !Flag
+  description: When converting to legacy contributional table output abundance (i.e.
+    OTUAbundanceInSample column) as raw abundance rather than relative abundances
+    (relative abundances are the default).
+  synonyms:
+  - --raw_abun
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- convert_table.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

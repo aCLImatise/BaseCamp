@@ -1,0 +1,473 @@
+!Command
+positional: []
+named: []
+command:
+- ganon
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ', --rank           Target taxonomic rank for classification [assembly,taxid,species,genus,...].
+      Default: species'
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --kmer-size      The k-mer size for the interleaved bloom filter.
+      Default: 19'
+    synonyms:
+    - -k
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --hash-functions  The number of hash functions for the interleaved
+      bloom filter. Default: 3'
+    synonyms:
+    - -n
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --max-fp         Max. false positive rate for k-mer classification.
+      Default: 0.05'
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --max-bloom-size  Approx. maximum filter size in Megabytes (MB).
+      Will estimate best --bin-length based on --kmer-size, --hash-functions and --max-fp
+      [Mutually exclusive --fixed-bloom-size]'
+    synonyms:
+    - -m
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --bin-length     Maximum length (in bp) for each bin. Default:
+      auto'
+    synonyms:
+    - -l
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --threads        Number of subprocesses/threads to use. Default:
+      2'
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Fixed size for filter in Megabytes (MB), will ignore --max-fp [Mutually
+      exclusive --max-bloom-size]
+    synonyms:
+    - --fixed-bloom-size
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Fragment length (in bp). Set to 0 to not fragment sequences. Default:
+      --bin-length - --overlap-length'
+    synonyms:
+    - --fragment-length
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Fragment overlap length (in bp). Should be bigger than the read
+      length used for classification. Default: 300'
+    synonyms:
+    - --overlap-length
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ [ ...]]  Mode to obtain sequence information. For each sequence
+      entry provided, ganon requires taxonomic and seq. length information. If a small
+      number of sequences is provided (<50000) or when --rank assembly, ganon will
+      automatically obtain data with NCBI E-utils websevices (eutils). Offline mode
+      will download batch files from NCBI Taxonomy and look for taxonomic ids in the
+      order provided. Options: [nucl_gb nucl_wgs nucl_est nucl_gss pdb prot dead_nucl
+      dead_wgs dead_prot], eutils (force webservices) or auto (uses eutils or [nucl_gb
+      nucl_wgs]). Default: auto [Mutually exclusive --seq- info-file]'
+    synonyms:
+    - --seq-info
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Pre-generated file with sequence information (seqid <tab> seq.len
+      <tab> taxid [<tab> assembly id]) [Mutually exclusive --seq-info]
+    synonyms:
+    - --seq-info-file
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ [ ...]] Force use of a specific version of the (taxdump.tar.gz)
+      or (nodes.dmp names.dmp [merged.dmp]) file(s) from NCBI Taxonomy (otherwise
+      it will be automatically downloaded)'
+    synonyms:
+    - --taxdump-file
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Directory containing input files
+    synonyms:
+    - --input-directory
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Extension of files to use with --input-directory (provide it without
+      * expansion, e.g. ".fna.gz")
+    synonyms:
+    - --input-extension
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Verbose mode for ganon-build
+    synonyms:
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Database output prefix (.ibf, .map, .tax, .gnn will be created)
+    synonyms:
+    - -d
+    - --db-prefix
+    args: !SimpleFlagArg
+      name: db_prefix
+    optional: true
+  - !Flag
+    description: '[ [ ...]], --input-files [ [ ...]] Input reference sequence fasta
+      files [.gz]'
+    synonyms:
+    - -i
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - ganon
+  - build
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ', --output-db-prefix  Output database prefix (.ibf, .map, .tax,
+      .gnn). Default: overwrite current --db-prefix'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ', --threads        Number of subprocesses/threads to use. Default:
+      2'
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ [ ...]]  Mode to obtain sequence information. For each sequence
+      entry provided, ganon requires taxonomic and seq. length information. If a small
+      number of sequences is provided (<50000) or when --rank assembly, ganon will
+      automatically obtained data with NCBI E-utils websevices (eutils). Offline mode
+      will download batch files from NCBI Taxonomy and look for taxonomic ids in the
+      order provided. Options: [nucl_gb nucl_wgs nucl_est nucl_gss pdb prot dead_nucl
+      dead_wgs dead_prot], eutils (force webservices) or auto (uses eutils or [nucl_gb
+      nucl_wgs]). Default: auto [Mutually exclusive --seq-info-file]'
+    synonyms:
+    - --seq-info
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Pre-generated file with sequence information (seqid <tab> seq.len
+      <tab> taxid [<tab> assembly id]) [Mutually exclusive --seq-info]
+    synonyms:
+    - --seq-info-file
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[ [ ...]] Force use of a specific version of the (taxdump.tar.gz)
+      or (nodes.dmp names.dmp [merged.dmp]) file(s) from NCBI Taxonomy (otherwise
+      it will be automatically downloaded)'
+    synonyms:
+    - --taxdump-file
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Directory containing input files
+    synonyms:
+    - --input-directory
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Extension of files to use with --input-directory (provide it without
+      * expansion, e.g. ".fna.gz")
+    synonyms:
+    - --input-extension
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Verbose mode for ganon-build
+    synonyms:
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Database input prefix (.ibf, .map, .tax, .gnn)
+    synonyms:
+    - -d
+    - --db-prefix
+    args: !SimpleFlagArg
+      name: db_prefix
+    optional: true
+  - !Flag
+    description: '[ [ ...]], --input-files [ [ ...]] Input reference sequence fasta
+      files [.gz]'
+    synonyms:
+    - -i
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - ganon
+  - update
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[HIERARCHY_LABELS [HIERARCHY_LABELS ...]], --hierarchy-labels [HIERARCHY_LABELS
+      [HIERARCHY_LABELS ...]] Hierarchy definition, one for each database input. Can
+      also be a string, but input will be sorted to define order (e.g. 1 1 2 3). Default:
+      1'
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[MIN_KMERS [MIN_KMERS ...]], --min-kmers [MIN_KMERS [MIN_KMERS ...]]
+      Min. percentage of k-mers matching to consider a read assigned. Single value
+      or one per database (e.g. 0.5 0.7 1 0.25). Default: 0.25 [Mutually exclusive
+      --max- error]'
+    synonyms:
+    - -k
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[MAX_ERROR [MAX_ERROR ...]], --max-error [MAX_ERROR [MAX_ERROR ...]]
+      Max. number of errors allowed. Single value or one per database (e.g. 3 3 4
+      0) [Mutually exclusive --min- kmers]'
+    synonyms:
+    - -e
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[MAX_ERROR_UNIQUE [MAX_ERROR_UNIQUE ...]], --max-error-unique [MAX_ERROR_UNIQUE
+      [MAX_ERROR_UNIQUE ...]] Max. number of errors allowed for unique assignments
+      after filtering. Matches below this error rate will not be discarded, but assigned
+      to a parent taxonomic level. Single value or one per hierarchy (e.g. 0 1 2).
+      -1 to disable. Default: -1'
+    synonyms:
+    - -u
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[STRATA_FILTER [STRATA_FILTER ...]], --strata-filter [STRATA_FILTER
+      [STRATA_FILTER ...]] Additional errors allowed (relative to the best match)
+      to filter and select matches. Single value or one per hierarchy (e.g. 0 1 2).
+      -1 to disable filtering. Default: 0'
+    synonyms:
+    - -l
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Number of k-mers to skip during classification. Can speed up analysis
+      but may reduce recall. (e.g. 1 = all k-mers, 3 = every 3rd k-mer). Default:
+      2'
+    synonyms:
+    - -f
+    - --offset
+    args: !SimpleFlagArg
+      name: OFFSET
+    optional: true
+  - !Flag
+    description: Output prefix for .lca and .rep. Empty to output to STDOUT (only
+      .lca will be printed)
+    synonyms:
+    - -o
+    - --output-prefix
+    args: !SimpleFlagArg
+      name: OUTPUT_PREFIX
+    optional: true
+  - !Flag
+    description: Output an additional file with all matches (.all). File can be very
+      large.
+    synonyms:
+    - -a
+    - --output-all
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output an additional file with unclassified read headers (.unc)
+    synonyms:
+    - -n
+    - --output-unclassified
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: When using multiple hierarchical levels, output everything in one
+      file instead of one per hierarchy
+    synonyms:
+    - -s
+    - --output-single
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[RANKS [RANKS ...]] Ranks to show in the report (.tre). "all" for
+      all identified ranks. empty for default ranks: superkingdom phylum class order
+      family genus species species+ assembly. This file can be re-generated with the
+      ganon report command.'
+    synonyms:
+    - --ranks
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Number of subprocesses/threads to use. Default: 3'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  - !Flag
+    description: Verbose mode for ganon-classify
+    synonyms:
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[db_prefix [db_prefix ...]], --db-prefix [db_prefix [db_prefix ...]]
+      Database input prefix[es]'
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[reads.fq[.gz] [reads.fq[.gz] ...]], --single-reads [reads.fq[.gz]
+      [reads.fq[.gz] ...]] Multi-fastq[.gz] file[s] to classify'
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[reads.1.fq[.gz] reads.2.fq[.gz] [reads.1.fq[.gz] reads.2.fq[.gz]
+      ...]], --paired-reads [reads.1.fq[.gz] reads.2.fq[.gz] [reads.1.fq[.gz] reads.2.fq[.gz]
+      ...]] Multi-fastq[.gz] pairs of file[s] to classify'
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - ganon
+  - classify
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[RANKS [RANKS ...]], --ranks [RANKS [RANKS ...]] Ranks for the final
+      report. "all" for all identified ranks. empty for default ranks: superkingdom
+      phylum class order family genus species species+ assembly'
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Min. number of matches to output. 0 for all. Default: 0'
+    synonyms:
+    - -m
+    - --min-matches
+    args: !SimpleFlagArg
+      name: MIN_MATCHES
+    optional: true
+  - !Flag
+    description: 'Min. percentage of matches to output. 0 for all. Default: 0'
+    synonyms:
+    - -p
+    - --min-matches-perc
+    args: !SimpleFlagArg
+      name: MIN_MATCHES_PERC
+    optional: true
+  - !Flag
+    description: 'Output file for report. Default: STDOUT'
+    synonyms:
+    - -o
+    - --output-report
+    args: !SimpleFlagArg
+      name: OUTPUT_REPORT
+    optional: true
+  - !Flag
+    description: '{prefix}.rep file output from ganon classify'
+    synonyms:
+    - -i
+    - --rep-file
+    args: !SimpleFlagArg
+      name: REP_FILE
+    optional: true
+  - !Flag
+    description: '[db_prefix [db_prefix ...]], --db-prefix [db_prefix [db_prefix ...]]
+      Database prefix[es] used for classification.'
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - ganon
+  - report
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show program's version number and exit.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

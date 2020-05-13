@@ -1,0 +1,123 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Type of receptor. Choices: "BCR" or "TCR" (default: BCR)'
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: TYPE
+  optional: true
+- !Flag
+  description: 'Launch p > 2 threads that will run on separate processors/cores (default:
+    2)'
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+  optional: true
+- !Flag
+  description: 'Name of output file. Note: a ".fasta" extension will be added (default:
+    result.fasta)'
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: 'Single end FASTQ file (optionally gzipped). (example: se.fastq)'
+  synonyms:
+  - -SE
+  args: !SimpleFlagArg
+    name: FASTQ
+  optional: true
+- !Flag
+  description: 'Paired end (left) FASTQ file (optionally gzipped). -PE_2 is required
+    and pairs must match order. (example: pe_1.fastq)'
+  synonyms:
+  - -PE_1
+  args: !SimpleFlagArg
+    name: LEFT
+  optional: true
+- !Flag
+  description: 'Paired end (right) FASTQ file (optionally gzipped). (example: pe_2.fastq)'
+  synonyms:
+  - -PE_2
+  args: !SimpleFlagArg
+    name: RIGHT
+  optional: true
+- !Flag
+  description: 'Options: "human" or "mouse" (default: human). Note: other species
+    are possible by adding the appropriate Bowtie2 indices and following the existing
+    db/ directory structure'
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: GENOME
+  optional: true
+- !Flag
+  description: Absolute path to bowtie2 executable or directory containing it
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: BOWTIE
+  optional: true
+- !Flag
+  description: 'Path to directory for writing intermediate files. (default: current
+    working directory)'
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: TMPDIR
+  optional: true
+- !Flag
+  description: 'Output directory (default: current working directory)'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUT_LOCATION
+  optional: true
+- !Flag
+  description: Allow for partial reconstruction i.e. do not terminate if one or both
+    chains do not assemble.
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Turns on verbosity for more details.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to database directory. Defaults to <path of BASIC.py>/db
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: DATABASE_PATH
+  optional: true
+- !Flag
+  description: 'Use the first <int> number of reads of the input. Default: no limit'
+  synonyms:
+  - --subsample
+  args: !SimpleFlagArg
+    name: SUBSAMPLE
+  optional: true
+command:
+- BASIC.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

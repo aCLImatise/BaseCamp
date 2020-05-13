@@ -1,0 +1,542 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: halFile
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: outputDirectory
+  optional: false
+named:
+- !Flag
+  description: a single-word name of the directory containing the track hub files.
+    Not displayed to hub users. Default=myHub
+  synonyms:
+  - --hub
+  args: !SimpleFlagArg
+    name: HUBLABEL
+  optional: true
+- !Flag
+  description: the short name for the track hub. Suggested maximum length is 17 characters.
+    Displayed as the hub name on the Track Hubs page and the track group name on the
+    browser tracks page. Default=my hub
+  synonyms:
+  - --shortLabel
+  args: !SimpleFlagArg
+    name: SHORTLABEL
+  optional: true
+- !Flag
+  description: a longer descriptive label for the track hub. Suggested maximum length
+    is 80 characters. Displayed in the description field on the Track Hubs page. Default=my
+    hub
+  synonyms:
+  - --longLabel
+  args: !SimpleFlagArg
+    name: LONGLABEL
+  optional: true
+- !Flag
+  description: the contact to whom questions regarding the track hub should be directed.
+    Default=NoEmail
+  synonyms:
+  - --email
+  args: !SimpleFlagArg
+    name: EMAIL
+  optional: true
+- !Flag
+  description: File specified list of genomes to make browser for. If specified, only
+    create browsers for these genomes in the order provided by the list. Otherwise
+    create browsers for all genomes in the input hal file
+  synonyms:
+  - --genomes
+  args: !SimpleFlagArg
+    name: GENOMES
+  optional: true
+- !Flag
+  description: 'File that maps halfile genomeNames to names displayed on the browser.
+    Format: <halGenomeName>\t<genomeNameToDisplayOnBrowser>. Default=none'
+  synonyms:
+  - --rename
+  args: !SimpleFlagArg
+    name: RENAME
+  optional: true
+- !Flag
+  description: Newick binary tree. The order of the tracks and the default track layout
+    will be based on this tree if option "genomes" is not specified. If not specified,
+    try to extract the newick tree from the input halfile.
+  synonyms:
+  - --tree
+  args: !SimpleFlagArg
+    name: TREEFILE
+  optional: true
+- !Flag
+  description: Public url of the hub location
+  synonyms:
+  - --url
+  args: !SimpleFlagArg
+    name: URL
+  optional: true
+- !Flag
+  description: 'Optional. Directory containing the 2bit files of each genomes. Default:
+    extract from the input hal file.'
+  synonyms:
+  - --twobitdir
+  args: !SimpleFlagArg
+    name: TWOBITDIR
+  optional: true
+- !Flag
+  description: If specified, create "level of detail" (lod) hal files and will put
+    the lod.txt at the bigUrl instead of the original hal file. Default=False
+  synonyms:
+  - --lod
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '"hal Level of detail" lod text file. If specified, will put this at
+    the bigUrl instead of the hal file. Default=none'
+  synonyms:
+  - --lodTxtFile
+  args: !SimpleFlagArg
+    name: LODTXTFILE
+  optional: true
+- !Flag
+  description: '"hal Level of detail" lod dir. If specified, will put this at the
+    bigUrl instead of the hal file. Default=none'
+  synonyms:
+  - --lodDir
+  args: !SimpleFlagArg
+    name: LODDIR
+  optional: true
+- !Flag
+  description: Maximum number of blocks to display in a hal level of detail (see halLodInterpolate.py
+    --help for the default value).
+  synonyms:
+  - --lodMaxBlock
+  args: !SimpleFlagArg
+    name: LODMAXBLOCK
+  optional: true
+- !Flag
+  description: Scaling factor between two successive levels of detail (see halLodInterpolate.py
+    --help for the default value).
+  synonyms:
+  - --lodScale
+  args: !SimpleFlagArg
+    name: LODSCALE
+  optional: true
+- !Flag
+  description: Maximum query length such that its hal level of detail will contain
+    nucleotide information. Default=none (see halLodInterpolate.py --help for the
+    default value).
+  synonyms:
+  - --lodMaxDNA
+  args: !SimpleFlagArg
+    name: LODMAXDNA
+  optional: true
+- !Flag
+  description: Load entire hal file into memory when generating levels of detail instead
+    of using hdf5 cache. Could result in drastic speedup. Default=False.
+  synonyms:
+  - --lodInMemory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Minumum sequence length to sample as fraction of step size for level
+    of detail generation: ie sequences with length <= floor(minSeqFrac * step) are
+    ignored (see halLodExtract --help for default value).'
+  synonyms:
+  - --lodMinSeqFrac
+  args: !SimpleFlagArg
+    name: LODMINSEQFRAC
+  optional: true
+- !Flag
+  description: Minimum fraction of a genome that must be covered by sequences that
+    exceed --minSeqFrac * step.  LODs that would violate this threshold will not be
+    generated (or displayed in  the browser).  This is seen a better than the alternative,
+    which is to produce unreasonably sparse LODs because half the sequences were not
+    sampled (see halLodInterpolate.py --help for default value).
+  synonyms:
+  - --lodMinCovFrac
+  args: !SimpleFlagArg
+    name: LODMINCOVFRAC
+  optional: true
+- !Flag
+  description: HDF5 chunk size for generated levels of detail (see halLodExtract --help
+    for default value).
+  synonyms:
+  - --lodChunk
+  args: !SimpleFlagArg
+    name: LODCHUNK
+  optional: true
+- !Flag
+  description: 'comma separated list of directories containing bed files of the input
+    genomes. Each directory represents a type of annotation. The annotations of each
+    genome will then be liftovered to all other genomes in the MSA. Example: "genes,genomicIsland,tRNA".
+    Format of each directory: bedDir/ then genome1/ then chr1.bed, chr2.bed... Default=none'
+  synonyms:
+  - --bedDirs
+  args: !SimpleFlagArg
+    name: BEDDIRS
+  optional: true
+- !Flag
+  description: 'comma separated list of directories containing final big bed files
+    to be displayed. No liftover will be done for these files. Each directory represents
+    a type of annotation. Example: "genes,genomicIsland,tRNA". Format of each directory:
+    bbDir/ then queryGenome/ then targetGenome1.bb, targetGenome2.bb ... (so annotation
+    of queryGenome has been mapped to targetGenomes and will be display on the targetGenome
+    browsers). Default=none'
+  synonyms:
+  - --finalBigBedDirs
+  args: !SimpleFlagArg
+    name: BBDIRS
+  optional: true
+- !Flag
+  description: Similar to --bedDirs, except these tracks will be kept separately and
+    out of the composite track. Default=none
+  synonyms:
+  - --bedDirs2
+  args: !SimpleFlagArg
+    name: BEDDIRS2
+  optional: true
+- !Flag
+  description: Similar to --finalBigBedDirs, except these tracks will be kept separately
+    and out of the composite track. Default=none
+  synonyms:
+  - --finalBigBedDirs2
+  args: !SimpleFlagArg
+    name: BBDIRS2
+  optional: true
+- !Flag
+  description: If specified, will not lift over the bed annotations. Default=False
+  synonyms:
+  - --noBedLiftover
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'If specified, treat tab as the delimiter of all the bed files. Default:
+    any white space.'
+  synonyms:
+  - --tabBed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'comma separated list of directories containing wig files of the input
+    genomes. Each directory represents a type of annotation. The annotations of each
+    genome will then be liftovered to all other genomes in the MSA. Example: "genes,genomicIsland,tRNA".
+    Format of each directory: wigDir/ then genome1/ then chr1.wig, chr2.wig... Default=none'
+  synonyms:
+  - --wigDirs
+  args: !SimpleFlagArg
+    name: WIGDIRS
+  optional: true
+- !Flag
+  description: 'comma separated list of directories containing final big wig files
+    to be displayed. No liftover will be done for these files. Each directory represents
+    a type of annotation. Example: "readCoverage,". Format of each directory: bwDir/
+    then queryGenome/ then targetGenome1.bw, targetGenome2.bw ... (so annotation of
+    queryGenome has been mapped to targetGenomes and will be display on the targetGenome
+    browsers). Default=none'
+  synonyms:
+  - --finalBigwigDirs
+  args: !SimpleFlagArg
+    name: BWDIRS
+  optional: true
+- !Flag
+  description: If specified, will not lift over the wig annotations. Default=False
+  synonyms:
+  - --nowigLiftover
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Directory containing repeatMasker's output files for each genome.\
+    \ Format: rmskDir/ then genome1/ then genome.rmsk.SINE.bb, genome.rmsk.LINE.bb,\
+    \ ... Default=none"
+  synonyms:
+  - --rmskDir
+  args: !SimpleFlagArg
+    name: RMSKDIR
+  optional: true
+- !Flag
+  description: If specified, make GC-content tracks. Default=False
+  synonyms:
+  - --gcContent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If specified, make Alignability (aka Alignment Depth) tracks. Default=False
+  synonyms:
+  - --alignability
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Bed file providing regions to calculate the conservation tracks.
+  synonyms:
+  - --conservation
+  args: !SimpleFlagArg
+    name: CONSERVATION
+  optional: true
+- !Flag
+  description: Optional. Directory contains conservation bigwigs if available. These
+    bigwigs will be used. If this is not specified, the program will compute the conservation
+    tracks.
+  synonyms:
+  - --conservationDir
+  args: !SimpleFlagArg
+    name: CONSERVATIONDIR
+  optional: true
+- !Flag
+  description: Name of the genome of the bed file provided in the "-- conversation"
+    option
+  synonyms:
+  - --conservationGenomeName
+  args: !SimpleFlagArg
+    name: CONSERVATIONGENOMENAME
+  optional: true
+- !Flag
+  description: Optional. Newick tree for the conservation track
+  synonyms:
+  - --conservationTree
+  args: !SimpleFlagArg
+    name: CONSERVATIONTREE
+  optional: true
+- !Flag
+  description: Optional. Number of processors to run conservation
+  synonyms:
+  - --conservationNumProc
+  args: !SimpleFlagArg
+    name: CONSERVATIONNUMPROC
+  optional: true
+- !Flag
+  description: If specified, will generate tracks of regions that are exclusive to
+    each branch (including leaf "branches", which will be genome-exclusive regions)
+    on the tree. Default=False
+  synonyms:
+  - --cladeExclusiveRegions
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Maximum number of outgroup genomes that a region is allowed to be in.
+    Default=0
+  synonyms:
+  - --maxOutgroupGenomes
+  args: !SimpleFlagArg
+    name: MAXOUT
+  optional: true
+- !Flag
+  description: Minimum number of ingroup genomes that a region must appear in. Default=all
+    ingroup genomes (branch node and all its children).
+  synonyms:
+  - --minIngroupGenomes
+  args: !SimpleFlagArg
+    name: MININ
+  optional: true
+- !Flag
+  description: Produce a self-alignment snake track for every genome
+  synonyms:
+  - --selfAlignmentSnakes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Turn off logging. (default is CRITICAL)
+  synonyms:
+  - --logOff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Turn on logging at INFO level. (default is CRITICAL)
+  synonyms:
+  - --logInfo
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Turn on logging at DEBUG level. (default is CRITICAL)
+  synonyms:
+  - --logDebug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Log at level (may be either OFF/INFO/DEBUG/CRITICAL). (default is CRITICAL)
+  synonyms:
+  - --logLevel
+  args: !SimpleFlagArg
+    name: LOGLEVEL
+  optional: true
+- !Flag
+  description: File to log in
+  synonyms:
+  - --logFile
+  args: !SimpleFlagArg
+    name: LOGFILE
+  optional: true
+- !Flag
+  description: Turn on rotating logging, which prevents log files getting too big.
+  synonyms:
+  - --rotatingLogging
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Directory in which to place job management files and the global accessed
+    temporary file directories(this needs to be globally accessible by all machines
+    running jobs). If you pass an existing directory it will check if it's a valid
+    existing job tree, then try and restart the jobs in it. The default=./jobTree
+  synonyms:
+  - --jobTree
+  args: !SimpleFlagArg
+    name: JOBTREE
+  optional: true
+- !Flag
+  description: Records statistics about the job-tree to be used by jobTreeStats. default=False
+  synonyms:
+  - --stats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The type of batch system to run the job(s) with, currently can be 'singleMachine'/'parasol'/'acidTest'/
+    'gridEngine'/'lsf'. default=singleMachine
+  synonyms:
+  - --batchSystem
+  args: !SimpleFlagArg
+    name: BATCHSYSTEM
+  optional: true
+- !Flag
+  description: The maximum number of threads (technically processes at this point)
+    to use when running in single machine mode. Increasing this will allow more jobs
+    to run concurrently when running on a single machine. default=4
+  synonyms:
+  - --maxThreads
+  args: !SimpleFlagArg
+    name: MAXTHREADS
+  optional: true
+- !Flag
+  description: The command to run the parasol program default=parasol
+  synonyms:
+  - --parasolCommand
+  args: !SimpleFlagArg
+    name: PARASOLCOMMAND
+  optional: true
+- !Flag
+  description: The default amount of memory to request for a job (in bytes), by default
+    is 2^31 = 2 gigabytes, default=2147483648
+  synonyms:
+  - --defaultMemory
+  args: !SimpleFlagArg
+    name: DEFAULTMEMORY
+  optional: true
+- !Flag
+  description: The default the number of cpus to dedicate a job. default=1
+  synonyms:
+  - --defaultCpu
+  args: !SimpleFlagArg
+    name: DEFAULTCPU
+  optional: true
+- !Flag
+  description: The maximum number of cpus to request from the batch system at any
+    one time. default=9223372036854775807
+  synonyms:
+  - --maxCpus
+  args: !SimpleFlagArg
+    name: MAXCPUS
+  optional: true
+- !Flag
+  description: The maximum amount of memory to request from the batch system at any
+    one time. default=9223372036854775807
+  synonyms:
+  - --maxMemory
+  args: !SimpleFlagArg
+    name: MAXMEMORY
+  optional: true
+- !Flag
+  description: Number of times to retry a failing job before giving up and labeling
+    job failed. default=0
+  synonyms:
+  - --retryCount
+  args: !SimpleFlagArg
+    name: RETRYCOUNT
+  optional: true
+- !Flag
+  description: Maximum runtime of a job (in seconds) before we kill it (this is a
+    lower bound, and the actual time before killing the job may be longer). default=9223372036854775807
+  synonyms:
+  - --maxJobDuration
+  args: !SimpleFlagArg
+    name: MAXJOBDURATION
+  optional: true
+- !Flag
+  description: Period of time to wait (in seconds) between checking for missing/overlong
+    jobs, that is jobs which get lost by the batch system. Expert parameter. (default
+    is set by the batch system)
+  synonyms:
+  - --rescueJobsFrequency
+  args: !SimpleFlagArg
+    name: RESCUEJOBSFREQUENCY
+  optional: true
+- !Flag
+  description: The batch system to run for jobs with larger memory/cpus requests,
+    currently can be 'singleMachine'/'parasol'/'acidTest'/'gridEngine'. default=none
+  synonyms:
+  - --bigBatchSystem
+  args: !SimpleFlagArg
+    name: BIGBATCHSYSTEM
+  optional: true
+- !Flag
+  description: The memory threshold above which to submit to the big queue. default=9223372036854775807
+  synonyms:
+  - --bigMemoryThreshold
+  args: !SimpleFlagArg
+    name: BIGMEMORYTHRESHOLD
+  optional: true
+- !Flag
+  description: The cpu threshold above which to submit to the big queue. default=9223372036854775807
+  synonyms:
+  - --bigCpuThreshold
+  args: !SimpleFlagArg
+    name: BIGCPUTHRESHOLD
+  optional: true
+- !Flag
+  description: The maximum number of big batch system cpus to allow at one time on
+    the big queue. default=9223372036854775807
+  synonyms:
+  - --bigMaxCpus
+  args: !SimpleFlagArg
+    name: BIGMAXCPUS
+  optional: true
+- !Flag
+  description: The maximum amount of memory to request from the big batch system at
+    any one time. default=9223372036854775807
+  synonyms:
+  - --bigMaxMemory
+  args: !SimpleFlagArg
+    name: BIGMAXMEMORY
+  optional: true
+- !Flag
+  description: The approximate time (in seconds) that you'd like a list of child jobs
+    to be run serially before being parallelized. This parameter allows one to avoid
+    over parallelizing tiny jobs, and therefore paying significant scheduling overhead,
+    by running tiny jobs in series on a single node/core of the cluster. default=30
+  synonyms:
+  - --jobTime
+  args: !SimpleFlagArg
+    name: JOBTIME
+  optional: true
+- !Flag
+  description: The maximum size of a job log file to keep (in bytes), log files larger
+    than this will be truncated to the last X bytes. Default is 50 kilobytes, default=50120
+  synonyms:
+  - --maxLogFileSize
+  args: !SimpleFlagArg
+    name: MAXLOGFILESIZE
+  optional: true
+- !Flag
+  description: The command to run (which will generate subsequent jobs). This is deprecated
+  synonyms:
+  - --command
+  args: !SimpleFlagArg
+    name: COMMAND
+  optional: true
+command:
+- hal2assemblyHub.py
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

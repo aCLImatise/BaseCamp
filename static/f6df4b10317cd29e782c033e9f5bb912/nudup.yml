@@ -1,0 +1,77 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: '|READ.fq   FASTQ file containing the molecular tag sequence for each
+    read name in the corresponding SAM/BAM file (required only for CASE 1 detailed
+    above)'
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: INDEX.fq
+  optional: true
+- !Flag
+  description: prefix of output file paths for sorted BAMs (default will create prefix.sorted.markdup.bam,
+    prefix.sorted.dedup.bam, prefix_dup_log.txt)
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: OUT_PREFIX
+  optional: true
+- !Flag
+  description: position in index read where molecular tag sequence begins. This should
+    be a 1-based value that counts in from the 3' END of the read. (default = 6)
+  synonyms:
+  - -s
+  - --start
+  args: !SimpleFlagArg
+    name: START
+  optional: true
+- !Flag
+  description: length of molecular tag sequence (default = 6)
+  synonyms:
+  - -l
+  - --length
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: 'directory for reading and writing to temporary files and named pipes
+    (default: /tmp)'
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: TEMP_DIR
+  optional: true
+- !Flag
+  description: required for compatibility with samtools sort style in samtools versions
+    <=0.1.19
+  synonyms:
+  - --old-samtools
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: required for only outputting duplicates removed file
+  synonyms:
+  - --rmdup-only
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- nudup.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

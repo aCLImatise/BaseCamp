@@ -1,0 +1,353 @@
+!Command
+positional:
+- !Positional
+  description: The input cmp.h5 or BAM alignment file
+  position: 0
+  name: inputFilename
+  optional: false
+named:
+- !Flag
+  description: 'Emit Tool Contract to stdout (default: False)'
+  synonyms:
+  - --emit-tool-contract
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Run Tool directly from a PacBio Resolved tool contract (default: None)'
+  synonyms:
+  - --resolved-tool-contract
+  args: !SimpleFlagArg
+    name: RESOLVED_TOOL_CONTRACT
+  optional: true
+- !Flag
+  description: 'Write the log to file. Default(None) will write to stdout. (default:
+    None)'
+  synonyms:
+  - --log-file
+  args: !SimpleFlagArg
+    name: LOG_FILE
+  optional: true
+- !Flag
+  description: 'Set log level (default: WARN)'
+  synonyms:
+  - --log-level
+  args: !ChoiceFlagArg
+    choices:
+    - DEBUG
+    - INFO
+    - WARNING
+    - ERROR
+    - CRITICAL
+  optional: true
+- !Flag
+  description: 'Alias for setting log level to DEBUG (default: False)'
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Alias for setting log level to CRITICAL to suppress output. (default:
+    False)'
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Set the verbosity level. (default: None)'
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The filename of the reference FASTA file (default: None)'
+  synonyms:
+  - --referenceFilename
+  - --reference
+  - -r
+  args: !SimpleFlagArg
+    name: REFERENCEFILENAME
+  optional: true
+- !Flag
+  description: 'The output filename(s), as a comma-separated list.Valid output formats
+    are .fa/.fasta, .fq/.fastq, .gff, .vcf (default: [])'
+  synonyms:
+  - -o
+  - --outputFilename
+  args: !SimpleFlagArg
+    name: OUTPUTFILENAMES
+  optional: true
+- !Flag
+  description: 'The number of worker processes to be used (default: 1)'
+  synonyms:
+  - -j
+  - --numWorkers
+  args: !SimpleFlagArg
+    name: NUMWORKERS
+  optional: true
+- !Flag
+  description: 'The minimum confidence for a variant call to be output to variants.{gff,vcf}
+    (default: 40)'
+  synonyms:
+  - --minConfidence
+  - -q
+  args: !SimpleFlagArg
+    name: MINCONFIDENCE
+  optional: true
+- !Flag
+  description: 'The minimum site coverage that must be achieved for variant calls
+    and consensus to be calculated for a site. (default: 5)'
+  synonyms:
+  - --minCoverage
+  - -x
+  args: !SimpleFlagArg
+    name: MINCOVERAGE
+  optional: true
+- !Flag
+  description: 'The consensus base that will be output for sites with no effective
+    coverage. (default: lowercasereference)'
+  synonyms:
+  - --noEvidenceConsensusCall
+  args: !ChoiceFlagArg
+    choices:
+    - nocall
+    - reference
+    - lowercasereference
+  optional: true
+- !Flag
+  description: 'A designation of the maximum coverage level to be used for analysis.
+    Exact interpretation is algorithm- specific. (default: 100)'
+  synonyms:
+  - --coverage
+  - -X
+  args: !SimpleFlagArg
+    name: COVERAGE
+  optional: true
+- !Flag
+  description: 'The minimum MapQV for reads that will be used for analysis. (default:
+    10)'
+  synonyms:
+  - --minMapQV
+  - -m
+  args: !SimpleFlagArg
+    name: MINMAPQV
+  optional: true
+- !Flag
+  description: 'The window (or multiple comma-delimited windows) of the reference
+    to be processed, in the format refGroup :refStart-refEnd (default: entire reference).
+    (default: None)'
+  synonyms:
+  - --referenceWindow
+  - --referenceWindows
+  - -w
+  args: !SimpleFlagArg
+    name: REFERENCEWINDOWSASSTRING
+  optional: true
+- !Flag
+  description: 'The window (or multiple comma-delimited windows) of the reference
+    to be processed, in the format refGroup :refStart-refEnd will be pulled from the
+    alignment file. (default: False)'
+  synonyms:
+  - --alignmentSetRefWindows
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'A file containing reference window designations, one per line (default:
+    None)'
+  synonyms:
+  - --referenceWindowsFile
+  - -W
+  args: !SimpleFlagArg
+    name: REFERENCEWINDOWSASSTRING
+  optional: true
+- !Flag
+  description: '_BARCODE    Only process reads with the given barcode name. (default:
+    None)'
+  synonyms:
+  - --barcode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "A string of the form 'n/N', where n, and N are integers, 0 <= n <\
+    \ N, designating that the reads are to be deterministically split into N strata\
+    \ of roughly even size, and stratum n is to be used for variant and consensus\
+    \ calling. This is mostly useful for Quiver development. (default: None)"
+  synonyms:
+  - --readStratum
+  args: !SimpleFlagArg
+    name: READSTRATUM
+  optional: true
+- !Flag
+  description: 'The minimum ReadScore for reads that will be used for analysis (arrow-only).
+    (default: 0.65)'
+  synonyms:
+  - --minReadScore
+  args: !SimpleFlagArg
+    name: MINREADSCORE
+  optional: true
+- !Flag
+  description: 'The minimum acceptable signal-to-noise over all channels for reads
+    that will be used for analysis (arrow-only). (default: 2.5)'
+  synonyms:
+  - --minSnr
+  args: !SimpleFlagArg
+    name: MINHQREGIONSNR
+  optional: true
+- !Flag
+  description: 'The minimum acceptable z-score for reads that will be used for analysis
+    (arrow-only). (default: -3.5)'
+  synonyms:
+  - --minZScore
+  args: !SimpleFlagArg
+    name: MINZSCORE
+  optional: true
+- !Flag
+  description: 'The minimum acceptable window-global alignment accuracy for reads
+    that will be used for the analysis (arrow-only). (default: 0.82)'
+  synonyms:
+  - --minAccuracy
+  args: !SimpleFlagArg
+    name: MINACCURACY
+  optional: true
+- !Flag
+  description: 'Parameter set filename (such as ArrowParameters.json or QuiverParameters.ini),
+    or directory D such that either D/*/GenomicConsensus/QuiverParameters.ini, or
+    D/GenomicConsensus/QuiverParameters.ini, is found. In the former case, the lexically
+    largest path is chosen. (default: None)'
+  synonyms:
+  - --parametersFile
+  - -P
+  args: !SimpleFlagArg
+    name: PARAMETERSFILE
+  optional: true
+- !Flag
+  description: "Name of parameter set (chemistry.model) to select from the parameters\
+    \ file, or just the name of the chemistry, in which case the best available model\
+    \ is chosen. Default is 'auto', which selects the best parameter set from the\
+    \ alignment data (default: auto)"
+  synonyms:
+  - --parametersSpec
+  - -p
+  args: !SimpleFlagArg
+    name: PARAMETERSSPEC
+  optional: true
+- !Flag
+  description: 'Radius of window to use when excluding local regions for exceeding
+    maskMinErrorRate, where 0 disables any filtering (arrow-only). (default: 3)'
+  synonyms:
+  - --maskRadius
+  args: !SimpleFlagArg
+    name: MASKRADIUS
+  optional: true
+- !Flag
+  description: 'Maximum local error rate before the local region defined by maskRadius
+    is excluded from polishing (arrow-only). (default: 0.7)'
+  synonyms:
+  - --maskErrorRate
+  args: !SimpleFlagArg
+    name: MASKERRORRATE
+  optional: true
+- !Flag
+  description: 'Enable Python debugger (default: False)'
+  synonyms:
+  - --pdb
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Suppress stacktrace for exceptions (to simplify testing) (default:
+    False)'
+  synonyms:
+  - --notrace
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Drop into Python debugger at startup (requires ipdb) (default: False)'
+  synonyms:
+  - --pdbAtStartup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Enable Python-level profiling (using cProfile). (default: False)'
+  synonyms:
+  - --profile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Augment GFF variant records with additional information (default:
+    False)'
+  synonyms:
+  - --annotateGFF
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Additionally record the *post-filtering* coverage at variant sites
+    (default: False)'
+  synonyms:
+  - --reportEffectiveCoverage
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Disable the HDF5 chunk cache when the number of datasets in the cmp.h5
+    exceeds the given threshold (default: 500)'
+  synonyms:
+  - --autoDisableHdf5ChunkCache
+  args: !SimpleFlagArg
+    name: AUTODISABLEHDF5CHUNKCACHE
+  optional: true
+- !Flag
+  description: 'The pairwise alignment algorithm that will be used to produce variant
+    calls from the consensus (Quiver only). (default: affine)'
+  synonyms:
+  - --aligner
+  - -a
+  args: !ChoiceFlagArg
+    choices:
+    - affine
+    - simple
+  optional: true
+- !Flag
+  description: 'Require quiver maximum likelihood search to try one less/more repeat
+    copy in dinucleotide repeats, which seem to be the most frequent cause of suboptimal
+    convergence (getting trapped in local optimum) (Quiver only) (default: True)'
+  synonyms:
+  - --refineDinucleotideRepeats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Disable dinucleotide refinement (default: True)'
+  synonyms:
+  - --noRefineDinucleotideRepeats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Cut some corners to run faster. Unsupported! (default: False)'
+  synonyms:
+  - --fast
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Do not abort when told to process a reference window (via -w/--referenceWindow[s])
+    that has no aligned coverage. Outputs emptyish files if there are no remaining
+    non-degenerate windows. Only intended for use by smrtpipe scatter/gather. (default:
+    False)'
+  synonyms:
+  - --skipUnrecognizedContigs
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- poa
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

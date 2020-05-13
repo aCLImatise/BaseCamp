@@ -1,0 +1,722 @@
+!Command
+positional: []
+named: []
+command:
+- refinem
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: file with statistics for each scaffold
+    position: 0
+    name: scaffold_stats_file
+    optional: false
+  - !Positional
+    description: output file with genome statistics
+    position: 1
+    name: output_file
+    optional: false
+  named:
+  - !Flag
+    description: 'number of CPUs to use (default: 1)'
+    synonyms:
+    - -c
+    - --cpus
+    args: !SimpleFlagArg
+      name: CPUS
+    optional: true
+  - !Flag
+    description: 'suppress output of logger (default: False)'
+    synonyms:
+    - --silent
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - refinem
+  - genome_stats
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: file with statistics for each scaffold
+    position: 0
+    name: scaffold_stats_file
+    optional: false
+  - !Positional
+    description: output directory
+    position: 1
+    name: output_dir
+    optional: false
+  named:
+  - !Flag
+    description: 'percentile for identify scaffolds with divergent GC content (default:
+      98)'
+    synonyms:
+    - --gc_perc
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'percentile for identify scaffolds with divergent tetranucleotide
+      signatures (default: 98)'
+    synonyms:
+    - --td_perc
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: 'correlation for identifying scaffolds with divergent coverage profiles
+      (default: -2)'
+    synonyms:
+    - --cov_corr
+    args: !SimpleFlagArg
+      name: COV_CORR
+    optional: true
+  - !Flag
+    description: 'mean absolute percent error for identifying scaffolds with divergent
+      coverage profiles (default: 50)'
+    synonyms:
+    - --cov_perc
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: "report sequences that are outliers in 'all' or 'any' reference distribution\
+      \ (default: any)"
+    synonyms:
+    - -r
+    - --report_type
+    args: !ChoiceFlagArg
+      choices:
+      - any
+      - all
+    optional: true
+  - !Flag
+    description: create exploratory plots (currently unstable due to mpld3 limitations)
+    synonyms:
+    - --create_plots
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: create individual plots for each statistic
+    synonyms:
+    - --individual_plots
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'desired image type (default: png)'
+    synonyms:
+    - --image_type
+    args: !ChoiceFlagArg
+      choices:
+      - eps
+      - pdf
+      - png
+      - ps
+      - svg
+    optional: true
+  - !Flag
+    description: 'desired size of points in scatterplot (default: 36)'
+    synonyms:
+    - --point_size
+    args: !SimpleFlagArg
+      name: POINT_SIZE
+    optional: true
+  - !Flag
+    description: file indicating scaffolds to highlight
+    synonyms:
+    - --highlight_file
+    args: !SimpleFlagArg
+      name: HIGHLIGHT_FILE
+    optional: true
+  - !Flag
+    description: file indicating pairs of scaffolds to join by a line
+    synonyms:
+    - --links_file
+    args: !SimpleFlagArg
+      name: LINKS_FILE
+    optional: true
+  - !Flag
+    description: 'desired DPI of output image (default: 96)'
+    synonyms:
+    - --dpi
+    args: !SimpleFlagArg
+      name: DPI
+    optional: true
+  - !Flag
+    description: 'desired font size for labels (default: 12)'
+    synonyms:
+    - --label_font_size
+    args: !SimpleFlagArg
+      name: LABEL_FONT_SIZE
+    optional: true
+  - !Flag
+    description: 'desired font size for tick markers (default: 10)'
+    synonyms:
+    - --tick_font_size
+    args: !SimpleFlagArg
+      name: TICK_FONT_SIZE
+    optional: true
+  - !Flag
+    description: 'width of output image (default: 12)'
+    synonyms:
+    - --width
+    args: !SimpleFlagArg
+      name: WIDTH
+    optional: true
+  - !Flag
+    description: 'height of output image (default: 6)'
+    synonyms:
+    - --height
+    args: !SimpleFlagArg
+      name: HEIGHT
+    optional: true
+  - !Flag
+    description: suppress output of logger
+    synonyms:
+    - --silent
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - refinem
+  - outliers
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: directory containing amino acid genes for each genome
+    position: 0
+    name: genome_prot_dir
+    optional: false
+  - !Positional
+    description: file with statistics for each scaffold
+    position: 1
+    name: scaffold_stats_file
+    optional: false
+  - !Positional
+    description: DIAMOND database of reference genomes
+    position: 2
+    name: db_file
+    optional: false
+  - !Positional
+    description: taxonomic assignment of each reference genomes
+    position: 3
+    name: taxonomy_file
+    optional: false
+  - !Positional
+    description: output directory
+    position: 4
+    name: output_dir
+    optional: false
+  named:
+  - !Flag
+    description: 'minimum percentage of genes to assign a scaffold to a taxonomic
+      group (default: 20.0)'
+    synonyms:
+    - -p
+    - --per_to_classify
+    args: !SimpleFlagArg
+      name: PER_TO_CLASSIFY
+    optional: true
+  - !Flag
+    description: 'e-value of valid hits (default: 0.001)'
+    synonyms:
+    - -e
+    - --evalue
+    args: !SimpleFlagArg
+      name: EVALUE
+    optional: true
+  - !Flag
+    description: 'percent identity of valid hits (default: 30.0)'
+    synonyms:
+    - -i
+    - --per_identity
+    args: !SimpleFlagArg
+      name: PER_IDENTITY
+    optional: true
+  - !Flag
+    description: 'minimum percent coverage of query sequence for reporting an alignment
+      (default: 50.0)'
+    synonyms:
+    - -a
+    - --per_aln_len
+    args: !SimpleFlagArg
+      name: PER_ALN_LEN
+    optional: true
+  - !Flag
+    description: 'extension of amino acid gene files (other files in directory are
+      ignored) (default: faa)'
+    synonyms:
+    - -x
+    - --protein_ext
+    args: !SimpleFlagArg
+      name: PROTEIN_EXT
+    optional: true
+  - !Flag
+    description: 'specify alternative directory for temporary files (default: /tmp)'
+    synonyms:
+    - --tmpdir
+    args: !SimpleFlagArg
+      name: TMPDIR
+    optional: true
+  - !Flag
+    description: 'number of CPUs to use (default: 1)'
+    synonyms:
+    - -c
+    - --cpus
+    args: !SimpleFlagArg
+      name: CPUS
+    optional: true
+  - !Flag
+    description: suppress output of logger
+    synonyms:
+    - --silent
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - refinem
+  - taxon_profile
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: directory with results of taxon_profile command
+    position: 0
+    name: taxon_profile_dir
+    optional: false
+  - !Positional
+    description: file indicating divergent scaffolds
+    position: 1
+    name: output_file
+    optional: false
+  named:
+  - !Flag
+    description: 'threshold for accepting a consensus taxon (default: 50.0)'
+    synonyms:
+    - --consensus_taxon
+    args: !SimpleFlagArg
+      name: CONSENSUS_TAXON
+    optional: true
+  - !Flag
+    description: 'threshold for treating a scaffold as trusted (default: 50.0)'
+    synonyms:
+    - --trusted_scaffold
+    args: !SimpleFlagArg
+      name: TRUSTED_SCAFFOLD
+    optional: true
+  - !Flag
+    description: 'threshold for treating a taxon as common (default: 5.0)'
+    synonyms:
+    - --common_taxa
+    args: !SimpleFlagArg
+      name: COMMON_TAXA
+    optional: true
+  - !Flag
+    description: 'threshold for treating a scaffold as congruent (default: 10.0)'
+    synonyms:
+    - --congruent_scaffold
+    args: !SimpleFlagArg
+      name: CONGRUENT_SCAFFOLD
+    optional: true
+  - !Flag
+    description: 'minimum percentage of genes with a classification to filter a scaffold
+      (default: 25.0)'
+    synonyms:
+    - --min_classified_per
+    args: !SimpleFlagArg
+      name: MIN_CLASSIFIED_PER
+    optional: true
+  - !Flag
+    description: 'minimum number of classified genes required to filter a scaffold
+      (default: 5)'
+    synonyms:
+    - --min_classified
+    args: !SimpleFlagArg
+      name: MIN_CLASSIFIED
+    optional: true
+  - !Flag
+    description: 'threshold of consensus taxon for filtering a scaffold (default:
+      50.0)'
+    synonyms:
+    - --consensus_scaffold
+    args: !SimpleFlagArg
+      name: CONSENSUS_SCAFFOLD
+    optional: true
+  - !Flag
+    description: 'number of CPUs to use (default: 1)'
+    synonyms:
+    - -c
+    - --cpus
+    args: !SimpleFlagArg
+      name: CPUS
+    optional: true
+  - !Flag
+    description: suppress output of logger
+    synonyms:
+    - --silent
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - refinem
+  - taxon_filter
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: directory containing nucleotide scaffolds for each genome
+    position: 0
+    name: genome_nt_dir
+    optional: false
+  - !Positional
+    description: directory with results of taxon_profile command
+    position: 1
+    name: taxon_profile_dir
+    optional: false
+  - !Positional
+    description: BLAST database of 16S rRNA genes
+    position: 2
+    name: ssu_db
+    optional: false
+  - !Positional
+    description: taxonomy file for genes in the 16S rRNA database
+    position: 3
+    name: ssu_taxonomy_file
+    optional: false
+  - !Positional
+    description: output directory
+    position: 4
+    name: output_dir
+    optional: false
+  named:
+  - !Flag
+    description: 'extension of genomes (other files in directory are ignored) (default:
+      fna)'
+    synonyms:
+    - -x
+    - --genome_ext
+    args: !SimpleFlagArg
+      name: GENOME_EXT
+    optional: true
+  - !Flag
+    description: 'e-value threshold for identifying and classifying 16S rRNA genes
+      (default: 1e-05)'
+    synonyms:
+    - --evalue
+    args: !SimpleFlagArg
+      name: EVALUE
+    optional: true
+  - !Flag
+    description: 'concatenate hits within the specified number of base pairs (default:
+      200)'
+    synonyms:
+    - --concatenate
+    args: !SimpleFlagArg
+      name: CONCATENATE
+    optional: true
+  - !Flag
+    description: 'threshold for defining a taxon as common (default: 10.0)'
+    synonyms:
+    - --common_taxon
+    args: !SimpleFlagArg
+      name: COMMON_TAXON
+    optional: true
+  - !Flag
+    description: 'minimum length of SSU 16S gene fragment to consider for classification
+      (default: 600)'
+    synonyms:
+    - --ssu_min_len
+    args: !SimpleFlagArg
+      name: SSU_MIN_LEN
+    optional: true
+  - !Flag
+    description: 'percent identity threshold for accepting domain classification of
+      SSU (default: 83.68)'
+    synonyms:
+    - --ssu_domain
+    args: !SimpleFlagArg
+      name: SSU_DOMAIN
+    optional: true
+  - !Flag
+    description: 'percent identity threshold for accepting phylum classification of
+      SSU (default: 86.35)'
+    synonyms:
+    - --ssu_phylum
+    args: !SimpleFlagArg
+      name: SSU_PHYLUM
+    optional: true
+  - !Flag
+    description: 'percent identity threshold for accepting class classification of
+      SSU (default: 89.2)'
+    synonyms:
+    - --ssu_class
+    args: !SimpleFlagArg
+      name: SSU_CLASS
+    optional: true
+  - !Flag
+    description: 'percent identity threshold for accepting order classification of
+      SSU (default: 92.25)'
+    synonyms:
+    - --ssu_order
+    args: !SimpleFlagArg
+      name: SSU_ORDER
+    optional: true
+  - !Flag
+    description: 'percent identity threshold for accepting family classification of
+      SSU (default: 96.4)'
+    synonyms:
+    - --ssu_family
+    args: !SimpleFlagArg
+      name: SSU_FAMILY
+    optional: true
+  - !Flag
+    description: 'percent identity threshold for accepting genus classification of
+      SSU (default: 98.7)'
+    synonyms:
+    - --ssu_genus
+    args: !SimpleFlagArg
+      name: SSU_GENUS
+    optional: true
+  - !Flag
+    description: 'number of CPUs to use (default: 1)'
+    synonyms:
+    - -c
+    - --cpus
+    args: !SimpleFlagArg
+      name: CPUS
+    optional: true
+  - !Flag
+    description: suppress output of logger
+    synonyms:
+    - --silent
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - refinem
+  - ssu_erroneous
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: scaffolds binned to generate putative genomes
+    position: 0
+    name: scaffold_file
+    optional: false
+  - !Positional
+    description: genome to be modified
+    position: 1
+    name: genome_file
+    optional: false
+  - !Positional
+    description: modified genome
+    position: 2
+    name: output_genome
+    optional: false
+  named:
+  - !Flag
+    description: minimum length of scaffold to allow it to be added to a genome
+    synonyms:
+    - -m
+    - --min_len
+    args: !SimpleFlagArg
+      name: MIN_LEN
+    optional: true
+  - !Flag
+    description: ID of scaffold to add to genome (may specify multiple times)
+    synonyms:
+    - -a
+    - --add
+    args: !SimpleFlagArg
+      name: ADD
+    optional: true
+  - !Flag
+    description: ID of scaffold to remove from bin (may specify multiple times)
+    synonyms:
+    - -r
+    - --remove
+    args: !SimpleFlagArg
+      name: REMOVE
+    optional: true
+  - !Flag
+    description: remove all scaffolds identified as outliers (see outlier command)
+    synonyms:
+    - -o
+    - --outlier_file
+    args: !SimpleFlagArg
+      name: OUTLIER_FILE
+    optional: true
+  - !Flag
+    description: suppress output of logger
+    synonyms:
+    - --silent
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - refinem
+  - modify_bin
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: directory containing nucleotide scaffolds for each genome
+    position: 0
+    name: genome_nt_dir
+    optional: false
+  - !Positional
+    description: file specifying scaffolds to remove
+    position: 1
+    name: filter_file
+    optional: false
+  - !Positional
+    description: output directory
+    position: 2
+    name: output_dir
+    optional: false
+  named:
+  - !Flag
+    description: 'extension of genomes (other files in directory are ignored) (default:
+      fna)'
+    synonyms:
+    - -x
+    - --genome_ext
+    args: !SimpleFlagArg
+      name: GENOME_EXT
+    optional: true
+  - !Flag
+    description: only copy modified bins to the output folder
+    synonyms:
+    - --modified_only
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: suppress output of logger
+    synonyms:
+    - --silent
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - refinem
+  - filter_bins
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: directory containing nucleotide scaffolds for each genome
+    position: 0
+    name: genome_nt_dir
+    optional: false
+  - !Positional
+    description: output directory
+    position: 1
+    name: output_dir
+    optional: false
+  named:
+  - !Flag
+    description: call genes on unbinned scaffolds
+    synonyms:
+    - -u
+    - --unbinned_file
+    args: !SimpleFlagArg
+      name: UNBINNED_FILE
+    optional: true
+  - !Flag
+    description: 'extension of genomes (other files in directory are ignored) (default:
+      fna)'
+    synonyms:
+    - -x
+    - --genome_ext
+    args: !SimpleFlagArg
+      name: GENOME_EXT
+    optional: true
+  - !Flag
+    description: 'number of CPUs to use (default: 1)'
+    synonyms:
+    - -c
+    - --cpus
+    args: !SimpleFlagArg
+      name: CPUS
+    optional: true
+  - !Flag
+    description: suppress output of logger
+    synonyms:
+    - --silent
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - refinem
+  - call_genes
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

@@ -1,0 +1,92 @@
+!Command
+positional:
+- !Positional
+  description: The input should be either a KAT spectra-cn matrix file a KAT GCP matrix
+    file or a KAT histogram file.
+  position: 0
+  name: input
+  optional: false
+named:
+- !Flag
+  description: If present then plots are sent to files starting with this prefix.
+  synonyms:
+  - -o
+  - --output_prefix
+  args: !SimpleFlagArg
+    name: OUTPUT_PREFIX
+  optional: true
+- !Flag
+  description: If present then plots are generated with this extension e.g. {png,svg}.
+  synonyms:
+  - --format
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: The number of copy numbers to consider in the analysis. Only applicable
+    if input is a spectra-cn matrix file.
+  synonyms:
+  - -c
+  - --cns
+  args: !SimpleFlagArg
+    name: CNS
+  optional: true
+- !Flag
+  description: The maximum frequency cutoff point to consider. Analysis will be done
+    up to this frequency.
+  synonyms:
+  - -f
+  - --freq_cutoff
+  args: !SimpleFlagArg
+    name: FREQ_CUTOFF
+  optional: true
+- !Flag
+  description: Any new distribution that adds less to this number of distinct K-mers
+    will not be added.
+  synonyms:
+  - -e
+  - --min_elem
+  args: !SimpleFlagArg
+    name: MIN_ELEM
+  optional: true
+- !Flag
+  description: Plot best cumulative fit for all peaks.
+  synonyms:
+  - -p
+  - --plot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The approximate kmer frequency for the homozygous peak. Allows us to
+    calculate a more accurate genome size estimate.
+  synonyms:
+  - -z
+  - --homozygous_peak
+  args: !SimpleFlagArg
+    name: HOMOZYGOUS_PEAK
+  optional: true
+- !Flag
+  description: If selected then we do not try to detect a heterozygous peak
+  synonyms:
+  - --haploid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Print additional information.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- kat_distanalysis
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

@@ -1,0 +1,139 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: A list of transformation files in the same folder as the .chrom.mzML
+    files
+  synonyms:
+  - --in
+  args: !RepeatFlagArg
+    name: INFILES
+  optional: true
+- !Flag
+  description: Infile containing peakgroups (outfile from feature_alignment.py)
+  synonyms:
+  - --peakgroups_infile
+  args: !SimpleFlagArg
+    name: PEAKGROUPS_INFILE
+  optional: true
+- !Flag
+  description: Output file with imputed values
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Which input file format is used (openswath, mprophet or peakview)
+  synonyms:
+  - --file_format
+  args: !SimpleFlagArg
+    name: FILE_FORMAT
+  optional: true
+- !Flag
+  description: Matrix containing one peak group per row (supports .csv, .tsv or .xls)
+  synonyms:
+  - --out_matrix
+  args: !SimpleFlagArg
+    name: MATRIX_OUTFILE
+  optional: true
+- !Flag
+  description: Which columns are written besides Intensity (none, RT, score, source
+    or full)
+  synonyms:
+  - --matrix_output_method
+  args: !SimpleFlagArg
+    name: MATRIX_OUTPUT_METHOD
+  optional: true
+- !Flag
+  description: 'How to determine integration border (possible values: max_width, mean,
+    median). Max width will use the maximal possible width (most conservative since
+    it will overestimate the background signal).'
+  synonyms:
+  - --border_option
+  args: !SimpleFlagArg
+    name: median
+  optional: true
+- !Flag
+  description: Perform a dry run only
+  synonyms:
+  - --dry_run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: For running the tests (does not add a random id to the results)
+  synonyms:
+  - --test
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Cache data from a single run in memory
+  synonyms:
+  - --cache_in_memory
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Which method to use (singleShortestPath, singleClosestRun, reference)
+  synonyms:
+  - --method
+  args: !SimpleFlagArg
+    name: METHOD
+  optional: true
+- !Flag
+  description: "How to re-align runs in retention time ('diRT': use only deltaiRT\
+    \ from the input file, 'linear': perform a linear regression using best peakgroups,\
+    \ 'splineR': perform a spline fit using R, 'splineR_external': perform a spline\
+    \ fit using R (start an R process using the command line), 'splinePy' use Python\
+    \ native spline from scikits.datasmooth (slow!), 'lowess': use Robust locally\
+    \ weighted regression (lowess smoother), 'nonCVSpline, CVSpline': splines with\
+    \ and without cross-validation, 'Earth' : use Multivariate Adaptive Regression\
+    \ Splines using py-earth"
+  synonyms:
+  - --realign_runs
+  args: !SimpleFlagArg
+    name: REALIGN_METHOD
+  optional: true
+- !Flag
+  description: Verbosity
+  synonyms:
+  - --verbosity
+  args: !SimpleFlagArg
+    name: VERBOSITY
+  optional: true
+- !Flag
+  description: Only do a single run
+  synonyms:
+  - --do_single_run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable grouping of isotopic variants by peptide_group_label, thus
+    disabling matching of isotopic variants of the same peptide across channels. If
+    turned off, each isotopic channel will be matched independently of the other.
+    If enabled, the more certain identification will be used to infer the location
+    of the peak in the other channel.
+  synonyms:
+  - --disable_isotopic_grouping
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable the transfer of isotopic boundaries in all cases. If enabled
+    (default), the best (best score) isotopic channel dictates the peak boundaries
+    and all other channels use those boundaries. This ensures consistency in peak
+    picking in all cases.
+  synonyms:
+  - --disable_isotopic_transfer
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- requantAlignedValues.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

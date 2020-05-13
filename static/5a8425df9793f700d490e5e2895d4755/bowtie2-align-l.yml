@@ -1,0 +1,268 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: "[3:|5:]<int> trim reads exceeding <int> bases from either 3' or 5'\
+    \ end If the read end is not specified then it defaults to 3 (0)"
+  synonyms:
+  - --trim-to
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: qualities are Phred+33 (default)
+  synonyms:
+  - --phred33
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: qualities are Phred+64
+  synonyms:
+  - --phred64
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: qualities encoded as space-delimited integers
+  synonyms:
+  - --int-quals
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -D 5 -R 1 -N 0 -L 22 -i S,0,2.50
+  synonyms:
+  - --very-fast
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -D 10 -R 2 -N 0 -L 22 -i S,0,2.50
+  synonyms:
+  - --fast
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -D 15 -R 2 -N 0 -L 22 -i S,1,1.15 (default)
+  synonyms:
+  - --sensitive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -D 20 -R 3 -N 0 -L 20 -i S,1,0.50
+  synonyms:
+  - --very-sensitive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -D 5 -R 1 -N 0 -L 25 -i S,1,2.00
+  synonyms:
+  - --very-fast-local
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -D 10 -R 2 -N 0 -L 22 -i S,1,1.75
+  synonyms:
+  - --fast-local
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: -D 15 -R 2 -N 0 -L 20 -i S,1,0.75 (default)
+  synonyms:
+  - --sensitive-local
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 20 -R 3 -N 0 -L 20 -i S,1,0.50
+  synonyms:
+  - --very-sensitive-local
+  - -D
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: local alignment; ends might be soft clipped (off)
+  synonyms:
+  - --local
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'match bonus (0 for --end-to-end, 2 for --local) '
+  synonyms:
+  - --ma
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: max penalty for mismatch; lower qual = lower penalty (6)
+  synonyms:
+  - --mp
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: penalty for non-A/C/G/Ts in read/ref (1)
+  synonyms:
+  - --np
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ',<int>  read gap open, extend penalties (5,3)'
+  synonyms:
+  - --rdg
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ',<int>  reference gap open, extend penalties (5,3)'
+  synonyms:
+  - --rfg
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: min acceptable alignment score w/r/t read length (G,20,8 for local,
+    L,-0.6,-0.6 for end-to-end)
+  synonyms:
+  - --score-min
+  args: !SimpleFlagArg
+    name: func
+  optional: true
+- !Flag
+  description: /--all           report all alignments; very slow, MAPQ not meaningful
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: give up extending after <int> failed extends in a row (15)
+  synonyms:
+  - -D
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: for reads w/ repetitive seeds, try <int> sets of seeds (2)
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: /--minins <int>  minimum fragment length (0)
+  synonyms:
+  - -I
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: /--maxins <int>  maximum fragment length (500)
+  synonyms:
+  - -X
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: /--rf/--ff     -1, -2 mates align fw/rev, rev/fw, fw/fw (--fr)
+  synonyms:
+  - --fr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: suppress unpaired alignments for paired reads
+  synonyms:
+  - --no-mixed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: suppress discordant alignments for paired reads
+  synonyms:
+  - --no-discordant
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: concordant when mates extend past each other
+  synonyms:
+  - --dovetail
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: not concordant when one mate alignment contains other
+  synonyms:
+  - --no-contain
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: not concordant when mates overlap at all
+  synonyms:
+  - --no-overlap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Preserve tags from the original BAM record by appending them to the
+    end of the corresponding SAM output.
+  synonyms:
+  - --preserve-tags
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use '='/'X', instead of 'M,' to specify matches/mismatches in SAM record.
+  synonyms:
+  - --xeq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: soft-clipped bases when reporting TLEN
+  synonyms:
+  - --soft-clipped-unmapped-tlen
+  args: !SimpleFlagArg
+    name: Exclude
+  optional: true
+- !Flag
+  description: /--threads <int> number of alignment threads to launch (1)
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: force SAM output order to match order of input reads
+  synonyms:
+  - --reorder
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use memory-mapped I/O for index; many 'bowtie's can share
+  synonyms:
+  - --mm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: filter out reads that are bad according to QSEQ filter
+  synonyms:
+  - --qc-filter
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: seed for random number generator (0)
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: rand. gen. arbitrarily instead of using read attributes
+  synonyms:
+  - --non-deterministic
+  args: !SimpleFlagArg
+    name: seed
+  optional: true
+command:
+- bowtie2-align-l
+subcommands: []
+help_flag: !Flag
+  description: /--help          print this usage message
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print version information and quit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

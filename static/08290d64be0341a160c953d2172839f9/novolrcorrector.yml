@@ -1,0 +1,143 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: Novocraft
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: Long
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: Read
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: Corrector
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: format-specific
+  optional: true
+named:
+- !Flag
+  description: the input BAM file [stdin]
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: BAM filename
+  optional: true
+- !Flag
+  description: the output file as alternative to stdout. [stdout]
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: genomic region (chr:99..[chr:]999). Index file is recommended for better
+    performance, and is used automatically if it exists. See 'bamtools help index'
+    for more details on creating one
+  synonyms:
+  - -region
+  args: !SimpleFlagArg
+    name: REGION
+  optional: true
+- !Flag
+  description: Original Pacbio FASTA reads file as used in alignment process.
+  synonyms:
+  - -fasta
+  args: !SimpleFlagArg
+    name: FASTA filename
+  optional: true
+- !Flag
+  description: <0.0 to 1.0>                 Fraction of alignments to use when calling
+    a consensus base. Chooses the alignments with the lowest Alignment Score plus
+    Single End Penalty. [0.3300]
+  synonyms:
+  - -use
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use at least this many alignments if fraction rule would use less alignments.
+    [4]
+  synonyms:
+  - -atLeast
+  args: !SimpleFlagArg
+    name: unsigned int
+  optional: true
+- !Flag
+  description: Don't use more this many alignments even if fraction rule would use
+    more alignments. [50]
+  synonyms:
+  - -atMost
+  args: !SimpleFlagArg
+    name: unsigned int
+  optional: true
+- !Flag
+  description: Only correct if we have at least this many alignments. [2]
+  synonyms:
+  - -minCover
+  args: !SimpleFlagArg
+    name: unsigned int
+  optional: true
+- !Flag
+  description: Penalty applied to improper pairs and single end reads when ranking
+    alignments. [70]
+  synonyms:
+  - -sePenalty
+  args: !SimpleFlagArg
+    name: unsigned int
+  optional: true
+- !Flag
+  description: Output full length of Long Read read including uncorrected bases. Default
+    trims uncorrected ends of reads.
+  synonyms:
+  - -fullLR
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Split Reads at locii not covered by a proper pair. Default is not to
+    split the reads.
+  synonyms:
+  - -SVSplit
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output all Long Reads including those with no alignments. Default is
+    to skip output of reads with no alignments.
+  synonyms:
+  - -uncorrectedLR
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output is in FASTQ, Default is FASTA format.
+  synonyms:
+  - -fq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assumed phred scaled base quality for input fasta. [10]
+  synonyms:
+  - -baseq
+  args: !SimpleFlagArg
+    name: unsigned int
+  optional: true
+command:
+- novolrcorrector
+subcommands: []
+help_flag: !Flag
+  description: shows this help text
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

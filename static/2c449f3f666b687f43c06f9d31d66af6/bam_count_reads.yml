@@ -1,0 +1,90 @@
+!Command
+positional:
+- !Positional
+  description: 'Input file (default: stdin).'
+  position: 0
+  name: bam
+  optional: false
+named:
+- !Flag
+  description: Minimum mapping quality (0).
+  synonyms:
+  - -a
+  args: !SimpleFlagArg
+    name: min_aqual
+  optional: true
+- !Flag
+  description: Input format (BAM).
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: in_format
+  optional: true
+- !Flag
+  description: Reference fasta. GC content and length columns are added if present
+    (None).
+  synonyms:
+  - -z
+  args: !SimpleFlagArg
+    name: ref_fasta
+  optional: true
+- !Flag
+  description: Include word frequencies of specifed length in output (None).
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: words
+  optional: true
+- !Flag
+  description: Include mean GC content of reads mapped to each reference (False).
+  synonyms:
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Save pickled results in this file (None).
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: results_pickle
+  optional: true
+- !Flag
+  description: Save results in tsv format in this file (bam_count_reads.tsv).
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: tsv_file
+  optional: true
+- !Flag
+  description: Be quiet and do not print progress bar (False).
+  synonyms:
+  - -Q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Count reads from SAM stream in stdin. Only read count fields are written.
+    Header required! (False).
+  synonyms:
+  - -R
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Yield counts after every -Fth mapped record when doing online counting
+    (100).
+  synonyms:
+  - -F
+  args: !SimpleFlagArg
+    name: yield_freq
+  optional: true
+command:
+- bam_count_reads.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

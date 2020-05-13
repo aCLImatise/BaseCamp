@@ -1,0 +1,239 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: the input file
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: input fasta sequence
+  synonyms:
+  - --fasta
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: the genetic code
+  synonyms:
+  - -c
+  - --code
+  args: !SimpleFlagArg
+    name: CODE
+  optional: true
+- !Flag
+  description: the directory where the output is written
+  synonyms:
+  - -o
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTDIR
+  optional: true
+- !Flag
+  description: treat sequence as linear
+  synonyms:
+  - --linear
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: directory containing the reference data (relative to --refdir)
+  synonyms:
+  - -r
+  - --refseqver
+  args: !SimpleFlagArg
+    name: REFSEQVER
+  optional: true
+- !Flag
+  description: base directory containing the reference data
+  synonyms:
+  - -R
+  - --refdir
+  args: !SimpleFlagArg
+    name: REFDIR
+  optional: true
+- !Flag
+  description: 'position of protein prediction in 1st round (0: skip)'
+  synonyms:
+  - --prot
+  args: !SimpleFlagArg
+    name: PROT
+  optional: true
+- !Flag
+  description: 'position of tRNA prediction in 1st round (0: skip)'
+  synonyms:
+  - --trna
+  args: !SimpleFlagArg
+    name: TRNA
+  optional: true
+- !Flag
+  description: 'position of rRNA prediction in 1st round (0: skip)'
+  synonyms:
+  - --rrna
+  args: !SimpleFlagArg
+    name: RRNA
+  optional: true
+- !Flag
+  description: 'position of intron prediction in 1st round (0: skip)'
+  synonyms:
+  - --intron
+  args: !SimpleFlagArg
+    name: INTRON
+  optional: true
+- !Flag
+  description: 'position of OL prediction in 1st round (0: skip)'
+  synonyms:
+  - --oril
+  args: !SimpleFlagArg
+    name: ORIL
+  optional: true
+- !Flag
+  description: 'position of OH prediction in 1st round (0: skip)'
+  synonyms:
+  - --orih
+  args: !SimpleFlagArg
+    name: ORIH
+  optional: true
+- !Flag
+  description: final overlap <= NRNT nucleotides
+  synonyms:
+  - --finovl
+  args: !SimpleFlagArg
+    name: NRNT
+  optional: true
+- !Flag
+  description: 'cir circular: rotate mitogenome by DEG and DEG+180'
+  synonyms:
+  - --circrot
+  args: !SimpleFlagArg
+    name: DEG
+  optional: true
+- !Flag
+  description: annotate only the best copy of each feature
+  synonyms:
+  - --best
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: allow fragments to differ in quality/evalue by at most a factor FACTOR.
+    Ignored if <= 0.
+  synonyms:
+  - --fragfac
+  args: !SimpleFlagArg
+    name: FACTOR
+  optional: true
+- !Flag
+  description: allow query range overlaps up for FRACTION for fragments
+  synonyms:
+  - --fragovl
+  args: !SimpleFlagArg
+    name: FRACTION
+  optional: true
+- !Flag
+  description: do not create the plots.
+  synonyms:
+  - --noplots
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: discard BLAST hits with -1*log(e-value)<EVL (EVL < 1 has no effect)
+  synonyms:
+  - --evalue
+  args: !SimpleFlagArg
+    name: EVL
+  optional: true
+- !Flag
+  description: discard positions with quality <.5 of max
+  synonyms:
+  - --cutoff
+  args: !SimpleFlagArg
+    name: fraction
+  optional: true
+- !Flag
+  description: overlapping features of the same name differing by at most a factor
+    of FACTOR are clipped
+  synonyms:
+  - --clipfac
+  args: !SimpleFlagArg
+    name: FACTOR
+  optional: true
+- !Flag
+  description: 'use start/stop codons as in NCBI (default: learned start/stop codons)'
+  synonyms:
+  - --ncbicode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the hmmer based method of Al Arab et al. 2016. This will consider
+    the evalue, ncbicode, fragovl, fragfac
+  synonyms:
+  - --alarab
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the old start/stop prediction method of MITOS1
+  synonyms:
+  - --oldstst
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'run mitfi in glocal and local mode (default: local only)'
+  synonyms:
+  - --locandgloc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: evalue to use for inferal fast mode
+  synonyms:
+  - --ncev
+  args: !SimpleFlagArg
+    name: NCEV
+  optional: true
+- !Flag
+  description: use infernals sensitive mode only
+  synonyms:
+  - --sensitive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: allow tRNA overlap of up to X nt for mitfi
+  synonyms:
+  - --maxtrnaovl
+  args: !SimpleFlagArg
+    name: NT
+  optional: true
+- !Flag
+  description: allow rRNA overlap of up to X nt for mitfi
+  synonyms:
+  - --maxrrnaovl
+  args: !SimpleFlagArg
+    name: NT
+  optional: true
+- !Flag
+  description: print debug output
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: a JSON file with parameters. then outdir is the only other argument
+    needed.
+  synonyms:
+  - --json
+  args: !SimpleFlagArg
+    name: JSON
+  optional: true
+command:
+- runmitos.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

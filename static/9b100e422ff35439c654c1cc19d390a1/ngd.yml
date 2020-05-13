@@ -1,0 +1,211 @@
+!Command
+positional:
+- !Positional
+  description: "The NCBI taxonomic group to download (default: all). A comma-separated\
+    \ list of taxonomic groups is also possible. For example: \"bacteria,viral\"Choose\
+    \ from: ['all', 'archaea', 'bacteria', 'fungi', 'invertebrate', 'metagenomes',\
+    \ 'plant', 'protozoa', 'vertebrate_mammalian', 'vertebrate_other', 'viral']"
+  position: 0
+  name: group
+  optional: false
+named:
+- !Flag
+  description: 'NCBI section to download (default: refseq)'
+  synonyms:
+  - -s
+  - --section
+  args: !ChoiceFlagArg
+    choices:
+    - refseq
+    - genbank
+  optional: true
+- !Flag
+  description: "Which format to download (default: genbank).A comma- separated list\
+    \ of formats is also possible. For example: \"fasta,assembly-report\". Choose\
+    \ from: ['genbank', 'fasta', 'rm', 'features', 'gff', 'protein-fasta', 'genpept',\
+    \ 'wgs', 'cds-fasta', 'rna- fna', 'rna-fasta', 'assembly-report', 'assembly- stats',\
+    \ 'all']"
+  synonyms:
+  - -F
+  - --format
+  args: !SimpleFlagArg
+    name: FILE_FORMAT
+  optional: true
+- !Flag
+  description: "Assembly level of genomes to download (default: all). A comma-separated\
+    \ list of assembly levels is also possible. For example: \"complete,chromosome\"\
+    . Coose from: ['all', 'complete', 'chromosome', 'scaffold', 'contig']"
+  synonyms:
+  - -l
+  - --assembly-level
+  args: !SimpleFlagArg
+    name: ASSEMBLY_LEVEL
+  optional: true
+- !Flag
+  description: 'Only download sequences of the provided genus. A comma-seperated list
+    of genera is also possible. For example: "Streptomyces coelicolor,Escherichia
+    coli". (default: [])'
+  synonyms:
+  - -g
+  - --genus
+  args: !SimpleFlagArg
+    name: GENUS
+  optional: true
+- !Flag
+  description: Use a fuzzy search on the organism name instead of an exact match.
+  synonyms:
+  - --fuzzy-genus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Only download sequences of the provided species NCBI taxonomy ID.
+    A comma-separated list of species taxids is also possible. For example: "52342,12325".
+    (default: [])'
+  synonyms:
+  - -T
+  - --species-taxid
+  args: !SimpleFlagArg
+    name: SPECIES_TAXID
+  optional: true
+- !Flag
+  description: 'Only download sequences of the provided NCBI taxonomy ID. A comma-separated
+    list of taxids is also possible. For example: "9606,9685". (default: [])'
+  synonyms:
+  - -t
+  - --taxid
+  args: !SimpleFlagArg
+    name: TAXID
+  optional: true
+- !Flag
+  description: Only download sequences matching the provided NCBI assembly accession(s).
+    A comma-separated list of accessions is possible, as well as a path to a filename
+    containing one accession per line.
+  synonyms:
+  - -A
+  - --assembly-accessions
+  args: !SimpleFlagArg
+    name: ASSEMBLY_ACCESSIONS
+  optional: true
+- !Flag
+  description: 'Only download sequences of the provided refseq category (default:
+    all)'
+  synonyms:
+  - -R
+  - --refseq-category
+  args: !ChoiceFlagArg
+    choices:
+    - all
+    - reference
+    - representative
+  optional: true
+- !Flag
+  description: 'Create output hierarchy in specified folder (default: /tmp/tmp0zu1tld5)'
+  synonyms:
+  - -o
+  - --output-folder
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Dump all files right into the output folder without creating any subfolders.
+  synonyms:
+  - --flat-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Create links in human-readable hierarchy (might fail on Windows)
+  synonyms:
+  - -H
+  - --human-readable
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'NCBI base URI to use (default: https://ftp.ncbi.nih.gov/genomes)'
+  synonyms:
+  - -u
+  - --uri
+  args: !SimpleFlagArg
+    name: URI
+  optional: true
+- !Flag
+  description: 'Run N downloads in parallel (default: 1)'
+  synonyms:
+  - -p
+  - --parallel
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: 'Retry download N times when connection to NCBI fails (default: 0)'
+  synonyms:
+  - -r
+  - --retries
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Save tab-delimited file with genome metadata
+  synonyms:
+  - -m
+  - --metadata-table
+  args: !SimpleFlagArg
+    name: METADATA_TABLE
+  optional: true
+- !Flag
+  description: Only check which files to download, don't download genome files.
+  synonyms:
+  - -n
+  - --dry-run
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't cache the assembly summary file in /home/ubuntu/.cache/ncbi-genome-download.
+  synonyms:
+  - -N
+  - --no-cache
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: increase output verbosity
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: print debugging information
+  synonyms:
+  - -d
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Specifies the relation to type material for the assembly (default:\
+    \ any). \"any\" will include assemblies with no relation to type material value\
+    \ defined, \"all\" will download only assemblies with a defined value. A comma-separated\
+    \ list of relatons. For example: \"reference,synonym\". Choose from: ['any', 'all',\
+    \ 'type', 'reference', 'synonym', 'proxytype', 'neotype'] ."
+  synonyms:
+  - -M
+  - --type-material
+  args: !SimpleFlagArg
+    name: TYPE_MATERIAL
+  optional: true
+command:
+- ngd
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print version information
+  synonyms:
+  - -V
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

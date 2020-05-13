@@ -1,0 +1,74 @@
+!Command
+positional:
+- !Positional
+  description: This must be a tab separated file with two columns. The first column
+    contains chromosome names and the second contains the chromosome sizes.
+  position: 0
+  name: chrom_size
+  optional: false
+- !Positional
+  description: bed file marking regions to be excluded from the analysis (such as
+    centromeres).
+  position: 1
+  name: unalignable_regions
+  optional: false
+- !Positional
+  description: ChIP bam file
+  position: 2
+  name: ip_bam
+  optional: false
+- !Positional
+  description: Input/control bam file
+  position: 3
+  name: input_bam
+  optional: false
+- !Positional
+  description: output directory, will be created if not existing.
+  position: 4
+  name: output_dir
+  optional: false
+named:
+- !Flag
+  description: Leave unspecificed for auto-estimation. Adjusts how sensitive EDD is
+    to heterogeneity within domains. Depends on Signal/Noise ratio of source files
+    and on the interests of the researcher. A "low" value favors large enriched domains
+    with more heterogeneity. A "high" value favors smaller enriched domains devoid
+    of heterogeneity.
+  synonyms:
+  - -g
+  - --gap-penalty
+  args: !SimpleFlagArg
+    name: GAP_PENALTY
+  optional: true
+- !Flag
+  description: Path to user specified EDD configuration file. See EDD manual section
+    about configuration for more information.
+  synonyms:
+  - --config-file
+  args: !SimpleFlagArg
+    name: CONFIG_FILE
+  optional: true
+- !Flag
+  description: Write log ratios to file.
+  synonyms:
+  - --write-log-ratios
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write bin scores to file.
+  synonyms:
+  - --write-bin-scores
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- edd
+subcommands: []
+help_flag:
+usage_flag:
+version_flag: !Flag
+  description: Print version and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

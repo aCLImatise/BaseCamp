@@ -1,0 +1,506 @@
+!Command
+positional: []
+named: []
+command:
+- slamdunk
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: Single csv/tsv file (recommended) containing all sample files and
+      sample info or a list of all sample BAM/FASTA(gz)/FASTQ(gz) files
+    position: 0
+    name: files
+    optional: false
+  named:
+  - !Flag
+    description: 'Max. number of alignments to report per read (default: 1)'
+    synonyms:
+    - -n
+    - --topn
+    args: !SimpleFlagArg
+      name: TOPN
+    optional: true
+  - !Flag
+    description: "Max number of As at the 3' end of a read. (default: 4)"
+    synonyms:
+    - -a
+    - --max-polya
+    args: !SimpleFlagArg
+      name: MAXPOLYA
+    optional: true
+  - !Flag
+    description: 'Thread number (default: 1)'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  - !Flag
+    description: 'Run plain Quantseq alignment without SLAM-seq scoring (default:
+      False)'
+    synonyms:
+    - -q
+    - --quantseq
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Use a end to end alignment algorithm for mapping. (default: False)'
+    synonyms:
+    - -e
+    - --endtoend
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Use this sample name for all supplied samples (default: None)'
+    synonyms:
+    - -sn
+    - --sampleName
+    args: !SimpleFlagArg
+      name: SAMPLENAME
+    optional: true
+  - !Flag
+    description: 'Use this sample type for all supplied samples (default: pulse)'
+    synonyms:
+    - -sy
+    - --sampleType
+    args: !SimpleFlagArg
+      name: SAMPLETYPE
+    optional: true
+  - !Flag
+    description: 'Use this sample time for all supplied samples (default: 0)'
+    synonyms:
+    - -st
+    - --sampleTime
+    args: !SimpleFlagArg
+      name: SAMPLETIME
+    optional: true
+  - !Flag
+    description: 'Run analysis only for sample <i>. Use for distributing slamdunk
+      analysis on a cluster (index is 1-based). (default: -1)'
+    synonyms:
+    - -i
+    - --sample-index
+    args: !SimpleFlagArg
+      name: SAMPLEINDEX
+    optional: true
+  - !Flag
+    description: 'Output BAM while mapping. Slower but, uses less hard disk. (default:
+      False)'
+    synonyms:
+    - -ss
+    - --skip-sam
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - slamdunk
+  - map
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Bam file(s)
+    position: 0
+    name: bam
+    optional: false
+  named:
+  - !Flag
+    description: Output directory for mapped BAM files.
+    synonyms:
+    - -o
+    - --outputDir
+    args: !SimpleFlagArg
+      name: OUTPUTDIR
+    optional: true
+  - !Flag
+    description: BED file, overrides MQ filter to 0
+    synonyms:
+    - -b
+    - --bed
+    args: !SimpleFlagArg
+      name: BED
+    optional: true
+  - !Flag
+    description: 'Minimum mapping quality (default: 2)'
+    synonyms:
+    - -mq
+    - --min-mq
+    args: !SimpleFlagArg
+      name: MQ
+    optional: true
+  - !Flag
+    description: 'Minimum alignment identity (default: 0.95)'
+    synonyms:
+    - -mi
+    - --min-identity
+    args: !SimpleFlagArg
+      name: IDENTITY
+    optional: true
+  - !Flag
+    description: 'Maximum NM for alignments (default: -1)'
+    synonyms:
+    - -nm
+    - --max-nm
+    args: !SimpleFlagArg
+      name: NM
+    optional: true
+  - !Flag
+    description: 'Thread number (default: 1)'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  command:
+  - slamdunk
+  - filter
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Bam file(s)
+    position: 0
+    name: bam
+    optional: false
+  named:
+  - !Flag
+    description: Output directory for mapped BAM files.
+    synonyms:
+    - -o
+    - --outputDir
+    args: !SimpleFlagArg
+      name: OUTPUTDIR
+    optional: true
+  - !Flag
+    description: Reference fasta file
+    synonyms:
+    - -r
+    - --reference
+    args: !SimpleFlagArg
+      name: FASTA
+    optional: true
+  - !Flag
+    description: 'Minimimum coverage to call variant (default: 10)'
+    synonyms:
+    - -c
+    - --min-coverage
+    args: !SimpleFlagArg
+      name: COV
+    optional: true
+  - !Flag
+    description: 'Minimimum variant fraction to call variant (default: 0.8)'
+    synonyms:
+    - -f
+    - --var-fraction
+    args: !SimpleFlagArg
+      name: VAR
+    optional: true
+  - !Flag
+    description: 'Thread number (default: 1)'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  command:
+  - slamdunk
+  - snp
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Bam file(s)
+    position: 0
+    name: bam
+    optional: false
+  named:
+  - !Flag
+    description: Output directory for mapped BAM files.
+    synonyms:
+    - -o
+    - --outputDir
+    args: !SimpleFlagArg
+      name: OUTPUTDIR
+    optional: true
+  - !Flag
+    description: Directory containing SNP files.
+    synonyms:
+    - -s
+    - --snp-directory
+    args: !SimpleFlagArg
+      name: SNPDIR
+    optional: true
+  - !Flag
+    description: Externally provided custom variant file.
+    synonyms:
+    - -v
+    - --vcf
+    args: !SimpleFlagArg
+      name: VCFFILE
+    optional: true
+  - !Flag
+    description: Reference fasta file
+    synonyms:
+    - -r
+    - --reference
+    args: !SimpleFlagArg
+      name: REF
+    optional: true
+  - !Flag
+    description: BED file
+    synonyms:
+    - -b
+    - --bed
+    args: !SimpleFlagArg
+      name: BED
+    optional: true
+  - !Flag
+    description: 'Number of T>C conversions required to count read as T>C read (default:
+      1)'
+    synonyms:
+    - -c
+    - --conversion-threshold
+    args: !SimpleFlagArg
+      name: CONVERSIONTHRESHOLD
+    optional: true
+  - !Flag
+    description: Max read length in BAM file
+    synonyms:
+    - -l
+    - --max-read-length
+    args: !SimpleFlagArg
+      name: MAXLENGTH
+    optional: true
+  - !Flag
+    description: 'Min base quality for T -> C conversions (default: 27)'
+    synonyms:
+    - -q
+    - --min-base-qual
+    args: !SimpleFlagArg
+      name: MINQUAL
+    optional: true
+  - !Flag
+    description: 'Thread number (default: 1)'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  command:
+  - slamdunk
+  - count
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Single csv/tsv file (recommended) containing all sample files and
+      sample info or a list of all sample BAM/FASTA(gz)/FASTQ(gz) files
+    position: 0
+    name: files
+    optional: false
+  named:
+  - !Flag
+    description: "Max number of As at the 3' end of a read (default: 4)"
+    synonyms:
+    - -a
+    - --max-polya
+    args: !SimpleFlagArg
+      name: MAXPOLYA
+    optional: true
+  - !Flag
+    description: 'Max. number of alignments to report per read (default: 1)'
+    synonyms:
+    - -n
+    - --topn
+    args: !SimpleFlagArg
+      name: TOPN
+    optional: true
+  - !Flag
+    description: 'Thread number (default: 1)'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  - !Flag
+    description: Run plain Quantseq alignment without SLAM-seq scoring
+    synonyms:
+    - -q
+    - --quantseq
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Use a end to end alignment algorithm for mapping.
+    synonyms:
+    - -e
+    - --endtoend
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Use reference to resolve multimappers (requires -n > 1).
+    synonyms:
+    - -m
+    - --multimap
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Minimum mapping quality (default: 2)'
+    synonyms:
+    - -mq
+    - --min-mq
+    args: !SimpleFlagArg
+      name: MQ
+    optional: true
+  - !Flag
+    description: 'Minimum alignment identity (default: 0.95)'
+    synonyms:
+    - -mi
+    - --min-identity
+    args: !SimpleFlagArg
+      name: IDENTITY
+    optional: true
+  - !Flag
+    description: 'Maximum NM for alignments (default: -1)'
+    synonyms:
+    - -nm
+    - --max-nm
+    args: !SimpleFlagArg
+      name: NM
+    optional: true
+  - !Flag
+    description: 'Minimimum coverage to call variant (default: 10)'
+    synonyms:
+    - -mc
+    - --min-coverage
+    args: !SimpleFlagArg
+      name: COV
+    optional: true
+  - !Flag
+    description: 'Minimimum variant fraction to call variant (default: 0.8)'
+    synonyms:
+    - -mv
+    - --var-fraction
+    args: !SimpleFlagArg
+      name: VAR
+    optional: true
+  - !Flag
+    description: 'Number of T>C conversions required to count read as T>C read (default:
+      1)'
+    synonyms:
+    - -c
+    - --conversion-threshold
+    args: !SimpleFlagArg
+      name: CONVERSIONTHRESHOLD
+    optional: true
+  - !Flag
+    description: Max read length in BAM file
+    synonyms:
+    - -rl
+    - --max-read-length
+    args: !SimpleFlagArg
+      name: MAXLENGTH
+    optional: true
+  - !Flag
+    description: 'Min base quality for T -> C conversions (default: 27)'
+    synonyms:
+    - -mbq
+    - --min-base-qual
+    args: !SimpleFlagArg
+      name: MINQUAL
+    optional: true
+  - !Flag
+    description: Use this sample name for all supplied samples
+    synonyms:
+    - -sn
+    - --sampleName
+    args: !SimpleFlagArg
+      name: SAMPLENAME
+    optional: true
+  - !Flag
+    description: Use this sample type for all supplied samples
+    synonyms:
+    - -sy
+    - --sampleType
+    args: !SimpleFlagArg
+      name: SAMPLETYPE
+    optional: true
+  - !Flag
+    description: Use this sample time for all supplied samples
+    synonyms:
+    - -st
+    - --sampleTime
+    args: !SimpleFlagArg
+      name: SAMPLETIME
+    optional: true
+  - !Flag
+    description: Run analysis only for sample <i>. Use for distributing slamdunk analysis
+      on a cluster (index is 1-based).
+    synonyms:
+    - -i
+    - --sample-index
+    args: !SimpleFlagArg
+      name: SAMPLEINDEX
+    optional: true
+  - !Flag
+    description: Output BAM while mapping. Slower but, uses less hard disk.
+    synonyms:
+    - -ss
+    - --skip-sam
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - slamdunk
+  - all
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

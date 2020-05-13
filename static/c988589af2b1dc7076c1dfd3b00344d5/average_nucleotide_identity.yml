@@ -1,0 +1,252 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Output directory (required)
+  synonyms:
+  - -o
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUTDIRNAME
+  optional: true
+- !Flag
+  description: Input directory name (required)
+  synonyms:
+  - -i
+  - --indir
+  args: !SimpleFlagArg
+    name: INDIRNAME
+  optional: true
+- !Flag
+  description: Give verbose output
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Force file overwriting
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Sequence fragment size for ANIb (default 1020)
+  synonyms:
+  - -s
+  - --fragsize
+  args: !SimpleFlagArg
+    name: FRAGSIZE
+  optional: true
+- !Flag
+  description: Logfile location
+  synonyms:
+  - -l
+  - --logfile
+  args: !SimpleFlagArg
+    name: LOGFILE
+  optional: true
+- !Flag
+  description: Skip NUCmer runs, for testing (e.g. if output already present)
+  synonyms:
+  - --skip_nucmer
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Skip BLASTN runs, for testing (e.g. if output already present)
+  synonyms:
+  - --skip_blastn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't nuke existing files
+  synonyms:
+  - --noclobber
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't compress/delete the comparison output
+  synonyms:
+  - --nocompress
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Generate heatmap of ANI
+  synonyms:
+  - -g
+  - --graphics
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Graphics output format(s) [pdf|png|jpg|svg] (default pdf,png,eps meaning
+    three file formats)
+  synonyms:
+  - --gformat
+  args: !SimpleFlagArg
+    name: GFORMAT
+  optional: true
+- !Flag
+  description: Graphics output method (default mpl)
+  synonyms:
+  - --gmethod
+  args: !ChoiceFlagArg
+    choices:
+    - mpl
+    - seaborn
+  optional: true
+- !Flag
+  description: Path to file containing sequence labels
+  synonyms:
+  - --labels
+  args: !SimpleFlagArg
+    name: LABELS
+  optional: true
+- !Flag
+  description: Path to file containing sequence classes
+  synonyms:
+  - --classes
+  args: !SimpleFlagArg
+    name: CLASSES
+  optional: true
+- !Flag
+  description: ANI method (default ANIm)
+  synonyms:
+  - -m
+  - --method
+  args: !ChoiceFlagArg
+    choices:
+    - ANIm
+    - ANIb
+    - ANIblastall
+    - TETRA
+  optional: true
+- !Flag
+  description: Job scheduler (default multiprocessing, i.e. locally)
+  synonyms:
+  - --scheduler
+  args: !ChoiceFlagArg
+    choices:
+    - multiprocessing
+    - SGE
+  optional: true
+- !Flag
+  description: Number of worker processes for multiprocessing (default zero, meaning
+    use all available cores)
+  synonyms:
+  - --workers
+  args: !SimpleFlagArg
+    name: WORKERS
+  optional: true
+- !Flag
+  description: Number of jobs to place in an SGE array group (default 10000)
+  synonyms:
+  - --SGEgroupsize
+  args: !SimpleFlagArg
+    name: SGEGROUPSIZE
+  optional: true
+- !Flag
+  description: Additional arguments for qsub
+  synonyms:
+  - --SGEargs
+  args: !SimpleFlagArg
+    name: SGEARGS
+  optional: true
+- !Flag
+  description: Override MUMmer to allow all NUCmer matches
+  synonyms:
+  - --maxmatch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to NUCmer executable
+  synonyms:
+  - --nucmer_exe
+  args: !SimpleFlagArg
+    name: NUCMER_EXE
+  optional: true
+- !Flag
+  description: Path to delta-filter executable
+  synonyms:
+  - --filter_exe
+  args: !SimpleFlagArg
+    name: FILTER_EXE
+  optional: true
+- !Flag
+  description: Path to BLASTN+ executable
+  synonyms:
+  - --blastn_exe
+  args: !SimpleFlagArg
+    name: BLASTN_EXE
+  optional: true
+- !Flag
+  description: Path to BLAST+ makeblastdb executable
+  synonyms:
+  - --makeblastdb_exe
+  args: !SimpleFlagArg
+    name: MAKEBLASTDB_EXE
+  optional: true
+- !Flag
+  description: Path to BLASTALL executable
+  synonyms:
+  - --blastall_exe
+  args: !SimpleFlagArg
+    name: BLASTALL_EXE
+  optional: true
+- !Flag
+  description: Path to BLAST formatdb executable
+  synonyms:
+  - --formatdb_exe
+  args: !SimpleFlagArg
+    name: FORMATDB_EXE
+  optional: true
+- !Flag
+  description: Write Excel format output tables
+  synonyms:
+  - --write_excel
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Rerender graphics output without recalculation
+  synonyms:
+  - --rerender
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Subsample a percentage [0-1] or specific number (1-n) of input sequences
+  synonyms:
+  - --subsample
+  args: !SimpleFlagArg
+    name: SUBSAMPLE
+  optional: true
+- !Flag
+  description: Set random seed for reproducible subsampling.
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: SEED
+  optional: true
+- !Flag
+  description: Prefix for SGE jobs (default ANI).
+  synonyms:
+  - --jobprefix
+  args: !SimpleFlagArg
+    name: JOBPREFIX
+  optional: true
+command:
+- average_nucleotide_identity.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

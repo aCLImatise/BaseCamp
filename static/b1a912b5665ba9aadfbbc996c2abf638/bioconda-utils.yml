@@ -1,0 +1,947 @@
+!Command
+positional: []
+named: []
+command:
+- bioconda-utils
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: 'Path to folder containing recipes (default: recipes/) (default:
+      -)'
+    position: 0
+    name: recipe_folder
+    optional: false
+  - !Positional
+    description: 'Path to Bioconda config (default: config.yml) (default: -)'
+    position: 1
+    name: config
+    optional: false
+  named:
+  - !Flag
+    description: "Glob for package[s] to show in DAG. Default is to show all packages.\
+      \ Can be specified more than once (default: '*')"
+    synonyms:
+    - --packages
+    args: !RepeatFlagArg
+      name: PACKAGES
+    optional: true
+  - !Flag
+    description: "Set format to print graph. \"gml\" and \"dot\" can be imported into\
+      \ graph visualization tools (graphviz, gephi, cytoscape). \"txt\" will print\
+      \ out recipes grouped by independent subdags, largest subdag first, each in\
+      \ topologically sorted order. Singleton subdags (if not hidden with --hide-singletons)\
+      \ are reported as one large group at the end. (default: 'gml')"
+    synonyms:
+    - --format
+    args: !ChoiceFlagArg
+      choices:
+      - gml
+      - dot
+      - txt
+    optional: true
+  - !Flag
+    description: 'Hide singletons in the printed graph. (default: False)'
+    synonyms:
+    - --hide-singletons
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Set logging level (debug, info, warning, error, critical) (default:\
+      \ 'info')"
+    synonyms:
+    - --loglevel
+    args: !SimpleFlagArg
+      name: LOGLEVEL
+    optional: true
+  - !Flag
+    description: 'Write log to file (default: -)'
+    synonyms:
+    - --logfile
+    args: !SimpleFlagArg
+      name: LOGFILE
+    optional: true
+  - !Flag
+    description: "Log level for log file (default: 'debug')"
+    synonyms:
+    - --logfile-level
+    args: !SimpleFlagArg
+      name: LOGFILE_LEVEL
+    optional: true
+  - !Flag
+    description: 'Limit lines emitted for commands executed (default: -)'
+    synonyms:
+    - --log-command-max-lines
+    args: !SimpleFlagArg
+      name: LOG_COMMAND_MAX_LINES
+    optional: true
+  command:
+  - bioconda-utils
+  - dag
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: 'Path to folder containing recipes (default: recipes/) (default:
+      -)'
+    position: 0
+    name: recipe_folder
+    optional: false
+  - !Positional
+    description: 'Path to Bioconda config (default: config.yml) (default: -)'
+    position: 1
+    name: config
+    optional: false
+  named:
+  - !Flag
+    description: 'Restrict --dependencies to packages in `recipe_folder`. Has no effect
+      if --reverse- dependencies, which always looks just in the recipe dir. (default:
+      False)'
+    synonyms:
+    - --restrict
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Return recipes in `recipe_folder` in the dependency chain for the
+      packages listed here. Answers the question "what does PACKAGE need?" (default:
+      -)'
+    synonyms:
+    - --dependencies
+    args: !RepeatFlagArg
+      name: DEPENDENCIES
+    optional: true
+  - !Flag
+    description: 'Return recipes in `recipe_folder` in the reverse dependency chain
+      for packages listed here. Answers the question "what depends on PACKAGE?" (default:
+      -)'
+    synonyms:
+    - --reverse-dependencies
+    args: !RepeatFlagArg
+      name: REVERSE_DEPENDENCIES
+    optional: true
+  - !Flag
+    description: "Set logging level (debug, info, warning, error, critical) (default:\
+      \ 'info')"
+    synonyms:
+    - --loglevel
+    args: !SimpleFlagArg
+      name: LOGLEVEL
+    optional: true
+  - !Flag
+    description: 'Write log to file (default: -)'
+    synonyms:
+    - --logfile
+    args: !SimpleFlagArg
+      name: LOGFILE
+    optional: true
+  - !Flag
+    description: "Log level for log file (default: 'debug')"
+    synonyms:
+    - --logfile-level
+    args: !SimpleFlagArg
+      name: LOGFILE_LEVEL
+    optional: true
+  - !Flag
+    description: 'Limit lines emitted for commands executed (default: -)'
+    synonyms:
+    - --log-command-max-lines
+    args: !SimpleFlagArg
+      name: LOG_COMMAND_MAX_LINES
+    optional: true
+  command:
+  - bioconda-utils
+  - dependent
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: 'Path to folder containing recipes (default: recipes/) (default:
+      -)'
+    position: 0
+    name: recipe_folder
+    optional: false
+  - !Positional
+    description: 'Path to Bioconda config (default: config.yml) (default: -)'
+    position: 1
+    name: config
+    optional: false
+  named:
+  - !Flag
+    description: "Glob for package[s] to build. Default is to build all packages.\
+      \ Can be specified more than once (default: '*')"
+    synonyms:
+    - --packages
+    args: !RepeatFlagArg
+      name: PACKAGES
+    optional: true
+  - !Flag
+    description: 'To speed up debugging, use repodata cached locally in the provided
+      filename. If the file does not exist, it will be created the first time. (default:
+      -)'
+    synonyms:
+    - --cache
+    args: !SimpleFlagArg
+      name: CACHE
+    optional: true
+  - !Flag
+    description: 'List the linting functions to be used and then exit (default: False)'
+    synonyms:
+    - --list-checks
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Exclude this linting function. Can be used multiple times. (default:
+      -)'
+    synonyms:
+    - --exclude
+    args: !RepeatFlagArg
+      name: EXCLUDE
+    optional: true
+  - !Flag
+    description: 'If set, the lint status will be sent to the current commit on github.
+      Also needs --user and --repo to be set. Requires the env var GITHUB_TOKEN to
+      be set. Note that pull requests from forks will not have access to encrypted
+      variables on ci, so this feature may be of limited use. (default: False)'
+    synonyms:
+    - --push-status
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Github user (default: 'bioconda')"
+    synonyms:
+    - --user
+    args: !SimpleFlagArg
+      name: USER
+    optional: true
+  - !Flag
+    description: 'Commit on github on which to update status (default: -)'
+    synonyms:
+    - --commit
+    args: !SimpleFlagArg
+      name: COMMIT
+    optional: true
+  - !Flag
+    description: 'If set, the lint status will be posted as a comment in the corresponding
+      pull request (given by --pull- request). Also needs --user and --repo to be
+      set. Requires the env var GITHUB_TOKEN to be set. (default: False)'
+    synonyms:
+    - --push-comment
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Pull request id on github on which to post a comment. (default:
+      -)'
+    synonyms:
+    - --pull-request
+    args: !SimpleFlagArg
+      name: PULL_REQUEST
+    optional: true
+  - !Flag
+    description: "Github repo (default: 'bioconda-recipes')"
+    synonyms:
+    - --repo
+    args: !SimpleFlagArg
+      name: REPO
+    optional: true
+  - !Flag
+    description: 'Git range (e.g. commits or something like "master HEAD" to check
+      commits in HEAD vs master, or just "HEAD" to include uncommitted changes). All
+      recipes modified within this range will be built if not present in the channel.
+      (default: -)'
+    synonyms:
+    - --git-range
+    args: !RepeatFlagArg
+      name: GIT_RANGE
+    optional: true
+  - !Flag
+    description: 'Default behavior is to summarize the linting results; use this argument
+      to get the full results as a TSV printed to stdout. (default: False)'
+    synonyms:
+    - --full-report
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Attempt to fix problems where found (default: False)'
+    synonyms:
+    - --try-fix
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Drop into debugger on exception (default: False)'
+    synonyms:
+    - -P
+    - --pdb
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Set logging level (debug, info, warning, error, critical) (default:\
+      \ 'info')"
+    synonyms:
+    - --loglevel
+    args: !SimpleFlagArg
+      name: LOGLEVEL
+    optional: true
+  - !Flag
+    description: 'Write log to file (default: -)'
+    synonyms:
+    - --logfile
+    args: !SimpleFlagArg
+      name: LOGFILE
+    optional: true
+  - !Flag
+    description: "Log level for log file (default: 'debug')"
+    synonyms:
+    - --logfile-level
+    args: !SimpleFlagArg
+      name: LOGFILE_LEVEL
+    optional: true
+  - !Flag
+    description: 'Limit lines emitted for commands executed (default: -)'
+    synonyms:
+    - --log-command-max-lines
+    args: !SimpleFlagArg
+      name: LOG_COMMAND_MAX_LINES
+    optional: true
+  command:
+  - bioconda-utils
+  - lint
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Path to yaml file specifying the configuration
+    position: 0
+    name: config
+    optional: false
+  named:
+  - !Flag
+    description: 'Require version to strictly match. (default: False)'
+    synonyms:
+    - --strict-version
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Require version and build to strictly match. (default: False)'
+    synonyms:
+    - --strict-build
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Only print removal plan. (default: False)'
+    synonyms:
+    - --dryrun
+    - -n
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Remove packages from anaconda. (default: False)'
+    synonyms:
+    - --remove
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Print anaconda urls. (default: False)'
+    synonyms:
+    - --url
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Channel to check for duplicates (default: 'bioconda')"
+    synonyms:
+    - --channel
+    args: !SimpleFlagArg
+      name: CHANNEL
+    optional: true
+  - !Flag
+    description: "Set logging level (debug, info, warning, error, critical) (default:\
+      \ 'info')"
+    synonyms:
+    - --loglevel
+    args: !SimpleFlagArg
+      name: LOGLEVEL
+    optional: true
+  - !Flag
+    description: 'Write log to file (default: -)'
+    synonyms:
+    - --logfile
+    args: !SimpleFlagArg
+      name: LOGFILE
+    optional: true
+  - !Flag
+    description: "Log level for log file (default: 'debug')"
+    synonyms:
+    - --logfile-level
+    args: !SimpleFlagArg
+      name: LOGFILE_LEVEL
+    optional: true
+  - !Flag
+    description: 'Limit lines emitted for commands executed (default: -)'
+    synonyms:
+    - --log-command-max-lines
+    args: !SimpleFlagArg
+      name: LOG_COMMAND_MAX_LINES
+    optional: true
+  command:
+  - bioconda-utils
+  - duplicates
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: 'Path to folder containing recipes (default: recipes/) (default:
+      -)'
+    position: 0
+    name: recipe_folder
+    optional: false
+  - !Positional
+    description: 'Path to Bioconda config (default: config.yml) (default: -)'
+    position: 1
+    name: config
+    optional: false
+  named:
+  - !Flag
+    description: 'Bump package build numbers even if the only applicable pinning change
+      is the python version. This is generally required unless you plan on building
+      everything. (default: False)'
+    synonyms:
+    - --bump-only-python
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'To speed up debugging, use repodata cached locally in the provided
+      filename. If the file does not exist, it will be created the first time. (default:
+      -)'
+    synonyms:
+    - --cache
+    args: !SimpleFlagArg
+      name: CACHE
+    optional: true
+  - !Flag
+    description: 'Drop into debugger on exception (default: False)'
+    synonyms:
+    - -P
+    - --pdb
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Limit maximum number of processes used. (default: 16)'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  - !Flag
+    description: "Set logging level (debug, info, warning, error, critical) (default:\
+      \ 'info')"
+    synonyms:
+    - --loglevel
+    args: !SimpleFlagArg
+      name: LOGLEVEL
+    optional: true
+  - !Flag
+    description: 'Write log to file (default: -)'
+    synonyms:
+    - --logfile
+    args: !SimpleFlagArg
+      name: LOGFILE
+    optional: true
+  - !Flag
+    description: "Log level for log file (default: 'debug')"
+    synonyms:
+    - --logfile-level
+    args: !SimpleFlagArg
+      name: LOGFILE_LEVEL
+    optional: true
+  - !Flag
+    description: 'Limit lines emitted for commands executed (default: -)'
+    synonyms:
+    - --log-command-max-lines
+    args: !SimpleFlagArg
+      name: LOG_COMMAND_MAX_LINES
+    optional: true
+  command:
+  - bioconda-utils
+  - update-pinning
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: 'Path to folder containing recipes (default: recipes/) (default:
+      -)'
+    position: 0
+    name: recipe_folder
+    optional: false
+  - !Positional
+    description: 'Path to Bioconda config (default: config.yml) (default: -)'
+    position: 1
+    name: config
+    optional: false
+  - !Positional
+    description: Bioconductor package name. This is case-sensitive, and must match
+      the package name on the Bioconductor site. If "update-all-packages" is specified,
+      then all packages in a given bioconductor release will be created/updated (--force
+      is then implied).
+    position: 2
+    name: package
+    optional: false
+  named:
+  - !Flag
+    description: 'If specified, recipe will be created in RECIPES/<package>/<version>
+      (default: False)'
+    synonyms:
+    - --versioned
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Overwrite the contents of an existing recipe. If --recursive is
+      also used, then overwrite *all* recipes created. (default: False)'
+    synonyms:
+    - --force
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Package version to use instead of the current one (default: -)'
+    synonyms:
+    - --pkg-version
+    args: !SimpleFlagArg
+      name: PKG_VERSION
+    optional: true
+  - !Flag
+    description: 'Version of Bioconductor to target. If not specified, then automatically
+      finds the latest version of Bioconductor with the specified version in --pkg-
+      version, or if --pkg-version not specified, then finds the the latest package
+      version in the latest Bioconductor version (default: -)'
+    synonyms:
+    - --bioc-version
+    args: !SimpleFlagArg
+      name: BIOC_VERSION
+    optional: true
+  - !Flag
+    description: 'Creates the recipes for all Bioconductor and CRAN dependencies of
+      the specified package. (default: False)'
+    synonyms:
+    - --recursive
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "[SKIP_IF_IN_CHANNELS [SKIP_IF_IN_CHANNELS ...]] When --recursive\
+      \ is used, it will build *all* recipes. Use this argument to skip recursive\
+      \ building for packages that already exist in the packages listed here. (default:\
+      \ ['conda-forge', 'bioconda'])"
+    synonyms:
+    - --skip-if-in-channels
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Set logging level (debug, info, warning, error, critical) (default:\
+      \ 'debug')"
+    synonyms:
+    - --loglevel
+    args: !SimpleFlagArg
+      name: LOGLEVEL
+    optional: true
+  - !Flag
+    description: 'Write log to file (default: -)'
+    synonyms:
+    - --logfile
+    args: !SimpleFlagArg
+      name: LOGFILE
+    optional: true
+  - !Flag
+    description: "Log level for log file (default: 'debug')"
+    synonyms:
+    - --logfile-level
+    args: !SimpleFlagArg
+      name: LOGFILE_LEVEL
+    optional: true
+  - !Flag
+    description: 'Limit lines emitted for commands executed (default: -)'
+    synonyms:
+    - --log-command-max-lines
+    args: !SimpleFlagArg
+      name: LOG_COMMAND_MAX_LINES
+    optional: true
+  command:
+  - bioconda-utils
+  - bioconductor-skeleton
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Path to recipe to be cleaned
+    position: 0
+    name: recipe
+    optional: false
+  named:
+  - !Flag
+    description: 'Use this when submitting an R package to Bioconda. After a CRAN
+      skeleton is created, any Windows-related lines will be removed and the bld.bat
+      file will be removed. (default: False)'
+    synonyms:
+    - --no-windows
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Set logging level (debug, info, warning, error, critical) (default:\
+      \ 'info')"
+    synonyms:
+    - --loglevel
+    args: !SimpleFlagArg
+      name: LOGLEVEL
+    optional: true
+  - !Flag
+    description: 'Write log to file (default: -)'
+    synonyms:
+    - --logfile
+    args: !SimpleFlagArg
+      name: LOGFILE
+    optional: true
+  - !Flag
+    description: "Log level for log file (default: 'debug')"
+    synonyms:
+    - --logfile-level
+    args: !SimpleFlagArg
+      name: LOGFILE_LEVEL
+    optional: true
+  - !Flag
+    description: 'Limit lines emitted for commands executed (default: -)'
+    synonyms:
+    - --log-command-max-lines
+    args: !SimpleFlagArg
+      name: LOG_COMMAND_MAX_LINES
+    optional: true
+  command:
+  - bioconda-utils
+  - clean-cran-skeleton
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: 'Path to folder containing recipes (default: recipes/) (default:
+      -)'
+    position: 0
+    name: recipe_folder
+    optional: false
+  - !Positional
+    description: 'Path to Bioconda config (default: config.yml) (default: -)'
+    position: 1
+    name: config
+    optional: false
+  named:
+  - !Flag
+    description: "Glob(s) for package[s] to scan. Can be specified more than once\
+      \ (default: '*')"
+    synonyms:
+    - --packages
+    args: !RepeatFlagArg
+      name: PACKAGES
+    optional: true
+  - !Flag
+    description: 'Globs for package[s] to exclude from scan. Can be specified more
+      than once (default: -)'
+    synonyms:
+    - --exclude
+    args: !RepeatFlagArg
+      name: EXCLUDE
+    optional: true
+  - !Flag
+    description: 'To speed up debugging, use repodata cached locally in the provided
+      filename. If the file does not exist, it will be created the first time. Caution:
+      The cache will not be updated if exclude-channels is changed (default: -)'
+    synonyms:
+    - --cache
+    args: !SimpleFlagArg
+      name: CACHE
+    optional: true
+  - !Flag
+    description: 'Write urls with permanent failure to this file (default: -)'
+    synonyms:
+    - --failed-urls
+    args: !SimpleFlagArg
+      name: FAILED_URLS
+    optional: true
+  - !Flag
+    description: 'Write unrecognized urls to this file (default: -)'
+    synonyms:
+    - --unparsed-urls
+    args: !SimpleFlagArg
+      name: UNPARSED_URLS
+    optional: true
+  - !Flag
+    description: 'Write status for each recipe to this file (default: -)'
+    synonyms:
+    - --recipe-status
+    args: !SimpleFlagArg
+      name: RECIPE_STATUS
+    optional: true
+  - !Flag
+    description: "By default, only subrecipes explicitly enabled for watch in meta.yaml\
+      \ are considered. Set to 'always' to exclude all subrecipes. Set to 'never'\
+      \ to include all subrecipes (default: -)"
+    synonyms:
+    - --exclude-subrecipes
+    args: !SimpleFlagArg
+      name: EXCLUDE_SUBRECIPES
+    optional: true
+  - !Flag
+    description: "Exclude recipes building packages present in other channels. Set\
+      \ to 'none' to disable check. (default: 'conda-forge')"
+    synonyms:
+    - --exclude-channels
+    args: !RepeatFlagArg
+      name: EXCLUDE_CHANNELS
+    optional: true
+  - !Flag
+    description: 'Do not exclude recipes from blacklist (default: False)'
+    synonyms:
+    - --ignore-blacklists
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Try to fetch python requirements. Please note that this requires
+      downloading packages and executing setup.py, so presents a potential security
+      problem. (default: False)'
+    synonyms:
+    - --fetch-requirements
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Check if recipe has active branch (default: False)'
+    synonyms:
+    - --check-branch
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Create branch for each update (default: False)'
+    synonyms:
+    - --create-branch
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Create PR for each update. Implies create-branch. (default: False)'
+    synonyms:
+    - --create-pr
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Check only recipes with active update (default: False)'
+    synonyms:
+    - --only-active
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Do not shuffle recipe order (default: False)'
+    synonyms:
+    - --no-shuffle
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Exit after ARG updates (default: 0)'
+    synonyms:
+    - --max-updates
+    args: !SimpleFlagArg
+      name: MAX_UPDATES
+    optional: true
+  - !Flag
+    description: "Don't update remote git or github\" (default: False)"
+    synonyms:
+    - --dry-run
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Don't check for pinning updates (default: False)"
+    synonyms:
+    - --no-check-pinnings
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Don't process recipes in graph order or add dependent recipes to\
+      \ checks. Implies --no-skip-pending-deps. (default: False)"
+    synonyms:
+    - --no-follow-graph
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Don't check for version updates to recipes (default: False)"
+    synonyms:
+    - --no-check-version-update
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Don't check for recipes having a dependency with a pending update.\
+      \ Update all recipes, including those having deps in need or rebuild. (default:\
+      \ False)"
+    synonyms:
+    - --no-check-pending-deps
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Bump package build numbers even if the only applicable pinning change
+      is the python version. This is generally required unless you plan on building
+      everything. (default: False)'
+    synonyms:
+    - --bump-only-python
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[SIGN]         Enable signing. Optionally takes keyid. (default:
+      0)'
+    synonyms:
+    - --sign
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'COMMIT_AS Set user and email to use for committing. Takes exactly
+      two arguments. (default: -)'
+    synonyms:
+    - --commit-as
+    args: !SimpleFlagArg
+      name: COMMIT_AS
+    optional: true
+  - !Flag
+    description: 'Limit maximum number of processes used. (default: 16)'
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: THREADS
+    optional: true
+  - !Flag
+    description: 'Drop into debugger on exception (default: False)'
+    synonyms:
+    - -P
+    - --pdb
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "Set logging level (debug, info, warning, error, critical) (default:\
+      \ 'info')"
+    synonyms:
+    - --loglevel
+    args: !SimpleFlagArg
+      name: LOGLEVEL
+    optional: true
+  - !Flag
+    description: 'Write log to file (default: -)'
+    synonyms:
+    - --logfile
+    args: !SimpleFlagArg
+      name: LOGFILE
+    optional: true
+  - !Flag
+    description: "Log level for log file (default: 'debug')"
+    synonyms:
+    - --logfile-level
+    args: !SimpleFlagArg
+      name: LOGFILE_LEVEL
+    optional: true
+  - !Flag
+    description: 'Limit lines emitted for commands executed (default: -)'
+    synonyms:
+    - --log-command-max-lines
+    args: !SimpleFlagArg
+      name: LOG_COMMAND_MAX_LINES
+    optional: true
+  command:
+  - bioconda-utils
+  - autobump
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: "Log level (default: 'info')"
+    synonyms:
+    - --loglevel
+    args: !SimpleFlagArg
+      name: LOGLEVEL
+    optional: true
+  command:
+  - bioconda-utils
+  - bot
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

@@ -1,0 +1,1421 @@
+!Command
+positional: []
+named: []
+command:
+- sketchy
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Path to directory to collect {prefix}.data.tsv
+    synonyms:
+    - -d
+    - --directory
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Predictions are from Sketchy Nextflow
+    synonyms:
+    - -n
+    - --nextflow
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Prefix for summary files [summary]
+    synonyms:
+    - -p
+    - --prefix
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: 'When using Nextflow use a subset string for specific configurationsof
+      ranks & reads: 10,1000 - or a sample prefix: isolate1  [None]'
+    synonyms:
+    - -su
+    - --subset
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Genotype matrix in same format as output containing feature truths
+    synonyms:
+    - -r
+    - --reference
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Visualize results as heatmap
+    synonyms:
+    - -m
+    - --heatmap
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Parse the time enhanced output files for Nextflow
+    synonyms:
+    - -ti
+    - --time
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Apply threshold value to median preference score summary; values
+      below are set to 0 [0.6]
+    synonyms:
+    - -th
+    - --threshold
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: Read the *.filtered.stats.txt files from the Nextflow output and
+      summarise by prefix.
+    synonyms:
+    - -st
+    - --statistics
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Scale plot sizes [1.0]
+    synonyms:
+    - -sc
+    - --scale
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: Collect coverage information *.coverage.txt from CoverM in Nextflow
+    synonyms:
+    - -c
+    - --coverage
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output image format [pdf]
+    synonyms:
+    - -i
+    - --image_format
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  command:
+  - sketchy
+  - collect
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - sketchy
+  - feature
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Path to feature index input file.  [required]
+      synonyms:
+      - -i
+      - --index
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Path to dropped feature index output file [index.dropped.tsv]
+      synonyms:
+      - -o
+      - --output
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Comma-delimited string of columns to drop or "clean" [clean]
+      synonyms:
+      - -c
+      - --columns
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    command:
+    - sketchy
+    - feature
+    - drop
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Path to data file to summarize trait data from [required]  [required]
+      synonyms:
+      - -d
+      - --data
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Trait to show summary for; columns in data file [required]
+      synonyms:
+      - -l
+      - --lineage
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Path to legacy key file to extract identifiers [lineage.index.tsv]
+      synonyms:
+      - -o
+      - --output
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Print summary of lineage features to terminal [false]
+      synonyms:
+      - -s
+      - --summary
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Path to collect files for this lineage from [none]
+      synonyms:
+      - -f
+      - --file_path
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Pattern to match files with their name identifier [*.fastq.gz]
+      synonyms:
+      - -p
+      - --pattern
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Path to legacy key file to extract identifiers [none]
+      synonyms:
+      - -k
+      - --key
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Reindex the lineage table [none]
+      synonyms:
+      - -r
+      - --reindex
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - sketchy
+    - feature
+    - lineage
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Path to sketch file to parse indices from [required]
+      synonyms:
+      - -s
+      - --sketch
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Path to genotype feature file to merge indices with sketch  [required]
+      synonyms:
+      - -f
+      - --features
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Legacy key file to translate UUIDs [dep.]
+      synonyms:
+      - -k
+      - --key
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Feature index column to merge indices on [idx]
+      synonyms:
+      - -i
+      - --index_column
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Mash index column to merge indices on [ids]
+      synonyms:
+      - -m
+      - --mash_column
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: 'Prefix for output file: {prefix}.tsv [sketchy]'
+      synonyms:
+      - -p
+      - --prefix
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Enable verbose output for merge operations
+      synonyms:
+      - -v
+      - --verbose
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - sketchy
+    - feature
+    - merge
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Path to feature index input file  [required]
+      synonyms:
+      - -i
+      - --index
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Comma separated string of columns to drop
+      synonyms:
+      - -d
+      - --drop
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Prefix for prepared feature index output files
+      synonyms:
+      - -p
+      - --prefix
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    command:
+    - sketchy
+    - feature
+    - prepare
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Show the version and exit.
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional: []
+  named: []
+  command:
+  - sketchy
+  - list
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Path to sketchy home directory [~/.sketchy]
+      synonyms:
+      - -p
+      - --path
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    command:
+    - sketchy
+    - list
+    - OPTIONS
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - sketchy
+  - online
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Interval in seconds to check on resource usage
+      synonyms:
+      - -i
+      - --interval
+      args: !SimpleFlagArg
+        name: FLOAT
+      optional: true
+    - !Flag
+      description: Terminate monitoring if no more processes are active
+      synonyms:
+      - -t
+      - --terminate
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Terminate early after this amount of seconds
+      synonyms:
+      - -e
+      - --early
+      args: !SimpleFlagArg
+        name: FLOAT
+      optional: true
+    - !Flag
+      description: Prefix for data output file when completed or stopped
+      synonyms:
+      - -p
+      - --prefix
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Output to log file instead of terminal
+      synonyms:
+      - -l
+      - --log
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - sketchy
+    - online
+    - monitor
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Path to Fast{a,q} file to simulate run [required]  [required]
+      synonyms:
+      - -f
+      - --fastx
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Path to Fast{a,q} index file from previous simulation [none]
+      synonyms:
+      - -i
+      - --index
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Output directory for run simulation [run_sim]
+      synonyms:
+      - -o
+      - --outdir
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Number of reads per Fast{a,q} to simulate live basecalling [4000]
+      synonyms:
+      - -r
+      - --reads_per_file
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Barcode integers, comma-separated e.g. 1,2,3,4 [None]
+      synonyms:
+      - -b
+      - --barcodes
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Speed up the simulation by this factor [1.0]
+      synonyms:
+      - -s
+      - --speedup
+      args: !SimpleFlagArg
+        name: FLOAT
+      optional: true
+    - !Flag
+      description: Read start time regex to parse from read headers.
+      synonyms:
+      - --start_time_regex
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Barcode regex to parse from read headers.
+      synonyms:
+      - --barcode_regex
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Run simple test mode; see docs [false]
+      synonyms:
+      - --test
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    command:
+    - sketchy
+    - online
+    - simulate
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Path to directory to watch [required]  [required]
+      synonyms:
+      - -d
+      - --directory
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Regex to identify read files [.*\.fastq$]
+      synonyms:
+      - -r
+      - --regex
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Disable waiting for file completion.
+      synonyms:
+      - -n
+      - --now
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - sketchy
+    - online
+    - watch
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Show the version and exit.
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: 'Path to genotype feature index used in: sketchy evaluate  [required]'
+    synonyms:
+    - -i
+    - --index
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Path to genotype feature index key for translation from numeric.  [required]
+    synonyms:
+    - -k
+    - --key
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Path to sum of ranked sums shared hashes data file from evaluation  [required]
+    synonyms:
+    - -ss
+    - --sssh
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Path to sum of shared hashes data file from prediction
+    synonyms:
+    - -s
+    - --ssh
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: 'Stability parameter passed to: sketchy evaluate'
+    synonyms:
+    - -st
+    - --stable
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Color palette for output plots [YlGnBu]
+    synonyms:
+    - -c
+    - --palette
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Output prefix for all files [sketchy]
+    synonyms:
+    - -p
+    - --prefix
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Output image format [png]
+    synonyms:
+    - -f
+    - --format
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Verbose logging output [false]
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - sketchy
+  - plot
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Path to sketchy home directory [~/.sketchy ]
+    synonyms:
+    - --path
+    - --p
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Pull the full default sketch collections [false]
+    synonyms:
+    - -f
+    - --full
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - sketchy
+  - pull
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Path to input Fastq containing basecalled nanopore reads  [required]
+    synonyms:
+    - -f
+    - --fastq
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Path to reference sketch local files or species template  [required]
+    synonyms:
+    - -s
+    - --sketch
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Output highest ranking sum of shared hashes [10]
+    synonyms:
+    - -r
+    - --ranks
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Output directory for data and plots [sketchy]
+    synonyms:
+    - -o
+    - --outdir
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Prefix for output files [sketchy].
+    synonyms:
+    - -p
+    - --prefix
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Maximum number of reads to predict on [all]
+    synonyms:
+    - -l
+    - --limit
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Brewer color palette for plots [YlGnBu]
+    synonyms:
+    - -c
+    - --palette
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
+  - !Flag
+    description: Stability parameter to compute stable breakpoints, in reads [1000]
+    synonyms:
+    - -b
+    - --stable
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: Threads for sketch queries in Mash [4]
+    synonyms:
+    - -t
+    - --threads
+    args: !SimpleFlagArg
+      name: INTEGER
+    optional: true
+  - !Flag
+    description: 'Sketchy path to reference sketch home directory. Can be set via
+      environmental variable: SKETCHY_PATH'
+    synonyms:
+    - -h
+    - --home
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
+  - !Flag
+    description: Run without logging output or progress bar.
+    synonyms:
+    - -q
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - sketchy
+  - run
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - sketchy
+  - survey
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Input directory with collected output from Pathfinder Survey  [required]
+      synonyms:
+      - -d
+      - --directory
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Tab-delimited genotype feature index for Sketchy
+      synonyms:
+      - -o
+      - --output
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: 'Use a configuration template: saureus, kpneumoniae, mtuberculosis'
+      synonyms:
+      - -t
+      - --template
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Set a missing character [-]
+      synonyms:
+      - -m
+      - --missing
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Take minimum intersection of all specified column values
+      synonyms:
+      - -i
+      - --intersect
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - sketchy
+    - survey
+    - construct
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Path to isolate ID file from Pathfinder Survey
+      synonyms:
+      - -i
+      - --iid
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Path to directory from which to extract files
+      synonyms:
+      - -d
+      - --directory
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Use a header and column name to parse isolate IDs [None]
+      synonyms:
+      - -c
+      - --column
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: File extension to link isolate IDs to file [.fasta]
+      synonyms:
+      - -e
+      - --extension
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Symlink the detected files to the output directory.
+      synonyms:
+      - -s
+      - --symlink
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: If symlink, output directory for symbolic links to files [sketchy_link]
+      synonyms:
+      - -o
+      - --outdir
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    command:
+    - sketchy
+    - survey
+    - link
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Path to list containing path to genomes per line [required]  [required]
+      synonyms:
+      - -f
+      - --fasta
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Path to lineage index file [required]  [required]
+      synonyms:
+      - -i
+      - --index
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Path to output file [required]
+      synonyms:
+      - -o
+      - --output
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: K-mer size to estimate genome distance between all genomes
+      synonyms:
+      - -k
+      - --kmer_size
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Sketch size to estimate genome distance between all genomes
+      synonyms:
+      - -s
+      - --sketch_size
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    command:
+    - sketchy
+    - survey
+    - mashdist
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Path to sum of shared hashes file to map to population [required]  [required]
+      synonyms:
+      - -s
+      - --ssh
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: 'Path to phylogeny [newick] to use as population map [required]
+        NOTE: This argument is mutually exclusive with arguments: [graph].'
+      synonyms:
+      - -t
+      - --tree
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: 'Path to a population graph to use as population map [none] NOTE:
+        This argument is mutually exclusive with arguments: [tree].'
+      synonyms:
+      - -g
+      - --graph
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Path to lineage index file to use as validation population [required]  [required]
+      synonyms:
+      - -i
+      - --index
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Column in index file that map the indices from the sum of shared
+        hashes file to the population
+      synonyms:
+      - -c
+      - --column
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Path to a output GIF [pop.gif]
+      synonyms:
+      - -o
+      - --output
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    command:
+    - sketchy
+    - survey
+    - popmap
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Show the version and exit.
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+- !Command
+  positional: []
+  named: []
+  command:
+  - sketchy
+  - utils
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Path to Fast{a,q} input file.  [required]
+      synonyms:
+      - -f
+      - --fpath
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Output to Fast{a,q} file. Default stdout [-]
+      synonyms:
+      - -o
+      - --output
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Path to file containing the read IDs to get from Fast{a,q}.   [required]
+      synonyms:
+      - -i
+      - --ids
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Column index that contains the IDs (0-based). [1]
+      synonyms:
+      - -c
+      - --column
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: File separator to read columns. ['\t']
+      synonyms:
+      - -s
+      - --sep
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    command:
+    - sketchy
+    - utils
+    - fx-filter
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Path to Fast{a,q} input file to index reads from headers [required]
+      synonyms:
+      - -f
+      - --fastx
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: 'Sort read index by column: runid, sampleid, barcode, name, start_time
+        [start_time]'
+      synonyms:
+      - -s
+      - --sort_by
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Output sorted read index to tab-delimited file [read_index.tsv]
+      synonyms:
+      - -o
+      - --output
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    command:
+    - sketchy
+    - utils
+    - fx-index
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Path to Fast{a,q} input file.  [required]
+      synonyms:
+      - -f
+      - --fastx
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Output to Fast{a,q} file. Default stdout [-]
+      synonyms:
+      - -o
+      - --output
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Sample size in number of reads [1000].
+      synonyms:
+      - -s
+      - --sample
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Sample with replacement [false].
+      synonyms:
+      - -r
+      - --replacement
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Seed for sampling function [none].
+      synonyms:
+      - --seed
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - sketchy
+    - utils
+    - fx-sample
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Path to Fast{a,q} input file.  [required]
+      synonyms:
+      - -f
+      - --fastx
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Output to Fast{a,q} file. Default stdout [-]
+      synonyms:
+      - -o
+      - --output
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    command:
+    - sketchy
+    - utils
+    - fx-sort
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: 'Path to Fast{a,q} input file used in evaluation NOTE: This argument
+        is mutually exclusive with  arguments: [index].  [required]'
+      synonyms:
+      - -f
+      - --fastq
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: 'Path to input file read index from `sketchy utils fx- sort` NOTE:
+        This argument is mutually exclusive with arguments: [fastx].'
+      synonyms:
+      - -i
+      - --index
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: Path to evaluation file containing predictions (data.tsv)
+      synonyms:
+      - -e
+      - --evaluation
+      args: !SimpleFlagArg
+        name: PATH
+      optional: true
+    - !Flag
+      description: 'Output prefix for time data: {prefix}.time.tsv [skecthy]'
+      synonyms:
+      - -p
+      - --prefix
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "Compute time delta between 'first' read or start time of run !!\
+        \ GMT !! in format: '20/11/20 16:20:00' [first]"
+      synonyms:
+      - -d
+      - --delta
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    command:
+    - sketchy
+    - utils
+    - fx-time
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Path or file glob to tax report files
+      synonyms:
+      - -r
+      - --report
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Output prefix for plot file.
+      synonyms:
+      - -p
+      - --prefix
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: 'Taxonomic level to assess: species [S]'
+      synonyms:
+      - -l
+      - --level
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Show top taxonomic levels in plots [10]
+      synonyms:
+      - -t
+      - --top
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Color palette for central donut plot.
+      synonyms:
+      - -c
+      - --color
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Row titles for center plot, comma separated string.
+      synonyms:
+      - -t
+      - --title
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Add subplot titles for each column.
+      synonyms:
+      - -s
+      - --sub
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - sketchy
+    - utils
+    - plot-kraken
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag: !Flag
+    description: Show the version and exit.
+    synonyms:
+    - --version
+    args: !EmptyFlagArg {}
+    optional: true
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show the version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

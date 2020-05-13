@@ -1,0 +1,105 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Path to the merged insertions file from imfusion- merge.
+  synonyms:
+  - --insertions
+  args: !SimpleFlagArg
+    name: INSERTIONS
+  optional: true
+- !Flag
+  description: Path to the reference genome sequence (in fasta format). Can either
+    be the augmented reference genome or the original reference.
+  synonyms:
+  - --reference
+  args: !SimpleFlagArg
+    name: REFERENCE
+  optional: true
+- !Flag
+  description: IDs of genes to test.
+  synonyms:
+  - --gene_ids
+  args: !RepeatFlagArg
+    name: GENE_IDS
+  optional: true
+- !Flag
+  description: Path for the output CTG file.
+  synonyms:
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Minimum corrected p-value for CTGs. (Default = 0.01).
+  synonyms:
+  - --threshold
+  args: !SimpleFlagArg
+    name: THRESHOLD
+  optional: true
+- !Flag
+  description: Regular expression reflecting the nucleotide sequence at which the
+    use transposon typically integrates (if any). Used to correct for sequence integration
+    biases along the genome. For example the pattern (AT|TA) is used for the T2onc2
+    transposon, which is biased towards integrations as TA sites.
+  synonyms:
+  - --pattern
+  args: !SimpleFlagArg
+    name: PATTERN
+  optional: true
+- !Flag
+  description: WINDOW Window around the gene within which we test a given gene for
+    enrichment in insertions.
+  synonyms:
+  - --window
+  args: !SimpleFlagArg
+    name: WINDOW
+  optional: true
+- !Flag
+  description: Chromosomes to consider. Used to omit specific chromosomes from the
+    CTG analysis.
+  synonyms:
+  - --chromosomes
+  args: !RepeatFlagArg
+    name: CHROMOSOMES
+  optional: true
+- !Flag
+  description: Minimum supporting number of reads for insertions to be included in
+    the CTG analysis. Can be used to omit insertions with low support for more confidence
+    in the analysis.
+  synonyms:
+  - --min_depth
+  args: !SimpleFlagArg
+    name: MIN_DEPTH
+  optional: true
+- !Flag
+  description: Path to the merged expression file from imfusion- merge.
+  synonyms:
+  - --expression
+  args: !SimpleFlagArg
+    name: EXPRESSION
+  optional: true
+- !Flag
+  description: Minimum p-value for a CTG to be considered as differentially expressed.
+  synonyms:
+  - --de_threshold
+  args: !SimpleFlagArg
+    name: DE_THRESHOLD
+  optional: true
+command:
+- imfusion-ctg
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

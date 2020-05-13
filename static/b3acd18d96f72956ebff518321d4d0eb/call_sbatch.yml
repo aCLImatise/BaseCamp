@@ -1,0 +1,110 @@
+!Command
+positional:
+- !Positional
+  description: The command to execute
+  position: 0
+  name: cmd
+  optional: false
+named:
+- !Flag
+  description: 'The number of CPUs to use (default: 1)'
+  synonyms:
+  - --num-cpus
+  args: !SimpleFlagArg
+    name: NUM_CPUS
+  optional: true
+- !Flag
+  description: 'The amount of RAM to request (default: 10G)'
+  synonyms:
+  - --mem
+  args: !SimpleFlagArg
+    name: MEM
+  optional: true
+- !Flag
+  description: 'The amount of time to request (default: 0-05:59)'
+  synonyms:
+  - --time
+  args: !SimpleFlagArg
+    name: TIME
+  optional: true
+- !Flag
+  description: 'The partitions to request (default: general)'
+  synonyms:
+  - --partitions
+  args: !SimpleFlagArg
+    name: PARTITIONS
+  optional: true
+- !Flag
+  description: 'If this flag is present, stdout will be redirected to /dev/null (default:
+    False)'
+  synonyms:
+  - --no-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'If this flag is present, stderr will be redirected to /dev/null (default:
+    False)'
+  synonyms:
+  - --no-error
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'If this is present and the --no-output flag is not given, then stdout
+    will be directed to this file rather than slurm-<job>.out (default: None)'
+  synonyms:
+  - --stdout-file
+  args: !SimpleFlagArg
+    name: STDOUT_FILE
+  optional: true
+- !Flag
+  description: 'If this is present and the --no-error flag is not given, then stderr
+    will be directed to this file rather than slurm-<job>.err (default: None)'
+  synonyms:
+  - --stderr-file
+  args: !SimpleFlagArg
+    name: STDERR_FILE
+  optional: true
+- !Flag
+  description: 'If this flag is present, then the commands will not be executed (but
+    will be printed). (default: False)'
+  synonyms:
+  - --do-not-call
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'If this flag is present, the program calls will be submitted to SLURM.
+    (default: False)'
+  synonyms:
+  - --use-slurm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[{NONE,BEGIN,END,FAIL,REQUEUE,ALL,STAGE_OUT,TIME_LIMIT,TIME_LIMIT_90,TIME_LIMIT_80,TIME_LIMIT_50,ARRAY_TASKS}\
+    \ [{NONE,BEGIN,END,FAIL,REQUEUE,ALL,STAGE_OUT,TIME_LIMIT,TIME_LIMIT_90,TIME_LIMIT_80,TIME_LIMIT_50,ARRAY_TASKS}\
+    \ ...]] When to send an email notifcation of the job status. See official documentation\
+    \ for a description of the values. If a mail-user is not specified, this will\
+    \ revert to 'None'. (default: ['FAIL', 'TIME_LIMIT'])"
+  synonyms:
+  - --mail-type
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'To whom an email will be sent, in accordance with mail-type (default:
+    None)'
+  synonyms:
+  - --mail-user
+  args: !SimpleFlagArg
+    name: MAIL_USER
+  optional: true
+command:
+- call_sbatch.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

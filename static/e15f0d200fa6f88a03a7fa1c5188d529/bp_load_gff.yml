@@ -1,0 +1,109 @@
+!Command
+positional:
+- !Positional
+  description: "If the filename is given as \"-\" then the input is taken from standard\
+    \ input. Compressed files (.gz, .Z, .bz2) are automatically uncompressed. FASTA\
+    \ format files are distinguished from GFF files by their filename extensions.\
+    \ Files ending in .fa, .fasta, .fast, .seq, .dna and their uppercase variants\
+    \ are treated as FASTA files. Everything else is treated as a GFF file. If you\
+    \ wish to load -fasta files from STDIN, then use the -f command-line swith with\
+    \ an argument of '-', as in gunzip my_data.fa.gz | bp_fast_load_gff.pl -d test\
+    \ -f - On the first load of a database, you will see a number of \"unknown table\"\
+    \ errors. This is normal. About maxfeature: the default value is 100,000,000 bases.\
+    \ If you have features that are close to or greater that 100Mb in length, then\
+    \ the value of maxfeature should be increased to 1,000,000,000, or another power\
+    \ of 10."
+  position: 0
+  name: NOTES
+  optional: false
+named:
+- !Flag
+  description: of --database.
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: instead
+  optional: true
+- !Flag
+  description: <dsn>       Data source (default dbi:mysql:test)
+  synonyms:
+  - --dsn
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Schema adaptor (default dbi::mysqlopt)
+  synonyms:
+  - --adaptor
+  args: !SimpleFlagArg
+    name: adaptor
+  optional: true
+- !Flag
+  description: <user>      Username for mysql authentication
+  synonyms:
+  - --user
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <password>  Password for mysql authentication
+  synonyms:
+  - --pass
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <path>      Fasta file or directory containing fasta files for the
+    DNA
+  synonyms:
+  - --fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Force creation and initialization of database
+  synonyms:
+  - --create
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set the value of the maximum feature size (default 100 Mb; must be
+    a power of 10)
+  synonyms:
+  - --maxfeature
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: A list of one or more tag names (comma or space separated) to be used
+    for grouping in the 9th column.
+  synonyms:
+  - --group
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Upgrade existing database to current schema
+  synonyms:
+  - --upgrade
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Activate GFF3 name munging (see Bio::DB::GFF)
+  synonyms:
+  - --gff3_munge
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: No progress reports
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Generate summary statistics for drawing coverage histograms. This can
+    be run on a previously loaded database or during the load.
+  synonyms:
+  - --summary
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- bp_load_gff.pl
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

@@ -1,0 +1,236 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: input fasta/q read files or compressed (.gz) fasta/q files (mutiple,
+    such as "-r file1 -r file2...")
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: READFILES
+  optional: true
+- !Flag
+  description: k-mer size (default=41)
+  synonyms:
+  - -k
+  args: !SimpleFlagArg
+    name: KVAL
+  optional: true
+- !Flag
+  description: maximum number of branching nodes (default 5)
+  synonyms:
+  - -b
+  args: !SimpleFlagArg
+    name: BVAL
+  optional: true
+- !Flag
+  description: 'maximal length of the shorter path (default: 2k+1)'
+  synonyms:
+  - -l
+  args: !SimpleFlagArg
+    name: LLMAX
+  optional: true
+- !Flag
+  description: minimum length of the shorter path (default 2k-8)
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: LL_MIN
+  optional: true
+- !Flag
+  description: maximum length of the longest path (default 1000000), skipped exons
+    longer than UL_MAX are not reported
+  synonyms:
+  - -M
+  args: !SimpleFlagArg
+    name: UL_MAX
+  optional: true
+- !Flag
+  description: path and prefix to pre-built de Bruijn graph (suffixed by .edges/.nodes)
+    if jointly used with -r, graph used to find bubbles and reads used for quantification
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: GRAPH_PREFIX
+  optional: true
+- !Flag
+  description: path to store the results and the summary log file (default = ./results)
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: OUT_DIR
+  optional: true
+- !Flag
+  description: specific directory (absolute path) where to build temporary files (default
+    temporary directory otherwise)
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: PATH_TO_TMP
+  optional: true
+- !Flag
+  description: number of cores (must be <= number of physical cores)
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: NBPROCS
+  optional: true
+- !Flag
+  description: '0, 1 or 2. Changes which types of SNPs will be output. If 0 (default),
+    will not output SNPs. If 1, will output Type0a-SNPs. If 2, will output Type0a
+    and Type0b SNPs (warning: this option may increase a lot the running time. You
+    might also want to try the experimental algorithm here)'
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: OUTPUT_SNPS
+  optional: true
+- !Flag
+  description: Verbose mode
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: keep the nodes/edges file for unfinished bccs
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: an integer, k-mers present strictly less than this number of times
+    in the dataset will be discarded (default 2)
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: MIN_COV
+  optional: true
+- !Flag
+  description: a percentage from [0,1), edges with relative coverage below this number
+    are removed (default 0.05)
+  synonyms:
+  - -C
+  args: !SimpleFlagArg
+    name: MIN_RELATIVE_COV
+  optional: true
+- !Flag
+  description: estimated genome/transcriptome size (default = 1G)
+  synonyms:
+  - -z
+  args: !SimpleFlagArg
+    name: GENOME_SIZE
+  optional: true
+- !Flag
+  description: edit distance threshold, if the two sequences (paths) of a bubble have
+    edit distance smaller than this threshold, the bubble is classified as an inexact
+    repeat (default 3)
+  synonyms:
+  - -e
+  args: !SimpleFlagArg
+    name: MIN_EDIT_DIST
+  optional: true
+- !Flag
+  description: maximal number of bubbles enumeration in each bcc. If exceeded, no
+    bubble is output for the bcc (default 100M)
+  synonyms:
+  - -y
+  args: !SimpleFlagArg
+    name: MAX_CYCLES
+  optional: true
+- !Flag
+  description: Maximal number of substitutions authorized between a read and a fragment
+    (for quantification only), default 0. If you increase the mismatch and use --counts
+    think of increasing min_overlap too.
+  synonyms:
+  - --mismatches
+  args: !SimpleFlagArg
+    name: MISM
+  optional: true
+- !Flag
+  description: '0,1 or 2 . Changes how the counts will be reported. If 0 (default):
+    total counts, if 1: counts on junctions, if 2: all counts. see User guide for
+    more information'
+  synonyms:
+  - --counts
+  args: !SimpleFlagArg
+    name: COUNTSMETHOD
+  optional: true
+- !Flag
+  description: Set how many nt must overlap a junction to be counted by --counts option.
+    Default=3. see User guide for more information
+  synonyms:
+  - --min_overlap
+  args: !SimpleFlagArg
+    name: MINOVERLAP
+  optional: true
+- !Flag
+  description: max amount of time (in seconds) spent for enumerating bubbles in each
+    bcc. If exceeded, no bubble is output for the bcc (default 100000)
+  synonyms:
+  - --timeout
+  args: !SimpleFlagArg
+    name: TIMEOUT
+  optional: true
+- !Flag
+  description: Will output the maximum non-ambiguous context of a bubble
+  synonyms:
+  - --output-context
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Will output the id of the nodes composing the two paths of the bubbles.
+  synonyms:
+  - --output-path
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Will output the number of branching nodes in each path.
+  synonyms:
+  - --output-branch-count
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Keep the node/edges files for all bccs.
+  synonyms:
+  - --keep-bccs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Uses a new experimental algorithm that searches for bubbles by listing
+    all paths.
+  synonyms:
+  - --experimental
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "If you use the experimental algorithm, you must provide the maximum\
+    \ size of the process's virtual memory (address space) in megabytes (default unlimited).\
+    \ WARNING: this option does not work on Mac operating systems."
+  synonyms:
+  - --max-memory
+  args: !SimpleFlagArg
+    name: MAX_MEMORY
+  optional: true
+- !Flag
+  description: Keep the .counts file after the sequencing-errors- removal step.
+  synonyms:
+  - --keep-counts
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- kissplice
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

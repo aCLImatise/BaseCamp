@@ -1,0 +1,124 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Treatment (pull-down) file(s) in (b/gzipped) bed/bedpe format.
+  synonyms:
+  - --treatment
+  - -t
+  args: !RepeatFlagArg
+    name: TREATMENT
+  optional: true
+- !Flag
+  description: Control (input) file(s) in (b/gzipped) bed/bedpe format.
+  synonyms:
+  - --control
+  - -c
+  args: !RepeatFlagArg
+    name: CONTROL
+  optional: true
+- !Flag
+  description: 'Number of cpus to use. Can use at most one per chromosome. Default:
+    1.'
+  synonyms:
+  - --number-cores
+  - -cpu
+  args: !SimpleFlagArg
+    name: NUMBER_CORES
+  optional: true
+- !Flag
+  description: 'Which genome to analyze. Default: hg19.'
+  synonyms:
+  - --genome
+  - -gn
+  args: !SimpleFlagArg
+    name: GENOME
+  optional: true
+- !Flag
+  description: Keep reads mapping to the same position on the same strand within a
+    library. Default is to remove all but the first duplicate.
+  synonyms:
+  - --keep-duplicates
+  - -k
+  args: !SimpleFlagArg
+    name: KEEP_DUPLICATES
+  optional: true
+- !Flag
+  description: Size of the windows to scan the genome. WINDOW_SIZE is the smallest
+    possible island. Default 200.
+  synonyms:
+  - --window-size
+  - -w
+  args: !SimpleFlagArg
+    name: WINDOW_SIZE
+  optional: true
+- !Flag
+  description: 'Multiple of window size used to determine the gap size. Must be an
+    integer. Default: 3.'
+  synonyms:
+  - --gaps-allowed
+  - -g
+  args: !SimpleFlagArg
+    name: GAPS_ALLOWED
+  optional: true
+- !Flag
+  description: Size of the sequenced fragment. The center of the the fragment will
+    be taken as half the fragment size. Default 150.
+  synonyms:
+  - --fragment-size
+  - -fs
+  args: !SimpleFlagArg
+    name: FRAGMENT_SIZE
+  optional: true
+- !Flag
+  description: Remove all islands with an FDR below cutoff. Default 1.0 (i.e. all
+    found islands included no matter how bad the adjusted p-value.).
+  synonyms:
+  - --false-discovery-rate-cutoff
+  - -fdr
+  args: !SimpleFlagArg
+    name: FALSE_DISCOVERY_RATE_CUTOFF
+  optional: true
+- !Flag
+  description: Use a different effective genome size than the one included in epic.
+    The default value depends on the genome and readlength.
+  synonyms:
+  - --effective_genome_length
+  - -egs
+  args: !SimpleFlagArg
+    name: EFFECTIVE_GENOME_LENGTH
+  optional: true
+- !Flag
+  description: Store the matrix of counts per bin for ChIP and input to gzipped file
+    <STORE_MATRIX>.
+  synonyms:
+  - --store-matrix
+  - -sm
+  args: !SimpleFlagArg
+    name: STORE_MATRIX
+  optional: true
+- !Flag
+  description: Use paired end data (bedpe).
+  synonyms:
+  - --paired-end
+  - -pe
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- epic
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,133 @@
+!Command
+positional:
+- !Positional
+  description: unique sequences. Contains one representative from each set of duplicate
+    sequences. The retained representative is determined by user defined criteria.
+  position: 0
+  name: collapse-unique
+  optional: false
+- !Positional
+  description: raw reads which are duplicates of the sequences retained in the collapse-unique
+    file.
+  position: 1
+  name: collapse-duplicate
+  optional: false
+- !Positional
+  description: raw reads which were excluded from consideration due to having too
+    many N characters in the sequence.
+  position: 2
+  name: collapse-undetermined
+  optional: false
+named:
+- !Flag
+  description: 'A list of FASTA/FASTQ files containing sequences to process. (default:
+    None)'
+  synonyms:
+  - -s
+  args: !RepeatFlagArg
+    name: SEQ_FILES
+  optional: true
+- !Flag
+  description: 'Explicit output file name(s). Note, this argument cannot be used with
+    the --failed, --outdir, or --outname arguments. If unspecified, then the output
+    filename will be based on the input filename(s). (default: None)'
+  synonyms:
+  - -o
+  args: !RepeatFlagArg
+    name: OUT_FILES
+  optional: true
+- !Flag
+  description: 'Specify to changes the output directory to the location specified.
+    The input file directory is used if this is not specified. (default: None)'
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUT_DIR
+  optional: true
+- !Flag
+  description: 'Changes the prefix of the successfully processed output file to the
+    string specified. May not be specified with multiple input files. (default: None)'
+  synonyms:
+  - --outname
+  args: !SimpleFlagArg
+    name: OUT_NAME
+  optional: true
+- !Flag
+  description: 'Specify to write verbose logging to a file. May not be specified with
+    multiple input files. (default: None)'
+  synonyms:
+  - --log
+  args: !SimpleFlagArg
+    name: LOG_FILE
+  optional: true
+- !Flag
+  description: 'If specified create files containing records that fail processing.
+    (default: False)'
+  synonyms:
+  - --failed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Specify to force output as FASTA rather than FASTQ. (default: None)'
+  synonyms:
+  - --fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "DELIMITER DELIMITER A list of the three delimiters that separate annotation\
+    \ blocks, field names and values, and values within a field, respectively. (default:\
+    \ ('|', '=', ','))"
+  synonyms:
+  - --delim
+  args: !SimpleFlagArg
+    name: DELIMITER
+  optional: true
+- !Flag
+  description: 'If specified, exclude consecutive missing characters at either end
+    of the sequence. (default: False)'
+  synonyms:
+  - --inner
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'If specified, sequences with more missing characters than the threshold
+    set by the -n parameter will be written to the unique sequence output file with
+    a DUPCOUNT=1 annotation. If not specified, such sequences will be written to a
+    separate file. (default: False)'
+  synonyms:
+  - --keepmiss
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Specify the field whose maximum value determines the retained sequence;
+    mutually exclusive with --minf. (default: None)'
+  synonyms:
+  - --maxf
+  args: !SimpleFlagArg
+    name: MAX_FIELD
+  optional: true
+- !Flag
+  description: 'Specify the field whose minimum value determines the retained sequence;
+    mutually exclusive with --minf. (default: None)'
+  synonyms:
+  - --minf
+  args: !SimpleFlagArg
+    name: MIN_FIELD
+  optional: true
+command:
+- CollapseSeq.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

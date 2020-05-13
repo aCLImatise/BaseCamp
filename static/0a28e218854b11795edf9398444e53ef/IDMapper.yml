@@ -1,0 +1,140 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: "*                  Protein/peptide identifications file (valid formats:\
+    \ 'mzid', 'idXML')"
+  synonyms:
+  - -id
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*                  Feature map/consensus map file (valid formats:\
+    \ 'featureXML', 'consensusXML', 'mzq')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*                 Output file (the format depends on the input file\
+    \ format). (valid formats: 'featureXML', 'consensusXML', 'mzq')"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "RT tolerance (in seconds) for the matching of peptide identifications\
+    \ and (consensus) features. Tolerance is understood as 'plus or minus x', so the\
+    \ matching range increases by twice the given value. (default: '5' min: '0')"
+  synonyms:
+  - -rt_tolerance
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "M/z tolerance (in ppm or Da) for the matching of peptide identifications\
+    \ and (consensus) features. Tolerance is understood as 'plus or minus x', so the\
+    \ matching range increases by twice the given value. (default: '20' min: '0')"
+  synonyms:
+  - -mz_tolerance
+  args: !SimpleFlagArg
+    name: value
+  optional: true
+- !Flag
+  description: "Unit of 'mz_tolerance'. (default: 'ppm' valid: 'ppm', 'Da')"
+  synonyms:
+  - -mz_measure
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: "Source of m/z values for peptide identifications. If 'precursor',\
+    \ the precursor-m/z from the idXML is used. If 'peptide', masses are computed\
+    \ from the sequences of peptide hits; in this case, an identification matches\
+    \ if any of its hits matches. ('peptide' should be used together with 'feature:use_centroid_mz'\
+    \ to avoid false-positive matches.) (default: 'precursor' valid: 'precursor',\
+    \ 'peptide')"
+  synonyms:
+  - -mz_reference
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: 'For feature/consensus maps: Assign an ID independently of whether
+    its charge state matches that of the (consensus) feature.'
+  synonyms:
+  - -ignore_charge
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: :use_centroid_rt     Use the RT coordinates of the feature centroids
+    for matching, instead of the RT ranges of the features/mass traces.
+  synonyms:
+  - -feature
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: :use_centroid_mz     Use the m/z coordinates of the feature centroids
+    for matching, instead of the m/z ranges of the features/mass traces. (If you choose
+    'peptide' as 'mz_reference', you should usually set this flag to avoid false-positive
+    matches.)
+  synonyms:
+  - -feature
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: :use_subelements   Match using RT and m/z of sub-features instead of
+    consensus RT and m/z. A consensus feature matches if any of its sub-features matches.
+  synonyms:
+  - -consensus
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":in <file>           MS run used to annotated unidentified spectra\
+    \ to features or consensus features. (valid formats: 'mzML')"
+  synonyms:
+  - -spectra
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- IDMapper
+subcommands: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

@@ -1,0 +1,126 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: OPTIONS
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: SEGMENTATION
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: ANNOTATION
+  optional: false
+named:
+- !Flag
+  description: Overwrite any existing output files.
+  synonyms:
+  - --clobber
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not print diagnostic messages.
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Strand correct features in the ANNOTATION file. If the feature contains
+    strand information, the sign of the distance value is used to portray the relationship
+    between the segment and the nearest stranded feature. A negative distance value
+    indicates that the segment is nearest the 5' end of the feature, whereas a positive
+    value indicates the segment is nearest the 3' end of the feature.
+  synonyms:
+  - -s
+  - --stranded
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The name of the nearest feature will be printed after each distance
+    (with a space separating the two) for features from the ANNOTATION file. If multiple
+    features are equally near (or overlap), it is undefined which will be printed
+  synonyms:
+  - -p
+  - --print-nearest
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If multiple features in the ANNOTATION file overlap a segment, a separate
+    line is printed for each overlapping segment-feature pair. This is most interesting
+    with --print-nearest. Otherwise, the first overlapping segment will be used for
+    printing.
+  synonyms:
+  - -a
+  - --all-overlapping
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not generate any plots.
+  synonyms:
+  - --noplot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Load data from output tab files and regenerate plots instead of recomputing
+    data.
+  synonyms:
+  - --replot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of bins to use in histogram for distances greater than zero
+    and less than or equal to N*W. Distances of 0 and greater than N*W are placed
+    in additional bins. If --stranded, N more bins are included in the negative direction
+    and a bin for distances less than -N*W.
+  synonyms:
+  - -n
+  - --n-bins
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: Number of bases in each bin. If --stranded, bins cover distances of
+    (-Inf,-N*W), ..., [-W,0), [0], (0,W], ..., (N*W,Inf). Otherwise, the bins cover
+    distances of [0], (0,W], (W,2W], ..., (N*W,Inf).
+  synonyms:
+  - -w
+  - --bin-width
+  args: !SimpleFlagArg
+    name: W
+  optional: true
+- !Flag
+  description: If specified, labels will be shown using mnemonics found in FILE
+  synonyms:
+  - -m
+  - --mnemonic-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'File output directory (will be created if it does not exist) [default:
+    feature_distance]'
+  synonyms:
+  - -o
+  - --outdir
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: =VAL        Pass VAL for PARAM when calling R functions. May be specified
+    multiple times.
+  synonyms:
+  - -R
+  args: !SimpleFlagArg
+    name: PARAM
+  optional: true
+command:
+- segtools-feature-distance
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

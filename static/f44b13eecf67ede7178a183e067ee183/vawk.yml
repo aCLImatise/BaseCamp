@@ -1,0 +1,164 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -v
+  args: !SimpleFlagArg
+    name: VAR
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: INFO_COL
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --header
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- vawk
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: "vawk command syntax is exactly the same as awk syntax with a few\
+      \ additional features. The INFO field can be split using the I$ prefix and the\
+      \ SAMPLE field can be split using the S$ prefix. For example, I$AF prints the\
+      \ allele frequency of each variant and S$NA12878 prints the entire SAMPLE field\
+      \ for the NA12878 individual for each variant. S$* returns all samples. The\
+      \ SAMPLE field can be further split based on the keys in the FORMAT field of\
+      \ the VCF (column 9). For example, S$NA12877$GT returns the genotype of the\
+      \ NA12878 individual. ex: '{ if (I$AF>0.5) print $1,$2,$3,I$AN,S$NA12878,S$NA12877$GT\
+      \ }'"
+    position: 0
+    name: cmd
+    optional: false
+  - !Positional
+    description: 'VCF file (default: stdin)'
+    position: 1
+    name: vcf
+    optional: false
+  named:
+  - !Flag
+    description: 'declare an external variable (e.g.: SIZE=10000)'
+    synonyms:
+    - -v
+    - --var
+    args: !SimpleFlagArg
+      name: VAR
+    optional: true
+  - !Flag
+    description: column of the INFO field [8]
+    synonyms:
+    - -c
+    - --col
+    args: !SimpleFlagArg
+      name: INFO_COL
+    optional: true
+  - !Flag
+    description: print VCF header
+    synonyms:
+    - --header
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: debugging level verbosity
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - vawk
+  - cmd
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: "vawk command syntax is exactly the same as awk syntax with a few\
+      \ additional features. The INFO field can be split using the I$ prefix and the\
+      \ SAMPLE field can be split using the S$ prefix. For example, I$AF prints the\
+      \ allele frequency of each variant and S$NA12878 prints the entire SAMPLE field\
+      \ for the NA12878 individual for each variant. S$* returns all samples. The\
+      \ SAMPLE field can be further split based on the keys in the FORMAT field of\
+      \ the VCF (column 9). For example, S$NA12877$GT returns the genotype of the\
+      \ NA12878 individual. ex: '{ if (I$AF>0.5) print $1,$2,$3,I$AN,S$NA12878,S$NA12877$GT\
+      \ }'"
+    position: 0
+    name: cmd
+    optional: false
+  - !Positional
+    description: 'VCF file (default: stdin)'
+    position: 1
+    name: vcf
+    optional: false
+  named:
+  - !Flag
+    description: 'declare an external variable (e.g.: SIZE=10000)'
+    synonyms:
+    - -v
+    - --var
+    args: !SimpleFlagArg
+      name: VAR
+    optional: true
+  - !Flag
+    description: column of the INFO field [8]
+    synonyms:
+    - -c
+    - --col
+    args: !SimpleFlagArg
+      name: INFO_COL
+    optional: true
+  - !Flag
+    description: print VCF header
+    synonyms:
+    - --header
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: debugging level verbosity
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - vawk
+  - vcf
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

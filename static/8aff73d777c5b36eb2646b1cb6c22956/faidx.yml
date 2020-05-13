@@ -1,0 +1,210 @@
+!Command
+positional:
+- !Positional
+  description: FASTA file
+  position: 0
+  name: fasta
+  optional: false
+- !Positional
+  description: space separated regions of sequence to fetch e.g. chr1:1-1000
+  position: 1
+  name: regions
+  optional: false
+named:
+- !Flag
+  description: 'do not rebuild the .fai index even if it is out of date. default:
+    False'
+  synonyms:
+  - --no-rebuild
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: bed file of regions
+  synonyms:
+  - -b
+  - --bed
+  args: !SimpleFlagArg
+    name: BED
+  optional: true
+- !Flag
+  description: 'output file name (default: stdout)'
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: OUT
+  optional: true
+- !Flag
+  description: 'transform the requested regions into another format. default: None'
+  synonyms:
+  - -i
+  - --transform
+  args: !ChoiceFlagArg
+    choices:
+    - bed
+    - chromsizes
+    - nucleotide
+    - transposed
+  optional: true
+- !Flag
+  description: 'complement the sequence. default: False'
+  synonyms:
+  - -c
+  - --complement
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'reverse the sequence. default: False'
+  synonyms:
+  - -r
+  - --reverse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'reverse complement the sequence when start > end coordinate. default:
+    False'
+  synonyms:
+  - -y
+  - --auto-strand
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'selected sequences are in the size range [low, high]. example: 1,1000
+    default: None'
+  synonyms:
+  - -a
+  - --size-range
+  args: !SimpleFlagArg
+    name: SIZE_RANGE
+  optional: true
+- !Flag
+  description: write each region to a separate file (names are derived from regions)
+  synonyms:
+  - -x
+  - --split-files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'fill in --default-seq for missing ranges. default: False'
+  synonyms:
+  - -l
+  - --lazy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'default base for missing positions and masking. default: None'
+  synonyms:
+  - -s
+  - --default-seq
+  args: !SimpleFlagArg
+    name: DEFAULT_SEQ
+  optional: true
+- !Flag
+  description: 'mask the FASTA file using --default-seq default: False'
+  synonyms:
+  - -m
+  - --mask-with-default-seq
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'mask the FASTA file by changing to lowercase. default: False'
+  synonyms:
+  - -M
+  - --mask-by-case
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'do not output any sequence. default: False'
+  synonyms:
+  - --no-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'omit sequence names from output. default: False'
+  synonyms:
+  - -n
+  - --no-names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'output full (long) names from the input fasta headers. default: headers
+    are truncated after the first whitespace'
+  synonyms:
+  - -f
+  - --long-names
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'omit coordinates (e.g. chr:start-end) from output headers. default:
+    False'
+  synonyms:
+  - -t
+  - --no-coords
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'delimiter for splitting names to multiple values (duplicate names
+    will be discarded). default: None'
+  synonyms:
+  - -d
+  - --delimiter
+  args: !SimpleFlagArg
+    name: DELIMITER
+  optional: true
+- !Flag
+  description: 'python function to modify header lines e.g: "lambda x: x.split("|")[0]".
+    default: lambda x: x.split()[0]'
+  synonyms:
+  - -e
+  - --header-function
+  args: !SimpleFlagArg
+    name: HEADER_FUNCTION
+  optional: true
+- !Flag
+  description: 'entry to take when duplicate sequence names are encountered. default:
+    stop'
+  synonyms:
+  - -u
+  - --duplicates-action
+  args: !ChoiceFlagArg
+    choices:
+    - stop
+    - first
+    - last
+    - longest
+    - shortest
+  optional: true
+- !Flag
+  description: 'selected sequences are those matching regular expression. default:
+    .*'
+  synonyms:
+  - -g
+  - --regex
+  args: !SimpleFlagArg
+    name: REGEX
+  optional: true
+- !Flag
+  description: "selected sequences are those not matching 'regions' argument. default:\
+    \ False"
+  synonyms:
+  - -v
+  - --invert-match
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- faidx
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print pyfaidx version number
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

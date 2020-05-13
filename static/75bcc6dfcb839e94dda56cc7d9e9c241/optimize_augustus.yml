@@ -1,0 +1,233 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'metapars.cfg contains the names and their ranges of the meta parameters
+    that are subject to optimization. (default: generic_metapars.cfg)'
+  synonyms:
+  - --metapars
+  args: !SimpleFlagArg
+    name: metapars.cfg
+  optional: true
+- !Flag
+  description: 'r is the number of rounds (default: 5)'
+  synonyms:
+  - --rounds
+  args: !SimpleFlagArg
+    name: r
+  optional: true
+- !Flag
+  description: 'n is the number of CPUs to use (default: 1)'
+  synonyms:
+  - --cpus
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: an optional genbank file that is used in addition to train.gb but only
+    for etrain not for intermediate evaluation of accuracy. These genes may e.g. be
+    incomplete.
+  synonyms:
+  - --onlytrain
+  args: !SimpleFlagArg
+    name: onlytrain.gb
+  optional: true
+- !Flag
+  description: 'Make a k-fold cross validation (default: 8)'
+  synonyms:
+  - --kfold
+  args: !SimpleFlagArg
+    name: k
+  optional: true
+- !Flag
+  description: 'For integer and floating parameters start with p tests equidistributed
+    in the allowed range of values (default: 5)'
+  synonyms:
+  - --pstep
+  args: !SimpleFlagArg
+    name: p
+  optional: true
+- !Flag
+  description: Specify the config directory d if not set as environment variable
+  synonyms:
+  - --AUGUSTUS_CONFIG_PATH
+  args: !SimpleFlagArg
+    name: d
+  optional: true
+- !Flag
+  description: Optimize the transition matrix file s. s must be the transition file
+    used. e.g. ../species/nt/generic/generic_trans_shadow_partial.pbl
+  synonyms:
+  - --opt_trans_matrix
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+- !Flag
+  description: A file with try list, normed list and bindings.
+  synonyms:
+  - --matrix_constraints
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+- !Flag
+  description: Turn untranslated region model on for training and prediction.
+  synonyms:
+  - --UTR
+  args: !SimpleFlagArg
+    name: on
+  optional: true
+- !Flag
+  description: Path to augustus and etraining executable. If not specified it must
+    be in \$PATH environment variable.
+  synonyms:
+  - --aug_exec_dir
+  args: !SimpleFlagArg
+    name: d
+  optional: true
+- !Flag
+  description: '=1           Use this option, if the exon, intron and intergenic models
+    need not be trained. (default: 0)'
+  synonyms:
+  - --trainOnlyUtr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '=1            Use this option, if the parameters to optimize do not
+    affect training. The training step (etraining) is omitted completely. (default:
+    0)'
+  synonyms:
+  - --noTrainPars
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'increase sensitivity weight by factor f. (default: 1)'
+  synonyms:
+  - --sens_spec_bias
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: =1                   execute all time consuming system calls with bash
+    nice (default nice level) Default value for execution of optmize_augustus.pl is
+    --nice=0.
+  synonyms:
+  - --nice
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '=1                Delete tmp_opt_* folder after optimization (default:
+    0)'
+  synonyms:
+  - --cleanup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "=1 Use this option, if the stop codons are excluded from the CDS features\
+    \ in 'eval.gtf' (default: 0)."
+  synonyms:
+  - --stopCodonExcludedFromCDS
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Directory that contains the executable evaluate_gtf.pl from the eval
+    package. If not specified it must be in \$PATH environment variable.
+  synonyms:
+  - --eval_exec_dir
+  args: !SimpleFlagArg
+    name: d
+  optional: true
+- !Flag
+  description: s is the species identifier to which 'eval.gtf' belongs to. Caution,
+    if not specified, the reference species in the alignment (first s-line in Maf
+    block) is assumed.
+  synonyms:
+  - --eval_against
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+- !Flag
+  description: 'when more than 1 CPU is used, the alignment is split into multiple
+    smaller alignments each approximately covering a sequence range of length n (in
+    the reference genome). The prediction step is executed in parallel on these chunks
+    (default: 5000000).'
+  synonyms:
+  - --chunksize
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: retrieve genomes either from a MySQL or from an SQLITE database. In
+    the SQLITE case, 'db' is a database file with extension .db, e.g. --dbaccess=vertebrates.db.
+    In the MySQL case, 'db' is a string that contains the connection information,
+    e.g. --dbaccess=dbname,host,user,passwd (the parameter --speciesfilenames is not
+    required, here).
+  synonyms:
+  - --dbaccess
+  args: !SimpleFlagArg
+    name: db
+  optional: true
+- !Flag
+  description: "=1                       Use this option, if you want to filter out\
+    \ duplicates from the prediction with the external tool 'joingenes' (default:\
+    \ 0, however --jg=1 is recommended). The tool 'joingenes' is part of the augustus\
+    \ package and can be found in the 'auxprogs' folder."
+  synonyms:
+  - --jg
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Directory that contains the exectuable 'joingenes' (only required when
+    --jg=1)
+  synonyms:
+  - --jg_exec_dir
+  args: !SimpleFlagArg
+    name: d
+  optional: true
+- !Flag
+  description: 'see usage 1 above (default: generic_metapars.cgp.cfg)'
+  synonyms:
+  - --metapars
+  args: !SimpleFlagArg
+    name: metapars.cgp.cfg
+  optional: true
+- !Flag
+  description: see usage 1 above
+  synonyms:
+  - --cpus
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: see usage 1 above
+  synonyms:
+  - --pstep
+  args: !SimpleFlagArg
+    name: p
+  optional: true
+- !Flag
+  description: see usage 1 above
+  synonyms:
+  - --AUGUSTUS_CONFIG_PATH
+  args: !SimpleFlagArg
+    name: d
+  optional: true
+- !Flag
+  description: see usage 1 above
+  synonyms:
+  - --aug_exec_dir
+  args: !SimpleFlagArg
+    name: d
+  optional: true
+- !Flag
+  description: see usage 1 above
+  synonyms:
+  - --sens_spec_bias
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+command:
+- optimize_augustus.pl
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

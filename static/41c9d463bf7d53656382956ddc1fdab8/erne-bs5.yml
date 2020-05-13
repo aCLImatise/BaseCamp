@@ -1,0 +1,248 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: reference file to use (in our format and with  .ebm extension). [REQUIRED]
+  synonyms:
+  - --reference
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: query1 file (can be compressed with gzip or  bzip2, or a pipe) [REQUIRED]
+  synonyms:
+  - --query1
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: optional query2 file (can be compressed with  gzip or bzip2, or a pipe)
+  synonyms:
+  - --query2
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: BAM output file (other files are created  depending on other options)
+    [REQUIRED]
+  synonyms:
+  - --output
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'PRESET 1: Use base qualities to improve speed.  Only slightly less
+    sensitive (and much faster)  than --sensitive. This is the default.  Equivalent
+    to --q 15 --cl 500'
+  synonyms:
+  - --fast
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'PRESET 2: High sensitivity and low speed.  Equivalent to --q 0 --cl
+    500 '
+  synonyms:
+  - --sensitive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'PRESET 3: Maximum sensitivity, but really low  speed. Equivalent to
+    --ignore-quality --cl 0.'
+  synonyms:
+  - --ultra-sensitive
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: maximum number of allowed threads (default 1)
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: output file in SAM format instead of BAM format
+  synonyms:
+  - --sam
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'force ILLUMINA 1.3+ FASTQ format (default:  auto-detect)'
+  synonyms:
+  - --force-illumina
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'force standard SANGER FASTQ format (default:  auto-detect)'
+  synonyms:
+  - --force-standard
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: obsolete (legacy option)
+  synonyms:
+  - --auto-errors
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: change automatically error rate (default 15,  must be >= 5)
+  synonyms:
+  - --errors-rate
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'errors allowed (>= 0, default: auto-errors)'
+  synonyms:
+  - --errors
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: DELTA value (default 0)
+  synonyms:
+  - --delta
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'disable indels in read alignment. Default:  disabled.'
+  synonyms:
+  - --no-indels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'max base pairs indels value (default: 10)'
+  synonyms:
+  - --indels-max
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'minimum fragment size for proper pair (default:  none, if --fragment-size-max
+    is defined, it is  optional and default is 0)'
+  synonyms:
+  - --fragment-size-min
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'maximum fragment size for proper pair (default:  none, required if
+    --fragment-size-min is  defined)'
+  synonyms:
+  - --fragment-size-max
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: sample name
+  synonyms:
+  - --sample
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: disable automatic trim
+  synonyms:
+  - --no-auto-trim
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: minimum value used by Mott-like trimming  (default 20)
+  synonyms:
+  - --min-phred-value-mott
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: minimum mean value to accept a (trimmed)  sequence (default 20)
+  synonyms:
+  - --min-mean-phred-quality
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: min length for a sequence (default 25)
+  synonyms:
+  - --min-size
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Efficiently search 1 gap (see  --ref-insertion-max-gap and  --ref-deletion-max-gap)
+  synonyms:
+  - --gap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'maximum value for an insertion in the reference  (default: 100)'
+  synonyms:
+  - --ref-insertion-max-gap
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'maximum value for a deletion in the reference  (default: 20)'
+  synonyms:
+  - --ref-deletion-max-gap
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: print all possible alignments [only for  single-end reads]
+  synonyms:
+  - --print-all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Maximum number of errors allowed in the seed.  Default: 2.'
+  synonyms:
+  - --seed-errors
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Mismatch are inserted in the seed only in  positions where base quality
+    < q. Default: 15.  With value 0 quality values are ignored.'
+  synonyms:
+  - --q
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Disable quality-aware strategy if a read is not  found, then search
+    again. Default: disabled  (quality-aware strategy always on)'
+  synonyms:
+  - --disable-quality-strategy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Ignore quality values during search (equivalent  to --q 0). Default:
+    disabled.'
+  synonyms:
+  - --ignore-quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Search the hash collision lists up to this depth (value 0 means no
+    limit). Default: 500.'
+  synonyms:
+  - --cl
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+command:
+- erne-bs5
+subcommands: []
+help_flag: !Flag
+  description: produce help message
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print version and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

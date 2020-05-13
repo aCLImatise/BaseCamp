@@ -1,0 +1,107 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: BED file of genomic coordinates (e.g. ChIP-Seq peaks). The center of
+    each peak will be used to compute the distance from a gene.
+  synonyms:
+  - -b
+  - --bed
+  args: !SimpleFlagArg
+    name: BED
+  optional: true
+- !Flag
+  description: Gene annotation table. This can be a sqlite3 local db file, BED file
+    or genome version of UCSC. The BED file must have an extension of '.bed'
+  synonyms:
+  - -d
+  - --db
+  args: !SimpleFlagArg
+    name: GDB
+  optional: true
+- !Flag
+  description: Gene set to see the association with the genomic coordinates given
+    through -b. Multiple gene sets can be given by repeatedly using this option (e.g.
+    -g geneset1.txt -g geneset2.txt -g geneset3.txt). Genes must be given in a TXT
+    file each line of which has a refseq accession ID or an official gene symbol (i.e.
+    a single-column TXT file).
+  synonyms:
+  - -g
+  - --gset
+  args: !SimpleFlagArg
+    name: GSET
+  optional: true
+- !Flag
+  description: The lower limit of the distance to consider in association analysis
+    (in kb). Note that the lower and upper limits must be reasonably apart to obtain
+    a meaningful result. By default 0kb.
+  synonyms:
+  - -n
+  - --min
+  args: !SimpleFlagArg
+    name: MIN
+  optional: true
+- !Flag
+  description: The upper limit of the distance to consider in association analysis
+    (in kb). Note that the lower and upper limits must be reasonably apart to obtain
+    a meaningful result. By default 200kb.
+  synonyms:
+  - -x
+  - --max
+  args: !SimpleFlagArg
+    name: MAX
+  optional: true
+- !Flag
+  description: Experiment name. This will be used to name the output file. If an experiment
+    name is not given, input BED file name will be used instead.
+  synonyms:
+  - --name
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: Label for each gene set. Likewise, multiple gene set labels can be
+    given by repeatedly using this option (e.g. -l label1 -l label2 -l label3). If
+    labels are not given, 'gene set' will be used by default.
+  synonyms:
+  - -l
+  - --lab
+  args: !SimpleFlagArg
+    name: LABEL
+  optional: true
+- !Flag
+  description: Background gene set. If a set of genes is given using this option,
+    the gene set will be used as background or null set when running KS test. Otherwise,
+    all refseq genes will be used as background. Background genes must be given in
+    a TXT file each line of which has a refseq accession ID or an offical gene symbol
+    (i.e. a single-column TXT file).
+  synonyms:
+  - -r
+  - --rbg
+  args: !SimpleFlagArg
+    name: RBG
+  optional: true
+- !Flag
+  description: If this switch is on, gene or transcript IDs in files given through
+    -g will be considered as official gene symbols.
+  synonyms:
+  - --gname2
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- ChIPAssoc
+subcommands: []
+help_flag: !Flag
+  description: Show this help message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

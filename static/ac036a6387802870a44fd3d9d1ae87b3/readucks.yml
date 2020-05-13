@@ -1,0 +1,192 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: FASTQ of input reads or a directory which will be recursively searched
+    for FASTQ files (required).
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT_PATH
+  optional: true
+- !Flag
+  description: 'Output directory (default: working directory)'
+  synonyms:
+  - -o
+  - --output_dir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+- !Flag
+  description: 'Reads will be binned based on their barcode and saved to separate
+    files. (default: False)'
+  synonyms:
+  - -b
+  - --bin_barcodes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Writes a CSV file for each input file containing barcode calls for
+    each read. (default: False)'
+  synonyms:
+  - -a
+  - --annotate_files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Writes extended information about barcode calls. (default: False)'
+  synonyms:
+  - -e
+  - --extended_info
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Writes another file with information about barcode calls. (default:
+    False)'
+  synonyms:
+  - -s
+  - --summary_info
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Demuxing mode, one of ["stringent","lenient", "porechop"]. (default:
+    porechop)'
+  synonyms:
+  - -m
+  - --mode
+  args: !SimpleFlagArg
+    name: MODE
+  optional: true
+- !Flag
+  description: Optional prefix to file names
+  synonyms:
+  - -p
+  - --prefix
+  args: !SimpleFlagArg
+    name: PREFIX
+  optional: true
+- !Flag
+  description: 'The number of threads to use (1 to turn off multithreading) (default:
+    2)'
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: 'The number of reads to process (and hold in memory) at a time (default:
+    200)'
+  synonyms:
+  - -n
+  - --num_reads_in_batch
+  args: !SimpleFlagArg
+    name: NUM_READS_IN_BATCH
+  optional: true
+- !Flag
+  description: 'Number of barcodes to classify before filtering barcode set (default:
+    1000)'
+  synonyms:
+  - --check_reads
+  args: !SimpleFlagArg
+    name: CHECK_READS
+  optional: true
+- !Flag
+  description: 'Identity required for a barcode to be included after filtering (default:
+    90)'
+  synonyms:
+  - --adapter_threshold
+  args: !SimpleFlagArg
+    name: ADAPTER_THRESHOLD
+  optional: true
+- !Flag
+  description: 'Level of output information: 0 = none, 1 = some, 2 = lots (default:
+    1)'
+  synonyms:
+  - -v
+  - --verbosity
+  args: !SimpleFlagArg
+    name: VERBOSITY
+  optional: true
+- !Flag
+  description: Match barcodes at both ends of read (default single)
+  synonyms:
+  - --require_two_barcodes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Only attempts to match the 24 native barcodes (default)
+  synonyms:
+  - --native_barcodes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Only attempts to match the 96 PCR barcodes (default: False)'
+  synonyms:
+  - --pcr_barcodes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Only attempts to match the 12 rapid barcodes (default: False)'
+  synonyms:
+  - --rapid_barcodes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify a list of barcodes to look for (numbers refer to native, PCR
+    or rapid)
+  synonyms:
+  - --limit_barcodes_to
+  args: !RepeatFlagArg
+    name: LIMIT_BARCODES_TO
+  optional: true
+- !Flag
+  description: 'A read must have at least this percent identity to a barcode (default:
+    75)'
+  synonyms:
+  - --threshold
+  args: !SimpleFlagArg
+    name: THRESHOLD
+  optional: true
+- !Flag
+  description: 'The second barcode must have at least this percent identity (and match
+    the first one) (default: 65)'
+  synonyms:
+  - --secondary_threshold
+  args: !SimpleFlagArg
+    name: SECONDARY_THRESHOLD
+  optional: true
+- !Flag
+  description: 'The second barcode must have at least this percent identity (and match
+    the first one) (default: 5)'
+  synonyms:
+  - --score_diff
+  args: !SimpleFlagArg
+    name: SCORE_DIFF
+  optional: true
+- !Flag
+  description: 'Comma-delimited string of alignment scores: match, mismatch, gap open,
+    gap extend (default: 3,-6,-5,-2)'
+  synonyms:
+  - --scoring_scheme
+  args: !SimpleFlagArg
+    name: SCORING_SCHEME
+  optional: true
+command:
+- readucks
+subcommands: []
+help_flag: !Flag
+  description: Show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

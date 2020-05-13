@@ -1,0 +1,137 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: "Folder to which the files are downloaded. Default: '.'"
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: directory
+  optional: true
+- !Flag
+  description: 'Alternative to -o: Download to <directory>/{library,taxonomy}.'
+  synonyms:
+  - --db
+  args: !SimpleFlagArg
+    name: directory
+  optional: true
+- !Flag
+  description: "<# of threads>  Number of processes when downloading (uses xargs).\
+    \ Default: '5'"
+  synonyms:
+  - --threads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Download using rsync.
+  synonyms:
+  - --rsync
+  - -R
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Redownload and overwrite files with the same name.
+  synonyms:
+  - --overwrite
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Be verbose.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Mask low-complexity regions using dustmasker.
+  synonyms:
+  - --dust
+  - -D
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Filter all sequences from the FASTA files that have less than X bp.
+  synonyms:
+  - --min-seq-len
+  args: !SimpleFlagArg
+    name: X
+  optional: true
+- !Flag
+  description: Download all sequences returned from a NCBI nucleotide search. When
+    used with viral-neighbors, it subsets the viral genomes by the search. E.g. "txid1570291[Organism]"
+    for Ebola virus sequences (taxonomy ID 1570291).
+  synonyms:
+  - --search
+  args: !SimpleFlagArg
+    name: SEARCH_TERM
+  optional: true
+- !Flag
+  description: ',AC2          Alternative to --search. Download specified ACs of nucleotide
+    database.'
+  synonyms:
+  - --ac
+  args: !SimpleFlagArg
+    name: AC1
+  optional: true
+- !Flag
+  description: 'Map accessions using the specified mapping file(s) (comma-separated).
+    Possible values: nucl_est, nucl_gb, nucl_gss, nucl_wgs. For viral-neighbors, the
+    default is nucl_gb. Unset by giving it an empty string. Downloaded from ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/accession2taxid/.'
+  synonyms:
+  - --mapping-file
+  args: !SimpleFlagArg
+    name: MAP
+  optional: true
+- !Flag
+  description: 'Specify return mode. Possible options: text (default), asn.1, xml.'
+  synonyms:
+  - --retmode
+  args: !SimpleFlagArg
+    name: RM
+  optional: true
+- !Flag
+  description: 'Specify return type for download. Note that no mapping files are generated
+    when rettype is specified. Possible options: fasta (default), gb, gbc, native,
+    acc, seqid, ft,  gbwithparts, fasta_cds_na, fasta_cds_aa. Note that only gb and
+    fasta files are split, while the other formats stay in chunks. The resulting files
+    will have the rettype as extension.'
+  synonyms:
+  - --rettype
+  args: !SimpleFlagArg
+    name: RT
+  optional: true
+- !Flag
+  description: 'Provide list of taxa that are kept in the database. Comma separated,
+    supply either taxIDs or one of the following division names: archaea bacteria
+    fungi parasitic_worms protozoa viral Default: "bacteria,archaea,viral,fungi,protozoa"'
+  synonyms:
+  - --taxa
+  args: !SimpleFlagArg
+    name: TAXLIST
+  optional: true
+- !Flag
+  description: Exclude taxa that are named 'environmental samples'.
+  synonyms:
+  - --exclude-environmental-taxa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Comma-separated list of sequence types, including genomic, rna, rna_from_genomic,
+    cds_from_genomic. Default: genomic. See the assembly project FTP site for available
+    sequences'
+  synonyms:
+  - --fna
+  args: !SimpleFlagArg
+    name: seq types
+  optional: true
+- !Flag
+  description: Filter unplaced sequences.
+  synonyms:
+  - -u
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- krakenuniq-download
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

@@ -1,0 +1,58 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Input to sample directories output by run_midas.py Can be a list of
+    directories, a directory containing all samples, or a file with paths See '-t'
+    for details
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: 'list: -i is a comma-separated list (ex: /path/to/samples/sample_1,/path/to/samples/sample_2)
+    dir: -i is a directory containing all samples (ex: /path/to/samples) file: -i
+    is a file containing paths to sample directories (ex: /path/to/sample_paths.txt)'
+  synonyms:
+  - -t
+  args: !ChoiceFlagArg
+    choices:
+    - list
+    - file
+    - dir
+  optional: true
+- !Flag
+  description: Path to output file (/dev/stdout)
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: OUT
+  optional: true
+- !Flag
+  description: Path to MIDAS reference database By default, the MIDAS_DB environmental
+    variable is used
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: DB
+  optional: true
+- !Flag
+  description: KEGG Compound identifier
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: COMPOUND
+  optional: true
+command:
+- query_by_compound.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

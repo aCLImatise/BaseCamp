@@ -1,0 +1,138 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: <file name>                     FASTA file (required)
+  synonyms:
+  - --fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <dir name>                      Target directory TGTDIR (required)
+  synonyms:
+  - --dir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '<integer>                       Number of CPUs available on your machine.
+    Calls to locarna and  RNAfold will be distributed equally on those CPUs. (default:
+    1) (optional)'
+  synonyms:
+  - --cpu
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Stop after dotplots are created. This option is useful if  calculation
+    of pairwise alignments will be distributed among  different machines.  (optional)
+  synonyms:
+  - --dponly
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <dir>                           Directory of dotplots. Use this option
+    in case you distribute the  calculation of pairwise alignments among different
+    machines using --start and --end options. (optional)
+  synonyms:
+  - --dpdir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <integer>                       Start with pairwise alignment i. (optional)
+  synonyms:
+  - --start
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <integer>                       Stop with pairwise alignment j. (optional,
+    except --start is specified)
+  synonyms:
+  - --end
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use this option after all pairwise alignments have been computed  on
+    different machines (options --start, --end) in order to generate  the hierarchical
+    cluster-tree. The pairwise alignments must be moved  to one 'paligs' directory
+    beforehand. (optional)
+  synonyms:
+  - --tree
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Final cluster-tree is traversed and multiple alignment for each internal  node
+    is computed progressively, default: no  (optional)'
+  synonyms:
+  - --malig
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Starts RNAsoup immediatly after computing the pairwise alignments and  the
+    hierarchical tree. Results are written to the subfold 'rnasoup'.  Activates the
+    --malig option. (optional)
+  synonyms:
+  - --rnasoup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Starts just RNAsoup on an existing RNAclust directory. Activates --malig  if
+    there are no multiple alignments available. Writes RNAsoup output to a  subfolder
+    called 'rnasoup'. (optional)
+  synonyms:
+  - --rnasoup-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Appends the sequences in the fasta file to an existing cluster tree.
+    The  folder containing the existing tree is defined by --dir. A subfolder,  named
+    'additionalSeqs', containing the new tree and additional files will  be created
+    there. This function is still experimental, not all combinations  of parameter
+    will work. (optional)
+  synonyms:
+  - --addSequence
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <"locarna options">          Options passed directly to locarna (must
+    be given as one string) (optional)
+  synonyms:
+  - --locarna-opts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: <"mlocarna options">        Options passed directly to mlocarna (must
+    be given as one string).  mlocarna is used if multiple alignments for the internal
+    nodes will be  calculated (see --malig). (optional)
+  synonyms:
+  - --mlocarna-opts
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: full documentation (optional)
+  synonyms:
+  - --man
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the rnaclust, rnasoup and pgma binaries from a local installation  instead
+    of the global one.
+  synonyms:
+  - --localbin
+  args: !SimpleFlagArg
+    name: path to bin dir
+  optional: true
+command:
+- RNAclust.pl
+subcommands: []
+help_flag: !Flag
+  description: brief help message (optional)
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print version
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

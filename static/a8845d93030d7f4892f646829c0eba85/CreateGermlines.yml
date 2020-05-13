@@ -1,0 +1,127 @@
+!Command
+positional:
+- !Positional
+  description: database with assigned germline sequences.
+  position: 0
+  name: germ-pass
+  optional: false
+- !Positional
+  description: database with records failing germline assignment.
+  position: 1
+  name: germ-fail
+  optional: false
+named:
+- !Flag
+  description: 'A list of tab delimited database files. (default: None)'
+  synonyms:
+  - -d
+  args: !RepeatFlagArg
+    name: DB_FILES
+  optional: true
+- !Flag
+  description: 'Explicit output file name. Note, this argument cannot be used with
+    the --failed, --outdir, or --outname arguments. If unspecified, then the output
+    filename will be based on the input filename(s). (default: None)'
+  synonyms:
+  - -o
+  args: !RepeatFlagArg
+    name: OUT_FILES
+  optional: true
+- !Flag
+  description: 'Specify to changes the output directory to the location specified.
+    The input file directory is used if this is not specified. (default: None)'
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUT_DIR
+  optional: true
+- !Flag
+  description: 'Changes the prefix of the successfully processed output file to the
+    string specified. May not be specified with multiple input files. (default: None)'
+  synonyms:
+  - --outname
+  args: !SimpleFlagArg
+    name: OUT_NAME
+  optional: true
+- !Flag
+  description: 'Specify to write verbose logging to a file. May not be specified with
+    multiple input files. (default: None)'
+  synonyms:
+  - --log
+  args: !SimpleFlagArg
+    name: LOG_FILE
+  optional: true
+- !Flag
+  description: 'If specified create files containing records that fail processing.
+    (default: False)'
+  synonyms:
+  - --failed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Specify input and output format. (default: changeo)'
+  synonyms:
+  - --format
+  args: !ChoiceFlagArg
+    choices:
+    - changeo
+    - airr
+  optional: true
+- !Flag
+  description: 'Specify to create only one germline per clone. Note, if allele calls
+    are ambiguous within a clonal group, this will place the germline call used for
+    the entire clone within the GERMLINE_V_CALL, GERMLINE_D_CALL and GERMLINE_J_CALL
+    fields. (default: False)'
+  synonyms:
+  - --cloned
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Field containing the aligned sequence. Defaults to SEQUENCE_IMGT (changeo)
+    or sequence_alignment (airr). (default: None)'
+  synonyms:
+  - --sf
+  args: !SimpleFlagArg
+    name: SEQ_FIELD
+  optional: true
+- !Flag
+  description: 'Field containing the germline V segment call. Defaults to V_CALL (changeo)
+    or v_call (airr). (default: None)'
+  synonyms:
+  - --vf
+  args: !SimpleFlagArg
+    name: V_FIELD
+  optional: true
+- !Flag
+  description: 'Field containing the germline D segment call. Defaults to D_CALL (changeo)
+    or d_call (airr). (default: None)'
+  synonyms:
+  - --df
+  args: !SimpleFlagArg
+    name: D_FIELD
+  optional: true
+- !Flag
+  description: 'Field containing the germline J segment call. Defaults to J_CALL (changeo)
+    or j_call (airr). (default: None)'
+  synonyms:
+  - --jf
+  args: !SimpleFlagArg
+    name: J_FIELD
+  optional: true
+command:
+- CreateGermlines.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

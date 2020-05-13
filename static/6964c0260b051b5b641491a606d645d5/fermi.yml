@@ -1,0 +1,908 @@
+!Command
+positional: []
+named: []
+command:
+- fermi
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.fa
+    optional: false
+  named:
+  - !Flag
+    description: use a small marker per 2^(INT+3) bytes [3]
+    synonyms:
+    - -b
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: force to overwrite the output file (effective with -o)
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: append the FM-index to the existing FILE [null]
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: trim read down to INT bp [inf]
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: output file name [null]
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: do not trim 1bp for reads whose forward and reverse are identical
+    synonyms:
+    - -O
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: number of symbols to process at a time [250000000]
+    synonyms:
+    - -s
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  command:
+  - fermi
+  - build
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: ropebwt
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: in.fq.gz
+    optional: false
+  named:
+  - !Flag
+    description: 'algorithm: bpr or bcr [bpr]'
+    synonyms:
+    - -a
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: max number of runs in leaves (bpr only) [512]
+    synonyms:
+    - -r
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: max number children per internal node (bpr only) [64]
+    synonyms:
+    - -n
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: output file [stdout]
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: temporary sequence file name (bcr only) [null]
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: verbose level (bcr only) [2]
+    synonyms:
+    - -v
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: binary output (5+3 runs starting after 4 bytes)
+    synonyms:
+    - -b
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: enable threading (bcr only)
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: skip forward strand
+    synonyms:
+    - -F
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: skip reverse strand
+    synonyms:
+    - -R
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: cut at ambiguous bases
+    synonyms:
+    - -N
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: suppress end trimming when forward==reverse
+    synonyms:
+    - -O
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: print the tree stdout (bpr only)
+    synonyms:
+    - -T
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - fermi
+  - ropebwt
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: idxbase.bwt
+    optional: false
+  named:
+  - !Flag
+    description: load the FM-index as a memory mapped file
+    synonyms:
+    - -M
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: check rank
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: print the BWT to the stdout
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - fermi
+  - chkbwt
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: force to overwrite the output file (effective with -o)
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output file name [null]
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: number of threads to use
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  command:
+  - fermi
+  - merge
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: seqs.bwt
+    optional: false
+  named:
+  - !Flag
+    description: index of the read to output, starting from 0 [null]
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: load the FM-index as a memory mapped file
+    synonyms:
+    - -M
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - fermi
+  - unpack
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: idxbase.bwt
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: src.fa
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -Ms
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - fermi
+  - exact
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: reads.fmd
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: reads.fq
+    optional: false
+  named:
+  - !Flag
+    description: k-mer length; -1 for auto [-1]
+    synonyms:
+    - -k
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: minimum (k+1)-mer occurrences [3]
+    synonyms:
+    - -O
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: number of threads [1]
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: max fraction of corrected bases [0.30]
+    synonyms:
+    - -C
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: trim read down to INT bp; 0 to disable [0]
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: step size for the jumping heuristic; 0 to disable [5]
+    synonyms:
+    - -s
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: keep bad/unfixable reads
+    synonyms:
+    - -K
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - fermi
+  - correct
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: reads.fmd
+    optional: false
+  named:
+  - !Flag
+    description: min match [30]
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: number of threads [1]
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: rank file [null]
+    synonyms:
+    - -r
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  command:
+  - fermi
+  - unitig
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.mog
+    optional: false
+  named:
+  - !Flag
+    description: read maximum INT neighbors per node [512]
+    synonyms:
+    - -N
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: drop a neighbor if relative overlap ratio below FLOAT [0.70]
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: clean the graph
+    synonyms:
+    - -C
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: minimum tip length [300]
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: minimum tip read count [4]
+    synonyms:
+    - -e
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: minimum internal unitig read count [3]
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: minimum overlap [60]
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: minimum relative overlap ratio [0.80]
+    synonyms:
+    - -R
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: number of iterations [3]
+    synonyms:
+    - -n
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: aggressive bubble popping
+    synonyms:
+    - -A
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: skip bubble simplification
+    synonyms:
+    - -S
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: minimum coverage to keep a bubble [10.00]
+    synonyms:
+    - -w
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: minimum fraction to keep a bubble [0.15]
+    synonyms:
+    - -r
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  command:
+  - fermi
+  - clean
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: reads.fmd
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: contigs.fq
+    optional: false
+  named:
+  - !Flag
+    description: skip ending INT bases of a read pair [50]
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: minimum paired-end coverage [0]
+    synonyms:
+    - -c
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: maximum insert size (external distance) [1000]
+    synonyms:
+    - -D
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: rank [null]
+    synonyms:
+    - -r
+    args: !SimpleFlagArg
+      name: FILE
+    optional: true
+  - !Flag
+    description: number of threads [1]
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  command:
+  - fermi
+  - remap
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.fmd
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: in.remapped.mag
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: avg
+    optional: false
+  - !Positional
+    description: ''
+    position: 3
+    name: std
+    optional: false
+  named:
+  - !Flag
+    description: number of threads [1]
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: minimum number of supporting reads [5]
+    synonyms:
+    - -m
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: print the links between unitigs
+    synonyms:
+    - -P
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - fermi
+  - scaf
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: idx1.fmd
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: idx1.rank
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: 1-2.sub
+    optional: false
+  - !Positional
+    description: ''
+    position: 3
+    name: idx2.fmd
+    optional: false
+  - !Positional
+    description: ''
+    position: 4
+    name: idx2.rank
+    optional: false
+  - !Positional
+    description: ''
+    position: 5
+    name: 2-1.sub
+    optional: false
+  named:
+  - !Flag
+    description: minimum occurrence [3]
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: number of threads [1]
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: k-mer length [55]
+    synonyms:
+    - -k
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  command:
+  - fermi
+  - contrast
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.fmd
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: array.bits
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: nThreads
+    optional: true
+  command:
+  - fermi
+  - sub
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.rld
+    optional: false
+  named: []
+  command:
+  - fermi
+  - recode
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - fermi
+  - splitfa
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: out.prefix
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: '8'
+      optional: true
+    named: []
+    command:
+    - fermi
+    - splitfa
+    - in.fq
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: in.fq
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: out.prefix
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: '8'
+      optional: true
+    named: []
+    command:
+    - fermi
+    - splitfa
+    - out.prefix
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: in.fq
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: out.prefix
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: '8'
+      optional: true
+    named: []
+    command:
+    - fermi
+    - splitfa
+    - '8'
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.fa
+    optional: false
+  named: []
+  command:
+  - fermi
+  - fltuniq
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - fermi
+  - pe2cofq
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: in2.fq
+      optional: false
+    named: []
+    command:
+    - fermi
+    - pe2cofq
+    - in1.fq
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: in1.fq
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: in2.fq
+      optional: false
+    named: []
+    command:
+    - fermi
+    - pe2cofq
+    - in2.fq
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.cgfq
+    optional: false
+  named: []
+  command:
+  - fermi
+  - cg2cofq
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: in.fq
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -ceU
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -k
+    args: !SimpleFlagArg
+      name: ecKmer
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: utgKmer
+    optional: true
+  command:
+  - fermi
+  - example
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

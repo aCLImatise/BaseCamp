@@ -1,0 +1,94 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Hi-C normalized (corrected) matrices. Each path should be separated
+    by a space.
+  synonyms:
+  - --matrices
+  - -m
+  args: !RepeatFlagArg
+    name: MATRICES
+  optional: true
+- !Flag
+  description: 'name, -o file name File name to save the file. The given file ending
+    will be used to determine the image format. The available options are: .png, .emf,
+    .eps, .pdf and .svg.'
+  synonyms:
+  - --plotFile
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: 'Label to assign to each matrix file. Each label should be separated
+    by a space. Quote labels that contain spaces: E.g. --labels label1 "labels 2".
+    If no labels are given then the file name is used.'
+  synonyms:
+  - --labels
+  args: !RepeatFlagArg
+    name: LABELS
+  optional: true
+- !Flag
+  description: If set, diagonal counts are not included.
+  synonyms:
+  - --skipDiagonal
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: bp     Maximum distance from diagonal to use. In other words, distances
+    up to maxDepth are computed. Default is 3 million bp.
+  synonyms:
+  - --maxdepth
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: If given, computes and display distance versus Hi-C counts plots for
+    each chromosome stored in the matrices passed to --matrices.
+  synonyms:
+  - --perchr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Exclude the given list of chromosomes. This is useful for example to
+    exclude the Y chromosome. The names of the chromosomes should be separated by
+    space.
+  synonyms:
+  - --chromosomeExclude
+  args: !RepeatFlagArg
+    name: CHROMOSOMEEXCLUDE
+  optional: true
+- !Flag
+  description: If given, the data underlying the plots is saved on this file.
+  synonyms:
+  - --outFileData
+  args: !SimpleFlagArg
+    name: OUTFILEDATA
+  optional: true
+- !Flag
+  description: 'PLOTSIZE Width and height of the plot (in inches). Default is 6*number
+    of cols, 4 * number of rows. The maximum number of rows is 4. Example: --plotsize
+    6 5'
+  synonyms:
+  - --plotsize
+  args: !SimpleFlagArg
+    name: PLOTSIZE
+  optional: true
+command:
+- hicPlotDistVsCounts
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

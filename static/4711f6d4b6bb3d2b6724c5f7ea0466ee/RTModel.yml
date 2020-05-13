@@ -1,0 +1,302 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: "This is the name of the input file (RT prediction). It is assumed\
+    \ that the file type is idXML. Alternatively you can provide a .txt file having\
+    \ a sequence and the corresponding rt per line. (valid formats: 'idXML', 'txt')"
+  synonyms:
+  - -in
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Input file with positive examples (peptide separation prediction)\
+    \ (valid formats: 'idXML')"
+  synonyms:
+  - -in_positive
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Input file with negative examples (peptide separation prediction)\
+    \ (valid formats: 'idXML')"
+  synonyms:
+  - -in_negative
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "*                    Output file: the model in libsvm format (valid\
+    \ formats: 'txt')"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Output file with additional model parameters when using the OLIGO\
+    \ kernel (valid formats: 'paramXML')"
+  synonyms:
+  - -out_oligo_params
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Output file with the used training dataset when using the OLIGO kernel\
+    \ (valid formats: 'txt')"
+  synonyms:
+  - -out_oligo_trainset
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "The type of the svm (NU_SVR or EPSILON_SVR for RT prediction, automatically\
+    \ set to C_SVC for separation prediction) (default: 'NU_SVR' valid: 'NU_SVR',\
+    \ 'NU_SVC', 'EPSILON_SVR', 'C_SVC')"
+  synonyms:
+  - -svm_type
+  args: !SimpleFlagArg
+    name: type
+  optional: true
+- !Flag
+  description: "The nu parameter [0..1] of the svm (for nu-SVR) (default: '0.5' min:\
+    \ '0' max: '1')"
+  synonyms:
+  - -nu
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "The epsilon parameter of the svm (for epsilon-SVR) (default: '0.1')"
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "The penalty parameter of the svm (default: '1')"
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "The kernel type of the svm (default: 'OLIGO' valid: 'LINEAR', 'RBF',\
+    \ 'POLY', 'OLIGO')"
+  synonyms:
+  - -kernel_type
+  args: !SimpleFlagArg
+    name: type
+  optional: true
+- !Flag
+  description: "The degree parameter of the kernel function of the svm (POLY kernel)\
+    \ (default: '1' min: '1')"
+  synonyms:
+  - -degree
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Length of the POBK (default: '22' min: '1')"
+  synonyms:
+  - -border_length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Max standard deviation for a peptide to be included (if there are\
+    \ several ones for one peptide string)(median is taken) (default: '10' min: '0')"
+  synonyms:
+  - -max_std
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "K_mer length of the POBK (default: '1' min: '1')"
+  synonyms:
+  - -k_mer_length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: "Sigma of the POBK (default: '5')"
+  synonyms:
+  - -sigma
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: "The time (in seconds) of the gradient (only for RT prediction) (default:\
+    \ '1' min: '1e-05')"
+  synonyms:
+  - -total_gradient_time
+  args: !SimpleFlagArg
+    name: time
+  optional: true
+- !Flag
+  description: If set the model will be built for first_dim_rt
+  synonyms:
+  - -first_dim_rt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If the step sizes should be interpreted additively (otherwise the actual
+    value is multiplied with the step size to get the new value
+  synonyms:
+  - -additive_cv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: :skip_cv                     Set to enable Cross-Validation or set
+    to true if the model should just be trained with 1 set of specified parameters.
+  synonyms:
+  - -cv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":number_of_runs <int>        Number of runs for the CV (each run creates\
+    \ a new random partition of the data) (default: '1' min: '1')"
+  synonyms:
+  - -cv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":number_of_partitions <int>  Number of CV partitions (default: '10'\
+    \ min: '2')"
+  synonyms:
+  - -cv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":degree_start <int>          Starting point of degree (default: '1'\
+    \ min: '1')"
+  synonyms:
+  - -cv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":degree_step_size <int>      Step size point of degree (default: '2')"
+  synonyms:
+  - -cv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":degree_stop <int>           Stopping point of degree (default: '4')"
+  synonyms:
+  - -cv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":p_start <float>             Starting point of p (default: '1')"
+  synonyms:
+  - -cv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":p_step_size <float>         Step size point of p (default: '10')"
+  synonyms:
+  - -cv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":p_stop <float>              Stopping point of p (default: '1000')"
+  synonyms:
+  - -cv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":c_start <float>             Starting point of c (default: '1')"
+  synonyms:
+  - -cv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":c_step_size <float>         Step size of c (default: '10')"
+  synonyms:
+  - -cv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":c_stop <float>              Stopping point of c (default: '1000')"
+  synonyms:
+  - -cv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":nu_start <float>            Starting point of nu (default: '0.3'\
+    \ min: '0' max: '1')"
+  synonyms:
+  - -cv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":nu_step_size <float>        Step size of nu (default: '1.2')"
+  synonyms:
+  - -cv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":nu_stop <float>             Stopping point of nu (default: '0.7'\
+    \ min: '0' max: '1')"
+  synonyms:
+  - -cv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":sigma_start <float>         Starting point of sigma (default: '1')"
+  synonyms:
+  - -cv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":sigma_step_size <float>     Step size of sigma (default: '1.3')"
+  synonyms:
+  - -cv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ":sigma_stop <float>          Stopping point of sigma (default: '15')"
+  synonyms:
+  - -cv
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- RTModel
+subcommands: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

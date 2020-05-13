@@ -1,0 +1,291 @@
+!Command
+positional:
+- !Positional
+  description: count is the minimum count for all databases.  If the mer does NOT
+    exist in all databases, the mer has a zero count, and is NOT in the output.
+  position: 0
+  name: min
+  optional: false
+- !Positional
+  description: count is the minimum count for all databases that contain the mer
+  position: 1
+  name: minexist
+  optional: false
+- !Positional
+  description: count is the maximum count for all databases
+  position: 2
+  name: max
+  optional: false
+- !Positional
+  description: count is sum of the counts for all databases
+  position: 3
+  name: add
+  optional: false
+- !Positional
+  description: count is the first minus the second (binary only)
+  position: 4
+  name: sub
+  optional: false
+- !Positional
+  description: count is the absolute value of the first minus the second (binary only)
+  position: 5
+  name: abs
+  optional: false
+- !Positional
+  description: outputs mer iff it exists in all databases
+  position: 0
+  name: and
+  optional: false
+- !Positional
+  description: outputs mer iff it exists in at least one, but not all, databases
+  position: 1
+  name: nand
+  optional: false
+- !Positional
+  description: outputs mer iff it exists in at least one database
+  position: 2
+  name: or
+  optional: false
+- !Positional
+  description: outputs mer iff it exists in an odd number of databases
+  position: 3
+  name: xor
+  optional: false
+named:
+- !Flag
+  description: '#          (size of a mer; required)'
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '#          (homopolymer compression; optional)'
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (enable positions)
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (seq.fasta is scanned to determine the number of mers)
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: seq.fasta
+  optional: true
+- !Flag
+  description: '#          (compute params assuming file with this many mers in it)'
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: priority.
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: takes
+  optional: true
+- !Flag
+  description: (only build for the forward strand)
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (only build for the reverse strand)
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (use canonical mers, assumes both strands)
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "#          (DON'T save mers that occur less than # times)"
+  synonyms:
+  - -L
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "#          (DON'T save mers that occur more than # times)"
+  synonyms:
+  - -U
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '#          (size of a mer; required)'
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '#          (homopolymer compression; optional)'
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (enable positions)
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (sequence to build the table for)
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: seq.fasta
+  optional: true
+- !Flag
+  description: (output table prefix)
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: tblprefix
+  optional: true
+- !Flag
+  description: (entertain the user)
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (use n threads to build)
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: (use at most m MB of memory per segment)
+  synonyms:
+  - -memory
+  args: !SimpleFlagArg
+    name: mMB
+  optional: true
+- !Flag
+  description: (use n segments)
+  synonyms:
+  - -segments
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: (use at most m MB of memory per segment)
+  synonyms:
+  - -memory
+  args: !SimpleFlagArg
+    name: mMB
+  optional: true
+- !Flag
+  description: (use n segments)
+  synonyms:
+  - -segments
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: (create the batches)
+  synonyms:
+  - -configbatch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (run batch number n)
+  synonyms:
+  - -countbatch
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: (merge the batches)
+  synonyms:
+  - -mergebatch
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: jobname      unique job name for this execution.  Meryl will submit
+    jobs with name mpjobname, ncjobname, nmjobname, for phases prepare, count and
+    merge.
+  synonyms:
+  - -sge
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '"options"    any additional options to sge, e.g.,'
+  synonyms:
+  - -sgebuild
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '"options"    "-p -153 -pe thread 2 -A merylaccount" N.B. - -N will
+    be ignored N.B. - be sure to quote the options'
+  synonyms:
+  - -sgemerge
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (use tblprefix as a database)
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: tblprefix
+  optional: true
+- !Flag
+  description: (create this output)
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: tblprefix
+  optional: true
+- !Flag
+  description: (entertain the user)
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Dump a histogram of the distance between the same mers.
+  synonyms:
+  - -Dd
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Dump mers >= a threshold.  Use -n to specify the threshold.
+  synonyms:
+  - -Dt
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Count the number of mers, distinct mers and unique mers.
+  synonyms:
+  - -Dc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Dump (to stdout) a histogram of mer counts.
+  synonyms:
+  - -Dh
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Read the count table from here (leave off the .mcdat or .mcidx).
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- meryl
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

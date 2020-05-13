@@ -1,0 +1,268 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Set log to debug mode
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- flowcraft
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Space separated tasks of the pipeline
+    synonyms:
+    - -t
+    - --tasks
+    args: !SimpleFlagArg
+      name: TASKS
+    optional: true
+  - !Flag
+    description: Use one of the available recipes
+    synonyms:
+    - -r
+    - --recipe
+    args: !SimpleFlagArg
+      name: RECIPE
+    optional: true
+  - !Flag
+    description: Name of the pipeline file
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: OUTPUT_NF
+    optional: true
+  - !Flag
+    description: Provide a name for your pipeline.
+    synonyms:
+    - -n
+    args: !SimpleFlagArg
+      name: PIPELINE_NAME
+    optional: true
+  - !Flag
+    description: Merges identical parameters from multiple components into the same
+      one. Otherwise, the parameters will be separated and unique to each component.
+    synonyms:
+    - --merge-params
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Write only the pipeline files and not the templates, bin, and lib
+      folders.
+    synonyms:
+    - --pipeline-only
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do not automatically add dependencies to the pipeline.
+    synonyms:
+    - -nd
+    - --no-dependecy
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Check only the validity of the pipeline string and exit.
+    synonyms:
+    - -c
+    - --check-pipeline
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Print a detailed description for all the currently available processes.
+    synonyms:
+    - -L
+    - --component-list
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Print a short list of the currently available processes.
+    synonyms:
+    - -l
+    - --component-list-short
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Print a short list of the currently available recipes.
+    synonyms:
+    - --recipe-list
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Print a condensed list of the currently available recipes
+    synonyms:
+    - --recipe-list-short
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Check tasks that the recipe contain and their flow. This option might
+      be useful if a user wants to change some components of a given recipe, by using
+      the -t option.
+    synonyms:
+    - -cr
+    - --check-recipe
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Only export the parameters for the provided components (via -t option)
+      in JSON format to stdout. No pipeline will be generated with this option.
+    synonyms:
+    - --export-params
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Only export the directives for the provided components (via -t option)
+      in JSON format to stdout. No pipeline will be generated with this option.
+    synonyms:
+    - --export-directives
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Allows to fetch all docker tags for the components listed with the
+      -t flag.
+    synonyms:
+    - -ft
+    - --fetch-tags
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - flowcraft
+  - build
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Specify the nextflow trace file.
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: TRACE_FILE
+    optional: true
+  - !Flag
+    description: Set the refresh frequency for the continuous inspect functions
+    synonyms:
+    - -r
+    args: !SimpleFlagArg
+      name: REFRESH_RATE
+    optional: true
+  - !Flag
+    description: Specify the inspection run mode.
+    synonyms:
+    - -m
+    - --mode
+    args: !ChoiceFlagArg
+      choices:
+      - overview
+      - broadcast
+    optional: true
+  - !Flag
+    description: Specify the URL to where the data should be broadcast
+    synonyms:
+    - -u
+    - --url
+    args: !SimpleFlagArg
+      name: URL
+    optional: true
+  - !Flag
+    description: Pretty inspection mode that removes usual reporting processes.
+    synonyms:
+    - --pretty
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - flowcraft
+  - inspect
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Specify the path to the pipeline report JSON file.
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: REPORT_FILE
+    optional: true
+  - !Flag
+    description: Specify the URL to where the data should be broadcast
+    synonyms:
+    - -u
+    - --url
+    args: !SimpleFlagArg
+      name: URL
+    optional: true
+  - !Flag
+    description: Specify the nextflow trace file. Only applicable in combination with
+      --watch option.
+    synonyms:
+    - --trace-file
+    args: !SimpleFlagArg
+      name: TRACE_FILE
+    optional: true
+  - !Flag
+    description: Specify the nextflow log file. Only applicable in combination with
+      --watch option.
+    synonyms:
+    - --log-file
+    args: !SimpleFlagArg
+      name: LOG_FILE
+    optional: true
+  - !Flag
+    description: Run the report in watch mode. This option will track the generation
+      of reports during the execution of the pipeline, allowing for the visualization
+      of the reports in real-time
+    synonyms:
+    - -w
+    - --watch
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - flowcraft
+  - report
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show version and exit.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

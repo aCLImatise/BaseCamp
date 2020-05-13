@@ -1,0 +1,222 @@
+!Command
+positional:
+- !Positional
+  description: VCF file to process.
+  position: 0
+  name: input
+  optional: false
+- !Positional
+  description: Output filename.
+  position: 1
+  name: output
+  optional: false
+named:
+- !Flag
+  description: Comma-separated list of locations [use naming after preprocessing],
+    when not specified will use whole VCF.
+  synonyms:
+  - --location
+  - -l
+  args: !SimpleFlagArg
+    name: LOCATIONS
+  optional: true
+- !Flag
+  description: Keep only PASS variants.
+  synonyms:
+  - --pass-only
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Specify a comma-separated list of filters to apply (by default all
+    filters are ignored / passed on.
+  synonyms:
+  - --filters-only
+  args: !SimpleFlagArg
+    name: FILTERS_ONLY
+  optional: true
+- !Flag
+  description: Restrict analysis to given (sparse) regions (using -R in bcftools).
+  synonyms:
+  - -R
+  - --restrict-regions
+  args: !SimpleFlagArg
+    name: REGIONS_BEDFILE
+  optional: true
+- !Flag
+  description: Restrict analysis to given (dense) regions (using -T in bcftools).
+  synonyms:
+  - -T
+  - --target-regions
+  args: !SimpleFlagArg
+    name: TARGETS_BEDFILE
+  optional: true
+- !Flag
+  description: Left-shift variants safely.
+  synonyms:
+  - -L
+  - --leftshift
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not left-shift variants safely.
+  synonyms:
+  - --no-leftshift
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Decompose variants into primitives. This results in more granular counts.
+  synonyms:
+  - --decompose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not decompose variants into primitives.
+  synonyms:
+  - -D
+  - --no-decompose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable preprocessing through bcftools norm -c x -D (requires external
+    preprocessing to be switched on).
+  synonyms:
+  - --bcftools-norm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Add chr prefix to VCF records where necessary (default: auto, attempt
+    to match reference).'
+  synonyms:
+  - --fixchr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Do not add chr prefix to VCF records (default: auto, attempt to match
+    reference).'
+  synonyms:
+  - --no-fixchr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use BCF internally. This is the default when the input file is in BCF
+    format already. Using BCF can speed up temp file access, but may fail for VCF
+    files that have broken headers or records that don't comply with the header.
+  synonyms:
+  - --bcf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assume the input file is a somatic call file and squash all columns
+    into one, putting all FORMATs into INFO + use half genotypes (see also --set-gt).
+    This will replace all sample columns and replace them with a single one.
+  synonyms:
+  - --somatic
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'This is used to treat Strelka somatic files Possible values for this
+    parameter: half / hemi / het / hom / half to assign one of the following genotypes
+    to the resulting sample: 1 | 0/1 | 1/1 | ./1. This will replace all sample columns
+    and replace them with a single one.'
+  synonyms:
+  - --set-gt
+  args: !ChoiceFlagArg
+    choices:
+    - half
+    - hemi
+    - het
+    - hom
+    - first
+  optional: true
+- !Flag
+  description: Remove any variants genotyped as <NON_REF>.
+  synonyms:
+  - --filter-nonref
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Convert the truth set from genome VCF format to a VCF before processing.
+  synonyms:
+  - --convert-gvcf-truth
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Convert the query set from genome VCF format to a VCF before processing.
+  synonyms:
+  - --convert-gvcf-query
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Specify sex. This determines how haploid calls on chrX get treated:
+    for male samples, all non-ref calls (in the truthset only when running through
+    hap.py) are given a 1/1 genotype.'
+  synonyms:
+  - --gender
+  args: !ChoiceFlagArg
+    choices:
+    - male
+    - female
+    - auto
+    - none
+  optional: true
+- !Flag
+  description: Specify a reference file.
+  synonyms:
+  - -r
+  - --reference
+  args: !SimpleFlagArg
+    name: REF
+  optional: true
+- !Flag
+  description: Preprocessing window size (variants further apart than that size are
+    not expected to interfere).
+  synonyms:
+  - -w
+  - --window-size
+  args: !SimpleFlagArg
+    name: WINDOW
+  optional: true
+- !Flag
+  description: Number of threads to use.
+  synonyms:
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: Write logging information into file rather than to stderr
+  synonyms:
+  - --logfile
+  args: !SimpleFlagArg
+    name: LOGFILE
+  optional: true
+- !Flag
+  description: Raise logging level from warning to info.
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set logging level to output errors only.
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- pre.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show version number and exit.
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

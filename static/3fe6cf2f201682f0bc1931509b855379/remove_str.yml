@@ -1,0 +1,113 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The input FASTQ file.
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT_FILENAME
+  optional: true
+- !Flag
+  description: The output FASTQ file.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME
+  optional: true
+- !Flag
+  description: The output FASTQ file containing the reads which are removed from the
+    input due to high content of short tandem repeats (STR).
+  synonyms:
+  - -s
+  - --str
+  args: !SimpleFlagArg
+    name: STR_FILENAME
+  optional: true
+- !Flag
+  description: It outputs a detailed log.
+  synonyms:
+  - -l
+  - --log
+  args: !SimpleFlagArg
+    name: LOG_FILENAME
+  optional: true
+- !Flag
+  description: The length of region where the two consecutive windows are overlapping.
+    Default is 12.
+  synonyms:
+  - -v
+  - --overlap
+  args: !SimpleFlagArg
+    name: WINDOW_OVERLAP
+  optional: true
+- !Flag
+  description: The length of the sliding window. Default is 24.
+  synonyms:
+  - -n
+  - --length
+  args: !SimpleFlagArg
+    name: WINDOW_LENGTH
+  optional: true
+- !Flag
+  description: The length of the kmer used in computing the codelength. Default is
+    2.
+  synonyms:
+  - -k
+  - --kmer
+  args: !SimpleFlagArg
+    name: KMER
+  optional: true
+- !Flag
+  description: Any window which compresses less this threshold is considered to contain
+    a short tandem repeat and the read will be filtered out. Default is 1.4.
+  synonyms:
+  - -t
+  - --threshold
+  args: !SimpleFlagArg
+    name: CODELENGTH_THRESHOLD
+  optional: true
+- !Flag
+  description: 'Daniel Nicorici, E-mail: Daniel.Nicorici@gmail.com'
+  synonyms:
+  - -a
+  - --author
+  args: !SimpleFlagArg
+    name: AUTHOR
+  optional: true
+- !Flag
+  description: Do not print status messages to console.
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of parallel processes/CPUs to be used for computations. In case
+    of value 0 then the program will use all the CPUs which are found. The default
+    value is 0.
+  synonyms:
+  - -p
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+command:
+- remove_str.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

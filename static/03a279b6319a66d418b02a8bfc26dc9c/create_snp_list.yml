@@ -1,0 +1,74 @@
+!Command
+positional:
+- !Positional
+  description: Relative or absolute path to file containing a list of directories
+    -- one per sample
+  position: 0
+  name: sampleDirsFile
+  optional: false
+- !Positional
+  description: Relative or absolute path to the output file that will be created containing
+    the filtered list of sample directories -- one per sample. The samples in this
+    file are those without an excessive number of snps. See the --maxsnps parameter.
+  position: 1
+  name: filteredSampleDirsFile
+  optional: false
+named:
+- !Flag
+  description: 'Force processing even when result file already exists and is newer
+    than inputs (default: False)'
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'File name of the VCF files which must exist in each of the sample
+    directories (default: var.flt.vcf)'
+  synonyms:
+  - -n
+  - --vcfname
+  args: !SimpleFlagArg
+    name: NAME
+  optional: true
+- !Flag
+  description: 'Exclude samples having more than this maximum allowed number of SNPs.
+    Set to -1 to disable this function. (default: -1)'
+  synonyms:
+  - --maxsnps
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'Output file. Relative or absolute path to the SNP list file (default:
+    snplist.txt)'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: '0..5, --verbose 0..5 Verbose message level (0=no info, 5=lots) (default:
+    1)'
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- create_snp_list.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

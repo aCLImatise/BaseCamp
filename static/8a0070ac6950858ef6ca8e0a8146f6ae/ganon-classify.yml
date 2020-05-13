@@ -1,0 +1,188 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: File[s] with single-end reads .fq .fastq .fasta .fa (e.g. file1.fq[.gz],[file2.fq[.gz]
+    ... fileN.fq[.gz]])
+  synonyms:
+  - -r
+  - --single-reads
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Pairs of files with paired-end reads .fq .fastq .fasta .fa (e.g. file1.1.fq[.gz],file1.2.fq[.gz],[file2.1.fq[.gz],file2.2.fq[.gz]
+    ... fileN.1.fq[.gz],fileN.2.fq[.gz]])
+  synonyms:
+  - -p
+  - --paired-reads
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: ibf (Interleaved Bloom Filter) file[s] (e.g. -b a.ibf,b.ibf OR -b a.ibf
+    -b b.ibf )
+  synonyms:
+  - -i
+  - --ibf
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'map files[s]. Tab-separated file mapping target groups (taxids, assemblies)
+    and bin identifiers with the following fields: target <tab> bin id (e.g. -g a.map,b.map
+    OR -g a.map -g b.map)'
+  synonyms:
+  - -m
+  - --map
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'tax (taxonomy) files[s]. Tab-separated file with a complete tree with
+    the following fields: node <tab> parent node <tab> rank <tab> name (e.g. -g a.tax,b.tax
+    OR -g a.tax -g b.tax)'
+  synonyms:
+  - -x
+  - --tax
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Hierarchy labels for the database files (hierarchy follows the order\
+    \ of the sorted labels) (e.g. 1_host,2_target,1_host,3). Default: '1_default'"
+  synonyms:
+  - -c
+  - --hierarchy-labels
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Minimum percentage of k-mers matching for a read to to be assigned
+    [muttualy exclusive --max-error]. One per filter. Default: 0.25'
+  synonyms:
+  - -k
+  - --min-kmers
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Maximum number of errors/mismatches allowed [muttualy exclusive --min-kmers].
+    One per filter.
+  synonyms:
+  - -e
+  - --max-error
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Maximum number of errors/mismatches allowed for unique matches after
+    filtering. One per hiearchy label.
+  synonyms:
+  - -u
+  - --max-error-unique
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Additional errors allowed (relative to the best match) to filter and
+    select matches. -1 for no filtering. One per hiearchy label. Default: 0'
+  synonyms:
+  - -l
+  - --strata-filter
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Offset for skipping k-mers while counting. Function must be enabled
+    on compilation time with -DGANON_OFFSET=ON. Default: 1 = no offset'
+  synonyms:
+  - -f
+  - --offset
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Output prefix for output files (prefix.lca, prefix.rep, prefix.all,
+    prefix.unc). If multi-level hiearchy is provded, files are generated accordingly
+    (prefix.hiearchy.lca, ...). Omit for output to STDOUT (only .lca will be printed)
+  synonyms:
+  - -o
+  - --output-prefix
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Output file with all matches (prefix.all) [it can be very big]
+  synonyms:
+  - -a
+  - --output-all
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output unclassified read ids (prefix.unc)
+  synonyms:
+  - -n
+  - --output-unclassified
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Generate only one output (prefix.lca and prefix.rep) even with multiple
+    hierarchy levels
+  synonyms:
+  - -s
+  - --output-single
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of threads
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Number of reads for each batch. Default: 400'
+  synonyms:
+  - --n-reads
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Number of batches of n-reads to hold in memory. Default: 1000'
+  synonyms:
+  - --n-batches
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Verbose output mode
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Quiet output mode (only outputs errors and warnings to the STDERR)
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- ganon-classify
+subcommands: []
+help_flag: !Flag
+  description: Print help
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show version
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

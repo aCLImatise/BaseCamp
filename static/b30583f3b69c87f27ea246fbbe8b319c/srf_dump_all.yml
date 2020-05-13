@@ -1,0 +1,72 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: archive_name
+  optional: false
+named:
+- !Flag
+  description: 'Chunk types to output given as a comma delimited list of types. The
+    following types are allowed: "all", "seq", "prb", "int", "nse", "sig2". The default
+    is "all".'
+  synonyms:
+  - -c
+  args: !SimpleFlagArg
+    name: chunk_types
+  optional: true
+- !Flag
+  description: 'Distinations to output to. The following types are allowed: "console",
+    "file", "none". The default is "console".  Console and file can be together,  but
+    none is exclusive.'
+  synonyms:
+  - -d
+  args: !SimpleFlagArg
+    name: destination_types
+  optional: true
+- !Flag
+  description: The filter to apply to reads in the archive.  If reads match the filter
+    they are dumped. The filter takes the form of <name>=<value>, where <name> can
+    be "read", "prefix", "file". If the <name> is "read" the value is represents the
+    name of a read to dump.  Only the matching read will be dumped. If the <name>
+    is "prefix" the value is represents the prefix of the name of the reads to dump.  Only
+    the matching reads will be dumped. If the <name> is "file" the value is a file
+    name where any number of "read" and "prefix" name value pairs can be included,
+    one per line. The default is no filter, which means all reads are dumped.
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: read_filter
+  optional: true
+- !Flag
+  description: Output the total number of reads at the bottom.
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Output the total number of reads only.  Nothing else is output.
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Type of output.  Only one value allowed. Currently "text" and "solexa"
+    is supported. The default is "text".
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: type_of_output
+  optional: true
+- !Flag
+  description: Print verbose messages.
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- srf_dump_all
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

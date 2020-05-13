@@ -1,0 +1,433 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: gat-run
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: genomic
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: annotation
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: tool
+  optional: false
+named:
+- !Flag
+  description: filename with annotations [default=[]].
+  synonyms:
+  - -a
+  - --annotation-bed-file
+  - --annotations
+  - --annotation-file
+  args: !SimpleFlagArg
+    name: ANNOTATION_FILES
+  optional: true
+- !Flag
+  description: filename with segments. Also accepts a glob in parentheses [default=[]].
+  synonyms:
+  - -s
+  - --segment-bed-file
+  - --segments
+  - --segment-file
+  args: !SimpleFlagArg
+    name: SEGMENT_FILES
+  optional: true
+- !Flag
+  description: filename with workspace segments. Also accepts a glob in parentheses
+    [default=[]].
+  synonyms:
+  - -w
+  - --workspace-bed-file
+  - --workspace
+  - --workspace-file
+  args: !SimpleFlagArg
+    name: WORKSPACE_FILES
+  optional: true
+- !Flag
+  description: filename with isochore segments. Also accepts a glob in parentheses
+    [default=none].
+  synonyms:
+  - -i
+  - --isochore-bed-file
+  - --isochores
+  - --isochore-file
+  args: !SimpleFlagArg
+    name: ISOCHORE_FILES
+  optional: true
+- !Flag
+  description: filename with sample files. Start processing from samples [default=[]].
+  synonyms:
+  - -l
+  - --sample-file
+  args: !SimpleFlagArg
+    name: SAMPLE_FILES
+  optional: true
+- !Flag
+  description: start processing from counts - no segments required [default=none].
+  synonyms:
+  - --input-counts-file
+  args: !SimpleFlagArg
+    name: INPUT_FILENAME_COUNTS
+  optional: true
+- !Flag
+  description: start processing from results - no segments required [default=none].
+  synonyms:
+  - --input-results-file
+  args: !SimpleFlagArg
+    name: INPUT_FILENAME_RESULTS
+  optional: true
+- !Flag
+  description: ignore segment tracks - all segments belong to one track and called
+    'merged' [default=True]
+  synonyms:
+  - --ignore-segment-tracks
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the segments data file is arranged in tracks. [default=True]
+  synonyms:
+  - --with-segment-tracks
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: permit the same track to be in multiple files [default=False]
+  synonyms:
+  - --enable-split-tracks
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the annotations within a track are overlapping and should not be merged.
+    This is useful for working with short-read data. [default=default]
+  synonyms:
+  - --overlapping-annotations
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ignore tracks in annotations and instead set them to label [default=default]
+  synonyms:
+  - --annotations-label
+  args: !SimpleFlagArg
+    name: ANNOTATIONS_LABEL
+  optional: true
+- !Flag
+  description: convert annotations from segments to positions. Available methods are
+    'midpoint', 'start' or 'end'. [default=default]
+  synonyms:
+  - --annotations-to-points
+  args: !SimpleFlagArg
+    name: ANNOTATIONS_TO_POINTS
+  optional: true
+- !Flag
+  description: order results in output by fold, track, etc. [default=fold].
+  synonyms:
+  - -o
+  - --order
+  args: !SimpleFlagArg
+    name: OUTPUT_ORDER
+  optional: true
+- !Flag
+  description: output pattern for result tables. Used if there are multiple counters
+    used [default=%s.tsv.gz].
+  synonyms:
+  - --output-tables-pattern
+  args: !SimpleFlagArg
+    name: OUTPUT_TABLES_PATTERN
+  optional: true
+- !Flag
+  description: output pattern for counts [default=none].
+  synonyms:
+  - --output-counts-pattern
+  args: !SimpleFlagArg
+    name: OUTPUT_COUNTS_PATTERN
+  optional: true
+- !Flag
+  description: output pattern for plots [default=none]
+  synonyms:
+  - --output-plots-pattern
+  args: !SimpleFlagArg
+    name: OUTPUT_PLOTS_PATTERN
+  optional: true
+- !Flag
+  description: output pattern for samples. Samples are stored in bed format, one for  each
+    segment [default=none]
+  synonyms:
+  - --output-samples-pattern
+  args: !SimpleFlagArg
+    name: OUTPUT_SAMPLES_PATTERN
+  optional: true
+- !Flag
+  description: output overlap summary stats [default=[]].
+  synonyms:
+  - --output-stats
+  args: !SimpleFlagArg
+    name: OUTPUT_STATS
+  optional: true
+- !Flag
+  description: output bed files [default=[]].
+  synonyms:
+  - --output-bed
+  args: !SimpleFlagArg
+    name: OUTPUT_BED
+  optional: true
+- !Flag
+  description: filename mapping annotation terms to descriptions. if given, the output
+    table will contain additional columns [default=none]
+  synonyms:
+  - --descriptions
+  args: !SimpleFlagArg
+    name: INPUT_FILENAME_DESCRIPTIONS
+  optional: true
+- !Flag
+  description: quantity to use for estimating enrichment [default=[]].
+  synonyms:
+  - -c
+  - --counter
+  args: !SimpleFlagArg
+    name: COUNTERS
+  optional: true
+- !Flag
+  description: quantity to test [default=annotator].
+  synonyms:
+  - -m
+  - --sampler
+  args: !SimpleFlagArg
+    name: SAMPLER
+  optional: true
+- !Flag
+  description: number of samples to compute [default=1000].
+  synonyms:
+  - -n
+  - --num-samples
+  args: !SimpleFlagArg
+    name: NUM_SAMPLES
+  optional: true
+- !Flag
+  description: "if the sampling method is 'shift', create a segment of size # anound\
+    \ the segment to determine the size of the region for shifthing [default=0]."
+  synonyms:
+  - --shift-extension
+  args: !SimpleFlagArg
+    name: SHIFT_EXTENSION
+  optional: true
+- !Flag
+  description: "if the sampling method is 'shift', multiply each segment by # to determine\
+    \ the size of the region for shifthing [default=2.0]."
+  synonyms:
+  - --shift-expansion
+  args: !SimpleFlagArg
+    name: SHIFT_EXPANSION
+  optional: true
+- !Flag
+  description: size of a bin for histogram of segment lengths. If 0, it will be automatically
+    scaled to fit nbuckets [default=0]
+  synonyms:
+  - --bucket-size
+  args: !SimpleFlagArg
+    name: BUCKET_SIZE
+  optional: true
+- !Flag
+  description: number of bins for histogram of segment lengths [default=100000]
+  synonyms:
+  - --nbuckets
+  args: !SimpleFlagArg
+    name: NBUCKETS
+  optional: true
+- !Flag
+  description: type of pvalue reported [default=empirical].
+  synonyms:
+  - -p
+  - --pvalue-method
+  args: !SimpleFlagArg
+    name: PVALUE_METHOD
+  optional: true
+- !Flag
+  description: method to perform multiple testing correction by controlling the fdr
+    [default=BH].
+  synonyms:
+  - -q
+  - --qvalue-method
+  args: !SimpleFlagArg
+    name: QVALUE_METHOD
+  optional: true
+- !Flag
+  description: 'fdr computation: lambda [default=none].'
+  synonyms:
+  - --qvalue-lambda
+  args: !SimpleFlagArg
+    name: QVALUE_LAMBDA
+  optional: true
+- !Flag
+  description: 'fdr computation: method for estimating pi0 [default=smoother].'
+  synonyms:
+  - --qvalue-pi0-method
+  args: !SimpleFlagArg
+    name: QVALUE_PI0_METHOD
+  optional: true
+- !Flag
+  description: pseudo count. The pseudo count is added to both the observed and expected
+    overlap. Using a pseudo-count avoids gat reporting fold changes of 0 [default=1.0].
+  synonyms:
+  - --pseudo-count
+  args: !SimpleFlagArg
+    name: PSEUDO_COUNT
+  optional: true
+- !Flag
+  description: null hypothesis. The default is to test categories for enrichment/depletion.
+    If a filename with gat output is given, gat will test for the difference in fold
+    change between the segments supplied and in the other file [default=default].
+  synonyms:
+  - --null
+  args: !SimpleFlagArg
+    name: 'NULL'
+  optional: true
+- !Flag
+  description: filename for caching samples [default=none].
+  synonyms:
+  - -e
+  - --cache
+  args: !SimpleFlagArg
+    name: CACHE
+  optional: true
+- !Flag
+  description: number of threads to use for sampling [default=0]
+  synonyms:
+  - -t
+  - --num-threads
+  args: !SimpleFlagArg
+    name: NUM_THREADS
+  optional: true
+- !Flag
+  description: random seed to initialize number generator with [none].
+  synonyms:
+  - --random-seed
+  args: !SimpleFlagArg
+    name: RANDOM_SEED
+  optional: true
+- !Flag
+  description: conditional workspace creation [default=unconditional]*cooccurance*
+    - compute enrichment only within workspace segments that contain both segments
+    and annotations, *annotation-centered* - workspace centered around annotations.
+    See --conditional-extension,segment-centered - workspace centered around segments.
+    See --conditional-extension
+  synonyms:
+  - --conditional
+  args: !SimpleFlagArg
+    name: CONDITIONAL
+  optional: true
+- !Flag
+  description: if workspace is created conditional, extend by this amount (in bp)
+    [default=none].
+  synonyms:
+  - --conditional-extension
+  args: !SimpleFlagArg
+    name: CONDITIONAL_EXTENSION
+  optional: true
+- !Flag
+  description: if workspace is created conditional, expand by this amount (ratio)
+    [default=none].
+  synonyms:
+  - --conditional-expansion
+  args: !SimpleFlagArg
+    name: CONDITIONAL_EXPANSION
+  optional: true
+- !Flag
+  description: restrict workspace to those segments that contain both track and annotations
+    [default=False]
+  synonyms:
+  - --restrict-workspace
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: truncate workspace with annotations [default=False]
+  synonyms:
+  - --truncate-workspace-to-annotations
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: truncate segments to workspace before sampling [default=False]
+  synonyms:
+  - --truncate-segments-to-workspace
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: store timeing information in file [none].
+  synonyms:
+  - --timeit
+  args: !SimpleFlagArg
+    name: TIMEIT_FILE
+  optional: true
+- !Flag
+  description: name in timing file for this class of jobs [all].
+  synonyms:
+  - --timeit-name
+  args: !SimpleFlagArg
+    name: TIMEIT_NAME
+  optional: true
+- !Flag
+  description: add header for timing information [none].
+  synonyms:
+  - --timeit-header
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: OUTPUT filename pattern for various methods [%s].
+  synonyms:
+  - -P
+  - --output-filename-pattern
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME_PATTERN
+  optional: true
+- !Flag
+  description: force over-writing of existing files.
+  synonyms:
+  - -F
+  - --force-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: file to read stdin from [default = stdin].
+  synonyms:
+  - -I
+  - --stdin
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: file with logging information [default = stdout].
+  synonyms:
+  - -L
+  - --log
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: file with error information [default = stderr].
+  synonyms:
+  - -E
+  - --error
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: file where output is to go [default = stdout].
+  synonyms:
+  - -S
+  - --stdout
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+command:
+- gat-run.py
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

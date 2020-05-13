@@ -1,0 +1,301 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Genomic FASTA file
+  synonyms:
+  - -g
+  - --genome
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Output directory (default:OUT)
+  synonyms:
+  - -o
+  - --out
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Configuration file (default config will be used if not specified)
+  synonyms:
+  - -c
+  - --config
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Organism name
+  synonyms:
+  - --organism
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: Strain name
+  synonyms:
+  - --strain
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: Treat the query as a complete genome. Not required unless you need
+    INSDC submission files. [t|f(=default)]
+  synonyms:
+  - --complete
+  args: !SimpleFlagArg
+    name: BOOL
+  optional: true
+- !Flag
+  description: Use original sequence names in a query FASTA file [t|f(=default)]
+  synonyms:
+  - --use_original_name
+  args: !SimpleFlagArg
+    name: BOOL
+  optional: true
+- !Flag
+  description: Sort sequences by length [t(=default)|f]
+  synonyms:
+  - --sort_sequence
+  args: !SimpleFlagArg
+    name: BOOL
+  optional: true
+- !Flag
+  description: Minimum sequence length (default:200)
+  synonyms:
+  - --minimum_length
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Rotate/flip the chromosome so that the dnaA gene comes first. (ONLY
+    FOR A FINISHED GENOME)
+  synonyms:
+  - --fix_origin
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Offset from the start codon of the dnaA gene. (for --fix_origin option,
+    default=0)
+  synonyms:
+  - --offset
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Locus tag prefix (defaut:LOCUS)
+  synonyms:
+  - --locus_tag_prefix
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: Increment step of locus tag (default:10)
+  synonyms:
+  - --step
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Use separate tags according to feature types [t(=default)|f]
+  synonyms:
+  - --use_separate_tags
+  args: !SimpleFlagArg
+    name: BOOL
+  optional: true
+- !Flag
+  description: 'Thresholds for default database search (format: "pident,q_cov,s_cov,e_value",
+    default: "0,75,75,1e-6")'
+  synonyms:
+  - --threshold
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: 'Additional reference database to be searched against prior to the
+    default database. (format: db_path[,db_name[,pident,q_cov,s_cov,e_value]])'
+  synonyms:
+  - --database
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Reference file(s) for OrthoSearch. Use semicolons for multiple files,
+    e.g. 'genome1.faa;genome2.gbk'
+  synonyms:
+  - --references
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Aligner to use [ghostx(=default)|blastp|diamond]
+  synonyms:
+  - --aligner
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: Use Prodigal to predict CDS instead of MGA
+  synonyms:
+  - --use_prodigal
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use GeneMarkS2 to predict CDS instead of MGA. [auto|bact|arch]
+  synonyms:
+  - --use_genemarks2
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: Use tRNAscan-SE to predict tRNA instead of Aragorn. [bact|arch]
+  synonyms:
+  - --use_trnascan
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: Use RNAmmer to predict rRNA instead of Barrnap. [bact|arch]
+  synonyms:
+  - --use_rnammer
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: Genetic code [11(=default),4(=Mycoplasma)]
+  synonyms:
+  - --gcode
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Disable HMMscan
+  synonyms:
+  - --no_hmm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable CDDsearch
+  synonyms:
+  - --no_cdd
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable CDS prediction
+  synonyms:
+  - --no_cds
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable rRNA prediction
+  synonyms:
+  - --no_rrna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable tRNA prediction
+  synonyms:
+  - --no_trna
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable CRISPR prediction
+  synonyms:
+  - --no_crispr
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[Preliminary implementation] Read GFF to import structural annotation.
+    Ignores --use_original_name, --sort_sequence, --fix_origin.'
+  synonyms:
+  - --gff
+  args: !SimpleFlagArg
+    name: GFF
+  optional: true
+- !Flag
+  description: Sequence names for each sequence (for complete genome)
+  synonyms:
+  - --seq_names
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: Sequence types for each sequence (chromosome/plasmid, for complete
+    genome)
+  synonyms:
+  - --seq_types
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: Sequence topologies for each sequence (linear/circular, for complete
+    genome)
+  synonyms:
+  - --seq_topologies
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: Additional modifiers for source features
+  synonyms:
+  - --additional_modifiers
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: Path to a metadata file (optional for DDBJ submission file)
+  synonyms:
+  - --metadata_file
+  args: !SimpleFlagArg
+    name: PATH
+  optional: true
+- !Flag
+  description: Genome center name (optional for GenBank submission file)
+  synonyms:
+  - --center_name
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: Number of CPUs to use
+  synonyms:
+  - --cpu
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Force overwriting output
+  synonyms:
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Run in debug mode (Extra logging and retaining temporary files)
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show pipeline configuration and exit
+  synonyms:
+  - --show_config
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- dfast
+subcommands: []
+help_flag: !Flag
+  description: Show this help message
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show program version
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

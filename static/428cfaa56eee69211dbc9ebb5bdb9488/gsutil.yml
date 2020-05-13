@@ -1,0 +1,2300 @@
+!Command
+positional: []
+named: []
+command:
+- gsutil
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Includes non-current object versions / generations in the listing
+      (only useful with a versioning-enabled bucket). Also prints generation and metageneration
+      for each listed object.
+    synonyms:
+    - -a
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Includes a grand total at the end of the output.
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'A pattern to exclude from reporting. Example: -e "*.o" would exclude
+      any object that ends in ".o". Can be specified multiple times.'
+    synonyms:
+    - -e
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Displays only the grand total for each argument.
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Similar to -e, but excludes patterns from the given file. The patterns
+      to exclude should be one per line.
+    synonyms:
+    - -X
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gsutil
+  - du
+  subcommands: []
+  help_flag: !Flag
+    description: Prints object sizes in human-readable format (e.g., 1 KiB, 234 MiB,
+      2GiB, etc.)
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -m
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gsutil
+  - hash
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Calculate a CRC32c hash for the file.
+      synonyms:
+      - -c
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Calculate a MD5 hash for the file.
+      synonyms:
+      - -m
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gsutil
+    - hash
+    - filename...
+    subcommands: []
+    help_flag: !Flag
+      description: Output hashes in hex format. By default, gsutil uses base64.
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - gsutil
+  - help
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Includes non-current object versions / generations in the listing
+        (only useful with a versioning-enabled bucket). Also prints generation and
+        metageneration for each listed object.
+      synonyms:
+      - -a
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Includes a grand total at the end of the output.
+      synonyms:
+      - -c
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'A pattern to exclude from reporting. Example: -e "*.o" would exclude
+        any object that ends in ".o". Can be specified multiple times.'
+      synonyms:
+      - -e
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Displays only the grand total for each argument.
+      synonyms:
+      - -s
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Similar to -e, but excludes patterns from the given file. The patterns
+        to exclude should be one per line.
+      synonyms:
+      - -X
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gsutil
+    - help
+    - du
+    subcommands: []
+    help_flag: !Flag
+      description: Prints object sizes in human-readable format (e.g., 1 KiB, 234
+        MiB, 2GiB, etc.)
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Calculate a CRC32c hash for the file.
+      synonyms:
+      - -c
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Calculate a MD5 hash for the file.
+      synonyms:
+      - -m
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gsutil
+    - help
+    - hash
+    subcommands: []
+    help_flag: !Flag
+      description: Output hashes in hex format. By default, gsutil uses base64.
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: ("user"|"serviceAccount"|"domain"|"group"):id
+      synonyms:
+      - -d
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: ("allUsers"|"allAuthenticatedUsers")
+      synonyms:
+      - -d
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Performs "iam set" recursively to all objects under the specified
+        bucket.
+      synonyms:
+      - -R
+      - -r
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Performs "iam set" request on all object versions.
+      synonyms:
+      - -a
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Performs the precondition check on each object with the specified
+        etag before setting the policy.
+      synonyms:
+      - -e
+      args: !SimpleFlagArg
+        name: etag
+      optional: true
+    - !Flag
+      description: Default gsutil error handling is fail-fast. This flag changes the
+        request to fail-silent mode. This is implicitly set when invoking the gsutil
+        -m option.
+      synonyms:
+      - -f
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Performs "iam ch" recursively to all objects under the specified
+        bucket.
+      synonyms:
+      - -R
+      - -r
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Default gsutil error handling is fail-fast. This flag changes the
+        request to fail-silent mode. This is implicitly set when invoking the gsutil
+        -m option.
+      synonyms:
+      - -f
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gsutil
+    - help
+    - iam
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Add or update a label with the specified key and value.
+      synonyms:
+      - -l
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Remove the label with the specified key.
+      synonyms:
+      - -d
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gsutil
+    - help
+    - label
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Prints long listing (owner, length).
+      synonyms:
+      - -l
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Prints even more detail than -l.  Note: If you use this option
+        with the (non-default) XML API it will generate an additional request per
+        object being listed, which makes the -L option run much more slowly (and cost
+        more) using the XML API than the default JSON API.'
+      synonyms:
+      - -L
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: List matching subdirectory names instead of contents, and do not
+        recurse into matching subdirectories even if the -R option is specified.
+      synonyms:
+      - -d
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Prints info about the bucket when used with a bucket URL.
+      synonyms:
+      - -b
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Specifies the project ID to use for listing buckets.
+      synonyms:
+      - -p
+      args: !SimpleFlagArg
+        name: proj_id
+      optional: true
+    - !Flag
+      description: Requests a recursive listing, performing at least one listing operation
+        per subdirectory. If you have a large number of subdirectories and do not
+        require recursive-style output ordering, you may be able to instead use wildcards
+        to perform a flat listing, e.g.  `gsutil ls gs://mybucket/**`, which will
+        generally perform fewer listing operations.
+      synonyms:
+      - -R
+      - -r
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Includes non-current object versions / generations in the listing
+        (only useful with a versioning-enabled bucket). If combined with -l option
+        also prints metageneration for each listed object.
+      synonyms:
+      - -a
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Include ETag in long listing (-l) output.
+      synonyms:
+      - -e
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gsutil
+    - help
+    - ls
+    subcommands: []
+    help_flag: !Flag
+      description: When used with -l, prints object sizes in human readable format
+        (e.g., 1 KiB, 234 MiB, 2 GiB, etc.)
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Specifies the default storage class. Default is "Standard".
+      synonyms:
+      - -c
+      args: !SimpleFlagArg
+        name: class
+      optional: true
+    - !Flag
+      description: Can be any multi-regional or regional location. See https://cloud.google.com/storage/docs/storage-classes
+        for a discussion of this distinction. Default is US. Locations are case insensitive.
+      synonyms:
+      - -l
+      args: !SimpleFlagArg
+        name: location
+      optional: true
+    - !Flag
+      description: Specifies the project ID under which to create the bucket.
+      synonyms:
+      - -p
+      args: !SimpleFlagArg
+        name: proj_id
+      optional: true
+    - !Flag
+      description: Same as -c.
+      synonyms:
+      - -s
+      args: !SimpleFlagArg
+        name: class
+      optional: true
+    command:
+    - gsutil
+    - help
+    - mb
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: gs://example-bucket
+      synonyms:
+      - -t
+      args: !SimpleFlagArg
+        name: files-to-process
+      optional: true
+    - !Flag
+      description: /example-project/topics/files-to-process gs://example-bucket
+      synonyms:
+      - -t
+      args: !SimpleFlagArg
+        name: projects
+      optional: true
+    - !Flag
+      description: 'Specify an event type filter for this notification config. Cloud
+        Storage will only send notifications of this type. You may specify this parameter
+        multiple times to allow multiple event types. If not specified, Cloud Storage
+        will send notifications for all event types. The valid types are: OBJECT_FINALIZE
+        - An object has been created. OBJECT_METADATA_UPDATE - The metadata of an
+        object has changed. OBJECT_DELETE - An object has been permanently deleted.
+        OBJECT_ARCHIVE - A live Cloud Storage object has been archived.'
+      synonyms:
+      - -e
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Specifies the payload format of notification messages. Must be
+        either "json" for a payload matches the object metadata for the JSON API,
+        or "none" to specify no payload at all. In either case, notification details
+        are available in the message attributes.
+      synonyms:
+      - -f
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Specifies a key:value attribute that will be appended to the set
+        of attributes sent to Cloud Pub/Sub for all events associated with this notification
+        config. You may specify this parameter multiple times to set multiple attributes.
+      synonyms:
+      - -m
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Specifies a prefix path filter for this notification config. Cloud
+        Storage will only send notifications for objects in this bucket whose names
+        begin with the specified prefix.
+      synonyms:
+      - -p
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Skips creation and permission assignment of the Cloud Pub/Sub topic.
+        This is useful if the caller does not have permission to access the topic
+        in question, or if the topic already exists and has the appropriate publish
+        permission assigned.
+      synonyms:
+      - -s
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: The Cloud Pub/Sub topic to which notifications should be sent.
+        If not specified, this command will choose a topic whose project is your default
+        project and whose ID is the same as the Cloud Storage bucket name.
+      synonyms:
+      - -t
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gsutil
+    - help
+    - notification
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Sets the number of objects to use when downloading and uploading
+        files during tests. Defaults to 5.
+      synonyms:
+      - -n
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Sets the number of processes to use while running throughput experiments.
+        The default value is 1.
+      synonyms:
+      - -c
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Sets the number of threads per process to use while running throughput
+        experiments. Each process will receive an equal number of threads. The default
+        value is 1. Note: All specified threads and processes will be created, but
+        may not by saturated with work if too few objects (specified with -n) and
+        too few components (specified with -y) are specified.'
+      synonyms:
+      - -k
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Sets the type of parallelism to be used (only applicable when
+        threads or processes are specified and threads * processes > 1). The default
+        is to use fan. Must be one of the following: fan Use one thread per object.
+        This is akin to using gsutil -m cp, with sliced object download / parallel
+        composite upload disabled. slice Use Y (specified with -y) threads for each
+        object, transferring one object at a time. This is akin to using parallel
+        object download / parallel composite upload, without -m. Sliced uploads not
+        supported for s3. both Use Y (specified with -y) threads for each object,
+        transferring multiple objects at a time. This is akin to simultaneously using
+        sliced object download / parallel composite upload and gsutil -m cp. Sliced
+        uploads not supported for s3.'
+      synonyms:
+      - -p
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Sets the number of slices to divide each file/object into while
+        transferring data. Only applicable with the slice (or both) parallelism type.
+        The default is 4 slices.
+      synonyms:
+      - -y
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Sets the size (in bytes) for each of the N (set with -n) objects
+        used in the read and write throughput tests. The default is 1 MiB. This can
+        also be specified using byte suffixes such as 500K or 1M. Note: these values
+        are interpreted as multiples of 1024 (K=1024, M=1024*1024, etc.) Note: If
+        rthru_file or wthru_file are performed, N (set with -n) times as much disk
+        space as specified will be required for the operation.'
+      synonyms:
+      - -s
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Sets the directory to store temporary local files in. If not specified,
+        a default temporary directory will be used.
+      synonyms:
+      - -d
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Sets the list of diagnostic tests to perform. The default is to
+        run the lat, rthru, and wthru diagnostic tests. Must be a comma-separated
+        list containing one or more of the following: lat For N (set with -n) objects,
+        write the object, retrieve its metadata, read the object, and finally delete
+        the object. Record the latency of each operation. list Write N (set with -n)
+        objects to the bucket, record how long it takes for the eventually consistent
+        listing call to return the N objects in its result, delete the N objects,
+        then record how long it takes listing to stop returning the N objects. rthru
+        Runs N (set with -n) read operations, with at most C (set with -c) reads outstanding
+        at any given time. rthru_file The same as rthru, but simultaneously writes
+        data to the disk, to gauge the performance impact of the local disk on downloads.
+        wthru Runs N (set with -n) write operations, with at most C (set with -c)
+        writes outstanding at any given time. wthru_file The same as wthru, but simultaneously
+        reads data from the disk, to gauge the performance impact of the local disk
+        on uploads.'
+      synonyms:
+      - -t
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Adds metadata to the result JSON file. Multiple -m values can
+        be specified. Example: gsutil perfdiag -m "key1:val1" -m "key2:val2" gs://bucketname
+        Each metadata key will be added to the top-level "metadata" dictionary in
+        the output JSON file.'
+      synonyms:
+      - -m
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Writes the results of the diagnostic to an output file. The output
+        is a JSON file containing system information and performance diagnostic results.
+        The file can be read and reported later using the -i option.
+      synonyms:
+      - -o
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Reads the JSON output file created using the -o command and prints
+        a formatted description of the results.
+      synonyms:
+      - -i
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gsutil
+    - help
+    - perfdiag
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Continues silently (without printing error messages) despite errors
+        when removing buckets. If some buckets couldn't be removed, gsutil's exit
+        status will be non-zero even if this flag is set.
+      synonyms:
+      - -f
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gsutil
+    - help
+    - rb
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Continues silently (without printing error messages) despite errors
+        when rewriting multiple objects. If some of the objects could not be rewritten,
+        gsutil's exit status will be non-zero even if this flag is set. This option
+        is implicitly set when running "gsutil -m rewrite ...".
+      synonyms:
+      - -f
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Causes gsutil to read the list of objects to rewrite from stdin.
+        This allows you to run a program that generates the list of objects to rewrite.
+      synonyms:
+      - -I
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Rewrite the objects to the current encryption key specific in your
+        boto configuration file. If encryption_key is specified, encrypt all objects
+        with this key. If encryption_key is unspecified, decrypt all objects. See
+        `gsutil help encryption` for details on encryption configuration.
+      synonyms:
+      - -k
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Rewrite objects with the bucket's default object ACL instead of
+        the existing object ACL. This is needed if you do not have OWNER permission
+        on the object.
+      synonyms:
+      - -O
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: The -R and -r options are synonymous. Causes bucket or bucket subdirectory
+        contents to be rewritten recursively.
+      synonyms:
+      - -R
+      - -r
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Rewrite objects using the specified storage class.
+      synonyms:
+      - -s
+      args: !SimpleFlagArg
+        name: class
+      optional: true
+    command:
+    - gsutil
+    - help
+    - rewrite
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Continues silently (without printing error messages) despite errors
+        when removing multiple objects. If some of the objects could not be removed,
+        gsutil's exit status will be non-zero even if this flag is set. Execution
+        will still halt if an inaccessible bucket is encountered. This option is implicitly
+        set when running "gsutil -m rm ...".
+      synonyms:
+      - -f
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Causes gsutil to read the list of objects to remove from stdin.
+        This allows you to run a program that generates the list of objects to remove.
+      synonyms:
+      - -I
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: The -R and -r options are synonymous. Causes bucket or bucket subdirectory
+        contents (all objects and subdirectories that it contains) to be removed recursively.
+        If used with a bucket-only URL (like gs://bucket), after deleting objects
+        and subdirectories gsutil will delete the bucket. This option implies the
+        -a option and will delete all object versions.
+      synonyms:
+      - -R
+      - -r
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Delete all versions of an object.
+      synonyms:
+      - -a
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gsutil
+    - help
+    - rm
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Sets named canned_acl when uploaded objects created. See "gsutil
+        help acls" for further details. Note that rsync will decide whether or not
+        to perform a copy based only on object size and modification time, not current
+        ACL state. Also see the -p option below.
+      synonyms:
+      - -a
+      args: !SimpleFlagArg
+        name: canned_acl
+      optional: true
+    - !Flag
+      description: Causes the rsync command to compute and compare checksums (instead
+        of comparing mtime) for files if the size of source and destination as well
+        as mtime (if available) match. This option increases local disk I/O and run
+        time if either src_url or dst_url are on the local file system.
+      synonyms:
+      - -c
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: "If an error occurs, continue to attempt to copy the remaining\
+        \ files. If errors occurred, gsutil's exit status will be non-zero even if\
+        \ this flag is set. This option is implicitly set when running \"gsutil -m\
+        \ rsync...\".  Note: -C only applies to the actual copying operation. If an\
+        \ error occurs while iterating over the files in the local directory (e.g.,\
+        \ invalid Unicode file name) gsutil will print an error message and abort."
+      synonyms:
+      - -C
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Delete extra files under dst_url not found under src_url. By default
+        extra files are not deleted. Note: this option can delete data quickly if
+        you specify the wrong source/destination combination. See the help section
+        above, "BE CAREFUL WHEN USING -d OPTION!".'
+      synonyms:
+      - -d
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Exclude symlinks. When specified, symbolic links will be ignored.
+        Note that gsutil does not follow directory symlinks, regardless of whether
+        -e is specified.
+      synonyms:
+      - -e
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Causes rsync to run in "dry run" mode, i.e., just outputting what
+        would be copied or deleted without actually doing any copying/deleting.
+      synonyms:
+      - -n
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Causes ACLs to be preserved when objects are copied. Note that
+        rsync will decide whether or not to perform a copy based only on object size
+        and modification time, not current ACL state. Thus, if the source and destination
+        differ in size or modification time and you run gsutil rsync -p, the file
+        will be copied and ACL preserved. However, if the source and destination don't
+        differ in size or checksum but have different ACLs, running gsutil rsync -p
+        will have no effect. Note that this option has performance and cost implications
+        when using the XML API, as it requires separate HTTP calls for interacting
+        with ACLs. The performance issue can be mitigated to some degree by using
+        gsutil -m rsync to cause parallel synchronization. Also, this option only
+        works if you have OWNER access to all of the objects that are copied. You
+        can avoid the additional performance and cost of using rsync -p if you want
+        all objects in the destination bucket to end up with the same ACL by setting
+        a default object ACL on that bucket instead of using rsync -p. See 'gsutil
+        help defacl'.
+      synonyms:
+      - -p
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Causes POSIX attributes to be preserved when objects are copied.
+        With this feature enabled, gsutil rsync will copy fields provided by stat.
+        These are the user ID of the owner, the group ID of the owning group, the
+        mode (permissions) of the file, and the access/modification time of the file.
+        For downloads, these attributes will only be set if the source objects were
+        uploaded with this flag enabled. On Windows, this flag will only set and restore
+        access time and modification time. This is because Windows doesn't have a
+        notion of POSIX uid/gid/mode.
+      synonyms:
+      - -P
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: The -R and -r options are synonymous. Causes directories, buckets,
+        and bucket subdirectories to be synchronized recursively. If you neglect to
+        use this option gsutil will make only the top-level directory in the source
+        and destination URLs match, skipping any sub-directories.
+      synonyms:
+      - -R
+      - -r
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Skip objects with unsupported object types instead of failing.
+        Unsupported object types are Amazon S3 Objects in the GLACIER storage class.
+      synonyms:
+      - -U
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: 'Causes files/objects matching pattern to be excluded, i.e., any
+        matching files/objects will not be copied or deleted. Note that the pattern
+        is a Python regular expression, not a wildcard (so, matching any string ending
+        in "abc" would be specified using ".*abc$" rather than "*abc"). Note also
+        that the exclude path is always relative (similar to Unix rsync or tar exclude
+        options). For example, if you run the command: gsutil rsync -x "data./.*\.txt$"
+        dir gs://my-bucket it will skip the file dir/data1/a.txt. You can use regex
+        alternation to specify multiple exclusions, for example: gsutil rsync -x ".*\.txt$|.*\.jpg$"
+        dir gs://my-bucket NOTE: While it will work to surround the regular expression
+        with either single or double quotes on Linux and MacOS, on Windows you need
+        to use double quotes.'
+      synonyms:
+      - -x
+      args: !SimpleFlagArg
+        name: pattern
+      optional: true
+    command:
+    - gsutil
+    - help
+    - rsync
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: '"Content-Disposition" gs://bucket/*.html'
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '"Content-Disposition" gs://bucket/*.html'
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: '"x-goog-meta-icecreamflavor:vanilla"'
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gsutil
+    - help
+    - setmeta
+    subcommands: []
+    help_flag: !Flag
+      description: Specifies a header:value to be added, or header to be removed,
+        from each named object.
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Specifies the HTTP method to be authorized for use with the signed
+        url, default is GET. You may also specify RESUMABLE to create a signed resumable
+        upload start URL. When using a signed URL to start a resumable upload session,
+        you will need to specify the 'x-goog-resumable:start' header in the request
+        or else signature validation will fail.
+      synonyms:
+      - -m
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Specifies the duration that the signed url should be valid for,
+        default duration is 1 hour. Times may be specified with no suffix (default
+        hours), or with s = seconds, m = minutes, h = hours, d = days. This option
+        may be specified multiple times, in which case the duration the link remains
+        valid is the sum of all the duration options.
+      synonyms:
+      - -d
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Specifies the content type for which the signed url is valid for.
+      synonyms:
+      - -c
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Specify the keystore password instead of prompting.
+      synonyms:
+      - -p
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gsutil
+    - help
+    - signurl
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Run tests against multi-regional US buckets. By default, tests
+        run against regional buckets in us-central1.
+      synonyms:
+      - -b
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Output coverage information.
+      synonyms:
+      - -c
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Exit on first sequential test failure.
+      synonyms:
+      - -f
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: List available tests.
+      synonyms:
+      - -l
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Run at most N tests in parallel. The default value is 5.
+      synonyms:
+      - -p
+      args: !SimpleFlagArg
+        name: N
+      optional: true
+    - !Flag
+      description: Run tests against S3 instead of GS.
+      synonyms:
+      - -s
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Only run unit tests.
+      synonyms:
+      - -u
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gsutil
+    - help
+    - test
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Prints additional information, such as the version of Python being
+        used, the version of the Boto library, a checksum of the code, the path to
+        gsutil, and the path to gsutil's configuration file.
+      synonyms:
+      - -l
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gsutil
+    - help
+    - version
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Specifies the object name to serve when a bucket listing is requested
+        via the CNAME alias to c.storage.googleapis.com.
+      synonyms:
+      - -m
+      args: !SimpleFlagArg
+        name: index.html
+      optional: true
+    - !Flag
+      description: <404.html>        Specifies the error page to serve when a request
+        is made for a non-existent object via the CNAME alias to c.storage.googleapis.com.
+      synonyms:
+      - -e
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gsutil
+    - help
+    - web
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named: []
+    command:
+    - gsutil
+    - help
+    - acls
+    subcommands:
+    - !Command
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: command
+        optional: true
+      - !Positional
+        description: ''
+        position: 1
+        name: or
+        optional: true
+      - !Positional
+        description: ''
+        position: 2
+        name: topic
+        optional: true
+      named: []
+      command:
+      - gsutil
+      - help
+      - acls
+      - project-private
+      subcommands: []
+      help_flag:
+      usage_flag:
+      version_flag:
+    - !Command
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: command
+        optional: true
+      - !Positional
+        description: ''
+        position: 1
+        name: or
+        optional: true
+      - !Positional
+        description: ''
+        position: 2
+        name: topic
+        optional: true
+      named: []
+      command:
+      - gsutil
+      - help
+      - acls
+      - private
+      subcommands: []
+      help_flag:
+      usage_flag:
+      version_flag:
+    - !Command
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: command
+        optional: true
+      - !Positional
+        description: ''
+        position: 1
+        name: or
+        optional: true
+      - !Positional
+        description: ''
+        position: 2
+        name: topic
+        optional: true
+      named: []
+      command:
+      - gsutil
+      - help
+      - acls
+      - public-read
+      subcommands: []
+      help_flag:
+      usage_flag:
+      version_flag:
+    - !Command
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: command
+        optional: true
+      - !Positional
+        description: ''
+        position: 1
+        name: or
+        optional: true
+      - !Positional
+        description: ''
+        position: 2
+        name: topic
+        optional: true
+      named: []
+      command:
+      - gsutil
+      - help
+      - acls
+      - public-read-write
+      subcommands: []
+      help_flag:
+      usage_flag:
+      version_flag:
+    - !Command
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: command
+        optional: true
+      - !Positional
+        description: ''
+        position: 1
+        name: or
+        optional: true
+      - !Positional
+        description: ''
+        position: 2
+        name: topic
+        optional: true
+      named: []
+      command:
+      - gsutil
+      - help
+      - acls
+      - authenticated-read
+      subcommands: []
+      help_flag:
+      usage_flag:
+      version_flag:
+    - !Command
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: command
+        optional: true
+      - !Positional
+        description: ''
+        position: 1
+        name: or
+        optional: true
+      - !Positional
+        description: ''
+        position: 2
+        name: topic
+        optional: true
+      named: []
+      command:
+      - gsutil
+      - help
+      - acls
+      - bucket-owner-read
+      subcommands: []
+      help_flag:
+      usage_flag:
+      version_flag:
+    - !Command
+      positional:
+      - !Positional
+        description: ''
+        position: 0
+        name: command
+        optional: true
+      - !Positional
+        description: ''
+        position: 1
+        name: or
+        optional: true
+      - !Positional
+        description: ''
+        position: 2
+        name: topic
+        optional: true
+      named: []
+      command:
+      - gsutil
+      - help
+      - acls
+      - bucket-owner-full-control
+      subcommands: []
+      help_flag:
+      usage_flag:
+      version_flag:
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Shows HTTP requests/headers and additional debug info needed when
+        posting support requests, including exception stack traces.
+      synonyms:
+      - -D
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Shows HTTP requests/headers, additional debug info, exception stack
+        traces, plus HTTP upstream payload.
+      synonyms:
+      - -DD
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Causes supported operations (acl ch, acl set, cp, mv, rm, rsync,
+        and setmeta) to run in parallel. This can significantly improve performance
+        if you are performing operations on a large number of files over a reasonably
+        fast network connection. gsutil performs the specified operation using a combination
+        of multi-threading and multi-processing, using a number of threads and processors
+        determined by the parallel_thread_count and parallel_process_count values
+        set in the boto configuration file. You might want to experiment with these
+        values, as the best values can vary based on a number of factors, including
+        network speed, number of CPUs, and available memory. Using the -m option may
+        make your performance worse if you are using a slower network, such as the
+        typical network speeds offered by non-business home network plans. It can
+        also make your performance worse for cases that perform all operations locally
+        (e.g., gsutil rsync, where both source and destination URLs are on the local
+        disk), because it can "thrash" your local disk. If a download or upload operation
+        using parallel transfer fails before the entire transfer is complete (e.g.
+        failing after 300 of 1000 files have been transferred), you will need to restart
+        the entire transfer. Also, although most commands will normally fail upon
+        encountering an error when the -m flag is disabled, all commands will continue
+        to try all operations when -m is enabled with multiple threads or processes,
+        and the number of failed operations (if any) will be reported at the end of
+        the command's execution.
+      synonyms:
+      - -m
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Set/override values in the boto configuration value, in the format
+        <section>:<name>=<value>, e.g. gsutil -o "Boto:proxy=host" ... This will not
+        pass the option to gsutil integration tests, which run in a separate process.
+      synonyms:
+      - -o
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Causes gsutil to perform operations quietly, i.e., without reporting
+        progress indicators of files being copied or removed, etc. Errors are still
+        reported. This option can be useful for running gsutil from a cron job that
+        logs its output to a file, for which the only information desired in the log
+        is failures.
+      synonyms:
+      - -q
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gsutil
+    - help
+    - options
+    subcommands: []
+    help_flag: !Flag
+      description: "Allows you to specify certain HTTP headers, for example: gsutil\
+        \ -h \"Cache-Control:public,max-age=3600\" \\ -h \"Content-Type:text/html\"\
+        \ cp ... Note that you need to quote the headers/values that contain spaces\
+        \ (such as \"Content-Disposition: attachment; filename=filename.ext\"), to\
+        \ avoid having the shell split them into separate arguments. The following\
+        \ headers are stored as object metadata and used in future requests on the\
+        \ object: Cache-Control Content-Disposition Content-Encoding Content-Language\
+        \ Content-Type The following headers are used to check data integrity: Content-MD5\
+        \ gsutil also supports custom metadata headers with a matching Cloud Storage\
+        \ Provider prefix, such as: x-goog-meta- Note that for gs:// URLs, the Cache\
+        \ Control header is specific to the API being used. The XML API will accept\
+        \ any cache control headers and return them during object downloads.  The\
+        \ JSON API respects only the public, private, no-cache, and max-age cache\
+        \ control headers, and may add its own no-transform directive even if it was\
+        \ not specified. See 'gsutil help apis' for more information on gsutil's interaction\
+        \ with APIs. See also \"gsutil help setmeta\" for the ability to set metadata\
+        \ fields on objects after they have been uploaded."
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ("user"|"serviceAccount"|"domain"|"group"):id
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ("allUsers"|"allAuthenticatedUsers")
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Performs "iam set" recursively to all objects under the specified
+      bucket.
+    synonyms:
+    - -R
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Performs "iam set" request on all object versions.
+    synonyms:
+    - -a
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Performs the precondition check on each object with the specified
+      etag before setting the policy.
+    synonyms:
+    - -e
+    args: !SimpleFlagArg
+      name: etag
+    optional: true
+  - !Flag
+    description: Default gsutil error handling is fail-fast. This flag changes the
+      request to fail-silent mode. This is implicitly set when invoking the gsutil
+      -m option.
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Performs "iam ch" recursively to all objects under the specified
+      bucket.
+    synonyms:
+    - -R
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Default gsutil error handling is fail-fast. This flag changes the
+      request to fail-silent mode. This is implicitly set when invoking the gsutil
+      -m option.
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gsutil
+  - iam
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Add or update a label with the specified key and value.
+    synonyms:
+    - -l
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Remove the label with the specified key.
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gsutil
+  - label
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named: []
+  command:
+  - gsutil
+  - lifecycle
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: url
+      optional: false
+    named: []
+    command:
+    - gsutil
+    - lifecycle
+    - get
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: get
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: url
+      optional: false
+    named: []
+    command:
+    - gsutil
+    - lifecycle
+    - url
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: set
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: on
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: url...
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -b
+    args: !SimpleFlagArg
+      name: logging_bucket
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: log_object_prefix
+    optional: true
+  command:
+  - gsutil
+  - logging
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Prints long listing (owner, length).
+    synonyms:
+    - -l
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Prints even more detail than -l.  Note: If you use this option with
+      the (non-default) XML API it will generate an additional request per object
+      being listed, which makes the -L option run much more slowly (and cost more)
+      using the XML API than the default JSON API.'
+    synonyms:
+    - -L
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: List matching subdirectory names instead of contents, and do not
+      recurse into matching subdirectories even if the -R option is specified.
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Prints info about the bucket when used with a bucket URL.
+    synonyms:
+    - -b
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Specifies the project ID to use for listing buckets.
+    synonyms:
+    - -p
+    args: !SimpleFlagArg
+      name: proj_id
+    optional: true
+  - !Flag
+    description: Requests a recursive listing, performing at least one listing operation
+      per subdirectory. If you have a large number of subdirectories and do not require
+      recursive-style output ordering, you may be able to instead use wildcards to
+      perform a flat listing, e.g.  `gsutil ls gs://mybucket/**`, which will generally
+      perform fewer listing operations.
+    synonyms:
+    - -R
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Includes non-current object versions / generations in the listing
+      (only useful with a versioning-enabled bucket). If combined with -l option also
+      prints metageneration for each listed object.
+    synonyms:
+    - -a
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Include ETag in long listing (-l) output.
+    synonyms:
+    - -e
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gsutil
+  - ls
+  subcommands: []
+  help_flag: !Flag
+    description: When used with -l, prints object sizes in human readable format (e.g.,
+      1 KiB, 234 MiB, 2 GiB, etc.)
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -c
+    args: !SimpleFlagArg
+      name: class
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: location
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -p
+    args: !SimpleFlagArg
+      name: proj_id
+    optional: true
+  command:
+  - gsutil
+  - mb
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Specifies the default storage class. Default is "Standard".
+      synonyms:
+      - -c
+      args: !SimpleFlagArg
+        name: class
+      optional: true
+    - !Flag
+      description: Can be any multi-regional or regional location. See https://cloud.google.com/storage/docs/storage-classes
+        for a discussion of this distinction. Default is US. Locations are case insensitive.
+      synonyms:
+      - -l
+      args: !SimpleFlagArg
+        name: location
+      optional: true
+    - !Flag
+      description: Specifies the project ID under which to create the bucket.
+      synonyms:
+      - -p
+      args: !SimpleFlagArg
+        name: proj_id
+      optional: true
+    - !Flag
+      description: Same as -c.
+      synonyms:
+      - -s
+      args: !SimpleFlagArg
+        name: class
+      optional: true
+    command:
+    - gsutil
+    - mb
+    - url...
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: src_url
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: dst_url
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gsutil
+  - mv
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: gs://example-bucket
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: files-to-process
+    optional: true
+  - !Flag
+    description: /example-project/topics/files-to-process gs://example-bucket
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: projects
+    optional: true
+  - !Flag
+    description: 'Specify an event type filter for this notification config. Cloud
+      Storage will only send notifications of this type. You may specify this parameter
+      multiple times to allow multiple event types. If not specified, Cloud Storage
+      will send notifications for all event types. The valid types are: OBJECT_FINALIZE
+      - An object has been created. OBJECT_METADATA_UPDATE - The metadata of an object
+      has changed. OBJECT_DELETE - An object has been permanently deleted. OBJECT_ARCHIVE
+      - A live Cloud Storage object has been archived.'
+    synonyms:
+    - -e
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Specifies the payload format of notification messages. Must be either
+      "json" for a payload matches the object metadata for the JSON API, or "none"
+      to specify no payload at all. In either case, notification details are available
+      in the message attributes.
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Specifies a key:value attribute that will be appended to the set
+      of attributes sent to Cloud Pub/Sub for all events associated with this notification
+      config. You may specify this parameter multiple times to set multiple attributes.
+    synonyms:
+    - -m
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Specifies a prefix path filter for this notification config. Cloud
+      Storage will only send notifications for objects in this bucket whose names
+      begin with the specified prefix.
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Skips creation and permission assignment of the Cloud Pub/Sub topic.
+      This is useful if the caller does not have permission to access the topic in
+      question, or if the topic already exists and has the appropriate publish permission
+      assigned.
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: The Cloud Pub/Sub topic to which notifications should be sent. If
+      not specified, this command will choose a topic whose project is your default
+      project and whose ID is the same as the Cloud Storage bucket name.
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gsutil
+  - notification
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Sets the number of objects to use when downloading and uploading
+      files during tests. Defaults to 5.
+    synonyms:
+    - -n
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Sets the number of processes to use while running throughput experiments.
+      The default value is 1.
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Sets the number of threads per process to use while running throughput
+      experiments. Each process will receive an equal number of threads. The default
+      value is 1. Note: All specified threads and processes will be created, but may
+      not by saturated with work if too few objects (specified with -n) and too few
+      components (specified with -y) are specified.'
+    synonyms:
+    - -k
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Sets the type of parallelism to be used (only applicable when threads
+      or processes are specified and threads * processes > 1). The default is to use
+      fan. Must be one of the following: fan Use one thread per object. This is akin
+      to using gsutil -m cp, with sliced object download / parallel composite upload
+      disabled. slice Use Y (specified with -y) threads for each object, transferring
+      one object at a time. This is akin to using parallel object download / parallel
+      composite upload, without -m. Sliced uploads not supported for s3. both Use
+      Y (specified with -y) threads for each object, transferring multiple objects
+      at a time. This is akin to simultaneously using sliced object download / parallel
+      composite upload and gsutil -m cp. Sliced uploads not supported for s3.'
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Sets the number of slices to divide each file/object into while transferring
+      data. Only applicable with the slice (or both) parallelism type. The default
+      is 4 slices.
+    synonyms:
+    - -y
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Sets the size (in bytes) for each of the N (set with -n) objects
+      used in the read and write throughput tests. The default is 1 MiB. This can
+      also be specified using byte suffixes such as 500K or 1M. Note: these values
+      are interpreted as multiples of 1024 (K=1024, M=1024*1024, etc.) Note: If rthru_file
+      or wthru_file are performed, N (set with -n) times as much disk space as specified
+      will be required for the operation.'
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Sets the directory to store temporary local files in. If not specified,
+      a default temporary directory will be used.
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Sets the list of diagnostic tests to perform. The default is to
+      run the lat, rthru, and wthru diagnostic tests. Must be a comma-separated list
+      containing one or more of the following: lat For N (set with -n) objects, write
+      the object, retrieve its metadata, read the object, and finally delete the object.
+      Record the latency of each operation. list Write N (set with -n) objects to
+      the bucket, record how long it takes for the eventually consistent listing call
+      to return the N objects in its result, delete the N objects, then record how
+      long it takes listing to stop returning the N objects. rthru Runs N (set with
+      -n) read operations, with at most C (set with -c) reads outstanding at any given
+      time. rthru_file The same as rthru, but simultaneously writes data to the disk,
+      to gauge the performance impact of the local disk on downloads. wthru Runs N
+      (set with -n) write operations, with at most C (set with -c) writes outstanding
+      at any given time. wthru_file The same as wthru, but simultaneously reads data
+      from the disk, to gauge the performance impact of the local disk on uploads.'
+    synonyms:
+    - -t
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Adds metadata to the result JSON file. Multiple -m values can be
+      specified. Example: gsutil perfdiag -m "key1:val1" -m "key2:val2" gs://bucketname
+      Each metadata key will be added to the top-level "metadata" dictionary in the
+      output JSON file.'
+    synonyms:
+    - -m
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Writes the results of the diagnostic to an output file. The output
+      is a JSON file containing system information and performance diagnostic results.
+      The file can be read and reported later using the -i option.
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Reads the JSON output file created using the -o command and prints
+      a formatted description of the results.
+    synonyms:
+    - -i
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gsutil
+  - perfdiag
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gsutil
+  - rb
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Continues silently (without printing error messages) despite errors
+        when removing buckets. If some buckets couldn't be removed, gsutil's exit
+        status will be non-zero even if this flag is set.
+      synonyms:
+      - -f
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - gsutil
+    - rb
+    - url...
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Continues silently (without printing error messages) despite errors
+      when rewriting multiple objects. If some of the objects could not be rewritten,
+      gsutil's exit status will be non-zero even if this flag is set. This option
+      is implicitly set when running "gsutil -m rewrite ...".
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Causes gsutil to read the list of objects to rewrite from stdin.
+      This allows you to run a program that generates the list of objects to rewrite.
+    synonyms:
+    - -I
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Rewrite the objects to the current encryption key specific in your
+      boto configuration file. If encryption_key is specified, encrypt all objects
+      with this key. If encryption_key is unspecified, decrypt all objects. See `gsutil
+      help encryption` for details on encryption configuration.
+    synonyms:
+    - -k
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Rewrite objects with the bucket's default object ACL instead of the
+      existing object ACL. This is needed if you do not have OWNER permission on the
+      object.
+    synonyms:
+    - -O
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: The -R and -r options are synonymous. Causes bucket or bucket subdirectory
+      contents to be rewritten recursively.
+    synonyms:
+    - -R
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Rewrite objects using the specified storage class.
+    synonyms:
+    - -s
+    args: !SimpleFlagArg
+      name: class
+    optional: true
+  command:
+  - gsutil
+  - rewrite
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Continues silently (without printing error messages) despite errors
+      when removing multiple objects. If some of the objects could not be removed,
+      gsutil's exit status will be non-zero even if this flag is set. Execution will
+      still halt if an inaccessible bucket is encountered. This option is implicitly
+      set when running "gsutil -m rm ...".
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Causes gsutil to read the list of objects to remove from stdin. This
+      allows you to run a program that generates the list of objects to remove.
+    synonyms:
+    - -I
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: The -R and -r options are synonymous. Causes bucket or bucket subdirectory
+      contents (all objects and subdirectories that it contains) to be removed recursively.
+      If used with a bucket-only URL (like gs://bucket), after deleting objects and
+      subdirectories gsutil will delete the bucket. This option implies the -a option
+      and will delete all object versions.
+    synonyms:
+    - -R
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Delete all versions of an object.
+    synonyms:
+    - -a
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gsutil
+  - rm
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: src_url
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: dst_url
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -a
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -C
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -d
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -e
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -n
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -p
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -r
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -U
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -x
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gsutil
+  - rsync
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '"Content-Disposition" gs://bucket/*.html'
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '"Content-Disposition" gs://bucket/*.html'
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '"x-goog-meta-icecreamflavor:vanilla"'
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gsutil
+  - setmeta
+  subcommands: []
+  help_flag: !Flag
+    description: Specifies a header:value to be added, or header to be removed, from
+      each named object.
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: keystore-file
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: url...
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -c
+    args: !SimpleFlagArg
+      name: content_type
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: duration
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -m
+    args: !SimpleFlagArg
+      name: http_method
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -p
+    args: !SimpleFlagArg
+      name: password
+    optional: true
+  command:
+  - gsutil
+  - signurl
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: url...
+    optional: false
+  named: []
+  command:
+  - gsutil
+  - stat
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Run tests against multi-regional US buckets. By default, tests run
+      against regional buckets in us-central1.
+    synonyms:
+    - -b
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Output coverage information.
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Exit on first sequential test failure.
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: List available tests.
+    synonyms:
+    - -l
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Run at most N tests in parallel. The default value is 5.
+    synonyms:
+    - -p
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: Run tests against S3 instead of GS.
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Only run unit tests.
+    synonyms:
+    - -u
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gsutil
+  - test
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Prints additional information, such as the version of Python being
+      used, the version of the Boto library, a checksum of the code, the path to gsutil,
+      and the path to gsutil's configuration file.
+    synonyms:
+    - -l
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - gsutil
+  - version
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: set
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: bucket_url...
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -m
+    args: !SimpleFlagArg
+      name: main_page_suffix
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -e
+    args: !SimpleFlagArg
+      name: error_page
+    optional: true
+  command:
+  - gsutil
+  - web
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

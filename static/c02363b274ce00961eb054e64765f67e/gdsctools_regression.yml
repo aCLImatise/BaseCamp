@@ -1,0 +1,93 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: A file in TSV format with IC50s. First column should be the COSMIC
+    identifiers Following columns contain the IC50s for a set of drugs. The header
+    must be COSMIC_ID, Drug_1_IC50, Drug_2_IC50, ...
+  synonyms:
+  - -I
+  - --input-ic50
+  args: !SimpleFlagArg
+    name: INPUT_IC50
+  optional: true
+- !Flag
+  description: A matrix of genomic features. One column with COSMIC identifiers should
+    match those from the IC50s matrix. Then columns named TISSUE_FACTOR, MSI_FACTOR,
+    MEDIA_FACTOR should be provided. Finally, other columns will be considered as
+    genomic features (e.g., mutation)
+  synonyms:
+  - -F
+  - --input-features
+  args: !SimpleFlagArg
+    name: INPUT_FEATURES
+  optional: true
+- !Flag
+  description: a decoder file
+  synonyms:
+  - -D
+  - --input-drug-decode
+  args: !SimpleFlagArg
+    name: INPUT_DRUG_DECODE
+  optional: true
+- !Flag
+  description: kfold for regression cross validation
+  synonyms:
+  - -K
+  - --kfold
+  args: !SimpleFlagArg
+    name: KFOLD
+  optional: true
+- !Flag
+  description: directory where to save images and HTML files.
+  synonyms:
+  - -O
+  - --output-directory
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+  optional: true
+- !Flag
+  description: verbose option.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: force creation of the directory and overwrite files.
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: lasso, elasticnet or ridge
+  synonyms:
+  - -M
+  - --method
+  args: !SimpleFlagArg
+    name: METHOD
+  optional: true
+- !Flag
+  description: Print the current license
+  synonyms:
+  - --license
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- gdsctools_regression
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print current version of this application
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

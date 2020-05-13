@@ -1,0 +1,215 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: number of threads to use (default=1)
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: N_CPU
+  optional: true
+- !Flag
+  description: suppress additional output
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: input GFF3 files (usually output from running Prokka). Can also take
+    a file listing each gff file line by line.
+  synonyms:
+  - -i
+  - --input
+  args: !RepeatFlagArg
+    name: INPUT_FILES
+  optional: true
+- !Flag
+  description: location of an output directory
+  synonyms:
+  - -o
+  - --out_dir
+  args: !SimpleFlagArg
+    name: OUTPUT_DIR
+  optional: true
+- !Flag
+  description: "The stringency mode at which to run panaroo. Must be one of 'strict','moderate'\
+    \ or 'sensitive'. Each of these modes can be fine tuned using the additional parameters\
+    \ in the 'Graph correction' section. strict: Requires fairly strong evidence (present\
+    \ in  at least 5% of genomes) to keep likely contaminant genes. Will remove genes\
+    \ that are refound more often than they were called originally. moderate: Requires\
+    \ moderate evidence (present in  at least 1% of genomes) to keep likely contaminant\
+    \ genes. Keeps genes that are refound more often than they were called originally.\
+    \ sensitive: Does not delete any genes and only performes merge and refinding\
+    \ operations. Useful if rare plasmids are of interest as these are often hard\
+    \ to disguish from contamination. Results will likely include  higher number of\
+    \ spurious annotations."
+  synonyms:
+  - --clean-mode
+  args: !ChoiceFlagArg
+    choices:
+    - strict
+    - moderate
+    - sensitive
+  optional: true
+- !Flag
+  description: sequence identity threshold (default=0.95)
+  synonyms:
+  - -c
+  - --threshold
+  args: !SimpleFlagArg
+    name: ID
+  optional: true
+- !Flag
+  description: protein family sequence identity threshold (default=0.7)
+  synonyms:
+  - -f
+  - --family_threshold
+  args: !SimpleFlagArg
+    name: FAMILY_THRESHOLD
+  optional: true
+- !Flag
+  description: length difference cutoff (default=0.95)
+  synonyms:
+  - --len_dif_percent
+  args: !SimpleFlagArg
+    name: LEN_DIF_PERCENT
+  optional: true
+- !Flag
+  description: don't split paralogs
+  synonyms:
+  - --merge_paralogs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: the distance in nucleotides surronding the neighbour of an accessory
+    gene in which to search for it
+  synonyms:
+  - --search_radius
+  args: !SimpleFlagArg
+    name: SEARCH_RADIUS
+  optional: true
+- !Flag
+  description: the proportion of an accessory gene that must be found in order to
+    consider it a match
+  synonyms:
+  - --refind_prop_match
+  args: !SimpleFlagArg
+    name: REFIND_PROP_MATCH
+  optional: true
+- !Flag
+  description: minimum cluster size to keep a gene called at the end of a contig
+  synonyms:
+  - --min_trailing_support
+  args: !SimpleFlagArg
+    name: MIN_TRAILING_SUPPORT
+  optional: true
+- !Flag
+  description: number of times to perform recursive trimming of low support nodes
+    near the end of contigs
+  synonyms:
+  - --trailing_recursive
+  args: !SimpleFlagArg
+    name: TRAILING_RECURSIVE
+  optional: true
+- !Flag
+  description: minimum support required to keep and edge that has been flagged as
+    a possible mis-assembly
+  synonyms:
+  - --edge_support_threshold
+  args: !SimpleFlagArg
+    name: EDGE_SUPPORT_THRESHOLD
+  optional: true
+- !Flag
+  description: proportion of genomes supporting a gene with a length more than 1.5x
+    outside the interquatile range for genes in the same cluster (default=0.01). Genes
+    failing this test will be re-annotated at the shorter length
+  synonyms:
+  - --length_outlier_support_proportion
+  args: !SimpleFlagArg
+    name: LENGTH_OUTLIER_SUPPORT_PROPORTION
+  optional: true
+- !Flag
+  description: if a gene is called in the same region with similar sequence a minority
+    of the time, remove it. One of 'True' or 'False'
+  synonyms:
+  - --remove_by_consensus
+  args: !ChoiceFlagArg
+    choices:
+    - 'True'
+    - 'False'
+  optional: true
+- !Flag
+  description: minimum number of nested cycles to call a highly variable gene region
+    (default = 5).
+  synonyms:
+  - --high_var_flag
+  args: !SimpleFlagArg
+    name: CYCLE_THRESHOLD_MIN
+  optional: true
+- !Flag
+  description: minimum edge support required to call structural variants in the presence/absence
+    sv file
+  synonyms:
+  - --min_edge_support_sv
+  args: !SimpleFlagArg
+    name: MIN_EDGE_SUPPORT_SV
+  optional: true
+- !Flag
+  description: Retains all DNA sequence for each gene cluster in the graph output.
+    Off by default as it uses a large amount of space.
+  synonyms:
+  - --all_seq_in_graph
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Turn off edge filtering in the final output graph.
+  synonyms:
+  - --no_clean_edges
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Output alignments of core genes or all genes. Options are 'core' and\
+    \ 'pan'. Default: 'None'"
+  synonyms:
+  - -a
+  - --alignment
+  args: !ChoiceFlagArg
+    choices:
+    - core
+    - pan
+  optional: true
+- !Flag
+  description: "Specify an aligner. Options:'prank', 'clustal', and default: 'mafft'"
+  synonyms:
+  - --aligner
+  args: !ChoiceFlagArg
+    choices:
+    - prank
+    - clustal
+    - mafft
+  optional: true
+- !Flag
+  description: Core-genome sample threshold (default=0.95)
+  synonyms:
+  - --core_threshold
+  args: !SimpleFlagArg
+    name: CORE
+  optional: true
+command:
+- panaroo
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

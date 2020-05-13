@@ -1,0 +1,118 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The input file in text tab delimited format containing the fusion genes
+    candidates produced by 'label_fusion_genes.py'.
+  synonyms:
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT_FILENAME
+  optional: true
+- !Flag
+  description: The input file in text tab delimited format containing the fusion genes
+    and supporting reads produced by find_fusion_genes_map.py.
+  synonyms:
+  - --input_fusion_reads
+  args: !SimpleFlagArg
+    name: INPUT_FUSION_READS_FILENAME
+  optional: true
+- !Flag
+  description: The threshold for the number of paired-end reads necessary for considering
+    the fusion gene candidate for further analysis. All gene fusions candidate with
+    a larger and equal number of supporting paired-end reads are written in the output
+    file. Default value is 3.
+  synonyms:
+  - --threshold_pairs
+  args: !SimpleFlagArg
+    name: THRESHOLD_PAIRS
+  optional: true
+- !Flag
+  description: The threshold for the number of paired-end reads necessary for considering
+    the fusion gene candidate, which was labeled using '--allowed_labels', for further
+    analysis. All gene fusions candidate with a larger and equal number of supporting
+    paired-end reads are written in the output file. Default value is 0.
+  synonyms:
+  - --threshold_pairs_known
+  args: !SimpleFlagArg
+    name: THRESHOLD_PAIRS_KNOWN
+  optional: true
+- !Flag
+  description: If --threshold_pairs selects more fusions than this threshold than
+    this threshold will have priority (only the first top N will be selected). Default
+    value is 5000.
+  synonyms:
+  - --threshold_count
+  args: !SimpleFlagArg
+    name: THRESHOLD_COUNT
+  optional: true
+- !Flag
+  description: A fusion gene candidate which has been labeled in the input file with
+    one of the following labels is skipped and not written in the output file. Default
+    value is 'paralog'.
+  synonyms:
+  - --skip_labels
+  args: !SimpleFlagArg
+    name: SKIP_LABELS
+  optional: true
+- !Flag
+  description: A fusion gene candidate which has been labeled in the input file with
+    one of the following labels is considered for further analysis even if it has
+    labels which disqualify it (from the --skipp_labels). Default value is 'known'.
+  synonyms:
+  - --allowed_labels
+  args: !SimpleFlagArg
+    name: ALLOWED_LABELS
+  optional: true
+- !Flag
+  description: A fusion gene candidate which has been labeled in the input file with
+    one of the following labels is considered for further analysis even if it has
+    labels which disqualify it (from the --skipp_labels) or is below the threshold.
+    Default value is 'further_fusion'.
+  synonyms:
+  - --further_labels
+  args: !SimpleFlagArg
+    name: FURTHER_LABELS
+  optional: true
+- !Flag
+  description: The text tab separated file containing the fusion genes candidates
+    which meet the conditions imposed by options '--threshold' and '--skip_labels'
+    are written.
+  synonyms:
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME
+  optional: true
+- !Flag
+  description: The same file as the input file where and extra column is added for
+    the genes which have been selected for further analysis.
+  synonyms:
+  - --output_fusion
+  args: !SimpleFlagArg
+    name: OUTPUT_FUSION_FILENAME
+  optional: true
+- !Flag
+  description: The file containing the supporting reads which supports the gene considered
+    for further analysis.
+  synonyms:
+  - --output_fusion_reads
+  args: !SimpleFlagArg
+    name: OUTPUT_FUSION_READS_FILENAME
+  optional: true
+command:
+- extract_fusion_genes.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

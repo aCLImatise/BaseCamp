@@ -1,0 +1,80 @@
+!Command
+positional:
+- !Positional
+  description: /path/input.2bit:name
+  position: 0
+  name: or
+  optional: false
+- !Positional
+  description: /path/input.2bit:name:start-end
+  position: 1
+  name: or
+  optional: false
+named:
+- !Flag
+  description: Restrict this to just one sequence.
+  synonyms:
+  - -seq
+  args: !SimpleFlagArg
+    name: name
+  optional: true
+- !Flag
+  description: Start at given position in sequence (zero-based).
+  synonyms:
+  - -start
+  args: !SimpleFlagArg
+    name: X
+  optional: true
+- !Flag
+  description: End at given position in sequence (non-inclusive).
+  synonyms:
+  - -end
+  args: !SimpleFlagArg
+    name: X
+  optional: true
+- !Flag
+  description: File containing list of the desired sequence names  in the format seqSpec[:start-end],
+    e.g. chr1 or chr1:0-189 where coordinates are half-open zero-based, i.e. [start,end).
+  synonyms:
+  - -seqList
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Convert sequence to all upper case.
+  synonyms:
+  - -noMask
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use bpt index instead of built-in one.
+  synonyms:
+  - -bpt
+  args: !SimpleFlagArg
+    name: index.bpt
+  optional: true
+- !Flag
+  description: Grab sequences specified by input.bed. Will exclude introns.
+  synonyms:
+  - -bed
+  args: !SimpleFlagArg
+    name: input.bed
+  optional: true
+- !Flag
+  description: With -bed, use chrom:start-end as the fasta ID in output.fa.
+  synonyms:
+  - -bedPos
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =/dir/to/cache  Place to put cache for remote bigBed/bigWigs.
+  synonyms:
+  - -udcDir
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- twoBitToFa
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

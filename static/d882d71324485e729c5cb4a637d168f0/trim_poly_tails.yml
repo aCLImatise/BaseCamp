@@ -1,0 +1,70 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The input file in FASTQ format.
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT_FILENAME
+  optional: true
+- !Flag
+  description: The output FASTQ file containing all the trimmed sequences.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME
+  optional: true
+- !Flag
+  description: The number of times a nucleotide specified with '-- nucleotide' should
+    be repeated in order to be considered a poly Default is 9.
+  synonyms:
+  - -r
+  - --repeats
+  args: !SimpleFlagArg
+    name: REPEATS
+  optional: true
+- !Flag
+  description: If this is specified then the reads which are having poly tails are
+    filtered out (i.e. not written to the output) instead of trimming. Default is
+    False.
+  synonyms:
+  - -s
+  - --skip_reads
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If this is specified then the reads which are less than N bp will be
+    kept, where N is set using '--keep- too-short-length'. Default is False.
+  synonyms:
+  - -k
+  - --keep-too-short
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The threshold used to decide when a read is too short. Default is 20.
+  synonyms:
+  - -l
+  - --keep-too-short-length
+  args: !SimpleFlagArg
+    name: KEEP_TOO_SHORT_LENGTH
+  optional: true
+command:
+- trim_poly_tails.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

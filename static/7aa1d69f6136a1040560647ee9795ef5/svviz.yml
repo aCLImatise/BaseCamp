@@ -1,0 +1,288 @@
+!Command
+positional:
+- !Positional
+  description: reference fasta file (a .faidx index file will be created if it doesn't
+    exist so you need  write permissions for this directory)
+  position: 0
+  name: ref
+  optional: false
+- !Positional
+  description: information about the breakpoint to be analyzed; see below for information
+  position: 1
+  name: breakpoints
+  optional: false
+named:
+- !Flag
+  description: sorted, indexed bam file containing reads of interest to plot; can
+    be specified multiple  times to load multiple samples
+  synonyms:
+  - -b
+  - --bam
+  args: !SimpleFlagArg
+    name: BAM
+  optional: true
+- !Flag
+  description: 'event type: either del[etion], ins[ertion], inv[ersion], mei (mobile
+    element insertion),  tra[nslocation], largedeletion (ldel), breakend (bkend) or
+    batch (for reading variants   from a VCF file in batch mode)'
+  synonyms:
+  - -t
+  - --type
+  args: !SimpleFlagArg
+    name: TYPE
+  optional: true
+- !Flag
+  description: bed or gtf file containing annotations to plot; will be compressed
+    and indexed using  samtools tabix in place if needed (can specify multiple annotations
+    files)
+  synonyms:
+  - -A
+  - --annotations
+  args: !SimpleFlagArg
+    name: ANNOTATIONS
+  optional: true
+- !Flag
+  description: An additional indexable fasta file specifying insertion sequences (eg
+    mobile element  sequences)
+  synonyms:
+  - --fasta
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: 'minimum mapping quality for reads (default: 0)'
+  synonyms:
+  - -q
+  - --min-mapq
+  args: !SimpleFlagArg
+    name: MAPQ
+  optional: true
+- !Flag
+  description: 'include only read pairs where at least one read end both exceeds PAIR_MAPQ
+    and  falls near the variant being analyzed (default: 0)'
+  synonyms:
+  - --pair-min-mapq
+  args: !SimpleFlagArg
+    name: PAIR_MAPQ
+  optional: true
+- !Flag
+  description: 'maximum ratio between best and second-best alignment scores within
+    visualization  region in order to retain read (default: 0.95)'
+  synonyms:
+  - --max-multimapping-similarity
+  args: !SimpleFlagArg
+    name: MAX_SIMILARITY
+  optional: true
+- !Flag
+  description: minimum score of the Smith-Waterman alignment against the ref or alt
+    allele in order to be  considered (multiplied by 2)
+  synonyms:
+  - -a
+  - --aln-quality
+  args: !SimpleFlagArg
+    name: QUALITY
+  optional: true
+- !Flag
+  description: 'minimum difference in scores between ref alignment score and alt alignment
+    score  to be assigned to one allele (use an integer to specify a hard score difference  threshold,
+    or a float to specify a score difference relative to the read size;  default:
+    2)'
+  synonyms:
+  - --aln-score-delta
+  args: !SimpleFlagArg
+    name: DELTA
+  optional: true
+- !Flag
+  description: 'include supplementary alignments (ie, those with the 0x800 bit set
+    in the bam flags);  default: false'
+  synonyms:
+  - --include-supplementary
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'implements some optimizations designed to find exact sequence matches
+    quickly; will substantially increase speed on Illumina data but may result in
+    some inexact results; default: false'
+  synonyms:
+  - --fast
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'use at most this many reads (pairs), sampling randomly if need be,
+    useful  when running in batch mode (default: use all reads)'
+  synonyms:
+  - --sample-reads
+  args: !SimpleFlagArg
+    name: SAMPLE_READS
+  optional: true
+- !Flag
+  description: 'maximum number of reads allowed, totaled across all samples, useful
+    when running in batch  mode (default: unlimited)'
+  synonyms:
+  - --max-reads
+  args: !SimpleFlagArg
+    name: MAX_READS
+  optional: true
+- !Flag
+  description: 'maximum event size allowed, totaled across all chromosome parts in
+    bp; if either the ref  allele or alt allele exceeds this size, it will be skipped
+    (default: unlimited)'
+  synonyms:
+  - --max-size
+  args: !SimpleFlagArg
+    name: MAX_SIZE
+  optional: true
+- !Flag
+  description: "deletion size above which the deletion is analyzed in breakend mode\
+    \ (default: don't  convert to breakend mode)"
+  synonyms:
+  - --max-deletion-size
+  args: !SimpleFlagArg
+    name: MAX_DELETION_SIZE
+  optional: true
+- !Flag
+  description: 'define a port to use for the web browser (default: random port)'
+  synonyms:
+  - -p
+  - --port
+  args: !SimpleFlagArg
+    name: PORT
+  optional: true
+- !Flag
+  description: 'how many processes to use for read realignment (default: use all available
+    cores)'
+  synonyms:
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+- !Flag
+  description: don't show the web interface
+  synonyms:
+  - --no-web
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: save relevant reads to this file (bam)
+  synonyms:
+  - --save-reads
+  args: !SimpleFlagArg
+    name: OUT_BAM_PATH
+  optional: true
+- !Flag
+  description: how verbose the progress and logging should be
+  synonyms:
+  - --verbose
+  args: !SimpleFlagArg
+    name: VERBOSE
+  optional: true
+- !Flag
+  description: export view to file; in single variant-mode, the exported file format
+    is determined from  the filename extension unless --format is specified; in batch
+    mode, this should be the name  of a directory into which to save the files (use
+    --format to set format); setting --export  automatically sets --no-web
+  synonyms:
+  - -e
+  - --export
+  args: !SimpleFlagArg
+    name: EXPORT
+  optional: true
+- !Flag
+  description: file export format, either svg, png or  pdf; by default, this is pdf
+    (batch mode) or automatically identified from the file  extension of --export
+  synonyms:
+  - --format
+  args: !SimpleFlagArg
+    name: FORMAT
+  optional: true
+- !Flag
+  description: automatically open the exported file
+  synonyms:
+  - -O
+  - --open-exported
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'which program should be used to convert the output into PDF or PNG;
+    choose from [webkitToPDF,  librsvg, inkscape] (default: auto)'
+  synonyms:
+  - --converter
+  args: !SimpleFlagArg
+    name: CONVERTER
+  optional: true
+- !Flag
+  description: Reads are shown with thicker lines, potentially overlapping one another,
+    but increasing  contrast when zoomed out
+  synonyms:
+  - --thicker-lines
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of additional nucleotides of genomic context to either side
+    of the visualization  (useful for showing nearby annotations)
+  synonyms:
+  - --context
+  args: !SimpleFlagArg
+    name: CONTEXT
+  optional: true
+- !Flag
+  description: 'Show reads in regions flanking the structural variant; these reads
+    do not  contribute to the ref or alt allele read counts (default: false)'
+  synonyms:
+  - -f
+  - --flanks
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Don't color mismatches, insertions and deletions
+  synonyms:
+  - --skip-cigar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: generate dotplots to show sequence homology within the aligned region;
+    requires some  additional optional python libraries (scipy and PIL) and may take
+    several minutes for  longer variants
+  synonyms:
+  - --dotplots
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: plot the insert size distributions for each sample, for each event
+  synonyms:
+  - --export-insert-sizes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: save summary statistics to this (tab-delimited) file
+  synonyms:
+  - --summary
+  args: !SimpleFlagArg
+    name: SUMMARY_FILE
+  optional: true
+- !Flag
+  description: lowers the minimum alignment quality, showing reads even when breakpoints
+    are only  approximately correct, or reads of lower quality (eg PacBio); and requires
+    a larger  difference in alignment scores in order to assign a read to an allele
+  synonyms:
+  - --lenient
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- svviz
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show svviz version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

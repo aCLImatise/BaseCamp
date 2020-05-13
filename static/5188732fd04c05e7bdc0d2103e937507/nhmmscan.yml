@@ -1,0 +1,263 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: ': direct output to file <f>, not stdout'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: ': save parseable table of per-sequence hits to file <f>'
+  synonyms:
+  - --tblout
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: ': save table of hits to file, in Dfam format <f>'
+  synonyms:
+  - --dfamtblout
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: ': save of scores for each position in each alignment to <f>'
+  synonyms:
+  - --aliscoresout
+  args: !SimpleFlagArg
+    name: f
+  optional: true
+- !Flag
+  description: ': prefer accessions over names in output'
+  synonyms:
+  - --acc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": don't output alignments, so output is smaller"
+  synonyms:
+  - --noali
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': unlimit ASCII text output line width'
+  synonyms:
+  - --notextw
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': set max width of ASCII text output lines  [120]  (n>=120)'
+  synonyms:
+  - --textw
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: ': report models <= this E-value threshold in output  [10.0]  (x>0)'
+  synonyms:
+  - -E
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ': report models >= this score threshold in output'
+  synonyms:
+  - -T
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ': consider models <= this E-value threshold as significant  [0.01]'
+  synonyms:
+  - --incE
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ': consider models >= this score threshold as significant'
+  synonyms:
+  - --incT
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ": use profile's GA gathering cutoffs to set all thresholding"
+  synonyms:
+  - --cut_ga
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": use profile's NC noise cutoffs to set all thresholding"
+  synonyms:
+  - --cut_nc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ": use profile's TC trusted cutoffs to set all thresholding"
+  synonyms:
+  - --cut_tc
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': Turn all heuristic filters off (less speed, more power)'
+  synonyms:
+  - --max
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': MSV threshold: promote hits w/ P <= F1  [0.02]'
+  synonyms:
+  - --F1
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ': Vit threshold: promote hits w/ P <= F2  [3e-3]'
+  synonyms:
+  - --F2
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ': Fwd threshold: promote hits w/ P <= F3  [3e-5]'
+  synonyms:
+  - --F3
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ': turn off composition bias filter'
+  synonyms:
+  - --nobias
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': assert input <seqfile> is in format <s>'
+  synonyms:
+  - --qformat
+  args: !SimpleFlagArg
+    name: s
+  optional: true
+- !Flag
+  description: ': turn off biased composition score corrections'
+  synonyms:
+  - --nonull2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': set # of comparisons done, for E-value calculation'
+  synonyms:
+  - -Z
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ': set RNG seed to <n> (if 0: one-time arbitrary seed)  [42]'
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: ': tail mass at which window length is determined'
+  synonyms:
+  - --w_beta
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ': window length - essentially max expected hit length '
+  synonyms:
+  - --w_length
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: ': only search the top strand'
+  synonyms:
+  - --watson
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': only search the bottom strand'
+  synonyms:
+  - --crick
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': number of parallel CPU workers to use for multithreads  [2]'
+  synonyms:
+  - --cpu
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+command:
+- nhmmscan
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: seqfile
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -options
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - nhmmscan
+  - hmmdb
+  subcommands: []
+  help_flag: !Flag
+    description: ': show brief help on version and usage'
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: hmmdb
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: seqfile
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -options
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - nhmmscan
+  - seqfile
+  subcommands: []
+  help_flag: !Flag
+    description: ': show brief help on version and usage'
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: ': show brief help on version and usage'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

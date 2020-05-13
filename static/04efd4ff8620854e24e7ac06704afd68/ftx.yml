@@ -1,0 +1,104 @@
+!Command
+positional:
+- !Positional
+  description: Input VCF file
+  position: 0
+  name: input
+  optional: false
+named:
+- !Flag
+  description: Output file name. Output will be in CSV format
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Location for bcftools view (e.g. chr1)
+  synonyms:
+  - -l
+  - --location
+  args: !SimpleFlagArg
+    name: LOCATION
+  optional: true
+- !Flag
+  description: Restrict analysis to given (sparse) regions (using -R in bcftools).
+  synonyms:
+  - -R
+  - --restrict-regions
+  args: !SimpleFlagArg
+    name: REGIONS_BEDFILE
+  optional: true
+- !Flag
+  description: Restrict analysis to given (dense) regions (using -T in bcftools).
+  synonyms:
+  - -T
+  - --target-regions
+  args: !SimpleFlagArg
+    name: TARGETS_BEDFILE
+  optional: true
+- !Flag
+  description: Use to include failing variants in comparison.
+  synonyms:
+  - -P
+  - --include-nonpass
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Select a feature table to output. Options are: ['hcc.strelka.snv',\
+    \ 'hcc.pisces.snv', 'hcc.mutect.snv', 'hcc.varscan2.indel', 'admix.strelka.snv',\
+    \ 'generic', 'hcc.pisces.indel', 'hcc.strelka.indel', 'admix.strelka.indel', 'hcc.varscan2.snv',\
+    \ 'hcc.mutect.indel']"
+  synonyms:
+  - --feature-table
+  args: !SimpleFlagArg
+    name: FEATURES
+  optional: true
+- !Flag
+  description: We will output a lable column, this value will go in there -- default
+    is the input filename.
+  synonyms:
+  - --feature-label
+  args: !SimpleFlagArg
+    name: LABEL
+  optional: true
+- !Flag
+  description: pass one or more BAM files for feature table extraction
+  synonyms:
+  - --bam
+  args: !SimpleFlagArg
+    name: BAMS
+  optional: true
+- !Flag
+  description: Specify a reference file for normalization.
+  synonyms:
+  - -r
+  - --reference
+  args: !SimpleFlagArg
+    name: REF
+  optional: true
+- !Flag
+  description: Enable running of bcftools norm on the input file.
+  synonyms:
+  - --normalize
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Replace numeric chromosome names in the query by chr*-type names
+  synonyms:
+  - --fix-chr
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- ftx.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

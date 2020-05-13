@@ -1,0 +1,294 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Fix the taxonomic scope used for annotation, so only orthologs from
+    a particular clade are used for functional transfer. By default, this is automatically
+    adjusted for every query sequence.
+  synonyms:
+  - --tax_scope
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: defines what type of orthologs should be used for functional transfer
+  synonyms:
+  - --target_orthologs
+  args: !ChoiceFlagArg
+    choices:
+    - one2one
+    - many2one
+    - one2many
+    - many2many
+    - all
+  optional: true
+- !Flag
+  description: (for debugging and benchmark purposes)
+  synonyms:
+  - --excluded_taxa
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Defines what type of GO terms should be used for annotation:experimental
+    = Use only terms inferred from experimental evidencenon-electronic = Use only
+    non- electronically curated terms
+  synonyms:
+  - --go_evidence
+  args: !ChoiceFlagArg
+    choices:
+    - experimental
+    - non-electronic
+  optional: true
+- !Flag
+  description: Max number of hits to report. Default=1
+  synonyms:
+  - --hmm_maxhits
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: E-value threshold. Default=0.001
+  synonyms:
+  - --hmm_evalue
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Bit score threshold. Default=20
+  synonyms:
+  - --hmm_score
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Ignore query sequences larger than `maxseqlen`. Default=5000
+  synonyms:
+  - --hmm_maxseqlen
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: min query coverage (from 0 to 1). Default=(disabled)
+  synonyms:
+  - --hmm_qcov
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Fixed database size used in phmmer/hmmscan (allows comparing e-values
+    among databases). Default=40,000,000
+  synonyms:
+  - --Z
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to DIAMOND-compatible database
+  synonyms:
+  - --dmnd_db
+  args: !SimpleFlagArg
+    name: DMND_DB
+  optional: true
+- !Flag
+  description: Scoring matrix
+  synonyms:
+  - --matrix
+  args: !ChoiceFlagArg
+    choices:
+    - BLOSUM62
+    - BLOSUM90
+    - BLOSUM80
+    - BLOSUM50
+    - BLOSUM45
+    - PAM250
+    - PAM70
+    - PAM30
+  optional: true
+- !Flag
+  description: Gap open penalty
+  synonyms:
+  - --gapopen
+  args: !SimpleFlagArg
+    name: GAPOPEN
+  optional: true
+- !Flag
+  description: Gap extend penalty
+  synonyms:
+  - --gapextend
+  args: !SimpleFlagArg
+    name: GAPEXTEND
+  optional: true
+- !Flag
+  description: Report only alignments above the given percentage of query cover. Default=0
+  synonyms:
+  - --query-cover
+  args: !SimpleFlagArg
+    name: QUERY_COVER
+  optional: true
+- !Flag
+  description: Report only alignments above the given percentage of subject cover.
+    Default=0
+  synonyms:
+  - --subject-cover
+  args: !SimpleFlagArg
+    name: SUBJECT_COVER
+  optional: true
+- !Flag
+  description: Min E-value expected when searching for seed eggNOG ortholog. Applies
+    to phmmer/diamond searches. Queries not having a significant seed orthologs will
+    not be annotated. Default=0.001
+  synonyms:
+  - --seed_ortholog_evalue
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Min bit score expected when searching for seed eggNOG ortholog. Applies
+    to phmmer/diamond searches. Queries not having a significant seed orthologs will
+    not be annotated. Default=60
+  synonyms:
+  - --seed_ortholog_score
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ', -o         base name for output files'
+  synonyms:
+  - --output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Resumes a previous execution skipping reported hits in the output file.
+  synonyms:
+  - --resume
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Overwrites output files if they exist.
+  synonyms:
+  - --override
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Skip hit refinement, reporting only HMM hits.
+  synonyms:
+  - --no_refine
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Skip functional annotation, reporting only hits
+  synonyms:
+  - --no_annot
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Skip HMM search mapping. Use existing hits file
+  synonyms:
+  - --no_search
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The list of predicted orthologs
+  synonyms:
+  - --predict_ortho
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The list of orthologs used for functional transferred are dumped into
+    a separate file
+  synonyms:
+  - --report_orthologs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write output files in a temporary scratch dir, move them to final the
+    final output dir when finished. Speed up large computations using network file
+    systems.
+  synonyms:
+  - --scratch_dir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Where output files should be written
+  synonyms:
+  - --output_dir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Where temporary files are created. Better if this is a local disk.
+  synonyms:
+  - --temp_dir
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: No header lines nor stats are included in the output files
+  synonyms:
+  - --no_file_comments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Do not delete temporary mapping files used for annotation (i.e. HMMER
+    and DIAMOND search outputs)
+  synonyms:
+  - --keep_mapping_files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: taxa that will be searched for orthologs
+  synonyms:
+  - --target_taxa
+  args: !RepeatFlagArg
+    name: TARGET_TAXA
+  optional: true
+- !Flag
+  description: 'Choose the output format among: per_query, per_species .Default =
+    per_species'
+  synonyms:
+  - --predict_output_format
+  args: !ChoiceFlagArg
+    choices:
+    - per_query
+    - per_species
+  optional: true
+- !Flag
+  description: Default:hmmer
+  synonyms:
+  - -m
+  args: !ChoiceFlagArg
+    choices:
+    - hmmer
+    - diamond
+  optional: true
+- !Flag
+  description: Input FASTA file containing query sequences
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assume sequences are genes instead of proteins
+  synonyms:
+  - --translate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Loads target database in memory and keeps running in server mode, so
+    another instance of eggnog-mapper can connect to this sever. Auto turns on the
+    --usemem flag
+  synonyms:
+  - --servermode
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: If a local hmmpressed database is provided as target using --db, this
+    flag will allocate the whole database in memory using hmmpgmd. Database will be
+    unloaded after execution.
+  synonyms:
+  - --usemem
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Annotatate TSV formatted table of query->hits. 4 fields required:
+    query, hit, evalue, score. Implies --no_search and --no_refine.'
+  synonyms:
+  - --cpu
+  - --annotate_hits_table
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- emapper.py
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

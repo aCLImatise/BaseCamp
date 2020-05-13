@@ -1,0 +1,127 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: "<file(s)>*                   Input FASTA file(s), each containing\
+    \ a database. It is recommended to include a contaminant database as well. (valid\
+    \ formats: 'fasta')"
+  synonyms:
+  - -in
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "*                     Output FASTA file where the decoy database will\
+    \ be written to. (valid formats: 'fasta')"
+  synonyms:
+  - -out
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "String that is combined with the accession of the protein identifier\
+    \ to indicate a decoy protein. (default: 'DECOY_')"
+  synonyms:
+  - -decoy_string
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: "Should the 'decoy_string' be prepended (prefix) or appended (suffix)\
+    \ to the protein accession? (default: 'prefix' valid: 'prefix', 'suffix')"
+  synonyms:
+  - -decoy_string_position
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: Write only decoy proteins to the output database instead of a combined
+    database.
+  synonyms:
+  - -only_decoy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Type of sequence. RNA sequences may contain modification codes, which\
+    \ will be handled correctly if this is set to 'RNA'. (default: 'protein' valid:\
+    \ 'protein', 'RNA')"
+  synonyms:
+  - -type
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: "Method by which decoy sequences are generated from target sequences.\
+    \ Note that all sequences are shuffled using the same random seed, ensuring that\
+    \ identical sequences produce the same shuffled decoy sequences. Shuffled sequences\
+    \ that produce highly similar output sequences are shuffled again (see shuffle_sequence_identity_threshold).\
+    \ (default: 'reverse' valid: 'reverse', 'shuffle')"
+  synonyms:
+  - -method
+  args: !SimpleFlagArg
+    name: choice
+  optional: true
+- !Flag
+  description: "Enzyme used for the digestion of the sample. Only applicable if parameter\
+    \ 'type' is 'protein'. (default: 'Trypsin' valid: 'proline endopeptidase', 'glutamyl\
+    \ endopeptidase',  'Arg-C', 'Arg-C/P', 'Asp-N', 'Alpha-lytic protease', '2-iodobenzoate',\
+    \ 'iodosobenzoate', 'staphylococcal protease/D', 'Clostripain/P', 'elastase-trypsin-chymotrypsin',\
+    \ 'no cleavage', 'unspecific cleavage', 'Asp-N/B', 'Asp-N_ambic', 'Chymotrypsin',\
+    \ 'Chymotrypsin/P', 'CNBr', 'Formic_acid', 'Lys-C', 'Lys-N', 'Lys-C/P', 'PepsinA',\
+    \ 'TrypChymo', 'Tryp sin/P', 'V8-DE', 'V8-E', 'leukocyte elastase', 'proline-endopeptidase/HKR',\
+    \ 'Glu-C+P', 'PepsinA + P', 'cyanogen-bromide', 'Trypsin')"
+  synonyms:
+  - -enzyme
+  args: !SimpleFlagArg
+    name: enzyme
+  optional: true
+- !Flag
+  description: Use the given TOPP INI file
+  synonyms:
+  - -ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: "Sets the number of threads allowed to be used by the TOPP tool (default:\
+    \ '1')"
+  synonyms:
+  - -threads
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: Writes the default configuration file
+  synonyms:
+  - -write_ini
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Shows all options (including advanced)
+  synonyms:
+  - --helphelp
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Decoy parameters section
+  synonyms:
+  - '- Decoy'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ://www.openms.de/documentation/UTILS_DecoyDatabase.html
+  synonyms:
+  - '- http'
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- DecoyDatabase
+subcommands: []
+help_flag: !Flag
+  description: Shows options
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

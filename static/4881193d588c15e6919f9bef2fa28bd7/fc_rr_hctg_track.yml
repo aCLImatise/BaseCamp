@@ -1,0 +1,117 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'number of processes used for for tracking reads; 0 for main process
+    only (default: 4)'
+  synonyms:
+  - --n-core
+  args: !SimpleFlagArg
+    name: N_CORE
+  optional: true
+- !Flag
+  description: 'Substituted as {base_dir} into default inputs. (default: .)'
+  synonyms:
+  - --base-dir
+  args: !SimpleFlagArg
+    name: BASE_DIR
+  optional: true
+- !Flag
+  description: 'Input. Filename of Dazzler DB (default: {base_dir}/0-rawreads/build/raw_reads.db)'
+  synonyms:
+  - --db-fn
+  args: !SimpleFlagArg
+    name: DB_FN
+  optional: true
+- !Flag
+  description: 'Inputs. Filename of las filenames, to be processed in parallel. Paths
+    are relative to location of file. (default: {base_dir}/0-rawreads/las-merge- combine/las_fofn.json)'
+  synonyms:
+  - --las-fofn-fn
+  args: !SimpleFlagArg
+    name: LAS_FOFN_FN
+  optional: true
+- !Flag
+  description: 'phased-read-file (accumulated from many fc_graphs_to_h_tigs.py calls)
+    (default: {base_dir}/3-unzip/all_phased_reads)'
+  synonyms:
+  - --phased-reads-fn
+  args: !SimpleFlagArg
+    name: PHASED_READS_FN
+  optional: true
+- !Flag
+  description: 'read_to_contig_map, from fc_get_read_hctg_map (default: ./read_to_contig_map)'
+  synonyms:
+  - --read-to-contig-map-fn
+  args: !SimpleFlagArg
+    name: READ_TO_CONTIG_MAP_FN
+  optional: true
+- !Flag
+  description: 'rawread_ids file (from a task within fc_get_read_ctg_map.py) (default:
+    {base_dir}/3-unzip/reads/dump_rawread_ids/rawread_ids)'
+  synonyms:
+  - --rawread-ids-fn
+  args: !SimpleFlagArg
+    name: RAWREAD_IDS_FN
+  optional: true
+- !Flag
+  description: 'Output of stage2 (now replaced by rr_hctg_track2.nim) (default: {base_dir}/rawread_to_contigs)'
+  synonyms:
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: 'Output of stage1, consumed by stage2. This is a list of the (msgpack)
+    partials. (default: ./partials.json)'
+  synonyms:
+  - --partials-fn
+  args: !SimpleFlagArg
+    name: PARTIALS_FN
+  optional: true
+- !Flag
+  description: 'min length of the reads (default: 2500)'
+  synonyms:
+  - --min-len
+  args: !SimpleFlagArg
+    name: MIN_LEN
+  optional: true
+- !Flag
+  description: 'stream from LA4Falcon, instead of slurping all at once; can save memory
+    for large data (default: False)'
+  synonyms:
+  - --stream
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'single-threaded, plus other aids to debugging (default: False)'
+  synonyms:
+  - --debug
+  - -g
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'suppress cmd reporting on stderr (default: False)'
+  synonyms:
+  - --silent
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'keep best n hits (default: 30)'
+  synonyms:
+  - --bestn
+  args: !SimpleFlagArg
+    name: BESTN
+  optional: true
+command:
+- fc_rr_hctg_track.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

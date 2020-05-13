@@ -1,0 +1,221 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: input_file
+  optional: false
+named:
+- !Flag
+  description: '[ --version ]                               Output version information'
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '(=raw_with_scores)     Parse the input data from <format>, one of
+    available formats: hmmer_domtblout  - HMMER domtblout format (must assume all
+    hits are continuous) hmmscan_out      - HMMER hmmscan output format (can be used
+    to deduce discontinuous hits) hmmsearch_out    - HMMER hmmsearch output format
+    (can be used to deduce discontinuous hits) raw_with_scores  - "raw" format with
+    scores raw_with_evalues - "raw" format with evalues'
+  synonyms:
+  - --input-format
+  args: !SimpleFlagArg
+    name: format
+  optional: true
+- !Flag
+  description: (=30)                When parsing starts/stops from alignment data,
+    ignore gaps of less than <length> residues
+  synonyms:
+  - --min-gap-length
+  args: !SimpleFlagArg
+    name: length
+  optional: true
+- !Flag
+  description: Rely on the input hits being grouped by query protein (so the run is
+    faster and uses less memory)
+  synonyms:
+  - --input-hits-are-grouped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "(=30/10)            Allow different hits' segments to overlap a bit\
+    \ by trimming all segments using spec <trim> of the form n/m (n is a segment length;\
+    \ m is the *total* length to be trimmed off both ends) For longer segments, total\
+    \ trim stays at m; for shorter, it decreases linearly (to 0 for length 1). To\
+    \ choose: set m to the biggest total trim you'd want for a really long segment;\
+    \ then, set n to length of the shortest segment you'd want to have that total\
+    \ trim"
+  synonyms:
+  - --overlap-trim-spec
+  args: !SimpleFlagArg
+    name: trim
+  optional: true
+- !Flag
+  description: (=7)                 Ignore all segments that are fewer than <length>
+    residues long
+  synonyms:
+  - --min-seg-length
+  args: !SimpleFlagArg
+    name: length
+  optional: true
+- !Flag
+  description: (=0)           Prefer longer hits to degree <val> (<val> may be negative
+    to prefer shorter; 0 leaves scores unaffected)
+  synonyms:
+  - --long-domains-preference
+  args: !SimpleFlagArg
+    name: val
+  optional: true
+- !Flag
+  description: (=0)            Prefer higher scores to degree <val> (<val> may be
+    negative to reduce preference for higher scores; 0 leaves scores unaffected)
+  synonyms:
+  - --high-scores-preference
+  args: !SimpleFlagArg
+    name: val
+  optional: true
+- !Flag
+  description: '[DEPRECATED] Apply rules specific to CATH-Gene3D during the parsing
+    and processing'
+  synonyms:
+  - --apply-cath-rules
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use a naive, greedy approach to resolving (not recommended except for
+    comparison)
+  synonyms:
+  - --naive-greedy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (=0.001)   Ignore any hits with an evalue worse than <evalue>
+  synonyms:
+  - --worst-permissible-evalue
+  args: !SimpleFlagArg
+    name: evalue
+  optional: true
+- !Flag
+  description: (=10)  Ignore any hits with a bitscore worse than <bitscore>
+  synonyms:
+  - --worst-permissible-bitscore
+  args: !SimpleFlagArg
+    name: bitscore
+  optional: true
+- !Flag
+  description: Ignore any hits with a score worse than <score>
+  synonyms:
+  - --worst-permissible-score
+  args: !SimpleFlagArg
+    name: score
+  optional: true
+- !Flag
+  description: Ignore all input data except that for query protein(s) <id> (may be
+    specified multiple times for multiple query proteins)
+  synonyms:
+  - --filter-query-id
+  args: !SimpleFlagArg
+    name: id
+  optional: true
+- !Flag
+  description: '[=<num>(=1)]                   Only process the first <num> query
+    protein(s) encountered in the input data'
+  synonyms:
+  - --limit-queries
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write the resolved hits in plain text to file <file>
+  synonyms:
+  - --hits-text-to-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Suppress the default output of resolved hits in plain text to stdout
+  synonyms:
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: When writing out the final hits, output the hits' starts/stop as they
+    are *after trimming*
+  synonyms:
+  - --output-trimmed-hits
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write a brief text summary of the input data to file <file> (or '-'
+    for stdout)
+  synonyms:
+  - --summarise-to-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Write the results as HTML to file <file> (or '-' for stdout)
+  synonyms:
+  - --html-output-to-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Write the results as JSON to file <file> (or '-' for stdout)
+  synonyms:
+  - --json-output-to-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Export the CSS used in the HTML output to <file> (or '-' for stdout)
+  synonyms:
+  - --export-css-file
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: Restrict HTML output to the contents of the body tag. The contents
+    should be included inside a body tag of class crh-body
+  synonyms:
+  - --restrict-html-within-body
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: (=80)       Only display up to <num> non-solution hits in the HTML
+  synonyms:
+  - --html-max-num-non-soln-hits
+  args: !SimpleFlagArg
+    name: num
+  optional: true
+- !Flag
+  description: Exclude hits rejected by the score filters from the HTML
+  synonyms:
+  - --html-exclude-rejected-hits
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show help on the rules activated by the (DEPRECATED) --apply-cath-rules
+    option
+  synonyms:
+  - --cath-rules-help
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Show help about the raw input formats (raw_with_scores and raw_with_evalues)
+  synonyms:
+  - --raw-format-help
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- cath-resolve-hits
+subcommands: []
+help_flag: !Flag
+  description: '[ --help ]                                  Output help message'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

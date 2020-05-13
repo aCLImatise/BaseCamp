@@ -1,0 +1,79 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Print information during execution -- useful for debugging [default:
+    False]'
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: path to the input BIOM file (e.g., the output from OTU picking) or
+    directory containing input BIOM files for batch processing [REQUIRED if not passing
+    -l]
+  synonyms:
+  - -i
+  - --input_path
+  args: !SimpleFlagArg
+    name: INPUT_PATH
+  optional: true
+- !Flag
+  description: output filename for single file operation, or output directory for
+    batch processing [REQUIRED if not passing -l]
+  synonyms:
+  - -o
+  - --out_path
+  args: !SimpleFlagArg
+    name: OUT_PATH
+  optional: true
+- !Flag
+  description: 'output CSS statistics file. This will be a directory for batch processing,
+    and a filename for single file operation [default: False]'
+  synonyms:
+  - -s
+  - --output_CSS_statistics
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'replace negative numbers produced by the DESeq normalization technique
+    with zeros [default: False]'
+  synonyms:
+  - -z
+  - --DESeq_negatives_to_zero
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'normalization algorithm to apply to input BIOM table(s). [default:
+    CSS] Available options are: CSS, DESeq2'
+  synonyms:
+  - -a
+  - --algorithm
+  args: !SimpleFlagArg
+    name: ALGORITHM
+  optional: true
+- !Flag
+  description: 'show available normalization algorithms and exit [default: False]'
+  synonyms:
+  - -l
+  - --list_algorithms
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- normalize_table.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

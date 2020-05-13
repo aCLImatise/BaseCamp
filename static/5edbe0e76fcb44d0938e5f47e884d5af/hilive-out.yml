@@ -1,0 +1,413 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: "[ --config ] Path to a HiLive config file (in general, this should\
+    \ be 'hilive_config.ini' which is created in the temp directory of the respective\
+    \ run)"
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --license ]                  Print license information and exit.'
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --config ] arg               Path to a config file. Config file
+    is in  .ini format. Duplicate keys are not  permitted. Instead, use comma-separated  lists.
+    Parameters obtained from the command line are prioritized over settings made in  the
+    config file. Example for a config.ini: bcl-dir=./BaseCalls lanes=1 out-cycle=50,100'
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Path to Illumina's runInfo.xml file. If  specified, read lengths, lane
+    count and  tile count are automatically set in  accordance with the sequencing
+    run.  Parameters obtained from the command line  or config file are prioritized
+    over  settings obtained from the runInfo.xml.
+  synonyms:
+  - --runinfo
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: Continue an interrupted HiLive run from a  specified cycle. We strongly
+    recommend to  load the config file that was automatically created for the original
+    run to continue  with identical settings. This config file  (hilive_config.ini)
+    can be found in the  temporary directory specified with  --temp-dir.
+  synonyms:
+  - --continue
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "[ --bcl-dir ] arg              Illumina's BaseCalls directory which\
+    \  contains the sequence information of the  reads."
+  synonyms:
+  - -b
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --lanes ] arg                Specify the lanes to be considered
+    for read alignment. [Default: 1-8]'
+  synonyms:
+  - -l
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --tiles ] arg                Specify the tiles to be considered
+    for read alignment. [Default: [1-2][1-3][01-16] (96  tiles)]'
+  synonyms:
+  - -t
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --max-tile ] arg             Specify the highest tile number. The
+    tile  numbers will be computed by this number,  considering the correct surface
+    count,  swath count and tile count for Illumina  sequencing. This parameter serves
+    as a shortcut for  --tiles. Example: --max-tile 2216 will activate all tiles in  [1-2][1-2][01-16].'
+  synonyms:
+  - -T
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --reads ] arg                Length and types of the read segments.\
+    \ Each segment is either a read ('R') or a barcode ('B'). Please give the segments\
+    \ in the  correct order as they are produced by the  sequencing machine. [REQUIRED]\
+    \ Example: --reads 101R,8B,8B,101R specifies paired-end sequencing with  2x101bp\
+    \ reads and 2x8bp barcodes."
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --barcodes ] arg             Barcode(s) of the sample(s) to be \
+    \ considered for read alignment. Barcodes  must match the barcode length(s) as\
+    \  specified with --reads. Delimit different  segments of the same barcodes by\
+    \ '-' and  different barcodes by ','. [Default: All  barcodes] Example: -b ACCG-ATTG,ATGT-TGAC\
+    \ for two different barcodes of length 2x4bp."
+  synonyms:
+  - -B
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ID of the sequencing run. Should be  obtained from runInfo.xml.
+  synonyms:
+  - --run-id
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: ID of the flowcell. Should be obtained from runInfo.xml.
+  synonyms:
+  - --flowcell-id
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: ID of the sequencing machine. Should be  obtained from runInfo.xml.
+  synonyms:
+  - --instrument-id
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '[ --out-dir ] arg              Path to the directory that is used
+    for the  output files. The directory will be created if it does not exist. [Default:
+    ./out]'
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --out-format ] arg           Format of the output files. Currently,
+    SAM  and BAM format are supported. [Default:  BAM]'
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --out-cycles ] arg           Cycles for that alignment output is  written.
+    The respective temporary files are kept. [Default: write only after the last  cycle]'
+  synonyms:
+  - -O
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --out-mode ] arg             The output mode. [Default: ANYBEST]
+    [ALL|A]: Report all found alignments. [BESTN#|N#]: Report the # best found  alignments.
+    [ALLBEST|H]: Report all found alignments  with the best score. [ANYBEST|B]: Report
+    one best alignment. [UNIQUE|U]: Report only unique alignments.'
+  synonyms:
+  - -M
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Activate reporting unmapped reads.  [Default: false]'
+  synonyms:
+  - --report-unmapped
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Activate extended CIGAR format for the  alignment output files ('='\
+    \ for matches and 'X' for mismatches instead of using 'M' for both). [Default:\
+    \ false]"
+  synonyms:
+  - --extended-cigar
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Always sort temporary alignment files  before writing output. Existing
+    sorted  align files are overwritten. This is only  necessary if the temp directory
+    is used  more than once for new alignments. In  general, this is not recommended
+    for most  applications. [Default: false (only sort if no sorted files exist)]'
+  synonyms:
+  - --force-resort
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Maximal relative length of the front  softclip (only relevant during\
+    \ output)  [Default: 0.2] Further explanation: HiLive uses an approach that requires\
+    \ one  exact match of a k-mer at the beginning of  an alignment. This can lead\
+    \ to unaligned  regions at the beginning of the read which  we report as 'softclips'.\
+    \ With this  parameter, you can control the maximal  length of this region."
+  synonyms:
+  - --max-softclip-ratio
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "[ --index ] arg                Path to the HiLive index. Please use\
+    \ the  executable 'hilive-build' to create a new  HiLive index that is delivered\
+    \ with this  program. The index consists of several  files with the same prefix.\
+    \ Please include  the file prefix when specifying the index  location."
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --align-mode ] arg           Alignment mode to balance speed and  accuracy
+    [very-fast|fast|balanced|accurate| very-accurate]. This selected mode  automatically
+    sets other parameters.  Individually configured parameters are  prioritized over
+    settings made by selecting an alignment mode. [Default: balanced]'
+  synonyms:
+  - -m
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Length of the alignment anchor (or initial  seed) [Default: set by
+    the selected  alignment mode]'
+  synonyms:
+  - --anchor-length
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "The interval to tolerate more errors during alignment (low=accurate;\
+    \ great=fast).  [Default: 'anchor-length'/2]"
+  synonyms:
+  - --error-interval
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "The interval to create new seeds  (low=accurate; great=fast). [Default:\
+    \  'anchor-length'/2]"
+  synonyms:
+  - --seeding-interval
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "The maximum length of a front softclip when creating new seeds. In\
+    \ contrast to  --max-softclip-ratio, this parameter may  have effects on runtime\
+    \ and mapping  accuracy. [Default: 'readlength/2]"
+  synonyms:
+  - --max-softclip-length
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'The number of errors that are tolerated for the barcode segments.
+    A single value can be provided to be applied for all barcode  segments. Alternatively,
+    the value can be  set for each segment individually.  [Default: 1] Example: --barcode-errors
+    2 [2 errors for all  barcode segments] --barcode-errors 2,1 [2 errors for the  first,
+    1 error for the second segment]'
+  synonyms:
+  - --barcode-errors
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Align all barcodes. Reads with a barcode  that don't match one of\
+    \ the barcodes  specified with '--barcodes' will be  reported as undetermined.\
+    \ [Default: false]"
+  synonyms:
+  - --align-undetermined-barcodes
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Minimum basecall quality for a nucleotide  to be considered as a match
+    [Default: 1  (everything but N-calls)]'
+  synonyms:
+  - --min-basecall-quality
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Keep sequences of invalid reads, i.e. with  unconsidered barcode or
+    filtered by the  sequencer. This option must be activated to report unmapped reads.
+    [Default: false]'
+  synonyms:
+  - --keep-invalid-sequences
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --min-as ] arg               Minimum alignment score. [Default:
+    Set  automatically based on the alignment mode  and match/mismatch scores]'
+  synonyms:
+  - -s
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Score for a match. [Default: 0]'
+  synonyms:
+  - --match-score
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Penalty for a mismatch. [Default: 6]'
+  synonyms:
+  - --mismatch-penalty
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Penalty for insertion opening. [Default: 5]'
+  synonyms:
+  - --insertion-opening-penalty
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Penalty for insertion extension. [Default:  3]'
+  synonyms:
+  - --insertion-extension-penalty
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Penalty for deletion opening. [Default: 5]'
+  synonyms:
+  - --deletion-opening-penalty
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Penalty for deletion extension. [Default:  3]'
+  synonyms:
+  - --deletion-extension-penalty
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Maximal permitted consecutive gap length.  Increasing this parameter
+    may lead to  highly increased runtime! [Default: 3]'
+  synonyms:
+  - --max-gap-length
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Penalty for softclip opening (only relevant during output). [Default:\
+    \  'mismatch-penalty']"
+  synonyms:
+  - --softclip-opening-penalty
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "Penalty for softclip extension (only  relevant during output). [Default:\
+    \  'mismatch-penalty'/'anchor-length']"
+  synonyms:
+  - --softclip-extension-penalty
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Temporary directory to store the alignment  files and hilive_config.ini.
+    [Default:  ./temp]'
+  synonyms:
+  - --temp-dir
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: "[ --keep-files ] arg           Keep intermediate alignment files for\
+    \ these cycles. The last cycle is always kept.  [Default: Keep files of output\
+    \ cycles] Further Explanations: HiLive comes with a separated executable  'hilive-out'.\
+    \ This executable can be used  to produce alignment files in SAM or BAM  format\
+    \ from existing temporary files. Thus, output can only be created for cycles for\
+    \  that keeping the temporary alignment files  is activated. Temporary alignemnt\
+    \ files are also needed if an interrupted run is  continued with the '--continue'\
+    \ parameter."
+  synonyms:
+  - -k
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '[ --keep-all-files ]           Keep all intermediate alignment files.
+    This option may lead to huge disk space  requirements. [Default: false]'
+  synonyms:
+  - -K
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "Block size for the alignment input/output  stream in Bytes. Append\
+    \ 'K' or 'M' to  specify in Kilobytes or Megabytes,  respectively. [Default: 64M]\
+    \ Example: --block-size 1024 [1024 bytes] --block-size 64K [64 Kilobytes] --block-size\
+    \ 64M [64 Megabytes]"
+  synonyms:
+  - --block-size
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: 'Compression of temporary alignment files.  [Default: LZ4] 0: no compression.
+    1: Deflate (smaller). 2: LZ4 (faster).'
+  synonyms:
+  - --compression
+  args: !SimpleFlagArg
+    name: arg
+  optional: true
+- !Flag
+  description: '[ --num-threads ] arg          Number of threads to spawn (including  output
+    threads). [Default: 1]'
+  synonyms:
+  - -n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "[ --num-out-threads ] arg      Maximum number of threads to use for\
+    \  output. More threads may be used for output automatically if threads are idle.\
+    \  [Default: 'num-threads'/2]"
+  synonyms:
+  - -N
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- hilive-out
+subcommands: []
+help_flag: !Flag
+  description: '[ --help ]                     Print this help message and exit.'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

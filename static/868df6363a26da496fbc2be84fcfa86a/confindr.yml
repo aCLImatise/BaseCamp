@@ -1,0 +1,195 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Folder that contains fastq files you want to check for contamination.
+    Will find any file that contains .fq or .fastq in the filename.
+  synonyms:
+  - -i
+  - --input_directory
+  args: !SimpleFlagArg
+    name: INPUT_DIRECTORY
+  optional: true
+- !Flag
+  description: Base name for output/temporary directories.
+  synonyms:
+  - -o
+  - --output_name
+  args: !SimpleFlagArg
+    name: OUTPUT_NAME
+  optional: true
+- !Flag
+  description: 'Databases folder. To download these, you will need to get access to
+    the rMLST databases. For complete instructions on how to do this, please see https://olc-bioinformatics.github.io/ConFindr/install/
+    #downloading-confindr-databases'
+  synonyms:
+  - -d
+  - --databases
+  args: !SimpleFlagArg
+    name: DATABASES
+  optional: true
+- !Flag
+  description: Activate to prefer using rMLST databases over core- gene derived databases.
+    By default,ConFindr will use core-gene derived databases where available.
+  synonyms:
+  - --rmlst
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of threads to run analysis with.
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: If your ConFindr databases are in a location you don't have write access
+    to, you can enter this option to specify a temporary directory to put genus-specific
+    databases to.
+  synonyms:
+  - -tmp
+  - --tmp
+  args: !SimpleFlagArg
+    name: TMP
+  optional: true
+- !Flag
+  description: By default, intermediate files are deleted. Activate this flag to keep
+    intermediate files.
+  synonyms:
+  - -k
+  - --keep_files
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Base quality needed to support a multiple allele call. Defaults to
+    20.
+  synonyms:
+  - -q
+  - --quality_cutoff
+  args: !SimpleFlagArg
+    name: QUALITY_CUTOFF
+  optional: true
+- !Flag
+  description: Number of bases necessary to support a multiple allele call. Defaults
+    to 2.
+  synonyms:
+  - -b
+  - --base_cutoff
+  args: !SimpleFlagArg
+    name: BASE_CUTOFF
+  optional: true
+- !Flag
+  description: Fraction of bases necessary to support a multiple allele call. Particularly
+    useful when dealing with very high coverage samples. Default is 0.05.
+  synonyms:
+  - -bf
+  - --base_fraction_cutoff
+  args: !SimpleFlagArg
+    name: BASE_FRACTION_CUTOFF
+  optional: true
+- !Flag
+  description: Identifier for forward reads.
+  synonyms:
+  - -fid
+  - --forward_id
+  args: !SimpleFlagArg
+    name: FORWARD_ID
+  optional: true
+- !Flag
+  description: Identifier for reverse reads.
+  synonyms:
+  - -rid
+  - --reverse_id
+  args: !SimpleFlagArg
+    name: REVERSE_ID
+  optional: true
+- !Flag
+  description: Type of input data. Default is Illumina, but can be used for Nanopore
+    too. No PacBio support (yet).
+  synonyms:
+  - -dt
+  - --data_type
+  args: !ChoiceFlagArg
+    choices:
+    - Illumina
+    - Nanopore
+  optional: true
+- !Flag
+  description: Very occasionally, parts of the pipeline that use the BBMap suite will
+    have their memory reservation fail and request not enough, or sometimes negative,
+    memory. If this happens to you, you can use this flag to override automatic memory
+    reservation and use an amount of memory requested by you. -Xmx 20g will specify
+    20 gigs of RAM, and -Xmx 800m will specify 800 megs.
+  synonyms:
+  - -Xmx
+  - --Xmx
+  args: !SimpleFlagArg
+    name: XMX
+  optional: true
+- !Flag
+  description: Path to a cgMLST database to use for contamination detection instead
+    of using the default rMLST database. Sequences in this file should have headers
+    in format >genename_allelenumber. To speed up ConFindr runs, clustering the cgMLST
+    database with CD-HIT before running ConFindr is recommended. This is highly experimental,
+    results should be interpreted with great care.
+  synonyms:
+  - -cgmlst
+  - --cgmlst
+  args: !SimpleFlagArg
+    name: CGMLST
+  optional: true
+- !Flag
+  description: If activated, will look for FASTA files instead of FASTQ for unpaired
+    reads.
+  synonyms:
+  - --fasta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Amount of output you want printed to the screen. Defaults to info,
+    which should be good for most users.
+  synonyms:
+  - -verbosity
+  - --verbosity
+  args: !ChoiceFlagArg
+    choices:
+    - debug
+    - info
+    - warning
+  optional: true
+- !Flag
+  description: Continue ConFindr analyses on samples with two or more genera identified.
+    Default is False
+  synonyms:
+  - -cross_details
+  - --cross_details
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Minimum number of matching hashes in a MASH screen in order for a genus
+    to be considered present in a sample. Default is 150
+  synonyms:
+  - -m
+  - --min_matching_hashes
+  args: !SimpleFlagArg
+    name: MIN_MATCHING_HASHES
+  optional: true
+command:
+- confindr.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - -v
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

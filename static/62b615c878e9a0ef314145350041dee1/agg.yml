@@ -1,0 +1,163 @@
+!Command
+positional: []
+named: []
+command:
+- agg
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input_gvcf
+    optional: false
+  named:
+  - !Flag
+    description: agg will output output_prefix.bcf and output_prefix.tmp
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: output_prefix
+    optional: true
+  - !Flag
+    description: reference sequence
+    synonyms:
+    - -f
+    - --fasta-ref
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: skip non-matching ref alleles (will warn)
+    synonyms:
+    - --ignore-non-matching-ref
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - agg
+  - ingest1
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: agg will output output_prefix.bcf and output_prefix.dpt
+    synonyms:
+    - -o
+    - --output
+    args: !SimpleFlagArg
+      name: output_prefix
+    optional: true
+  - !Flag
+    description: number of compression threads [0]
+    synonyms:
+    - -@
+    - --thread
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: files.txt             plain text file listing agg chunks to merge]
+    synonyms:
+    - -l
+    - --list
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - agg
+  - ingest2
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: region to genotype eg. chr1 or chr20:5000000-6000000
+    synonyms:
+    - -r
+    - --regions
+    args: !SimpleFlagArg
+      name: region
+    optional: true
+  - !Flag
+    description: ',   --output-file <file>          output file name [stdout]'
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ',   --output-type <b|u|z|v>       b: compressed BCF, u: uncompressed
+      BCF, z: compressed VCF, v: uncompressed VCF [v]'
+    synonyms:
+    - -O
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: number of threads [0]
+    synonyms:
+    - -@
+    - --thread
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  command:
+  - agg
+  - genotype
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input.bcf
+    optional: false
+  named:
+  - !Flag
+    description: "filters to apply eg. -i 'QUAL>=10 && DP<100000 && HWE<10' "
+    synonyms:
+    - -i
+    - --include
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'a set of variants that are trusted (eg. 1000G) '
+    synonyms:
+    - -R
+    - --regions
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: output file name [stdout]
+    synonyms:
+    - -o
+    - --output-file
+    args: !SimpleFlagArg
+      name: file
+    optional: true
+  - !Flag
+    description: '<b|u|z|v>       b: compressed BCF, u: uncompressed BCF, z: compressed
+      VCF, v: uncompressed'
+    synonyms:
+    - -O
+    - --output-type
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - agg
+  - anno
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

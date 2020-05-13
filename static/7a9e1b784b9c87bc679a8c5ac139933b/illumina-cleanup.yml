@@ -1,0 +1,239 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: '8'
+  optional: false
+named:
+- !Flag
+  description: An input file containing the sample name and absolute paths to FASTQs
+    to process.
+  synonyms:
+  - --fastqs
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: 'Reduce samples to a given coverage. (Default: 100)'
+  synonyms:
+  - --coverage
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'Expected genome size (bp) for all samples. (Default: 0).'
+  synonyms:
+  - --genome_size
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Directory to write results to. (Default ./)
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: 'The maximum number of processors this workflow should have access
+    to at any given moment. (Default: 1)'
+  synonyms:
+  - --max_cpus
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'Number of processors made available to a single process. If greater
+    than "--max_cpus" it will be set equal to "--max_cpus" (Default: 1)'
+  synonyms:
+  - --cpus
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Print an example of expected input for FASTQs file.
+  synonyms:
+  - --example_fastqs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Verify "--fastqs" produces the expected inputs.
+  synonyms:
+  - --check_fastqs
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Keeps 'work' and '.nextflow' logs, default is to delete on successful
+    completion.
+  synonyms:
+  - --keep_cache
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Illumina adapters to remove (Default: BBmap adapters)'
+  synonyms:
+  - --adapters
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: 'Kmer length used for finding adapters. Adapters shorter than k will
+    not be found. (Default: 23)'
+  synonyms:
+  - --adapter_k
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'phiX174 reference genome to remove (Default: NC_001422)'
+  synonyms:
+  - --phix
+  args: !SimpleFlagArg
+    name: FASTA
+  optional: true
+- !Flag
+  description: 'Kmer length used for finding phiX174. Contaminants shorter than k
+    will not be found. (Default: 31)'
+  synonyms:
+  - --phix_k
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'Trim reads to remove bases matching reference kmers. Values: f (do
+    not trim) r (trim to the right, Default) l (trim to the left)'
+  synonyms:
+  - --ktrim
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: 'Look for shorter kmers at read tips down to this length, when k-trimming
+    or masking. 0 means disabled. Enabling this will disable maskmiddle. (Default:
+    11)'
+  synonyms:
+  - --mink
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'Maximum Hamming distance for ref kmers (subs only). Memory use is
+    proportional to (3*K)^hdist. (Default: 1)'
+  synonyms:
+  - --hdist
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'When kmer right-trimming, trim both reads to the minimum length of
+    either. Values: f (do not equally trim) t (equally trim to the right, Default)'
+  synonyms:
+  - --tpe
+  args: !SimpleFlagArg
+    name: BOOL
+  optional: true
+- !Flag
+  description: 'Trim adapters based on where paired reads overlap. Values: f (do not
+    trim by overlap) t (trim by overlap, Default)'
+  synonyms:
+  - --tbo
+  args: !SimpleFlagArg
+    name: BOOL
+  optional: true
+- !Flag
+  description: 'Trim read ends to remove bases with quality below trimq. Performed
+    AFTER looking for kmers. Values: rl (trim both ends, Default) f (neither end)
+    r (right end only) l (left end only) w (sliding window)'
+  synonyms:
+  - --qtrim
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: 'Regions with average quality BELOW this will be trimmed if qtrim is
+    set to something other than f. (Default: 6)'
+  synonyms:
+  - --trimq
+  args: !SimpleFlagArg
+    name: FLOAT
+  optional: true
+- !Flag
+  description: 'Reads with average quality (after trimming) below this will be discarded.
+    (Default: 20)'
+  synonyms:
+  - --maq
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'Reads shorter than this after trimming will be discarded. Pairs will
+    be discarded if both are shorter. (Default: 35)'
+  synonyms:
+  - --minlength
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'If positive, right-trim length to be equal to zero, modulo this number.
+    (Default: 0)'
+  synonyms:
+  - --ftm
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'Discard reads with invalid characters as bases. Values: f (keep all
+    reads) t (toss reads with ambiguous bases, Default)'
+  synonyms:
+  - --tossjunk
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output quality offset. Values: 33 (PHRED33 offset quality scores,
+    Default) 64 (PHRED64 offset quality scores) auto (keeps the current input offset)'
+  synonyms:
+  - --qout
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: 'This will be passed to Java to set memory usage. Examples: 8g will
+    specify 8 gigs of RAM (Default) 20g will specify 20 gigs of RAM 200m will specify
+    200 megs of RAM'
+  synonyms:
+  - --xmx
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: 'Max number of corrections within a 20bp window (Default: 1)'
+  synonyms:
+  - --maxcor
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: Set to a positive number to use that prng seed for sampling (Default
+    42).
+  synonyms:
+  - --sampleseed
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+command:
+- illumina-cleanup
+subcommands: []
+help_flag: !Flag
+  description: Show this message and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Print workflow version information
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

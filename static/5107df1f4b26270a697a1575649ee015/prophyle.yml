@@ -1,0 +1,371 @@
+!Command
+positional: []
+named: []
+command:
+- prophyle
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: directory for the tree and the sequences [~/prophyle]
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: DIR
+    optional: true
+  - !Flag
+    description: log file
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: rewrite library files if they already exist
+    synonyms:
+    - -F
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[STR [STR ...]]  advanced configuration (a JSON dictionary)'
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - prophyle
+  - download
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: directory with the library sequences [dir. of the first tree]
+    synonyms:
+    - -g
+    args: !SimpleFlagArg
+      name: DIR
+    optional: true
+  - !Flag
+    description: number of threads [auto (8)]
+    synonyms:
+    - -j
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: k-mer length [31]
+    synonyms:
+    - -k
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: log file [<index.dir>/log.txt]
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: rate of sampling of the tree [no sampling]
+    synonyms:
+    - -s
+    args: !SimpleFlagArg
+      name: FLOAT
+    optional: true
+  - !Flag
+    description: rewrite index files if they already exist
+    synonyms:
+    - -F
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: mask repeats/low complexity regions (using DustMasker)
+    synonyms:
+    - -M
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: do not add prefixes to node names when multiple trees are used
+    synonyms:
+    - -P
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: skip k-LCP construction (then restarted search only)
+    synonyms:
+    - -K
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: keep temporary files from k-mer propagation
+    synonyms:
+    - -T
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: autocomplete tree (names of internal nodes and FASTA paths)
+    synonyms:
+    - -A
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[STR [STR ...]]  advanced configuration (a JSON dictionary)'
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - prophyle
+  - index
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: k-mer length [detect automatically from the index]
+    synonyms:
+    - -k
+    args: !SimpleFlagArg
+      name: INT
+    optional: true
+  - !Flag
+    description: 'measure: h1=hit count, c1=coverage, h2=norm.hit count, c2=norm.coverage
+      [h1]'
+    synonyms:
+    - -m
+    args: !ChoiceFlagArg
+      choices:
+      - h1
+      - c1
+      - h2
+      - c2
+    optional: true
+  - !Flag
+    description: output format [sam]
+    synonyms:
+    - -f
+    args: !ChoiceFlagArg
+      choices:
+      - kraken
+      - sam
+    optional: true
+  - !Flag
+    description: log file
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: STR
+    optional: true
+  - !Flag
+    description: incorporate sequences and qualities into SAM records
+    synonyms:
+    - -P
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: annotate assignments (using tax. information from NHX)
+    synonyms:
+    - -A
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: replace read assignments by their LCA
+    synonyms:
+    - -L
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: replace k-mer matches by their LCA
+    synonyms:
+    - -X
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: mimic Kraken (equivalent to "-m h1 -f kraken -L -X")
+    synonyms:
+    - -M
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: use C++ impl. of the assignment algorithm (experimental)
+    synonyms:
+    - -C
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: force restarted search mode
+    synonyms:
+    - -K
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[STR [STR ...]]  advanced configuration (a JSON dictionary)'
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - prophyle
+  - classify
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: "['w', 'u', 'wl', 'ul'] statistics to use for the computation of\
+      \ histograms: w (default) => weighted assignments; u => unique assignments,\
+      \ non-weighted; wl => weighted assignments, propagated to leaves; ul => unique\
+      \ assignments, propagated to leaves."
+    synonyms:
+    - -s
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "['sam', 'bam', 'cram', 'uncompressed_bam', 'kraken', 'histo'] Input\
+      \ format of assignments [auto]"
+    synonyms:
+    - -f
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[STR [STR ...]]       advanced configuration (a JSON dictionary)'
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - prophyle
+  - analyze
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: '[STR [STR ...]]  advanced configuration (a JSON dictionary)'
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - prophyle
+  - compress
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: skip k-LCP construction
+    synonyms:
+    - -K
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[STR [STR ...]]  advanced configuration (a JSON dictionary)'
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - prophyle
+  - decompress
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: clean files instead of compiling
+    synonyms:
+    - -C
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: force recompilation
+    synonyms:
+    - -F
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: run compilation in parallel
+    synonyms:
+    - -P
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: '[STR [STR ...]]  advanced configuration (a JSON dictionary)'
+    synonyms:
+    - -c
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - prophyle
+  - compile
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag:
+usage_flag:
+version_flag:

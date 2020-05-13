@@ -1,0 +1,206 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Turn off logging. (default is CRITICAL)
+  synonyms:
+  - --logOff
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Turn on logging at INFO level. (default is CRITICAL)
+  synonyms:
+  - --logInfo
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Turn on logging at DEBUG level. (default is CRITICAL)
+  synonyms:
+  - --logDebug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Log at level (may be either OFF/INFO/DEBUG/CRITICAL). (default is CRITICAL)
+  synonyms:
+  - --logLevel
+  args: !SimpleFlagArg
+    name: LOGLEVEL
+  optional: true
+- !Flag
+  description: File to log in
+  synonyms:
+  - --logFile
+  args: !SimpleFlagArg
+    name: LOGFILE
+  optional: true
+- !Flag
+  description: Turn on rotating logging, which prevents log files getting too big.
+  synonyms:
+  - --rotatingLogging
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Directory in which to place job management files and the global accessed
+    temporary file directories(this needs to be globally accessible by all machines
+    running jobs). If you pass an existing directory it will check if it's a valid
+    existing job tree, then try and restart the jobs in it. The default=./jobTree
+  synonyms:
+  - --jobTree
+  args: !SimpleFlagArg
+    name: JOBTREE
+  optional: true
+- !Flag
+  description: Records statistics about the job-tree to be used by jobTreeStats. default=False
+  synonyms:
+  - --stats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The type of batch system to run the job(s) with, currently can be 'singleMachine'/'parasol'/'acidTest'/
+    'gridEngine'/'lsf'. default=singleMachine
+  synonyms:
+  - --batchSystem
+  args: !SimpleFlagArg
+    name: BATCHSYSTEM
+  optional: true
+- !Flag
+  description: The maximum number of threads (technically processes at this point)
+    to use when running in single machine mode. Increasing this will allow more jobs
+    to run concurrently when running on a single machine. default=4
+  synonyms:
+  - --maxThreads
+  args: !SimpleFlagArg
+    name: MAXTHREADS
+  optional: true
+- !Flag
+  description: The command to run the parasol program default=parasol
+  synonyms:
+  - --parasolCommand
+  args: !SimpleFlagArg
+    name: PARASOLCOMMAND
+  optional: true
+- !Flag
+  description: The default amount of memory to request for a job (in bytes), by default
+    is 2^31 = 2 gigabytes, default=2147483648
+  synonyms:
+  - --defaultMemory
+  args: !SimpleFlagArg
+    name: DEFAULTMEMORY
+  optional: true
+- !Flag
+  description: The default the number of cpus to dedicate a job. default=1
+  synonyms:
+  - --defaultCpu
+  args: !SimpleFlagArg
+    name: DEFAULTCPU
+  optional: true
+- !Flag
+  description: The maximum number of cpus to request from the batch system at any
+    one time. default=9223372036854775807
+  synonyms:
+  - --maxCpus
+  args: !SimpleFlagArg
+    name: MAXCPUS
+  optional: true
+- !Flag
+  description: The maximum amount of memory to request from the batch system at any
+    one time. default=9223372036854775807
+  synonyms:
+  - --maxMemory
+  args: !SimpleFlagArg
+    name: MAXMEMORY
+  optional: true
+- !Flag
+  description: Number of times to retry a failing job before giving up and labeling
+    job failed. default=0
+  synonyms:
+  - --retryCount
+  args: !SimpleFlagArg
+    name: RETRYCOUNT
+  optional: true
+- !Flag
+  description: Maximum runtime of a job (in seconds) before we kill it (this is a
+    lower bound, and the actual time before killing the job may be longer). default=9223372036854775807
+  synonyms:
+  - --maxJobDuration
+  args: !SimpleFlagArg
+    name: MAXJOBDURATION
+  optional: true
+- !Flag
+  description: Period of time to wait (in seconds) between checking for missing/overlong
+    jobs, that is jobs which get lost by the batch system. Expert parameter. (default
+    is set by the batch system)
+  synonyms:
+  - --rescueJobsFrequency
+  args: !SimpleFlagArg
+    name: RESCUEJOBSFREQUENCY
+  optional: true
+- !Flag
+  description: The batch system to run for jobs with larger memory/cpus requests,
+    currently can be 'singleMachine'/'parasol'/'acidTest'/'gridEngine'. default=none
+  synonyms:
+  - --bigBatchSystem
+  args: !SimpleFlagArg
+    name: BIGBATCHSYSTEM
+  optional: true
+- !Flag
+  description: The memory threshold above which to submit to the big queue. default=9223372036854775807
+  synonyms:
+  - --bigMemoryThreshold
+  args: !SimpleFlagArg
+    name: BIGMEMORYTHRESHOLD
+  optional: true
+- !Flag
+  description: The cpu threshold above which to submit to the big queue. default=9223372036854775807
+  synonyms:
+  - --bigCpuThreshold
+  args: !SimpleFlagArg
+    name: BIGCPUTHRESHOLD
+  optional: true
+- !Flag
+  description: The maximum number of big batch system cpus to allow at one time on
+    the big queue. default=9223372036854775807
+  synonyms:
+  - --bigMaxCpus
+  args: !SimpleFlagArg
+    name: BIGMAXCPUS
+  optional: true
+- !Flag
+  description: The maximum amount of memory to request from the big batch system at
+    any one time. default=9223372036854775807
+  synonyms:
+  - --bigMaxMemory
+  args: !SimpleFlagArg
+    name: BIGMAXMEMORY
+  optional: true
+- !Flag
+  description: The approximate time (in seconds) that you'd like a list of child jobs
+    to be run serially before being parallelized. This parameter allows one to avoid
+    over parallelizing tiny jobs, and therefore paying significant scheduling overhead,
+    by running tiny jobs in series on a single node/core of the cluster. default=30
+  synonyms:
+  - --jobTime
+  args: !SimpleFlagArg
+    name: JOBTIME
+  optional: true
+- !Flag
+  description: The maximum size of a job log file to keep (in bytes), log files larger
+    than this will be truncated to the last X bytes. Default is 50 kilobytes, default=50120
+  synonyms:
+  - --maxLogFileSize
+  args: !SimpleFlagArg
+    name: MAXLOGFILESIZE
+  optional: true
+- !Flag
+  description: The command to run (which will generate subsequent jobs). This is deprecated
+  synonyms:
+  - --command
+  args: !SimpleFlagArg
+    name: COMMAND
+  optional: true
+command:
+- scriptTreeTest_Wrapper.py
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

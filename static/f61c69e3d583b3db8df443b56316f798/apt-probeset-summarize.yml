@@ -1,0 +1,252 @@
+!Command
+positional:
+- !Positional
+  description: 'Performs an RMA style background adjustment  as described in Irizarry
+    et al 2003. '
+  position: 0
+  name: rma-bg
+  optional: false
+- !Positional
+  description: 'Class for doing quantile normalization. Can  do sketch and full quantile
+    (just set sketch to chip size or zero) and supports bioconductor compatibility. '
+  position: 1
+  name: quant-norm
+  optional: false
+- !Positional
+  description: 'Class for artifact reduction. '
+  position: 2
+  name: artifact-reduction
+  optional: false
+- !Positional
+  description: 'Class for doing median normalization. Adjust intensities such that
+    all chips have the same median (or average). '
+  position: 3
+  name: med-norm
+  optional: false
+- !Positional
+  description: 'Class for doing adapter type normalization. Adjust intensities by
+    adapter type. '
+  position: 4
+  name: adapter-type-norm
+  optional: false
+- !Positional
+  description: 'Subtract bacground based on median intensity of probes with similar
+    GC content. '
+  position: 5
+  name: gc-bg
+  optional: false
+- !Positional
+  description: 'Correct feature intensity for variations in gc_count. '
+  position: 6
+  name: gc-correction
+  optional: false
+- !Positional
+  description: 'Scale cel intensities. '
+  position: 7
+  name: scale-intensities
+  optional: false
+- !Positional
+  description: 'Class for dumping intensity values to a file. '
+  position: 8
+  name: intensity-reporter
+  optional: false
+- !Positional
+  description: 'Placeholder chipstream that does no transformation '
+  position: 9
+  name: no-trans
+  optional: false
+- !Positional
+  description: 'No adjustment. Just uses unmodified PM intensity values. '
+  position: 0
+  name: pm-only
+  optional: false
+- !Positional
+  description: 'Use mismatch probe as adjustment for perfect match. Has strength of
+    being unbiased, but often the mismatch probe binds the match target. '
+  position: 1
+  name: pm-mm
+  optional: false
+- !Positional
+  description: 'Do an adjustment based on the median intensity of probes with similar
+    GC content. '
+  position: 2
+  name: pm-gcbg
+  optional: false
+- !Positional
+  description: 'Add itensity of PM probe for other allele to PM probes. '
+  position: 3
+  name: pm-sum
+  optional: false
+- !Positional
+  description: 'The PLIER (Probe Logarithmic Error Intensity  Estimate) method produces
+    an improved signal by accounting for experimentally observed patterns in feature
+    behavior and handling error at the appropriately at low and high signal values.
+    This version of PLIER differs from the previous version by the addition of a SafteyZero,
+    NumericalTolerance, and FixPrecomputed. These options are intended to improve
+    the stability of PLIER results when using precomputed feature reponse values.
+    To get the older PLIER behavior set SafetyZero to 0.0, NumericalTolerance to 0.0,
+    and FixPrecomputed to false. '
+  position: 0
+  name: plier
+  optional: false
+- !Positional
+  description: 'The SEA (Simplified Expression Analysis) method provides a simple
+    signal estimate, using the initialization algorithm from the PLIER (Probe Logarithmic
+    Error Intensity Estimate) method and omitting the PLIER parameter fitting. SEA
+    is useful for single chip signal estimation. The version of PLIER used by SEA
+    differs from the previous version  by the addition of a SafteyZero, NumericalTolerance,
+    and FixPrecomputed. These options are intended to improve the stability of PLIER
+    results when using precomputed feature reponse values. To get the older PLIER
+    behavior set SafetyZero to 0.0, NumericalTolerance to 0.0, and FixPrecomputed
+    to false. '
+  position: 1
+  name: sea
+  optional: false
+- !Positional
+  description: 'Do probe set quantification estimate by iteratively calling PLIER
+    with the probes that best correlate  with signal estimate. The version of PLIER
+    used by IterPLIER differs from the previous version by the addition of a SafteyZero,
+    NumericalTolerance, and FixPrecomputed. These options are intended to improve
+    the stability of PLIER results when using precomputed feature reponse values.
+    To get the older PLIER behavior set SafetyZero to 0.0, NumericalTolerance to 0.0,
+    and FixPrecomputed to false. '
+  position: 2
+  name: iter-plier
+  optional: false
+- !Positional
+  description: 'Performs a median polish to estimate target and probe effects. Resulting
+    summaries are in log2 space by default. Used in summary step of RMA as described
+    in Irizarry et al 2003. '
+  position: 3
+  name: med-polish
+  optional: false
+- !Positional
+  description: 'Calculates the p-value that the intensities in a probeset could have
+    been observed by chance in a background distribution. Used as a substitute for
+    standard absent/present calls when mismatch probes  are not available. '
+  position: 4
+  name: dabg
+  optional: false
+- !Positional
+  description: 'Calculates the average measurement for a probeset using the MAS 4
+    average difference algorithm, namely the average difference between the pm and
+    mm probe signal. '
+  position: 5
+  name: avgdiff
+  optional: false
+- !Positional
+  description: 'Use the median of probes for a particular chip as the summary. '
+  position: 6
+  name: median
+  optional: false
+- !Positional
+  description: 'Does expression summarization on probesets. '
+  position: 0
+  name: expr
+  optional: false
+- !Positional
+  description: 'Determines PCA for probes and picks probes that are near the principal
+    component as the probes to use for downstream analysis. '
+  position: 1
+  name: pca-select
+  optional: false
+- !Positional
+  description: 'Picks probes that are similar to each other based  on spectral cluster
+    and normalized cut. '
+  position: 2
+  name: spect-select
+  optional: false
+named:
+- !Flag
+  description: '*.cel'
+  synonyms:
+  - -p
+  - -c
+  - -o
+  args: !SimpleFlagArg
+    name: chip.pgf
+  optional: true
+- !Flag
+  description: "name of the log file. Generally  defaults to the program name in the\
+    \ out-dir folder. [default ''] "
+  synonyms:
+  - --log-file
+  args: !SimpleFlagArg
+    name: The
+  optional: true
+- !Flag
+  description: "with probeset_id(name) and group_name columns specifying subsets of\
+    \ probesets to compute qc stats for. [default ''] "
+  synonyms:
+  - --qc-probesets
+  args: !SimpleFlagArg
+    name: File
+  optional: true
+- !Flag
+  description: "types to check library and CEL files against. Can be specified multiple\
+    \ times. The first one is propigated as the chip  type in the output files. Warning,\
+    \ use of this option will override the usual check between chip types found in\
+    \ the library files and cel files. You should use this option instead of --force\
+    \ when possible. [default ''] "
+  synonyms:
+  - --chip-type
+  args: !SimpleFlagArg
+    name: Chip
+  optional: true
+- !Flag
+  description: "many digits of precision to use after decimal. [default '5'] "
+  synonyms:
+  - -x
+  - --precision
+  args: !SimpleFlagArg
+    name: How
+  optional: true
+- !Flag
+  description: "a particular operation (i.e. --explain rma-bg). [default ''] "
+  synonyms:
+  - --explain
+  args: !SimpleFlagArg
+    name: Explain
+  optional: true
+- !Flag
+  description: "not use the PM probes specified in file for computing results. [experimental]\
+    \ [default ''] "
+  synonyms:
+  - --kill-list
+  args: !SimpleFlagArg
+    name: Do
+  optional: true
+- !Flag
+  description: "time the engine run was started  [default ''] "
+  synonyms:
+  - --time-start
+  args: !SimpleFlagArg
+    name: The
+  optional: true
+- !Flag
+  description: "time the engine run ended [default ''] "
+  synonyms:
+  - --time-end
+  args: !SimpleFlagArg
+    name: The
+  optional: true
+- !Flag
+  description: "run time in minutes. [default ''] "
+  synonyms:
+  - --time-run-minutes
+  args: !SimpleFlagArg
+    name: The
+  optional: true
+- !Flag
+  description: "GUID for the analysis run. [default ''] "
+  synonyms:
+  - --analysis-guid
+  args: !SimpleFlagArg
+    name: The
+  optional: true
+command:
+- apt-probeset-summarize
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:

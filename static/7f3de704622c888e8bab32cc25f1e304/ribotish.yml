@@ -1,0 +1,758 @@
+!Command
+positional: []
+named: []
+command:
+- ribotish
+subcommands:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Riboseq bam file
+    synonyms:
+    - -b
+    args: !SimpleFlagArg
+      name: RIBOBAMPATH
+    optional: true
+  - !Flag
+    description: Gene annotation file
+    synonyms:
+    - -g
+    args: !SimpleFlagArg
+      name: GENEPATH
+    optional: true
+  - !Flag
+    description: "Output data file (default: ribobampath[:-4]+ '_qual.txt')"
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: The data is TIS enriched (for LTM & Harritonine)
+    synonyms:
+    - -t
+    - --tis
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Input previous output file, do not read gene file and bam file again
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: 'Gene annotation file format (gtf, bed, gpd, gff, default: auto)'
+    synonyms:
+    - --geneformat
+    args: !SimpleFlagArg
+      name: GENEFORMAT
+    optional: true
+  - !Flag
+    description: Input chromosome id mapping table file if annotation chr ids are
+      not same as chr ids in bam/fasta files
+    synonyms:
+    - --chrmap
+    args: !SimpleFlagArg
+      name: CHRMAP
+    optional: true
+  - !Flag
+    description: "Output pdf figure file (default: ribobampath[:-4]+ '_qual.pdf')"
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: FIGPDFPATH
+    optional: true
+  - !Flag
+    description: "Output offset parameter file (default: ribobampath[:-4]+ '.para.py')"
+    synonyms:
+    - -r
+    args: !SimpleFlagArg
+      name: PARAPATH
+    optional: true
+  - !Flag
+    description: 'Range of tag length (default: 25,35)'
+    synonyms:
+    - -l
+    args: !SimpleFlagArg
+      name: LENS
+    optional: true
+  - !Flag
+    description: 'Position range near start codon or stop codon (default: -40,20)'
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: DIS
+    optional: true
+  - !Flag
+    description: 'Bins for cds profile (default: 20)'
+    synonyms:
+    - --bins
+    args: !SimpleFlagArg
+      name: BINS
+    optional: true
+  - !Flag
+    description: Do not consider reads with mismatch at position 0 as a new group
+    synonyms:
+    - --nom0
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Threshold for quality (default: 0.5)'
+    synonyms:
+    - --th
+    args: !SimpleFlagArg
+      name: TH
+    optional: true
+  - !Flag
+    description: 'Max NH value allowed for bam alignments (default: 1)'
+    synonyms:
+    - --maxNH
+    args: !SimpleFlagArg
+      name: MAXNH
+    optional: true
+  - !Flag
+    description: 'Min MapQ value required for bam alignments (default: 1)'
+    synonyms:
+    - --minMapQ
+    args: !SimpleFlagArg
+      name: MINMAPQ
+    optional: true
+  - !Flag
+    description: Use bam secondary alignments
+    synonyms:
+    - --secondary
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Reads are paired end
+    synonyms:
+    - --paired
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Use a color style readable for color blind people ('#F00078,#00F000,#0078F0')
+    synonyms:
+    - --colorblind
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: "User specified Matplotlib accepted color codes for three frames\
+      \ (default: 'r,g,b')"
+    synonyms:
+    - --colors
+    args: !SimpleFlagArg
+      name: COLORS
+    optional: true
+  - !Flag
+    description: 'Number of processes (default: 1)'
+    synonyms:
+    - -p
+    args: !SimpleFlagArg
+      name: NUMPROC
+    optional: true
+  - !Flag
+    description: Increase output verbosity
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - ribotish
+  - quality
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: TIS enriched riboseq bam files, comma seperated
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: TISBAMPATHS
+    optional: true
+  - !Flag
+    description: Ordinary riboseq bam files, comma seperated
+    synonyms:
+    - -b
+    args: !SimpleFlagArg
+      name: RIBOBAMPATHS
+    optional: true
+  - !Flag
+    description: Gene annotation file for ORF prediction
+    synonyms:
+    - -g
+    args: !SimpleFlagArg
+      name: GENEPATH
+    optional: true
+  - !Flag
+    description: Genome fasta file
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: GENOMEFAPATH
+    optional: true
+  - !Flag
+    description: Output result file
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: 'Only test input candidate ORFs, format: transID start stop (0 based,
+      half open)'
+    synonyms:
+    - -i
+    args: !SimpleFlagArg
+      name: INPUT
+    optional: true
+  - !Flag
+    description: 'Gene annotation file format (gtf, bed, gpd, gff, default: auto)'
+    synonyms:
+    - --geneformat
+    args: !SimpleFlagArg
+      name: GENEFORMAT
+    optional: true
+  - !Flag
+    description: Input offset parameter files for -t bam files
+    synonyms:
+    - --tispara
+    args: !SimpleFlagArg
+      name: TISPARA
+    optional: true
+  - !Flag
+    description: Input offset parameter files for -b bam files
+    synonyms:
+    - --ribopara
+    args: !SimpleFlagArg
+      name: RIBOPARA
+    optional: true
+  - !Flag
+    description: 'Group transcript according to TIS reads density quantile (default:
+      10)'
+    synonyms:
+    - --nparts
+    args: !SimpleFlagArg
+      name: NPARTS
+    optional: true
+  - !Flag
+    description: Gene file for known protein coding gene annotation and TIS background
+      estimation instead of -g gene file
+    synonyms:
+    - -a
+    args: !SimpleFlagArg
+      name: AGENEPATH
+    optional: true
+  - !Flag
+    description: 'Output TIS background estimation result (default: tisBackground.txt)'
+    synonyms:
+    - -e
+    args: !SimpleFlagArg
+      name: ESTPATH
+    optional: true
+  - !Flag
+    description: Input background estimation result file instead of instant estimation
+    synonyms:
+    - -s
+    args: !SimpleFlagArg
+      name: INESTPATH
+    optional: true
+  - !Flag
+    description: Output RPF P-site profile for each transcript
+    synonyms:
+    - --transprofile
+    args: !SimpleFlagArg
+      name: TRANSPROFILE
+    optional: true
+  - !Flag
+    description: Input RPF P-site profile for each transcript, instead of reading
+      bam reads, save time for re-running
+    synonyms:
+    - --inprofile
+    args: !SimpleFlagArg
+      name: INPROFILE
+    optional: true
+  - !Flag
+    description: Input chromosome id mapping table file if annotation chr ids are
+      not same as chr ids in bam/fasta files
+    synonyms:
+    - --chrmap
+    args: !SimpleFlagArg
+      name: CHRMAP
+    optional: true
+  - !Flag
+    description: "All result output without FDR q-value threshold (default: output\
+      \ + '_all.txt', 'off' to turn off)"
+    synonyms:
+    - --allresult
+    args: !SimpleFlagArg
+      name: ALLRESULT
+    optional: true
+  - !Flag
+    description: Use alternative start codons (all codons with 1 base different from
+      ATG)
+    synonyms:
+    - --alt
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Use provided alternative start codons, comma seperated, eg. CTG,GTG,ACG
+    synonyms:
+    - --altcodons
+    args: !SimpleFlagArg
+      name: ALTCODONS
+    optional: true
+  - !Flag
+    description: Add TIS bam counts to ribo, if specified or -b not provided
+    synonyms:
+    - --tis2ribo
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: The data is treated with harringtonine (instead of LTM)
+    synonyms:
+    - --harr
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Flanking region for harr data, in codons (default: 15)'
+    synonyms:
+    - --harrwidth
+    args: !SimpleFlagArg
+      name: HARRWIDTH
+    optional: true
+  - !Flag
+    description: Use enrich test instead of frame test
+    synonyms:
+    - --enrichtest
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Min amino acid length of candidate ORF (default: 6)'
+    synonyms:
+    - --minaalen
+    args: !SimpleFlagArg
+      name: MINAALEN
+    optional: true
+  - !Flag
+    description: Only process given genes
+    synonyms:
+    - --genefilter
+    args: !SimpleFlagArg
+      name: GENEFILTER
+    optional: true
+  - !Flag
+    description: 'TIS p value threshold (default: 0.05)'
+    synonyms:
+    - --tpth
+    args: !SimpleFlagArg
+      name: TPTH
+    optional: true
+  - !Flag
+    description: 'Frame p value threshold (default: 0.05)'
+    synonyms:
+    - --fpth
+    args: !SimpleFlagArg
+      name: FPTH
+    optional: true
+  - !Flag
+    description: 'At least one of TIS or frame p value should be lower than this threshold
+      (default: 0.05)'
+    synonyms:
+    - --minpth
+    args: !SimpleFlagArg
+      name: MINPTH
+    optional: true
+  - !Flag
+    description: Fisher's p value threshold
+    synonyms:
+    - --fspth
+    args: !SimpleFlagArg
+      name: FSPTH
+    optional: true
+  - !Flag
+    description: Fisher's FDR q value threshold
+    synonyms:
+    - --fsqth
+    args: !SimpleFlagArg
+      name: FSQTH
+    optional: true
+  - !Flag
+    description: Only report local best frame test results
+    synonyms:
+    - --framelocalbest
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Only report best frame test results
+    synonyms:
+    - --framebest
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Only report longest possible ORF results
+    synonyms:
+    - --longest
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Report ORF sequences
+    synonyms:
+    - --seq
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Report amino acid sequences
+    synonyms:
+    - --aaseq
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Report all exon block positions for predicted ORFs
+    synonyms:
+    - --blocks
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Max NH value allowed for bam alignments (default: 5)'
+    synonyms:
+    - --maxNH
+    args: !SimpleFlagArg
+      name: MAXNH
+    optional: true
+  - !Flag
+    description: 'Min MapQ value required for bam alignments (default: 1)'
+    synonyms:
+    - --minMapQ
+    args: !SimpleFlagArg
+      name: MINMAPQ
+    optional: true
+  - !Flag
+    description: Use bam secondary alignments
+    synonyms:
+    - --secondary
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Reads are paired end
+    synonyms:
+    - --paired
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Do not require reads compatible with transcript splice junctions
+    synonyms:
+    - --nocompatible
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Missed bases allowed in reads compatibility check (default: 2)'
+    synonyms:
+    - --compatiblemis
+    args: !SimpleFlagArg
+      name: COMPATIBLEMIS
+    optional: true
+  - !Flag
+    description: Number of processes
+    synonyms:
+    - -p
+    args: !SimpleFlagArg
+      name: NUMPROC
+    optional: true
+  - !Flag
+    description: Increase output verbosity
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - ribotish
+  - predict
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional: []
+  named:
+  - !Flag
+    description: Group 1 TIS enriched riboseq bam files, comma seperated
+    synonyms:
+    - -a
+    args: !SimpleFlagArg
+      name: TIS1BAMPATHS
+    optional: true
+  - !Flag
+    description: Group 2 TIS enriched riboseq bam files, comma seperated
+    synonyms:
+    - -b
+    args: !SimpleFlagArg
+      name: TIS2BAMPATHS
+    optional: true
+  - !Flag
+    description: Gene annotation file
+    synonyms:
+    - -g
+    args: !SimpleFlagArg
+      name: GENEPATH
+    optional: true
+  - !Flag
+    description: Output result file
+    synonyms:
+    - -o
+    args: !SimpleFlagArg
+      name: OUTPUT
+    optional: true
+  - !Flag
+    description: Input offset parameter files for group 1 bam files
+    synonyms:
+    - --tis1para
+    args: !SimpleFlagArg
+      name: TIS1PARA
+    optional: true
+  - !Flag
+    description: Input offset parameter files for group 2 bam files
+    synonyms:
+    - --tis2para
+    args: !SimpleFlagArg
+      name: TIS2PARA
+    optional: true
+  - !Flag
+    description: 'Gene annotation file format (gtf, bed, gpd, gff, default: auto)'
+    synonyms:
+    - --geneformat
+    args: !SimpleFlagArg
+      name: GENEFORMAT
+    optional: true
+  - !Flag
+    description: 'Max NH value allowed for bam alignments (default: 5)'
+    synonyms:
+    - --maxNH
+    args: !SimpleFlagArg
+      name: MAXNH
+    optional: true
+  - !Flag
+    description: 'Min MapQ value required for bam alignments (default: 1)'
+    synonyms:
+    - --minMapQ
+    args: !SimpleFlagArg
+      name: MINMAPQ
+    optional: true
+  - !Flag
+    description: Use bam secondary alignments
+    synonyms:
+    - --secondary
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Reads are paired end
+    synonyms:
+    - --paired
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Labels for group 1 TIS data
+    synonyms:
+    - --l1
+    args: !SimpleFlagArg
+      name: TIS1LABELS
+    optional: true
+  - !Flag
+    description: Labels for group 2 TIS data
+    synonyms:
+    - --l2
+    args: !SimpleFlagArg
+      name: TIS2LABELS
+    optional: true
+  - !Flag
+    description: Do not require reads compatible with transcript splice junctions
+    synonyms:
+    - --nocompatible
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Missed bases allowed in reads compatibility check
+    synonyms:
+    - --compatiblemis
+    args: !SimpleFlagArg
+      name: COMPATIBLEMIS
+    optional: true
+  - !Flag
+    description: Input chromosome id mapping table file if annotation chr ids are
+      not same as chr ids in bam/fasta files
+    synonyms:
+    - --chrmap
+    args: !SimpleFlagArg
+      name: CHRMAP
+    optional: true
+  - !Flag
+    description: Use common TISs instead of union TISs for normalization
+    synonyms:
+    - --normcomm
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Use only annotated TISs for normalization
+    synonyms:
+    - --normanno
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: RNASeq count input
+    synonyms:
+    - --rnaseq
+    args: !SimpleFlagArg
+      name: RNASEQ
+    optional: true
+  - !Flag
+    description: 'Input TIS scale factor of 2/1 (default: auto)'
+    synonyms:
+    - --scalefactor
+    args: !SimpleFlagArg
+      name: SCALEFACTOR
+    optional: true
+  - !Flag
+    description: 'Input RNASeq scale factor of 2/1 (default: auto)'
+    synonyms:
+    - --rnascale
+    args: !SimpleFlagArg
+      name: RNASCALE
+    optional: true
+  - !Flag
+    description: Use chisquare test instead of Fisher's exact test for mRNA referenced
+      test
+    synonyms:
+    - --chi2
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Use beta-binom test instead of Fisher's exact test for mRNA referenced
+      test
+    synonyms:
+    - --betabinom
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: Export count table for differential analysis with other tools
+    synonyms:
+    - --export
+    args: !SimpleFlagArg
+      name: EXPORT
+    optional: true
+  - !Flag
+    description: Scatter plot output pdf file
+    synonyms:
+    - --plotout
+    args: !SimpleFlagArg
+      name: PLOTOUT
+    optional: true
+  - !Flag
+    description: 'Scatter plot figure size (default: 8,8)'
+    synonyms:
+    - --figsize
+    args: !SimpleFlagArg
+      name: FIGSIZE
+    optional: true
+  - !Flag
+    description: TIS normalization MA plot output pdf file
+    synonyms:
+    - --plotma
+    args: !SimpleFlagArg
+      name: PLOTMA
+    optional: true
+  - !Flag
+    description: 'Index of TIS q value, 0 based (default: 15)'
+    synonyms:
+    - --qi
+    args: !SimpleFlagArg
+      name: QI
+    optional: true
+  - !Flag
+    description: 'Minimum fold change threshold (default: 1.5)'
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: FOLDCHANGE
+    optional: true
+  - !Flag
+    description: 'Input TIS p value threshold (default: 0.05)'
+    synonyms:
+    - --ipth
+    args: !SimpleFlagArg
+      name: IPTH
+    optional: true
+  - !Flag
+    description: 'Input TIS q value threshold (default: 0.05)'
+    synonyms:
+    - --iqth
+    args: !SimpleFlagArg
+      name: IQTH
+    optional: true
+  - !Flag
+    description: 'Output TIS diff p value threshold (default: 0.05)'
+    synonyms:
+    - --opth
+    args: !SimpleFlagArg
+      name: OPTH
+    optional: true
+  - !Flag
+    description: 'Output TIS diff q value threshold (default: 0.05)'
+    synonyms:
+    - --oqth
+    args: !SimpleFlagArg
+      name: OQTH
+    optional: true
+  - !Flag
+    description: Number of processes
+    synonyms:
+    - -p
+    args: !SimpleFlagArg
+      name: NUMPROC
+    optional: true
+  - !Flag
+    description: Increase output verbosity
+    synonyms:
+    - -v
+    - --verbose
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - ribotish
+  - tisdiff
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,245 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: outputs flank files
+  synonyms:
+  - --print-flanks
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: load scaffold from FILE
+  synonyms:
+  - -S
+  - --input-scaffold
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: length of flanks to be used as pseudoreads [100]
+  synonyms:
+  - -L
+  - --flank-length
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: max gap size to fill in bp [800]; runtime increases exponentially with
+    respect to this parameter
+  synonyms:
+  - -G
+  - --max-gap-length
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: use N parallel threads [1]
+  synonyms:
+  - -j
+  - --threads
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: the size of a k-mer
+  synonyms:
+  - -k
+  - --kmer
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: size of Bloom filter (e.g. '40G'). Required when not using pre-built
+    Bloom filter(s) (-i option)
+  synonyms:
+  - -b
+  - --bloom-size
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: write graph traversals to a DOT file
+  synonyms:
+  - -d
+  - --dot-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: find and fix single-base errors when reads have no kmers in bloom filter
+    [disabled]
+  synonyms:
+  - -e
+  - --fix-errors
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: max edges to traverse during each graph search [100000]
+  synonyms:
+  - -C
+  - --max-cost
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: load bloom filter from FILE
+  synonyms:
+  - -i
+  - --input-bloom
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: mask new and changed bases as lower case
+  synonyms:
+  - --mask
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not mask bases [default]
+  synonyms:
+  - --no-mask
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: discard unchaste reads [default]
+  synonyms:
+  - --chastity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not discard unchaste reads
+  synonyms:
+  - --no-chastity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: trim masked bases from the ends of reads
+  synonyms:
+  - --trim-masked
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: do not trim masked bases from the ends of reads [default]
+  synonyms:
+  - --no-trim-masked
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: max mismatches between paths and flanks; use 'nolimit' for no limit
+    [nolimit]
+  synonyms:
+  - -m
+  - --flank-mismatches
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: max mismatches between all alternate paths; use 'nolimit' for no limit
+    [nolimit]
+  synonyms:
+  - -M
+  - --max-mismatches
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: disable all limits; equivalent to '-B nolimit -m nolimit -M nolimit
+    -P nolimit'
+  synonyms:
+  - -n
+  - --no-limits
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: prefix of output FASTA files [required]
+  synonyms:
+  - -o
+  - --output-prefix
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: merge at most N alternate paths; use 'nolimit' for no limit [2]
+  synonyms:
+  - -P
+  - --max-paths
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: trim bases from the ends of reads whose quality is less than the threshold
+  synonyms:
+  - -q
+  - --trim-quality
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: zero quality is `!' (33) default for FASTQ and SAM files
+  synonyms:
+  - --standard-quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: zero quality is `@' (64) default for qseq and export files
+  synonyms:
+  - --illumina-quality
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: only process reads with names that contain STR
+  synonyms:
+  - -r
+  - --read-name
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: mem limit for graph searches; multiply by the number of threads (-j)
+    to get the total mem used for graph traversal [500M]
+  synonyms:
+  - -s
+  - --search-mem
+  args: !SimpleFlagArg
+    name: N
+  optional: true
+- !Flag
+  description: write sealed gaps to FILE
+  synonyms:
+  - -g
+  - --gap-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: write graph search stats to FILE
+  synonyms:
+  - -t
+  - --trace-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: display verbose output
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- abyss-sealer
+subcommands: []
+help_flag: !Flag
+  description: display this help and exit
+  synonyms:
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: output version information and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

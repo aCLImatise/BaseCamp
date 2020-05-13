@@ -1,0 +1,221 @@
+!Command
+positional:
+- !Positional
+  description: database with assigned clonal group numbers.
+  position: 0
+  name: clone-pass
+  optional: false
+- !Positional
+  description: database with records failing clonal grouping.
+  position: 1
+  name: clone-fail
+  optional: false
+named:
+- !Flag
+  description: 'A list of tab delimited database files. (default: None)'
+  synonyms:
+  - -d
+  args: !RepeatFlagArg
+    name: DB_FILES
+  optional: true
+- !Flag
+  description: 'Explicit output file name. Note, this argument cannot be used with
+    the --failed, --outdir, or --outname arguments. If unspecified, then the output
+    filename will be based on the input filename(s). (default: None)'
+  synonyms:
+  - -o
+  args: !RepeatFlagArg
+    name: OUT_FILES
+  optional: true
+- !Flag
+  description: 'Specify to changes the output directory to the location specified.
+    The input file directory is used if this is not specified. (default: None)'
+  synonyms:
+  - --outdir
+  args: !SimpleFlagArg
+    name: OUT_DIR
+  optional: true
+- !Flag
+  description: 'Changes the prefix of the successfully processed output file to the
+    string specified. May not be specified with multiple input files. (default: None)'
+  synonyms:
+  - --outname
+  args: !SimpleFlagArg
+    name: OUT_NAME
+  optional: true
+- !Flag
+  description: 'Specify to write verbose logging to a file. May not be specified with
+    multiple input files. (default: None)'
+  synonyms:
+  - --log
+  args: !SimpleFlagArg
+    name: LOG_FILE
+  optional: true
+- !Flag
+  description: 'If specified create files containing records that fail processing.
+    (default: False)'
+  synonyms:
+  - --failed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Specify input and output format. (default: changeo)'
+  synonyms:
+  - --format
+  args: !ChoiceFlagArg
+    choices:
+    - changeo
+    - airr
+  optional: true
+- !Flag
+  description: 'The number of simultaneous computational processes to execute (CPU
+    cores to utilized). (default: 8)'
+  synonyms:
+  - --nproc
+  args: !SimpleFlagArg
+    name: NPROC
+  optional: true
+- !Flag
+  description: 'Field to be used to calculate distance between records. Defaults to
+    JUNCTION (changeo) or junction (airr). (default: None)'
+  synonyms:
+  - --sf
+  args: !SimpleFlagArg
+    name: SEQ_FIELD
+  optional: true
+- !Flag
+  description: 'Field containing the germline V segment call. Defaults to V_CALL (changeo)
+    or v_call (airr). (default: None)'
+  synonyms:
+  - --vf
+  args: !SimpleFlagArg
+    name: V_FIELD
+  optional: true
+- !Flag
+  description: 'Field containing the germline J segment call. Defaults to J_CALL (changeo)
+    or j_call (airr). (default: None)'
+  synonyms:
+  - --jf
+  args: !SimpleFlagArg
+    name: J_FIELD
+  optional: true
+- !Flag
+  description: 'Additional fields to use for grouping clones aside from V, J and junction
+    length. (default: None)'
+  synonyms:
+  - --gf
+  args: !RepeatFlagArg
+    name: GROUP_FIELDS
+  optional: true
+- !Flag
+  description: 'Specifies whether to use the V(D)J allele or gene for initial grouping.
+    (default: gene)'
+  synonyms:
+  - --mode
+  args: !ChoiceFlagArg
+    choices:
+    - allele
+    - gene
+  optional: true
+- !Flag
+  description: 'Specifies how to handle multiple V(D)J assignments for initial grouping.
+    The "first" action will use only the first gene listed. The "set" action will
+    use all gene assignments and construct a larger gene grouping composed of any
+    sequences sharing an assignment or linked to another sequence by a common assignment
+    (similar to single-linkage). (default: set)'
+  synonyms:
+  - --act
+  args: !ChoiceFlagArg
+    choices:
+    - first
+    - set
+  optional: true
+- !Flag
+  description: 'Specifies which substitution model to use for calculating distance
+    between sequences. The "ham" model is nucleotide Hamming distance and "aa" is
+    amino acid Hamming distance. The "hh_s1f" and "hh_s5f" models are human specific
+    single nucleotide and 5-mer content models, respectively, from Yaari et al, 2013.
+    The "mk_rs1nf" and "mk_rs5nf" models are mouse specific single nucleotide and
+    5-mer content models, respectively, from Cui et al, 2016. The "m1n_compat" and
+    "hs1f_compat" models are deprecated models provided backwards compatibility with
+    the "m1n" and "hs1f" models in Change-O v0.3.3 and SHazaM v0.1.4. Both 5-mer models
+    should be considered experimental. (default: ham)'
+  synonyms:
+  - --model
+  args: !ChoiceFlagArg
+    choices:
+    - ham
+    - aa
+    - hh_s1f
+    - hh_s5f
+    - mk_rs1nf
+    - mk_rs5nf
+    - hs1f_compat
+    - m1n_compat
+  optional: true
+- !Flag
+  description: 'The distance threshold for clonal grouping (default: 0.0)'
+  synonyms:
+  - --dist
+  args: !SimpleFlagArg
+    name: DISTANCE
+  optional: true
+- !Flag
+  description: 'Specifies how to normalize distances. One of none (do not normalize),
+    len (normalize by length), or mut (normalize by number of mutations between sequences).
+    (default: len)'
+  synonyms:
+  - --norm
+  args: !ChoiceFlagArg
+    choices:
+    - len
+    - mut
+    - none
+  optional: true
+- !Flag
+  description: 'Specifies how to combine asymmetric distances. One of avg (average
+    of A->B and B->A) or min (minimum of A->B and B->A). (default: avg)'
+  synonyms:
+  - --sym
+  args: !ChoiceFlagArg
+    choices:
+    - avg
+    - min
+  optional: true
+- !Flag
+  description: 'Type of linkage to use for hierarchical clustering. (default: single)'
+  synonyms:
+  - --link
+  args: !ChoiceFlagArg
+    choices:
+    - single
+    - average
+    - complete
+  optional: true
+- !Flag
+  description: 'The maximum number of non-ACGT characters (gaps or Ns) to permit in
+    the junction sequence before excluding the record from clonal assignment. Note,
+    under single linkage non-informative positions can create artifactual links between
+    unrelated sequences. Use with caution. (default: 0)'
+  synonyms:
+  - --maxmiss
+  args: !SimpleFlagArg
+    name: MAX_MISSING
+  optional: true
+command:
+- DefineClones.py
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

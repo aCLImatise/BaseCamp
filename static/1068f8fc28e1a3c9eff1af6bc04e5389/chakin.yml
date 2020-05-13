@@ -1,0 +1,345 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Enables verbose mode.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Name of instance in /home/ubuntu/.chakin.yml. This parameter can also
+    be set via the environment variable CHADO_INSTANCE  [default: __default; required]'
+  synonyms:
+  - -i
+  - --instance
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+- !Flag
+  description: config file path
+  synonyms:
+  - -f
+  - --path
+  args: !SimpleFlagArg
+    name: TEXT
+  optional: true
+command:
+- chakin
+subcommands:
+- !Command
+  positional: []
+  named: []
+  command:
+  - chakin
+  - expression
+  subcommands:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Description of the biomaterial
+      synonyms:
+      - --description
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Biomaterial provider name
+      synonyms:
+      - --biomaterial_provider
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Biosample accession number
+      synonyms:
+      - --biosample_accession
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: SRA accession number
+      synonyms:
+      - --sra_accession
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Bioproject accession number
+      synonyms:
+      - --bioproject_accession
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Custom attributes (In JSON dict form)
+      synonyms:
+      - --attributes
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    command:
+    - chakin
+    - expression
+    - add_biomaterial
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: "Separating character in the matrix file (ex : ','). Default character\
+        \ is tab.  [default:        ]"
+      synonyms:
+      - --separator
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: The units associated with the loaded values (ie, FPKM, RPKM, raw
+        counts)
+      synonyms:
+      - --unit
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: "The feature type (e.g. 'gene', 'mRNA', 'polypeptide', 'contig')\
+        \ of the query. It must be a valid Sequence Ontology term.  [default: mRNA]"
+      synonyms:
+      - --query_type
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Match features using their name instead of their uniquename
+      synonyms:
+      - --match_on_name
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: Regular expression to extract the feature name from the input file
+        (first capturing group will be used).
+      synonyms:
+      - --re_name
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Skip lines with unknown features or GO id instead of aborting everything.
+      synonyms:
+      - --skip_missing
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - chakin
+    - expression
+    - add_expression
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Confirm that you really do want to delete ALL of the biomaterials.
+      synonyms:
+      - --confirm
+      args: !EmptyFlagArg {}
+      optional: true
+    command:
+    - chakin
+    - expression
+    - delete_all_biomaterials
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: 'JSON list of biomaterial names to delete.  [default: []]'
+      synonyms:
+      - --names
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: 'JSON list of biomaterial ids to delete.  [default: []]'
+      synonyms:
+      - --ids
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Delete all biomaterial associated with this organism id.
+      synonyms:
+      - --organism_id
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Delete all biomaterial associated with this analysis id.
+      synonyms:
+      - --analysis_id
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    command:
+    - chakin
+    - expression
+    - delete_biomaterial
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: JSON list of biomaterial names to delete.
+      synonyms:
+      - --names
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: JSON list of biomaterial ids to delete.
+      synonyms:
+      - --ids
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Delete all biomaterial associated with this organism id.
+      synonyms:
+      - --organism_id
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Delete all biomaterial associated with this analysis id.
+      synonyms:
+      - --analysis_id
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    command:
+    - chakin
+    - expression
+    - delete_biomaterials
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  - !Command
+    positional: []
+    named:
+    - !Flag
+      description: Limit query to the selected provider
+      synonyms:
+      - --provider_id
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Limit query to the selected biomaterial id
+      synonyms:
+      - --biomaterial_id
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Limit query to the selected organism
+      synonyms:
+      - --organism_id
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    - !Flag
+      description: Limit query to the selected biomaterial name
+      synonyms:
+      - --biomaterial_name
+      args: !SimpleFlagArg
+        name: TEXT
+      optional: true
+    - !Flag
+      description: Limit query to the selected analysis_id
+      synonyms:
+      - --analysis_id
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
+    command:
+    - chakin
+    - expression
+    - get_biomaterials
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: Show this message and exit.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Show the version and exit.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true

@@ -1,0 +1,102 @@
+!Command
+positional:
+- !Positional
+  description: Name of fitted model pickle file (.pkl)
+  position: 0
+  name: model
+  optional: false
+- !Positional
+  description: File with samples to predict
+  position: 1
+  name: samples
+  optional: false
+named:
+- !Flag
+  description: Threshold to pick binary predictions
+  synonyms:
+  - --threshold
+  args: !SimpleFlagArg
+    name: THRESHOLD
+  optional: true
+- !Flag
+  description: Custom clusters to use as lineages to report stratified accuracy
+  synonyms:
+  - --lineage-clusters
+  args: !SimpleFlagArg
+    name: LINEAGE_CLUSTERS
+  optional: true
+- !Flag
+  description: Pheno file with known phenotypes to calculate accuracy
+  synonyms:
+  - --true-values
+  args: !SimpleFlagArg
+    name: TRUE_VALUES
+  optional: true
+- !Flag
+  description: Treat missing values as REF/0 rather than using the mean AF
+  synonyms:
+  - --ignore-missing
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Kmers file
+  synonyms:
+  - --kmers
+  args: !SimpleFlagArg
+    name: KMERS
+  optional: true
+- !Flag
+  description: VCF file. Will filter any non 'PASS' sites
+  synonyms:
+  - --vcf
+  args: !SimpleFlagArg
+    name: VCF
+  optional: true
+- !Flag
+  description: Presence/absence .Rtab matrix as produced by roary and piggy
+  synonyms:
+  - --pres
+  args: !SimpleFlagArg
+    name: PRES
+  optional: true
+- !Flag
+  description: VCF regions to group variants by for burden testing (requires --vcf).
+    Requires vcf to be indexed
+  synonyms:
+  - --burden
+  args: !SimpleFlagArg
+    name: BURDEN
+  optional: true
+- !Flag
+  description: 'Uncompressed kmers file [Default: gzipped]'
+  synonyms:
+  - --uncompressed
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: User-defined covariates file (tab-delimited, no header, first column
+    contains sample names)
+  synonyms:
+  - --covariates
+  args: !SimpleFlagArg
+    name: COVARIATES
+  optional: true
+- !Flag
+  description: "[USE_COVARIATES [USE_COVARIATES ...]] Covariates to use. Format is\
+    \ \"2 3q 4\" (q for quantitative) [Default: load covariates but don't use them]"
+  synonyms:
+  - --use-covariates
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- enet_predict_pyseer
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

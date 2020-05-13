@@ -1,0 +1,161 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: (required) input fasta query file
+  synonyms:
+  - -q
+  - --query
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: (required) input fasta database file
+  synonyms:
+  - -d
+  - --database
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: 'default: 10 gap opening penalty, must be given as a positive integer '
+  synonyms:
+  - -g
+  - --gap-open
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'default: 1 gap extension penalty, must be given as a positive integer
+    and must be less or equal to gap opening penalty'
+  synonyms:
+  - -e
+  - --gap-extend
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'default: BLOSUM_62 similarity matrix, can be one of the following:
+    BLOSUM_45 BLOSUM_50 BLOSUM_62 BLOSUM_80 BLOSUM_90 BLOSUM_30 BLOSUM_70 BLOSUM_250'
+  synonyms:
+  - --matrix
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'default: 0.0001 evalue threshold, alignments with higher evalue are
+    filtered, must be given as a positive float'
+  synonyms:
+  - --evalue
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: 'default: 400 maximum number of alignments to be outputted'
+  synonyms:
+  - --max-aligns
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'default: SW algorithm used for alignment, must be one of the following:  SW
+    - Smith-Waterman local alignment NW - Needleman-Wunsch global alignment HW - semiglobal
+    alignment OV - overlap alignment'
+  synonyms:
+  - --algorithm
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'default: all available CUDA cards list of cards should be given as
+    an array of card indexes delimited with nothing, for example usage of first two
+    cards is given as --cards 01'
+  synonyms:
+  - --cards
+  args: !SimpleFlagArg
+    name: ints
+  optional: true
+- !Flag
+  description: 'default: current directory output directory for SIFT predictions'
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: prints sub results (alignment file and a file per query containing
+    its selected alignments forp rediction) to same directory defined with --out
+  synonyms:
+  - --sub-results
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'default: bm9 out format for the alignment file, must be one of the
+    following: bm0      - blast m0 output format bm8      - blast m8 tabular output
+    format bm9      - blast m9 commented tabular output format light    - score-name
+    tabbed output'
+  synonyms:
+  - --outfmt
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'default: 5 length of kmers used for database search possible values:
+    3, 4, 5'
+  synonyms:
+  - --kmer-length
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'default: 5000 number of database sequences passed on to the Smith-Waterman
+    part'
+  synonyms:
+  - --max-candidates
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'default: 2.75 represents alignment diversity, used to output only
+    a set of alignments'
+  synonyms:
+  - --median-threshold
+  args: !SimpleFlagArg
+    name: float
+  optional: true
+- !Flag
+  description: 'default: current directory directory containing substitution files
+    for each query (extension .subst) files must have the same name as their corresponding
+    query in FASTA file'
+  synonyms:
+  - --subst
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: 'default: 100'
+  synonyms:
+  - --seq-id
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'default: 8 number of threads used in thread pool'
+  synonyms:
+  - -t
+  - --threads
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+command:
+- sift4g
+subcommands: []
+help_flag: !Flag
+  description: prints out the help
+  synonyms:
+  - -h
+  - -help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:

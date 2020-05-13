@@ -1,0 +1,340 @@
+!Command
+positional: []
+named: []
+command:
+- telescope
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: Path to alignment file. Alignment file can be in SAM or BAM format.
+      File must be collated so that all alignments for a read pair appear sequentially
+      in the file.
+    position: 0
+    name: samfile
+    optional: false
+  - !Positional
+    description: Path to annotation file (GTF format)
+    position: 1
+    name: gtffile
+    optional: false
+  named:
+  - !Flag
+    description: 'GTF attribute that defines a transposable element locus. GTF features
+      that share the same value for --attribute will be considered as part of the
+      same locus. (default: locus)'
+    synonyms:
+    - --attribute
+    args: !SimpleFlagArg
+      name: ATTRIBUTE
+    optional: true
+  - !Flag
+    description: 'Used internally to represent alignments. Must be different from
+      all other feature names. (default: __no_feature)'
+    synonyms:
+    - --no_feature_key
+    args: !SimpleFlagArg
+      name: NO_FEATURE_KEY
+    optional: true
+  - !Flag
+    description: 'Number of cores to use. (Multiple cores not supported yet). (default:
+      1)'
+    synonyms:
+    - --ncpu
+    args: !SimpleFlagArg
+      name: NCPU
+    optional: true
+  - !Flag
+    description: 'Path to temporary directory. Temporary files will be stored here.
+      Default uses python tempfile package to create the temporary directory. (default:
+      None)'
+    synonyms:
+    - --tempdir
+    args: !SimpleFlagArg
+      name: TEMPDIR
+    optional: true
+  - !Flag
+    description: 'Silence (most) output. (default: False)'
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Print debug messages. (default: False)'
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Log output to this file. (default: None)'
+    synonyms:
+    - --logfile
+    args: !SimpleFlagArg
+      name: LOGFILE
+    optional: true
+  - !Flag
+    description: 'Output directory. (default: .)'
+    synonyms:
+    - --outdir
+    args: !SimpleFlagArg
+      name: OUTDIR
+    optional: true
+  - !Flag
+    description: 'Experiment tag (default: telescope)'
+    synonyms:
+    - --exp_tag
+    args: !SimpleFlagArg
+      name: EXP_TAG
+    optional: true
+  - !Flag
+    description: 'Generate an updated alignment file. (default: False)'
+    synonyms:
+    - --updated_sam
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Reassignment mode. After EM is complete, each fragment is reassigned
+      according to the expected value of its membership weights. The reassignment
+      method is the method for resolving the "best" reassignment for fragments that
+      have multiple possible reassignments. Available modes are: "exclude" - fragments
+      with multiple best assignments are excluded from the final counts; "choose"
+      - the best assignment is randomly chosen from among the set of best assignments;
+      "average" - the fragment is divided evenly among the best assignments; "conf"
+      - only assignments that exceed a certain threshold (see --conf_prob) are accepted;
+      "unique" - only uniquely aligned reads are included. NOTE: Results using all
+      assignment modes are included in the Telescope report by default. This argument
+      determines what mode will be used for the "final counts" column. (default: exclude)'
+    synonyms:
+    - --reassign_mode
+    args: !ChoiceFlagArg
+      choices:
+      - exclude
+      - choose
+      - average
+      - conf
+      - unique
+    optional: true
+  - !Flag
+    description: 'Minimum probability for high confidence assignment. (default: 0.9)'
+    synonyms:
+    - --conf_prob
+    args: !SimpleFlagArg
+      name: CONF_PROB
+    optional: true
+  - !Flag
+    description: 'Overlap mode. The method used to determine whether a fragment overlaps
+      feature. (default: threshold)'
+    synonyms:
+    - --overlap_mode
+    args: !ChoiceFlagArg
+      choices:
+      - threshold
+      - intersection-strict
+      - union
+    optional: true
+  - !Flag
+    description: 'Fraction of fragment that must be contained within a feature to
+      be assigned to that locus. Ignored if --overlap_method is not "threshold". (default:
+      0.2)'
+    synonyms:
+    - --overlap_threshold
+    args: !SimpleFlagArg
+      name: OVERLAP_THRESHOLD
+    optional: true
+  - !Flag
+    description: 'Annotation class to use for finding overlaps. Both htseq and intervaltree
+      appear to yield identical results. Performance differences are TBD. (default:
+      intervaltree)'
+    synonyms:
+    - --annotation_class
+    args: !ChoiceFlagArg
+      choices:
+      - intervaltree
+      - htseq
+    optional: true
+  - !Flag
+    description: 'Prior on π. Equivalent to adding n unique reads. (default: 0)'
+    synonyms:
+    - --pi_prior
+    args: !SimpleFlagArg
+      name: PI_PRIOR
+    optional: true
+  - !Flag
+    description: 'Prior on θ. Equivalent to adding n non-unique reads. NOTE: It is
+      recommended to set this prior to a large value. This increases the penalty for
+      non-unique reads and improves accuracy. (default: 200000)'
+    synonyms:
+    - --theta_prior
+    args: !SimpleFlagArg
+      name: THETA_PRIOR
+    optional: true
+  - !Flag
+    description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
+    synonyms:
+    - --em_epsilon
+    args: !SimpleFlagArg
+      name: EM_EPSILON
+    optional: true
+  - !Flag
+    description: 'EM Algorithm maximum iterations (default: 100)'
+    synonyms:
+    - --max_iter
+    args: !SimpleFlagArg
+      name: MAX_ITER
+    optional: true
+  - !Flag
+    description: 'Use difference in log-likelihood as convergence criteria. (default:
+      False)'
+    synonyms:
+    - --use_likelihood
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Exits after loading alignment and saving checkpoint file. (default:
+      False)'
+    synonyms:
+    - --skip_em
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - telescope
+  - assign
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+- !Command
+  positional:
+  - !Positional
+    description: Path to checkpoint file.
+    position: 0
+    name: checkpoint
+    optional: false
+  named:
+  - !Flag
+    description: 'Silence (most) output. (default: False)'
+    synonyms:
+    - --quiet
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Print debug messages. (default: False)'
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: 'Log output to this file. (default: None)'
+    synonyms:
+    - --logfile
+    args: !SimpleFlagArg
+      name: LOGFILE
+    optional: true
+  - !Flag
+    description: 'Output directory. (default: .)'
+    synonyms:
+    - --outdir
+    args: !SimpleFlagArg
+      name: OUTDIR
+    optional: true
+  - !Flag
+    description: 'Experiment tag (default: telescope)'
+    synonyms:
+    - --exp_tag
+    args: !SimpleFlagArg
+      name: EXP_TAG
+    optional: true
+  - !Flag
+    description: 'Reassignment mode. After EM is complete, each fragment is reassigned
+      according to the expected value of its membership weights. The reassignment
+      method is the method for resolving the "best" reassignment for fragments that
+      have multiple possible reassignments. Available modes are: "exclude" - fragments
+      with multiple best assignments are excluded from the final counts; "choose"
+      - the best assignment is randomly chosen from among the set of best assignments;
+      "average" - the fragment is divided evenly among the best assignments; "conf"
+      - only assignments that exceed a certain threshold (see --conf_prob) are accepted;
+      "unique" - only uniquely aligned reads are included. NOTE: Results using all
+      assignment modes are included in the Telescope report by default. This argument
+      determines what mode will be used for the "final counts" column. (default: exclude)'
+    synonyms:
+    - --reassign_mode
+    args: !ChoiceFlagArg
+      choices:
+      - exclude
+      - choose
+      - average
+      - conf
+      - unique
+    optional: true
+  - !Flag
+    description: 'Minimum probability for high confidence assignment. (default: 0.9)'
+    synonyms:
+    - --conf_prob
+    args: !SimpleFlagArg
+      name: CONF_PROB
+    optional: true
+  - !Flag
+    description: 'Prior on π. Equivalent to adding n unique reads. (default: 0)'
+    synonyms:
+    - --pi_prior
+    args: !SimpleFlagArg
+      name: PI_PRIOR
+    optional: true
+  - !Flag
+    description: 'Prior on θ. Equivalent to adding n non-unique reads. NOTE: It is
+      recommended to set this prior to a large value. This increases the penalty for
+      non-unique reads and improves accuracy. (default: 200000)'
+    synonyms:
+    - --theta_prior
+    args: !SimpleFlagArg
+      name: THETA_PRIOR
+    optional: true
+  - !Flag
+    description: 'EM Algorithm Epsilon cutoff (default: 1e-7)'
+    synonyms:
+    - --em_epsilon
+    args: !SimpleFlagArg
+      name: EM_EPSILON
+    optional: true
+  - !Flag
+    description: 'EM Algorithm maximum iterations (default: 100)'
+    synonyms:
+    - --max_iter
+    args: !SimpleFlagArg
+      name: MAX_ITER
+    optional: true
+  - !Flag
+    description: 'Use difference in log-likelihood as convergence criteria. (default:
+      False)'
+    synonyms:
+    - --use_likelihood
+    args: !EmptyFlagArg {}
+    optional: true
+  command:
+  - telescope
+  - resume
+  subcommands: []
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
