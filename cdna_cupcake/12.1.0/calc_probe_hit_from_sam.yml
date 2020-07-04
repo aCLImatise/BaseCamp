@@ -1,0 +1,92 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: Calculate
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: Probe
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: Hit
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: from
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: SAM
+  optional: false
+- !Positional
+  description: ''
+  position: 5
+  name: alignment
+  optional: false
+named:
+- !Flag
+  description: Input is GTF instead of SAM
+  synonyms:
+  - --gtf
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Start base is 0 or 1-based index
+  synonyms:
+  - --start_base
+  args: !ChoiceFlagArg
+    choices: !!set
+      '1':
+      '0':
+  optional: true
+- !Flag
+  description: End base is 0 or 1-based index
+  synonyms:
+  - --end_base
+  args: !ChoiceFlagArg
+    choices: !!set
+      '1':
+      '0':
+  optional: true
+- !Flag
+  description: 'Output filename (default: stdout)'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+command:
+- calc_probe_hit_from_sam.py
+parent:
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: Calculate Probe Hit from SAM alignment + probe BED [-h] [--gtf]\n\
+  \                                                          --start_base {0,1}\n\
+  \                                                          --end_base {0,1}\n  \
+  \                                                        [-o OUTPUT]\n         \
+  \                                                 bed_filename\n               \
+  \                                           input_fasta_or_fastq\n             \
+  \                                             sam_or_gtf\n\npositional arguments:\n\
+  \  bed_filename\n  input_fasta_or_fastq\n  sam_or_gtf\n\noptional arguments:\n \
+  \ -h, --help            show this help message and exit\n  --gtf               \
+  \  Input is GTF instead of SAM\n  --start_base {0,1}    Start base is 0 or 1-based\
+  \ index\n  --end_base {0,1}      End base is 0 or 1-based index\n  -o OUTPUT, --output\
+  \ OUTPUT\n                        Output filename (default: stdout)\n"
+generated_using:
+- --help

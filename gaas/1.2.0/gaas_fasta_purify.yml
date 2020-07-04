@@ -1,0 +1,72 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Input fasta file containing DNA sequences.
+  synonyms:
+  - --f
+  - --infile
+  - -f
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: 'Integer. Filter the sequence shorter to this size (in bp). Default:
+    1000'
+  synonyms:
+  - --size
+  - -s
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: '[OPTIONAL] Output directory where diffrent output files will be written.
+    If no output is specified, the result will written to STDOUT.'
+  synonyms:
+  - --out
+  - --output
+  - -o
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+command:
+- gaas_fasta_purify.pl
+parent:
+subcommands: []
+help_flag: !Flag
+  description: Display this helpful text.
+  synonyms:
+  - --help
+  - -h
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\n ------------------------------------------------------------------------------\n\
+  |   Genome Assembly Annotation Service (AGAT) - Version: v1.1.0              |\n\
+  |   https://github.com/NBISweden/AGAT                                          |\n\
+  |   National Bioinformatics Infrastructure Sweden (NBIS) - www.nbis.se         |\n\
+  \ ------------------------------------------------------------------------------\n\
+  \  \n\nName:\n    gaas_fasta_purify.pl\n\nDescription:\n    This script aims to\
+  \ fix and inform the user about common problems found\n    in an assembly, in order\
+  \ to avoid problems during an annotation project.\n\n            * lowercase nucleotides:\
+  \ There are considered as repeat by annotation tool,\n            while most assemblers\
+  \ consider them as region with low coverage. Fixed by the tool.\n            * Leading\
+  \ and trailing Ns sequences are forbidden for submission to ENA. Trimmed by the\
+  \ tool.\n            * Long internal N regions (> 10000) is problematic in order\
+  \ to run Genemark. The tool inform the user.\n            * IUPAC code might be\
+  \ problematic for some tools. e.g, an extra option is mandatory for MAKER. The tool\
+  \ inform the user.\n            * Short sequences can be useless and time consuming\
+  \ for annotation tools. The tool remove them. Default 1000 bp.\n      * Long sequence\
+  \ in single line fasta might raise issues some tools. The tool fold them (80 characters).\n\
+  \nUsage:\n        ./gaas_fasta_purify.pl --f=infile [--output=Directory]\n     \
+  \   ./gaas_fasta_purify.pl --help\n\nOptions:\n    --f, --infile or -f\n       \
+  \     Input fasta file containing DNA sequences.\n\n    --size or -s\n         \
+  \   Integer. Filter the sequence shorter to this size (in bp).\n            Default:\
+  \ 1000\n\n    --out, --output or -o\n            [OPTIONAL] Output directory where\
+  \ diffrent output files will be\n            written. If no output is specified,\
+  \ the result will written to\n            STDOUT.\n\n    --help or -h\n        \
+  \    Display this helpful text.\n\n"
+generated_using:
+- --help

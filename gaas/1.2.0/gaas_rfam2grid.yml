@@ -1,0 +1,98 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The name of the genome file to read.
+  synonyms:
+  - --fasta
+  - -f
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: File containing the covariance models (cm) used by rfam
+  synonyms:
+  - --cm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Define which grid to use, Slurm, Lsf or None. Default = Slurm.
+  synonyms:
+  - --grid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: you want to define a particular queue to run the jobs
+  synonyms:
+  - --queue
+  args: !SimpleFlagArg
+    name: If
+  optional: true
+- !Flag
+  description: Quiet mode
+  synonyms:
+  - --quiet
+  - -q
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: The name of the output directory.
+  synonyms:
+  - --outdir
+  - -o
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+command:
+- gaas_rfam2grid.pl
+parent:
+subcommands: []
+help_flag: !Flag
+  description: Display this helpful text.
+  synonyms:
+  - -h
+  - --help
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\n ------------------------------------------------------------------------------\n\
+  |   Genome Assembly Annotation Service (AGAT) - Version: v1.1.0              |\n\
+  |   https://github.com/NBISweden/AGAT                                          |\n\
+  |   National Bioinformatics Infrastructure Sweden (NBIS) - www.nbis.se         |\n\
+  \ ------------------------------------------------------------------------------\n\
+  \   \n\nName:\n    gaas_rfam2grid.pl\n\nDescription:\n    Chunk input data to run\
+  \ multiple rfam jobs in parallel We currently run\n    infernal (cmsearch) searches\
+  \ directly on the contigs – rather than using\n    the Rfam pipeline with it’s two-step\
+  \ search approach (blast to limit\n    candidates, infernal to refine and verify).\
+  \ Infernal (\"INFERence of RNA\n    ALignment\") is for searching DNA sequence databases\
+  \ for RNA structure\n    and sequence similarities. It is an implementation of a\
+  \ special case of\n    profile stochastic context-free grammars called covariance\
+  \ models (CMs).\n    A CM is like a sequence profile, but it scores a combination\
+  \ of sequence\n    consensus and RNA secondary structure consensus, so in many cases,\
+  \ it is\n    more capable of identifying RNA homologs that conserve their secondary\n\
+  \    structure more than their primary sequence.\n\nUsage:\n        gaas_rfam2grid.pl\
+  \ -f genome.fasta -o outdir\n        gaas_rfam2grid.pl --help\n\nOptions:\n    --fasta\
+  \ or -f\n            The name of the genome file to read.\n\n    --cm    File containing\
+  \ the covariance models (cm) used by rfam\n\n    --grid  Define which grid to use,\
+  \ Slurm, Lsf or None. Default = Slurm.\n\n    --queue If you want to define a particular\
+  \ queue to run the jobs\n\n    --quiet or -q\n            Quiet mode\n\n    --outdir\
+  \ or -o\n            The name of the output directory.\n\n    -h or --help\n   \
+  \         Display this helpful text.\n\nFeedback:\n  Did you find a bug?:\n    Do\
+  \ not hesitate to report bugs to help us keep track of the bugs and\n    their resolution.\
+  \ Please use the GitHub issue tracking system available\n    at this address:\n\n\
+  \                https://github.com/NBISweden/GAAS/issues\n\n     Ensure that the\
+  \ bug was not already reported by searching under Issues.\n     If you're unable\
+  \ to find an (open) issue addressing the problem, open a new one.\n     Try as much\
+  \ as possible to include in the issue when relevant:\n     - a clear description,\n\
+  \     - as much relevant information as possible,\n     - the command used,\n  \
+  \   - a data sample,\n     - an explanation of the expected behaviour that is not\
+  \ occurring.\n\n  Do you want to contribute?:\n    You are very welcome, visit this\
+  \ address for the Contributing\n    guidelines:\n    https://github.com/NBISweden/GAAS/blob/master/CONTRIBUTING.md\n\
+  \npod Errors:\n    Hey! The above document had some coding errors, which are explained\n\
+  \    below:\n\n    Around line 256:\n        Non-ASCII character seen before =encoding\
+  \ in '–'. Assuming UTF-8\n\n"
+generated_using:
+- --help

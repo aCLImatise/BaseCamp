@@ -1,0 +1,93 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: my_script.pl
+  optional: false
+named:
+- !Flag
+  description: Fasta file 1. The headers of sequences of this file will be used to
+    compare against those to file 2.
+  synonyms:
+  - --fasta1
+  - --file1
+  - -f1
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: This is a file containing the headers of sequence to be removed. Only
+    one ID per line. Header should be identical at 100% to be removed.
+  synonyms:
+  - -a
+  - --agp
+  - -f2
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: ', --output , --out or --outfile Output fasta file. If no output file
+    is specified, the output will be written to STDOUT.'
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: outfile
+  optional: true
+command:
+- gaas_fasta_bionano_filter_not_scaffolded_part.pl
+parent:
+subcommands: []
+help_flag: !Flag
+  description: Getting help. Display the full information.
+  synonyms:
+  - --help
+  - -h
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+usage_flag:
+version_flag:
+help_text: "\n ------------------------------------------------------------------------------\n\
+  |   Genome Assembly Annotation Service (AGAT) - Version: v1.1.0              |\n\
+  |   https://github.com/NBISweden/AGAT                                          |\n\
+  |   National Bioinformatics Infrastructure Sweden (NBIS) - www.nbis.se         |\n\
+  \ ------------------------------------------------------------------------------\n\
+  \  \n\nName:\n    gaas_fasta_bionano_filter_not_scaffolded_part.pl\n\nDescription:\n\
+  \    This script aims to filter the NOT_SCAFFOLDED.fasta file from bionano\n   \
+  \ output in order to remove redundant part from secondary assembly. Indeed\n   \
+  \ the NOT_SCAFFOLDED.fasta file is a mixup of the primary and the\n    secondary\
+  \ assembly.\n\n    Is not included in the output: - piece of the secondary assembly\
+  \ (they\n    are cut in pieces when a piece is used into a scaffold), when the\n\
+  \    corresponding sequence from the primary assembly is already used. -\n    contig\
+  \ of the secondary assembly - contig of the primary assembly if the\n    counterpart\
+  \ of the secondary assembly is already used into a scaffold.\n\nUsage:\n       \
+  \ gaas_fasta_bionano_filter_not_scaffolded_part.pl my_script.pl --fasta1 file1 -a\
+  \ agp [--out outfile]\n        gaas_fasta_bionano_filter_not_scaffolded_part.pl\
+  \ my_script.pl --help\n\nOptions:\n    --fasta1, --file1 or -f1\n            Fasta\
+  \ file 1. The headers of sequences of this file will be used\n            to compare\
+  \ against those to file 2.\n\n    -a, --agp or -f2\n            This is a file containing\
+  \ the headers of sequence to be removed.\n            Only one ID per line. Header\
+  \ should be identical at 100% to be\n            removed.\n\n    -o , --output ,\
+  \ --out or --outfile\n            Output fasta file. If no output file is specified,\
+  \ the output\n            will be written to STDOUT.\n\n    --help or -h\n     \
+  \       Getting help. Display the full information.\n\nFeedback:\n  Did you find\
+  \ a bug?:\n    Do not hesitate to report bugs to help us keep track of the bugs\
+  \ and\n    their resolution. Please use the GitHub issue tracking system available\n\
+  \    at this address:\n\n                https://github.com/NBISweden/GAAS/issues\n\
+  \n     Ensure that the bug was not already reported by searching under Issues.\n\
+  \     If you're unable to find an (open) issue addressing the problem, open a new\
+  \ one.\n     Try as much as possible to include in the issue when relevant:\n  \
+  \   - a clear description,\n     - as much relevant information as possible,\n \
+  \    - the command used,\n     - a data sample,\n     - an explanation of the expected\
+  \ behaviour that is not occurring.\n\n  Do you want to contribute?:\n    You are\
+  \ very welcome, visit this address for the Contributing\n    guidelines:\n    https://github.com/NBISweden/GAAS/blob/master/CONTRIBUTING.md\n\
+  \n"
+generated_using:
+- --help

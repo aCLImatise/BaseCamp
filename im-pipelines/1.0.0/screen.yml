@@ -1,0 +1,202 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: query structure as smiles (incompatible with -qmolfile arg)
+  synonyms:
+  - --qsmiles
+  args: !SimpleFlagArg
+    name: QSMILES
+  optional: true
+- !Flag
+  description: query structure as filename in molfile format (incompatible with -qsmiles
+    arg)
+  synonyms:
+  - --qmolfile
+  args: !SimpleFlagArg
+    name: QMOLFILE
+  optional: true
+- !Flag
+  description: similarity lower cutoff (1.0 means identical)
+  synonyms:
+  - --simmin
+  args: !SimpleFlagArg
+    name: SIMMIN
+  optional: true
+- !Flag
+  description: similarity upper cutoff (1.0 means identical)
+  synonyms:
+  - --simmax
+  args: !SimpleFlagArg
+    name: SIMMAX
+  optional: true
+- !Flag
+  description: descriptor or fingerprint type (default rdkit)
+  synonyms:
+  - -d
+  - --descriptor
+  args: !ChoiceFlagArg
+    choices: !!set
+      maccs:
+      rdkit:
+      morgan2:
+      morgan3:
+  optional: true
+- !Flag
+  description: similarity metric (default tanimoto)
+  synonyms:
+  - -m
+  - --metric
+  args: !ChoiceFlagArg
+    choices: !!set
+      braunblanquet:
+      russel:
+      rogotgoldberg:
+      mcconnaughey:
+      sokal:
+      kulczynski:
+      asymmetric:
+      tanimoto:
+      cosine:
+      dice:
+  optional: true
+- !Flag
+  description: Find single fragment if more than one (hac = biggest by heavy atom
+    count, mw = biggest by mol weight )
+  synonyms:
+  - -f
+  - --fragment
+  args: !ChoiceFlagArg
+    choices: !!set
+      hac:
+      mw:
+  optional: true
+- !Flag
+  description: Min heavy atom count
+  synonyms:
+  - --hacmin
+  args: !SimpleFlagArg
+    name: HACMIN
+  optional: true
+- !Flag
+  description: Max heavy atom count
+  synonyms:
+  - --hacmax
+  args: !SimpleFlagArg
+    name: HACMAX
+  optional: true
+- !Flag
+  description: Min mol weight
+  synonyms:
+  - --mwmin
+  args: !SimpleFlagArg
+    name: MWMIN
+  optional: true
+- !Flag
+  description: Max mol weight
+  synonyms:
+  - --mwmax
+  args: !SimpleFlagArg
+    name: MWMAX
+  optional: true
+- !Flag
+  description: Input file, if not defined the STDIN is used
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: Input format. When using STDIN this must be specified.
+  synonyms:
+  - -if
+  - --informat
+  args: !ChoiceFlagArg
+    choices: !!set
+      sdf:
+      json:
+  optional: true
+- !Flag
+  description: Base name for output file (no extension). If not defined then SDTOUT
+    is used for the structures and output is used as base name of the other files.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Output format. Defaults to 'sdf'.
+  synonyms:
+  - -of
+  - --outformat
+  args: !ChoiceFlagArg
+    choices: !!set
+      sdf:
+      json:
+  optional: true
+- !Flag
+  description: Write metadata and metrics files
+  synonyms:
+  - --meta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Thin output mode
+  synonyms:
+  - --thin
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Quiet mode
+  synonyms:
+  - -q
+  - --quiet
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- screen
+parent:
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: screen [-h] [--qsmiles QSMILES | --qmolfile QMOLFILE] [--simmin\
+  \ SIMMIN]\n              [--simmax SIMMAX] [-d {maccs,morgan2,morgan3,rdkit}]\n\
+  \              [-m {asymmetric,braunblanquet,cosine,dice,kulczynski,mcconnaughey,rogotgoldberg,russel,sokal,tanimoto}]\n\
+  \              [-f {hac,mw}] [--hacmin HACMIN] [--hacmax HACMAX]\n             \
+  \ [--mwmin MWMIN] [--mwmax MWMAX] [-i INPUT] [-if {sdf,json}]\n              [-o\
+  \ OUTPUT] [-of {sdf,json}] [--meta] [--thin] [-q]\n\nRDKit screen\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --qsmiles QSMILES  \
+  \   query structure as smiles (incompatible with -qmolfile\n                   \
+  \     arg)\n  --qmolfile QMOLFILE   query structure as filename in molfile format\n\
+  \                        (incompatible with -qsmiles arg)\n  --simmin SIMMIN   \
+  \    similarity lower cutoff (1.0 means identical)\n  --simmax SIMMAX       similarity\
+  \ upper cutoff (1.0 means identical)\n  -d {maccs,morgan2,morgan3,rdkit}, --descriptor\
+  \ {maccs,morgan2,morgan3,rdkit}\n                        descriptor or fingerprint\
+  \ type (default rdkit)\n  -m {asymmetric,braunblanquet,cosine,dice,kulczynski,mcconnaughey,rogotgoldberg,russel,sokal,tanimoto},\
+  \ --metric {asymmetric,braunblanquet,cosine,dice,kulczynski,mcconnaughey,rogotgoldberg,russel,sokal,tanimoto}\n\
+  \                        similarity metric (default tanimoto)\n  -f {hac,mw}, --fragment\
+  \ {hac,mw}\n                        Find single fragment if more than one (hac =\
+  \ biggest\n                        by heavy atom count, mw = biggest by mol weight\
+  \ )\n  --hacmin HACMIN       Min heavy atom count\n  --hacmax HACMAX       Max heavy\
+  \ atom count\n  --mwmin MWMIN         Min mol weight\n  --mwmax MWMAX         Max\
+  \ mol weight\n  -i INPUT, --input INPUT\n                        Input file, if\
+  \ not defined the STDIN is used\n  -if {sdf,json}, --informat {sdf,json}\n     \
+  \                   Input format. When using STDIN this must be specified.\n  -o\
+  \ OUTPUT, --output OUTPUT\n                        Base name for output file (no\
+  \ extension). If not\n                        defined then SDTOUT is used for the\
+  \ structures and\n                        output is used as base name of the other\
+  \ files.\n  -of {sdf,json}, --outformat {sdf,json}\n                        Output\
+  \ format. Defaults to 'sdf'.\n  --meta                Write metadata and metrics\
+  \ files\n  --thin                Thin output mode\n  -q, --quiet           Quiet\
+  \ mode\n"
+generated_using:
+- --help
