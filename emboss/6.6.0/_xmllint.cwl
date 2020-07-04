@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _xmllint.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_xmllint.cwl
 inputs:
 - id: no_catalogs
   doc: ': deactivate all catalogs'
@@ -71,7 +71,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --schematron
-- id: sax1
+- id: sax_one
   doc: ': use the old SAX1 interfaces for processing'
   type: boolean
   inputBinding:
@@ -81,7 +81,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --sax
-- id: oldxml10
+- id: old_xml_one_zero
   doc: ': use XML-1.0 parsing rules before the 5th edition'
   type: boolean
   inputBinding:

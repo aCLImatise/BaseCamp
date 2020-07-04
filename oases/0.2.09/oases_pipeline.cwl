@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: oases_pipeline.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/oases_pipeline.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

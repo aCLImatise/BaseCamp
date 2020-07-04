@@ -1,6 +1,73 @@
 class: CommandLineTool
-id: apt_probeset_summarize.cwl
+id: ../../../../home/ubuntu/BiocondaCli/apt_probeset_summarize.cwl
 inputs:
+- id: cel
+  doc: '*.cel'
+  type: string
+  inputBinding:
+    prefix: -p
+- id: log_file
+  doc: "name of the log file. Generally  defaults to the program name in the out-dir\
+    \ folder. [default ''] "
+  type: string
+  inputBinding:
+    prefix: --log-file
+- id: qc_probe_sets
+  doc: "with probeset_id(name) and group_name columns specifying subsets of probesets\
+    \ to compute qc stats for. [default ''] "
+  type: File
+  inputBinding:
+    prefix: --qc-probesets
+- id: chip_type
+  doc: "types to check library and CEL files against. Can be specified multiple times.\
+    \ The first one is propigated as the chip  type in the output files. Warning,\
+    \ use of this option will override the usual check between chip types found in\
+    \ the library files and cel files. You should use this option instead of --force\
+    \ when possible. [default ''] "
+  type: string
+  inputBinding:
+    prefix: --chip-type
+- id: precision
+  doc: "many digits of precision to use after decimal. [default '5'] "
+  type: string
+  inputBinding:
+    prefix: --precision
+- id: explain
+  doc: "a particular operation (i.e. --explain rma-bg). [default ''] "
+  type: string
+  inputBinding:
+    prefix: --explain
+- id: kill_list
+  doc: "not use the PM probes specified in file for computing results. [experimental]\
+    \ [default ''] "
+  type: string
+  inputBinding:
+    prefix: --kill-list
+- id: time_start
+  doc: "time the engine run was started  [default ''] "
+  type: string
+  inputBinding:
+    prefix: --time-start
+- id: time_end
+  doc: "time the engine run ended [default ''] "
+  type: string
+  inputBinding:
+    prefix: --time-end
+- id: time_run_minutes
+  doc: "run time in minutes. [default ''] "
+  type: string
+  inputBinding:
+    prefix: --time-run-minutes
+- id: analysis_guid
+  doc: "GUID for the analysis run. [default ''] "
+  type: string
+  inputBinding:
+    prefix: --analysis-guid
+- id: a
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -a
 - id: rma_bg
   doc: 'Performs an RMA style background adjustment  as described in Irizarry et al
     2003. '
@@ -154,68 +221,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: p
-  doc: '*.cel'
-  type: string
-  inputBinding:
-    prefix: -p
-- id: log_file
-  doc: "name of the log file. Generally  defaults to the program name in the out-dir\
-    \ folder. [default ''] "
-  type: string
-  inputBinding:
-    prefix: --log-file
-- id: qc_probe_sets
-  doc: "with probeset_id(name) and group_name columns specifying subsets of probesets\
-    \ to compute qc stats for. [default ''] "
-  type: File
-  inputBinding:
-    prefix: --qc-probesets
-- id: chip_type
-  doc: "types to check library and CEL files against. Can be specified multiple times.\
-    \ The first one is propigated as the chip  type in the output files. Warning,\
-    \ use of this option will override the usual check between chip types found in\
-    \ the library files and cel files. You should use this option instead of --force\
-    \ when possible. [default ''] "
-  type: string
-  inputBinding:
-    prefix: --chip-type
-- id: precision
-  doc: "many digits of precision to use after decimal. [default '5'] "
-  type: string
-  inputBinding:
-    prefix: --precision
-- id: explain
-  doc: "a particular operation (i.e. --explain rma-bg). [default ''] "
-  type: string
-  inputBinding:
-    prefix: --explain
-- id: kill_list
-  doc: "not use the PM probes specified in file for computing results. [experimental]\
-    \ [default ''] "
-  type: string
-  inputBinding:
-    prefix: --kill-list
-- id: time_start
-  doc: "time the engine run was started  [default ''] "
-  type: string
-  inputBinding:
-    prefix: --time-start
-- id: time_end
-  doc: "time the engine run ended [default ''] "
-  type: string
-  inputBinding:
-    prefix: --time-end
-- id: time_run_minutes
-  doc: "run time in minutes. [default ''] "
-  type: string
-  inputBinding:
-    prefix: --time-run-minutes
-- id: analysis_guid
-  doc: "GUID for the analysis run. [default ''] "
-  type: string
-  inputBinding:
-    prefix: --analysis-guid
 outputs: []
 cwlVersion: v1.1
 baseCommand:

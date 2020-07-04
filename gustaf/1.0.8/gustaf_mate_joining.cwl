@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gustaf_mate_joining.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gustaf_mate_joining.cwl
 inputs:
 - id: rev_compl
   doc: Disable reverse complementing second input file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: QCMerger.cwl
+id: ../../../../home/ubuntu/BiocondaCli/QCMerger.cwl
 inputs:
 - id: in
   doc: "*       List of qcml files to be merged. (valid formats: 'qcML')"

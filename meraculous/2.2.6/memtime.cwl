@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: memtime.cwl
+id: ../../../../home/ubuntu/BiocondaCli/memtime.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

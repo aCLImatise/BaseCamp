@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _btwisted.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_btwisted.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

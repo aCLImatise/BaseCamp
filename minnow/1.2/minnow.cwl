@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: minnow.cwl
+id: ../../../../home/ubuntu/BiocondaCli/minnow.cwl
 inputs:
 - id: a_levin_mode
   doc: The program would assume that the input matrix is obtained from Alevin
@@ -61,7 +61,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --reffile
-- id: g2t
+- id: g_two_t
   doc: tab separated list of Gene to Transcirpt mapping
   type: string
   inputBinding:
@@ -179,7 +179,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --PCR
-- id: pcrmodel6
+- id: pcr_model_six
   doc: from Best, Katharine et al. (2015)
   type: string
   inputBinding:
@@ -199,21 +199,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --eqClassDir
-- id: outdir
-  doc: the simulated models will be written
-  type: string
-  inputBinding:
-    prefix: --outdir
-- id: g2t
-  doc: tab separated list of Gene to Transcirpt mapping
-  type: string
-  inputBinding:
-    prefix: --g2t
-- id: bfh
-  doc: BFH file produced by alevin
-  type: string
-  inputBinding:
-    prefix: --bfh
 - id: cluster
   doc: Optional cluster file to model cluster based histogram
   type: string

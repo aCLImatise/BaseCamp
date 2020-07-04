@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: mb_generate_negative_set.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mb_generate_negative_set.cwl
 inputs:
-- id: gff
-  doc: GFF file
-  type: string
-  inputBinding:
-    position: 0
-- id: genome
-  doc: path to genome
-  type: string
-  inputBinding:
-    position: 1
-- id: prefix
-  doc: prefix
-  type: string
-  inputBinding:
-    position: 2
-- id: outdir
-  doc: output directory
-  type: string
-  inputBinding:
-    position: 3
 - id: number
   doc: set number or random drawings
   type: string

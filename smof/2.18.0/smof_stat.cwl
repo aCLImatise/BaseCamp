@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: smof_stat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smof_stat.cwl
 inputs:
-- id: input
-  doc: input fasta sequence (default = stdin)
-  type: string
-  inputBinding:
-    position: 0
 - id: delimiter
   doc: output delimiter
   type: string
@@ -61,6 +56,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --log-hist
+- id: input
+  doc: input fasta sequence (default = stdin)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

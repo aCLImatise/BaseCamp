@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: runPAML.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/runPAML.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

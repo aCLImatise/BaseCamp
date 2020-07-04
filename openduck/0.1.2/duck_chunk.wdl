@@ -2,18 +2,25 @@ version 1.0
 
 task DuckChunk {
   input {
-    String proteinProtein
-    String ligandLigand
-    String cutCutOff
-    Boolean ignoreIgnoreBuffers
-    Int interactionInteraction
+    String? protein
+    String? ligand
+    String? cut_off
+    Boolean? ignore_buffers
+    Int? interaction
   }
   command <<<
     duck_chunk \
-      ~{if defined(proteinProtein) then ("--protein " +  '"' + proteinProtein + '"') else ""} \
-      ~{if defined(ligandLigand) then ("--ligand " +  '"' + ligandLigand + '"') else ""} \
-      ~{if defined(cutCutOff) then ("--cutoff " +  '"' + cutCutOff + '"') else ""} \
-      ~{true="--ignore-buffers" false="" ignoreIgnoreBuffers} \
-      ~{if defined(interactionInteraction) then ("--interaction " +  '"' + interactionInteraction + '"') else ""}
+      ~{if defined(protein) then ("--protein " +  '"' + protein + '"') else ""} \
+      ~{if defined(ligand) then ("--ligand " +  '"' + ligand + '"') else ""} \
+      ~{if defined(cut_off) then ("--cutoff " +  '"' + cut_off + '"') else ""} \
+      ~{true="--ignore-buffers" false="" ignore_buffers} \
+      ~{if defined(interaction) then ("--interaction " +  '"' + interaction + '"') else ""}
   >>>
+  parameter_meta {
+    protein: "Apoprotein in PDB format"
+    ligand: "Ligand in mol format"
+    cut_off: "Cutoff for chunk calculation"
+    ignore_buffers: "Do not remove buffers (solvent, ions etc.)"
+    interaction: "Protein atom to use for ligand interaction."
+  }
 }

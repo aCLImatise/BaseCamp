@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: drget.cwl
+id: ../../../../home/ubuntu/BiocondaCli/drget.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

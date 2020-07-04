@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: dot2pp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dot2pp.cwl
 inputs:
-- id: in_filed_p_ps
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: outfile_pp
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: man
   doc: documentation
   type: string
@@ -21,6 +11,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --name
+- id: in_file_do_tdp_ps
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: outfile_dot_pp
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

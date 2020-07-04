@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ITSx.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ITSx.cwl
 inputs:
 - id: i
   doc: ''

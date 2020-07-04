@@ -1,6 +1,21 @@
 class: CommandLineTool
-id: arb_treegen.cwl
-inputs: []
+id: ../../../../home/ubuntu/BiocondaCli/arb_treegen.cwl
+inputs:
+- id: cfg
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: tree
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: seq
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

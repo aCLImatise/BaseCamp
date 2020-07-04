@@ -1,36 +1,31 @@
 class: CommandLineTool
-id: sentieon_bwa_bwt2sa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sentieon_bwa_bwt2sa.cwl
 inputs:
+- id: i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
 - id: bwa
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: bwt2sa
+- id: bwt_two_sa
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: '32'
+- id: in_dot_bwt
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: in_bwt
+- id: out_dots_a
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: outs_a
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
-- id: i
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -i
 outputs: []
 cwlVersion: v1.1
 baseCommand:

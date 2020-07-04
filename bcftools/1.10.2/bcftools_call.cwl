@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: bcftools_call.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcftools_call.cwl
 inputs:
-- id: in_vcf_gz
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: no_version
   doc: do not append version and command line to the header
   type: boolean
@@ -17,9 +12,9 @@ inputs:
   inputBinding:
     prefix: --output
 - id: output_type
-  doc: "<b|u|z|v>     output type: 'b' compressed BCF; 'u' uncompressed BCF; 'z' compressed\
-    \ VCF; 'v' uncompressed VCF [v]"
-  type: boolean
+  doc: "output type: 'b' compressed BCF; 'u' uncompressed BCF; 'z' compressed VCF;\
+    \ 'v' uncompressed VCF [v]"
+  type: string
   inputBinding:
     prefix: --output-type
 - id: ploidy
@@ -85,9 +80,9 @@ inputs:
   inputBinding:
     prefix: --prior-freqs
 - id: group_samples
-  doc: <file|->    group samples by population (file with "sample\tgroup") or "-"
-    for single-sample calling
-  type: boolean
+  doc: group samples by population (file with "sample\tgroup") or "-" for single-sample
+    calling
+  type: File
   inputBinding:
     prefix: --group-samples
 - id: gvc_f
@@ -148,6 +143,11 @@ inputs:
   type: double
   inputBinding:
     prefix: --prior
+- id: in_dot_vcf_do_tgz
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

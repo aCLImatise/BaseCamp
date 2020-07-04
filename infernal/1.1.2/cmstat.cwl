@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cmstat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cmstat.cwl
 inputs:
 - id: e
   doc: ': print bit scores that correspond to E-value threshold of <x>'
@@ -11,12 +11,12 @@ inputs:
   type: string
   inputBinding:
     prefix: -P
-- id: t
+- id: print_evalues_bit
   doc: ': print E-values that correspond to bit score threshold of <x>'
   type: string
   inputBinding:
     prefix: -T
-- id: z
+- id: set_database_size
   doc: ': set database size in *Mb* to <x> for E-value calculations  [10]'
   type: string
   inputBinding:
@@ -51,6 +51,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --nohmmonly
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

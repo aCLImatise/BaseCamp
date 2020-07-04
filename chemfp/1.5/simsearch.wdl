@@ -2,40 +2,58 @@ version 1.0
 
 task Simsearch {
   input {
-    String kKNearest
-    String thresholdThreshold
-    String queriesQueries
-    Boolean nxnNxn
-    String queryQuery
-    String hexHexQuery
-    String queryQueryId
-    String queryQueryFormat
-    String targetTargetFormat
-    File outputOutput
-    Boolean countCount
-    String batchBatchSize
-    Boolean scanScan
-    Boolean memoryMemory
-    Boolean timesTimes
-    String? targetTargetFilename
+    String? k_nearest
+    String? threshold
+    String? queries
+    Boolean? nxn
+    String? query
+    String? hex_query
+    String? query_id
+    String? query_format
+    String? target_format
+    File? output_filename_default
+    Boolean? count
+    String? batch_size
+    Boolean? scan
+    Boolean? memory
+    Boolean? times
+    String target_filename
   }
   command <<<
     simsearch \
-      ~{targetTargetFilename} \
-      ~{if defined(kKNearest) then ("--k-nearest " +  '"' + kKNearest + '"') else ""} \
-      ~{if defined(thresholdThreshold) then ("--threshold " +  '"' + thresholdThreshold + '"') else ""} \
-      ~{if defined(queriesQueries) then ("--queries " +  '"' + queriesQueries + '"') else ""} \
-      ~{true="--NxN" false="" nxnNxn} \
-      ~{if defined(queryQuery) then ("--query " +  '"' + queryQuery + '"') else ""} \
-      ~{if defined(hexHexQuery) then ("--hex-query " +  '"' + hexHexQuery + '"') else ""} \
-      ~{if defined(queryQueryId) then ("--query-id " +  '"' + queryQueryId + '"') else ""} \
-      ~{if defined(queryQueryFormat) then ("--query-format " +  '"' + queryQueryFormat + '"') else ""} \
-      ~{if defined(targetTargetFormat) then ("--target-format " +  '"' + targetTargetFormat + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{true="--count" false="" countCount} \
-      ~{if defined(batchBatchSize) then ("--batch-size " +  '"' + batchBatchSize + '"') else ""} \
-      ~{true="--scan" false="" scanScan} \
-      ~{true="--memory" false="" memoryMemory} \
-      ~{true="--times" false="" timesTimes}
+      ~{target_filename} \
+      ~{if defined(k_nearest) then ("--k-nearest " +  '"' + k_nearest + '"') else ""} \
+      ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
+      ~{if defined(queries) then ("--queries " +  '"' + queries + '"') else ""} \
+      ~{true="--NxN" false="" nxn} \
+      ~{if defined(query) then ("--query " +  '"' + query + '"') else ""} \
+      ~{if defined(hex_query) then ("--hex-query " +  '"' + hex_query + '"') else ""} \
+      ~{if defined(query_id) then ("--query-id " +  '"' + query_id + '"') else ""} \
+      ~{if defined(query_format) then ("--query-format " +  '"' + query_format + '"') else ""} \
+      ~{if defined(target_format) then ("--target-format " +  '"' + target_format + '"') else ""} \
+      ~{if defined(output_filename_default) then ("--output " +  '"' + output_filename_default + '"') else ""} \
+      ~{true="--count" false="" count} \
+      ~{if defined(batch_size) then ("--batch-size " +  '"' + batch_size + '"') else ""} \
+      ~{true="--scan" false="" scan} \
+      ~{true="--memory" false="" memory} \
+      ~{true="--times" false="" times}
   >>>
+  parameter_meta {
+    k_nearest: "select the k nearest neighbors (use 'all' for all neighbors)"
+    threshold: "minimum similarity score threshold"
+    queries: "filename containing the query fingerprints"
+    nxn: "use the targets as the queries, and exclude the self- similarity term"
+    query: "query as a structure record (default format: 'smi')"
+    hex_query: "query in hex"
+    query_id: "id for the query or hex-query (default: 'Query1'"
+    query_format: "input query format (default uses the file extension, else 'fps')"
+    target_format: "input target format (default uses the file extension, else 'fps')"
+    output_filename_default: "output filename (default is stdout)"
+    count: "report counts"
+    batch_size: "batch size"
+    scan: "scan the file to find matches (low memory overhead)"
+    memory: "build and search an in-memory data structure (faster for multiple queries)"
+    times: "report load and execution times to stderr"
+    target_filename: "target filename"
+  }
 }

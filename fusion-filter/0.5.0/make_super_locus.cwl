@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: make_super_locus.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/make_super_locus.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

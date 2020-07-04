@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dlessP.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dlessP.cwl
 inputs:
 - id: refseq
   doc: (for use with --msa-format MAF) Read the complete text of the reference sequence
@@ -26,6 +26,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --html
+- id: alignment
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: tree_dot_mod
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: predictions_dot_gff
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

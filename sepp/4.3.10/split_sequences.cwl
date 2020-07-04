@@ -1,21 +1,22 @@
 class: CommandLineTool
-id: split_sequences.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/split_sequences.py.cwl
 inputs:
-- id: t
-  doc: ''
+- id: threshold
+  doc: Split based on this threshold of length
   type: string
   inputBinding:
-    prefix: -t
-- id: i
-  doc: ''
+    prefix: --threshold
+- id: input
+  doc: INPUT sequence file (default=None)
   type: string
   inputBinding:
-    prefix: -i
-- id: o
-  doc: ''
+    prefix: --input
+- id: output
+  doc: OUTPUT prefix, will write fragmentary file to OUTPUT.frag.fas and full-length
+    file to OUTPUT.full.fas (default=output)
   type: string
   inputBinding:
-    prefix: -o
+    prefix: --output
 outputs: []
 cwlVersion: v1.1
 baseCommand:

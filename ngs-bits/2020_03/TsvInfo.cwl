@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: TsvInfo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/TsvInfo.cwl
 inputs:
 - id: in
   doc: "Input TSV file. If unset, reads from STDIN. Default value: ''"

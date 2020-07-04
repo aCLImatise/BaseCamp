@@ -2,10 +2,13 @@ version 1.0
 
 task VerifyLayout {
   input {
-    String? bankBankName
+    String bank_name
   }
   command <<<
     verify-layout \
-      ~{bankBankName}
+      ~{bank_name}
   >>>
+  parameter_meta {
+    bank_name: ""
+  }
 }

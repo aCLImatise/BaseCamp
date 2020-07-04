@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: preprocessing.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/preprocessing.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

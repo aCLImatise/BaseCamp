@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rebaler.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rebaler.cwl
 inputs:
 - id: direct
   doc: 'If set, Rebaler will polish the given genome without first producing an unpolished

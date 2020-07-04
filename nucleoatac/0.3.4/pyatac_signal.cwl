@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pyatac_signal.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyatac_signal.cwl
 inputs:
 - id: bed
   doc: Positions around which to generate VPlot

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dimspy_create_sample_list.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dimspy_create_sample_list.cwl
 inputs:
 - id: input
   doc: HDF5 file that contains a peak matrix object from one of the processing steps.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: xgui.cwl
+id: ../../../../home/ubuntu/BiocondaCli/xgui.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

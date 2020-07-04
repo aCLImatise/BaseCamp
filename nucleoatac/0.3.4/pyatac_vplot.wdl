@@ -2,32 +2,49 @@ version 1.0
 
 task PyatacVplot {
   input {
-    String bedBed
-    String bamBam
-    Int coresCores
-    Int lowerLower
-    Int upperUpper
-    Int flankFlank
-    Boolean scaleScale
-    Int weightWeight
-    Int strandStrand
-    Boolean notNotAtac
-    Boolean noNoPlot
-    Boolean plotPlotExtra
+    String? bed
+    String? bam
+    Int? cores
+    Int? lower
+    Int? upper
+    Int? flank
+    Boolean? scale
+    Int? weight
+    Int? strand
+    Boolean? not_atac
+    Boolean? no_plot
+    Boolean? plot_extra
+    String? out
   }
   command <<<
     pyatac vplot \
-      ~{if defined(bedBed) then ("--bed " +  '"' + bedBed + '"') else ""} \
-      ~{if defined(bamBam) then ("--bam " +  '"' + bamBam + '"') else ""} \
-      ~{if defined(coresCores) then ("--cores " +  '"' + coresCores + '"') else ""} \
-      ~{if defined(lowerLower) then ("--lower " +  '"' + lowerLower + '"') else ""} \
-      ~{if defined(upperUpper) then ("--upper " +  '"' + upperUpper + '"') else ""} \
-      ~{if defined(flankFlank) then ("--flank " +  '"' + flankFlank + '"') else ""} \
-      ~{true="--scale" false="" scaleScale} \
-      ~{if defined(weightWeight) then ("--weight " +  '"' + weightWeight + '"') else ""} \
-      ~{if defined(strandStrand) then ("--strand " +  '"' + strandStrand + '"') else ""} \
-      ~{true="--not_atac" false="" notNotAtac} \
-      ~{true="--no_plot" false="" noNoPlot} \
-      ~{true="--plot_extra" false="" plotPlotExtra}
+      ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""} \
+      ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
+      ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
+      ~{if defined(lower) then ("--lower " +  '"' + lower + '"') else ""} \
+      ~{if defined(upper) then ("--upper " +  '"' + upper + '"') else ""} \
+      ~{if defined(flank) then ("--flank " +  '"' + flank + '"') else ""} \
+      ~{true="--scale" false="" scale} \
+      ~{if defined(weight) then ("--weight " +  '"' + weight + '"') else ""} \
+      ~{if defined(strand) then ("--strand " +  '"' + strand + '"') else ""} \
+      ~{true="--not_atac" false="" not_atac} \
+      ~{true="--no_plot" false="" no_plot} \
+      ~{true="--plot_extra" false="" plot_extra} \
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  parameter_meta {
+    bed: "Positions around which to generate VPlot"
+    bam: "Accepts sorted BAM file"
+    cores: "Number of cores to use"
+    lower: "lower limit on insert size"
+    upper: "upper limit on insert size"
+    flank: "how many bases on each side of site (or center of site) to include"
+    scale: "Scale each site"
+    weight: "column in which weight information is included"
+    strand: "column in which strand information is included"
+    not_atac: "Don't use atac offsets"
+    no_plot: "Don't plot output"
+    plot_extra: "Make some extra plots"
+    out: ""
+  }
 }

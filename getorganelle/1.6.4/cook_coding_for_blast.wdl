@@ -2,14 +2,13 @@ version 1.0
 
 task CookCodingForBlast.py {
   input {
-    String? pythonPython
-    String? cookCookCodingForBlastpY
-    String? fastFastAFiles
+    String fast_a_files
   }
   command <<<
     cook_coding_for_blast.py \
-      ~{pythonPython} \
-      ~{cookCookCodingForBlastpY} \
-      ~{fastFastAFiles}
+      ~{fast_a_files}
   >>>
+  parameter_meta {
+    fast_a_files: ""
+  }
 }

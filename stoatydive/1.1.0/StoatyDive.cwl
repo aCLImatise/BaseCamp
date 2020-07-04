@@ -1,27 +1,27 @@
 class: CommandLineTool
-id: StoatyDive.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/StoatyDive.py.cwl
 inputs:
-- id: a
+- id: _inputbed_path
   doc: '*.bed, --input_bed *.bed Path to the peak file in bed6 format.'
   type: boolean
   inputBinding:
     prefix: -a
-- id: b
+- id: _inputbam_bambed
   doc: '*.bam/*.bed, --input_bam *.bam/*.bed Path to the read file used for the peak
     calling in bed or bam format.'
   type: boolean
   inputBinding:
     prefix: -b
-- id: c
+- id: _chrfile_path
   doc: '*.txt, --chr_file *.txt Path to the chromosome length file.'
   type: boolean
   inputBinding:
     prefix: -c
-- id: o
-  doc: '/, --output_folder path/ Write results to this path. [Default: Operating Path]'
+- id: output_folder
+  doc: 'Write results to this path. [Default: Operating Path]'
   type: File
   inputBinding:
-    prefix: -o
+    prefix: --output_folder
 - id: thresh
   doc: 'Set a normalized CV threshold to divide the peak profiles into more specific
     (0) and more unspecific (1). [Default: 1.0]'

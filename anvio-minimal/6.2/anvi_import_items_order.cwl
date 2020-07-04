@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_import_items_order.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_import_items_order.cwl
 inputs:
 - id: input_order
   doc: "One of the two important things you must provide: the file that contains the\
@@ -11,7 +11,7 @@ inputs:
   type: File
   inputBinding:
     prefix: --input-order
-- id: p
+- id: path__dbpath
   doc: PATH, --db-path DB PATH An appropriate anvi'o database to import the items
     order. Currently it can be a profile, pan, or genes database. But you should try
     your chances with other kinds of databases for fun and games. Basically, if the
@@ -20,7 +20,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -p
-- id: name
+- id: name_what_should
   doc: NAME     What should we call this order? Give it a concise, single-word name.
   type: string
   inputBinding:
@@ -34,6 +34,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --make-default
+- id: path
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
+- id: var_5
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

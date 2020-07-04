@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ldsc.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ldsc.py.cwl
 inputs:
 - id: print_cov
   doc: For use with --h2/--rg. This flag tells LDSC to print the covaraince matrix
@@ -40,7 +40,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --n-blocks
-- id: not_m_5_50
+- id: not_m_five_five_zero
   doc: This flag tells LDSC to use the .l2.M file instead of the .l2.M_5_50 file.
   type: boolean
   inputBinding:
@@ -67,6 +67,26 @@ inputs:
   type: string
   inputBinding:
     prefix: --pop-prev
+- id: out
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --out
+- id: b_file
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --bfile
+- id: l_two
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --l2
+- id: extract
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --extract
 outputs: []
 cwlVersion: v1.1
 baseCommand:

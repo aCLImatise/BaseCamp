@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: meraculous.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/meraculous.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

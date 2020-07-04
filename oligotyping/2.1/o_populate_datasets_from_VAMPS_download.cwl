@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: o_populate_datasets_from_VAMPS_download.cwl
+id: ../../../../home/ubuntu/BiocondaCli/o_populate_datasets_from_VAMPS_download.cwl
 inputs:
-- id: fast_a
-  doc: FASTA file downloaded from VAMPS
-  type: string
-  inputBinding:
-    position: 0
 - id: tax_on
   doc: Isolate a particular taxon
   type: string
@@ -16,6 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
+- id: fast_a
+  doc: FASTA file downloaded from VAMPS
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

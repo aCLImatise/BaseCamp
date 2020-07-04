@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: islandpath.cwl
+id: ../../../../home/ubuntu/BiocondaCli/islandpath.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

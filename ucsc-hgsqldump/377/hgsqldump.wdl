@@ -2,14 +2,16 @@ version 1.0
 
 task Hgsqldump {
   input {
-    String? optionsOptions
-    String? databaseDatabase
-    String? tablesTables
+    String database
+    String? tables
   }
   command <<<
     hgsqldump \
-      ~{optionsOptions} \
-      ~{databaseDatabase} \
-      ~{tablesTables}
+      ~{database} \
+      ~{tables}
   >>>
+  parameter_meta {
+    database: ""
+    tables: ""
+  }
 }

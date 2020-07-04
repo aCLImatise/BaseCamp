@@ -2,16 +2,22 @@ version 1.0
 
 task ValidateContigsMummer {
   input {
-    String minMinContig
-    String similarSimilar
-    String? reReFfa
-    String? contigsContigsFa
+    String? min_contig
+    String? similar
+    String ref_dot_fa
+    String contigs_dot_fa_dot
   }
   command <<<
     validate_contigs_mummer \
-      ~{reReFfa} \
-      ~{if defined(minMinContig) then ("--min_contig " +  '"' + minMinContig + '"') else ""} \
-      ~{if defined(similarSimilar) then ("--similar " +  '"' + similarSimilar + '"') else ""} \
-      ~{contigsContigsFa}
+      ~{ref_dot_fa} \
+      ~{contigs_dot_fa_dot} \
+      ~{if defined(min_contig) then ("--min_contig " +  '"' + min_contig + '"') else ""} \
+      ~{if defined(similar) then ("--similar " +  '"' + similar + '"') else ""}
   >>>
+  parameter_meta {
+    min_contig: "(=100)            minimum contigs"
+    similar: "(=0.95)              similarity"
+    ref_dot_fa: ""
+    contigs_dot_fa_dot: ""
+  }
 }

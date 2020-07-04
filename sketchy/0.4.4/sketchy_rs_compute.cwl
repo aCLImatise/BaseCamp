@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: sketchy_rs_compute.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sketchy_rs_compute.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: progress
   doc: progress switch > 0
   type: long

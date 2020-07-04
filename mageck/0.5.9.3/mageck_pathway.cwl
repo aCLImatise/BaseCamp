@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mageck_pathway.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mageck_pathway.cwl
 inputs:
 - id: gene_ranking
   doc: The gene summary file (containing both positive and negative selection tests)
@@ -48,7 +48,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --ranking-column
-- id: ranking_column_2
+- id: ranking_column_two
   doc: Column number or label in gene summary file for gene ranking; can be either
     an integer of column number, or a string of column label. This option is used
     to determine the column for positive selections and is disabled if --single-ranking

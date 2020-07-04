@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RTEvaluation.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RTEvaluation.cwl
 inputs:
 - id: in
   doc: "*             Input file (valid formats: 'idXML')"
@@ -17,13 +17,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -latex
-- id: p_value_dim_1
+- id: p_value_dim_one
   doc: "Significance level of first dimension RT filter (default: '0.01' min: '0'\
     \ max: '1')"
   type: double
   inputBinding:
     prefix: -p_value_dim_1
-- id: p_value_dim_2
+- id: p_value_dim_two
   doc: "Significance level of second dimension RT filter (default: '0.05' min: '0'\
     \ max: '1')"
   type: double

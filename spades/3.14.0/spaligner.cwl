@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: spaligner.cwl
+id: ../../../../home/ubuntu/BiocondaCli/spaligner.cwl
 inputs:
 - id: datatype
   doc: 'type of sequences: nanopore, pacbio'

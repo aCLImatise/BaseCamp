@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: bactopia_datasets.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bactopia_datasets.py.cwl
 inputs:
-- id: output_directory
-  doc: Directory to write output.
-  type: string
-  inputBinding:
-    position: 0
 - id: ariba
   doc: 'Setup Ariba datasets for a given reference or a list of references in a text
     file. (Default: card,vfdb_core)'
@@ -124,6 +119,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --silent
+- id: output_directory
+  doc: Directory to write output.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

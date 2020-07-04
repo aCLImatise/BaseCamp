@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: chiron.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chiron.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

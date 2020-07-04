@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: poa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/poa.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: matrix_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: read_fast_a
   doc: Read in FASTA sequence file.
   type: File
@@ -21,7 +11,7 @@ inputs:
   type: File
   inputBinding:
     prefix: -read_msa
-- id: read_msa2
+- id: read_msa_two
   doc: 'Read in second MSA file. '
   type: File
   inputBinding:
@@ -31,7 +21,7 @@ inputs:
   type: File
   inputBinding:
     prefix: -subset
-- id: subset_2
+- id: subset_two
   doc: Filter second MSA to include list of seqs in file.
   type: File
   inputBinding:
@@ -41,7 +31,7 @@ inputs:
   type: File
   inputBinding:
     prefix: -remove
-- id: remove_2
+- id: remove_two
   doc: Filter second MSA to exclude list of seqs in file.
   type: File
   inputBinding:
@@ -93,6 +83,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -hbmin
+- id: matrix_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ped_parser.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ped_parser.cwl
 inputs:
 - id: log_file
   doc: Path to log file. If none logging is printed to stderr.
@@ -11,6 +11,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --loglevel
+- id: family_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: or
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

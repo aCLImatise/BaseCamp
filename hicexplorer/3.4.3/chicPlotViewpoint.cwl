@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: chicPlotViewpoint.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chicPlotViewpoint.cwl
 inputs:
 - id: interaction_file
   doc: path to the interaction files which should be used for plotting
   type: long[]
   inputBinding:
     prefix: --interactionFile
-- id: range
+- id: range_defines_upstream
   doc: 'RANGE   Defines the region upstream and downstream of a reference point which
     should be included. Format is --region upstream downstream, e.g.: --region 500000
     500000 plots 500kb up- and 500kb downstream. This value should not exceed the
@@ -136,6 +136,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --threads
+- id: var_25
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

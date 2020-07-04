@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: haystack_hotspots.cwl
+id: ../../../../home/ubuntu/BiocondaCli/haystack_hotspots.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

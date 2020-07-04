@@ -1,67 +1,32 @@
 class: CommandLineTool
-id: sreformat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sreformat.cwl
 inputs:
-- id: fast_a
-  doc: stockholm
-  type: string
-  inputBinding:
-    position: 0
-- id: embl
-  doc: msf
-  type: string
-  inputBinding:
-    position: 1
-- id: genbank
-  doc: a2m
-  type: string
-  inputBinding:
-    position: 2
-- id: gcg
-  doc: phylip
-  type: string
-  inputBinding:
-    position: 3
-- id: gcg_data
-  doc: clustal
-  type: string
-  inputBinding:
-    position: 4
-- id: pir
-  doc: selex
-  type: string
-  inputBinding:
-    position: 5
-- id: raw
-  doc: eps
-  type: string
-  inputBinding:
-    position: 6
-- id: d
+- id: force_dna_alphabet
   doc: ': force DNA alphabet for nucleic acid sequence'
   type: boolean
   inputBinding:
     prefix: -d
-- id: r
+- id: force_rna_alphabet
   doc: ': force RNA alphabet for nucleic acid sequence'
   type: boolean
   inputBinding:
     prefix: -r
-- id: l
+- id: force_lower_case
   doc: ': force lower case'
   type: boolean
   inputBinding:
     prefix: -l
-- id: u
+- id: force_upper_case
   doc: ': force upper case'
   type: boolean
   inputBinding:
     prefix: -u
-- id: x
+- id: convert_noniupac_chars
   doc: ": convert non-IUPAC chars (i.e. X's) in DNA to N's for IUPAC/BLAST compatibility"
   type: boolean
   inputBinding:
     prefix: -x
-- id: n
+- id: remove_iupac_codes
   doc: ": remove IUPAC codes; convert all ambiguous chars in DNA/RNA to N's"
   type: boolean
   inputBinding:
@@ -111,6 +76,46 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --dewuss
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: fast_a
+  doc: stockholm
+  type: string
+  inputBinding:
+    position: 0
+- id: embl
+  doc: msf
+  type: string
+  inputBinding:
+    position: 1
+- id: genbank
+  doc: a2m
+  type: string
+  inputBinding:
+    position: 2
+- id: gcg
+  doc: phylip
+  type: string
+  inputBinding:
+    position: 3
+- id: gcg_data
+  doc: clustal
+  type: string
+  inputBinding:
+    position: 4
+- id: pir
+  doc: selex
+  type: string
+  inputBinding:
+    position: 5
+- id: raw
+  doc: eps
+  type: string
+  inputBinding:
+    position: 6
 outputs: []
 cwlVersion: v1.1
 baseCommand:

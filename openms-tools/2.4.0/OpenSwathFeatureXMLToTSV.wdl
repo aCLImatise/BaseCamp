@@ -2,26 +2,37 @@ version 1.0
 
 task OpenSwathFeatureXMLToTSV {
   input {
-    File inIn
-    File trTr
-    File outOut
-    Boolean shortShortFormat
-    String bestBestScoringPeptide
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    File? in
+    File? tr
+    File? out
+    Boolean? short_format
+    String? best_scoring_peptide
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     OpenSwathFeatureXMLToTSV \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(trTr) then ("-tr " +  '"' + trTr + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{true="-short_format" false="" shortShortFormat} \
-      ~{if defined(bestBestScoringPeptide) then ("-best_scoring_peptide " +  '"' + bestBestScoringPeptide + '"') else ""} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(tr) then ("-tr " +  '"' + tr + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{true="-short_format" false="" short_format} \
+      ~{if defined(best_scoring_peptide) then ("-best_scoring_peptide " +  '"' + best_scoring_peptide + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*                     Input files separated by blank (valid formats: 'featureXML')"
+    tr: "*                      TraML transition file (valid formats: 'traML')"
+    out: "*                     Tsv output file (mProphet compatible) (valid formats: 'csv')"
+    short_format: "Whether to write short (one peptide per line) or long format (one transition per line)."
+    best_scoring_peptide: "If only the best scoring feature per peptide should be printed, give the variable name"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

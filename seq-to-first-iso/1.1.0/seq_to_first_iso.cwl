@@ -1,6 +1,21 @@
 class: CommandLineTool
-id: seq_to_first_iso.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seq_to_first_iso.cwl
 inputs:
+- id: output
+  doc: name of output file
+  type: string
+  inputBinding:
+    prefix: --output
+- id: unlabelled_aa
+  doc: amino acids with default abundance
+  type: string
+  inputBinding:
+    prefix: --unlabelled-aa
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
 - id: input_file_name
   doc: file to parse in .tsv format
   type: string
@@ -16,16 +31,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: output
-  doc: name of output file
-  type: string
-  inputBinding:
-    prefix: --output
-- id: unlabelled_aa
-  doc: amino acids with default abundance
-  type: string
-  inputBinding:
-    prefix: --unlabelled-aa
 outputs: []
 cwlVersion: v1.1
 baseCommand:

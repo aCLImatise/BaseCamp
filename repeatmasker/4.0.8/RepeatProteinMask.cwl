@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RepeatProteinMask.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RepeatProteinMask.cwl
 inputs:
 - id: no_low_simple
   doc: Turns off masking/annotating of low complexity and simple repeats in the final

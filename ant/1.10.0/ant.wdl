@@ -2,70 +2,103 @@ version 1.0
 
 task Ant {
   input {
-    Boolean noNoConfig
-    Boolean useUseJikes
-    Boolean execExecDebug
-    Boolean projectProjectHelp
-    Boolean versionVersion
-    Boolean diagnosticsDiagnostics
-    Boolean quietQuiet
-    Boolean silentSilent
-    Boolean verboseVerbose
-    Boolean debugDebug
-    Boolean emacsEmacs
-    File libLib
-    File logLogFile
-    Boolean lL
-    String loggerLogger
-    String listenerListener
-    Boolean noNoInput
-    File buildfileBuildfile
-    Boolean fileFile
-    Boolean fF
-    Boolean dD
-    Boolean keepKeepGoing
-    String propertyPropertyFile
-    String inputInputHandler
-    File findFind
-    Boolean sS
-    Boolean niceNice
-    Boolean noNoUserLib
-    Boolean noNoClasspath
-    Boolean autoAutoProxy
-    String mainMain
+    Boolean? no_config
+    Boolean? use_jikes
+    Boolean? exec_debug
+    Boolean? project_help
+    Boolean? version
+    Boolean? diagnostics
+    Boolean? quiet
+    Boolean? silent
+    Boolean? verbose
+    Boolean? debug
+    Boolean? emacs
+    File? lib
+    File? log_file
+    Boolean? l
+    String? logger
+    String? listener
+    Boolean? no_input
+    File? buildfile
+    Boolean? file
+    Boolean? f
+    Boolean? propertyvalue_use_value
+    Boolean? keep_going
+    String? property_file
+    String? input_handler
+    File? find
+    Boolean? file_filesystem_use
+    Boolean? nice
+    Boolean? no_user_lib
+    Boolean? no_classpath
+    Boolean? auto_proxy
+    String? main
   }
   command <<<
     ant \
-      ~{true="--noconfig" false="" noNoConfig} \
-      ~{true="--usejikes" false="" useUseJikes} \
-      ~{true="--execdebug" false="" execExecDebug} \
-      ~{true="-projecthelp" false="" projectProjectHelp} \
-      ~{true="-version" false="" versionVersion} \
-      ~{true="-diagnostics" false="" diagnosticsDiagnostics} \
-      ~{true="-quiet" false="" quietQuiet} \
-      ~{true="-silent" false="" silentSilent} \
-      ~{true="-verbose" false="" verboseVerbose} \
-      ~{true="-debug" false="" debugDebug} \
-      ~{true="-emacs" false="" emacsEmacs} \
-      ~{if defined(libLib) then ("-lib " +  '"' + libLib + '"') else ""} \
-      ~{if defined(logLogFile) then ("-logfile " +  '"' + logLogFile + '"') else ""} \
-      ~{true="-l" false="" lL} \
-      ~{if defined(loggerLogger) then ("-logger " +  '"' + loggerLogger + '"') else ""} \
-      ~{if defined(listenerListener) then ("-listener " +  '"' + listenerListener + '"') else ""} \
-      ~{true="-noinput" false="" noNoInput} \
-      ~{if defined(buildfileBuildfile) then ("-buildfile " +  '"' + buildfileBuildfile + '"') else ""} \
-      ~{true="-file" false="" fileFile} \
-      ~{true="-f" false="" fF} \
-      ~{true="-D" false="" dD} \
-      ~{true="-keep-going" false="" keepKeepGoing} \
-      ~{if defined(propertyPropertyFile) then ("-propertyfile " +  '"' + propertyPropertyFile + '"') else ""} \
-      ~{if defined(inputInputHandler) then ("-inputhandler " +  '"' + inputInputHandler + '"') else ""} \
-      ~{if defined(findFind) then ("-find " +  '"' + findFind + '"') else ""} \
-      ~{true="-s" false="" sS} \
-      ~{true="-nice" false="" niceNice} \
-      ~{true="-nouserlib" false="" noNoUserLib} \
-      ~{true="-noclasspath" false="" noNoClasspath} \
-      ~{true="-autoproxy" false="" autoAutoProxy} \
-      ~{if defined(mainMain) then ("-main " +  '"' + mainMain + '"') else ""}
+      ~{true="--noconfig" false="" no_config} \
+      ~{true="--usejikes" false="" use_jikes} \
+      ~{true="--execdebug" false="" exec_debug} \
+      ~{true="-projecthelp" false="" project_help} \
+      ~{true="-version" false="" version} \
+      ~{true="-diagnostics" false="" diagnostics} \
+      ~{true="-quiet" false="" quiet} \
+      ~{true="-silent" false="" silent} \
+      ~{true="-verbose" false="" verbose} \
+      ~{true="-debug" false="" debug} \
+      ~{true="-emacs" false="" emacs} \
+      ~{if defined(lib) then ("-lib " +  '"' + lib + '"') else ""} \
+      ~{if defined(log_file) then ("-logfile " +  '"' + log_file + '"') else ""} \
+      ~{true="-l" false="" l} \
+      ~{if defined(logger) then ("-logger " +  '"' + logger + '"') else ""} \
+      ~{if defined(listener) then ("-listener " +  '"' + listener + '"') else ""} \
+      ~{true="-noinput" false="" no_input} \
+      ~{if defined(buildfile) then ("-buildfile " +  '"' + buildfile + '"') else ""} \
+      ~{true="-file" false="" file} \
+      ~{true="-f" false="" f} \
+      ~{true="-D" false="" propertyvalue_use_value} \
+      ~{true="-keep-going" false="" keep_going} \
+      ~{if defined(property_file) then ("-propertyfile " +  '"' + property_file + '"') else ""} \
+      ~{if defined(input_handler) then ("-inputhandler " +  '"' + input_handler + '"') else ""} \
+      ~{if defined(find) then ("-find " +  '"' + find + '"') else ""} \
+      ~{true="-s" false="" file_filesystem_use} \
+      ~{true="-nice" false="" nice} \
+      ~{true="-nouserlib" false="" no_user_lib} \
+      ~{true="-noclasspath" false="" no_classpath} \
+      ~{true="-autoproxy" false="" auto_proxy} \
+      ~{if defined(main) then ("-main " +  '"' + main + '"') else ""}
   >>>
+  parameter_meta {
+    no_config: "suppress sourcing of /etc/ant.conf, $HOME/.ant/ant.conf, and $HOME/.antrc configuration files"
+    use_jikes: "enable use of jikes by default, unless set explicitly in configuration files"
+    exec_debug: "print ant exec line generated by this launch script"
+    project_help: "print project help information and exit"
+    version: "print the version information and exit"
+    diagnostics: "print information that might be helpful to diagnose or report problems and exit"
+    quiet: "be extra quiet"
+    silent: "print nothing but task outputs and build failures"
+    verbose: "be extra verbose"
+    debug: "print debugging information"
+    emacs: "produce logging information without adornments"
+    lib: "specifies a path to search for jars and classes"
+    log_file: "use given file for log"
+    l: "<file>                ''"
+    logger: "the class which is to perform logging"
+    listener: "add an instance of class as a project listener"
+    no_input: "do not allow interactive input"
+    buildfile: "use given buildfile"
+    file: "<file>              ''"
+    f: "<file>              ''"
+    propertyvalue_use_value: "<property>=<value>   use value for given property"
+    keep_going: "execute all targets that do not depend on failed target(s)"
+    property_file: "load all properties from file with -D properties taking precedence"
+    input_handler: "the class which will handle input requests"
+    find: "(s)earch for buildfile towards the root of"
+    file_filesystem_use: "<file>           the filesystem and use it"
+    nice: "number          A niceness value for the main thread:                         1 (lowest) to 10 (highest); 5 is the default"
+    no_user_lib: "Run ant without using the jar files from                         ${user.home}/.ant/lib"
+    no_classpath: "Run ant without using CLASSPATH"
+    auto_proxy: "Java1.5+: use the OS proxy settings"
+    main: "override Ant's normal entry point"
+  }
 }

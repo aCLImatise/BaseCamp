@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: R_view.cwl
+id: ../../../../home/ubuntu/BiocondaCli/R_view.cwl
 inputs:
-- id: v
+- id: _be_verbose
   doc: ': be verbose'
   type: boolean
   inputBinding:
@@ -31,7 +31,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --inter
-- id: o
+- id: send_output_file
   doc: ': send output to file <f>, not stdout'
   type: string
   inputBinding:
@@ -46,6 +46,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --seed
+- id: peptides
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

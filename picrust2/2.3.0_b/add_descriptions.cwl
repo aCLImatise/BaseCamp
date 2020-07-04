@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: add_descriptions.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/add_descriptions.py.cwl
 inputs:
 - id: input
   doc: Input function abundance table.

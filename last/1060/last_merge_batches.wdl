@@ -2,10 +2,13 @@ version 1.0
 
 task LastMergeBatches {
   input {
-    File? filesFiles
+    File files
   }
   command <<<
     last-merge-batches \
-      ~{filesFiles}
+      ~{files}
   >>>
+  parameter_meta {
+    files: ""
+  }
 }

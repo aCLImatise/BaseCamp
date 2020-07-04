@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: process_shortreads.cwl
+id: ../../../../home/ubuntu/BiocondaCli/process_shortreads.cwl
 inputs:
 - id: inline_null
   doc: ':   barcode is inline with sequence, occurs only on single-end read (default).'
@@ -39,12 +39,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --index-inline
-- id: adapter_1
+- id: adapter_one
   doc: ': provide adaptor sequence that may occur on the first read for filtering.'
   type: string
   inputBinding:
     prefix: --adapter-1
-- id: adapter_2
+- id: adapter_two
   doc: ': provide adaptor sequence that may occur on the paired-read for filtering.'
   type: string
   inputBinding:

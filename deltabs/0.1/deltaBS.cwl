@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: deltaBS.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/deltaBS.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

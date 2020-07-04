@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: vcfaddinfo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfaddinfo.cwl
 inputs:
-- id: vcf_file
+- id: var_0
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: vcf_file
+- id: var_1
   doc: ''
   type: string
   inputBinding:

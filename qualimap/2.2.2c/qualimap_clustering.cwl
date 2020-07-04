@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: qualimap_clustering.cwl
+id: ../../../../home/ubuntu/BiocondaCli/qualimap_clustering.cwl
 inputs:
 - id: bin_size
   doc: Size of the bin (default is 100)
@@ -26,7 +26,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --fragment-length
-- id: l
+- id: upstream_offset_default
   doc: Upstream offset (default is 2000)
   type: string
   inputBinding:
@@ -57,7 +57,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --rscriptpath
-- id: r
+- id: downstream_offset_default
   doc: Downstream offset (default is 500)
   type: string
   inputBinding:

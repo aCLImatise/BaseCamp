@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pygmentize.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pygmentize.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

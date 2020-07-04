@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gdtools_MUMMER2MASK.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gdtools_MUMMER2MASK.cwl
 inputs:
 - id: reference
   doc: File containing reference sequences in GenBank, GFF3, or FASTA format. Option

@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: alignment_stator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/alignment_stator.cwl
 inputs:
-- id: b
+- id: pause_batch_runsm
   doc: "pause for batch runs\e[32;1m"
   type: string
   inputBinding:

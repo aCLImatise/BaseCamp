@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: itsxpress.cwl
+id: ../../../../home/ubuntu/BiocondaCli/itsxpress.cwl
 inputs:
 - id: tax_a
   doc: The taxonomic group sequenced.
@@ -28,6 +28,26 @@ inputs:
   type: string
   inputBinding:
     prefix: --threads
+- id: fast_q
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --fastq
+- id: single_end
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --single_end
+- id: fast_q_two
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --fastq2
+- id: outfile
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --outfile
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,34 +2,49 @@ version 1.0
 
 task CopomuS.py {
   input {
-    String queryQuery
-    String targetTarget
-    String qidxpos0Qidxpos0
-    String tidxpos0Tidxpos0
-    String measureMeasure
-    String candidateCandidateSelection
-    String candidateCandidateFilter
-    String generatorGenerator
-    String mutationMutationEncoding
-    Boolean oO
-    String delimiterDelimiter
-    String parameterParameterFile
-    String threadsThreads
+    String? query
+    String? target
+    String? qid_xpos_zero
+    String? tid_xpos_zero
+    String? measure
+    String? candidate_selection
+    String? candidate_filter
+    String? generator
+    String? mutation_encoding
+    Boolean? file_output_written
+    String? delimiter
+    String? parameter_file
+    String? threads
   }
   command <<<
     CopomuS.py \
-      ~{if defined(queryQuery) then ("--query " +  '"' + queryQuery + '"') else ""} \
-      ~{if defined(targetTarget) then ("--target " +  '"' + targetTarget + '"') else ""} \
-      ~{if defined(qidxpos0Qidxpos0) then ("--qIdxPos0 " +  '"' + qidxpos0Qidxpos0 + '"') else ""} \
-      ~{if defined(tidxpos0Tidxpos0) then ("--tIdxPos0 " +  '"' + tidxpos0Tidxpos0 + '"') else ""} \
-      ~{if defined(measureMeasure) then ("--measure " +  '"' + measureMeasure + '"') else ""} \
-      ~{if defined(candidateCandidateSelection) then ("--candidateSelection " +  '"' + candidateCandidateSelection + '"') else ""} \
-      ~{if defined(candidateCandidateFilter) then ("--candidateFilter " +  '"' + candidateCandidateFilter + '"') else ""} \
-      ~{if defined(generatorGenerator) then ("--generator " +  '"' + generatorGenerator + '"') else ""} \
-      ~{if defined(mutationMutationEncoding) then ("--mutationEncoding " +  '"' + mutationMutationEncoding + '"') else ""} \
-      ~{true="-o" false="" oO} \
-      ~{if defined(delimiterDelimiter) then ("--delimiter " +  '"' + delimiterDelimiter + '"') else ""} \
-      ~{if defined(parameterParameterFile) then ("--parameterFile " +  '"' + parameterParameterFile + '"') else ""} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""}
+      ~{if defined(query) then ("--query " +  '"' + query + '"') else ""} \
+      ~{if defined(target) then ("--target " +  '"' + target + '"') else ""} \
+      ~{if defined(qid_xpos_zero) then ("--qIdxPos0 " +  '"' + qid_xpos_zero + '"') else ""} \
+      ~{if defined(tid_xpos_zero) then ("--tIdxPos0 " +  '"' + tid_xpos_zero + '"') else ""} \
+      ~{if defined(measure) then ("--measure " +  '"' + measure + '"') else ""} \
+      ~{if defined(candidate_selection) then ("--candidateSelection " +  '"' + candidate_selection + '"') else ""} \
+      ~{if defined(candidate_filter) then ("--candidateFilter " +  '"' + candidate_filter + '"') else ""} \
+      ~{if defined(generator) then ("--generator " +  '"' + generator + '"') else ""} \
+      ~{if defined(mutation_encoding) then ("--mutationEncoding " +  '"' + mutation_encoding + '"') else ""} \
+      ~{true="-o" false="" file_output_written} \
+      ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""} \
+      ~{if defined(parameter_file) then ("--parameterFile " +  '"' + parameter_file + '"') else ""} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  parameter_meta {
+    query: "The query sequence."
+    target: "The target sequence."
+    qid_xpos_zero: "The starting index for the query. (Default: 1)"
+    tid_xpos_zero: "The starting index for the target. (Default: 1)"
+    measure: "Which measure to add to the output, can be used multiple times. Output will be sorted in order of measures specified. (Default: ['mfeCover', 'E', 'minDeltaE'])"
+    candidate_selection: "Defines the method used to select candidate base pairs. (Default: mfe)"
+    candidate_filter: "Filters candidate base pairs, can be used multiple times. (Default: [])"
+    generator: "Defines the method used for generating mutated sequences. (Default: flip)"
+    mutation_encoding: "Allows direct candidate selection by specifying a mutation encoding. Overwrites options -s, -f, and -g"
+    file_output_written: "[OUTPUT], --output [OUTPUT] Which file the output should be written to. (Default: STDOUT)"
+    delimiter: "Defines the delimiter used to separate columns in the output, default tab. (Default: \t)"
+    parameter_file: "Optional parameter file for IntaRNA to provide further parameters and prediction constraints."
+    threads: "Threads used for IntaRNA call"
+  }
 }

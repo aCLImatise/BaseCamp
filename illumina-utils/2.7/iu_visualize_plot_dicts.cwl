@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: iu_visualize_plot_dicts.cwl
+id: ../../../../home/ubuntu/BiocondaCli/iu_visualize_plot_dicts.cwl
 inputs:
-- id: plot_dict
-  doc: cPickle dictionary that contains quality score info ready for plotting
-  type: string
-  inputBinding:
-    position: 0
 - id: dest
   doc: Figure destination
   type: string
@@ -21,6 +16,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --split-tiles
+- id: plot_dict
+  doc: cPickle dictionary that contains quality score info ready for plotting
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

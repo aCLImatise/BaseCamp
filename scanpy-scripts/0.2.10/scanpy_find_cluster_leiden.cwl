@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scanpy_find_cluster_leiden.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scanpy_find_cluster_leiden.cwl
 inputs:
 - id: input_format
   doc: '[anndata|loom] Input object format.  [default: anndata]'
@@ -62,15 +62,17 @@ inputs:
   inputBinding:
     prefix: --random-state
 - id: key_added
-  doc: '[,TEXT...]      Key under which to add the computed results'
-  type: string
+  doc: Key under which to add the computed results
+  type:
+  - string
   inputBinding:
     prefix: --key-added
 - id: resolution
-  doc: "[,FLOAT...] A parameter value controlling the coarseness of the clustering.\
-    \ Higher values lead to more clusters. Set to \"None\" if overriding --partition_type\
-    \ to one that doesn't accept `resolution_parameter`.  [default: 1]"
-  type: double
+  doc: "A parameter value controlling the coarseness of the clustering. Higher values\
+    \ lead to more clusters. Set to \"None\" if overriding --partition_type to one\
+    \ that doesn't accept `resolution_parameter`.  [default: 1]"
+  type:
+  - double
   inputBinding:
     prefix: --resolution
 - id: n_iterations
@@ -79,6 +81,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --n-iterations
+- id: input_obj
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_obj
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

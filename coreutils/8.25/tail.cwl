@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tail.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tail.cwl
 inputs:
 - id: bytes
   doc: =[+]NUM       output the last NUM bytes; or use -c +NUM to output starting
@@ -13,7 +13,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --follow
-- id: f
+- id: same__followname
   doc: same as --follow=name --retry
   type: boolean
   inputBinding:
@@ -62,6 +62,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --zero-terminated
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

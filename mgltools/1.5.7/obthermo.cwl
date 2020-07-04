@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: obthermo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/obthermo.cwl
 inputs:
-- id: filename
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: symm
   doc: override symmetry number used in input file
   type: string
@@ -26,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --kj
+- id: filename
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

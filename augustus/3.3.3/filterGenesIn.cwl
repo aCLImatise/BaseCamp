@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filterGenesIn.pl_dbfile.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filterGenesIn.pl.cwl
 inputs:
 - id: name_file
   doc: ''
@@ -15,4 +15,3 @@ outputs: []
 cwlVersion: v1.1
 baseCommand:
 - filterGenesIn.pl
-- dbfile

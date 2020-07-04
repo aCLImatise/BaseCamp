@@ -2,14 +2,19 @@ version 1.0
 
 task SVcomp {
   input {
-    String refRef
-    String firstFirst
-    String secondSecond
+    String? ref
+    String? first
+    String? second
   }
   command <<<
     SVcomp \
-      ~{if defined(refRef) then ("--ref " +  '"' + refRef + '"') else ""} \
-      ~{if defined(firstFirst) then ("--first " +  '"' + firstFirst + '"') else ""} \
-      ~{if defined(secondSecond) then ("--second " +  '"' + secondSecond + '"') else ""}
+      ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""} \
+      ~{if defined(first) then ("--first " +  '"' + first + '"') else ""} \
+      ~{if defined(second) then ("--second " +  '"' + second + '"') else ""}
   >>>
+  parameter_meta {
+    ref: ""
+    first: ""
+    second: ""
+  }
 }

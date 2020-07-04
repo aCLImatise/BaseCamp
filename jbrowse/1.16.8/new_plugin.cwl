@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: new_plugin.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/new_plugin.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

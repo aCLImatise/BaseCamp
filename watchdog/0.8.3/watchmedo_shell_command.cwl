@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: watchmedo_shell_command.cwl
+id: ../../../../home/ubuntu/BiocondaCli/watchmedo_shell_command.cwl
 inputs:
-- id: directories
-  doc: "directories to watch (default: '.')"
-  type: string
-  inputBinding:
-    position: 0
 - id: command
   doc: "shell command executed in response to matching events. These interpolation\
     \ variables are available to your command string:: ${watch_src_path} - event source\
@@ -54,6 +49,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --drop
+- id: directories
+  doc: "directories to watch (default: '.')"
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

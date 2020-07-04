@@ -2,18 +2,25 @@ version 1.0
 
 task Md5sumLite {
   input {
-    String? noNo
-    String? suchSuch
-    File? fileFile
-    String? orOr
-    Directory? directoryDirectory
+    String no
+    String such
+    File file
+    String or
+    Directory directory
   }
   command <<<
     md5sum-lite \
-      ~{noNo} \
-      ~{suchSuch} \
-      ~{fileFile} \
-      ~{orOr} \
-      ~{directoryDirectory}
+      ~{no} \
+      ~{such} \
+      ~{file} \
+      ~{or} \
+      ~{directory}
   >>>
+  parameter_meta {
+    no: ""
+    such: ""
+    file: ""
+    or: ""
+    directory: ""
+  }
 }

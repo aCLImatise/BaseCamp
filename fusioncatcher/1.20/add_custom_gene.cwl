@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: add_custom_gene.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/add_custom_gene.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the list of allowed candidate fusion genes

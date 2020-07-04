@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SampleAncestry.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SampleAncestry.cwl
 inputs:
 - id: in
   doc: Input variant list(s) in VCF format.

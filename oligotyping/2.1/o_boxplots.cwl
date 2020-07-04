@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: o_boxplots.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/o_boxplots.R.cwl
 inputs:
-- id: this_script_r
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: input_matrix
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: sample_mapping
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: mapping_var
   doc: Mapping variable to use from the sample mapping file. If none specified, the
     first column is used.
@@ -37,6 +22,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --pdf_height
+- id: this_script_do_tr
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: input_matrix
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: sample_mapping
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

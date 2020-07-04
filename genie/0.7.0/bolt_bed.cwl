@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bolt_bed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bolt_bed.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

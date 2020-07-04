@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pasteurize.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pasteurize.cwl
 inputs:
 - id: all_imports
   doc: Adds all __future__ and future imports to each module

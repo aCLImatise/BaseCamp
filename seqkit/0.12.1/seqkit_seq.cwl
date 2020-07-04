@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: seqkit_seq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqkit_seq.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: color
   doc: colorize sequences - to be piped into "less -R"
   type: boolean
@@ -16,7 +11,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --complement
-- id: dna2rna
+- id: dna_two_rna
   doc: DNA to RNA
   type: boolean
   inputBinding:
@@ -85,7 +80,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --reverse
-- id: rna2dna
+- id: rna_two_dna
   doc: RNA to DNA
   type: boolean
   inputBinding:
@@ -159,6 +154,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

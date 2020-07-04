@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tripaille_analysis_load_fasta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tripaille_analysis_load_fasta.cwl
 inputs:
 - id: organism
   doc: Organism common name or abbreviation
@@ -83,6 +83,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no_wait
+- id: fast_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

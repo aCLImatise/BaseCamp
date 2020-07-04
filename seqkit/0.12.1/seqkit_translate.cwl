@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: seqkit_translate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqkit_translate.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: allow_unknown_codon
   doc: translate unknown code to 'X'. And you may not use flag --trim which removes
     'X'
@@ -99,6 +94,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,10 +2,13 @@ version 1.0
 
 task Minx {
   input {
-    Boolean tabulateTabulate
+    Boolean? tabulate
   }
   command <<<
     minx \
-      ~{true="--tabulate" false="" tabulateTabulate}
+      ~{true="--tabulate" false="" tabulate}
   >>>
+  parameter_meta {
+    tabulate: "[merlin]"
+  }
 }

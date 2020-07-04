@@ -2,18 +2,31 @@ version 1.0
 
 task ClinvarTsvMain {
   input {
-    String b37B37Path
-    String b38B38Path
-    String workWorkDir
-    String coresCores
-    Boolean debugDebug
+    String? b_three_seven_path
+    String? b_three_eight_path
+    String? work_dir
+    String? cores
+    Boolean? debug
+    String clin_var_tsv
+    String main
   }
   command <<<
     clinvar_tsv main \
-      ~{if defined(b37B37Path) then ("--b37-path " +  '"' + b37B37Path + '"') else ""} \
-      ~{if defined(b38B38Path) then ("--b38-path " +  '"' + b38B38Path + '"') else ""} \
-      ~{if defined(workWorkDir) then ("--work-dir " +  '"' + workWorkDir + '"') else ""} \
-      ~{if defined(coresCores) then ("--cores " +  '"' + coresCores + '"') else ""} \
-      ~{true="--debug" false="" debugDebug}
+      ~{clin_var_tsv} \
+      ~{main} \
+      ~{if defined(b_three_seven_path) then ("--b37-path " +  '"' + b_three_seven_path + '"') else ""} \
+      ~{if defined(b_three_eight_path) then ("--b38-path " +  '"' + b_three_eight_path + '"') else ""} \
+      ~{if defined(work_dir) then ("--work-dir " +  '"' + work_dir + '"') else ""} \
+      ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
+      ~{true="--debug" false="" debug}
   >>>
+  parameter_meta {
+    b_three_seven_path: "Path to GRCh37 FAI-indexed FASTA file."
+    b_three_eight_path: "Path to GRCh38 FAI-indexed FASTA file."
+    work_dir: "Path to working directory"
+    cores: "Number of cores to use"
+    debug: "Enables debugging helps"
+    clin_var_tsv: ""
+    main: ""
+  }
 }

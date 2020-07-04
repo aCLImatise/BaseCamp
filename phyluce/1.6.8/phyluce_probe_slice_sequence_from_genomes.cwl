@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_probe_slice_sequence_from_genomes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_probe_slice_sequence_from_genomes.cwl
 inputs:
 - id: conf
   doc: Path to the configuration file

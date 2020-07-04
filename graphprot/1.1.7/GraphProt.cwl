@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: GraphProt.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/GraphProt.pl.cwl
 inputs:
 - id: mode
   doc: "'regression' or 'classification' default: classification"
@@ -45,12 +45,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -params
-- id: r
+- id: graphprot_radius_default
   doc: 'GraphProt radius default: 1'
   type: boolean
   inputBinding:
     prefix: -R
-- id: d
+- id: graphprot_distance_default
   doc: 'GraphProt distance default: 4'
   type: boolean
   inputBinding:
@@ -80,7 +80,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -affinities
-- id: c
+- id: svr_parameter_c
   doc: 'SVR parameter c       [regression] default: 1'
   type: boolean
   inputBinding:

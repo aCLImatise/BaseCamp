@@ -2,14 +2,19 @@ version 1.0
 
 task FermiExact {
   input {
-    Boolean msMs
-    String? idxIdxBaseBwt
-    String? srcSrcFa
+    Boolean? ms
+    String idx_based_ot_bwt
+    String src_dot_fa
   }
   command <<<
     fermi exact \
-      ~{idxIdxBaseBwt} \
-      ~{true="-Ms" false="" msMs} \
-      ~{srcSrcFa}
+      ~{idx_based_ot_bwt} \
+      ~{src_dot_fa} \
+      ~{true="-Ms" false="" ms}
   >>>
+  parameter_meta {
+    ms: ""
+    idx_based_ot_bwt: ""
+    src_dot_fa: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pedwipe.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pedwipe.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

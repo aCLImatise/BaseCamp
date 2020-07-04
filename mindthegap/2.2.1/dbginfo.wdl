@@ -2,10 +2,13 @@ version 1.0
 
 task Dbginfo {
   input {
-    Boolean inIn
+    Boolean? in
   }
   command <<<
     dbginfo \
-      ~{true="-in" false="" inIn}
+      ~{true="-in" false="" in}
   >>>
+  parameter_meta {
+    in: "(1 arg) :    graph file"
+  }
 }

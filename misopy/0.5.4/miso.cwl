@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: miso.cwl
+id: ../../../../home/ubuntu/BiocondaCli/miso.cwl
 inputs:
 - id: run
   doc: 'Compute Psi values for a given GFF annotation of either whole mRNA isoforms
@@ -81,7 +81,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --prefilter
-- id: p
+- id: number_use_applies
   doc: Number of processors to use. Only applies when running MISO on a single machine
     with multiple cores; does not apply to runs submitted to cluster with --use-cluster.
   type: string

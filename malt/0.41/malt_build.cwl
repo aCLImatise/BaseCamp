@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: malt_build.cwl
+id: ../../../../home/ubuntu/BiocondaCli/malt_build.cwl
 inputs:
 - id: input
   doc: '[string(s)]              Input reference files in FastA format (or specify
@@ -50,77 +50,77 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --proteinReduct
-- id: gi2eggnog
+- id: gi_two_eggnog
   doc: '[string]      GI-to-EGGNOG mapping file (deprecated). '
   type: boolean
   inputBinding:
     prefix: --gi2eggnog
-- id: acc2eggnog
+- id: acc_two_eggnog
   doc: '[string]     Accession-to-EGGNOG mapping file. '
   type: boolean
   inputBinding:
     prefix: --acc2eggnog
-- id: syn2eggnog
+- id: syn_two_eggnog
   doc: '[string]     Synonyms-to-EGGNOG mapping file. '
   type: boolean
   inputBinding:
     prefix: --syn2eggnog
-- id: gi2interpro2go
+- id: gi_two_interpro_two_go
   doc: '[string]   GI-to-INTERPRO2GO mapping file (deprecated). '
   type: boolean
   inputBinding:
     prefix: --gi2interpro2go
-- id: acc2interpro2go
+- id: acc_two_interpro_two_go
   doc: '[string]   Accession-to-INTERPRO2GO mapping file. '
   type: boolean
   inputBinding:
     prefix: --acc2interpro2go
-- id: syn2interpro2go
+- id: syn_two_interpro_two_go
   doc: '[string]   Synonyms-to-INTERPRO2GO mapping file. '
   type: boolean
   inputBinding:
     prefix: --syn2interpro2go
-- id: gi2kegg
+- id: gi_two_kegg
   doc: '[string]          GI-to-KEGG mapping file (deprecated). '
   type: boolean
   inputBinding:
     prefix: --gi2kegg
-- id: acc2kegg
+- id: acc_two_kegg
   doc: '[string]         Accession-to-KEGG mapping file. '
   type: boolean
   inputBinding:
     prefix: --acc2kegg
-- id: syn2kegg
+- id: syn_two_kegg
   doc: '[string]         Synonyms-to-KEGG mapping file. '
   type: boolean
   inputBinding:
     prefix: --syn2kegg
-- id: gi2seed
+- id: gi_two_seed
   doc: '[string]          GI-to-SEED mapping file (deprecated). '
   type: boolean
   inputBinding:
     prefix: --gi2seed
-- id: acc2seed
+- id: acc_two_seed
   doc: '[string]         Accession-to-SEED mapping file. '
   type: boolean
   inputBinding:
     prefix: --acc2seed
-- id: syn2seed
+- id: syn_two_seed
   doc: '[string]         Synonyms-to-SEED mapping file. '
   type: boolean
   inputBinding:
     prefix: --syn2seed
-- id: gi2_taxonomy
+- id: gi_two_taxonomy
   doc: '[string]   GI-to-Taxonomy mapping file (deprecated). '
   type: boolean
   inputBinding:
     prefix: --gi2taxonomy
-- id: acc2_taxonomy
+- id: acc_two_taxonomy
   doc: '[string]   Accession-to-Taxonomy mapping file. '
   type: boolean
   inputBinding:
     prefix: --acc2taxonomy
-- id: syn2_taxonomy
+- id: syn_two_taxonomy
   doc: '[string]   Synonyms-to-Taxonomy mapping file. '
   type: boolean
   inputBinding:

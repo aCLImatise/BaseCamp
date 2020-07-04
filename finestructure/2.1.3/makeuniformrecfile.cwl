@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: makeuniformrecfile.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/makeuniformrecfile.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

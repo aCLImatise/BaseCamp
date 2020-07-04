@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: msisensor_pro.cwl
+id: ../../../../home/ubuntu/BiocondaCli/msisensor_pro.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: sambamba_sort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sambamba_sort.cwl
 inputs:
-- id: samba_mba_sort
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: input_bam
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: memory_limit
   doc: approximate total memory limit for all threads (by default 2GB)
   type: string
@@ -74,6 +64,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --filter
+- id: samba_mba_sort
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: input_dot_bam
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

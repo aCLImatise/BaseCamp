@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfremoveaberrantgenotypes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfremoveaberrantgenotypes.cwl
 inputs:
 - id: vcf_file
   doc: ''

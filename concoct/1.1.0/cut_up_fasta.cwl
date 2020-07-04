@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: cut_up_fasta.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cut_up_fasta.py.cwl
 inputs:
-- id: contigs
-  doc: Fasta files with contigs
-  type: string
-  inputBinding:
-    position: 0
 - id: chunk_size
   doc: Chunk size
   type: string
@@ -27,6 +22,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --bedfile
+- id: contigs
+  doc: Fasta files with contigs
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

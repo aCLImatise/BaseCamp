@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: chainFilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chainFilter.cwl
 inputs:
-- id: q
+- id: chr_restrict_query_sequence_named
   doc: ',chr2 - restrict query side sequence to those named'
   type: string
   inputBinding:
@@ -11,7 +11,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -notQ
-- id: t
+- id: chr_restrict_side_sequence_named
   doc: ',chr2 - restrict target side sequence to those named'
   type: string
   inputBinding:
@@ -21,78 +21,78 @@ inputs:
   type: string
   inputBinding:
     prefix: -notT
-- id: only
-  doc: one with ID number matching N
+- id: id
+  doc: '- only get one with ID number matching N'
   type: string
   inputBinding:
-    prefix: '- only'
-- id: restrict
-  doc: those scoring at least N
+    prefix: -id
+- id: min_score
+  doc: '- restrict to those scoring at least N'
   type: string
   inputBinding:
-    prefix: '- restrict'
-- id: restrict
-  doc: those scoring less than N
+    prefix: -minScore
+- id: max_score
+  doc: '- restrict to those scoring less than N'
   type: string
   inputBinding:
-    prefix: '- restrict'
+    prefix: -maxScore
 - id: q_start_min
-  doc: those with qStart at least N
+  doc: '- restrict to those with qStart at least N'
   type: string
   inputBinding:
     prefix: -qStartMin
 - id: q_start_max
-  doc: those with qStart less than N
+  doc: '- restrict to those with qStart less than N'
   type: string
   inputBinding:
     prefix: -qStartMax
-- id: restrict
-  doc: those with qEnd at least N
+- id: q_end_min
+  doc: '- restrict to those with qEnd at least N'
   type: string
   inputBinding:
-    prefix: '- restrict'
-- id: restrict
-  doc: those with qEnd less than N
+    prefix: -qEndMin
+- id: q_end_max
+  doc: '- restrict to those with qEnd less than N'
   type: string
   inputBinding:
-    prefix: '- restrict'
+    prefix: -qEndMax
 - id: t_start_min
-  doc: those with tStart at least N
+  doc: '- restrict to those with tStart at least N'
   type: string
   inputBinding:
     prefix: -tStartMin
 - id: t_start_max
-  doc: those with tStart less than N
+  doc: '- restrict to those with tStart less than N'
   type: string
   inputBinding:
     prefix: -tStartMax
-- id: restrict
-  doc: those with tEnd at least N
+- id: tend_min
+  doc: '- restrict to those with tEnd at least N'
   type: string
   inputBinding:
-    prefix: '- restrict'
-- id: restrict
-  doc: those with tEnd less than N
+    prefix: -tEndMin
+- id: tend_max
+  doc: '- restrict to those with tEnd less than N'
   type: string
   inputBinding:
-    prefix: '- restrict'
+    prefix: -tEndMax
 - id: q_overlap_start
-  doc: those where the query overlaps a region starting here
+  doc: '- restrict to those where the query overlaps a region starting here'
   type: string
   inputBinding:
     prefix: -qOverlapStart
 - id: q_overlap_end
-  doc: those where the query overlaps a region ending here
+  doc: '- restrict to those where the query overlaps a region ending here'
   type: string
   inputBinding:
     prefix: -qOverlapEnd
 - id: t_overlap_start
-  doc: those where the target overlaps a region starting here
+  doc: '- restrict to those where the target overlaps a region starting here'
   type: string
   inputBinding:
     prefix: -tOverlapStart
 - id: t_overlap_end
-  doc: those where the target overlaps a region ending here
+  doc: '- restrict to those where the target overlaps a region ending here'
   type: string
   inputBinding:
     prefix: -tOverlapEnd
@@ -112,7 +112,7 @@ inputs:
   inputBinding:
     prefix: -zeroGap
 - id: min_gapless
-  doc: with minimum gapless block of at least N
+  doc: '- pass those with minimum gapless block of at least N'
   type: string
   inputBinding:
     prefix: -minGapless
@@ -166,6 +166,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -noHap
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

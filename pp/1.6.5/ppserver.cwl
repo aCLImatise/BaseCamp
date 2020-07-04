@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ppserver.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ppserver.py.cwl
 inputs:
 - id: hd_ar
   doc: ''
@@ -31,7 +31,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -b
-- id: p
+- id: var_6
   doc: ''
   type: string
   inputBinding:
@@ -56,7 +56,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -k
-- id: p
+- id: var_11
   doc: ''
   type: string
   inputBinding:

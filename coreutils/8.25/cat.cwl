@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cat.cwl
 inputs:
 - id: show_all
   doc: equivalent to -vET
@@ -11,7 +11,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --number-nonblank
-- id: e
+- id: equivalent_to_ve
   doc: equivalent to -vE
   type: boolean
   inputBinding:
@@ -31,7 +31,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --squeeze-blank
-- id: t
+- id: to_vt
   doc: to -vT
   type: string
   inputBinding:
@@ -41,7 +41,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --show-tabs
-- id: u
+- id: ignored
   doc: (ignored)
   type: boolean
   inputBinding:
@@ -51,6 +51,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --show-nonprinting
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

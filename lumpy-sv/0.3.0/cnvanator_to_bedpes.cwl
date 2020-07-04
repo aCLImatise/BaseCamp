@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cnvanator_to_bedpes.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cnvanator_to_bedpes.py.cwl
 inputs:
 - id: cnv_calls
   doc: Output file from CNVanator

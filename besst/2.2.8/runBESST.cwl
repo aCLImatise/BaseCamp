@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: runBESST.cwl
+id: ../../../../home/ubuntu/BiocondaCli/runBESST.cwl
 inputs:
-- id: y
+- id: deactivate_pathfinder_module
   doc: Deactivate pathfinder module for including smaller contigs.
   type: boolean
   inputBinding:
@@ -12,12 +12,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no_score
-- id: c
+- id: fasta_file_containing
   doc: Fasta file containing contigs.
   type: string
   inputBinding:
     prefix: -c
-- id: f
+- id: paths_to_bamfiles
   doc: Path(s) to bamfile(s).
   type: string[]
   inputBinding:
@@ -28,22 +28,22 @@ inputs:
   type: string[]
   inputBinding:
     prefix: -orientation
-- id: r
+- id: mean_read_length
   doc: Mean read length of libraries.
   type: string[]
   inputBinding:
     prefix: -r
-- id: m
+- id: mean_insert_size
   doc: Mean insert size of libraries.
   type: string[]
   inputBinding:
     prefix: -m
-- id: s
+- id: estimated_standard_deviation
   doc: Estimated standard deviation of libraries.
   type: string[]
   inputBinding:
     prefix: -s
-- id: z
+- id: user_over_value
   doc: User specified coverage cutoff. (Manually filter out contigs with coverage
     over this value)
   type: string
@@ -55,36 +55,36 @@ inputs:
   type: string
   inputBinding:
     prefix: -z_min
-- id: a
+- id: maximum_length_ratio
   doc: Maximum length ratio for merging of haplotypic regions.
   type: string
   inputBinding:
     prefix: -a
-- id: b
+- id: number_standard_allow
   doc: 'Number of standard deviations over mean/2 of coverage to allow for clasification
     of haplotype. Example: contigs with under mean/2 + 3sigma are indicated as potential
     haplotypes (tested later) if -b 3'
   type: string
   inputBinding:
     prefix: -b
-- id: g
+- id: haplotype_detection_function
   doc: Haplotype detection function, default = off
   type: boolean
   inputBinding:
     prefix: -g
-- id: t
+- id: threshold_value_filter
   doc: Threshold value filter out reads that are mapped too far apart given insert
     size.
   type: string[]
   inputBinding:
     prefix: -T
-- id: e
+- id: threshold_value_least
   doc: 'Threshold value for the least nr of links that is needed to create an edge.
     Default for all libs: Inferred by BESST (see value in output in Statistics.txt).'
   type: string[]
   inputBinding:
     prefix: -e
-- id: k
+- id: contig_size_threshold
   doc: "Contig size threshold for the library (all contigs below this size is discarded\
     \ from the 'large contigs' scaffolding, but included in pathfinding). Default:\
     \ Set to same as -T parameter"
@@ -140,29 +140,29 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --print_scores
-- id: k
+- id: kmer_size_used
   doc: k-mer size used in de brujin graph for obtaining contigs in assembly, default
     50
   type: string
   inputBinding:
     prefix: -K
-- id: m
+- id: usted_creating_graph
   doc: m-mer usted for creating connection graph. Should be set lower than k-mer size
   type: string
   inputBinding:
     prefix: -M
-- id: o
+- id: path_output_besst
   doc: Path to output directory. BESST will create a folder named 'BESST_output' in
     the directory given by the path.
   type: string
   inputBinding:
     prefix: -o
-- id: d
+- id: deactivate_sequencing_duplicates
   doc: Deactivate sequencing duplicates detection
   type: boolean
   inputBinding:
     prefix: -d
-- id: q
+- id: parallellize_work_load
   doc: Parallellize work load of path finder module in case of multiple processors
     available.
   type: boolean
@@ -202,6 +202,11 @@ inputs:
   type: long
   inputBinding:
     prefix: -max_contig_overlap
+- id: be_sst
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

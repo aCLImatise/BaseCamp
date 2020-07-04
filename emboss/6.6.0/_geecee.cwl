@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _geecee.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_geecee.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

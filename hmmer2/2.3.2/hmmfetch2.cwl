@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: hmmfetch2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hmmfetch2.cwl
 inputs:
+- id: interpret_hmm_name
+  doc: ': interpret <HMM name> instead as an HMM number (0..nhmm-1)'
+  type: boolean
+  inputBinding:
+    prefix: -n
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 - id: hmm_fetch
   doc: ''
   type: string
@@ -16,11 +26,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: n
-  doc: ': interpret <HMM name> instead as an HMM number (0..nhmm-1)'
-  type: boolean
-  inputBinding:
-    prefix: -n
 outputs: []
 cwlVersion: v1.1
 baseCommand:

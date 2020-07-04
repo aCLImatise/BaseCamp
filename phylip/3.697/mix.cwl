@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mix.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mix.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

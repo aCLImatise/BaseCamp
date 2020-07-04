@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: plantcv_train.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/plantcv_train.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

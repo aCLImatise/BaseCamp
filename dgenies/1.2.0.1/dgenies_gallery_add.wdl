@@ -2,18 +2,25 @@ version 1.0
 
 task DgeniesGalleryAdd {
   input {
-    String idIdJob
-    String nameName
-    String queryQuery
-    String targetTarget
-    String pictPict
+    String? id_job
+    String? name
+    String? query
+    String? target
+    String? pict
   }
   command <<<
     dgenies gallery add \
-      ~{if defined(idIdJob) then ("--id-job " +  '"' + idIdJob + '"') else ""} \
-      ~{if defined(nameName) then ("--name " +  '"' + nameName + '"') else ""} \
-      ~{if defined(queryQuery) then ("--query " +  '"' + queryQuery + '"') else ""} \
-      ~{if defined(targetTarget) then ("--target " +  '"' + targetTarget + '"') else ""} \
-      ~{if defined(pictPict) then ("--pict " +  '"' + pictPict + '"') else ""}
+      ~{if defined(id_job) then ("--id-job " +  '"' + id_job + '"') else ""} \
+      ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
+      ~{if defined(query) then ("--query " +  '"' + query + '"') else ""} \
+      ~{if defined(target) then ("--target " +  '"' + target + '"') else ""} \
+      ~{if defined(pict) then ("--pict " +  '"' + pict + '"') else ""}
   >>>
+  parameter_meta {
+    id_job: "Id (name) of the job to add to the gallery"
+    name: "Name to show in the gallery for the job"
+    query: "Name of the query"
+    target: "Name of the target"
+    pict: "Name of the file that illustrate the job"
+  }
 }

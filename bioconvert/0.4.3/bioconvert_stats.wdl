@@ -2,14 +2,19 @@ version 1.0
 
 task BioconvertStats {
   input {
-    String vV
-    Boolean noNoPlot
-    String? bioBioConvert
+    String? v
+    Boolean? no_plot
+    String bio_convert
   }
   command <<<
     bioconvert_stats \
-      ~{bioBioConvert} \
-      ~{if defined(vV) then ("-v " +  '"' + vV + '"') else ""} \
-      ~{true="--no-plot" false="" noNoPlot}
+      ~{bio_convert} \
+      ~{if defined(v) then ("-v " +  '"' + v + '"') else ""} \
+      ~{true="--no-plot" false="" no_plot}
   >>>
+  parameter_meta {
+    v: ""
+    no_plot: ""
+    bio_convert: ""
+  }
 }

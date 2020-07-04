@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rfmix.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rfmix.cwl
 inputs:
 - id: crf_spacing
   doc: Conditional Random Field spacing (# of SNPs)

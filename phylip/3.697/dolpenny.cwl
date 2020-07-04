@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dolpenny.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dolpenny.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

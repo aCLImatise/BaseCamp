@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: kobas_run.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kobas_run.cwl
 inputs:
-- id: run_koba_spy
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: list
   doc: list available species, or list available databases for specific species
   type: boolean
@@ -135,6 +130,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --blastx
+- id: run_kob_as_do_tpy
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

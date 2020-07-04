@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: braker.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/braker.pl.cwl
 inputs:
 - id: genome
   doc: fasta file with DNA sequences
@@ -11,6 +11,76 @@ inputs:
   type: string
   inputBinding:
     prefix: --bam
+- id: alternatives_from_evidence
+  doc: Output alternative transcripts based on explicit evidence from  hints (default
+    is true).
+  type: string
+  inputBinding:
+    prefix: --alternatives-from-evidence
+- id: augustus_config_path
+  doc: =/path/        Set path to AUGUSTUS (if not specified as environment variable).
+  type: boolean
+  inputBinding:
+    prefix: --AUGUSTUS_CONFIG_PATH
+- id: bam_tools_path
+  doc: '=/path/to/            Set path to bamtools (if not specified as environment '
+  type: boolean
+  inputBinding:
+    prefix: --BAMTOOLS_PATH
+- id: cores
+  doc: Specifies the maximum number of cores that can be used during  computation
+  type: boolean
+  inputBinding:
+    prefix: --cores
+- id: extrinsic_cfgfile
+  doc: Optional. This file contains the list of used sources for the  hints and their
+    boni and mali. If not specified the file "extrinsic.cfg"  in the config directory
+    $AUGUSTUS_CONFIG_PATH is copied and adjusted.
+  type: boolean
+  inputBinding:
+    prefix: --extrinsicCfgFile
+- id: fungus
+  doc: 'GeneMark-ET option: run algorithm with branch point model (most  useful for
+    fungal genomes)'
+  type: boolean
+  inputBinding:
+    prefix: --fungus
+- id: genemark_path
+  doc: '=/path/to/            Set path to GeneMark-ET (if not specified as environment '
+  type: boolean
+  inputBinding:
+    prefix: --GENEMARK_PATH
+- id: gff_three
+  doc: Output in GFF3 format.
+  type: boolean
+  inputBinding:
+    prefix: --gff3
+- id: hints
+  doc: Alternatively to calling braker.pl with a bam file, it is  possible to call
+    it with a file that contains introns extracted  from RNA-Seq data in gff format.
+    This flag also allows the usage of hints from additional extrinsic sources for
+    gene prediction  with AUGUSTUS. To consider such additional extrinsic information,
+    you need to use the flag --optCfgFile to specify parameters for  all sources in
+    the hints file (including the source "E" for intron hints from RNA-Seq).
+  type: string
+  inputBinding:
+    prefix: --hints
+- id: opt_cfgfile
+  doc: Optional custom config file for AUGUSTUS (see --hints).
+  type: string
+  inputBinding:
+    prefix: --optCfgFile
+- id: overwrite
+  doc: Overwrite existing files (except for species parameter files)
+  type: boolean
+  inputBinding:
+    prefix: --overwrite
+- id: sam_tools_path
+  doc: '=/path/to/            Optionally set path to samtools (if not specified as
+    environment '
+  type: boolean
+  inputBinding:
+    prefix: --SAMTOOLS_PATH
 - id: skip_genemark_et
   doc: 'Skip GeneMark-ET and use provided GeneMark-ET output (e.g. from a different
     source) '
@@ -59,6 +129,27 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --filterOutShort
+- id: to_slash_augustus_slash
+  doc: Has higher priority than environment variable.
+  type: string
+  inputBinding:
+    position: 0
+- id: bam_tools_slash
+  doc: variable). Has higher priority than the environment variable.
+  type: string
+  inputBinding:
+    position: 1
+- id: gmes_pet_apdo_tpl_slash
+  doc: variable). Has higher priority than environment variable.
+  type: string
+  inputBinding:
+    position: 2
+- id: sam_tools_slash
+  doc: variable) to fix BAM files automatically, if necessary. Has higher      priority
+    than environment variable.
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: combineFragandDBGraph_fastg_old.py.cwl
-inputs:
-- id: continue
-  doc: ^
-  type: string
-  inputBinding:
-    position: 0
+id: ../../../../home/ubuntu/BiocondaCli/combineFragandDBGraph_fastg_old.py.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: kat_plot_cold.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kat_plot_cold.cwl
 inputs:
-- id: stats_file
-  doc: The stats file produced by 'kat cold'
-  type: string
-  inputBinding:
-    position: 0
 - id: output
   doc: The path to the output file.
   type: string
@@ -46,6 +41,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: stats_file
+  doc: The stats file produced by 'kat cold'
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

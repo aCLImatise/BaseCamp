@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: crass.cwl
+id: ../../../../home/ubuntu/BiocondaCli/crass.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

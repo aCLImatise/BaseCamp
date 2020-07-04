@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: peakranger.cwl
+id: ../../../../home/ubuntu/BiocondaCli/peakranger.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

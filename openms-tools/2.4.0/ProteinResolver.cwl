@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ProteinResolver.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ProteinResolver.cwl
 inputs:
 - id: fast_a
   doc: "*                       Input database file (valid formats: 'fasta')"
@@ -39,39 +39,6 @@ inputs:
   type: File
   inputBinding:
     prefix: -protein_table
-- id: resolver
-  doc: ":missed_cleavages <number>  Number of allowed missed cleavages (default: '2'\
-    \ min: '0')"
-  type: boolean
-  inputBinding:
-    prefix: -resolver
-- id: resolver
-  doc: ":min_length <number>        Minimum length of peptide (default: '6' min: '1')"
-  type: boolean
-  inputBinding:
-    prefix: -resolver
-- id: resolver
-  doc: ":enzyme <choice>            Digestion enzyme (default: 'Trypsin' valid: 'Trypsin')"
-  type: boolean
-  inputBinding:
-    prefix: -resolver
-- id: designer
-  doc: ":experiment <text>          Identifier for the experimental design. (default:\
-    \ 'ExperimentalSetting')"
-  type: boolean
-  inputBinding:
-    prefix: -designer
-- id: designer
-  doc: ":file <text>                Identifier for the file name. (default: 'File')"
-  type: boolean
-  inputBinding:
-    prefix: -designer
-- id: designer
-  doc: ":separator <choice>         Separator, which should be used to split a row\
-    \ into columns (default: 'tab' valid: 'tab', 'semi-colon', 'comma', 'whitespace')"
-  type: boolean
-  inputBinding:
-    prefix: -designer
 - id: ini
   doc: Use the given TOPP INI file
   type: File

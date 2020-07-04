@@ -2,16 +2,22 @@ version 1.0
 
 task PhyluceAlignOutputListOfTaxonCounts {
   input {
-    String fastFastAs
-    String inputInputFormat
-    Int minMinCount
-    String coresCores
+    String? fast_as
+    String? input_format
+    Int? min_count
+    String? cores
   }
   command <<<
     phyluce_align_output_list_of_taxon_counts \
-      ~{if defined(fastFastAs) then ("--fastas " +  '"' + fastFastAs + '"') else ""} \
-      ~{if defined(inputInputFormat) then ("--input-format " +  '"' + inputInputFormat + '"') else ""} \
-      ~{if defined(minMinCount) then ("--min-count " +  '"' + minMinCount + '"') else ""} \
-      ~{if defined(coresCores) then ("--cores " +  '"' + coresCores + '"') else ""}
+      ~{if defined(fast_as) then ("--fastas " +  '"' + fast_as + '"') else ""} \
+      ~{if defined(input_format) then ("--input-format " +  '"' + input_format + '"') else ""} \
+      ~{if defined(min_count) then ("--min-count " +  '"' + min_count + '"') else ""} \
+      ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
+  parameter_meta {
+    fast_as: "The directory containing fastas to checked. (default: None)"
+    input_format: "The input file format. (default: fasta)"
+    min_count: "The min count of taxa allowed in a fasta file (default: 3)"
+    cores: "Process alignments in parallel using --cores for alignment. This is the number of PHYSICAL CPUs. (default: 1)"
+  }
 }

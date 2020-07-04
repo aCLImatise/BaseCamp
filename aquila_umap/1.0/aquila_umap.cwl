@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: aquila_umap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/aquila_umap.cwl
 inputs:
 - id: fa_folder
   doc: 'Required parameter; The folder path where fasta files are saved eg: /path/to/fasta/'
@@ -46,6 +46,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --bowtie_thread
+- id: use
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,12 +1,28 @@
 class: CommandLineTool
-id: megahit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/megahit.cwl
 inputs:
-- id: r
-  doc: /--read                <se>           comma-separated list of fasta/q single-end
-    files
+- id: one
+  doc: '<pe1>          comma-separated list of fasta/q paired-end #1 files, paired
+    with files in <pe2>'
   type: boolean
   inputBinding:
-    prefix: -r
+    prefix: '-1'
+- id: two
+  doc: '<pe2>          comma-separated list of fasta/q paired-end #2 files, paired
+    with files in <pe1>'
+  type: boolean
+  inputBinding:
+    prefix: '-2'
+- id: pe_commaseparated_list_interleaved
+  doc: <pe12>         comma-separated list of interleaved fasta/q paired-end files
+  type: boolean
+  inputBinding:
+    prefix: --12
+- id: r_slash_read
+  doc: <se>           comma-separated list of fasta/q single-end files
+  type: boolean
+  inputBinding:
+    prefix: -r/--read
 - id: min_count
   doc: <int>          minimum multiplicity for filtering (k_min+1)-mers [2]
   type: boolean
@@ -87,7 +103,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-local
-- id: km_in_1pass
+- id: km_in_one_pass
   doc: use 1pass mode to build SdBG of k_min
   type: boolean
   inputBinding:
@@ -99,33 +115,33 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --presets
-- id: m
-  doc: /--memory              <float>        max memory in byte to be used in SdBG
-    construction (if set between 0-1, fraction of the machine's total memory) [0.9]
+- id: m_slash_memory
+  doc: <float>        max memory in byte to be used in SdBG construction (if set between
+    0-1, fraction of the machine's total memory) [0.9]
   type: boolean
   inputBinding:
-    prefix: -m
+    prefix: -m/--memory
 - id: mem_flag
   doc: "<int>          SdBG builder memory mode. 0: minimum; 1: moderate; others:\
     \ use all memory specified by '-m/--memory' [1]"
   type: boolean
   inputBinding:
     prefix: --mem-flag
-- id: t
-  doc: /--num-cpu-threads     <int>          number of CPU threads [# of logical processors]
+- id: t_slash_num_cpu_threads
+  doc: <int>          number of CPU threads [# of logical processors]
   type: boolean
   inputBinding:
-    prefix: -t
+    prefix: -t/--num-cpu-threads
 - id: no_hw_accel
   doc: run MEGAHIT without BMI2 and POPCNT hardware instructions
   type: boolean
   inputBinding:
     prefix: --no-hw-accel
-- id: o
-  doc: /--out-dir             <string>       output directory [./megahit_out]
+- id: oslash_out_dir
+  doc: <string>       output directory [./megahit_out]
   type: boolean
   inputBinding:
-    prefix: -o
+    prefix: -o/--out-dir
 - id: out_prefix
   doc: <string>       output prefix (the contig file will be OUT_DIR/OUT_PREFIX.contigs.fa)
   type: boolean
@@ -157,11 +173,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --test
-- id: v
-  doc: /--version                            print version
+- id: h_slash_help
+  doc: print the usage message
   type: boolean
   inputBinding:
-    prefix: -v
+    prefix: -h/--help
+- id: v_slash_version
+  doc: print version
+  type: boolean
+  inputBinding:
+    prefix: -v/--version
 outputs: []
 cwlVersion: v1.1
 baseCommand:

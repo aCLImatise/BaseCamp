@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: overlapConvert.cwl
+id: ../../../../home/ubuntu/BiocondaCli/overlapConvert.cwl
 inputs:
-- id: s
+- id: needed_coords_default
   doc: seqStore (needed for -coords, the default)
   type: boolean
   inputBinding:
@@ -21,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -unaligned
+- id: file_do_to_vb
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

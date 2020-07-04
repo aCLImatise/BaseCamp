@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: db_stat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/db_stat.cwl
 inputs:
 - id: d
   doc: ''

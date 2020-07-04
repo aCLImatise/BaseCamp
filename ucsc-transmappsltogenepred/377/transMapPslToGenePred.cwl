@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: transMapPslToGenePred.cwl
+id: ../../../../home/ubuntu/BiocondaCli/transMapPslToGenePred.cwl
 inputs:
 - id: mrna_to_gene
   doc: ''

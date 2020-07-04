@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: peakranger_bcp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/peakranger_bcp.cwl
 inputs:
-- id: d
+- id: arg_data_file
   doc: '[ --data ] arg               data file'
   type: boolean
   inputBinding:
     prefix: -d
-- id: c
+- id: arg_control_file
   doc: '[ --control ] arg            control file'
   type: boolean
   inputBinding:
@@ -16,7 +16,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --format
-- id: o
+- id: arg_output_location
   doc: '[ --output ] arg             the output location'
   type: boolean
   inputBinding:
@@ -36,7 +36,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --gene_annot_file
-- id: p
+- id: arg_p_value
   doc: '[ --pval ] arg (=0.0001)     p value cut-off'
   type: boolean
   inputBinding:
@@ -46,7 +46,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --win_size
-- id: l
+- id: arg_read_length
   doc: '[ --ext_length ] arg (=200)  read extension length'
   type: boolean
   inputBinding:
@@ -56,6 +56,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: input
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

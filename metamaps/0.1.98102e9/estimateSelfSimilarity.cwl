@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: estimateSelfSimilarity.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/estimateSelfSimilarity.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

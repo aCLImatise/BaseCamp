@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nanosimh_simulate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nanosimh_simulate.cwl
 inputs:
 - id: reference
   doc: reference genome in fasta file

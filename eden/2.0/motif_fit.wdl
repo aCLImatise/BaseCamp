@@ -2,52 +2,76 @@ version 1.0
 
 task MotifFit {
   input {
-    String inputInputFile
-    String trainingTrainingSize
-    String modelModelFilename
-    String outputOutputDir
-    Int minMinSubarraySize
-    Int maxMaxSubarraySize
-    Int minMinMotifCount
-    Int minMinClusterSize
-    String randomRandomState
-    Boolean logLogFullState
-    String negativeNegativeInputFile
-    String negativeNegativeRatio
-    String shuffleShuffleOrder
-    String nbitsNbits
-    String complexityComplexity
-    String nNIterSearch
-    String nNJobs
-    String nNBlocks
-    String blockBlockSize
-    String prePreProcessorNJobs
-    String prePreProcessorNBlocks
-    String prePreProcessorBlockSize
+    String? input_file
+    String? training_size
+    String? model_filename
+    String? output_dir
+    Int? min_subarray_size
+    Int? max_subarray_size
+    Int? min_motif_count
+    Int? min_cluster_size
+    String? random_state
+    Boolean? log_full_state
+    String? negative_input_file
+    String? negative_ratio
+    String? shuffle_order
+    String? nbits
+    String? complexity
+    String? n_iter_search
+    String? n_jobs
+    String? n_blocks
+    String? block_size
+    String? pre_processor_n_jobs
+    String? pre_processor_n_blocks
+    String? pre_processor_block_size
   }
   command <<<
     motif fit \
-      ~{if defined(inputInputFile) then ("--input-file " +  '"' + inputInputFile + '"') else ""} \
-      ~{if defined(trainingTrainingSize) then ("--training-size " +  '"' + trainingTrainingSize + '"') else ""} \
-      ~{if defined(modelModelFilename) then ("--model-filename " +  '"' + modelModelFilename + '"') else ""} \
-      ~{if defined(outputOutputDir) then ("--output-dir " +  '"' + outputOutputDir + '"') else ""} \
-      ~{if defined(minMinSubarraySize) then ("--min-subarray-size " +  '"' + minMinSubarraySize + '"') else ""} \
-      ~{if defined(maxMaxSubarraySize) then ("--max-subarray-size " +  '"' + maxMaxSubarraySize + '"') else ""} \
-      ~{if defined(minMinMotifCount) then ("--min-motif-count " +  '"' + minMinMotifCount + '"') else ""} \
-      ~{if defined(minMinClusterSize) then ("--min-cluster-size " +  '"' + minMinClusterSize + '"') else ""} \
-      ~{if defined(randomRandomState) then ("--random-state " +  '"' + randomRandomState + '"') else ""} \
-      ~{true="--log-full-state" false="" logLogFullState} \
-      ~{if defined(negativeNegativeInputFile) then ("--negative-input-file " +  '"' + negativeNegativeInputFile + '"') else ""} \
-      ~{if defined(negativeNegativeRatio) then ("--negative-ratio " +  '"' + negativeNegativeRatio + '"') else ""} \
-      ~{if defined(shuffleShuffleOrder) then ("--shuffle-order " +  '"' + shuffleShuffleOrder + '"') else ""} \
-      ~{if defined(nbitsNbits) then ("--nbits " +  '"' + nbitsNbits + '"') else ""} \
-      ~{if defined(complexityComplexity) then ("--complexity " +  '"' + complexityComplexity + '"') else ""} \
-      ~{if defined(nNIterSearch) then ("--n-iter-search " +  '"' + nNIterSearch + '"') else ""} \
-      ~{if defined(nNJobs) then ("--n-jobs " +  '"' + nNJobs + '"') else ""} \
-      ~{if defined(nNBlocks) then ("--n-blocks " +  '"' + nNBlocks + '"') else ""} \
-      ~{if defined(blockBlockSize) then ("-block-size " +  '"' + blockBlockSize + '"') else ""} \
-      ~{if defined(prePreProcessorNJobs) then ("--pre-processor-n-jobs " +  '"' + prePreProcessorNJobs + '"') else ""} \
-      ~{if defined(prePreProcessorNBlocks) then ("--pre-processor-n-blocks " +  '"' + prePreProcessorNBlocks + '"') else ""} \
-      ~{if defined(prePreProcessorBlockSize) then ("--pre-processor-block-size " +  '"' + prePreProcessorBlockSize + '"') else ""}
+      ~{if defined(input_file) then ("--input-file " +  '"' + input_file + '"') else ""} \
+      ~{if defined(training_size) then ("--training-size " +  '"' + training_size + '"') else ""} \
+      ~{if defined(model_filename) then ("--model-filename " +  '"' + model_filename + '"') else ""} \
+      ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""} \
+      ~{if defined(min_subarray_size) then ("--min-subarray-size " +  '"' + min_subarray_size + '"') else ""} \
+      ~{if defined(max_subarray_size) then ("--max-subarray-size " +  '"' + max_subarray_size + '"') else ""} \
+      ~{if defined(min_motif_count) then ("--min-motif-count " +  '"' + min_motif_count + '"') else ""} \
+      ~{if defined(min_cluster_size) then ("--min-cluster-size " +  '"' + min_cluster_size + '"') else ""} \
+      ~{if defined(random_state) then ("--random-state " +  '"' + random_state + '"') else ""} \
+      ~{true="--log-full-state" false="" log_full_state} \
+      ~{if defined(negative_input_file) then ("--negative-input-file " +  '"' + negative_input_file + '"') else ""} \
+      ~{if defined(negative_ratio) then ("--negative-ratio " +  '"' + negative_ratio + '"') else ""} \
+      ~{if defined(shuffle_order) then ("--shuffle-order " +  '"' + shuffle_order + '"') else ""} \
+      ~{if defined(nbits) then ("--nbits " +  '"' + nbits + '"') else ""} \
+      ~{if defined(complexity) then ("--complexity " +  '"' + complexity + '"') else ""} \
+      ~{if defined(n_iter_search) then ("--n-iter-search " +  '"' + n_iter_search + '"') else ""} \
+      ~{if defined(n_jobs) then ("--n-jobs " +  '"' + n_jobs + '"') else ""} \
+      ~{if defined(n_blocks) then ("--n-blocks " +  '"' + n_blocks + '"') else ""} \
+      ~{if defined(block_size) then ("-block-size " +  '"' + block_size + '"') else ""} \
+      ~{if defined(pre_processor_n_jobs) then ("--pre-processor-n-jobs " +  '"' + pre_processor_n_jobs + '"') else ""} \
+      ~{if defined(pre_processor_n_blocks) then ("--pre-processor-n-blocks " +  '"' + pre_processor_n_blocks + '"') else ""} \
+      ~{if defined(pre_processor_block_size) then ("--pre-processor-block-size " +  '"' + pre_processor_block_size + '"') else ""}
   >>>
+  parameter_meta {
+    input_file: "Path to a FASTA file. (default: None)"
+    training_size: "Size of the random sequence sample to use for fitting the discriminative model. If None then all instances are used. (default: None)"
+    model_filename: "File name for serialized model object. (default: motif.model)"
+    output_dir: "Path to output directory. (default: out)"
+    min_subarray_size: "Minimal size in number of nucleotides of the motives to search. (default: 7)"
+    max_subarray_size: "Maximal size in number of nucleotides of the motives to search. (default: 10)"
+    min_motif_count: "Minimal number of occurrences for a motif sequence to be accepted. (default: 1)"
+    min_cluster_size: "Minimal number of motif sequences in a cluster to accept the cluster. (default: 1)"
+    random_state: "Random seed. (default: 1)"
+    log_full_state: "If set, log all the internal parameters values and motif database of the motif finder. Warning: it can generate large logging files. (default: False)"
+    negative_input_file: "Path to a FASTA file. (default: None)"
+    negative_ratio: "Factor multiplying the training-size to obtain the number of negative instances generated by random permutation. (default: 2)"
+    shuffle_order: "When shuffling sequences to create negative instances, consider k-mers of specified order. (default: 2)"
+    nbits: "Number of bits used to express the graph kernel features. A value of 20 corresponds to 2**20=1 million possible features. (default: 20)"
+    complexity: "Size of the generalization of k-mers for graphs. (default: 4)"
+    n_iter_search: "Number of randomly generated hyper parameter configurations tried during the discriminative model optimization. A value of 1 implies using the estimator default values. (default: 1)"
+    n_jobs: "Number of cores to use in multiprocessing. (default: 2)"
+    n_blocks: "Number of blocks in which to divide the input for the multiprocessing elaboration. (default: 8)"
+    block_size: "Number of instances per block for the multiprocessing elaboration. (default: None)"
+    pre_processor_n_jobs: "Number of cores to use in multiprocessing. (default: 4)"
+    pre_processor_n_blocks: "Number of blocks in which to divide the input for the multiprocessing elaboration. (default: 10)"
+    pre_processor_block_size: "Number of instances per block for the multiprocessing elaboration. (default: None)"
+  }
 }

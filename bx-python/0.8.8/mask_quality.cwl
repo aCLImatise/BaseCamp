@@ -1,22 +1,12 @@
 class: CommandLineTool
-id: mask_quality.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mask_quality.py.cwl
 inputs:
-- id: input
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: output
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: input
+- id: format_input_axt
   doc: Format of input (axt or maf)
   type: string
   inputBinding:
     prefix: --input
-- id: output
+- id: format_output_axt
   doc: Format of output (axt or maf)
   type: string
   inputBinding:
@@ -41,6 +31,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --list
+- id: var_6
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: var_7
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

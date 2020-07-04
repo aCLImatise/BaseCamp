@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: analyze_primers.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/analyze_primers.py.cwl
 inputs:
 - id: fast_a_seqs
   doc: Target fasta file(s) to score input primer(s) against. Separate multiple files

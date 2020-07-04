@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: kmergenie.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kmergenie.cwl
 inputs:
-- id: read_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: diploid
   doc: 'use the diploid model (default: haploid model)'
   type: boolean
@@ -16,32 +11,32 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --one-pass
-- id: k
+- id: largest_kmer_size
   doc: 'largest k-mer size to consider (default: 121)'
   type: string
   inputBinding:
     prefix: -k
-- id: l
+- id: smallest_kmer_size
   doc: 'smallest k-mer size to consider (default: 15)'
   type: string
   inputBinding:
     prefix: -l
-- id: s
+- id: interval_consecutive_kmer
   doc: 'interval between consecutive kmer sizes (default: 10)'
   type: string
   inputBinding:
     prefix: -s
-- id: e
+- id: kmer_sampling_value
   doc: 'k-mer sampling value (default: auto-detected to use ~200 MB memory/thread)'
   type: string
   inputBinding:
     prefix: -e
-- id: t
+- id: number_threads_default
   doc: 'number of threads (default: number of cores minus one)'
   type: string
   inputBinding:
     prefix: -t
-- id: o
+- id: prefix_output_files
   doc: 'prefix of the output files (default: histograms)'
   type: string
   inputBinding:
@@ -51,6 +46,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
+- id: read_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

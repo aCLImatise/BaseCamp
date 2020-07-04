@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bcbio_prepare_samples.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcbio_prepare_samples.py.cwl
 inputs:
 - id: csv
   doc: csv file with metadata

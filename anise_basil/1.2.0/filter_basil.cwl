@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: filter_basil.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_basil.py.cwl
 inputs:
-- id: i
+- id: input_file_name
   doc: Input file name.
   type: string
   inputBinding:
     prefix: -i
-- id: o
+- id: output_file_name
   doc: Output file name.
   type: string
   inputBinding:

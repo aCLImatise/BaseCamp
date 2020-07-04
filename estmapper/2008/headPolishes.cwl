@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: headPolishes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/headPolishes.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

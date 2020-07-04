@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: topas.cwl
+id: ../../../../home/ubuntu/BiocondaCli/topas.cwl
 inputs:
 - id: analyse_vcf
   doc: analyse a given vcf file by given windows

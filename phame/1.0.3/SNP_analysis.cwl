@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SNP_analysis.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SNP_analysis.pl.cwl
 inputs:
 - id: gff
   doc: -fasta  <genome_fasta_file>

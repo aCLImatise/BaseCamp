@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: randomLines.cwl
+id: ../../../../home/ubuntu/BiocondaCli/randomLines.cwl
 inputs:
+- id: seed
+  doc: '- Set seed used for randomizing, useful for debugging.'
+  type: string
+  inputBinding:
+    prefix: -seed
+- id: de_comment
+  doc: '- remove blank lines and those starting with '
+  type: boolean
+  inputBinding:
+    prefix: -decomment
 - id: in_file
   doc: ''
   type: string
@@ -16,16 +26,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: seed
-  doc: used for randomizing, useful for debugging.
-  type: string
-  inputBinding:
-    prefix: -seed
-- id: de_comment
-  doc: 'lines and those starting with '
-  type: string
-  inputBinding:
-    prefix: -decomment
 outputs: []
 cwlVersion: v1.1
 baseCommand:

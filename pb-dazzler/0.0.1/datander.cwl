@@ -1,42 +1,42 @@
 class: CommandLineTool
-id: datander.cwl
+id: ../../../../home/ubuntu/BiocondaCli/datander.cwl
 inputs:
-- id: v
+- id: verbose_mode_output
   doc: ': Verbose mode, output statistics as proceed.'
   type: boolean
   inputBinding:
     prefix: -v
-- id: k
+- id: kmer_size_must
   doc: ': k-mer size (must be <= 32).'
   type: boolean
   inputBinding:
     prefix: -k
-- id: w
+- id: look_kmers_averlapping
   doc: ': Look for k-mers in averlapping bands of size 2^-w.'
   type: boolean
   inputBinding:
     prefix: -w
-- id: e
+- id: look_alignments_e
   doc: ': Look for alignments with -e percent similarity.'
   type: boolean
   inputBinding:
     prefix: -e
-- id: l
+- id: look_alignments_l
   doc: ': Look for alignments of length >= -l.'
   type: boolean
   inputBinding:
     prefix: -l
-- id: s
+- id: use_s_trace
   doc: ': Use -s as the trace point spacing for encoding alignments.'
   type: boolean
   inputBinding:
     prefix: -s
-- id: t
+- id: use_t_threads
   doc: ': Use -T threads.'
   type: boolean
   inputBinding:
     prefix: -T
-- id: p
+- id: first_level_sort
   doc: ': Do first level sort and merge in directory -P.'
   type: boolean
   inputBinding:

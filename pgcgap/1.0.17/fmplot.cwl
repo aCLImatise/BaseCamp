@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fmplot.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fmplot.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

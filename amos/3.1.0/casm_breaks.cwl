@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: casm_breaks.cwl
+id: ../../../../home/ubuntu/BiocondaCli/casm_breaks.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: calcDivergenceFromAlign.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/calcDivergenceFromAlign.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

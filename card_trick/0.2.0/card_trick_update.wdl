@@ -2,12 +2,19 @@ version 1.0
 
 task CardTrickUpdate {
   input {
-    File pathPath
-    String quietQuiet
+    Boolean? v
+    Boolean? man
+    String card_trick
   }
   command <<<
     card-trick update \
-      ~{if defined(pathPath) then ("--path " +  '"' + pathPath + '"') else ""} \
-      ~{if defined(quietQuiet) then ("--quiet " +  '"' + quietQuiet + '"') else ""}
+      ~{card_trick} \
+      ~{true="-v" false="" v} \
+      ~{true="--man" false="" man}
   >>>
+  parameter_meta {
+    v: ""
+    man: ""
+    card_trick: ""
+  }
 }

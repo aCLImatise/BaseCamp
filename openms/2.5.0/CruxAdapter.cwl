@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: CruxAdapter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CruxAdapter.cwl
 inputs:
 - id: in
   doc: "*                            Input file (valid formats: 'mzML')"
@@ -51,7 +51,7 @@ inputs:
 - id: fragment_bin_offset
   doc: "In the discretization of the m/z axes of the observed and theoretical spectra,\
     \ this parameter specifies the location of the left edge of the first bin, relative\
-    \ to mass  = 0 (i.e., mz-bin-offset = 0.xx means the left edge of the first bin\
+    \ to mass = 0 (i.e., mz-bin-offset = 0.xx means the left edge of the first bin\
     \ will be located at +0.xx Da). (default: '0.0')"
   type: string
   inputBinding:
@@ -59,7 +59,7 @@ inputs:
 - id: fragment_bin_width
   doc: "Before calculation of the XCorr score, the m/z axes of the observed and theoretical\
     \ spectra are discretized. This parameter specifies the size of each bin. The\
-    \ exact  formula for computing the discretized m/z value is floor((x/mz-bin-width)\
+    \ exact formula for computing the discretized m/z value is floor((x/mz-bin-width)\
     \ + 1.0 - mz-bin-offset), where x is the observed m/z value. For low resolution\
     \ ion trap ms/ms data 1.0005079 and for high resolution ms/ms 0.02 is recommended.\
     \ (default: '0.02')"
@@ -72,16 +72,16 @@ inputs:
   inputBinding:
     prefix: -isotope_error
 - id: run_percolator
-  doc: "<true/false>           Whether to run percolator after tide-search (default:\
-    \ 'true' valid: 'true', 'false')"
-  type: boolean
+  doc: "Whether to run percolator after tide-search (default: 'true' valid: 'true',\
+    \ 'false')"
+  type: string
   inputBinding:
     prefix: -run_percolator
 - id: enzyme
   doc: "The enzyme used for peptide digestion. (default: 'trypsin' valid: 'custom-enzyme',\
-    \ 'arg-c', 'chymotrypsin', 'asp-n', 'cyanogen-bromide', 'clostripain', 'elastase-trypsin\
-    \ -chymotrypsin', 'no-enzyme', 'lys-c', 'lys-n', 'trypsin/p', 'elastase', 'iodosobenzoate',\
-    \ 'staph-protease', 'proline-endopeptidase', 'glu-c', 'pepsin-a', 'trypsin')"
+    \ 'arg-c', 'chymotrypsin', 'asp-n', 'cyanogen-bromide', 'clostripain', 'elastase-trypsin-chymotrypsin',\
+    \ 'no-enzyme', 'lys-c', 'lys-n', 'trypsin/p', 'elastase', 'iodosobenzoate', 'staph-protease',\
+    \ 'proline-endopeptidase', 'glu-c', 'pepsin-a', 'trypsin')"
   type: string
   inputBinding:
     prefix: -enzyme
@@ -112,21 +112,21 @@ inputs:
 - id: c_term_modifications
   doc: 'Specifies C-terminal static and variable mass modifications on peptides.  Specify
     a comma-separated list of C-terminal modification sequences of the form: X+21.9819
-    Defa ult = <empty>.'
+    Default = <empty>.'
   type: string
   inputBinding:
     prefix: -cterm_modifications
 - id: n_term_modifications
   doc: 'Specifies N-terminal static and variable mass modifications on peptides.  Specify
-    a comma-separated list of N-terminal modification sequences of the form: 1E-18.0106,C-1
-    7.0265 Default = <empty>.'
+    a comma-separated list of N-terminal modification sequences of the form: 1E-18.0106,C-17.0265
+    Default = <empty>.'
   type: string
   inputBinding:
     prefix: -nterm_modifications
 - id: modifications
   doc: 'Expression for static and variable mass modifications to include. Specify
-    a comma-separated list of modification sequences of the form: C+57.02146,2M+15.9949,1STY+79.966
-    331,... Default = C+57.02146.'
+    a comma-separated list of modification sequences of the form: C+57.02146,2M+15.9949,1STY+79.966331,...
+    Default = C+57.02146.'
   type: string
   inputBinding:
     prefix: -modifications

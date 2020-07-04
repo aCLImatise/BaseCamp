@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: entrez_phrase_search.cwl
+id: ../../../../home/ubuntu/BiocondaCli/entrez_phrase_search.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

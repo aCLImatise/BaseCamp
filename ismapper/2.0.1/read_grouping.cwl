@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: read_grouping.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/read_grouping.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

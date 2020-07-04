@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: squid.cwl
+id: ../../../../home/ubuntu/BiocondaCli/squid.cwl
 inputs:
-- id: g
+- id: bool_output_gragh
   doc: bool    Output gragh file (0)
   type: boolean
   inputBinding:
@@ -21,6 +21,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -RG
+- id: b
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -b
+- id: o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
 outputs: []
 cwlVersion: v1.1
 baseCommand:

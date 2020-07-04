@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: print_picrust2_config.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/print_picrust2_config.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,14 +2,19 @@ version 1.0
 
 task PyprophetBackpropagate {
   input {
-    File inIn
-    File outOut
-    File applyApplyScores
+    File? in
+    File? out
+    File? apply_scores
   }
   command <<<
     pyprophet backpropagate \
-      ~{if defined(inIn) then ("--in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("--out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(applyApplyScores) then ("--apply_scores " +  '"' + applyApplyScores + '"') else ""}
+      ~{if defined(in) then ("--in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
+      ~{if defined(apply_scores) then ("--apply_scores " +  '"' + apply_scores + '"') else ""}
   >>>
+  parameter_meta {
+    in: "Single run PyProphet input file.  [required]"
+    out: "Single run (with multi-run scores) PyProphet output file."
+    apply_scores: "PyProphet multi-run scores file to apply.  [required]"
+  }
 }

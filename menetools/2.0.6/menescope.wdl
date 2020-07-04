@@ -2,12 +2,16 @@ version 1.0
 
 task Menescope {
   input {
-    String dD
-    String sS
+    String? draft_net
+    String? seeds
   }
   command <<<
     menescope \
-      ~{if defined(dD) then ("-d " +  '"' + dD + '"') else ""} \
-      ~{if defined(sS) then ("-s " +  '"' + sS + '"') else ""}
+      ~{if defined(draft_net) then ("--draftnet " +  '"' + draft_net + '"') else ""} \
+      ~{if defined(seeds) then ("--seeds " +  '"' + seeds + '"') else ""}
   >>>
+  parameter_meta {
+    draft_net: "metabolic network in SBML format"
+    seeds: "seeds in SBML format"
+  }
 }

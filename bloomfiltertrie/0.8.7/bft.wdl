@@ -1,7 +1,17 @@
 version 1.0
 
 task Bft {
+  input {
+    String build
+    String k
+  }
   command <<<
-    bft
+    bft \
+      ~{build} \
+      ~{k}
   >>>
+  parameter_meta {
+    build: ""
+    k: ""
+  }
 }

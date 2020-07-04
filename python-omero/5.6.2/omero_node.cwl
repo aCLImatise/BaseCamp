@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: omero_node.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_node.cwl
 inputs:
+- id: foreground
+  doc: Start in foreground mode (no daemon/service)
+  type: boolean
+  inputBinding:
+    prefix: --foreground
 - id: start
   doc: -- Start the node via icegridnode. With sync doesn't return until reachable.
   type: string
@@ -21,11 +26,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: foreground
-  doc: Start in foreground mode (no daemon/service)
-  type: boolean
-  inputBinding:
-    prefix: --foreground
 outputs: []
 cwlVersion: v1.1
 baseCommand:

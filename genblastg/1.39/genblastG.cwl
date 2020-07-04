@@ -1,73 +1,73 @@
 class: CommandLineTool
-id: genblastG.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genblastG.cwl
 inputs:
-- id: p
+- id: search_program_used
   doc: Search program used to produce HSPs, can be either "blast" or "wublast", default
     is "blast", optional
   type: boolean
   inputBinding:
     prefix: -P
-- id: p
+- id: specifies_program_option
   doc: 'specifies the program option of genBlast: genblasta or genblastg'
   type: boolean
   inputBinding:
     prefix: -p
-- id: q
+- id: list_query_sequences
   doc: List of query sequences to blast, must be in fasta format, required
   type: boolean
   inputBinding:
     prefix: -q
-- id: t
+- id: target_database_genomic
   doc: The target database of genomic sequences in fasta format, required
   type: boolean
   inputBinding:
     prefix: -t
-- id: e
+- id: parameter_blast_evalue
   doc: 'parameter for blast: The e-value, [default: 1e-2], optional'
   type: boolean
   inputBinding:
     prefix: -e
-- id: g
+- id: parameter_blast_perform
   doc: 'parameter for blast: Perform gapped alignment (T/F)  [default: F], optional'
   type: boolean
   inputBinding:
     prefix: -g
-- id: f
+- id: parameter_filtering_tf
   doc: 'parameter for blast: Perform filtering (T/F) [default: F], optional'
   type: boolean
   inputBinding:
     prefix: -f
-- id: w
+- id: parameter_blast_set
   doc: 'parameter for blast: Set word size, 0 means using blast default [default:
     0], optional'
   type: boolean
   inputBinding:
     prefix: -W
-- id: a
+- id: parameter_genblast_optional
   doc: 'parameter for genBlast: weight of penalty for skipping HSPs, between 0 and
     1 [default: 0.5], optional'
   type: boolean
   inputBinding:
     prefix: -a
-- id: d
+- id: parameter_genblast_maximum
   doc: 'parameter for genBlast: maximum allowed distance between HSPs  within the
     same gene, a non-negative integer [default: 100000], optional'
   type: boolean
   inputBinding:
     prefix: -d
-- id: r
+- id: parameter_positive_optional
   doc: 'parameter for genBlast: number of ranks in the output, a positive integer,
     optional'
   type: boolean
   inputBinding:
     prefix: -r
-- id: c
+- id: parameter_genblast_minimum
   doc: 'parameter for genBlast: minimum percentage of query gene  coverage in the
     output, between 0 and 1 (e.g. for 50% gene coverage, use "0.5"), optional'
   type: boolean
   inputBinding:
     prefix: -c
-- id: s
+- id: parameter_number_optional
   doc: 'parameter for genBlast: minimum score of the HSP group in  the output, a real
     number, optional'
   type: boolean
@@ -79,31 +79,31 @@ inputs:
   type: string
   inputBinding:
     prefix: -scodon
-- id: i
+- id: parameter_genblastg_minimum_intron
   doc: 'parameter for genBlastG: minimum intron length, optional. If not specified,
     the default value is 15.'
   type: boolean
   inputBinding:
     prefix: -i
-- id: x
+- id: parameter_genblastg_minimum_internal
   doc: 'parameter for genBlastG: minimum internal exon length, optional. If not specified,
     default is 20.'
   type: boolean
   inputBinding:
     prefix: -x
-- id: n
+- id: parameter_genblastg_maximum
   doc: 'parameter for genBlastG: maximum number of splice sites per region, optional.
     If not specified, default is 20.'
   type: boolean
   inputBinding:
     prefix: -n
-- id: v
+- id: genblastg_region_version
   doc: 'genBlastG splice region algorithm version: 1 or 2. Optional. If not specified,
     default is 1'
   type: boolean
   inputBinding:
     prefix: -v
-- id: j
+- id: parameter_region_optional
   doc: 'parameter for genBlastG splice region algorithm2: class threshold, optional.
     If not specified, default is 0.'
   type: boolean
@@ -146,7 +146,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -rd
-- id: o
+- id: output_filename_optional
   doc: output filename, optional. If not specified, the output will be the same as
     the query filename with ".gblast" extension.
   type: boolean
@@ -172,7 +172,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -id
-- id: b
+- id: turn_onscreen_output
   doc: Turn on the verbose on-screen output
   type: boolean
   inputBinding:

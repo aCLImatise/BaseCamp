@@ -2,14 +2,22 @@ version 1.0
 
 task AquilaStLFRFastqPreprocess {
   input {
-    String fastFastQ1
-    String fastFastQ2
-    String outOutFile
+    String? fast_q_one
+    String? fast_q_two
+    String? out_file
+    String use
   }
   command <<<
     Aquila_stLFR_fastq_preprocess \
-      ~{if defined(fastFastQ1) then ("--fastq_1 " +  '"' + fastFastQ1 + '"') else ""} \
-      ~{if defined(fastFastQ2) then ("--fastq_2 " +  '"' + fastFastQ2 + '"') else ""} \
-      ~{if defined(outOutFile) then ("--out_file " +  '"' + outOutFile + '"') else ""}
+      ~{use} \
+      ~{if defined(fast_q_one) then ("--fastq_1 " +  '"' + fast_q_one + '"') else ""} \
+      ~{if defined(fast_q_two) then ("--fastq_2 " +  '"' + fast_q_two + '"') else ""} \
+      ~{if defined(out_file) then ("--out_file " +  '"' + out_file + '"') else ""}
   >>>
+  parameter_meta {
+    fast_q_one: "origin stLFR fastq 1 (gz file)"
+    fast_q_two: "origin stLFR fastq 2 (gz file)"
+    out_file: "output stLFR fastq file for Aquila_stLFR"
+    use: ""
+  }
 }

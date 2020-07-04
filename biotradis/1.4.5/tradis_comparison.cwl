@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: tradis_comparison.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tradis_comparison.R.cwl
 inputs:
-- id: cut_off
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: f
   doc: ''
   type: boolean
@@ -36,6 +31,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --conditions
+- id: cut_off
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

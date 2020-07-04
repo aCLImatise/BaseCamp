@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: detectExtremeDepth.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/detectExtremeDepth.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: taxon_utils_lca_line.cwl
+id: ../../../../home/ubuntu/BiocondaCli/taxon_utils_lca_line.cwl
 inputs:
 - id: taxonomy
   doc: Taxonomy file  [required]
@@ -22,6 +22,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --separator
+- id: input_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

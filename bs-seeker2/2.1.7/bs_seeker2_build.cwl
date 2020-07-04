@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bs_seeker2_build.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bs_seeker2_build.py.cwl
 inputs:
 - id: rrbs
   doc: 'Build index specially for Reduced Representation Bisulfite Sequencing experiments.

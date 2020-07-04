@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: deepbgc_train.cwl
+id: ../../../../home/ubuntu/BiocondaCli/deepbgc_train.cwl
 inputs:
-- id: inputs
-  doc: Training sequences (Pfam TSV) file paths
-  type: string
-  inputBinding:
-    position: 0
 - id: model
   doc: Path to JSON model config file
   type: string
@@ -47,6 +42,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --verbose
+- id: debug
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --debug
+- id: inputs
+  doc: Training sequences (Pfam TSV) file paths
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

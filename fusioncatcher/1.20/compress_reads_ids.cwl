@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: compress_reads_ids.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/compress_reads_ids.py.cwl
 inputs:
 - id: input
   doc: The input file in FASTQ Solexa file (also given thru STDOUT or as gzipped file).
@@ -20,7 +20,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --count-reads
-- id: no12
+- id: no_one_two
   doc: If this is set than no /1 and /2 will be added to the compressed reads ids.
     It has an effect only on interleaved inputs.
   type: boolean

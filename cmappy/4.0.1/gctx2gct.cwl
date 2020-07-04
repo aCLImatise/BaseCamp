@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gctx2gct.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gctx2gct.cwl
 inputs:
 - id: filename
   doc: '.gctx file that you would like to converted to .gct (default: None)'

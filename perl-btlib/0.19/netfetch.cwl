@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: netfetch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/netfetch.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

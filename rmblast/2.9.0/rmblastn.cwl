@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rmblastn.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rmblastn.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

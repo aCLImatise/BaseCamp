@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: art_SOLiD.cwl
+id: ../../../../home/ubuntu/BiocondaCli/art_SOLiD.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: OpenSwathWorkflow.cwl
+id: ../../../../home/ubuntu/BiocondaCli/OpenSwathWorkflow.cwl
 inputs:
 - id: in
   doc: "*                        Input files separated by blank (valid formats: 'mzML',\
@@ -60,7 +60,7 @@ inputs:
 - id: ion_mobility_window
   doc: "Extraction window in ion mobility dimension (in milliseconds). This is the\
     \ full window size, e.g. a value of 10 milliseconds would extract 5 milliseconds\
-    \ on either side.  (default: '-1.0')"
+    \ on either side. (default: '-1.0')"
   type: string
   inputBinding:
     prefix: -ion_mobility_window
@@ -70,30 +70,18 @@ inputs:
   type: string
   inputBinding:
     prefix: -mz_extraction_window
-- id: mz_extraction_window_ms1
+- id: mz_extraction_window_ms_one
   doc: "Extraction window used in MS1 in Thomson or ppm (see mz_extraction_window_ms1_unit)\
     \ (default: '0.05' min: '0.0')"
   type: string
   inputBinding:
     prefix: -mz_extraction_window_ms1
-- id: im_extraction_window_ms1
+- id: im_extraction_window_ms_one
   doc: "Extraction window in ion mobility dimension for MS1 (in milliseconds). (default:\
     \ '-1.0')"
   type: string
   inputBinding:
     prefix: -im_extraction_window_ms1
-- id: debugging
-  doc: ":irt_mzml <file>          Chromatogram mzML containing the iRT peptides (valid\
-    \ formats: 'mzML')"
-  type: boolean
-  inputBinding:
-    prefix: -Debugging
-- id: debugging
-  doc: ":irt_trafo <file>         Transformation file for RT transform (valid formats:\
-    \ 'trafoXML')"
-  type: boolean
-  inputBinding:
-    prefix: -Debugging
 - id: ini
   doc: Use the given TOPP INI file
   type: File
@@ -114,34 +102,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: calibration
-  doc: Parameters for the m/z and ion mobility calibration.
-  type: boolean
-  inputBinding:
-    prefix: '- Calibration'
-- id: library
-  doc: Library parameters section
-  type: boolean
-  inputBinding:
-    prefix: '- Library'
-- id: rt_normalization
-  doc: Parameters for the RTNormalization for iRT petides. This specifies how the
-    RT alignment is performed and how outlier detection is applied. Outlier detection
-    can be done iteratively (by defa ult) which removes one outlier per iteration
-    or using the RANSAC algorithm.
-  type: boolean
-  inputBinding:
-    prefix: '- RTNormalization'
-- id: scoring
-  doc: Scoring parameters section
-  type: boolean
-  inputBinding:
-    prefix: '- Scoring'
-- id: http
-  doc: ://www.openms.de/documentation/UTILS_OpenSwathWorkflow.html
-  type: boolean
-  inputBinding:
-    prefix: '- http'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

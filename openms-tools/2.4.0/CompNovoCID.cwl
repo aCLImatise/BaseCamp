@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: CompNovoCID.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CompNovoCID.cwl
 inputs:
 - id: in
   doc: "*        Input file in mzML format (valid formats: 'mzML')"
@@ -31,11 +31,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Algorithm section
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

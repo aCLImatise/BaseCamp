@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNAplex.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAplex.cwl
 inputs:
 - id: detailed_help
   doc: Print help, including all details and hidden  options, and exit

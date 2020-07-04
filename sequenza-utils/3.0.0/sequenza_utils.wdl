@@ -2,10 +2,13 @@ version 1.0
 
 task SequenzaUtils {
   input {
-    Boolean verboseVerbose
+    Boolean? verbose
   }
   command <<<
     sequenza-utils \
-      ~{true="--verbose" false="" verboseVerbose}
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    verbose: "Show all logging information"
+  }
 }

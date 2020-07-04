@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: faidx.cwl
+id: ../../../../home/ubuntu/BiocondaCli/faidx.cwl
 inputs:
-- id: fast_a
-  doc: FASTA file
-  type: string
-  inputBinding:
-    position: 0
-- id: regions
-  doc: space separated regions of sequence to fetch e.g. chr1:1-1000
-  type: string
-  inputBinding:
-    position: 1
 - id: no_rebuild
   doc: 'do not rebuild the .fai index even if it is out of date. default: False'
   type: boolean
@@ -125,6 +115,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --invert-match
+- id: fast_a
+  doc: FASTA file
+  type: string
+  inputBinding:
+    position: 0
+- id: regions
+  doc: space separated regions of sequence to fetch e.g. chr1:1-1000
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

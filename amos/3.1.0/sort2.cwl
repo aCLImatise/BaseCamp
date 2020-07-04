@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: sort2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sort2.cwl
 inputs:
-- id: i
+- id: first_column_sort
   doc: '- First  column to sort after (Default 0)'
   type: string
   inputBinding:
     prefix: -i
-- id: j
+- id: second_column_sort
   doc: '- Second column to sort after (Default 1)'
   type: string
   inputBinding:
     prefix: -j
-- id: v
+- id: version_print_version
   doc: '|version      - Print the version and exit;'
   type: boolean
   inputBinding:
@@ -22,10 +22,15 @@ inputs:
   inputBinding:
     prefix: -depend
 - id: debug
-  doc: 'debug <level> (0, non-debug by default); '
+  doc: '- Set the debug <level> (0, non-debug by default); '
   type: string
   inputBinding:
     prefix: -debug
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

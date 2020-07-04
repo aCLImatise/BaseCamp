@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: laser_core.cwl
+id: ../../../../home/ubuntu/BiocondaCli/laser_core.cwl
 inputs:
-- id: v
+- id: very_verbose_caution
   doc: '[ --verbose ]                      Be (very) verbose. CAUTION: produces a  lot
     of output to stderr.'
   type: boolean
@@ -12,7 +12,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --single-end
-- id: x
+- id: skip_reads_exist
   doc: '[ --skip_non_xa ]                  Skip reads for which other alignments  exist
     (i.e. X0+X1>1), but no XA tag is  present. Turn on when using BWA.'
   type: boolean
@@ -24,31 +24,31 @@ inputs:
   type: string
   inputBinding:
     prefix: --max_input_aln
-- id: i
+- id: abort_when_set
   doc: '[ --ignore_wrong_X_tags ]          Do not abort when wrongly set X0/X1  tags
     are encountered.'
   type: boolean
   inputBinding:
     prefix: -I
-- id: p
+- id: arg_value_subtract
   doc: '[ --phred_offset ] arg (=33)       Value to subtract from ASCII code to  get
     the PHRED quality.'
   type: boolean
   inputBinding:
     prefix: -p
-- id: m
+- id: arg_maximum_number
   doc: '[ --max_mapping ] arg (=10)        Maximum number of mappings for each  read
     in a pair. If more mappings are  found, the read is skipped.'
   type: boolean
   inputBinding:
     prefix: -m
-- id: c
+- id: arg_maximum_phred
   doc: '[ --cost_threshold ] arg (=115)    Maximum PHRED sum allowed for (split)  read
     alignments.'
   type: boolean
   inputBinding:
     prefix: -c
-- id: i
+- id: arg_phred_an
   doc: '[ --indel_cost ] arg (=30)         PHRED like cost of an indel.'
   type: boolean
   inputBinding:
@@ -65,7 +65,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --gap_extend_cost
-- id: s
+- id: arg_splitting_alignment
   doc: '[ --split_cost ] arg (=25)         PHRED like cost of splitting an  alignment.'
   type: boolean
   inputBinding:
@@ -90,19 +90,19 @@ inputs:
   type: string
   inputBinding:
     prefix: --inversion_split_cost
-- id: d
+- id: arg_reportevaluate_split
   doc: '[ --secondary_aln_phred_diff ] arg (=29) Report/evaluate split alignments
     with a difference of at most this value to the best split alignment.'
   type: boolean
   inputBinding:
     prefix: -d
-- id: a
+- id: arg_minimal_number
   doc: '[ --min_anchor_length ] arg (=8)   Minimal number of nucleotides on each  sides
     of a split.'
   type: boolean
   inputBinding:
     prefix: -a
-- id: n
+- id: arg_maximal_allowed_ie
   doc: '[ --max_span ] arg (=1000)         Maximal allowed span (i.e. length on  reference)
     of a split read alignment.'
   type: boolean
@@ -130,75 +130,75 @@ inputs:
   type: string
   inputBinding:
     prefix: --max_anchor_length
-- id: n
+- id: arg_maximal_allowed_size
   doc: '[ --max_insert ] arg (=50000)      Maximal allowed internal segment size  when
     pairing alignments for a read  pair.'
   type: boolean
   inputBinding:
     prefix: -N
-- id: s
+- id: also_output_alignments
   doc: '[ --output_secondary ]             Also output secondary alignments.'
   type: boolean
   inputBinding:
     prefix: -S
-- id: a
+- id: arg_length_used
   doc: '[ --anchor_search_length ] arg (=20) Length of anchor used for searching.'
   type: boolean
   inputBinding:
     prefix: -A
-- id: e
+- id: arg_allowed_errors
   doc: '[ --anchor_errors ] arg (=2)       Allowed errors when searching for  anchors.'
   type: boolean
   inputBinding:
     prefix: -e
-- id: o
+- id: arg_regions_size
   doc: '[ --anchor_distance ] arg (=600)   Regions size for searching for anchors.'
   type: boolean
   inputBinding:
     prefix: -o
-- id: t
+- id: arg_anchor_search
   doc: '[ --anchor_search_iter ] arg (=3)  Anchor search iterations.'
   type: boolean
   inputBinding:
     prefix: -t
-- id: p
+- id: arg_filename_write
   doc: '[ --putative_variations ] arg      Filename to write a list of all  variation
     candidates to. All candidates are written, no matter how weak the  evidence for
     them to be true.'
   type: boolean
   inputBinding:
     prefix: -P
-- id: l
+- id: arg_file_known
   doc: '[ --input_length_dist_in ] arg     File with known internal segment length
     histogram to be used to score  alignments.'
   type: boolean
   inputBinding:
     prefix: -l
-- id: l
+- id: arg_file_internal
   doc: '[ --input_length_dist_out ] arg    File to write internal segment length  histogram
     for uniquely mappable reads  to.'
   type: boolean
   inputBinding:
     prefix: -L
-- id: r
+- id: arg_file_insertion
   doc: '[ --insertion_length_dist ] arg    File to write insertion length  histogram
     for uniquely mappable reads  to.'
   type: boolean
   inputBinding:
     prefix: -R
-- id: d
+- id: arg_file_write
   doc: '[ --deletion_length_dist ] arg     File to write deletion length histogram
     for uniquely mappable reads to.'
   type: boolean
   inputBinding:
     prefix: -D
-- id: t
+- id: arg_number_default
   doc: '[ --threads ] arg (=0)             Number of threads (default: 0 =  strictly
     single-threaded).'
   type: boolean
   inputBinding:
     prefix: -T
-- id: m
+- id: use_m_matches
   doc: "[ --m_in_cigar ]                   Use M for matches and mismatches in  CIGAR\
     \ strings (instead of '=' and 'X')."
   type: boolean
@@ -209,7 +209,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --snp
-- id: w
+- id: arg_weight_cutoff
   doc: '[ --snp_weight_cutoff ] arg (=3)   Weight cutoff for SNPs to be written to
     filename given as parameter --snp.'
   type: boolean

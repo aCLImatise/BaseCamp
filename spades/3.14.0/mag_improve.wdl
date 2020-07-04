@@ -2,16 +2,22 @@ version 1.0
 
 task MagImprove {
   input {
-    String kK
-    File referenceReference
-    String threadsThreads
-    String tmpdirTmpdir
+    String? kmer_length_use
+    File? reference
+    String? threads
+    String? tmpdir
   }
   command <<<
     mag-improve \
-      ~{if defined(kK) then ("-k " +  '"' + kK + '"') else ""} \
-      ~{if defined(referenceReference) then ("--reference " +  '"' + referenceReference + '"') else ""} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(tmpdirTmpdir) then ("--tmpdir " +  '"' + tmpdirTmpdir + '"') else ""}
+      ~{if defined(kmer_length_use) then ("-k " +  '"' + kmer_length_use + '"') else ""} \
+      ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""}
   >>>
+  parameter_meta {
+    kmer_length_use: "k-mer length to use"
+    reference: "fasta file with reference sequence (for benchmarking purposes)"
+    threads: "# of threads to use"
+    tmpdir: "scratch directory to use"
+  }
 }

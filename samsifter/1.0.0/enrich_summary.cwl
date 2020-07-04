@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: enrich_summary.cwl
+id: ../../../../home/ubuntu/BiocondaCli/enrich_summary.cwl
 inputs:
 - id: input
   doc: SamSifter summary file to be enriched

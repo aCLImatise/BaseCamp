@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: beast.cwl
+id: ../../../../home/ubuntu/BiocondaCli/beast.cwl
 inputs:
 - id: window
   doc: a console window
@@ -131,7 +131,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -strictversions
-- id: d
+- id: pairs_replaced_xml
   doc: pairs to be replaced in the XML, e.g., -D "arg1=10,arg2=20"
   type: string
   inputBinding:
@@ -142,6 +142,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -sampleFromPrior
+- id: input_file_name
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

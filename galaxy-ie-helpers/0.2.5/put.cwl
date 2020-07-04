@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: put.cwl
+id: ../../../../home/ubuntu/BiocondaCli/put.cwl
 inputs:
 - id: file_path
   doc: Specify the path to the files that should be uploaded to Galaxy.

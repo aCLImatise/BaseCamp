@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: annotate.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/annotate.py.cwl
 inputs:
-- id: a
+- id: file_to_annotate
   doc: file to annotate
   type: string
   inputBinding:
     prefix: -a
-- id: b
+- id: file_with_annotations
   doc: file with annotations
   type: string
   inputBinding:

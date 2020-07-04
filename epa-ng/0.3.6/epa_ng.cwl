@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: epa_ng.cwl
+id: ../../../../home/ubuntu/BiocondaCli/epa_ng.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: verbose
   doc: Display debug output.
   type: boolean

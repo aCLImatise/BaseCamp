@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sequenza_utils_seqz_binning.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sequenza_utils_seqz_binning.cwl
 inputs:
 - id: seq_z
   doc: A seqz file.
@@ -11,7 +11,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --window
-- id: o
+- id: output_file_stdout
   doc: Output file "-" for STDOUT
   type: string
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: extractChromLengths.rb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extractChromLengths.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

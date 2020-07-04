@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rgt_hint_tracks.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rgt_hint_tracks.cwl
 inputs:
 - id: organism
   doc: 'Organism considered on the analysis. Must have been setup in the RGTDATA folder.

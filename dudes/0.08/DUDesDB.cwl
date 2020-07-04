@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: DUDesDB.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/DUDesDB.py.cwl
 inputs:
 - id: m
   doc: "'gi' uses the GI as the identifier (For headers like: >gi|158333233|ref|NC_009925.1|)\
@@ -8,7 +8,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -m
-- id: f
+- id: reference_fasta_files
   doc: "[<fasta_files> [<fasta_files> ...]] Reference fasta file(s) for header extraction\
     \ only, plain or gzipped - the same file used to generate the read mapping index.\
     \ Each sequence header '>' should contain a identifier as defined in the reference\
@@ -23,27 +23,27 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -g
-- id: n
+- id: nodesdmp_file
   doc: nodes.dmp file [from NCBI taxonomy database ftp://ftp.ncbi.nih.gov/pub/taxonomy/]
   type: string
   inputBinding:
     prefix: -n
-- id: a
+- id: namesdmp_file
   doc: names.dmp file [from NCBI taxonomy database ftp://ftp.ncbi.nih.gov/pub/taxonomy/]
   type: string
   inputBinding:
     prefix: -a
-- id: o
+- id: output_prefix_default
   doc: 'Output prefix. Default: dudesdb'
   type: string
   inputBinding:
     prefix: -o
-- id: t
+- id: _threads_default
   doc: '# of threads. Default: 1'
   type: string
   inputBinding:
     prefix: -t
-- id: v
+- id: show_programs_version
   doc: show program's version number and exit
   type: boolean
   inputBinding:

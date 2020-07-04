@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ffitch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ffitch.cwl
 inputs:
 - id: matrix_type
   doc: 'menu       [s] Type of input data matrix (Values: s (Square); u (Upper triangular);

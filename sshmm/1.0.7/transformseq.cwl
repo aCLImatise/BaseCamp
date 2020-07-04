@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: transformseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/transformseq.cwl
 inputs:
 - id: fin
   doc: 'Sequence input file (default: stdin)'
@@ -43,6 +43,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --complement
+- id: sequence_data_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: sequence_logo_dot_eps
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

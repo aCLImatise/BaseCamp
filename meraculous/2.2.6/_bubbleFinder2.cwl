@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _bubbleFinder2.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_bubbleFinder2.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

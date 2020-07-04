@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mglobrms.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mglobrms.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

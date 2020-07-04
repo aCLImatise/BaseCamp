@@ -1,12 +1,22 @@
 class: CommandLineTool
-id: sequana_gtf_fixer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sequana_gtf_fixer.cwl
 inputs:
+- id: input_gtf_file
+  doc: input GTF file
+  type: string
+  inputBinding:
+    prefix: --input
+- id: output_gtf_file
+  doc: output GTF file
+  type: string
+  inputBinding:
+    prefix: --output
 - id: gtf_fixer
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: input
+- id: var_3
   doc: ''
   type: string
   inputBinding:
@@ -16,21 +26,11 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: output
+- id: var_5
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: input
-  doc: input GTF file
-  type: string
-  inputBinding:
-    prefix: --input
-- id: output
-  doc: output GTF file
-  type: string
-  inputBinding:
-    prefix: --output
 outputs: []
 cwlVersion: v1.1
 baseCommand:

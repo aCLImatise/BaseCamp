@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: abyss_map.cwl
+id: ../../../../home/ubuntu/BiocondaCli/abyss_map.cwl
 inputs:
 - id: min_align
   doc: find matches at least N bp [1]
@@ -121,6 +121,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --species
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

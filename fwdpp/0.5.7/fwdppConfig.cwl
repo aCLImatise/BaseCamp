@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fwdppConfig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fwdppConfig.cwl
 inputs:
 - id: print
   doc: ''

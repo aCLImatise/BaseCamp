@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gff2gbSmallDNA.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gff2gbSmallDNA.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

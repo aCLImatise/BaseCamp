@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: kcstashtest.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kcstashtest.cwl
 inputs:
-- id: order
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: rnum
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: th
   doc: ''
   type: string
@@ -41,6 +31,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lv
+- id: order
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: rnum
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

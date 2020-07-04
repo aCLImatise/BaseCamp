@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: qualimap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/qualimap.cwl
 inputs:
 - id: java_mem_size
   doc: 'Use this argument to set Java memory heap size. Example: qualimap bamqc -bam

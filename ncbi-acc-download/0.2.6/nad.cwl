@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nad.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nad.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

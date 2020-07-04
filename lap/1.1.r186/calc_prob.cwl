@@ -1,6 +1,26 @@
 class: CommandLineTool
-id: calc_prob.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/calc_prob.py.cwl
 inputs:
+- id: input
+  doc: filename for input reads separated by commas. Must enter a fasta OR fastq filename.
+  type: boolean
+  inputBinding:
+    prefix: --input
+- id: fast_q
+  doc: if set, input reads are fastq format (fasta by default).
+  type: boolean
+  inputBinding:
+    prefix: --fastq
+- id: fastq_filenames_first
+  doc: Fastq filenames separated by commas that contain the first mates.
+  type: boolean
+  inputBinding:
+    prefix: --1
+- id: fastq_filenames_second
+  doc: Fastq filenames separated by commas that contain the second mates
+  type: boolean
+  inputBinding:
+    prefix: --2
 - id: mini_ns
   doc: Min insert sizes for mate pairs separated by commas.
   type: boolean
@@ -16,7 +36,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --orientations
-- id: bowtie2_index
+- id: bowtie_two_index
   doc: name of bowtie index for the assembly.
   type: boolean
   inputBinding:

@@ -2,16 +2,19 @@ version 1.0
 
 task PslMap {
   input {
-    String verboseVerbose
-    String? inInPsl
-    String? mapMapFile
-    String? outOutPsl
+    String in_psl
+    String map_file
+    String out_psl
   }
   command <<<
     pslMap \
-      ~{inInPsl} \
-      ~{if defined(verboseVerbose) then ("- verbose " +  '"' + verboseVerbose + '"') else ""} \
-      ~{mapMapFile} \
-      ~{outOutPsl}
+      ~{in_psl} \
+      ~{map_file} \
+      ~{out_psl}
   >>>
+  parameter_meta {
+    in_psl: ""
+    map_file: ""
+    out_psl: ""
+  }
 }

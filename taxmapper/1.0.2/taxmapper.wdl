@@ -1,7 +1,14 @@
 version 1.0
 
 task Taxmapper {
+  input {
+    Boolean? v
+  }
   command <<<
-    taxmapper
+    taxmapper \
+      ~{true="-v" false="" v}
   >>>
+  parameter_meta {
+    v: ""
+  }
 }

@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: mb_create_bam_statistics.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mb_create_bam_statistics.cwl
 inputs:
+- id: gff_file
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --gff_file
 - id: estimate_bam_statistics
   doc: ''
   type: string
@@ -16,11 +21,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: gff_file
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --gff_file
 outputs: []
 cwlVersion: v1.1
 baseCommand:

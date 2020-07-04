@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: trunkreads.cwl
+id: ../../../../home/ubuntu/BiocondaCli/trunkreads.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

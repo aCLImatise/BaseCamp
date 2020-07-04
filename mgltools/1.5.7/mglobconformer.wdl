@@ -2,16 +2,22 @@ version 1.0
 
 task Mglobconformer {
   input {
-    String? obObConformer
-    String? nNSteps
-    String? geomGeomSteps
-    File? fileFile
+    String ob_conformer
+    String n_steps
+    String geom_steps
+    File file
   }
   command <<<
     mglobconformer \
-      ~{obObConformer} \
-      ~{nNSteps} \
-      ~{geomGeomSteps} \
-      ~{fileFile}
+      ~{ob_conformer} \
+      ~{n_steps} \
+      ~{geom_steps} \
+      ~{file}
   >>>
+  parameter_meta {
+    ob_conformer: ""
+    n_steps: ""
+    geom_steps: ""
+    file: ""
+  }
 }

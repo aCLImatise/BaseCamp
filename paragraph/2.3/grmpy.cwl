@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: grmpy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/grmpy.cwl
 inputs:
-- id: a
+- id: arg_output_folder_alignments
   doc: '[ --alignment-output-folder ] arg      Output folder for alignments. Note  these
     can become very large and are only requiredfor curation /  visualisation or faster
     reanalysis.'
@@ -19,7 +19,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --bad-align-uniq-kmer-len
-- id: g
+- id: arg_json_file
   doc: '[ --genotyping-parameters ] arg        JSON file with genotyping model  parameters'
   type: boolean
   inputBinding:
@@ -29,12 +29,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --graph-sequence-matching
-- id: g
+- id: arg_json_files
   doc: '[ --graph-spec ] arg                   JSON file(s) describing the  graph(s)'
   type: boolean
   inputBinding:
     prefix: -g
-- id: z
+- id: gzipcompress_output_files
   doc: '[ --gzip-output ] [=arg(=1)] (=0)      gzip-compress output files. If -O  is
     used, output file names are  appended with .gz'
   type: boolean
@@ -80,25 +80,25 @@ inputs:
   type: string
   inputBinding:
     prefix: --log-level
-- id: m
+- id: arg_manifest_bam
   doc: '[ --manifest ] arg                     Manifest of samples with path and  bam
     stats.'
   type: boolean
   inputBinding:
     prefix: -m
-- id: m
+- id: arg_maximum_number
   doc: '[ --max-reads-per-event ] arg (=10000) Maximum number of reads to process  for
     a single event.'
   type: boolean
   inputBinding:
     prefix: -M
-- id: o
+- id: arg_output_file
   doc: "[ --output-file ] arg                  Output file name. Will output to  stdout\
     \ if omitted or '-'."
   type: boolean
   inputBinding:
     prefix: -o
-- id: o
+- id: arg_output_folder_path
   doc: '[ --output-folder ] arg                Output folder path. paragraph will  attempt
     to create the folder but  not the entire path. Will output to stdout if neither
     of output-file or output-folder provided. If  specified, paragraph will produce  one
@@ -116,7 +116,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --progress
-- id: r
+- id: arg_reference_genome
   doc: '[ --reference ] arg                    Reference genome fasta file.'
   type: boolean
   inputBinding:
@@ -126,13 +126,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --response-file
-- id: t
+- id: arg_number_threads
   doc: '[ --sample-threads ] arg (=8)          Number of threads for parallel  sample
     processing.'
   type: boolean
   inputBinding:
     prefix: -t
-- id: v
+- id: print_program_version
   doc: '[ --version ]                          print program version information'
   type: boolean
   inputBinding:

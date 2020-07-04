@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ref_map.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ref_map.pl.cwl
 inputs:
 - id: samples
   doc: ': path to the directory containing the samples BAM (or SAM) alignment files.'
@@ -12,7 +12,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --popmap
-- id: s
+- id: spacer_file_names
   doc: ": spacer for file names: by default this is empty and the program looks for\
     \ files named 'SAMPLE_NAME.bam'; if this option is given the program looks for\
     \ files named 'SAMPLE_NAME.SPACER.bam'."
@@ -24,18 +24,18 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --out-path
-- id: x
+- id: additional_options_x
   doc: ': additional options for specific pipeline components, e.g. -X "populations:
     -p 3 -r 0.50"'
   type: boolean
   inputBinding:
     prefix: -X
-- id: t
+- id: number_use_default
   doc: ': the number of threads/CPUs to use (default: 1).'
   type: boolean
   inputBinding:
     prefix: -T
-- id: d
+- id: dry_run_actually
   doc: ': Dry run. Do not actually execute anything, just print the individual pipeline
     commands that would be executed.'
   type: boolean

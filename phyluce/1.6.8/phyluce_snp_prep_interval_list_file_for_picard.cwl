@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_snp_prep_interval_list_file_for_picard.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_snp_prep_interval_list_file_for_picard.cwl
 inputs:
 - id: bed
   doc: The BED file to filter.

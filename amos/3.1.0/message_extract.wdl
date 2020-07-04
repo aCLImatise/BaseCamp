@@ -2,12 +2,16 @@ version 1.0
 
 task MessageExtract {
   input {
-    String mM
-    String? nNCodes
+    String? m
+    String? n_codes
   }
   command <<<
     message-extract \
-      ~{nNCodes} \
-      ~{if defined(mM) then ("-m " +  '"' + mM + '"') else ""}
+      ~{n_codes} \
+      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""}
   >>>
+  parameter_meta {
+    m: ""
+    n_codes: ""
+  }
 }

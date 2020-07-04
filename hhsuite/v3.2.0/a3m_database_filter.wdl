@@ -2,20 +2,28 @@ version 1.0
 
 task A3mDatabaseFilter {
   input {
-    Boolean iI
-    Boolean oO
-    Boolean sS
-    String? ffFfIndexA3mDatabasePrefix
-    String? ffFfIndexA3mDatabasePrefix
-    String? filterFilter
+    Boolean? i
+    Boolean? o
+    Boolean? s
+    String? var_3
+    String? var_4
+    String? filter
   }
   command <<<
     a3m_database_filter \
-      ~{ffFfIndexA3mDatabasePrefix} \
-      ~{true="-i" false="" iI} \
-      ~{true="-o" false="" oO} \
-      ~{true="-s" false="" sS} \
-      ~{ffFfIndexA3mDatabasePrefix} \
-      ~{filterFilter}
+      ~{var_3} \
+      ~{var_4} \
+      ~{filter} \
+      ~{true="-i" false="" i} \
+      ~{true="-o" false="" o} \
+      ~{true="-s" false="" s}
   >>>
+  parameter_meta {
+    i: ""
+    o: ""
+    s: ""
+    var_3: ""
+    var_4: ""
+    filter: ""
+  }
 }

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: hal2mafMP.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hal2mafMP.py.cwl
 inputs:
-- id: hal_file
-  doc: Input HAL file
-  type: string
-  inputBinding:
-    position: 0
-- id: maf_file
-  doc: Output MAF file
-  type: string
-  inputBinding:
-    position: 1
 - id: num_proc
   doc: 'Maximum number of processes to create. If neither --sliceSize or --splitBySequence
     are specified, then the reference genome will be sliced to require --numProc jobs
@@ -52,7 +42,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --cacheBytes
-- id: cache_w0
+- id: cache_w_zero
   doc: 'w0 parameter fro hdf5 cache (default: None)'
   type: string
   inputBinding:
@@ -125,6 +115,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --onlySequenceNames
+- id: hal_file
+  doc: Input HAL file
+  type: string
+  inputBinding:
+    position: 0
+- id: maf_file
+  doc: Output MAF file
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

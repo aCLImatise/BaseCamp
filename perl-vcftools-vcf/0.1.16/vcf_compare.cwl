@@ -1,40 +1,15 @@
 class: CommandLineTool
-id: vcf_compare.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf_compare.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: file_1vcf
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
-- id: vcf_compare
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: chr1cmp
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
 - id: apply_filters
   doc: Ignore lines where FILTER column is anything else than PASS or '.'
   type: boolean
   inputBinding:
     prefix: --apply-filters
 - id: chromosomes
-  doc: <list|file>       Same as -r, left for backward compatibility. Please do not
-    use as it will be dropped in the future.
-  type: boolean
+  doc: Same as -r, left for backward compatibility. Please do not use as it will be
+    dropped in the future.
+  type: string
   inputBinding:
     prefix: --chromosomes
 - id: debug
@@ -53,11 +28,11 @@ inputs:
   inputBinding:
     prefix: --ignore-indels
 - id: name_mapping
-  doc: <list|file>      Use with -g when comparing files with differing column names.
-    The argument to this options is a comma-separated list or one mapping per line
-    in a file. The names are colon separated and must appear in the same order as
-    the files on the command line.
-  type: boolean
+  doc: Use with -g when comparing files with differing column names. The argument
+    to this options is a comma-separated list or one mapping per line in a file. The
+    names are colon separated and must appear in the same order as the files on the
+    command line.
+  type: string
   inputBinding:
     prefix: --name-mapping
 - id: info
@@ -78,15 +53,15 @@ inputs:
   inputBinding:
     prefix: --refseq
 - id: regions
-  doc: <list|file>           Process the given regions (comma-separated list or one
-    region per line in a file).
-  type: boolean
+  doc: Process the given regions (comma-separated list or one region per line in a
+    file).
+  type: string
   inputBinding:
     prefix: --regions
 - id: samples
-  doc: <list|file>           Process only the listed samples. Excluding unwanted samples
-    may increase performance considerably.
-  type: boolean
+  doc: Process only the listed samples. Excluding unwanted samples may increase performance
+    considerably.
+  type: string
   inputBinding:
     prefix: --samples
 - id: title
@@ -100,6 +75,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --win
+- id: vcf_compare
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

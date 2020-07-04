@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mzid_to_protxml.rb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mzid_to_protxml.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

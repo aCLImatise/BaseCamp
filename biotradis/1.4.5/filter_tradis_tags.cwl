@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: filter_tradis_tags.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_tradis_tags.cwl
 inputs:
-- id: filter_tags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: b
   doc: ''
   type: File
@@ -16,6 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -t
+- id: filter_tags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

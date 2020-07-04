@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: metagenome_pipeline.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/metagenome_pipeline.py.cwl
 inputs:
 - id: input
   doc: Input table of sequence abundances (BIOM, TSV, or mothur shared file format).

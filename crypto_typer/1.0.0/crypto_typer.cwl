@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: crypto_typer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/crypto_typer.cwl
 inputs:
 - id: verbose
   doc: Turn on verbose logging [False].

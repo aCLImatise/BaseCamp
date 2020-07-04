@@ -2,28 +2,40 @@ version 1.0
 
 task AddTranscriptFeatureToGtf.py {
   input {
-    String? scriptScript
-    String? toTo
-    String? addAdd
-    String? aA
-    String? transcriptTranscript
-    String? featureFeature
-    String? toTo
-    String? egEg
-    String? cufflinksCufflinks
-    String? gtGtFs
+    String script
+    String var_1
+    String add
+    String a
+    String transcript
+    String feature
+    String var_6
+    String e_dot_gdot
+    String cufflinks
+    String gt_fs
   }
   command <<<
     add_transcript_feature_to_gtf.py \
-      ~{scriptScript} \
-      ~{toTo} \
-      ~{addAdd} \
-      ~{aA} \
-      ~{transcriptTranscript} \
-      ~{featureFeature} \
-      ~{toTo} \
-      ~{egEg} \
-      ~{cufflinksCufflinks} \
-      ~{gtGtFs}
+      ~{script} \
+      ~{var_1} \
+      ~{add} \
+      ~{a} \
+      ~{transcript} \
+      ~{feature} \
+      ~{var_6} \
+      ~{e_dot_gdot} \
+      ~{cufflinks} \
+      ~{gt_fs}
   >>>
+  parameter_meta {
+    script: ""
+    var_1: ""
+    add: ""
+    a: ""
+    transcript: ""
+    feature: ""
+    var_6: ""
+    e_dot_gdot: ""
+    cufflinks: ""
+    gt_fs: ""
+  }
 }

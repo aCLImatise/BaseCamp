@@ -2,14 +2,19 @@ version 1.0
 
 task FilterGenesOutMRNAname.pl {
   input {
-    String? filterFilterGenes
-    String? nameNameFile
-    String? dbfileDbfile
+    String filter_genes
+    String name_file
+    String dbfile
   }
   command <<<
     filterGenesOut_mRNAname.pl \
-      ~{filterFilterGenes} \
-      ~{nameNameFile} \
-      ~{dbfileDbfile}
+      ~{filter_genes} \
+      ~{name_file} \
+      ~{dbfile}
   >>>
+  parameter_meta {
+    filter_genes: ""
+    name_file: ""
+    dbfile: ""
+  }
 }

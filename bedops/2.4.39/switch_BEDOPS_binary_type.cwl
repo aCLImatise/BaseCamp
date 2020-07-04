@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: switch_BEDOPS_binary_type.cwl
+id: ../../../../home/ubuntu/BiocondaCli/switch_BEDOPS_binary_type.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

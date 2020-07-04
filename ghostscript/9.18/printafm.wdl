@@ -2,10 +2,13 @@ version 1.0
 
 task Printafm {
   input {
-    String? fontnameFontname
+    String fontname
   }
   command <<<
     printafm \
-      ~{fontnameFontname}
+      ~{fontname}
   >>>
+  parameter_meta {
+    fontname: ""
+  }
 }

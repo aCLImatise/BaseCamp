@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cmsearchToBed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cmsearchToBed.cwl
 inputs:
 - id: verbose
   doc: Loud verbosity

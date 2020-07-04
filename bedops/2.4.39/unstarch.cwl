@@ -1,57 +1,6 @@
 class: CommandLineTool
-id: unstarch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/unstarch.cwl
 inputs:
-- id: elements
-  doc: Show total element count for archive. If <chromosome> is specified, the result
-    shows the element count for the chromosome.
-  type: boolean
-  inputBinding:
-    prefix: --elements
-- id: elements_max_string_length
-  doc: Show the maximum string length over all elements in <chromosome>, if specified.
-    If <chromosome> is not specified, the maximum string length is shown over all
-    chromosomes.
-  type: boolean
-  inputBinding:
-    prefix: --elements-max-string-length
-- id: bases_uniq
-  doc: Show total and unique base counts, respectively, for archive. If <chromosome>
-    is specified, the count is specific to the chromosome, if available.
-  type: boolean
-  inputBinding:
-    prefix: --bases-uniq
-- id: has_duplicate_as_string
-  doc: Show whether there is one or more duplicate elements in the specified chromosome,
-    either as a numerical (1/0) or string (true/false) value. If no <chromosome> is
-    specified, the value given indicates if there is one or more duplicate elements
-    across all chromosome records.
-  type: boolean
-  inputBinding:
-    prefix: --has-duplicate-as-string
-- id: has_nested_as_string
-  doc: Show whether there is one ore more nested elements in the specified chromosome,
-    either as a numerical (1/0) or string (true/false) value. If no <chromosome> is
-    specified, the value given indicates if there is one or more nested elements across
-    all chromosome records.
-  type: boolean
-  inputBinding:
-    prefix: --has-nested-as-string
-- id: list
-  doc: List archive metadata (output is in text format). If chromosome is specified,
-    the attributes of the given chromosome are shown.
-  type: boolean
-  inputBinding:
-    prefix: --list
-- id: list_json_no_trailing_new_line
-  doc: List archive metadata (output is in JSON format)
-  type: boolean
-  inputBinding:
-    prefix: --list-json-no-trailing-newline
-- id: list_chr
-  doc: ',                      '
-  type: boolean
-  inputBinding:
-    prefix: --list-chr
 - id: list_chromosomes
   doc: List all or specified chromosome in starch archive (like "bedextract --list-
     chr"). If <chromosome> is specified but is not in the output list, nothing is
@@ -99,6 +48,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --is-starch
+- id: chromosome
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

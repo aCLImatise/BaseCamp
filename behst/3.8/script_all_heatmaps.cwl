@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: script_all_heatmaps.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/script_all_heatmaps.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

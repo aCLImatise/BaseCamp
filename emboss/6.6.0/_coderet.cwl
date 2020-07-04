@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _coderet.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_coderet.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

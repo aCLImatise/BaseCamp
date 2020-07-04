@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: jemalloc_config.cwl
+id: ../../../../home/ubuntu/BiocondaCli/jemalloc_config.cwl
 inputs:
 - id: revision
   doc: ': Print shared library revision number.'

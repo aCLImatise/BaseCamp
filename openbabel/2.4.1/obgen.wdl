@@ -2,12 +2,16 @@ version 1.0
 
 task Obgen {
   input {
-    Boolean ffFf
-    File? filenameFilename
+    Boolean? ff
+    File filename
   }
   command <<<
     obgen \
-      ~{filenameFilename} \
-      ~{true="-ff" false="" ffFf}
+      ~{filename} \
+      ~{true="-ff" false="" ff}
   >>>
+  parameter_meta {
+    ff: "select a forcefield"
+    filename: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _tranalign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_tranalign.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

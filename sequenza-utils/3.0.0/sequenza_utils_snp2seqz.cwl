@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sequenza_utils_snp2seqz.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sequenza_utils_snp2seqz.cwl
 inputs:
 - id: output
   doc: Output file. For gzip compressed output name the file ending in .gz. Default
@@ -24,9 +24,9 @@ inputs:
   inputBinding:
     prefix: --vcf-depth
 - id: vcf_samples
-  doc: '{n/t,t/n} Order of the normal and tumor sample in the VCF column, choices
-    are "n/t" or "t/n". Default "n/t"'
-  type: boolean
+  doc: Order of the normal and tumor sample in the VCF column, choices are "n/t" or
+    "t/n". Default "n/t"
+  type: string
   inputBinding:
     prefix: --vcf-samples
 - id: vcf_alleles
@@ -61,7 +61,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --tabix
-- id: n
+- id: threshold_filter_positions
   doc: Threshold to filter positions by the sum of read depth of the two samples.
     Default 20.
   type: string

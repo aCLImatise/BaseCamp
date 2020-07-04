@@ -2,34 +2,49 @@ version 1.0
 
 task NucleoatacOcc {
   input {
-    String bedBed
-    String bamBam
-    String outOut
-    String fastFastA
-    String pwmPwm
-    String sizesSizes
-    Int coresCores
-    Int upperUpper
-    Int flankFlank
-    Float minMinOcc
-    Int nucNucSep
-    Float confidenceConfidenceInterval
-    Int stepStep
+    String? bed
+    String? bam
+    String? out
+    String? fast_a
+    String? pwm
+    String? sizes
+    Int? cores
+    Int? upper
+    Int? flank
+    Float? min_occ
+    Int? nuc_sep
+    Float? confidence_interval
+    Int? step
   }
   command <<<
     nucleoatac occ \
-      ~{if defined(bedBed) then ("--bed " +  '"' + bedBed + '"') else ""} \
-      ~{if defined(bamBam) then ("--bam " +  '"' + bamBam + '"') else ""} \
-      ~{if defined(outOut) then ("--out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(fastFastA) then ("--fasta " +  '"' + fastFastA + '"') else ""} \
-      ~{if defined(pwmPwm) then ("--pwm " +  '"' + pwmPwm + '"') else ""} \
-      ~{if defined(sizesSizes) then ("--sizes " +  '"' + sizesSizes + '"') else ""} \
-      ~{if defined(coresCores) then ("--cores " +  '"' + coresCores + '"') else ""} \
-      ~{if defined(upperUpper) then ("--upper " +  '"' + upperUpper + '"') else ""} \
-      ~{if defined(flankFlank) then ("--flank " +  '"' + flankFlank + '"') else ""} \
-      ~{if defined(minMinOcc) then ("--min_occ " +  '"' + minMinOcc + '"') else ""} \
-      ~{if defined(nucNucSep) then ("--nuc_sep " +  '"' + nucNucSep + '"') else ""} \
-      ~{if defined(confidenceConfidenceInterval) then ("--confidence_interval " +  '"' + confidenceConfidenceInterval + '"') else ""} \
-      ~{if defined(stepStep) then ("--step " +  '"' + stepStep + '"') else ""}
+      ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""} \
+      ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
+      ~{if defined(fast_a) then ("--fasta " +  '"' + fast_a + '"') else ""} \
+      ~{if defined(pwm) then ("--pwm " +  '"' + pwm + '"') else ""} \
+      ~{if defined(sizes) then ("--sizes " +  '"' + sizes + '"') else ""} \
+      ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
+      ~{if defined(upper) then ("--upper " +  '"' + upper + '"') else ""} \
+      ~{if defined(flank) then ("--flank " +  '"' + flank + '"') else ""} \
+      ~{if defined(min_occ) then ("--min_occ " +  '"' + min_occ + '"') else ""} \
+      ~{if defined(nuc_sep) then ("--nuc_sep " +  '"' + nuc_sep + '"') else ""} \
+      ~{if defined(confidence_interval) then ("--confidence_interval " +  '"' + confidence_interval + '"') else ""} \
+      ~{if defined(step) then ("--step " +  '"' + step + '"') else ""}
   >>>
+  parameter_meta {
+    bed: "Peaks in bed format"
+    bam: "Sorted (and indexed) BAM file"
+    out: "give output basename"
+    fast_a: "Indexed fasta file"
+    pwm: "PWM descriptor file. Default is Human.PWM.txt included in package"
+    sizes: "File with fragment size distribution. Use if don't want calculation of fragment size"
+    cores: "Number of cores to use"
+    upper: "upper limit in insert size. default is 251"
+    flank: "Distance on each side of dyad to include for local occ calculation. Default is 60."
+    min_occ: "Occupancy cutoff for determining nucleosome distribution. Default is 0.1"
+    nuc_sep: "minimum separation between occupany peaks. Default is 120."
+    confidence_interval: "confidence interval level for lower and upper bounds. default is 0.9, should be between 0 and 1"
+    step: "step size along genome for comuting occ. Default is 5. Should be odd, or will be subtracted by 1"
+  }
 }

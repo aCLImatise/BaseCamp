@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fasta_generate_regions.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fasta_generate_regions.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

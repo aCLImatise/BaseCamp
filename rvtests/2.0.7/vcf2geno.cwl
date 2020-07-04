@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcf2geno.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf2geno.cwl
 inputs:
 - id: people_include_id
   doc: '[], --peopleIncludeFile []'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rdkit2fps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rdkit2fps.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

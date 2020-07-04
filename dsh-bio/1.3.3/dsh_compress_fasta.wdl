@@ -2,16 +2,25 @@ version 1.0
 
 task DshCompressFasta {
   input {
-    Boolean aboutAbout
-    Boolean inputInputFastAFile
-    Boolean outputOutputFastAFile
-    Boolean lineLineWidth
+    Boolean? about
+    Boolean? input_fast_a_file
+    Boolean? output_fast_a_file
+    Boolean? line_width
+    String? args
   }
   command <<<
     dsh-compress-fasta \
-      ~{true="--about" false="" aboutAbout} \
-      ~{true="--input-fasta-file" false="" inputInputFastAFile} \
-      ~{true="--output-fasta-file" false="" outputOutputFastAFile} \
-      ~{true="--line-width" false="" lineLineWidth}
+      ~{args} \
+      ~{true="--about" false="" about} \
+      ~{true="--input-fasta-file" false="" input_fast_a_file} \
+      ~{true="--output-fasta-file" false="" output_fast_a_file} \
+      ~{true="--line-width" false="" line_width}
   >>>
+  parameter_meta {
+    about: "display about message [optional]"
+    input_fast_a_file: "[class java.io.File]  input FASTA file, default stdin [optional]"
+    output_fast_a_file: "[class java.io.File]  output FASTA file, default stdout [optional]"
+    line_width: "[class java.lang.Integer]  line width, default 70 [optional]"
+    args: ""
+  }
 }

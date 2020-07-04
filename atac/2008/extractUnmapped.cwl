@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: extractUnmapped.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extractUnmapped.cwl
 inputs:
-- id: a
+- id: extract_unmapped_sequence_a
   doc: extract all unmapped sequence in A
   type: boolean
   inputBinding:
     prefix: -a
-- id: b
+- id: extract_unmapped_sequence_b
   doc: extract all unmapped sequence in B
   type: boolean
   inputBinding:
@@ -21,11 +21,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -br
-- id: t
+- id: mask_tandem_repeats
   doc: mask out tandem repeats listed in trfile
   type: boolean
   inputBinding:
     prefix: -t
+- id: op
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -OP
+- id: m
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -m
 outputs: []
 cwlVersion: v1.1
 baseCommand:

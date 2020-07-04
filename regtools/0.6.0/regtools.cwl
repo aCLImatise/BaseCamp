@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: regtools.cwl
+id: ../../../../home/ubuntu/BiocondaCli/regtools.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

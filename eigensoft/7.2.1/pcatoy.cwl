@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pcatoy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pcatoy.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

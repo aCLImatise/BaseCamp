@@ -2,14 +2,19 @@ version 1.0
 
 task FastxCollapser {
   input {
-    Boolean vV
-    String iI
-    String oO
+    Boolean? v
+    String? i
+    String? o
   }
   command <<<
     fastx_collapser \
-      ~{true="-v" false="" vV} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""}
+      ~{true="-v" false="" v} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    v: ""
+    i: ""
+    o: ""
+  }
 }

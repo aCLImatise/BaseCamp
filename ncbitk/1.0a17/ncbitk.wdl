@@ -2,10 +2,19 @@ version 1.0
 
 task Ncbitk {
   input {
-    Boolean statusStatus
+    Boolean? status
+    String genbank
+    String? species
   }
   command <<<
     ncbitk \
-      ~{true="--status" false="" statusStatus}
+      ~{genbank} \
+      ~{species} \
+      ~{true="--status" false="" status}
   >>>
+  parameter_meta {
+    status: "Show the current status of your genome collection"
+    genbank: ""
+    species: ""
+  }
 }

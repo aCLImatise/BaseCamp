@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: run_seqtools.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_seqtools.py.cwl
 inputs:
-- id: in_file
+- id: name_input_file
   doc: '[INFILE]      name of the input file (default: standard input)'
   type: boolean
   inputBinding:
     prefix: -infile
-- id: outfile
+- id: name_output_file
   doc: '[OUTFILE]    name of the output file (default: standard output)'
   type: boolean
   inputBinding:
@@ -36,6 +36,16 @@ inputs:
   type: string
   inputBinding:
     prefix: -rename
+- id: var_7
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: var_8
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

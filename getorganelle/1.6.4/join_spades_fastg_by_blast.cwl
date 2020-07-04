@@ -1,22 +1,12 @@
 class: CommandLineTool
-id: join_spades_fastg_by_blast.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/join_spades_fastg_by_blast.py.cwl
 inputs:
-- id: python
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: join_spades_fast_g_by_blastp_y
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: g
+- id: followed_input_fastg
   doc: followed by your input fastg file
   type: string
   inputBinding:
     prefix: -g
-- id: f
+- id: followed_fasta_index
   doc: followed by Fasta index format
   type: string
   inputBinding:

@@ -1,26 +1,26 @@
 class: CommandLineTool
-id: centrifuge_inspect_bin.cwl
+id: ../../../../home/ubuntu/BiocondaCli/centrifuge_inspect_bin.cwl
 inputs:
-- id: a
-  doc: '/--across <int>  Number of characters across in FASTA output (default: 60)'
+- id: a_slash_across
+  doc: 'Number of characters across in FASTA output (default: 60)'
+  type: long
+  inputBinding:
+    prefix: -a/--across
+- id: n_slash_names
+  doc: Print reference sequence names only
   type: boolean
   inputBinding:
-    prefix: -a
-- id: n
-  doc: /--names         Print reference sequence names only
+    prefix: -n/--names
+- id: s_slash_summary
+  doc: Print summary incl. ref names, lengths, index properties
   type: boolean
   inputBinding:
-    prefix: -n
-- id: s
-  doc: /--summary       Print summary incl. ref names, lengths, index properties
+    prefix: -s/--summary
+- id: e_slash_bt_two_ref
+  doc: Reconstruct reference from .cf (slow, preserves colors)
   type: boolean
   inputBinding:
-    prefix: -s
-- id: e
-  doc: /--bt2-ref       Reconstruct reference from .cf (slow, preserves colors)
-  type: boolean
-  inputBinding:
-    prefix: -e
+    prefix: -e/--bt2-ref
 - id: conversion_table
   doc: conversion table
   type: string
@@ -41,16 +41,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --size-table
-- id: v
-  doc: /--verbose       Verbose output (for debugging)
+- id: v_slash_verbose
+  doc: Verbose output (for debugging)
   type: boolean
   inputBinding:
-    prefix: -v
-- id: help
-  doc: print this usage message
+    prefix: -v/--verbose
+- id: h_slash_help
+  doc: print detailed description of tool and its options
   type: boolean
   inputBinding:
-    prefix: --help
+    prefix: -h/--help
+- id: centrifuge_inspect
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

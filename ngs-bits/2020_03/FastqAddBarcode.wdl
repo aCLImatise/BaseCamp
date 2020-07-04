@@ -2,22 +2,31 @@ version 1.0
 
 task FastqAddBarcode {
   input {
-    File in1In1
-    File in2In2
-    File inInBarcode
-    File out1Out1
-    File out2Out2
-    Boolean changelogChangelog
-    Boolean tdxTdx
+    File? in_one
+    File? in_two
+    File? in_barcode
+    File? out_one
+    File? out_two
+    Boolean? changelog
+    Boolean? tdx
   }
   command <<<
     FastqAddBarcode \
-      ~{if defined(in1In1) then ("-in1 " +  '"' + in1In1 + '"') else ""} \
-      ~{if defined(in2In2) then ("-in2 " +  '"' + in2In2 + '"') else ""} \
-      ~{if defined(inInBarcode) then ("-in_barcode " +  '"' + inInBarcode + '"') else ""} \
-      ~{if defined(out1Out1) then ("-out1 " +  '"' + out1Out1 + '"') else ""} \
-      ~{if defined(out2Out2) then ("-out2 " +  '"' + out2Out2 + '"') else ""} \
-      ~{true="--changelog" false="" changelogChangelog} \
-      ~{true="--tdx" false="" tdxTdx}
+      ~{if defined(in_one) then ("-in1 " +  '"' + in_one + '"') else ""} \
+      ~{if defined(in_two) then ("-in2 " +  '"' + in_two + '"') else ""} \
+      ~{if defined(in_barcode) then ("-in_barcode " +  '"' + in_barcode + '"') else ""} \
+      ~{if defined(out_one) then ("-out1 " +  '"' + out_one + '"') else ""} \
+      ~{if defined(out_two) then ("-out2 " +  '"' + out_two + '"') else ""} \
+      ~{true="--changelog" false="" changelog} \
+      ~{true="--tdx" false="" tdx}
   >>>
+  parameter_meta {
+    in_one: "Input FASTQ file 1."
+    in_two: "Input FASTQ file 2."
+    in_barcode: "Input barcode file."
+    out_one: "Output filename for read 1 FASTQ."
+    out_two: "Output filename for read 2 FASTQ."
+    changelog: "Prints changeloge and exits."
+    tdx: "Writes a Tool Definition Xml file. The file name is the application name with the suffix '.tdx'."
+  }
 }

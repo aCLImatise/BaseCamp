@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastq_to_fasta_fast.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq_to_fasta_fast.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

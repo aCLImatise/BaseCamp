@@ -1,56 +1,56 @@
 class: CommandLineTool
-id: bayesTyper_genotype.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bayesTyper_genotype.cwl
 inputs:
-- id: v
+- id: arg_variantclustersbin_file
   doc: '[ --variant-clusters-file ] arg    variant_clusters.bin file (BayesTyper cluster
     output).'
   type: boolean
   inputBinding:
     prefix: -v
-- id: c
+- id: parameterkmersfagz_bayestyper_cluster
   doc: '[ --cluster-data-dir ] arg         cluster data directory containing intercluster_regions.txt.gz,
     multigroup_kmers.bloom[Meta|Data] &  parameter_kmers.fa.gz (BayesTyper cluster
     output).'
   type: boolean
   inputBinding:
     prefix: -c
-- id: s
+- id: arg_samples_file
   doc: '[ --samples-file ] arg             samples file (see github documentation
     for format specifications).'
   type: boolean
   inputBinding:
     prefix: -s
-- id: g
+- id: arg_reference_genome
   doc: '[ --genome-file ] arg              reference genome file (fasta format).'
   type: boolean
   inputBinding:
     prefix: -g
-- id: d
+- id: arg_decoy_sequences
   doc: '[ --decoy-file ] arg               decoy sequences file (fasta format).'
   type: boolean
   inputBinding:
     prefix: -d
-- id: o
+- id: arg_bayestyper_output
   doc: '[ --output-prefix ] arg (=bayestyper) output prefix.'
   type: boolean
   inputBinding:
     prefix: -o
-- id: z
+- id: compress_outputprefixvcf_using
   doc: '[ --gzip-output ] [=arg(=1)] (=0)  compress <output-prefix>.vcf using gzip.'
   type: boolean
   inputBinding:
     prefix: -z
-- id: r
+- id: arg_unix_time
   doc: '[ --random-seed ] arg (=unix time) seed for pseudo-random number generator.'
   type: boolean
   inputBinding:
     prefix: -r
-- id: p
+- id: arg_number_threads
   doc: '[ --threads ] arg (=1)             number of threads used (+= 2 I/O threads).'
   type: boolean
   inputBinding:
     prefix: -p
-- id: y
+- id: arg_chromosome_gender
   doc: '[ --chromosome-ploidy-file ] arg   chromosome gender ploidy file (see github
     documentation for format specifications). Human ploidy levels will be assumed
     if no file is given.'

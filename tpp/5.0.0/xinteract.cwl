@@ -1,37 +1,22 @@
 class: CommandLineTool
-id: xinteract.cwl
+id: ../../../../home/ubuntu/BiocondaCli/xinteract.cwl
 inputs:
-- id: t
-  doc: '[run regression test against a previously derived result]'
+- id: n_my_file_dot_pep_dot_xml
+  doc: "[write output to file 'myfile.pep.xml']"
   type: boolean
   inputBinding:
-    prefix: -t
-- id: t
-  doc: '! [learn results for regression test]'
-  type: boolean
-  inputBinding:
-    prefix: -t
-- id: t
-  doc: '# [run regression test, do not stop on test failure]'
-  type: boolean
-  inputBinding:
-    prefix: -t
-- id: n_my_file
-  doc: .pep.xml [write output to file 'myfile.pep.xml']
-  type: boolean
-  inputBinding:
-    prefix: -Nmyfile
-- id: r
+    prefix: -Nmyfile.pep.xml
+- id: protein_names_omssa
   doc: protein names in OMSSA data
   type: string
   inputBinding:
     prefix: -R
-- id: g
+- id: collision_energy_pepxml
   doc: collision energy in pepXML
   type: string
   inputBinding:
     prefix: -G
-- id: v
+- id: compensation_voltage_faims
   doc: compensation voltage (FAIMS) in pepXML
   type: string
   inputBinding:
@@ -56,7 +41,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -nR
-- id: p0
+- id: pzero
   doc: '[do not discard search results with PeptideProphet probabilities below 0.05]'
   type: boolean
   inputBinding:
@@ -66,23 +51,23 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -x
-- id: i
+- id: var_10
   doc: <num> [ignore charge <num>+]
   type: boolean
   inputBinding:
     prefix: -I
-- id: d
+- id: tag
   doc: <tag> [use decoy hits to pin down the negative distribution. the decoy protein
     names must begin with <tag> (whitespace is not allowed)]
   type: boolean
   inputBinding:
     prefix: -d
-- id: d
+- id: databasepath
   doc: <database_path> [specify path to database]
   type: boolean
   inputBinding:
     prefix: -D
-- id: c
+- id: conservativelevel
   doc: <conservative_level> [specify how conservative the model is to be in number
     of standard deviations from negative mean  to allow positive model to cover (default
     0, higher is more conservative)]
@@ -94,29 +79,29 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -PPM
-- id: e
+- id: experimentlabel
   doc: <experiment_label> [used to commonly label all spectra belonging to one experiment
     (required by iProphet)]
   type: boolean
   inputBinding:
     prefix: -E
-- id: l
+- id: var_16
   doc: <num> [minimum peptide length considered in the analysis (default 7)]
   type: boolean
   inputBinding:
     prefix: -l
-- id: t
+- id: database_type
   doc: <database type> [specify 'AA' for amino acid, 'NA' for nucleic acid (default
     'AA')]
   type: boolean
   inputBinding:
     prefix: -T
-- id: a
+- id: datapath
   doc: <data_path> [specify absolute path to data directory]
   type: boolean
   inputBinding:
     prefix: -a
-- id: p
+- id: var_19
   doc: <num> [filter results below PeptideProphet probability <num>; default <num>=0.05]
   type: boolean
   inputBinding:
@@ -164,141 +149,97 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -NOUPDATE
-- id: m
+- id: num_change_default
   doc: <num>        change XPRESS mass tolerance (default=1.0)
   type: boolean
   inputBinding:
     prefix: -m
-- id: a
-  doc: tolerance specified by -m is in ppm (default=Daltons)
-  type: boolean
-  inputBinding:
-    prefix: -a
-- id: n
+- id: strnum_change_xpress
   doc: <str>,<num>  change XPRESS residue mass difference for <str> to <num> (default=9.0)
   type: boolean
   inputBinding:
     prefix: -n
-- id: b
+- id: heavy_labeled_peptide
   doc: heavy labeled peptide elutes before light labeled partner
   type: boolean
   inputBinding:
     prefix: -b
-- id: f
+- id: num_fix_elution
   doc: <num>        fix elution peak area as +-<num> scans (<num> optional, default=5)
     from peak apex
   type: boolean
   inputBinding:
     prefix: -F
-- id: c
-  doc: <num>        change minimum number of chromatogram points needed for quantitation
-    (default=5)
-  type: boolean
-  inputBinding:
-    prefix: -c
-- id: p
-  doc: <num>        number of 13C isotopic peaks to add to precursor chromatogram
-    (default=1)
-  type: boolean
-  inputBinding:
-    prefix: -p
-- id: l
+- id: ratio_setfix_light
   doc: for ratio, set/fix light to 1, vary heavy
   type: boolean
   inputBinding:
     prefix: -L
-- id: h
+- id: ratio_setfix_heavy
   doc: for ratio, set/fix heavy to 1, vary light
   type: boolean
   inputBinding:
     prefix: -H
-- id: m
+- id: n_metabolic_normal
   doc: for 15N metabolic labeling; ignore all other parameters, assume IDs are normal
     and quantify w/corresponding 15N heavy pair
   type: boolean
   inputBinding:
     prefix: -M
-- id: n
+- id: n_metabolic_n
   doc: for 15N metabolic labeling; ignore all other parameters, assume IDs are 15N
     heavy and quantify w/corresponding 14N light pair
   type: boolean
   inputBinding:
     prefix: -N
-- id: o
+- id: c_metabolic_normal
   doc: for 13C metabolic labeling; ignore all other parameters, assume IDs are normal
     and quantify w/corresponding 13C heavy pair
   type: boolean
   inputBinding:
     prefix: -O
-- id: p
+- id: c_metabolic_c
   doc: for 13C metabolic labeling; ignore all other parameters, assume IDs are 13C
     heavy and quantify w/corresponding 12C light pair
   type: boolean
   inputBinding:
     prefix: -P
-- id: i
+- id: also_export_intensities
   doc: also export intensities and intensity based ratio
   type: boolean
   inputBinding:
     prefix: -i
-- id: l
-  doc: 'label free mode: stats on precursor ions only, no ratios only relevant label-free
-    parameters are -m, -c, and -p'
-  type: boolean
-  inputBinding:
-    prefix: -l
-- id: l
-  doc: <str>    change labeled residues (default='C')
-  type: boolean
-  inputBinding:
-    prefix: -l
-- id: b
-  doc: heavy labeled peptide elutes before light labeled partner
-  type: boolean
-  inputBinding:
-    prefix: -b
-- id: r
+- id: num_range_mz
   doc: <num>    range around precusor m/z to search for peak (default 0.5)
   type: boolean
   inputBinding:
     prefix: -r
-- id: f
+- id: num_areaflag_set
   doc: <num>    areaFlag set to num (ratio display option)
   type: boolean
   inputBinding:
     prefix: -f
-- id: s
+- id: static_modification_quantification
   doc: static modification quantification (i.e. each run is either all light or all
     heavy)
   type: boolean
   inputBinding:
     prefix: -S
-- id: f
-  doc: use fixed scan range for light and heavy
-  type: boolean
-  inputBinding:
-    prefix: -F
-- id: c
+- id: quantitate_only_state
   doc: quantitate only the charge state where the CID was made
   type: boolean
   inputBinding:
     prefix: -C
-- id: b
+- id: return_ratio_even
   doc: return a ratio even if the background is high
   type: boolean
   inputBinding:
     prefix: -B
-- id: z
+- id: set_background_zero
   doc: set all background to zero
   type: boolean
   inputBinding:
     prefix: -Z
-- id: m
-  doc: '<str>    specified label masses (e.g. M74.325Y125.864), only relevant for  static
-    modification quantification '
-  type: boolean
-  inputBinding:
-    prefix: -m
 - id: prev_aa_len
   doc: set the number of previous AAs recorded for a peptide hit (default 1)
   type: long

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gotree_upload_itol.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gotree_upload_itol.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: name
   doc: iTOL tree name prefix (default "tree")
   type: string
@@ -41,6 +36,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: rmapbs_pe.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rmapbs_pe.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: fast_q_reads_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: output
   doc: 'output file name '
   type: boolean
@@ -71,6 +61,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -about
+- id: fast_q_reads_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

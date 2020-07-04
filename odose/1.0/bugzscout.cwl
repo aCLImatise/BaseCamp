@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bugzscout.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bugzscout.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

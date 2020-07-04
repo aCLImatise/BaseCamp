@@ -1,6 +1,28 @@
 class: CommandLineTool
-id: medpy_graphcut_label.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/medpy_graphcut_label.py.cwl
 inputs:
+- id: boundary
+  doc: The boundary term to use. Note that difference of means (means) requires the
+    original image, while stawiaski requires the gradient image of the original image
+    to be passed to badditional.
+  type: string
+  inputBinding:
+    prefix: --boundary
+- id: set_flag_override
+  doc: Set this flag to silently override files that exist.
+  type: boolean
+  inputBinding:
+    prefix: -f
+- id: display_more_information
+  doc: Display more information.
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: display_debug_information
+  doc: Display debug information.
+  type: boolean
+  inputBinding:
+    prefix: -d
 - id: b_additional
   doc: The additional image required by the boundary term. See there for details.
   type: string
@@ -21,28 +43,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: boundary
-  doc: The boundary term to use. Note that difference of means (means) requires the
-    original image, while stawiaski requires the gradient image of the original image
-    to be passed to badditional.
-  type: string
-  inputBinding:
-    prefix: --boundary
-- id: f
-  doc: Set this flag to silently override files that exist.
-  type: boolean
-  inputBinding:
-    prefix: -f
-- id: v
-  doc: Display more information.
-  type: boolean
-  inputBinding:
-    prefix: -v
-- id: d
-  doc: Display debug information.
-  type: boolean
-  inputBinding:
-    prefix: -d
 outputs: []
 cwlVersion: v1.1
 baseCommand:

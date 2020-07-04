@@ -2,18 +2,25 @@ version 1.0
 
 task ScranComputeSpikeFactors.R {
   input {
-    String inputInputSceObject
-    String typeType
-    String assayAssayType
-    String generalGeneralUse
-    String outputOutputSceObject
+    String? input_sce_object
+    String? type
+    String? assay_type
+    String? general_use
+    String? output_sce_object
   }
   command <<<
     scran-compute-spike-factors.R \
-      ~{if defined(inputInputSceObject) then ("--input-sce-object " +  '"' + inputInputSceObject + '"') else ""} \
-      ~{if defined(typeType) then ("--type " +  '"' + typeType + '"') else ""} \
-      ~{if defined(assayAssayType) then ("--assay-type " +  '"' + assayAssayType + '"') else ""} \
-      ~{if defined(generalGeneralUse) then ("--general_use " +  '"' + generalGeneralUse + '"') else ""} \
-      ~{if defined(outputOutputSceObject) then ("--output-sce-object " +  '"' + outputOutputSceObject + '"') else ""}
+      ~{if defined(input_sce_object) then ("--input-sce-object " +  '"' + input_sce_object + '"') else ""} \
+      ~{if defined(type) then ("--type " +  '"' + type + '"') else ""} \
+      ~{if defined(assay_type) then ("--assay-type " +  '"' + assay_type + '"') else ""} \
+      ~{if defined(general_use) then ("--general_use " +  '"' + general_use + '"') else ""} \
+      ~{if defined(output_sce_object) then ("--output-sce-object " +  '"' + output_sce_object + '"') else ""}
   >>>
+  parameter_meta {
+    input_sce_object: "Path to the input SCE object in rds format."
+    type: "A character vector specifying which spike-in sets to use. Default: \"ERCC\"."
+    assay_type: "Specify which assay values to use. Default: \"logcounts\"."
+    general_use: "A logical scalar indicating whether the size factors should be stored for general use by all genes."
+    output_sce_object: "Path to the output SCE object containing the vector of size factors in sizeFactors(x)."
+  }
 }

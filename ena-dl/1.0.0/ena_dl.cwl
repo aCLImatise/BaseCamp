@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ena_dl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ena_dl.cwl
 inputs:
-- id: accession
-  doc: ENA accession to query. (Study, Experiment, or Run accession)
-  type: string
-  inputBinding:
-    position: 0
 - id: aspera
   doc: 'Path to the Aspera Connect tool "ascp" (Default: "which ascp")'
   type: string
@@ -71,6 +66,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
+- id: accession
+  doc: ENA accession to query. (Study, Experiment, or Run accession)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: medpy_anisotropic_diffusion.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/medpy_anisotropic_diffusion.py.cwl
 inputs:
-- id: input
-  doc: Source volume.
-  type: string
-  inputBinding:
-    position: 0
-- id: output
-  doc: Target volume.
-  type: string
-  inputBinding:
-    position: 1
 - id: iterations
   doc: The number of smoothing iterations. Strong parameter.
   type: string
@@ -27,21 +17,31 @@ inputs:
   type: string
   inputBinding:
     prefix: --gamma
-- id: v
+- id: display_more_information
   doc: Display more information.
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: display_debug_information
   doc: Display debug information.
   type: boolean
   inputBinding:
     prefix: -d
-- id: f
+- id: silently_override_images
   doc: Silently override existing output images.
   type: boolean
   inputBinding:
     prefix: -f
+- id: input
+  doc: Source volume.
+  type: string
+  inputBinding:
+    position: 0
+- id: output
+  doc: Target volume.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

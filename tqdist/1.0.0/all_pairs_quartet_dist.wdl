@@ -2,14 +2,19 @@ version 1.0
 
 task AllPairsQuartetDist {
   input {
-    String? inputInputFileName
-    String? outputOutput
-    File? filenameFilename
+    String input_filename
+    String? var_output
+    File? filename
   }
   command <<<
     all_pairs_quartet_dist \
-      ~{inputInputFileName} \
-      ~{outputOutput} \
-      ~{filenameFilename}
+      ~{input_filename} \
+      ~{var_output} \
+      ~{filename}
   >>>
+  parameter_meta {
+    input_filename: ""
+    var_output: ""
+    filename: ""
+  }
 }

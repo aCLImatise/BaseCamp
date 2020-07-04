@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tandem_genotypes_join.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tandem_genotypes_join.cwl
 inputs:
 - id: shrink
   doc: shrink the output
@@ -21,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: positive_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

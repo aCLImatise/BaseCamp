@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nosetests_2.7.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nosetests_2.7.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

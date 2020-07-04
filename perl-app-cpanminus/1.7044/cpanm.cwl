@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cpanm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cpanm.cwl
 inputs:
 - id: verbose
   doc: Turns on chatty output
@@ -111,6 +111,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --uninstall
+- id: module
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

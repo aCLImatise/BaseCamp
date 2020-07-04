@@ -2,10 +2,13 @@ version 1.0
 
 task DatabaseParser {
   input {
-    String? xmlXmlFile
+    String xml_file
   }
   command <<<
     DatabaseParser \
-      ~{xmlXmlFile}
+      ~{xml_file}
   >>>
+  parameter_meta {
+    xml_file: ""
+  }
 }

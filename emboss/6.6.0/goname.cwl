@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: goname.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goname.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

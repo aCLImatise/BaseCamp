@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: make_logitModel.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/make_logitModel.py.cwl
 inputs:
 - id: c_gene
   doc: "Protein coding transcripts (used to build logit model) either in BED format\

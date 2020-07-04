@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: weedMaf.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/weedMaf.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

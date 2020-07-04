@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: ecotag.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ecotag.cwl
 inputs:
 - id: sort
-  doc: 0.95 -r seq.fasta > seq_tag.fasta
+  doc: '> seq_tag.fasta'
   type: string
   inputBinding:
     prefix: --sort

@@ -2,24 +2,34 @@ version 1.0
 
 task ConsensusMapNormalizer {
   input {
-    File inIn
-    File outOut
-    String algorithmAlgorithmType
-    String ratioRatioThreshold
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    File? in
+    File? out
+    String? algorithm_type
+    String? ratio_threshold
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     ConsensusMapNormalizer \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(algorithmAlgorithmType) then ("-algorithm_type " +  '"' + algorithmAlgorithmType + '"') else ""} \
-      ~{if defined(ratioRatioThreshold) then ("-ratio_threshold " +  '"' + ratioRatioThreshold + '"') else ""} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(algorithm_type) then ("-algorithm_type " +  '"' + algorithm_type + '"') else ""} \
+      ~{if defined(ratio_threshold) then ("-ratio_threshold " +  '"' + ratio_threshold + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*               Input file (valid formats: 'consensusXML')"
+    out: "*              Output file (valid formats: 'consensusXML')"
+    algorithm_type: "The normalization algorithm that is applied. 'robust_regression' scales each map by a fator computed from the ratios of non-differential background features (as determined by the ratio_threshold parameter), 'quantile' performs quantile normalization, 'median' scales all maps to the same median intensity, 'median_shift' shifts the median instead of scaling (WARNING: if you have regular, log-normal MS data, 'median_shift' is probably the wrong choice. Use only if you know what you're doing!) (default: 'robust_regression' valid: 'robust_regression', 'median', 'median_shift', 'quantile')"
+    ratio_threshold: "Only for 'robust_regression': the parameter is used to distinguish between non-outliers (ratio_threshold < intensity ratio < 1/ratio_threshold) and outliers. (default: '0.67' min: '0.001' max: '1.0')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

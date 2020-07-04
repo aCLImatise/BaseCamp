@@ -2,16 +2,22 @@ version 1.0
 
 task Slclust {
   input {
-    String jJ
-    String? optsOpts
-    File? fileFileOfPairs
-    String? clustersClusters
+    String? _verbosity_at
+    String? opts
+    File file_of_pairs
+    String clusters
   }
   command <<<
     slclust \
-      ~{optsOpts} \
-      ~{if defined(jJ) then ("-j " +  '"' + jJ + '"') else ""} \
-      ~{fileFileOfPairs} \
-      ~{clustersClusters}
+      ~{opts} \
+      ~{file_of_pairs} \
+      ~{clusters} \
+      ~{if defined(_verbosity_at) then ("-j " +  '"' + _verbosity_at + '"') else ""}
   >>>
+  parameter_meta {
+    _verbosity_at: "[v] verbosity at 'info', 'debug'  "
+    opts: ""
+    file_of_pairs: ""
+    clusters: ""
+  }
 }

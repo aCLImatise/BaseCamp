@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: quast_download_silva.cwl
+id: ../../../../home/ubuntu/BiocondaCli/quast_download_silva.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

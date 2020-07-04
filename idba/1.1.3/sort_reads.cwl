@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sort_reads.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sort_reads.cwl
 inputs:
 - id: paired
   doc: if the reads are paired-end in one file
@@ -21,6 +21,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --min_length
+- id: fq_two_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: tmp_dot_fq
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: tmp_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

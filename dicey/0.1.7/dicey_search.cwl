@@ -1,68 +1,58 @@
 class: CommandLineTool
-id: dicey_search.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dicey_search.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: sequences_fast_a
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: g
+- id: arg_genome_file
   doc: '[ --genome ] arg                   genome file'
   type: boolean
   inputBinding:
     prefix: -g
-- id: i
+- id: arg_primer_config
   doc: '[ --config ] arg (="./src/primer3_config/") primer3 config directory'
   type: boolean
   inputBinding:
     prefix: -i
-- id: o
+- id: arg_output_file
   doc: '[ --outfile ] arg                  output file'
   type: boolean
   inputBinding:
     prefix: -o
-- id: k
+- id: arg_kmer_size
   doc: '[ --kmer ] arg (=15)               k-mer size'
   type: boolean
   inputBinding:
     prefix: -k
-- id: m
+- id: arg_max_number
   doc: '[ --maxmatches ] arg (=10000)      max. number of matches per k-mer'
   type: boolean
   inputBinding:
     prefix: -m
-- id: x
+- id: arg_neighborhood_size
   doc: '[ --maxNeighborhood ] arg (=10000) max. neighborhood size'
   type: boolean
   inputBinding:
     prefix: -x
-- id: d
+- id: arg_neighborhood_distance
   doc: '[ --distance ] arg (=1)            neighborhood distance'
   type: boolean
   inputBinding:
     prefix: -d
-- id: q
+- id: arg_prune_primer
   doc: '[ --pruneprimer ] arg              prune primer threshold'
   type: boolean
   inputBinding:
     prefix: -q
-- id: n
+- id: use_hamming_neighborhood
   doc: '[ --hamming ]                      use hamming neighborhood instead of  edit
     distance'
   type: boolean
   inputBinding:
     prefix: -n
-- id: c
+- id: arg_min_temperature
   doc: '[ --cutTemp ] arg (=45)            min. primer melting temperature'
   type: boolean
   inputBinding:
     prefix: -c
-- id: l
+- id: arg_max_pcr
   doc: '[ --maxProdSize ] arg (=15000)     max. PCR Product size'
   type: boolean
   inputBinding:
@@ -113,6 +103,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --dntp
+- id: sequences_dot_fast_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

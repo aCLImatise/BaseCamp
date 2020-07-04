@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfbreakmulti.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfbreakmulti.cwl
 inputs:
 - id: file
   doc: ''

@@ -1,7 +1,22 @@
 class: CommandLineTool
-id: downloadRefSeq.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/downloadRefSeq.pl.cwl
 inputs:
-- id: db
+- id: var_0
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --DB
+- id: seq_ences_out_directory
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --seqencesOutDirectory
+- id: var_2
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --taxonomyOutDirectory
+- id: name_downloaded_refseq
   doc: 'Name of NCBI database to be downloaded. Default: refseq.'
   type: string
   inputBinding:
@@ -11,7 +26,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: taxonomy_out_directory
+- id: output_directory_taxonomy
   doc: Output directory for taxonomy
   type: string
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcf_combine.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf_combine.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

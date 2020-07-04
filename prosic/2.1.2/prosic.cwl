@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: prosic.cwl
+id: ../../../../home/ubuntu/BiocondaCli/prosic.cwl
 inputs:
-- id: v
+- id: provide_verbose_output
   doc: Provide verbose output.
   type: boolean
   inputBinding:

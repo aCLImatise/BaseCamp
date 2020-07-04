@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: f2py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/f2py.cwl
 inputs:
 - id: help_link
   doc: "[..] List system resources found by system_info.py. See also --link-<resource>\
@@ -18,7 +18,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: v
+- id: print_fpy_version
   doc: Print f2py version ID and exit.
   type: boolean
   inputBinding:
@@ -38,22 +38,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --help-fcompiler
-- id: f77exec
+- id: f_seven_seven_exec
   doc: =           Specify the path to F77 compiler
   type: boolean
   inputBinding:
     prefix: --f77exec
-- id: f90exec
+- id: f_nine_zero_exec
   doc: =           Specify the path to F90 compiler
   type: boolean
   inputBinding:
     prefix: --f90exec
-- id: f77_flags
+- id: f_seven_seven_flags
   doc: =          Specify F77 compiler flags
   type: boolean
   inputBinding:
     prefix: --f77flags
-- id: f90_flags
+- id: f_nine_zero_flags
   doc: =          Specify F90 compiler flags
   type: boolean
   inputBinding:
@@ -83,6 +83,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
+- id: one
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

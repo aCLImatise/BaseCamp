@@ -2,10 +2,13 @@ version 1.0
 
 task CombP {
   input {
-    String? pipelinePipeline
+    String pipeline
   }
   command <<<
     comb-p \
-      ~{pipelinePipeline}
+      ~{pipeline}
   >>>
+  parameter_meta {
+    pipeline: "- run acf, slk, fdr, peaks, region_p in succesion"
+  }
 }

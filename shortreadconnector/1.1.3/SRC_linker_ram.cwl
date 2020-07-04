@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SRC_linker_ram.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SRC_linker_ram.cwl
 inputs:
 - id: nb_cores
   doc: "(1 arg) :    number of cores  [default '0']"

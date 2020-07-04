@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: isONclust_write_fastq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/isONclust_write_fastq.cwl
 inputs:
 - id: clusters
   doc: the file "final_clusters.csv created by isONclust."
@@ -16,7 +16,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --outfolder
-- id: n
+- id: write_clusters_more
   doc: Write out clusters with more or equal than N reads
   type: string
   inputBinding:

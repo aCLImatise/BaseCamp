@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: treeannotator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/treeannotator.cwl
 inputs:
 - id: heights
   doc: option of 'keep' (default), 'median', 'mean' or 'ca'
@@ -36,12 +36,12 @@ inputs:
   type: string
   inputBinding:
     prefix: -lowMem
-- id: hpd2d
+- id: hpd_two_d
   doc: HPD interval to be used for the bivariate traits
   type: string
   inputBinding:
     prefix: -hpd2D
-- id: nohpd2d
+- id: no_hpd_two_d
   doc: calculation of HPD intervals for the bivariate traits
   type: string
   inputBinding:
@@ -52,6 +52,16 @@ inputs:
   type: long
   inputBinding:
     prefix: -noSA
+- id: input_file_name
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_file_name
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

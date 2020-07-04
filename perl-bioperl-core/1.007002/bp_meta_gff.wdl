@@ -2,18 +2,25 @@ version 1.0
 
 task BpMetaGff.pl {
   input {
-    String dD
-    String databaseDatabase
-    String adaptorAdaptor
-    Boolean userUser
-    Boolean passPass
+    String? of__database
+    String? database
+    String? adaptor
+    Boolean? user
+    Boolean? pass
   }
   command <<<
     bp_meta_gff.pl \
-      ~{if defined(dD) then ("-d " +  '"' + dD + '"') else ""} \
-      ~{if defined(databaseDatabase) then ("--database " +  '"' + databaseDatabase + '"') else ""} \
-      ~{if defined(adaptorAdaptor) then ("--adaptor " +  '"' + adaptorAdaptor + '"') else ""} \
-      ~{true="--user" false="" userUser} \
-      ~{true="--pass" false="" passPass}
+      ~{if defined(of__database) then ("-d " +  '"' + of__database + '"') else ""} \
+      ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
+      ~{if defined(adaptor) then ("--adaptor " +  '"' + adaptor + '"') else ""} \
+      ~{true="--user" false="" user} \
+      ~{true="--pass" false="" pass}
   >>>
+  parameter_meta {
+    of__database: "of --database."
+    database: "Mysql database name (default dbi:mysql:test)"
+    adaptor: "Mysql adaptor (default dbi::mysqlopt)"
+    user: "<user>      Username for mysql authentication"
+    pass: "<password>  Password for mysql authentication"
+  }
 }

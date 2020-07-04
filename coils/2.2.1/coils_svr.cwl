@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: coils_svr.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/coils_svr.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: extractreads.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extractreads.cwl
 inputs:
 - id: skip
   doc: skip the N first sequences
@@ -87,6 +87,31 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --uppercase
+- id: created
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: on
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: nine
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: juin
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: two_zero_one_two
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

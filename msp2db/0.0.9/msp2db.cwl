@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: msp2db.cwl
+id: ../../../../home/ubuntu/BiocondaCli/msp2db.cwl
 inputs:
 - id: msp_pth
   doc: Path to the MSP file (or directory of msp files)
@@ -53,6 +53,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ignore_compound_lookup
+- id: prog
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

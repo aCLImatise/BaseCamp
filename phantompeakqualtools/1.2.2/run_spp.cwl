@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: run_spp.R.cwl
-inputs:
-- id: r_script
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: run_sp_pr
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
+id: ../../../../home/ubuntu/BiocondaCli/run_spp.R.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

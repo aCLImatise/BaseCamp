@@ -1,32 +1,17 @@
 class: CommandLineTool
-id: hmmalign2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hmmalign2.cwl
 inputs:
-- id: hmm_align
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: hmm_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: sequence_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: m
+- id: only_print_symbols
   doc: ': only print symbols aligned to match states'
   type: boolean
   inputBinding:
     prefix: -m
-- id: o
+- id: save_alignment_file
   doc: ': save alignment in file <f>'
   type: string
   inputBinding:
     prefix: -o
-- id: q
+- id: quiet_suppress_verbose
   doc: ': quiet - suppress verbose banner'
   type: boolean
   inputBinding:
@@ -57,6 +42,26 @@ inputs:
   type: string
   inputBinding:
     prefix: --withali
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: hmm_align
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: hmm_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: sequence_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

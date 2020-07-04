@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ExpressBetaDiversity.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ExpressBetaDiversity.cwl
 inputs:
 - id: list_calc
   doc: List all supported calculators.

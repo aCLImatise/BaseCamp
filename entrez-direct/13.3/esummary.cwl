@@ -1,54 +1,6 @@
 class: CommandLineTool
-id: esummary.cwl
+id: ../../../../home/ubuntu/BiocondaCli/esummary.cwl
 inputs:
-- id: abstract
-  doc: Abstract
-  type: string
-  inputBinding:
-    position: 0
-- id: bioc
-  doc: PubTator Central BioC XML
-  type: string
-  inputBinding:
-    position: 1
-- id: medline
-  doc: MEDLINE
-  type: string
-  inputBinding:
-    position: 2
-- id: native
-  doc: asn.1    Pubmed-entry ASN.1
-  type: string
-  inputBinding:
-    position: 3
-- id: native
-  doc: xml      PubmedArticleSet XML
-  type: string
-  inputBinding:
-    position: 4
-- id: snp
-  doc: json                        Reference SNP Report
-  type: string
-  inputBinding:
-    position: 0
-- id: sra
-  doc: native             xml      EXPERIMENT_PACKAGE_SET XML runinfo            xml      SraRunInfo
-    XML
-  type: string
-  inputBinding:
-    position: 1
-- id: structure
-  doc: mmdb                        Ncbi-mime-asn1 strucseq ASN.1 native                      MMDB
-    Report native             xml      RecordSet XML
-  type: string
-  inputBinding:
-    position: 2
-- id: taxonomy
-  doc: native                      Taxonomy List native             xml      TaxaSet
-    XML
-  type: string
-  inputBinding:
-    position: 3
 - id: format
   doc: Format of record or report
   type: boolean
@@ -139,6 +91,33 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -json
+- id: abstract
+  doc: Abstract
+  type: string
+  inputBinding:
+    position: 0
+- id: bioc
+  doc: PubTator Central BioC XML
+  type: string
+  inputBinding:
+    position: 1
+- id: medline
+  doc: MEDLINE
+  type: string
+  inputBinding:
+    position: 2
+- id: structure
+  doc: mmdb                        Ncbi-mime-asn1 strucseq ASN.1 native                      MMDB
+    Report native             xml      RecordSet XML
+  type: string
+  inputBinding:
+    position: 0
+- id: taxonomy
+  doc: native                      Taxonomy List native             xml      TaxaSet
+    XML
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

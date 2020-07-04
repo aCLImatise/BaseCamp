@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: apoc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/apoc.cwl
 inputs:
-- id: pdbfile1
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: pdbfile2
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: block
   doc: Load a block of concatenated pdb files.
   type: File
@@ -31,36 +21,46 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -sod
-- id: v
+- id: alignment_printout_none
   doc: 'Alignment printout: 0 - none, 1 - concise, 2 - detailed (default).'
   type: boolean
   inputBinding:
     prefix: -v
-- id: m
+- id: similarity_scoring_metric
   doc: 'Similarity scoring metric:  tm (TM-score), ps (PS-score, default).'
   type: string
   inputBinding:
     prefix: -m
-- id: l
+- id: normalize_score_fixed
   doc: Normalize the score with a fixed length specified by num.
   type: string
   inputBinding:
     prefix: -L
-- id: a
+- id: normalize_score_average
   doc: Normalize the score by the average size of two structures.
   type: boolean
   inputBinding:
     prefix: -a
-- id: b
+- id: normalize_score_minimum
   doc: Normalize the score by the minimum size of two structures.
   type: boolean
   inputBinding:
     prefix: -b
-- id: c
+- id: normalize_score_maximum
   doc: Normalize the score by the maximum size of two structures.
   type: boolean
   inputBinding:
     prefix: -c
+- id: pdb_file_one
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: pdb_file_two
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

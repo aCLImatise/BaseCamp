@@ -1,12 +1,24 @@
 class: CommandLineTool
-id: remove_adapter.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/remove_adapter.py.cwl
 inputs:
-- id: output_1
+- id: input_one
+  doc: The input FASTQ file containing the reads from 5' fragment end (i.e. 5'-3'
+    orientation for read 1 and 3'-5' for read 2 which needs to be reversed- complemented).
+  type: string
+  inputBinding:
+    prefix: --input_1
+- id: input_two
+  doc: The input FASTQ file containing the reads from 3' fragment end (i.e. 5'-3'
+    orientation for read 1 and 3'-5' for read 2 which needs to be reversed- complemented).
+  type: string
+  inputBinding:
+    prefix: --input_2
+- id: output_one
   doc: The output FASTQ file where the reads are trimmed.
   type: string
   inputBinding:
     prefix: --output_1
-- id: output_2
+- id: output_two
   doc: The output FASTQ file where the reads are trimmed.
   type: string
   inputBinding:

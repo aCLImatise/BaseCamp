@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csvtk_plot_box.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csvtk_plot_box.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: box_width
   doc: box width
   type: double
@@ -167,6 +162,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --ylab
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

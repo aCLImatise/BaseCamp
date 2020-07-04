@@ -2,10 +2,13 @@ version 1.0
 
 task PositionDB {
   input {
-    String thisThis
+    String? args
   }
   command <<<
     positionDB \
-      ~{if defined(thisThis) then ("-- This " +  '"' + thisThis + '"') else ""}
+      ~{args}
   >>>
+  parameter_meta {
+    args: ""
+  }
 }

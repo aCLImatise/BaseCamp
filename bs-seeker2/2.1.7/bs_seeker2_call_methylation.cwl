@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bs_seeker2_call_methylation.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bs_seeker2_call_methylation.py.cwl
 inputs:
 - id: input
   doc: BAM output from bs_seeker2-align.py
@@ -8,7 +8,7 @@ inputs:
     prefix: --input
 - id: db
   doc: 'Path to the reference genome library (generated in preprocessing genome) [Default:
-    /tmp/tmp6_ed8_xm/bin/bs_utils/reference_genomes]'
+    /tmp/tmp5qr94fea/bin/bs_utils/reference_genomes]'
   type: string
   inputBinding:
     prefix: --db

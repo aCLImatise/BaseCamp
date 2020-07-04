@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: seqmap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqmap.cwl
 inputs:
 - id: number_of_mismatches
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: probe_fast_a_filename
+- id: probe_fast_a_file_name
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: transcript_fast_a_filename
+- id: transcript_fast_a_file_name
   doc: ''
   type: string
   inputBinding:

@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: touch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/touch.cwl
 inputs:
-- id: a
+- id: change_only_access_time
   doc: change only the access time
   type: boolean
   inputBinding:
@@ -16,12 +16,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --date
-- id: f
+- id: ignored
   doc: (ignored)
   type: boolean
   inputBinding:
     prefix: -f
-- id: m
+- id: change_only_modification_time
   doc: change only the modification time
   type: boolean
   inputBinding:
@@ -31,7 +31,7 @@ inputs:
   type: File
   inputBinding:
     prefix: --reference
-- id: t
+- id: use_instead_current
   doc: use [[CC]YY]MMDDhhmm[.ss] instead of current time
   type: string
   inputBinding:
@@ -42,6 +42,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --time
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

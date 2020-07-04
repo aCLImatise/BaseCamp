@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sepdRangerfusion.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sepdRangerfusion.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

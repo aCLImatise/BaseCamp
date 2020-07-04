@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: stride_assemble.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stride_assemble.cwl
 inputs:
 - id: read_length
   doc: original read length
   type: string
   inputBinding:
     prefix: --read-length
-- id: i
+- id: _insertsize_insert
   doc: ',  --insert-size               insert size of the paired-end library'
   type: boolean
   inputBinding:
@@ -68,6 +68,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --max-edges
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

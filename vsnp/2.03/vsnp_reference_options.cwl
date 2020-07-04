@@ -1,21 +1,21 @@
 class: CommandLineTool
-id: vsnp_reference_options.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vsnp_reference_options.py.cwl
 inputs:
-- id: prog
-  doc: ''
+- id: select_ref
+  doc: 'Required: single read, R1 when Illumina read'
   type: string
   inputBinding:
-    position: 0
-- id: s
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -s
+    prefix: --select_ref
 - id: v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
+- id: prog
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

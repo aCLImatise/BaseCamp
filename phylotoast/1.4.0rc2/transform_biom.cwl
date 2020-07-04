@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: transform_biom.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/transform_biom.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

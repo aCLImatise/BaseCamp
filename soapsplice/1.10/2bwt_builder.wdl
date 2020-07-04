@@ -2,16 +2,22 @@ version 1.0
 
 task 2bwtBuilder {
   input {
-    String? sequenceSequenceFile
-    String? outputOutput
-    String? indexIndex
-    String? prefixPrefix
+    String sequence_file
+    String? var_output
+    String? index
+    String? prefix
   }
   command <<<
     2bwt-builder \
-      ~{sequenceSequenceFile} \
-      ~{outputOutput} \
-      ~{indexIndex} \
-      ~{prefixPrefix}
+      ~{sequence_file} \
+      ~{var_output} \
+      ~{index} \
+      ~{prefix}
   >>>
+  parameter_meta {
+    sequence_file: ""
+    var_output: ""
+    index: ""
+    prefix: ""
+  }
 }

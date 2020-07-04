@@ -1,43 +1,43 @@
 class: CommandLineTool
-id: kaiju_addTaxonNames.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kaiju_addTaxonNames.cwl
 inputs:
-- id: i
+- id: name_input_file
   doc: Name of input file
   type: File
   inputBinding:
     prefix: -i
-- id: o
+- id: name_output_file
   doc: Name of output file. If not specified, output will be printed to STDOUT.
   type: File
   inputBinding:
     prefix: -o
-- id: t
+- id: name_nodesdmp_file
   doc: Name of nodes.dmp file
   type: File
   inputBinding:
     prefix: -t
-- id: n
+- id: name_namesdmp_file
   doc: Name of names.dmp file.
   type: File
   inputBinding:
     prefix: -n
-- id: u
+- id: unclassified_reads_contained
   doc: Unclassified reads are not contained in the output.
   type: boolean
   inputBinding:
     prefix: -u
-- id: p
+- id: print_full_taxon
   doc: Print full taxon path.
   type: boolean
   inputBinding:
     prefix: -p
-- id: r
+- id: print_taxon_path
   doc: 'Print taxon path containing only ranks specified by a comma-separated list,
     for example: superkingdom,phylum,class,order,family,genus,species'
   type: boolean
   inputBinding:
     prefix: -r
-- id: v
+- id: enable_verbose_output
   doc: Enable verbose output.
   type: boolean
   inputBinding:

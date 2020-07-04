@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: locarna_motif_scan.cwl
+id: ../../../../home/ubuntu/BiocondaCli/locarna_motif_scan.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

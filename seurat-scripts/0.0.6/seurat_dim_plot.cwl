@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: seurat_dim_plot.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seurat_dim_plot.R.cwl
 inputs:
 - id: input_object_file
   doc: File name in which a serialized R matrix object may be found.
@@ -18,12 +18,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --reduction-use
-- id: dim_1
+- id: dim_one
   doc: Dimension for x-axis (default 1)
   type: string
   inputBinding:
     prefix: --dim-1
-- id: dim_2
+- id: dim_two
   doc: Dimension for y-axis (default 2)
   type: string
   inputBinding:

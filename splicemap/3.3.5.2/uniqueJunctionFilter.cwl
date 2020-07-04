@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: uniqueJunctionFilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/uniqueJunctionFilter.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: splitMSE.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/splitMSE.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: hansel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hansel.cwl
 inputs:
-- id: f
-  doc: Input genome FASTA/FASTQ files (can be Gzipped)
-  type: string
-  inputBinding:
-    position: 0
 - id: scheme
   doc: 'Scheme to use for subtyping (built-in: "heidelberg", "enteritidis", "typhi",
     "typhimurium", "tb_lineage"; OR user-specified: /path/to/user/scheme)'
@@ -23,13 +18,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --scheme-metadata
-- id: p
+- id: reversereads__pairedreads
   doc: reverse_reads, --paired-reads forward_reads reverse_reads FASTQ paired-end
     reads
   type: string
   inputBinding:
     prefix: -p
-- id: i
+- id: genomename__inputfastagenomename
   doc: genome_name, --input-fasta-genome-name fasta_path genome_name input fasta file
     path AND genome name
   type: string
@@ -120,6 +115,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: input_genome_fastafastq
+  doc: Input genome FASTA/FASTQ files (can be Gzipped)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

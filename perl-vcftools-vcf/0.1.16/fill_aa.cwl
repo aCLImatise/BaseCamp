@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: fill_aa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fill_aa.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: in_vcf
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: out_vcf
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: ancestral_allele
   doc: Prefix to ancestral allele chromosome files.
   type: string
@@ -26,6 +11,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --type
+- id: in_dot_vcf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: out_dot_vcf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

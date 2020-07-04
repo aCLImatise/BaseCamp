@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: extract_reads.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extract_reads.cwl
 inputs:
-- id: o
+- id: output_results_given
   doc: ': Output results in the given file [default=stdout]'
   type: string
   inputBinding:
     prefix: -o
-- id: v
+- id: prints_version_number
   doc: ': prints the version number.'
   type: boolean
   inputBinding:

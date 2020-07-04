@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: gdsctools_anova.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gdsctools_anova.cwl
 inputs:
-- id: input_ic50
+- id: input_ic_five_zero
   doc: A file in TSV format with IC50s. First column should be the COSMIC identifiers
     Following columns contain the IC50s for a set of drugs. The header must be COSMIC_ID,
     Drug_1_IC50, Drug_2_IC50, ...
@@ -106,6 +106,71 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-html
+- id: one_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: analyse
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: all
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: ic_five_zeros
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: data
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
+- id: contained
+  doc: ''
+  type: string
+  inputBinding:
+    position: 5
+- id: in
+  doc: ''
+  type: string
+  inputBinding:
+    position: 6
+- id: filename
+  doc: ''
+  type: File
+  inputBinding:
+    position: 7
+- id: var_27
+  doc: ''
+  type: string
+  inputBinding:
+    position: 8
+- id: open
+  doc: ''
+  type: string
+  inputBinding:
+    position: 9
+- id: var_29
+  doc: ''
+  type: string
+  inputBinding:
+    position: 10
+- id: html
+  doc: ''
+  type: string
+  inputBinding:
+    position: 11
+- id: page
+  doc: ''
+  type: string
+  inputBinding:
+    position: 12
 outputs: []
 cwlVersion: v1.1
 baseCommand:

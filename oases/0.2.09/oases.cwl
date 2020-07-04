@@ -1,30 +1,25 @@
 class: CommandLineTool
-id: oases.cwl
+id: ../../../../home/ubuntu/BiocondaCli/oases.cwl
 inputs:
-- id: directory
-  doc: ': working directory name'
-  type: Directory
-  inputBinding:
-    position: 0
 - id: unused_reads
-  doc: '<yes|no>          : export unused reads in UnusedReads.fa file (default: no)'
-  type: boolean
+  doc: ': export unused reads in UnusedReads.fa file (default: no)'
+  type: string
   inputBinding:
     prefix: -unused_reads
 - id: amos_file
-  doc: '<yes|no>             : export assembly to AMOS file (default: no export)'
-  type: boolean
+  doc: ': export assembly to AMOS file (default: no export)'
+  type: string
   inputBinding:
     prefix: -amos_file
 - id: alignments
-  doc: '<yes|no>            : export a summary of contig alignment to the reference
-    sequences (default: no)'
-  type: boolean
+  doc: ': export a summary of contig alignment to the reference sequences (default:
+    no)'
+  type: string
   inputBinding:
     prefix: -alignments
 - id: scaffolding
-  doc: '<yes|no>           : Allow gaps in transcripts (default: no)'
-  type: boolean
+  doc: ': Allow gaps in transcripts (default: no)'
+  type: string
   inputBinding:
     prefix: -scaffolding
 - id: degree_cut_off
@@ -33,6 +28,11 @@ inputs:
   type: long
   inputBinding:
     prefix: -degree_cutoff
+- id: directory
+  doc: ': working directory name'
+  type: Directory
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

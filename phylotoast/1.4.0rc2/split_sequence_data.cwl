@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: split_sequence_data.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/split_sequence_data.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

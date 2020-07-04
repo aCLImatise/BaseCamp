@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: fastBlockSearch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastBlockSearch.cwl
 inputs:
 - id: fast_blocks_search
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: seq_sfa
+- id: seqs_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: fam_pr_fl
+- id: fam_dot_pr_fl
   doc: ''
   type: string
   inputBinding:

@@ -2,22 +2,28 @@ version 1.0
 
 task BcftoolsReheader {
   input {
-    File faiFai
-    File headerHeader
-    File outputOutput
-    File samplesSamples
-    Int threadsThreads
-    String? optionsOptions
-    String? inInVcfGz
+    File? fai
+    File? header
+    File? write_output_file
+    File? samples
+    Int? threads
+    String in_dot_vcf_do_tgz
   }
   command <<<
     bcftools reheader \
-      ~{optionsOptions} \
-      ~{if defined(faiFai) then ("--fai " +  '"' + faiFai + '"') else ""} \
-      ~{if defined(headerHeader) then ("--header " +  '"' + headerHeader + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(samplesSamples) then ("--samples " +  '"' + samplesSamples + '"') else ""} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{inInVcfGz}
+      ~{in_dot_vcf_do_tgz} \
+      ~{if defined(fai) then ("--fai " +  '"' + fai + '"') else ""} \
+      ~{if defined(header) then ("--header " +  '"' + header + '"') else ""} \
+      ~{if defined(write_output_file) then ("--output " +  '"' + write_output_file + '"') else ""} \
+      ~{if defined(samples) then ("--samples " +  '"' + samples + '"') else ""} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  parameter_meta {
+    fai: "update sequences and their lengths from the .fai file"
+    header: "new header"
+    write_output_file: "write output to a file [standard output]"
+    samples: "new sample names"
+    threads: "use multithreading with <int> worker threads (BCF only) [0]"
+    in_dot_vcf_do_tgz: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sickle.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sickle.cwl
 inputs:
 - id: command
   doc: ''

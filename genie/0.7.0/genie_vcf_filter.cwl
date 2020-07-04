@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: genie_vcf_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genie_vcf_filter.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: file_path
   doc: a VCF file (*require)
   type: string
@@ -31,6 +26,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

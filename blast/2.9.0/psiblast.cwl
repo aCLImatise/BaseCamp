@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: psiblast.cwl
+id: ../../../../home/ubuntu/BiocondaCli/psiblast.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

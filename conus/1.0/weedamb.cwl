@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: weedamb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/weedamb.cwl
 inputs:
 - id: seq_file_in
   doc: ''

@@ -2,40 +2,58 @@ version 1.0
 
 task KatPlotSpectraCn {
   input {
-    String outputOutput
-    String outputOutputType
-    String titleTitle
-    String xXLabel
-    String yYLabel
-    String xXMax
-    String yYMax
-    String widthWidth
-    String heightHeight
-    Int minMinAssemblyFrequency
-    Int maxMaxDup
-    String coverageCoverageList
-    Boolean noNoCumulative
-    String dpiDpi
-    Boolean verboseVerbose
-    String? matrixMatrixFile
+    String? path_output_file
+    String? output_type
+    String? title
+    String? x_label
+    String? y_label
+    String? x_max
+    String? y_max
+    String? width
+    String? height
+    Int? min_assembly_frequency
+    Int? max_dup
+    String? coverage_list
+    Boolean? no_cumulative
+    String? dpi
+    Boolean? verbose
+    String matrix_file
   }
   command <<<
     kat_plot_spectra_cn \
-      ~{matrixMatrixFile} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(outputOutputType) then ("--output_type " +  '"' + outputOutputType + '"') else ""} \
-      ~{if defined(titleTitle) then ("--title " +  '"' + titleTitle + '"') else ""} \
-      ~{if defined(xXLabel) then ("--x_label " +  '"' + xXLabel + '"') else ""} \
-      ~{if defined(yYLabel) then ("--y_label " +  '"' + yYLabel + '"') else ""} \
-      ~{if defined(xXMax) then ("--x_max " +  '"' + xXMax + '"') else ""} \
-      ~{if defined(yYMax) then ("--y_max " +  '"' + yYMax + '"') else ""} \
-      ~{if defined(widthWidth) then ("--width " +  '"' + widthWidth + '"') else ""} \
-      ~{if defined(heightHeight) then ("--height " +  '"' + heightHeight + '"') else ""} \
-      ~{if defined(minMinAssemblyFrequency) then ("--min_assembly_frequency " +  '"' + minMinAssemblyFrequency + '"') else ""} \
-      ~{if defined(maxMaxDup) then ("--max_dup " +  '"' + maxMaxDup + '"') else ""} \
-      ~{if defined(coverageCoverageList) then ("--coverage_list " +  '"' + coverageCoverageList + '"') else ""} \
-      ~{true="--no_cumulative" false="" noNoCumulative} \
-      ~{if defined(dpiDpi) then ("--dpi " +  '"' + dpiDpi + '"') else ""} \
-      ~{true="--verbose" false="" verboseVerbose}
+      ~{matrix_file} \
+      ~{if defined(path_output_file) then ("--output " +  '"' + path_output_file + '"') else ""} \
+      ~{if defined(output_type) then ("--output_type " +  '"' + output_type + '"') else ""} \
+      ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
+      ~{if defined(x_label) then ("--x_label " +  '"' + x_label + '"') else ""} \
+      ~{if defined(y_label) then ("--y_label " +  '"' + y_label + '"') else ""} \
+      ~{if defined(x_max) then ("--x_max " +  '"' + x_max + '"') else ""} \
+      ~{if defined(y_max) then ("--y_max " +  '"' + y_max + '"') else ""} \
+      ~{if defined(width) then ("--width " +  '"' + width + '"') else ""} \
+      ~{if defined(height) then ("--height " +  '"' + height + '"') else ""} \
+      ~{if defined(min_assembly_frequency) then ("--min_assembly_frequency " +  '"' + min_assembly_frequency + '"') else ""} \
+      ~{if defined(max_dup) then ("--max_dup " +  '"' + max_dup + '"') else ""} \
+      ~{if defined(coverage_list) then ("--coverage_list " +  '"' + coverage_list + '"') else ""} \
+      ~{true="--no_cumulative" false="" no_cumulative} \
+      ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    path_output_file: "The path to the output file."
+    output_type: "The plot file type to create (default is based on given output name)."
+    title: "Title for plot"
+    x_label: "Label for x-axis"
+    y_label: "Label for y-axis"
+    x_max: "Maximum value for x-axis"
+    y_max: "Maximum value for y-axis"
+    width: "Width of canvas"
+    height: "Height of canvas"
+    min_assembly_frequency: "Display K-mers that appear less than n times in the genome"
+    max_dup: "Maximum duplication level to show in plots"
+    coverage_list: "Comma separated string listing coverage levels to show in plot (overrides -i and -u)"
+    no_cumulative: "Do not combine remaining copy numbers in matrix"
+    dpi: "Resolution in dots per inch of output graphic."
+    verbose: "Print extra information"
+    matrix_file: "The input matrix file from KAT"
+  }
 }

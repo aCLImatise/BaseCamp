@@ -2,10 +2,16 @@ version 1.0
 
 task MyPrintDefaults {
   input {
-    Boolean verboseVerbose
+    Boolean? verbose
+    String groups
   }
   command <<<
     my_print_defaults \
-      ~{true="--verbose" false="" verboseVerbose}
+      ~{groups} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    verbose: "Increase the output level"
+    groups: ""
+  }
 }

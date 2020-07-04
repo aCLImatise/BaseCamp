@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: protpred_Gromacs_Mono.cwl
+id: ../../../../home/ubuntu/BiocondaCli/protpred_Gromacs_Mono.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

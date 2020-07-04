@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hapcmp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hapcmp.cwl
 inputs:
 - id: input_regions
   doc: The input bed file specifying haplotype block  regions (use - for stdin).
@@ -11,29 +11,29 @@ inputs:
   type: string
   inputBinding:
     prefix: --input-vcfs
-- id: b
+- id: arg_output_block
   doc: '[ --output-bed ] arg       Output block results as bed files (default is  to
     output to stdout).'
   type: boolean
   inputBinding:
     prefix: -b
-- id: e
+- id: arg_output_failure
   doc: '[ --output-errors ] arg    Output failure information.'
   type: boolean
   inputBinding:
     prefix: -e
-- id: d
+- id: arg_shared_variants
   doc: '[ --output-diffs ] arg     Output shared and different variants to a mJSON
     file (one json record per line, default is to  not output diffs).'
   type: boolean
   inputBinding:
     prefix: -d
-- id: r
+- id: arg_reference_fasta
   doc: '[ --reference ] arg        The reference fasta file.'
   type: boolean
   inputBinding:
     prefix: -r
-- id: n
+- id: arg_maximum_number_enumerate
   doc: '[ --max-n-haplotypes ] arg Maximum number of haplotypes to enumerate.'
   type: boolean
   inputBinding:
@@ -53,12 +53,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --progress-seconds
-- id: l
+- id: arg_maximum_number_process
   doc: '[ --limit ] arg            Maximum number of haplotype blocks to process.'
   type: boolean
   inputBinding:
     prefix: -l
-- id: f
+- id: arg_apply_filtering
   doc: '[ --apply-filters ] arg    Apply filtering in VCF.'
   type: boolean
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: qtip.cwl
+id: ../../../../home/ubuntu/BiocondaCli/qtip.cwl
 inputs:
 - id: ref
   doc: 'FASTA file, or many FASTAs separated by spaces, containing reference genome
@@ -7,19 +7,19 @@ inputs:
   type: File[]
   inputBinding:
     prefix: --ref
-- id: u
+- id: unpaired_read_name
   doc: 'Unpaired read FASTQ file name, or many FASTQ file names separated by spaces
     (default: None)'
   type: File[]
   inputBinding:
     prefix: --U
-- id: m1
+- id: m_one
   doc: 'Mate 1 FASTQ file name, or many FASTQ file names separated by spaces; must
     be specified in same order as --m2 (default: None)'
   type: File[]
   inputBinding:
     prefix: --m1
-- id: m2
+- id: m_two
   doc: 'Mate 2 FASTQ file name, or many FASTQ file names separated by spaces; must
     be specified in same order as --m1 (default: None)'
   type: File[]
@@ -92,7 +92,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --wiggle
-- id: bt2_exe
+- id: bt_two_exe
   doc: 'Path to Bowtie 2 aligner exe, "bowtie2" (default: None)'
   type: File
   inputBinding:

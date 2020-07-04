@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: scanpy_cli.cwl
-inputs:
-- id: debug
-  doc: Print debug information
-  type: boolean
-  inputBinding:
-    prefix: --debug
-- id: verbosity
-  doc: Set scanpy verbosity
-  type: long
-  inputBinding:
-    prefix: --verbosity
+id: ../../../../home/ubuntu/BiocondaCli/scanpy_cli.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

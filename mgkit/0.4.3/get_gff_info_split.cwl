@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_gff_info_split.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_gff_info_split.cwl
 inputs:
 - id: prefix
   doc: 'Prefix for the file name in output  [default: split]'
@@ -16,6 +16,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gzip
+- id: gff_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

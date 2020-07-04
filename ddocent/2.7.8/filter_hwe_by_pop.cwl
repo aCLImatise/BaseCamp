@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filter_hwe_by_pop.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_hwe_by_pop.pl.cwl
 inputs:
 - id: vcf_file
   doc: VCF input file

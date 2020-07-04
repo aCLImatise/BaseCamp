@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dottup.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dottup.cwl
 inputs:
 - id: word_size
   doc: integer    [10] Word size (Integer 2 or more)

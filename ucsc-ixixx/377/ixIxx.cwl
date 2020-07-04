@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: ixIxx.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ixIxx.cwl
 inputs:
-- id: in_text
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: out_ix
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: out_ix_x
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: prefix_size
   doc: Size of prefix to index on in ixx.  Default is 5.
   type: string
@@ -26,6 +11,21 @@ inputs:
   type: string
   inputBinding:
     prefix: -binSize
+- id: in_dot_text
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: out_do_tix
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: out_do_tixx
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

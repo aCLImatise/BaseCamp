@@ -1,11 +1,11 @@
 class: CommandLineTool
-id: crux_pipeline.cwl
+id: ../../../../home/ubuntu/BiocondaCli/crux_pipeline.cwl
 inputs:
-- id: gap_tolerance
-  doc: . Default = 3.
-  type: boolean
+- id: mass_spectra
+  doc: ''
+  type: string
   inputBinding:
-    prefix: --gap-tolerance
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

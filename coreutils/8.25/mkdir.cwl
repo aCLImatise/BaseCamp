@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mkdir.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mkdir.cwl
 inputs:
 - id: mode
   doc: set file mode (as in chmod), not a=rwx - umask
@@ -16,7 +16,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: z
+- id: set_selinux_context
   doc: set SELinux security context of each created directory to the default type
   type: boolean
   inputBinding:
@@ -27,6 +27,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --context
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

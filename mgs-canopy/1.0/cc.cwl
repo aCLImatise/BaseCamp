@@ -1,33 +1,33 @@
 class: CommandLineTool
-id: cc.bin.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cc.bin.cwl
 inputs:
-- id: i
+- id: arg_path_input
   doc: '[ --input_file_path ] arg          Path to the input file'
   type: boolean
   inputBinding:
     prefix: -i
-- id: o
+- id: arg_path_clusters
   doc: '[ --output_clusters_file_path ] arg Path to file to which clusters will be  written'
   type: boolean
   inputBinding:
     prefix: -o
-- id: c
+- id: arg_path_cluster
   doc: '[ --output_cluster_profiles_file ] arg Path to file to which cluster profiles  will
     be written'
   type: boolean
   inputBinding:
     prefix: -c
-- id: p
+- id: arg_cag_prefix
   doc: '[ --cluster_name_prefix ] arg (=CAG) Prefix prepended to output cluster  names'
   type: boolean
   inputBinding:
     prefix: -p
-- id: n
+- id: arg_important_number
   doc: '[ --num_threads ] arg (=4)         IMPORTANT! Number of cpu threads to  use.'
   type: boolean
   inputBinding:
     prefix: -n
-- id: v
+- id: arg_info_control
   doc: '[ --verbosity ] arg (=info)        Control how much information should be  printed
     to the screen. Available levels according to their verbosity: error,  progress,
     warn, info, debug, debug1.'
@@ -123,13 +123,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --not_processed_points_file
-- id: t
+- id: print_wall_clock
   doc: "[ --print_time_statistics ]        Print wall clock time profiles of  various\
     \ analysis parts. This is not  aggressive and won't increase  compuatation time."
   type: boolean
   inputBinding:
     prefix: -t
-- id: b
+- id: show_progress_bar
   doc: "[ --show_progress_bar ]            Show progress bar, nice if output is  printed\
     \ to console, don't use if you  are redirecting to a file. Verbosity  must be\
     \ set to at least PROGRESS for it to have an effect."

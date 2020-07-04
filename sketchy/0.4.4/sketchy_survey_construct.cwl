@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sketchy_survey_construct.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sketchy_survey_construct.cwl
 inputs:
 - id: directory
   doc: Input directory with collected output from Pathfinder Survey  [required]

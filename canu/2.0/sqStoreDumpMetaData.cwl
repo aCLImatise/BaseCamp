@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: sqStoreDumpMetaData.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sqStoreDumpMetaData.cwl
 inputs:
-- id: s
+- id: dump_reads_from
   doc: dump reads from 'seqStore'
   type: string
   inputBinding:
@@ -38,7 +38,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lengths
-- id: r
+- id: output_readslibraies_end
   doc: '[-end]     output reads/libraies from `bgn` to `end`, inclusive'
   type: string
   inputBinding:
@@ -63,6 +63,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -compressed
+- id: p
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

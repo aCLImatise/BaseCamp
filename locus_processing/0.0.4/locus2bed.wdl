@@ -2,16 +2,19 @@ version 1.0
 
 task Locus2bed {
   input {
-    File inputInput
-    Directory inputInputDirectory
-    String prefixPrefix
-    String? optionsOptions
+    File? path_input_file
+    Directory? input_directory
+    String? prefix
   }
   command <<<
     locus2bed \
-      ~{optionsOptions} \
-      ~{if defined(inputInput) then ("--input " +  '"' + inputInput + '"') else ""} \
-      ~{if defined(inputInputDirectory) then ("--input-directory " +  '"' + inputInputDirectory + '"') else ""} \
-      ~{if defined(prefixPrefix) then ("--prefix " +  '"' + prefixPrefix + '"') else ""}
+      ~{if defined(path_input_file) then ("--input " +  '"' + path_input_file + '"') else ""} \
+      ~{if defined(input_directory) then ("--input-directory " +  '"' + input_directory + '"') else ""} \
+      ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""}
   >>>
+  parameter_meta {
+    path_input_file: "Path to input locus file"
+    input_directory: "Path to directory containing locus files"
+    prefix: "Prefix to region names"
+  }
 }

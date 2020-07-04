@@ -2,10 +2,13 @@ version 1.0
 
 task TranslateDNA2AAFASTA {
   input {
-    String? translateTranslate
+    String translate
   }
   command <<<
     translateDNA2AA-FASTA \
-      ~{translateTranslate}
+      ~{translate}
   >>>
+  parameter_meta {
+    translate: "Input File:  --help"
+  }
 }

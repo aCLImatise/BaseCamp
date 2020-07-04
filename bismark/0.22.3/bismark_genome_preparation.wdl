@@ -2,12 +2,13 @@ version 1.0
 
 task BismarkGenomePreparation {
   input {
-    Boolean nucleotideNucleotideCoverage
-    String? argumentsArguments
+    String arguments
   }
   command <<<
     bismark_genome_preparation \
-      ~{argumentsArguments} \
-      ~{true="--nucleotide_coverage" false="" nucleotideNucleotideCoverage}
+      ~{arguments}
   >>>
+  parameter_meta {
+    arguments: ""
+  }
 }

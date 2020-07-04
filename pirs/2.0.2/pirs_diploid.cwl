@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: pirs_diploid.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pirs_diploid.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: reference
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: snp_rate
   doc: 'A floating-point number in the interval [0, 1] that specifies the heterozygous
     SNP rate.  Default: 0.001'
@@ -71,11 +61,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: o
-  doc: '>pirs.out 2>pirs.err'
+- id: options_dot_dot_dot
+  doc: ''
   type: string
   inputBinding:
-    prefix: -o
+    position: 0
+- id: reference
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: metaWRAP_annotate_bins.cwl
+id: ../../../../home/ubuntu/BiocondaCli/metaWRAP_annotate_bins.cwl
 inputs:
-- id: o
+- id: output_directory
   doc: output directory
   type: string
   inputBinding:
     prefix: -o
-- id: t
+- id: number_threads_default
   doc: number of threads (default=1)
   type: long
   inputBinding:
     prefix: -t
-- id: b
+- id: folder_metagenomic_bins
   doc: folder with metagenomic bins in fasta format
   type: string
   inputBinding:

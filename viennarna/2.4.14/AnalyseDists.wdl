@@ -2,14 +2,19 @@ version 1.0
 
 task AnalyseDists {
   input {
-    Boolean xX
-    String? analyseAnalyseDist
-    String? swnSwn
+    Boolean? x
+    String analyse_dist
+    String? swn
   }
   command <<<
     AnalyseDists \
-      ~{analyseAnalyseDist} \
-      ~{true="-X" false="" xX} \
-      ~{swnSwn}
+      ~{analyse_dist} \
+      ~{swn} \
+      ~{true="-X" false="" x}
   >>>
+  parameter_meta {
+    x: ""
+    analyse_dist: ""
+    swn: ""
+  }
 }

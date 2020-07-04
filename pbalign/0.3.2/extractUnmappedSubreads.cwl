@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: extractUnmappedSubreads.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extractUnmappedSubreads.py.cwl
 inputs:
 - id: verbose
   doc: 'Set the verbosity level (default: None)'
@@ -16,6 +16,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
+- id: fast_a
+  doc: a fasta file containing all subreads.
+  type: string
+  inputBinding:
+    position: 0
+- id: cmp_doth_five
+  doc: input cmp.h5 files.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: umis.cwl
+id: ../../../../home/ubuntu/BiocondaCli/umis.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

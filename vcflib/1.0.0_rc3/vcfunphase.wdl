@@ -2,10 +2,13 @@ version 1.0
 
 task Vcfunphase {
   input {
-    String? vcfVcfFile
+    String vcf_file
   }
   command <<<
     vcfunphase \
-      ~{vcfVcfFile}
+      ~{vcf_file}
   >>>
+  parameter_meta {
+    vcf_file: ""
+  }
 }

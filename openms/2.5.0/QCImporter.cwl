@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: QCImporter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/QCImporter.cwl
 inputs:
 - id: in
   doc: "Input qcml file (valid formats: 'qcML')"
@@ -17,8 +17,8 @@ inputs:
 - id: mapping
   doc: "*   The mapping of the table header to the according qp cvs, also in csv format.\
     \ The first row is considered containing the headers as in the table. The second\
-    \ row is considered the according  qp cv accessions. (csv without \"!) (valid\
-    \ formats: 'csv')"
+    \ row is considered the according qp cv accessions. (csv without \"!) (valid formats:\
+    \ 'csv')"
   type: File
   inputBinding:
     prefix: -mapping

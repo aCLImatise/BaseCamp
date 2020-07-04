@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rmFaDups.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rmFaDups.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,6 +1,18 @@
 class: CommandLineTool
-id: rnasamba_classify.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnasamba_classify.cwl
 inputs:
+- id: protein_fast_a
+  doc: 'output FASTA file containing translated sequences for the predicted coding
+    ORFs. (default: None)'
+  type: string
+  inputBinding:
+    prefix: --protein_fasta
+- id: verbose
+  doc: 'print the progress of the classification. 0 = silent, 1 = current step. (default:
+    0)'
+  type: string
+  inputBinding:
+    prefix: --verbose
 - id: output_file
   doc: output TSV file containing the results of the classification.
   type: string
@@ -17,18 +29,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: protein_fast_a
-  doc: 'output FASTA file containing translated sequences for the predicted coding
-    ORFs. (default: None)'
-  type: string
-  inputBinding:
-    prefix: --protein_fasta
-- id: v
-  doc: '{0,1}, --verbose {0,1} print the progress of the classification. 0 = silent,
-    1 = current step. (default: 0)'
-  type: boolean
-  inputBinding:
-    prefix: -v
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: printimage.cwl
+id: ../../../../home/ubuntu/BiocondaCli/printimage.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

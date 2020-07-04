@@ -2,18 +2,25 @@ version 1.0
 
 task TripailleExpressionDeleteBiomaterials {
   input {
-    String namesNames
-    String organismOrganismId
-    String analysisAnalysisId
-    String jobJobName
-    Boolean noNoWait
+    String? names
+    String? organism_id
+    String? analysis_id
+    String? job_name
+    Boolean? no_wait
   }
   command <<<
     tripaille expression delete_biomaterials \
-      ~{if defined(namesNames) then ("--names " +  '"' + namesNames + '"') else ""} \
-      ~{if defined(organismOrganismId) then ("--organism_id " +  '"' + organismOrganismId + '"') else ""} \
-      ~{if defined(analysisAnalysisId) then ("--analysis_id " +  '"' + analysisAnalysisId + '"') else ""} \
-      ~{if defined(jobJobName) then ("--job_name " +  '"' + jobJobName + '"') else ""} \
-      ~{true="--no_wait" false="" noNoWait}
+      ~{if defined(names) then ("--names " +  '"' + names + '"') else ""} \
+      ~{if defined(organism_id) then ("--organism_id " +  '"' + organism_id + '"') else ""} \
+      ~{if defined(analysis_id) then ("--analysis_id " +  '"' + analysis_id + '"') else ""} \
+      ~{if defined(job_name) then ("--job_name " +  '"' + job_name + '"') else ""} \
+      ~{true="--no_wait" false="" no_wait}
   >>>
+  parameter_meta {
+    names: "JSON list of biomaterial names to delete. (optional)"
+    organism_id: "Organism id from which to delete biomaterials (optional)"
+    analysis_id: "Analysis id from which to delete biomaterials (optional)"
+    job_name: "Name of the job (optional)"
+    no_wait: "Return immediately without waiting for job completion"
+  }
 }

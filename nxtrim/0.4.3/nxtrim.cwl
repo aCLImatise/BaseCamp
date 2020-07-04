@@ -1,7 +1,17 @@
 class: CommandLineTool
-id: nxtrim.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nxtrim.cwl
 inputs:
-- id: o
+- id: one
+  doc: '[ --r1 ] arg                 read 1 in fastq format (gzip allowed)'
+  type: boolean
+  inputBinding:
+    prefix: '-1'
+- id: two
+  doc: '[ --r2 ] arg                 read 2 in fastq format (gzip allowed)'
+  type: boolean
+  inputBinding:
+    prefix: '-2'
+- id: arg_output_prefix
   doc: '[ --output-prefix ] arg      output prefix'
   type: boolean
   inputBinding:

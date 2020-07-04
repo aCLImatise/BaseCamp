@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: copynumber.cwl
+id: ../../../../home/ubuntu/BiocondaCli/copynumber.cwl
 inputs:
 - id: input_vcf
   doc: VCF input

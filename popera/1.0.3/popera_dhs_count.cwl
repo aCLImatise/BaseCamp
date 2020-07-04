@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: popera_dhs_count.cwl
+id: ../../../../home/ubuntu/BiocondaCli/popera_dhs_count.cwl
 inputs:
 - id: data
   doc: data file, should be sorted bam format, example=DH_sample1.bam,DH_sample2.bam

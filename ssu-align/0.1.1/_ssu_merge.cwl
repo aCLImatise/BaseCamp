@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _ssu_merge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_ssu_merge.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

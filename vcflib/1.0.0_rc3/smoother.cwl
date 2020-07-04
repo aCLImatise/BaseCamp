@@ -1,11 +1,16 @@
 class: CommandLineTool
-id: smoother.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smoother.cwl
 inputs:
-- id: your
-  doc: "goes here       -'                "
+- id: format
+  doc: ''
   type: string
   inputBinding:
-    prefix: '-     Your'
+    prefix: --format
+- id: file
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --file
 outputs: []
 cwlVersion: v1.1
 baseCommand:

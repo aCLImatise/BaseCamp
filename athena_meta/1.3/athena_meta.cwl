@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: athena_meta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/athena_meta.cwl
 inputs:
 - id: config
   doc: 'input JSON config file for run, NOTE: dirname(config.json) specifies root

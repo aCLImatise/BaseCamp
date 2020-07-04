@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: legsta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/legsta.cwl
 inputs:
 - id: quiet
   doc: Don't print anything to stderr.
@@ -12,7 +12,7 @@ inputs:
   inputBinding:
     prefix: --debug
 - id: db_dir
-  doc: SBT database folder (default '/tmp/tmp88ryjf1z/db').
+  doc: SBT database folder (default '/tmp/tmp7aa9wtj1/db').
   type: string
   inputBinding:
     prefix: --dbdir

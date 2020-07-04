@@ -1,12 +1,7 @@
 class: CommandLineTool
-id: R_scape_sim.cwl
+id: ../../../../home/ubuntu/BiocondaCli/R_scape_sim.cwl
 inputs:
-- id: msa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: v
+- id: _be_verbose
   doc: ': be verbose'
   type: boolean
   inputBinding:
@@ -71,17 +66,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ptpfile
-- id: potts
-  doc: ': potts param from pdb contact file'
-  type: boolean
-  inputBinding:
-    prefix: --potts
-- id: l
+- id: _length_alignment
   doc: ': length of the alignment'
   type: string
   inputBinding:
     prefix: -L
-- id: n
+- id: number_sequences_simulated
   doc: ': number of sequences in the simulated msa, N=0 for use all'
   type: string
   inputBinding:
@@ -151,26 +141,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --outdir
-- id: o
+- id: send_output_file
   doc: ': send output to file <f>, not stdout'
   type: string
   inputBinding:
     prefix: -o
-- id: dna
-  doc: ': use DNA alphabet'
-  type: boolean
-  inputBinding:
-    prefix: --dna
-- id: rna
-  doc: ': use RNA alphabet'
-  type: boolean
-  inputBinding:
-    prefix: --rna
-- id: amino
-  doc: ': use protein alphabet'
-  type: boolean
-  inputBinding:
-    prefix: --amino
 - id: in_format
   doc: ': specify format'
   type: string
@@ -181,17 +156,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --onemsa
-- id: f
+- id: filter_seqs_xseqcons
   doc: ': filter out seqs <x*seq_cons residues'
   type: string
   inputBinding:
     prefix: -F
-- id: i
+- id: var_32
   doc: ': require seqs to have < <x> id'
   type: string
   inputBinding:
     prefix: -I
-- id: i
+- id: var_33
   doc: ': require seqs to have >= <x> id'
   type: string
   inputBinding:
@@ -221,6 +196,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --seed
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: msa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

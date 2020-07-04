@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RemovePairNo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RemovePairNo.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

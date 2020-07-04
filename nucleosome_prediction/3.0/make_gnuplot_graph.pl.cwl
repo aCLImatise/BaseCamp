@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: make_gnuplot_graph.pl.bak.cwl
+id: ../../../../home/ubuntu/BiocondaCli/make_gnuplot_graph.pl.bak.cwl
 inputs:
 - id: no_key
   doc: Supress printing of keys in a -all plot

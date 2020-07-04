@@ -2,10 +2,13 @@ version 1.0
 
 task BedparseIntrons {
   input {
-    String? bedBedFile
+    String bed_file
   }
   command <<<
     bedparse introns \
-      ~{bedBedFile}
+      ~{bed_file}
   >>>
+  parameter_meta {
+    bed_file: "Path to the BED file."
+  }
 }

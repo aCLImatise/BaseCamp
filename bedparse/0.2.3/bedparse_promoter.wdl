@@ -2,14 +2,19 @@ version 1.0
 
 task BedparsePromoter {
   input {
-    String upUp
-    String downDown
-    Boolean unUnStranded
+    String? up
+    String? down
+    Boolean? un_stranded
   }
   command <<<
     bedparse promoter \
-      ~{if defined(upUp) then ("--up " +  '"' + upUp + '"') else ""} \
-      ~{if defined(downDown) then ("--down " +  '"' + downDown + '"') else ""} \
-      ~{true="--unstranded" false="" unUnStranded}
+      ~{if defined(up) then ("--up " +  '"' + up + '"') else ""} \
+      ~{if defined(down) then ("--down " +  '"' + down + '"') else ""} \
+      ~{true="--unstranded" false="" un_stranded}
   >>>
+  parameter_meta {
+    up: "Get this many nt upstream of each feature."
+    down: "Get this many nt downstream of each feature."
+    un_stranded: "Do not consider strands."
+  }
 }

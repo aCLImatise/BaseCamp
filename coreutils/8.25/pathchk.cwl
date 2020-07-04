@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: pathchk.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pathchk.cwl
 inputs:
-- id: p
+- id: check_most_posix
   doc: check for most POSIX systems
   type: boolean
   inputBinding:
     prefix: -p
-- id: p
+- id: check_empty_leading
   doc: check for empty names and leading "-"
   type: boolean
   inputBinding:
@@ -16,6 +16,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --portability
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

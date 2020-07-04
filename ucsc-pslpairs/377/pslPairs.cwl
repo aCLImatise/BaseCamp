@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pslPairs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pslPairs.cwl
 inputs:
 - id: max
   doc: '- maximum length of clone sequence (default=47000)'
@@ -27,7 +27,7 @@ inputs:
   inputBinding:
     prefix: -minId
 - id: min_orphan_id
-  doc: ID for orphan alignment (default=0.96)
+  doc: '- minimum pct ID for orphan alignment (default=0.96)'
   type: string
   inputBinding:
     prefix: -minOrphanId
@@ -83,6 +83,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -orphan
+- id: psl_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: pair_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: psl_tablename
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: outfile_prefix
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

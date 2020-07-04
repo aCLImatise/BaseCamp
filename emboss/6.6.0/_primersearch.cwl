@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _primersearch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_primersearch.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,42 +2,34 @@ version 1.0
 
 task HighResPrecursorMassCorrector {
   input {
-    File inIn
-    File outOut
-    Boolean featureFeature
-    Boolean featureFeature
-    Boolean featureFeature
-    Boolean featureFeature
-    Boolean featureFeature
-    Boolean featureFeature
-    Boolean featureFeature
-    Boolean nearestNearestPeak
-    Boolean nearestNearestPeak
-    Boolean highestHighestIntensityPeak
-    File outOutCsv
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    File? in
+    File? out
+    Boolean? highest_intensity_peak
+    File? out_csv
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     HighResPrecursorMassCorrector \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{true="-feature" false="" featureFeature} \
-      ~{true="-feature" false="" featureFeature} \
-      ~{true="-feature" false="" featureFeature} \
-      ~{true="-feature" false="" featureFeature} \
-      ~{true="-feature" false="" featureFeature} \
-      ~{true="-feature" false="" featureFeature} \
-      ~{true="-feature" false="" featureFeature} \
-      ~{true="-nearest_peak" false="" nearestNearestPeak} \
-      ~{true="-nearest_peak" false="" nearestNearestPeak} \
-      ~{true="-highest_intensity_peak" false="" highestHighestIntensityPeak} \
-      ~{if defined(outOutCsv) then ("-out_csv " +  '"' + outOutCsv + '"') else ""} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{true="-highest_intensity_peak" false="" highest_intensity_peak} \
+      ~{if defined(out_csv) then ("-out_csv " +  '"' + out_csv + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*                                 Input file (centroided data) (valid formats: 'mzML')"
+    out: "*                                Output file (valid formats: 'mzML')"
+    highest_intensity_peak: ":mz_tolerance <num>  The precursor mass tolerance to find the highest intensity MS1 peak (Da). Suggested value 1/max. expected charge. (Disable method by setting value to 0.0) (default: '0')"
+    out_csv: "Optional CSV output file for results on 'nearest_peak' or 'highest_intensity_peak' algorithm (see corresponding subsection) containing columns: RT, uncorrectedMZ, correctedMZ, deltaMZ. (valid formats: 'csv')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: heinz.cwl
+id: ../../../../home/ubuntu/BiocondaCli/heinz.cwl
 inputs:
 - id: fdr
   doc: Specifies fdr
   type: string
   inputBinding:
     prefix: -FDR
-- id: a
+- id: specifies_a
   doc: Specifies a
   type: string
   inputBinding:
     prefix: -a
-- id: e
+- id: edge_list_file
   doc: Edge list file
   type: string
   inputBinding:
@@ -22,7 +22,7 @@ inputs:
   type: long
   inputBinding:
     prefix: -enum
-- id: f
+- id: formulation_commodity_flow
   doc: 'Formulation of the problem: 0 - Single Commodity Flow 1 - Multi Commodity
     Flow 2 - Cut formulation (Flow)  3 - Cut formulation (Flow-min) 4 - Cut formulation
     (Node-separator) 5 - Cut formulation (Node-separator, BK, default) 6 - Tree DP
@@ -36,7 +36,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -lambda
-- id: m
+- id: specifies_number_threads
   doc: 'Specifies number of threads (default: 1)'
   type: long
   inputBinding:
@@ -47,32 +47,32 @@ inputs:
   type: long
   inputBinding:
     prefix: -maxCuts
-- id: n
+- id: node_file
   doc: Node file
   type: string
   inputBinding:
     prefix: -n
-- id: o
+- id: output_file
   doc: Output file
   type: string
   inputBinding:
     prefix: -o
-- id: p
+- id: enable_preprocessing
   doc: Enable preprocessing
   type: boolean
   inputBinding:
     prefix: -p
-- id: r
+- id: specifies_root_node
   doc: Specifies the root node (optional)
   type: string
   inputBinding:
     prefix: -r
-- id: s
+- id: stp_node_file
   doc: STP node file
   type: string
   inputBinding:
     prefix: -s
-- id: t
+- id: time_limit_seconds
   doc: 'Time limit (in seconds, default: -1)'
   type: long
   inputBinding:

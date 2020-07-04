@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: contig_ExN50_statistic.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/contig_ExN50_statistic.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

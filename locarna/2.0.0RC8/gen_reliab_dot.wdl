@@ -2,14 +2,22 @@ version 1.0
 
 task GenReliabDot.pl {
   input {
-    File fF
-    File aA
-    String sS
+    File? reliability_file
+    File? alignment_file
+    String? probabilities
+    String prg_name
   }
   command <<<
     gen-reliab-dot.pl \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""} \
-      ~{if defined(aA) then ("-a " +  '"' + aA + '"') else ""} \
-      ~{if defined(sS) then ("-s " +  '"' + sS + '"') else ""}
+      ~{prg_name} \
+      ~{if defined(reliability_file) then ("-f " +  '"' + reliability_file + '"') else ""} \
+      ~{if defined(alignment_file) then ("-a " +  '"' + alignment_file + '"') else ""} \
+      ~{if defined(probabilities) then ("-s " +  '"' + probabilities + '"') else ""}
   >>>
+  parameter_meta {
+    reliability_file: "reliability file"
+    alignment_file: "alignment file"
+    probabilities: "probabilities"
+    prg_name: ""
+  }
 }

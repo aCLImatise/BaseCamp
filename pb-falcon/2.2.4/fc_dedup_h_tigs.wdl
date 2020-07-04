@@ -2,10 +2,13 @@ version 1.0
 
 task FcDedupHTigs.py {
   input {
-    String? ctgCtgId
+    String ctg_id
   }
   command <<<
     fc_dedup_h_tigs.py \
-      ~{ctgCtgId}
+      ~{ctg_id}
   >>>
+  parameter_meta {
+    ctg_id: ""
+  }
 }

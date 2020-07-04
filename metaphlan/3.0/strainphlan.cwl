@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: strainphlan.cwl
+id: ../../../../home/ubuntu/BiocondaCli/strainphlan.cwl
 inputs:
 - id: database
   doc: The input MetaPhlAn 3.0 database

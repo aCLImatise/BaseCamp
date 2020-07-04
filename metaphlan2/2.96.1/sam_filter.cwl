@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sam_filter.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sam_filter.py.cwl
 inputs:
 - id: input_file
   doc: The input sam file.

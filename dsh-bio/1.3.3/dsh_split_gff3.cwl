@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dsh_split_gff3.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dsh_split_gff3.cwl
 inputs:
 - id: about
   doc: display about message [optional]

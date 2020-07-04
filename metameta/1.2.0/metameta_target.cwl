@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: metameta_target.cwl
+id: ../../../../home/ubuntu/BiocondaCli/metameta_target.cwl
 inputs:
 - id: use_cond_a
   doc: use conda to automatically install pre-configured packages

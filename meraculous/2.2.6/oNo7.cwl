@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: oNo7.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/oNo7.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

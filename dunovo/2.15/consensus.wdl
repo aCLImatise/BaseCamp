@@ -2,10 +2,13 @@ version 1.0
 
 task Consensus.py {
   input {
-    String? alignmentAlignment
+    String alignment
   }
   command <<<
     consensus.py \
-      ~{alignmentAlignment}
+      ~{alignment}
   >>>
+  parameter_meta {
+    alignment: "The aligned sequences, in FASTA format (but no multi-line sequences)."
+  }
 }

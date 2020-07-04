@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bp_seqfeature_gff3.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bp_seqfeature_gff3.pl.cwl
 inputs:
 - id: dsn
   doc: The database name ()
@@ -21,7 +21,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --password
-- id: gff3opt
+- id: gff_three_opt
   doc: 'flag options to gff3_string (i.e.: pass -gffopt 1 to recurse)'
   type: boolean
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: crispritz.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/crispritz.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

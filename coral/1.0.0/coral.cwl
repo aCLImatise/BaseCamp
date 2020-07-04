@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: coral.cwl
+id: ../../../../home/ubuntu/BiocondaCli/coral.cwl
 inputs:
 - id: preview
   doc: determine fragment-length-range and library-type and exit
@@ -51,6 +51,21 @@ inputs:
   type: long
   inputBinding:
     prefix: --max_num_cigar
+- id: i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
+- id: o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
+- id: r
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -r
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,37 +1,37 @@
 class: CommandLineTool
-id: tepid_map_se.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tepid_map_se.cwl
 inputs:
-- id: x
+- id: path_bowtie_index
   doc: path to bowtie2 index
   type: boolean
   inputBinding:
     prefix: -x
-- id: y
+- id: path_yaha_index
   doc: path to yaha index
   type: boolean
   inputBinding:
     prefix: -y
-- id: p
+- id: number_cores_use
   doc: number of cores to use
   type: boolean
   inputBinding:
     prefix: -p
-- id: n
+- id: sample_name
   doc: sample name
   type: boolean
   inputBinding:
     prefix: -n
-- id: q
+- id: fastq_file_containing
   doc: fastq file containing reads
   type: boolean
   inputBinding:
     prefix: -q
-- id: r
+- id: recursive_optional
   doc: recursive (optional)
   type: boolean
   inputBinding:
     prefix: -r
-- id: z
+- id: gzip_fastq_files
   doc: gzip fastq files (optional)
   type: boolean
   inputBinding:

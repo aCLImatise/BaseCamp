@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: load_into_counting.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/load_into_counting.py.cwl
 inputs:
+- id: info
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --info
+- id: k
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -k
 - id: output_count_graph_filename
   doc: The name of the file to write the k-mer countgraph to.
   type: string

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: PLEK_spsn.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PLEK_spsn.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: parsecasm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/parsecasm.cwl
 inputs:
 - id: no_fast_a
   doc: Do not create .fasta output
@@ -11,7 +11,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -justfasta
-- id: o
+- id: output_prefix
   doc: Output prefix
   type: string
   inputBinding:

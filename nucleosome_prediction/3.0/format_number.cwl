@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: format_number.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/format_number.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

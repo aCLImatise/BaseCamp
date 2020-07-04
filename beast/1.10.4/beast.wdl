@@ -2,108 +2,163 @@ version 1.0
 
 task Beast {
   input {
-    String verboseVerbose
-    String warningsWarnings
-    String strictStrict
-    String windowWindow
-    String optionsOptions
-    String workingWorking
-    String seedSeed
-    String prefixPrefix
-    String overwriteOverwrite
-    String errorsErrors
-    String threadsThreads
-    String javaJava
-    String testsTests
-    String thresholdThreshold
-    String adaptationAdaptationOff
-    String adaptationAdaptationTarget
-    String beagleBeagle
-    String beagleBeagleAuto
-    String beagleBeagleInfo
-    String beagleBeagleOrder
-    String beagleBeagleInstances
-    String beagleBeagleMultiPartition
-    String beagleBeagleCpu
-    String beagleBeagleGpu
-    String beagleBeagleSse
-    String beagleBeagleSseOff
-    String beagleBeagleThreadingOff
-    String beagleBeagleThreadCount
-    String beagleBeagleCuda
-    String beagleBeagleOpenCl
-    String beagleBeagleSingle
-    String beagleBeagleDouble
-    String beagleBeagleAsync
-    String beagleBeagleScaling
-    String beagleBeagleDelayScalingOff
-    String beagleBeagleRescale
-    String mpiMpi
-    String particlesParticles
-    String mc3Mc3Chains
-    String mc3Mc3Delta
-    String mc3Mc3Temperatures
-    String mc3Mc3Swap
-    String loadLoadState
-    String saveSaveStem
-    String saveSaveAt
-    String saveSaveEvery
-    String saveSaveState
-    String forceForceResume
-    String citationsCitationsFile
-    String versionVersion
+    String? verbose
+    String? warnings
+    String? strict
+    String? window
+    String? options
+    String? working
+    String? seed
+    String? prefix
+    String? overwrite
+    String? errors
+    String? threads
+    String? java
+    String? tests
+    String? threshold
+    String? adaptation_off
+    String? adaptation_target
+    String? beagle
+    String? beagle_auto
+    String? beagle_info
+    String? beagle_order
+    String? beagle_instances
+    String? beagle_multi_partition
+    String? beagle_cpu
+    String? beagle_gpu
+    String? beagle_sse
+    String? beagle_sse_off
+    String? beagle_threading_off
+    String? beagle_thread_count
+    String? beagle_cuda
+    String? beagle_open_cl
+    String? beagle_single
+    String? beagle_double
+    String? beagle_async
+    String? beagle_scaling
+    String? beagle_delay_scaling_off
+    String? beagle_rescale
+    String? mpi
+    String? particles
+    String? mc_three_chains
+    String? mc_three_delta
+    String? mc_three_temperatures
+    String? mc_three_swap
+    String? load_state
+    String? save_stem
+    String? save_at
+    String? save_every
+    String? save_state
+    String? force_resume
+    String? citations_file
+    String? version
+    String? input_file_name
   }
   command <<<
     beast \
-      ~{if defined(verboseVerbose) then ("-verbose " +  '"' + verboseVerbose + '"') else ""} \
-      ~{if defined(warningsWarnings) then ("-warnings " +  '"' + warningsWarnings + '"') else ""} \
-      ~{if defined(strictStrict) then ("-strict " +  '"' + strictStrict + '"') else ""} \
-      ~{if defined(windowWindow) then ("-window " +  '"' + windowWindow + '"') else ""} \
-      ~{if defined(optionsOptions) then ("-options " +  '"' + optionsOptions + '"') else ""} \
-      ~{if defined(workingWorking) then ("-working " +  '"' + workingWorking + '"') else ""} \
-      ~{if defined(seedSeed) then ("-seed " +  '"' + seedSeed + '"') else ""} \
-      ~{if defined(prefixPrefix) then ("-prefix " +  '"' + prefixPrefix + '"') else ""} \
-      ~{if defined(overwriteOverwrite) then ("-overwrite " +  '"' + overwriteOverwrite + '"') else ""} \
-      ~{if defined(errorsErrors) then ("-errors " +  '"' + errorsErrors + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(javaJava) then ("-java " +  '"' + javaJava + '"') else ""} \
-      ~{if defined(testsTests) then ("-tests " +  '"' + testsTests + '"') else ""} \
-      ~{if defined(thresholdThreshold) then ("-threshold " +  '"' + thresholdThreshold + '"') else ""} \
-      ~{if defined(adaptationAdaptationOff) then ("-adaptation_off " +  '"' + adaptationAdaptationOff + '"') else ""} \
-      ~{if defined(adaptationAdaptationTarget) then ("-adaptation_target " +  '"' + adaptationAdaptationTarget + '"') else ""} \
-      ~{if defined(beagleBeagle) then ("-beagle " +  '"' + beagleBeagle + '"') else ""} \
-      ~{if defined(beagleBeagleAuto) then ("-beagle_auto " +  '"' + beagleBeagleAuto + '"') else ""} \
-      ~{if defined(beagleBeagleInfo) then ("-beagle_info " +  '"' + beagleBeagleInfo + '"') else ""} \
-      ~{if defined(beagleBeagleOrder) then ("-beagle_order " +  '"' + beagleBeagleOrder + '"') else ""} \
-      ~{if defined(beagleBeagleInstances) then ("-beagle_instances " +  '"' + beagleBeagleInstances + '"') else ""} \
-      ~{if defined(beagleBeagleMultiPartition) then ("-beagle_multipartition " +  '"' + beagleBeagleMultiPartition + '"') else ""} \
-      ~{if defined(beagleBeagleCpu) then ("-beagle_CPU " +  '"' + beagleBeagleCpu + '"') else ""} \
-      ~{if defined(beagleBeagleGpu) then ("-beagle_GPU " +  '"' + beagleBeagleGpu + '"') else ""} \
-      ~{if defined(beagleBeagleSse) then ("-beagle_SSE " +  '"' + beagleBeagleSse + '"') else ""} \
-      ~{if defined(beagleBeagleSseOff) then ("-beagle_SSE_off " +  '"' + beagleBeagleSseOff + '"') else ""} \
-      ~{if defined(beagleBeagleThreadingOff) then ("-beagle_threading_off " +  '"' + beagleBeagleThreadingOff + '"') else ""} \
-      ~{if defined(beagleBeagleThreadCount) then ("-beagle_thread_count " +  '"' + beagleBeagleThreadCount + '"') else ""} \
-      ~{if defined(beagleBeagleCuda) then ("-beagle_cuda " +  '"' + beagleBeagleCuda + '"') else ""} \
-      ~{if defined(beagleBeagleOpenCl) then ("-beagle_opencl " +  '"' + beagleBeagleOpenCl + '"') else ""} \
-      ~{if defined(beagleBeagleSingle) then ("-beagle_single " +  '"' + beagleBeagleSingle + '"') else ""} \
-      ~{if defined(beagleBeagleDouble) then ("-beagle_double " +  '"' + beagleBeagleDouble + '"') else ""} \
-      ~{if defined(beagleBeagleAsync) then ("-beagle_async " +  '"' + beagleBeagleAsync + '"') else ""} \
-      ~{if defined(beagleBeagleScaling) then ("-beagle_scaling " +  '"' + beagleBeagleScaling + '"') else ""} \
-      ~{if defined(beagleBeagleDelayScalingOff) then ("-beagle_delay_scaling_off " +  '"' + beagleBeagleDelayScalingOff + '"') else ""} \
-      ~{if defined(beagleBeagleRescale) then ("-beagle_rescale " +  '"' + beagleBeagleRescale + '"') else ""} \
-      ~{if defined(mpiMpi) then ("-mpi " +  '"' + mpiMpi + '"') else ""} \
-      ~{if defined(particlesParticles) then ("-particles " +  '"' + particlesParticles + '"') else ""} \
-      ~{if defined(mc3Mc3Chains) then ("-mc3_chains " +  '"' + mc3Mc3Chains + '"') else ""} \
-      ~{if defined(mc3Mc3Delta) then ("-mc3_delta " +  '"' + mc3Mc3Delta + '"') else ""} \
-      ~{if defined(mc3Mc3Temperatures) then ("-mc3_temperatures " +  '"' + mc3Mc3Temperatures + '"') else ""} \
-      ~{if defined(mc3Mc3Swap) then ("-mc3_swap " +  '"' + mc3Mc3Swap + '"') else ""} \
-      ~{if defined(loadLoadState) then ("-load_state " +  '"' + loadLoadState + '"') else ""} \
-      ~{if defined(saveSaveStem) then ("-save_stem " +  '"' + saveSaveStem + '"') else ""} \
-      ~{if defined(saveSaveAt) then ("-save_at " +  '"' + saveSaveAt + '"') else ""} \
-      ~{if defined(saveSaveEvery) then ("-save_every " +  '"' + saveSaveEvery + '"') else ""} \
-      ~{if defined(saveSaveState) then ("-save_state " +  '"' + saveSaveState + '"') else ""} \
-      ~{if defined(forceForceResume) then ("-force_resume " +  '"' + forceForceResume + '"') else ""} \
-      ~{if defined(citationsCitationsFile) then ("-citations_file " +  '"' + citationsCitationsFile + '"') else ""} \
-      ~{if defined(versionVersion) then ("-version " +  '"' + versionVersion + '"') else ""}
+      ~{input_file_name} \
+      ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""} \
+      ~{if defined(warnings) then ("-warnings " +  '"' + warnings + '"') else ""} \
+      ~{if defined(strict) then ("-strict " +  '"' + strict + '"') else ""} \
+      ~{if defined(window) then ("-window " +  '"' + window + '"') else ""} \
+      ~{if defined(options) then ("-options " +  '"' + options + '"') else ""} \
+      ~{if defined(working) then ("-working " +  '"' + working + '"') else ""} \
+      ~{if defined(seed) then ("-seed " +  '"' + seed + '"') else ""} \
+      ~{if defined(prefix) then ("-prefix " +  '"' + prefix + '"') else ""} \
+      ~{if defined(overwrite) then ("-overwrite " +  '"' + overwrite + '"') else ""} \
+      ~{if defined(errors) then ("-errors " +  '"' + errors + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(java) then ("-java " +  '"' + java + '"') else ""} \
+      ~{if defined(tests) then ("-tests " +  '"' + tests + '"') else ""} \
+      ~{if defined(threshold) then ("-threshold " +  '"' + threshold + '"') else ""} \
+      ~{if defined(adaptation_off) then ("-adaptation_off " +  '"' + adaptation_off + '"') else ""} \
+      ~{if defined(adaptation_target) then ("-adaptation_target " +  '"' + adaptation_target + '"') else ""} \
+      ~{if defined(beagle) then ("-beagle " +  '"' + beagle + '"') else ""} \
+      ~{if defined(beagle_auto) then ("-beagle_auto " +  '"' + beagle_auto + '"') else ""} \
+      ~{if defined(beagle_info) then ("-beagle_info " +  '"' + beagle_info + '"') else ""} \
+      ~{if defined(beagle_order) then ("-beagle_order " +  '"' + beagle_order + '"') else ""} \
+      ~{if defined(beagle_instances) then ("-beagle_instances " +  '"' + beagle_instances + '"') else ""} \
+      ~{if defined(beagle_multi_partition) then ("-beagle_multipartition " +  '"' + beagle_multi_partition + '"') else ""} \
+      ~{if defined(beagle_cpu) then ("-beagle_CPU " +  '"' + beagle_cpu + '"') else ""} \
+      ~{if defined(beagle_gpu) then ("-beagle_GPU " +  '"' + beagle_gpu + '"') else ""} \
+      ~{if defined(beagle_sse) then ("-beagle_SSE " +  '"' + beagle_sse + '"') else ""} \
+      ~{if defined(beagle_sse_off) then ("-beagle_SSE_off " +  '"' + beagle_sse_off + '"') else ""} \
+      ~{if defined(beagle_threading_off) then ("-beagle_threading_off " +  '"' + beagle_threading_off + '"') else ""} \
+      ~{if defined(beagle_thread_count) then ("-beagle_thread_count " +  '"' + beagle_thread_count + '"') else ""} \
+      ~{if defined(beagle_cuda) then ("-beagle_cuda " +  '"' + beagle_cuda + '"') else ""} \
+      ~{if defined(beagle_open_cl) then ("-beagle_opencl " +  '"' + beagle_open_cl + '"') else ""} \
+      ~{if defined(beagle_single) then ("-beagle_single " +  '"' + beagle_single + '"') else ""} \
+      ~{if defined(beagle_double) then ("-beagle_double " +  '"' + beagle_double + '"') else ""} \
+      ~{if defined(beagle_async) then ("-beagle_async " +  '"' + beagle_async + '"') else ""} \
+      ~{if defined(beagle_scaling) then ("-beagle_scaling " +  '"' + beagle_scaling + '"') else ""} \
+      ~{if defined(beagle_delay_scaling_off) then ("-beagle_delay_scaling_off " +  '"' + beagle_delay_scaling_off + '"') else ""} \
+      ~{if defined(beagle_rescale) then ("-beagle_rescale " +  '"' + beagle_rescale + '"') else ""} \
+      ~{if defined(mpi) then ("-mpi " +  '"' + mpi + '"') else ""} \
+      ~{if defined(particles) then ("-particles " +  '"' + particles + '"') else ""} \
+      ~{if defined(mc_three_chains) then ("-mc3_chains " +  '"' + mc_three_chains + '"') else ""} \
+      ~{if defined(mc_three_delta) then ("-mc3_delta " +  '"' + mc_three_delta + '"') else ""} \
+      ~{if defined(mc_three_temperatures) then ("-mc3_temperatures " +  '"' + mc_three_temperatures + '"') else ""} \
+      ~{if defined(mc_three_swap) then ("-mc3_swap " +  '"' + mc_three_swap + '"') else ""} \
+      ~{if defined(load_state) then ("-load_state " +  '"' + load_state + '"') else ""} \
+      ~{if defined(save_stem) then ("-save_stem " +  '"' + save_stem + '"') else ""} \
+      ~{if defined(save_at) then ("-save_at " +  '"' + save_at + '"') else ""} \
+      ~{if defined(save_every) then ("-save_every " +  '"' + save_every + '"') else ""} \
+      ~{if defined(save_state) then ("-save_state " +  '"' + save_state + '"') else ""} \
+      ~{if defined(force_resume) then ("-force_resume " +  '"' + force_resume + '"') else ""} \
+      ~{if defined(citations_file) then ("-citations_file " +  '"' + citations_file + '"') else ""} \
+      ~{if defined(version) then ("-version " +  '"' + version + '"') else ""}
   >>>
+  parameter_meta {
+    verbose: "verbose XML parsing messages"
+    warnings: "warning messages about BEAST XML file"
+    strict: "on non-conforming BEAST XML file"
+    window: "a console window"
+    options: "an options dialog"
+    working: "working directory to input file's directory"
+    seed: "a random number generator seed"
+    prefix: "a prefix for all output log filenames"
+    overwrite: "overwriting of log files"
+    errors: "maximum number of numerical errors before stopping"
+    threads: "number of computational threads to use (default auto)"
+    java: "Java only, no native implementations"
+    tests: "number of full evaluation tests to perform (default 1000)"
+    threshold: "evaluation test threshold (default 0.1)"
+    adaptation_off: "'t adapt operator sizes"
+    adaptation_target: "acceptance rate for adaptive operators (default 0.234)"
+    beagle: "BEAGLE library if available (default on)"
+    beagle_auto: ": automatically select fastest resource for analysis"
+    beagle_info: ": show information on available resources"
+    beagle_order: ": set order of resource use"
+    beagle_instances: ": divide site patterns amongst instances"
+    beagle_multi_partition: ": use multipartition extensions if available (default auto)"
+    beagle_cpu: ": use CPU instance"
+    beagle_gpu: ": use GPU instance if available"
+    beagle_sse: ": use SSE extensions if available"
+    beagle_sse_off: ": turn off use of SSE extensions"
+    beagle_threading_off: ": turn off auto threading for a CPU instance"
+    beagle_thread_count: ": manually set number of threads for a CPU instance"
+    beagle_cuda: ": use CUDA parallization if available"
+    beagle_open_cl: ": use OpenCL parallization if available"
+    beagle_single: ": use single precision if available"
+    beagle_double: ": use double precision if available"
+    beagle_async: ": use asynchronous kernels if available"
+    beagle_scaling: ": specify scaling scheme to use"
+    beagle_delay_scaling_off: ": don't wait until underflow for scaling option"
+    beagle_rescale: ": frequency of rescaling (dynamic scaling only)"
+    mpi: "MPI rank to label output"
+    particles: "a folder of particle start states"
+    mc_three_chains: "of chains"
+    mc_three_delta: "increment parameter"
+    mc_three_temperatures: "comma-separated list of the hot chain temperatures"
+    mc_three_swap: "at which chains temperatures will be swapped"
+    load_state: "a filename to load a saved state from"
+    save_stem: "a stem for the filenames to save states to"
+    save_at: "a state at which to save a state file"
+    save_every: "a frequency to save the state file"
+    save_state: "a filename to save state to"
+    force_resume: "resuming from a saved state"
+    citations_file: "a filename to write a citation list to"
+    version: "the version and credits and stop"
+    input_file_name: ""
+  }
 }

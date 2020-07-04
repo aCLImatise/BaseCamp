@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sga_filterBAM.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sga_filterBAM.cwl
 inputs:
 - id: verbose
   doc: display verbose output
@@ -51,6 +51,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --mate-contamination
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

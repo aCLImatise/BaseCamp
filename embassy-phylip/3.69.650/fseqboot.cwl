@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fseqboot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fseqboot.cwl
 inputs:
 - id: categories
   doc: properties File of input categories

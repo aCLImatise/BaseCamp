@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vina.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vina.cwl
 inputs:
 - id: receptor
   doc: rigid part of the receptor (PDBQT)
@@ -94,6 +94,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --help_advanced
+- id: input
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

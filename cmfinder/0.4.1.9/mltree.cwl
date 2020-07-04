@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mltree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mltree.cwl
 inputs:
 - id: rate_file
   doc: ''

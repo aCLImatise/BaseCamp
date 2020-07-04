@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcflength.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcflength.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,21 +1,32 @@
 version 1.0
 
-task DnaseWigTracks.pyRegions {
+task DnaseWigTracks.pyRevOutput {
   input {
-    Boolean realReal
-    Boolean aA
-    String? regionsRegions
-    String? readsReads
-    String? fwFwOutput
-    String? revRevOutput
+    Boolean? r
+    Boolean? a
+    String dnase_wig_tracks_do_tpy
+    String regions
+    String reads
+    String fw_output
+    String rev_output
   }
   command <<<
-    dnase_wig_tracks.py regions \
-      ~{regionsRegions} \
-      ~{true="--real" false="" realReal} \
-      ~{true="-A" false="" aA} \
-      ~{readsReads} \
-      ~{fwFwOutput} \
-      ~{revRevOutput}
+    dnase_wig_tracks.py rev_output \
+      ~{dnase_wig_tracks_do_tpy} \
+      ~{regions} \
+      ~{reads} \
+      ~{fw_output} \
+      ~{rev_output} \
+      ~{true="-r" false="" r} \
+      ~{true="-A" false="" a}
   >>>
+  parameter_meta {
+    r: ""
+    a: ""
+    dnase_wig_tracks_do_tpy: ""
+    regions: ""
+    reads: ""
+    fw_output: ""
+    rev_output: ""
+  }
 }

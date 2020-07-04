@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anova_fixed.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anova_fixed.py.cwl
 inputs:
 - id: out
   doc: Output file name.
@@ -16,11 +16,36 @@ inputs:
   type: string
   inputBinding:
     prefix: --fig
-- id: fig2
+- id: fig_two
   doc: Output figure name for volcano plots [pdf].
   type: string
   inputBinding:
     prefix: --fig2
+- id: i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
+- id: d
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -d
+- id: id
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -id
+- id: f
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -f
+- id: t
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -t
 outputs: []
 cwlVersion: v1.1
 baseCommand:

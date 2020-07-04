@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FilterCtgCov.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FilterCtgCov.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,28 +2,40 @@ version 1.0
 
 task QCCalculator {
   input {
-    File inIn
-    File outOut
-    File idId
-    File featureFeature
-    File consensusConsensus
-    Boolean removeRemoveDuplicateFeatures
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    File? in
+    File? out
+    File? id
+    File? feature
+    File? consensus
+    Boolean? remove_duplicate_features
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     QCCalculator \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(idId) then ("-id " +  '"' + idId + '"') else ""} \
-      ~{if defined(featureFeature) then ("-feature " +  '"' + featureFeature + '"') else ""} \
-      ~{if defined(consensusConsensus) then ("-consensus " +  '"' + consensusConsensus + '"') else ""} \
-      ~{true="-remove_duplicate_features" false="" removeRemoveDuplicateFeatures} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(id) then ("-id " +  '"' + id + '"') else ""} \
+      ~{if defined(feature) then ("-feature " +  '"' + feature + '"') else ""} \
+      ~{if defined(consensus) then ("-consensus " +  '"' + consensus + '"') else ""} \
+      ~{true="-remove_duplicate_features" false="" remove_duplicate_features} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*                  Raw data input file (this is relevant if you want to look at MS1, MS2 and precursor peak information) (valid formats: 'mzML')"
+    out: "*                 Your qcML file. (valid formats: 'qcML')"
+    id: "Input idXML file containing the identifications. Your identifications will be exported in an easy-to-read format (valid formats: 'idXML')"
+    feature: "Feature input file (this is relevant for most QC issues) (valid formats: 'featureXML')"
+    consensus: "Consensus input file (this is only used for charge state deconvoluted output. Use the consensusXML output form the DeCharger) (valid formats: 'consensusXML')"
+    remove_duplicate_features: "This flag should be set, if you work with a set of merged features."
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

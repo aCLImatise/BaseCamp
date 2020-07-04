@@ -2,44 +2,52 @@ version 1.0
 
 task MbPlotMetagene {
   input {
-    String downstreamDownstreamBp
-    String upstreamUpstreamBp
-    String geneGeneBp
-    Int minMinTsLen
-    Int maxMaxTsLen
-    String smoothSmoothWindow
-    String labelLabelCenterA
-    String labelLabelBody
-    String labelLabelCenterB
-    String titleTitle
-    Boolean cleanupCleanup
-    String seedSeed
-    String nNBsIterations
-    String nNProcesses
-    String? pcPcTable
-    String? outputOutputDir
-    String? prefixPrefix
-    String? gffGffFile
+    String? downstream_bp
+    String? upstream_bp
+    String? gene_bp
+    Int? min_ts_len
+    Int? max_ts_len
+    String? smooth_window
+    String? label_center_a
+    String? label_body
+    String? label_center_b
+    String? title
+    Boolean? cleanup
+    String? seed
+    String? n_bs_iterations
+    String? n_processes
   }
   command <<<
     mb-plot-metagene \
-      ~{pcPcTable} \
-      ~{if defined(downstreamDownstreamBp) then ("--downstream_bp " +  '"' + downstreamDownstreamBp + '"') else ""} \
-      ~{if defined(upstreamUpstreamBp) then ("--upstream_bp " +  '"' + upstreamUpstreamBp + '"') else ""} \
-      ~{if defined(geneGeneBp) then ("--gene_bp " +  '"' + geneGeneBp + '"') else ""} \
-      ~{if defined(minMinTsLen) then ("--min_ts_len " +  '"' + minMinTsLen + '"') else ""} \
-      ~{if defined(maxMaxTsLen) then ("--max_ts_len " +  '"' + maxMaxTsLen + '"') else ""} \
-      ~{if defined(smoothSmoothWindow) then ("--smooth_window " +  '"' + smoothSmoothWindow + '"') else ""} \
-      ~{if defined(labelLabelCenterA) then ("--labelCenterA " +  '"' + labelLabelCenterA + '"') else ""} \
-      ~{if defined(labelLabelBody) then ("--labelBody " +  '"' + labelLabelBody + '"') else ""} \
-      ~{if defined(labelLabelCenterB) then ("--labelCenterB " +  '"' + labelLabelCenterB + '"') else ""} \
-      ~{if defined(titleTitle) then ("--title " +  '"' + titleTitle + '"') else ""} \
-      ~{true="--cleanup" false="" cleanupCleanup} \
-      ~{if defined(seedSeed) then ("--seed " +  '"' + seedSeed + '"') else ""} \
-      ~{if defined(nNBsIterations) then ("--n_bs_iterations " +  '"' + nNBsIterations + '"') else ""} \
-      ~{if defined(nNProcesses) then ("--n_processes " +  '"' + nNProcesses + '"') else ""} \
-      ~{outputOutputDir} \
-      ~{prefixPrefix} \
-      ~{gffGffFile}
+      ~{if defined(downstream_bp) then ("--downstream_bp " +  '"' + downstream_bp + '"') else ""} \
+      ~{if defined(upstream_bp) then ("--upstream_bp " +  '"' + upstream_bp + '"') else ""} \
+      ~{if defined(gene_bp) then ("--gene_bp " +  '"' + gene_bp + '"') else ""} \
+      ~{if defined(min_ts_len) then ("--min_ts_len " +  '"' + min_ts_len + '"') else ""} \
+      ~{if defined(max_ts_len) then ("--max_ts_len " +  '"' + max_ts_len + '"') else ""} \
+      ~{if defined(smooth_window) then ("--smooth_window " +  '"' + smooth_window + '"') else ""} \
+      ~{if defined(label_center_a) then ("--labelCenterA " +  '"' + label_center_a + '"') else ""} \
+      ~{if defined(label_body) then ("--labelBody " +  '"' + label_body + '"') else ""} \
+      ~{if defined(label_center_b) then ("--labelCenterB " +  '"' + label_center_b + '"') else ""} \
+      ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
+      ~{true="--cleanup" false="" cleanup} \
+      ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
+      ~{if defined(n_bs_iterations) then ("--n_bs_iterations " +  '"' + n_bs_iterations + '"') else ""} \
+      ~{if defined(n_processes) then ("--n_processes " +  '"' + n_processes + '"') else ""}
   >>>
+  parameter_meta {
+    downstream_bp: "downstream bp"
+    upstream_bp: "upstream bp"
+    gene_bp: "annotation body bp"
+    min_ts_len: "minimum annotation length"
+    max_ts_len: "maximum annotation length"
+    smooth_window: "window size used for running mean smoothing"
+    label_center_a: "plot label for the first center position"
+    label_body: "for body (between A and B)"
+    label_center_b: "plot label for the second center position"
+    title: "plot title"
+    cleanup: "remove temporary files"
+    seed: "random seed"
+    n_bs_iterations: "number of bootstrap iterations"
+    n_processes: "number of parallel processes spawned"
+  }
 }

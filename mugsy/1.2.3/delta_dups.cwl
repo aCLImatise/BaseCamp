@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: delta_dups.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/delta_dups.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

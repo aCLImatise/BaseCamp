@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: splitmates.cwl
+id: ../../../../home/ubuntu/BiocondaCli/splitmates.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

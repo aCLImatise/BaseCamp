@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcf_allele_freq.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf_allele_freq.py.cwl
 inputs:
 - id: vcf
   doc: 'VCF input (default: stdin)'

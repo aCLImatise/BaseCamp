@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: cath_assign_domains.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cath_assign_domains.cwl
 inputs:
-- id: v
+- id: output_version_information
   doc: '[ --version ]                                                  Output version
     information'
   type: boolean

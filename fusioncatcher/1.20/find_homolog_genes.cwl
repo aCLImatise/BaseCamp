@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: find_homolog_genes.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/find_homolog_genes.py.cwl
 inputs:
 - id: input
   doc: The input file in Bowtie MAP format (sorted by read name) containing the short
@@ -38,14 +38,14 @@ inputs:
   type: string
   inputBinding:
     prefix: --filter
-- id: d0
+- id: dzero
   doc: If it set then only the alignments of a read are taken into consideration which
     are at maximum zero mismatches away. This expects that the input has 4 columns
     instead of 3, and the fourth column contains the mismatches from Bowtie.
   type: boolean
   inputBinding:
     prefix: --d0
-- id: d1
+- id: done
   doc: If it set then only the alignments of a read are taken into consideration which
     are at maximum one mismatch away. This works only for maximum two mismatches.
     This expects that the input has 4 columns instead of 3, and the fourth column

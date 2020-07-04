@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: tigmint_molecule.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tigmint_molecule.cwl
 inputs:
-- id: bam
-  doc: Input BAM file sorted by BX tag then position, - for stdin
-  type: string
-  inputBinding:
-    position: 0
 - id: output
   doc: Output TSV file [stdout]
   type: File
@@ -56,6 +51,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --size
+- id: bam
+  doc: Input BAM file sorted by BX tag then position, - for stdin
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

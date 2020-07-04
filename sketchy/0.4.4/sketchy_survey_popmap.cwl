@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sketchy_survey_popmap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sketchy_survey_popmap.cwl
 inputs:
 - id: ssh
   doc: Path to sum of shared hashes file to map to population [required]  [required]

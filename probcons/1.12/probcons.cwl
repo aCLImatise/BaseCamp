@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: probcons.cwl
+id: ../../../../home/ubuntu/BiocondaCli/probcons.cwl
 inputs:
 - id: clustalw
   doc: use CLUSTALW output format instead of MFA
@@ -61,6 +61,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --alignment-order
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

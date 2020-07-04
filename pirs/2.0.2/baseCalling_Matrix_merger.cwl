@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: baseCalling_Matrix_merger.cwl
+id: ../../../../home/ubuntu/BiocondaCli/baseCalling_Matrix_merger.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

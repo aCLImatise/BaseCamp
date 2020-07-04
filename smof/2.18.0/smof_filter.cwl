@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: smof_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smof_filter.cwl
 inputs:
-- id: input
-  doc: input fasta sequence (default = stdin)
-  type: string
-  inputBinding:
-    position: 0
 - id: shorter_than
   doc: keep only if length is less than or equal to LEN
   type: string
@@ -21,6 +16,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --composition
+- id: input
+  doc: input fasta sequence (default = stdin)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

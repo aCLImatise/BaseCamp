@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: model_matrix.cwl
+id: ../../../../home/ubuntu/BiocondaCli/model_matrix.cwl
 inputs:
 - id: input_file
   doc: 'Path to file containing input. (default: None)'

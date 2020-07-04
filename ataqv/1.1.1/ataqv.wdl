@@ -2,20 +2,19 @@ version 1.0
 
 task Ataqv {
   input {
-    String? flyFly
-    String? humanHuman
-    String? mouseMouse
-    String? ratRat
-    String? wormWorm
-    String? yeastYeast
+    String fly
+    String worm
+    String yeast
   }
   command <<<
     ataqv \
-      ~{flyFly} \
-      ~{humanHuman} \
-      ~{mouseMouse} \
-      ~{ratRat} \
-      ~{wormWorm} \
-      ~{yeastYeast}
+      ~{fly} \
+      ~{worm} \
+      ~{yeast}
   >>>
+  parameter_meta {
+    fly: "2R 2L 3R 3L 4 "
+    worm: "I II III IV V "
+    yeast: "I II III IV V VI VII VIII IX X XI XII XIII XIV XV XVI "
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FastaInfo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FastaInfo.cwl
 inputs:
 - id: in
   doc: "Input FASTA file. If unset, reads from STDIN. Default value: ''"

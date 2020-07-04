@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: vcfcommonsamples.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfcommonsamples.cwl
 inputs:
-- id: vcf_file
+- id: var_0
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: vcf_file
+- id: var_1
   doc: ''
   type: string
   inputBinding:

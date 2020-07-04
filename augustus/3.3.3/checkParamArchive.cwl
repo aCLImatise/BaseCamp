@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: checkParamArchive.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/checkParamArchive.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

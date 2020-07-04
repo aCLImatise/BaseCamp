@@ -1,7 +1,14 @@
 version 1.0
 
 task DASrealign {
+  input {
+    Boolean? v
+  }
   command <<<
-    DASrealign
+    DASrealign \
+      ~{true="-v" false="" v}
   >>>
+  parameter_meta {
+    v: ""
+  }
 }

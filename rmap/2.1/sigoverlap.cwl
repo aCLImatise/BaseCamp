@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: sigoverlap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sigoverlap.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: bed_format_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: output
   doc: 'Name of output file (default: stdout) '
   type: boolean
@@ -36,6 +26,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -about
+- id: bed_format_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

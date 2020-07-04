@@ -2,12 +2,16 @@ version 1.0
 
 task ParaNodeStatus {
   input {
-    Boolean longLong
-    String? machineMachineList
+    Boolean? long
+    String machine_list
   }
   command <<<
     paraNodeStatus \
-      ~{machineMachineList} \
-      ~{true="-long" false="" longLong}
+      ~{machine_list} \
+      ~{true="-long" false="" long}
   >>>
+  parameter_meta {
+    long: "List details of current and recent jobs."
+    machine_list: ""
+  }
 }

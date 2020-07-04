@@ -1,15 +1,9 @@
 class: CommandLineTool
-id: velvetg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/velvetg.cwl
 inputs:
-- id: directory
-  doc: ': working directory name'
-  type: Directory
-  inputBinding:
-    position: 0
 - id: scaffolding
-  doc: '<yes|no>           : scaffolding of contigs used paired end information (default:
-    on)'
-  type: boolean
+  doc: ': scaffolding of contigs used paired end information (default: on)'
+  type: string
   inputBinding:
     prefix: -scaffolding
 - id: max_branch_length
@@ -45,10 +39,35 @@ inputs:
   inputBinding:
     prefix: -long_mult_cutoff
 - id: unused_reads
-  doc: '<yes|no>          : export unused reads in UnusedReads.fa file (default: no)'
-  type: boolean
+  doc: ': export unused reads in UnusedReads.fa file (default: no)'
+  type: string
   inputBinding:
     prefix: -unused_reads
+- id: directory
+  doc: ': working directory name'
+  type: Directory
+  inputBinding:
+    position: 0
+- id: directory_slash_contigs_dot_fa
+  doc: ': fasta file of contigs longer than twice hash length'
+  type: Directory
+  inputBinding:
+    position: 0
+- id: directory_slash_stats_dot_txt
+  doc: ': stats file (tab-spaced) useful for determining appropriate coverage cutoff'
+  type: Directory
+  inputBinding:
+    position: 1
+- id: directory_slash_last_graph
+  doc: ': special formatted file with all the information on the final graph'
+  type: Directory
+  inputBinding:
+    position: 2
+- id: directory_slash_velvet_as_mdot_afg
+  doc: ': (if requested) AMOS compatible assembly file'
+  type: Directory
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

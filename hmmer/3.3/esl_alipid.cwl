@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: esl_alipid.cwl
+id: ../../../../home/ubuntu/BiocondaCli/esl_alipid.cwl
 inputs:
-- id: msa_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: in_format
   doc: ': specify the input MSA file is in format <s>'
   type: string
@@ -36,6 +31,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --amino
+- id: msa_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

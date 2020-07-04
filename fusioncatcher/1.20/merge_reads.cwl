@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: merge_reads.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/merge_reads.py.cwl
 inputs:
+- id: input_one
+  doc: The input FASTQ file containing the reads from 5' fragment end.
+  type: string
+  inputBinding:
+    prefix: --input_1
+- id: input_two
+  doc: The input FASTQ file containing the reads from 3' fragment end.
+  type: string
+  inputBinding:
+    prefix: --input_2
 - id: merged
   doc: It outputs the merged reads as FASTQ file.
   type: string

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: sga_cluster.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sga_cluster.cwl
 inputs:
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: reads
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: verbose
   doc: display verbose output
   type: boolean
@@ -62,6 +52,16 @@ inputs:
   type: File
   inputBinding:
     prefix: --limit
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: reads
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

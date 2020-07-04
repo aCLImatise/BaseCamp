@@ -2,10 +2,13 @@ version 1.0
 
 task PrepareReceptor4.py {
   input {
-    Boolean rR
+    Boolean? receptorfilename
   }
   command <<<
     prepare_receptor4.py \
-      ~{true="-r" false="" rR}
+      ~{true="-r" false="" receptorfilename}
   >>>
+  parameter_meta {
+    receptorfilename: "receptor_filename "
+  }
 }

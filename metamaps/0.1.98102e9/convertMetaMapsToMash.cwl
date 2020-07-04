@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: convertMetaMapsToMash.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/convertMetaMapsToMash.pl.cwl
 inputs:
 - id: perl
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: convert_meta_map_tomas_hpl
+- id: convert_meta_map_to_mash_do_tpl
   doc: ''
   type: string
   inputBinding:

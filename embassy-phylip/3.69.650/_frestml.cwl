@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _frestml.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_frestml.cwl
 inputs:
 - id: weights
   doc: properties Weights file

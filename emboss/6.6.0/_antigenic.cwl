@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _antigenic.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_antigenic.cwl
 inputs:
 - id: min_len
   doc: integer    [6] Minimum length of antigenic region (Integer from 1 to 50)

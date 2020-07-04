@@ -1,11 +1,11 @@
 class: CommandLineTool
-id: split_by_p7_barcode.cwl
+id: ../../../../home/ubuntu/BiocondaCli/split_by_p7_barcode.cwl
 inputs:
-- id: f
-  doc: ''
+- id: force
+  doc: Overwrite existing files when creating the output.
   type: boolean
   inputBinding:
-    prefix: -f
+    prefix: --force
 outputs: []
 cwlVersion: v1.1
 baseCommand:

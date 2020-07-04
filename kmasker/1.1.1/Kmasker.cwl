@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Kmasker.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Kmasker.cwl
 inputs:
 - id: show_repository
   doc: show complete list of private and external k-mer indices
@@ -62,7 +62,7 @@ inputs:
   inputBinding:
     prefix: --user_conf
 - id: global_conf
-  doc: set specific global configuration file [/tmp/tmp75zbp68n/etc/kmasker.config]
+  doc: set specific global configuration file [/tmp/tmpi46i3oh1/etc/kmasker.config]
   type: boolean
   inputBinding:
     prefix: --global_conf

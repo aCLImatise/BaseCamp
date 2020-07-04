@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: clip_quality.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clip_quality.py.cwl
 inputs:
 - id: input
   doc: The input FASTQ file.

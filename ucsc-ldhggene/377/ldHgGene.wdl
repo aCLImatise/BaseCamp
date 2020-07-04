@@ -2,10 +2,22 @@ version 1.0
 
 task LdHgGene {
   input {
-    String impliedImpliedStopAfterCds
+    Boolean? implied_stop_after_cds
+    String database
+    String table
+    File file
   }
   command <<<
     ldHgGene \
-      ~{if defined(impliedImpliedStopAfterCds) then ("-impliedStopAfterCds " +  '"' + impliedImpliedStopAfterCds + '"') else ""}
+      ~{database} \
+      ~{table} \
+      ~{file} \
+      ~{true="-impliedStopAfterCds" false="" implied_stop_after_cds}
   >>>
+  parameter_meta {
+    implied_stop_after_cds: "- implied stop codon in GFF/GTF after CDS"
+    database: ""
+    table: ""
+    file: ""
+  }
 }

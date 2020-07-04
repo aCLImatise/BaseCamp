@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Colombo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Colombo.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

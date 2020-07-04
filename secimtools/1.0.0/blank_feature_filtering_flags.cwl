@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: blank_feature_filtering_flags.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blank_feature_filtering_flags.py.cwl
 inputs:
 - id: input
   doc: Input dataset in wide format.

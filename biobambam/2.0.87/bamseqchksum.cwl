@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamseqchksum.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamseqchksum.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

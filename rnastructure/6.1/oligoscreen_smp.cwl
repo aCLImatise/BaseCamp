@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: oligoscreen_smp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/oligoscreen_smp.cwl
 inputs:
 - id: oligo_screen
   doc: ''

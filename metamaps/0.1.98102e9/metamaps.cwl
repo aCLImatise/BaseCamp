@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: metamaps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/metamaps.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

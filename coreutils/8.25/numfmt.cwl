@@ -1,32 +1,6 @@
 class: CommandLineTool
-id: numfmt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/numfmt.cwl
 inputs:
-- id: none
-  doc: no auto-scaling is done; suffixes will trigger an error
-  type: string
-  inputBinding:
-    position: 0
-- id: auto
-  doc: 'accept optional single/two letter suffix: 1K = 1000, 1Ki = 1024, 1M = 1000000,
-    1Mi = 1048576,'
-  type: string
-  inputBinding:
-    position: 1
-- id: si
-  doc: 'accept optional single letter suffix: 1K = 1000, 1M = 1000000, ...'
-  type: string
-  inputBinding:
-    position: 2
-- id: iec
-  doc: 'accept optional single letter suffix: 1K = 1024, 1M = 1048576, ...'
-  type: string
-  inputBinding:
-    position: 3
-- id: iec_i
-  doc: 'accept optional two-letter suffix: 1Ki = 1024, 1Mi = 1048576, ...'
-  type: string
-  inputBinding:
-    position: 4
 - id: debug
   doc: print warnings about invalid input
   type: boolean
@@ -108,6 +82,32 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --zero-terminated
+- id: none
+  doc: no auto-scaling is done; suffixes will trigger an error
+  type: string
+  inputBinding:
+    position: 0
+- id: auto
+  doc: 'accept optional single/two letter suffix: 1K = 1000, 1Ki = 1024, 1M = 1000000,
+    1Mi = 1048576,'
+  type: string
+  inputBinding:
+    position: 1
+- id: si
+  doc: 'accept optional single letter suffix: 1K = 1000, 1M = 1000000, ...'
+  type: string
+  inputBinding:
+    position: 2
+- id: iec
+  doc: 'accept optional single letter suffix: 1K = 1024, 1M = 1048576, ...'
+  type: string
+  inputBinding:
+    position: 3
+- id: iec_i
+  doc: 'accept optional two-letter suffix: 1Ki = 1024, 1Mi = 1048576, ...'
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

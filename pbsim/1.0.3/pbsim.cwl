@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pbsim.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pbsim.cwl
 inputs:
 - id: prefix
   doc: prefix of output files (sd).
@@ -89,6 +89,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --accuracy-sd
+- id: reference
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

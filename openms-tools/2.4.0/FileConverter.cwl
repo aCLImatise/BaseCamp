@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FileConverter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FileConverter.cwl
 inputs:
 - id: in
   doc: "*        Input file to convert. (valid formats: 'mzData', 'mzXML', 'mzML',\

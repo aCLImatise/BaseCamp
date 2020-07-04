@@ -1,6 +1,21 @@
 class: CommandLineTool
-id: alignTranscripts1.0.cwl
+id: ../../../../home/ubuntu/BiocondaCli/alignTranscripts1.0.cwl
 inputs:
+- id: gene_a
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --geneA
+- id: gene_b
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --geneB
+- id: pad
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --pad
 - id: bed_a
   doc: bed file A
   type: string

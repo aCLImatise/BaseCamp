@@ -2,26 +2,37 @@ version 1.0
 
 task WigToBigWig {
   input {
-    String blockBlockSize
-    String itemsItemsPerSlot
-    String clipClip
-    String uncUnc
-    String fixedFixedSummaries
-    String keepKeepAllChromosomes
-    String? inInWig
-    String? chromChromSizes
-    String? outOutBw
+    String? block_size
+    String? items_per_slot
+    Boolean? clip
+    Boolean? unc
+    Boolean? fixed_summaries
+    Boolean? keep_all_chromosomes
+    String in_do_twig
+    String chrom_dot_sizes
+    String out_dot_bw
   }
   command <<<
     wigToBigWig \
-      ~{inInWig} \
-      ~{if defined(blockBlockSize) then ("-blockSize " +  '"' + blockBlockSize + '"') else ""} \
-      ~{if defined(itemsItemsPerSlot) then ("-itemsPerSlot " +  '"' + itemsItemsPerSlot + '"') else ""} \
-      ~{if defined(clipClip) then ("-clip " +  '"' + clipClip + '"') else ""} \
-      ~{if defined(uncUnc) then ("-unc " +  '"' + uncUnc + '"') else ""} \
-      ~{if defined(fixedFixedSummaries) then ("-fixedSummaries " +  '"' + fixedFixedSummaries + '"') else ""} \
-      ~{if defined(keepKeepAllChromosomes) then ("-keepAllChromosomes " +  '"' + keepKeepAllChromosomes + '"') else ""} \
-      ~{chromChromSizes} \
-      ~{outOutBw}
+      ~{in_do_twig} \
+      ~{chrom_dot_sizes} \
+      ~{out_dot_bw} \
+      ~{if defined(block_size) then ("-blockSize " +  '"' + block_size + '"') else ""} \
+      ~{if defined(items_per_slot) then ("-itemsPerSlot " +  '"' + items_per_slot + '"') else ""} \
+      ~{true="-clip" false="" clip} \
+      ~{true="-unc" false="" unc} \
+      ~{true="-fixedSummaries" false="" fixed_summaries} \
+      ~{true="-keepAllChromosomes" false="" keep_all_chromosomes}
   >>>
+  parameter_meta {
+    block_size: "- Number of items to bundle in r-tree.  Default 256"
+    items_per_slot: "- Number of data points bundled at lowest level. Default 1024"
+    clip: "- If set just issue warning messages rather than dying if wig file contains items off end of chromosome or chromosomes that are not in the chrom.sizes file."
+    unc: "- If set, do not use compression."
+    fixed_summaries: "- If set, use a predefined sequence of summary levels."
+    keep_all_chromosomes: "- If set, store all chromosomes in b-tree."
+    in_do_twig: ""
+    chrom_dot_sizes: ""
+    out_dot_bw: ""
+  }
 }

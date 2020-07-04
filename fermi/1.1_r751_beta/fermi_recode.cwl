@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: fermi_recode.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fermi_recode.cwl
 inputs:
-- id: in_rld
+- id: in_dot_rld
   doc: ''
   type: string
   inputBinding:

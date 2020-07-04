@@ -1,12 +1,6 @@
 class: CommandLineTool
-id: compare_RNA.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/compare_RNA.py.cwl
 inputs:
-- id: rna
-  doc: '2 files containing one RNA each. Supported Filetypes are: pdb files, forgi
-    cg files'
-  type: string
-  inputBinding:
-    position: 0
 - id: keep_length_one_stems
   doc: For all input formats except forgi bg/cg files, this controlls whether stems
     of length one are dissolved to unpaired regions (default) or kept (if this option
@@ -43,7 +37,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
-- id: q
+- id: commaseperated_list_logger_names_logged
   doc: "[QUIET], --quiet [QUIET] A comma-seperated list of logger names for which\
     \ only messages logged at the level 'CRITICAL' will be shown.Use this without\
     \ arguments if everything should be quiet."
@@ -65,6 +59,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --pdb-rmsd
+- id: rna
+  doc: '2 files containing one RNA each. Supported Filetypes are: pdb files, forgi
+    cg files'
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

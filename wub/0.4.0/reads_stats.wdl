@@ -2,18 +2,25 @@ version 1.0
 
 task ReadsStats.py {
   input {
-    File fastFastX
-    Boolean rawRaw
-    String savepathSavepath
-    Boolean reportReport
-    String tagTag
+    File? fast_x
+    Boolean? raw
+    String? savepath
+    Boolean? report
+    String? tag
   }
   command <<<
     reads_stats.py \
-      ~{if defined(fastFastX) then ("--fastx " +  '"' + fastFastX + '"') else ""} \
-      ~{true="--raw" false="" rawRaw} \
-      ~{if defined(savepathSavepath) then ("--savepath " +  '"' + savepathSavepath + '"') else ""} \
-      ~{true="--report" false="" reportReport} \
-      ~{if defined(tagTag) then ("--tag " +  '"' + tagTag + '"') else ""}
+      ~{if defined(fast_x) then ("--fastx " +  '"' + fast_x + '"') else ""} \
+      ~{true="--raw" false="" raw} \
+      ~{if defined(savepath) then ("--savepath " +  '"' + savepath + '"') else ""} \
+      ~{true="--report" false="" report} \
+      ~{if defined(tag) then ("--tag " +  '"' + tag + '"') else ""}
   >>>
+  parameter_meta {
+    fast_x: "input file fastq or fasta"
+    raw: "save raw the gc content per read/contig. default[False]"
+    savepath: "output dir. default[cwd]"
+    report: "Report PDF default[False]"
+    tag: "output name or tag. default[input name]"
+  }
 }

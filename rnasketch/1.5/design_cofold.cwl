@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: design_cofold.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/design_cofold.py.cwl
 inputs:
 - id: input
   doc: Read custom structures and sequence constraints from stdin

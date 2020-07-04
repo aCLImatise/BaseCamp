@@ -2,14 +2,19 @@ version 1.0
 
 task MapDIA {
   input {
-    String? inputInput
-    String? parameterParameter
-    File? fileFile
+    String? var_input
+    String? parameter
+    File? file
   }
   command <<<
     mapDIA \
-      ~{inputInput} \
-      ~{parameterParameter} \
-      ~{fileFile}
+      ~{var_input} \
+      ~{parameter} \
+      ~{file}
   >>>
+  parameter_meta {
+    var_input: ""
+    parameter: ""
+    file: ""
+  }
 }

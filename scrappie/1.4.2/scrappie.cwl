@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scrappie.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scrappie.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

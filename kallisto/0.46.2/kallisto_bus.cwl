@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: kallisto_bus.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kallisto_bus.cwl
 inputs:
+- id: verbose
+  doc: Print out progress information every 1M proccessed reads
+  type: boolean
+  inputBinding:
+    prefix: --verbose
 - id: arguments
   doc: ''
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: verbose
-  doc: Print out progress information every 1M proccessed reads
-  type: boolean
-  inputBinding:
-    prefix: --verbose
 outputs: []
 cwlVersion: v1.1
 baseCommand:

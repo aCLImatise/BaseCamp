@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: crisprtools.cwl
+id: ../../../../home/ubuntu/BiocondaCli/crisprtools.cwl
 inputs:
 - id: merge
   doc: combine multiple files

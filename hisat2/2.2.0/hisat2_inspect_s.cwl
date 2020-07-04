@@ -1,21 +1,21 @@
 class: CommandLineTool
-id: hisat2_inspect_s.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hisat2_inspect_s.cwl
 inputs:
-- id: a
-  doc: '/--across <int>  Number of characters across in FASTA output (default: 60)'
+- id: a_slash_across
+  doc: 'Number of characters across in FASTA output (default: 60)'
+  type: long
+  inputBinding:
+    prefix: -a/--across
+- id: s_slash_summary
+  doc: Print summary incl. ref names, lengths, index properties
   type: boolean
   inputBinding:
-    prefix: -a
-- id: s
-  doc: /--summary       Print summary incl. ref names, lengths, index properties
+    prefix: -s/--summary
+- id: n_slash_names
+  doc: Print reference sequence names only
   type: boolean
   inputBinding:
-    prefix: -s
-- id: n
-  doc: /--names         Print reference sequence names only
-  type: boolean
-  inputBinding:
-    prefix: -n
+    prefix: -n/--names
 - id: snp
   doc: Print SNPs
   type: boolean
@@ -36,16 +36,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --exon
-- id: e
-  doc: /--ht2-ref       Reconstruct reference from .ht2 (slow, preserves colors)
+- id: e_slash_ht_two_ref
+  doc: Reconstruct reference from .ht2 (slow, preserves colors)
   type: boolean
   inputBinding:
-    prefix: -e
-- id: v
-  doc: /--verbose       Verbose output (for debugging)
+    prefix: -e/--ht2-ref
+- id: v_slash_verbose
+  doc: Verbose output (for debugging)
   type: boolean
   inputBinding:
-    prefix: -v
+    prefix: -v/--verbose
+- id: h_slash_help
+  doc: print detailed description of tool and its options
+  type: boolean
+  inputBinding:
+    prefix: -h/--help
+- id: his_at_two_inspect
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

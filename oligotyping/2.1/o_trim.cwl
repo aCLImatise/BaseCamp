@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: o_trim.cwl
+id: ../../../../home/ubuntu/BiocondaCli/o_trim.cwl
 inputs:
-- id: file
-  doc: FASTA file to subsample
-  type: File
-  inputBinding:
-    position: 0
 - id: trim_from
   doc: Start position
   type: long
@@ -26,6 +21,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --output
+- id: file
+  doc: FASTA file to subsample
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

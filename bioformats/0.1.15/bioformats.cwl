@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bioformats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bioformats.cwl
 inputs:
 - id: v
   doc: ''

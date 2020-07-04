@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scancel_range.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scancel_range.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

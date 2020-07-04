@@ -1,7 +1,14 @@
 version 1.0
 
 task Samhead {
+  input {
+    File? file
+  }
   command <<<
-    samhead
+    samhead \
+      ~{file}
   >>>
+  parameter_meta {
+    file: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: raxmlHPC_PTHREADS_SSE3.cwl
+id: ../../../../home/ubuntu/BiocondaCli/raxmlHPC_PTHREADS_SSE3.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

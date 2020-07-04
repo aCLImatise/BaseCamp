@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: phyluce_assembly_get_fasta_lengths.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_assembly_get_fasta_lengths.cwl
 inputs:
 - id: input
-  doc: ''
+  doc: The fasta file to summarize
   type: string
   inputBinding:
     prefix: --input
 - id: csv
-  doc: ''
+  doc: Give output in CSV
   type: boolean
   inputBinding:
     prefix: --csv

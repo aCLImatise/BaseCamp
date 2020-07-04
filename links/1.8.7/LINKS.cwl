@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: LINKS.cwl
+id: ../../../../home/ubuntu/BiocondaCli/LINKS.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

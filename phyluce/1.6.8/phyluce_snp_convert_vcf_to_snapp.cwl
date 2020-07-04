@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_snp_convert_vcf_to_snapp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_snp_convert_vcf_to_snapp.cwl
 inputs:
 - id: input
   doc: The VCF file to process

@@ -2,10 +2,13 @@ version 1.0
 
 task Translate {
   input {
-    String? fastFastAFile
+    String fast_a_file
   }
   command <<<
     translate \
-      ~{fastFastAFile}
+      ~{fast_a_file}
   >>>
+  parameter_meta {
+    fast_a_file: ""
+  }
 }

@@ -2,10 +2,13 @@ version 1.0
 
 task SelectReads {
   input {
-    String? bankBankPath
+    String bank_path
   }
   command <<<
     select-reads \
-      ~{bankBankPath}
+      ~{bank_path}
   >>>
+  parameter_meta {
+    bank_path: ""
+  }
 }

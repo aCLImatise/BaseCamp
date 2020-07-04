@@ -2,54 +2,52 @@ version 1.0
 
 task Eoulsan.sh {
   input {
-    Boolean aboutAbout
-    File confConf
-    File jJ
-    String jJ
-    Boolean licenseLicense
-    File logLog
-    String loglevelLoglevel
-    Int mM
-    String pP
-    Boolean sS
-    Boolean versionVersion
-    File wW
-    Boolean createCreateDesign
-    Boolean formatsFormats
-    Boolean hadHadOopExec
-    Boolean s3S3Upload
-    Boolean itIt
-    Boolean modulesModules
-    Boolean emrEmrExec
-    Boolean clusterClusterExec
-    Boolean createCreateHadOopJar
-    Boolean execExec
-    Boolean infoInfo
+    Boolean? about
+    File? conf
+    File? javahome_path
+    String? jvm_arguments_server
+    Boolean? license
+    File? log
+    String? loglevel
+    Int? maximal_memory_usage
+    String? additional_classpath_eoulsan
+    Boolean? propertyvalue_set_configuration
+    Boolean? version
+    File? jvm_working_directory
+    String action
+    String arguments
   }
   command <<<
     eoulsan.sh \
-      ~{true="-about" false="" aboutAbout} \
-      ~{if defined(confConf) then ("-conf " +  '"' + confConf + '"') else ""} \
-      ~{if defined(jJ) then ("-j " +  '"' + jJ + '"') else ""} \
-      ~{if defined(jJ) then ("-J " +  '"' + jJ + '"') else ""} \
-      ~{true="-license" false="" licenseLicense} \
-      ~{if defined(logLog) then ("-log " +  '"' + logLog + '"') else ""} \
-      ~{if defined(loglevelLoglevel) then ("-loglevel " +  '"' + loglevelLoglevel + '"') else ""} \
-      ~{if defined(mM) then ("-m " +  '"' + mM + '"') else ""} \
-      ~{if defined(pP) then ("-p " +  '"' + pP + '"') else ""} \
-      ~{true="-s" false="" sS} \
-      ~{true="-version" false="" versionVersion} \
-      ~{if defined(wW) then ("-w " +  '"' + wW + '"') else ""} \
-      ~{true="- createdesign" false="" createCreateDesign} \
-      ~{true="- formats" false="" formatsFormats} \
-      ~{true="- hadoopexec" false="" hadHadOopExec} \
-      ~{true="- s3upload" false="" s3S3Upload} \
-      ~{true="- it" false="" itIt} \
-      ~{true="- modules" false="" modulesModules} \
-      ~{true="- emrexec" false="" emrEmrExec} \
-      ~{true="- clusterexec" false="" clusterClusterExec} \
-      ~{true="- createhadoopjar" false="" createCreateHadOopJar} \
-      ~{true="- exec" false="" execExec} \
-      ~{true="- info" false="" infoInfo}
+      ~{action} \
+      ~{arguments} \
+      ~{true="-about" false="" about} \
+      ~{if defined(conf) then ("-conf " +  '"' + conf + '"') else ""} \
+      ~{if defined(javahome_path) then ("-j " +  '"' + javahome_path + '"') else ""} \
+      ~{if defined(jvm_arguments_server) then ("-J " +  '"' + jvm_arguments_server + '"') else ""} \
+      ~{true="-license" false="" license} \
+      ~{if defined(log) then ("-log " +  '"' + log + '"') else ""} \
+      ~{if defined(loglevel) then ("-loglevel " +  '"' + loglevel + '"') else ""} \
+      ~{if defined(maximal_memory_usage) then ("-m " +  '"' + maximal_memory_usage + '"') else ""} \
+      ~{if defined(additional_classpath_eoulsan) then ("-p " +  '"' + additional_classpath_eoulsan + '"') else ""} \
+      ~{true="-s" false="" propertyvalue_set_configuration} \
+      ~{true="-version" false="" version} \
+      ~{if defined(jvm_working_directory) then ("-w " +  '"' + jvm_working_directory + '"') else ""}
   >>>
+  parameter_meta {
+    about: "display information about this software"
+    conf: "configuration file to use"
+    javahome_path: "JAVA_HOME path"
+    jvm_arguments_server: "JVM arguments (-server by default)"
+    license: "display information about the license of this software"
+    log: "external log file"
+    loglevel: "log level"
+    maximal_memory_usage: "maximal memory usage for JVM in MB (4096 by default)"
+    additional_classpath_eoulsan: "additional classpath for eoulsan plugins"
+    propertyvalue_set_configuration: "<property=value>   set a configuration setting. This option can be used several times"
+    version: "show version of the software"
+    jvm_working_directory: "JVM working directory"
+    action: ""
+    arguments: ""
+  }
 }

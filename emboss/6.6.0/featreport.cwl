@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: featreport.cwl
+id: ../../../../home/ubuntu/BiocondaCli/featreport.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bis_snp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bis_snp.cwl
 inputs:
 - id: analysis_type
   doc: Type of analysis to run
@@ -21,7 +21,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --read_buffer_size
-- id: read_filter
+- id: filters_apply_reads
   doc: Filters to apply to reads  before analysis
   type: string
   inputBinding:
@@ -46,7 +46,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --interval_set_rule
-- id: interval_merging
+- id: interval_merging_rule
   doc: Interval merging rule for  abutting intervals (ALL| OVERLAPPING_ONLY)
   type: long
   inputBinding:
@@ -240,7 +240,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --disable_bam_indexing
-- id: generate_md5
+- id: generate_md_five
   doc: Enable on-the-fly creation of  md5s for output BAM files.
   type: boolean
   inputBinding:
@@ -306,6 +306,26 @@ inputs:
   type: string
   inputBinding:
     prefix: --log_to_file
+- id: jar
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -jar
+- id: java
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: var_62
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: var_63
+  doc: ''
+  type: long
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

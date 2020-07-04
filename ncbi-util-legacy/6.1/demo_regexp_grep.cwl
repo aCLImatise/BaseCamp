@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: demo_regexp_grep.cwl
+id: ../../../../home/ubuntu/BiocondaCli/demo_regexp_grep.cwl
 inputs:
 - id: count
   doc: print only a count of matching lines per FILE
@@ -46,7 +46,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --line-regexp
-- id: f
+- id: filename__filefilename
   doc: <filename>  or  --file=<filename> Read patterns from <filename> instead of
     using a command line option. Trailing white space is removed; blanks lines are
     ignored. There is a maximum of 100 patterns.

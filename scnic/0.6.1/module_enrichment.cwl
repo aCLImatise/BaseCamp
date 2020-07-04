@@ -1,22 +1,18 @@
 class: CommandLineTool
-id: module_enrichment.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/module_enrichment.py_stats.cwl
 inputs:
-- id: annotate
-  doc: Annotate correls.txt file
+- id: correl_s
+  doc: ''
   type: string
   inputBinding:
-    position: 0
-- id: perms
-  doc: Run permutation generation
+    prefix: --correls
+- id: modules
+  doc: ''
   type: string
   inputBinding:
-    position: 1
-- id: stats
-  doc: Generate p-values from the permutations
-  type: string
-  inputBinding:
-    position: 2
+    prefix: --modules
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - module_enrichment.py
+- stats

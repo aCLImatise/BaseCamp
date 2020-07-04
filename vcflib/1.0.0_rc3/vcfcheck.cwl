@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: vcfcheck.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfcheck.cwl
 inputs:
-- id: vcf_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: fast_a_reference
   doc: FASTA reference file to use to obtain primer sequences
   type: boolean
@@ -21,6 +16,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --keep-failures
+- id: vcf_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: shannon.py.cwl
-inputs: []
+id: ../../../../home/ubuntu/BiocondaCli/shannon.py.cwl
+inputs:
+- id: o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
 outputs: []
 cwlVersion: v1.1
 baseCommand:

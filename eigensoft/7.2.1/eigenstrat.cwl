@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: eigenstrat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/eigenstrat.cwl
 inputs:
-- id: must
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: all
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: be
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: specified
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
 - id: i
   doc: ''
   type: boolean
@@ -41,6 +21,26 @@ inputs:
   type: string
   inputBinding:
     prefix: -o
+- id: must
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: all
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: be
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: specified
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

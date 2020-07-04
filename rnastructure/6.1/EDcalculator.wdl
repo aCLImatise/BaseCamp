@@ -2,12 +2,13 @@ version 1.0
 
 task EDcalculator {
   input {
-    String? edEdCalculator
-    String? ctCtStructureFile
+    String ct_structure_file
   }
   command <<<
     EDcalculator \
-      ~{edEdCalculator} \
-      ~{ctCtStructureFile}
+      ~{ct_structure_file}
   >>>
+  parameter_meta {
+    ct_structure_file: ""
+  }
 }

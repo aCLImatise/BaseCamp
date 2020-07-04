@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: rseg_diff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rseg_diff.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: mapped_read_locations_a
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: mapped_read_locations_b
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: out
   doc: 'domain output file '
   type: boolean
@@ -176,6 +161,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -about
+- id: mapped_read_locations_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: mapped_read_locations_b
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

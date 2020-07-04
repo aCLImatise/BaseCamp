@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: json_xs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/json_xs.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,7 +1,13 @@
 class: CommandLineTool
-id: nudup.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nudup.py.cwl
 inputs:
-- id: f
+- id: paired_end
+  doc: use paired end deduping with template. SAM/BAM alignment must contain paired
+    end reads. Degenerate read pairs (alignments for one read of pair) will be discarded.
+  type: boolean
+  inputBinding:
+    prefix: --paired-end
+- id: readfq_fastq_file
   doc: '|READ.fq   FASTQ file containing the molecular tag sequence for each read
     name in the corresponding SAM/BAM file (required only for CASE 1 detailed above)'
   type: string
@@ -24,7 +30,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --length
-- id: t
+- id: directory_named_tmp
   doc: 'directory for reading and writing to temporary files and named pipes (default:
     /tmp)'
   type: string

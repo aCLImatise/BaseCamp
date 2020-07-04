@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: makeprotseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/makeprotseq.cwl
 inputs:
 - id: pep_stats_file
   doc: infile     This file should be a pepstats output file. Protein sequences will

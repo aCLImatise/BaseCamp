@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cnv_facets.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cnv_facets.R.cwl
 inputs:
 - id: out
   doc: Output prefix for the output files

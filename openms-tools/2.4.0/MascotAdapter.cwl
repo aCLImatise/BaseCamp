@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MascotAdapter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MascotAdapter.cwl
 inputs:
 - id: in
   doc: "*                      Input file in mzData format. Note: In mode 'mascot_out'\
@@ -43,7 +43,7 @@ inputs:
 - id: taxonomy
   doc: "The taxonomy (default: 'All entries' valid: 'All entries', '. . Archaea (Archaeobacteria)',\
     \ '. . Eukaryota (eucaryotes)', '. . . . Alveolata (alveolates)', '. . . . . .\
-    \ Plasmo dium falciparum (malaria parasite)', '. . . . . . Other Alveolata', '.\
+    \ Plasmodium falciparum (malaria parasite)', '. . . . . . Other Alveolata', '.\
     \ . . . Metazoa (Animals)', '. . . . . . Caenorhabditis elegans', '. . . . . .\
     \ Drosophila (fruit flies)', '. . . . . . Chordata (vertebrates and relatives)',\
     \ '. . . . . . . . bony vertebrates', '. . . . . . . . . . lobe-finned fish and\
@@ -54,12 +54,27 @@ inputs:
     \ . . . . . . . . . . . . Mus musculus (house mouse)', '. . . . . . . . . . .\
     \ . . . . . Rattus', '. . . . . . . . . . . . . . . . Other rodentia', '. . .\
     \ . . . . . . . . . . . Other mammalia', '. . . . . . . . . . . . Xenopus laevis\
-    \ (African clawed frog)' , '. . . . . . . . . . . . Other lobe-finned fish and\
+    \ (African clawed frog)', '. . . . . . . . . . . . Other lobe-finned fish and\
     \ tetrapod clade', '. . . . . . . . . . Actinopterygii (ray-finned fishes)', '.\
     \ . . . . . . . . . . . Takifugu rubripes (Japanese Pufferfish)', '. . . . . .\
     \ . . . . . . Danio rerio (zebra fish)', '. . . . . . . . . . . . Other Actinopterygii',\
-    \ '. . . . . . . . Other Chordata', '. . . . . . Othe ... ed', '. . Species information\
-    \ unavailable')"
+    \ '. . . . . . . . Other Chordata', '. . . . . . Other Metazoa', '. . . . Dictyostelium\
+    \ discoideum', '. . . . Fungi', '. . . . . . Saccharomyces Cerevisiae (baker\\\
+    's yeast)', '. . . . . . Schizosaccharomyces pombe (fission yeast)', '. . . .\
+    \ . . Pneumocystis carinii', '. . . . . . Other Fungi', '. . . . Viridiplantae\
+    \ (Green Plants)', '. . . . . . Arabidopsis thaliana (thale cress)', '. . . .\
+    \ . . Oryza sativa (rice)', '. . . . . . Other green plants', '. . . . Other Eukaryota',\
+    \ '. . Bacteria (Eubacteria)', '. . . . Actinobacteria (class)', '. . . . . .\
+    \ Mycobacterium tuberculosis complex', '. . . . . . Other Actinobacteria (class)',\
+    \ '. . . . Firmicutes (gram-positive bacteria)', '. . . . . . Bacillus subtilis',\
+    \ '. . . . . . Mycoplasma', '. . . . . . Streptococcus Pneumoniae', '. . . . .\
+    \ . Streptomyces coelicolor', '. . . . . . Other Firmicutes', '. . . . Proteobacteria\
+    \ (purple bacteria)', '. . . . . . Agrobacterium tumefaciens', '. . . . . . Campylobacter\
+    \ jejuni', '. . . . . . Escherichia coli', '. . . . . . Neisseria meningitidis',\
+    \ '. . . . . . Salmonella', '. . . . . . Other Proteobacteria', '. . . . Other\
+    \ Bacteria', '. . Viruses', '. . . . Hepatitis C virus', '. . . . Other viruses',\
+    \ '. . Other (includes plasmids and artificial sequences)', '. . unclassified',\
+    \ '. . Species information unavailable')"
   type: string
   inputBinding:
     prefix: -taxonomy
@@ -93,7 +108,7 @@ inputs:
     \ None would be best for peptide input or unspecific digestion, for more please\
     \ refer to your mascot server). (default: 'Trypsin' valid: 'Trypsin', 'Arg-C',\
     \ 'Asp-N', 'Asp-N_ambic', 'Chymotrypsin', 'CNBr', 'CNBr+Trypsin', 'Formic_acid',\
-    \ 'Lys-C', 'Lys-C/P', 'PepsinA', 'Tryp-CN Br', 'TrypChymo', 'Trypsin/P', 'V8-DE',\
+    \ 'Lys-C', 'Lys-C/P', 'PepsinA', 'Tryp-CNBr', 'TrypChymo', 'Trypsin/P', 'V8-DE',\
     \ 'V8-E', 'semiTrypsin', 'LysC+AspN', 'None')"
   type: string
   inputBinding:

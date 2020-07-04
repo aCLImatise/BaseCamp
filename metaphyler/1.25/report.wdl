@@ -2,30 +2,34 @@ version 1.0
 
 task Report.pl {
   input {
-    String? perlPerl
-    String? reportReportPl
-    String? taxprof1Taxprof1
-    String? mergeMerge
-    String? multipleMultiple
-    String? taxonomyTaxonomy
-    String? profileProfile
-    File? filesFiles
-    Int? intoInto
-    String? oneOne
-    String? tableTable
+    String merge
+    String multiple
+    String taxonomy
+    String profile
+    File files
+    Int into
+    String one
+    String table_dot
   }
   command <<<
     report.pl \
-      ~{perlPerl} \
-      ~{reportReportPl} \
-      ~{taxprof1Taxprof1} \
-      ~{mergeMerge} \
-      ~{multipleMultiple} \
-      ~{taxonomyTaxonomy} \
-      ~{profileProfile} \
-      ~{filesFiles} \
-      ~{intoInto} \
-      ~{oneOne} \
-      ~{tableTable}
+      ~{merge} \
+      ~{multiple} \
+      ~{taxonomy} \
+      ~{profile} \
+      ~{files} \
+      ~{into} \
+      ~{one} \
+      ~{table_dot}
   >>>
+  parameter_meta {
+    merge: ""
+    multiple: ""
+    taxonomy: ""
+    profile: ""
+    files: ""
+    into: ""
+    one: ""
+    table_dot: ""
+  }
 }

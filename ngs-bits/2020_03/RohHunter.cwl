@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RohHunter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RohHunter.cwl
 inputs:
 - id: in
   doc: Input variant list in VCF or GSvar format.

@@ -1,16 +1,21 @@
 class: CommandLineTool
-id: pynnotator_or.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pynnotator_or.cwl
 inputs:
-- id: i
+- id: vcf_file_annotated
   doc: a VCF file to be annotated
   type: string
   inputBinding:
     prefix: -i
-- id: b
+- id: hg_genome_build
   doc: or hg38  The genome build you want to use
   type: string
   inputBinding:
     prefix: -b
+- id: options
+  doc: install test
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

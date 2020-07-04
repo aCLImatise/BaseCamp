@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: split_fasta.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/split_fasta.py.cwl
 inputs:
 - id: input
   doc: The input file in FASTA format.

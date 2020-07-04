@@ -2,30 +2,43 @@ version 1.0
 
 task MzMLSplitter {
   input {
-    File inIn
-    File outOut
-    String partsParts
-    String sizeSize
-    String unitUnit
-    Boolean noNoChrom
-    Boolean noNoSpec
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    File? in
+    File? out
+    String? parts
+    String? size
+    String? unit
+    Boolean? no_chrom
+    Boolean? no_spec
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     MzMLSplitter \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(partsParts) then ("-parts " +  '"' + partsParts + '"') else ""} \
-      ~{if defined(sizeSize) then ("-size " +  '"' + sizeSize + '"') else ""} \
-      ~{if defined(unitUnit) then ("-unit " +  '"' + unitUnit + '"') else ""} \
-      ~{true="-no_chrom" false="" noNoChrom} \
-      ~{true="-no_spec" false="" noNoSpec} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(parts) then ("-parts " +  '"' + parts + '"') else ""} \
+      ~{if defined(size) then ("-size " +  '"' + size + '"') else ""} \
+      ~{if defined(unit) then ("-unit " +  '"' + unit + '"') else ""} \
+      ~{true="-no_chrom" false="" no_chrom} \
+      ~{true="-no_spec" false="" no_spec} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*        Input file (valid formats: 'mzML')"
+    out: "Prefix for output files ('_part1of2.mzML' etc. will be appended; default: same as 'in' without the file extension)"
+    parts: "Number of parts to split into (takes precedence over 'size' if set) (default: '1' min: '1')"
+    size: "Approximate upper limit for resulting file sizes (in 'unit') (default: '0' min: '0')"
+    unit: "Unit for 'size' (base 1024) (default: 'MB' valid: 'KB', 'MB', 'GB')"
+    no_chrom: "Remove chromatograms, keep only spectra."
+    no_spec: "Remove spectra, keep only chromatograms."
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

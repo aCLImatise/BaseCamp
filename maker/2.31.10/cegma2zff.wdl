@@ -2,12 +2,16 @@ version 1.0
 
 task Cegma2zff {
   input {
-    String? ceCeGmaGff
-    String? genomeGenomeFastA
+    String ce_gma_gff
+    String genome_fast_a
   }
   command <<<
     cegma2zff \
-      ~{ceCeGmaGff} \
-      ~{genomeGenomeFastA}
+      ~{ce_gma_gff} \
+      ~{genome_fast_a}
   >>>
+  parameter_meta {
+    ce_gma_gff: ""
+    genome_fast_a: ""
+  }
 }

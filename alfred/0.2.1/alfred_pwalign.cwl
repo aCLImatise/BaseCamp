@@ -1,37 +1,22 @@
 class: CommandLineTool
-id: alfred_pwalign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/alfred_pwalign.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: seq1fasta
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: seq2fasta
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: g
+- id: arg_gap_open
   doc: '[ --gapopen ] arg (=-10)           gap open'
   type: boolean
   inputBinding:
     prefix: -g
-- id: e
+- id: arg_gap_extension
   doc: '[ --gapext ] arg (=-1)             gap extension'
   type: boolean
   inputBinding:
     prefix: -e
-- id: m
+- id: _arg_match
   doc: '[ --match ] arg (=5)               match'
   type: boolean
   inputBinding:
     prefix: -m
-- id: n
+- id: _arg_mismatch
   doc: '[ --mismatch ] arg (=-4)           mismatch'
   type: boolean
   inputBinding:
@@ -46,7 +31,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -q
-- id: l
+- id: _local_alignment
   doc: '[ --local ]                        local alignment'
   type: boolean
   inputBinding:
@@ -56,11 +41,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -f
-- id: a
+- id: arg_verticalhorizontal_alignment
   doc: '[ --alignment ] arg (="al.fa.gz")  vertical/horizontal alignment'
   type: boolean
   inputBinding:
     prefix: -a
+- id: seq_one_dot_fast_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: seq_two_dot_fast_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

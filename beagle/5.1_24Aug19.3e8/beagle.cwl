@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: beagle.cwl
+id: ../../../../home/ubuntu/BiocondaCli/beagle.cwl
 inputs:
+- id: jar
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -jar
 - id: java
   doc: ''
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: jar
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -jar
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,61 +1,46 @@
 class: CommandLineTool
-id: report.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/report.pl.cwl
 inputs:
-- id: perl
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: report_pl
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: taxprof1
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: merge
   doc: ''
   type: string
   inputBinding:
-    position: 3
+    position: 0
 - id: multiple
   doc: ''
   type: string
   inputBinding:
-    position: 4
+    position: 1
 - id: taxonomy
   doc: ''
   type: string
   inputBinding:
-    position: 5
+    position: 2
 - id: profile
   doc: ''
   type: string
   inputBinding:
-    position: 6
+    position: 3
 - id: files
   doc: ''
   type: File
   inputBinding:
-    position: 7
+    position: 4
 - id: into
   doc: ''
   type: long
   inputBinding:
-    position: 8
+    position: 5
 - id: one
   doc: ''
   type: string
   inputBinding:
-    position: 9
-- id: table
+    position: 6
+- id: table_dot
   doc: ''
   type: string
   inputBinding:
-    position: 10
+    position: 7
 outputs: []
 cwlVersion: v1.1
 baseCommand:

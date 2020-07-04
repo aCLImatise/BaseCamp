@@ -2,14 +2,19 @@ version 1.0
 
 task SeqtkTrinity {
   input {
-    String? seqSeqTk
-    String? commandCommand
-    String? argumentsArguments
+    String seq_tk
+    String var_command
+    String arguments
   }
   command <<<
     seqtk-trinity \
-      ~{seqSeqTk} \
-      ~{commandCommand} \
-      ~{argumentsArguments}
+      ~{seq_tk} \
+      ~{var_command} \
+      ~{arguments}
   >>>
+  parameter_meta {
+    seq_tk: ""
+    var_command: ""
+    arguments: ""
+  }
 }

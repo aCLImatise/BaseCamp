@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: samFLAGinfo.pl.orig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/samFLAGinfo.pl.orig.cwl
 inputs:
 - id: perl
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: sam_flag_info_pl
+- id: sam_flag_info_do_tpl
   doc: ''
   type: string
   inputBinding:

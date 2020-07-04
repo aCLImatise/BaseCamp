@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: arb_remote.cwl
+id: ../../../../home/ubuntu/BiocondaCli/arb_remote.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

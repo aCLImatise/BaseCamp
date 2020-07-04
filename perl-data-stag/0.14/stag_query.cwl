@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: stag_query.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stag_query.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

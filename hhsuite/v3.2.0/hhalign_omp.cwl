@@ -1,45 +1,35 @@
 class: CommandLineTool
-id: hhalign_omp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hhalign_omp.cwl
 inputs:
-- id: i
+- id: inputquery_single_sequence
   doc: 'input/query: single sequence or multiple sequence alignment (MSA) in a3m,
     a2m, or FASTA format, or HMM in hhm format'
   type: File
   inputBinding:
     prefix: -i
-- id: t
+- id: inputtemplate_single_sequence
   doc: 'input/template: single sequence or multiple sequence alignment (MSA) in a3m,
     a2m, or FASTA format, or HMM in hhm format'
   type: File
   inputBinding:
     prefix: -t
-- id: m
-  doc: 'use FASTA: columns with residue in 1st sequence are match states'
-  type: string
-  inputBinding:
-    prefix: -M
-- id: m
-  doc: '[0,100]     use FASTA: columns with fewer than X% gaps are match states   '
+- id: tags_slash_no_tags
+  doc: 'do NOT / do neutralize His-, C-myc-, FLAG-tags, and trypsin  recognition sequence
+    to background distribution (def=-notags)  '
   type: boolean
   inputBinding:
-    prefix: -M
-- id: tags
-  doc: '/-notags  do NOT / do neutralize His-, C-myc-, FLAG-tags, and trypsin  recognition
-    sequence to background distribution (def=-notags)  '
-  type: boolean
-  inputBinding:
-    prefix: -tags
-- id: o
+    prefix: -tags/-notags
+- id: write_results_file
   doc: write results in standard format to file (default=<infile.hhr>)
   type: File
   inputBinding:
     prefix: -o
-- id: oa3m
+- id: o_a_three_m
   doc: write query alignment in a3m or PSI-BLAST format (-opsi) to file (default=none)
   type: File
   inputBinding:
     prefix: -oa3m
-- id: aa3m
+- id: aa_three_m
   doc: append query alignment in a3m (-aa3m) or PSI-BLAST format (-apsi )to file (default=none)
   type: File
   inputBinding:
@@ -117,16 +107,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -mact
-- id: glob
-  doc: /-loc     use global/local alignment mode for searching/ranking (def=local)
+- id: glob_slash_loc
+  doc: use global/local alignment mode for searching/ranking (def=local)
   type: boolean
   inputBinding:
-    prefix: -glob
-- id: v
+    prefix: -glob/-loc
+- id: verbose_mode_screen
   doc: 'verbose mode: 0:no screen output  1:only warings  2: verbose (def=2)'
   type: long
   inputBinding:
     prefix: -v
+- id: hh_align
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

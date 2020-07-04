@@ -2,10 +2,13 @@ version 1.0
 
 task BRS {
   input {
-    String? seqSeqFile
+    String seq_file
   }
   command <<<
     BRS \
-      ~{seqSeqFile}
+      ~{seq_file}
   >>>
+  parameter_meta {
+    seq_file: ""
+  }
 }

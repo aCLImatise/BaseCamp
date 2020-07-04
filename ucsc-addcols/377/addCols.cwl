@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: addCols.cwl
+id: ../../../../home/ubuntu/BiocondaCli/addCols.cwl
 inputs:
+- id: max_cols
+  doc: '- maximum number of colums (defaults to 16)'
+  type: string
+  inputBinding:
+    prefix: -maxCols
 - id: filename
   doc: ''
   type: File
   inputBinding:
     position: 0
-- id: maximum
-  doc: of colums (defaults to 16)
-  type: string
-  inputBinding:
-    prefix: '- maximum'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

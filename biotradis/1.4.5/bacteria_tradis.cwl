@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bacteria_tradis.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bacteria_tradis.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

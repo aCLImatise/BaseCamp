@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: elprep.cwl
+id: ../../../../home/ubuntu/BiocondaCli/elprep.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

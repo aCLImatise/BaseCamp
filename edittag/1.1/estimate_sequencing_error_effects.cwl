@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: estimate_sequencing_error_effects.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/estimate_sequencing_error_effects.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

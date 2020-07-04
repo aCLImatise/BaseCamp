@@ -2,20 +2,28 @@ version 1.0
 
 task PysradbSearch {
   input {
-    String saveSaveTo
-    String dbDb
-    Boolean assayAssay
-    Boolean descDesc
-    Boolean detailedDetailed
-    Boolean expandExpand
+    String? save_to
+    String? db
+    Boolean? assay
+    Boolean? desc
+    Boolean? detailed
+    Boolean? expand
   }
   command <<<
     pysradb search \
-      ~{if defined(saveSaveTo) then ("--saveto " +  '"' + saveSaveTo + '"') else ""} \
-      ~{if defined(dbDb) then ("--db " +  '"' + dbDb + '"') else ""} \
-      ~{true="--assay" false="" assayAssay} \
-      ~{true="--desc" false="" descDesc} \
-      ~{true="--detailed" false="" detailedDetailed} \
-      ~{true="--expand" false="" expandExpand}
+      ~{if defined(save_to) then ("--saveto " +  '"' + save_to + '"') else ""} \
+      ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
+      ~{true="--assay" false="" assay} \
+      ~{true="--desc" false="" desc} \
+      ~{true="--detailed" false="" detailed} \
+      ~{true="--expand" false="" expand}
   >>>
+  parameter_meta {
+    save_to: "Save metadata dataframe to file"
+    db: "Path to SRAmetadb.sqlite file"
+    assay: "Include assay type in output"
+    desc: "Should sample_attribute be included"
+    detailed: "Display detailed metadata table"
+    expand: "Should sample_attribute be expanded"
+  }
 }

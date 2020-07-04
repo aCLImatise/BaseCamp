@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: Aquila_stLFR_fastq_preprocess.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Aquila_stLFR_fastq_preprocess.cwl
 inputs:
-- id: fast_q_1
-  doc: ', -1 FASTQ_1 origin stLFR fastq 1 (gz file)'
+- id: fast_q_one
+  doc: origin stLFR fastq 1 (gz file)
   type: string
   inputBinding:
     prefix: --fastq_1
-- id: fast_q_2
-  doc: ', -2 FASTQ_2 origin stLFR fastq 2 (gz file)'
+- id: fast_q_two
+  doc: origin stLFR fastq 2 (gz file)
   type: string
   inputBinding:
     prefix: --fastq_2
@@ -16,6 +16,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --out_file
+- id: use
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

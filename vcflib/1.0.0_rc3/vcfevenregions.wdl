@@ -2,22 +2,31 @@ version 1.0
 
 task Vcfevenregions {
   input {
-    String fastFastAReference
-    String numberNumberOfRegions
-    String numberNumberOfPositions
-    String offsetOffset
-    String overlapOverlap
-    String separatorSeparator
-    String? vcfVcfFile
+    String? fast_a_reference
+    String? number_of_regions
+    String? number_of_positions
+    String? offset
+    String? overlap
+    String? separator
+    String vcf_file
   }
   command <<<
     vcfevenregions \
-      ~{vcfVcfFile} \
-      ~{if defined(fastFastAReference) then ("--fasta-reference " +  '"' + fastFastAReference + '"') else ""} \
-      ~{if defined(numberNumberOfRegions) then ("--number-of-regions " +  '"' + numberNumberOfRegions + '"') else ""} \
-      ~{if defined(numberNumberOfPositions) then ("--number-of-positions " +  '"' + numberNumberOfPositions + '"') else ""} \
-      ~{if defined(offsetOffset) then ("--offset " +  '"' + offsetOffset + '"') else ""} \
-      ~{if defined(overlapOverlap) then ("--overlap " +  '"' + overlapOverlap + '"') else ""} \
-      ~{if defined(separatorSeparator) then ("--separator " +  '"' + separatorSeparator + '"') else ""}
+      ~{vcf_file} \
+      ~{if defined(fast_a_reference) then ("--fasta-reference " +  '"' + fast_a_reference + '"') else ""} \
+      ~{if defined(number_of_regions) then ("--number-of-regions " +  '"' + number_of_regions + '"') else ""} \
+      ~{if defined(number_of_positions) then ("--number-of-positions " +  '"' + number_of_positions + '"') else ""} \
+      ~{if defined(offset) then ("--offset " +  '"' + offset + '"') else ""} \
+      ~{if defined(overlap) then ("--overlap " +  '"' + overlap + '"') else ""} \
+      ~{if defined(separator) then ("--separator " +  '"' + separator + '"') else ""}
   >>>
+  parameter_meta {
+    fast_a_reference: "FASTA reference file to use to obtain primer sequences."
+    number_of_regions: "The number of desired regions."
+    number_of_positions: "The number of positions per region."
+    offset: "Add an offset to region positioning, to avoid boundary related artifacts in downstream processing."
+    overlap: "The number of sites to overlap between regions.  Default 0."
+    separator: "Specify string to use to separate region output.  Default '-'"
+    vcf_file: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pyatac_vplot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyatac_vplot.cwl
 inputs:
 - id: bed
   doc: Positions around which to generate VPlot
@@ -61,6 +61,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --plot_extra
+- id: out
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --out
 outputs: []
 cwlVersion: v1.1
 baseCommand:

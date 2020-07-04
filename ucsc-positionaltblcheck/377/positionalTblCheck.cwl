@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: positionalTblCheck.cwl
+id: ../../../../home/ubuntu/BiocondaCli/positionalTblCheck.cwl
 inputs:
+- id: verbose
+  doc: n>=2, print tables as checked
+  type: string
+  inputBinding:
+    prefix: -verbose
 - id: db
   doc: ''
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: verbose
-  doc: n>=2, print tables as checked
-  type: string
-  inputBinding:
-    prefix: -verbose
 outputs: []
 cwlVersion: v1.1
 baseCommand:

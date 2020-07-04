@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rna2dna.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rna2dna.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

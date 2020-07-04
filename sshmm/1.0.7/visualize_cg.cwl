@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: visualize_cg.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/visualize_cg.py.cwl
 inputs:
 - id: highlight
   doc: Highlight some elements

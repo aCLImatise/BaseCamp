@@ -1,19 +1,6 @@
 class: CommandLineTool
-id: medpy_grid.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/medpy_grid.py.cwl
 inputs:
-- id: output
-  doc: Generated grid volume.
-  type: string
-  inputBinding:
-    position: 0
-- id: spacing
-  doc: The grid spacing. Can be a single digit for regular spacing in all dimensions
-    or a colon-separated list of N integers, where N is the number of dimension in
-    the generated volume. To skip the grid in one dimension, simply supply a 0 for
-    it.
-  type: string
-  inputBinding:
-    position: 1
 - id: example
   doc: 'Option 1/2: Supply an image to create the grid volume by example (i.e. with
     same shape, voxel spacing and offset).'
@@ -44,12 +31,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --real
-- id: v
+- id: display_more_information
   doc: Display more information.
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: display_debug_information
   doc: Display debug information.
   type: boolean
   inputBinding:
@@ -59,6 +46,19 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --force
+- id: output
+  doc: Generated grid volume.
+  type: string
+  inputBinding:
+    position: 0
+- id: spacing
+  doc: The grid spacing. Can be a single digit for regular spacing in all dimensions
+    or a colon-separated list of N integers, where N is the number of dimension in
+    the generated volume. To skip the grid in one dimension, simply supply a 0 for
+    it.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

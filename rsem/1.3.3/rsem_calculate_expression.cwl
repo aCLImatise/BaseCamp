@@ -1,34 +1,33 @@
 class: CommandLineTool
-id: rsem_calculate_expression.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rsem_calculate_expression.cwl
 inputs:
-- id: input
-  doc: SAM/BAM/CRAM formatted input file. If "-" is specified for the filename, the
-    input is instead assumed to come from standard input. RSEM requires all alignments
-    of the same read group together. For paired-end reads, RSEM also requires the
-    two mates of any alignment be adjacent. In addition, RSEM does not allow the SEQ
-    and QUAL fields to be empty. See Description section for how to make input file
-    obey RSEM's requirements.
-  type: string
-  inputBinding:
-    position: 0
-- id: reference_name
-  doc: The name of the reference used. The user must have run 'rsem-prepare-reference'
-    with this reference_name before running this program.
-  type: string
-  inputBinding:
-    position: 1
-- id: sample_name
-  doc: The name of the sample analyzed. All output files are prefixed by this name
-    (e.g., sample_name.genes.results)
-  type: string
-  inputBinding:
-    position: 2
-- id: p
-  doc: "/--num-threads <int> Number of threads to use. Both Bowtie/Bowtie2, expression\
-    \ estimation and 'samtools sort' will use this many threads. (Default: 1)"
+- id: paired_end
+  doc: 'Input reads are paired-end reads. (Default: off)'
   type: boolean
   inputBinding:
-    prefix: -p
+    prefix: --paired-end
+- id: no_qualities
+  doc: 'Input reads do not contain quality scores. (Default: off)'
+  type: boolean
+  inputBinding:
+    prefix: --no-qualities
+- id: stranded_ness
+  doc: "This option defines the strandedness of the RNA-Seq reads. It recognizes three\
+    \ values: 'none', 'forward', and 'reverse'. 'none' refers to non-strand-specific\
+    \ protocols. 'forward' means all (upstream) reads are derived from the forward\
+    \ strand. 'reverse' means all (upstream) reads are derived from the reverse strand.\
+    \ If 'forward'/'reverse' is set, the '--norc'/'--nofw' Bowtie/Bowtie 2 option\
+    \ will also be enabled to avoid aligning reads to the opposite strand. For Illumina\
+    \ TruSeq Stranded protocols, please use 'reverse'. (Default: 'none')"
+  type: string
+  inputBinding:
+    prefix: --strandedness
+- id: p_slash_num_threads
+  doc: "Number of threads to use. Both Bowtie/Bowtie2, expression estimation and 'samtools\
+    \ sort' will use this many threads. (Default: 1)"
+  type: long
+  inputBinding:
+    prefix: -p/--num-threads
 - id: alignments
   doc: 'Input file contains alignments in SAM/BAM/CRAM format. The exact file format
     will be determined automatically. (Default: off)'
@@ -43,7 +42,7 @@ inputs:
   type: File
   inputBinding:
     prefix: --fai
-- id: bowtie2
+- id: bowtie_two
   doc: "Use Bowtie 2 instead of Bowtie to align reads. Since currently RSEM does not\
     \ handle indel, local and discordant alignments, the Bowtie2 parameters are set\
     \ in a way to avoid those alignments. In particular, we use options '--sensitive\
@@ -64,7 +63,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --star
-- id: hisat2_hca
+- id: his_at_two_hca
   doc: 'Use HISAT2 to align reads to the transcriptome according to Human Cell Atlast
     SMART-Seq2 pipeline. In particular, we use HISAT parameters "-k 10 --secondary
     --rg-id=$sampleToken --rg SM:$sampleToken --rg LB:$sampleToken --rg PL:ILLUMINA
@@ -111,11 +110,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --calc-ci
-- id: q
-  doc: '/--quiet Suppress the output of logging information. (Default: off)'
+- id: q_slash_quiet
+  doc: 'Suppress the output of logging information. (Default: off)'
   type: boolean
   inputBinding:
-    prefix: -q
+    prefix: -q/--quiet
+- id: h_slash_help
+  doc: Show help information.
+  type: boolean
+  inputBinding:
+    prefix: -h/--help
 - id: sort_bam_by_read_name
   doc: 'Sort BAM file aligned under transcript coordidate by read name. Setting this
     option on will produce deterministic maximum likelihood estimations from independent
@@ -173,13 +177,13 @@ inputs:
   type: long
   inputBinding:
     prefix: --seed-length
-- id: phred33_quals
+- id: phred_three_three_quals
   doc: 'Input quality scores are encoded as Phred+33. This option is used by Bowtie,
     Bowtie 2 and HISAT2. (Default: on)'
   type: boolean
   inputBinding:
     prefix: --phred33-quals
-- id: phred64_quals
+- id: phred_six_four_quals
   doc: 'Input quality scores are encoded as Phred+64 (default for GA Pipeline ver.
     >= 1.3). This option is used by Bowtie, Bowtie 2 and HISAT2. (Default: off)'
   type: boolean
@@ -221,24 +225,24 @@ inputs:
   type: long
   inputBinding:
     prefix: --bowtie-chunkmbs
-- id: bowtie2_path
+- id: bowtie_two_path
   doc: "(Bowtie 2 parameter) The path to the Bowtie 2 executables. (Default: the path\
     \ to the Bowtie 2 executables is assumed to be in the user's PATH environment\
     \ variable)"
   type: File
   inputBinding:
     prefix: --bowtie2-path
-- id: bowtie2_mismatch_rate
+- id: bowtie_two_mismatch_rate
   doc: '(Bowtie 2 parameter) The maximum mismatch rate allowed. (Default: 0.1)'
   type: string
   inputBinding:
     prefix: --bowtie2-mismatch-rate
-- id: bowtie2_k
+- id: bowtie_two_k
   doc: '(Bowtie 2 parameter) Find up to <int> alignments per read. (Default: 200)'
   type: long
   inputBinding:
     prefix: --bowtie2-k
-- id: bowtie2_sensitivity_level
+- id: bowtie_two_sensitivity_level
   doc: "(Bowtie 2 parameter) Set Bowtie 2's preset options in --end-to-end mode. This\
     \ option controls how hard Bowtie 2 tries to find alignments. <string> must be\
     \ one of \"very_fast\", \"fast\", \"sensitive\" and \"very_sensitive\". The four\
@@ -272,7 +276,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --star-output-genome-bam
-- id: hisat2_path
+- id: his_at_two_path
   doc: "The path to HISAT2's executable. (Default: the path to HISAT2 executable is\
     \ assumed to be in user's PATH environment variable)"
   type: File
@@ -516,6 +520,92 @@ inputs:
   type: string
   inputBinding:
     prefix: --forward-prob
+- id: input
+  doc: SAM/BAM/CRAM formatted input file. If "-" is specified for the filename, the
+    input is instead assumed to come from standard input. RSEM requires all alignments
+    of the same read group together. For paired-end reads, RSEM also requires the
+    two mates of any alignment be adjacent. In addition, RSEM does not allow the SEQ
+    and QUAL fields to be empty. See Description section for how to make input file
+    obey RSEM's requirements.
+  type: string
+  inputBinding:
+    position: 0
+- id: reference_name
+  doc: The name of the reference used. The user must have run 'rsem-prepare-reference'
+    with this reference_name before running this program.
+  type: string
+  inputBinding:
+    position: 1
+- id: sample_name
+  doc: The name of the sample analyzed. All output files are prefixed by this name
+    (e.g., sample_name.genes.results)
+  type: string
+  inputBinding:
+    position: 2
+- id: sample_name_dot_time
+  doc: Only generated when --time is specified. It contains time (in seconds) consumed
+    by aligning reads, estimating expression levels and calculating credibility intervals.
+  type: string
+  inputBinding:
+    position: 0
+- id: sample_name_dot_log
+  doc: Only generated when --alignments is not specified. It captures alignment statistics
+    outputted from the user-specified aligner.
+  type: string
+  inputBinding:
+    position: 1
+- id: sample_name_dot_stat
+  doc: "This is a folder instead of a file. All model related statistics are stored\
+    \ in this folder. Use 'rsem-plot-model' can generate plots using this folder.\
+    \ 'sample_name.stat/sample_name.cnt' contains alignment statistics. The format\
+    \ and meanings of each field are described in 'cnt_file_description.txt' under\
+    \ RSEM directory. 'sample_name.stat/sample_name.model' stores RNA-Seq model parameters\
+    \ learned from the data. The format and meanings of each filed of this file are\
+    \ described in 'model_file_description.txt' under RSEM directory. The following\
+    \ four output files will be generated only by prior-enhanced RSEM - 'sample_name.stat/sample_name_prsem.all_tr_features'\
+    \ It stores isofrom features for deriving and assigning pRSEM prior. The first\
+    \ line is a header and the rest is one isoform per line. The description for each\
+    \ column is: * trid: transcript ID from input annotation * geneid: gene ID from\
+    \ input anntation * chrom: isoform's chromosome name * strand: isoform's strand\
+    \ name * start: isoform's end with the lowest genomic loci * end: isoform's end\
+    \ with the highest genomic loci * tss_mpp: average mappability of [TSS-500bp,\
+    \ TSS+500bp], where TSS is isoform's transcription start site, i.e. 5'-end * body_mpp:\
+    \ average mappability of (TSS+500bp, TES-500bp), where TES is isoform's transcription\
+    \ end site, i.e. 3'-end * tes_mpp: average mappability of [TES-500bp, TES+500bp]\
+    \ * pme_count: isoform's fragment or read count from RSEM's posterior mean estimates\
+    \ * tss: isoform's TSS loci * tss_pk: equal to 1 if isoform's [TSS-500bp, TSS+500bp]\
+    \ region overlaps with a RNA Pol II peak; 0 otherwise * is_training: equal to\
+    \ 1 if isoform is in the training set where Pol II prior is learned; 0 otherwise\
+    \ - 'sample_name.stat/sample_name_prsem.all_tr_prior' It stores prior parameters\
+    \ for every isoform. This file does not have a header. Each line contains a prior\
+    \ parameter and an isoform's transcript ID delimited by ` # `. - 'sample_name.stat/sample_name_uniform_prior_1.isoforms.results'\
+    \ RSEM's posterior mean estimates on the isoform level with an initial pseudo-count\
+    \ of one for every isoform. It is in the same format as the 'sample_name.isoforms.results'.\
+    \ - 'sample_name.stat/sample_name_uniform_prior_1.genes.results' RSEM's posterior\
+    \ mean estimates on the gene level with an initial pseudo-count of one for every\
+    \ isoform. It is in the same format as the 'sample_name.genes.results'. When learning\
+    \ prior from multiple external data sets in prior-enhanced RSEM, two additional\
+    \ output files will be generated. - 'sample_name.stat/sample_name.pval_LL' It\
+    \ stores a p-value and a log-likelihood. The p-value indicates whether the combination\
+    \ of multiple complementary data sets is informative for RNA-seq quantification.\
+    \ The log-likelihood shows how well pRSEM's Dirichlet-multinomial model fits the\
+    \ read counts of partitioned training set isoforms. - 'sample_name.stat/sample_name.lgt_mdl.RData'\
+    \ It stores an R object named 'glmmdl', which is a logistic regression model on\
+    \ the training set isoforms and multiple external data sets. In addition, extra\
+    \ columns will be added to 'sample_name.stat/all_tr_features' * is_expr: equal\
+    \ to 1 if isoform has an abundance >= 1 TPM and a non-zero read count from RSEM's\
+    \ posterior mean estimates; 0 otherwise * \"$external_data_set_basename\": log10\
+    \ of external data's signal at [TSS-500, TSS+500]. Signal is the number of reads\
+    \ aligned within that interval and normalized to RPKM by read depth and interval\
+    \ length. It will be set to -4 if no read aligned to that interval. There are\
+    \ multiple columns like this one, where each represents an external data set.\
+    \ * prd_expr_prob: predicted probability from logistic regression model on whether\
+    \ this isoform is expressed or not. A probability higher than 0.5 is considered\
+    \ as expressed * partition: group index, to which this isoforms is partitioned\
+    \ * prior: prior parameter for this isoform"
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

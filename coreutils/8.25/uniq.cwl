@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: uniq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/uniq.cwl
 inputs:
 - id: count
   doc: prefix lines by the number of occurrences
@@ -11,7 +11,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --repeated
-- id: d
+- id: print_duplicate_lines
   doc: print all duplicate lines
   type: boolean
   inputBinding:
@@ -56,6 +56,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --check-chars
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

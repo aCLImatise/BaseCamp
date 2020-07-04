@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastaindex.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastaindex.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

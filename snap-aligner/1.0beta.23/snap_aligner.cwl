@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: snap_aligner.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snap_aligner.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

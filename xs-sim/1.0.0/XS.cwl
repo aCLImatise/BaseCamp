@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: XS.cwl
+id: ../../../../home/ubuntu/BiocondaCli/XS.cwl
 inputs:
-- id: v
+- id: verbose_mode
   doc: verbose mode
   type: boolean
   inputBinding:
     prefix: -v
-- id: t
+- id: sequencingtype_type_solid
   doc: '<sequencingType>     type: 1=Roche-454, 2=Illumina, 3=ABI SOLiD, 4=Ion Torrent'
   type: boolean
   inputBinding:
@@ -16,12 +16,12 @@ inputs:
   type: string
   inputBinding:
     prefix: -hf
-- id: i
+- id: ninstrumentname_unique_instrument
   doc: n=<instrumentName>   the unique instrument name (use n= before name)
   type: boolean
   inputBinding:
     prefix: -i
-- id: o
+- id: use_same_header
   doc: use the same header in third line of the read
   type: boolean
   inputBinding:
@@ -36,12 +36,12 @@ inputs:
   type: long
   inputBinding:
     prefix: -ld
-- id: n
+- id: numberofreads_number_reads
   doc: <numberOfReads>      number of reads per file
   type: boolean
   inputBinding:
     prefix: -n
-- id: f
+- id: acgtn_symbols_frequency
   doc: <A>,<C>,<G>,<T>,<N>  symbols frequency
   type: boolean
   inputBinding:
@@ -111,11 +111,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -es
-- id: s
+- id: seed_generation_seed
   doc: <seed>               generation seed
   type: boolean
   inputBinding:
     prefix: -s
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

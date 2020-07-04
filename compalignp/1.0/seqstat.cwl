@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: seqstat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqstat.cwl
 inputs:
-- id: a
+- id: report_persequence_info
   doc: ': report per-sequence info, not just a summary'
   type: boolean
   inputBinding:
@@ -21,6 +21,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: seq_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

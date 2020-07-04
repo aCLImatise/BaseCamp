@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: recallConsensus.cwl
+id: ../../../../home/ubuntu/BiocondaCli/recallConsensus.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

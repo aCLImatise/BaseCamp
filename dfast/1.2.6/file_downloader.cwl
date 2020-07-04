@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: file_downloader.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/file_downloader.py.cwl
 inputs:
 - id: protein
   doc: DFAST reference databases. [dfast|bifido|cyanobase|ecoli|lab]

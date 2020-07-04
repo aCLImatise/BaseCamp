@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ptx.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ptx.cwl
 inputs:
 - id: auto_reference
   doc: output automatically generated references
@@ -22,7 +22,7 @@ inputs:
   inputBinding:
     prefix: --macro-name
 - id: format
-  doc: generate output as roff directives
+  doc: generate output as TeX directives
   type: string
   inputBinding:
     prefix: --format
@@ -36,11 +36,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --sentence-regexp
-- id: format
-  doc: generate output as TeX directives
-  type: string
-  inputBinding:
-    prefix: --format
 - id: word_regexp
   doc: use REGEXP to match each keyword
   type: string
@@ -77,10 +72,20 @@ inputs:
   inputBinding:
     prefix: --references
 - id: typeset_mode
+  doc: '- not implemented -'
+  type: boolean
+  inputBinding:
+    prefix: --typeset-mode
+- id: width
   doc: output width in columns, reference excluded
   type: string
   inputBinding:
-    prefix: --typeset-mode
+    prefix: --width
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

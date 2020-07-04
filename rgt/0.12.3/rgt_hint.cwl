@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rgt_hint.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rgt_hint.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tsv2spectrast.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tsv2spectrast.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: swalign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/swalign.cwl
 inputs:
-- id: m
+- id: match_score_default
   doc: 'Match score (default: 2)'
   type: string
   inputBinding:

@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: hp2ps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hp2ps.cwl
 inputs:
-- id: d
+- id: sort_standard_deviation
   doc: sort by standard deviation
   type: boolean
   inputBinding:
@@ -11,17 +11,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ef
-- id: g
+- id: produce_output_suitable
   doc: produce output suitable for GHOSTSCRIPT previever
   type: boolean
   inputBinding:
     prefix: -g
-- id: i
+- id: sort_identifier_string
   doc: '[+|-] sort by identifier string (-i+ gives greatest on top) '
   type: boolean
   inputBinding:
     prefix: -i
-- id: m
+- id: multipage_output_key
   doc: multi-page output (key separate from graph)
   type: boolean
   inputBinding:
@@ -31,17 +31,17 @@ inputs:
   type: string
   inputBinding:
     prefix: -mn
-- id: m0
+- id: m_zero
   doc: the band limit altogether
   type: string
   inputBinding:
     prefix: -m0
-- id: p
+- id: use_previous_shading
   doc: use previous scaling, shading and ordering
   type: boolean
   inputBinding:
     prefix: -p
-- id: s
+- id: use_small_box
   doc: use small title box
   type: boolean
   inputBinding:
@@ -51,16 +51,21 @@ inputs:
   type: string
   inputBinding:
     prefix: -tf
-- id: y
+- id: traditional
   doc: traditional
   type: boolean
   inputBinding:
     prefix: -y
-- id: c
+- id: colour_ouput
   doc: colour ouput
   type: boolean
   inputBinding:
     prefix: -c
+- id: b
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -b
 outputs: []
 cwlVersion: v1.1
 baseCommand:

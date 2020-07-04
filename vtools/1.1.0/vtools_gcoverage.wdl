@@ -2,16 +2,19 @@ version 1.0
 
 task VtoolsGcoverage {
   input {
-    File inputInputGvcF
-    File refRefFlatFile
-    Boolean perPerExon
-    String? optionsOptions
+    File? input_gvc_f
+    File? ref_flat_file
+    Boolean? per_exon
   }
   command <<<
     vtools-gcoverage \
-      ~{optionsOptions} \
-      ~{if defined(inputInputGvcF) then ("--input-gvcf " +  '"' + inputInputGvcF + '"') else ""} \
-      ~{if defined(refRefFlatFile) then ("--refflat-file " +  '"' + refRefFlatFile + '"') else ""} \
-      ~{true="--per-exon" false="" perPerExon}
+      ~{if defined(input_gvc_f) then ("--input-gvcf " +  '"' + input_gvc_f + '"') else ""} \
+      ~{if defined(ref_flat_file) then ("--refflat-file " +  '"' + ref_flat_file + '"') else ""} \
+      ~{true="--per-exon" false="" per_exon}
   >>>
+  parameter_meta {
+    input_gvc_f: "Path to input VCF file  [required]"
+    ref_flat_file: "Path to refFlat file  [required]"
+    per_exon: "/ --per-transcript  Collect metrics per exon or per transcript"
+  }
 }

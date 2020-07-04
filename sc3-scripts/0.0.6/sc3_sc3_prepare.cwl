@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sc3_sc3_prepare.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sc3_sc3_prepare.R.cwl
 inputs:
 - id: input_object_file
   doc: File name in which a serialized R SingleCellExperiment object where object

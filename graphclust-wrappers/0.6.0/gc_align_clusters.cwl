@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gc_align_clusters.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gc_align_clusters.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

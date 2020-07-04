@@ -1,18 +1,18 @@
 class: CommandLineTool
-id: gstacks.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gstacks.cwl
 inputs:
-- id: p
+- id: input_directory_containg
   doc: ": input directory containg '*.matches.bam' files created by the de novo Stacks\
     \ pipeline, ustacks-cstacks-sstacks-tsv2bam"
   type: boolean
   inputBinding:
     prefix: -P
-- id: m
+- id: path_population_map
   doc: ': path to a population map giving the list of samples'
   type: boolean
   inputBinding:
     prefix: -M
-- id: o
+- id: output_directory_default
   doc: ': output directory (default: none with -B; with -P same as the input directory)'
   type: boolean
   inputBinding:

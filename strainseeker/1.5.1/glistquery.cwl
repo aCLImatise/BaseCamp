@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: glistquery.cwl
+id: ../../../../home/ubuntu/BiocondaCli/glistquery.cwl
 inputs:
-- id: input_list
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: stat
   doc: '- print statistics of the list file and exit'
   type: boolean
@@ -42,7 +32,7 @@ inputs:
   inputBinding:
     prefix: --mismatch
 - id: perfect_match
-  doc: of 3' perfect matches (default 0)
+  doc: "- specify number of 3' perfect matches (default 0)"
   type: string
   inputBinding:
     prefix: --perfectmatch
@@ -61,11 +51,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -all
-- id: d
+- id: increase_debug_level
   doc: '- increase debug level'
   type: boolean
   inputBinding:
     prefix: -D
+- id: input_list
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

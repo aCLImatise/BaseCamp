@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sga_kmer_count.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sga_kmer_count.cwl
 inputs:
 - id: km_er_size
   doc: 'The length of the kmer to use. (default: 27)'
@@ -18,6 +18,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --cache-length
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: src_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: krakenuniq_download.cwl
+id: ../../../../home/ubuntu/BiocondaCli/krakenuniq_download.cwl
 inputs:
-- id: o
+- id: folder_files_downloaded
   doc: "Folder to which the files are downloaded. Default: '.'"
   type: Directory
   inputBinding:
@@ -95,7 +95,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --fna
-- id: u
+- id: filter_unplaced_sequences
   doc: Filter unplaced sequences.
   type: boolean
   inputBinding:

@@ -1,27 +1,17 @@
 class: CommandLineTool
-id: dcmconv.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmconv.cwl
 inputs:
-- id: dcm_file_in
-  doc: DICOM input filename to be converted
-  type: string
-  inputBinding:
-    position: 0
-- id: dcm_file_out
-  doc: DICOM output filename
-  type: string
-  inputBinding:
-    position: 1
-- id: q
+- id: _quiet_quiet
   doc: --quiet                quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose              verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug                debug mode, print debug information
   type: boolean
   inputBinding:
@@ -37,12 +27,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lc
-- id: f
+- id: _readdataset_read
   doc: --read-dataset         read data set without file meta information
   type: boolean
   inputBinding:
     prefix: -f
-- id: t
+- id: _readxferauto_use
   doc: =  --read-xfer-auto       use TS recognition (default)
   type: boolean
   inputBinding:
@@ -82,7 +72,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --assume-implicit
-- id: disable_cp246
+- id: disable_cp_two_four_six
   doc: read undefined len UN as explicit VR
   type: boolean
   inputBinding:
@@ -113,17 +103,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-invalid-groups
-- id: f
+- id: _writedataset_write
   doc: --write-dataset        write data set without file meta information
   type: boolean
   inputBinding:
     prefix: -F
-- id: u
+- id: _disablenewvr_disable
   doc: --disable-new-vr       disable support for new VRs, convert to OB
   type: boolean
   inputBinding:
     prefix: -u
-- id: g
+- id: _grouplengthremove_always
   doc: --group-length-remove  always write without group length elements
   type: boolean
   inputBinding:
@@ -133,6 +123,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --abort-oversized
+- id: dcm_file_in
+  doc: DICOM input filename to be converted
+  type: string
+  inputBinding:
+    position: 0
+- id: dcm_file_out
+  doc: DICOM output filename
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

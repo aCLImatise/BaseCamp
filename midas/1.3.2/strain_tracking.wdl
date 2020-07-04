@@ -2,22 +2,31 @@ version 1.0
 
 task StrainTracking.pyTrackMarkers {
   input {
-    File inInDir
-    File outOut
-    File markersMarkers
-    Float minMinFreq
-    Int minMinReads
-    Int maxMaxSites
-    Int maxMaxSamples
+    File? in_dir
+    File? out
+    File? markers
+    Float? min_freq
+    Int? min_reads
+    Int? max_sites
+    Int? max_samples
   }
   command <<<
     strain_tracking.py track_markers \
-      ~{if defined(inInDir) then ("--indir " +  '"' + inInDir + '"') else ""} \
-      ~{if defined(outOut) then ("--out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(markersMarkers) then ("--markers " +  '"' + markersMarkers + '"') else ""} \
-      ~{if defined(minMinFreq) then ("--min_freq " +  '"' + minMinFreq + '"') else ""} \
-      ~{if defined(minMinReads) then ("--min_reads " +  '"' + minMinReads + '"') else ""} \
-      ~{if defined(maxMaxSites) then ("--max_sites " +  '"' + maxMaxSites + '"') else ""} \
-      ~{if defined(maxMaxSamples) then ("--max_samples " +  '"' + maxMaxSamples + '"') else ""}
+      ~{if defined(in_dir) then ("--indir " +  '"' + in_dir + '"') else ""} \
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
+      ~{if defined(markers) then ("--markers " +  '"' + markers + '"') else ""} \
+      ~{if defined(min_freq) then ("--min_freq " +  '"' + min_freq + '"') else ""} \
+      ~{if defined(min_reads) then ("--min_reads " +  '"' + min_reads + '"') else ""} \
+      ~{if defined(max_sites) then ("--max_sites " +  '"' + max_sites + '"') else ""} \
+      ~{if defined(max_samples) then ("--max_samples " +  '"' + max_samples + '"') else ""}
   >>>
+  parameter_meta {
+    in_dir: "path to input snps directory for one species (contains files 'snps_*.txt') requires having run 'merge_midas.py snps'"
+    out: "path to output file with marker sharing between all sample-pairs"
+    markers: "path to list of marker alleles output by 'strain_tracking.py id_markers'"
+    min_freq: "minimum allele frequency (proportion of reads) per site for SNP calling (0.10)"
+    min_reads: "minimum number of reads supporting allele per site for SNP calling (3)"
+    max_sites: "maximum number of sites to process (use all) useful for quick tests"
+    max_samples: "maximum number of samples to process (use all) useful for quick tests"
+  }
 }

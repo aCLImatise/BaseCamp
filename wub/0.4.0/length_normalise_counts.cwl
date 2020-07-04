@@ -1,23 +1,28 @@
 class: CommandLineTool
-id: length_normalise_counts.py_input_counts.cwl
+id: ../../../../home/ubuntu/BiocondaCli/length_normalise_counts.py_output_count.cwl
 inputs:
-- id: input_counts
-  doc: Input count file.
-  type: string
-  inputBinding:
-    position: 0
-- id: output_count
-  doc: Output RPKM file.
-  type: string
-  inputBinding:
-    position: 1
 - id: f
-  doc: Input transcriptome.
+  doc: ''
   type: string
   inputBinding:
     prefix: -f
+- id: length_normalise_counts_do_tpy
+  doc: ''
+  type: long
+  inputBinding:
+    position: 0
+- id: input_counts
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: output_count
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - length_normalise_counts.py
-- input_counts
+- output_count

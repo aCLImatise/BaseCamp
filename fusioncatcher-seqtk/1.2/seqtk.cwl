@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: seqtk.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqtk.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

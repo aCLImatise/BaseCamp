@@ -2,18 +2,13 @@ version 1.0
 
 task DbLoad {
   input {
-    Boolean bB
-    Boolean oO
-    String? blobBlobDir
-    String? blobBlobThreshold
-    String? dbDbFile
+    Boolean? ntv
   }
   command <<<
     db_load \
-      ~{blobBlobDir} \
-      ~{true="-b" false="" bB} \
-      ~{true="-o" false="" oO} \
-      ~{blobBlobThreshold} \
-      ~{dbDbFile}
+      ~{true="-nTV" false="" ntv}
   >>>
+  parameter_meta {
+    ntv: ""
+  }
 }

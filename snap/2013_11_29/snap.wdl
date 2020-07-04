@@ -2,32 +2,46 @@ version 1.0
 
 task Snap {
   input {
-    Boolean lcLcMask
-    Boolean plusPlus
-    Boolean minusMinus
-    Boolean gffGff
-    Boolean aceAce
-    Boolean quietQuiet
-    File aaAa
-    File txTx
-    File xdefXdef
-    String nameName
-    String? hmmHmmFile
-    String? fastFastAFile
+    Boolean? lc_mask
+    Boolean? plus
+    Boolean? minus
+    Boolean? gff
+    Boolean? ace
+    Boolean? quiet
+    File? aa
+    File? tx
+    File? xdef
+    String? name
+    String hmm_file
+    String fast_a_file
   }
   command <<<
     snap \
-      ~{hmmHmmFile} \
-      ~{true="-lcmask" false="" lcLcMask} \
-      ~{true="-plus" false="" plusPlus} \
-      ~{true="-minus" false="" minusMinus} \
-      ~{true="-gff" false="" gffGff} \
-      ~{true="-ace" false="" aceAce} \
-      ~{true="-quiet" false="" quietQuiet} \
-      ~{if defined(aaAa) then ("-aa " +  '"' + aaAa + '"') else ""} \
-      ~{if defined(txTx) then ("-tx " +  '"' + txTx + '"') else ""} \
-      ~{if defined(xdefXdef) then ("-xdef " +  '"' + xdefXdef + '"') else ""} \
-      ~{if defined(nameName) then ("-name " +  '"' + nameName + '"') else ""} \
-      ~{fastFastAFile}
+      ~{hmm_file} \
+      ~{fast_a_file} \
+      ~{true="-lcmask" false="" lc_mask} \
+      ~{true="-plus" false="" plus} \
+      ~{true="-minus" false="" minus} \
+      ~{true="-gff" false="" gff} \
+      ~{true="-ace" false="" ace} \
+      ~{true="-quiet" false="" quiet} \
+      ~{if defined(aa) then ("-aa " +  '"' + aa + '"') else ""} \
+      ~{if defined(tx) then ("-tx " +  '"' + tx + '"') else ""} \
+      ~{if defined(xdef) then ("-xdef " +  '"' + xdef + '"') else ""} \
+      ~{if defined(name) then ("-name " +  '"' + name + '"') else ""}
   >>>
+  parameter_meta {
+    lc_mask: "treat lowercase as N"
+    plus: "predict on plus strand only"
+    minus: "predict on minus strand only"
+    gff: "output annotation as GFF"
+    ace: "output annotation as ACED"
+    quiet: "do not send progress to STDERR"
+    aa: "create FASTA file of proteins"
+    tx: "create FASTA file of transcripts"
+    xdef: "external definitions"
+    name: "name for the gene [default snap]"
+    hmm_file: ""
+    fast_a_file: ""
+  }
 }

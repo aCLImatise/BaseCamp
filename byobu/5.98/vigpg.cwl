@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vigpg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vigpg.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

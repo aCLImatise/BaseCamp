@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: bcftools_consensus.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcftools_consensus.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: file_vcf_gz
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
 - id: chain
   doc: write a chain file for liftover
   type: File
@@ -70,6 +60,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --sample
+- id: file_dot_vcf_do_tgz
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

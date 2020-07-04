@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ant.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ant.cwl
 inputs:
 - id: no_config
   doc: suppress sourcing of /etc/ant.conf, $HOME/.ant/ant.conf, and $HOME/.antrc configuration
@@ -103,7 +103,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -f
-- id: d
+- id: propertyvalue_use_value
   doc: <property>=<value>   use value for given property
   type: boolean
   inputBinding:
@@ -128,7 +128,7 @@ inputs:
   type: File
   inputBinding:
     prefix: -find
-- id: s
+- id: file_filesystem_use
   doc: <file>           the filesystem and use it
   type: boolean
   inputBinding:

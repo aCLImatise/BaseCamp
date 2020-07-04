@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: estimateReadFiltering.cwl
+id: ../../../../home/ubuntu/BiocondaCli/estimateReadFiltering.cwl
 inputs:
 - id: bam_files
   doc: FILE2 [FILE1 FILE2 ...], -b FILE1 FILE2 [FILE1 FILE2 ...] List of indexed bam
@@ -50,6 +50,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: example
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: usage
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

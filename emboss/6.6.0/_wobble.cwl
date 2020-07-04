@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _wobble.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_wobble.cwl
 inputs:
 - id: graph
   doc: xygraph    [$EMBOSS_GRAPHICS value, or png] Graph type (ps, hpgl, hp7470, hp7580,

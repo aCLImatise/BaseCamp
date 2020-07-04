@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: sim_cover2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sim_cover2.cwl
 inputs:
+- id: set_minimum_length
+  doc: Set minimum overlap length to <n> (default = 40)
+  type: string
+  inputBinding:
+    prefix: -o
 - id: coverage
   doc: ''
   type: string
@@ -16,11 +21,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: o
-  doc: Set minimum overlap length to <n> (default = 40)
-  type: string
-  inputBinding:
-    prefix: -o
 outputs: []
 cwlVersion: v1.1
 baseCommand:

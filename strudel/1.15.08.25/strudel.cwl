@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: strudel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/strudel.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

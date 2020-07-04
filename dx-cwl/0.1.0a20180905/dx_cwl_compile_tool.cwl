@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: dx_cwl_compile_tool.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dx_cwl_compile_tool.cwl
 inputs:
-- id: tool
-  doc: CWL tool definition file
-  type: string
-  inputBinding:
-    position: 0
 - id: token
   doc: DNAnexus authentication token
   type: string
@@ -41,6 +36,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --instance-provider
+- id: tool
+  doc: CWL tool definition file
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

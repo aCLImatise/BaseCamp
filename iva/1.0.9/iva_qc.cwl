@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: iva_qc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/iva_qc.cwl
 inputs:
 - id: embl_dir
   doc: Directory of reference EMBL files. If not used, must use --ref_db
@@ -11,13 +11,13 @@ inputs:
   type: Directory
   inputBinding:
     prefix: --ref_db
-- id: f
+- id: name_forwards_reads
   doc: '[.gz], --reads_fwd filename[.gz] Name of forwards reads fasta or fastq file.
     Must be used with --reads_rev'
   type: File
   inputBinding:
     prefix: -f
-- id: r
+- id: name_reverse_reads
   doc: '[.gz], --reads_rev filename[.gz] Name of reverse reads fasta or fastq file.
     Must be used with --reads_rev'
   type: File

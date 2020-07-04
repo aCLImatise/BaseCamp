@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamtools_resolve.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamtools_resolve.cwl
 inputs:
 - id: in
   doc: the input BAM file(s) [stdin]
@@ -84,6 +84,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -force
+- id: mode
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: mbuffer.cwl
-inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
+id: ../../../../home/ubuntu/BiocondaCli/mbuffer.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

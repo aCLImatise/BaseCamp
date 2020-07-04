@@ -2,26 +2,40 @@ version 1.0
 
 task Sha224sum {
   input {
-    Boolean binaryBinary
-    Boolean checkCheck
-    Boolean tagTag
-    Boolean textText
-    Boolean ignoreIgnoreMissing
-    Boolean quietQuiet
-    Boolean statusStatus
-    Boolean strictStrict
-    Boolean warnWarn
+    Boolean? binary
+    Boolean? check
+    Boolean? tag
+    Boolean? text
+    Boolean? ignore_missing
+    Boolean? quiet
+    Boolean? status
+    Boolean? strict
+    Boolean? warn
+    String? option
   }
   command <<<
     sha224sum \
-      ~{true="--binary" false="" binaryBinary} \
-      ~{true="--check" false="" checkCheck} \
-      ~{true="--tag" false="" tagTag} \
-      ~{true="--text" false="" textText} \
-      ~{true="--ignore-missing" false="" ignoreIgnoreMissing} \
-      ~{true="--quiet" false="" quietQuiet} \
-      ~{true="--status" false="" statusStatus} \
-      ~{true="--strict" false="" strictStrict} \
-      ~{true="--warn" false="" warnWarn}
+      ~{option} \
+      ~{true="--binary" false="" binary} \
+      ~{true="--check" false="" check} \
+      ~{true="--tag" false="" tag} \
+      ~{true="--text" false="" text} \
+      ~{true="--ignore-missing" false="" ignore_missing} \
+      ~{true="--quiet" false="" quiet} \
+      ~{true="--status" false="" status} \
+      ~{true="--strict" false="" strict} \
+      ~{true="--warn" false="" warn}
   >>>
+  parameter_meta {
+    binary: "read in binary mode"
+    check: "read SHA224 sums from the FILEs and check them"
+    tag: "create a BSD-style checksum"
+    text: "read in text mode (default)"
+    ignore_missing: "don't fail or report status for missing files"
+    quiet: "don't print OK for each successfully verified file"
+    status: "don't output anything, status code shows success"
+    strict: "exit non-zero for improperly formatted checksum lines"
+    warn: "warn about improperly formatted checksum lines"
+    option: ""
+  }
 }

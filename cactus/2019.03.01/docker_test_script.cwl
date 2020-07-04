@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: docker_test_script.cwl
+id: ../../../../home/ubuntu/BiocondaCli/docker_test_script.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

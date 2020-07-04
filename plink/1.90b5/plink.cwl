@@ -1,21 +1,11 @@
 class: CommandLineTool
-id: plink.cwl
+id: ../../../../home/ubuntu/BiocondaCli/plink.cwl
 inputs:
 - id: out
   doc: '[prefix]   : Specify prefix for output files.'
   type: boolean
   inputBinding:
     prefix: --out
-- id: reference
-  doc: .
-  type: boolean
-  inputBinding:
-    prefix: --reference
-- id: t_file
-  doc: .
-  type: boolean
-  inputBinding:
-    prefix: --tfile
 - id: real_ref_alleles
   doc: your command.
   type: string
@@ -26,27 +16,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --check-sex
-- id: homo_zy_g_window_snp
-  doc: .
-  type: boolean
+- id: regress_rel
+  doc: '{d}'
+  type: string
   inputBinding:
-    prefix: --homozyg-window-snp
-- id: extract
-  doc: are considered.
-  type: File
-  inputBinding:
-    prefix: --extract
-- id: meta_analysis
-  doc: '[PLINK report filenames...]'
-  type: boolean
-  inputBinding:
-    prefix: --meta-analysis
-- id: meta_analysis
-  doc: '[PLINK report filenames...] + <logscale | qt> <no-map | no-allele> <study>
-    <report-all> <weighted-z>'
-  type: boolean
-  inputBinding:
-    prefix: --meta-analysis
+    prefix: --regress-rel
 - id: extract
   doc: are considered.
   type: File
@@ -93,15 +67,10 @@ inputs:
   inputBinding:
     prefix: --simulate-missing
 - id: allow_extra_chr
-  doc: "<0>     : Permit unrecognized chromosome codes.  The '0'"
-  type: boolean
+  doc: ": Permit unrecognized chromosome codes.  The '0'"
+  type: string
   inputBinding:
     prefix: --allow-extra-chr
-- id: parameters
-  doc: .
-  type: boolean
-  inputBinding:
-    prefix: --parameters
 - id: r_port
   doc: '[port #]  : Connect to Rserve on a port other than 6311.'
   type: boolean
@@ -141,7 +110,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --threads
-- id: d
+- id: change_variantcovariate_range
   doc: "[char]         : Change variant/covariate range delimiter (normally '-')."
   type: boolean
   inputBinding:
@@ -167,6 +136,36 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
+- id: variant_dot
+  doc: Also supports 'omit-nonmale-y'.
+  type: string
+  inputBinding:
+    position: 0
+- id: reports_dot
+  doc: (This cannot be used with very long allele codes.)
+  type: string
+  inputBinding:
+    position: 0
+- id: down_dot
+  doc: With no parameters, 100k iterations are run.
+  type: string
+  inputBinding:
+    position: 0
+- id: homozygosity_dot
+  doc: (Automatically set when --homozyg-match is present.)
+  type: string
+  inputBinding:
+    position: 0
+- id: p_values_dot
+  doc: "'fisher-midp' also applies Lancaster's mid-p adjustment."
+  type: string
+  inputBinding:
+    position: 0
+- id: loaded_dot
+  doc: Default for non-merge operations.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

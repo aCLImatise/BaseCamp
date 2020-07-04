@@ -2,20 +2,28 @@ version 1.0
 
 task GenieVcfFilter {
   input {
-    String fileFilePath
-    Int maxlengthMaxlength
-    Int minlengthMinlength
-    Boolean onlyOnlySv
-    String outputOutput
-    String? flagsFlags
+    String? file_path
+    Int? maxlength
+    Int? minlength
+    Boolean? only_sv
+    String? output_file
+    String? flags
   }
   command <<<
     genie vcf filter \
-      ~{flagsFlags} \
-      ~{if defined(fileFilePath) then ("--filepath " +  '"' + fileFilePath + '"') else ""} \
-      ~{if defined(maxlengthMaxlength) then ("--maxlength " +  '"' + maxlengthMaxlength + '"') else ""} \
-      ~{if defined(minlengthMinlength) then ("--minlength " +  '"' + minlengthMinlength + '"') else ""} \
-      ~{true="--onlysv" false="" onlyOnlySv} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""}
+      ~{flags} \
+      ~{if defined(file_path) then ("--filepath " +  '"' + file_path + '"') else ""} \
+      ~{if defined(maxlength) then ("--maxlength " +  '"' + maxlength + '"') else ""} \
+      ~{if defined(minlength) then ("--minlength " +  '"' + minlength + '"') else ""} \
+      ~{true="--onlysv" false="" only_sv} \
+      ~{if defined(output_file) then ("--output " +  '"' + output_file + '"') else ""}
   >>>
+  parameter_meta {
+    file_path: "a VCF file (*require)"
+    maxlength: "Max SVLENGTH (default 2147483647)"
+    minlength: "Min SVLENGTH (default -2147483647)"
+    only_sv: "Only SVs"
+    output_file: "output file"
+    flags: ""
+  }
 }

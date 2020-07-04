@@ -2,28 +2,40 @@ version 1.0
 
 task MeraculousTh128mer {
   input {
-    String? uUFxFileWildcard
-    String? merMerSize
-    String? numNumThreads
-    String? outputOutputFile
-    String? expectedExpectedNumElements
-    Int? minMin
-    String? contigContig
-    Int? sizeSize
-    String? debugDebugMode
-    String? seedSeedListFilename
+    String? u_fx_file_wildcard
+    String? mer_size
+    String? num_threads
+    String? output_file
+    String? expected_num_elements
+    Int? min
+    String? contig
+    Int? size
+    String? debug_mode
+    String? seed_list_filename
   }
   command <<<
     meraculousTh_128mer \
-      ~{uUFxFileWildcard} \
-      ~{merMerSize} \
-      ~{numNumThreads} \
-      ~{outputOutputFile} \
-      ~{expectedExpectedNumElements} \
-      ~{minMin} \
-      ~{contigContig} \
-      ~{sizeSize} \
-      ~{debugDebugMode} \
-      ~{seedSeedListFilename}
+      ~{u_fx_file_wildcard} \
+      ~{mer_size} \
+      ~{num_threads} \
+      ~{output_file} \
+      ~{expected_num_elements} \
+      ~{min} \
+      ~{contig} \
+      ~{size} \
+      ~{debug_mode} \
+      ~{seed_list_filename}
   >>>
+  parameter_meta {
+    u_fx_file_wildcard: ""
+    mer_size: ""
+    num_threads: ""
+    output_file: ""
+    expected_num_elements: ""
+    min: ""
+    contig: ""
+    size: ""
+    debug_mode: ""
+    seed_list_filename: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: check_disorder.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/check_disorder.pl.cwl
 inputs:
 - id: list
   doc: list all IDs that have children features appearing in front of themselves

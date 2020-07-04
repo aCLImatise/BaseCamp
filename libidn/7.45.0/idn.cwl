@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: idn.cwl
+id: ../../../../home/ubuntu/BiocondaCli/idn.cwl
 inputs:
 - id: stringprep
   doc: Prepare string according to nameprep profile
@@ -31,7 +31,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --allow-unassigned
-- id: usestd3ascii_rules
+- id: use_std_three_ascii_rules
   doc: Toggle IDNA UseSTD3ASCIIRules flag (default off)
   type: boolean
   inputBinding:
@@ -62,6 +62,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

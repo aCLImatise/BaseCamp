@@ -2,10 +2,13 @@ version 1.0
 
 task TreebestLeaf {
   input {
-    String? nhNhTree
+    String nh_tree
   }
   command <<<
     treebest leaf \
-      ~{nhNhTree}
+      ~{nh_tree}
   >>>
+  parameter_meta {
+    nh_tree: ""
+  }
 }

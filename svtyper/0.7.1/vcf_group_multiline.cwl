@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcf_group_multiline.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf_group_multiline.py.cwl
 inputs:
 - id: vcf
   doc: 'VCF input (default: stdin)'

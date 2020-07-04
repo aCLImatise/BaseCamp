@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cage_classify.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cage_classify.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dnp_fourier.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dnp_fourier.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

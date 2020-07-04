@@ -2,16 +2,22 @@ version 1.0
 
 task BipartitionSmp {
   input {
-    String? biBiPartition
-    String? seqfile1Seqfile1
-    String? seqfile2Seqfile2
-    String? pfsPfsFile
+    String bi_partition
+    String seq_file_one
+    String seq_file_two
+    String pfs_file
   }
   command <<<
     bipartition-smp \
-      ~{biBiPartition} \
-      ~{seqfile1Seqfile1} \
-      ~{seqfile2Seqfile2} \
-      ~{pfsPfsFile}
+      ~{bi_partition} \
+      ~{seq_file_one} \
+      ~{seq_file_two} \
+      ~{pfs_file}
   >>>
+  parameter_meta {
+    bi_partition: ""
+    seq_file_one: ""
+    seq_file_two: ""
+    pfs_file: ""
+  }
 }

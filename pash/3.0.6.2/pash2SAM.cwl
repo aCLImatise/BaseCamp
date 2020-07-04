@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pash2SAM.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pash2SAM.cwl
 inputs:
 - id: pash_mappings
   doc: '| -p    pash mappings file'

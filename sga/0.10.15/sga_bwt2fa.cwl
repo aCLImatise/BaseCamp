@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sga_bwt2fa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sga_bwt2fa.cwl
 inputs:
 - id: verbose
   doc: display verbose output
@@ -16,6 +16,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --prefix
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

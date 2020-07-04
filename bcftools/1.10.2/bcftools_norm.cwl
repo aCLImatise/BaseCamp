@@ -1,15 +1,10 @@
 class: CommandLineTool
-id: bcftools_norm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcftools_norm.cwl
 inputs:
-- id: in_vcf_gz
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: check_ref
-  doc: <e|w|x|s>         check REF alleles and exit (e), warn (w), exclude (x), or
-    set (s) bad sites [e]
-  type: boolean
+  doc: check REF alleles and exit (e), warn (w), exclude (x), or set (s) bad sites
+    [e]
+  type: string
   inputBinding:
     prefix: --check-ref
 - id: remove_duplicates
@@ -95,6 +90,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --site-win
+- id: in_dot_vcf_do_tgz
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

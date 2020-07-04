@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: psw.cwl
+id: ../../../../home/ubuntu/BiocondaCli/psw.cwl
 inputs:
 - id: dy_debug
   doc: drop into dynamite dp matrix debugger

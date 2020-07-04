@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: diamond_add_taxonomy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/diamond_add_taxonomy.cwl
 inputs:
 - id: tax_dump_filename
   doc: Path to local copy of NCBI taxdump.tar.gz file
@@ -23,6 +23,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --output_file
+- id: diamond_output_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

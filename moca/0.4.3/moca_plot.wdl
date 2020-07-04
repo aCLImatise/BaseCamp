@@ -2,30 +2,43 @@ version 1.0
 
 task MocaPlot {
   input {
-    String memeMemeDir
-    String centriCentriMoDir
-    String fimoFimoDirSample
-    String fimoFimoDirControl
-    String nameName
-    Int flankFlankMotif
-    Int motifMotif
-    String ocOc
-    String configurationConfiguration
-    Boolean showShowProgress
-    String genomeGenomeBuild
+    String? meme_dir
+    String? centri_mo_dir
+    String? fimo_dir_sample
+    String? fimo_dir_control
+    String? name
+    Int? flank_motif
+    Int? motif
+    String? oc
+    String? configuration
+    Boolean? show_progress
+    String? genome_build
   }
   command <<<
     moca plot \
-      ~{if defined(memeMemeDir) then ("--meme-dir " +  '"' + memeMemeDir + '"') else ""} \
-      ~{if defined(centriCentriMoDir) then ("--centrimo-dir " +  '"' + centriCentriMoDir + '"') else ""} \
-      ~{if defined(fimoFimoDirSample) then ("--fimo-dir-sample " +  '"' + fimoFimoDirSample + '"') else ""} \
-      ~{if defined(fimoFimoDirControl) then ("--fimo-dir-control " +  '"' + fimoFimoDirControl + '"') else ""} \
-      ~{if defined(nameName) then ("--name " +  '"' + nameName + '"') else ""} \
-      ~{if defined(flankFlankMotif) then ("--flank-motif " +  '"' + flankFlankMotif + '"') else ""} \
-      ~{if defined(motifMotif) then ("--motif " +  '"' + motifMotif + '"') else ""} \
-      ~{if defined(ocOc) then ("--oc " +  '"' + ocOc + '"') else ""} \
-      ~{if defined(configurationConfiguration) then ("--configuration " +  '"' + configurationConfiguration + '"') else ""} \
-      ~{true="--show-progress" false="" showShowProgress} \
-      ~{if defined(genomeGenomeBuild) then ("--genome-build " +  '"' + genomeGenomeBuild + '"') else ""}
+      ~{if defined(meme_dir) then ("--meme-dir " +  '"' + meme_dir + '"') else ""} \
+      ~{if defined(centri_mo_dir) then ("--centrimo-dir " +  '"' + centri_mo_dir + '"') else ""} \
+      ~{if defined(fimo_dir_sample) then ("--fimo-dir-sample " +  '"' + fimo_dir_sample + '"') else ""} \
+      ~{if defined(fimo_dir_control) then ("--fimo-dir-control " +  '"' + fimo_dir_control + '"') else ""} \
+      ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
+      ~{if defined(flank_motif) then ("--flank-motif " +  '"' + flank_motif + '"') else ""} \
+      ~{if defined(motif) then ("--motif " +  '"' + motif + '"') else ""} \
+      ~{if defined(oc) then ("--oc " +  '"' + oc + '"') else ""} \
+      ~{if defined(configuration) then ("--configuration " +  '"' + configuration + '"') else ""} \
+      ~{true="--show-progress" false="" show_progress} \
+      ~{if defined(genome_build) then ("--genome-build " +  '"' + genome_build + '"') else ""}
   >>>
+  parameter_meta {
+    meme_dir: "MEME output directory  [required]"
+    centri_mo_dir: "Centrimo output directory  [required]"
+    fimo_dir_sample: "Sample fimo.txt  [required]"
+    fimo_dir_control: "Control fimo.txt  [required]"
+    name: "Plot title"
+    flank_motif: "Length of sequence flanking motif [required]"
+    motif: "Motif number"
+    oc: "Output Directory  [required]"
+    configuration: "Configuration file  [required]"
+    show_progress: "Print progress"
+    genome_build: "Key denoting genome build to use in configuration file  [required]"
+  }
 }

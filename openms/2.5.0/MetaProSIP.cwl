@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MetaProSIP.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MetaProSIP.cwl
 inputs:
 - id: in_mzm_l
   doc: "*                  Centroided MS1 data (valid formats: 'mzML')"
@@ -56,7 +56,7 @@ inputs:
 - id: xic_threshold
   doc: "Minimum correlation to mono-isotopic peak for retaining a higher isotopic\
     \ peak. If featureXML from reference file is used it should be disabled (set to\
-    \ -1) as no mono-isotopi c peak is expected to be present. (default: '0.7')"
+    \ -1) as no mono-isotopic peak is expected to be present. (default: '0.7')"
   type: string
   inputBinding:
     prefix: -xic_threshold

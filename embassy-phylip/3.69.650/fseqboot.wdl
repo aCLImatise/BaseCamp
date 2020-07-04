@@ -2,16 +2,22 @@ version 1.0
 
 task Fseqboot {
   input {
-    Boolean categoriesCategories
-    Boolean weightsWeights
-    Boolean testTest
-    Boolean printPrintData
+    Boolean? categories
+    Boolean? weights
+    Boolean? test
+    Boolean? print_data
   }
   command <<<
     fseqboot \
-      ~{true="-categories" false="" categoriesCategories} \
-      ~{true="-weights" false="" weightsWeights} \
-      ~{true="-test" false="" testTest} \
-      ~{true="-printdata" false="" printPrintData}
+      ~{true="-categories" false="" categories} \
+      ~{true="-weights" false="" weights} \
+      ~{true="-test" false="" test} \
+      ~{true="-printdata" false="" print_data}
   >>>
+  parameter_meta {
+    categories: "properties File of input categories"
+    weights: "properties Weights file"
+    test: "menu       [b] Choose test (Values: b (Bootstrap); j (Jackknife); c (Permute species for each character); o (Permute character order); s (Permute within species); r (Rewrite data))"
+    print_data: "boolean    [N] Print out the data at start of run"
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SpectraMerger.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SpectraMerger.cwl
 inputs:
 - id: in
   doc: "*               Input mzML file. (valid formats: 'mzML')"
@@ -37,11 +37,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Algorithm section for merging spectra
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

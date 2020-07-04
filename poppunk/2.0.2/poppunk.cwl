@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: poppunk.cwl
+id: ../../../../home/ubuntu/BiocondaCli/poppunk.cwl
 inputs:
 - id: easy_run
   doc: Create clusters from assemblies with default settings
@@ -145,7 +145,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --estimated-length
-- id: k
+- id: maximum_number_mixture
   doc: Maximum number of mixture components [default = 2]
   type: string
   inputBinding:
@@ -155,7 +155,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --dbscan
-- id: d
+- id: maximum_number_clusters
   doc: Maximum number of clusters in DBSCAN fitting [default = 100]
   type: string
   inputBinding:

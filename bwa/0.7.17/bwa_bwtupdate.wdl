@@ -2,10 +2,13 @@ version 1.0
 
 task BwaBwtupdate {
   input {
-    String? theTheBwt
+    String the_dot_bwt
   }
   command <<<
     bwa bwtupdate \
-      ~{theTheBwt}
+      ~{the_dot_bwt}
   >>>
+  parameter_meta {
+    the_dot_bwt: ""
+  }
 }

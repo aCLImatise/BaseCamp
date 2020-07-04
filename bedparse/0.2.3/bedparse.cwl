@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bedparse.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedparse.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

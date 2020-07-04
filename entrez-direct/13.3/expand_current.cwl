@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: expand_current.cwl
+id: ../../../../home/ubuntu/BiocondaCli/expand_current.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

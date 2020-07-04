@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sim4db.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sim4db.cwl
 inputs:
 - id: no_def_lines
   doc: don't include the defline in the output
@@ -42,22 +42,22 @@ inputs:
   type: string
   inputBinding:
     prefix: -interspecies
-- id: z
+- id: set_spaced_pattern
   doc: set the (spaced) seed pattern
   type: boolean
   inputBinding:
     prefix: -Z
-- id: h
+- id: set_relink_factor
   doc: set the relink weight factor
   type: boolean
   inputBinding:
     prefix: -H
-- id: k
+- id: set_first_threshold
   doc: set the first MSP threshold
   type: boolean
   inputBinding:
     prefix: -K
-- id: c
+- id: set_second_threshold
   doc: set the second MSP threshold
   type: boolean
   inputBinding:
@@ -73,6 +73,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -Mp
+- id: genomic
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -genomic
+- id: cdna
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -cdna
+- id: output
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -output
 outputs: []
 cwlVersion: v1.1
 baseCommand:

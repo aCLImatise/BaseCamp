@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ncrf_cat.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ncrf_cat.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

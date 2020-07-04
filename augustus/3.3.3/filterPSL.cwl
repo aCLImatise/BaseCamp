@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filterPSL.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filterPSL.pl.cwl
 inputs:
 - id: pair_bed
   doc: 'file name of pairedness coverage: a .bed format file in which for each position

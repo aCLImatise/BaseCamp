@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filterGenemark.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filterGenemark.pl.cwl
 inputs:
 - id: introns
   doc: Corresponding intron file in gff format
@@ -31,6 +31,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --filterOutShort
+- id: genemark_dot_gtf
+  doc: file in gtf format
+  type: string
+  inputBinding:
+    position: 0
+- id: introns_dot_gff
+  doc: corresponding introns file in gff format
+  type: long
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

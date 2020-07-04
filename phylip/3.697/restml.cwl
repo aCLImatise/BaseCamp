@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: restml.cwl
+id: ../../../../home/ubuntu/BiocondaCli/restml.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

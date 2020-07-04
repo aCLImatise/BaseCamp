@@ -1,14 +1,6 @@
 class: CommandLineTool
-id: pseudoknot_analyzer.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pseudoknot_analyzer.py.cwl
 inputs:
-- id: rna
-  doc: "One or more files containing one or more RNAs each. Supported Filetypes are:\
-    \ pdb files, forgi cg files, forgi bg files, fasta files, dotbracketfilesAlternatively\
-    \ you can supply a dotbracket-string (containing only the characters '.()[]{}&')\
-    \ from the commandline."
-  type: string
-  inputBinding:
-    position: 0
 - id: keep_length_one_stems
   doc: For all input formats except forgi bg/cg files, this controlls whether stems
     of length one are dissolved to unpaired regions (default) or kept (if this option
@@ -66,13 +58,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
-- id: q
+- id: commaseperated_list_logger_names_logged
   doc: "[QUIET], --quiet [QUIET] A comma-seperated list of logger names for which\
     \ only messages logged at the level 'CRITICAL' will be shown.Use this without\
     \ arguments if everything should be quiet."
   type: boolean
   inputBinding:
     prefix: -q
+- id: rna
+  doc: "One or more files containing one or more RNAs each. Supported Filetypes are:\
+    \ pdb files, forgi cg files, forgi bg files, fasta files, dotbracketfilesAlternatively\
+    \ you can supply a dotbracket-string (containing only the characters '.()[]{}&')\
+    \ from the commandline."
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: locarnate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/locarnate.cwl
 inputs:
 - id: pairwise_parameters
   doc: parameters for the pairwise alignment step

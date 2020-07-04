@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: eaddress.cwl
+id: ../../../../home/ubuntu/BiocondaCli/eaddress.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

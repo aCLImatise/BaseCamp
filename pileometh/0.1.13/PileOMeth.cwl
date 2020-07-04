@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: PileOMeth.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PileOMeth.cwl
 inputs:
 - id: command
   doc: ''

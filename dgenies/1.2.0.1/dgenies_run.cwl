@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: dgenies_run.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dgenies_run.cwl
 inputs:
 - id: mode
   doc: Mode into run the application
   type: string
   inputBinding:
     prefix: --mode
-- id: d
+- id: run_debug_mode
   doc: '[DEBUG], --debug [DEBUG] Run in debug mode'
   type: boolean
   inputBinding:
@@ -32,6 +32,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-browser
+- id: debug
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

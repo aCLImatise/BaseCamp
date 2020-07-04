@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: QCExporter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/QCExporter.cwl
 inputs:
 - id: in
   doc: "*        Input qcml file (valid formats: 'qcML')"
@@ -15,7 +15,7 @@ inputs:
 - id: mapping
   doc: "*   The mapping of the exported table's headers to the according qp cvs. The\
     \ first row is considered containing the headers as for the exported the table.\
-    \ The second row is considered the accor ding qp cv accessions of the qp to be\
+    \ The second row is considered the according qp cv accessions of the qp to be\
     \ exported. (valid formats: 'csv')"
   type: File
   inputBinding:

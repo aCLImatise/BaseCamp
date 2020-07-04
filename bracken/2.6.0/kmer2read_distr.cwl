@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: kmer2read_distr.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kmer2read_distr.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: GapMerger.cwl
+id: ../../../../home/ubuntu/BiocondaCli/GapMerger.cwl
 inputs:
 - id: gaps
   doc: '(1 arg) :    FASTA file of filled gaps'

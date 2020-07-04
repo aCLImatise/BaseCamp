@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hicAverageRegions.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hicAverageRegions.cwl
 inputs:
 - id: matrix
   doc: The matrix to use for the average of TAD regions.

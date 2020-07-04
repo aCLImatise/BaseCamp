@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: irida_sistr_results.cwl
+id: ../../../../home/ubuntu/BiocondaCli/irida_sistr_results.cwl
 inputs:
 - id: irid_a_url
   doc: The URL to the IRIDA instance.
@@ -65,7 +65,7 @@ inputs:
   inputBinding:
     prefix: --exclude-user-existing-results
 - id: reportable_serovars_file
-  doc: The reportable serovars file [/tmp/tmphvphnqsn/lib/python3.8/site-packages/irida_sistr_results/data/reportable_serovars.tsv].
+  doc: The reportable serovars file [/tmp/tmpsawj3icy/lib/python3.8/site-packages/irida_sistr_results/data/reportable_serovars.tsv].
   type: string
   inputBinding:
     prefix: --reportable-serovars-file
@@ -80,7 +80,7 @@ inputs:
   inputBinding:
     prefix: --connection-timeout
 - id: config
-  doc: Configuration file for IRIDA (overrides values in ['/tmp/tmphvphnqsn/lib/python3.8/site-packages/irida_sistr_results/etc/config.ini',
+  doc: Configuration file for IRIDA (overrides values in ['/tmp/tmpsawj3icy/lib/python3.8/site-packages/irida_sistr_results/etc/config.ini',
     '/home/ubuntu/.local/share/irida-sistr-results/config.ini'])
   type: string
   inputBinding:

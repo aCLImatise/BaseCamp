@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: kipoi.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kipoi.cwl
 inputs:
 - id: command
   doc: 'Subcommand to run; possible commands: preproc, predict, pull, ls, list_plugins,

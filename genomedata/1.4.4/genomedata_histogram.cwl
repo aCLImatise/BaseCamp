@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: genomedata_histogram.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genomedata_histogram.cwl
 inputs:
-- id: gd_archive
-  doc: genomedata archive
-  type: string
-  inputBinding:
-    position: 0
-- id: track_name
-  doc: track name
-  type: string
-  inputBinding:
-    position: 1
 - id: include_coords
   doc: limit summary to genomic coordinates in FILE
   type: File
@@ -21,6 +11,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --num-bins
+- id: gd_archive
+  doc: genomedata archive
+  type: string
+  inputBinding:
+    position: 0
+- id: track_name
+  doc: track name
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: falconsense.cwl
+id: ../../../../home/ubuntu/BiocondaCli/falconsense.cwl
 inputs:
-- id: s
+- id: mandatory_path_to
   doc: mandatory path to seqStore
   type: string
   inputBinding:
     prefix: -S
-- id: c
+- id: mandatory_path_corstore
   doc: mandatory path to corStore
   type: string
   inputBinding:
     prefix: -C
-- id: p
+- id: output_filename_prefix
   doc: output filename prefix
   type: string
   inputBinding:
@@ -31,22 +31,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -log
-- id: t
+- id: number_use_default
   doc: 'number of compute threads to use (default: all)'
   type: string
   inputBinding:
     prefix: -t
-- id: f
+- id: align_evidence_full
   doc: align evidence to the full read, ignore overlap position
   type: boolean
   inputBinding:
     prefix: -f
-- id: r
+- id: only_process_reads_listed
   doc: only process reads listed in file 'readsToCorrect'
   type: string
   inputBinding:
     prefix: -R
-- id: r
+- id: only_process_reads_inclusive
   doc: "[-end]       only process reads from ID 'bgn' to 'end' (inclusive)"
   type: string
   inputBinding:
@@ -87,6 +87,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -import
+- id: o
+  doc: ''
+  type: string[]
+  inputBinding:
+    prefix: -O
 outputs: []
 cwlVersion: v1.1
 baseCommand:

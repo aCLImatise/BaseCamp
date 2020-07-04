@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: wisestork_newref.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wisestork_newref.cwl
 inputs:
 - id: binsize
   doc: RANGE  Bin size to use. Default = 50000

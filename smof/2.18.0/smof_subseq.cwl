@@ -1,12 +1,7 @@
 class: CommandLineTool
-id: smof_subseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smof_subseq.cwl
 inputs:
-- id: input
-  doc: input fasta sequence (default = stdin)
-  type: string
-  inputBinding:
-    position: 0
-- id: b
+- id: n__bounds
   doc: N, --bounds N N  from and to values (indexed from 1)
   type: string
   inputBinding:
@@ -31,6 +26,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --force-color
+- id: input
+  doc: input fasta sequence (default = stdin)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

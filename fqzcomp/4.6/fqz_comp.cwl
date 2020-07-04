@@ -1,49 +1,49 @@
 class: CommandLineTool
-id: fqz_comp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fqz_comp.cwl
 inputs:
-- id: q
+- id: perform_lossy_compression
   doc: Perform lossy compression with all quality values being within 'num' distance
     from their original value. Default is lossless, i.e. "-q 0"
   type: string
   inputBinding:
     prefix: -Q
-- id: s
+- id: sequence_compression_level
   doc: Sequence compression level. 1-9 [Def. 3] Specifying '+' on the end (eg -s5+)
     will use models of multiple sizes for improved compression.
   type: string
   inputBinding:
     prefix: -s
-- id: b
+- id: use_strands_sequence
   doc: Use both strands in sequence hash table.
   type: boolean
   inputBinding:
     prefix: -b
-- id: e
+- id: extra_seq_compression
   doc: 'Extra seq compression: 16-bit vs 8-bit counters.'
   type: boolean
   inputBinding:
     prefix: -e
-- id: q
+- id: quality_compression_level
   doc: Quality compression level.  1-3 [Def. 2]
   type: string
   inputBinding:
     prefix: -q
-- id: n
+- id: name_compression_level
   doc: Name compression level.  1-2 [Def. 2]
   type: string
   inputBinding:
     prefix: -n
-- id: p
+- id: disable_multithreading
   doc: Disable multi-threading
   type: boolean
   inputBinding:
     prefix: -P
-- id: x
+- id: disable_generationverification_check
   doc: Disable generation/verification of check sums
   type: boolean
   inputBinding:
     prefix: -X
-- id: s
+- id: solid_format
   doc: SOLiD format
   type: boolean
   inputBinding:

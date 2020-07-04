@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mantis.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mantis.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

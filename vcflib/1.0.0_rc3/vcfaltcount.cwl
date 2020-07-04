@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfaltcount.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfaltcount.cwl
 inputs:
 - id: vcf_file
   doc: ''

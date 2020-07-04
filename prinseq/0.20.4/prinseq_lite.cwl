@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: prinseq_lite.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/prinseq_lite.pl.cwl
 inputs:
-- id: perl
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: prin_seq_lite_pl
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: input_fast_q_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: help
   doc: ''
   type: boolean
@@ -46,11 +31,16 @@ inputs:
   type: string
   inputBinding:
     prefix: -fasta
-- id: fastq2
+- id: fast_q_two
   doc: ''
   type: string
   inputBinding:
     prefix: -fastq2
+- id: input_fast_q_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

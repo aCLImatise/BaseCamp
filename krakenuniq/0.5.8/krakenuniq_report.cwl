@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: krakenuniq_report.cwl
+id: ../../../../home/ubuntu/BiocondaCli/krakenuniq_report.cwl
 inputs:
 - id: show_zeros
   doc: Show full taxonomy table.
@@ -16,6 +16,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --taxon-list
+- id: db
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --db
 outputs: []
 cwlVersion: v1.1
 baseCommand:

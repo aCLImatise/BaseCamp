@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: getConfidenceDensity.cwl
+id: ../../../../home/ubuntu/BiocondaCli/getConfidenceDensity.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

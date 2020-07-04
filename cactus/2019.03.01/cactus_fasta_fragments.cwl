@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cactus_fasta_fragments.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cactus_fasta_fragments.py.cwl
 inputs:
 - id: fragment
   doc: length of each fragment (default is 100)
@@ -18,16 +18,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --shuffle
-- id: origin
-  doc: output positions are origin-one (surprisingly, this is the default)
-  type: string
-  inputBinding:
-    prefix: --origin
-- id: origin
-  doc: output positions are origin-zero
-  type: string
-  inputBinding:
-    prefix: --origin
 - id: head
   doc: limit the number of fragments emitted
   type: string

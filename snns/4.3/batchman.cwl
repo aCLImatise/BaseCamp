@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: batchman.cwl
+id: ../../../../home/ubuntu/BiocondaCli/batchman.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

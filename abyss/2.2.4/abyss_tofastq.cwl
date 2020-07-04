@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: abyss_tofastq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/abyss_tofastq.cwl
 inputs:
 - id: cat
   doc: concatenate the records [default]
@@ -66,6 +66,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

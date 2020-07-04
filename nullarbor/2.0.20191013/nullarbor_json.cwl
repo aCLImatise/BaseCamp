@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nullarbor_json.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nullarbor_json.pl.cwl
 inputs:
 - id: in_dir
   doc: Nullarbor result folder

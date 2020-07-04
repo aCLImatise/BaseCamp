@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filterShrimp.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filterShrimp.pl.cwl
 inputs:
 - id: min_score
   doc: minimal percentage of identity (default 300)

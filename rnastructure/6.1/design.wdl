@@ -2,10 +2,13 @@ version 1.0
 
 task Design {
   input {
-    String? ctCtStructureFile
+    String ct_structure_file
   }
   command <<<
     design \
-      ~{ctCtStructureFile}
+      ~{ct_structure_file}
   >>>
+  parameter_meta {
+    ct_structure_file: ""
+  }
 }

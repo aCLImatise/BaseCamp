@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filter_gff_cov.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_gff_cov.cwl
 inputs:
 - id: reference
   doc: Reference FASTA file for the GFF  [required]
@@ -32,6 +32,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --progress
+- id: input_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

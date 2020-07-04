@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: ribotish_tisdiff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ribotish_tisdiff.cwl
 inputs:
+- id: one
+  doc: Prediction results of group 1 TIS data
+  type: string
+  inputBinding:
+    prefix: '-1'
+- id: two
+  doc: Prediction results of group 2 TIS data
+  type: string
+  inputBinding:
+    prefix: '-2'
 - id: a
   doc: Group 1 TIS enriched riboseq bam files, comma seperated
   type: string
@@ -11,22 +21,22 @@ inputs:
   type: string
   inputBinding:
     prefix: -b
-- id: g
+- id: gene_annotation_file
   doc: Gene annotation file
   type: string
   inputBinding:
     prefix: -g
-- id: o
+- id: output_result_file
   doc: Output result file
   type: string
   inputBinding:
     prefix: -o
-- id: tis1para
+- id: t_is_one_para
   doc: Input offset parameter files for group 1 bam files
   type: string
   inputBinding:
     prefix: --tis1para
-- id: tis2para
+- id: tis_two_para
   doc: Input offset parameter files for group 2 bam files
   type: string
   inputBinding:
@@ -56,12 +66,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --paired
-- id: l1
+- id: lone
   doc: Labels for group 1 TIS data
   type: string
   inputBinding:
     prefix: --l1
-- id: l2
+- id: l_two
   doc: Labels for group 2 TIS data
   type: string
   inputBinding:
@@ -107,7 +117,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --rnascale
-- id: chi2
+- id: chi_two
   doc: Use chisquare test instead of Fisher's exact test for mRNA referenced test
   type: boolean
   inputBinding:
@@ -142,7 +152,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --qi
-- id: f
+- id: minimum_fold_default
   doc: 'Minimum fold change threshold (default: 1.5)'
   type: string
   inputBinding:
@@ -167,7 +177,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --oqth
-- id: p
+- id: number_of_processes
   doc: Number of processes
   type: string
   inputBinding:

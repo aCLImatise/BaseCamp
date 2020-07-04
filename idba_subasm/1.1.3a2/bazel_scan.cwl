@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bazel_scan.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bazel_scan.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

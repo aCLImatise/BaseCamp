@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: fuse.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fuse.cwl
 inputs:
-- id: source
-  doc: Source BAM or DataSet XML file.
-  type: string
-  inputBinding:
-    position: 0
-- id: output
-  doc: Output fasta file.
-  type: string
-  inputBinding:
-    position: 1
 - id: min_coverage
   doc: Minimal coverage to call a position. [50]
   type: boolean
@@ -26,6 +16,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --resolved-tool-contract
+- id: source
+  doc: Source BAM or DataSet XML file.
+  type: string
+  inputBinding:
+    position: 0
+- id: output
+  doc: Output fasta file.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

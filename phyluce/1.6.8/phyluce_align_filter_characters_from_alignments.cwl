@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_align_filter_characters_from_alignments.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_align_filter_characters_from_alignments.cwl
 inputs:
 - id: alignments
   doc: The input alignment files to filter

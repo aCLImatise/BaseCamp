@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: mysql_config.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mysql_config.cwl
 inputs:
 - id: pkg_libdir
-  doc: '[/tmp/tmp74jusc75/lib]'
+  doc: '[/tmp/tmp5kms2cfc/lib]'
   type: string
   inputBinding:
     position: 0
 - id: plugin_dir
-  doc: '[/tmp/tmp74jusc75/lib/plugin]'
+  doc: '[/tmp/tmp5kms2cfc/lib/plugin]'
   type: string
   inputBinding:
     position: 1

@@ -1,9 +1,9 @@
 class: CommandLineTool
-id: mugsy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mugsy.cwl
 inputs:
 - id: duplications
-  doc: 1 - Detect and report duplications. 0 - Skip. Default is 0.
-  type: boolean
+  doc: '- Detect and report duplications. 0 - Skip. Default is 0.'
+  type: string
   inputBinding:
     prefix: -duplications
 - id: debug

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csb_buildhmm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csb_buildhmm.cwl
 inputs:
-- id: query
-  doc: input sequence (FASTA or PDB file)
-  type: string
-  inputBinding:
-    position: 0
 - id: query_id
   doc: ID of the query, in PDB-like format (accessionCHAIN).Used for naming the output
     files. Also, if the input is a PDB file with multiple chains, CHAIN is used to
@@ -48,6 +43,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-calibration
+- id: query
+  doc: input sequence (FASTA or PDB file)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

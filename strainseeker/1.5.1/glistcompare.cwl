@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: glistcompare.cwl
+id: ../../../../home/ubuntu/BiocondaCli/glistcompare.cwl
 inputs:
-- id: input_list_1
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: input_list_2
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: union
   doc: '- union of input lists'
   type: boolean
@@ -32,8 +17,8 @@ inputs:
   inputBinding:
     prefix: --difference
 - id: double_difference
-  doc: of input lists
-  type: string
+  doc: '- double difference of input lists'
+  type: boolean
   inputBinding:
     prefix: --double_difference
 - id: diff_union
@@ -53,7 +38,7 @@ inputs:
   inputBinding:
     prefix: --cutoff
 - id: output_name
-  doc: name (default "out")
+  doc: '- specify output name (default "out")'
   type: string
   inputBinding:
     prefix: --outputname
@@ -79,11 +64,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --disable_scouts
-- id: d
+- id: increase_debug_level
   doc: '- increase debug level'
   type: boolean
   inputBinding:
     prefix: -D
+- id: input_list_one
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: input_list_two
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

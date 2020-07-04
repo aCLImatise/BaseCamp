@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: yamllint.cwl
+id: ../../../../home/ubuntu/BiocondaCli/yamllint.cwl
 inputs:
-- id: file_or_dir
-  doc: files to check
-  type: File
-  inputBinding:
-    position: 0
 - id: config_file
   doc: path to a custom configuration
   type: string
@@ -21,6 +16,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --format
+- id: file_or_dir
+  doc: files to check
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

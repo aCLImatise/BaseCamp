@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pan_pipe.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pan_pipe.cwl
 inputs:
 - id: threads
   doc: Number of threads to use for parallel commands. Will be overridden by values
@@ -23,6 +23,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gifrop_args
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,12 +2,16 @@ version 1.0
 
 task Tandem2XML {
   input {
-    String? inputInputFile
-    String? outputOutputFile
+    String input_file
+    String? output_file
   }
   command <<<
     Tandem2XML \
-      ~{inputInputFile} \
-      ~{outputOutputFile}
+      ~{input_file} \
+      ~{output_file}
   >>>
+  parameter_meta {
+    input_file: ""
+    output_file: ""
+  }
 }

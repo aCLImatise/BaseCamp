@@ -1,11 +1,16 @@
 class: CommandLineTool
-id: bedtools_summary.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedtools_summary.cwl
 inputs:
-- id: chr18_gl000207_random
-  doc: '4262'
+- id: i
+  doc: ''
   type: string
   inputBinding:
-    position: 0
+    prefix: -i
+- id: g
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -g
 outputs: []
 cwlVersion: v1.1
 baseCommand:

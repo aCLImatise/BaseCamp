@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: graphembed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/graphembed.cwl
 inputs:
-- id: i
+- id: specify_input_data
   doc: Specify input data file in CSV format.
   type: File
   inputBinding:
     prefix: -i
-- id: t
+- id: specify_classes_data
   doc: Specify classes data file in CSV format.
   type: File
   inputBinding:
     prefix: -t
-- id: o
+- id: output_directory_name
   doc: 'Output directory name [default: out].'
   type: string
   inputBinding:
@@ -21,24 +21,24 @@ inputs:
   type: string
   inputBinding:
     prefix: --class_confidence
-- id: k
+- id: number_links_closest
   doc: 'Number of links towards closest neighbors with same class [default: 5].'
   type: string
   inputBinding:
     prefix: -k
-- id: d
+- id: number_links_denser
   doc: 'Number of links towards denser neighbors with a different class [default:
     1]'
   type: string
   inputBinding:
     prefix: -d
-- id: z
+- id: number_limit_horizon
   doc: 'Number of nearest neighbors to limit the horizon to limit search of denser
     neighbors of a different class [default: 10]'
   type: string
   inputBinding:
     prefix: -z
-- id: l
+- id: number_mutual_nearest
   doc: 'Number of mutual nearest neighbors that define outlier instances [default:
     0]'
   type: string
@@ -99,6 +99,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: graph_embed
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

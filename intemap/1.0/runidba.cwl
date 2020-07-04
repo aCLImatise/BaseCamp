@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: runidba.py_outputpathdir.cwl
+id: ../../../../home/ubuntu/BiocondaCli/runidba.py.cwl
 inputs:
 - id: para_file
   doc: ''
@@ -20,4 +20,3 @@ outputs: []
 cwlVersion: v1.1
 baseCommand:
 - runidba.py
-- outputpathdir

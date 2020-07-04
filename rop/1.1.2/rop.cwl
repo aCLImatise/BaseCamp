@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rop.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rop.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

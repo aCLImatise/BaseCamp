@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: maskrc_svg.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maskrc_svg.py.cwl
 inputs:
-- id: prefix
-  doc: prefix used for CFML/Gubbins input files (required)
-  type: string
-  inputBinding:
-    position: 0
 - id: gubbins
   doc: parse as Gubbins instead of ClonalFrameML
   type: boolean
@@ -56,6 +51,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --consensus
+- id: prefix
+  doc: prefix used for CFML/Gubbins input files (required)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

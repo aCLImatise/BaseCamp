@@ -2,26 +2,37 @@ version 1.0
 
 task ExtractPromoterRegions.py {
   input {
-    Boolean gzipGzip
-    String? littleLittle
-    String? scriptScript
-    String? toTo
-    String? extractExtract
-    String? promoterPromoter
-    String? regionsRegions
-    String? fromFrom
-    String? genesGenes
+    Boolean? gzip
+    String little
+    String script
+    String to
+    String extract
+    String promoter
+    String regions
+    String from
+    String genes_dot
   }
   command <<<
     extract_promoter_regions.py \
-      ~{littleLittle} \
-      ~{true="--gzip" false="" gzipGzip} \
-      ~{scriptScript} \
-      ~{toTo} \
-      ~{extractExtract} \
-      ~{promoterPromoter} \
-      ~{regionsRegions} \
-      ~{fromFrom} \
-      ~{genesGenes}
+      ~{little} \
+      ~{script} \
+      ~{to} \
+      ~{extract} \
+      ~{promoter} \
+      ~{regions} \
+      ~{from} \
+      ~{genes_dot} \
+      ~{true="--gzip" false="" gzip}
   >>>
+  parameter_meta {
+    gzip: "Output will be compressed in GZip format."
+    little: ""
+    script: ""
+    to: ""
+    extract: ""
+    promoter: ""
+    regions: ""
+    from: ""
+    genes_dot: ""
+  }
 }

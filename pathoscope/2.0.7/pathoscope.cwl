@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pathoscope.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pathoscope.cwl
 inputs:
 - id: verbose
   doc: Prints verbose text while running

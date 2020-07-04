@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dfq2fq_v2.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dfq2fq_v2.pl.cwl
 inputs:
 - id: finish
   doc: (chops low depth (<valid_depth) regions)
@@ -28,6 +28,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --nlist
+- id: this
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_dot_dfq
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

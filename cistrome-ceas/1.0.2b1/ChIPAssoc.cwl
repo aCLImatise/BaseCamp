@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ChIPAssoc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ChIPAssoc.cwl
 inputs:
 - id: bed
   doc: BED file of genomic coordinates (e.g. ChIP-Seq peaks). The center of each peak
@@ -58,7 +58,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --rbg
-- id: gname2
+- id: g_name_two
   doc: If this switch is on, gene or transcript IDs in files given through -g will
     be considered as official gene symbols.
   type: boolean

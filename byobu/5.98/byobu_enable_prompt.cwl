@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: byobu_enable_prompt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/byobu_enable_prompt.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

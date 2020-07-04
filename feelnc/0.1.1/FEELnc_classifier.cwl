@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FEELnc_classifier.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FEELnc_classifier.pl.cwl
 inputs:
 - id: biotype
   doc: Print the biotype of each transcripts in the output
@@ -32,15 +32,14 @@ inputs:
   inputBinding:
     prefix: --mrna
 - id: window
-  doc: =10000             Size of the window around the lncRNA to compute interactions/classification
+  doc: Size of the window around the lncRNA to compute interactions/classification
     [default 10000]
-  type: boolean
+  type: string
   inputBinding:
     prefix: --window
 - id: max_window
-  doc: =100000         Maximal size of the window during the expansion process [default
-    10000]
-  type: boolean
+  doc: Maximal size of the window during the expansion process [default 10000]
+  type: string
   inputBinding:
     prefix: --maxwindow
 outputs: []

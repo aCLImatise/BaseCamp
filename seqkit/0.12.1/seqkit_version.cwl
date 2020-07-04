@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: seqkit_version.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqkit_version.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: check_update
   doc: check update
   type: boolean
@@ -60,6 +55,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

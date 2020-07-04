@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filter_events.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_events.cwl
 inputs:
 - id: filter
   doc: Comparison file to filter or list of replicate files to filter.

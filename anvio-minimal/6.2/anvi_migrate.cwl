@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_migrate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_migrate.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

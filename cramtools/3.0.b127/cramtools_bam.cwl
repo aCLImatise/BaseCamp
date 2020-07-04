@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cramtools_bam.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cramtools_bam.cwl
 inputs:
 - id: calculate_md_tag
   doc: 'Calculate MD tag. (default: false)'
@@ -33,7 +33,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --filter-flags
-- id: ignore_md5_mismatch
+- id: ignore_md_five_mismatch
   doc: 'Issue a warning on sequence MD5 mismatch and continue. This does not garantee
     the data will be read succesfully.  (default: false)'
   type: boolean
@@ -77,7 +77,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --required-flags
-- id: skip_md5_check
+- id: skip_md_five_check
   doc: 'Skip MD5 checks when reading the header. (default: false)'
   type: boolean
   inputBinding:
@@ -92,7 +92,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --output-bam-format
-- id: h
+- id: print_sam_header_quit
   doc: 'Print SAM header and quit. (default: false)'
   type: boolean
   inputBinding:
@@ -102,6 +102,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --log-level
+- id: main_class
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

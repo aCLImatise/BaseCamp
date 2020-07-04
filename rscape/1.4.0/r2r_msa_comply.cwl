@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: r2r_msa_comply.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/r2r_msa_comply.pl.cwl
 inputs:
 - id: msa_file
   doc: ''

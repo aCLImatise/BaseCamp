@@ -1,32 +1,6 @@
 class: CommandLineTool
-id: omero_testengine.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_testengine.cwl
 inputs:
-- id: omer_o_userdir
-  doc: "Set the base directory containing the user's files. Default: $HOME/omero"
-  type: string
-  inputBinding:
-    position: 0
-- id: omer_o_session_dir
-  doc: 'Set the base directory containing local sessions. Default: $OMERO_USERDIR/sessions'
-  type: string
-  inputBinding:
-    position: 1
-- id: omer_o_tmpdir
-  doc: 'Set the base directory containing temporary files. Default: $OMERO_USERDIR/tmp'
-  type: string
-  inputBinding:
-    position: 2
-- id: omer_o_password
-  doc: Set the user's password for creating new sessions. Ignored if -w or --password
-    is used.
-  type: string
-  inputBinding:
-    position: 3
-- id: path
-  doc: Path to be passed to the Java process
-  type: File
-  inputBinding:
-    position: 0
 - id: java_help
   doc: Show the Java help text
   type: boolean
@@ -164,12 +138,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --annotation-link
-- id: f
+- id: display_used_files
   doc: Display the used files and exit (**)
   type: boolean
   inputBinding:
     prefix: -f
-- id: c
+- id: continue_importing_errors
   doc: Continue importing after errors (**)
   type: boolean
   inputBinding:
@@ -179,12 +153,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --readers
-- id: d
+- id: omero_dataset_id
   doc: OMERO dataset ID to import image into (**)
   type: string
   inputBinding:
     prefix: -d
-- id: r
+- id: omero_screen_id
   doc: OMERO screen ID to import plate into (**)
   type: string
   inputBinding:
@@ -239,6 +213,32 @@ inputs:
   type: string
   inputBinding:
     prefix: --parallel-fileset
+- id: omer_o_userdir
+  doc: "Set the base directory containing the user's files. Default: $HOME/omero"
+  type: string
+  inputBinding:
+    position: 0
+- id: omer_o_session_dir
+  doc: 'Set the base directory containing local sessions. Default: $OMERO_USERDIR/sessions'
+  type: string
+  inputBinding:
+    position: 1
+- id: omer_o_tmpdir
+  doc: 'Set the base directory containing temporary files. Default: $OMERO_USERDIR/tmp'
+  type: string
+  inputBinding:
+    position: 2
+- id: omer_o_password
+  doc: Set the user's password for creating new sessions. Ignored if -w or --password
+    is used.
+  type: string
+  inputBinding:
+    position: 3
+- id: path
+  doc: Path to be passed to the Java process
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,7 +1,14 @@
 version 1.0
 
 task Cksum {
+  input {
+    File? file
+  }
   command <<<
-    cksum
+    cksum \
+      ~{file}
   >>>
+  parameter_meta {
+    file: ""
+  }
 }

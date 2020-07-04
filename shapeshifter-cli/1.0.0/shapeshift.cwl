@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: shapeshift.cwl
+id: ../../../../home/ubuntu/BiocondaCli/shapeshift.cwl
 inputs:
-- id: input_file
-  doc: Data file to be imported, filtered, and/or transformed
-  type: string
-  inputBinding:
-    position: 0
-- id: output_file
-  doc: File path to which results are exported
-  type: string
-  inputBinding:
-    position: 1
 - id: input_file_type
   doc: 'Type of file to be imported. If not specified, file type will be determined
     by the file extension given. Available choices are: CSV, TSV, JSON, Excel, HDF5,
@@ -58,6 +48,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --set_index
+- id: input_file
+  doc: Data file to be imported, filtered, and/or transformed
+  type: string
+  inputBinding:
+    position: 0
+- id: output_file
+  doc: File path to which results are exported
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

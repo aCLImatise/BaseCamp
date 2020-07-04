@@ -2,24 +2,34 @@ version 1.0
 
 task EigenstratQTL {
   input {
-    Boolean iI
-    Boolean jJ
-    Boolean pP
-    String oO
-    String? mustMust
-    String? allAll
-    String? beBe
-    String? specifiedSpecified
+    Boolean? i
+    Boolean? j
+    Boolean? p
+    String? o
+    String must
+    String all
+    String be
+    String specified
   }
   command <<<
     eigenstratQTL \
-      ~{mustMust} \
-      ~{true="-i" false="" iI} \
-      ~{true="-j" false="" jJ} \
-      ~{true="-p" false="" pP} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{allAll} \
-      ~{beBe} \
-      ~{specifiedSpecified}
+      ~{must} \
+      ~{all} \
+      ~{be} \
+      ~{specified} \
+      ~{true="-i" false="" i} \
+      ~{true="-j" false="" j} \
+      ~{true="-p" false="" p} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    i: ""
+    j: ""
+    p: ""
+    o: ""
+    must: ""
+    all: ""
+    be: ""
+    specified: ""
+  }
 }

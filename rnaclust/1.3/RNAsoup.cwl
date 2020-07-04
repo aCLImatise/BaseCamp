@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNAsoup.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAsoup.cwl
 inputs:
 - id: t
   doc: ''

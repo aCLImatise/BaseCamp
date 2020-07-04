@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: design_naively.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/design_naively.py.cwl
 inputs:
-- id: dataset
-  doc: Label for the target dataset
-  type: string
-  inputBinding:
-    position: 0
 - id: add_reverse_complements
   doc: Add to the output the reverse complement of each probe
   type: boolean
@@ -36,6 +31,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: pl
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -pl
+- id: ps
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -ps
+- id: dataset
+  doc: Label for the target dataset
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

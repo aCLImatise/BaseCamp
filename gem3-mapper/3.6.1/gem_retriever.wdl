@@ -2,14 +2,19 @@ version 1.0
 
 task GemRetriever {
   input {
-    String indexIndex
-    String inputInput
-    String outputOutput
+    String? index
+    String? defaultstdin
+    String? defaultstdout
   }
   command <<<
     gem-retriever \
-      ~{if defined(indexIndex) then ("--index " +  '"' + indexIndex + '"') else ""} \
-      ~{if defined(inputInput) then ("--input " +  '"' + inputInput + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""}
+      ~{if defined(index) then ("--index " +  '"' + index + '"') else ""} \
+      ~{if defined(defaultstdin) then ("--input " +  '"' + defaultstdin + '"') else ""} \
+      ~{if defined(defaultstdout) then ("--output " +  '"' + defaultstdout + '"') else ""}
   >>>
+  parameter_meta {
+    index: "(GEM archive)"
+    defaultstdin: "(default=stdin)"
+    defaultstdout: "(default=stdout)"
+  }
 }

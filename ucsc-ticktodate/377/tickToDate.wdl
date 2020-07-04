@@ -2,10 +2,13 @@ version 1.0
 
 task TickToDate {
   input {
-    String? ticksTicks
+    String ticks
   }
   command <<<
     tickToDate \
-      ~{ticksTicks}
+      ~{ticks}
   >>>
+  parameter_meta {
+    ticks: ""
+  }
 }

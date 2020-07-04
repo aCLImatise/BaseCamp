@@ -1,27 +1,22 @@
 class: CommandLineTool
-id: iu_filter_quality_bokulich.cwl
+id: ../../../../home/ubuntu/BiocondaCli/iu_filter_quality_bokulich.cwl
 inputs:
-- id: config_file
-  doc: User configuration to run. See the source code to see an example.
-  type: string
-  inputBinding:
-    position: 0
-- id: p
+- id: minimal_highquality_read
   doc: 'Minimal high-quality read length (default: 0.75)'
   type: double
   inputBinding:
     prefix: -p
-- id: q
+- id: minimum_phred_score
   doc: 'Minimum PHRED score to identify low quality bases (default: 3)'
   type: long
   inputBinding:
     prefix: -q
-- id: r
+- id: maximum_consecutive_lowquality
   doc: 'Maximum of consecutive low-quality calls (default: 3)'
   type: long
   inputBinding:
     prefix: -r
-- id: n
+- id: maximum_ambiguous_calls
   doc: 'Maximum of ambiguous calls allowed (default: 0)'
   type: long
   inputBinding:
@@ -60,6 +55,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --store-read-fate
+- id: config_file
+  doc: User configuration to run. See the source code to see an example.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

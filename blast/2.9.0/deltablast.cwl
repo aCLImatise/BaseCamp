@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: deltablast.cwl
+id: ../../../../home/ubuntu/BiocondaCli/deltablast.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

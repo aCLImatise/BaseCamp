@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: erds_pipeline.cwl
+id: ../../../../home/ubuntu/BiocondaCli/erds_pipeline.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

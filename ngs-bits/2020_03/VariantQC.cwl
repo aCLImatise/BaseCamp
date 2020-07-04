@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: VariantQC.cwl
+id: ../../../../home/ubuntu/BiocondaCli/VariantQC.cwl
 inputs:
 - id: in
   doc: Input variant list in VCF format.

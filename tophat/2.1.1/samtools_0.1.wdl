@@ -2,28 +2,40 @@ version 1.0
 
 task Samtools0.1.18Phase {
   input {
-    Int kK
-    String bB
-    Int qQ
-    Int qQ
-    Int dD
-    Boolean fF
-    Boolean aA
-    String? samSamTools
-    String? phasePhase
-    String? inInBam
+    Int? block_length
+    String? prefix_bams_output
+    Int? min_het_phredlod
+    Int? min_base_quality
+    Int? max_read_depth
+    Boolean? attempt_fix_chimeras
+    Boolean? drop_reads_ambiguous
+    String sam_tools
+    String phase
+    String in_dot_bam
   }
   command <<<
     samtools_0.1.18 phase \
-      ~{samSamTools} \
-      ~{if defined(kK) then ("-k " +  '"' + kK + '"') else ""} \
-      ~{if defined(bB) then ("-b " +  '"' + bB + '"') else ""} \
-      ~{if defined(qQ) then ("-q " +  '"' + qQ + '"') else ""} \
-      ~{if defined(qQ) then ("-Q " +  '"' + qQ + '"') else ""} \
-      ~{if defined(dD) then ("-D " +  '"' + dD + '"') else ""} \
-      ~{true="-F" false="" fF} \
-      ~{true="-A" false="" aA} \
-      ~{phasePhase} \
-      ~{inInBam}
+      ~{sam_tools} \
+      ~{phase} \
+      ~{in_dot_bam} \
+      ~{if defined(block_length) then ("-k " +  '"' + block_length + '"') else ""} \
+      ~{if defined(prefix_bams_output) then ("-b " +  '"' + prefix_bams_output + '"') else ""} \
+      ~{if defined(min_het_phredlod) then ("-q " +  '"' + min_het_phredlod + '"') else ""} \
+      ~{if defined(min_base_quality) then ("-Q " +  '"' + min_base_quality + '"') else ""} \
+      ~{if defined(max_read_depth) then ("-D " +  '"' + max_read_depth + '"') else ""} \
+      ~{true="-F" false="" attempt_fix_chimeras} \
+      ~{true="-A" false="" drop_reads_ambiguous}
   >>>
+  parameter_meta {
+    block_length: "block length [13]"
+    prefix_bams_output: "prefix of BAMs to output [null]"
+    min_het_phredlod: "min het phred-LOD [37]"
+    min_base_quality: "min base quality in het calling [13]"
+    max_read_depth: "max read depth [256]"
+    attempt_fix_chimeras: "do not attempt to fix chimeras"
+    drop_reads_ambiguous: "drop reads with ambiguous phase"
+    sam_tools: ""
+    phase: ""
+    in_dot_bam: ""
+  }
 }

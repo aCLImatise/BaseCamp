@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: packagemanager.cwl
+id: ../../../../home/ubuntu/BiocondaCli/packagemanager.cwl
 inputs:
 - id: list
   doc: available packages
@@ -29,7 +29,7 @@ inputs:
   inputBinding:
     prefix: -useAppDir
 - id: dir
-  doc: /uninstall package in directory <DIR>. This overrides the useAppDir option
+  doc: package in directory <DIR>. This overrides the useAppDir option
   type: string
   inputBinding:
     prefix: -dir

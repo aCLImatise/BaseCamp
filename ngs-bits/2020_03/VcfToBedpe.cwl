@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: VcfToBedpe.cwl
+id: ../../../../home/ubuntu/BiocondaCli/VcfToBedpe.cwl
 inputs:
 - id: in
   doc: Input structural variant list in VCF format.

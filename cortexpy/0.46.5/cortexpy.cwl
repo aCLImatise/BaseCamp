@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: cortexpy.cwl
-inputs:
-- id: args
-  doc: sub-command arguments
-  type: string
-  inputBinding:
-    position: 0
+id: ../../../../home/ubuntu/BiocondaCli/cortexpy.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

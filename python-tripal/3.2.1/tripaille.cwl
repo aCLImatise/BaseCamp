@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tripaille.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tripaille.cwl
 inputs:
 - id: verbose
   doc: Enables verbose mode.

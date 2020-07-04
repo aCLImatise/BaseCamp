@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: 2bwt_builder.cwl
+id: ../../../../home/ubuntu/BiocondaCli/2bwt_builder.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

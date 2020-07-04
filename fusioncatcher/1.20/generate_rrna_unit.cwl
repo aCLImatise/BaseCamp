@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: generate_rrna_unit.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/generate_rrna_unit.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the ribosomal DNA complete repeating unit

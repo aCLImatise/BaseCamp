@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tripaille_organism.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tripaille_organism.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: descseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/descseq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

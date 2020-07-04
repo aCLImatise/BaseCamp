@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: vkmz_tabular.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vkmz_tabular.cwl
 inputs:
 - id: input
   doc: Path to tabular file.
   type: string
   inputBinding:
     prefix: --input
-- id: error
+- id: mass_error_ms
   doc: '[ERROR], -e [ERROR] Mass error of MS data in parts-per-million'
   type: boolean
   inputBinding:
     prefix: --error
-- id: output
+- id: specify_output_file
   doc: '[OUTPUT], -o [OUTPUT] Specify output file path'
   type: boolean
   inputBinding:
@@ -62,6 +62,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --impute-charge
+- id: var_12
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: var_13
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

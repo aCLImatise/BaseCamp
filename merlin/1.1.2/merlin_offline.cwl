@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: merlin_offline.cwl
+id: ../../../../home/ubuntu/BiocondaCli/merlin_offline.cwl
 inputs:
 - id: dat_infer
   doc: '[merlin-infer.dat],'

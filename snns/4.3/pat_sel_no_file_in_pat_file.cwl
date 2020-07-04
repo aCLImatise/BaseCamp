@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pat_sel_no_file_in_pat_file.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pat_sel_no_file_in_pat_file.cwl
 inputs:
 - id: out_pat_file
   doc: ''

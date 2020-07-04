@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: v_ripper.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/v_ripper.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

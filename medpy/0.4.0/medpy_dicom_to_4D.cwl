@@ -1,44 +1,48 @@
 class: CommandLineTool
-id: medpy_dicom_to_4D.py_input.cwl
+id: ../../../../home/ubuntu/BiocondaCli/medpy_dicom_to_4D.py_offset.cwl
 inputs:
-- id: input
-  doc: Source directory.
-  type: string
-  inputBinding:
-    position: 0
-- id: output
-  doc: Target volume.
-  type: string
-  inputBinding:
-    position: 1
-- id: dimension
-  doc: The dimension in which to perform the cut (starting from 0).
-  type: string
-  inputBinding:
-    position: 2
-- id: offset
-  doc: How many consecutive slices belong together before a shift occurs. / The offset
-    between the volumes.
-  type: string
-  inputBinding:
-    position: 3
 - id: v
-  doc: Display more information.
+  doc: ''
   type: boolean
   inputBinding:
     prefix: -v
 - id: d
-  doc: Display debug information.
+  doc: ''
   type: boolean
   inputBinding:
     prefix: -d
 - id: f
-  doc: Silently override existing output images.
+  doc: ''
   type: boolean
   inputBinding:
     prefix: -f
+- id: me_dpy_dicom_to_four_ddot_py
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: input
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: output
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: dimension
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: offset
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - medpy_dicom_to_4D.py
-- input
+- offset

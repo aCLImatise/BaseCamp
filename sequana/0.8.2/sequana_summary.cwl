@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sequana_summary.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sequana_summary.cwl
 inputs:
 - id: file
   doc: one filename (either FastQ or BED file; see DESCRIPTION)
@@ -23,6 +23,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --thread
+- id: welcome
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: to
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: se_quan_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

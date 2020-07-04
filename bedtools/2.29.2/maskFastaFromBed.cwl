@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: maskFastaFromBed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maskFastaFromBed.cwl
 inputs:
 - id: fi
   doc: Input FASTA file
@@ -33,6 +33,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -fullHeader
+- id: bed_tools
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: mask_fast_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

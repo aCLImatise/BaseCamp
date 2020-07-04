@@ -2,10 +2,13 @@ version 1.0
 
 task CombineTradisPlots {
   input {
-    String pP
+    String? p
   }
   command <<<
     combine_tradis_plots \
-      ~{if defined(pP) then ("-p " +  '"' + pP + '"') else ""}
+      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""}
   >>>
+  parameter_meta {
+    p: ""
+  }
 }

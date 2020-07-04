@@ -1,21 +1,26 @@
 class: CommandLineTool
-id: aws_parameters.cwl
+id: ../../../../home/ubuntu/BiocondaCli/aws_parameters.cwl
 inputs:
-- id: command
+- id: aws
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: subcommand
+- id: command
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: parameters
+- id: subcommand
   doc: ''
   type: string
   inputBinding:
     position: 2
+- id: parameters
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

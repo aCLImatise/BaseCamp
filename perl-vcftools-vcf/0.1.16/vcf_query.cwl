@@ -1,20 +1,9 @@
 class: CommandLineTool
-id: vcf_query.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf_query.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: file_vcf_gz
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
 - id: columns
-  doc: <file|list>           List of comma-separated column names or one column name
-    per line in a file.
-  type: boolean
+  doc: List of comma-separated column names or one column name per line in a file.
+  type: File
   inputBinding:
     prefix: --columns
 - id: format
@@ -37,6 +26,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --use-old-method
+- id: file_dot_vcf_do_tgz
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

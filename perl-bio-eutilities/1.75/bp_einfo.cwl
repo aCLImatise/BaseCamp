@@ -1,32 +1,36 @@
 class: CommandLineTool
-id: bp_einfo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bp_einfo.cwl
 inputs:
-- id: e
-  doc: /--email Valid email (required by NCBI policy)
+- id: e_slash_email
+  doc: Valid email (required by NCBI policy)
   type: boolean
   inputBinding:
-    prefix: -e
-- id: d
-  doc: /--db/--database NCBI database to query (default = none, which shows available
-    databases)
+    prefix: -e/--email
+- id: d_slash_db_slash_database
+  doc: NCBI database to query (default = none, which shows available databases)
   type: boolean
   inputBinding:
-    prefix: -d
-- id: f
-  doc: /--field print out information about a specific field code (default = none)
+    prefix: -d/--db/--database
+- id: f_slash_field
+  doc: print out information about a specific field code (default = none)
   type: boolean
   inputBinding:
-    prefix: -f
-- id: l
-  doc: /--link print out information about a specific link name (default = none)
+    prefix: -f/--field
+- id: lslash_link
+  doc: print out information about a specific link name (default = none)
   type: boolean
   inputBinding:
-    prefix: -l
-- id: o
-  doc: /--out outfile (default = STDOUT)
+    prefix: -l/--link
+- id: oslash_out
+  doc: outfile (default = STDOUT)
   type: boolean
   inputBinding:
-    prefix: -o
+    prefix: -o/--out
+- id: h_slash_help
+  doc: show this documentation
+  type: boolean
+  inputBinding:
+    prefix: -h/--help
 outputs: []
 cwlVersion: v1.1
 baseCommand:

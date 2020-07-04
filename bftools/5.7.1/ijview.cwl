@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ijview.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ijview.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

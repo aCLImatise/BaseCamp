@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SeMeta_Assign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SeMeta_Assign.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

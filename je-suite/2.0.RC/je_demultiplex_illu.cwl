@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: je_demultiplex_illu.cwl
+id: ../../../../home/ubuntu/BiocondaCli/je_demultiplex_illu.cwl
 inputs:
-- id: or
-  doc: sample1          ATAT|GAGG:CCAA|TGTG     spl1_1.txt.gz   spl1_2.txt.gz
+- id: data_dot
+  doc: 'Required. '
   type: string
   inputBinding:
     position: 0

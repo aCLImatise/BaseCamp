@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: borf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/borf.cwl
 inputs:
-- id: fast_a_file
-  doc: fasta file to predict ORFs
-  type: string
-  inputBinding:
-    position: 0
 - id: output_path
   doc: 'path to write output files. [OUTPUT_PATH].pep and [OUTPUT_PATH].txt (default:
     input .fa file name)'
@@ -43,6 +38,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --force_overwrite
+- id: fast_a_file
+  doc: fasta file to predict ORFs
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

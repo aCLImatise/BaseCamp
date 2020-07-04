@@ -1,37 +1,62 @@
 class: CommandLineTool
-id: esl_shuffle.cwl
+id: ../../../../home/ubuntu/BiocondaCli/esl_shuffle.cwl
 inputs:
-- id: o
+- id: direct_output_data
   doc: ': direct output data to file <f>'
   type: string
   inputBinding:
     prefix: -o
-- id: n
+- id: generate_n_samples
   doc: ': generate <n> samples (per input seq/msa)  [1]  (n>0)'
   type: string
   inputBinding:
     prefix: -N
-- id: l
+- id: truncate_outputs_length
   doc: ': truncate outputs to length <n>  [0]  (n>=0)'
   type: string
   inputBinding:
     prefix: -L
-- id: r
+- id: shuffle_preserving_composition
+  doc: ': shuffle preserving monoresidue composition  [default]'
+  type: boolean
+  inputBinding:
+    prefix: -m
+- id: shuffle_preserving_mono
+  doc: ': shuffle preserving mono- and di-residue composition'
+  type: boolean
+  inputBinding:
+    prefix: -d
+- id: shuffle_nonoverlapping_nmers
+  doc: ': shuffle nonoverlapping <n>-mers  (n>0)'
+  type: string
+  inputBinding:
+    prefix: -k
+- id: generate_markov_properties
+  doc: ': generate with 0th order Markov properties per input'
+  type: boolean
+  inputBinding:
+    prefix: '-0'
+- id: generate_st_order
+  doc: ': generate with 1st order Markov properties per input'
+  type: boolean
+  inputBinding:
+    prefix: '-1'
+- id: _reverse_input
   doc: ': reverse each input'
   type: boolean
   inputBinding:
     prefix: -r
-- id: w
+- id: regionally_shuffle_inputs
   doc: ': regionally shuffle inputs in window size <n>  (n>0)'
   type: string
   inputBinding:
     prefix: -w
-- id: b
+- id: take_bootstrapping_samples
   doc: ': take bootstrapping samples'
   type: boolean
   inputBinding:
     prefix: -b
-- id: v
+- id: shuffle_residues_independently
   doc: ': shuffle residues in each column independently'
   type: boolean
   inputBinding:
@@ -61,6 +86,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --informat
+- id: seq_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

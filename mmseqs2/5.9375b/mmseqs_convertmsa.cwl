@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mmseqs_convertmsa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mmseqs_convertmsa.cwl
 inputs:
 - id: identifier_field
   doc: '1               Field from STOCKHOLM comments for choosing the MSA identifier:
@@ -8,7 +8,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --identifier-field
-- id: v
+- id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'
   type: boolean
   inputBinding:

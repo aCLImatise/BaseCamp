@@ -2,12 +2,16 @@ version 1.0
 
 task UniqueFilter {
   input {
-    String iI
-    String oO
+    Boolean? instead_finding_regions
+    String? i
   }
   command <<<
     uniqueFilter \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""}
+      ~{true="-s" false="" instead_finding_regions} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  parameter_meta {
+    instead_finding_regions: "instead of finding regions to remove by looking for duplicatd regions in inputFile, load them from subtractFile."
+    i: ""
+  }
 }

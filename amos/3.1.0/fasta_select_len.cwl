@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fasta_select_len.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fasta_select_len.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

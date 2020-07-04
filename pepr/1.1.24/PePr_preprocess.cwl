@@ -1,27 +1,27 @@
 class: CommandLineTool
-id: PePr_preprocess.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PePr_preprocess.cwl
 inputs:
 - id: parameter_file
   doc: provide a file that contain the parameters
   type: string
   inputBinding:
     prefix: --parameter-file
-- id: chip1
+- id: chip_one
   doc: chip1 file names separated by comma
   type: string
   inputBinding:
     prefix: --chip1
-- id: input_1
+- id: input_one
   doc: input1 file names separated by comma
   type: string
   inputBinding:
     prefix: --input1
-- id: chip2
+- id: chip_two
   doc: chip2 file names separated by comma
   type: string
   inputBinding:
     prefix: --chip2
-- id: input_2
+- id: input_two
   doc: input2 file names separated by comma
   type: string
   inputBinding:
@@ -88,6 +88,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --keep-max-dup
+- id: basic
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: usage
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: locARNAGraphClust.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/locARNAGraphClust.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: GapCutter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/GapCutter.cwl
 inputs:
 - id: no_split
   doc: "(0 arg) :    Don't split flank sharing gaps"
@@ -11,7 +11,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -mask
-- id: k
+- id: arg_kmer_length
   doc: "(1 arg) :    k-mer length  [default '31']"
   type: boolean
   inputBinding:

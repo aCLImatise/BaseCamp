@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: hubPublicCheck.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hubPublicCheck.cwl
 inputs:
-- id: tablename
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: udc_dir
   doc: =/dir/to/cache - place to put cache for remote bigBed/bigWigs
   type: boolean
@@ -16,6 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -addHub
+- id: tablename
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

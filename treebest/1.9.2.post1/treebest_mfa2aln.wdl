@@ -2,12 +2,16 @@ version 1.0
 
 task TreebestMfa2aln {
   input {
-    Boolean nN
-    String? fastFastAAlign
+    Boolean? n
+    String fast_a_align
   }
   command <<<
     treebest mfa2aln \
-      ~{fastFastAAlign} \
-      ~{true="-n" false="" nN}
+      ~{fast_a_align} \
+      ~{true="-n" false="" n}
   >>>
+  parameter_meta {
+    n: ""
+    fast_a_align: ""
+  }
 }

@@ -1,18 +1,6 @@
 class: CommandLineTool
-id: omero_chown.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_chown.cwl
 inputs:
-- id: usr
-  doc: user to transfer ownership of specified objects and/or all objects owned by
-    specified user(s) to
-  type: string
-  inputBinding:
-    position: 0
-- id: obj
-  doc: objects to be processed in the form <Class>:<Id> and/or user(s) to transfer
-    all data from in the form Experimenter:<Id>
-  type: string
-  inputBinding:
-    position: 1
 - id: wait
   doc: Number of seconds to wait for the processing to complete (Indefinite < 0; No
     wait=0).
@@ -55,6 +43,18 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --force
+- id: usr
+  doc: user to transfer ownership of specified objects and/or all objects owned by
+    specified user(s) to
+  type: string
+  inputBinding:
+    position: 0
+- id: obj
+  doc: objects to be processed in the form <Class>:<Id> and/or user(s) to transfer
+    all data from in the form Experimenter:<Id>
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Rsample_smp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Rsample_smp.cwl
 inputs:
 - id: r_sample
   doc: ''
@@ -11,7 +11,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: shapefile
+- id: shape_file
   doc: ''
   type: string
   inputBinding:

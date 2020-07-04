@@ -1,12 +1,7 @@
 class: CommandLineTool
-id: iu_visualize_qual_dicts.cwl
+id: ../../../../home/ubuntu/BiocondaCli/iu_visualize_qual_dicts.cwl
 inputs:
-- id: qual_dict
-  doc: cPickle dictionary that contains quality score info
-  type: string
-  inputBinding:
-    position: 0
-- id: p
+- id: prefix__prefix
   doc: PREFIX, --prefix FILE PREFIX Prefix for the output file(s)
   type: File
   inputBinding:
@@ -21,6 +16,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --split-tiles
+- id: qual_dict
+  doc: cPickle dictionary that contains quality score info
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

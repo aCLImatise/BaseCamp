@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: match_rg_patterns_to_library.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/match_rg_patterns_to_library.pl.cwl
 inputs:
-- id: rearrangements_bed_pe
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: acf
   doc: Aberrant cell fraction [1.0]
   type: double
@@ -56,6 +51,11 @@ inputs:
   type: long
   inputBinding:
     prefix: -max_depth
+- id: rearrangements_dot_bed_pe
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

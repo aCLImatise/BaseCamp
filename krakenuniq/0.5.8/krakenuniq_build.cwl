@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: krakenuniq_build.cwl
+id: ../../../../home/ubuntu/BiocondaCli/krakenuniq_build.cwl
 inputs:
-- id: task
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: download_taxonomy
   doc: Download NCBI taxonomic information
   type: boolean
@@ -138,6 +128,31 @@ inputs:
   type: string
   inputBinding:
     prefix: --taxonomy-dir
+- id: uid_database
+  doc: Build a UID database (default no)
+  type: boolean
+  inputBinding:
+    prefix: --uid-database
+- id: lca_database
+  doc: Build a LCA database (default yes)
+  type: boolean
+  inputBinding:
+    prefix: --lca-database
+- id: no_lca_database
+  doc: Do not build a LCA database
+  type: boolean
+  inputBinding:
+    prefix: --no-lca-database
+- id: task
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

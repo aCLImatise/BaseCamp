@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: droptag.cwl
+id: ../../../../home/ubuntu/BiocondaCli/droptag.cwl
 inputs:
 - id: config
   doc: ': xml file with droptag parameters'

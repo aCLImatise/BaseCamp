@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: spades_read_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/spades_read_filter.cwl
 inputs:
 - id: km_er
   doc: K-mer length

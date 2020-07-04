@@ -2,18 +2,25 @@ version 1.0
 
 task PoperaDhsCount {
   input {
-    String dataData
-    String nameName
-    String bedBed
-    Int minlengthMinlength
-    String threadsThreads
+    String? data
+    String? name
+    String? bed
+    Int? minlength
+    String? threads
   }
   command <<<
     popera_dhs_count \
-      ~{if defined(dataData) then ("--data " +  '"' + dataData + '"') else ""} \
-      ~{if defined(nameName) then ("--name " +  '"' + nameName + '"') else ""} \
-      ~{if defined(bedBed) then ("--bed " +  '"' + bedBed + '"') else ""} \
-      ~{if defined(minlengthMinlength) then ("--minlength " +  '"' + minlengthMinlength + '"') else ""} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""}
+      ~{if defined(data) then ("--data " +  '"' + data + '"') else ""} \
+      ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
+      ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""} \
+      ~{if defined(minlength) then ("--minlength " +  '"' + minlength + '"') else ""} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  parameter_meta {
+    data: "data file, should be sorted bam format, example=DH_sample1.bam,DH_sample2.bam"
+    name: "NH sample name default=DH_sample1,DH_sample2"
+    bed: "bed file, example=DH_sample1.bed,DH_sample2.bed"
+    minlength: "minimum length of merged hot spots, default=5"
+    threads: "threads number or cpu number, default=4"
+  }
 }

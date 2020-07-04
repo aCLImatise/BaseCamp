@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: feht.cwl
+id: ../../../../home/ubuntu/BiocondaCli/feht.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

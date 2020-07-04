@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: gatk_to_gvcf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gatk_to_gvcf.cwl
 inputs:
-- id: all_sites
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: gvc_f
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: chrom_depth_file
   doc: 'Read mean depth for each chromosome from file,  and use these values for maximum
     site depth  filteration. File should contain one line per  chromosome, where each
@@ -107,6 +97,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-block-compression
+- id: all_sites
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: gvc_f
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

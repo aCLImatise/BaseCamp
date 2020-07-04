@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: add_metadata_tree.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/add_metadata_tree.py.cwl
 inputs:
 - id: string_to_remove
   doc: string to be removed in the tree node names
@@ -12,6 +12,11 @@ inputs:
   type: string[]
   inputBinding:
     prefix: --metadatas
+- id: ifn_trees
+  doc: ''
+  type: string[]
+  inputBinding:
+    prefix: --ifn_trees
 outputs: []
 cwlVersion: v1.1
 baseCommand:

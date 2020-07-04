@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ra_integrate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ra_integrate.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

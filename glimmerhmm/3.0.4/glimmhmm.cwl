@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: glimmhmm.pl_train_dir.cwl
+id: ../../../../home/ubuntu/BiocondaCli/glimmhmm.pl.cwl
 inputs:
 - id: glimmer_hmm_program
   doc: ''
@@ -20,4 +20,3 @@ outputs: []
 cwlVersion: v1.1
 baseCommand:
 - glimmhmm.pl
-- train_dir

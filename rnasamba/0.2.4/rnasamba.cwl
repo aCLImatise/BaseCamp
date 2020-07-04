@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rnasamba.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnasamba.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

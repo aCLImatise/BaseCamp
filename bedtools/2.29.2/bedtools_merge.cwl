@@ -1,33 +1,33 @@
 class: CommandLineTool
-id: bedtools_merge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedtools_merge.cwl
 inputs:
-- id: s
+- id: force_strandedness_only
   doc: Force strandedness.  That is, only merge features that are on the same strand.
     - By default, merging is done without respect to strand.
   type: boolean
   inputBinding:
     prefix: -s
-- id: s
+- id: force_merge_one
   doc: Force merge for one specific strand only. Follow with + or - to force merge
     from only the forward or reverse strand, respectively. - By default, merging is
     done without respect to strand.
   type: boolean
   inputBinding:
     prefix: -S
-- id: d
+- id: maximum_distance_features
   doc: 'Maximum distance between features allowed for features to be merged. - Def.
     0. That is, overlapping & book-ended features are merged. - (INTEGER) - Note:
     negative values enforce the number of b.p. required for overlap.'
   type: boolean
   inputBinding:
     prefix: -d
-- id: c
+- id: specify_columns_map
   doc: 'Specify columns from the B file to map onto intervals in A. Default: 5. Multiple
     columns can be specified in a comma-delimited list.'
   type: boolean
   inputBinding:
     prefix: -c
-- id: o
+- id: specify_operation_applied
   doc: 'Specify the operation that should be applied to -c. Valid operations: sum,
     min, max, absmin, absmax, mean, median, mode, antimode stdev, sstdev collapse
     (i.e., print a delimited list (duplicates allowed)),  distinct (i.e., print a
@@ -84,6 +84,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -iobuf
+- id: i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
 outputs: []
 cwlVersion: v1.1
 baseCommand:

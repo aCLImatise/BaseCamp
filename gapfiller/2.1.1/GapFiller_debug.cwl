@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: GapFiller_debug.cwl
+id: ../../../../home/ubuntu/BiocondaCli/GapFiller_debug.cwl
 inputs:
-- id: k
+- id: length_word_used
   doc: 'length of the word used to hash (default: 12)'
   type: string
   inputBinding:
@@ -21,17 +21,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gz
-- id: bz2
+- id: bz_two
   doc: compress output with bzip2
   type: boolean
   inputBinding:
     prefix: --bz2
-- id: seed1
+- id: see_done
   doc: seed1 fasta file (can be compressed with gzip or bzip2, or a pipe)
   type: string
   inputBinding:
     prefix: --seed1
-- id: seed2
+- id: seed_two
   doc: seed2 fasta file (can be compressed with gzip or bzip2, or a pipe)
   type: string
   inputBinding:

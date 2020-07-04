@@ -2,12 +2,16 @@ version 1.0
 
 task PslScore {
   input {
-    File? fileFilePsl
-    String? moreMoreFilesPsl
+    File file_dot_psl
+    String? more_files_dot_psl
   }
   command <<<
     pslScore \
-      ~{fileFilePsl} \
-      ~{moreMoreFilesPsl}
+      ~{file_dot_psl} \
+      ~{more_files_dot_psl}
   >>>
+  parameter_meta {
+    file_dot_psl: ""
+    more_files_dot_psl: ""
+  }
 }

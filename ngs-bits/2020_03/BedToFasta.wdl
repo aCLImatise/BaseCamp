@@ -2,18 +2,25 @@ version 1.0
 
 task BedToFasta {
   input {
-    File inIn
-    File outOut
-    File refRef
-    Boolean changelogChangelog
-    Boolean tdxTdx
+    File? in
+    File? out
+    File? ref
+    Boolean? changelog
+    Boolean? tdx
   }
   command <<<
     BedToFasta \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(refRef) then ("-ref " +  '"' + refRef + '"') else ""} \
-      ~{true="--changelog" false="" changelogChangelog} \
-      ~{true="--tdx" false="" tdxTdx}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(ref) then ("-ref " +  '"' + ref + '"') else ""} \
+      ~{true="--changelog" false="" changelog} \
+      ~{true="--tdx" false="" tdx}
   >>>
+  parameter_meta {
+    in: "Input BED file."
+    out: "Output FASTA file. If unset, writes to STDOUT. Default value: ''"
+    ref: "Reference genome FASTA file. If unset 'reference_genome' from the 'settings.ini' file is used. Default value: ''"
+    changelog: "Prints changeloge and exits."
+    tdx: "Writes a Tool Definition Xml file. The file name is the application name with the suffix '.tdx'."
+  }
 }

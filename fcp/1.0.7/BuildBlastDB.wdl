@@ -2,16 +2,16 @@ version 1.0
 
 task BuildBlastDB.py {
   input {
-    String? pythonPython
-    String? buildBuildBlastDbpY
-    String? makeMakeBlastDbPath
-    String? sequenceSequenceFile
+    String make_blast_db_path
+    String sequence_file
   }
   command <<<
     BuildBlastDB.py \
-      ~{pythonPython} \
-      ~{buildBuildBlastDbpY} \
-      ~{makeMakeBlastDbPath} \
-      ~{sequenceSequenceFile}
+      ~{make_blast_db_path} \
+      ~{sequence_file}
   >>>
+  parameter_meta {
+    make_blast_db_path: ""
+    sequence_file: ""
+  }
 }

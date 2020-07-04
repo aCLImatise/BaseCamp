@@ -1,7 +1,14 @@
 version 1.0
 
 task Bioawk {
+  input {
+    String? f
+  }
   command <<<
-    bioawk
+    bioawk \
+      ~{if defined(f) then ("-F " +  '"' + f + '"') else ""}
   >>>
+  parameter_meta {
+    f: ""
+  }
 }

@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: rust_nucleotide.bak.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rust_nucleotide.bak.cwl
 inputs:
+- id: directory_path_outputfile
+  doc: directory  path to outputfile, default is "nucleotide"
+  type: string
+  inputBinding:
+    prefix: -o
 - id: transcriptome
   doc: fasta file of transcripts, CDS start and end may be provided on description
     line using tab separation e.g. >NM_0001 10 5000, otherwise it searches for longest
@@ -23,11 +28,6 @@ inputs:
   type: long
   inputBinding:
     position: 3
-- id: o
-  doc: directory  path to outputfile, default is "nucleotide"
-  type: string
-  inputBinding:
-    prefix: -o
 outputs: []
 cwlVersion: v1.1
 baseCommand:

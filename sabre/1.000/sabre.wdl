@@ -2,10 +2,13 @@ version 1.0
 
 task Sabre {
   input {
-    String? commandCommand
+    String var_command
   }
   command <<<
     sabre \
-      ~{commandCommand}
+      ~{var_command}
   >>>
+  parameter_meta {
+    var_command: ""
+  }
 }

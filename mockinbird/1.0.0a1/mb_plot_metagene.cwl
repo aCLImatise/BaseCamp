@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: mb_plot_metagene.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mb_plot_metagene.cwl
 inputs:
-- id: pc_table
-  doc: path to the PAR-CLIP *.table
-  type: string
-  inputBinding:
-    position: 0
-- id: output_dir
-  doc: output directory
-  type: string
-  inputBinding:
-    position: 1
-- id: prefix
-  doc: prefix of filenames
-  type: string
-  inputBinding:
-    position: 2
-- id: gff_file
-  doc: GFF file used for plotting
-  type: string
-  inputBinding:
-    position: 3
 - id: downstream_bp
   doc: downstream bp
   type: string

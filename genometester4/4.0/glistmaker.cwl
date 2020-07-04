@@ -1,18 +1,8 @@
 class: CommandLineTool
-id: glistmaker.cwl
+id: ../../../../home/ubuntu/BiocondaCli/glistmaker.cwl
 inputs:
-- id: input_files
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: word_length
-  doc: wordsize (1-32) (default 16)
+  doc: '- specify index wordsize (1-32) (default 16)'
   type: string
   inputBinding:
     prefix: --wordlength
@@ -22,7 +12,7 @@ inputs:
   inputBinding:
     prefix: --cutoff
 - id: output_name
-  doc: name (default "out")
+  doc: '- specify output name (default "out")'
   type: string
   inputBinding:
     prefix: --outputname
@@ -41,11 +31,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --table_size
-- id: d
+- id: increase_debug_level
   doc: '- increase debug level'
   type: boolean
   inputBinding:
     prefix: -D
+- id: input_files
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

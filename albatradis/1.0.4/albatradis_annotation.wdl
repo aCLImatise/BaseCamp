@@ -2,18 +2,25 @@ version 1.0
 
 task AlbatradisAnnotation {
   input {
-    String featureFeatureSize
-    String outputOutputFile
-    Boolean verboseVerbose
-    Boolean debugDebug
-    String? emblEmblFile
+    String? feature_size
+    String? output_file
+    Boolean? verbose
+    Boolean? debug
+    String embl_file
   }
   command <<<
     albatradis-annotation \
-      ~{emblEmblFile} \
-      ~{if defined(featureFeatureSize) then ("--feature_size " +  '"' + featureFeatureSize + '"') else ""} \
-      ~{if defined(outputOutputFile) then ("--outputfile " +  '"' + outputOutputFile + '"') else ""} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{true="--debug" false="" debugDebug}
+      ~{embl_file} \
+      ~{if defined(feature_size) then ("--feature_size " +  '"' + feature_size + '"') else ""} \
+      ~{if defined(output_file) then ("--outputfile " +  '"' + output_file + '"') else ""} \
+      ~{true="--verbose" false="" verbose} \
+      ~{true="--debug" false="" debug}
   >>>
+  parameter_meta {
+    feature_size: "Feature size (default: 198)"
+    output_file: "Output file (default: output.embl)"
+    verbose: "Print out more information about the analysis while it runs (default: False)"
+    debug: "Turn on debugging (default: False)"
+    embl_file: "Annotation file in EMBL format"
+  }
 }

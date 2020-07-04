@@ -2,20 +2,28 @@ version 1.0
 
 task FastenReplace {
   input {
-    Int numNumCpus
-    Boolean pairedPairedEnd
-    Boolean verboseVerbose
-    String findFind
-    String replaceReplace
-    String whichWhich
+    Int? num_cpus
+    Boolean? paired_end
+    Boolean? verbose
+    String? find
+    String? replace
+    String? which
   }
   command <<<
     fasten_replace \
-      ~{if defined(numNumCpus) then ("--numcpus " +  '"' + numNumCpus + '"') else ""} \
-      ~{true="--paired-end" false="" pairedPairedEnd} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{if defined(findFind) then ("--find " +  '"' + findFind + '"') else ""} \
-      ~{if defined(replaceReplace) then ("--replace " +  '"' + replaceReplace + '"') else ""} \
-      ~{if defined(whichWhich) then ("--which " +  '"' + whichWhich + '"') else ""}
+      ~{if defined(num_cpus) then ("--numcpus " +  '"' + num_cpus + '"') else ""} \
+      ~{true="--paired-end" false="" paired_end} \
+      ~{true="--verbose" false="" verbose} \
+      ~{if defined(find) then ("--find " +  '"' + find + '"') else ""} \
+      ~{if defined(replace) then ("--replace " +  '"' + replace + '"') else ""} \
+      ~{if defined(which) then ("--which " +  '"' + which + '"') else ""}
   >>>
+  parameter_meta {
+    num_cpus: "Number of CPUs (default: 1)"
+    paired_end: "The input reads are interleaved paired-end"
+    verbose: "Print more status messages"
+    find: "Regular expression (default: '.')"
+    replace: "String to replace each match"
+    which: "Which field to match on? ID, SEQ, QUAL. Default: SEQ"
+  }
 }

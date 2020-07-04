@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: debruijn.cwl
+id: ../../../../home/ubuntu/BiocondaCli/debruijn.cwl
 inputs:
-- id: n
+- id: word_size
   doc: word size [Integer]
   type: boolean
   inputBinding:
     prefix: -n
-- id: a
+- id: alphabet
   doc: alphabet
   type: boolean
   inputBinding:

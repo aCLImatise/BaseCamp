@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: vcf_to_deletionlist.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf_to_deletionlist.cwl
 inputs:
-- id: m
+- id: maximal_length_considered
   doc: Maximal length to be considered.
   type: long
   inputBinding:
     prefix: -m
-- id: i
+- id: include_deletions_marked
   doc: Include deletions marked as IMPRECISE.
   type: boolean
   inputBinding:
     prefix: -i
-- id: g
+- id: print_list_genotypes
   doc: Print list of genotypes as comma-separated list in last column.
   type: boolean
   inputBinding:

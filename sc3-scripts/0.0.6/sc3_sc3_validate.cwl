@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sc3_sc3_validate.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sc3_sc3_validate.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

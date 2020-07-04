@@ -2,12 +2,16 @@ version 1.0
 
 task EufindtRNA {
   input {
-    Boolean optionsOptions
-    String? sequenceSequenceFile
+    Boolean? options
+    String sequence_file
   }
   command <<<
     eufindtRNA \
-      ~{sequenceSequenceFile} \
-      ~{true="-options" false="" optionsOptions}
+      ~{sequence_file} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    options: ""
+    sequence_file: ""
+  }
 }

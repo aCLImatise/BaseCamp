@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ChorusGUI.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ChorusGUI.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: ma.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ma.cwl
 inputs:
-- id: c
+- id: format_output_pipe
   doc: format 6 output -> don't pipe this output to file!
   type: string
   inputBinding:

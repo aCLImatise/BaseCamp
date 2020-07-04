@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: convert2bed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/convert2bed.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

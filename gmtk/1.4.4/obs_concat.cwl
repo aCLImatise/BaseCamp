@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: obs_concat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/obs_concat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

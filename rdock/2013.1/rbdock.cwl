@@ -1,66 +1,86 @@
 class: CommandLineTool
-id: rbdock.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rbdock.cwl
 inputs:
 - id: input
-  doc: SD file
+  doc: input file
   type: string
   inputBinding:
-    prefix: '- input'
-- id: root
-  doc: for output file(s)
+    prefix: -input
+- id: output
+  doc: output file
   type: string
   inputBinding:
-    prefix: '- root'
+    prefix: -output
 - id: receptor
-  doc: 'file '
+  doc: receptor file
   type: string
   inputBinding:
-    prefix: '- receptor'
-- id: docking
-  doc: parameter file
+    prefix: -receptor
+- id: protocol
+  doc: protocol file
   type: string
   inputBinding:
-    prefix: '- docking'
-- id: number
-  doc: runs/ligand (default=1)
+    prefix: -protocol
+- id: runs
+  doc: number of runs
+  type: long
+  inputBinding:
+    prefix: -runs
+- id: trace
+  doc: trace level for debugging
+  type: long
+  inputBinding:
+    prefix: -trace
+- id: seed
+  doc: random seed
+  type: long
+  inputBinding:
+    prefix: -seed
+- id: ap
+  doc: protonate groups
+  type: boolean
+  inputBinding:
+    prefix: -ap
+- id: an
+  doc: DEprotonate groups
+  type: boolean
+  inputBinding:
+    prefix: -an
+- id: all_h
+  doc: read all Hs
+  type: boolean
+  inputBinding:
+    prefix: -allH
+- id: target
+  doc: target score
   type: string
   inputBinding:
-    prefix: '- number'
-- id: proton_ate
-  doc: neutral amines, guanidines, imidazoles (default=disabled)
+    prefix: -target
+- id: cont
+  doc: continue even if target met
+  type: boolean
+  inputBinding:
+    prefix: -cont
+- id: receptor_dot_prm
+  doc: ''
   type: string
   inputBinding:
-    prefix: '- protonate'
-- id: de_proton_ate
-  doc: carboxylic, sulphur and phosphorous acid groups (default=disabled)
+    position: 0
+- id: protocol_dot_prm
+  doc: ''
   type: string
   inputBinding:
-    prefix: '- deprotonate'
-- id: read
-  doc: hydrogens present (default=polar hydrogens only)
+    position: 1
+- id: in_file
+  doc: ''
   type: string
   inputBinding:
-    prefix: '- read'
-- id: score
-  doc: OR filter file name
+    position: 2
+- id: outfile
+  doc: ''
   type: string
   inputBinding:
-    prefix: '- score'
-- id: continue
-  doc: score threshold is met (use with -t <targetScore>, default=terminate ligand)
-  type: string
-  inputBinding:
-    prefix: '- continue'
-- id: controls
-  doc: level for debugging (0 = minimal, >0 = more verbose)
-  type: string
-  inputBinding:
-    prefix: '- controls'
-- id: random
-  doc: seed (default=from sys clock)
-  type: string
-  inputBinding:
-    prefix: '- random'
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

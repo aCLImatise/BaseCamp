@@ -2,70 +2,37 @@ version 1.0
 
 task NucleicAcidSearchEngine {
   input {
-    File inIn
-    File databaseDatabase
-    File outOut
-    File idIdOut
-    File lfLfQOut
-    Boolean precursorPrecursor
-    Boolean precursorPrecursor
-    Boolean precursorPrecursor
-    Boolean precursorPrecursor
-    Boolean precursorPrecursor
-    Boolean precursorPrecursor
-    Boolean precursorPrecursor
-    Boolean precursorPrecursor
-    Boolean precursorPrecursor
-    Boolean fragmentFragment
-    Boolean fragmentFragment
-    Boolean fragmentFragment
-    Boolean modificationsModifications
-    Boolean modificationsModifications
-    Boolean modificationsModifications
-    Boolean oligoOligo
-    Boolean oligoOligo
-    Boolean oligoOligo
-    Boolean oligoOligo
-    Boolean fdrFdr
-    Boolean fdrFdr
-    Boolean fdrFdr
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    File? in
+    File? database
+    File? out
+    File? id_out
+    File? lf_q_out
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     NucleicAcidSearchEngine \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(databaseDatabase) then ("-database " +  '"' + databaseDatabase + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(idIdOut) then ("-id_out " +  '"' + idIdOut + '"') else ""} \
-      ~{if defined(lfLfQOut) then ("-lfq_out " +  '"' + lfLfQOut + '"') else ""} \
-      ~{true="-precursor" false="" precursorPrecursor} \
-      ~{true="-precursor" false="" precursorPrecursor} \
-      ~{true="-precursor" false="" precursorPrecursor} \
-      ~{true="-precursor" false="" precursorPrecursor} \
-      ~{true="-precursor" false="" precursorPrecursor} \
-      ~{true="-precursor" false="" precursorPrecursor} \
-      ~{true="-precursor" false="" precursorPrecursor} \
-      ~{true="-precursor" false="" precursorPrecursor} \
-      ~{true="-precursor" false="" precursorPrecursor} \
-      ~{true="-fragment" false="" fragmentFragment} \
-      ~{true="-fragment" false="" fragmentFragment} \
-      ~{true="-fragment" false="" fragmentFragment} \
-      ~{true="-modifications" false="" modificationsModifications} \
-      ~{true="-modifications" false="" modificationsModifications} \
-      ~{true="-modifications" false="" modificationsModifications} \
-      ~{true="-oligo" false="" oligoOligo} \
-      ~{true="-oligo" false="" oligoOligo} \
-      ~{true="-oligo" false="" oligoOligo} \
-      ~{true="-oligo" false="" oligoOligo} \
-      ~{true="-fdr" false="" fdrFdr} \
-      ~{true="-fdr" false="" fdrFdr} \
-      ~{true="-fdr" false="" fdrFdr} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(database) then ("-database " +  '"' + database + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(id_out) then ("-id_out " +  '"' + id_out + '"') else ""} \
+      ~{if defined(lf_q_out) then ("-lfq_out " +  '"' + lf_q_out + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*                                  Input file: spectra (valid formats: 'mzML')"
+    database: "*                            Input file: sequence database (valid formats: 'fasta')"
+    out: "*                                 Output file: mzTab (valid formats: 'mzTab')"
+    id_out: "Output file: idXML (for visualization in TOPPView) (valid formats: 'idXML')"
+    lf_q_out: "Output file: Targets for label-free quantification using FeatureFinderMetaboIdent ('id' input) (valid formats: 'tsv')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

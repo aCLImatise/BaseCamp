@@ -2,14 +2,19 @@ version 1.0
 
 task Runcabog.py {
   input {
-    String? paraParaFile
-    String? readfileReadfile
-    String? libraryLibraryInfoFile
+    String para_file
+    String readfile
+    String? library_info_file
   }
   command <<<
     runcabog.py \
-      ~{paraParaFile} \
-      ~{readfileReadfile} \
-      ~{libraryLibraryInfoFile}
+      ~{para_file} \
+      ~{readfile} \
+      ~{library_info_file}
   >>>
+  parameter_meta {
+    para_file: ""
+    readfile: ""
+    library_info_file: ""
+  }
 }

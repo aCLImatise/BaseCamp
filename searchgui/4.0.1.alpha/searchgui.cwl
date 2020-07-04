@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: searchgui.cwl
+id: ../../../../home/ubuntu/BiocondaCli/searchgui.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

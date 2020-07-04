@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: kmerstats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kmerstats.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

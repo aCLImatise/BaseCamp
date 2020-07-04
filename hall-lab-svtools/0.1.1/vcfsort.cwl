@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfsort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfsort.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

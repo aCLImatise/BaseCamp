@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: DBrm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/DBrm.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

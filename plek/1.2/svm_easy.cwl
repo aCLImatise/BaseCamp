@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: svm_easy.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/svm_easy.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

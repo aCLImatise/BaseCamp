@@ -1,118 +1,6 @@
 class: CommandLineTool
-id: gatk_framework.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gatk_framework.cwl
 inputs:
-- id: annotator
-  doc: VariantAnnotator              Annotate variant calls with context information
-  type: string
-  inputBinding:
-    position: 0
-- id: coverage
-  doc: CallableLoci                  Collect statistics on callable, uncallable, poorly
-    mapped, and other parts of the  genome CompareCallableLoci           Compare callability
-    statistics DepthOfCoverage               Assess sequence coverage by a wide array
-    of metrics, partitioned by sample, read group,  or library GCContentByInterval           Calculates
-    the GC content of the reference sequence for each interval
-  type: string
-  inputBinding:
-    position: 1
-- id: da_kl
-  doc: SomaticPindelFilter           Filters pindel output based on coverage and Fisher's
-    exact test (BH corrected).
-  type: string
-  inputBinding:
-    position: 2
-- id: diagnostics
-  doc: ErrorRatePerCycle             Compute the read error rate per position ReadGroupProperties           Collect
-    statistics about read groups and their properties ReadLengthDistribution        Collect
-    read length statistics
-  type: string
-  inputBinding:
-    position: 3
-- id: diff_engine
-  doc: DiffObjects                   A generic engine for comparing tree-structured
-    objects
-  type: string
-  inputBinding:
-    position: 4
-- id: examples
-  doc: GATKPaperGenotyper            Simple Bayesian genotyper used in the original
-    GATK paper
-  type: string
-  inputBinding:
-    position: 5
-- id: fast_a
-  doc: FastaAlternateReferenceMaker  Generate an alternative reference sequence over
-    the specified interval FastaReferenceMaker           Create a subset of a FASTA
-    reference sequence FastaStats                    Calculate basic statistics about
-    the reference sequence itself
-  type: string
-  inputBinding:
-    position: 6
-- id: filters
-  doc: VariantFiltration             Filter variant calls based on INFO and FORMAT
-    annotations
-  type: string
-  inputBinding:
-    position: 7
-- id: indels
-  doc: IndelRealigner                Perform local realignment of reads around indels
-    LeftAlignIndels               Left-align indels within reads in a bam file RealignerTargetCreator        Define
-    intervals to target for local realignment
-  type: string
-  inputBinding:
-    position: 8
-- id: qc
-  doc: CheckPileup                   Compare GATK's internal pileup to a reference
-    Samtools pileup CountBases                    Count the number of bases in a set
-    of reads CountIntervals                Count contiguous regions in an interval
-    list CountLoci                     Count the total number of covered loci CountMales                    Count
-    the number of reads seen from male samples CountReadEvents               Count
-    the number of read events CountReads                    Count the number of reads
-    CountRODs                     Count the number of ROD objects encountered CountRODsByRef                Count
-    the number of ROD objects encountered along the reference CountTerminusEvent            Count
-    the number of reads ending in insertions, deletions or soft-clips ErrorThrowing                 A
-    walker that simply throws errors. FlagStat                      Collect statistics
-    about sequence reads based on their SAM flags Pileup                        Print
-    read alignments in Pileup-style format PrintRODs                     Print out
-    all of the RODs in the input data set QCRef                         Quality control
-    for the reference fasta ReadClippingStats             Collect read clipping statistics
-  type: string
-  inputBinding:
-    position: 9
-- id: read_utils
-  doc: ClipReads                     Read clipping based on quality, position or sequence
-    matching PrintReads                    Write out sequence read data (for filtering,
-    merging, subsetting etc) SplitSamFile                  Split a BAM file by sample
-  type: string
-  inputBinding:
-    position: 10
-- id: rnase_q
-  doc: ASEReadCounter                Calculate read counts per allele for allele-specific
-    expression analysis
-  type: string
-  inputBinding:
-    position: 11
-- id: variant_eval
-  doc: VariantEval                   General-purpose tool for variant evaluation (%
-    in dbSNP, genotype concordance, Ti/Tv  ratios, and a lot more)
-  type: string
-  inputBinding:
-    position: 12
-- id: variant_utils
-  doc: CombineVariants               Combine variant records from different sources
-    GenotypeConcordance           Genotype concordance between two callsets LeftAlignAndTrimVariants      Left-align
-    indels in a variant callset RandomlySplitVariants         Randomly split variants
-    into different sets SelectHeaders                 Selects headers from a VCF source
-    SelectVariants                Select a subset of variants from a larger callset
-    ValidateVariants              Validate a VCF file with an extra strict set of
-    criteria VariantsToAllelicPrimitives   Simplify multi-nucleotide variants (MNPs)
-    into more basic/primitive alleles. VariantsToBinaryPed           Convert VCF to
-    binary pedigree file VariantsToTable               Extract specific fields from
-    a VCF file to a tab-delimited table VariantsToVCF                 Convert variants
-    from other file formats to VCF format
-  type: string
-  inputBinding:
-    position: 13
 - id: analysis_type
   doc: Name of the tool to run
   type: string
@@ -337,7 +225,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --disable_bam_indexing
-- id: generate_md5
+- id: generate_md_five
   doc: Enable on-the-fly creation of  md5s for output BAM files.
   type: boolean
   inputBinding:
@@ -403,6 +291,123 @@ inputs:
   type: string
   inputBinding:
     prefix: --log_to_file
+- id: jar
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -jar
+- id: annotator
+  doc: VariantAnnotator              Annotate variant calls with context information
+  type: string
+  inputBinding:
+    position: 0
+- id: coverage
+  doc: CallableLoci                  Collect statistics on callable, uncallable, poorly
+    mapped, and other parts of the  genome CompareCallableLoci           Compare callability
+    statistics DepthOfCoverage               Assess sequence coverage by a wide array
+    of metrics, partitioned by sample, read group,  or library GCContentByInterval           Calculates
+    the GC content of the reference sequence for each interval
+  type: string
+  inputBinding:
+    position: 1
+- id: da_kl
+  doc: SomaticPindelFilter           Filters pindel output based on coverage and Fisher's
+    exact test (BH corrected).
+  type: string
+  inputBinding:
+    position: 2
+- id: diagnostics
+  doc: ErrorRatePerCycle             Compute the read error rate per position ReadGroupProperties           Collect
+    statistics about read groups and their properties ReadLengthDistribution        Collect
+    read length statistics
+  type: string
+  inputBinding:
+    position: 3
+- id: diff_engine
+  doc: DiffObjects                   A generic engine for comparing tree-structured
+    objects
+  type: string
+  inputBinding:
+    position: 4
+- id: examples
+  doc: GATKPaperGenotyper            Simple Bayesian genotyper used in the original
+    GATK paper
+  type: string
+  inputBinding:
+    position: 5
+- id: fast_a
+  doc: FastaAlternateReferenceMaker  Generate an alternative reference sequence over
+    the specified interval FastaReferenceMaker           Create a subset of a FASTA
+    reference sequence FastaStats                    Calculate basic statistics about
+    the reference sequence itself
+  type: string
+  inputBinding:
+    position: 6
+- id: filters
+  doc: VariantFiltration             Filter variant calls based on INFO and FORMAT
+    annotations
+  type: string
+  inputBinding:
+    position: 7
+- id: indels
+  doc: IndelRealigner                Perform local realignment of reads around indels
+    LeftAlignIndels               Left-align indels within reads in a bam file RealignerTargetCreator        Define
+    intervals to target for local realignment
+  type: string
+  inputBinding:
+    position: 8
+- id: qc
+  doc: CheckPileup                   Compare GATK's internal pileup to a reference
+    Samtools pileup CountBases                    Count the number of bases in a set
+    of reads CountIntervals                Count contiguous regions in an interval
+    list CountLoci                     Count the total number of covered loci CountMales                    Count
+    the number of reads seen from male samples CountReadEvents               Count
+    the number of read events CountReads                    Count the number of reads
+    CountRODs                     Count the number of ROD objects encountered CountRODsByRef                Count
+    the number of ROD objects encountered along the reference CountTerminusEvent            Count
+    the number of reads ending in insertions, deletions or soft-clips ErrorThrowing                 A
+    walker that simply throws errors. FlagStat                      Collect statistics
+    about sequence reads based on their SAM flags Pileup                        Print
+    read alignments in Pileup-style format PrintRODs                     Print out
+    all of the RODs in the input data set QCRef                         Quality control
+    for the reference fasta ReadClippingStats             Collect read clipping statistics
+  type: string
+  inputBinding:
+    position: 9
+- id: read_utils
+  doc: ClipReads                     Read clipping based on quality, position or sequence
+    matching PrintReads                    Write out sequence read data (for filtering,
+    merging, subsetting etc) SplitSamFile                  Split a BAM file by sample
+  type: string
+  inputBinding:
+    position: 10
+- id: rnase_q
+  doc: ASEReadCounter                Calculate read counts per allele for allele-specific
+    expression analysis
+  type: string
+  inputBinding:
+    position: 11
+- id: variant_eval
+  doc: VariantEval                   General-purpose tool for variant evaluation (%
+    in dbSNP, genotype concordance, Ti/Tv  ratios, and a lot more)
+  type: string
+  inputBinding:
+    position: 12
+- id: variant_utils
+  doc: CombineVariants               Combine variant records from different sources
+    GenotypeConcordance           Genotype concordance between two callsets LeftAlignAndTrimVariants      Left-align
+    indels in a variant callset RandomlySplitVariants         Randomly split variants
+    into different sets SelectHeaders                 Selects headers from a VCF source
+    SelectVariants                Select a subset of variants from a larger callset
+    ValidateVariants              Validate a VCF file with an extra strict set of
+    criteria VariantsToAllelicPrimitives   Simplify multi-nucleotide variants (MNPs)
+    into more basic/primitive alleles. VariantsToBinaryPed           Convert VCF to
+    binary pedigree file VariantsToTable               Extract specific fields from
+    a VCF file to a tab-delimited table VariantsToVCF                 Convert variants
+    from other file formats to VCF format
+  type: string
+  inputBinding:
+    position: 13
 outputs: []
 cwlVersion: v1.1
 baseCommand:

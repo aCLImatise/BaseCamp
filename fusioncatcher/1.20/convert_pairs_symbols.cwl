@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: convert_pairs_symbols.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/convert_pairs_symbols.py.cwl
 inputs:
 - id: input
   doc: The input file containing on each line two gene symbols separated by tab.

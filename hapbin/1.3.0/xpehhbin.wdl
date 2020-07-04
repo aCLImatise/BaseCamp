@@ -2,28 +2,40 @@ version 1.0
 
 task Xpehhbin {
   input {
-    Boolean hapaHapa
-    Boolean hapHapB
-    Boolean mapMap
-    Boolean outOut
-    Boolean cutCutOff
-    Boolean minMinMaf
-    Boolean scaleScale
-    Boolean binBin
-    Boolean binBinOm
-    Boolean maxMaxExtend
+    Boolean? hapa
+    Boolean? hap_b
+    Boolean? map_file
+    Boolean? out
+    Boolean? cut_off
+    Boolean? min_maf
+    Boolean? scale
+    Boolean? bin
+    Boolean? bin_om
+    Boolean? max_extend
   }
   command <<<
     xpehhbin \
-      ~{true="--hapA" false="" hapaHapa} \
-      ~{true="--hapB" false="" hapHapB} \
-      ~{true="--map" false="" mapMap} \
-      ~{true="--out" false="" outOut} \
-      ~{true="--cutoff" false="" cutCutOff} \
-      ~{true="--minmaf" false="" minMinMaf} \
-      ~{true="--scale" false="" scaleScale} \
-      ~{true="--bin" false="" binBin} \
-      ~{true="--binom" false="" binBinOm} \
-      ~{true="--max-extend" false="" maxMaxExtend}
+      ~{true="--hapA" false="" hapa} \
+      ~{true="--hapB" false="" hap_b} \
+      ~{true="--map" false="" map_file} \
+      ~{true="--out" false="" out} \
+      ~{true="--cutoff" false="" cut_off} \
+      ~{true="--minmaf" false="" min_maf} \
+      ~{true="--scale" false="" scale} \
+      ~{true="--bin" false="" bin} \
+      ~{true="--binom" false="" bin_om} \
+      ~{true="--max-extend" false="" max_extend}
   >>>
+  parameter_meta {
+    hapa: "Hap file for population A"
+    hap_b: "Hap file for population B"
+    map_file: "Map file"
+    out: "Output file"
+    cut_off: "EHH cutoff value (default: 0.05)"
+    min_maf: "Minimum allele frequency (default: 0.05)"
+    scale: "Gap scale parameter in bp, used to scale gaps > scale parameter as in Voight, et al."
+    bin: "Number of frequency bins for iHS normalization (default: 50)"
+    bin_om: "Use binomial coefficients rather than frequency squared for EHH"
+    max_extend: "Maximum distance in bp to traverse when calculating EHH (default: 0 (disabled))"
+  }
 }

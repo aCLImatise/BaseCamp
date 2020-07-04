@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dimspy_get_peaklists.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dimspy_get_peaklists.cwl
 inputs:
 - id: input
   doc: Single or Multiple HDF5 files that contain a peak matrix object from one of

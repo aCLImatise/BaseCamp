@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: naive_variant_caller.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/naive_variant_caller.py.cwl
 inputs:
 - id: bam
   doc: BAM filename, optionally index filename. Multiple allowed.

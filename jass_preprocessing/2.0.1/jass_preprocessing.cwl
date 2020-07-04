@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: jass_preprocessing.cwl
+id: ../../../../home/ubuntu/BiocondaCli/jass_preprocessing.cwl
 inputs:
 - id: g_was_info
   doc: Path to the file describing the format of the individual GWASs files with correct
@@ -29,7 +29,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --output-folder
-- id: output_folder_1_file
+- id: output_folder_one_file
   doc: optional location to store the preprocessing in one tabular file with one chromosome
     columns (useful to compute LDSC correlation for instance)
   type: string

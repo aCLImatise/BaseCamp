@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: PERsim.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PERsim.cwl
 inputs:
-- id: insert
-  doc: is modelled using a gaussian distribution.
-  type: long
-  inputBinding:
-    prefix: '- insert'
-- id: read_through
-  doc: the sequencing adapters is modelled.
-  type: long
-  inputBinding:
-    prefix: '- read-through'
-- id: sequencing
-  doc: are modelled using a simple uniform distribution.
-  type: string
-  inputBinding:
-    prefix: '- sequencing'
 - id: roi
   doc: Target region BED file.
   type: File
@@ -26,12 +11,12 @@ inputs:
   type: long
   inputBinding:
     prefix: -count
-- id: out1
+- id: out_one
   doc: Forward reads output file in .FASTQ.GZ format.
   type: File
   inputBinding:
     prefix: -out1
-- id: out2
+- id: out_two
   doc: Reverse reads output file in .FASTQ.GZ format.
   type: File
   inputBinding:
@@ -61,13 +46,13 @@ inputs:
   type: long
   inputBinding:
     prefix: -max_n
-- id: a1
+- id: a_one
   doc: "Forward read sequencing adapter sequence (for read-through). Default value:\
     \ 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCACGAGTTA'"
   type: string
   inputBinding:
     prefix: -a1
-- id: a2
+- id: a_two
   doc: "Reverse read sequencing adapter sequence (for read-through). Default value:\
     \ 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTC'"
   type: string
@@ -79,7 +64,7 @@ inputs:
   type: File
   inputBinding:
     prefix: -ref
-- id: v
+- id: enable_verbose_value
   doc: "Enable verbose debug output. Default value: 'false'"
   type: boolean
   inputBinding:

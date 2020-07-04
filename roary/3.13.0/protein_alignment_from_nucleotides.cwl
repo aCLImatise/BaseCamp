@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: protein_alignment_from_nucleotides.cwl
+id: ../../../../home/ubuntu/BiocondaCli/protein_alignment_from_nucleotides.cwl
 inputs:
-- id: n
+- id: nucleotide_alignment_mafft
   doc: nucleotide alignment with MAFFT
   type: boolean
   inputBinding:
     prefix: -n
-- id: v
+- id: verbose_output_stdout
   doc: verbose output to STDOUT
   type: boolean
   inputBinding:

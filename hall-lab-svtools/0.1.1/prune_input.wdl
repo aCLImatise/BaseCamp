@@ -2,16 +2,22 @@ version 1.0
 
 task PruneInput {
   input {
-    Int dD
-    String eE
-    Boolean sS
-    String oO
+    Int? d
+    String? e
+    Boolean? s
+    String? o
   }
   command <<<
     prune input \
-      ~{if defined(dD) then ("-d " +  '"' + dD + '"') else ""} \
-      ~{if defined(eE) then ("-e " +  '"' + eE + '"') else ""} \
-      ~{true="-s" false="" sS} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""}
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
+      ~{if defined(e) then ("-e " +  '"' + e + '"') else ""} \
+      ~{true="-s" false="" s} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    d: ""
+    e: ""
+    s: ""
+    o: ""
+  }
 }

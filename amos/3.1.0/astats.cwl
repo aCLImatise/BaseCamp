@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: astats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/astats.cwl
 inputs:
 - id: bank_path
   doc: ''

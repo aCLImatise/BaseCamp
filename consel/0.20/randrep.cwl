@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: randrep.cwl
+id: ../../../../home/ubuntu/BiocondaCli/randrep.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,17 +1,7 @@
 class: CommandLineTool
-id: cath_ssap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cath_ssap.cwl
 inputs:
-- id: protein_1
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: protein_2
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: v
+- id: output_version_information
   doc: '[ --version ]                         Output version information'
   type: boolean
   inputBinding:
@@ -21,7 +11,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
-- id: o
+- id: output_scores_file
   doc: '[ --outfile ] <file>                  [DEPRECATED] Output scores to <file>
     rather than to stdout'
   type: boolean
@@ -191,6 +181,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --scores-help
+- id: protein_one
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: protein_two
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

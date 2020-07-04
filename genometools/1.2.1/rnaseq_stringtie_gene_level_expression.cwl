@@ -1,41 +1,6 @@
 class: CommandLineTool
-id: rnaseq_stringtie_gene_level_expression.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnaseq_stringtie_gene_level_expression.py.cwl
 inputs:
-- id: extracts
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: gene_level
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: expression
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: data
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: from
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
-- id: string_tie
-  doc: ''
-  type: string
-  inputBinding:
-    position: 5
-- id: output
-  doc: ''
-  type: string
-  inputBinding:
-    position: 6
 - id: string_tie_file
   doc: Path of the StringTie output file .
   type: File
@@ -71,6 +36,41 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: extracts
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: gene_level
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: expression
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: data
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: from
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
+- id: string_tie
+  doc: ''
+  type: string
+  inputBinding:
+    position: 5
+- id: output_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 6
 outputs: []
 cwlVersion: v1.1
 baseCommand:

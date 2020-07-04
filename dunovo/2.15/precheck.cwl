@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: precheck.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/precheck.py.cwl
 inputs:
 - id: min_reads
   doc: 'The minimum number of reads required in each single- stranded family. Default:
@@ -18,6 +18,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-check-ids
+- id: reads_one_dot_fq
+  doc: The first mates in the read pairs.
+  type: string
+  inputBinding:
+    position: 0
+- id: reads_two_dot_fq
+  doc: The second mates in the read pairs.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

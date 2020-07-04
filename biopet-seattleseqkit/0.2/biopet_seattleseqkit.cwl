@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: biopet_seattleseqkit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/biopet_seattleseqkit.cwl
 inputs:
 - id: seattle_seq_kit
   doc: ''

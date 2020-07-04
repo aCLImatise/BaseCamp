@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: varscan_readcounts.cwl
+id: ../../../../home/ubuntu/BiocondaCli/varscan_readcounts.cwl
 inputs:
 - id: variants_file
   doc: list of variants at which to report readcounts
@@ -21,6 +21,26 @@ inputs:
   type: long
   inputBinding:
     prefix: --min-base-qual
+- id: jar
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -jar
+- id: java
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: read_counts
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: pile_up
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

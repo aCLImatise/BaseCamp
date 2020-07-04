@@ -1,22 +1,17 @@
 class: CommandLineTool
-id: dcmmklut.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmmklut.cwl
 inputs:
-- id: dcm_img_out
-  doc: DICOM output filename
-  type: string
-  inputBinding:
-    position: 0
-- id: q
+- id: _quiet_print
   doc: --quiet         quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose       verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug         debug mode, print debug information
   type: boolean
   inputBinding:
@@ -44,25 +39,25 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --max-density
-- id: b
+- id: _bits_umber
   doc: '--bits          [n]umber: integer create LUT with n bit values (8..16, default:
     16)'
   type: boolean
   inputBinding:
     prefix: -b
-- id: e
+- id: _entries_umber
   doc: '--entries       [n]umber: integer create LUT with n entries (1..65536, default:
     256)'
   type: boolean
   inputBinding:
     prefix: -e
-- id: f
+- id: _firstmapped_umber
   doc: '--first-mapped  [n]umber: integer first input value mapped (-31768..65535,
     default: 0)'
   type: boolean
   inputBinding:
     prefix: -f
-- id: r
+- id: _random_umber
   doc: '--random        [n]umber: unsigned integer perform n randomly selected permutations
     on the LUT'
   type: boolean
@@ -74,17 +69,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --random-seed
-- id: o
+- id: _order_umber
   doc: '--order         [n]umber: integer use polynomial curve fitting algorithm with
     order n (0..99, default: 5)'
   type: boolean
   inputBinding:
     prefix: -o
-- id: e
+- id: _explanation_string
   doc: '--explanation   [n]ame: string LUT explanation (default: automatically created)'
   type: boolean
   inputBinding:
     prefix: -E
+- id: dcm_img_out
+  doc: DICOM output filename
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

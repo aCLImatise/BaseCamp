@@ -2,14 +2,13 @@ version 1.0
 
 task MbRemoveDuplicates {
   input {
-    Boolean verboseVerbose
-    String? inputInputFastQ
-    String? outputOutputFastQ
+    Boolean? verbose
   }
   command <<<
     mb-remove-duplicates \
-      ~{inputInputFastQ} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{outputOutputFastQ}
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    verbose: "verbose output"
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: snpiphy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snpiphy.cwl
 inputs:
 - id: fast_q_dir
   doc: Path to a directory with your interleaved fastq sequencing reads or fasta assemblies.

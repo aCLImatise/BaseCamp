@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: ligand.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ligand.cwl
 inputs:
-- id: c
-  doc: ''
+- id: config
+  doc: This file can be a YAML file, JSON file or JSON string
   type: string
   inputBinding:
-    prefix: -c
-- id: o
-  doc: ''
+    prefix: --config
+- id: output_pdb_path
+  doc: Path to the output PDB ligand file.
   type: string
   inputBinding:
-    prefix: -o
+    prefix: --output_pdb_path
 outputs: []
 cwlVersion: v1.1
 baseCommand:

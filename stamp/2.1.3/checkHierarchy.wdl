@@ -2,10 +2,13 @@ version 1.0
 
 task CheckHierarchy.py {
   input {
-    String? stampStampProfile
+    String stamp_profile
   }
   command <<<
     checkHierarchy.py \
-      ~{stampStampProfile}
+      ~{stamp_profile}
   >>>
+  parameter_meta {
+    stamp_profile: "STAMP profile to evaluate"
+  }
 }

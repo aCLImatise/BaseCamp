@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: bedoverlap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedoverlap.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: bed_regions
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: bed_map_locations
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: output
   doc: 'Name of output file (default: stdout) '
   type: boolean
@@ -26,6 +11,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -about
+- id: bed_regions
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: bed_map_locations
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

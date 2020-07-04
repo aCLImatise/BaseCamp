@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gfinisher.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gfinisher.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

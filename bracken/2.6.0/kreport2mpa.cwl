@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: kreport2mpa.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kreport2mpa.py.cwl
 inputs:
 - id: report_file
   doc: Input kraken report file for converting

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: KmerInShort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/KmerInShort.cwl
 inputs:
 - id: nb_cores
   doc: "(1 arg) :    number of cores  [default '0']"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: clinvar_tsv_parse_xml.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clinvar_tsv_parse_xml.cwl
 inputs:
 - id: output_multi
   doc: '[--max-rows MAX_ROWS]'
@@ -21,16 +21,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --output-single
-- id: output_multi
-  doc: Output path to multi TSV file.
-  type: string
-  inputBinding:
-    prefix: --output-multi
 - id: max_rows
   doc: Maximal number of rows to write out; for debugging.
   type: long
   inputBinding:
     prefix: --max-rows
+- id: clin_var_tsv
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: parse_xml
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

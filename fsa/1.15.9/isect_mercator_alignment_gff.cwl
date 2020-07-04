@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: isect_mercator_alignment_gff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/isect_mercator_alignment_gff.cwl
 inputs:
-- id: genome
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: gff_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: type
   doc: only look at features of particular type
   type: string
@@ -52,6 +42,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: genome
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: gff_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

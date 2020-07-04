@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: simqual.cwl
+id: ../../../../home/ubuntu/BiocondaCli/simqual.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,10 +2,13 @@ version 1.0
 
 task Pepsum {
   input {
-    String? pepPepXmlFilename
+    String? pep_xml_filename
   }
   command <<<
     pepsum \
-      ~{pepPepXmlFilename}
+      ~{pep_xml_filename}
   >>>
+  parameter_meta {
+    pep_xml_filename: ""
+  }
 }

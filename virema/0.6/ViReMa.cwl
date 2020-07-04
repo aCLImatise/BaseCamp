@@ -1,27 +1,12 @@
 class: CommandLineTool
-id: ViReMa.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ViReMa.py.cwl
 inputs:
-- id: virus_index
-  doc: Virus genome reference index key. e.g. FHV_Genome
-  type: string
-  inputBinding:
-    position: 0
-- id: input_data
-  doc: File containing single reads in FASTQ format
-  type: string
-  inputBinding:
-    position: 1
-- id: output_data
-  doc: Destination file for results
-  type: string
-  inputBinding:
-    position: 2
 - id: host_index
   doc: Host genome reference index key, e.g. d_melanogaster_fb5_22
   type: string
   inputBinding:
     prefix: --Host_Index
-- id: n
+- id: number_mismatches_tolerated
   doc: Number of mismatches tolerated in mapped seed and in mapped segments. Default
     is 1.
   type: string
@@ -44,7 +29,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --FivePad
-- id: x
+- id: number_allowed_of
   doc: Number of nucleotides not allowed to have mismatches at 3' end and 5' of segment.
     Overrides seperate ThreePad and FivePad settings. Default is 5.
   type: string
@@ -56,7 +41,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --Host_Seed
-- id: f
+- id: select_data_fasta
   doc: Select '-F' if data is in FASTA format fasta. Default is FASTQ.
   type: boolean
   inputBinding:
@@ -107,7 +92,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --Output_Dir
-- id: p
+- id: enter_number_available
   doc: Enter number of available processors. Default is 1.
   type: string
   inputBinding:
@@ -138,6 +123,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -Win
+- id: virus_index
+  doc: Virus genome reference index key. e.g. FHV_Genome
+  type: string
+  inputBinding:
+    position: 0
+- id: input_data
+  doc: File containing single reads in FASTQ format
+  type: string
+  inputBinding:
+    position: 1
+- id: output_data
+  doc: Destination file for results
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: sixgill_build.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sixgill_build.cwl
 inputs:
-- id: fast_q_files
-  doc: input fastq file(s), bgzipped
-  type: string
-  inputBinding:
-    position: 0
 - id: minlength
   doc: min AA length of a metapeptide
   type: long

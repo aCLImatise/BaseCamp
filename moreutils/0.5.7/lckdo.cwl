@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: lckdo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lckdo.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

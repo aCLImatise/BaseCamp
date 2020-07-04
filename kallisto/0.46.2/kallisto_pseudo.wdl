@@ -2,16 +2,22 @@ version 1.0
 
 task KallistoPseudo {
   input {
-    Boolean quantQuant
-    Boolean singleSingle
-    String? argumentsArguments
-    String? fastFastQFiles
+    Boolean? quant
+    Boolean? single
+    String? arguments
+    String fast_q_files
   }
   command <<<
     kallisto pseudo \
-      ~{argumentsArguments} \
-      ~{true="--quant" false="" quantQuant} \
-      ~{true="--single" false="" singleSingle} \
-      ~{fastFastQFiles}
+      ~{arguments} \
+      ~{fast_q_files} \
+      ~{true="--quant" false="" quant} \
+      ~{true="--single" false="" single}
   >>>
+  parameter_meta {
+    quant: "Quantify using EM algorithm (only in batch mode)"
+    single: "Quantify single-end reads"
+    arguments: ""
+    fast_q_files: ""
+  }
 }

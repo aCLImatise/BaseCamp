@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: jemalloc.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/jemalloc.sh.cwl
 inputs:
 - id: not
   doc: ''

@@ -1,27 +1,6 @@
 class: CommandLineTool
-id: omero_group_perms.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_group_perms.cwl
 inputs:
-- id: omer_o_userdir
-  doc: "Set the base directory containing the user's files. Default: $HOME/omero"
-  type: string
-  inputBinding:
-    position: 0
-- id: omer_o_session_dir
-  doc: 'Set the base directory containing local sessions. Default: $OMERO_USERDIR/sessions'
-  type: string
-  inputBinding:
-    position: 1
-- id: omer_o_tmpdir
-  doc: 'Set the base directory containing temporary files. Default: $OMERO_USERDIR/tmp'
-  type: string
-  inputBinding:
-    position: 2
-- id: omer_o_password
-  doc: Set the user's password for creating new sessions. Ignored if -w or --password
-    is used.
-  type: string
-  inputBinding:
-    position: 3
 - id: id
   doc: ID of the group
   type: string
@@ -87,6 +66,27 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: omer_o_userdir
+  doc: "Set the base directory containing the user's files. Default: $HOME/omero"
+  type: string
+  inputBinding:
+    position: 0
+- id: omer_o_session_dir
+  doc: 'Set the base directory containing local sessions. Default: $OMERO_USERDIR/sessions'
+  type: string
+  inputBinding:
+    position: 1
+- id: omer_o_tmpdir
+  doc: 'Set the base directory containing temporary files. Default: $OMERO_USERDIR/tmp'
+  type: string
+  inputBinding:
+    position: 2
+- id: omer_o_password
+  doc: Set the user's password for creating new sessions. Ignored if -w or --password
+    is used.
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: shapeshiftmerge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/shapeshiftmerge.cwl
 inputs:
 - id: input_files
   doc: List of files that will be merged together. Files must have appropriate extensions

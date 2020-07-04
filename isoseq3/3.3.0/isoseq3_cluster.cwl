@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: isoseq3_cluster.cwl
+id: ../../../../home/ubuntu/BiocondaCli/isoseq3_cluster.cwl
 inputs:
 - id: poa_cov
   doc: INT   Maximum number of CCS reads used for POA consensus. [10]
@@ -47,6 +47,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: iso_seq
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: cluster
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: fl_ncdot_bam_vertical_line_xml
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: unpolished_dot_bam_vertical_line_xml
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

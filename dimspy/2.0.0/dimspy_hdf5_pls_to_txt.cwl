@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dimspy_hdf5_pls_to_txt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dimspy_hdf5_pls_to_txt.cwl
 inputs:
 - id: input
   doc: HDF5 file that contains a list of peaklist objects from one of the processing

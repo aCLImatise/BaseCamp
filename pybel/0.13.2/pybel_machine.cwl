@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pybel_machine.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pybel_machine.cwl
 inputs:
 - id: local
   doc: Upload to local database.
@@ -11,6 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --host
+- id: agents
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

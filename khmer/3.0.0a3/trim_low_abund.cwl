@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: trim_low_abund.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/trim_low_abund.py.cwl
 inputs:
 - id: ignore_pairs
   doc: 'treat all reads as if they were singletons (default: False)'
@@ -37,6 +37,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --single-pass
+- id: info
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --info
+- id: k
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -k
 outputs: []
 cwlVersion: v1.1
 baseCommand:

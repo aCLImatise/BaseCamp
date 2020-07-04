@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: eqtlbma_bf_parallel.bash.cwl
+id: ../../../../home/ubuntu/BiocondaCli/eqtlbma_bf_parallel.bash.cwl
 inputs:
 - id: verbose
   doc: level (0/default=1/2/3)
   type: string
   inputBinding:
     prefix: --verbose
-- id: p2b
+- id: p_two_b
   doc: path to the binary 'eqtlbma_bf'
   type: boolean
   inputBinding:

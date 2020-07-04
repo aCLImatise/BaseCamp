@@ -2,24 +2,34 @@ version 1.0
 
 task FsmLite {
   input {
-    File listList
-    File tmpTmp
-    Int minMin
-    Int maxMax
-    Int freqFreq
-    Int minMinSupp
-    Int maxMaxSupp
-    Boolean verboseVerbose
+    File? list
+    File? tmp
+    Int? min
+    Int? max
+    Int? freq
+    Int? min_supp
+    Int? max_supp
+    Boolean? verbose
   }
   command <<<
     fsm-lite \
-      ~{if defined(listList) then ("--list " +  '"' + listList + '"') else ""} \
-      ~{if defined(tmpTmp) then ("--tmp " +  '"' + tmpTmp + '"') else ""} \
-      ~{if defined(minMin) then ("--min " +  '"' + minMin + '"') else ""} \
-      ~{if defined(maxMax) then ("--max " +  '"' + maxMax + '"') else ""} \
-      ~{if defined(freqFreq) then ("--freq " +  '"' + freqFreq + '"') else ""} \
-      ~{if defined(minMinSupp) then ("--minsupp " +  '"' + minMinSupp + '"') else ""} \
-      ~{if defined(maxMaxSupp) then ("--maxsupp " +  '"' + maxMaxSupp + '"') else ""} \
-      ~{true="--verbose" false="" verboseVerbose}
+      ~{if defined(list) then ("--list " +  '"' + list + '"') else ""} \
+      ~{if defined(tmp) then ("--tmp " +  '"' + tmp + '"') else ""} \
+      ~{if defined(min) then ("--min " +  '"' + min + '"') else ""} \
+      ~{if defined(max) then ("--max " +  '"' + max + '"') else ""} \
+      ~{if defined(freq) then ("--freq " +  '"' + freq + '"') else ""} \
+      ~{if defined(min_supp) then ("--minsupp " +  '"' + min_supp + '"') else ""} \
+      ~{if defined(max_supp) then ("--maxsupp " +  '"' + max_supp + '"') else ""} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    list: "Text file that lists all input files as whitespace-separated pairs  <data-name> <data-filename> where <data-name> is unique identifier (without whitespace) and <data-filename> is full path to each input file. Default data file format is FASTA (uncompressed)."
+    tmp: "Store temporary index data"
+    min: "Minimum length to report (default 9)"
+    max: "Maximum length to report (default 100)"
+    freq: "Minimum frequency per input file to report (default 1)"
+    min_supp: "Minimum number of input files with support to report (default 2)"
+    max_supp: "Maximum number of input files with support to report (default inf)"
+    verbose: "Verbose output"
+  }
 }

@@ -2,26 +2,37 @@ version 1.0
 
 task ChadoExportGaf {
   input {
-    Boolean verboseVerbose
-    String configConfig
-    Boolean useUsePassword
-    String outputOutputFile
-    String abbreviationAbbreviation
-    String databaseDatabaseAuthority
-    String annotationAnnotationLevel
-    Boolean includeIncludeObsolete
-    String? dbnameDbname
+    Boolean? verbose
+    String? config
+    Boolean? use_password
+    String? output_file
+    String? abbreviation
+    String? database_authority
+    String? annotation_level
+    Boolean? include_obsolete
+    String dbname
   }
   command <<<
     chado export gaf \
-      ~{dbnameDbname} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{if defined(configConfig) then ("--config " +  '"' + configConfig + '"') else ""} \
-      ~{true="--use_password" false="" useUsePassword} \
-      ~{if defined(outputOutputFile) then ("--output_file " +  '"' + outputOutputFile + '"') else ""} \
-      ~{if defined(abbreviationAbbreviation) then ("--abbreviation " +  '"' + abbreviationAbbreviation + '"') else ""} \
-      ~{if defined(databaseDatabaseAuthority) then ("--database_authority " +  '"' + databaseDatabaseAuthority + '"') else ""} \
-      ~{if defined(annotationAnnotationLevel) then ("--annotation_level " +  '"' + annotationAnnotationLevel + '"') else ""} \
-      ~{true="--include_obsolete" false="" includeIncludeObsolete}
+      ~{dbname} \
+      ~{true="--verbose" false="" verbose} \
+      ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
+      ~{true="--use_password" false="" use_password} \
+      ~{if defined(output_file) then ("--output_file " +  '"' + output_file + '"') else ""} \
+      ~{if defined(abbreviation) then ("--abbreviation " +  '"' + abbreviation + '"') else ""} \
+      ~{if defined(database_authority) then ("--database_authority " +  '"' + database_authority + '"') else ""} \
+      ~{if defined(annotation_level) then ("--annotation_level " +  '"' + annotation_level + '"') else ""} \
+      ~{true="--include_obsolete" false="" include_obsolete}
   >>>
+  parameter_meta {
+    verbose: "verbose mode"
+    config: "YAML file containing connection details"
+    use_password: "connect with password (default: no password)"
+    output_file: "GAF output file"
+    abbreviation: "abbreviation/short name of the organism"
+    database_authority: "database from which the file is created, e.g. 'UniProtKB'"
+    annotation_level: "level to which GO terms are related in the output file (default: same level as in the database)"
+    include_obsolete: "export all features, including obsoletes"
+    dbname: "name of the database"
+  }
 }

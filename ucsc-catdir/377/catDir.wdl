@@ -2,10 +2,16 @@ version 1.0
 
 task CatDir {
   input {
-    Boolean nonNonZ
+    Boolean? non_z
+    String dir
   }
   command <<<
     catDir \
-      ~{true="-nonz" false="" nonNonZ}
+      ~{dir} \
+      ~{true="-nonz" false="" non_z}
   >>>
+  parameter_meta {
+    non_z: "Prints file name of non-zero length files"
+    dir: ""
+  }
 }

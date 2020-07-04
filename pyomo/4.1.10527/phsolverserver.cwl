@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: phsolverserver.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phsolverserver.cwl
 inputs:
-- id: hostname
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: verbose
   doc: Generate verbose output for both initialization and execution. Default is False.
   type: boolean
@@ -34,6 +29,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --user-defined-extension
+- id: hostname
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

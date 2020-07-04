@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fsa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fsa.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

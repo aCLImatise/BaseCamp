@@ -2,16 +2,19 @@ version 1.0
 
 task ColorChrs.pl {
   input {
-    File colorsColors
-    String prefixPrefix
-    String? optionsOptions
-    String? outputOutputDat
+    File? colors
+    String? prefix
+    String output_dot_dat
   }
   command <<<
     color-chrs.pl \
-      ~{optionsOptions} \
-      ~{if defined(colorsColors) then ("--colors " +  '"' + colorsColors + '"') else ""} \
-      ~{if defined(prefixPrefix) then ("--prefix " +  '"' + prefixPrefix + '"') else ""} \
-      ~{outputOutputDat}
+      ~{output_dot_dat} \
+      ~{if defined(colors) then ("--colors " +  '"' + colors + '"') else ""} \
+      ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""}
   >>>
+  parameter_meta {
+    colors: "File with list of \"chr hap color\"."
+    prefix: "Prefix of output files."
+    output_dot_dat: ""
+  }
 }

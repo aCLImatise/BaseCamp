@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pasteseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pasteseq.cwl
 inputs:
 - id: pos
   doc: integer    [$(asequence.end)] The position in the main input sequence to insert

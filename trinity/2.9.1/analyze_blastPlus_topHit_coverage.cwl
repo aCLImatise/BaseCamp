@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: analyze_blastPlus_topHit_coverage.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/analyze_blastPlus_topHit_coverage.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

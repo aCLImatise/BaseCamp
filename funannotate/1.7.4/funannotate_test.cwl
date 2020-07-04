@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: funannotate_test.cwl
+id: ../../../../home/ubuntu/BiocondaCli/funannotate_test.cwl
 inputs:
-- id: arguments
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: tests
   doc: Test sets to run. [all,clean,mask,predict,busco,rna-seq,annotate,compare]
   type: boolean
@@ -16,6 +11,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --cpus
+- id: arguments
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

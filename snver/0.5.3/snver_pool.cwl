@@ -1,32 +1,32 @@
 class: CommandLineTool
-id: snver_pool.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snver_pool.cwl
 inputs:
-- id: i
+- id: input_directory_required
   doc: <input directory (required) >
   type: boolean
   inputBinding:
     prefix: -i
-- id: r
+- id: reference_file_required
   doc: <reference file (required) >
   type: boolean
   inputBinding:
     prefix: -r
-- id: c
+- id: pool_info_file
   doc: <pool info file (preferred) >
   type: boolean
   inputBinding:
     prefix: -c
-- id: n
+- id: number_haploids_required
   doc: <the number of haploids (required when option "-c" is not given)>
   type: boolean
   inputBinding:
     prefix: -n
-- id: l
+- id: target_region_bed
   doc: <target region bed file (default is null) >
   type: boolean
   inputBinding:
     prefix: -l
-- id: o
+- id: prefix_output_file
   doc: <prefix output file (default is input_file name) >
   type: boolean
   inputBinding:
@@ -41,33 +41,33 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -bq
-- id: s
+- id: strand_bias_threshold
   doc: <strand bias threshold (default is 0.0001) >
   type: boolean
   inputBinding:
     prefix: -s
-- id: f
+- id: fisher_exact_threshold
   doc: <fisher exact threshold (default is 0.0001) >
   type: boolean
   inputBinding:
     prefix: -f
-- id: p
+- id: pvalue_threshold_default
   doc: <p-value threshold (default is bonferroni=0.05) >
   type: boolean
   inputBinding:
     prefix: -p
-- id: a
+- id: at_least_how
   doc: <at least how many reads supporting each strand for alternative allele (default
     is 1)>
   type: boolean
   inputBinding:
     prefix: -a
-- id: t
+- id: allele_frequency_threshold
   doc: <allele frequency threshold (default is 0)>
   type: boolean
   inputBinding:
     prefix: -t
-- id: u
+- id: inactivate_s_threshold
   doc: <inactivate -s and -f above this threshold (default is 30)  >
   type: boolean
   inputBinding:
@@ -78,6 +78,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -db
+- id: jar
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -jar
+- id: java
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,26 +1,26 @@
 class: CommandLineTool
-id: compare_flags.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/compare_flags.py.cwl
 inputs:
-- id: i
-  doc: ''
+- id: input
+  doc: Input dataset in wide format.
   type: string
   inputBinding:
-    prefix: -i
-- id: o
-  doc: ''
+    prefix: --input
+- id: output
+  doc: Output file (Cross tab format).
   type: string
   inputBinding:
-    prefix: -o
-- id: f1
-  doc: ''
+    prefix: --output
+- id: flag_one
+  doc: Flag 1 to create cross tab
   type: string
   inputBinding:
-    prefix: -f1
-- id: f2
-  doc: ''
+    prefix: --flag1
+- id: flag_two
+  doc: Flag 2 to create cross tab
   type: string
   inputBinding:
-    prefix: -f2
+    prefix: --flag2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

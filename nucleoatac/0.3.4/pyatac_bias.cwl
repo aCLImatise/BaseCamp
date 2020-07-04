@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pyatac_bias.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyatac_bias.cwl
 inputs:
 - id: fast_a
   doc: Accepts fasta file

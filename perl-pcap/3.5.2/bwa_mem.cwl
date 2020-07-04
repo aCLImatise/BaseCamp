@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bwa_mem.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bwa_mem.pl.cwl
 inputs:
 - id: outdir
   doc: -o   Folder to output result to.

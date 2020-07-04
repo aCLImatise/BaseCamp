@@ -1,21 +1,21 @@
 class: CommandLineTool
-id: chromGraphFromBin.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chromGraphFromBin.cwl
 inputs:
-- id: in_chrom_graph
+- id: chrom
+  doc: '- restrict output to single chromosome'
+  type: string
+  inputBinding:
+    prefix: -chrom
+- id: in_dot_chrom_graph
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: out_tab
+- id: out_dot_tab
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: restrict
-  doc: to single chromosome
-  type: string
-  inputBinding:
-    prefix: '- restrict'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

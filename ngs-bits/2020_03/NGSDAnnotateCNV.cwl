@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: NGSDAnnotateCNV.cwl
+id: ../../../../home/ubuntu/BiocondaCli/NGSDAnnotateCNV.cwl
 inputs:
 - id: in
   doc: TSV file containing CNV.

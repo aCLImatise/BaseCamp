@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: byobu_select_profile.cwl
+id: ../../../../home/ubuntu/BiocondaCli/byobu_select_profile.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

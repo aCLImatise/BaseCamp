@@ -2,10 +2,13 @@ version 1.0
 
 task ShortStack {
   input {
-    Boolean lociLociFile
+    String? loci_file_dot
   }
   command <<<
     ShortStack \
-      ~{true="--locifile" false="" lociLociFile}
+      ~{if defined(loci_file_dot) then ("--locifile. " +  '"' + loci_file_dot + '"') else ""}
   >>>
+  parameter_meta {
+    loci_file_dot: "the value for --total_primaries to make a single locus run fast."
+  }
 }

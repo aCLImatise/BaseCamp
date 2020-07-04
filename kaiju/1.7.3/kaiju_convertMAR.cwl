@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: kaiju_convertMAR.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kaiju_convertMAR.py.cwl
 inputs:
 - id: ref
   doc: 'MarRef TSV file path (default: MarRef.tsv)'

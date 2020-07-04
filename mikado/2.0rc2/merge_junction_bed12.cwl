@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: merge_junction_bed12.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/merge_junction_bed12.py.cwl
 inputs:
-- id: bed
-  doc: Input BED files. Use "-" for stdin.
-  type: string
-  inputBinding:
-    position: 0
 - id: delim
   doc: 'Delimiter for merged names. Default: ;'
   type: string
@@ -30,6 +25,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
+- id: bed
+  doc: Input BED files. Use "-" for stdin.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

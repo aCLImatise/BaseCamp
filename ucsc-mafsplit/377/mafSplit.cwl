@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mafSplit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mafSplit.cwl
 inputs:
 - id: use_hashed_name
   doc: 'For use only with -byTarget. Instead of auto-incrementing an integer or requiring
@@ -12,6 +12,21 @@ inputs:
   type: string
   inputBinding:
     prefix: -useHashedName
+- id: splits_dot_bed
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: out_root
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

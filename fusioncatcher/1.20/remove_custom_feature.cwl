@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: remove_custom_feature.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/remove_custom_feature.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the list of allowed candidate fusion genes

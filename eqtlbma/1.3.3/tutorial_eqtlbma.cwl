@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tutorial_eqtlbma.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tutorial_eqtlbma.R.cwl
 inputs:
 - id: verbose
   doc: verbosity level (0/default=1/2)
@@ -48,12 +48,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --anchor
-- id: cr5
+- id: cr_five
   doc: radius of cis region in 5' (default=1000)
   type: boolean
   inputBinding:
     prefix: --cr5
-- id: cr3
+- id: cr_three
   doc: radius of cis region in 3' (default=1000)
   type: boolean
   inputBinding:
@@ -78,7 +78,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --rare
-- id: pi0
+- id: pi_zero
   doc: prior proba for a gene to have no eQTL in any subgroup (default=0.3)
   type: boolean
   inputBinding:

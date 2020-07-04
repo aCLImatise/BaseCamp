@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: ExpansionHunter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ExpansionHunter.cwl
 inputs:
-- id: v
+- id: print_version_number
   doc: '[ --version ]                      Print version number'
   type: boolean
   inputBinding:
@@ -41,13 +41,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --log-level
-- id: a
+- id: arg_dagaligner_specify
   doc: '[ --aligner ] arg (=dag-aligner)   Specify which aligner to use  (dag-aligner
     or path-aligner)'
   type: boolean
   inputBinding:
     prefix: -a
-- id: m
+- id: arg_seeking_specify
   doc: '[ --analysis-mode ] arg (=seeking) Specify which analysis workflow to use  (seeking
     or streaming)'
   type: boolean

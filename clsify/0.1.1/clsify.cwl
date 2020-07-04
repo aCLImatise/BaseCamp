@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: clsify.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clsify.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

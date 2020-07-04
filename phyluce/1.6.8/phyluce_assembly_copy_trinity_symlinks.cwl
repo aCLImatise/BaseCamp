@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_assembly_copy_trinity_symlinks.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_assembly_copy_trinity_symlinks.cwl
 inputs:
 - id: assembly_symlinks
   doc: The location of the trinity symlinks (trinity- assemblies/contigs)

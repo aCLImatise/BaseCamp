@@ -2,46 +2,46 @@ version 1.0
 
 task Hpcrunner.plSubmitJobs {
   input {
-    Boolean nNTasksPerNode
-    Boolean nodesNodesCount
-    Boolean moduleModule
-    Boolean partitionPartition
-    Boolean accountAccount
-    Boolean useUseBatches
-    Boolean serialSerial
-    Boolean wallWallTime
-    Boolean maxMaxArraySize
-    Boolean nNTasks
-    Boolean memMem
-    Boolean condCondAEnv
-    Boolean afterAfterOk
-    Boolean userUser
-    Boolean cpusCpusPerTask
-    Boolean jobJobName
-    Boolean commandsCommandsPerNode
-    Boolean dryDryRun
-    String? helpHelp
+    Boolean? account
+    Boolean? after_ok
+    Boolean? cpus_per_task
+    Boolean? partition
+    Boolean? serial
+    Boolean? job_name
+    Boolean? commands_per_node
+    Boolean? n_tasks
+    Boolean? mem
+    Boolean? nodes_count
+    Boolean? dry_run
+    String help
   }
   command <<<
     hpcrunner.pl submit_jobs \
-      ~{helpHelp} \
-      ~{true="--ntasks_per_node" false="" nNTasksPerNode} \
-      ~{true="--nodes_count" false="" nodesNodesCount} \
-      ~{true="--module" false="" moduleModule} \
-      ~{true="--partition" false="" partitionPartition} \
-      ~{true="--account" false="" accountAccount} \
-      ~{true="--use_batches" false="" useUseBatches} \
-      ~{true="--serial" false="" serialSerial} \
-      ~{true="--walltime" false="" wallWallTime} \
-      ~{true="--max_array_size" false="" maxMaxArraySize} \
-      ~{true="--ntasks" false="" nNTasks} \
-      ~{true="--mem" false="" memMem} \
-      ~{true="--conda_env" false="" condCondAEnv} \
-      ~{true="--afterok" false="" afterAfterOk} \
-      ~{true="--user" false="" userUser} \
-      ~{true="--cpus_per_task" false="" cpusCpusPerTask} \
-      ~{true="--jobname" false="" jobJobName} \
-      ~{true="--commands_per_node" false="" commandsCommandsPerNode} \
-      ~{true="--dry_run" false="" dryDryRun}
+      ~{help} \
+      ~{true="--account" false="" account} \
+      ~{true="--afterok" false="" after_ok} \
+      ~{true="--cpus_per_task" false="" cpus_per_task} \
+      ~{true="--partition" false="" partition} \
+      ~{true="--serial" false="" serial} \
+      ~{true="--jobname" false="" job_name} \
+      ~{true="--commands_per_node" false="" commands_per_node} \
+      ~{true="--ntasks" false="" n_tasks} \
+      ~{true="--mem" false="" mem} \
+      ~{true="--nodes_count" false="" nodes_count} \
+      ~{true="--dry_run" false="" dry_run}
   >>>
+  parameter_meta {
+    account: "--account switch in slurm. "
+    after_ok: "afterok switch in slurm. --afterok 123,134 will tell slurm to start this job after 123,134 have exited successfully [Multiple; Split by \",\"]"
+    cpus_per_task: "--cpus-per-task switch in slurm [Default:\"4\"; Integer]"
+    partition: "Slurm partition to submit jobs to."
+    serial: "Use this if you wish to run each job run one after another, with each job starting only after the previous has completed successfully [Flag]"
+    job_name: "Specify a job name, each job will be appended with its batch order [Default:\"hpcjob_001\"]"
+    commands_per_node: "Commands to run on each node. If you have a low number of jobs you can submit at a time you want this number much higher.  [Default:\"1\"; Integer]"
+    n_tasks: "--ntasks switch in slurm. This is equal to the number of concurrent tasks on each node * the number of nodes, not the total number of tasks [ Default:\"1\"; Integer]"
+    mem: "Supply a memory limit [Default:\"10GB\"]"
+    nodes_count: "Number of nodes requested. You should only use this if submitting parallel jobs. [Default:\"1\"; Integer ]"
+    dry_run: "Do a dry run - do not submit to the scheduler. [ Flag]"
+    help: "Prints this usage information"
+  }
 }

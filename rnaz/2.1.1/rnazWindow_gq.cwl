@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rnazWindow_gq.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnazWindow_gq.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

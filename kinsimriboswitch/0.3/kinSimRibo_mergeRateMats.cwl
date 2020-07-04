@@ -1,41 +1,31 @@
 class: CommandLineTool
-id: kinSimRibo_mergeRateMats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kinSimRibo_mergeRateMats.cwl
 inputs:
+- id: allow_disconnected_matrix
+  doc: ':     Allow disconnected matrix / do not check whether A and B are connected.'
+  type: boolean
+  inputBinding:
+    prefix: -d
+- id: _be_verbose
+  doc: ':     Be verbose'
+  type: boolean
+  inputBinding:
+    prefix: -v
 - id: params
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: mon_rates
+- id: mon_dot_rates
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: dim_rates
+- id: dim_dot_rates
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: mon2dim_rates
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: dim2mon_rates
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
-- id: d
-  doc: ':     Allow disconnected matrix / do not check whether A and B are connected.'
-  type: boolean
-  inputBinding:
-    prefix: -d
-- id: v
-  doc: ':     Be verbose'
-  type: boolean
-  inputBinding:
-    prefix: -v
 outputs: []
 cwlVersion: v1.1
 baseCommand:

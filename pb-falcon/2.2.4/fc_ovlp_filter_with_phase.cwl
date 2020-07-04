@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fc_ovlp_filter_with_phase.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fc_ovlp_filter_with_phase.py.cwl
 inputs:
 - id: n_core
   doc: 'number of processes used for generating consensus (default: 4)'

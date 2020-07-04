@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: strip_it.cwl
+id: ../../../../home/ubuntu/BiocondaCli/strip_it.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

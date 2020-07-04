@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: iu_merge_pairs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/iu_merge_pairs.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,12 +1,7 @@
 class: CommandLineTool
-id: Circle_Map_bam2bam.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Circle_Map_bam2bam.cwl
 inputs:
-- id: realign
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: i
+- id: input_bam_file
   doc: 'Input: bam file containing the reads extracted by ReadExtractor'
   type: boolean
   inputBinding:
@@ -21,53 +16,53 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -fasta
-- id: o
+- id: _output_output
   doc: ', --output         Output BAM name'
   type: boolean
   inputBinding:
     prefix: -o
-- id: n
+- id: _nhits_number
   doc: ', --nhits          Number of realignment attempts. Default: 10'
   type: boolean
   inputBinding:
     prefix: -n
-- id: p
+- id: _probability_considering
   doc: ', --cut_off        Probability cut-off for considering a soft-clipped as realigned:
     Default: 0.99'
   type: boolean
   inputBinding:
     prefix: -p
-- id: m
+- id: _minsc_minimum
   doc: ', --min_sc         Minimum soft-clipped length to attempt the realignment.
     Default: 8'
   type: boolean
   inputBinding:
     prefix: -m
-- id: g
+- id: _gapopen_gap
   doc: ', --gap_open       Gap open penalty in the position specific scoring matrix.
     Default: 5'
   type: boolean
   inputBinding:
     prefix: -g
-- id: e
+- id: _gap_extension
   doc: ', --gap_ext        Gap extension penalty in the position specific scoring
     matrix. Default: 1'
   type: boolean
   inputBinding:
     prefix: -e
-- id: q
+- id: _mapq_minimum
   doc: ', --mapq           Minimum mapping quality allowed in the supplementary alignments.
     Default: 20'
   type: boolean
   inputBinding:
     prefix: -q
-- id: d
+- id: _editdistancefraction_maximum
   doc: ', --edit_distance-fraction  Maximum edit distance fraction allowed in the
     first realignment. Default (0.05)'
   type: boolean
   inputBinding:
     prefix: -d
-- id: q
+- id: _splitquality_minium
   doc: ', --split_quality  Minium split score to output an interval. Default (0.0)'
   type: boolean
   inputBinding:
@@ -89,19 +84,19 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -sd
-- id: s
+- id: _samplesize_number
   doc: ', --sample_size    Number of concordant reads (R2F1) to use for estimating
     the insert size distribution. Default 100000'
   type: boolean
   inputBinding:
     prefix: -s
-- id: p
+- id: _intervalprobability_skip
   doc: ', --interval_probability  Skip edges of the graph with a probability below
     the threshold. Default: 0.01'
   type: boolean
   inputBinding:
     prefix: -P
-- id: k
+- id: _clusteringdist_cluster
   doc: ', --clustering_dist  Cluster reads that are K nucleotides appart in the same
     node. Default: 500'
   type: boolean
@@ -112,7 +107,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --only_discordants
-- id: t
+- id: _threads_number
   doc: ', --threads        Number of threads to use.Default 1'
   type: boolean
   inputBinding:
@@ -122,11 +117,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -dir
-- id: v
+- id: _verbose_level
   doc: ', --verbose        Verbose level, 1=error,2=warning, 3=message'
   type: boolean
   inputBinding:
     prefix: -v
+- id: circle_map
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: realign
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

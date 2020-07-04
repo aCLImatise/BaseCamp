@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: cram_dump.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cram_dump.cwl
 inputs:
-- id: filename_cram
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
+- id: filename_dot_cram
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

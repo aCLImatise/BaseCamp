@@ -2,26 +2,37 @@ version 1.0
 
 task BoltVcfFilter {
   input {
-    String fileFilePath
-    Int maxlengthMaxlength
-    Int minlengthMinlength
-    Boolean onlyOnlySv
-    String outputOutput
-    String? genieGenie
-    String? vcfVcf
-    String? filterFilter
-    String? flagsFlags
+    String? file_path
+    Int? maxlength
+    Int? minlength
+    Boolean? only_sv
+    String? output_file
+    String genie
+    String vcf
+    String filter
+    String? flags
   }
   command <<<
     bolt vcf filter \
-      ~{genieGenie} \
-      ~{if defined(fileFilePath) then ("--filepath " +  '"' + fileFilePath + '"') else ""} \
-      ~{if defined(maxlengthMaxlength) then ("--maxlength " +  '"' + maxlengthMaxlength + '"') else ""} \
-      ~{if defined(minlengthMinlength) then ("--minlength " +  '"' + minlengthMinlength + '"') else ""} \
-      ~{true="--onlysv" false="" onlyOnlySv} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{vcfVcf} \
-      ~{filterFilter} \
-      ~{flagsFlags}
+      ~{genie} \
+      ~{vcf} \
+      ~{filter} \
+      ~{flags} \
+      ~{if defined(file_path) then ("--filepath " +  '"' + file_path + '"') else ""} \
+      ~{if defined(maxlength) then ("--maxlength " +  '"' + maxlength + '"') else ""} \
+      ~{if defined(minlength) then ("--minlength " +  '"' + minlength + '"') else ""} \
+      ~{true="--onlysv" false="" only_sv} \
+      ~{if defined(output_file) then ("--output " +  '"' + output_file + '"') else ""}
   >>>
+  parameter_meta {
+    file_path: "a VCF file (*require)"
+    maxlength: "Max SVLENGTH (default 2147483647)"
+    minlength: "Min SVLENGTH (default -2147483647)"
+    only_sv: "Only SVs"
+    output_file: "output file"
+    genie: ""
+    vcf: ""
+    filter: ""
+    flags: ""
+  }
 }

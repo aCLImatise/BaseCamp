@@ -1,12 +1,6 @@
 class: CommandLineTool
-id: caper_debug.cwl
+id: ../../../../home/ubuntu/BiocondaCli/caper_debug.cwl
 inputs:
-- id: wf_id_or_label
-  doc: List of workflow IDs to find matching workflows to commit a specified action
-    (list, metadata and abort). Wildcards (* and ?) are allowed.
-  type: string
-  inputBinding:
-    position: 0
 - id: dry_run
   doc: Caper does not take any action.
   type: boolean
@@ -48,6 +42,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --server-heartbeat-timeout
+- id: wf_id_or_label
+  doc: List of workflow IDs to find matching workflows to commit a specified action
+    (list, metadata and abort). Wildcards (* and ?) are allowed.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

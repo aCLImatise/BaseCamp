@@ -2,10 +2,13 @@ version 1.0
 
 task JeClip {
   input {
-    String? jeJeClipper
+    String je_clipper
   }
   command <<<
     je clip \
-      ~{jeJeClipper}
+      ~{je_clipper}
   >>>
+  parameter_meta {
+    je_clipper: ""
+  }
 }

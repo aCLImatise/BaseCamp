@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pslMap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pslMap.cwl
 inputs:
 - id: in_psl
   doc: ''
@@ -16,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: verbose
-  doc: 2 - show each overlap and the mapping
-  type: string
-  inputBinding:
-    prefix: '- verbose'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

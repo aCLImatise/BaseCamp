@@ -1,34 +1,29 @@
 class: CommandLineTool
-id: pyrad.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyrad.cwl
 inputs:
-- id: pyra_d
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: p
+- id: input_file_sample
   doc: input file for within sample filtering and clustering
   type: string
   inputBinding:
     prefix: -p
-- id: s
+- id: perform_stepwise_parts
   doc: perform step-wise parts of within analysis 1 = barcode sorting 2 = filter/edit
     raw sequences 3 = within-sample clustering 4 = estimate pi and e 5 = consensus
     calling 6 = cluster consensus 7 = align & create output files
   type: string
   inputBinding:
     prefix: -s
-- id: d
+- id: input_file_dtest
   doc: input file for D-test of introgression, can iterate over multiple samples
   type: string
   inputBinding:
     prefix: -d
-- id: n
+- id: creates_new_empty_input_file
   doc: creates a new empty input params.txt file
   type: boolean
   inputBinding:
     prefix: -n
-- id: d
+- id: creates_new_empty_dtest_file
   doc: creates a new empty Dtest input file
   type: boolean
   inputBinding:

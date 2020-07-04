@@ -2,16 +2,28 @@ version 1.0
 
 task Figtree {
   input {
-    String graphicGraphic
-    String widthWidth
-    String heightHeight
-    String urlUrl
+    String? graphic
+    String? width
+    String? height
+    String? url
+    String? tree_file_name
+    String? graphic_file_name
   }
   command <<<
     figtree \
-      ~{if defined(graphicGraphic) then ("-graphic " +  '"' + graphicGraphic + '"') else ""} \
-      ~{if defined(widthWidth) then ("-width " +  '"' + widthWidth + '"') else ""} \
-      ~{if defined(heightHeight) then ("-height " +  '"' + heightHeight + '"') else ""} \
-      ~{if defined(urlUrl) then ("-url " +  '"' + urlUrl + '"') else ""}
+      ~{tree_file_name} \
+      ~{graphic_file_name} \
+      ~{if defined(graphic) then ("-graphic " +  '"' + graphic + '"') else ""} \
+      ~{if defined(width) then ("-width " +  '"' + width + '"') else ""} \
+      ~{if defined(height) then ("-height " +  '"' + height + '"') else ""} \
+      ~{if defined(url) then ("-url " +  '"' + url + '"') else ""}
   >>>
+  parameter_meta {
+    graphic: "a graphic with the given format"
+    width: "width of the graphic in pixels"
+    height: "height of the graphic in pixels"
+    url: "input file is a URL"
+    tree_file_name: ""
+    graphic_file_name: ""
+  }
 }

@@ -1,12 +1,6 @@
 class: CommandLineTool
-id: kat_distanalysis.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kat_distanalysis.cwl
 inputs:
-- id: input
-  doc: The input should be either a KAT spectra-cn matrix file a KAT GCP matrix file
-    or a KAT histogram file.
-  type: string
-  inputBinding:
-    position: 0
 - id: output_prefix
   doc: If present then plots are sent to files starting with this prefix.
   type: string
@@ -56,6 +50,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: input
+  doc: The input should be either a KAT spectra-cn matrix file a KAT GCP matrix file
+    or a KAT histogram file.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: IsobaricAnalyzer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/IsobaricAnalyzer.cwl
 inputs:
 - id: type
   doc: "Isobaric Quantitation method used in the experiment. (default: 'itraq4plex'\
@@ -38,51 +38,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: extraction
-  doc: Parameters for the channel extraction.
-  type: boolean
-  inputBinding:
-    prefix: '- extraction'
-- id: itraq4plex
-  doc: Algorithm parameters for iTRAQ 4-plex
-  type: boolean
-  inputBinding:
-    prefix: '- itraq4plex'
-- id: itraq8plex
-  doc: Algorithm parameters for iTRAQ 8-plex
-  type: boolean
-  inputBinding:
-    prefix: '- itraq8plex'
-- id: quantification
-  doc: Parameters for the peptide quantification.
-  type: boolean
-  inputBinding:
-    prefix: '- quantification'
-- id: tmt10plex
-  doc: Algorithm parameters for TMT 10-plex
-  type: boolean
-  inputBinding:
-    prefix: '- tmt10plex'
-- id: tmt11plex
-  doc: Algorithm parameters for TMT 11-plex
-  type: boolean
-  inputBinding:
-    prefix: '- tmt11plex'
-- id: tmt16plex
-  doc: Algorithm parameters for TMT 16-plex
-  type: boolean
-  inputBinding:
-    prefix: '- tmt16plex'
-- id: tmt6plex
-  doc: Algorithm parameters for TMT 6-plex
-  type: boolean
-  inputBinding:
-    prefix: '- tmt6plex'
-- id: http
-  doc: ://www.openms.de/documentation/TOPP_IsobaricAnalyzer.html
-  type: boolean
-  inputBinding:
-    prefix: '- http'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,10 +2,16 @@ version 1.0
 
 task Nice {
   input {
-    String adjustmentAdjustment
+    String? adjustment
+    String? option
   }
   command <<<
     nice \
-      ~{if defined(adjustmentAdjustment) then ("--adjustment " +  '"' + adjustmentAdjustment + '"') else ""}
+      ~{option} \
+      ~{if defined(adjustment) then ("--adjustment " +  '"' + adjustment + '"') else ""}
   >>>
+  parameter_meta {
+    adjustment: "add integer N to the niceness (default 10)"
+    option: ""
+  }
 }

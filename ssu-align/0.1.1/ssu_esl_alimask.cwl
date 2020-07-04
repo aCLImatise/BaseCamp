@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: ssu_esl_alimask.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ssu_esl_alimask.cwl
 inputs:
-- id: o
+- id: output_final_alignment
   doc: ': output the final alignment to file <f>, not stdout'
   type: string
   inputBinding:
     prefix: -o
-- id: q
+- id: quiet_wo_print
   doc: ": be quiet; w/-o, don't print mask info to stdout"
   type: boolean
   inputBinding:

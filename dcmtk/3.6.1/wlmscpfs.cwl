@@ -1,22 +1,17 @@
 class: CommandLineTool
-id: wlmscpfs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wlmscpfs.cwl
 inputs:
-- id: port
-  doc: tcp/ip port number to listen on
-  type: string
-  inputBinding:
-    position: 0
-- id: q
+- id: _quiet_quiet
   doc: --quiet                quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose              verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug                debug mode, print debug information
   type: boolean
   inputBinding:
@@ -32,7 +27,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lc
-- id: s
+- id: _singleprocess_single
   doc: --single-process       single process mode --fork                 fork child
     process for each association (def.)
   type: boolean
@@ -58,7 +53,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --return-no-char-set
-- id: return_iso_ir_100
+- id: return_iso_ir_one_zero_zero
   doc: return specific character set ISO IR 100
   type: boolean
   inputBinding:
@@ -73,7 +68,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-sq-expansion
-- id: u
+- id: _disablenewvr_disable
   doc: --disable-new-vr       disable support for new VRs, convert to OB
   type: boolean
   inputBinding:
@@ -105,6 +100,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --disable-host-lookup
+- id: port
+  doc: tcp/ip port number to listen on
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

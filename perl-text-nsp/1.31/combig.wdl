@@ -1,13 +1,14 @@
 version 1.0
 
-task Combig.plBIGRAM {
+task Combig.pl {
   input {
-    String? optionsOptions
-    String? bigramBigram
+    String bigram
   }
   command <<<
-    combig.pl BIGRAM \
-      ~{optionsOptions} \
-      ~{bigramBigram}
+    combig.pl \
+      ~{bigram}
   >>>
+  parameter_meta {
+    bigram: ""
+  }
 }

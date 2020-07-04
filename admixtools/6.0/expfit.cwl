@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: expfit.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/expfit.sh.cwl
 inputs:
 - id: par_file
   doc: ''

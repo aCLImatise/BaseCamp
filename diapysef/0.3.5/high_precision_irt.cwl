@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: high_precision_irt.py_quality_cutoff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/high_precision_irt.py.cwl
 inputs:
 - id: mq_out_dir
   doc: ''
@@ -20,4 +20,3 @@ outputs: []
 cwlVersion: v1.1
 baseCommand:
 - high_precision_irt.py
-- quality_cutoff

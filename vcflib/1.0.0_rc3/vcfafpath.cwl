@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfafpath.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfafpath.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

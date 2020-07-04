@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ktImportTaxonomy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ktImportTaxonomy.cwl
 inputs:
 - id: taxonomy
   doc: Tab-delimited file with taxonomy IDs and (optionally) query IDs, magnitudes

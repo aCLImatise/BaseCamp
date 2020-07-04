@@ -2,26 +2,37 @@ version 1.0
 
 task Mace.py {
   input {
-    String forwardForward
-    String reverseReverse
-    String chromChromSize
-    String outOutPrefix
-    String pPValue
-    Int maxMaxDist
-    String fzFzWindow
-    String bgBgWindow
-    String foldFold
+    String? forward
+    String? reverse
+    String? chrom_size
+    String? out_prefix
+    String? p_value
+    Int? max_dist
+    String? fz_window
+    String? bg_window
+    String? fold
   }
   command <<<
     mace.py \
-      ~{if defined(forwardForward) then ("--forward " +  '"' + forwardForward + '"') else ""} \
-      ~{if defined(reverseReverse) then ("--reverse " +  '"' + reverseReverse + '"') else ""} \
-      ~{if defined(chromChromSize) then ("--chromSize " +  '"' + chromChromSize + '"') else ""} \
-      ~{if defined(outOutPrefix) then ("--out-prefix " +  '"' + outOutPrefix + '"') else ""} \
-      ~{if defined(pPValue) then ("--pvalue " +  '"' + pPValue + '"') else ""} \
-      ~{if defined(maxMaxDist) then ("--max-dist " +  '"' + maxMaxDist + '"') else ""} \
-      ~{if defined(fzFzWindow) then ("--fz-window " +  '"' + fzFzWindow + '"') else ""} \
-      ~{if defined(bgBgWindow) then ("--bg-window " +  '"' + bgBgWindow + '"') else ""} \
-      ~{if defined(foldFold) then ("--fold " +  '"' + foldFold + '"') else ""}
+      ~{if defined(forward) then ("--forward " +  '"' + forward + '"') else ""} \
+      ~{if defined(reverse) then ("--reverse " +  '"' + reverse + '"') else ""} \
+      ~{if defined(chrom_size) then ("--chromSize " +  '"' + chrom_size + '"') else ""} \
+      ~{if defined(out_prefix) then ("--out-prefix " +  '"' + out_prefix + '"') else ""} \
+      ~{if defined(p_value) then ("--pvalue " +  '"' + p_value + '"') else ""} \
+      ~{if defined(max_dist) then ("--max-dist " +  '"' + max_dist + '"') else ""} \
+      ~{if defined(fz_window) then ("--fz-window " +  '"' + fz_window + '"') else ""} \
+      ~{if defined(bg_window) then ("--bg-window " +  '"' + bg_window + '"') else ""} \
+      ~{if defined(fold) then ("--fold " +  '"' + fold + '"') else ""}
   >>>
+  parameter_meta {
+    forward: "BigWig format file containing coverage calcualted from reads mapped to *forward* strand."
+    reverse: "BigWig format file containing coverage calcualted from reads mapped to *reverse* strand."
+    chrom_size: "Chromosome size file. Tab or space separated text file with 2 columns: first column contains chromosome name, second column contains chromosome size. Example:chr1 249250621 <NewLine> chr2        243199373 <NewLine> chr3        198022430 <NewLine> ..."
+    out_prefix: "Prefix of output files. NOTE: if 'prefix.border.bed' exists and was non-empty, peak calling step will be skipped! So if you want to rerun mace.py from scratch, use different 'prefix' or delete old 'prefix.border.bed' before starting."
+    p_value: "Pvalue cutoff for border detection and subsequent border pairing. default=0.05"
+    max_dist: "Maximum distance allowed for border pairing. default=100"
+    fz_window: "Peaks located closely within this window will be merged. default=5 (bp)"
+    bg_window: "Background window size used to determine background signal level. default=100 (bp)"
+    fold: "Minmum coverage signal used to build model (i.e. estimate optimal peak pair size). default=2.0"
+  }
 }

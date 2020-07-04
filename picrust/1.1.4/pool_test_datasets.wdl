@@ -2,14 +2,19 @@ version 1.0
 
 task PoolTestDatasets.py {
   input {
-    String traitTraitTableDir
-    String expExpTraitTableDir
-    String outputOutputDir
+    String? trait_table_dir
+    String? exp_trait_table_dir
+    String? output_dir
   }
   command <<<
     pool_test_datasets.py \
-      ~{if defined(traitTraitTableDir) then ("--trait_table_dir " +  '"' + traitTraitTableDir + '"') else ""} \
-      ~{if defined(expExpTraitTableDir) then ("--exp_trait_table_dir " +  '"' + expExpTraitTableDir + '"') else ""} \
-      ~{if defined(outputOutputDir) then ("--output_dir " +  '"' + outputOutputDir + '"') else ""}
+      ~{if defined(trait_table_dir) then ("--trait_table_dir " +  '"' + trait_table_dir + '"') else ""} \
+      ~{if defined(exp_trait_table_dir) then ("--exp_trait_table_dir " +  '"' + exp_trait_table_dir + '"') else ""} \
+      ~{if defined(output_dir) then ("--output_dir " +  '"' + output_dir + '"') else ""}
   >>>
+  parameter_meta {
+    trait_table_dir: "the input trait table directory (files in biom format) [REQUIRED]"
+    exp_trait_table_dir: "the input expected trait table directory (files in biom format) [REQUIRED]"
+    output_dir: "the output directory [REQUIRED]"
+  }
 }

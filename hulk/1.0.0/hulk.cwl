@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hulk.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hulk.cwl
 inputs:
 - id: km_er_size
   doc: minimizer k-mer length (default 21)
@@ -12,7 +12,7 @@ inputs:
   inputBinding:
     prefix: --log
 - id: outfile
-  doc: directory and basename for saving the outfile(s) (default "./hulk-20200428124313")
+  doc: directory and basename for saving the outfile(s) (default "./hulk-20200619040844")
   type: string
   inputBinding:
     prefix: --outFile

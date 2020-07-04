@@ -1,22 +1,22 @@
 class: CommandLineTool
-id: UpdHunter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/UpdHunter.cwl
 inputs:
 - id: in
   doc: Input VCF file of trio.
   type: File
   inputBinding:
     prefix: -in
-- id: c
+- id: header_name_child
   doc: Header name of child.
   type: string
   inputBinding:
     prefix: -c
-- id: f
+- id: header_name_father
   doc: Header name of father.
   type: string
   inputBinding:
     prefix: -f
-- id: m
+- id: header_name_mother
   doc: Header name of mother.
   type: string
   inputBinding:

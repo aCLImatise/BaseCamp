@@ -1,18 +1,18 @@
 class: CommandLineTool
-id: tarchive2ca.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tarchive2ca.cwl
 inputs:
-- id: o
+- id: prefix_output_files
   doc: prefix for the output files
   type: string
   inputBinding:
     prefix: -o
-- id: c
+- id: file_containing_ranges
   doc: file containing clear ranges for the reads.  If this file is provided, any
     sequence that does not appear in it is excluded from the output.
   type: string
   inputBinding:
     prefix: -c
-- id: l
+- id: tabdelimited_file_libid
   doc: tab-delimited file of lib_id, mean, stdev
   type: string
   inputBinding:

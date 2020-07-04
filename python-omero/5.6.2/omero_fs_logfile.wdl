@@ -2,14 +2,19 @@ version 1.0
 
 task OmeroFsLogfile {
   input {
-    Boolean nameName
-    Boolean sizeSize
-    File? filenameFilename
+    Boolean? name
+    Boolean? size
+    File filename
   }
   command <<<
     omero fs logfile \
-      ~{filenameFilename} \
-      ~{true="--name" false="" nameName} \
-      ~{true="--size" false="" sizeSize}
+      ~{filename} \
+      ~{true="--name" false="" name} \
+      ~{true="--size" false="" size}
   >>>
+  parameter_meta {
+    name: "return the path of the logfile within the ManagedRepository"
+    size: "return the size of the logfile in bytes"
+    filename: "Local filename to be saved to. '-' for stdout"
+  }
 }

@@ -2,16 +2,22 @@ version 1.0
 
 task PdbParse.pl {
   input {
-    String? pdbPdbFile
-    String? stoStoFile
-    String? rsRsCapeBin
-    String? gnuplotGnuplotDir
+    String pdb_file
+    String sto_file
+    String rs_cape_bin
+    String gnuplot_dir
   }
   command <<<
     pdb_parse.pl \
-      ~{pdbPdbFile} \
-      ~{stoStoFile} \
-      ~{rsRsCapeBin} \
-      ~{gnuplotGnuplotDir}
+      ~{pdb_file} \
+      ~{sto_file} \
+      ~{rs_cape_bin} \
+      ~{gnuplot_dir}
   >>>
+  parameter_meta {
+    pdb_file: ""
+    sto_file: ""
+    rs_cape_bin: ""
+    gnuplot_dir: ""
+  }
 }

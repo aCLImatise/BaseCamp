@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pKiss_subopt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pKiss_subopt.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

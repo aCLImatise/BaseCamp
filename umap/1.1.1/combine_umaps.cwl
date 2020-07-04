@@ -1,17 +1,6 @@
 class: CommandLineTool
-id: combine_umaps.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/combine_umaps.py.cwl
 inputs:
-- id: km_er_dir
-  doc: Directory with subfolders named as k<read length>)
-  type: string
-  inputBinding:
-    position: 0
-- id: chr_size_path
-  doc: Path to 2 column tsv file with first column as chromosome and second column
-    as its size. Will be used to identify order of the chromosomes.
-  type: string
-  inputBinding:
-    position: 1
 - id: out_dir
   doc: If not specified, a subfolder will be created in kmer_dir names as globalmap_k<smallestkmer>tok<largestkmer>
   type: string
@@ -30,11 +19,22 @@ inputs:
   type: string
   inputBinding:
     prefix: -var_id
-- id: km_er_dir_2
+- id: km_er_dir_two
   doc: Specify to merge kmers of two different directories by logical operation AND.
   type: string
   inputBinding:
     prefix: -kmer_dir_2
+- id: km_er_dir
+  doc: Directory with subfolders named as k<read length>)
+  type: string
+  inputBinding:
+    position: 0
+- id: chr_size_path
+  doc: Path to 2 column tsv file with first column as chromosome and second column
+    as its size. Will be used to identify order of the chromosomes.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

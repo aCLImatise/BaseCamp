@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: plot.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/plot.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

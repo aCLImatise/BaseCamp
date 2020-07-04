@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: erne_bs5.cwl
+id: ../../../../home/ubuntu/BiocondaCli/erne_bs5.cwl
 inputs:
 - id: reference
   doc: reference file to use (in our format and with  .ebm extension). [REQUIRED]
   type: string
   inputBinding:
     prefix: --reference
-- id: query_1
+- id: query_one
   doc: query1 file (can be compressed with gzip or  bzip2, or a pipe) [REQUIRED]
   type: string
   inputBinding:
     prefix: --query1
-- id: query_2
+- id: query_two
   doc: optional query2 file (can be compressed with  gzip or bzip2, or a pipe)
   type: string
   inputBinding:
@@ -151,7 +151,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --seed-errors
-- id: q
+- id: mismatch_inserted_seed
   doc: 'Mismatch are inserted in the seed only in  positions where base quality <
     q. Default: 15.  With value 0 quality values are ignored.'
   type: string

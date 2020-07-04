@@ -1,129 +1,118 @@
 class: CommandLineTool
-id: ceqlogo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ceqlogo.cwl
 inputs:
-- id: i
-  doc: Loads motifs within the file as specified by the following -m options.
+- id: loads_motif_file
+  doc: Loads a motif from the file specified by the previous -i option. The motif
+    ID or position can be used.
   type: string
   inputBinding:
-    prefix: -i
-- id: i
-  doc: <id/n> <input filename>  Loads the specified motif (n-th position or ID) within
-    the file. Can also be combined with the -m option.
-  type: boolean
-  inputBinding:
-    prefix: -i
-- id: m
-  doc: <id/n>                  Loads a motif from the file specified by the previous
-    -i option. The motif ID or position can be used.
-  type: boolean
-  inputBinding:
     prefix: -m
-- id: n
+- id: number_samples_previously
   doc: Number of samples for previously loaded motif (-m or -i).
   type: string
   inputBinding:
     prefix: -n
-- id: s
+- id: shift_previously_loaded
   doc: Shift for previously loaded motif (-m or -i).
   type: string
   inputBinding:
     prefix: -s
-- id: r
+- id: reverse_complement_previously
   doc: Reverse complement previously loaded motif (-m or -i).
   type: boolean
   inputBinding:
     prefix: -r
-- id: p
+- id: pseudocounts_loaded_motifs
   doc: 'Pseudocounts for loaded motifs; default: 0.'
   type: string
   inputBinding:
     prefix: -p
-- id: l
+- id: prefentially_lookup_motifs
   doc: 'Prefentially lookup motifs by position; default: prefer the ID.'
   type: boolean
   inputBinding:
     prefix: -l
-- id: o
+- id: output_file_path
   doc: Output file path. Default is stdout.
   type: string
   inputBinding:
     prefix: -o
-- id: f
+- id: format_png_eps
   doc: 'Format of output (EPS, PNG); default: EPS'
   type: string
   inputBinding:
     prefix: -f
-- id: h
+- id: height_output_real
   doc: 'Height of output logo in cm (real # > 0).'
   type: string
   inputBinding:
     prefix: -h
-- id: w
+- id: width_output_logo
   doc: 'Width of output logo in cm (real # > 0).'
   type: string
   inputBinding:
     prefix: -w
-- id: t
+- id: label_for_title
   doc: Label for title.
   type: string
   inputBinding:
     prefix: -t
-- id: d
+- id: descriptive_fine_print
   doc: Descriptive fine print.
   type: string
   inputBinding:
     prefix: -d
-- id: x
+- id: label_for_xaxis
   doc: Label for x-axis.
   type: string
   inputBinding:
     prefix: -x
-- id: y
+- id: label_yaxis_default
   doc: 'Label for y-axis; default: "bits".'
   type: string
   inputBinding:
     prefix: -y
-- id: c
+- id: number_bits_tic
   doc: Number of bits between tic marks.
   type: string
   inputBinding:
     prefix: -c
-- id: e
+- id: fraction_show_real
   doc: 'Fraction of error bar to show (real # > 0).'
   type: string
   inputBinding:
     prefix: -e
-- id: s
+- id: turn_small_sample
   doc: '...................   Turn on small sample correction.'
   type: boolean
   inputBinding:
     prefix: -S
-- id: b
+- id: turn_bar_ends
   doc: '...................   Turn on bar ends.'
   type: boolean
   inputBinding:
     prefix: -B
-- id: e
+- id: turn_error_bars
   doc: '...................   Turn on error bars.'
   type: boolean
   inputBinding:
     prefix: -E
-- id: o
+- id: turn_outlining_characters
   doc: '...................   Turn on outlining of characters.'
   type: boolean
   inputBinding:
     prefix: -O
-- id: x
+- id: turn_boxing_characters
   doc: '...................   Turn on boxing of characters  '
   type: boolean
   inputBinding:
     prefix: -X
-- id: n
+- id: turn_numbering_xaxis
   doc: '...................   Turn off numbering of x-axis.'
   type: boolean
   inputBinding:
     prefix: -N
-- id: y
+- id: _turn_yaxis
   doc: '...................   Turn off y-axis '
   type: boolean
   inputBinding:

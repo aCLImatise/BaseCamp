@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pyomo_ns.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyomo_ns.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

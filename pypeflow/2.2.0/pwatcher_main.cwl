@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pwatcher_main.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pwatcher_main.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

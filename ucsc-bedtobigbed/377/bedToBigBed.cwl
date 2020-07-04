@@ -1,24 +1,9 @@
 class: CommandLineTool
-id: bedToBigBed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedToBigBed.cwl
 inputs:
-- id: in_bed
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: chrom_sizes
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: out_bb
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: sizes_is2bit
-  doc: ', the chrom.sizes file is assumed to be a 2bit file.'
-  type: string
+- id: sizes_is_two_bit
+  doc: -- If set, the chrom.sizes file is assumed to be a 2bit file.
+  type: boolean
   inputBinding:
     prefix: -sizesIs2Bit
 - id: udc_dir
@@ -26,6 +11,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -udcDir
+- id: in_dot_bed
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: chrom_dot_sizes
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: out_dot_bb
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

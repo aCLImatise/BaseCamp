@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: lorma.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lorma.sh.cwl
 inputs:
-- id: s
+- id: sequence_data_intermediate
   doc: the sequence data of intermediate LoRDEC steps
   type: string
   inputBinding:
     prefix: -s
-- id: n
+- id: lordec_steps
   doc: LoRDEC steps
   type: string
   inputBinding:

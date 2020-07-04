@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bxcl_seqqc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bxcl_seqqc.cwl
 inputs:
 - id: files
   doc: F1    Pair of input FastQ files.
@@ -45,6 +45,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --printconfig
+- id: fone
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

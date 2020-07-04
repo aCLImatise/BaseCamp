@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: abiview.cwl
+id: ../../../../home/ubuntu/BiocondaCli/abiview.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

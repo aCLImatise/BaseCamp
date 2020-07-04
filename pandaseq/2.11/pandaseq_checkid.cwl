@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pandaseq_checkid.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pandaseq_checkid.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

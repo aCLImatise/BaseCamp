@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Digestor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Digestor.cwl
 inputs:
 - id: in
   doc: "*                  Input file (valid formats: 'fasta')"
@@ -35,29 +35,15 @@ inputs:
 - id: enzyme
   doc: "The type of digestion enzyme (default: 'Trypsin' valid: 'Arg-C', 'Arg-C/P',\
     \ 'Asp-N', 'proline endopeptidase', 'glutamyl endopeptidase', 'proline-endopeptidase/HKR',\
-    \ 'Glu-C+P',  'PepsinA + P', 'cyanogen-bromide', 'Clostripain/P', 'Asp-N/B', 'Asp-N_ambic',\
+    \ 'Glu-C+P', 'PepsinA + P', 'cyanogen-bromide', 'Clostripain/P', 'Asp-N/B', 'Asp-N_ambic',\
     \ 'Chymotrypsin', 'Chymotrypsin/P', 'CNBr', 'Formic_acid', 'Lys-C', 'Lys-N', 'Lys-C/P',\
-    \ 'PepsinA', 'Try pChymo', 'Trypsin/P', 'V8-DE', 'V8-E', 'leukocyte elastase',\
+    \ 'PepsinA', 'TrypChymo', 'Trypsin/P', 'V8-DE', 'V8-E', 'leukocyte elastase',\
     \ 'elastase-trypsin-chymotrypsin', 'no cleavage', 'unspecific cleavage', 'Alpha-lytic\
-    \ protease', '2-iodobenzoate', 'iodo sobenzoate', 'staphylococcal protease/D',\
+    \ protease', '2-iodobenzoate', 'iodosobenzoate', 'staphylococcal protease/D',\
     \ 'Trypsin')"
   type: string
   inputBinding:
     prefix: -enzyme
-- id: fast_a
-  doc: ":ID <option>           Identifier to use for each peptide: copy from parent\
-    \ protein (parent); a consecutive number (number); parent ID + consecutive number\
-    \ (both) (default: 'parent' valid: 'parent',  'number', 'both')"
-  type: boolean
-  inputBinding:
-    prefix: -FASTA
-- id: fast_a
-  doc: ":description <option>  Keep or remove the (possibly lengthy) FASTA header\
-    \ description. Keeping it can increase resulting FASTA file significantly. (default:\
-    \ 'remove' valid: 'remove', 'keep')"
-  type: boolean
-  inputBinding:
-    prefix: -FASTA
 - id: ini
   doc: Use the given TOPP INI file
   type: File

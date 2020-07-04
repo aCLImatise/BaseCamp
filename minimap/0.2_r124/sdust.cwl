@@ -1,31 +1,21 @@
 class: CommandLineTool
-id: sdust.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sdust.cwl
 inputs:
-- id: '64'
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: '20'
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: in_fa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: w
   doc: ''
-  type: boolean
+  type: string
   inputBinding:
     prefix: -w
 - id: t
   doc: ''
-  type: boolean
+  type: string
   inputBinding:
     prefix: -t
+- id: in_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

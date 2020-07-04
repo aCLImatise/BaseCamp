@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: nucmer_backbone.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nucmer_backbone.pl.cwl
 inputs:
-- id: a
+- id: number_genomes_section
   doc: number of genomes from which a section can be [A]bsent and still be included
     as core genome (default 0)
   type: boolean
   inputBinding:
     prefix: -a
-- id: r
+- id: genome_used_eference
   doc: genome used as [R]eference for generating backbone fragment list with 1 being
     the first genome entered, 2 being the second, etc. (default is first genome entered,
     but you may try several runs altering this number as number and length of backbone
@@ -15,7 +15,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -r
-- id: g
+- id: list_enomes_created
   doc: 'list of [G]enomes from which backbone should be created, separated by commas
     with no spaces between. Order of the list will determine priority in producing
     core genome. Genome given by -r will be given first priorty, with all other genomes
@@ -28,7 +28,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -g
-- id: x
+- id: file_listing_ids
   doc: 'file listing all cds locus ids in the format: genome order number<tab>locus
     id<tab>contig_id<tab>start coord<tab>end coord<tab>strand<tab>product (optional)
     (one entry per line) example: 1       gen1_00001      contig1 456     2176    +   exoU
@@ -39,62 +39,72 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -x
-- id: m
+- id: aximum_distance_backbone
   doc: "[M]aximum distance between backbone fragments. Distances less than this parameter\
     \ between adjacent fragments will result in combination of fragments with interspersed\
     \ N's (default 10)"
   type: boolean
   inputBinding:
     prefix: -m
-- id: b
+- id: minimum_ackbone_size
   doc: minimum [B]ackbone size to be output (default 10)
   type: boolean
   inputBinding:
     prefix: -B
-- id: i
+- id: minimum_sland_size
   doc: minimum [I]sland size to be output (default 10)
   type: boolean
   inputBinding:
     prefix: -I
-- id: s
+- id: prefix_output_files
   doc: prefix of output files (default "output")
   type: boolean
   inputBinding:
     prefix: -s
-- id: o
+- id: given_will_output
   doc: 'if given, will output coordinates of core and accessory genome segments for
     each genome. Takes longer (default: only output backbone files)'
   type: boolean
   inputBinding:
     prefix: -o
-- id: e
+- id: output_file_used
   doc: Output file of position values that can be used to calculate pangenome and
     core genome characteristics of the data set using core_and_pangenome.pl. If selected,
     will automatically trigger -o option.
   type: boolean
   inputBinding:
     prefix: -e
-- id: n
+- id: output_pangenome_sequence
   doc: Output a pangenome sequence from all input genomes. This sequence will be generated
     from sequences in the order given or from the order given to -g and -r above.
   type: boolean
   inputBinding:
     prefix: -n
-- id: t
+- id: number_threads_default
   doc: Number of threads (default 15)
   type: boolean
   inputBinding:
     prefix: -t
-- id: v
+- id: verbose_output
   doc: verbose output
   type: boolean
   inputBinding:
     prefix: -v
-- id: v
+- id: uppercase_output_version
   doc: '(uppercase)    Output version number and quit.        '
   type: boolean
   inputBinding:
     prefix: -V
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -OPTIONS
+- id: more_options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -MORE_OPTIONS
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: pairtools_split.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pairtools_split.cwl
 inputs:
-- id: from
-  doc: stdin.
-  type: string
-  inputBinding:
-    position: 0
 - id: output_pairs
   doc: output pairs file. If the path ends with .gz or .lz4, the output is pbgzip-/lz4c-compressed.
     If -, pairs are printed to stdout. If not specified, pairs are dropped.
@@ -45,6 +40,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --cmd-out
+- id: from
+  doc: stdin.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

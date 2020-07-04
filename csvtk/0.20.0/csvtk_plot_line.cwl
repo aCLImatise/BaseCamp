@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csvtk_plot_line.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csvtk_plot_line.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: color_index
   doc: color index, 1-7 (default 1)
   type: long
@@ -197,6 +192,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --ylab
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

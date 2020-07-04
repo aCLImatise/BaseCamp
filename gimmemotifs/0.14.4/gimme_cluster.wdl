@@ -2,18 +2,28 @@ version 1.0
 
 task GimmeCluster {
   input {
-    Boolean sS
-    String tT
-    Int nNThreads
-    String? inputInputFile
-    String? outdirOutdir
+    Boolean? compare_reverse_complements
+    String? cluster_threshold
+    Int? n_threads
+    Boolean? h
+    String input_file
+    String outdir
   }
   command <<<
     gimme cluster \
-      ~{inputInputFile} \
-      ~{true="-s" false="" sS} \
-      ~{if defined(tT) then ("-t " +  '"' + tT + '"') else ""} \
-      ~{if defined(nNThreads) then ("--nthreads " +  '"' + nNThreads + '"') else ""} \
-      ~{outdirOutdir}
+      ~{input_file} \
+      ~{outdir} \
+      ~{true="-s" false="" compare_reverse_complements} \
+      ~{if defined(cluster_threshold) then ("-t " +  '"' + cluster_threshold + '"') else ""} \
+      ~{if defined(n_threads) then ("--nthreads " +  '"' + n_threads + '"') else ""} \
+      ~{true="-h" false="" h}
   >>>
+  parameter_meta {
+    compare_reverse_complements: "Don't compare reverse complements of motifs"
+    cluster_threshold: "Cluster threshold"
+    n_threads: "Number of threads (default 12)"
+    h: ""
+    input_file: "Inputfile (PFM format)"
+    outdir: "Name of output directory"
+  }
 }

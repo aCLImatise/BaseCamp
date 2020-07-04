@@ -1,6 +1,21 @@
 class: CommandLineTool
-id: bolt_fastq_split.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bolt_fastq_split.cwl
 inputs:
+- id: file_path
+  doc: Input FASTQ file (*require)
+  type: string
+  inputBinding:
+    prefix: --filepath
+- id: fq
+  doc: Output FASTQ1 file (*require)
+  type: string
+  inputBinding:
+    prefix: --fq
+- id: fq_two
+  doc: Output FASTQ2 file (*require)
+  type: string
+  inputBinding:
+    prefix: --fq2
 - id: genie
   doc: ''
   type: string
@@ -21,21 +36,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: file_path
-  doc: Input FASTQ file (*require)
-  type: string
-  inputBinding:
-    prefix: --filepath
-- id: fq
-  doc: Output FASTQ1 file (*require)
-  type: string
-  inputBinding:
-    prefix: --fq
-- id: fq2
-  doc: Output FASTQ2 file (*require)
-  type: string
-  inputBinding:
-    prefix: --fq2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

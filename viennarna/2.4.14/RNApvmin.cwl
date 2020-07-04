@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: RNApvmin.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNApvmin.cwl
 inputs:
-- id: file_shape
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: detailed_help
   doc: Print help, including all details and hidden options, and exit
   type: boolean
@@ -16,18 +11,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --full-help
-- id: num_threads
-  doc: Set the number of threads used for calculations (only available when compiled
-    with OpenMP support)
-  type: long
-  inputBinding:
-    prefix: --numThreads
-- id: shape_conversion
-  doc: /C/S/L/O  + [optional parameters] Specify the method used to convert SHAPE
-    reactivities to pairing probabilities. (default=`O')
-  type: string
-  inputBinding:
-    prefix: --shapeConversion
 - id: tau_sigma_ratio
   doc: Ratio of the weighting factors tau and sigma. (default=`1.0')
   type: string
@@ -79,6 +62,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --minimizer
+- id: temp
+  doc: Rescale energy parameters to a temperature of temp C. Default is 37C.
+  type: string
+  inputBinding:
+    prefix: --temp
+- id: no_tetra
+  doc: Do not include special tabulated stabilizing energies for tri-, tetra- and
+    hexaloop hairpins. Mostly for testing. (default=off)
+  type: boolean
+  inputBinding:
+    prefix: --noTetra
 - id: dangles
   doc: How to treat "dangling end" energies for bases adjacent to helices in free
     ends and multi-loops (default=`2')
@@ -111,6 +105,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --maxBPspan
+- id: file_dot_shape
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

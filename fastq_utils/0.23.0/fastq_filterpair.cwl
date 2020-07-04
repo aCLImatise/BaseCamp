@@ -1,27 +1,27 @@
 class: CommandLineTool
-id: fastq_filterpair.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq_filterpair.cwl
 inputs:
 - id: filter_pair
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: fastq1
+- id: fast_q_one
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: fastq2
+- id: fast_q_two
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: paired_1
+- id: paired_one
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: paired_2
+- id: paired_two
   doc: ''
   type: string
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: formatLongReads.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/formatLongReads.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

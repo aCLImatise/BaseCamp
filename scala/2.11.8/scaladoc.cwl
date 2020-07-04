@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: scaladoc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scaladoc.cwl
 inputs:
-- id: source_files
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: author
   doc: Include authors.
   type: boolean
@@ -167,6 +162,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -implicits-debug
+- id: source_files
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: enotify.cwl
+id: ../../../../home/ubuntu/BiocondaCli/enotify.cwl
 inputs:
 - id: email
   doc: Contact person's address

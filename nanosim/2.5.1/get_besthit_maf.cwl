@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_besthit_maf.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_besthit_maf.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

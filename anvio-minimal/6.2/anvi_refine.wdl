@@ -2,58 +2,85 @@ version 1.0
 
 task AnviRefine {
   input {
-    String profileProfileDb
-    String contigsContigsDb
-    String collectionCollectionName
-    String binBinId
-    File binBinIdsFile
-    String findFindFromSplitName
-    String treeTree
-    Boolean skipSkipHierarchicalClustering
-    Boolean loadLoadFullState
-    String additionalAdditionalView
-    String additionalAdditionalLayers
-    Boolean splitSplitHmmLayers
-    String taxonomicTaxonomicLevel
-    Boolean hideHideOutlierSnVs
-    String titleTitle
-    File exportExportSvg
-    Boolean dryDryRun
-    Boolean skipSkipInItFunctions
-    Boolean skipSkipAutoOrdering
-    String ipIpAddress
-    Int portPortNumber
-    File browserBrowserPath
-    Boolean readReadOnly
-    Boolean serverServerOnly
-    Boolean passwordPasswordProtected
+    String? profile_db
+    String? contigs_db
+    String? collection_name
+    String? bin_id
+    File? bin_ids_file
+    String? find_from_split_name
+    String? tree
+    Boolean? skip_hierarchical_clustering
+    Boolean? load_full_state
+    String? additional_view
+    String? additional_layers
+    Boolean? split_hmm_layers
+    String? taxonomic_level
+    Boolean? hide_outlier_sn_vs
+    String? title
+    File? export_svg
+    Boolean? dry_run
+    Boolean? skip_in_it_functions
+    Boolean? skip_auto_ordering
+    String? ip_address
+    Int? port_number
+    File? browser_path
+    Boolean? read_only
+    Boolean? server_only
+    Boolean? password_protected
   }
   command <<<
     anvi-refine \
-      ~{if defined(profileProfileDb) then ("--profile-db " +  '"' + profileProfileDb + '"') else ""} \
-      ~{if defined(contigsContigsDb) then ("--contigs-db " +  '"' + contigsContigsDb + '"') else ""} \
-      ~{if defined(collectionCollectionName) then ("--collection-name " +  '"' + collectionCollectionName + '"') else ""} \
-      ~{if defined(binBinId) then ("--bin-id " +  '"' + binBinId + '"') else ""} \
-      ~{if defined(binBinIdsFile) then ("--bin-ids-file " +  '"' + binBinIdsFile + '"') else ""} \
-      ~{if defined(findFindFromSplitName) then ("--find-from-split-name " +  '"' + findFindFromSplitName + '"') else ""} \
-      ~{if defined(treeTree) then ("--tree " +  '"' + treeTree + '"') else ""} \
-      ~{true="--skip-hierarchical-clustering" false="" skipSkipHierarchicalClustering} \
-      ~{true="--load-full-state" false="" loadLoadFullState} \
-      ~{if defined(additionalAdditionalView) then ("--additional-view " +  '"' + additionalAdditionalView + '"') else ""} \
-      ~{if defined(additionalAdditionalLayers) then ("--additional-layers " +  '"' + additionalAdditionalLayers + '"') else ""} \
-      ~{true="--split-hmm-layers" false="" splitSplitHmmLayers} \
-      ~{if defined(taxonomicTaxonomicLevel) then ("--taxonomic-level " +  '"' + taxonomicTaxonomicLevel + '"') else ""} \
-      ~{true="--hide-outlier-SNVs" false="" hideHideOutlierSnVs} \
-      ~{if defined(titleTitle) then ("--title " +  '"' + titleTitle + '"') else ""} \
-      ~{if defined(exportExportSvg) then ("--export-svg " +  '"' + exportExportSvg + '"') else ""} \
-      ~{true="--dry-run" false="" dryDryRun} \
-      ~{true="--skip-init-functions" false="" skipSkipInItFunctions} \
-      ~{true="--skip-auto-ordering" false="" skipSkipAutoOrdering} \
-      ~{if defined(ipIpAddress) then ("--ip-address " +  '"' + ipIpAddress + '"') else ""} \
-      ~{if defined(portPortNumber) then ("--port-number " +  '"' + portPortNumber + '"') else ""} \
-      ~{if defined(browserBrowserPath) then ("--browser-path " +  '"' + browserBrowserPath + '"') else ""} \
-      ~{true="--read-only" false="" readReadOnly} \
-      ~{true="--server-only" false="" serverServerOnly} \
-      ~{true="--password-protected" false="" passwordPasswordProtected}
+      ~{if defined(profile_db) then ("--profile-db " +  '"' + profile_db + '"') else ""} \
+      ~{if defined(contigs_db) then ("--contigs-db " +  '"' + contigs_db + '"') else ""} \
+      ~{if defined(collection_name) then ("--collection-name " +  '"' + collection_name + '"') else ""} \
+      ~{if defined(bin_id) then ("--bin-id " +  '"' + bin_id + '"') else ""} \
+      ~{if defined(bin_ids_file) then ("--bin-ids-file " +  '"' + bin_ids_file + '"') else ""} \
+      ~{if defined(find_from_split_name) then ("--find-from-split-name " +  '"' + find_from_split_name + '"') else ""} \
+      ~{if defined(tree) then ("--tree " +  '"' + tree + '"') else ""} \
+      ~{true="--skip-hierarchical-clustering" false="" skip_hierarchical_clustering} \
+      ~{true="--load-full-state" false="" load_full_state} \
+      ~{if defined(additional_view) then ("--additional-view " +  '"' + additional_view + '"') else ""} \
+      ~{if defined(additional_layers) then ("--additional-layers " +  '"' + additional_layers + '"') else ""} \
+      ~{true="--split-hmm-layers" false="" split_hmm_layers} \
+      ~{if defined(taxonomic_level) then ("--taxonomic-level " +  '"' + taxonomic_level + '"') else ""} \
+      ~{true="--hide-outlier-SNVs" false="" hide_outlier_sn_vs} \
+      ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
+      ~{if defined(export_svg) then ("--export-svg " +  '"' + export_svg + '"') else ""} \
+      ~{true="--dry-run" false="" dry_run} \
+      ~{true="--skip-init-functions" false="" skip_in_it_functions} \
+      ~{true="--skip-auto-ordering" false="" skip_auto_ordering} \
+      ~{if defined(ip_address) then ("--ip-address " +  '"' + ip_address + '"') else ""} \
+      ~{if defined(port_number) then ("--port-number " +  '"' + port_number + '"') else ""} \
+      ~{if defined(browser_path) then ("--browser-path " +  '"' + browser_path + '"') else ""} \
+      ~{true="--read-only" false="" read_only} \
+      ~{true="--server-only" false="" server_only} \
+      ~{true="--password-protected" false="" password_protected}
   >>>
+  parameter_meta {
+    profile_db: "Anvi'o profile database"
+    contigs_db: "Anvi'o contigs database generated by 'anvi-gen- contigs'"
+    collection_name: "Collection name."
+    bin_id: "Bin name you are interested in."
+    bin_ids_file: "Text file for bins (each line should be a unique bin id)."
+    find_from_split_name: "If you don't know the bin name you want to work with but if you know the split name it contains you can use this parameter to tell anvi'o the split name, and so it can find the bin for you automatically. This is something extremely difficult for anvi'o to do, but it does it anyway because you."
+    tree: "NEWICK formatted tree structure"
+    skip_hierarchical_clustering: "Skip hierarchical clustering for the splits in the refined bin, if you skip clustering you need to provide your own newick formatted tree using --tree parameter."
+    load_full_state: "Often the minimum and maximum values defined for the an entire profile database that contains all contigs do not scale well when you wish to work with a single bin in the refine mode. For this reason, the default behavior of anvi-refine is to ignore min/max values set in the default state. This flag is your way of telling anvi'o to not do that, and load the state stored in the profile database as is."
+    additional_view: "A TAB-delimited file for an additional view to be used in the interface. This file should contain all split names, and values for each of them in all samples. Each column in this file must correspond to a sample name. Content of this file will be called 'user_view', which will be available as a new item in the 'views' combo box in the interface"
+    additional_layers: "A TAB-delimited file for additional layers for splits. The first column of this file must be split names, and the remaining columns should be unique attributes. The file does not need to contain all split names, or values for each split in every column. Anvi'o will try to deal with missing data nicely. Each column in this file will be visualized as a new layer in the tree."
+    split_hmm_layers: "When declared, this flag tells the interface to split every gene found in HMM searches that were performed against non-singlecopy gene HMM profiles into their own layer. Please see the documentation for details."
+    taxonomic_level: "The taxonomic level to use whenever relevant and/or available. The default taxonomic level is t_genus, but if you choose something specific, anvi'o will focus on that whenever possible."
+    hide_outlier_sn_vs: "During profiling, anvi'o marks positions of single- nucleotide variations (SNVs) that originate from places in contigs where coverage values are a bit 'sketchy'. If you would like to avoid SNVs in those positions of splits in applicable projects you can use this flag, and the interface would hide SNVs that are marked as 'outlier' (although it is clearly the best to see everything, no one will judge you if you end up using this flag) (plus, there may or may not be some historical data on this here: https://github.com/meren/anvio/issues/309)."
+    title: "Title for the interface. If you are working with a RUNINFO dict, the title will be determined based on information stored in that file. Regardless, you can override that value using this parameter."
+    export_svg: "The SVG output file path."
+    dry_run: "Don't do anything real. Test everything, and stop right before wherever the developer said 'well, this is enough testing', and decided to print out results."
+    skip_in_it_functions: "When declared, function calls for genes will not be initialized (therefore will be missing from all relevant interfaces or output files). The use of this flag may reduce the memory fingerprint and processing time for large datasets."
+    skip_auto_ordering: "When declared, the attempt to include automatically generated orders of items based on additional data is skipped. In case those buggers cause issues with your data, and you still want to see your stuff and deal with the other issue maybe later."
+    ip_address: "IP address for the HTTP server. The default ip address (0.0.0.0) should work just fine for most."
+    port_number: "Port number to use for anvi'o services. If nothing is declared, anvi'o will try to find a suitable port number, starting from the default port number, 8080."
+    browser_path: "By default, anvi'o will use your default browser to launch the interactive interface. If you would like to use something else than your system default, you can provide a full path for an alternative browser using this parameter, and hope for the best. For instance we are using this parameter to call Google's experimental browser, Canary, which performs better with demanding visualizations."
+    read_only: "When the interactive interface is started with this flag, all 'database write' operations will be disabled."
+    server_only: "The default behavior is to start the local server, and fire up a browser that connects to the server. If you have other plans, and want to start the server without calling the browser, this is the flag you need."
+    password_protected: "If this flag is set, command line tool will ask you to enter a password and interactive interface will be only accessible after entering same password. This option is recommended for shared machines like clusters or shared networks where computers are not isolated."
+  }
 }

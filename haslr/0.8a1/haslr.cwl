@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: haslr.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/haslr.py.cwl
 inputs:
 - id: out
   doc: output directory

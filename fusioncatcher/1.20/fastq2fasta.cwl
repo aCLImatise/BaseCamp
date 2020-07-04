@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastq2fasta.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq2fasta.py.cwl
 inputs:
 - id: input
   doc: The input file in FASTQ format (Solexa).

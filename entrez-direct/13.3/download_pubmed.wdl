@@ -2,18 +2,13 @@ version 1.0
 
 task DownloadPubmed {
   input {
-    String? noNo
-    String? suchSuch
-    File? fileFile
-    String? orOr
-    Directory? directoryDirectory
+    String pubmed_slash_usage
   }
   command <<<
     download-pubmed \
-      ~{noNo} \
-      ~{suchSuch} \
-      ~{fileFile} \
-      ~{orOr} \
-      ~{directoryDirectory}
+      ~{pubmed_slash_usage}
   >>>
+  parameter_meta {
+    pubmed_slash_usage: ""
+  }
 }

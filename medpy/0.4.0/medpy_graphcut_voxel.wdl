@@ -1,27 +1,14 @@
 version 1.0
 
-task MedpyGraphcutVoxel.py {
+task MedpyGraphcutVoxel.pyOutput {
   input {
-    String boundaryBoundary
-    Boolean sS
-    Boolean fF
-    Boolean vV
-    Boolean dD
-    String? sigmaSigma
-    String? bBAdditional
-    String? markersMarkers
-    String? outputOutput
+    String me_dpy_graph_cut_voxel_do_tpy
   }
   command <<<
-    medpy_graphcut_voxel.py \
-      ~{sigmaSigma} \
-      ~{if defined(boundaryBoundary) then ("--boundary " +  '"' + boundaryBoundary + '"') else ""} \
-      ~{true="-s" false="" sS} \
-      ~{true="-f" false="" fF} \
-      ~{true="-v" false="" vV} \
-      ~{true="-d" false="" dD} \
-      ~{bBAdditional} \
-      ~{markersMarkers} \
-      ~{outputOutput}
+    medpy_graphcut_voxel.py output \
+      ~{me_dpy_graph_cut_voxel_do_tpy}
   >>>
+  parameter_meta {
+    me_dpy_graph_cut_voxel_do_tpy: ""
+  }
 }

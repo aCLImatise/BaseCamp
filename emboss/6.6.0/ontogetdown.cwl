@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ontogetdown.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ontogetdown.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

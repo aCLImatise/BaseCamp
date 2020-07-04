@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: pispino_seqprep.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pispino_seqprep.cwl
 inputs:
-- id: i
+- id: directory_raw_sequences
   doc: '[REQUIRED] Directory with raw sequences in gzipped FASTQ'
   type: string
   inputBinding:
     prefix: -i
-- id: o
+- id: directory_output_results
   doc: '[REQUIRED] Directory to output results'
   type: string
   inputBinding:
     prefix: -o
-- id: l
+- id: tap_separated_file
   doc: Tap separated file with three columns for sample ids, forward-read filename
     and reverse-read filename. Only the files listed in this file will be processed.
   type: File
@@ -34,7 +34,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --FASTX-n
-- id: b
+- id: base_phred_quality
   doc: 'Base PHRED quality score [default: 33]'
   type: long
   inputBinding:
@@ -52,17 +52,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --PEAR_options
-- id: r
+- id: retain_intermediate_files
   doc: Retain intermediate files (Beware intermediate files use excessive disk space!)
   type: boolean
   inputBinding:
     prefix: -r
-- id: v
+- id: verbose_mode
   doc: Verbose mode
   type: boolean
   inputBinding:
     prefix: -v
-- id: t
+- id: number_of_threads
   doc: 'Number of Threads [default: 1]'
   type: long
   inputBinding:

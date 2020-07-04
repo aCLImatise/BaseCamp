@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: RepeatScout.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RepeatScout.cwl
 inputs:
-- id: l
+- id: size_extend_left
   doc: '# size of region to extend left or right (10000) '
   type: boolean
   inputBinding:
@@ -73,11 +73,36 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -maxentropy
-- id: v
+- id: how_verbose_you
   doc: '[v[v[v]]] How verbose do you want it to be?  -vvvv is super-verbose.'
   type: boolean
   inputBinding:
     prefix: -v
+- id: sequence
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -sequence
+- id: output
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -output
+- id: freq
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -freq
+- id: var_18
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -l
+- id: opts
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

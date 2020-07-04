@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: NGSDMaintain.cwl
+id: ../../../../home/ubuntu/BiocondaCli/NGSDMaintain.cwl
 inputs:
 - id: out
   doc: "Output file. If unset, writes to STDOUT. Default value: ''"

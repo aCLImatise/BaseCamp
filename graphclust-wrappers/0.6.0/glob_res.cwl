@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: glob_res.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/glob_res.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

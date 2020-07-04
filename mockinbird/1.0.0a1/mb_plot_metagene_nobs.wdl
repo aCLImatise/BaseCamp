@@ -2,40 +2,46 @@ version 1.0
 
 task MbPlotMetageneNobs {
   input {
-    String downstreamDownstream
-    String upstreamUpstream
-    String geneGene
-    Int minMin
-    Int maxMax
-    String plotPlotSmooth
-    String labelLabelCenterA
-    String labelLabelBody
-    String labelLabelCenterB
-    String titleTitle
-    Boolean removeRemove
-    Boolean verboseVerbose
-    String? parParClip
-    String? outputOutputDir
-    String? prefixPrefix
-    String? gffGff
+    String? downstream
+    String? upstream
+    String? gene
+    Int? min
+    Int? max
+    String? plot_smooth
+    String? label_center_a
+    String? label_body
+    String? label_center_b
+    String? title
+    Boolean? remove
+    Boolean? verbose
   }
   command <<<
     mb-plot-metagene-nobs \
-      ~{parParClip} \
-      ~{if defined(downstreamDownstream) then ("--downstream " +  '"' + downstreamDownstream + '"') else ""} \
-      ~{if defined(upstreamUpstream) then ("--upstream " +  '"' + upstreamUpstream + '"') else ""} \
-      ~{if defined(geneGene) then ("--gene " +  '"' + geneGene + '"') else ""} \
-      ~{if defined(minMin) then ("--min " +  '"' + minMin + '"') else ""} \
-      ~{if defined(maxMax) then ("--max " +  '"' + maxMax + '"') else ""} \
-      ~{if defined(plotPlotSmooth) then ("--plotSmooth " +  '"' + plotPlotSmooth + '"') else ""} \
-      ~{if defined(labelLabelCenterA) then ("--labelCenterA " +  '"' + labelLabelCenterA + '"') else ""} \
-      ~{if defined(labelLabelBody) then ("--labelBody " +  '"' + labelLabelBody + '"') else ""} \
-      ~{if defined(labelLabelCenterB) then ("--labelCenterB " +  '"' + labelLabelCenterB + '"') else ""} \
-      ~{if defined(titleTitle) then ("--title " +  '"' + titleTitle + '"') else ""} \
-      ~{true="--remove" false="" removeRemove} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{outputOutputDir} \
-      ~{prefixPrefix} \
-      ~{gffGff}
+      ~{if defined(downstream) then ("--downstream " +  '"' + downstream + '"') else ""} \
+      ~{if defined(upstream) then ("--upstream " +  '"' + upstream + '"') else ""} \
+      ~{if defined(gene) then ("--gene " +  '"' + gene + '"') else ""} \
+      ~{if defined(min) then ("--min " +  '"' + min + '"') else ""} \
+      ~{if defined(max) then ("--max " +  '"' + max + '"') else ""} \
+      ~{if defined(plot_smooth) then ("--plotSmooth " +  '"' + plot_smooth + '"') else ""} \
+      ~{if defined(label_center_a) then ("--labelCenterA " +  '"' + label_center_a + '"') else ""} \
+      ~{if defined(label_body) then ("--labelBody " +  '"' + label_body + '"') else ""} \
+      ~{if defined(label_center_b) then ("--labelCenterB " +  '"' + label_center_b + '"') else ""} \
+      ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
+      ~{true="--remove" false="" remove} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    downstream: "set downstream range"
+    upstream: "set upstream range"
+    gene: "set gene range"
+    min: "minimum transcript size"
+    max: "maximum transcript size"
+    plot_smooth: "half of the window size used for the running mean"
+    label_center_a: "plot label for the first center position"
+    label_body: "for body (between A and B)"
+    label_center_b: "plot label for the second center position"
+    title: "plot title"
+    remove: "remove temporary files"
+    verbose: "verbose output"
+  }
 }

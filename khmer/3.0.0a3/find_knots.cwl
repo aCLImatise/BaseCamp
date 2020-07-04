@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: find_knots.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/find_knots.py.cwl
 inputs:
-- id: graph_base
-  doc: Basename for the input and output files.
-  type: string
-  inputBinding:
-    position: 0
 - id: info
   doc: print citation information
   type: boolean
@@ -42,6 +37,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --force
+- id: graph_base
+  doc: Basename for the input and output files.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

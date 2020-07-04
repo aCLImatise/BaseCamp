@@ -2,12 +2,16 @@ version 1.0
 
 task CramDump {
   input {
-    Boolean vV
-    File? filenameFilenameCram
+    Boolean? v
+    File filename_dot_cram
   }
   command <<<
     cram_dump \
-      ~{filenameFilenameCram} \
-      ~{true="-v" false="" vV}
+      ~{filename_dot_cram} \
+      ~{true="-v" false="" v}
   >>>
+  parameter_meta {
+    v: ""
+    filename_dot_cram: ""
+  }
 }

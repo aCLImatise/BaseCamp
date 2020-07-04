@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csvtk_version.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csvtk_version.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: check_update
   doc: check update
   type: boolean
@@ -81,6 +76,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tabs
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

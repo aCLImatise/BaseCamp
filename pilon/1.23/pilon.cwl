@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pilon.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pilon.cwl
 inputs:
 - id: genome
   doc: The input genome we are trying to improve, which must be the reference used
@@ -156,7 +156,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gapmargin
-- id: k
+- id: kmer_size_used
   doc: Kmer size used by internal assembler (default 47).
   type: boolean
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: normalizeScaffold.cwl
+id: ../../../../home/ubuntu/BiocondaCli/normalizeScaffold.cwl
 inputs:
 - id: bank_path
   doc: ''

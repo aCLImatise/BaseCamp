@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: TagReadWithGeneFunction.cwl
+id: ../../../../home/ubuntu/BiocondaCli/TagReadWithGeneFunction.cwl
 inputs:
-- id: m
+- id: default_g
   doc: (default 4g)
   type: string
   inputBinding:
     prefix: -m
-- id: v
+- id: final_command_line
   doc: final command line before executing
   type: string
   inputBinding:

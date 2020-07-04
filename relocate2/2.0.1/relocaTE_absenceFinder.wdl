@@ -1,11 +1,14 @@
 version 1.0
 
-task RelocaTEAbsenceFinder.pyAlignFileUsrTargetGenomePathTERegexFileExperFlankLenExistingTEMmAllowBowtie2LibSize {
+task RelocaTEAbsenceFinder.pyUsrTargetGenomePath {
   input {
-    String? bedBedTools
+    String te
   }
   command <<<
-    relocaTE_absenceFinder.py align_file usr_target genome_path TE regex_file exper flank_len existing_TE mm_allow bowtie2 lib_size \
-      ~{bedBedTools}
+    relocaTE_absenceFinder.py usr_target genome_path \
+      ~{te}
   >>>
+  parameter_meta {
+    te: "= sys.argv[4] ## repeat to analyze: ALL or mPing/other te name "
+  }
 }

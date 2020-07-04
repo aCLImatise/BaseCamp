@@ -2,14 +2,16 @@ version 1.0
 
 task FillAnAc {
   input {
-    String? optionsOptions
-    String? inInVcf
-    String? outOutVcf
+    String in_dot_vcf
+    String out_dot_vcf
   }
   command <<<
     fill-an-ac \
-      ~{optionsOptions} \
-      ~{inInVcf} \
-      ~{outOutVcf}
+      ~{in_dot_vcf} \
+      ~{out_dot_vcf}
   >>>
+  parameter_meta {
+    in_dot_vcf: ""
+    out_dot_vcf: ""
+  }
 }

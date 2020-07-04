@@ -1,11 +1,11 @@
 class: CommandLineTool
-id: pyprophet_statistics.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyprophet_statistics.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
+- id: in
+  doc: PyProphet input file.  [required]
+  type: File
   inputBinding:
-    position: 0
+    prefix: --in
 outputs: []
 cwlVersion: v1.1
 baseCommand:

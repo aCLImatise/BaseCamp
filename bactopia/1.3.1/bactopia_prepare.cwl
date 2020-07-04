@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: bactopia_prepare.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bactopia_prepare.py.cwl
 inputs:
-- id: bac_topia
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: prepare
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: str
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: e
   doc: ''
   type: string
@@ -31,6 +16,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --pattern
+- id: bac_topia
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: prepare
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: str
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

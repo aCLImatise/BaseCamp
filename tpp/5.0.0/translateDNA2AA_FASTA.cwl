@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: translateDNA2AA_FASTA.cwl
+id: ../../../../home/ubuntu/BiocondaCli/translateDNA2AA_FASTA.cwl
 inputs:
 - id: translate
-  doc: 'Input File:  -h'
+  doc: 'Input File:  --help'
   type: string
   inputBinding:
     position: 0

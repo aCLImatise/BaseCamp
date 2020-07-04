@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bar_chart.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bar_chart.py.cwl
 inputs:
 - id: agg
   doc: Two column input format, space seperated with value<space>key
@@ -36,6 +36,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --percentage
+- id: cat
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: data
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

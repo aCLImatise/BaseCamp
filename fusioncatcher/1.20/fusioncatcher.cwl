@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fusioncatcher.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fusioncatcher.py.cwl
 inputs:
 - id: input
   doc: 'The input file(s) or directory. The files should be in FASTQ or SRA format
@@ -73,7 +73,7 @@ inputs:
 - id: config
   doc: Configuration file containing the paths to external tools (e.g. Bowtie, Blat,
     fastq-dump.) in case that they are not specified in PATH variable! Default is
-    '/ tmp/tmpg5gctayr/etc/configuration.cfg,/tmp/tmpg5gctayr /bin/configuration.cfg'.
+    '/ tmp/tmpr7lyfvkf/etc/configuration.cfg,/tmp/tmpr7lyfvkf /bin/configuration.cfg'.
   type: string
   inputBinding:
     prefix: --config
@@ -116,7 +116,7 @@ inputs:
     \ aligners specified in the list of aligners specified in the configuration file\
     \ will be used (and the rest of aligner specified here will be ignored). In case\
     \ that the configuration file is not found then the following aligners from the\
-    \ list will be used. Default is '/tmp/tmpg5gctayr/etc/configuration.cfg,blat,star'."
+    \ list will be used. Default is '/tmp/tmpr7lyfvkf/etc/configuration.cfg,blat,star'."
   type: string
   inputBinding:
     prefix: --aligners
@@ -136,7 +136,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --skip-star
-- id: skip_conversion_grch37
+- id: skip_conversion_gr_ch_three_seven
   doc: If it is set then the fusion coordinates for human genome version GRCh38 (which
     is default) will NOT be reported also using version GRCh37/hg19. Default is 'False'.
   type: boolean

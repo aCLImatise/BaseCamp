@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bmaToLinks.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bmaToLinks.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

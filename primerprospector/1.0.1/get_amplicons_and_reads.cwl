@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_amplicons_and_reads.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_amplicons_and_reads.py.cwl
 inputs:
 - id: primer_hits
   doc: Target primer hits files.  Separate multiple files with a colon. [REQUIRED]

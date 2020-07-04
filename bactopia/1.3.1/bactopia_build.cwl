@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: bactopia_build.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bactopia_build.py.cwl
 inputs:
-- id: str
-  doc: Directory containing Conda environment files to build.
-  type: string
-  inputBinding:
-    position: 0
-- id: str
-  doc: Directory to install Conda environments to.
-  type: string
-  inputBinding:
-    position: 1
 - id: ext
   doc: 'Extension of the Conda environment files. Default: .yml'
   type: string
@@ -31,6 +21,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --silent
+- id: bac_topia
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: build
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

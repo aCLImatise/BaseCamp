@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tripaille_expression_delete_biomaterials.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tripaille_expression_delete_biomaterials.cwl
 inputs:
 - id: names
   doc: JSON list of biomaterial names to delete. (optional)

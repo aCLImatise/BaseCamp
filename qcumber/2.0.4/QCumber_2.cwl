@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: QCumber_2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/QCumber_2.cwl
 inputs:
 - id: threads
   doc: 'Number of threads. Default: 4'
@@ -18,13 +18,13 @@ inputs:
   type: string[]
   inputBinding:
     prefix: --input
-- id: read_1
-  doc: ', -1 R1     Read 1 file'
+- id: read_one
+  doc: Read 1 file
   type: string
   inputBinding:
     prefix: --read1
-- id: read_2
-  doc: ', -2 R2     Read 2 file'
+- id: read_two
+  doc: Read 2 file
   type: string
   inputBinding:
     prefix: --read2

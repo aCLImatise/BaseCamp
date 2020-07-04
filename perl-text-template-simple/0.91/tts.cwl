@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: tts.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tts.cwl
 inputs:
-- id: e
+- id: string_template_execute
   doc: String template to execute
   type: boolean
   inputBinding:
@@ -121,6 +121,56 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --compile-chkmt
+- id: you
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: have
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: to
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: either
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: var_28
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
+- id: a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 5
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 6
+- id: name
+  doc: ''
+  type: string
+  inputBinding:
+    position: 7
+- id: or
+  doc: ''
+  type: string
+  inputBinding:
+    position: 8
+- id: var_33
+  doc: ''
+  type: string
+  inputBinding:
+    position: 9
 outputs: []
 cwlVersion: v1.1
 baseCommand:

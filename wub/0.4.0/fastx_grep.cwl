@@ -1,32 +1,28 @@
 class: CommandLineTool
-id: fastx_grep.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastx_grep.py_output_fastx.cwl
 inputs:
-- id: input_fast_x
-  doc: 'Input file (default: stdin).'
-  type: string
-  inputBinding:
-    position: 0
-- id: output_fast_x
-  doc: 'Output file (default: stdout).'
-  type: string
-  inputBinding:
-    position: 1
 - id: i
-  doc: Input format (fastq).
+  doc: ''
   type: string
   inputBinding:
     prefix: -i
 - id: o
-  doc: Output format (fastq).
+  doc: ''
   type: string
   inputBinding:
     prefix: -o
 - id: n
-  doc: Comma separated list of read names to select.
+  doc: ''
   type: string
   inputBinding:
     prefix: -n
+- id: fast_x_grep_do_tpy
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - fastx_grep.py
+- output_fastx

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: run_type_CP.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_type_CP.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

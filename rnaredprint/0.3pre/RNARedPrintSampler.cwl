@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNARedPrintSampler.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNARedPrintSampler.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_import_taxonomy_for_layers.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_import_taxonomy_for_layers.cwl
 inputs:
 - id: profile_db
   doc: Anvi'o profile database
@@ -12,7 +12,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --parser
-- id: i
+- id: s_input_files
   doc: (S) [FILE(S) ...], --input-files FILE(S) [FILE(S) ...] Input file(s) for selected
     parser. Each parser (except "blank") requires input files to process that you
     generate before running anvio. Please see the documentation for details.

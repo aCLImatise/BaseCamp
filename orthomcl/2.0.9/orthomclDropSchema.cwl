@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: orthomclDropSchema.cwl
+id: ../../../../home/ubuntu/BiocondaCli/orthomclDropSchema.cwl
 inputs:
 - id: config_file
   doc: ''

@@ -1,31 +1,6 @@
 class: CommandLineTool
-id: bedtools_spacing.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedtools_spacing.cwl
 inputs:
-- id: chr1
-  doc: '0   10  . '
-  type: string
-  inputBinding:
-    position: 0
-- id: chr1
-  doc: '10  20  0 '
-  type: string
-  inputBinding:
-    position: 1
-- id: chr1
-  doc: '19  30  -1 '
-  type: string
-  inputBinding:
-    position: 2
-- id: chr1
-  doc: '35  45  5 '
-  type: string
-  inputBinding:
-    position: 3
-- id: chr1
-  doc: '100 200 55 '
-  type: string
-  inputBinding:
-    position: 4
 - id: bed
   doc: If using BAM input, write output as BED.
   type: boolean
@@ -52,6 +27,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -iobuf
+- id: i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
 outputs: []
 cwlVersion: v1.1
 baseCommand:

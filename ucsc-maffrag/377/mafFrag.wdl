@@ -2,24 +2,34 @@ version 1.0
 
 task MafFrag {
   input {
-    String outOutName
-    String? databaseDatabase
-    String? mafMafTrack
-    String? chromChrom
-    String? startStart
-    String? endEnd
-    String? strandStrand
-    String? outOutMaf
+    String? out_name
+    String database
+    String maf_track
+    String chrom
+    String start
+    String end
+    String strand
+    String out_dot_maf
   }
   command <<<
     mafFrag \
-      ~{databaseDatabase} \
-      ~{if defined(outOutName) then ("-outName " +  '"' + outOutName + '"') else ""} \
-      ~{mafMafTrack} \
-      ~{chromChrom} \
-      ~{startStart} \
-      ~{endEnd} \
-      ~{strandStrand} \
-      ~{outOutMaf}
+      ~{database} \
+      ~{maf_track} \
+      ~{chrom} \
+      ~{start} \
+      ~{end} \
+      ~{strand} \
+      ~{out_dot_maf} \
+      ~{if defined(out_name) then ("-outName " +  '"' + out_name + '"') else ""}
   >>>
+  parameter_meta {
+    out_name: "Use XXX instead of database.chrom for the name"
+    database: ""
+    maf_track: ""
+    chrom: ""
+    start: ""
+    end: ""
+    strand: ""
+    out_dot_maf: ""
+  }
 }

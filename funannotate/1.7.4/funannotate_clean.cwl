@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: funannotate_clean.cwl
+id: ../../../../home/ubuntu/BiocondaCli/funannotate_clean.cwl
 inputs:
-- id: arguments
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: input
   doc: Multi-fasta genome file (Required)
   type: boolean
@@ -36,6 +31,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --exhaustive
+- id: arguments
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,22 +1,22 @@
 class: CommandLineTool
-id: phd2afg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phd2afg.cwl
 inputs:
-- id: d
+- id: directory_where_located
   doc: directory where phd files are located
   type: string
   inputBinding:
     prefix: -d
-- id: o
+- id: name_output_file
   doc: name of the output file
   type: File
   inputBinding:
     prefix: -o
-- id: c
+- id: optional_file_containing_coordinates
   doc: 'optional: file containing clipping coordinates'
   type: File
   inputBinding:
     prefix: -c
-- id: m
+- id: optional_file_containing_info
   doc: 'optional: file containing mate-pair info in Bambus .mates format'
   type: File
   inputBinding:

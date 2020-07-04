@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: index_default_ssu_rrna_db.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/index_default_ssu_rrna_db.py.cwl
 inputs:
 - id: ref_dir
   doc: Output dir. Default is $MATAM_DIR/db/

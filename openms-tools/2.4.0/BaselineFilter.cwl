@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: BaselineFilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/BaselineFilter.cwl
 inputs:
 - id: in
   doc: "*                Input raw data file  (valid formats: 'mzML')"
@@ -26,7 +26,7 @@ inputs:
 - id: method
   doc: "The name of the morphological filter to be applied. If you are unsure, use\
     \ the default. (default: 'tophat' valid: 'identity', 'erosion', 'dilation', 'opening',\
-    \ 'closing', 'gradient' , 'tophat', 'bothat', 'erosion_simple', 'dilation_simple')"
+    \ 'closing', 'gradient', 'tophat', 'bothat', 'erosion_simple', 'dilation_simple')"
   type: string
   inputBinding:
     prefix: -method

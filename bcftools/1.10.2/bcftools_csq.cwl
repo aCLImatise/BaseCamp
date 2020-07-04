@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: bcftools_csq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcftools_csq.cwl
 inputs:
-- id: in_vcf
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: fast_a_ref
   doc: reference file in fasta format
   type: File
@@ -37,12 +32,12 @@ inputs:
   inputBinding:
     prefix: --ncsq
 - id: phase
-  doc: '<a|m|r|R|s>         how to handle unphased heterozygous genotypes: [r] a:
-    take GTs as is, create haplotypes regardless of phase (0/1 -> 0|1) m: merge *all*
-    GTs into a single haplotype (0/1 -> 1, 1/2 -> 1) r: require phased GTs, throw
-    an error on unphased het GTs R: create non-reference haplotypes if possible (0/1
-    -> 1|1, 1/2 -> 1|2) s: skip unphased hets'
-  type: boolean
+  doc: 'how to handle unphased heterozygous genotypes: [r] a: take GTs as is, create
+    haplotypes regardless of phase (0/1 -> 0|1) m: merge *all* GTs into a single haplotype
+    (0/1 -> 1, 1/2 -> 1) r: require phased GTs, throw an error on unphased het GTs
+    R: create non-reference haplotypes if possible (0/1 -> 1|1, 1/2 -> 1|2) s: skip
+    unphased hets'
+  type: string
   inputBinding:
     prefix: --phase
 - id: exclude
@@ -71,9 +66,9 @@ inputs:
   inputBinding:
     prefix: --output
 - id: output_type
-  doc: '<b|u|z|v|t>   b: compressed BCF, u: uncompressed BCF, z: compressed VCF v:
-    uncompressed VCF, t: plain tab-delimited text output [v]'
-  type: boolean
+  doc: 'b: compressed BCF, u: uncompressed BCF, z: compressed VCF v: uncompressed
+    VCF, t: plain tab-delimited text output [v]'
+  type: string
   inputBinding:
     prefix: --output-type
 - id: regions
@@ -117,6 +112,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --verbose
+- id: in_dot_vcf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

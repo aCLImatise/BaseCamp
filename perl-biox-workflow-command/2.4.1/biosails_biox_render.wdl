@@ -2,12 +2,16 @@ version 1.0
 
 task BiosailsBioxRender.py {
   input {
-    String tT
-    String jJ
+    String? template
+    String? json
   }
   command <<<
     biosails-biox-render.py \
-      ~{if defined(tT) then ("-t " +  '"' + tT + '"') else ""} \
-      ~{if defined(jJ) then ("-j " +  '"' + jJ + '"') else ""}
+      ~{if defined(template) then ("--template " +  '"' + template + '"') else ""} \
+      ~{if defined(json) then ("--json " +  '"' + json + '"') else ""}
   >>>
+  parameter_meta {
+    template: "Path to template file"
+    json: "Path to json object file"
+  }
 }

@@ -1,12 +1,24 @@
 class: CommandLineTool
-id: nanoraw_plot_most_significant.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nanoraw_plot_most_significant.cwl
 inputs:
-- id: fast5_based_irs
+- id: base_call_subgroups
+  doc: "FAST5 subgroup (under Analyses/[corrected-group]) where individual template\
+    \ and/or complement reads are stored. Default: ['BaseCalled_template']"
+  type: string[]
+  inputBinding:
+    prefix: --basecall-subgroups
+- id: two_d
+  doc: Input contains 2D reads. Equivalent to `--basecall- subgroups BaseCalled_template
+    BaseCalled_complement`
+  type: boolean
+  inputBinding:
+    prefix: --2d
+- id: fast_five_based_irs
   doc: Directories containing fast5 files.
   type: string[]
   inputBinding:
     prefix: --fast5-basedirs
-- id: fast5_based_irs2
+- id: fast_five_based_irs_two
   doc: Second set of directories containing fast5 files to compare.
   type: string[]
   inputBinding:

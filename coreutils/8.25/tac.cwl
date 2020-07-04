@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tac.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tac.cwl
 inputs:
 - id: before
   doc: the separator before instead of after
@@ -16,6 +16,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --separator
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

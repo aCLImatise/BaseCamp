@@ -1,31 +1,31 @@
 class: CommandLineTool
-id: filter_ref_list.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_ref_list.cwl
 inputs:
-- id: i
-  doc: ''
+- id: input
+  doc: 'specify SAM file to be analysed (default: STDIN)'
   type: string
   inputBinding:
-    prefix: -i
-- id: l
-  doc: ''
+    prefix: --input
+- id: list
+  doc: tab-separated CSV file with accession numbers in first column
   type: string
   inputBinding:
-    prefix: -l
+    prefix: --list
 - id: discard
-  doc: ''
+  doc: keep or discard entries passing the filter criteria?
   type: string
   inputBinding:
     prefix: --discard
-- id: v
-  doc: ''
+- id: verbose
+  doc: print additional information to STDERR
   type: boolean
   inputBinding:
-    prefix: -v
-- id: d
-  doc: ''
+    prefix: --verbose
+- id: debug
+  doc: print debug messages to STDERR
   type: boolean
   inputBinding:
-    prefix: -d
+    prefix: --debug
 outputs: []
 cwlVersion: v1.1
 baseCommand:

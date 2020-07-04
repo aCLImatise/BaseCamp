@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: featureCollapser.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/featureCollapser.py.cwl
 inputs:
-- id: p
+- id: threads_to_run
   doc: Threads to run
   type: string
   inputBinding:
@@ -26,7 +26,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --header
-- id: o
+- id: file_write_results
   doc: '[OUT], --out [OUT] The file to write results to. Leave blank for stdout,'
   type: boolean
   inputBinding:

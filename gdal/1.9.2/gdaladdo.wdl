@@ -2,22 +2,13 @@ version 1.0
 
 task Gdaladdo {
   input {
-    String configConfig
-    String configConfig
-    String configConfig
-    Int configConfig
-    String configConfig
-    String configConfig
-    Int configConfig
+    String? r
   }
   command <<<
     gdaladdo \
-      ~{if defined(configConfig) then ("--config " +  '"' + configConfig + '"') else ""} \
-      ~{if defined(configConfig) then ("--config " +  '"' + configConfig + '"') else ""} \
-      ~{if defined(configConfig) then ("--config " +  '"' + configConfig + '"') else ""} \
-      ~{if defined(configConfig) then ("--config " +  '"' + configConfig + '"') else ""} \
-      ~{if defined(configConfig) then ("--config " +  '"' + configConfig + '"') else ""} \
-      ~{if defined(configConfig) then ("--config " +  '"' + configConfig + '"') else ""} \
-      ~{if defined(configConfig) then ("--config " +  '"' + configConfig + '"') else ""}
+      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
+  parameter_meta {
+    r: ""
+  }
 }

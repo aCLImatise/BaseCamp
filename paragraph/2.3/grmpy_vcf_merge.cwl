@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: grmpy_vcf_merge.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/grmpy_vcf_merge.py.cwl
 inputs:
 - id: input
   doc: Input VCF file of variants.
@@ -36,6 +36,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
+- id: multi_grmpydotpy
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

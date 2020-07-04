@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hpc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hpc.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

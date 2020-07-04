@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pairtools_sort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pairtools_sort.cwl
 inputs:
 - id: output
   doc: output pairs file. If the path ends with .gz or .lz4, the output is compressed
@@ -55,6 +55,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --cmd-out
+- id: pairs_path
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hsp.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hsp.py.cwl
 inputs:
 - id: tree
   doc: The full reference tree in newick format containing both study sequences (i.e.
@@ -13,13 +13,12 @@ inputs:
   type: File
   inputBinding:
     prefix: --output
-- id: i
-  doc: '{16S,COG,EC,KO,PFAM,TIGRFAM,PHENO}, --in_trait {16S,COG,EC,KO,PFAM,TIGRFAM,PHENO}
-    Specifies which default trait table should be used. Use the --observed_trait_table
-    option to input a non- default trait table.'
-  type: boolean
+- id: in_trait
+  doc: Specifies which default trait table should be used. Use the --observed_trait_table
+    option to input a non- default trait table.
+  type: string
   inputBinding:
-    prefix: -i
+    prefix: --in_trait
 - id: observed_trait_table
   doc: The input trait table describing directly observed traits (e.g. sequenced genomes)
     in tab-delimited format. Necessary if you want to use a custom table.

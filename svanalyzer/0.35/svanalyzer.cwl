@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: svanalyzer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/svanalyzer.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: NBICseq_norm.pl_output.cwl
+id: ../../../../home/ubuntu/BiocondaCli/NBICseq_norm.pl.cwl
 inputs:
 - id: config_file
   doc: ''
@@ -15,4 +15,3 @@ outputs: []
 cwlVersion: v1.1
 baseCommand:
 - NBICseq-norm.pl
-- output

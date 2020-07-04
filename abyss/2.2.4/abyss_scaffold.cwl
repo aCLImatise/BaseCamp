@@ -1,27 +1,6 @@
 class: CommandLineTool
-id: abyss_scaffold.cwl
+id: ../../../../home/ubuntu/BiocondaCli/abyss_scaffold.cwl
 inputs:
-- id: fast_a
-  doc: contigs in FASTA format
-  type: string
-  inputBinding:
-    position: 0
-- id: overlap
-  doc: the contig overlap graph
-  type: string
-  inputBinding:
-    position: 1
-- id: dist
-  doc: estimates of the distance between contigs
-  type: string
-  inputBinding:
-    position: 2
-- id: s
-  doc: Find the value of n in [A,B] with step size S that maximizes the scaffold N50.
-    Default value for the step size is 1, if unspecified.
-  type: string
-  inputBinding:
-    position: 0
 - id: seed_length
   doc: minimum contig length [1000]
   type: string
@@ -112,6 +91,27 @@ inputs:
   type: string
   inputBinding:
     prefix: --species
+- id: fast_a
+  doc: contigs in FASTA format
+  type: string
+  inputBinding:
+    position: 0
+- id: overlap
+  doc: the contig overlap graph
+  type: string
+  inputBinding:
+    position: 1
+- id: dist
+  doc: estimates of the distance between contigs
+  type: string
+  inputBinding:
+    position: 2
+- id: find_value_n
+  doc: Find the value of n in [A,B] with step size S that maximizes the scaffold N50.
+    Default value for the step size is 1, if unspecified.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

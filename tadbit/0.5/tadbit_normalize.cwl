@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tadbit_normalize.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tadbit_normalize.cwl
 inputs:
 - id: workdir
   doc: path to working directory (generated with the tool tadbit mapper)
@@ -88,7 +88,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --fast_filter
-- id: b
+- id: pospos_extra_regions
   doc: ':POS1-POS2 [CHR:POS1-POS2 ...], --badcols CHR:POS1-POS2 [CHR:POS1-POS2 ...]
     extra regions to be added to bad-columns (ingenomic position). e.g.: --badcols
     1:150000000-160000000 2:1200000-1300000'

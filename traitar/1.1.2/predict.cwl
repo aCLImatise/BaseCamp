@@ -1,26 +1,36 @@
 class: CommandLineTool
-id: predict.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/predict.py.cwl
 inputs:
-- id: pt_models
-  doc: archive with the phenotype predictors
+- id: k
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -k
+- id: phenotypes
+  doc: ''
   type: string
   inputBinding:
     position: 0
-- id: out_dir
-  doc: directory for the phenotype predictions
+- id: from
+  doc: ''
   type: string
   inputBinding:
     position: 1
-- id: annotation_matrix
-  doc: summary file with pfams
+- id: hmmer
+  doc: ''
   type: string
   inputBinding:
     position: 2
-- id: voters
-  doc: use this number of voters for the classification
+- id: pfam
+  doc: ''
   type: string
   inputBinding:
-    prefix: --voters
+    position: 3
+- id: annotation
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

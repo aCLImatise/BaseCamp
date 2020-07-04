@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mendelscan_trio.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mendelscan_trio.cwl
 inputs:
 - id: vep_file
   doc: Variant annotation in VEP format
@@ -31,6 +31,26 @@ inputs:
   type: string
   inputBinding:
     prefix: --output-denovo
+- id: jar
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -jar
+- id: java
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: trio
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: vcf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

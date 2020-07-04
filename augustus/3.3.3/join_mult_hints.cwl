@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: join_mult_hints.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/join_mult_hints.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,10 +2,13 @@ version 1.0
 
 task JeDropseq {
   input {
-    String? jeJeDropSeq
+    File path_dot
   }
   command <<<
     je dropseq \
-      ~{jeJeDropSeq}
+      ~{path_dot}
   >>>
+  parameter_meta {
+    path_dot: "Required. "
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scanpy_find_variable_genes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scanpy_find_variable_genes.cwl
 inputs:
 - id: input_format
   doc: '[anndata|loom] Input object format.  [default: anndata]'
@@ -67,6 +67,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --by-batch
+- id: input_obj
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_obj
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

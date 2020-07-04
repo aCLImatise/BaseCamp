@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cameo_design.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cameo_design.cwl
 inputs:
 - id: output
   doc: Output filename. Multiple output files can be provided (pair with respective
@@ -59,6 +59,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --logging
+- id: product
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

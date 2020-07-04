@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: readCounter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/readCounter.cwl
 inputs:
-- id: bam_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: seg
   doc: Outputs in SEG format
   type: boolean
@@ -37,6 +32,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --build
+- id: bam_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

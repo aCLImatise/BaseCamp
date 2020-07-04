@@ -2,10 +2,13 @@ version 1.0
 
 task Intervene {
   input {
-    Boolean citeCite
+    Boolean? cite
   }
   command <<<
     intervene \
-      ~{true="--cite" false="" citeCite}
+      ~{true="--cite" false="" cite}
   >>>
+  parameter_meta {
+    cite: "show citation information and exit"
+  }
 }

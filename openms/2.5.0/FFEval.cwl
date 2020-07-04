@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FFEval.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FFEval.cwl
 inputs:
 - id: in
   doc: "*            Feature input file, which contains the data to be tested against\

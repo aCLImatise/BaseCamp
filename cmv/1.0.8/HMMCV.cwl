@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: HMMCV.cwl
+id: ../../../../home/ubuntu/BiocondaCli/HMMCV.cwl
 inputs:
 - id: numeric_version
   doc: Print just the version number

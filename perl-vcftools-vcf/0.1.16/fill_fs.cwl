@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: fill_fs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fill_fs.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: file_vcf
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
 - id: bed_mask
   doc: Regions to mask (tabix indexed), multiple files can be given
   type: File
@@ -27,10 +17,10 @@ inputs:
   inputBinding:
     prefix: --length
 - id: mask_char
-  doc: <char|lc>       The character to use or "lc" for lowercase. This option must
-    preceed -b, -v or -c in order to take effect. With multiple files works as a switch
-    on the command line, see the example below [N]
-  type: boolean
+  doc: The character to use or "lc" for lowercase. This option must preceed -b, -v
+    or -c in order to take effect. With multiple files works as a switch on the command
+    line, see the example below [N]
+  type: string
   inputBinding:
     prefix: --mask-char
 - id: refseq
@@ -44,6 +34,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --vcf-mask
+- id: file_dot_vcf
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

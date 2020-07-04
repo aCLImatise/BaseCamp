@@ -2,34 +2,49 @@ version 1.0
 
 task ScaterFilter.R {
   input {
-    String inputInputObjectFile
-    String subsetSubsetCellVariables
-    String lowLowCellThresholds
-    String highHighCellThresholds
-    String cellsCellsUse
-    String cellsCellsDiscard
-    String subsetSubsetFeatureVariables
-    String lowLowFeatureThresholds
-    String highHighFeatureThresholds
-    String featuresFeaturesUse
-    String outputOutputObjectFile
-    String outputOutputCellSelectFile
-    String outputOutputFeatureSelectFile
+    String? input_object_file
+    String? subset_cell_variables
+    String? low_cell_thresholds
+    String? high_cell_thresholds
+    String? cells_use
+    String? cells_discard
+    String? subset_feature_variables
+    String? low_feature_thresholds
+    String? high_feature_thresholds
+    String? features_use
+    String? output_object_file
+    String? output_cell_select_file
+    String? output_feature_select_file
   }
   command <<<
     scater-filter.R \
-      ~{if defined(inputInputObjectFile) then ("--input-object-file " +  '"' + inputInputObjectFile + '"') else ""} \
-      ~{if defined(subsetSubsetCellVariables) then ("--subset-cell-variables " +  '"' + subsetSubsetCellVariables + '"') else ""} \
-      ~{if defined(lowLowCellThresholds) then ("--low-cell-thresholds " +  '"' + lowLowCellThresholds + '"') else ""} \
-      ~{if defined(highHighCellThresholds) then ("--high-cell-thresholds " +  '"' + highHighCellThresholds + '"') else ""} \
-      ~{if defined(cellsCellsUse) then ("--cells-use " +  '"' + cellsCellsUse + '"') else ""} \
-      ~{if defined(cellsCellsDiscard) then ("--cells-discard " +  '"' + cellsCellsDiscard + '"') else ""} \
-      ~{if defined(subsetSubsetFeatureVariables) then ("--subset-feature-variables " +  '"' + subsetSubsetFeatureVariables + '"') else ""} \
-      ~{if defined(lowLowFeatureThresholds) then ("--low-feature-thresholds " +  '"' + lowLowFeatureThresholds + '"') else ""} \
-      ~{if defined(highHighFeatureThresholds) then ("--high-feature-thresholds " +  '"' + highHighFeatureThresholds + '"') else ""} \
-      ~{if defined(featuresFeaturesUse) then ("--features-use " +  '"' + featuresFeaturesUse + '"') else ""} \
-      ~{if defined(outputOutputObjectFile) then ("--output-object-file " +  '"' + outputOutputObjectFile + '"') else ""} \
-      ~{if defined(outputOutputCellSelectFile) then ("--output-cellselect-file " +  '"' + outputOutputCellSelectFile + '"') else ""} \
-      ~{if defined(outputOutputFeatureSelectFile) then ("--output-featureselect-file " +  '"' + outputOutputFeatureSelectFile + '"') else ""}
+      ~{if defined(input_object_file) then ("--input-object-file " +  '"' + input_object_file + '"') else ""} \
+      ~{if defined(subset_cell_variables) then ("--subset-cell-variables " +  '"' + subset_cell_variables + '"') else ""} \
+      ~{if defined(low_cell_thresholds) then ("--low-cell-thresholds " +  '"' + low_cell_thresholds + '"') else ""} \
+      ~{if defined(high_cell_thresholds) then ("--high-cell-thresholds " +  '"' + high_cell_thresholds + '"') else ""} \
+      ~{if defined(cells_use) then ("--cells-use " +  '"' + cells_use + '"') else ""} \
+      ~{if defined(cells_discard) then ("--cells-discard " +  '"' + cells_discard + '"') else ""} \
+      ~{if defined(subset_feature_variables) then ("--subset-feature-variables " +  '"' + subset_feature_variables + '"') else ""} \
+      ~{if defined(low_feature_thresholds) then ("--low-feature-thresholds " +  '"' + low_feature_thresholds + '"') else ""} \
+      ~{if defined(high_feature_thresholds) then ("--high-feature-thresholds " +  '"' + high_feature_thresholds + '"') else ""} \
+      ~{if defined(features_use) then ("--features-use " +  '"' + features_use + '"') else ""} \
+      ~{if defined(output_object_file) then ("--output-object-file " +  '"' + output_object_file + '"') else ""} \
+      ~{if defined(output_cell_select_file) then ("--output-cellselect-file " +  '"' + output_cell_select_file + '"') else ""} \
+      ~{if defined(output_feature_select_file) then ("--output-featureselect-file " +  '"' + output_feature_select_file + '"') else ""}
   >>>
+  parameter_meta {
+    input_object_file: "A serialized SingleCellExperiment object file in RDS format."
+    subset_cell_variables: "Comma-separated parameters to subset on. Any variable available in the colData of the supplied object."
+    low_cell_thresholds: "Comma-separated low cutoffs for the parameters (default is -Inf)."
+    high_cell_thresholds: "Comma-separated high cutoffs for the parameters (default is Inf)."
+    cells_use: "Comma-separated list of cell names to use as a subset. Alternatively, text file with one cell per line providing cell names to use as a subset."
+    cells_discard: "Comma-separated list of cell names to discard as a subset. Alternatively, text file with one cell per line providing cell names to discard as a subset."
+    subset_feature_variables: "Comma-separated parameters to subset on. Any variable available in the colData of the supplied object."
+    low_feature_thresholds: "Comma-separated low cutoffs for the parameters (default is -Inf)."
+    high_feature_thresholds: "Comma-separated high cutoffs for the parameters (default is Inf)."
+    features_use: "Comma-separated list of feature names to use as a subset. Alternatively, text file with one feature per line providing feature names to use as a subset."
+    output_object_file: "File name in which to store serialized R object of type 'Seurat'.'"
+    output_cell_select_file: "File name in which to store a matrix showing results of applying individual cell selection criteria."
+    output_feature_select_file: "File name in which to store a matrix showing results of applying individual feature selection criteria."
+  }
 }

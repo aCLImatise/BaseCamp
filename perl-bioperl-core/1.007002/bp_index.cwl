@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bp_index.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bp_index.pl.cwl
 inputs:
 - id: fmt
   doc: <format>   - Fasta (default), swiss or EMBL
@@ -12,12 +12,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -dir
-- id: dbm_file
-  doc: (overrides BIOPERL_INDEX_TYPE environment variable)
+- id: type
+  doc: '- DBM_file type.  (overrides BIOPERL_INDEX_TYPE environment variable)'
   type: string
   inputBinding:
-    prefix: '- DBM_file'
-- id: v
+    prefix: -type
+- id: report_index_addition
   doc: '- report every index addition (debugging)'
   type: boolean
   inputBinding:

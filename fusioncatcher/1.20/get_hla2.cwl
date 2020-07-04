@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_hla2.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_hla2.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the HLA sequences. Default is 'homo_sapiens'.

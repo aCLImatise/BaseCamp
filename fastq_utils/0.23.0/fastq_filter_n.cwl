@@ -1,21 +1,16 @@
 class: CommandLineTool
-id: fastq_filter_n.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq_filter_n.cwl
 inputs:
-- id: '0'
+- id: n
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -n
+- id: fast_q_one
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: fastq1
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: n
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -n
 outputs: []
 cwlVersion: v1.1
 baseCommand:

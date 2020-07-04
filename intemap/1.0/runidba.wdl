@@ -1,15 +1,20 @@
 version 1.0
 
-task Runidba.pyOutputpathdir {
+task Runidba.py {
   input {
-    String? paraParaFile
-    String? readfileReadfile
-    String? outputOutputPathDir
+    String para_file
+    String readfile
+    String output_path_dir
   }
   command <<<
-    runidba.py outputpathdir \
-      ~{paraParaFile} \
-      ~{readfileReadfile} \
-      ~{outputOutputPathDir}
+    runidba.py \
+      ~{para_file} \
+      ~{readfile} \
+      ~{output_path_dir}
   >>>
+  parameter_meta {
+    para_file: ""
+    readfile: ""
+    output_path_dir: ""
+  }
 }

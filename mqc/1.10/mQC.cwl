@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mQC.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mQC.pl.cwl
 inputs:
 - id: mapper
   doc: 'the mapper you used to generate the SAM file (STAR, TopHat2, HiSat2) (default:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hubCheck.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hubCheck.cwl
 inputs:
 - id: no_tracks
   doc: "- don't check remote files for tracks, just trackDb (faster)"
@@ -49,10 +49,15 @@ inputs:
   inputBinding:
     prefix: -cacheTime
 - id: verbose
-  doc: =2            - output verbosely
-  type: boolean
+  doc: '- output verbosely'
+  type: string
   inputBinding:
     prefix: -verbose
+- id: http
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

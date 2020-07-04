@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ReverseSatsumaOut.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ReverseSatsumaOut.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

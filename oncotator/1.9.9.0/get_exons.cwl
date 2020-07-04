@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: get_exons.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_exons.cwl
 inputs:
+- id: include_noncoding
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --includeNonCoding
+- id: padding
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --padding
 - id: input_gene_list_file
   doc: A simple file with a gene name (usually Hugo Symbol) on each line
   type: string

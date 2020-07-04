@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: getBamAvgChromDepth.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/getBamAvgChromDepth.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

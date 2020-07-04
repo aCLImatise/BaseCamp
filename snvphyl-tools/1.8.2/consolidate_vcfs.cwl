@@ -1,11 +1,16 @@
 class: CommandLineTool
-id: consolidate_vcfs.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/consolidate_vcfs.pl.cwl
 inputs:
 - id: snv_abundance_ratio
-  doc: 0.75 --bcftools-path /opt/bcftools/bcftools
-  type: boolean
+  doc: /opt/bcftools/bcftools
+  type: string
   inputBinding:
     prefix: --snv-abundance-ratio
+- id: vcf_split
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --vcfsplit
 outputs: []
 cwlVersion: v1.1
 baseCommand:

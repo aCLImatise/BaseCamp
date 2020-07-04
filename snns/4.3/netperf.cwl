@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: netperf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/netperf.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,10 +2,13 @@ version 1.0
 
 task Pyrosim {
   input {
-    String? fastFastA
+    String fast_a
   }
   command <<<
     pyrosim \
-      ~{fastFastA}
+      ~{fast_a}
   >>>
+  parameter_meta {
+    fast_a: ""
+  }
 }

@@ -1,22 +1,12 @@
 class: CommandLineTool
-id: fetch_mrh_data.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fetch_mrh_data.cwl
 inputs:
-- id: heat_map
-  doc: The name of a HiFive multi-resolution heatmap file to construct the image from.
-  type: string
-  inputBinding:
-    position: 0
-- id: output
-  doc: The name of the file to write the multi-resolution HiFive heatmap image to.
-  type: string
-  inputBinding:
-    position: 1
 - id: chrom
   doc: The first region chromosome.
   type: string
   inputBinding:
     prefix: --chrom
-- id: chrom2
+- id: chrom_two
   doc: The first region chromosome. If no value is passed, this will be set to the
     same value as 'chrom'.
   type: string
@@ -28,7 +18,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --start
-- id: start_2
+- id: start_two
   doc: 'The second region start coordinate to plot. If no value is passed, this will
     be set to the same value as start. [default: None]'
   type: string
@@ -40,7 +30,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --end
-- id: end2
+- id: end_two
   doc: 'The second region stop coordinate to plot. If no value is passed, this will
     be set to the last bin position in the heatmap [default: None]'
   type: string
@@ -65,6 +55,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --text
+- id: heat_map
+  doc: The name of a HiFive multi-resolution heatmap file to construct the image from.
+  type: string
+  inputBinding:
+    position: 0
+- id: output
+  doc: The name of the file to write the multi-resolution HiFive heatmap image to.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

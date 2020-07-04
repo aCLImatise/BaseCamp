@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: parseSim4Output.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/parseSim4Output.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

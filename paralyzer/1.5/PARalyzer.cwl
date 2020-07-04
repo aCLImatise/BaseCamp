@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: PARalyzer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PARalyzer.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

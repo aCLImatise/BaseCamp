@@ -1,14 +1,14 @@
 class: CommandLineTool
-id: genseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genseq.cwl
 inputs:
 - id: n_seq
   doc: number of sequences to generate
   type: long
   inputBinding:
     prefix: -Nseq
-- id: a
-  doc: <protein|RNA|DNA|EHL2...>  alphabet for sequences
-  type: boolean
+- id: alphabet_for_sequences
+  doc: alphabet for sequences
+  type: string
   inputBinding:
     prefix: -a
 - id: mean_log_len
@@ -21,6 +21,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -sdloglen
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -option
+- id: run_name
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

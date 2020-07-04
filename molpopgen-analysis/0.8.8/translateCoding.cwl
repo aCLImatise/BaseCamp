@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: translateCoding.cwl
+id: ../../../../home/ubuntu/BiocondaCli/translateCoding.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

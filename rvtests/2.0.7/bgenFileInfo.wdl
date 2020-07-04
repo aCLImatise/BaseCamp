@@ -2,12 +2,16 @@ version 1.0
 
 task BgenFileInfo {
   input {
-    Boolean inInBgEn
-    Boolean inInSample
+    Boolean? in_bg_en
+    Boolean? in_sample
   }
   command <<<
     bgenFileInfo \
-      ~{true="--inBgen" false="" inInBgEn} \
-      ~{true="--inSample" false="" inInSample}
+      ~{true="--inBgen" false="" in_bg_en} \
+      ~{true="--inSample" false="" in_sample}
   >>>
+  parameter_meta {
+    in_bg_en: ": Input BGEN File"
+    in_sample: ": Input Sample File"
+  }
 }

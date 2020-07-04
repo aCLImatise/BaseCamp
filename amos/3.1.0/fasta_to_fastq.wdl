@@ -2,10 +2,13 @@ version 1.0
 
 task FastaToFastq {
   input {
-    String qvQv
+    String? qv
   }
   command <<<
     fasta_to_fastq \
-      ~{if defined(qvQv) then ("-qv " +  '"' + qvQv + '"') else ""}
+      ~{if defined(qv) then ("-qv " +  '"' + qv + '"') else ""}
   >>>
+  parameter_meta {
+    qv: ": Assign this as the fake quality values (default: '^')"
+  }
 }

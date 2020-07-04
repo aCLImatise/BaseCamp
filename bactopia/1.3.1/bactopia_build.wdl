@@ -2,20 +2,28 @@ version 1.0
 
 task BactopiaBuild.py {
   input {
-    String extExt
-    Boolean forceForce
-    Boolean verboseVerbose
-    Boolean silentSilent
-    String? strStr
-    String? strStr
+    String? ext
+    Boolean? force
+    Boolean? verbose
+    Boolean? silent
+    String bac_topia
+    String build
   }
   command <<<
     bactopia-build.py \
-      ~{strStr} \
-      ~{if defined(extExt) then ("--ext " +  '"' + extExt + '"') else ""} \
-      ~{true="--force" false="" forceForce} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{true="--silent" false="" silentSilent} \
-      ~{strStr}
+      ~{bac_topia} \
+      ~{build} \
+      ~{if defined(ext) then ("--ext " +  '"' + ext + '"') else ""} \
+      ~{true="--force" false="" force} \
+      ~{true="--verbose" false="" verbose} \
+      ~{true="--silent" false="" silent}
   >>>
+  parameter_meta {
+    ext: "Extension of the Conda environment files. Default: .yml"
+    force: "Force overwrite of existing Conda environments."
+    verbose: "Print debug related text."
+    silent: "Only critical errors will be printed."
+    bac_topia: ""
+    build: ""
+  }
 }

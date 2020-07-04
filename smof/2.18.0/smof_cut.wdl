@@ -2,14 +2,19 @@ version 1.0
 
 task SmofCut {
   input {
-    String fieldsFields
-    Boolean complementComplement
-    String? inputInput
+    String? fields
+    Boolean? complement
+    String input_fasta_sequence
   }
   command <<<
     smof cut \
-      ~{inputInput} \
-      ~{if defined(fieldsFields) then ("--fields " +  '"' + fieldsFields + '"') else ""} \
-      ~{true="--complement" false="" complementComplement}
+      ~{input_fasta_sequence} \
+      ~{if defined(fields) then ("--fields " +  '"' + fields + '"') else ""} \
+      ~{true="--complement" false="" complement}
   >>>
+  parameter_meta {
+    fields: "Indices to print, comma delimited, with ranges"
+    complement: "Invert selection"
+    input_fasta_sequence: "input fasta sequence (default = stdin)"
+  }
 }

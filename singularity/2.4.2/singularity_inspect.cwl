@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: singularity_inspect.cwl
+id: ../../../../home/ubuntu/BiocondaCli/singularity_inspect.cwl
 inputs:
 - id: app
   doc: Inspect an application specified in the container
@@ -41,6 +41,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helpfile
+- id: singularity
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

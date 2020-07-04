@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: jaspextract.cwl
+id: ../../../../home/ubuntu/BiocondaCli/jaspextract.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

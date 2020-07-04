@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: NanopolishComp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/NanopolishComp.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

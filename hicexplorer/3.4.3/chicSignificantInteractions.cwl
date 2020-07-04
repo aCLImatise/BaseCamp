@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: chicSignificantInteractions.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chicSignificantInteractions.cwl
 inputs:
 - id: x_fold_background
   doc: Filter x-fold over background. Used to merge neighboring bins with a broader

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mendelscan_sibd.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mendelscan_sibd.cwl
 inputs:
 - id: ped_file
   doc: Pedigree file in 6-column tab-delimited format
@@ -37,6 +37,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --inheritance
+- id: jar
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -jar
+- id: java
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: s_ibd
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: fi_bd
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: sga_graph_diff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sga_graph_diff.cwl
 inputs:
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: verbose
   doc: display verbose output
   type: boolean
@@ -75,6 +70,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --min-dbg-count
+- id: ref
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --ref
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ktImportPhymmBL.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ktImportPhymmBL.cwl
 inputs:
 - id: phy_mm_bl_results
   doc: PhymmBL results files (results.03.*). Results can also be from Phymm alone

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rage.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rage.cwl
 inputs:
 - id: verbose
   doc: 'Increase verbosity of output. -v: Show progress of simulation. -vv: Print
@@ -100,7 +100,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --overlap
-- id: multiple_p7_barcodes
+- id: multiple_p_seven_barcodes
   doc: 'Combine individuals with multiple p7 barcodes in one output file. Default:
     False'
   type: boolean
@@ -146,22 +146,22 @@ inputs:
   type: string
   inputBinding:
     prefix: --dbr
-- id: p5_overhang
+- id: p_five_overhang
   doc: "Sequence of the p5 overhang. Default: 'TGCAT'"
   type: string
   inputBinding:
     prefix: --p5-overhang
-- id: p7_overhang
+- id: p_seven_overhang
   doc: "Sequence of the p7 overhang. Default: 'TAC'"
   type: string
   inputBinding:
     prefix: --p7-overhang
-- id: p5_rec_site
+- id: p_five_rec_site
   doc: "Sequence of the p5 recognition site. Default: 'ATGCAT'"
   type: string
   inputBinding:
     prefix: --p5-rec-site
-- id: p7_rec_site
+- id: p_seven_rec_site
   doc: "Sequence of the p7 recognition site. Default: 'GTCA'"
   type: string
   inputBinding:

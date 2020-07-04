@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cdbg_ops.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cdbg_ops.cwl
 inputs:
 - id: graph
   doc: Prefix of graph files

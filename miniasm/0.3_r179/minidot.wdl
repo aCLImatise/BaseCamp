@@ -2,24 +2,34 @@ version 1.0
 
 task Minidot {
   input {
-    Int mM
-    Float iI
-    Int sS
-    Int wW
-    Int fF
-    Boolean lL
-    Boolean dD
-    String? inInPaf
+    Int? min_match_length
+    Float? min_identity
+    Int? min_span
+    Int? image_width
+    Int? font_size
+    Boolean? do_print_labels
+    Boolean? try_put_hits
+    String in_dot_paf
   }
   command <<<
     minidot \
-      ~{inInPaf} \
-      ~{if defined(mM) then ("-m " +  '"' + mM + '"') else ""} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(sS) then ("-s " +  '"' + sS + '"') else ""} \
-      ~{if defined(wW) then ("-w " +  '"' + wW + '"') else ""} \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""} \
-      ~{true="-L" false="" lL} \
-      ~{true="-D" false="" dD}
+      ~{in_dot_paf} \
+      ~{if defined(min_match_length) then ("-m " +  '"' + min_match_length + '"') else ""} \
+      ~{if defined(min_identity) then ("-i " +  '"' + min_identity + '"') else ""} \
+      ~{if defined(min_span) then ("-s " +  '"' + min_span + '"') else ""} \
+      ~{if defined(image_width) then ("-w " +  '"' + image_width + '"') else ""} \
+      ~{if defined(font_size) then ("-f " +  '"' + font_size + '"') else ""} \
+      ~{true="-L" false="" do_print_labels} \
+      ~{true="-D" false="" try_put_hits}
   >>>
+  parameter_meta {
+    min_match_length: "min match length [100]"
+    min_identity: "min identity [0.10]"
+    min_span: "min span [1000]"
+    image_width: "image width [600]"
+    font_size: "font size [11]"
+    do_print_labels: "don't print labels"
+    try_put_hits: "don't try to put hits onto the diagonal"
+    in_dot_paf: ""
+  }
 }

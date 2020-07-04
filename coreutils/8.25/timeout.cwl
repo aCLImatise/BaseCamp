@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: timeout.cwl
+id: ../../../../home/ubuntu/BiocondaCli/timeout.cwl
 inputs:
 - id: preserve_status
   doc: exit with the same status as COMMAND, even when the command times out
@@ -25,6 +25,26 @@ inputs:
   type: string
   inputBinding:
     prefix: --signal
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: duration
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: command
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: arg
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

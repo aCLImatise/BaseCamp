@@ -2,10 +2,13 @@ version 1.0
 
 task OmeroConfigDef {
   input {
-    String? nameName
+    String name
   }
   command <<<
     omero config def \
-      ~{nameName}
+      ~{name}
   >>>
+  parameter_meta {
+    name: "Name of the profile which should be made the new active profile."
+  }
 }

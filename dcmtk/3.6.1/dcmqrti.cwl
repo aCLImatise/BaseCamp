@@ -1,22 +1,17 @@
 class: CommandLineTool
-id: dcmqrti.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmqrti.cwl
 inputs:
-- id: peer
-  doc: peer host name or symbolic name from cfg file
-  type: string
-  inputBinding:
-    position: 0
-- id: q
+- id: _quiet_print
   doc: --quiet             quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose           verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug             debug mode, print debug information
   type: boolean
   inputBinding:
@@ -32,9 +27,9 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lc
-- id: c
+- id: _config_ilename
   doc: '--config            [f]ilename: string use specific configuration file (default:
-    /tmp/tmp_gcjhv_q/etc/dcmtk/dcmqrscp.cfg)'
+    /tmp/tmpqmdno0st/etc/dcmtk/dcmqrscp.cfg)'
   type: boolean
   inputBinding:
     prefix: -c
@@ -71,7 +66,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --max-pdu
-- id: u
+- id: _disable_support
   doc: --disable-new-vr    disable support for new VRs, convert to OB
   type: boolean
   inputBinding:
@@ -81,6 +76,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --remote
+- id: peer
+  doc: peer host name or symbolic name from cfg file
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

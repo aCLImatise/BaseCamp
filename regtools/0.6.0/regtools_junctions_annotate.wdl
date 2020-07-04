@@ -2,18 +2,25 @@ version 1.0
 
 task RegtoolsJunctionsAnnotate {
   input {
-    String sS
-    File oO
-    String? junctionsJunctionsBed
-    String? reReFfa
-    String? annotationsAnnotationsGtf
+    String? single_exon_genes
+    File? file_write_output
+    String junctions_dot_bed
+    String ref_dot_fa
+    String annotations_dot_gtf
   }
   command <<<
     regtools junctions annotate \
-      ~{junctionsJunctionsBed} \
-      ~{if defined(sS) then ("-S " +  '"' + sS + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{reReFfa} \
-      ~{annotationsAnnotationsGtf}
+      ~{junctions_dot_bed} \
+      ~{ref_dot_fa} \
+      ~{annotations_dot_gtf} \
+      ~{if defined(single_exon_genes) then ("-S " +  '"' + single_exon_genes + '"') else ""} \
+      ~{if defined(file_write_output) then ("-o " +  '"' + file_write_output + '"') else ""}
   >>>
+  parameter_meta {
+    single_exon_genes: "single exon genes"
+    file_write_output: "The file to write output to. [STDOUT]"
+    junctions_dot_bed: ""
+    ref_dot_fa: ""
+    annotations_dot_gtf: ""
+  }
 }

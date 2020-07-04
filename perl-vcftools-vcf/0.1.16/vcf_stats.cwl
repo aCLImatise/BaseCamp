@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: vcf_stats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf_stats.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: file_vcf_gz
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
 - id: dump
   doc: Take an existing dump file and recreate the files (works with -p)
   type: File
@@ -23,9 +13,8 @@ inputs:
   inputBinding:
     prefix: --filters
 - id: prefix
-  doc: <dir/string>                   Prefix of output files. If slashes are present,
-    directories will be created.
-  type: boolean
+  doc: Prefix of output files. If slashes are present, directories will be created.
+  type: string
   inputBinding:
     prefix: --prefix
 - id: samples
@@ -34,6 +23,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --samples
+- id: file_dot_vcf_do_tgz
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

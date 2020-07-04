@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: OpenSwathAssayGenerator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/OpenSwathAssayGenerator.cwl
 inputs:
 - id: in
   doc: "*                           Input file (valid formats: 'tsv', 'mrm', 'pqp',\
@@ -89,7 +89,7 @@ inputs:
 - id: swath_windows_file
   doc: "Tab separated file containing the SWATH windows for exclusion of fragment\
     \ ions falling into the precursor isolation window: lower_offset upper_offset\
-    \ \\newline 400 425  \\newline ... Note that the first line is a header and will\
+    \ \\newline 400 425 \\newline ... Note that the first line is a header and will\
     \ be skipped. (valid formats: 'txt')"
   type: File
   inputBinding:

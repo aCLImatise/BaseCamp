@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: rascaf_wrapper.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rascaf_wrapper.pl.cwl
 inputs:
-- id: b
+- id: bam_file_can
   doc: ': bam file. Can use comma-separator to specify multiple alignment files[required]'
   type: string
   inputBinding:
     prefix: -b
-- id: f
+- id: path_raw_assembly
   doc: ': path to the raw assembly fasta file'
   type: string
   inputBinding:
     prefix: -f
-- id: o
+- id: prefix_output_file
   doc: ': prefix of the output file (default: rascaf_scaffold)'
   type: string
   inputBinding:
@@ -26,7 +26,7 @@ inputs:
   type: long
   inputBinding:
     prefix: -ml
-- id: k
+- id: size_kmer_default
   doc: ': the size of a kmer(<=32. default: 21)'
   type: long
   inputBinding:

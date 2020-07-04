@@ -2,10 +2,13 @@ version 1.0
 
 task CruxPipeline {
   input {
-    Boolean gapGapTolerance
+    String mass_spectra
   }
   command <<<
     crux pipeline \
-      ~{true="--gap-tolerance" false="" gapGapTolerance}
+      ~{mass_spectra}
   >>>
+  parameter_meta {
+    mass_spectra: ""
+  }
 }

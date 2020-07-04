@@ -2,22 +2,31 @@ version 1.0
 
 task FermiScaf {
   input {
-    Int tT
-    Int mM
-    Boolean pP
-    String? inInFmd
-    String? inInRemappedMag
-    String? avgAvg
-    String? stdStd
+    Int? number_of_threads
+    Int? minimum_number_supporting
+    Boolean? print_links_unitigs
+    String in_dot_fmd
+    String in_dot_remapped_dot_mag
+    String avg
+    String std
   }
   command <<<
     fermi scaf \
-      ~{inInFmd} \
-      ~{if defined(tT) then ("-t " +  '"' + tT + '"') else ""} \
-      ~{if defined(mM) then ("-m " +  '"' + mM + '"') else ""} \
-      ~{true="-P" false="" pP} \
-      ~{inInRemappedMag} \
-      ~{avgAvg} \
-      ~{stdStd}
+      ~{in_dot_fmd} \
+      ~{in_dot_remapped_dot_mag} \
+      ~{avg} \
+      ~{std} \
+      ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""} \
+      ~{if defined(minimum_number_supporting) then ("-m " +  '"' + minimum_number_supporting + '"') else ""} \
+      ~{true="-P" false="" print_links_unitigs}
   >>>
+  parameter_meta {
+    number_of_threads: "number of threads [1]"
+    minimum_number_supporting: "minimum number of supporting reads [5]"
+    print_links_unitigs: "print the links between unitigs"
+    in_dot_fmd: ""
+    in_dot_remapped_dot_mag: ""
+    avg: ""
+    std: ""
+  }
 }

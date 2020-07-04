@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rerunMultiTest.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rerunMultiTest.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

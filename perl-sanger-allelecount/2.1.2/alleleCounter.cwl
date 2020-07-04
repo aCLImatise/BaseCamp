@@ -1,37 +1,15 @@
 class: CommandLineTool
-id: alleleCounter.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/alleleCounter.pl.cwl
 inputs:
-- id: bam
-  doc: -b      BWA bam file (expects co-located index)
-  type: boolean
+- id: allele_counts_do_tpl
+  doc: 'Required: -bam      -b      BWA bam file (expects co-located index) -output   -o      Output
+    file -minqual  -m      Minimum base quality to include (integer) [30] -mapqual  -q      Minimum
+    mapping quality of read (integer) [35] -loci     -l      Alternate loci file (just
+    needs chr pos) - output is different, counts for each residue Optional: -help     -h      This
+    message -version  -v      Version number'
+  type: string
   inputBinding:
-    prefix: -bam
-- id: output
-  doc: -o      Output file
-  type: boolean
-  inputBinding:
-    prefix: -output
-- id: min_qual
-  doc: Minimum base quality to include (integer) [30]
-  type: boolean
-  inputBinding:
-    prefix: -minqual
-- id: map_qual
-  doc: Minimum mapping quality of read (integer) [35]
-  type: boolean
-  inputBinding:
-    prefix: -mapqual
-- id: loci
-  doc: -l      Alternate loci file (just needs chr pos) - output is different, counts
-    for each residue
-  type: boolean
-  inputBinding:
-    prefix: -loci
-- id: version
-  doc: Version number
-  type: boolean
-  inputBinding:
-    prefix: -version
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

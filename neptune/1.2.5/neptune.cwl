@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: neptune.cwl
+id: ../../../../home/ubuntu/BiocondaCli/neptune.cwl
 inputs:
 - id: inclusion
   doc: The inclusion targets in FASTA format.
@@ -155,6 +155,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --consolidate-specification
+- id: neptune_cond_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

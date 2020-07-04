@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: edirutil.cwl
+id: ../../../../home/ubuntu/BiocondaCli/edirutil.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

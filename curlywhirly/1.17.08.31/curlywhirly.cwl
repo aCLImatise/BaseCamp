@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: curlywhirly.cwl
+id: ../../../../home/ubuntu/BiocondaCli/curlywhirly.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

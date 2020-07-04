@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pyqi_serve_html_interface.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyqi_serve_html_interface.cwl
 inputs:
 - id: interface_module
   doc: The module to serve the interface for [REQUIRED]

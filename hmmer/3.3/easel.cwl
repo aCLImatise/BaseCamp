@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: easel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/easel.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

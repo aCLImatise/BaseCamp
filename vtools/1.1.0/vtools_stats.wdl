@@ -2,12 +2,13 @@ version 1.0
 
 task VtoolsStats {
   input {
-    File inputInput
-    String? optionsOptions
+    File? input_vcf_file
   }
   command <<<
     vtools-stats \
-      ~{optionsOptions} \
-      ~{if defined(inputInput) then ("--input " +  '"' + inputInput + '"') else ""}
+      ~{if defined(input_vcf_file) then ("--input " +  '"' + input_vcf_file + '"') else ""}
   >>>
+  parameter_meta {
+    input_vcf_file: "Input VCF file  [required]"
+  }
 }

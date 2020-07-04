@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: fermi_cg2cofq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fermi_cg2cofq.cwl
 inputs:
-- id: in_cgf_q
+- id: in_do_tcg_fq
   doc: ''
   type: string
   inputBinding:

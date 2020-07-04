@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dsh_extract_fastq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dsh_extract_fastq.cwl
 inputs:
 - id: about
   doc: display about message [optional]
@@ -26,6 +26,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --description
+- id: args
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

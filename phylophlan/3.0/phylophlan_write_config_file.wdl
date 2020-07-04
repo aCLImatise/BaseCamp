@@ -2,40 +2,58 @@ version 1.0
 
 task PhylophlanWriteConfigFile {
   input {
-    String outputOutput
-    String dbDbType
-    String dbDbDna
-    String dbDbAa
-    String mapMapDna
-    String mapMapAa
-    String msaMsa
-    String trimTrim
-    String geneGeneTree1
-    String geneGeneTree2
-    String tree1Tree1
-    String tree2Tree2
-    Boolean absoluteAbsolutePath
-    Boolean forceForceNucleotides
-    Boolean overwriteOverwrite
-    Boolean verboseVerbose
+    String? specify_output_file
+    String? db_type
+    String? db_dna
+    String? db_aa
+    String? map_dna
+    String? map_aa
+    String? msa
+    String? trim
+    String? gene_tree_one
+    String? gene_tree_two
+    String? tree_one
+    String? tree_two
+    Boolean? absolute_path
+    Boolean? force_nucleotides
+    Boolean? overwrite
+    Boolean? verbose
   }
   command <<<
     phylophlan_write_config_file \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(dbDbType) then ("--db_type " +  '"' + dbDbType + '"') else ""} \
-      ~{if defined(dbDbDna) then ("--db_dna " +  '"' + dbDbDna + '"') else ""} \
-      ~{if defined(dbDbAa) then ("--db_aa " +  '"' + dbDbAa + '"') else ""} \
-      ~{if defined(mapMapDna) then ("--map_dna " +  '"' + mapMapDna + '"') else ""} \
-      ~{if defined(mapMapAa) then ("--map_aa " +  '"' + mapMapAa + '"') else ""} \
-      ~{if defined(msaMsa) then ("--msa " +  '"' + msaMsa + '"') else ""} \
-      ~{if defined(trimTrim) then ("--trim " +  '"' + trimTrim + '"') else ""} \
-      ~{if defined(geneGeneTree1) then ("--gene_tree1 " +  '"' + geneGeneTree1 + '"') else ""} \
-      ~{if defined(geneGeneTree2) then ("--gene_tree2 " +  '"' + geneGeneTree2 + '"') else ""} \
-      ~{if defined(tree1Tree1) then ("--tree1 " +  '"' + tree1Tree1 + '"') else ""} \
-      ~{if defined(tree2Tree2) then ("--tree2 " +  '"' + tree2Tree2 + '"') else ""} \
-      ~{true="--absolute_path" false="" absoluteAbsolutePath} \
-      ~{true="--force_nucleotides" false="" forceForceNucleotides} \
-      ~{true="--overwrite" false="" overwriteOverwrite} \
-      ~{true="--verbose" false="" verboseVerbose}
+      ~{if defined(specify_output_file) then ("--output " +  '"' + specify_output_file + '"') else ""} \
+      ~{if defined(db_type) then ("--db_type " +  '"' + db_type + '"') else ""} \
+      ~{if defined(db_dna) then ("--db_dna " +  '"' + db_dna + '"') else ""} \
+      ~{if defined(db_aa) then ("--db_aa " +  '"' + db_aa + '"') else ""} \
+      ~{if defined(map_dna) then ("--map_dna " +  '"' + map_dna + '"') else ""} \
+      ~{if defined(map_aa) then ("--map_aa " +  '"' + map_aa + '"') else ""} \
+      ~{if defined(msa) then ("--msa " +  '"' + msa + '"') else ""} \
+      ~{if defined(trim) then ("--trim " +  '"' + trim + '"') else ""} \
+      ~{if defined(gene_tree_one) then ("--gene_tree1 " +  '"' + gene_tree_one + '"') else ""} \
+      ~{if defined(gene_tree_two) then ("--gene_tree2 " +  '"' + gene_tree_two + '"') else ""} \
+      ~{if defined(tree_one) then ("--tree1 " +  '"' + tree_one + '"') else ""} \
+      ~{if defined(tree_two) then ("--tree2 " +  '"' + tree_two + '"') else ""} \
+      ~{true="--absolute_path" false="" absolute_path} \
+      ~{true="--force_nucleotides" false="" force_nucleotides} \
+      ~{true="--overwrite" false="" overwrite} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    specify_output_file: "Specify the output file where to write the configurations (default: None)"
+    db_type: "Specify the type of the database, where \"n\" stands for nucleotides and \"a\" for amino acids (default: None)"
+    db_dna: "Add the \"db_dna\" section of the selected software that will be used for building the indexed database (default: None)"
+    db_aa: "Add the \"db_aa\" section of the selected software that will be used for building the indexed database (default: None)"
+    map_dna: "Add the \"map_dna\" section of the selected software that will be used for mapping the database against the input genomes (default: None)"
+    map_aa: "Add the \"map_aa\" section of the selected software that will be used for mapping the database against the input proteomes (default: None)"
+    msa: "Add the \"msa\" section of the selected software that will be used for producing the MSAs (default: None)"
+    trim: "Add the \"trim\" section of the selected software that will be used for the gappy regions removal of the MSAs (default: None)"
+    gene_tree_one: "Add the \"gene_tree1\" section of the selected software that will be used for building the phylogenies for the markers in the database (default: None)"
+    gene_tree_two: "Add the \"gene_tree2\" section of the selected software that will be used for refining the phylogenies previously built with what specified in the \"gene_tree1\" section (default: None)"
+    tree_one: "Add the \"tree1\" section of the selected software that will be used for building the first phylogeny (default: None)"
+    tree_two: "Add the \"tree2\" section of the selected software that will be used for refining the phylogeny previously built with what specified in the \"tree1\" section (default: None)"
+    absolute_path: "Write the absolute path to the executable instead of the executable name as found in the system path environment (default: False)"
+    force_nucleotides: "If specified sets parameters for phylogenetic analysis software so that they use nucleotide sequences, even in the case of a database of amino acids (default: None)"
+    overwrite: "Overwrite output file if it exists (default: False)"
+    verbose: "Prints more stuff (default: False)"
+  }
 }

@@ -1,15 +1,20 @@
 version 1.0
 
-task CreateMetaplots.bashName {
+task CreateMetaplots.bash {
   input {
-    String? riRiBobAm
-    String? bedBedFile
-    String? nameName
+    String ribo_dot_bam
+    String bed_file
+    String name
   }
   command <<<
-    create_metaplots.bash name \
-      ~{riRiBobAm} \
-      ~{bedBedFile} \
-      ~{nameName}
+    create_metaplots.bash \
+      ~{ribo_dot_bam} \
+      ~{bed_file} \
+      ~{name}
   >>>
+  parameter_meta {
+    ribo_dot_bam: ""
+    bed_file: ""
+    name: ""
+  }
 }

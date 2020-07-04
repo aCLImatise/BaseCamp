@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: mdasim.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mdasim.cwl
 inputs:
-- id: optional
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: args
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: log
   doc: = file name for a log file of all single nucleotide errors that happen during
     amplification
@@ -93,6 +83,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --single
+- id: optional
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: args
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

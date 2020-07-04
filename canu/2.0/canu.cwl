@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: canu.cwl
+id: ../../../../home/ubuntu/BiocondaCli/canu.cwl
 inputs:
 - id: pac_bio_hifi
   doc: '] file1 file2 ...'
@@ -27,22 +27,12 @@ inputs:
   inputBinding:
     prefix: -assemble
 - id: trim_assemble
-  doc: reads and then assemble them
-  type: string
+  doc: '- generate trimmed reads and then assemble them'
+  type: boolean
   inputBinding:
     prefix: -trim-assemble
-- id: ignore
-  doc: "shorter than 'number' bases long.  Default: 1000."
-  type: string
-  inputBinding:
-    prefix: '- Ignore'
-- id: ignore
-  doc: "overlaps shorter than 'number' bases long.  Default: 500."
-  type: string
-  inputBinding:
-    prefix: '- Ignore'
 - id: haplotype_nanny
-  doc: /*gz
+  doc: '*gz'
   type: string
   inputBinding:
     prefix: -haplotypeNANNY
@@ -51,6 +41,16 @@ inputs:
   type: string
   inputBinding:
     prefix: -haplotypeBILLY
+- id: version
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -version
+- id: citation
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -citation
 outputs: []
 cwlVersion: v1.1
 baseCommand:

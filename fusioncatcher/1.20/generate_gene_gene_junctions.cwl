@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: generate_gene_gene_junctions.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/generate_gene_gene_junctions.py.cwl
 inputs:
 - id: input
   doc: The text separated file containing on each line two names of genes.

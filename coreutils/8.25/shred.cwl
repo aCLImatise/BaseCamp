@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: shred.cwl
+id: ../../../../home/ubuntu/BiocondaCli/shred.cwl
 inputs:
 - id: force
   doc: change permissions to allow writing if necessary
@@ -21,7 +21,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --size
-- id: u
+- id: truncate_remove_file
   doc: truncate and remove file after overwriting
   type: boolean
   inputBinding:
@@ -42,11 +42,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --exact
-- id: zero
+- id: add_final_overwrite
   doc: add a final overwrite with zeros to hide shredding
   type: boolean
   inputBinding:
     prefix: --zero
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

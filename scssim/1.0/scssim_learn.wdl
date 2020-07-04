@@ -2,24 +2,34 @@ version 1.0
 
 task ScssimLearn {
   input {
-    String bamBam
-    String targetTarget
-    String vcfVcf
-    String refRef
-    Int wWSize
-    Int kmKmEr
-    String outputOutput
-    String samSamTools
+    String? bam
+    String? target
+    String? vcf
+    String? ref
+    Int? w_size
+    Int? km_er
+    String? output_file
+    String? sam_tools
   }
   command <<<
     scssim learn \
-      ~{if defined(bamBam) then ("--bam " +  '"' + bamBam + '"') else ""} \
-      ~{if defined(targetTarget) then ("--target " +  '"' + targetTarget + '"') else ""} \
-      ~{if defined(vcfVcf) then ("--vcf " +  '"' + vcfVcf + '"') else ""} \
-      ~{if defined(refRef) then ("--ref " +  '"' + refRef + '"') else ""} \
-      ~{if defined(wWSize) then ("--wsize " +  '"' + wWSize + '"') else ""} \
-      ~{if defined(kmKmEr) then ("--kmer " +  '"' + kmKmEr + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(samSamTools) then ("--samtools " +  '"' + samSamTools + '"') else ""}
+      ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
+      ~{if defined(target) then ("--target " +  '"' + target + '"') else ""} \
+      ~{if defined(vcf) then ("--vcf " +  '"' + vcf + '"') else ""} \
+      ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""} \
+      ~{if defined(w_size) then ("--wsize " +  '"' + w_size + '"') else ""} \
+      ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""} \
+      ~{if defined(output_file) then ("--output " +  '"' + output_file + '"') else ""} \
+      ~{if defined(sam_tools) then ("--samtools " +  '"' + sam_tools + '"') else ""}
   >>>
+  parameter_meta {
+    bam: "normal BAM file"
+    target: "exome target file (.bed) for whole-exome sequencing[default:null]"
+    vcf: "the VCF file generated from the normal BAM"
+    ref: "genome reference file (.fasta) to which the reads were aligned"
+    w_size: "the length of windows used to infer GC-content bias[default:1000]"
+    km_er: "the length of kmer sequence [default:3]"
+    output_file: "output file"
+    sam_tools: "the path of samtools [default:samtools]"
+  }
 }

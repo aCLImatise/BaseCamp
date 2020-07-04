@@ -2,10 +2,13 @@ version 1.0
 
 task SparseInit {
   input {
-    String nN
+    String? dbname
   }
   command <<<
     sparse init \
-      ~{if defined(nN) then ("-n " +  '"' + nN + '"') else ""}
+      ~{if defined(dbname) then ("--dbname " +  '"' + dbname + '"') else ""}
   >>>
+  parameter_meta {
+    dbname: "Name for the new database to be generated. "
+  }
 }

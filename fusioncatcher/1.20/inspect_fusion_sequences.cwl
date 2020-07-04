@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: inspect_fusion_sequences.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/inspect_fusion_sequences.py.cwl
 inputs:
 - id: input
   doc: The input file containing the fusion (chromosomal) coordinates for each fusion
@@ -39,7 +39,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --threshold
-- id: threshold_2
+- id: threshold_two
   doc: Any window which compresses less this threshold is considered to contain a
     short tandem repeat and the read will be filtered out. Default is 4.5.
   type: string

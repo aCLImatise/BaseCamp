@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gmtkKernel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gmtkKernel.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

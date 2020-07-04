@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: download_ncbi_taxa.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/download_ncbi_taxa.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sequenza_utils_pileup2acgt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sequenza_utils_pileup2acgt.cwl
 inputs:
 - id: m_pile_up
   doc: Name of the input mpileup (SAMtools) file. If the filename ends in .gz it will
@@ -13,7 +13,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
-- id: n
+- id: minimum_required_read
   doc: The minimum required read depth on a position to test for mutation.
   type: string
   inputBinding:

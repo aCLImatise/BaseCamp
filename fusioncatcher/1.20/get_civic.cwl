@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_civic.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_civic.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the known fusion genes are downloaded, e.g.

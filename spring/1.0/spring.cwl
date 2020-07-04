@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: spring.cwl
+id: ../../../../home/ubuntu/BiocondaCli/spring.cwl
 inputs:
-- id: c
+- id: _compress
   doc: '[ --compress ]               compress'
   type: boolean
   inputBinding:
     prefix: -c
-- id: d
+- id: _decompress
   doc: '[ --decompress ]             decompress'
   type: boolean
   inputBinding:
@@ -19,30 +19,30 @@ inputs:
   type: string
   inputBinding:
     prefix: --decompress-range
-- id: i
+- id: arg_input_file
   doc: '[ --input-file ] arg         input file name (two files for paired end)'
   type: boolean
   inputBinding:
     prefix: -i
-- id: o
+- id: arg_output_file
   doc: '[ --output-file ] arg        output file name (for paired end  decompression,
     if only one file is specified, two output files will be created by suffixing .1
     and .2.)'
   type: boolean
   inputBinding:
     prefix: -o
-- id: w
+- id: arg_directory_create
   doc: '[ --working-dir ] arg (=.)   directory to create temporary files (default  current
     directory)'
   type: boolean
   inputBinding:
     prefix: -w
-- id: t
+- id: arg_number_threads
   doc: '[ --num-threads ] arg (=8)   number of threads (default 8)'
   type: boolean
   inputBinding:
     prefix: -t
-- id: r
+- id: retain_read_order
   doc: '[ --allow-read-reordering ]  do not retain read order during compression  (paired
     reads still remain paired)'
   type: boolean
@@ -58,7 +58,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-ids
-- id: q
+- id: arg_quality_mode
   doc: '[ --quality-opts ] arg       quality mode: possible modes are 1. -q lossless
     (default) 2. -q qvz qv_ratio (QVZ lossy compression,  parameter qv_ratio roughly
     corresponds to  bits used per quality value) 3. -q ill_bin (Illumina 8-level binning)
@@ -67,7 +67,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -q
-- id: l
+- id: use_compression_arbitrarily
   doc: '[ --long ]                   Use for compression of arbitrarily long read  lengths.
     Can also provide better compression  for reads with significant number of indels.  -r
     disabled in this mode. For Illumina short  reads, compression is better without
@@ -75,7 +75,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -l
-- id: g
+- id: enable_compression_input_gzipped
   doc: '[ --gzipped-fastq ]          enable if compression input is gzipped fastq  or
     to output gzipped fastq during  decompression'
   type: boolean

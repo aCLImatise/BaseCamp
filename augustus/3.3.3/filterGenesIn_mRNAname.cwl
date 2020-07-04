@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filterGenesIn_mRNAname.pl_dbfile.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filterGenesIn_mRNAname.pl.cwl
 inputs:
 - id: gtf_file
   doc: ''
@@ -15,4 +15,3 @@ outputs: []
 cwlVersion: v1.1
 baseCommand:
 - filterGenesIn_mRNAname.pl
-- dbfile

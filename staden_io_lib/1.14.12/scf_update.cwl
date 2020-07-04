@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: scf_update.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scf_update.cwl
 inputs:
+- id: v
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -v
 - id: source
   doc: ''
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: v
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -v
 outputs: []
 cwlVersion: v1.1
 baseCommand:

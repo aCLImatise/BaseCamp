@@ -2,12 +2,16 @@ version 1.0
 
 task Hmmstat {
   input {
-    Boolean optionsOptions
-    String? hmmHmmFile
+    Boolean? options
+    String hmm_file
   }
   command <<<
     hmmstat \
-      ~{hmmHmmFile} \
-      ~{true="-options" false="" optionsOptions}
+      ~{hmm_file} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    options: ""
+    hmm_file: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: wig2bed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wig2bed.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

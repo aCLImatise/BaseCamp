@@ -1,22 +1,7 @@
 class: CommandLineTool
-id: pairToPair.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pairToPair.cwl
 inputs:
-- id: bed_tools
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: pair_to_pair
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: f
+- id: minimum_overlap_required
   doc: Minimum overlap required as fraction of A (e.g. 0.05). Default is 1E-9 (effectively
     1bp).
   type: boolean
@@ -55,6 +40,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -rdn
+- id: a
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -a
+- id: b
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -b
 outputs: []
 cwlVersion: v1.1
 baseCommand:

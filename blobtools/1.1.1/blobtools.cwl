@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: blobtools.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blobtools.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

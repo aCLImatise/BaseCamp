@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: make_cut_matrix.cwl
+id: ../../../../home/ubuntu/BiocondaCli/make_cut_matrix.cwl
 inputs:
-- id: bam_file_of_aligned_reads
-  doc: The indexed BAM file containing the aligned ATAC-seq reads.
-  type: string
-  inputBinding:
-    position: 0
-- id: bed_file_of_motifs
-  doc: The BED file containing the motifs. Use "-" to read from standard input.
-  type: string
-  inputBinding:
-    position: 1
 - id: aggregate_output
   doc: Requests a matrix in which each row represents a position in the extended region
     and the mean cut point count at that position across all motifs. See OUTPUT, below.
@@ -70,6 +60,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: bam_file_of_aligned_reads
+  doc: The indexed BAM file containing the aligned ATAC-seq reads.
+  type: string
+  inputBinding:
+    position: 0
+- id: bed_file_of_motifs
+  doc: The BED file containing the motifs. Use "-" to read from standard input.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

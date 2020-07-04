@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: liftUp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/liftUp.cwl
 inputs:
 - id: no_sort
   doc: "'t sort bed, gff, or gdup files, to save memory"
@@ -12,8 +12,8 @@ inputs:
   inputBinding:
     prefix: -gapsize
 - id: ignore_versions
-  doc: version number in sequence ids of input files
-  type: string
+  doc: '- Ignore NCBI-style version number in sequence ids of input files'
+  type: boolean
   inputBinding:
     prefix: -ignoreVersions
 - id: ext_gene_pred

@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: Out2XML.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Out2XML.cwl
 inputs:
-- id: m
+- id: use_default_setting_specified
   doc: ': use monoisotopic precursor weight (default: setting specified in sequest.params)'
   type: boolean
   inputBinding:
     prefix: -m
-- id: a
+- id: use_average_setting_specified
   doc: ': use average precursor weight (default: setting specified in sequest.params)'
   type: boolean
   inputBinding:
     prefix: -a
-- id: m
+- id: _maldi_mode
   doc: ': maldi mode'
   type: boolean
   inputBinding:
@@ -26,13 +26,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -pI
-- id: p
+- id: path_including_path
   doc: '<path to -including- sequest.params file>: (default) <path to directory with
     out files>/sequest.params '
   type: boolean
   inputBinding:
     prefix: -P
-- id: e
+- id: enzyme_where_enzyme
   doc: '<enzyme>  Where <enzyme> is:  trypsin - Cut: KR, No Cut: P, Sense: C-term
     (default) ralphtrypsin - Cut: STKR, No Cut: P, Sense: C-term  stricttrypsin -
     Cut: KR, No Cut: none, Sense: C-term  argc - Cut: R, No Cut: P, Sense: C-term  aspn
@@ -52,6 +52,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -E
+- id: path_to_directory_with_out_files
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

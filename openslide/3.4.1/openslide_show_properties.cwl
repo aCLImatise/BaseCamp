@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: openslide_show_properties.cwl
+id: ../../../../home/ubuntu/BiocondaCli/openslide_show_properties.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

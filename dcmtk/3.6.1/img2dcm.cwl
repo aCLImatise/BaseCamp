@@ -1,27 +1,17 @@
 class: CommandLineTool
-id: img2dcm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/img2dcm.cwl
 inputs:
-- id: img_file_in
-  doc: image input filename
-  type: string
-  inputBinding:
-    position: 0
-- id: dcm_file_out
-  doc: DICOM output filename
-  type: string
-  inputBinding:
-    position: 1
-- id: q
+- id: _quiet_quiet
   doc: --quiet                quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose              verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug                debug mode, print debug information
   type: boolean
   inputBinding:
@@ -37,7 +27,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lc
-- id: i
+- id: _inputformat_nput
   doc: '--input-format         [i]nput file format: string supported formats: JPEG
     (default), BMP'
   type: boolean
@@ -93,17 +83,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-checks
-- id: i1
+- id: i_one
   doc: --no-type1-invent      do not invent missing type 1 attributes (only with --do-checks)
   type: boolean
   inputBinding:
     prefix: -i1
-- id: l1
+- id: lone
   doc: --no-latin1            keep 7-bit ASCII as standard character set
   type: boolean
   inputBinding:
     prefix: -l1
-- id: k
+- id: _key_ggggeeee
   doc: '--key                  [k]ey: gggg,eeee="str", path or dict. name="str" add
     further attribute'
   type: boolean
@@ -124,21 +114,31 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --vl-photo
-- id: f
+- id: _writedataset_write
   doc: --write-dataset        write data set without file meta information
   type: boolean
   inputBinding:
     prefix: -F
-- id: g
+- id: _grouplengthremove_always
   doc: --group-length-remove  always write without group length elements
   type: boolean
   inputBinding:
     prefix: -g
-- id: e
+- id: _lengthundefined_write
   doc: --length-undefined     write with undefined lengths
   type: boolean
   inputBinding:
     prefix: -e
+- id: img_file_in
+  doc: image input filename
+  type: string
+  inputBinding:
+    position: 0
+- id: dcm_file_out
+  doc: DICOM output filename
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

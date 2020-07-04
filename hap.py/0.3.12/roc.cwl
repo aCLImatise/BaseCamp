@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: roc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/roc.cwl
 inputs:
 - id: verbose
   doc: show verbose information (to stderr)
@@ -11,22 +11,22 @@ inputs:
   type: string
   inputBinding:
     prefix: --input-file
-- id: o
+- id: arg_output_file
   doc: '[ --output-file ] arg  Output file name, defaults to - / write to stdout'
   type: boolean
   inputBinding:
     prefix: -o
-- id: s
+- id: arg_character_default
   doc: "[ --separator ] arg    separator character (default: '\\t' for reading tsv)"
   type: boolean
   inputBinding:
     prefix: -s
-- id: h
+- id: arg_lines_skip
   doc: '[ --header-lines ] arg lines to skip before starting to read'
   type: boolean
   inputBinding:
     prefix: -H
-- id: v
+- id: arg_value_column
   doc: '[ --value ] arg        value column name'
   type: boolean
   inputBinding:
@@ -36,13 +36,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --value-column
-- id: r
+- id: arg_reverse_counting
   doc: '[ --reverse ] arg      Reverse counting for score (default: higher scores  are
     better)'
   type: boolean
   inputBinding:
     prefix: -R
-- id: t
+- id: arg_tag_column
   doc: '[ --tag ] arg          tag column name'
   type: boolean
   inputBinding:
@@ -53,7 +53,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --tag-column
-- id: f
+- id: arg_filter_column
   doc: '[ --filter ] arg       filter column name'
   type: boolean
   inputBinding:
@@ -64,7 +64,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --filter-column
-- id: n
+- id: arg_filter_name
   doc: '[ --filter-name ] arg  filter name if value is threshold for this filter'
   type: boolean
   inputBinding:

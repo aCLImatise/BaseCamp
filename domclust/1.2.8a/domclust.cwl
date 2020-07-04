@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: domclust.cwl
+id: ../../../../home/ubuntu/BiocondaCli/domclust.cwl
 inputs:
-- id: s
+- id: use_similarity_measure
   doc: use similarity as a measure of relatedness [on]
   type: boolean
   inputBinding:
     prefix: -S
-- id: d
+- id: use_distance_disimilarity
   doc: use distance (or disimilarity) as a measure of relatedness
   type: boolean
   inputBinding:
     prefix: -d
-- id: c
+- id: cutoff_scoredistance_can
   doc: '#    cutoff score/distance (can also be spcified as -S# or -d#) [60]'
   type: boolean
   inputBinding:
@@ -21,7 +21,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ci
-- id: m
+- id: scoredistance_missing_relationships
   doc: '#    score/distance for missing relationships (m<c)'
   type: boolean
   inputBinding:
@@ -31,17 +31,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -mr
-- id: c
+- id: cutoff_score_domain
   doc: '#    cutoff score for domain split (c<=C)'
   type: boolean
   inputBinding:
     prefix: -C
-- id: v
+- id: alignment_coverage_domain
   doc: '#    alignment coverage for domain split (0<=V<=1)'
   type: boolean
   inputBinding:
     prefix: -V
-- id: n
+- id: minimum_organisms_clusters
   doc: '#    minimum # of organisms in clusters to be output [2]'
   type: boolean
   inputBinding:
@@ -51,12 +51,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ne
-- id: p
+- id: ratio_phylogenetic_pattern
   doc: '#    ratio of phylogenetic pattern overlap for tree cutting [0.5]'
   type: boolean
   inputBinding:
     prefix: -p
-- id: h
+- id: homology_clustering_ie
   doc: homology clustering (i.e. skip the tree cutting)
   type: boolean
   inputBinding:
@@ -76,17 +76,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ao
-- id: t
+- id: use_tree_file
   doc: <fn> use a tree file for weighting related genomes
   type: boolean
   inputBinding:
     prefix: -t
-- id: r
+- id: restore_dump_file
   doc: <fn> restore from dump file
   type: boolean
   inputBinding:
     prefix: -R
-- id: o
+- id: output_format_default
   doc: '#    output format (default: 0:SimpleList) 1:Tree, 2:Newick, 3:Newick with
     length (when -d is specified), 4:Hierarchical, 5:ClusterTable, 6:Graph, 9:Table,
     10:Dump'
@@ -123,6 +123,16 @@ inputs:
   type: string
   inputBinding:
     prefix: -OtaxMapSpec
+- id: hom_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: gene_tab
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

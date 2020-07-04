@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scanwise.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scanwise.cwl
 inputs:
 - id: multiserver
   doc: Filename for multiple servers, <host> <port> format

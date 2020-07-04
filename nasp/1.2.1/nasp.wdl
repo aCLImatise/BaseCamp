@@ -2,14 +2,13 @@ version 1.0
 
 task Nasp {
   input {
-    String configConfig
-    String? referenceReferenceFastA
-    String? outputOutputFolder
+    String? config
   }
   command <<<
     nasp \
-      ~{referenceReferenceFastA} \
-      ~{if defined(configConfig) then ("--config " +  '"' + configConfig + '"') else ""} \
-      ~{outputOutputFolder}
+      ~{if defined(config) then ("--config " +  '"' + config + '"') else ""}
   >>>
+  parameter_meta {
+    config: "Path to the configuration xml file."
+  }
 }

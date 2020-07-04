@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pbsv_discover.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pbsv_discover.cwl
 inputs:
 - id: sample
   doc: STR   Override sample name tag from BAM read group.
@@ -56,6 +56,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --log-file
+- id: refdotoutdotsvsigdotgz
+  doc: STR   Structural variant signatures output.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

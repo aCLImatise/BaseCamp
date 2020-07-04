@@ -2,12 +2,16 @@ version 1.0
 
 task PdbClusterZip {
   input {
-    String cC
-    String oO
+    String? config
+    String? output_pdb_zip_path
   }
   command <<<
     pdb_cluster_zip \
-      ~{if defined(cC) then ("-c " +  '"' + cC + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""}
+      ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
+      ~{if defined(output_pdb_zip_path) then ("--output_pdb_zip_path " +  '"' + output_pdb_zip_path + '"') else ""}
   >>>
+  parameter_meta {
+    config: "This file can be a YAML file, JSON file or JSON string"
+    output_pdb_zip_path: "Output ZIP file name"
+  }
 }

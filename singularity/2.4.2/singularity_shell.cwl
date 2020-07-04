@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: singularity_shell.cwl
+id: ../../../../home/ubuntu/BiocondaCli/singularity_shell.cwl
 inputs:
 - id: app
   doc: Include an installed container app in the environment
@@ -101,6 +101,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --writable
+- id: singularity
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

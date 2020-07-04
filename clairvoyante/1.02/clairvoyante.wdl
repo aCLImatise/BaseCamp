@@ -2,18 +2,22 @@ version 1.0
 
 task Clairvoyante.py {
   input {
-    String? submoduleSubmoduleName
-    String? optionsOptions
-    String? ofOf
-    String? theThe
-    String? submoduleSubmodule
+    String submodule_name
+    String? of
+    String? the
+    String? submodule
   }
   command <<<
     clairvoyante.py \
-      ~{submoduleSubmoduleName} \
-      ~{optionsOptions} \
-      ~{ofOf} \
-      ~{theThe} \
-      ~{submoduleSubmodule}
+      ~{submodule_name} \
+      ~{of} \
+      ~{the} \
+      ~{submodule}
   >>>
+  parameter_meta {
+    submodule_name: ""
+    of: ""
+    the: ""
+    submodule: ""
+  }
 }

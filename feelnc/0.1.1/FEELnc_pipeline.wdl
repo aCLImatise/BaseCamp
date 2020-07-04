@@ -2,18 +2,25 @@ version 1.0
 
 task FEELncPipeline.sh {
   input {
-    String candidateCandidate
-    String referenceReference
-    String genomeGenome
-    String outOutName
-    String outdirOutdir
+    String? candidate
+    String? reference
+    String? genome
+    String? out_name
+    String? outdir
   }
   command <<<
     FEELnc_pipeline.sh \
-      ~{if defined(candidateCandidate) then ("--candidate " +  '"' + candidateCandidate + '"') else ""} \
-      ~{if defined(referenceReference) then ("--reference " +  '"' + referenceReference + '"') else ""} \
-      ~{if defined(genomeGenome) then ("--genome " +  '"' + genomeGenome + '"') else ""} \
-      ~{if defined(outOutName) then ("--outname " +  '"' + outOutName + '"') else ""} \
-      ~{if defined(outdirOutdir) then ("--outdir " +  '"' + outdirOutdir + '"') else ""}
+      ~{if defined(candidate) then ("--candidate " +  '"' + candidate + '"') else ""} \
+      ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
+      ~{if defined(genome) then ("--genome " +  '"' + genome + '"') else ""} \
+      ~{if defined(out_name) then ("--outname " +  '"' + out_name + '"') else ""} \
+      ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""}
   >>>
+  parameter_meta {
+    candidate: ""
+    reference: ""
+    genome: ""
+    out_name: ""
+    outdir: ""
+  }
 }

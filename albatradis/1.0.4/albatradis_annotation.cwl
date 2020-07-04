@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: albatradis_annotation.cwl
+id: ../../../../home/ubuntu/BiocondaCli/albatradis_annotation.cwl
 inputs:
-- id: embl_file
-  doc: Annotation file in EMBL format
-  type: string
-  inputBinding:
-    position: 0
 - id: feature_size
   doc: 'Feature size (default: 198)'
   type: string
@@ -26,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
+- id: embl_file
+  doc: Annotation file in EMBL format
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

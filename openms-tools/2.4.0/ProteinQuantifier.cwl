@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ProteinQuantifier.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ProteinQuantifier.cwl
 inputs:
 - id: in
   doc: "*               Input file (valid formats: 'featureXML', 'consensusXML', 'idXML')"
@@ -50,21 +50,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -filter_charge
-- id: consensus
-  doc: :normalize      Scale peptide abundances so that medians of all samples are
-    equal
-  type: boolean
-  inputBinding:
-    prefix: -consensus
-- id: consensus
-  doc: :fix_peptides   Use the same peptides for protein quantification across all
-    samples. With 'top 0', all peptides that occur in every sample are considered.
-    Otherwise ('top N'), the N peptides that occur in the most samples (independently
-    of each other) are selected, breaking ties by total abundance (there is no guarantee
-    that the best co-ocurring peptides are chosen!).
-  type: boolean
-  inputBinding:
-    prefix: -consensus
 - id: ratios
   doc: 'Add the log2 ratios of the abundance values to the output. Format: log_2(x_0/x_0)
     <sep> log_2(x_1/x_0) <sep> log_2(x_2/x_0) ...'
@@ -74,29 +59,10 @@ inputs:
 - id: ratios_sila_c
   doc: 'Add the log2 ratios for a triple SILAC experiment to the output. Only applicable
     to consensus maps of exactly three sub-maps. Format: log_2(heavy/light) <sep>
-    log_2(heavy/middle)  <sep> log_2(middle/light)'
+    log_2(heavy/middle) <sep> log_2(middle/light)'
   type: boolean
   inputBinding:
     prefix: -ratiosSILAC
-- id: format
-  doc: :separator <sep>   Character(s) used to separate fields; by default, the 'tab'
-    character is used
-  type: boolean
-  inputBinding:
-    prefix: -format
-- id: format
-  doc: ":quoting <method>  Method for quoting of strings: 'none' for no quoting, 'double'\
-    \ for quoting with doubling of embedded quotes, 'escape' for quoting with backslash-escaping\
-    \ of embedded quotes (default: 'double' valid: 'none', 'double', 'escape')"
-  type: boolean
-  inputBinding:
-    prefix: -format
-- id: format
-  doc: ":replacement <x>   If 'quoting' is 'none', used to replace occurrences of\
-    \ the separator in strings before writing (default: '_')"
-  type: boolean
-  inputBinding:
-    prefix: -format
 - id: ini
   doc: Use the given TOPP INI file
   type: File

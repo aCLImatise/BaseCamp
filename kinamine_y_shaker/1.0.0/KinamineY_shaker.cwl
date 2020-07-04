@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: KinamineY_shaker.cwl
+id: ../../../../home/ubuntu/BiocondaCli/KinamineY_shaker.cwl
 inputs:
+- id: jar
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -jar
 - id: java
   doc: ''
   type: string
@@ -26,11 +31,6 @@ inputs:
   type: string
   inputBinding:
     position: 4
-- id: jar
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -jar
 outputs: []
 cwlVersion: v1.1
 baseCommand:

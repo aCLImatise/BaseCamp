@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pyqi_make_release.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyqi_make_release.cwl
 inputs:
 - id: package_name
   doc: The name of the package to release [REQUIRED]

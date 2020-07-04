@@ -1,29 +1,24 @@
 class: CommandLineTool
-id: merge_midas.py_snps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/merge_midas.py_snps.cwl
 inputs:
-- id: outdir
-  doc: Directory for output files.  A subdirectory will be created for each species_id
-  type: string
-  inputBinding:
-    position: 0
 - id: threads
   doc: Number of CPUs to use (1)
   type: long
   inputBinding:
     prefix: --threads
-- id: i
+- id: input_sample_output
   doc: Input to sample directories output by run_midas.py; see '-t' for details
   type: string
   inputBinding:
     prefix: -i
-- id: t
+- id: specify_one_following
   doc: 'Specify one of the following: list: -i is a comma-separated list (ex: /samples/sample_1,/samples/sample_2)
     dir: -i is a directory containing all samples (ex: /samples) file: -i is a file
     of paths to samples (ex: /sample_paths.txt)'
   type: string
   inputBinding:
     prefix: -t
-- id: d
+- id: path_reference_database
   doc: Path to reference database By default, the MIDAS_DB environmental variable
     is used
   type: string
@@ -124,6 +119,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --max_sites
+- id: outdir
+  doc: Directory for output files.  A subdirectory will be created for each species_id
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

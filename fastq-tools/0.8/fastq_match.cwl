@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastq_match.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq_match.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

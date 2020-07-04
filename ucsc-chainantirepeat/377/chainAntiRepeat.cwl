@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: chainAntiRepeat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chainAntiRepeat.cwl
 inputs:
+- id: min_score
+  doc: '- minimum score (after repeat stuff) to pass'
+  type: string
+  inputBinding:
+    prefix: -minScore
+- id: no_check_score
+  doc: '- score that will pass without checks (speed tweak)'
+  type: string
+  inputBinding:
+    prefix: -noCheckScore
 - id: t_nib_dir
   doc: ''
   type: string
@@ -21,16 +31,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: min_score
-  doc: (after repeat stuff) to pass
-  type: string
-  inputBinding:
-    prefix: -minScore
-- id: no_check_score
-  doc: will pass without checks (speed tweak)
-  type: string
-  inputBinding:
-    prefix: -noCheckScore
 outputs: []
 cwlVersion: v1.1
 baseCommand:

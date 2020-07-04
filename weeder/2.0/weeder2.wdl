@@ -2,10 +2,13 @@ version 1.0
 
 task Weeder2 {
   input {
-    String fF
+    String? f
   }
   command <<<
     weeder2 \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""}
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  parameter_meta {
+    f: ""
+  }
 }

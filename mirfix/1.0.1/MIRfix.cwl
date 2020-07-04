@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MIRfix.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MIRfix.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

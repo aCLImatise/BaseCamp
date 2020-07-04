@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: phyluce_assembly_screen_probes_for_dupes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_assembly_screen_probes_for_dupes.cwl
 inputs:
 - id: last_z
-  doc: ''
+  doc: The lastz input
   type: string
   inputBinding:
     prefix: --lastz

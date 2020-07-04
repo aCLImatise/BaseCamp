@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: scHicDemultiplex.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scHicDemultiplex.cwl
 inputs:
-- id: fast_q
+- id: fastq_files_demultiplex_ri
   doc: "of fastq files to demultiplex [list of fastq files to demultiplex ...], -f\
     \ list of fastq files to demultiplex [list of fastq files to demultiplex ...]\
     \ The fastq files to demultiplex of Nagano 2017 Cell cycle dynamics of chromosomal\
@@ -43,6 +43,31 @@ inputs:
   type: string
   inputBinding:
     prefix: --bufferSize
+- id: of
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: var_7
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: files
+  doc: ''
+  type: File
+  inputBinding:
+    position: 2
+- id: to
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: demultiplex
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

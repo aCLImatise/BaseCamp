@@ -1,26 +1,16 @@
 class: CommandLineTool
-id: impute2chromopainter.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/impute2chromopainter.pl.cwl
 inputs:
-- id: perl
+- id: impute_output_file_dot_haps
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: impute2chromopainterpl
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: impute_output_file_haps
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: output_filename_prefix
   doc: ''
   type: string
   inputBinding:
-    position: 3
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

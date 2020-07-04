@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: db_replicate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/db_replicate.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

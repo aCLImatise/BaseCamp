@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pyScaf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyScaf.cwl
 inputs:
 - id: fast_a
   doc: assembly FASTA file

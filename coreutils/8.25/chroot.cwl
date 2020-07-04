@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: chroot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chroot.cwl
 inputs:
 - id: groups
   doc: specify supplementary groups as g1,g2,..,gN
@@ -16,6 +16,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --skip-chdir
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: new_root
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

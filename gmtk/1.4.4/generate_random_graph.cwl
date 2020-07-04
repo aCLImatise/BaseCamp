@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: generate_random_graph.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/generate_random_graph.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

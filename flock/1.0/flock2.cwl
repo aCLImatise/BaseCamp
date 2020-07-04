@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: flock2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/flock2.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

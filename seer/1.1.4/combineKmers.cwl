@@ -1,19 +1,19 @@
 class: CommandLineTool
-id: combineKmers.cwl
+id: ../../../../home/ubuntu/BiocondaCli/combineKmers.cwl
 inputs:
-- id: s
-  doc: ''
-  type: string
+- id: arg_file_tab
+  doc: '[ --samples ] arg    file with tab separated sample name and kmer file'
+  type: boolean
   inputBinding:
-    prefix: -s
-- id: o
-  doc: ''
-  type: string
+    prefix: -r
+- id: arg_output_file
+  doc: '[ --output ] arg     output file prefix'
+  type: boolean
   inputBinding:
     prefix: -o
 - id: min_samples
-  doc: ''
-  type: boolean
+  doc: (=1)  minimum number of samples kmer must occur in to be  printed
+  type: string
   inputBinding:
     prefix: --min_samples
 outputs: []

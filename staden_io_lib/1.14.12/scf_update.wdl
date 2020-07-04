@@ -2,14 +2,19 @@ version 1.0
 
 task ScfUpdate {
   input {
-    String vV
-    String? sourceSource
-    String? destinationDestination
+    String? v
+    String source
+    String destination
   }
   command <<<
     scf_update \
-      ~{sourceSource} \
-      ~{if defined(vV) then ("-v " +  '"' + vV + '"') else ""} \
-      ~{destinationDestination}
+      ~{source} \
+      ~{destination} \
+      ~{if defined(v) then ("-v " +  '"' + v + '"') else ""}
   >>>
+  parameter_meta {
+    v: ""
+    source: ""
+    destination: ""
+  }
 }

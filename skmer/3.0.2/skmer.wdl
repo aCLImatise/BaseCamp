@@ -2,10 +2,13 @@ version 1.0
 
 task Skmer {
   input {
-    Boolean debugDebug
+    Boolean? debug
   }
   command <<<
     skmer \
-      ~{true="--debug" false="" debugDebug}
+      ~{true="--debug" false="" debug}
   >>>
+  parameter_meta {
+    debug: "Print the traceback when an exception is raised"
+  }
 }

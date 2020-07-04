@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SRC_counter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SRC_counter.cwl
 inputs:
 - id: nb_cores
   doc: "(1 arg) :    number of cores  [default '0']"

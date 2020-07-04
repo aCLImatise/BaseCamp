@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: calculate_ref_alt_counts.cwl
+id: ../../../../home/ubuntu/BiocondaCli/calculate_ref_alt_counts.cwl
 inputs:
 - id: output
   doc: Path to the output file
@@ -11,7 +11,7 @@ inputs:
   type: File[]
   inputBinding:
     prefix: --input
-- id: b
+- id: filepath__bam
   doc: FILEPATH, --bam <name> FILEPATH Name for the library and the path to its bam
     file
   type: string

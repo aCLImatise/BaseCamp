@@ -2,10 +2,13 @@ version 1.0
 
 task CruxGetMs2Spectrum {
   input {
-    String? ms2Ms2File
+    String ms_two_file
   }
   command <<<
     crux get-ms2-spectrum \
-      ~{ms2Ms2File}
+      ~{ms_two_file}
   >>>
+  parameter_meta {
+    ms_two_file: ""
+  }
 }

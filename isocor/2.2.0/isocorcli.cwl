@@ -1,22 +1,17 @@
 class: CommandLineTool
-id: isocorcli.cwl
+id: ../../../../home/ubuntu/BiocondaCli/isocorcli.cwl
 inputs:
-- id: input_data
-  doc: measurements file to process
-  type: string
-  inputBinding:
-    position: 0
-- id: m
+- id: path_metabolites_database
   doc: path to metabolites database
   type: string
   inputBinding:
     prefix: -M
-- id: d
+- id: path_derivatives_database
   doc: path to derivatives database
   type: string
   inputBinding:
     prefix: -D
-- id: i
+- id: path_isotopes_database
   doc: path to isotopes database
   type: string
   inputBinding:
@@ -56,6 +51,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: input_data
+  doc: measurements file to process
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

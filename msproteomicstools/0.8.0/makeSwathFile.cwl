@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: makeSwathFile.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/makeSwathFile.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

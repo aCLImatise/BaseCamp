@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _profit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_profit.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

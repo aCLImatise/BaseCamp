@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cds_subgraphs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cds_subgraphs.cwl
 inputs:
 - id: output_folder
   doc: output folder to use for GFA files
@@ -26,7 +26,7 @@ inputs:
   type: File
   inputBinding:
     prefix: --cds-len-est
-- id: k
+- id: kmer_length_use
   doc: k-mer length to use
   type: string
   inputBinding:

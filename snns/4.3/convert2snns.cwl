@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: convert2snns.cwl
+id: ../../../../home/ubuntu/BiocondaCli/convert2snns.cwl
 inputs:
 - id: control_file
   doc: ''

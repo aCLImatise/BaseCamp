@@ -1,21 +1,21 @@
 class: CommandLineTool
-id: vsnp_chromosome_reference.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vsnp_chromosome_reference.py.cwl
 inputs:
-- id: prog
-  doc: ''
+- id: cwd
+  doc: 'Optional: path to VCF files'
   type: string
   inputBinding:
-    position: 0
-- id: w
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -w
+    prefix: --cwd
 - id: v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
+- id: prog
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

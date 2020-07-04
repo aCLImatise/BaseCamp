@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: hclust2.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hclust2.py.cwl
 inputs:
-- id: i
+- id: _input_matrix
   doc: '[INPUT_FILE], --inp [INPUT_FILE], --in [INPUT_FILE] The input matrix'
   type: boolean
   inputBinding:
@@ -166,6 +166,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --nan_c
+- id: input_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

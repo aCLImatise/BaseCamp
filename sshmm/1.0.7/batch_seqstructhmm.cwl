@@ -1,23 +1,6 @@
 class: CommandLineTool
-id: batch_seqstructhmm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/batch_seqstructhmm.cwl
 inputs:
-- id: data_directory
-  doc: data directory; must contain the sequence files under fasta/<protein>/positive.fasta
-    and structure files under <structure_type>/<protein>/positive.txt
-  type: string
-  inputBinding:
-    position: 0
-- id: proteins
-  doc: list of RNA-binding proteins to analyze (surrounded by quotation marks, separated
-    by whitespace)
-  type: string
-  inputBinding:
-    position: 1
-- id: batch_directory
-  doc: directory for batch output
-  type: string
-  inputBinding:
-    position: 2
 - id: cores
   doc: number of cores to use (if not given, all cores are used)
   type: string
@@ -63,6 +46,23 @@ inputs:
   type: string
   inputBinding:
     prefix: --termination_interval
+- id: data_directory
+  doc: data directory; must contain the sequence files under fasta/<protein>/positive.fasta
+    and structure files under <structure_type>/<protein>/positive.txt
+  type: string
+  inputBinding:
+    position: 0
+- id: proteins
+  doc: list of RNA-binding proteins to analyze (surrounded by quotation marks, separated
+    by whitespace)
+  type: string
+  inputBinding:
+    position: 1
+- id: batch_directory
+  doc: directory for batch output
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

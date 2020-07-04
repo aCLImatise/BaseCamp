@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: SimpleGraph.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SimpleGraph.cwl
 inputs:
-- id: adj
-  doc: adjacency of the contigs
-  type: string
-  inputBinding:
-    position: 0
-- id: dist
-  doc: distance estimates between the contigs
-  type: string
-  inputBinding:
-    position: 1
 - id: km_er
   doc: k-mer size
   type: string
@@ -91,6 +81,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --species
+- id: adj
+  doc: adjacency of the contigs
+  type: string
+  inputBinding:
+    position: 0
+- id: dist
+  doc: distance estimates between the contigs
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

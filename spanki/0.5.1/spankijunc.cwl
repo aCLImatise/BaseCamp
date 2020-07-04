@@ -1,24 +1,24 @@
 class: CommandLineTool
-id: spankijunc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/spankijunc.cwl
 inputs:
-- id: i
+- id: bam_file_name
   doc: BAM file name
   type: string
   inputBinding:
     prefix: -i
-- id: g
+- id: reference_gtf
   doc: Reference GTF
   type: string
   inputBinding:
     prefix: -g
-- id: m
+- id: what_method_run
   doc: "What method to run: 'eval'  - Evaluates alignments, does not calculate IRT\
     \ 'quant' - Quantifies coverage and IRT, but not entropy and MMES 'all'   - Performs\
     \ all analyses (default)"
   type: string
   inputBinding:
     prefix: -m
-- id: f
+- id: fasta_file_must
   doc: Fasta file Must have same chromosomes as BAM and GTF
   type: string
   inputBinding:
@@ -29,12 +29,12 @@ inputs:
   type: string
   inputBinding:
     prefix: -filter
-- id: o
+- id: output_directory_default
   doc: Output directory, default='junctions_out'
   type: string
   inputBinding:
     prefix: -o
-- id: r
+- id: size_examine_repeats
   doc: Size to examine for repeats (number of bases)
   type: string
   inputBinding:

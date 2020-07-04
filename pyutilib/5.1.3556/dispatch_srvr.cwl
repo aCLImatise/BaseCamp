@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dispatch_srvr.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dispatch_srvr.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

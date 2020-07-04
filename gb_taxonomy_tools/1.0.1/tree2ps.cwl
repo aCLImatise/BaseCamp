@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tree2ps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tree2ps.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

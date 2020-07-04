@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: shiver_align_contigs.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/shiver_align_contigs.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastq_grep.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq_grep.cwl
 inputs:
 - id: id
   doc: match the read id (by default, sequence is matched)

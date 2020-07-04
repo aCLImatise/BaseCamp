@@ -2,18 +2,31 @@ version 1.0
 
 task GenePredToBigGenePred {
   input {
-    Boolean knownKnown
-    String scoreScore
-    String geneGeneNames
-    String colorsColors
-    String cdsCds
+    Boolean? known
+    String? score
+    String? gene_names
+    String? colors
+    String? cds
+    File file_do_tgp
+    String stdout
   }
   command <<<
     genePredToBigGenePred \
-      ~{true="-known" false="" knownKnown} \
-      ~{if defined(scoreScore) then ("-score " +  '"' + scoreScore + '"') else ""} \
-      ~{if defined(geneGeneNames) then ("-geneNames " +  '"' + geneGeneNames + '"') else ""} \
-      ~{if defined(colorsColors) then ("-colors " +  '"' + colorsColors + '"') else ""} \
-      ~{if defined(cdsCds) then ("-cds " +  '"' + cdsCds + '"') else ""}
+      ~{file_do_tgp} \
+      ~{stdout} \
+      ~{true="-known" false="" known} \
+      ~{if defined(score) then ("-score " +  '"' + score + '"') else ""} \
+      ~{if defined(gene_names) then ("-geneNames " +  '"' + gene_names + '"') else ""} \
+      ~{if defined(colors) then ("-colors " +  '"' + colors + '"') else ""} \
+      ~{if defined(cds) then ("-cds " +  '"' + cds + '"') else ""}
   >>>
+  parameter_meta {
+    known: "input file is a genePred in knownGene format"
+    score: "scores is two column file with id's mapping to scores"
+    gene_names: "geneNames is a three column file with id's mapping to two gene names"
+    colors: "colors is a four column file with id's mapping to r,g,b"
+    cds: "cds is a five column file with id's mapping to cds status codes and exonFrames (see knownCds.as)"
+    file_do_tgp: ""
+    stdout: ""
+  }
 }

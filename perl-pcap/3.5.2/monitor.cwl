@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: monitor.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/monitor.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

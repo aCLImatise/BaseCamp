@@ -2,20 +2,28 @@ version 1.0
 
 task CrossEntropy {
   input {
-    String xX
-    String kK
-    String mM
-    String qQ
-    String gG
-    String genotypeGenotype
+    String? _genotype_file_geno
+    String? _number_ancestral
+    String? _haploid_diploid
+    String? _individual_admixture
+    String? _ancestral_genotype
+    String? _genotype_file_masked
   }
   command <<<
     crossEntropy \
-      ~{if defined(xX) then ("-x " +  '"' + xX + '"') else ""} \
-      ~{if defined(kK) then ("-K " +  '"' + kK + '"') else ""} \
-      ~{if defined(mM) then ("-m " +  '"' + mM + '"') else ""} \
-      ~{if defined(qQ) then ("-q " +  '"' + qQ + '"') else ""} \
-      ~{if defined(gG) then ("-g " +  '"' + gG + '"') else ""} \
-      ~{if defined(genotypeGenotype) then ("-- genotype " +  '"' + genotypeGenotype + '"') else ""}
+      ~{if defined(_genotype_file_geno) then ("-x " +  '"' + _genotype_file_geno + '"') else ""} \
+      ~{if defined(_number_ancestral) then ("-K " +  '"' + _number_ancestral + '"') else ""} \
+      ~{if defined(_haploid_diploid) then ("-m " +  '"' + _haploid_diploid + '"') else ""} \
+      ~{if defined(_individual_admixture) then ("-q " +  '"' + _individual_admixture + '"') else ""} \
+      ~{if defined(_ancestral_genotype) then ("-g " +  '"' + _ancestral_genotype + '"') else ""} \
+      ~{if defined(_genotype_file_masked) then ("-i " +  '"' + _genotype_file_masked + '"') else ""}
   >>>
+  parameter_meta {
+    _genotype_file_geno: "-- genotype file (in .geno format)"
+    _number_ancestral: "-- the number of ancestral populations"
+    _haploid_diploid: "-- 1 if haploid, 2 if diploid              (default: 2)"
+    _individual_admixture: "-- individual admixture coefficient file (default: genotype_file_I.K.Q)"
+    _ancestral_genotype: "-- ancestral genotype frequency file       (default: genotype_file_I.K.G)"
+    _genotype_file_masked: "-- genotype file with masked genotypes     (default: genotype_file_I.geno)"
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cdscan.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cdscan.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

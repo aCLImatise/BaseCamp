@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: apirst2html.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/apirst2html.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

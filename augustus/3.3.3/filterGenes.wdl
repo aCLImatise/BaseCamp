@@ -1,13 +1,17 @@
 version 1.0
 
-task FilterGenes.plDbfile {
+task FilterGenes.pl {
   input {
-    String? nameNameFile
-    String? dbfileDbfile
+    String name_file
+    String dbfile
   }
   command <<<
-    filterGenes.pl dbfile \
-      ~{nameNameFile} \
-      ~{dbfileDbfile}
+    filterGenes.pl \
+      ~{name_file} \
+      ~{dbfile}
   >>>
+  parameter_meta {
+    name_file: ""
+    dbfile: ""
+  }
 }

@@ -1,23 +1,23 @@
 class: CommandLineTool
-id: alignGFA.cwl
+id: ../../../../home/ubuntu/BiocondaCli/alignGFA.cwl
 inputs:
-- id: t
+- id: load_tigs_tgstore
   doc: v         Load tigs from tgStore 't', version 'v'.
   type: string
   inputBinding:
     prefix: -T
-- id: c
+- id: bed_format_source
   doc: v         For BED format, the source of the 'chromosomes'.  Similar to -T.
     Consensus sequence must exist for -T and -C (usually in v=2)
   type: string
   inputBinding:
     prefix: -C
-- id: i
+- id: input_graph
   doc: Input graph.
   type: string
   inputBinding:
     prefix: -i
-- id: o
+- id: output_graph_graph
   doc: Output graph. Graph are either GFA (v1) or BED format.
   type: string
   inputBinding:
@@ -34,16 +34,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -bed
-- id: v
+- id: increase_chatter
   doc: Increase chatter.
   type: boolean
   inputBinding:
     prefix: -V
-- id: t
+- id: use_computational_threads
   doc: Use 'threads' computational threads.
   type: string
   inputBinding:
     prefix: -t
+- id: opts
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

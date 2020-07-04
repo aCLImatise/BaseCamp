@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: snpEff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snpEff.cwl
 inputs:
-- id: variants_file
-  doc: ': Default is STDIN'
-  type: string
-  inputBinding:
-    position: 0
 - id: chr
   doc: ": Prepend 'string' to chromosome name (e.g. 'chr1' instead of '1'). Only on\
     \ TXT output."
@@ -27,7 +22,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -download
-- id: i
+- id: input_format_default
   doc: ': Input format [ vcf, bed ]. Default: VCF.'
   type: string
   inputBinding:
@@ -37,12 +32,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -fileList
-- id: o
+- id: ouput_format_default
   doc: ': Ouput format [ vcf, gatk, bed, bedAnn ]. Default: VCF.'
   type: string
   inputBinding:
     prefix: -o
-- id: s
+- id: stats_htmlstats_create
   doc: ", -stats, -htmlStats         : Create HTML summary file.  Default is 'snpEff_summary.html'"
   type: boolean
   inputBinding:
@@ -118,7 +113,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -hgvsOld
-- id: hgvs1letteraa
+- id: hgvs_one_letter_aa
   doc: ': Use one letter Amino acid codes in HGVS notation. Default: false'
   type: boolean
   inputBinding:
@@ -158,7 +153,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -sequenceOntology
-- id: c
+- id: config_specify_config
   doc: ', -config                 : Specify config file'
   type: boolean
   inputBinding:
@@ -168,7 +163,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -configOption
-- id: d
+- id: debug_debug_mode
   doc: ', -debug                  : Debug mode (very verbose).'
   type: boolean
   inputBinding:
@@ -178,11 +173,6 @@ inputs:
   type: File
   inputBinding:
     prefix: -dataDir
-- id: download
-  doc: ': Download a SnpEff database, if not available locally. Default: true'
-  type: boolean
-  inputBinding:
-    prefix: -download
 - id: no_download
   doc: ': Do not download a SnpEff database, if not available locally.'
   type: boolean
@@ -193,17 +183,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -noLog
-- id: t
+- id: use_threads_implies
   doc: ": Use multiple threads (implies '-noStats'). Default 'off'"
   type: boolean
   inputBinding:
     prefix: -t
-- id: q
+- id: quiet_quiet_mode
   doc: ', -quiet                  : Quiet mode (do not show any messages or errors)'
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: verbose_verbose_mode
   doc: ', -verbose                : Verbose mode'
   type: boolean
   inputBinding:
@@ -329,6 +319,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ud
+- id: variants_file
+  doc: ': Default is STDIN'
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

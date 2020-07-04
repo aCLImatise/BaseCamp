@@ -2,10 +2,13 @@ version 1.0
 
 task CruxLocalizeModification {
   input {
-    String? inputInputPsmFile
+    String input_psm_file
   }
   command <<<
     crux localize-modification \
-      ~{inputInputPsmFile}
+      ~{input_psm_file}
   >>>
+  parameter_meta {
+    input_psm_file: ""
+  }
 }

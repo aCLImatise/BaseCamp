@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: ifne.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ifne.cwl
 inputs:
+- id: n
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -n
 - id: command
   doc: ''
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: n
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -n
 outputs: []
 cwlVersion: v1.1
 baseCommand:

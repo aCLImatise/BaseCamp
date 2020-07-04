@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: biopet_sampleconfig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/biopet_sampleconfig.cwl
 inputs:
 - id: sample_config
   doc: ''

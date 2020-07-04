@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: db_archive.cwl
+id: ../../../../home/ubuntu/BiocondaCli/db_archive.cwl
 inputs:
 - id: adls_vv
   doc: ''

@@ -2,14 +2,19 @@ version 1.0
 
 task BwaPac2bwtgen {
   input {
-    String? bwtBwtGen
-    String? inInPac
-    String? outOutBwt
+    String bwt_gen
+    String in_dot_pac
+    String out_dot_bwt
   }
   command <<<
     bwa pac2bwtgen \
-      ~{bwtBwtGen} \
-      ~{inInPac} \
-      ~{outOutBwt}
+      ~{bwt_gen} \
+      ~{in_dot_pac} \
+      ~{out_dot_bwt}
   >>>
+  parameter_meta {
+    bwt_gen: ""
+    in_dot_pac: ""
+    out_dot_bwt: ""
+  }
 }

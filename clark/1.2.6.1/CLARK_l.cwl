@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: CLARK_l.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CLARK_l.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

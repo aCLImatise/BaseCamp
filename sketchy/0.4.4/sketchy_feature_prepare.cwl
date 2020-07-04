@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sketchy_feature_prepare.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sketchy_feature_prepare.cwl
 inputs:
 - id: index
   doc: Path to feature index input file  [required]

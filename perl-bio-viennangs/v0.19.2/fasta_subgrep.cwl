@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fasta_subgrep.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fasta_subgrep.pl.cwl
 inputs:
 - id: fa
   doc: Input file in Fasta format (mandatory)

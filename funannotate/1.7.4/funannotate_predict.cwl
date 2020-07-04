@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: funannotate_predict.cwl
+id: ../../../../home/ubuntu/BiocondaCli/funannotate_predict.cwl
 inputs:
-- id: arguments
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: input
   doc: Genome multi-FASTA file (softmasked repeats)
   type: boolean
@@ -121,7 +116,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ploidy
-- id: tbl2asn
+- id: tbl_two_asn
   doc: 'Assembly parameters for tbl2asn. Default: "-l paired-ends"'
   type: boolean
   inputBinding:
@@ -181,7 +176,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --min_protlen
-- id: repeats_2evm
+- id: repeats_two_evm
   doc: Use repeats in EVM consensus model building
   type: boolean
   inputBinding:
@@ -221,6 +216,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --cpus
+- id: arguments
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

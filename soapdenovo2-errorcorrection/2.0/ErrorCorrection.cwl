@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ErrorCorrection.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ErrorCorrection.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

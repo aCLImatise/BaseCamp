@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: countMutations.cwl
+id: ../../../../home/ubuntu/BiocondaCli/countMutations.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

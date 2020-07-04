@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pKiss_mfe_window.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pKiss_mfe_window.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

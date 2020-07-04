@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: flowcraft_build.cwl
+id: ../../../../home/ubuntu/BiocondaCli/flowcraft_build.cwl
 inputs:
 - id: tasks
   doc: Space separated tasks of the pipeline
@@ -11,12 +11,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --recipe
-- id: o
+- id: name_pipeline_file
   doc: Name of the pipeline file
   type: string
   inputBinding:
     prefix: -o
-- id: n
+- id: provide_name_pipeline
   doc: Provide a name for your pipeline.
   type: string
   inputBinding:

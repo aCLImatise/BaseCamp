@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: download_taxonomy.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/download_taxonomy.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

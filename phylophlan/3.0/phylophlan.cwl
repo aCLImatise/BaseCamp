@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: phylophlan.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phylophlan.cwl
 inputs:
+- id: input
+  doc: 'Folder containing your input genomes and/or proteomes (default: None)'
+  type: string
+  inputBinding:
+    prefix: --input
 - id: clean
   doc: 'Clean the output and partial data produced for the specified project (default:
     None)'
@@ -14,7 +19,7 @@ inputs:
   inputBinding:
     prefix: --output
 - id: database
-  doc: 'The name of the database of markers to use. (default: None)'
+  doc: 'The name of the database of markers to use (default: None)'
   type: string
   inputBinding:
     prefix: --database

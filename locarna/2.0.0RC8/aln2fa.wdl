@@ -2,14 +2,22 @@ version 1.0
 
 task Aln2fa.pl {
   input {
-    Boolean manMan
-    Boolean verboseVerbose
-    Boolean deDeGap
+    Boolean? man
+    Boolean? verbose
+    Boolean? de_gap
+    String input_dot_aln
   }
   command <<<
     aln2fa.pl \
-      ~{true="--man" false="" manMan} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{true="--degap" false="" deDeGap}
+      ~{input_dot_aln} \
+      ~{true="--man" false="" man} \
+      ~{true="--verbose" false="" verbose} \
+      ~{true="--degap" false="" de_gap}
   >>>
+  parameter_meta {
+    man: "Full documentation"
+    verbose: "Verbose"
+    de_gap: "Remove gaps from sequences"
+    input_dot_aln: ""
+  }
 }

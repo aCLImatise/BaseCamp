@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: humann2_strain_profiler.cwl
+id: ../../../../home/ubuntu/BiocondaCli/humann2_strain_profiler.cwl
 inputs:
 - id: input
   doc: Original output table (tsv or biom format); default=[TSV/STDIN]
@@ -16,7 +16,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --critical_count
-- id: p
+- id: pinterval__pinterval
   doc: PINTERVAL, --pinterval PINTERVAL PINTERVAL Only genes with prevalence in this
     interval are allowed; default=[1e-10, 1]
   type: string

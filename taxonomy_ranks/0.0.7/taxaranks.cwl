@@ -1,18 +1,18 @@
 class: CommandLineTool
-id: taxaranks.cwl
+id: ../../../../home/ubuntu/BiocondaCli/taxaranks.cwl
 inputs:
-- id: i
+- id: file_can_list
   doc: A file can be a list of ncbi taxa id or species names (or higher ranks, e.g.
     Family, Order), or a mixture of them.
   type: File
   inputBinding:
     prefix: -i
-- id: o
+- id: outfile
   doc: outfile
   type: File
   inputBinding:
     prefix: -o
-- id: v
+- id: verbose_output
   doc: verbose output
   type: boolean
   inputBinding:

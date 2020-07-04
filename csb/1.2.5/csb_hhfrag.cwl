@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csb_hhfrag.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csb_hhfrag.cwl
 inputs:
-- id: query
-  doc: query profile HMM (e.g. created with csb.apps.buildhmm)
-  type: string
-  inputBinding:
-    position: 0
 - id: hh_search
   doc: path to the HHsearch executable (default=hhsearch)
   type: string
@@ -75,6 +70,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
+- id: query
+  doc: query profile HMM (e.g. created with csb.apps.buildhmm)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

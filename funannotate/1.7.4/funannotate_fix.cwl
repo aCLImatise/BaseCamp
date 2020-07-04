@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: funannotate_fix.cwl
+id: ../../../../home/ubuntu/BiocondaCli/funannotate_fix.cwl
 inputs:
-- id: arguments
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: input
   doc: Annotated genome in GenBank format.
   type: boolean
@@ -26,11 +21,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --out
-- id: tbl2asn
+- id: tbl_two_asn
   doc: 'Parameters for tbl2asn. Default: "-l paired-ends"'
   type: boolean
   inputBinding:
     prefix: --tbl2asn
+- id: arguments
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

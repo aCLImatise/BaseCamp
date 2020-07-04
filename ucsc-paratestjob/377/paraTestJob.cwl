@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: paraTestJob.cwl
+id: ../../../../home/ubuntu/BiocondaCli/paraTestJob.cwl
 inputs:
-- id: count
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: crash
   doc: Try to write to NULL when done.
   type: boolean
@@ -36,6 +31,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -sleep
+- id: count
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

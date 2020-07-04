@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: extract_codon_alignment.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extract_codon_alignment.cwl
 inputs:
 - id: aligned_cds
   doc: The CDS alignment.
@@ -13,8 +13,8 @@ inputs:
   inputBinding:
     prefix: --aln_format
 - id: codon_poses
-  doc: '{1,2,3,12,13,23} Codon position(s) to be extracted [12]'
-  type: boolean
+  doc: Codon position(s) to be extracted [12]
+  type: string
   inputBinding:
     prefix: --codonPoses
 - id: out_aln

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gotree_test.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gotree_test.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

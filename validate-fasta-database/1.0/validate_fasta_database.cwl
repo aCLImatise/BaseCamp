@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: validate_fasta_database.cwl
+id: ../../../../home/ubuntu/BiocondaCli/validate_fasta_database.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

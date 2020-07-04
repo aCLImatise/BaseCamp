@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: makeVariantTaxLookups.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/makeVariantTaxLookups.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

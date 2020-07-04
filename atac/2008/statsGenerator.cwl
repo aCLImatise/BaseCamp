@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: statsGenerator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/statsGenerator.cwl
 inputs:
-- id: a
+- id: read_input_from
   doc: read input from 'file.atac'
   type: boolean
   inputBinding:
     prefix: -a
-- id: p
+- id: write_stats_files
   doc: write stats to files prefixed with 'outprefix'
   type: boolean
   inputBinding:
     prefix: -p
-- id: g
+- id: use_genome_size
   doc: use a genome size of g for the Nx computation, defaults to the length of the
     A sequence.  Or use the actual length of sequence A or B.
   type: boolean

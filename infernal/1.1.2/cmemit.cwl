@@ -1,62 +1,57 @@
 class: CommandLineTool
-id: cmemit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cmemit.cwl
 inputs:
-- id: cm_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: o
+- id: send_sequence_output
   doc: ': send sequence output to file <f>, not stdout'
   type: string
   inputBinding:
     prefix: -o
-- id: n
+- id: generate_n_sequences
   doc: ': generate <n> sequences  [10]'
   type: string
   inputBinding:
     prefix: -N
-- id: u
+- id: write_generated_sequences_unaligned
   doc: ': write generated sequences as unaligned FASTA [default]  [default]'
   type: boolean
   inputBinding:
     prefix: -u
-- id: a
+- id: write_generated_sequences_alignment
   doc: ': write generated sequences as an alignment'
   type: boolean
   inputBinding:
     prefix: -a
-- id: c
+- id: generate_single_sequence
   doc: ': generate a single "consensus" sequence only'
   type: boolean
   inputBinding:
     prefix: -c
-- id: e
+- id: embed_emitted_sequences
   doc: ': embed emitted sequences within larger random sequences of length <n>'
   type: string
   inputBinding:
     prefix: -e
-- id: l
+- id: local_emit_locally
   doc: ': local; emit from a locally configured model [default: global]'
   type: boolean
   inputBinding:
     prefix: -l
-- id: u5p
+- id: u_five_p
   doc: ": truncate unaligned sequences 5', choosing a random start posn"
   type: boolean
   inputBinding:
     prefix: --u5p
-- id: u3p
+- id: u_three_p
   doc: ": truncate unaligned sequences 3', choosing a random end   posn"
   type: boolean
   inputBinding:
     prefix: --u3p
-- id: a5p
+- id: a_five_p
   doc: ": truncate aln 5', start at match column <n> (use 0 for random posn)"
   type: string
   inputBinding:
     prefix: --a5p
-- id: a3p
+- id: a_three_p
   doc: ": truncate aln 3', end   at match column <n> (use 0 for random posn)"
   type: string
   inputBinding:
@@ -111,6 +106,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --nohmmonly
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: cm_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

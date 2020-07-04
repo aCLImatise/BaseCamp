@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: count_seqs.py.cwl
-inputs:
-- id: input_fps
-  doc: the input filepaths (comma-separated) [REQUIRED]
-  type: string
-  inputBinding:
-    prefix: --input_fps
+id: ../../../../home/ubuntu/BiocondaCli/count_seqs.py.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

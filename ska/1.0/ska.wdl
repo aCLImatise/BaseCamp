@@ -1,7 +1,14 @@
 version 1.0
 
 task Ska {
+  input {
+    String subcommand
+  }
   command <<<
-    ska
+    ska \
+      ~{subcommand}
   >>>
+  parameter_meta {
+    subcommand: ""
+  }
 }

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: mapCounter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mapCounter.cwl
 inputs:
-- id: bigwig_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: seg
   doc: Outputs in SEG format
   type: boolean
@@ -27,6 +22,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --chromosome
+- id: bigwig_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

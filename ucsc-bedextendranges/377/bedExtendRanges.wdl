@@ -2,18 +2,34 @@ version 1.0
 
 task BedExtendRanges {
   input {
-    Boolean hostHost
-    Boolean userUser
-    Boolean passwordPassword
-    Boolean tabTab
-    String verboseVerbose
+    Boolean? host
+    Boolean? user
+    Boolean? password
+    Boolean? tab
+    String? verbose
+    String database
+    Int length
+    File files
   }
   command <<<
     bedExtendRanges \
-      ~{true="-host" false="" hostHost} \
-      ~{true="-user" false="" userUser} \
-      ~{true="-password" false="" passwordPassword} \
-      ~{true="-tab" false="" tabTab} \
-      ~{if defined(verboseVerbose) then ("- verbose " +  '"' + verboseVerbose + '"') else ""}
+      ~{database} \
+      ~{length} \
+      ~{files} \
+      ~{true="-host" false="" host} \
+      ~{true="-user" false="" user} \
+      ~{true="-password" false="" password} \
+      ~{true="-tab" false="" tab} \
+      ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""}
   >>>
+  parameter_meta {
+    host: "mysql host"
+    user: "mysql user"
+    password: "mysql password"
+    tab: "Separate by tabs rather than space"
+    verbose: "- verbose level for extra information to STDERR"
+    database: ""
+    length: ""
+    files: ""
+  }
 }

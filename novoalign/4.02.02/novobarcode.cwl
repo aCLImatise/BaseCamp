@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: novobarcode.cwl
-inputs:
-- id: novo_barcode
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
+id: ../../../../home/ubuntu/BiocondaCli/novobarcode.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

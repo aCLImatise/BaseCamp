@@ -2,14 +2,19 @@ version 1.0
 
 task Ifne {
   input {
-    Boolean nN
-    String? commandCommand
-    String? argsArgs
+    Boolean? n
+    String var_command
+    String? args
   }
   command <<<
     ifne \
-      ~{commandCommand} \
-      ~{true="-n" false="" nN} \
-      ~{argsArgs}
+      ~{var_command} \
+      ~{args} \
+      ~{true="-n" false="" n}
   >>>
+  parameter_meta {
+    n: ""
+    var_command: ""
+    args: ""
+  }
 }

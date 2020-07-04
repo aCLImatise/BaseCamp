@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csvtk_grep.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csvtk_grep.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: delete_matched
   doc: delete a pattern right after being matched, this keeps the firstly matched
     data and speedups when using regular expressions
@@ -133,6 +128,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tabs
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

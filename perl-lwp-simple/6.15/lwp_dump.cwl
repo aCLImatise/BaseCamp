@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: lwp_dump.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lwp_dump.cwl
 inputs:
 - id: url
   doc: ''

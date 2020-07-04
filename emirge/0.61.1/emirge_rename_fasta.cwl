@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: emirge_rename_fasta.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/emirge_rename_fasta.py.cwl
 inputs:
 - id: prob_min
   doc: 'Only include sequences in output with prior probability above PROB_MIN (Default:
@@ -25,6 +25,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no_trim_N
+- id: iter_dot_dir
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

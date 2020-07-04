@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: goalign_subset.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_subset.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: indices
   doc: If true, extracts given sequence indices instead of sequence names (0-based)
   type: boolean
@@ -97,6 +92,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

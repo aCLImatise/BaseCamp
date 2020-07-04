@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _trimest.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_trimest.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

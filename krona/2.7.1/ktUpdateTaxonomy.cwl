@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ktUpdateTaxonomy.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ktUpdateTaxonomy.sh.cwl
 inputs:
 - id: only_fetch
   doc: Only download source files; do not build.

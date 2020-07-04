@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fasten_quality_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fasten_quality_filter.cwl
 inputs:
 - id: num_cpus
   doc: 'Number of CPUs (default: 1)'

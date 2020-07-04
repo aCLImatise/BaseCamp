@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: BedShrink.cwl
+id: ../../../../home/ubuntu/BiocondaCli/BedShrink.cwl
 inputs:
-- id: n
+- id: number_bases_shrink
   doc: The number of bases to shrink (on both sides of each region).
   type: long
   inputBinding:

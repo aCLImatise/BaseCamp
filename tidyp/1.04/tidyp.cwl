@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tidyp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tidyp.cwl
 inputs:
 - id: modify
   doc: 'modify the original input files                           '
@@ -72,22 +72,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ascii
-- id: latin_0
+- id: latin_zero
   doc: 'use ISO-8859-15 for input, US-ASCII for output            '
   type: boolean
   inputBinding:
     prefix: -latin0
-- id: latin_1
+- id: latin_one
   doc: 'use ISO-8859-1 for both input and output                  '
   type: boolean
   inputBinding:
     prefix: -latin1
-- id: iso2022
+- id: iso_two_zero_two_two
   doc: 'use ISO-2022 for both input and output                    '
   type: boolean
   inputBinding:
     prefix: -iso2022
-- id: utf8
+- id: utf_eight
   doc: 'use UTF-8 for both input and output                       '
   type: boolean
   inputBinding:
@@ -97,32 +97,32 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -mac
-- id: win1252
+- id: win_one_two_five_two
   doc: 'use Windows-1252 for input, US-ASCII for output           '
   type: boolean
   inputBinding:
     prefix: -win1252
-- id: ibm858
+- id: ibm_eight_five_eight
   doc: 'use IBM-858 (CP850+Euro) for input, US-ASCII for output   '
   type: boolean
   inputBinding:
     prefix: -ibm858
-- id: utf16le
+- id: utf_one_six_le
   doc: 'use UTF-16LE for both input and output                    '
   type: boolean
   inputBinding:
     prefix: -utf16le
-- id: utf16be
+- id: utf_one_six_be
   doc: 'use UTF-16BE for both input and output                    '
   type: boolean
   inputBinding:
     prefix: -utf16be
-- id: utf16
+- id: utf_one_six
   doc: 'use UTF-16 for both input and output                      '
   type: boolean
   inputBinding:
     prefix: -utf16
-- id: big5
+- id: big_five
   doc: 'use Big5 for both input and output                        '
   type: boolean
   inputBinding:

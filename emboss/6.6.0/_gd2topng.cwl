@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: _gd2topng.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_gd2topng.cwl
 inputs:
-- id: gd2topng
+- id: gd_two_to_png
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: filename_gd2
+- id: filename_dot_gd_two
   doc: ''
   type: File
   inputBinding:
     position: 1
-- id: filename_png
+- id: filename_dot_png
   doc: ''
   type: File
   inputBinding:

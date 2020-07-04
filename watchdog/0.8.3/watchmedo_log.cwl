@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: watchmedo_log.cwl
+id: ../../../../home/ubuntu/BiocondaCli/watchmedo_log.cwl
 inputs:
-- id: directories
-  doc: "directories to watch. (default: '.')"
-  type: string
-  inputBinding:
-    position: 0
 - id: patterns
   doc: "matches event paths with these patterns (separated by ;). (default: '*')"
   type: string
@@ -66,6 +61,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug-force-inotify
+- id: directories
+  doc: "directories to watch. (default: '.')"
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,48 +2,70 @@ version 1.0
 
 task TadbitMerge {
   input {
-    File workdirWorkdir
-    File workWorkDir1
-    File workWorkDir2
-    File bam1Bam1
-    Boolean noxNox
-    File bam2Bam2
-    String cpusCpus
-    Int resolutionResolution
-    Boolean skipSkipComparison
-    Boolean skipSkipMerge
-    Array[String]+ saveSave
-    Int jobid1Jobid1
-    Int jobid2Jobid2
-    Boolean forceForce
-    Boolean normNorm
-    File biases1Biases1
-    File biases2Biases2
-    Array[Int]+ filterFilter
-    File samSamTools
-    File tmpTmpDb
+    File? workdir
+    File? workdir_one
+    File? workdir_two
+    File? bam_one
+    Boolean? nox
+    File? bam_two
+    String? cpus
+    Int? resolution
+    Boolean? skip_comparison
+    Boolean? skip_merge
+    Array[String] save
+    Int? jobid_one
+    Int? jobid_two
+    Boolean? force
+    Boolean? norm
+    File? biases_one
+    File? biases_two
+    Array[Int] filter
+    File? sam_tools
+    File? tmp_db
   }
   command <<<
     tadbit merge \
-      ~{if defined(workdirWorkdir) then ("--workdir " +  '"' + workdirWorkdir + '"') else ""} \
-      ~{if defined(workWorkDir1) then ("--workdir1 " +  '"' + workWorkDir1 + '"') else ""} \
-      ~{if defined(workWorkDir2) then ("--workdir2 " +  '"' + workWorkDir2 + '"') else ""} \
-      ~{if defined(bam1Bam1) then ("--bam1 " +  '"' + bam1Bam1 + '"') else ""} \
-      ~{true="--noX" false="" noxNox} \
-      ~{if defined(bam2Bam2) then ("--bam2 " +  '"' + bam2Bam2 + '"') else ""} \
-      ~{if defined(cpusCpus) then ("--cpus " +  '"' + cpusCpus + '"') else ""} \
-      ~{if defined(resolutionResolution) then ("--resolution " +  '"' + resolutionResolution + '"') else ""} \
-      ~{true="--skip_comparison" false="" skipSkipComparison} \
-      ~{true="--skip_merge" false="" skipSkipMerge} \
-      ~{if defined(saveSave) then ("--save " +  '"' + saveSave + '"') else ""} \
-      ~{if defined(jobid1Jobid1) then ("--jobid1 " +  '"' + jobid1Jobid1 + '"') else ""} \
-      ~{if defined(jobid2Jobid2) then ("--jobid2 " +  '"' + jobid2Jobid2 + '"') else ""} \
-      ~{true="--force" false="" forceForce} \
-      ~{true="--norm" false="" normNorm} \
-      ~{if defined(biases1Biases1) then ("--biases1 " +  '"' + biases1Biases1 + '"') else ""} \
-      ~{if defined(biases2Biases2) then ("--biases2 " +  '"' + biases2Biases2 + '"') else ""} \
-      ~{if defined(filterFilter) then ("--filter " +  '"' + filterFilter + '"') else ""} \
-      ~{if defined(samSamTools) then ("--samtools " +  '"' + samSamTools + '"') else ""} \
-      ~{if defined(tmpTmpDb) then ("--tmpdb " +  '"' + tmpTmpDb + '"') else ""}
+      ~{if defined(workdir) then ("--workdir " +  '"' + workdir + '"') else ""} \
+      ~{if defined(workdir_one) then ("--workdir1 " +  '"' + workdir_one + '"') else ""} \
+      ~{if defined(workdir_two) then ("--workdir2 " +  '"' + workdir_two + '"') else ""} \
+      ~{if defined(bam_one) then ("--bam1 " +  '"' + bam_one + '"') else ""} \
+      ~{true="--noX" false="" nox} \
+      ~{if defined(bam_two) then ("--bam2 " +  '"' + bam_two + '"') else ""} \
+      ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
+      ~{if defined(resolution) then ("--resolution " +  '"' + resolution + '"') else ""} \
+      ~{true="--skip_comparison" false="" skip_comparison} \
+      ~{true="--skip_merge" false="" skip_merge} \
+      ~{if defined(save) then ("--save " +  '"' + save + '"') else ""} \
+      ~{if defined(jobid_one) then ("--jobid1 " +  '"' + jobid_one + '"') else ""} \
+      ~{if defined(jobid_two) then ("--jobid2 " +  '"' + jobid_two + '"') else ""} \
+      ~{true="--force" false="" force} \
+      ~{true="--norm" false="" norm} \
+      ~{if defined(biases_one) then ("--biases1 " +  '"' + biases_one + '"') else ""} \
+      ~{if defined(biases_two) then ("--biases2 " +  '"' + biases_two + '"') else ""} \
+      ~{if defined(filter) then ("--filter " +  '"' + filter + '"') else ""} \
+      ~{if defined(sam_tools) then ("--samtools " +  '"' + sam_tools + '"') else ""} \
+      ~{if defined(tmp_db) then ("--tmpdb " +  '"' + tmp_db + '"') else ""}
   >>>
+  parameter_meta {
+    workdir: "path to a new output folder"
+    workdir_one: "path to working directory of the first HiC data sample to merge"
+    workdir_two: "path to working directory of the second HiC data sample to merge"
+    bam_one: "path to the first TADbit-generated BAM file with all reads (other wise the tool will guess from the working directory database)"
+    nox: "no display server (X screen)"
+    bam_two: "path to the second TADbit-generated BAM file with all reads (other wise the tool will guess from the working directory database)"
+    cpus: "[8] Maximum number of CPU cores available in the execution host. If higher than 1, tasks with multi-threading capabilities will enabled (if 0 all available) cores will be used"
+    resolution: "resolution at which to do the comparison, and generate the matrices."
+    skip_comparison: "skip the comparison between replicates (faster). Comparisons are performed at 3 levels 1- comparing first diagonals of each experiment (and generating SCC score and standard deviation see https://doi.org/10.1101/gr.220640.117) 2- Comparing the first eigenvectors of input experiments 3- Generates reproducibility score using function from https://doi.org/10.1093/bioinformatics/btx152"
+    skip_merge: "skip the merge of replicates (faster)."
+    save: "[genome] save genomic or chromosomic matrix."
+    jobid_one: "Use as input data generated by a job with a given jobid. Use tadbit describe to find out which."
+    jobid_two: "Use as input data generated by a job with a given jobid. Use tadbit describe to find out which."
+    force: "overwrite previously run job"
+    norm: "compare normalized matrices"
+    biases_one: "path to file with precalculated biases by columns"
+    biases_two: "path to file with precalculated biases by columns"
+    filter: "[[1, 2, 3, 4, 6, 7, 9, 10]] Use filters to define a set os valid pair of reads e.g.: '--apply 1 2 3 4 8 9 10'. Where these numberscorrespond to: 1: self-circle, 2: dangling-end, 3: error, 4: extra dangling-end, 5: too close from RES, 6: too short, 7: too large, 8: over-represented, 9: duplicated, 10: random breaks, 11: trans-chromosomic"
+    sam_tools: "path samtools binary"
+    tmp_db: "if provided uses this directory to manipulate the database"
+  }
 }

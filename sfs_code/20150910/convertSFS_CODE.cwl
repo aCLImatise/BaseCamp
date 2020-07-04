@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: convertSFS_CODE.cwl
+id: ../../../../home/ubuntu/BiocondaCli/convertSFS_CODE.cwl
 inputs:
 - id: mk
   doc: "(-m) <ingroup> <outgroup> [OBS] [F [a] <file>] [L <#loci> <L1>..<L#loc>] [ITS\

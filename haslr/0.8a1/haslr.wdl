@@ -2,34 +2,49 @@ version 1.0
 
 task Haslr.py {
   input {
-    String outOut
-    String genomeGenome
-    String longLong
-    String typeType
-    Array[String]+ shortShort
-    String threadsThreads
-    String covCovLr
-    String alnAlnBlock
-    String alnAlnSim
-    String edgeEdgeSup
-    Int miniMiniAKmEr
-    Int miniMiniASolid
-    Int miniMiniAAsm
+    String? out
+    String? genome
+    String? long
+    String? type
+    Array[String] short
+    String? threads
+    String? cov_lr
+    String? aln_block
+    String? aln_sim
+    String? edge_sup
+    Int? mini_a_km_er
+    Int? mini_a_solid
+    Int? mini_a_asm
   }
   command <<<
     haslr.py \
-      ~{if defined(outOut) then ("--out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(genomeGenome) then ("--genome " +  '"' + genomeGenome + '"') else ""} \
-      ~{if defined(longLong) then ("--long " +  '"' + longLong + '"') else ""} \
-      ~{if defined(typeType) then ("--type " +  '"' + typeType + '"') else ""} \
-      ~{if defined(shortShort) then ("--short " +  '"' + shortShort + '"') else ""} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(covCovLr) then ("--cov-lr " +  '"' + covCovLr + '"') else ""} \
-      ~{if defined(alnAlnBlock) then ("--aln-block " +  '"' + alnAlnBlock + '"') else ""} \
-      ~{if defined(alnAlnSim) then ("--aln-sim " +  '"' + alnAlnSim + '"') else ""} \
-      ~{if defined(edgeEdgeSup) then ("--edge-sup " +  '"' + edgeEdgeSup + '"') else ""} \
-      ~{if defined(miniMiniAKmEr) then ("--minia-kmer " +  '"' + miniMiniAKmEr + '"') else ""} \
-      ~{if defined(miniMiniASolid) then ("--minia-solid " +  '"' + miniMiniASolid + '"') else ""} \
-      ~{if defined(miniMiniAAsm) then ("--minia-asm " +  '"' + miniMiniAAsm + '"') else ""}
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
+      ~{if defined(genome) then ("--genome " +  '"' + genome + '"') else ""} \
+      ~{if defined(long) then ("--long " +  '"' + long + '"') else ""} \
+      ~{if defined(type) then ("--type " +  '"' + type + '"') else ""} \
+      ~{if defined(short) then ("--short " +  '"' + short + '"') else ""} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(cov_lr) then ("--cov-lr " +  '"' + cov_lr + '"') else ""} \
+      ~{if defined(aln_block) then ("--aln-block " +  '"' + aln_block + '"') else ""} \
+      ~{if defined(aln_sim) then ("--aln-sim " +  '"' + aln_sim + '"') else ""} \
+      ~{if defined(edge_sup) then ("--edge-sup " +  '"' + edge_sup + '"') else ""} \
+      ~{if defined(mini_a_km_er) then ("--minia-kmer " +  '"' + mini_a_km_er + '"') else ""} \
+      ~{if defined(mini_a_solid) then ("--minia-solid " +  '"' + mini_a_solid + '"') else ""} \
+      ~{if defined(mini_a_asm) then ("--minia-asm " +  '"' + mini_a_asm + '"') else ""}
   >>>
+  parameter_meta {
+    out: "output directory"
+    genome: "estimated genome size; accepted suffixes are k,m,g"
+    long: "long read file"
+    type: "type of long reads chosen from {pacbio,nanopore}"
+    short: "short read file"
+    threads: "number of CPU threads to use [1]"
+    cov_lr: "amount of long read coverage to use for assembly [25]"
+    aln_block: "minimum length of alignment block [500]"
+    aln_sim: "minimum alignment similarity [0.85]"
+    edge_sup: "minimum number of long read supporting each edge [3]"
+    mini_a_km_er: "kmer size used by minia [49]"
+    mini_a_solid: "minimum kmer abundance used by minia [3]"
+    mini_a_asm: "type of minia assembly chosen from {contigs,unitigs} [contigs]"
+  }
 }

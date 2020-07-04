@@ -2,12 +2,16 @@ version 1.0
 
 task OmeroFsRename {
   input {
-    Boolean noNoMove
-    File? filesetFileset
+    Boolean? no_move
+    File fileset
   }
   command <<<
     omero fs rename \
-      ~{filesetFileset} \
-      ~{true="--no-move" false="" noNoMove}
+      ~{fileset} \
+      ~{true="--no-move" false="" no_move}
   >>>
+  parameter_meta {
+    no_move: "do not move original files and import log"
+    fileset: "Fileset which should be renamed: ID or Fileset:ID"
+  }
 }

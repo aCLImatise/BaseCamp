@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: UVP.cwl
+id: ../../../../home/ubuntu/BiocondaCli/UVP.cwl
 inputs:
 - id: fast_q
   doc: Input FASTQ file
@@ -16,7 +16,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --name
-- id: fastq2
+- id: fast_q_two
   doc: Second paired-end FASTQ file.
   type: string
   inputBinding:

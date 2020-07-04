@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: mergeit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mergeit.cwl
 inputs:
 - id: bad
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: params
+- id: params_dot_dot_dot_dot
   doc: ''
   type: string
   inputBinding:

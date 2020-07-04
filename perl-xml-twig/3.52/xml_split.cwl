@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: xml_split.cwl
+id: ../../../../home/ubuntu/BiocondaCli/xml_split.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

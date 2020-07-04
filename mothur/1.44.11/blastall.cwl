@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: blastall.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blastall.cwl
 inputs:
-- id: m
+- id: alignment_view_options
   doc: 'alignment view options:'
   type: boolean
   inputBinding:
     prefix: -m
-- id: k
+- id: number_best_keep
   doc: Number of best hits from a region to keep. Off by default.
   type: boolean
   inputBinding:
     prefix: -K
-- id: c
+- id: use_compositionbased_adjustments
   doc: 'Use composition-based score adjustments for blastp or tblastn: As first character:
     D or d: default (equivalent to T) 0 or F or f: no composition-based statistics
     2 or T or t: Composition-based score adjustments as in Bioinformatics 21:902-911,

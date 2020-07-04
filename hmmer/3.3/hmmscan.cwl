@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: hmmscan.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hmmscan.cwl
 inputs:
-- id: o
+- id: direct_output_file
   doc: ': direct output to file <f>, not stdout'
   type: string
   inputBinding:
@@ -41,12 +41,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --textw
-- id: e
+- id: report_models_evalue
   doc: ': report models <= this E-value threshold in output  [10.0]  (x>0)'
   type: string
   inputBinding:
     prefix: -E
-- id: t
+- id: report_models_threshold
   doc: ': report models >= this score threshold in output'
   type: string
   inputBinding:
@@ -101,17 +101,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --max
-- id: f1
+- id: fone
   doc: ': MSV threshold: promote hits w/ P <= F1  [0.02]'
   type: string
   inputBinding:
     prefix: --F1
-- id: f2
+- id: f_two
   doc: ': Vit threshold: promote hits w/ P <= F2  [1e-3]'
   type: string
   inputBinding:
     prefix: --F2
-- id: f3
+- id: f_three
   doc: ': Fwd threshold: promote hits w/ P <= F3  [1e-5]'
   type: string
   inputBinding:
@@ -121,12 +121,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --nobias
-- id: nonull2
+- id: no_null_two
   doc: ': turn off biased composition score corrections'
   type: boolean
   inputBinding:
     prefix: --nonull2
-- id: z
+- id: set_comparisons_done
   doc: ': set # of comparisons done, for E-value calculation'
   type: string
   inputBinding:
@@ -151,6 +151,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --cpu
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

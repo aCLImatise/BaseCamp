@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: gsutil_web.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gsutil_web.cwl
 inputs:
-- id: set
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: bucket_url
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: m
   doc: ''
   type: string
@@ -21,6 +11,16 @@ inputs:
   type: string
   inputBinding:
     prefix: -e
+- id: set
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: bucket_url_dot_dot_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

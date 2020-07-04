@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filter_gff_values.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_gff_values.cwl
 inputs:
 - id: str_eq
   doc: filter by custom key:value, if the argument is 'key:value' the annotation is
@@ -42,6 +42,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --progress
+- id: input_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: graphdump.cwl
+id: ../../../../home/ubuntu/BiocondaCli/graphdump.cwl
 inputs:
+- id: k
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: -k
 - id: graph_dump
   doc: -k <integer> [-s <>] ...  -f <seq|group|dot|gfa1|gfa2|fasta> [--prefix] [--]
     [--version] [-h] <file name>

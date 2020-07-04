@@ -1,21 +1,21 @@
 class: CommandLineTool
-id: permuteSmooth.cwl
+id: ../../../../home/ubuntu/BiocondaCli/permuteSmooth.cwl
 inputs:
-- id: '5'
+- id: s
   doc: ''
   type: string
   inputBinding:
-    position: 0
-- id: '1'
+    prefix: -s
+- id: f
   doc: ''
   type: string
   inputBinding:
-    position: 1
-- id: your
-  doc: "goes here       -'                "
+    prefix: -f
+- id: n
+  doc: ''
   type: string
   inputBinding:
-    prefix: '-     Your'
+    prefix: -n
 outputs: []
 cwlVersion: v1.1
 baseCommand:

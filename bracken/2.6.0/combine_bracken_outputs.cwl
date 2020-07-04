@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: combine_bracken_outputs.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/combine_bracken_outputs.py.cwl
 inputs:
 - id: files
   doc: Bracken output files to combine.

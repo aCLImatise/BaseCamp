@@ -2,24 +2,34 @@ version 1.0
 
 task Roary2svg.pl {
   input {
-    Boolean verboseVerbose
-    String widthWidth
-    String heightHeight
-    String taxTaxAColumn
-    String colourColour
-    String sepSepColour
-    Boolean accAccOnly
-    Boolean borderBorder
+    Boolean? verbose
+    String? width
+    String? height
+    String? tax_a_column
+    String? colour
+    String? sep_colour
+    Boolean? acc_only
+    Boolean? border
   }
   command <<<
     roary2svg.pl \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{if defined(widthWidth) then ("--width " +  '"' + widthWidth + '"') else ""} \
-      ~{if defined(heightHeight) then ("--height " +  '"' + heightHeight + '"') else ""} \
-      ~{if defined(taxTaxAColumn) then ("--taxacolumn " +  '"' + taxTaxAColumn + '"') else ""} \
-      ~{if defined(colourColour) then ("--colour " +  '"' + colourColour + '"') else ""} \
-      ~{if defined(sepSepColour) then ("--sepcolour " +  '"' + sepSepColour + '"') else ""} \
-      ~{true="--acconly" false="" accAccOnly} \
-      ~{true="--border" false="" borderBorder}
+      ~{true="--verbose" false="" verbose} \
+      ~{if defined(width) then ("--width " +  '"' + width + '"') else ""} \
+      ~{if defined(height) then ("--height " +  '"' + height + '"') else ""} \
+      ~{if defined(tax_a_column) then ("--taxacolumn " +  '"' + tax_a_column + '"') else ""} \
+      ~{if defined(colour) then ("--colour " +  '"' + colour + '"') else ""} \
+      ~{if defined(sep_colour) then ("--sepcolour " +  '"' + sep_colour + '"') else ""} \
+      ~{true="--acconly" false="" acc_only} \
+      ~{true="--border" false="" border}
   >>>
+  parameter_meta {
+    verbose: "!      Verbose output (default '0')."
+    width: "Canvas width (default '1024')."
+    height: "Row height (default '20')."
+    tax_a_column: "Column in gpa.csv where taxa begin (default '14')."
+    colour: "Colour of core cells (default 'SteelBlue')."
+    sep_colour: "Colour of horizontal separators/borders (default 'LightGray')."
+    acc_only: "!      Only draw accessory (non-core) genes (default '0')."
+    border: "!       Add outline border (default '0')."
+  }
 }

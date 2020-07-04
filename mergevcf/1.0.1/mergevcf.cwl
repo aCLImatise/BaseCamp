@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: mergevcf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mergevcf.cwl
 inputs:
-- id: input_files
-  doc: Input VCF files
-  type: string
-  inputBinding:
-    position: 0
 - id: output
   doc: Specify output file (default:stdout)
   type: string
@@ -46,6 +41,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --svwindow
+- id: input_files
+  doc: Input VCF files
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fc_ovlp_to_graph.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fc_ovlp_to_graph.cwl
 inputs:
 - id: overlap_file
   doc: 'a file that contains the overlap information. (default: preads.m4)'
@@ -22,11 +22,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --ctg-prefix
-- id: utg_data_0
-  doc: (maybe)
-  type: boolean
-  inputBinding:
-    prefix: '- utg_data0'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

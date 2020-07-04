@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: psl_best_unique_contigs.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/psl_best_unique_contigs.py.cwl
 inputs:
 - id: input
   doc: The input file in PSL format.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: conterminator_protein.cwl
+id: ../../../../home/ubuntu/BiocondaCli/conterminator_protein.cwl
 inputs:
 - id: comp_bias_corr
   doc: correct for locally biased amino acid composition (range 0-1) [1]
@@ -16,12 +16,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --seed-sub-mat
-- id: s
+- id: sensitivity_faster_fast
   doc: 'sensitivity: 1.0 faster; 4.0 fast default; 7.5 sensitive (range 1.0-7.5) [4.000]'
   type: double
   inputBinding:
     prefix: -s
-- id: k
+- id: kmer_size_range
   doc: 'k-mer size in the range (0: set automatically to optimum) [0]'
   type: long
   inputBinding:
@@ -49,9 +49,8 @@ inputs:
   inputBinding:
     prefix: --split-mode
 - id: diag_score
-  doc: 0               Use ungapped diagonal scoring during prefilter [1, set to 0
-    to disable]
-  type: boolean
+  doc: Use ungapped diagonal scoring during prefilter [1, set to 0 to disable]
+  type: string
   inputBinding:
     prefix: --diag-score
 - id: exact_km_er_matching
@@ -97,7 +96,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --disk-space-limit
-- id: a
+- id: add_string_convert
   doc: add backtrace string (convert to alignments with mmseqs convertalis utility)
   type: boolean
   inputBinding:
@@ -108,7 +107,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --alignment-mode
-- id: e
+- id: list_matches_evalue
   doc: list matches below this E-value (range 0.0-inf) [0.001]
   type: double
   inputBinding:
@@ -134,7 +133,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --alt-ali
-- id: c
+- id: list_matches_fraction
   doc: list matches above this fraction of aligned (covered) residues (see --cov-mode)
     [0.950]
   type: double
@@ -251,156 +250,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --slice-search
-- id: wrapped_scoring
-  doc: Double the (nucleotide) query sequence during the scoring process to allow
-    wrapped diagonal scoring around end and start
-  type: boolean
-  inputBinding:
-    prefix: --wrapped-scoring
-- id: re_score_mode
-  doc: 'Rescore diagonal with: 0: Hamming distance, 1: local alignment (score only),
-    2: local alignment, 3: global alignment or 4: longest alignment fullfilling window
-    quality criterion [0]'
-  type: long
-  inputBinding:
-    prefix: --rescore-mode
-- id: allow_deletion
-  doc: allow deletions in a MSA
-  type: boolean
-  inputBinding:
-    prefix: --allow-deletion
-- id: min_length
-  doc: minimum codon number in open reading frames [30]
-  type: long
-  inputBinding:
-    prefix: --min-length
-- id: max_length
-  doc: maximum codon number in open reading frames [32734]
-  type: long
-  inputBinding:
-    prefix: --max-length
-- id: max_gaps
-  doc: maximum number of codons with gaps or unknown residues before an open reading
-    frame is rejected [2147483647]
-  type: long
-  inputBinding:
-    prefix: --max-gaps
-- id: contig_start_mode
-  doc: 'Contig start can be 0: incomplete, 1: complete, 2: both [2]'
-  type: long
-  inputBinding:
-    prefix: --contig-start-mode
-- id: contig_end_mode
-  doc: 'Contig end can be 0: incomplete, 1: complete, 2: both  [2]'
-  type: long
-  inputBinding:
-    prefix: --contig-end-mode
-- id: orf_start_mode
-  doc: 'Orf fragment can be 0: from start to stop, 1: from any to stop, 2: from last
-    encountered start to stop (no start in the middle) [1]'
-  type: long
-  inputBinding:
-    prefix: --orf-start-mode
-- id: forward_frames
-  doc: comma-seperated list of ORF frames on the forward strand to be extracted [1,2,3]
-  type: string
-  inputBinding:
-    prefix: --forward-frames
-- id: reverse_frames
-  doc: comma-seperated list of ORF frames on the reverse strand to be extracted [1,2,3]
-  type: string
-  inputBinding:
-    prefix: --reverse-frames
-- id: translation_table
-  doc: 1) CANONICAL, 2) VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL, 4) MOLD_MITOCHONDRIAL,
-    5) INVERT_MITOCHONDRIAL, 6) CILIATE, 9) FLATWORM_MITOCHONDRIAL, 10) EUPLOTID,
-    11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL, 14) ALT_FLATWORM_MITOCHONDRIAL,
-    15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL, 21) TREMATODE_MITOCHONDRIAL,
-    22) SCENEDESMUS_MITOCHONDRIAL, 23) THRAUSTOCHYTRIUM_MITOCHONDRIAL, 24) PTEROBRANCHIA_MITOCHONDRIAL,
-    25) GRACILIBACTERIA, 26) PACHYSOLEN, 27) KARYORELICT, 28) CONDYLOSTOMA, 29) MESODINIUM,
-    30) PERTRICH, 31) BLASTOCRITHIDIA [1]
-  type: long
-  inputBinding:
-    prefix: --translation-table
-- id: translate
-  doc: translate ORF to amino acid [0]
-  type: long
-  inputBinding:
-    prefix: --translate
-- id: use_all_table_starts
-  doc: use all alteratives for a start codon in the genetic table, if false - only
-    ATG (AUG)
-  type: boolean
-  inputBinding:
-    prefix: --use-all-table-starts
-- id: id_offset
-  doc: numeric ids in index file are offset by this value  [0]
-  type: long
-  inputBinding:
-    prefix: --id-offset
-- id: add_orf_stop
-  doc: add * at complete start and end
-  type: boolean
-  inputBinding:
-    prefix: --add-orf-stop
-- id: search_type
-  doc: 'search type 0: auto 1: amino acid, 2: translated, 3: nucleotide, 4: translated
-    nucleotide alignment [0]'
-  type: long
-  inputBinding:
-    prefix: --search-type
-- id: start_sens
-  doc: start sensitivity [4.000]
-  type: double
-  inputBinding:
-    prefix: --start-sens
-- id: sens_steps
-  doc: Search steps performed from --start-sense and -s. [1]
-  type: long
-  inputBinding:
-    prefix: --sens-steps
-- id: remove_tmp_files
-  doc: 0         Delete temporary files [1, set to 0 to disable]
-  type: boolean
-  inputBinding:
-    prefix: --remove-tmp-files
-- id: dbtype
-  doc: 'Database type 0: auto, 1: amino acid 2: nucleotides [0]'
-  type: long
-  inputBinding:
-    prefix: --dbtype
-- id: shuffle
-  doc: 0                  Shuffle input database [1, set to 0 to disable]
-  type: boolean
-  inputBinding:
-    prefix: --shuffle
-- id: created_b_mode
-  doc: 'createdb mode 0: copy data, 1: soft link data and write new index (works only
-    with single line fasta/q) [0]'
-  type: long
-  inputBinding:
-    prefix: --createdb-mode
-- id: ncbi_tax_dump
-  doc: NCBI tax dump directory. The tax dump can be downloaded here "ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz"
-    []
-  type: string
-  inputBinding:
-    prefix: --ncbi-tax-dump
-- id: tax_mapping_file
-  doc: File to map sequence identifer to taxonomical identifier []
-  type: string
-  inputBinding:
-    prefix: --tax-mapping-file
-- id: blacklist
-  doc: Comma separated list of ignored taxa in LCA computation [10239,12908,28384,81077,11632,340016,61964,48479,48510]
-  type: string
-  inputBinding:
-    prefix: --blacklist
-- id: kingdoms
-  doc: '[(2||2157),4751,33208,33090,(2759&&!4751&&!33208&&!33090)]'
-  type: string
-  inputBinding:
-    prefix: --kingdoms
 - id: sub_mat
   doc: amino acid substitution matrix file [nucl:nucleotide.out,aa:blosum62.out]
   type: string
@@ -426,7 +275,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --compressed
-- id: v
+- id: verbosity_level_nothing
   doc: 'verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info [3]'
   type: long
   inputBinding:
@@ -484,12 +333,6 @@ inputs:
   type: long
   inputBinding:
     prefix: --strand
-- id: stein_egger
-  doc: ', Soding J: MMseqs2 enables sensitive protein sequence searching for the analysis
-    of massive data sets. Nature Biotechnology, 35(11), 1026-1028 (2017)'
-  type: string
-  inputBinding:
-    prefix: '- Steinegger'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

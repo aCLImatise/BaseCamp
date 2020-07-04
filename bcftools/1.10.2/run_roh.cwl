@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: run_roh.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_roh.pl.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: af_an_not_s
   doc: Allele frequency annotations [1000GP-AFs/AFs.tab.gz]
   type: File

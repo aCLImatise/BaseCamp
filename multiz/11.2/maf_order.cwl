@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: maf_order.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maf_order.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

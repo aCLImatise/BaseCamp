@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: mkarv.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mkarv.cwl
 inputs:
-- id: directory
-  doc: The path to the directory where the web app will be created.
-  type: Directory
-  inputBinding:
-    position: 0
-- id: metrics
-  doc: 'One or more ataqv metrics files in JSON format. (default: None)'
-  type: string
-  inputBinding:
-    position: 1
 - id: concurrency
   doc: 'The number of concurrent processes to use (default: 1). (default: 1)'
   type: string
@@ -66,7 +56,7 @@ inputs:
   inputBinding:
     prefix: --reference
 - id: template_directory
-  doc: 'The location of the web app directory template. (default: /tmp/tmpfd17w363/web)'
+  doc: 'The location of the web app directory template. (default: /tmp/tmps1pfyki3/web)'
   type: string
   inputBinding:
     prefix: --template-directory
@@ -75,6 +65,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: directory
+  doc: The path to the directory where the web app will be created.
+  type: Directory
+  inputBinding:
+    position: 0
+- id: metrics
+  doc: 'One or more ataqv metrics files in JSON format. (default: None)'
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

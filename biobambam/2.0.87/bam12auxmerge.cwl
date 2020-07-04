@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bam12auxmerge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bam12auxmerge.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

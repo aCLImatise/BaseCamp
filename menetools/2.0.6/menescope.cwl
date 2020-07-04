@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: menescope.cwl
+id: ../../../../home/ubuntu/BiocondaCli/menescope.cwl
 inputs:
-- id: d
-  doc: ''
+- id: draft_net
+  doc: metabolic network in SBML format
   type: string
   inputBinding:
-    prefix: -d
-- id: s
-  doc: ''
+    prefix: --draftnet
+- id: seeds
+  doc: seeds in SBML format
   type: string
   inputBinding:
-    prefix: -s
+    prefix: --seeds
 outputs: []
 cwlVersion: v1.1
 baseCommand:

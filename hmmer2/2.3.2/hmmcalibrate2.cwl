@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: hmmcalibrate2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hmmcalibrate2.cwl
 inputs:
-- id: hmmcalibrate
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: hmm_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: cpu
   doc: ': run <n> threads in parallel (if threaded)'
   type: string
@@ -51,6 +41,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --seed
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: hmmcalibrate
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: hmm_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: wifi_status.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wifi_status.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,50 +2,73 @@ version 1.0
 
 task PrimedRPA {
   input {
-    String runRunId
-    String priorPriorAlign
-    String priorPriorBindingSite
-    String inputInputFile
-    String inputInputFileType
-    String identityIdentityThreshold
-    String conservedConservedAnchor
-    String primerPrimerLength
-    String probeProbeRequired
-    String probeProbeLength
-    String ampliconAmpliconSizeLimit
-    String nucleotideNucleotideRepeatLimit
-    Int mingMingC
-    Int maxMaxGc
-    String dimerisationDimerisationThresh
-    String backgroundBackgroundCheck
-    String crossCrossReactivityThresh
-    String hardHardCrossReactFilter
-    Int maxMaxSets
-    String threadsThreads
-    String backgroundBackgroundSearchSensitivity
+    String? run_id
+    String? prior_align
+    String? prior_binding_site
+    String? input_file
+    String? input_file_type
+    String? identity_threshold
+    String? conserved_anchor
+    String? primer_length
+    String? probe_required
+    String? probe_length
+    String? amplicon_size_limit
+    String? nucleotide_repeat_limit
+    Int? ming_c
+    Int? max_gc
+    String? dimerisation_thresh
+    String? background_check
+    String? cross_reactivity_thresh
+    String? hard_cross_react_filter
+    Int? max_sets
+    String? threads
+    String? background_search_sensitivity
   }
   command <<<
     PrimedRPA \
-      ~{if defined(runRunId) then ("--RunID " +  '"' + runRunId + '"') else ""} \
-      ~{if defined(priorPriorAlign) then ("--PriorAlign " +  '"' + priorPriorAlign + '"') else ""} \
-      ~{if defined(priorPriorBindingSite) then ("--PriorBindingSite " +  '"' + priorPriorBindingSite + '"') else ""} \
-      ~{if defined(inputInputFile) then ("--InputFile " +  '"' + inputInputFile + '"') else ""} \
-      ~{if defined(inputInputFileType) then ("--InputFileType " +  '"' + inputInputFileType + '"') else ""} \
-      ~{if defined(identityIdentityThreshold) then ("--IdentityThreshold " +  '"' + identityIdentityThreshold + '"') else ""} \
-      ~{if defined(conservedConservedAnchor) then ("--ConservedAnchor " +  '"' + conservedConservedAnchor + '"') else ""} \
-      ~{if defined(primerPrimerLength) then ("--PrimerLength " +  '"' + primerPrimerLength + '"') else ""} \
-      ~{if defined(probeProbeRequired) then ("--ProbeRequired " +  '"' + probeProbeRequired + '"') else ""} \
-      ~{if defined(probeProbeLength) then ("--ProbeLength " +  '"' + probeProbeLength + '"') else ""} \
-      ~{if defined(ampliconAmpliconSizeLimit) then ("--AmpliconSizeLimit " +  '"' + ampliconAmpliconSizeLimit + '"') else ""} \
-      ~{if defined(nucleotideNucleotideRepeatLimit) then ("--NucleotideRepeatLimit " +  '"' + nucleotideNucleotideRepeatLimit + '"') else ""} \
-      ~{if defined(mingMingC) then ("--MinGC " +  '"' + mingMingC + '"') else ""} \
-      ~{if defined(maxMaxGc) then ("--MaxGC " +  '"' + maxMaxGc + '"') else ""} \
-      ~{if defined(dimerisationDimerisationThresh) then ("--DimerisationThresh " +  '"' + dimerisationDimerisationThresh + '"') else ""} \
-      ~{if defined(backgroundBackgroundCheck) then ("--BackgroundCheck " +  '"' + backgroundBackgroundCheck + '"') else ""} \
-      ~{if defined(crossCrossReactivityThresh) then ("--CrossReactivityThresh " +  '"' + crossCrossReactivityThresh + '"') else ""} \
-      ~{if defined(hardHardCrossReactFilter) then ("--HardCrossReactFilter " +  '"' + hardHardCrossReactFilter + '"') else ""} \
-      ~{if defined(maxMaxSets) then ("--MaxSets " +  '"' + maxMaxSets + '"') else ""} \
-      ~{if defined(threadsThreads) then ("--Threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(backgroundBackgroundSearchSensitivity) then ("--BackgroundSearchSensitivity " +  '"' + backgroundBackgroundSearchSensitivity + '"') else ""}
+      ~{if defined(run_id) then ("--RunID " +  '"' + run_id + '"') else ""} \
+      ~{if defined(prior_align) then ("--PriorAlign " +  '"' + prior_align + '"') else ""} \
+      ~{if defined(prior_binding_site) then ("--PriorBindingSite " +  '"' + prior_binding_site + '"') else ""} \
+      ~{if defined(input_file) then ("--InputFile " +  '"' + input_file + '"') else ""} \
+      ~{if defined(input_file_type) then ("--InputFileType " +  '"' + input_file_type + '"') else ""} \
+      ~{if defined(identity_threshold) then ("--IdentityThreshold " +  '"' + identity_threshold + '"') else ""} \
+      ~{if defined(conserved_anchor) then ("--ConservedAnchor " +  '"' + conserved_anchor + '"') else ""} \
+      ~{if defined(primer_length) then ("--PrimerLength " +  '"' + primer_length + '"') else ""} \
+      ~{if defined(probe_required) then ("--ProbeRequired " +  '"' + probe_required + '"') else ""} \
+      ~{if defined(probe_length) then ("--ProbeLength " +  '"' + probe_length + '"') else ""} \
+      ~{if defined(amplicon_size_limit) then ("--AmpliconSizeLimit " +  '"' + amplicon_size_limit + '"') else ""} \
+      ~{if defined(nucleotide_repeat_limit) then ("--NucleotideRepeatLimit " +  '"' + nucleotide_repeat_limit + '"') else ""} \
+      ~{if defined(ming_c) then ("--MinGC " +  '"' + ming_c + '"') else ""} \
+      ~{if defined(max_gc) then ("--MaxGC " +  '"' + max_gc + '"') else ""} \
+      ~{if defined(dimerisation_thresh) then ("--DimerisationThresh " +  '"' + dimerisation_thresh + '"') else ""} \
+      ~{if defined(background_check) then ("--BackgroundCheck " +  '"' + background_check + '"') else ""} \
+      ~{if defined(cross_reactivity_thresh) then ("--CrossReactivityThresh " +  '"' + cross_reactivity_thresh + '"') else ""} \
+      ~{if defined(hard_cross_react_filter) then ("--HardCrossReactFilter " +  '"' + hard_cross_react_filter + '"') else ""} \
+      ~{if defined(max_sets) then ("--MaxSets " +  '"' + max_sets + '"') else ""} \
+      ~{if defined(threads) then ("--Threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(background_search_sensitivity) then ("--BackgroundSearchSensitivity " +  '"' + background_search_sensitivity + '"') else ""}
   >>>
+  parameter_meta {
+    run_id: "Desired Run ID"
+    prior_align: "Optional: Path to Prior Binding File"
+    prior_binding_site: "Optional: Path to Prior Binding File"
+    input_file: "Path to Input File"
+    input_file_type: "Options [SS,MS,MAS]"
+    identity_threshold: "Desired Identity Threshold"
+    conserved_anchor: "Identity Anchor Required"
+    primer_length: "Desired Primer Length"
+    probe_required: "Options [NO,EXO,NFO]"
+    probe_length: "Desired Probe Length"
+    amplicon_size_limit: "Amplicon Size Limit"
+    nucleotide_repeat_limit: "Nucleotide Repeat Limit (i.e 5 = AAAAA)"
+    ming_c: "Minimum GC Content"
+    max_gc: "Maximum GC Content"
+    dimerisation_thresh: "Percentage Dimerisation Tolerated"
+    background_check: "Options [NO, Path To Background Fasta File]"
+    cross_reactivity_thresh: "Max Cross Reactivity Threshold"
+    hard_cross_react_filter: "Hard Cross Reactivity Filter"
+    max_sets: "Default Set To 100"
+    threads: "Default Set To 1"
+    background_search_sensitivity: "Options [Basic or Advanced or Fast]"
+  }
 }

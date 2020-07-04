@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: join_into_groups_of.cwl
+id: ../../../../home/ubuntu/BiocondaCli/join_into_groups_of.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

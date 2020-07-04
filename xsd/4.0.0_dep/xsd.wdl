@@ -2,16 +2,22 @@ version 1.0
 
 task Xsd {
   input {
-    String? helpHelp
-    String? versionVersion
-    String? cxxCxxTree
-    String? cxxCxxParser
+    String help
+    String version
+    String cxx_tree
+    String cxx_parser
   }
   command <<<
     xsd \
-      ~{helpHelp} \
-      ~{versionVersion} \
-      ~{cxxCxxTree} \
-      ~{cxxCxxParser}
+      ~{help} \
+      ~{version} \
+      ~{cxx_tree} \
+      ~{cxx_parser}
   >>>
+  parameter_meta {
+    help: "Print usage information and exit. Use 'help <cmd>' for command-specific options."
+    version: "Print version and exit."
+    cxx_tree: "Generate the C++/Tree mapping."
+    cxx_parser: "Generate the C++/Parser mapping."
+  }
 }

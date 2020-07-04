@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: DaisySuite.cwl
+id: ../../../../home/ubuntu/BiocondaCli/DaisySuite.cwl
 inputs:
 - id: snake_file
   doc: The workflow definition in a snakefile.
@@ -98,7 +98,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --rulegraph
-- id: d3dag
+- id: d_three_dag
   doc: Print the DAG in D3.js compatible JSON format.
   type: boolean
   inputBinding:
@@ -410,8 +410,8 @@ inputs:
   inputBinding:
     prefix: --profile
 - id: mode
-  doc: '{0,1,2}        Set execution mode of Snakemake (internal use only).'
-  type: boolean
+  doc: Set execution mode of Snakemake (internal use only).
+  type: string
   inputBinding:
     prefix: --mode
 - id: bash_completion

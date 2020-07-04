@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: backtranambig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/backtranambig.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

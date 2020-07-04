@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mmseqs_mergeresultsbyset.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mmseqs_mergeresultsbyset.cwl
 inputs:
 - id: threads
   doc: 8               number of cores used for the computation (uses all cores by
@@ -7,7 +7,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --threads
-- id: v
+- id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'
   type: boolean
   inputBinding:

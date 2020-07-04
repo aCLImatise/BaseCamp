@@ -1,11 +1,11 @@
 class: CommandLineTool
-id: genPoHoLandscape.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genPoHoLandscape.cwl
 inputs:
-- id: nan
-  doc: 0      0
+- id: p_q_h
+  doc: 'P:2 Q2 H-3 '
   type: boolean
   inputBinding:
-    prefix: -nan
+    prefix: '-99999999999999999'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

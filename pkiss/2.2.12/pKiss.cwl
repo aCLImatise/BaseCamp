@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pKiss.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pKiss.cwl
 inputs:
 - id: mode
   doc: ': Select the computation mode. Available modes are "mfe", "subopt", "enforce",
@@ -177,6 +177,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --varna
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: fast_a_file_name_or_rna_sequence
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

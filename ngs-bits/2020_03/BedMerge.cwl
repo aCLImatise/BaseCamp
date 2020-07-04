@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: BedMerge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/BedMerge.cwl
 inputs:
 - id: in
   doc: "Input BED file. If unset, reads from STDIN. Default value: ''"
@@ -11,7 +11,7 @@ inputs:
   type: File
   inputBinding:
     prefix: -out
-- id: keep_b2b
+- id: keep_b_two_b
   doc: "Do not merge non-overlapping but adjacent (back-to-back) regions. Default\
     \ value: 'false'"
   type: boolean

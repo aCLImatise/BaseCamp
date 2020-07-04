@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: download_spectacle_data.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/download_spectacle_data.sh.cwl
 inputs:
 - id: silent
   doc: suppress most error messages (on by default)
@@ -11,11 +11,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: zero
+- id: end_output_line
   doc: end each output line with NUL, not newline
   type: boolean
   inputBinding:
     prefix: --zero
+- id: readlink
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ancestral_state_reconstruction.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ancestral_state_reconstruction.py.cwl
 inputs:
 - id: input_tree_fp
   doc: the tree to use for ASR [REQUIRED]

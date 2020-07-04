@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: run_genotype_build.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_genotype_build.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

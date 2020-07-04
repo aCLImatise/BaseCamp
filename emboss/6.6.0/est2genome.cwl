@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: est2genome.cwl
+id: ../../../../home/ubuntu/BiocondaCli/est2genome.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,13 +1,26 @@
 version 1.0
 
-task Splitchr.pyFastaSize {
+task Splitchr.pySize {
   input {
-    String bedBed
-    Boolean reformatReformat
+    String? bed
+    Boolean? reformat
+    String split_chr_do_tpy
+    String fast_a
+    Int size
   }
   command <<<
-    splitchr.py fasta size \
-      ~{if defined(bedBed) then ("--bed " +  '"' + bedBed + '"') else ""} \
-      ~{true="--reformat" false="" reformatReformat}
+    splitchr.py size \
+      ~{split_chr_do_tpy} \
+      ~{fast_a} \
+      ~{size} \
+      ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""} \
+      ~{true="--reformat" false="" reformat}
   >>>
+  parameter_meta {
+    bed: ""
+    reformat: ""
+    split_chr_do_tpy: ""
+    fast_a: ""
+    size: ""
+  }
 }

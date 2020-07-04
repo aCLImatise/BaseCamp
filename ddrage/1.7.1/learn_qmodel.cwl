@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: learn_qmodel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/learn_qmodel.cwl
 inputs:
+- id: p_five
+  doc: Path to a forward (p5) read file.
+  type: string[]
+  inputBinding:
+    prefix: --p5
+- id: p_seven
+  doc: Path to a reverse (p7) read file.
+  type: string[]
+  inputBinding:
+    prefix: --p7
 - id: output
   doc: 'Output file name/path. Default: custom.qmodel'
   type: string

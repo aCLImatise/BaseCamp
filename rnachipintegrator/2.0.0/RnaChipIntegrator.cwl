@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: RnaChipIntegrator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RnaChipIntegrator.cwl
 inputs:
-- id: genes
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: peaks
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: cut_off
   doc: Maximum distance allowed between peaks and genes before being omitted from
     the analyses (default 1000000bp; set to zero for no cutoff, use --cutoffs instead
@@ -80,13 +70,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --cutoffs
-- id: genes
+- id: specify_genes_files
   doc: Specify multiple genes files (if used then peaks file(s) must be specified
     using --peaks option)
   type: string[]
   inputBinding:
     prefix: --genes
-- id: peaks
+- id: specify_multiple_files
   doc: Specify multiple peaks files (if used then genes file(s) must be specified
     using --genes option)
   type: string[]
@@ -127,6 +117,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --peak_id
+- id: var_19
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: var_20
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

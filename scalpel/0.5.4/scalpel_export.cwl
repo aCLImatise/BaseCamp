@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: scalpel_export.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scalpel_export.cwl
 inputs:
-- id: command
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: verbose
   doc: ': verbose mode'
   type: boolean
@@ -31,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --somatic
+- id: command
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

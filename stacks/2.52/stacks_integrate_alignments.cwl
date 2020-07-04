@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: stacks_integrate_alignments.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stacks_integrate_alignments.cwl
 inputs:
 - id: p
   doc: ''

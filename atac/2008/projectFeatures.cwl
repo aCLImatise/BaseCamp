@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: projectFeatures.cwl
+id: ../../../../home/ubuntu/BiocondaCli/projectFeatures.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

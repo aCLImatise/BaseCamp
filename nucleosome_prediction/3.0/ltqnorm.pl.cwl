@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ltqnorm.pl.bak.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ltqnorm.pl.bak.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

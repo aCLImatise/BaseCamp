@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: stride_index.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stride_index.cwl
 inputs:
 - id: verbose
   doc: display verbose output
@@ -37,6 +37,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-forward
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

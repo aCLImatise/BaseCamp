@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: sequana_vcf_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sequana_vcf_filter.cwl
 inputs:
 - id: only
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: for
+- id: var_1
   doc: ''
   type: string
   inputBinding:
@@ -31,12 +31,12 @@ inputs:
   type: string
   inputBinding:
     position: 5
-- id: '41'
+- id: four_dot_one
   doc: ''
   type: string
   inputBinding:
     position: 6
-- id: for
+- id: var_7
   doc: ''
   type: string
   inputBinding:
@@ -46,21 +46,6 @@ inputs:
   type: string
   inputBinding:
     position: 8
-- id: filter
-  doc: '"AF1>0.95&AF1<0.05"'
-  type: boolean
-  inputBinding:
-    prefix: --filter
-- id: filter
-  doc: '"MQ<30"'
-  type: boolean
-  inputBinding:
-    prefix: --filter
-- id: filter
-  doc: '"DP<30"'
-  type: boolean
-  inputBinding:
-    prefix: --filter
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: BedExtend.cwl
+id: ../../../../home/ubuntu/BiocondaCli/BedExtend.cwl
 inputs:
-- id: n
+- id: number_bases_extend
   doc: The number of bases to extend (on both sides of each region).
   type: long
   inputBinding:

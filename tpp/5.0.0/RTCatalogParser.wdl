@@ -1,7 +1,14 @@
 version 1.0
 
 task RTCatalogParser {
+  input {
+    String outfile
+  }
   command <<<
-    RTCatalogParser
+    RTCatalogParser \
+      ~{outfile}
   >>>
+  parameter_meta {
+    outfile: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: slsh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/slsh.cwl
 inputs:
 - id: file
   doc: ''

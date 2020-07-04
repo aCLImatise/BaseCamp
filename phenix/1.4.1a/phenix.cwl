@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phenix.py_vcf2json.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phenix.py_vcf2json.cwl
 inputs:
 - id: input
   doc: path to a VCF file

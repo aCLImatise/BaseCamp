@@ -2,48 +2,70 @@ version 1.0
 
 task Plasmidtron {
   input {
-    String actionAction
-    Boolean keepKeepFiles
-    String kmKmEr
-    Int minMinContigLen
-    Int minMinSpadesContigCoverage
-    Int maxMaxSpadesContigCoverage
-    Int minMinKmErsThreshold
-    Int maxMaxKmErsThreshold
-    Int minMinControlsKmErsThreshold
-    Int maxMaxControlsKmErsThreshold
-    Int minMinKmErsPerRead
-    Boolean matchMatchBothPairs
-    String plotPlotFilename
-    Boolean kmKmErPlot
-    String spadesSpadesExec
-    String threadsThreads
-    Boolean verboseVerbose
-    String? outputOutputDirectory
-    File? fileFileOfTraits
-    File? fileFileOfNonTraits
+    String? action
+    Boolean? keep_files
+    String? km_er
+    Int? min_contig_len
+    Int? min_spades_contig_coverage
+    Int? max_spades_contig_coverage
+    Int? min_km_ers_threshold
+    Int? max_km_ers_threshold
+    Int? min_controls_km_ers_threshold
+    Int? max_controls_km_ers_threshold
+    Int? min_km_ers_per_read
+    Boolean? match_both_pairs
+    String? plot_filename
+    Boolean? km_er_plot
+    String? spades_exec
+    String? threads
+    Boolean? verbose
+    String output_directory
+    File file_of_traits
+    File file_of_non_traits
   }
   command <<<
     plasmidtron \
-      ~{outputOutputDirectory} \
-      ~{if defined(actionAction) then ("--action " +  '"' + actionAction + '"') else ""} \
-      ~{true="--keep_files" false="" keepKeepFiles} \
-      ~{if defined(kmKmEr) then ("--kmer " +  '"' + kmKmEr + '"') else ""} \
-      ~{if defined(minMinContigLen) then ("--min_contig_len " +  '"' + minMinContigLen + '"') else ""} \
-      ~{if defined(minMinSpadesContigCoverage) then ("--min_spades_contig_coverage " +  '"' + minMinSpadesContigCoverage + '"') else ""} \
-      ~{if defined(maxMaxSpadesContigCoverage) then ("--max_spades_contig_coverage " +  '"' + maxMaxSpadesContigCoverage + '"') else ""} \
-      ~{if defined(minMinKmErsThreshold) then ("--min_kmers_threshold " +  '"' + minMinKmErsThreshold + '"') else ""} \
-      ~{if defined(maxMaxKmErsThreshold) then ("--max_kmers_threshold " +  '"' + maxMaxKmErsThreshold + '"') else ""} \
-      ~{if defined(minMinControlsKmErsThreshold) then ("--min_controls_kmers_threshold " +  '"' + minMinControlsKmErsThreshold + '"') else ""} \
-      ~{if defined(maxMaxControlsKmErsThreshold) then ("--max_controls_kmers_threshold " +  '"' + maxMaxControlsKmErsThreshold + '"') else ""} \
-      ~{if defined(minMinKmErsPerRead) then ("--min_kmers_per_read " +  '"' + minMinKmErsPerRead + '"') else ""} \
-      ~{true="--match_both_pairs" false="" matchMatchBothPairs} \
-      ~{if defined(plotPlotFilename) then ("--plot_filename " +  '"' + plotPlotFilename + '"') else ""} \
-      ~{true="--kmer_plot" false="" kmKmErPlot} \
-      ~{if defined(spadesSpadesExec) then ("--spades_exec " +  '"' + spadesSpadesExec + '"') else ""} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{fileFileOfTraits} \
-      ~{fileFileOfNonTraits}
+      ~{output_directory} \
+      ~{file_of_traits} \
+      ~{file_of_non_traits} \
+      ~{if defined(action) then ("--action " +  '"' + action + '"') else ""} \
+      ~{true="--keep_files" false="" keep_files} \
+      ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""} \
+      ~{if defined(min_contig_len) then ("--min_contig_len " +  '"' + min_contig_len + '"') else ""} \
+      ~{if defined(min_spades_contig_coverage) then ("--min_spades_contig_coverage " +  '"' + min_spades_contig_coverage + '"') else ""} \
+      ~{if defined(max_spades_contig_coverage) then ("--max_spades_contig_coverage " +  '"' + max_spades_contig_coverage + '"') else ""} \
+      ~{if defined(min_km_ers_threshold) then ("--min_kmers_threshold " +  '"' + min_km_ers_threshold + '"') else ""} \
+      ~{if defined(max_km_ers_threshold) then ("--max_kmers_threshold " +  '"' + max_km_ers_threshold + '"') else ""} \
+      ~{if defined(min_controls_km_ers_threshold) then ("--min_controls_kmers_threshold " +  '"' + min_controls_km_ers_threshold + '"') else ""} \
+      ~{if defined(max_controls_km_ers_threshold) then ("--max_controls_kmers_threshold " +  '"' + max_controls_km_ers_threshold + '"') else ""} \
+      ~{if defined(min_km_ers_per_read) then ("--min_kmers_per_read " +  '"' + min_km_ers_per_read + '"') else ""} \
+      ~{true="--match_both_pairs" false="" match_both_pairs} \
+      ~{if defined(plot_filename) then ("--plot_filename " +  '"' + plot_filename + '"') else ""} \
+      ~{true="--kmer_plot" false="" km_er_plot} \
+      ~{if defined(spades_exec) then ("--spades_exec " +  '"' + spades_exec + '"') else ""} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    action: "Control how the traits kmers are filtered for assembly [union]"
+    keep_files: "Keep intermediate files [False]"
+    km_er: "Kmer to use, depends on read length [51]"
+    min_contig_len: "Minimum contig length in final assembly [300]"
+    min_spades_contig_coverage: "Filter out contigs with low coverage. Set to 0 to keep all. [5]"
+    max_spades_contig_coverage: "Filter out contigs with high coverage. Set to 0 to keep all. [500]"
+    min_km_ers_threshold: "Exclude traits k-mers occurring less than this [10]"
+    max_km_ers_threshold: "Exclude traits k-mers occurring more than this [254]"
+    min_controls_km_ers_threshold: "Exclude nontraits k-mers occurring less than this [5]"
+    max_controls_km_ers_threshold: "Exclude nontraits k-mers occurring more than this [254]"
+    min_km_ers_per_read: "Min percentage kmer coverage of read to keep it[0.2]"
+    match_both_pairs: "Match both pairs to keep them in assembly [False]"
+    plot_filename: "Kmer to use, depends on read length [kmerplot.png]"
+    km_er_plot: "Create kmer plot [False]"
+    spades_exec: "Set the SPAdes executable [spades.py]"
+    threads: "Number of threads [1]"
+    verbose: "Turn on debugging [0]"
+    output_directory: "Output directory"
+    file_of_traits: "File of filenames of trait (case) FASTQs"
+    file_of_non_traits: "File of filenames of nontrait (control) FASTQs"
+  }
 }

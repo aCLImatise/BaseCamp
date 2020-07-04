@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: grabdp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/grabdp.cwl
 inputs:
-- id: i
+- id: required_or_modelfile
   doc: required (or -modelfile)
   type: string
   inputBinding:
@@ -17,14 +17,14 @@ inputs:
   inputBinding:
     prefix: -id
 - id: dp_style
-  doc: 2            optional -- create <runname>.pdoc posterior decoding of model
-    and first db sequence or -id sequence. use view_pdoc to inspect.
-  type: boolean
+  doc: optional -- create <runname>.pdoc posterior decoding of model and first db
+    sequence or -id sequence. use view_pdoc to inspect.
+  type: string
   inputBinding:
     prefix: -dpstyle
 - id: dump_match_probs
-  doc: 0   If 1, then dump the model match probabilities in a rdb file name <runname>.match-rdb
-  type: boolean
+  doc: If 1, then dump the model match probabilities in a rdb file name <runname>.match-rdb
+  type: string
   inputBinding:
     prefix: -dump_match_probs
 outputs: []

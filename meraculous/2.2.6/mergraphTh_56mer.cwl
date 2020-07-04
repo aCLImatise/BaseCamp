@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mergraphTh_56mer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mergraphTh_56mer.cwl
 inputs:
 - id: mer_count_file_prefix
   doc: ''

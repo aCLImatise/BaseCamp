@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cactus_batch_mergeChunks.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cactus_batch_mergeChunks.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

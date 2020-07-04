@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: maf_tile_2.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maf_tile_2.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

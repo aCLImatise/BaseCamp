@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ceasBW.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ceasBW.cwl
 inputs:
-- id: input_files
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: bed
   doc: BED file of ChIP regions.
   type: string
@@ -90,7 +85,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --gn-group-names
-- id: gname2
+- id: g_name_two
   doc: Whether or not use the 'name2' column of the gene annotation table when reading
     the gene IDs in the files given through --gn-groups. This flag is meaningful only
     with --gn-groups.
@@ -108,6 +103,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --length
+- id: input_files
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

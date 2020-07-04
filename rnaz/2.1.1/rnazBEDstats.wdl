@@ -2,12 +2,16 @@ version 1.0
 
 task RnazBEDstats.pl {
   input {
-    Boolean manMan
-    File? fileFile
+    Boolean? man
+    File? file
   }
   command <<<
     rnazBEDstats.pl \
-      ~{fileFile} \
-      ~{true="--man" false="" manMan}
+      ~{file} \
+      ~{true="--man" false="" man}
   >>>
+  parameter_meta {
+    man: "Prints a detailed manual page and exits."
+    file: ""
+  }
 }

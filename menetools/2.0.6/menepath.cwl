@@ -1,28 +1,28 @@
 class: CommandLineTool
-id: menepath.cwl
+id: ../../../../home/ubuntu/BiocondaCli/menepath.cwl
 inputs:
-- id: d
-  doc: ''
+- id: draft_net
+  doc: metabolic network in SBML format
   type: string
   inputBinding:
-    prefix: -d
-- id: s
-  doc: ''
+    prefix: --draftnet
+- id: seeds
+  doc: seeds in SBML format
   type: string
   inputBinding:
-    prefix: -s
-- id: t
-  doc: ''
+    prefix: --seeds
+- id: targets
+  doc: targets in SBML format
   type: string
   inputBinding:
-    prefix: -t
+    prefix: --targets
 - id: min
-  doc: ''
+  doc: call this option to obtain minimal-size paths
   type: boolean
   inputBinding:
     prefix: --min
 - id: enumerate
-  doc: ''
+  doc: call this option for an enumeration of solutions
   type: boolean
   inputBinding:
     prefix: --enumerate

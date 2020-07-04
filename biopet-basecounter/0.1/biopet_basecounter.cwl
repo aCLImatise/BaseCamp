@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: biopet_basecounter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/biopet_basecounter.cwl
 inputs:
 - id: log_level
   doc: "Level of log information printed. Possible levels: 'debug', 'info', 'warn',\
@@ -27,6 +27,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --prefix
+- id: base_counter
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,19 +1,19 @@
 class: CommandLineTool
-id: check_primer_barcode_dimers.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/check_primer_barcode_dimers.py.cwl
 inputs:
 - id: barcodes
   doc: Filepath of barcodes to score input primer(s) against. [REQUIRED]
   type: string
   inputBinding:
     prefix: --barcodes
-- id: primer_1
+- id: primer_one
   doc: Primer, written in 5' to 3', that is linked to barcodes tested.  If linker
     sequence is present between primer and barcode, include it with this sequences.
     [REQUIRED]
   type: string
   inputBinding:
     prefix: --primer1
-- id: primer_2
+- id: primer_two
   doc: Second primer, written in 5' to 3' orientation.  This primer by default is
     not associated with any barcodes. [REQUIRED]
   type: string

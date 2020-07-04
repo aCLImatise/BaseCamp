@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: process_radtags.cwl
+id: ../../../../home/ubuntu/BiocondaCli/process_radtags.cwl
 inputs:
 - id: inline_null
   doc: ':   barcode is inline with sequence, occurs only on single-end read (default).'
@@ -45,12 +45,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --bestrad
-- id: adapter_1
+- id: adapter_one
   doc: ': provide adaptor sequence that may occur on the single-end read for filtering.'
   type: string
   inputBinding:
     prefix: --adapter-1
-- id: adapter_2
+- id: adapter_two
   doc: ': provide adaptor sequence that may occur on the paired-read for filtering.'
   type: string
   inputBinding:
@@ -88,13 +88,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --len-limit
-- id: barcode_dist_1
+- id: barcode_dist_one
   doc: ': the number of allowed mismatches when rescuing single-end barcodes (default
     1).'
   type: boolean
   inputBinding:
     prefix: --barcode-dist-1
-- id: barcode_dist_2
+- id: barcode_dist_two
   doc: ': the number of allowed mismatches when rescuing paired-end barcodes (defaults
     to --barcode-dist-1).'
   type: boolean

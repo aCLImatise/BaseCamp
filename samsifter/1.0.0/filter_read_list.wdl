@@ -2,18 +2,25 @@ version 1.0
 
 task FilterReadList {
   input {
-    String iI
-    String lL
-    String discardDiscard
-    Boolean vV
-    Boolean dD
+    String? specify_file_analysed
+    String? list
+    String? discard
+    Boolean? verbose
+    Boolean? debug
   }
   command <<<
     filter_read_list \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(lL) then ("-l " +  '"' + lL + '"') else ""} \
-      ~{if defined(discardDiscard) then ("--discard " +  '"' + discardDiscard + '"') else ""} \
-      ~{true="-v" false="" vV} \
-      ~{true="-d" false="" dD}
+      ~{if defined(specify_file_analysed) then ("--input " +  '"' + specify_file_analysed + '"') else ""} \
+      ~{if defined(list) then ("--list " +  '"' + list + '"') else ""} \
+      ~{if defined(discard) then ("--discard " +  '"' + discard + '"') else ""} \
+      ~{true="--verbose" false="" verbose} \
+      ~{true="--debug" false="" debug}
   >>>
+  parameter_meta {
+    specify_file_analysed: "specify SAM file to be analysed (default: STDIN)"
+    list: "tab-separated CSV file with accession numbers in first column"
+    discard: "keep or discard entries passing the filter criteria?"
+    verbose: "print additional information to STDERR"
+    debug: "print debug messages to STDERR"
+  }
 }

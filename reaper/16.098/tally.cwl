@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tally.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tally.cwl
 inputs:
 - id: cmp
   doc: with cmp paired end identifier mismatches will be reported

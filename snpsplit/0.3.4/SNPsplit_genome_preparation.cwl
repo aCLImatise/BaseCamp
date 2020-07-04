@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: SNPsplit_genome_preparation.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SNPsplit_genome_preparation.cwl
 inputs:
-- id: snp_id
-  doc: Chromosome  Position    Strand   Ref/SNP
-  type: string
+- id: vcf_file
+  doc: ''
+  type: File
   inputBinding:
-    position: 0
-- id: snp_id
-  doc: Chromosome  Position    Strand   Ref/SNP
-  type: string
+    prefix: --vcf_file
+- id: reference_genome
+  doc: ''
+  type: boolean
   inputBinding:
-    position: 0
+    prefix: --reference_genome
 outputs: []
 cwlVersion: v1.1
 baseCommand:

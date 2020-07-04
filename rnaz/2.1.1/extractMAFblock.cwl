@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: extractMAFblock.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extractMAFblock.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

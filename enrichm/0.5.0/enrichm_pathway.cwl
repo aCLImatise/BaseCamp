@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: enrichm_pathway.cwl
+id: ../../../../home/ubuntu/BiocondaCli/enrichm_pathway.cwl
 inputs:
 - id: matrix
   doc: KO matrix. REQUIRED.

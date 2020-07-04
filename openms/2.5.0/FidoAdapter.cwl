@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FidoAdapter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FidoAdapter.cwl
 inputs:
 - id: in
   doc: "*                 Input: identification results (valid formats: 'idXML')"
@@ -27,7 +27,7 @@ inputs:
 - id: separate_runs
   doc: Process multiple protein identification runs in the input separately, don't
     merge them. Merging results in loss of descriptive information of the single protein
-    identification runs .
+    identification runs.
   type: boolean
   inputBinding:
     prefix: -separate_runs
@@ -54,31 +54,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -group_level
-- id: log2_states
+- id: log_two_states
   doc: "Binary logarithm of the max. number of connected states in a subgraph. For\
     \ a value N, subgraphs that are bigger than 2^N will be split up, sacrificing\
-    \ accuracy for runtime. '0'  uses the default (18). (default: '0' min: '0')"
+    \ accuracy for runtime. '0' uses the default (18). (default: '0' min: '0')"
   type: string
   inputBinding:
     prefix: -log2_states
-- id: prob
-  doc: ":protein <value>       Protein prior probability ('gamma' parameter) (default:\
-    \ '0.0' min: '0.0')"
-  type: boolean
-  inputBinding:
-    prefix: -prob
-- id: prob
-  doc: ":peptide <value>       Peptide emission probability ('alpha' parameter) (default:\
-    \ '0.0' min: '0.0')"
-  type: boolean
-  inputBinding:
-    prefix: -prob
-- id: prob
-  doc: ":spurious <value>      Spurious peptide identification probability ('beta'\
-    \ parameter) (default: '0.0' min: '0.0')"
-  type: boolean
-  inputBinding:
-    prefix: -prob
 - id: ini
   doc: Use the given TOPP INI file
   type: File

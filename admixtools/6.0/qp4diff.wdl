@@ -2,14 +2,22 @@ version 1.0
 
 task Qp4diff {
   input {
-    File pP
-    Boolean vV
-    Boolean vV
+    File? use_parameters_file
+    Boolean? print_version_exit
+    Boolean? toggle_verbose_mode
+    File file
   }
   command <<<
     qp4diff \
-      ~{if defined(pP) then ("-p " +  '"' + pP + '"') else ""} \
-      ~{true="-v" false="" vV} \
-      ~{true="-V" false="" vV}
+      ~{file} \
+      ~{if defined(use_parameters_file) then ("-p " +  '"' + use_parameters_file + '"') else ""} \
+      ~{true="-v" false="" print_version_exit} \
+      ~{true="-V" false="" toggle_verbose_mode}
   >>>
+  parameter_meta {
+    use_parameters_file: "... use parameters from <file> ."
+    print_version_exit: "... print version and exit."
+    toggle_verbose_mode: "... toggle verbose mode ON."
+    file: ""
+  }
 }

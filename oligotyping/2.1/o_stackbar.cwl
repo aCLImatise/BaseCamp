@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: o_stackbar.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/o_stackbar.R.cwl
 inputs:
-- id: stack_barr
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: environment_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: output_file_prefix
   doc: Output file prefix for visualization files [default "unknown"]
   type: string
@@ -31,6 +21,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --legend_pos
+- id: stack_bardot_r
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: environment_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

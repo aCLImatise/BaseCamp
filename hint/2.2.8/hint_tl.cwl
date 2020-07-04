@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hint_tl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hint_tl.cwl
 inputs:
 - id: matrix_file
   doc: The matrix compressed file contains 1Mb and 100kb resolutions Hi-C contact

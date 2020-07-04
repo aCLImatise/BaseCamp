@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: AdapterRemoval.cwl
+id: ../../../../home/ubuntu/BiocondaCli/AdapterRemoval.cwl
 inputs:
 - id: identify_adapters
   doc: 'Attempt to identify the adapter pair of PE reads, by searching for overlapping
@@ -78,13 +78,13 @@ inputs:
   type: File
   inputBinding:
     prefix: --settings
-- id: output_1
+- id: output_one
   doc: 'Output file containing trimmed mate1 reads [default: BASENAME.pair1.truncated
     (PE), BASENAME.truncated (SE), or BASENAME.paired.truncated (interleaved PE)]'
   type: File
   inputBinding:
     prefix: --output1
-- id: output_2
+- id: output_two
   doc: 'Output file containing trimmed mate 2 reads [default: BASENAME.pair2.truncated
     (only used in PE mode, but not if --interleaved-output is enabled)]'
   type: File
@@ -127,12 +127,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --gzip-level
-- id: bzip2
+- id: bzip_two
   doc: 'Enable bzip2 compression [default: off]'
   type: boolean
   inputBinding:
     prefix: --bzip2
-- id: bzip2_level
+- id: bzip_two_level
   doc: 'Compression level, 0 - 9 [default: 9]'
   type: string
   inputBinding:
@@ -170,7 +170,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --minquality
-- id: preserve_5p
+- id: preserve_five_p
   doc: 'If set, bases at the 5p will not be trimmed by --trimns, --trimqualities,
     and --trimwindows. Collapsed reads will not be quality trimmed when this option
     is enabled [default: 5p bases are trimmed]'
@@ -235,14 +235,14 @@ inputs:
   type: string
   inputBinding:
     prefix: --barcode-mm
-- id: barcode_mm_r1
+- id: barcode_mm_r_one
   doc: Maximum number of mismatches allowed for the mate 1 barcode; if not set, this
     value is equal to the '--barcode-mm' value; cannot be higher than the '--barcode-mm
     value'.
   type: string
   inputBinding:
     prefix: --barcode-mm-r1
-- id: barcode_mm_r2
+- id: barcode_mm_r_two
   doc: Maximum number of mismatches allowed for the mate 2 barcode; if not set, this
     value is equal to the '--barcode-mm' value; cannot be higher than the '--barcode-mm
     value'.

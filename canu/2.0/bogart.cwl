@@ -1,22 +1,22 @@
 class: CommandLineTool
-id: bogart.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bogart.cwl
 inputs:
-- id: s
+- id: mandatory_path_existing_seqstore
   doc: Mandatory path to an existing seqStore.
   type: string
   inputBinding:
     prefix: -S
-- id: o
+- id: mandatory_path_existing_ovlstore
   doc: Mandatory path to an existing ovlStore.
   type: string
   inputBinding:
     prefix: -O
-- id: t
+- id: mandatory_path_output
   doc: Mandatory path to an output tigStore (can exist or not).
   type: string
   inputBinding:
     prefix: -T
-- id: o
+- id: mandatory_prefix_output
   doc: Mandatory prefix for the output files.
   type: string
   inputBinding:
@@ -26,7 +26,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -threads
-- id: m
+- id: use_most_gigabytes
   doc: Use at most 'gb' gigabytes of memory.
   type: string
   inputBinding:
@@ -129,18 +129,23 @@ inputs:
   type: string
   inputBinding:
     prefix: -minolappercent
-- id: d
+- id: enable_loggingdebugging_specific
   doc: enable logging/debugging for a specific component.
   type: string
   inputBinding:
     prefix: -D
-- id: d
+- id: disable_loggingdebugging_optimizepositions
   doc: disable logging/debugging for a specific component. overlapScoring bestOverlaps
     errorProfiles optimizePositions chunkGraph buildUnitig placeUnplaced orphans splitDiscontinuous
     intermediateTigs setParentAndHang stderr
   type: string
   inputBinding:
     prefix: -d
+- id: parameters
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

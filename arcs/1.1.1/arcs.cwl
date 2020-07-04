@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: arcs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/arcs.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: list_of_alignment_files
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: or
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: fof_name
   doc: text file listing input filenames
   type: File
@@ -158,6 +143,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --pair
+- id: list_of_alignment_files
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: or
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

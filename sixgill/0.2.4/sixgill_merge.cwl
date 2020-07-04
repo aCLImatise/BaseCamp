@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: sixgill_merge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sixgill_merge.cwl
 inputs:
-- id: meta_peptide_db_files
-  doc: input metapeptide database files
-  type: string
-  inputBinding:
-    position: 0
 - id: out
   doc: output file
   type: string

@@ -1,61 +1,61 @@
 class: CommandLineTool
-id: kissplice.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kissplice.cwl
 inputs:
-- id: r
+- id: input_fastaq_read
   doc: input fasta/q read files or compressed (.gz) fasta/q files (mutiple, such as
     "-r file1 -r file2...")
   type: string
   inputBinding:
     prefix: -r
-- id: k
+- id: kmer_size_default
   doc: k-mer size (default=41)
   type: string
   inputBinding:
     prefix: -k
-- id: b
+- id: maximum_number_branching
   doc: maximum number of branching nodes (default 5)
   type: string
   inputBinding:
     prefix: -b
-- id: l
+- id: maximal_length_k
   doc: 'maximal length of the shorter path (default: 2k+1)'
   type: string
   inputBinding:
     prefix: -l
-- id: m
+- id: minimum_length_shorter
   doc: minimum length of the shorter path (default 2k-8)
   type: string
   inputBinding:
     prefix: -m
-- id: m
+- id: maximum_length_longest
   doc: maximum length of the longest path (default 1000000), skipped exons longer
     than UL_MAX are not reported
   type: string
   inputBinding:
     prefix: -M
-- id: g
+- id: path_prefix_prebuilt
   doc: path and prefix to pre-built de Bruijn graph (suffixed by .edges/.nodes) if
     jointly used with -r, graph used to find bubbles and reads used for quantification
   type: string
   inputBinding:
     prefix: -g
-- id: o
+- id: path_store_results
   doc: path to store the results and the summary log file (default = ./results)
   type: string
   inputBinding:
     prefix: -o
-- id: d
+- id: specific_directory_absolute
   doc: specific directory (absolute path) where to build temporary files (default
     temporary directory otherwise)
   type: File
   inputBinding:
     prefix: -d
-- id: t
+- id: number_cores_must
   doc: number of cores (must be <= number of physical cores)
   type: string
   inputBinding:
     prefix: -t
-- id: s
+- id: changes_types_snps
   doc: '0, 1 or 2. Changes which types of SNPs will be output. If 0 (default), will
     not output SNPs. If 1, will output Type0a-SNPs. If 2, will output Type0a and Type0b
     SNPs (warning: this option may increase a lot the running time. You might also
@@ -63,41 +63,41 @@ inputs:
   type: string
   inputBinding:
     prefix: -s
-- id: v
+- id: verbose_mode
   doc: Verbose mode
   type: boolean
   inputBinding:
     prefix: -v
-- id: u
+- id: keep_nodesedges_file
   doc: keep the nodes/edges file for unfinished bccs
   type: boolean
   inputBinding:
     prefix: -u
-- id: c
+- id: integer_kmers_present
   doc: an integer, k-mers present strictly less than this number of times in the dataset
     will be discarded (default 2)
   type: long
   inputBinding:
     prefix: -c
-- id: c
+- id: percentage_edges_relative
   doc: a percentage from [0,1), edges with relative coverage below this number are
     removed (default 0.05)
   type: long
   inputBinding:
     prefix: -C
-- id: z
+- id: estimated_size_default
   doc: estimated genome/transcriptome size (default = 1G)
   type: string
   inputBinding:
     prefix: -z
-- id: e
+- id: edit_distance_threshold
   doc: edit distance threshold, if the two sequences (paths) of a bubble have edit
     distance smaller than this threshold, the bubble is classified as an inexact repeat
     (default 3)
   type: long
   inputBinding:
     prefix: -e
-- id: y
+- id: maximal_number_bubbles
   doc: maximal number of bubbles enumeration in each bcc. If exceeded, no bubble is
     output for the bcc (default 100M)
   type: long

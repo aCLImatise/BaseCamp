@@ -1,16 +1,21 @@
 class: CommandLineTool
-id: match_list_col.awk_col.cwl
+id: ../../../../home/ubuntu/BiocondaCli/match_list_col.awk_col.cwl
 inputs:
-- id: list_file
+- id: match_list_cold_ot_awk
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: col
+- id: list_file
   doc: ''
   type: string
   inputBinding:
     position: 1
+- id: col
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

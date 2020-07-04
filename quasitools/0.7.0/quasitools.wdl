@@ -2,10 +2,13 @@ version 1.0
 
 task Quasitools {
   input {
-    Boolean verboseVerbose
+    Boolean? verbose
   }
   command <<<
     quasitools \
-      ~{true="--verbose" false="" verboseVerbose}
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    verbose: "Enables verbose mode."
+  }
 }

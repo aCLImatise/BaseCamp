@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cgatreport_get.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cgatreport_get.cwl
 inputs:
 - id: verbose
   doc: loglevel. The higher, the more output [default=2]
@@ -36,6 +36,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --format
+- id: python
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

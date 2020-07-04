@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: omero_admin_reindex.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_admin_reindex.cwl
 inputs:
 - id: jd_wp
   doc: Activate remote debugging

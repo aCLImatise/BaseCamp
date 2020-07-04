@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: segtools_html_report.cwl
+id: ../../../../home/ubuntu/BiocondaCli/segtools_html_report.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: segmentation
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: clobber
   doc: Overwrite any existing output files.
   type: boolean
@@ -52,6 +42,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --outfile
+- id: segmentation
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

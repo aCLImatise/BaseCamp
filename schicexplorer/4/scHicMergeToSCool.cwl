@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scHicMergeToSCool.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scHicMergeToSCool.cwl
 inputs:
 - id: matrices
   doc: 'input file(s). (default: None)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: garnett_check_markers.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/garnett_check_markers.R.cwl
 inputs:
 - id: database
   doc: argument for Bioconductor AnnotationDb-class package used for converting gene

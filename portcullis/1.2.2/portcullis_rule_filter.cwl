@@ -1,56 +1,56 @@
 class: CommandLineTool
-id: portcullis_rule_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/portcullis_rule_filter.cwl
 inputs:
-- id: input
-  doc: Portcullis junction file (tab separated).
+- id: script
+  doc: ''
   type: string
   inputBinding:
     position: 0
+- id: to
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: automate
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: csv
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: filtering
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
+- id: based
+  doc: ''
+  type: string
+  inputBinding:
+    position: 5
+- id: on
+  doc: ''
+  type: string
+  inputBinding:
+    position: 6
+- id: a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 7
 - id: json
-  doc: Rules for filtering
+  doc: ''
   type: string
   inputBinding:
-    prefix: --json
-- id: pos_json
-  doc: '[POS_JSON [POS_JSON ...]] File containing rules for positive set filtering.
-    Multiple positive rule sets allowed. Intersection of all files taken as positive
-    set.'
-  type: boolean
-  inputBinding:
-    prefix: --pos_json
-- id: neg_json
-  doc: '[NEG_JSON [NEG_JSON ...]] File containing rules for negative set filtering.
-    Multiple negative rule sets allowed. Union of all files taken as negative set'
-  type: boolean
-  inputBinding:
-    prefix: --neg_json
-- id: genuine
-  doc: A simple line separated list file indicating whether each junction in the input
-    file is genuine or not 0 means not genuine, 1 means genuine. This is used to evaulate
-    the performance of the rule filtering.
+    position: 8
+- id: configuration_dot
+  doc: ''
   type: string
   inputBinding:
-    prefix: --genuine
-- id: prefix
-  doc: The prefix to apply to all portcullis junction output files.
-  type: string
-  inputBinding:
-    prefix: --prefix
-- id: save_layers
-  doc: Whether to output the junctions at each layer
-  type: boolean
-  inputBinding:
-    prefix: --save_layers
-- id: save_failed
-  doc: Whether to output the junctions not passing the filter
-  type: boolean
-  inputBinding:
-    prefix: --save_failed
-- id: verbose
-  doc: Output additional information
-  type: boolean
-  inputBinding:
-    prefix: --verbose
+    position: 9
 outputs: []
 cwlVersion: v1.1
 baseCommand:

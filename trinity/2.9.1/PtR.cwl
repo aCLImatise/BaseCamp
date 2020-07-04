@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: PtR.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PtR.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

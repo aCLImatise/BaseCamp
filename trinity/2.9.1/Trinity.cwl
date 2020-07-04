@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Trinity.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Trinity.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

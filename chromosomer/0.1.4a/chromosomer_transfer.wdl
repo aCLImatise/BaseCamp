@@ -2,10 +2,13 @@ version 1.0
 
 task ChromosomerTransfer {
   input {
-    String fF
+    String? format
   }
   command <<<
     chromosomer transfer \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""}
+      ~{if defined(format) then ("--format " +  '"' + format + '"') else ""}
   >>>
+  parameter_meta {
+    format: "the format of a file of annotated features (bed, gff3 or vcf) (default: bed)"
+  }
 }

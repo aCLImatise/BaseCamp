@@ -1,6 +1,12 @@
 class: CommandLineTool
-id: extract_genome_region.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extract_genome_region.cwl
 inputs:
+- id: naming
+  doc: "[csv|seq_range|csv_seq_range] Options regarding how each new fasta record\
+    \ will be named. See main help-text for explainations of options. [default='csv']"
+  type: boolean
+  inputBinding:
+    prefix: --naming
 - id: record_name
   doc: The name you want the seq to have in the new fasta.
   type: string
@@ -48,12 +54,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: naming
-  doc: "[csv|seq_range|csv_seq_range] Options regarding how each new fasta record\
-    \ will be named. See main help-text for explainations of options. [default='csv']"
-  type: boolean
-  inputBinding:
-    prefix: --naming
 outputs: []
 cwlVersion: v1.1
 baseCommand:

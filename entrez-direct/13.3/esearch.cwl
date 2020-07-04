@@ -1,12 +1,6 @@
 class: CommandLineTool
-id: esearch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/esearch.cwl
 inputs:
-- id: snp
-  doc: Chromosome Base Position Default Order Heterozygosity Organism SNP_ID Success
-    Rate
-  type: string
-  inputBinding:
-    position: 0
 - id: db
   doc: Database name
   type: boolean
@@ -62,6 +56,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -label
+- id: snp
+  doc: Chromosome Base Position Default Order Heterozygosity Organism SNP_ID Success
+    Rate
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

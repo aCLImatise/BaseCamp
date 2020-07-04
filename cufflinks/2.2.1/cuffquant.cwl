@@ -1,76 +1,66 @@
 class: CommandLineTool
-id: cuffquant.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cuffquant.cwl
 inputs:
-- id: o
-  doc: '/--output-dir              write all output files to this directory              [
-    default:     ./ ]'
+- id: oslash_output_dir
+  doc: 'write all output files to this directory              [ default:     ./ ]'
   type: boolean
   inputBinding:
-    prefix: -o
-- id: m
-  doc: '/--mask-file               ignore all alignment within transcripts in this
-    file  [ default:   NULL ]'
+    prefix: -o/--output-dir
+- id: m_slash_mask_file
+  doc: 'ignore all alignment within transcripts in this file  [ default:   NULL ]'
   type: boolean
   inputBinding:
-    prefix: -M
-- id: b
-  doc: '/--frag-bias-correct       use bias correction - reference fasta required        [
-    default:   NULL ]'
+    prefix: -M/--mask-file
+- id: b_slash_frag_bias_correct
+  doc: 'use bias correction - reference fasta required        [ default:   NULL ]'
   type: boolean
   inputBinding:
-    prefix: -b
-- id: u
-  doc: "/--multi-read-correct      use 'rescue method' for multi-reads           \
-    \        [ default:  FALSE ]"
+    prefix: -b/--frag-bias-correct
+- id: us_lash_multi_read_correct
+  doc: "use 'rescue method' for multi-reads                   [ default:  FALSE ]"
   type: boolean
   inputBinding:
-    prefix: -u
-- id: p
-  doc: '/--num-threads             number of threads used during quantification          [
-    default:      1 ]'
+    prefix: -u/--multi-read-correct
+- id: p_slash_num_threads
+  doc: 'number of threads used during quantification          [ default:      1 ]'
   type: boolean
   inputBinding:
-    prefix: -p
+    prefix: -p/--num-threads
 - id: library_type
   doc: 'Library prep used for input reads                     [ default:  below ]'
   type: boolean
   inputBinding:
     prefix: --library-type
-- id: m
-  doc: '/--frag-len-mean           average fragment length (unpaired reads only)         [
-    default:    200 ]'
+- id: m_slash_frag_len_mean
+  doc: 'average fragment length (unpaired reads only)         [ default:    200 ]'
   type: boolean
   inputBinding:
-    prefix: -m
-- id: s
-  doc: '/--frag-len-std-dev        fragment length std deviation (unpaired reads only)   [
-    default:     80 ]'
+    prefix: -m/--frag-len-mean
+- id: s_slash_frag_len_std_dev
+  doc: 'fragment length std deviation (unpaired reads only)   [ default:     80 ]'
   type: boolean
   inputBinding:
-    prefix: -s
-- id: c
-  doc: '/--min-alignment-count     minimum number of alignments in a locus for testing   [
-    default:   10 ]'
+    prefix: -s/--frag-len-std-dev
+- id: c_slash_min_alignment_count
+  doc: 'minimum number of alignments in a locus for testing   [ default:   10 ]'
   type: boolean
   inputBinding:
-    prefix: -c
+    prefix: -c/--min-alignment-count
 - id: max_mle_iterations
   doc: 'maximum iterations allowed for MLE calculation        [ default:   5000 ]'
   type: boolean
   inputBinding:
     prefix: --max-mle-iterations
-- id: v
-  doc: '/--verbose                 log-friendly verbose processing (no progress bar)     [
-    default:  FALSE ]'
+- id: v_slash_verbose
+  doc: 'log-friendly verbose processing (no progress bar)     [ default:  FALSE ]'
   type: boolean
   inputBinding:
-    prefix: -v
-- id: q
-  doc: '/--quiet                   log-friendly quiet processing (no progress bar)       [
-    default:  FALSE ]'
+    prefix: -v/--verbose
+- id: q_slash_quiet
+  doc: 'log-friendly quiet processing (no progress bar)       [ default:  FALSE ]'
   type: boolean
   inputBinding:
-    prefix: -q
+    prefix: -q/--quiet
 - id: seed
   doc: 'value of random number generator seed                 [ default:      0 ]'
   type: boolean
@@ -121,6 +111,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-scv-correction
+- id: cuff_diff
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: transcripts_dot_gtf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: sample_one_hits_dots_am
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: sample_two_hits_dots_am
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: DistanceEst_ssq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/DistanceEst_ssq.cwl
 inputs:
-- id: hist
-  doc: distribution of fragments size
-  type: string
-  inputBinding:
-    position: 0
-- id: pair
-  doc: alignments between contigs
-  type: string
-  inputBinding:
-    position: 1
 - id: mind
   doc: minimum distance between contigs [-(k-1)]
   type: string
@@ -96,7 +86,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gfa
-- id: gfa2
+- id: gfa_two
   doc: output the graph in GFA2 format
   type: boolean
   inputBinding:
@@ -131,6 +121,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --species
+- id: hist
+  doc: distribution of fragments size
+  type: string
+  inputBinding:
+    position: 0
+- id: pair
+  doc: alignments between contigs
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

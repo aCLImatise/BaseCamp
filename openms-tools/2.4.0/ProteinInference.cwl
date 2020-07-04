@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ProteinInference.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ProteinInference.cwl
 inputs:
 - id: in
   doc: "*                               Input file (valid formats: 'idXML')"

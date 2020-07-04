@@ -2,18 +2,25 @@ version 1.0
 
 task PhyluceGenetreesReformatTrees {
   input {
-    String inputInput
-    String outputOutput
-    String inputInputFormat
-    String outputOutputFormat
-    String doDoNotPreserveSpaces
+    String? input_trees_directory
+    String? output_trees_directory
+    String? input_format
+    String? output_format
+    String? do_not_preserve_spaces
   }
   command <<<
     phyluce_genetrees_reformat_trees \
-      ~{if defined(inputInput) then ("--input " +  '"' + inputInput + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(inputInputFormat) then ("--input-format " +  '"' + inputInputFormat + '"') else ""} \
-      ~{if defined(outputOutputFormat) then ("--output-format " +  '"' + outputOutputFormat + '"') else ""} \
-      ~{if defined(doDoNotPreserveSpaces) then ("--do-not-preserve-spaces " +  '"' + doDoNotPreserveSpaces + '"') else ""}
+      ~{if defined(input_trees_directory) then ("--input " +  '"' + input_trees_directory + '"') else ""} \
+      ~{if defined(output_trees_directory) then ("--output " +  '"' + output_trees_directory + '"') else ""} \
+      ~{if defined(input_format) then ("--input-format " +  '"' + input_format + '"') else ""} \
+      ~{if defined(output_format) then ("--output-format " +  '"' + output_format + '"') else ""} \
+      ~{if defined(do_not_preserve_spaces) then ("--do-not-preserve-spaces " +  '"' + do_not_preserve_spaces + '"') else ""}
   >>>
+  parameter_meta {
+    input_trees_directory: "The input trees directory"
+    output_trees_directory: "The output trees directory"
+    input_format: "The tree file format"
+    output_format: "The tree file format"
+    do_not_preserve_spaces: "Do not retain spaces in output names"
+  }
 }

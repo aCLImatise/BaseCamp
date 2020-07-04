@@ -2,16 +2,22 @@ version 1.0
 
 task ImfusionMerge {
   input {
-    Array[String]+ sampleSampleDirs
-    String outputOutput
-    Array[String]+ namesNames
-    String outputOutputExpression
+    Array[String] sample_dirs
+    String? output_path_merged_insertion
+    Array[String] names
+    String? output_expression
   }
   command <<<
     imfusion-merge \
-      ~{if defined(sampleSampleDirs) then ("--sample_dirs " +  '"' + sampleSampleDirs + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(namesNames) then ("--names " +  '"' + namesNames + '"') else ""} \
-      ~{if defined(outputOutputExpression) then ("--output_expression " +  '"' + outputOutputExpression + '"') else ""}
+      ~{if defined(sample_dirs) then ("--sample_dirs " +  '"' + sample_dirs + '"') else ""} \
+      ~{if defined(output_path_merged_insertion) then ("--output " +  '"' + output_path_merged_insertion + '"') else ""} \
+      ~{if defined(names) then ("--names " +  '"' + names + '"') else ""} \
+      ~{if defined(output_expression) then ("--output_expression " +  '"' + output_expression + '"') else ""}
   >>>
+  parameter_meta {
+    sample_dirs: "Path to sample directories."
+    output_path_merged_insertion: "Output path for merged insertion file."
+    names: "Alternative sample names to use for samples in merged dataset."
+    output_expression: "Output path for merged expression file."
+  }
 }

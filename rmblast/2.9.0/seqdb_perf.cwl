@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: seqdb_perf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqdb_perf.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

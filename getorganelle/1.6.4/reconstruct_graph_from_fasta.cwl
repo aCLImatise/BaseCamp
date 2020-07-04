@@ -1,18 +1,18 @@
 class: CommandLineTool
-id: reconstruct_graph_from_fasta.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/reconstruct_graph_from_fasta.py.cwl
 inputs:
-- id: i
+- id: input_fasta_file
   doc: Input fasta file.
   type: string
   inputBinding:
     prefix: -i
-- id: o
+- id: output_graph_file
   doc: Output graph file. The output format is GFA by default, but FASTG only when
     indicated with postfix '.fastg'.
   type: string
   inputBinding:
     prefix: -o
-- id: k
+- id: kmer_reconstructing_default
   doc: kmer for reconstructing De Bruijn graph. Default:55
   type: string
   inputBinding:

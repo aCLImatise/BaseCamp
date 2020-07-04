@@ -1,19 +1,29 @@
 version 1.0
 
-task Hitac.pyTrain {
+task Hitac.pyPredictions {
   input {
-    String kmKmEr
-    String threadsThreads
-    String? trainTrain
-    String? testTest
-    String? predictionsPredictions
+    String? km_er
+    String? threads
+    String hit_a_cdot_py
+    String train
+    String test
+    String predictions
   }
   command <<<
-    hitac.py train \
-      ~{trainTrain} \
-      ~{if defined(kmKmEr) then ("--kmer " +  '"' + kmKmEr + '"') else ""} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{testTest} \
-      ~{predictionsPredictions}
+    hitac.py predictions \
+      ~{hit_a_cdot_py} \
+      ~{train} \
+      ~{test} \
+      ~{predictions} \
+      ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  parameter_meta {
+    km_er: ""
+    threads: ""
+    hit_a_cdot_py: ""
+    train: ""
+    test: ""
+    predictions: ""
+  }
 }

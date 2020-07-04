@@ -2,18 +2,25 @@ version 1.0
 
 task TQS.py {
   input {
-    String lengthLength
-    String thresholdThreshold
-    String differenceDifference
-    String consecConsec
-    Boolean verboseVerbose
+    String? length
+    String? threshold
+    String? difference
+    String? consec
+    Boolean? verbose
   }
   command <<<
     TQS.py \
-      ~{if defined(lengthLength) then ("--length " +  '"' + lengthLength + '"') else ""} \
-      ~{if defined(thresholdThreshold) then ("--threshold " +  '"' + thresholdThreshold + '"') else ""} \
-      ~{if defined(differenceDifference) then ("--difference " +  '"' + differenceDifference + '"') else ""} \
-      ~{if defined(consecConsec) then ("--consec " +  '"' + consecConsec + '"') else ""} \
-      ~{true="--verbose" false="" verboseVerbose}
+      ~{if defined(length) then ("--length " +  '"' + length + '"') else ""} \
+      ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
+      ~{if defined(difference) then ("--difference " +  '"' + difference + '"') else ""} \
+      ~{if defined(consec) then ("--consec " +  '"' + consec + '"') else ""} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    length: "Length of sequence reads (i.e. Number of sequencing cycles, default=36)"
+    threshold: "Base intensity threshold value (-40 to 40, default=5)"
+    difference: "Base intensity difference between top intensity and second best (1 to 80, default=5)"
+    consec: "Minimum number of consecutive bases passing threshold values (default=20)"
+    verbose: "Runs in Verbose mode."
+  }
 }

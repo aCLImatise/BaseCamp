@@ -2,16 +2,22 @@ version 1.0
 
 task Ripser {
   input {
-    Boolean formatFormat
-    String dimDim
-    String thresholdThreshold
-    File? filenameFilename
+    Boolean? format
+    String? dim
+    String? threshold
+    File? filename
   }
   command <<<
     ripser \
-      ~{filenameFilename} \
-      ~{true="--format" false="" formatFormat} \
-      ~{if defined(dimDim) then ("--dim " +  '"' + dimDim + '"') else ""} \
-      ~{if defined(thresholdThreshold) then ("--threshold " +  '"' + thresholdThreshold + '"') else ""}
+      ~{filename} \
+      ~{true="--format" false="" format} \
+      ~{if defined(dim) then ("--dim " +  '"' + dim + '"') else ""} \
+      ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""}
   >>>
+  parameter_meta {
+    format: "use the specified file format for the input. Options are: lower-distance (lower triangular distance matrix; default) upper-distance (upper triangular distance matrix) distance       (full distance matrix) point-cloud    (point cloud in Euclidean space) dipha          (distance matrix in DIPHA file format)"
+    dim: "compute persistent homology up to dimension <k>"
+    threshold: "compute Rips complexes up to diameter <t>"
+    filename: ""
+  }
 }

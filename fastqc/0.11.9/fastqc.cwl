@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastqc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastqc.cwl
 inputs:
 - id: outdir
   doc: Create all output files in the specified output directory. Please note that
@@ -107,7 +107,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --adapters
-- id: l
+- id: specifies_file_a
   doc: Specifies a non-default file which contains a set of criteria
   type: boolean
   inputBinding:

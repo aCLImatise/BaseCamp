@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Nucmer_contig_align.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Nucmer_contig_align.pl.cwl
 inputs:
 - id: query
   doc: input contig fasta file (e.g., contig1.fa)
@@ -52,6 +52,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --thread
+- id: usage
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

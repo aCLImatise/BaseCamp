@@ -1,21 +1,21 @@
 class: CommandLineTool
-id: anvi_delete_state.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_delete_state.cwl
 inputs:
-- id: pan_or_profile_db
-  doc: Anvi'o pan or profile database (and even genes database in appropriate contexts).
-  type: string
-  inputBinding:
-    prefix: --pan-or-profile-db
-- id: state
-  doc: The state name to ... delete :(
-  type: string
-  inputBinding:
-    prefix: --state
 - id: list_states
   doc: Show available states and exit.
   type: boolean
   inputBinding:
     prefix: --list-states
+- id: p
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -p
+- id: s
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -s
 outputs: []
 cwlVersion: v1.1
 baseCommand:

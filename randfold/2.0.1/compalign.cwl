@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: compalign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/compalign.cwl
 inputs:
-- id: c
+- id: only_compare_marked
   doc: ': only compare under marked #=CS consensus structure'
   type: boolean
   inputBinding:
@@ -16,6 +16,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: trusted_dot_ali
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: test_dot_ali
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

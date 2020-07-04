@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cleanPolishes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cleanPolishes.cwl
 inputs:
 - id: threshold
   doc: Introns bigger than this are candidates for trimming (default = 100000).
@@ -21,7 +21,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -segregate
-- id: gff3
+- id: gff_three
   doc: Write output in GFF3 format
   type: boolean
   inputBinding:
@@ -31,6 +31,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -savejunk
+- id: debug
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -debug
 outputs: []
 cwlVersion: v1.1
 baseCommand:

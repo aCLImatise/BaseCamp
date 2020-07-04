@@ -1,25 +1,6 @@
 class: CommandLineTool
-id: correct.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/correct.py.cwl
 inputs:
-- id: families
-  doc: "The sorted output of make-barcodes.awk. The important part is that it's a\
-    \ tab-delimited file with at least 2 columns: the barcode sequence and order,\
-    \ and it must be sorted in the same order as the \"reads\" in the SAM file."
-  type: string
-  inputBinding:
-    position: 0
-- id: reads
-  doc: The fasta/q file given to the aligner. Used to get barcode sequences from read
-    names.
-  type: string
-  inputBinding:
-    position: 1
-- id: sam
-  doc: Barcode alignment, in SAM format. Omit to read from stdin. The read names must
-    be integers, representing the (1-based) order they appear in the families file.
-  type: string
-  inputBinding:
-    position: 2
 - id: debug
   doc: Print debug messages (very verbose).
   type: boolean
@@ -47,6 +28,25 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --test
+- id: families
+  doc: "The sorted output of make-barcodes.awk. The important part is that it's a\
+    \ tab-delimited file with at least 2 columns: the barcode sequence and order,\
+    \ and it must be sorted in the same order as the \"reads\" in the SAM file."
+  type: string
+  inputBinding:
+    position: 0
+- id: reads
+  doc: The fasta/q file given to the aligner. Used to get barcode sequences from read
+    names.
+  type: string
+  inputBinding:
+    position: 1
+- id: sam
+  doc: Barcode alignment, in SAM format. Omit to read from stdin. The read names must
+    be integers, representing the (1-based) order they appear in the families file.
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

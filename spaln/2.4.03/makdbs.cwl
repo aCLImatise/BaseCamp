@@ -1,6 +1,26 @@
 class: CommandLineTool
-id: makdbs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/makdbs.cwl
 inputs:
+- id: dna_protein_sequence
+  doc: '[D|P] : DNA or Protein sequence'
+  type: boolean
+  inputBinding:
+    prefix: -K
+- id: d
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -d
+- id: s_srcdir
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -sSrcdir
+- id: p_dst_dir
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -pDstdir
 - id: name
   doc: ''
   type: string
@@ -11,11 +31,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: k
-  doc: '[D|P] : DNA or Protein sequence'
-  type: boolean
-  inputBinding:
-    prefix: -K
 outputs: []
 cwlVersion: v1.1
 baseCommand:

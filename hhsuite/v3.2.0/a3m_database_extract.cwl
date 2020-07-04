@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: a3m_database_extract.cwl
+id: ../../../../home/ubuntu/BiocondaCli/a3m_database_extract.cwl
 inputs:
-- id: ff_index_ca3m_database_prefix
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: ff_index_a3m_database_prefix
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: ff_index_sequence_database_prefix
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: ff_index_header_database_prefix
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
 - id: i
   doc: ''
   type: boolean
@@ -41,6 +21,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -q
+- id: ff_index_ca_three_m_database_prefix
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: ff_index_a_three_m_database_prefix
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: ff_index_sequence_database_prefix
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: ff_index_header_database_prefix
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

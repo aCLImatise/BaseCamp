@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: longshot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/longshot.cwl
 inputs:
 - id: auto_max_cov
   doc: Automatically calculate mean coverage for region and set max coverage to mean_coverage

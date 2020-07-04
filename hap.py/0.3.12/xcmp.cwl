@@ -1,44 +1,44 @@
 class: CommandLineTool
-id: xcmp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/xcmp.cwl
 inputs:
 - id: input_v_cfs
   doc: Two VCF files to compare (use file:sample  for a specific sample column).
   type: string
   inputBinding:
     prefix: --input-vcfs
-- id: o
+- id: arg_output_variant
   doc: '[ --output-vcf ] arg          Output variant comparison results to VCF.'
   type: boolean
   inputBinding:
     prefix: -o
-- id: e
+- id: arg_output_failure
   doc: '[ --output-errors ] arg       Output failure information.'
   type: boolean
   inputBinding:
     prefix: -e
-- id: r
+- id: arg_reference_fasta
   doc: '[ --reference ] arg           The reference fasta file.'
   type: boolean
   inputBinding:
     prefix: -r
-- id: l
+- id: arg_location_start
   doc: '[ --location ] arg            The location to start at.'
   type: boolean
   inputBinding:
     prefix: -l
-- id: r
+- id: arg_use_regions
   doc: '[ --regions ] arg             Use a bed file for getting a subset of  regions
     (traversal via tabix).'
   type: boolean
   inputBinding:
     prefix: -R
-- id: t
+- id: targets_streaming_file
   doc: '[ --targets ] arg             Use a bed file for getting a subset of  targets
     (streaming the whole file, ignoring  things outside the bed regions).'
   type: boolean
   inputBinding:
     prefix: -T
-- id: q
+- id: arg_field_use
   doc: '[ --qq ] arg                  Field to use for quality scoring (this will  be
     output as the QQ info field).'
   type: boolean
@@ -54,12 +54,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --progress-seconds
-- id: w
+- id: arg_overlap_window
   doc: '[ --window ] arg              Overlap window to create haplotype blocks.'
   type: boolean
   inputBinding:
     prefix: -w
-- id: n
+- id: arg_maximum_number
   doc: '[ --max-n-haplotypes ] arg    Maximum number of haplotypes to enumerate.'
   type: boolean
   inputBinding:
@@ -79,7 +79,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --apply-filters-truth
-- id: f
+- id: arg_apply_filtering
   doc: '[ --apply-filters-query ] arg Apply filtering in query VCF (off by  default).'
   type: boolean
   inputBinding:

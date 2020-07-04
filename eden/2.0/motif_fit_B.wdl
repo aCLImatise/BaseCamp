@@ -2,14 +2,25 @@ version 1.0
 
 task MotifFitB {
   input {
-    String nNClusters
-    String thresholdThreshold
-    String branchingBranchingFactor
+    String? i
+    String? t
+    String? d
+    String motif
+    String fit
   }
   command <<<
     motif fit B \
-      ~{if defined(nNClusters) then ("--n-clusters " +  '"' + nNClusters + '"') else ""} \
-      ~{if defined(thresholdThreshold) then ("--threshold " +  '"' + thresholdThreshold + '"') else ""} \
-      ~{if defined(branchingBranchingFactor) then ("--branching-factor " +  '"' + branchingBranchingFactor + '"') else ""}
+      ~{motif} \
+      ~{fit} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""}
   >>>
+  parameter_meta {
+    i: ""
+    t: ""
+    d: ""
+    motif: ""
+    fit: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: taxonomy2tree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/taxonomy2tree.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gnali.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gnali.cwl
 inputs:
-- id: gn_ali
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: input_file
   doc: 'File of genes to test. Accepted formats: csv, txt'
   type: string

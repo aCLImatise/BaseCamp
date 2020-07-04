@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tpp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tpp.cwl
 inputs:
 - id: replicon_ids
   doc: "# if multiple replicons/genomes/contigs/sequences were provided in -ref, give\
@@ -7,6 +7,41 @@ inputs:
   type: string
   inputBinding:
     prefix: -replicon-ids
+- id: bwa
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -bwa
+- id: ref
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -ref
+- id: reads_one
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -reads1
+- id: reads_two
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -reads2
+- id: output
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -output
+- id: optional
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: args
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

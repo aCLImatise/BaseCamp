@@ -1,27 +1,22 @@
 class: CommandLineTool
-id: Antisense.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Antisense.py.cwl
 inputs:
-- id: '50'
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: i
+- id: input_file_format
   doc: 'input file, format: qseq/fastq/fasta/sequence'
   type: File
   inputBinding:
     prefix: -i
-- id: o
+- id: name_output_file
   doc: Name of the output file
   type: File
   inputBinding:
     prefix: -o
-- id: l
+- id: length_show_one
   doc: 'Length to show in one line for fasta. [Default: show all in one line]'
   type: long
   inputBinding:
     prefix: -l
-- id: k
+- id: would_filter_reads
   doc: Would not filter low quality reads if specified
   type: boolean
   inputBinding:

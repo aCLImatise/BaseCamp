@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: indelHistory.cwl
+id: ../../../../home/ubuntu/BiocondaCli/indelHistory.cwl
 inputs:
 - id: output_alignment
   doc: Instead of a summary of indels only, output an alignment in FASTA format of
@@ -22,6 +22,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ia-names
+- id: alignment_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: tree_dot_mod
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

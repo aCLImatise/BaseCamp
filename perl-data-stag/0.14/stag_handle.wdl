@@ -2,12 +2,16 @@ version 1.0
 
 task StagHandle.pl {
   input {
-    Boolean subSub
-    Boolean trapTrap
+    Boolean? sub
+    Boolean? trap
   }
   command <<<
     stag-handle.pl \
-      ~{true="-sub" false="" subSub} \
-      ~{true="-trap" false="" trapTrap}
+      ~{true="-sub" false="" sub} \
+      ~{true="-trap" false="" trap}
   >>>
+  parameter_meta {
+    sub: "|s PERL a perl hashref containing handlers"
+    trap: "|t ELEMENT=SUB"
+  }
 }

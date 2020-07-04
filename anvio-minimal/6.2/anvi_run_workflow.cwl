@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_run_workflow.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_run_workflow.cwl
 inputs:
 - id: workflow
   doc: You must specify a workflow name. To see a list of available workflows run
@@ -55,7 +55,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --save-workflow-graph
-- id: a
+- id: _additionalparams_additional
   doc: "..., --additional-params ... Additional snakemake parameters to add when running\
     \ snakemake. NOTICE: --additional-params HAS TO BE THE LAST ARGUMENT THAT IS PASSED\
     \ TO anvi-run-workflow, ANYTHING THAT FOLLOWS WILL BE CONSIDERED AS PART OF THE\

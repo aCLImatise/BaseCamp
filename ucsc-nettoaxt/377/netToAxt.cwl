@@ -1,51 +1,51 @@
 class: CommandLineTool
-id: netToAxt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/netToAxt.cwl
 inputs:
-- id: in_net
+- id: q_chain
+  doc: '- net is with respect to the q side of chains.'
+  type: boolean
+  inputBinding:
+    prefix: -qChain
+- id: max_gap
+  doc: '- maximum size of gap before breaking. Default 100'
+  type: string
+  inputBinding:
+    prefix: -maxGap
+- id: gap_out
+  doc: '- Output gap sizes to file'
+  type: string
+  inputBinding:
+    prefix: -gapOut
+- id: no_split
+  doc: "- Don't split chain when there is an insertion of another chain"
+  type: boolean
+  inputBinding:
+    prefix: -noSplit
+- id: in_dotnet
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: in_chain
+- id: in_dot_chain
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: target_2bit
+- id: target_dot_two_bit
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: query_2bit
+- id: query_dot_two_bit
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: out_a_xt
+- id: out_do_tax_t
   doc: ''
   type: string
   inputBinding:
     position: 4
-- id: q_chain
-  doc: with respect to the q side of chains.
-  type: string
-  inputBinding:
-    prefix: -qChain
-- id: maximum
-  doc: of gap before breaking. Default 100
-  type: string
-  inputBinding:
-    prefix: '- maximum'
-- id: output
-  doc: sizes to file
-  type: string
-  inputBinding:
-    prefix: '- Output'
-- id: no_split
-  doc: "'t split chain when there is an insertion of another chain"
-  type: boolean
-  inputBinding:
-    prefix: -noSplit
 outputs: []
 cwlVersion: v1.1
 baseCommand:

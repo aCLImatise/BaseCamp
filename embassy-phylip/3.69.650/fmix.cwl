@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fmix.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fmix.cwl
 inputs:
 - id: weights
   doc: properties Weights file

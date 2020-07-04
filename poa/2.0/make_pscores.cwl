@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: make_pscores.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/make_pscores.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

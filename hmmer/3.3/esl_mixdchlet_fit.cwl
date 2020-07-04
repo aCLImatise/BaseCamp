@@ -1,26 +1,11 @@
 class: CommandLineTool
-id: esl_mixdchlet_fit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/esl_mixdchlet_fit.cwl
 inputs:
-- id: q
-  doc: ''
+- id: set_random_seed
+  doc: ': set random number seed to <n>  [0]'
   type: string
   inputBinding:
-    position: 0
-- id: k
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: in_count_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: out_mix_dch_let
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
+    prefix: -s
 - id: options
   doc: ''
   type: boolean

@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: munge_sumstats.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/munge_sumstats.py.cwl
 inputs:
 - id: sum_stats
   doc: Input filename.
   type: string
   inputBinding:
     prefix: --sumstats
-- id: n
+- id: sample_size_option
   doc: Sample size If this option is not set, will try to infer the sample size from
     the input file. If the input file contains a sample size column, and this flag
     is set, the argument to this flag has priority.
@@ -95,17 +95,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --N-con-col
-- id: a1
+- id: a_one
   doc: 'Name of A1 column (if not a name that ldsc understands). NB: case insensitive.'
   type: string
   inputBinding:
     prefix: --a1
-- id: a2
+- id: a_two
   doc: 'Name of A2 column (if not a name that ldsc understands). NB: case insensitive.'
   type: string
   inputBinding:
     prefix: --a2
-- id: p
+- id: name_pvalue_name_ldsc_understands_nb_case
   doc: 'Name of p-value column (if not a name that ldsc understands). NB: case insensitive.'
   type: string
   inputBinding:
@@ -148,7 +148,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --ignore
-- id: a1_inc
+- id: a_one_inc
   doc: A1 is the increasing allele.
   type: boolean
   inputBinding:

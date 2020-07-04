@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: byobu_status.cwl
+id: ../../../../home/ubuntu/BiocondaCli/byobu_status.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

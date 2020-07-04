@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: matrix_to_fasta.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/matrix_to_fasta.py.cwl
 inputs:
 - id: input_matrix
   doc: /path/to/NASP_matrix [REQUIRED]

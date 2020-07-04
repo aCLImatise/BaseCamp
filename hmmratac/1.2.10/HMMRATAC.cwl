@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: HMMRATAC.cwl
+id: ../../../../home/ubuntu/BiocondaCli/HMMRATAC.cwl
 inputs:
-- id: b
+- id: _bam_bam
   doc: ', --bam <BAM> Sorted BAM file containing the ATAC-seq reads'
   type: boolean
   inputBinding:
     prefix: -b
-- id: i
+- id: _index_bai
   doc: ', --index <BAI> Index file for the sorted BAM File'
   type: boolean
   inputBinding:
     prefix: -i
-- id: g
+- id: _genome_genomefile
   doc: ', --genome <GenomeFile> Two column, tab delimited file containing genome size
     stats'
   type: boolean
@@ -24,9 +24,8 @@ inputs:
   inputBinding:
     prefix: --model
 - id: model_only
-  doc: <true || false> Whether or not to stop the program after generating model.
-    Default = false
-  type: boolean
+  doc: Whether or not to stop the program after generating model. Default = false
+  type: string
   inputBinding:
     prefix: --modelonly
 - id: max_train
@@ -35,21 +34,18 @@ inputs:
   inputBinding:
     prefix: --maxTrain
 - id: remove_duplicates
-  doc: <true || false> Whether or not to remove duplicate reads from analysis. Default
-    = true
-  type: boolean
+  doc: Whether or not to remove duplicate reads from analysis. Default = true
+  type: string
   inputBinding:
     prefix: --removeDuplicates
 - id: print_exclude
-  doc: <true || false> Whether to output excluded regions into Output_exclude.bed.
-    Default = false
-  type: boolean
+  doc: Whether to output excluded regions into Output_exclude.bed. Default = false
+  type: string
   inputBinding:
     prefix: --printExclude
 - id: print_train
-  doc: <true || false> Whether to output training regions into Output_training.bed.
-    Default = true
-  type: boolean
+  doc: Whether to output training regions into Output_training.bed. Default = true
+  type: string
   inputBinding:
     prefix: --printTrain
 - id: random_seed
@@ -63,6 +59,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --threshold
+- id: jar
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -jar
+- id: java
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,10 +2,13 @@ version 1.0
 
 task StringMLST.py {
   input {
-    String? profileProfile
+    String profile
   }
   command <<<
     stringMLST.py \
-      ~{profileProfile}
+      ~{profile}
   >>>
+  parameter_meta {
+    profile: "profileFile"
+  }
 }

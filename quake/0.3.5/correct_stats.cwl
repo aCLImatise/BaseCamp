@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: correct_stats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/correct_stats.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

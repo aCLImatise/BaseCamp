@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: extract_interpop_chars.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extract_interpop_chars.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

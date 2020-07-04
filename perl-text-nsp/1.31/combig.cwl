@@ -1,18 +1,12 @@
 class: CommandLineTool
-id: combig.pl_BIGRAM.cwl
+id: ../../../../home/ubuntu/BiocondaCli/combig.pl.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: bigram
   doc: ''
   type: string
   inputBinding:
-    position: 1
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - combig.pl
-- BIGRAM

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Plot_COG_Abundance.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Plot_COG_Abundance.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

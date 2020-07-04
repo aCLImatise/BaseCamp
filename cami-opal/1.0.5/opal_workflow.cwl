@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: opal_workflow.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/opal_workflow.py.cwl
 inputs:
-- id: images
-  doc: Docker images (bioboxes) of profilers
-  type: string
-  inputBinding:
-    position: 0
 - id: input_dir
   doc: Input directory containing gzipped FASTQ files
   type: string
@@ -51,6 +46,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --desc
+- id: images
+  doc: Docker images (bioboxes) of profilers
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

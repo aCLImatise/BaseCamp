@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: spades_convert_bin_to_fasta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/spades_convert_bin_to_fasta.cwl
 inputs:
 - id: prefix
   doc: Prefix of .off and .seq file for contigs in binary format

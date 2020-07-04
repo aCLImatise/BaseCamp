@@ -1,32 +1,32 @@
 class: CommandLineTool
-id: kaiju2krona.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kaiju2krona.cwl
 inputs:
-- id: i
+- id: name_input_file
   doc: Name of input file
   type: File
   inputBinding:
     prefix: -i
-- id: o
+- id: name_output_file
   doc: Name of output file.
   type: File
   inputBinding:
     prefix: -o
-- id: t
+- id: name_nodesdmp_file
   doc: Name of nodes.dmp file
   type: File
   inputBinding:
     prefix: -t
-- id: n
+- id: name_namesdmp_file
   doc: Name of names.dmp file
   type: File
   inputBinding:
     prefix: -n
-- id: v
+- id: enable_verbose_output
   doc: Enable verbose output.
   type: boolean
   inputBinding:
     prefix: -v
-- id: u
+- id: include_count_unclassified
   doc: Include count for unclassified reads in output.
   type: boolean
   inputBinding:

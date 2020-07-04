@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfnumalt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfnumalt.cwl
 inputs:
 - id: vcf_file
   doc: ''

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: vcfsample2info.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfsample2info.cwl
 inputs:
-- id: vcf_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: field
   doc: Add information about this field in samples to INFO column
   type: boolean
@@ -36,6 +31,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --max
+- id: vcf_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

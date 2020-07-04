@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: shovill.cwl
+id: ../../../../home/ubuntu/BiocondaCli/shovill.cwl
 inputs:
 - id: check
   doc: Check dependencies are installed
   type: boolean
   inputBinding:
     prefix: --check
-- id: r1
+- id: r_one
   doc: "Read 1 FASTQ (default: '')"
   type: string
   inputBinding:
     prefix: --R1
-- id: r2
+- id: r_two
   doc: "Read 2 FASTQ (default: '')"
   type: string
   inputBinding:

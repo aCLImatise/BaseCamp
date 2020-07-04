@@ -2,20 +2,28 @@ version 1.0
 
 task PhyluceAlignGetInformativeSites {
   input {
-    String alignmentsAlignments
-    String outputOutput
-    String inputInputFormat
-    String coresCores
-    String verbosityVerbosity
-    String logLogPath
+    String? alignments
+    String? the_output_filename
+    String? input_format
+    String? cores
+    String? verbosity
+    String? log_path
   }
   command <<<
     phyluce_align_get_informative_sites \
-      ~{if defined(alignmentsAlignments) then ("--alignments " +  '"' + alignmentsAlignments + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(inputInputFormat) then ("--input-format " +  '"' + inputInputFormat + '"') else ""} \
-      ~{if defined(coresCores) then ("--cores " +  '"' + coresCores + '"') else ""} \
-      ~{if defined(verbosityVerbosity) then ("--verbosity " +  '"' + verbosityVerbosity + '"') else ""} \
-      ~{if defined(logLogPath) then ("--log-path " +  '"' + logLogPath + '"') else ""}
+      ~{if defined(alignments) then ("--alignments " +  '"' + alignments + '"') else ""} \
+      ~{if defined(the_output_filename) then ("--output " +  '"' + the_output_filename + '"') else ""} \
+      ~{if defined(input_format) then ("--input-format " +  '"' + input_format + '"') else ""} \
+      ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
+      ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
+      ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""}
   >>>
+  parameter_meta {
+    alignments: "The directory containing the alignment files"
+    the_output_filename: "The output filename"
+    input_format: "The input alignment format"
+    cores: "The number of cores to use."
+    verbosity: "The logging level to use."
+    log_path: "The path to a directory to hold logs."
+  }
 }

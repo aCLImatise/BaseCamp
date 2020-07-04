@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: chado_admin_revoke.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chado_admin_revoke.cwl
 inputs:
-- id: dbname
-  doc: name of the database
-  type: string
-  inputBinding:
-    position: 0
 - id: verbose
   doc: verbose mode
   type: boolean
@@ -31,6 +26,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --schema
+- id: dbname
+  doc: name of the database
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

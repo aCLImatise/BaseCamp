@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: confindr_create_db.cwl
+id: ../../../../home/ubuntu/BiocondaCli/confindr_create_db.cwl
 inputs:
 - id: output_folder
   doc: Folder to first store temporary files, and eventually store the created database.

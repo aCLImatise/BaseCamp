@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: o_visualize_distance_matrix.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/o_visualize_distance_matrix.R.cwl
 inputs:
-- id: heat_map_r
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: input_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: metadata
   doc: Metadata file
   type: string
@@ -61,6 +51,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --title
+- id: heat_map_do_tr
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: input_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

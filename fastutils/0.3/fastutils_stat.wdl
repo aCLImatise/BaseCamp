@@ -2,16 +2,22 @@ version 1.0
 
 task FastutilsStat {
   input {
-    String inIn
-    String outOut
-    Int minMinLen
-    Int maxlenMaxlen
+    String? in
+    String? out
+    Int? min_len
+    Int? maxlen
   }
   command <<<
     fastutils stat \
-      ~{if defined(inIn) then ("--in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("--out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(minMinLen) then ("--minLen " +  '"' + minMinLen + '"') else ""} \
-      ~{if defined(maxlenMaxlen) then ("--maxLen " +  '"' + maxlenMaxlen + '"') else ""}
+      ~{if defined(in) then ("--in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
+      ~{if defined(min_len) then ("--minLen " +  '"' + min_len + '"') else ""} \
+      ~{if defined(maxlen) then ("--maxLen " +  '"' + maxlen + '"') else ""}
   >>>
+  parameter_meta {
+    in: "input file in fasta/q format [stdin]"
+    out: "output file [stdout]"
+    min_len: "min read length [0]"
+    maxlen: "max read length [INT64_MAX]"
+  }
 }

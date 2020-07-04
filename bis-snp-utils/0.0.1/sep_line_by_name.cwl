@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sep_line_by_name.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sep_line_by_name.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

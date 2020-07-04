@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sequana_start_pipeline.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sequana_start_pipeline.cwl
 inputs:
 - id: force
   doc: Force the creation to overwrite existing directory and contents
@@ -21,6 +21,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --description
+- id: welcome
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: to
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: se_quan_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

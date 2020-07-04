@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: xmlCat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/xmlCat.cwl
 inputs:
 - id: xxx
   doc: ''

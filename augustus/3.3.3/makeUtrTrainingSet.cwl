@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: makeUtrTrainingSet.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/makeUtrTrainingSet.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

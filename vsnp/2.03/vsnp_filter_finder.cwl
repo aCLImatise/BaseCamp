@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vsnp_filter_finder.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vsnp_filter_finder.py.cwl
 inputs:
 - id: cwd
   doc: Working directoy to be added as path to dependency files.
@@ -21,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
+- id: prog
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

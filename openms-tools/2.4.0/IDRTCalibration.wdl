@@ -2,28 +2,40 @@ version 1.0
 
 task IDRTCalibration {
   input {
-    File inIn
-    File outOut
-    String calibraCalibraNt1Reference
-    String calibraCalibraNt2Reference
-    String calibraCalibraNt1Input
-    String calibraCalibraNt2Input
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    File? in
+    File? out
+    String? calibra_nt_one_reference
+    String? calibra_nt_two_reference
+    String? calibra_nt_one_input
+    String? calibra_nt_two_input
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     IDRTCalibration \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(calibraCalibraNt1Reference) then ("-calibrant_1_reference " +  '"' + calibraCalibraNt1Reference + '"') else ""} \
-      ~{if defined(calibraCalibraNt2Reference) then ("-calibrant_2_reference " +  '"' + calibraCalibraNt2Reference + '"') else ""} \
-      ~{if defined(calibraCalibraNt1Input) then ("-calibrant_1_input " +  '"' + calibraCalibraNt1Input + '"') else ""} \
-      ~{if defined(calibraCalibraNt2Input) then ("-calibrant_2_input " +  '"' + calibraCalibraNt2Input + '"') else ""} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(calibra_nt_one_reference) then ("-calibrant_1_reference " +  '"' + calibra_nt_one_reference + '"') else ""} \
+      ~{if defined(calibra_nt_two_reference) then ("-calibrant_2_reference " +  '"' + calibra_nt_two_reference + '"') else ""} \
+      ~{if defined(calibra_nt_one_input) then ("-calibrant_1_input " +  '"' + calibra_nt_one_input + '"') else ""} \
+      ~{if defined(calibra_nt_two_input) then ("-calibrant_2_input " +  '"' + calibra_nt_two_input + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*                  Input file  (valid formats: 'idXML')"
+    out: "*                 Output file  (valid formats: 'idXML')"
+    calibra_nt_one_reference: "The RT of the first calibrant in the reference file. (default: '0.1')"
+    calibra_nt_two_reference: "The RT of the second calibrant in the reference file. (default: '0.9')"
+    calibra_nt_one_input: "The RT of the first calibrant in the input file. Please note that this value needs to be set. The default value -1.0 is not allowed. (default: '-1')"
+    calibra_nt_two_input: "The RT of the second calibrant in the input file. Please note that this value needs to be set. The default value -1.0 is not allowed. (default: '-1')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

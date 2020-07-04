@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: seqkit_head.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqkit_head.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: number
   doc: print first N FASTA/Q records (default 10)
   type: long
@@ -60,6 +55,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

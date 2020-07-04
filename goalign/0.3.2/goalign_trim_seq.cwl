@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: goalign_trim_seq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_trim_seq.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: from_start
   doc: 'If true: trims n char from the start, else from the end'
   type: boolean
@@ -81,6 +76,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

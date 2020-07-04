@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: lorikeet.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lorikeet.cwl
 inputs:
 - id: jar
   doc: ''

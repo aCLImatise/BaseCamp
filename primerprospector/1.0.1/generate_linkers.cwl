@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: generate_linkers.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/generate_linkers.py.cwl
 inputs:
 - id: hits_fps
   doc: Target primer hits files to generate linkers with. Separate multiple files

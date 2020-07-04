@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: check_tradis_tags.cwl
+id: ../../../../home/ubuntu/BiocondaCli/check_tradis_tags.cwl
 inputs:
-- id: check_tags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: b
   doc: ''
   type: File
   inputBinding:
     prefix: -b
+- id: check_tags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

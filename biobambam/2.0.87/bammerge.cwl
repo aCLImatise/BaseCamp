@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bammerge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bammerge.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

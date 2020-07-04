@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: call_program.cwl
+id: ../../../../home/ubuntu/BiocondaCli/call_program.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

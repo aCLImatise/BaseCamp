@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ColaAlignSatsuma.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ColaAlignSatsuma.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

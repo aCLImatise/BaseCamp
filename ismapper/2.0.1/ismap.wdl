@@ -2,20 +2,28 @@ version 1.0
 
 task Ismap.py {
   input {
-    Array[String]+ readsReads
-    Array[String]+ queriesQueries
-    Array[String]+ referenceReference
-    String outputOutputDir
-    String logLog
-    String helpHelpAll
+    Array[String] reads
+    Array[String] queries
+    Array[String] reference
+    String? output_dir
+    String? log
+    String? help_all
   }
   command <<<
     ismap.py \
-      ~{if defined(readsReads) then ("--reads " +  '"' + readsReads + '"') else ""} \
-      ~{if defined(queriesQueries) then ("--queries " +  '"' + queriesQueries + '"') else ""} \
-      ~{if defined(referenceReference) then ("--reference " +  '"' + referenceReference + '"') else ""} \
-      ~{if defined(outputOutputDir) then ("--output_dir " +  '"' + outputOutputDir + '"') else ""} \
-      ~{if defined(logLog) then ("--log " +  '"' + logLog + '"') else ""} \
-      ~{if defined(helpHelpAll) then ("--help_all " +  '"' + helpHelpAll + '"') else ""}
+      ~{if defined(reads) then ("--reads " +  '"' + reads + '"') else ""} \
+      ~{if defined(queries) then ("--queries " +  '"' + queries + '"') else ""} \
+      ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
+      ~{if defined(output_dir) then ("--output_dir " +  '"' + output_dir + '"') else ""} \
+      ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
+      ~{if defined(help_all) then ("--help_all " +  '"' + help_all + '"') else ""}
   >>>
+  parameter_meta {
+    reads: "Paired end reads for analysing (can be gzipped)"
+    queries: "Multifasta file for query gene(s) (eg: insertion sequence) that will be mapped to."
+    reference: "Reference genome for typing against in genbank format"
+    output_dir: "Location for all output files (default is current directory)."
+    log: "Prefix for log file. If not supplied, prefix will be current date and time."
+    help_all: "Display extended help"
+  }
 }

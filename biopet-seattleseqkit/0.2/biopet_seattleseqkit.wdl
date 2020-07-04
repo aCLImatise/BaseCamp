@@ -2,16 +2,22 @@ version 1.0
 
 task BiopetSeattleseqkit {
   input {
-    String? seattleSeattleSeqKit
-    String? toolToolName
-    String? toolTool
-    String? argsArgs
+    String seattle_seq_kit
+    String? tool_name
+    String? tool
+    String? args
   }
   command <<<
     biopet-seattleseqkit \
-      ~{seattleSeattleSeqKit} \
-      ~{toolToolName} \
-      ~{toolTool} \
-      ~{argsArgs}
+      ~{seattle_seq_kit} \
+      ~{tool_name} \
+      ~{tool} \
+      ~{args}
   >>>
+  parameter_meta {
+    seattle_seq_kit: ""
+    tool_name: ""
+    tool: ""
+    args: ""
+  }
 }

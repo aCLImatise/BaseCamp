@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: byobu_launcher_uninstall.cwl
+id: ../../../../home/ubuntu/BiocondaCli/byobu_launcher_uninstall.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

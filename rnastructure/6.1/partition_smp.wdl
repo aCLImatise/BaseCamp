@@ -2,14 +2,19 @@ version 1.0
 
 task PartitionSmp {
   input {
-    String? partitionPartition
-    String? sequenceSequenceFile
-    String? pfsPfsFile
+    String partition
+    String sequence_file
+    String pfs_file
   }
   command <<<
     partition-smp \
-      ~{partitionPartition} \
-      ~{sequenceSequenceFile} \
-      ~{pfsPfsFile}
+      ~{partition} \
+      ~{sequence_file} \
+      ~{pfs_file}
   >>>
+  parameter_meta {
+    partition: ""
+    sequence_file: ""
+    pfs_file: ""
+  }
 }

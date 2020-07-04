@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: samtools_glfview.cwl
+id: ../../../../home/ubuntu/BiocondaCli/samtools_glfview.cwl
 inputs:
 - id: glf_view
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: in_glf
+- id: in_dot_glf
   doc: ''
   type: string
   inputBinding:

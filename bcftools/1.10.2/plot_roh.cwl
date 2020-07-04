@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: plot_roh.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/plot_roh.py.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: dir
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: highlight
   doc: +group1,-group2       Highlight calls shared within group1 but not present
     in group2
@@ -52,6 +42,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --samples
+- id: dir
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

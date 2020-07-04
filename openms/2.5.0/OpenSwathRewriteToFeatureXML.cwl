@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: OpenSwathRewriteToFeatureXML.cwl
+id: ../../../../home/ubuntu/BiocondaCli/OpenSwathRewriteToFeatureXML.cwl
 inputs:
 - id: csv
   doc: "MProphet tsv output file: \"all_peakgroups.xls\" (valid formats: 'csv')"

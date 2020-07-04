@@ -1,12 +1,7 @@
 class: CommandLineTool
-id: mcxdeblast.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mcxdeblast.cwl
 inputs:
-- id: file_name
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
-- id: m9
+- id: m_nine
   doc: Expect column (-m 9) input.
   type: boolean
   inputBinding:
@@ -17,13 +12,13 @@ inputs:
   inputBinding:
     prefix: --line-mode
 - id: score
-  doc: =<b|e|r>   Use bit scores, E-values, or bit scores normalized by hsp-length
-  type: boolean
+  doc: Use bit scores, E-values, or bit scores normalized by hsp-length
+  type: string
   inputBinding:
     prefix: --score
 - id: sort
-  doc: =<a|o>      Use alphabetic sorting (default) or occurrence.
-  type: boolean
+  doc: Use alphabetic sorting (default) or occurrence.
+  type: string
   inputBinding:
     prefix: --sort
 - id: tab
@@ -61,6 +56,31 @@ inputs:
   type: string
   inputBinding:
     prefix: --out
+- id: based_oth_dr
+  doc: '[to be read by mcxassemble]'
+  type: string
+  inputBinding:
+    position: 0
+- id: based_ot_raw
+  doc: '[to be read by mcxassemble]'
+  type: string
+  inputBinding:
+    position: 1
+- id: based_ot_map
+  doc: '[to be read by mcxassemble]'
+  type: string
+  inputBinding:
+    position: 2
+- id: based_ot_tab
+  doc: '[to be read by clmformat]'
+  type: string
+  inputBinding:
+    position: 3
+- id: base_do_terr
+  doc: '[error log]'
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

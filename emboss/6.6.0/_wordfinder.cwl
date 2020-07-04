@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _wordfinder.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_wordfinder.cwl
 inputs:
 - id: gap_open
   doc: float      [10.0 for any sequence type] Gap opening penalty (Number from 0.000

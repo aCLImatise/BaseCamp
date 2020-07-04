@@ -2,10 +2,19 @@ version 1.0
 
 task Translate {
   input {
-    Boolean fF
+    String? f
+    String? var_input
+    String? var_output
   }
   command <<<
     translate \
-      ~{true="-f" false="" fF}
+      ~{var_input} \
+      ~{var_output} \
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  parameter_meta {
+    f: ""
+    var_input: ""
+    var_output: ""
+  }
 }

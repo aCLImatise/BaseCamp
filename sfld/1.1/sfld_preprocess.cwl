@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sfld_preprocess.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sfld_preprocess.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

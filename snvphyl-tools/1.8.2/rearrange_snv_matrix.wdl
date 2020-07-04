@@ -2,16 +2,22 @@ version 1.0
 
 task RearrangeSnvMatrix.pl {
   input {
-    String tT
-    String oO
-    String mM
-    String pP
+    String? t
+    String? o
+    String? m
+    String? p
   }
   command <<<
     rearrange_snv_matrix.pl \
-      ~{if defined(tT) then ("-t " +  '"' + tT + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{if defined(mM) then ("-m " +  '"' + mM + '"') else ""} \
-      ~{if defined(pP) then ("-p " +  '"' + pP + '"') else ""}
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
+      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""}
   >>>
+  parameter_meta {
+    t: ""
+    o: ""
+    m: ""
+    p: ""
+  }
 }

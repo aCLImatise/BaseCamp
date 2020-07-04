@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bunwarpj.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bunwarpj.cwl
 inputs:
 - id: landmark_weight
   doc: ': Weight of the landmarks'
@@ -11,12 +11,12 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: affine_file_1
+- id: affine_file_one
   doc: ': Initial source affine matrix transformation'
   type: string
   inputBinding:
     position: 0
-- id: affine_file_2
+- id: affine_file_two
   doc: ': Initial target affine matrix transformation'
   type: string
   inputBinding:

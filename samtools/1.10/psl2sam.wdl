@@ -2,26 +2,22 @@ version 1.0
 
 task Psl2sam.pl {
   input {
-    Boolean aA
-    Boolean bB
-    Boolean qQ
-    Boolean rR
-    String? 11
-    String? 33
-    String? 55
-    String? 22
-    String? inInPsl
+    String? a
+    String? b
+    String? q
+    String? r
   }
   command <<<
     psl2sam.pl \
-      ~{11} \
-      ~{true="-a" false="" aA} \
-      ~{true="-b" false="" bB} \
-      ~{true="-q" false="" qQ} \
-      ~{true="-r" false="" rR} \
-      ~{33} \
-      ~{55} \
-      ~{22} \
-      ~{inInPsl}
+      ~{if defined(a) then ("-a " +  '"' + a + '"') else ""} \
+      ~{if defined(b) then ("-b " +  '"' + b + '"') else ""} \
+      ~{if defined(q) then ("-q " +  '"' + q + '"') else ""} \
+      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
+  parameter_meta {
+    a: ""
+    b: ""
+    q: ""
+    r: ""
+  }
 }

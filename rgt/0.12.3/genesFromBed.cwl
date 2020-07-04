@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: genesFromBed.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genesFromBed.py.cwl
 inputs:
 - id: mode
   doc: choose mode
@@ -21,6 +21,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --metric
+- id: exp_matrix
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: path
+  doc: ''
+  type: File
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

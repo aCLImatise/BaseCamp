@@ -2,10 +2,13 @@ version 1.0
 
 task Astats {
   input {
-    String? bankBankPath
+    String bank_path
   }
   command <<<
     astats \
-      ~{bankBankPath}
+      ~{bank_path}
   >>>
+  parameter_meta {
+    bank_path: ""
+  }
 }

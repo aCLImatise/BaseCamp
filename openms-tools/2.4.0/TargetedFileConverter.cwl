@@ -1,10 +1,10 @@
 class: CommandLineTool
-id: TargetedFileConverter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/TargetedFileConverter.cwl
 inputs:
 - id: in
   doc: "*        Input file to convert. See http://www.openms.de/current_doxygen/html/UTILS_TargetedFileConverter.html\
     \ for format of OpenSWATH transition TSV file or SpectraST MRM file. (valid formats:\
-    \ 'tsv', 'mrm', 'pqp', 'Tra ML')"
+    \ 'tsv', 'mrm', 'pqp', 'TraML')"
   type: File
   inputBinding:
     prefix: -in
@@ -45,11 +45,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Algorithm parameters section
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

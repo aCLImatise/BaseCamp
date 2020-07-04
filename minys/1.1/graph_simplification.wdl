@@ -2,14 +2,19 @@ version 1.0
 
 task GraphSimplification.py {
   input {
-    String lL
-    String? inInFile
-    String? outfileOutfile
+    String? length_minimal_suffix
+    String in_file
+    String outfile
   }
   command <<<
     graph_simplification.py \
-      ~{inInFile} \
-      ~{if defined(lL) then ("-l " +  '"' + lL + '"') else ""} \
-      ~{outfileOutfile}
+      ~{in_file} \
+      ~{outfile} \
+      ~{if defined(length_minimal_suffix) then ("-l " +  '"' + length_minimal_suffix + '"') else ""}
   >>>
+  parameter_meta {
+    length_minimal_suffix: "Length of minimal suffix for node merging"
+    in_file: ""
+    outfile: ""
+  }
 }

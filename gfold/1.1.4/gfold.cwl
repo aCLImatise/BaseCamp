@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gfold.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gfold.cwl
 inputs:
 - id: g_fold
   doc: ':   Generalized fold change for ranking differentially expressed    genes

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: eblast.cwl
+id: ../../../../home/ubuntu/BiocondaCli/eblast.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

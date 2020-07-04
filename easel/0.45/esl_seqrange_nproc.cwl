@@ -1,21 +1,26 @@
 class: CommandLineTool
-id: esl_seqrange_nproc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/esl_seqrange_nproc.cwl
 inputs:
-- id: sq_file
+- id: esl_seq_range
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: proc_idx
+- id: sq_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: nproc
+- id: proc_idx
   doc: ''
   type: string
   inputBinding:
     position: 2
+- id: nproc
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

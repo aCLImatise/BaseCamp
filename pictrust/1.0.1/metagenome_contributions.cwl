@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: metagenome_contributions.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/metagenome_contributions.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

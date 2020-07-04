@@ -1,36 +1,6 @@
 class: CommandLineTool
-id: RNAshapes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAshapes.cwl
 inputs:
-- id: outside
-  doc: ': Applies the "outside"-algorithm to compute probabilities for all base pairs
-    (i,j), based on the partition function [10]. Output is a PostScript file, visualizing
-    these probabilities as a "dot plot". The "dot plot" shows a matrix of squares
-    with area proportional to the base pair probabilities in the upper right half.
-    For each pair (i,j) with probability above --bppmThreshold there is a line of
-    the form i j sqrt(p) ubox in the PostScript file, so that they can be easily extracted.'
-  type: string
-  inputBinding:
-    position: 0
-- id: me_a
-  doc: ": Finds the secondary structure with the maximal sum of base-pair probabilities\
-    \ (MEA=maximal expected accuracy). The equivalent Vienna Package name is the 'centroid\
-    \ secondary structure', defined as 'The centroid structure is the structure with\
-    \ the minimum total base-pair distance to all structures in the thermodynamic\
-    \ ensemble.'."
-  type: string
-  inputBinding:
-    position: 1
-- id: probing
-  doc: ": Structural probing is a wet-lab method to obtain hints about the likelihood\
-    \ of a nucleotide in a structure to be unpaired, a so called 'reactivity' [12].\
-    \ We use the reactivities to enrich the thermodynamic model. To circumvent the\
-    \ challenge of properly weighting free energies and reactivities, as in e.g. RNAstructure\
-    \ [13], we compute a pareto front of both optimization criteria [14]'. This returns\
-    \ a set of equally good candidates, which represent interesting spots of the structural\
-    \ ensemble. Finally, the user has to pick his/her favorite."
-  type: string
-  inputBinding:
-    position: 2
 - id: mode
   doc: ': Select the computation mode. Available modes are "mfe", "subopt", "shapes",
     "probs", "sample", "cast", "eval", "abstract", "outside", "mea", "probing". Omit
@@ -270,6 +240,41 @@ inputs:
   type: string
   inputBinding:
     prefix: --reactivityfilename
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: outside
+  doc: ': Applies the "outside"-algorithm to compute probabilities for all base pairs
+    (i,j), based on the partition function [10]. Output is a PostScript file, visualizing
+    these probabilities as a "dot plot". The "dot plot" shows a matrix of squares
+    with area proportional to the base pair probabilities in the upper right half.
+    For each pair (i,j) with probability above --bppmThreshold there is a line of
+    the form i j sqrt(p) ubox in the PostScript file, so that they can be easily extracted.'
+  type: string
+  inputBinding:
+    position: 0
+- id: me_a
+  doc: ": Finds the secondary structure with the maximal sum of base-pair probabilities\
+    \ (MEA=maximal expected accuracy). The equivalent Vienna Package name is the 'centroid\
+    \ secondary structure', defined as 'The centroid structure is the structure with\
+    \ the minimum total base-pair distance to all structures in the thermodynamic\
+    \ ensemble.'."
+  type: string
+  inputBinding:
+    position: 1
+- id: probing
+  doc: ": Structural probing is a wet-lab method to obtain hints about the likelihood\
+    \ of a nucleotide in a structure to be unpaired, a so called 'reactivity' [12].\
+    \ We use the reactivities to enrich the thermodynamic model. To circumvent the\
+    \ challenge of properly weighting free energies and reactivities, as in e.g. RNAstructure\
+    \ [13], we compute a pareto front of both optimization criteria [14]'. This returns\
+    \ a set of equally good candidates, which represent interesting spots of the structural\
+    \ ensemble. Finally, the user has to pick his/her favorite."
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

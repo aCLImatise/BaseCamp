@@ -1,17 +1,6 @@
 class: CommandLineTool
-id: htseq_count.cwl
+id: ../../../../home/ubuntu/BiocondaCli/htseq_count.cwl
 inputs:
-- id: sam_filenames
-  doc: Path to the SAM/BAM files containing the mapped reads. If '-' is selected,
-    read from standard input
-  type: string
-  inputBinding:
-    position: 0
-- id: features_filename
-  doc: Path to the GTF file containing the features
-  type: string
-  inputBinding:
-    position: 1
 - id: format
   doc: 'Type of <alignment_file> data. DEPRECATED: file format is detected automatically.
     This option is ignored.'
@@ -138,6 +127,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: sam_filenames
+  doc: Path to the SAM/BAM files containing the mapped reads. If '-' is selected,
+    read from standard input
+  type: string
+  inputBinding:
+    position: 0
+- id: features_filename
+  doc: Path to the GTF file containing the features
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

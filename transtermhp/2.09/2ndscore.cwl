@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: 2ndscore.cwl
+id: ../../../../home/ubuntu/BiocondaCli/2ndscore.cwl
 inputs:
-- id: in_fasta
+- id: in_dot_fast_a
   doc: ''
   type: string
   inputBinding:

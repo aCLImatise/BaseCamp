@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: taxa_assignment_report.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/taxa_assignment_report.py.cwl
 inputs:
 - id: tax_a_mapping_fp
   doc: Taxonomy mapping filepath [REQUIRED]

@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: wellington_footprints.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wellington_footprints.py.cwl
 inputs:
-- id: regions
-  doc: BED file of the regions you want to footprint
-  type: string
-  inputBinding:
-    position: 0
-- id: reads
-  doc: The BAM file containing the DNase-seq reads
-  type: string
-  inputBinding:
-    position: 1
-- id: output_dir
-  doc: A writeable directory to write the results to
-  type: string
-  inputBinding:
-    position: 2
 - id: bonferroni
   doc: 'Performs a bonferroni correction (default: False)'
   type: boolean
@@ -70,16 +55,31 @@ inputs:
   type: string
   inputBinding:
     prefix: --output_prefix
-- id: p
+- id: number_use_use
   doc: 'Number of processes to use, use 0 to use all cores (default: 1)'
   type: string
   inputBinding:
     prefix: -p
-- id: a
+- id: atacseq_mode_default
   doc: 'ATAC-seq mode (default: False)'
   type: boolean
   inputBinding:
     prefix: -A
+- id: regions
+  doc: BED file of the regions you want to footprint
+  type: string
+  inputBinding:
+    position: 0
+- id: reads
+  doc: The BAM file containing the DNase-seq reads
+  type: string
+  inputBinding:
+    position: 1
+- id: output_dir
+  doc: A writeable directory to write the results to
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

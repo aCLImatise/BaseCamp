@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _oddcomp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_oddcomp.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

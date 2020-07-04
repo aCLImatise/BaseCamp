@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: tab_to_vcf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tab_to_vcf.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: id
   doc: The column ID.
   type: string

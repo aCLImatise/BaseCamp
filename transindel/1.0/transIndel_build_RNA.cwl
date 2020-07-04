@@ -1,32 +1,17 @@
 class: CommandLineTool
-id: transIndel_build_RNA.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/transIndel_build_RNA.py.cwl
 inputs:
-- id: python
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: trans_in_del_build_rna_py
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: opts
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: r
+- id: reference_genome_used
   doc: :reference genome used for analyzing RNAseq data (required)
   type: boolean
   inputBinding:
     prefix: -r
-- id: g
+- id: gtf_gene_annotatino
   doc: :gtf gene annotatino file used for analyzing RNAseq data (required)
   type: boolean
   inputBinding:
     prefix: -g
-- id: s
+- id: splice_site_default
   doc: :splice site half bin size,  default 20
   type: boolean
   inputBinding:
@@ -41,6 +26,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --max_del_length
+- id: i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
+- id: o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
+- id: opts
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

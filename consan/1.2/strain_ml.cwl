@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: strain_ml.cwl
+id: ../../../../home/ubuntu/BiocondaCli/strain_ml.cwl
 inputs:
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 - id: ml_train
   doc: ''
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: options
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ismap.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ismap.py.cwl
 inputs:
 - id: reads
   doc: Paired end reads for analysing (can be gzipped)

@@ -2,16 +2,22 @@ version 1.0
 
 task SamtoolsTview {
   input {
-    String? bamBamTk
-    String? tTView
-    String? aALnbAm
-    String? refRefFastA
+    String bam_tk
+    String t_view
+    String aln_dot_bam
+    String? ref_dot_fast_a
   }
   command <<<
     samtools tview \
-      ~{bamBamTk} \
-      ~{tTView} \
-      ~{aALnbAm} \
-      ~{refRefFastA}
+      ~{bam_tk} \
+      ~{t_view} \
+      ~{aln_dot_bam} \
+      ~{ref_dot_fast_a}
   >>>
+  parameter_meta {
+    bam_tk: ""
+    t_view: ""
+    aln_dot_bam: ""
+    ref_dot_fast_a: ""
+  }
 }

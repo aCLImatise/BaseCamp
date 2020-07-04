@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: GenerateCommand.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/GenerateCommand.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

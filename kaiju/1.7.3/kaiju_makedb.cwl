@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: kaiju_makedb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kaiju_makedb.cwl
 inputs:
-- id: t
+- id: set_number_parallel
   doc: Set number of parallel threads for index construction to X \(default:5\) The
     more threads are used, the higher the memory requirement becomes.
   type: string

@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: CCAT.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CCAT.cwl
 inputs:
-- id: library_1tag_filename
+- id: library_one_tag_file_name
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: library_2tag_filename
+- id: library_two_tag_file_name
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: chromosome_length_filename
+- id: chromosome_length_file_name
   doc: ''
   type: string
   inputBinding:

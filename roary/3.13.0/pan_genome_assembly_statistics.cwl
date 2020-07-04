@@ -1,17 +1,12 @@
 class: CommandLineTool
-id: pan_genome_assembly_statistics.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pan_genome_assembly_statistics.cwl
 inputs:
-- id: gene_presence_absence_csv
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: p
+- id: number_of_threads
   doc: 'number of threads [1]        '
   type: long
   inputBinding:
     prefix: -p
-- id: o
+- id: output_filename
   doc: output filename [assembly_statistics.csv]
   type: string
   inputBinding:
@@ -21,16 +16,21 @@ inputs:
   type: double
   inputBinding:
     prefix: -cd
-- id: v
+- id: verbose_output_stdout
   doc: verbose output to STDOUT
   type: boolean
   inputBinding:
     prefix: -v
-- id: w
+- id: print_version_exit
   doc: print version and exit
   type: boolean
   inputBinding:
     prefix: -w
+- id: gene_presence_absence_dot_csv
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: DBinfo.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/DBinfo.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

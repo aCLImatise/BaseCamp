@@ -1,15 +1,23 @@
 version 1.0
 
-task ProphylePairedEnd.pyReads1 {
+task ProphylePairedEnd.pyReads2 {
   input {
-    String outputOutputFile
-    String? readsReads1
-    String? readsReads2
+    String? o
+    String prophy_le_paired_enddo_tpy
+    String reads_one
+    String reads_two
   }
   command <<<
-    prophyle_paired_end.py reads_1 \
-      ~{readsReads1} \
-      ~{if defined(outputOutputFile) then ("--output-file " +  '"' + outputOutputFile + '"') else ""} \
-      ~{readsReads2}
+    prophyle_paired_end.py reads_2 \
+      ~{prophy_le_paired_enddo_tpy} \
+      ~{reads_one} \
+      ~{reads_two} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    o: ""
+    prophy_le_paired_enddo_tpy: ""
+    reads_one: ""
+    reads_two: ""
+  }
 }

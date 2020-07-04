@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cover.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cover.cwl
 inputs:
 - id: test
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mpa_server.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mpa_server.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

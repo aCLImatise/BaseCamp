@@ -1,22 +1,22 @@
 class: CommandLineTool
-id: bank2sam.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bank2sam.cwl
 inputs:
-- id: b
+- id: the_bank_operated
   doc: 'The bank to be operated on. '
   type: string
   inputBinding:
     prefix: -b
-- id: c
+- id: use_contigs_reference
   doc: Use contigs as reference
   type: boolean
   inputBinding:
     prefix: -c
-- id: s
+- id: use_scaffolds_reference
   doc: Use scaffolds as reference
   type: boolean
   inputBinding:
     prefix: -s
-- id: i
+- id: use_iids_query
   doc: 'Use IIDs as query template name (EIDs is default.) '
   type: boolean
   inputBinding:

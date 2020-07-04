@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: listSurrogates.cwl
+id: ../../../../home/ubuntu/BiocondaCli/listSurrogates.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

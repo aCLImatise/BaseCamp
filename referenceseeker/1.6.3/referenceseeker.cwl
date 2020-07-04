@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: referenceseeker.cwl
+id: ../../../../home/ubuntu/BiocondaCli/referenceseeker.cwl
 inputs:
 - id: crg
   doc: Max number of candidate reference genomes to pass kmer prefilter (default =

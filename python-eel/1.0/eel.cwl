@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: eel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/eel.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

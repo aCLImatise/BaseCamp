@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: merge_reports.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/merge_reports.py.cwl
 inputs:
 - id: input_bowtie
   doc: The report with candidate fusion genes found using the Bowtie.
@@ -16,7 +16,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --input_star
-- id: input_bowtie2
+- id: input_bowtie_two
   doc: The report with candidate fusion genes found using the BOWTIE2 aligner.
   type: string
   inputBinding:
@@ -67,13 +67,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --supporting_pairs_star
-- id: supporting_reads_bowtie2
+- id: supporting_reads_bowtie_two
   doc: The minimum number of supporting reads (found using BOWTIE2 aligner) necessary
     for considering valid a candidate fusion gene. Default is '2'.
   type: string
   inputBinding:
     prefix: --supporting_reads_bowtie2
-- id: supporting_pairs_bowtie2
+- id: supporting_pairs_bowtie_two
   doc: The minimum number of supporting pairs (found using BOWTIE2 aligner) necessary
     for considering valid a candidate fusion gene. Default is '2'.
   type: string
@@ -109,7 +109,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --squish-report
-- id: anchor_2
+- id: anchor_two
   doc: For anchors longer (or equal) with this value it is enough to have only one
     supporting read. Default is '40'.
   type: string

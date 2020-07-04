@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: go2godb_prestore.cwl
+id: ../../../../home/ubuntu/BiocondaCli/go2godb_prestore.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

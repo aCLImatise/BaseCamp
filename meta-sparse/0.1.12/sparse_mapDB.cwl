@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sparse_mapDB.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sparse_mapDB.cwl
 inputs:
 - id: dbname
   doc: 'Name for the database folder. REQUIRED. '

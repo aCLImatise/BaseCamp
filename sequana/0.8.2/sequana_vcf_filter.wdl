@@ -2,32 +2,37 @@ version 1.0
 
 task SequanaVcfFilter {
   input {
-    Boolean filterFilter
-    Boolean filterFilter
-    Boolean filterFilter
-    String? onlyOnly
-    String? forFor
-    String? vcfVcf
-    String? usingUsing
-    String? mMPileUp
-    String? versionVersion
-    String? 4141
-    String? forFor
-    String? nowNow
+    String only
+    String var_1
+    String vcf
+    String using
+    String m_pile_up
+    String version
+    String four_dot_one
+    String var_7
+    String now
   }
   command <<<
     sequana_vcf_filter \
-      ~{onlyOnly} \
-      ~{true="--filter" false="" filterFilter} \
-      ~{true="--filter" false="" filterFilter} \
-      ~{true="--filter" false="" filterFilter} \
-      ~{forFor} \
-      ~{vcfVcf} \
-      ~{usingUsing} \
-      ~{mMPileUp} \
-      ~{versionVersion} \
-      ~{4141} \
-      ~{forFor} \
-      ~{nowNow}
+      ~{only} \
+      ~{var_1} \
+      ~{vcf} \
+      ~{using} \
+      ~{m_pile_up} \
+      ~{version} \
+      ~{four_dot_one} \
+      ~{var_7} \
+      ~{now}
   >>>
+  parameter_meta {
+    only: ""
+    var_1: ""
+    vcf: ""
+    using: ""
+    m_pile_up: ""
+    version: ""
+    four_dot_one: ""
+    var_7: ""
+    now: ""
+  }
 }

@@ -2,14 +2,22 @@ version 1.0
 
 task Fold {
   input {
-    String bytesBytes
-    String spacesSpaces
-    String widthWidth
+    String? bytes
+    String? spaces
+    String? width
+    String? option
   }
   command <<<
     fold \
-      ~{if defined(bytesBytes) then ("--bytes " +  '"' + bytesBytes + '"') else ""} \
-      ~{if defined(spacesSpaces) then ("--spaces " +  '"' + spacesSpaces + '"') else ""} \
-      ~{if defined(widthWidth) then ("--width " +  '"' + widthWidth + '"') else ""}
+      ~{option} \
+      ~{if defined(bytes) then ("--bytes " +  '"' + bytes + '"') else ""} \
+      ~{if defined(spaces) then ("--spaces " +  '"' + spaces + '"') else ""} \
+      ~{if defined(width) then ("--width " +  '"' + width + '"') else ""}
   >>>
+  parameter_meta {
+    bytes: "bytes rather than columns"
+    spaces: "at spaces"
+    width: "use WIDTH columns instead of 80"
+    option: ""
+  }
 }

@@ -2,10 +2,13 @@ version 1.0
 
 task Mlocarna {
   input {
-    String? fastFastAFile
+    String fast_a_file
   }
   command <<<
     mlocarna \
-      ~{fastFastAFile}
+      ~{fast_a_file}
   >>>
+  parameter_meta {
+    fast_a_file: ""
+  }
 }

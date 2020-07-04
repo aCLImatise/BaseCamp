@@ -2,10 +2,13 @@ version 1.0
 
 task ParaNodeStop {
   input {
-    String? machineMachineList
+    String machine_list
   }
   command <<<
     paraNodeStop \
-      ~{machineMachineList}
+      ~{machine_list}
   >>>
+  parameter_meta {
+    machine_list: ""
+  }
 }

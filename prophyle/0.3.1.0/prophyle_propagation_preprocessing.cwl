@@ -1,22 +1,22 @@
 class: CommandLineTool
-id: prophyle_propagation_preprocessing.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/prophyle_propagation_preprocessing.py.cwl
 inputs:
-- id: s
+- id: rate_sampling_tree
   doc: rate of sampling the tree [no sampling]
   type: double
   inputBinding:
     prefix: -s
-- id: a
+- id: autocomplete_tree_names
   doc: autocomplete tree (names of internal nodes and FASTA paths)
   type: boolean
   inputBinding:
     prefix: -A
-- id: v
+- id: verbose
   doc: verbose
   type: boolean
   inputBinding:
     prefix: -V
-- id: p
+- id: add_prefixes_node
   doc: do not add prefixes to node names
   type: boolean
   inputBinding:

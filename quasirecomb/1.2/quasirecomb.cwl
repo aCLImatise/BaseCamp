@@ -1,34 +1,34 @@
 class: CommandLineTool
-id: quasirecomb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/quasirecomb.cwl
 inputs:
-- id: i
+- id: alignment_file_bam
   doc: ': Alignment file in BAM or SAM format.'
   type: string
   inputBinding:
     prefix: -i
-- id: o
+- id: path_current_directory
   doc: ': Path to the output directory (default: current directory).'
   type: File
   inputBinding:
     prefix: -o
-- id: k
+- id: intint_interval_number
   doc: 'or INT-INT     : The interval or fixed number of sequence generators, i.e.
     1-4 or 2 In a grid enviroment the $SGE_TASK_ID. In case of no input, K will be
     incremented as long as max BIC has not been reached, but will stop at K=5.'
   type: long
   inputBinding:
     prefix: -K
-- id: m
+- id: during_model_default
   doc: ': The number of EM restarts during model selection (default: 5).'
   type: long
   inputBinding:
     prefix: -m
-- id: t
+- id: for_best_k
   doc: ': The number of EM restarts for best K to find optimum (default: 50).'
   type: long
   inputBinding:
     prefix: -t
-- id: r
+- id: only_reconstruct_region
   doc: ': Only reconstruct a specific region.'
   type: long
   inputBinding:
@@ -96,21 +96,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -XX
-- id: xmx10g
+- id: x_mx_one_zero_g
   doc: ': Increase heap space.'
   type: boolean
   inputBinding:
     prefix: -Xmx10G
-- id: xx
-  doc: ':+UseParallelGC    : Enhances performance on multicore systems.'
-  type: boolean
+- id: jar
+  doc: ''
+  type: string
   inputBinding:
-    prefix: -XX
-- id: xx
-  doc: ':+UseNUMA          : Enhances performance on multi-CPU systems.'
-  type: boolean
+    prefix: -jar
+- id: java
+  doc: ''
+  type: string
   inputBinding:
-    prefix: -XX
+    position: 0
+- id: options_dot_dot_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

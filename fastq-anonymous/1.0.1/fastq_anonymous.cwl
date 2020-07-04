@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: fastq_anonymous.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq_anonymous.cwl
 inputs:
+- id: mask
+  doc: Mask all nucleotides using N
+  type: boolean
+  inputBinding:
+    prefix: --mask
 - id: v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
-- id: m
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -m
 outputs: []
 cwlVersion: v1.1
 baseCommand:

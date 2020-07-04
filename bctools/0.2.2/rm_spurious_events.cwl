@@ -1,23 +1,32 @@
 class: CommandLineTool
-id: rm_spurious_events.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rm_spurious_events.py.cwl
 inputs:
-- id: frac_max
-  doc: filter out alignments supported by less reads than this fraction of the maximum
-    number of reads per position
+- id: outfile
+  doc: 'Write results to this file. (default: None)'
+  type: string
+  inputBinding:
+    prefix: --outfile
+- id: threshold
+  doc: 'Threshold for spurious event removal. (default: 0.1)'
+  type: string
+  inputBinding:
+    prefix: --threshold
+- id: verbose
+  doc: 'Be verbose. (default: False)'
   type: boolean
   inputBinding:
-    prefix: --frac_max
+    prefix: --verbose
 - id: debug
-  doc: enable debug output
+  doc: 'Print lots of debugging information (default: False)'
   type: boolean
   inputBinding:
     prefix: --debug
-- id: man
-  doc: full documentation
-  type: boolean
+- id: events
+  doc: Path to bed6 file containing alignments.
+  type: string
   inputBinding:
-    prefix: --man
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:
-- rm_spurious_events.pl
+- rm_spurious_events.py

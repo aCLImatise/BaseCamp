@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: tabview.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tabview.cwl
 inputs:
-- id: filename
-  doc: File to read. Use '-' to read from the standard input instead.
-  type: File
-  inputBinding:
-    position: 0
 - id: encoding
   doc: Encoding, if required. If the file is UTF-8, Latin-1(iso8859-1) or a few other
     common encodings, it should be detected automatically. If not, you can pass 'CP720',
@@ -49,6 +44,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --quote-char
+- id: filename
+  doc: File to read. Use '-' to read from the standard input instead.
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

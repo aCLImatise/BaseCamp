@@ -2,10 +2,13 @@ version 1.0
 
 task PFAMtoGoParser.pl {
   input {
-    String? pfamPfamToGo
+    String pfam_to_go
   }
   command <<<
     PFAMtoGoParser.pl \
-      ~{pfamPfamToGo}
+      ~{pfam_to_go}
   >>>
+  parameter_meta {
+    pfam_to_go: ""
+  }
 }

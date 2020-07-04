@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: CnvHunter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CnvHunter.cwl
 inputs:
 - id: in
   doc: Input TSV files (one per sample) containing coverage data (chr, start, end,
@@ -13,7 +13,7 @@ inputs:
   type: File
   inputBinding:
     prefix: -out
-- id: n
+- id: number_most_similar
   doc: "The number of most similar samples to use for reference construction. Default\
     \ value: '30'"
   type: long

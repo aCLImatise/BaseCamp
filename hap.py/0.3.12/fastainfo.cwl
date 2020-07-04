@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastainfo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastainfo.cwl
 inputs:
 - id: input_file
   doc: The input files

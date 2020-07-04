@@ -2,10 +2,13 @@ version 1.0
 
 task PARTS {
   input {
-    String? configurationConfigurationFile
+    String configuration_file
   }
   command <<<
     PARTS \
-      ~{configurationConfigurationFile}
+      ~{configuration_file}
   >>>
+  parameter_meta {
+    configuration_file: ""
+  }
 }

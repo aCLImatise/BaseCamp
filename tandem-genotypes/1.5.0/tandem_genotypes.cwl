@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: tandem_genotypes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tandem_genotypes.cwl
 inputs:
-- id: micro_sat_txt
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: alignments_maf
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: genes
   doc: read genes from a genePred or BED file
   type: File
@@ -67,6 +57,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: micro_sat_dot_txt
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: alignments_dot_maf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

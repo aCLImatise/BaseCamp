@@ -2,14 +2,16 @@ version 1.0
 
 task Snpgenie.pl {
   input {
-    Boolean vcfVcfFormat
-    Boolean workdirWorkdir
-    Boolean vcfVcfFormat
+    Boolean? workdir
+    String? vcf_format
   }
   command <<<
     snpgenie.pl \
-      ~{true="--vcfformat" false="" vcfVcfFormat} \
-      ~{true="--workdir" false="" workdirWorkdir} \
-      ~{true="--vcfformat" false="" vcfVcfFormat}
+      ~{true="--workdir" false="" workdir} \
+      ~{if defined(vcf_format) then ("--vcfformat " +  '"' + vcf_format + '"') else ""}
   >>>
+  parameter_meta {
+    workdir: "=/home/kimura/HPV/SNPs/ --outdir=/home/kimura/HPV/SNPs/diversity/ > SNPGenie_HPV.out"
+    vcf_format: "=/home/ohta/human/data/ --outdir=SNPGenie_Results"
+  }
 }

@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: bipartition_smp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bipartition_smp.cwl
 inputs:
 - id: bi_partition
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: seqfile1
+- id: seq_file_one
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: seqfile2
+- id: seq_file_two
   doc: ''
   type: string
   inputBinding:

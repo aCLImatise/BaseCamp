@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: glimmerhmm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/glimmerhmm.cwl
 inputs:
-- id: genome_1_file
+- id: genome_one_file
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: training_dir_for_genome_1
+- id: training_dir_for_genome_one
   doc: ''
   type: string
   inputBinding:

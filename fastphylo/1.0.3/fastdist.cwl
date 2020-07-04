@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastdist.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastdist.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: opt_init_and_term_probs.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/opt_init_and_term_probs.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

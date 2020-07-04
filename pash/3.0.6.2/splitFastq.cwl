@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: splitFastq.rb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/splitFastq.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

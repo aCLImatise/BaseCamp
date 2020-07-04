@@ -2,14 +2,19 @@ version 1.0
 
 task NormalizeIHS {
   input {
-    String yourYour
-    String? normalizeNormalizeHs
-    String? 001001
+    String? s
+    String? f
+    String normalize_hs
   }
   command <<<
     normalize-iHS \
-      ~{normalizeNormalizeHs} \
-      ~{if defined(yourYour) then ("-     Your " +  '"' + yourYour + '"') else ""} \
-      ~{001001}
+      ~{normalize_hs} \
+      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  parameter_meta {
+    s: ""
+    f: ""
+    normalize_hs: ""
+  }
 }

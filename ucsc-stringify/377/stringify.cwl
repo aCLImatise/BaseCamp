@@ -1,21 +1,26 @@
 class: CommandLineTool
-id: stringify.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stringify.cwl
 inputs:
-- id: in_txt
+- id: var
+  doc: '- create a variable with the specified name containing the string.'
+  type: string
+  inputBinding:
+    prefix: -var
+- id: static
+  doc: '- create the variable but put static in front of it.'
+  type: boolean
+  inputBinding:
+    prefix: -static
+- id: array
+  doc: '- create an array of strings, one for each line'
+  type: boolean
+  inputBinding:
+    prefix: -array
+- id: in_dot_txt
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: create
-  doc: variable but put static in front of it.
-  type: string
-  inputBinding:
-    prefix: '- create'
-- id: create
-  doc: array of strings, one for each line
-  type: string
-  inputBinding:
-    prefix: '- create'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

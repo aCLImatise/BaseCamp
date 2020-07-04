@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ezclermont.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ezclermont.cwl
 inputs:
-- id: contigs
-  doc: FASTA formatted genome or set of contigs. If reading from stdin, use '-'
-  type: string
-  inputBinding:
-    position: 0
 - id: min_length
   doc: 'minimum contig length to consider.default: 500'
   type: long
@@ -26,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no_partial
+- id: contigs
+  doc: FASTA formatted genome or set of contigs. If reading from stdin, use '-'
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

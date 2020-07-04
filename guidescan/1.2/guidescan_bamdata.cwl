@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: guidescan_bamdata.cwl
+id: ../../../../home/ubuntu/BiocondaCli/guidescan_bamdata.cwl
 inputs:
-- id: n
+- id: project_name_load
   doc: 'project name, load previously saved arguments and save additional output (default:
     myguides)'
   type: string
@@ -12,14 +12,14 @@ inputs:
   type: string
   inputBinding:
     prefix: --label
-- id: g
+- id: name_file_guidernas
   doc: 'name of file with guideRNAs for which to compute BAM database; may be gzipped
     (.gz); if not provided, use all candidate guideRNAs found in the project (default:
     )'
   type: string
   inputBinding:
     prefix: -g
-- id: d
+- id: maximum_hamming_distance
   doc: 'maximum Hamming distance to consider from guideRNA to its off-target; off-target
     is an alternative occurrence (with any PAM) of this guideRNA in the genome at
     Hamming distance at most this number (including PAM); use -1 for omitting any
@@ -33,7 +33,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --maxoffcount
-- id: t
+- id: how_many_threads
   doc: 'how many threads to use; do not specify more than you have on your system;
     currently not implemented (default: 1)'
   type: string

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamToGBrowse.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamToGBrowse.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,19 +1,19 @@
 class: CommandLineTool
-id: phytime.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phytime.cwl
 inputs:
-- id: d
+- id: _datatype_mdatatypem
   doc: "(or --datatype) \e[00;04mdata_type\e[00;00m \e[00;04mdata_type\e[00;00m is\
     \ 'nt' for nucleotide (default), 'aa' for amino-acid sequences, or 'generic',\
     \ (use NEXUS file format and the 'symbols' parameter here)."
   type: boolean
   inputBinding:
     prefix: -d
-- id: q
+- id: or__sequential
   doc: (or --sequential)
   type: boolean
   inputBinding:
     prefix: -q
-- id: m
+- id: _model_mmodelm
   doc: "(or --model) \e[00;04mmodel\e[00;00m model\e[00;00m : substitution model name.\
     \ \e[00;00m- \e[00;04mNucleotide\e[00;00m-based models : \e[00;04mHKY85\e[00;00m\
     \ (default) | \e[00;04mJC69\e[00;00m | \e[00;04mK80\e[00;00m | \e[00;04mF81\e\
@@ -31,35 +31,35 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -m
-- id: t
+- id: _tstv_tstvratiom
   doc: "(or --ts/tv) \e[00;04mts/tv_ratio\e[00;00m ts/tv_ratio\e[00;00m : transition/transversion\
     \ ratio. DNA sequences only. Can be a fixed positive value (ex:4.0) or \e[00;04me\e\
     [00;00m to get the maximum likelihood estimate."
   type: boolean
   inputBinding:
     prefix: -t
-- id: v
+- id: _pinv_range
   doc: "(or --pinv) \e[00;04mprop_invar\e[00;00m prop_invar\e[00;00m : proportion\
     \ of invariable sites. Can be a fixed value in the [0,1] range or \e[00;04me\e\
     [00;00m to get the maximum likelihood estimate."
   type: boolean
   inputBinding:
     prefix: -v
-- id: c
+- id: _nclasses_number
   doc: "(or --nclasses) \e[00;04mnb_subst_cat\e[00;00m nb_subst_cat\e[00;00m : number\
     \ of relative substitution rate categories. Default : \e[00;04mnb_subst_cat\e\
     [00;00m=4. Must be a positive integer."
   type: boolean
   inputBinding:
     prefix: -c
-- id: a
+- id: _alpha_mgammam
   doc: "(or --alpha) \e[00;04mgamma\e[00;00m gamma\e[00;00m : distribution of the\
     \ gamma distribution shape parameter. Can be a fixed positive value or \e[00;04me\e\
     [00;00m to get the maximum likelihood estimate."
   type: boolean
   inputBinding:
     prefix: -a
-- id: u
+- id: _inputtree_musertreefilem
   doc: "(or --inputtree) \e[00;04muser_tree_file\e[00;00m user_tree_file\e[00;00m\
     \ : starting tree filename. The tree must be in Newick format."
   type: boolean

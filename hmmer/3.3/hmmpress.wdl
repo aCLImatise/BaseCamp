@@ -2,12 +2,16 @@ version 1.0
 
 task Hmmpress {
   input {
-    Boolean optionsOptions
-    String? hmmHmmFile
+    Boolean? force_overwrite_files
+    Boolean? options
   }
   command <<<
     hmmpress \
-      ~{hmmHmmFile} \
-      ~{true="-options" false="" optionsOptions}
+      ~{true="-f" false="" force_overwrite_files} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    force_overwrite_files: ": force: overwrite any previous pressed files"
+    options: ""
+  }
 }

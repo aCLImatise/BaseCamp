@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: interleave_reads.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/interleave_reads.py.cwl
 inputs:
 - id: no_reformat
   doc: 'Do not reformat read names or enforce consistency (default: False)'
@@ -21,6 +21,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --bzip
+- id: info
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --info
+- id: o
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -o
 outputs: []
 cwlVersion: v1.1
 baseCommand:

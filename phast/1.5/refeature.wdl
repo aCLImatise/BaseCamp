@@ -2,16 +2,19 @@ version 1.0
 
 task Refeature {
   input {
-    Boolean simpleSimpleBed
-    String discardsDiscards
-    String? optionsOptions
-    String? inInFile
+    Boolean? simple_bed
+    String? discards
+    String in_file
   }
   command <<<
     refeature \
-      ~{optionsOptions} \
-      ~{true="--simplebed" false="" simpleSimpleBed} \
-      ~{if defined(discardsDiscards) then ("--discards " +  '"' + discardsDiscards + '"') else ""} \
-      ~{inInFile}
+      ~{in_file} \
+      ~{true="--simplebed" false="" simple_bed} \
+      ~{if defined(discards) then ("--discards " +  '"' + discards + '"') else ""}
   >>>
+  parameter_meta {
+    simple_bed: "(for use with --output bed) Create a separate line for each feature in bed output (by default, all features of a group are described by a single line)."
+    discards: "Write any discarded features to specified file."
+    in_file: ""
+  }
 }

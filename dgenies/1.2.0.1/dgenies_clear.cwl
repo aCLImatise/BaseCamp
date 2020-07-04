@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: dgenies_clear.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dgenies_clear.cwl
 inputs:
-- id: c
+- id: _clear_crons
   doc: '[CRONS], --crons [CRONS] Clear crons'
   type: boolean
   inputBinding:
     prefix: -c
-- id: l
+- id: _clear_logs
   doc: '[LOGS], --logs [LOGS] Clear logs'
   type: boolean
   inputBinding:
     prefix: -l
-- id: j
+- id: _clear_jobs
   doc: '[JOBS], --jobs [JOBS] Clear jobs'
   type: boolean
   inputBinding:
@@ -21,12 +21,27 @@ inputs:
   type: long
   inputBinding:
     prefix: --max-age
-- id: w
+- id: add_option_use
   doc: '[WEB], --web [WEB] Add this option with -j option, if you use the webserver
     mode'
   type: boolean
   inputBinding:
     prefix: -w
+- id: cron_s
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: logs
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: jobs
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

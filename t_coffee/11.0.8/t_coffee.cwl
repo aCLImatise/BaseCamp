@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: t_coffee.cwl
+id: ../../../../home/ubuntu/BiocondaCli/t_coffee.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

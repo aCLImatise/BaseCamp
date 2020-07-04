@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_align_get_only_loci_with_min_taxa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_align_get_only_loci_with_min_taxa.cwl
 inputs:
 - id: alignments
   doc: 'The directory containing alignments to screen. (default: None)'

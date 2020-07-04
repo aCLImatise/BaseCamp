@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: benchmark2ta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/benchmark2ta.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

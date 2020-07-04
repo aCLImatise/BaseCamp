@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: VariantFilterRegions.cwl
+id: ../../../../home/ubuntu/BiocondaCli/VariantFilterRegions.cwl
 inputs:
 - id: in
   doc: Input variant list.
@@ -16,7 +16,7 @@ inputs:
   type: File
   inputBinding:
     prefix: -reg
-- id: r
+- id: single_target_region
   doc: "Single target region in the format chr17:41194312-41279500. Default value:\
     \ ''"
   type: string

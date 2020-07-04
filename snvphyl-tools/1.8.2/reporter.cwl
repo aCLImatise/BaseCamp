@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: reporter.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/reporter.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

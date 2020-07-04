@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MapAlignerSpectrum.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MapAlignerSpectrum.cwl
 inputs:
 - id: in
   doc: "*        Input files to align (all must have the same file type) (valid formats:\
@@ -39,16 +39,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Algorithm parameters section
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
-- id: model
-  doc: Options to control the modeling of retention time transformations from data
-  type: boolean
-  inputBinding:
-    prefix: '- model'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

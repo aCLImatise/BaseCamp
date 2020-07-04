@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: log4cpp_config.cwl
-inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
+id: ../../../../home/ubuntu/BiocondaCli/log4cpp_config.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,27 +1,17 @@
 class: CommandLineTool
-id: dcmsign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmsign.cwl
 inputs:
-- id: dcm_file_in
-  doc: DICOM input filename to be processed
-  type: string
-  inputBinding:
-    position: 0
-- id: dcm_file_out
-  doc: DICOM output filename
-  type: string
-  inputBinding:
-    position: 1
-- id: q
+- id: _quiet_quiet
   doc: --quiet                quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose              verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug                debug mode, print debug information
   type: boolean
   inputBinding:
@@ -37,12 +27,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lc
-- id: f
+- id: _readdataset_read
   doc: --read-dataset         read data set without file meta information
   type: boolean
   inputBinding:
     prefix: -f
-- id: t
+- id: _readxferauto_use
   doc: =   --read-xfer-auto       use TS recognition (default)
   type: boolean
   inputBinding:
@@ -87,12 +77,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --der-keys
-- id: t
-  doc: '--tag                  [t]ag: "gggg,eeee" or dictionary name sign only specified
-    tag (this option can be specified multiple times)'
-  type: boolean
-  inputBinding:
-    prefix: -t
 - id: tf
   doc: '--tag-file             [f]ilename: string read list of tags from text file'
   type: boolean
@@ -109,11 +93,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -fo
-- id: e
+- id: _lengthundefined_write
   doc: --length-undefined     write with undefined lengths
   type: boolean
   inputBinding:
     prefix: -e
+- id: dcm_file_in
+  doc: DICOM input filename to be processed
+  type: string
+  inputBinding:
+    position: 0
+- id: dcm_file_out
+  doc: DICOM output filename
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

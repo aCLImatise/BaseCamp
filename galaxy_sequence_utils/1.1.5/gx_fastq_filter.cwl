@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gx_fastq_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gx_fastq_filter.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

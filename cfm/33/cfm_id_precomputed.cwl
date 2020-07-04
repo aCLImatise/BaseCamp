@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: cfm_id_precomputed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cfm_id_precomputed.cwl
 inputs:
-- id: cfm_id_exe
+- id: cfm_id_dot_exe
   doc: ''
   type: string
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: avro.cwl
+id: ../../../../home/ubuntu/BiocondaCli/avro.cwl
 inputs:
 - id: count
   doc: number of records to print
@@ -51,6 +51,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
+- id: cat_vertical_line_write
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 1
+- id: file_dot_dot_dot
+  doc: ''
+  type: File
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

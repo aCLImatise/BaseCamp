@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: closest_features_float128.cwl
+id: ../../../../home/ubuntu/BiocondaCli/closest_features_float128.cwl
 inputs:
 - id: chrom
   doc: Jump to and process data for given <chromosome> only.
@@ -42,6 +42,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-ref
+- id: closest_features
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: process_flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: input_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: query_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

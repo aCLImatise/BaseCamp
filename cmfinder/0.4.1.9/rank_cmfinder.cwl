@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rank_cmfinder.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rank_cmfinder.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: split.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/split.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

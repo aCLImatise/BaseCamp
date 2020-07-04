@@ -2,10 +2,13 @@ version 1.0
 
 task KrocusAlleleDirectory {
   input {
-    String? inputInputFastQ
+    String input_dot_fast_q
   }
   command <<<
     krocus allele_directory \
-      ~{inputInputFastQ}
+      ~{input_dot_fast_q}
   >>>
+  parameter_meta {
+    input_dot_fast_q: ""
+  }
 }

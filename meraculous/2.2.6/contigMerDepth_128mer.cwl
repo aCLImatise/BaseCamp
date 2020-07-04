@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: contigMerDepth_128mer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/contigMerDepth_128mer.cwl
 inputs:
 - id: mer_count_file_prefix
   doc: ''

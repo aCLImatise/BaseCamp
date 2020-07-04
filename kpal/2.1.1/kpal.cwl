@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: kpal.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kpal.cwl
 inputs:
-- id: v
+- id: show_programs_version
   doc: show program's version number and exit
   type: boolean
   inputBinding:

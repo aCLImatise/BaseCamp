@@ -1,33 +1,38 @@
 class: CommandLineTool
-id: medpy_gradient.py_input.cwl
+id: ../../../../home/ubuntu/BiocondaCli/medpy_gradient.py_output.cwl
 inputs:
-- id: input
-  doc: Source volume.
-  type: string
-  inputBinding:
-    position: 0
-- id: output
-  doc: Target volume.
-  type: string
-  inputBinding:
-    position: 1
 - id: v
-  doc: Display more information.
+  doc: ''
   type: boolean
   inputBinding:
     prefix: -v
 - id: d
-  doc: Display debug information.
+  doc: ''
   type: boolean
   inputBinding:
     prefix: -d
 - id: f
-  doc: Silently override existing output images.
+  doc: ''
   type: boolean
   inputBinding:
     prefix: -f
+- id: me_dpy_gradient_do_tpy
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: input
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: output
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - medpy_gradient.py
-- input
+- output

@@ -2,50 +2,67 @@ version 1.0
 
 task Mutmap {
   input {
-    Int nN
-    Boolean rR
-    Boolean cC
-    Boolean bB
-    Boolean nN
-    Boolean oO
-    Boolean tT
-    Boolean wW
-    Boolean sS
-    Boolean dD
-    Boolean dD
-    Boolean nN
-    Boolean trimTrim
-    Boolean aA
-    Boolean trimTrimParams
-    Boolean eE
-    Boolean memMem
-    Boolean qQ
-    Boolean qQ
-    Boolean cC
-    Boolean speciesSpecies
+    Int? var_0
+    Boolean? _ref_reference
+    Boolean? _cultivar_fastq
+    Boolean? _bulk_fastq
+    Boolean? _threads_number
+    Boolean? _window_size
+    Boolean? _step_size
+    Boolean? _maxdepth_maximum
+    Boolean? _mindepth_minimum
+    Boolean? _nrep_number
+    Boolean? trim
+    Boolean? _adapter_fasta
+    Boolean? trim_params
+    Boolean? _predict_variant
+    Boolean? mem
+    Boolean? _minmq_minimum
+    Boolean? _minimum_base
+    Boolean? _adjustmq_mpileup
+    Boolean? species
   }
   command <<<
     mutmap \
-      ~{if defined(nN) then ("-n " +  '"' + nN + '"') else ""} \
-      ~{true="-r" false="" rR} \
-      ~{true="-c" false="" cC} \
-      ~{true="-b" false="" bB} \
-      ~{true="-n" false="" nN} \
-      ~{true="-o" false="" oO} \
-      ~{true="-t" false="" tT} \
-      ~{true="-w" false="" wW} \
-      ~{true="-s" false="" sS} \
-      ~{true="-D" false="" dD} \
-      ~{true="-d" false="" dD} \
-      ~{true="-N" false="" nN} \
-      ~{true="--trim" false="" trimTrim} \
-      ~{true="-a" false="" aA} \
-      ~{true="--trim-params" false="" trimTrimParams} \
-      ~{true="-e" false="" eE} \
-      ~{true="--mem" false="" memMem} \
-      ~{true="-q" false="" qQ} \
-      ~{true="-Q" false="" qQ} \
-      ~{true="-C" false="" cC} \
-      ~{true="--species" false="" speciesSpecies}
+      ~{if defined(var_0) then ("-n " +  '"' + var_0 + '"') else ""} \
+      ~{true="-r" false="" _ref_reference} \
+      ~{true="-c" false="" _cultivar_fastq} \
+      ~{true="-b" false="" _bulk_fastq} \
+      ~{true="-t" false="" _threads_number} \
+      ~{true="-w" false="" _window_size} \
+      ~{true="-s" false="" _step_size} \
+      ~{true="-D" false="" _maxdepth_maximum} \
+      ~{true="-d" false="" _mindepth_minimum} \
+      ~{true="-N" false="" _nrep_number} \
+      ~{true="--trim" false="" trim} \
+      ~{true="-a" false="" _adapter_fasta} \
+      ~{true="--trim-params" false="" trim_params} \
+      ~{true="-e" false="" _predict_variant} \
+      ~{true="--mem" false="" mem} \
+      ~{true="-q" false="" _minmq_minimum} \
+      ~{true="-Q" false="" _minimum_base} \
+      ~{true="-C" false="" _adjustmq_mpileup} \
+      ~{true="--species" false="" species}
   >>>
+  parameter_meta {
+    var_0: "[-T] [-e <DATABASE>]"
+    _ref_reference: ", --ref         Reference fasta."
+    _cultivar_fastq: ", --cultivar    fastq or bam of cultivar. If you specify fastq, please separate pairs by comma, e.g. -c fastq1,fastq2. You can use this optiion multiple times"
+    _bulk_fastq: ", --bulk        fastq or bam of mutnat bulk. If you specify fastq, please separate pairs by comma, e.g. -b fastq1,fastq2. You can use this optiion multiple times"
+    _threads_number: ", --threads     Number of threads. If you specify the number below one, then MutMap will use the threads as many as possible. [2]"
+    _window_size: ", --window      Window size (kb). [2000]"
+    _step_size: ", --step        Step size (kb). [100]"
+    _maxdepth_maximum: ", --max-depth   Maximum depth of variants which will be used. This cutoff will be applied in both of cultivar and bulk. [250]"
+    _mindepth_minimum: ", --min-depth   Minimum depth of variants which will be used. This cutoff will be applied in both of cultivar and bulk. [8]"
+    _nrep_number: ", --N-rep       Number of replicates for simulation to make  null distribution. [5000]"
+    trim: "Trim fastq using trimmomatic."
+    _adapter_fasta: ", --adapter     FASTA of adapter sequences. This will be used when you specify \"-T\" for trimming."
+    trim_params: "Parameters for trimmomatic. Input parameters must be separated by comma with following order: phred, ILLUMINACLIP, LEADING, TRAILING, SLIDINGWINDOW, MINLEN. If you want to remove adapters of illumina, please specify FASTA of the adapter sequences with \"--adapter\". Specified name will be inserted into <ADAPTER_FASTA>. If you don't specify it, adapter trimming will be skipped. [33,<ADAPTER_FASTA>:2:30:10,20,20,4:15,75]"
+    _predict_variant: ", --snpEff      Predict causal variant using SnpEff. Please check available databases in SnpEff."
+    mem: "Maximum memory per thread when bam sorted; suffix K/M/G recognized. [1G]"
+    _minmq_minimum: ", --min-MQ      Minimum mapping quality in mpileup. [40]"
+    _minimum_base: ", --min-BQ      Minimum base quality in mpileup. [18]"
+    _adjustmq_mpileup: ", --adjust-MQ   \"adjust-MQ\" in mpileup. Default parameter is suited for BWA. [50]"
+    species: "Consider multiple test correction derived by Huang et al. (2019). Please spesify a species name. With this option. QTL-seq produces a theoretical threshold. Currently, Arabidopsis, Cucumber, Maize, Rapeseed, Rice, Tobacco, Tomato, Wheat, and Yeast are supported."
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gff3_merge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gff3_merge.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

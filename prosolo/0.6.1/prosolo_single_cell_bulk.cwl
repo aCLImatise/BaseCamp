@@ -1,31 +1,6 @@
 class: CommandLineTool
-id: prosolo_single_cell_bulk.cwl
+id: ../../../../home/ubuntu/BiocondaCli/prosolo_single_cell_bulk.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: single_cell
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: bulk
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: reference
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
 - id: exclusive_end
   doc: Assume that the END tag is exclusive (i.e. it points to the position after
     the variant). This is needed, e.g., for DELLY.
@@ -130,6 +105,26 @@ inputs:
   type: double
   inputBinding:
     prefix: --spurious-ins-rate
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: single_cell
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: bulk
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: reference
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: falco.cwl
+id: ../../../../home/ubuntu/BiocondaCli/falco.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: seqfile1
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: outdir
   doc: 'Create all output files in the specified  output directory. If notprovided,
     files  will be created in the same directory as  the input file. '

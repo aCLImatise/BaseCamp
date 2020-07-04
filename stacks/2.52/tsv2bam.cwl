@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tsv2bam.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tsv2bam.cwl
 inputs:
 - id: in_dir
   doc: ': input directory.'
@@ -22,7 +22,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --pe-reads-dir
-- id: t
+- id: number_use_default
   doc: ': number of threads to use (default: 1).'
   type: boolean
   inputBinding:

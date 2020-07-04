@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: run_em.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_em.py.cwl
 inputs:
 - id: input
   doc: Input FASTA file
   type: string
   inputBinding:
     prefix: --input
-- id: input_2
+- id: input_two
   doc: Input FASTA file of negative sequences
   type: string
   inputBinding:

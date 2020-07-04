@@ -1,13 +1,17 @@
 version 1.0
 
-task Alnsel.plNames {
+task Alnsel.pl {
   input {
-    String? inputInputAln
-    String? namesNames
+    String input_dot_aln
+    String? names
   }
   command <<<
-    alnsel.pl names \
-      ~{inputInputAln} \
-      ~{namesNames}
+    alnsel.pl \
+      ~{input_dot_aln} \
+      ~{names}
   >>>
+  parameter_meta {
+    input_dot_aln: ""
+    names: ""
+  }
 }

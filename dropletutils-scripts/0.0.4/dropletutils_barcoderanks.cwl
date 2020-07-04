@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dropletutils_barcoderanks.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dropletutils_barcoderanks.R.cwl
 inputs:
 - id: input_object_file
   doc: File name in which a serialized R SingleCellExperiment object can be found

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: PSMFeatureExtractor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PSMFeatureExtractor.cwl
 inputs:
 - id: in
   doc: "*                 Input file(s) (valid formats: 'mzid', 'idXML')"

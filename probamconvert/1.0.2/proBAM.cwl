@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: proBAM.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/proBAM.py.cwl
 inputs:
 - id: name
   doc: name of the project (will be determine how the output file is called
@@ -7,8 +7,8 @@ inputs:
   inputBinding:
     prefix: --name
 - id: mismatches
-  doc: '{0,1,2,3,4,5}, -M {0,1,2,3,4,5} numpber of mismatches allowed during mapping'
-  type: boolean
+  doc: numpber of mismatches allowed during mapping
+  type: string
   inputBinding:
     prefix: --mismatches
 - id: database

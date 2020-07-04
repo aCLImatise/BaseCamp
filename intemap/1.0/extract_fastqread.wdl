@@ -1,7 +1,17 @@
 version 1.0
 
 task ExtractFastqread {
+  input {
+    String? r
+    String prog
+  }
   command <<<
-    extract_fastqread
+    extract_fastqread \
+      ~{prog} \
+      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
+  parameter_meta {
+    r: ""
+    prog: ""
+  }
 }

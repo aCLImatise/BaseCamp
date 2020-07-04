@@ -2,12 +2,13 @@ version 1.0
 
 task NebulizerRemoveKey {
   input {
-    String? optionsOptions
-    String? aliasAlias
+    String var_alias
   }
   command <<<
     nebulizer remove_key \
-      ~{optionsOptions} \
-      ~{aliasAlias}
+      ~{var_alias}
   >>>
+  parameter_meta {
+    var_alias: ""
+  }
 }

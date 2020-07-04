@@ -1,12 +1,22 @@
 class: CommandLineTool
-id: gensub2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gensub2.cwl
 inputs:
-- id: file_list_1
+- id: group_one
+  doc: '- write elements in order Aa Ab Ac Ba Bb Bc Ca Cb Cc'
+  type: boolean
+  inputBinding:
+    prefix: -group1
+- id: group_two
+  doc: '- write elements in order Aa Ba Ca Ab Bb Cb Ac Bc Cc'
+  type: boolean
+  inputBinding:
+    prefix: -group2
+- id: file_list_one
   doc: ''
   type: File
   inputBinding:
     position: 0
-- id: file_list_2
+- id: file_list_two
   doc: ''
   type: File
   inputBinding:
@@ -21,16 +31,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: group_1
-  doc: in order Aa Ab Ac Ba Bb Bc Ca Cb Cc
-  type: string
-  inputBinding:
-    prefix: -group1
-- id: group_2
-  doc: in order Aa Ba Ca Ab Bb Cb Ac Bc Cc
-  type: string
-  inputBinding:
-    prefix: -group2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

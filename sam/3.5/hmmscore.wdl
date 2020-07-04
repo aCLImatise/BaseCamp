@@ -2,18 +2,16 @@ version 1.0
 
 task Hmmscore {
   input {
-    String iI
-    String modelModelFile
-    File trackTrackMod
-    File modelModelLibrary
-    String queryQuery
+    String? option
+    String run_name
   }
   command <<<
     hmmscore \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(modelModelFile) then ("-modelfile " +  '"' + modelModelFile + '"') else ""} \
-      ~{if defined(trackTrackMod) then ("-trackmod " +  '"' + trackTrackMod + '"') else ""} \
-      ~{if defined(modelModelLibrary) then ("-modellibrary " +  '"' + modelModelLibrary + '"') else ""} \
-      ~{if defined(queryQuery) then ("-query " +  '"' + queryQuery + '"') else ""}
+      ~{run_name} \
+      ~{if defined(option) then ("-option " +  '"' + option + '"') else ""}
   >>>
+  parameter_meta {
+    option: ""
+    run_name: ""
+  }
 }

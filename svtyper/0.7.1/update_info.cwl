@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: update_info.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/update_info.py.cwl
 inputs:
 - id: vcf
   doc: 'VCF input (default: stdin)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: merge_preds.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/merge_preds.py.cwl
 inputs:
 - id: combine
   doc: ''

@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: maf_chunk.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maf_chunk.py.cwl
 inputs:
+- id: prob
+  doc: Probability of writing a given chunk
+  type: string
+  inputBinding:
+    prefix: --prob
 - id: chunk_size
   doc: ''
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: prob
-  doc: Probability of writing a given chunk
-  type: string
-  inputBinding:
-    prefix: --prob
 outputs: []
 cwlVersion: v1.1
 baseCommand:

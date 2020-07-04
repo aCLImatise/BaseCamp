@@ -2,10 +2,16 @@ version 1.0
 
 task ArbConsensusTree {
   input {
-    String wW
+    String? write_consensus_tree
+    String? tree
   }
   command <<<
     arb_consensus_tree \
-      ~{if defined(wW) then ("-w " +  '"' + wW + '"') else ""}
+      ~{tree} \
+      ~{if defined(write_consensus_tree) then ("-w " +  '"' + write_consensus_tree + '"') else ""}
   >>>
+  parameter_meta {
+    write_consensus_tree: "write consensus tree to outfile"
+    tree: ""
+  }
 }

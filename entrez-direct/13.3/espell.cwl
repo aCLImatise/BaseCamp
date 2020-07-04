@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: espell.cwl
+id: ../../../../home/ubuntu/BiocondaCli/espell.cwl
 inputs:
 - id: db
   doc: Database name

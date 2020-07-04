@@ -1,19 +1,23 @@
 version 1.0
 
-task FastxGrep.py {
+task FastxGrep.pyOutputFastx {
   input {
-    String iI
-    String oO
-    String nN
-    String? inputInputFastX
-    String? outputOutputFastX
+    String? i
+    String? o
+    String? n
+    String fast_x_grep_do_tpy
   }
   command <<<
-    fastx_grep.py \
-      ~{inputInputFastX} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{if defined(nN) then ("-n " +  '"' + nN + '"') else ""} \
-      ~{outputOutputFastX}
+    fastx_grep.py output_fastx \
+      ~{fast_x_grep_do_tpy} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(n) then ("-n " +  '"' + n + '"') else ""}
   >>>
+  parameter_meta {
+    i: ""
+    o: ""
+    n: ""
+    fast_x_grep_do_tpy: ""
+  }
 }

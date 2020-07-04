@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: atlas_validation.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/atlas_validation.py.cwl
 inputs:
-- id: idf
-  doc: Path to the MAGE-TAB IDF file
-  type: string
-  inputBinding:
-    position: 0
 - id: data_dir
   doc: Path to the directory with SDRF and data files
   type: string
@@ -41,6 +36,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --skip-file-checks
+- id: idf
+  doc: Path to the MAGE-TAB IDF file
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

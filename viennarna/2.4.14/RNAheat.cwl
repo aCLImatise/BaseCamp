@@ -1,13 +1,6 @@
 class: CommandLineTool
-id: RNAheat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAheat.cwl
 inputs:
-- id: program
-  doc: --Tmin=t1              Lowest temperature (default=`0') --Tmax=t2              Highest
-    temperature (default=`100') --stepsize=FLOAT       Calculate partition function
-    every stepsize degrees C (default=`1.')
-  type: string
-  inputBinding:
-    position: 0
 - id: detailed_help
   doc: Print help, including all details and hidden options, and exit
   type: boolean
@@ -56,6 +49,12 @@ inputs:
   type: long
   inputBinding:
     prefix: --maxBPspan
+- id: no_tetra
+  doc: Do not include special tabulated stabilizing energies for tri-, tetra- and
+    hexaloop hairpins. Mostly for testing. (default=off)
+  type: boolean
+  inputBinding:
+    prefix: --noTetra
 - id: dangles
   doc: How to treat "dangling end" energies for bases adjacent to helices in free
     ends and multi-loops (default=`2')
@@ -94,6 +93,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --circ
+- id: program
+  doc: --Tmin=t1              Lowest temperature (default=`0') --Tmax=t2              Highest
+    temperature (default=`100') --stepsize=FLOAT       Calculate partition function
+    every stepsize degrees C (default=`1.')
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

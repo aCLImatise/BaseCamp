@@ -1,7 +1,14 @@
 version 1.0
 
 task OverlapInCorePartition {
+  input {
+    String? opts
+  }
   command <<<
-    overlapInCorePartition
+    overlapInCorePartition \
+      ~{opts}
   >>>
+  parameter_meta {
+    opts: ""
+  }
 }

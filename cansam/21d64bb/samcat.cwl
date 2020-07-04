@@ -1,6 +1,41 @@
 class: CommandLineTool
-id: samcat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/samcat.cwl
 inputs:
+- id: write_output_bam
+  doc: Write output in BAM format (equivalent to -Obam)
+  type: boolean
+  inputBinding:
+    prefix: -b
+- id: display_only_records
+  doc: Display only alignment records matching FLAGS
+  type: string
+  inputBinding:
+    prefix: -f
+- id: suppress_headers_output
+  doc: Suppress '@' headers in the output
+  type: boolean
+  inputBinding:
+    prefix: -n
+- id: write_file_output
+  doc: Write to FILE rather than standard output
+  type: File
+  inputBinding:
+    prefix: -o
+- id: write_output_specified
+  doc: Write output in the specified FORMAT
+  type: string
+  inputBinding:
+    prefix: -O
+- id: display_file_information
+  doc: Display file information and statistics
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: b_nv
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -bnv
 - id: bam
   doc: Compressed binary BAM format
   type: string
@@ -21,36 +56,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: b
-  doc: Write output in BAM format (equivalent to -Obam)
-  type: boolean
-  inputBinding:
-    prefix: -b
-- id: f
-  doc: Display only alignment records matching FLAGS
-  type: string
-  inputBinding:
-    prefix: -f
-- id: n
-  doc: Suppress '@' headers in the output
-  type: boolean
-  inputBinding:
-    prefix: -n
-- id: o
-  doc: Write to FILE rather than standard output
-  type: File
-  inputBinding:
-    prefix: -o
-- id: o
-  doc: Write output in the specified FORMAT
-  type: string
-  inputBinding:
-    prefix: -O
-- id: v
-  doc: Display file information and statistics
-  type: boolean
-  inputBinding:
-    prefix: -v
 outputs: []
 cwlVersion: v1.1
 baseCommand:

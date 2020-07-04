@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: calculations_new.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/calculations_new.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

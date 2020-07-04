@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: install.cwl
+id: ../../../../home/ubuntu/BiocondaCli/install.cwl
 inputs:
 - id: strip
   doc: strip symbol tables
@@ -36,7 +36,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --preserve-context
-- id: z
+- id: set_selinux_context
   doc: set SELinux security context of destination file to default type
   type: boolean
   inputBinding:
@@ -47,6 +47,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --context
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

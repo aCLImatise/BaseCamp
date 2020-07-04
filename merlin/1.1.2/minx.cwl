@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: minx.cwl
+id: ../../../../home/ubuntu/BiocondaCli/minx.cwl
 inputs:
 - id: tabulate
   doc: '[merlin]'

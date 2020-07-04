@@ -1,22 +1,22 @@
 class: CommandLineTool
-id: splitReads.cwl
+id: ../../../../home/ubuntu/BiocondaCli/splitReads.cwl
 inputs:
-- id: s
+- id: path_read_store
   doc: path to read store
   type: string
   inputBinding:
     prefix: -S
-- id: o
+- id: path_overlap_store
   doc: path to overlap store
   type: string
   inputBinding:
     prefix: -O
-- id: o
+- id: output_prefix_logging
   doc: output prefix, for logging
   type: string
   inputBinding:
     prefix: -o
-- id: t
+- id: limit_processing_only
   doc: limit processing to only reads from bgn to end (inclusive)
   type: string
   inputBinding:
@@ -31,7 +31,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -Co
-- id: e
+- id: ignore_overlaps_more
   doc: ignore overlaps with more than 'erate' percent error
   type: string
   inputBinding:

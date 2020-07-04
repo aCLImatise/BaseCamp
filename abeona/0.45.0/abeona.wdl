@@ -2,10 +2,16 @@ version 1.0
 
 task Abeona {
   input {
-    String? argsArgs
+    Boolean? v
+    String args
   }
   command <<<
     abeona \
-      ~{argsArgs}
+      ~{args} \
+      ~{true="-v" false="" v}
   >>>
+  parameter_meta {
+    v: ""
+    args: "sub-command arguments"
+  }
 }

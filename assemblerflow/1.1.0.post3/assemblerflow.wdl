@@ -2,10 +2,13 @@ version 1.0
 
 task Assemblerflow {
   input {
-    Boolean debugDebug
+    Boolean? debug
   }
   command <<<
     assemblerflow \
-      ~{true="--debug" false="" debugDebug}
+      ~{true="--debug" false="" debug}
   >>>
+  parameter_meta {
+    debug: "Set log to debug mode"
+  }
 }

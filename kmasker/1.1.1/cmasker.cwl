@@ -1,43 +1,43 @@
 class: CommandLineTool
-id: cmasker.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cmasker.cwl
 inputs:
-- id: f
+- id: fasta_input
   doc: FASTA Input
   type: boolean
   inputBinding:
     prefix: -f
-- id: j
+- id: jellfish_database
   doc: Jellfish Database
   type: boolean
   inputBinding:
     prefix: -j
-- id: o
+- id: create_occ_output
   doc: Create OCC output
   type: boolean
   inputBinding:
     prefix: -o
-- id: n
+- id: normalize_value
   doc: Normalize Value
   type: boolean
   inputBinding:
     prefix: -n
-- id: r
+- id: rt_value_masking
   doc: RT Value for masking threshold
   type: boolean
   inputBinding:
     prefix: -r
-- id: t
+- id: strict_mode_mask
   doc: 'Strict mode: Mask the whole k-mer in the query sequence instead of the single
     nucleotide'
   type: boolean
   inputBinding:
     prefix: -t
-- id: p
+- id: prefix_for_outfiles
   doc: Prefix for the outfiles
   type: boolean
   inputBinding:
     prefix: -p
-- id: s
+- id: suppress_fasta_output
   doc: Suppress FASTA output
   type: boolean
   inputBinding:

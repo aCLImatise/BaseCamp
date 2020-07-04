@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: polymutt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/polymutt.cwl
 inputs:
 - id: rate_de_novo
   doc: '[1.5e-08],'
@@ -11,11 +11,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tstv_denovo
-- id: min_perc_sample_with_data
-  doc: '[0.00]'
-  type: boolean
-  inputBinding:
-    prefix: --minPercSampleWithData
 outputs: []
 cwlVersion: v1.1
 baseCommand:

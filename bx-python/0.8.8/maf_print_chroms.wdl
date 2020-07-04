@@ -2,10 +2,13 @@ version 1.0
 
 task MafPrintChroms.py {
   input {
-    String? refRefIndex
+    String ref_index
   }
   command <<<
     maf_print_chroms.py \
-      ~{refRefIndex}
+      ~{ref_index}
   >>>
+  parameter_meta {
+    ref_index: ""
+  }
 }

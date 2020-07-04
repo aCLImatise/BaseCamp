@@ -2,12 +2,16 @@ version 1.0
 
 task OmeroConfigGet {
   input {
-    Boolean showShowPassword
-    String? keyKey
+    Boolean? show_password
+    String key
   }
   command <<<
     omero config get \
-      ~{keyKey} \
-      ~{true="--show-password" false="" showShowPassword}
+      ~{key} \
+      ~{true="--show-password" false="" show_password}
   >>>
+  parameter_meta {
+    show_password: "Show values of sensitive keys (passwords, tokens, etc.) in the current profile"
+    key: "Names of keys in the current profile"
+  }
 }

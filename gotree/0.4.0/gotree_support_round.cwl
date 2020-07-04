@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gotree_support_round.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gotree_support_round.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: precision
   doc: Rounding support precision (x means 10^-x) (default 3)
   type: long
@@ -36,6 +31,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

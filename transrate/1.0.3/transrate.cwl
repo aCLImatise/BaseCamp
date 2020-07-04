@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: transrate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/transrate.cwl
 inputs:
 - id: assembly
   doc: Assembly file(s) in FASTA format, comma-separated

@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: itero.cwl
+id: ../../../../home/ubuntu/BiocondaCli/itero.cwl
 inputs:
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -V
 - id: command
   doc: help         Get help info on a itero command. assemble     Assemble cleaned/trimmed
     sequencing reads. check        Check to ensure binaries are installed and configured.

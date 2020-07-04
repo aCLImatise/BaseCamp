@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MetaCluster4Fast.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MetaCluster4Fast.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: oligotype.cwl
+id: ../../../../home/ubuntu/BiocondaCli/oligotype.cwl
 inputs:
-- id: entropy
-  doc: File that contains the columns and the entropy values computer previously
-  type: string
-  inputBinding:
-    position: 0
 - id: min_base_quality
   doc: Minimum quality score for each base in locations of interest of a read to be
     considered in an oligotype. When base quality score files are provided, this value
@@ -187,6 +182,21 @@ inputs:
   type: long
   inputBinding:
     prefix: --number-of-threads
+- id: o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
+- id: c
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -c
+- id: entropy
+  doc: File that contains the columns and the entropy values computer previously
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

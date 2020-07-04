@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: iu_demultiplex.cwl
+id: ../../../../home/ubuntu/BiocondaCli/iu_demultiplex.cwl
 inputs:
 - id: sample_barcode_mapping
   doc: TAB-delimited file of sample-barcode associations
   type: File
   inputBinding:
     prefix: --sample-barcode-mapping
-- id: r1
+- id: r_one
   doc: FASTQ file for R1
   type: string
   inputBinding:
     prefix: --r1
-- id: r2
+- id: r_two
   doc: FASTQ file for R2.
   type: string
   inputBinding:

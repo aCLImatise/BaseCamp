@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ccheck.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ccheck.cwl
 inputs:
-- id: al_nm_aln
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: reference
   doc: 'FASTA file with the likely contaminant (default: builtin mt311)'
   type: File
@@ -46,6 +41,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: aln_dot_mal_n
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,17 +1,26 @@
 version 1.0
 
-task DnaseCutCounter.pyRegions {
+task DnaseCutCounter.pyOutput {
   input {
-    Boolean aA
-    String? regionsRegions
-    String? readsReads
-    String? outputOutput
+    Boolean? a
+    String dnase_cut_counter_do_tpy
+    String regions
+    String reads
+    String var_output
   }
   command <<<
-    dnase_cut_counter.py regions \
-      ~{regionsRegions} \
-      ~{true="-A" false="" aA} \
-      ~{readsReads} \
-      ~{outputOutput}
+    dnase_cut_counter.py output \
+      ~{dnase_cut_counter_do_tpy} \
+      ~{regions} \
+      ~{reads} \
+      ~{var_output} \
+      ~{true="-A" false="" a}
   >>>
+  parameter_meta {
+    a: ""
+    dnase_cut_counter_do_tpy: ""
+    regions: ""
+    reads: ""
+    var_output: ""
+  }
 }

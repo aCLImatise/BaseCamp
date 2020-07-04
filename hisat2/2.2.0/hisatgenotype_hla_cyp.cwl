@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hisatgenotype_hla_cyp.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hisatgenotype_hla_cyp.py.cwl
 inputs:
 - id: exclude_allele_list
   doc: A comma-separated list of alleles to be excluded. Enter a number N to randomly
@@ -30,6 +30,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --novel_allele_detection
+- id: base
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --base
 outputs: []
 cwlVersion: v1.1
 baseCommand:

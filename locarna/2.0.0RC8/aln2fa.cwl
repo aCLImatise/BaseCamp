@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: aln2fa.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/aln2fa.pl.cwl
 inputs:
 - id: man
   doc: Full documentation
@@ -16,6 +16,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --degap
+- id: input_dot_aln
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

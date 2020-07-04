@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: smafa_makedb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smafa_makedb.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: db_fast_a
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: db
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: amino_acid
   doc: 'Sequences are amino acid [default: nucleotide]'
   type: boolean
@@ -36,6 +21,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: db_fast_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: db
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

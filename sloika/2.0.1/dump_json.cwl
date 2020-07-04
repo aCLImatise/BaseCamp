@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dump_json.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dump_json.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

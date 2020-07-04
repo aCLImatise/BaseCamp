@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: find_differential_primers.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/find_differential_primers.py.cwl
 inputs:
-- id: arg
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: in_file
   doc: location of configuration file
   type: File
@@ -26,7 +21,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --hybridprobe
-- id: filter_gc3_prime
+- id: filter_gc_three_prime
   doc: allow no more than two GC at the 3` end of primers
   type: boolean
   inputBinding:
@@ -42,7 +37,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --prodigal
-- id: eprimer3
+- id: e_primer_three
   doc: location of EMBOSS eprimer3 executable
   type: string
   inputBinding:
@@ -72,7 +67,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --noprodigal
-- id: noprimer3
+- id: no_primer_three
   doc: do not carry out ePrimer3 prediction step
   type: boolean
   inputBinding:
@@ -252,6 +247,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --log_dir
+- id: arg
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

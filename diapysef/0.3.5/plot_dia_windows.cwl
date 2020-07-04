@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: plot_dia_windows.py_precursor_map.cwl
+id: ../../../../home/ubuntu/BiocondaCli/plot_dia_windows.py.cwl
 inputs:
 - id: window_file
   doc: ''
@@ -15,4 +15,3 @@ outputs: []
 cwlVersion: v1.1
 baseCommand:
 - plot_dia_windows.py
-- precursor_map

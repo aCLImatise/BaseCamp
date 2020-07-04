@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: genomedata_erase_data.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genomedata_erase_data.cwl
 inputs:
-- id: gd_archive
-  doc: genomedata archive
-  type: string
-  inputBinding:
-    position: 0
 - id: track_name
   doc: tracknames to erase
   type: string[]
@@ -16,6 +11,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: gd_archive
+  doc: genomedata archive
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

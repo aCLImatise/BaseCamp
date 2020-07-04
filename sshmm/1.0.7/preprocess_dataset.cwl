@@ -1,32 +1,6 @@
 class: CommandLineTool
-id: preprocess_dataset.cwl
+id: ../../../../home/ubuntu/BiocondaCli/preprocess_dataset.cwl
 inputs:
-- id: working_dir
-  doc: working/output directory
-  type: string
-  inputBinding:
-    position: 0
-- id: dataset_name
-  doc: dataset name
-  type: string
-  inputBinding:
-    position: 1
-- id: input
-  doc: input file in .bed format
-  type: string
-  inputBinding:
-    position: 2
-- id: genome
-  doc: reference genome in FASTA format
-  type: string
-  inputBinding:
-    position: 3
-- id: genome_sizes
-  doc: chromosome sizes of reference genome (e.g. from http:/ /hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/hg19.
-    chrom.sizes)
-  type: string
-  inputBinding:
-    position: 4
 - id: disable_filtering
   doc: skip the filtering step
   type: boolean
@@ -78,6 +52,32 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --skip_check
+- id: working_dir
+  doc: working/output directory
+  type: string
+  inputBinding:
+    position: 0
+- id: dataset_name
+  doc: dataset name
+  type: string
+  inputBinding:
+    position: 1
+- id: input
+  doc: input file in .bed format
+  type: string
+  inputBinding:
+    position: 2
+- id: genome
+  doc: reference genome in FASTA format
+  type: string
+  inputBinding:
+    position: 3
+- id: genome_sizes
+  doc: chromosome sizes of reference genome (e.g. from http:/ /hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/hg19.
+    chrom.sizes)
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

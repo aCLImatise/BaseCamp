@@ -1,27 +1,27 @@
 class: CommandLineTool
-id: ssu_esl_alimap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ssu_esl_alimap.cwl
 inputs:
-- id: q
+- id: quiet_print_mapping
   doc: ": be quiet, don't print mapping of each column"
   type: boolean
   inputBinding:
     prefix: -q
-- id: mask_a2a
+- id: mask_a_two_a
   doc: ": mask to <f>:'1'=msa1 aln       col x maps msa2 aln col"
   type: string
   inputBinding:
     prefix: --mask-a2a
-- id: mask_a2rf
+- id: mask_at_worf
   doc: ": mask to <f>:'1'=msa1 aln       col x maps msa2 nongap RF col"
   type: string
   inputBinding:
     prefix: --mask-a2rf
-- id: mask_rf2a
+- id: mask_rf_two_a
   doc: ": mask to <f>:'1'=msa1 nongap RF col x maps msa2 aln col"
   type: string
   inputBinding:
     prefix: --mask-rf2a
-- id: mask_rf2rf
+- id: mask_rf_two_rf
   doc: ": mask to <f>:'1'=msa1 nongap RF col x maps msa2 nongap RF col"
   type: string
   inputBinding:

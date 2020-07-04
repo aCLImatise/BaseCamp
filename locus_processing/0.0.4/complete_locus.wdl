@@ -2,18 +2,22 @@ version 1.0
 
 task CompleteLocus {
   input {
-    File inputInput
-    Directory inputInputDirectory
-    Directory outputOutputDirectory
-    Boolean suppressSuppressWarnings
-    String? optionsOptions
+    File? path_input_file
+    Directory? input_directory
+    Directory? output_directory
+    Boolean? suppress_warnings
   }
   command <<<
     complete_locus \
-      ~{optionsOptions} \
-      ~{if defined(inputInput) then ("--input " +  '"' + inputInput + '"') else ""} \
-      ~{if defined(inputInputDirectory) then ("--input-directory " +  '"' + inputInputDirectory + '"') else ""} \
-      ~{if defined(outputOutputDirectory) then ("--output-directory " +  '"' + outputOutputDirectory + '"') else ""} \
-      ~{if defined(suppressSuppressWarnings) then ("--suppress-warnings " +  '"' + suppressSuppressWarnings + '"') else ""}
+      ~{if defined(path_input_file) then ("--input " +  '"' + path_input_file + '"') else ""} \
+      ~{if defined(input_directory) then ("--input-directory " +  '"' + input_directory + '"') else ""} \
+      ~{if defined(output_directory) then ("--output-directory " +  '"' + output_directory + '"') else ""} \
+      ~{if defined(suppress_warnings) then ("--suppress-warnings " +  '"' + suppress_warnings + '"') else ""}
   >>>
+  parameter_meta {
+    path_input_file: "Path to input locus file"
+    input_directory: "Path to directory containing locus files"
+    output_directory: "Path to output directory"
+    suppress_warnings: "Suppress warnings"
+  }
 }

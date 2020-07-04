@@ -1,27 +1,23 @@
 class: CommandLineTool
-id: add_errors.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/add_errors.py_output_fasta.cwl
 inputs:
-- id: input_fast_a
-  doc: 'Input fasta (default: stdin).'
-  type: string
-  inputBinding:
-    position: 0
-- id: output_fast_a
-  doc: 'Output fasta (default: stdout)'
-  type: string
-  inputBinding:
-    position: 1
 - id: n
-  doc: Number of errors to introduce (0).
+  doc: ''
   type: string
   inputBinding:
     prefix: -n
 - id: t
-  doc: 'Error type: substitution, insertion or deletion.'
+  doc: ''
   type: string
   inputBinding:
     prefix: -t
+- id: add_errors_do_tpy
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - add_errors.py
+- output_fasta

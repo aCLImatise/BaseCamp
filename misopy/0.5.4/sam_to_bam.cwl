@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sam_to_bam.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sam_to_bam.cwl
 inputs:
 - id: convert
   doc: Convert given SAM file to indexed, sorted BAM file with headers. Takes SAM

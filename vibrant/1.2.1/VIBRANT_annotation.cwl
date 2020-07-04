@@ -1,23 +1,23 @@
 class: CommandLineTool
-id: VIBRANT_annotation.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/VIBRANT_annotation.py.cwl
 inputs:
-- id: i
+- id: input_fasta_file
   doc: input fasta file
   type: string
   inputBinding:
     prefix: -i
-- id: f
+- id: format_of_input
   doc: format of input [default="nucl"]
   type: string
   inputBinding:
     prefix: -f
-- id: l
+- id: length_limit_sequences
   doc: length in basepairs to limit input sequences [default=1000, can increase but
     not decrease]
   type: string
   inputBinding:
     prefix: -l
-- id: o
+- id: number_limit_sequences
   doc: number of ORFs per scaffold to limit input sequences [default=4, can increase
     but not decrease]
   type: string
@@ -29,24 +29,24 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -virome
-- id: d
+- id: path_directory_hmm
   doc: path to "databases" directory that contains .HMM files (if moved from default
     location)
   type: string
   inputBinding:
     prefix: -d
-- id: m
+- id: path_tsv_files
   doc: path to "files" directory that contains .tsv and model files (if moved from
     default location)
   type: string
   inputBinding:
     prefix: -m
-- id: x
+- id: outfolder
   doc: out_folder
   type: string
   inputBinding:
     prefix: -x
-- id: y
+- id: base
   doc: base
   type: string
   inputBinding:

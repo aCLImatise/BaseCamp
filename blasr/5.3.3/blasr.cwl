@@ -1,12 +1,6 @@
 class: CommandLineTool
-id: blasr.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blasr.cwl
 inputs:
-- id: leftmost
-  doc: ': report an alignment which has the best alignmentscore and has the smallest
-    mapping coordinate in any reference.'
-  type: string
-  inputBinding:
-    position: 0
 - id: no_split_sub_reads
   doc: Do not split subreads at adapters. This is typically only  useful when the
     genome in an unrolled version of a known template, and  contains template-adapter-reverse_template
@@ -95,6 +89,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --holeNumbers
+- id: leftmost
+  doc: ': report an alignment which has the best alignmentscore and has the smallest
+    mapping coordinate in any reference.'
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

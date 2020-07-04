@@ -2,22 +2,22 @@ version 1.0
 
 task ChainBridge {
   input {
-    String maxMaxGap
-    File scoreScoreScheme
-    Boolean linearLinearGap
-    String? inInChain
-    String? targetTarget2bit
-    String? queryQuery2bit
-    String? outOutChain
+    String in_dot_chain
+    String target_dot_two_bit
+    String query_dot_two_bit
+    String out_dot_chain
   }
   command <<<
     chainBridge \
-      ~{inInChain} \
-      ~{if defined(maxMaxGap) then ("-maxGap " +  '"' + maxMaxGap + '"') else ""} \
-      ~{if defined(scoreScoreScheme) then ("-scoreScheme " +  '"' + scoreScoreScheme + '"') else ""} \
-      ~{true="-linearGap" false="" linearLinearGap} \
-      ~{targetTarget2bit} \
-      ~{queryQuery2bit} \
-      ~{outOutChain}
+      ~{in_dot_chain} \
+      ~{target_dot_two_bit} \
+      ~{query_dot_two_bit} \
+      ~{out_dot_chain}
   >>>
+  parameter_meta {
+    in_dot_chain: ""
+    target_dot_two_bit: ""
+    query_dot_two_bit: ""
+    out_dot_chain: ""
+  }
 }

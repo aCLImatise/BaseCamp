@@ -1,37 +1,37 @@
 class: CommandLineTool
-id: hmmemit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hmmemit.cwl
 inputs:
-- id: o
+- id: send_sequence_output
   doc: ': send sequence output to file <f>, not stdout'
   type: string
   inputBinding:
     prefix: -o
-- id: n
+- id: number_seqs_sample
   doc: ': number of seqs to sample  [1]  (n>0)'
   type: string
   inputBinding:
     prefix: -N
-- id: a
+- id: _emit_alignment
   doc: ': emit alignment'
   type: boolean
   inputBinding:
     prefix: -a
-- id: c
+- id: emit_simple_sequence
   doc: ': emit simple majority-rule consensus sequence'
   type: boolean
   inputBinding:
     prefix: -c
-- id: c
+- id: emit_fancier_reqs
   doc: ": emit fancier consensus sequence (req's --minl, --minu)"
   type: boolean
   inputBinding:
     prefix: -C
-- id: p
+- id: sample_sequences_model
   doc: ': sample sequences from profile, not core model'
   type: boolean
   inputBinding:
     prefix: -p
-- id: l
+- id: set_expected_length
   doc: ': set expected length from profile to <n>  [400]'
   type: string
   inputBinding:
@@ -71,6 +71,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --seed
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

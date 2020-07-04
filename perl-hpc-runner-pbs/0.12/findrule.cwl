@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: findrule.cwl
+id: ../../../../home/ubuntu/BiocondaCli/findrule.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: computeMatrixOperations_sort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/computeMatrixOperations_sort.cwl
 inputs:
-- id: regions_2bed
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: regions_3gtf
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: matrix_file
   doc: 'Matrix file from the computeMatrix tool. (default: None)'
   type: string
@@ -47,6 +37,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --transcript_id_designator
+- id: example
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: usage
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

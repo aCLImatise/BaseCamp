@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gene_info_reader.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gene_info_reader.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

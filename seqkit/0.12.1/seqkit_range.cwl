@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: seqkit_range.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqkit_range.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: range
   doc: range. e.g., 1:12 for first 12 records (head -n 12), -12:-1 for last 12 records
     (tail -n 12)
@@ -61,6 +56,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

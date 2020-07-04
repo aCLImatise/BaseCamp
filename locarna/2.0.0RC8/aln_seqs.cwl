@@ -1,21 +1,31 @@
 class: CommandLineTool
-id: aln_seqs.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/aln_seqs.pl.cwl
 inputs:
-- id: aln_seqs
-  doc: ''
+- id: man
+  doc: documentation
   type: string
   inputBinding:
-    position: 0
-- id: files
-  doc: ''
-  type: File
+    prefix: --man
+- id: sort
+  doc: by number of sequences
+  type: string
   inputBinding:
-    position: 1
+    prefix: --sort
+- id: 'null'
+  doc: file name from sequence names by \0
+  type: string
+  inputBinding:
+    prefix: --null
 - id: no_hash
   doc: names with prefix '#'
   type: string
   inputBinding:
     prefix: -no-hash
+- id: files
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

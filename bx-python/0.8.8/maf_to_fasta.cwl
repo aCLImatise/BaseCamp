@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: maf_to_fasta.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maf_to_fasta.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

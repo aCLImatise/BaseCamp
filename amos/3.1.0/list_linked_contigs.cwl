@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: list_linked_contigs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/list_linked_contigs.cwl
 inputs:
 - id: bank_path
   doc: ''

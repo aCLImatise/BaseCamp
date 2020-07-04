@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: stride_overlap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stride_overlap.cwl
 inputs:
 - id: verbose
   doc: display verbose output
@@ -64,6 +64,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --sample-rate
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

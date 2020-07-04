@@ -2,12 +2,19 @@ version 1.0
 
 task JellyfishArg... {
   input {
-    String? cmdCmd
-    String? argArg
+    String jellyfish
+    String cmd
+    String arg_dot_dot_dot
   }
   command <<<
     jellyfish arg... \
-      ~{cmdCmd} \
-      ~{argArg}
+      ~{jellyfish} \
+      ~{cmd} \
+      ~{arg_dot_dot_dot}
   >>>
+  parameter_meta {
+    jellyfish: ""
+    cmd: ""
+    arg_dot_dot_dot: ""
+  }
 }

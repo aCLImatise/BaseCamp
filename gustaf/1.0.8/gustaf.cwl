@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gustaf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gustaf.cwl
 inputs:
 - id: version_check
   doc: 'Turn this option off to disable version update notifications of the application.

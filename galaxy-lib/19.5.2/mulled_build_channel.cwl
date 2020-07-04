@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: mulled_build_channel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mulled_build_channel.cwl
 inputs:
-- id: command
-  doc: Command (list, build-and-test, build, all)
-  type: string
-  inputBinding:
-    position: 0
 - id: targets
   doc: Build a single container with specific package(s).
   type: string
@@ -16,6 +11,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --repository-name
+- id: repo_data
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --repo-data
+- id: command
+  doc: Command (list, build-and-test, build, all)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

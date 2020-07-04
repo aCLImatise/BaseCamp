@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csvtk_mutate2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csvtk_mutate2.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: digits
   doc: number of digits after the dot (default 2)
   type: long
@@ -97,6 +92,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tabs
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

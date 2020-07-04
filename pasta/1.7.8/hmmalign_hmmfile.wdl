@@ -2,12 +2,16 @@ version 1.0
 
 task HmmalignHmmfile {
   input {
-    Boolean optionsOptions
-    String? seqSeqFile
+    Boolean? options
+    String seq_file
   }
   command <<<
     hmmalign hmmfile \
-      ~{seqSeqFile} \
-      ~{true="-options" false="" optionsOptions}
+      ~{seq_file} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    options: ""
+    seq_file: ""
+  }
 }

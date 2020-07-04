@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNAMassCalculator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAMassCalculator.cwl
 inputs:
 - id: in
   doc: "Input file with RNA sequences and optionally charge numbers (mutually exclusive\

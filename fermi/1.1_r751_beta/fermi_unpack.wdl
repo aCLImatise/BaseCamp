@@ -2,14 +2,19 @@ version 1.0
 
 task FermiUnpack {
   input {
-    Int iI
-    Boolean mM
-    String? seqsSeqsBwt
+    Int? index_read_starting
+    Boolean? load_fmindex_memory
+    String seqs_dot_bwt
   }
   command <<<
     fermi unpack \
-      ~{seqsSeqsBwt} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{true="-M" false="" mM}
+      ~{seqs_dot_bwt} \
+      ~{if defined(index_read_starting) then ("-i " +  '"' + index_read_starting + '"') else ""} \
+      ~{true="-M" false="" load_fmindex_memory}
   >>>
+  parameter_meta {
+    index_read_starting: "index of the read to output, starting from 0 [null]"
+    load_fmindex_memory: "load the FM-index as a memory mapped file"
+    seqs_dot_bwt: ""
+  }
 }

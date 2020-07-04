@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: methdiff.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/methdiff.py.cwl
 inputs:
 - id: out
   doc: output differential methylation file name. (required)

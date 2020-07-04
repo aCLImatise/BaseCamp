@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: PrecursorIonSelector.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PrecursorIonSelector.cwl
 inputs:
 - id: in
   doc: "*            Input feature map file (featureXML) (valid formats: 'featureXML')"
@@ -92,11 +92,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Settings for the compound list creation and rescoring.
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: generate_18cancers.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/generate_18cancers.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the list of allowed candidate fusion genes

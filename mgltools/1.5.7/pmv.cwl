@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pmv.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pmv.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNAshapes_probing_nodangle.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAshapes_probing_nodangle.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

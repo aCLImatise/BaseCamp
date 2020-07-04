@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MzTabExporter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MzTabExporter.cwl
 inputs:
 - id: in
   doc: "Input files used to generate the mzTab file. (valid formats: 'featureXML',\

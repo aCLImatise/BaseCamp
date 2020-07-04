@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FastqExtractBarcode.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FastqExtractBarcode.cwl
 inputs:
 - id: in
   doc: input fastq file1.

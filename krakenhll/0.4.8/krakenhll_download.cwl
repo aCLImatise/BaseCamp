@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: krakenhll_download.cwl
+id: ../../../../home/ubuntu/BiocondaCli/krakenhll_download.cwl
 inputs:
-- id: o
+- id: folder_files_downloaded
   doc: "Folder to which the files are downloaded. Default: '.'"
   type: Directory
   inputBinding:
@@ -65,12 +65,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --fna
-- id: u
+- id: filter_unplaced_sequences
   doc: Filter unplaced sequences.
   type: boolean
   inputBinding:
     prefix: -u
-- id: l
+- id: modify_sequence_header
   doc: Modify sequence header to include taxonomy ID for Kraken (i.e. add '>kraken:taxid|TAXID'
     to each sequence).
   type: boolean

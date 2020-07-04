@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: partition_graph.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/partition_graph.py.cwl
 inputs:
-- id: basename
-  doc: basename of the input k-mer nodegraph + tagset files
-  type: string
-  inputBinding:
-    position: 0
 - id: info
   doc: print citation information
   type: boolean
@@ -36,6 +31,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --threads
+- id: basename
+  doc: basename of the input k-mer nodegraph + tagset files
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

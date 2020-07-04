@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: halTreeNIBackground.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/halTreeNIBackground.py.cwl
 inputs:
-- id: hal
-  doc: input hal
-  type: string
-  inputBinding:
-    position: 0
-- id: workdir
-  doc: working dir for all bed files
-  type: string
-  inputBinding:
-    position: 1
 - id: background_bed_name
   doc: 'Name function for background bed files where genome name is specified as %s.
     Computed using halTreeNIBackground (default: %%s_bg.bed)'
@@ -37,6 +27,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --root
+- id: hal
+  doc: input hal
+  type: string
+  inputBinding:
+    position: 0
+- id: workdir
+  doc: working dir for all bed files
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

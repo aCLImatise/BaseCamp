@@ -2,10 +2,13 @@ version 1.0
 
 task Alphtype {
   input {
-    String? alphabetAlphabet
+    String alphabet
   }
   command <<<
     alphtype \
-      ~{alphabetAlphabet}
+      ~{alphabet}
   >>>
+  parameter_meta {
+    alphabet: ""
+  }
 }

@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: rb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rb.cwl
 inputs:
-- id: v
+- id: show_version_exit
   doc: '[ --version ]      Show version and exit.'
   type: boolean
   inputBinding:
     prefix: -v
-- id: b
+- id: run_batch_mode
   doc: '[ --batch ]        Run in batch mode.'
   type: boolean
   inputBinding:

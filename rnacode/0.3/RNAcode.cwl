@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNAcode.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAcode.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

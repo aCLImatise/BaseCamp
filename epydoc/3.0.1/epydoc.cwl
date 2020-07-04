@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: epydoc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/epydoc.cwl
 inputs:
-- id: action
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: names
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: html
   doc: Write HTML output.
   type: boolean
@@ -232,6 +222,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --fail-on-docstring-warning
+- id: action
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: names_dot_dot_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,14 +2,19 @@ version 1.0
 
 task PoppunkExtractComponents.py {
   input {
-    String? extractExtractComponents
-    String? graphGraph
-    String? outputOutput
+    String extract_components
+    String graph
+    String var_output
   }
   command <<<
     poppunk_extract_components.py \
-      ~{extractExtractComponents} \
-      ~{graphGraph} \
-      ~{outputOutput}
+      ~{extract_components} \
+      ~{graph} \
+      ~{var_output}
   >>>
+  parameter_meta {
+    extract_components: ""
+    graph: ""
+    var_output: ""
+  }
 }

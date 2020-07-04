@@ -2,24 +2,34 @@ version 1.0
 
 task DistributionFeatures.py {
   input {
-    String fF
-    String inputInput
-    String designDesign
-    String idId
-    String groupGroup
-    String figureFigure
-    String palettePalette
-    String colorColor
+    String? f
+    String? input_dataset_wide
+    String? design
+    String? id
+    String? group
+    String? figure
+    String? palette
+    String? color
   }
   command <<<
     distribution_features.py \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""} \
-      ~{if defined(inputInput) then ("--input " +  '"' + inputInput + '"') else ""} \
-      ~{if defined(designDesign) then ("--design " +  '"' + designDesign + '"') else ""} \
-      ~{if defined(idId) then ("--ID " +  '"' + idId + '"') else ""} \
-      ~{if defined(groupGroup) then ("--group " +  '"' + groupGroup + '"') else ""} \
-      ~{if defined(figureFigure) then ("--figure " +  '"' + figureFigure + '"') else ""} \
-      ~{if defined(palettePalette) then ("--palette " +  '"' + palettePalette + '"') else ""} \
-      ~{if defined(colorColor) then ("--color " +  '"' + colorColor + '"') else ""}
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
+      ~{if defined(input_dataset_wide) then ("--input " +  '"' + input_dataset_wide + '"') else ""} \
+      ~{if defined(design) then ("--design " +  '"' + design + '"') else ""} \
+      ~{if defined(id) then ("--ID " +  '"' + id + '"') else ""} \
+      ~{if defined(group) then ("--group " +  '"' + group + '"') else ""} \
+      ~{if defined(figure) then ("--figure " +  '"' + figure + '"') else ""} \
+      ~{if defined(palette) then ("--palette " +  '"' + palette + '"') else ""} \
+      ~{if defined(color) then ("--color " +  '"' + color + '"') else ""}
   >>>
+  parameter_meta {
+    f: "[-pal PALETTE] [-col COLOR]"
+    input_dataset_wide: "Input dataset in wide format."
+    design: "Design file."
+    id: "Name of the column with uniqueID."
+    group: "Treatment group"
+    figure: "Output figure name [pdf]."
+    palette: "Name of the palette to use."
+    color: "Name of a valid color scheme on the selected palette"
+  }
 }

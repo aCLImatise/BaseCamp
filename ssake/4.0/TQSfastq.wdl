@@ -2,10 +2,13 @@ version 1.0
 
 task TQSfastq.py {
   input {
-    Boolean verboseVerbose
+    Boolean? verbose
   }
   command <<<
     TQSfastq.py \
-      ~{true="--verbose" false="" verboseVerbose}
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    verbose: "Runs in Verbose mode."
+  }
 }

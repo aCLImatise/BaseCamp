@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: genePredFilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genePredFilter.cwl
 inputs:
+- id: verbose
+  doc: '- level >= 2 prints out errors for each problem found.'
+  type: string
+  inputBinding:
+    prefix: -verbose
 - id: gene_pred_in
   doc: ''
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: verbose
-  doc: =2 - level >= 2 prints out errors for each problem found.
-  type: boolean
-  inputBinding:
-    prefix: -verbose
 outputs: []
 cwlVersion: v1.1
 baseCommand:

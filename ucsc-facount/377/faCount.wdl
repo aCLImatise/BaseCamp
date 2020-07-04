@@ -2,14 +2,22 @@ version 1.0
 
 task FaCount {
   input {
-    Boolean summarySummary
-    Boolean dinDinUc
-    Boolean strandsStrands
+    Boolean? summary
+    Boolean? din_uc
+    Boolean? strands
+    File file
   }
   command <<<
     faCount \
-      ~{true="-summary" false="" summarySummary} \
-      ~{true="-dinuc" false="" dinDinUc} \
-      ~{true="-strands" false="" strandsStrands}
+      ~{file} \
+      ~{true="-summary" false="" summary} \
+      ~{true="-dinuc" false="" din_uc} \
+      ~{true="-strands" false="" strands}
   >>>
+  parameter_meta {
+    summary: "show only summary statistics"
+    din_uc: "include statistics on dinucletoide frequencies"
+    strands: "count bases on both strands"
+    file: ""
+  }
 }

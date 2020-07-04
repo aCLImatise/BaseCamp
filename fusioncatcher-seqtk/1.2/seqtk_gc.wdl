@@ -2,18 +2,25 @@ version 1.0
 
 task SeqtkGc {
   input {
-    Boolean wW
-    Float fF
-    Int lL
-    Float xX
-    String? inInFa
+    Boolean? identify_highat_regions
+    Float? min_gc_fraction
+    Int? min_region_length
+    Float? xdropoff
+    String in_dot_fa
   }
   command <<<
     seqtk gc \
-      ~{inInFa} \
-      ~{true="-w" false="" wW} \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""} \
-      ~{if defined(lL) then ("-l " +  '"' + lL + '"') else ""} \
-      ~{if defined(xX) then ("-x " +  '"' + xX + '"') else ""}
+      ~{in_dot_fa} \
+      ~{true="-w" false="" identify_highat_regions} \
+      ~{if defined(min_gc_fraction) then ("-f " +  '"' + min_gc_fraction + '"') else ""} \
+      ~{if defined(min_region_length) then ("-l " +  '"' + min_region_length + '"') else ""} \
+      ~{if defined(xdropoff) then ("-x " +  '"' + xdropoff + '"') else ""}
   >>>
+  parameter_meta {
+    identify_highat_regions: "identify high-AT regions"
+    min_gc_fraction: "min GC fraction (or AT fraction for -w) [0.60]"
+    min_region_length: "min region length to output [0]"
+    xdropoff: "X-dropoff [10.0]"
+    in_dot_fa: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: npinv.cwl
+id: ../../../../home/ubuntu/BiocondaCli/npinv.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

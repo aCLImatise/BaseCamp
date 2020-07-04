@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: arb_pt_server.cwl
+id: ../../../../home/ubuntu/BiocondaCli/arb_pt_server.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,51 +1,6 @@
 class: CommandLineTool
-id: meryl_lookup.cwl
+id: ../../../../home/ubuntu/BiocondaCli/meryl_lookup.cwl
 inputs:
-- id: seqname
-  doc: '- name of the sequence this kmer is from'
-  type: string
-  inputBinding:
-    position: 0
-- id: seq_id
-  doc: '- numeric version of the seqName (0-based)'
-  type: string
-  inputBinding:
-    position: 1
-- id: seq_pos
-  doc: '- start position (0-based) of the kmer in the sequence'
-  type: string
-  inputBinding:
-    position: 2
-- id: exists
-  doc: "- 'T' if the kmer exists in the database, 'F' if it does not"
-  type: string
-  inputBinding:
-    position: 3
-- id: fwd_mer
-  doc: '- forward mer sequence'
-  type: string
-  inputBinding:
-    position: 4
-- id: fwd_val
-  doc: '- value of the forward mer in the database'
-  type: string
-  inputBinding:
-    position: 5
-- id: rev_mer
-  doc: '- reverse mer sequence'
-  type: string
-  inputBinding:
-    position: 6
-- id: rev_val
-  doc: '- value of the reverse mer in the database'
-  type: string
-  inputBinding:
-    position: 7
-- id: seqname
-  doc: '- name of the sequence this kmer is from'
-  type: string
-  inputBinding:
-    position: 0
 - id: sequence
   doc: '[<input2.fasta>] \'
   type: string
@@ -91,6 +46,51 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -include
+- id: var_9
+  doc: '- name of the sequence this kmer is from'
+  type: string
+  inputBinding:
+    position: 0
+- id: seq_id
+  doc: '- numeric version of the seqName (0-based)'
+  type: string
+  inputBinding:
+    position: 1
+- id: seq_pos
+  doc: '- start position (0-based) of the kmer in the sequence'
+  type: string
+  inputBinding:
+    position: 2
+- id: exists
+  doc: "- 'T' if the kmer exists in the database, 'F' if it does not"
+  type: string
+  inputBinding:
+    position: 3
+- id: fwd_mer
+  doc: '- forward mer sequence'
+  type: string
+  inputBinding:
+    position: 4
+- id: fwd_val
+  doc: '- value of the forward mer in the database'
+  type: string
+  inputBinding:
+    position: 5
+- id: rev_mer
+  doc: '- reverse mer sequence'
+  type: string
+  inputBinding:
+    position: 6
+- id: rev_val
+  doc: '- value of the reverse mer in the database'
+  type: string
+  inputBinding:
+    position: 7
+- id: var_17
+  doc: '- name of the sequence this kmer is from'
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

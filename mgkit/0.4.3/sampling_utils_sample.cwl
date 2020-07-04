@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sampling_utils_sample.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sampling_utils_sample.cwl
 inputs:
 - id: prefix
   doc: 'Prefix for the file name(s) in output  [default: sample]'
@@ -31,6 +31,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gzip
+- id: input_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

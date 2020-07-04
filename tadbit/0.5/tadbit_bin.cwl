@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tadbit_bin.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tadbit_bin.cwl
 inputs:
 - id: workdir
   doc: path to working directory (generated with the tool tadbit mapper)
@@ -102,14 +102,14 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --interactive
-- id: c
+- id: _coord_coordinate_retrieve_arguments
   doc: ', --coord             Coordinate of the region to retrieve. By default all
     genome, arguments can be either one chromosome name, or the coordinate in the
     form: "-c chr3:110000000-120000000"'
   type: boolean
   inputBinding:
     prefix: -c
-- id: c2
+- id: c_two
   doc: ', --coord2           Coordinate of a second region to retrieve the matrix
     in the intersection with the first region.'
   type: boolean

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filter_read_conservation.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_read_conservation.cwl
 inputs:
 - id: input
   doc: 'specify SAM file to be analysed (default: STDIN)'

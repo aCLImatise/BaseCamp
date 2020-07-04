@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: lighter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lighter.cwl
 inputs:
-- id: r
+- id: seqfile_path_sequence
   doc: ": seq_file is the path to the sequence file. Can use multiple -r to specifiy\
     \ multiple sequence files The file can be fasta and fastq, and can be gzip'ed\
     \ with extension *.gz. When the input file is *.gz, the corresponding output file\
@@ -9,12 +9,12 @@ inputs:
   type: string
   inputBinding:
     prefix: -r
-- id: k
+- id: genomesize_alpha_see
   doc: 'genome_size alpha: (see README for information on setting alpha) or'
   type: string
   inputBinding:
     prefix: -k
-- id: k
+- id: genomsize_case_genome
   doc: 'genom_size: in this case, the genome size should be relative accurate.'
   type: string
   inputBinding:
@@ -24,7 +24,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -od
-- id: t
+- id: number_use_default
   doc: ': number of threads to use (default: 1)'
   type: string
   inputBinding:
@@ -71,7 +71,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -zlib
-- id: v
+- id: print_version_information
   doc: ': print the version information and quit'
   type: boolean
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamsormadup.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamsormadup.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

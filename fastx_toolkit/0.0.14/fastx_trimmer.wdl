@@ -2,24 +2,34 @@ version 1.0
 
 task FastxTrimmer {
   input {
-    String fF
-    String lL
-    String tT
-    Int mM
-    Boolean zZ
-    Boolean vV
-    String iI
-    String oO
+    String? f
+    String? l
+    String? t
+    Int? m
+    Boolean? z
+    Boolean? v
+    String? i
+    String? o
   }
   command <<<
     fastx_trimmer \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""} \
-      ~{if defined(lL) then ("-l " +  '"' + lL + '"') else ""} \
-      ~{if defined(tT) then ("-t " +  '"' + tT + '"') else ""} \
-      ~{if defined(mM) then ("-m " +  '"' + mM + '"') else ""} \
-      ~{true="-z" false="" zZ} \
-      ~{true="-v" false="" vV} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""}
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
+      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
+      ~{true="-z" false="" z} \
+      ~{true="-v" false="" v} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    f: ""
+    l: ""
+    t: ""
+    m: ""
+    z: ""
+    v: ""
+    i: ""
+    o: ""
+  }
 }

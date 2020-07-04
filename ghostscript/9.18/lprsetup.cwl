@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: lprsetup.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lprsetup.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,28 +2,40 @@ version 1.0
 
 task ChadoExtractCvterms {
   input {
-    Boolean verboseVerbose
-    String configConfig
-    Boolean useUsePassword
-    Boolean includeIncludeHeader
-    String delimiterDelimiter
-    String outputOutputFile
-    String formatFormat
-    String vocabularyVocabulary
-    String databaseDatabase
-    String? dbnameDbname
+    Boolean? verbose
+    String? config
+    Boolean? use_password
+    Boolean? include_header
+    String? delimiter
+    String? output_file
+    String? format
+    String? vocabulary
+    String? database
+    String dbname
   }
   command <<<
     chado extract cvterms \
-      ~{dbnameDbname} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{if defined(configConfig) then ("--config " +  '"' + configConfig + '"') else ""} \
-      ~{true="--use_password" false="" useUsePassword} \
-      ~{true="--include_header" false="" includeIncludeHeader} \
-      ~{if defined(delimiterDelimiter) then ("--delimiter " +  '"' + delimiterDelimiter + '"') else ""} \
-      ~{if defined(outputOutputFile) then ("--output_file " +  '"' + outputOutputFile + '"') else ""} \
-      ~{if defined(formatFormat) then ("--format " +  '"' + formatFormat + '"') else ""} \
-      ~{if defined(vocabularyVocabulary) then ("--vocabulary " +  '"' + vocabularyVocabulary + '"') else ""} \
-      ~{if defined(databaseDatabase) then ("--database " +  '"' + databaseDatabase + '"') else ""}
+      ~{dbname} \
+      ~{true="--verbose" false="" verbose} \
+      ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
+      ~{true="--use_password" false="" use_password} \
+      ~{true="--include_header" false="" include_header} \
+      ~{if defined(delimiter) then ("--delimiter " +  '"' + delimiter + '"') else ""} \
+      ~{if defined(output_file) then ("--output_file " +  '"' + output_file + '"') else ""} \
+      ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
+      ~{if defined(vocabulary) then ("--vocabulary " +  '"' + vocabulary + '"') else ""} \
+      ~{if defined(database) then ("--database " +  '"' + database + '"') else ""}
   >>>
+  parameter_meta {
+    verbose: "verbose mode"
+    config: "YAML file containing connection details"
+    use_password: "connect with password (default: no password)"
+    include_header: "include header in CSV output (default: False)"
+    delimiter: "Character delimiting fields in CSV output (default: tab)"
+    output_file: "file into which data are exported (default: stdout)"
+    format: "format of the file (default: csv)"
+    vocabulary: "restrict to a vocabulary, e.g. 'relationship'"
+    database: "restrict to a database, e.g. 'GO'"
+    dbname: "name of the database"
+  }
 }

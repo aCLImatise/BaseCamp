@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Assemble.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Assemble.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

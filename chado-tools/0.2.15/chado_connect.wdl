@@ -2,16 +2,22 @@ version 1.0
 
 task ChadoConnect {
   input {
-    Boolean verboseVerbose
-    String configConfig
-    Boolean useUsePassword
-    String? dbnameDbname
+    Boolean? verbose
+    String? config
+    Boolean? use_password
+    String dbname
   }
   command <<<
     chado connect \
-      ~{dbnameDbname} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{if defined(configConfig) then ("--config " +  '"' + configConfig + '"') else ""} \
-      ~{true="--use_password" false="" useUsePassword}
+      ~{dbname} \
+      ~{true="--verbose" false="" verbose} \
+      ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
+      ~{true="--use_password" false="" use_password}
   >>>
+  parameter_meta {
+    verbose: "verbose mode"
+    config: "YAML file containing connection details"
+    use_password: "connect with password (default: no password)"
+    dbname: "name of the database"
+  }
 }

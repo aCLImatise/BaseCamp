@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: spaln.cwl
+id: ../../../../home/ubuntu/BiocondaCli/spaln.cwl
 inputs:
-- id: e
+- id: generate_local_table
   doc: Generate local lookup table for each block
   type: boolean
   inputBinding:
@@ -36,22 +36,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -Xr
-- id: g
+- id: gzipped_output
   doc: gzipped output
   type: boolean
   inputBinding:
     prefix: -g
-- id: t
+- id: mutlithread_operation_threads
   doc: '#     Mutli-thread operation with # threads'
   type: boolean
   inputBinding:
     prefix: -t
-- id: e
-  doc: Use local lookup table for each block
-  type: boolean
-  inputBinding:
-    prefix: -E
-- id: h
+- id: minimum_score_report
   doc: '#     Minimum score for report (35)'
   type: boolean
   inputBinding:
@@ -61,77 +56,59 @@ inputs:
   type: string
   inputBinding:
     prefix: -LS
-- id: m
+- id: number_outputs_query
   doc: '#[,#2]        Number of outputs per query (1) (4 if # is omitted) #2 (4) specifies
     the max number of candidate loci This option is effective only for map-and-align
     modes'
   type: boolean
   inputBinding:
     prefix: -M
-- id: o
-  doc: '#[,#2,..] (GvsA|C)    0:Gff3_gene; 1:alignment; 2:Gff3_match; 3:Bed; 4:exon-inf;
-    5:intron-inf; 6:cDNA; 7:translated; 8:block-only; 10:SAM; 12:binary; 15:query+GS
-    (4)'
-  type: boolean
-  inputBinding:
-    prefix: -O
-- id: o
-  doc: '#[,#2,..] (AvsA)      0:statistics; 1:alignment; 2:Sugar; 3:Psl; 4:XYL; 5:srat+XYL;
-    8:Cigar; 9:Vulgar; 10:SAM; (4)'
-  type: boolean
-  inputBinding:
-    prefix: -O
-- id: q
+- id: dp_hspsearch_blocksearch
   doc: '#     0:DP; 1-3:HSP-Search; 4-7; Block-Search (3)'
   type: boolean
   inputBinding:
     prefix: -Q
-- id: r
+- id: read_information_file
   doc: $     Read block information file *.bkn, *.bkp or *.bka
   type: boolean
   inputBinding:
     prefix: -R
-- id: s
+- id: orientation_annotation_forward
   doc: '#     Orientation. 0:annotation; 1:forward; 2:reverse; 3:both (3)'
   type: boolean
   inputBinding:
     prefix: -S
-- id: t
+- id: subdirectory_where_reside
   doc: $     Subdirectory where species-specific parameters reside
   type: boolean
   inputBinding:
     prefix: -T
-- id: a
+- id: specify_aadb_must
   doc: $     Specify AAdb. Must run `makeidx.pl -ia' breforehand
   type: boolean
   inputBinding:
     prefix: -a
-- id: a
+- id: same_db_sequences
   doc: $     Same as -a but db sequences are stored in memory
   type: boolean
   inputBinding:
     prefix: -A
-- id: d
+- id: specify_genome_must
   doc: $     Specify genome. Must run `makeidx.pl -i[n|p]' breforehand
   type: boolean
   inputBinding:
     prefix: -d
-- id: d
+- id: same_d_db
   doc: $     Same as -d but db sequences are stored in memory
   type: boolean
   inputBinding:
     prefix: -D
-- id: g
-  doc: gzipped output in combination with -O12
-  type: boolean
-  inputBinding:
-    prefix: -g
-- id: l
+- id: number_characters_line
   doc: '#     Number of characters per line in alignment (60)'
   type: boolean
   inputBinding:
     prefix: -l
-- id: o
+- id: filedirectoryprefix_where_results
   doc: $     File/directory/prefix where results are written (stdout)
   type: boolean
   inputBinding:
@@ -151,37 +128,32 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -pq
-- id: r
+- id: report_information_block
   doc: $     Report information about block data file
   type: boolean
   inputBinding:
     prefix: -r
-- id: u
+- id: _gapextension_penalty
   doc: '#     Gap-extension penalty (3)'
   type: boolean
   inputBinding:
     prefix: -u
-- id: v
+- id: _gapopen_penalty
   doc: '#     Gap-open penalty (8)'
   type: boolean
   inputBinding:
     prefix: -v
-- id: w
+- id: band_width_dp
   doc: '#     Band width for DP matrix scan (100)'
   type: boolean
   inputBinding:
     prefix: -w
-- id: t
-  doc: '[#]   Mutli-thread operation with # threads'
-  type: boolean
-  inputBinding:
-    prefix: -t
 - id: ya
   doc: '#    Stringency of splice site. 0->3:strong->weak'
   type: boolean
   inputBinding:
     prefix: -ya
-- id: yl3
+- id: yl_three
   doc: Ddouble affine gap penalty
   type: boolean
   inputBinding:
@@ -211,7 +183,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -yy
-- id: y_z
+- id: weight_coding_potential
   doc: '#    Weight for coding potential (2)'
   type: boolean
   inputBinding:
@@ -236,21 +208,41 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -yS
-- id: yx0
+- id: yx_zero
   doc: Don't use parameter set for cross-species comparison
   type: boolean
   inputBinding:
     prefix: -yX0
-- id: y_z
+- id: weight_intron_potential
   doc: '#    Weight for intron potential (0)'
   type: boolean
   inputBinding:
     prefix: -yZ
-- id: xg
-  doc: '#    Reset maximum expected gene size, suffix k or M is effective'
+- id: var_43
+  doc: ''
   type: boolean
   inputBinding:
-    prefix: -XG
+    prefix: -W
+- id: kd
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -KD
+- id: genome_dot_bkn
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: w_options
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: genome_dot_mfa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

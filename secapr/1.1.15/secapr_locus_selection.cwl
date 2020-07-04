@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: secapr_locus_selection.cwl
+id: ../../../../home/ubuntu/BiocondaCli/secapr_locus_selection.cwl
 inputs:
 - id: input
   doc: The folder with the results of the reference based assembly.
@@ -11,7 +11,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
-- id: n
+- id: n_loci_represented
   doc: The n loci that are best represented accross all samples will be extracted.
   type: string
   inputBinding:

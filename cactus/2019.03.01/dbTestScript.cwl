@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dbTestScript.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dbTestScript.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

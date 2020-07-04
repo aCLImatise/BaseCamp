@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bed_extend_to.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bed_extend_to.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

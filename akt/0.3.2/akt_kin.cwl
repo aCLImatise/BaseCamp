@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: akt_kin.cwl
+id: ../../../../home/ubuntu/BiocondaCli/akt_kin.cwl
 inputs:
-- id: in_bcf
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: minkin
   doc: ':                   threshold for relatedness output (none)'
   type: boolean
@@ -67,6 +62,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --samples-file
+- id: in_dot_bcf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

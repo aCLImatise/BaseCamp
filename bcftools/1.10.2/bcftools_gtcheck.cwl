@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: bcftools_gtcheck.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcftools_gtcheck.cwl
 inputs:
-- id: query_vcf_gz
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: all_sites
   doc: output comparison for all sites
   type: boolean
@@ -66,6 +61,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --targets-file
+- id: query_dot_vcf_do_tgz
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

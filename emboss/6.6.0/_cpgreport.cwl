@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _cpgreport.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_cpgreport.cwl
 inputs:
 - id: score
   doc: integer    [17] This sets the score for each CG sequence found. A value of

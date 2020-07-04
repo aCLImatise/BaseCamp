@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: vcfcheck.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfcheck.cwl
 inputs:
 - id: input_file
   doc: The input file
   type: string
   inputBinding:
     prefix: --input-file
-- id: o
+- id: arg_output_json
   doc: '[ --output-file ] arg   The output JSON file with basic counts.'
   type: boolean
   inputBinding:
     prefix: -o
-- id: l
+- id: arg_start_location
   doc: '[ --location ] arg      Start location.'
   type: boolean
   inputBinding:
@@ -26,12 +26,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --message-every
-- id: f
+- id: arg_apply_filtering
   doc: '[ --apply-filters ] arg Apply filtering in VCF.'
   type: boolean
   inputBinding:
     prefix: -f
-- id: h
+- id: arg_strict_assertions
   doc: "[ --strict-homref ] arg Be strict about hom-ref assertions (i.e. don't  allow\
     \ these to overlap)."
   type: boolean
@@ -42,7 +42,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --check-bcf-errors
-- id: w
+- id: arg_show_warnings
   doc: '[ --all-warnings ] arg  Show all warnings, not just the first instance.'
   type: boolean
   inputBinding:

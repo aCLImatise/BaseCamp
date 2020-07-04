@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: aggregateContigOverlapsByBin.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/aggregateContigOverlapsByBin.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

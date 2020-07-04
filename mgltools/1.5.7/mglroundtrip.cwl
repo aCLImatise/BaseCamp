@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: mglroundtrip.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mglroundtrip.cwl
 inputs:
 - id: round_trip
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: file_1
+- id: file_one
   doc: ''
   type: File
   inputBinding:
     position: 1
-- id: file_2
+- id: file_two
   doc: ''
   type: File
   inputBinding:

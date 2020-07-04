@@ -2,20 +2,28 @@ version 1.0
 
 task BamToFastq {
   input {
-    File inIn
-    File out1Out1
-    File out2Out2
-    Boolean removeRemoveDuplicates
-    Boolean changelogChangelog
-    Boolean tdxTdx
+    File? in
+    File? out_one
+    File? out_two
+    Boolean? remove_duplicates
+    Boolean? changelog
+    Boolean? tdx
   }
   command <<<
     BamToFastq \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(out1Out1) then ("-out1 " +  '"' + out1Out1 + '"') else ""} \
-      ~{if defined(out2Out2) then ("-out2 " +  '"' + out2Out2 + '"') else ""} \
-      ~{true="-remove_duplicates" false="" removeRemoveDuplicates} \
-      ~{true="--changelog" false="" changelogChangelog} \
-      ~{true="--tdx" false="" tdxTdx}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out_one) then ("-out1 " +  '"' + out_one + '"') else ""} \
+      ~{if defined(out_two) then ("-out2 " +  '"' + out_two + '"') else ""} \
+      ~{true="-remove_duplicates" false="" remove_duplicates} \
+      ~{true="--changelog" false="" changelog} \
+      ~{true="--tdx" false="" tdx}
   >>>
+  parameter_meta {
+    in: "Input BAM file."
+    out_one: "Read 1 output FASTQ.GZ file."
+    out_two: "Read 2 output FASTQ.GZ file."
+    remove_duplicates: "Does not export duplicate reads into the FASTQ file. Default value: 'false'"
+    changelog: "Prints changeloge and exits."
+    tdx: "Writes a Tool Definition Xml file. The file name is the application name with the suffix '.tdx'."
+  }
 }

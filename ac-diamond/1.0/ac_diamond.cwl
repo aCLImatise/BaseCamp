@@ -1,27 +1,22 @@
 class: CommandLineTool
-id: ac_diamond.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ac_diamond.cwl
 inputs:
-- id: view
-  doc: View AC-DIAMOND alignment archive (DAA) formatted file
-  type: string
-  inputBinding:
-    position: 0
-- id: p
+- id: arg_number_cpu
   doc: '[ --threads ] arg (=0) number of cpu threads'
   type: boolean
   inputBinding:
     prefix: -p
-- id: d
+- id: arg_database_file
   doc: '[ --db ] arg           database file'
   type: boolean
   inputBinding:
     prefix: -d
-- id: a
+- id: arg_acdiamond_alignment
   doc: '[ --daa ] arg          AC-DIAMOND alignment archive (DAA) file'
   type: boolean
   inputBinding:
     prefix: -a
-- id: v
+- id: _enable_verbose
   doc: '[ --verbose ]          enable verbose out'
   type: boolean
   inputBinding:
@@ -36,7 +31,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --in
-- id: b
+- id: arg_reference_sequence
   doc: '[ --block-size ] arg reference sequence block size in billions of letters  (default=4)'
   type: boolean
   inputBinding:
@@ -46,18 +41,18 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --sensitive
-- id: z
+- id: arg_query_size
   doc: '[ --query-block-size ] arg (=6) query sequence block size in billions of  letters
     (default=6)'
   type: boolean
   inputBinding:
     prefix: -z
-- id: q
+- id: arg_input_query
   doc: '[ --query ] arg                 input query file'
   type: boolean
   inputBinding:
     prefix: -q
-- id: k
+- id: arg_maximum_number
   doc: '[ --max-target-seqs ] arg (=25) maximum number of target sequences to  report
     alignments for'
   type: boolean
@@ -74,7 +69,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --compress
-- id: e
+- id: arg_maximum_evalue
   doc: '[ --evalue ] arg (=0.001)       maximum e-value to report alignments'
   type: boolean
   inputBinding:
@@ -90,12 +85,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --id
-- id: sensitive
-  doc: 'enable sensitive mode (default: fast)'
-  type: boolean
-  inputBinding:
-    prefix: --sensitive
-- id: t
+- id: arg_devshm_directory
   doc: '[ --tmpdir ] arg (=/dev/shm)    directory for temporary files'
   type: boolean
   inputBinding:
@@ -120,7 +110,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --seg
-- id: w
+- id: arg_window_size
   doc: '[ --window ] arg (=0)        window size for local hit search'
   type: boolean
   inputBinding:
@@ -130,7 +120,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --xdrop
-- id: x
+- id: arg_xdrop_gapped
   doc: '[ --gapped-xdrop ] arg (=20) xdrop for gapped alignment in bits'
   type: boolean
   inputBinding:
@@ -170,12 +160,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --single-domain
-- id: o
+- id: arg_output_file
   doc: '[ --out ] arg           output file'
   type: boolean
   inputBinding:
     prefix: -o
-- id: f
+- id: arg_tab_output
   doc: '[ --outfmt ] arg (=tab) output format (tab/sam)'
   type: boolean
   inputBinding:
@@ -185,6 +175,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --forwardonly
+- id: view
+  doc: View AC-DIAMOND alignment archive (DAA) formatted file
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

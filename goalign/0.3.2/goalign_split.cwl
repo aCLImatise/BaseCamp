@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: goalign_split.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_split.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: out_prefix
   doc: Prefix of output files
   type: string

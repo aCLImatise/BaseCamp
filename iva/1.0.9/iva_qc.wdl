@@ -2,46 +2,67 @@ version 1.0
 
 task IvaQc {
   input {
-    Directory emblEmblDir
-    Directory refRefDb
-    File fF
-    File rR
-    File frFr
-    Int cdsCdsMinHitLength
-    Float cdsCdsMinHitId
-    Int ctgCtgMinHitLength
-    Float ctgCtgMinHitId
-    Int sSMaltK
-    Int sSMaltS
-    Float sSMaltId
-    Int gageGageMiniD
-    Boolean krakenKrakenPreload
-    File rattRattConfig
-    String ctgCtgLayoutPlotTitle
-    Int minMinRefCov
-    Boolean noNoClean
-    Int threadsThreads
+    Directory? embl_dir
+    Directory? ref_db
+    File? name_forwards_reads
+    File? name_reverse_reads
+    File? fr
+    Int? cds_min_hit_length
+    Float? cds_min_hit_id
+    Int? ctg_min_hit_length
+    Float? ctg_min_hit_id
+    Int? s_malt_k
+    Int? s_malt_s
+    Float? s_malt_id
+    Int? gage_mini_d
+    Boolean? kraken_preload
+    File? ratt_config
+    String? ctg_layout_plot_title
+    Int? min_ref_cov
+    Boolean? no_clean
+    Int? threads
   }
   command <<<
     iva_qc \
-      ~{if defined(emblEmblDir) then ("--embl_dir " +  '"' + emblEmblDir + '"') else ""} \
-      ~{if defined(refRefDb) then ("--ref_db " +  '"' + refRefDb + '"') else ""} \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""} \
-      ~{if defined(rR) then ("-r " +  '"' + rR + '"') else ""} \
-      ~{if defined(frFr) then ("--fr " +  '"' + frFr + '"') else ""} \
-      ~{if defined(cdsCdsMinHitLength) then ("--cds_min_hit_length " +  '"' + cdsCdsMinHitLength + '"') else ""} \
-      ~{if defined(cdsCdsMinHitId) then ("--cds_min_hit_id " +  '"' + cdsCdsMinHitId + '"') else ""} \
-      ~{if defined(ctgCtgMinHitLength) then ("--ctg_min_hit_length " +  '"' + ctgCtgMinHitLength + '"') else ""} \
-      ~{if defined(ctgCtgMinHitId) then ("--ctg_min_hit_id " +  '"' + ctgCtgMinHitId + '"') else ""} \
-      ~{if defined(sSMaltK) then ("--smalt_k " +  '"' + sSMaltK + '"') else ""} \
-      ~{if defined(sSMaltS) then ("--smalt_s " +  '"' + sSMaltS + '"') else ""} \
-      ~{if defined(sSMaltId) then ("--smalt_id " +  '"' + sSMaltId + '"') else ""} \
-      ~{if defined(gageGageMiniD) then ("--gage_minid " +  '"' + gageGageMiniD + '"') else ""} \
-      ~{true="--kraken_preload" false="" krakenKrakenPreload} \
-      ~{if defined(rattRattConfig) then ("--ratt_config " +  '"' + rattRattConfig + '"') else ""} \
-      ~{if defined(ctgCtgLayoutPlotTitle) then ("--ctg_layout_plot_title " +  '"' + ctgCtgLayoutPlotTitle + '"') else ""} \
-      ~{if defined(minMinRefCov) then ("--min_ref_cov " +  '"' + minMinRefCov + '"') else ""} \
-      ~{true="--noclean" false="" noNoClean} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""}
+      ~{if defined(embl_dir) then ("--embl_dir " +  '"' + embl_dir + '"') else ""} \
+      ~{if defined(ref_db) then ("--ref_db " +  '"' + ref_db + '"') else ""} \
+      ~{if defined(name_forwards_reads) then ("-f " +  '"' + name_forwards_reads + '"') else ""} \
+      ~{if defined(name_reverse_reads) then ("-r " +  '"' + name_reverse_reads + '"') else ""} \
+      ~{if defined(fr) then ("--fr " +  '"' + fr + '"') else ""} \
+      ~{if defined(cds_min_hit_length) then ("--cds_min_hit_length " +  '"' + cds_min_hit_length + '"') else ""} \
+      ~{if defined(cds_min_hit_id) then ("--cds_min_hit_id " +  '"' + cds_min_hit_id + '"') else ""} \
+      ~{if defined(ctg_min_hit_length) then ("--ctg_min_hit_length " +  '"' + ctg_min_hit_length + '"') else ""} \
+      ~{if defined(ctg_min_hit_id) then ("--ctg_min_hit_id " +  '"' + ctg_min_hit_id + '"') else ""} \
+      ~{if defined(s_malt_k) then ("--smalt_k " +  '"' + s_malt_k + '"') else ""} \
+      ~{if defined(s_malt_s) then ("--smalt_s " +  '"' + s_malt_s + '"') else ""} \
+      ~{if defined(s_malt_id) then ("--smalt_id " +  '"' + s_malt_id + '"') else ""} \
+      ~{if defined(gage_mini_d) then ("--gage_minid " +  '"' + gage_mini_d + '"') else ""} \
+      ~{true="--kraken_preload" false="" kraken_preload} \
+      ~{if defined(ratt_config) then ("--ratt_config " +  '"' + ratt_config + '"') else ""} \
+      ~{if defined(ctg_layout_plot_title) then ("--ctg_layout_plot_title " +  '"' + ctg_layout_plot_title + '"') else ""} \
+      ~{if defined(min_ref_cov) then ("--min_ref_cov " +  '"' + min_ref_cov + '"') else ""} \
+      ~{true="--noclean" false="" no_clean} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  parameter_meta {
+    embl_dir: "Directory of reference EMBL files. If not used, must use --ref_db"
+    ref_db: "Directory of database made by iva_qc_make_db. If not used, must use --embl_dir"
+    name_forwards_reads: "[.gz], --reads_fwd filename[.gz] Name of forwards reads fasta or fastq file. Must be used with --reads_rev"
+    name_reverse_reads: "[.gz], --reads_rev filename[.gz] Name of reverse reads fasta or fastq file. Must be used with --reads_rev"
+    fr: "[.gz]    Name of interleaved fasta/q file"
+    cds_min_hit_length: "Minimum hit length when running nucmer of CDS sequences against contigs [30]"
+    cds_min_hit_id: "Minimum hit percent identity when running nucmer of CDS sequences against contigs [80]"
+    ctg_min_hit_length: "Minimum hit length when running nucmer of contigs against reference [100]"
+    ctg_min_hit_id: "Minimum hit percent identity when running nucmer of contigs against reference [80]"
+    s_malt_k: "kmer hash length in SMALT (the -k option in smalt index) [15]"
+    s_malt_s: "kmer hash step size in SMALT (the -s option in smalt index) [3]"
+    s_malt_id: "Minimum identity threshold for mapping to be reported (the -y option in smalt map) [0.5]"
+    gage_mini_d: "in [0,100] Minimum percent identity used when GAGE runs nucmer [80]"
+    kraken_preload: "Use the --preload option when running kraken"
+    ratt_config: "Specify your own RATT config file [None]"
+    ctg_layout_plot_title: "Title to use in contig layout plot [IVA QC contig layout and read depth]"
+    min_ref_cov: "Minimum read coverage of the reference, on each strand, to count as OK coverage [5]"
+    no_clean: "Do not clean temporary files"
+    threads: "Number of threads to use [1]"
+  }
 }

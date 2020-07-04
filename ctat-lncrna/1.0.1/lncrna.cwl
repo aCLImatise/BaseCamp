@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: lncrna.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lncrna.cwl
 inputs:
 - id: web
   doc: 'flag if you want website written visualizing transcripts that were filtered
@@ -22,6 +22,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --liftover
+- id: bed_file
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --bedfile
+- id: assembly
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --assembly
+- id: l_ncrna_discovery_do_tpy
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

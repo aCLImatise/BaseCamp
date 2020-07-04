@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: roary_unique_genes_per_sample.cwl
+id: ../../../../home/ubuntu/BiocondaCli/roary_unique_genes_per_sample.cwl
 inputs:
-- id: o
+- id: output_filename
   doc: output filename [unique_genes_per_sample.tsv]
   type: string
   inputBinding:
     prefix: -o
-- id: c
+- id: clusters_filename
   doc: clusters filename [clustered_proteins]
   type: string
   inputBinding:
     prefix: -c
-- id: v
+- id: verbose_output_stdout
   doc: verbose output to STDOUT
   type: boolean
   inputBinding:

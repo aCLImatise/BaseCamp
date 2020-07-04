@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: vcfld.cwl
-inputs:
-- id: your
-  doc: "goes here       -'                "
-  type: string
-  inputBinding:
-    prefix: '-     Your'
+id: ../../../../home/ubuntu/BiocondaCli/vcfld.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

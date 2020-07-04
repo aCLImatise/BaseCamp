@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dumbbench.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dumbbench.cwl
 inputs:
 - id: abs_precision
   doc: 'Set the target absolute precision (default: 0) Set to 0 to disable.'
@@ -60,7 +60,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --package
-- id: t
+- id: tablex_output_timings
   doc: '|table=X       Output timings as a data table suitable for R. Each column
     of timings is headed by the code name.'
   type: boolean

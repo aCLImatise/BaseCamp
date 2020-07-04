@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: humann2_barplot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/humann2_barplot.cwl
 inputs:
 - id: input
   doc: HUMAnN2 table with optional metadata
@@ -16,7 +16,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --top-strata
-- id: s
+- id: sample_sorting_methods
   doc: '[<sorting methods> ...], --sort <sorting methods> [<sorting methods> ...]
     Sample sorting methods (can use more than one; will evaluate in order) none        :
     Default sum         : Sum of stratified values dominant    : Value of the most
@@ -83,18 +83,18 @@ inputs:
   type: long
   inputBinding:
     prefix: --width
-- id: d
+- id: size_size_height
   doc: '<size>, --dimensions <size> <size> Image height and width in inches (default:
     8 4)'
   type: long
   inputBinding:
     prefix: -d
-- id: y
+- id: limit__ylims
   doc: <limit>, --ylims <limit> <limit> Fix limits for y-axis
   type: string
   inputBinding:
     prefix: -y
-- id: e
+- id: _legendstretch_stretchcompress
   doc: ', --legend-stretch  Stretch/compress legend elements'
   type: boolean
   inputBinding:

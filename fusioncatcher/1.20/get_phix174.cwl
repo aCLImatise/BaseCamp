@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_phix174.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_phix174.py.cwl
 inputs:
 - id: output
   doc: The output directory where the chromosomes are stored. Default is '.'.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rmToUCSCTables.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rmToUCSCTables.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

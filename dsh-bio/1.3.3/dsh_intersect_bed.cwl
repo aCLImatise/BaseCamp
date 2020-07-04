@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dsh_intersect_bed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dsh_intersect_bed.cwl
 inputs:
 - id: a_input_file
   doc: '[class java.io.File]  A input BED file, default stdin [optional]'
@@ -22,6 +22,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --strategy
+- id: args
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

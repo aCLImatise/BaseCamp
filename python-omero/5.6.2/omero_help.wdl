@@ -2,16 +2,22 @@ version 1.0
 
 task OmeroHelp {
   input {
-    Boolean recursiveRecursive
-    Boolean allAll
-    Boolean listList
-    String? topicTopic
+    Boolean? recursive
+    Boolean? all
+    Boolean? list
+    String topic
   }
   command <<<
     omero help \
-      ~{topicTopic} \
-      ~{true="--recursive" false="" recursiveRecursive} \
-      ~{true="--all" false="" allAll} \
-      ~{true="--list" false="" listList}
+      ~{topic} \
+      ~{true="--recursive" false="" recursive} \
+      ~{true="--all" false="" all} \
+      ~{true="--list" false="" list}
   >>>
+  parameter_meta {
+    recursive: "Also print help for all subcommands"
+    all: "Print help for all commands and topics"
+    list: "Print list of all commands and subcommands"
+    topic: "Command or topic for more information"
+  }
 }

@@ -2,10 +2,13 @@ version 1.0
 
 task Mkdna6idx {
   input {
-    String? indexIndexName
+    String index_name
   }
   command <<<
     mkdna6idx \
-      ~{indexIndexName}
+      ~{index_name}
   >>>
+  parameter_meta {
+    index_name: ""
+  }
 }

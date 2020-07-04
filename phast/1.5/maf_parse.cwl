@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: maf_parse.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maf_parse.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: in_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: pretty
   doc: Pretty-print alignment (use '.' when character matches corresponding character
     in first sequence).  Ignored if --out-format SS is selected.
@@ -113,6 +103,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --strip-e-lines
+- id: in_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

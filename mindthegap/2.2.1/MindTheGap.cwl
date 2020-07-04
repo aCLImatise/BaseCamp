@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MindTheGap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MindTheGap.cwl
 inputs:
 - id: version
   doc: ':    display current version'

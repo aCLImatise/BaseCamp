@@ -2,18 +2,22 @@ version 1.0
 
 task MakeIgnoreList {
   input {
-    String iI
-    String oO
-    Int cC
-    Int mM
-    String? makeMakeIgnoreListExe
+    String? i
+    String? o
+    Int? c
+    Int? m
   }
   command <<<
     makeIgnoreList \
-      ~{makeMakeIgnoreListExe} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{if defined(cC) then ("-c " +  '"' + cC + '"') else ""} \
-      ~{if defined(mM) then ("-m " +  '"' + mM + '"') else ""}
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
+      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""}
   >>>
+  parameter_meta {
+    i: ""
+    o: ""
+    c: ""
+    m: ""
+  }
 }

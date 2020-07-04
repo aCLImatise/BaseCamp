@@ -2,10 +2,16 @@ version 1.0
 
 task Flowcraft {
   input {
-    Boolean debugDebug
+    Boolean? debug
+    Boolean? v
   }
   command <<<
     flowcraft \
-      ~{true="--debug" false="" debugDebug}
+      ~{true="--debug" false="" debug} \
+      ~{true="-v" false="" v}
   >>>
+  parameter_meta {
+    debug: "Set log to debug mode"
+    v: ""
+  }
 }

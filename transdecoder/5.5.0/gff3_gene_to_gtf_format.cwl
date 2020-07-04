@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gff3_gene_to_gtf_format.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gff3_gene_to_gtf_format.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

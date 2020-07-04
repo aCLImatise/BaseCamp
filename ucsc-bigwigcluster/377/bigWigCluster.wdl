@@ -2,20 +2,28 @@ version 1.0
 
 task BigWigCluster {
   input {
-    String threadsThreads
-    Boolean tmpdirTmpdir
-    String? inputInputList
-    String? chromChromSizes
-    String? outputOutputJson
-    String? outputOutputTab
+    String? threads
+    Boolean? tmpdir
+    String input_dot_list
+    String chrom_dot_sizes
+    String output_dot_json
+    String output_dot_tab
   }
   command <<<
     bigWigCluster \
-      ~{inputInputList} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{true="-tmpDir" false="" tmpdirTmpdir} \
-      ~{chromChromSizes} \
-      ~{outputOutputJson} \
-      ~{outputOutputTab}
+      ~{input_dot_list} \
+      ~{chrom_dot_sizes} \
+      ~{output_dot_json} \
+      ~{output_dot_tab} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{true="-tmpDir" false="" tmpdir}
   >>>
+  parameter_meta {
+    threads: "- number of threads to use, default 10"
+    tmpdir: "=/tmp/path - place to put temp files, default current dir"
+    input_dot_list: ""
+    chrom_dot_sizes: ""
+    output_dot_json: ""
+    output_dot_tab: ""
+  }
 }

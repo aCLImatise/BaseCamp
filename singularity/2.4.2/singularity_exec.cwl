@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: singularity_exec.cwl
+id: ../../../../home/ubuntu/BiocondaCli/singularity_exec.cwl
 inputs:
 - id: app
   doc: Exec a command relevant to an application directory
@@ -91,6 +91,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --writable
+- id: singularity
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

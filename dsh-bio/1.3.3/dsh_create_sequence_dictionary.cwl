@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dsh_create_sequence_dictionary.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dsh_create_sequence_dictionary.cwl
 inputs:
 - id: about
   doc: display about message [optional]
@@ -17,6 +17,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --output-sequence-dictionary-file
+- id: args
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,24 +2,34 @@ version 1.0
 
 task PhyluceAlignExplodeAlignments {
   input {
-    String alignmentsAlignments
-    String outputOutput
-    String inputInputFormat
-    String confConf
-    String sectionSection
-    Array[String]+ excludeExclude
-    Boolean byByTaxOn
-    Boolean includeIncludeLocus
+    String? alignments
+    String? output_folder_fasta
+    String? input_format
+    String? conf
+    String? section
+    Array[String] exclude
+    Boolean? by_tax_on
+    Boolean? include_locus
   }
   command <<<
     phyluce_align_explode_alignments \
-      ~{if defined(alignmentsAlignments) then ("--alignments " +  '"' + alignmentsAlignments + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(inputInputFormat) then ("--input-format " +  '"' + inputInputFormat + '"') else ""} \
-      ~{if defined(confConf) then ("--conf " +  '"' + confConf + '"') else ""} \
-      ~{if defined(sectionSection) then ("--section " +  '"' + sectionSection + '"') else ""} \
-      ~{if defined(excludeExclude) then ("--exclude " +  '"' + excludeExclude + '"') else ""} \
-      ~{true="--by-taxon" false="" byByTaxOn} \
-      ~{true="--include-locus" false="" includeIncludeLocus}
+      ~{if defined(alignments) then ("--alignments " +  '"' + alignments + '"') else ""} \
+      ~{if defined(output_folder_fasta) then ("--output " +  '"' + output_folder_fasta + '"') else ""} \
+      ~{if defined(input_format) then ("--input-format " +  '"' + input_format + '"') else ""} \
+      ~{if defined(conf) then ("--conf " +  '"' + conf + '"') else ""} \
+      ~{if defined(section) then ("--section " +  '"' + section + '"') else ""} \
+      ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""} \
+      ~{true="--by-taxon" false="" by_tax_on} \
+      ~{true="--include-locus" false="" include_locus}
   >>>
+  parameter_meta {
+    alignments: "Input folder of alignments"
+    output_folder_fasta: "Output folder of fasta files"
+    input_format: "The input alignment format"
+    conf: "Config file for renaming"
+    section: "Section of config file to use"
+    exclude: "Taxa/taxon to exclude"
+    by_tax_on: "Explode file by taxon instead of by-locus"
+    include_locus: "Include the locus name in the FASTA header"
+  }
 }

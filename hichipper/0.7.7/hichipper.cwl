@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hichipper.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hichipper.cwl
 inputs:
 - id: out
   doc: Output directory name; must not be already existing [Required]  [required]
@@ -54,13 +54,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --max-dist
-- id: macs2_string
+- id: macs_two_string
   doc: String of arguments to pass to MACS2; only is called when peaks are set to
     be called; default = "-q 0.01 --extsize 147 --nomodel"
   type: string
   inputBinding:
     prefix: --macs2-string
-- id: macs2_genome
+- id: macs_two_genome
   doc: Argument to pass to the -g variable in MACS2 (mm for mouse genome; hs for human
     genome); default = "hs"
   type: string
@@ -119,7 +119,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --bedtools-path
-- id: macs2_path
+- id: macs_two_path
   doc: Path to macs2; by default, assumes that macs2 is in PATH
   type: string
   inputBinding:
@@ -139,6 +139,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --r-path
+- id: mode
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

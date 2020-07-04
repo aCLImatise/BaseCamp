@@ -2,10 +2,19 @@ version 1.0
 
 task Dless {
   input {
-    File inInDelHistory
+    File? in_del_history
+    String alignment
+    String tree_dot_mod
   }
   command <<<
     dless \
-      ~{if defined(inInDelHistory) then ("--indel-history " +  '"' + inInDelHistory + '"') else ""}
+      ~{alignment} \
+      ~{tree_dot_mod} \
+      ~{if defined(in_del_history) then ("--indel-history " +  '"' + in_del_history + '"') else ""}
   >>>
+  parameter_meta {
+    in_del_history: "(for use with --indel-model) Use the specified indel history (see indelHistory)."
+    alignment: ""
+    tree_dot_mod: ""
+  }
 }

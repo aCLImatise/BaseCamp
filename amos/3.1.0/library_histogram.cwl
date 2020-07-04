@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: library_histogram.cwl
+id: ../../../../home/ubuntu/BiocondaCli/library_histogram.cwl
 inputs:
 - id: bank_path
   doc: ''

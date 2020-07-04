@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: BamToFastq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/BamToFastq.cwl
 inputs:
 - id: in
   doc: Input BAM file.
   type: File
   inputBinding:
     prefix: -in
-- id: out1
+- id: out_one
   doc: Read 1 output FASTQ.GZ file.
   type: File
   inputBinding:
     prefix: -out1
-- id: out2
+- id: out_two
   doc: Read 2 output FASTQ.GZ file.
   type: File
   inputBinding:

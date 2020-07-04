@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: NGSDImportQC.cwl
+id: ../../../../home/ubuntu/BiocondaCli/NGSDImportQC.cwl
 inputs:
 - id: obo
   doc: HPO ontology file from 'https://github.com/imgag/megSAP/raw/master/data/misc/qc-cv.obo'.

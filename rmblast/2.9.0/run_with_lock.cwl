@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: run_with_lock.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_with_lock.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

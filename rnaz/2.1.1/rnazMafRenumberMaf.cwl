@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rnazMafRenumberMaf.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnazMafRenumberMaf.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

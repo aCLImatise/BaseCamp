@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sga_scaffold.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sga_scaffold.cwl
 inputs:
 - id: verbose
   doc: display verbose output
@@ -69,6 +69,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --strict
+- id: scaffold
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

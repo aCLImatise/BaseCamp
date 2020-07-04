@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: winextract.cwl
+id: ../../../../home/ubuntu/BiocondaCli/winextract.cwl
 inputs:
 - id: genome
   doc: 'Genome reference file. Valid filetypes are: .fa and .fasta.'

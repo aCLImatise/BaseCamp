@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ftx.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ftx.py.cwl
 inputs:
-- id: input
-  doc: Input VCF file
-  type: string
-  inputBinding:
-    position: 0
 - id: output
   doc: Output file name. Output will be in CSV format
   type: string
@@ -64,6 +59,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --fix-chr
+- id: input
+  doc: Input VCF file
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: linknets.cwl
+id: ../../../../home/ubuntu/BiocondaCli/linknets.cwl
 inputs:
 - id: in_units
   doc: use copies of input units
@@ -21,11 +21,6 @@ inputs:
   type: string
   inputBinding:
     prefix: -outconnect
-- id: in_connect
-  doc: not be used together
-  type: string
-  inputBinding:
-    prefix: -inconnect
 outputs: []
 cwlVersion: v1.1
 baseCommand:

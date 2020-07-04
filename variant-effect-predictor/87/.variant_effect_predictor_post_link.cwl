@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: .variant_effect_predictor_post_link.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/.variant_effect_predictor_post_link.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

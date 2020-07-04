@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: 6ft.cwl
+id: ../../../../home/ubuntu/BiocondaCli/6ft.cwl
 inputs:
-- id: r
+- id: translate_only_reverse
   doc: ': translate only reverse (antisense) strand.'
   type: boolean
   inputBinding:
     prefix: -r
-- id: s
+- id: translate_only_strand
   doc: ': translate only sense strand.'
   type: boolean
   inputBinding:
     prefix: -s
-- id: w
+- id: value_specifies_default
   doc: '<value>: specifies the output width (default: 60).'
   type: boolean
   inputBinding:

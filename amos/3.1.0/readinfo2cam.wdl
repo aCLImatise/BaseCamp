@@ -2,12 +2,16 @@ version 1.0
 
 task Readinfo2cam {
   input {
-    String? contigContigInfoFile
-    String? repeatRepeatCoordFile
+    String contig_info_file
+    String? repeat_coord_file
   }
   command <<<
     readinfo2cam \
-      ~{contigContigInfoFile} \
-      ~{repeatRepeatCoordFile}
+      ~{contig_info_file} \
+      ~{repeat_coord_file}
   >>>
+  parameter_meta {
+    contig_info_file: ""
+    repeat_coord_file: ""
+  }
 }

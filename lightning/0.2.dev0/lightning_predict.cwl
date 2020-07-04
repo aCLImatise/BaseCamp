@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: lightning_predict.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lightning_predict.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,20 +2,22 @@ version 1.0
 
 task Clair.py {
   input {
-    String? pythonPython
-    String? clairClairPy
-    String? submoduleSubmodule
-    String? ofOf
-    String? theThe
-    String? submoduleSubmodule
+    String? var_0
+    String? of
+    String? the
+    String? var_3
   }
   command <<<
     clair.py \
-      ~{pythonPython} \
-      ~{clairClairPy} \
-      ~{submoduleSubmodule} \
-      ~{ofOf} \
-      ~{theThe} \
-      ~{submoduleSubmodule}
+      ~{var_0} \
+      ~{of} \
+      ~{the} \
+      ~{var_3}
   >>>
+  parameter_meta {
+    var_0: ""
+    of: ""
+    the: ""
+    var_3: ""
+  }
 }

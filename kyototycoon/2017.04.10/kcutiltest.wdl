@@ -2,16 +2,22 @@ version 1.0
 
 task Kcutiltest {
   input {
-    String thTh
-    String ivIv
-    String? mutexMutex
-    String? rnumRnum
+    String? th
+    String? iv
+    String mutex
+    String rnum
   }
   command <<<
     kcutiltest \
-      ~{mutexMutex} \
-      ~{if defined(thTh) then ("-th " +  '"' + thTh + '"') else ""} \
-      ~{if defined(ivIv) then ("-iv " +  '"' + ivIv + '"') else ""} \
-      ~{rnumRnum}
+      ~{mutex} \
+      ~{rnum} \
+      ~{if defined(th) then ("-th " +  '"' + th + '"') else ""} \
+      ~{if defined(iv) then ("-iv " +  '"' + iv + '"') else ""}
   >>>
+  parameter_meta {
+    th: ""
+    iv: ""
+    mutex: ""
+    rnum: ""
+  }
 }

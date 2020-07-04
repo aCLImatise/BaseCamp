@@ -1,27 +1,17 @@
 class: CommandLineTool
-id: pdf2dcm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pdf2dcm.cwl
 inputs:
-- id: pdf_file_in
-  doc: PDF input filename to be converted
-  type: string
-  inputBinding:
-    position: 0
-- id: dcm_file_out
-  doc: DICOM output filename
-  type: string
-  inputBinding:
-    position: 1
-- id: q
+- id: _quiet_quiet
   doc: --quiet              quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose            verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug              debug mode, print debug information
   type: boolean
   inputBinding:
@@ -42,6 +32,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --annotation-no
+- id: pdf_file_in
+  doc: PDF input filename to be converted
+  type: string
+  inputBinding:
+    position: 0
+- id: dcm_file_out
+  doc: DICOM output filename
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

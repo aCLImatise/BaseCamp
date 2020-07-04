@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: runReadsToGenome.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/runReadsToGenome.pl.cwl
 inputs:
 - id: min_in_del_candidate_depth
   doc: number gapped reads for indel candidates [3]
@@ -26,6 +26,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -snp_gap_filter
+- id: perl
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

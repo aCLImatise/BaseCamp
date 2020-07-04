@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: cram_index.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cram_index.cwl
 inputs:
-- id: filename_cram
+- id: filename_dot_cram
   doc: ''
   type: File
   inputBinding:
     position: 0
-- id: filename_cram_cra_i
+- id: filename_dot_cram_dot_cra_i
   doc: ''
   type: File
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: breakseq2_gen_bplib.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/breakseq2_gen_bplib.py.cwl
 inputs:
 - id: reference
   doc: 'Reference FASTA (default: None)'
@@ -32,8 +32,8 @@ inputs:
   inputBinding:
     prefix: --junction_length
 - id: format_version
-  doc: '{1,2} Version of breakpoint library format to use (default: 2)'
-  type: boolean
+  doc: 'Version of breakpoint library format to use (default: 2)'
+  type: string
   inputBinding:
     prefix: --format_version
 outputs: []

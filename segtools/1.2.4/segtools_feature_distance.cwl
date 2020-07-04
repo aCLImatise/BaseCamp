@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: segtools_feature_distance.cwl
+id: ../../../../home/ubuntu/BiocondaCli/segtools_feature_distance.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: segmentation
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: annotation
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: clobber
   doc: Overwrite any existing output files.
   type: boolean
@@ -86,12 +71,22 @@ inputs:
   type: string
   inputBinding:
     prefix: --outdir
-- id: r
+- id: val_pass_val
   doc: =VAL        Pass VAL for PARAM when calling R functions. May be specified multiple
     times.
   type: string
   inputBinding:
     prefix: -R
+- id: segmentation
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: annotation
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

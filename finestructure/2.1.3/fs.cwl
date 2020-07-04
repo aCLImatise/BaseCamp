@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fs.cwl
 inputs:
 - id: go
   doc: ': Do the next things that are necessary to get a complete set of finestructure

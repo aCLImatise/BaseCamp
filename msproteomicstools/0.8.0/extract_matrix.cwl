@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: extract_matrix.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extract_matrix.py.cwl
 inputs:
 - id: in
   doc: feature aligner file

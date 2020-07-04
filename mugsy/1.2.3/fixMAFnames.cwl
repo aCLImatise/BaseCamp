@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fixMAFnames.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fixMAFnames.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

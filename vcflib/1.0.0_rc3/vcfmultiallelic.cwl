@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfmultiallelic.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfmultiallelic.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

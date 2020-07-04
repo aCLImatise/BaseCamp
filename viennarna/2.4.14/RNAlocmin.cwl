@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNAlocmin.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAlocmin.cwl
 inputs:
 - id: detailed_help
   doc: Print help, including all details and hidden options, and exit
@@ -160,6 +160,11 @@ inputs:
   type: double
   inputBinding:
     prefix: --eRange
+- id: rna_sub_opt
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scran_convert_to.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scran_convert_to.R.cwl
 inputs:
 - id: input_sce_object
   doc: Path to the input SCE object in rds format.

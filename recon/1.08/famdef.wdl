@@ -1,7 +1,14 @@
 version 1.0
 
 task Famdef {
+  input {
+    String seq_list
+  }
   command <<<
-    famdef
+    famdef \
+      ~{seq_list}
   >>>
+  parameter_meta {
+    seq_list: ""
+  }
 }

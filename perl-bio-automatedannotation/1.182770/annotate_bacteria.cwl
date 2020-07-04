@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: annotate_bacteria.cwl
+id: ../../../../home/ubuntu/BiocondaCli/annotate_bacteria.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,20 +2,28 @@ version 1.0
 
 task SampleOverview {
   input {
-    File inIn
-    File outOut
-    Int windowWindow
-    String addAddCols
-    Boolean changelogChangelog
-    Boolean tdxTdx
+    File? in
+    File? out
+    Int? window
+    String? add_cols
+    Boolean? changelog
+    Boolean? tdx
   }
   command <<<
     SampleOverview \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(windowWindow) then ("-window " +  '"' + windowWindow + '"') else ""} \
-      ~{if defined(addAddCols) then ("-add_cols " +  '"' + addAddCols + '"') else ""} \
-      ~{true="--changelog" false="" changelogChangelog} \
-      ~{true="--tdx" false="" tdxTdx}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(window) then ("-window " +  '"' + window + '"') else ""} \
+      ~{if defined(add_cols) then ("-add_cols " +  '"' + add_cols + '"') else ""} \
+      ~{true="--changelog" false="" changelog} \
+      ~{true="--tdx" false="" tdx}
   >>>
+  parameter_meta {
+    in: "Input variant lists in GSvar format."
+    out: "Output variant list file in GSvar format."
+    window: "Window to consider around indel positions to compensate for differing alignments. Default value: '100'"
+    add_cols: "Comma-separated list of input columns that shall be added to the output. By default, all columns that are present in all input files. Default value: '[auto]'"
+    changelog: "Prints changeloge and exits."
+    tdx: "Writes a Tool Definition Xml file. The file name is the application name with the suffix '.tdx'."
+  }
 }

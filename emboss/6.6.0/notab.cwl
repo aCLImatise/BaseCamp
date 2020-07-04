@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: notab.cwl
+id: ../../../../home/ubuntu/BiocondaCli/notab.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

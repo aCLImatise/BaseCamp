@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sketchy_survey_mashdist.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sketchy_survey_mashdist.cwl
 inputs:
 - id: fast_a
   doc: Path to list containing path to genomes per line [required]  [required]

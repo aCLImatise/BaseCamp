@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: Sreport.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Sreport.cwl
 inputs:
-- id: o
+- id: file_extension_mandatory
   doc: file (with NO extension). Mandatory option.
   type: string
   inputBinding:

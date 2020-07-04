@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: ConsensusFixer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ConsensusFixer.cwl
 inputs:
-- id: i
+- id: alignment_file_bam
   doc: ': Alignment file in BAM format (required).'
   type: string
   inputBinding:
     prefix: -i
-- id: r
+- id: reference_file_fasta
   doc: ': Reference file in FASTA format (optional).'
   type: string
   inputBinding:
     prefix: -r
-- id: o
+- id: path_current_directory
   doc: ': Path to the output directory (default: current directory).'
   type: File
   inputBinding:
@@ -37,17 +37,17 @@ inputs:
   type: string
   inputBinding:
     prefix: -pluralityN
-- id: m
+- id: majority_vote_respecting
   doc: ': Majority vote respecting pluralityN first, otherwise allow wobbles.'
   type: boolean
   inputBinding:
     prefix: -m
-- id: f
+- id: only_allow_frame
   doc: ': Only allow in frame insertions in the consensus.'
   type: boolean
   inputBinding:
     prefix: -f
-- id: d
+- id: remove_gaps_they
   doc: ': Remove gaps if they are >= pluralityN.'
   type: boolean
   inputBinding:
@@ -72,7 +72,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -dash
-- id: s
+- id: single_core_mode
   doc: ': Single core mode with low memory footprint.'
   type: boolean
   inputBinding:
@@ -82,21 +82,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -XX
-- id: xmx10g
+- id: x_mx_one_zero_g
   doc: ': Increase heap space.'
   type: boolean
   inputBinding:
     prefix: -Xmx10G
-- id: xx
-  doc: ':+UseParallelGC    : Enhances performance on multicore systems.'
-  type: boolean
+- id: jar
+  doc: ''
+  type: string
   inputBinding:
-    prefix: -XX
-- id: xx
-  doc: ':+UseNUMA          : Enhances performance on multi-CPU systems.'
-  type: boolean
+    prefix: -jar
+- id: java
+  doc: ''
+  type: string
   inputBinding:
-    prefix: -XX
+    position: 0
+- id: options_dot_dot_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

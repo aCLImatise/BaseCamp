@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tripaille_analysis_add_analysis.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tripaille_analysis_add_analysis.cwl
 inputs:
 - id: algorithm
   doc: analysis algorithm
@@ -26,6 +26,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --date_executed
+- id: name
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: program
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: program_version
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

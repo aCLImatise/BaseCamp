@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sv2train.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sv2train.cwl
 inputs:
 - id: bam
   doc: '...     bam file(s)'
@@ -41,7 +41,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -pcrfree
-- id: m
+- id: bwa_mem_m
   doc: bwa mem -M compatibility, split-reads flagged as secondary instead of supplementary
   type: boolean
   inputBinding:

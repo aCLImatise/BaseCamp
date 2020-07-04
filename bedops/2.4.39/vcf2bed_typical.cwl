@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcf2bed_typical.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf2bed_typical.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

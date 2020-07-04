@@ -2,10 +2,13 @@ version 1.0
 
 task ClstrSizeStat.pl {
   input {
-    String? clClStrFile
+    String cl_str_file
   }
   command <<<
     clstr_size_stat.pl \
-      ~{clClStrFile}
+      ~{cl_str_file}
   >>>
+  parameter_meta {
+    cl_str_file: ""
+  }
 }

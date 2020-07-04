@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: CodingQuarry.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CodingQuarry.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

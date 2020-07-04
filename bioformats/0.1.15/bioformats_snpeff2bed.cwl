@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: bioformats_snpeff2bed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bioformats_snpeff2bed.cwl
 inputs:
+- id: bed_three
+  doc: convert to the BED3 format
+  type: boolean
+  inputBinding:
+    prefix: --bed3
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
 - id: vcf_file
   doc: an snpEff-annotated VCF file
   type: string
@@ -11,11 +21,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: bed3
-  doc: convert to the BED3 format
-  type: boolean
-  inputBinding:
-    prefix: --bed3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

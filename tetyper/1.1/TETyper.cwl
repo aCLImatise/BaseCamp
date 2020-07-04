@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: TETyper.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/TETyper.py.cwl
 inputs:
 - id: out_prefix
   doc: Prefix to use for output files. Required.
@@ -19,17 +19,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --refdb
-- id: fq1
+- id: fq_one
   doc: Forward reads. Can be gzipped.
   type: string
   inputBinding:
     prefix: --fq1
-- id: fq2
+- id: fq_two
   doc: Reverse reads. Can be gzipped.
   type: string
   inputBinding:
     prefix: --fq2
-- id: fq12
+- id: fq_one_two
   doc: Interleaved forward and reverse reads.
   type: string
   inputBinding:
@@ -114,12 +114,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --threads
-- id: v
-  doc: '{1,2,3,4}, --verbosity {1,2,3,4} Verbosity level for logging to stderr. 1
-    = ERROR, 2 = WARNING, 3 = INFO, 4 = DUBUG. Default: 3.'
-  type: boolean
+- id: verbosity
+  doc: 'Verbosity level for logging to stderr. 1 = ERROR, 2 = WARNING, 3 = INFO, 4
+    = DUBUG. Default: 3.'
+  type: string
   inputBinding:
-    prefix: -v
+    prefix: --verbosity
 - id: no_overwrite
   doc: Flag to prevent accidental overwriting of previous output files. In this mode,
     the pipeline checks for a log file named according to the given output prefix.

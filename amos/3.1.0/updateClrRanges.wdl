@@ -2,14 +2,19 @@ version 1.0
 
 task UpdateClrRanges {
   input {
-    Boolean iI
-    String? bankBankName
-    String? seqnameend5end3txtSeqnameend5end3txt
+    Boolean? i
+    String bank_name
+    String seqname_do_tend_five_do_tend_three_dot_txt
   }
   command <<<
     updateClrRanges \
-      ~{bankBankName} \
-      ~{true="-i" false="" iI} \
-      ~{seqnameend5end3txtSeqnameend5end3txt}
+      ~{bank_name} \
+      ~{seqname_do_tend_five_do_tend_three_dot_txt} \
+      ~{true="-i" false="" i}
   >>>
+  parameter_meta {
+    i: ""
+    bank_name: ""
+    seqname_do_tend_five_do_tend_three_dot_txt: ""
+  }
 }

@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: dnase_ddhs_scorer.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dnase_ddhs_scorer.py.cwl
 inputs:
+- id: low_ram_mode
+  doc: 'low RAM mode (disables caching) (Default: False)'
+  type: boolean
+  inputBinding:
+    prefix: -l
+- id: atacseq_mode_default
+  doc: 'ATAC-seq mode (default: False)'
+  type: boolean
+  inputBinding:
+    prefix: -A
 - id: regions
   doc: The set of BED files you wish to annotate with dDHS scores
   type: string
@@ -31,16 +41,6 @@ inputs:
   type: string
   inputBinding:
     position: 5
-- id: l
-  doc: 'low RAM mode (disables caching) (Default: False)'
-  type: boolean
-  inputBinding:
-    prefix: -l
-- id: a
-  doc: 'ATAC-seq mode (default: False)'
-  type: boolean
-  inputBinding:
-    prefix: -A
 outputs: []
 cwlVersion: v1.1
 baseCommand:

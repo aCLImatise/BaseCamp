@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _findkm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_findkm.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

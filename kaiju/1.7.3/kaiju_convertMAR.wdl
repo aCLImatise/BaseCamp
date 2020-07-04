@@ -2,16 +2,22 @@ version 1.0
 
 task KaijuConvertMAR.py {
   input {
-    String refRef
-    String dbDb
-    String nodesNodes
-    String genomesGenomes
+    String? ref
+    String? db
+    String? nodes
+    String? genomes
   }
   command <<<
     kaiju-convertMAR.py \
-      ~{if defined(refRef) then ("--ref " +  '"' + refRef + '"') else ""} \
-      ~{if defined(dbDb) then ("--db " +  '"' + dbDb + '"') else ""} \
-      ~{if defined(nodesNodes) then ("--nodes " +  '"' + nodesNodes + '"') else ""} \
-      ~{if defined(genomesGenomes) then ("--genomes " +  '"' + genomesGenomes + '"') else ""}
+      ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""} \
+      ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
+      ~{if defined(nodes) then ("--nodes " +  '"' + nodes + '"') else ""} \
+      ~{if defined(genomes) then ("--genomes " +  '"' + genomes + '"') else ""}
   >>>
+  parameter_meta {
+    ref: "MarRef TSV file path (default: MarRef.tsv)"
+    db: "MarDB TSV file path (default: MarDB.tsv)"
+    nodes: "NCBI nodes.dmp file path (default: nodes.dmp)"
+    genomes: "genomes download directory (default: genomes)"
+  }
 }

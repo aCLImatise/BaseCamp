@@ -2,18 +2,19 @@ version 1.0
 
 task Sdust {
   input {
-    Boolean wW
-    Boolean tT
-    String? 6464
-    String? 2020
-    String? inInFa
+    String? w
+    String? t
+    String in_dot_fa
   }
   command <<<
     sdust \
-      ~{6464} \
-      ~{true="-w" false="" wW} \
-      ~{true="-t" false="" tT} \
-      ~{2020} \
-      ~{inInFa}
+      ~{in_dot_fa} \
+      ~{if defined(w) then ("-w " +  '"' + w + '"') else ""} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
   >>>
+  parameter_meta {
+    w: ""
+    t: ""
+    in_dot_fa: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ontogetsibs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ontogetsibs.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

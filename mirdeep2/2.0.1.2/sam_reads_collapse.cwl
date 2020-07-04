@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sam_reads_collapse.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sam_reads_collapse.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: ct2rnaml.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ct2rnaml.cwl
 inputs:
-- id: file_ct
+- id: file_dot_ct
   doc: ''
   type: File
   inputBinding:

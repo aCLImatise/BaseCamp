@@ -1,27 +1,6 @@
 class: CommandLineTool
-id: picopore.cwl
+id: ../../../../home/ubuntu/BiocondaCli/picopore.cwl
 inputs:
-- id: pico_pore_real_time
-  doc: monitors a directory for new reads and compresses them in real time
-  type: string
-  inputBinding:
-    position: 0
-- id: pico_pore_test
-  doc: compresses to temporary files and checks that all datasets and attributes are
-    equal (lossless modes only)
-  type: string
-  inputBinding:
-    position: 1
-- id: pico_pore_rename
-  doc: renames groups and datasets within FAST5 files
-  type: string
-  inputBinding:
-    position: 2
-- id: input
-  doc: list of directories or fast5 files to shrink
-  type: string
-  inputBinding:
-    position: 0
 - id: mode
   doc: choose compression mode
   type: string
@@ -48,7 +27,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --manual
-- id: y
+- id: skip_confirm_step
   doc: skip confirm step
   type: boolean
   inputBinding:
@@ -74,6 +53,27 @@ inputs:
   type: long
   inputBinding:
     prefix: --print-every
+- id: pico_pore_real_time
+  doc: monitors a directory for new reads and compresses them in real time
+  type: string
+  inputBinding:
+    position: 0
+- id: pico_pore_test
+  doc: compresses to temporary files and checks that all datasets and attributes are
+    equal (lossless modes only)
+  type: string
+  inputBinding:
+    position: 1
+- id: pico_pore_rename
+  doc: renames groups and datasets within FAST5 files
+  type: string
+  inputBinding:
+    position: 2
+- id: input
+  doc: list of directories or fast5 files to shrink
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,23 +1,13 @@
 class: CommandLineTool
-id: NBICseq_seg.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/NBICseq_seg.pl.cwl
 inputs:
-- id: config_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: output
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: lambda
   doc: ': the (positive) penalty used for BIC-seq'
   type: double
   inputBinding:
     prefix: --lambda
 - id: tmp
-  doc: ': the tmp directory; If unspecified, use /tmp/tmpq0pilrwk/bin/tmp/'
+  doc: ': the tmp directory; If unspecified, use /tmp/tmpsomb5k_a/bin/tmp/'
   type: string
   inputBinding:
     prefix: --tmp
@@ -63,6 +53,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --detail
+- id: config_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

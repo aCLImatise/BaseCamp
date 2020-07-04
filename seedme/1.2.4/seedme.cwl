@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: seedme.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seedme.py.cwl
 inputs:
 - id: api_key
   doc: Specify your apikey at SeedMe.org
@@ -147,7 +147,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -privacy
-- id: q
+- id: query_collections_returns
   doc: '[COLLECTION_ID (required with list args)], -query [COLLECTION_ID (required
     with list args)] Query your collections with optional ID (default: Returns a list
     of ID and Title)'
@@ -175,11 +175,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -sequence_encode
-- id: sr
-  doc: 30.00, -sequence_frame_rate 30.00 Specify sequence frame rate for video encoding
-  type: boolean
+- id: sequence_frame_rate
+  doc: Specify sequence frame rate for video encoding
+  type: string
   inputBinding:
-    prefix: -sr
+    prefix: -sequence_frame_rate
 - id: sequence_overwrite
   doc: Overwrite sequence if it exists (default:False)
   type: boolean
@@ -258,66 +258,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -version
-- id: e
-  doc: "'one@example.com' -e 'two@example.com' \\"
-  type: boolean
-  inputBinding:
-    prefix: -e
-- id: t
-  doc: "'CLI Test' \\"
-  type: boolean
-  inputBinding:
-    prefix: -t
-- id: d
-  doc: "'Using CLI to interact with SeedMe.org' \\"
-  type: boolean
-  inputBinding:
-    prefix: -d
-- id: kv
-  doc: "'pressure:10pa' -kv 'temperature:300K' \\"
-  type: boolean
-  inputBinding:
-    prefix: -kv
-- id: tag
-  doc: "'YT' -tag 'visualizations' \\"
-  type: boolean
-  inputBinding:
-    prefix: -tag
-- id: tic
-  doc: "'t1 is 5%' -tic 't2 is 10%' \\"
-  type: boolean
-  inputBinding:
-    prefix: -tic
-- id: sp
-  doc: "'sample/sequences/plume_boundary/*' \\"
-  type: boolean
-  inputBinding:
-    prefix: -sp
-- id: st
-  doc: "'seq title' -sd 'desc of seq' -sr 5 -se \\"
-  type: boolean
-  inputBinding:
-    prefix: -st
-- id: fp
-  doc: "'sample/videos/air.mp4' \\"
-  type: boolean
-  inputBinding:
-    prefix: -fp
-- id: ft
-  doc: "'video title' -fd 'desc of video' -fr 1"
-  type: boolean
-  inputBinding:
-    prefix: -ft
-- id: st
-  doc: "'my sequence title'"
-  type: boolean
-  inputBinding:
-    prefix: -st
-- id: sp
-  doc: "'sample/seqence/steam/steam_rotation0360.png'"
-  type: boolean
-  inputBinding:
-    prefix: -sp
 outputs: []
 cwlVersion: v1.1
 baseCommand:

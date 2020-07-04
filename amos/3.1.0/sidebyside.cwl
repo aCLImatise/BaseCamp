@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sidebyside.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sidebyside.cwl
 inputs:
 - id: width
   doc: ': line width for each file (default: 50)'

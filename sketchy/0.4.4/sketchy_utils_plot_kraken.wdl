@@ -2,22 +2,31 @@ version 1.0
 
 task SketchyUtilsPlotKraken {
   input {
-    String reportReport
-    String prefixPrefix
-    String levelLevel
-    Int topTop
-    String colorColor
-    String titleTitle
-    Boolean subSub
+    String? report
+    String? prefix
+    String? level
+    Int? top
+    String? color
+    String? title
+    Boolean? sub
   }
   command <<<
     sketchy utils plot-kraken \
-      ~{if defined(reportReport) then ("--report " +  '"' + reportReport + '"') else ""} \
-      ~{if defined(prefixPrefix) then ("--prefix " +  '"' + prefixPrefix + '"') else ""} \
-      ~{if defined(levelLevel) then ("--level " +  '"' + levelLevel + '"') else ""} \
-      ~{if defined(topTop) then ("--top " +  '"' + topTop + '"') else ""} \
-      ~{if defined(colorColor) then ("--color " +  '"' + colorColor + '"') else ""} \
-      ~{if defined(titleTitle) then ("--title " +  '"' + titleTitle + '"') else ""} \
-      ~{true="--sub" false="" subSub}
+      ~{if defined(report) then ("--report " +  '"' + report + '"') else ""} \
+      ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
+      ~{if defined(level) then ("--level " +  '"' + level + '"') else ""} \
+      ~{if defined(top) then ("--top " +  '"' + top + '"') else ""} \
+      ~{if defined(color) then ("--color " +  '"' + color + '"') else ""} \
+      ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
+      ~{true="--sub" false="" sub}
   >>>
+  parameter_meta {
+    report: "Path or file glob to tax report files"
+    prefix: "Output prefix for plot file."
+    level: "Taxonomic level to assess: species [S]"
+    top: "Show top taxonomic levels in plots [10]"
+    color: "Color palette for central donut plot."
+    title: "Row titles for center plot, comma separated string."
+    sub: "Add subplot titles for each column."
+  }
 }

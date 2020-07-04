@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cyvcf2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cyvcf2.cwl
 inputs:
 - id: chrom
   doc: Specify what chromosome to include.
@@ -37,6 +37,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --silent
+- id: vcf_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: or
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

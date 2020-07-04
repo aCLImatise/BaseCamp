@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sonLib_cigarTest.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sonLib_cigarTest.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

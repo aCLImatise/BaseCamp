@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: locarna.cwl
+id: ../../../../home/ubuntu/BiocondaCli/locarna.cwl
 inputs:
-- id: input_1
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: input_2
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: galaxy_xml
   doc: Print galaxy xml wrapper.
   type: boolean
@@ -113,6 +103,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --relaxed-anchors
+- id: input_one
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: input_two
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

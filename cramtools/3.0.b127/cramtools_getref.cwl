@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cramtools_getref.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cramtools_getref.cwl
 inputs:
 - id: destination_file
   doc: Destination file.
@@ -31,6 +31,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --log-level
+- id: main_class
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,43 +1,43 @@
 class: CommandLineTool
-id: bayesTyper_cluster.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bayesTyper_cluster.cwl
 inputs:
-- id: v
+- id: arg_variant_format
   doc: '[ --variant-file ] arg             variant file (vcf format).'
   type: boolean
   inputBinding:
     prefix: -v
-- id: s
+- id: arg_samples_file
   doc: '[ --samples-file ] arg             samples file (see github documentation
     for format specifications).'
   type: boolean
   inputBinding:
     prefix: -s
-- id: g
+- id: arg_reference_genome
   doc: '[ --genome-file ] arg              reference genome file (fasta format).'
   type: boolean
   inputBinding:
     prefix: -g
-- id: d
+- id: arg_decoy_sequences
   doc: '[ --decoy-file ] arg               decoy sequences file (fasta format).'
   type: boolean
   inputBinding:
     prefix: -d
-- id: o
+- id: arg_bayestyper_output
   doc: '[ --output-prefix ] arg (=bayestyper) output prefix.'
   type: boolean
   inputBinding:
     prefix: -o
-- id: r
+- id: arg_unix_time
   doc: '[ --random-seed ] arg (=unix time) seed for pseudo-random number generator.'
   type: boolean
   inputBinding:
     prefix: -r
-- id: p
+- id: arg_number_threads
   doc: '[ --threads ] arg (=1)             number of threads used (+= 2 I/O threads).'
   type: boolean
   inputBinding:
     prefix: -p
-- id: u
+- id: arg_minimum_number
   doc: '[ --min-number-of-unit-variants ] arg (=5000000) minimum number of variants
     per inference unit.'
   type: boolean

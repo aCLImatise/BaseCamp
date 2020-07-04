@@ -1,26 +1,16 @@
 class: CommandLineTool
-id: BuildBlastDB.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/BuildBlastDB.py.cwl
 inputs:
-- id: python
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: build_blast_dbp_y
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: make_blast_db_path
   doc: ''
   type: string
   inputBinding:
-    position: 2
+    position: 0
 - id: sequence_file
   doc: ''
   type: string
   inputBinding:
-    position: 3
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

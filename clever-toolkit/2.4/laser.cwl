@@ -1,29 +1,29 @@
 class: CommandLineTool
-id: laser.cwl
+id: ../../../../home/ubuntu/BiocondaCli/laser.cwl
 inputs:
 - id: extra_sensitive
   doc: Be more sensitive (at the expense of runtime).
   type: boolean
   inputBinding:
     prefix: --extra-sensitive
-- id: t
+- id: threads
   doc: Threads.
   type: string
   inputBinding:
     prefix: -T
-- id: m
+- id: maximum_deletion_length
   doc: 'Maximum deletion length to look for (default: 1000 in regular mode, 10000
     when using --extra-sensitive).'
   type: long
   inputBinding:
     prefix: -M
-- id: s
+- id: length_alignment_seeds
   doc: 'Length of alignment seeds to be mapped by external read mapper (BWA), default:
     40.'
   type: string
   inputBinding:
     prefix: -s
-- id: s
+- id: filename_given_file
   doc: Filename of FASTQ file with split reads (if not given, a temporary such file
     be produced).
   type: string
@@ -46,7 +46,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --recal-options
-- id: w
+- id: minimum_expected_support
   doc: Minimum expected support for a SNP/indel in order to be written to file with
     putative variations. These SNPs/indels will be used for recalibration of alignment
     scores.

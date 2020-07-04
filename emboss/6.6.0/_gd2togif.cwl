@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: _gd2togif.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_gd2togif.cwl
 inputs:
-- id: gd2togif
+- id: gd_two_to_gif
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: filename_gd2
+- id: filename_dot_gd_two
   doc: ''
   type: File
   inputBinding:
     position: 1
-- id: filename_gif
+- id: filename_do_tgif
   doc: ''
   type: File
   inputBinding:

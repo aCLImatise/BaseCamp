@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MosaikBuild.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MosaikBuild.cwl
 inputs:
 - id: fr
   doc: the FASTA reference sequences file
@@ -31,12 +31,12 @@ inputs:
   type: string
   inputBinding:
     prefix: -fq
-- id: fr2
+- id: fr_two
   doc: the FASTA 2nd mate
   type: string
   inputBinding:
     prefix: -fr2
-- id: fq2
+- id: fq_two
   doc: the FASTA BQ 2nd mate
   type: string
   inputBinding:
@@ -46,7 +46,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -assignQual
-- id: q2
+- id: q_two
   doc: the FASTQ 2nd mate
   type: string
   inputBinding:
@@ -61,11 +61,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -split
-- id: il
-  doc: the desired lanes e.g 5678 for lanes 5-8
-  type: string
-  inputBinding:
-    prefix: -il
 - id: ds
   doc: read group description
   type: string

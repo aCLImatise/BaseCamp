@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: tango_assign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tango_assign.cwl
 inputs:
-- id: diamond_results
-  doc: Diamond blastx results
-  type: string
-  inputBinding:
-    position: 0
-- id: outfile
-  doc: Output file
-  type: string
-  inputBinding:
-    position: 1
 - id: format
   doc: Type of file format for diamond results. blast=blast tabular output, 'tango'=blast
     tabular output with taxid in 12th column
@@ -90,6 +80,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --chunksize
+- id: diamond_results
+  doc: Diamond blastx results
+  type: string
+  inputBinding:
+    position: 0
+- id: outfile
+  doc: Output file
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

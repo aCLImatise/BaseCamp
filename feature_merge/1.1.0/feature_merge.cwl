@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: feature_merge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/feature_merge.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

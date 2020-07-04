@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: make_decoy.rb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/make_decoy.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,18 +1,28 @@
 class: CommandLineTool
-id: gmer_counter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gmer_counter.cwl
 inputs:
-- id: arguments
-  doc: ''
+- id: db
+  doc: '- SNP/KMER database file'
   type: string
   inputBinding:
-    position: 0
-- id: sequences
-  doc: ''
+    prefix: -db
+- id: dbb
+  doc: '- binary database file'
   type: string
   inputBinding:
-    position: 1
+    prefix: -dbb
+- id: write_binary_database
+  doc: '- write binary database to file'
+  type: File
+  inputBinding:
+    prefix: -w
+- id: use_bit_integeres
+  doc: '- use 32-bit integeres for counts (default 16-bit)'
+  type: boolean
+  inputBinding:
+    prefix: '-32'
 - id: max_km_ers
-  doc: of kmers per node
+  doc: '- maximum number of kmers per node'
   type: string
   inputBinding:
     prefix: --max_kmers
@@ -42,12 +52,12 @@ inputs:
   inputBinding:
     prefix: --kmers
 - id: compile_index
-  doc: index to database and write it to file
+  doc: '- Add read index to database and write it to file'
   type: File
   inputBinding:
     prefix: --compile_index
 - id: distribution
-  doc: distribution (up to given number)
+  doc: '- print kmer distribution (up to given number)'
   type: string
   inputBinding:
     prefix: --distribution
@@ -61,11 +71,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --prefetch
-- id: d
+- id: increase_debug_level
   doc: '- increase debug level'
   type: boolean
   inputBinding:
     prefix: -D
+- id: arguments
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: sequences_dot_dot_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

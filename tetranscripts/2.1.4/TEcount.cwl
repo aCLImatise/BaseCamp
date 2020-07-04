@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: TEcount.cwl
+id: ../../../../home/ubuntu/BiocondaCli/TEcount.cwl
 inputs:
 - id: bam
   doc: An RNAseq BAM file.

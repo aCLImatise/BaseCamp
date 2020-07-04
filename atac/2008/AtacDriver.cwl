@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: AtacDriver.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/AtacDriver.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

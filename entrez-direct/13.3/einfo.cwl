@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: einfo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/einfo.cwl
 inputs:
 - id: db
   doc: Database name

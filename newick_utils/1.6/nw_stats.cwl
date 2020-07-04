@@ -1,11 +1,11 @@
 class: CommandLineTool
-id: nw_stats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nw_stats.cwl
 inputs:
-- id: f
-  doc: '[lc]: format in lines (l) or columns (c). Default is l.'
+- id: fhh
+  doc: ''
   type: boolean
   inputBinding:
-    prefix: -f
+    prefix: -fHh
 outputs: []
 cwlVersion: v1.1
 baseCommand:

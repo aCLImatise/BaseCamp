@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: pysamstats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pysamstats.cwl
 inputs:
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: type
   doc: 'Type of statistics to print, one of: alignment_binned, baseq, baseq_ext, baseq_ext_strand,
     baseq_strand, coverage, coverage_binned, coverage_ext, coverage_ext_binned, coverage_ext_strand,
@@ -103,27 +98,27 @@ inputs:
   type: string
   inputBinding:
     prefix: --fields
-- id: hdf5_group
+- id: hdf_five_group
   doc: Name of HDF5 group to write to (defaults to the root group).
   type: string
   inputBinding:
     prefix: --hdf5-group
-- id: hdf5_dataset
+- id: hdf_five_dataset
   doc: Name of HDF5 dataset to create (defaults to "data").
   type: string
   inputBinding:
     prefix: --hdf5-dataset
-- id: hdf5_comp_lib
+- id: hdf_five_comp_lib
   doc: HDF5 compression library (defaults to zlib).
   type: string
   inputBinding:
     prefix: --hdf5-complib
-- id: hdf5_comp_level
+- id: hdf_five_comp_level
   doc: HDF5 compression level (defaults to 5).
   type: string
   inputBinding:
     prefix: --hdf5-complevel
-- id: hdf5_chunksize
+- id: hdf_five_chunksize
   doc: Size of chunks in number of bytes (defaults to 2**20).
   type: string
   inputBinding:
@@ -151,6 +146,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-del
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

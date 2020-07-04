@@ -2,22 +2,31 @@ version 1.0
 
 task Mglbabel {
   input {
-    Boolean iI
-    Boolean oO
-    String? babelBabel
-    String? inputInputType
-    String? nameName
-    String? outputOutputType
-    String? nameName
+    Boolean? i
+    Boolean? o
+    String babel
+    String? input_type
+    String var_4
+    String? output_type
+    String var_6
   }
   command <<<
     mglbabel \
-      ~{babelBabel} \
-      ~{true="-i" false="" iI} \
-      ~{true="-o" false="" oO} \
-      ~{inputInputType} \
-      ~{nameName} \
-      ~{outputOutputType} \
-      ~{nameName}
+      ~{babel} \
+      ~{input_type} \
+      ~{var_4} \
+      ~{output_type} \
+      ~{var_6} \
+      ~{true="-i" false="" i} \
+      ~{true="-o" false="" o}
   >>>
+  parameter_meta {
+    i: ""
+    o: ""
+    babel: ""
+    input_type: ""
+    var_4: ""
+    output_type: ""
+    var_6: ""
+  }
 }

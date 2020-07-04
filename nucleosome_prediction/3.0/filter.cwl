@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: filter.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter.pl.cwl
 inputs:
-- id: c
+- id: column_filter_applied
   doc: ':           The column to which the filter is applied (if not specified, then
     if either column passes, the row passes.'
   type: string
   inputBinding:
     prefix: -c
-- id: h
+- id: number_columns_headers
   doc: ':           Number of columns that are headers (default: 1)'
   type: string
   inputBinding:
@@ -102,7 +102,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -pass_from
-- id: u
+- id: use_column_num
   doc: ':           Use column <num> as the value for the the specified filters (e.g.
     for the parameters " -c 1 -u 0 -mins " rows whose value in the second column is
     greater than the value in the first column will pass)'
@@ -124,7 +124,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -skip
-- id: q
+- id: quite_mode_default
   doc: ':                 Quite mode (default is verbose)'
   type: boolean
   inputBinding:

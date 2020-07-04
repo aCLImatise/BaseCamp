@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: eval_multi_gtf.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/eval_multi_gtf.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

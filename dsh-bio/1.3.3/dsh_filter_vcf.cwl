@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dsh_filter_vcf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dsh_filter_vcf.cwl
 inputs:
 - id: about
   doc: display about message [optional]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfanno.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfanno.cwl
 inputs:
 - id: base_path
   doc: optional base-path to prepend to annotation files in the config
@@ -17,7 +17,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -lua
-- id: p
+- id: number_use_default
   doc: number of processes to use. (default 2)
   type: long
   inputBinding:

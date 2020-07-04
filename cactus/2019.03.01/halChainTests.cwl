@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: halChainTests.cwl
+id: ../../../../home/ubuntu/BiocondaCli/halChainTests.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

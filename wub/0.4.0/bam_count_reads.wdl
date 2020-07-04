@@ -1,31 +1,23 @@
 version 1.0
 
-task BamCountReads.py {
+task BamCountReads.pyBam {
   input {
-    Int aA
-    String fF
-    String zZ
-    String kK
-    Boolean gG
-    String pP
-    String tT
-    Boolean qQ
-    Boolean rR
-    String fF
-    String? bamBam
+    Int? a
+    String? f
+    String? z
+    String bam_count_reads_do_tpy
   }
   command <<<
-    bam_count_reads.py \
-      ~{bamBam} \
-      ~{if defined(aA) then ("-a " +  '"' + aA + '"') else ""} \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""} \
-      ~{if defined(zZ) then ("-z " +  '"' + zZ + '"') else ""} \
-      ~{if defined(kK) then ("-k " +  '"' + kK + '"') else ""} \
-      ~{true="-g" false="" gG} \
-      ~{if defined(pP) then ("-p " +  '"' + pP + '"') else ""} \
-      ~{if defined(tT) then ("-t " +  '"' + tT + '"') else ""} \
-      ~{true="-Q" false="" qQ} \
-      ~{true="-R" false="" rR} \
-      ~{if defined(fF) then ("-F " +  '"' + fF + '"') else ""}
+    bam_count_reads.py bam \
+      ~{bam_count_reads_do_tpy} \
+      ~{if defined(a) then ("-a " +  '"' + a + '"') else ""} \
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
+      ~{if defined(z) then ("-z " +  '"' + z + '"') else ""}
   >>>
+  parameter_meta {
+    a: ""
+    f: ""
+    z: ""
+    bam_count_reads_do_tpy: ""
+  }
 }

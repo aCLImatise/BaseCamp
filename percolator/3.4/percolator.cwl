@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: percolator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/percolator.cwl
 inputs:
-- id: other
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: pints_v
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: fido_grid_search_mse_threshold
   doc: Q-value threshold that will be  used in the computation of the MSE  and ROC
     AUC score in the grid  search. Recommended 0.05 for  normal size datasets and
@@ -53,6 +43,21 @@ inputs:
   type: File
   inputBinding:
     prefix: --parameter-file
+- id: x
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -X
+- id: other
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: pin_dot_tsv
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

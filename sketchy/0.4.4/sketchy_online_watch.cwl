@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sketchy_online_watch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sketchy_online_watch.cwl
 inputs:
 - id: directory
   doc: Path to directory to watch [required]  [required]

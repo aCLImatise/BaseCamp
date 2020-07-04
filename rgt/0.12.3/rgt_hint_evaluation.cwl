@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rgt_hint_evaluation.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rgt_hint_evaluation.cwl
 inputs:
 - id: print_roc_curve
   doc: If set, HINT will print the receiver operating characteristic curve.
@@ -11,6 +11,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --print-pr-curve
+- id: tfbs_file
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --tfbs-file
 outputs: []
 cwlVersion: v1.1
 baseCommand:

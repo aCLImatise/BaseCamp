@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: upstream_coords.awk_separation.cwl
+id: ../../../../home/ubuntu/BiocondaCli/upstream_coords.awk.cwl
 inputs:
 - id: len
   doc: ''
@@ -15,4 +15,3 @@ outputs: []
 cwlVersion: v1.1
 baseCommand:
 - upstream-coords.awk
-- separation

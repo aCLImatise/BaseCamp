@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mmseqs_clusthash.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mmseqs_clusthash.cwl
 inputs:
 - id: alph_size
   doc: '3               alphabet size [2,21]                                        '
@@ -18,8 +18,8 @@ inputs:
   inputBinding:
     prefix: --sub-mat
 - id: max_seq_len
-  doc: '65535           Maximum sequence length [1,32768]                           '
-  type: boolean
+  doc: 'Maximum sequence length [1,32768]                           '
+  type: string
   inputBinding:
     prefix: --max-seq-len
 - id: threads
@@ -28,7 +28,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --threads
-- id: v
+- id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'
   type: boolean
   inputBinding:

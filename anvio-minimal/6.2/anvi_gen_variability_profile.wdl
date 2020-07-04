@@ -2,56 +2,82 @@ version 1.0
 
 task AnviGenVariabilityProfile {
   input {
-    String profileProfileDb
-    String contigsContigsDb
-    String structureStructureDb
-    String collectionCollectionName
-    String binBinId
-    File splitsSplitsOfInterest
-    File genesGenesOfInterest
-    String geneGeneCallerIds
-    Boolean onlyOnlyIfStructure
-    File samplesSamplesOfInterest
-    String engineEngine
-    Boolean skipSkipSynonymIty
-    Int numNumPositionsFromEachSplit
-    Float minMinDepartureFromReference
-    Float maxMaxDepartureFromReference
-    Float minMinDepartureFromConsensus
-    Float maxMaxDepartureFromConsensus
-    String minMinOccurrence
-    Int minMinCoverageInEachSample
-    Boolean quinceQuinceMode
-    String outputOutputFile
-    Boolean includeIncludeContigNames
-    Boolean includeIncludeSplitNames
-    Boolean computeComputeGeneCoverageStats
+    String? profile_db
+    String? contigs_db
+    String? structure_db
+    String? collection_name
+    String? bin_id
+    File? splits_of_interest
+    File? genes_of_interest
+    String? gene_caller_ids
+    Boolean? only_if_structure
+    File? samples_of_interest
+    String? engine
+    Boolean? skip_synonym_ity
+    Int? num_positions_from_each_split
+    Float? min_departure_from_reference
+    Float? max_departure_from_reference
+    Float? min_departure_from_consensus
+    Float? max_departure_from_consensus
+    String? min_occurrence
+    Int? min_coverage_in_each_sample
+    Boolean? quince_mode
+    String? output_file
+    Boolean? include_contig_names
+    Boolean? include_split_names
+    Boolean? compute_gene_coverage_stats
   }
   command <<<
     anvi-gen-variability-profile \
-      ~{if defined(profileProfileDb) then ("--profile-db " +  '"' + profileProfileDb + '"') else ""} \
-      ~{if defined(contigsContigsDb) then ("--contigs-db " +  '"' + contigsContigsDb + '"') else ""} \
-      ~{if defined(structureStructureDb) then ("--structure-db " +  '"' + structureStructureDb + '"') else ""} \
-      ~{if defined(collectionCollectionName) then ("--collection-name " +  '"' + collectionCollectionName + '"') else ""} \
-      ~{if defined(binBinId) then ("--bin-id " +  '"' + binBinId + '"') else ""} \
-      ~{if defined(splitsSplitsOfInterest) then ("--splits-of-interest " +  '"' + splitsSplitsOfInterest + '"') else ""} \
-      ~{if defined(genesGenesOfInterest) then ("--genes-of-interest " +  '"' + genesGenesOfInterest + '"') else ""} \
-      ~{if defined(geneGeneCallerIds) then ("--gene-caller-ids " +  '"' + geneGeneCallerIds + '"') else ""} \
-      ~{true="--only-if-structure" false="" onlyOnlyIfStructure} \
-      ~{if defined(samplesSamplesOfInterest) then ("--samples-of-interest " +  '"' + samplesSamplesOfInterest + '"') else ""} \
-      ~{if defined(engineEngine) then ("--engine " +  '"' + engineEngine + '"') else ""} \
-      ~{true="--skip-synonymity" false="" skipSkipSynonymIty} \
-      ~{if defined(numNumPositionsFromEachSplit) then ("--num-positions-from-each-split " +  '"' + numNumPositionsFromEachSplit + '"') else ""} \
-      ~{if defined(minMinDepartureFromReference) then ("--min-departure-from-reference " +  '"' + minMinDepartureFromReference + '"') else ""} \
-      ~{if defined(maxMaxDepartureFromReference) then ("--max-departure-from-reference " +  '"' + maxMaxDepartureFromReference + '"') else ""} \
-      ~{if defined(minMinDepartureFromConsensus) then ("--min-departure-from-consensus " +  '"' + minMinDepartureFromConsensus + '"') else ""} \
-      ~{if defined(maxMaxDepartureFromConsensus) then ("--max-departure-from-consensus " +  '"' + maxMaxDepartureFromConsensus + '"') else ""} \
-      ~{if defined(minMinOccurrence) then ("--min-occurrence " +  '"' + minMinOccurrence + '"') else ""} \
-      ~{if defined(minMinCoverageInEachSample) then ("--min-coverage-in-each-sample " +  '"' + minMinCoverageInEachSample + '"') else ""} \
-      ~{true="--quince-mode" false="" quinceQuinceMode} \
-      ~{if defined(outputOutputFile) then ("--output-file " +  '"' + outputOutputFile + '"') else ""} \
-      ~{true="--include-contig-names" false="" includeIncludeContigNames} \
-      ~{true="--include-split-names" false="" includeIncludeSplitNames} \
-      ~{true="--compute-gene-coverage-stats" false="" computeComputeGeneCoverageStats}
+      ~{if defined(profile_db) then ("--profile-db " +  '"' + profile_db + '"') else ""} \
+      ~{if defined(contigs_db) then ("--contigs-db " +  '"' + contigs_db + '"') else ""} \
+      ~{if defined(structure_db) then ("--structure-db " +  '"' + structure_db + '"') else ""} \
+      ~{if defined(collection_name) then ("--collection-name " +  '"' + collection_name + '"') else ""} \
+      ~{if defined(bin_id) then ("--bin-id " +  '"' + bin_id + '"') else ""} \
+      ~{if defined(splits_of_interest) then ("--splits-of-interest " +  '"' + splits_of_interest + '"') else ""} \
+      ~{if defined(genes_of_interest) then ("--genes-of-interest " +  '"' + genes_of_interest + '"') else ""} \
+      ~{if defined(gene_caller_ids) then ("--gene-caller-ids " +  '"' + gene_caller_ids + '"') else ""} \
+      ~{true="--only-if-structure" false="" only_if_structure} \
+      ~{if defined(samples_of_interest) then ("--samples-of-interest " +  '"' + samples_of_interest + '"') else ""} \
+      ~{if defined(engine) then ("--engine " +  '"' + engine + '"') else ""} \
+      ~{true="--skip-synonymity" false="" skip_synonym_ity} \
+      ~{if defined(num_positions_from_each_split) then ("--num-positions-from-each-split " +  '"' + num_positions_from_each_split + '"') else ""} \
+      ~{if defined(min_departure_from_reference) then ("--min-departure-from-reference " +  '"' + min_departure_from_reference + '"') else ""} \
+      ~{if defined(max_departure_from_reference) then ("--max-departure-from-reference " +  '"' + max_departure_from_reference + '"') else ""} \
+      ~{if defined(min_departure_from_consensus) then ("--min-departure-from-consensus " +  '"' + min_departure_from_consensus + '"') else ""} \
+      ~{if defined(max_departure_from_consensus) then ("--max-departure-from-consensus " +  '"' + max_departure_from_consensus + '"') else ""} \
+      ~{if defined(min_occurrence) then ("--min-occurrence " +  '"' + min_occurrence + '"') else ""} \
+      ~{if defined(min_coverage_in_each_sample) then ("--min-coverage-in-each-sample " +  '"' + min_coverage_in_each_sample + '"') else ""} \
+      ~{true="--quince-mode" false="" quince_mode} \
+      ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
+      ~{true="--include-contig-names" false="" include_contig_names} \
+      ~{true="--include-split-names" false="" include_split_names} \
+      ~{true="--compute-gene-coverage-stats" false="" compute_gene_coverage_stats}
   >>>
+  parameter_meta {
+    profile_db: "Anvi'o profile database"
+    contigs_db: "Anvi'o contigs database generated by 'anvi-gen- contigs'"
+    structure_db: "Anvi'o structure database."
+    collection_name: "Collection name."
+    bin_id: "Bin name you are interested in."
+    splits_of_interest: "A file with split names. There should be only one column in the file, and each line should correspond to a unique split name."
+    genes_of_interest: "A file with anvi'o gene caller IDs. There should be only one column in the file, and each line should correspond to a unique gene caller id (without a column header)."
+    gene_caller_ids: "Gene caller ids. Multiple of them can be declared separated by a delimiter (the default is a comma). In anvi-gen-variability-profile, if you declare nothing you will get all genes matching your other filtering criteria. In other programs, you may get everything, nothing, or an error. It really depends on the situation. Fortunately, mistakes are cheap, so it's worth a try."
+    only_if_structure: "If provided, your genes of interest will be further subset to only include genes with structures in your structure database, and therefore must be supplied in conjunction with a structure database, i.e. `-s <your_structure_database>`. If you did not specify genes of interest, ALL genes will be subset to those that have structures."
+    samples_of_interest: "A file with samples names. There should be only one column in the file, and each line should correspond to a unique sample name (without a column header)."
+    engine: "Variability engine. The default is 'NT'."
+    skip_synonym_ity: "Computing synonymity can be an expensive operation for large data sets. Provide this flag to skip computing synonymity. It only makes sense to provide this flag when using --engine CDN."
+    num_positions_from_each_split: "Each split may have one or more variable positions. By default, anvi'o will report every SNV position found in a given split. This parameter will help you to define a cutoff for the maximum number of SNVs to be reported from a split (if the number of SNVs is more than the number you declare using this parameter, the positions will be randomly subsampled)."
+    min_departure_from_reference: "Takes a value between 0 and 1, where 1 is maximum divergence from the reference. Default is 0.000000. The reference here observation that corresponds to a given position in the mapped context."
+    max_departure_from_reference: "Similar to '--min-departure-from-reference', but defines an upper limit for divergence. The default is 1.000000."
+    min_departure_from_consensus: "Takes a value between 0 and 1, where 1 is maximum divergence from the consensus for a given position. The default is 0.000000. The consensus is the most frequent observation at a given position."
+    max_departure_from_consensus: "Similar to '--min-departure-from-consensus', but defines an upper limit for divergence. The default is 1.000000."
+    min_occurrence: "Minimum number of samples a nucleotide position should be reported as variable. Default is 1. If you set it to 2, for instance, each eligible variable position will be expected to appear in at least two samples, which will reduce the impact of stochastic, or unintelligible variable positions."
+    min_coverage_in_each_sample: "Minimum coverage of a given variable nucleotide position in all samples. If a nucleotide position is covered less than this value even in one sample, it will be removed from the analysis. Default is 0."
+    quince_mode: "The default behavior is to report base frequencies of nucleotide positions only if there is any variation reported during profiling (which by default uses some heuristics to minimize the impact of error-driven variation). So, if there are 10 samples, and a given position has been reported as a variable site during profiling in only one of those samples, there will be no information will be stored in the database for the remaining 9. When this flag is used, we go back to each sample, and report base frequencies for each sample at this position even if they do not vary. It will take considerably longer to report when this flag is on, and the use of it will increase the file size dramatically, however it is inevitable for some statistical approaches (as well as for some beautiful visualizations)."
+    output_file: "File path to store results."
+    include_contig_names: "Use this flag if you would like contig names for each variable position to be included in the output file as a column. By default, we do not include contig names since they can practically double the output file size without any actual benefit in most cases."
+    include_split_names: "Use this flag if you would like split names for each variable position to be included in the output file as a column."
+    compute_gene_coverage_stats: "If provided, gene coverage statistics will be appended for each entry in variability report. This is very useful information, but will not be included by default because it is an expensive operation, and may take some additional time."
+  }
 }

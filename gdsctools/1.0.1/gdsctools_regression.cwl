@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: gdsctools_regression.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gdsctools_regression.cwl
 inputs:
-- id: input_ic50
+- id: input_ic_five_zero
   doc: A file in TSV format with IC50s. First column should be the COSMIC identifiers
     Following columns contain the IC50s for a set of drugs. The header must be COSMIC_ID,
     Drug_1_IC50, Drug_2_IC50, ...

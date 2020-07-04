@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: RNALalifold.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNALalifold.cwl
 inputs:
-- id: file_1aln
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
-- id: detailed_help
-  doc: Print help, including all details and hidden options, and exit
-  type: boolean
-  inputBinding:
-    prefix: --detailed-help
-- id: full_help
-  doc: Print help, including hidden options, and exit
-  type: boolean
-  inputBinding:
-    prefix: --full-help
 - id: verbose
   doc: Be verbose. (default=off)
   type: boolean
@@ -115,6 +100,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gquad
+- id: temp
+  doc: Rescale energy parameters to a temperature of temp C. Default is 37C.
+  type: string
+  inputBinding:
+    prefix: --temp
+- id: no_tetra
+  doc: Do not include special tabulated stabilizing energies for tri-, tetra- and
+    hexaloop hairpins. Mostly for testing. (default=off)
+  type: boolean
+  inputBinding:
+    prefix: --noTetra
 - id: dangles
   doc: How to treat "dangling end" energies for bases adjacent to helices in free
     ends and multi-loops (default=`2')
@@ -165,6 +161,14 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ribosum_scoring
+- id: structures_dot
+  doc: -h, --help                    Print help and exit --detailed-help           Print
+    help, including all details and hidden options, and exit --full-help               Print
+    help, including hidden options, and exit -V, --version                 Print version
+    and exit
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

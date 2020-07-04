@@ -2,18 +2,25 @@ version 1.0
 
 task Trmap {
   input {
-    Boolean sS
-    String oO
-    Boolean strictStrictMatch
-    String? refRefGff
-    String? queryQueryGff
+    Boolean? s
+    String? o
+    Boolean? strict_match
+    String ref_gff
+    String query_gff
   }
   command <<<
     trmap \
-      ~{refRefGff} \
-      ~{true="-S" false="" sS} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{true="--strict-match" false="" strictStrictMatch} \
-      ~{queryQueryGff}
+      ~{ref_gff} \
+      ~{query_gff} \
+      ~{true="-S" false="" s} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{true="--strict-match" false="" strict_match}
   >>>
+  parameter_meta {
+    s: ""
+    o: ""
+    strict_match: ""
+    ref_gff: ""
+    query_gff: ""
+  }
 }

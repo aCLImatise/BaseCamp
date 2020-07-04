@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: bioformats_ncbirenameseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bioformats_ncbirenameseq.cwl
 inputs:
-- id: command
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: fast_a
   doc: the input file is of the FASTA format
   type: boolean
@@ -102,6 +97,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --output_table
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: bio_formats
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: command
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

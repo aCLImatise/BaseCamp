@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: chromosomer_fragmentmapstat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chromosomer_fragmentmapstat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

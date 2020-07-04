@@ -1,7 +1,14 @@
 version 1.0
 
 task LAsplit {
+  input {
+    Boolean? v
+  }
   command <<<
-    LAsplit
+    LAsplit \
+      ~{true="-v" false="" v}
   >>>
+  parameter_meta {
+    v: ""
+  }
 }

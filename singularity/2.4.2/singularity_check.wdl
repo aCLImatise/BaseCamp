@@ -2,16 +2,25 @@ version 1.0
 
 task SingularityCheck {
   input {
-    Boolean lowLow
-    Boolean medMed
-    Boolean highHigh
-    Boolean tagTag
+    Boolean? low
+    Boolean? med
+    Boolean? high
+    Boolean? tag
+    String singularity
   }
   command <<<
     singularity check \
-      ~{true="--low" false="" lowLow} \
-      ~{true="--med" false="" medMed} \
-      ~{true="--high" false="" highHigh} \
-      ~{true="--tag" false="" tagTag}
+      ~{singularity} \
+      ~{true="--low" false="" low} \
+      ~{true="--med" false="" med} \
+      ~{true="--high" false="" high} \
+      ~{true="--tag" false="" tag}
   >>>
+  parameter_meta {
+    low: "Specify low threshold (all checks, default) "
+    med: "Perform medium and high checks"
+    high: "Perform only checks at level high"
+    tag: "tag to filter checks. default is \"default\"                       Available: default, security, docker, clean"
+    singularity: ""
+  }
 }

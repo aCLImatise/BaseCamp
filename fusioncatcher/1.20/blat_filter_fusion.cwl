@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: blat_filter_fusion.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blat_filter_fusion.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

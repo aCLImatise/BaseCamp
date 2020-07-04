@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nr_ORFs_gff3.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nr_ORFs_gff3.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fasta_utils_split.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fasta_utils_split.cwl
 inputs:
 - id: prefix
   doc: 'Prefix for the file name in output  [default: split]'
@@ -16,6 +16,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gzip
+- id: fast_a_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

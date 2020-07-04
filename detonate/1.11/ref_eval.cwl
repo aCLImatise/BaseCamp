@@ -1,108 +1,6 @@
 class: CommandLineTool
-id: ref_eval.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ref_eval.cwl
 inputs:
-- id: b
-  doc: '-----------------     ------------- /    \   /  \   /  | / | /      \ /    \
-    /   |/  | /  x     /  y   \  z / w | /        / \    / \  /|   |'
-  type: string
-  inputBinding:
-    position: 0
-- id: a
-  doc: '---------   --------- --------- a0          a1        a2'
-  type: string
-  inputBinding:
-    position: 1
-- id: b
-  doc: '------------------   -------------- /        /\ \   /  | / | /        /  \
-    \ /   |/  | /  x     /    \*\  z / w |        * = y - x /        /      / \  /|   |'
-  type: string
-  inputBinding:
-    position: 0
-- id: a
-  doc: '---------   --------- --------- a0          a1        a2'
-  type: string
-  inputBinding:
-    position: 1
-- id: b
-  doc: '-----------------    -------------- /        /      /    /|| /        /      /    /
-    || /  x     /      /  z /  *|        * = w - z /        /      /    /   ||'
-  type: string
-  inputBinding:
-    position: 0
-- id: a
-  doc: '---------   --------- --------- a0          a1        a2'
-  type: string
-  inputBinding:
-    position: 1
-- id: b
-  doc: '-----[--------]--    [----][]------ /        /      /    /|| ...'
-  type: string
-  inputBinding:
-    position: 0
-- id: b
-  doc: '-----------------     ------------- /    \   /  \   /  | / | /      \ /    \
-    /   |/  | /  x     /  y   \  z / w | /        / \    / \  /|   |'
-  type: string
-  inputBinding:
-    position: 0
-- id: a
-  doc: '---------   --------- --------- a0          a1        a2'
-  type: string
-  inputBinding:
-    position: 1
-- id: b
-  doc: '------------------   -------------- /        /\ \   /  | / | /        /  \
-    \ /   |/  | /  x     /    \*\  z / w |        * = y - x /        /      / \  /|   |'
-  type: string
-  inputBinding:
-    position: 0
-- id: a
-  doc: '---------   --------- --------- a0          a1        a2'
-  type: string
-  inputBinding:
-    position: 1
-- id: b
-  doc: '------------------   -------------- /        /\ \   /  |   | /        /  \
-    \ /  /|   | /  x     /    \*\ +/ | w |        * = y - x /        /      / \/  |   |        +
-    = z - w'
-  type: string
-  inputBinding:
-    position: 0
-- id: a
-  doc: '---------   --------- --------- a0          a1        a2'
-  type: string
-  inputBinding:
-    position: 1
-- id: b
-  doc: '------------------   -------------- /        /\ \  +/  |   | /        /  \*\//   |   |
-    /  x     /    \ \    | w |        * = y - x /        /     // \   |   |        +
-    = (z - w) - (y - x)'
-  type: string
-  inputBinding:
-    position: 0
-- id: a
-  doc: '---------   --------- --------- a0          a1        a2'
-  type: string
-  inputBinding:
-    position: 1
-- id: b
-  doc: '-----[--------][-]   []-[---]------ /        /\ \  //  |   |        * = y
-    - x x         *   +     w          + = (z - w) - (y - x) ...'
-  type: string
-  inputBinding:
-    position: 0
-- id: g
-  doc: '11111'
-  type: string
-  inputBinding:
-    position: 0
-- id: where
-  doc: '* $n_A$ is the total number of bases in the assembly $A$, * $N$ is the total
-    number of reads, as specified by --num-reads, and * $L$ is the read length, as
-    specified by --readlen.'
-  type: string
-  inputBinding:
-    position: 0
 - id: scores
   doc: 'The groups of scores to compute, separated by commas (e.g., --scores=nucl,contig,kc).
     It is more efficient to compute all the scores you are interested in using one
@@ -293,21 +191,19 @@ inputs:
   type: string
   inputBinding:
     prefix: --trace
-- id: strand_specific
-  doc: present.
+- id: b
+  doc: '-----[--------][-]   []-[---]------ /        /\ \  //  |   |        * = y
+    - x x         *   +     w          + = (z - w) - (y - x) ...'
   type: string
   inputBinding:
-    prefix: --strand-specific
-- id: max_frac_in_del
-  doc: (q.v.\ for the definition of "fraction indel").
-  type: boolean
-  inputBinding:
-    prefix: --max-frac-indel
-- id: strand_specific
-  doc: present.
+    position: 0
+- id: where
+  doc: '* $n_A$ is the total number of bases in the assembly $A$, * $N$ is the total
+    number of reads, as specified by --num-reads, and * $L$ is the read length, as
+    specified by --readlen.'
   type: string
   inputBinding:
-    prefix: --strand-specific
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

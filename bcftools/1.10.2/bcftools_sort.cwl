@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: bcftools_sort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcftools_sort.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: file_vcf
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
 - id: max_mem
   doc: '[kMG]    maximum memory to use [768M]'
   type: double
@@ -22,9 +12,9 @@ inputs:
   inputBinding:
     prefix: --output-file
 - id: output_type
-  doc: '<b|u|z|v>   b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v:
-    uncompressed VCF [v]'
-  type: boolean
+  doc: 'b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed
+    VCF [v]'
+  type: string
   inputBinding:
     prefix: --output-type
 - id: temp_dir
@@ -32,6 +22,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --temp-dir
+- id: file_dot_vcf
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

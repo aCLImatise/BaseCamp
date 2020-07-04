@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: msa2vcf.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/msa2vcf.py.cwl
 inputs:
-- id: input
-  doc: Input Fasta MSA file
-  type: string
-  inputBinding:
-    position: 0
-- id: output
-  doc: Output VCF file
-  type: string
-  inputBinding:
-    position: 1
 - id: reference_chr
   doc: Reference chromosome
   type: string
@@ -31,6 +21,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --bcftools
+- id: input
+  doc: Input Fasta MSA file
+  type: string
+  inputBinding:
+    position: 0
+- id: output
+  doc: Output VCF file
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

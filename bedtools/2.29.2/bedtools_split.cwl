@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: bedtools_split.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedtools_split.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: i
   doc: ''
   type: string

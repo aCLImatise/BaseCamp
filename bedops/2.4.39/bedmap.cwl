@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bedmap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedmap.cwl
 inputs:
 - id: chrom
   doc: 'Jump to and process data for given <chromosome> only.                   '
@@ -271,6 +271,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --indicator
+- id: process_flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: overlap_option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bazam.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bazam.cwl
 inputs:
 - id: bam
   doc: BAM file to extract read pairs from
@@ -26,7 +26,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --regions
-- id: n
+- id: concurrency_parameter
   doc: Concurrency parameter (4)
   type: string
   inputBinding:
@@ -36,7 +36,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -namepos
-- id: o
+- id: output_file
   doc: Output file
   type: string
   inputBinding:
@@ -46,22 +46,32 @@ inputs:
   type: string
   inputBinding:
     prefix: -pad
-- id: r1
+- id: r_one
   doc: Output for R1 if extracting FASTQ in separate files
   type: string
   inputBinding:
     prefix: -r1
-- id: r2
+- id: r_two
   doc: Output for R2 if extracting FASTQ in separate files
   type: string
   inputBinding:
     prefix: -r2
-- id: s
+- id: sharding_factor_format
   doc: 'Sharding factor: format <n>,<N>: output only reads belonging to shard n of
     N'
   type: string
   inputBinding:
     prefix: -s
+- id: jar
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -jar
+- id: java
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

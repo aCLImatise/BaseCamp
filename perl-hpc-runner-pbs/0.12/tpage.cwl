@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tpage.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tpage.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

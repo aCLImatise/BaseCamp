@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: maf_to_int_seqs.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maf_to_int_seqs.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

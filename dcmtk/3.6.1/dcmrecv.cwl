@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: dcmrecv.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmrecv.cwl
 inputs:
-- id: port
-  doc: tcp/ip port number to listen on
-  type: string
-  inputBinding:
-    position: 0
 - id: xf
   doc: '--config-file          [f]ilename, [p]rofile: string use profile p from configuration
     file f'
@@ -61,6 +56,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ignore
+- id: port
+  doc: tcp/ip port number to listen on
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

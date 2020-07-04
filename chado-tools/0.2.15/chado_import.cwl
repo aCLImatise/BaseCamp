@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: chado_import.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chado_import.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

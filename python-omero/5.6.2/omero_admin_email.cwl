@@ -1,17 +1,6 @@
 class: CommandLineTool
-id: omero_admin_email.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_admin_email.cwl
 inputs:
-- id: subject
-  doc: Required subject for the mail
-  type: string
-  inputBinding:
-    position: 0
-- id: text
-  doc: All further arguments are combined to form the body. stdin if none or '-' is
-    given.
-  type: string
-  inputBinding:
-    position: 1
 - id: everyone
   doc: Contact everyone in the system regardless of other arguments.
   type: boolean
@@ -48,6 +37,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --group-name
+- id: subject
+  doc: Required subject for the mail
+  type: string
+  inputBinding:
+    position: 0
+- id: text
+  doc: All further arguments are combined to form the body. stdin if none or '-' is
+    given.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

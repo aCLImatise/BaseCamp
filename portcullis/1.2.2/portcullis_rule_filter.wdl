@@ -2,26 +2,40 @@ version 1.0
 
 task PortcullisRuleFilter {
   input {
-    String jsonJson
-    Boolean posPosJson
-    Boolean negNegJson
-    String genuineGenuine
-    String prefixPrefix
-    Boolean saveSaveLayers
-    Boolean saveSaveFailed
-    Boolean verboseVerbose
-    String? inputInput
+    String script
+    String to
+    String automate
+    String csv
+    String filtering
+    String based
+    String on
+    String a
+    String json
+    String configuration_dot
   }
   command <<<
     portcullis_rule_filter \
-      ~{inputInput} \
-      ~{if defined(jsonJson) then ("--json " +  '"' + jsonJson + '"') else ""} \
-      ~{true="--pos_json" false="" posPosJson} \
-      ~{true="--neg_json" false="" negNegJson} \
-      ~{if defined(genuineGenuine) then ("--genuine " +  '"' + genuineGenuine + '"') else ""} \
-      ~{if defined(prefixPrefix) then ("--prefix " +  '"' + prefixPrefix + '"') else ""} \
-      ~{true="--save_layers" false="" saveSaveLayers} \
-      ~{true="--save_failed" false="" saveSaveFailed} \
-      ~{true="--verbose" false="" verboseVerbose}
+      ~{script} \
+      ~{to} \
+      ~{automate} \
+      ~{csv} \
+      ~{filtering} \
+      ~{based} \
+      ~{on} \
+      ~{a} \
+      ~{json} \
+      ~{configuration_dot}
   >>>
+  parameter_meta {
+    script: ""
+    to: ""
+    automate: ""
+    csv: ""
+    filtering: ""
+    based: ""
+    on: ""
+    a: ""
+    json: ""
+    configuration_dot: ""
+  }
 }

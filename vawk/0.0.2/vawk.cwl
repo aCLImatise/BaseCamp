@@ -1,23 +1,23 @@
 class: CommandLineTool
-id: vawk.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vawk.cwl
 inputs:
-- id: v
-  doc: ''
+- id: var
+  doc: 'declare an external variable (e.g.: SIZE=10000)'
   type: string
   inputBinding:
-    prefix: -v
-- id: c
-  doc: ''
+    prefix: --var
+- id: col
+  doc: column of the INFO field [8]
   type: string
   inputBinding:
-    prefix: -c
+    prefix: --col
 - id: header
-  doc: ''
+  doc: print VCF header
   type: boolean
   inputBinding:
     prefix: --header
 - id: debug
-  doc: ''
+  doc: debugging level verbosity
   type: boolean
   inputBinding:
     prefix: --debug

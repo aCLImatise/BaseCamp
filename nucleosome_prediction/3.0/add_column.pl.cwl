@@ -1,23 +1,23 @@
 class: CommandLineTool
-id: add_column.pl.bak.cwl
+id: ../../../../home/ubuntu/BiocondaCli/add_column.pl.bak.cwl
 inputs:
-- id: b
+- id: add_column_add
   doc: ':                 add the column as the first in the file (default: add at
     the end)'
   type: boolean
   inputBinding:
     prefix: -b
-- id: c
+- id: add_column_column
   doc: ':           add the column before column number <num>'
   type: string
   inputBinding:
     prefix: -c
-- id: n
+- id: add_column_counter
   doc: add a column counter, starting at num.
   type: string
   inputBinding:
     prefix: -n
-- id: s
+- id: add_column_specified_string
   doc: add a column with the specified string
   type: string
   inputBinding:
@@ -72,7 +72,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -quant
-- id: f
+- id: add_column_specified_file
   doc: ':          add the column from the specified file'
   type: string
   inputBinding:

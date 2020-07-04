@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _infoalign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_infoalign.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

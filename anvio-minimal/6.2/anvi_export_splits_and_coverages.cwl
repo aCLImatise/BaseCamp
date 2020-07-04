@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_export_splits_and_coverages.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_export_splits_and_coverages.cwl
 inputs:
 - id: profile_db
   doc: Anvi'o profile database
@@ -35,7 +35,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --report-contigs
-- id: use_q2q3_coverages
+- id: use_q_two_q_three_coverages
   doc: By default this program reports the mean coverage of a split (or contig, see
     --report-contigs) for each sample. By using this flag, you can report the mean
     Q2Q3 coverage by excluding 25 percent of the nucleotide positions with the smallest

@@ -2,20 +2,28 @@ version 1.0
 
 task SlivarDdc {
   input {
-    String chromChrom
-    String infoInfoFields
-    String fmtFmtFields
-    String htmlHtml
-    String? vcfVcf
-    String? pedPed
+    String? chrom
+    String? info_fields
+    String? fmt_fields
+    String? html
+    String vcf
+    String ped
   }
   command <<<
     slivar ddc \
-      ~{vcfVcf} \
-      ~{if defined(chromChrom) then ("--chrom " +  '"' + chromChrom + '"') else ""} \
-      ~{if defined(infoInfoFields) then ("--info-fields " +  '"' + infoInfoFields + '"') else ""} \
-      ~{if defined(fmtFmtFields) then ("--fmt-fields " +  '"' + fmtFmtFields + '"') else ""} \
-      ~{if defined(htmlHtml) then ("--html " +  '"' + htmlHtml + '"') else ""} \
-      ~{pedPed}
+      ~{vcf} \
+      ~{ped} \
+      ~{if defined(chrom) then ("--chrom " +  '"' + chrom + '"') else ""} \
+      ~{if defined(info_fields) then ("--info-fields " +  '"' + info_fields + '"') else ""} \
+      ~{if defined(fmt_fields) then ("--fmt-fields " +  '"' + fmt_fields + '"') else ""} \
+      ~{if defined(html) then ("--html " +  '"' + html + '"') else ""}
   >>>
+  parameter_meta {
+    chrom: "limit to this chromosome only. use '-3' for all chromosomes (in the case of exome data) (default: chr15)"
+    info_fields: "comma-delimited list of info fields"
+    fmt_fields: "comma-delimited list of sample fields"
+    html: "path to output file (default: slivar-ddc.html)"
+    vcf: ""
+    ped: ""
+  }
 }

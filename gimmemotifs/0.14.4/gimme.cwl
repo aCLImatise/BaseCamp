@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gimme.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gimme.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

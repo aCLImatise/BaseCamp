@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tximport.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tximport.R.cwl
 inputs:
 - id: files
   doc: Text file containing a list of filenames for the transcript-level abundances
@@ -57,7 +57,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --countsFromAbundance
-- id: tx2gene
+- id: tx_two_gene
   doc: A two-column tab-delimited text file linking transcript id (column 1) to gene
     id (column 2). This argument is required for gene-level summarization for methods
     that provides transcript-level estimates only (kallisto, Salmon, Sailfish)

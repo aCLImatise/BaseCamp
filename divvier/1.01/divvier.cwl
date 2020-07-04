@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: divvier.cwl
+id: ../../../../home/ubuntu/BiocondaCli/divvier.cwl
 inputs:
 - id: divvy
   doc: ': do standard divvying (DEFAULT)'

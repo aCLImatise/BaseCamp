@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastq_rename.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq_rename.cwl
 inputs:
 - id: prefix
   doc: ': add prefix to each readname'

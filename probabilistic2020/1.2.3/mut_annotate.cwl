@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mut_annotate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mut_annotate.cwl
 inputs:
 - id: log_level
   doc: Write a log file (--log-level=DEBUG for debug mode, --log-level=INFO for info

@@ -1,22 +1,17 @@
 class: CommandLineTool
-id: dcmpsprt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmpsprt.cwl
 inputs:
-- id: dcm_file_in
-  doc: DICOM image file(s) to be printed
-  type: string
-  inputBinding:
-    position: 0
-- id: q
+- id: _quiet_quiet
   doc: --quiet                quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose              verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug                debug mode, print debug information
   type: boolean
   inputBinding:
@@ -32,19 +27,19 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lc
-- id: c
+- id: _config_ilename
   doc: '--config               [f]ilename: string process using settings from configuration
     file f'
   type: boolean
   inputBinding:
     prefix: -c
-- id: p
+- id: _printer_ame
   doc: '--printer              [n]ame: string (default: 1st printer in cfg file) select
     printer with identifier n from cfg file'
   type: boolean
   inputBinding:
     prefix: -p
-- id: s
+- id: _spool_spool
   doc: --spool                spool print job to DICOM printer --nospool              do
     not spool print job to DICOM printer (default)
   type: boolean
@@ -171,7 +166,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -pl
-- id: l
+- id: _layout_alue
   doc: "--layout               [c]olumns [r]ows: integer (default: 1 1) use 'STANDARD\\\
     c,r' image display format --filmsize             [v]alue: string set film size\
     \ ID to v --magnification        [v]alue: string set magnification type to v --smoothing\
@@ -189,6 +184,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -l
+- id: dcm_file_in
+  doc: DICOM image file(s) to be printed
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

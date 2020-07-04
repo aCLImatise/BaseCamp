@@ -2,16 +2,16 @@ version 1.0
 
 task N50 {
   input {
-    String? typeType
-    String? n50N50
-    String? fullFull
-    String? manualManual
+    String full
+    String manual
   }
   command <<<
     n50 \
-      ~{typeType} \
-      ~{n50N50} \
-      ~{fullFull} \
-      ~{manualManual}
+      ~{full} \
+      ~{manual}
   >>>
+  parameter_meta {
+    full: ""
+    manual: ""
+  }
 }

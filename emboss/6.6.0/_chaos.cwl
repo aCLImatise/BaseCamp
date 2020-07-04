@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _chaos.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_chaos.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

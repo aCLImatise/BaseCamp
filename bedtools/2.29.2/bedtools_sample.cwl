@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: bedtools_sample.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedtools_sample.cwl
 inputs:
-- id: n
+- id: number_generate_default
   doc: The number of records to generate. - Default = 1,000,000. - (INTEGER)
   type: boolean
   inputBinding:
@@ -17,7 +17,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ubam
-- id: s
+- id: require_same_strandedness
   doc: Require same strandedness.  That is, only give records that have the same strand.
     Use '-s forward' or '-s reverse' for forward or reverse strand records, respectively.
     - By default, records are reported without respect to strand.
@@ -34,11 +34,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -bed
-- id: header
-  doc: the header from the A file prior to results.
-  type: string
-  inputBinding:
-    prefix: -header
 - id: no_buf
   doc: Disable buffered output. Using this option will cause each line of output to
     be printed as it is generated, rather than saved in a buffer. This will make printing
@@ -55,6 +50,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -iobuf
+- id: i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
 outputs: []
 cwlVersion: v1.1
 baseCommand:

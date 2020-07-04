@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: tedna.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tedna.cwl
 inputs:
+- id: file_one
+  doc: First FASTQ file.
+  type: boolean
+  inputBinding:
+    prefix: --file1
+- id: file_two
+  doc: Second FASTQ file.
+  type: boolean
+  inputBinding:
+    prefix: --file2
 - id: insert
   doc: Insert size.
   type: boolean

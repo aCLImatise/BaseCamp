@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastq_screen.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq_screen.cwl
 inputs:
 - id: add_genome
   doc: "Edits the file 'fastq_screen.conf' (in the folder where this script is saved)\
@@ -33,7 +33,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --bowtie
-- id: bowtie2
+- id: bowtie_two
   doc: 'Specify extra parameters to be passed to Bowtie 2.  These parameters should
     be quoted to clearly  delimit Bowtie 2 parameters from FastQ Screen  parameters.
     You should not try to use this option  to override the normal search or reporting
@@ -87,7 +87,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --get_genomes
-- id: illumina_1_3
+- id: illumina_one_three
   doc: Assume that the quality values are in encoded in Illumina v1.3 format. Defaults
     to Sanger format if this flag is not specified.
   type: boolean

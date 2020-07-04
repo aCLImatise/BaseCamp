@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: distruct.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/distruct.py.cwl
 inputs:
-- id: k
+- id: number_of_populations
   doc: (number of populations)
   type: long
   inputBinding:
@@ -26,6 +26,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --title
+- id: python
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

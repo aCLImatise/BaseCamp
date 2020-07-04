@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: mb_xxmotif.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mb_xxmotif.cwl
 inputs:
-- id: input_file
-  doc: PAR-CLIP file *.table
-  type: string
-  inputBinding:
-    position: 0
-- id: genome
-  doc: path to genome
-  type: string
-  inputBinding:
-    position: 1
-- id: outdir
-  doc: output directory
-  type: string
-  inputBinding:
-    position: 2
-- id: prefix
-  doc: prefix
-  type: string
-  inputBinding:
-    position: 3
 - id: neg_set
   doc: set path to negative set if available.
   type: string
@@ -67,6 +47,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --keep-tmp-files
+- id: input_file
+  doc: PAR-CLIP file *.table
+  type: string
+  inputBinding:
+    position: 0
+- id: genome
+  doc: path to genome
+  type: string
+  inputBinding:
+    position: 1
+- id: outdir
+  doc: output directory
+  type: string
+  inputBinding:
+    position: 2
+- id: prefix
+  doc: prefix
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

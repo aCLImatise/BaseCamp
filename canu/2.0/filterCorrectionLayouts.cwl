@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: filterCorrectionLayouts.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filterCorrectionLayouts.cwl
 inputs:
-- id: s
+- id: input_reads
   doc: input reads
   type: string
   inputBinding:
     prefix: -S
-- id: c
+- id: input_correction_layouts
   doc: input correction layouts
   type: string
   inputBinding:
     prefix: -C
-- id: r
+- id: output_ascii_list
   doc: output ascii list of read IDs to correct also creates asm.readsToCorrect.stats
     and asm.readsToCorrect.log
   type: string
@@ -27,12 +27,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -cl
-- id: g
+- id: estimated_genome_size
   doc: estimated genome size
   type: boolean
   inputBinding:
     prefix: -g
-- id: c
+- id: desired_coverage_corrected
   doc: desired coverage in corrected reads
   type: boolean
   inputBinding:

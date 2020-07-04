@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ProgressBar.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ProgressBar.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: crux.cwl
+id: ../../../../home/ubuntu/BiocondaCli/crux.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

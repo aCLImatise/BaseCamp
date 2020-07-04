@@ -2,36 +2,52 @@ version 1.0
 
 task FermiClean {
   input {
-    Int nN
-    Float dD
-    Boolean cC
-    Int lL
-    Int eE
-    Int iI
-    Int oO
-    Float rR
-    Int nN
-    Boolean aA
-    Boolean sS
-    Float wW
-    Float rR
-    String? inInMog
+    Int? read_maximum_neighbors
+    Float? drop_neighbor_ratio
+    Boolean? clean_the_graph
+    Int? minimum_tip_length
+    Int? minimum_tip_read
+    Int? minimum_internal_unitig
+    Int? minimum_overlap
+    Float? minimum_relative_overlap
+    Int? number_of_iterations
+    Boolean? aggressive_bubble_popping
+    Boolean? skip_bubble_simplification
+    Float? minimum_coverage_keep
+    Float? minimum_fraction_keep
+    String in_dot_mog
   }
   command <<<
     fermi clean \
-      ~{inInMog} \
-      ~{if defined(nN) then ("-N " +  '"' + nN + '"') else ""} \
-      ~{if defined(dD) then ("-d " +  '"' + dD + '"') else ""} \
-      ~{true="-C" false="" cC} \
-      ~{if defined(lL) then ("-l " +  '"' + lL + '"') else ""} \
-      ~{if defined(eE) then ("-e " +  '"' + eE + '"') else ""} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{if defined(rR) then ("-R " +  '"' + rR + '"') else ""} \
-      ~{if defined(nN) then ("-n " +  '"' + nN + '"') else ""} \
-      ~{true="-A" false="" aA} \
-      ~{true="-S" false="" sS} \
-      ~{if defined(wW) then ("-w " +  '"' + wW + '"') else ""} \
-      ~{if defined(rR) then ("-r " +  '"' + rR + '"') else ""}
+      ~{in_dot_mog} \
+      ~{if defined(read_maximum_neighbors) then ("-N " +  '"' + read_maximum_neighbors + '"') else ""} \
+      ~{if defined(drop_neighbor_ratio) then ("-d " +  '"' + drop_neighbor_ratio + '"') else ""} \
+      ~{true="-C" false="" clean_the_graph} \
+      ~{if defined(minimum_tip_length) then ("-l " +  '"' + minimum_tip_length + '"') else ""} \
+      ~{if defined(minimum_tip_read) then ("-e " +  '"' + minimum_tip_read + '"') else ""} \
+      ~{if defined(minimum_internal_unitig) then ("-i " +  '"' + minimum_internal_unitig + '"') else ""} \
+      ~{if defined(minimum_overlap) then ("-o " +  '"' + minimum_overlap + '"') else ""} \
+      ~{if defined(minimum_relative_overlap) then ("-R " +  '"' + minimum_relative_overlap + '"') else ""} \
+      ~{if defined(number_of_iterations) then ("-n " +  '"' + number_of_iterations + '"') else ""} \
+      ~{true="-A" false="" aggressive_bubble_popping} \
+      ~{true="-S" false="" skip_bubble_simplification} \
+      ~{if defined(minimum_coverage_keep) then ("-w " +  '"' + minimum_coverage_keep + '"') else ""} \
+      ~{if defined(minimum_fraction_keep) then ("-r " +  '"' + minimum_fraction_keep + '"') else ""}
   >>>
+  parameter_meta {
+    read_maximum_neighbors: "read maximum INT neighbors per node [512]"
+    drop_neighbor_ratio: "drop a neighbor if relative overlap ratio below FLOAT [0.70]"
+    clean_the_graph: "clean the graph"
+    minimum_tip_length: "minimum tip length [300]"
+    minimum_tip_read: "minimum tip read count [0]"
+    minimum_internal_unitig: "minimum internal unitig read count [3]"
+    minimum_overlap: "minimum overlap [60]"
+    minimum_relative_overlap: "minimum relative overlap ratio [0.80]"
+    number_of_iterations: "number of iterations [3]"
+    aggressive_bubble_popping: "aggressive bubble popping"
+    skip_bubble_simplification: "skip bubble simplification"
+    minimum_coverage_keep: "minimum coverage to keep a bubble [10.00]"
+    minimum_fraction_keep: "minimum fraction to keep a bubble [0.15]"
+    in_dot_mog: ""
+  }
 }

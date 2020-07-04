@@ -1,22 +1,7 @@
 class: CommandLineTool
-id: vamb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vamb.cwl
 inputs:
-- id: outdir
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: tnf_input
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: rp_km_input
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: outdir
+- id: output_directory_create
   doc: output directory to create
   type: boolean
   inputBinding:
@@ -56,22 +41,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --jgi
-- id: m
+- id: ignore_contigs_shorter
   doc: ignore contigs shorter than this [100]
   type: boolean
   inputBinding:
     prefix: -m
-- id: s
+- id: ignore_reads_alignment
   doc: ignore reads with alignment score below this [None]
   type: boolean
   inputBinding:
     prefix: -s
-- id: z
+- id: ignore_reads_nucleotide
   doc: ignore reads with nucleotide identity below this [None]
   type: boolean
   inputBinding:
     prefix: -z
-- id: p
+- id: number_subprocesses_spawn
   doc: number of subprocesses to spawn [min(8, nbamfiles)]
   type: boolean
   inputBinding:
@@ -91,22 +76,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -n
-- id: l
+- id: latent_neurons
   doc: latent neurons [32]
   type: boolean
   inputBinding:
     prefix: -l
-- id: a
+- id: alpha_weight_tnf
   doc: alpha, weight of TNF versus depth loss [Auto]
   type: boolean
   inputBinding:
     prefix: -a
-- id: b
+- id: beta_capacity_learn
   doc: beta, capacity to learn [200.0]
   type: boolean
   inputBinding:
     prefix: -b
-- id: d
+- id: dropout
   doc: dropout [Auto]
   type: boolean
   inputBinding:
@@ -116,12 +101,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --cuda
-- id: e
+- id: epochs
   doc: epochs [500]
   type: boolean
   inputBinding:
     prefix: -e
-- id: t
+- id: starting_batch_size
   doc: starting batch size [64]
   type: boolean
   inputBinding:
@@ -131,36 +116,51 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -q
-- id: r
+- id: learning_rate
   doc: learning rate [0.001]
   type: boolean
   inputBinding:
     prefix: -r
-- id: w
+- id: size_count_successes
   doc: size of window to count successes [200]
   type: boolean
   inputBinding:
     prefix: -w
-- id: u
+- id: minimum_success_window
   doc: minimum success in window [20]
   type: boolean
   inputBinding:
     prefix: -u
-- id: i
+- id: minimum_cluster_size
   doc: minimum cluster size [1]
   type: boolean
   inputBinding:
     prefix: -i
-- id: c
+- id: stop_c_clusters
   doc: stop after c clusters [None = infinite]
   type: boolean
   inputBinding:
     prefix: -c
-- id: o
+- id: binsplit_separator
   doc: binsplit separator [None = no split]
   type: boolean
   inputBinding:
     prefix: -o
+- id: var_29
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: tnf_input
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: rp_km_input
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

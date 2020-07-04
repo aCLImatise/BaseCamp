@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: IntaRNA_CSV_p_value.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/IntaRNA_CSV_p_value.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

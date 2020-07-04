@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: blast2gff_uniprot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blast2gff_uniprot.cwl
 inputs:
 - id: db_used
   doc: 'Uniprot database used with BLAST  [default: UNIPROT-SP]'
@@ -41,6 +41,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --progress
+- id: blast_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: gff_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

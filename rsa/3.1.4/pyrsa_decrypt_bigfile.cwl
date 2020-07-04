@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: pyrsa_decrypt_bigfile.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyrsa_decrypt_bigfile.cwl
 inputs:
-- id: private_key
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: input
   doc: Name of the file to decrypt. Reads from stdin if not specified.
   type: string
@@ -22,6 +17,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --keyform
+- id: private_key
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

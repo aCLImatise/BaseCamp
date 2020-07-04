@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: goalign_concat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_concat.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: output
   doc: Alignment output file (default "stdout")
   type: string
@@ -71,6 +66,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

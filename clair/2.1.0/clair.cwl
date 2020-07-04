@@ -1,36 +1,26 @@
 class: CommandLineTool
-id: clair.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clair.py.cwl
 inputs:
-- id: python
+- id: var_0
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: clair_py
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: submodule
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: of
   doc: ''
   type: string
   inputBinding:
-    position: 3
+    position: 1
 - id: the
   doc: ''
   type: string
   inputBinding:
-    position: 4
-- id: submodule
+    position: 2
+- id: var_3
   doc: ''
   type: string
   inputBinding:
-    position: 5
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

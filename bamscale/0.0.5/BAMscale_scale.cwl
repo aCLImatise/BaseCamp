@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: BAMscale_scale.cwl
+id: ../../../../home/ubuntu/BiocondaCli/BAMscale_scale.cwl
 inputs:
 - id: bam
   doc: Input BAM file. This has to be specified at least two times.
@@ -28,7 +28,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --normtype
-- id: scale
+- id: method_scale_samples
   doc: "Method to scale samples together. (default: genome) Options are:  1) no: no\
     \ scaling, just calculate coverage 2) smallest: scale reads to smallest library\
     \ (multiple-samples only) 3) genome: scale samples to 1x genome coverage (only\
@@ -68,7 +68,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --operation
-- id: s
+- id: output_strandspecific_normalized
   doc: Output strand-specific normalized tracks. One BAM file can be specified only
   type: string
   inputBinding:
@@ -163,6 +163,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: var_25
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: var_26
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

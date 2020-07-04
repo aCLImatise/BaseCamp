@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gc_content_plot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gc_content_plot.cwl
 inputs:
 - id: no_tags
   doc: Do not print sequence tags.

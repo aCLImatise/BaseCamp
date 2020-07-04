@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: singularity_pull.cwl
+id: ../../../../home/ubuntu/BiocondaCli/singularity_pull.cwl
 inputs:
 - id: name
   doc: Specify a custom container name (first priority)
@@ -26,6 +26,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --size
+- id: singularity
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: gadem.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gadem.cwl
 inputs:
-- id: optional
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: arguments
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: pos_wt
   doc: 0,1, or 2  Weight profile for positions on the sequence (see documentation).
     0 - no weight (uniform spatial prior), 1 or 2 - small or zero weights for the
@@ -68,7 +58,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -minN
-- id: fpwm0
+- id: f_pwm_zero
   doc: "string     File name for the seed PWM, when a 'seeded' approach is used, in\
     \ which a PWM  (format below) is used as the starting PWM for the EM algorithm.\
     \ This is an  effective way of testing for an 'expected' motif, because it is\
@@ -111,14 +101,14 @@ inputs:
   inputBinding:
     prefix: -pop
 - id: full_scan
-  doc: '0 or 1     GADEM keeps two copies of the input sequences internally: one (D)
+  doc: 'or 1     GADEM keeps two copies of the input sequences internally: one (D)
     for discovering PWMs and one (S) for scanning for binding sites using the PWMs.
     Once a motif is identified, its instances in set D are always masked by Ns. However,
     masking motif instances in set S is optional, and scanning unmasked sequences
     allows sites of discovered motifs to overlap. 0 (default) - scan masked sequences
     in S (disallow motif site overlap). 1 - scan unmasked sequences in S (allow motif
     sites to overlap) (was default in v1.3).'
-  type: boolean
+  type: string
   inputBinding:
     prefix: -fullScan
 - id: mask_r
@@ -160,17 +150,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -nmotifs
-- id: maxw3
+- id: max_w_three
   doc: 'integer    Number of top-ranked trimers for spaced dyads (default: 20).'
   type: boolean
   inputBinding:
     prefix: -maxw3
-- id: maxw4
+- id: max_w_four
   doc: 'integer    Number of top-ranked tetramers for spaced dyads (default: 40).'
   type: boolean
   inputBinding:
     prefix: -maxw4
-- id: maxw5
+- id: max_w_five
   doc: 'integer    Number of top-ranked pentamers for spaced dyads (default: 60).'
   type: boolean
   inputBinding:
@@ -191,10 +181,10 @@ inputs:
   inputBinding:
     prefix: -maxgap
 - id: use_score
-  doc: 0 or 1     Use top-scoring sequences for deriving PWMs. Sequence (quality)
-    scores should be stored in input sequence FA headers (see documentation). 0 -
-    no (default, randomly select sequences), 1 - yes.
-  type: boolean
+  doc: or 1     Use top-scoring sequences for deriving PWMs. Sequence (quality) scores
+    should be stored in input sequence FA headers (see documentation). 0 - no (default,
+    randomly select sequences), 1 - yes.
+  type: string
   inputBinding:
     prefix: -useScore
 - id: f_pwm
@@ -225,6 +215,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -verbose
+- id: f_seq
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -fseq
+- id: optional
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: arguments
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

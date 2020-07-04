@@ -2,14 +2,19 @@ version 1.0
 
 task BwaFa2pac {
   input {
-    Boolean fF
-    String? inInFasta
-    String? outOutPrefix
+    Boolean? f
+    String in_dot_fast_a
+    String? out_dot_prefix
   }
   command <<<
     bwa fa2pac \
-      ~{inInFasta} \
-      ~{true="-f" false="" fF} \
-      ~{outOutPrefix}
+      ~{in_dot_fast_a} \
+      ~{out_dot_prefix} \
+      ~{true="-f" false="" f}
   >>>
+  parameter_meta {
+    f: ""
+    in_dot_fast_a: ""
+    out_dot_prefix: ""
+  }
 }

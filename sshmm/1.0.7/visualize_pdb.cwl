@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: visualize_pdb.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/visualize_pdb.py.cwl
 inputs:
 - id: secondary_structure
   doc: Enter a dot-bracket string for the secondary structure of this model

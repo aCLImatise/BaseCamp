@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamindex.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamindex.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

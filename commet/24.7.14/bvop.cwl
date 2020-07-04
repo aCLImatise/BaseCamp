@@ -1,37 +1,37 @@
 class: CommandLineTool
-id: bvop.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bvop.cwl
 inputs:
-- id: n
+- id: performs_not_filebv
   doc: ': performs NOT on file1.bv'
   type: boolean
   inputBinding:
     prefix: -n
-- id: a
+- id: _performs_filebv_and_filebv
   doc: ': performs file1.bv AND file2.bv'
   type: File
   inputBinding:
     prefix: -a
-- id: o
+- id: _performs_filebv_or_filebv
   doc: ': performs file1.bv OR file2.bv'
   type: File
   inputBinding:
     prefix: -o
-- id: d
+- id: performs_filebv_not_filebv
   doc: ': performs file1.bv AND (NOT file2.bv)'
   type: File
   inputBinding:
     prefix: -d
-- id: p
+- id: print_result_file
   doc: ': print result in file output.bv [Default=stdout]'
   type: string
   inputBinding:
     prefix: -p
-- id: i
+- id: print_information_filebv
   doc: ': print information about file1.bv'
   type: boolean
   inputBinding:
     prefix: -i
-- id: v
+- id: prints_version_number
   doc: ': Prints the version number and exit'
   type: boolean
   inputBinding:

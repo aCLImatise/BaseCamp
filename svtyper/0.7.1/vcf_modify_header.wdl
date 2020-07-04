@@ -1,21 +1,29 @@
 version 1.0
 
-task VcfModifyHeader.py {
+task VcfModifyHeader.pyVcf {
   input {
-    String idId
-    String categoryCategory
-    String typeType
-    String numberNumber
-    String descriptionDescription
-    String? vcfVcf
+    String? i
+    String? c
+    String? t
+    String? n
+    String? d
+    String vcf_modify_header_do_tpy
   }
   command <<<
-    vcf_modify_header.py \
-      ~{vcfVcf} \
-      ~{if defined(idId) then ("--id " +  '"' + idId + '"') else ""} \
-      ~{if defined(categoryCategory) then ("--category " +  '"' + categoryCategory + '"') else ""} \
-      ~{if defined(typeType) then ("--type " +  '"' + typeType + '"') else ""} \
-      ~{if defined(numberNumber) then ("--number " +  '"' + numberNumber + '"') else ""} \
-      ~{if defined(descriptionDescription) then ("--description " +  '"' + descriptionDescription + '"') else ""}
+    vcf_modify_header.py vcf \
+      ~{vcf_modify_header_do_tpy} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if defined(n) then ("-n " +  '"' + n + '"') else ""} \
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""}
   >>>
+  parameter_meta {
+    i: ""
+    c: ""
+    t: ""
+    n: ""
+    d: ""
+    vcf_modify_header_do_tpy: ""
+  }
 }

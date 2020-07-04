@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: runef.cwl
+id: ../../../../home/ubuntu/BiocondaCli/runef.cwl
 inputs:
 - id: instance_directory
   doc: The directory in which all instance (reference and scenario) definitions are

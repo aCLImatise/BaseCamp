@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gotree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gotree.cwl
 inputs:
 - id: format
   doc: Input tree format (newick, nexus, or phyloxml) (default "newick")

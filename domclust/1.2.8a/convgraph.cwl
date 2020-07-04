@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: convgraph.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/convgraph.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

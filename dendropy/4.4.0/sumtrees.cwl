@@ -1,13 +1,6 @@
 class: CommandLineTool
-id: sumtrees.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sumtrees.py.cwl
 inputs:
-- id: tree_file_path
-  doc: Source(s) of trees to summarize. At least one valid source of trees must be
-    provided. Use '-' to specify reading from standard input (note that this requires
-    the input file format to be explicitly set using the ' --source-format' option).
-  type: string
-  inputBinding:
-    position: 0
 - id: source_format
   doc: Format of all input trees (defaults to handling either NEXUS or NEWICK through
     inspection; it is more efficient to explicitly specify the format if it is known).
@@ -110,7 +103,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --summary-target
-- id: f
+- id: _mincladefreq_
   doc: '#.##, --min-clade-freq #.##, --min-freq #.##, --min-split-freq #.##, --min-consensus-freq
     #.## Minimum frequency or probability for a clade or a split to be included in
     the summary target trees. If user-defined or non-consensus trees are specified
@@ -207,7 +200,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --percentages
-- id: d
+- id: _decimals_number
   doc: '#, --decimals #    Number of decimal places in indication of support values
     (default: 8).'
   type: boolean
@@ -299,6 +292,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --describe
+- id: tree_file_path
+  doc: Source(s) of trees to summarize. At least one valid source of trees must be
+    provided. Use '-' to specify reading from standard input (note that this requires
+    the input file format to be explicitly set using the ' --source-format' option).
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,20 +2,28 @@ version 1.0
 
 task RNAsoup {
   input {
-    String tT
-    String fF
-    String mM
-    String oO
-    String kK
-    Boolean vV
+    String? t
+    String? f
+    String? m
+    String? o
+    String? k
+    Boolean? v
   }
   command <<<
     RNAsoup \
-      ~{if defined(tT) then ("-t " +  '"' + tT + '"') else ""} \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""} \
-      ~{if defined(mM) then ("-m " +  '"' + mM + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{if defined(kK) then ("-k " +  '"' + kK + '"') else ""} \
-      ~{true="-v" false="" vV}
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
+      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(k) then ("-k " +  '"' + k + '"') else ""} \
+      ~{true="-v" false="" v}
   >>>
+  parameter_meta {
+    t: ""
+    f: ""
+    m: ""
+    o: ""
+    k: ""
+    v: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cactus_secondaryDatabase.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cactus_secondaryDatabase.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

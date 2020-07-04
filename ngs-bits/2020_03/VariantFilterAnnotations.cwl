@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: VariantFilterAnnotations.cwl
+id: ../../../../home/ubuntu/BiocondaCli/VariantFilterAnnotations.cwl
 inputs:
 - id: in
   doc: Input variant list in GSvar format.

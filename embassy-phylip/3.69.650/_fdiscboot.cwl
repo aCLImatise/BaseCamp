@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _fdiscboot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_fdiscboot.cwl
 inputs:
 - id: mix_file
   doc: properties File of mixtures

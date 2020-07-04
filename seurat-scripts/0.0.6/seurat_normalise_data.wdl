@@ -2,24 +2,34 @@ version 1.0
 
 task SeuratNormaliseData.R {
   input {
-    String inputInputObjectFile
-    String inputInputFormat
-    String outputOutputFormat
-    String normalizationNormalizationMethod
-    String scaleScaleFactor
-    String outputOutputObjectFile
-    String marginMargin
-    String blockBlockSize
+    String? input_object_file
+    String? input_format
+    String? output_format
+    String? normalization_method
+    String? scale_factor
+    String? output_object_file
+    String? margin
+    String? block_size
   }
   command <<<
     seurat-normalise-data.R \
-      ~{if defined(inputInputObjectFile) then ("--input-object-file " +  '"' + inputInputObjectFile + '"') else ""} \
-      ~{if defined(inputInputFormat) then ("--input-format " +  '"' + inputInputFormat + '"') else ""} \
-      ~{if defined(outputOutputFormat) then ("--output-format " +  '"' + outputOutputFormat + '"') else ""} \
-      ~{if defined(normalizationNormalizationMethod) then ("--normalization-method " +  '"' + normalizationNormalizationMethod + '"') else ""} \
-      ~{if defined(scaleScaleFactor) then ("--scale-factor " +  '"' + scaleScaleFactor + '"') else ""} \
-      ~{if defined(outputOutputObjectFile) then ("--output-object-file " +  '"' + outputOutputObjectFile + '"') else ""} \
-      ~{if defined(marginMargin) then ("--margin " +  '"' + marginMargin + '"') else ""} \
-      ~{if defined(blockBlockSize) then ("--block-size " +  '"' + blockBlockSize + '"') else ""}
+      ~{if defined(input_object_file) then ("--input-object-file " +  '"' + input_object_file + '"') else ""} \
+      ~{if defined(input_format) then ("--input-format " +  '"' + input_format + '"') else ""} \
+      ~{if defined(output_format) then ("--output-format " +  '"' + output_format + '"') else ""} \
+      ~{if defined(normalization_method) then ("--normalization-method " +  '"' + normalization_method + '"') else ""} \
+      ~{if defined(scale_factor) then ("--scale-factor " +  '"' + scale_factor + '"') else ""} \
+      ~{if defined(output_object_file) then ("--output-object-file " +  '"' + output_object_file + '"') else ""} \
+      ~{if defined(margin) then ("--margin " +  '"' + margin + '"') else ""} \
+      ~{if defined(block_size) then ("--block-size " +  '"' + block_size + '"') else ""}
   >>>
+  parameter_meta {
+    input_object_file: "File name in which a serialized R matrix object may be found."
+    input_format: "Either loom, seurat, anndata or singlecellexperiment for the input format to read."
+    output_format: "Either loom, seurat, anndata or singlecellexperiment for the output format."
+    normalization_method: "Method for normalization. Default is log-normalization (LogNormalize). Can be 'CLR' or 'RC' additionally."
+    scale_factor: "Sets the scale factor for cell-level normalization."
+    output_object_file: "File name in which to store serialized R object of type 'Seurat'.'"
+    margin: "If performing CLR normalization, normalize across features (1) or cells (2)."
+    block_size: "How many cells should be run in each chunk, will try to split evenly across threads"
+  }
 }

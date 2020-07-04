@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: DigestorMotif.cwl
+id: ../../../../home/ubuntu/BiocondaCli/DigestorMotif.cwl
 inputs:
 - id: in
   doc: "*                 FASTA input file (valid formats: 'fasta')"
@@ -35,7 +35,7 @@ inputs:
 - id: enzyme
   doc: "The enzyme used for peptide digestion. (default: 'Trypsin' valid: 'Arg-C',\
     \ 'Arg-C/P', 'Asp-N', 'proline endopeptidase', 'glutamyl endopeptidase', 'proline-endopeptidase/HKR',\
-    \ 'Glu- C+P', 'PepsinA + P', 'cyanogen-bromide', 'Clostripain/P', 'Asp-N/B', 'Asp-N_ambic',\
+    \ 'Glu-C+P', 'PepsinA + P', 'cyanogen-bromide', 'Clostripain/P', 'Asp-N/B', 'Asp-N_ambic',\
     \ 'Chymotrypsin', 'Chymotrypsin/P', 'CNBr', 'Formic_acid', 'Lys-C', 'Lys-N', 'Lys-C/P',\
     \ 'PepsinA', 'TrypChymo', 'Trypsin/P', 'V8-DE', 'V8-E', 'leukocyte elastase',\
     \ 'elastase-trypsin-chymotrypsin', 'no cleavage', 'unspecific cleavage', 'Alpha-lytic\

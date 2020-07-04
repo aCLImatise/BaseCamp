@@ -1,66 +1,6 @@
 class: CommandLineTool
-id: modeltest_ng.cwl
+id: ../../../../home/ubuntu/BiocondaCli/modeltest_ng.cwl
 inputs:
-- id: nt
-  doc: nucleotide
-  type: string
-  inputBinding:
-    position: 0
-- id: aa
-  doc: amino acid
-  type: string
-  inputBinding:
-    position: 1
-- id: ml
-  doc: maximum likelihood
-  type: string
-  inputBinding:
-    position: 2
-- id: mp
-  doc: maximum parsimony
-  type: string
-  inputBinding:
-    position: 3
-- id: fixed_ml_jc
-  doc: fixed maximum likelihood (JC)
-  type: string
-  inputBinding:
-    position: 4
-- id: fixed_ml_gtr
-  doc: fixed maximum likelihood (GTR)
-  type: string
-  inputBinding:
-    position: 5
-- id: fixed_mp
-  doc: fixed maximum parsimony (default)
-  type: string
-  inputBinding:
-    position: 6
-- id: random
-  doc: random generated tree
-  type: string
-  inputBinding:
-    position: 7
-- id: user
-  doc: fixed user defined (requires -u argument)
-  type: string
-  inputBinding:
-    position: 8
-- id: lewis
-  doc: Lewis (2001)
-  type: string
-  inputBinding:
-    position: 0
-- id: felsenstein
-  doc: Felsenstein requires number of invariant sites
-  type: string
-  inputBinding:
-    position: 1
-- id: stam_a_takis
-  doc: Leaché et al. (2015) requires invariant sites composition
-  type: string
-  inputBinding:
-    position: 2
 - id: datatype
   doc: sets the data type
   type: string
@@ -170,11 +110,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gamma-rates
-- id: disable_checkpoint
-  doc: does not create checkpoint files
-  type: boolean
-  inputBinding:
-    prefix: --disable-checkpoint
 - id: no_compress
   doc: disables pattern compression modeltest ignores if there are missing states
   type: boolean
@@ -190,6 +125,81 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: nt
+  doc: nucleotide
+  type: string
+  inputBinding:
+    position: 0
+- id: aa
+  doc: amino acid
+  type: string
+  inputBinding:
+    position: 1
+- id: ml
+  doc: maximum likelihood
+  type: string
+  inputBinding:
+    position: 2
+- id: mp
+  doc: maximum parsimony
+  type: string
+  inputBinding:
+    position: 3
+- id: fixed_ml_jc
+  doc: fixed maximum likelihood (JC)
+  type: string
+  inputBinding:
+    position: 4
+- id: fixed_ml_gtr
+  doc: fixed maximum likelihood (GTR)
+  type: string
+  inputBinding:
+    position: 5
+- id: fixed_mp
+  doc: fixed maximum parsimony (default)
+  type: string
+  inputBinding:
+    position: 6
+- id: random
+  doc: random generated tree
+  type: string
+  inputBinding:
+    position: 7
+- id: user
+  doc: fixed user defined (requires -u argument)
+  type: string
+  inputBinding:
+    position: 8
+- id: lewis
+  doc: Lewis (2001)
+  type: string
+  inputBinding:
+    position: 0
+- id: felsenstein
+  doc: Felsenstein requires number of invariant sites
+  type: string
+  inputBinding:
+    position: 1
+- id: stam_a_takis
+  doc: Leaché et al. (2015) requires invariant sites composition
+  type: string
+  inputBinding:
+    position: 2
+- id: if_ok
+  doc: if OK,
+  type: string
+  inputBinding:
+    position: 0
+- id: minor_problems_eg
+  doc: if minor problems (e.g., invalid arguments or data),
+  type: string
+  inputBinding:
+    position: 1
+- id: serious_trouble_eg
+  doc: if serious trouble (e.g., execution crashed).
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

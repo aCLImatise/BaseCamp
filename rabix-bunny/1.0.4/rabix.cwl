@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rabix.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rabix.cwl
 inputs:
 - id: basedir
   doc: execution directory

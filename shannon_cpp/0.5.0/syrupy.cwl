@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: syrupy.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/syrupy.py.cwl
 inputs:
-- id: syrupy_options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: command
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: command_options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: command_args
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
 - id: poll_pid
   doc: ignore COMMAND if given, and poll external process with specified PID
   type: string
@@ -42,7 +22,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --poll-command
-- id: i
+- id: _interval_polling
   doc: '#.##, --interval=#.## polling interval in seconds (default=1)'
   type: boolean
   inputBinding:
@@ -94,6 +74,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-headers
+- id: syrupy_options
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: command
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: command_options
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: command_args
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

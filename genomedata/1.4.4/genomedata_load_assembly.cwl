@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: genomedata_load_assembly.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genomedata_load_assembly.cwl
 inputs:
-- id: gd_archive
-  doc: genomedata archive
-  type: string
-  inputBinding:
-    position: 0
-- id: seq_files
-  doc: sequences in FASTA format
-  type: string
-  inputBinding:
-    position: 1
 - id: assembly
   doc: SEQFILE contains assembly (AGP) files instead of sequence
   type: boolean
@@ -42,6 +32,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: gd_archive
+  doc: genomedata archive
+  type: string
+  inputBinding:
+    position: 0
+- id: seq_files
+  doc: sequences in FASTA format
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

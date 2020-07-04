@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: nw_topology.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nw_topology.cwl
 inputs:
-- id: b
+- id: keep_branch_lengths
   doc: ': keep branch lengths'
   type: boolean
   inputBinding:
     prefix: -b
-- id: i
+- id: discard_inner_node
   doc: ': discard inner node labels'
   type: boolean
   inputBinding:
     prefix: -I
-- id: l
+- id: discard_leaf_labels
   doc: ': discard leaf labels'
   type: boolean
   inputBinding:

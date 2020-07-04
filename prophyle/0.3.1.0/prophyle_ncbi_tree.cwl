@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: prophyle_ncbi_tree.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/prophyle_ncbi_tree.py.cwl
 inputs:
-- id: l
+- id: log_file
   doc: log file [stderr]
   type: string
   inputBinding:
     prefix: -l
-- id: r
+- id: build_reduced_tree
   doc: build reduced tree (one sequence every n)
   type: string
   inputBinding:
     prefix: -r
-- id: u
+- id: root_tree_bacteria
   doc: root of the tree (e.g. Bacteria); will exclude sequences which are not its
     descendants
   type: string

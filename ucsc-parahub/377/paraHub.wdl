@@ -2,10 +2,13 @@ version 1.0
 
 task ParaHub {
   input {
-    String? machineMachineList
+    String machine_list
   }
   command <<<
     paraHub \
-      ~{machineMachineList}
+      ~{machine_list}
   >>>
+  parameter_meta {
+    machine_list: ""
+  }
 }

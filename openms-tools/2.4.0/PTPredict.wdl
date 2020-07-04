@@ -2,24 +2,34 @@ version 1.0
 
 task PTPredict {
   input {
-    File inIn
-    File outOut
-    File svmSvmModel
-    Int maxMaxNumberOfPeptides
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    File? in
+    File? out
+    File? svm_model
+    Int? max_number_of_peptides
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     PTPredict \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(svmSvmModel) then ("-svm_model " +  '"' + svmSvmModel + '"') else ""} \
-      ~{if defined(maxMaxNumberOfPeptides) then ("-max_number_of_peptides " +  '"' + maxMaxNumberOfPeptides + '"') else ""} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(svm_model) then ("-svm_model " +  '"' + svm_model + '"') else ""} \
+      ~{if defined(max_number_of_peptides) then ("-max_number_of_peptides " +  '"' + max_number_of_peptides + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*                    Input file  (valid formats: 'idXML')"
+    out: "*                   Output file (valid formats: 'idXML')"
+    svm_model: "*             Svm model in libsvm format (can be produced by PTModel) (valid formats: 'txt')"
+    max_number_of_peptides: "The maximum number of peptides considered at once (bigger number will lead to faster results but needs more memory). (default: '100000')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

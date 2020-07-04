@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: generate_primers_denovo.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/generate_primers_denovo.py.cwl
 inputs:
 - id: target_seqs
   doc: Target aligned fasta sequence files to find conserved sites for primer design.  Separate

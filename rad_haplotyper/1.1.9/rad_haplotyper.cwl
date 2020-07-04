@@ -1,37 +1,32 @@
 class: CommandLineTool
-id: rad_haplotyper.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rad_haplotyper.pl.cwl
 inputs:
-- id: v
+- id: input_vcf_file
   doc: input vcf file
   type: string
   inputBinding:
     prefix: -v
-- id: b
+- id: bed_file_containing
   doc: '[bedfile]               BED file containing regions to be haplotyped'
   type: boolean
   inputBinding:
     prefix: -b
-- id: s
+- id: optionally_specify_sample
   doc: '[samples]               optionally specify an individual sample to be haplotyped'
   type: boolean
   inputBinding:
     prefix: -s
-- id: r
+- id: _reference_genome
   doc: '[reference]             reference genome'
   type: boolean
   inputBinding:
     prefix: -r
-- id: s
-  doc: '[samples]               optionally specify an individual sample to be haplotyped'
-  type: boolean
-  inputBinding:
-    prefix: -s
-- id: u
+- id: remove_loci_more
   doc: '[snp_cutoff]            remove loci with more than a specified number of SNPs'
   type: boolean
   inputBinding:
     prefix: -u
-- id: m
+- id: cutoff_proportion_included
   doc: '[miss_cutoff]           cutoff for proportion of missing data for loci to
     be included in the output'
   type: boolean
@@ -48,67 +43,67 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ml
-- id: d
+- id: sampling_depth_used
   doc: '[depth]                 sampling depth used by the algorithm to build haplotypes'
   type: boolean
   inputBinding:
     prefix: -d
-- id: z
+- id: controls_rescue_logic
   doc: '[hap_rescue]                 controls haplotype rescue logic'
   type: boolean
   inputBinding:
     prefix: -z
-- id: c
+- id: handling_complex_loci
   doc: '[complex]               handling of complex loci'
   type: boolean
   inputBinding:
     prefix: -c
-- id: g
+- id: genepop_file_population
   doc: '[genepop]               genepop file for population output'
   type: boolean
   inputBinding:
     prefix: -g
-- id: o
+- id: vcf_file_output
   doc: '[vcfout]                vcf file output'
   type: boolean
   inputBinding:
     prefix: -o
-- id: p
+- id: population_map_organizing
   doc: '[popmap]                population map for organizing Genepop file'
   type: boolean
   inputBinding:
     prefix: -p
-- id: t
+- id: tsv_file_linkage
   doc: '[tsvfile]               tsv file for linkage map output'
   type: boolean
   inputBinding:
     prefix: -t
-- id: a
+- id: ima_file_output
   doc: '[imafile]               IMa file output'
   type: boolean
   inputBinding:
     prefix: -a
-- id: p1
+- id: p_one
   doc: '[parent1]               first parent in the mapping cross'
   type: boolean
   inputBinding:
     prefix: -p1
-- id: p2
+- id: p_two
   doc: '[parent2]               second parent in the mapping cross'
   type: boolean
   inputBinding:
     prefix: -p2
-- id: x
+- id: number_threads_use
   doc: '[threads]               number of threads to use for the analysis'
   type: boolean
   inputBinding:
     prefix: -x
-- id: n
+- id: use_indels
   doc: use indels
   type: boolean
   inputBinding:
     prefix: -n
-- id: e
+- id: debug
   doc: debug
   type: boolean
   inputBinding:
@@ -236,12 +231,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tsvfile
-- id: parent_1
+- id: parent_one
   doc: Parent 1 of the mapping cross (must be specified if writing a tsv file)
   type: boolean
   inputBinding:
     prefix: --parent1
-- id: parent_2
+- id: parent_two
   doc: Parent 2 of the mapping cross (must be specified if writing a tsv file)
   type: boolean
   inputBinding:

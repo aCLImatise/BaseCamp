@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filter_pairs.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_pairs.py.cwl
 inputs:
 - id: input
   doc: The input file containing the fusion (chromosomal) coordinates for each fusion

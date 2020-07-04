@@ -2,14 +2,19 @@ version 1.0
 
 task Specialk {
   input {
-    String oO
-    String sS
-    String? readsReadsFile
+    String? o
+    String? s
+    String reads_file
   }
   command <<<
     specialk \
-      ~{readsReadsFile} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{if defined(sS) then ("-s " +  '"' + sS + '"') else ""}
+      ~{reads_file} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""}
   >>>
+  parameter_meta {
+    o: ""
+    s: ""
+    reads_file: ""
+  }
 }

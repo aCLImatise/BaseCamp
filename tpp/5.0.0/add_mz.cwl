@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: add_mz.cwl
+id: ../../../../home/ubuntu/BiocondaCli/add_mz.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

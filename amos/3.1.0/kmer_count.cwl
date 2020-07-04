@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: kmer_count.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kmer_count.cwl
 inputs:
 - id: km_er_cov
   doc: ''

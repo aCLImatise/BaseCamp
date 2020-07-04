@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: magpurify_phylo_markers.cwl
+id: ../../../../home/ubuntu/BiocondaCli/magpurify_phylo_markers.cwl
 inputs:
-- id: fna
-  doc: Path to input genome in FASTA format
-  type: string
-  inputBinding:
-    position: 0
-- id: out
-  doc: Output directory to store results and intermediate files
-  type: string
-  inputBinding:
-    position: 1
 - id: db
   doc: 'Path to reference database. By default, the MAGPURIFYDB environmental variable
     is used (default: None)'
@@ -70,6 +60,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --threads
+- id: fna
+  doc: Path to input genome in FASTA format
+  type: string
+  inputBinding:
+    position: 0
+- id: out
+  doc: Output directory to store results and intermediate files
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

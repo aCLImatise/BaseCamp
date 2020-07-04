@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: binning.cwl
+id: ../../../../home/ubuntu/BiocondaCli/binning.cwl
 inputs:
 - id: dm
   doc: MAD processs (default enabled)
   type: string
   inputBinding:
     prefix: -dM
-- id: i
+- id: index_file_reads
   doc: Index file with reads name
   type: boolean
   inputBinding:
     prefix: -i
-- id: n
+- id: number_of_reads
   doc: number of reads
   type: boolean
   inputBinding:

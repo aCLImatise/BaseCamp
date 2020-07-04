@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: location_predictor_predict.cwl
+id: ../../../../home/ubuntu/BiocondaCli/location_predictor_predict.cwl
 inputs:
 - id: input_file
   doc: 'Path to file containing input. (default: None)'

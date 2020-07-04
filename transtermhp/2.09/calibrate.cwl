@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: calibrate.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/calibrate.sh.cwl
 inputs:
-- id: output_filed_at
+- id: output_file_dot_dat
   doc: ''
   type: string
   inputBinding:

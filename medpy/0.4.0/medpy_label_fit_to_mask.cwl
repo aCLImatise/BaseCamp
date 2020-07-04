@@ -1,6 +1,21 @@
 class: CommandLineTool
-id: medpy_label_fit_to_mask.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/medpy_label_fit_to_mask.py.cwl
 inputs:
+- id: display_more_information
+  doc: Display more information.
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: display_debug_information
+  doc: Display debug information.
+  type: boolean
+  inputBinding:
+    prefix: -d
+- id: silently_override_images
+  doc: Silently override existing output images.
+  type: boolean
+  inputBinding:
+    prefix: -f
 - id: image
   doc: The input label image.
   type: string
@@ -16,21 +31,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: v
-  doc: Display more information.
-  type: boolean
-  inputBinding:
-    prefix: -v
-- id: d
-  doc: Display debug information.
-  type: boolean
-  inputBinding:
-    prefix: -d
-- id: f
-  doc: Silently override existing output images.
-  type: boolean
-  inputBinding:
-    prefix: -f
 outputs: []
 cwlVersion: v1.1
 baseCommand:

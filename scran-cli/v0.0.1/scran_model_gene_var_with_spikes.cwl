@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scran_model_gene_var_with_spikes.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scran_model_gene_var_with_spikes.R.cwl
 inputs:
 - id: input_sce_object
   doc: Path to the input SCE object in rds format
@@ -31,24 +31,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --spike-size-factors
-- id: design
-  doc: A numeric matrix containing blocking terms for uninteresting factors of variation.
-  type: string
-  inputBinding:
-    prefix: --design
-- id: subset_row
-  doc: Logical, integer or character vector specifying the rows for which to model
-    the variance. Defaults to all genes in x.
-  type: string
-  inputBinding:
-    prefix: --subset_row
-- id: block
-  doc: A factor specifying the blocking levels for each cell in sce, for instance
-    a donor covariate. If specified, variance modelling is performed separately within
-    each block and statistics are combined across blocks.
-  type: string
-  inputBinding:
-    prefix: --block
 - id: design
   doc: A numeric matrix containing blocking terms for uninteresting factors of variation.
   type: string

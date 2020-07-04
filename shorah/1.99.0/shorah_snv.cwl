@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: shorah_snv.cwl
+id: ../../../../home/ubuntu/BiocondaCli/shorah_snv.cwl
 inputs:
 - id: alpha
   doc: alpha in dpm sampling
   type: double
   inputBinding:
     prefix: --alpha
-- id: r
+- id: startstop__region
   doc: :start-stop, --region chrm:start-stop region in format 'chr:start-stop', e.g.
     'chrm:1000-3000'
   type: string
@@ -54,6 +54,26 @@ inputs:
   type: string
   inputBinding:
     prefix: --fasta
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: shor_ah
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: subcommand
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: snv
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

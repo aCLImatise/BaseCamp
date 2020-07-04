@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bxtools_split.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bxtools_split.cwl
 inputs:
 - id: verbose
   doc: 'Select verbosity level (0-4). Default: 0 '
@@ -26,6 +26,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tag
+- id: bam_slash_sam_slash_cram
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rmRedundantHints.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rmRedundantHints.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Bloocoo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Bloocoo.cwl
 inputs:
 - id: nb_cores
   doc: "(1 arg) :    number of cores  [default '0']"
@@ -128,7 +128,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -max-trim
-- id: from_h5
+- id: from_h_five
   doc: '(0 arg) :    do not re-compute kmer counts, suppose h5 file already computed
     (with previous run with -count-only)'
   type: boolean

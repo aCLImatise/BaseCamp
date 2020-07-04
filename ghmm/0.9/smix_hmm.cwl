@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: smix_hmm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smix_hmm.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

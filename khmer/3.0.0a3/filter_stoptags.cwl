@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filter_stoptags.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_stoptags.py.cwl
 inputs:
 - id: info
   doc: print citation information

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: denoiser_preprocess.py.cwl
-inputs:
-- id: input_files
-  doc: path to flowgram files (.sff.txt), comma separated [REQUIRED]
-  type: string
-  inputBinding:
-    prefix: --input_files
+id: ../../../../home/ubuntu/BiocondaCli/denoiser_preprocess.py.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

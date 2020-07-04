@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: blastclust.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blastclust.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

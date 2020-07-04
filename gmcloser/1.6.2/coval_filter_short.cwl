@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: coval_filter_short.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/coval_filter_short.pl.cwl
 inputs:
 - id: ref
   doc: reference fasta file used for the alignment
@@ -23,6 +23,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --mrate
+- id: c_oval
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: filter
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: input_sorted_bam_slash_sam_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

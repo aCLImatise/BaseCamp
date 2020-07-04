@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: segtools_aggregation.cwl
+id: ../../../../home/ubuntu/BiocondaCli/segtools_aggregation.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: segmentation
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: annotation
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: mnemonic_file
   doc: If specified, labels will be shown using mnemonics found in FILE
   type: File
@@ -94,12 +79,22 @@ inputs:
   type: string
   inputBinding:
     prefix: --exon-samples
-- id: r
+- id: val_pass_val
   doc: =VAL        Pass VAL for PARAM when calling R functions. May be specified multiple
     times.
   type: string
   inputBinding:
     prefix: -R
+- id: segmentation
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: annotation
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

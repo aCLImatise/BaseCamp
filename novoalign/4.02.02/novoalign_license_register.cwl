@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: novoalign_license_register.cwl
+id: ../../../../home/ubuntu/BiocondaCli/novoalign_license_register.cwl
 inputs:
 - id: multiple
   doc: support multiple arguments and treat each as a NAME
@@ -11,7 +11,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --suffix
-- id: zero
+- id: end_output_line
   doc: end each output line with NUL, not newline
   type: boolean
   inputBinding:

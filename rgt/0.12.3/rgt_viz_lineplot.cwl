@@ -1,14 +1,7 @@
 class: CommandLineTool
-id: rgt_viz_lineplot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rgt_viz_lineplot.cwl
 inputs:
-- id: input
-  doc: 'The file name of the input Experimental Matrix file. Recommended to add more
-    columns for more information for ploting. For example, cell type or factors. (default:
-    None)'
-  type: string
-  inputBinding:
-    position: 0
-- id: o
+- id: directory_name_output
   doc: 'The directory name for the output files. For example, project name. (default:
     None)'
   type: string
@@ -20,7 +13,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ga
-- id: t
+- id: title_shown_lineplot
   doc: 'The title shown on the top of the plot and also the folder name. (default:
     lineplot)'
   type: boolean
@@ -33,7 +26,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -center
-- id: g
+- id: group_data_default
   doc: "Group the data by reads(needs 'factor' column), regions(needs 'factor' column),\
     \ another name of column (for example, 'cell')in the header of experimental matrix,\
     \ or None. (default: None)"
@@ -54,14 +47,14 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -col
-- id: c
+- id: color_data_reads
   doc: "Color the data by reads(needs 'factor' column), regions(needs 'factor' column),\
     \ another name of column (for example, 'cell')in the header of experimental matrix,\
     \ or None. (default: reads)"
   type: boolean
   inputBinding:
     prefix: -c
-- id: e
+- id: define_extend_length
   doc: 'Define the extend length of interested region for plotting. (default: 2000)'
   type: boolean
   inputBinding:
@@ -180,6 +173,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -add_region_number
+- id: input
+  doc: 'The file name of the input Experimental Matrix file. Recommended to add more
+    columns for more information for ploting. For example, cell type or factors. (default:
+    None)'
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

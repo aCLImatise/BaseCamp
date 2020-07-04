@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: .braker2_post_link.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/.braker2_post_link.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

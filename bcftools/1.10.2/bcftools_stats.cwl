@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: bcftools_stats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcftools_stats.cwl
 inputs:
-- id: a_vcf_gz
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: bv_cfg_z
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: af_bins
   doc: allele frequency bins, a list (0.1,0.5,1) or a file (0.1\n0.5\n1)
   type: string
@@ -21,6 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --af-tag
+- id: on_est_allele_only
+  doc: include only 1st allele at multiallelic sites
+  type: boolean
+  inputBinding:
+    prefix: --1st-allele-only
 - id: collapse
   doc: treat as identical records with <snps|indels|both|all|some|none>, see man page
     for details [none]
@@ -109,6 +104,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: a_dot_vcf_do_tgz
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: bdotvcfdotgz
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

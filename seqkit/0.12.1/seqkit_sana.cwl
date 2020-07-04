@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: seqkit_sana.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqkit_sana.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: qual_ascii_base
   doc: ASCII BASE, 33 for Phred+33 (default 33)
   type: long
@@ -60,6 +55,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

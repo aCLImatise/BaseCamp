@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: goalign_diff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_diff.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: counts
   doc: Count differences instead of writting only identical characters
   type: boolean
@@ -86,6 +81,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: obipr2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/obipr2.cwl
 inputs:
 - id: debug
   doc: Set logging in debug mode
@@ -17,7 +17,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --localdb
-- id: m
+- id: _mintaxid_minimal
   doc: '####, --min-taxid=#### minimal taxid for the species taxid'
   type: boolean
   inputBinding:

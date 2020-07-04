@@ -2,22 +2,34 @@ version 1.0
 
 task Shuf {
   input {
-    Boolean echoEcho
-    String inputInputRange
-    String headHeadCount
-    File outputOutput
-    File randomRandomSource
-    Boolean repeatRepeat
-    Boolean zeroZeroTerminated
+    Boolean? echo
+    String? input_range
+    String? head_count
+    File? write_result_file
+    File? random_source
+    Boolean? repeat
+    Boolean? zero_terminated
+    String? option
   }
   command <<<
     shuf \
-      ~{true="--echo" false="" echoEcho} \
-      ~{if defined(inputInputRange) then ("--input-range " +  '"' + inputInputRange + '"') else ""} \
-      ~{if defined(headHeadCount) then ("--head-count " +  '"' + headHeadCount + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(randomRandomSource) then ("--random-source " +  '"' + randomRandomSource + '"') else ""} \
-      ~{true="--repeat" false="" repeatRepeat} \
-      ~{true="--zero-terminated" false="" zeroZeroTerminated}
+      ~{option} \
+      ~{true="--echo" false="" echo} \
+      ~{if defined(input_range) then ("--input-range " +  '"' + input_range + '"') else ""} \
+      ~{if defined(head_count) then ("--head-count " +  '"' + head_count + '"') else ""} \
+      ~{if defined(write_result_file) then ("--output " +  '"' + write_result_file + '"') else ""} \
+      ~{if defined(random_source) then ("--random-source " +  '"' + random_source + '"') else ""} \
+      ~{true="--repeat" false="" repeat} \
+      ~{true="--zero-terminated" false="" zero_terminated}
   >>>
+  parameter_meta {
+    echo: "treat each ARG as an input line"
+    input_range: "treat each number LO through HI as an input line"
+    head_count: "output at most COUNT lines"
+    write_result_file: "write result to FILE instead of standard output"
+    random_source: "get random bytes from FILE"
+    repeat: "output lines can be repeated"
+    zero_terminated: "line delimiter is NUL, not newline"
+    option: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: daa2info.cwl
+id: ../../../../home/ubuntu/BiocondaCli/daa2info.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

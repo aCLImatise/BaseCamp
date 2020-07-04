@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cyclone.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cyclone.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

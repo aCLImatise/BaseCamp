@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: rnazSort.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnazSort.pl.cwl
 inputs:
-- id: key
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
 - id: reverse
   doc: Sort in reverse order.
   type: boolean
@@ -26,6 +16,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --man
+- id: key
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

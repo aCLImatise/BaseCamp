@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: akt_unrelated.cwl
+id: ../../../../home/ubuntu/BiocondaCli/akt_unrelated.cwl
 inputs:
 - id: km_in
   doc: ':                     threshold for relatedness (0.025)'

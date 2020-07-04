@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: structConnect.cwl
+id: ../../../../home/ubuntu/BiocondaCli/structConnect.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: mknod.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mknod.cwl
 inputs:
 - id: mode
   doc: set file permission bits to MODE, not a=rw - umask
   type: string
   inputBinding:
     prefix: --mode
-- id: z
+- id: set_selinux_context
   doc: set the SELinux security context to default type
   type: boolean
   inputBinding:
@@ -17,6 +17,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --context
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

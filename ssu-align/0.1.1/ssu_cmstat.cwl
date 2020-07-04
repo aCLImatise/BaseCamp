@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: ssu_cmstat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ssu_cmstat.cwl
 inputs:
-- id: g
+- id: configure_cm_glocal
   doc: ': configure CM for glocal alignment [default: local]'
   type: boolean
   inputBinding:
     prefix: -g
-- id: m
+- id: only_print_model
   doc: ': only print one line summary of model statistics  [default]'
   type: boolean
   inputBinding:
     prefix: -m
-- id: z
+- id: set_database_size
   doc: ': set Z (database size in *Mb*) to <x> for E-value calculations'
   type: string
   inputBinding:
@@ -41,6 +41,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --qdbfile
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: cm_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

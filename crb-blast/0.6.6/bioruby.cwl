@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bioruby.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bioruby.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

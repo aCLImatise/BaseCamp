@@ -2,14 +2,19 @@ version 1.0
 
 task StacksSamtoolsTview {
   input {
-    String pP
-    String cC
-    String sS
+    String? p
+    String? c
+    String? s
   }
   command <<<
     stacks-samtools-tview \
-      ~{if defined(pP) then ("-P " +  '"' + pP + '"') else ""} \
-      ~{if defined(cC) then ("-c " +  '"' + cC + '"') else ""} \
-      ~{if defined(sS) then ("-s " +  '"' + sS + '"') else ""}
+      ~{if defined(p) then ("-P " +  '"' + p + '"') else ""} \
+      ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
+      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""}
   >>>
+  parameter_meta {
+    p: ""
+    c: ""
+    s: ""
+  }
 }

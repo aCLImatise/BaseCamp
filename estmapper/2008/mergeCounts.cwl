@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mergeCounts.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mergeCounts.cwl
 inputs:
 - id: no
   doc: ''

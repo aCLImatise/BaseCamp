@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: dep_init.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dep_init.cwl
 inputs:
-- id: root
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: tags
-  doc: to semver (sorted by semver rules)
-  type: string
-  inputBinding:
-    prefix: '- Tags'
-- id: default
-  doc: (es) (sorted lexicographically)
-  type: string
-  inputBinding:
-    prefix: '- Default'
-- id: non_sem_ver
-  doc: (sorted lexicographically)
-  type: string
-  inputBinding:
-    prefix: '- Non-semver'
 - id: go_path
   doc: 'search in GOPATH for dependencies (default: false)'
   type: boolean
@@ -36,11 +16,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -skip-tools
-- id: v
+- id: enable_verbose_logging
   doc: 'enable verbose logging (default: false)'
   type: boolean
   inputBinding:
     prefix: -v
+- id: root
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

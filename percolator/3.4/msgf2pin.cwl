@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: msgf2pin.cwl
+id: ../../../../home/ubuntu/BiocondaCli/msgf2pin.cwl
 inputs:
-- id: target_mz_id
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: decoy_mz_id
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: enzyme
   doc: Type of enzyme  "no_enzyme","elastase","pepsin","proteinasek","therm olysin","chymotrypsin","lys-n","lys-c","arg-c","asp-
     n","glu-c","trypsin" default="trypsin"
@@ -23,6 +13,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --max-mass
+- id: target_dot_mz_id
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: decoy_dot_mz_id
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

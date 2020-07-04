@@ -1,13 +1,21 @@
 class: CommandLineTool
-id: nw_clade.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nw_clade.cwl
 inputs:
-- id: s
-  doc: ': prints the siblings of the clade defined by the labels passed as arguments,
-    in the order in which they appear in the Newick. If -m is also passed, only prints
-    siblings if the labels passed as arguments form a monophyletic group.'
+- id: hm
+  doc: ''
   type: boolean
   inputBinding:
-    prefix: -s
+    prefix: -hm
+- id: filename_vertical_line
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
+- id: label
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

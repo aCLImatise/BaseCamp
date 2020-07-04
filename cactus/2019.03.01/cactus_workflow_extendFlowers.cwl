@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cactus_workflow_extendFlowers.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cactus_workflow_extendFlowers.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: seqsplit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqsplit.cwl
 inputs:
-- id: o
+- id: output_new_file
   doc: ': output the new FASTA file to <file>'
   type: File
   inputBinding:
@@ -31,6 +31,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --shortnames
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: seq_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

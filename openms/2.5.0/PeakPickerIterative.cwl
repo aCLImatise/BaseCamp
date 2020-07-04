@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: PeakPickerIterative.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PeakPickerIterative.cwl
 inputs:
 - id: in
   doc: "*        Input file  (valid formats: 'mzML')"
@@ -31,16 +31,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Algorithm parameters section
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
-- id: http
-  doc: ://www.openms.de/documentation/UTILS_PeakPickerIterative.html
-  type: boolean
-  inputBinding:
-    prefix: '- http'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

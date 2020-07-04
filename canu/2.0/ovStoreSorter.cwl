@@ -1,27 +1,27 @@
 class: CommandLineTool
-id: ovStoreSorter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ovStoreSorter.cwl
 inputs:
-- id: o
+- id: path_overlap_store
   doc: path to overlap store to create
   type: string
   inputBinding:
     prefix: -O
-- id: s
+- id: path_sequence_store
   doc: path to sequence store
   type: string
   inputBinding:
     prefix: -S
-- id: c
+- id: path_ovstoreconfig_file
   doc: path to ovStoreConfig configuration file
   type: string
   inputBinding:
     prefix: -C
-- id: s
+- id: slice_process_n
   doc: slice to process (1 ... N)
   type: string
   inputBinding:
     prefix: -s
-- id: m
+- id: maximum_memory_use
   doc: maximum memory to use, in gigabytes
   type: string
   inputBinding:
@@ -36,11 +36,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -deletelate
-- id: f
+- id: force_recompute_exists
   doc: force a recompute, even if the output exists or appears in progress
   type: boolean
   inputBinding:
     prefix: -f
+- id: opts
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

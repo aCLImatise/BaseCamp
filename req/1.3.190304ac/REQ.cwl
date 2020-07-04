@@ -1,11 +1,26 @@
 class: CommandLineTool
-id: REQ.cwl
+id: ../../../../home/ubuntu/BiocondaCli/REQ.cwl
 inputs:
-- id: v
+- id: verbose_mode
   doc: verbose mode
   type: boolean
   inputBinding:
     prefix: -v
+- id: d_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: t_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: outfile
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

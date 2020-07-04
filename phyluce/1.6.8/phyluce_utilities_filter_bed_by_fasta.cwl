@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_utilities_filter_bed_by_fasta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_utilities_filter_bed_by_fasta.cwl
 inputs:
 - id: bed
   doc: The BED file to filter.

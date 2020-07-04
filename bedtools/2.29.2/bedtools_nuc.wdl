@@ -2,24 +2,16 @@ version 1.0
 
 task BedtoolsNuc {
   input {
-    Boolean fiFi
-    Boolean bedBed
-    Boolean sS
-    Boolean seqSeq
-    Boolean patternPattern
-    Boolean cC
-    Boolean fullFullHeader
-    String byBy
+    String? fi
+    String? bed
   }
   command <<<
     bedtools nuc \
-      ~{true="-fi" false="" fiFi} \
-      ~{true="-bed" false="" bedBed} \
-      ~{true="-s" false="" sS} \
-      ~{true="-seq" false="" seqSeq} \
-      ~{true="-pattern" false="" patternPattern} \
-      ~{true="-C" false="" cC} \
-      ~{true="-fullHeader" false="" fullFullHeader} \
-      ~{if defined(byBy) then ("- By " +  '"' + byBy + '"') else ""}
+      ~{if defined(fi) then ("-fi " +  '"' + fi + '"') else ""} \
+      ~{if defined(bed) then ("-bed " +  '"' + bed + '"') else ""}
   >>>
+  parameter_meta {
+    fi: ""
+    bed: ""
+  }
 }

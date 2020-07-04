@@ -2,26 +2,13 @@ version 1.0
 
 task AlleleCounter.pl {
   input {
-    Boolean bamBam
-    Boolean outputOutput
-    Boolean lociLoci
-    Boolean refRef
-    Boolean minMinQual
-    Boolean mapMapQual
-    Boolean genderGender
-    Boolean snp6Snp6
-    Boolean versionVersion
+    String allele_counts_do_tpl
   }
   command <<<
     alleleCounter.pl \
-      ~{true="-bam" false="" bamBam} \
-      ~{true="-output" false="" outputOutput} \
-      ~{true="-loci" false="" lociLoci} \
-      ~{true="-ref" false="" refRef} \
-      ~{true="-minqual" false="" minMinQual} \
-      ~{true="-mapqual" false="" mapMapQual} \
-      ~{true="-gender" false="" genderGender} \
-      ~{true="-snp6" false="" snp6Snp6} \
-      ~{true="-version" false="" versionVersion}
+      ~{allele_counts_do_tpl}
   >>>
+  parameter_meta {
+    allele_counts_do_tpl: "Required: -bam      -b      BAM/CRAM file (expects co-located index) - if CRAM see '-ref' -output   -o      Output file [STDOUT] -loci     -l      Alternate loci file (just needs chr pos) - output is different, counts for each residue Optional: -ref      -r      genome.fa, required for CRAM (with colocated .fai) -minqual  -m      Minimum base quality to include (integer) [30] -mapqual  -q      Minimum mapping quality of read (integer) [35] -gender   -g      flag, presence indicates loci file to be treated as gender SNPs. - cannot be used with 's' -snp6     -s      flag, presence indicates loci file is SNP6 format. - cannot be used with 'g' - changes output format -help     -h      This message -version  -v      Version number"
+  }
 }

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: chado_admin_drop.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chado_admin_drop.cwl
 inputs:
-- id: dbname
-  doc: name of the database
-  type: string
-  inputBinding:
-    position: 0
 - id: verbose
   doc: verbose mode
   type: boolean
@@ -21,6 +16,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --use_password
+- id: dbname
+  doc: name of the database
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

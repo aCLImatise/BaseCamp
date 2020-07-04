@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: deblur.cwl
+id: ../../../../home/ubuntu/BiocondaCli/deblur.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

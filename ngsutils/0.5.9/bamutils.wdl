@@ -2,10 +2,13 @@ version 1.0
 
 task Bamutils {
   input {
-    String? commandCommand
+    String var_command
   }
   command <<<
     bamutils \
-      ~{commandCommand}
+      ~{var_command}
   >>>
+  parameter_meta {
+    var_command: ""
+  }
 }

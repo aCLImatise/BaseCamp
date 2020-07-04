@@ -2,14 +2,22 @@ version 1.0
 
 task PhmmerSeqdb {
   input {
-    Boolean optionsOptions
-    String? seqSeqFile
-    String? seqSeqDb
+    Boolean? options
+    String p_hmmer
+    String seq_file
+    String seq_db
   }
   command <<<
     phmmer seqdb \
-      ~{seqSeqFile} \
-      ~{true="-options" false="" optionsOptions} \
-      ~{seqSeqDb}
+      ~{p_hmmer} \
+      ~{seq_file} \
+      ~{seq_db} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    options: ""
+    p_hmmer: ""
+    seq_file: ""
+    seq_db: ""
+  }
 }

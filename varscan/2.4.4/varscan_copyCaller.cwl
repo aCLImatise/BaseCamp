@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: varscan_copyCaller.cwl
+id: ../../../../home/ubuntu/BiocondaCli/varscan_copyCaller.cwl
 inputs:
-- id: java
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: copy_caller
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: vars_can_copy_number
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
 - id: output_file
   doc: Output file to contain the calls
   type: boolean
@@ -71,6 +51,26 @@ inputs:
   type: string
   inputBinding:
     prefix: --recenter-down
+- id: jar
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -jar
+- id: java
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: copy_caller
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: vars_can_dot_copy_number
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

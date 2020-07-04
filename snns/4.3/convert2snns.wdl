@@ -2,10 +2,13 @@ version 1.0
 
 task Convert2snns {
   input {
-    String? controlControlFile
+    String control_file
   }
   command <<<
     convert2snns \
-      ~{controlControlFile}
+      ~{control_file}
   >>>
+  parameter_meta {
+    control_file: ""
+  }
 }

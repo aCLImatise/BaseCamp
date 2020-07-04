@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: vtools_gcoverage.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vtools_gcoverage.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: input_gvc_f
   doc: Path to input VCF file  [required]
   type: File

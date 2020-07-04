@@ -2,12 +2,16 @@ version 1.0
 
 task Piler {
   input {
-    String trsTrs
-    String outOut
+    String? trs
+    String? out
   }
   command <<<
     piler \
-      ~{if defined(trsTrs) then ("-trs " +  '"' + trsTrs + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""}
+      ~{if defined(trs) then ("-trs " +  '"' + trs + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""}
   >>>
+  parameter_meta {
+    trs: ""
+    out: ""
+  }
 }

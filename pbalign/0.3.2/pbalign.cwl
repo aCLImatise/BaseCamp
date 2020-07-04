@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: pbalign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pbalign.cwl
 inputs:
-- id: input_file_name
-  doc: SubreadSet or unaligned .bam
-  type: string
-  inputBinding:
-    position: 0
-- id: reference_path
-  doc: Reference DataSet or FASTA file
-  type: string
-  inputBinding:
-    position: 1
-- id: output_file_name
-  doc: Alignment results dataset
-  type: string
-  inputBinding:
-    position: 2
 - id: log_file
   doc: 'Write the log to file. Default(None) will write to stdout. (default: None)'
   type: string
@@ -173,6 +158,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --tmpDir
+- id: input_file_name
+  doc: SubreadSet or unaligned .bam
+  type: string
+  inputBinding:
+    position: 0
+- id: reference_path
+  doc: Reference DataSet or FASTA file
+  type: string
+  inputBinding:
+    position: 1
+- id: output_file_name
+  doc: Alignment results dataset
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

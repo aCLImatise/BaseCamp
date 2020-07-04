@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ericscript.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ericscript.pl.cwl
 inputs:
 - id: db_folder
   doc: where database is stored. Default is ERICSCRIPT_FOLDER/lib/
@@ -33,12 +33,6 @@ inputs:
   type: long
   inputBinding:
     prefix: --readlength
-- id: refid
-  doc: Genome reference identification. Run ericscript.pl --printdb to see available
-    refid [homo_sapiens].
-  type: boolean
-  inputBinding:
-    prefix: --refid
 - id: verbose
   doc: use verbose output
   type: boolean
@@ -84,17 +78,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ie
-- id: db_folder
-  doc: 'where database is stored. Default is ERICSCRIPT_FOLDER/lib/ '
-  type: boolean
-  inputBinding:
-    prefix: --dbfolder
-- id: background_1
+- id: background_one
   doc: 'Fastq file (forward)  for generating background reads. '
   type: boolean
   inputBinding:
     prefix: --background_1
-- id: background_2
+- id: background_two
   doc: 'Fastq file (reverse) for generating background reads. '
   type: boolean
   inputBinding:
@@ -104,11 +93,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --nreads_background
-- id: output_folder
-  doc: where statistics file will be stored [HOME/ericscript_calcstats]
-  type: string
-  inputBinding:
-    prefix: --outputfolder
 - id: results_folder
   doc: path to folder containing algorithm results.
   type: string
@@ -129,11 +113,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --dataset
-- id: read_length
-  doc: 'length of synthetic reads '
-  type: long
-  inputBinding:
-    prefix: --readlength
 - id: norm_roc
   doc: factor to normalize the score given by the algorithm.
   type: long
@@ -144,27 +123,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --man
-- id: verbose
-  doc: use verbose output.
-  type: boolean
-  inputBinding:
-    prefix: --verbose
 - id: sample_name
   doc: Choose a name for your sample. Default is "MyEric"
   type: boolean
   inputBinding:
     prefix: --samplename
-- id: output_folder
-  doc: Folder that will contain all the results of the analysis. Default is YOUR_HOME/SAMPLENAME
-  type: boolean
-  inputBinding:
-    prefix: --outputfolder
-- id: db_folder
-  doc: Folder that contains transcriptome sequences and information of the downloaded
-    species. Default is ERICSCRIPT_FOLDER/lib
-  type: boolean
-  inputBinding:
-    prefix: --dbfolder
 - id: min_reads
   doc: Minimum reads to consider discordant alignments. Default is 3 reads with minimum
     MAPQ.
@@ -207,28 +170,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --downdb
-- id: refid
-  doc: Genome reference identification. Run ericscript.pl --printdb to see available
-    refid.[homo_sapiens]
-  type: boolean
-  inputBinding:
-    prefix: --refid
-- id: ens_version
-  doc: Download data of a specific version of Ensembl. Default is downloading the
-    latest version of Ensembl. Minimum supported version is 70.
-  type: boolean
-  inputBinding:
-    prefix: --ensversion
-- id: print_db
-  doc: Print a list of available genomes and exit.
-  type: boolean
-  inputBinding:
-    prefix: --printdb
 - id: demo
   doc: Run a demonstration of EricScript on simulated reads.
   type: boolean
   inputBinding:
     prefix: --demo
+- id: arguments
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

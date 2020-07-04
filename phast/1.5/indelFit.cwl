@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: indelFit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/indelFit.cwl
 inputs:
 - id: alpha
   doc: Starting value of alpha, the insertion rate.  Default is 0.02.
@@ -45,6 +45,16 @@ inputs:
   type: File
   inputBinding:
     prefix: --log
+- id: in_del_history_d_oti_h
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: tree_dot_nh
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

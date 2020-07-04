@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ansible_pull.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ansible_pull.cwl
 inputs:
-- id: playbook_yml
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: accept_host_key
   doc: adds the hostkey for the repo url if not already added
   type: boolean
@@ -99,6 +94,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: playbook_doty_ml
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

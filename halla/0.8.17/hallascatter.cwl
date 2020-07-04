@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hallascatter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hallascatter.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

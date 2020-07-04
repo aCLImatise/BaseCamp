@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bam_stats.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bam_stats.pl.cwl
 inputs:
 - id: input
   doc: -i   File path to read in.
@@ -22,12 +22,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -threads
-- id: plots
-  doc: Directory to place quality plot images. If omitted no information about base
-    qualities will be collected, thus speeding up the stats collection.
-  type: boolean
-  inputBinding:
-    prefix: -plots
 - id: man
   doc: Prints the manual page and exits.
   type: boolean
@@ -38,6 +32,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -version
+- id: file_dot_dot_dot
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

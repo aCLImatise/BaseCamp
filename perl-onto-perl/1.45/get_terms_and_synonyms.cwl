@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: get_terms_and_synonyms.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_terms_and_synonyms.pl.cwl
 inputs:
-- id: f
+- id: obo_input_file
   doc: OBO input file
   type: boolean
   inputBinding:

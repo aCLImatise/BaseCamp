@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: buildCustomModels.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/buildCustomModels.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

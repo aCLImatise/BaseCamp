@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csvtk_uniq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csvtk_uniq.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: fields
   doc: select only these fields. e.g -f 1,2 or -f columnA,columnB (default "1")
   type: string
@@ -91,6 +86,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tabs
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

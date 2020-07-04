@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scanpy_run_umap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scanpy_run_umap.cwl
 inputs:
 - id: input_format
   doc: '[anndata|loom] Input object format.  [default: anndata]'
@@ -39,8 +39,9 @@ inputs:
   inputBinding:
     prefix: --random-state
 - id: key_added
-  doc: '[,TEXT...]      Key under which to add the computed results'
-  type: string
+  doc: Key under which to add the computed results
+  type:
+  - string
   inputBinding:
     prefix: --key-added
 - id: export_embedding
@@ -94,6 +95,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --negative-sample-rate
+- id: input_obj
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_obj
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

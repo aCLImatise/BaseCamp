@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mkGottchaXML.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mkGottchaXML.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

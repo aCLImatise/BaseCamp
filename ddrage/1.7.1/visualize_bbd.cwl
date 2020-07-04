@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: visualize_bbd.cwl
+id: ../../../../home/ubuntu/BiocondaCli/visualize_bbd.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

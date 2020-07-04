@@ -2,14 +2,19 @@ version 1.0
 
 task DgeniesInforun {
   input {
-    String messageMessage
-    String typeType
-    Boolean clearClear
+    String? message
+    String? type
+    Boolean? clear
   }
   command <<<
     dgenies inforun \
-      ~{if defined(messageMessage) then ("--message " +  '"' + messageMessage + '"') else ""} \
-      ~{if defined(typeType) then ("--type " +  '"' + typeType + '"') else ""} \
-      ~{true="--clear" false="" clearClear}
+      ~{if defined(message) then ("--message " +  '"' + message + '"') else ""} \
+      ~{if defined(type) then ("--type " +  '"' + type + '"') else ""} \
+      ~{true="--clear" false="" clear}
   >>>
+  parameter_meta {
+    message: "Message to add"
+    type: "Type of message"
+    clear: "Remove message"
+  }
 }

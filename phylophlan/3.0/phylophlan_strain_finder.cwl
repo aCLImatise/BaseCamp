@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phylophlan_strain_finder.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phylophlan_strain_finder.cwl
 inputs:
 - id: input
   doc: 'Specify the file of the phylogenetic tree as generated from phylophlan.py
@@ -40,7 +40,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --overwrite
-- id: s
+- id: specify_separator_use
   doc: '{;,,,      }, --separator {;,,,    } Specify the separator to use in the output
     (default: )'
   type: boolean

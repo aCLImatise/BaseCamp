@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: place_seqs.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/place_seqs.py.cwl
 inputs:
 - id: study_fast_a
   doc: FASTA of unaligned study sequences.
@@ -7,7 +7,7 @@ inputs:
   inputBinding:
     prefix: --study_fasta
 - id: ref_dir
-  doc: 'Directory containing reference sequence files (default: /tmp/tmpjqcugf20/lib/python3.6/site-
+  doc: 'Directory containing reference sequence files (default: /tmp/tmpqdk0dqqj/lib/python3.6/site-
     packages/picrust2/default_files/prokaryotic/pro_ref). Please see the online documentation
     for how to name the files in this directory in order to use custom reference files.'
   type: File

@@ -2,14 +2,19 @@ version 1.0
 
 task GsutilMv {
   input {
-    Boolean pP
-    String? srcSrcUrl
-    String? dstDstUrl
+    Boolean? p
+    String src_url
+    String dst_url
   }
   command <<<
     gsutil mv \
-      ~{srcSrcUrl} \
-      ~{true="-p" false="" pP} \
-      ~{dstDstUrl}
+      ~{src_url} \
+      ~{dst_url} \
+      ~{true="-p" false="" p}
   >>>
+  parameter_meta {
+    p: ""
+    src_url: ""
+    dst_url: ""
+  }
 }

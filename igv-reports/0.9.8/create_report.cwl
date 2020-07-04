@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: create_report.cwl
+id: ../../../../home/ubuntu/BiocondaCli/create_report.cwl
 inputs:
-- id: sites
-  doc: vcf file defining variants, required
-  type: string
-  inputBinding:
-    position: 0
-- id: fast_a
-  doc: reference fasta file, required
-  type: string
-  inputBinding:
-    position: 1
 - id: ideogram
   doc: ideogram file in UCSC cytoIdeo format
   type: string
@@ -56,6 +46,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --standalone
+- id: sites
+  doc: vcf file defining variants, required
+  type: string
+  inputBinding:
+    position: 0
+- id: fast_a
+  doc: reference fasta file, required
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

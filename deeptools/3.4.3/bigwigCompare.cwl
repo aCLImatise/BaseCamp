@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: bigwigCompare.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bigwigCompare.cwl
 inputs:
-- id: bigwig1
+- id: bigwig_one
   doc: 'file, -b1 Bigwig file Bigwig file 1. Usually the file for the treatment. (default:
     None)'
   type: string
   inputBinding:
     prefix: --bigwig1
-- id: bigwig2
+- id: bigwig_two
   doc: 'file, -b2 Bigwig file Bigwig file 2. Usually the file for the control. (default:
     None)'
   type: string
@@ -106,6 +106,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --deepBlueKeepTemp
+- id: binsize
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: --binSize
+- id: bp
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

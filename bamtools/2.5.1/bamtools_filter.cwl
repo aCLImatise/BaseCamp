@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamtools_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamtools_filter.cwl
 inputs:
 - id: in
   doc: the input BAM file(s) [stdin]
@@ -69,64 +69,63 @@ inputs:
   inputBinding:
     prefix: -tag
 - id: is_duplicate
-  doc: <true/false>         keep only alignments that are marked as duplicate? [true]
-  type: boolean
+  doc: keep only alignments that are marked as duplicate? [true]
+  type: string
   inputBinding:
     prefix: -isDuplicate
 - id: is_failed_qc
-  doc: <true/false>          keep only alignments that failed QC? [true]
-  type: boolean
+  doc: keep only alignments that failed QC? [true]
+  type: string
   inputBinding:
     prefix: -isFailedQC
 - id: is_first_mate
-  doc: <true/false>         keep only alignments marked as first mate? [true]
-  type: boolean
+  doc: keep only alignments marked as first mate? [true]
+  type: string
   inputBinding:
     prefix: -isFirstMate
 - id: is_mapped
-  doc: <true/false>            keep only alignments that were mapped? [true]
-  type: boolean
+  doc: keep only alignments that were mapped? [true]
+  type: string
   inputBinding:
     prefix: -isMapped
 - id: is_mate_mapped
-  doc: <true/false>        keep only alignments with mates that mapped [true]
-  type: boolean
+  doc: keep only alignments with mates that mapped [true]
+  type: string
   inputBinding:
     prefix: -isMateMapped
 - id: is_mate_reverse_strand
-  doc: <true/false> keep only alignments with mate on reverese strand? [true]
-  type: boolean
+  doc: keep only alignments with mate on reverese strand? [true]
+  type: string
   inputBinding:
     prefix: -isMateReverseStrand
 - id: is_paired
-  doc: <true/false>            keep only alignments that were sequenced as paired?
-    [true]
-  type: boolean
+  doc: keep only alignments that were sequenced as paired? [true]
+  type: string
   inputBinding:
     prefix: -isPaired
 - id: is_primary_alignment
-  doc: <true/false>  keep only alignments marked as primary? [true]
-  type: boolean
+  doc: keep only alignments marked as primary? [true]
+  type: string
   inputBinding:
     prefix: -isPrimaryAlignment
 - id: is_proper_pair
-  doc: <true/false>        keep only alignments that passed PE resolution? [true]
-  type: boolean
+  doc: keep only alignments that passed PE resolution? [true]
+  type: string
   inputBinding:
     prefix: -isProperPair
 - id: is_reverse_strand
-  doc: <true/false>     keep only alignments on reverse strand? [true]
-  type: boolean
+  doc: keep only alignments on reverse strand? [true]
+  type: string
   inputBinding:
     prefix: -isReverseStrand
 - id: is_second_mate
-  doc: <true/false>        keep only alignments marked as second mate? [true]
-  type: boolean
+  doc: keep only alignments marked as second mate? [true]
+  type: string
   inputBinding:
     prefix: -isSecondMate
 - id: is_singleton
-  doc: <true/false>         keep only singletons [true]
-  type: boolean
+  doc: keep only singletons [true]
+  type: string
   inputBinding:
     prefix: -isSingleton
 outputs: []

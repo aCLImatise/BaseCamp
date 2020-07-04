@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ann_upfeats_pfam_www_e.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ann_upfeats_pfam_www_e.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

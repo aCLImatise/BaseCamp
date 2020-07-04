@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bgziptabix.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bgziptabix.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

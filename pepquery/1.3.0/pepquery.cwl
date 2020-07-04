@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pepquery.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pepquery.cwl
 inputs:
 - id: aa
   doc: Whether or not to consider aa substitution modifications when perform modification
@@ -12,7 +12,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -anno
-- id: c
+- id: max_missed_cleavages
   doc: The max missed cleavages, default is 2
   type: string
   inputBinding:
@@ -33,13 +33,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -decoy
-- id: e
+- id: non_enzyme_trypsin
   doc: 0:Non enzyme, 1:Trypsin (default), 2:Trypsin (no P rule), 3:Arg-C, 4:Arg-C
     (no P rule), 5:Arg-N, 6:Glu-C, 7:Lys-C
   type: string
   inputBinding:
     prefix: -e
-- id: f
+- id: frame_translate_sequence
   doc: 'The frame to translate DNA sequence to protein. The right format is like this:
     "1,2,3,4,5,6","1,2,3","1". "0" means to keep the longest frame. In default, for
     each frame only the longest protein is used.'
@@ -63,7 +63,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -hc
-- id: i
+- id: take_protein_dna
   doc: Take protein, DNA or VCF as input
   type: string
   inputBinding:
@@ -73,7 +73,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -itol
-- id: m
+- id: scoring_hyperscore_default
   doc: 'Scoring method: 1=HyperScore (default), 2=MVH'
   type: string
   inputBinding:
@@ -120,12 +120,12 @@ inputs:
   type: string
   inputBinding:
     prefix: -ms
-- id: n
+- id: number_random_peptides
   doc: The number of random peptides, default is 1000
   type: string
   inputBinding:
     prefix: -n
-- id: o
+- id: output_dir
   doc: Output dir
   type: string
   inputBinding:
@@ -145,7 +145,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -printPTM
-- id: t
+- id: input_type_proteindnavcfbedgtf
   doc: 'Input type: 1=>protein,2=>DNA,3=>VCF,4=>BED,5=>GTF'
   type: string
   inputBinding:

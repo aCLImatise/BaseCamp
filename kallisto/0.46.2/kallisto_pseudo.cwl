@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: kallisto_pseudo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kallisto_pseudo.cwl
 inputs:
-- id: arguments
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: fast_q_files
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: quant
   doc: Quantify using EM algorithm (only in batch mode)
   type: boolean
@@ -21,6 +11,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --single
+- id: arguments
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: fast_q_files
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

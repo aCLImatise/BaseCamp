@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: tabix.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tabix.cwl
 inputs:
+- id: zero_based
+  doc: coordinates are zero-based
+  type: boolean
+  inputBinding:
+    prefix: --zero-based
 - id: begin
   doc: column number for region start [4]
   type: long
@@ -71,11 +76,16 @@ inputs:
   type: File
   inputBinding:
     prefix: --targets
-- id: d
+- id: download_index_file
   doc: do not download the index file
   type: boolean
   inputBinding:
     prefix: -D
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

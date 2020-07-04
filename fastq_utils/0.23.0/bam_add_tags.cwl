@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bam_add_tags.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bam_add_tags.cwl
 inputs:
 - id: in_bam
   doc: ''
@@ -16,7 +16,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tx
-- id: tx2gx
+- id: tx_two_gx
   doc: ''
   type: string
   inputBinding:

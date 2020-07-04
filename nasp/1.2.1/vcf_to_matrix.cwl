@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcf_to_matrix.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf_to_matrix.cwl
 inputs:
 - id: mode
   doc: Data passing mode, must be set to 'commandline' or 'xml'.

@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: ssu_esl_alimerge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ssu_esl_alimerge.cwl
 inputs:
-- id: o
+- id: output_final_alignment
   doc: ': output the final alignment to file <f>, not stdout'
   type: string
   inputBinding:
     prefix: -o
-- id: v
+- id: print_info_stdout
   doc: ': print info on merge to stdout; requires -o'
   type: boolean
   inputBinding:

@@ -1,22 +1,17 @@
 class: CommandLineTool
-id: dcmgpdir.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmgpdir.cwl
 inputs:
-- id: dcm_file_in
-  doc: ref. DICOM file (or directory to be scanned)
-  type: string
-  inputBinding:
-    position: 0
-- id: q
+- id: _quiet_print
   doc: --quiet                  quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose                verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug                  debug mode, print debug information
   type: boolean
   inputBinding:
@@ -32,7 +27,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lc
-- id: a
+- id: _abortinconsistfile_abort
   doc: --abort-inconsist-file   abort on first inconsistent file
   type: boolean
   inputBinding:
@@ -42,7 +37,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-xfer-check
-- id: w
+- id: _discard_write
   doc: --discard                do not write out DICOMDIR
   type: boolean
   inputBinding:
@@ -52,16 +47,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -nb
-- id: u
+- id: _disable_support
   doc: --disable-new-vr         disable support for new VRs, convert to OB
   type: boolean
   inputBinding:
     prefix: -u
-- id: e
+- id: _lengthundefined_write
   doc: --length-undefined       write with undefined lengths
   type: boolean
   inputBinding:
     prefix: -e
+- id: dcm_file_in
+  doc: ref. DICOM file (or directory to be scanned)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

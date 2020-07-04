@@ -2,10 +2,13 @@ version 1.0
 
 task ShowDiff {
   input {
-    String? deltaDeltaFile
+    String delta_file
   }
   command <<<
     show-diff \
-      ~{deltaDeltaFile}
+      ~{delta_file}
   >>>
+  parameter_meta {
+    delta_file: ""
+  }
 }

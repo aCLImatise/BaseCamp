@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: chainSort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chainSort.cwl
 inputs:
-- id: in_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: outfile
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: target
   doc: on target start rather than score
   type: string
@@ -27,6 +17,16 @@ inputs:
   type: string
   inputBinding:
     prefix: -index
+- id: in_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: outfile
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,27 +1,17 @@
 class: CommandLineTool
-id: dsr2xml.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dsr2xml.cwl
 inputs:
-- id: dsr_file_in
-  doc: DICOM SR input filename to be converted
-  type: string
-  inputBinding:
-    position: 0
-- id: xml_file_out
-  doc: 'XML output filename (default: stdout)'
-  type: string
-  inputBinding:
-    position: 1
-- id: q
+- id: _quiet_quiet
   doc: --quiet                 quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose               verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug                 debug mode, print debug information
   type: boolean
   inputBinding:
@@ -37,12 +27,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lc
-- id: f
+- id: _readdataset_read
   doc: --read-dataset          read data set without file meta information
   type: boolean
   inputBinding:
     prefix: -f
-- id: t
+- id: _readxferauto_use
   doc: =  --read-xfer-auto        use TS recognition (default)
   type: boolean
   inputBinding:
@@ -98,6 +88,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --disable-vr-checker
+- id: dsr_file_in
+  doc: DICOM SR input filename to be converted
+  type: string
+  inputBinding:
+    position: 0
+- id: xml_file_out
+  doc: 'XML output filename (default: stdout)'
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

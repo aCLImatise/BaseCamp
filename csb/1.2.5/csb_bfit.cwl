@@ -1,22 +1,12 @@
 class: CommandLineTool
-id: csb_bfit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csb_bfit.cwl
 inputs:
-- id: pdb1
-  doc: full path to the first structure
-  type: string
-  inputBinding:
-    position: 0
-- id: pdb2
-  doc: full path to the second structure
-  type: string
-  inputBinding:
-    position: 1
-- id: chain_1
+- id: chain_one
   doc: Chain of the first structure (default=A)
   type: string
   inputBinding:
     prefix: --chain1
-- id: chain_2
+- id: chain_two
   doc: Chain of the second structure (default=A)
   type: string
   inputBinding:
@@ -47,6 +37,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --em
+- id: pdb_one
+  doc: full path to the first structure
+  type: string
+  inputBinding:
+    position: 0
+- id: pdb_two
+  doc: full path to the second structure
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

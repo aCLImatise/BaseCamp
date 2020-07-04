@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scanpy_find_markers.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scanpy_find_markers.cwl
 inputs:
 - id: input_format
   doc: '[anndata|loom] Input object format.  [default: anndata]'
@@ -39,9 +39,9 @@ inputs:
   inputBinding:
     prefix: --groupby
 - id: groups
-  doc: '[,TEXT...]         Subset of groups to which comparison shall be restricted.  [default:
-    all]'
-  type: string
+  doc: 'Subset of groups to which comparison shall be restricted.  [default: all]'
+  type:
+  - string
   inputBinding:
     prefix: --groups
 - id: reference
@@ -91,6 +91,16 @@ inputs:
   type: File
   inputBinding:
     prefix: --save
+- id: input_obj
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_obj
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

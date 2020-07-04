@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filter_gff_sequence.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_gff_sequence.cwl
 inputs:
 - id: sorted
   doc: If the GFF file is sorted (all of a sequence annotations are contiguos) can
@@ -34,6 +34,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --progress
+- id: input_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

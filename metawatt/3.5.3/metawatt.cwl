@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: metawatt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/metawatt.cwl
 inputs:
 - id: threads
   doc: '[number of threads/processors]'
@@ -26,6 +26,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --check-dependencies
+- id: jar
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -jar
+- id: java
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

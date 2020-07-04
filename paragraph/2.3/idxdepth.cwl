@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: idxdepth.cwl
+id: ../../../../home/ubuntu/BiocondaCli/idxdepth.cwl
 inputs:
-- id: b
+- id: arg_bam_cram
   doc: '[ --bam ] arg                      BAM / CRAM input file'
   type: boolean
   inputBinding:
@@ -11,18 +11,18 @@ inputs:
   type: string
   inputBinding:
     prefix: --bam-index
-- id: o
+- id: arg_output_file
   doc: '[ --output ] arg                   Output file name. Will output to stdout
     if omitted.'
   type: boolean
   inputBinding:
     prefix: -o
-- id: o
+- id: arg_output_binned
   doc: '[ --output-bins ] arg              Output binned coverage in tsv format.'
   type: boolean
   inputBinding:
     prefix: -O
-- id: r
+- id: arg_fasta_reference
   doc: '[ --reference ] arg                FASTA with reference genome'
   type: boolean
   inputBinding:
@@ -32,7 +32,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --altcontig
-- id: i
+- id: arg_regex_identify
   doc: '[ --include-regex ] arg            Regex to identify contigs to include'
   type: boolean
   inputBinding:

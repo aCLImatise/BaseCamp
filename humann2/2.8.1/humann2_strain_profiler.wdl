@@ -2,20 +2,28 @@ version 1.0
 
 task Humann2StrainProfiler {
   input {
-    String inputInput
-    String criticalCriticalMean
-    String criticalCriticalCount
-    String pP
-    String criticalCriticalSamples
-    String limitLimit
+    String? original_output_table
+    String? critical_mean
+    String? critical_count
+    String? pinterval__pinterval
+    String? critical_samples
+    String? limit
   }
   command <<<
     humann2_strain_profiler \
-      ~{if defined(inputInput) then ("--input " +  '"' + inputInput + '"') else ""} \
-      ~{if defined(criticalCriticalMean) then ("--critical_mean " +  '"' + criticalCriticalMean + '"') else ""} \
-      ~{if defined(criticalCriticalCount) then ("--critical_count " +  '"' + criticalCriticalCount + '"') else ""} \
-      ~{if defined(pP) then ("-p " +  '"' + pP + '"') else ""} \
-      ~{if defined(criticalCriticalSamples) then ("--critical_samples " +  '"' + criticalCriticalSamples + '"') else ""} \
-      ~{if defined(limitLimit) then ("--limit " +  '"' + limitLimit + '"') else ""}
+      ~{if defined(original_output_table) then ("--input " +  '"' + original_output_table + '"') else ""} \
+      ~{if defined(critical_mean) then ("--critical_mean " +  '"' + critical_mean + '"') else ""} \
+      ~{if defined(critical_count) then ("--critical_count " +  '"' + critical_count + '"') else ""} \
+      ~{if defined(pinterval__pinterval) then ("-p " +  '"' + pinterval__pinterval + '"') else ""} \
+      ~{if defined(critical_samples) then ("--critical_samples " +  '"' + critical_samples + '"') else ""} \
+      ~{if defined(limit) then ("--limit " +  '"' + limit + '"') else ""}
   >>>
+  parameter_meta {
+    original_output_table: "Original output table (tsv or biom format); default=[TSV/STDIN]"
+    critical_mean: "Default mean non-zero gene abundance for inclusion; default=10.0"
+    critical_count: "Default non-zero number of genes for inclusion; default=500"
+    pinterval__pinterval: "PINTERVAL, --pinterval PINTERVAL PINTERVAL Only genes with prevalence in this interval are allowed; default=[1e-10, 1]"
+    critical_samples: "Threshold number of samples having strain; default=2"
+    limit: "Limit output to species matching a particular pattern, e.g. 'Streptococcus'; default=OFF"
+  }
 }

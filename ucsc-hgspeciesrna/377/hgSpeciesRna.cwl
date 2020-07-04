@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: hgSpeciesRna.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hgSpeciesRna.cwl
 inputs:
+- id: est
+  doc: '- If set will get ESTs rather than mRNAs'
+  type: boolean
+  inputBinding:
+    prefix: -est
+- id: filter
+  doc: '- only read accessions listed in file'
+  type: File
+  inputBinding:
+    prefix: -filter
 - id: database
   doc: ''
   type: string
@@ -16,21 +26,11 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: output_fa
+- id: output_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: est
-  doc: '- If set will get ESTs rather than mRNAs'
-  type: boolean
-  inputBinding:
-    prefix: -est
-- id: filter
-  doc: accessions listed in file
-  type: File
-  inputBinding:
-    prefix: -filter
 outputs: []
 cwlVersion: v1.1
 baseCommand:

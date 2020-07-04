@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfrandom.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfrandom.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: base64.cwl
+id: ../../../../home/ubuntu/BiocondaCli/base64.cwl
 inputs:
 - id: decode
   doc: decode data
@@ -17,6 +17,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --wrap
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

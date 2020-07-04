@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: multievolve.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/multievolve.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

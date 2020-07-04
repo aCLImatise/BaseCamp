@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: seurat_read_10x.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seurat_read_10x.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pdb_parse.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pdb_parse.pl.cwl
 inputs:
 - id: pdb_file
   doc: ''

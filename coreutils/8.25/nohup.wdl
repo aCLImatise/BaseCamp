@@ -1,7 +1,17 @@
 version 1.0
 
 task Nohup {
+  input {
+    String var_command
+    String? arg
+  }
   command <<<
-    nohup
+    nohup \
+      ~{var_command} \
+      ~{arg}
   >>>
+  parameter_meta {
+    var_command: ""
+    arg: ""
+  }
 }

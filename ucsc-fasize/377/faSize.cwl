@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: faSize.cwl
+id: ../../../../home/ubuntu/BiocondaCli/faSize.cwl
 inputs:
 - id: detailed
   doc: outputs name and size of each record has the side effect of printing nothing
@@ -12,6 +12,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -tab
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

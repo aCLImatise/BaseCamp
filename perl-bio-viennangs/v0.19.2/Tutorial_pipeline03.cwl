@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Tutorial_pipeline03.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Tutorial_pipeline03.pl.cwl
 inputs:
 - id: out
   doc: Destination folder for the output Track Hub.
@@ -34,6 +34,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --man
+- id: i
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -I
+- id: path
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
+- id: url
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

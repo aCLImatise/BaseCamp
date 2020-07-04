@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dimspy_process_scans.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dimspy_process_scans.cwl
 inputs:
 - id: input
   doc: Directory (*.raw, *.mzml or tab-delimited peaklist files), single *.mzml/*.raw
@@ -60,19 +60,19 @@ inputs:
   type: string
   inputBinding:
     prefix: --ringing-threshold
-- id: e
+- id: end_scantype__includescanevents
   doc: end scan_type, --include-scan-events start end scan_type Scan events to select.
     E.g. 100.0 200.0 sim or 50.0 1000.0 full
   type: string
   inputBinding:
     prefix: -e
-- id: x
+- id: end_scantype__excludescanevents
   doc: end scan_type, --exclude-scan-events start end scan_type Scan events to select.
     E.g. 100.0 200.0 sim or 50.0 1000.0 full
   type: string
   inputBinding:
     prefix: -x
-- id: z
+- id: end__removemzrange
   doc: end, --remove-mz-range start end M/z range(s) to remove. E.g. 100.0 102.0 or
     140.0 145.0.
   type: string

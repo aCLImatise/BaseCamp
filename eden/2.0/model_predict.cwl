@@ -1,21 +1,21 @@
 class: CommandLineTool
-id: model_predict.cwl
+id: ../../../../home/ubuntu/BiocondaCli/model_predict.cwl
 inputs:
-- id: i
-  doc: ''
+- id: input_file
+  doc: 'Path to file containing input. (default: None)'
   type: string
   inputBinding:
-    prefix: -i
-- id: m
-  doc: ''
+    prefix: --input-file
+- id: model_file
+  doc: 'Path to a fit model file. (default: model)'
   type: string
   inputBinding:
-    prefix: -m
-- id: o
-  doc: ''
+    prefix: --model-file
+- id: output_dir
+  doc: 'Path to output directory. (default: out)'
   type: string
   inputBinding:
-    prefix: -o
+    prefix: --output-dir
 outputs: []
 cwlVersion: v1.1
 baseCommand:

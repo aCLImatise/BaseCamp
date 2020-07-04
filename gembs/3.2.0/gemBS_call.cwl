@@ -1,6 +1,81 @@
 class: CommandLineTool
-id: gemBS_call.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gemBS_call.cwl
 inputs:
+- id: contig_list
+  doc: List of contigs on which to perform the methylation calling.
+  type: string[]
+  inputBinding:
+    prefix: --contig-list
+- id: sample_name
+  doc: Name of sample to be called
+  type: string
+  inputBinding:
+    prefix: --sample-name
+- id: barcode
+  doc: Barcode of sample to be called
+  type: string
+  inputBinding:
+    prefix: --barcode
+- id: mapq_threshold
+  doc: Threshold for MAPQ scores
+  type: string
+  inputBinding:
+    prefix: --mapq-threshold
+- id: qual_threshold
+  doc: Threshold for base quality scores
+  type: string
+  inputBinding:
+    prefix: --qual-threshold
+- id: right_trim
+  doc: 'Bases to trim from right of read pair, Default: 0'
+  type: string
+  inputBinding:
+    prefix: --right-trim
+- id: left_trim
+  doc: 'Bases to trim from left of read pair, Default: 5'
+  type: string
+  inputBinding:
+    prefix: --left-trim
+- id: threads
+  doc: 'Number of threads, Default: 1'
+  type: string
+  inputBinding:
+    prefix: --threads
+- id: jobs
+  doc: Number of parallel jobs
+  type: string
+  inputBinding:
+    prefix: --jobs
+- id: keep_duplicates
+  doc: Do not merge duplicate reads.
+  type: boolean
+  inputBinding:
+    prefix: --keep-duplicates
+- id: ignore_duplicate_flag
+  doc: Ignore duplicate flag from SAM/BAM files.
+  type: boolean
+  inputBinding:
+    prefix: --ignore_duplicate_flag
+- id: keep_unmatched
+  doc: Do not discard reads that do not form proper pairs.
+  type: boolean
+  inputBinding:
+    prefix: --keep-unmatched
+- id: species
+  doc: 'Sample species name. Default: None'
+  type: string
+  inputBinding:
+    prefix: --species
+- id: remove
+  doc: Remove individual BCF files after merging.
+  type: boolean
+  inputBinding:
+    prefix: --remove
+- id: haploid
+  doc: Force genotype calls to be homozygous
+  type: string
+  inputBinding:
+    prefix: --haploid
 - id: conversion
   doc: Set under and over conversion rates (under,over)
   type: string

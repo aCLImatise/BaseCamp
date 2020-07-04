@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: deblur_build_biom_table.cwl
+id: ../../../../home/ubuntu/BiocondaCli/deblur_build_biom_table.cwl
 inputs:
 - id: min_reads
   doc: 'In output biom table - keep only sequences appearing at least min-reads in
@@ -24,6 +24,16 @@ inputs:
   type: File
   inputBinding:
     prefix: --log-file
+- id: seqs_fp
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_biom_fp
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

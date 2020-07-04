@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tagore.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tagore.cwl
 inputs:
 - id: input
   doc: Input BED-like file
@@ -34,6 +34,31 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: output
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 1
+- id: prefix
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: hg_seven_eight_slash_hg_three_eight
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: png_slash_pdf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

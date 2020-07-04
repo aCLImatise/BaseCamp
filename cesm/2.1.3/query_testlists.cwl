@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: query_testlists.cwl
+id: ../../../../home/ubuntu/BiocondaCli/query_testlists.cwl
 inputs:
 - id: debug
-  doc: Print debug information (very verbose) to file /tmp/tmpyq76ofy5/query_testlists.log
+  doc: Print debug information (very verbose) to file /tmp/tmpeksbd5_3/query_testlists.log
   type: boolean
   inputBinding:
     prefix: --debug

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: EMMIX.cwl
+id: ../../../../home/ubuntu/BiocondaCli/EMMIX.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

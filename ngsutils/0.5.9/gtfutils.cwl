@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gtfutils.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gtfutils.cwl
 inputs:
 - id: command
   doc: ''

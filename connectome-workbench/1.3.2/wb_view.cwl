@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: wb_view.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wb_view.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

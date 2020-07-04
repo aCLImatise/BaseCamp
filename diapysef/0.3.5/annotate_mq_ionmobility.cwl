@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: annotate_mq_ionmobility.py_output_prefix.cwl
+id: ../../../../home/ubuntu/BiocondaCli/annotate_mq_ionmobility.py.cwl
 inputs:
 - id: mq_out_dir
   doc: ''
@@ -20,4 +20,3 @@ outputs: []
 cwlVersion: v1.1
 baseCommand:
 - annotate_mq_ionmobility.py
-- output_prefix

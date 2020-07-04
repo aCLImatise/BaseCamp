@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: GeneFamilyPhylogenyBuilder.cwl
+id: ../../../../home/ubuntu/BiocondaCli/GeneFamilyPhylogenyBuilder.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

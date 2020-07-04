@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ppi2html.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ppi2html.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

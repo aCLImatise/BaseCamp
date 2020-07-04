@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: hera_build.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hera_build.cwl
 inputs:
-- id: full_index
-  doc: 0/1
-  type: boolean
-  inputBinding:
-    prefix: --full_index
-- id: grch38
-  doc: 0/1
-  type: boolean
-  inputBinding:
-    prefix: --grch38
 - id: fast_a
   doc: input reference genome fasta file
   type: boolean
@@ -31,7 +21,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --full_index
-- id: grch38
+- id: gr_ch_three_eight
   doc: 'is input fasta GRCh38? 0: No, 1: Yes'
   type: boolean
   inputBinding:

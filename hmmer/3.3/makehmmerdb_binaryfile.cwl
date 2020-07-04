@@ -1,16 +1,21 @@
 class: CommandLineTool
-id: makehmmerdb_binaryfile.cwl
+id: ../../../../home/ubuntu/BiocondaCli/makehmmerdb_binaryfile.cwl
 inputs:
-- id: seq_file
+- id: make_hmmer_db
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: binary_file
+- id: seq_file
   doc: ''
   type: string
   inputBinding:
     position: 1
+- id: binary_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

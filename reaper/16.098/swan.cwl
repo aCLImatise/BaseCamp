@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: swan.cwl
+id: ../../../../home/ubuntu/BiocondaCli/swan.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

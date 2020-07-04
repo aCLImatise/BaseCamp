@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scanpy_neighbors.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scanpy_neighbors.cwl
 inputs:
 - id: input_format
   doc: '[anndata|loom] Input object format.  [default: anndata]'
@@ -40,8 +40,9 @@ inputs:
   inputBinding:
     prefix: --use-rep
 - id: key_added
-  doc: '[,TEXT...]      Key under which to add the computed results'
-  type: string
+  doc: Key under which to add the computed results
+  type:
+  - string
   inputBinding:
     prefix: --key-added
 - id: random_state
@@ -50,13 +51,14 @@ inputs:
   inputBinding:
     prefix: --random-state
 - id: n_neighbors
-  doc: '[,INTEGER...] The size of local neighborhood (in terms of number of neighboring
-    data points) used for manifold approximation. Larger values result in more global
-    views of the manifold, while smaller values result in more local data being preserved.
+  doc: 'The size of local neighborhood (in terms of number of neighboring data points)
+    used for manifold approximation. Larger values result in more global views of
+    the manifold, while smaller values result in more local data being preserved.
     In general values should be in the range 2 to 100.  If --knn is set, number of
     nearest neighbors to be searched, othwise a Gaussian kernel width is set to the
     distance of the --n-neighbors neighbor. [default: 15]'
-  type: long
+  type:
+  - long
   inputBinding:
     prefix: --n-neighbors
 - id: no_knn
@@ -72,6 +74,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --method
+- id: input_obj
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_obj
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

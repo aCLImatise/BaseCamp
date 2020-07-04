@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: abeona.cwl
+id: ../../../../home/ubuntu/BiocondaCli/abeona.cwl
 inputs:
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
 - id: args
   doc: sub-command arguments
   type: string

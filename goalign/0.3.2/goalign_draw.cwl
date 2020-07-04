@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: goalign_draw.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_draw.cwl
 inputs:
-- id: bio_js
-  doc: Draw alignments in html file using msaviewer from biojs
-  type: string
-  inputBinding:
-    position: 0
 - id: output
   doc: Alignment draw output file (default "stdout")
   type: string
@@ -71,6 +66,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: bio_js
+  doc: Draw alignments in html file using msaviewer from biojs
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

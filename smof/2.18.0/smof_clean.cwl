@@ -1,12 +1,7 @@
 class: CommandLineTool
-id: smof_clean.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smof_clean.cwl
 inputs:
-- id: input
-  doc: input fasta sequence (default = stdin)
-  type: string
-  inputBinding:
-    position: 0
-- id: t
+- id: _type_np
   doc: '|p, --type n|p    sequence type'
   type: string
   inputBinding:
@@ -51,6 +46,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --standardize
+- id: input
+  doc: input fasta sequence (default = stdin)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

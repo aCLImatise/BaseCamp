@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: gen_rand_samp.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gen_rand_samp.py.cwl
 inputs:
+- id: fastq_filenames_first
+  doc: Fastq filenames separated by commas that contain the first mates.
+  type: boolean
+  inputBinding:
+    prefix: --1
+- id: fastq_filenames_second
+  doc: Fastq filenames separated by commas that contain the second mates.
+  type: boolean
+  inputBinding:
+    prefix: --2
 - id: samples
   doc: Number of samples
   type: boolean

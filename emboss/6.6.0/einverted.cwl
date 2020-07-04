@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: einverted.cwl
+id: ../../../../home/ubuntu/BiocondaCli/einverted.cwl
 inputs:
 - id: gap
   doc: integer    [12] Gap penalty (Integer 0 or more)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: zff2gff3.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/zff2gff3.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

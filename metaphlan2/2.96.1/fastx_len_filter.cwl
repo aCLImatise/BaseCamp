@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastx_len_filter.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastx_len_filter.py.cwl
 inputs:
 - id: min_len
   doc: ''

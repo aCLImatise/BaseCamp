@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: ace2contig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ace2contig.cwl
 inputs:
-- id: i
+- id: file
   doc: file
   type: string
   inputBinding:
     prefix: -i
-- id: o
+- id: prefix_output_prefixcontig
   doc: prefix (output is <prefix>.contig)
   type: string
   inputBinding:

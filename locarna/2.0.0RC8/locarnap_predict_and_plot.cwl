@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: locarnap_predict_and_plot.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/locarnap_predict_and_plot.pl.cwl
 inputs:
 - id: annotation_file
   doc: ''

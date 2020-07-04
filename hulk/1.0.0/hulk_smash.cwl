@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: hulk_smash.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hulk_smash.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: algorithm
   doc: tells HULK which sketching algorithm to use [histosketch kmv khf] (default
     "histosketch")
@@ -44,7 +39,7 @@ inputs:
   inputBinding:
     prefix: --log
 - id: outfile
-  doc: directory and basename for saving the outfile(s) (default "./hulk-20200428124331")
+  doc: directory and basename for saving the outfile(s) (default "./hulk-20200619041003")
   type: string
   inputBinding:
     prefix: --outFile
@@ -58,6 +53,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --profiling
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

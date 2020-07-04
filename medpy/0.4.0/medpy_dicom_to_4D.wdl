@@ -1,23 +1,35 @@
 version 1.0
 
-task MedpyDicomTo4D.pyInput {
+task MedpyDicomTo4D.pyOffset {
   input {
-    Boolean vV
-    Boolean dD
-    Boolean fF
-    String? inputInput
-    String? outputOutput
-    String? dimensionDimension
-    String? offsetOffset
+    Boolean? v
+    Boolean? d
+    Boolean? f
+    String me_dpy_dicom_to_four_ddot_py
+    String var_input
+    String var_output
+    String dimension
+    String offset
   }
   command <<<
-    medpy_dicom_to_4D.py input \
-      ~{inputInput} \
-      ~{true="-v" false="" vV} \
-      ~{true="-d" false="" dD} \
-      ~{true="-f" false="" fF} \
-      ~{outputOutput} \
-      ~{dimensionDimension} \
-      ~{offsetOffset}
+    medpy_dicom_to_4D.py offset \
+      ~{me_dpy_dicom_to_four_ddot_py} \
+      ~{var_input} \
+      ~{var_output} \
+      ~{dimension} \
+      ~{offset} \
+      ~{true="-v" false="" v} \
+      ~{true="-d" false="" d} \
+      ~{true="-f" false="" f}
   >>>
+  parameter_meta {
+    v: ""
+    d: ""
+    f: ""
+    me_dpy_dicom_to_four_ddot_py: ""
+    var_input: ""
+    var_output: ""
+    dimension: ""
+    offset: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: generate_labels_descriptions.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/generate_labels_descriptions.py.cwl
 inputs:
 - id: output
   doc: The output directory where the descriptions of labels is generated. Default

@@ -2,10 +2,13 @@ version 1.0
 
 task HybridSsMin {
   input {
-    File? fileFile
+    File file
   }
   command <<<
     hybrid-ss-min \
-      ~{fileFile}
+      ~{file}
   >>>
+  parameter_meta {
+    file: ""
+  }
 }

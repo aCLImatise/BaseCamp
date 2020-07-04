@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sambamba_depth.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sambamba_depth.cwl
 inputs:
 - id: filter
   doc: set custom filter for alignments; the default value is 'mapping_quality > 0
@@ -64,11 +64,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --overlap
-- id: cov_threshold
-  doc: same meaning as in 'region' subcommand
+- id: samba_mba_depth
+  doc: ''
   type: string
   inputBinding:
-    prefix: --cov-threshold
+    position: 0
+- id: region_vertical_line_window_vertical_line_base
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: input_dot_bam
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

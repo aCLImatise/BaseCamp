@@ -2,64 +2,43 @@ version 1.0
 
 task SiriusAdapter {
   input {
-    String executableExecutable
-    File inIn
-    File inInFeatureInfo
-    File outOutSirius
-    File outOutFingerId
-    File outOutMs
-    Directory outOutWorkspaceDirectory
-    Boolean preprocessingPreprocessing
-    Boolean preprocessingPreprocessing
-    Boolean preprocessingPreprocessing
-    Boolean preprocessingPreprocessing
-    Boolean preprocessingPreprocessing
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Boolean siriusSirius
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    String? executable
+    File? in
+    File? in_feature_info
+    File? out_sirius
+    File? out_finger_id
+    File? out_ms
+    Directory? out_workspace_directory
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     SiriusAdapter \
-      ~{if defined(executableExecutable) then ("-executable " +  '"' + executableExecutable + '"') else ""} \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(inInFeatureInfo) then ("-in_featureinfo " +  '"' + inInFeatureInfo + '"') else ""} \
-      ~{if defined(outOutSirius) then ("-out_sirius " +  '"' + outOutSirius + '"') else ""} \
-      ~{if defined(outOutFingerId) then ("-out_fingerid " +  '"' + outOutFingerId + '"') else ""} \
-      ~{if defined(outOutMs) then ("-out_ms " +  '"' + outOutMs + '"') else ""} \
-      ~{if defined(outOutWorkspaceDirectory) then ("-out_workspace_directory " +  '"' + outOutWorkspaceDirectory + '"') else ""} \
-      ~{true="-preprocessing" false="" preprocessingPreprocessing} \
-      ~{true="-preprocessing" false="" preprocessingPreprocessing} \
-      ~{true="-preprocessing" false="" preprocessingPreprocessing} \
-      ~{true="-preprocessing" false="" preprocessingPreprocessing} \
-      ~{true="-preprocessing" false="" preprocessingPreprocessing} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(executable) then ("-executable " +  '"' + executable + '"') else ""} \
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(in_feature_info) then ("-in_featureinfo " +  '"' + in_feature_info + '"') else ""} \
+      ~{if defined(out_sirius) then ("-out_sirius " +  '"' + out_sirius + '"') else ""} \
+      ~{if defined(out_finger_id) then ("-out_fingerid " +  '"' + out_finger_id + '"') else ""} \
+      ~{if defined(out_ms) then ("-out_ms " +  '"' + out_ms + '"') else ""} \
+      ~{if defined(out_workspace_directory) then ("-out_workspace_directory " +  '"' + out_workspace_directory + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    executable: "The Sirius executable. Provide a full or relative path, or make sure it can be found in your PATH environment."
+    in: "*                                          MzML Input file (valid formats: 'mzML')"
+    in_feature_info: "FeatureXML input with feature and adduct information (valid formats: 'featureXML')"
+    out_sirius: "MzTab Output file for SiriusAdapter results (valid formats: 'mzTab')"
+    out_finger_id: "MzTab output file for CSI:FingerID, if this parameter is given, SIRIUS will search for a molecular structure using CSI:FingerID after determining the sum formula (valid formats: 'mzTab')"
+    out_ms: "Internal SIRIUS .ms format after OpenMS preprocessing (valid formats: 'ms')"
+    out_workspace_directory: "Output directory for SIRIUS workspace"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

@@ -1,6 +1,26 @@
 class: CommandLineTool
-id: nanocall.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nanocall.cwl
 inputs:
+- id: t
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: -t
+- id: o
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -o
+- id: write_fast_five
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --write-fast5
+- id: pore
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --pore
 - id: nano_call
   doc: '[-t <int>] [-o <file>] [--write-fast5] [--pore <r73|r9>] [-m <strand:file>]
     ...  [--model-fofn <file>] [-s <file>] [--pr-stay <float>] [--pr-skip <float>]

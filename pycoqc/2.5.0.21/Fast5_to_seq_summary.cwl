@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: Fast5_to_seq_summary.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Fast5_to_seq_summary.cwl
 inputs:
-- id: fast5_dir
+- id: fast_five_dir
   doc: Directory containing fast5 files. Can contain multiple subdirectories
   type: string
   inputBinding:
@@ -12,7 +12,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --seq_summary_fn
-- id: max_fast5
+- id: max_fast_five
   doc: 'Maximum number of file to try to parse. 0 to deactivate (default: 0)'
   type: long
   inputBinding:

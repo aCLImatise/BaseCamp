@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: xml_to_bas.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/xml_to_bas.pl.cwl
 inputs:
 - id: uri
   doc: -d    Same URI used by gtdownload
@@ -30,16 +30,6 @@ inputs:
     prefix: -man
 - id: version
   doc: Prints the version number.
-  type: boolean
-  inputBinding:
-    prefix: -version
-- id: man
-  doc: Prints the manual page and exits.
-  type: boolean
-  inputBinding:
-    prefix: -man
-- id: version
-  doc: Prints the version number and exits.
   type: boolean
   inputBinding:
     prefix: -version

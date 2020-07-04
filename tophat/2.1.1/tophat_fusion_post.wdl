@@ -2,10 +2,13 @@ version 1.0
 
 task TophatFusionPost {
   input {
-    String? bowtieBowtieIndex
+    String bowtie_index
   }
   command <<<
     tophat-fusion-post \
-      ~{bowtieBowtieIndex}
+      ~{bowtie_index}
   >>>
+  parameter_meta {
+    bowtie_index: ""
+  }
 }

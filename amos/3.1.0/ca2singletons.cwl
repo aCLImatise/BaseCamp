@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: ca2singletons.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ca2singletons.cwl
 inputs:
-- id: i
+- id: asm_file
   doc: .asm file
   type: string
   inputBinding:
     prefix: -i
-- id: o
+- id: fasta_file_name
   doc: .fasta file name
   type: string
   inputBinding:
     prefix: -o
-- id: f
+- id: frg_file
   doc: '.frg file '
   type: string
   inputBinding:

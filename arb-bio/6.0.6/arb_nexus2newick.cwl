@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: arb_nexus2newick.awk.cwl
+id: ../../../../home/ubuntu/BiocondaCli/arb_nexus2newick.awk.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

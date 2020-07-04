@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: cmfetch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cmfetch.cwl
 inputs:
-- id: f
+- id: second_cmdline_arg
   doc: ': second cmdline arg is a file of names to retrieve'
   type: boolean
   inputBinding:
     prefix: -f
-- id: o
+- id: output_cm_file_f
   doc: ': output CM to file <f> instead of stdout'
   type: string
   inputBinding:
     prefix: -o
-- id: o
+- id: output_cm_file_named
   doc: ': output CM to file named <key>'
   type: boolean
   inputBinding:

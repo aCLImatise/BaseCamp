@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: strainphlan.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/strainphlan.py.cwl
 inputs:
 - id: ifn_samples
   doc: The list of sample files (space separated).The wildcard can also be used.
@@ -215,13 +215,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --relaxed_parameters
-- id: relaxed_parameters_2
+- id: relaxed_parameters_two
   doc: Set marker_in_clade=0.2, sample_in_marker=0.2, N_in_marker=0.8, gap_in_sample=0.8.
     Default "False".
   type: boolean
   inputBinding:
     prefix: --relaxed_parameters2
-- id: relaxed_parameters_3
+- id: relaxed_parameters_three
   doc: Set gap_in_trailing_col=0.9, gap_in_internal_col=0.9, gap_in_sample=0.9, second_gap_in_sample=0.5,
     sample_in_marker=0.1, marker_in_clade=0.1, second_marker_in_clade=0.1, Default
     "False".
@@ -240,7 +240,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --keep_full_alignment_files
-- id: save_sample_2fullfreq
+- id: save_sample_two_full_freq
   doc: Save sample2fullfreq to a msgpack file sample2fullfreq.msgpack.
   type: boolean
   inputBinding:

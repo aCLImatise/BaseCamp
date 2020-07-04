@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Binner.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Binner.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

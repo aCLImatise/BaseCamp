@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: vcfannotate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfannotate.cwl
 inputs:
-- id: vcf_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: bed
   doc: use annotations provided by this BED file
   type: boolean
@@ -21,6 +16,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --default
+- id: vcf_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

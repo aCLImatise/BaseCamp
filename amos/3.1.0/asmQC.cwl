@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: asmQC.cwl
+id: ../../../../home/ubuntu/BiocondaCli/asmQC.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

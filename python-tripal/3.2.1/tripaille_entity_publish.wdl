@@ -2,14 +2,19 @@ version 1.0
 
 task TripailleEntityPublish {
   input {
-    String typesTypes
-    String jobJobName
-    Boolean noNoWait
+    String? types
+    String? job_name
+    Boolean? no_wait
   }
   command <<<
     tripaille entity publish \
-      ~{if defined(typesTypes) then ("--types " +  '"' + typesTypes + '"') else ""} \
-      ~{if defined(jobJobName) then ("--job_name " +  '"' + jobJobName + '"') else ""} \
-      ~{true="--no_wait" false="" noNoWait}
+      ~{if defined(types) then ("--types " +  '"' + types + '"') else ""} \
+      ~{if defined(job_name) then ("--job_name " +  '"' + job_name + '"') else ""} \
+      ~{true="--no_wait" false="" no_wait}
   >>>
+  parameter_meta {
+    types: "List of entity types to be published (e.g. Gene mRNA, default: all)"
+    job_name: "Name of the job"
+    no_wait: "Return immediately without waiting for job completion"
+  }
 }

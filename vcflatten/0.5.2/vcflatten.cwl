@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: vcflatten.cwl
-inputs: []
+id: ../../../../home/ubuntu/BiocondaCli/vcflatten.cwl
+inputs:
+- id: filename
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

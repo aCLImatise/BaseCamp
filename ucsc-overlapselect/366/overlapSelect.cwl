@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: overlapSelect.cwl
+id: ../../../../home/ubuntu/BiocondaCli/overlapSelect.cwl
 inputs:
 - id: dropped
-  doc: that were dropped to this file.
+  doc: '- output rows that were dropped to this file.'
   type: File
   inputBinding:
     prefix: -dropped
 - id: verbose
-  doc: '> 1 prints some details,'
+  doc: '- verbose > 1 prints some details,'
   type: string
   inputBinding:
-    prefix: '- verbose'
+    prefix: -verbose
 outputs: []
 cwlVersion: v1.1
 baseCommand:

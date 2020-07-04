@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rgi_kmer_build.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rgi_kmer_build.cwl
 inputs:
 - id: input_directory
   doc: input directory of prevalence data
@@ -12,7 +12,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --card
-- id: k
+- id: kmer_size_eg
   doc: k-mer size (e.g., 61)
   type: string
   inputBinding:
@@ -33,6 +33,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --batch_size
+- id: rgi
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

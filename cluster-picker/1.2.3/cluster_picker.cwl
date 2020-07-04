@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cluster_picker.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cluster_picker.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

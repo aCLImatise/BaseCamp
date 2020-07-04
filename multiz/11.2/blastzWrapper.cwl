@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: blastzWrapper.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blastzWrapper.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

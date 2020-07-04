@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: seagen.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seagen.cwl
 inputs:
 - id: num_threads
   doc: Use n search threads
@@ -82,16 +82,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -table
-- id: use
-  doc: '#,#,#,#            using only those sequences specified'
-  type: boolean
-  inputBinding:
-    prefix: -use
-- id: use
-  doc: using only those sequences listed in the file
-  type: File
-  inputBinding:
-    prefix: -use
 - id: verbose
   doc: Entertain the user
   type: boolean

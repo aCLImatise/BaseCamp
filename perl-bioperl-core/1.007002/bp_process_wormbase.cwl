@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bp_process_wormbase.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bp_process_wormbase.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

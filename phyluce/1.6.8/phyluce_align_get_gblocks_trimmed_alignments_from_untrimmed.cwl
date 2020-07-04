@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_align_get_gblocks_trimmed_alignments_from_untrimmed.cwl
 inputs:
 - id: alignments
   doc: 'The directory containing alignments to be trimmed. (default: None)'
@@ -21,22 +21,22 @@ inputs:
   type: string
   inputBinding:
     prefix: --output-format
-- id: b1
+- id: bone
   doc: 'The GBLOCKS -b1 proportion. (default: 0.5)'
   type: string
   inputBinding:
     prefix: --b1
-- id: b2
+- id: b_two
   doc: 'The GBLOCKS -b2 proportion. (default: 0.85)'
   type: string
   inputBinding:
     prefix: --b2
-- id: b3
+- id: b_three
   doc: 'The GBLOCKS -b3 integer value. (default: 8)'
   type: string
   inputBinding:
     prefix: --b3
-- id: b4
+- id: b_four
   doc: 'The GBLOCKS -b4 integer value. (default: 10)'
   type: string
   inputBinding:

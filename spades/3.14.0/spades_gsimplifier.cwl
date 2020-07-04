@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: spades_gsimplifier.cwl
+id: ../../../../home/ubuntu/BiocondaCli/spades_gsimplifier.cwl
 inputs:
 - id: gfa
   doc: 'produce GFA output (default: true)'
@@ -18,7 +18,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --use-cov-ratios
-- id: k
+- id: kmer_length_use
   doc: k-mer length to use
   type: string
   inputBinding:

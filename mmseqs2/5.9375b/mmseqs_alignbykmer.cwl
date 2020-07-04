@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: mmseqs_alignbykmer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mmseqs_alignbykmer.cwl
 inputs:
-- id: k
+- id: kmer_size_range
   doc: '4               k-mer size in the range [6,7] (0: set automatically to optimum)'
   type: boolean
   inputBinding:
@@ -16,13 +16,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --add-self-matches
-- id: c
+- id: list_matches_fraction
   doc: 0.000           list matches above this fraction of aligned (covered) residues
     (see --cov-mode)
   type: boolean
   inputBinding:
     prefix: -c
-- id: e
+- id: list_matches_evalue
   doc: '0.001           list matches below this E-value [0.0, inf]                  '
   type: boolean
   inputBinding:
@@ -50,7 +50,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --threads
-- id: v
+- id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'
   type: boolean
   inputBinding:

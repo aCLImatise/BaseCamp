@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: rnazWindow.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnazWindow.pl.cwl
 inputs:
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: both_strands
   doc: 'Output forward, reverse complement or both of the sequences in the windows.
     Please note: "RNAz" has the same options, so if you use "rnazWindow.pl" for an
@@ -45,6 +40,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --man
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

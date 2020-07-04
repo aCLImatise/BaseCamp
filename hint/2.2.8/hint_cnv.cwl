@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hint_cnv.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hint_cnv.cwl
 inputs:
 - id: matrix_file
   doc: The matrix compressed file contains single or multiple resolutions Hi-C contact
@@ -16,10 +16,10 @@ inputs:
   inputBinding:
     prefix: --refdir
 - id: map_track
-  doc: '{24mer,36mer,50mer} Choose which ENCODE mappability track should be used for
-    regression. See more details http://genome.ucsc.edu/cgi- bin/hgTrackUi?db=hg18&g=wgEncodeMapability.
+  doc: 'Choose which ENCODE mappability track should be used for regression. See more
+    details http://genome.ucsc.edu/cgi- bin/hgTrackUi?db=hg18&g=wgEncodeMapability.
     DEFAULT: 50mer'
-  type: boolean
+  type: string
   inputBinding:
     prefix: --maptrack
 - id: bic_seq

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastindep_symmetry.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastindep_symmetry.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

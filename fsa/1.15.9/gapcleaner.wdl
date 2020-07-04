@@ -2,10 +2,13 @@ version 1.0
 
 task Gapcleaner {
   input {
-    String? multiMultiFastaOrStockholmAlignment
+    String multi_fast_a_or_stockholm_alignment
   }
   command <<<
     gapcleaner \
-      ~{multiMultiFastaOrStockholmAlignment}
+      ~{multi_fast_a_or_stockholm_alignment}
   >>>
+  parameter_meta {
+    multi_fast_a_or_stockholm_alignment: ""
+  }
 }

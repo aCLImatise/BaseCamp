@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: wdl2dot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wdl2dot.cwl
 inputs:
-- id: i
-  doc: ''
+- id: input_file
+  doc: Input wdl file
   type: string
   inputBinding:
-    prefix: -i
-- id: o
-  doc: ''
+    prefix: --input_file
+- id: output_file
+  doc: Output dot file
   type: string
   inputBinding:
-    prefix: -o
+    prefix: --output_file
 outputs: []
 cwlVersion: v1.1
 baseCommand:

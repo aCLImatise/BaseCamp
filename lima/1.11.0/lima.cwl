@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: lima.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lima.cwl
 inputs:
-- id: input
-  doc: STR    Source BAM or DATASET
-  type: string
-  inputBinding:
-    position: 0
-- id: barcodes
-  doc: STR    FASTA or BARCODESET file
-  type: string
-  inputBinding:
-    position: 1
-- id: output
-  doc: STR    Output BAM or DATASET file
-  type: string
-  inputBinding:
-    position: 2
 - id: same
   doc: Only keep same barcodes in a pair in BAM output.
   type: boolean
@@ -276,6 +261,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --log-file
+- id: input
+  doc: STR    Source BAM or DATASET
+  type: string
+  inputBinding:
+    position: 0
+- id: barcodes
+  doc: STR    FASTA or BARCODESET file
+  type: string
+  inputBinding:
+    position: 1
+- id: output
+  doc: STR    Output BAM or DATASET file
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

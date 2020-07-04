@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: abritamr.cwl
+id: ../../../../home/ubuntu/BiocondaCli/abritamr.cwl
 inputs:
 - id: mdu_qc
   doc: 'Set if running on MDU QC data. If set please provide the MDU QC .csv as further
@@ -42,17 +42,17 @@ inputs:
   inputBinding:
     prefix: --amrfinder_output
 - id: workdir
-  doc: 'Working directory, default is current directory (default: /tmp/tmpki82jjf6)'
+  doc: 'Working directory, default is current directory (default: /tmp/tmplaxi10h4)'
   type: string
   inputBinding:
     prefix: --workdir
 - id: resources
-  doc: 'Directory where templates are stored (default: /tmp/tmpki82jjf6/lib/python3.6/site-packages/abritamr)'
+  doc: 'Directory where templates are stored (default: /tmp/tmplaxi10h4/lib/python3.6/site-packages/abritamr)'
   type: string
   inputBinding:
     prefix: --resources
 - id: drug_classes
-  doc: 'Path to file (default: /tmp/tmpki82jjf6/lib/python3.6/site- packages/abritamr/db/refgenes.csv)'
+  doc: 'Path to file (default: /tmp/tmplaxi10h4/lib/python3.6/site- packages/abritamr/db/refgenes.csv)'
   type: string
   inputBinding:
     prefix: --drug_classes

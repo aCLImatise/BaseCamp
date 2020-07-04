@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: funannotate_annotate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/funannotate_annotate.cwl
 inputs:
-- id: arguments
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: gff
   doc: Genome GFF3 annotation file
   type: boolean
@@ -86,7 +81,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --busco_db
-- id: tbl2asn
+- id: tbl_two_asn
   doc: 'Additional parameters for tbl2asn. Default: "-l paired-ends"'
   type: boolean
   inputBinding:
@@ -106,6 +101,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --cpus
+- id: arguments
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

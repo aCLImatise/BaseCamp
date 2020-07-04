@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: goalign_mutate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_mutate.cwl
 inputs:
-- id: gaps
-  doc: Adds gaps uniformly in an input alignment
-  type: string
-  inputBinding:
-    position: 0
-- id: sn_vs
-  doc: Adds substitutions uniformly in an input alignment
-  type: string
-  inputBinding:
-    position: 1
 - id: output
   doc: Mutated alignment output file (default "stdout")
   type: string
@@ -81,6 +71,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: gaps
+  doc: Adds gaps uniformly in an input alignment
+  type: string
+  inputBinding:
+    position: 0
+- id: sn_vs
+  doc: Adds substitutions uniformly in an input alignment
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: cnx.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cnx.py.cwl
 inputs:
-- id: input
-  doc: Input VCF file
-  type: string
-  inputBinding:
-    position: 0
 - id: output
   doc: Output file name (json format)
   type: string
@@ -16,6 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --bam
+- id: input
+  doc: Input VCF file
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

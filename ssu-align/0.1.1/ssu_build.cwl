@@ -1,27 +1,22 @@
 class: CommandLineTool
-id: ssu_build.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ssu_build.cwl
 inputs:
-- id: stockholm_alignment_file_to_build_cm_from
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: d
+- id: commandline_argument_default
   doc: ': command-line argument is a default ssu-align-0.1 seed alignment'
   type: boolean
   inputBinding:
     prefix: -d
-- id: f
+- id: force_allow_overwriting
   doc: ': force; allow overwriting of CM file'
   type: boolean
   inputBinding:
     prefix: -f
-- id: o
+- id: name_file_s
   doc: ': name the CM *file* <s>'
   type: string
   inputBinding:
     prefix: -o
-- id: n
+- id: name_cm_s
   doc: ': name the CM <s>'
   type: string
   inputBinding:
@@ -46,7 +41,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --num
-- id: i
+- id: output_alignment_interleaved
   doc: ': output alignment in interleaved Stockholm (not 1 line/seq)'
   type: boolean
   inputBinding:
@@ -61,7 +56,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --gapthresh
-- id: ps2pdf
+- id: pstwo_pdf
   doc: ': command for converting ps to pdf is <s> (not "ps2pdf")'
   type: string
   inputBinding:
@@ -81,6 +76,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --ere
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: stockholm_alignment_file_to_build_cm_from
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

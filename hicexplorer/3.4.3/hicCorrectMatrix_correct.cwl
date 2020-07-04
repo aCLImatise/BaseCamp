@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hicCorrectMatrix_correct.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hicCorrectMatrix_correct.cwl
 inputs:
 - id: matrix
   doc: 'Name of the Hi-C matrix to correct in .h5 format. (default: None)'
@@ -61,6 +61,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: filter_threshold
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --filterThreshold
+- id: one_dot_two
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: '-1.2'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

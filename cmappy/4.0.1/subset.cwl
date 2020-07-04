@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: subset.cwl
+id: ../../../../home/ubuntu/BiocondaCli/subset.cwl
 inputs:
 - id: in_path
   doc: 'file path to input GCT(x) file (default: None)'

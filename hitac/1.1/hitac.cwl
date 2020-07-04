@@ -1,33 +1,38 @@
 class: CommandLineTool
-id: hitac.py_train.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hitac.py_predictions.cwl
 inputs:
-- id: train
-  doc: Input FASTA file containing the sequences for training
-  type: string
-  inputBinding:
-    position: 0
-- id: test
-  doc: Input FASTA file containing the sequences for taxonomy prediction
-  type: string
-  inputBinding:
-    position: 1
-- id: predictions
-  doc: Output file to write the predictions
-  type: string
-  inputBinding:
-    position: 2
 - id: km_er
-  doc: 'Kmer size for feature extraction [default: 6]'
+  doc: ''
   type: string
   inputBinding:
     prefix: --kmer
 - id: threads
-  doc: 'Number of threads [default: all threads available]'
+  doc: ''
   type: string
   inputBinding:
     prefix: --threads
+- id: hit_a_cdot_py
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: train
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: test
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: predictions
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - hitac.py
-- train
+- predictions

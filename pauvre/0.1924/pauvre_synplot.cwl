@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pauvre_synplot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pauvre_synplot.cwl
 inputs:
 - id: gff_paths
   doc: The input filepath. for the gff annotation to plot. Individual filepaths separated
@@ -62,6 +62,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --transparent
+- id: q
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -q
+- id: aln_dir
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --aln_dir
+- id: center_on
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --center_on
 outputs: []
 cwlVersion: v1.1
 baseCommand:

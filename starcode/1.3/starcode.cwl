@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: starcode.cwl
+id: ../../../../home/ubuntu/BiocondaCli/starcode.cwl
 inputs:
 - id: dist
   doc: ': maximum Levenshtein distance (default auto)'
@@ -36,12 +36,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --output
-- id: output_1
+- id: input_one
+  doc: ': input file 1'
+  type: boolean
+  inputBinding:
+    prefix: --input1
+- id: input_two
+  doc: ': input file 2'
+  type: boolean
+  inputBinding:
+    prefix: --input2
+- id: output_one
   doc: ': output file1 (default input1-starcode.fastq)'
   type: boolean
   inputBinding:
     prefix: --output1
-- id: output_2
+- id: output_two
   doc: ': output file2 (default input2-starcode.fastq)'
   type: boolean
   inputBinding:

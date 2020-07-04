@@ -2,10 +2,13 @@ version 1.0
 
 task Vcfcleancomplex {
   input {
-    String? vcfVcfFile
+    String vcf_file
   }
   command <<<
     vcfcleancomplex \
-      ~{vcfVcfFile}
+      ~{vcf_file}
   >>>
+  parameter_meta {
+    vcf_file: ""
+  }
 }

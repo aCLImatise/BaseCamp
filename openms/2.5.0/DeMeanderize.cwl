@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: DeMeanderize.cwl
+id: ../../../../home/ubuntu/BiocondaCli/DeMeanderize.cwl
 inputs:
 - id: in
   doc: "*              Input experiment file, containing the wrongly sorted spectra.\

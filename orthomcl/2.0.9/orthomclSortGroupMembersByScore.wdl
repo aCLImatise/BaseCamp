@@ -2,14 +2,16 @@ version 1.0
 
 task OrthomclSortGroupMembersByScore {
   input {
-    String standardStandard
-    String? groupsGroupsFile
-    String? pairsPairsDir
+    String groups_file
+    String pairs_dir
   }
   command <<<
     orthomclSortGroupMembersByScore \
-      ~{groupsGroupsFile} \
-      ~{if defined(standardStandard) then ("- standard " +  '"' + standardStandard + '"') else ""} \
-      ~{pairsPairsDir}
+      ~{groups_file} \
+      ~{pairs_dir}
   >>>
+  parameter_meta {
+    groups_file: ""
+    pairs_dir: ""
+  }
 }

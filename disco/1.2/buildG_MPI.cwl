@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: buildG_MPI.cwl
+id: ../../../../home/ubuntu/BiocondaCli/buildG_MPI.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

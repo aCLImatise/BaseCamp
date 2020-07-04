@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: br_bioflat.rb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/br_bioflat.rb.cwl
 inputs:
 - id: primary
   doc: set primary namespece to UNIQUE Default primary/secondary namespaces depend
@@ -19,16 +19,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --add-secondary
-- id: sort
-  doc: =/path/to/sort   use external sort program (e.g. /usr/bin/sort)
-  type: boolean
-  inputBinding:
-    prefix: --sort
-- id: sort
-  doc: 'use builtin sort routine (default: /usr/bin/sort or BUILTIN)'
-  type: string
-  inputBinding:
-    prefix: --sort
 - id: env
   doc: '=/path/to/env     use env program to run sort (default: /usr/bin/env)'
   type: boolean
@@ -45,6 +35,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --renew
+- id: make_index
+  doc: same as --create --type flat --location DIR --dbname DBNAME
+  type: string
+  inputBinding:
+    prefix: --makeindex
+- id: make_index_bdb
+  doc: same as --create --type bdb  --location DIR --dbname DBNAME
+  type: string
+  inputBinding:
+    prefix: --makeindexBDB
 - id: format
   doc: instead of genbank|embl|fasta, specifing a class name is allowed
   type: string

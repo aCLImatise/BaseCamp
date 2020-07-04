@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: smof_reverse.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smof_reverse.cwl
 inputs:
-- id: input
-  doc: input fasta sequence (default = stdin)
-  type: string
-  inputBinding:
-    position: 0
 - id: complement
   doc: take the reverse complement of the sequence
   type: boolean
@@ -26,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --force-color
+- id: input
+  doc: input fasta sequence (default = stdin)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

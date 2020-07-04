@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: exclude_uid_lists.cwl
+id: ../../../../home/ubuntu/BiocondaCli/exclude_uid_lists.cwl
 inputs:
 - id: batch_size
   doc: merge at most NMERGE inputs at once;
@@ -11,16 +11,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --ignore-leading-blanks
-- id: check
-  doc: check for sorted input; do not sort
-  type: string
-  inputBinding:
-    prefix: --check
-- id: check
-  doc: like -c, but do not report first bad line
-  type: string
-  inputBinding:
-    prefix: --check
 - id: compress_program
   doc: compress temporaries with PROG;
   type: string
@@ -41,7 +31,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --ignore-case
-- id: files_0_from
+- id: files_zero_from
   doc: read input from the files specified by for more use temp files
   type: string
   inputBinding:
@@ -101,7 +91,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --buffer-size
-- id: sort
+- id: sort_according_word
   doc: 'sort according to WORD:'
   type: string
   inputBinding:
@@ -136,6 +126,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --zero-terminated
+- id: var_25
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

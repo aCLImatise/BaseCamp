@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: TAPIR.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/TAPIR.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

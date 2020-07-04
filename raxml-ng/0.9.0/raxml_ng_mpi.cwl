@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: raxml_ng_mpi.cwl
+id: ../../../../home/ubuntu/BiocondaCli/raxml_ng_mpi.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

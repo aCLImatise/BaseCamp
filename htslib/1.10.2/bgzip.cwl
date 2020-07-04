@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bgzip.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bgzip.cwl
 inputs:
 - id: offset
   doc: decompress at virtual file pointer (0-based uncompressed offset)
@@ -61,6 +61,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --test
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

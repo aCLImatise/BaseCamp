@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcf_concat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf_concat.cwl
 inputs:
 - id: check_columns
   doc: Do not concatenate, only check if the columns agree.
@@ -21,6 +21,21 @@ inputs:
   type: long
   inputBinding:
     prefix: --merge-sort
+- id: a_dot_vcf_do_tgz
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: bdotvcfdotgz
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: cdotvcfdotgz
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

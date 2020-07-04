@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_script_process_genbank_metadata.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_script_process_genbank_metadata.cwl
 inputs:
 - id: metadata
   doc: This is the file you get from the program `ncbi- genome-download` when you

@@ -2,16 +2,22 @@ version 1.0
 
 task FilterMatrixByGenome.py {
   input {
-    String inInMatrix
-    String outOutPrefix
-    String genomesGenomes
-    String actionsActions
+    String? in_matrix
+    String? out_prefix
+    String? genomes
+    String? actions
   }
   command <<<
     filter_matrix_by_genome.py \
-      ~{if defined(inInMatrix) then ("--in_matrix " +  '"' + inInMatrix + '"') else ""} \
-      ~{if defined(outOutPrefix) then ("--out_prefix " +  '"' + outOutPrefix + '"') else ""} \
-      ~{if defined(genomesGenomes) then ("--genomes " +  '"' + genomesGenomes + '"') else ""} \
-      ~{if defined(actionsActions) then ("--actions " +  '"' + actionsActions + '"') else ""}
+      ~{if defined(in_matrix) then ("--in_matrix " +  '"' + in_matrix + '"') else ""} \
+      ~{if defined(out_prefix) then ("--out_prefix " +  '"' + out_prefix + '"') else ""} \
+      ~{if defined(genomes) then ("--genomes " +  '"' + genomes + '"') else ""} \
+      ~{if defined(actions) then ("--actions " +  '"' + actions + '"') else ""}
   >>>
+  parameter_meta {
+    in_matrix: "/path/to/NASP_matrix [REQUIRED]"
+    out_prefix: "prefix for output files [REQUIRED]"
+    genomes: "/path/to/genomes_file [new line delimited] [REQUIRED]"
+    actions: "action to perform (keep, remove), defaults to keep"
+  }
 }

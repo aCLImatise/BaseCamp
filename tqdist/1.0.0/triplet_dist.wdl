@@ -2,28 +2,19 @@ version 1.0
 
 task TripletDist {
   input {
-    String theThe
-    String theThe
-    String theThe
-    String theThe
-    String theThe
-    String theThe
-    String theThe
-    String theThe
-    File? filenameFilename1
-    File? filenameFilename2
+    Boolean? v
+    File filename_one
+    File filename_two
   }
   command <<<
     triplet_dist \
-      ~{filenameFilename1} \
-      ~{if defined(theThe) then ("- The " +  '"' + theThe + '"') else ""} \
-      ~{if defined(theThe) then ("- The " +  '"' + theThe + '"') else ""} \
-      ~{if defined(theThe) then ("- The " +  '"' + theThe + '"') else ""} \
-      ~{if defined(theThe) then ("- The " +  '"' + theThe + '"') else ""} \
-      ~{if defined(theThe) then ("- The " +  '"' + theThe + '"') else ""} \
-      ~{if defined(theThe) then ("- The " +  '"' + theThe + '"') else ""} \
-      ~{if defined(theThe) then ("- The " +  '"' + theThe + '"') else ""} \
-      ~{if defined(theThe) then ("- The " +  '"' + theThe + '"') else ""} \
-      ~{filenameFilename2}
+      ~{filename_one} \
+      ~{filename_two} \
+      ~{true="-v" false="" v}
   >>>
+  parameter_meta {
+    v: ""
+    filename_one: ""
+    filename_two: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dumbbell_filter.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dumbbell_filter.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

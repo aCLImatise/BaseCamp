@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: CARNAC_to_fasta.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CARNAC_to_fasta.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

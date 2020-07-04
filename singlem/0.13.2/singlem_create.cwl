@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: singlem_create.cwl
+id: ../../../../home/ubuntu/BiocondaCli/singlem_create.cwl
 inputs:
 - id: debug
   doc: output debug information

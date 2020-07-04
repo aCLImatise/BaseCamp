@@ -2,16 +2,13 @@ version 1.0
 
 task MbNormalize {
   input {
-    String mutMutSnpRatio
-    String? inputInputFile
-    String? outputOutputFile
-    String? normalizationNormalizationPileUp
+    String? mut_snp_ratio
   }
   command <<<
     mb-normalize \
-      ~{inputInputFile} \
-      ~{if defined(mutMutSnpRatio) then ("--mut_snp_ratio " +  '"' + mutMutSnpRatio + '"') else ""} \
-      ~{outputOutputFile} \
-      ~{normalizationNormalizationPileUp}
+      ~{if defined(mut_snp_ratio) then ("--mut_snp_ratio " +  '"' + mut_snp_ratio + '"') else ""}
   >>>
+  parameter_meta {
+    mut_snp_ratio: "remove positions with SNP-ratio > r"
+  }
 }

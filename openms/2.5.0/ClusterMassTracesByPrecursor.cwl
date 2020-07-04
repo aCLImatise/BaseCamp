@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: ClusterMassTracesByPrecursor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ClusterMassTracesByPrecursor.cwl
 inputs:
-- id: in_ms1
+- id: in_ms_one
   doc: "*                    MS1 mass traces (valid formats: 'consensusXML')"
   type: File
   inputBinding:
@@ -30,7 +30,7 @@ inputs:
 - id: max_lag
   doc: "Maximal lag (e.g. by how many spectra the peak may be shifted at most). This\
     \ parameter will depend on your chromatographic setup but a number between 1 and\
-    \ 3 is usually sens ible. (default: '1')"
+    \ 3 is usually sensible. (default: '1')"
   type: string
   inputBinding:
     prefix: -max_lag

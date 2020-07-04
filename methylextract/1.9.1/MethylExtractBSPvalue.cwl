@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MethylExtractBSPvalue.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MethylExtractBSPvalue.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

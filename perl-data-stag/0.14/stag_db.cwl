@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: stag_db.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stag_db.pl.cwl
 inputs:
-- id: i
+- id: file_will_used
   doc: This file will be used as the persistent index for storage/retrieval
   type: string
   inputBinding:
     prefix: -i
-- id: r
+- id: name_stag_node
   doc: "This is the name of the stag node (XML element) that will be stored in the\
     \ index; for example, with the XML below you may want to use the node name \e\
     [1mperson\e[0m and the unique key \e[1mid\e[0m <person_set> <person> <id>...</id>\
@@ -15,7 +15,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -r
-- id: k
+- id: node_will_used
   doc: This node will be used as the unique/primary key for the data This node should
     be nested directly below the node that is being stored in the index - if it is
     more that one below, specify a path This flag should only be used when you want
@@ -23,12 +23,12 @@ inputs:
   type: string
   inputBinding:
     prefix: -k
-- id: u
+- id: synonym_for_mkm
   doc: "Synonym for \e[1m-k\e[0m"
   type: string
   inputBinding:
     prefix: -u
-- id: p
+- id: can_name_stag
   doc: This can be the name of a stag supported format (xml, sxpr, itext) - XML is
     assumed by default It can also be a module name - this module is used to parse
     the input file into a stag stream; see Data::Stag::BaseGenerator for details on
@@ -37,7 +37,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -p
-- id: q
+- id: fetches_relationnode_unique
   doc: Fetches the relation/node with unique key value equal to query-id Multiple
     arguments can be passed by specifying -q multple times This flag should only be
     used when you want to query data
@@ -62,7 +62,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -keys
-- id: w
+- id: format_will_used
   doc: This format will be used to write the data; can be any stag format (xml, sxpr,
     itext) - default XML. Can also be a module that catches the incoming stag event
     stream and does something with it (for example, this could be a module you write

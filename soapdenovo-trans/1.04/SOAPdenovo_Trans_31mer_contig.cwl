@@ -1,18 +1,18 @@
 class: CommandLineTool
-id: SOAPdenovo_Trans_31mer_contig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SOAPdenovo_Trans_31mer_contig.cwl
 inputs:
-- id: g
+- id: string_inputgraph_prefix
   doc: '<string>        inputGraph: prefix of input graph file name'
   type: boolean
   inputBinding:
     prefix: -g
-- id: e
+- id: int_edgecovcutoff_edges
   doc: '<int>           EdgeCovCutoff: edges with coverage no larger than EdgeCovCutoff
     will be deleted, [2]'
   type: boolean
   inputBinding:
     prefix: -e
-- id: m
+- id: int_mergelevelmin_max
   doc: '<int>           mergeLevel(min 0, max 3): the strength of merging similar
     sequences during contiging, [1]'
   type: boolean

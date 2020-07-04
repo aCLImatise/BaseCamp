@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dropest.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dropest.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

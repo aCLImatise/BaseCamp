@@ -1,19 +1,29 @@
 version 1.0
 
-task MergePcrDuplicates.pyAlignments {
+task MergePcrDuplicates.pyBclib {
   input {
-    String outfileOutfile
-    Boolean verboseVerbose
-    Boolean debugDebug
-    String? alignmentsAlignments
-    String? bcBcLib
+    String? o
+    Boolean? v
+    Boolean? d
+    String merge_pcr_duplicates_do_tpy
+    String alignments
+    String bc_lib
   }
   command <<<
-    merge_pcr_duplicates.py alignments \
-      ~{alignmentsAlignments} \
-      ~{if defined(outfileOutfile) then ("--outfile " +  '"' + outfileOutfile + '"') else ""} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{true="--debug" false="" debugDebug} \
-      ~{bcBcLib}
+    merge_pcr_duplicates.py bclib \
+      ~{merge_pcr_duplicates_do_tpy} \
+      ~{alignments} \
+      ~{bc_lib} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{true="-v" false="" v} \
+      ~{true="-d" false="" d}
   >>>
+  parameter_meta {
+    o: ""
+    v: ""
+    d: ""
+    merge_pcr_duplicates_do_tpy: ""
+    alignments: ""
+    bc_lib: ""
+  }
 }

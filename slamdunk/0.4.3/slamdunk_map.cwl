@@ -1,12 +1,21 @@
 class: CommandLineTool
-id: slamdunk_map.cwl
+id: ../../../../home/ubuntu/BiocondaCli/slamdunk_map.cwl
 inputs:
-- id: files
-  doc: Single csv/tsv file (recommended) containing all sample files and sample info
-    or a list of all sample BAM/FASTA(gz)/FASTQ(gz) files
-  type: File
+- id: reference
+  doc: Reference fasta file
+  type: string
   inputBinding:
-    position: 0
+    prefix: --reference
+- id: output_dir
+  doc: Output directory for mapped BAM files.
+  type: string
+  inputBinding:
+    prefix: --outputDir
+- id: trim_five_p
+  doc: "Number of bp removed from 5' end of all reads. (default: 12)"
+  type: string
+  inputBinding:
+    prefix: --trim-5p
 - id: top_n
   doc: 'Max. number of alignments to report per read (default: 1)'
   type: string
@@ -58,6 +67,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --skip-sam
+- id: files
+  doc: Single csv/tsv file (recommended) containing all sample files and sample info
+    or a list of all sample BAM/FASTA(gz)/FASTQ(gz) files
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

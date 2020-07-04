@@ -1,7 +1,14 @@
 version 1.0
 
 task Discovar {
+  input {
+    String arg_one
+  }
   command <<<
-    Discovar
+    Discovar \
+      ~{arg_one}
   >>>
+  parameter_meta {
+    arg_one: ""
+  }
 }

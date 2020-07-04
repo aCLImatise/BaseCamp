@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tpp_hostname.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tpp_hostname.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

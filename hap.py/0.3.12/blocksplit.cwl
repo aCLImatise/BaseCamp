@@ -1,60 +1,60 @@
 class: CommandLineTool
-id: blocksplit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blocksplit.cwl
 inputs:
 - id: input_file
   doc: The input VCF/BCF file(s) (use file:sample to  specify a sample)
   type: string
   inputBinding:
     prefix: --input-file
-- id: o
+- id: arg_write_file
   doc: '[ --output ] arg        Write a bed file giving the locations of  overlapping
     blocks (use - for stdout).'
   type: boolean
   inputBinding:
     prefix: -o
-- id: r
+- id: arg_use_regions
   doc: '[ --regions ] arg       Use a bed file for getting a subset of regions  (traversal
     via tabix).'
   type: boolean
   inputBinding:
     prefix: -R
-- id: t
+- id: arg_use_targets
   doc: '[ --targets ] arg       Use a bed file for getting a subset of targets  (streaming
     the whole file, ignoring things outside the bed regions).'
   type: boolean
   inputBinding:
     prefix: -T
-- id: l
+- id: arg_location_subset
   doc: '[ --location ] arg      The location / subset.'
   type: boolean
   inputBinding:
     prefix: -l
-- id: l
+- id: arg_maximum_number_records
   doc: '[ --limit-records ] arg Maximum number of records to process'
   type: boolean
   inputBinding:
     prefix: -L
-- id: m
+- id: arg_print_message
   doc: '[ --message-every ] arg Print a message every N records.'
   type: boolean
   inputBinding:
     prefix: -m
-- id: w
+- id: arg_overlap_window
   doc: '[ --window ] arg        Overlap window length.'
   type: boolean
   inputBinding:
     prefix: -w
-- id: b
+- id: arg_maximum_number_break
   doc: '[ --nblocks ] arg       Maximum number of blocks to break into (32).'
   type: boolean
   inputBinding:
     prefix: -b
-- id: v
+- id: arg_minimum_number
   doc: '[ --nvars ] arg         Minimum number of variants per block (100).'
   type: boolean
   inputBinding:
     prefix: -v
-- id: f
+- id: arg_apply_filtering
   doc: '[ --apply-filters ] arg Apply filtering in VCF.'
   type: boolean
   inputBinding:

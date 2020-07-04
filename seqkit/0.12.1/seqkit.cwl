@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: seqkit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqkit.cwl
 inputs:
 - id: alphabet_guess_seq_length
   doc: length of sequence prefix of the first FASTA record based on which seqkit guesses

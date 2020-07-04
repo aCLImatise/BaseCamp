@@ -2,12 +2,16 @@ version 1.0
 
 task Geno2lfmm {
   input {
-    File inputInput
-    File outputOutput
+    File? _help
+    File? _helplfmm
   }
   command <<<
     geno2lfmm \
-      ~{if defined(inputInput) then ("-input " +  '"' + inputInput + '"') else ""} \
-      ~{if defined(outputOutput) then ("-output " +  '"' + outputOutput + '"') else ""}
+      ~{if defined(_help) then ("-input " +  '"' + _help + '"') else ""} \
+      ~{if defined(_helplfmm) then ("-output " +  '"' + _helplfmm + '"') else ""}
   >>>
+  parameter_meta {
+    _help: "--help"
+    _helplfmm: "--help.lfmm"
+  }
 }

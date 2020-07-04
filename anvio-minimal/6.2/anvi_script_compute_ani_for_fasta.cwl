@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_script_compute_ani_for_fasta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_script_compute_ani_for_fasta.cwl
 inputs:
 - id: fast_a_file
   doc: A FASTA-formatted input file

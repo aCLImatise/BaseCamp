@@ -1,97 +1,102 @@
 class: CommandLineTool
-id: pfscan.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pfscan.cwl
 inputs:
-- id: a
+- id: report_optimal_alignment
   doc: ': report optimal alignment for all profiles.'
   type: boolean
   inputBinding:
     prefix: -a
-- id: b
+- id: search_complementary_strand
   doc: ': search complementary strand of DNA sequences.'
   type: boolean
   inputBinding:
     prefix: -b
-- id: f
+- id: input_sequence_file
   doc: ': input sequence file is in FASTA format.'
   type: boolean
   inputBinding:
     prefix: -f
-- id: l
+- id: indicate_highest_number
   doc: ': indicate highest cut-off level (number).'
   type: boolean
   inputBinding:
     prefix: -l
-- id: l
+- id: indicate_highest_text
   doc: ': indicate highest cut-off level (text).'
   type: boolean
   inputBinding:
     prefix: -L
-- id: m
+- id: report_individual_matches
   doc: ': report individual matches for circular profiles.'
   type: boolean
   inputBinding:
     prefix: -m
-- id: r
+- id: use_raw_score
   doc: ': use raw score.'
   type: boolean
   inputBinding:
     prefix: -r
-- id: u
+- id: force_profile_disjointness
   doc: ': force profile disjointness to UNIQUE.'
   type: boolean
   inputBinding:
     prefix: -u
-- id: c
+- id: value_level_used
   doc: '<value>: cut-off level to be used for match selection. Same as parameter L.'
   type: boolean
   inputBinding:
     prefix: -C
-- id: m
+- id: value_set_mode
   doc: '<value>: set the normalization mode to use for the score computation. Overrides
     the profile PRIORITY parameter.'
   type: boolean
   inputBinding:
     prefix: -M
-- id: d
+- id: impose_length_limit
   doc: ': impose length limit on profile description.'
   type: boolean
   inputBinding:
     prefix: -d
-- id: k
+- id: output_using_header
   doc: ': output using the xPSA header (using keyword=value pairs).'
   type: boolean
   inputBinding:
     prefix: -k
-- id: s
+- id: list_sequences_matched
   doc: ': list sequences of the matched regions.'
   type: boolean
   inputBinding:
     prefix: -s
-- id: v
+- id: suppress_warnings_stderr
   doc: ': suppress warnings on stderr.'
   type: boolean
   inputBinding:
     prefix: -v
-- id: x
+- id: list_alignments_psa
   doc: ': list alignments in PSA format.'
   type: boolean
   inputBinding:
     prefix: -x
-- id: y
+- id: list_alignments_human
   doc: ': list alignments in human readable form.'
   type: boolean
   inputBinding:
     prefix: -y
-- id: z
+- id: indicate_profile_start
   doc: ': indicate profile start and stop positions.'
   type: boolean
   inputBinding:
     prefix: -z
-- id: w
+- id: value_specifies_width
   doc: '<value>: specifies the output width. Same as parameter W.'
   type: boolean
   inputBinding:
     prefix: -W
+- id: abcdfhllmmkrsuvwxyz
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -abCdfhlLmMkrsuvWxyz
 outputs: []
 cwlVersion: v1.1
 baseCommand:

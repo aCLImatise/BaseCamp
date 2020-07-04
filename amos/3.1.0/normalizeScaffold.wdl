@@ -2,10 +2,13 @@ version 1.0
 
 task NormalizeScaffold {
   input {
-    String? bankBankPath
+    String bank_path
   }
   command <<<
     normalizeScaffold \
-      ~{bankBankPath}
+      ~{bank_path}
   >>>
+  parameter_meta {
+    bank_path: ""
+  }
 }

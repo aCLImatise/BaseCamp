@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pashToLff.rb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pashToLff.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,21 +1,21 @@
 class: CommandLineTool
-id: normalize_iHS.cwl
+id: ../../../../home/ubuntu/BiocondaCli/normalize_iHS.cwl
 inputs:
+- id: s
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -s
+- id: f
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -f
 - id: normalize_hs
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: '001'
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: your
-  doc: "goes here       -'                "
-  type: string
-  inputBinding:
-    prefix: '-     Your'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

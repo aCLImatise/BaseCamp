@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dbxresource.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dbxresource.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

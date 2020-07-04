@@ -1,13 +1,17 @@
 version 1.0
 
-task BedComplement.pyChromLengthFile {
+task BedComplement.py {
   input {
-    String? bedBedFile
-    String? chromChromLengthFile
+    String bed_file
+    String chrom_length_file
   }
   command <<<
-    bed_complement.py chrom_length_file \
-      ~{bedBedFile} \
-      ~{chromChromLengthFile}
+    bed_complement.py \
+      ~{bed_file} \
+      ~{chrom_length_file}
   >>>
+  parameter_meta {
+    bed_file: ""
+    chrom_length_file: ""
+  }
 }

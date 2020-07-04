@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: kseq_split.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kseq_split.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

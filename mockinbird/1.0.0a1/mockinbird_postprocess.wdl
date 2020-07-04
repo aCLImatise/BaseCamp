@@ -2,18 +2,16 @@ version 1.0
 
 task MockinbirdPostprocess {
   input {
-    String prefixPrefix
-    String logLogLevel
-    String? preprocessPreprocessDir
-    String? outputOutputDir
-    String? configConfigFile
+    String? prefix
+    String? log_level
   }
   command <<<
     mockinbird postprocess \
-      ~{preprocessPreprocessDir} \
-      ~{if defined(prefixPrefix) then ("--prefix " +  '"' + prefixPrefix + '"') else ""} \
-      ~{if defined(logLogLevel) then ("--log_level " +  '"' + logLogLevel + '"') else ""} \
-      ~{outputOutputDir} \
-      ~{configConfigFile}
+      ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
+      ~{if defined(log_level) then ("--log_level " +  '"' + log_level + '"') else ""}
   >>>
+  parameter_meta {
+    prefix: "preprocessing filename prefix - only required if there are multiple table files in the specified preprocess directory (default: None)"
+    log_level: "verbosity level of the logger (default: info)"
+  }
 }

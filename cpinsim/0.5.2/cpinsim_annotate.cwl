@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cpinsim_annotate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cpinsim_annotate.cwl
 inputs:
 - id: interactions_without_constraints
   doc: 'Files containing the underlying network: pairwise interactions without constraints.

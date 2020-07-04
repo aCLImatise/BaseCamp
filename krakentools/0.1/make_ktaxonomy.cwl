@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: make_ktaxonomy.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/make_ktaxonomy.py.cwl
 inputs:
 - id: nodes
   doc: nodes.dmp file from taxonomy
@@ -11,7 +11,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --names
-- id: seqid2taxid
+- id: seq_id_two_taxid
   doc: seqid2taxid.map file
   type: string
   inputBinding:

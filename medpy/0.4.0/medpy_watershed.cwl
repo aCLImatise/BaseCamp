@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: medpy_watershed.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/medpy_watershed.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

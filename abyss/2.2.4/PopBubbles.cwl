@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: PopBubbles.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PopBubbles.cwl
 inputs:
-- id: fast_a
-  doc: contigs in FASTA format
-  type: string
-  inputBinding:
-    position: 0
-- id: adj
-  doc: contig adjacency graph
-  type: string
-  inputBinding:
-    position: 1
 - id: km_er
   doc: k-mer size
   type: string
@@ -61,7 +51,7 @@ inputs:
   type: File
   inputBinding:
     prefix: --graph
-- id: adj
+- id: output_graph_adj
   doc: output the graph in ADJ format [default]
   type: boolean
   inputBinding:
@@ -81,12 +71,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gfa
-- id: gfa1
+- id: gfa_one
   doc: output the graph in GFA1 format
   type: boolean
   inputBinding:
     prefix: --gfa1
-- id: gfa2
+- id: gfa_two
   doc: output the graph in GFA2 format
   type: boolean
   inputBinding:
@@ -116,6 +106,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: fast_a
+  doc: contigs in FASTA format
+  type: string
+  inputBinding:
+    position: 0
+- id: contig_adjacency_graph
+  doc: contig adjacency graph
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

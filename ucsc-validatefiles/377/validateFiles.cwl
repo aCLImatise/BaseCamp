@@ -1,36 +1,6 @@
 class: CommandLineTool
-id: validateFiles.cwl
+id: ../../../../home/ubuntu/BiocondaCli/validateFiles.cwl
 inputs:
-- id: broad_peak
-  doc: ': ENCODE Peak formats'
-  type: string
-  inputBinding:
-    position: 0
-- id: narrow_peak
-  doc: These are specialized bedN+P formats.
-  type: string
-  inputBinding:
-    position: 1
-- id: gapped_peak
-  doc: See http://genomewiki.soe.ucsc.edu/EncodeDCC/index.php/File_Formats
-  type: string
-  inputBinding:
-    position: 2
-- id: bed_graph
-  doc: ':  BED Graph'
-  type: string
-  inputBinding:
-    position: 3
-- id: rcc
-  doc: ':  NanoString RCC'
-  type: string
-  inputBinding:
-    position: 4
-- id: id_at
-  doc: ':  Illumina IDAT'
-  type: string
-  inputBinding:
-    position: 5
 - id: as
   doc: If you have extra "bedPlus" fields, it's great to put a definition of each
     field in a row in AutoSql format here. Applies to bed-related types.
@@ -75,8 +45,8 @@ inputs:
   inputBinding:
     prefix: -version
 - id: genome
-  doc: /to/hg18.2bit    REQUIRED to validate sequence mappings match the genome specified
-    in the .2bit file. (BAM, tagAlign, pairedTagAlign)
+  doc: REQUIRED to validate sequence mappings match the genome specified in the .2bit
+    file. (BAM, tagAlign, pairedTagAlign)
   type: File
   inputBinding:
     prefix: -genome
@@ -136,6 +106,46 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -privateData
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: type
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -type
+- id: broad_peak
+  doc: ': ENCODE Peak formats'
+  type: string
+  inputBinding:
+    position: 0
+- id: narrow_peak
+  doc: These are specialized bedN+P formats.
+  type: string
+  inputBinding:
+    position: 1
+- id: gapped_peak
+  doc: See http://genomewiki.soe.ucsc.edu/EncodeDCC/index.php/File_Formats
+  type: string
+  inputBinding:
+    position: 2
+- id: bed_graph
+  doc: ':  BED Graph'
+  type: string
+  inputBinding:
+    position: 3
+- id: rcc
+  doc: ':  NanoString RCC'
+  type: string
+  inputBinding:
+    position: 4
+- id: id_at
+  doc: ':  Illumina IDAT'
+  type: string
+  inputBinding:
+    position: 5
 outputs: []
 cwlVersion: v1.1
 baseCommand:

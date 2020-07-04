@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nucleoatac_run.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nucleoatac_run.cwl
 inputs:
 - id: bed
   doc: Regions for which to do stuff.

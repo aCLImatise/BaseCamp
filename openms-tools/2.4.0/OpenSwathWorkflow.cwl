@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: OpenSwathWorkflow.cwl
+id: ../../../../home/ubuntu/BiocondaCli/OpenSwathWorkflow.cwl
 inputs:
 - id: in
   doc: "*                    Input files separated by blank (valid formats: 'mzML',\
@@ -49,7 +49,7 @@ inputs:
 - id: ion_mobility_window
   doc: "Extraction window in ion mobility dimension (in milliseconds). This is the\
     \ full window size, e.g. a value of 10 milliseconds would extract 5 milliseconds\
-    \ on either side. (defau lt: '-1')"
+    \ on either side. (default: '-1')"
   type: string
   inputBinding:
     prefix: -ion_mobility_window
@@ -89,29 +89,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: debugging
-  doc: Debugging
-  type: boolean
-  inputBinding:
-    prefix: '- Debugging'
-- id: library
-  doc: Library parameters section
-  type: boolean
-  inputBinding:
-    prefix: '- Library'
-- id: rt_normalization
-  doc: Parameters for the RTNormalization for iRT petides. This specifies how the
-    RT alignment is performed and how outlier detection is applied. Outlier detection
-    can be done iteratively (by defa ult) which removes one outlier per iteration
-    or using the RANSAC algorithm.
-  type: boolean
-  inputBinding:
-    prefix: '- RTNormalization'
-- id: scoring
-  doc: Scoring parameters section
-  type: boolean
-  inputBinding:
-    prefix: '- Scoring'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

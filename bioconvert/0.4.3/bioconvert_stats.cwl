@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: bioconvert_stats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bioconvert_stats.cwl
 inputs:
-- id: bio_convert
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: v
   doc: ''
   type: string
@@ -16,6 +11,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-plot
+- id: bio_convert
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

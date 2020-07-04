@@ -1,37 +1,37 @@
 class: CommandLineTool
-id: ssu.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ssu.cwl
 inputs:
-- id: i
+- id: input_biom_table
   doc: The input BIOM table.
   type: boolean
   inputBinding:
     prefix: -i
-- id: t
+- id: input_phylogeny_newick
   doc: The input phylogeny in newick.
   type: boolean
   inputBinding:
     prefix: -t
-- id: m
+- id: the_method_
   doc: The method, [unweighted | weighted_normalized | weighted_unnormalized | generalized].
   type: boolean
   inputBinding:
     prefix: -m
-- id: o
+- id: output_distance_matrix
   doc: The output distance matrix.
   type: boolean
   inputBinding:
     prefix: -o
-- id: n
+- id: number_threads_default
   doc: '[OPTIONAL] The number of threads, default is 1.'
   type: boolean
   inputBinding:
     prefix: -n
-- id: a
+- id: generalized_unifrac_alpha
   doc: '[OPTIONAL] Generalized UniFrac alpha, default is 1.'
   type: boolean
   inputBinding:
     prefix: -a
-- id: f
+- id: bypass_tips_reduces
   doc: '[OPTIONAL] Bypass tips, reduces compute by about 50%.'
   type: boolean
   inputBinding:
@@ -73,6 +73,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --report-bare
+- id: method
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

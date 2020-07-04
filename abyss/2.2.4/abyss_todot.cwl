@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: abyss_todot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/abyss_todot.cwl
 inputs:
 - id: km_er
   doc: report the mean k-mer coverage, otherwise the sum k-mer coverage is reported
@@ -41,12 +41,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gfa
-- id: gfa1
+- id: gfa_one
   doc: output the graph in GFA1 format
   type: boolean
   inputBinding:
     prefix: --gfa1
-- id: gfa2
+- id: gfa_two
   doc: output the graph in GFA2 format
   type: boolean
   inputBinding:
@@ -71,6 +71,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

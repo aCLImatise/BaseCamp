@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: orthomclPairs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/orthomclPairs.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

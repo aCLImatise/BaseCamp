@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: PLEK_setup.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PLEK_setup.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

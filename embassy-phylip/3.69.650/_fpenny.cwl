@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _fpenny.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_fpenny.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,18 +1,8 @@
 class: CommandLineTool
-id: mb_cap_occupancy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mb_cap_occupancy.cwl
 inputs:
-- id: input_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: output_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: quantile
-  doc: ''
+  doc: quantile [0, 1.0]
   type: string
   inputBinding:
     prefix: --quantile

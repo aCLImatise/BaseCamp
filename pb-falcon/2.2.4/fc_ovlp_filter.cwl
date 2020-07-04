@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fc_ovlp_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fc_ovlp_filter.cwl
 inputs:
 - id: out_fn
   doc: 'Output filename (default: preads.m4)'

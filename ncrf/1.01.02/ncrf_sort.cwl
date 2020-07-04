@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ncrf_sort.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ncrf_sort.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

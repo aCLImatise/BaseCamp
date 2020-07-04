@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: lengths_reads.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lengths_reads.py.cwl
 inputs:
 - id: input
   doc: The input file in FASTQ Solexa file (also given thru stdin or as gzipped file).

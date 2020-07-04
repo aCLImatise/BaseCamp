@@ -2,10 +2,13 @@ version 1.0
 
 task MultilignSmp {
   input {
-    String? configurationConfigurationFile
+    String configuration_file
   }
   command <<<
     multilign-smp \
-      ~{configurationConfigurationFile}
+      ~{configuration_file}
   >>>
+  parameter_meta {
+    configuration_file: ""
+  }
 }

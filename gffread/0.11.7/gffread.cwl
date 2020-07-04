@@ -1,34 +1,34 @@
 class: CommandLineTool
-id: gffread.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gffread.cwl
 inputs:
-- id: i
+- id: discard_transcripts_having
   doc: discard transcripts having an intron larger than <maxintron>
   type: boolean
   inputBinding:
     prefix: -i
-- id: l
+- id: discard_transcripts_shorter
   doc: discard transcripts shorter than <minlen> bases
   type: boolean
   inputBinding:
     prefix: -l
-- id: r
+- id: only_show_coordinate
   doc: only show transcripts overlapping coordinate range <start>..<end> (on chromosome/contig
     <chr>, strand <strand> if provided)
   type: boolean
   inputBinding:
     prefix: -r
-- id: r
+- id: r_option_discard
   doc: for -r option, discard all transcripts that are not fully  contained within
     the given range
   type: boolean
   inputBinding:
     prefix: -R
-- id: u
+- id: discard_singleexon_transcripts
   doc: discard single-exon transcripts
   type: boolean
   inputBinding:
     prefix: -U
-- id: c
+- id: coding_only_discard
   doc: 'coding only: discard mRNAs that have no CDS features'
   type: boolean
   inputBinding:
@@ -43,26 +43,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ignore-locus
-- id: a
+- id: use_description_field
   doc: use the description field from <seq_info.fsize> and add it as the value for
     a 'descr' attribute to the GFF record
   type: boolean
   inputBinding:
     prefix: -A
-- id: s
+- id: seqinfofsize_tabdelimited_file
   doc: '<seq_info.fsize> is a tab-delimited file providing this info for each of the
     mapped sequences: <seq-name> <seq-length> <seq-description> (useful for -A option
     with mRNA/EST/protein mappings)'
   type: boolean
   inputBinding:
     prefix: -s
-- id: n
+- id: discard_multiexon_mrnas
   doc: discard multi-exon mRNAs that have any intron with a non-canonical splice site
     consensus (i.e. not GT-AG, GC-AG or AT-AC)
   type: boolean
   inputBinding:
     prefix: -N
-- id: j
+- id: discard_mrnas_lack
   doc: discard any mRNAs that either lack initial START codon or the terminal STOP
     codon, or have an in-frame stop codon (i.e. only print mRNAs with a complete CDS)
   type: boolean
@@ -85,25 +85,30 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --in-tlf
-- id: k
+- id: m_option_also
   doc: 'for -M option: also discard as redundant the shorter, fully contained transcripts
     (intron chains matching a part of the container)'
   type: boolean
   inputBinding:
     prefix: -K
-- id: q
+- id: m_option_no
   doc: for -M option, no longer require boundary containment when assessing redundancy
     (can be combined with -K); only introns have to match for multi-exon transcripts,
     and >=80% overlap for single-exon transcripts
   type: boolean
   inputBinding:
     prefix: -Q
-- id: y
+- id: m_option_enforce
   doc: for -M option, enforce -Q but also discard overlapping single-exon  transcripts,
     even on the opposite strand (can be combined with -K)
   type: boolean
   inputBinding:
     prefix: -Y
+- id: input_gff
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

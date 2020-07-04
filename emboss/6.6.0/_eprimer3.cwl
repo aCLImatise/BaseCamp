@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _eprimer3.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_eprimer3.cwl
 inputs:
 - id: hybrid_probe
   doc: toggle     [N] An 'internal oligo' is intended to be used as a hybridization

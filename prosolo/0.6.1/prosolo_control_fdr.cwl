@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: prosolo_control_fdr.cwl
+id: ../../../../home/ubuntu/BiocondaCli/prosolo_control_fdr.cwl
 inputs:
 - id: fdr
   doc: 'FDR to control for. [default: 0.05]'
@@ -32,6 +32,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --var
+- id: bcf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

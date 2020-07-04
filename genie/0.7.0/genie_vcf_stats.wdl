@@ -2,12 +2,16 @@ version 1.0
 
 task GenieVcfStats {
   input {
-    String fileFilePath
-    String? flagsFlags
+    String? file_path
+    String? flags
   }
   command <<<
     genie vcf stats \
-      ~{flagsFlags} \
-      ~{if defined(fileFilePath) then ("--filepath " +  '"' + fileFilePath + '"') else ""}
+      ~{flags} \
+      ~{if defined(file_path) then ("--filepath " +  '"' + file_path + '"') else ""}
   >>>
+  parameter_meta {
+    file_path: "a VCF file (*require)"
+    flags: ""
+  }
 }

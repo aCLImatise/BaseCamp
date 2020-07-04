@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: genePredHisto.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genePredHisto.cwl
 inputs:
+- id: ids
+  doc: '- a second column with the gene name, useful for finding outliers.'
+  type: boolean
+  inputBinding:
+    prefix: -ids
 - id: what
   doc: ''
   type: string
@@ -16,11 +21,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: ids
-  doc: column with the gene name, useful for finding outliers.
-  type: string
-  inputBinding:
-    prefix: -ids
 outputs: []
 cwlVersion: v1.1
 baseCommand:

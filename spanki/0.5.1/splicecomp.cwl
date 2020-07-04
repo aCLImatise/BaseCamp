@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: splicecomp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/splicecomp.cwl
 inputs:
-- id: a
+- id: table_a
   doc: table A
   type: string
   inputBinding:
     prefix: -a
-- id: b
+- id: table_b
   doc: table B
   type: string
   inputBinding:
     prefix: -b
-- id: o
+- id: output_directory_default
   doc: Output directory, default='splicecomp_out'
   type: string
   inputBinding:

@@ -1,12 +1,7 @@
 class: CommandLineTool
-id: lexmapr.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lexmapr.cwl
 inputs:
-- id: input_file
-  doc: Input csv or tsv file
-  type: string
-  inputBinding:
-    position: 0
-- id: o
+- id: _output_file
   doc: '[OUTPUT], --output [OUTPUT] Output file'
   type: boolean
   inputBinding:
@@ -38,6 +33,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --profile
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
 outputs: []
 cwlVersion: v1.1
 baseCommand:

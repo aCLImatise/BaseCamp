@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: prank.cwl
+id: ../../../../home/ubuntu/BiocondaCli/prank.cwl
 inputs:
 - id: f
   doc: '[equivalent]'

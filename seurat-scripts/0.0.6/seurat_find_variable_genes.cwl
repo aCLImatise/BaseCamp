@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: seurat_find_variable_genes.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seurat_find_variable_genes.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

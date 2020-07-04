@@ -1,19 +1,21 @@
 class: CommandLineTool
-id: phastOdds.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phastOdds.cwl
 inputs:
 - id: features
-  doc: alignment.fa > scores.gff
+  doc: (Required unless -w or -y) File defining features to be scored (GFF, BED, or
+    genepred).
   type: string
   inputBinding:
     prefix: --features
 - id: window
-  doc: 100 alignment.fa > scores.dat
-  type: boolean
+  doc: (Can be used instead of -g or -y) Compute scores in a sliding window of the
+    specified size.
+  type: long
   inputBinding:
     prefix: --window
 - id: output_bed
-  doc: '> scores.bed'
-  type: string
+  doc: (For use with -g) Generate output in bed format rather than GFF.
+  type: boolean
   inputBinding:
     prefix: --output-bed
 - id: background_mods
@@ -42,18 +44,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --feature-hmm
-- id: features
-  doc: (Required unless -w or -y) File defining features to be scored (GFF, BED, or
-    genepred).
-  type: string
-  inputBinding:
-    prefix: --features
-- id: window
-  doc: (Can be used instead of -g or -y) Compute scores in a sliding window of the
-    specified size.
-  type: long
-  inputBinding:
-    prefix: --window
 - id: base_by_base
   doc: (Can be used instead of -g or -y) Output base-by-base scores, in the coordinate
     frame of the reference sequence (or of the sequence specified by --refidx).  Output
@@ -81,11 +71,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --refidx
-- id: output_bed
-  doc: (For use with -g) Generate output in bed format rather than GFF.
-  type: boolean
-  inputBinding:
-    prefix: --output-bed
 - id: verbose
   doc: Verbose mode.  Print messages to stderr describing what the program is doing.
   type: boolean

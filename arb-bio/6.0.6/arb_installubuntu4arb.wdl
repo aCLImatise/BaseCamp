@@ -2,10 +2,13 @@ version 1.0
 
 task ArbInstallubuntu4arb.sh {
   input {
-    String? whatWhat
+    String what
   }
   command <<<
     arb_installubuntu4arb.sh \
-      ~{whatWhat}
+      ~{what}
   >>>
+  parameter_meta {
+    what: ""
+  }
 }

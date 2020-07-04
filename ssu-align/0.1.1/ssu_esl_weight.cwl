@@ -1,27 +1,27 @@
 class: CommandLineTool
-id: ssu_esl_weight.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ssu_esl_weight.cwl
 inputs:
-- id: g
+- id: gersteinsonnhammerchothia_tree_weights
   doc: ': Gerstein/Sonnhammer/Chothia tree weights  [default]'
   type: boolean
   inputBinding:
     prefix: -g
-- id: p
+- id: henikoff_positionbased_weights
   doc: ': Henikoff position-based weights'
   type: boolean
   inputBinding:
     prefix: -p
-- id: b
+- id: henikoff_simple_filter
   doc: ': Henikoff simple filter weights'
   type: boolean
   inputBinding:
     prefix: -b
-- id: f
+- id: filter_seqs_fractional
   doc: ': filter out seqs by fractional identity'
   type: boolean
   inputBinding:
     prefix: -f
-- id: o
+- id: send_output_file
   doc: ': send output to file <f>, not stdout'
   type: string
   inputBinding:
@@ -56,6 +56,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --rna
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: msa_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,10 +2,13 @@ version 1.0
 
 task Sickle {
   input {
-    String? commandCommand
+    String var_command
   }
   command <<<
     sickle \
-      ~{commandCommand}
+      ~{var_command}
   >>>
+  parameter_meta {
+    var_command: ""
+  }
 }

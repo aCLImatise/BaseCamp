@@ -2,18 +2,25 @@ version 1.0
 
 task BamCleanHaloplex {
   input {
-    File inIn
-    File outOut
-    Int minMinMatch
-    Boolean changelogChangelog
-    Boolean tdxTdx
+    File? in
+    File? out
+    Int? min_match
+    Boolean? changelog
+    Boolean? tdx
   }
   command <<<
     BamCleanHaloplex \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(minMinMatch) then ("-min_match " +  '"' + minMinMatch + '"') else ""} \
-      ~{true="--changelog" false="" changelogChangelog} \
-      ~{true="--tdx" false="" tdxTdx}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(min_match) then ("-min_match " +  '"' + min_match + '"') else ""} \
+      ~{true="--changelog" false="" changelog} \
+      ~{true="--tdx" false="" tdx}
   >>>
+  parameter_meta {
+    in: "Input bam file."
+    out: "Output bam file."
+    min_match: "Minimum number of CIGAR matches (M). Default value: '30'"
+    changelog: "Prints changeloge and exits."
+    tdx: "Writes a Tool Definition Xml file. The file name is the application name with the suffix '.tdx'."
+  }
 }

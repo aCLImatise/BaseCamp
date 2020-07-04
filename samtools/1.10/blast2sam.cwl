@@ -1,11 +1,16 @@
 class: CommandLineTool
-id: blast2sam.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blast2sam.pl.cwl
 inputs:
-- id: in_blastn
+- id: options
   doc: ''
-  type: string
+  type: boolean
   inputBinding:
-    position: 0
+    prefix: -OPTIONS
+- id: more_options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -MORE_OPTIONS
 outputs: []
 cwlVersion: v1.1
 baseCommand:

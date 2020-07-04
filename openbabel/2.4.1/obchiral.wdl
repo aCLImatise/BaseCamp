@@ -2,10 +2,13 @@ version 1.0
 
 task Obchiral {
   input {
-    File? filenameFilename
+    File filename
   }
   command <<<
     obchiral \
-      ~{filenameFilename}
+      ~{filename}
   >>>
+  parameter_meta {
+    filename: ""
+  }
 }

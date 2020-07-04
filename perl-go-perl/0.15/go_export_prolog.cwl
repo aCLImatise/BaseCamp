@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: go_export_prolog.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/go_export_prolog.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

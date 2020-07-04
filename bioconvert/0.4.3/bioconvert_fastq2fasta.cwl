@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: bioconvert_fastq2fasta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bioconvert_fastq2fasta.cwl
 inputs:
-- id: input_file
-  doc: 'The path to the file to convert. (default: None)'
-  type: string
-  inputBinding:
-    position: 0
-- id: output_file
-  doc: 'The path where the result will be stored. (default: None)'
-  type: string
-  inputBinding:
-    position: 1
 - id: force
   doc: 'if outfile exists, it is overwritten with this option (default: False)'
   type: boolean
@@ -57,7 +47,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --extra-arguments
-- id: m
+- id: method_use_conversion
   doc: '[{awk,awk_v2,biopython,mappy,mawk,mawk_v2,mawk_v3,perl,python_internal,readfq,sed,sed_v2,seqtk}],
     --method [{awk,awk_v2,biopython,mappy,mawk,mawk_v2,mawk_v3,perl,python_internal,readfq,sed,sed_v2,seqtk}]
     The method to use to do the conversion. (default: readfq)'
@@ -69,6 +59,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --show-methods
+- id: input_file
+  doc: 'The path to the file to convert. (default: None)'
+  type: string
+  inputBinding:
+    position: 0
+- id: output_file
+  doc: 'The path where the result will be stored. (default: None)'
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

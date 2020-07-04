@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: archive_pubmed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/archive_pubmed.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

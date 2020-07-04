@@ -1,18 +1,18 @@
 class: CommandLineTool
-id: LCA.cwl
+id: ../../../../home/ubuntu/BiocondaCli/LCA.cwl
 inputs:
-- id: i
+- id: assignments_sequences_ref
   doc: assignments of sequences to ref database in blast .m8 tab delimited format
   type: string
   inputBinding:
     prefix: -i
-- id: r
+- id: file_entries_corresponding
   doc: file with entries corresponding to sequences in ref database, that was mapped
     against
   type: string
   inputBinding:
     prefix: -r
-- id: o
+- id: file_containing_name
   doc: file containing the sequence name and the assigned taxonomy against the ref
     database
   type: string

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scg_run_singlet_model.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scg_run_singlet_model.cwl
 inputs:
 - id: seed
   doc: Set random seed so results can be reproduced. By default a random seed is chosen.
@@ -22,6 +22,31 @@ inputs:
   type: string
   inputBinding:
     prefix: --samples_file
+- id: config_file
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --config_file
+- id: single
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: cell
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: genotype_r
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: run_singlet_model
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

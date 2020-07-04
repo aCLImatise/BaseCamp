@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: clame.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clame.cwl
 inputs:
-- id: b
+- id: number_take_default
   doc: 'number of bases to take an alignment (default 70) '
   type: long
   inputBinding:
     prefix: -b
-- id: fm9
+- id: fm_nine
   doc: 'fm9 file  '
   type: string
   inputBinding:
@@ -16,7 +16,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -fastq
-- id: e
+- id: cut_points_comma
   doc: 'of cut points (comma separator) for edges constrains (default 0,10000) '
   type: string
   inputBinding:

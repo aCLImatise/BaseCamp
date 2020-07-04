@@ -1,6 +1,26 @@
 class: CommandLineTool
-id: BaitFilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/BaitFilter.cwl
 inputs:
+- id: i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
+- id: o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
+- id: c
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -c
+- id: m
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -m
 - id: bait_filter
   doc: -i <string> [-o <string>] [-c <string>] [-m <string>] [--blast-second-hit-evalue
     <floating point number>] [--blast-first-hit-evalue <floating point number>] [--blast-min-hit-coverage-of-baits-in-tiling-stack

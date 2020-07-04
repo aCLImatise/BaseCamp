@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: model.cwl
+id: ../../../../home/ubuntu/BiocondaCli/model.cwl
 inputs:
 - id: verbosity
   doc: 'Increase output verbosity (default: None)'

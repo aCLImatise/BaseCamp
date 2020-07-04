@@ -1,11 +1,21 @@
 class: CommandLineTool
-id: unicycler.cwl
+id: ../../../../home/ubuntu/BiocondaCli/unicycler.cwl
 inputs:
 - id: help_all
   doc: Show a help message with all program options
   type: boolean
   inputBinding:
     prefix: --help_all
+- id: short_one
+  doc: FASTQ file of first short reads in each pair (required)
+  type: string
+  inputBinding:
+    prefix: --short1
+- id: short_two
+  doc: FASTQ file of second short reads in each pair (required)
+  type: string
+  inputBinding:
+    prefix: --short2
 - id: unpaired
   doc: FASTQ file of unpaired short reads (optional)
   type: string

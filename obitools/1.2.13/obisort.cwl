@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: obisort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/obisort.cwl
 inputs:
 - id: key
   doc: Attribute used to sort the sequence records.

@@ -1,31 +1,6 @@
 class: CommandLineTool
-id: novolrpolish.cwl
+id: ../../../../home/ubuntu/BiocondaCli/novolrpolish.cwl
 inputs:
-- id: novo_craft
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: long
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: read
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: polisher
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: format_specific
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
 - id: in
   doc: the input BAM file [stdin]
   type: string
@@ -80,6 +55,31 @@ inputs:
   type: string
   inputBinding:
     prefix: -minMAPQ
+- id: novo_craft
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: long
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: read
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: polisher
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: format_specific
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

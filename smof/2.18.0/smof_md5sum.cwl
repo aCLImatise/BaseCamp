@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: smof_md5sum.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smof_md5sum.cwl
 inputs:
-- id: input
-  doc: input fasta sequence (default = stdin)
-  type: string
-  inputBinding:
-    position: 0
 - id: ignore_case
   doc: convert all to uppercase, before hashing
   type: boolean
@@ -31,6 +26,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --replace-header
+- id: input
+  doc: input fasta sequence (default = stdin)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

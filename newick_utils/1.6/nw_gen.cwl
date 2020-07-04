@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nw_gen.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nw_gen.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

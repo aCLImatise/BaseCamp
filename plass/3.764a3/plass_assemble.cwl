@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: plass_assemble.cwl
+id: ../../../../home/ubuntu/BiocondaCli/plass_assemble.cwl
 inputs:
 - id: add_self_matches
   doc: artificially add entries of queries with themselves (for clustering)
@@ -23,7 +23,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --mask-lower-case
-- id: k
+- id: kmer_size_range
   doc: 'k-mer size in the range (0: set automatically to optimum) [14]'
   type: long
   inputBinding:
@@ -34,18 +34,18 @@ inputs:
   type: string
   inputBinding:
     prefix: --split-memory-limit
-- id: e
+- id: extend_sequences_evalue
   doc: Extend sequences if the E-value is below [0.0, inf] [0.000]
   type: double
   inputBinding:
     prefix: -e
-- id: c
+- id: list_matches_fraction
   doc: list matches above this fraction of aligned (covered) residues (see --cov-mode)
     [0.000]
   type: double
   inputBinding:
     prefix: -c
-- id: a
+- id: add_string_convert
   doc: add backtrace string (convert to alignments with mmseqs convertalis utility)
   type: boolean
   inputBinding:
@@ -89,13 +89,13 @@ inputs:
   inputBinding:
     prefix: --hash-shift
 - id: include_only_extendable
-  doc: 0      Include only extendable [1, set to 0 to disable]
-  type: boolean
+  doc: Include only extendable [1, set to 0 to disable]
+  type: string
   inputBinding:
     prefix: --include-only-extendable
 - id: ignore_multi_km_er
-  doc: 0            Skip kmers occuring multiple times (>=2) [1, set to 0 to disable]
-  type: boolean
+  doc: Skip kmers occuring multiple times (>=2) [1, set to 0 to disable]
+  type: string
   inputBinding:
     prefix: --ignore-multi-kmer
 - id: num_iterations
@@ -225,7 +225,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --compressed
-- id: v
+- id: verbosity_level_nothing
   doc: 'verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info [3]'
   type: long
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: easy_install.cwl
+id: ../../../../home/ubuntu/BiocondaCli/easy_install.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

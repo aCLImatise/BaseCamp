@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: sdrmsd.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sdrmsd.cwl
 inputs:
-- id: references_df
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: inputs_df
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: fit
   doc: Superpose molecules before RMSD calculation
   type: boolean
@@ -29,6 +19,16 @@ inputs:
   type: File
   inputBinding:
     prefix: --out
+- id: reference_dots_df
+  doc: SDF file with the reference molecule.
+  type: string
+  inputBinding:
+    position: 0
+- id: input_dots_df
+  doc: SDF file with the molecules to be compared to reference.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

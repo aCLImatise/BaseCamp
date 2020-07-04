@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: maker_to_proteindb.rb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maker_to_proteindb.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

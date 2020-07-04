@@ -2,10 +2,13 @@ version 1.0
 
 task Obprop {
   input {
-    File? filenameFilename
+    File filename
   }
   command <<<
     obprop \
-      ~{filenameFilename}
+      ~{filename}
   >>>
+  parameter_meta {
+    filename: ""
+  }
 }

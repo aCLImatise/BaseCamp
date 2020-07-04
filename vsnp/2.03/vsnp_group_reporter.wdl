@@ -2,16 +2,22 @@ version 1.0
 
 task VsnpGroupReporter.py {
   input {
-    String vcfVcf
-    String rR
-    Boolean vV
-    String? progProg
+    String? vcf
+    String? ref_option
+    Boolean? v
+    String prog
   }
   command <<<
     vsnp_group_reporter.py \
-      ~{progProg} \
-      ~{if defined(vcfVcf) then ("-vcf " +  '"' + vcfVcf + '"') else ""} \
-      ~{if defined(rR) then ("-r " +  '"' + rR + '"') else ""} \
-      ~{true="-v" false="" vV}
+      ~{prog} \
+      ~{if defined(vcf) then ("--vcf " +  '"' + vcf + '"') else ""} \
+      ~{if defined(ref_option) then ("--ref_option " +  '"' + ref_option + '"') else ""} \
+      ~{true="-v" false="" v}
   >>>
+  parameter_meta {
+    vcf: "Required: vcf file"
+    ref_option: "Required: reference option"
+    v: ""
+    prog: ""
+  }
 }

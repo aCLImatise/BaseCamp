@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filterjuncbyROCarguNonCanonical.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filterjuncbyROCarguNonCanonical.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

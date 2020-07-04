@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: segtools_relabel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/segtools_relabel.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: segmentation
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: mnemonic_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: quiet
   doc: Do not print diagnostic messages.
   type: boolean
@@ -26,6 +11,16 @@ inputs:
   type: File
   inputBinding:
     prefix: --outfile
+- id: segmentation
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: mnemonic_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

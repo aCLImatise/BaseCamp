@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: inforesidue.cwl
+id: ../../../../home/ubuntu/BiocondaCli/inforesidue.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

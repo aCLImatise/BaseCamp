@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: goalign_rename.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_rename.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: current
-  doc: of the sequences
-  type: string
-  inputBinding:
-    prefix: '- Current'
-- id: desired
-  doc: name of the sequences
-  type: string
-  inputBinding:
-    prefix: '- Desired'
 - id: clean_names
   doc: Replaces special characters (tabs, spaces, newick characters) with '-' from
     input sequence names before writing output alignment
@@ -113,6 +98,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

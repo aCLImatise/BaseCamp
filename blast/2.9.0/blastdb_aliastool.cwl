@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: blastdb_aliastool.cwl
-inputs:
-- id: num_volumes
-  doc: .
-  type: string
-  inputBinding:
-    prefix: -num_volumes
+id: ../../../../home/ubuntu/BiocondaCli/blastdb_aliastool.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

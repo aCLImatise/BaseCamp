@@ -2,14 +2,19 @@ version 1.0
 
 task MakeTree {
   input {
-    Boolean fastFastA
-    String depthDepth
-    String outputOutput
+    Boolean? fast_a
+    String? depth
+    String? file_extension_it
   }
   command <<<
     makeTree \
-      ~{true="--fasta" false="" fastFastA} \
-      ~{if defined(depthDepth) then ("--depth " +  '"' + depthDepth + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""}
+      ~{true="--fasta" false="" fast_a} \
+      ~{if defined(depth) then ("--depth " +  '"' + depth + '"') else ""} \
+      ~{if defined(file_extension_it) then ("--output " +  '"' + file_extension_it + '"') else ""}
   >>>
+  parameter_meta {
+    fast_a: "Fasta input file. Mandatory option."
+    depth: "of the tree structure. Mandatory option. "
+    file_extension_it: "file. If the extension is not *gz, it is added. Mandatory option."
+  }
 }

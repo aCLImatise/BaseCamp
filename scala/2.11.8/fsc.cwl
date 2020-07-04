@@ -1,12 +1,7 @@
 class: CommandLineTool
-id: fsc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fsc.cwl
 inputs:
-- id: source_files
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: ipv4
+- id: ipv_four
   doc: Use IPv4 rather than IPv6 for the server socket
   type: boolean
   inputBinding:
@@ -36,6 +31,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -shutdown
+- id: source_files
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

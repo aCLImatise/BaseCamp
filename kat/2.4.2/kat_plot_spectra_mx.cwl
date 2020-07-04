@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: kat_plot_spectra_mx.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kat_plot_spectra_mx.cwl
 inputs:
-- id: matrix_file
-  doc: The input matrix file from KAT
-  type: string
-  inputBinding:
-    position: 0
 - id: output
   doc: The path to the output file.
   type: string
@@ -72,13 +67,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --list
-- id: exc_cut_off_d1
+- id: exc_cut_off_done
   doc: If in intersection mode, the level at which content for dataset 1 is considered
     exclusive or shared
   type: string
   inputBinding:
     prefix: --exc_cutoff_d1
-- id: exc_cut_off_d2
+- id: exc_cut_off_d_two
   doc: If in intersection mode, the level at which content for dataset 2 is considered
     exclusive or shared
   type: string
@@ -104,6 +99,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: matrix_file
+  doc: The input matrix file from KAT
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: blat_parallel.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blat_parallel.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

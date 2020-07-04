@@ -2,22 +2,31 @@ version 1.0
 
 task TaxmapperRun {
   input {
-    String databaseDatabase
-    Directory folderFolder
-    String reverseReverse
-    String suffixSuffix
-    Int mM
-    String outOut
-    String threadsThreads
+    String? database
+    Directory? folder
+    String? reverse
+    String? suffix
+    Int? maximum_read_length
+    String? out
+    String? threads
   }
   command <<<
     taxmapper run \
-      ~{if defined(databaseDatabase) then ("--database " +  '"' + databaseDatabase + '"') else ""} \
-      ~{if defined(folderFolder) then ("--folder " +  '"' + folderFolder + '"') else ""} \
-      ~{if defined(reverseReverse) then ("--reverse " +  '"' + reverseReverse + '"') else ""} \
-      ~{if defined(suffixSuffix) then ("--suffix " +  '"' + suffixSuffix + '"') else ""} \
-      ~{if defined(mM) then ("-m " +  '"' + mM + '"') else ""} \
-      ~{if defined(outOut) then ("--out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""}
+      ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
+      ~{if defined(folder) then ("--folder " +  '"' + folder + '"') else ""} \
+      ~{if defined(reverse) then ("--reverse " +  '"' + reverse + '"') else ""} \
+      ~{if defined(suffix) then ("--suffix " +  '"' + suffix + '"') else ""} \
+      ~{if defined(maximum_read_length) then ("-m " +  '"' + maximum_read_length + '"') else ""} \
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  parameter_meta {
+    database: "Database path for RAPseach database index"
+    folder: "Folder with reads in fasta or fastq format"
+    reverse: "Reads also contain reverse read, [default: True]"
+    suffix: "Suffix of paired end reads, [default: \"_R1,_R2\"]"
+    maximum_read_length: "Maximum read length"
+    out: "Output folder, [default: \"results\"]"
+    threads: "Number of threads, [default: 4]"
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: make_pp_rst_file.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/make_pp_rst_file.py.cwl
 inputs:
 - id: input_script
   doc: This is the input script for which to  make a .rst file [REQUIRED]

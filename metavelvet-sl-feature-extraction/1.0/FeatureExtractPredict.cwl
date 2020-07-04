@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FeatureExtractPredict.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FeatureExtractPredict.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

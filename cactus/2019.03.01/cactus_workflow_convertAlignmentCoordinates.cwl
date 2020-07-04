@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cactus_workflow_convertAlignmentCoordinates.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cactus_workflow_convertAlignmentCoordinates.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

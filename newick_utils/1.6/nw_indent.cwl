@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nw_indent.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nw_indent.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

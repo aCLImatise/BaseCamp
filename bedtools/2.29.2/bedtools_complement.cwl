@@ -1,16 +1,21 @@
 class: CommandLineTool
-id: bedtools_complement.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedtools_complement.cwl
 inputs:
-- id: chr18_gl000207_random
-  doc: '4262'
-  type: string
-  inputBinding:
-    position: 0
-- id: l
+- id: limit_output_solely
   doc: Limit output to solely the chromosomes with records in the input file.
   type: boolean
   inputBinding:
     prefix: -L
+- id: i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
+- id: g
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -g
 outputs: []
 cwlVersion: v1.1
 baseCommand:

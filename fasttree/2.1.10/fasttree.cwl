@@ -1,9 +1,9 @@
 class: CommandLineTool
-id: fasttree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fasttree.cwl
 inputs:
 - id: expert
-  doc: options
-  type: string
+  doc: -- see more options
+  type: boolean
   inputBinding:
     prefix: -expert
 outputs: []

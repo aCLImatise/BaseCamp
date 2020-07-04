@@ -1,27 +1,22 @@
 class: CommandLineTool
-id: haslr_assemble.cwl
+id: ../../../../home/ubuntu/BiocondaCli/haslr_assemble.cwl
 inputs:
-- id: detects_v
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: c
+- id: path_contigs_file
   doc: Path to contigs file (also --contig)
   type: string
   inputBinding:
     prefix: -c
-- id: l
+- id: path_long_read
   doc: Path to long read dataset (also --long)
   type: string
   inputBinding:
     prefix: -l
-- id: m
+- id: path_mappings_also
   doc: Path to mappings of long reads onto contigs (also --mapping)
   type: string
   inputBinding:
     prefix: -m
-- id: d
+- id: path__dir
   doc: Path to the output directory (also --dir)
   type: string
   inputBinding:
@@ -46,7 +41,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --edge-sup
-- id: t
+- id: number_cpu_cores
   doc: Number of CPU cores to use (also --threads)
   type: long
   inputBinding:
@@ -61,6 +56,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --mapping-fofn
+- id: r
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -r
+- id: s
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -s
+- id: detects_v
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

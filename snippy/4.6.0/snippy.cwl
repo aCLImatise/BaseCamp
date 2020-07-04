@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: snippy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snippy.cwl
 inputs:
 - id: citation
   doc: Print citation for referencing snippy
@@ -41,12 +41,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --reference
-- id: r1
+- id: r_one
   doc: Reads, paired-end R1 (left) (default '')
   type: string
   inputBinding:
     prefix: --R1
-- id: r2
+- id: r_two
   doc: Reads, paired-end R2 (right) (default '')
   type: string
   inputBinding:

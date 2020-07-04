@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: CVInspector.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CVInspector.cwl
 inputs:
 - id: cv_files
   doc: "*    List of ontology files in OBO format. (valid formats: 'obo')"

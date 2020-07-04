@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: genomedata_load.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genomedata_load.cwl
 inputs:
-- id: genome_data_file
-  doc: genomedata archive
-  type: string
-  inputBinding:
-    position: 0
 - id: verbose
   doc: Print status updates and diagnostic messages
   type: boolean
@@ -17,7 +12,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --sequence
-- id: t
+- id: file__track
   doc: '=FILE, --track NAME=FILE Add data from FILE as the track NAME, such as: -t
     signal=signal.wig'
   type: string
@@ -54,6 +49,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --directory-mode
+- id: genome_data_file
+  doc: genomedata archive
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

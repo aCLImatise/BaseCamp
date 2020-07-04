@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: flowcraft_inspect.cwl
+id: ../../../../home/ubuntu/BiocondaCli/flowcraft_inspect.cwl
 inputs:
-- id: i
+- id: specify_nextflow_file
   doc: Specify the nextflow trace file.
   type: string
   inputBinding:
     prefix: -i
-- id: r
+- id: set_refresh_frequency
   doc: Set the refresh frequency for the continuous inspect functions
   type: string
   inputBinding:

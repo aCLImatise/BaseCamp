@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: VIBRANT_extract_nucleotide.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/VIBRANT_extract_nucleotide.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

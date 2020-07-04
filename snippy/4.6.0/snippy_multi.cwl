@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: snippy_multi.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snippy_multi.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

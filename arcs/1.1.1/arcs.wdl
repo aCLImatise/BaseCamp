@@ -2,70 +2,100 @@ version 1.0
 
 task Arcs {
   input {
-    File fofFofName
-    Boolean multMultFile
-    File fileFile
-    String minMinReads
-    String minMinLinks
-    String minMinSize
-    String baseBaseName
-    File graphGraph
-    String gapGap
-    File tsvTsv
-    File barcodeBarcodeCounts
-    String indexIndexMultiplicity
-    String maxMaxDegree
-    String endEndLength
-    String errorErrorPercent
-    Boolean runRunVerbose
-    String seqSeqId
-    Boolean kKValue
-    Boolean jJIndex
-    Boolean threadsThreads
-    String binBinSize
-    Boolean distDistEst
-    Boolean noNoDistEst
-    Boolean distDistMedian
-    Boolean distDistUpper
-    File distDistTsv
-    File samplesSamplesTsv
-    Boolean pairPair
-    String? optionsOptions
-    String? listListOfAlignmentFiles
-    String? orOr
+    File? fof_name
+    Boolean? mult_file
+    File? file
+    String? min_reads
+    String? min_links
+    String? min_size
+    String? base_name
+    File? graph
+    String? gap
+    File? tsv
+    File? barcode_counts
+    String? index_multiplicity
+    String? max_degree
+    String? end_length
+    String? error_percent
+    Boolean? run_verbose
+    String? seq_id
+    Boolean? k_value
+    Boolean? j_index
+    Boolean? threads
+    String? bin_size
+    Boolean? dist_est
+    Boolean? no_dist_est
+    Boolean? dist_median
+    Boolean? dist_upper
+    File? dist_tsv
+    File? samples_tsv
+    Boolean? output_scaffolds_pairing
+    String list_of_alignment_files
+    String or
   }
   command <<<
     arcs \
-      ~{optionsOptions} \
-      ~{if defined(fofFofName) then ("--fofName " +  '"' + fofFofName + '"') else ""} \
-      ~{true="--multfile" false="" multMultFile} \
-      ~{if defined(fileFile) then ("--file " +  '"' + fileFile + '"') else ""} \
-      ~{if defined(minMinReads) then ("--min_reads " +  '"' + minMinReads + '"') else ""} \
-      ~{if defined(minMinLinks) then ("--min_links " +  '"' + minMinLinks + '"') else ""} \
-      ~{if defined(minMinSize) then ("--min_size " +  '"' + minMinSize + '"') else ""} \
-      ~{if defined(baseBaseName) then ("--base_name " +  '"' + baseBaseName + '"') else ""} \
-      ~{if defined(graphGraph) then ("--graph " +  '"' + graphGraph + '"') else ""} \
-      ~{if defined(gapGap) then ("--gap " +  '"' + gapGap + '"') else ""} \
-      ~{if defined(tsvTsv) then ("--tsv " +  '"' + tsvTsv + '"') else ""} \
-      ~{if defined(barcodeBarcodeCounts) then ("--barcode-counts " +  '"' + barcodeBarcodeCounts + '"') else ""} \
-      ~{if defined(indexIndexMultiplicity) then ("--index_multiplicity " +  '"' + indexIndexMultiplicity + '"') else ""} \
-      ~{if defined(maxMaxDegree) then ("--max_degree " +  '"' + maxMaxDegree + '"') else ""} \
-      ~{if defined(endEndLength) then ("--end_length " +  '"' + endEndLength + '"') else ""} \
-      ~{if defined(errorErrorPercent) then ("--error_percent " +  '"' + errorErrorPercent + '"') else ""} \
-      ~{true="--run_verbose" false="" runRunVerbose} \
-      ~{if defined(seqSeqId) then ("--seq_id " +  '"' + seqSeqId + '"') else ""} \
-      ~{true="--k_value" false="" kKValue} \
-      ~{true="--j_index" false="" jJIndex} \
-      ~{true="--threads" false="" threadsThreads} \
-      ~{if defined(binBinSize) then ("--bin_size " +  '"' + binBinSize + '"') else ""} \
-      ~{true="--dist_est" false="" distDistEst} \
-      ~{true="--no_dist_est" false="" noNoDistEst} \
-      ~{true="--dist_median" false="" distDistMedian} \
-      ~{true="--dist_upper" false="" distDistUpper} \
-      ~{if defined(distDistTsv) then ("--dist_tsv " +  '"' + distDistTsv + '"') else ""} \
-      ~{if defined(samplesSamplesTsv) then ("--samples_tsv " +  '"' + samplesSamplesTsv + '"') else ""} \
-      ~{true="--pair" false="" pairPair} \
-      ~{listListOfAlignmentFiles} \
-      ~{orOr}
+      ~{list_of_alignment_files} \
+      ~{or} \
+      ~{if defined(fof_name) then ("--fofName " +  '"' + fof_name + '"') else ""} \
+      ~{true="--multfile" false="" mult_file} \
+      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(min_reads) then ("--min_reads " +  '"' + min_reads + '"') else ""} \
+      ~{if defined(min_links) then ("--min_links " +  '"' + min_links + '"') else ""} \
+      ~{if defined(min_size) then ("--min_size " +  '"' + min_size + '"') else ""} \
+      ~{if defined(base_name) then ("--base_name " +  '"' + base_name + '"') else ""} \
+      ~{if defined(graph) then ("--graph " +  '"' + graph + '"') else ""} \
+      ~{if defined(gap) then ("--gap " +  '"' + gap + '"') else ""} \
+      ~{if defined(tsv) then ("--tsv " +  '"' + tsv + '"') else ""} \
+      ~{if defined(barcode_counts) then ("--barcode-counts " +  '"' + barcode_counts + '"') else ""} \
+      ~{if defined(index_multiplicity) then ("--index_multiplicity " +  '"' + index_multiplicity + '"') else ""} \
+      ~{if defined(max_degree) then ("--max_degree " +  '"' + max_degree + '"') else ""} \
+      ~{if defined(end_length) then ("--end_length " +  '"' + end_length + '"') else ""} \
+      ~{if defined(error_percent) then ("--error_percent " +  '"' + error_percent + '"') else ""} \
+      ~{true="--run_verbose" false="" run_verbose} \
+      ~{if defined(seq_id) then ("--seq_id " +  '"' + seq_id + '"') else ""} \
+      ~{true="--k_value" false="" k_value} \
+      ~{true="--j_index" false="" j_index} \
+      ~{true="--threads" false="" threads} \
+      ~{if defined(bin_size) then ("--bin_size " +  '"' + bin_size + '"') else ""} \
+      ~{true="--dist_est" false="" dist_est} \
+      ~{true="--no_dist_est" false="" no_dist_est} \
+      ~{true="--dist_median" false="" dist_median} \
+      ~{true="--dist_upper" false="" dist_upper} \
+      ~{if defined(dist_tsv) then ("--dist_tsv " +  '"' + dist_tsv + '"') else ""} \
+      ~{if defined(samples_tsv) then ("--samples_tsv " +  '"' + samples_tsv + '"') else ""} \
+      ~{true="--pair" false="" output_scaffolds_pairing}
   >>>
+  parameter_meta {
+    fof_name: "text file listing input filenames"
+    mult_file: "tsv or csv file listing barcode multiplicities [optional]"
+    file: "FASTA file of contig sequences to scaffold"
+    min_reads: "min aligned read pairs per barcode mapping [5]"
+    min_links: "min shared barcodes between contigs [0]"
+    min_size: "min contig length [500]"
+    base_name: "output file prefix"
+    graph: "write the ABySS dist.gv to FILE"
+    gap: "fixed gap size for ABySS dist.gv file [100]"
+    tsv: "write graph in TSV format to FILE"
+    barcode_counts: "write number of reads per barcode to FILE"
+    index_multiplicity: "barcode multiplicity range [50-10000]"
+    max_degree: "max node degree in scaffold graph [0]"
+    end_length: "contig head/tail length for masking alignments [30000]"
+    error_percent: "p-value for head/tail assignment and link orientation (lower is more stringent) [0.05]"
+    run_verbose: "verbose logging"
+    seq_id: "min sequence identity for read alignments [98]"
+    k_value: "size of a k-mer [30]"
+    j_index: "minimum fraction of read kmers matching a contigId [0.55]"
+    threads: "number of threads [1]"
+    bin_size: "estimate distance using N closest Jaccard scores [20]"
+    dist_est: "enable distance estimation"
+    no_dist_est: "disable distance estimation [default]"
+    dist_median: "use median distance in ABySS dist.gv [default]"
+    dist_upper: "use upper bound distance in ABySS dist.gv"
+    dist_tsv: "write min/max distance estimates to FILE"
+    samples_tsv: "write intra-contig distance/barcode samples to FILE"
+    output_scaffolds_pairing: "output scaffolds pairing TSV with number of barcode links (no p-value threshold)supporting each of the 4 possible orientation"
+    list_of_alignment_files: ""
+    or: ""
+  }
 }

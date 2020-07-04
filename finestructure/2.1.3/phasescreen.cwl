@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: phasescreen.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phasescreen.pl.cwl
 inputs:
 - id: perl
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: phases_screen_pl
+- id: phases_screen_do_tpl
   doc: ''
   type: string
   inputBinding:

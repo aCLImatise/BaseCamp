@@ -1,27 +1,27 @@
 class: CommandLineTool
-id: promoterwise.cwl
+id: ../../../../home/ubuntu/BiocondaCli/promoterwise.cwl
 inputs:
 - id: align
   doc: '[normal/motif] use normal DBA or motif alignment [normal]'
   type: boolean
   inputBinding:
     prefix: -align
-- id: s
+- id: query_start_restriction
   doc: query start position restriction
   type: boolean
   inputBinding:
     prefix: -s
-- id: t
+- id: query_end_position
   doc: query end position restriction
   type: boolean
   inputBinding:
     prefix: -t
-- id: u
+- id: target_start_restriction
   doc: target start position restriction
   type: boolean
   inputBinding:
     prefix: -u
-- id: v
+- id: target_end_position
   doc: target end position restriction
   type: boolean
   inputBinding:

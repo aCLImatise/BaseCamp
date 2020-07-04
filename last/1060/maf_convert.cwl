@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: maf_convert.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maf_convert.cwl
 inputs:
 - id: protein
   doc: assume protein alignments, for psl match counts

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: o_treat_homopolymer_regions.cwl
+id: ../../../../home/ubuntu/BiocondaCli/o_treat_homopolymer_regions.cwl
 inputs:
 - id: input_alignment
   doc: align2first output (.paf file)

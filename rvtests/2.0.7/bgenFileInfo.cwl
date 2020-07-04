@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bgenFileInfo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bgenFileInfo.cwl
 inputs:
 - id: in_bg_en
   doc: ': Input BGEN File'

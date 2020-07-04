@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filter_corrected_reads.py_input_filename.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_corrected_reads.py.cwl
 inputs:
 - id: coverage_threshold
   doc: ''
@@ -15,4 +15,3 @@ outputs: []
 cwlVersion: v1.1
 baseCommand:
 - filter_corrected_reads.py
-- input_filename

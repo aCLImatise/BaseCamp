@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: analyze_splits_sam.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/analyze_splits_sam.py.cwl
 inputs:
 - id: input
   doc: The input file in PSL format.

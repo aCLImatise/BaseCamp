@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: deepsvr.cwl
+id: ../../../../home/ubuntu/BiocondaCli/deepsvr.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

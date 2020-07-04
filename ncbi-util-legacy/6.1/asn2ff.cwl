@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: asn2ff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/asn2ff.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

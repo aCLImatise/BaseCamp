@@ -2,12 +2,25 @@ version 1.0
 
 task BxtoolsStats {
   input {
-    Boolean verboseVerbose
-    Boolean tagTag
+    Boolean? verbose
+    Boolean? tag
+    String bx_tools
+    String stat
+    String bam_slash_sam_slash_cram
   }
   command <<<
     bxtools stats \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{true="--tag" false="" tagTag}
+      ~{bx_tools} \
+      ~{stat} \
+      ~{bam_slash_sam_slash_cram} \
+      ~{true="--verbose" false="" verbose} \
+      ~{true="--tag" false="" tag}
   >>>
+  parameter_meta {
+    verbose: "Set verbose output"
+    tag: "Collect stats by a tag other than BX (e.g. MI)"
+    bx_tools: ""
+    stat: ""
+    bam_slash_sam_slash_cram: ""
+  }
 }

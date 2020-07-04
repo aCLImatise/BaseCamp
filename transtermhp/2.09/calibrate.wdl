@@ -2,12 +2,16 @@ version 1.0
 
 task Calibrate.sh {
   input {
-    String? outputOutputFiledAt
-    String? transTransTerm
+    String output_file_dot_dat
+    String? trans_term
   }
   command <<<
     calibrate.sh \
-      ~{outputOutputFiledAt} \
-      ~{transTransTerm}
+      ~{output_file_dot_dat} \
+      ~{trans_term}
   >>>
+  parameter_meta {
+    output_file_dot_dat: ""
+    trans_term: ""
+  }
 }

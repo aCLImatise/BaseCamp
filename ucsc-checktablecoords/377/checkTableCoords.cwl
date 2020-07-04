@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: checkTableCoords.cwl
+id: ../../../../home/ubuntu/BiocondaCli/checkTableCoords.cwl
 inputs:
-- id: database
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: tablename
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: table
   doc: 'Check this table only.  (Default: all tables)'
   type: string
@@ -46,6 +36,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -verboseBlocks
+- id: database
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: tablename
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

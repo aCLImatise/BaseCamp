@@ -2,26 +2,37 @@ version 1.0
 
 task Jscan {
   input {
-    String wW
-    String iI
-    String eE
-    String jJ
-    String lL
-    Boolean oO
-    Boolean vV
-    String? sequenceSequenceFastA
-    String? alignmentAlignmentDbProdom
+    String? amino_acid_similarity
+    String? i
+    String? e
+    String? j
+    String? print_best_l
+    Boolean? run_verbose_mode
+    Boolean? print_version
+    String sequence_dot_fast_a
+    String alignment_db_dot_prodom
   }
   command <<<
     jscan \
-      ~{sequenceSequenceFastA} \
-      ~{if defined(wW) then ("-w " +  '"' + wW + '"') else ""} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(eE) then ("-e " +  '"' + eE + '"') else ""} \
-      ~{if defined(jJ) then ("-j " +  '"' + jJ + '"') else ""} \
-      ~{if defined(lL) then ("-l " +  '"' + lL + '"') else ""} \
-      ~{true="-o" false="" oO} \
-      ~{true="-v" false="" vV} \
-      ~{alignmentAlignmentDbProdom}
+      ~{sequence_dot_fast_a} \
+      ~{alignment_db_dot_prodom} \
+      ~{if defined(amino_acid_similarity) then ("-w " +  '"' + amino_acid_similarity + '"') else ""} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(e) then ("-e " +  '"' + e + '"') else ""} \
+      ~{if defined(j) then ("-j " +  '"' + j + '"') else ""} \
+      ~{if defined(print_best_l) then ("-l " +  '"' + print_best_l + '"') else ""} \
+      ~{true="-o" false="" run_verbose_mode} \
+      ~{true="-v" false="" print_version}
   >>>
+  parameter_meta {
+    amino_acid_similarity: "//amino acid similarity matrix"
+    i: "//must be smaller or equal to zero"
+    e: "//must be smaller or equal to zero"
+    j: "//must be smaller or equal to zero"
+    print_best_l: "//print best l scores"
+    run_verbose_mode: "//run in verbose mode"
+    print_version: "//print version"
+    sequence_dot_fast_a: ""
+    alignment_db_dot_prodom: ""
+  }
 }

@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: slicedimage_checksum.cwl
+id: ../../../../home/ubuntu/BiocondaCli/slicedimage_checksum.cwl
 inputs:
 - id: pretty
-  doc: ''
+  doc: Pretty-print the output file
   type: boolean
   inputBinding:
     prefix: --pretty

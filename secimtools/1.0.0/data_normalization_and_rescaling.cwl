@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: data_normalization_and_rescaling.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/data_normalization_and_rescaling.py.cwl
 inputs:
 - id: input
   doc: Input dataset in wide format.

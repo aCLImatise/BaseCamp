@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: findTcovSnp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/findTcovSnp.cwl
 inputs:
 - id: amb
   doc: Only print contig positions with an ambiguity code
@@ -21,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -qvs
+- id: prefix
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

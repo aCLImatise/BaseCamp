@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: terminus_group.cwl
+id: ../../../../home/ubuntu/BiocondaCli/terminus_group.cwl
 inputs:
 - id: dir
   doc: directory to read input from

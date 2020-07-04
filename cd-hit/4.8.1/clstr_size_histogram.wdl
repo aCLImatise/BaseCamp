@@ -2,12 +2,16 @@ version 1.0
 
 task ClstrSizeHistogram.pl {
   input {
-    String binBin
-    String? clClStrFile
+    String? bin
+    String cl_str_file
   }
   command <<<
     clstr_size_histogram.pl \
-      ~{clClStrFile} \
-      ~{if defined(binBin) then ("-bin " +  '"' + binBin + '"') else ""}
+      ~{cl_str_file} \
+      ~{if defined(bin) then ("-bin " +  '"' + bin + '"') else ""}
   >>>
+  parameter_meta {
+    bin: ""
+    cl_str_file: ""
+  }
 }

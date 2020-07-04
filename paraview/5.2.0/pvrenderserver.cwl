@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pvrenderserver.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pvrenderserver.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

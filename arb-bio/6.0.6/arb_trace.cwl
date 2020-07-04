@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: arb_trace.cwl
+id: ../../../../home/ubuntu/BiocondaCli/arb_trace.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

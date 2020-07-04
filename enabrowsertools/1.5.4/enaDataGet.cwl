@@ -1,12 +1,6 @@
 class: CommandLineTool
-id: enaDataGet.cwl
+id: ../../../../home/ubuntu/BiocondaCli/enaDataGet.cwl
 inputs:
-- id: accession
-  doc: Sequence, coding, assembly, run, experiment or analysis accession or WGS prefix
-    (LLLLVV) to download
-  type: string
-  inputBinding:
-    position: 0
 - id: format
   doc: 'File format required. Format requested must be permitted for data type selected.
     sequence, assembly and wgs accessions: embl(default) and fasta formats. read group:
@@ -56,6 +50,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --aspera-settings
+- id: accession
+  doc: Sequence, coding, assembly, run, experiment or analysis accession or WGS prefix
+    (LLLLVV) to download
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

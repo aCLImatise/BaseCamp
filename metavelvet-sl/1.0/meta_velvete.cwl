@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: meta_velvete.cwl
+id: ../../../../home/ubuntu/BiocondaCli/meta_velvete.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

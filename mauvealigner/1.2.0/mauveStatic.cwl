@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mauveStatic.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mauveStatic.cwl
 inputs:
 - id: output
   doc: Output file name.  Prints to screen by default
@@ -155,6 +155,16 @@ inputs:
   type: File
   inputBinding:
     prefix: --output-alignment
+- id: seq_n_filename
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: s_mln_filename
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

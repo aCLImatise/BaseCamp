@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: not_acgt.awk.cwl
+id: ../../../../home/ubuntu/BiocondaCli/not_acgt.awk.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

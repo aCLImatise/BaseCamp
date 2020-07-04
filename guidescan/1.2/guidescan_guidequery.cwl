@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: guidescan_guidequery.cwl
+id: ../../../../home/ubuntu/BiocondaCli/guidescan_guidequery.cwl
 inputs:
-- id: b
+- id: path_bam_file
   doc: path to BAM file with precomputed guideRNAs. REQUIRED
   type: string
   inputBinding:
     prefix: -b
-- id: c
+- id: coordinates_form_example
   doc: 'coordinates in the form "<chr>:<start>-<end>" ;example: chrX:3364088-3372035,
     mutually exclusive with --batch'
   type: string
@@ -40,13 +40,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --flankdistance
-- id: one
+- id: input_coordinates_based
   doc: whether input coordinates are 1-based (default is 0-based); output is always
     in BED format and 0-based
   type: boolean
   inputBinding:
     prefix: --one
-- id: o
+- id: name_output_directory
   doc: name of output directory. REQUIRED
   type: string
   inputBinding:
@@ -88,7 +88,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --select
-- id: n
+- id: amount_sgrnas_desired
   doc: amount of optimal sgRNAs desired from the --select parameter. Ignored if --select
     not used. Default is 3.
   type: string

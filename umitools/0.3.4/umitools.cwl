@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: umitools.cwl
+id: ../../../../home/ubuntu/BiocondaCli/umitools.cwl
 inputs:
 - id: subcommand
   doc: 'See https://github.com/weng-lab/umitools for more information. For UMI RNA-seq:

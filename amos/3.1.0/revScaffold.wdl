@@ -2,10 +2,13 @@ version 1.0
 
 task RevScaffold {
   input {
-    String? bankBankPath
+    String bank_path
   }
   command <<<
     revScaffold \
-      ~{bankBankPath}
+      ~{bank_path}
   >>>
+  parameter_meta {
+    bank_path: ""
+  }
 }

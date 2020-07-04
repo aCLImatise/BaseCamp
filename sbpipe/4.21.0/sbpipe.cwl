@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sbpipe.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sbpipe.cwl
 inputs:
 - id: create_project
   doc: create a project structure
@@ -11,12 +11,12 @@ inputs:
   type: File
   inputBinding:
     prefix: --simulate
-- id: parameter_scan1
+- id: parameter_scan_one
   doc: run parameter scans for 1 model variable
   type: File
   inputBinding:
     prefix: --parameter-scan1
-- id: parameter_scan2
+- id: parameter_scan_two
   doc: run parameter scans for 2 model variables
   type: File
   inputBinding:

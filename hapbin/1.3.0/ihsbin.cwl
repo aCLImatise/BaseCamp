@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ihsbin.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ihsbin.cwl
 inputs:
 - id: hap
   doc: Hap file
@@ -47,6 +47,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --binom
+- id: ascii
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --ascii
 outputs: []
 cwlVersion: v1.1
 baseCommand:

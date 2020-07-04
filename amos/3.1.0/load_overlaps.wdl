@@ -2,12 +2,16 @@ version 1.0
 
 task LoadOverlaps {
   input {
-    String bB
-    String? deltaDeltaFile
+    String? b
+    String delta_file
   }
   command <<<
     load-overlaps \
-      ~{deltaDeltaFile} \
-      ~{if defined(bB) then ("-b " +  '"' + bB + '"') else ""}
+      ~{delta_file} \
+      ~{if defined(b) then ("-b " +  '"' + b + '"') else ""}
   >>>
+  parameter_meta {
+    b: ""
+    delta_file: ""
+  }
 }

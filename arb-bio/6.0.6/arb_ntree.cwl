@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: arb_ntree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/arb_ntree.cwl
 inputs:
+- id: execute
+  doc: => execute macro 'macroname' after startup
+  type: string
+  inputBinding:
+    prefix: --execute
 - id: directory
   doc: -> prompt for databases inside directory
   type: Directory
@@ -11,11 +16,6 @@ inputs:
   type: File
   inputBinding:
     position: 1
-- id: execute
-  doc: => execute macro 'macroname' after startup
-  type: string
-  inputBinding:
-    prefix: --execute
 outputs: []
 cwlVersion: v1.1
 baseCommand:

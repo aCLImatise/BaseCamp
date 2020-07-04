@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ete.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ete.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

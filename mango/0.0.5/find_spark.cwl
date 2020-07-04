@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: find_spark.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/find_spark.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

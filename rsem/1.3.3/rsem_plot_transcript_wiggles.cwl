@@ -1,22 +1,6 @@
 class: CommandLineTool
-id: rsem_plot_transcript_wiggles.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rsem_plot_transcript_wiggles.cwl
 inputs:
-- id: sample_name
-  doc: The name of the sample analyzed.
-  type: string
-  inputBinding:
-    position: 0
-- id: input_list
-  doc: A list of transcript ids or gene ids. But it cannot be a mixture of transcript
-    & gene ids. Each id occupies one line without extra spaces.
-  type: string
-  inputBinding:
-    position: 1
-- id: output_plot_file
-  doc: The file name of the pdf file which contains all plots.
-  type: string
-  inputBinding:
-    position: 2
 - id: gene_list
   doc: 'The input-list is a list of gene ids. (Default: off)'
   type: boolean
@@ -34,17 +18,38 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --show-unique
-- id: p
-  doc: '/--num-threads <int> Set the number of threads we can use. (Default: 1)'
-  type: boolean
+- id: p_slash_num_threads
+  doc: 'Set the number of threads we can use. (Default: 1)'
+  type: long
   inputBinding:
-    prefix: -p
+    prefix: -p/--num-threads
 - id: memory_per_thread
   doc: "Set the maximum allowable memory per thread. <string> represents the memory\
     \ and accepts suffices 'K/M/G'. (Default: 1G)"
   type: string
   inputBinding:
     prefix: --memory-per-thread
+- id: h_slash_help
+  doc: Show help information.
+  type: boolean
+  inputBinding:
+    prefix: -h/--help
+- id: sample_name
+  doc: The name of the sample analyzed.
+  type: string
+  inputBinding:
+    position: 0
+- id: input_list
+  doc: A list of transcript ids or gene ids. But it cannot be a mixture of transcript
+    & gene ids. Each id occupies one line without extra spaces.
+  type: string
+  inputBinding:
+    position: 1
+- id: output_plot_file
+  doc: The file name of the pdf file which contains all plots.
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

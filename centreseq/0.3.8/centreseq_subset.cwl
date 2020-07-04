@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: centreseq_subset.cwl
+id: ../../../../home/ubuntu/BiocondaCli/centreseq_subset.cwl
 inputs:
 - id: input_samples
   doc: Path to a new line separated text file containing each Sample ID to target  [required]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ppanini_scatterplot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ppanini_scatterplot.cwl
 inputs:
 - id: master_plot
   doc: plotting master figure of the paper
@@ -21,6 +21,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --size
+- id: i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
+- id: m_eight
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -m8
 outputs: []
 cwlVersion: v1.1
 baseCommand:

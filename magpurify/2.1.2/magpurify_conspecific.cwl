@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: magpurify_conspecific.cwl
+id: ../../../../home/ubuntu/BiocondaCli/magpurify_conspecific.cwl
 inputs:
-- id: fna
-  doc: Path to input genome in FASTA format
-  type: string
-  inputBinding:
-    position: 0
-- id: out
-  doc: Output directory to store results and intermediate files
-  type: string
-  inputBinding:
-    position: 1
-- id: mash_sketch
-  doc: Path to Mash sketch of reference genomes
-  type: string
-  inputBinding:
-    position: 2
 - id: mash_dist
   doc: 'Mash distance to reference genomes (default: 0.05)'
   type: string
@@ -56,6 +41,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --threads
+- id: fna
+  doc: Path to input genome in FASTA format
+  type: string
+  inputBinding:
+    position: 0
+- id: out
+  doc: Output directory to store results and intermediate files
+  type: string
+  inputBinding:
+    position: 1
+- id: mash_sketch
+  doc: Path to Mash sketch of reference genomes
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

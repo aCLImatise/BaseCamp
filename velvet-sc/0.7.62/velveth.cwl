@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: velveth.cwl
+id: ../../../../home/ubuntu/BiocondaCli/velveth.cwl
 inputs:
+- id: strand_specific
+  doc: ': for strand specific transcriptome sequencing data (default: off)'
+  type: boolean
+  inputBinding:
+    prefix: -strand_specific
 - id: directory
   doc: ': directory name for output files'
   type: Directory
@@ -16,11 +21,11 @@ inputs:
   type: File
   inputBinding:
     position: 2
-- id: strand_specific
-  doc: ': for strand specific transcriptome sequencing data (default: off)'
-  type: boolean
+- id: directory_slash_sequences
+  doc: '[Both files are picked up by graph, so please leave them there]'
+  type: Directory
   inputBinding:
-    prefix: -strand_specific
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

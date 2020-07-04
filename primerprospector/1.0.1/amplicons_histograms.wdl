@@ -2,10 +2,13 @@ version 1.0
 
 task AmpliconsHistograms.py {
   input {
-    String ampliconsAmpliconsFilePath
+    String? amplicons_file_path
   }
   command <<<
     amplicons_histograms.py \
-      ~{if defined(ampliconsAmpliconsFilePath) then ("--amplicons_filepath " +  '"' + ampliconsAmpliconsFilePath + '"') else ""}
+      ~{if defined(amplicons_file_path) then ("--amplicons_filepath " +  '"' + amplicons_file_path + '"') else ""}
   >>>
+  parameter_meta {
+    amplicons_file_path: "Target amplicons files.  Separate multiple files with a colon. [REQUIRED]"
+  }
 }

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: genie_bam_view.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genie_bam_view.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: file_path
   doc: A bam file (*require)
   type: string
@@ -36,6 +31,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --scope
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

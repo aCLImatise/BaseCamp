@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: vsnp_alignment_vcf.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vsnp_alignment_vcf.py.cwl
 inputs:
-- id: read_1
+- id: read_one
   doc: 'Required: single read, R1 when Illumina read'
   type: string
   inputBinding:
     prefix: --read1
-- id: read_2
+- id: read_two
   doc: 'Optional: R2 Illumina read'
   type: string
   inputBinding:
@@ -27,6 +27,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --skip_assembly
+- id: prog
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

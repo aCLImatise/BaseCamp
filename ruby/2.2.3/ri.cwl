@@ -1,29 +1,24 @@
 class: CommandLineTool
-id: ri.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ri.cwl
 inputs:
-- id: names
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: i
+- id: _interactive_interactive
   doc: ', --[no-]interactive           In interactive mode you can repeatedly look
     up methods with autocomplete.'
   type: boolean
   inputBinding:
     prefix: -i
-- id: a
+- id: _show_documentation
   doc: ', --[no-]all                   Show all documentation for a class or module.'
   type: boolean
   inputBinding:
     prefix: -a
-- id: l
+- id: _pager_send
   doc: ', --[no-]list                  List classes ri knows about. --[no-]pager                 Send
     output directly to stdout, rather than to a pager.'
   type: boolean
   inputBinding:
     prefix: -l
-- id: t
+- id: synonym__nopager
   doc: Synonym for --no-pager
   type: boolean
   inputBinding:
@@ -50,6 +45,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --dump
+- id: library_dot
+  doc: Defaults to true.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

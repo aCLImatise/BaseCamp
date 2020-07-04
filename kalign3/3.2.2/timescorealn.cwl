@@ -1,21 +1,31 @@
 class: CommandLineTool
-id: timescorealn.cwl
+id: ../../../../home/ubuntu/BiocondaCli/timescorealn.cwl
 inputs:
-- id: scratch
-  doc: ': Scratch directory. [NA]'
+- id: options
+  doc: ''
   type: boolean
   inputBinding:
-    prefix: --scratch
-- id: scratch
-  doc: ': Scratch directory. [NA]'
-  type: boolean
+    prefix: -options
+- id: test
+  doc: ''
+  type: string
   inputBinding:
-    prefix: --scratch
-- id: scratch
-  doc: ': Scratch directory. [NA]'
-  type: boolean
+    prefix: -test
+- id: ref
+  doc: ''
+  type: string
   inputBinding:
-    prefix: --scratch
+    prefix: -ref
+- id: program
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -program
+- id: o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
 outputs: []
 cwlVersion: v1.1
 baseCommand:

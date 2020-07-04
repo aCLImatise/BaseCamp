@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bcbio_setup_genome.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcbio_setup_genome.py.cwl
 inputs:
 - id: cores
   doc: number of cores to use
@@ -11,7 +11,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --fasta
-- id: gff3
+- id: gff_three
   doc: File is a GFF3 file.
   type: boolean
   inputBinding:
@@ -31,7 +31,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --build
-- id: i
+- id: space_separated_list
   doc: '[{bwa,rtg,hisat2,bbmap,bowtie,bowtie2,minimap2,novoalign,twobit,bismark,snap,star,seq}
     [{bwa,rtg,hisat2,bbmap,bowtie,bowtie2,minimap2,novoalign,twobit,bismark,snap,star,seq}
     ...]], --indexes [{bwa,rtg,hisat2,bbmap,bowtie,bowtie2,minimap2,novoalign,twobit,bismark,snap,star,seq}

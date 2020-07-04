@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: isoseq3_collapse.cwl
+id: ../../../../home/ubuntu/BiocondaCli/isoseq3_collapse.cwl
 inputs:
 - id: min_aln_coverage
   doc: FLOAT  Ignore alignments with less than minimum query read coverage. [0.99]
@@ -31,6 +31,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --log-file
+- id: out_dot_fast_q
+  doc: STR    Collapsed transcripts in FASTQ
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

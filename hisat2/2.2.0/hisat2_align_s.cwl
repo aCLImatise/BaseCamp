@@ -1,12 +1,57 @@
 class: CommandLineTool
-id: hisat2_align_s.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hisat2_align_s.cwl
 inputs:
-- id: phred33
+- id: query_input_files_fastq
+  doc: query input files are FASTQ .fq/.fastq (default)
+  type: boolean
+  inputBinding:
+    prefix: -q
+- id: q_seq
+  doc: query input files are in Illumina's qseq format
+  type: boolean
+  inputBinding:
+    prefix: --qseq
+- id: query_input_files_multifasta
+  doc: query input files are (multi-)FASTA .fa/.mfa
+  type: boolean
+  inputBinding:
+    prefix: -f
+- id: query_input_files_raw
+  doc: query input files are raw one-sequence-per-line
+  type: boolean
+  inputBinding:
+    prefix: -r
+- id: m_m_r
+  doc: <m1>, <m2>, <r> are sequences themselves, not files
+  type: boolean
+  inputBinding:
+    prefix: -c
+- id: s_slash_skip
+  doc: skip the first <int> reads/pairs in the input (none)
+  type: long
+  inputBinding:
+    prefix: -s/--skip
+- id: us_lash_up_to
+  doc: stop after first <int> reads/pairs (no limit)
+  type: long
+  inputBinding:
+    prefix: -u/--upto
+- id: five_slash_trim_five
+  doc: trim <int> bases from 5'/left end of reads (0)
+  type: long
+  inputBinding:
+    prefix: -5/--trim5
+- id: three_slash_trim_three
+  doc: trim <int> bases from 3'/right end of reads (0)
+  type: long
+  inputBinding:
+    prefix: -3/--trim3
+- id: phred_three_three
   doc: qualities are Phred+33 (default)
   type: boolean
   inputBinding:
     prefix: --phred33
-- id: phred64
+- id: phred_six_four
   doc: qualities are Phred+64
   type: boolean
   inputBinding:
@@ -31,7 +76,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --very-sensitive
-- id: bowtie2_dp
+- id: bowtie_two_dp
   doc: "use Bowtie2's dynamic programming alignment algorithm (0) - 0: no dynamic\
     \ programming, 1: conditional dynamic programming, and 2: unconditional dynamic\
     \ programming (slowest)"
@@ -184,7 +229,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --score-min
-- id: k
+- id: it_searches_mean
   doc: 'It searches for at most <int> distinct, primary alignments for each read.
     Primary alignments mean  alignments whose alignment score is equal to or higher
     than any other alignments. The search terminates  when it cannot find more distinct
@@ -215,33 +260,33 @@ inputs:
   type: long
   inputBinding:
     prefix: --max-seeds
-- id: a
-  doc: /--all           HISAT2 reports all alignments it can find. Using the option
-    is equivalent to using both --max-seeds  and -k with the maximum value that a
-    64-bit signed integer can represent (9,223,372,036,854,775,807).
+- id: a_slash_all
+  doc: HISAT2 reports all alignments it can find. Using the option is equivalent to
+    using both --max-seeds  and -k with the maximum value that a 64-bit signed integer
+    can represent (9,223,372,036,854,775,807).
   type: boolean
   inputBinding:
-    prefix: -a
+    prefix: -a/--all
 - id: repeat
   doc: report alignments to repeat sequences directly
   type: boolean
   inputBinding:
     prefix: --repeat
-- id: i
-  doc: /--minins <int>  minimum fragment length (0), only valid with --no-spliced-alignment
+- id: i_slash_mini_ns
+  doc: minimum fragment length (0), only valid with --no-spliced-alignment
+  type: long
+  inputBinding:
+    prefix: -I/--minins
+- id: x_slash_max_ins
+  doc: maximum fragment length (500), only valid with --no-spliced-alignment
+  type: long
+  inputBinding:
+    prefix: -X/--maxins
+- id: fr_slash_rf_slash_ff
+  doc: -1, -2 mates align fw/rev, rev/fw, fw/fw (--fr)
   type: boolean
   inputBinding:
-    prefix: -I
-- id: x
-  doc: /--maxins <int>  maximum fragment length (500), only valid with --no-spliced-alignment
-  type: boolean
-  inputBinding:
-    prefix: -X
-- id: fr
-  doc: /--rf/--ff     -1, -2 mates align fw/rev, rev/fw, fw/fw (--fr)
-  type: boolean
-  inputBinding:
-    prefix: --fr
+    prefix: --fr/--rf/--ff
 - id: no_mixed
   doc: suppress unpaired alignments for paired reads
   type: boolean
@@ -252,11 +297,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-discordant
-- id: t
-  doc: /--time          print wall-clock time taken by search phases
+- id: t_slash_time
+  doc: print wall-clock time taken by search phases
   type: boolean
   inputBinding:
-    prefix: -t
+    prefix: -t/--time
 - id: summary_file
   doc: print alignment summary to this file.
   type: File
@@ -313,16 +358,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --omit-sec-seq
-- id: o
-  doc: /--offrate <int> override offrate of index; must be >= index's offrate
-  type: boolean
+- id: oslash_off_rate
+  doc: override offrate of index; must be >= index's offrate
+  type: long
   inputBinding:
-    prefix: -o
-- id: p
-  doc: /--threads <int> number of alignment threads to launch (1)
-  type: boolean
+    prefix: -o/--offrate
+- id: p_slash_threads
+  doc: number of alignment threads to launch (1)
+  type: long
   inputBinding:
-    prefix: -p
+    prefix: -p/--threads
 - id: reorder
   doc: force SAM output order to match order of input reads
   type: boolean
@@ -358,6 +403,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --add-chrname
+- id: h_slash_help
+  doc: print this usage message
+  type: boolean
+  inputBinding:
+    prefix: -h/--help
+- id: his_at_two_align
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

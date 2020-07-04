@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: ifdata.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ifdata.cwl
 inputs:
-- id: e
+- id: reports_interface_existence
   doc: Reports interface existence via return code
   type: boolean
   inputBinding:
     prefix: -e
-- id: p
+- id: print_whole_config
   doc: Print out the whole config of iface
   type: boolean
   inputBinding:
@@ -21,12 +21,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -pa
-- id: pn
+- id: print_netmask
   doc: Print netmask
   type: boolean
   inputBinding:
     prefix: -pn
-- id: pn
+- id: print_network_address
   doc: Print network address
   type: boolean
   inputBinding:
@@ -146,6 +146,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -bops
+- id: i_face
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

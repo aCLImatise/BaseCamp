@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gthsplit2dim.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gthsplit2dim.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ChorusNGSfilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ChorusNGSfilter.cwl
 inputs:
 - id: jellyfish
   doc: The path where Jellyfish software installed
@@ -42,11 +42,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
-- id: j
-  doc: /opt/software/jellyfish/bin/jellyfish -p probe.bed -o output.bed
-  type: boolean
-  inputBinding:
-    prefix: -j
 outputs: []
 cwlVersion: v1.1
 baseCommand:

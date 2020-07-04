@@ -2,10 +2,13 @@ version 1.0
 
 task Vcfcreatemulti {
   input {
-    File? fileFile
+    File? file
   }
   command <<<
     vcfcreatemulti \
-      ~{fileFile}
+      ~{file}
   >>>
+  parameter_meta {
+    file: ""
+  }
 }

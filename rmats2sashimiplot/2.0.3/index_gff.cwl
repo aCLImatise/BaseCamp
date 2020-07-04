@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: index_gff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/index_gff.cwl
 inputs:
 - id: index
   doc: Index the given GFF. Takes as arguments as GFF filename and an output directory.

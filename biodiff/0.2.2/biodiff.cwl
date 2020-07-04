@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: biodiff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/biodiff.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

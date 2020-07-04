@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csb_csfrag.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csb_csfrag.cwl
 inputs:
-- id: query
-  doc: query sequence (FASTA file)
-  type: string
-  inputBinding:
-    position: 0
 - id: database
   doc: PDBS25 database directory (containing PDBS25cs.scs)
   type: string
@@ -46,6 +41,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --filtered-map
+- id: query
+  doc: query sequence (FASTA file)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

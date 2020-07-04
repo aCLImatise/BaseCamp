@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: fasta_splitter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fasta_splitter.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: n_parts
   doc: '- Divide into <N> parts'
   type: string
@@ -33,7 +28,7 @@ inputs:
   inputBinding:
     prefix: --eol
 - id: part_num_prefix
-  doc: 'before part number in file names (def.: .part-)'
+  doc: '- Put T before part number in file names (def.: .part-)'
   type: string
   inputBinding:
     prefix: --part-num-prefix

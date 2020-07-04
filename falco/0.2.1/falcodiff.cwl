@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: falcodiff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/falcodiff.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: fast_qc_data_1txt
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: fast_qc_data_2txt
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: outdir
   doc: 'Create all output files in the specified  output directory. If notprovided,
     files  will be created in the same directory as  the input file. '
@@ -47,6 +32,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -about
+- id: fast_qc_data_one_dot_txt
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: fast_qc_data_two_dot_txt
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

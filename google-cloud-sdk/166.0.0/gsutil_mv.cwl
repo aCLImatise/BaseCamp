@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: gsutil_mv.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gsutil_mv.cwl
 inputs:
+- id: p
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -p
 - id: src_url
   doc: ''
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: p
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -p
 outputs: []
 cwlVersion: v1.1
 baseCommand:

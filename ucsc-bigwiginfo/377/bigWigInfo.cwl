@@ -1,31 +1,31 @@
 class: CommandLineTool
-id: bigWigInfo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bigWigInfo.cwl
 inputs:
-- id: file_bw
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: udc_dir
   doc: =/dir/to/cache - place to put cache for remote bigBed/bigWigs
   type: boolean
   inputBinding:
     prefix: -udcDir
 - id: chrom_s
-  doc: chromosomes and their sizes
-  type: string
+  doc: '- list all chromosomes and their sizes'
+  type: boolean
   inputBinding:
     prefix: -chroms
 - id: zooms
-  doc: zoom levels and their sizes
-  type: string
+  doc: '- list all zoom levels and their sizes'
+  type: boolean
   inputBinding:
     prefix: -zooms
 - id: minmax
-  doc: min and max on a single line
-  type: string
+  doc: '- list the min and max on a single line'
+  type: boolean
   inputBinding:
     prefix: -minMax
+- id: file_dot_bw
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

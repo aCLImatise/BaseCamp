@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: map_gff_ids.cwl
+id: ../../../../home/ubuntu/BiocondaCli/map_gff_ids.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

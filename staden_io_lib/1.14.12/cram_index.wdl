@@ -2,12 +2,16 @@ version 1.0
 
 task CramIndex {
   input {
-    File? filenameFilenameCram
-    File? filenameFilenameCramCraI
+    File filename_dot_cram
+    File? filename_dot_cram_dot_cra_i
   }
   command <<<
     cram_index \
-      ~{filenameFilenameCram} \
-      ~{filenameFilenameCramCraI}
+      ~{filename_dot_cram} \
+      ~{filename_dot_cram_dot_cra_i}
   >>>
+  parameter_meta {
+    filename_dot_cram: ""
+    filename_dot_cram_dot_cra_i: ""
+  }
 }

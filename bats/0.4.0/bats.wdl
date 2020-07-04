@@ -1,7 +1,14 @@
 version 1.0
 
 task Bats {
+  input {
+    Boolean? c
+  }
   command <<<
-    bats
+    bats \
+      ~{true="-c" false="" c}
   >>>
+  parameter_meta {
+    c: ""
+  }
 }

@@ -2,24 +2,19 @@ version 1.0
 
 task BamToPsl {
   input {
-    Boolean noNoHead
-    Boolean allowAllowDups
-    String noNoSequenceVerify
-    String whenWhen
-    String helpsHelps
-    String dotsDots
-    String? inInBam
-    String? outOutPsl
+    String? dots
+    String in_dot_bam
+    String out_dot_psl
   }
   command <<<
     bamToPsl \
-      ~{inInBam} \
-      ~{true="-nohead" false="" noNoHead} \
-      ~{true="-allowDups" false="" allowAllowDups} \
-      ~{if defined(noNoSequenceVerify) then ("-noSequenceVerify " +  '"' + noNoSequenceVerify + '"') else ""} \
-      ~{if defined(whenWhen) then ("- when " +  '"' + whenWhen + '"') else ""} \
-      ~{if defined(helpsHelps) then ("- helps " +  '"' + helpsHelps + '"') else ""} \
-      ~{if defined(dotsDots) then ("-dots " +  '"' + dotsDots + '"') else ""} \
-      ~{outOutPsl}
+      ~{in_dot_bam} \
+      ~{out_dot_psl} \
+      ~{if defined(dots) then ("-dots " +  '"' + dots + '"') else ""}
   >>>
+  parameter_meta {
+    dots: "- output progress dot(.) every N alignments processed"
+    in_dot_bam: ""
+    out_dot_psl: ""
+  }
 }

@@ -2,16 +2,22 @@ version 1.0
 
 task BiopetSampleconfig {
   input {
-    String? sampleSampleConfig
-    String? toolToolName
-    String? toolTool
-    String? argsArgs
+    String sample_config
+    String? tool_name
+    String? tool
+    String? args
   }
   command <<<
     biopet-sampleconfig \
-      ~{sampleSampleConfig} \
-      ~{toolToolName} \
-      ~{toolTool} \
-      ~{argsArgs}
+      ~{sample_config} \
+      ~{tool_name} \
+      ~{tool} \
+      ~{args}
   >>>
+  parameter_meta {
+    sample_config: ""
+    tool_name: ""
+    tool: ""
+    args: ""
+  }
 }

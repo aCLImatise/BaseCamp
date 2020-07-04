@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ipcontroller.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ipcontroller.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastprot_mpi.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastprot_mpi.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

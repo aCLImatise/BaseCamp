@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: DupMasker.cwl
+id: ../../../../home/ubuntu/BiocondaCli/DupMasker.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

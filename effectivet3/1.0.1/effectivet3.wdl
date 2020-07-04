@@ -2,24 +2,34 @@ version 1.0
 
 task Effectivet3 {
   input {
-    String jarJar
-    String fF
-    String mM
-    String tT
-    String oO
-    Boolean qQ
-    String? javaJava
-    String? orOr
+    String? jar
+    String? f
+    String? m
+    String? t
+    String? o
+    Boolean? q
+    String java
+    String or
   }
   command <<<
     effectivet3 \
-      ~{javaJava} \
-      ~{if defined(jarJar) then ("-jar " +  '"' + jarJar + '"') else ""} \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""} \
-      ~{if defined(mM) then ("-m " +  '"' + mM + '"') else ""} \
-      ~{if defined(tT) then ("-t " +  '"' + tT + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{true="-q" false="" qQ} \
-      ~{orOr}
+      ~{java} \
+      ~{or} \
+      ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""} \
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
+      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{true="-q" false="" q}
   >>>
+  parameter_meta {
+    jar: ""
+    f: ""
+    m: ""
+    t: ""
+    o: ""
+    q: ""
+    java: ""
+    or: ""
+  }
 }

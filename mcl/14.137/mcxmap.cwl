@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mcxmap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mcxmap.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

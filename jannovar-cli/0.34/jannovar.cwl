@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: jannovar.cwl
+id: ../../../../home/ubuntu/BiocondaCli/jannovar.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,12 +1,6 @@
 class: CommandLineTool
-id: blasr.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blasr.cwl
 inputs:
-- id: leftmost
-  doc: ': report an alignment which has the best alignmentscore and has the smallest
-    mapping coordinate in any reference.'
-  type: string
-  inputBinding:
-    position: 0
 - id: ignore_hq_regions
   doc: (false)Ignore any hq regions in the region table.
   type: boolean
@@ -81,6 +75,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --holeNumbers
+- id: leftmost
+  doc: ': report an alignment which has the best alignmentscore and has the smallest
+    mapping coordinate in any reference.'
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

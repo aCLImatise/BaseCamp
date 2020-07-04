@@ -2,18 +2,25 @@ version 1.0
 
 task PysradbSrpToSrr {
   input {
-    String dbDb
-    String saveSaveTo
-    Boolean detailedDetailed
-    Boolean descDesc
-    Boolean expandExpand
+    String? db
+    String? save_to
+    Boolean? detailed
+    Boolean? desc
+    Boolean? expand
   }
   command <<<
     pysradb srp-to-srr \
-      ~{if defined(dbDb) then ("--db " +  '"' + dbDb + '"') else ""} \
-      ~{if defined(saveSaveTo) then ("--saveto " +  '"' + saveSaveTo + '"') else ""} \
-      ~{true="--detailed" false="" detailedDetailed} \
-      ~{true="--desc" false="" descDesc} \
-      ~{true="--expand" false="" expandExpand}
+      ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
+      ~{if defined(save_to) then ("--saveto " +  '"' + save_to + '"') else ""} \
+      ~{true="--detailed" false="" detailed} \
+      ~{true="--desc" false="" desc} \
+      ~{true="--expand" false="" expand}
   >>>
+  parameter_meta {
+    db: "Path to SRAmetadb.sqlite file"
+    save_to: "Save output to file"
+    detailed: "Output additional columns: [experiment_accession (SRX), sample_accession (SRS), study_alias (GSE), experiment_alias (GSM), sample_alias (GSM_), run_alias (GSM_r)]"
+    desc: "Should sample_attribute be included"
+    expand: "Should sample_attribute be expanded"
+  }
 }

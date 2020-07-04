@@ -1,16 +1,26 @@
 class: CommandLineTool
-id: m9B_btop_msa.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/m9B_btop_msa.pl.cwl
 inputs:
-- id: fast_a_m9_output_file
+- id: masked_lib_out
+  doc: -- FASTA format library of MSA sequences
+  type: boolean
+  inputBinding:
+    prefix: --masked_lib_out
+- id: query_file
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --query_file
+- id: bound_file
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --bound_file
+- id: fast_a_m_nine_output_dotfile
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: masked_lib_out
-  doc: library of MSA sequences
-  type: string
-  inputBinding:
-    prefix: --masked_lib_out
 outputs: []
 cwlVersion: v1.1
 baseCommand:

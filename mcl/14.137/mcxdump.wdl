@@ -2,12 +2,16 @@ version 1.0
 
 task Mcxdump {
   input {
-    String imxImx
-    String oO
+    String? imx
+    String? o
   }
   command <<<
     mcxdump \
-      ~{if defined(imxImx) then ("-imx " +  '"' + imxImx + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""}
+      ~{if defined(imx) then ("-imx " +  '"' + imx + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    imx: ""
+    o: ""
+  }
 }

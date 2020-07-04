@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: xml_spellcheck.cwl
+id: ../../../../home/ubuntu/BiocondaCli/xml_spellcheck.cwl
 inputs:
-- id: files
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: conf
   doc: Gets the options from a configuration file. NOT IMPLEMENTED YET.
   type: string
@@ -51,6 +46,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --man
+- id: files
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

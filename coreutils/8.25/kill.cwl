@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: kill.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kill.cwl
 inputs:
 - id: signal
   doc: specify the name or number of the signal to be sent

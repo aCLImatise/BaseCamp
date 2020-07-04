@@ -2,38 +2,49 @@ version 1.0
 
 task InclusionExclusionListCreator {
   input {
-    File includeInclude
-    File excludeExclude
-    File outOut
-    File rtRtModel
-    File ptPtModel
-    String inclusionInclusionCharges
-    String inclusionInclusionStrategy
-    String exclusionExclusionCharges
-    String rawRawData
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
-    Boolean algorithmAlgorithm
-    Boolean httpHttp
+    File? include
+    File? exclude
+    File? out
+    File? rt_model
+    File? pt_model
+    String? inclusion_charges
+    String? inclusion_strategy
+    String? exclusion_charges
+    String? raw_data
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     InclusionExclusionListCreator \
-      ~{if defined(includeInclude) then ("-include " +  '"' + includeInclude + '"') else ""} \
-      ~{if defined(excludeExclude) then ("-exclude " +  '"' + excludeExclude + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(rtRtModel) then ("-rt_model " +  '"' + rtRtModel + '"') else ""} \
-      ~{if defined(ptPtModel) then ("-pt_model " +  '"' + ptPtModel + '"') else ""} \
-      ~{if defined(inclusionInclusionCharges) then ("-inclusion_charges " +  '"' + inclusionInclusionCharges + '"') else ""} \
-      ~{if defined(inclusionInclusionStrategy) then ("-inclusion_strategy " +  '"' + inclusionInclusionStrategy + '"') else ""} \
-      ~{if defined(exclusionExclusionCharges) then ("-exclusion_charges " +  '"' + exclusionExclusionCharges + '"') else ""} \
-      ~{if defined(rawRawData) then ("-raw_data " +  '"' + rawRawData + '"') else ""} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp} \
-      ~{true="- algorithm" false="" algorithmAlgorithm} \
-      ~{true="- http" false="" httpHttp}
+      ~{if defined(include) then ("-include " +  '"' + include + '"') else ""} \
+      ~{if defined(exclude) then ("-exclude " +  '"' + exclude + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(rt_model) then ("-rt_model " +  '"' + rt_model + '"') else ""} \
+      ~{if defined(pt_model) then ("-pt_model " +  '"' + pt_model + '"') else ""} \
+      ~{if defined(inclusion_charges) then ("-inclusion_charges " +  '"' + inclusion_charges + '"') else ""} \
+      ~{if defined(inclusion_strategy) then ("-inclusion_strategy " +  '"' + inclusion_strategy + '"') else ""} \
+      ~{if defined(exclusion_charges) then ("-exclusion_charges " +  '"' + exclusion_charges + '"') else ""} \
+      ~{if defined(raw_data) then ("-raw_data " +  '"' + raw_data + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    include: "Inclusion list input file in FASTA or featureXML format. (valid formats: 'featureXML', 'fasta')"
+    exclude: "Exclusion list input file in featureXML, idXML or FASTA format. (valid formats: 'featureXML', 'idXML', 'fasta')"
+    out: "*                 Output file (tab delimited csv file). (valid formats: 'csv')"
+    rt_model: "RTModel file used for the rt prediction of peptides in FASTA files. (valid formats: 'txt')"
+    pt_model: "PTModel file used for the pt prediction of peptides in FASTA files (only needed for inclusion_strategy PreotinBased_LP). (valid formats: 'txt')"
+    inclusion_charges: "List containing the charge states to be considered for the inclusion list compounds, space separated. (min: '1')"
+    inclusion_strategy: "Strategy to be used for selection (default: 'ALL' valid: 'FeatureBased_LP', 'ProteinBased_LP', 'ALL')"
+    exclusion_charges: "List containing the charge states to be considered for the exclusion list compounds (for idXML and FASTA input), space separated. (min: '1')"
+    raw_data: "File containing the raw data (only needed for FeatureBased_LP). (valid formats: 'mzML')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

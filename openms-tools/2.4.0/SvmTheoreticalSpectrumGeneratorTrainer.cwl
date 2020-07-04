@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SvmTheoreticalSpectrumGeneratorTrainer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SvmTheoreticalSpectrumGeneratorTrainer.cwl
 inputs:
 - id: in_spectra
   doc: "*          Input Training Spectra in mzML (valid formats: 'mzML')"

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: idba_tran_test.cwl
+id: ../../../../home/ubuntu/BiocondaCli/idba_tran_test.cwl
 inputs:
-- id: i_dba_tran
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: out
   doc: (=out)                   output directory
   type: string
@@ -117,6 +112,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --max_component_size
+- id: i_dba_tran
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

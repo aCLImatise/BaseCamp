@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: isocor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/isocor.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

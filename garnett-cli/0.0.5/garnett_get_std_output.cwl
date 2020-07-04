@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: garnett_get_std_output.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/garnett_get_std_output.R.cwl
 inputs:
 - id: input_object
   doc: Path to the input CDS object in .rds format

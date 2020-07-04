@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sonicparanoid_extract.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sonicparanoid_extract.cwl
 inputs:
 - id: input_table
   doc: 'Table with output groups generated using SonicParanoid. NOTE: the headers

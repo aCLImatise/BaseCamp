@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: shuffleSequences_fasta.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/shuffleSequences_fasta.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

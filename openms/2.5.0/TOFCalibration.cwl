@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: TOFCalibration.cwl
+id: ../../../../home/ubuntu/BiocondaCli/TOFCalibration.cwl
 inputs:
 - id: in
   doc: "*              Input peak or raw data file  (valid formats: 'mzML')"
@@ -58,16 +58,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Algorithm section for peak picking
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
-- id: http
-  doc: ://www.openms.de/documentation/TOPP_TOFCalibration.html
-  type: boolean
-  inputBinding:
-    prefix: '- http'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: genie_gff3_convert.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genie_gff3_convert.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: attributes
   doc: select attributes by key
   type: string
@@ -76,6 +71,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --type
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

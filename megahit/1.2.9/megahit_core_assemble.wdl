@@ -2,42 +2,61 @@ version 1.0
 
 task MegahitCoreAssemble {
   input {
-    String sSDbgName
-    String outputOutputPrefix
-    String numNumCpuThreads
-    String maxMaxTipLen
-    String minMinStandalone
-    String bubbleBubbleLevel
-    String mergeMergeLen
-    String mergeMergeSimilar
-    String prunePruneLevel
-    String disconnectDisconnectRatio
-    String lowLowLocalRatio
-    String cleaningCleaningRounds
-    String minMinDepth
-    Boolean isIsFinalRound
-    Boolean outputOutputStandalone
-    Boolean carefulCarefulBubble
-    String? assembleAssemble
+    String? s_dbg_name
+    String? output_prefix
+    String? num_cpu_threads
+    String? max_tip_len
+    String? min_standalone
+    String? bubble_level
+    String? merge_len
+    String? merge_similar
+    String? prune_level
+    String? disconnect_ratio
+    String? low_local_ratio
+    String? cleaning_rounds
+    String? min_depth
+    Boolean? is_final_round
+    Boolean? output_standalone
+    Boolean? careful_bubble
+    String assemble
   }
   command <<<
     megahit_core assemble \
-      ~{assembleAssemble} \
-      ~{if defined(sSDbgName) then ("--sdbg_name " +  '"' + sSDbgName + '"') else ""} \
-      ~{if defined(outputOutputPrefix) then ("--output_prefix " +  '"' + outputOutputPrefix + '"') else ""} \
-      ~{if defined(numNumCpuThreads) then ("--num_cpu_threads " +  '"' + numNumCpuThreads + '"') else ""} \
-      ~{if defined(maxMaxTipLen) then ("--max_tip_len " +  '"' + maxMaxTipLen + '"') else ""} \
-      ~{if defined(minMinStandalone) then ("--min_standalone " +  '"' + minMinStandalone + '"') else ""} \
-      ~{if defined(bubbleBubbleLevel) then ("--bubble_level " +  '"' + bubbleBubbleLevel + '"') else ""} \
-      ~{if defined(mergeMergeLen) then ("--merge_len " +  '"' + mergeMergeLen + '"') else ""} \
-      ~{if defined(mergeMergeSimilar) then ("--merge_similar " +  '"' + mergeMergeSimilar + '"') else ""} \
-      ~{if defined(prunePruneLevel) then ("--prune_level " +  '"' + prunePruneLevel + '"') else ""} \
-      ~{if defined(disconnectDisconnectRatio) then ("--disconnect_ratio " +  '"' + disconnectDisconnectRatio + '"') else ""} \
-      ~{if defined(lowLowLocalRatio) then ("--low_local_ratio " +  '"' + lowLowLocalRatio + '"') else ""} \
-      ~{if defined(cleaningCleaningRounds) then ("--cleaning_rounds " +  '"' + cleaningCleaningRounds + '"') else ""} \
-      ~{if defined(minMinDepth) then ("--min_depth " +  '"' + minMinDepth + '"') else ""} \
-      ~{true="--is_final_round" false="" isIsFinalRound} \
-      ~{true="--output_standalone" false="" outputOutputStandalone} \
-      ~{true="--careful_bubble" false="" carefulCarefulBubble}
+      ~{assemble} \
+      ~{if defined(s_dbg_name) then ("--sdbg_name " +  '"' + s_dbg_name + '"') else ""} \
+      ~{if defined(output_prefix) then ("--output_prefix " +  '"' + output_prefix + '"') else ""} \
+      ~{if defined(num_cpu_threads) then ("--num_cpu_threads " +  '"' + num_cpu_threads + '"') else ""} \
+      ~{if defined(max_tip_len) then ("--max_tip_len " +  '"' + max_tip_len + '"') else ""} \
+      ~{if defined(min_standalone) then ("--min_standalone " +  '"' + min_standalone + '"') else ""} \
+      ~{if defined(bubble_level) then ("--bubble_level " +  '"' + bubble_level + '"') else ""} \
+      ~{if defined(merge_len) then ("--merge_len " +  '"' + merge_len + '"') else ""} \
+      ~{if defined(merge_similar) then ("--merge_similar " +  '"' + merge_similar + '"') else ""} \
+      ~{if defined(prune_level) then ("--prune_level " +  '"' + prune_level + '"') else ""} \
+      ~{if defined(disconnect_ratio) then ("--disconnect_ratio " +  '"' + disconnect_ratio + '"') else ""} \
+      ~{if defined(low_local_ratio) then ("--low_local_ratio " +  '"' + low_local_ratio + '"') else ""} \
+      ~{if defined(cleaning_rounds) then ("--cleaning_rounds " +  '"' + cleaning_rounds + '"') else ""} \
+      ~{if defined(min_depth) then ("--min_depth " +  '"' + min_depth + '"') else ""} \
+      ~{true="--is_final_round" false="" is_final_round} \
+      ~{true="--output_standalone" false="" output_standalone} \
+      ~{true="--careful_bubble" false="" careful_bubble}
   >>>
+  parameter_meta {
+    s_dbg_name: "succinct de Bruijn graph name"
+    output_prefix: "(=out)         output prefix"
+    num_cpu_threads: "(=0)         number of cpu threads"
+    max_tip_len: "(=-1)            max length for tips to be removed. -1 for 2k"
+    min_standalone: "(=200)        min length of a standalone contig to output to final.contigs.fa"
+    bubble_level: "(=2)            bubbles level 0-3"
+    merge_len: "(=20)              merge complex bubbles of length <= merge_len * k"
+    merge_similar: "(=0.98)        min similarity of complex bubble merging"
+    prune_level: "(=2)             strength of low local depth contig pruning (0-3)"
+    disconnect_ratio: "(=0.1)      ratio threshold for disconnecting contigs"
+    low_local_ratio: "(=0.2)       ratio to define low depth contigs"
+    cleaning_rounds: "(=5)         number of rounds of graphs cleaning"
+    min_depth: "(=-1)              if prune_level >= 2, permanently remove low local coverage unitigs under this threshold"
+    is_final_round: "this is the last iteration"
+    output_standalone: "output standalone contigs to *.final.contigs.fa"
+    careful_bubble: "remove bubble carefully"
+    assemble: ""
+  }
 }

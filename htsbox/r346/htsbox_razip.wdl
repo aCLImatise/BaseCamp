@@ -2,18 +2,31 @@ version 1.0
 
 task HtsboxRazip {
   input {
-    Boolean cC
-    Boolean dD
-    Boolean lL
-    Int bB
-    Int sS
+    Boolean? write_standard_output
+    Boolean? decompress
+    Boolean? list_compressed_contents
+    Int? decompress_int_position
+    Int? decompress_int_bytes
+    String ra_zip
+    File? file
   }
   command <<<
     htsbox razip \
-      ~{true="-c" false="" cC} \
-      ~{true="-d" false="" dD} \
-      ~{true="-l" false="" lL} \
-      ~{if defined(bB) then ("-b " +  '"' + bB + '"') else ""} \
-      ~{if defined(sS) then ("-s " +  '"' + sS + '"') else ""}
+      ~{ra_zip} \
+      ~{file} \
+      ~{true="-c" false="" write_standard_output} \
+      ~{true="-d" false="" decompress} \
+      ~{true="-l" false="" list_compressed_contents} \
+      ~{if defined(decompress_int_position) then ("-b " +  '"' + decompress_int_position + '"') else ""} \
+      ~{if defined(decompress_int_bytes) then ("-s " +  '"' + decompress_int_bytes + '"') else ""}
   >>>
+  parameter_meta {
+    write_standard_output: "write on standard output, keep original files unchanged"
+    decompress: "decompress"
+    list_compressed_contents: "list compressed file contents"
+    decompress_int_position: "decompress at INT position in the uncompressed file"
+    decompress_int_bytes: "decompress INT bytes in the uncompressed file"
+    ra_zip: ""
+    file: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: show_tiling.cwl
+id: ../../../../home/ubuntu/BiocondaCli/show_tiling.cwl
 inputs:
 - id: delta_file
   doc: ''

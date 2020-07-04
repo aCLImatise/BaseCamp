@@ -2,26 +2,28 @@ version 1.0
 
 task BiomajCli.py {
   input {
-    String bankBank
-    String releaseRelease
-    Boolean searchSearch
-    String formatsFormats
-    String typesTypes
-    Boolean queryQuery
-    Boolean showShow
-    String releaseRelease
-    String maintenanceMaintenance
+    String? c
+    Boolean? check
+    Boolean? u
+    Boolean? from_scratch
+    Boolean? z
+    Boolean? p
   }
   command <<<
     biomaj-cli.py \
-      ~{if defined(bankBank) then ("--bank " +  '"' + bankBank + '"') else ""} \
-      ~{if defined(releaseRelease) then ("--release " +  '"' + releaseRelease + '"') else ""} \
-      ~{true="--search" false="" searchSearch} \
-      ~{if defined(formatsFormats) then ("--formats " +  '"' + formatsFormats + '"') else ""} \
-      ~{if defined(typesTypes) then ("--types " +  '"' + typesTypes + '"') else ""} \
-      ~{true="--query" false="" queryQuery} \
-      ~{true="--show" false="" showShow} \
-      ~{if defined(releaseRelease) then ("--release " +  '"' + releaseRelease + '"') else ""} \
-      ~{if defined(maintenanceMaintenance) then ("--maintenance " +  '"' + maintenanceMaintenance + '"') else ""}
+      ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
+      ~{true="--check" false="" check} \
+      ~{true="-u" false="" u} \
+      ~{true="--fromscratch" false="" from_scratch} \
+      ~{true="-z" false="" z} \
+      ~{true="-p" false="" p}
   >>>
+  parameter_meta {
+    c: ""
+    check: ""
+    u: ""
+    from_scratch: ""
+    z: ""
+    p: ""
+  }
 }

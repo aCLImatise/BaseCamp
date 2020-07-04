@@ -2,16 +2,22 @@ version 1.0
 
 task Mpa {
   input {
-    String mpaMpaDirectory
-    String loggingLoggingLevel
-    String inputInput
-    String outputOutput
+    String? mpa_directory
+    String? logging_level
+    String? vcf_file_annotate
+    String? output_vcf_file
   }
   command <<<
     mpa \
-      ~{if defined(mpaMpaDirectory) then ("--mpa-directory " +  '"' + mpaMpaDirectory + '"') else ""} \
-      ~{if defined(loggingLoggingLevel) then ("--logging-level " +  '"' + loggingLoggingLevel + '"') else ""} \
-      ~{if defined(inputInput) then ("--input " +  '"' + inputInput + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""}
+      ~{if defined(mpa_directory) then ("--mpa-directory " +  '"' + mpa_directory + '"') else ""} \
+      ~{if defined(logging_level) then ("--logging-level " +  '"' + logging_level + '"') else ""} \
+      ~{if defined(vcf_file_annotate) then ("--input " +  '"' + vcf_file_annotate + '"') else ""} \
+      ~{if defined(output_vcf_file) then ("--output " +  '"' + output_vcf_file + '"') else ""}
   >>>
+  parameter_meta {
+    mpa_directory: "The path to the MPA installation folder. [Default: /tmp/tmpjlb2c7kj/bin]"
+    logging_level: "The logger level. [Default: INFO]"
+    vcf_file_annotate: "The vcf file to annotate (format: VCF). This vcf must be annotate with annovar."
+    output_vcf_file: "The output vcf file with annotation (format : VCF)"
+  }
 }

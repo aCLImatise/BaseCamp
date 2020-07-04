@@ -1,21 +1,22 @@
 class: CommandLineTool
-id: msaboot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/msaboot.cwl
 inputs:
-- id: i
-  doc: ''
+- id: input
+  doc: The file name of the FASTA file to be used as input.
   type: string
   inputBinding:
-    prefix: -i
-- id: o
-  doc: ''
+    prefix: --input
+- id: output
+  doc: The file name of the bootstrapped alignment data output, stored in relaxed
+    PHYLIP format.
   type: string
   inputBinding:
-    prefix: -o
-- id: n
-  doc: ''
+    prefix: --output
+- id: number
+  doc: The number of bootstrap replicates.
   type: string
   inputBinding:
-    prefix: -n
+    prefix: --number
 outputs: []
 cwlVersion: v1.1
 baseCommand:

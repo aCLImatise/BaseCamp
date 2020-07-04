@@ -2,16 +2,19 @@ version 1.0
 
 task VcfToTab {
   input {
-    Boolean iupacIupac
-    String? optionsOptions
-    String? inInVcf
-    String? outOutTab
+    Boolean? iupac
+    String in_dot_vcf
+    String out_dot_tab
   }
   command <<<
     vcf-to-tab \
-      ~{optionsOptions} \
-      ~{true="--iupac" false="" iupacIupac} \
-      ~{inInVcf} \
-      ~{outOutTab}
+      ~{in_dot_vcf} \
+      ~{out_dot_tab} \
+      ~{true="--iupac" false="" iupac}
   >>>
+  parameter_meta {
+    iupac: "Use one-letter IUPAC codes"
+    in_dot_vcf: ""
+    out_dot_tab: ""
+  }
 }

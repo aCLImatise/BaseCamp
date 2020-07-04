@@ -2,12 +2,19 @@ version 1.0
 
 task FindMotif {
   input {
-    Boolean verboseVerbose
-    String? sequenceSequence
+    String? verbose
+    String? motif
+    String sequence
   }
   command <<<
     findMotif \
-      ~{sequenceSequence} \
-      ~{true="-verbose" false="" verboseVerbose}
+      ~{sequence} \
+      ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""} \
+      ~{if defined(motif) then ("-motif " +  '"' + motif + '"') else ""}
   >>>
+  parameter_meta {
+    verbose: "- will display gaps as bed file data lines to stderr"
+    motif: ""
+    sequence: ""
+  }
 }

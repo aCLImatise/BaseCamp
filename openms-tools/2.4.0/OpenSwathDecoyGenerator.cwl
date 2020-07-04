@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: OpenSwathDecoyGenerator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/OpenSwathDecoyGenerator.cwl
 inputs:
 - id: in
   doc: "*             Input file (valid formats: 'tsv', 'mrm', 'pqp', 'TraML')"
@@ -35,9 +35,9 @@ inputs:
   inputBinding:
     prefix: -decoy_tag
 - id: switch_kr
-  doc: "<true/false>  Whether to switch terminal K and R (to achieve different precursor\
-    \ mass) (default: 'true' valid: 'true', 'false')"
-  type: boolean
+  doc: "Whether to switch terminal K and R (to achieve different precursor mass) (default:\
+    \ 'true' valid: 'true', 'false')"
+  type: string
   inputBinding:
     prefix: -switchKR
 - id: ini

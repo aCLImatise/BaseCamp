@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Aquila_step1_multilibs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Aquila_step1_multilibs.cwl
 inputs:
 - id: bam_file_list
   doc: 'Required parameter, BAM file list, each BAM file is seperately by comma ",".
@@ -60,6 +60,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --block_len_use
+- id: use
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

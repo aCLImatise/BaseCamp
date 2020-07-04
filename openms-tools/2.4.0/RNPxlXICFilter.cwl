@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNPxlXICFilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNPxlXICFilter.cwl
 inputs:
 - id: control
   doc: "*    Input mzML file (valid formats: 'mzML')"

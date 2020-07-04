@@ -1,16 +1,21 @@
 class: CommandLineTool
-id: analyse_metrics.py_refmap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/analyse_metrics.py_refmap.cwl
 inputs:
-- id: metrics
+- id: analyse_metrics_do_tpy
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: ref_map
+- id: metrics
   doc: ''
   type: string
   inputBinding:
     position: 1
+- id: ref_map
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

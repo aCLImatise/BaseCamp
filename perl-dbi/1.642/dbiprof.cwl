@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dbiprof.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dbiprof.cwl
 inputs:
 - id: number
   doc: show top N, defaults to 10

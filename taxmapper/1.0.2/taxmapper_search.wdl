@@ -2,20 +2,28 @@ version 1.0
 
 task TaxmapperSearch {
   input {
-    File forwardForward
-    File reverseReverse
-    String rapRapSearch
-    String databaseDatabase
-    String outOut
-    String threadsThreads
+    File? forward
+    File? reverse
+    String? rap_search
+    String? database
+    String? out
+    String? threads
   }
   command <<<
     taxmapper search \
-      ~{if defined(forwardForward) then ("--forward " +  '"' + forwardForward + '"') else ""} \
-      ~{if defined(reverseReverse) then ("--reverse " +  '"' + reverseReverse + '"') else ""} \
-      ~{if defined(rapRapSearch) then ("--rapsearch " +  '"' + rapRapSearch + '"') else ""} \
-      ~{if defined(databaseDatabase) then ("--database " +  '"' + databaseDatabase + '"') else ""} \
-      ~{if defined(outOut) then ("--out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""}
+      ~{if defined(forward) then ("--forward " +  '"' + forward + '"') else ""} \
+      ~{if defined(reverse) then ("--reverse " +  '"' + reverse + '"') else ""} \
+      ~{if defined(rap_search) then ("--rapsearch " +  '"' + rap_search + '"') else ""} \
+      ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  parameter_meta {
+    forward: "Forward reads in fasta or fastq format"
+    reverse: "Reads in fasta or fastq format [optional]"
+    rap_search: "Rapsearch path, version >=2.24 [default: rapsearch set in PATH variable]"
+    database: "Path to RAPSearch database index"
+    out: "Basename for output files [default: <input>_hits]"
+    threads: "Number of threads [default: 4]"
+  }
 }

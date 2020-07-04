@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: overlapImport.cwl
+id: ../../../../home/ubuntu/BiocondaCli/overlapImport.cwl
 inputs:
-- id: s
+- id: path_valid_sequence
   doc: path to valid sequence store
   type: string
   inputBinding:
     prefix: -S
-- id: o
+- id: output_file_name
   doc: output file name
   type: File
   inputBinding:
     prefix: -o
-- id: o
+- id: output_overlap_store
   doc: output overlap store
   type: string
   inputBinding:
@@ -56,16 +56,21 @@ inputs:
   type: string
   inputBinding:
     prefix: -random
-- id: a
+- id: a_read_ids_will_y
   doc: A read IDs will be between x and y
   type: string
   inputBinding:
     prefix: -a
-- id: b
+- id: b_read_ids_will_y
   doc: B read IDs will be between x and y
   type: string
   inputBinding:
     prefix: -b
+- id: ascii_ovl_file_input_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

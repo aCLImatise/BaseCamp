@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mglenv.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mglenv.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

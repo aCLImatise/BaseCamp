@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: flexbar.cwl
+id: ../../../../home/ubuntu/BiocondaCli/flexbar.cwl
 inputs:
 - id: full_help
   doc: Display the help message with advanced options.
@@ -31,7 +31,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --reads
-- id: read_s2
+- id: reads_two
   doc: Second input file of paired reads, gz and bz2 files supported.
   type: string
   inputBinding:
@@ -66,7 +66,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --adapters
-- id: adapters_2
+- id: adapters_two
   doc: File with extra adapters for second read set in paired mode.
   type: string
   inputBinding:
@@ -146,6 +146,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --htrim-error-rate
+- id: fast_a_output
+  doc: Prefer non-quality format fasta for output.
+  type: boolean
+  inputBinding:
+    prefix: --fasta-output
+- id: zip_output
+  doc: Direct compression of output files. One of GZ and BZ2.
+  type: string
+  inputBinding:
+    prefix: --zip-output
+- id: stdout_reads
+  doc: Write reads to stdout, tagged and interleaved if needed.
+  type: boolean
+  inputBinding:
+    prefix: --stdout-reads
 - id: align_log
   doc: Print chosen read alignments. One of ALL, MOD, and TAB.
   type: string

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: estwisedb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/estwisedb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: PTModel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PTModel.cwl
 inputs:
 - id: in_positive
   doc: "*            Input file with positive examples (valid formats: 'idXML')"
@@ -17,7 +17,7 @@ inputs:
   type: File
   inputBinding:
     prefix: -out
-- id: c
+- id: penalty_parameter_svm
   doc: "The penalty parameter of the svm (default: '1')"
   type: double
   inputBinding:
@@ -84,85 +84,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -additive_cv
-- id: cv
-  doc: :skip_cv                     Has to be set if the cv should be skipped and
-    the model should just be trained with the specified parameters.
-  type: boolean
-  inputBinding:
-    prefix: -cv
-- id: cv
-  doc: ":number_of_runs <int>        Number of runs for the CV (default: '10' min:\
-    \ '1')"
-  type: boolean
-  inputBinding:
-    prefix: -cv
-- id: cv
-  doc: ":number_of_partitions <int>  Number of CV partitions (default: '10' min: '2')"
-  type: boolean
-  inputBinding:
-    prefix: -cv
-- id: cv
-  doc: ":degree_start <int>          Starting point of degree (default: '1' min: '1')"
-  type: boolean
-  inputBinding:
-    prefix: -cv
-- id: cv
-  doc: ":degree_step_size <int>      Step size point of degree (default: '2')"
-  type: boolean
-  inputBinding:
-    prefix: -cv
-- id: cv
-  doc: ":degree_stop <int>           Stopping point of degree (default: '4')"
-  type: boolean
-  inputBinding:
-    prefix: -cv
-- id: cv
-  doc: ":c_start <float>             Starting point of c (default: '1')"
-  type: boolean
-  inputBinding:
-    prefix: -cv
-- id: cv
-  doc: ":c_step_size <float>         Step size of c (default: '100')"
-  type: boolean
-  inputBinding:
-    prefix: -cv
-- id: cv
-  doc: ":c_stop <float>              Stopping point of c (default: '1000')"
-  type: boolean
-  inputBinding:
-    prefix: -cv
-- id: cv
-  doc: ":nu_start <float>            Starting point of nu (default: '0.1' min: '0'\
-    \ max: '1')"
-  type: boolean
-  inputBinding:
-    prefix: -cv
-- id: cv
-  doc: ":nu_step_size <float>        Step size of nu (default: '1.3')"
-  type: boolean
-  inputBinding:
-    prefix: -cv
-- id: cv
-  doc: ":nu_stop <float>             Stopping point of nu (default: '0.9' min: '0'\
-    \ max: '1')"
-  type: boolean
-  inputBinding:
-    prefix: -cv
-- id: cv
-  doc: ":sigma_start <float>         Starting point of sigma (default: '1')"
-  type: boolean
-  inputBinding:
-    prefix: -cv
-- id: cv
-  doc: ":sigma_step_size <float>     Step size of sigma (default: '1.3')"
-  type: boolean
-  inputBinding:
-    prefix: -cv
-- id: cv
-  doc: ":sigma_stop <float>          Stopping point of sigma (default: '15')"
-  type: boolean
-  inputBinding:
-    prefix: -cv
 - id: ini
   doc: Use the given TOPP INI file
   type: File

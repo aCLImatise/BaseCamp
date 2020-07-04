@@ -2,24 +2,34 @@ version 1.0
 
 task RunMusicc.py {
   input {
-    String outOut
-    String inputInputFormat
-    String outputOutputFormat
-    Boolean normalizeNormalize
-    String correctCorrect
-    Boolean performancePerformance
-    Boolean verboseVerbose
-    String? inputInputFile
+    String? out
+    String? input_format
+    String? output_format
+    Boolean? normalize
+    String? correct
+    Boolean? performance
+    Boolean? verbose
+    String input_file
   }
   command <<<
     run_musicc.py \
-      ~{inputInputFile} \
-      ~{if defined(outOut) then ("--out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(inputInputFormat) then ("--input_format " +  '"' + inputInputFormat + '"') else ""} \
-      ~{if defined(outputOutputFormat) then ("--output_format " +  '"' + outputOutputFormat + '"') else ""} \
-      ~{true="--normalize" false="" normalizeNormalize} \
-      ~{if defined(correctCorrect) then ("--correct " +  '"' + correctCorrect + '"') else ""} \
-      ~{true="--performance" false="" performancePerformance} \
-      ~{true="--verbose" false="" verboseVerbose}
+      ~{input_file} \
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
+      ~{if defined(input_format) then ("--input_format " +  '"' + input_format + '"') else ""} \
+      ~{if defined(output_format) then ("--output_format " +  '"' + output_format + '"') else ""} \
+      ~{true="--normalize" false="" normalize} \
+      ~{if defined(correct) then ("--correct " +  '"' + correct + '"') else ""} \
+      ~{true="--performance" false="" performance} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    out: "Output destination for corrected abundance (default: MUSiCC.tab)"
+    input_format: "Option indicating the format of the input file (default: tab)"
+    output_format: "Option indicating the format of the output file (default: tab)"
+    normalize: "Apply MUSiCC normalization (default: false)"
+    correct: "Correct abundance per-sample using MUSiCC (default: false)"
+    performance: "Calculate model performance on various gene sets (may add to running time) (default: false)"
+    verbose: "Increase verbosity of module (default: false)"
+    input_file: "Input abundance file to correct"
+  }
 }

@@ -1,61 +1,89 @@
 class: CommandLineTool
-id: dEploid_dbg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dEploid_dbg.cwl
 inputs:
-- id: de_plo_id
-  doc: -vcf STR  --  VCF file path. -ref STR  --  File path of reference allele count.
-    -alt STR  --  File path of alternative allele count.
+- id: version
+  doc: --  DEploid version.
   type: string
   inputBinding:
-    prefix: --  DEploid
-- id: file
-  doc: of population level allele frequencies.
+    prefix: -version
+- id: vcf
+  doc: --  VCF file path.
   type: string
   inputBinding:
-    prefix: --  File
-- id: file
-  doc: of the reference panel.
+    prefix: -vcf
+- id: ref
+  doc: --  File path of reference allele count.
   type: string
   inputBinding:
-    prefix: --  File
+    prefix: -ref
+- id: alt
+  doc: --  File path of alternative allele count.
+  type: string
+  inputBinding:
+    prefix: -alt
+- id: plaf
+  doc: --  File path of population level allele frequencies.
+  type: string
+  inputBinding:
+    prefix: -plaf
+- id: panel
+  doc: --  File path of the reference panel.
+  type: string
+  inputBinding:
+    prefix: -panel
 - id: exclude
-  doc: of sites to be excluded.
+  doc: --  File path of sites to be excluded.
   type: string
   inputBinding:
     prefix: -exclude
-- id: specify
-  doc: file name prefix of the output.
+- id: _specify_prefix
+  doc: --  Specify the file name prefix of the output.
   type: string
   inputBinding:
-    prefix: --  Specify
-- id: out
-  doc: precision (default value 8).
+    prefix: -o
+- id: _out_put
+  doc: --  Out put precision (default value 8).
   type: long
   inputBinding:
-    prefix: --  Out
-- id: number
-  doc: strain (default value 5).
+    prefix: -p
+- id: _number_strain
+  doc: --  Number of strain (default value 5).
   type: long
   inputBinding:
-    prefix: --  Number
-- id: random
-  doc: -nSample INT  --  Number of MCMC samples. -rate INT  --  MCMC sample rate.
-    -noPanel  --  Use population level allele frequency as prior.
+    prefix: -k
+- id: seed
+  doc: --  Random seed.
   type: long
   inputBinding:
-    prefix: --  Random
+    prefix: -seed
+- id: n_sample
+  doc: --  Number of MCMC samples.
+  type: long
+  inputBinding:
+    prefix: -nSample
+- id: rate
+  doc: --  MCMC sample rate.
+  type: long
+  inputBinding:
+    prefix: -rate
+- id: no_panel
+  doc: --  Use population level allele frequency as prior.
+  type: boolean
+  inputBinding:
+    prefix: -noPanel
 - id: forbid_update_prop
-  doc: moves to update proportions.
-  type: string
+  doc: --  Forbid MCMC moves to update proportions.
+  type: boolean
   inputBinding:
     prefix: -forbidUpdateProp
 - id: forbid_update_single
-  doc: moves to update single haplotype.
-  type: string
+  doc: --  Forbid MCMC moves to update single haplotype.
+  type: boolean
   inputBinding:
     prefix: -forbidUpdateSingle
 - id: forbid_update_pair
-  doc: moves to update pair haplotypes.
-  type: string
+  doc: --  Forbid MCMC moves to update pair haplotypes.
+  type: boolean
   inputBinding:
     prefix: -forbidUpdatePair
 - id: initial_p
@@ -63,6 +91,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -initialP
+- id: h
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -h
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,7 +1,14 @@
 version 1.0
 
 task DeBWT {
+  input {
+    String reference
+  }
   command <<<
-    deBWT
+    deBWT \
+      ~{reference}
   >>>
+  parameter_meta {
+    reference: ""
+  }
 }

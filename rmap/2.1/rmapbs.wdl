@@ -2,36 +2,49 @@ version 1.0
 
 task Rmapbs {
   input {
-    Boolean outputOutput
-    Boolean chromChrom
-    Boolean startStart
-    Boolean numberNumber
-    Boolean suffixSuffix
-    Boolean mismatchMismatch
-    Boolean ambiguousAmbiguous
-    Boolean maxMaxMap
-    Boolean agAgWild
-    Boolean clipClip
-    Boolean verboseVerbose
-    Boolean aboutAbout
-    String? optionsOptions
-    String? fastFastQReadsFile
+    Boolean? output_file_name
+    Boolean? chrom
+    Boolean? start
+    Boolean? number
+    Boolean? suffix
+    Boolean? mismatch
+    Boolean? ambiguous
+    Boolean? max_map
+    Boolean? ag_wild
+    Boolean? clip
+    Boolean? verbose
+    Boolean? about
+    String fast_q_reads_file
   }
   command <<<
     rmapbs \
-      ~{optionsOptions} \
-      ~{true="-output" false="" outputOutput} \
-      ~{true="-chrom" false="" chromChrom} \
-      ~{true="-start" false="" startStart} \
-      ~{true="-number" false="" numberNumber} \
-      ~{true="-suffix" false="" suffixSuffix} \
-      ~{true="-mismatch" false="" mismatchMismatch} \
-      ~{true="-ambiguous" false="" ambiguousAmbiguous} \
-      ~{true="-max-map" false="" maxMaxMap} \
-      ~{true="-ag-wild" false="" agAgWild} \
-      ~{true="-clip" false="" clipClip} \
-      ~{true="-verbose" false="" verboseVerbose} \
-      ~{true="-about" false="" aboutAbout} \
-      ~{fastFastQReadsFile}
+      ~{fast_q_reads_file} \
+      ~{true="-output" false="" output_file_name} \
+      ~{true="-chrom" false="" chrom} \
+      ~{true="-start" false="" start} \
+      ~{true="-number" false="" number} \
+      ~{true="-suffix" false="" suffix} \
+      ~{true="-mismatch" false="" mismatch} \
+      ~{true="-ambiguous" false="" ambiguous} \
+      ~{true="-max-map" false="" max_map} \
+      ~{true="-ag-wild" false="" ag_wild} \
+      ~{true="-clip" false="" clip} \
+      ~{true="-verbose" false="" verbose} \
+      ~{true="-about" false="" about}
   >>>
+  parameter_meta {
+    output_file_name: "output file name "
+    chrom: "chromosomes in FASTA file or dir "
+    start: "index of first read to map "
+    number: "number of reads to map "
+    suffix: "suffix of chrom files (assumes dir provided) "
+    mismatch: "maximum allowed mismatches "
+    ambiguous: "file to write names of ambiguously mapped reads "
+    max_map: "maximum allowed mappings for a read "
+    ag_wild: "map using A/G bisulfite wildcards "
+    clip: "clip the specified adaptor "
+    verbose: "print more run info "
+    about: "print about message "
+    fast_q_reads_file: ""
+  }
 }

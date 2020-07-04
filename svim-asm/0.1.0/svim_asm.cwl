@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: svim_asm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/svim_asm.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

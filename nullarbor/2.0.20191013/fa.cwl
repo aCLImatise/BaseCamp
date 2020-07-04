@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fa.cwl
 inputs:
 - id: verbose
   doc: "!      Debug info (default '0')."
@@ -31,12 +31,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --minsize
-- id: w
+- id: widthi_max_width
   doc: "|width=i     Max. width of filename column (default '25')."
   type: boolean
   inputBinding:
     prefix: --w
-- id: t
+- id: tabbed_produce_tab
   doc: "|tabbed!     Produce tab delimited output table (default '0')."
   type: boolean
   inputBinding:

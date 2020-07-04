@@ -2,14 +2,16 @@ version 1.0
 
 task ValidateLocus {
   input {
-    File inputInput
-    Directory inputInputDirectory
-    String? optionsOptions
+    File? path_input_file
+    Directory? input_directory
   }
   command <<<
     validate_locus \
-      ~{optionsOptions} \
-      ~{if defined(inputInput) then ("--input " +  '"' + inputInput + '"') else ""} \
-      ~{if defined(inputInputDirectory) then ("--input-directory " +  '"' + inputInputDirectory + '"') else ""}
+      ~{if defined(path_input_file) then ("--input " +  '"' + path_input_file + '"') else ""} \
+      ~{if defined(input_directory) then ("--input-directory " +  '"' + input_directory + '"') else ""}
   >>>
+  parameter_meta {
+    path_input_file: "Path to input locus file"
+    input_directory: "Path to directory containing locus files"
+  }
 }

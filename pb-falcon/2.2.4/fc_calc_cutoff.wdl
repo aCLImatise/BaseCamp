@@ -2,14 +2,13 @@ version 1.0
 
 task FcCalcCutoff {
   input {
-    String coverageCoverage
-    String? genomeGenomeSize
-    String? captureCapture
+    String? coverage
   }
   command <<<
     fc_calc_cutoff \
-      ~{genomeGenomeSize} \
-      ~{if defined(coverageCoverage) then ("--coverage " +  '"' + coverageCoverage + '"') else ""} \
-      ~{captureCapture}
+      ~{if defined(coverage) then ("--coverage " +  '"' + coverage + '"') else ""}
   >>>
+  parameter_meta {
+    coverage: "Desired coverage ratio (i.e. over-sampling) (default: 20)"
+  }
 }

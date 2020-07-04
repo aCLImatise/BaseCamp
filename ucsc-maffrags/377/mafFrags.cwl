@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: mafFrags.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mafFrags.cwl
 inputs:
+- id: ref_coords
+  doc: '- output actual reference genome coordinates in MAF.'
+  type: boolean
+  inputBinding:
+    prefix: -refCoords
 - id: database
   doc: ''
   type: string
@@ -11,21 +16,16 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: in_bed
+- id: in_dot_bed
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: out_maf
+- id: out_dot_maf
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: ref_coords
-  doc: reference genome coordinates in MAF.
-  type: string
-  inputBinding:
-    prefix: -refCoords
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tee.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tee.cwl
 inputs:
 - id: append
   doc: to the given FILEs, do not overwrite
@@ -11,7 +11,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --ignore-interrupts
-- id: p
+- id: diagnose_errors_writing
   doc: diagnose errors writing to non pipes
   type: boolean
   inputBinding:
@@ -21,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --output-error
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

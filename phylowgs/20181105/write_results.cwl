@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: write_results.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/write_results.py.cwl
 inputs:
+- id: include_ssm_names
+  doc: 'Include SSM names in output (which may be sensitive data) (default: False)'
+  type: boolean
+  inputBinding:
+    prefix: --include-ssm-names
+- id: min_ssms
+  doc: 'Minimum number or percent of SSMs to retain a subclone (default: 0.01)'
+  type: long
+  inputBinding:
+    prefix: --min-ssms
 - id: dataset_name
   doc: Name identifying dataset
   type: string
@@ -26,16 +36,6 @@ inputs:
   type: string
   inputBinding:
     position: 4
-- id: include_ssm_names
-  doc: 'Include SSM names in output (which may be sensitive data) (default: False)'
-  type: boolean
-  inputBinding:
-    prefix: --include-ssm-names
-- id: min_ssms
-  doc: 'Minimum number or percent of SSMs to retain a subclone (default: 0.01)'
-  type: long
-  inputBinding:
-    prefix: --min-ssms
 outputs: []
 cwlVersion: v1.1
 baseCommand:

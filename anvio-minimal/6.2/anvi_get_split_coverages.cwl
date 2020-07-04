@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_get_split_coverages.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_get_split_coverages.cwl
 inputs:
 - id: profile_db
   doc: Anvi'o profile database

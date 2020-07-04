@@ -2,28 +2,40 @@ version 1.0
 
 task OpalWorkflow.py {
   input {
-    String inputInputDir
-    String outputOutputDir
-    String goldGoldStandardFile
-    String yamlYaml
-    String volumeVolume
-    Boolean noNoNormalization
-    Boolean plotPlotAbundances
-    String labelsLabels
-    String descDesc
-    String? imagesImages
+    String? input_dir
+    String? output_dir
+    String? gold_standard_file
+    String? yaml
+    String? volume
+    Boolean? no_normalization
+    Boolean? plot_abundances
+    String? labels
+    String? desc
+    String images
   }
   command <<<
     opal_workflow.py \
-      ~{imagesImages} \
-      ~{if defined(inputInputDir) then ("--input_dir " +  '"' + inputInputDir + '"') else ""} \
-      ~{if defined(outputOutputDir) then ("--output_dir " +  '"' + outputOutputDir + '"') else ""} \
-      ~{if defined(goldGoldStandardFile) then ("--gold_standard_file " +  '"' + goldGoldStandardFile + '"') else ""} \
-      ~{if defined(yamlYaml) then ("--yaml " +  '"' + yamlYaml + '"') else ""} \
-      ~{if defined(volumeVolume) then ("--volume " +  '"' + volumeVolume + '"') else ""} \
-      ~{true="--no_normalization" false="" noNoNormalization} \
-      ~{true="--plot_abundances" false="" plotPlotAbundances} \
-      ~{if defined(labelsLabels) then ("--labels " +  '"' + labelsLabels + '"') else ""} \
-      ~{if defined(descDesc) then ("--desc " +  '"' + descDesc + '"') else ""}
+      ~{images} \
+      ~{if defined(input_dir) then ("--input_dir " +  '"' + input_dir + '"') else ""} \
+      ~{if defined(output_dir) then ("--output_dir " +  '"' + output_dir + '"') else ""} \
+      ~{if defined(gold_standard_file) then ("--gold_standard_file " +  '"' + gold_standard_file + '"') else ""} \
+      ~{if defined(yaml) then ("--yaml " +  '"' + yaml + '"') else ""} \
+      ~{if defined(volume) then ("--volume " +  '"' + volume + '"') else ""} \
+      ~{true="--no_normalization" false="" no_normalization} \
+      ~{true="--plot_abundances" false="" plot_abundances} \
+      ~{if defined(labels) then ("--labels " +  '"' + labels + '"') else ""} \
+      ~{if defined(desc) then ("--desc " +  '"' + desc + '"') else ""}
   >>>
+  parameter_meta {
+    input_dir: "Input directory containing gzipped FASTQ files"
+    output_dir: "Output directory"
+    gold_standard_file: "Gold standard file"
+    yaml: "Bioboxes YAML file (default: INPUT_DIR/biobox.yaml)"
+    volume: "Docker volume"
+    no_normalization: "Do not normalize samples"
+    plot_abundances: "Plot abundances in the gold standard"
+    labels: "Comma-separated names of profilers to be shown in OPAL"
+    desc: "Description for HTML page"
+    images: "Docker images (bioboxes) of profilers"
+  }
 }

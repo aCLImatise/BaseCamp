@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: FilterReads.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FilterReads.py.cwl
 inputs:
-- id: i
+- id: name_input_qseqfastqfastasequence
   doc: Name of the input qseq/fastq/fasta/sequence file
   type: File
   inputBinding:
     prefix: -i
-- id: o
+- id: name_output_file
   doc: Name of the output file
   type: File
   inputBinding:
     prefix: -o
-- id: k
+- id: would_filter_reads
   doc: Would not filter low quality reads if specified, only applied for qseq format
   type: boolean
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNAup.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAup.cwl
 inputs:
 - id: detailed_help
   doc: Print help, including all details and hidden options, and exit
@@ -42,6 +42,27 @@ inputs:
   type: string
   inputBinding:
     prefix: --contributions
+- id: window
+  doc: Determine the maximal length of the region of interaction (default=`25')
+  type: long
+  inputBinding:
+    prefix: --window
+- id: include_both
+  doc: Include the probability of unpaired regions in both (b) RNAs. By default only
+    the probability of being unpaired in the longer RNA (target) is used. (default=off)
+  type: boolean
+  inputBinding:
+    prefix: --include_both
+- id: extend_five
+  doc: Extend the region of interaction in the target to some residues on the 5' side
+  type: long
+  inputBinding:
+    prefix: --extend5
+- id: extend_three
+  doc: Extend the region of interaction in the target to some residues on the 3' side
+  type: long
+  inputBinding:
+    prefix: --extend3
 - id: interaction_pairwise
   doc: Activate pairwise interaction mode (default=off)
   type: boolean
@@ -52,6 +73,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --interaction_first
+- id: temp
+  doc: Rescale energy parameters to a temperature of temp C. Default is 37C.
+  type: string
+  inputBinding:
+    prefix: --temp
+- id: no_tetra
+  doc: Do not include special tabulated stabilizing energies for tri-, tetra- and
+    hexaloop hairpins. Mostly for testing. (default=off)
+  type: boolean
+  inputBinding:
+    prefix: --noTetra
 - id: dangles
   doc: How to treat "dangling end" energies for bases adjacent to helices in free
     ends and multi-loops (default=`2')

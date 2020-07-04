@@ -2,12 +2,16 @@ version 1.0
 
 task AnviScriptGenProgramsNetwork {
   input {
-    File outputOutputFile
-    String programProgramNamesToFocus
+    File? output_file
+    String? program_names_to_focus
   }
   command <<<
     anvi-script-gen-programs-network \
-      ~{if defined(outputOutputFile) then ("--output-file " +  '"' + outputOutputFile + '"') else ""} \
-      ~{if defined(programProgramNamesToFocus) then ("--program-names-to-focus " +  '"' + programProgramNamesToFocus + '"') else ""}
+      ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
+      ~{if defined(program_names_to_focus) then ("--program-names-to-focus " +  '"' + program_names_to_focus + '"') else ""}
   >>>
+  parameter_meta {
+    output_file: "File path to store results."
+    program_names_to_focus: "Comma-spearated list of program names to focus Mostly for debugging purposes."
+  }
 }

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: svict.cwl
+id: ../../../../home/ubuntu/BiocondaCli/svict.cwl
 inputs:
-- id: svc_it
-  doc: -- Structural Variant in ctDNA Sequencing Data
-  type: string
-  inputBinding:
-    position: 0
 - id: i
   doc: ''
   type: boolean
@@ -16,6 +11,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -r
+- id: svc_it
+  doc: -- Structural Variant in ctDNA Sequencing Data
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

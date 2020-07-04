@@ -2,60 +2,67 @@ version 1.0
 
 task Tab2featureGxt.pl {
   input {
-    String nN
-    String oO
-    String gvGv
-    String dD
-    String cC
-    Boolean cC
-    String csCs
-    String mcMc
-    Boolean mcMc
-    String zeroZeroC
-    String mincMinc
-    String maxMaxC
-    Boolean mincMinc
-    Boolean maxMaxC
-    Boolean zeroZeroC
-    String mM
-    String lL
-    String lhLh
-    Boolean fixedFixedOrder
-    Boolean dtDt
-    String fpFp
-    Boolean afAf
-    Boolean aAI
-    Boolean vV
-    String chrChrStarts
-    String chrChrEnds
+    String? name_chromosome_track
+    String? _organism
+    String? gv
+    String? track_description_tabs
+    String? cs
+    String? zero_c
+    String? minc
+    String? max_c
+    String? display_mode_types
+    String? location_display_mode
+    String? lh
+    Boolean? fixed_order
+    Boolean? dt
+    String? fp
+    Boolean? af
+    Boolean? a_i
+    Boolean? _feature_vector
+    String? chr_starts
+    String? chr_ends
   }
   command <<<
     tab2feature_gxt.pl \
-      ~{if defined(nN) then ("-n " +  '"' + nN + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{if defined(gvGv) then ("-gv " +  '"' + gvGv + '"') else ""} \
-      ~{if defined(dD) then ("-d " +  '"' + dD + '"') else ""} \
-      ~{if defined(cC) then ("-c " +  '"' + cC + '"') else ""} \
-      ~{true="-c" false="" cC} \
-      ~{if defined(csCs) then ("-cs " +  '"' + csCs + '"') else ""} \
-      ~{if defined(mcMc) then ("-mc " +  '"' + mcMc + '"') else ""} \
-      ~{true="-mc" false="" mcMc} \
-      ~{if defined(zeroZeroC) then ("-zeroc " +  '"' + zeroZeroC + '"') else ""} \
-      ~{if defined(mincMinc) then ("-minc " +  '"' + mincMinc + '"') else ""} \
-      ~{if defined(maxMaxC) then ("-maxc " +  '"' + maxMaxC + '"') else ""} \
-      ~{true="-minc" false="" mincMinc} \
-      ~{true="-maxc" false="" maxMaxC} \
-      ~{true="-zeroc" false="" zeroZeroC} \
-      ~{if defined(mM) then ("-m " +  '"' + mM + '"') else ""} \
-      ~{if defined(lL) then ("-l " +  '"' + lL + '"') else ""} \
-      ~{if defined(lhLh) then ("-lh " +  '"' + lhLh + '"') else ""} \
-      ~{true="-fixed_order" false="" fixedFixedOrder} \
-      ~{true="-dt" false="" dtDt} \
-      ~{if defined(fpFp) then ("-fp " +  '"' + fpFp + '"') else ""} \
-      ~{true="-af" false="" afAf} \
-      ~{true="-ai" false="" aAI} \
-      ~{true="-v" false="" vV} \
-      ~{if defined(chrChrStarts) then ("-chr_starts " +  '"' + chrChrStarts + '"') else ""} \
-      ~{if defined(chrChrEnds) then ("-chr_ends " +  '"' + chrChrEnds + '"') else ""}
+      ~{if defined(name_chromosome_track) then ("-n " +  '"' + name_chromosome_track + '"') else ""} \
+      ~{if defined(_organism) then ("-o " +  '"' + _organism + '"') else ""} \
+      ~{if defined(gv) then ("-gv " +  '"' + gv + '"') else ""} \
+      ~{if defined(track_description_tabs) then ("-d " +  '"' + track_description_tabs + '"') else ""} \
+      ~{if defined(cs) then ("-cs " +  '"' + cs + '"') else ""} \
+      ~{if defined(zero_c) then ("-zeroc " +  '"' + zero_c + '"') else ""} \
+      ~{if defined(minc) then ("-minc " +  '"' + minc + '"') else ""} \
+      ~{if defined(max_c) then ("-maxc " +  '"' + max_c + '"') else ""} \
+      ~{if defined(display_mode_types) then ("-m " +  '"' + display_mode_types + '"') else ""} \
+      ~{if defined(location_display_mode) then ("-l " +  '"' + location_display_mode + '"') else ""} \
+      ~{if defined(lh) then ("-lh " +  '"' + lh + '"') else ""} \
+      ~{true="-fixed_order" false="" fixed_order} \
+      ~{true="-dt" false="" dt} \
+      ~{if defined(fp) then ("-fp " +  '"' + fp + '"') else ""} \
+      ~{true="-af" false="" af} \
+      ~{true="-ai" false="" a_i} \
+      ~{true="-v" false="" _feature_vector} \
+      ~{if defined(chr_starts) then ("-chr_starts " +  '"' + chr_starts + '"') else ""} \
+      ~{if defined(chr_ends) then ("-chr_ends " +  '"' + chr_ends + '"') else ""}
   >>>
+  parameter_meta {
+    name_chromosome_track: ":          Name of the chromosome track (default: Features )"
+    _organism: ":           Organism"
+    gv: ":          Genome Version (default: NA)"
+    track_description_tabs: ":          Track description (Tabs will be converted to spaces, default: empty)"
+    cs: ":         Fix the max color for features that contain words from the list to colors specified in the list. The format of list is: <str1;color1;...> for specifying that features whose name contain str1 are set to color1"
+    zero_c: ":       Fix the zero color intensity for all features to be num"
+    minc: ":        Fix the min color intensity for all features to be num"
+    max_c: ":        Fix the max color intensity for all features to be num"
+    display_mode_types: ":           Display mode (Full/Packed/Dense/By Types) (default: By Types)"
+    location_display_mode: ":           Location Display mode (Color gradient/Filled box/Unfilled box/Filled oval/Unfilled oval) (default: Color gradient)"
+    lh: ":          Location height (default: 10)"
+    fixed_order: ":       Use a fixed ordering on the feature types"
+    dt: ":                Display track information"
+    fp: ":          Footer pixels (spacing below the track)."
+    af: ":                Add the id of the feature to the name/id of the feature"
+    a_i: ":                Add a counter id to each instance"
+    _feature_vector: ":                 Feature vector"
+    chr_starts: "Chromosome start locations (optional format: <chr_name>;<start>...)"
+    chr_ends: "Chromosome end locations (optional format: <chr_name>;<end>...)"
+  }
 }

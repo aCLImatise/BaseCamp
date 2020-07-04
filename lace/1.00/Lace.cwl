@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: Lace.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Lace.py.cwl
 inputs:
-- id: genome_file
-  doc: The name of the fasta file containing all transcripts
-  type: string
-  inputBinding:
-    position: 0
-- id: cluster_file
-  doc: The name of the text file with the transcript to cluster mapping
-  type: string
-  inputBinding:
-    position: 1
 - id: cores
   doc: The number of cores you wish to run the job on (default = 1)
   type: string
@@ -38,6 +28,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --outputDir
+- id: genome_file
+  doc: The name of the fasta file containing all transcripts
+  type: string
+  inputBinding:
+    position: 0
+- id: cluster_file
+  doc: The name of the text file with the transcript to cluster mapping
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

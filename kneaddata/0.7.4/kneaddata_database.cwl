@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: kneaddata_database.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kneaddata_database.cwl
 inputs:
 - id: available
   doc: print the available databases

@@ -1,31 +1,21 @@
 class: CommandLineTool
-id: BLASTN.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/BLASTN.py.cwl
 inputs:
-- id: python
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: blast_npy
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: blastn_path
   doc: ''
   type: string
   inputBinding:
-    position: 2
+    position: 0
 - id: query_file
   doc: ''
   type: string
   inputBinding:
-    position: 3
+    position: 1
 - id: results_file
   doc: ''
   type: string
   inputBinding:
-    position: 4
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: show_coords.cwl
+id: ../../../../home/ubuntu/BiocondaCli/show_coords.cwl
 inputs:
 - id: delta_file
   doc: ''

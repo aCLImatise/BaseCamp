@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ustacks.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ustacks.cwl
 inputs:
 - id: keep_high_cov
   doc: ': disable the algorithm that removes highly-repetitive stacks and nearby errors.'

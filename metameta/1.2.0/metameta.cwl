@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: metameta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/metameta.cwl
 inputs:
 - id: profile
   doc: "Name of profile to use for configuring Snakemake. Snakemake will search for\
@@ -118,7 +118,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --rulegraph
-- id: d3dag
+- id: d_three_dag
   doc: Print the DAG in D3.js compatible JSON format.
   type: boolean
   inputBinding:
@@ -503,8 +503,8 @@ inputs:
   inputBinding:
     prefix: --runtime-profile
 - id: mode
-  doc: '{0,1,2}        Set execution mode of Snakemake (internal use only).'
-  type: boolean
+  doc: Set execution mode of Snakemake (internal use only).
+  type: string
   inputBinding:
     prefix: --mode
 - id: bash_completion

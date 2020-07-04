@@ -1,17 +1,12 @@
 class: CommandLineTool
-id: Circle_Map_Simulate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Circle_Map_Simulate.cwl
 inputs:
-- id: bam2bam
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: g
+- id: genome_fasta_file
   doc: Genome fasta file (Needs to be indexed with samtools faidx)
   type: boolean
   inputBinding:
     prefix: -g
-- id: n
+- id: _readnumber_number
   doc: ', --read-number    Number of reads to simulate'
   type: boolean
   inputBinding:
@@ -26,33 +21,33 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -dir
-- id: b
+- id: _basename_fastq
   doc: ', --base-name      Fastq output basename'
   type: boolean
   inputBinding:
     prefix: -b
-- id: s
+- id: _skipregion_regions
   doc: ', --skip-region    Regions of the genome to skip the simulation. The input
     needs to be in bed format'
   type: boolean
   inputBinding:
     prefix: -s
-- id: r
+- id: _readlength_read
   doc: ', --read-length    Read length to simulate'
   type: boolean
   inputBinding:
     prefix: -r
-- id: m
+- id: _meaninsert_mean
   doc: ', --mean-insert    Mean of the insert size distribution'
   type: boolean
   inputBinding:
     prefix: -m
-- id: c
+- id: _meancoverage_mean
   doc: ', --mean-coverage  Mean sequencing coverage within the eccDNA coordinates'
   type: boolean
   inputBinding:
     prefix: -c
-- id: p
+- id: _processes_number
   doc: ', --processes      Number of parallel processes to use'
   type: boolean
   inputBinding:
@@ -62,19 +57,19 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --variants
-- id: s
+- id: _substitution_fraction
   doc: ', --substitution   Fraction of base substitutions to introduce on the genome.
     Default: 0.0001'
   type: boolean
   inputBinding:
     prefix: -S
-- id: i
+- id: _indels_fraction
   doc: ', --Indels         Fraction of indels to introduce on the genome. Default:
     0.001'
   type: boolean
   inputBinding:
     prefix: -I
-- id: j
+- id: _javamemory_java
   doc: ', --java_memory    Java memory allocation, required for mutating the genome.
     Default: -Xmx16g'
   type: boolean
@@ -85,7 +80,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --error
-- id: i
+- id: _instrument_sequecing
   doc: ', --instrument     Illumina sequecing instrument to simulate reads from (Default
     HiSeq 2500)'
   type: boolean
@@ -97,7 +92,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ir
-- id: ir2
+- id: ir_two
   doc: ', --insRate2     the second-read insertion rate (default: 0.00015). Requires
     -e'
   type: boolean
@@ -109,12 +104,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -dr
-- id: dr2
+- id: dr_two
   doc: ', --delRate2     the second-read deletion rate (default: 0.00023). Requires
     -e'
   type: boolean
   inputBinding:
     prefix: -dr2
+- id: circle_map
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: bam_two_bam
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

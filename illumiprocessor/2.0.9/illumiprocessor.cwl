@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: illumiprocessor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/illumiprocessor.cwl
 inputs:
 - id: input
   doc: 'The input directory of raw reads to trim. (default: None)'
@@ -18,7 +18,7 @@ inputs:
   inputBinding:
     prefix: --config
 - id: trim_mo_matic
-  doc: 'The path to the trimmomatic-0.XX.jar file. (default: /tmp/tmpk1sf2i_q/bin/trimmomatic)'
+  doc: 'The path to the trimmomatic-0.XX.jar file. (default: /tmp/tmp0e300ahp/bin/trimmomatic)'
   type: string
   inputBinding:
     prefix: --trimmomatic
@@ -37,12 +37,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --cores
-- id: r1_pattern
+- id: r_one_pattern
   doc: 'An optional regex pattern to find R1 reads. (default: None)'
   type: string
   inputBinding:
     prefix: --r1-pattern
-- id: r2_pattern
+- id: r_two_pattern
   doc: 'An optional regex pattern to find R2 reads. (default: None)'
   type: string
   inputBinding:

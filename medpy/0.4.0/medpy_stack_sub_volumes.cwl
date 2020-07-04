@@ -1,47 +1,38 @@
 class: CommandLineTool
-id: medpy_stack_sub_volumes.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/medpy_stack_sub_volumes.py_images.cwl
 inputs:
-- id: dimension
-  doc: The dimension in which direction to stack (starting from 0:x).
-  type: string
-  inputBinding:
-    position: 0
-- id: output
-  doc: The output image.
-  type: string
-  inputBinding:
-    position: 1
-- id: images
-  doc: The images to concatenate/stack.
-  type: string
-  inputBinding:
-    position: 2
 - id: f
-  doc: Set this flag to silently override files that exist.
+  doc: ''
   type: boolean
   inputBinding:
     prefix: -f
 - id: v
-  doc: Display more information.
+  doc: ''
   type: boolean
   inputBinding:
     prefix: -v
 - id: d
-  doc: Display debug information.
+  doc: ''
   type: boolean
   inputBinding:
     prefix: -d
 - id: z
-  doc: If supplied, all images containing only 1s are treated as empty image.
+  doc: ''
   type: boolean
   inputBinding:
     prefix: -z
 - id: r
-  doc: Stack in resversed order as how the files are supplied.
+  doc: ''
   type: boolean
   inputBinding:
     prefix: -r
+- id: me_dpy_stack_sub_volumes_do_tpy
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - medpy_stack_sub_volumes.py
+- images

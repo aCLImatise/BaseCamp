@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: cd_hit_est.cwl
-inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
+id: ../../../../home/ubuntu/BiocondaCli/cd_hit_est.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

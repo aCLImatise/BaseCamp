@@ -2,22 +2,31 @@ version 1.0
 
 task ReadreduceFASTA {
   input {
-    String oO
-    String aA
-    String lL
-    String dD
-    Int sS
-    Boolean qQ
-    Boolean jJ
+    String? o
+    String? a
+    String? l
+    String? d
+    Int? s
+    Boolean? q
+    Boolean? j
   }
   command <<<
     readreduce FASTA \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{if defined(aA) then ("-a " +  '"' + aA + '"') else ""} \
-      ~{if defined(lL) then ("-l " +  '"' + lL + '"') else ""} \
-      ~{if defined(dD) then ("-d " +  '"' + dD + '"') else ""} \
-      ~{if defined(sS) then ("-s " +  '"' + sS + '"') else ""} \
-      ~{true="-q" false="" qQ} \
-      ~{true="-j" false="" jJ}
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(a) then ("-a " +  '"' + a + '"') else ""} \
+      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
+      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
+      ~{true="-q" false="" q} \
+      ~{true="-j" false="" j}
   >>>
+  parameter_meta {
+    o: ""
+    a: ""
+    l: ""
+    d: ""
+    s: ""
+    q: ""
+    j: ""
+  }
 }

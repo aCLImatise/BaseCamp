@@ -1,27 +1,17 @@
 class: CommandLineTool
-id: gsutil_rsync.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gsutil_rsync.cwl
 inputs:
-- id: src_url
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: dst_url
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: a
   doc: ''
   type: boolean
   inputBinding:
     prefix: -a
-- id: c
+- id: var_1
   doc: ''
   type: boolean
   inputBinding:
     prefix: -c
-- id: c
+- id: var_2
   doc: ''
   type: boolean
   inputBinding:

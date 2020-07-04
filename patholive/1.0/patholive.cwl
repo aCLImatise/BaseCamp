@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: patholive.cwl
+id: ../../../../home/ubuntu/BiocondaCli/patholive.cwl
 inputs:
 - id: bcl_dir
   doc: Illumina BaseCalls directory which contains the sequence information of the

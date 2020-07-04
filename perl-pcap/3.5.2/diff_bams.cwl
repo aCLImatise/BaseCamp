@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: diff_bams.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/diff_bams.pl.cwl
 inputs:
 - id: bam_a
   doc: -a    The first BAM|CRAM file.
@@ -31,27 +31,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -man
-- id: bam_a
-  doc: A valid readable BAM file
-  type: boolean
+- id: a
+  doc: ''
+  type: string
   inputBinding:
-    prefix: -bam_a
-- id: bam_b
-  doc: A valid readable BAM file (different to bam_a)
-  type: boolean
+    prefix: -a
+- id: b
+  doc: ''
+  type: string
   inputBinding:
-    prefix: -bam_b
-- id: skip_z
-  doc: As reads with MAPQ zero can end up in multiple locations don't consider them
-    as a mismatch.
-  type: boolean
-  inputBinding:
-    prefix: -skipz
-- id: man
-  doc: Prints the manual page and exits.
-  type: boolean
-  inputBinding:
-    prefix: -man
+    prefix: -b
 outputs: []
 cwlVersion: v1.1
 baseCommand:

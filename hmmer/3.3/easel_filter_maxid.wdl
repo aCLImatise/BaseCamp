@@ -2,12 +2,16 @@ version 1.0
 
 task EaselFilterMaxid {
   input {
-    Boolean optionsOptions
-    String? msaMsaFile
+    Boolean? options
+    String msa_file
   }
   command <<<
     easel filter maxid \
-      ~{msaMsaFile} \
-      ~{true="-options" false="" optionsOptions}
+      ~{msa_file} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    options: ""
+    msa_file: ""
+  }
 }

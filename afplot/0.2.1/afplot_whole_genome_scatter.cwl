@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: afplot_whole_genome_scatter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/afplot_whole_genome_scatter.cwl
 inputs:
 - id: output
   doc: Path to output file  [required]

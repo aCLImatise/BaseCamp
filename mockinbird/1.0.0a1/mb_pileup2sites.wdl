@@ -2,10 +2,13 @@ version 1.0
 
 task MbPileup2sites {
   input {
-    String? pilePileUpFile
+    String pile_up_file
   }
   command <<<
     mb-pileup2sites \
-      ~{pilePileUpFile}
+      ~{pile_up_file}
   >>>
+  parameter_meta {
+    pile_up_file: ""
+  }
 }

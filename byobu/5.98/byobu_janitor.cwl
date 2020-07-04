@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: byobu_janitor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/byobu_janitor.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

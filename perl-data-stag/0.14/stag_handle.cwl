@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: stag_handle.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stag_handle.pl.cwl
 inputs:
 - id: sub
   doc: '|s PERL a perl hashref containing handlers'

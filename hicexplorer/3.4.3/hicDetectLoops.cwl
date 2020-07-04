@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hicDetectLoops.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hicDetectLoops.cwl
 inputs:
 - id: matrix
   doc: The matrix to compute the loop detection on.

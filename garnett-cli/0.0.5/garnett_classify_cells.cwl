@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: garnett_classify_cells.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/garnett_classify_cells.R.cwl
 inputs:
 - id: verbose
   doc: 'Logical. Should progress messages be printed. Default: FASLE.'

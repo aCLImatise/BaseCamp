@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cythonize.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cythonize.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

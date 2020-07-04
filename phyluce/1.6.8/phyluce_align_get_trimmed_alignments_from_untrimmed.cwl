@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_align_get_trimmed_alignments_from_untrimmed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_align_get_trimmed_alignments_from_untrimmed.cwl
 inputs:
 - id: alignments
   doc: 'The directory containing alignments to be trimmed. (default: None)'

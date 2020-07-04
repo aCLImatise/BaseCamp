@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: transabyss_merge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/transabyss_merge.cwl
 inputs:
-- id: path
-  doc: assembly FASTA file(s)
-  type: File
-  inputBinding:
-    position: 0
 - id: mink
   doc: smallest k-mer size
   type: long
@@ -32,7 +27,7 @@ inputs:
   inputBinding:
     prefix: --force
 - id: out
-  doc: output file [/tmp/tmpgojogjh1/transabyss-merged.fa]
+  doc: output file [/tmp/tmptu9me6eo/transabyss-merged.fa]
   type: File
   inputBinding:
     prefix: --out

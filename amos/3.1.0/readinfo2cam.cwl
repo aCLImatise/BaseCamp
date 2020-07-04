@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: readinfo2cam.cwl
+id: ../../../../home/ubuntu/BiocondaCli/readinfo2cam.cwl
 inputs:
 - id: contig_info_file
   doc: ''

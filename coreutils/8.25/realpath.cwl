@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: realpath.cwl
+id: ../../../../home/ubuntu/BiocondaCli/realpath.cwl
 inputs:
 - id: canonicalize_existing
   doc: all components of the path must exist
@@ -41,11 +41,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-symlinks
-- id: zero
+- id: end_output_line
   doc: end each output line with NUL, not newline
   type: boolean
   inputBinding:
     prefix: --zero
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

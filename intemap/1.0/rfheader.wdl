@@ -2,14 +2,19 @@ version 1.0
 
 task Rfheader {
   input {
-    String? refineRefine
-    String? theThe
-    String? headerHeader
+    String refine
+    String the
+    String header
   }
   command <<<
     rfheader \
-      ~{refineRefine} \
-      ~{theThe} \
-      ~{headerHeader}
+      ~{refine} \
+      ~{the} \
+      ~{header}
   >>>
+  parameter_meta {
+    refine: ""
+    the: ""
+    header: ""
+  }
 }

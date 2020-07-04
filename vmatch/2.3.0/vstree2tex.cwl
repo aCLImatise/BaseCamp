@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vstree2tex.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vstree2tex.cwl
 inputs:
 - id: index_name
   doc: ''

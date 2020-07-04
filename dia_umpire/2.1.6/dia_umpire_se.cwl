@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dia_umpire_se.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dia_umpire_se.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

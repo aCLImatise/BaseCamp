@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: qcli_make_rst.cwl
+id: ../../../../home/ubuntu/BiocondaCli/qcli_make_rst.cwl
 inputs:
 - id: input_fps
   doc: the input file(s) to generate rst files for [REQUIRED]

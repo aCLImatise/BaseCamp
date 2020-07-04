@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mmseqs_extractalignedregion.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mmseqs_extractalignedregion.cwl
 inputs:
 - id: extract_mode
   doc: '2               Query 1, Target 2                                           '
@@ -17,7 +17,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --threads
-- id: v
+- id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'
   type: boolean
   inputBinding:

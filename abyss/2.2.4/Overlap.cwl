@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: Overlap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Overlap.cwl
 inputs:
-- id: km_er
+- id: kmer_size
   doc: k-mer size
   type: string
   inputBinding:
@@ -66,12 +66,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gfa
-- id: gfa1
+- id: gfa_one
   doc: output the graph in GFA1 format
   type: boolean
   inputBinding:
     prefix: --gfa1
-- id: gfa2
+- id: gfa_two
   doc: output the graph in GFA2 format
   type: boolean
   inputBinding:
@@ -96,6 +96,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: var_19
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: out_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

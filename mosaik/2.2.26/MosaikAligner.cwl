@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: MosaikAligner.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MosaikAligner.cwl
 inputs:
-- id: m
+- id: alignment_mode_def
   doc: 'alignment mode: [unique, all]. def: all'
   type: string
   inputBinding:

@@ -1,16 +1,36 @@
 class: CommandLineTool
-id: gemBS_map_report.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gemBS_map_report.cwl
 inputs:
-- id: project
-  doc: Output title for report (project name)
+- id: loglevel
+  doc: ''
   type: string
   inputBinding:
-    prefix: --project
-- id: output_dir
-  doc: Output directory to store html mapping report.
-  type: File
+    prefix: --loglevel
+- id: v
+  doc: ''
+  type: boolean
   inputBinding:
-    prefix: --output-dir
+    prefix: -v
+- id: j
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -j
+- id: d
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -d
+- id: var_4
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: var_5
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

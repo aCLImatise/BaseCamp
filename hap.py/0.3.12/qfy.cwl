@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: qfy.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/qfy.py.cwl
 inputs:
-- id: in_vcf
-  doc: Comparison intermediate VCF file to quantify (two column TRUTH/QUERY format)
-  type: string
-  inputBinding:
-    position: 0
 - id: adjust_conf_regions
   doc: When hap.py was run with --adjust-conf-regions, on the original VCF, then quantify
     needs the truthset VCF in order to correctly reproduce the results. This switch
@@ -142,6 +137,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: in_vcf
+  doc: Comparison intermediate VCF file to quantify (two column TRUTH/QUERY format)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

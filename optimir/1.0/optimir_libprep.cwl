@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: optimir_libprep.cwl
+id: ../../../../home/ubuntu/BiocondaCli/optimir_libprep.cwl
 inputs:
 - id: vcf
   doc: Full path of the input VCF file.
@@ -18,7 +18,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --hairpinsFasta
-- id: gff3
+- id: gff_three
   doc: 'Path to the reference library containing miRNAs and pri-miRNAs coordinates
     [default: miRBase v21, GRCh38 coordinates]'
   type: string
@@ -29,7 +29,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --dirOutput
-- id: bowtie2_build
+- id: bowtie_two_build
   doc: 'Provide path to the bowtie2 index builder binary [default: from $PATH]'
   type: string
   inputBinding:

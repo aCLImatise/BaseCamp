@@ -2,16 +2,28 @@ version 1.0
 
 task Predict.py {
   input {
-    String votersVoters
-    String? ptPtModels
-    String? outOutDir
-    String? annotationAnnotationMatrix
+    String? k
+    String phenotypes
+    String from
+    String hmmer
+    String pfam
+    String annotation
   }
   command <<<
     predict.py \
-      ~{ptPtModels} \
-      ~{if defined(votersVoters) then ("--voters " +  '"' + votersVoters + '"') else ""} \
-      ~{outOutDir} \
-      ~{annotationAnnotationMatrix}
+      ~{phenotypes} \
+      ~{from} \
+      ~{hmmer} \
+      ~{pfam} \
+      ~{annotation} \
+      ~{if defined(k) then ("-k " +  '"' + k + '"') else ""}
   >>>
+  parameter_meta {
+    k: ""
+    phenotypes: ""
+    from: ""
+    hmmer: ""
+    pfam: ""
+    annotation: ""
+  }
 }

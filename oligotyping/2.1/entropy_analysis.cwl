@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: entropy_analysis.cwl
+id: ../../../../home/ubuntu/BiocondaCli/entropy_analysis.cwl
 inputs:
-- id: alignment
-  doc: Alignment file that contains all samples and sequences in FASTA format
-  type: string
-  inputBinding:
-    position: 0
 - id: unique_d
   doc: 'When set, entropy computation will assume that the reads in FASTA file are
     unique. Frequency information of unique reads must be stored in the deflines.
@@ -36,6 +31,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-display
+- id: qual_scores_file
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --qual-scores-file
+- id: alignment
+  doc: Alignment file that contains all samples and sequences in FASTA format
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

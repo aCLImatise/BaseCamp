@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: kcprototest.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kcprototest.cwl
 inputs:
-- id: order
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: rnum
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: tree
   doc: ''
   type: boolean
@@ -36,6 +26,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -tran
+- id: order
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: rnum
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

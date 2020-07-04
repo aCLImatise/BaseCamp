@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: clstr_merge.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clstr_merge.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

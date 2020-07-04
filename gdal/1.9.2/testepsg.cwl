@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: testepsg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/testepsg.cwl
 inputs:
-- id: t
+- id: transform_coordinate_target
   doc: ': transform a coordinate from source GCS/PCS to target GCS/PCS'
   type: boolean
   inputBinding:

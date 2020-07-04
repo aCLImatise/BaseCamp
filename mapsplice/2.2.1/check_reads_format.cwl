@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: check_reads_format.cwl
+id: ../../../../home/ubuntu/BiocondaCli/check_reads_format.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

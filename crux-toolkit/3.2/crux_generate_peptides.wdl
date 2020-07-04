@@ -2,10 +2,13 @@ version 1.0
 
 task CruxGeneratePeptides {
   input {
-    String? proteinProteinFastAFile
+    String protein_fast_a_file
   }
   command <<<
     crux generate-peptides \
-      ~{proteinProteinFastAFile}
+      ~{protein_fast_a_file}
   >>>
+  parameter_meta {
+    protein_fast_a_file: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: miraconvert.cwl
+id: ../../../../home/ubuntu/BiocondaCli/miraconvert.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: daisy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/daisy.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

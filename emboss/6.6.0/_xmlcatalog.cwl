@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _xmlcatalog.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_xmlcatalog.cwl
 inputs:
 - id: sgml
   doc: ': handle SGML Super catalogs for --add and --del'
@@ -16,16 +16,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --create
-- id: add
-  doc: "'type' 'orig' 'replace' : add an XML entry"
-  type: boolean
-  inputBinding:
-    prefix: --add
-- id: add
-  doc: "'entry' : add an SGML entry"
-  type: boolean
-  inputBinding:
-    prefix: --add
 - id: del
   doc: "'values' : remove values"
   type: boolean

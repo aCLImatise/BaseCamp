@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: sample_reads.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sample_reads.cwl
 inputs:
-- id: sim_reads
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: re_ffa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: read_sfa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: depth
   doc: (=30)                  sequencing depth of the sample
   type: string
@@ -51,6 +36,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --print_correct
+- id: sim_reads
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: ref_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: reads_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

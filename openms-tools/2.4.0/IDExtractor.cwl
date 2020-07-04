@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: IDExtractor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/IDExtractor.cwl
 inputs:
 - id: in
   doc: "*                        Input file (valid formats: 'idXML')"

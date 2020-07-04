@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: idba.cwl
+id: ../../../../home/ubuntu/BiocondaCli/idba.cwl
 inputs:
-- id: i_dba_ud
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: out
   doc: (=out)                   output directory
   type: string
@@ -16,22 +11,22 @@ inputs:
   type: string
   inputBinding:
     prefix: --read
-- id: read_level_2
+- id: read_level_two
   doc: paired-end reads fasta for second level scaffolds
   type: string
   inputBinding:
     prefix: --read_level_2
-- id: read_level_3
+- id: read_level_three
   doc: paired-end reads fasta for third level scaffolds
   type: string
   inputBinding:
     prefix: --read_level_3
-- id: read_level_4
+- id: read_level_four
   doc: paired-end reads fasta for fourth level scaffolds
   type: string
   inputBinding:
     prefix: --read_level_4
-- id: read_level_5
+- id: read_level_five
   doc: paired-end reads fasta for fifth level scaffolds
   type: string
   inputBinding:
@@ -117,6 +112,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --pre_correction
+- id: i_dba_ud
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: skesa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/skesa.cwl
 inputs:
-- id: v
+- id: _print_version
   doc: '[ --version ]              Print version'
   type: boolean
   inputBinding:

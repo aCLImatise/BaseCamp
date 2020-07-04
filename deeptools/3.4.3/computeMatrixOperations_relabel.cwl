@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: computeMatrixOperations_relabel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/computeMatrixOperations_relabel.cwl
 inputs:
 - id: matrix_file
   doc: 'Matrix file from the computeMatrix tool. (default: None)'
@@ -23,6 +23,26 @@ inputs:
   type: string[]
   inputBinding:
     prefix: --sampleLabels
+- id: an
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: example
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: usage
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: is
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

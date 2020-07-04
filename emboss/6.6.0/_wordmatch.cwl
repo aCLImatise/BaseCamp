@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _wordmatch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_wordmatch.cwl
 inputs:
 - id: word_size
   doc: integer    [4] Word size (Integer 2 or more)

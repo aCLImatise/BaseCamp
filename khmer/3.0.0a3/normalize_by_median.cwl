@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: normalize_by_median.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/normalize_by_median.py.cwl
 inputs:
-- id: input_sequence_filename
-  doc: Input FAST[AQ] sequence filename.
-  type: string
-  inputBinding:
-    position: 0
 - id: cut_off
   doc: 'when the median k-mer coverage level is above this number the read is not
     kept. (default: 20)'
@@ -69,6 +64,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --bzip
+- id: info
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --info
+- id: k
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -k
+- id: input_sequence_filename
+  doc: Input FAST[AQ] sequence filename.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

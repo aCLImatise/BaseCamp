@@ -2,12 +2,16 @@ version 1.0
 
 task RnazAnnotate.pl {
   input {
-    Boolean bedBed
-    File? fileFile
+    Boolean? bed
+    File? file
   }
   command <<<
     rnazAnnotate.pl \
-      ~{fileFile} \
-      ~{true="--bed" false="" bedBed}
+      ~{file} \
+      ~{true="--bed" false="" bed}
   >>>
+  parameter_meta {
+    bed: "Set the annotation BED file with this option."
+    file: ""
+  }
 }

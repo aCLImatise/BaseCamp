@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hts_nim_tools.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hts_nim_tools.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

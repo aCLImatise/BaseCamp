@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: chado_query.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chado_query.cwl
 inputs:
-- id: dbname
-  doc: name of the database
-  type: string
-  inputBinding:
-    position: 0
 - id: verbose
   doc: verbose mode
   type: boolean
@@ -51,6 +46,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --query
+- id: dbname
+  doc: name of the database
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: abyss_bloom.cwl
+id: ../../../../home/ubuntu/BiocondaCli/abyss_bloom.cwl
 inputs:
 - id: km_er
   doc: the size of a k-mer [<=128]
@@ -92,7 +92,7 @@ inputs:
   inputBinding:
     prefix: --illumina-quality
 - id: window
-  doc: /N           build a bloom filter for subwindow M of N
+  doc: build a bloom filter for subwindow M of N
   type: string
   inputBinding:
     prefix: --window

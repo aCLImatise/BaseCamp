@@ -1,17 +1,6 @@
 class: CommandLineTool
-id: watchmedo_auto_restart.cwl
+id: ../../../../home/ubuntu/BiocondaCli/watchmedo_auto_restart.cwl
 inputs:
-- id: command
-  doc: Long-running command to run in a subprocess.
-  type: string
-  inputBinding:
-    position: 0
-- id: arg
-  doc: 'Command arguments. Note: Use -- before the command arguments, otherwise watchmedo
-    will try to interpret them. (default: -)'
-  type: string
-  inputBinding:
-    position: 1
 - id: directory
   doc: 'Directory to watch. Use another -d or --directory option for each directory.
     (default: -)'
@@ -54,6 +43,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --kill-after
+- id: command
+  doc: Long-running command to run in a subprocess.
+  type: string
+  inputBinding:
+    position: 0
+- id: arg
+  doc: 'Command arguments. Note: Use -- before the command arguments, otherwise watchmedo
+    will try to interpret them. (default: -)'
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

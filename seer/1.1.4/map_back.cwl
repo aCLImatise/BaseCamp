@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: map_back.cwl
+id: ../../../../home/ubuntu/BiocondaCli/map_back.cwl
 inputs:
-- id: k
+- id: arg_seer_file
   doc: '[ --kmers ] arg       seer kmer output file'
   type: boolean
   inputBinding:
     prefix: -k
-- id: r
+- id: arg_file_tab
   doc: '[ --references ] arg  file with tab separated reference name and fasta  file'
   type: boolean
   inputBinding:

@@ -1,42 +1,32 @@
 class: CommandLineTool
-id: ssu_cmsearch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ssu_cmsearch.cwl
 inputs:
-- id: cm_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: sequence_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: o
+- id: direct_output_file
   doc: ': direct output to file <f>, not stdout'
   type: string
   inputBinding:
     prefix: -o
-- id: g
+- id: configure_cmhmm_glocal
   doc: ': configure CM/HMM for glocal alignment [default: local]'
   type: boolean
   inputBinding:
     prefix: -g
-- id: p
+- id: append_posterior_probabilities
   doc: ': append posterior probabilities to hit alignments'
   type: boolean
   inputBinding:
     prefix: -p
-- id: x
+- id: annotate_noncompensatory_bps
   doc: ": annotate non-compensatory bps in output alignments with 'x'"
   type: boolean
   inputBinding:
     prefix: -x
-- id: v
+- id: annotate_negative_bps
   doc: ": annotate negative scoring non-canonical bps with 'v'"
   type: boolean
   inputBinding:
     prefix: -v
-- id: z
+- id: set_database_size
   doc: ': set Z (database size in *Mb*) to <x> for E-value calculations'
   type: string
   inputBinding:
@@ -91,12 +81,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --viterbi
-- id: e
+- id: use_cutoff_evalue
   doc: ': use cutoff E-value of <x> for final round of search  [1.0]  (x>0.)'
   type: string
   inputBinding:
     prefix: -E
-- id: t
+- id: use_bit_score
   doc: ': use cutoff bit score of <x> for final round of search  [0.0]'
   type: string
   inputBinding:
@@ -246,6 +236,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --dna
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: cm_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: sequence_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

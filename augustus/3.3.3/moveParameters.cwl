@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: moveParameters.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/moveParameters.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

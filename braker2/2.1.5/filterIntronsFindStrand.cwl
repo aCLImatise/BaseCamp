@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filterIntronsFindStrand.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filterIntronsFindStrand.pl.cwl
 inputs:
 - id: allowed
   doc: ',gcag,atac        Allowed acceptor and donor splice site types'
@@ -22,6 +22,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --introns
+- id: genome_dot_fa
+  doc: DNA file in fasta format
+  type: string
+  inputBinding:
+    position: 0
+- id: introns_dot_gff
+  doc: corresponding introns file in gff format
+  type: long
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

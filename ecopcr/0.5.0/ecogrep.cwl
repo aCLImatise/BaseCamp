@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ecogrep.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ecogrep.cwl
 inputs:
-- id: filename
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: d
   doc: ''
   type: string
@@ -31,6 +26,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -v
+- id: file_name
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

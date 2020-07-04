@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ccs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ccs.cwl
 inputs:
 - id: min_passes
   doc: INT    Minimum number of full-length subreads required to generate CCS for
@@ -78,6 +78,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --log-file
+- id: in_dot_sub_reads_dot_bam_vertical_line_xml
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: out_dot_ccs_dot_bam_vertical_line_fast_q_do_tgz_vertical_line_xml
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

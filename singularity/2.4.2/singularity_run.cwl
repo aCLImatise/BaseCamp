@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: singularity_run.cwl
+id: ../../../../home/ubuntu/BiocondaCli/singularity_run.cwl
 inputs:
 - id: app
   doc: Run an app's runscript instead of the default one
@@ -91,6 +91,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --writable
+- id: singularity
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

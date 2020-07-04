@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bedpetobed12.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedpetobed12.cwl
 inputs:
 - id: bed_pe
   doc: BEDPE input file

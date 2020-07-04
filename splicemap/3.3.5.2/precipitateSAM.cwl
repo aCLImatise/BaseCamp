@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: precipitateSAM.cwl
+id: ../../../../home/ubuntu/BiocondaCli/precipitateSAM.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

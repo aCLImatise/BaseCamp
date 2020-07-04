@@ -2,30 +2,43 @@ version 1.0
 
 task QueryTestlists {
   input {
-    Boolean debugDebug
-    Boolean verboseVerbose
-    Boolean silentSilent
-    Boolean countCount
-    String listList
-    Boolean showShowOptions
-    Boolean defineDefineTestTypes
-    String xmlXmlCategory
-    String xmlXmlMachine
-    String xmlXmlCompiler
-    String xmlXmlTestList
+    Boolean? debug
+    Boolean? verbose
+    Boolean? silent
+    Boolean? count
+    String? list
+    Boolean? show_options
+    Boolean? define_test_types
+    String? xml_category
+    String? xml_machine
+    String? xml_compiler
+    String? xml_test_list
   }
   command <<<
     query_testlists \
-      ~{true="--debug" false="" debugDebug} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{true="--silent" false="" silentSilent} \
-      ~{true="--count" false="" countCount} \
-      ~{if defined(listList) then ("--list " +  '"' + listList + '"') else ""} \
-      ~{true="--show-options" false="" showShowOptions} \
-      ~{true="--define-testtypes" false="" defineDefineTestTypes} \
-      ~{if defined(xmlXmlCategory) then ("--xml-category " +  '"' + xmlXmlCategory + '"') else ""} \
-      ~{if defined(xmlXmlMachine) then ("--xml-machine " +  '"' + xmlXmlMachine + '"') else ""} \
-      ~{if defined(xmlXmlCompiler) then ("--xml-compiler " +  '"' + xmlXmlCompiler + '"') else ""} \
-      ~{if defined(xmlXmlTestList) then ("--xml-testlist " +  '"' + xmlXmlTestList + '"') else ""}
+      ~{true="--debug" false="" debug} \
+      ~{true="--verbose" false="" verbose} \
+      ~{true="--silent" false="" silent} \
+      ~{true="--count" false="" count} \
+      ~{if defined(list) then ("--list " +  '"' + list + '"') else ""} \
+      ~{true="--show-options" false="" show_options} \
+      ~{true="--define-testtypes" false="" define_test_types} \
+      ~{if defined(xml_category) then ("--xml-category " +  '"' + xml_category + '"') else ""} \
+      ~{if defined(xml_machine) then ("--xml-machine " +  '"' + xml_machine + '"') else ""} \
+      ~{if defined(xml_compiler) then ("--xml-compiler " +  '"' + xml_compiler + '"') else ""} \
+      ~{if defined(xml_test_list) then ("--xml-testlist " +  '"' + xml_test_list + '"') else ""}
   >>>
+  parameter_meta {
+    debug: "Print debug information (very verbose) to file /tmp/tmpeksbd5_3/query_testlists.log"
+    verbose: "Add additional context (time and file) to log messages"
+    silent: "Print only warnings and error messages"
+    count: "Rather than listing tests, just give counts by category/machine/compiler."
+    list: "Rather than listing tests, list the available options for --xml-category, --xml-machine, or --xml-compiler. (The singular and plural forms are equivalent - so '--list category' is equivalent to '--list categories', etc.)"
+    show_options: "For each test, also show options for that test (wallclock time, memory leak tolerance, etc.). (Has no effect with --list or --count options.)"
+    define_test_types: "At the top of the list of tests, define all of the possible test types. (Has no effect with --list or --count options.)"
+    xml_category: "Only include tests in this category; default is all categories."
+    xml_machine: "Only include tests for this machine; default is all machines."
+    xml_compiler: "Only include tests for this compiler; default is all compilers."
+    xml_test_list: "Path to testlist file from which tests are gathered; default is all files specified in config_files.xml."
+  }
 }

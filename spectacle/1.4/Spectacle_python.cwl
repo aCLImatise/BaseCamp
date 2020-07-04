@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Spectacle_python.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Spectacle_python.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

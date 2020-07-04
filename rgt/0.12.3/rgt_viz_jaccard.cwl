@@ -1,25 +1,25 @@
 class: CommandLineTool
-id: rgt_viz_jaccard.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rgt_viz_jaccard.cwl
 inputs:
-- id: o
+- id: directory_name_output
   doc: 'The directory name for the output files. For example, project name. (default:
     None)'
   type: string
   inputBinding:
     prefix: -o
-- id: r
+- id: file_name_reference
   doc: 'The file name of the reference Experimental Matrix. Multiple references are
     acceptable. (default: None)'
   type: boolean
   inputBinding:
     prefix: -r
-- id: q
+- id: file_name_query
   doc: 'The file name of the query Experimental Matrix. Multiple queries are acceptable.
     (default: None)'
   type: boolean
   inputBinding:
     prefix: -q
-- id: t
+- id: title_shown_default
   doc: 'The title shown on the top of the plot and also the folder name. (default:
     jaccard_test)'
   type: boolean
@@ -30,13 +30,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -rt
-- id: g
+- id: group_data_optional
   doc: "Group the data by any optional column (for example, 'cell') of experimental\
     \ matrix, or None. (default: None)"
   type: string
   inputBinding:
     prefix: -g
-- id: c
+- id: color_data_optional
   doc: "Color the data by any optional column (for example, 'cell') of experimental\
     \ matrix, or None. (default: regions)"
   type: string

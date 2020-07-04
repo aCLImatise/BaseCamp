@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: tb_variant_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tb_variant_filter.cwl
 inputs:
-- id: input_file
-  doc: VCF input file (relative to H37Rv)
-  type: string
-  inputBinding:
-    position: 0
-- id: output_file
-  doc: Output file (VCF format)
-  type: string
-  inputBinding:
-    position: 1
 - id: close_to_in_del_filter
   doc: Mask out single nucleotide variants that are too close to indels
   type: boolean
@@ -48,6 +38,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --snv_only_filter
+- id: region_filter
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --region_filter
 outputs: []
 cwlVersion: v1.1
 baseCommand:

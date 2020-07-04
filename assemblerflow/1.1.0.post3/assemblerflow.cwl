@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: assemblerflow.cwl
+id: ../../../../home/ubuntu/BiocondaCli/assemblerflow.cwl
 inputs:
 - id: debug
   doc: Set log to debug mode

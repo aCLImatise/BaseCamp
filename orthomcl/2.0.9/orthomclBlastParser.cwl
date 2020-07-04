@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: orthomclBlastParser.cwl
+id: ../../../../home/ubuntu/BiocondaCli/orthomclBlastParser.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

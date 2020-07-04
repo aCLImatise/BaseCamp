@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: nanonet2d.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nanonet2d.cwl
 inputs:
-- id: input
-  doc: 'A path to fast5 files. (default: None)'
-  type: string
-  inputBinding:
-    position: 0
-- id: output_prefix
-  doc: Output prefix, output will be in fasta format.
-  type: string
-  inputBinding:
-    position: 1
 - id: no_fast_q
   doc: 'Output fastq rather than fasta. (Default: --no-fastq) (default: False)'
   type: boolean
@@ -76,7 +66,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --jobs
-- id: no_open_cl_2d
+- id: no_open_cl_two_d
   doc: 'Use OpenCL for 2D calls. (Default: --no-opencl_2d) (default: False)'
   type: boolean
   inputBinding:
@@ -92,6 +82,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-fast_decode
+- id: input
+  doc: 'A path to fast5 files. (default: None)'
+  type: string
+  inputBinding:
+    position: 0
+- id: output_prefix
+  doc: Output prefix, output will be in fasta format.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

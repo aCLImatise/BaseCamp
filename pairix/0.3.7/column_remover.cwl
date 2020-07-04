@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: column_remover.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/column_remover.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

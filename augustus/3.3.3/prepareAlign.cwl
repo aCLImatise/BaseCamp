@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: prepareAlign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/prepareAlign.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

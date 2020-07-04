@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: LowMemPeakPickerHiRes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/LowMemPeakPickerHiRes.cwl
 inputs:
 - id: in
   doc: "*        Input profile data file  (valid formats: 'mzML')"
@@ -31,16 +31,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Algorithm parameters section
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
-- id: http
-  doc: ://www.openms.de/documentation/UTILS_LowMemPeakPickerHiRes.html
-  type: boolean
-  inputBinding:
-    prefix: '- http'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

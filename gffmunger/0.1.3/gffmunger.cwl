@@ -1,22 +1,6 @@
 class: CommandLineTool
-id: gffmunger.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gffmunger.cwl
 inputs:
-- id: move_polypeptide_an_not
-  doc: transfer annotations from polypeptides to the feature (e.g. mRNA) they derive
-    from
-  type: string
-  inputBinding:
-    position: 0
-- id: 'null'
-  doc: do nothing
-  type: string
-  inputBinding:
-    position: 1
-- id: command
-  doc: Command(s) defining how the GFF should be munged
-  type: string
-  inputBinding:
-    position: 0
 - id: verbose
   doc: Turn on debugging [False]
   type: boolean
@@ -53,7 +37,7 @@ inputs:
   inputBinding:
     prefix: --output-file
 - id: config
-  doc: Config file [/tmp/tmpy8af47fk/config/gffmunger-config.yml]
+  doc: Config file [/tmp/tmp8mtcfi8e/config/gffmunger-config.yml]
   type: string
   inputBinding:
     prefix: --config
@@ -62,6 +46,22 @@ inputs:
   type: string
   inputBinding:
     prefix: --genometools
+- id: move_polypeptide_an_not
+  doc: transfer annotations from polypeptides to the feature (e.g. mRNA) they derive
+    from
+  type: string
+  inputBinding:
+    position: 0
+- id: 'null'
+  doc: do nothing
+  type: string
+  inputBinding:
+    position: 1
+- id: command
+  doc: Command(s) defining how the GFF should be munged
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: centrifuge_evaluate.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/centrifuge_evaluate.py.cwl
 inputs:
-- id: index_base
-  doc: Centrifuge index
-  type: string
-  inputBinding:
-    position: 0
 - id: index_base_for_read
   doc: index base for read (default same as index base)
   type: string
@@ -56,6 +51,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
+- id: index_base
+  doc: Centrifuge index
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

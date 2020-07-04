@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: simkaMerge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/simkaMerge.cwl
 inputs:
 - id: nb_cores
   doc: "(1 arg) :    number of cores  [default '0']"
@@ -11,11 +11,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -verbose
-- id: nb_cores
-  doc: '(1 arg) :    nb cores'
-  type: boolean
-  inputBinding:
-    prefix: -nb-cores
 - id: km_er_size
   doc: '(1 arg) :    kmer size'
   type: boolean
@@ -36,11 +31,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -partition-id
-- id: nb_cores
-  doc: '(1 arg) :    bank name'
-  type: boolean
-  inputBinding:
-    prefix: -nb-cores
 - id: max_memory
   doc: '(1 arg) :    bank name'
   type: boolean

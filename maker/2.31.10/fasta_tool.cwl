@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fasta_tool.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fasta_tool.cwl
 inputs:
 - id: summary
   doc: For functions that can report data for every sequence (nt_count), use this
@@ -86,7 +86,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --total_length
-- id: n50
+- id: n_five_zero
   doc: Calculate the N-50 (http://en.wikipedia.org/wiki/N50_statistic) of the sequences
     in the file.
   type: boolean

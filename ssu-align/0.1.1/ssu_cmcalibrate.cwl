@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: ssu_cmcalibrate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ssu_cmcalibrate.cwl
 inputs:
-- id: s
+- id: set_rng_seed
   doc: ': set RNG seed to <n> (if 0: one-time arbitrary seed)  [181]'
   type: string
   inputBinding:
@@ -136,6 +136,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --mxsize
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

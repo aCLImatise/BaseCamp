@@ -1,6 +1,23 @@
 class: CommandLineTool
-id: blastToPsl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blastToPsl.cwl
 inputs:
+- id: verbose
+  doc: '- n >= 3 prints each line of file after parsing. n >= 4 dumps the result of
+    each query'
+  type: string
+  inputBinding:
+    prefix: -verbose
+- id: eval
+  doc: n is e-value threshold to filter results. Format can be either an integer,
+    double or 1e-10. Default is no filter.
+  type: string
+  inputBinding:
+    prefix: -eVal
+- id: psl_x
+  doc: '- create PSLX output (includes sequences for blocks)'
+  type: boolean
+  inputBinding:
+    prefix: -pslx
 - id: blast_output
   doc: ''
   type: string
@@ -11,17 +28,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: eval
-  doc: n is e-value threshold to filter results. Format can be either an integer,
-    double or 1e-10. Default is no filter.
-  type: string
-  inputBinding:
-    prefix: -eVal
-- id: create
-  doc: output (includes sequences for blocks)
-  type: string
-  inputBinding:
-    prefix: '- create'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

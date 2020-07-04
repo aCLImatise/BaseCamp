@@ -1,21 +1,26 @@
 class: CommandLineTool
-id: tigmint_arcs_tsv_out_file.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tigmint_arcs_tsv_out_file.cwl
 inputs:
-- id: graph_file
+- id: tig_mint_arcs_tsv
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: out_file
+- id: graph_file
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: fast_a_file
+- id: out_file
   doc: ''
   type: string
   inputBinding:
     position: 2
+- id: fast_a_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,17 +1,12 @@
 class: CommandLineTool
-id: purityEM.cwl
+id: ../../../../home/ubuntu/BiocondaCli/purityEM.cwl
 inputs:
-- id: input
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: o
+- id: output_name_default
   doc: ': the output name; default <stdout>'
   type: string
   inputBinding:
     prefix: -o
-- id: p
+- id: print_best_model
   doc: ': print the best model for each ploidy number'
   type: boolean
   inputBinding:
@@ -50,6 +45,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --subsample
+- id: input
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

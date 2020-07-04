@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: goslimmer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goslimmer.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: matchGraph.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/matchGraph.py.cwl
 inputs:
-- id: e
+- id: is_input_filename
   doc: is the input filename
   type: string
   inputBinding:
     prefix: -e
-- id: w
+- id: is_output_filename
   doc: is the output filename
   type: string
   inputBinding:
     prefix: -w
-- id: c
+- id: max_cardinality_matching
   doc: the max cardinality matching
   type: string
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nullarbor.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nullarbor.pl.cwl
 inputs:
 - id: name
   doc: Job name
@@ -57,7 +57,7 @@ inputs:
   inputBinding:
     prefix: --run
 - id: conf
-  doc: Config file (/tmp/tmp4_kd8c4_/bin/../conf/nullarbor.conf)
+  doc: Config file (/tmp/tmp33w_n1r_/bin/../conf/nullarbor.conf)
   type: File
   inputBinding:
     prefix: --conf

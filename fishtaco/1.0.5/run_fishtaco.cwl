@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: run_fishtaco.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_fishtaco.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

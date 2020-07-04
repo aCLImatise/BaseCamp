@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: spectra_cluster_cli.cwl
+id: ../../../../home/ubuntu/BiocondaCli/spectra_cluster_cli.cwl
 inputs:
 - id: add_scores
   doc: if set, the similarity scores of each spectrum to the cluster's consensus spectrum
@@ -164,6 +164,16 @@ inputs:
   type: string
   inputBinding:
     prefix: -x_n_prefiltered_peaks
+- id: spectra
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: cluster
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,12 +2,16 @@ version 1.0
 
 task OmeroFsImporttime {
   input {
-    Boolean cacheCache
-    Boolean summarySummary
+    Boolean? cache
+    Boolean? summary
   }
   command <<<
     omero fs importtime \
-      ~{true="--cache" false="" cacheCache} \
-      ~{true="--summary" false="" summarySummary}
+      ~{true="--cache" false="" cache} \
+      ~{true="--summary" false="" summary}
   >>>
+  parameter_meta {
+    cache: "to cache the results by annotating the fileset"
+    summary: "summarize the results cached for filesets"
+  }
 }

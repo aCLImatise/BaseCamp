@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: .picrust2_post_link.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/.picrust2_post_link.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

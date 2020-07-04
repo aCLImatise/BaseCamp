@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: swarm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/swarm.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: fast_a_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: threads
   doc: number of threads to use (1)
   type: long
@@ -111,6 +101,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --gap-extension-penalty
+- id: fast_a_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

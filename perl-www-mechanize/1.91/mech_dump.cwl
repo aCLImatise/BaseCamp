@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mech_dump.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mech_dump.cwl
 inputs:
 - id: headers
   doc: Dump HTTP response headers
@@ -62,6 +62,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --absolute
+- id: file_vertical_line_url
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

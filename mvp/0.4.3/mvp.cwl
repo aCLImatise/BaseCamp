@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: mvp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mvp.cwl
 inputs:
-- id: in_file
-  doc: 'vcf or vcf.gz file containing mutations (default: stdin)'
-  type: string
-  inputBinding:
-    position: 0
 - id: outfile
   doc: 'results table (default: stdout)'
   type: string
@@ -31,6 +26,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --sequence-type
+- id: in_file
+  doc: 'vcf or vcf.gz file containing mutations (default: stdin)'
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

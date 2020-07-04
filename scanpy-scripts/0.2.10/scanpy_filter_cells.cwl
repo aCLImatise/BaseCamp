@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scanpy_filter_cells.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scanpy_filter_cells.cwl
 inputs:
 - id: input_format
   doc: '[anndata|loom] Input object format.  [default: anndata]'
@@ -64,6 +64,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --force-recalc
+- id: input_obj
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_obj
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

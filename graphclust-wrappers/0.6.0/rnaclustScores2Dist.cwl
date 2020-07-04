@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rnaclustScores2Dist.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnaclustScores2Dist.pl.cwl
 inputs:
 - id: man
   doc: full documentation

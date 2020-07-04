@@ -2,14 +2,25 @@ version 1.0
 
 task Bstats {
   input {
-    Boolean vV
-    Int iI
-    File dD
+    Boolean? _verbose
+    Int? _sampling_iterations
+    File? output_diff_data
+    String b_strap
+    File file
   }
   command <<<
     bstats \
-      ~{true="-v" false="" vV} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(dD) then ("-d " +  '"' + dD + '"') else ""}
+      ~{b_strap} \
+      ~{file} \
+      ~{true="-v" false="" _verbose} \
+      ~{if defined(_sampling_iterations) then ("-i " +  '"' + _sampling_iterations + '"') else ""} \
+      ~{if defined(output_diff_data) then ("-d " +  '"' + output_diff_data + '"') else ""}
   >>>
+  parameter_meta {
+    _verbose: ": verbose "
+    _sampling_iterations: ": Sampling iterations (100) "
+    output_diff_data: ": Output diff data to <file>"
+    b_strap: ""
+    file: ""
+  }
 }

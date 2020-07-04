@@ -1,28 +1,33 @@
 class: CommandLineTool
-id: addVariants.py_graph.cwl
+id: ../../../../home/ubuntu/BiocondaCli/addVariants.py_output.cwl
 inputs:
-- id: graph
-  doc: Input graph JSON file
-  type: string
-  inputBinding:
-    position: 0
-- id: output
-  doc: Output JSON file
-  type: string
-  inputBinding:
-    position: 1
 - id: variants
-  doc: JSON file with variant calls to use instead of calls in input graph
+  doc: ''
   type: string
   inputBinding:
     prefix: --variants
-- id: verbose
-  doc: More logging; May be given twice for even more logging
+- id: v
+  doc: ''
   type: boolean
   inputBinding:
-    prefix: --verbose
+    prefix: -v
+- id: add_variants_do_tpy
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: graph
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: output
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - addVariants.py
-- graph
+- output

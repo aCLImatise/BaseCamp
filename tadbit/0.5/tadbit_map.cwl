@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tadbit_map.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tadbit_map.cwl
 inputs:
 - id: skip_mapping
   doc: generate a Hi-C specific quality plot from FASTQ and exits
@@ -16,7 +16,7 @@ inputs:
   type: File
   inputBinding:
     prefix: --fastq
-- id: fastq2
+- id: fast_q_two
   doc: (beta) path to a FASTQ file of read 2 (can be compressed files). Needed for
     fast_fragment
   type: File

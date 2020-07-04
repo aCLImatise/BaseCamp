@@ -1,31 +1,6 @@
 class: CommandLineTool
-id: prosic_call_tumor_normal.cwl
+id: ../../../../home/ubuntu/BiocondaCli/prosic_call_tumor_normal.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: tumor
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: normal
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: reference
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
 - id: exclusive_end
   doc: Assume that the END tag is exclusive (i.e. it points to the position after
     the variant). This is needed, e.g., for DELLY.
@@ -150,6 +125,26 @@ inputs:
   type: double
   inputBinding:
     prefix: --purity
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: tumor
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: normal
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: reference
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

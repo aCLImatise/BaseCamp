@@ -1,17 +1,6 @@
 class: CommandLineTool
-id: yapc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/yapc.cwl
 inputs:
-- id: output_prefix
-  doc: Prefix to use for all output files
-  type: string
-  inputBinding:
-    position: 0
-- id: condition_rep1_rep2
-  doc: 'Name of the condition, BigWig files of first and second replicates; all separated
-    by spaces. (default: None)'
-  type: string
-  inputBinding:
-    position: 1
 - id: smoothing_window_width
   doc: "Width of the smoothing window used for the second derivative track. If the\
     \ peak calls aren't capturing the peak shape well, try setting this to different\
@@ -56,6 +45,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --recycle
+- id: output_prefix
+  doc: Prefix to use for all output files
+  type: string
+  inputBinding:
+    position: 0
+- id: condition_rep_one_rep_two
+  doc: 'Name of the condition, BigWig files of first and second replicates; all separated
+    by spaces. (default: None)'
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

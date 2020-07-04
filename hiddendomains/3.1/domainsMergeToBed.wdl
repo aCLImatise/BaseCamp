@@ -2,14 +2,16 @@ version 1.0
 
 task DomainsMergeToBed.pl {
   input {
-    String? chr1Chr1
-    String? chr2Chr2
-    String? chr3Chr3
+    Boolean? options
+    Boolean? more_options
   }
   command <<<
     domainsMergeToBed.pl \
-      ~{chr1Chr1} \
-      ~{chr2Chr2} \
-      ~{chr3Chr3}
+      ~{true="-OPTIONS" false="" options} \
+      ~{true="-MORE_OPTIONS" false="" more_options}
   >>>
+  parameter_meta {
+    options: ""
+    more_options: ""
+  }
 }

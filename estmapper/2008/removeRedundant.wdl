@@ -2,12 +2,16 @@ version 1.0
 
 task RemoveRedundant {
   input {
-    Boolean gff3Gff3
-    String? polishesPolishesFile
+    Boolean? gff_three
+    String polishes_file
   }
   command <<<
     removeRedundant \
-      ~{polishesPolishesFile} \
-      ~{true="-gff3" false="" gff3Gff3}
+      ~{polishes_file} \
+      ~{true="-gff3" false="" gff_three}
   >>>
+  parameter_meta {
+    gff_three: ""
+    polishes_file: ""
+  }
 }

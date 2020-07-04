@@ -1,56 +1,46 @@
 class: CommandLineTool
-id: cufflinks.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cufflinks.cwl
 inputs:
-- id: hits_sam
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: o
-  doc: '/--output-dir              write all output files to this directory              [
-    default:     ./ ]'
+- id: oslash_output_dir
+  doc: 'write all output files to this directory              [ default:     ./ ]'
   type: boolean
   inputBinding:
-    prefix: -o
-- id: p
-  doc: '/--num-threads             number of threads used during analysis                [
-    default:      1 ]'
+    prefix: -o/--output-dir
+- id: p_slash_num_threads
+  doc: 'number of threads used during analysis                [ default:      1 ]'
   type: boolean
   inputBinding:
-    prefix: -p
+    prefix: -p/--num-threads
 - id: seed
   doc: 'value of random number generator seed                 [ default:      0 ]'
   type: boolean
   inputBinding:
     prefix: --seed
-- id: g
-  doc: '/--GTF                     quantitate against reference transcript annotations                      '
+- id: g_slash_gtf
+  doc: 'quantitate against reference transcript annotations                      '
   type: boolean
   inputBinding:
-    prefix: -G
-- id: g
-  doc: '/--GTF-guide               use reference transcript annotation to guide assembly                   '
+    prefix: -G/--GTF
+- id: g_slash_gtf_guide
+  doc: 'use reference transcript annotation to guide assembly                   '
   type: boolean
   inputBinding:
-    prefix: -g
-- id: m
-  doc: '/--mask-file               ignore all alignment within transcripts in this
-    file                     '
+    prefix: -g/--GTF-guide
+- id: m_slash_mask_file
+  doc: 'ignore all alignment within transcripts in this file                     '
   type: boolean
   inputBinding:
-    prefix: -M
-- id: b
-  doc: '/--frag-bias-correct       use bias correction - reference fasta required        [
-    default:   NULL ]'
+    prefix: -M/--mask-file
+- id: b_slash_frag_bias_correct
+  doc: 'use bias correction - reference fasta required        [ default:   NULL ]'
   type: boolean
   inputBinding:
-    prefix: -b
-- id: u
-  doc: "/--multi-read-correct      use 'rescue method' for multi-reads (more accurate)\
-    \   [ default:  FALSE ]"
+    prefix: -b/--frag-bias-correct
+- id: us_lash_multi_read_correct
+  doc: "use 'rescue method' for multi-reads (more accurate)   [ default:  FALSE ]"
   type: boolean
   inputBinding:
-    prefix: -u
+    prefix: -u/--multi-read-correct
 - id: library_type
   doc: 'library prep used for input reads                     [ default:  below ]'
   type: boolean
@@ -61,18 +51,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --library-norm-method
-- id: m
-  doc: '/--frag-len-mean           average fragment length (unpaired reads only)         [
-    default:    200 ]'
+- id: m_slash_frag_len_mean
+  doc: 'average fragment length (unpaired reads only)         [ default:    200 ]'
   type: boolean
   inputBinding:
-    prefix: -m
-- id: s
-  doc: '/--frag-len-std-dev        fragment length std deviation (unpaired reads only)   [
-    default:     80 ]'
+    prefix: -m/--frag-len-mean
+- id: s_slash_frag_len_std_dev
+  doc: 'fragment length std deviation (unpaired reads only)   [ default:     80 ]'
   type: boolean
   inputBinding:
-    prefix: -s
+    prefix: -s/--frag-len-std-dev
 - id: max_mle_iterations
   doc: 'maximum iterations allowed for MLE calculation        [ default:   5000 ]'
   type: boolean
@@ -113,52 +101,46 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-length-correction
-- id: n
-  doc: /--upper-quartile-norm     Deprecated, use --library-norm-method                 [    DEPRECATED   ]
+- id: n_slash_upper_quartile_norm
+  doc: Deprecated, use --library-norm-method                 [    DEPRECATED   ]
   type: boolean
   inputBinding:
-    prefix: -N
+    prefix: -N/--upper-quartile-norm
 - id: raw_mapped_norm
   doc: Deprecated, use --library-norm-method                 [    DEPRECATED   ]
   type: boolean
   inputBinding:
     prefix: --raw-mapped-norm
-- id: l
-  doc: '/--label                   assembled transcripts have this ID prefix             [
-    default:   CUFF ]'
+- id: lslash_label
+  doc: 'assembled transcripts have this ID prefix             [ default:   CUFF ]'
   type: boolean
   inputBinding:
-    prefix: -L
-- id: f
-  doc: '/--min-isoform-fraction    suppress transcripts below this abundance level       [
-    default:   0.10 ]'
+    prefix: -L/--label
+- id: f_slash_min_isoform_fraction
+  doc: 'suppress transcripts below this abundance level       [ default:   0.10 ]'
   type: boolean
   inputBinding:
-    prefix: -F
-- id: j
-  doc: '/--pre-mrna-fraction       suppress intra-intronic transcripts below this
-    level  [ default:   0.15 ]'
+    prefix: -F/--min-isoform-fraction
+- id: j_slash_pre_mrna_fraction
+  doc: 'suppress intra-intronic transcripts below this level  [ default:   0.15 ]'
   type: boolean
   inputBinding:
-    prefix: -j
-- id: i
-  doc: '/--max-intron-length       ignore alignments with gaps longer than this          [
-    default: 300000 ]'
+    prefix: -j/--pre-mrna-fraction
+- id: i_slash_max_intron_length
+  doc: 'ignore alignments with gaps longer than this          [ default: 300000 ]'
   type: boolean
   inputBinding:
-    prefix: -I
-- id: a
-  doc: '/--junc-alpha              alpha for junction binomial test filter               [
-    default:  0.001 ]'
+    prefix: -I/--max-intron-length
+- id: a_slash_jun_c_alpha
+  doc: 'alpha for junction binomial test filter               [ default:  0.001 ]'
   type: boolean
   inputBinding:
-    prefix: -a
-- id: a
-  doc: "/--small-anchor-fraction   percent read overhang taken as 'suspiciously small'\
-    \   [ default:   0.09 ]"
+    prefix: -a/--junc-alpha
+- id: a_slash_small_anchor_fraction
+  doc: "percent read overhang taken as 'suspiciously small'   [ default:   0.09 ]"
   type: boolean
   inputBinding:
-    prefix: -A
+    prefix: -A/--small-anchor-fraction
 - id: min_frags_per_trans_frag
   doc: 'minimum number of fragments needed for new transfrags [ default:     10 ]'
   type: boolean
@@ -184,12 +166,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --min-intron-length
-- id: trim_3_avg_cov_thresh
+- id: trim_three_avg_cov_thresh
   doc: "minimum avg coverage required to attempt 3' trimming  [ default:     10 ]"
   type: boolean
   inputBinding:
     prefix: --trim-3-avgcov-thresh
-- id: trim_3_drop_off_frac
+- id: trim_three_drop_off_frac
   doc: "fraction of avg coverage below which to trim 3' end   [ default:    0.1 ]"
   type: boolean
   inputBinding:
@@ -204,28 +186,41 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --overlap-radius
+- id: no_faux_reads
+  doc: 'disable tiling by faux reads                          [ default:  FALSE ]'
+  type: boolean
+  inputBinding:
+    prefix: --no-faux-reads
+- id: three_overhang_tolerance
+  doc: "overhang allowed on 3' end when merging with reference[ default:    600 ]"
+  type: boolean
+  inputBinding:
+    prefix: --3-overhang-tolerance
 - id: intron_overhang_tolerance
   doc: 'overhang allowed inside reference intron when merging [ default:     30 ]'
   type: boolean
   inputBinding:
     prefix: --intron-overhang-tolerance
-- id: v
-  doc: '/--verbose                 log-friendly verbose processing (no progress bar)     [
-    default:  FALSE ]'
+- id: v_slash_verbose
+  doc: 'log-friendly verbose processing (no progress bar)     [ default:  FALSE ]'
   type: boolean
   inputBinding:
-    prefix: -v
-- id: q
-  doc: '/--quiet                   log-friendly quiet processing (no progress bar)       [
-    default:  FALSE ]'
+    prefix: -v/--verbose
+- id: q_slash_quiet
+  doc: 'log-friendly quiet processing (no progress bar)       [ default:  FALSE ]'
   type: boolean
   inputBinding:
-    prefix: -q
+    prefix: -q/--quiet
 - id: no_update_check
   doc: 'do not contact server to check for update availability[ default:  FALSE ]'
   type: boolean
   inputBinding:
     prefix: --no-update-check
+- id: hits_dots_am
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

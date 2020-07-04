@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bedtools_getfasta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedtools_getfasta.cwl
 inputs:
 - id: fi
   doc: Input FASTA file
@@ -16,16 +16,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -bed
-- id: name
-  doc: Use the name field and coordinates for the FASTA header
-  type: boolean
-  inputBinding:
-    prefix: -name
-- id: name
-  doc: +          (deprecated) Use the name field and coordinates for the FASTA header
-  type: boolean
-  inputBinding:
-    prefix: -name
 - id: name_only
   doc: Use the name field for the FASTA header
   type: boolean
@@ -42,7 +32,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -tab
-- id: s
+- id: force_strandedness_feature
   doc: Force strandedness. If the feature occupies the antisense, strand, the sequence
     will be reverse complemented. - By default, strand information is ignored.
   type: boolean

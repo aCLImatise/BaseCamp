@@ -1,32 +1,32 @@
 class: CommandLineTool
-id: tRNAscan_SE.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tRNAscan_SE.cwl
 inputs:
-- id: e
+- id: search_eukaryotic_trnas
   doc: ': search for eukaryotic tRNAs (default)'
   type: boolean
   inputBinding:
     prefix: -E
-- id: b
+- id: search_bacterial_trnas
   doc: ': search for bacterial tRNAs'
   type: boolean
   inputBinding:
     prefix: -B
-- id: a
+- id: _search_archaeal
   doc: ': search for archaeal tRNAs'
   type: boolean
   inputBinding:
     prefix: -A
-- id: m
+- id: search_mitochondrial_trnas
   doc: ': search for mitochondrial tRNAs options: mammal, vert'
   type: string
   inputBinding:
     prefix: -M
-- id: o
+- id: search_other_trnas
   doc: ': search for other organellar tRNAs'
   type: boolean
   inputBinding:
     prefix: -O
-- id: g
+- id: use_model_cytoslic
   doc: ': use general tRNA model (cytoslic tRNAs from all 3 domains included)'
   type: boolean
   inputBinding:
@@ -37,7 +37,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --mt
-- id: i
+- id: search_using_use
   doc: ': search using Infernal default use with -E, -B, -A, or -G; optional for -O'
   type: boolean
   inputBinding:
@@ -48,7 +48,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --max
-- id: l
+- id: search_using_method
   doc: ': search using the legacy method (tRNAscan, EufindtRNA, and COVE) use with
     -E, -B, -A or -G'
   type: boolean
@@ -136,7 +136,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --search
-- id: u
+- id: search_trnas_alternate
   doc: ': search for tRNAs with alternate models defined in configuration file'
   type: boolean
   inputBinding:
@@ -210,6 +210,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --thread
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

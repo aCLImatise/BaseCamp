@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hicCompareMatrices.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hicCompareMatrices.cwl
 inputs:
 - id: matrices
   doc: 'matrix.h5, -m matrix.h5 matrix.h5 Name of the matrices in .h5 format to use,
@@ -18,6 +18,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --operation
+- id: matrix_doth_five
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

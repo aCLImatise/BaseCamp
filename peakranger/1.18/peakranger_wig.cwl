@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: peakranger_wig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/peakranger_wig.cwl
 inputs:
-- id: d
+- id: arg_data_file
   doc: '[ --data ] arg               data file'
   type: boolean
   inputBinding:
@@ -11,27 +11,27 @@ inputs:
   type: string
   inputBinding:
     prefix: --format
-- id: o
+- id: arg_output_location
   doc: '[ --output ] arg             the output location'
   type: boolean
   inputBinding:
     prefix: -o
-- id: s
+- id: generate_one_wig_file_chromosome
   doc: '[ --split ]                  generate one wig file per chromosome'
   type: boolean
   inputBinding:
     prefix: -s
-- id: z
+- id: _compress_output
   doc: '[ --gzip ]                   compress the output'
   type: boolean
   inputBinding:
     prefix: -z
-- id: x
+- id: generate_one_wig_file_strand
   doc: '[ --strand ]                 generate one wig file per strand'
   type: boolean
   inputBinding:
     prefix: -x
-- id: l
+- id: arg_read_length
   doc: '[ --ext_length ] arg (=200)  read extension length'
   type: boolean
   inputBinding:
@@ -41,6 +41,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: input
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

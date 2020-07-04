@@ -1,12 +1,6 @@
 class: CommandLineTool
-id: RNA2Dfold.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNA2Dfold.cwl
 inputs:
-- id: program
-  doc: --noconv                Do not automatically substitude nucleotide "T" with
-    "U" (default=off)
-  type: string
-  inputBinding:
-    position: 0
 - id: detailed_help
   doc: Print help, including all details and hidden options, and exit
   type: boolean
@@ -50,6 +44,27 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --circ
+- id: temp
+  doc: Rescale energy parameters to a temperature of temp C. Default is 37C.
+  type: string
+  inputBinding:
+    prefix: --temp
+- id: max_dist_one
+  doc: maximum distance to first reference structure
+  type: long
+  inputBinding:
+    prefix: --maxDist1
+- id: max_dist_two
+  doc: maximum distance to second reference structure
+  type: long
+  inputBinding:
+    prefix: --maxDist2
+- id: no_tetra
+  doc: Do not include special tabulated stabilizing energies for tri-, tetra- and
+    hexaloop hairpins. Mostly for testing. (default=off)
+  type: boolean
+  inputBinding:
+    prefix: --noTetra
 - id: param_file
   doc: Read energy parameters from paramfile, instead of using the default parameter
     set.
@@ -72,6 +87,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --noClosingGU
+- id: program
+  doc: --noconv                Do not automatically substitude nucleotide "T" with
+    "U" (default=off)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

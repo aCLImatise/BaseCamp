@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: prequel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/prequel.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: alignment_fa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: tree_mod
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: out_root
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
 - id: refseq
   doc: (for use with --msa-format MAF) Read the complete text of the reference sequence
     from <fname> (FASTA format) and combine it with the contents of the MAF file to
@@ -38,6 +18,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --gibbs
+- id: alignment_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: tree_dot_mod
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: out_root
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ClipAndMerge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ClipAndMerge.cwl
 inputs:
 - id: discard_bad_reads
   doc: ': Discard reads after merging that do not fulfill the quality criteria. (default:
@@ -7,30 +7,30 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -discardBadReads
-- id: e
+- id: error_rate_merging
   doc: ': Error rate for merging forward and reverse reads. A value of 0.05 means
     that 5% mismatches are allowed in the overlap region. (default: 0.05)'
   type: string
   inputBinding:
     prefix: -e
-- id: f
+- id: forward_reads_agatcggaagagcacacgtctgaactccagtcac
   doc: ': Forward reads adapter sequence. (default: AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC)'
   type: string
   inputBinding:
     prefix: -f
-- id: in1
+- id: in_one
   doc: '[]                       : Forward reads input file(s) in fastq(.gz) file
     format.'
   type: string
   inputBinding:
     prefix: -in1
-- id: in2
+- id: in_two
   doc: '[]                       : Reverse reads input file(s) in fastq(.gz) file
     format.'
   type: string
   inputBinding:
     prefix: -in2
-- id: l
+- id: discard_sequences_shorter
   doc: ': Discard sequences shorter than this number of nucleotides after adapter
     clipping. (default: 25)'
   type: long
@@ -49,7 +49,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -log
-- id: m
+- id: require_minimum_length
   doc: ': Require a minimum adapter alignment length. If less nucleotides align with
     the adapter, the sequences are not clipped. (default: 8)'
   type: long
@@ -68,7 +68,7 @@ inputs:
   type: long
   inputBinding:
     prefix: -minQualBadReads
-- id: n
+- id: discard_sequences_unknown
   doc: ': Discard sequences with unknown (N) nucleotides. Default is to keep such
     sequences. (default: false)'
   type: boolean
@@ -98,19 +98,19 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -no_qbMM
-- id: o
+- id: output_file_file
   doc: ": Output file. If no file is provided, output will be written to System.out.\
     \ If file ends with '.gz', output will be gzipped."
   type: string
   inputBinding:
     prefix: -o
-- id: p
+- id: minimal_number_nucleotides
   doc: ': Minimal number of nucleotides that have to overlap in order to merge the
     forward and reverse read. (default: 10)'
   type: long
   inputBinding:
     prefix: -p
-- id: q
+- id: minimum_base_quality
   doc: ': Minimum base quality for quality trimming. (default: 20)'
   type: long
   inputBinding:
@@ -131,7 +131,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -qualFreqBadReads
-- id: r
+- id: reverse_reads_agatcggaagagcgtcgtgtagggaaagagtgta
   doc: ': Reverse reads adapter sequence. (default: AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA)'
   type: string
   inputBinding:
@@ -147,21 +147,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -timeEstimation
-- id: trim3p
+- id: trim_three_p
   doc: ": Trim N nucleotides from the 3' end of each read. This step is performed\
     \ after adapter clipping. Reverse reads are not reverse trancriped before trimming.\
     \ (default: 0)"
   type: long
   inputBinding:
     prefix: -trim3p
-- id: trim5p
+- id: trim_five_p
   doc: ": Trim N nucleotides from the 5' end of each read. This step is performed\
     \ after adapter clipping. Reverse reads are not reverse transcriped before trimming.\
     \ (default: 0)"
   type: long
   inputBinding:
     prefix: -trim5p
-- id: u
+- id: reversefile_write_unmerged
   doc: "REVERSE_FILE        : Write unmerged forward and reverse reads to extra files.\
     \ Unmerged forward reads are written to the file 'FORWARD_FILE'. Unmerged reverse\
     \ reads are written to the file 'REVERSE_FILE', i.e. the regular output file then\

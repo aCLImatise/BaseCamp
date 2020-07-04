@@ -2,10 +2,13 @@ version 1.0
 
 task PileOMeth {
   input {
-    String? commandCommand
+    String var_command
   }
   command <<<
     PileOMeth \
-      ~{commandCommand}
+      ~{var_command}
   >>>
+  parameter_meta {
+    var_command: ""
+  }
 }

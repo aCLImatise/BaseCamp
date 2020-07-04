@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ipr_update_gff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ipr_update_gff.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

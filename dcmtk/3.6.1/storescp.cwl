@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: storescp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/storescp.cwl
 inputs:
-- id: port
-  doc: tcp/ip port number to listen on
-  type: string
-  inputBinding:
-    position: 0
 - id: single_process
   doc: single process mode (default)
   type: boolean
@@ -136,22 +131,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -od
-- id: f
+- id: _writedataset_write
   doc: --write-dataset        write data set without file meta information
   type: boolean
   inputBinding:
     prefix: -F
-- id: u
+- id: _disablenewvr_disable
   doc: --disable-new-vr       disable support for new VRs, convert to OB
   type: boolean
   inputBinding:
     prefix: -u
-- id: g
+- id: _grouplengthremove_always
   doc: --group-length-remove  always write without group length elements
   type: boolean
   inputBinding:
     prefix: -g
-- id: e
+- id: _lengthundefined_write
   doc: --length-undefined     write with undefined lengths
   type: boolean
   inputBinding:
@@ -212,6 +207,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -xs
+- id: port
+  doc: tcp/ip port number to listen on
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

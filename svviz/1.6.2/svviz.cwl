@@ -1,17 +1,6 @@
 class: CommandLineTool
-id: svviz.cwl
+id: ../../../../home/ubuntu/BiocondaCli/svviz.cwl
 inputs:
-- id: ref
-  doc: reference fasta file (a .faidx index file will be created if it doesn't exist
-    so you need  write permissions for this directory)
-  type: string
-  inputBinding:
-    position: 0
-- id: breakpoints
-  doc: information about the breakpoint to be analyzed; see below for information
-  type: string
-  inputBinding:
-    position: 1
 - id: bam
   doc: sorted, indexed bam file containing reads of interest to plot; can be specified
     multiple  times to load multiple samples
@@ -204,6 +193,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --lenient
+- id: ref
+  doc: reference fasta file (a .faidx index file will be created if it doesn't exist
+    so you need  write permissions for this directory)
+  type: string
+  inputBinding:
+    position: 0
+- id: breakpoints
+  doc: information about the breakpoint to be analyzed; see below for information
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

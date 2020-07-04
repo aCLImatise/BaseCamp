@@ -2,20 +2,28 @@ version 1.0
 
 task FastqToFasta {
   input {
-    Boolean rR
-    Boolean nN
-    Boolean vV
-    Boolean zZ
-    String iI
-    String oO
+    Boolean? r
+    Boolean? n
+    Boolean? v
+    Boolean? z
+    String? i
+    String? o
   }
   command <<<
     fastq_to_fasta \
-      ~{true="-r" false="" rR} \
-      ~{true="-n" false="" nN} \
-      ~{true="-v" false="" vV} \
-      ~{true="-z" false="" zZ} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""}
+      ~{true="-r" false="" r} \
+      ~{true="-n" false="" n} \
+      ~{true="-v" false="" v} \
+      ~{true="-z" false="" z} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    r: ""
+    n: ""
+    v: ""
+    z: ""
+    i: ""
+    o: ""
+  }
 }

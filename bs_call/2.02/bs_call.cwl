@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bs_call.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bs_call.cwl
 inputs:
 - id: no_split
   doc: Do not split output on contig
@@ -7,7 +7,7 @@ inputs:
   inputBinding:
     prefix: --no-split
 - id: haploid
-  doc: '|-1  Assume genome is haploid'
+  doc: Assume genome is haploid
   type: boolean
   inputBinding:
     prefix: --haploid

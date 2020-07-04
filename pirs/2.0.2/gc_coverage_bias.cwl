@@ -1,23 +1,23 @@
 class: CommandLineTool
-id: gc_coverage_bias.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gc_coverage_bias.cwl
 inputs:
-- id: r
+- id: reference_sequence_file
   doc: 'a reference sequence file about FA format '
   type: string
   inputBinding:
     prefix: -r
-- id: c
+- id: designated_chromosome_i
   doc: the designated chromosome id list file, one id per line, without settings,
     processing all the reference sequence
   type: string
   inputBinding:
     prefix: -c
-- id: o
+- id: prefix_output_file
   doc: the prefix about output file
   type: string
   inputBinding:
     prefix: -o
-- id: w
+- id: the_window_length
   doc: 'the window length[such as:100,200,300] '
   type: string
   inputBinding:

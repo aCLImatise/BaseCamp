@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: fastx_clipper.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastx_clipper.cwl
 inputs:
 - id: a
   doc: ''
   type: string
   inputBinding:
     prefix: -a
-- id: d
+- id: var_1
   doc: ''
   type: boolean
   inputBinding:
@@ -21,17 +21,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -n
-- id: d
+- id: var_4
   doc: ''
   type: string
   inputBinding:
     prefix: -d
-- id: c
+- id: var_5
   doc: ''
   type: boolean
   inputBinding:
     prefix: -c
-- id: c
+- id: var_6
   doc: ''
   type: boolean
   inputBinding:
@@ -56,11 +56,6 @@ inputs:
   type: string
   inputBinding:
     prefix: -i
-- id: o
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -o
 outputs: []
 cwlVersion: v1.1
 baseCommand:

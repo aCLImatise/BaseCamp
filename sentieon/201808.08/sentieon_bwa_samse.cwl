@@ -1,31 +1,6 @@
 class: CommandLineTool
-id: sentieon_bwa_samse.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sentieon_bwa_samse.cwl
 inputs:
-- id: bwa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: sam_se
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: prefix
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: in_sai
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: in_fq
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
 - id: n
   doc: ''
   type: long
@@ -41,6 +16,31 @@ inputs:
   type: string
   inputBinding:
     prefix: -r
+- id: bwa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: sam_se
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: prefix
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: in_do_tsai
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: in_dot_fq
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

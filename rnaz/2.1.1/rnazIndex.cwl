@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: rnazIndex.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnazIndex.pl.cwl
 inputs:
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: gff
   doc: Generate GFF formatted output.
   type: boolean
@@ -16,7 +11,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --bed
-- id: c
+- id: label__col
   doc: '#:LABEL, --col #:LABEL Append a column named LABEL to the HTML-table holding
     the data from the input file column with index #. e.g. "rnazIndex.pl --html --col
     19:Alifoldz --col 20:RNAmicro annotated.dat"'
@@ -82,6 +77,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --man
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

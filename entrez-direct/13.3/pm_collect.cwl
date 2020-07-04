@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pm_collect.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pm_collect.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

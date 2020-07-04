@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rnaseqc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnaseqc.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

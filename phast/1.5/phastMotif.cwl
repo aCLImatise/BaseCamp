@@ -1,58 +1,48 @@
 class: CommandLineTool
-id: phastMotif.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phastMotif.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: msa_list
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: t
+- id: required_m_specified
   doc: (Required unless -m or -p) Use specified tree topology for all phylogenetic
     models (Newick format).
   type: File
   inputBinding:
     prefix: -t
-- id: i
+- id: input_format_alignment
   doc: Input format for alignment.  May be FASTA, PHYLIP, MPM, SS, or MAF (default
     FASTA).
   type: string
   inputBinding:
     prefix: -i
-- id: b
+- id: read_background_model
   doc: Read background model from specified file (.mod format). By default, the background
     model is estimated in a preprocessing step, by pooling all data.
   type: File
   inputBinding:
     prefix: -b
-- id: s
+- id: estimate_separate_model
   doc: Estimate a separate background model for each multiple alignment. (Not yet
     implemented.)
   type: boolean
   inputBinding:
     prefix: -s
-- id: k
+- id: learn_motifs_specified
   doc: Learn motifs of the specified size (default is 10).
   type: long
   inputBinding:
     prefix: -k
-- id: b
+- id: report_best_default
   doc: Report best <n> motifs (default 3).
   type: string
   inputBinding:
     prefix: -B
-- id: m
+- id: meme_mode_use
   doc: MEME mode.  Use multinomial rather than phylogenetic models.  Causes multiple
     alignments to be ignored -- any gaps are discarded and all sequences are assumed
     independent.
   type: boolean
   inputBinding:
     prefix: -m
-- id: d
+- id: lst_use_method
   doc: <+lst> Use the discriminative training method of Segal et al. (RECOMB'02),
     rather than EM.  The specified list should contain the filenames from msa_list
     that are to be considered *positive* examples (containing the desired motif);
@@ -61,7 +51,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -d
-- id: p
+- id: use_models_characters
   doc: Use "profile" models rather than phylogenetic models (characters in each alignment
     column assumed independent).  The resulting model is a hybrid of the full model
     and MEME's model.  Essentially, it uses the multiple alignments but not the phylogeny.  NOT
@@ -69,13 +59,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -p
-- id: n
+- id: perform_random_restarts
   doc: Perform <n> random restarts and report the motif with highest likelihood.  Default
     number is 10.  Ignored with -I, -P, and -R unless -S is specified (see below).
   type: string
   inputBinding:
     prefix: -n
-- id: i
+- id: run_algorithm_motif
   doc: Run the algorithm after a "soft" initialization with each of the consensus
     sequences in the specified list. At each position, <pc> pseudocounts (see -c)
     are given to the consensus base and 1 pseudocount to all other bases.  Each string
@@ -84,33 +74,33 @@ inputs:
   type: string
   inputBinding:
     prefix: -I
-- id: p
+- id: xy_initialize_x
   doc: <x,y>  Initialize with the x most prevalent y-tuples.  A soft initialization
     is performed, as above.  If y is less than the motif size, y-tuples are used as
     a "seed" for a motif, as above.
   type: boolean
   inputBinding:
     prefix: -P
-- id: r
+- id: xy_initialize_random
   doc: <x,y>  Initialize with a random sample of x y-tuples.  A soft initialization
     is performed, as above.  If y is less than the motif size, y-tuples are used as
     a "seed" for a motif, as above.
   type: boolean
   inputBinding:
     prefix: -R
-- id: w
+- id: use_winnow_based
   doc: (for use with -I, -P, -R) Winnow initialization sequences to the top <n> based
     on the unmaximized likelihood.
   type: string
   inputBinding:
     prefix: -w
-- id: c
+- id: p_r_number
   doc: (for use with -I, -P, -R) Number of pseudocounts for consensus bases (default
     5).
   type: string
   inputBinding:
     prefix: -c
-- id: s
+- id: use_i_instead
   doc: (for use with -I, -P, -R) Instead of doing a deterministic initialization based
     on a consensus sequence, sample parameters from a Dirichlet distribution defined
     by the pseudocounts (see -c).  In this case, random restarts are performed, as
@@ -118,29 +108,34 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -S
-- id: o
+- id: use_specified_prefix
   doc: Use the specified prefix for all output files (dflt. "phastm").
   type: string
   inputBinding:
     prefix: -o
-- id: h
+- id: produce_html_formatted
   doc: Produce HTML formatted output, in addition to ordinary output. One file is
     produced per predicted motif, as well as a  single HTML-formatted summary file.
   type: boolean
   inputBinding:
     prefix: -H
-- id: d
+- id: produce_bed_file
   doc: Produce a BED file with predicted motifs, for use in the  UCSC browser.  Currently,
     sequence names must be formatted such as "chr10:102553847-102554897+", with the
     final '+' or '-' indicating strand.
   type: boolean
   inputBinding:
     prefix: -D
-- id: x
+- id: use_h_d
   doc: (For use with -H or -D) Suppress ordinary output to stdout.
   type: boolean
   inputBinding:
     prefix: -x
+- id: msa_list
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

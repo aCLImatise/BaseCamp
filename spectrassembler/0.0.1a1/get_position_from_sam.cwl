@@ -1,23 +1,28 @@
 class: CommandLineTool
-id: get_position_from_sam.py_samfile.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_position_from_sam.py_fastafile.cwl
 inputs:
-- id: sam_file
-  doc: path .sam file from BWA-bwasw
+- id: r
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -r
+- id: get_position_from_sam_do_tpy
+  doc: ''
   type: string
   inputBinding:
     position: 0
-- id: fast_a_file
-  doc: path to reads in fasta format
+- id: sam_file
+  doc: ''
   type: string
   inputBinding:
     position: 1
-- id: root
-  doc: directory where to store position file.
+- id: fast_a_file
+  doc: ''
   type: string
   inputBinding:
-    prefix: --root
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - get_position_from_sam.py
-- samfile
+- fastafile

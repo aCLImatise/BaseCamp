@@ -2,10 +2,13 @@ version 1.0
 
 task Vcfflatten {
   input {
-    File? fileFile
+    File? file
   }
   command <<<
     vcfflatten \
-      ~{fileFile}
+      ~{file}
   >>>
+  parameter_meta {
+    file: ""
+  }
 }

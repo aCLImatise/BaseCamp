@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcf_contrast.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf_contrast.cwl
 inputs:
 - id: min_dp
   doc: Minimum depth across all -<list> samples

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: bedtools_groupby.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedtools_groupby.cwl
 inputs:
-- id: default
-  doc: ': sum'
-  type: boolean
-  inputBinding:
-    prefix: '- Default'
 - id: full
   doc: 'Print all columns from input file.  The first line in the group is used. Default:
     print only grouped columns.'
@@ -46,6 +41,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -delim
+- id: g
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -g
 outputs: []
 cwlVersion: v1.1
 baseCommand:

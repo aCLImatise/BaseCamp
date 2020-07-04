@@ -1,22 +1,37 @@
 class: CommandLineTool
-id: shuffle.cwl
+id: ../../../../home/ubuntu/BiocondaCli/shuffle.cwl
 inputs:
-- id: l
+- id: shuffle_preserve_
+  doc: ': shuffle but preserve both mono- and di-symbol composition'
+  type: boolean
+  inputBinding:
+    prefix: -d
+- id: generate_markov_properties
+  doc: ': generate with same 0th order Markov properties as each input'
+  type: boolean
+  inputBinding:
+    prefix: '-0'
+- id: generate_same_st
+  doc: ': generate with same 1st order Markov properties as each input'
+  type: boolean
+  inputBinding:
+    prefix: '-1'
+- id: make_iid_sequences
   doc: ': make iid sequences of same number and length as inputs'
   type: boolean
   inputBinding:
     prefix: -l
-- id: r
+- id: _reverse_inputs
   doc: ': reverse inputs'
   type: boolean
   inputBinding:
     prefix: -r
-- id: w
+- id: regionally_shuffle_inputs
   doc: ': regionally shuffle inputs in window size <n>'
   type: string
   inputBinding:
     prefix: -w
-- id: i
+- id: make_when_set
   doc: ': make [-n] iid seqs of length [-t] of type [--dna|--amino]; when -i is set,
     no <seqfile> argument is used'
   type: boolean
@@ -58,6 +73,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --seed
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: seq_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

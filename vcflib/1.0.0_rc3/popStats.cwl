@@ -1,21 +1,21 @@
 class: CommandLineTool
-id: popStats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/popStats.cwl
 inputs:
-- id: your
-  doc: "goes here       -'                "
+- id: type
+  doc: ''
   type: string
   inputBinding:
-    prefix: '-     Your'
-- id: your
-  doc: "goes here       -'                "
+    prefix: --type
+- id: target
+  doc: ''
   type: string
   inputBinding:
-    prefix: '-     Your'
-- id: your
-  doc: "goes here       -'                "
+    prefix: --target
+- id: pop_stat
+  doc: ''
   type: string
   inputBinding:
-    prefix: '-     Your'
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

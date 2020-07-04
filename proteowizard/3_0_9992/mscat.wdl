@@ -2,10 +2,13 @@ version 1.0
 
 task Mscat {
   input {
-    File? filenameFilename
+    File filename
   }
   command <<<
     mscat \
-      ~{filenameFilename}
+      ~{filename}
   >>>
+  parameter_meta {
+    filename: ""
+  }
 }

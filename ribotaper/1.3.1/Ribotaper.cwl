@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Ribotaper.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Ribotaper.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,17 +1,7 @@
 class: CommandLineTool
-id: alimask.cwl
+id: ../../../../home/ubuntu/BiocondaCli/alimask.cwl
 inputs:
-- id: msa_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: post_msa_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: o
+- id: direct_summary_output
   doc: ': direct summary output to file <f>, not stdout'
   type: string
   inputBinding:
@@ -31,12 +21,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --apendmask
-- id: model_2ali
+- id: model_two_ali
   doc: ': given model ranges, print corresp. input alignment ranges'
   type: string
   inputBinding:
     prefix: --model2ali
-- id: ali2_model
+- id: ali_two_model
   doc: ': given alignment ranges, print corresp. model ranges'
   type: string
   inputBinding:
@@ -121,6 +111,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --seed
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: msa_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: post_msa_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

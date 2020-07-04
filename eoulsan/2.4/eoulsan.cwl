@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: eoulsan.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/eoulsan.sh.cwl
 inputs:
 - id: about
   doc: display information about this software
@@ -11,12 +11,12 @@ inputs:
   type: File
   inputBinding:
     prefix: -conf
-- id: j
+- id: javahome_path
   doc: JAVA_HOME path
   type: File
   inputBinding:
     prefix: -j
-- id: j
+- id: jvm_arguments_server
   doc: JVM arguments (-server by default)
   type: string
   inputBinding:
@@ -36,17 +36,17 @@ inputs:
   type: string
   inputBinding:
     prefix: -loglevel
-- id: m
+- id: maximal_memory_usage
   doc: maximal memory usage for JVM in MB (4096 by default)
   type: long
   inputBinding:
     prefix: -m
-- id: p
+- id: additional_classpath_eoulsan
   doc: additional classpath for eoulsan plugins
   type: string
   inputBinding:
     prefix: -p
-- id: s
+- id: propertyvalue_set_configuration
   doc: <property=value>   set a configuration setting. This option can be used several
     times
   type: boolean
@@ -57,66 +57,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -version
-- id: w
+- id: jvm_working_directory
   doc: JVM working directory
   type: File
   inputBinding:
     prefix: -w
-- id: create_design
-  doc: create a design file from a list of files.
-  type: boolean
+- id: action
+  doc: ''
+  type: string
   inputBinding:
-    prefix: '- createdesign'
-- id: formats
-  doc: show information about formats configuration.
-  type: boolean
+    position: 0
+- id: arguments
+  doc: ''
+  type: string
   inputBinding:
-    prefix: '- formats'
-- id: had_oop_exec
-  doc: execute Eoulsan on local hadoop cluster.
-  type: boolean
-  inputBinding:
-    prefix: '- hadoopexec'
-- id: s3_upload
-  doc: upload data on Amazon S3.
-  type: boolean
-  inputBinding:
-    prefix: '- s3upload'
-- id: it
-  doc: integration test Eoulsan version.
-  type: boolean
-  inputBinding:
-    prefix: '- it'
-- id: modules
-  doc: show information about modules configuration.
-  type: boolean
-  inputBinding:
-    prefix: '- modules'
-- id: emr_exec
-  doc: execute eoulsan on Amazon Elastic MapReduce service.
-  type: boolean
-  inputBinding:
-    prefix: '- emrexec'
-- id: cluster_exec
-  doc: execute Eoulsan on a cluster.
-  type: boolean
-  inputBinding:
-    prefix: '- clusterexec'
-- id: create_had_oop_jar
-  doc: create a jar file for hadoop with all dependencies include.
-  type: boolean
-  inputBinding:
-    prefix: '- createhadoopjar'
-- id: exec
-  doc: execute Eoulsan in local mode.
-  type: boolean
-  inputBinding:
-    prefix: '- exec'
-- id: info
-  doc: show information about info configuration.
-  type: boolean
-  inputBinding:
-    prefix: '- info'
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

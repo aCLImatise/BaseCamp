@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bank2fasta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bank2fasta.cwl
 inputs:
 - id: bank
   doc: bank where assembly is stored
@@ -16,22 +16,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -iid
-- id: e
+- id: dump_just_eids
   doc: Dump just the contig eids listed in file
   type: File
   inputBinding:
     prefix: -E
-- id: i
+- id: dump_just_iids
   doc: Dump just the contig iids listed in file
   type: File
   inputBinding:
     prefix: -I
-- id: q
+- id: report_qualities_file
   doc: Report qualities in file
   type: File
   inputBinding:
     prefix: -q
-- id: d
+- id: show_reads_coverage
   doc: Show contig details (num reads, coverage) on fasta header line
   type: boolean
   inputBinding:

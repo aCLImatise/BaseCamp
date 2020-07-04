@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dupre.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dupre.cwl
 inputs:
 - id: observed
   doc: observed occupancy vector (space-separated ints, or a filename)
@@ -32,17 +32,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --complexity
-- id: k0
+- id: k_zero
   doc: occupancy number above which to use the heuristic [25]
   type: long
   inputBinding:
     prefix: --K0
-- id: z_width
+- id: allowed_standard_deviation_expected
   doc: allowed standard deviation for each expected occupancy
   type: string
   inputBinding:
     prefix: --zwidth
-- id: z_width
+- id: allowed_standard_deviation_sum
   doc: allowed standard deviation of sum of most significant terms
   type: string
   inputBinding:

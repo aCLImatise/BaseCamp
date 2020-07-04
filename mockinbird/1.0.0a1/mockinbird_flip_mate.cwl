@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mockinbird_flip_mate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mockinbird_flip_mate.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

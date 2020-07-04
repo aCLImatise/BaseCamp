@@ -1,12 +1,6 @@
 class: CommandLineTool
-id: joingenes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/joingenes.cwl
 inputs:
-- id: a
-  doc: structure is "better" than another one, if it has the transcript with the highest
-    "score", which is not present in the other gene structure
-  type: string
-  inputBinding:
-    prefix: '- a'
 - id: gene_sets
   doc: ',file2,...      -g file1,file2,...      where "file1,file2,...,filen" have
     to be data files with genesets in GTF format.'

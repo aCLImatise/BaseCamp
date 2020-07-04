@@ -2,38 +2,55 @@ version 1.0
 
 task BwaSampe {
   input {
-    Int aA
-    Int oO
-    Int nN
-    Int nN
-    Float cC
-    File fF
-    String rR
-    Boolean pP
-    Boolean sS
-    Boolean aA
-    String? prefixPrefix
-    String? in1saiIn1sai
-    String? in2saiIn2sai
-    String? in1fqIn1fq
-    String? in2fqIn2fq
+    Int? maximum_insert_size
+    Int? maximum_occurrences_one
+    Int? maximum_hits_output_paired
+    Int? maximum_hits_output_discordant
+    Float? prior_chimeric_rate
+    File? sam_file_output
+    String? read_group_line
+    Boolean? preload_index_memory
+    Boolean? disable_smithwaterman_unmapped
+    Boolean? disable_insert_size
+    String prefix
+    String in_one_do_tsai
+    String in_two_do_tsai
+    String in_one_dot_fq
+    String in_two_dot_fq
   }
   command <<<
     bwa sampe \
-      ~{prefixPrefix} \
-      ~{if defined(aA) then ("-a " +  '"' + aA + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{if defined(nN) then ("-n " +  '"' + nN + '"') else ""} \
-      ~{if defined(nN) then ("-N " +  '"' + nN + '"') else ""} \
-      ~{if defined(cC) then ("-c " +  '"' + cC + '"') else ""} \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""} \
-      ~{if defined(rR) then ("-r " +  '"' + rR + '"') else ""} \
-      ~{true="-P" false="" pP} \
-      ~{true="-s" false="" sS} \
-      ~{true="-A" false="" aA} \
-      ~{in1saiIn1sai} \
-      ~{in2saiIn2sai} \
-      ~{in1fqIn1fq} \
-      ~{in2fqIn2fq}
+      ~{prefix} \
+      ~{in_one_do_tsai} \
+      ~{in_two_do_tsai} \
+      ~{in_one_dot_fq} \
+      ~{in_two_dot_fq} \
+      ~{if defined(maximum_insert_size) then ("-a " +  '"' + maximum_insert_size + '"') else ""} \
+      ~{if defined(maximum_occurrences_one) then ("-o " +  '"' + maximum_occurrences_one + '"') else ""} \
+      ~{if defined(maximum_hits_output_paired) then ("-n " +  '"' + maximum_hits_output_paired + '"') else ""} \
+      ~{if defined(maximum_hits_output_discordant) then ("-N " +  '"' + maximum_hits_output_discordant + '"') else ""} \
+      ~{if defined(prior_chimeric_rate) then ("-c " +  '"' + prior_chimeric_rate + '"') else ""} \
+      ~{if defined(sam_file_output) then ("-f " +  '"' + sam_file_output + '"') else ""} \
+      ~{if defined(read_group_line) then ("-r " +  '"' + read_group_line + '"') else ""} \
+      ~{true="-P" false="" preload_index_memory} \
+      ~{true="-s" false="" disable_smithwaterman_unmapped} \
+      ~{true="-A" false="" disable_insert_size}
   >>>
+  parameter_meta {
+    maximum_insert_size: "maximum insert size [500]"
+    maximum_occurrences_one: "maximum occurrences for one end [100000]"
+    maximum_hits_output_paired: "maximum hits to output for paired reads [3]"
+    maximum_hits_output_discordant: "maximum hits to output for discordant pairs [10]"
+    prior_chimeric_rate: "prior of chimeric rate (lower bound) [1.0e-05]"
+    sam_file_output: "sam file to output results to [stdout]"
+    read_group_line: "read group header line such as `@RG\tID:foo\tSM:bar' [null]"
+    preload_index_memory: "preload index into memory (for base-space reads only)"
+    disable_smithwaterman_unmapped: "disable Smith-Waterman for the unmapped mate"
+    disable_insert_size: "disable insert size estimate (force -s)"
+    prefix: ""
+    in_one_do_tsai: ""
+    in_two_do_tsai: ""
+    in_one_dot_fq: ""
+    in_two_dot_fq: ""
+  }
 }

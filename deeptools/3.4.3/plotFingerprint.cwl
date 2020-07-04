@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: plotFingerprint.cwl
+id: ../../../../home/ubuntu/BiocondaCli/plotFingerprint.cwl
 inputs:
 - id: bam_files
   doc: 'files [bam files ...], -b bam files [bam files ...] List of indexed BAM files
@@ -94,6 +94,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: an
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: example
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: usage
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: is
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

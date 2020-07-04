@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: galah_cluster.cwl
+id: ../../../../home/ubuntu/BiocondaCli/galah_cluster.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: ani
   doc: 'Average nucleotide identity threshold for clustering [default: 99]'
   type: string

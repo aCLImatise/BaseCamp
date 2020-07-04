@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: secapr_add_missing_sequences.cwl
+id: ../../../../home/ubuntu/BiocondaCli/secapr_add_missing_sequences.cwl
 inputs:
 - id: input
-  doc: ''
+  doc: The directory containing fasta alignments
   type: string
   inputBinding:
     prefix: --input
 - id: output
-  doc: ''
+  doc: The output directory where results will be safed
   type: string
   inputBinding:
     prefix: --output

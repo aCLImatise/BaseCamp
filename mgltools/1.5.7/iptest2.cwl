@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: iptest2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/iptest2.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

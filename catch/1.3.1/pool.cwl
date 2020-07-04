@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: pool.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pool.py.cwl
 inputs:
-- id: probe_count_tsv
-  doc: Path to TSV file that contains probe counts for each dataset and combination
-    of parameters; the first row must be a header, the first column must give a dataset
-    ('dataset'), the last column must list a number of probes ('num_probes'), and
-    the intermediary columns give parameter values
-  type: string
-  inputBinding:
-    position: 0
-- id: target_probe_count
-  doc: Constraint on the total number of probes in the design; generally, parameters
-    will be selected such that the number of probes, when pooled across datasets,
-    is just below this number
-  type: string
-  inputBinding:
-    position: 1
-- id: param_vals_tsv
-  doc: Path to TSV file in which to output optimal parameter values
-  type: string
-  inputBinding:
-    position: 2
 - id: use_nd
   doc: Use the higher dimensional (n > 2) interpolation and search functions for optimizing
     parameters. This is required if the input table of probe counts contains more
@@ -56,6 +36,31 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: round_params
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --round-params
+- id: probe_count_tsv
+  doc: Path to TSV file that contains probe counts for each dataset and combination
+    of parameters; the first row must be a header, the first column must give a dataset
+    ('dataset'), the last column must list a number of probes ('num_probes'), and
+    the intermediary columns give parameter values
+  type: string
+  inputBinding:
+    position: 0
+- id: target_probe_count
+  doc: Constraint on the total number of probes in the design; generally, parameters
+    will be selected such that the number of probes, when pooled across datasets,
+    is just below this number
+  type: string
+  inputBinding:
+    position: 1
+- id: param_vals_tsv
+  doc: Path to TSV file in which to output optimal parameter values
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

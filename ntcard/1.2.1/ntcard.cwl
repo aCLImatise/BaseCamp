@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ntcard.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ntcard.cwl
 inputs:
 - id: threads
   doc: use N parallel threads [1] (N>=2 should be used when input files are >=2)
@@ -32,6 +32,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

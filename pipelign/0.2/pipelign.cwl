@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pipelign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pipelign.cwl
 inputs:
 - id: in_file
   doc: Input sequence file in FASTA format
@@ -82,13 +82,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --ambigPer
-- id: n
-  doc: '{1,2,3,4,5,6}, --stage {1,2,3,4,5,6} 1  Make cluster alignments and HMM of
-    long sequences 2  Align long sequences only 3  Assign fragments to clusters 4  Make
-    cluster alignments with fragments 5  Align all sequences'
-  type: boolean
+- id: stage
+  doc: 1  Make cluster alignments and HMM of long sequences 2  Align long sequences
+    only 3  Assign fragments to clusters 4  Make cluster alignments with fragments
+    5  Align all sequences
+  type: string
   inputBinding:
-    prefix: -n
+    prefix: --stage
 - id: exclude_clusters
   doc: Exclude clusters from final alignment
   type: boolean

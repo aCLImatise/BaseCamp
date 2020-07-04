@@ -2,12 +2,16 @@ version 1.0
 
 task PModel {
   input {
-    Boolean optionsOptions
-    String? modModFile
+    Boolean? options
+    String mod_file
   }
   command <<<
     pModel \
-      ~{modModFile} \
-      ~{true="-options" false="" optionsOptions}
+      ~{mod_file} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    options: ""
+    mod_file: ""
+  }
 }

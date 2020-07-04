@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: domtblout2gene_generic.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/domtblout2gene_generic.py.cwl
 inputs:
 - id: generate
   doc: ''

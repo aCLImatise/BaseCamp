@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bxtools_convert.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bxtools_convert.cwl
 inputs:
 - id: verbose
   doc: Set verbose output
@@ -16,6 +16,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tag
+- id: bam_slash_sam_slash_cram
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

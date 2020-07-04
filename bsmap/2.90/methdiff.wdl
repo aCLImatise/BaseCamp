@@ -2,28 +2,40 @@ version 1.0
 
 task Methdiff.py {
   input {
-    File outOut
-    File refRef
-    String binBin
-    String pvalPval
-    String diffDiff
-    String contextContext
-    String labelsLabels
-    String minMinDepth
-    String strandStrand
-    Boolean quietQuiet
+    File? out
+    File? ref
+    String? bin
+    String? pval
+    String? diff
+    String? context
+    String? labels
+    String? min_depth
+    String? strand
+    Boolean? quiet
   }
   command <<<
     methdiff.py \
-      ~{if defined(outOut) then ("--out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(refRef) then ("--ref " +  '"' + refRef + '"') else ""} \
-      ~{if defined(binBin) then ("--bin " +  '"' + binBin + '"') else ""} \
-      ~{if defined(pvalPval) then ("--pval " +  '"' + pvalPval + '"') else ""} \
-      ~{if defined(diffDiff) then ("--diff " +  '"' + diffDiff + '"') else ""} \
-      ~{if defined(contextContext) then ("--context " +  '"' + contextContext + '"') else ""} \
-      ~{if defined(labelsLabels) then ("--labels " +  '"' + labelsLabels + '"') else ""} \
-      ~{if defined(minMinDepth) then ("--min-depth " +  '"' + minMinDepth + '"') else ""} \
-      ~{if defined(strandStrand) then ("--strand " +  '"' + strandStrand + '"') else ""} \
-      ~{true="--quiet" false="" quietQuiet}
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
+      ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""} \
+      ~{if defined(bin) then ("--bin " +  '"' + bin + '"') else ""} \
+      ~{if defined(pval) then ("--pval " +  '"' + pval + '"') else ""} \
+      ~{if defined(diff) then ("--diff " +  '"' + diff + '"') else ""} \
+      ~{if defined(context) then ("--context " +  '"' + context + '"') else ""} \
+      ~{if defined(labels) then ("--labels " +  '"' + labels + '"') else ""} \
+      ~{if defined(min_depth) then ("--min-depth " +  '"' + min_depth + '"') else ""} \
+      ~{if defined(strand) then ("--strand " +  '"' + strand + '"') else ""} \
+      ~{true="--quiet" false="" quiet}
   >>>
+  parameter_meta {
+    out: "output differential methylation file name. (required)"
+    ref: "reference genome fasta file. (required)"
+    bin: "bin size. [default: 100]"
+    pval: "p-value cut-off. [default: 0.01]"
+    diff: "minimal abs meth ratio difference. [default: 0.33]"
+    context: "methylation pattern type [CG|CHG|CHH], multiple types separated by ','. [default: all]"
+    labels: "output label for each group, separated by ','. [default: filenames]"
+    min_depth: "minimal average coverage. [default: 1]"
+    strand: "which strand to process, [both|forward|reverse]. [default: both]"
+    quiet: "don't print progress on stderr."
+  }
 }

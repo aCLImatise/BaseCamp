@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gappa_random_random_tree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gappa_random_random_tree.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: leaf_count
   doc: =0 REQUIRED Number of leaf nodes (taxa) to create.
   type: string

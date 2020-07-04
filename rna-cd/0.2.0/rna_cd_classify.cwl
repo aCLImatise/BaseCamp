@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: rna_cd_classify.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rna_cd_classify.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: chunksize
   doc: Chunksize in bases. Default = 100
   type: long

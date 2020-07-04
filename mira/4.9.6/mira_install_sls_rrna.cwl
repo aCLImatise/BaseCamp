@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mira_install_sls_rrna.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mira_install_sls_rrna.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

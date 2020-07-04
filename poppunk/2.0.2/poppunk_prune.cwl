@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: poppunk_prune.cwl
+id: ../../../../home/ubuntu/BiocondaCli/poppunk_prune.cwl
 inputs:
 - id: remove
   doc: File listing sequences to remove (required)

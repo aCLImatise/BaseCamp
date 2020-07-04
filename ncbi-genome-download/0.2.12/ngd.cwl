@@ -1,14 +1,6 @@
 class: CommandLineTool
-id: ngd.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ngd.cwl
 inputs:
-- id: group
-  doc: "The NCBI taxonomic group to download (default: all). A comma-separated list\
-    \ of taxonomic groups is also possible. For example: \"bacteria,viral\"Choose\
-    \ from: ['all', 'archaea', 'bacteria', 'fungi', 'invertebrate', 'metagenomes',\
-    \ 'plant', 'protozoa', 'vertebrate_mammalian', 'vertebrate_other', 'viral']"
-  type: string
-  inputBinding:
-    position: 0
 - id: section
   doc: 'NCBI section to download (default: refseq)'
   type: string
@@ -67,7 +59,7 @@ inputs:
   inputBinding:
     prefix: --refseq-category
 - id: output_folder
-  doc: 'Create output hierarchy in specified folder (default: /tmp/tmp0zu1tld5)'
+  doc: 'Create output hierarchy in specified folder (default: /tmp/tmpccjmanvs)'
   type: string
   inputBinding:
     prefix: --output-folder
@@ -130,6 +122,14 @@ inputs:
   type: string
   inputBinding:
     prefix: --type-material
+- id: group
+  doc: "The NCBI taxonomic group to download (default: all). A comma-separated list\
+    \ of taxonomic groups is also possible. For example: \"bacteria,viral\"Choose\
+    \ from: ['all', 'archaea', 'bacteria', 'fungi', 'invertebrate', 'metagenomes',\
+    \ 'plant', 'protozoa', 'vertebrate_mammalian', 'vertebrate_other', 'viral']"
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

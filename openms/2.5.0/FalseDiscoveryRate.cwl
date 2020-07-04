@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FalseDiscoveryRate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FalseDiscoveryRate.cwl
 inputs:
 - id: in
   doc: "*              Identifications from searching a target-decoy database. (valid\
@@ -22,18 +22,6 @@ inputs:
   type: string
   inputBinding:
     prefix: -protein
-- id: fdr
-  doc: ":PSM <fraction>      Filter PSMs based on q-value (e.g., 0.05 = 5% FDR, disabled\
-    \ for 1) (default: '1.0' min: '0.0' max: '1.0')"
-  type: boolean
-  inputBinding:
-    prefix: -FDR
-- id: fdr
-  doc: ":protein <fraction>  Filter proteins based on q-value (e.g., 0.05 = 5% FDR,\
-    \ disabled for 1) (default: '1.0' min: '0.0' max: '1.0')"
-  type: boolean
-  inputBinding:
-    prefix: -FDR
 - id: ini
   doc: Use the given TOPP INI file
   type: File
@@ -54,16 +42,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Parameter section for the FDR calculation algorithm
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
-- id: http
-  doc: ://www.openms.de/documentation/TOPP_FalseDiscoveryRate.html
-  type: boolean
-  inputBinding:
-    prefix: '- http'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

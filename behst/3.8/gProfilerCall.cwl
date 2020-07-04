@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gProfilerCall.r.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gProfilerCall.r.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

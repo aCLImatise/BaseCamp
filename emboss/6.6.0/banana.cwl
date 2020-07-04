@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: banana.cwl
+id: ../../../../home/ubuntu/BiocondaCli/banana.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: chexmix.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chexmix.cwl
 inputs:
 - id: threads
   doc: <number of threads to use (default=1)>
@@ -181,7 +181,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --kldivergencethres
-- id: q
+- id: qvalue_minimum_default
   doc: <Q-value minimum (default=0.01)>
   type: boolean
   inputBinding:

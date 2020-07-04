@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gotree_unroot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gotree_unroot.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: input
   doc: Input tree (default "stdin")
   type: string

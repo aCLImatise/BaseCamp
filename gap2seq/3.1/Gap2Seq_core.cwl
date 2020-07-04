@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Gap2Seq_core.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Gap2Seq_core.cwl
 inputs:
 - id: length
   doc: "(1 arg) :    Length of a single gap  [default '']"
@@ -74,7 +74,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -solid
-- id: k
+- id: arg_kmer_length
   doc: "(1 arg) :    k-mer length  [default '31']"
   type: boolean
   inputBinding:

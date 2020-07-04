@@ -1,7 +1,14 @@
 version 1.0
 
 task Uptime {
+  input {
+    String? option
+  }
   command <<<
-    uptime
+    uptime \
+      ~{option}
   >>>
+  parameter_meta {
+    option: ""
+  }
 }

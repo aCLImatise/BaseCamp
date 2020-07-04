@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Fasta_to_Scaffolds2Bin.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Fasta_to_Scaffolds2Bin.sh.cwl
 inputs:
 - id: extension
   doc: 'Extension of fasta files. (default: fasta)'

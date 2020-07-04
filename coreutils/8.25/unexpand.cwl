@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: unexpand.cwl
+id: ../../../../home/ubuntu/BiocondaCli/unexpand.cwl
 inputs:
 - id: all
   doc: convert all blanks, instead of just initial blanks
@@ -11,16 +11,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --first-only
-- id: tabs
-  doc: have tabs N characters apart instead of 8 (enables -a)
+- id: option
+  doc: ''
   type: string
   inputBinding:
-    prefix: --tabs
-- id: tabs
-  doc: use comma separated LIST of tab positions (enables -a)
-  type: string
-  inputBinding:
-    prefix: --tabs
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

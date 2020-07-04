@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: chicDifferentialTest.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chicDifferentialTest.cwl
 inputs:
 - id: interaction_file
   doc: path to the interaction files which should be used for the differential test.

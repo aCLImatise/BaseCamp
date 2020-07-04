@@ -2,22 +2,28 @@ version 1.0
 
 task ProsicControlFdr {
   input {
-    String fdrFdr
-    String eventEvent
-    Int maxMaxLen
-    Int minMinLen
-    String varVar
-    String? optionsOptions
-    String? bcfBcf
+    String? fdr
+    String? event
+    Int? max_len
+    Int? min_len
+    String? var
+    String bcf
   }
   command <<<
     prosic control-fdr \
-      ~{optionsOptions} \
-      ~{if defined(fdrFdr) then ("--fdr " +  '"' + fdrFdr + '"') else ""} \
-      ~{if defined(eventEvent) then ("--event " +  '"' + eventEvent + '"') else ""} \
-      ~{if defined(maxMaxLen) then ("--max-len " +  '"' + maxMaxLen + '"') else ""} \
-      ~{if defined(minMinLen) then ("--min-len " +  '"' + minMinLen + '"') else ""} \
-      ~{if defined(varVar) then ("--var " +  '"' + varVar + '"') else ""} \
-      ~{bcfBcf}
+      ~{bcf} \
+      ~{if defined(fdr) then ("--fdr " +  '"' + fdr + '"') else ""} \
+      ~{if defined(event) then ("--event " +  '"' + event + '"') else ""} \
+      ~{if defined(max_len) then ("--max-len " +  '"' + max_len + '"') else ""} \
+      ~{if defined(min_len) then ("--min-len " +  '"' + min_len + '"') else ""} \
+      ~{if defined(var) then ("--var " +  '"' + var + '"') else ""}
   >>>
+  parameter_meta {
+    fdr: "FDR to control for. [default: 0.05]"
+    event: "Event to consider."
+    max_len: "Maximum indel length to consider (exclusive)."
+    min_len: "Minimum indel length to consider."
+    var: "Variant type to consider (SNV, INS, DEL)."
+    bcf: ""
+  }
 }

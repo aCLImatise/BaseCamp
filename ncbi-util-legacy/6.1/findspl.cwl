@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: findspl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/findspl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

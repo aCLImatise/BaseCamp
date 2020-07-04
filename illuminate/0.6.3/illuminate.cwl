@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: illuminate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/illuminate.cwl
 inputs:
 - id: verbose
   doc: 'Increase verbosity           '
@@ -91,6 +91,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --timestamp
+- id: data_path
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

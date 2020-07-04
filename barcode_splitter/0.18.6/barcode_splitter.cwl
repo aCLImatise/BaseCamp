@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: barcode_splitter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/barcode_splitter.cwl
 inputs:
-- id: file
-  doc: A series of 1 or more [optionally zipped] fastq files.
-  type: File
-  inputBinding:
-    position: 0
 - id: bc_file
   doc: 'REQUIRED: Tab delimited file: "Sample_ID <tab> Barcode_Sequence" Multiple
     barcode columns with different barcode lengths allowed, but all barcodes in each
@@ -79,6 +74,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gzipin
+- id: file
+  doc: A series of 1 or more [optionally zipped] fastq files.
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

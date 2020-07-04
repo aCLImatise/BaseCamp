@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: haploclique.cwl
+id: ../../../../home/ubuntu/BiocondaCli/haploclique.cwl
 inputs:
-- id: clever
-  doc: use the original clever clique finder
-  type: string
-  inputBinding:
-    position: 0
-- id: bronk_er_bosch
-  doc: use the Bron-Kerbosch based clique finder
-  type: string
-  inputBinding:
-    position: 1
 - id: gff
   doc: Option to create GFF File from output. <output> is used as prefix.
   type: boolean
@@ -32,6 +22,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --limit_clique_size
+- id: clever
+  doc: use the original clever clique finder
+  type: string
+  inputBinding:
+    position: 0
+- id: bronk_er_bosch
+  doc: use the Bron-Kerbosch based clique finder
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

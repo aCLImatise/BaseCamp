@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: merge_variants.cwl
+id: ../../../../home/ubuntu/BiocondaCli/merge_variants.cwl
 inputs:
 - id: ref
   doc: samtools reference sequence (required)
@@ -29,11 +29,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --murdock
-- id: no
-  doc: of overlapping indel alleles
-  type: string
-  inputBinding:
-    prefix: '- No'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

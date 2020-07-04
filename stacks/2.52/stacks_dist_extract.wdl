@@ -2,10 +2,13 @@ version 1.0
 
 task StacksDistExtract {
   input {
-    String? distDistFile
+    String dist_file
   }
   command <<<
     stacks-dist-extract \
-      ~{distDistFile}
+      ~{dist_file}
   >>>
+  parameter_meta {
+    dist_file: ""
+  }
 }

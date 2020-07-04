@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bfconvert.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bfconvert.cwl
 inputs:
 - id: version
   doc: ': print the library version and exit'
@@ -87,7 +87,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -channel
-- id: z
+- id: only_convert_section
   doc: ': only convert the specified Z section (indexed from 0)'
   type: boolean
   inputBinding:

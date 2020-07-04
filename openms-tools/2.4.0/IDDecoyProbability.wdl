@@ -2,26 +2,34 @@ version 1.0
 
 task IDDecoyProbability {
   input {
-    File inIn
-    File fwdFwdIn
-    File revRevIn
-    File outOut
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
-    Boolean decoyDecoyAlgorithm
+    File? in
+    File? fwd_in
+    File? rev_in
+    File? out
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     IDDecoyProbability \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(fwdFwdIn) then ("-fwd_in " +  '"' + fwdFwdIn + '"') else ""} \
-      ~{if defined(revRevIn) then ("-rev_in " +  '"' + revRevIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp} \
-      ~{true="- decoy_algorithm" false="" decoyDecoyAlgorithm}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(fwd_in) then ("-fwd_in " +  '"' + fwd_in + '"') else ""} \
+      ~{if defined(rev_in) then ("-rev_in " +  '"' + rev_in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "Identification input of combined forward decoy search (reindex with PeptideIndexer first) (valid formats: 'idXML')"
+    fwd_in: "Identification input of forward run (valid formats: 'idXML')"
+    rev_in: "Identification input of decoy run (valid formats: 'idXML')"
+    out: "*       Identification output with forward scores converted to probabilities (valid formats: 'idXML')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

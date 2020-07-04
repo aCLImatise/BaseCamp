@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mappedCoverage.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mappedCoverage.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

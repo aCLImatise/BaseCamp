@@ -2,10 +2,13 @@ version 1.0
 
 task TreebestOrtho {
   input {
-    String? treeTree
+    String tree
   }
   command <<<
     treebest ortho \
-      ~{treeTree}
+      ~{tree}
   >>>
+  parameter_meta {
+    tree: ""
+  }
 }

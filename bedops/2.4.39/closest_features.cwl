@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: closest_features.cwl
+id: ../../../../home/ubuntu/BiocondaCli/closest_features.cwl
 inputs:
 - id: chrom
   doc: Jump to and process data for given <chromosome> only.
@@ -42,6 +42,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-ref
+- id: process_flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: input_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: query_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

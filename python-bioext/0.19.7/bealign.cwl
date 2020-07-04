@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: bealign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bealign.cwl
 inputs:
-- id: input
-  doc: INPUT FASTA file
-  type: string
-  inputBinding:
-    position: 0
-- id: output
-  doc: send BAM to OUTPUT
-  type: string
-  inputBinding:
-    position: 1
 - id: reference
   doc: REFERENCE FASTA file or {HXB2_env, HXB2_gag, HXB2_int, HXB2_nef, HXB2_pol,
     HXB2_pr, HXB2_prrt, HXB2_rev, HXB2_rt, HXB2_tat, HXB2_vif, HXB2_vpr, HXB2_vpu,

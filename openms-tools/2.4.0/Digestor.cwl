@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Digestor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Digestor.cwl
 inputs:
 - id: in
   doc: "*                  Input file (valid formats: 'fasta')"
@@ -35,29 +35,15 @@ inputs:
 - id: enzyme
   doc: "The type of digestion enzyme (default: 'Trypsin' valid: 'Arg-C', 'V8-E', 'staphylococcal\
     \ protease/D', 'V8-DE', 'Chymotrypsin', 'Asp-N_ambic', 'Formic_acid', 'TrypChymo',\
-    \ 'Trypsin/ P', 'Lys-C/P', 'leukocyte elastase', 'Lys-N', 'Asp-N', 'proline-endopeptidase/HKR',\
+    \ 'Trypsin/P', 'Lys-C/P', 'leukocyte elastase', 'Lys-N', 'Asp-N', 'proline-endopeptidase/HKR',\
     \ 'Glu-C+P', 'Trypsin', 'Asp-N/B', 'unspecific cleavage', 'Alpha-lytic protease',\
-    \ '2-iodobenzoate ', 'iodosobenzoate', 'CNBr', 'glutamyl endopeptidase', 'PepsinA',\
+    \ '2-iodobenzoate', 'iodosobenzoate', 'CNBr', 'glutamyl endopeptidase', 'PepsinA',\
     \ 'proline endopeptidase', 'Chymotrypsin/P', 'PepsinA + P', 'cyanogen-bromide',\
-    \ 'Clostripain/P', 'elastase-trypsin- chymotrypsin', 'no cleavage', 'Arg-C/P',\
+    \ 'Clostripain/P', 'elastase-trypsin-chymotrypsin', 'no cleavage', 'Arg-C/P',\
     \ 'Lys-C')"
   type: string
   inputBinding:
     prefix: -enzyme
-- id: fast_a
-  doc: ":ID <option>           Identifier to use for each peptide: copy from parent\
-    \ protein (parent); a consecutive number (number); parent ID + consecutive number\
-    \ (both) (default: 'parent' valid: 'parent',  'number', 'both')"
-  type: boolean
-  inputBinding:
-    prefix: -FASTA
-- id: fast_a
-  doc: ":description <option>  Keep or remove the (possibly lengthy) FASTA header\
-    \ description. Keeping it can increase resulting FASTA file significantly. (default:\
-    \ 'remove' valid: 'remove', 'keep')"
-  type: boolean
-  inputBinding:
-    prefix: -FASTA
 - id: ini
   doc: Use the given TOPP INI file
   type: File

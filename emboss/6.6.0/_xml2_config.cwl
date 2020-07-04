@@ -1,23 +1,13 @@
 class: CommandLineTool
-id: _xml2_config.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_xml2_config.cwl
 inputs:
-- id: xml2_config
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: prefix
-  doc: change libxml prefix [default /tmp/tmp9yoxgo6u]
+  doc: change libxml prefix [default /tmp/tmpa5dnn8jt]
   type: string
   inputBinding:
     prefix: --prefix
 - id: exec_prefix
-  doc: change libxml exec prefix [default /tmp/tmp9yoxgo6u]
+  doc: change libxml exec prefix [default /tmp/tmpa5dnn8jt]
   type: string
   inputBinding:
     prefix: --exec-prefix
@@ -36,6 +26,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --modules
+- id: xml_two_config
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

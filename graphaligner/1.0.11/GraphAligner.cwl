@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: GraphAligner.cwl
+id: ../../../../home/ubuntu/BiocondaCli/GraphAligner.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

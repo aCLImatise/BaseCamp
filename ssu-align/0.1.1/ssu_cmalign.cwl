@@ -1,32 +1,22 @@
 class: CommandLineTool
-id: ssu_cmalign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ssu_cmalign.cwl
 inputs:
-- id: cm_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: sequence_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: o
+- id: output_alignment_file
   doc: ': output the alignment to file <f>, not stdout'
   type: string
   inputBinding:
     prefix: -o
-- id: l
+- id: align_locally_model
   doc: ': align locally w.r.t. the model'
   type: boolean
   inputBinding:
     prefix: -l
-- id: q
+- id: quiet_suppress_banner
   doc: ': quiet; suppress banner and scores, print only the alignment'
   type: boolean
   inputBinding:
     prefix: -q
-- id: m
+- id: metacm_mode_cmfile
   doc: ': meta-cm mode: <cmfile> is a meta-cm built from aln in <f>'
   type: string
   inputBinding:
@@ -71,7 +61,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --sample
-- id: s
+- id: wsample_set_seed
   doc: ': w/--sample, set RNG seed to <n> (if 0: one-time arbitrary seed)'
   type: string
   inputBinding:
@@ -176,6 +166,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --sfile
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: cm_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: sequence_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

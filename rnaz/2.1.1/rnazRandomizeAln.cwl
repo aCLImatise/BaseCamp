@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: rnazRandomizeAln.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnazRandomizeAln.pl.cwl
 inputs:
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: slide
   doc: Long alignment blocks should be shuffled locally in order to maintain local
     characteristics of the alignment. Therefore alignments can be shuffled in windows.
@@ -35,6 +30,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --man
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

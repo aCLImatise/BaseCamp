@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: marscan.cwl
-inputs:
-- id: r_format
-  doc: )
-  type: string
-  inputBinding:
-    prefix: -rformat
+id: ../../../../home/ubuntu/BiocondaCli/marscan.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

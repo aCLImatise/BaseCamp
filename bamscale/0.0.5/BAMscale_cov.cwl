@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: BAMscale_cov.cwl
+id: ../../../../home/ubuntu/BiocondaCli/BAMscale_cov.cwl
 inputs:
 - id: bed
   doc: Input BED file

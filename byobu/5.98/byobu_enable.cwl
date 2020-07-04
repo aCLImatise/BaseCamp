@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: byobu_enable.cwl
+id: ../../../../home/ubuntu/BiocondaCli/byobu_enable.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nonpareil.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nonpareil.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

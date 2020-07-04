@@ -2,14 +2,19 @@ version 1.0
 
 task AnviGenPhylogenomicTree {
   input {
-    String fastFastAFile
-    File outputOutputFile
-    String programProgram
+    String? fast_a_file
+    File? output_file
+    String? program
   }
   command <<<
     anvi-gen-phylogenomic-tree \
-      ~{if defined(fastFastAFile) then ("--fasta-file " +  '"' + fastFastAFile + '"') else ""} \
-      ~{if defined(outputOutputFile) then ("--output-file " +  '"' + outputOutputFile + '"') else ""} \
-      ~{if defined(programProgram) then ("--program " +  '"' + programProgram + '"') else ""}
+      ~{if defined(fast_a_file) then ("--fasta-file " +  '"' + fast_a_file + '"') else ""} \
+      ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
+      ~{if defined(program) then ("--program " +  '"' + program + '"') else ""}
   >>>
+  parameter_meta {
+    fast_a_file: "A FASTA-formatted input file"
+    output_file: "File path to store results."
+    program: "Program name."
+  }
 }

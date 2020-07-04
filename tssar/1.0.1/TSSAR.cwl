@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: TSSAR.bak.cwl
+id: ../../../../home/ubuntu/BiocondaCli/TSSAR.bak.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sstofa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sstofa.cwl
 inputs:
 - id: sec_struct_file
   doc: ''

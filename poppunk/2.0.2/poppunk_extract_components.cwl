@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: poppunk_extract_components.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/poppunk_extract_components.py.cwl
 inputs:
 - id: extract_components
   doc: ''

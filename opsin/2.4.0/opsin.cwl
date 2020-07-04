@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: opsin.cwl
+id: ../../../../home/ubuntu/BiocondaCli/opsin.cwl
 inputs:
 - id: allow_acids_without_acid
   doc: Allows interpretation of acids without the word acid e.g. "acetic"
@@ -43,6 +43,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --wildcardRadicals
+- id: jar
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -jar
+- id: java
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,10 +2,13 @@ version 1.0
 
 task FastqUniq {
   input {
-    Boolean verboseVerbose
+    Boolean? verbose
   }
   command <<<
     fastq-uniq \
-      ~{true="--verbose" false="" verboseVerbose}
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    verbose: "print status along the way"
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: obdistgen.cwl
+id: ../../../../home/ubuntu/BiocondaCli/obdistgen.cwl
 inputs:
 - id: filename
   doc: ''

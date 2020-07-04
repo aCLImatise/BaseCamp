@@ -1,16 +1,17 @@
 class: CommandLineTool
-id: get_simple_cycs.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_simple_cycs.py.cwl
 inputs:
-- id: i
-  doc: ''
+- id: input
+  doc: Input (SPAdes 3.50+) FASTG to process
   type: string
   inputBinding:
-    prefix: -i
-- id: m
-  doc: ''
+    prefix: --input
+- id: min_length
+  doc: Minimum cycle length to keep (shorter cycles put in new graph file; default
+    = 1000)
   type: long
   inputBinding:
-    prefix: -m
+    prefix: --min_length
 outputs: []
 cwlVersion: v1.1
 baseCommand:

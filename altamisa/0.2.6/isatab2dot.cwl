@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: isatab2dot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/isatab2dot.cwl
 inputs:
-- id: i
-  doc: ''
+- id: investigation_file
+  doc: Path to investigation file
   type: string
   inputBinding:
-    prefix: -i
-- id: o
-  doc: ''
+    prefix: --investigation-file
+- id: output_file
+  doc: Path to output file, stdout ("-") by default
   type: string
   inputBinding:
-    prefix: -o
+    prefix: --output-file
 outputs: []
 cwlVersion: v1.1
 baseCommand:

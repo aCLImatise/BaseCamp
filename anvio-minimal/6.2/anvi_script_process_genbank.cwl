@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_script_process_genbank.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_script_process_genbank.cwl
 inputs:
 - id: input_genbank
   doc: Input GenBank file
@@ -16,6 +16,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --annotation-version
+- id: o
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -O
 outputs: []
 cwlVersion: v1.1
 baseCommand:

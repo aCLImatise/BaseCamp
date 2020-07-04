@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rappas.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rappas.cwl
 inputs:
 - id: xms
   doc: -> memory allocated at startup. (m=MegaByte, g=GigaByte)
@@ -11,6 +11,36 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -Xmx
+- id: one_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: for
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: building
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: the
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: phylo_km_ers
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
+- id: database
+  doc: ''
+  type: string
+  inputBinding:
+    position: 5
 outputs: []
 cwlVersion: v1.1
 baseCommand:

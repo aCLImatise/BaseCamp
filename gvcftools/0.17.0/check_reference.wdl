@@ -2,10 +2,13 @@ version 1.0
 
 task CheckReference {
   input {
-    String refRef
+    String? ref
   }
   command <<<
     check_reference \
-      ~{if defined(refRef) then ("--ref " +  '"' + refRef + '"') else ""}
+      ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""}
   >>>
+  parameter_meta {
+    ref: "samtools reference sequence (required)"
+  }
 }

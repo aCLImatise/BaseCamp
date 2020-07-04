@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: omero_group_info.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_group_info.cwl
 inputs:
-- id: group
-  doc: ID or name of the group(s)
-  type: string
-  inputBinding:
-    position: 0
 - id: style
   doc: use alternative output style (default=sql)
   type: string
@@ -41,6 +36,11 @@ inputs:
   type: string[]
   inputBinding:
     prefix: --group-name
+- id: group
+  doc: ID or name of the group(s)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

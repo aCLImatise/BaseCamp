@@ -1,21 +1,21 @@
 class: CommandLineTool
-id: summarize_flags.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/summarize_flags.py.cwl
 inputs:
-- id: f
-  doc: ''
+- id: flags
+  doc: Flag file.
   type: string
   inputBinding:
-    prefix: -f
+    prefix: --flags
 - id: id
-  doc: ''
+  doc: Name of the column with unique identifiers.
   type: string
   inputBinding:
-    prefix: -id
-- id: os
-  doc: ''
+    prefix: --ID
+- id: out_summary
+  doc: Output file for Summary.
   type: string
   inputBinding:
-    prefix: -os
+    prefix: --outSummary
 outputs: []
 cwlVersion: v1.1
 baseCommand:

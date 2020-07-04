@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bedGraphToBigWig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedGraphToBigWig.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: guidescan_cutting_specificity_processer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/guidescan_cutting_specificity_processer.cwl
 inputs:
 - id: database_directory
   doc: absolute filepath to directory hosting sgRNA database with no cutting specificity
@@ -23,7 +23,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --fasta_filepath
-- id: database_directory_2
+- id: database_directory_two
   doc: absolute filepath to directory hosting sgRNA database with cutting specificity
     scores already included and generated with all the same run parameters as another
     database except for -d. This parameter, coupled with -n2, allows for the transfer
@@ -32,7 +32,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --database_directory2
-- id: database_name_2
+- id: database_name_two
   doc: filename of sgRNA database with cutting specificity scores already included
     and generated with all the same run parameters as another database except for
     -d. This parameter, coupled with -d2, allows for the transfer of cutting efficiency

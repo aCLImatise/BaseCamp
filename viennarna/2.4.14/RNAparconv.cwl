@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: RNAparconv.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAparconv.cwl
 inputs:
-- id: input_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: output_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: full_help
   doc: Print help, including hidden options, and exit
   type: boolean
@@ -46,6 +36,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --silent
+- id: input_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

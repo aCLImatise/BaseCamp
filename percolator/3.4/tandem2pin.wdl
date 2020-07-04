@@ -2,16 +2,25 @@ version 1.0
 
 task Tandem2pin {
   input {
-    Boolean enzymeEnzyme
-    Boolean maxMaxMass
-    String? targetTargetFile
-    String? decoyDecoyFile
+    Boolean? enzyme
+    Boolean? max_mass
+    String? o
+    String target_file
+    String decoy_file
   }
   command <<<
     tandem2pin \
-      ~{targetTargetFile} \
-      ~{true="--enzyme" false="" enzymeEnzyme} \
-      ~{true="--max-mass" false="" maxMaxMass} \
-      ~{decoyDecoyFile}
+      ~{target_file} \
+      ~{decoy_file} \
+      ~{true="--enzyme" false="" enzyme} \
+      ~{true="--max-mass" false="" max_mass} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    enzyme: "Type of enzyme  \"no_enzyme\",\"elastase\",\"pepsin\",\"proteinasek\",\"therm olysin\",\"chymotrypsin\",\"lys-n\",\"lys-c\",\"arg-c\",\"asp- n\",\"glu-c\",\"trypsin\" default=\"trypsin\""
+    max_mass: "Maximum peptide mass allowed used in the search  engine (default 6000)(Only valid when using option  -F)."
+    o: ""
+    target_file: ""
+    decoy_file: ""
+  }
 }

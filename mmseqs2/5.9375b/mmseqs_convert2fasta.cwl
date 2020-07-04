@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mmseqs_convert2fasta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mmseqs_convert2fasta.cwl
 inputs:
 - id: use_header_file
   doc: false           use the ffindex header file instead of the body to map the
@@ -7,7 +7,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --use-header-file
-- id: v
+- id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'
   type: boolean
   inputBinding:

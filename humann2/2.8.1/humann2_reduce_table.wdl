@@ -2,18 +2,25 @@ version 1.0
 
 task Humann2ReduceTable {
   input {
-    Boolean verboseVerbose
-    String inputInput
-    String outputOutput
-    String functionFunction
-    String sortSortBy
+    Boolean? verbose
+    String? the_input_table
+    String? the_output_table
+    String? function
+    String? sort_by
   }
   command <<<
     humann2_reduce_table \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{if defined(inputInput) then ("--input " +  '"' + inputInput + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(functionFunction) then ("--function " +  '"' + functionFunction + '"') else ""} \
-      ~{if defined(sortSortBy) then ("--sort-by " +  '"' + sortSortBy + '"') else ""}
+      ~{true="--verbose" false="" verbose} \
+      ~{if defined(the_input_table) then ("--input " +  '"' + the_input_table + '"') else ""} \
+      ~{if defined(the_output_table) then ("--output " +  '"' + the_output_table + '"') else ""} \
+      ~{if defined(function) then ("--function " +  '"' + function + '"') else ""} \
+      ~{if defined(sort_by) then ("--sort-by " +  '"' + sort_by + '"') else ""}
   >>>
+  parameter_meta {
+    verbose: "additional output is printed"
+    the_input_table: "the input table"
+    the_output_table: "the output table"
+    function: "the function to apply"
+    sort_by: "sort the output by the selection"
+  }
 }

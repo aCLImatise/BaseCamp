@@ -1,11 +1,21 @@
 class: CommandLineTool
-id: bs_seeker2_align.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bs_seeker2_align.py.cwl
 inputs:
 - id: input
   doc: 'Input read file (FORMAT: sequences, qseq, fasta, fastq). Ex: read.fa or read.fa.gz'
   type: string
   inputBinding:
     prefix: --input
+- id: input_one
+  doc: 'Input read file, mate 1 (FORMAT: sequences, qseq, fasta, fastq)'
+  type: File
+  inputBinding:
+    prefix: --input_1
+- id: input_two
+  doc: 'Input read file, mate 2 (FORMAT: sequences, qseq, fasta, fastq)'
+  type: File
+  inputBinding:
+    prefix: --input_2
 - id: mini_ns
   doc: 'The minimum insert size for valid paired-end alignments [Default: 0]'
   type: long
@@ -83,14 +93,14 @@ inputs:
   inputBinding:
     prefix: --aligner
 - id: path
-  doc: 'Path to the aligner program. Detected: bowtie: None bowtie2: /tmp/tmp6_ed8_xm/bin
+  doc: 'Path to the aligner program. Detected: bowtie: None bowtie2: /tmp/tmp5qr94fea/bin
     rmap: None soap: None'
   type: File
   inputBinding:
     prefix: --path
 - id: db
   doc: 'Path to the reference genome library (generated in preprocessing genome) [Default:
-    /tmp/tmp6_ed8_xm/bin/bs_utils/reference_genomes]'
+    /tmp/tmp5qr94fea/bin/bs_utils/reference_genomes]'
   type: string
   inputBinding:
     prefix: --db

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: clipprimer.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clipprimer.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

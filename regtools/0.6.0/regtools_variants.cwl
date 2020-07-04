@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: regtools_variants.cwl
+id: ../../../../home/ubuntu/BiocondaCli/regtools_variants.cwl
 inputs:
 - id: command
   doc: ''

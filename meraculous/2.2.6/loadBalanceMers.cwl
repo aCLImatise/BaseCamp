@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: loadBalanceMers.pl_num_of_prefix_blocks.cwl
+id: ../../../../home/ubuntu/BiocondaCli/loadBalanceMers.pl.cwl
 inputs:
 - id: mer_count_file
   doc: ''
@@ -15,4 +15,3 @@ outputs: []
 cwlVersion: v1.1
 baseCommand:
 - loadBalanceMers.pl
-- num_of_prefix_blocks

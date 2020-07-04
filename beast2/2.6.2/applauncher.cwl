@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: applauncher.cwl
+id: ../../../../home/ubuntu/BiocondaCli/applauncher.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

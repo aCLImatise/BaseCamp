@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: chicViewpoint.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chicViewpoint.cwl
 inputs:
 - id: matrices
   doc: Path to the Hi-C matrices which store the captured Hi-C data per sample.
   type: string[]
   inputBinding:
     prefix: --matrices
-- id: range
+- id: range_defines_region
   doc: RANGE   Defines the region upstream and downstream of a reference point which
     should be considered in the analysis. Please remember to use the same fixate range
     setting as for the background model computation and that distances of the range
@@ -65,6 +65,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --outputFolder
+- id: var_11
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

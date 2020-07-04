@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: snpmutator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snpmutator.cwl
 inputs:
-- id: input_fast_a_file
-  doc: Input fasta file.
-  type: string
-  inputBinding:
-    position: 0
 - id: num_simulations
   doc: 'Number of mutated sequences to generate. (default: 100)'
   type: long
@@ -84,6 +79,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --metrics
+- id: input_fast_a_file
+  doc: Input fasta file.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

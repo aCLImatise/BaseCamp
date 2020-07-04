@@ -2,12 +2,22 @@ version 1.0
 
 task TableAddColumn.py {
   input {
-    Boolean headerHeader
-    Boolean commentsComments
+    Boolean? header
+    Boolean? comments
+    String expression
+    String colname
   }
   command <<<
     table_add_column.py \
-      ~{true="--header" false="" headerHeader} \
-      ~{true="--comments" false="" commentsComments}
+      ~{expression} \
+      ~{colname} \
+      ~{true="--header" false="" header} \
+      ~{true="--comments" false="" comments}
   >>>
+  parameter_meta {
+    header: "keep header in output"
+    comments: "keep comments in output"
+    expression: ""
+    colname: ""
+  }
 }

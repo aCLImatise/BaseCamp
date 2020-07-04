@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_setup_pfams.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_setup_pfams.cwl
 inputs:
 - id: pfam_data_dir
   doc: The directory for Pfam data to be stored. If you leave it as is without specifying

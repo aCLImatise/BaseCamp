@@ -1,21 +1,11 @@
 class: CommandLineTool
-id: seqmerge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqmerge.cwl
 inputs:
-- id: input
-  doc: ''
+- id: separator
+  doc: sequence count will be appended as '(SEP)COUNT'
   type: string
   inputBinding:
-    position: 0
-- id: output
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: s
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -s
+    prefix: --separator
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamsplitdiv.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamsplitdiv.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: LTR_retriever.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/LTR_retriever.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

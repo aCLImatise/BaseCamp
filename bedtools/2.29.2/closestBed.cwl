@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: closestBed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/closestBed.cwl
 inputs:
-- id: d
+- id: addition_closest_feature
   doc: In addition to the closest feature in B,  report its distance to A as an extra
     column. - The reported distance for overlapping features will be 0.
   type: boolean
   inputBinding:
     prefix: -d
-- id: d
+- id: d_report_feature
   doc: 'Like -d, report the closest feature in B, and its distance to A as an extra
     column. Unlike -d, use negative distances to report upstream features. The options
     for defining which orientation is "upstream" are: - "ref"   Report distance with
@@ -48,7 +48,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -fd
-- id: t
+- id: how_ties_closest
   doc: 'How ties for closest feature are handled.  This occurs when two features in
     B have exactly the same "closeness" with A. By default, all such features in B
     are reported. Here are all the options: - "all"    Report all ties (default).
@@ -63,51 +63,51 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -mdb
-- id: k
+- id: report_k_hits
   doc: Report the k closest hits. Default is 1. If tieMode = "all",  - all ties will
     still be reported.
   type: boolean
   inputBinding:
     prefix: -k
-- id: n
+- id: require_query_hit
   doc: Require that the query and the closest hit have different names. For BED, the
     4th column is compared.
   type: boolean
   inputBinding:
     prefix: -N
-- id: s
+- id: require_same_strandedness
   doc: Require same strandedness.  That is, only report hits in B that overlap A on
     the _same_ strand. - By default, overlaps are reported without respect to strand.
   type: boolean
   inputBinding:
     prefix: -s
-- id: s
+- id: require_different_strandedness
   doc: Require different strandedness.  That is, only report hits in B that overlap
     A on the _opposite_ strand. - By default, overlaps are reported without respect
     to strand.
   type: boolean
   inputBinding:
     prefix: -S
-- id: f
+- id: minimum_overlap_a
   doc: Minimum overlap required as a fraction of A. - Default is 1E-9 (i.e., 1bp).
     - FLOAT (e.g. 0.50)
   type: boolean
   inputBinding:
     prefix: -f
-- id: f
+- id: minimum_overlap_b
   doc: Minimum overlap required as a fraction of B. - Default is 1E-9 (i.e., 1bp).
     - FLOAT (e.g. 0.50)
   type: boolean
   inputBinding:
     prefix: -F
-- id: r
+- id: require_fraction_overlap
   doc: Require that the fraction overlap be reciprocal for A AND B. - In other words,
     if -f is 0.90 and -r is used, this requires that B overlap 90% of A and A _also_
     overlaps 90% of B.
   type: boolean
   inputBinding:
     prefix: -r
-- id: e
+- id: require_minimum_fraction
   doc: Require that the minimum fraction be satisfied for A OR B. - In other words,
     if -e is used with -f 0.90 and -F 0.10 this requires that either 90% of A is covered
     OR 10% of  B is covered. Without -e, both fractions would have to be satisfied.
@@ -119,7 +119,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -split
-- id: g
+- id: provide_genome_file
   doc: Provide a genome file to enforce consistent chromosome sort order across input
     files. Only applies when used with -sorted option.
   type: boolean
@@ -174,6 +174,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -iobuf
+- id: a
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -a
+- id: b
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -b
+- id: bed_tools
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: closest
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

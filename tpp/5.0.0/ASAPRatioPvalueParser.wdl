@@ -2,12 +2,16 @@ version 1.0
 
 task ASAPRatioPvalueParser {
   input {
-    String? xmlXmlFile
-    String? pngPngFile
+    String xml_file
+    String? png_file
   }
   command <<<
     ASAPRatioPvalueParser \
-      ~{xmlXmlFile} \
-      ~{pngPngFile}
+      ~{xml_file} \
+      ~{png_file}
   >>>
+  parameter_meta {
+    xml_file: ""
+    png_file: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nucleoatac.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nucleoatac.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,10 +2,13 @@ version 1.0
 
 task Sstofa {
   input {
-    String? secSecStructFile
+    String sec_struct_file
   }
   command <<<
     sstofa \
-      ~{secSecStructFile}
+      ~{sec_struct_file}
   >>>
+  parameter_meta {
+    sec_struct_file: ""
+  }
 }

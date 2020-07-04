@@ -2,10 +2,13 @@ version 1.0
 
 task AveCols {
   input {
-    File? fileFile
+    File file
   }
   command <<<
     aveCols \
-      ~{fileFile}
+      ~{file}
   >>>
+  parameter_meta {
+    file: ""
+  }
 }

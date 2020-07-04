@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: metaeuk_predictexons.cwl
+id: ../../../../home/ubuntu/BiocondaCli/metaeuk_predictexons.cwl
 inputs:
 - id: comp_bias_corr
   doc: Correct for locally biased amino acid composition (range 0-1) [1]
@@ -16,12 +16,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --seed-sub-mat
-- id: s
+- id: sensitivity_faster_fast
   doc: 'Sensitivity: 1.0 faster; 4.0 fast; 7.5 sensitive [4.000]'
   type: double
   inputBinding:
     prefix: -s
-- id: k
+- id: kmer_length_automatically
   doc: 'k-mer length (0: automatically set to optimum) [0]'
   type: long
   inputBinding:
@@ -107,7 +107,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --disk-space-limit
-- id: a
+- id: add_string_convert
   doc: Add backtrace string (convert to alignments with mmseqs convertalis module)
     [0]
   type: boolean
@@ -125,7 +125,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --wrapped-scoring
-- id: e
+- id: list_matches_evalue
   doc: List matches below this E-value (range 0.0-inf) [100.000]
   type: double
   inputBinding:
@@ -151,7 +151,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --alt-ali
-- id: c
+- id: list_matches_fraction
   doc: List matches above this fraction of aligned (covered) residues (see --cov-mode)
     [0.000]
   type: double
@@ -447,7 +447,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --compressed
-- id: v
+- id: verbosity_level_errors
   doc: 'Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]'
   type: long
   inputBinding:
@@ -505,12 +505,6 @@ inputs:
   type: long
   inputBinding:
     prefix: --strand
-- id: levy
-  doc: 'E, Mirdita M, Soeding J: MetaEuk – sensitive, high-throughput gene discovery
-    and annotation for large-scale eukaryotic metagenomics. biorxiv, 851964 (2019).'
-  type: string
-  inputBinding:
-    prefix: '- Levy'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

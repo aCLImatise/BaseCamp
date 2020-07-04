@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNApdist.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNApdist.cwl
 inputs:
 - id: detailed_help
   doc: Print help, including all details and hidden options, and exit
@@ -27,6 +27,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --backtrack
+- id: temp
+  doc: Rescale energy parameters to a temperature of temp C. Default is 37C.
+  type: string
+  inputBinding:
+    prefix: --temp
+- id: no_tetra
+  doc: Do not include special tabulated stabilizing energies for tri-, tetra- and
+    hexaloop hairpins. Mostly for testing. (default=off)
+  type: boolean
+  inputBinding:
+    prefix: --noTetra
 - id: dangles
   doc: set energy model for treatment of dangling bases (possible values="0", "2"
     default=`2')

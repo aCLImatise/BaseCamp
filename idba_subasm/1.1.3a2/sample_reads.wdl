@@ -2,28 +2,40 @@ version 1.0
 
 task SampleReads {
   input {
-    String depthDepth
-    String errorErrorRate
-    String readReadLength
-    Boolean pairedPaired
-    String sdSd
-    String insertInsertDistance
-    Boolean printPrintCorrect
-    String? simSimReads
-    String? reReFfa
-    String? readReadSfa
+    String? depth
+    String? error_rate
+    String? read_length
+    Boolean? paired
+    String? sd
+    String? insert_distance
+    Boolean? print_correct
+    String sim_reads
+    String ref_dot_fa
+    String reads_dot_fa
   }
   command <<<
     sample_reads \
-      ~{simSimReads} \
-      ~{if defined(depthDepth) then ("--depth " +  '"' + depthDepth + '"') else ""} \
-      ~{if defined(errorErrorRate) then ("--error_rate " +  '"' + errorErrorRate + '"') else ""} \
-      ~{if defined(readReadLength) then ("--read_length " +  '"' + readReadLength + '"') else ""} \
-      ~{true="--paired" false="" pairedPaired} \
-      ~{if defined(sdSd) then ("--sd " +  '"' + sdSd + '"') else ""} \
-      ~{if defined(insertInsertDistance) then ("--insert_distance " +  '"' + insertInsertDistance + '"') else ""} \
-      ~{true="--print_correct" false="" printPrintCorrect} \
-      ~{reReFfa} \
-      ~{readReadSfa}
+      ~{sim_reads} \
+      ~{ref_dot_fa} \
+      ~{reads_dot_fa} \
+      ~{if defined(depth) then ("--depth " +  '"' + depth + '"') else ""} \
+      ~{if defined(error_rate) then ("--error_rate " +  '"' + error_rate + '"') else ""} \
+      ~{if defined(read_length) then ("--read_length " +  '"' + read_length + '"') else ""} \
+      ~{true="--paired" false="" paired} \
+      ~{if defined(sd) then ("--sd " +  '"' + sd + '"') else ""} \
+      ~{if defined(insert_distance) then ("--insert_distance " +  '"' + insert_distance + '"') else ""} \
+      ~{true="--print_correct" false="" print_correct}
   >>>
+  parameter_meta {
+    depth: "(=30)                  sequencing depth of the sample"
+    error_rate: "(=0.01)           error rate"
+    read_length: "(=100)           read length"
+    paired: "if paired-end"
+    sd: "(=-1)                     sd"
+    insert_distance: "(=500)       insert distance"
+    print_correct: "output correct reads"
+    sim_reads: ""
+    ref_dot_fa: ""
+    reads_dot_fa: ""
+  }
 }

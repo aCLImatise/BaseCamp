@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: pyssw.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyssw.py.cwl
 inputs:
-- id: target
-  doc: targe file
-  type: string
-  inputBinding:
-    position: 0
-- id: query
-  doc: query file
-  type: string
-  inputBinding:
-    position: 1
 - id: s_libpath
   doc: path of libssw.so
   type: string
@@ -78,6 +68,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --bHeader
+- id: target
+  doc: targe file
+  type: string
+  inputBinding:
+    position: 0
+- id: query
+  doc: query file
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

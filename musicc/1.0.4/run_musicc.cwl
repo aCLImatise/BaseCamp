@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: run_musicc.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_musicc.py.cwl
 inputs:
-- id: input_file
-  doc: Input abundance file to correct
-  type: string
-  inputBinding:
-    position: 0
 - id: out
   doc: 'Output destination for corrected abundance (default: MUSiCC.tab)'
   type: string
@@ -42,6 +37,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: input_file
+  doc: Input abundance file to correct
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

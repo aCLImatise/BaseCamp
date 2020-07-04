@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: intersection_matrix.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/intersection_matrix.py.cwl
 inputs:
-- id: beds
-  doc: BED/GTF/GFF/VCF filenames, e.g., in a directory of bed files, you can use *.bed
-  type: string
-  inputBinding:
-    position: 0
 - id: frac
   doc: Instead of counts, report fraction overlapped
   type: boolean
@@ -45,6 +40,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: beds
+  doc: BED/GTF/GFF/VCF filenames, e.g., in a directory of bed files, you can use *.bed
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

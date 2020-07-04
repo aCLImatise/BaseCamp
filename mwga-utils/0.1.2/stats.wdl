@@ -2,12 +2,16 @@ version 1.0
 
 task Stats {
   input {
-    String numberNumber
-    String pP
+    String? prefix_stats_files
+    String maf_file
   }
   command <<<
     stats \
-      ~{if defined(numberNumber) then ("- Number " +  '"' + numberNumber + '"') else ""} \
-      ~{if defined(pP) then ("-p " +  '"' + pP + '"') else ""}
+      ~{maf_file} \
+      ~{if defined(prefix_stats_files) then ("-p " +  '"' + prefix_stats_files + '"') else ""}
   >>>
+  parameter_meta {
+    prefix_stats_files: "Prefix for output stats files [default: stats]"
+    maf_file: ""
+  }
 }

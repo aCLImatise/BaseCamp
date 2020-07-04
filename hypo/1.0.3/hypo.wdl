@@ -2,12 +2,16 @@ version 1.0
 
 task Hypo {
   input {
-    String? srSr
-    String? ccsCcs
+    String sr
+    String ccs
   }
   command <<<
     hypo \
-      ~{srSr} \
-      ~{ccsCcs}
+      ~{sr} \
+      ~{ccs}
   >>>
+  parameter_meta {
+    sr: "(Corresponding to NGS reads like Illumina reads) "
+    ccs: "(Corresponding to HiFi reads like PacBio CCS reads) "
+  }
 }

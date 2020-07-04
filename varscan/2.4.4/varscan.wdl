@@ -2,10 +2,13 @@ version 1.0
 
 task Varscan {
   input {
-    String jarJar
+    String? jar
   }
   command <<<
     varscan \
-      ~{if defined(jarJar) then ("-jar " +  '"' + jarJar + '"') else ""}
+      ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  parameter_meta {
+    jar: ""
+  }
 }

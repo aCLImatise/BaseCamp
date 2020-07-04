@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nib_intervals_to_fasta.py_nib_file.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nib_intervals_to_fasta.py.cwl
 inputs:
 - id: range_file
   doc: ''
@@ -15,4 +15,3 @@ outputs: []
 cwlVersion: v1.1
 baseCommand:
 - nib_intervals_to_fasta.py
-- nib_file

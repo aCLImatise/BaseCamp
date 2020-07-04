@@ -1,27 +1,17 @@
 class: CommandLineTool
-id: iqtree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/iqtree.cwl
 inputs:
-- id: s
-  doc: '[,...,FILE]   PHYLIP/FASTA/NEXUS/CLUSTAL/MSF alignment file(s)'
-  type: File
-  inputBinding:
-    prefix: -s
-- id: s
-  doc: Directory of alignment files
-  type: string
-  inputBinding:
-    prefix: -s
 - id: seqtype
   doc: 'BIN, DNA, AA, NT2AA, CODON, MORPH (default: auto-detect)'
   type: string
   inputBinding:
     prefix: --seqtype
-- id: t
+- id: parsrand_default_parsimony
   doc: '|PARS|RAND    Starting tree (default: 99 parsimony and BIONJ)'
   type: File
   inputBinding:
     prefix: -t
-- id: o
+- id: outgroup_taxon_list
   doc: '[,...,TAX]     Outgroup taxon (list) for writing .treefile'
   type: string
   inputBinding:
@@ -76,7 +66,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --epsilon
-- id: t
+- id: auto_coresthreads_default
   doc: '|AUTO          No. cores/threads or AUTO-detect (default: 1)'
   type: string
   inputBinding:
@@ -86,23 +76,23 @@ inputs:
   type: string
   inputBinding:
     prefix: --threads-max
-- id: p
+- id: dir_nexusraxml_partition
   doc: '|DIR          NEXUS/RAxML partition file or directory with alignments Edge-linked
     proportional partition model'
   type: File
   inputBinding:
     prefix: -p
-- id: q
+- id: dir_p_edgelinked
   doc: '|DIR          Like -p but edge-linked equal partition model '
   type: File
   inputBinding:
     prefix: -q
-- id: q
+- id: dir_p_edgeunlinked
   doc: '|DIR          Like -p but edge-unlinked partition model'
   type: File
   inputBinding:
     prefix: -Q
-- id: s
+- id: dir_p_separate
   doc: '|DIR          Like -p but separate tree inference'
   type: File
   inputBinding:
@@ -147,7 +137,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --nbest
-- id: n
+- id: fix_number_stop
   doc: 'Fix number of iterations to stop (default: OFF)'
   type: string
   inputBinding:
@@ -172,7 +162,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --allnni
-- id: g
+- id: multifurcating_tree_file
   doc: (Multifurcating) topological constraint tree file
   type: File
   inputBinding:
@@ -272,11 +262,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --jack
-- id: jack_prop
-  doc: 'Subsampling proportion for jackknife (default: 0.5)'
-  type: string
-  inputBinding:
-    prefix: --jack-prop
 - id: bc_on
   doc: Replicates for bootstrap + consensus tree
   type: string
@@ -292,16 +277,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tbe
-- id: alrt
-  doc: Replicates for SH approximate likelihood ratio test
-  type: string
-  inputBinding:
-    prefix: --alrt
-- id: alrt
-  doc: 0             Parametric aLRT test (Anisimova and Gascuel 2006)
-  type: boolean
-  inputBinding:
-    prefix: --alrt
 - id: a_bayes
   doc: approximate Bayes test (Anisimova et al. 2011)
   type: boolean
@@ -312,61 +287,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --lbp
-- id: m
-  doc: Standard model selection (like jModelTest, ProtTest)
-  type: string
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: Standard model selection followed by tree inference
-  type: string
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: Extended model selection with FreeRate heterogeneity
-  type: string
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: Extended model selection followed by tree inference
-  type: string
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+LM            Additionally test Lie Markov models'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+LMRY          Additionally test Lie Markov models with RY symmetry'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+LMWS          Additionally test Lie Markov models with WS symmetry'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+LMMK          Additionally test Lie Markov models with MK symmetry'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+LMSS          Additionally test strand-symmetric models'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m_set
-  doc: Restrict search to models supported by other programs (raxml, phyml or mrbayes)
-  type: string
-  inputBinding:
-    prefix: --mset
-- id: m_set
-  doc: ',...       Comma-separated model list (e.g. -mset WAG,LG,JTT)'
-  type: string
-  inputBinding:
-    prefix: --mset
 - id: msub
   doc: Amino-acid model source (nuclear, mitochondrial, chloroplast or viral)
   type: string
@@ -423,36 +343,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --modelomatic
-- id: merge
-  doc: Merge partitions to increase model fit
-  type: boolean
-  inputBinding:
-    prefix: --merge
-- id: merge
-  doc: '|rcluster|rclusterf Set merging algorithm (default: rclusterf)'
-  type: string
-  inputBinding:
-    prefix: --merge
-- id: merge_model
-  doc: '1|all  Use only 1 or all models for merging (default: 1)'
-  type: boolean
-  inputBinding:
-    prefix: --merge-model
-- id: merge_model
-  doc: ',... Comma-separated model list for merging'
-  type: string
-  inputBinding:
-    prefix: --merge-model
-- id: merge_rate
-  doc: '1|all   Use only 1 or all rate heterogeneity (default: 1)'
-  type: boolean
-  inputBinding:
-    prefix: --merge-rate
-- id: merge_rate
-  doc: ',... Comma-separated rate list for merging'
-  type: string
-  inputBinding:
-    prefix: --merge-rate
 - id: r_cluster
   doc: Percentage of partition pairs for rcluster algorithm
   type: string
@@ -468,102 +358,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --rcluster-max
-- id: m
-  doc: '...+F             Empirically counted frequencies from alignment'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+FO            Optimized frequencies by maximum-likelihood'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+FQ            Equal frequencies'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+FRY           For DNA, freq(A+G)=1/2=freq(C+T)'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+FWS           For DNA, freq(A+T)=1/2=freq(C+G)'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+FMK           For DNA, freq(A+C)=1/2=freq(G+T)'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+Fabcd         4-digit constraint on ACGT frequency (e.g. +F1221 means
-    f_A=f_T, f_C=f_G)'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+FU            Amino-acid frequencies given protein matrix'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+F1x4          Equal NT frequencies over three codon positions'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+F3x4          Unequal NT frequencies over three codon positions'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+I             A proportion of invariable sites'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+G[n]          Discrete Gamma model with n categories (default n=4)'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...*G[n]          Discrete Gamma model with unlinked model parameters'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+I+G[n]        Invariable sites plus Gamma model with n categories'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+R[n]          FreeRate model with n categories (default n=4)'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...*R[n]          FreeRate model with unlinked model parameters'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+I+R[n]        Invariable sites plus FreeRate model with n categories'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+Hn            Heterotachy model with n classes'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...*Hn            Heterotachy model with n classes and unlinked parameters'
-  type: boolean
-  inputBinding:
-    prefix: -m
 - id: alpha_min
   doc: 'Min Gamma shape parameter for site rates (default: 0.02)'
   type: string
@@ -584,57 +378,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --mlrate
-- id: s
+- id: input_counts_file
   doc: Input counts file (see manual)
   type: File
   inputBinding:
     prefix: -s
-- id: m
-  doc: '...+P             DNA substitution model (see above) used with PoMo'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+N<POPSIZE>    Virtual population size (default: 9)'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+WB|WH|S]      Weighted binomial sampling'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+WH            Weighted hypergeometric sampling'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+S             Sampled sampling'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '...+G[n]          Discrete Gamma rate with n categories (default n=4)'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '"MIX{m1,...,mK}"  Mixture model with K components'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: m
-  doc: '"FMIX{f1,...fK}"  Frequency mixture model with K components'
-  type: boolean
-  inputBinding:
-    prefix: -m
 - id: mix_opt
   doc: 'Optimize mixture weights (default: detect)'
   type: boolean
   inputBinding:
     prefix: --mix-opt
-- id: m
+- id: asc_ascertainment_bias
   doc: '...+ASC           Ascertainment bias correction'
   type: boolean
   inputBinding:
@@ -724,11 +478,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --symtest-keep-zero
-- id: t
-  doc: Reference tree to assign concordance factor
-  type: File
-  inputBinding:
-    prefix: -t
 - id: gcf
   doc: Set of source trees for gene concordance factor (gCF)
   type: File
@@ -744,26 +493,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --scf
-- id: s
-  doc: Sequence alignment for --scf
-  type: File
-  inputBinding:
-    prefix: -s
-- id: p
-  doc: '|DIR          Partition file or directory for --scf'
-  type: File
-  inputBinding:
-    prefix: -p
 - id: cf_verbose
   doc: Write CF per tree/locus to cf.stat_tree/_loci
   type: boolean
   inputBinding:
     prefix: --cf-verbose
-- id: t
-  doc: Set of input trees for consensus reconstruction
-  type: File
-  inputBinding:
-    prefix: -t
 - id: sup_min
   doc: 'Min split support, 0.5 for majority-rule consensus (default: 0, extended consensus)'
   type: string
@@ -804,12 +538,12 @@ inputs:
   type: File
   inputBinding:
     prefix: --tree-dist
-- id: tree_dist2
+- id: tree_dist_two
   doc: Like -rf but trees can have unequal taxon sets
   type: File
   inputBinding:
     prefix: --tree-dist2
-- id: r
+- id: taxa_yuleharding_random
   doc: No. taxa for Yule-Harding random tree
   type: string
   inputBinding:

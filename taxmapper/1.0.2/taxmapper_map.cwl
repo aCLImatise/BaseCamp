@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: taxmapper_map.cwl
+id: ../../../../home/ubuntu/BiocondaCli/taxmapper_map.cwl
 inputs:
-- id: m
+- id: maximum_read_length
   doc: Maximum read length
   type: long
   inputBinding:

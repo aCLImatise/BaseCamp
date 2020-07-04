@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sketchy_online_monitor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sketchy_online_monitor.cwl
 inputs:
 - id: interval
   doc: Interval in seconds to check on resource usage

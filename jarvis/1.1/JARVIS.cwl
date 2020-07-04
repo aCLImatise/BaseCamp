@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: JARVIS.cwl
+id: ../../../../home/ubuntu/BiocondaCli/JARVIS.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

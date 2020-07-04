@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: checkCopyright.cwl
+id: ../../../../home/ubuntu/BiocondaCli/checkCopyright.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,7 +1,12 @@
 class: CommandLineTool
-id: pslRecalcMatch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pslRecalcMatch.cwl
 inputs:
-- id: in_psl
+- id: ignore_q_missing
+  doc: "- pass through the record if querySeq doesn't include qName"
+  type: boolean
+  inputBinding:
+    prefix: -ignoreQMissing
+- id: in_dot_psl
   doc: ''
   type: string
   inputBinding:
@@ -16,16 +21,11 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: out_psl
+- id: out_dot_psl
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: ignore_q_missing
-  doc: the record if querySeq doesn't include qName
-  type: string
-  inputBinding:
-    prefix: -ignoreQMissing
 outputs: []
 cwlVersion: v1.1
 baseCommand:

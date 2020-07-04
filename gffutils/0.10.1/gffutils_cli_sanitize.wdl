@@ -2,18 +2,19 @@ version 1.0
 
 task GffutilsCliSanitize {
   input {
-    String ensuresEnsures
-    String addsAdds
-    Boolean inInMemory
-    Boolean inInPlace
-    File? filenameFilename
+    Boolean? in_memory
+    Boolean? in_place
+    File filename
   }
   command <<<
     gffutils-cli sanitize \
-      ~{filenameFilename} \
-      ~{if defined(ensuresEnsures) then ("- Ensures " +  '"' + ensuresEnsures + '"') else ""} \
-      ~{if defined(addsAdds) then ("- Adds " +  '"' + addsAdds + '"') else ""} \
-      ~{true="--in-memory" false="" inInMemory} \
-      ~{true="--in-place" false="" inInPlace}
+      ~{filename} \
+      ~{true="--in-memory" false="" in_memory} \
+      ~{true="--in-place" false="" in_place}
   >>>
+  parameter_meta {
+    in_memory: "Load GFF into memory for processing. (default: True)"
+    in_place: "Sanitize file in-place: overwrites current file with sanitized version. (default: False)"
+    filename: "GFF or GTF file to use (or GFF database.)"
+  }
 }

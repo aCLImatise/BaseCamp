@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: svdb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/svdb.cwl
 inputs:
 - id: build
   doc: create a db
@@ -21,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --export
+- id: sv_db_two_dot_four_dot_zero
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

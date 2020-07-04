@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: humann2_build_custom_database.cwl
+id: ../../../../home/ubuntu/BiocondaCli/humann2_build_custom_database.cwl
 inputs:
 - id: input
   doc: the fasta input file

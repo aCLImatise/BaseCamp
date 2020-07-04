@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: zorro_dist.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/zorro_dist.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

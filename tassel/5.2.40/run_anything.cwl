@@ -1,23 +1,7 @@
 class: CommandLineTool
-id: run_anything.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_anything.pl.cwl
 inputs:
-- id: or
-  doc: java [options] -jar <jarfile> [args...] (to execute a jar file)
-  type: string
-  inputBinding:
-    position: 0
-- id: or
-  doc: java [options] -m <module>[/<mainclass>] [args...] java [options] --module
-    <module>[/<mainclass>] [args...] (to execute the main class in a module)
-  type: string
-  inputBinding:
-    position: 1
-- id: or
-  doc: java [options] <sourcefile> [args] (to execute a single source-file program)
-  type: string
-  inputBinding:
-    position: 2
-- id: disable_files
+- id: disable_at_files
   doc: prevent further argument file expansion
   type: boolean
   inputBinding:
@@ -27,6 +11,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --enable-preview
+- id: java
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: main_class
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: args_dot_dot_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

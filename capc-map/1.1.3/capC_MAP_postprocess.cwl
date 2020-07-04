@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: capC_MAP_postprocess.cwl
+id: ../../../../home/ubuntu/BiocondaCli/capC_MAP_postprocess.cwl
 inputs:
-- id: c
-  doc: ''
+- id: configuration_file
+  doc: configuration file
   type: string
   inputBinding:
     prefix: -c
-- id: o
-  doc: ''
+- id: directory_created_output
+  doc: directory to be created for output
   type: string
   inputBinding:
     prefix: -o

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: vcf_validator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf_validator.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: file_vcf_gz
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
 - id: duplicates
   doc: Warn about duplicate positions.
   type: boolean
@@ -21,6 +11,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --unique-messages
+- id: file_dot_vcf_do_tgz
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

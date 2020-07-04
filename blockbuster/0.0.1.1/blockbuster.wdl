@@ -1,13 +1,14 @@
 version 1.0
 
-task Blockbuster.xFile {
+task Blockbuster.x {
   input {
-    String? optionsOptions
-    File? fileFile
+    File file
   }
   command <<<
-    blockbuster.x file \
-      ~{optionsOptions} \
-      ~{fileFile}
+    blockbuster.x \
+      ~{file}
   >>>
+  parameter_meta {
+    file: ""
+  }
 }

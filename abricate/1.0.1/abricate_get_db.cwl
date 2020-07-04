@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: abricate_get_db.cwl
+id: ../../../../home/ubuntu/BiocondaCli/abricate_get_db.cwl
 inputs:
 - id: debug
   doc: "!        Verbose debug output (default '0')."
@@ -7,7 +7,7 @@ inputs:
   inputBinding:
     prefix: --debug
 - id: db_dir
-  doc: Parent folder (default '/tmp/tmp8we49qhd/db').
+  doc: Parent folder (default '/tmp/tmptbtde21b/db').
   type: string
   inputBinding:
     prefix: --dbdir

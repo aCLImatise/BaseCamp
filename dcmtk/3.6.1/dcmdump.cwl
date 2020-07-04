@@ -1,22 +1,17 @@
 class: CommandLineTool
-id: dcmdump.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmdump.cwl
 inputs:
-- id: dcm_file_in
-  doc: DICOM input file or directory to be dumped
-  type: string
-  inputBinding:
-    position: 0
-- id: q
+- id: _quiet_quiet
   doc: --quiet                quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose              verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug                debug mode, print debug information
   type: boolean
   inputBinding:
@@ -32,12 +27,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lc
-- id: f
+- id: _readdataset_read
   doc: --read-dataset         read data set without file meta information
   type: boolean
   inputBinding:
     prefix: -f
-- id: t
+- id: _readxferauto_use
   doc: =  --read-xfer-auto       use TS recognition (default)
   type: boolean
   inputBinding:
@@ -77,7 +72,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --assume-implicit
-- id: disable_cp246
+- id: disable_cp_two_four_six
   doc: read undefined len UN as explicit VR
   type: boolean
   inputBinding:
@@ -102,16 +97,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --print-nonascii
-- id: c
+- id: _nocolor_use
   doc: --no-color             do not use any ANSI escape codes (default)
   type: boolean
   inputBinding:
     prefix: -C
-- id: p
+- id: _noprepend_prepend
   doc: --no-prepend           do not prepend hierarchy to tag (default)
   type: boolean
   inputBinding:
     prefix: -p
+- id: dcm_file_in
+  doc: DICOM input file or directory to be dumped
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Mascot2XML.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Mascot2XML.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

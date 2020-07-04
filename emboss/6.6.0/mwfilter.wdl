@@ -2,10 +2,13 @@ version 1.0
 
 task Mwfilter {
   input {
-    Boolean toleranceTolerance
+    Boolean? tolerance
   }
   command <<<
     mwfilter \
-      ~{true="-tolerance" false="" toleranceTolerance}
+      ~{true="-tolerance" false="" tolerance}
   >>>
+  parameter_meta {
+    tolerance: "float      [50.0] Ppm tolerance (Any numeric value)"
+  }
 }

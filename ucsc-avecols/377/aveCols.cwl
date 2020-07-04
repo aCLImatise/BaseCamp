@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: aveCols.cwl
+id: ../../../../home/ubuntu/BiocondaCli/aveCols.cwl
 inputs:
 - id: file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNAplot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAplot.cwl
 inputs:
 - id: detailed_help
   doc: Print help, including all details and hidden options, and exit
@@ -107,6 +107,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --id-prefix
+- id: input_zero
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: input_one
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

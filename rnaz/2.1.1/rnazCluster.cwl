@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: rnazCluster.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnazCluster.pl.cwl
 inputs:
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: loci
   doc: Set these flags to print information for ``windows" and/or ``loci" in the output.
     By default, both single windows and combined loci are printed.
@@ -40,6 +35,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --man
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

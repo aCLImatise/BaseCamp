@@ -1,32 +1,32 @@
 class: CommandLineTool
-id: indexer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/indexer.cwl
 inputs:
-- id: s
+- id: skip_skip_junk
   doc: '|skip      skip junk [1]'
   type: boolean
   inputBinding:
     prefix: -s
-- id: t
+- id: tail_tail_pattern
   doc: '|tail      tail pattern [^>]'
   type: boolean
   inputBinding:
     prefix: -t
-- id: i
+- id: included_tail_pattern
   doc: '|included  tail pattern is part of entry [0]'
   type: boolean
   inputBinding:
     prefix: -i
-- id: p
+- id: pattern_i_pattern
   doc: '|pattern   id selection pattern [^>[^|]+\|([^\s|;]+)]'
   type: boolean
   inputBinding:
     prefix: -p
-- id: m
+- id: multiple_indices_entry
   doc: multiple indices per entry [0]
   type: boolean
   inputBinding:
     prefix: -m
-- id: l
+- id: idlength_maximum_length
   doc: '|idLength  maximum id length [14]'
   type: boolean
   inputBinding:

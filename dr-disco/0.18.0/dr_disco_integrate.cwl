@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: dr_disco_integrate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dr_disco_integrate.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: table_input_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: table_output_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: gtf
   doc: Use gene annotation for estimating fusion genes and improve classification
     of exonic (GTF file)
@@ -28,6 +13,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --fasta
+- id: table_input_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: table_output_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

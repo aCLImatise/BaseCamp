@@ -2,14 +2,19 @@ version 1.0
 
 task HMMCtoCMC {
   input {
-    Boolean numericNumericVersion
-    Boolean verboseVerbose
-    Boolean quietQuiet
+    Boolean? numeric_version
+    Boolean? verbose
+    Boolean? quiet
   }
   command <<<
     HMMCtoCMC \
-      ~{true="--numeric-version" false="" numericNumericVersion} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{true="--quiet" false="" quietQuiet}
+      ~{true="--numeric-version" false="" numeric_version} \
+      ~{true="--verbose" false="" verbose} \
+      ~{true="--quiet" false="" quiet}
   >>>
+  parameter_meta {
+    numeric_version: "Print just the version number"
+    verbose: "Loud verbosity"
+    quiet: "Quiet verbosity"
+  }
 }

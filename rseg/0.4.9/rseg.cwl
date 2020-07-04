@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: rseg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rseg.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: mapped_read_locations
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: out
   doc: 'domain output file '
   type: boolean
@@ -161,6 +151,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -about
+- id: mapped_read_locations
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

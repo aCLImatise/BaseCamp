@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MascotAdapterOnline.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MascotAdapterOnline.cwl
 inputs:
 - id: in
   doc: "*        Input file in mzML format. (valid formats: 'mzML')"
@@ -31,21 +31,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: mascot_parameters
-  doc: Mascot parameters used for searching
-  type: boolean
-  inputBinding:
-    prefix: '- Mascot_parameters'
-- id: mascot_server
-  doc: Mascot server details
-  type: boolean
-  inputBinding:
-    prefix: '- Mascot_server'
-- id: http
-  doc: ://www.openms.de/documentation/TOPP_MascotAdapterOnline.html
-  type: boolean
-  inputBinding:
-    prefix: '- http'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

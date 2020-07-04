@@ -2,12 +2,16 @@ version 1.0
 
 task Mkmapfile {
   input {
-    String mM
-    String uU
+    String? m
+    String? u
   }
   command <<<
     mkmapfile \
-      ~{if defined(mM) then ("-M " +  '"' + mM + '"') else ""} \
-      ~{if defined(uU) then ("-U " +  '"' + uU + '"') else ""}
+      ~{if defined(m) then ("-M " +  '"' + m + '"') else ""} \
+      ~{if defined(u) then ("-U " +  '"' + u + '"') else ""}
   >>>
+  parameter_meta {
+    m: ""
+    u: ""
+  }
 }

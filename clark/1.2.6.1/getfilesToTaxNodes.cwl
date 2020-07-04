@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: getfilesToTaxNodes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/getfilesToTaxNodes.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

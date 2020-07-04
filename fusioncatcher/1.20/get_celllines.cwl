@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_celllines.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_celllines.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the known fusion genes are downloaded, e.g.
@@ -12,13 +12,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
-- id: data_1
+- id: data_one
   doc: The input Excel file containg the data from the article. It should be used
     when there is no internet connection to the site which hosts the article.
   type: string
   inputBinding:
     prefix: --data1
-- id: data_2
+- id: data_two
   doc: The input Excel file containg the data from the article. It should be used
     when there is no internet connection to the site which hosts the article.
   type: string

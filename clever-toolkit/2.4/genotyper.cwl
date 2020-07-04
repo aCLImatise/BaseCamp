@@ -1,55 +1,55 @@
 class: CommandLineTool
-id: genotyper.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genotyper.cwl
 inputs:
-- id: o
+- id: arg_maximum_allowed_read
   doc: '[ --max_offset_split ] arg (=10)   Maximum allowed distance between two  split
     read calls.'
   type: boolean
   inputBinding:
     prefix: -O
-- id: z
+- id: arg_maximum_allowed_difference
   doc: '[ --max_length_diff_split ] arg (=5) Maximum allowed length difference  between
     two split read calls.'
   type: boolean
   inputBinding:
     prefix: -Z
-- id: b
+- id: arg_minimum_distance
   doc: '[ --split_border_distance ] arg (=12) Minimum distance of variant breakpoint  to
     start/end of alignment in order to  use read.'
   type: boolean
   inputBinding:
     prefix: -b
-- id: w
+- id: arg_number_look
   doc: '[ --bam_window ] arg (=1000)       Number of nucleotides to look to the  right/to
     the left of deletions in BAM  files to find relevant alignments.'
   type: boolean
   inputBinding:
     prefix: -w
-- id: d
+- id: arg__threshold
   doc: '[ --denovo_threshold ] arg (=1.0000000000000001e-05) Threshold for de novo
     calls (in  trio/quartet mode)'
   type: boolean
   inputBinding:
     prefix: -d
-- id: m
+- id: arg_minimum_mapq
   doc: '[ --mapq ] arg (=0)                Minimum MAPQ. Alignments with lower  MAPQ
     are ignored.'
   type: boolean
   inputBinding:
     prefix: -m
-- id: p
+- id: arg_prior_believe
   doc: '[ --variant_prior ] arg (=0.5)     Prior believe in a variant (given that  the
     locus is under investigation).'
   type: boolean
   inputBinding:
     prefix: -p
-- id: i
+- id: genotyping_only_based_internalsegmenttype
   doc: '[ --gt_only_insert ]               Do genotyping only based on  internal-segment-type
     alignments.'
   type: boolean
   inputBinding:
     prefix: -I
-- id: s
+- id: genotyping_only_based_splittype
   doc: '[ --gt_only_split ]                Do genotyping only based on split-type  alignments.'
   type: boolean
   inputBinding:
@@ -92,6 +92,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --max-output-length
+- id: dataset_list_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: read_group_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

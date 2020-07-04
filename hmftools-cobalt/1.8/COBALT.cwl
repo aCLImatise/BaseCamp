@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: COBALT.cwl
+id: ../../../../home/ubuntu/BiocondaCli/COBALT.cwl
 inputs:
 - id: gc_profile
   doc: Location of GC Profile
@@ -51,6 +51,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -validation_stringency
+- id: count_bam_lines_application
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

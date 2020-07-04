@@ -1,57 +1,57 @@
 class: CommandLineTool
-id: hcluster_sg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hcluster_sg.cwl
 inputs:
-- id: w
+- id: minimum_edge_weight
   doc: minimum edge weight [20]
   type: string
   inputBinding:
     prefix: -w
-- id: s
+- id: minimum_edge_density
   doc: minimum edge density between a join [0.50]
   type: string
   inputBinding:
     prefix: -s
-- id: m
+- id: maximum_size
   doc: maximum size [500]
   type: string
   inputBinding:
     prefix: -m
-- id: o
+- id: output_file
   doc: output file [stdout]
   type: string
   inputBinding:
     prefix: -o
-- id: c
+- id: only_find_hcluster
   doc: only find single-linkage clusters (bypass h-cluster)
   type: boolean
   inputBinding:
     prefix: -c
-- id: v
+- id: verbose_mode
   doc: verbose mode
   type: boolean
   inputBinding:
     prefix: -v
-- id: b
+- id: breaking_edge_density
   doc: breaking edge density [0.10]
   type: string
   inputBinding:
     prefix: -b
-- id: o
+- id: the_oncefailinactiveforever_mode
   doc: the once-fail-inactive-forever mode
   type: boolean
   inputBinding:
     prefix: -O
-- id: r
+- id: weight_resolution_for
   doc: weight resolution for '-O' [5]
   type: boolean
   inputBinding:
     prefix: -r
-- id: c
+- id: category_file
   doc: category file
   type: File
   inputBinding:
     prefix: -C
-- id: l
+- id: stringent_level_strictest
   doc: stringent level ('3' is the strictest) [2]
   type: string
   inputBinding:

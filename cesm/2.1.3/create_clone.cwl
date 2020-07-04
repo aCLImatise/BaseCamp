@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: create_clone.cwl
+id: ../../../../home/ubuntu/BiocondaCli/create_clone.cwl
 inputs:
 - id: debug
-  doc: Print debug information (very verbose) to file /tmp/tmpyq76ofy5/create_clone.log
+  doc: Print debug information (very verbose) to file /tmp/tmpeksbd5_3/create_clone.log
   type: boolean
   inputBinding:
     prefix: --debug

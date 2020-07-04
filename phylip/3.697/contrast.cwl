@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: contrast.cwl
+id: ../../../../home/ubuntu/BiocondaCli/contrast.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

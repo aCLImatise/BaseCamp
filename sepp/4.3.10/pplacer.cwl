@@ -1,37 +1,37 @@
 class: CommandLineTool
-id: pplacer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pplacer.cwl
 inputs:
-- id: c
+- id: specify_path_reference
   doc: Specify the path to the reference package.
   type: boolean
   inputBinding:
     prefix: -c
-- id: t
+- id: specify_tree_filename
   doc: Specify the reference tree filename.
   type: boolean
   inputBinding:
     prefix: -t
-- id: r
+- id: specify_alignment_filename
   doc: Specify the reference alignment filename.
   type: boolean
   inputBinding:
     prefix: -r
-- id: s
+- id: supply_phyml_statstxt
   doc: Supply a phyml stats.txt or a RAxML info file giving the model parameters.
   type: boolean
   inputBinding:
     prefix: -s
-- id: d
+- id: specify_directory_containing
   doc: Specify the directory containing the reference information.
   type: boolean
   inputBinding:
     prefix: -d
-- id: p
+- id: calculate_posterior_probabilities
   doc: Calculate posterior probabilities.
   type: boolean
   inputBinding:
     prefix: -p
-- id: m
+- id: substitution_model_protein
   doc: 'Substitution model. Protein: are LG, WAG, or JTT. Nucleotides: GTR.'
   type: boolean
   inputBinding:
@@ -148,7 +148,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --out-dir
-- id: o
+- id: specify_file_name
   doc: Specify the output file name
   type: boolean
   inputBinding:
@@ -163,7 +163,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --check-like
-- id: j
+- id: number_child_spawn
   doc: The number of child processes to spawn when doing placements. Default is 2.
   type: boolean
   inputBinding:

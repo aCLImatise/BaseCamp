@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: locarnap_fit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/locarnap_fit.cwl
 inputs:
 - id: once_on
   doc: Fit a signal that is on only once

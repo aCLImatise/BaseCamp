@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: jannovar_db_list.cwl
+id: ../../../../home/ubuntu/BiocondaCli/jannovar_db_list.cwl
 inputs:
-- id: jan_novar_cli
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: db_list
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: data_source_list
   doc: INI file with data source list
   type: string
@@ -46,6 +36,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --ftp-proxy
+- id: jan_novar_cli
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: db_list
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

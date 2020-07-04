@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hmmer2gff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hmmer2gff.cwl
 inputs:
 - id: verbose
   doc: 'more verbose - includes debug messages (default: 20)'

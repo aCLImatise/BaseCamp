@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: tango.cwl
-inputs: []
+id: ../../../../home/ubuntu/BiocondaCli/tango.cwl
+inputs:
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
 outputs: []
 cwlVersion: v1.1
 baseCommand:

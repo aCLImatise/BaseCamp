@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: raxmlp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/raxmlp.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

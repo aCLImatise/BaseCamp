@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: galah.cwl
+id: ../../../../home/ubuntu/BiocondaCli/galah.cwl
 inputs:
 - id: quiet
   doc: Unless there is an error, do not print logging information

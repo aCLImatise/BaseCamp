@@ -2,10 +2,13 @@ version 1.0
 
 task GotohScan {
   input {
-    String? argumentsArguments
+    String? arguments
   }
   command <<<
     GotohScan \
-      ~{argumentsArguments}
+      ~{arguments}
   >>>
+  parameter_meta {
+    arguments: ""
+  }
 }

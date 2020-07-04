@@ -2,16 +2,22 @@ version 1.0
 
 task FermiUnitig {
   input {
-    Int lL
-    Int tT
-    File rR
-    String? readsReadsFmd
+    Int? min_match
+    Int? number_of_threads
+    File? rank_file
+    String reads_dot_fmd
   }
   command <<<
     fermi unitig \
-      ~{readsReadsFmd} \
-      ~{if defined(lL) then ("-l " +  '"' + lL + '"') else ""} \
-      ~{if defined(tT) then ("-t " +  '"' + tT + '"') else ""} \
-      ~{if defined(rR) then ("-r " +  '"' + rR + '"') else ""}
+      ~{reads_dot_fmd} \
+      ~{if defined(min_match) then ("-l " +  '"' + min_match + '"') else ""} \
+      ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""} \
+      ~{if defined(rank_file) then ("-r " +  '"' + rank_file + '"') else ""}
   >>>
+  parameter_meta {
+    min_match: "min match [0]"
+    number_of_threads: "number of threads [1]"
+    rank_file: "rank file [null]"
+    reads_dot_fmd: ""
+  }
 }

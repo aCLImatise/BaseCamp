@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: wheezy.template.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wheezy.template.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

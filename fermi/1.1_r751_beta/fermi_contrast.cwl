@@ -1,51 +1,51 @@
 class: CommandLineTool
-id: fermi_contrast.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fermi_contrast.cwl
 inputs:
-- id: idx1fmd
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: idx1rank
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: 1_2sub
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: idx2fmd
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: idx2rank
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
-- id: 2_1sub
-  doc: ''
-  type: string
-  inputBinding:
-    position: 5
-- id: o
+- id: minimum_occurrence
   doc: minimum occurrence [3]
   type: long
   inputBinding:
     prefix: -o
-- id: t
+- id: number_of_threads
   doc: number of threads [1]
   type: long
   inputBinding:
     prefix: -t
-- id: k
+- id: kmer_length
   doc: k-mer length [55]
   type: long
   inputBinding:
     prefix: -k
+- id: idx_one_dot_fmd
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: idx_one_dot_rank
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: one_two_dot_sub
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: idx_two_dot_fmd
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: idx_two_dot_rank
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
+- id: two_one_dot_sub
+  doc: ''
+  type: string
+  inputBinding:
+    position: 5
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,10 +2,13 @@ version 1.0
 
 task Genotype.pl {
   input {
-    String tmpTmp
+    String? tmp
   }
   command <<<
     genotype.pl \
-      ~{if defined(tmpTmp) then ("--tmp " +  '"' + tmpTmp + '"') else ""}
+      ~{if defined(tmp) then ("--tmp " +  '"' + tmp + '"') else ""}
   >>>
+  parameter_meta {
+    tmp: ": the tmp directory; If unspecified, use /tmp/tmpsomb5k_a/bin/tmp/"
+  }
 }

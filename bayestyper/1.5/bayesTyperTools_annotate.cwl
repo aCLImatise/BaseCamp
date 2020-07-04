@@ -1,27 +1,27 @@
 class: CommandLineTool
-id: bayesTyperTools_annotate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bayesTyperTools_annotate.cwl
 inputs:
-- id: v
+- id: arg_variant_format
   doc: '[ --variant-file ] arg             variant file (vcf format).'
   type: boolean
   inputBinding:
     prefix: -v
-- id: a
+- id: arg_annotation_file
   doc: '[ --annotation-file ] arg          annotation file (vcf format).'
   type: boolean
   inputBinding:
     prefix: -a
-- id: o
+- id: arg_output_prefix
   doc: '[ --output-prefix ] arg            output prefix.'
   type: boolean
   inputBinding:
     prefix: -o
-- id: z
+- id: compress_output_files
   doc: '[ --gzip-output ] [=arg(=1)] (=0)  compress output file(s) using gzip.'
   type: boolean
   inputBinding:
     prefix: -z
-- id: c
+- id: clear_previous_annotations
   doc: '[ --clear-prev-annotation ] [=arg(=1)] (=0) clear previous annotations (variant
     id and AAI).'
   type: boolean

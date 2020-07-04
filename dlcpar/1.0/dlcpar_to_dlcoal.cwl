@@ -1,6 +1,26 @@
 class: CommandLineTool
-id: dlcpar_to_dlcoal.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dlcpar_to_dlcoal.cwl
 inputs:
+- id: stree
+  doc: species tree file in newick format
+  type: string
+  inputBinding:
+    prefix: --stree
+- id: s_map
+  doc: gene to species map
+  type: string
+  inputBinding:
+    prefix: --smap
+- id: input_ext
+  doc: 'input file extension (default: ".tree")'
+  type: string
+  inputBinding:
+    prefix: --inputext
+- id: output_ext
+  doc: 'output file extension (default: "")'
+  type: string
+  inputBinding:
+    prefix: --outputext
 - id: dlc_par_to_dl_coal
   doc: ''
   type: string
@@ -51,26 +71,6 @@ inputs:
   type: string
   inputBinding:
     position: 9
-- id: stree
-  doc: species tree file in newick format
-  type: string
-  inputBinding:
-    prefix: --stree
-- id: s_map
-  doc: gene to species map
-  type: string
-  inputBinding:
-    prefix: --smap
-- id: input_ext
-  doc: 'input file extension (default: ".tree")'
-  type: string
-  inputBinding:
-    prefix: --inputext
-- id: output_ext
-  doc: 'output file extension (default: "")'
-  type: string
-  inputBinding:
-    prefix: --outputext
 outputs: []
 cwlVersion: v1.1
 baseCommand:

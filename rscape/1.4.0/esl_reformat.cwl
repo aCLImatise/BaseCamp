@@ -1,47 +1,37 @@
 class: CommandLineTool
-id: esl_reformat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/esl_reformat.cwl
 inputs:
-- id: fast_a
-  doc: 'a2m        '
-  type: string
-  inputBinding:
-    position: 0
-- id: hmm_pg_md
-  doc: 'afa         clustal     clustallike pfam        phylip      phylips     psiblast    selex       stockholm  '
-  type: string
-  inputBinding:
-    position: 1
-- id: d
+- id: convert_dna_alphabet
   doc: ': convert to DNA alphabet (U->T)'
   type: boolean
   inputBinding:
     prefix: -d
-- id: l
+- id: convert_lower_case
   doc: ': convert to lower case'
   type: boolean
   inputBinding:
     prefix: -l
-- id: n
+- id: remove_dna_iupac
   doc: ': remove DNA IUPAC codes; convert ambig chars to N'
   type: boolean
   inputBinding:
     prefix: -n
-- id: o
+- id: send_output_file
   doc: ': send output to file <f>, not stdout'
   type: string
   inputBinding:
     prefix: -o
-- id: r
+- id: convert_rna_alphabet
   doc: ': convert to RNA alphabet (T->U)'
   type: boolean
   inputBinding:
     prefix: -r
-- id: u
+- id: convert_upper_case
   doc: ': convert to upper case'
   type: boolean
   inputBinding:
     prefix: -u
-- id: x
+- id: convert_noniupac_chars
   doc: ': convert non-IUPAC chars (e.g. X) in DNA to N'
   type: boolean
   inputBinding:
@@ -116,6 +106,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --id_map
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

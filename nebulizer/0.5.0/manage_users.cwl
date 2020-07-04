@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: manage_users.cwl
+id: ../../../../home/ubuntu/BiocondaCli/manage_users.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

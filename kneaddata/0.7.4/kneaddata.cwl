@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: kneaddata.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kneaddata.cwl
 inputs:
 - id: verbose
   doc: additional output is printed
@@ -31,16 +31,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --output-prefix
-- id: t
-  doc: '<1>, --threads <1> number of threads [ Default : 1 ]'
-  type: boolean
+- id: threads
+  doc: 'number of threads [ Default : 1 ]'
+  type: string
   inputBinding:
-    prefix: -t
-- id: p
-  doc: '<1>, --processes <1> number of processes [ Default : 1 ]'
-  type: boolean
+    prefix: --threads
+- id: processes
+  doc: 'number of processes [ Default : 1 ]'
+  type: string
   inputBinding:
-    prefix: -p
+    prefix: --processes
 - id: quality_scores
   doc: 'quality scores [ DEFAULT : phred33 ]'
   type: string
@@ -109,12 +109,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --trimmomatic-options
-- id: bowtie2
+- id: bowtie_two
   doc: 'path to bowtie2 [ DEFAULT : $PATH ]'
   type: string
   inputBinding:
     prefix: --bowtie2
-- id: bowtie2_options
+- id: bowtie_two_options
   doc: 'options for bowtie2 [ DEFAULT : --very-sensitive ]'
   type: string
   inputBinding:

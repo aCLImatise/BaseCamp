@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: VcfStreamSort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/VcfStreamSort.cwl
 inputs:
 - id: in
   doc: "Input VCF file. If unset, reads from STDIN. Default value: ''"
@@ -11,7 +11,7 @@ inputs:
   type: File
   inputBinding:
     prefix: -out
-- id: n
+- id: number_variants_cache
   doc: "Number of variants to cache for sorting. Default value: '10000'"
   type: long
   inputBinding:

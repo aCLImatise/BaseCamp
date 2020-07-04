@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: erne_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/erne_filter.cwl
 inputs:
 - id: contamination_reference
   doc: reference file to use (in our format and with  .ebh extension)
   type: string
   inputBinding:
     prefix: --contamination-reference
-- id: query_1
+- id: query_one
   doc: query1 file (can be compressed with gzip or  bzip2, or a pipe) [REQUIRED]
   type: string
   inputBinding:
     prefix: --query1
-- id: query_2
+- id: query_two
   doc: optional query2 file (can be compressed with  gzip or bzip2, or a pipe)
   type: string
   inputBinding:
@@ -55,7 +55,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gzip
-- id: bzip2
+- id: bzip_two
   doc: compress output with bzip2 (.bz2 suffix will be added to the output files
   type: boolean
   inputBinding:
@@ -115,7 +115,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --preserve-encoding
-- id: q
+- id: mismatch_inserted_seed
   doc: 'Mismatch are inserted in the seed only in  positions where base quality <
     q. Default: 15.  With value 0 quality values are ignored.'
   type: string

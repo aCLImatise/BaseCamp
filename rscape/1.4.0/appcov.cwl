@@ -1,27 +1,12 @@
 class: CommandLineTool
-id: appcov.cwl
+id: ../../../../home/ubuntu/BiocondaCli/appcov.cwl
 inputs:
-- id: apparent
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: co_variations
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: msa_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: outdir
   doc: ': specify a directory for all output files'
   type: string
   inputBinding:
     prefix: --outdir
-- id: v
+- id: _be_verbose
   doc: ': be verbose'
   type: boolean
   inputBinding:
@@ -86,17 +71,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --minhelix
-- id: f
+- id: filter_seqs_xseqcons
   doc: ': filter out seqs <x*seq_cons residues  (0<x<=1.0)'
   type: string
   inputBinding:
     prefix: -F
-- id: i
+- id: _require_seqs_x_i_d_
   doc: ': require seqs to have < <x> id  [1.0]  (0<x<=1.0)'
   type: string
   inputBinding:
     prefix: -I
-- id: i
+- id: require_seqs_x_i_d__x
   doc: ': require seqs to have >= <x> id  (0<=x<1.0)'
   type: string
   inputBinding:
@@ -146,7 +131,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --informat
-- id: p
+- id: _produce_plots
   doc: ': produce plots'
   type: boolean
   inputBinding:
@@ -171,6 +156,26 @@ inputs:
   type: string
   inputBinding:
     prefix: --seed
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: apparent
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: co_variations
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: msa_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

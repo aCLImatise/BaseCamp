@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: eps2eps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/eps2eps.cwl
 inputs:
-- id: switches
+- id: switches_dot_dot_dot
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: input_eps
+- id: input_dot_eps
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: output_eps
+- id: output_dot_eps
   doc: ''
   type: string
   inputBinding:

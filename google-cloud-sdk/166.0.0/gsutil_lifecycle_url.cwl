@@ -1,16 +1,26 @@
 class: CommandLineTool
-id: gsutil_lifecycle_url.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gsutil_lifecycle_url.cwl
 inputs:
-- id: get
+- id: gs_util
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: url
+- id: lifecycle
   doc: ''
   type: string
   inputBinding:
     position: 1
+- id: get
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: url
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

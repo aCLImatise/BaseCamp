@@ -2,10 +2,13 @@ version 1.0
 
 task MakehmmerdbSeqfile {
   input {
-    String? binaryBinaryFile
+    String binary_file
   }
   command <<<
     makehmmerdb seqfile \
-      ~{binaryBinaryFile}
+      ~{binary_file}
   >>>
+  parameter_meta {
+    binary_file: ""
+  }
 }

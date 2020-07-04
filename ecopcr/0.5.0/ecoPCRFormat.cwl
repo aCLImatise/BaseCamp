@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ecoPCRFormat.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ecoPCRFormat.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

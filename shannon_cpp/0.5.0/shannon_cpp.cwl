@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: shannon_cpp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/shannon_cpp.cwl
 inputs:
 - id: subcommand
   doc: ''

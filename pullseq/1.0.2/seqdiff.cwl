@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: seqdiff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqdiff.cwl
 inputs:
+- id: first
+  doc: ',      First sequence file (required)'
+  type: boolean
+  inputBinding:
+    prefix: --first
+- id: second
+  doc: ',     Second sequence file (required)'
+  type: boolean
+  inputBinding:
+    prefix: --second
 - id: a_output
   doc: ',   File name for uniques from first file'
   type: boolean

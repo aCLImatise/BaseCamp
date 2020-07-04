@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: truncate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/truncate.cwl
 inputs:
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
 - id: no_create
   doc: do not create any files
   type: boolean
@@ -31,6 +21,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --size
+- id: option_dot_dot_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: file_dot_dot_dot
+  doc: ''
+  type: File
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

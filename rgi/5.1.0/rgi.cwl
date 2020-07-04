@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rgi.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rgi.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

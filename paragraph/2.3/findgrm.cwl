@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: findgrm.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/findgrm.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

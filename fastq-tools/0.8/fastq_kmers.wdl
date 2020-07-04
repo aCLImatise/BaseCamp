@@ -2,10 +2,13 @@ version 1.0
 
 task FastqKmers {
   input {
-    String sizeSize
+    String? size
   }
   command <<<
     fastq-kmers \
-      ~{if defined(sizeSize) then ("--size " +  '"' + sizeSize + '"') else ""}
+      ~{if defined(size) then ("--size " +  '"' + size + '"') else ""}
   >>>
+  parameter_meta {
+    size: "kmer size (default: 1)"
+  }
 }

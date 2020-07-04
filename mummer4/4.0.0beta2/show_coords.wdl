@@ -2,10 +2,13 @@ version 1.0
 
 task ShowCoords {
   input {
-    String? deltaDeltaFile
+    String delta_file
   }
   command <<<
     show-coords \
-      ~{deltaDeltaFile}
+      ~{delta_file}
   >>>
+  parameter_meta {
+    delta_file: ""
+  }
 }

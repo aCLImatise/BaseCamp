@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cellprofiler.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cellprofiler.cwl
 inputs:
 - id: pipeline
   doc: Load this pipeline file or project on startup. If specifying a pipeline file
@@ -138,6 +138,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --log-level
+- id: output_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

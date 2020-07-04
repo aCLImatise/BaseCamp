@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: vcffilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcffilter.cwl
 inputs:
-- id: vcf_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: info_filter
   doc: specifies a filter to apply to the info fields of records, removes alleles
     which do not pass the filter
@@ -64,21 +59,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --region
-- id: f
-  doc: '"DP > 10"  # for info fields'
-  type: boolean
+- id: vcf_file
+  doc: ''
+  type: string
   inputBinding:
-    prefix: -f
-- id: g
-  doc: '"GT = 1|1" # for genotype fields'
-  type: boolean
-  inputBinding:
-    prefix: -g
-- id: f
-  doc: "\"CpG\"  # for 'flag' fields"
-  type: boolean
-  inputBinding:
-    prefix: -f
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

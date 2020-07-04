@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: samtoafg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/samtoafg.cwl
 inputs:
 - id: eid
   doc: the EID of the library
@@ -21,6 +21,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --sd
+- id: abyss_sam_to_afg
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: contigs_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: alignments_dots_am
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

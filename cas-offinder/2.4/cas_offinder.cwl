@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cas_offinder.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cas_offinder.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: pal_finder.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pal_finder.cwl
 inputs:
 - id: perl
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: pal_finder_v00204pl
+- id: pal_finder_v_zero_dot_zero_two_dot_zero_four_do_tpl
   doc: ''
   type: string
   inputBinding:

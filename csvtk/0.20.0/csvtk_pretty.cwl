@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csvtk_pretty.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csvtk_pretty.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: align_right
   doc: align right
   type: boolean
@@ -96,6 +91,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tabs
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,12 +2,16 @@ version 1.0
 
 task FamSeq {
   input {
-    String? vcfVcf
-    String? lkLk
+    String vcf
+    String lk
   }
   command <<<
     FamSeq \
-      ~{vcfVcf} \
-      ~{lkLk}
+      ~{vcf} \
+      ~{lk}
   >>>
+  parameter_meta {
+    vcf: "input vcf file"
+    lk: "input likelihood file"
+  }
 }

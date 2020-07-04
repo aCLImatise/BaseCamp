@@ -1,18 +1,18 @@
 class: CommandLineTool
-id: capC_MAP_genomedigest.cwl
+id: ../../../../home/ubuntu/BiocondaCli/capC_MAP_genomedigest.cwl
 inputs:
-- id: i
-  doc: ''
+- id: input_fasta_file
+  doc: input fasta file of geneome
   type: string
   inputBinding:
     prefix: -i
-- id: r
-  doc: ''
+- id: name_supported_enzyme
+  doc: name of supported enzyme, or cutting sequence
   type: string
   inputBinding:
     prefix: -r
-- id: o
-  doc: ''
+- id: output_bed_file
+  doc: output bed file of restriction fragments
   type: string
   inputBinding:
     prefix: -o

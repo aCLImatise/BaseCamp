@@ -1,22 +1,17 @@
 class: CommandLineTool
-id: srf_list.cwl
+id: ../../../../home/ubuntu/BiocondaCli/srf_list.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: c
+- id: count_only_list
   doc: Count only - do not list filenames
   type: boolean
   inputBinding:
     prefix: -c
-- id: v
+- id: verbose_gives_data
   doc: Verbose - gives summary data per file too
   type: boolean
   inputBinding:
     prefix: -v
-- id: l
+- id: list_long_format
   doc: 'List in long format. Lines contain: name position body-size header-size'
   type: boolean
   inputBinding:

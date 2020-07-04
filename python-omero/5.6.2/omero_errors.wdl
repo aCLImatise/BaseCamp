@@ -2,12 +2,16 @@ version 1.0
 
 task OmeroErrors {
   input {
-    Int lengthLength
-    String? pluginsPlugins
+    Int? length
+    String plugins
   }
   command <<<
     omero errors \
-      ~{pluginsPlugins} \
-      ~{if defined(lengthLength) then ("--length " +  '"' + lengthLength + '"') else ""}
+      ~{plugins} \
+      ~{if defined(length) then ("--length " +  '"' + length + '"') else ""}
   >>>
+  parameter_meta {
+    length: "Length of message to print"
+    plugins: "Limit to these plugins; otherwise all"
+  }
 }

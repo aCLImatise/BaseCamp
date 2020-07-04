@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: elm2meme.cwl
+id: ../../../../home/ubuntu/BiocondaCli/elm2meme.cwl
 inputs:
 - id: anchored
   doc: 'allow anchored motifs;  default: skip anchored motifs'
@@ -27,6 +27,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -url
+- id: elm_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

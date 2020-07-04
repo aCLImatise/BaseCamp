@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: EDcalculator_smp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/EDcalculator_smp.cwl
 inputs:
 - id: ed_calculator
   doc: ''

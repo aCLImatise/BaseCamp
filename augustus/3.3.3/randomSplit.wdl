@@ -2,14 +2,16 @@ version 1.0
 
 task RandomSplit.pl {
   input {
-    String? randomRandomSplit
-    String? dbfileDbfile
-    Int? sizeSize
+    String dbfile
+    Int size
   }
   command <<<
     randomSplit.pl \
-      ~{randomRandomSplit} \
-      ~{dbfileDbfile} \
-      ~{sizeSize}
+      ~{dbfile} \
+      ~{size}
   >>>
+  parameter_meta {
+    dbfile: ""
+    size: ""
+  }
 }

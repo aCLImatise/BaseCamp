@@ -1,7 +1,38 @@
 version 1.0
 
 task HtsboxMapchk {
+  input {
+    String? region
+    Int? threshold_high_quality
+    Float? skip_sites_excessive
+    File? bed_file_include
+    Int? min_nonref_count
+    Boolean? one
+    Boolean? two
+    String aln_dot_bam
+    String ref_dot_fa
+  }
   command <<<
-    htsbox mapchk
+    htsbox mapchk \
+      ~{aln_dot_bam} \
+      ~{ref_dot_fa} \
+      ~{if defined(region) then ("-r " +  '"' + region + '"') else ""} \
+      ~{if defined(threshold_high_quality) then ("-q " +  '"' + threshold_high_quality + '"') else ""} \
+      ~{if defined(skip_sites_excessive) then ("-f " +  '"' + skip_sites_excessive + '"') else ""} \
+      ~{if defined(bed_file_include) then ("-b " +  '"' + bed_file_include + '"') else ""} \
+      ~{if defined(min_nonref_count) then ("-d " +  '"' + min_nonref_count + '"') else ""} \
+      ~{true="-1" false="" one} \
+      ~{true="-2" false="" two}
   >>>
+  parameter_meta {
+    region: "region [null]"
+    threshold_high_quality: "threshold for HIGH quality [20]"
+    skip_sites_excessive: "skip sites with excessive non-ref bases [0.35]"
+    bed_file_include: "BED file to include []"
+    min_nonref_count: "min non-ref count [0]"
+    one: "exclude read1"
+    two: "exclude read2"
+    aln_dot_bam: ""
+    ref_dot_fa: ""
+  }
 }

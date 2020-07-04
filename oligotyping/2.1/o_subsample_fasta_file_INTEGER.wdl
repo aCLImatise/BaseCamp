@@ -2,14 +2,22 @@ version 1.0
 
 task OSubsampleFastaFileINTEGER {
   input {
-    File? fileFile
-    Int? integerInteger
-    File? fileFile
+    String o_subsample_fast_a_file
+    File var_1
+    Int integer
+    File var_3
   }
   command <<<
     o-subsample-fasta-file INTEGER \
-      ~{fileFile} \
-      ~{integerInteger} \
-      ~{fileFile}
+      ~{o_subsample_fast_a_file} \
+      ~{var_1} \
+      ~{integer} \
+      ~{var_3}
   >>>
+  parameter_meta {
+    o_subsample_fast_a_file: ""
+    var_1: ""
+    integer: ""
+    var_3: ""
+  }
 }

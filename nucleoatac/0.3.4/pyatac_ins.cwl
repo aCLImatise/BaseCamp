@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pyatac_ins.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyatac_ins.cwl
 inputs:
 - id: bam
   doc: Accepts sorted BAM file
@@ -31,6 +31,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --not_atac
+- id: bed
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --bed
+- id: out
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --out
 outputs: []
 cwlVersion: v1.1
 baseCommand:

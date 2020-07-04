@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: consambig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/consambig.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

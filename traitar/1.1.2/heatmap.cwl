@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: heatmap.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/heatmap.py.cwl
 inputs:
-- id: data_f
-  doc: tab delimited file with row and column names
-  type: string
-  inputBinding:
-    position: 0
-- id: out_f
-  doc: output image (png) file name
-  type: string
-  inputBinding:
-    position: 1
-- id: model_tar
-  doc: phenotype model archive
-  type: string
-  inputBinding:
-    position: 2
-- id: color_f
-  doc: file with r g b colors to be used
-  type: string
-  inputBinding:
-    position: 3
 - id: secondary_model_tar
   doc: secondary model tar if combining the prediction of two different phenotype
     collections into one heatmap
@@ -52,6 +32,26 @@ inputs:
   type: string
   inputBinding:
     prefix: --sample_f
+- id: data_f
+  doc: tab delimited file with row and column names
+  type: string
+  inputBinding:
+    position: 0
+- id: out_f
+  doc: output image (png) file name
+  type: string
+  inputBinding:
+    position: 1
+- id: model_tar
+  doc: phenotype model archive
+  type: string
+  inputBinding:
+    position: 2
+- id: color_f
+  doc: file with r g b colors to be used
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,36 +1,36 @@
 class: CommandLineTool
-id: vsnp_fasta_gbk_gff_by_acc.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vsnp_fasta_gbk_gff_by_acc.py.cwl
 inputs:
-- id: prog
-  doc: ''
+- id: accession
+  doc: NCBI chromosome number
   type: string
   inputBinding:
-    position: 0
-- id: a
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -a
-- id: f
-  doc: ''
+    prefix: --accession
+- id: fast_a
+  doc: get FASTA file
   type: boolean
   inputBinding:
-    prefix: -f
-- id: b
-  doc: ''
+    prefix: --fasta
+- id: gbk
+  doc: get gbk file
   type: boolean
   inputBinding:
-    prefix: -b
-- id: g
-  doc: ''
+    prefix: --gbk
+- id: gff
+  doc: get gff file
   type: boolean
   inputBinding:
-    prefix: -g
+    prefix: --gff
 - id: v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
+- id: prog
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

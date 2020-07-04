@@ -2,12 +2,19 @@ version 1.0
 
 task ConusFoldUNA {
   input {
-    Boolean optionsOptions
-    String? seqSeqFileIn
+    Boolean? options
+    String conus_fold
+    String seq_file_in
   }
   command <<<
     conus_fold UNA \
-      ~{seqSeqFileIn} \
-      ~{true="-options" false="" optionsOptions}
+      ~{conus_fold} \
+      ~{seq_file_in} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    options: ""
+    conus_fold: ""
+    seq_file_in: ""
+  }
 }

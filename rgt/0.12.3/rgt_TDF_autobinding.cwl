@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: rgt_TDF_autobinding.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rgt_TDF_autobinding.cwl
 inputs:
-- id: i
+- id: input_fasta_file
   doc: Input FASTA file of the whole genome
   type: boolean
   inputBinding:
     prefix: -i
-- id: l
+- id: define_minimum_length
   doc: '[Triplexes] Define the minimum length of triplex (default: 20)'
   type: boolean
   inputBinding:
     prefix: -l
-- id: e
+- id: set_maximal_errorrate
   doc: '[Triplexes] Set the maximal error-rate in % tolerated (default: 20)'
   type: boolean
   inputBinding:

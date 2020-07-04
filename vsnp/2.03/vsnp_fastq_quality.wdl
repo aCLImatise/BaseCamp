@@ -2,16 +2,22 @@ version 1.0
 
 task VsnpFastqQuality.py {
   input {
-    String r1R1
-    String r2R2
-    Boolean vV
-    String? progProg
+    String? read_one
+    String? read_two
+    Boolean? v
+    String prog
   }
   command <<<
     vsnp_fastq_quality.py \
-      ~{progProg} \
-      ~{if defined(r1R1) then ("-r1 " +  '"' + r1R1 + '"') else ""} \
-      ~{if defined(r2R2) then ("-r2 " +  '"' + r2R2 + '"') else ""} \
-      ~{true="-v" false="" vV}
+      ~{prog} \
+      ~{if defined(read_one) then ("--read1 " +  '"' + read_one + '"') else ""} \
+      ~{if defined(read_two) then ("--read2 " +  '"' + read_two + '"') else ""} \
+      ~{true="-v" false="" v}
   >>>
+  parameter_meta {
+    read_one: "Required: single read, R1 if Illumina read"
+    read_two: "Required: R2 Illumina read"
+    v: ""
+    prog: ""
+  }
 }

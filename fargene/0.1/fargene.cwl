@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fargene.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fargene.cwl
 inputs:
 - id: in_files
   doc: Input file(s) to be searched. Could either be in FASTA or FASTQ format.

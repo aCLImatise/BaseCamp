@@ -1,42 +1,42 @@
 class: CommandLineTool
-id: count_qmers.cwl
+id: ../../../../home/ubuntu/BiocondaCli/count_qmers.cwl
 inputs:
-- id: f
+- id: multifasta_file_count
   doc: multifasta file to count
   type: string
   inputBinding:
     prefix: -f
-- id: r
+- id: bank_reads_count
   doc: Bank of reads to count
   type: string
   inputBinding:
     prefix: -r
-- id: c
+- id: bank_contigs_count
   doc: Bank of contigs to count
   type: string
   inputBinding:
     prefix: -c
-- id: n
+- id: report_normalized_counts
   doc: Report normalized counts (readmercount/contigmercount)
   type: string
   inputBinding:
     prefix: -n
-- id: k
+- id: length_of_kmer
   doc: 'Length of kmer '
   type: string
   inputBinding:
     prefix: -k
-- id: m
+- id: minimum_count_report
   doc: 'Minimum count to report (default: 1)'
   type: long
   inputBinding:
     prefix: -m
-- id: s
+- id: print_using_count
   doc: 'Print using simple nmer count format: mer count'
   type: boolean
   inputBinding:
     prefix: -S
-- id: l
+- id: gigabyte_limit_ram
   doc: Gigabyte limit on RAM. If limited, the output will contain redundancies
   type: string
   inputBinding:

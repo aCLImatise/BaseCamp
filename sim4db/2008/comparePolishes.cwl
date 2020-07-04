@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: comparePolishes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/comparePolishes.cwl
 inputs:
 - id: i
   doc: ''
@@ -26,7 +26,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -p
-- id: gff3
+- id: gff_three
   doc: ''
   type: boolean
   inputBinding:

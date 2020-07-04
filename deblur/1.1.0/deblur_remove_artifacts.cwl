@@ -1,11 +1,11 @@
 class: CommandLineTool
-id: deblur_remove_artifacts.cwl
+id: ../../../../home/ubuntu/BiocondaCli/deblur_remove_artifacts.cwl
 inputs:
 - id: ref_fp
   doc: 'Keep all sequences aligning to this FASTA database (for multiple databases,
-    use --ref- fp db1.fa --ref-fp db2.fa ..) default for positive filtering is: /tmp/tmpr8qmos2l/lib/python3.6/site-
+    use --ref- fp db1.fa --ref-fp db2.fa ..) default for positive filtering is: /tmp/tmpciswt9a4/lib/python3.6/site-
     packages/deblur/support_files/88_otus.fasta default for negative filtering is:
-    /tmp/tmpr8qmos2l/lib/python3.6/site- packages/deblur/support_files/artifacts.fa'
+    /tmp/tmpciswt9a4/lib/python3.6/site- packages/deblur/support_files/artifacts.fa'
   type: File
   inputBinding:
     prefix: --ref-fp
@@ -40,6 +40,16 @@ inputs:
   type: File
   inputBinding:
     prefix: --log-file
+- id: seqs_fp
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_dir
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

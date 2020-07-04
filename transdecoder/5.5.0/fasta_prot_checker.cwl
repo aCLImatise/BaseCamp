@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fasta_prot_checker.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fasta_prot_checker.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

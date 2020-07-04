@@ -1,6 +1,21 @@
 class: CommandLineTool
-id: medpy_extract_sub_volume_auto.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/medpy_extract_sub_volume_auto.py.cwl
 inputs:
+- id: set_flag_override
+  doc: Set this flag to silently override files that exist.
+  type: boolean
+  inputBinding:
+    prefix: -f
+- id: display_more_information
+  doc: Display more information.
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: display_debug_information
+  doc: Display debug information.
+  type: boolean
+  inputBinding:
+    prefix: -d
 - id: image
   doc: An image of arbitrary dimensions that should be split.
   type: string
@@ -23,21 +38,6 @@ inputs:
   type: long
   inputBinding:
     position: 3
-- id: f
-  doc: Set this flag to silently override files that exist.
-  type: boolean
-  inputBinding:
-    prefix: -f
-- id: v
-  doc: Display more information.
-  type: boolean
-  inputBinding:
-    prefix: -v
-- id: d
-  doc: Display debug information.
-  type: boolean
-  inputBinding:
-    prefix: -d
 outputs: []
 cwlVersion: v1.1
 baseCommand:

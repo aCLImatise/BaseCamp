@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SOAPsh.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SOAPsh.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,27 +1,22 @@
 class: CommandLineTool
-id: ssu_cmscore.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ssu_cmscore.cwl
 inputs:
-- id: cm_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: n
+- id: generate_n_sequences
   doc: ': generate <n> sequences  [10]'
   type: string
   inputBinding:
     prefix: -n
-- id: l
+- id: align_locally_model
   doc: ': align locally w.r.t. the model'
   type: boolean
   inputBinding:
     prefix: -l
-- id: s
+- id: set_rng_seed
   doc: ': set RNG seed to <n> (if 0: one-time arbitrary seed)  [181]'
   type: string
   inputBinding:
     prefix: -s
-- id: a
+- id: print_individual_timings
   doc: ': print individual timings & scores, not just a summary'
   type: boolean
   inputBinding:
@@ -86,7 +81,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --tau
-- id: aln2_bands
+- id: aln_two_bands
   doc: ': w/--hbanded derive HMM bands w/o scanning Forward/Backward'
   type: boolean
   inputBinding:
@@ -141,6 +136,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --tfile
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: cm_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

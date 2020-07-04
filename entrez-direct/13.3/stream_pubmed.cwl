@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: stream_pubmed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stream_pubmed.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,30 +2,40 @@ version 1.0
 
 task SixgillFilter {
   input {
-    String outOut
-    Int minorMinorFLength
-    Int minaMinaASeqLength
-    Int minMinReadCount
-    Int minMinQualScore
-    Int minMinLongestTrypPepleN
-    Int minMinMetaGeneScore
-    Int maxMaxMetaPeptides
-    Boolean noNoGzipOut
-    Boolean debugDebug
-    String? metaMetaPeptideFile
+    String? out
+    Int? minor_f_length
+    Int? mina_a_seq_length
+    Int? min_read_count
+    Int? min_qual_score
+    Int? min_longest_tryp_peple_n
+    Int? min_meta_gene_score
+    Int? max_meta_peptides
+    Boolean? no_gzip_out
+    Boolean? debug
   }
   command <<<
     sixgill_filter \
-      ~{metaMetaPeptideFile} \
-      ~{if defined(outOut) then ("--out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(minorMinorFLength) then ("--minorflength " +  '"' + minorMinorFLength + '"') else ""} \
-      ~{if defined(minaMinaASeqLength) then ("--minaaseqlength " +  '"' + minaMinaASeqLength + '"') else ""} \
-      ~{if defined(minMinReadCount) then ("--minreadcount " +  '"' + minMinReadCount + '"') else ""} \
-      ~{if defined(minMinQualScore) then ("--minqualscore " +  '"' + minMinQualScore + '"') else ""} \
-      ~{if defined(minMinLongestTrypPepleN) then ("--minlongesttryppeplen " +  '"' + minMinLongestTrypPepleN + '"') else ""} \
-      ~{if defined(minMinMetaGeneScore) then ("--minmetagenescore " +  '"' + minMinMetaGeneScore + '"') else ""} \
-      ~{if defined(maxMaxMetaPeptides) then ("--maxmetapeptides " +  '"' + maxMaxMetaPeptides + '"') else ""} \
-      ~{true="--nogzipout" false="" noNoGzipOut} \
-      ~{true="--debug" false="" debugDebug}
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
+      ~{if defined(minor_f_length) then ("--minorflength " +  '"' + minor_f_length + '"') else ""} \
+      ~{if defined(mina_a_seq_length) then ("--minaaseqlength " +  '"' + mina_a_seq_length + '"') else ""} \
+      ~{if defined(min_read_count) then ("--minreadcount " +  '"' + min_read_count + '"') else ""} \
+      ~{if defined(min_qual_score) then ("--minqualscore " +  '"' + min_qual_score + '"') else ""} \
+      ~{if defined(min_longest_tryp_peple_n) then ("--minlongesttryppeplen " +  '"' + min_longest_tryp_peple_n + '"') else ""} \
+      ~{if defined(min_meta_gene_score) then ("--minmetagenescore " +  '"' + min_meta_gene_score + '"') else ""} \
+      ~{if defined(max_meta_peptides) then ("--maxmetapeptides " +  '"' + max_meta_peptides + '"') else ""} \
+      ~{true="--nogzipout" false="" no_gzip_out} \
+      ~{true="--debug" false="" debug}
   >>>
+  parameter_meta {
+    out: "output metapeptide database file"
+    minor_f_length: "minimum ORF length"
+    mina_a_seq_length: "minimum AA sequence length"
+    min_read_count: "minimum read count"
+    min_qual_score: "minimum basecall quality"
+    min_longest_tryp_peple_n: "minimum length of the longest tryptic peptide"
+    min_meta_gene_score: "Minimum MetaGene score (-1 for none)"
+    max_meta_peptides: "maximum number of metapeptides to write"
+    no_gzip_out: "Write plaintetxt (non-gzipped) output (default gzipped)"
+    debug: "Enable debug logging"
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: remove_reads_exon_exon_psl.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/remove_reads_exon_exon_psl.py.cwl
 inputs:
 - id: input_psl
   doc: The input PSL file (output of BLAT) containing the reads mapping gene-gene

@@ -2,62 +2,88 @@ version 1.0
 
 task EpaNg {
   input {
-    Boolean verboseVerbose
-    String bBFast
-    Boolean dumpDumpBinary
-    String splitSplit
-    String treeTree
-    String refRefMsa
-    String binaryBinary
-    String queryQuery
-    String modelModel
-    String outOutDir
-    Float filterFilterAccLwr
-    Float filterFilterMinLwr
-    String filterFilterMin
-    String filterFilterMax
-    String precisionPrecision
-    Boolean redoRedo
-    String preservePreserveRooting
-    Float dynDynHeur
-    Float fixFixHeur
-    String baseballBaseballHeur
-    String noNoHeur
-    String chunkChunkSize
-    Boolean raRaXmlBlo
-    Boolean noNoPreMask
-    String rateRateScalers
-    String threadsThreads
-    String? optionsOptions
+    Boolean? verbose
+    String? b_fast
+    Boolean? dump_binary
+    String? split
+    String? tree
+    String? ref_msa
+    String? binary
+    String? query
+    String? model
+    String? out_dir
+    Float? filter_acc_lwr
+    Float? filter_min_lwr
+    String? filter_min
+    String? filter_max
+    String? precision
+    Boolean? redo
+    String? preserve_rooting
+    Float? dyn_heur
+    Float? fix_heur
+    String? baseball_heur
+    String? no_heur
+    String? chunk_size
+    Boolean? ra_xml_blo
+    Boolean? no_pre_mask
+    String? rate_scalers
+    String? threads
   }
   command <<<
     epa-ng \
-      ~{optionsOptions} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{if defined(bBFast) then ("--bfast " +  '"' + bBFast + '"') else ""} \
-      ~{true="--dump-binary" false="" dumpDumpBinary} \
-      ~{if defined(splitSplit) then ("--split " +  '"' + splitSplit + '"') else ""} \
-      ~{if defined(treeTree) then ("--tree " +  '"' + treeTree + '"') else ""} \
-      ~{if defined(refRefMsa) then ("--ref-msa " +  '"' + refRefMsa + '"') else ""} \
-      ~{if defined(binaryBinary) then ("--binary " +  '"' + binaryBinary + '"') else ""} \
-      ~{if defined(queryQuery) then ("--query " +  '"' + queryQuery + '"') else ""} \
-      ~{if defined(modelModel) then ("--model " +  '"' + modelModel + '"') else ""} \
-      ~{if defined(outOutDir) then ("--out-dir " +  '"' + outOutDir + '"') else ""} \
-      ~{if defined(filterFilterAccLwr) then ("--filter-acc-lwr " +  '"' + filterFilterAccLwr + '"') else ""} \
-      ~{if defined(filterFilterMinLwr) then ("--filter-min-lwr " +  '"' + filterFilterMinLwr + '"') else ""} \
-      ~{if defined(filterFilterMin) then ("--filter-min " +  '"' + filterFilterMin + '"') else ""} \
-      ~{if defined(filterFilterMax) then ("--filter-max " +  '"' + filterFilterMax + '"') else ""} \
-      ~{if defined(precisionPrecision) then ("--precision " +  '"' + precisionPrecision + '"') else ""} \
-      ~{true="--redo" false="" redoRedo} \
-      ~{if defined(preservePreserveRooting) then ("--preserve-rooting " +  '"' + preservePreserveRooting + '"') else ""} \
-      ~{if defined(dynDynHeur) then ("--dyn-heur " +  '"' + dynDynHeur + '"') else ""} \
-      ~{if defined(fixFixHeur) then ("--fix-heur " +  '"' + fixFixHeur + '"') else ""} \
-      ~{if defined(baseballBaseballHeur) then ("--baseball-heur " +  '"' + baseballBaseballHeur + '"') else ""} \
-      ~{if defined(noNoHeur) then ("--no-heur " +  '"' + noNoHeur + '"') else ""} \
-      ~{if defined(chunkChunkSize) then ("--chunk-size " +  '"' + chunkChunkSize + '"') else ""} \
-      ~{true="--raxml-blo" false="" raRaXmlBlo} \
-      ~{true="--no-pre-mask" false="" noNoPreMask} \
-      ~{if defined(rateRateScalers) then ("--rate-scalers " +  '"' + rateRateScalers + '"') else ""} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""}
+      ~{true="--verbose" false="" verbose} \
+      ~{if defined(b_fast) then ("--bfast " +  '"' + b_fast + '"') else ""} \
+      ~{true="--dump-binary" false="" dump_binary} \
+      ~{if defined(split) then ("--split " +  '"' + split + '"') else ""} \
+      ~{if defined(tree) then ("--tree " +  '"' + tree + '"') else ""} \
+      ~{if defined(ref_msa) then ("--ref-msa " +  '"' + ref_msa + '"') else ""} \
+      ~{if defined(binary) then ("--binary " +  '"' + binary + '"') else ""} \
+      ~{if defined(query) then ("--query " +  '"' + query + '"') else ""} \
+      ~{if defined(model) then ("--model " +  '"' + model + '"') else ""} \
+      ~{if defined(out_dir) then ("--out-dir " +  '"' + out_dir + '"') else ""} \
+      ~{if defined(filter_acc_lwr) then ("--filter-acc-lwr " +  '"' + filter_acc_lwr + '"') else ""} \
+      ~{if defined(filter_min_lwr) then ("--filter-min-lwr " +  '"' + filter_min_lwr + '"') else ""} \
+      ~{if defined(filter_min) then ("--filter-min " +  '"' + filter_min + '"') else ""} \
+      ~{if defined(filter_max) then ("--filter-max " +  '"' + filter_max + '"') else ""} \
+      ~{if defined(precision) then ("--precision " +  '"' + precision + '"') else ""} \
+      ~{true="--redo" false="" redo} \
+      ~{if defined(preserve_rooting) then ("--preserve-rooting " +  '"' + preserve_rooting + '"') else ""} \
+      ~{if defined(dyn_heur) then ("--dyn-heur " +  '"' + dyn_heur + '"') else ""} \
+      ~{if defined(fix_heur) then ("--fix-heur " +  '"' + fix_heur + '"') else ""} \
+      ~{if defined(baseball_heur) then ("--baseball-heur " +  '"' + baseball_heur + '"') else ""} \
+      ~{if defined(no_heur) then ("--no-heur " +  '"' + no_heur + '"') else ""} \
+      ~{if defined(chunk_size) then ("--chunk-size " +  '"' + chunk_size + '"') else ""} \
+      ~{true="--raxml-blo" false="" ra_xml_blo} \
+      ~{true="--no-pre-mask" false="" no_pre_mask} \
+      ~{if defined(rate_scalers) then ("--rate-scalers " +  '"' + rate_scalers + '"') else ""} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  parameter_meta {
+    verbose: "Display debug output."
+    b_fast: ":FILE        Convert the given fasta file to bfast format."
+    dump_binary: "Binary Dump mode: write ref. tree in binary format then exit. NOTE: not compatible with premasking!"
+    split: ":FILE ...       Takes a reference MSA (phylip/fasta/fasta.gz) and combined ref + query MSA(s) (phylip/fasta/fasta.gz) and outputs a monolithic query file (fasta), as well as a reference file (fasta), ready for use. Usage: epa-ng --split ref_alignment query_alignments+"
+    tree: ":FILE Excludes: --binary Path to Reference Tree file."
+    ref_msa: ":FILE Excludes: --binary Path to Reference MSA file."
+    binary: ":FILE Excludes: --tree --ref-msa Path to binary reference file, as created using --dump-binary."
+    query: ":FILE        Path to Query MSA file."
+    model: "=GTR+G       Description string of the model to be used, or a RAxML_info file. --model STRING | FILE See: https://github.com/amkozlov/raxml-ng/wiki/Input-data#evolutionary-model"
+    out_dir: ":DIR=./ Path to output directory."
+    filter_acc_lwr: ":FLOAT in [0 - 1] Excludes: --filter-min-lwr Accumulated likelihood weight after which further placements are discarded."
+    filter_min_lwr: ":FLOAT in [0 - 1]=0.01 Excludes: --filter-acc-lwr Minimum likelihood weight below which a placement is discarded."
+    filter_min: "=1         Minimum number of placements per sequence to include in final output."
+    filter_max: "=7         Maximum number of placements per sequence to include in final output."
+    precision: "=10         Output decimal point precision for floating point numbers."
+    redo: "Overwrite existing files."
+    preserve_rooting: ":{off,on} Preserve the rooting of rooted trees. When disabled, EPA-ng will print the result as an unrooted tree."
+    dyn_heur: ":FLOAT in [0 - 1]=0.99999 Excludes: --fix-heur --baseball-heur --no-heur Two-phase heuristic, determination of candidate edges using accumulative threshold. Enabled by default! See --no-heur for disabling it"
+    fix_heur: ":FLOAT in [0 - 1] Excludes: --dyn-heur --baseball-heur --no-heur Two-phase heuristic, determination of candidate edges by specified percentage of total edges."
+    baseball_heur: ": --dyn-heur --fix-heur --no-heur Baseball heuristic as known from pplacer. strike_box=3,max_strikes=6,max_pitches=40."
+    no_heur: ": --dyn-heur --fix-heur --baseball-heur Disables heuristic preplacement completely. Overrides all other heuristic flags."
+    chunk_size: "=5000      Number of query sequences to be read in at a time. May influence performance."
+    ra_xml_blo: "Employ old style of branch length optimization during thorough insertion as opposed to sliding approach. WARNING: may significantly slow down computation."
+    no_pre_mask: "Do NOT pre-mask sequences. Enables repeats unless --no-repeats is also specified."
+    rate_scalers: ":{off,on,auto} Use individual rate scalers. Important to avoid numerical underflow in taxa rich trees."
+    threads: "=0         Number of threads to use. If 0 is passed as argument,program will run with the maximum number of threads available."
+  }
 }

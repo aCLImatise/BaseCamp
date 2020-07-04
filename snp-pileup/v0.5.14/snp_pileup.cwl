@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: snp_pileup.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snp_pileup.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

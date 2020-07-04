@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: jobTreeRun.cwl
+id: ../../../../home/ubuntu/BiocondaCli/jobTreeRun.cwl
 inputs:
 - id: logoff
   doc: Turn off logging. (default is CRITICAL)

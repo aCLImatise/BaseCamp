@@ -2,12 +2,16 @@ version 1.0
 
 task BgtBcfidx {
   input {
-    Int sS
-    String? inInBcf
+    Int? s
+    String in_dot_bcf
   }
   command <<<
     bgt bcfidx \
-      ~{inInBcf} \
-      ~{if defined(sS) then ("-s " +  '"' + sS + '"') else ""}
+      ~{in_dot_bcf} \
+      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""}
   >>>
+  parameter_meta {
+    s: ""
+    in_dot_bcf: ""
+  }
 }

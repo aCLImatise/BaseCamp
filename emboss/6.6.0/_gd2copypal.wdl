@@ -2,14 +2,19 @@ version 1.0
 
 task _gd2copypal {
   input {
-    String? gd2copypalGd2copypal
-    String? palettePaletteFileGd2
-    File? filenameFilenameGd2
+    String gd_two_copy_pal
+    String palette_file_dot_gd_two
+    File filename_dot_gd_two
   }
   command <<<
     _gd2copypal \
-      ~{gd2copypalGd2copypal} \
-      ~{palettePaletteFileGd2} \
-      ~{filenameFilenameGd2}
+      ~{gd_two_copy_pal} \
+      ~{palette_file_dot_gd_two} \
+      ~{filename_dot_gd_two}
   >>>
+  parameter_meta {
+    gd_two_copy_pal: ""
+    palette_file_dot_gd_two: ""
+    filename_dot_gd_two: ""
+  }
 }

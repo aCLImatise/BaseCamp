@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csvtk_splitxlsx.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csvtk_splitxlsx.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: fields
   doc: comma separated key fields, column name or index. e.g. -f 1-3 or -f id,id2
     or -F -f "group*" (default "1")
@@ -107,6 +102,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tabs
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

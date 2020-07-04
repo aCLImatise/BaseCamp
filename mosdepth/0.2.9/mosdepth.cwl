@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: mosdepth.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mosdepth.cwl
 inputs:
-- id: prefix
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: bam_or_cram
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: threads
   doc: 'number of BAM decompression threads [default: 0]'
   type: string
@@ -22,8 +12,8 @@ inputs:
   inputBinding:
     prefix: --chrom
 - id: by
-  doc: '<bed|window>       optional BED file or (integer) window-sizes. '
-  type: boolean
+  doc: 'optional BED file or (integer) window-sizes. '
+  type: string
   inputBinding:
     prefix: --by
 - id: no_per_base
@@ -81,6 +71,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --read-groups
+- id: prefix
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: bam_or_cram
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

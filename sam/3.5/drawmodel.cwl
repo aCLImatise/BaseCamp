@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: drawmodel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/drawmodel.cwl
 inputs:
-- id: model_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: psfile
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: mod
   doc: '[n]      Draw first or nth model'
   type: boolean
@@ -26,6 +16,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -freq
+- id: model_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: psfile
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

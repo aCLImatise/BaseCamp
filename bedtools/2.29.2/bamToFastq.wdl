@@ -2,14 +2,22 @@ version 1.0
 
 task BamToFastq {
   input {
-    Boolean fq2Fq2
-    Boolean tagsTags
-    String? optionsOptions
+    Boolean? fq_two
+    Boolean? tags
+    String? i
+    String? fq
   }
   command <<<
     bamToFastq \
-      ~{optionsOptions} \
-      ~{true="-fq2" false="" fq2Fq2} \
-      ~{true="-tags" false="" tagsTags}
+      ~{true="-fq2" false="" fq_two} \
+      ~{true="-tags" false="" tags} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(fq) then ("-fq " +  '"' + fq + '"') else ""}
   >>>
+  parameter_meta {
+    fq_two: "FASTQ for second end.  Used if BAM contains paired-end data. BAM should be sorted by query name is creating paired FASTQ."
+    tags: "Create FASTQ based on the mate info in the BAM R2 and Q2 tags."
+    i: ""
+    fq: ""
+  }
 }

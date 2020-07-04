@@ -2,56 +2,76 @@ version 1.0
 
 task SetupGenomicData.py {
   input {
-    Boolean allAll
-    Boolean hg19Hg19
-    Boolean hg38Hg38
-    Boolean mm9Mm9
-    Boolean mm10Mm10
-    Boolean zv9Zv9
-    Boolean zv10Zv10
-    String hg19Hg19GenomePath
-    String hg38Hg38GenomePath
-    String mm9Mm9GenomePath
-    String mm10Mm10GenomePath
-    String zv9Zv9GenomePath
-    String zv10Zv10GenomePath
-    String hg19Hg19GtfPath
-    String hg38Hg38GtfPath
-    String mm9Mm9GtfPath
-    String mm10Mm10GtfPath
-    String zv9Zv9GtfPath
-    String zv10Zv10GtfPath
-    Boolean hg38Hg38Rm
-    Boolean hg19Hg19Rm
-    Boolean mm9Mm9Rm
-    String? pythonPython
-    String? setupSetupGenomicDataPy
+    Boolean? all
+    Boolean? h_gone_nine
+    Boolean? hg_three_eight
+    Boolean? mm_nine
+    Boolean? mm_one_zero
+    Boolean? zv_nine
+    Boolean? zv_one_zero
+    String? h_gone_nine_genome_path
+    String? hg_three_eight_genome_path
+    String? mm_nine_genome_path
+    String? mm_one_zero_genome_path
+    String? zv_nine_genome_path
+    String? zv_one_zero_genome_path
+    String? h_gone_nine_gtf_path
+    String? hg_three_eight_gtf_path
+    String? mm_nine_gtf_path
+    String? mm_one_zero_gtf_path
+    String? zv_nine_gtf_path
+    String? zv_one_zero_gtf_path
+    Boolean? hg_three_eight_rm
+    Boolean? h_gone_nine_rm
+    Boolean? mm_nine_rm
   }
   command <<<
     setupGenomicData.py \
-      ~{pythonPython} \
-      ~{true="--all" false="" allAll} \
-      ~{true="--hg19" false="" hg19Hg19} \
-      ~{true="--hg38" false="" hg38Hg38} \
-      ~{true="--mm9" false="" mm9Mm9} \
-      ~{true="--mm10" false="" mm10Mm10} \
-      ~{true="--zv9" false="" zv9Zv9} \
-      ~{true="--zv10" false="" zv10Zv10} \
-      ~{if defined(hg19Hg19GenomePath) then ("--hg19-genome-path " +  '"' + hg19Hg19GenomePath + '"') else ""} \
-      ~{if defined(hg38Hg38GenomePath) then ("--hg38-genome-path " +  '"' + hg38Hg38GenomePath + '"') else ""} \
-      ~{if defined(mm9Mm9GenomePath) then ("--mm9-genome-path " +  '"' + mm9Mm9GenomePath + '"') else ""} \
-      ~{if defined(mm10Mm10GenomePath) then ("--mm10-genome-path " +  '"' + mm10Mm10GenomePath + '"') else ""} \
-      ~{if defined(zv9Zv9GenomePath) then ("--zv9-genome-path " +  '"' + zv9Zv9GenomePath + '"') else ""} \
-      ~{if defined(zv10Zv10GenomePath) then ("--zv10-genome-path " +  '"' + zv10Zv10GenomePath + '"') else ""} \
-      ~{if defined(hg19Hg19GtfPath) then ("--hg19-gtf-path " +  '"' + hg19Hg19GtfPath + '"') else ""} \
-      ~{if defined(hg38Hg38GtfPath) then ("--hg38-gtf-path " +  '"' + hg38Hg38GtfPath + '"') else ""} \
-      ~{if defined(mm9Mm9GtfPath) then ("--mm9-gtf-path " +  '"' + mm9Mm9GtfPath + '"') else ""} \
-      ~{if defined(mm10Mm10GtfPath) then ("--mm10-gtf-path " +  '"' + mm10Mm10GtfPath + '"') else ""} \
-      ~{if defined(zv9Zv9GtfPath) then ("--zv9-gtf-path " +  '"' + zv9Zv9GtfPath + '"') else ""} \
-      ~{if defined(zv10Zv10GtfPath) then ("--zv10-gtf-path " +  '"' + zv10Zv10GtfPath + '"') else ""} \
-      ~{true="--hg38-rm" false="" hg38Hg38Rm} \
-      ~{true="--hg19-rm" false="" hg19Hg19Rm} \
-      ~{true="--mm9-rm" false="" mm9Mm9Rm} \
-      ~{setupSetupGenomicDataPy}
+      ~{true="--all" false="" all} \
+      ~{true="--hg19" false="" h_gone_nine} \
+      ~{true="--hg38" false="" hg_three_eight} \
+      ~{true="--mm9" false="" mm_nine} \
+      ~{true="--mm10" false="" mm_one_zero} \
+      ~{true="--zv9" false="" zv_nine} \
+      ~{true="--zv10" false="" zv_one_zero} \
+      ~{if defined(h_gone_nine_genome_path) then ("--hg19-genome-path " +  '"' + h_gone_nine_genome_path + '"') else ""} \
+      ~{if defined(hg_three_eight_genome_path) then ("--hg38-genome-path " +  '"' + hg_three_eight_genome_path + '"') else ""} \
+      ~{if defined(mm_nine_genome_path) then ("--mm9-genome-path " +  '"' + mm_nine_genome_path + '"') else ""} \
+      ~{if defined(mm_one_zero_genome_path) then ("--mm10-genome-path " +  '"' + mm_one_zero_genome_path + '"') else ""} \
+      ~{if defined(zv_nine_genome_path) then ("--zv9-genome-path " +  '"' + zv_nine_genome_path + '"') else ""} \
+      ~{if defined(zv_one_zero_genome_path) then ("--zv10-genome-path " +  '"' + zv_one_zero_genome_path + '"') else ""} \
+      ~{if defined(h_gone_nine_gtf_path) then ("--hg19-gtf-path " +  '"' + h_gone_nine_gtf_path + '"') else ""} \
+      ~{if defined(hg_three_eight_gtf_path) then ("--hg38-gtf-path " +  '"' + hg_three_eight_gtf_path + '"') else ""} \
+      ~{if defined(mm_nine_gtf_path) then ("--mm9-gtf-path " +  '"' + mm_nine_gtf_path + '"') else ""} \
+      ~{if defined(mm_one_zero_gtf_path) then ("--mm10-gtf-path " +  '"' + mm_one_zero_gtf_path + '"') else ""} \
+      ~{if defined(zv_nine_gtf_path) then ("--zv9-gtf-path " +  '"' + zv_nine_gtf_path + '"') else ""} \
+      ~{if defined(zv_one_zero_gtf_path) then ("--zv10-gtf-path " +  '"' + zv_one_zero_gtf_path + '"') else ""} \
+      ~{true="--hg38-rm" false="" hg_three_eight_rm} \
+      ~{true="--hg19-rm" false="" h_gone_nine_rm} \
+      ~{true="--mm9-rm" false="" mm_nine_rm}
   >>>
+  parameter_meta {
+    all: "Fetch all data sets."
+    h_gone_nine: "Fetch human genome files."
+    hg_three_eight: "Fetch human genome files."
+    mm_nine: "Fetch mouse files."
+    mm_one_zero: "Fetch mouse files."
+    zv_nine: "Fetch zebrafish files."
+    zv_one_zero: "Fetch zebrafish files."
+    h_gone_nine_genome_path: "Path to an already existing hg19 genome (all chromosomes in the same file)."
+    hg_three_eight_genome_path: "Path to an already existing hg38 genome (all chromosomes in the same file)."
+    mm_nine_genome_path: "Path to an already existing mm9 genome (all chromosomes in the same file)."
+    mm_one_zero_genome_path: "Path to an already existing mm9 genome (all chromosomes in the same file)."
+    zv_nine_genome_path: "Path to an already existing zv9 genome (all chromosomes in the same file)."
+    zv_one_zero_genome_path: "Path to an already existing zv10 genome (all chromosomes in the same file)."
+    h_gone_nine_gtf_path: "Path to an already existing hg19 GTF file."
+    hg_three_eight_gtf_path: "Path to an already existing hg38 GTF file."
+    mm_nine_gtf_path: "Path to an already existing mm9 GTF file."
+    mm_one_zero_gtf_path: "Path to an already existing mm10 GTF file."
+    zv_nine_gtf_path: "Path to an already existing zv9 GTF file."
+    zv_one_zero_gtf_path: "Path to an already existing zv10 GTF file."
+    hg_three_eight_rm: "Fetch repeat masker files for hg38 from Broad institute."
+    h_gone_nine_rm: "Fetch repeat masker files for hg19 from Broad institute."
+    mm_nine_rm: "Fetch repeat masker files for mm9 from Broad institute."
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: plot_count_stats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/plot_count_stats.cwl
 inputs:
 - id: input
   doc: Full path to file containing table output by CHROM_STATS
@@ -48,13 +48,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --const_chr
-- id: var1_marker
+- id: var_one_marker
   doc: Way of designating variable 1 values in plot. Choices are 'color', 'shape',
     or 'size'. Must be used in conjunction with --var1_marker_vals. Default is 'color'.
   type: string
   inputBinding:
     prefix: --var1_marker
-- id: var1_marker_vals
+- id: var_one_marker_vals
   doc: Marker values to use for variable 1 values. If --var1_marker is 'color', then
     --var1_marker_vals should be a space-separated list of Matplotlib colors (e.g.,
     'red blue green'). If --var1_marker is 'shape' then --var1_marker_vals should
@@ -65,14 +65,14 @@ inputs:
   type: string[]
   inputBinding:
     prefix: --var1_marker_vals
-- id: var2_marker
+- id: var_two_marker
   doc: Way of designating variable 2 values in plot. Choices are 'color', 'shape',
     or 'size'. Must be used in conjunction with --var2_marker_vals. Default is 'none',
     which will only process --var1_marker.
   type: string
   inputBinding:
     prefix: --var2_marker
-- id: var2_marker_vals
+- id: var_two_marker_vals
   doc: "[VAR2_MARKER_VALS [VAR2_MARKER_VALS ...]] Marker values to use for variable\
     \ 2 values. If --var2_marker is 'color', then --var2_marker_vals should be a space-separated\
     \ list of Matplotlib colors (e.g., 'red blue green'). If --var2_marker is 'shape'\

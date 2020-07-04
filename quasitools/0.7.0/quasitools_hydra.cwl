@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: quasitools_hydra.cwl
+id: ../../../../home/ubuntu/BiocondaCli/quasitools_hydra.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: forward
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: reverse
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: generate_consensus
   doc: Generate a mixed base consensus sequence.
   type: boolean
@@ -104,6 +89,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --id
+- id: forward
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: reverse
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

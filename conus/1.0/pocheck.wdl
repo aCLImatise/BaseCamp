@@ -2,12 +2,16 @@ version 1.0
 
 task Pocheck {
   input {
-    Boolean optionsOptions
-    String? seqSeqFileIn
+    Boolean? options
+    String seq_file_in
   }
   command <<<
     pocheck \
-      ~{seqSeqFileIn} \
-      ~{true="-options" false="" optionsOptions}
+      ~{seq_file_in} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    options: ""
+    seq_file_in: ""
+  }
 }

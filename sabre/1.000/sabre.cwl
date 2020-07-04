@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sabre.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sabre.cwl
 inputs:
 - id: command
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: primerclip.cwl
+id: ../../../../home/ubuntu/BiocondaCli/primerclip.cwl
 inputs:
 - id: bed_pe
   doc: add this switch to use BEDPE coordinate input format (default format is master

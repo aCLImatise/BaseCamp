@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: refine_hexamer_scores.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/refine_hexamer_scores.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

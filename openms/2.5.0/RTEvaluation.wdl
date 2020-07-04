@@ -2,28 +2,40 @@ version 1.0
 
 task RTEvaluation {
   input {
-    File inIn
-    File sequencesSequencesFile
-    File outOut
-    Boolean latexLatex
-    Float pPValueDim1
-    Float pPValueDim2
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    File? in
+    File? sequences_file
+    File? out
+    Boolean? latex
+    Float? p_value_dim_one
+    Float? p_value_dim_two
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     RTEvaluation \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(sequencesSequencesFile) then ("-sequences_file " +  '"' + sequencesSequencesFile + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{true="-latex" false="" latexLatex} \
-      ~{if defined(pPValueDim1) then ("-p_value_dim_1 " +  '"' + pPValueDim1 + '"') else ""} \
-      ~{if defined(pPValueDim2) then ("-p_value_dim_2 " +  '"' + pPValueDim2 + '"') else ""} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(sequences_file) then ("-sequences_file " +  '"' + sequences_file + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{true="-latex" false="" latex} \
+      ~{if defined(p_value_dim_one) then ("-p_value_dim_1 " +  '"' + p_value_dim_one + '"') else ""} \
+      ~{if defined(p_value_dim_two) then ("-p_value_dim_2 " +  '"' + p_value_dim_two + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*             Input file (valid formats: 'idXML')"
+    sequences_file: "Fasta File (valid formats: 'fasta')"
+    out: "*            Output file  (valid formats: 'csv')"
+    latex: "Indicates whether the output file format of the table should be LaTeX or CSV (default)"
+    p_value_dim_one: "Significance level of first dimension RT filter (default: '0.01' min: '0.0' max: '1.0')"
+    p_value_dim_two: "Significance level of second dimension RT filter (default: '0.05' min: '0.0' max: '1.0')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

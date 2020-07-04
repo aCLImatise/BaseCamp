@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: quake.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/quake.py.cwl
 inputs:
 - id: no_jelly
   doc: Count k-mers using a simpler program than Jellyfish
@@ -34,17 +34,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --ratio
-- id: l
+- id: return_only_reads
   doc: Return only reads corrected and/or trimmed to <min_read> bp
   type: long
   inputBinding:
     prefix: -l
-- id: u
+- id: output_error_reads
   doc: Output error reads even if they can't be corrected, maintaing paired end reads
   type: boolean
   inputBinding:
     prefix: -u
-- id: t
+- id: use_bwalike_trimpar
   doc: Use BWA-like trim parameter <trim_par>
   type: string
   inputBinding:

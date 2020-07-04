@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: XFDR.cwl
+id: ../../../../home/ubuntu/BiocondaCli/XFDR.cwl
 inputs:
 - id: in
   doc: "Crosslink Identifications in either xquest.xml, idXML, or mzIdentML format\
@@ -37,21 +37,21 @@ inputs:
 - id: min_border
   doc: "Filter for minimum precursor mass error (ppm) before FDR estimation. Values\
     \ outside of the tolerance window of the original search will effectively disable\
-    \ this filter. (defau lt: '-50.0')"
+    \ this filter. (default: '-50.0')"
   type: string
   inputBinding:
     prefix: -minborder
 - id: max_border
   doc: "Filter for maximum precursor mass error (ppm) before FDR estimation. Values\
     \ outside of the tolerance window of the original search will effectively disable\
-    \ this filter. (defau lt: '50.0')"
+    \ this filter. (default: '50.0')"
   type: string
   inputBinding:
     prefix: -maxborder
 - id: min_deltas
   doc: "Filter for delta score, 0 disables the filter. Minimum delta score required,\
     \ hits are rejected if larger or equal. The delta score is a ratio of the score\
-    \ of a hit and the  score of the next best hit to the same spectrum, so the value\
+    \ of a hit and the score of the next best hit to the same spectrum, so the value\
     \ range is between 0 and 1 with 1.0 meaning the scores are equal and 0.5 meaning\
     \ the next best score is half as high as the current one. (default: '0.0' min:\
     \ '0.0' max: '1.0')"
@@ -66,7 +66,7 @@ inputs:
 - id: unique_xl
   doc: Calculate statistics based only on unique IDs. For a set of IDs from equal
     candidates (same pair of peptides, modifications and cross-linked positions),
-    only the highest scori ng hit will be considered. By default the score distribution
+    only the highest scoring hit will be considered. By default the score distribution
     will be estimated using all 1st ranked candidates.
   type: boolean
   inputBinding:
@@ -85,7 +85,7 @@ inputs:
 - id: binsize
   doc: "Bin size for the cumulative histograms for score distributions. Should be\
     \ about the same size as the smallest expected difference between scores. Smaller\
-    \ numbers will make  XFDR more robust, but much slower. Negative numbers are not\
+    \ numbers will make XFDR more robust, but much slower. Negative numbers are not\
     \ allowed. Should only be changed if the range of the main score changes or another\
     \ score than the OpenPepXL score is used. (default: '1.0e-04' min: '1.0e-15')"
   type: string

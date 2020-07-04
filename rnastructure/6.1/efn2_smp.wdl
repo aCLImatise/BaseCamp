@@ -2,14 +2,19 @@ version 1.0
 
 task Efn2Smp {
   input {
-    String? efn2Efn2
-    String? ctCtFile
-    String? outputOutputFile
+    String efn_two
+    String ct_file
+    String output_file
   }
   command <<<
     efn2-smp \
-      ~{efn2Efn2} \
-      ~{ctCtFile} \
-      ~{outputOutputFile}
+      ~{efn_two} \
+      ~{ct_file} \
+      ~{output_file}
   >>>
+  parameter_meta {
+    efn_two: ""
+    ct_file: ""
+    output_file: ""
+  }
 }

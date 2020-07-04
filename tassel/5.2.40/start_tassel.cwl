@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: start_tassel.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/start_tassel.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

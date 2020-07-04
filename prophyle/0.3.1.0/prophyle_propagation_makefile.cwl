@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: prophyle_propagation_makefile.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/prophyle_propagation_makefile.py.cwl
 inputs:
-- id: k
+- id: kmer_length
   doc: k-mer length
   type: long
   inputBinding:

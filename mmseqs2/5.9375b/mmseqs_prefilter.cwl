@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: mmseqs_prefilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mmseqs_prefilter.cwl
 inputs:
-- id: s
+- id: sensitivity_faster_fast
   doc: '4.000           sensitivity: 1.0 faster; 4.0 fast default; 7.5 sensitive [1.0,7.5]'
   type: boolean
   inputBinding:
     prefix: -s
-- id: k
+- id: kmer_size_range
   doc: '0               k-mer size in the range [6,7] (0: set automatically to optimum)'
   type: boolean
   inputBinding:
@@ -56,8 +56,8 @@ inputs:
   inputBinding:
     prefix: --diag-score
 - id: exact_km_er_matching
-  doc: '0               only exact k-mer matching [0,1]                             '
-  type: boolean
+  doc: 'only exact k-mer matching [0,1]                             '
+  type: string
   inputBinding:
     prefix: --exact-kmer-matching
 - id: mask
@@ -81,7 +81,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --spaced-kmer-mode
-- id: c
+- id: list_matches_fraction
   doc: 0.000           list matches above this fraction of aligned (covered) residues
     (see --cov-mode)
   type: boolean
@@ -130,7 +130,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --threads
-- id: v
+- id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'
   type: boolean
   inputBinding:

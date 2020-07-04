@@ -2,10 +2,13 @@ version 1.0
 
 task SetupLogoData.py {
   input {
-    Boolean allAll
+    Boolean? all
   }
   command <<<
     setupLogoData.py \
-      ~{true="--all" false="" allAll}
+      ~{true="--all" false="" all}
   >>>
+  parameter_meta {
+    all: "Fetch all data sets."
+  }
 }

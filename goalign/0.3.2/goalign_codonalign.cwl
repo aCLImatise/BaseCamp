@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: goalign_codonalign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_codonalign.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: fast_a
   doc: Input nucleotide Fasta file to be codon aligned (default "stdin")
   type: string
@@ -76,6 +71,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

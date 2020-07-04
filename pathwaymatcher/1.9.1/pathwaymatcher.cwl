@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pathwaymatcher.py_match_modified_peptides.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pathwaymatcher.py_match_modified_peptides.cwl
 inputs:
 - id: mapping
   doc: Path to directory with the static mapping files. By default uses the mapping
@@ -60,6 +60,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --topLevelPathways
+- id: jar
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -jar
+- id: gt
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -gT
+- id: java
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: match_modified_peptides
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

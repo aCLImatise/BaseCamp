@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mglobfit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mglobfit.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

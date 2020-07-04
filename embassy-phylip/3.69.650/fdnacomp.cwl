@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fdnacomp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fdnacomp.cwl
 inputs:
 - id: weights
   doc: properties Phylip weights file (optional)

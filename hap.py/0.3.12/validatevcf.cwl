@@ -1,33 +1,33 @@
 class: CommandLineTool
-id: validatevcf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/validatevcf.cwl
 inputs:
 - id: input_vcf
   doc: VCF file to validate.
   type: string
   inputBinding:
     prefix: --input-vcf
-- id: e
+- id: arg_output_failure
   doc: '[ --output-errors ] arg    Output failure information in a bed file.'
   type: boolean
   inputBinding:
     prefix: -e
-- id: r
+- id: arg_reference_fasta
   doc: '[ --reference ] arg        The reference fasta file.'
   type: boolean
   inputBinding:
     prefix: -r
-- id: l
+- id: arg_location_start
   doc: '[ --location ] arg         The location to start at.'
   type: boolean
   inputBinding:
     prefix: -l
-- id: r
+- id: arg_use_regions
   doc: '[ --regions ] arg          Use a bed file for getting a subset of regions  (traversal
     via tabix).'
   type: boolean
   inputBinding:
     prefix: -R
-- id: t
+- id: arg_use_targets
   doc: '[ --targets ] arg          Use a bed file for getting a subset of targets  (streaming
     the whole file, ignoring things  outside the bed regions).'
   type: boolean
@@ -43,12 +43,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --progress-seconds
-- id: w
+- id: arg_overlap_window
   doc: '[ --window ] arg           Overlap window to create haplotype blocks.'
   type: boolean
   inputBinding:
     prefix: -w
-- id: n
+- id: arg_maximum_number
   doc: '[ --max-n-haplotypes ] arg Maximum number of haplotypes to enumerate.'
   type: boolean
   inputBinding:

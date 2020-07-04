@@ -1,41 +1,41 @@
 class: CommandLineTool
-id: rowsToCols.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rowsToCols.cwl
 inputs:
-- id: in_txt
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: out_txt
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: var_col
-  doc: to have various numbers of columns.
-  type: string
+  doc: '- rows may to have various numbers of columns.'
+  type: boolean
   inputBinding:
     prefix: -varCol
-- id: fields
-  doc: separated by tab
+- id: tab
+  doc: '- fields are separated by tab'
+  type: boolean
+  inputBinding:
+    prefix: -tab
+- id: fs
+  doc: '- fields are separated by given character'
   type: string
   inputBinding:
-    prefix: '- fields'
-- id: fields
-  doc: separated by given character
-  type: string
+    prefix: -fs
+- id: fixed
+  doc: '- fields are of fixed width with space padding'
+  type: boolean
   inputBinding:
-    prefix: '- fields'
-- id: fields
-  doc: of fixed width with space padding
-  type: string
-  inputBinding:
-    prefix: '- fields'
+    prefix: -fixed
 - id: offsets
   doc: ',Y,Z - fields are of fixed width at given offsets'
   type: string
   inputBinding:
     prefix: -offsets
+- id: in_dot_txt
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: out_dot_txt
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

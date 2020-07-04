@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bedparse_cds_bedfile.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedparse_cds_bedfile.cwl
 inputs:
 - id: ignore_cds_only
   doc: ''

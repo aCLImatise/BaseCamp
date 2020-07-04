@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dep_ensure.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dep_ensure.cwl
 inputs:
 - id: add
   doc: 'add new dependencies, or populate Gopkg.toml with constraints for existing
@@ -28,7 +28,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -update
-- id: v
+- id: enable_verbose_logging
   doc: 'enable verbose logging (default: false)'
   type: boolean
   inputBinding:

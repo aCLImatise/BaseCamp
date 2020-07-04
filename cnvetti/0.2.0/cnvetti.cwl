@@ -1,6 +1,22 @@
 class: CommandLineTool
-id: cnvetti.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cnvetti.cwl
 inputs:
+- id: verbose
+  doc: Increase verbosity
+  type: boolean
+  inputBinding:
+    prefix: --verbose
+- id: quiet
+  doc: Decrease verbosity
+  type: boolean
+  inputBinding:
+    prefix: --quiet
+- id: io_threads
+  doc: 'Number of additional threads to use for (de)compression in I/O. [default:
+    0]'
+  type: string
+  inputBinding:
+    prefix: --io-threads
 - id: cmd
   doc: Low-level access to the CNVetti primitives.
   type: string
@@ -27,22 +43,6 @@ inputs:
   type: string
   inputBinding:
     position: 4
-- id: verbose
-  doc: Increase verbosity
-  type: boolean
-  inputBinding:
-    prefix: --verbose
-- id: quiet
-  doc: Decrease verbosity
-  type: boolean
-  inputBinding:
-    prefix: --quiet
-- id: io_threads
-  doc: 'Number of additional threads to use for (de)compression in I/O. [default:
-    0]'
-  type: string
-  inputBinding:
-    prefix: --io-threads
 outputs: []
 cwlVersion: v1.1
 baseCommand:

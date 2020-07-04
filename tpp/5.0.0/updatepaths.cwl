@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: updatepaths.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/updatepaths.pl.cwl
 inputs:
 - id: man
   doc: Display full documentation and exit

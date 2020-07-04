@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: readlink.cwl
+id: ../../../../home/ubuntu/BiocondaCli/readlink.cwl
 inputs:
 - id: canonicalize
   doc: canonicalise by following every symlink in every component of the given name
@@ -34,11 +34,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: zero
+- id: end_output_line
   doc: end each output line with NUL, not newline
   type: boolean
   inputBinding:
     prefix: --zero
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

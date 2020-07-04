@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: last_map_probs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/last_map_probs.cwl
 inputs:
 - id: mis_map
   doc: "don't write alignments with mismap probability > M (default: 0.01)"

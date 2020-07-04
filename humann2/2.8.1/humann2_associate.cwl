@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: humann2_associate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/humann2_associate.cwl
 inputs:
 - id: input
   doc: HUMAnN2 table with metadata rows at the top

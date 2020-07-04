@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: table_filter.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/table_filter.py.cwl
 inputs:
 - id: header
   doc: keep header in output
@@ -21,6 +21,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --cols
+- id: expression
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

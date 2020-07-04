@@ -2,22 +2,31 @@ version 1.0
 
 task _gd2topng {
   input {
-    String? gd2topngGd2topng
-    File? filenameFilenameGd2
-    File? filenameFilenamePng
-    String? srcxSrcx
-    String? srcSrcY
-    String? widthWidth
-    String? heightHeight
+    String gd_two_to_png
+    File filename_dot_gd_two
+    File filename_dot_png
+    String? srcx
+    String? src_y
+    String? width
+    String? height
   }
   command <<<
     _gd2topng \
-      ~{gd2topngGd2topng} \
-      ~{filenameFilenameGd2} \
-      ~{filenameFilenamePng} \
-      ~{srcxSrcx} \
-      ~{srcSrcY} \
-      ~{widthWidth} \
-      ~{heightHeight}
+      ~{gd_two_to_png} \
+      ~{filename_dot_gd_two} \
+      ~{filename_dot_png} \
+      ~{srcx} \
+      ~{src_y} \
+      ~{width} \
+      ~{height}
   >>>
+  parameter_meta {
+    gd_two_to_png: ""
+    filename_dot_gd_two: ""
+    filename_dot_png: ""
+    srcx: ""
+    src_y: ""
+    width: ""
+    height: ""
+  }
 }

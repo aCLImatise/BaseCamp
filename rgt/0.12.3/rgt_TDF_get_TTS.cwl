@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: rgt_TDF_get_TTS.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rgt_TDF_get_TTS.cwl
 inputs:
-- id: i
+- id: input_bed_file
   doc: Input BED file of the target regions
   type: boolean
   inputBinding:
@@ -11,7 +11,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -tts
-- id: r
+- id: input_fasta_file
   doc: Input FASTA file of the RNA
   type: boolean
   inputBinding:
@@ -21,17 +21,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -organism
-- id: l
+- id: define_minimum_length
   doc: '[Triplexes] Define the minimum length of triplex (default: 20)'
   type: boolean
   inputBinding:
     prefix: -l
-- id: e
+- id: set_maximal_errorrate
   doc: '[Triplexes] Set the maximal error-rate in % tolerated (default: 20)'
   type: boolean
   inputBinding:
     prefix: -e
-- id: c
+- id: sets_tolerated_number
   doc: '[Triplexes] Sets the tolerated number of consecutive errors with respect to
     the canonical triplex rules as such were found to greatly destabilize triplexes
     in vitro (default: 2)'

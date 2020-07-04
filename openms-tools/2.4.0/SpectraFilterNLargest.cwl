@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SpectraFilterNLargest.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SpectraFilterNLargest.cwl
 inputs:
 - id: in
   doc: "*        Input file  (valid formats: 'mzML')"
@@ -31,11 +31,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Algorithm parameter subsection.
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

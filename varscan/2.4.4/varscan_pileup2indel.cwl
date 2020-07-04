@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: varscan_pileup2indel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/varscan_pileup2indel.cwl
 inputs:
 - id: min_coverage
   doc: Minimum read depth at a position to make a call [8]
   type: boolean
   inputBinding:
     prefix: --min-coverage
-- id: min_read_s2
+- id: min_reads_two
   doc: Minimum supporting reads at a position to call variants [2]
   type: boolean
   inputBinding:
@@ -36,6 +36,31 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --variants
+- id: jar
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -jar
+- id: java
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: pile_up_two_cns
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: pile_up
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,38 +2,55 @@ version 1.0
 
 task FermiRopebwt {
   input {
-    String aA
-    Int rR
-    Int nN
-    File oO
-    File fF
-    Int vV
-    Boolean bB
-    Boolean tT
-    Boolean fF
-    Boolean rR
-    Boolean nN
-    Boolean oO
-    Boolean tT
-    String? ropeRopeBwt
-    String? inInFqGz
+    String? algorithm_bpr_bcr
+    Int? max_number_runs
+    Int? max_number_children
+    File? output_file
+    File? temporary_sequence_file
+    Int? verbose_level_bcr
+    Boolean? binary_output_runs
+    Boolean? enable_threading_bcr
+    Boolean? skip_forward_strand
+    Boolean? skip_reverse_strand
+    Boolean? cut_ambiguous_bases
+    Boolean? suppress_end_trimming
+    Boolean? print_tree_stdout
+    String rope_bwt
+    String in_dot_fq_do_tgz
   }
   command <<<
     fermi ropebwt \
-      ~{ropeRopeBwt} \
-      ~{if defined(aA) then ("-a " +  '"' + aA + '"') else ""} \
-      ~{if defined(rR) then ("-r " +  '"' + rR + '"') else ""} \
-      ~{if defined(nN) then ("-n " +  '"' + nN + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""} \
-      ~{if defined(vV) then ("-v " +  '"' + vV + '"') else ""} \
-      ~{true="-b" false="" bB} \
-      ~{true="-t" false="" tT} \
-      ~{true="-F" false="" fF} \
-      ~{true="-R" false="" rR} \
-      ~{true="-N" false="" nN} \
-      ~{true="-O" false="" oO} \
-      ~{true="-T" false="" tT} \
-      ~{inInFqGz}
+      ~{rope_bwt} \
+      ~{in_dot_fq_do_tgz} \
+      ~{if defined(algorithm_bpr_bcr) then ("-a " +  '"' + algorithm_bpr_bcr + '"') else ""} \
+      ~{if defined(max_number_runs) then ("-r " +  '"' + max_number_runs + '"') else ""} \
+      ~{if defined(max_number_children) then ("-n " +  '"' + max_number_children + '"') else ""} \
+      ~{if defined(output_file) then ("-o " +  '"' + output_file + '"') else ""} \
+      ~{if defined(temporary_sequence_file) then ("-f " +  '"' + temporary_sequence_file + '"') else ""} \
+      ~{if defined(verbose_level_bcr) then ("-v " +  '"' + verbose_level_bcr + '"') else ""} \
+      ~{true="-b" false="" binary_output_runs} \
+      ~{true="-t" false="" enable_threading_bcr} \
+      ~{true="-F" false="" skip_forward_strand} \
+      ~{true="-R" false="" skip_reverse_strand} \
+      ~{true="-N" false="" cut_ambiguous_bases} \
+      ~{true="-O" false="" suppress_end_trimming} \
+      ~{true="-T" false="" print_tree_stdout}
   >>>
+  parameter_meta {
+    algorithm_bpr_bcr: "algorithm: bpr or bcr [bpr]"
+    max_number_runs: "max number of runs in leaves (bpr only) [512]"
+    max_number_children: "max number children per internal node (bpr only) [64]"
+    output_file: "output file [stdout]"
+    temporary_sequence_file: "temporary sequence file name (bcr only) [null]"
+    verbose_level_bcr: "verbose level (bcr only) [2]"
+    binary_output_runs: "binary output (5+3 runs starting after 4 bytes)"
+    enable_threading_bcr: "enable threading (bcr only)"
+    skip_forward_strand: "skip forward strand"
+    skip_reverse_strand: "skip reverse strand"
+    cut_ambiguous_bases: "cut at ambiguous bases"
+    suppress_end_trimming: "suppress end trimming when forward==reverse"
+    print_tree_stdout: "print the tree stdout (bpr only)"
+    rope_bwt: ""
+    in_dot_fq_do_tgz: ""
+  }
 }

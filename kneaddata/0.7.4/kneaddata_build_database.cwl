@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: kneaddata_build_database.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kneaddata_build_database.cwl
 inputs:
-- id: fast_a
-  doc: input FASTA file
-  type: string
-  inputBinding:
-    position: 0
 - id: output_prefix
   doc: prefix for all output files
   type: string
@@ -31,6 +26,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --logdir
+- id: fast_a
+  doc: input FASTA file
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

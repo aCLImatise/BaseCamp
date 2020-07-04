@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: je_markdupes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/je_markdupes.cwl
 inputs:
 - id: mark_duplicates_with_molecular_code
   doc: ''

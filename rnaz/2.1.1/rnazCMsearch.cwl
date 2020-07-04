@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rnazCMsearch.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnazCMsearch.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

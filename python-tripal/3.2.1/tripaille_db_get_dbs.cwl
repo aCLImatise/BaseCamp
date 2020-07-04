@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tripaille_db_get_dbs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tripaille_db_get_dbs.cwl
 inputs:
 - id: db_id
   doc: A db ID

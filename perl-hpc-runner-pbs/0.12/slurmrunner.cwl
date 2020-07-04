@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: slurmrunner.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/slurmrunner.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

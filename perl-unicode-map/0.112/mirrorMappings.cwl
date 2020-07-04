@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mirrorMappings.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mirrorMappings.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

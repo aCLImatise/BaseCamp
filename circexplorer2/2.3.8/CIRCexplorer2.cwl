@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: CIRCexplorer2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CIRCexplorer2.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

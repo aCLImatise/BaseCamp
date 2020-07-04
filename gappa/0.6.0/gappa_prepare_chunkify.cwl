@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gappa_prepare_chunkify.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gappa_prepare_chunkify.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: fast_a_path
   doc: :PATH(existing)=[] ... REQUIRED List of fasta files or directories to process.
     For directories, only files with the extension .(fasta|fas|fsa|fna|ffn|faa|frn)

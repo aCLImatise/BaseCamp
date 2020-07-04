@@ -2,18 +2,25 @@ version 1.0
 
 task FastxRenamer {
   input {
-    String nN
-    Boolean zZ
-    Boolean vV
-    String iI
-    String oO
+    String? n
+    Boolean? z
+    Boolean? v
+    String? i
+    String? o
   }
   command <<<
     fastx_renamer \
-      ~{if defined(nN) then ("-n " +  '"' + nN + '"') else ""} \
-      ~{true="-z" false="" zZ} \
-      ~{true="-v" false="" vV} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""}
+      ~{if defined(n) then ("-n " +  '"' + n + '"') else ""} \
+      ~{true="-z" false="" z} \
+      ~{true="-v" false="" v} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    n: ""
+    z: ""
+    v: ""
+    i: ""
+    o: ""
+  }
 }

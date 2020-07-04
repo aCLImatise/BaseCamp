@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_genetrees_run_raxml_genetrees.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_genetrees_run_raxml_genetrees.cwl
 inputs:
 - id: input
   doc: The input directory containing alignments in phylip format

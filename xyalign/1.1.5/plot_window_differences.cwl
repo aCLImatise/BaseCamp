@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: plot_window_differences.cwl
+id: ../../../../home/ubuntu/BiocondaCli/plot_window_differences.cwl
 inputs:
 - id: before
   doc: Full path to dataframe 1 (will be treated) as 'before' condition.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfhetcount.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfhetcount.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

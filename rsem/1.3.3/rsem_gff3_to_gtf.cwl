@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: rsem_gff3_to_gtf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rsem_gff3_to_gtf.cwl
 inputs:
-- id: input_gff3_file
-  doc: Input GFF3 file.
-  type: string
-  inputBinding:
-    position: 0
-- id: output_gtf_file
-  doc: Output GTF file.
-  type: string
-  inputBinding:
-    position: 1
 - id: make_genes_as_transcripts
   doc: 'GFF3 file does not contain transcripts, make each gene as a transcript. (default:
     False)'
@@ -28,6 +18,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --extract-sequences
+- id: input_gff_three_file
+  doc: Input GFF3 file.
+  type: string
+  inputBinding:
+    position: 0
+- id: output_gtf_file
+  doc: Output GTF file.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

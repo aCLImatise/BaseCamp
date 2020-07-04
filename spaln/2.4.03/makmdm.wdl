@@ -2,22 +2,22 @@ version 1.0
 
 task Makmdm {
   input {
-    Boolean cC
-    Boolean mM
-    Boolean lL
-    Boolean pP
-    Boolean f78F78
-    Boolean bB
-    Boolean vV
+    Boolean? _brosum_series
+    Boolean? _vt_series
+    Boolean? opt_dot_dot_dot
+    String? dest_path
   }
   command <<<
     makmdm \
-      ~{true="-c-" false="" cC} \
-      ~{true="-m-" false="" mM} \
-      ~{true="-l" false="" lL} \
-      ~{true="-p" false="" pP} \
-      ~{true="-f78" false="" f78F78} \
-      ~{true="-b" false="" bB} \
-      ~{true="-v" false="" vV}
+      ~{dest_path} \
+      ~{true="-b" false="" _brosum_series} \
+      ~{true="-v" false="" _vt_series} \
+      ~{true="-opt..." false="" opt_dot_dot_dot}
   >>>
+  parameter_meta {
+    _brosum_series: ":     Brosum series"
+    _vt_series: ":     VT series"
+    opt_dot_dot_dot: ""
+    dest_path: ""
+  }
 }

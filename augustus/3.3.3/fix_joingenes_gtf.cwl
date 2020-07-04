@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fix_joingenes_gtf.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fix_joingenes_gtf.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,16 +1,21 @@
 class: CommandLineTool
-id: pindel2vcf4tcga.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pindel2vcf4tcga.cwl
 inputs:
-- id: d
-  doc: 20101123 -v sample3chr20_D.vcf
-  type: boolean
+- id: p
+  doc: ''
+  type: string
   inputBinding:
-    prefix: -d
-- id: d
-  doc: 20101123 -v sample3chr20_all.vcf
-  type: boolean
+    prefix: -p
+- id: r
+  doc: ''
+  type: string
   inputBinding:
-    prefix: -d
+    prefix: -r
+- id: pin_del_two_vcf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

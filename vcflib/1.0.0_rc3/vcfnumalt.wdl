@@ -2,10 +2,13 @@ version 1.0
 
 task Vcfnumalt {
   input {
-    String? vcfVcfFile
+    String vcf_file
   }
   command <<<
     vcfnumalt \
-      ~{vcfVcfFile}
+      ~{vcf_file}
   >>>
+  parameter_meta {
+    vcf_file: ""
+  }
 }

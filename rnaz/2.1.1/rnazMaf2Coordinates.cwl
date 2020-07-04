@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rnazMaf2Coordinates.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnazMaf2Coordinates.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

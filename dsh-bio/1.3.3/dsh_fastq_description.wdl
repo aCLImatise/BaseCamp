@@ -2,14 +2,22 @@ version 1.0
 
 task DshFastqDescription {
   input {
-    Boolean aboutAbout
-    Boolean fastFastQFile
-    Boolean descriptionDescriptionFile
+    Boolean? about
+    Boolean? fast_q_file
+    Boolean? description_file
+    String? args
   }
   command <<<
     dsh-fastq-description \
-      ~{true="--about" false="" aboutAbout} \
-      ~{true="--fastq-file" false="" fastFastQFile} \
-      ~{true="--description-file" false="" descriptionDescriptionFile}
+      ~{args} \
+      ~{true="--about" false="" about} \
+      ~{true="--fastq-file" false="" fast_q_file} \
+      ~{true="--description-file" false="" description_file}
   >>>
+  parameter_meta {
+    about: "display about message [optional]"
+    fast_q_file: "[class java.io.File]  input FASTQ file, default stdin [optional]"
+    description_file: "[class java.io.File]  output file of description lines, default stdout [optional]"
+    args: ""
+  }
 }

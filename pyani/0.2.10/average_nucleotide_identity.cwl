@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: average_nucleotide_identity.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/average_nucleotide_identity.py.cwl
 inputs:
 - id: outdir
   doc: Output directory (required)

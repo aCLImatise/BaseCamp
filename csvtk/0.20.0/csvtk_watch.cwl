@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csvtk_watch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csvtk_watch.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: bins
   doc: number of histogram bins (default -1)
   type: long
@@ -126,6 +121,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tabs
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

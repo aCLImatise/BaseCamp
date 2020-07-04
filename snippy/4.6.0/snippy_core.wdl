@@ -2,26 +2,37 @@ version 1.0
 
 task SnippyCore {
   input {
-    Boolean debugDebug
-    Boolean checkCheck
-    String refRef
-    String prefixPrefix
-    String maxMaxHap
-    String maskMask
-    String gapGapChar
-    String maskMaskChar
-    String inInPrefix
+    Boolean? debug
+    Boolean? check
+    String? ref
+    String? prefix
+    String? max_hap
+    String? mask
+    String? gap_char
+    String? mask_char
+    String? in_prefix
   }
   command <<<
     snippy-core \
-      ~{true="--debug" false="" debugDebug} \
-      ~{true="--check" false="" checkCheck} \
-      ~{if defined(refRef) then ("--ref " +  '"' + refRef + '"') else ""} \
-      ~{if defined(prefixPrefix) then ("--prefix " +  '"' + prefixPrefix + '"') else ""} \
-      ~{if defined(maxMaxHap) then ("--maxhap " +  '"' + maxMaxHap + '"') else ""} \
-      ~{if defined(maskMask) then ("--mask " +  '"' + maskMask + '"') else ""} \
-      ~{if defined(gapGapChar) then ("--gap-char " +  '"' + gapGapChar + '"') else ""} \
-      ~{if defined(maskMaskChar) then ("--mask-char " +  '"' + maskMaskChar + '"') else ""} \
-      ~{if defined(inInPrefix) then ("--inprefix " +  '"' + inInPrefix + '"') else ""}
+      ~{true="--debug" false="" debug} \
+      ~{true="--check" false="" check} \
+      ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""} \
+      ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
+      ~{if defined(max_hap) then ("--maxhap " +  '"' + max_hap + '"') else ""} \
+      ~{if defined(mask) then ("--mask " +  '"' + mask + '"') else ""} \
+      ~{if defined(gap_char) then ("--gap-char " +  '"' + gap_char + '"') else ""} \
+      ~{if defined(mask_char) then ("--mask-char " +  '"' + mask_char + '"') else ""} \
+      ~{if defined(in_prefix) then ("--inprefix " +  '"' + in_prefix + '"') else ""}
   >>>
+  parameter_meta {
+    debug: "!        Output verbose debug info (default '0')."
+    check: "!        Check dependencies and exit (default '0')."
+    ref: "Reference in FASTA or GENBANK (default '')."
+    prefix: "Output prefix (default 'core')."
+    max_hap: "Largest haplotype to decompose (default '100')."
+    mask: "BED file of sites to mask (default '')."
+    gap_char: "Gap/deletion character (default '-')."
+    mask_char: "Masking character (default 'X')."
+    in_prefix: "Expected prefix of Snippy output files (default 'snps')."
+  }
 }

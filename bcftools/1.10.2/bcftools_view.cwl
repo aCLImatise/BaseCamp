@@ -1,25 +1,30 @@
 class: CommandLineTool
-id: bcftools_view.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcftools_view.cwl
 inputs:
-- id: g
+- id: _dropgenotypes_drop
   doc: ',   --drop-genotypes              drop individual genotype information (after
     subsetting if -s option set)'
   type: boolean
   inputBinding:
     prefix: -G
-- id: l
+- id: header_only_slash_no_header
+  doc: print the header only/suppress the header in VCF output
+  type: boolean
+  inputBinding:
+    prefix: --header-only/--no-header
+- id: _compressionlevel_
   doc: ',   --compression-level [0-9]     compression level: 0 uncompressed, 1 best
     speed, 9 best compression [-1] --no-version                  do not append version
     and command line to the header'
   type: boolean
   inputBinding:
     prefix: -l
-- id: o
+- id: _outputfile_file
   doc: ',   --output-file <file>          output file name [stdout]'
   type: boolean
   inputBinding:
     prefix: -o
-- id: o
+- id: _outputtype_buzv
   doc: ',   --output-type <b|u|z|v>       b: compressed BCF, u: uncompressed BCF,
     z: compressed VCF, v: uncompressed VCF [v]'
   type: boolean
@@ -78,74 +83,75 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --force-samples
-- id: c
-  doc: /C, --min-ac/--max-ac <int>[:<type>]      minimum/maximum count for non-reference
-    (nref), 1st alternate (alt1), least frequent (minor), most frequent (major) or
-    sum of all but most frequent (nonmajor) alleles [nref]
-  type: boolean
+- id: min_ac_slash_max_ac
+  doc: '[:<type>]      minimum/maximum count for non-reference (nref), 1st alternate
+    (alt1), least frequent (minor), most frequent (major) or sum of all but most frequent
+    (nonmajor) alleles [nref]'
+  type: long
   inputBinding:
-    prefix: -c
-- id: f
+    prefix: --min-ac/--max-ac
+- id: _applyfilters_list
   doc: ',   --apply-filters <list>                require at least one of the listed
     FILTER strings (e.g. "PASS,.")'
   type: boolean
   inputBinding:
     prefix: -f
-- id: g
+- id: _genotype_homhetmiss
   doc: ',   --genotype [^]<hom|het|miss>          require one or more hom/het/missing
     genotype or, if prefixed with "^", exclude sites with hom/het/missing genotypes'
   type: boolean
   inputBinding:
     prefix: -g
-- id: i
-  doc: /e, --include/--exclude <expr>            select/exclude sites for which the
-    expression is true (see man page for details)
+- id: include_slash_exclude
+  doc: select/exclude sites for which the expression is true (see man page for details)
+  type: string
+  inputBinding:
+    prefix: --include/--exclude
+- id: known_slash_novel
+  doc: select known/novel sites only (ID is not/is '.')
   type: boolean
   inputBinding:
-    prefix: -i
-- id: k
-  doc: /n, --known/--novel                       select known/novel sites only (ID
-    is not/is '.')
+    prefix: --known/--novel
+- id: min_alleles_slash_max_alleles
+  doc: minimum/maximum number of alleles listed in REF and ALT (e.g. -m2 -M2 for biallelic
+    sites)
+  type: long
+  inputBinding:
+    prefix: --min-alleles/--max-alleles
+- id: phased_slash_exclude_phased
+  doc: select/exclude sites where all samples are phased
   type: boolean
   inputBinding:
-    prefix: -k
-- id: m
-  doc: /M, --min-alleles/--max-alleles <int>     minimum/maximum number of alleles
-    listed in REF and ALT (e.g. -m2 -M2 for biallelic sites)
+    prefix: --phased/--exclude-phased
+- id: min_af_slash_max_af
+  doc: '[:<type>]    minimum/maximum frequency for non-reference (nref), 1st alternate
+    (alt1), least frequent (minor), most frequent (major) or sum of all but most frequent
+    (nonmajor) alleles [nref]'
+  type: double
+  inputBinding:
+    prefix: --min-af/--max-af
+- id: uncalled_slash_exclude_uncalled
+  doc: select/exclude sites without a called genotype
   type: boolean
   inputBinding:
-    prefix: -m
-- id: p
-  doc: /P, --phased/--exclude-phased             select/exclude sites where all samples
-    are phased
+    prefix: --uncalled/--exclude-uncalled
+- id: types_slash_exclude_types
+  doc: 'select/exclude comma-separated list of variant types: snps,indels,mnps,ref,bnd,other
+    [null]'
+  type: string
+  inputBinding:
+    prefix: --types/--exclude-types
+- id: private_slash_exclude_private
+  doc: select/exclude sites where the non-reference alleles are exclusive (private)
+    to the subset samples
   type: boolean
   inputBinding:
-    prefix: -p
-- id: q
-  doc: /Q, --min-af/--max-af <float>[:<type>]    minimum/maximum frequency for non-reference
-    (nref), 1st alternate (alt1), least frequent (minor), most frequent (major) or
-    sum of all but most frequent (nonmajor) alleles [nref]
-  type: boolean
+    prefix: --private/--exclude-private
+- id: in_dot_vcf_do_tgz
+  doc: ''
+  type: string
   inputBinding:
-    prefix: -q
-- id: u
-  doc: /U, --uncalled/--exclude-uncalled         select/exclude sites without a called
-    genotype
-  type: boolean
-  inputBinding:
-    prefix: -u
-- id: v
-  doc: '/V, --types/--exclude-types <list>        select/exclude comma-separated list
-    of variant types: snps,indels,mnps,ref,bnd,other [null]'
-  type: boolean
-  inputBinding:
-    prefix: -v
-- id: x
-  doc: /X, --private/--exclude-private           select/exclude sites where the non-reference
-    alleles are exclusive (private) to the subset samples
-  type: boolean
-  inputBinding:
-    prefix: -x
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

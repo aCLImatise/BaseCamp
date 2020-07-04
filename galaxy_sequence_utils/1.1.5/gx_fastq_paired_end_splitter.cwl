@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gx_fastq_paired_end_splitter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gx_fastq_paired_end_splitter.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bed_count_overlapping.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bed_count_overlapping.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: _gdlib_config.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_gdlib_config.cwl
 inputs:
-- id: gd_lib_config
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: libdir
   doc: '# directory where GD library is installed'
   type: boolean
@@ -64,6 +59,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --all
+- id: gd_lib_config
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

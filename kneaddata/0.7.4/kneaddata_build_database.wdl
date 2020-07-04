@@ -2,20 +2,28 @@ version 1.0
 
 task KneaddataBuildDatabase {
   input {
-    String outputOutputPrefix
-    String bmBmToolPath
-    String srSrPrismPath
-    String makeMakeBlastDbPath
-    String logdirLogdir
-    String? fastFastA
+    String? output_prefix
+    String? bm_tool_path
+    String? sr_prism_path
+    String? make_blast_db_path
+    String? logdir
+    String fast_a
   }
   command <<<
     kneaddata_build_database \
-      ~{fastFastA} \
-      ~{if defined(outputOutputPrefix) then ("--output-prefix " +  '"' + outputOutputPrefix + '"') else ""} \
-      ~{if defined(bmBmToolPath) then ("--bmtool-path " +  '"' + bmBmToolPath + '"') else ""} \
-      ~{if defined(srSrPrismPath) then ("--srprism-path " +  '"' + srSrPrismPath + '"') else ""} \
-      ~{if defined(makeMakeBlastDbPath) then ("--makeblastdb-path " +  '"' + makeMakeBlastDbPath + '"') else ""} \
-      ~{if defined(logdirLogdir) then ("--logdir " +  '"' + logdirLogdir + '"') else ""}
+      ~{fast_a} \
+      ~{if defined(output_prefix) then ("--output-prefix " +  '"' + output_prefix + '"') else ""} \
+      ~{if defined(bm_tool_path) then ("--bmtool-path " +  '"' + bm_tool_path + '"') else ""} \
+      ~{if defined(sr_prism_path) then ("--srprism-path " +  '"' + sr_prism_path + '"') else ""} \
+      ~{if defined(make_blast_db_path) then ("--makeblastdb-path " +  '"' + make_blast_db_path + '"') else ""} \
+      ~{if defined(logdir) then ("--logdir " +  '"' + logdir + '"') else ""}
   >>>
+  parameter_meta {
+    output_prefix: "prefix for all output files"
+    bm_tool_path: "path to bmtool executable"
+    sr_prism_path: "path to srprism executable"
+    make_blast_db_path: "path to makeblastdb executable"
+    logdir: "location to store log files"
+    fast_a: "input FASTA file"
+  }
 }

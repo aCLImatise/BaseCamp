@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: paladin_bwtupdate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/paladin_bwtupdate.cwl
 inputs:
-- id: the_bwt
+- id: the_dot_bwt
   doc: ''
   type: string
   inputBinding:

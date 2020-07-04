@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: omero_admin_status.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_admin_status.cwl
 inputs:
 - id: node_only
   doc: If set, then only tests if the icegridnode is running

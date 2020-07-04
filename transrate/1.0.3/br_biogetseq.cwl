@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: br_biogetseq.rb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/br_biogetseq.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

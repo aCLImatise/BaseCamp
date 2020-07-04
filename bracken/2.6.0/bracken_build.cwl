@@ -1,16 +1,36 @@
 class: CommandLineTool
-id: bracken_build.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bracken_build.cwl
 inputs:
-- id: database
-  doc: '= '
+- id: k
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -k
+- id: l
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -l
+- id: d
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -d
+- id: x
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -x
+- id: t
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -t
+- id: bracken_build
+  doc: ''
   type: string
   inputBinding:
     position: 0
-- id: threads
-  doc: = 1
-  type: string
-  inputBinding:
-    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

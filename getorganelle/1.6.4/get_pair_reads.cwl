@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_pair_reads.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_pair_reads.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

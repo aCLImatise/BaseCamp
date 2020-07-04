@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pyqi.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyqi.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

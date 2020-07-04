@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Canvas.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Canvas.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

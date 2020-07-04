@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: map2assembly.cwl
+id: ../../../../home/ubuntu/BiocondaCli/map2assembly.cwl
 inputs:
-- id: genome_fast_a
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: transcripts_fast_a
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: cpus
   doc: '|c  <integer>  Tells how many cpus to use for BLAST analysis.'
   type: boolean
@@ -36,6 +26,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -quiet
+- id: genome_dot_fast_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: transcripts_dot_fast_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

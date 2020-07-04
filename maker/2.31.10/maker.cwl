@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: maker.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maker.cwl
 inputs:
-- id: no_data_store
-  doc: structure for output.  Always on by default.
-  type: string
-  inputBinding:
-    position: 0
 - id: genome
   doc: '|g <file>    Overrides the genome file path in the control files'
   type: boolean
@@ -16,11 +11,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -RM_off
-- id: datastore
-  doc: /         Forcably turn on/off MAKER's two deep directory
+- id: datastore_slash
+  doc: Forcably turn on/off MAKER's two deep directory
   type: boolean
   inputBinding:
-    prefix: -datastore
+    prefix: -datastore/
 - id: old_struct
   doc: Use the old directory styles (MAKER 2.26 and lower)
   type: boolean
@@ -120,6 +115,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -version
+- id: no_data_store
+  doc: structure for output.  Always on by default.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

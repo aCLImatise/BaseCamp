@@ -2,14 +2,19 @@ version 1.0
 
 task Sidebyside {
   input {
-    String widthWidth
-    String sameSame
-    String difDif
+    String? width
+    String? same
+    String? dif
   }
   command <<<
     sidebyside \
-      ~{if defined(widthWidth) then ("-width " +  '"' + widthWidth + '"') else ""} \
-      ~{if defined(sameSame) then ("-same " +  '"' + sameSame + '"') else ""} \
-      ~{if defined(difDif) then ("-dif " +  '"' + difDif + '"') else ""}
+      ~{if defined(width) then ("-width " +  '"' + width + '"') else ""} \
+      ~{if defined(same) then ("-same " +  '"' + same + '"') else ""} \
+      ~{if defined(dif) then ("-dif " +  '"' + dif + '"') else ""}
   >>>
+  parameter_meta {
+    width: ": line width for each file (default: 50)"
+    same: ": marker for lines that are the same (default: ==)"
+    dif: ": marker for lines that are different (default: !!)"
+  }
 }

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: mean.cwl
-inputs:
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
+id: ../../../../home/ubuntu/BiocondaCli/mean.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

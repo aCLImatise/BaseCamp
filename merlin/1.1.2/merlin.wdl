@@ -2,10 +2,13 @@ version 1.0
 
 task Merlin {
   input {
-    Boolean tabulateTabulate
+    Boolean? tabulate
   }
   command <<<
     merlin \
-      ~{true="--tabulate" false="" tabulateTabulate}
+      ~{true="--tabulate" false="" tabulate}
   >>>
+  parameter_meta {
+    tabulate: "[merlin]"
+  }
 }

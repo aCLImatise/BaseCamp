@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: sam2vcf.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sam2vcf.pl.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: in_pile_up
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: out_vcf
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: indels_only
   doc: Ignore SNPs.
   type: boolean
@@ -41,6 +26,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --column-title
+- id: in_dot_pile_up
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: out_dot_vcf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

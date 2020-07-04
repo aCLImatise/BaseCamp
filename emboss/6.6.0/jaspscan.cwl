@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: jaspscan.cwl
+id: ../../../../home/ubuntu/BiocondaCli/jaspscan.cwl
 inputs:
 - id: menu
   doc: 'menu       [C] Matrix set (Values: C (Core); F (Fam); P (Phylofacts); N (CNE);

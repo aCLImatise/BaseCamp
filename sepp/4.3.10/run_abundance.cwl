@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: run_abundance.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_abundance.py.cwl
 inputs:
 - id: alignment_size
   doc: 'max alignment subset size of N [default: 10% of the total number of taxa or
@@ -143,6 +143,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --genes
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,18 +2,25 @@ version 1.0
 
 task PysradbGseToGsm {
   input {
-    String dbDb
-    String saveSaveTo
-    Boolean detailedDetailed
-    Boolean descDesc
-    Boolean expandExpand
+    String? db
+    String? save_to
+    Boolean? detailed
+    Boolean? desc
+    Boolean? expand
   }
   command <<<
     pysradb gse-to-gsm \
-      ~{if defined(dbDb) then ("--db " +  '"' + dbDb + '"') else ""} \
-      ~{if defined(saveSaveTo) then ("--saveto " +  '"' + saveSaveTo + '"') else ""} \
-      ~{true="--detailed" false="" detailedDetailed} \
-      ~{true="--desc" false="" descDesc} \
-      ~{true="--expand" false="" expandExpand}
+      ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
+      ~{if defined(save_to) then ("--saveto " +  '"' + save_to + '"') else ""} \
+      ~{true="--detailed" false="" detailed} \
+      ~{true="--desc" false="" desc} \
+      ~{true="--expand" false="" expand}
   >>>
+  parameter_meta {
+    db: "Path to SRAmetadb.sqlite file"
+    save_to: "Save output to file"
+    detailed: "Output additional columns: [sample_accession (SRS), run_accession (SRR), sample_alias (GSM), run_alias (GSM_r)]"
+    desc: "Should sample_attribute be included"
+    expand: "Should sample_attribute be expanded"
+  }
 }

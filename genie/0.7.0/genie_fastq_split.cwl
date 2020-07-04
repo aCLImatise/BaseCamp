@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: genie_fastq_split.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genie_fastq_split.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: file_path
   doc: Input FASTQ file (*require)
   type: string
@@ -16,11 +11,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --fq
-- id: fq2
+- id: fq_two
   doc: Output FASTQ2 file (*require)
   type: string
   inputBinding:
     prefix: --fq2
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

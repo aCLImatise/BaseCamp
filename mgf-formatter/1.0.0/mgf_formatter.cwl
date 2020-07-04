@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mgf_formatter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mgf_formatter.cwl
 inputs:
 - id: it_raq_filter
   doc: 'Default: false'
@@ -21,6 +21,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --output
+- id: main_class
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: input
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

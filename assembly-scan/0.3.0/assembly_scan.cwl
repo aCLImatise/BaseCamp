@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: assembly_scan.cwl
+id: ../../../../home/ubuntu/BiocondaCli/assembly_scan.cwl
 inputs:
-- id: assembly_summary_py
+- id: assembly_summary_do_tpy
   doc: ''
   type: string
   inputBinding:

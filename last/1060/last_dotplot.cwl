@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: last_dotplot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/last_dotplot.cwl
 inputs:
 - id: font_file
   doc: TrueType or OpenType font file
@@ -11,54 +11,54 @@ inputs:
   type: long
   inputBinding:
     prefix: --fontsize
-- id: labels_1
+- id: labels_one
   doc: 'genome1 labels: 0=name, 1=name:length, 2=name:start:length, 3=name:start-end
     (default=0)'
   type: string
   inputBinding:
     prefix: --labels1
-- id: labels_2
+- id: labels_two
   doc: 'genome2 labels: 0=name, 1=name:length, 2=name:start:length, 3=name:start-end
     (default=0)'
   type: string
   inputBinding:
     prefix: --labels2
-- id: rot1
+- id: rot_one
   doc: text rotation for the 1st genome (default=h)
   type: string
   inputBinding:
     prefix: --rot1
-- id: rot2
+- id: rot_two
   doc: text rotation for the 2nd genome (default=v)
   type: string
   inputBinding:
     prefix: --rot2
-- id: bed1
+- id: be_done
   doc: read genome1 annotations from BED file
   type: File
   inputBinding:
     prefix: --bed1
-- id: bed2
+- id: bed_two
   doc: read genome2 annotations from BED file
   type: File
   inputBinding:
     prefix: --bed2
-- id: rmsk1
+- id: rms_kone
   doc: read genome1 repeats from RepeatMasker .out or rmsk.txt file
   type: File
   inputBinding:
     prefix: --rmsk1
-- id: rmsk2
+- id: rms_k_two
   doc: read genome2 repeats from RepeatMasker .out or rmsk.txt file
   type: File
   inputBinding:
     prefix: --rmsk2
-- id: genepred1
+- id: gene_pre_done
   doc: read genome1 genes from genePred file
   type: File
   inputBinding:
     prefix: --genePred1
-- id: genepred2
+- id: gene_pred_two
   doc: read genome2 genes from genePred file
   type: File
   inputBinding:
@@ -73,12 +73,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --cds-color
-- id: gap1
+- id: gap_one
   doc: read genome1 unsequenced gaps from agp or gap file
   type: File
   inputBinding:
     prefix: --gap1
-- id: gap2
+- id: gap_two
   doc: read genome2 unsequenced gaps from agp or gap file
   type: File
   inputBinding:

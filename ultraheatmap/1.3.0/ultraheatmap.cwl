@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ultraheatmap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ultraheatmap.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

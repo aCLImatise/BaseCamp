@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: spades_ionhammer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/spades_ionhammer.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

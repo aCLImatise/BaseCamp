@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: splitimage2pdf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/splitimage2pdf.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

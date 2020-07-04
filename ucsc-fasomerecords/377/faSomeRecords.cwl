@@ -1,7 +1,12 @@
 class: CommandLineTool
-id: faSomeRecords.cwl
+id: ../../../../home/ubuntu/BiocondaCli/faSomeRecords.cwl
 inputs:
-- id: in_fa
+- id: exclude
+  doc: '- output sequences not in the list file.'
+  type: boolean
+  inputBinding:
+    prefix: -exclude
+- id: in_dot_fa
   doc: ''
   type: string
   inputBinding:
@@ -11,16 +16,11 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: out_fa
+- id: out_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: exclude
-  doc: not in the list file.
-  type: string
-  inputBinding:
-    prefix: -exclude
 outputs: []
 cwlVersion: v1.1
 baseCommand:

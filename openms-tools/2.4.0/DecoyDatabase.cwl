@@ -1,14 +1,14 @@
 class: CommandLineTool
-id: DecoyDatabase.cwl
+id: ../../../../home/ubuntu/BiocondaCli/DecoyDatabase.cwl
 inputs:
 - id: enzyme
   doc: "Enzyme used for the digestion of the sample (default: 'Trypsin' valid: 'TrypChymo',\
     \ 'Lys-C/P', 'PepsinA', 'Lys-N', 'Lys-C', 'CNBr', 'Formic_acid', 'Trypsin', 'PepsinA\
-    \ + P', 'cya nogen-bromide', 'Clostripain/P', 'Trypsin/P', 'V8-DE', 'V8-E', 'elastase-trypsin-chymotrypsin',\
-    \ 'no cleavage', 'unspecific cleavage', 'leukocyte elastase', 'proline endopeptidas\
-    \ e', 'staphylococcal protease/D', 'proline-endopeptidase/HKR', 'Glu-C+P', 'Chymotrypsin/P',\
+    \ + P', 'cyanogen-bromide', 'Clostripain/P', 'Trypsin/P', 'V8-DE', 'V8-E', 'elastase-trypsin-chymotrypsin',\
+    \ 'no cleavage', 'unspecific cleavage', 'leukocyte elastase', 'proline endopeptidase',\
+    \ 'staphylococcal protease/D', 'proline-endopeptidase/HKR', 'Glu-C+P', 'Chymotrypsin/P',\
     \ 'Arg-C', 'glutamyl endopeptidase', 'Alpha-lytic protease', 'Arg-C/P', 'Asp-N',\
-    \ 'Asp-N/ B', 'Chymotrypsin', '2-iodobenzoate', 'iodosobenzoate', 'Asp-N_ambic')"
+    \ 'Asp-N/B', 'Chymotrypsin', '2-iodobenzoate', 'iodosobenzoate', 'Asp-N_ambic')"
   type: string
   inputBinding:
     prefix: -enzyme
@@ -45,9 +45,9 @@ inputs:
 - id: method
   doc: "Method by which decoy sequences are generated from target sequences. Note\
     \ that all sequences are shuffled using the same random seed, ensuring that identical\
-    \ sequences produce  the same shuffled decoy sequences. Shuffled sequences that\
+    \ sequences produce the same shuffled decoy sequences. Shuffled sequences that\
     \ produce highly similar output sequences are shuffled again (see shuffle_sequence_identity_threshold).\
-    \ (default: 'rever se' valid: 'reverse', 'shuffle')"
+    \ (default: 'reverse' valid: 'reverse', 'shuffle')"
   type: string
   inputBinding:
     prefix: -method
@@ -71,11 +71,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: decoy
-  doc: Decoy parameters section
-  type: boolean
-  inputBinding:
-    prefix: '- Decoy'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

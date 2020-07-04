@@ -2,20 +2,31 @@ version 1.0
 
 task Cytoscape.sh {
   input {
-    File sessionSession
-    File networkNetwork
-    File propsProps
-    File vizVizMap
-    File scriptScript
-    String restRest
+    File? session
+    File? network
+    File? props
+    File? viz_map
+    File? script
+    String? rest
+    String cytoscape_dot
   }
   command <<<
     cytoscape.sh \
-      ~{if defined(sessionSession) then ("--session " +  '"' + sessionSession + '"') else ""} \
-      ~{if defined(networkNetwork) then ("--network " +  '"' + networkNetwork + '"') else ""} \
-      ~{if defined(propsProps) then ("--props " +  '"' + propsProps + '"') else ""} \
-      ~{if defined(vizVizMap) then ("--vizmap " +  '"' + vizVizMap + '"') else ""} \
-      ~{if defined(scriptScript) then ("--script " +  '"' + scriptScript + '"') else ""} \
-      ~{if defined(restRest) then ("--rest " +  '"' + restRest + '"') else ""}
+      ~{cytoscape_dot} \
+      ~{if defined(session) then ("--session " +  '"' + session + '"') else ""} \
+      ~{if defined(network) then ("--network " +  '"' + network + '"') else ""} \
+      ~{if defined(props) then ("--props " +  '"' + props + '"') else ""} \
+      ~{if defined(viz_map) then ("--vizmap " +  '"' + viz_map + '"') else ""} \
+      ~{if defined(script) then ("--script " +  '"' + script + '"') else ""} \
+      ~{if defined(rest) then ("--rest " +  '"' + rest + '"') else ""}
   >>>
+  parameter_meta {
+    session: "Load a cytoscape session (.cys) file."
+    network: "Load a network file (any format)."
+    props: "Load cytoscape properties file (Java properties format) or individual property: -P name=value."
+    viz_map: "Load vizmap properties file (Cytoscape VizMap format)."
+    script: "Execute commands from script file."
+    rest: "Start a rest service."
+    cytoscape_dot: ""
+  }
 }

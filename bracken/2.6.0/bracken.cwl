@@ -1,6 +1,41 @@
 class: CommandLineTool
-id: bracken.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bracken.cwl
 inputs:
+- id: d
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -d
+- id: i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
+- id: o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
+- id: w
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -w
+- id: r
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -r
+- id: l
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -l
+- id: t
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -t
 - id: my_db
   doc: location of Kraken database
   type: string

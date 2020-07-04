@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: kcutiltest.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kcutiltest.cwl
 inputs:
-- id: mutex
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: rnum
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: th
   doc: ''
   type: string
@@ -21,6 +11,16 @@ inputs:
   type: string
   inputBinding:
     prefix: -iv
+- id: mutex
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: rnum
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,18 +2,25 @@ version 1.0
 
 task FunannotateSpecies {
   input {
-    String sS
-    String aA
-    String pP
-    String dD
-    String? speciesSpeciesPy
+    String? s
+    String? a
+    String? p
+    String? d
+    String species_do_tpy
   }
   command <<<
     funannotate species \
-      ~{speciesSpeciesPy} \
-      ~{if defined(sS) then ("-s " +  '"' + sS + '"') else ""} \
-      ~{if defined(aA) then ("-a " +  '"' + aA + '"') else ""} \
-      ~{if defined(pP) then ("-p " +  '"' + pP + '"') else ""} \
-      ~{if defined(dD) then ("-d " +  '"' + dD + '"') else ""}
+      ~{species_do_tpy} \
+      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
+      ~{if defined(a) then ("-a " +  '"' + a + '"') else ""} \
+      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""}
   >>>
+  parameter_meta {
+    s: ""
+    a: ""
+    p: ""
+    d: ""
+    species_do_tpy: ""
+  }
 }

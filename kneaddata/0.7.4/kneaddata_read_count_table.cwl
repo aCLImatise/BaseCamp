@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: kneaddata_read_count_table.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kneaddata_read_count_table.cwl
 inputs:
 - id: input
-  doc: ''
+  doc: the input folder with kneaddata log files
   type: string
   inputBinding:
     prefix: --input
 - id: output
-  doc: ''
+  doc: the output file to write
   type: string
   inputBinding:
     prefix: --output

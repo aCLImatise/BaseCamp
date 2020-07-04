@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: dcmftest.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmftest.cwl
 inputs:
-- id: file
+- id: file_dot_dot_dot
   doc: ''
   type: File
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: xml2tbl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/xml2tbl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

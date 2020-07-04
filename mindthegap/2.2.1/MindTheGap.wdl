@@ -2,10 +2,13 @@ version 1.0
 
 task MindTheGap {
   input {
-    Boolean versionVersion
+    Boolean? version
   }
   command <<<
     MindTheGap \
-      ~{true="-version" false="" versionVersion}
+      ~{true="-version" false="" version}
   >>>
+  parameter_meta {
+    version: ":    display current version"
+  }
 }

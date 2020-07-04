@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: quasitools_quality.cwl
+id: ../../../../home/ubuntu/BiocondaCli/quasitools_quality.cwl
 inputs:
 - id: output_dir
   doc: '[required]'
@@ -46,6 +46,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ns
+- id: forward
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: reverse
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

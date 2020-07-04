@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: comb_p.cwl
+id: ../../../../home/ubuntu/BiocondaCli/comb_p.cwl
 inputs:
 - id: pipeline
   doc: '- run acf, slk, fdr, peaks, region_p in succesion'

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: hal2assemblyHub.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hal2assemblyHub.py.cwl
 inputs:
-- id: hal_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: output_directory
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: hub
   doc: a single-word name of the directory containing the track hub files. Not displayed
     to hub users. Default=myHub
@@ -149,13 +139,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --finalBigBedDirs
-- id: beddirs2
+- id: bed_dirs_two
   doc: Similar to --bedDirs, except these tracks will be kept separately and out of
     the composite track. Default=none
   type: string
   inputBinding:
     prefix: --bedDirs2
-- id: final_bigbeddirs2
+- id: final_big_bed_dirs_two
   doc: Similar to --finalBigBedDirs, except these tracks will be kept separately and
     out of the composite track. Default=none
   type: string
@@ -411,6 +401,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --command
+- id: hal_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_directory
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

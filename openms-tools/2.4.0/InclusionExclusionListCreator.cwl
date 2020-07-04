@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: InclusionExclusionListCreator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/InclusionExclusionListCreator.cwl
 inputs:
 - id: include
   doc: "Inclusion list input file in FASTA or featureXML format. (valid formats: 'featureXML',\
@@ -74,11 +74,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Inclusion/Exclusion algorithm section
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

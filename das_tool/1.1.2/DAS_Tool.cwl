@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: DAS_Tool.cwl
+id: ../../../../home/ubuntu/BiocondaCli/DAS_Tool.cwl
 inputs:
-- id: l
+- id: methodn_c_contigsfa
   doc: ',...,methodN -c contigs.fa -o myOutput'
   type: string
   inputBinding:

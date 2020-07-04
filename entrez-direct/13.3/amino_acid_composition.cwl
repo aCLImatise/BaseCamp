@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: amino_acid_composition.cwl
+id: ../../../../home/ubuntu/BiocondaCli/amino_acid_composition.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

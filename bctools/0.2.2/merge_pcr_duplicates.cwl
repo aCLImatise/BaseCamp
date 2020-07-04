@@ -1,33 +1,38 @@
 class: CommandLineTool
-id: merge_pcr_duplicates.py_alignments.cwl
+id: ../../../../home/ubuntu/BiocondaCli/merge_pcr_duplicates.py_bclib.cwl
 inputs:
-- id: alignments
-  doc: Path to bed6 file containing alignments.
+- id: o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: d
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -d
+- id: merge_pcr_duplicates_do_tpy
+  doc: ''
   type: string
   inputBinding:
     position: 0
-- id: bc_lib
-  doc: Path to fastq barcode library.
+- id: alignments
+  doc: ''
   type: string
   inputBinding:
     position: 1
-- id: outfile
-  doc: Write results to this file.
+- id: bc_lib
+  doc: ''
   type: string
   inputBinding:
-    prefix: --outfile
-- id: verbose
-  doc: Be verbose.
-  type: boolean
-  inputBinding:
-    prefix: --verbose
-- id: debug
-  doc: Print lots of debugging information
-  type: boolean
-  inputBinding:
-    prefix: --debug
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - merge_pcr_duplicates.py
-- alignments
+- bclib

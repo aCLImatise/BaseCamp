@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: snippy_clean_full_aln.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snippy_clean_full_aln.cwl
 inputs:
 - id: debug
   doc: "!      Output verbose debug info (default '0')."

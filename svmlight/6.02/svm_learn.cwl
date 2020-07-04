@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: svm_learn.cwl
+id: ../../../../home/ubuntu/BiocondaCli/svm_learn.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: contree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/contree.cwl
 inputs:
-- id: f
+- id: as_last_argument
   doc: as last argument).
   type: string
   inputBinding:
@@ -11,11 +11,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
-- id: calculate_support
-  doc: .
-  type: boolean
+- id: arguments
+  doc: ''
+  type: string
   inputBinding:
-    prefix: --calculate_support
+    position: 0
+- id: file_dot_trees
+  doc: ''
+  type: File
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

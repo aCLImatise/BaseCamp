@@ -2,14 +2,25 @@ version 1.0
 
 task CRISPRessoPooledWGSCompare {
   input {
-    Boolean saveSaveAlsoPng
-    String? crisCrisPressoPooledWgsOutputFolder1
-    String? crisCrisPressoPooledWgsOutputFolder2
+    Boolean? save_also_png
+    String? n
+    String? var_none
+    String cris_presso_pooled_wgs_output_folder_one
+    String cris_presso_pooled_wgs_output_folder_two
   }
   command <<<
     CRISPRessoPooledWGSCompare \
-      ~{crisCrisPressoPooledWgsOutputFolder1} \
-      ~{true="--save_also_png" false="" saveSaveAlsoPng} \
-      ~{crisCrisPressoPooledWgsOutputFolder2}
+      ~{cris_presso_pooled_wgs_output_folder_one} \
+      ~{cris_presso_pooled_wgs_output_folder_two} \
+      ~{true="--save_also_png" false="" save_also_png} \
+      ~{if defined(n) then ("-n " +  '"' + n + '"') else ""} \
+      ~{if defined(var_none) then ("-n1 " +  '"' + var_none + '"') else ""}
   >>>
+  parameter_meta {
+    save_also_png: "Save also .png images additionally to .pdf files (default: False)"
+    n: ""
+    var_none: ""
+    cris_presso_pooled_wgs_output_folder_one: "First output folder with CRISPRessoPooled or CRISPRessoWGS analysis"
+    cris_presso_pooled_wgs_output_folder_two: "Second output folder with CRISPRessoPooled or CRISPRessoWGS analysis"
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: arb_sed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/arb_sed.cwl
 inputs:
 - id: silent
   doc: suppress automatic printing of pattern space
@@ -26,7 +26,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --follow-symlinks
-- id: i
+- id: edit_files_place
   doc: '[SUFFIX], --in-place[=SUFFIX] edit files in place (makes backup if SUFFIX
     supplied)'
   type: boolean
@@ -68,6 +68,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --null-data
+- id: sed
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

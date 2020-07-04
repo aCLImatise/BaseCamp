@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: seqan_tcoffee.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqan_tcoffee.cwl
 inputs:
 - id: version_check
   doc: 'Turn this option off to disable version update notifications of the application.

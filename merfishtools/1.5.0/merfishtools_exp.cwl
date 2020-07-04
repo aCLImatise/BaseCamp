@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: merfishtools_exp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/merfishtools_exp.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: codebook_tsv
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: readouts
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: estimate
   doc: 'Path to write expected value and standard deviation estimates of expression
     to. Output is formatted into columns: cell, feature, expected value, standard
@@ -34,12 +19,12 @@ inputs:
   type: long
   inputBinding:
     prefix: --seed
-- id: p0
+- id: pzero
   doc: '...              Prior probability of 0->1 error [default: 0.04]'
   type: double
   inputBinding:
     prefix: --p0
-- id: p1
+- id: p_one
   doc: '...              Prior probability of 1->0 error [default: 0.1]'
   type: double
   inputBinding:
@@ -60,6 +45,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: codebook_tsv
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: readouts
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

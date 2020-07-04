@@ -1,33 +1,33 @@
 class: CommandLineTool
-id: seqyclean.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqyclean.cwl
 inputs:
-- id: turns
-  doc: vector trimming, default=off. <filename> - is a path to a FASTA-file containing
-    vector genomes.
+- id: turns_trimming_filename
+  doc: '- Turns on vector trimming, default=off. <filename> - is a path to a FASTA-file
+    containing vector genomes.'
   type: File
   inputBinding:
-    prefix: '- Turns'
-- id: turns
-  doc: contaminants screening, default=off, <filename> - is a path to a FASTA-file
-    containing contaminant genomes.
+    prefix: -v
+- id: turns_contaminants_screening
+  doc: '- Turns on contaminants screening, default=off, <filename> - is a path to
+    a FASTA-file containing contaminant genomes.'
   type: File
   inputBinding:
-    prefix: '- Turns'
-- id: common
-  doc: of k-mer, default=15
+    prefix: -c
+- id: common_size_kmer
+  doc: '- Common size of k-mer, default=15'
   type: string
   inputBinding:
-    prefix: '- Common'
-- id: distance
-  doc: consecutive k-mers, default=1
+    prefix: -k
+- id: distance_consecutive_kmers
+  doc: '- Distance between consecutive k-mers, default=1'
+  type: boolean
+  inputBinding:
+    prefix: -d
+- id: kc
+  doc: '- Size of k-mer used in sampling contaminat genome, default=15'
   type: string
   inputBinding:
-    prefix: '- Distance'
-- id: size
-  doc: k-mer used in sampling contaminat genome, default=15
-  type: string
-  inputBinding:
-    prefix: '- Size'
+    prefix: -kc
 - id: qual
   doc: '<max_error_at_ends> - Turns on quality trimming, default=off. Error boundaries:
     max_average_error (default=0.01), max_error_at_ends (default=0.01)'
@@ -46,16 +46,16 @@ inputs:
   type: string
   inputBinding:
     prefix: -window
-- id: overwrite
-  doc: results, default=off
+- id: ow
+  doc: '- Overwrite existing results, default=off'
+  type: boolean
+  inputBinding:
+    prefix: -ow
+- id: min_len
+  doc: '- Minimum length of read to accept, default=50 bp.'
   type: string
   inputBinding:
-    prefix: '- Overwrite'
-- id: minimum
-  doc: of read to accept, default=50 bp.
-  type: string
-  inputBinding:
-    prefix: '- Minimum'
+    prefix: -minlen
 - id: poly_at
   doc: '[cdna] [cerr] [crng] - Turns on poly A/T trimming, default=off. Parameters:
     cdna (default=10) - maximum size of a poly tail, cerr (default=3) - maximum number
@@ -65,15 +65,15 @@ inputs:
   inputBinding:
     prefix: -polyat
 - id: verbose
-  doc: ', default=off.'
-  type: string
+  doc: '- Verbose output, default=off.'
+  type: boolean
   inputBinding:
-    prefix: '- Verbose'
-- id: generate
-  doc: report for each read, default=off.
-  type: string
+    prefix: -verbose
+- id: det_rep
+  doc: '- Generate detailed report for each read, default=off.'
+  type: boolean
   inputBinding:
-    prefix: '- Generate'
+    prefix: -detrep
 - id: dup
   doc: '[-startdw 10][-sizedw 35] [-maxdup 3] - Turns on screening duplicated sequences,
     default=off. Here: -startdw (defalt=10) and -sizedw (default=25) are starting
@@ -83,73 +83,85 @@ inputs:
   inputBinding:
     prefix: -dup
 - id: no_adapter_trim
-  doc: trimming of adapters, default=off.
-  type: string
+  doc: '- Turns off trimming of adapters, default=off.'
+  type: boolean
   inputBinding:
     prefix: -no_adapter_trim
-- id: number
-  doc: threads (not yet applicable to Illumina mode), default=4.
+- id: number_yet_applicable
+  doc: '- Number of threads (not yet applicable to Illumina mode), default=4.'
   type: string
   inputBinding:
-    prefix: '- Number'
-- id: output
-  doc: FASTQ format, default=off.
-  type: string
+    prefix: -t
+- id: fast_q
+  doc: '- Output in FASTQ format, default=off.'
+  type: boolean
   inputBinding:
-    prefix: '- Output'
+    prefix: -fastq
 - id: fast_a_out
-  doc: FASTA format, default=off.
-  type: string
+  doc: '- Output in FASTA format, default=off.'
+  type: boolean
   inputBinding:
     prefix: -fasta_out
-- id: using
-  doc: barcodes, default=off. <filename> - a path to a FASTA-file with custom barcodes.
+- id: using_custom_barcodes
+  doc: '- Using custom barcodes, default=off. <filename> - a path to a FASTA-file
+    with custom barcodes.'
   type: File
   inputBinding:
-    prefix: '- Using'
+    prefix: -m
+- id: pairedend_mode_see
+  doc: '- Paired-end mode (see examples below)'
+  type: File
+  inputBinding:
+    prefix: '-1'
+- id: _singleend_mode
+  doc: '- Single-end mode'
+  type: File
+  inputBinding:
+    prefix: -U
 - id: shuffle
-  doc: Illumina reads in shuffled file, default=off.
-  type: string
+  doc: '- Store non-paired Illumina reads in shuffled file, default=off.'
+  type: boolean
   inputBinding:
     prefix: -shuffle
-- id: turns
-  doc: 64-quality base, default = off.
-  type: string
+- id: i_six_four
+  doc: '- Turns on 64-quality base, default = off.'
+  type: boolean
   inputBinding:
-    prefix: '- Turns'
-- id: turns
-  doc: using custom adapters, default=off. <filename> - FASTA file with adapters
+    prefix: -i64
+- id: adp
+  doc: '- Turns on using custom adapters, default=off. <filename> - FASTA file with
+    adapters'
   type: File
   inputBinding:
-    prefix: '- Turns'
-- id: this
-  doc: sets the similarity threshold for adapter trimming by overlap (only in paired-end
-    mode). By default its value is set to 0.75.
+    prefix: -adp
+- id: at
+  doc: '- This option sets the similarity threshold for adapter trimming by overlap
+    (only in paired-end mode). By default its value is set to 0.75.'
   type: string
   inputBinding:
-    prefix: '- This'
+    prefix: -at
 - id: overlap
-  doc: turns on merging overlapping paired-end reads and <value> is the minimum overlap
-    length. By default the minimum overlap length is 16 base pairs.
+  doc: '- This option turns on merging overlapping paired-end reads and <value> is
+    the minimum overlap length. By default the minimum overlap length is 16 base pairs.'
   type: string
   inputBinding:
     prefix: -overlap
-- id: new_2old
-  doc: 'fix read IDs, default=off ( As is detailed in: http://contig.wordpress.com/2011/09/01/newbler-input-iii-a-quick-fix-for-the-new-illumina-fastq-header/#more-342
+- id: new_two_old
+  doc: '- Switch to fix read IDs, default=off ( As is detailed in: http://contig.wordpress.com/2011/09/01/newbler-input-iii-a-quick-fix-for-the-new-illumina-fastq-header/#more-342
     ).'
-  type: string
+  type: boolean
   inputBinding:
     prefix: -new2old
-- id: compressed
-  doc: (GZip format, .gz).
-  type: string
+- id: gz
+  doc: '- compressed output (GZip format, .gz).'
+  type: boolean
   inputBinding:
-    prefix: '- compressed'
-- id: maximum
-  doc: length, default=30 bp.(only for paired-end mode)
-  type: string
+    prefix: -gz
+- id: alen
+  doc: '- Maximum adapter length, default=30 bp.(only for paired-end mode)'
+  type: boolean
   inputBinding:
-    prefix: '- Maximum'
+    prefix: -alen
 outputs: []
 cwlVersion: v1.1
 baseCommand:

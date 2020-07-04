@@ -2,14 +2,19 @@ version 1.0
 
 task FileMerger.py {
   input {
-    Array[String]+ iI
-    String fF
-    String oO
+    Array[String] i
+    String? f
+    String? o
   }
   command <<<
     fileMerger.py \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""}
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    i: ""
+    f: ""
+    o: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dnadiff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dnadiff.cwl
 inputs:
 - id: or
   doc: dnadiff  [options]  -d <delta file>

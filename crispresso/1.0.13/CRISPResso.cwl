@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: CRISPResso.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CRISPResso.cwl
 inputs:
 - id: split_paired_end
   doc: 'Splits a single fastq file contating paired end reads in two files before
@@ -13,7 +13,7 @@ inputs:
   inputBinding:
     prefix: --trim_sequences
 - id: trim_mo_matic_options_string
-  doc: 'Override options for Trimmomatic (default: ILLUMINACLIP:/tmp/tmpw8ijk_jx/lib/python2.7/site-
+  doc: 'Override options for Trimmomatic (default: ILLUMINACLIP:/tmp/tmplwqo0wwj/lib/python2.7/site-
     packages/CRISPResso/data/NexteraPE- PE.fa:0:90:10:0:true MINLEN:40)'
   type: string
   inputBinding:
@@ -142,6 +142,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
+- id: r_one
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -r1
+- id: r_two
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -r2
+- id: a
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -a
 outputs: []
 cwlVersion: v1.1
 baseCommand:

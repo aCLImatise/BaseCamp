@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dinuc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dinuc.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

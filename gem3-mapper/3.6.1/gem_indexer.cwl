@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gem_indexer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gem_indexer.cwl
 inputs:
 - id: bisulfite_index
   doc: (default=false)

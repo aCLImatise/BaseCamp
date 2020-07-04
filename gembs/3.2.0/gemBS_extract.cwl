@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gemBS_extract.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gemBS_extract.cwl
 inputs:
 - id: jobs
   doc: Number of parallel jobs

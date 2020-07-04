@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: distribution_features.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/distribution_features.py.cwl
 inputs:
 - id: f
   doc: '[-pal PALETTE] [-col COLOR]'

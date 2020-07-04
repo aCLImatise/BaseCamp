@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dr_disco.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dr_disco.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

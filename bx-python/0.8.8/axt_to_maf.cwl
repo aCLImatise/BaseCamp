@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: axt_to_maf.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/axt_to_maf.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: mb_plot_metagene_nobs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mb_plot_metagene_nobs.cwl
 inputs:
-- id: par_clip
-  doc: path to the PAR-CLIP *.table
-  type: string
-  inputBinding:
-    position: 0
-- id: output_dir
-  doc: output directory
-  type: string
-  inputBinding:
-    position: 1
-- id: prefix
-  doc: prefix of filenames
-  type: string
-  inputBinding:
-    position: 2
-- id: gff
-  doc: GFF file used for plotting
-  type: string
-  inputBinding:
-    position: 3
 - id: downstream
   doc: set downstream range
   type: string

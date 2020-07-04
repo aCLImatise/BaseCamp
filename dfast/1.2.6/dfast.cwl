@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dfast.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dfast.cwl
 inputs:
 - id: genome
   doc: Genomic FASTA file
@@ -101,7 +101,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --use_prodigal
-- id: use_genemark_s2
+- id: use_gene_marks_two
   doc: Use GeneMarkS2 to predict CDS instead of MGA. [auto|bact|arch]
   type: string
   inputBinding:

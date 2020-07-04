@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sparsetable_unittest.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sparsetable_unittest.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

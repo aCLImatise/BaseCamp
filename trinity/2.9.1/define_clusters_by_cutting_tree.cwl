@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: define_clusters_by_cutting_tree.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/define_clusters_by_cutting_tree.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

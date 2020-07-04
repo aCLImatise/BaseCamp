@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: omero_fs_images.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_fs_images.cwl
 inputs:
 - id: style
   doc: use alternative output style (default=sql)

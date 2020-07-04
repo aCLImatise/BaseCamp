@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: linear_discriminant_analysis.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/linear_discriminant_analysis.py.cwl
 inputs:
 - id: input
   doc: Input dataset in wide format.

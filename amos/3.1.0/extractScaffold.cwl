@@ -1,46 +1,26 @@
 class: CommandLineTool
-id: extractScaffold.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extractScaffold.cwl
 inputs:
-- id: the
-  doc: 'to be operated on. '
+- id: _bank_operated
+  doc: '- The bank to be operated on. '
   type: string
   inputBinding:
-    prefix: '- The'
-- id: the
-  doc: of the scaffold the be extracted .
+    prefix: -b
+- id: iid_scaffold_extracted
+  doc: '- The IID of the scaffold the be extracted .'
   type: string
   inputBinding:
-    prefix: '- The'
-- id: the
-  doc: of the new bank consisting of the.
+    prefix: -s
+- id: name_new_bank
+  doc: '- The name of the new bank consisting of the.'
   type: string
   inputBinding:
-    prefix: '- The'
-- id: list
-  doc: 'scaffolds in the given bank to stdout. The order is '
-  type: string
+    prefix: -n
+- id: list_scaffolds_stdout
+  doc: '- list the scaffolds in the given bank to stdout. The order is '
+  type: boolean
   inputBinding:
-    prefix: '- list'
-- id: the
-  doc: 'to be operated on. '
-  type: string
-  inputBinding:
-    prefix: '- The'
-- id: the
-  doc: of the scaffold the be extracted .
-  type: string
-  inputBinding:
-    prefix: '- The'
-- id: the
-  doc: of the new bank consisting of the.
-  type: string
-  inputBinding:
-    prefix: '- The'
-- id: list
-  doc: 'scaffolds in the given bank to stdout. The order is '
-  type: string
-  inputBinding:
-    prefix: '- list'
+    prefix: -l
 outputs: []
 cwlVersion: v1.1
 baseCommand:

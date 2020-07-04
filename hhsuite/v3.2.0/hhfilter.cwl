@@ -1,22 +1,22 @@
 class: CommandLineTool
-id: hhfilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hhfilter.cwl
 inputs:
-- id: i
+- id: read_input_file
   doc: 'read input file in A3M/A2M or FASTA format                 '
   type: File
   inputBinding:
     prefix: -i
-- id: o
+- id: write_output_file
   doc: 'write to output file in A3M format                         '
   type: File
   inputBinding:
     prefix: -o
-- id: a
+- id: append_output_file
   doc: 'append to output file in A3M format                        '
   type: File
   inputBinding:
     prefix: -a
-- id: v
+- id: verbose_mode_screen
   doc: 'verbose mode: 0:no screen output  1:only warings  2: verbose'
   type: long
   inputBinding:
@@ -52,22 +52,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -neff
-- id: m
-  doc: "use A2M/A3M (default): upper case = Match; lower case = Insert; '-' = Delete;\
-    \ '.' = gaps aligned to inserts (may be omitted)   "
-  type: string
-  inputBinding:
-    prefix: -M
-- id: m
-  doc: 'use FASTA: columns with residue in 1st sequence are match states'
-  type: string
-  inputBinding:
-    prefix: -M
-- id: m
-  doc: '[0,100]     use FASTA: columns with fewer than X% gaps are match states   '
-  type: boolean
-  inputBinding:
-    prefix: -M
 - id: max_seq
   doc: max number of input rows (def=65535)
   type: long

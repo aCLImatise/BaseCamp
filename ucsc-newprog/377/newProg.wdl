@@ -2,18 +2,25 @@ version 1.0
 
 task NewProg {
   input {
-    String includeInclude
-    Boolean cgiCgi
-    String? prognameProgname
-    String? descriptionDescription
-    String? wordsWords
+    Boolean? jkh_gap
+    Boolean? cgi
+    String progname
+    String description
+    String words
   }
   command <<<
     newProg \
-      ~{prognameProgname} \
-      ~{if defined(includeInclude) then ("- include " +  '"' + includeInclude + '"') else ""} \
-      ~{true="-cgi" false="" cgiCgi} \
-      ~{descriptionDescription} \
-      ~{wordsWords}
+      ~{progname} \
+      ~{description} \
+      ~{words} \
+      ~{true="-jkhgap" false="" jkh_gap} \
+      ~{true="-cgi" false="" cgi}
   >>>
+  parameter_meta {
+    jkh_gap: "- include jkhgap.a and mysql libraries as well as jkweb.a archives "
+    cgi: "- create shell of a CGI script for web"
+    progname: ""
+    description: ""
+    words: ""
+  }
 }

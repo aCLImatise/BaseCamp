@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: funannotate_compare.cwl
+id: ../../../../home/ubuntu/BiocondaCli/funannotate_compare.cwl
 inputs:
-- id: arguments
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: input
   doc: List of funannotate genome folders or GBK files
   type: boolean
@@ -66,6 +61,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ml_method
+- id: arguments
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

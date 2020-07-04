@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: strain_transmission.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/strain_transmission.py.cwl
 inputs:
 - id: tree
   doc: The input tree file

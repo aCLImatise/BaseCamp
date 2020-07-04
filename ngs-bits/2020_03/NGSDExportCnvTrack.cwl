@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: NGSDExportCnvTrack.cwl
+id: ../../../../home/ubuntu/BiocondaCli/NGSDExportCnvTrack.cwl
 inputs:
 - id: out
   doc: Output IGV file.

@@ -2,24 +2,25 @@ version 1.0
 
 task DepInit {
   input {
-    String tagsTags
-    String defaultDefault
-    String nonNonSemVer
-    Boolean goGoPath
-    Boolean noNoExamples
-    Boolean skipSkipTools
-    Boolean vV
-    String? rootRoot
+    Boolean? go_path
+    Boolean? no_examples
+    Boolean? skip_tools
+    Boolean? enable_verbose_logging
+    String? root
   }
   command <<<
     dep init \
-      ~{rootRoot} \
-      ~{if defined(tagsTags) then ("- Tags " +  '"' + tagsTags + '"') else ""} \
-      ~{if defined(defaultDefault) then ("- Default " +  '"' + defaultDefault + '"') else ""} \
-      ~{if defined(nonNonSemVer) then ("- Non-semver " +  '"' + nonNonSemVer + '"') else ""} \
-      ~{true="-gopath" false="" goGoPath} \
-      ~{true="-no-examples" false="" noNoExamples} \
-      ~{true="-skip-tools" false="" skipSkipTools} \
-      ~{true="-v" false="" vV}
+      ~{root} \
+      ~{true="-gopath" false="" go_path} \
+      ~{true="-no-examples" false="" no_examples} \
+      ~{true="-skip-tools" false="" skip_tools} \
+      ~{true="-v" false="" enable_verbose_logging}
   >>>
+  parameter_meta {
+    go_path: "search in GOPATH for dependencies (default: false)"
+    no_examples: "don't include example in Gopkg.toml (default: false)"
+    skip_tools: "skip importing configuration from other dependency managers (default: false)"
+    enable_verbose_logging: "enable verbose logging (default: false)"
+    root: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: compiled_table.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/compiled_table.py.cwl
 inputs:
 - id: tables
   doc: tables to compile

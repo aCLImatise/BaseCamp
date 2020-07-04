@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: AdjList.cwl
+id: ../../../../home/ubuntu/BiocondaCli/AdjList.cwl
 inputs:
-- id: km_er
+- id: length_when_set
   doc: the length of a k-mer (when -K is not set) or the span of a k-mer pair (when
     -K is set)
   type: string
@@ -37,12 +37,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gfa
-- id: gfa1
+- id: gfa_one
   doc: output the graph in GFA1 format
   type: boolean
   inputBinding:
     prefix: --gfa1
-- id: gfa2
+- id: gfa_two
   doc: output the graph in GFA2 format
   type: boolean
   inputBinding:
@@ -92,6 +92,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --species
+- id: var_18
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

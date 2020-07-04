@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: exonpairs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/exonpairs.cwl
 inputs:
-- id: hmm_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: fast_a_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: min_intron
   doc: minimum Intron length [30]
   type: long
@@ -71,6 +61,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lcmask
+- id: hmm_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: fast_a_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

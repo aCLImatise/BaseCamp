@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: lumpy_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lumpy_filter.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

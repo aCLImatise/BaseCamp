@@ -1,12 +1,7 @@
 class: CommandLineTool
-id: iu_filter_quality_minoche.cwl
+id: ../../../../home/ubuntu/BiocondaCli/iu_filter_quality_minoche.cwl
 inputs:
-- id: config_file
-  doc: User configuration to run. See the source code to see an example.
-  type: string
-  inputBinding:
-    position: 0
-- id: p
+- id: minimum_highquality_read
   doc: 'Minimum high-quality read length (default: 0.75)'
   type: double
   inputBinding:
@@ -45,6 +40,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --store-read-fate
+- id: config_file
+  doc: User configuration to run. See the source code to see an example.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

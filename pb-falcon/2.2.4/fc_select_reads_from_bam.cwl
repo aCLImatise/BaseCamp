@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: fc_select_reads_from_bam.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fc_select_reads_from_bam.py.cwl
 inputs:
-- id: input_bam_fof_n
-  doc: File of BAM filenames. Paths are relative to dir of FOFN, not CWD.
-  type: string
-  inputBinding:
-    position: 0
 - id: raw_read_to_contigs
   doc: 'rawread_to_contigs file (from where?) (default: ./2-asm- falcon/read_maps/dump_rawread_ids/rawread_to_contigs)'
   type: string
@@ -26,6 +21,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --max-n-open-files
+- id: input_bam_fof_n
+  doc: File of BAM filenames. Paths are relative to dir of FOFN, not CWD.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

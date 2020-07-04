@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: parsimplify.cwl
+id: ../../../../home/ubuntu/BiocondaCli/parsimplify.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

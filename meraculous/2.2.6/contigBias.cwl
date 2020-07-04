@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: contigBias.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/contigBias.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

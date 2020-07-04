@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: computeMatrix.cwl
+id: ../../../../home/ubuntu/BiocondaCli/computeMatrix.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

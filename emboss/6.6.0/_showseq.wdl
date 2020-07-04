@@ -2,10 +2,13 @@ version 1.0
 
 task _showseq {
   input {
-    Boolean formatFormat
+    Boolean? format
   }
   command <<<
     _showseq \
-      ~{true="-format" false="" formatFormat}
+      ~{true="-format" false="" format}
   >>>
+  parameter_meta {
+    format: "menu       [2] Display format (Values: 0 (Enter your own list of things to display); 1 (Sequence only); 2 (Default sequence with features); 3 (Pretty sequence); 4 (One frame translation); 5 (Three frame translations); 6 (Six frame translations); 7 (Restriction enzyme map); 8 (Baroque))"
+  }
 }

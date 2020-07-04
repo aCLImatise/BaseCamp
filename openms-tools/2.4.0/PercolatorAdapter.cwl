@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: PercolatorAdapter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PercolatorAdapter.cwl
 inputs:
 - id: in
   doc: "Input file(s) (valid formats: 'mzid', 'idXML')"
@@ -29,7 +29,7 @@ inputs:
     prefix: -out_type
 - id: enzyme
   doc: "Type of enzyme: no_enzyme,elastase,pepsin,proteinasek,thermolysin,chymotrypsin,lys-n,lys-c,arg-c,asp-n,glu-c,trypsin\
-    \ (default: 'trypsin' valid: 'no_enzyme', 'elastase',  'pepsin', 'proteinasek',\
+    \ (default: 'trypsin' valid: 'no_enzyme', 'elastase', 'pepsin', 'proteinasek',\
     \ 'thermolysin', 'chymotrypsin', 'lys-n', 'lys-c', 'arg-c', 'asp-n', 'glu-c',\
     \ 'trypsin')"
   type: string

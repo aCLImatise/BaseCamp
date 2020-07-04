@@ -2,10 +2,13 @@ version 1.0
 
 task RegtoolsVariants {
   input {
-    String? commandCommand
+    String var_command
   }
   command <<<
     regtools variants \
-      ~{commandCommand}
+      ~{var_command}
   >>>
+  parameter_meta {
+    var_command: ""
+  }
 }

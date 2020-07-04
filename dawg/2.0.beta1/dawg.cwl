@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: dawg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dawg.cwl
 inputs:
 - id: help_trick
   doc: display description of common control variables
   type: boolean
   inputBinding:
     prefix: --help-trick
-- id: o
+- id: arg_output_file
   doc: '[ --output ] arg          output to this file'
   type: boolean
   inputBinding:
@@ -41,6 +41,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --arg-file
+- id: allowed
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

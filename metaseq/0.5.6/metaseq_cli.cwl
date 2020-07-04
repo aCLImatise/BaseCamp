@@ -1,33 +1,6 @@
 class: CommandLineTool
-id: metaseq_cli.cwl
+id: ../../../../home/ubuntu/BiocondaCli/metaseq_cli.cwl
 inputs:
-- id: action
-  doc: One of (avgdensity, array)
-  type: string
-  inputBinding:
-    position: 0
-- id: data_file
-  doc: Data file to use.
-  type: string
-  inputBinding:
-    position: 1
-- id: type
-  doc: Type of data file. One of (bam, bed, bigwig, bigbed, gff, gtf, vcf)
-  type: string
-  inputBinding:
-    position: 2
-- id: windows
-  doc: Windows within which to get data from `datafile`. Can be a filename of intervals
-    (bam, bed, gff, gtf, vcf), or, if `--fromstring` is specified, a coord of the
-    form "chrom:start-stop", which only works for a single interval')
-  type: string
-  inputBinding:
-    position: 3
-- id: processes
-  doc: =8
-  type: boolean
-  inputBinding:
-    prefix: --processes
 - id: from_string
   doc: Assume `windows` specifies a genomic coordinate of the form 'chrom:start-stop'
     or 'chrom:start-stop[strand]
@@ -60,6 +33,28 @@ inputs:
   type: string
   inputBinding:
     prefix: --fragmentsize
+- id: action
+  doc: One of (avgdensity, array)
+  type: string
+  inputBinding:
+    position: 0
+- id: data_file
+  doc: Data file to use.
+  type: string
+  inputBinding:
+    position: 1
+- id: type
+  doc: Type of data file. One of (bam, bed, bigwig, bigbed, gff, gtf, vcf)
+  type: string
+  inputBinding:
+    position: 2
+- id: windows
+  doc: Windows within which to get data from `datafile`. Can be a filename of intervals
+    (bam, bed, gff, gtf, vcf), or, if `--fromstring` is specified, a coord of the
+    form "chrom:start-stop", which only works for a single interval')
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

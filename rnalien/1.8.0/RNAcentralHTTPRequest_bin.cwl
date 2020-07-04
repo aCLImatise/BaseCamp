@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNAcentralHTTPRequest_bin.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAcentralHTTPRequest_bin.cwl
 inputs:
 - id: verbose
   doc: Loud verbosity

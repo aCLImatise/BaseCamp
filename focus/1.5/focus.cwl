@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: focus.cwl
+id: ../../../../home/ubuntu/BiocondaCli/focus.cwl
 inputs:
 - id: query
   doc: Path to directory with FAST(A/Q) files
@@ -41,6 +41,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --log
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
 outputs: []
 cwlVersion: v1.1
 baseCommand:

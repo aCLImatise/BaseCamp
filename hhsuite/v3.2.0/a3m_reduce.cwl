@@ -1,6 +1,36 @@
 class: CommandLineTool
-id: a3m_reduce.cwl
-inputs: []
+id: ../../../../home/ubuntu/BiocondaCli/a3m_reduce.cwl
+inputs:
+- id: i
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -i
+- id: o
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -o
+- id: d
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -d
+- id: input_file_vertical_line_stdin
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_file_vertical_line_stdout
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: ff_index_sequence_database_prefix
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

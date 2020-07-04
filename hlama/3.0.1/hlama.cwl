@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hlama.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hlama.cwl
 inputs:
 - id: tumor_normal
   doc: Path to tumor/normal TSV file, starts tumor/normal mode

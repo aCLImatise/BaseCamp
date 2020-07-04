@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: obiclean.cwl
+id: ../../../../home/ubuntu/BiocondaCli/obiclean.cwl
 inputs:
 - id: skip
   doc: skip the N first sequences

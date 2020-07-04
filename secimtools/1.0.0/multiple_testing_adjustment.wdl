@@ -2,20 +2,28 @@ version 1.0
 
 task MultipleTestingAdjustment.py {
   input {
-    String inputInput
-    String uniqidUniqid
-    String pvalPval
-    String alphaAlpha
-    String outOutAdjusted
-    String flagsFlags
+    String? input_dataset_wide
+    String? uniqid
+    String? pval
+    String? alpha
+    String? out_adjusted
+    String? flags
   }
   command <<<
     multiple_testing_adjustment.py \
-      ~{if defined(inputInput) then ("--input " +  '"' + inputInput + '"') else ""} \
-      ~{if defined(uniqidUniqid) then ("--uniqID " +  '"' + uniqidUniqid + '"') else ""} \
-      ~{if defined(pvalPval) then ("--pval " +  '"' + pvalPval + '"') else ""} \
-      ~{if defined(alphaAlpha) then ("--alpha " +  '"' + alphaAlpha + '"') else ""} \
-      ~{if defined(outOutAdjusted) then ("--outadjusted " +  '"' + outOutAdjusted + '"') else ""} \
-      ~{if defined(flagsFlags) then ("--flags " +  '"' + flagsFlags + '"') else ""}
+      ~{if defined(input_dataset_wide) then ("--input " +  '"' + input_dataset_wide + '"') else ""} \
+      ~{if defined(uniqid) then ("--uniqID " +  '"' + uniqid + '"') else ""} \
+      ~{if defined(pval) then ("--pval " +  '"' + pval + '"') else ""} \
+      ~{if defined(alpha) then ("--alpha " +  '"' + alpha + '"') else ""} \
+      ~{if defined(out_adjusted) then ("--outadjusted " +  '"' + out_adjusted + '"') else ""} \
+      ~{if defined(flags) then ("--flags " +  '"' + flags + '"') else ""}
   >>>
+  parameter_meta {
+    input_dataset_wide: "Input dataset in wide format."
+    uniqid: "Name of the column with uniquedentifiers."
+    pval: "Name of the column with p-value."
+    alpha: "Alpha value."
+    out_adjusted: "Output path for corrected file[TSV]"
+    flags: "Output path for flags file[TSV]"
+  }
 }

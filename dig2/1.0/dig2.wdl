@@ -2,14 +2,19 @@ version 1.0
 
 task Dig2 {
   input {
-    String? digDig
-    String? fastFastASequenceDatabase
-    String? settingsSettings
+    String dig
+    String fast_a_sequence_database
+    String settings
   }
   command <<<
     dig2 \
-      ~{digDig} \
-      ~{fastFastASequenceDatabase} \
-      ~{settingsSettings}
+      ~{dig} \
+      ~{fast_a_sequence_database} \
+      ~{settings}
   >>>
+  parameter_meta {
+    dig: ""
+    fast_a_sequence_database: ""
+    settings: ""
+  }
 }

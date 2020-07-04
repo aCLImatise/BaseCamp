@@ -2,14 +2,22 @@ version 1.0
 
 task CgatreportProfile {
   input {
-    String sectionSection
-    String timeTime
-    String filterFilter
+    String? section
+    String? time
+    String? filter
+    String python
   }
   command <<<
     cgatreport-profile \
-      ~{if defined(sectionSection) then ("--section " +  '"' + sectionSection + '"') else ""} \
-      ~{if defined(timeTime) then ("--time " +  '"' + timeTime + '"') else ""} \
-      ~{if defined(filterFilter) then ("--filter " +  '"' + filterFilter + '"') else ""}
+      ~{python} \
+      ~{if defined(section) then ("--section " +  '"' + section + '"') else ""} \
+      ~{if defined(time) then ("--time " +  '"' + time + '"') else ""} \
+      ~{if defined(filter) then ("--filter " +  '"' + filter + '"') else ""}
   >>>
+  parameter_meta {
+    section: "only examine certain sections [default=[]]"
+    time: "time to show [default=seconds]"
+    filter: "apply filter to output [default=all]"
+    python: ""
+  }
 }

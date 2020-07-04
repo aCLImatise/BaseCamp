@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: extractDEs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extractDEs.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: mapped_reads
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: output
   doc: 'Write output to this file (STDOUT if omitted). '
   type: boolean
@@ -42,6 +32,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -about
+- id: mapped_reads
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

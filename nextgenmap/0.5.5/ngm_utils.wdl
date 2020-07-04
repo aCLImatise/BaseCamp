@@ -2,10 +2,13 @@ version 1.0
 
 task NgmUtils {
   input {
-    String? ngmNgmUtils
+    String ngm_utils
   }
   command <<<
     ngm-utils \
-      ~{ngmNgmUtils}
+      ~{ngm_utils}
   >>>
+  parameter_meta {
+    ngm_utils: "[--] <name>"
+  }
 }

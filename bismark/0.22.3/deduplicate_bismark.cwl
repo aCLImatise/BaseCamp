@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: deduplicate_bismark.cwl
+id: ../../../../home/ubuntu/BiocondaCli/deduplicate_bismark.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

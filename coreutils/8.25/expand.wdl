@@ -2,14 +2,16 @@ version 1.0
 
 task Expand {
   input {
-    Boolean initialInitial
-    String tabsTabs
-    String tabsTabs
+    Boolean? initial
+    String? option
   }
   command <<<
     expand \
-      ~{true="--initial" false="" initialInitial} \
-      ~{if defined(tabsTabs) then ("--tabs " +  '"' + tabsTabs + '"') else ""} \
-      ~{if defined(tabsTabs) then ("--tabs " +  '"' + tabsTabs + '"') else ""}
+      ~{option} \
+      ~{true="--initial" false="" initial}
   >>>
+  parameter_meta {
+    initial: "do not convert tabs after non blanks"
+    option: ""
+  }
 }

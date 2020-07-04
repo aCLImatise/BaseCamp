@@ -1,82 +1,62 @@
 class: CommandLineTool
-id: sfetch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sfetch.cwl
 inputs:
-- id: a
+- id: name_accession_number
   doc: ': name is an accession number, not a key'
   type: boolean
   inputBinding:
     prefix: -a
-- id: d
+- id: get_sequence_seqfile
   doc: ': get sequence from <seqfile>'
   type: string
   inputBinding:
     prefix: -d
-- id: d
+- id: instead_get_sequence
   doc: ': instead, get sequence from main database'
   type: string
   inputBinding:
     prefix: -D
-- id: r
+- id: rename_fragment_newname
   doc: ': rename the fragment <newname>'
   type: string
   inputBinding:
     prefix: -r
-- id: f
+- id: _from_residue_n
   doc: ': from which residue (1..N)'
   type: string
   inputBinding:
     prefix: -f
-- id: t
+- id: _to_residue_n
   doc: ': to which residue (1..N)'
   type: string
   inputBinding:
     prefix: -t
-- id: o
+- id: direct_output_outfile
   doc: ': direct output to <outfile>'
   type: string
   inputBinding:
     prefix: -o
-- id: f
+- id: use_output_format
   doc: ': use output format of <format>; see below for list. Default is original format
     of database.'
   type: string
   inputBinding:
     prefix: -F
-- id: dsw
-  doc: $SWDIR   SwissProt
-  type: boolean
-  inputBinding:
-    prefix: -Dsw
-- id: dpi_r
-  doc: $PIRDIR  PIR
-  type: boolean
-  inputBinding:
-    prefix: -Dpir
-- id: dem
-  doc: $EMBLDIR EMBL
-  type: boolean
-  inputBinding:
-    prefix: -Dem
-- id: dgb
-  doc: $GBDIR   GenBank
-  type: boolean
-  inputBinding:
-    prefix: -Dgb
-- id: dwp
-  doc: $WORMDIR WormPep
-  type: boolean
-  inputBinding:
-    prefix: -Dwp
-- id: do_wl
-  doc: $OWLDIR  OWL
-  type: boolean
-  inputBinding:
-    prefix: -Dowl
 - id: in_format
   doc: ': specify input sequence file format <s>'
   type: string
   inputBinding:
     prefix: --informat
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: seqname
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

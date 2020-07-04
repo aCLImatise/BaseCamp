@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: kmds.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kmds.cwl
 inputs:
-- id: k
+- id: arg_dsm_kmer
   doc: '[ --kmers ] arg       dsm kmer output file (not needed if using  --mds_concat)'
   type: boolean
   inputBinding:
     prefix: -k
-- id: p
+- id: _arg_metadata
   doc: '[ --pheno ] arg       .pheno metadata'
   type: boolean
   inputBinding:
     prefix: -p
-- id: o
+- id: arg_output_prefix
   doc: '[ --output ] arg      output prefix for new dsm file'
   type: boolean
   inputBinding:

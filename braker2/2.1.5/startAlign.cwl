@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: startAlign.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/startAlign.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

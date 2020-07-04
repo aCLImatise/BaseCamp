@@ -1,18 +1,18 @@
 class: CommandLineTool
-id: bmfilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bmfilter.cwl
 inputs:
 - id: quality_channels
-  doc: =0          -q 0           Number of quality channers for reads (0|1)
-  type: boolean
+  doc: -q 0           Number of quality channers for reads (0|1)
+  type: string
   inputBinding:
     prefix: --quality-channels
-- id: read_1
+- id: read_one
   doc: =''                   -1 ''          Fasta or fastq (for -q1) file with reads,
     may be repeated
   type: boolean
   inputBinding:
     prefix: --read-1
-- id: read_2
+- id: read_two
   doc: =''                   -2 ''          Fasta or fastq (for -q1) file with read
     pair mates, if used should be repeated as many times as -1 is
   type: boolean
@@ -30,8 +30,8 @@ inputs:
   inputBinding:
     prefix: --use-mmap
 - id: max_ambiguities
-  doc: =0           -a 0           Maximal number of ambiguities per word
-  type: boolean
+  doc: -a 0           Maximal number of ambiguities per word
+  type: string
   inputBinding:
     prefix: --max-ambiguities
 - id: clip_lowercase
@@ -40,15 +40,15 @@ inputs:
   inputBinding:
     prefix: --clip-lowercase
 - id: clip_n_win
-  doc: =0                -N 0           Clip sequence head or tail as long as it has
-    at least one N per this long window
-  type: boolean
+  doc: -N 0           Clip sequence head or tail as long as it has at least one N
+    per this long window
+  type: string
   inputBinding:
     prefix: --clip-N-win
 - id: clip_quality
-  doc: =0              -Q 0           Clip sequence head or tail with quality lower
-    then this (for fastq input)
-  type: boolean
+  doc: -Q 0           Clip sequence head or tail with quality lower then this (for
+    fastq input)
+  type: string
   inputBinding:
     prefix: --clip-quality
 - id: output
@@ -78,81 +78,78 @@ inputs:
   inputBinding:
     prefix: --post-clipped
 - id: complexity
-  doc: =2                -F 2           Set complexity filter cutoff
-  type: boolean
+  doc: -F 2           Set complexity filter cutoff
+  type: string
   inputBinding:
     prefix: --complexity
 - id: short_seq
-  doc: =1073741823        -L 1073741823  Set sequence length to consider it as short
-    for postprocessing
-  type: boolean
+  doc: -L 1073741823  Set sequence length to consider it as short for postprocessing
+  type: string
   inputBinding:
     prefix: --short-seq
 - id: no_post_len
-  doc: =25              -n 25          Set longest sequence length to ignore postprocessing
-  type: boolean
+  doc: -n 25          Set longest sequence length to ignore postprocessing
+  type: string
   inputBinding:
     prefix: --no-post-len
 - id: chop_length
-  doc: =32              -c 32          Set length to chop short sequences to
-  type: boolean
+  doc: -c 32          Set length to chop short sequences to
+  type: string
   inputBinding:
     prefix: --chop-length
 - id: chop_step
-  doc: =4                 -s 4           Set step by which to chop short sequences
-  type: boolean
+  doc: -s 4           Set step by which to chop short sequences
+  type: string
   inputBinding:
     prefix: --chop-step
 - id: mask_early
-  doc: =0                -m 0           Set mask low complexity before applying heuristics
-  type: boolean
+  doc: -m 0           Set mask low complexity before applying heuristics
+  type: string
   inputBinding:
     prefix: --mask-early
 - id: post_low_complexity
-  doc: =0       -Z 0           Should 'unknown' low complexity reads be sent to post
-    processing
-  type: boolean
+  doc: -Z 0           Should 'unknown' low complexity reads be sent to post processing
+  type: string
   inputBinding:
     prefix: --post-low-complexity
 - id: heur_min_words
-  doc: =10                          Set minimal word count to apply heuristics
-  type: boolean
+  doc: Set minimal word count to apply heuristics
+  type: string
   inputBinding:
     prefix: --heur-min-words
 - id: heur_many_words
-  doc: =200                        Set number of good words which switches watermarks
-    (long/short)
-  type: boolean
+  doc: Set number of good words which switches watermarks (long/short)
+  type: string
   inputBinding:
     prefix: --heur-many-words
 - id: heur_count_long_pct
-  doc: =20:60                  Set watermarks for matched word count for long sequences,
+  doc: :60                  Set watermarks for matched word count for long sequences,
     int % of good words
-  type: boolean
+  type: string
   inputBinding:
     prefix: --heur-count-long-pct
 - id: heur_count_short_pct
-  doc: =20:80                 Set watermarks for matched word count for short sequences,
+  doc: :80                 Set watermarks for matched word count for short sequences,
     int % of good words
-  type: boolean
+  type: string
   inputBinding:
     prefix: --heur-count-short-pct
 - id: heur_run_long_pct
-  doc: =10:20                    Set watermarks for longest match run for long sequences,
+  doc: :20                    Set watermarks for longest match run for long sequences,
     int % of good words
-  type: boolean
+  type: string
   inputBinding:
     prefix: --heur-run-long-pct
 - id: heur_run_short_pct
-  doc: =10:40                   Set watermarks for longest match run for short sequences,
+  doc: :40                   Set watermarks for longest match run for short sequences,
     int % of good words
-  type: boolean
+  type: string
   inputBinding:
     prefix: --heur-run-short-pct
 - id: heur_negligible_length
-  doc: =15                  Set cutoff for sequences to consider - these and shorter
-    (after clipping) will be marked as foreign
-  type: boolean
+  doc: Set cutoff for sequences to consider - these and shorter (after clipping) will
+    be marked as foreign
+  type: string
   inputBinding:
     prefix: --heur-negligible-length
 outputs: []

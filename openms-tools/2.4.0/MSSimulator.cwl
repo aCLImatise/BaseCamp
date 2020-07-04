@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MSSimulator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MSSimulator.cwl
 inputs:
 - id: in
   doc: "*       Input protein sequences (valid formats: 'FASTA')"
@@ -62,11 +62,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Algorithm parameters section
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

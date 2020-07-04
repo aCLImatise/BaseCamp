@@ -2,12 +2,16 @@ version 1.0
 
 task QvToBqv.py {
   input {
-    String? qualQualFile
-    String? outputOutputFile
+    String qual_file
+    String output_file
   }
   command <<<
     qv_to_bqv.py \
-      ~{qualQualFile} \
-      ~{outputOutputFile}
+      ~{qual_file} \
+      ~{output_file}
   >>>
+  parameter_meta {
+    qual_file: ""
+    output_file: ""
+  }
 }

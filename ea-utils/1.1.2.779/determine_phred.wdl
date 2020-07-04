@@ -2,10 +2,28 @@ version 1.0
 
 task DeterminePhred {
   input {
-    File? fileFile
+    String no
+    String such
+    File file
+    String or
+    Directory directory
+    String at
   }
   command <<<
     determine-phred \
-      ~{fileFile}
+      ~{no} \
+      ~{such} \
+      ~{file} \
+      ~{or} \
+      ~{directory} \
+      ~{at}
   >>>
+  parameter_meta {
+    no: ""
+    such: ""
+    file: ""
+    or: ""
+    directory: ""
+    at: ""
+  }
 }

@@ -2,14 +2,19 @@ version 1.0
 
 task Beagle {
   input {
-    String jarJar
-    String? javaJava
-    String? argumentsArguments
+    String? jar
+    String java
+    String? arguments
   }
   command <<<
     beagle \
-      ~{javaJava} \
-      ~{if defined(jarJar) then ("-jar " +  '"' + jarJar + '"') else ""} \
-      ~{argumentsArguments}
+      ~{java} \
+      ~{arguments} \
+      ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  parameter_meta {
+    jar: ""
+    java: ""
+    arguments: ""
+  }
 }

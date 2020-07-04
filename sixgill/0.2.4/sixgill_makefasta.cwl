@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: sixgill_makefasta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sixgill_makefasta.cwl
 inputs:
-- id: meta_peptide_dbfile
-  doc: input metapeptide database file
-  type: string
-  inputBinding:
-    position: 0
 - id: out
   doc: output file
   type: string

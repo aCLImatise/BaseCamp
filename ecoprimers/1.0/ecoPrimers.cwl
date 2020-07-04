@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ecoPrimers.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ecoPrimers.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

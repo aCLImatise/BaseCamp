@@ -1,20 +1,6 @@
 class: CommandLineTool
-id: dca.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dca.cwl
 inputs:
-- id: input
-  doc: Input is raw count data in TSV/CSV or H5AD (anndata) format. Row/col names
-    are mandatory. Note that TSV/CSV files must be in gene x cell layout where rows
-    are genes and cols are cells (scRNA-seq convention).Use the -t/--transpose option
-    if your count matrix in cell x gene layout. H5AD files must be in cell x gene
-    format (stats and scanpy convention).
-  type: string
-  inputBinding:
-    position: 0
-- id: output_dir
-  doc: The path of the output directory
-  type: string
-  inputBinding:
-    position: 1
 - id: norm_type
   doc: 'Type of size factor estimation. Possible values: deseq, zheng. (default: zheng)'
   type: string
@@ -91,22 +77,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --nobatchnorm
-- id: l2
+- id: l_two
   doc: 'L2 regularization coefficient (default: 0.0)'
   type: string
   inputBinding:
     prefix: --l2
-- id: l1
+- id: lone
   doc: 'L1 regularization coefficient (default: 0.0)'
   type: string
   inputBinding:
     prefix: --l1
-- id: l2enc
+- id: l_two_enc
   doc: 'Encoder-specific L2 regularization coefficient (default: 0.0)'
   type: string
   inputBinding:
     prefix: --l2enc
-- id: l1enc
+- id: lone_enc
   doc: 'Encoder-specific L1 regularization coefficient (default: 0.0)'
   type: string
   inputBinding:
@@ -213,6 +199,20 @@ inputs:
   type: string
   inputBinding:
     prefix: --denoisesubset
+- id: input
+  doc: Input is raw count data in TSV/CSV or H5AD (anndata) format. Row/col names
+    are mandatory. Note that TSV/CSV files must be in gene x cell layout where rows
+    are genes and cols are cells (scRNA-seq convention).Use the -t/--transpose option
+    if your count matrix in cell x gene layout. H5AD files must be in cell x gene
+    format (stats and scanpy convention).
+  type: string
+  inputBinding:
+    position: 0
+- id: output_dir
+  doc: The path of the output directory
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

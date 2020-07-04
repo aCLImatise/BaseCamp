@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: funannotate_mask.cwl
+id: ../../../../home/ubuntu/BiocondaCli/funannotate_mask.cwl
 inputs:
-- id: arguments
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: input
   doc: Multi-FASTA genome file. (Required)
   type: boolean
@@ -41,6 +36,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
+- id: arguments
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

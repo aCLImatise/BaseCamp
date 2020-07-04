@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: DetectBeadSynthesisErrors.cwl
+id: ../../../../home/ubuntu/BiocondaCli/DetectBeadSynthesisErrors.cwl
 inputs:
-- id: m
+- id: default_g
   doc: (default 4g)
   type: string
   inputBinding:
     prefix: -m
-- id: v
+- id: final_command_line
   doc: final command line before executing
   type: string
   inputBinding:

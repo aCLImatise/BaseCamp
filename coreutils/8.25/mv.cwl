@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: mv.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mv.cwl
 inputs:
 - id: backup
   doc: '[=CONTROL]       make a backup of each existing destination file'
   type: boolean
   inputBinding:
     prefix: --backup
-- id: b
+- id: _backup_accept
   doc: like --backup but does not accept an argument
   type: boolean
   inputBinding:
@@ -62,6 +62,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --context
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

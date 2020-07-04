@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: runcon.cwl
+id: ../../../../home/ubuntu/BiocondaCli/runcon.cwl
 inputs:
-- id: context
-  doc: Complete security context
-  type: string
-  inputBinding:
-    position: 0
 - id: compute
   doc: compute process transition context before modifying
   type: boolean
@@ -31,6 +26,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --range
+- id: context
+  doc: Complete security context
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

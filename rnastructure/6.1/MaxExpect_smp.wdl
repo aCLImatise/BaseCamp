@@ -2,14 +2,19 @@ version 1.0
 
 task MaxExpectSmp {
   input {
-    Int? maxMaxExpect
-    String? inputInputFile
-    String? ctCtFile
+    Int max_expect
+    String input_file
+    String ct_file
   }
   command <<<
     MaxExpect-smp \
-      ~{maxMaxExpect} \
-      ~{inputInputFile} \
-      ~{ctCtFile}
+      ~{max_expect} \
+      ~{input_file} \
+      ~{ct_file}
   >>>
+  parameter_meta {
+    max_expect: ""
+    input_file: ""
+    ct_file: ""
+  }
 }

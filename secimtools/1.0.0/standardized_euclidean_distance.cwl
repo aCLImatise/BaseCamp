@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: standardized_euclidean_distance.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/standardized_euclidean_distance.py.cwl
 inputs:
 - id: per
   doc: The threshold for standard distributions. The default is 0.95.
@@ -16,6 +16,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --color
+- id: i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
+- id: d
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -d
+- id: id
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -id
 outputs: []
 cwlVersion: v1.1
 baseCommand:

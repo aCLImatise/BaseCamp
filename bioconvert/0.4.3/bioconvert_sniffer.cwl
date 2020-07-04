@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: bioconvert_sniffer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bioconvert_sniffer.cwl
 inputs:
-- id: test_bam
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: verbosity
   doc: Set the outpout verbosity.
   type: string

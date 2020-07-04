@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: vcfevenregions.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfevenregions.cwl
 inputs:
-- id: vcf_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: fast_a_reference
   doc: FASTA reference file to use to obtain primer sequences.
   type: string
@@ -37,6 +32,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --separator
+- id: vcf_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

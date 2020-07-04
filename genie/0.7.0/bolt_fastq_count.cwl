@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: bolt_fastq_count.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bolt_fastq_count.cwl
 inputs:
+- id: file_path
+  doc: Input FASTQ file (*require)
+  type: string
+  inputBinding:
+    prefix: --filepath
 - id: genie
   doc: ''
   type: string
@@ -21,11 +26,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: file_path
-  doc: Input FASTQ file (*require)
-  type: string
-  inputBinding:
-    prefix: --filepath
 outputs: []
 cwlVersion: v1.1
 baseCommand:

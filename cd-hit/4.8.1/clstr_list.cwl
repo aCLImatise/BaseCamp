@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: clstr_list.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clstr_list.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

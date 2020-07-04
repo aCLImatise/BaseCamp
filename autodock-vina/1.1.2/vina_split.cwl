@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: vina_split.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vina_split.cwl
 inputs:
-- id: input
+- id: input_split_pdbqt
   doc: input to split (PDBQT)
   type: string
   inputBinding:
@@ -16,6 +16,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --flex
+- id: var_3
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

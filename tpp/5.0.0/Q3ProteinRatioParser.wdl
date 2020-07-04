@@ -2,10 +2,13 @@ version 1.0
 
 task Q3ProteinRatioParser {
   input {
-    String? protProtXmlFile
+    String prot_xml_file
   }
   command <<<
     Q3ProteinRatioParser \
-      ~{protProtXmlFile}
+      ~{prot_xml_file}
   >>>
+  parameter_meta {
+    prot_xml_file: ""
+  }
 }

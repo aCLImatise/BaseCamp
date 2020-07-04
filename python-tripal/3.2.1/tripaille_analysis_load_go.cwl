@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tripaille_analysis_load_go.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tripaille_analysis_load_go.cwl
 inputs:
 - id: organism
   doc: Organism common name or abbreviation
@@ -74,6 +74,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --date_executed
+- id: name
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: program
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: program_version
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

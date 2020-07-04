@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fasten_replace.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fasten_replace.cwl
 inputs:
 - id: num_cpus
   doc: 'Number of CPUs (default: 1)'

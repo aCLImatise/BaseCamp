@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: vcf2paragraph.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf2paragraph.py.cwl
 inputs:
-- id: input
-  doc: Input VCF / BCF file
-  type: string
-  inputBinding:
-    position: 0
-- id: output
-  doc: Output JSON file
-  type: string
-  inputBinding:
-    position: 1
 - id: reference_sequence
   doc: Reference FASTA for checking REF and resolving <DEL>
   type: string
@@ -67,6 +57,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --recursion-limit
+- id: input
+  doc: Input VCF / BCF file
+  type: string
+  inputBinding:
+    position: 0
+- id: output
+  doc: Output JSON file
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

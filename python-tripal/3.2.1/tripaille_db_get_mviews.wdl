@@ -2,10 +2,13 @@ version 1.0
 
 task TripailleDbGetMviews {
   input {
-    String nameName
+    String? name
   }
   command <<<
     tripaille db get_mviews \
-      ~{if defined(nameName) then ("--name " +  '"' + nameName + '"') else ""}
+      ~{if defined(name) then ("--name " +  '"' + name + '"') else ""}
   >>>
+  parameter_meta {
+    name: "filter on mview name"
+  }
 }

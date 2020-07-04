@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: orthomcl_database.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/orthomcl_database.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

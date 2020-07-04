@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: simreadsbs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/simreadsbs.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: fast_a_chrom_files
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: output
   doc: 'Name of output file (default: stdout) '
   type: boolean
@@ -71,6 +61,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -about
+- id: fast_a_chrom_files
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

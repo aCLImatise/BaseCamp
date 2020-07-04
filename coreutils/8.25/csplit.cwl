@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: csplit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csplit.cwl
 inputs:
 - id: suffix_format
   doc: use sprintf FORMAT instead of %02d
@@ -36,6 +36,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --elide-empty-files
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

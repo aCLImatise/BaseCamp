@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tiling2cam.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tiling2cam.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

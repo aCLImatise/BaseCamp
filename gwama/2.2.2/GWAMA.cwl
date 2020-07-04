@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: GWAMA.cwl
+id: ../../../../home/ubuntu/BiocondaCli/GWAMA.cwl
 inputs:
 - id: sex
   doc: Run gender-differentiated and gender- heterogeneity analysis. Gender info   must
@@ -49,12 +49,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --name_or
-- id: name_or_95l
+- id: name_or_nine_five_l
   doc: 'alternative header to OR 95L column  '
   type: boolean
   inputBinding:
     prefix: --name_or_95l
-- id: name_or_95u
+- id: name_or_nine_five_u
   doc: 'alternative header to OR 95U column  '
   type: boolean
   inputBinding:

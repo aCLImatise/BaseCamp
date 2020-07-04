@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: berokka.cwl
+id: ../../../../home/ubuntu/BiocondaCli/berokka.cwl
 inputs:
 - id: debug
   doc: Debug info.
@@ -47,7 +47,7 @@ inputs:
   inputBinding:
     prefix: --noanno
 - id: filter
-  doc: '[X]    Contaminants to remove [/tmp/tmpxq3y3_fe/db/controls.fna].'
+  doc: '[X]    Contaminants to remove [/tmp/tmpr6cxn_ij/db/controls.fna].'
   type: boolean
   inputBinding:
     prefix: --filter

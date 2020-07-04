@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ORFfinder.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ORFfinder.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

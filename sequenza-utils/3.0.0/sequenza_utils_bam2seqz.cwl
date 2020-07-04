@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sequenza_utils_bam2seqz.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sequenza_utils_bam2seqz.cwl
 inputs:
 - id: pile_up
   doc: Use pileups as input files instead of BAMs.
@@ -33,7 +33,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
-- id: normal_2
+- id: normal_two
   doc: Optional BAM/pileup file used to compute the depth.normal and depth-ratio,
     instead of using the normal BAM.
   type: string
@@ -95,7 +95,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --qformat
-- id: n
+- id: threshold_filter_positions
   doc: Threshold to filter positions by the sum of read depth of the two samples.
     Default 20.
   type: string

@@ -1,12 +1,7 @@
 class: CommandLineTool
-id: idconvert.cwl
+id: ../../../../home/ubuntu/BiocondaCli/idconvert.cwl
 inputs:
-- id: file_masks
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
-- id: f
+- id: arg_specify_text
   doc: '[ --filelist ] arg    : specify text file containing filenames'
   type: boolean
   inputBinding:
@@ -16,7 +11,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -o
-- id: c
+- id: arg_configuration_file
   doc: '[ --config ] arg      : configuration file (optionName=value)'
   type: boolean
   inputBinding:
@@ -41,11 +36,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --text
-- id: v
+- id: display_detailed_information
   doc: '[ --verbose ]         : display detailed progress information'
   type: boolean
   inputBinding:
     prefix: -v
+- id: file_masks
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

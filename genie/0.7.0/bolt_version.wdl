@@ -2,14 +2,19 @@ version 1.0
 
 task BoltVersion {
   input {
-    String? genieGenie
-    String? versionVersion
-    String? flagsFlags
+    String genie
+    String version
+    String? flags
   }
   command <<<
     bolt version \
-      ~{genieGenie} \
-      ~{versionVersion} \
-      ~{flagsFlags}
+      ~{genie} \
+      ~{version} \
+      ~{flags}
   >>>
+  parameter_meta {
+    genie: ""
+    version: ""
+    flags: ""
+  }
 }

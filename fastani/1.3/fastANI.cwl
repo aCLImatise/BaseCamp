@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastANI.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastANI.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

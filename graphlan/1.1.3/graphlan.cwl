@@ -1,17 +1,6 @@
 class: CommandLineTool
-id: graphlan.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/graphlan.py.cwl
 inputs:
-- id: input_tree
-  doc: the input tree in PhyloXML format
-  type: string
-  inputBinding:
-    position: 0
-- id: output_image
-  doc: 'the output image, the format is guessed from the extension unless --format
-    is given. Available file formats are: png, pdf, ps, eps, svg'
-  type: string
-  inputBinding:
-    position: 1
 - id: format
   doc: "['output_image_format'] set the format of the output image (default none meaning\
     \ that the format is guessed from the output file extension)"
@@ -56,6 +45,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --avoid_reordering
+- id: input_tree
+  doc: the input tree in PhyloXML format
+  type: string
+  inputBinding:
+    position: 0
+- id: output_image
+  doc: 'the output image, the format is guessed from the extension unless --format
+    is given. Available file formats are: png, pdf, ps, eps, svg'
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

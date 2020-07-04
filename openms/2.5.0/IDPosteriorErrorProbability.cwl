@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: IDPosteriorErrorProbability.cwl
+id: ../../../../home/ubuntu/BiocondaCli/IDPosteriorErrorProbability.cwl
 inputs:
 - id: in
   doc: "*        Input file  (valid formats: 'idXML')"
@@ -60,16 +60,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: fit_algorithm
-  doc: Algorithm parameter subsection
-  type: boolean
-  inputBinding:
-    prefix: '- fit_algorithm'
-- id: http
-  doc: ://www.openms.de/documentation/TOPP_IDPosteriorErrorProbability.html
-  type: boolean
-  inputBinding:
-    prefix: '- http'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

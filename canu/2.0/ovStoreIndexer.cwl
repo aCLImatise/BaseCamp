@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: ovStoreIndexer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ovStoreIndexer.cwl
 inputs:
-- id: o
+- id: path_overlap_store
   doc: path to overlap store to create
   type: string
   inputBinding:
     prefix: -O
-- id: s
+- id: path_sequence_store
   doc: path to sequence store
   type: string
   inputBinding:
     prefix: -S
-- id: c
+- id: path_ovstoreconfig_file
   doc: path to ovStoreConfig configuration file
   type: string
   inputBinding:

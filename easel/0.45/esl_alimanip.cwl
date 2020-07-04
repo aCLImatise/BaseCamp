@@ -1,12 +1,7 @@
 class: CommandLineTool
-id: esl_alimanip.cwl
+id: ../../../../home/ubuntu/BiocondaCli/esl_alimanip.cwl
 inputs:
-- id: msa_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: o
+- id: output_alignment_file
   doc: ': output the alignment to file <f>, not stdout'
   type: string
   inputBinding:
@@ -121,7 +116,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --reorder
-- id: mask2rf
+- id: mask_two_rf
   doc: ': set #=GC RF as x=1, gap=0 from 1/0s in 1-line <f>'
   type: string
   inputBinding:
@@ -151,7 +146,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --sindi
-- id: post_2pp
+- id: post_two_pp
   doc: ': convert infernal 0.72-1.0.2 POST posterior prob annotation to PP'
   type: boolean
   inputBinding:
@@ -171,6 +166,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --rna
+- id: msa_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

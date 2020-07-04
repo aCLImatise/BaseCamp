@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: abundance_dist_single.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/abundance_dist_single.py.cwl
 inputs:
+- id: info
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --info
+- id: k
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -k
 - id: input_sequence_filename
   doc: The name of the input FAST[AQ] sequence file.
   type: string

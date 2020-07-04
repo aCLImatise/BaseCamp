@@ -2,10 +2,13 @@ version 1.0
 
 task ListLinkedContigs {
   input {
-    String? bankBankPath
+    String bank_path
   }
   command <<<
     list-linked-contigs \
-      ~{bankBankPath}
+      ~{bank_path}
   >>>
+  parameter_meta {
+    bank_path: ""
+  }
 }

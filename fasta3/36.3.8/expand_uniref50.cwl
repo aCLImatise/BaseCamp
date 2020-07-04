@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: expand_uniref50.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/expand_uniref50.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

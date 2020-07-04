@@ -2,12 +2,16 @@ version 1.0
 
 task CheckTradisTags {
   input {
-    File bB
-    String? checkCheckTags
+    File? b
+    String check_tags
   }
   command <<<
     check_tradis_tags \
-      ~{checkCheckTags} \
-      ~{if defined(bB) then ("-b " +  '"' + bB + '"') else ""}
+      ~{check_tags} \
+      ~{if defined(b) then ("-b " +  '"' + b + '"') else ""}
   >>>
+  parameter_meta {
+    b: ""
+    check_tags: ""
+  }
 }

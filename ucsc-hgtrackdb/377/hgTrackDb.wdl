@@ -2,38 +2,31 @@ version 1.0
 
 task HgTrackDb {
   input {
-    String inIn
-    String theThe
-    String theThe
-    String tableTable
-    String forFor
-    String strictStrict
-    String specifySpecify
-    String releaseRelease
-    String settingsSettings
-    String andAnd
-    String? orgOrg
-    String? databaseDatabase
-    String? trackTrackDb
-    String? trackTrackDbSql
-    String? hgHgRoot
+    String? release
+    Boolean? settings
+    String org
+    String database
+    String track_db
+    String track_db_dot_sql
+    String hg_root
   }
   command <<<
     hgTrackDb \
-      ~{orgOrg} \
-      ~{if defined(inIn) then ("- in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(theThe) then ("- the " +  '"' + theThe + '"') else ""} \
-      ~{if defined(theThe) then ("- the " +  '"' + theThe + '"') else ""} \
-      ~{if defined(tableTable) then ("- table " +  '"' + tableTable + '"') else ""} \
-      ~{if defined(forFor) then ("- for " +  '"' + forFor + '"') else ""} \
-      ~{if defined(strictStrict) then ("-strict " +  '"' + strictStrict + '"') else ""} \
-      ~{if defined(specifySpecify) then ("- Specify " +  '"' + specifySpecify + '"') else ""} \
-      ~{if defined(releaseRelease) then ("-release " +  '"' + releaseRelease + '"') else ""} \
-      ~{if defined(settingsSettings) then ("-settings " +  '"' + settingsSettings + '"') else ""} \
-      ~{if defined(andAnd) then ("-  and " +  '"' + andAnd + '"') else ""} \
-      ~{databaseDatabase} \
-      ~{trackTrackDb} \
-      ~{trackTrackDbSql} \
-      ~{hgHgRoot}
+      ~{org} \
+      ~{database} \
+      ~{track_db} \
+      ~{track_db_dot_sql} \
+      ~{hg_root} \
+      ~{if defined(release) then ("-release " +  '"' + release + '"') else ""} \
+      ~{true="-settings" false="" settings}
   >>>
+  parameter_meta {
+    release: "|beta|public - Include trackDb entries with this release tag only."
+    settings: "- for trackDb scanning, output table name, type line, -  and settings hash to stderr while loading everything."
+    org: ""
+    database: ""
+    track_db: ""
+    track_db_dot_sql: ""
+    hg_root: ""
+  }
 }

@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: remove_from_embl.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/remove_from_embl.py.cwl
 inputs:
+- id: organism_to_excluded
+  doc: Organism to be excluded
+  type: string
+  inputBinding:
+    prefix: --organism
+- id: format
+  doc: 'Output format. Choices: fasta. Default: fasta.'
+  type: string
+  inputBinding:
+    prefix: --format
 - id: script
   doc: ''
   type: string
@@ -31,7 +41,7 @@ inputs:
   type: string
   inputBinding:
     position: 5
-- id: a
+- id: var_8
   doc: ''
   type: string
   inputBinding:
@@ -41,7 +51,7 @@ inputs:
   type: string
   inputBinding:
     position: 7
-- id: organism
+- id: var_10
   doc: ''
   type: string
   inputBinding:
@@ -51,7 +61,7 @@ inputs:
   type: string
   inputBinding:
     position: 9
-- id: a
+- id: var_12
   doc: ''
   type: string
   inputBinding:
@@ -61,21 +71,11 @@ inputs:
   type: string
   inputBinding:
     position: 11
-- id: file
+- id: file_dot
   doc: ''
   type: File
   inputBinding:
     position: 12
-- id: organism
-  doc: Organism to be excluded
-  type: string
-  inputBinding:
-    prefix: --organism
-- id: format
-  doc: 'Output format. Choices: fasta. Default: fasta.'
-  type: string
-  inputBinding:
-    prefix: --format
 outputs: []
 cwlVersion: v1.1
 baseCommand:

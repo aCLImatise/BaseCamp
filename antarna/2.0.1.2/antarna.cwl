@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: antarna.py_DP.cwl
+id: ../../../../home/ubuntu/BiocondaCli/antarna.py_DP.cwl
 inputs:
 - id: diff_accessibility
   doc: Define an differential accessibility evaluation block.
@@ -22,6 +22,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --trailblaze_threshold
+- id: cstr
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -Cstr
+- id: accuracy
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --accuracy
 outputs: []
 cwlVersion: v1.1
 baseCommand:

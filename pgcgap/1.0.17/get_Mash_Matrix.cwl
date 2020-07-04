@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_Mash_Matrix.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_Mash_Matrix.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

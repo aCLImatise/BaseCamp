@@ -2,16 +2,28 @@ version 1.0
 
 task MegahitCoreNoHwAccelLocal {
   input {
-    String cC
-    String rR
-    String oO
-    String? localLocal
+    String? sparsity
+    String? similarity
+    String? c
+    String? r
+    String? o
+    String local
   }
   command <<<
     megahit_core_no_hw_accel local \
-      ~{localLocal} \
-      ~{if defined(cC) then ("-c " +  '"' + cC + '"') else ""} \
-      ~{if defined(rR) then ("-r " +  '"' + rR + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""}
+      ~{local} \
+      ~{if defined(sparsity) then ("--sparsity " +  '"' + sparsity + '"') else ""} \
+      ~{if defined(similarity) then ("--similarity " +  '"' + similarity + '"') else ""} \
+      ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
+      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    sparsity: "(=8)                sparsity of hash mapper"
+    similarity: "(=0.8)            alignment similarity threshold"
+    c: ""
+    r: ""
+    o: ""
+    local: ""
+  }
 }

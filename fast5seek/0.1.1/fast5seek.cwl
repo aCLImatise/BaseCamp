@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: fast5seek.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fast5seek.cwl
 inputs:
-- id: fast5_dir
+- id: fast_five_dir
   doc: Directory of fast5 files you want to query. Program will walk recursively through
     subdirectories.
   type: string[]
@@ -24,9 +24,9 @@ inputs:
   inputBinding:
     prefix: --mapped
 - id: log_level
-  doc: '{0,1,2,3,4,5} Level of logging. 0 is none, 5 is for debugging. Default is
-    4 which will report info, warnings, errors, and critical information.'
-  type: boolean
+  doc: Level of logging. 0 is none, 5 is for debugging. Default is 4 which will report
+    info, warnings, errors, and critical information.
+  type: string
   inputBinding:
     prefix: --log_level
 - id: no_progress_bar

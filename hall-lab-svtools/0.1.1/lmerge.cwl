@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: lmerge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lmerge.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

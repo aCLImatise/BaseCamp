@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mmseqs_resultsbyset.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mmseqs_resultsbyset.cwl
 inputs:
 - id: alpha
   doc: '0.001           Set alpha for combining p-values during aggregation         '
@@ -17,7 +17,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --threads
-- id: v
+- id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'
   type: boolean
   inputBinding:

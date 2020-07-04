@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: genePredToFakePsl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genePredToFakePsl.cwl
 inputs:
+- id: q_sizes
+  doc: Read in query sizes to fixup qSize and qStarts
+  type: string
+  inputBinding:
+    prefix: -qSizes
 - id: db
   doc: ''
   type: string
@@ -21,11 +26,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: q_sizes
-  doc: Read in query sizes to fixup qSize and qStarts
-  type: string
-  inputBinding:
-    prefix: -qSizes
 outputs: []
 cwlVersion: v1.1
 baseCommand:

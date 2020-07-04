@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: whiptail.cwl
+id: ../../../../home/ubuntu/BiocondaCli/whiptail.cwl
 inputs:
 - id: msgbox
   doc: <height> <width>

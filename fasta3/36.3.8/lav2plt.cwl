@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: lav2plt.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lav2plt.pl.cwl
 inputs:
 - id: help
   doc: description
   type: string
   inputBinding:
     prefix: --help
-- id: b
+- id: have_bit_scores
   doc: have bit scores
   type: boolean
   inputBinding:
     prefix: -B
-- id: z
+- id: simulated_database_size
   doc: =#   simulated database size
   type: boolean
   inputBinding:
@@ -21,11 +21,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --dev
-- id: x_a
-  doc: /--yA domain annotation script
-  type: boolean
+- id: x_a_slash_ya
+  doc: annotation script
+  type: string
   inputBinding:
-    prefix: --xA
+    prefix: --xA/--yA
 outputs: []
 cwlVersion: v1.1
 baseCommand:

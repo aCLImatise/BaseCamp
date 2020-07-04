@@ -2,14 +2,19 @@ version 1.0
 
 task SpadesKmerEstimating {
   input {
-    String kmKmEr
-    String datasetDataset
-    String threadsThreads
+    String? km_er
+    String? dataset
+    String? threads
   }
   command <<<
     spades-kmer-estimating \
-      ~{if defined(kmKmEr) then ("--kmer " +  '"' + kmKmEr + '"') else ""} \
-      ~{if defined(datasetDataset) then ("--dataset " +  '"' + datasetDataset + '"') else ""} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""}
+      ~{if defined(km_er) then ("--kmer " +  '"' + km_er + '"') else ""} \
+      ~{if defined(dataset) then ("--dataset " +  '"' + dataset + '"') else ""} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  parameter_meta {
+    km_er: "K-mer length"
+    dataset: "Dataset description (in YAML)"
+    threads: "# of threads to use"
+  }
 }

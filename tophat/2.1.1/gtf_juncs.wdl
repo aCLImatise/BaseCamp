@@ -2,10 +2,13 @@ version 1.0
 
 task GtfJuncs {
   input {
-    String? transcriptsTranscriptsGtf
+    String transcripts_dot_gtf
   }
   command <<<
     gtf_juncs \
-      ~{transcriptsTranscriptsGtf}
+      ~{transcripts_dot_gtf}
   >>>
+  parameter_meta {
+    transcripts_dot_gtf: ""
+  }
 }

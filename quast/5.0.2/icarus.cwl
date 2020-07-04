@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: icarus.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/icarus.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

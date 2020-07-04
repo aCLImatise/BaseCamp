@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: vcfinfosummarize.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfinfosummarize.cwl
 inputs:
-- id: vcf_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: field
   doc: Summarize this field in the INFO column
   type: boolean
@@ -36,6 +31,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --max
+- id: vcf_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

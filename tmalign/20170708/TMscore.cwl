@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: TMscore.cwl
+id: ../../../../home/ubuntu/BiocondaCli/TMscore.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

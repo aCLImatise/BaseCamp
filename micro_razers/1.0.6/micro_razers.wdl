@@ -2,42 +2,61 @@ version 1.0
 
 task MicroRazers {
   input {
-    File outputOutput
-    String recognitionRecognitionRate
-    String seedSeedLength
-    Boolean seedSeedError
-    Boolean forwardForward
-    Boolean reverseReverse
-    Boolean matchMatchN
-    String maxMaxHits
-    Boolean purgePurgeAmbiguous
-    Boolean lowLowMemory
-    Boolean verboseVerbose
-    Boolean vVVerbose
-    Boolean alignmentAlignment
-    String genomeGenomeNaming
-    String readReadNaming
-    String sortSortOrder
-    String positionPositionFormat
+    File? change_output_filename
+    String? recognition_rate
+    String? seed_length
+    Boolean? seed_error
+    Boolean? forward
+    Boolean? reverse
+    Boolean? match_n
+    String? max_hits
+    Boolean? purge_ambiguous
+    Boolean? low_memory
+    Boolean? verbose
+    Boolean? v_verbose
+    Boolean? alignment
+    String? genome_naming
+    String? read_naming
+    String? sort_order
+    String? position_format
   }
   command <<<
     micro_razers \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(recognitionRecognitionRate) then ("--recognition-rate " +  '"' + recognitionRecognitionRate + '"') else ""} \
-      ~{if defined(seedSeedLength) then ("--seed-length " +  '"' + seedSeedLength + '"') else ""} \
-      ~{true="--seed-error" false="" seedSeedError} \
-      ~{true="--forward" false="" forwardForward} \
-      ~{true="--reverse" false="" reverseReverse} \
-      ~{true="--match-N" false="" matchMatchN} \
-      ~{if defined(maxMaxHits) then ("--max-hits " +  '"' + maxMaxHits + '"') else ""} \
-      ~{true="--purge-ambiguous" false="" purgePurgeAmbiguous} \
-      ~{true="--low-memory" false="" lowLowMemory} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{true="--vverbose" false="" vVVerbose} \
-      ~{true="--alignment" false="" alignmentAlignment} \
-      ~{if defined(genomeGenomeNaming) then ("--genome-naming " +  '"' + genomeGenomeNaming + '"') else ""} \
-      ~{if defined(readReadNaming) then ("--read-naming " +  '"' + readReadNaming + '"') else ""} \
-      ~{if defined(sortSortOrder) then ("--sort-order " +  '"' + sortSortOrder + '"') else ""} \
-      ~{if defined(positionPositionFormat) then ("--position-format " +  '"' + positionPositionFormat + '"') else ""}
+      ~{if defined(change_output_filename) then ("--output " +  '"' + change_output_filename + '"') else ""} \
+      ~{if defined(recognition_rate) then ("--recognition-rate " +  '"' + recognition_rate + '"') else ""} \
+      ~{if defined(seed_length) then ("--seed-length " +  '"' + seed_length + '"') else ""} \
+      ~{true="--seed-error" false="" seed_error} \
+      ~{true="--forward" false="" forward} \
+      ~{true="--reverse" false="" reverse} \
+      ~{true="--match-N" false="" match_n} \
+      ~{if defined(max_hits) then ("--max-hits " +  '"' + max_hits + '"') else ""} \
+      ~{true="--purge-ambiguous" false="" purge_ambiguous} \
+      ~{true="--low-memory" false="" low_memory} \
+      ~{true="--verbose" false="" verbose} \
+      ~{true="--vverbose" false="" v_verbose} \
+      ~{true="--alignment" false="" alignment} \
+      ~{if defined(genome_naming) then ("--genome-naming " +  '"' + genome_naming + '"') else ""} \
+      ~{if defined(read_naming) then ("--read-naming " +  '"' + read_naming + '"') else ""} \
+      ~{if defined(sort_order) then ("--sort-order " +  '"' + sort_order + '"') else ""} \
+      ~{if defined(position_format) then ("--position-format " +  '"' + position_format + '"') else ""}
   >>>
+  parameter_meta {
+    change_output_filename: "Change output filename. (use - to dump to stdout in razers format) Default: <READS FILE>.razers. Valid filetypes are: .razers and .sam."
+    recognition_rate: "set the percent recognition rate In range [80..100]. Default: 100."
+    seed_length: "seed length In range [10..inf]. Default: 16."
+    seed_error: "allow for one error in the seed"
+    forward: "map reads only to forward strands."
+    reverse: "map reads only to reverse strands."
+    match_n: "'N' matches with all other characters"
+    max_hits: "output only NUM of the best hits In range [1..inf]. Default: 100."
+    purge_ambiguous: "purge reads with more than max-hits best matches"
+    low_memory: "decrease memory usage at the expense of runtime"
+    verbose: "verbose mode"
+    v_verbose: "very verbose mode"
+    alignment: "dump the alignment for each match"
+    genome_naming: "Select how genomes are named. 0 = use Fasta id, 1 = enumerate beginning with 1. In range [0..1]. Default: 0."
+    read_naming: "Select how reads are named. 0 = use Fasta id, 1 = enumerate beginning with 1. In range [0..1]. Default: 0."
+    sort_order: "Select how matches are sorted. 0 = read number, 1 = genome position. In range [0..1]. Default: 0."
+    position_format: "Select begin/end position numbering (see Coordinate section below). 0 = gap space, 1 = position space. In range [0..1]. Default: 0."
+  }
 }

@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: get_ancestor_terms.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_ancestor_terms.pl.cwl
 inputs:
-- id: f
+- id: obo_input_file
   doc: OBO input file
   type: boolean
   inputBinding:
     prefix: -f
-- id: t
+- id: term_id
   doc: term ID
   type: boolean
   inputBinding:

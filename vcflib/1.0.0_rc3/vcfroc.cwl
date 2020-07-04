@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: vcfroc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfroc.cwl
 inputs:
-- id: vcf_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: truth_vcf
   doc: use this VCF as ground truth for ROC generation
   type: File
@@ -26,6 +21,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --reference
+- id: vcf_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

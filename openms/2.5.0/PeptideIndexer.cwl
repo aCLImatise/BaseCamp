@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: PeptideIndexer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PeptideIndexer.cwl
 inputs:
 - id: in
   doc: "*                      Input idXML file containing the identifications. (valid\
@@ -22,8 +22,8 @@ inputs:
 - id: decoy_string
   doc: String that was appended (or prefixed - see 'decoy_string_position' flag below)
     to the accessions in the protein database to indicate decoy proteins. If empty
-    (default), it's  determined automatically (checking for common terms, both as
-    prefix and suffix).
+    (default), it's determined automatically (checking for common terms, both as prefix
+    and suffix).
   type: string
   inputBinding:
     prefix: -decoy_string
@@ -73,38 +73,17 @@ inputs:
 - id: mismatches_max
   doc: "Maximal number of mismatched (mm) amino acids allowed when matching to a protein\
     \ database. The required runtime is exponential in the number of mm's; apply with\
-    \ care. MM's  are allowed in addition to AAA's. (default: '0' min: '0' max: '10')"
+    \ care. MM's are allowed in addition to AAA's. (default: '0' min: '0' max: '10')"
   type: string
   inputBinding:
     prefix: -mismatches_max
 - id: il_equivalent
   doc: Treat the isobaric amino acids isoleucine ('I') and leucine ('L') as equivalent
     (indistinguishable). Also occurences of 'J' will be treated as 'I' thus avoiding
-    ambiguous matc hing.
+    ambiguous matching.
   type: boolean
   inputBinding:
     prefix: -IL_equivalent
-- id: enzyme
-  doc: ":name <choice>            Enzyme which determines valid cleavage sites - e.g.\
-    \ trypsin cleaves after lysine (K) or arginine (R), but not before proline (P).\
-    \ (default: 'Trypsin' valid: 'Arg-C', 'Arg-C/P' , 'Asp-N', 'Asp-N/B', 'Asp-N_ambic',\
-    \ 'staphylococcal protease/D', 'proline-endopeptidase/HKR', 'Glu-C+P', 'PepsinA\
-    \ + P', 'cyanogen-bromide', 'Clostripain/P', 'elastase-trypsin -chymotrypsin',\
-    \ 'no cleavage', 'unspecific cleavage', 'Lys-C/P', 'PepsinA', 'TrypChymo', 'Trypsin/P',\
-    \ 'V8-DE', 'V8-E', 'leukocyte elastase', 'proline endopeptidase', 'glutamyl endopeptidase',\
-    \ 'Alpha-lytic protease', '2-iodobenzoate', 'iodosobenzoate', 'Chymotrypsin',\
-    \ 'Chymotrypsin/P', 'CNBr', 'Formic_acid', 'Lys-C', 'Lys-N', 'Trypsin')"
-  type: boolean
-  inputBinding:
-    prefix: -enzyme
-- id: enzyme
-  doc: ":specificity <choice>     Specificity of the enzyme. 'full': both internal\
-    \ cleavage sites must match. 'semi': one of two internal cleavage sites must match.\
-    \ 'none': allow all peptide hits no matter their context. Therefore, the enzyme\
-    \ chosen does not play a role here (default: 'full' valid: 'full', 'semi', 'none')"
-  type: boolean
-  inputBinding:
-    prefix: -enzyme
 - id: ini
   doc: Use the given TOPP INI file
   type: File

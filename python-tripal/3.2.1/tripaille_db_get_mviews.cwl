@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tripaille_db_get_mviews.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tripaille_db_get_mviews.cwl
 inputs:
 - id: name
   doc: filter on mview name

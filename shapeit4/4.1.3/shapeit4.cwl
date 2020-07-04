@@ -1,38 +1,38 @@
 class: CommandLineTool
-id: shapeit4.cwl
+id: ../../../../home/ubuntu/BiocondaCli/shapeit4.cwl
 inputs:
 - id: seed
   doc: (=15052011)                Seed of the random number generator
   type: string
   inputBinding:
     prefix: --seed
-- id: t
+- id: arg_number_used
   doc: '[ --thread ] arg (=1)              Number of thread used'
   type: boolean
   inputBinding:
     prefix: -T
-- id: i
+- id: arg_genotypes_phased
   doc: '[ --input ] arg                    Genotypes to be phased in VCF/BCF  format'
   type: boolean
   inputBinding:
     prefix: -I
-- id: h
+- id: arg_reference_panel
   doc: '[ --reference ] arg                Reference panel of haplotypes in  VCF/BCF
     format'
   type: boolean
   inputBinding:
     prefix: -H
-- id: s
+- id: arg_scaffold_haplotypes
   doc: '[ --scaffold ] arg                 Scaffold of haplotypes in VCF/BCF  format'
   type: boolean
   inputBinding:
     prefix: -S
-- id: m
+- id: arg_genetic_map
   doc: '[ --map ] arg                      Genetic map'
   type: boolean
   inputBinding:
     prefix: -M
-- id: r
+- id: arg_target_region
   doc: '[ --region ] arg                   Target region'
   type: boolean
   inputBinding:
@@ -78,34 +78,34 @@ inputs:
   type: string
   inputBinding:
     prefix: --pbwt-mdr
-- id: ibd2_length
+- id: ibd_two_length
   doc: (=3)                Minimal size of IBD2 tracks for  building copying constraints
   type: string
   inputBinding:
     prefix: --ibd2-length
-- id: ibd2_maf
+- id: ibd_two_maf
   doc: (=0.01)                Minimal Minor Allele Frequency for  variants to be considered
     in the IBD2  mapping
   type: string
   inputBinding:
     prefix: --ibd2-maf
-- id: ibd2_mdr
+- id: ibd_two_mdr
   doc: (=0.5)                 Maximal Missing data rate for variants  to be considered
     in the IBD2 mapping
   type: string
   inputBinding:
     prefix: --ibd2-mdr
-- id: ibd2_count
+- id: ibd_two_count
   doc: (=150)               Minimal number of filtered variants in  IBD2 tracks
   type: string
   inputBinding:
     prefix: --ibd2-count
-- id: ibd2_output
+- id: ibd_two_output
   doc: Output all IBD2 constraints in the  specified file (useful for debugging!)
   type: string
   inputBinding:
     prefix: --ibd2-output
-- id: w
+- id: arg__minimal
   doc: '[ --window ] arg (=2.5)            Minimal size of the phasing window in  cM'
   type: boolean
   inputBinding:
@@ -115,7 +115,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --effective-size
-- id: o
+- id: arg_phased_haplotypes
   doc: '[ --output ] arg                   Phased haplotypes in VCF/BCF format'
   type: boolean
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: padding_fastq.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/padding_fastq.py.cwl
 inputs:
 - id: input
   doc: The input file (in FASTQ format) containing the short reads to be processed.

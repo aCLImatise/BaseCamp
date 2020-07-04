@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: moca.cwl
+id: ../../../../home/ubuntu/BiocondaCli/moca.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

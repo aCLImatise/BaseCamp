@@ -2,10 +2,16 @@ version 1.0
 
 task BedtoolsSummary {
   input {
-    String? chr18Chr18Gl000207Random
+    String? i
+    String? g
   }
   command <<<
     bedtools summary \
-      ~{chr18Chr18Gl000207Random}
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(g) then ("-g " +  '"' + g + '"') else ""}
   >>>
+  parameter_meta {
+    i: ""
+    g: ""
+  }
 }

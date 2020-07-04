@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ratewig.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ratewig.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

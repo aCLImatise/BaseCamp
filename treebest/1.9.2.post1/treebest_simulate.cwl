@@ -1,27 +1,27 @@
 class: CommandLineTool
-id: treebest_simulate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/treebest_simulate.cwl
 inputs:
-- id: d
+- id: duplication_probability
   doc: duplication probability [0.05]
   type: string
   inputBinding:
     prefix: -d
-- id: l
+- id: loss_probability
   doc: loss probability [0.01]
   type: string
   inputBinding:
     prefix: -l
-- id: p
+- id: loss_probability_duplication
   doc: loss probability after duplication [0.25]
   type: string
   inputBinding:
     prefix: -p
-- id: m
+- id: max_height
   doc: max height [0.25]
   type: string
   inputBinding:
     prefix: -m
-- id: n
+- id: show_internal_name
   doc: not show internal name
   type: boolean
   inputBinding:

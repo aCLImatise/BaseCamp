@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: bifold_smp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bifold_smp.cwl
 inputs:
 - id: bifold
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: seqfile1
+- id: seq_file_one
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: seqfile2
+- id: seq_file_two
   doc: ''
   type: string
   inputBinding:

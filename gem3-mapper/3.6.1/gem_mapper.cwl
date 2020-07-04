@@ -1,19 +1,19 @@
 class: CommandLineTool
-id: gem_mapper.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gem_mapper.cwl
 inputs:
 - id: input
   doc: (FASTA/FASTQ, default=stdin)
   type: File
   inputBinding:
     prefix: --input
-- id: i1
-  doc: '|-1 <file> (paired-end, end-1)'
-  type: boolean
+- id: i_one
+  doc: (paired-end, end-1)
+  type: File
   inputBinding:
     prefix: --i1
-- id: i2
-  doc: '|-2 <file> (paired-end, end-2)'
-  type: boolean
+- id: i_two
+  doc: (paired-end, end-2)
+  type: File
   inputBinding:
     prefix: --i2
 - id: gzip_input
@@ -52,18 +52,18 @@ inputs:
   inputBinding:
     prefix: --mapping-mode
 - id: alignment_max_error
-  doc: <number|percentage> (default=0.12, 12%)
-  type: boolean
+  doc: (default=0.12, 12%)
+  type: string
   inputBinding:
     prefix: --alignment-max-error
 - id: alignment_global_min_identity
-  doc: <number|percentage> (default=80%)
-  type: boolean
+  doc: (default=80%)
+  type: string
   inputBinding:
     prefix: --alignment-global-min-identity
 - id: alignment_global_min_score
-  doc: <number|percentage> (default=0.20)
-  type: boolean
+  doc: (default=0.20)
+  type: string
   inputBinding:
     prefix: --alignment-global-min-score
 - id: alignment_local
@@ -72,13 +72,13 @@ inputs:
   inputBinding:
     prefix: --alignment-local
 - id: alignment_local_min_identity
-  doc: <number|percentage> (default=40)
-  type: boolean
+  doc: (default=40)
+  type: string
   inputBinding:
     prefix: --alignment-local-min-identity
 - id: alignment_local_min_score
-  doc: <number|percentage> (default=20)
-  type: boolean
+  doc: (default=20)
+  type: string
   inputBinding:
     prefix: --alignment-local-min-score
 - id: paired_end_alignment

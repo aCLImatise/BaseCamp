@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: genclust.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genclust.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

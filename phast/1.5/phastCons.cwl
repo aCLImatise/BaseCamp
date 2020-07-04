@@ -1,14 +1,15 @@
 class: CommandLineTool
-id: phastCons.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phastCons.cwl
 inputs:
 - id: score
-  doc: 0.4 mydata.ss noncons.mod > scores.wig
+  doc: (Optionally use with --viterbi) Assign a log-odds score to each prediction.
   type: boolean
   inputBinding:
     prefix: --score
 - id: no_post_probs
-  doc: noncons.mod
-  type: string
+  doc: Suppress output of posterior probabilities.  Useful if only discrete elements
+    or likelihood is of interest.
+  type: boolean
   inputBinding:
     prefix: --no-post-probs
 - id: estimate_trees
@@ -16,23 +17,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --estimate-trees
-- id: score
-  doc: (Optionally use with --viterbi) Assign a log-odds score to each prediction.
-  type: boolean
-  inputBinding:
-    prefix: --score
 - id: lnl
   doc: Compute total log likelihood using the forward algorithm and write to specified
     file.
   type: string
   inputBinding:
     prefix: --lnl
-- id: no_post_probs
-  doc: Suppress output of posterior probabilities.  Useful if only discrete elements
-    or likelihood is of interest.
-  type: boolean
-  inputBinding:
-    prefix: --no-post-probs
 - id: log
   doc: (Optionally use when estimating free parameters) Write log of optimization
     procedure to specified file.
@@ -131,6 +121,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ignore-missing
+- id: models_dot
+  doc: Output the conservation scores but not the conserved
+  type: string
+  inputBinding:
+    position: 0
+- id: elements_dot
+  doc: phastCons mydata.ss cons.mod,noncons.mod > scores.wig
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

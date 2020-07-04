@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: jpredapi.cwl
+id: ../../../../home/ubuntu/BiocondaCli/jpredapi.cwl
 inputs:
 - id: silent
   doc: Do not print messages.
@@ -37,9 +37,8 @@ inputs:
   inputBinding:
     prefix: --seq
 - id: email
-  doc: =<name@domain.com>  E-mail address where job report will be sent (optional
-    for all but batch submissions).
-  type: boolean
+  doc: E-mail address where job report will be sent (optional for all but batch submissions).
+  type: string
   inputBinding:
     prefix: --email
 - id: name
@@ -62,7 +61,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --rest
-- id: jpred4
+- id: jp_red_four
   doc: 'Address of Jpred4 server [default: http://www.compbio.dundee.ac.uk/jpred4].'
   type: string
   inputBinding:
@@ -77,6 +76,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --attempts
+- id: submit
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

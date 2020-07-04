@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: obo_intersection.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/obo_intersection.pl.cwl
 inputs:
 - id: l
   doc: OBO input file 1

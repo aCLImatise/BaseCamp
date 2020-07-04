@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: solexa18to15.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/solexa18to15.py.cwl
 inputs:
 - id: input
   doc: The input file (in the newer Solexa FASTQ format, i.e. version 1.8 or newer)

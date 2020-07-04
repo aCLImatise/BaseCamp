@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: remove.bad.hap.loci.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/remove.bad.hap.loci.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

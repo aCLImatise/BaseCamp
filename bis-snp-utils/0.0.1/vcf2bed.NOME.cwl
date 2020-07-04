@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: vcf2bed.NOME.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf2bed.NOME.pl.cwl
 inputs:
 - id: perl
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: vcf2bed6plus6pl
+- id: vcftwobedsixplussixdotpl
   doc: ''
   type: string
   inputBinding:

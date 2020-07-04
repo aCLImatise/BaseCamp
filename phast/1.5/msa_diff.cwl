@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: msa_diff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/msa_diff.cwl
 inputs:
 - id: alphabet
   doc: "Use given string for alphabet.  Can be used to accommodate nonstandard characters\
@@ -18,6 +18,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ignore-gap-type
+- id: alignment_one_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: alignment_two_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

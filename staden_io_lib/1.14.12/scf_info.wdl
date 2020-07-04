@@ -2,10 +2,13 @@ version 1.0
 
 task ScfInfo {
   input {
-    String? scfScfFilename
+    String scf_filename
   }
   command <<<
     scf_info \
-      ~{scfScfFilename}
+      ~{scf_filename}
   >>>
+  parameter_meta {
+    scf_filename: ""
+  }
 }

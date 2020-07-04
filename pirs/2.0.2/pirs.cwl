@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pirs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pirs.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

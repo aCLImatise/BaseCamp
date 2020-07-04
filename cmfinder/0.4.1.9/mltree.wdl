@@ -2,12 +2,16 @@ version 1.0
 
 task Mltree {
   input {
-    String? rateRateFile
-    File? fileFile
+    String rate_file
+    File? file
   }
   command <<<
     mltree \
-      ~{rateRateFile} \
-      ~{fileFile}
+      ~{rate_file} \
+      ~{file}
   >>>
+  parameter_meta {
+    rate_file: ""
+    file: ""
+  }
 }

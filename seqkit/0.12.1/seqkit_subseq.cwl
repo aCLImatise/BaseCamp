@@ -1,11 +1,11 @@
 class: CommandLineTool
-id: seqkit_subseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqkit_subseq.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
+- id: c_g_t
+  doc: :-1    A C G T N a c g t n
+  type: boolean
   inputBinding:
-    position: 0
+    prefix: '-12'
 - id: bed
   doc: by tab-delimited BED file
   type: string
@@ -103,6 +103,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

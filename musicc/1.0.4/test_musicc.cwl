@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: test_musicc.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/test_musicc.py.cwl
 inputs:
-- id: tests
-  doc: a list of any number of test modules, classes and test methods.
-  type: string
-  inputBinding:
-    position: 0
 - id: verbose
   doc: Verbose output
   type: boolean
@@ -36,6 +31,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --buffer
+- id: tests
+  doc: a list of any number of test modules, classes and test methods.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

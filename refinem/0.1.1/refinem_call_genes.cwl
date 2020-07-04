@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: refinem_call_genes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/refinem_call_genes.cwl
 inputs:
-- id: genome_nt_dir
-  doc: directory containing nucleotide scaffolds for each genome
-  type: string
-  inputBinding:
-    position: 0
-- id: output_dir
-  doc: output directory
-  type: string
-  inputBinding:
-    position: 1
 - id: unbinned_file
   doc: call genes on unbinned scaffolds
   type: string
@@ -31,6 +21,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --silent
+- id: genome_nt_dir
+  doc: directory containing nucleotide scaffolds for each genome
+  type: string
+  inputBinding:
+    position: 0
+- id: output_dir
+  doc: output directory
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

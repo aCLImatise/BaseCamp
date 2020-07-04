@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: bwa_shm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bwa_shm.cwl
 inputs:
-- id: d
+- id: destroy_indices_shared
   doc: destroy all indices in shared memory
   type: boolean
   inputBinding:
     prefix: -d
-- id: l
+- id: list_names_indices
   doc: list names of indices in shared memory
   type: boolean
   inputBinding:
     prefix: -l
-- id: f
+- id: temporary_file_reduce
   doc: temporary file to reduce peak memory
   type: File
   inputBinding:

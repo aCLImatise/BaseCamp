@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cannoli_submit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cannoli_submit.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

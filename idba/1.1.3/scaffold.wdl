@@ -2,20 +2,34 @@ version 1.0
 
 task Scaffold {
   input {
-    String outOut
-    String numNumThreads
-    String seedSeedKmEr
-    String minMinContig
-    String similarSimilar
-    String minMinPairs
+    String? out
+    String? num_threads
+    String? seed_km_er
+    String? min_contig
+    String? similar
+    String? min_pairs
+    String reads_lib_one_dot_fa
+    String? reads_lib_two_dot_fa
   }
   command <<<
     scaffold \
-      ~{if defined(outOut) then ("--out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(numNumThreads) then ("--num_threads " +  '"' + numNumThreads + '"') else ""} \
-      ~{if defined(seedSeedKmEr) then ("--seed_kmer " +  '"' + seedSeedKmEr + '"') else ""} \
-      ~{if defined(minMinContig) then ("--min_contig " +  '"' + minMinContig + '"') else ""} \
-      ~{if defined(similarSimilar) then ("--similar " +  '"' + similarSimilar + '"') else ""} \
-      ~{if defined(minMinPairs) then ("--min_pairs " +  '"' + minMinPairs + '"') else ""}
+      ~{reads_lib_one_dot_fa} \
+      ~{reads_lib_two_dot_fa} \
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
+      ~{if defined(num_threads) then ("--num_threads " +  '"' + num_threads + '"') else ""} \
+      ~{if defined(seed_km_er) then ("--seed_kmer " +  '"' + seed_km_er + '"') else ""} \
+      ~{if defined(min_contig) then ("--min_contig " +  '"' + min_contig + '"') else ""} \
+      ~{if defined(similar) then ("--similar " +  '"' + similar + '"') else ""} \
+      ~{if defined(min_pairs) then ("--min_pairs " +  '"' + min_pairs + '"') else ""}
   >>>
+  parameter_meta {
+    out: "(=out)                   output directory"
+    num_threads: "(=0)             number of threads"
+    seed_km_er: "(=30)              seed kmer size for alignment"
+    min_contig: "(=200)            min size of contig"
+    similar: "(=0.95)              similarity for alignment"
+    min_pairs: "(=3)               minimum number of pairs"
+    reads_lib_one_dot_fa: ""
+    reads_lib_two_dot_fa: ""
+  }
 }

@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: RNAblueprint.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAblueprint.cwl
 inputs:
-- id: v
+- id: _be_verbose
   doc: '[ --verbose ]             be verbose'
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _verbose_debugging
   doc: '[ --debug ]               be verbose for debugging'
   type: boolean
   inputBinding:
     prefix: -d
-- id: i
+- id: _optional
   doc: '[ --in ] arg              input file which contains the structures,  sequence
     constraints and the start sequence  [string] structures: secondary structures
     in dot-bracket  notation. one structure per input  line sequence constraints:
@@ -32,7 +32,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -g
-- id: m
+- id: sample_stochastic_sampling
   doc: '[ --mode ] arg (=sample)  mode for sequence generation [string]: sample: stochastic
     sampling of all positions  (default) sample-clocal: Only sample one connected  component
     at a time starting from an initial sequence sample-plocal: Sample only single

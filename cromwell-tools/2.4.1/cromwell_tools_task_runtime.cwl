@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cromwell_tools_task_runtime.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cromwell_tools_task_runtime.cwl
 inputs:
 - id: url
   doc: The URL to the Cromwell server. e.g. "https://cromwell.server.org/"

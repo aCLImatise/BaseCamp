@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: peakaboo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/peakaboo.cwl
 inputs:
-- id: f
+- id: arg_specify_text
   doc: '[ --filelist ] arg       : specify text file containing filenames'
   type: boolean
   inputBinding:
     prefix: -f
-- id: o
+- id: arg_set_directory
   doc: '[ --outdir ] arg (=.)    : set output directory'
   type: boolean
   inputBinding:
     prefix: -o
-- id: e
+- id: arg_set_extension
   doc: '[ --ext ] arg (=.peaks)  : set extension for output files'
   type: boolean
   inputBinding:
@@ -36,6 +36,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --mzHigh
+- id: files
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

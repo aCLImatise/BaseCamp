@@ -2,20 +2,31 @@ version 1.0
 
 task ClinvarTsvParseXml {
   input {
-    String outputOutputMulti
-    String clinClinVarXml
-    String genomeGenomeBuild
-    String outputOutputSingle
-    String outputOutputMulti
-    Int maxMaxRows
+    String? output_multi
+    String? clin_var_xml
+    String? genome_build
+    String? output_single
+    Int? max_rows
+    String clin_var_tsv
+    String parse_xml
   }
   command <<<
     clinvar_tsv parse_xml \
-      ~{if defined(outputOutputMulti) then ("--output-multi " +  '"' + outputOutputMulti + '"') else ""} \
-      ~{if defined(clinClinVarXml) then ("--clinvar-xml " +  '"' + clinClinVarXml + '"') else ""} \
-      ~{if defined(genomeGenomeBuild) then ("--genome-build " +  '"' + genomeGenomeBuild + '"') else ""} \
-      ~{if defined(outputOutputSingle) then ("--output-single " +  '"' + outputOutputSingle + '"') else ""} \
-      ~{if defined(outputOutputMulti) then ("--output-multi " +  '"' + outputOutputMulti + '"') else ""} \
-      ~{if defined(maxMaxRows) then ("--max-rows " +  '"' + maxMaxRows + '"') else ""}
+      ~{clin_var_tsv} \
+      ~{parse_xml} \
+      ~{if defined(output_multi) then ("--output-multi " +  '"' + output_multi + '"') else ""} \
+      ~{if defined(clin_var_xml) then ("--clinvar-xml " +  '"' + clin_var_xml + '"') else ""} \
+      ~{if defined(genome_build) then ("--genome-build " +  '"' + genome_build + '"') else ""} \
+      ~{if defined(output_single) then ("--output-single " +  '"' + output_single + '"') else ""} \
+      ~{if defined(max_rows) then ("--max-rows " +  '"' + max_rows + '"') else ""}
   >>>
+  parameter_meta {
+    output_multi: "[--max-rows MAX_ROWS]"
+    clin_var_xml: "Path to Clinvar XML file."
+    genome_build: "The genome build this variant is for."
+    output_single: "Output path for single TSV file."
+    max_rows: "Maximal number of rows to write out; for debugging."
+    clin_var_tsv: ""
+    parse_xml: ""
+  }
 }

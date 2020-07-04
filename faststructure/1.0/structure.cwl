@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: structure.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/structure.py.cwl
 inputs:
-- id: k
+- id: number_of_populations
   doc: (number of populations)
   type: long
   inputBinding:
@@ -47,6 +47,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --seed
+- id: python
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

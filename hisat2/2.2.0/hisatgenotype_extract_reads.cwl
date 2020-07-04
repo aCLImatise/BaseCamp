@@ -1,6 +1,46 @@
 class: CommandLineTool
-id: hisatgenotype_extract_reads.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hisatgenotype_extract_reads.py.cwl
 inputs:
+- id: base_fname
+  doc: base filename for genotype genome
+  type: string
+  inputBinding:
+    prefix: --base-fname
+- id: read_dir
+  doc: Directory name for read files
+  type: string
+  inputBinding:
+    prefix: --read-dir
+- id: out_dir
+  doc: Directory name for extracted read files
+  type: string
+  inputBinding:
+    prefix: --out-dir
+- id: suffix
+  doc: 'Read file suffix (Default: fq.gz)'
+  type: string
+  inputBinding:
+    prefix: --suffix
+- id: fast_a
+  doc: FASTA format
+  type: boolean
+  inputBinding:
+    prefix: --fasta
+- id: filename_singleend_reads
+  doc: filename for single-end reads
+  type: string
+  inputBinding:
+    prefix: -U
+- id: one
+  doc: filename for paired-end reads
+  type: string
+  inputBinding:
+    prefix: '-1'
+- id: two
+  doc: filename for paired-end reads
+  type: string
+  inputBinding:
+    prefix: '-2'
 - id: database_list
   doc: 'A comma-separated list of database (default: empty)'
   type: string

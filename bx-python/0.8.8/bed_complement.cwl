@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bed_complement.py_chrom_length_file.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bed_complement.py.cwl
 inputs:
 - id: bed_file
   doc: ''
@@ -15,4 +15,3 @@ outputs: []
 cwlVersion: v1.1
 baseCommand:
 - bed_complement.py
-- chrom_length_file

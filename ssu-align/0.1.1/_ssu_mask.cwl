@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _ssu_mask.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_ssu_mask.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

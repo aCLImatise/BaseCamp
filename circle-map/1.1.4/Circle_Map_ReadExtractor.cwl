@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: Circle_Map_ReadExtractor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Circle_Map_ReadExtractor.cwl
 inputs:
-- id: i
+- id: input_query_name
   doc: 'Input: query name sorted bam file'
   type: boolean
   inputBinding:
     prefix: -i
-- id: o
+- id: _output_reads
   doc: ', --output         Ouput: Reads indicating circular DNA structural variants'
   type: boolean
   inputBinding:
@@ -16,7 +16,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -dir
-- id: q
+- id: _quality_bwamem
   doc: ', --quality        bwa-mem mapping quality cutoff. Default value 10'
   type: boolean
   inputBinding:
@@ -36,7 +36,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --nohardclipped
-- id: v
+- id: _verbose_level
   doc: ', --verbose        Verbose level, 1=error,2=warning, 3=message. Default=3'
   type: boolean
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pyatac_nucleotide.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyatac_nucleotide.cwl
 inputs:
 - id: fast_a
   doc: Accepts fasta file

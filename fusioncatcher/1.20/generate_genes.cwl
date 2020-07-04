@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: generate_genes.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/generate_genes.py.cwl
 inputs:
 - id: input_genes
   doc: Input file with genes positions.

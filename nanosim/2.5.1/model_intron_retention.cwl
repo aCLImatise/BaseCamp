@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: model_intron_retention.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/model_intron_retention.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

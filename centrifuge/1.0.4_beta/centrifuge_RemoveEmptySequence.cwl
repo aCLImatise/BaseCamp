@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: centrifuge_RemoveEmptySequence.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/centrifuge_RemoveEmptySequence.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

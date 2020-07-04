@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: crux_localize_modification.cwl
+id: ../../../../home/ubuntu/BiocondaCli/crux_localize_modification.cwl
 inputs:
 - id: input_psm_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: krakenhll_mpa_report.cwl
+id: ../../../../home/ubuntu/BiocondaCli/krakenhll_mpa_report.cwl
 inputs:
 - id: db
   doc: 'Name of Kraken database (default: none)'

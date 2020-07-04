@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: xtandem.cwl
+id: ../../../../home/ubuntu/BiocondaCli/xtandem.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

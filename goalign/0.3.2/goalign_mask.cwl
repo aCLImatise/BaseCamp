@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: goalign_mask.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_mask.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: length
   doc: Length of the sub alignment (default 10)
   type: long
@@ -81,6 +76,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

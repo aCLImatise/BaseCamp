@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: stacks_dist_extract.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stacks_dist_extract.cwl
 inputs:
 - id: dist_file
   doc: ''

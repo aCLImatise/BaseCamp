@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fcontrast.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fcontrast.cwl
 inputs:
 - id: vary_within
   doc: boolean    [N] Within-population variation in data

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: collapse_reads_md.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/collapse_reads_md.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

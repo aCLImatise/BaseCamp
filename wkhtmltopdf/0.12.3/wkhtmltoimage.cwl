@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: wkhtmltoimage.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wkhtmltoimage.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

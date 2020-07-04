@@ -2,20 +2,31 @@ version 1.0
 
 task VawkVcf {
   input {
-    String varVar
-    String colCol
-    Boolean headerHeader
-    Boolean debugDebug
-    String? cmdCmd
-    String? vcfVcf
+    String? v
+    String? c
+    Boolean? header
+    Boolean? debug
+    String va_wk
+    String cmd
+    String? vcf
   }
   command <<<
     vawk vcf \
-      ~{cmdCmd} \
-      ~{if defined(varVar) then ("--var " +  '"' + varVar + '"') else ""} \
-      ~{if defined(colCol) then ("--col " +  '"' + colCol + '"') else ""} \
-      ~{true="--header" false="" headerHeader} \
-      ~{true="--debug" false="" debugDebug} \
-      ~{vcfVcf}
+      ~{va_wk} \
+      ~{cmd} \
+      ~{vcf} \
+      ~{if defined(v) then ("-v " +  '"' + v + '"') else ""} \
+      ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
+      ~{true="--header" false="" header} \
+      ~{true="--debug" false="" debug}
   >>>
+  parameter_meta {
+    v: ""
+    c: ""
+    header: ""
+    debug: ""
+    va_wk: ""
+    cmd: ""
+    vcf: ""
+  }
 }

@@ -2,14 +2,19 @@ version 1.0
 
 task GdtoolsNOTEVIDENCE {
   input {
-    String outputOutput
-    Boolean idId
-    Boolean verboseVerbose
+    String? output_gd_file
+    Boolean? id
+    Boolean? verbose
   }
   command <<<
     gdtools NOT-EVIDENCE \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{true="--id" false="" idId} \
-      ~{true="--verbose" false="" verboseVerbose}
+      ~{if defined(output_gd_file) then ("--output " +  '"' + output_gd_file + '"') else ""} \
+      ~{true="--id" false="" id} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    output_gd_file: "output GD file (DEFAULT=output.gd)"
+    id: "Reorder IDs (Flag)"
+    verbose: "Verbose Mode (Flag)"
+  }
 }

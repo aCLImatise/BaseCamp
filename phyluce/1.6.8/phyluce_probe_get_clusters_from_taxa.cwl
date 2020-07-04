@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_probe_get_clusters_from_taxa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_probe_get_clusters_from_taxa.cwl
 inputs:
 - id: clusters
   doc: The directory containing cluster files

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: goalign_trim_name.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_trim_name.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: auto
   doc: Automatically generates sequence identifiers (priority over --nb-cchar)
   type: boolean

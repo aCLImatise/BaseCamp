@@ -2,26 +2,34 @@ version 1.0
 
 task FeatureLinkerUnlabeledKD {
   input {
-    File inIn
-    File outOut
-    File designDesign
-    Boolean keepKeepSubelements
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
-    Boolean algorithmAlgorithm
+    File? in
+    File? out
+    File? design
+    Boolean? keep_subelements
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     FeatureLinkerUnlabeledKD \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(designDesign) then ("-design " +  '"' + designDesign + '"') else ""} \
-      ~{true="-keep_subelements" false="" keepKeepSubelements} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp} \
-      ~{true="- algorithm" false="" algorithmAlgorithm}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(design) then ("-design " +  '"' + design + '"') else ""} \
+      ~{true="-keep_subelements" false="" keep_subelements} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*        Input files separated by blanks (valid formats: 'featureXML', 'consensusXML')"
+    out: "*        Output file (valid formats: 'consensusXML')"
+    design: "Input file containing the experimental design (valid formats: 'tsv')"
+    keep_subelements: "For consensusXML input only: If set, the sub-features of the inputs are transferred to the output."
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

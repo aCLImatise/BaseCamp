@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: TEsorter_test.cwl
+id: ../../../../home/ubuntu/BiocondaCli/TEsorter_test.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

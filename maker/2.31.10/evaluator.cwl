@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: evaluator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/evaluator.cwl
 inputs:
-- id: mpi_evaluator
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: eval_opts
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: eval_b_opts
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: eval_exe
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
 - id: genome_gff
   doc: Specify the maker gff file to evaluate.
   type: File
@@ -73,6 +53,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -CTL
+- id: mpi_evaluator
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: eval_opts
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: eval_b_opts
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: eval_exe
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

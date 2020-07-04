@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: EnsembleEnergy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/EnsembleEnergy.cwl
 inputs:
 - id: input_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Aquila_stLFR_step2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Aquila_stLFR_step2.cwl
 inputs:
 - id: chr_start
   doc: chromosome start from, default = 1
@@ -37,6 +37,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --block_len_use
+- id: use
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

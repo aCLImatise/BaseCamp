@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: BRS.cwl
+id: ../../../../home/ubuntu/BiocondaCli/BRS.cwl
 inputs:
 - id: seq_file
   doc: ''

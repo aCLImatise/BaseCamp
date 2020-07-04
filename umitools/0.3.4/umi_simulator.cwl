@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: umi_simulator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/umi_simulator.cwl
 inputs:
 - id: pcr_cycle
   doc: 'number of PCR cycles (default: 10)'

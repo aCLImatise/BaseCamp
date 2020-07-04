@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: bioformats_vcfeffect2bed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bioformats_vcfeffect2bed.cwl
 inputs:
-- id: vcf_file
-  doc: an snpEff-annotated VCF file
-  type: string
-  inputBinding:
-    position: 0
-- id: output_file
-  doc: the output BED3+ file of sample effects
-  type: string
-  inputBinding:
-    position: 1
 - id: g
   doc: '[{REFHET,COMHET,ALTHOM} ...], --genotypes {REFHET,COMHET,ALTHOM} [{REFHET,COMHET,ALTHOM}
     ...]'
@@ -22,6 +12,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ignore_errors
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: vcf_file
+  doc: an snpEff-annotated VCF file
+  type: string
+  inputBinding:
+    position: 0
+- id: output_file
+  doc: the output BED3+ file of sample effects
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

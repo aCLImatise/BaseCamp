@@ -2,14 +2,19 @@ version 1.0
 
 task Ibdseq {
   input {
-    String jarJar
-    String? javaJava
-    String? parametersParameters
+    String? jar
+    String java
+    String? parameters
   }
   command <<<
     ibdseq \
-      ~{javaJava} \
-      ~{if defined(jarJar) then ("-jar " +  '"' + jarJar + '"') else ""} \
-      ~{parametersParameters}
+      ~{java} \
+      ~{parameters} \
+      ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  parameter_meta {
+    jar: ""
+    java: ""
+    parameters: ""
+  }
 }

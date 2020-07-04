@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pairtools_markasdup.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pairtools_markasdup.cwl
 inputs:
 - id: output
   doc: output .pairsam file. If the path ends with .gz or .lz4, the output is pbgzip-/lz4c-compressed.
@@ -33,6 +33,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --cmd-out
+- id: pairs_am_path
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

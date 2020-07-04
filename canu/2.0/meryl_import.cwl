@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: meryl_import.cwl
+id: ../../../../home/ubuntu/BiocondaCli/meryl_import.cwl
 inputs:
 - id: km_ers
   doc: A file consisting of kmers and values, one per line, separated by white space
@@ -9,7 +9,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -kmers
-- id: k
+- id: size_setting_larger
   doc: The size of a kmer, in bases.  Setting this larger than the kmers in the input
     will probably lead to a crash.  Setting it smaller will result in only the left-most
     bases being used.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: BamHighCoverage.cwl
+id: ../../../../home/ubuntu/BiocondaCli/BamHighCoverage.cwl
 inputs:
 - id: in
   doc: Input BAM file.

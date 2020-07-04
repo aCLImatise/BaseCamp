@@ -1,42 +1,32 @@
 class: CommandLineTool
-id: ssu_align.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ssu_align.cwl
 inputs:
-- id: sequence_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: output_dir
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: f
+- id: force_dir_named
   doc: ': force; if dir named <output dir> already exists, empty it first'
   type: boolean
   inputBinding:
     prefix: -f
-- id: m
+- id: use_file_f
   doc: ': use CM file <f> instead of the default CM file'
   type: string
   inputBinding:
     prefix: -m
-- id: b
+- id: set_bit_score
   doc: ': set minimum bit score of a surviving subsequence as <x> [default: 50]'
   type: string
   inputBinding:
     prefix: -b
-- id: l
+- id: set_minimum_length
   doc: ': set minimum length    of a surviving subsequence as <n> [default: 1]'
   type: string
   inputBinding:
     prefix: -l
-- id: i
+- id: output_alignments_interleaved
   doc: ': output alignments in interleaved Stockholm format (not 1 line/seq)'
   type: boolean
   inputBinding:
     prefix: -i
-- id: n
+- id: only_search_align
   doc: ": only search with and align to single CM named <s> in CM file (default CM\
     \ file includes 'archaea', 'bacteria', 'eukarya')"
   type: string
@@ -103,6 +93,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --mxsize
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: sequence_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_dir
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

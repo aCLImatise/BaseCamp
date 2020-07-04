@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: OpenSwathChromatogramExtractor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/OpenSwathChromatogramExtractor.cwl
 inputs:
 - id: in
   doc: "*                   Input files separated by blank (valid formats: 'mzML')"
@@ -32,21 +32,21 @@ inputs:
 - id: rt_window
   doc: "Extraction window in RT dimension (-1 means extract over the whole range).\
     \ This is the full window size, e.g. a value of 1000 seconds would extract 500\
-    \ seconds on either side.  (default: '-1.0')"
+    \ seconds on either side. (default: '-1.0')"
   type: string
   inputBinding:
     prefix: -rt_window
 - id: ion_mobility_window
   doc: "Extraction window in ion mobility dimension (in milliseconds). This is the\
     \ full window size, e.g. a value of 10 milliseconds would extract 5 milliseconds\
-    \ on either side. (defaul t: '-1.0')"
+    \ on either side. (default: '-1.0')"
   type: string
   inputBinding:
     prefix: -ion_mobility_window
 - id: mz_window
   doc: "Extraction window in m/z dimension (in Thomson, to use ppm see -ppm flag).\
     \ This is the full window size, e.g. 100 ppm would extract 50 ppm on either side.\
-    \ (default: '0.05' min:  '0.0')"
+    \ (default: '0.05' min: '0.0')"
   type: string
   inputBinding:
     prefix: -mz_window
@@ -60,7 +60,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -is_swath
-- id: extract_ms1
+- id: extract_ms_one
   doc: Extract the MS1 transitions based on the precursor values in the TraML file
     (useful for extracting MS1 XIC)
   type: boolean

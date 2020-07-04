@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rnaseq_peakfinder.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnaseq_peakfinder.pl.cwl
 inputs:
 - id: bgp_os
   doc: BedGraph input file containing coverage of the [+] strand.

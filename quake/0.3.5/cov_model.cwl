@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: cov_model.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cov_model.py.cwl
 inputs:
-- id: counts_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: int
   doc: 'Kmers were counted as integers w/o the use of quality values [default: False]'
   type: boolean
@@ -22,6 +17,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no_sample
+- id: counts_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

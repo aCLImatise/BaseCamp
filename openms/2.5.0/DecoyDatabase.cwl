@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: DecoyDatabase.cwl
+id: ../../../../home/ubuntu/BiocondaCli/DecoyDatabase.cwl
 inputs:
 - id: in
   doc: "<file(s)>*                   Input FASTA file(s), each containing a database.\
@@ -50,11 +50,11 @@ inputs:
 - id: enzyme
   doc: "Enzyme used for the digestion of the sample. Only applicable if parameter\
     \ 'type' is 'protein'. (default: 'Trypsin' valid: 'proline endopeptidase', 'glutamyl\
-    \ endopeptidase',  'Arg-C', 'Arg-C/P', 'Asp-N', 'Alpha-lytic protease', '2-iodobenzoate',\
+    \ endopeptidase', 'Arg-C', 'Arg-C/P', 'Asp-N', 'Alpha-lytic protease', '2-iodobenzoate',\
     \ 'iodosobenzoate', 'staphylococcal protease/D', 'Clostripain/P', 'elastase-trypsin-chymotrypsin',\
     \ 'no cleavage', 'unspecific cleavage', 'Asp-N/B', 'Asp-N_ambic', 'Chymotrypsin',\
     \ 'Chymotrypsin/P', 'CNBr', 'Formic_acid', 'Lys-C', 'Lys-N', 'Lys-C/P', 'PepsinA',\
-    \ 'TrypChymo', 'Tryp sin/P', 'V8-DE', 'V8-E', 'leukocyte elastase', 'proline-endopeptidase/HKR',\
+    \ 'TrypChymo', 'Trypsin/P', 'V8-DE', 'V8-E', 'leukocyte elastase', 'proline-endopeptidase/HKR',\
     \ 'Glu-C+P', 'PepsinA + P', 'cyanogen-bromide', 'Trypsin')"
   type: string
   inputBinding:
@@ -79,16 +79,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: decoy
-  doc: Decoy parameters section
-  type: boolean
-  inputBinding:
-    prefix: '- Decoy'
-- id: http
-  doc: ://www.openms.de/documentation/UTILS_DecoyDatabase.html
-  type: boolean
-  inputBinding:
-    prefix: '- http'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

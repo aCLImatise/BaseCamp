@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sambamba_view.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sambamba_view.cwl
 inputs:
 - id: header
   doc: output only header to stdout (if format=bam, the header is printed as SAM)
@@ -71,6 +71,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --subsampling-seed
+- id: samba_mba_view
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: input_dot_bam_vertical_line_input_dots_am
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

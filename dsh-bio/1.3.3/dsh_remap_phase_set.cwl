@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dsh_remap_phase_set.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dsh_remap_phase_set.cwl
 inputs:
 - id: about
   doc: display about message [optional]

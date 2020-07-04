@@ -1,18 +1,18 @@
 class: CommandLineTool
-id: modify_column.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/modify_column.pl.cwl
 inputs:
-- id: c
+- id: column_modify_default
   doc: 'The column to modify (default: 0; specify multiple columns using commas) (zero-based)'
   type: string
   inputBinding:
     prefix: -c
-- id: r
+- id: rows_modify_default
   doc: 'The rows to modify (default: All except -skipped; specify multiple rows using
     commas) (zero-based)'
   type: string
   inputBinding:
     prefix: -r
-- id: a
+- id: apply_transformation_columns
   doc: Apply transformation to ALL columns
   type: boolean
   inputBinding:
@@ -105,7 +105,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -pd
-- id: p
+- id: precision_take_fix
   doc: "Precision (take only <num> sig. digits. default: don't fix)"
   type: string
   inputBinding:
@@ -167,7 +167,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -cumul
-- id: zero
+- id: when_dividing_zero
   doc: 'When dividing by zero, uses <num> instead of giving an error (default: 999999)'
   type: string
   inputBinding:

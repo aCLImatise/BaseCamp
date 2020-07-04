@@ -2,28 +2,40 @@ version 1.0
 
 task Domtblout2geneGeneric.py {
   input {
-    String? generateGenerate
-    String? summarySummary
-    String? matrixMatrix
-    String? fromFrom
-    String? theThe
-    String? filteredFiltered
-    String? bestBest
-    String? hmmerHmmer
-    String? annotationAnnotation
-    File? filesFiles
+    String generate
+    String summary
+    String matrix
+    String from
+    String the
+    String filtered
+    String best
+    String hmmer
+    String annotation
+    File files
   }
   command <<<
     domtblout2gene_generic.py \
-      ~{generateGenerate} \
-      ~{summarySummary} \
-      ~{matrixMatrix} \
-      ~{fromFrom} \
-      ~{theThe} \
-      ~{filteredFiltered} \
-      ~{bestBest} \
-      ~{hmmerHmmer} \
-      ~{annotationAnnotation} \
-      ~{filesFiles}
+      ~{generate} \
+      ~{summary} \
+      ~{matrix} \
+      ~{from} \
+      ~{the} \
+      ~{filtered} \
+      ~{best} \
+      ~{hmmer} \
+      ~{annotation} \
+      ~{files}
   >>>
+  parameter_meta {
+    generate: ""
+    summary: ""
+    matrix: ""
+    from: ""
+    the: ""
+    filtered: ""
+    best: ""
+    hmmer: ""
+    annotation: ""
+    files: ""
+  }
 }

@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: go2owl.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/go2owl.pl.cwl
 inputs:
-- id: f
+- id: obo_input_file
   doc: OBO input file
   type: boolean
   inputBinding:

@@ -2,24 +2,34 @@ version 1.0
 
 task LabeledEval {
   input {
-    File inIn
-    File truthTruth
-    String rtRtToL
-    String mzMzToL
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    File? in
+    File? truth
+    String? rt_to_l
+    String? mz_to_l
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     LabeledEval \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(truthTruth) then ("-truth " +  '"' + truthTruth + '"') else ""} \
-      ~{if defined(rtRtToL) then ("-rt_tol " +  '"' + rtRtToL + '"') else ""} \
-      ~{if defined(mzMzToL) then ("-mz_tol " +  '"' + mzMzToL + '"') else ""} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(truth) then ("-truth " +  '"' + truth + '"') else ""} \
+      ~{if defined(rt_to_l) then ("-rt_tol " +  '"' + rt_to_l + '"') else ""} \
+      ~{if defined(mz_to_l) then ("-mz_tol " +  '"' + mz_to_l + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*        Feature result file (valid formats: 'featureXML')"
+    truth: "*     Expected result file. (valid formats: 'consensusXML')"
+    rt_to_l: "Maximum allowed retention time deviation (default: '20.0')"
+    mz_to_l: "Maximum allowed m/z deviation (divided by charge) (default: '0.25')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

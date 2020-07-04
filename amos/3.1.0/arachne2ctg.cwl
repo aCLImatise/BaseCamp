@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: arachne2ctg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/arachne2ctg.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

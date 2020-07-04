@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sortgrcd.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sortgrcd.cwl
 inputs:
 - id: cn
   doc: ':    Minimum % of coverage (0-100)'
@@ -31,12 +31,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -JN
-- id: mn
+- id: maximum_total_number_missmatches
   doc: ':    Maximum total number of missmatches'
   type: boolean
   inputBinding:
     prefix: -MN
-- id: nn
+- id: maximum_total_number_noncanonical
   doc: ':    Maximum total number of non-canonical boundaries'
   type: boolean
   inputBinding:
@@ -52,7 +52,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -PN
-- id: un
+- id: maximum_total_number_unpaired
   doc: ':    Maximum total number of unpaired bases in gaps'
   type: boolean
   inputBinding:
@@ -62,17 +62,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lN
-- id: mn
+- id: maximum_allowed_missmatches
   doc: ':    Maximum allowed missmatches at both exon boundaries'
   type: boolean
   inputBinding:
     prefix: -mN
-- id: nn
+- id: allow_noncanonical_boundary
   doc: ':    allow non-canonical boundary? [0: no; 1: AT-AN; 2: 1bp mismatch; 3: any]'
   type: boolean
   inputBinding:
     prefix: -nN
-- id: un
+- id: maximum_allowed_bases
   doc: ':    Maximum allowed unpaired bases in gaps at both exon boundaries'
   type: boolean
   inputBinding:

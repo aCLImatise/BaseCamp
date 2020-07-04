@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: RNAdos.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAdos.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: detailed_help
   doc: Print help, including all details and hidden options, and exit
   type: boolean

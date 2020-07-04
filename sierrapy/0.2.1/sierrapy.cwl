@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sierrapy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sierrapy.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

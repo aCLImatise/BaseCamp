@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_species_taxids.sh.bak.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_species_taxids.sh.bak.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

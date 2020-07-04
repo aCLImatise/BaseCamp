@@ -1,12 +1,7 @@
 class: CommandLineTool
-id: ssu_merge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ssu_merge.cwl
 inputs:
-- id: output_dir_created_by_ssu_prep
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: f
+- id: force_allow_clobbering
   doc: ': force; allow file clobbering'
   type: boolean
   inputBinding:
@@ -21,7 +16,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --keep
-- id: i
+- id: input_alignments_interleaved
   doc: ': input alignments are interleaved Stockholm format (not 1 line/seq)'
   type: boolean
   inputBinding:
@@ -31,6 +26,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --dna
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: output_dir_created_by_ssu_prep
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: maker_map_ids.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maker_map_ids.cwl
 inputs:
 - id: prefix
   doc: The prefix to use for all IDs (default = 'MAKER_')

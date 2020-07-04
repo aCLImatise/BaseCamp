@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: compound_identification.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/compound_identification.py.cwl
 inputs:
 - id: an_no
   doc: Out path for first file

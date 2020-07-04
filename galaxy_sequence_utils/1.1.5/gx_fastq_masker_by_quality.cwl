@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: gx_fastq_masker_by_quality.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gx_fastq_masker_by_quality.cwl
 inputs:
-- id: input_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: output_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: format
   doc: FASTQ variant type
   type: string
@@ -36,6 +26,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --lowercase
+- id: input_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

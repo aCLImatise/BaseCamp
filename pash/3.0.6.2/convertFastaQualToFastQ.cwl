@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: convertFastaQualToFastQ.rb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/convertFastaQualToFastQ.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

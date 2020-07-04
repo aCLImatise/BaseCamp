@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_gen_variability_network.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_gen_variability_network.cwl
 inputs:
 - id: input_file
   doc: The anvi'o variability profile. Please see `anvi-gen- variability-profile`

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNAplot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAplot.cwl
 inputs:
 - id: layout_type
   doc: Choose the layout algorithm. Simple radial  layout if 0, or naview if 1 (default=`1')

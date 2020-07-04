@@ -2,16 +2,19 @@ version 1.0
 
 task SixgillMerge {
   input {
-    String outOut
-    Boolean noNoGzipOut
-    Boolean debugDebug
-    String? metaMetaPeptideDbFiles
+    String? out
+    Boolean? no_gzip_out
+    Boolean? debug
   }
   command <<<
     sixgill_merge \
-      ~{metaMetaPeptideDbFiles} \
-      ~{if defined(outOut) then ("--out " +  '"' + outOut + '"') else ""} \
-      ~{true="--nogzipout" false="" noNoGzipOut} \
-      ~{true="--debug" false="" debugDebug}
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
+      ~{true="--nogzipout" false="" no_gzip_out} \
+      ~{true="--debug" false="" debug}
   >>>
+  parameter_meta {
+    out: "output file"
+    no_gzip_out: "Write plaintetxt (non-gzipped) output (default gzipped)"
+    debug: "Enable debug logging"
+  }
 }

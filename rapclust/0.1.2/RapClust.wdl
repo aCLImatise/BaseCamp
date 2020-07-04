@@ -2,12 +2,13 @@ version 1.0
 
 task RapClust {
   input {
-    String configConfig
-    String? optionsOptions
+    String? config
   }
   command <<<
     RapClust \
-      ~{optionsOptions} \
-      ~{if defined(configConfig) then ("--config " +  '"' + configConfig + '"') else ""}
+      ~{if defined(config) then ("--config " +  '"' + config + '"') else ""}
   >>>
+  parameter_meta {
+    config: "Config file describing the experimental setup  [required]"
+  }
 }

@@ -1,52 +1,42 @@
 class: CommandLineTool
-id: envpath.cwl
+id: ../../../../home/ubuntu/BiocondaCli/envpath.cwl
 inputs:
-- id: a
-  doc: Append TOKEN to the path variable named 'VAR'
-  type: string
-  inputBinding:
-    prefix: -A
-- id: c
-  doc: =newdir     Change <olddir> to <newdir> within 'VAR'
-  type: string
-  inputBinding:
-    prefix: -C
-- id: p
+- id: prepend_token_path
   doc: Prepend TOKEN to the path variable named 'VAR'
   type: string
   inputBinding:
     prefix: -P
-- id: i
+- id: token_insert_token
   doc: ",(-|+)TOKEN]   Insert TOKEN before (-) or after (+) 'dir' in VAR"
   type: string
   inputBinding:
     prefix: -I
-- id: l
+- id: list_specified_pathvars
   doc: '[VAR]             List specified pathvar(s) in one-entry-per-line fmt'
   type: boolean
   inputBinding:
     prefix: -L
-- id: n
+- id: remove_entries_exist
   doc: Remove entries which don't exist
   type: boolean
   inputBinding:
     prefix: -N
-- id: r
+- id: remove_specified_dir
   doc: Remove specified dir from path
   type: string
   inputBinding:
     prefix: -R
-- id: s
+- id: print_specified_pathvars
   doc: '[VAR]             Print specified pathvars in form suitable for `eval`'
   type: boolean
   inputBinding:
     prefix: -S
-- id: u
+- id: remove_redundant_entries
   doc: Remove redundant entries from path
   type: boolean
   inputBinding:
     prefix: -U
-- id: w
+- id: like__path
   doc: Like 'whence' ksh builtin - look for 'file' on PATH
   type: File
   inputBinding:

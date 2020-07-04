@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: zagros.cwl
+id: ../../../../home/ubuntu/BiocondaCli/zagros.cwl
 inputs:
 - id: output
   doc: 'output file name (default: stdout) '
@@ -72,6 +72,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -about
+- id: target_regions_slash_sequences
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MassTraceExtractor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MassTraceExtractor.cwl
 inputs:
 - id: in
   doc: "*        Input centroided mzML file (valid formats: 'mzML')"
@@ -38,11 +38,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Algorithm parameters section
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pvpython.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pvpython.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

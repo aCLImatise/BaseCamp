@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mglobchiral.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mglobchiral.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

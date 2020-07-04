@@ -1,21 +1,21 @@
 class: CommandLineTool
-id: clean.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clean.cwl
 inputs:
-- id: a
-  doc: ''
+- id: assembly
+  doc: filename of assembly in FASTA format
   type: string
   inputBinding:
-    prefix: -a
-- id: c
-  doc: ''
+    prefix: --assembly
+- id: csv
+  doc: Tapestry CSV output
   type: string
   inputBinding:
-    prefix: -c
-- id: o
-  doc: ''
+    prefix: --csv
+- id: output
+  doc: filename of output contigs, default filtered_assembly.fasta
   type: string
   inputBinding:
-    prefix: -o
+    prefix: --output
 outputs: []
 cwlVersion: v1.1
 baseCommand:

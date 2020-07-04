@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ghost_tree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ghost_tree.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

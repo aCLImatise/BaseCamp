@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: .motus_post_link.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/.motus_post_link.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

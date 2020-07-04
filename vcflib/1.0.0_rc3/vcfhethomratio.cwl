@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfhethomratio.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfhethomratio.cwl
 inputs:
 - id: vcf_file
   doc: ''

@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: mugsyWGA.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mugsyWGA.cwl
 inputs:
-- id: v
+- id: _version_print
   doc: ',               --version                          print version information'
   type: boolean
   inputBinding:
     prefix: -V
-- id: s
+- id: _seq_fasta
   doc: ',               --seq <FASTA Sequence File>        multi-FASTA file with all
     input sequences. For draft genomes, FASTA headers should be in the form >seqname
     genomename.'
@@ -19,7 +19,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -al
-- id: o
+- id: _outfile_filename
   doc: ',               --outfile <Filename>               output filename prefix
     (default outfile)'
   type: boolean
@@ -49,7 +49,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -duplications
-- id: f
+- id: _format_output
   doc: ',               --format [maf | msf]               output format (default
     maf)'
   type: boolean
@@ -83,13 +83,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -blockfile
-- id: g
+- id: _gop_int
   doc: ',               --gop <Int>                        gap open penalty (default
     -13)'
   type: boolean
   inputBinding:
     prefix: -g
-- id: e
+- id: _gex_int
   doc: ',               --gex <Int>                        gap extension penalty (default
     -1)'
   type: boolean
@@ -111,7 +111,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -mm
-- id: b
+- id: _build_tree
   doc: ',               --build [nj, min, max, avg, wavg]  tree building method for
     progressive aln (default nj) nj = Neighbor-joining min = UPGMA single linkage
     max = UPGMA complete linkage avg = UPGMA average linkage wavg = UPGMA weighted
@@ -120,11 +120,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -b
-- id: i
+- id: _infile_fasta
   doc: ',               --infile <FASTA alignment file>    alignment file'
   type: boolean
   inputBinding:
     prefix: -i
+- id: seq
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -seq
+- id: aln
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -aln
+- id: other
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

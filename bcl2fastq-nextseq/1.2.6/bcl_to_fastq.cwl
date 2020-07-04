@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bcl_to_fastq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcl_to_fastq.cwl
 inputs:
 - id: input_dir
   doc: path to input directory; default is RUNFOLDER- DIR/Data/Intensities/BaseCalls
@@ -7,7 +7,7 @@ inputs:
   inputBinding:
     prefix: --input-dir
 - id: run_folder_dir
-  doc: 'path to directory containing run data [default: /tmp/tmpqmpgu90u]'
+  doc: 'path to directory containing run data [default: /tmp/tmp5fz1qsxd]'
   type: string
   inputBinding:
     prefix: --runfolder-dir
@@ -78,6 +78,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-cleanup
+- id: bcl_two_fast_q_args
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

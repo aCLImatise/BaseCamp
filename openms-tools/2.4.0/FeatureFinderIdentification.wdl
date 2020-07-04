@@ -2,56 +2,43 @@ version 1.0
 
 task FeatureFinderIdentification {
   input {
-    File inIn
-    File idId
-    File idIdExt
-    File outOut
-    File libLibOut
-    File chromChromOut
-    File candidatesCandidatesOut
-    String candidatesCandidatesOut
-    Boolean extractExtract
-    Boolean extractExtract
-    Boolean detectDetect
-    Boolean detectDetect
-    Boolean svmSvm
-    Boolean svmSvm
-    Boolean svmSvm
-    Boolean svmSvm
-    Boolean svmSvm
-    Boolean svmSvm
-    Boolean svmSvm
-    Boolean modelModel
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    File? in
+    File? id
+    File? id_ext
+    File? out
+    File? lib_out
+    File? chrom_out
+    Boolean? model
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     FeatureFinderIdentification \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(idId) then ("-id " +  '"' + idId + '"') else ""} \
-      ~{if defined(idIdExt) then ("-id_ext " +  '"' + idIdExt + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(libLibOut) then ("-lib_out " +  '"' + libLibOut + '"') else ""} \
-      ~{if defined(chromChromOut) then ("-chrom_out " +  '"' + chromChromOut + '"') else ""} \
-      ~{if defined(candidatesCandidatesOut) then ("-candidates_out " +  '"' + candidatesCandidatesOut + '"') else ""} \
-      ~{if defined(candidatesCandidatesOut) then ("-candidates_out " +  '"' + candidatesCandidatesOut + '"') else ""} \
-      ~{true="-extract" false="" extractExtract} \
-      ~{true="-extract" false="" extractExtract} \
-      ~{true="-detect" false="" detectDetect} \
-      ~{true="-detect" false="" detectDetect} \
-      ~{true="-svm" false="" svmSvm} \
-      ~{true="-svm" false="" svmSvm} \
-      ~{true="-svm" false="" svmSvm} \
-      ~{true="-svm" false="" svmSvm} \
-      ~{true="-svm" false="" svmSvm} \
-      ~{true="-svm" false="" svmSvm} \
-      ~{true="-svm" false="" svmSvm} \
-      ~{true="-model" false="" modelModel} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(id) then ("-id " +  '"' + id + '"') else ""} \
+      ~{if defined(id_ext) then ("-id_ext " +  '"' + id_ext + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(lib_out) then ("-lib_out " +  '"' + lib_out + '"') else ""} \
+      ~{if defined(chrom_out) then ("-chrom_out " +  '"' + chrom_out + '"') else ""} \
+      ~{true="-model" false="" model} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*                        Input file: LC-MS raw data (valid formats: 'mzML')"
+    id: "*                        Input file: Peptide identifications derived directly from 'in' (valid formats: 'idXML')"
+    id_ext: "Input file: 'External' peptide identifications (e.g. from aligned runs) (valid formats: 'idXML')"
+    out: "*                       Output file: Features (valid formats: 'featureXML')"
+    lib_out: "Output file: Assay library (valid formats: 'traML')"
+    chrom_out: "Output file: Chromatograms (valid formats: 'mzML')"
+    model: ":type <choice>               Type of elution model to fit to features (default: 'symmetric' valid: 'symmetric', 'asymmetric', 'none')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

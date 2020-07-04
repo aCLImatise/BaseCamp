@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: extract_fasta_bins.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extract_fasta_bins.py.cwl
 inputs:
+- id: output_path
+  doc: Directory where files will be printed
+  type: string
+  inputBinding:
+    prefix: --output_path
 - id: fast_a_file
   doc: Input Fasta file.
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: output_path
-  doc: Directory where files will be printed
-  type: string
-  inputBinding:
-    prefix: --output_path
 outputs: []
 cwlVersion: v1.1
 baseCommand:

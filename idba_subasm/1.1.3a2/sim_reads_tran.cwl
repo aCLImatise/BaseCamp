@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: sim_reads_tran.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sim_reads_tran.cwl
 inputs:
-- id: re_ffa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: read_sfa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: error_rate
   doc: (=0.01)           error rate
   type: string
@@ -36,6 +26,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --insert_distance
+- id: ref_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: reads_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

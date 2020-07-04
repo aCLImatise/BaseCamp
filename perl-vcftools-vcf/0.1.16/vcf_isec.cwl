@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: vcf_isec.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf_isec.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: file_1vcf
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: apply_filters
   doc: Ignore lines where FILTER column is anything else than PASS or '.'
   type: boolean
@@ -56,9 +41,9 @@ inputs:
   inputBinding:
     prefix: --prefix
 - id: regions
-  doc: <list|file>           Do only the given regions (comma-separated list or one
-    region per line in a file).
-  type: boolean
+  doc: Do only the given regions (comma-separated list or one region per line in a
+    file).
+  type: string
   inputBinding:
     prefix: --regions
 - id: tab

@@ -2,12 +2,16 @@ version 1.0
 
 task Clustalw2phylip {
   input {
-    String? clustalwClustalw2phyilip
-    String? clustalwClustalwFile
+    String clustalw_two_phy_i_lip
+    String clustalw_file
   }
   command <<<
     clustalw2phylip \
-      ~{clustalwClustalw2phyilip} \
-      ~{clustalwClustalwFile}
+      ~{clustalw_two_phy_i_lip} \
+      ~{clustalw_file}
   >>>
+  parameter_meta {
+    clustalw_two_phy_i_lip: ""
+    clustalw_file: ""
+  }
 }

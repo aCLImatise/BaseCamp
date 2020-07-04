@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: taxit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/taxit.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

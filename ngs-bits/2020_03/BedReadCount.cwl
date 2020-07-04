@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: BedReadCount.cwl
+id: ../../../../home/ubuntu/BiocondaCli/BedReadCount.cwl
 inputs:
 - id: bam
   doc: Input BAM file.

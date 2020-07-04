@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: TransComb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/TransComb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

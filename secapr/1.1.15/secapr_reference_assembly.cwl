@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: secapr_reference_assembly.cwl
+id: ../../../../home/ubuntu/BiocondaCli/secapr_reference_assembly.cwl
 inputs:
 - id: reads
   doc: Call the folder that contains the trimmed reads, organized in a separate subfolder
@@ -50,65 +50,65 @@ inputs:
   type: string
   inputBinding:
     prefix: --cores
-- id: k
+- id: part_read_matches
   doc: If the part of the read that sufficiently matches the reference is shorter
     than this threshold, it will be discarded (minSeedLen).
   type: string
   inputBinding:
     prefix: --k
-- id: w
+- id: avoid_introducing_gaps
   doc: Avoid introducing gaps in reads that are longer than this threshold.
   type: string
   inputBinding:
     prefix: --w
-- id: d
+- id: stop_extension_when
   doc: Stop extension when the difference between the best and the current extension
     score is above |i-j|*A+INT, where i and j are the current positions of the query
     and reference, respectively, and A is the matching score.
   type: string
   inputBinding:
     prefix: --d
-- id: r
+- id: trigger_reseeding_longer
   doc: Trigger re-seeding for a MEM longer than minSeedLen*FLOAT.
   type: string
   inputBinding:
     prefix: --r
-- id: c
+- id: discard_match_it
   doc: Discard a match if it has more than INT occurence in the genome
   type: string
   inputBinding:
     prefix: --c
-- id: a
+- id: matching_score_acts
   doc: Matching score. Acts as a factor enhancing any match (higher value makes it
     less conservative = allows reads that have fewer matches, since every match is
     scored higher).
   type: string
   inputBinding:
     prefix: --a
-- id: b
+- id: mismatch_penalty_accepted
   doc: 'Mismatch penalty. The accepted mismatch rate per read on length k is approximately:
     {.75 * exp[-log(4) * B/A]}'
   type: string
   inputBinding:
     prefix: --b
-- id: o
+- id: gap_opening_penalty
   doc: Gap opening penalty
   type: string
   inputBinding:
     prefix: --o
-- id: e
+- id: gap_extension_penalty
   doc: Gap extension penalty
   type: string
   inputBinding:
     prefix: --e
-- id: l
+- id: clipping_penalty_extension
   doc: Clipping penalty. During extension, the algorithm keeps track of the best score
     reaching the end of query. If this score is larger than the best extension score
     minus the clipping penalty, clipping will not be applied.
   type: string
   inputBinding:
     prefix: --l
-- id: u
+- id: penalty_unpaired_read
   doc: Penalty for an unpaired read pair. The lower the value, the more unpaired reads
     will be allowed in the mapping.
   type: string

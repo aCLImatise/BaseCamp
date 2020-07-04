@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: contig_overlap_trimmer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/contig_overlap_trimmer.cwl
 inputs:
 - id: no_trim
   doc: Do not trim overlaps

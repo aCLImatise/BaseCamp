@@ -1,47 +1,37 @@
 class: CommandLineTool
-id: ssu_cmemit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ssu_cmemit.cwl
 inputs:
-- id: cm_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: sequence_output_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: n
+- id: generate_n_sequences
   doc: ': generate <n> sequences  [10]  (n>0)'
   type: string
   inputBinding:
     prefix: -n
-- id: u
+- id: write_generated_sequences_unaligned
   doc: ': write generated sequences as unaligned FASTA  [default]'
   type: boolean
   inputBinding:
     prefix: -u
-- id: a
+- id: write_generated_sequences_stockholm
   doc: ': write generated sequences as a STOCKHOLM alignment'
   type: boolean
   inputBinding:
     prefix: -a
-- id: c
+- id: generate_single_sequence
   doc: ': generate a single "consensus" sequence only'
   type: boolean
   inputBinding:
     prefix: -c
-- id: l
+- id: local_emit_locally
   doc: ': local; emit from a locally configured model'
   type: boolean
   inputBinding:
     prefix: -l
-- id: i
+- id: start_sequence_numbering
   doc: ': start sequence numbering at <n>  [1]  (n>0)'
   type: string
   inputBinding:
     prefix: -i
-- id: s
+- id: set_generator_seed
   doc: ': set random number generator seed to <n>  [0]  (n>=0)'
   type: string
   inputBinding:
@@ -86,6 +76,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --end
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: cm_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: sequence_output_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

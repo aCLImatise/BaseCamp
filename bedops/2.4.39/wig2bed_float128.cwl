@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: wig2bed_float128.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wig2bed_float128.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ontogetobsolete.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ontogetobsolete.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

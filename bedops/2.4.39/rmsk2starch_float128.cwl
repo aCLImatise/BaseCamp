@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rmsk2starch_float128.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rmsk2starch_float128.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

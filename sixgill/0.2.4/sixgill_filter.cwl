@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: sixgill_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sixgill_filter.cwl
 inputs:
-- id: meta_peptide_file
-  doc: input metapeptide database file
-  type: string
-  inputBinding:
-    position: 0
 - id: out
   doc: output metapeptide database file
   type: string

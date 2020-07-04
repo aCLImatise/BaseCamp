@@ -2,20 +2,28 @@ version 1.0
 
 task Ecogrep {
   input {
-    String dD
-    String pP
-    String iI
-    String rR
-    Boolean vV
-    File? filenameFilename
+    String? d
+    String? p
+    String? i
+    String? r
+    Boolean? v
+    File file_name
   }
   command <<<
     ecogrep \
-      ~{filenameFilename} \
-      ~{if defined(dD) then ("-d " +  '"' + dD + '"') else ""} \
-      ~{if defined(pP) then ("-p " +  '"' + pP + '"') else ""} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(rR) then ("-r " +  '"' + rR + '"') else ""} \
-      ~{true="-v" false="" vV}
+      ~{file_name} \
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
+      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""} \
+      ~{true="-v" false="" v}
   >>>
+  parameter_meta {
+    d: ""
+    p: ""
+    i: ""
+    r: ""
+    v: ""
+    file_name: ""
+  }
 }

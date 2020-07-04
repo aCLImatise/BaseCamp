@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: MUSIC.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MUSIC.cwl
 inputs:
-- id: arguments
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: preprocess
   doc: '[File format ("SAM"/"ELAND"/"bowtie"/"tagAlign"/"BED5"/"BED6")] [Mapped reads
     file path ("stdin" for piped input)] [Output directory]'
@@ -152,6 +147,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -l_win_step
+- id: arguments
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

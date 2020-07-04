@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FastaIndex.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FastaIndex.cwl
 inputs:
 - id: verbose
   doc: verbose
@@ -16,18 +16,18 @@ inputs:
   type: string
   inputBinding:
     prefix: --out
-- id: r
+- id: contigs_contig_regions
   doc: '[REGIONS [REGIONS ...]], --regions [REGIONS [REGIONS ...]] contig(s) or contig
     region(s) to output (returns reverse complement if end larger than start)'
   type: boolean
   inputBinding:
     prefix: -r
-- id: n
+- id: calculate_nxx_exit
   doc: calculate NXX and exit ie N50
   type: string
   inputBinding:
     prefix: -N
-- id: l
+- id: calculate_lxx_exit
   doc: calculate LXX and exit ie L50
   type: string
   inputBinding:

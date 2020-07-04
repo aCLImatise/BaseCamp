@@ -1,12 +1,6 @@
 class: CommandLineTool
-id: triqler.cwl
+id: ../../../../home/ubuntu/BiocondaCli/triqler.cwl
 inputs:
-- id: in_file
-  doc: List of PSMs with abundances (not log transformed!) and search engine score.
-    See README for a detailed description of the columns.
-  type: string
-  inputBinding:
-    position: 0
 - id: out_file
   doc: 'Path to output file (writing in TSV format). N.B. if more than 2 treatment
     groups are present, suffixes will be added before the file extension. (default:
@@ -66,6 +60,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --write_fold_change_posteriors
+- id: in_file
+  doc: List of PSMs with abundances (not log transformed!) and search engine score.
+    See README for a detailed description of the columns.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

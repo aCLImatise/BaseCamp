@@ -2,12 +2,16 @@ version 1.0
 
 task Blossom5 {
   input {
-    String? seeSee
-    String? usageUsageTxt
+    String see
+    String usage_dot_txt
   }
   command <<<
     blossom5 \
-      ~{seeSee} \
-      ~{usageUsageTxt}
+      ~{see} \
+      ~{usage_dot_txt}
   >>>
+  parameter_meta {
+    see: ""
+    usage_dot_txt: ""
+  }
 }

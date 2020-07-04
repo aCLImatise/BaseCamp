@@ -1,56 +1,56 @@
 class: CommandLineTool
-id: hgGcPercent.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hgGcPercent.cwl
 inputs:
-- id: change
-  doc: size (default 20000)
+- id: win
+  doc: '- change windows size (default 20000)'
   type: long
   inputBinding:
-    prefix: '- change'
+    prefix: -win
 - id: no_load
-  doc: load mysql table - create bed file
-  type: string
+  doc: '- do not load mysql table - create bed file'
+  type: boolean
   inputBinding:
     prefix: -noLoad
-- id: output
-  doc: <filename> (stdout OK) (implies -noLoad)
+- id: file
+  doc: '- output to <filename> (stdout OK) (implies -noLoad)'
   type: File
   inputBinding:
-    prefix: '- output'
-- id: process
-  doc: chrN from the nibDir
+    prefix: -file
+- id: chr
+  doc: '- process only chrN from the nibDir'
   type: string
   inputBinding:
-    prefix: '- process'
+    prefix: -chr
 - id: no_random
-  doc: chromosomes from the nibDir
-  type: string
+  doc: '- ignore randome chromosomes from the nibDir'
+  type: boolean
   inputBinding:
     prefix: -noRandom
 - id: no_dots
-  doc: display ... progress during processing
-  type: string
+  doc: '- do not display ... progress during processing'
+  type: boolean
   inputBinding:
     prefix: -noDots
-- id: process
-  doc: 'correctly (default: gaps are not counted as GC)'
-  type: string
+- id: do_gaps
+  doc: '- process gaps correctly (default: gaps are not counted as GC)'
+  type: boolean
   inputBinding:
-    prefix: '- process'
-- id: output
-  doc: ascii data ready to pipe to wigEncode
-  type: string
+    prefix: -doGaps
+- id: wig_out
+  doc: '- output wiggle ascii data ready to pipe to wigEncode'
+  type: boolean
   inputBinding:
-    prefix: '- output'
+    prefix: -wigOut
 - id: overlap
-  doc: by N bases (default 0)
+  doc: '- overlap windows by N bases (default 0)'
   type: string
   inputBinding:
-    prefix: '- overlap'
-- id: display
-  doc: to stderr during processing
+    prefix: -overlap
+- id: verbose
+  doc: '- display details to stderr during processing'
   type: string
   inputBinding:
-    prefix: '- display'
+    prefix: -verbose
 - id: bed_region_in
   doc: Read in a bed file for GC content in specific regions and write to bedRegionsOut
   type: string
@@ -61,6 +61,16 @@ inputs:
   type: string
   inputBinding:
     prefix: -bedRegionOut
+- id: database
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: nib_dir
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

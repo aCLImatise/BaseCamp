@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pvdataserver.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pvdataserver.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

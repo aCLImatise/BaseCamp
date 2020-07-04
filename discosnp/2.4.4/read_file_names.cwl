@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: read_file_names.cwl
+id: ../../../../home/ubuntu/BiocondaCli/read_file_names.cwl
 inputs:
 - id: in
   doc: '(1 arg) :    bank input'

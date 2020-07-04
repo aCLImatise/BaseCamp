@@ -2,36 +2,40 @@ version 1.0
 
 task MbPlotHeatmapSmall {
   input {
-    String downstreamDownstream
-    String upstreamUpstream
-    Int minMin
-    Int maxMax
-    String xXBins
-    String yYBins
-    String xpXpX
-    String ypYpX
-    Boolean removeRemove
-    Boolean verboseVerbose
-    String? parParClip
-    String? outputOutputDir
-    String? prefixPrefix
-    String? gffGff
+    String? downstream
+    String? upstream
+    Int? min
+    Int? max
+    String? x_bins
+    String? y_bins
+    String? xp_x
+    String? yp_x
+    Boolean? remove
+    Boolean? verbose
   }
   command <<<
     mb-plot-heatmap-small \
-      ~{parParClip} \
-      ~{if defined(downstreamDownstream) then ("--downstream " +  '"' + downstreamDownstream + '"') else ""} \
-      ~{if defined(upstreamUpstream) then ("--upstream " +  '"' + upstreamUpstream + '"') else ""} \
-      ~{if defined(minMin) then ("--min " +  '"' + minMin + '"') else ""} \
-      ~{if defined(maxMax) then ("--max " +  '"' + maxMax + '"') else ""} \
-      ~{if defined(xXBins) then ("--xbins " +  '"' + xXBins + '"') else ""} \
-      ~{if defined(yYBins) then ("--ybins " +  '"' + yYBins + '"') else ""} \
-      ~{if defined(xpXpX) then ("--xpx " +  '"' + xpXpX + '"') else ""} \
-      ~{if defined(ypYpX) then ("--ypx " +  '"' + ypYpX + '"') else ""} \
-      ~{true="--remove" false="" removeRemove} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{outputOutputDir} \
-      ~{prefixPrefix} \
-      ~{gffGff}
+      ~{if defined(downstream) then ("--downstream " +  '"' + downstream + '"') else ""} \
+      ~{if defined(upstream) then ("--upstream " +  '"' + upstream + '"') else ""} \
+      ~{if defined(min) then ("--min " +  '"' + min + '"') else ""} \
+      ~{if defined(max) then ("--max " +  '"' + max + '"') else ""} \
+      ~{if defined(x_bins) then ("--xbins " +  '"' + x_bins + '"') else ""} \
+      ~{if defined(y_bins) then ("--ybins " +  '"' + y_bins + '"') else ""} \
+      ~{if defined(xp_x) then ("--xpx " +  '"' + xp_x + '"') else ""} \
+      ~{if defined(yp_x) then ("--ypx " +  '"' + yp_x + '"') else ""} \
+      ~{true="--remove" false="" remove} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    downstream: "set downstream range"
+    upstream: "set upstream range"
+    min: "minium transcript size"
+    max: "maximum transcript size"
+    x_bins: "number of bins in x direction"
+    y_bins: "number of bins in y direction"
+    xp_x: "width of final plot in px"
+    yp_x: "height of final plot in px"
+    remove: "remove temporary text files"
+    verbose: "verbose output"
+  }
 }

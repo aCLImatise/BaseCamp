@@ -2,12 +2,16 @@ version 1.0
 
 task TraceScfDump {
   input {
-    String? scfScfDump
-    String? scfScfFilename
+    String scf_dump
+    String scf_filename
   }
   command <<<
     trace_scf_dump \
-      ~{scfScfDump} \
-      ~{scfScfFilename}
+      ~{scf_dump} \
+      ~{scf_filename}
   >>>
+  parameter_meta {
+    scf_dump: ""
+    scf_filename: ""
+  }
 }

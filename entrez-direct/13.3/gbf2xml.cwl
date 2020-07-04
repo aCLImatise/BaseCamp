@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gbf2xml.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gbf2xml.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

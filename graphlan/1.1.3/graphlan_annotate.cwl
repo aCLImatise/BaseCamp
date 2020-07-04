@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: graphlan_annotate.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/graphlan_annotate.py.cwl
 inputs:
+- id: an_not
+  doc: specify the annotation file
+  type: string
+  inputBinding:
+    prefix: --annot
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
 - id: input_tree
   doc: the input tree in Newick, Nexus, PhyloXML or plain text format
   type: string
@@ -12,11 +22,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: an_not
-  doc: specify the annotation file
-  type: string
-  inputBinding:
-    prefix: --annot
 outputs: []
 cwlVersion: v1.1
 baseCommand:

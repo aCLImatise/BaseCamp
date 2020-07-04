@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gotree_subtree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gotree_subtree.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: input
   doc: Input tree (default "stdin")
   type: string
@@ -37,6 +32,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

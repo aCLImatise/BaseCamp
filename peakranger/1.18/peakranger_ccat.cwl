@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: peakranger_ccat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/peakranger_ccat.cwl
 inputs:
-- id: d
+- id: arg_data_file
   doc: '[ --data ] arg               data file'
   type: boolean
   inputBinding:
     prefix: -d
-- id: c
+- id: arg_control_file
   doc: '[ --control ] arg            control file'
   type: boolean
   inputBinding:
@@ -16,7 +16,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --format
-- id: o
+- id: arg_output_location
   doc: '[ --output ] arg             the output location'
   type: boolean
   inputBinding:
@@ -36,7 +36,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --gene_annot_file
-- id: q
+- id: arg__fdr
   doc: '[ --FDR ] arg (=0.11)        FDR cut-off'
   type: boolean
   inputBinding:
@@ -61,12 +61,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --min_score
-- id: l
+- id: arg_read_length
   doc: '[ --ext_length ] arg (=200)  read extension length'
   type: boolean
   inputBinding:
     prefix: -l
-- id: t
+- id: arg_number_worker
   doc: '[ --thread ] arg (=7)        number of worker threads'
   type: boolean
   inputBinding:
@@ -76,6 +76,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: input
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

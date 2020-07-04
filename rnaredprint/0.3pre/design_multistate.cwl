@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: design_multistate.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/design_multistate.py.cwl
 inputs:
 - id: input
   doc: "Read structures from input file. Default: read from stdin. Format must be\

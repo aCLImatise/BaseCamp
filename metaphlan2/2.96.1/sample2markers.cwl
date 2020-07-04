@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sample2markers.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sample2markers.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

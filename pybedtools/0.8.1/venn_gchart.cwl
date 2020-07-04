@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: venn_gchart.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/venn_gchart.py.cwl
 inputs:
-- id: a
+- id: file_use_leftmost
   doc: File to use for the left-most circle
   type: string
   inputBinding:
     prefix: -a
-- id: b
+- id: file_use_rightmost
   doc: File to use for the right-most circle
   type: string
   inputBinding:
     prefix: -b
-- id: c
+- id: file_use_bottom
   doc: File to use for the bottom circle
   type: string
   inputBinding:
@@ -31,7 +31,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --size
-- id: o
+- id: output_file_save
   doc: Output file to save as, in PNG format
   type: string
   inputBinding:

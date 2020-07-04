@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SVcomp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SVcomp.cwl
 inputs:
 - id: ref
   doc: ''

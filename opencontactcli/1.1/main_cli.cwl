@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: main_cli.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/main_cli.py.cwl
 inputs:
 - id: prot_a
   doc: Path to proteinA.pdb

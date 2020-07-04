@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sequana_lane_merging.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sequana_lane_merging.cwl
 inputs:
 - id: dry_run
   doc: just createt the script but do not launch them

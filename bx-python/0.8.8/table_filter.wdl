@@ -2,16 +2,25 @@ version 1.0
 
 task TableFilter.py {
   input {
-    Boolean headerHeader
-    Boolean commentsComments
-    Boolean forceForceHeader
-    String colsCols
+    Boolean? header
+    Boolean? comments
+    Boolean? force_header
+    String? cols
+    String expression
   }
   command <<<
     table_filter.py \
-      ~{true="--header" false="" headerHeader} \
-      ~{true="--comments" false="" commentsComments} \
-      ~{true="--force-header" false="" forceForceHeader} \
-      ~{if defined(colsCols) then ("--cols " +  '"' + colsCols + '"') else ""}
+      ~{expression} \
+      ~{true="--header" false="" header} \
+      ~{true="--comments" false="" comments} \
+      ~{true="--force-header" false="" force_header} \
+      ~{if defined(cols) then ("--cols " +  '"' + cols + '"') else ""}
   >>>
+  parameter_meta {
+    header: "keep header in output"
+    comments: "keep comments in output"
+    force_header: "assume the first line is a header even if it does not start with \"#\""
+    cols: "names or indexes of columns to keep"
+    expression: ""
+  }
 }

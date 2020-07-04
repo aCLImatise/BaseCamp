@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: extract_sam_xargs.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extract_sam_xargs.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

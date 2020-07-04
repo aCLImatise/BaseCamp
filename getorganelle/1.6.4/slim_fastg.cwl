@@ -1,41 +1,26 @@
 class: CommandLineTool
-id: slim_fastg.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/slim_fastg.py.cwl
 inputs:
-- id: python
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: slim_fast_gp_y
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: your_fast_g_files
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: f
+- id: followed_commas_corresponds
   doc: 'followed with mode embplant_pt, other_pt, embplant_mt, embplant_nr, animal_mt,
     fungus_mt (which means embryophyta plastome, non-embryophyta plastome, plant mitochondrion,
     plant nrDNA, animal mitochondrion, fungus mitochondrion separately), or a combination
     of above split by comma(s) (corresponds to certain arguments as following listed).
     ------------------------------------------------------ embplant_pt      " --include-priority
-    /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/embplant_pt.fasta"
+    /tmp/tmpkfo1qzio/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/embplant_pt.fasta"
     ------------------------------------------------------ other_pt         " --include-priority
-    /tmp/tmphg2suakg/lib/python3.8/site- packages/GetOrganelleLib/LabelDatabase/other_pt.fasta"
+    /tmp/tmpkfo1qzio/lib/python3.8/site- packages/GetOrganelleLib/LabelDatabase/other_pt.fasta"
     ------------------------------------------------------ embplant_mt      " --include-priority
-    /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/embplant_mt.fasta"
+    /tmp/tmpkfo1qzio/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/embplant_mt.fasta"
     ------------------------------------------------------ embplant_nr      " --include-priority
-    /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/embplant_nr.fasta"
+    /tmp/tmpkfo1qzio/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/embplant_nr.fasta"
     ------------------------------------------------------ animal_mt        " --include-priority
-    /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/animal_mt.fasta"
+    /tmp/tmpkfo1qzio/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/animal_mt.fasta"
     ------------------------------------------------------ fungus_mt        " --include-priority
-    /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/fungus_mt.fasta"
+    /tmp/tmpkfo1qzio/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/fungus_mt.fasta"
     ------------------------------------------------------ other_pt,embplant_mt,fungus_mt   "
-    --include-priority /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/other_pt.fasta,/tmp/tmphg2suakg/l
-    ib/python3.8/site-packages/GetOrganelleLib/LabelDataba se/embplant_mt.fasta,/tmp/tmphg2suakg/lib/python3.8/si
+    --include-priority /tmp/tmpkfo1qzio/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/other_pt.fasta,/tmp/tmpkfo1qzio/l
+    ib/python3.8/site-packages/GetOrganelleLib/LabelDataba se/embplant_mt.fasta,/tmp/tmpkfo1qzio/lib/python3.8/si
     te-packages/GetOrganelleLib/LabelDatabase/fungus_mt.fa sta" ------------------------------------------------------
     For easy usage and compatibility of old versions, following redirection would
     be automatically fulfilled without warning:        plant_cp->embplant_pt; plant_pt->embplant_pt;  plant_mt->embplant_mt;
@@ -43,24 +28,24 @@ inputs:
   type: string
   inputBinding:
     prefix: -F
-- id: e
+- id: mitochondrion_mitochondrion_be
   doc: 'followed with mode embplant_pt, other_pt, embplant_mt, embplant_nr, animal_mt,
     fungus_mt (which means embryophyta plastome, non-embryophyta plastome, plant mitochondrion,
     plant nrDNA, animal mitochondrion, fungus mitochondrion separately), or a combination
     of above split by comma(s) (be similar to -F and corresponds to certain arguments
     as following listed). ------------------------------------------------------ embplant_pt      "
-    --exclude /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/embplant_pt.fasta"
+    --exclude /tmp/tmpkfo1qzio/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/embplant_pt.fasta"
     ------------------------------------------------------ embplant_mt      " --exclude
-    /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/embplant_mt.fasta"
+    /tmp/tmpkfo1qzio/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/embplant_mt.fasta"
     ------------------------------------------------------ embplant_nr      " --exclude
-    /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/embplant_nr.fasta"
+    /tmp/tmpkfo1qzio/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/embplant_nr.fasta"
     ------------------------------------------------------ animal_mt        " --exclude
-    /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/animal_mt.fasta"
+    /tmp/tmpkfo1qzio/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/animal_mt.fasta"
     ------------------------------------------------------ fungus_mt        " --exclude
-    /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/fungus_mt.fasta"
+    /tmp/tmpkfo1qzio/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/fungus_mt.fasta"
     ------------------------------------------------------ embplant_mt,embplant_nr          "
-    --exclude /tmp/tmphg2suakg/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/embplant_mt.fasta,/tmp/tmphg2suak
-    g/lib/python3.8/site-packages/GetOrganelleLib/LabelDat abase/embplant_nr.fasta"
+    --exclude /tmp/tmpkfo1qzio/lib/python3.8/site-packages/GetOrgane lleLib/LabelDatabase/embplant_mt.fasta,/tmp/tmpkfo1qzi
+    o/lib/python3.8/site-packages/GetOrganelleLib/LabelDat abase/embplant_nr.fasta"
     ------------------------------------------------------ For easy usage and compatibility
     of old versions, following redirection would be automatically fulfilled without
     warning:         plant_cp->embplant_pt; plant_pt->embplant_pt;  plant_mt->embplant_mt;
@@ -190,6 +175,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --threads
+- id: your_fast_g_files
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

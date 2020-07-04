@@ -2,12 +2,16 @@ version 1.0
 
 task TripailleDbGetDbs {
   input {
-    String dbDbId
-    String nameName
+    String? db_id
+    String? name
   }
   command <<<
     tripaille db get_dbs \
-      ~{if defined(dbDbId) then ("--db_id " +  '"' + dbDbId + '"') else ""} \
-      ~{if defined(nameName) then ("--name " +  '"' + nameName + '"') else ""}
+      ~{if defined(db_id) then ("--db_id " +  '"' + db_id + '"') else ""} \
+      ~{if defined(name) then ("--name " +  '"' + name + '"') else ""}
   >>>
+  parameter_meta {
+    db_id: "A db ID"
+    name: "filter on db name"
+  }
 }

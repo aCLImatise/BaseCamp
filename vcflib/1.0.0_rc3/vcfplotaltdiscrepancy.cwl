@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfplotaltdiscrepancy.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfplotaltdiscrepancy.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

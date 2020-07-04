@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: singularity_check.cwl
+id: ../../../../home/ubuntu/BiocondaCli/singularity_check.cwl
 inputs:
 - id: low
   doc: 'Specify low threshold (all checks, default) '
@@ -22,6 +22,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tag
+- id: singularity
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

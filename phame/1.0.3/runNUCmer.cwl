@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: runNUCmer.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/runNUCmer.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

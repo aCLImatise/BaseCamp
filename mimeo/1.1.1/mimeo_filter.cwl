@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mimeo_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mimeo_filter.cwl
 inputs:
 - id: in_file
   doc: Name of directory containing sequences from A genome.

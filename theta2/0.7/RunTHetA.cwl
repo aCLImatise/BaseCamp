@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: RunTHetA.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RunTHetA.py.cwl
 inputs:
-- id: query_file
-  doc: Interval file
-  type: string
-  inputBinding:
-    position: 0
 - id: graph_format
   doc: Options are .pdf, .jpg, .png, .eps
   type: string
@@ -33,6 +28,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --NO_CLUSTERING
+- id: tumor_file
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --TUMOR_FILE
+- id: normal_file
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --NORMAL_FILE
+- id: query_file
+  doc: Interval file
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

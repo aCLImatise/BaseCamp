@@ -1,19 +1,23 @@
 version 1.0
 
-task SpingoSummary.py {
+task SpingoSummary.pyRESULTSFILE {
   input {
-    String levelLevel
-    String similaritySimilarity
-    String thresholdThreshold
-    Boolean percentPercent
-    String? resultsResultsFile
+    String? level
+    String? similarity
+    String? threshold
+    String spin_go_summary_do_tpy
   }
   command <<<
-    spingo_summary.py \
-      ~{resultsResultsFile} \
-      ~{if defined(levelLevel) then ("--level " +  '"' + levelLevel + '"') else ""} \
-      ~{if defined(similaritySimilarity) then ("--similarity " +  '"' + similaritySimilarity + '"') else ""} \
-      ~{if defined(thresholdThreshold) then ("--threshold " +  '"' + thresholdThreshold + '"') else ""} \
-      ~{true="--percent" false="" percentPercent}
+    spingo_summary.py RESULTS_FILE \
+      ~{spin_go_summary_do_tpy} \
+      ~{if defined(level) then ("--level " +  '"' + level + '"') else ""} \
+      ~{if defined(similarity) then ("--similarity " +  '"' + similarity + '"') else ""} \
+      ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""}
   >>>
+  parameter_meta {
+    level: ""
+    similarity: ""
+    threshold: ""
+    spin_go_summary_do_tpy: ""
+  }
 }

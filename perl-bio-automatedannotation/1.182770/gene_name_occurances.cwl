@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gene_name_occurances.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gene_name_occurances.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

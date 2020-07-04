@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: extract_fullseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extract_fullseq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

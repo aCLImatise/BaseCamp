@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gffToVcf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gffToVcf.cwl
 inputs:
-- id: gff_file
-  doc: GFF file
-  type: string
-  inputBinding:
-    position: 0
 - id: emit_tool_contract
   doc: 'Emit Tool Contract to stdout (default: False)'
   type: boolean
@@ -46,6 +41,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --globalReference
+- id: gff_file
+  doc: GFF file
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

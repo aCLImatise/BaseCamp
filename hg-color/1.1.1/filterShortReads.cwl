@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filterShortReads.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filterShortReads.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,12 +1,6 @@
 class: CommandLineTool
-id: croo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/croo.cwl
 inputs:
-- id: metadata_json
-  doc: 'Path, URL or URI for metadata.json for a workflow Example: /scratch/sample1/metadata.json,
-    gs://some/where/metadata.json, http://hello.com/world/metadata.json'
-  type: string
-  inputBinding:
-    position: 0
 - id: out_def_json
   doc: Output definition JSON file for a WDL file corresponding to the specified metadata.json
     file
@@ -35,7 +29,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --public-gcs
-- id: use_pre_signed_url_s3
+- id: use_pre_signed_url_s_three
   doc: Generate presigned URLS for files on s3://.
   type: boolean
   inputBinding:
@@ -51,7 +45,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --gcp-private-key
-- id: duration_pre_signed_url_s3
+- id: duration_pre_signed_url_s_three
   doc: Duration for presigned URLs for files on s3:// in seconds.
   type: string
   inputBinding:
@@ -81,7 +75,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --tmp-dir
-- id: use_gs_util_for_s3
+- id: use_gs_util_for_s_three
   doc: Use gsutil for direct tranfer between GCS and S3 buckets. Make sure that you
     have "gsutil" installed and configured to have access to credentials for GCS and
     S3 (e.g. ~/.boto or ~/.aws/credientials)
@@ -100,6 +94,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
+- id: metadata_json
+  doc: 'Path, URL or URI for metadata.json for a workflow Example: /scratch/sample1/metadata.json,
+    gs://some/where/metadata.json, http://hello.com/world/metadata.json'
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

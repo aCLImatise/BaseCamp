@@ -2,14 +2,19 @@ version 1.0
 
 task Fqfilt.pl {
   input {
-    String? thisThis
-    String? inInFq
-    Int? minMinLen
+    String this
+    String in_dot_fq
+    Int min_len
   }
   command <<<
     fqfilt.pl \
-      ~{thisThis} \
-      ~{inInFq} \
-      ~{minMinLen}
+      ~{this} \
+      ~{in_dot_fq} \
+      ~{min_len}
   >>>
+  parameter_meta {
+    this: ""
+    in_dot_fq: ""
+    min_len: ""
+  }
 }

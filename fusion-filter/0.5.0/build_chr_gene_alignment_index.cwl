@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: build_chr_gene_alignment_index.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/build_chr_gene_alignment_index.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

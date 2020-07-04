@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rgi_kmer_query.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rgi_kmer_query.cwl
 inputs:
 - id: o
   doc: '[--local] [--debug]'
@@ -17,7 +17,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --bwt
-- id: rgi
+- id: specify_input_rgi
   doc: Specify if the input file is a RGI results json file
   type: boolean
   inputBinding:
@@ -58,6 +58,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
+- id: var_11
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

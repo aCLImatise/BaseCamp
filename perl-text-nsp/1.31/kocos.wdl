@@ -1,13 +1,14 @@
 version 1.0
 
-task Kocos.plBIGRAM {
+task Kocos.pl {
   input {
-    String? optionsOptions
-    String? bigramBigram
+    String bigram
   }
   command <<<
-    kocos.pl BIGRAM \
-      ~{optionsOptions} \
-      ~{bigramBigram}
+    kocos.pl \
+      ~{bigram}
   >>>
+  parameter_meta {
+    bigram: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: flapjack.cwl
+id: ../../../../home/ubuntu/BiocondaCli/flapjack.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

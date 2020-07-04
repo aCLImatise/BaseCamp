@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: seq_cache_populate.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seq_cache_populate.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,22 +2,19 @@ version 1.0
 
 task Fasta2shrepGspan.pl {
   input {
-    Boolean winsWins
-    Boolean shiftShift
-    Boolean cC
-    Boolean tT
-    Boolean mM
-    Boolean tmpTmp
-    Boolean oO
+    Boolean? _selects_shreps
+    Boolean? tmp
+    Boolean? o
   }
   command <<<
     fasta2shrep_gspan.pl \
-      ~{true="-wins" false="" winsWins} \
-      ~{true="-shift" false="" shiftShift} \
-      ~{true="-c" false="" cC} \
-      ~{true="-t" false="" tT} \
-      ~{true="-M" false="" mM} \
-      ~{true="-tmp" false="" tmpTmp} \
-      ~{true="-o" false="" oO}
+      ~{true="-M" false="" _selects_shreps} \
+      ~{true="-tmp" false="" tmp} \
+      ~{true="-o" false="" o}
   >>>
+  parameter_meta {
+    _selects_shreps: "0 # selects all shreps"
+    tmp: "\"/var/tmp/fasta2shrep\""
+    o: "\"CURRENT_DIR/GSPAN_Outputs/\""
+  }
 }

@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: treebest_mmerge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/treebest_mmerge.cwl
 inputs:
-- id: r
+- id: reroot
   doc: reroot
   type: boolean
   inputBinding:
     prefix: -r
-- id: s
+- id: species_tree
   doc: species tree [default taxa tree]
   type: File
   inputBinding:

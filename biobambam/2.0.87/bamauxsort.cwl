@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamauxsort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamauxsort.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

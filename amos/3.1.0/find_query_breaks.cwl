@@ -1,47 +1,47 @@
 class: CommandLineTool
-id: find_query_breaks.cwl
+id: ../../../../home/ubuntu/BiocondaCli/find_query_breaks.cwl
 inputs:
-- id: b
+- id: minimum_length_alignment_report_default
   doc: 'Minimum length of alignment break to report (Default: 10)'
   type: string
   inputBinding:
     prefix: -b
-- id: w
+- id: minimum_distance_edge
   doc: 'Minimum distance to edge of reference sequence to report (Default: 0)'
   type: string
   inputBinding:
     prefix: -w
-- id: l
+- id: minimum_length_query_report_default
   doc: 'Minimum length of query sequence to report (Default: 0)'
   type: string
   inputBinding:
     prefix: -l
-- id: f
+- id: flag_broken_alignments
   doc: Flag broken alignments within this distance of reference
   type: string
   inputBinding:
     prefix: -f
-- id: s
+- id: flag_adjacent_broken
   doc: Flag adjacent broken alignments from same query
   type: boolean
   inputBinding:
     prefix: -s
-- id: c
+- id: only_show_collapses
   doc: Only show collapses
   type: boolean
   inputBinding:
     prefix: -C
-- id: b
+- id: only_show_breaks
   doc: Only show alignment breaks
   type: boolean
   inputBinding:
     prefix: -B
-- id: c
+- id: load_fix_regions
   doc: Load fix regions from all.feat and mark if fixed in -B breakreport
   type: boolean
   inputBinding:
     prefix: -c
-- id: a
+- id: display_breaks_features
   doc: Display breaks as AMOS features
   type: boolean
   inputBinding:

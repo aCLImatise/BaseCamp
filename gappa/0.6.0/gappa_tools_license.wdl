@@ -2,12 +2,13 @@ version 1.0
 
 task GappaToolsLicense {
   input {
-    Boolean fullFull
-    String? optionsOptions
+    Boolean? full
   }
   command <<<
     gappa tools license \
-      ~{optionsOptions} \
-      ~{true="--full" false="" fullFull}
+      ~{true="--full" false="" full}
   >>>
+  parameter_meta {
+    full: "If set, show the full license instead of the short boilerplate."
+  }
 }

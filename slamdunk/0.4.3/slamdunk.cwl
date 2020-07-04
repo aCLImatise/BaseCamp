@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: slamdunk.cwl
+id: ../../../../home/ubuntu/BiocondaCli/slamdunk.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

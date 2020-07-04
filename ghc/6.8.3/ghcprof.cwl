@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ghcprof.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ghcprof.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

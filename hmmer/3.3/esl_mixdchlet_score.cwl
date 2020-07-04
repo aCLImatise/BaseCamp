@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: esl_mixdchlet_score.cwl
+id: ../../../../home/ubuntu/BiocondaCli/esl_mixdchlet_score.cwl
 inputs:
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 - id: mix_dch_let_file
   doc: ''
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: options
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

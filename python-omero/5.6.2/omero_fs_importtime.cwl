@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: omero_fs_importtime.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_fs_importtime.cwl
 inputs:
 - id: cache
   doc: to cache the results by annotating the fileset

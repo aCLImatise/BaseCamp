@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: update_marker_file.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/update_marker_file.R.cwl
 inputs:
 - id: marker_list_obj
   doc: Path to the original marker gene list serialised object

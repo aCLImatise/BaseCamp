@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: rascaf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rascaf.cwl
 inputs:
-- id: b
+- id: required_path_coordinatesorted
   doc: '(required): the path to the coordinate-sorted alignment BAM file'
   type: string
   inputBinding:
     prefix: -b
-- id: f
+- id: recommended_paths_used
   doc: '(recommended): the paths to the raw assembly fasta file(default: not used)'
   type: string
   inputBinding:
     prefix: -f
-- id: o
+- id: prefix_output_file
   doc: ': prefix of the output file (default: rascaf)'
   type: string
   inputBinding:
@@ -38,7 +38,7 @@ inputs:
   type: long
   inputBinding:
     prefix: -breakN
-- id: k
+- id: size_you_want
   doc: ': the size of a kmer(<=32; <=0 if you do not want to use kmer. default: 23)'
   type: long
   inputBinding:
@@ -49,7 +49,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -cs
-- id: v
+- id: verbose_mode_default
   doc: ': verbose mode (default: false)'
   type: boolean
   inputBinding:

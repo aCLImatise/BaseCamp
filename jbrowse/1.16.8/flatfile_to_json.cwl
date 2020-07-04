@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: flatfile_to_json.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/flatfile_to_json.pl.cwl
 inputs:
 - id: gbk
   doc: Process a GFF3, BED, or GenBank file containing annotation data. This script
@@ -63,6 +63,27 @@ inputs:
   type: string
   inputBinding:
     prefix: --thickType
+- id: flat_file_to_json_do_tpl
+  doc: ( --gff <GFF3 file> | --bed <BED file> | --gbk <GenBank file> )         \ --trackLabel
+    <track identifier>                                         \ [ --trackType <JS
+    Class> ]                                              \ [ --out <output directory>
+    ]                                            \ [ --key <human-readable track name>
+    ]                                   \ [ --className <CSS class name for displaying
+    features> ]                \ [ --urltemplate "http://example.com/idlookup?id={id}"
+    ]                 \ [ --arrowheadClass <CSS class> ]                                        \
+    [ --noSubfeatures ]                                                     \ [ --subfeatureClasses
+    '{ JSON-format subfeature class map }' ]          \ [ --clientConfig '{ JSON-format
+    style configuration for this track }' ] \ [ --config '{ JSON-format extra configuration
+    for this track }' ]       \ [ --thinType <BAM -thin_type> ]                                         \
+    [ --thicktype <BAM -thick_type>]                                        \ [ --type
+    <feature types to process> ]                                   \ [ --nclChunk
+    <chunk size for generated NCLs> ]                          \ [ --compress ]                                                          \
+    [ --sortMem <memory in bytes to use for sorting> ]                      \ [ --maxLookback
+    <maximum number of features to buffer in gff3 files> ]  \ [ --nameAttributes "name,alias,id"
+    ]                                    \
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

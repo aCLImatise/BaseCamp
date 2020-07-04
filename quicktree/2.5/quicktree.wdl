@@ -2,12 +2,16 @@ version 1.0
 
 task Quicktree {
   input {
-    Boolean optionsOptions
-    String? inputInputFile
+    Boolean? options
+    String input_file
   }
   command <<<
     quicktree \
-      ~{inputInputFile} \
-      ~{true="-options" false="" optionsOptions}
+      ~{input_file} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    options: ""
+    input_file: ""
+  }
 }

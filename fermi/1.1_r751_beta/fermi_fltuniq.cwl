@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: fermi_fltuniq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fermi_fltuniq.cwl
 inputs:
-- id: in_fa
+- id: in_dot_fa
   doc: ''
   type: string
   inputBinding:

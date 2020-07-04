@@ -1,27 +1,27 @@
 class: CommandLineTool
-id: dehomopolymerate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dehomopolymerate.cwl
 inputs:
-- id: v
+- id: print_version_exit
   doc: Print version and exit
   type: boolean
   inputBinding:
     prefix: -v
-- id: q
+- id: quiet_mode_output
   doc: Quiet mode; not non-error output
   type: boolean
   inputBinding:
     prefix: -q
-- id: f
+- id: output_fasta_fastq
   doc: Output FASTA not FASTQ
   type: boolean
   inputBinding:
     prefix: -f
-- id: w
+- id: output_raw_one
   doc: Output RAW one line per sequence
   type: boolean
   inputBinding:
     prefix: -w
-- id: l
+- id: discard_output_sequences
   doc: Discard output sequences shorter then L bp
   type: string
   inputBinding:

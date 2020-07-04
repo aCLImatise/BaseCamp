@@ -1,41 +1,30 @@
 class: CommandLineTool
-id: PretextSnapshot.sse42.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PretextSnapshot.sse42.cwl
 inputs:
-- id: pretext_snapshot
-  doc: ''
+- id: m_slash_map
+  doc: ':           Path to a pretext map. This option is required, except when using:
+    --help, --sequenceHelp, --printColourMapNames, --version, --licence, --thirdParty'
   type: string
   inputBinding:
-    position: 0
-- id: options
-  doc: ''
+    prefix: -m/--map
+- id: f_slash_format
+  doc: ':        Image format, one of "png"(default) "bmp" or "jpeg".'
   type: string
   inputBinding:
-    position: 1
-- id: m
-  doc: '/--map mp:           Path to a pretext map. This option is required, except
-    when using: --help, --sequenceHelp, --printColourMapNames, --version, --licence,
-    --thirdParty'
-  type: boolean
+    prefix: -f/--format
+- id: r_slash_resolution
+  doc: ':    Image resolution, a positive integer, default 1080. For non-square images
+    this will be the resolution of the longest dimension.'
+  type: string
   inputBinding:
-    prefix: -m
-- id: f
-  doc: '/--format fmt:        Image format, one of "png"(default) "bmp" or "jpeg".'
-  type: boolean
+    prefix: -r/--resolution
+- id: c_slash_colour_map
+  doc: ':    Either, a non-negative integer, indexing the colour map to use. Or, the
+    name of the colour map to use. Defaults to "Three Wave Blue-Green-Yellow" i.e.
+    "5".'
+  type: string
   inputBinding:
-    prefix: -f
-- id: r
-  doc: '/--resolution res:    Image resolution, a positive integer, default 1080.
-    For non-square images this will be the resolution of the longest dimension.'
-  type: boolean
-  inputBinding:
-    prefix: -r
-- id: c
-  doc: '/--colourMap cmap:    Either, a non-negative integer, indexing the colour
-    map to use. Or, the name of the colour map to use. Defaults to "Three Wave Blue-Green-Yellow"
-    i.e. "5".'
-  type: boolean
-  inputBinding:
-    prefix: -c
+    prefix: -c/--colourMap
 - id: print_colour_map_names
   doc: ':  Prints a list of the available colour maps. Cannot be used with any other
     option. '
@@ -49,12 +38,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --jpegQuality
-- id: o
-  doc: "/--folder fldr:       Output folder path, will be created if it doesn't exist.\
-    \ Defaults to the name of the pretext map."
-  type: boolean
+- id: oslash_folder
+  doc: ":       Output folder path, will be created if it doesn't exist. Defaults\
+    \ to the name of the pretext map."
+  type: string
   inputBinding:
-    prefix: -o
+    prefix: -o/--folder
 - id: prefix
   doc: ':           Prefix name for all image files. Defaults to the name of the pretext
     map + "_".'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: getRCChrom.rb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/getRCChrom.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

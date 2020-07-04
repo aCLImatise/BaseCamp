@@ -2,26 +2,37 @@ version 1.0
 
 task AfplotRegionsHistogram {
   input {
-    Int marginMargin
-    String regionRegion
-    File regionRegionFile
-    String nameName
-    File outputOutputDir
-    File vcfVcf
-    String colorColorPalette
-    Int dpiDpi
-    Boolean kdeKdeOnly
+    Int? margin
+    String? region
+    File? region_file
+    String? name
+    File? output_dir
+    File? vcf
+    String? color_palette
+    Int? dpi
+    Boolean? kde_only
   }
   command <<<
     afplot regions histogram \
-      ~{if defined(marginMargin) then ("--margin " +  '"' + marginMargin + '"') else ""} \
-      ~{if defined(regionRegion) then ("--region " +  '"' + regionRegion + '"') else ""} \
-      ~{if defined(regionRegionFile) then ("--region-file " +  '"' + regionRegionFile + '"') else ""} \
-      ~{if defined(nameName) then ("--name " +  '"' + nameName + '"') else ""} \
-      ~{if defined(outputOutputDir) then ("--output-dir " +  '"' + outputOutputDir + '"') else ""} \
-      ~{if defined(vcfVcf) then ("--vcf " +  '"' + vcfVcf + '"') else ""} \
-      ~{if defined(colorColorPalette) then ("--color-palette " +  '"' + colorColorPalette + '"') else ""} \
-      ~{if defined(dpiDpi) then ("--dpi " +  '"' + dpiDpi + '"') else ""} \
-      ~{true="--kde-only" false="" kdeKdeOnly}
+      ~{if defined(margin) then ("--margin " +  '"' + margin + '"') else ""} \
+      ~{if defined(region) then ("--region " +  '"' + region + '"') else ""} \
+      ~{if defined(region_file) then ("--region-file " +  '"' + region_file + '"') else ""} \
+      ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
+      ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""} \
+      ~{if defined(vcf) then ("--vcf " +  '"' + vcf + '"') else ""} \
+      ~{if defined(color_palette) then ("--color-palette " +  '"' + color_palette + '"') else ""} \
+      ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
+      ~{true="--kde-only" false="" kde_only}
   >>>
+  parameter_meta {
+    margin: "Margin around regions to plot"
+    region: "Region string. Must be of format <contig:start-end>"
+    region_file: "Path to region file"
+    name: "Optional title for plot"
+    output_dir: "Path to output directory  [required]"
+    vcf: "Path to input VCF file  [required]"
+    color_palette: "The name of a color palette to pass to seaborn.set_palette"
+    dpi: "DPI for output PNGs (default: 300)"
+    kde_only: "Only show kernel density plot"
+  }
 }

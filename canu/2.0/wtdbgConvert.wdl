@@ -2,10 +2,16 @@ version 1.0
 
 task WtdbgConvert {
   input {
-    String oO
+    String? output_prefix
+    File file_dot_dbg_dot_lay
   }
   command <<<
     wtdbgConvert \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""}
+      ~{file_dot_dbg_dot_lay} \
+      ~{if defined(output_prefix) then ("-o " +  '"' + output_prefix + '"') else ""}
   >>>
+  parameter_meta {
+    output_prefix: "output prefix"
+    file_dot_dbg_dot_lay: ""
+  }
 }

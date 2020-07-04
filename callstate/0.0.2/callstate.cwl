@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: callstate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/callstate.cwl
 inputs:
-- id: bed
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: bam
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: threads
   doc: 'Number of BAM decompression threads [default: 4]'
   type: string
@@ -70,6 +60,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --flag
+- id: bed
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: bam
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

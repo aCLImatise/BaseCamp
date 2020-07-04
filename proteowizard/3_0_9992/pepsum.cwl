@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pepsum.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pepsum.cwl
 inputs:
 - id: pep_xml_filename
   doc: ''

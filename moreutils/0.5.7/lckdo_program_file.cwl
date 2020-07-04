@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: lckdo_program_file.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lckdo_program_file.cwl
 inputs:
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 2
 - id: magic_file
   doc: use LIST as a colon-separated list of magic number files
   type: string
@@ -108,6 +93,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-pad
+- id: print_zero
+  doc: terminate filenames with ASCII NUL
+  type: boolean
+  inputBinding:
+    prefix: --print0
 - id: preserve_date
   doc: preserve access times on files
   type: boolean
@@ -141,6 +131,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
+- id: option_dot_dot_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: file_dot_dot_dot
+  doc: ''
+  type: File
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

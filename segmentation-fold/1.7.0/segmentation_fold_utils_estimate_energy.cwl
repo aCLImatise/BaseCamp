@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: segmentation_fold_utils_estimate_energy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/segmentation_fold_utils_estimate_energy.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: dbn_output_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: temp_dir
   doc: 'Ppath in which temporary conifig files will be stored (default: /tmp)'
   type: File
@@ -50,6 +40,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --sequences-from-fasta-file
+- id: dbn_output_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

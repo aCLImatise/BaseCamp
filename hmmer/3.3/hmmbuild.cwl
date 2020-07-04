@@ -1,27 +1,17 @@
 class: CommandLineTool
-id: hmmbuild.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hmmbuild.cwl
 inputs:
-- id: hmm_file_out
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: msa_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: n
+- id: name_hmm_s
   doc: ': name the HMM <s>'
   type: string
   inputBinding:
     prefix: -n
-- id: o
+- id: direct_summary_output
   doc: ': direct summary output to file <f>, not stdout'
   type: string
   inputBinding:
     prefix: -o
-- id: o
+- id: resave_annotated_possibly
   doc: ': resave annotated, possibly modified MSA to file <f>'
   type: string
   inputBinding:
@@ -231,6 +221,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --maxinsertlen
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: hmm_file_out
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: msa_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

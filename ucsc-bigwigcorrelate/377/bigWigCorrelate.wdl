@@ -2,12 +2,16 @@ version 1.0
 
 task BigWigCorrelate {
   input {
-    String? aABigwig
-    String? bBBigwig
+    String a_dot_bigwig
+    String b_dot_bigwig
   }
   command <<<
     bigWigCorrelate \
-      ~{aABigwig} \
-      ~{bBBigwig}
+      ~{a_dot_bigwig} \
+      ~{b_dot_bigwig}
   >>>
+  parameter_meta {
+    a_dot_bigwig: ""
+    b_dot_bigwig: ""
+  }
 }

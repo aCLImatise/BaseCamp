@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FastqExtract.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FastqExtract.cwl
 inputs:
 - id: in
   doc: Input FASTQ file (gzipped or plain).
@@ -17,7 +17,7 @@ inputs:
   type: File
   inputBinding:
     prefix: -out
-- id: v
+- id: invert_match_keep
   doc: "Invert match: keep non-matching reads. Default value: 'false'"
   type: boolean
   inputBinding:

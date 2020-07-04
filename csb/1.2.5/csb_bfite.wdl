@@ -2,20 +2,28 @@ version 1.0
 
 task CsbBfite {
   input {
-    String chainChain
-    String scaleScaleMixture
-    String alignmentAlignment
-    String outfileOutfile
-    String niterNiter
-    String? pdbPdb
+    String? chain
+    String? scale_mixture
+    String? alignment
+    String? outfile
+    String? niter
+    String pdb
   }
   command <<<
     csb-bfite \
-      ~{pdbPdb} \
-      ~{if defined(chainChain) then ("--chain " +  '"' + chainChain + '"') else ""} \
-      ~{if defined(scaleScaleMixture) then ("--scalemixture " +  '"' + scaleScaleMixture + '"') else ""} \
-      ~{if defined(alignmentAlignment) then ("--alignment " +  '"' + alignmentAlignment + '"') else ""} \
-      ~{if defined(outfileOutfile) then ("--outfile " +  '"' + outfileOutfile + '"') else ""} \
-      ~{if defined(niterNiter) then ("--niter " +  '"' + niterNiter + '"') else ""}
+      ~{pdb} \
+      ~{if defined(chain) then ("--chain " +  '"' + chain + '"') else ""} \
+      ~{if defined(scale_mixture) then ("--scalemixture " +  '"' + scale_mixture + '"') else ""} \
+      ~{if defined(alignment) then ("--alignment " +  '"' + alignment + '"') else ""} \
+      ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
+      ~{if defined(niter) then ("--niter " +  '"' + niter + '"') else ""}
   >>>
+  parameter_meta {
+    chain: "Chain (default=A)"
+    scale_mixture: "Scale mixture distribution (default=student)"
+    alignment: "Alignment in fasta format defining equivalent positions Assumes that chain1 is the first sequence of the alignment and chain2 the second sequence"
+    outfile: "file to which the rotated second structure will be written (default=bfit.pdb)"
+    niter: "Number of optimization steps (default=200)"
+    pdb: "full path to the ensemble"
+  }
 }

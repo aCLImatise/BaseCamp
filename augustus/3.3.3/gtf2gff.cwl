@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gtf2gff.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gtf2gff.pl.cwl
 inputs:
-- id: out
-  doc: gff output file
-  type: string
-  inputBinding:
-    position: 0
 - id: print_exon
   doc: print exon features (may include CDS and UTR parts)
   type: boolean
@@ -21,7 +16,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --printIntron
-- id: gff3
+- id: gff_three
   doc: output in gff3 format
   type: boolean
   inputBinding:
@@ -31,6 +26,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --includeStopInCDS
+- id: out
+  doc: gff output file
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,52 +2,73 @@ version 1.0
 
 task MosaikBuild {
   input {
-    String frFr
-    String gaGa
-    String oaOa
-    String snSn
-    String uriUri
-    String fqFq
-    String fr2Fr2
-    String fq2Fq2
-    String assignAssignQual
-    String q2Q2
-    String ilIl
-    Boolean splitSplit
-    String ilIl
-    String dsDs
-    String idId
-    String lnLn
-    String mflMfl
-    Boolean puPu
-    String samSam
-    String stSt
-    Boolean tpTp
-    Boolean tsTs
+    String? fr
+    String? ga
+    String? oa
+    String? sn
+    String? uri
+    String? fq
+    String? fr_two
+    String? fq_two
+    String? assign_qual
+    String? q_two
+    String? il
+    Boolean? split
+    String? ds
+    String? id
+    String? ln
+    String? mfl
+    Boolean? pu
+    String? sam
+    String? st
+    Boolean? tp
+    Boolean? ts
   }
   command <<<
     MosaikBuild \
-      ~{if defined(frFr) then ("-fr " +  '"' + frFr + '"') else ""} \
-      ~{if defined(gaGa) then ("-ga " +  '"' + gaGa + '"') else ""} \
-      ~{if defined(oaOa) then ("-oa " +  '"' + oaOa + '"') else ""} \
-      ~{if defined(snSn) then ("-sn " +  '"' + snSn + '"') else ""} \
-      ~{if defined(uriUri) then ("-uri " +  '"' + uriUri + '"') else ""} \
-      ~{if defined(fqFq) then ("-fq " +  '"' + fqFq + '"') else ""} \
-      ~{if defined(fr2Fr2) then ("-fr2 " +  '"' + fr2Fr2 + '"') else ""} \
-      ~{if defined(fq2Fq2) then ("-fq2 " +  '"' + fq2Fq2 + '"') else ""} \
-      ~{if defined(assignAssignQual) then ("-assignQual " +  '"' + assignAssignQual + '"') else ""} \
-      ~{if defined(q2Q2) then ("-q2 " +  '"' + q2Q2 + '"') else ""} \
-      ~{if defined(ilIl) then ("-il " +  '"' + ilIl + '"') else ""} \
-      ~{true="-split" false="" splitSplit} \
-      ~{if defined(ilIl) then ("-il " +  '"' + ilIl + '"') else ""} \
-      ~{if defined(dsDs) then ("-ds " +  '"' + dsDs + '"') else ""} \
-      ~{if defined(idId) then ("-id " +  '"' + idId + '"') else ""} \
-      ~{if defined(lnLn) then ("-ln " +  '"' + lnLn + '"') else ""} \
-      ~{if defined(mflMfl) then ("-mfl " +  '"' + mflMfl + '"') else ""} \
-      ~{true="-pu" false="" puPu} \
-      ~{if defined(samSam) then ("-sam " +  '"' + samSam + '"') else ""} \
-      ~{if defined(stSt) then ("-st " +  '"' + stSt + '"') else ""} \
-      ~{true="-tp" false="" tpTp} \
-      ~{true="-ts" false="" tsTs}
+      ~{if defined(fr) then ("-fr " +  '"' + fr + '"') else ""} \
+      ~{if defined(ga) then ("-ga " +  '"' + ga + '"') else ""} \
+      ~{if defined(oa) then ("-oa " +  '"' + oa + '"') else ""} \
+      ~{if defined(sn) then ("-sn " +  '"' + sn + '"') else ""} \
+      ~{if defined(uri) then ("-uri " +  '"' + uri + '"') else ""} \
+      ~{if defined(fq) then ("-fq " +  '"' + fq + '"') else ""} \
+      ~{if defined(fr_two) then ("-fr2 " +  '"' + fr_two + '"') else ""} \
+      ~{if defined(fq_two) then ("-fq2 " +  '"' + fq_two + '"') else ""} \
+      ~{if defined(assign_qual) then ("-assignQual " +  '"' + assign_qual + '"') else ""} \
+      ~{if defined(q_two) then ("-q2 " +  '"' + q_two + '"') else ""} \
+      ~{if defined(il) then ("-il " +  '"' + il + '"') else ""} \
+      ~{true="-split" false="" split} \
+      ~{if defined(ds) then ("-ds " +  '"' + ds + '"') else ""} \
+      ~{if defined(id) then ("-id " +  '"' + id + '"') else ""} \
+      ~{if defined(ln) then ("-ln " +  '"' + ln + '"') else ""} \
+      ~{if defined(mfl) then ("-mfl " +  '"' + mfl + '"') else ""} \
+      ~{true="-pu" false="" pu} \
+      ~{if defined(sam) then ("-sam " +  '"' + sam + '"') else ""} \
+      ~{if defined(st) then ("-st " +  '"' + st + '"') else ""} \
+      ~{true="-tp" false="" tp} \
+      ~{true="-ts" false="" ts}
   >>>
+  parameter_meta {
+    fr: "the FASTA reference sequences file"
+    ga: "the genome assembly ID. e.g. HG18"
+    oa: "the output reference file"
+    sn: "the species name. e.g. \"Homo sapiens\""
+    uri: "the URI (e.g. URL or URN)"
+    fq: "the FASTA base qualities file"
+    fr_two: "the FASTA 2nd mate"
+    fq_two: "the FASTA BQ 2nd mate"
+    assign_qual: "assigns a quality for each base"
+    q_two: "the FASTQ 2nd mate"
+    il: "the desired lanes e.g 5678 for lanes 5-8"
+    split: "splits the read into two mates"
+    ds: "read group description"
+    id: "read group ID. e.g. SRR009060"
+    ln: "library name. e.g. g1k-sc-NA18944-JPT-1"
+    mfl: "median fragment length. e.g. 150"
+    pu: "<run name & lane>             the platform unit. e.g. IL12_490_5"
+    sam: "sample name. e.g. NA12878"
+    st: "sets the sequencing technology: '454', 'helicos', 'illumina', 'illumina_long', 'sanger' or 'solid'"
+    tp: "<# of beginning bases>        trims the first # of bases"
+    ts: "<# of end bases>              trims the last # of bases"
+  }
 }

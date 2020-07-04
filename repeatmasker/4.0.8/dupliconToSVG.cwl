@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dupliconToSVG.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dupliconToSVG.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

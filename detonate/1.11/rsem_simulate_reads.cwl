@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: rsem_simulate_reads.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rsem_simulate_reads.cwl
 inputs:
+- id: seed
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --seed
+- id: q
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -q
 - id: reference_name
   doc: ''
   type: string
@@ -16,7 +26,7 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: the_ta0
+- id: theta_zero
   doc: ''
   type: string
   inputBinding:
@@ -31,16 +41,6 @@ inputs:
   type: string
   inputBinding:
     position: 5
-- id: seed
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: --seed
-- id: q
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -q
 outputs: []
 cwlVersion: v1.1
 baseCommand:

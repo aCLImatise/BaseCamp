@@ -2,30 +2,22 @@ version 1.0
 
 task PairsQuartetDist {
   input {
-    String theThe
-    String theThe
-    String theThe
-    String theThe
-    String theThe
-    String theThe
-    String theThe
-    String theThe
-    File? filenameFilename1
-    File? filenameFilename2
-    String? outputOutputFileName
+    Boolean? v
+    File filename_one
+    File filename_two
+    String? output_filename
   }
   command <<<
     pairs_quartet_dist \
-      ~{filenameFilename1} \
-      ~{if defined(theThe) then ("- The " +  '"' + theThe + '"') else ""} \
-      ~{if defined(theThe) then ("- The " +  '"' + theThe + '"') else ""} \
-      ~{if defined(theThe) then ("- The " +  '"' + theThe + '"') else ""} \
-      ~{if defined(theThe) then ("- The " +  '"' + theThe + '"') else ""} \
-      ~{if defined(theThe) then ("- The " +  '"' + theThe + '"') else ""} \
-      ~{if defined(theThe) then ("- The " +  '"' + theThe + '"') else ""} \
-      ~{if defined(theThe) then ("- The " +  '"' + theThe + '"') else ""} \
-      ~{if defined(theThe) then ("- The " +  '"' + theThe + '"') else ""} \
-      ~{filenameFilename2} \
-      ~{outputOutputFileName}
+      ~{filename_one} \
+      ~{filename_two} \
+      ~{output_filename} \
+      ~{true="-v" false="" v}
   >>>
+  parameter_meta {
+    v: ""
+    filename_one: ""
+    filename_two: ""
+    output_filename: ""
+  }
 }

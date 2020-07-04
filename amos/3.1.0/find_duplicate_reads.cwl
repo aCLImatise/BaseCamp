@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: find_duplicate_reads.cwl
+id: ../../../../home/ubuntu/BiocondaCli/find_duplicate_reads.cwl
 inputs:
 - id: bank_name
   doc: ''

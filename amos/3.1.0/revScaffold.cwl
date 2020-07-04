@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: revScaffold.cwl
+id: ../../../../home/ubuntu/BiocondaCli/revScaffold.cwl
 inputs:
 - id: bank_path
   doc: ''

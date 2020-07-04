@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fixfastq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fixfastq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

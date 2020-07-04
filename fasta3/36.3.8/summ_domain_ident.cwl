@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: summ_domain_ident.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/summ_domain_ident.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

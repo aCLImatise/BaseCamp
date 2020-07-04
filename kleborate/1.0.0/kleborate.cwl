@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: kleborate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kleborate.cwl
 inputs:
 - id: assemblies
   doc: FASTA file(s) for assemblies

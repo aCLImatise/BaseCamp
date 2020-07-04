@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dtc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dtc.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: afplot_regions_distance.cwl
+id: ../../../../home/ubuntu/BiocondaCli/afplot_regions_distance.cwl
 inputs:
 - id: margin
   doc: Margin around regions to plot

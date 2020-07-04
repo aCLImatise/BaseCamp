@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cleanDOSfasta.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cleanDOSfasta.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

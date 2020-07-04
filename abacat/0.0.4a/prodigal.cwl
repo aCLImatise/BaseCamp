@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: prodigal.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/prodigal.py.cwl
 inputs:
 - id: input
   doc: Input FASTA file or dir containing fasta files

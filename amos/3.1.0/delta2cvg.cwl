@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: delta2cvg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/delta2cvg.cwl
 inputs:
-- id: m
+- id: min_coverage_display
   doc: '- Min coverage to display'
   type: string
   inputBinding:
     prefix: -m
-- id: m
+- id: max_coverage_display
   doc: '- Max coverage to display'
   type: string
   inputBinding:
@@ -16,7 +16,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -merge
-- id: v
+- id: version_print_version
   doc: '|version      - Print the version and exit;'
   type: boolean
   inputBinding:
@@ -27,7 +27,7 @@ inputs:
   inputBinding:
     prefix: -depend
 - id: debug
-  doc: 'debug <level> (0, non-debug by default); '
+  doc: '- Set the debug <level> (0, non-debug by default); '
   type: string
   inputBinding:
     prefix: -debug

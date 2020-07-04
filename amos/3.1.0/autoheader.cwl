@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: autoheader.bak.cwl
+id: ../../../../home/ubuntu/BiocondaCli/autoheader.bak.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

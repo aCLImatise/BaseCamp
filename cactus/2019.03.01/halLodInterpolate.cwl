@@ -1,17 +1,6 @@
 class: CommandLineTool
-id: halLodInterpolate.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/halLodInterpolate.py.cwl
 inputs:
-- id: hal
-  doc: input hal
-  type: string
-  inputBinding:
-    position: 0
-- id: out_lod_file
-  doc: output text file with links to interpolated hal files. with each file is associated
-    a value stating its minimum suggested query range (in bases)
-  type: string
-  inputBinding:
-    position: 1
 - id: max_block
   doc: 'maximum desired number of blocks to ever display at once. (default: 223)'
   type: long
@@ -96,7 +85,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --chunk
-- id: minlod0
+- id: min_lod_zero
   doc: 'Override other parameters to ensure that Lod0 (original hal) gets range from
     0 to at least the specified value (default: 0)'
   type: long
@@ -111,6 +100,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --cutOff
+- id: hal
+  doc: input hal
+  type: string
+  inputBinding:
+    position: 0
+- id: out_lod_file
+  doc: output text file with links to interpolated hal files. with each file is associated
+    a value stating its minimum suggested query range (in bases)
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

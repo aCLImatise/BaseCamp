@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfbiallelic.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfbiallelic.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

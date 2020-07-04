@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bcftools_isec.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcftools_isec.cwl
 inputs:
 - id: collapse
   doc: treat as identical records with <snps|indels|both|all|some|none>, see man page
@@ -44,9 +44,9 @@ inputs:
   inputBinding:
     prefix: --output
 - id: output_type
-  doc: '<b|u|z|v>   b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v:
-    uncompressed VCF [v]'
-  type: boolean
+  doc: 'b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed
+    VCF [v]'
+  type: string
   inputBinding:
     prefix: --output-type
 - id: prefix
@@ -85,6 +85,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --write
+- id: a_dot_vcf_do_tgz
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: bdotvcfdotgz
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: wb_shortcuts.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wb_shortcuts.cwl
 inputs:
 - id: version
   doc: display version info

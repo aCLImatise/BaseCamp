@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_snp_bwa_align.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_snp_bwa_align.cwl
 inputs:
 - id: config
   doc: A configuration file containing

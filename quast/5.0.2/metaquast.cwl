@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: metaquast.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/metaquast.py.cwl
 inputs:
 - id: fungus
   doc: Genome is fungal (primarily affects gene prediction)
@@ -159,25 +159,25 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --space-efficient
-- id: pe12
+- id: pe_one_two
   doc: <filename>              File with interlaced forward and reverse paired-end
     reads. (in FASTQ format, may be gzipped)
   type: boolean
   inputBinding:
     prefix: --pe12
-- id: mp1
+- id: mp_one
   doc: <filename>              File with forward mate-pair reads (in FASTQ format,
     may be gzipped)
   type: boolean
   inputBinding:
     prefix: --mp1
-- id: mp2
+- id: mp_two
   doc: <filename>              File with reverse mate-pair reads (in FASTQ format,
     may be gzipped)
   type: boolean
   inputBinding:
     prefix: --mp2
-- id: mp12
+- id: mp_one_two
   doc: <filename>              File with interlaced forward and reverse mate-pair
     reads (in FASTQ format, may be gzipped)
   type: boolean
@@ -299,6 +299,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --test-no-ref
+- id: python
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

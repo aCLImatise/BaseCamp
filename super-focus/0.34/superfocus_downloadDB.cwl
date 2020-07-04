@@ -1,21 +1,21 @@
 class: CommandLineTool
-id: superfocus_downloadDB.cwl
+id: ../../../../home/ubuntu/BiocondaCli/superfocus_downloadDB.cwl
 inputs:
-- id: a
-  doc: ''
+- id: aligner
+  doc: Aligner name separed by ',' if more than one
   type: string
   inputBinding:
-    prefix: -a
-- id: c
-  doc: ''
+    prefix: --aligner
+- id: clusters
+  doc: DB types separed by ',' if more than one (e.g 90,95,98,100) - default 90
   type: string
   inputBinding:
-    prefix: -c
-- id: i
-  doc: ''
+    prefix: --clusters
+- id: input
+  doc: Target input files to be formatted into the database
   type: string
   inputBinding:
-    prefix: -i
+    prefix: --input
 - id: v
   doc: ''
   type: boolean

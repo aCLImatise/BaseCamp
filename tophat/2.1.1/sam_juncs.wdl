@@ -2,10 +2,13 @@ version 1.0
 
 task SamJuncs {
   input {
-    String? hitsHitsSam
+    String hits_dots_am
   }
   command <<<
     sam_juncs \
-      ~{hitsHitsSam}
+      ~{hits_dots_am}
   >>>
+  parameter_meta {
+    hits_dots_am: ""
+  }
 }

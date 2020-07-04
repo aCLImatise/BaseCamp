@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: megahit_toolkit_read2sdbg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/megahit_toolkit_read2sdbg.cwl
 inputs:
-- id: s_dbg_builder
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: read_2sdbg
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: km_er_k
   doc: (=21)                 kmer size
   type: string
@@ -52,6 +42,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --need_mercy
+- id: o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
+- id: s_dbg_builder
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: read_two_s_dbg
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pbsDecode.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pbsDecode.cwl
 inputs:
 - id: start
   doc: Decode only the subsequence starting at position <sidx>. Indexing starts with
@@ -18,6 +18,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --discard-gaps
+- id: input_dot_bin
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: code_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,18 +1,18 @@
 class: CommandLineTool
-id: graph_to_fasta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/graph_to_fasta.cwl
 inputs:
-- id: g
+- id: arg_json_files
   doc: '[ --graph-spec ] arg    JSON file(s) describing the graph'
   type: boolean
   inputBinding:
     prefix: -g
-- id: o
+- id: arg_output_file
   doc: "[ --output-file ] arg   Output file name. Will output to stdout if '-' or\
     \  neither of output-file or output-folder provided."
   type: boolean
   inputBinding:
     prefix: -o
-- id: o
+- id: arg_output_folder
   doc: '[ --output-folder ] arg Output folder path. paragraph will attempt to  create
     the folder but not the entire path. Will  output to stdout if neither of output-file
     or  output-folder provided. If specified, paragraph  will produce one output file
@@ -20,7 +20,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -O
-- id: r
+- id: arg_fasta_reference
   doc: '[ --reference ] arg     FASTA with reference genome'
   type: boolean
   inputBinding:

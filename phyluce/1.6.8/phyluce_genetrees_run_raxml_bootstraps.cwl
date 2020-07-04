@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_genetrees_run_raxml_bootstraps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_genetrees_run_raxml_bootstraps.cwl
 inputs:
 - id: alignments
   doc: The directory containing alignments to be summarized.

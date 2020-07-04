@@ -2,16 +2,22 @@ version 1.0
 
 task BiopetBamstats {
   input {
-    String? bamBamStats
-    String? toolToolName
-    String? toolTool
-    String? argsArgs
+    String bam_stats
+    String? tool_name
+    String? tool
+    String? args
   }
   command <<<
     biopet-bamstats \
-      ~{bamBamStats} \
-      ~{toolToolName} \
-      ~{toolTool} \
-      ~{argsArgs}
+      ~{bam_stats} \
+      ~{tool_name} \
+      ~{tool} \
+      ~{args}
   >>>
+  parameter_meta {
+    bam_stats: ""
+    tool_name: ""
+    tool: ""
+    args: ""
+  }
 }

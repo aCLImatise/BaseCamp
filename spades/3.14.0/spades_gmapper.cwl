@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: spades_gmapper.cwl
+id: ../../../../home/ubuntu/BiocondaCli/spades_gmapper.cwl
 inputs:
-- id: k
+- id: kmer_length_use
   doc: k-mer length to use
   type: string
   inputBinding:
     prefix: -k
-- id: t
+- id: _threads_use
   doc: '# of threads to use'
   type: string
   inputBinding:

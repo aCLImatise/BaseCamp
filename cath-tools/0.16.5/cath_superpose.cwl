@@ -1,22 +1,7 @@
 class: CommandLineTool
-id: cath_superpose.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cath_superpose.cwl
 inputs:
-- id: alignment_source
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: pdb_file_source
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: superposition_outputs
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: v
+- id: output_version_information
   doc: '[ --version ]                         Output version information'
   type: boolean
   inputBinding:
@@ -218,6 +203,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --show-organic-within-dist
+- id: alignment_source
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: pdb_file_source
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: superposition_outputs
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

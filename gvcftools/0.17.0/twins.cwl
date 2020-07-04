@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: twins.cwl
+id: ../../../../home/ubuntu/BiocondaCli/twins.cwl
 inputs:
 - id: ref
   doc: samtools reference sequence (required)
@@ -17,12 +17,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --exclude
-- id: twin1
+- id: twin_one
   doc: twin/replicate 1 gvcf file
   type: string
   inputBinding:
     prefix: --twin1
-- id: twin2
+- id: twin_two
   doc: twin/replicate 2 gvcf file
   type: string
   inputBinding:

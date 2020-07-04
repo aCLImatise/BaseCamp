@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: chainToPslBasic.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chainToPslBasic.cwl
 inputs:
 - id: chain_top_sl
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: in_chain
+- id: in_dot_chain
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: out_psl
+- id: out_dot_psl
   doc: ''
   type: string
   inputBinding:

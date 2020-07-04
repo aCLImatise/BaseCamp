@@ -1,17 +1,20 @@
 version 1.0
 
-task AnnotateLength.py {
+task AnnotateLength.pyOutputFastx {
   input {
-    String iI
-    String oO
-    String? inputInputFastX
-    String? outputOutputFastX
+    String? i
+    String? o
+    String annotate_length_do_tpy
   }
   command <<<
-    annotate_length.py \
-      ~{inputInputFastX} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{outputOutputFastX}
+    annotate_length.py output_fastx \
+      ~{annotate_length_do_tpy} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    i: ""
+    o: ""
+    annotate_length_do_tpy: ""
+  }
 }

@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: format_fasta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/format_fasta.cwl
 inputs:
 - id: input_fast_a
-  doc: ''
+  doc: Path to input fasta.
   type: string
   inputBinding:
     prefix: --inputfasta
 - id: output_fast_a
-  doc: ''
+  doc: Path to output fasta.
   type: string
   inputBinding:
     prefix: --outputfasta

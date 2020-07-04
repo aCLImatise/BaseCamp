@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: smudgeplot_plot.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smudgeplot_plot.R.cwl
 inputs:
 - id: homozygous
   doc: Assume no heterozygosity in the genome - plotting a paralog structure; [default

@@ -2,14 +2,19 @@ version 1.0
 
 task FastaMultigrep.pl {
   input {
-    Boolean listList
-    Boolean faFa
-    Boolean manMan
+    Boolean? list
+    Boolean? fa
+    Boolean? man
   }
   command <<<
     fasta_multigrep.pl \
-      ~{true="--list" false="" listList} \
-      ~{true="--fa" false="" faFa} \
-      ~{true="--man" false="" manMan}
+      ~{true="--list" false="" list} \
+      ~{true="--fa" false="" fa} \
+      ~{true="--man" false="" man}
   >>>
+  parameter_meta {
+    list: "Colon (:) separated list of Fasta IDs to extract (mandatory)"
+    fa: "Input file in Fasta format (mandatory)"
+    man: "Prints the manual page and exits"
+  }
 }

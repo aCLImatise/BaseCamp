@@ -2,12 +2,16 @@ version 1.0
 
 task QaToQac {
   input {
-    String? inInQa
-    String? outOutQac
+    String in_dot_qa
+    String out_dot_qac
   }
   command <<<
     qaToQac \
-      ~{inInQa} \
-      ~{outOutQac}
+      ~{in_dot_qa} \
+      ~{out_dot_qac}
   >>>
+  parameter_meta {
+    in_dot_qa: ""
+    out_dot_qac: ""
+  }
 }

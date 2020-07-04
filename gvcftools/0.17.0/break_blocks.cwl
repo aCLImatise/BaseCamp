@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: break_blocks.cwl
+id: ../../../../home/ubuntu/BiocondaCli/break_blocks.cwl
 inputs:
 - id: region_file
   doc: A bed file specifying regions where call blocks should  be broken into individual

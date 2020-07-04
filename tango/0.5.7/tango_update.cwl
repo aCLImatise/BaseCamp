@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tango_update.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tango_update.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

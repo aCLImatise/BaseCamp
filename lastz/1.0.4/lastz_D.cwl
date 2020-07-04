@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: lastz_D.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lastz_D.cwl
 inputs:
 - id: no_mirror
   doc: don't report mirror-image alignments when using --self (default is to skip
@@ -51,21 +51,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --progress
-- id: help
-  doc: list information about file specifiers
-  type: File
-  inputBinding:
-    prefix: --help
-- id: help
-  doc: list blastz-compatible shortcuts
-  type: string
-  inputBinding:
-    prefix: --help
-- id: help
-  doc: list yasra-specific shortcuts
-  type: string
-  inputBinding:
-    prefix: --help
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: plot_tree_ete2.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/plot_tree_ete2.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hicPlotMatrix.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hicPlotMatrix.cwl
 inputs:
 - id: matrix
   doc: Path of the Hi-C matrix to plot.
@@ -45,13 +45,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --region
-- id: region_2
+- id: region_two
   doc: If given, then only the region defined by --region and --region2 is given.
     The format is the same as --region1.
   type: string
   inputBinding:
     prefix: --region2
-- id: log1p
+- id: logo_nep
   doc: Plot the log1p of the matrix values.
   type: boolean
   inputBinding:

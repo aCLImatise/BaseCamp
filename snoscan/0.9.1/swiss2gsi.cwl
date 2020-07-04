@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: swiss2gsi.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/swiss2gsi.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

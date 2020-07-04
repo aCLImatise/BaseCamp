@@ -2,12 +2,16 @@ version 1.0
 
 task Pgma {
   input {
-    String? namesNames
-    String? distancesDistances
+    String names
+    String? distances
   }
   command <<<
     pgma \
-      ~{namesNames} \
-      ~{distancesDistances}
+      ~{names} \
+      ~{distances}
   >>>
+  parameter_meta {
+    names: ""
+    distances: ""
+  }
 }

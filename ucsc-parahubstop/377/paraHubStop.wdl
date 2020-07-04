@@ -2,10 +2,13 @@ version 1.0
 
 task ParaHubStop {
   input {
-    String? nowNow
+    String now
   }
   command <<<
     paraHubStop \
-      ~{nowNow}
+      ~{now}
   >>>
+  parameter_meta {
+    now: ""
+  }
 }

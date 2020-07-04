@@ -2,16 +2,22 @@ version 1.0
 
 task ScssimSimuvars {
   input {
-    String refRef
-    String snpSnp
-    String varVar
-    String outputOutput
+    String? ref
+    String? snp
+    String? var
+    String? output_file_save
   }
   command <<<
     scssim simuvars \
-      ~{if defined(refRef) then ("--ref " +  '"' + refRef + '"') else ""} \
-      ~{if defined(snpSnp) then ("--snp " +  '"' + snpSnp + '"') else ""} \
-      ~{if defined(varVar) then ("--var " +  '"' + varVar + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""}
+      ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""} \
+      ~{if defined(snp) then ("--snp " +  '"' + snp + '"') else ""} \
+      ~{if defined(var) then ("--var " +  '"' + var + '"') else ""} \
+      ~{if defined(output_file_save) then ("--output " +  '"' + output_file_save + '"') else ""}
   >>>
+  parameter_meta {
+    ref: "reference file (.fasta)"
+    snp: "SNP file containing the SNPs to be simulated [Default:null]"
+    var: "variation file containing the genomic variations to be simulated [Default:null]"
+    output_file_save: "output file (.fasta) to save generated sequences"
+  }
 }

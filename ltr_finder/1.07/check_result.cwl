@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: check_result.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/check_result.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

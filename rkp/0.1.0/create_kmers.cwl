@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: create_kmers.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/create_kmers.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,18 +2,25 @@ version 1.0
 
 task Humann2SplitTable {
   input {
-    Boolean verboseVerbose
-    String inputInput
-    String outputOutput
-    String taxonomyTaxonomyIndex
-    String taxonomyTaxonomyLevel
+    Boolean? verbose
+    String? gene_table_read
+    String? directory_output_files
+    String? taxonomy_index
+    String? taxonomy_level
   }
   command <<<
     humann2_split_table \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{if defined(inputInput) then ("--input " +  '"' + inputInput + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(taxonomyTaxonomyIndex) then ("--taxonomy_index " +  '"' + taxonomyTaxonomyIndex + '"') else ""} \
-      ~{if defined(taxonomyTaxonomyLevel) then ("--taxonomy_level " +  '"' + taxonomyTaxonomyLevel + '"') else ""}
+      ~{true="--verbose" false="" verbose} \
+      ~{if defined(gene_table_read) then ("--input " +  '"' + gene_table_read + '"') else ""} \
+      ~{if defined(directory_output_files) then ("--output " +  '"' + directory_output_files + '"') else ""} \
+      ~{if defined(taxonomy_index) then ("--taxonomy_index " +  '"' + taxonomy_index + '"') else ""} \
+      ~{if defined(taxonomy_level) then ("--taxonomy_level " +  '"' + taxonomy_level + '"') else ""}
   >>>
+  parameter_meta {
+    verbose: "additional output is printed"
+    gene_table_read: "the gene table to read"
+    directory_output_files: "the directory for output files"
+    taxonomy_index: "the index of the gene in the taxonomy data"
+    taxonomy_level: "the level of taxonomy for the output (if input is from picrust metagenome_contributions.py)"
+  }
 }

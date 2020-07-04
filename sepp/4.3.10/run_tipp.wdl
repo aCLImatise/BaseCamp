@@ -2,64 +2,97 @@ version 1.0
 
 task RunTipp.py {
   input {
-    String alignmentAlignmentSize
-    String placementPlacementSize
-    String fragmentFragmentChunksize
-    String distanceDistance
-    String diameterDiameter
-    String decompDecompStrategy
-    String tempdirTempdir
-    String outputOutput
-    String outdirOutdir
-    String configConfig
-    String treeTree
-    String raRaXml
-    String alignmentAlignment
-    String fragmentFragment
-    String moleculeMolecule
-    String cpuCpu
-    String checkpointCheckpoint
-    String intervalInterval
-    String randomRandomSeed
-    String referenceReferencePkg
-    String alignmentAlignmentThreshold
-    Boolean distDist
-    String placementPlacementThreshold
-    String pushPushDown
-    String taxonomyTaxonomy
-    String taxonomyTaxonomyNameMapping
-    String alignmentAlignmentDecompositionTree
-    String cutCutOff
+    String? alignment_size
+    String? placement_size
+    String? fragment_chunksize
+    String? distance
+    String? diameter
+    String? decomp_strategy
+    String? tempdir
+    String? output_files_output
+    String? outdir
+    String? config
+    String? tree
+    String? ra_xml
+    String? alignment
+    String? fragment
+    String? molecule
+    String? cpu
+    String? checkpoint
+    String? interval
+    String? random_seed
+    String? reference_pkg
+    String? alignment_threshold
+    Boolean? dist
+    String? placement_threshold
+    String? push_down
+    String? taxonomy
+    String? taxonomy_name_mapping
+    String? alignment_decomposition_tree
+    String? cut_off
+    Boolean? v
   }
   command <<<
     run_tipp.py \
-      ~{if defined(alignmentAlignmentSize) then ("--alignmentSize " +  '"' + alignmentAlignmentSize + '"') else ""} \
-      ~{if defined(placementPlacementSize) then ("--placementSize " +  '"' + placementPlacementSize + '"') else ""} \
-      ~{if defined(fragmentFragmentChunksize) then ("--fragmentChunkSize " +  '"' + fragmentFragmentChunksize + '"') else ""} \
-      ~{if defined(distanceDistance) then ("--distance " +  '"' + distanceDistance + '"') else ""} \
-      ~{if defined(diameterDiameter) then ("--diameter " +  '"' + diameterDiameter + '"') else ""} \
-      ~{if defined(decompDecompStrategy) then ("--decomp_strategy " +  '"' + decompDecompStrategy + '"') else ""} \
-      ~{if defined(tempdirTempdir) then ("--tempdir " +  '"' + tempdirTempdir + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(outdirOutdir) then ("--outdir " +  '"' + outdirOutdir + '"') else ""} \
-      ~{if defined(configConfig) then ("--config " +  '"' + configConfig + '"') else ""} \
-      ~{if defined(treeTree) then ("--tree " +  '"' + treeTree + '"') else ""} \
-      ~{if defined(raRaXml) then ("--raxml " +  '"' + raRaXml + '"') else ""} \
-      ~{if defined(alignmentAlignment) then ("--alignment " +  '"' + alignmentAlignment + '"') else ""} \
-      ~{if defined(fragmentFragment) then ("--fragment " +  '"' + fragmentFragment + '"') else ""} \
-      ~{if defined(moleculeMolecule) then ("--molecule " +  '"' + moleculeMolecule + '"') else ""} \
-      ~{if defined(cpuCpu) then ("--cpu " +  '"' + cpuCpu + '"') else ""} \
-      ~{if defined(checkpointCheckpoint) then ("--checkpoint " +  '"' + checkpointCheckpoint + '"') else ""} \
-      ~{if defined(intervalInterval) then ("--interval " +  '"' + intervalInterval + '"') else ""} \
-      ~{if defined(randomRandomSeed) then ("--randomseed " +  '"' + randomRandomSeed + '"') else ""} \
-      ~{if defined(referenceReferencePkg) then ("--reference_pkg " +  '"' + referenceReferencePkg + '"') else ""} \
-      ~{if defined(alignmentAlignmentThreshold) then ("--alignmentThreshold " +  '"' + alignmentAlignmentThreshold + '"') else ""} \
-      ~{true="--dist" false="" distDist} \
-      ~{if defined(placementPlacementThreshold) then ("--placementThreshold " +  '"' + placementPlacementThreshold + '"') else ""} \
-      ~{if defined(pushPushDown) then ("--push_down " +  '"' + pushPushDown + '"') else ""} \
-      ~{if defined(taxonomyTaxonomy) then ("--taxonomy " +  '"' + taxonomyTaxonomy + '"') else ""} \
-      ~{if defined(taxonomyTaxonomyNameMapping) then ("--taxonomyNameMapping " +  '"' + taxonomyTaxonomyNameMapping + '"') else ""} \
-      ~{if defined(alignmentAlignmentDecompositionTree) then ("--alignmentDecompositionTree " +  '"' + alignmentAlignmentDecompositionTree + '"') else ""} \
-      ~{if defined(cutCutOff) then ("--cutoff " +  '"' + cutCutOff + '"') else ""}
+      ~{if defined(alignment_size) then ("--alignmentSize " +  '"' + alignment_size + '"') else ""} \
+      ~{if defined(placement_size) then ("--placementSize " +  '"' + placement_size + '"') else ""} \
+      ~{if defined(fragment_chunksize) then ("--fragmentChunkSize " +  '"' + fragment_chunksize + '"') else ""} \
+      ~{if defined(distance) then ("--distance " +  '"' + distance + '"') else ""} \
+      ~{if defined(diameter) then ("--diameter " +  '"' + diameter + '"') else ""} \
+      ~{if defined(decomp_strategy) then ("--decomp_strategy " +  '"' + decomp_strategy + '"') else ""} \
+      ~{if defined(tempdir) then ("--tempdir " +  '"' + tempdir + '"') else ""} \
+      ~{if defined(output_files_output) then ("--output " +  '"' + output_files_output + '"') else ""} \
+      ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
+      ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
+      ~{if defined(tree) then ("--tree " +  '"' + tree + '"') else ""} \
+      ~{if defined(ra_xml) then ("--raxml " +  '"' + ra_xml + '"') else ""} \
+      ~{if defined(alignment) then ("--alignment " +  '"' + alignment + '"') else ""} \
+      ~{if defined(fragment) then ("--fragment " +  '"' + fragment + '"') else ""} \
+      ~{if defined(molecule) then ("--molecule " +  '"' + molecule + '"') else ""} \
+      ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
+      ~{if defined(checkpoint) then ("--checkpoint " +  '"' + checkpoint + '"') else ""} \
+      ~{if defined(interval) then ("--interval " +  '"' + interval + '"') else ""} \
+      ~{if defined(random_seed) then ("--randomseed " +  '"' + random_seed + '"') else ""} \
+      ~{if defined(reference_pkg) then ("--reference_pkg " +  '"' + reference_pkg + '"') else ""} \
+      ~{if defined(alignment_threshold) then ("--alignmentThreshold " +  '"' + alignment_threshold + '"') else ""} \
+      ~{true="--dist" false="" dist} \
+      ~{if defined(placement_threshold) then ("--placementThreshold " +  '"' + placement_threshold + '"') else ""} \
+      ~{if defined(push_down) then ("--push_down " +  '"' + push_down + '"') else ""} \
+      ~{if defined(taxonomy) then ("--taxonomy " +  '"' + taxonomy + '"') else ""} \
+      ~{if defined(taxonomy_name_mapping) then ("--taxonomyNameMapping " +  '"' + taxonomy_name_mapping + '"') else ""} \
+      ~{if defined(alignment_decomposition_tree) then ("--alignmentDecompositionTree " +  '"' + alignment_decomposition_tree + '"') else ""} \
+      ~{if defined(cut_off) then ("--cutoff " +  '"' + cut_off + '"') else ""} \
+      ~{true="-v" false="" v}
   >>>
+  parameter_meta {
+    alignment_size: "max alignment subset size of N [default: 10% of the total number of taxa or the placement subset size if given]"
+    placement_size: "max placement subset size of N [default: 10% of the total number of taxa or the alignment length (whichever bigger)]"
+    fragment_chunksize: "maximum fragment chunk size of N. Helps controlling memory. [default: 20000]"
+    distance: "minimum p-distance before stopping the decomposition[default: 1]"
+    diameter: "maximum tree diameter before stopping the decomposition[default: None]"
+    decomp_strategy: "decomposition strategy [default: using tree branch length]"
+    tempdir: "Tempfile files will be written to DIR. Full-path required. [default: /tmp/sepp]"
+    output_files_output: "output files with prefix OUTPUT. [default: output]"
+    outdir: "output to OUTPUT_DIR directory. full-path required. [default: .]"
+    config: "A config file, including options used to run SEPP. Options provided as command line arguments overwrite config file values for those options. [default: None]"
+    tree: "Input tree file (newick format) [default: None]"
+    ra_xml: "RAxML_info file including model parameters, generated by RAxML.[default: None]"
+    alignment: "Aligned fasta file [default: None]"
+    fragment: "fragment file [default: None]"
+    molecule: "Molecule type of sequences. Can be amino, dna, or rna [default: dna]"
+    cpu: "Use N cpus [default: number of cpus available on the machine]"
+    checkpoint: "checkpoint file [default: no checkpointing]"
+    interval: "Interval (in seconds) between checkpoint writes. Has effect only with -cp provided. [default: 3600]"
+    random_seed: "random seed number. [default: 297834]"
+    reference_pkg: "Use a pre-computed reference package [default: None]"
+    alignment_threshold: "Enough alignment subsets are selected to reach a commulative probability of N. This should be a number between 0 and 1 [default: 0.95]"
+    dist: "Treat fragments as distribution"
+    placement_threshold: "Enough placements are selected to reach a commulative probability of N. This should be a number between 0 and 1 [default: 0.95]"
+    push_down: "Whether to classify based on children below or above insertion point. [default: True]"
+    taxonomy: "A file describing the taxonomy. This is a comma- separated text file that has the following fields: taxon_id,parent_id,taxon_name,rank. If there are other columns, they are ignored. The first line is also ignored."
+    taxonomy_name_mapping: "A comma-separated text file mapping alignment sequence names to taxonomic ids. Formats (each line): sequence_name,taxon_id. If there are other columns, they are ignored. The first line is also ignored."
+    alignment_decomposition_tree: "A newick tree file used for decomposing taxa into alignment subsets. [default: the backbone tree]"
+    cut_off: "Placement probability requirement to count toward the distribution. This should be a number between 0 and 1 [default: 0.0]"
+    v: ""
+  }
 }

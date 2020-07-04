@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: scanwise_server.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scanwise_server.cwl
 inputs:
-- id: options
-  doc: -port         port to bind to (default 4050) -compress     use compressed index,
-    for large indexes -hash         use glib hash not array (far slower, but easier
-    on the memory for small DBs) -twohit       use two hit seed HSP strategy (can
-    be faster for big databases) -streamed     use streamed index (more compact, higher
-    run-time) -ocfile       occupancy file for array/streamed indexes (large), for
-    debugging
-  type: string
-  inputBinding:
-    position: 0
 - id: use_vanilla
   doc: use a vanilla implementation only
   type: boolean
@@ -76,6 +66,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -errorstyle
+- id: options
+  doc: -port         port to bind to (default 4050) -compress     use compressed index,
+    for large indexes -hash         use glib hash not array (far slower, but easier
+    on the memory for small DBs) -twohit       use two hit seed HSP strategy (can
+    be faster for big databases) -streamed     use streamed index (more compact, higher
+    run-time) -ocfile       occupancy file for array/streamed indexes (large), for
+    debugging
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

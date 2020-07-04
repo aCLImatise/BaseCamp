@@ -1,11 +1,16 @@
 class: CommandLineTool
-id: rfmix2tagore.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rfmix2tagore.py.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
+- id: chr_one
+  doc: Chromosome 1 RFMix painting
+  type: File
   inputBinding:
-    position: 0
+    prefix: --chr1
+- id: chr_two
+  doc: Chromosome 2 RFMix painting
+  type: File
+  inputBinding:
+    prefix: --chr2
 - id: afr
   doc: Color for African blocks
   type: string

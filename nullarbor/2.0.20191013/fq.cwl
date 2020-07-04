@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fq.cwl
 inputs:
 - id: quiet
   doc: "!        Quiet mode: no progress output (default '0')."
@@ -16,6 +16,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --hist
+- id: file_dot_fq_vertical_line_file_dot_fq_do_tgz_dot_dot_dot
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

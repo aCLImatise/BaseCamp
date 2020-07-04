@@ -2,14 +2,19 @@ version 1.0
 
 task KallistoBus {
   input {
-    Boolean verboseVerbose
-    String? argumentsArguments
-    String? fastFastQFiles
+    Boolean? verbose
+    String? arguments
+    String fast_q_files
   }
   command <<<
     kallisto bus \
-      ~{argumentsArguments} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{fastFastQFiles}
+      ~{arguments} \
+      ~{fast_q_files} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    verbose: "Print out progress information every 1M proccessed reads"
+    arguments: ""
+    fast_q_files: ""
+  }
 }

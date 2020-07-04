@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bubblePopper.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bubblePopper.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

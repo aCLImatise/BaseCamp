@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: chmod.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chmod.cwl
 inputs:
 - id: changes
   doc: like verbose but report only when a change is made
@@ -36,6 +36,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --recursive
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

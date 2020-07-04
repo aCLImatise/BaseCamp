@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sambamba_merge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sambamba_merge.cwl
 inputs:
 - id: n_threads
   doc: number of threads to use for compression/decompression
@@ -27,6 +27,26 @@ inputs:
   type: string
   inputBinding:
     prefix: --filter
+- id: samba_mba_merge
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_dot_bam
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: input_one_dot_bam
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: input_two_dot_bam
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

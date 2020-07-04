@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: deblur_workflow.cwl
+id: ../../../../home/ubuntu/BiocondaCli/deblur_workflow.cwl
 inputs:
 - id: seqs_fp
   doc: Either a Demultiplexed FASTA or FASTQ file including all samples, or a directory

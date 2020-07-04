@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: readsol.cwl
+id: ../../../../home/ubuntu/BiocondaCli/readsol.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

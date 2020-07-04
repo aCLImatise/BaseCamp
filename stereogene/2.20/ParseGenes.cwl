@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ParseGenes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ParseGenes.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

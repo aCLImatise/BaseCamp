@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: assembly_hub_constructor.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/assembly_hub_constructor.pl.cwl
 inputs:
 - id: fa
   doc: Input file in Fasta format.

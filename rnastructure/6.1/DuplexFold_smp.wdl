@@ -2,16 +2,22 @@ version 1.0
 
 task DuplexFoldSmp {
   input {
-    String? duplexDuplexFold
-    String? seqfile1Seqfile1
-    String? seqfile2Seqfile2
-    String? ctCtFile
+    String duplex_fold
+    String seq_file_one
+    String seq_file_two
+    String ct_file
   }
   command <<<
     DuplexFold-smp \
-      ~{duplexDuplexFold} \
-      ~{seqfile1Seqfile1} \
-      ~{seqfile2Seqfile2} \
-      ~{ctCtFile}
+      ~{duplex_fold} \
+      ~{seq_file_one} \
+      ~{seq_file_two} \
+      ~{ct_file}
   >>>
+  parameter_meta {
+    duplex_fold: ""
+    seq_file_one: ""
+    seq_file_two: ""
+    ct_file: ""
+  }
 }

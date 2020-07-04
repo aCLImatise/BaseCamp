@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: chado_admin_restore.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chado_admin_restore.cwl
 inputs:
-- id: dbname
-  doc: name of the database
-  type: string
-  inputBinding:
-    position: 0
-- id: archive
-  doc: archive file
-  type: string
-  inputBinding:
-    position: 1
 - id: verbose
   doc: verbose mode
   type: boolean
@@ -26,6 +16,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --use_password
+- id: dbname
+  doc: name of the database
+  type: string
+  inputBinding:
+    position: 0
+- id: archive
+  doc: archive file
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

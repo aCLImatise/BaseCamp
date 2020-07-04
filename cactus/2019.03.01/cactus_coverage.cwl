@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cactus_coverage.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cactus_coverage.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

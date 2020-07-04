@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tree_events_dlcpar.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tree_events_dlcpar.cwl
 inputs:
 - id: explicit
   doc: set to ignore extra lineages at implied speciation nodes

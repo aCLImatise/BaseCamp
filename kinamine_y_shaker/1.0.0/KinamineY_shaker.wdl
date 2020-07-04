@@ -2,20 +2,28 @@ version 1.0
 
 task KinamineYShaker {
   input {
-    String jarJar
-    String? javaJava
-    String? proteinProteinPilotDistinctPeptideSummary
-    String? fastFastA
-    String? outputOutputDir
-    String? fdrFdr
+    String? jar
+    String java
+    String protein_pilot_distinct_peptide_summary
+    String fast_a
+    String output_dir
+    String fdr
   }
   command <<<
     KinamineY-shaker \
-      ~{javaJava} \
-      ~{if defined(jarJar) then ("-jar " +  '"' + jarJar + '"') else ""} \
-      ~{proteinProteinPilotDistinctPeptideSummary} \
-      ~{fastFastA} \
-      ~{outputOutputDir} \
-      ~{fdrFdr}
+      ~{java} \
+      ~{protein_pilot_distinct_peptide_summary} \
+      ~{fast_a} \
+      ~{output_dir} \
+      ~{fdr} \
+      ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
   >>>
+  parameter_meta {
+    jar: ""
+    java: ""
+    protein_pilot_distinct_peptide_summary: ""
+    fast_a: ""
+    output_dir: ""
+    fdr: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: biopet_extractadaptersfastqc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/biopet_extractadaptersfastqc.cwl
 inputs:
 - id: log_level
   doc: "Level of log information printed. Possible levels: 'debug', 'info', 'warn',\
@@ -49,6 +49,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --outputAsFasta
+- id: extract_adapters_fast_qc
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

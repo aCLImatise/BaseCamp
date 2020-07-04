@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bedpesort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedpesort.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

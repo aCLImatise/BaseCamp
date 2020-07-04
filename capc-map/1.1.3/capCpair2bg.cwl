@@ -1,28 +1,23 @@
 class: CommandLineTool
-id: capCpair2bg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/capCpair2bg.cwl
 inputs:
-- id: options
-  doc: ':'
-  type: string
-  inputBinding:
-    position: 0
-- id: i
+- id: pairfile_input_file
   doc: pairfile       is the input file name; can use this option more than once to
     combine multiple targets into one
   type: boolean
   inputBinding:
     prefix: -i
-- id: o
+- id: bgfile_file_name
   doc: bgfile         is the file name for the output bedGraph
   type: boolean
   inputBinding:
     prefix: -o
-- id: n
+- id: targetname_name_target
   doc: targetname     is the name of the target
   type: boolean
   inputBinding:
     prefix: -n
-- id: t
+- id: chromstartend_genomic_location
   doc: chrom:start-end  is the genomic location of the target site; can use this option
     more than once if multiple pair files are specified.
   type: boolean

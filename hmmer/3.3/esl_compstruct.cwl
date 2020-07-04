@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: esl_compstruct.cwl
+id: ../../../../home/ubuntu/BiocondaCli/esl_compstruct.cwl
 inputs:
-- id: m
+- id: use_mathewsrelaxed_criterion
   doc: ": use Mathews'relaxed criterion for correctness; allow +/-1 slip"
   type: boolean
   inputBinding:
     prefix: -m
-- id: p
+- id: count_pseudoknotted_pairs
   doc: ': count pseudoknotted base pairs'
   type: boolean
   inputBinding:
@@ -16,6 +16,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

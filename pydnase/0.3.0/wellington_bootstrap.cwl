@@ -1,31 +1,6 @@
 class: CommandLineTool
-id: wellington_bootstrap.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wellington_bootstrap.py.cwl
 inputs:
-- id: treatment_bam
-  doc: BAM file for treatment
-  type: string
-  inputBinding:
-    position: 0
-- id: control_bam
-  doc: BAM file for control
-  type: string
-  inputBinding:
-    position: 1
-- id: bed_sites
-  doc: BED file of genomic locations to search in
-  type: string
-  inputBinding:
-    position: 2
-- id: treatment_only_output
-  doc: File to write treatment specific fooprints scores to
-  type: string
-  inputBinding:
-    position: 3
-- id: control_only_output
-  doc: File to write control specific footprint scores to
-  type: string
-  inputBinding:
-    position: 4
 - id: footprint_sizes
   doc: 'Range of footprint sizes to try in format "from,to,step" (default: 11,26,2)'
   type: string
@@ -54,11 +29,36 @@ inputs:
   type: string
   inputBinding:
     prefix: --processes
-- id: a
+- id: atacseq_mode_default
   doc: 'ATAC-seq mode (default: False)'
   type: boolean
   inputBinding:
     prefix: -A
+- id: treatment_bam
+  doc: BAM file for treatment
+  type: string
+  inputBinding:
+    position: 0
+- id: control_bam
+  doc: BAM file for control
+  type: string
+  inputBinding:
+    position: 1
+- id: bed_sites
+  doc: BED file of genomic locations to search in
+  type: string
+  inputBinding:
+    position: 2
+- id: treatment_only_output
+  doc: File to write treatment specific fooprints scores to
+  type: string
+  inputBinding:
+    position: 3
+- id: control_only_output
+  doc: File to write control specific footprint scores to
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

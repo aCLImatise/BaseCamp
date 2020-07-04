@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: run_phipack.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_phipack.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

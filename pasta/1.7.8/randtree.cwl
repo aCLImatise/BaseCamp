@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: randtree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/randtree.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

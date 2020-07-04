@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: dnaplotter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dnaplotter.cwl
 inputs:
-- id: t
+- id: read_template_file
   doc: Read a template file
   type: File
   inputBinding:

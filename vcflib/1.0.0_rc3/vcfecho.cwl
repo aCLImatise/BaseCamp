@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfecho.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfecho.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csb_embd.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csb_embd.cwl
 inputs:
-- id: map_file
-  doc: Input Cryo EM file in CCP4 MRC format
-  type: string
-  inputBinding:
-    position: 0
 - id: psf_size
   doc: size of the point spread function (default=15)
   type: string
@@ -31,6 +26,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: map_file
+  doc: Input Cryo EM file in CCP4 MRC format
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

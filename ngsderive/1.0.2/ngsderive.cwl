@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ngsderive.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ngsderive.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

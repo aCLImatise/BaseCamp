@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: stag_itext2sxpr.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stag_itext2sxpr.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

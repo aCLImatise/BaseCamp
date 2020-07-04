@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: AssemblyPostProcessor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/AssemblyPostProcessor.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

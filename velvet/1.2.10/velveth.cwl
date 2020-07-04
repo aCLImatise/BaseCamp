@@ -1,24 +1,6 @@
 class: CommandLineTool
-id: velveth.cwl
+id: ../../../../home/ubuntu/BiocondaCli/velveth.cwl
 inputs:
-- id: directory
-  doc: ': directory name for output files'
-  type: Directory
-  inputBinding:
-    position: 0
-- id: hash_length
-  doc: ': EITHER an odd integer (if even, it will be decremented) <= 191 (if above,
-    will be reduced) : OR: m,M,s where m and M are odd integers (if not, they will
-    be decremented) with m < M <= 191 (if above, will be reduced) and s is a step
-    (even number). Velvet will then hash from k=m to k=M with a step of s'
-  type: string
-  inputBinding:
-    position: 1
-- id: filename
-  doc: ': path to sequence file or - for standard input'
-  type: File
-  inputBinding:
-    position: 2
 - id: interleaved
   doc: ': File contains paired reads interleaved in the one file (default)'
   type: boolean
@@ -57,6 +39,29 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -create_binary
+- id: directory
+  doc: ': directory name for output files'
+  type: Directory
+  inputBinding:
+    position: 0
+- id: hash_length
+  doc: ': EITHER an odd integer (if even, it will be decremented) <= 191 (if above,
+    will be reduced) : OR: m,M,s where m and M are odd integers (if not, they will
+    be decremented) with m < M <= 191 (if above, will be reduced) and s is a step
+    (even number). Velvet will then hash from k=m to k=M with a step of s'
+  type: string
+  inputBinding:
+    position: 1
+- id: filename
+  doc: ': path to sequence file or - for standard input'
+  type: File
+  inputBinding:
+    position: 2
+- id: directory_slash_sequences
+  doc: '[Both files are picked up by graph, so please leave them there]'
+  type: Directory
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

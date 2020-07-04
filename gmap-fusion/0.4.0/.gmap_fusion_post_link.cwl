@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: .gmap_fusion_post_link.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/.gmap_fusion_post_link.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

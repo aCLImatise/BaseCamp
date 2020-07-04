@@ -2,10 +2,13 @@ version 1.0
 
 task Vmatch {
   input {
-    String? indexIndexName
+    String index_name
   }
   command <<<
     vmatch \
-      ~{indexIndexName}
+      ~{index_name}
   >>>
+  parameter_meta {
+    index_name: ""
+  }
 }

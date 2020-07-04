@@ -1,64 +1,64 @@
 class: CommandLineTool
-id: amrfinder.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/amrfinder.pl.cwl
 inputs:
-- id: h
+- id: help_text
   doc: help text
   type: string
   inputBinding:
     prefix: -h
-- id: v
+- id: version_information
   doc: 'version information '
   type: string
   inputBinding:
     prefix: -v
-- id: u
+- id: amrfinder_database
   doc: AMRFinder database
   type: string
   inputBinding:
     prefix: -U
-- id: d
+- id: directory_containing_database
   doc: Directory containing the AMR database
   type: string
   inputBinding:
     prefix: -d
-- id: o
+- id: tabfile_output_file
   doc: tabfile output to this file instead of STDOUT
   type: File
   inputBinding:
     prefix: -o
-- id: q
+- id: mode_print_messages
   doc: mode (don't print status messages to STDERR)
   type: string
   inputBinding:
     prefix: -q
-- id: p
+- id: aminoacid_sequences_search
   doc: Amino-acid sequences to search using BLASTP and HMMER
   type: string
   inputBinding:
     prefix: -p
-- id: g
+- id: gff_file_indicating
   doc: GFF file indicating genomic location for proteins in -p <protein>
   type: string
   inputBinding:
     prefix: -g
-- id: n
+- id: genomic_sequence_search
   doc: genomic sequence to search using BLASTX
   type: string
   inputBinding:
     prefix: -n
-- id: i
-  doc: <0.9> Minimum proportion identical translated AA residues
-  type: boolean
+- id: minimum_proportion_identical
+  doc: Minimum proportion identical translated AA residues
+  type: string
   inputBinding:
     prefix: -i
-- id: c
-  doc: <0.5> Minimum coverage of reference protein sequence
-  type: boolean
+- id: minimum_coverage_reference
+  doc: Minimum coverage of reference protein sequence
+  type: string
   inputBinding:
     prefix: -c
-- id: t
-  doc: <11> Translation table for blastx
-  type: boolean
+- id: translation_table_blastx
+  doc: Translation table for blastx
+  type: string
   inputBinding:
     prefix: -t
 outputs: []

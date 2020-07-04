@@ -2,20 +2,28 @@ version 1.0
 
 task RunTippTool.py {
   input {
-    String geneGene
-    String actionAction
-    String outputOutput
-    String prefixPrefix
-    String inputInput
-    String thresholdThreshold
+    String? gene
+    String? action
+    String? output_directory
+    String? prefix
+    String? input_destination
+    String? threshold
   }
   command <<<
     run_tipp_tool.py \
-      ~{if defined(geneGene) then ("--gene " +  '"' + geneGene + '"') else ""} \
-      ~{if defined(actionAction) then ("--action " +  '"' + actionAction + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(prefixPrefix) then ("--prefix " +  '"' + prefixPrefix + '"') else ""} \
-      ~{if defined(inputInput) then ("--input " +  '"' + inputInput + '"') else ""} \
-      ~{if defined(thresholdThreshold) then ("--threshold " +  '"' + thresholdThreshold + '"') else ""}
+      ~{if defined(gene) then ("--gene " +  '"' + gene + '"') else ""} \
+      ~{if defined(action) then ("--action " +  '"' + action + '"') else ""} \
+      ~{if defined(output_directory) then ("--output " +  '"' + output_directory + '"') else ""} \
+      ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
+      ~{if defined(input_destination) then ("--input " +  '"' + input_destination + '"') else ""} \
+      ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""}
   >>>
+  parameter_meta {
+    gene: "use GENE's reference package"
+    action: "Run ACTION"
+    output_directory: "OUTPUT directory"
+    prefix: "PREFIX"
+    input_destination: "INPUT destination"
+    threshold: "threshold for classification"
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: findNovelJunctions.cwl
+id: ../../../../home/ubuntu/BiocondaCli/findNovelJunctions.cwl
 inputs:
 - id: or
   doc: ./findNovelJunction refFlat.bed junction.bed

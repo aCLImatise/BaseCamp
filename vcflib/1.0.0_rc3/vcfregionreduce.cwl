@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfregionreduce.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfregionreduce.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

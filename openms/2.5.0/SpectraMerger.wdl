@@ -2,26 +2,31 @@ version 1.0
 
 task SpectraMerger {
   input {
-    File inIn
-    File outOut
-    String mergingMergingMethod
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
-    Boolean algorithmAlgorithm
-    Boolean httpHttp
+    File? in
+    File? out
+    String? merging_method
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     SpectraMerger \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(mergingMergingMethod) then ("-merging_method " +  '"' + mergingMergingMethod + '"') else ""} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp} \
-      ~{true="- algorithm" false="" algorithmAlgorithm} \
-      ~{true="- http" false="" httpHttp}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(merging_method) then ("-merging_method " +  '"' + merging_method + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*               Input mzML file. (valid formats: 'mzML')"
+    out: "*              Output mzML file with merged spectra. (valid formats: 'mzML')"
+    merging_method: "Method of merging which should be used. (default: 'average_gaussian' valid: 'average_gaussian', 'average_tophat', 'precursor_method', 'block_method')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: run_order_regression.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_order_regression.py.cwl
 inputs:
 - id: input
   doc: Input dataset in wide format.

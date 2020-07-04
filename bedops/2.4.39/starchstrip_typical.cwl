@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: starchstrip_typical.cwl
+id: ../../../../home/ubuntu/BiocondaCli/starchstrip_typical.cwl
 inputs:
 - id: include
   doc: Include specified chromosomes from <starch-file>.
@@ -11,6 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --exclude
+- id: starch_strip
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

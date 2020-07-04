@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: kruskal_wallis.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kruskal_wallis.py.cwl
 inputs:
 - id: input
   doc: Input dataset in wide format.

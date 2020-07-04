@@ -1,68 +1,68 @@
 class: CommandLineTool
-id: ProphetModels.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ProphetModels.pl.cwl
 inputs:
-- id: specify
-  doc: file to be processed.
+- id: _specify_pepxml
+  doc: -- Specify pepXML file to be processed.
   type: File
   inputBinding:
-    prefix: -- Specify
-- id: specify
-  doc: prefix indicating decoy to be counted.
+    prefix: -i
+- id: _specify_counted
+  doc: -- Specify protein prefix indicating decoy to be counted.
   type: string
   inputBinding:
-    prefix: -- Specify
-- id: specify
-  doc: prefix indicating decoy to be excluded.
+    prefix: -d
+- id: _specify_excluded
+  doc: -- Specify protein prefix indicating decoy to be excluded.
   type: string
   inputBinding:
-    prefix: -- Specify
-- id: specify
-  doc: ratio. Will guess from P<0.001 hits if not specified.
+    prefix: -x
+- id: _specify_decoy
+  doc: -- Specify decoy ratio. Will guess from P<0.001 hits if not specified.
   type: string
   inputBinding:
-    prefix: -- Specify
-- id: specify
-  doc: for Prob/Prob plot. Default 100
+    prefix: -r
+- id: _specify_window
+  doc: -- Specify window for Prob/Prob plot. Default 100
   type: string
   inputBinding:
-    prefix: -- Specify
-- id: k
+    prefix: -w
+- id: _delete_files
   doc: -- Don't delete intermediate files.
   type: boolean
   inputBinding:
     prefix: -k
-- id: m
+- id: _make_probprob
   doc: -- Make Prob/Prob and Corr/Corr plots.
   type: boolean
   inputBinding:
     prefix: -M
-- id: u
+- id: unique_sequences_iprophet
   doc: -- Consider only top probabilities of unique peptide sequences for iProphet.
   type: boolean
   inputBinding:
     prefix: -u
-- id: q
+- id: unique_sequences_peptideprophet
   doc: -- Consider only top probabilities of unique peptide sequences for PeptideProphet.
   type: boolean
   inputBinding:
     prefix: -q
-- id: n
+- id: unique_peptide_ions
   doc: -- Consider only top probabilities of unique peptide ions for PeptideProphet.
   type: boolean
   inputBinding:
     prefix: -n
-- id: t
+- id: _consider_probabilities
   doc: -- Consider only top probabilities for each PSMs
   type: boolean
   inputBinding:
     prefix: -T
-- id: p
+- id: _provide_protein
   doc: -- Provide simplistic protein ROC plot. Only uniquely-mapped proteins counted
     with prob = max prob of mapping peptides.
   type: boolean
   inputBinding:
     prefix: -P
-- id: g
+- id: _generate_plots
   doc: -- Generate plots using Gnuplot, as opposed to inserting analysis data into
     source pepXML file.
   type: boolean

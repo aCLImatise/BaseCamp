@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: funannotate_species.cwl
+id: ../../../../home/ubuntu/BiocondaCli/funannotate_species.cwl
 inputs:
-- id: species_py
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: s
   doc: ''
   type: string
@@ -26,6 +21,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -d
+- id: species_do_tpy
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

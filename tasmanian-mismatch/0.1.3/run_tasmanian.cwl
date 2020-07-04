@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: run_tasmanian.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_tasmanian.cwl
 inputs:
 - id: fragment_length
   doc: (use fragments withi these lengths ONLY)

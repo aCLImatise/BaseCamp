@@ -2,16 +2,16 @@ version 1.0
 
 task Happer {
   input {
-    Boolean vV
-    File oO
-    String? seqSeqFile
-    String? bedBed
+    File? out
+    Boolean? v
   }
   command <<<
     happer \
-      ~{seqSeqFile} \
-      ~{true="-v" false="" vV} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{bedBed}
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
+      ~{true="-v" false="" v}
   >>>
+  parameter_meta {
+    out: "write haplotype sequences to the specified file; default is the terminal (stdout)"
+    v: ""
+  }
 }

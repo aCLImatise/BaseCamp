@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: segtools_flatten.cwl
+id: ../../../../home/ubuntu/BiocondaCli/segtools_flatten.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: segmentation
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: quiet
   doc: Do not print diagnostic messages.
   type: boolean
@@ -35,6 +25,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --filter
+- id: segmentation_dot_dot_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

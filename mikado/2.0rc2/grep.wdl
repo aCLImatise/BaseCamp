@@ -1,21 +1,35 @@
 version 1.0
 
-task Grep.pyIdsOut {
+task Grep.pyOut {
   input {
-    Boolean vV
-    String sS
-    String fF
-    Boolean qQ
-    String? targetTarget
-    String? outOut
+    Boolean? v
+    String? s
+    String? f
+    Boolean? q
+    String grep_do_tpy
+    String ids
+    String target
+    String? out
   }
   command <<<
-    grep.py ids out \
-      ~{targetTarget} \
-      ~{true="-v" false="" vV} \
-      ~{if defined(sS) then ("-s " +  '"' + sS + '"') else ""} \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""} \
-      ~{true="-q" false="" qQ} \
-      ~{outOut}
+    grep.py out \
+      ~{grep_do_tpy} \
+      ~{ids} \
+      ~{target} \
+      ~{out} \
+      ~{true="-v" false="" v} \
+      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
+      ~{true="-q" false="" q}
   >>>
+  parameter_meta {
+    v: ""
+    s: ""
+    f: ""
+    q: ""
+    grep_do_tpy: ""
+    ids: ""
+    target: ""
+    out: ""
+  }
 }

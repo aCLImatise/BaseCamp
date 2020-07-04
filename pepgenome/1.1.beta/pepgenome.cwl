@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pepgenome.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pepgenome.cwl
 inputs:
 - id: chr
   doc: 'Export chr prefix Allowed 0, 1  (default: 0)'
@@ -74,6 +74,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -spark_master
+- id: arguments
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

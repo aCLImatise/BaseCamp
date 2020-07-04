@@ -1,32 +1,28 @@
 class: CommandLineTool
-id: plot_sequence_properties.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/plot_sequence_properties.py_input_fastx.cwl
 inputs:
-- id: input_fast_x
-  doc: 'Input (default: stdin).'
-  type: string
-  inputBinding:
-    position: 0
 - id: f
-  doc: Input format (fastq).
+  doc: ''
   type: string
   inputBinding:
     prefix: -f
 - id: b
-  doc: Number of bins on histograms (50).
+  doc: ''
   type: string
   inputBinding:
     prefix: -b
 - id: r
-  doc: Report pdf (plot_sequence_properties.pdf).
+  doc: ''
   type: string
   inputBinding:
     prefix: -r
-- id: j
-  doc: Produce joint plot of lengths and mean quality values (False).
-  type: boolean
+- id: plot_sequence_properties_do_tpy
+  doc: ''
+  type: string
   inputBinding:
-    prefix: -j
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - plot_sequence_properties.py
+- input_fastx

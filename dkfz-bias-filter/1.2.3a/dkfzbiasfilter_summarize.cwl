@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dkfzbiasfilter_summarize.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dkfzbiasfilter_summarize.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

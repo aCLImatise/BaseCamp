@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: kinPlot.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kinPlot.R.cwl
 inputs:
-- id: h
+- id: input_file_header
   doc: Input file has a header which is used to name the state columns.
   type: boolean
   inputBinding:
     prefix: -H
-- id: l
+- id: use_linear_time
   doc: Use linear instead of logarithmic time
   type: boolean
   inputBinding:
     prefix: -l
-- id: c
+- id: cut_plot_reached
   doc: Cut off plot when equilibrium is reached
   type: boolean
   inputBinding:

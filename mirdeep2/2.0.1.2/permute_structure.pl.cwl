@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: permute_structure.pl.orig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/permute_structure.pl.orig.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

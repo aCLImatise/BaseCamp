@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: convert_fastaqual_fastq.py.cwl
-inputs:
-- id: fast_a_file_path
-  doc: Input FASTA or FASTQ file. [REQUIRED]
-  type: string
-  inputBinding:
-    prefix: --fasta_file_path
+id: ../../../../home/ubuntu/BiocondaCli/convert_fastaqual_fastq.py.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,6 +1,21 @@
 class: CommandLineTool
-id: atlas_walk.cwl
+id: ../../../../home/ubuntu/BiocondaCli/atlas_walk.cwl
 inputs:
+- id: k
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -k
+- id: tmp
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --tmp
+- id: keep_tmp
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --keep_tmp
 - id: sample
   doc: sample id
   type: string

@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: bwa_pac2bwtgen.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bwa_pac2bwtgen.cwl
 inputs:
 - id: bwt_gen
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: in_pac
+- id: in_dot_pac
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: out_bwt
+- id: out_dot_bwt
   doc: ''
   type: string
   inputBinding:

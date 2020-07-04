@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: vtools_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vtools_filter.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: input
   doc: Path to input VCF file  [required]
   type: File

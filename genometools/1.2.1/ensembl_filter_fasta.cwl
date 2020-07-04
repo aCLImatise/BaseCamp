@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ensembl_filter_fasta.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ensembl_filter_fasta.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

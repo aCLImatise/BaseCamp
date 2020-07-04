@@ -2,16 +2,22 @@ version 1.0
 
 task FermiSub {
   input {
-    Boolean cC
-    String tT
-    String? inInFmd
-    String? arrayArrayBits
+    Boolean? c
+    String? t
+    String in_dot_fmd
+    String array_dot_bits
   }
   command <<<
     fermi sub \
-      ~{inInFmd} \
-      ~{true="-c" false="" cC} \
-      ~{if defined(tT) then ("-t " +  '"' + tT + '"') else ""} \
-      ~{arrayArrayBits}
+      ~{in_dot_fmd} \
+      ~{array_dot_bits} \
+      ~{true="-c" false="" c} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
   >>>
+  parameter_meta {
+    c: ""
+    t: ""
+    in_dot_fmd: ""
+    array_dot_bits: ""
+  }
 }

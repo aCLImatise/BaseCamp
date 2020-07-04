@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_assembly_parse_trinity_coverage_log.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_assembly_parse_trinity_coverage_log.cwl
 inputs:
 - id: log
   doc: The log file to parse

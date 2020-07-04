@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: draw_basepair_track.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/draw_basepair_track.pl.cwl
 inputs:
 - id: thickness
   doc: Thickness in pixels of the drawn lines. Defaults to 2.
@@ -21,6 +21,15 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --nolinks
+- id: bin_slash_draw_base_pair_track_do_tpl
+  doc: --gff <GFF file>                      \ [ --out <JSON directory> ]            \
+    [ --tracklabel <track identifier> ]   \ [ --key <human-readable track name> ]
+    \ [ --bgcolor <R,G,B> ]                 \ [ --fgcolor <R,G,B> ]                 \
+    [ --thickness <line thickness> ]      \ [ --width <tile width> ]              \
+    [ --height <tile height> ]            \ [ --nolinks ]
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

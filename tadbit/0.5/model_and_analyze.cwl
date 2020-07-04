@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: model_and_analyze.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/model_and_analyze.py.cwl
 inputs:
 - id: cfg
   doc: path to a configuration file with predefined parameters

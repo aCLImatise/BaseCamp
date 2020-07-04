@@ -1,12 +1,27 @@
 class: CommandLineTool
-id: shark.cwl
+id: ../../../../home/ubuntu/BiocondaCli/shark.cwl
 inputs:
-- id: out1
+- id: reference
+  doc: reference sequences in FASTA format (can be gzipped)
+  type: boolean
+  inputBinding:
+    prefix: --reference
+- id: sample_one
+  doc: sample in FASTQ (can be gzipped)
+  type: boolean
+  inputBinding:
+    prefix: --sample1
+- id: sample_two
+  doc: second sample in FASTQ (optional, can be gzipped)
+  type: boolean
+  inputBinding:
+    prefix: --sample2
+- id: out_one
   doc: 'first output sample in FASTQ (default: sharked_sample.1)'
   type: boolean
   inputBinding:
     prefix: --out1
-- id: out2
+- id: out_two
   doc: 'second output sample in FASTQ (default: sharked_sample.2)'
   type: boolean
   inputBinding:
@@ -47,6 +62,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: optional
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: arguments
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

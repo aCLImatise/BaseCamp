@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pepdigest.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pepdigest.cwl
 inputs:
 - id: menu
   doc: 'menu       [1] Select number (Values: 1 (Trypsin); 2 (Lys-C); 3 (Arg-C); 4

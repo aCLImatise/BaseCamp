@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: vcf_annotator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf_annotator.cwl
 inputs:
+- id: output
+  doc: File to write VCF output to (Default STDOUT).
+  type: string
+  inputBinding:
+    prefix: --output
 - id: vcf_file
   doc: VCF file of variants
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: output
-  doc: File to write VCF output to (Default STDOUT).
-  type: string
-  inputBinding:
-    prefix: --output
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,10 +2,13 @@ version 1.0
 
 task Dng {
   input {
-    String? commandCommand
+    String var_command
   }
   command <<<
     dng \
-      ~{commandCommand}
+      ~{var_command}
   >>>
+  parameter_meta {
+    var_command: ""
+  }
 }

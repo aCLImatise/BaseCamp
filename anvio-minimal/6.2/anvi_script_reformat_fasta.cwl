@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_script_reformat_fasta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_script_reformat_fasta.cwl
 inputs:
 - id: min_len
   doc: Minimum length of contigs to keep (contigs shorter than this value will not
@@ -14,13 +14,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --max-percentage-gaps
-- id: i
+- id: file__excludeids
   doc: FILE, --exclude-ids TXT FILE IDs to remove from the FASTA file. You cannot
     provide both --keep-ids and --exclude-ids.
   type: string
   inputBinding:
     prefix: -i
-- id: i
+- id: file__keepids
   doc: FILE, --keep-ids TXT FILE If provided, all IDs not in this file will be excluded
     from the reformatted FASTA file. Any additional filters (such as --min-len) will
     still be applied to the IDs in this file. You cannot provide both --exclude-ids
@@ -28,7 +28,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -I
-- id: o
+- id: file__outputfile
   doc: FILE, --output-file FASTA FILE Output file path.
   type: string
   inputBinding:
@@ -45,7 +45,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --prefix
-- id: r
+- id: file__reportfile
   doc: FILE, --report-file REPORT FILE Report file path. When you run this program
     with `--simplify-names` flag, all changes to deflines will be reported in this
     file in case you need to go back to this information later. It is not mandatory

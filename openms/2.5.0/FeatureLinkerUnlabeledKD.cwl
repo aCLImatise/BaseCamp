@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FeatureLinkerUnlabeledKD.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FeatureLinkerUnlabeledKD.cwl
 inputs:
 - id: in
   doc: "*        Input files separated by blanks (valid formats: 'featureXML', 'consensusXML')"
@@ -42,16 +42,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Algorithm parameters section
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
-- id: http
-  doc: ://www.openms.de/documentation/TOPP_FeatureLinkerUnlabeledKD.html
-  type: boolean
-  inputBinding:
-    prefix: '- http'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

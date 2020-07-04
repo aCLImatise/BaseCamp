@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mkhead.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mkhead.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

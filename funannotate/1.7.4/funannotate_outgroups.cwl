@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: funannotate_outgroups.cwl
+id: ../../../../home/ubuntu/BiocondaCli/funannotate_outgroups.cwl
 inputs:
-- id: arguments
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: input
   doc: 'Proteome multi-fasta file. Required. '
   type: boolean
@@ -31,6 +26,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --database
+- id: arguments
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

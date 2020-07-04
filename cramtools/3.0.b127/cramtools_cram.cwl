@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cramtools_cram.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cramtools_cram.cwl
 inputs:
 - id: capture_all_tags
   doc: 'Capture all tags. (default: false)'
@@ -16,7 +16,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --encrypt
-- id: ignore_md5_mismatch
+- id: ignore_md_five_mismatch
   doc: 'Fail on MD5 mismatch if true, or correct (overwrite) the checksums and continue
     if false. (default: false)'
   type: boolean
@@ -80,6 +80,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --log-level
+- id: main_class
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

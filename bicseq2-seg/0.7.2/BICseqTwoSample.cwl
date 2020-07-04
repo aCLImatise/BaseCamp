@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: BICseqTwoSample.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/BICseqTwoSample.pl.cwl
 inputs:
 - id: lambda
   doc: ': the (positive) penalty used for BIC-seq'
@@ -7,7 +7,7 @@ inputs:
   inputBinding:
     prefix: --lambda
 - id: tmp
-  doc: ': the tmp directory; If unspecified, use /tmp/tmpq0pilrwk/bin/tmp/'
+  doc: ': the tmp directory; If unspecified, use /tmp/tmpsomb5k_a/bin/tmp/'
   type: string
   inputBinding:
     prefix: --tmp

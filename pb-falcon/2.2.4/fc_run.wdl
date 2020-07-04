@@ -2,12 +2,19 @@ version 1.0
 
 task FcRun.pyLogger {
   input {
-    String? configConfig
-    String? loggerLogger
+    String fc_run_do_tpy
+    String config
+    String? logger
   }
   command <<<
     fc_run.py logger \
-      ~{configConfig} \
-      ~{loggerLogger}
+      ~{fc_run_do_tpy} \
+      ~{config} \
+      ~{logger}
   >>>
+  parameter_meta {
+    fc_run_do_tpy: ""
+    config: ""
+    logger: ""
+  }
 }

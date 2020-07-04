@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: iva_qc_make_db.cwl
+id: ../../../../home/ubuntu/BiocondaCli/iva_qc_make_db.cwl
 inputs:
-- id: directory_name
-  doc: Name of output directory
-  type: Directory
-  inputBinding:
-    position: 0
 - id: add_to_ref
   doc: 'Filename of Genbank IDs or GI numbers to be added to database. Format is:
     whitespace separated list of GI numbers on each line. One line defines one genome
@@ -39,6 +34,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: directory_name
+  doc: Name of output directory
+  type: Directory
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

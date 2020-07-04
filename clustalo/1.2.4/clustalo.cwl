@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: clustalo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clustalo.cwl
 inputs:
 - id: in_file
   doc: ={<file>,-} Multiple sequence input file (- for stdin)
@@ -21,12 +21,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --dealign
-- id: profile_1
+- id: profile_one
   doc: Pre-aligned multiple sequence file (aligned columns will be kept fix)
   type: File
   inputBinding:
     prefix: --profile1
-- id: profile_2
+- id: profile_two
   doc: Pre-aligned multiple sequence file (aligned columns will be kept fix)
   type: File
   inputBinding:
@@ -201,6 +201,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --force
+- id: hv
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -hv
 outputs: []
 cwlVersion: v1.1
 baseCommand:

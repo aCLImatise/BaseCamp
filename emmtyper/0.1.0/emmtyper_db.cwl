@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: emmtyper_db.cwl
+id: ../../../../home/ubuntu/BiocondaCli/emmtyper_db.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

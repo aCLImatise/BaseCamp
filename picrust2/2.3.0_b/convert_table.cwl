@@ -1,13 +1,6 @@
 class: CommandLineTool
-id: convert_table.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/convert_table.py.cwl
 inputs:
-- id: input
-  doc: 'Input table to convert. If there are multiple input files (e.g. if multiple
-    HUMAnN2 gene tables for different samples should be converted to a single PICRUSt2
-    table) then specify them all: file1 file2 file3...'
-  type: string
-  inputBinding:
-    position: 0
 - id: output
   doc: Path to output. Corresponds to folder name if multiple files are output, otherwise
     it will be a filename.
@@ -28,6 +21,18 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --raw_abun
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: input
+  doc: 'Input table to convert. If there are multiple input files (e.g. if multiple
+    HUMAnN2 gene tables for different samples should be converted to a single PICRUSt2
+    table) then specify them all: file1 file2 file3...'
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

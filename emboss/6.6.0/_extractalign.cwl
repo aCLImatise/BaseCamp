@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _extractalign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_extractalign.cwl
 inputs:
 - id: regions
   doc: 'range      [Whole sequence] Regions to extract. A set of regions is specified

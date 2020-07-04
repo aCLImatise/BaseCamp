@@ -2,14 +2,19 @@ version 1.0
 
 task SnpSites {
   input {
-    Boolean rmvRmvPcBhv
-    String oO
-    File? fileFile
+    Boolean? rmv_pc_bhv
+    String? o
+    File file
   }
   command <<<
     snp-sites \
-      ~{fileFile} \
-      ~{true="-rmvpcbhV" false="" rmvRmvPcBhv} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""}
+      ~{file} \
+      ~{true="-rmvpcbhV" false="" rmv_pc_bhv} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    rmv_pc_bhv: ""
+    o: ""
+    file: ""
+  }
 }

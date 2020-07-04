@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: tab2feature_gxt.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tab2feature_gxt.pl.cwl
 inputs:
-- id: n
+- id: name_chromosome_track
   doc: ':          Name of the chromosome track (default: Features )'
   type: string
   inputBinding:
     prefix: -n
-- id: o
+- id: _organism
   doc: ':           Organism'
   type: string
   inputBinding:
@@ -16,21 +16,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -gv
-- id: d
+- id: track_description_tabs
   doc: ':          Track description (Tabs will be converted to spaces, default: empty)'
   type: string
   inputBinding:
     prefix: -d
-- id: c
-  doc: ":           Fix the max color for all features to be str (e.g., '255,0,0,1')"
-  type: string
-  inputBinding:
-    prefix: -c
-- id: c
-  doc: "<num>:            Fix the max color for feature <num> to be str (e.g., '255,0,0,1')"
-  type: boolean
-  inputBinding:
-    prefix: -c
 - id: cs
   doc: ':         Fix the max color for features that contain words from the list
     to colors specified in the list. The format of list is: <str1;color1;...> for
@@ -38,16 +28,6 @@ inputs:
   type: string
   inputBinding:
     prefix: -cs
-- id: mc
-  doc: ":          Fix the min color for all features to be str (e.g., '255,0,0,1')"
-  type: string
-  inputBinding:
-    prefix: -mc
-- id: mc
-  doc: "<num> <str>:     Fix the min color for feature <num> to be str (e.g., '255,0,0,1')"
-  type: boolean
-  inputBinding:
-    prefix: -mc
 - id: zero_c
   doc: ':       Fix the zero color intensity for all features to be num'
   type: string
@@ -63,27 +43,12 @@ inputs:
   type: string
   inputBinding:
     prefix: -maxc
-- id: minc
-  doc: '<num1> <num2>: Fix the min color intensity for feature <num1> to be <num2>'
-  type: boolean
-  inputBinding:
-    prefix: -minc
-- id: max_c
-  doc: '<num1> <num2>: Fix the max color intensity for feature <num1> to be <num2>'
-  type: boolean
-  inputBinding:
-    prefix: -maxc
-- id: zero_c
-  doc: <num1> <num2>:Fix the zero color intensity for feature <num1> to be <num2>
-  type: boolean
-  inputBinding:
-    prefix: -zeroc
-- id: m
+- id: display_mode_types
   doc: ':           Display mode (Full/Packed/Dense/By Types) (default: By Types)'
   type: string
   inputBinding:
     prefix: -m
-- id: l
+- id: location_display_mode
   doc: ':           Location Display mode (Color gradient/Filled box/Unfilled box/Filled
     oval/Unfilled oval) (default: Color gradient)'
   type: string
@@ -119,7 +84,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ai
-- id: v
+- id: _feature_vector
   doc: ':                 Feature vector'
   type: boolean
   inputBinding:

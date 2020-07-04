@@ -2,10 +2,13 @@ version 1.0
 
 task PyprophetStatistics {
   input {
-    String? optionsOptions
+    File? in
   }
   command <<<
     pyprophet statistics \
-      ~{optionsOptions}
+      ~{if defined(in) then ("--in " +  '"' + in + '"') else ""}
   >>>
+  parameter_meta {
+    in: "PyProphet input file.  [required]"
+  }
 }

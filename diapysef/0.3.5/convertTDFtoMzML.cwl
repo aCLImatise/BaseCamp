@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: convertTDFtoMzML.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/convertTDFtoMzML.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

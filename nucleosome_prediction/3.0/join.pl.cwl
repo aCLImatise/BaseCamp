@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: join.pl.bak.cwl
+id: ../../../../home/ubuntu/BiocondaCli/join.pl.bak.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: som.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/som.py.cwl
 inputs:
-- id: truth
-  doc: Truth VCF file
-  type: string
-  inputBinding:
-    position: 0
-- id: query
-  doc: Query VCF file
-  type: string
-  inputBinding:
-    position: 1
 - id: output
   doc: Output file prefix for statistics and feature table (when selected)
   type: string
@@ -94,9 +84,8 @@ inputs:
   inputBinding:
     prefix: --include-nonpass
 - id: feature_table
-  doc: '{hcc.strelka.snv,hcc.pisces.snv,hcc.mutect.snv,hcc.varscan2.indel,admix.strelka.snv,generic,hcc.pisces.indel,hcc.strelka.indel,admix.strelka.indel,hcc.varscan2.snv,hcc.mutect.indel}
-    Select a feature table to output.'
-  type: boolean
+  doc: Select a feature table to output.
+  type: string
   inputBinding:
     prefix: --feature-table
 - id: happy_stats
@@ -124,22 +113,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --normalize-all
-- id: fix_chr_truth
+- id: add_chr_prefix
   doc: 'Add chr prefix to truth file (default: true).'
   type: boolean
   inputBinding:
     prefix: --fixchr-truth
-- id: fix_chr_query
+- id: add_chr_true
   doc: 'Add chr prefix to query file (default: true).'
   type: boolean
   inputBinding:
     prefix: --fixchr-query
-- id: fix_chr_truth
+- id: same__fixchrtruth
   doc: Same as --fixchr-truth.
   type: boolean
   inputBinding:
     prefix: --fix-chr-truth
-- id: fix_chr_query
+- id: same__fixchrquery
   doc: Same as --fixchr-query.
   type: boolean
   inputBinding:
@@ -160,10 +149,9 @@ inputs:
   inputBinding:
     prefix: --no-order-check
 - id: roc
-  doc: '{varscan2.indel,strelka.snv.qss,mutect.snv,strelka.snv,strelka.indel.evs,varscan2.snv,mutect.indel,strelka.indel,strelka.snv.vqsr}
-    Create a ROC-style table. This is caller specific - this will override the --feature-table
-    switch!'
-  type: boolean
+  doc: Create a ROC-style table. This is caller specific - this will override the
+    --feature-table switch!
+  type: string
   inputBinding:
     prefix: --roc
 - id: bin_afs
@@ -223,6 +211,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: truth
+  doc: Truth VCF file
+  type: string
+  inputBinding:
+    position: 0
+- id: query
+  doc: Query VCF file
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

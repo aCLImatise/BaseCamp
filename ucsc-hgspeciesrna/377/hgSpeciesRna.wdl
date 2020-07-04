@@ -2,20 +2,28 @@ version 1.0
 
 task HgSpeciesRna {
   input {
-    Boolean estEst
-    File filterFilter
-    String? databaseDatabase
-    String? genusGenus
-    String? speciesSpecies
-    String? outputOutputFa
+    Boolean? est
+    File? filter
+    String database
+    String genus
+    String species
+    String output_dot_fa
   }
   command <<<
     hgSpeciesRna \
-      ~{databaseDatabase} \
-      ~{true="-est" false="" estEst} \
-      ~{if defined(filterFilter) then ("-filter " +  '"' + filterFilter + '"') else ""} \
-      ~{genusGenus} \
-      ~{speciesSpecies} \
-      ~{outputOutputFa}
+      ~{database} \
+      ~{genus} \
+      ~{species} \
+      ~{output_dot_fa} \
+      ~{true="-est" false="" est} \
+      ~{if defined(filter) then ("-filter " +  '"' + filter + '"') else ""}
   >>>
+  parameter_meta {
+    est: "- If set will get ESTs rather than mRNAs"
+    filter: "- only read accessions listed in file"
+    database: ""
+    genus: ""
+    species: ""
+    output_dot_fa: ""
+  }
 }

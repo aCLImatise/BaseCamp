@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: renameIds.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/renameIds.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

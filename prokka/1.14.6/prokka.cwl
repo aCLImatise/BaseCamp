@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: prokka.cwl
+id: ../../../../home/ubuntu/BiocondaCli/prokka.cwl
 inputs:
-- id: contigs_fast_a
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: citation
   doc: Print citation for referencing Prokka
   type: boolean
@@ -22,7 +17,7 @@ inputs:
   inputBinding:
     prefix: --debug
 - id: db_dir
-  doc: "[X]        Prokka database root folders (default '/tmp/tmp_z0bvsrs/db')"
+  doc: "[X]        Prokka database root folders (default '/tmp/tmp7h3k3e00/db')"
   type: boolean
   inputBinding:
     prefix: --dbdir
@@ -223,6 +218,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --rnammer
+- id: contigs_dot_fast_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

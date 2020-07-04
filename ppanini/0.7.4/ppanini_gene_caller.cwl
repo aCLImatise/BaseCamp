@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ppanini_gene_caller.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ppanini_gene_caller.cwl
 inputs:
 - id: contig
   doc: contigs file (fna)
@@ -32,8 +32,8 @@ inputs:
   inputBinding:
     prefix: --resume
 - id: threads
-  doc: '<1>         number of threads/processes [DEFAULT: 1]'
-  type: boolean
+  doc: 'number of threads/processes [DEFAULT: 1]'
+  type: string
   inputBinding:
     prefix: --threads
 - id: one_contig

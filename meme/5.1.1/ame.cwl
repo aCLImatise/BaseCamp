@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: ame.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ame.cwl
 inputs:
-- id: o
+- id: output_dir_output
   doc: <output dir> output directory; default=ame_out
   type: boolean
   inputBinding:
@@ -112,6 +112,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: sequence_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: motif_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

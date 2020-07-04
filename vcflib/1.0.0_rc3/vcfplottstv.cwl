@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfplottstv.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfplottstv.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

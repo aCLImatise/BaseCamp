@@ -1,27 +1,17 @@
 class: CommandLineTool
-id: echoscu.cwl
+id: ../../../../home/ubuntu/BiocondaCli/echoscu.cwl
 inputs:
-- id: peer
-  doc: hostname of DICOM peer
-  type: string
-  inputBinding:
-    position: 0
-- id: port
-  doc: tcp/ip port number of peer
-  type: string
-  inputBinding:
-    position: 1
-- id: q
+- id: _quiet_quiet
   doc: --quiet              quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose            verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug              debug mode, print debug information
   type: boolean
   inputBinding:
@@ -120,6 +110,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ic
+- id: peer
+  doc: hostname of DICOM peer
+  type: string
+  inputBinding:
+    position: 0
+- id: port
+  doc: tcp/ip port number of peer
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

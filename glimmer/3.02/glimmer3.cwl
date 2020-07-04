@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: glimmer3.cwl
+id: ../../../../home/ubuntu/BiocondaCli/glimmer3.cwl
 inputs:
+- id: stop_codons
+  doc: 'Use comma-separated list of codons as stop codons Sample format:  -Z tag,tga,taa'
+  type: string
+  inputBinding:
+    prefix: --stop_codons
 - id: sequence_file
   doc: ''
   type: string
@@ -16,11 +21,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: stop_codons
-  doc: 'Use comma-separated list of codons as stop codons Sample format:  -Z tag,tga,taa'
-  type: string
-  inputBinding:
-    prefix: --stop_codons
 outputs: []
 cwlVersion: v1.1
 baseCommand:

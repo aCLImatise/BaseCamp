@@ -1,18 +1,31 @@
 class: CommandLineTool
-id: motif_fit_D.cwl
+id: ../../../../home/ubuntu/BiocondaCli/motif_fit_D.cwl
 inputs:
-- id: eps
-  doc: 'The maximum distance between two samples for them to be considered as in the
-    same neighborhood. (default: 0.2)'
+- id: i
+  doc: ''
   type: string
   inputBinding:
-    prefix: --eps
-- id: min_samples
-  doc: 'The number of samples (or total weight) in a neighborhood for a point to be
-    considered as a core point. This includes the point itself. (default: 3)'
-  type: long
+    prefix: -i
+- id: t
+  doc: ''
+  type: string
   inputBinding:
-    prefix: --min-samples
+    prefix: -t
+- id: d
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -d
+- id: motif
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: fit
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

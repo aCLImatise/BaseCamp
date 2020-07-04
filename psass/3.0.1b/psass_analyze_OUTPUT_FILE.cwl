@@ -1,21 +1,26 @@
 class: CommandLineTool
-id: psass_analyze_OUTPUT_FILE.cwl
+id: ../../../../home/ubuntu/BiocondaCli/psass_analyze_OUTPUT_FILE.cwl
 inputs:
-- id: options
+- id: ps_ass
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: input_file
+- id: analyze
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: output_file
+- id: input_file
   doc: ''
   type: string
   inputBinding:
     position: 2
+- id: output_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

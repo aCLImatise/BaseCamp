@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gbmunge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gbmunge.cwl
 inputs:
 - id: i
   doc: ''

@@ -1,12 +1,7 @@
 class: CommandLineTool
-id: SpydrPick.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SpydrPick.cwl
 inputs:
-- id: alignment_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: v
+- id: _be_verbose
   doc: '[ --verbose ]                      Be verbose.'
   type: boolean
   inputBinding:
@@ -49,13 +44,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-aracne
-- id: t
+- id: arg_number_threads
   doc: '[ --threads ] arg (=-1)            Number of threads per MPI/shared memory
     node (-1=use all hardware threads that  the OS/environment exposes).'
   type: boolean
   inputBinding:
     prefix: -t
-- id: alignment_file
+- id: input_alignment_filenames
   doc: The input alignment filename(s). When  two filenames are specified, only  inter-alignment
     links will be probed  for.
   type: string
@@ -176,7 +171,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --end
-- id: o
+- id: arg_aracneout_aracne
   doc: '[ --aracne-outputfile ] arg (=aracne.out) The ARACNE output filename. This
     is a  binary file for "plot.r".'
   type: boolean
@@ -198,6 +193,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --aracne-node-grouping-size
+- id: var_36
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

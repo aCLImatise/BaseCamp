@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MergeScaffoldsBySynteny.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MergeScaffoldsBySynteny.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

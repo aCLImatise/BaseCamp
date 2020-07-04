@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: addFeatureToMatrix.cwl
+id: ../../../../home/ubuntu/BiocondaCli/addFeatureToMatrix.cwl
 inputs:
 - id: matrix
   doc: 'deeptools matrix (default: None)'
@@ -11,12 +11,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
-- id: feature
-  doc: '.tables TABLES [TABLES ...], -t TABLES [TABLES ...] gene id tables or name
-    based tables, tables should be space-separated. (default: None)'
-  type: boolean
+- id: feature_dot_tables
+  doc: 'gene id tables or name based tables, tables should be space-separated. (default:
+    None)'
+  type: string[]
   inputBinding:
-    prefix: --feature
+    prefix: --feature.tables
 - id: annotation_feature
   doc: 'annotation file can be filtered by a feature such as gene, exon or transcript
     (default: None)'

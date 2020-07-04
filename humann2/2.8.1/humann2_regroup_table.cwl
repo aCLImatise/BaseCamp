@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: humann2_regroup_table.cwl
+id: ../../../../home/ubuntu/BiocondaCli/humann2_regroup_table.cwl
 inputs:
 - id: input
   doc: Original output table (tsv or biom format); default=[TSV/STDIN]

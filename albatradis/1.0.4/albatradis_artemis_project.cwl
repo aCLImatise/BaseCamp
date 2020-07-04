@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: albatradis_artemis_project.cwl
+id: ../../../../home/ubuntu/BiocondaCli/albatradis_artemis_project.cwl
 inputs:
-- id: reference
-  doc: reference EMBL file
-  type: string
-  inputBinding:
-    position: 0
-- id: experiments_metadata
-  doc: experiments metadata spreadsheet
-  type: string
-  inputBinding:
-    position: 1
 - id: control
   doc: 'control files (can use multiple times) (default: None)'
   type: string
@@ -31,6 +21,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
+- id: reference
+  doc: reference EMBL file
+  type: string
+  inputBinding:
+    position: 0
+- id: experiments_metadata
+  doc: experiments metadata spreadsheet
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

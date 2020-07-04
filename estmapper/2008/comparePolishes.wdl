@@ -2,20 +2,28 @@ version 1.0
 
 task ComparePolishes {
   input {
-    String iI
-    String cC
-    String aA
-    String bB
-    String pP
-    Boolean gff3Gff3
+    String? i
+    String? c
+    String? a
+    String? b
+    String? p
+    Boolean? gff_three
   }
   command <<<
     comparePolishes \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(cC) then ("-c " +  '"' + cC + '"') else ""} \
-      ~{if defined(aA) then ("-a " +  '"' + aA + '"') else ""} \
-      ~{if defined(bB) then ("-b " +  '"' + bB + '"') else ""} \
-      ~{if defined(pP) then ("-p " +  '"' + pP + '"') else ""} \
-      ~{true="-gff3" false="" gff3Gff3}
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
+      ~{if defined(a) then ("-a " +  '"' + a + '"') else ""} \
+      ~{if defined(b) then ("-b " +  '"' + b + '"') else ""} \
+      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
+      ~{true="-gff3" false="" gff_three}
   >>>
+  parameter_meta {
+    i: ""
+    c: ""
+    a: ""
+    b: ""
+    p: ""
+    gff_three: ""
+  }
 }

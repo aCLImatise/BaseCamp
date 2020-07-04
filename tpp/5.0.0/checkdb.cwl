@@ -1,16 +1,21 @@
 class: CommandLineTool
-id: checkdb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/checkdb.cwl
 inputs:
-- id: v
+- id: verbose_reporting
   doc: verbose reporting
   type: boolean
   inputBinding:
     prefix: -V
-- id: n
+- id: write_sha_checksum
   doc: do not write .check (SHA1 checksum) file
   type: boolean
   inputBinding:
     prefix: -N
+- id: fast_a_dot_database
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

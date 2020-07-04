@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rapidVis.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rapidVis.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

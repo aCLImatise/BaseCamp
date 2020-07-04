@@ -1,27 +1,17 @@
 class: CommandLineTool
-id: dcml2pnm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcml2pnm.cwl
 inputs:
-- id: dcm_file_in
-  doc: DICOM input filename to be converted
-  type: string
-  inputBinding:
-    position: 0
-- id: bitmap_out
-  doc: 'output filename to be written (default: stdout)'
-  type: string
-  inputBinding:
-    position: 1
-- id: q
+- id: _quiet_print
   doc: --quiet               quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose             verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug               debug mode, print debug information
   type: boolean
   inputBinding:
@@ -37,12 +27,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lc
-- id: f
+- id: _readdataset_read
   doc: --read-dataset        read data set without file meta information
   type: boolean
   inputBinding:
     prefix: -f
-- id: t
+- id: _readxferauto_use
   doc: =   --read-xfer-auto      use TS recognition (default)
   type: boolean
   inputBinding:
@@ -77,11 +67,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -im
-- id: o
+- id: _nooutput_create
   doc: --no-output           do not create any output (useful with -im)
   type: boolean
   inputBinding:
     prefix: -o
+- id: dcm_file_in
+  doc: DICOM input filename to be converted
+  type: string
+  inputBinding:
+    position: 0
+- id: bitmap_out
+  doc: 'output filename to be written (default: stdout)'
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastaremove.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastaremove.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

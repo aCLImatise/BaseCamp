@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mendelscan.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mendelscan.cwl
 inputs:
 - id: jar
   doc: ''

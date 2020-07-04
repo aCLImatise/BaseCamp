@@ -2,10 +2,13 @@ version 1.0
 
 task FastxBarcodeSplitter.pl {
   input {
-    Boolean prefixPrefix
+    Boolean? prefix
   }
   command <<<
     fastx_barcode_splitter.pl \
-      ~{true="--prefix" false="" prefixPrefix}
+      ~{true="--prefix" false="" prefix}
   >>>
+  parameter_meta {
+    prefix: "/tmp/bla_ --suffix \".txt\""
+  }
 }

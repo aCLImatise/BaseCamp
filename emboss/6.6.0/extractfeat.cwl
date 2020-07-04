@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: extractfeat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extractfeat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

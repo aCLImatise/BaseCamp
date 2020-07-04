@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: run_mysql_server_singularity.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_mysql_server_singularity.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: VIBRANT_run.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/VIBRANT_run.py.cwl
 inputs:
-- id: i
+- id: input_fasta_file
   doc: input fasta file
   type: string
   inputBinding:
     prefix: -i
-- id: f
+- id: format_of_input
   doc: format of input [default="nucl"]
   type: string
   inputBinding:
@@ -17,19 +17,19 @@ inputs:
   type: Directory
   inputBinding:
     prefix: -folder
-- id: t
+- id: number_parallel_vibrant
   doc: number of parallel VIBRANT runs, each occupies 1 CPU [default=1, max of 1 CPU
     per scaffold]
   type: string
   inputBinding:
     prefix: -t
-- id: l
+- id: length_limit_sequences
   doc: length in basepairs to limit input sequences [default=1000, can increase but
     not decrease]
   type: string
   inputBinding:
     prefix: -l
-- id: o
+- id: number_limit_sequences
   doc: number of ORFs per scaffold to limit input sequences [default=4, can increase
     but not decrease]
   type: string
@@ -46,13 +46,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -no_plot
-- id: d
+- id: path_original_hmm
   doc: path to original "databases" directory that contains .HMM files (if moved from
     default location)
   type: string
   inputBinding:
     prefix: -d
-- id: m
+- id: path_tsv_moved
   doc: path to original "files" directory that contains .tsv and model files (if moved
     from default location)
   type: string

@@ -1,46 +1,6 @@
 class: CommandLineTool
-id: elink.cwl
+id: ../../../../home/ubuntu/BiocondaCli/elink.cwl
 inputs:
-- id: neighbor
-  doc: Neighbors or links
-  type: string
-  inputBinding:
-    position: 0
-- id: neighbor_score
-  doc: Neighbors with computed similarity scores
-  type: string
-  inputBinding:
-    position: 1
-- id: a_check
-  doc: All links available
-  type: string
-  inputBinding:
-    position: 2
-- id: n_check
-  doc: Existence of neighbors
-  type: string
-  inputBinding:
-    position: 3
-- id: l_check
-  doc: Existence of external links (LinkOuts)
-  type: string
-  inputBinding:
-    position: 4
-- id: l_links
-  doc: Non-library LinkOut providers
-  type: string
-  inputBinding:
-    position: 5
-- id: l_links_lib
-  doc: All LinkOut providers
-  type: string
-  inputBinding:
-    position: 6
-- id: pr_links
-  doc: Primary LinkOut provider, or URL for single UID with -mode ref
-  type: string
-  inputBinding:
-    position: 7
 - id: related
   doc: Neighbors in same database
   type: boolean
@@ -101,6 +61,46 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -label
+- id: neighbor
+  doc: Neighbors or links
+  type: string
+  inputBinding:
+    position: 0
+- id: neighbor_score
+  doc: Neighbors with computed similarity scores
+  type: string
+  inputBinding:
+    position: 1
+- id: a_check
+  doc: All links available
+  type: string
+  inputBinding:
+    position: 2
+- id: n_check
+  doc: Existence of neighbors
+  type: string
+  inputBinding:
+    position: 3
+- id: l_check
+  doc: Existence of external links (LinkOuts)
+  type: string
+  inputBinding:
+    position: 4
+- id: l_links
+  doc: Non-library LinkOut providers
+  type: string
+  inputBinding:
+    position: 5
+- id: l_links_lib
+  doc: All LinkOut providers
+  type: string
+  inputBinding:
+    position: 6
+- id: pr_links
+  doc: Primary LinkOut provider, or URL for single UID with -mode ref
+  type: string
+  inputBinding:
+    position: 7
 outputs: []
 cwlVersion: v1.1
 baseCommand:

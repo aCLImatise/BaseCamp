@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: pre.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pre.py.cwl
 inputs:
-- id: input
-  doc: VCF file to process.
-  type: string
-  inputBinding:
-    position: 0
-- id: output
-  doc: Output filename.
-  type: string
-  inputBinding:
-    position: 1
 - id: location
   doc: Comma-separated list of locations [use naming after preprocessing], when not
     specified will use whole VCF.
@@ -150,6 +140,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: input
+  doc: VCF file to process.
+  type: string
+  inputBinding:
+    position: 0
+- id: output
+  doc: Output filename.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

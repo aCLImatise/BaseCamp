@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: svm_grid_modelling_singlet.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/svm_grid_modelling_singlet.py.cwl
 inputs:
-- id: grid_py
+- id: grid_do_tpy
   doc: ''
   type: string
   inputBinding:

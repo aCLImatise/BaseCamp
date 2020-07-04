@@ -2,10 +2,13 @@ version 1.0
 
 task CruxSpectralCounts {
   input {
-    String? inputInputPsms
+    String input_psms
   }
   command <<<
     crux spectral-counts \
-      ~{inputInputPsms}
+      ~{input_psms}
   >>>
+  parameter_meta {
+    input_psms: ""
+  }
 }

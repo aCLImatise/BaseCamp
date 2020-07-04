@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: krakenhll_build.cwl
+id: ../../../../home/ubuntu/BiocondaCli/krakenhll_build.cwl
 inputs:
-- id: task
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: download_taxonomy
   doc: Download NCBI taxonomic information
   type: boolean
@@ -147,6 +137,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --uid-database
+- id: task
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

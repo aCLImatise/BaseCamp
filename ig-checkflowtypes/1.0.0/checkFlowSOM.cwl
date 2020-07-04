@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: checkFlowSOM.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/checkFlowSOM.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

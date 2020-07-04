@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNAlienStatistics.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAlienStatistics.cwl
 inputs:
 - id: verbose
   doc: Loud verbosity

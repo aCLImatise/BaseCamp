@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: bwa_samse.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bwa_samse.cwl
 inputs:
-- id: prefix
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: in_sai
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: in_fq
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: n
   doc: ''
   type: long
@@ -31,6 +16,21 @@ inputs:
   type: string
   inputBinding:
     prefix: -r
+- id: prefix
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_do_tsai
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: in_dot_fq
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

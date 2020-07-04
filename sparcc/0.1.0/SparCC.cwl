@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: SparCC.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SparCC.py.cwl
 inputs:
-- id: python
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: sparc_cpy
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: counts_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: cor_file
   doc: File to which correlation matrix will be written.
   type: string
@@ -47,6 +32,31 @@ inputs:
   type: string
   inputBinding:
     prefix: --thershold
+- id: compute
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: the
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: correlation
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: between
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: components
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: biox_workflow.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/biox_workflow.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: reorder_columns.cwl
+id: ../../../../home/ubuntu/BiocondaCli/reorder_columns.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

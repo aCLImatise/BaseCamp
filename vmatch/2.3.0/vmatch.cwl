@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vmatch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vmatch.cwl
 inputs:
 - id: index_name
   doc: ''

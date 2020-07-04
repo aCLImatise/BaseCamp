@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: segtools_nucleotide_frequency.cwl
+id: ../../../../home/ubuntu/BiocondaCli/segtools_nucleotide_frequency.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: annotation
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: genome_data_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: clobber
   doc: Overwrite any existing output files.
   type: boolean
@@ -52,12 +37,22 @@ inputs:
   type: string
   inputBinding:
     prefix: --outdir
-- id: r
+- id: val_pass_val
   doc: =VAL        Pass VAL for PARAM when calling R functions. May be specified multiple
     times.
   type: string
   inputBinding:
     prefix: -R
+- id: annotation
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: genome_data_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

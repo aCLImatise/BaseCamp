@@ -1,21 +1,21 @@
 class: CommandLineTool
-id: hivtrace_strip_drams.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hivtrace_strip_drams.cwl
 inputs:
-- id: i
-  doc: ''
+- id: input
+  doc: The input FASTA file
   type: string
   inputBinding:
-    prefix: -i
-- id: o
-  doc: ''
+    prefix: --input
+- id: output
+  doc: Output
   type: string
   inputBinding:
-    prefix: -o
-- id: d
-  doc: ''
+    prefix: --output
+- id: dram
+  doc: Use this list of DRAMs
   type: string
   inputBinding:
-    prefix: -d
+    prefix: --dram
 outputs: []
 cwlVersion: v1.1
 baseCommand:

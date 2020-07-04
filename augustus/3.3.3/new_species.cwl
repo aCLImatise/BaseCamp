@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: new_species.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/new_species.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

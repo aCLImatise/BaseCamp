@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: plotEnrichment.cwl
+id: ../../../../home/ubuntu/BiocondaCli/plotEnrichment.cwl
 inputs:
 - id: bam_files
   doc: file2.bam [file1.bam file2.bam ...], -b file1.bam file2.bam [file1.bam file2.bam
@@ -93,6 +93,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --maxFragmentLength
+- id: file_two_dot_bam
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

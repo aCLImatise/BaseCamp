@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: buildG.cwl
+id: ../../../../home/ubuntu/BiocondaCli/buildG.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

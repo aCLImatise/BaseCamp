@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: statistic.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/statistic.pl.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: statistic_library
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: destination
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: source
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
 - id: n_gram
   doc: Assumes that n-grams in SOURCE file have N tokens each. N = 2 by default.
   type: string
@@ -72,6 +52,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --format
+- id: statistic_library
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: destination
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: source
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

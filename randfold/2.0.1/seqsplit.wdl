@@ -2,20 +2,34 @@ version 1.0
 
 task Seqsplit {
   input {
-    File oO
-    String fragFragFile
-    String inInFormat
-    String lengthLength
-    String overlapOverlap
-    Boolean shortShortNames
+    File? output_new_file
+    String? frag_file
+    String? in_format
+    String? length
+    String? overlap
+    Boolean? short_names
+    Boolean? options
+    String seq_file
   }
   command <<<
     seqsplit \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{if defined(fragFragFile) then ("--fragfile " +  '"' + fragFragFile + '"') else ""} \
-      ~{if defined(inInFormat) then ("--informat " +  '"' + inInFormat + '"') else ""} \
-      ~{if defined(lengthLength) then ("--length " +  '"' + lengthLength + '"') else ""} \
-      ~{if defined(overlapOverlap) then ("--overlap " +  '"' + overlapOverlap + '"') else ""} \
-      ~{true="--shortnames" false="" shortShortNames}
+      ~{seq_file} \
+      ~{if defined(output_new_file) then ("-o " +  '"' + output_new_file + '"') else ""} \
+      ~{if defined(frag_file) then ("--fragfile " +  '"' + frag_file + '"') else ""} \
+      ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
+      ~{if defined(length) then ("--length " +  '"' + length + '"') else ""} \
+      ~{if defined(overlap) then ("--overlap " +  '"' + overlap + '"') else ""} \
+      ~{true="--shortnames" false="" short_names} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    output_new_file: ": output the new FASTA file to <file>"
+    frag_file: ": save one-line-per-frag coord summary file to <f>"
+    in_format: ": specify sequence file format <s>"
+    length: ": set max length of each unique seq frag to <n>"
+    overlap: ": set overlap length to <n> (total frag size = length+overlap)"
+    short_names: ": use short \"frag1\" names, not \"<src>/<from>-<to>\""
+    options: ""
+    seq_file: ""
+  }
 }

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: dsk.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dsk.cwl
 inputs:
-- id: input_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: km_er_size
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: t
   doc: ''
   type: long
@@ -46,6 +36,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -b
+- id: input_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: km_er_size
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

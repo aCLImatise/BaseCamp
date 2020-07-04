@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nucmerAnnotate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nucmerAnnotate.cwl
 inputs:
 - id: ignore
   doc: '- Maximum length of the end sequence unaligned (Default: 20 bp)'
@@ -21,7 +21,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -noid
-- id: v
+- id: version_print_version
   doc: '|version      - Print the version and exit;'
   type: boolean
   inputBinding:
@@ -32,10 +32,15 @@ inputs:
   inputBinding:
     prefix: -depend
 - id: debug
-  doc: 'debug <level> (0, non-debug by default); '
+  doc: '- Set the debug <level> (0, non-debug by default); '
   type: string
   inputBinding:
     prefix: -debug
+- id: coords_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

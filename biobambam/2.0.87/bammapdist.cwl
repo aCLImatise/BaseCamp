@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bammapdist.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bammapdist.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

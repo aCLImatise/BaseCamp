@@ -1,19 +1,19 @@
 class: CommandLineTool
-id: gsutil_perfdiag.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gsutil_perfdiag.cwl
 inputs:
-- id: n
+- id: sets_number_use_downloading
   doc: Sets the number of objects to use when downloading and uploading files during
     tests. Defaults to 5.
   type: boolean
   inputBinding:
     prefix: -n
-- id: c
+- id: sets_number_processes_use_running_throughput_experiments
   doc: Sets the number of processes to use while running throughput experiments. The
     default value is 1.
   type: boolean
   inputBinding:
     prefix: -c
-- id: k
+- id: sets_number_use_running_throughput_experiments_receive
   doc: 'Sets the number of threads per process to use while running throughput experiments.
     Each process will receive an equal number of threads. The default value is 1.
     Note: All specified threads and processes will be created, but may not by saturated
@@ -22,7 +22,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -k
-- id: p
+- id: sets_type_used
   doc: 'Sets the type of parallelism to be used (only applicable when threads or processes
     are specified and threads * processes > 1). The default is to use fan. Must be
     one of the following: fan Use one thread per object. This is akin to using gsutil
@@ -36,14 +36,14 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -p
-- id: y
+- id: sets_number_divide
   doc: Sets the number of slices to divide each file/object into while transferring
     data. Only applicable with the slice (or both) parallelism type. The default is
     4 slices.
   type: boolean
   inputBinding:
     prefix: -y
-- id: s
+- id: sets_size_write
   doc: 'Sets the size (in bytes) for each of the N (set with -n) objects used in the
     read and write throughput tests. The default is 1 MiB. This can also be specified
     using byte suffixes such as 500K or 1M. Note: these values are interpreted as
@@ -53,13 +53,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -s
-- id: d
+- id: sets_directory_store
   doc: Sets the directory to store temporary local files in. If not specified, a default
     temporary directory will be used.
   type: boolean
   inputBinding:
     prefix: -d
-- id: t
+- id: sets_list_perform
   doc: 'Sets the list of diagnostic tests to perform. The default is to run the lat,
     rthru, and wthru diagnostic tests. Must be a comma-separated list containing one
     or more of the following: lat For N (set with -n) objects, write the object, retrieve
@@ -77,21 +77,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -t
-- id: m
+- id: adds_metadata_file
   doc: 'Adds metadata to the result JSON file. Multiple -m values can be specified.
     Example: gsutil perfdiag -m "key1:val1" -m "key2:val2" gs://bucketname Each metadata
     key will be added to the top-level "metadata" dictionary in the output JSON file.'
   type: boolean
   inputBinding:
     prefix: -m
-- id: o
+- id: writes_results_diagnostic
   doc: Writes the results of the diagnostic to an output file. The output is a JSON
     file containing system information and performance diagnostic results. The file
     can be read and reported later using the -i option.
   type: boolean
   inputBinding:
     prefix: -o
-- id: i
+- id: reads_json_file
   doc: Reads the JSON output file created using the -o command and prints a formatted
     description of the results.
   type: boolean

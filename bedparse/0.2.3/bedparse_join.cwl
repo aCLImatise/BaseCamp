@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: bedparse_join.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedparse_join.cwl
 inputs:
-- id: bed_file
-  doc: Path to the BED file.
-  type: string
-  inputBinding:
-    position: 0
 - id: annotation
   doc: Path to the annotation file.
   type: string

@@ -2,12 +2,16 @@ version 1.0
 
 task TreebestSortleaf {
   input {
-    String? tree1Tree1
-    String? tree2Tree2
+    String tree_one
+    String? tree_two
   }
   command <<<
     treebest sortleaf \
-      ~{tree1Tree1} \
-      ~{tree2Tree2}
+      ~{tree_one} \
+      ~{tree_two}
   >>>
+  parameter_meta {
+    tree_one: ""
+    tree_two: ""
+  }
 }

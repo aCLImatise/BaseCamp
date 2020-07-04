@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mageck_test.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mageck_test.cwl
 inputs:
 - id: count_table
   doc: Provide a tab-separated count table instead of sam files. Each line in the
@@ -17,7 +17,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --treatment-id
-- id: day0_label
+- id: day_zero_label
   doc: Specify the label for control sample (usually day 0 or plasmid). For every
     other sample label, the module will treat it as a treatment condition and compare
     with control sample.

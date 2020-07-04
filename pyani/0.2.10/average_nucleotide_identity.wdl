@@ -2,72 +2,106 @@ version 1.0
 
 task AverageNucleotideIdentity.py {
   input {
-    String outdirOutdir
-    String inInDir
-    Boolean verboseVerbose
-    Boolean forceForce
-    String fragFragSize
-    String logLogFile
-    Boolean skipSkipNucMer
-    Boolean skipSkipBlastn
-    Boolean noNoClobber
-    Boolean noNoCompress
-    Boolean graphicsGraphics
-    String gGFormat
-    String gGMethod
-    String labelsLabels
-    String classesClasses
-    String methodMethod
-    String schedulerScheduler
-    String workersWorkers
-    String sgeSgeGroupSize
-    String sgeSgeArgs
-    Boolean maxMaxMatch
-    String nucNucMerExe
-    String filterFilterExe
-    String blastnBlastnExe
-    String makeMakeBlastDbExe
-    String blastBlastAllExe
-    String formatFormatDbExe
-    Boolean writeWriteExcel
-    Boolean reReRender
-    String subsampleSubsample
-    String seedSeed
-    String jobJobPrefix
+    String? outdir
+    String? in_dir
+    Boolean? verbose
+    Boolean? force
+    String? frag_size
+    String? log_file
+    Boolean? skip_nuc_mer
+    Boolean? skip_blastn
+    Boolean? no_clobber
+    Boolean? no_compress
+    Boolean? graphics
+    String? g_format
+    String? g_method
+    String? labels
+    String? classes
+    String? method
+    String? scheduler
+    String? workers
+    String? sge_group_size
+    String? sge_args
+    Boolean? max_match
+    String? nuc_mer_exe
+    String? filter_exe
+    String? blastn_exe
+    String? make_blast_db_exe
+    String? blast_all_exe
+    String? format_db_exe
+    Boolean? write_excel
+    Boolean? re_render
+    String? subsample
+    String? seed
+    String? job_prefix
   }
   command <<<
     average_nucleotide_identity.py \
-      ~{if defined(outdirOutdir) then ("--outdir " +  '"' + outdirOutdir + '"') else ""} \
-      ~{if defined(inInDir) then ("--indir " +  '"' + inInDir + '"') else ""} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{true="--force" false="" forceForce} \
-      ~{if defined(fragFragSize) then ("--fragsize " +  '"' + fragFragSize + '"') else ""} \
-      ~{if defined(logLogFile) then ("--logfile " +  '"' + logLogFile + '"') else ""} \
-      ~{true="--skip_nucmer" false="" skipSkipNucMer} \
-      ~{true="--skip_blastn" false="" skipSkipBlastn} \
-      ~{true="--noclobber" false="" noNoClobber} \
-      ~{true="--nocompress" false="" noNoCompress} \
-      ~{true="--graphics" false="" graphicsGraphics} \
-      ~{if defined(gGFormat) then ("--gformat " +  '"' + gGFormat + '"') else ""} \
-      ~{if defined(gGMethod) then ("--gmethod " +  '"' + gGMethod + '"') else ""} \
-      ~{if defined(labelsLabels) then ("--labels " +  '"' + labelsLabels + '"') else ""} \
-      ~{if defined(classesClasses) then ("--classes " +  '"' + classesClasses + '"') else ""} \
-      ~{if defined(methodMethod) then ("--method " +  '"' + methodMethod + '"') else ""} \
-      ~{if defined(schedulerScheduler) then ("--scheduler " +  '"' + schedulerScheduler + '"') else ""} \
-      ~{if defined(workersWorkers) then ("--workers " +  '"' + workersWorkers + '"') else ""} \
-      ~{if defined(sgeSgeGroupSize) then ("--SGEgroupsize " +  '"' + sgeSgeGroupSize + '"') else ""} \
-      ~{if defined(sgeSgeArgs) then ("--SGEargs " +  '"' + sgeSgeArgs + '"') else ""} \
-      ~{true="--maxmatch" false="" maxMaxMatch} \
-      ~{if defined(nucNucMerExe) then ("--nucmer_exe " +  '"' + nucNucMerExe + '"') else ""} \
-      ~{if defined(filterFilterExe) then ("--filter_exe " +  '"' + filterFilterExe + '"') else ""} \
-      ~{if defined(blastnBlastnExe) then ("--blastn_exe " +  '"' + blastnBlastnExe + '"') else ""} \
-      ~{if defined(makeMakeBlastDbExe) then ("--makeblastdb_exe " +  '"' + makeMakeBlastDbExe + '"') else ""} \
-      ~{if defined(blastBlastAllExe) then ("--blastall_exe " +  '"' + blastBlastAllExe + '"') else ""} \
-      ~{if defined(formatFormatDbExe) then ("--formatdb_exe " +  '"' + formatFormatDbExe + '"') else ""} \
-      ~{true="--write_excel" false="" writeWriteExcel} \
-      ~{true="--rerender" false="" reReRender} \
-      ~{if defined(subsampleSubsample) then ("--subsample " +  '"' + subsampleSubsample + '"') else ""} \
-      ~{if defined(seedSeed) then ("--seed " +  '"' + seedSeed + '"') else ""} \
-      ~{if defined(jobJobPrefix) then ("--jobprefix " +  '"' + jobJobPrefix + '"') else ""}
+      ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
+      ~{if defined(in_dir) then ("--indir " +  '"' + in_dir + '"') else ""} \
+      ~{true="--verbose" false="" verbose} \
+      ~{true="--force" false="" force} \
+      ~{if defined(frag_size) then ("--fragsize " +  '"' + frag_size + '"') else ""} \
+      ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""} \
+      ~{true="--skip_nucmer" false="" skip_nuc_mer} \
+      ~{true="--skip_blastn" false="" skip_blastn} \
+      ~{true="--noclobber" false="" no_clobber} \
+      ~{true="--nocompress" false="" no_compress} \
+      ~{true="--graphics" false="" graphics} \
+      ~{if defined(g_format) then ("--gformat " +  '"' + g_format + '"') else ""} \
+      ~{if defined(g_method) then ("--gmethod " +  '"' + g_method + '"') else ""} \
+      ~{if defined(labels) then ("--labels " +  '"' + labels + '"') else ""} \
+      ~{if defined(classes) then ("--classes " +  '"' + classes + '"') else ""} \
+      ~{if defined(method) then ("--method " +  '"' + method + '"') else ""} \
+      ~{if defined(scheduler) then ("--scheduler " +  '"' + scheduler + '"') else ""} \
+      ~{if defined(workers) then ("--workers " +  '"' + workers + '"') else ""} \
+      ~{if defined(sge_group_size) then ("--SGEgroupsize " +  '"' + sge_group_size + '"') else ""} \
+      ~{if defined(sge_args) then ("--SGEargs " +  '"' + sge_args + '"') else ""} \
+      ~{true="--maxmatch" false="" max_match} \
+      ~{if defined(nuc_mer_exe) then ("--nucmer_exe " +  '"' + nuc_mer_exe + '"') else ""} \
+      ~{if defined(filter_exe) then ("--filter_exe " +  '"' + filter_exe + '"') else ""} \
+      ~{if defined(blastn_exe) then ("--blastn_exe " +  '"' + blastn_exe + '"') else ""} \
+      ~{if defined(make_blast_db_exe) then ("--makeblastdb_exe " +  '"' + make_blast_db_exe + '"') else ""} \
+      ~{if defined(blast_all_exe) then ("--blastall_exe " +  '"' + blast_all_exe + '"') else ""} \
+      ~{if defined(format_db_exe) then ("--formatdb_exe " +  '"' + format_db_exe + '"') else ""} \
+      ~{true="--write_excel" false="" write_excel} \
+      ~{true="--rerender" false="" re_render} \
+      ~{if defined(subsample) then ("--subsample " +  '"' + subsample + '"') else ""} \
+      ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
+      ~{if defined(job_prefix) then ("--jobprefix " +  '"' + job_prefix + '"') else ""}
   >>>
+  parameter_meta {
+    outdir: "Output directory (required)"
+    in_dir: "Input directory name (required)"
+    verbose: "Give verbose output"
+    force: "Force file overwriting"
+    frag_size: "Sequence fragment size for ANIb (default 1020)"
+    log_file: "Logfile location"
+    skip_nuc_mer: "Skip NUCmer runs, for testing (e.g. if output already present)"
+    skip_blastn: "Skip BLASTN runs, for testing (e.g. if output already present)"
+    no_clobber: "Don't nuke existing files"
+    no_compress: "Don't compress/delete the comparison output"
+    graphics: "Generate heatmap of ANI"
+    g_format: "Graphics output format(s) [pdf|png|jpg|svg] (default pdf,png,eps meaning three file formats)"
+    g_method: "Graphics output method (default mpl)"
+    labels: "Path to file containing sequence labels"
+    classes: "Path to file containing sequence classes"
+    method: "ANI method (default ANIm)"
+    scheduler: "Job scheduler (default multiprocessing, i.e. locally)"
+    workers: "Number of worker processes for multiprocessing (default zero, meaning use all available cores)"
+    sge_group_size: "Number of jobs to place in an SGE array group (default 10000)"
+    sge_args: "Additional arguments for qsub"
+    max_match: "Override MUMmer to allow all NUCmer matches"
+    nuc_mer_exe: "Path to NUCmer executable"
+    filter_exe: "Path to delta-filter executable"
+    blastn_exe: "Path to BLASTN+ executable"
+    make_blast_db_exe: "Path to BLAST+ makeblastdb executable"
+    blast_all_exe: "Path to BLASTALL executable"
+    format_db_exe: "Path to BLAST formatdb executable"
+    write_excel: "Write Excel format output tables"
+    re_render: "Rerender graphics output without recalculation"
+    subsample: "Subsample a percentage [0-1] or specific number (1-n) of input sequences"
+    seed: "Set random seed for reproducible subsampling."
+    job_prefix: "Prefix for SGE jobs (default ANI)."
+  }
 }

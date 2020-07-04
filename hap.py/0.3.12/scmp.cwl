@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scmp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scmp.cwl
 inputs:
 - id: input_file
   doc: 'Input VCF file. Must have exactly two  samples, the first sample will be used  as
@@ -8,18 +8,18 @@ inputs:
   type: string
   inputBinding:
     prefix: --input-file
-- id: o
+- id: arg_output_file
   doc: '[ --output-file ] arg              The output file name (VCF / BCF /  VCF.gz).'
   type: boolean
   inputBinding:
     prefix: -o
-- id: r
+- id: arg_reference_fasta
   doc: '[ --reference ] arg                The reference fasta file (needed only  for
     VCF output).'
   type: boolean
   inputBinding:
     prefix: -r
-- id: l
+- id: arg_start_location
   doc: '[ --location ] arg                 Start location.'
   type: boolean
   inputBinding:
@@ -29,7 +29,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --qq-field
-- id: o
+- id: arg_bed_file
   doc: '[ --only ] arg                     Bed file of locations (equivalent to -R
     in bcftools)'
   type: boolean
@@ -45,7 +45,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --message-every
-- id: f
+- id: arg_apply_filtering
   doc: '[ --apply-filters ] arg            Apply filtering in VCF.'
   type: boolean
   inputBinding:
@@ -65,7 +65,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --min-var-distance
-- id: m
+- id: arg_allele_how
   doc: '[ --comparison-mode ] arg (=allele) How to compare variants: allele  (default)
     / distance / enumerate'
   type: boolean

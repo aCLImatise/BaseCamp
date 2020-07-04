@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: bolt_bam_view.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bolt_bam_view.cwl
 inputs:
-- id: genie
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: bam
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: view
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
 - id: file_path
   doc: A bam file (*require)
   type: string
@@ -51,6 +31,26 @@ inputs:
   type: string
   inputBinding:
     prefix: --scope
+- id: genie
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: bam
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: view
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

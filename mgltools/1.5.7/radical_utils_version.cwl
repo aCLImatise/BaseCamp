@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: radical_utils_version.cwl
+id: ../../../../home/ubuntu/BiocondaCli/radical_utils_version.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

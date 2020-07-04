@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: dr_disco_classify.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dr_disco_classify.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: table_input_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: table_output_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: only_valid
   doc: Only return results marked as 'valid'
   type: boolean
@@ -45,6 +30,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ffpe
+- id: table_input_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: table_output_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

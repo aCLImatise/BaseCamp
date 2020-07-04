@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: riboplot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/riboplot.cwl
 inputs:
 - id: rna_file
   doc: RNA-Seq alignment file (BAM)

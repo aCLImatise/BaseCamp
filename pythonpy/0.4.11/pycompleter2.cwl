@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pycompleter2.7.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pycompleter2.7.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

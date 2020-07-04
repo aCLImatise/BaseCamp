@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pairtools_stats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pairtools_stats.cwl
 inputs:
 - id: output
   doc: output stats tsv file.
@@ -39,6 +39,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --cmd-out
+- id: input_path
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

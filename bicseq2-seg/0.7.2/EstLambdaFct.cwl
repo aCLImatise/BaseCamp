@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: EstLambdaFct.cwl
+id: ../../../../home/ubuntu/BiocondaCli/EstLambdaFct.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

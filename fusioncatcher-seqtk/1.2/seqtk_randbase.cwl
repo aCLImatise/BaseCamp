@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: seqtk_randbase.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqtk_randbase.cwl
 inputs:
-- id: in_fa
+- id: in_dot_fa
   doc: ''
   type: string
   inputBinding:

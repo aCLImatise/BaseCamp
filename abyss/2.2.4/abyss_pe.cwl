@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: abyss_pe.cwl
+id: ../../../../home/ubuntu/BiocondaCli/abyss_pe.Makefile.cwl
 inputs:
-- id: b
+- id: ignored_for_compatibility
   doc: Ignored for compatibility.
   type: boolean
   inputBinding:
@@ -16,7 +16,7 @@ inputs:
   type: Directory
   inputBinding:
     prefix: --directory
-- id: d
+- id: print_lots_debugging
   doc: Print lots of debugging information.
   type: boolean
   inputBinding:
@@ -51,7 +51,7 @@ inputs:
   type: Directory
   inputBinding:
     prefix: --include-dir
-- id: j
+- id: allow_n_jobs
   doc: '[N], --jobs[=N]          Allow N jobs at once; infinite jobs with no arg.'
   type: boolean
   inputBinding:
@@ -61,7 +61,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --keep-going
-- id: l
+- id: start_multiple_jobs
   doc: "[N], --load-average[=N], --max-load[=N] Don't start multiple jobs unless load\
     \ is below N."
   type: boolean
@@ -82,7 +82,7 @@ inputs:
   type: File
   inputBinding:
     prefix: --assume-old
-- id: o
+- id: synchronize_output_parallel
   doc: '[TYPE], --output-sync[=TYPE] Synchronize output of parallel jobs by TYPE.'
   type: boolean
   inputBinding:
@@ -112,11 +112,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --silent
-- id: no_silent
-  doc: Echo recipes (disable --silent mode).
-  type: boolean
-  inputBinding:
-    prefix: --no-silent
 - id: no_keep_going
   doc: Turns off -k.
   type: boolean
@@ -152,7 +147,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --warn-undefined-variables
+- id: make
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: target
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:
-- abyss-pe
+- abyss-pe.Makefile

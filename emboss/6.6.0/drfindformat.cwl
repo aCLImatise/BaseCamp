@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: drfindformat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/drfindformat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,27 +1,27 @@
 class: CommandLineTool
-id: count_qmers.cwl
+id: ../../../../home/ubuntu/BiocondaCli/count_qmers.cwl
 inputs:
-- id: f
+- id: fastq_file_count
   doc: fastq file to count
   type: string
   inputBinding:
     prefix: -f
-- id: k
+- id: length_of_kmer
   doc: 'Length of kmer '
   type: string
   inputBinding:
     prefix: -k
-- id: m
+- id: minimum_count_report
   doc: 'Minimum count to report (default: >0)'
   type: long
   inputBinding:
     prefix: -m
-- id: l
+- id: gigabyte_limit_ram
   doc: Gigabyte limit on RAM. If limited, the output will contain redundancies
   type: string
   inputBinding:
     prefix: -l
-- id: q
+- id: quality_value_ascii
   doc: Quality value ascii scale, generally 64 or 33.  If not specified, it will guess.
   type: string
   inputBinding:

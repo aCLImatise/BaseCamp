@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: callKraken2OnConvertedDB.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/callKraken2OnConvertedDB.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

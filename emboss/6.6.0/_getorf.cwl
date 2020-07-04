@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _getorf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_getorf.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

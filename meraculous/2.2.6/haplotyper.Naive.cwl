@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: haplotyper.Naive.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/haplotyper.Naive.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

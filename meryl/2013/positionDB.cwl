@@ -1,11 +1,11 @@
 class: CommandLineTool
-id: positionDB.cwl
+id: ../../../../home/ubuntu/BiocondaCli/positionDB.cwl
 inputs:
-- id: this
-  doc: a silly test and you shouldn't do it.
+- id: args
+  doc: ''
   type: string
   inputBinding:
-    prefix: -- This
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

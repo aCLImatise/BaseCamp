@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cPecanLastz_D.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cPecanLastz_D.cwl
 inputs:
 - id: table_only
   doc: "[=count]    just produce the target position table, don't search for seeds"
@@ -21,32 +21,6 @@ inputs:
   type: File
   inputBinding:
     prefix: --targetcapsule
-- id: progress
-  doc: report processing of every nth query
-  type: string
-  inputBinding:
-    prefix: --progress
-- id: progress
-  doc: +masking=<n> report processing of every nth query, and include masking stats
-    (useful with --masking)
-  type: boolean
-  inputBinding:
-    prefix: --progress
-- id: help
-  doc: list information about file specifiers
-  type: File
-  inputBinding:
-    prefix: --help
-- id: help
-  doc: list blastz-compatible shortcuts
-  type: string
-  inputBinding:
-    prefix: --help
-- id: help
-  doc: list yasra-specific shortcuts
-  type: string
-  inputBinding:
-    prefix: --help
 outputs: []
 cwlVersion: v1.1
 baseCommand:

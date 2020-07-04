@@ -1,17 +1,6 @@
 class: CommandLineTool
-id: htseq_count_barcodes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/htseq_count_barcodes.cwl
 inputs:
-- id: sam_filename
-  doc: Path to the SAM/BAM file containing the barcoded, mapped reads. If '-' is selected,
-    read from standard input
-  type: string
-  inputBinding:
-    position: 0
-- id: features_filename
-  doc: Path to the GTF file containing the features
-  type: string
-  inputBinding:
-    position: 1
 - id: format
   doc: 'Type of <alignment_file> data. DEPRECATED: file format is detected automatically.
     This option is ignored.'
@@ -124,6 +113,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: sam_filename
+  doc: Path to the SAM/BAM file containing the barcoded, mapped reads. If '-' is selected,
+    read from standard input
+  type: string
+  inputBinding:
+    position: 0
+- id: features_filename
+  doc: Path to the GTF file containing the features
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

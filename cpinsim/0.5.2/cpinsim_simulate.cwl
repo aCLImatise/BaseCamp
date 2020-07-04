@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: cpinsim_simulate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cpinsim_simulate.cwl
 inputs:
-- id: proteins
-  doc: Path to a csv-file containing the parsed proteins.
-  type: string
-  inputBinding:
-    position: 0
 - id: output_graph
   doc: Pickle the complete graph at the end of simulation (after last dissociation
     step) and write it to the given path.
@@ -18,6 +13,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --output-log
+- id: proteins
+  doc: Path to a csv-file containing the parsed proteins.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

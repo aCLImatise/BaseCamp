@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: jannovar_annotate_vcf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/jannovar_annotate_vcf.cwl
 inputs:
 - id: input_vcf
   doc: Path to input VCF file
@@ -78,22 +78,22 @@ inputs:
   type: string
   inputBinding:
     prefix: --gnomad-genomes-prefix
-- id: uk10k_vcf
+- id: uk_one_zero_k_vcf
   doc: Path to UK10K VCF file, activates UK10K annotation
   type: string
   inputBinding:
     prefix: --uk10k-vcf
-- id: uk10k_prefix
+- id: uk_one_zero_k_prefix
   doc: Prefix for UK10K annotations
   type: string
   inputBinding:
     prefix: --uk10k-prefix
-- id: g1k_vcf
+- id: gone_k_vcf
   doc: Path to thousand genomes VCF file, activates thousand genomes annotation
   type: string
   inputBinding:
     prefix: --g1k-vcf
-- id: g1k_prefix
+- id: gone_k_prefix
   doc: Prefix for thousand genomes annotations
   type: string
   inputBinding:
@@ -229,7 +229,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --var-thresh-max-hom-alt-exac
-- id: var_thresh_max_hom_alt_g1k
+- id: var_thresh_max_hom_alt_gone_k
   doc: Maximal count in homozygous state in ExAC before ignoring
   type: string
   inputBinding:
@@ -239,7 +239,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --use-advanced-pedigree-filters
-- id: de_novo_max_parent_ad2
+- id: de_novo_max_parent_ad_two
   doc: Maximal support of alternative allele in parent for de novo variants.
   type: string
   inputBinding:
@@ -290,6 +290,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --ftp-proxy
+- id: jan_novar_cli
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: annotate_vcf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

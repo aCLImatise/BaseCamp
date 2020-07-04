@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: psl2bed_megarow.cwl
+id: ../../../../home/ubuntu/BiocondaCli/psl2bed_megarow.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

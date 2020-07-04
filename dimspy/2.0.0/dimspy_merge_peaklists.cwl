@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dimspy_merge_peaklists.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dimspy_merge_peaklists.cwl
 inputs:
 - id: input
   doc: Multiple HDF5 files that contain peaklists or peak matrix from one of the processing

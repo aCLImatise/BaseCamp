@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: date.cwl
+id: ../../../../home/ubuntu/BiocondaCli/date.cwl
 inputs:
 - id: date
   doc: display time described by STRING, not 'now'
@@ -11,20 +11,20 @@ inputs:
   type: string
   inputBinding:
     prefix: --file
-- id: i
+- id: output_datetime_iso
   doc: "[FMT], --iso-8601[=FMT]  output date/time in ISO 8601 format. FMT='date' for\
     \ date only (the default), 'hours', 'minutes', 'seconds', or 'ns' for date and\
     \ time to the indicated precision. Example: 2006-08-14T02:34:56-0600"
   type: boolean
   inputBinding:
     prefix: -I
-- id: rfc_2822
+- id: rfc_two_eight_two_two
   doc: 'output date and time in RFC 2822 format. Example: Mon, 14 Aug 2006 02:34:56
     -0600'
   type: boolean
   inputBinding:
     prefix: --rfc-2822
-- id: rfc_3339
+- id: rfc_three_three_three_nine
   doc: "output date/time in RFC 3339 format. FMT='date', 'seconds', or 'ns' for date\
     \ and time to the indicated precision. Example: 2006-08-14 02:34:56-06:00"
   type: string
@@ -45,6 +45,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --universal
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

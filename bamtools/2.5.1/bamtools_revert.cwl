@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamtools_revert.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamtools_revert.cwl
 inputs:
 - id: in
   doc: the input BAM file [stdin]

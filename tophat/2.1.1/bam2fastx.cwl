@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bam2fastx.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bam2fastx.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

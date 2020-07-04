@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: rapidnj.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rapidnj.cwl
 inputs:
-- id: input
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: verbose
   doc: turn on verbose output.
   type: boolean
@@ -82,6 +72,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --output-file
+- id: input
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

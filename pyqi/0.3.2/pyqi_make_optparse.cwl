@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pyqi_make_optparse.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyqi_make_optparse.cwl
 inputs:
 - id: command
   doc: an existing Command [REQUIRED]

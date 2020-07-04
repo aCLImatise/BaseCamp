@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: makemat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/makemat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

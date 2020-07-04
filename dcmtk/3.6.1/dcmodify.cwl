@@ -1,22 +1,17 @@
 class: CommandLineTool
-id: dcmodify.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmodify.cwl
 inputs:
-- id: dcm_file_in
-  doc: DICOM input filename to be modified
-  type: string
-  inputBinding:
-    position: 0
-- id: q
+- id: _quiet_quiet
   doc: --quiet                quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose              verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug                debug mode, print debug information
   type: boolean
   inputBinding:
@@ -32,7 +27,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lc
-- id: t
+- id: _readxferauto_use
   doc: =   --read-xfer-auto       use TS recognition (default)
   type: boolean
   inputBinding:
@@ -67,7 +62,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -nb
-- id: i
+- id: _insert_insert
   doc: --insert               "[t]ag-path=[v]alue" insert (or overwrite) path at position
     t with value v
   type: boolean
@@ -84,7 +79,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-reserv-check
-- id: m
+- id: _modify_modify
   doc: --modify               "[t]ag-path=[v]alue" modify tag at position t to value
     v
   type: boolean
@@ -102,7 +97,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ma
-- id: e
+- id: _erase_tagitem
   doc: --erase                "[t]ag-path" erase tag/item at position t
   type: boolean
   inputBinding:
@@ -152,17 +147,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ignore-un-values
-- id: f
+- id: _writedataset_write
   doc: --write-dataset        write data set without file meta information
   type: boolean
   inputBinding:
     prefix: -F
-- id: u
+- id: _disablenewvr_disable
   doc: --disable-new-vr       disable support for new VRs, convert to OB
   type: boolean
   inputBinding:
     prefix: -u
-- id: g
+- id: _grouplengthremove_always
   doc: --group-length-remove  always write without group length elements
   type: boolean
   inputBinding:
@@ -172,6 +167,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -le
+- id: dcm_file_in
+  doc: DICOM input filename to be modified
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

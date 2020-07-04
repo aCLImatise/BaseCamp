@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: chicAggregateStatistic.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chicAggregateStatistic.cwl
 inputs:
 - id: interaction_file
   doc: path to the interaction files which should be used for aggregation of the statistics.

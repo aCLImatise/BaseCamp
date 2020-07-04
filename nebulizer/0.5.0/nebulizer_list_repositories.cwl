@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nebulizer_list_repositories.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nebulizer_list_repositories.cwl
 inputs:
 - id: name
   doc: only list tool repositories matching NAME. Can include glob-style wild-cards.
@@ -22,6 +22,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --updateable
+- id: galaxy
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

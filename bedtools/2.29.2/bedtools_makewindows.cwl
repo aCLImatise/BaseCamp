@@ -1,37 +1,32 @@
 class: CommandLineTool
-id: bedtools_makewindows.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedtools_makewindows.cwl
 inputs:
-- id: chr18_gl000207_random
-  doc: '4262'
-  type: string
-  inputBinding:
-    position: 0
-- id: g
+- id: genome_file_size
   doc: Genome file size (see notes below). Windows will be created for each chromosome
     in the file.
   type: string
   inputBinding:
     prefix: -g
-- id: b
+- id: bed_file_fields
   doc: BED file (with chrom,start,end fields). Windows will be created for each interval
     in the file.
   type: string
   inputBinding:
     prefix: -b
-- id: w
+- id: divide_interval_fixedsized
   doc: Divide each input interval (either a chromosome or a BED interval) to fixed-sized
     windows (i.e. same number of nucleotide in each window). Can be combined with
     -s <step_size>
   type: string
   inputBinding:
     prefix: -w
-- id: s
+- id: step_size_pairs
   doc: 'Step size: i.e., how many base pairs to step before creating a new window.
     Used to create "sliding" windows. - Defaults to window size (non-sliding windows).'
   type: string
   inputBinding:
     prefix: -s
-- id: n
+- id: divide_interval_fixed
   doc: Divide each input interval (either a chromosome or a BED interval) to fixed
     number of windows (i.e. same number of windows, with varying window sizes).
   type: string
@@ -43,7 +38,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -reverse
-- id: i
+- id: winnumsrcwinnum_default_output
   doc: "|winnum|srcwinnum The default output is 3 columns: chrom, start, end . With\
     \ this option, a name column will be added. \"-i src\" - use the source interval's\
     \ name. \"-i winnum\" - use the window number as the ID (e.g. 1,2,3,4...). \"\
@@ -52,6 +47,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -i
+- id: or
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

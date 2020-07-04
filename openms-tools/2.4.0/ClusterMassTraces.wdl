@@ -2,32 +2,46 @@ version 1.0
 
 task ClusterMassTraces {
   input {
-    File inIn
-    File outOut
-    String minMinPearsonCorrelation
-    String minMinPeakNr
-    String maxMaxLag
-    String maxMaxRtApexDifference
-    String maxMaxIntensityCutOff
-    String addAddPrecursor
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    File? in
+    File? out
+    String? min_pearson_correlation
+    String? min_peak_nr
+    String? max_lag
+    String? max_rt_apex_difference
+    String? max_intensity_cut_off
+    String? add_precursor
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     ClusterMassTraces \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(minMinPearsonCorrelation) then ("-min_pearson_correlation " +  '"' + minMinPearsonCorrelation + '"') else ""} \
-      ~{if defined(minMinPeakNr) then ("-min_peak_nr " +  '"' + minMinPeakNr + '"') else ""} \
-      ~{if defined(maxMaxLag) then ("-max_lag " +  '"' + maxMaxLag + '"') else ""} \
-      ~{if defined(maxMaxRtApexDifference) then ("-max_rt_apex_difference " +  '"' + maxMaxRtApexDifference + '"') else ""} \
-      ~{if defined(maxMaxIntensityCutOff) then ("-max_intensity_cutoff " +  '"' + maxMaxIntensityCutOff + '"') else ""} \
-      ~{if defined(addAddPrecursor) then ("-add_precursor " +  '"' + addAddPrecursor + '"') else ""} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(min_pearson_correlation) then ("-min_pearson_correlation " +  '"' + min_pearson_correlation + '"') else ""} \
+      ~{if defined(min_peak_nr) then ("-min_peak_nr " +  '"' + min_peak_nr + '"') else ""} \
+      ~{if defined(max_lag) then ("-max_lag " +  '"' + max_lag + '"') else ""} \
+      ~{if defined(max_rt_apex_difference) then ("-max_rt_apex_difference " +  '"' + max_rt_apex_difference + '"') else ""} \
+      ~{if defined(max_intensity_cut_off) then ("-max_intensity_cutoff " +  '"' + max_intensity_cut_off + '"') else ""} \
+      ~{if defined(add_precursor) then ("-add_precursor " +  '"' + add_precursor + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*                        Mass traces (valid formats: 'consensusXML')"
+    out: "*                       Output file (valid formats: 'mzML')"
+    min_pearson_correlation: "Minimal pearson correlation score (default: '0.7')"
+    min_peak_nr: "Minimal peak nr to output pseudo spectra (default: '1')"
+    max_lag: "Maximal lag (default: '1')"
+    max_rt_apex_difference: "Maximal difference of the apex in retention time (default: '5')"
+    max_intensity_cut_off: "Maximal intensity to be added to a spectrum (default: '0')"
+    add_precursor: "Add a precursor mass (default: '0')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

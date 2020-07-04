@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mvicuna.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mvicuna.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

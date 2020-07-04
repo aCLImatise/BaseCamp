@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ESTmapper.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ESTmapper.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

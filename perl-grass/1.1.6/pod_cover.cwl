@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pod_cover.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pod_cover.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: vcf2fasta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf2fasta.cwl
 inputs:
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: reference
   doc: Use this reference when decomposing samples.
   type: string
@@ -22,6 +17,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --default-ploidy
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

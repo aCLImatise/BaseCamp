@@ -1,37 +1,37 @@
 class: CommandLineTool
-id: pan_genome_reorder_spreadsheet.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pan_genome_reorder_spreadsheet.cwl
 inputs:
-- id: t
+- id: tree_filename
   doc: tree filename []
   type: string
   inputBinding:
     prefix: -t
-- id: o
+- id: output_filename
   doc: output filename [reordered_spreadsheet.csv]
   type: string
   inputBinding:
     prefix: -o
-- id: f
+- id: tree_format_newicknexusnhxsvggraphtabtreelintree
   doc: tree format (newick/nexus/nhx/svggraph/tabtree/lintree) [newick]
   type: string
   inputBinding:
     prefix: -f
-- id: s
+- id: input_gene_presence
   doc: input gene presence and absence spreadsheet [gene_presence_absence.csv]
   type: string
   inputBinding:
     prefix: -s
-- id: a
+- id: search_strategy_depthbreadth
   doc: search strategy (depth/breadth) [depth]
   type: string
   inputBinding:
     prefix: -a
-- id: b
+- id: sorting_method_heightcreationalpharevalpha
   doc: sorting method (height/creation/alpha/revalpha) [height]
   type: string
   inputBinding:
     prefix: -b
-- id: v
+- id: verbose_output_stdout
   doc: verbose output to STDOUT
   type: boolean
   inputBinding:

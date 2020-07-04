@@ -1,22 +1,22 @@
 class: CommandLineTool
-id: hmmsearch2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hmmsearch2.cwl
 inputs:
-- id: a
+- id: sets_alignment_limit
   doc: ': sets alignment output limit to <n> best domain alignments'
   type: string
   inputBinding:
     prefix: -A
-- id: e
+- id: sets_cutoff_globe
   doc: ': sets E value cutoff (globE) to <= x'
   type: string
   inputBinding:
     prefix: -E
-- id: t
+- id: sets_t_bit_threshold
   doc: ': sets T bit threshold (globT) to >= x'
   type: string
   inputBinding:
     prefix: -T
-- id: z
+- id: sets_z_seqs
   doc: ': sets Z (# seqs) for E-value calculation'
   type: string
   inputBinding:
@@ -66,7 +66,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --informat
-- id: null2
+- id: null_two
   doc: ': turn OFF the post hoc second null model'
   type: boolean
   inputBinding:
@@ -81,6 +81,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --xnu
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: hmm_search
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: hmm_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: sequence_file_or_database
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

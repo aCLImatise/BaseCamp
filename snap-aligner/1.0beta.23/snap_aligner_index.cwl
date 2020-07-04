@@ -1,22 +1,12 @@
 class: CommandLineTool
-id: snap_aligner_index.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snap_aligner_index.cwl
 inputs:
-- id: input_fa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: output_dir
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: s
+- id: seed_size_default
   doc: 'Seed size (default: 20)'
   type: boolean
   inputBinding:
     prefix: -s
-- id: hg19
+- id: h_gone_nine
   doc: Use pre-computed table bias for hg19, which results in better speed, balance,
     and a smaller index, but only works for the complete human reference.
   type: boolean
@@ -32,7 +22,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -tMaxThreads
-- id: b
+- id: chars_specify_characters
   doc: <chars>         Specify characters to use as chromosome name terminators in
     the FASTA header line; these characters and anything after are not part of the
     chromosome name.  You must specify all characters on a single -B switch.  So,
@@ -102,6 +92,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -sm
+- id: input_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_dir
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

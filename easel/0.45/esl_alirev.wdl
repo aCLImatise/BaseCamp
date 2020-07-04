@@ -2,16 +2,25 @@ version 1.0
 
 task EslAlirev {
   input {
-    String inInFormat
-    String outOutFormat
-    Boolean dnaDna
-    Boolean rnaRna
+    String? in_format
+    String? out_format
+    Boolean? dna
+    Boolean? rna
+    Boolean? options
   }
   command <<<
     esl-alirev \
-      ~{if defined(inInFormat) then ("--informat " +  '"' + inInFormat + '"') else ""} \
-      ~{if defined(outOutFormat) then ("--outformat " +  '"' + outOutFormat + '"') else ""} \
-      ~{true="--dna" false="" dnaDna} \
-      ~{true="--rna" false="" rnaRna}
+      ~{if defined(in_format) then ("--informat " +  '"' + in_format + '"') else ""} \
+      ~{if defined(out_format) then ("--outformat " +  '"' + out_format + '"') else ""} \
+      ~{true="--dna" false="" dna} \
+      ~{true="--rna" false="" rna} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    in_format: ": specify the input MSA file is in format <s>"
+    out_format: ": write the output MSA in format <s>"
+    dna: ": use DNA alphabet"
+    rna: ": use RNA alphabet"
+    options: ""
+  }
 }

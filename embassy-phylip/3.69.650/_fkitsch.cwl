@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _fkitsch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_fkitsch.cwl
 inputs:
 - id: matrix_type
   doc: 'menu       [s] Type of data matrix (Values: s (Square); u (Upper triangular);

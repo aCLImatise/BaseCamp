@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nanosim_h.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nanosim_h.cwl
 inputs:
 - id: profile
   doc: error profile - one of precomputed profiles ('ecoli_R7', 'yeast', 'ecoli_R7.3',
@@ -83,6 +83,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --kmer-bias
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
 outputs: []
 cwlVersion: v1.1
 baseCommand:

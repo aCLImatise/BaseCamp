@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: qualimap_counts.cwl
+id: ../../../../home/ubuntu/BiocondaCli/qualimap_counts.cwl
 inputs:
 - id: compare
   doc: Perform comparison of conditions. Currently 2 maximum is possible.

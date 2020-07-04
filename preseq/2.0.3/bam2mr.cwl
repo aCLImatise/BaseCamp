@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: bam2mr.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bam2mr.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: bam_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: output
   doc: 'Name of output file '
   type: boolean
@@ -41,6 +31,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -about
+- id: bam_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

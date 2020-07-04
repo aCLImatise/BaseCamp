@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: bioconvert_xls2csv.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bioconvert_xls2csv.cwl
 inputs:
-- id: input_file
-  doc: 'The path to the file to convert. (default: None)'
-  type: string
-  inputBinding:
-    position: 0
-- id: output_file
-  doc: 'The path where the result will be stored. (default: None)'
-  type: string
-  inputBinding:
-    position: 1
 - id: force
   doc: 'if outfile exists, it is overwritten with this option (default: False)'
   type: boolean
@@ -57,7 +47,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --extra-arguments
-- id: m
+- id: method_use_conversion
   doc: '[{pandas,pyexcel}], --method [{pandas,pyexcel}] The method to use to do the
     conversion. (default: pandas)'
   type: boolean
@@ -83,6 +73,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --line-terminator
+- id: input_file
+  doc: 'The path to the file to convert. (default: None)'
+  type: string
+  inputBinding:
+    position: 0
+- id: output_file
+  doc: 'The path where the result will be stored. (default: None)'
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

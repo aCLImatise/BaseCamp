@@ -2,10 +2,13 @@ version 1.0
 
 task Fastqutils {
   input {
-    String? commandCommand
+    String var_command
   }
   command <<<
     fastqutils \
-      ~{commandCommand}
+      ~{var_command}
   >>>
+  parameter_meta {
+    var_command: ""
+  }
 }

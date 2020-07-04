@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Trinity_gene_splice_modeler.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Trinity_gene_splice_modeler.py.cwl
 inputs:
 - id: trinity_fast_a
   doc: 'Trinity.fasta file (default: )'

@@ -1,11 +1,11 @@
 class: CommandLineTool
-id: chromosomer_assemble.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chromosomer_assemble.cwl
 inputs:
-- id: s
-  doc: ''
+- id: save_soft_mask
+  doc: 'keep soft masking from the original fragment sequences (default: False)'
   type: boolean
   inputBinding:
-    prefix: -s
+    prefix: --save_soft_mask
 outputs: []
 cwlVersion: v1.1
 baseCommand:

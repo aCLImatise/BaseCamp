@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: flextaxd_create.cwl
+id: ../../../../home/ubuntu/BiocondaCli/flextaxd_create.cwl
 inputs:
-- id: o
+- id: _outdir_directory
   doc: ', --outdir      Output directory (same directory as custom_taxonomy_databases
     dump)'
   type: boolean
@@ -42,7 +42,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --test
-- id: p
+- id: _processes_use
   doc: ', --processes   Use multiple cores'
   type: boolean
   inputBinding:

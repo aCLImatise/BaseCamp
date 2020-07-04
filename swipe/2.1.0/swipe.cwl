@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: swipe.cwl
+id: ../../../../home/ubuntu/BiocondaCli/swipe.cwl
 inputs:
 - id: db
   doc: sequence database base name (required)
@@ -12,7 +12,7 @@ inputs:
   inputBinding:
     prefix: --query
 - id: matrix
-  doc: /FILE     score matrix name or filename (BLOSUM62)
+  doc: score matrix name or filename (BLOSUM62)
   type: string
   inputBinding:
     prefix: --matrix
@@ -82,12 +82,12 @@ inputs:
   inputBinding:
     prefix: --show_gis
 - id: sym_type
-  doc: /NUM     symbol type/translation [0-4] (1)
+  doc: symbol type/translation [0-4] (1)
   type: string
   inputBinding:
     prefix: --symtype
 - id: strand
-  doc: /NUM      query strands to search [1-3] (3)
+  doc: query strands to search [1-3] (3)
   type: string
   inputBinding:
     prefix: --strand

@@ -1,47 +1,47 @@
 class: CommandLineTool
-id: jq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/jq.cwl
 inputs:
-- id: c
+- id: compact_instead_prettyprinted
   doc: compact instead of pretty-printed output;
   type: boolean
   inputBinding:
     prefix: -c
-- id: n
+- id: use_null_single
   doc: use `null` as the single input value;
   type: boolean
   inputBinding:
     prefix: -n
-- id: e
+- id: set_status_code
   doc: set the exit status code based on the output;
   type: boolean
   inputBinding:
     prefix: -e
-- id: s
+- id: read_slurp_inputs
   doc: read (slurp) all inputs into an array; apply filter to it;
   type: boolean
   inputBinding:
     prefix: -s
-- id: r
+- id: output_raw_strings
   doc: output raw strings, not JSON texts;
   type: boolean
   inputBinding:
     prefix: -r
-- id: r
+- id: read_raw_strings
   doc: read raw strings, not JSON texts;
   type: boolean
   inputBinding:
     prefix: -R
-- id: c
+- id: colorize_json
   doc: colorize JSON;
   type: boolean
   inputBinding:
     prefix: -C
-- id: m
+- id: monochrome_colorize_json
   doc: monochrome (don't colorize JSON);
   type: boolean
   inputBinding:
     prefix: -M
-- id: s
+- id: sort_keys_objects
   doc: sort keys of objects on output;
   type: boolean
   inputBinding:
@@ -66,6 +66,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --slurpfile
+- id: jq_filter
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: file_dot_dot_dot
+  doc: ''
+  type: File
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

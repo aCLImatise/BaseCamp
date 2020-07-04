@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gdtools_RUNFILE.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gdtools_RUNFILE.cwl
 inputs:
 - id: mode
   doc: 'Type of command file to generate. Valid options are: breseq, breseq-apply,

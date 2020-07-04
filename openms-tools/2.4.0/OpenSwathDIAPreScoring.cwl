@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: OpenSwathDIAPreScoring.cwl
+id: ../../../../home/ubuntu/BiocondaCli/OpenSwathDIAPreScoring.cwl
 inputs:
 - id: tr
   doc: "*                    Transition file (valid formats: 'TraML')"

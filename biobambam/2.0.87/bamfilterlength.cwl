@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamfilterlength.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamfilterlength.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

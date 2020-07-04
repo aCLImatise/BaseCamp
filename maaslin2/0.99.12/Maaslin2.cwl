@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Maaslin2.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Maaslin2.R.cwl
 inputs:
 - id: min_abundance
   doc: 'The minimum abundance for each feature [ Default: 0 ]'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: evolver.cwl
+id: ../../../../home/ubuntu/BiocondaCli/evolver.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

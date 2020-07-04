@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: goalign_shuffle_rogue.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_shuffle_rogue.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: length
   doc: Proportion of the sites to shuffle (default 0.5)
   type: double
@@ -86,6 +81,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

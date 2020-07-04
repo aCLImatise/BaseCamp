@@ -2,16 +2,22 @@ version 1.0
 
 task FaAlign {
   input {
-    String useUse
-    String? targetTargetFa
-    String? queryQueryFa
-    String? outputOutputAxt
+    Boolean? dna
+    String target_dot_fa
+    String query_dot_fa
+    String output_do_tax_t
   }
   command <<<
     faAlign \
-      ~{targetTargetFa} \
-      ~{if defined(useUse) then ("- use " +  '"' + useUse + '"') else ""} \
-      ~{queryQueryFa} \
-      ~{outputOutputAxt}
+      ~{target_dot_fa} \
+      ~{query_dot_fa} \
+      ~{output_do_tax_t} \
+      ~{true="-dna" false="" dna}
   >>>
+  parameter_meta {
+    dna: "- use DNA scoring scheme"
+    target_dot_fa: ""
+    query_dot_fa: ""
+    output_do_tax_t: ""
+  }
 }

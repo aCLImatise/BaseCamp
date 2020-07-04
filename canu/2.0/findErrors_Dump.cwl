@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: findErrors_Dump.cwl
+id: ../../../../home/ubuntu/BiocondaCli/findErrors_Dump.cwl
 inputs:
 - id: r
   doc: ''

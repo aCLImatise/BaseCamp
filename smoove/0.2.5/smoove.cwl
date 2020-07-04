@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: smoove.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smoove.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

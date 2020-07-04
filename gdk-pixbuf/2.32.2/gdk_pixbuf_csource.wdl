@@ -2,30 +2,49 @@ version 1.0
 
 task GdkPixbufCsource {
   input {
-    Boolean streamStream
-    Boolean structStruct
-    Boolean macrosMacros
-    Boolean rleRle
-    Boolean rawRaw
-    Boolean externExtern
-    Boolean staticStatic
-    Boolean decoderDecoder
-    String nameName
-    Boolean buildBuildList
-    Boolean gGFatalWarnings
+    Boolean? stream
+    Boolean? generate_gdkpixdata_structure
+    Boolean? macros
+    Boolean? rle
+    Boolean? raw
+    Boolean? extern
+    Boolean? static
+    Boolean? decoder
+    String? name
+    Boolean? build_list
+    Boolean? g_fatal_warnings
+    String gdk_pixbuf_c_source_three_dot_zero
+    String? image
   }
   command <<<
     gdk-pixbuf-csource \
-      ~{true="--stream" false="" streamStream} \
-      ~{true="--struct" false="" structStruct} \
-      ~{true="--macros" false="" macrosMacros} \
-      ~{true="--rle" false="" rleRle} \
-      ~{true="--raw" false="" rawRaw} \
-      ~{true="--extern" false="" externExtern} \
-      ~{true="--static" false="" staticStatic} \
-      ~{true="--decoder" false="" decoderDecoder} \
-      ~{if defined(nameName) then ("--name " +  '"' + nameName + '"') else ""} \
-      ~{true="--build-list" false="" buildBuildList} \
-      ~{true="--g-fatal-warnings" false="" gGFatalWarnings}
+      ~{gdk_pixbuf_c_source_three_dot_zero} \
+      ~{image} \
+      ~{true="--stream" false="" stream} \
+      ~{true="--struct" false="" generate_gdkpixdata_structure} \
+      ~{true="--macros" false="" macros} \
+      ~{true="--rle" false="" rle} \
+      ~{true="--raw" false="" raw} \
+      ~{true="--extern" false="" extern} \
+      ~{true="--static" false="" static} \
+      ~{true="--decoder" false="" decoder} \
+      ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
+      ~{true="--build-list" false="" build_list} \
+      ~{true="--g-fatal-warnings" false="" g_fatal_warnings}
   >>>
+  parameter_meta {
+    stream: "generate pixbuf data stream"
+    generate_gdkpixdata_structure: "generate GdkPixdata structure"
+    macros: "generate image size/pixel macros"
+    rle: "use one byte run-length-encoding"
+    raw: "provide raw image data copy"
+    extern: "generate extern symbols"
+    static: "generate static symbols"
+    decoder: "provide rle decoder"
+    name: "C macro/variable name"
+    build_list: "parse (name, image) pairs"
+    g_fatal_warnings: "make warnings fatal (abort)"
+    gdk_pixbuf_c_source_three_dot_zero: ""
+    image: ""
+  }
 }

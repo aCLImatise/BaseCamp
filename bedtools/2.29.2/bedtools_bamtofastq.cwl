@@ -1,17 +1,7 @@
 class: CommandLineTool
-id: bedtools_bamtofastq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedtools_bamtofastq.cwl
 inputs:
-- id: bam_to_fast_q
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: fq2
+- id: fq_two
   doc: FASTQ for second end.  Used if BAM contains paired-end data. BAM should be
     sorted by query name is creating paired FASTQ.
   type: boolean
@@ -22,6 +12,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -tags
+- id: i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
+- id: fq
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -fq
+- id: bam_to_fast_q
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

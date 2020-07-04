@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SepSam.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SepSam.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

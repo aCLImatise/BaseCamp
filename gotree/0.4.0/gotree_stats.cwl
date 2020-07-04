@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: gotree_stats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gotree_stats.cwl
 inputs:
-- id: nodes
-  doc: Displays statistics on nodes of input tree
-  type: string
-  inputBinding:
-    position: 0
-- id: rooted
-  doc: Tells wether the tree is rooted or unrooted
-  type: string
-  inputBinding:
-    position: 1
-- id: splits
-  doc: Prints all the splits from an input tree
-  type: string
-  inputBinding:
-    position: 2
-- id: tips
-  doc: Displays statistics on tips of input tree
-  type: string
-  inputBinding:
-    position: 3
 - id: input
   doc: Input tree (default "stdin")
   type: string
@@ -46,6 +26,26 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: nodes
+  doc: Displays statistics on nodes of input tree
+  type: string
+  inputBinding:
+    position: 0
+- id: rooted
+  doc: Tells wether the tree is rooted or unrooted
+  type: string
+  inputBinding:
+    position: 1
+- id: splits
+  doc: Prints all the splits from an input tree
+  type: string
+  inputBinding:
+    position: 2
+- id: tips
+  doc: Displays statistics on tips of input tree
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

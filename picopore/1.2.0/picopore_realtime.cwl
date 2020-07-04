@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: picopore_realtime.cwl
+id: ../../../../home/ubuntu/BiocondaCli/picopore_realtime.cwl
 inputs:
-- id: input
-  doc: list of directories or fast5 files to shrink
-  type: string
-  inputBinding:
-    position: 0
 - id: mode
   doc: choose compression mode
   type: string
@@ -32,7 +27,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --manual
-- id: y
+- id: skip_confirm_step
   doc: skip confirm step
   type: boolean
   inputBinding:
@@ -58,6 +53,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --print-every
+- id: input
+  doc: list of directories or fast5 files to shrink
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

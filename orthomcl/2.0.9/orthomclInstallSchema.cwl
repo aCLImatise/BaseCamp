@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: orthomclInstallSchema.cwl
+id: ../../../../home/ubuntu/BiocondaCli/orthomclInstallSchema.cwl
 inputs:
 - id: config_file
   doc: ''

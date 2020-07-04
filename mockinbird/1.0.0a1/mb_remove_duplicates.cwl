@@ -1,18 +1,8 @@
 class: CommandLineTool
-id: mb_remove_duplicates.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mb_remove_duplicates.cwl
 inputs:
-- id: input_fast_q
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: output_fast_q
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: verbose
-  doc: ''
+  doc: verbose output
   type: boolean
   inputBinding:
     prefix: --verbose

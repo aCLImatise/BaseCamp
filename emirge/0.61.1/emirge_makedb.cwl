@@ -1,12 +1,7 @@
 class: CommandLineTool
-id: emirge_makedb.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/emirge_makedb.py.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: g
+- id: build_database_rrna
   doc: '[SSU|LSU], --gene=[SSU|LSU] build database from this gene (SSU=Small Subunit
     rRNA; LSU=Large Subunit rRNA) default = SSU'
   type: boolean

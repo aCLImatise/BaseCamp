@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: chado_import_ontology.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chado_import_ontology.cwl
 inputs:
-- id: dbname
-  doc: name of the database
-  type: string
-  inputBinding:
-    position: 0
 - id: verbose
   doc: verbose mode
   type: boolean
@@ -41,6 +36,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --format
+- id: dbname
+  doc: name of the database
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

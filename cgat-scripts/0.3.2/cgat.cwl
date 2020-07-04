@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cgat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cgat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

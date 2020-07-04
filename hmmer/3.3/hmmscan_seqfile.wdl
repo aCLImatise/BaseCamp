@@ -2,14 +2,22 @@ version 1.0
 
 task HmmscanSeqfile {
   input {
-    Boolean optionsOptions
-    String? hmmHmmDb
-    String? seqSeqFile
+    Boolean? options
+    String hmms_can
+    String hmm_db
+    String seq_file
   }
   command <<<
     hmmscan seqfile \
-      ~{hmmHmmDb} \
-      ~{true="-options" false="" optionsOptions} \
-      ~{seqSeqFile}
+      ~{hmms_can} \
+      ~{hmm_db} \
+      ~{seq_file} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    options: ""
+    hmms_can: ""
+    hmm_db: ""
+    seq_file: ""
+  }
 }

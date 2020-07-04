@@ -2,12 +2,16 @@ version 1.0
 
 task PhmmerSeqfile {
   input {
-    Boolean optionsOptions
-    String? seqSeqDb
+    Boolean? options
+    String seq_db
   }
   command <<<
     phmmer seqfile \
-      ~{seqSeqDb} \
-      ~{true="-options" false="" optionsOptions}
+      ~{seq_db} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    options: ""
+    seq_db: ""
+  }
 }

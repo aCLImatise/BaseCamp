@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dsh_filter_sam.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dsh_filter_sam.cwl
 inputs:
 - id: about
   doc: display about message [optional]

@@ -1,50 +1,40 @@
 class: CommandLineTool
-id: hhblits_omp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hhblits_omp.cwl
 inputs:
-- id: i
+- id: inputquery_single_sequence
   doc: 'input/query: single sequence or multiple sequence alignment (MSA) in a3m,
     a2m, or FASTA format, or HMM in hhm format'
   type: File
   inputBinding:
     prefix: -i
-- id: d
+- id: database_name_eg
   doc: database name (e.g. uniprot20_29Feb2012)                         Multiple databases
     may be specified with '-d <db1> -d <db2> ...'
   type: string
   inputBinding:
     prefix: -d
-- id: n
+- id: number_iterations_default
   doc: '[1,8]   number of iterations (default=2)                               '
   type: boolean
   inputBinding:
     prefix: -n
-- id: e
+- id: evalue_cutoff_inclusion
   doc: '[0,1]   E-value cutoff for inclusion in result alignment (def=0.001)       '
   type: boolean
   inputBinding:
     prefix: -e
-- id: m
-  doc: 'use FASTA: columns with residue in 1st sequence are match states'
-  type: string
-  inputBinding:
-    prefix: -M
-- id: m
-  doc: '[0,100]     use FASTA: columns with fewer than X% gaps are match states   '
+- id: tags_slash_no_tags
+  doc: 'do NOT / do neutralize His-, C-myc-, FLAG-tags, and trypsin  recognition sequence
+    to background distribution (def=-notags)  '
   type: boolean
   inputBinding:
-    prefix: -M
-- id: tags
-  doc: '/-notags  do NOT / do neutralize His-, C-myc-, FLAG-tags, and trypsin  recognition
-    sequence to background distribution (def=-notags)  '
-  type: boolean
-  inputBinding:
-    prefix: -tags
-- id: o
+    prefix: -tags/-notags
+- id: write_results_file
   doc: write results in standard format to file (default=<infile.hhr>)
   type: File
   inputBinding:
     prefix: -o
-- id: oa3m
+- id: o_a_three_m
   doc: write result MSA with significant matches in a3m format
   type: File
   inputBinding:
@@ -111,32 +101,32 @@ inputs:
   type: long
   inputBinding:
     prefix: -aliw
-- id: p
+- id: minimum_probability_summary
   doc: '[0,100]     minimum probability in summary and alignment list (default=20)  '
   type: boolean
   inputBinding:
     prefix: -p
-- id: e
+- id: inf_maximum_evalue
   doc: '[0,inf[     maximum E-value in summary and alignment list (default=1E+06)      '
   type: boolean
   inputBinding:
     prefix: -E
-- id: z
+- id: maximum_number_lines
   doc: 'maximum number of lines in summary hit list (default=500)        '
   type: long
   inputBinding:
     prefix: -Z
-- id: z
+- id: minimum_number_lines
   doc: 'minimum number of lines in summary hit list (default=10)        '
   type: long
   inputBinding:
     prefix: -z
-- id: b
+- id: maximum_number_alignments
   doc: 'maximum number of alignments in alignment list (default=500)     '
   type: long
   inputBinding:
     prefix: -B
-- id: b
+- id: minimum_number_alignments
   doc: 'minimum number of alignments in alignment list (default=10)     '
   type: long
   inputBinding:
@@ -244,11 +234,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -mact
-- id: glob
-  doc: /-loc           use global/local alignment mode for searching/ranking (def=local)
+- id: glob_slash_loc
+  doc: use global/local alignment mode for searching/ranking (def=local)
   type: boolean
   inputBinding:
-    prefix: -glob
+    prefix: -glob/-loc
 - id: realign
   doc: 'realign displayed hits with max. accuracy (MAC) algorithm '
   type: boolean
@@ -441,7 +431,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -csb
-- id: v
+- id: verbose_mode_screen
   doc: 'verbose mode: 0:no screen output  1:only warings  2: verbose (def=2)'
   type: long
   inputBinding:
@@ -487,6 +477,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -maxmem
+- id: hh_blits
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

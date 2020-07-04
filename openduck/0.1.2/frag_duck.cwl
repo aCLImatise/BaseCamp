@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: frag_duck.cwl
+id: ../../../../home/ubuntu/BiocondaCli/frag_duck.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

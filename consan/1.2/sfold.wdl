@@ -2,14 +2,19 @@ version 1.0
 
 task Sfold {
   input {
-    Boolean optionsOptions
-    String? seqfile1Seqfile1
-    String? seqfile2Seqfile2
+    Boolean? options
+    String seq_file_one
+    String seq_file_two
   }
   command <<<
     sfold \
-      ~{seqfile1Seqfile1} \
-      ~{true="-options" false="" optionsOptions} \
-      ~{seqfile2Seqfile2}
+      ~{seq_file_one} \
+      ~{seq_file_two} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    options: ""
+    seq_file_one: ""
+    seq_file_two: ""
+  }
 }

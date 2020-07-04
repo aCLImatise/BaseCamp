@@ -1,26 +1,26 @@
 class: CommandLineTool
-id: pslMrnaCover.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pslMrnaCover.cwl
 inputs:
-- id: mrna_psl
+- id: minsize
+  doc: '- default 100.  Minimum size of mRNA considered'
+  type: string
+  inputBinding:
+    prefix: -minSize
+- id: list_zero
+  doc: "- List accessions that don't align in zero.tab"
+  type: string
+  inputBinding:
+    prefix: -listZero
+- id: mrna_dot_psl
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: mrna_fa
+- id: mrna_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: default
-  doc: 100.  Minimum size of mRNA considered
-  type: string
-  inputBinding:
-    prefix: '- default'
-- id: list_zero
-  doc: that don't align in zero.tab
-  type: string
-  inputBinding:
-    prefix: -listZero
 outputs: []
 cwlVersion: v1.1
 baseCommand:

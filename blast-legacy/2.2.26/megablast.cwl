@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: megablast.cwl
+id: ../../../../home/ubuntu/BiocondaCli/megablast.cwl
 inputs:
-- id: m
+- id: alignment_view_options
   doc: 'alignment view options:'
   type: boolean
   inputBinding:
     prefix: -m
-- id: d
+- id: type_of_output
   doc: 'Type of output:'
   type: boolean
   inputBinding:

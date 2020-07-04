@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfclassify.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfclassify.cwl
 inputs:
 - id: vcf_file
   doc: ''

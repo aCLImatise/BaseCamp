@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: runContigNUCmer.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/runContigNUCmer.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

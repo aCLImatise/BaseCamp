@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: adamR.cwl
+id: ../../../../home/ubuntu/BiocondaCli/adamR.cwl
 inputs:
 - id: master
   doc: 'spark://host:port, mesos://host:port, yarn, k8s://https://host:port, or local

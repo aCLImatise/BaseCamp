@@ -2,22 +2,31 @@ version 1.0
 
 task Breakseq2GenBplib.py {
   input {
-    String referenceReference
-    String outputOutput
-    Array[String]+ chromosomesChromosomes
-    String logLog
-    String bpBpLibGff
-    String junctionJunctionLength
-    Boolean formatFormatVersion
+    String? reference
+    String? output_fasta_generate
+    Array[String] chromosomes
+    String? log
+    String? bp_lib_gff
+    String? junction_length
+    String? format_version
   }
   command <<<
     breakseq2_gen_bplib.py \
-      ~{if defined(referenceReference) then ("--reference " +  '"' + referenceReference + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(chromosomesChromosomes) then ("--chromosomes " +  '"' + chromosomesChromosomes + '"') else ""} \
-      ~{if defined(logLog) then ("--log " +  '"' + logLog + '"') else ""} \
-      ~{if defined(bpBpLibGff) then ("--bplib_gff " +  '"' + bpBpLibGff + '"') else ""} \
-      ~{if defined(junctionJunctionLength) then ("--junction_length " +  '"' + junctionJunctionLength + '"') else ""} \
-      ~{true="--format_version" false="" formatFormatVersion}
+      ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
+      ~{if defined(output_fasta_generate) then ("--output " +  '"' + output_fasta_generate + '"') else ""} \
+      ~{if defined(chromosomes) then ("--chromosomes " +  '"' + chromosomes + '"') else ""} \
+      ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
+      ~{if defined(bp_lib_gff) then ("--bplib_gff " +  '"' + bp_lib_gff + '"') else ""} \
+      ~{if defined(junction_length) then ("--junction_length " +  '"' + junction_length + '"') else ""} \
+      ~{if defined(format_version) then ("--format_version " +  '"' + format_version + '"') else ""}
   >>>
+  parameter_meta {
+    reference: "Reference FASTA (default: None)"
+    output_fasta_generate: "Output FASTA to generate. Leave unspecified for stdout (default: None)"
+    chromosomes: "List of chromosomes to process (default: [])"
+    log: "Log level (default: INFO)"
+    bp_lib_gff: "Breakpoint GFF input (default: None)"
+    junction_length: "Junction length (default: 200)"
+    format_version: "Version of breakpoint library format to use (default: 2)"
+  }
 }

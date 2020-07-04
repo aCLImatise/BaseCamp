@@ -2,18 +2,25 @@ version 1.0
 
 task BiomNormalizeTable {
   input {
-    File inputInputFp
-    File outputOutputFp
-    Boolean relativeRelativeAbund
-    Boolean presencePresenceAbsence
-    Boolean axisAxis
+    File? input_fp
+    File? output_fp
+    Boolean? relative_abund
+    Boolean? presence_absence
+    Boolean? axis
   }
   command <<<
     biom normalize-table \
-      ~{if defined(inputInputFp) then ("--input-fp " +  '"' + inputInputFp + '"') else ""} \
-      ~{if defined(outputOutputFp) then ("--output-fp " +  '"' + outputOutputFp + '"') else ""} \
-      ~{true="--relative-abund" false="" relativeRelativeAbund} \
-      ~{true="--presence-absence" false="" presencePresenceAbsence} \
-      ~{true="--axis" false="" axisAxis}
+      ~{if defined(input_fp) then ("--input-fp " +  '"' + input_fp + '"') else ""} \
+      ~{if defined(output_fp) then ("--output-fp " +  '"' + output_fp + '"') else ""} \
+      ~{true="--relative-abund" false="" relative_abund} \
+      ~{true="--presence-absence" false="" presence_absence} \
+      ~{true="--axis" false="" axis}
   >>>
+  parameter_meta {
+    input_fp: "The input BIOM table  [required]"
+    output_fp: "An output file-path"
+    relative_abund: "convert table to relative abundance"
+    presence_absence: "convert table to presence/absence"
+    axis: "[sample|observation] The axis to normalize over"
+  }
 }

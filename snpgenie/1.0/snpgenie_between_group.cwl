@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: snpgenie_between_group.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snpgenie_between_group.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pyatac_bias_vplot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyatac_bias_vplot.cwl
 inputs:
 - id: bed
   doc: Positions around which to generate VPlot

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: oe2fps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/oe2fps.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

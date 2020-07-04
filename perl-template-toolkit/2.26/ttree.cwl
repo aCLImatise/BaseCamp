@@ -1,57 +1,52 @@
 class: CommandLineTool
-id: ttree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ttree.cwl
 inputs:
-- id: files
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
-- id: a
+- id: _process_files
   doc: (--all)          Process all files, regardless of modification
   type: boolean
   inputBinding:
     prefix: -a
-- id: r
+- id: _recurse_recurse
   doc: (--recurse)      Recurse into sub-directories
   type: boolean
   inputBinding:
     prefix: -r
-- id: p
+- id: _preserve_ownership
   doc: (--preserve)     Preserve file ownership and permission
   type: boolean
   inputBinding:
     prefix: -p
-- id: n
+- id: _nothing_nothing
   doc: (--nothing)      Do nothing, just print summary (enables -v)
   type: boolean
   inputBinding:
     prefix: -n
-- id: v
+- id: _verbose_verbose
   doc: '(--verbose)      Verbose mode. Use twice for more verbosity: -v -v'
   type: boolean
   inputBinding:
     prefix: -v
-- id: s
+- id: _srcdir_source
   doc: (--src=DIR)      Source directory
   type: string
   inputBinding:
     prefix: -s
-- id: d
+- id: _destdir_destination
   doc: (--dest=DIR)     Destination directory
   type: string
   inputBinding:
     prefix: -d
-- id: c
+- id: _cfgdir_location
   doc: (--cfg=DIR)      Location of configuration files
   type: string
   inputBinding:
     prefix: -c
-- id: l
+- id: _libdir_directory
   doc: (--lib=DIR)      Library directory (INCLUDE_PATH)  (multiple)
   type: string
   inputBinding:
     prefix: -l
-- id: f
+- id: _filefile_read
   doc: (--file=FILE)    Read named configuration file     (multiple)
   type: File
   inputBinding:
@@ -231,7 +226,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --compile_dir
-- id: perl5lib
+- id: perl_five_lib
   doc: Specify additional Perl library directories
   type: string
   inputBinding:
@@ -241,6 +236,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --template_module
+- id: files
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

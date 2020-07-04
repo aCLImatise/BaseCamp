@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: qualimap_rnaseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/qualimap_rnaseq.cwl
 inputs:
 - id: algorithm
   doc: 'Counting algorithm: uniquely-mapped-reads(default) or proportional.'
@@ -55,6 +55,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --sorted
+- id: arg
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

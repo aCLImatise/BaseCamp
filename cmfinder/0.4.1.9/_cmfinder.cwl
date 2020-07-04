@@ -1,38 +1,38 @@
 class: CommandLineTool
-id: _cmfinder.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_cmfinder.pl.cwl
 inputs:
-- id: b
+- id: use_blast_search
   doc: Do not use BLAST search to locate anchors
   type: boolean
   inputBinding:
     prefix: -b
-- id: c
+- id: maximum_number_candidates
   doc: The maximum number of candidates in each sequence. Default 40. No bigger than
     100.
   type: string
   inputBinding:
     prefix: -c
-- id: m
+- id: minimum_length_default
   doc: The minimum length of candidates. Default 30
   type: string
   inputBinding:
     prefix: -m
-- id: m
+- id: maximum_length_default
   doc: The maximum length of candidates. Default 100
   type: string
   inputBinding:
     prefix: -M
-- id: f
+- id: fraction_sequences_expected
   doc: The fraction of the sequences expected to contain the motif. Default 0.80
   type: string
   inputBinding:
     prefix: -f
-- id: s1
+- id: s_one
   doc: The max number of output single stem-loop motifs
   type: string
   inputBinding:
     prefix: -s1
-- id: s2
+- id: s_two
   doc: 'The max number of output double stem-loop motifs    '
   type: string
   inputBinding:

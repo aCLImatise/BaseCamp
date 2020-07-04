@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pvacseq_ui.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pvacseq_ui.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

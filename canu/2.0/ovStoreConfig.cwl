@@ -1,37 +1,17 @@
 class: CommandLineTool
-id: ovStoreConfig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ovStoreConfig.cwl
 inputs:
-- id: ov_overlap
-  doc: 2 words of 64 bits each.
-  type: string
-  inputBinding:
-    position: 0
-- id: ov_overlap_sort_size
-  doc: 192 bits
-  type: string
-  inputBinding:
-    position: 1
-- id: sc_child_max
-  doc: 63942 processes
-  type: string
-  inputBinding:
-    position: 2
-- id: sc_open_max
-  doc: 1024 files
-  type: string
-  inputBinding:
-    position: 3
-- id: s
+- id: path_seqstore_assembly
   doc: path to seqStore for this assembly
   type: string
   inputBinding:
     prefix: -S
-- id: l
+- id: list_ovb_files
   doc: a list of ovb files in 'fileList'
   type: File
   inputBinding:
     prefix: -L
-- id: m
+- id: use_gigabytes_memory
   doc: use up to 'g' gigabytes memory for sorting overlaps default 4; g-0.25 gb is
     available for sorting overlaps
   type: string
@@ -68,6 +48,26 @@ inputs:
   type: string
   inputBinding:
     prefix: -listinputs
+- id: ov_overlap
+  doc: 2 words of 64 bits each.
+  type: string
+  inputBinding:
+    position: 0
+- id: ov_overlap_sort_size
+  doc: 192 bits
+  type: string
+  inputBinding:
+    position: 1
+- id: sc_child_max
+  doc: 63942 processes
+  type: string
+  inputBinding:
+    position: 2
+- id: sc_open_max
+  doc: 1024 files
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

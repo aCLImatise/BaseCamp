@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ann_pdb_cath.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ann_pdb_cath.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

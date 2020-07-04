@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: o_subsample_fasta_file.cwl
+id: ../../../../home/ubuntu/BiocondaCli/o_subsample_fasta_file.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

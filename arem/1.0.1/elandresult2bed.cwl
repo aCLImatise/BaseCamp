@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: elandresult2bed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/elandresult2bed.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: omero_admin_ice.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_admin_ice.cwl
 inputs:
 - id: argument
   doc: Arguments joined together to make an Ice command. If not present, the user

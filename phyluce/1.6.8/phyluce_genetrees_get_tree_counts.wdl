@@ -2,20 +2,28 @@ version 1.0
 
 task PhyluceGenetreesGetTreeCounts {
   input {
-    String treesTrees
-    String locusLocusSupportOutput
-    String schemaSchema
-    String rootRoot
-    String extensionExtension
-    Array[String]+ excludeExclude
+    String? trees
+    String? locus_support_output
+    String? schema
+    String? root
+    String? extension
+    Array[String] exclude
   }
   command <<<
     phyluce_genetrees_get_tree_counts \
-      ~{if defined(treesTrees) then ("--trees " +  '"' + treesTrees + '"') else ""} \
-      ~{if defined(locusLocusSupportOutput) then ("--locus-support-output " +  '"' + locusLocusSupportOutput + '"') else ""} \
-      ~{if defined(schemaSchema) then ("--schema " +  '"' + schemaSchema + '"') else ""} \
-      ~{if defined(rootRoot) then ("--root " +  '"' + rootRoot + '"') else ""} \
-      ~{if defined(extensionExtension) then ("--extension " +  '"' + extensionExtension + '"') else ""} \
-      ~{if defined(excludeExclude) then ("--exclude " +  '"' + excludeExclude + '"') else ""}
+      ~{if defined(trees) then ("--trees " +  '"' + trees + '"') else ""} \
+      ~{if defined(locus_support_output) then ("--locus-support-output " +  '"' + locus_support_output + '"') else ""} \
+      ~{if defined(schema) then ("--schema " +  '"' + schema + '"') else ""} \
+      ~{if defined(root) then ("--root " +  '"' + root + '"') else ""} \
+      ~{if defined(extension) then ("--extension " +  '"' + extension + '"') else ""} \
+      ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""}
   >>>
+  parameter_meta {
+    trees: "Tree file"
+    locus_support_output: "The output file in which to store trees and their associated loci (config format)"
+    schema: "The scheme of the input data"
+    root: "The taxon on which to root trees"
+    extension: "File extension used with each 'best' tree"
+    exclude: "Loci to exclude"
+  }
 }

@@ -1,22 +1,22 @@
 class: CommandLineTool
-id: ssu_esl_sfetch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ssu_esl_sfetch.cwl
 inputs:
-- id: o
+- id: output_sequences_file
   doc: ': output sequences to file <f> instead of stdout'
   type: string
   inputBinding:
     prefix: -o
-- id: o
+- id: output_sequence_file
   doc: ': output sequence to file named <key>'
   type: boolean
   inputBinding:
     prefix: -O
-- id: n
+- id: rename_sequence_s
   doc: ': rename the sequence <s>'
   type: string
   inputBinding:
     prefix: -n
-- id: r
+- id: reverse_complement_seqs
   doc: ': reverse complement the seq(s)'
   type: boolean
   inputBinding:

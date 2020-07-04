@@ -2,12 +2,22 @@ version 1.0
 
 task SeqtkSubseq {
   input {
-    Boolean tT
-    Int lL
+    Boolean? tab_delimited_output
+    Int? sequence_line_length
+    String in_dot_fa
+    String in_dot_bed
   }
   command <<<
     seqtk subseq \
-      ~{true="-t" false="" tT} \
-      ~{if defined(lL) then ("-l " +  '"' + lL + '"') else ""}
+      ~{in_dot_fa} \
+      ~{in_dot_bed} \
+      ~{true="-t" false="" tab_delimited_output} \
+      ~{if defined(sequence_line_length) then ("-l " +  '"' + sequence_line_length + '"') else ""}
   >>>
+  parameter_meta {
+    tab_delimited_output: "TAB delimited output"
+    sequence_line_length: "sequence line length [0]"
+    in_dot_fa: ""
+    in_dot_bed: ""
+  }
 }

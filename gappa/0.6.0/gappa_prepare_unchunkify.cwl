@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gappa_prepare_unchunkify.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gappa_prepare_unchunkify.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: j_place_cache_size
   doc: =0  Cache size to determine how many jplace files are kept in memory. Default
     (0) means all. Use this if the command runs out of memory. It however comes at

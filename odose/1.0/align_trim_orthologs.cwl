@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: align_trim_orthologs.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/align_trim_orthologs.py.cwl
 inputs:
-- id: filter_ortholog_spy
+- id: filter_orthologs_do_tpy
   doc: ''
   type: string
   inputBinding:

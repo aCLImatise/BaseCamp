@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: myriad.cwl
+id: ../../../../home/ubuntu/BiocondaCli/myriad.cwl
 inputs:
 - id: client
   doc: Run client
@@ -11,6 +11,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --serverclient
+- id: host
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --host
+- id: port
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --port
+- id: key
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --key
 outputs: []
 cwlVersion: v1.1
 baseCommand:

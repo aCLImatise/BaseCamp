@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: miranda.cwl
+id: ../../../../home/ubuntu/BiocondaCli/miranda.cwl
 inputs:
-- id: file_1
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
-- id: file_2
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: license
   doc: Display license information
   type: boolean
@@ -82,6 +67,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -keyval
+- id: file_one
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
+- id: file_two
+  doc: ''
+  type: File
+  inputBinding:
+    position: 1
+- id: options_dot_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

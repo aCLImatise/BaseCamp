@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cnvpytor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cnvpytor.cwl
 inputs:
 - id: style
   doc: '{Solarize_Light2,_classic_test_patch,bmh,classic,dark_background,fast,fivethirtyeight,ggplot,grayscale,seaborn,seaborn-bright,seaborn-colorblind,seaborn-dark,seaborn-dark-palette,seaborn-darkgrid,seaborn-deep,seaborn-muted,seaborn-notebook,seaborn-paper,seaborn-pastel,seaborn-poster,seaborn-talk,seaborn-ticks,seaborn-white,seaborn-whitegrid,tableau-colorblind10},
@@ -89,6 +89,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -export
+- id: version
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -version
+- id: root
+  doc: ''
+  type: string[]
+  inputBinding:
+    prefix: -root
+- id: download
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -download
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: smof_translate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smof_translate.cwl
 inputs:
-- id: input
-  doc: input fasta sequence (default = stdin)
-  type: string
-  inputBinding:
-    position: 0
 - id: from_start
   doc: Require each product begin with a start codon
   type: boolean
@@ -21,6 +16,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --cds
+- id: input
+  doc: input fasta sequence (default = stdin)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

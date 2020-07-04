@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cramtools.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cramtools.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

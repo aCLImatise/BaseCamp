@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phastaf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phastaf.cwl
 inputs:
 - id: check
   doc: Check dependencies are installed
@@ -22,7 +22,7 @@ inputs:
   inputBinding:
     prefix: --outdir
 - id: db
-  doc: "Diamond database of phage proteins (default: '/tmp/tmpkt032jsm/db/phastaf.dmnd')"
+  doc: "Diamond database of phage proteins (default: '/tmp/tmpgzbnm9m3/db/phastaf.dmnd')"
   type: string
   inputBinding:
     prefix: --db

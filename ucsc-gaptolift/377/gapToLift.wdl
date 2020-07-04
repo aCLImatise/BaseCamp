@@ -2,20 +2,34 @@ version 1.0
 
 task GapToLift {
   input {
-    String workWork
-    String examineExamine
-    Boolean insaneInsane
-    File bedBedFile
-    String allowAllowBridged
-    String verboseVerbose
+    String? chr
+    String? min_gap
+    Boolean? insane
+    File? bed_file
+    Boolean? allow_bridged
+    String? verbose
+    String db
+    String lift_file_dot_lft
   }
   command <<<
     gapToLift \
-      ~{if defined(workWork) then ("- work " +  '"' + workWork + '"') else ""} \
-      ~{if defined(examineExamine) then ("- examine " +  '"' + examineExamine + '"') else ""} \
-      ~{true="-insane" false="" insaneInsane} \
-      ~{if defined(bedBedFile) then ("-bedFile " +  '"' + bedBedFile + '"') else ""} \
-      ~{if defined(allowAllowBridged) then ("-allowBridged " +  '"' + allowAllowBridged + '"') else ""} \
-      ~{if defined(verboseVerbose) then ("-verbose " +  '"' + verboseVerbose + '"') else ""}
+      ~{db} \
+      ~{lift_file_dot_lft} \
+      ~{if defined(chr) then ("-chr " +  '"' + chr + '"') else ""} \
+      ~{if defined(min_gap) then ("-minGap " +  '"' + min_gap + '"') else ""} \
+      ~{true="-insane" false="" insane} \
+      ~{if defined(bed_file) then ("-bedFile " +  '"' + bed_file + '"') else ""} \
+      ~{true="-allowBridged" false="" allow_bridged} \
+      ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""}
   >>>
+  parameter_meta {
+    chr: "- work only on given chrom"
+    min_gap: "- examine gaps only >= than M"
+    insane: "- do *not* perform coordinate sanity checks on gaps"
+    bed_file: "- output segments to fileName.bed"
+    allow_bridged: "- consider any type of gap not just the non-bridged gaps"
+    verbose: "- N > 1 see more information about procedure"
+    db: ""
+    lift_file_dot_lft: ""
+  }
 }

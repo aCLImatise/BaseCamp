@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: domainlist.cwl
+id: ../../../../home/ubuntu/BiocondaCli/domainlist.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

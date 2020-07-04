@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: biopet_vcfstats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/biopet_vcfstats.cwl
 inputs:
 - id: log_level
   doc: "Level of log information printed. Possible levels: 'debug', 'info', 'warn',\
@@ -112,6 +112,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --sparkConfigValue
+- id: vcf_stats
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

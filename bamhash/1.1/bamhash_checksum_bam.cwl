@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamhash_checksum_bam.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamhash_checksum_bam.cwl
 inputs:
 - id: debug
   doc: Debug mode. Prints full hex for each read to stdout

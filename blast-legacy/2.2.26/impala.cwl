@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: impala.cwl
+id: ../../../../home/ubuntu/BiocondaCli/impala.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

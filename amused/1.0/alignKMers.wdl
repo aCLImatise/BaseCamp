@@ -2,22 +2,25 @@ version 1.0
 
 task AlignKMers {
   input {
-    String iI
-    Int vV
-    Boolean rR
-    String mM
-    String iI
-    String oO
-    String lL
+    String? o
+    String? l
+    String? i
+    Int? v
+    String? m
   }
   command <<<
     alignKMers \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(vV) then ("-v " +  '"' + vV + '"') else ""} \
-      ~{true="-r" false="" rR} \
-      ~{if defined(mM) then ("-m " +  '"' + mM + '"') else ""} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{if defined(lL) then ("-l " +  '"' + lL + '"') else ""}
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(v) then ("-v " +  '"' + v + '"') else ""} \
+      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""}
   >>>
+  parameter_meta {
+    o: "= where to output results [default=stdout]"
+    l: "= where to output results [default=stderr]"
+    i: ""
+    v: ""
+    m: ""
+  }
 }

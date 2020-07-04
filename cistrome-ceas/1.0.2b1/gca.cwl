@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gca.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gca.cwl
 inputs:
 - id: bed
   doc: BED file of ChIP regions.
@@ -30,7 +30,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --gn-group
-- id: gname2
+- id: g_name_two
   doc: The gene names of --gn-group will be regarded as 'name2.' See the schema of
     the gene annotation table.
   type: string

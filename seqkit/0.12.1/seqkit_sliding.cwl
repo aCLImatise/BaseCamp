@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: seqkit_sliding.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqkit_sliding.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: circular_genome
   doc: circular genome.
   type: boolean
@@ -75,6 +70,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

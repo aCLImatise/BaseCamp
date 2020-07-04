@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: slamdunk_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/slamdunk_filter.cwl
 inputs:
-- id: bam
-  doc: Bam file(s)
-  type: string
-  inputBinding:
-    position: 0
 - id: output_dir
   doc: Output directory for mapped BAM files.
   type: string
@@ -36,6 +31,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --threads
+- id: bam
+  doc: Bam file(s)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

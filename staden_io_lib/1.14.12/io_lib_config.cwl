@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: io_lib_config.cwl
+id: ../../../../home/ubuntu/BiocondaCli/io_lib_config.cwl
 inputs:
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: cflags
   doc: C and preprocessor flags (eg -I/foo/include)
   type: boolean
@@ -16,6 +11,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --libs
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

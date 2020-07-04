@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: optimir_process.cwl
+id: ../../../../home/ubuntu/BiocondaCli/optimir_process.cwl
 inputs:
 - id: fq
   doc: 'Full path of the sample fastq file (accepted formats and extensions: fastq,
@@ -23,7 +23,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --seedLen
-- id: w5
+- id: w_five
   doc: "Choose the weight applied on events detected on the 5' end of aligned reads\
     \ [default: 4]"
   type: string
@@ -65,13 +65,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --vcf_out
-- id: adapt3
+- id: adapt_three
   doc: "Define the 3' adaptor sequence (default is NEB & ILLUMINA: AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC\
     \ -a TGGAATTCTCGGGTGCCAAGG -> hack: use -a to add adapter sequences)"
   type: string
   inputBinding:
     prefix: --adapt3
-- id: adapt5
+- id: adapt_five
   doc: "Define the 5' adaptor sequence [default: None]"
   type: string
   inputBinding:
@@ -114,7 +114,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --hairpinsFasta
-- id: gff3
+- id: gff_three
   doc: 'Path to the reference library containing miRNAs and pri-miRNAs coordinates
     [default: miRBase v21, GRCh38 coordinates]'
   type: string
@@ -130,12 +130,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --cutadapt
-- id: bowtie2
+- id: bowtie_two
   doc: 'Provide path to the bowtie2 binary [default: from $PATH]'
   type: string
   inputBinding:
     prefix: --bowtie2
-- id: bowtie2_build
+- id: bowtie_two_build
   doc: 'Provide path to the bowtie2 index builder binary [default: from $PATH]'
   type: string
   inputBinding:

@@ -1,21 +1,11 @@
 class: CommandLineTool
-id: PLEKModelling.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PLEKModelling.py.cwl
 inputs:
-- id: minlength
-  doc: 0_or_1 -isrmtempfile 0_or_1
-  type: string
-  inputBinding:
-    prefix: -minlength
 - id: is_balanced
-  doc: '0_or_1 '
+  doc: mRNA transcripts used to build predictor, in fasta format.
   type: string
   inputBinding:
     prefix: -isbalanced
-- id: mrna
-  doc: mRNA transcripts used to build predictor, in fasta format.
-  type: boolean
-  inputBinding:
-    prefix: -mRNA
 - id: l_ncrna
   doc: lncRNA transcripts used to build predictor, in fasta format.
   type: boolean
@@ -26,13 +16,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -prefix
-- id: log2c
+- id: log_two_c
   doc: '(Optional) The specified range of C parameter for the svm parameter  search.
     Default value: 0,5,1. (from, to, by; 0,1,2,3,4,5)   '
   type: boolean
   inputBinding:
     prefix: -log2c
-- id: log2g
+- id: log_two_g
   doc: '(Optional) The specified range of G parameter for the svm parameter  search.
     Default value: 0,-5,-1.(from, to, by; 0,-1,-2,-3,-4,-5) '
   type: boolean
@@ -75,41 +65,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -isrmtempfile
-- id: k
-  doc: '(Optional) range of k. k=5 means that we will calculate usage of  1364 k-mer
-    patterns. (k=1, 4 patterns; k=2, 16; k=3, 64; k=4, 256;  k=5, 1024; 1364=4+64+256+1024).
-    Default value: 5. '
-  type: boolean
-  inputBinding:
-    prefix: -k
-- id: n_fold
-  doc: '(Optional) n-fold cross-validation in search for optimal parameters. Default
-    value: 10.   '
-  type: boolean
-  inputBinding:
-    prefix: -nfold
-- id: is_balanced
-  doc: '(Optional) In the case of isbalanced=1, if the samples are  unbalanced, it
-    will subsample the overrepresented class to obtain an  equal amount of positives
-    and negatives. Default value: 0.'
-  type: boolean
-  inputBinding:
-    prefix: -isbalanced
-- id: range
-  doc: '20140531.range -model 20140531.model '
-  type: boolean
-  inputBinding:
-    prefix: -range
-- id: log2c
-  doc: '1,3,1 -log2g -1,-3,-1 -nfold 2 -k 4      '
-  type: boolean
-  inputBinding:
-    prefix: -log2c
-- id: range
-  doc: 20140601.range -model 20140601.model -k 4
-  type: boolean
-  inputBinding:
-    prefix: -range
 outputs: []
 cwlVersion: v1.1
 baseCommand:

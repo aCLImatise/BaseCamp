@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pee.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pee.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

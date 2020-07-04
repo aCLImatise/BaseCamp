@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ktImportMGRAST.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ktImportMGRAST.cwl
 inputs:
 - id: mgr_ast_table
   doc: A table exported from MG-RAST. It can be from organism or functional analysis,

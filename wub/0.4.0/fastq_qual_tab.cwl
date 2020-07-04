@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastq_qual_tab.py_input_fastq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq_qual_tab.py_input_fastq.cwl
 inputs:
 - id: t
   doc: ''

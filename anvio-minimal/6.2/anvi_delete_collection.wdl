@@ -2,14 +2,19 @@ version 1.0
 
 task AnviDeleteCollection {
   input {
-    String profileProfileDb
-    String collectionCollectionName
-    Boolean listListCollections
+    String? profile_db
+    String? collection_name
+    Boolean? list_collections
   }
   command <<<
     anvi-delete-collection \
-      ~{if defined(profileProfileDb) then ("--profile-db " +  '"' + profileProfileDb + '"') else ""} \
-      ~{if defined(collectionCollectionName) then ("--collection-name " +  '"' + collectionCollectionName + '"') else ""} \
-      ~{true="--list-collections" false="" listListCollections}
+      ~{if defined(profile_db) then ("--profile-db " +  '"' + profile_db + '"') else ""} \
+      ~{if defined(collection_name) then ("--collection-name " +  '"' + collection_name + '"') else ""} \
+      ~{true="--list-collections" false="" list_collections}
   >>>
+  parameter_meta {
+    profile_db: "Anvi'o profile database"
+    collection_name: "Collection name."
+    list_collections: "Show available collections and exit."
+  }
 }

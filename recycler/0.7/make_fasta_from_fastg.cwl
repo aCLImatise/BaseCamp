@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: make_fasta_from_fastg.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/make_fasta_from_fastg.py.cwl
 inputs:
-- id: g
-  doc: ''
+- id: graph
+  doc: '(spades 3.50+) FASTG file to process [recommended: before_rr.fastg]'
   type: string
   inputBinding:
-    prefix: -g
-- id: o
-  doc: ''
+    prefix: --graph
+- id: output
+  doc: output file name for FASTA of cycles
   type: string
   inputBinding:
-    prefix: -o
+    prefix: --output
 outputs: []
 cwlVersion: v1.1
 baseCommand:

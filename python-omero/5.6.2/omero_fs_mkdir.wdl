@@ -2,12 +2,16 @@ version 1.0
 
 task OmeroFsMkdir {
   input {
-    Boolean parentsParents
-    String? newNewDir
+    Boolean? parents
+    String new_dir
   }
   command <<<
     omero fs mkdir \
-      ~{newNewDir} \
-      ~{true="--parents" false="" parentsParents}
+      ~{new_dir} \
+      ~{true="--parents" false="" parents}
   >>>
+  parameter_meta {
+    parents: "ensure whole path exists"
+    new_dir: "directory to create in the repository"
+  }
 }

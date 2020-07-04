@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: goalign_translate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_translate.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: genetic_code
   doc: 'Genetic Code: standard, mitoi (invertebrate mitochondrial) or mitov (vertebrate
     mitochondrial) (default "standard")'
@@ -89,6 +84,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

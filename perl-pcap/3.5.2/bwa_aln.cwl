@@ -1,13 +1,6 @@
 class: CommandLineTool
-id: bwa_aln.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bwa_aln.pl.cwl
 inputs:
-- id: bam
-  doc: A list of single lane BAM files, no information is taken from the headers.
-    This method has additional processing converted to *.fq.gz to give common start
-    point.
-  type: string
-  inputBinding:
-    position: 0
 - id: outdir
   doc: -o   Folder to output result to.
   type: boolean
@@ -46,25 +39,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -man
-- id: threads
-  doc: Number of threads to be used in processing. If perl is not compiled with threading
-    some steps will not run in parallel, however much of the script calls other tools
-    that will still utilise this appropriately.
-  type: boolean
+- id: bam
+  doc: A list of single lane BAM files, no information is taken from the headers.
+    This method has additional processing converted to *.fq.gz to give common start
+    point.
+  type: string
   inputBinding:
-    prefix: -threads
-- id: man
-  doc: Prints the manual page and exits.
-  type: boolean
-  inputBinding:
-    prefix: -man
-- id: process
-  doc: If you want to run the code in a more efficient manner then this allows each
-    procesing type to be executed in isolation. You can restrict to a single process
-    within the block by specifying -index as well.
-  type: boolean
-  inputBinding:
-    prefix: -process
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

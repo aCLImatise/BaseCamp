@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: concatenate.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/concatenate.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

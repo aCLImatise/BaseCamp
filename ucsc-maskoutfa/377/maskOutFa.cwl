@@ -1,7 +1,27 @@
 class: CommandLineTool
-id: maskOutFa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maskOutFa.cwl
 inputs:
-- id: in_fa
+- id: soft
+  doc: '- puts masked parts in lower case other in upper.'
+  type: boolean
+  inputBinding:
+    prefix: -soft
+- id: soft_add
+  doc: '- lower cases masked bits, leaves others unchanged'
+  type: boolean
+  inputBinding:
+    prefix: -softAdd
+- id: clip
+  doc: '- clip out of bounds mask records rather than dying.'
+  type: boolean
+  inputBinding:
+    prefix: -clip
+- id: mask_format
+  doc: '- "out" or "bed" for when input does not have required extension.'
+  type: string
+  inputBinding:
+    prefix: -maskFormat
+- id: in_dot_fa
   doc: ''
   type: string
   inputBinding:
@@ -11,31 +31,11 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: out_fam_asked
+- id: out_dot_fa_dot_masked
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: puts
-  doc: parts in lower case other in upper.
-  type: string
-  inputBinding:
-    prefix: '- puts'
-- id: soft_add
-  doc: masked bits, leaves others unchanged
-  type: string
-  inputBinding:
-    prefix: -softAdd
-- id: clip
-  doc: of bounds mask records rather than dying.
-  type: string
-  inputBinding:
-    prefix: '- clip'
-- id: mask_format
-  doc: '- "out" or "bed" for when input does not have required extension.'
-  type: string
-  inputBinding:
-    prefix: -maskFormat
 outputs: []
 cwlVersion: v1.1
 baseCommand:

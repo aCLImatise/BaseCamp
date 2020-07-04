@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: vcfallelicprimitives.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfallelicprimitives.cwl
 inputs:
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: use_mnps
   doc: 'Retain MNPs as separate events (default: false).'
   type: boolean
@@ -35,6 +30,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --keep-geno
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

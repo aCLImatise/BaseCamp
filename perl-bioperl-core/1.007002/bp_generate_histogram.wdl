@@ -2,24 +2,34 @@ version 1.0
 
 task BpGenerateHistogram.pl {
   input {
-    Boolean dsnDsn
-    Boolean adaptorAdaptor
-    Boolean userUser
-    Boolean passPass
-    Boolean binBin
-    String aggregatorAggregator
-    Boolean sortSort
-    Boolean mergeMerge
+    Boolean? dsn
+    Boolean? adaptor
+    Boolean? user
+    Boolean? pass
+    Boolean? bin
+    String? aggregator
+    Boolean? sort
+    Boolean? merge
   }
   command <<<
     bp_generate_histogram.pl \
-      ~{true="--dsn" false="" dsnDsn} \
-      ~{true="--adaptor" false="" adaptorAdaptor} \
-      ~{true="--user" false="" userUser} \
-      ~{true="--pass" false="" passPass} \
-      ~{true="--bin" false="" binBin} \
-      ~{if defined(aggregatorAggregator) then ("--aggregator " +  '"' + aggregatorAggregator + '"') else ""} \
-      ~{true="--sort" false="" sortSort} \
-      ~{true="--merge" false="" mergeMerge}
+      ~{true="--dsn" false="" dsn} \
+      ~{true="--adaptor" false="" adaptor} \
+      ~{true="--user" false="" user} \
+      ~{true="--pass" false="" pass} \
+      ~{true="--bin" false="" bin} \
+      ~{if defined(aggregator) then ("--aggregator " +  '"' + aggregator + '"') else ""} \
+      ~{true="--sort" false="" sort} \
+      ~{true="--merge" false="" merge}
   >>>
+  parameter_meta {
+    dsn: "<dsn>       Data source (default dbi:mysql:test)"
+    adaptor: "<adaptor>   Schema adaptor (default dbi::mysqlopt)"
+    user: "<user>      Username for mysql authentication"
+    pass: "<password>  Password for mysql authentication"
+    bin: "<bp>        Bin size in base pairs."
+    aggregator: "Comma-separated list of aggregators"
+    sort: "Sort the resulting list by type and bin"
+    merge: "Merge features with same method but different sources"
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: count_pep_prot.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/count_pep_prot.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,21 +1,11 @@
 class: CommandLineTool
-id: bam2msa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bam2msa.cwl
 inputs:
-- id: input
-  doc: ''
+- id: region
+  doc: only include sequences in a certain REGION
   type: string
   inputBinding:
-    position: 0
-- id: output
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: r
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -r
+    prefix: --region
 outputs: []
 cwlVersion: v1.1
 baseCommand:

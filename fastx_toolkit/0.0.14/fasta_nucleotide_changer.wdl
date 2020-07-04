@@ -2,20 +2,28 @@ version 1.0
 
 task FastaNucleotideChanger {
   input {
-    Boolean zZ
-    Boolean vV
-    String iI
-    String oO
-    Boolean rR
-    Boolean dD
+    Boolean? z
+    Boolean? v
+    String? i
+    String? o
+    Boolean? r
+    Boolean? d
   }
   command <<<
     fasta_nucleotide_changer \
-      ~{true="-z" false="" zZ} \
-      ~{true="-v" false="" vV} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{true="-r" false="" rR} \
-      ~{true="-d" false="" dD}
+      ~{true="-z" false="" z} \
+      ~{true="-v" false="" v} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{true="-r" false="" r} \
+      ~{true="-d" false="" d}
   >>>
+  parameter_meta {
+    z: ""
+    v: ""
+    i: ""
+    o: ""
+    r: ""
+    d: ""
+  }
 }

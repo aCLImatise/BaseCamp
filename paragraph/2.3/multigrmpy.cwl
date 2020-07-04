@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: multigrmpy.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/multigrmpy.py.cwl
 inputs:
 - id: input
   doc: Input file of variants. Must be either JSON or VCF.

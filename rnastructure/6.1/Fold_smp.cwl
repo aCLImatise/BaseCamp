@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Fold_smp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Fold_smp.cwl
 inputs:
 - id: fold
   doc: ''

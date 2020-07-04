@@ -2,20 +2,13 @@ version 1.0
 
 task DbDump {
   input {
-    Boolean kKNpv
-    String dD
-    String dD
-    String fF
-    String hH
-    String mM
+    Boolean? bkl_npr_rv
   }
   command <<<
     db_dump \
-      ~{true="-kNpV" false="" kKNpv} \
-      ~{if defined(dD) then ("-d " +  '"' + dD + '"') else ""} \
-      ~{if defined(dD) then ("-D " +  '"' + dD + '"') else ""} \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""} \
-      ~{if defined(hH) then ("-h " +  '"' + hH + '"') else ""} \
-      ~{if defined(mM) then ("-m " +  '"' + mM + '"') else ""}
+      ~{true="-bklNprRV" false="" bkl_npr_rv}
   >>>
+  parameter_meta {
+    bkl_npr_rv: ""
+  }
 }

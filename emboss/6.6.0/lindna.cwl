@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: lindna.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lindna.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

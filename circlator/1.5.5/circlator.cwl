@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: circlator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/circlator.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

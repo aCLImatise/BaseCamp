@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: trim.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/trim.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _entret.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_entret.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

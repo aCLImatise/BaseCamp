@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pairtools.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pairtools.cwl
 inputs:
 - id: post_mortem
   doc: Post mortem debugging

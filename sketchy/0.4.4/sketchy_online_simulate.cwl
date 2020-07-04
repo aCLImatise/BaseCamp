@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sketchy_online_simulate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sketchy_online_simulate.cwl
 inputs:
 - id: fast_x
   doc: Path to Fast{a,q} file to simulate run [required]  [required]

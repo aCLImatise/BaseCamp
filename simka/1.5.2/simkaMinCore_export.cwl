@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: simkaMinCore_export.cwl
+id: ../../../../home/ubuntu/BiocondaCli/simkaMinCore_export.cwl
 inputs:
 - id: in
   doc: '(1 arg) :    input dir containing distance matrices in binary format (-out
@@ -7,12 +7,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -in
-- id: in1
+- id: in_one
   doc: '(1 arg) :    first used sketch file (-in1 argument of ./simkaMin distance)'
   type: boolean
   inputBinding:
     prefix: -in1
-- id: in2
+- id: in_two
   doc: '(1 arg) :    second used sketch file (-in2 argument of ./simkaMin distance)'
   type: boolean
   inputBinding:

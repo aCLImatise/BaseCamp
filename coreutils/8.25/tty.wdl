@@ -2,10 +2,16 @@ version 1.0
 
 task Tty {
   input {
-    String silentSilent
+    String? silent
+    String? option
   }
   command <<<
     tty \
-      ~{if defined(silentSilent) then ("--silent " +  '"' + silentSilent + '"') else ""}
+      ~{option} \
+      ~{if defined(silent) then ("--silent " +  '"' + silent + '"') else ""}
   >>>
+  parameter_meta {
+    silent: "nothing, only return an exit status"
+    option: ""
+  }
 }

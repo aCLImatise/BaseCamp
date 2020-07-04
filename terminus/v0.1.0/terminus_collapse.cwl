@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: terminus_collapse.cwl
+id: ../../../../home/ubuntu/BiocondaCli/terminus_collapse.cwl
 inputs:
 - id: consensus_thresh
   doc: 'threshold for edge consensus [default: 0.5]'

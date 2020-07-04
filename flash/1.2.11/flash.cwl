@@ -1,31 +1,6 @@
 class: CommandLineTool
-id: flash.cwl
+id: ../../../../home/ubuntu/BiocondaCli/flash.cwl
 inputs:
-- id: out
-  doc: .extendedFrags.fastq      The merged reads.
-  type: boolean
-  inputBinding:
-    prefix: '- out'
-- id: out
-  doc: .notCombined_1.fastq      Read 1 of mate pairs that were not merged.
-  type: boolean
-  inputBinding:
-    prefix: '- out'
-- id: out
-  doc: .notCombined_2.fastq      Read 2 of mate pairs that were not merged.
-  type: boolean
-  inputBinding:
-    prefix: '- out'
-- id: out
-  doc: .hist                     Numeric histogram of merged read lengths.
-  type: boolean
-  inputBinding:
-    prefix: '- out'
-- id: out
-  doc: .histogram                Visual histogram of merged read lengths.
-  type: boolean
-  inputBinding:
-    prefix: '- out'
 - id: fragment_len_stddev
   doc: Average read length, fragment length, and fragment standard deviation.  These
     are convenience parameters only, as they are only used for calculating the maximum
@@ -144,6 +119,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: mates_one_dot_fast_q
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: mates_two_dot_fast_q
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

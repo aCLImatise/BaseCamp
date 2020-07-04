@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filter_matrix_by_genome.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_matrix_by_genome.py.cwl
 inputs:
 - id: in_matrix
   doc: /path/to/NASP_matrix [REQUIRED]

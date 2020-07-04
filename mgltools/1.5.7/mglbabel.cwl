@@ -1,31 +1,6 @@
 class: CommandLineTool
-id: mglbabel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mglbabel.cwl
 inputs:
-- id: babel
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: input_type
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: name
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: output_type
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: name
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
 - id: i
   doc: ''
   type: boolean
@@ -36,6 +11,31 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -o
+- id: babel
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: input_type
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: var_4
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: output_type
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: var_6
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

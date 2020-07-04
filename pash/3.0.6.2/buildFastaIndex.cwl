@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: buildFastaIndex.rb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/buildFastaIndex.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

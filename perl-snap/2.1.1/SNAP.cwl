@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SNAP.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SNAP.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

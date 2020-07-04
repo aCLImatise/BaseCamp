@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: vsnp_merge_vcf_into_fasta.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vsnp_merge_vcf_into_fasta.py.cwl
 inputs:
-- id: merge_vcf_into_fast_apy
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: fast_a_file
   doc: 'REQUIRED: In file to be processed'
   type: string
@@ -32,6 +27,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ambiguity_NOT
+- id: prog
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

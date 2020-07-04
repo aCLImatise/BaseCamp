@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pauvre_marginplot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pauvre_marginplot.cwl
 inputs:
 - id: quiet
   doc: Do not output warnings to stderr

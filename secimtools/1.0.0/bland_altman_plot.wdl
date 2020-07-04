@@ -2,34 +2,49 @@ version 1.0
 
 task BlandAltmanPlot.py {
   input {
-    String inputInput
-    String designDesign
-    String idId
-    String groupGroup
-    String figureFigure
-    String flagFlagDist
-    String flagFlagSample
-    String flagFlagFeature
-    Array[String]+ processProcessOnly
-    String residResidCutOff
-    String sampleSampleFlagCutOff
-    String featureFeatureFlagCutOff
-    Boolean debugDebug
+    String? input_dataset_wide
+    String? design
+    String? id
+    String? group
+    String? figure
+    String? flag_dist
+    String? flag_sample
+    String? flag_feature
+    Array[String] process_only
+    String? resid_cut_off
+    String? sample_flag_cut_off
+    String? feature_flag_cut_off
+    Boolean? debug
   }
   command <<<
     bland_altman_plot.py \
-      ~{if defined(inputInput) then ("--input " +  '"' + inputInput + '"') else ""} \
-      ~{if defined(designDesign) then ("--design " +  '"' + designDesign + '"') else ""} \
-      ~{if defined(idId) then ("--ID " +  '"' + idId + '"') else ""} \
-      ~{if defined(groupGroup) then ("--group " +  '"' + groupGroup + '"') else ""} \
-      ~{if defined(figureFigure) then ("--figure " +  '"' + figureFigure + '"') else ""} \
-      ~{if defined(flagFlagDist) then ("--flag_dist " +  '"' + flagFlagDist + '"') else ""} \
-      ~{if defined(flagFlagSample) then ("--flag_sample " +  '"' + flagFlagSample + '"') else ""} \
-      ~{if defined(flagFlagFeature) then ("--flag_feature " +  '"' + flagFlagFeature + '"') else ""} \
-      ~{if defined(processProcessOnly) then ("--process_only " +  '"' + processProcessOnly + '"') else ""} \
-      ~{if defined(residResidCutOff) then ("--resid_cutoff " +  '"' + residResidCutOff + '"') else ""} \
-      ~{if defined(sampleSampleFlagCutOff) then ("--sample_flag_cutoff " +  '"' + sampleSampleFlagCutOff + '"') else ""} \
-      ~{if defined(featureFeatureFlagCutOff) then ("--feature_flag_cutoff " +  '"' + featureFeatureFlagCutOff + '"') else ""} \
-      ~{true="--debug" false="" debugDebug}
+      ~{if defined(input_dataset_wide) then ("--input " +  '"' + input_dataset_wide + '"') else ""} \
+      ~{if defined(design) then ("--design " +  '"' + design + '"') else ""} \
+      ~{if defined(id) then ("--ID " +  '"' + id + '"') else ""} \
+      ~{if defined(group) then ("--group " +  '"' + group + '"') else ""} \
+      ~{if defined(figure) then ("--figure " +  '"' + figure + '"') else ""} \
+      ~{if defined(flag_dist) then ("--flag_dist " +  '"' + flag_dist + '"') else ""} \
+      ~{if defined(flag_sample) then ("--flag_sample " +  '"' + flag_sample + '"') else ""} \
+      ~{if defined(flag_feature) then ("--flag_feature " +  '"' + flag_feature + '"') else ""} \
+      ~{if defined(process_only) then ("--process_only " +  '"' + process_only + '"') else ""} \
+      ~{if defined(resid_cut_off) then ("--resid_cutoff " +  '"' + resid_cut_off + '"') else ""} \
+      ~{if defined(sample_flag_cut_off) then ("--sample_flag_cutoff " +  '"' + sample_flag_cut_off + '"') else ""} \
+      ~{if defined(feature_flag_cut_off) then ("--feature_flag_cutoff " +  '"' + feature_flag_cut_off + '"') else ""} \
+      ~{true="--debug" false="" debug}
   >>>
+  parameter_meta {
+    input_dataset_wide: "Input dataset in wide format."
+    design: "Design file."
+    id: "Name of the column with unique identifiers."
+    group: "Group/treatment identifier in design file [Optional]."
+    figure: "Name of the output PDF for Bland-Altman plots."
+    flag_dist: "Name of the output TSV for distribution flags."
+    flag_sample: "Name of the output TSV for sample flags."
+    flag_feature: "Name of the output TSV for feature flags."
+    process_only: "Only process the given groups (list groups separated by spaces) [Optional]."
+    resid_cut_off: "Cutoff value for flagging outliers [default=3]."
+    sample_flag_cut_off: "Proportion cutoff value when flagging samples [default=0.20]."
+    feature_flag_cut_off: "Proportion cutoff value when flagging features [default=0.05]."
+    debug: "Add debugging log output."
+  }
 }

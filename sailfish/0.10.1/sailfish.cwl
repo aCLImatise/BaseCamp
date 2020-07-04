@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: sailfish.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sailfish.cwl
 inputs:
-- id: v
+- id: print_version_string
   doc: '[ --version ]      print version string'
   type: boolean
   inputBinding:

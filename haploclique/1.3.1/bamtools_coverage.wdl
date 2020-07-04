@@ -2,12 +2,16 @@ version 1.0
 
 task BamtoolsCoverage {
   input {
-    String inIn
-    File outOut
+    String? in
+    File? out
   }
   command <<<
     bamtools coverage \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""}
   >>>
+  parameter_meta {
+    in: "the input BAM file [stdin]"
+    out: "the output file [stdout]"
+  }
 }

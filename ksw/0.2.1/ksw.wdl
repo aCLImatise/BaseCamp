@@ -2,34 +2,49 @@ version 1.0
 
 task Ksw {
   input {
-    Int mM
-    Int aA
-    Int bB
-    Int qQ
-    Int rR
-    Int wW
-    File mM
-    Boolean cC
-    Boolean sS
-    Boolean hH
-    Boolean rR
-    Boolean oO
-    Int lL
+    Int? alignment_mode_extend
+    Int? the_match_score
+    Int? the_mismatch_penalty
+    Int? gap_open_penalty
+    Int? gap_extend_penalty
+    Int? band_width_ksw
+    File? path_x_x
+    Boolean? append_cigar_output
+    Boolean? append_query_target
+    Boolean? add_header_line
+    Boolean? rightalign_gaps_ksw
+    Boolean? output_offsetandlength_otherwise
+    Int? library_type_auto
   }
   command <<<
     ksw \
-      ~{if defined(mM) then ("-M " +  '"' + mM + '"') else ""} \
-      ~{if defined(aA) then ("-a " +  '"' + aA + '"') else ""} \
-      ~{if defined(bB) then ("-b " +  '"' + bB + '"') else ""} \
-      ~{if defined(qQ) then ("-q " +  '"' + qQ + '"') else ""} \
-      ~{if defined(rR) then ("-r " +  '"' + rR + '"') else ""} \
-      ~{if defined(wW) then ("-w " +  '"' + wW + '"') else ""} \
-      ~{if defined(mM) then ("-m " +  '"' + mM + '"') else ""} \
-      ~{true="-c" false="" cC} \
-      ~{true="-s" false="" sS} \
-      ~{true="-H" false="" hH} \
-      ~{true="-R" false="" rR} \
-      ~{true="-O" false="" oO} \
-      ~{if defined(lL) then ("-l " +  '"' + lL + '"') else ""}
+      ~{if defined(alignment_mode_extend) then ("-M " +  '"' + alignment_mode_extend + '"') else ""} \
+      ~{if defined(the_match_score) then ("-a " +  '"' + the_match_score + '"') else ""} \
+      ~{if defined(the_mismatch_penalty) then ("-b " +  '"' + the_mismatch_penalty + '"') else ""} \
+      ~{if defined(gap_open_penalty) then ("-q " +  '"' + gap_open_penalty + '"') else ""} \
+      ~{if defined(gap_extend_penalty) then ("-r " +  '"' + gap_extend_penalty + '"') else ""} \
+      ~{if defined(band_width_ksw) then ("-w " +  '"' + band_width_ksw + '"') else ""} \
+      ~{if defined(path_x_x) then ("-m " +  '"' + path_x_x + '"') else ""} \
+      ~{true="-c" false="" append_cigar_output} \
+      ~{true="-s" false="" append_query_target} \
+      ~{true="-H" false="" add_header_line} \
+      ~{true="-R" false="" rightalign_gaps_ksw} \
+      ~{true="-O" false="" output_offsetandlength_otherwise} \
+      ~{if defined(library_type_auto) then ("-l " +  '"' + library_type_auto + '"') else ""}
   >>>
+  parameter_meta {
+    alignment_mode_extend: "The alignment mode: 0 - local, 1 - glocal, 2 - extend, 3 - global [0 - local]"
+    the_match_score: "The match score (>0) [1]"
+    the_mismatch_penalty: "The mismatch penalty (>0) [3]"
+    gap_open_penalty: "The gap open penalty (>=0) [5]"
+    gap_extend_penalty: "The gap extend penalty (>0) [2]"
+    band_width_ksw: "The band width (ksw only) [536870911]"
+    path_x_x: "Path to the scoring matrix (4x4 or 5x5) [None]"
+    append_cigar_output: "Append the cigar to the output [false]"
+    append_query_target: "Append the query and target to the output [false]"
+    add_header_line: "Add a header line to the output [false]"
+    rightalign_gaps_ksw: "Right-align gaps (ksw only)[false]"
+    output_offsetandlength_otherwise: "Output offset-and-length, otherwise start-and-end (all zero-based)[false]"
+    library_type_auto: "The library type: 0 - auto, 1 - ksw2, 2 - parasail [0 - auto]"
+  }
 }

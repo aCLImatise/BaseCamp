@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tandem_search.rb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tandem_search.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

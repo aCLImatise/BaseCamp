@@ -2,14 +2,19 @@ version 1.0
 
 task PositionalTblCheck {
   input {
-    String verboseVerbose
-    String? dbDb
-    String? tableTable
+    String? verbose
+    String db
+    String table
   }
   command <<<
     positionalTblCheck \
-      ~{dbDb} \
-      ~{if defined(verboseVerbose) then ("-verbose " +  '"' + verboseVerbose + '"') else ""} \
-      ~{tableTable}
+      ~{db} \
+      ~{table} \
+      ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""}
   >>>
+  parameter_meta {
+    verbose: "n>=2, print tables as checked"
+    db: ""
+    table: ""
+  }
 }

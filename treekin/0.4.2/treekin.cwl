@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: treekin.cwl
+id: ../../../../home/ubuntu/BiocondaCli/treekin.cwl
 inputs:
 - id: absorb
   doc: Make a state absorbing
@@ -19,12 +19,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --num-err
-- id: t0
+- id: t_zero
   doc: Start time  (default=`0.1')
   type: string
   inputBinding:
     prefix: --t0
-- id: t8
+- id: t_eight
   doc: Stop time  (default=`1E12')
   type: string
   inputBinding:
@@ -40,7 +40,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --nstates
-- id: p0
+- id: pzero
   doc: 'Set initial population of state <int> to <double> Can be given multiple times
     (NOTE: sum of <double> must equal 1) (example: "--p0 2=1.0" - state 2 has initial
     population 100 percent)'

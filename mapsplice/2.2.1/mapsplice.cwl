@@ -1,21 +1,36 @@
 class: CommandLineTool
-id: mapsplice.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mapsplice.py.cwl
 inputs:
-- id: x
-  doc: -1 <Read_List1> -2 <Read_List2>
-  type: string
+- id: c_slash_chromosome_dir
+  doc: '<string>     reference sequence directory                       '
+  type: boolean
+  inputBinding:
+    prefix: -c/--chromosome-dir
+- id: string_path_prefix
+  doc: '<string>     path and prefix of bowtie index                     '
+  type: boolean
   inputBinding:
     prefix: -x
-- id: p
-  doc: '/--threads                   <int>        number of threads, default: 1                       '
+- id: one_slash
+  doc: '<string>     end 1 reads / single end reads                      '
   type: boolean
   inputBinding:
-    prefix: -p
-- id: o
-  doc: '/--output                    <string>     output directory, default: ./mapsplice_out'
+    prefix: -1/
+- id: two_slash
+  doc: '<string>     end 2 reads                                         '
   type: boolean
   inputBinding:
-    prefix: -o
+    prefix: -2/
+- id: p_slash_threads
+  doc: '<int>        number of threads, default: 1                       '
+  type: boolean
+  inputBinding:
+    prefix: -p/--threads
+- id: oslash_output
+  doc: '<string>     output directory, default: ./mapsplice_out'
+  type: boolean
+  inputBinding:
+    prefix: -o/--output
 - id: qual_scale
   doc: '<string>     quality scale, phred64(default) or phred33 or solexa64      '
   type: boolean
@@ -31,34 +46,31 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --keep-tmp
-- id: s
-  doc: '/--seglen                    <int>        segment length, default: 25                          '
+- id: s_slash_se_glen
+  doc: '<int>        segment length, default: 25                          '
   type: boolean
   inputBinding:
-    prefix: -s
+    prefix: -s/--seglen
 - id: min_map_len
   doc: '<int>        minimum alignment length, default: 50                '
   type: boolean
   inputBinding:
     prefix: --min-map-len
-- id: k
-  doc: '/max-hits                    <int>        maximum alignments per read, default:
-    4              '
+- id: k_slash_max_hits
+  doc: '<int>        maximum alignments per read, default: 4              '
   type: boolean
   inputBinding:
-    prefix: -k
-- id: i
-  doc: '/--min-intron                <int>        minimum intron length, default:
-    50         '
+    prefix: -k/max-hits
+- id: i_slash_min_intron
+  doc: '<int>        minimum intron length, default: 50         '
   type: boolean
   inputBinding:
-    prefix: -i
-- id: i
-  doc: '/--max-intron                <int>        maximum intron length, default:
-    300,000    '
+    prefix: -i/--min-intron
+- id: i_slash_max_intron
+  doc: '<int>        maximum intron length, default: 300,000    '
   type: boolean
   inputBinding:
-    prefix: -I
+    prefix: -I/--max-intron
 - id: non_canonical_double_anchor
   doc: 'also search for non-canonical junctions in double anchor case, default: off(same
     parameter as --non-canonical in versions previous to MapSplice 2.2.0)'
@@ -77,14 +89,14 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --filtering
-- id: m
-  doc: '/--splice-mis                <int>        Maximum number of mismatches that
-    are allowed in the first/last segment crossing a splice junction in the range
-    of [0, 2]. Default is 1. (Maximum number of mismatches that are allowed in the
-    middle segment  crossing a splice junction is always fixed at 2.)                                 '
+- id: m_slash_splice_mis
+  doc: '<int>        Maximum number of mismatches that are allowed in the first/last
+    segment crossing a splice junction in the range of [0, 2]. Default is 1. (Maximum
+    number of mismatches that are allowed in the middle segment  crossing a splice
+    junction is always fixed at 2.)                                 '
   type: boolean
   inputBinding:
-    prefix: -m
+    prefix: -m/--splice-mis
 - id: max_append_mis
   doc: <int>        Maximum number of mismatches allowed to append a high error exonic
     segment  next to an adjacent low error segment. Default is 3.
@@ -121,11 +133,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gene-gtf
-- id: v
-  doc: '/--version                                print the version of MapSplice             '
+- id: h_slash_help
+  doc: 'print the usage message                    '
   type: boolean
   inputBinding:
-    prefix: -v
+    prefix: -h/--help
+- id: v_slash_version
+  doc: 'print the version of MapSplice             '
+  type: boolean
+  inputBinding:
+    prefix: -v/--version
+- id: c
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -c
 outputs: []
 cwlVersion: v1.1
 baseCommand:

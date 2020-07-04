@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: trim_long_introns.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/trim_long_introns.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

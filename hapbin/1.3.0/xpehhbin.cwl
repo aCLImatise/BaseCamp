@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: xpehhbin.cwl
+id: ../../../../home/ubuntu/BiocondaCli/xpehhbin.cwl
 inputs:
 - id: hapa
   doc: Hap file for population A

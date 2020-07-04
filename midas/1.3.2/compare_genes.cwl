@@ -1,12 +1,6 @@
 class: CommandLineTool
-id: compare_genes.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/compare_genes.py.cwl
 inputs:
-- id: path
-  doc: Path to output from `merge_midas.py genes` for one species directory should
-    be named according to a species_id and contains files 'genes_*.txt')
-  type: File
-  inputBinding:
-    position: 0
 - id: out
   doc: Path to output file
   type: File
@@ -37,6 +31,12 @@ inputs:
   type: double
   inputBinding:
     prefix: --cutoff
+- id: path
+  doc: Path to output from `merge_midas.py genes` for one species directory should
+    be named according to a species_id and contains files 'genes_*.txt')
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

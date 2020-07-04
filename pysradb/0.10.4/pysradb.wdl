@@ -2,10 +2,13 @@ version 1.0
 
 task Pysradb {
   input {
-    Boolean citationCitation
+    Boolean? citation
   }
   command <<<
     pysradb \
-      ~{true="--citation" false="" citationCitation}
+      ~{true="--citation" false="" citation}
   >>>
+  parameter_meta {
+    citation: "how to cite"
+  }
 }

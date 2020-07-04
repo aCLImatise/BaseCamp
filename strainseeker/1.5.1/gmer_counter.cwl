@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: gmer_counter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gmer_counter.cwl
 inputs:
-- id: arguments
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: sequences
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: db
   doc: '- SNP/KMER database file'
   type: string
@@ -21,13 +11,13 @@ inputs:
   type: string
   inputBinding:
     prefix: -dbb
-- id: w
+- id: write_binary_database
   doc: '- write binary database to file'
   type: File
   inputBinding:
     prefix: -w
 - id: max_km_ers
-  doc: of kmers per node
+  doc: '- maximum number of kmers per node'
   type: string
   inputBinding:
     prefix: --max_kmers
@@ -52,15 +42,25 @@ inputs:
   inputBinding:
     prefix: --kmers
 - id: distribution
-  doc: distribution (up to given number)
+  doc: '- print kmer distribution (up to given number)'
   type: string
   inputBinding:
     prefix: --distribution
-- id: d
+- id: increase_debug_level
   doc: '- increase debug level'
   type: boolean
   inputBinding:
     prefix: -D
+- id: arguments
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: sequences_dot_dot_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

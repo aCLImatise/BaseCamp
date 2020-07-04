@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: a3m_database_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/a3m_database_filter.cwl
 inputs:
-- id: ff_index_a3m_database_prefix
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: ff_index_a3m_database_prefix
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: filter
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: i
   doc: ''
   type: boolean
@@ -31,6 +16,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -s
+- id: var_3
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: var_4
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: filter
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNARedPrint.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNARedPrint.cwl
 inputs:
 - id: num
   doc: '- Sets number of generated sequences (default 10)'

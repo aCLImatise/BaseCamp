@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: stride_all.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stride_all.cwl
 inputs:
 - id: read_length
   doc: median read length (if there are multiple libraries, set to the max read length)
@@ -39,6 +39,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --min-overlap
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

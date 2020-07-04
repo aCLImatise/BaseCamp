@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: run_pasta.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_pasta.py.cwl
 inputs:
 - id: aligned
   doc: If used, then the input file be will treated as aligned for the purposes of
@@ -173,6 +173,41 @@ inputs:
   type: string
   inputBinding:
     prefix: --tree-estimator
+- id: pasta
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: performs
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: iterative
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: realignment
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: and
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
+- id: tree
+  doc: ''
+  type: string
+  inputBinding:
+    position: 5
+- id: inference
+  doc: ''
+  type: string
+  inputBinding:
+    position: 6
 outputs: []
 cwlVersion: v1.1
 baseCommand:

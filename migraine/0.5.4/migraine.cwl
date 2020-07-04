@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: migraine.cwl
+id: ../../../../home/ubuntu/BiocondaCli/migraine.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,30 +2,43 @@ version 1.0
 
 task Halladata {
   input {
-    Boolean verboseVerbose
-    String featuresFeatures
-    String samplesSamples
-    String clustersClusters
-    String associationAssociation
-    String distributionDistribution
-    String noiseNoiseBetween
-    String noiseNoiseWithin
-    String outputOutput
-    String structureStructure
-    String clusterClusterPercentage
+    Boolean? verbose
+    String? features
+    String? samples
+    String? clusters
+    String? association
+    String? distribution
+    String? noise_between
+    String? noise_within
+    String? the_output_directory
+    String? structure
+    String? cluster_percentage
   }
   command <<<
     halladata \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{if defined(featuresFeatures) then ("--features " +  '"' + featuresFeatures + '"') else ""} \
-      ~{if defined(samplesSamples) then ("--samples " +  '"' + samplesSamples + '"') else ""} \
-      ~{if defined(clustersClusters) then ("--clusters " +  '"' + clustersClusters + '"') else ""} \
-      ~{if defined(associationAssociation) then ("--association " +  '"' + associationAssociation + '"') else ""} \
-      ~{if defined(distributionDistribution) then ("--distribution " +  '"' + distributionDistribution + '"') else ""} \
-      ~{if defined(noiseNoiseBetween) then ("--noise-between " +  '"' + noiseNoiseBetween + '"') else ""} \
-      ~{if defined(noiseNoiseWithin) then ("--noise-within " +  '"' + noiseNoiseWithin + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(structureStructure) then ("--structure " +  '"' + structureStructure + '"') else ""} \
-      ~{if defined(clusterClusterPercentage) then ("--cluster-percentage " +  '"' + clusterClusterPercentage + '"') else ""}
+      ~{true="--verbose" false="" verbose} \
+      ~{if defined(features) then ("--features " +  '"' + features + '"') else ""} \
+      ~{if defined(samples) then ("--samples " +  '"' + samples + '"') else ""} \
+      ~{if defined(clusters) then ("--clusters " +  '"' + clusters + '"') else ""} \
+      ~{if defined(association) then ("--association " +  '"' + association + '"') else ""} \
+      ~{if defined(distribution) then ("--distribution " +  '"' + distribution + '"') else ""} \
+      ~{if defined(noise_between) then ("--noise-between " +  '"' + noise_between + '"') else ""} \
+      ~{if defined(noise_within) then ("--noise-within " +  '"' + noise_within + '"') else ""} \
+      ~{if defined(the_output_directory) then ("--output " +  '"' + the_output_directory + '"') else ""} \
+      ~{if defined(structure) then ("--structure " +  '"' + structure + '"') else ""} \
+      ~{if defined(cluster_percentage) then ("--cluster-percentage " +  '"' + cluster_percentage + '"') else ""}
   >>>
+  parameter_meta {
+    verbose: "additional output is printed"
+    features: "number of features in the input file D*N, Rows: D features and columns: N samples "
+    samples: "number of samples in the input file D*N, Rows: D features and columns: N samples "
+    clusters: "number of blocks, default = min(number_features/2.0, math.log(number_features,2)*1.5) "
+    association: "association type [sine, parabola, log, line, L, step, happy_face, default =parabola] "
+    distribution: "Distribution [normal, uniform, default =uniform] "
+    noise_between: "noise between associated blocks[0 is no noise, 1 is complete noise, default =0.25]"
+    noise_within: "noise within blocks[0 is no noise, 1 is complete noise, default =0.25]"
+    the_output_directory: "the output directory"
+    structure: "structure [balanced, imbalanced, default =balanced] "
+    cluster_percentage: "structure [balanced, imbalanced, default =balanced] "
+  }
 }

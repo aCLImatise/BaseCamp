@@ -2,16 +2,16 @@ version 1.0
 
 task Bed12ToBed6 {
   input {
-    Boolean nN
-    String? bedBedTools
-    String? bed12tobed6Bed12tobed6
-    String? optionsOptions
+    Boolean? force_score_based
+    String? i
   }
   command <<<
     bed12ToBed6 \
-      ~{bedBedTools} \
-      ~{true="-n" false="" nN} \
-      ~{bed12tobed6Bed12tobed6} \
-      ~{optionsOptions}
+      ~{true="-n" false="" force_score_based} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  parameter_meta {
+    force_score_based: "Force the score to be the (1-based) block number from the BED12."
+    i: ""
+  }
 }

@@ -2,10 +2,19 @@ version 1.0
 
 task GetLinesMatching.pl {
   input {
-    Boolean whitespaceWhitespace
+    Boolean? whitespace
+    String cat
+    String var_input
   }
   command <<<
     getLinesMatching.pl \
-      ~{true="--whitespace" false="" whitespaceWhitespace}
+      ~{cat} \
+      ~{var_input} \
+      ~{true="--whitespace" false="" whitespace}
   >>>
+  parameter_meta {
+    whitespace: "Split columns at whitespace rather than tab."
+    cat: ""
+    var_input: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sonicparanoid_get_test_data.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sonicparanoid_get_test_data.cwl
 inputs:
 - id: output_directory
   doc: The directory in which the test data will be stored.

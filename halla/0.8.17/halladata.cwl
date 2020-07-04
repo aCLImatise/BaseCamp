@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: halladata.cwl
+id: ../../../../home/ubuntu/BiocondaCli/halladata.cwl
 inputs:
 - id: verbose
   doc: additional output is printed

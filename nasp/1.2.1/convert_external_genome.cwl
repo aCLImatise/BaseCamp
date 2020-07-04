@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: convert_external_genome.cwl
+id: ../../../../home/ubuntu/BiocondaCli/convert_external_genome.cwl
 inputs:
 - id: nuc_me_rpath
   doc: Path to the 'nucmer' executable.

@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: bayesTyperTools_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bayesTyperTools_filter.cwl
 inputs:
-- id: v
+- id: arg_variant_format
   doc: '[ --variant-file ] arg             variant file (vcf format).'
   type: boolean
   inputBinding:
     prefix: -v
-- id: o
+- id: arg_output_prefix
   doc: '[ --output-prefix ] arg            output prefix.'
   type: boolean
   inputBinding:
     prefix: -o
-- id: z
+- id: compress_output_files
   doc: '[ --gzip-output ] [=arg(=1)] (=0)  compress output file(s) using gzip.'
   type: boolean
   inputBinding:

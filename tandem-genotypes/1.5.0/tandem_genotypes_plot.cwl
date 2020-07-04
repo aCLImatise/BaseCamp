@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: tandem_genotypes_plot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tandem_genotypes_plot.cwl
 inputs:
-- id: tandem_genotypes_txt
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: output_pdf
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: rows
   doc: arrange the graphs in this many rows (default=4)
   type: string
@@ -46,6 +36,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: tandem_genotypes_dot_txt
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_dot_pdf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: isONclust.cwl
+id: ../../../../home/ubuntu/BiocondaCli/isONclust.cwl
 inputs:
 - id: fast_q
   doc: 'Path to consensus fastq file(s) (default: False)'
@@ -16,18 +16,18 @@ inputs:
   type: string
   inputBinding:
     prefix: --ccs
-- id: t
+- id: number_cores_allocated
   doc: 'Number of cores allocated for clustering (default: 8)'
   type: string
   inputBinding:
     prefix: --t
-- id: d
+- id: debugging_prints_status
   doc: 'For debugging, prints status of clustering and minimizer database every p
     reads processed. (default: 10000)'
   type: string
   inputBinding:
     prefix: --d
-- id: q
+- id: filters_reads_average
   doc: 'Filters reads with average phred quality value under this number (default
     = 7.0). (default: 7.0)'
   type: string
@@ -72,12 +72,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --medaka
-- id: k
+- id: kmer_size_default
   doc: 'Kmer size (default: 15)'
   type: string
   inputBinding:
     prefix: --k
-- id: w
+- id: window_size_default
   doc: 'Window size (default: 50)'
   type: string
   inputBinding:

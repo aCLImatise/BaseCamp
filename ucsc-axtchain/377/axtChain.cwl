@@ -1,7 +1,12 @@
 class: CommandLineTool
-id: axtChain.cwl
+id: ../../../../home/ubuntu/BiocondaCli/axtChain.cwl
 inputs:
-- id: in_a_xt
+- id: linear_gap
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -linearGap
+- id: in_do_tax_t
   doc: ''
   type: string
   inputBinding:
@@ -16,16 +21,11 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: out_chain
+- id: out_dot_chain
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: linear_gap
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -linearGap
 outputs: []
 cwlVersion: v1.1
 baseCommand:

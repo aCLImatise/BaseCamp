@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: mulled_build_files.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mulled_build_files.cwl
 inputs:
+- id: invo_lucro_path
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --involucro-path
+- id: dry_run
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --dry-run
 - id: command
   doc: Command (build-and-test, build, all)
   type: string

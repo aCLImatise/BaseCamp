@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ameme.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ameme.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

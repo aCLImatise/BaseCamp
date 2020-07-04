@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: schavott.cwl
+id: ../../../../home/ubuntu/BiocondaCli/schavott.cwl
 inputs:
 - id: run_mode
   doc: Run scaffolding or assembly

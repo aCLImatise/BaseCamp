@@ -1,38 +1,43 @@
 class: CommandLineTool
-id: dnase_to_JSON.py_regions.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dnase_to_JSON.py_output.cwl
 inputs:
-- id: regions
-  doc: BED file of the regions
+- id: w
+  doc: ''
   type: string
   inputBinding:
-    position: 0
-- id: reads
-  doc: BAM file containing the read data
-  type: string
-  inputBinding:
-    position: 1
-- id: output
-  doc: filename to write the JSON output to
-  type: string
-  inputBinding:
-    position: 2
-- id: window_size
-  doc: Resize all regions to a specific length
-  type: string
-  inputBinding:
-    prefix: --window_size
+    prefix: -w
 - id: i
-  doc: Ignores strand information in BED file
+  doc: ''
   type: boolean
   inputBinding:
     prefix: -i
 - id: a
-  doc: 'ATAC-seq mode (default: False)'
+  doc: ''
   type: boolean
   inputBinding:
     prefix: -A
+- id: dnase_to_json_do_tpy
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: regions
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: reads
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: output
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - dnase_to_JSON.py
-- regions
+- output

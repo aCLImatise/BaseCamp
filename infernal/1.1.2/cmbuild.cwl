@@ -1,32 +1,22 @@
 class: CommandLineTool
-id: cmbuild.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cmbuild.cwl
 inputs:
-- id: cm_file_out
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: msa_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: n
+- id: name_cms_s
   doc: ': name the CM(s) <s>, (only if single aln in file)'
   type: string
   inputBinding:
     prefix: -n
-- id: f
+- id: force_allow_overwriting
   doc: ': force; allow overwriting of <cmfile_out>'
   type: boolean
   inputBinding:
     prefix: -F
-- id: o
+- id: direct_summary_output
   doc: ': direct summary output to file <f>, not stdout'
   type: string
   inputBinding:
     prefix: -o
-- id: o
+- id: resave_consensusinsert_column
   doc: ': resave consensus/insert column annotated MSA to file <f>'
   type: string
   inputBinding:
@@ -136,12 +126,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --esigma
-- id: p7ere
+- id: pse_venere
   doc: ': for the filter p7 HMM, set minimum rel entropy/posn to <x>'
   type: string
   inputBinding:
     prefix: --p7ere
-- id: p7ml
+- id: p_seven_ml
   doc: ': define the filter p7 HMM as the ML p7 HMM'
   type: boolean
   inputBinding:
@@ -171,7 +161,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --refine
-- id: l
+- id: wrefine_configure_model
   doc: ': w/--refine, configure model for local alignment [default: global]'
   type: boolean
   inputBinding:
@@ -196,6 +186,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --notrunc
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: cm_file_out
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: msa_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

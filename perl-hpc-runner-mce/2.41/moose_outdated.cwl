@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: moose_outdated.cwl
+id: ../../../../home/ubuntu/BiocondaCli/moose_outdated.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

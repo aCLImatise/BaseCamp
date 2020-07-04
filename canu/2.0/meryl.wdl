@@ -2,10 +2,13 @@ version 1.0
 
 task Meryl {
   input {
-    String? unionUnion
+    String union
   }
   command <<<
     meryl \
-      ~{unionUnion}
+      ~{union}
   >>>
+  parameter_meta {
+    union: "[count k=22 input1.fasta output input1] \ [count k=22 input2.fasta output input2]"
+  }
 }

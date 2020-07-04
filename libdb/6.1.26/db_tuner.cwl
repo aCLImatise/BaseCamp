@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: db_tuner.cwl
+id: ../../../../home/ubuntu/BiocondaCli/db_tuner.cwl
 inputs:
 - id: c
   doc: ''

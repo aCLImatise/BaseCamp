@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: teloclip.cwl
+id: ../../../../home/ubuntu/BiocondaCli/teloclip.cwl
 inputs:
 - id: ref_idx
   doc: Path to fai index for reference fasta. Index fasta using `samtools faidx FASTA`

@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: kissreads2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kissreads2.cwl
 inputs:
 - id: phasing
   doc: '(0 arg) :    [Experimental] Phase alleles mapped by the same (pair of) read(s)'
   type: boolean
   inputBinding:
     prefix: -phasing
-- id: x
+- id: arg_option_homogeneous
   doc: '(0 arg) :    radseq option, homogeneous read depth along the prediction '
   type: boolean
   inputBinding:
@@ -42,7 +42,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -coverage_file
-- id: k
+- id: arg_size_k
   doc: "(1 arg) :    Size of k, used as minial overlap and kmer spanning read coherence\
     \  [default '31']"
   type: boolean

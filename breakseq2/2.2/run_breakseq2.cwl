@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: run_breakseq2.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_breakseq2.py.cwl
 inputs:
 - id: n_threads
   doc: 'Number of processes to use for parallelism (default: 1)'
@@ -77,8 +77,8 @@ inputs:
   inputBinding:
     prefix: --junction_length
 - id: format_version
-  doc: '{1,2} Version of breakpoint library format to use (default: 2)'
-  type: boolean
+  doc: 'Version of breakpoint library format to use (default: 2)'
+  type: string
   inputBinding:
     prefix: --format_version
 outputs: []

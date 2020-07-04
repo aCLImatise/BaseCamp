@@ -2,16 +2,25 @@ version 1.0
 
 task SegmentationFoldUtilsFindBoxes {
   input {
-    String box1Box1
-    String box2Box2
-    Boolean forwardForward
-    Boolean reverseReverse
+    String? box_one
+    String? box_two
+    Boolean? forward
+    Boolean? reverse
+    String fast_a_input_file
   }
   command <<<
     segmentation-fold-utils find-boxes \
-      ~{if defined(box1Box1) then ("--box1 " +  '"' + box1Box1 + '"') else ""} \
-      ~{if defined(box2Box2) then ("--box2 " +  '"' + box2Box2 + '"') else ""} \
-      ~{true="--forward" false="" forwardForward} \
-      ~{true="--reverse" false="" reverseReverse}
+      ~{fast_a_input_file} \
+      ~{if defined(box_one) then ("--box1 " +  '"' + box_one + '"') else ""} \
+      ~{if defined(box_two) then ("--box2 " +  '"' + box_two + '"') else ""} \
+      ~{true="--forward" false="" forward} \
+      ~{true="--reverse" false="" reverse}
   >>>
+  parameter_meta {
+    box_one: "Sequence of box1 (default = C-box: 'NRUGAUG')"
+    box_two: "Sequence of box2 (default = D-box: 'CUGA')"
+    forward: "/ --no-forward  Search in the forward direction of the reference sequence"
+    reverse: "/ --no-reverse  Search in the reverse complement of the reference sequence"
+    fast_a_input_file: ""
+  }
 }

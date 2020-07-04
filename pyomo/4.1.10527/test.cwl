@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: test.pyomo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/test.pyomo.cwl
 inputs:
-- id: dirs
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: dir
   doc: Top-level source directory where the tests are applied.
   type: string
@@ -36,6 +31,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
+- id: dirs
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

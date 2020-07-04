@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: anvi_oligotype_linkmers.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_oligotype_linkmers.cwl
 inputs:
-- id: i
-  doc: ''
+- id: input_file
+  doc: Output file of `anvi-report-linkmers`.
   type: string
   inputBinding:
-    prefix: -i
-- id: o
-  doc: ''
+    prefix: --input-file
+- id: output_dir
+  doc: Directory path for output files
   type: string
   inputBinding:
-    prefix: -o
+    prefix: --output-dir
 outputs: []
 cwlVersion: v1.1
 baseCommand:

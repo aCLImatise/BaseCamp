@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: crux_generate_peptides.cwl
+id: ../../../../home/ubuntu/BiocondaCli/crux_generate_peptides.cwl
 inputs:
 - id: protein_fast_a_file
   doc: ''

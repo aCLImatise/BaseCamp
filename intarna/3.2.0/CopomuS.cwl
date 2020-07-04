@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: CopomuS.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CopomuS.py.cwl
 inputs:
 - id: query
   doc: The query sequence.
@@ -11,12 +11,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --target
-- id: qidxpos0
+- id: qid_xpos_zero
   doc: 'The starting index for the query. (Default: 1)'
   type: string
   inputBinding:
     prefix: --qIdxPos0
-- id: tidxpos0
+- id: tid_xpos_zero
   doc: 'The starting index for the target. (Default: 1)'
   type: string
   inputBinding:
@@ -48,7 +48,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --mutationEncoding
-- id: o
+- id: file_output_written
   doc: '[OUTPUT], --output [OUTPUT] Which file the output should be written to. (Default:
     STDOUT)'
   type: boolean

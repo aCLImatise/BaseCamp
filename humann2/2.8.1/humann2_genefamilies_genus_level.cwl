@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: humann2_genefamilies_genus_level.cwl
+id: ../../../../home/ubuntu/BiocondaCli/humann2_genefamilies_genus_level.cwl
 inputs:
-- id: i
-  doc: ''
+- id: input
+  doc: the gene families input table
   type: string
   inputBinding:
-    prefix: -i
-- id: o
-  doc: ''
+    prefix: --input
+- id: output
+  doc: the output table
   type: string
   inputBinding:
-    prefix: -o
+    prefix: --output
 outputs: []
 cwlVersion: v1.1
 baseCommand:

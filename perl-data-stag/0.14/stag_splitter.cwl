@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: stag_splitter.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stag_splitter.pl.cwl
 inputs:
 - id: dir
   doc: '|d DIR write files to this directory'

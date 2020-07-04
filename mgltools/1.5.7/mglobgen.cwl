@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: mglobgen.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mglobgen.cwl
 inputs:
+- id: ff
+  doc: select a forcefield
+  type: boolean
+  inputBinding:
+    prefix: -ff
 - id: ob_gen
   doc: ''
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: File
   inputBinding:
     position: 1
-- id: ff
-  doc: select a forcefield
-  type: boolean
-  inputBinding:
-    prefix: -ff
 outputs: []
 cwlVersion: v1.1
 baseCommand:

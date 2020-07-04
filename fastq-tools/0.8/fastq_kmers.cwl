@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastq_kmers.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq_kmers.cwl
 inputs:
 - id: size
   doc: 'kmer size (default: 1)'

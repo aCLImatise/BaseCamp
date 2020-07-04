@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: CRISPRessoPooled.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CRISPRessoPooled.cwl
 inputs:
-- id: fast_q_r1
+- id: fast_q_r_one
   doc: 'First fastq file (default: Fastq filename)'
   type: string
   inputBinding:
     prefix: --fastq_r1
-- id: fast_q_r2
+- id: fast_q_r_two
   doc: 'Second fastq file for paired end reads (default: )'
   type: string
   inputBinding:
@@ -348,7 +348,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --conversion_nuc_to
-- id: crispresso1_mode
+- id: cris_presso_one_mode
   doc: 'Parameter usage as in CRISPResso 1 (default: False)'
   type: boolean
   inputBinding:
@@ -397,12 +397,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --n_processes
-- id: bowtie2_index
+- id: bowtie_two_index
   doc: 'Basename of Bowtie2 index for the reference genome (default: )'
   type: string
   inputBinding:
     prefix: --bowtie2_index
-- id: bowtie2_options_string
+- id: bowtie_two_options_string
   doc: 'Override options for the Bowtie2 alignment command (default: -k 1 --end-to-end
     -N 0 --np 0 )'
   type: string

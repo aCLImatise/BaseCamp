@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: get_terms_by_name.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_terms_by_name.pl.cwl
 inputs:
-- id: f
+- id: obo_input_file
   doc: OBO input file
   type: boolean
   inputBinding:
     prefix: -f
-- id: t
+- id: term_name
   doc: term name
   type: boolean
   inputBinding:

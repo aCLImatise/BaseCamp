@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: hmmlogo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hmmlogo.cwl
 inputs:
-- id: hmm_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: height_relent_all
   doc: ': total height = relative entropy ; all letters shown (default)'
   type: boolean
@@ -26,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no_indel
+- id: hmm_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

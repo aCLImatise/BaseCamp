@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tophat_fusion_post.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tophat_fusion_post.cwl
 inputs:
 - id: bowtie_index
   doc: ''

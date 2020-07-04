@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: run_CQ_PM_mine.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_CQ_PM_mine.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

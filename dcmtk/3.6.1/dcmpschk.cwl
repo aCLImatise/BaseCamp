@@ -1,22 +1,17 @@
 class: CommandLineTool
-id: dcmpschk.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmpschk.cwl
 inputs:
-- id: dcm_file_in
-  doc: presentation state file(s) to be checked
-  type: string
-  inputBinding:
-    position: 0
-- id: q
+- id: _quiet_quiet
   doc: --quiet       quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose     verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug       debug mode, print debug information
   type: boolean
   inputBinding:
@@ -32,6 +27,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --log-config
+- id: dcm_file_in
+  doc: presentation state file(s) to be checked
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

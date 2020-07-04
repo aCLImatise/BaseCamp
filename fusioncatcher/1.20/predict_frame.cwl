@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: predict_frame.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/predict_frame.py.cwl
 inputs:
 - id: gtf
   doc: The input GTF file containing the genome annotation.

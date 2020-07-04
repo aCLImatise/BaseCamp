@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filterGenesOut_mRNAname.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filterGenesOut_mRNAname.pl.cwl
 inputs:
 - id: filter_genes
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: trimfrg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/trimfrg.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

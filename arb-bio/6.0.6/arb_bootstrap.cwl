@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: arb_bootstrap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/arb_bootstrap.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: NSPDK.cwl
+id: ../../../../home/ubuntu/BiocondaCli/NSPDK.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,10 +2,13 @@ version 1.0
 
 task OverlapInCore {
   input {
-    String? seqSeqStorepath
+    String seq_storepath
   }
   command <<<
     overlapInCore \
-      ~{seqSeqStorepath}
+      ~{seq_storepath}
   >>>
+  parameter_meta {
+    seq_storepath: ""
+  }
 }

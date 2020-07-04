@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: forgi_config.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/forgi_config.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

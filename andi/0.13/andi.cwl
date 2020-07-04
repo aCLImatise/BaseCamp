@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: andi.cwl
+id: ../../../../home/ubuntu/BiocondaCli/andi.cwl
 inputs:
 - id: bootstrap
   doc: Print additional bootstrap matrices
@@ -26,7 +26,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --model
-- id: p
+- id: significance_anchor_default
   doc: 'Significance of an anchor; default: 0.025'
   type: double
   inputBinding:
@@ -51,6 +51,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: options_dot_dot_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: files_dot_dot_dot
+  doc: ''
+  type: File
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

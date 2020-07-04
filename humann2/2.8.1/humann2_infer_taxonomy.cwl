@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: humann2_infer_taxonomy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/humann2_infer_taxonomy.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

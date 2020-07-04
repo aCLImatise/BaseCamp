@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: coverage_to_regions.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/coverage_to_regions.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

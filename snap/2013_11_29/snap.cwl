@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: snap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snap.cwl
 inputs:
-- id: hmm_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: fast_a_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: lc_mask
   doc: treat lowercase as N
   type: boolean
@@ -61,6 +51,16 @@ inputs:
   type: string
   inputBinding:
     prefix: -name
+- id: hmm_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: fast_a_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

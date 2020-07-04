@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: CRISPRessoCount.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CRISPRessoCount.cwl
 inputs:
 - id: guide_length
   doc: 'Lenght in bp to extract the sgRNA upstream of the tracrRNA sequence (default:
@@ -12,6 +12,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --keep_intermediate
+- id: r
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -r
+- id: q
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: -q
 outputs: []
 cwlVersion: v1.1
 baseCommand:

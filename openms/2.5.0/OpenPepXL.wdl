@@ -2,76 +2,52 @@ version 1.0
 
 task OpenPepXL {
   input {
-    File inIn
-    File consensusConsensus
-    File databaseDatabase
-    String decoyDecoyString
-    String decoyDecoyPrefix
-    Boolean precursorPrecursor
-    Boolean precursorPrecursor
-    Boolean precursorPrecursor
-    Boolean precursorPrecursor
-    Boolean precursorPrecursor
-    Boolean fragmentFragment
-    Boolean fragmentFragment
-    Boolean fragmentFragment
-    Boolean modificationsModifications
-    Boolean modificationsModifications
-    Boolean modificationsModifications
-    Boolean peptidePeptide
-    Boolean peptidePeptide
-    Boolean peptidePeptide
-    Boolean crossCrossLinker
-    Boolean crossCrossLinker
-    Boolean crossCrossLinker
-    Boolean crossCrossLinker
-    Boolean crossCrossLinker
-    Boolean crossCrossLinker
-    Boolean algorithmAlgorithm
-    String outOutIdxml
-    String outOutMzIdentMl
-    String outOutXQuestXml
-    String outOutXQuestSpecXml
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    File? in
+    File? consensus
+    File? database
+    String? decoy_string
+    String? decoy_prefix
+    Boolean? algorithm
+    String? out_idxml
+    String? out_mz_ident_ml
+    String? out_x_quest_xml
+    String? out_x_quest_spec_xml
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     OpenPepXL \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(consensusConsensus) then ("-consensus " +  '"' + consensusConsensus + '"') else ""} \
-      ~{if defined(databaseDatabase) then ("-database " +  '"' + databaseDatabase + '"') else ""} \
-      ~{if defined(decoyDecoyString) then ("-decoy_string " +  '"' + decoyDecoyString + '"') else ""} \
-      ~{if defined(decoyDecoyPrefix) then ("-decoy_prefix " +  '"' + decoyDecoyPrefix + '"') else ""} \
-      ~{true="-precursor" false="" precursorPrecursor} \
-      ~{true="-precursor" false="" precursorPrecursor} \
-      ~{true="-precursor" false="" precursorPrecursor} \
-      ~{true="-precursor" false="" precursorPrecursor} \
-      ~{true="-precursor" false="" precursorPrecursor} \
-      ~{true="-fragment" false="" fragmentFragment} \
-      ~{true="-fragment" false="" fragmentFragment} \
-      ~{true="-fragment" false="" fragmentFragment} \
-      ~{true="-modifications" false="" modificationsModifications} \
-      ~{true="-modifications" false="" modificationsModifications} \
-      ~{true="-modifications" false="" modificationsModifications} \
-      ~{true="-peptide" false="" peptidePeptide} \
-      ~{true="-peptide" false="" peptidePeptide} \
-      ~{true="-peptide" false="" peptidePeptide} \
-      ~{true="-cross_linker" false="" crossCrossLinker} \
-      ~{true="-cross_linker" false="" crossCrossLinker} \
-      ~{true="-cross_linker" false="" crossCrossLinker} \
-      ~{true="-cross_linker" false="" crossCrossLinker} \
-      ~{true="-cross_linker" false="" crossCrossLinker} \
-      ~{true="-cross_linker" false="" crossCrossLinker} \
-      ~{true="-algorithm" false="" algorithmAlgorithm} \
-      ~{if defined(outOutIdxml) then ("-out_idXML " +  '"' + outOutIdxml + '"') else ""} \
-      ~{if defined(outOutMzIdentMl) then ("-out_mzIdentML " +  '"' + outOutMzIdentMl + '"') else ""} \
-      ~{if defined(outOutXQuestXml) then ("-out_xquestxml " +  '"' + outOutXQuestXml + '"') else ""} \
-      ~{if defined(outOutXQuestSpecXml) then ("-out_xquest_specxml " +  '"' + outOutXQuestSpecXml + '"') else ""} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(consensus) then ("-consensus " +  '"' + consensus + '"') else ""} \
+      ~{if defined(database) then ("-database " +  '"' + database + '"') else ""} \
+      ~{if defined(decoy_string) then ("-decoy_string " +  '"' + decoy_string + '"') else ""} \
+      ~{if defined(decoy_prefix) then ("-decoy_prefix " +  '"' + decoy_prefix + '"') else ""} \
+      ~{true="-algorithm" false="" algorithm} \
+      ~{if defined(out_idxml) then ("-out_idXML " +  '"' + out_idxml + '"') else ""} \
+      ~{if defined(out_mz_ident_ml) then ("-out_mzIdentML " +  '"' + out_mz_ident_ml + '"') else ""} \
+      ~{if defined(out_x_quest_xml) then ("-out_xquestxml " +  '"' + out_x_quest_xml + '"') else ""} \
+      ~{if defined(out_x_quest_spec_xml) then ("-out_xquest_specxml " +  '"' + out_x_quest_spec_xml + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*                                       Input file containing the spectra. (valid formats: 'mzML')"
+    consensus: "*                                Input file containing the linked mass peaks. (valid formats: 'consensusXML')"
+    database: "*                                 Input file containing the protein database. (valid formats: 'fasta')"
+    decoy_string: "String that was appended (or prefixed - see 'prefix' flag below) to the accessions in the protein database to indicate decoy proteins. (default: 'DECOY_')"
+    decoy_prefix: "Set to true, if the decoy_string is a prefix of accessions in the protein database. Otherwise it is a suffix. (default: 'true' valid: 'true', 'false')"
+    algorithm: ":number_top_hits <number>               Number of top hits reported for each spectrum pair (default: '5')"
+    out_idxml: "Results in idXML format (at least one of these output parameters should be set, otherwise you will not have any results) (valid formats: 'idXML')"
+    out_mz_ident_ml: "Results in mzIdentML (.mzid) format (at least one of these output parameters should be set, otherwise you will not have any results) (valid formats: 'mzid')"
+    out_x_quest_xml: "Results in the xquest.xml format (at least one of these output parameters should be set, otherwise you will not have any results). (valid formats: 'xquest.xml')"
+    out_x_quest_spec_xml: "Matched spectra in the xQuest .spec.xml format for spectra visualization in the xQuest results manager. (valid formats: 'spec.xml')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

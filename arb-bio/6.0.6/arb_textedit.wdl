@@ -2,10 +2,13 @@ version 1.0
 
 task ArbTextedit {
   input {
-    File? filenameFilename
+    File filename
   }
   command <<<
     arb_textedit \
-      ~{filenameFilename}
+      ~{filename}
   >>>
+  parameter_meta {
+    filename: ""
+  }
 }

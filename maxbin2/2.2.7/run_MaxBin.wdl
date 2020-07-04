@@ -2,12 +2,16 @@ version 1.0
 
 task RunMaxBin.pl {
   input {
-    Boolean contigContig
-    Boolean outOut
+    Boolean? contig
+    Boolean? out
   }
   command <<<
     run_MaxBin.pl \
-      ~{true="-contig" false="" contigContig} \
-      ~{true="-out" false="" outOut}
+      ~{true="-contig" false="" contig} \
+      ~{true="-out" false="" out}
   >>>
+  parameter_meta {
+    contig: "(contig file)"
+    out: "(output file)"
+  }
 }

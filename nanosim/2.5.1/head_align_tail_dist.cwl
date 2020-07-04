@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: head_align_tail_dist.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/head_align_tail_dist.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

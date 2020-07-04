@@ -1,7 +1,14 @@
 version 1.0
 
 task CrossOut {
+  input {
+    String arg_one
+  }
   command <<<
-    CrossOut
+    CrossOut \
+      ~{arg_one}
   >>>
+  parameter_meta {
+    arg_one: ""
+  }
 }

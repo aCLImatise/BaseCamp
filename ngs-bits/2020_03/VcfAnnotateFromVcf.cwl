@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: VcfAnnotateFromVcf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/VcfAnnotateFromVcf.cwl
 inputs:
 - id: config_file
   doc: "TSV file containing the annotation file path, the prefix, the INFO ids and\

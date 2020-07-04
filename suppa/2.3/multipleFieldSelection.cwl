@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: multipleFieldSelection.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/multipleFieldSelection.py.cwl
 inputs:
 - id: input_files
   doc: spaced separated list of files to join.

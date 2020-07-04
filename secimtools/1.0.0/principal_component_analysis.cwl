@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: principal_component_analysis.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/principal_component_analysis.py.cwl
 inputs:
 - id: input
   doc: Input dataset in wide format.

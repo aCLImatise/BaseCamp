@@ -2,10 +2,13 @@ version 1.0
 
 task Hardklor {
   input {
-    String? configConfigFile
+    String config_file
   }
   command <<<
     hardklor \
-      ~{configConfigFile}
+      ~{config_file}
   >>>
+  parameter_meta {
+    config_file: ""
+  }
 }

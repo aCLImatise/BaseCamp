@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csvtk_summary.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csvtk_summary.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: decimal_width
   doc: limit floats to N decimal points (default 2)
   type: long
@@ -108,6 +103,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tabs
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,11 +1,11 @@
 class: CommandLineTool
-id: hmmpress.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hmmpress.cwl
 inputs:
-- id: hmm_file
-  doc: ''
-  type: string
+- id: force_overwrite_files
+  doc: ': force: overwrite any previous pressed files'
+  type: boolean
   inputBinding:
-    position: 0
+    prefix: -f
 - id: options
   doc: ''
   type: boolean

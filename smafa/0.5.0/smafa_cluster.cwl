@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: smafa_cluster.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smafa_cluster.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: fast_a
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: amino_acid
   doc: 'Sequences are amino acid [default: nucleotide]'
   type: boolean
@@ -46,6 +31,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --kmer-length
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: fast_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

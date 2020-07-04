@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: mb_annotate_table.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mb_annotate_table.cwl
 inputs:
+- id: max_n
+  doc: ''
+  type: long
+  inputBinding:
+    prefix: --max_n
 - id: par_clip_table
   doc: path to parclip table
   type: string
@@ -11,7 +16,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: gff3_an_not
+- id: gff_three_an_not
   doc: paths to one or more gff3 annotation files
   type: string
   inputBinding:

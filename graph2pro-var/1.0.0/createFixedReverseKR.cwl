@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: createFixedReverseKR.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/createFixedReverseKR.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

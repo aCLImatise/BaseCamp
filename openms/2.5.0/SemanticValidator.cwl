@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SemanticValidator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SemanticValidator.cwl
 inputs:
 - id: in
   doc: "*            Input file (any xml file) (valid formats: 'analysisXML', 'mzML',\

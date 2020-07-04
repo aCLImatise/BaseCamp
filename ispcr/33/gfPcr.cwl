@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: gfPcr.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gfPcr.cwl
 inputs:
+- id: name
+  doc: '- Name to use in bed output.'
+  type: string
+  inputBinding:
+    prefix: -name
 - id: host
   doc: ''
   type: string
@@ -31,11 +36,6 @@ inputs:
   type: string
   inputBinding:
     position: 5
-- id: name
-  doc: use in bed output.
-  type: string
-  inputBinding:
-    prefix: '- Name'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

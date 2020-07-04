@@ -2,14 +2,19 @@ version 1.0
 
 task SummarizeFlags.py {
   input {
-    String fF
-    String idId
-    String osOs
+    String? flags
+    String? id
+    String? out_summary
   }
   command <<<
     summarize_flags.py \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""} \
-      ~{if defined(idId) then ("-id " +  '"' + idId + '"') else ""} \
-      ~{if defined(osOs) then ("-os " +  '"' + osOs + '"') else ""}
+      ~{if defined(flags) then ("--flags " +  '"' + flags + '"') else ""} \
+      ~{if defined(id) then ("--ID " +  '"' + id + '"') else ""} \
+      ~{if defined(out_summary) then ("--outSummary " +  '"' + out_summary + '"') else ""}
   >>>
+  parameter_meta {
+    flags: "Flag file."
+    id: "Name of the column with unique identifiers."
+    out_summary: "Output file for Summary."
+  }
 }

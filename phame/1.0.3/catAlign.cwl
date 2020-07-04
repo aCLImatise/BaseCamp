@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: catAlign.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/catAlign.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

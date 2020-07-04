@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pepxml2csv.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pepxml2csv.py.cwl
 inputs:
 - id: in_file
   doc: = sys.argv[1]

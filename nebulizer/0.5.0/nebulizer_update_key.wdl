@@ -2,14 +2,22 @@ version 1.0
 
 task NebulizerUpdateKey {
   input {
-    String newNewUrl
-    String newNewApiKey
-    Boolean fetchFetchApiKey
+    String? new_url
+    String? new_api_key
+    Boolean? fetch_api_key
+    String var_alias
   }
   command <<<
     nebulizer update_key \
-      ~{if defined(newNewUrl) then ("--new-url " +  '"' + newNewUrl + '"') else ""} \
-      ~{if defined(newNewApiKey) then ("--new-api-key " +  '"' + newNewApiKey + '"') else ""} \
-      ~{true="--fetch-api-key" false="" fetchFetchApiKey}
+      ~{var_alias} \
+      ~{if defined(new_url) then ("--new-url " +  '"' + new_url + '"') else ""} \
+      ~{if defined(new_api_key) then ("--new-api-key " +  '"' + new_api_key + '"') else ""} \
+      ~{true="--fetch-api-key" false="" fetch_api_key}
   >>>
+  parameter_meta {
+    new_url: "specify new URL for Galaxy instance"
+    new_api_key: "specify new API key for Galaxy instance"
+    fetch_api_key: "fetch new API key for Galaxy instance"
+    var_alias: ""
+  }
 }

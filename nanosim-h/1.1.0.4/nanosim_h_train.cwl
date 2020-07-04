@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nanosim_h_train.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nanosim_h_train.cwl
 inputs:
 - id: in_file
   doc: training ONT real reads, must be fasta files
@@ -21,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-model-fit
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
 outputs: []
 cwlVersion: v1.1
 baseCommand:

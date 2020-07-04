@@ -2,14 +2,19 @@ version 1.0
 
 task SketchyFeaturePrepare {
   input {
-    File indexIndex
-    String dropDrop
-    File prefixPrefix
+    File? index
+    String? drop
+    File? prefix
   }
   command <<<
     sketchy feature prepare \
-      ~{if defined(indexIndex) then ("--index " +  '"' + indexIndex + '"') else ""} \
-      ~{if defined(dropDrop) then ("--drop " +  '"' + dropDrop + '"') else ""} \
-      ~{if defined(prefixPrefix) then ("--prefix " +  '"' + prefixPrefix + '"') else ""}
+      ~{if defined(index) then ("--index " +  '"' + index + '"') else ""} \
+      ~{if defined(drop) then ("--drop " +  '"' + drop + '"') else ""} \
+      ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""}
   >>>
+  parameter_meta {
+    index: "Path to feature index input file  [required]"
+    drop: "Comma separated string of columns to drop"
+    prefix: "Prefix for prepared feature index output files"
+  }
 }

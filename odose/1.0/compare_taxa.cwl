@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: compare_taxa.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/compare_taxa.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

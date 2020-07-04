@@ -2,12 +2,16 @@ version 1.0
 
 task Vcfqual2info {
   input {
-    String? keyKey
-    String? vcfVcfFile
+    String? key
+    String? vcf_file
   }
   command <<<
     vcfqual2info \
-      ~{keyKey} \
-      ~{vcfVcfFile}
+      ~{key} \
+      ~{vcf_file}
   >>>
+  parameter_meta {
+    key: ""
+    vcf_file: ""
+  }
 }

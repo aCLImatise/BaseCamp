@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: add_json.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/add_json.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

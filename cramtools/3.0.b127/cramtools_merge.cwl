@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cramtools_merge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cramtools_merge.cwl
 inputs:
 - id: output_file
   doc: Path to the output BAM file. Omit for stdout.
@@ -37,6 +37,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --validation-level
+- id: main_class
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

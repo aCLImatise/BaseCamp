@@ -1,12 +1,7 @@
 class: CommandLineTool
-id: rnaspades.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnaspades.py.cwl
 inputs:
-- id: spade_spy
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: o
+- id: directory_store_files
   doc: directory to store all the resulting files (required)
   type: string
   inputBinding:
@@ -21,7 +16,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --test
-- id: s
+- id: file_interlaced_forward
+  doc: file with interlaced forward and reverse paired-end reads
+  type: File
+  inputBinding:
+    prefix: --12
+- id: file_forward_pairedend
+  doc: file with forward paired-end reads
+  type: File
+  inputBinding:
+    prefix: '-1'
+- id: file_reverse_pairedend
+  doc: file with reverse paired-end reads
+  type: File
+  inputBinding:
+    prefix: '-2'
+- id: file_unpaired_reads
   doc: file with unpaired reads
   type: File
   inputBinding:
@@ -31,19 +41,19 @@ inputs:
   type: File
   inputBinding:
     prefix: --merged
-- id: pe_12
+- id: pe_one_two
   doc: <#> <filename>      file with interlaced reads for paired-end library number
     <#>. Older deprecated syntax is -pe<#>-12 <filename>
   type: boolean
   inputBinding:
     prefix: --pe-12
-- id: pe_1
+- id: pe_one
   doc: <#> <filename>       file with forward reads for paired-end library number
     <#>. Older deprecated syntax is -pe<#>-1 <filename>
   type: boolean
   inputBinding:
     prefix: --pe-1
-- id: pe_2
+- id: pe_two
   doc: <#> <filename>       file with reverse reads for paired-end library number
     <#>. Older deprecated syntax is -pe<#>-2 <filename>
   type: boolean
@@ -67,12 +77,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --pe-or
-- id: s
-  doc: <#> <filename>          file with unpaired reads for single reads library number
-    <#>. Older deprecated syntax is --s<#> <filename>
-  type: boolean
-  inputBinding:
-    prefix: --s
 - id: pac_bio
   doc: file with PacBio reads
   type: File
@@ -157,11 +161,15 @@ inputs:
   inputBinding:
     prefix: -k
 - id: phred_offset
-  doc: '<33 or 64>   PHRED quality offset in the input reads (33 or 64), [default:
-    auto-detect]'
-  type: boolean
+  doc: 'PHRED quality offset in the input reads (33 or 64), [default: auto-detect]'
+  type: string
   inputBinding:
     prefix: --phred-offset
+- id: spades_do_tpy
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

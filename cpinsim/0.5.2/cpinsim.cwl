@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cpinsim.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cpinsim.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

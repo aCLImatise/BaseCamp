@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: svm_train.cwl
+id: ../../../../home/ubuntu/BiocondaCli/svm_train.cwl
 inputs:
 - id: training_set_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: TransformationEvaluation.cwl
+id: ../../../../home/ubuntu/BiocondaCli/TransformationEvaluation.cwl
 inputs:
 - id: in
   doc: "*        Input file containing the transformation description (valid formats:\

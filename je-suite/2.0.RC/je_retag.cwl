@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: je_retag.cwl
+id: ../../../../home/ubuntu/BiocondaCli/je_retag.cwl
 inputs:
 - id: act_gtac
   doc: 'ACTCTAC,TCTGTAC,ACTGTAG  '

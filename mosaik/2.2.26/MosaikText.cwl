@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MosaikText.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MosaikText.cwl
 inputs:
 - id: fast_q
   doc: stores the data in a FASTQ file
@@ -41,12 +41,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -sam
-- id: screen
-  doc: displays the alignments on the screen
-  type: boolean
-  inputBinding:
-    prefix: -screen
-- id: u
+- id: limit_output_unique
   doc: limit output to unique reads
   type: boolean
   inputBinding:

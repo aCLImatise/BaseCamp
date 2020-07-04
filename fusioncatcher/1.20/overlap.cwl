@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: overlap.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/overlap.py.cwl
 inputs:
+- id: input_one
+  doc: The input FASTQ file containing the reads from 5' fragment end.
+  type: string
+  inputBinding:
+    prefix: --input_1
+- id: input_two
+  doc: The input FASTQ file containing the reads from 3' fragment end.
+  type: string
+  inputBinding:
+    prefix: --input_2
 - id: output
   doc: It gives a statistics regarding the amount of mate reads which are overlapping.
   type: string

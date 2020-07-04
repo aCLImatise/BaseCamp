@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: fastutils_interleave.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastutils_interleave.cwl
 inputs:
+- id: in_one
+  doc: fasta/q file containing forward (left) reads [required]
+  type: string
+  inputBinding:
+    prefix: --in1
+- id: in_two
+  doc: fasta/q file containing reverse (right) reads [required]
+  type: string
+  inputBinding:
+    prefix: --in2
 - id: out
   doc: output interlaced reads in STR file [stdout]
   type: string

@@ -2,10 +2,13 @@ version 1.0
 
 task SmofSniff {
   input {
-    String? inputInput
+    String input_fasta_sequence
   }
   command <<<
     smof sniff \
-      ~{inputInput}
+      ~{input_fasta_sequence}
   >>>
+  parameter_meta {
+    input_fasta_sequence: "input fasta sequence (default = stdin)"
+  }
 }

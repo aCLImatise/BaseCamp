@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bedJoinTabOffset.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedJoinTabOffset.cwl
 inputs:
 - id: debug
   doc: show debug messages
@@ -18,6 +18,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --bedKeyField
+- id: in_tab_file
+  doc: ''
+  type: long
+  inputBinding:
+    position: 0
+- id: in_bed_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: out_bed_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,12 +2,13 @@ version 1.0
 
 task Pedmerge {
   input {
-    String? inputInput1
-    String? outputOutput
+    String var_output
   }
   command <<<
     pedmerge \
-      ~{inputInput1} \
-      ~{outputOutput}
+      ~{var_output}
   >>>
+  parameter_meta {
+    var_output: ""
+  }
 }

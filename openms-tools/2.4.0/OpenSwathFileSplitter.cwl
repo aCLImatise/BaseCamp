@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: OpenSwathFileSplitter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/OpenSwathFileSplitter.cwl
 inputs:
 - id: in
   doc: "*       Input file (SWATH/DIA file) (valid formats: 'mzML', 'mzXML')"

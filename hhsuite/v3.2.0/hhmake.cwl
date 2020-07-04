@@ -1,22 +1,22 @@
 class: CommandLineTool
-id: hhmake.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hhmake.cwl
 inputs:
-- id: i
+- id: query_alignment_am
   doc: 'query alignment (A2M, A3M, or FASTA), or query HMM         '
   type: File
   inputBinding:
     prefix: -i
-- id: o
+- id: hmm_file_written
   doc: 'HMM file to be written to  (default=<infile.hhm>)          '
   type: File
   inputBinding:
     prefix: -o
-- id: a
+- id: hmm_file_appended
   doc: 'HMM file to be appended to                                 '
   type: File
   inputBinding:
     prefix: -a
-- id: v
+- id: verbose_mode_screen
   doc: 'verbose mode: 0:no screen output  1:only warings  2: verbose'
   type: long
   inputBinding:
@@ -68,22 +68,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -neff
-- id: m
-  doc: "use A2M/A3M (default): upper case = Match; lower case = Insert; '-' = Delete;\
-    \ '.' = gaps aligned to inserts (may be omitted)   "
-  type: string
-  inputBinding:
-    prefix: -M
-- id: m
-  doc: 'use FASTA: columns with residue in 1st sequence are match states'
-  type: string
-  inputBinding:
-    prefix: -M
-- id: m
-  doc: '[0,100]    use FASTA: columns with fewer than X% gaps are match states   '
-  type: boolean
-  inputBinding:
-    prefix: -M
 - id: pc_hhm_con_txt_a
   doc: '[0,1]        overall pseudocount admixture (def=0.9)                        '
   type: boolean

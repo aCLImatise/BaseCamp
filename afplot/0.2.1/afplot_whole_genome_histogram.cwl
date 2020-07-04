@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: afplot_whole_genome_histogram.cwl
+id: ../../../../home/ubuntu/BiocondaCli/afplot_whole_genome_histogram.cwl
 inputs:
 - id: output
   doc: Path to output file  [required]

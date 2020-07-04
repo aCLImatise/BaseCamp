@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: humann2_rename_table.cwl
+id: ../../../../home/ubuntu/BiocondaCli/humann2_rename_table.cwl
 inputs:
 - id: input
   doc: Original output table (tsv or biom format); default=[TSV/STDIN]

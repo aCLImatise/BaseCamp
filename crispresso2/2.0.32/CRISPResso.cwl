@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: CRISPResso.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CRISPResso.cwl
 inputs:
-- id: fast_q_r1
+- id: fast_q_r_one
   doc: 'First fastq file (default: Fastq filename)'
   type: string
   inputBinding:
     prefix: --fastq_r1
-- id: fast_q_r2
+- id: fast_q_r_two
   doc: 'Second fastq file for paired end reads (default: )'
   type: string
   inputBinding:
@@ -348,7 +348,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --conversion_nuc_to
-- id: crispresso1_mode
+- id: cris_presso_one_mode
   doc: 'Parameter usage as in CRISPResso 1 (default: False)'
   type: boolean
   inputBinding:

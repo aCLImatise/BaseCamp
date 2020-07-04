@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: MergePaths.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MergePaths.cwl
 inputs:
-- id: len
-  doc: lengths of the contigs
-  type: string
-  inputBinding:
-    position: 0
-- id: path
-  doc: sequences of contig IDs
-  type: File
-  inputBinding:
-    position: 1
 - id: km_er
   doc: k-mer size
   type: string
@@ -76,6 +66,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --species
+- id: len
+  doc: lengths of the contigs
+  type: string
+  inputBinding:
+    position: 0
+- id: path
+  doc: sequences of contig IDs
+  type: File
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

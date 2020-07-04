@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: guppy_fat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/guppy_fat.cwl
 inputs:
-- id: o
+- id: specify_filename_write
   doc: Specify the filename to write to.
   type: boolean
   inputBinding:
@@ -26,7 +26,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --pp
-- id: c
+- id: reference_package_path
   doc: Reference package path.
   type: boolean
   inputBinding:
@@ -68,6 +68,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --help
+- id: fat
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: place_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: s
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

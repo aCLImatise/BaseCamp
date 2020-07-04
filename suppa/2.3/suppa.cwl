@@ -1,21 +1,22 @@
 class: CommandLineTool
-id: suppa.py_joinFiles.cwl
+id: ../../../../home/ubuntu/BiocondaCli/suppa.py_joinFiles.cwl
 inputs:
-- id: i
-  doc: ''
+- id: input_files
+  doc: Space separated list of the files to be joined. If the absolute path is not
+    indicate the program use the current working directory instead.
   type: string[]
   inputBinding:
-    prefix: -i
-- id: f
-  doc: ''
+    prefix: --input-files
+- id: file_extension
+  doc: Extension of the output file. Required.
   type: string
   inputBinding:
-    prefix: -f
-- id: o
-  doc: ''
+    prefix: --file-extension
+- id: output
+  doc: Name of the output file.
   type: string
   inputBinding:
-    prefix: -o
+    prefix: --output
 outputs: []
 cwlVersion: v1.1
 baseCommand:

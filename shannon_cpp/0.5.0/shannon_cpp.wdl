@@ -2,10 +2,13 @@ version 1.0
 
 task ShannonCpp {
   input {
-    String? subcommandSubcommand
+    String? subcommand
   }
   command <<<
     shannon_cpp \
-      ~{subcommandSubcommand}
+      ~{subcommand}
   >>>
+  parameter_meta {
+    subcommand: ""
+  }
 }

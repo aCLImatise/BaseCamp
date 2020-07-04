@@ -1,16 +1,21 @@
 class: CommandLineTool
-id: circlator_required arguments.cwl
+id: ../../../../home/ubuntu/BiocondaCli/circlator_required arguments.cwl
 inputs:
-- id: command
+- id: circ_lator
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: required_arguments
+- id: command
   doc: ''
   type: string
   inputBinding:
     position: 1
+- id: required_arguments
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

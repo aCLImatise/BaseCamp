@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ktImportXML.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ktImportXML.cwl
 inputs:
 - id: xml_file
   doc: 'A file containing XML tags that specify chart attributes and describe the

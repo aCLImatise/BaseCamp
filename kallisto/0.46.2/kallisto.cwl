@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: kallisto.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kallisto.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

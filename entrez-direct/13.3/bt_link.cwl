@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bt_link.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bt_link.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

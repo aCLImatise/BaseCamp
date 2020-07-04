@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: newcpgreport.cwl
+id: ../../../../home/ubuntu/BiocondaCli/newcpgreport.cwl
 inputs:
 - id: window
   doc: integer    [100] Window size (Integer 1 or more)

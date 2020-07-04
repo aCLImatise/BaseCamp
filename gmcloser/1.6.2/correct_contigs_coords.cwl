@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: correct_contigs_coords.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/correct_contigs_coords.pl.cwl
 inputs:
 - id: query
   doc: input contig fasta file (e.g., contig1.fa)
@@ -58,6 +58,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --thread
+- id: gm_value
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: verdot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: one_dot_three
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

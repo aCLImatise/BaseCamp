@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: portcullis.cwl
+id: ../../../../home/ubuntu/BiocondaCli/portcullis.cwl
 inputs:
+- id: print_extra_information
+  doc: '[ --verbose ]      Print extra information'
+  type: boolean
+  inputBinding:
+    prefix: -v
 - id: mode
   doc: ''
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: v
-  doc: '[ --verbose ]      Print extra information'
-  type: boolean
-  inputBinding:
-    prefix: -v
 outputs: []
 cwlVersion: v1.1
 baseCommand:

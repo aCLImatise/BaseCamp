@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ideas.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ideas.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

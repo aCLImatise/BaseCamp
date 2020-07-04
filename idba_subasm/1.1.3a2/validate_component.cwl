@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: validate_component.cwl
+id: ../../../../home/ubuntu/BiocondaCli/validate_component.cwl
 inputs:
-- id: validate_contigs_blat
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: re_ffa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: contigs_fa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: min_contig
   doc: (=0)              minimum contigs
   type: string
@@ -36,6 +21,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --is_local
+- id: validate_contigs_blat
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: ref_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: contigs_dot_fa_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

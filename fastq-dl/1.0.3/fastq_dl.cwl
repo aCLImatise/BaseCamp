@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastq_dl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq_dl.cwl
 inputs:
 - id: aspera
   doc: 'Path to the Aspera Connect tool "ascp" (Default: "which ascp")'

@@ -1,46 +1,6 @@
 class: CommandLineTool
-id: barriers_RNA2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/barriers_RNA2.cwl
 inputs:
-- id: p
-  doc: point mutation (default)
-  type: string
-  inputBinding:
-    position: 0
-- id: c
-  doc: flip 2nd half
-  type: string
-  inputBinding:
-    position: 1
-- id: nni
-  doc: NNI moves [no other options yet]
-  type: string
-  inputBinding:
-    position: 0
-- id: p
-  doc: Permutations
-  type: string
-  inputBinding:
-    position: 1
-- id: t
-  doc: Transpositions [default]
-  type: string
-  inputBinding:
-    position: 2
-- id: c
-  doc: Canonical Transpositions
-  type: string
-  inputBinding:
-    position: 3
-- id: r
-  doc: Reversals
-  type: string
-  inputBinding:
-    position: 4
-- id: x
-  doc: Exchange Moves on balances +/- strings
-  type: string
-  inputBinding:
-    position: 5
 - id: full_help
   doc: Print help, including hidden options, and exit
   type: boolean
@@ -117,6 +77,46 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --trans
+- id: point_mutation_default
+  doc: point mutation (default)
+  type: string
+  inputBinding:
+    position: 0
+- id: flip_nd_half
+  doc: flip 2nd half
+  type: string
+  inputBinding:
+    position: 1
+- id: nni
+  doc: NNI moves [no other options yet]
+  type: string
+  inputBinding:
+    position: 0
+- id: permutations
+  doc: Permutations
+  type: string
+  inputBinding:
+    position: 1
+- id: transpositions
+  doc: Transpositions [default]
+  type: string
+  inputBinding:
+    position: 2
+- id: canonical_transpositions
+  doc: Canonical Transpositions
+  type: string
+  inputBinding:
+    position: 3
+- id: reversals
+  doc: Reversals
+  type: string
+  inputBinding:
+    position: 4
+- id: exchange_moves_balances
+  doc: Exchange Moves on balances +/- strings
+  type: string
+  inputBinding:
+    position: 5
 outputs: []
 cwlVersion: v1.1
 baseCommand:

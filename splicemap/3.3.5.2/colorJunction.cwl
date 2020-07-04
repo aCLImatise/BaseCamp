@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: colorJunction.cwl
+id: ../../../../home/ubuntu/BiocondaCli/colorJunction.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

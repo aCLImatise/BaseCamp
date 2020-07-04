@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: smof_uniq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smof_uniq.cwl
 inputs:
-- id: input
-  doc: input fasta sequence (default = stdin)
-  type: string
-  inputBinding:
-    position: 0
 - id: count
   doc: writes (count|header) in tab-delimited format
   type: boolean
@@ -43,6 +38,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --final-header
+- id: input
+  doc: input fasta sequence (default = stdin)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

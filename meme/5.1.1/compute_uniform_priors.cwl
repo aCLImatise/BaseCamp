@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: compute_uniform_priors.cwl
+id: ../../../../home/ubuntu/BiocondaCli/compute_uniform_priors.cwl
 inputs:
 - id: compute_uniform_prior
   doc: ''

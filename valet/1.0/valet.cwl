@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: valet.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/valet.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

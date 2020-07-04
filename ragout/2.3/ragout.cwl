@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ragout.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ragout.cwl
 inputs:
-- id: recipe_file
-  doc: path to recipe file
-  type: string
-  inputBinding:
-    position: 0
 - id: outdir
   doc: 'output directory (default: ragout-out)'
   type: string
@@ -47,6 +42,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --threads
+- id: recipe_file
+  doc: path to recipe file
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

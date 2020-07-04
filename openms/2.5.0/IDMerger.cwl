@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: IDMerger.cwl
+id: ../../../../home/ubuntu/BiocondaCli/IDMerger.cwl
 inputs:
 - id: in
   doc: "*               Input files separated by blanks (valid formats: 'idXML')"
@@ -14,7 +14,7 @@ inputs:
 - id: add_to
   doc: "Optional input file. IDs from 'in' are added to this file, but only if the\
     \ (modified) peptide sequences are not present yet (considering only best hits\
-    \ per spectrum). (valid formats : 'idXML')"
+    \ per spectrum). (valid formats: 'idXML')"
   type: File
   inputBinding:
     prefix: -add_to

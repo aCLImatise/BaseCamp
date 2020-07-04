@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cluster_submit.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cluster_submit.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

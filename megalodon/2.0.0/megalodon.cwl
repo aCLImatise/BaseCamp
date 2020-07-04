@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: megalodon.cwl
+id: ../../../../home/ubuntu/BiocondaCli/megalodon.cwl
 inputs:
-- id: fast5s_dir
-  doc: Directory containing raw fast5 (will be searched recursively).
-  type: string
-  inputBinding:
-    position: 0
 - id: guppy_config
   doc: 'Guppy config. Default: dna_r9.4.1_450bps_modbases_dam- dcm-cpg_hac.cfg'
   type: string
@@ -91,6 +86,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --verbose-read-progress
+- id: fast_fives_dir
+  doc: Directory containing raw fast5 (will be searched recursively).
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

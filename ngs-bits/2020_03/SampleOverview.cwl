@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SampleOverview.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SampleOverview.cwl
 inputs:
 - id: in
   doc: Input variant lists in GSvar format.

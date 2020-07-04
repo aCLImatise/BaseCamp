@@ -1,27 +1,17 @@
 class: CommandLineTool
-id: dcmscale.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmscale.cwl
 inputs:
-- id: dcm_file_in
-  doc: DICOM input filename to be scaled
-  type: string
-  inputBinding:
-    position: 0
-- id: dcm_file_out
-  doc: DICOM output filename to be written
-  type: string
-  inputBinding:
-    position: 1
-- id: q
+- id: _quiet_quiet
   doc: --quiet                quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose              verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug                debug mode, print debug information
   type: boolean
   inputBinding:
@@ -37,12 +27,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lc
-- id: f
+- id: _readdataset_read
   doc: --read-dataset         read data set without file meta information
   type: boolean
   inputBinding:
     prefix: -f
-- id: t
+- id: _readxferauto_use
   doc: =   --read-xfer-auto       use TS recognition (default)
   type: boolean
   inputBinding:
@@ -67,26 +57,36 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ti
-- id: f
+- id: _writedataset_write
   doc: --write-dataset        write data set without file meta information
   type: boolean
   inputBinding:
     prefix: -F
-- id: u
+- id: _disablenewvr_disable
   doc: --disable-new-vr       disable support for new VRs, convert to OB
   type: boolean
   inputBinding:
     prefix: -u
-- id: g
+- id: _grouplengthremove_always
   doc: --group-length-remove  always write without group length elements
   type: boolean
   inputBinding:
     prefix: -g
-- id: e
+- id: _lengthundefined_write
   doc: --length-undefined     write with undefined lengths
   type: boolean
   inputBinding:
     prefix: -e
+- id: dcm_file_in
+  doc: DICOM input filename to be scaled
+  type: string
+  inputBinding:
+    position: 0
+- id: dcm_file_out
+  doc: DICOM output filename to be written
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

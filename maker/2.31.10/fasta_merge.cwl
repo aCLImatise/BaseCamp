@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fasta_merge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fasta_merge.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

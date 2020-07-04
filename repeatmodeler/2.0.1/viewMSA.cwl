@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: viewMSA.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/viewMSA.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: emapper.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/emapper.py.cwl
 inputs:
 - id: tax_scope
   doc: Fix the taxonomic scope used for annotation, so only orthologs from a particular
@@ -50,7 +50,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --hmm_qcov
-- id: z
+- id: fixed_database_size
   doc: Fixed database size used in phmmer/hmmscan (allows comparing e-values among
     databases). Default=40,000,000
   type: boolean
@@ -178,12 +178,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --predict_output_format
-- id: m
+- id: defaulthmmer
   doc: Default:hmmer
   type: string
   inputBinding:
     prefix: -m
-- id: i
+- id: input_fasta_file
   doc: Input FASTA file containing query sequences
   type: boolean
   inputBinding:
@@ -213,6 +213,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --annotate_hits_table
+- id: guess_db
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --guessdb
+- id: database
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --database
+- id: dbtype
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --dbtype
 outputs: []
 cwlVersion: v1.1
 baseCommand:

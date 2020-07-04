@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: gff3ToPsl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gff3ToPsl.cwl
 inputs:
-- id: query_chrom_sizes
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: target_chom_sizes
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: ingff3
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: out_psl
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
 - id: drop_q
   doc: drop record when query not found in queryChromSizes
   type: boolean
@@ -31,6 +11,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -dropT
+- id: in_gff_three
+  doc: GFF3 formatted file with Gap attribute in match records
+  type: string
+  inputBinding:
+    position: 0
+- id: out_dot_psl
+  doc: PSL formatted output
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

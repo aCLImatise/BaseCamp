@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FilterGridSeeds.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FilterGridSeeds.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

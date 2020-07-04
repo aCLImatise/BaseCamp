@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: runLSC.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/runLSC.py.cwl
 inputs:
 - id: long_reads
   doc: 'FASTAFILE Long reads to correct. Required in mode 0 or 1. (default: None)'
@@ -43,14 +43,14 @@ inputs:
   inputBinding:
     prefix: --output
 - id: mode
-  doc: '{0,1,2,3}      0: run through, 1: Prepare homopolymer compressed long and
-    short reads. 2: Execute correction on batches of long reads. Can be superseded
-    by --parallelized_mode_2 where you will only execute a single batch. 3: Combine
-    corrected batches into a final output folder. (default: 0)'
-  type: boolean
+  doc: '0: run through, 1: Prepare homopolymer compressed long and short reads. 2:
+    Execute correction on batches of long reads. Can be superseded by --parallelized_mode_2
+    where you will only execute a single batch. 3: Combine corrected batches into
+    a final output folder. (default: 0)'
+  type: string
   inputBinding:
     prefix: --mode
-- id: parallelized_mode_2
+- id: parallelized_mode_two
   doc: 'Mode 2, but you specify a sigle batch to execute. (default: None)'
   type: string
   inputBinding:
@@ -96,7 +96,7 @@ inputs:
     prefix: --long_read_batch_size
 - id: sam_tools_path
   doc: 'Path to samtools by default assumes its installed. If not specified, the included
-    version will be used. (default: /tmp/tmpbf3ugpsu/bin)'
+    version will be used. (default: /tmp/tmp9_rw3dys/bin)'
   type: string
   inputBinding:
     prefix: --samtools_path

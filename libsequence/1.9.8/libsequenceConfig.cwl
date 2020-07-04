@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: libsequenceConfig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/libsequenceConfig.cwl
 inputs:
 - id: print
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rdoc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rdoc.cwl
 inputs:
 - id: access_or
   doc: support discontinued
@@ -56,7 +56,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ri-system
-- id: e
+- id: preferred__charset
   doc: preferred over --charset,  Specifies the output encoding.  All files
   type: string
   inputBinding:
@@ -92,7 +92,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --extension
-- id: u
+- id: _forceupdate_forces
   doc: ', --[no-]force-update          Forces rdoc to scan all sources even if newer
     than the flag file.'
   type: boolean
@@ -150,7 +150,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --include
-- id: c
+- id: dcov
   doc: '[LEVEL],                       Prints a report on undocumented items. --[no-]coverage-report       Does
     not generate files. --[no-]dcov'
   type: boolean
@@ -161,7 +161,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
-- id: d
+- id: deprecated__diagram
   doc: Deprecated --diagram option. Prevents firing debug mode with legacy invocation.
   type: boolean
   inputBinding:
@@ -183,7 +183,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --main
-- id: n
+- id: _linenumbers_include
   doc: ', --[no-]line-numbers          Include line numbers in the source code. By
     default, only the number of the first line is displayed, in a leading comment.'
   type: boolean
@@ -238,7 +238,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ri-site
-- id: d
+- id: _ignoreinvalid_ignore
   doc: ', --[no-]debug                 Displays lots on internal stuff. --[no-]ignore-invalid        Ignore
     invalid options and continue (default true).'
   type: boolean
@@ -254,6 +254,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: names_dot_dot_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: segtools_gmtk_parameters.cwl
+id: ../../../../home/ubuntu/BiocondaCli/segtools_gmtk_parameters.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: params_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: clobber
   doc: Overwrite any existing output files.
   type: boolean
@@ -81,12 +71,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gene-graph
-- id: r
+- id: val_pass_val
   doc: =VAL        Pass VAL for PARAM when calling R functions. May be specified multiple
     times.
   type: string
   inputBinding:
     prefix: -R
+- id: params_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

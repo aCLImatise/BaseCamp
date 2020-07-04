@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: analyze_star_chimeric.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/analyze_star_chimeric.py.cwl
 inputs:
 - id: input
   doc: The input file in PSL format.

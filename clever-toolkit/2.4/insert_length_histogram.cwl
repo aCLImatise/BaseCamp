@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: insert_length_histogram.cwl
+id: ../../../../home/ubuntu/BiocondaCli/insert_length_histogram.cwl
 inputs:
-- id: c
+- id: arg_minimum_number
   doc: '[ --min_count_per_bin ] arg (=20) Minimum number of counts per bin. If  necessary,
     bins are joined to reach this number of counts.'
   type: boolean
   inputBinding:
     prefix: -c
-- id: m
+- id: arg_write_deviation
   doc: "[ --mean_and_sd ] arg             Write (robustly estimated) mean and  standard\
     \ deviation of main peak to given filename. If used together with option  -R,\
     \ the filename must contain the  wildcard '{readgroup}' which is replaced by the\
@@ -15,7 +15,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -m
-- id: g
+- id: print_forth_column
   doc: '[ --gaussian_values ]             Print forth column: probability based on
     Gaussian estimated from main peak.'
   type: boolean
@@ -26,7 +26,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --sorted
-- id: c
+- id: arg_number_process
   doc: '[ --count ] arg (=1000000)        Number of uniquely mappable read pairs  to
     process.'
   type: boolean
@@ -37,20 +37,20 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --all
-- id: o
+- id: arg_filename_output
   doc: "[ --output ] arg                  Filename for output to be written to  (default:\
     \ stdout). If used together with option -R, the filename must contain the wildcard\
     \ '{readgroup}' which is replaced by the actual read group."
   type: boolean
   inputBinding:
     prefix: -o
-- id: r
+- id: report_distributions_used
   doc: '[ --readgroupwise ]               Report a separate distributions for each
     read group. Must be used in connection  with option -o.'
   type: boolean
   inputBinding:
     prefix: -R
-- id: l
+- id: arg_write_list
   doc: '[ --readgrouplist ] arg           Write list of encountered read groups to
     given filename. Format: <readgroup>  <distribution-filename>.'
   type: boolean

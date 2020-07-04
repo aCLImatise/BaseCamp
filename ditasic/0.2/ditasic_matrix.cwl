@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ditasic_matrix.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ditasic_matrix.py.cwl
 inputs:
 - id: start_prob
   doc: Mismatch probability at the first base.
@@ -26,7 +26,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --length
-- id: n
+- id: number_reads_sampled
   doc: 'Number of reads sampled from each reference. [default: 250000]'
   type: string
   inputBinding:
@@ -52,6 +52,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
+- id: files
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

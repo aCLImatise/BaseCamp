@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: maf2maf.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maf2maf.pl.cwl
 inputs:
-- id: perl
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: maf2mafpl
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: input_maf
   doc: Path to input file in MAF format
   type: boolean

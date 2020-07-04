@@ -1,12 +1,6 @@
 class: CommandLineTool
-id: caper_submit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/caper_submit.cwl
 inputs:
-- id: wdl
-  doc: 'Path, URL or URI for WDL script Example: /scratch/my.wdl, gs://some/where/our.wdl,
-    http://hello.com/world/your.wdl'
-  type: string
-  inputBinding:
-    position: 0
 - id: dry_run
   doc: Caper does not take any action.
   type: boolean
@@ -83,7 +77,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --singularity-cachedir
-- id: use_gs_util_for_s3
+- id: use_gs_util_for_s_three
   doc: Use gsutil CLI for direct trasnfer between S3 and GCS buckets. Otherwise, such
     file transfer will stream through local machine. Make sure that gsutil is installed
     on your system and it has access to credentials for AWS (e.g. ~/.boto or ~/.aws/credentials).
@@ -174,6 +168,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --pbs-extra-param
+- id: wdl
+  doc: 'Path, URL or URI for WDL script Example: /scratch/my.wdl, gs://some/where/our.wdl,
+    http://hello.com/world/your.wdl'
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

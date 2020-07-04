@@ -2,18 +2,25 @@ version 1.0
 
 task BigWigInfo {
   input {
-    Boolean udcUdcDir
-    String chromChromS
-    String zoomsZooms
-    String minmaxMinmax
-    File? fileFileBw
+    Boolean? udc_dir
+    Boolean? chrom_s
+    Boolean? zooms
+    Boolean? minmax
+    File file_dot_bw
   }
   command <<<
     bigWigInfo \
-      ~{fileFileBw} \
-      ~{true="-udcDir" false="" udcUdcDir} \
-      ~{if defined(chromChromS) then ("-chroms " +  '"' + chromChromS + '"') else ""} \
-      ~{if defined(zoomsZooms) then ("-zooms " +  '"' + zoomsZooms + '"') else ""} \
-      ~{if defined(minmaxMinmax) then ("-minMax " +  '"' + minmaxMinmax + '"') else ""}
+      ~{file_dot_bw} \
+      ~{true="-udcDir" false="" udc_dir} \
+      ~{true="-chroms" false="" chrom_s} \
+      ~{true="-zooms" false="" zooms} \
+      ~{true="-minMax" false="" minmax}
   >>>
+  parameter_meta {
+    udc_dir: "=/dir/to/cache - place to put cache for remote bigBed/bigWigs"
+    chrom_s: "- list all chromosomes and their sizes"
+    zooms: "- list all zoom levels and their sizes"
+    minmax: "- list the min and max on a single line"
+    file_dot_bw: ""
+  }
 }

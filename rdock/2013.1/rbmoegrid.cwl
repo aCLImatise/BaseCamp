@@ -1,36 +1,36 @@
 class: CommandLineTool
-id: rbmoegrid.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rbmoegrid.cwl
 inputs:
-- id: o
+- id: grd_is_suffixed
   doc: (.grd is suffixed)
   type: string
   inputBinding:
     prefix: -o
-- id: receptor
-  doc: file (contains active site params)
+- id: receptor_param_file
+  doc: '- receptor param file (contains active site params)'
   type: string
   inputBinding:
-    prefix: '- receptor'
-- id: scoring
-  doc: param file (default calcgrid_vdw.prm)
+    prefix: -r
+- id: scoring_default_calcgridvdwprm
+  doc: '- scoring function param file (default calcgrid_vdw.prm)'
   type: string
   inputBinding:
-    prefix: '- scoring'
-- id: grid
-  doc: (default=0.5A)
+    prefix: -p
+- id: grid_step_defaulta
+  doc: '- grid step (default=0.5A)'
   type: string
   inputBinding:
-    prefix: '- grid'
-- id: grid
-  doc: around docking site (default=1.0A)
+    prefix: -g
+- id: grid_border_docking
+  doc: '- grid border around docking site (default=1.0A)'
   type: string
   inputBinding:
-    prefix: '- grid'
-- id: tripos
-  doc: type (default is C.3)
+    prefix: -b
+- id: tripos_atom_type
+  doc: '- Tripos atom type (default is C.3)'
   type: string
   inputBinding:
-    prefix: '- Tripos'
+    prefix: -t
 outputs: []
 cwlVersion: v1.1
 baseCommand:

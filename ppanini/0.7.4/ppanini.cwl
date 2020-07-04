@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ppanini.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ppanini.cwl
 inputs:
 - id: input_table
   doc: 'REQUIRED: Gene abundance table with metadata'
@@ -16,7 +16,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --basename
-- id: uniref2go
+- id: uniref_two_go
   doc: uniref to GO term mapping file
   type: string
   inputBinding:

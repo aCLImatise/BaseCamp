@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MosaikJump.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MosaikJump.cwl
 inputs:
 - id: mem
   doc: 'the amount memory used when sorting hashes. def: 2'

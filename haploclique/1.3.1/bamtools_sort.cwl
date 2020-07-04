@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: bamtools_sort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamtools_sort.cwl
 inputs:
-- id: sort_options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: in
   doc: the input BAM file [stdin]
   type: string
@@ -21,7 +16,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -byname
-- id: n
+- id: max_number_alignments
   doc: max number of alignments per tempfile [500000]
   type: string
   inputBinding:
@@ -31,6 +26,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -mem
+- id: sort_options
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

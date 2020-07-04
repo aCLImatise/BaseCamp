@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ansible.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ansible.cwl
 inputs:
-- id: host_pattern
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: args
   doc: module arguments
   type: string
@@ -163,6 +158,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: host_pattern
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dscriptMaker.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dscriptMaker.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

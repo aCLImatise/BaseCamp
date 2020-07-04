@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: FastqAddBarcode.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FastqAddBarcode.cwl
 inputs:
-- id: in1
+- id: in_one
   doc: Input FASTQ file 1.
   type: File
   inputBinding:
     prefix: -in1
-- id: in2
+- id: in_two
   doc: Input FASTQ file 2.
   type: File
   inputBinding:
@@ -16,12 +16,12 @@ inputs:
   type: File
   inputBinding:
     prefix: -in_barcode
-- id: out1
+- id: out_one
   doc: Output filename for read 1 FASTQ.
   type: File
   inputBinding:
     prefix: -out1
-- id: out2
+- id: out_two
   doc: Output filename for read 2 FASTQ.
   type: File
   inputBinding:

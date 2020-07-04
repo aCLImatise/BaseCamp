@@ -2,40 +2,49 @@ version 1.0
 
 task FeatureFinderMetaboIdent {
   input {
-    File inIn
-    File idId
-    File outOut
-    File libLibOut
-    File chromChromOut
-    File candidatesCandidatesOut
-    File trafTrafOOut
-    Boolean extractExtract
-    Boolean extractExtract
-    Boolean extractExtract
-    Boolean detectDetect
-    Boolean modelModel
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    File? in
+    File? id
+    File? out
+    File? lib_out
+    File? chrom_out
+    File? candidates_out
+    File? traf_o_out
+    Boolean? detect
+    Boolean? model
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     FeatureFinderMetaboIdent \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(idId) then ("-id " +  '"' + idId + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(libLibOut) then ("-lib_out " +  '"' + libLibOut + '"') else ""} \
-      ~{if defined(chromChromOut) then ("-chrom_out " +  '"' + chromChromOut + '"') else ""} \
-      ~{if defined(candidatesCandidatesOut) then ("-candidates_out " +  '"' + candidatesCandidatesOut + '"') else ""} \
-      ~{if defined(trafTrafOOut) then ("-trafo_out " +  '"' + trafTrafOOut + '"') else ""} \
-      ~{true="-extract" false="" extractExtract} \
-      ~{true="-extract" false="" extractExtract} \
-      ~{true="-extract" false="" extractExtract} \
-      ~{true="-detect" false="" detectDetect} \
-      ~{true="-model" false="" modelModel} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(id) then ("-id " +  '"' + id + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(lib_out) then ("-lib_out " +  '"' + lib_out + '"') else ""} \
+      ~{if defined(chrom_out) then ("-chrom_out " +  '"' + chrom_out + '"') else ""} \
+      ~{if defined(candidates_out) then ("-candidates_out " +  '"' + candidates_out + '"') else ""} \
+      ~{if defined(traf_o_out) then ("-trafo_out " +  '"' + traf_o_out + '"') else ""} \
+      ~{true="-detect" false="" detect} \
+      ~{true="-model" false="" model} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*                   Input file: LC-MS raw data (valid formats: 'mzML')"
+    id: "*                   Input file: Metabolite identifications (valid formats: 'tsv')"
+    out: "*                  Output file: Features (valid formats: 'featureXML')"
+    lib_out: "Output file: Assay library (valid formats: 'traML')"
+    chrom_out: "Output file: Chromatograms (valid formats: 'mzML')"
+    candidates_out: "Output file: Feature candidates (before filtering and model fitting) (valid formats: 'featureXML')"
+    traf_o_out: "Output file: Retention times (expected vs. observed) (valid formats: 'trafoXML')"
+    detect: ":peak_width <value>    Expected elution peak width in seconds, for smoothing (Gauss filter). Also determines the RT extration window, unless set explicitly via 'extract:rt_window'. (default: '5.0' min: '0.0')"
+    model: ":type <choice>          Type of elution model to fit to features (default: 'symmetric' valid: 'symmetric', 'asymmetric', 'none')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

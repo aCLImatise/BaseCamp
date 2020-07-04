@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNAshapes_shapes_overdangle_window.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAshapes_shapes_overdangle_window.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

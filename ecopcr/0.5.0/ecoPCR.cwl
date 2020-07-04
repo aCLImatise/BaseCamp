@@ -1,27 +1,17 @@
 class: CommandLineTool
-id: ecoPCR.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ecoPCR.cwl
 inputs:
-- id: oligo1
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: oligo2
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: d
   doc: ''
   type: string
   inputBinding:
     prefix: -d
-- id: l
+- id: var_1
   doc: ''
   type: string
   inputBinding:
     prefix: -l
-- id: l
+- id: var_2
   doc: ''
   type: string
   inputBinding:
@@ -46,6 +36,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -k
+- id: oligo_one
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: oligo_two
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

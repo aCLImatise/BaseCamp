@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: refinem_filter_bins.cwl
+id: ../../../../home/ubuntu/BiocondaCli/refinem_filter_bins.cwl
 inputs:
-- id: genome_nt_dir
-  doc: directory containing nucleotide scaffolds for each genome
-  type: string
-  inputBinding:
-    position: 0
-- id: filter_file
-  doc: file specifying scaffolds to remove
-  type: string
-  inputBinding:
-    position: 1
-- id: output_dir
-  doc: output directory
-  type: string
-  inputBinding:
-    position: 2
 - id: genome_ext
   doc: 'extension of genomes (other files in directory are ignored) (default: fna)'
   type: string
@@ -31,6 +16,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --silent
+- id: genome_nt_dir
+  doc: directory containing nucleotide scaffolds for each genome
+  type: string
+  inputBinding:
+    position: 0
+- id: filter_file
+  doc: file specifying scaffolds to remove
+  type: string
+  inputBinding:
+    position: 1
+- id: output_dir
+  doc: output directory
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

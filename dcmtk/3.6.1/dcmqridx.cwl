@@ -1,27 +1,17 @@
 class: CommandLineTool
-id: dcmqridx.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmqridx.cwl
 inputs:
-- id: index_out
-  doc: storage area for the index file (directory)
-  type: string
-  inputBinding:
-    position: 0
-- id: dcm_file_in
-  doc: DICOM image file to be registered in the index file
-  type: string
-  inputBinding:
-    position: 1
-- id: q
+- id: _quiet_quiet
   doc: --quiet       quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose     verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug       debug mode, print debug information
   type: boolean
   inputBinding:
@@ -37,16 +27,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --log-config
-- id: p
+- id: _print_list
   doc: --print       list contents of database index file
   type: boolean
   inputBinding:
     prefix: -p
-- id: n
+- id: _set_instance
   doc: --not-new     set instance reviewed status to 'not new'
   type: boolean
   inputBinding:
     prefix: -n
+- id: index_out
+  doc: storage area for the index file (directory)
+  type: string
+  inputBinding:
+    position: 0
+- id: dcm_file_in
+  doc: DICOM image file to be registered in the index file
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

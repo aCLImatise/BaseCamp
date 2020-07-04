@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: VcfToTsv.cwl
+id: ../../../../home/ubuntu/BiocondaCli/VcfToTsv.cwl
 inputs:
 - id: in
   doc: Input variant list in VCF format.

@@ -1,59 +1,59 @@
 class: CommandLineTool
-id: splice_site_summary.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/splice_site_summary.pl.cwl
 inputs:
-- id: a
+- id: reference_annotation_bed
   doc: Reference annotation in BED12 format
   type: boolean
   inputBinding:
     prefix: -a
-- id: s
+- id: splice_junctions_mapped
   doc: Splice junctions from mapped RNA-seq data in BED6 format
   type: boolean
   inputBinding:
     prefix: -s
-- id: f
+- id: reference_genome_fasta
   doc: Reference genome in Fasta format
   type: boolean
   inputBinding:
     prefix: -f
-- id: c
+- id: chromosome_sizes_files
   doc: Chromosome sizes files
   type: boolean
   inputBinding:
     prefix: -c
-- id: b
+- id: convert_resuting_bed
   doc: Convert resuting BED6 files to bigBed format
   type: boolean
   inputBinding:
     prefix: -b
-- id: n
+- id: filter_canonical_splice
   doc: Filter canonical splice junctions
   type: boolean
   inputBinding:
     prefix: -n
-- id: i
+- id: maximum_intron_length
   doc: Maximum intron length. Splice junctions covering introns larger than this value
     are not considered.
   type: boolean
   inputBinding:
     prefix: -i
-- id: r
+- id: minimum_read_coverage
   doc: Minimum read coverage for a splice junction. Only splice junctions that are
     supported by at least this number of reads are considered.
   type: boolean
   inputBinding:
     prefix: -r
-- id: w
+- id: expand_splice_junctions
   doc: Expand splice junctions by a window of this size on both sides
   type: boolean
   inputBinding:
     prefix: -w
-- id: o
+- id: relative_output_path
   doc: Relative output path
   type: boolean
   inputBinding:
     prefix: -o
-- id: p
+- id: prefix_output_files
   doc: Prefix all output files with this string
   type: boolean
   inputBinding:

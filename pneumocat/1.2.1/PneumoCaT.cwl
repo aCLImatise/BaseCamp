@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: PneumoCaT.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PneumoCaT.py.cwl
 inputs:
 - id: input_directory
   doc: please provide the path to the directory contains the fastq files [REQUIRED
@@ -7,13 +7,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --input_directory
-- id: fast_q_1
-  doc: ', -1 FASTQ_1 Fastq file pair 1 [REQUIRED - OPTION 2]'
+- id: fast_q_one
+  doc: Fastq file pair 1 [REQUIRED - OPTION 2]
   type: string
   inputBinding:
     prefix: --fastq_1
-- id: fast_q_2
-  doc: ', -2 FASTQ_2 Fastq file pair 2 [REQUIRED - OPTION 2]'
+- id: fast_q_two
+  doc: Fastq file pair 2 [REQUIRED - OPTION 2]
   type: string
   inputBinding:
     prefix: --fastq_2

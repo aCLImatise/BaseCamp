@@ -2,14 +2,19 @@ version 1.0
 
 task FastqToFa {
   input {
-    Boolean verboseVerbose
-    String? inInFastQ
-    String? outOutFa
+    String? verbose
+    String in_dot_fast_q
+    String out_dot_fa
   }
   command <<<
     fastqToFa \
-      ~{inInFastQ} \
-      ~{true="-verbose" false="" verboseVerbose} \
-      ~{outOutFa}
+      ~{in_dot_fast_q} \
+      ~{out_dot_fa} \
+      ~{if defined(verbose) then ("-verbose " +  '"' + verbose + '"') else ""}
   >>>
+  parameter_meta {
+    verbose: "- set warning level to get some stats output during processing"
+    in_dot_fast_q: ""
+    out_dot_fa: ""
+  }
 }

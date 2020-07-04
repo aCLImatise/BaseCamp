@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: eqtlbma_hm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/eqtlbma_hm.cwl
 inputs:
 - id: verbose
   doc: level (0/default=1/2/3)
@@ -94,7 +94,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --getbf
-- id: pi0
+- id: pi_zero
   doc: fixed value for pi0 (pi0 hence won't be updated in the EM)
   type: boolean
   inputBinding:

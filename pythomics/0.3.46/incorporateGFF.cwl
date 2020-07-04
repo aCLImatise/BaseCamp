@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: incorporateGFF.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/incorporateGFF.py.cwl
 inputs:
-- id: p
+- id: threads_to_run
   doc: Threads to run
   type: string
   inputBinding:
     prefix: -p
-- id: f
+- id: fasta_file_reference
   doc: '[FASTA], --fasta [FASTA] The fasta file to reference.'
   type: boolean
   inputBinding:
     prefix: -f
-- id: o
+- id: file_write_file
   doc: '[OUT], --out [OUT] The file to write resulting fasta file to.'
   type: boolean
   inputBinding:
@@ -87,6 +87,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --splice-partial
+- id: fast_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: out
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

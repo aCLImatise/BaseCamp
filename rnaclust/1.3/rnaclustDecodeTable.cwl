@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rnaclustDecodeTable.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnaclustDecodeTable.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

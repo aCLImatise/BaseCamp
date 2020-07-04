@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfflatten.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfflatten.cwl
 inputs:
 - id: file
   doc: ''

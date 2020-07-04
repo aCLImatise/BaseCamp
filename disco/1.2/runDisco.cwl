@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: runDisco.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/runDisco.sh.cwl
 inputs:
 - id: ins
   doc: single read filenames (comma separated fasta/fastq/fastq.gz files).
   type: boolean
   inputBinding:
     prefix: -inS
-- id: in1
+- id: in_one
   doc: forward paired read filename (single fasta/fastq/fastq.gz file).
   type: boolean
   inputBinding:
     prefix: -in1
-- id: in2
+- id: in_two
   doc: reverse paired read filename (single fasta/fastq/fastq.gz file).
   type: boolean
   inputBinding:
@@ -21,22 +21,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -inP
-- id: d
+- id: output_directory_pathdefault
   doc: 'output directory path.(DEFAULT: current directory)'
   type: boolean
   inputBinding:
     prefix: -d
-- id: o
+- id: output_filename_prefixdefault
   doc: 'output filename prefix.(DEFAULT: disco)'
   type: boolean
   inputBinding:
     prefix: -o
-- id: m
+- id: maximum_memory_used
   doc: 'maximum memory to be used (DEFAULT: 15 GB).'
   type: boolean
   inputBinding:
     prefix: -m
-- id: n
+- id: number_threads_default
   doc: 'number of threads (DEFAULT: 8).'
   type: boolean
   inputBinding:
@@ -51,21 +51,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -osg
-- id: p
+- id: assembly_parameter_file_st
   doc: assembly parameter file for 1st assembly iteration.
   type: boolean
   inputBinding:
     prefix: -p
-- id: p2
+- id: p_two
   doc: assembly parameter file for 2nd assembly iteration.
   type: boolean
   inputBinding:
     prefix: -p2
-- id: p3
+- id: p_three
   doc: assembly parameter file for 3rd assembly iteration.
   type: boolean
   inputBinding:
     prefix: -p3
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

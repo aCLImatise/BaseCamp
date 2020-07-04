@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: FuzzyDiff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FuzzyDiff.cwl
 inputs:
-- id: in1
+- id: in_one
   doc: '*         First input file'
   type: File
   inputBinding:
     prefix: -in1
-- id: in2
+- id: in_two
   doc: '*         Second input file'
   type: File
   inputBinding:

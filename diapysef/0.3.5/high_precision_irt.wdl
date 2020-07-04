@@ -1,15 +1,20 @@
 version 1.0
 
-task HighPrecisionIrt.pyQualityCutoff {
+task HighPrecisionIrt.py {
   input {
-    String? mqMqOutDir
-    String? outputOutputFile
-    String? qualityQualityCutOff
+    String mq_out_dir
+    String output_file
+    String quality_cut_off
   }
   command <<<
-    high_precision_irt.py quality_cutoff \
-      ~{mqMqOutDir} \
-      ~{outputOutputFile} \
-      ~{qualityQualityCutOff}
+    high_precision_irt.py \
+      ~{mq_out_dir} \
+      ~{output_file} \
+      ~{quality_cut_off}
   >>>
+  parameter_meta {
+    mq_out_dir: ""
+    output_file: ""
+    quality_cut_off: ""
+  }
 }

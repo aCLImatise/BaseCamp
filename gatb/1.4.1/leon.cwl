@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: leon.cwl
+id: ../../../../home/ubuntu/BiocondaCli/leon.cwl
 inputs:
 - id: file
   doc: '(1 arg) :    input file (e.g. FASTA/FASTQ for compress or .leon file for decompress)'
   type: boolean
   inputBinding:
     prefix: -file
-- id: c
+- id: _arg_compression
   doc: '(0 arg) :    compression'
   type: boolean
   inputBinding:
     prefix: -c
-- id: d
+- id: _arg_decompression
   doc: '(0 arg) :    decompression'
   type: boolean
   inputBinding:

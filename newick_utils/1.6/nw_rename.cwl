@@ -1,13 +1,21 @@
 class: CommandLineTool
-id: nw_rename.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nw_rename.cwl
 inputs:
-- id: l
-  doc: ": only replace leaf labels. This is useful if all labels are numeric, but\
-    \ inner labels represent bootstraps, and you don't want to accidentally modify\
-    \ bootstrap values."
+- id: hl
+  doc: ''
   type: boolean
   inputBinding:
-    prefix: -l
+    prefix: -hl
+- id: filename_vertical_line
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
+- id: map_filename
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

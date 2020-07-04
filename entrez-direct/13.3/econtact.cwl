@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: econtact.cwl
+id: ../../../../home/ubuntu/BiocondaCli/econtact.cwl
 inputs:
 - id: email
   doc: Contact person's address

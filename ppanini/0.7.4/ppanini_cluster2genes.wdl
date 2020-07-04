@@ -2,14 +2,19 @@ version 1.0
 
 task PpaniniCluster2genes {
   input {
-    String iI
-    String oO
-    Boolean jsonJson
+    String? i
+    String? o
+    Boolean? json
   }
   command <<<
     ppanini_cluster2genes \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{true="--json" false="" jsonJson}
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{true="--json" false="" json}
   >>>
+  parameter_meta {
+    i: ""
+    o: ""
+    json: ""
+  }
 }

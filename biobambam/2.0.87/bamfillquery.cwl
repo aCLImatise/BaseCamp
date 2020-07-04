@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamfillquery.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamfillquery.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

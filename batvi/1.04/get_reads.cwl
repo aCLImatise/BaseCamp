@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_reads.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_reads.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

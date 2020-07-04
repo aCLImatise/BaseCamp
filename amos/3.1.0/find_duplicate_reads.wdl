@@ -2,10 +2,13 @@ version 1.0
 
 task FindDuplicateReads {
   input {
-    String? bankBankName
+    String bank_name
   }
   command <<<
     find-duplicate-reads \
-      ~{bankBankName}
+      ~{bank_name}
   >>>
+  parameter_meta {
+    bank_name: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: autoscan.bak.cwl
+id: ../../../../home/ubuntu/BiocondaCli/autoscan.bak.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

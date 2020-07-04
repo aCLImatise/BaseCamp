@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: GeCo2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/GeCo2.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

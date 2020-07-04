@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sixframe.rb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sixframe.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

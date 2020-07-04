@@ -2,10 +2,13 @@ version 1.0
 
 task FermiCg2cofq {
   input {
-    String? inInCgfQ
+    String in_do_tcg_fq
   }
   command <<<
     fermi cg2cofq \
-      ~{inInCgfQ}
+      ~{in_do_tcg_fq}
   >>>
+  parameter_meta {
+    in_do_tcg_fq: ""
+  }
 }

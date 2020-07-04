@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: zerone.cwl
+id: ../../../../home/ubuntu/BiocondaCli/zerone.cwl
 inputs:
+- id: mock
+  doc: ': given file is a mock control'
+  type: boolean
+  inputBinding:
+    prefix: --mock
+- id: chip
+  doc: ': given file is a ChIP-seq experiment'
+  type: boolean
+  inputBinding:
+    prefix: --chip
 - id: window
   doc: ': window size in bp (default 300)'
   type: boolean
@@ -22,6 +32,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --confidence
+- id: input_file_n
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

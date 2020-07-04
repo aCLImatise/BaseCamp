@@ -2,18 +2,25 @@ version 1.0
 
 task PhyluceAlignFormatConcatenatedPhylipForPaml {
   input {
-    String phylipPhylipAlignment
-    String configConfig
-    String outputOutput
-    String verbosityVerbosity
-    String logLogPath
+    String? phylip_alignment
+    String? config
+    String? path_output_file
+    String? verbosity
+    String? log_path
   }
   command <<<
     phyluce_align_format_concatenated_phylip_for_paml \
-      ~{if defined(phylipPhylipAlignment) then ("--phylip-alignment " +  '"' + phylipPhylipAlignment + '"') else ""} \
-      ~{if defined(configConfig) then ("--config " +  '"' + configConfig + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(verbosityVerbosity) then ("--verbosity " +  '"' + verbosityVerbosity + '"') else ""} \
-      ~{if defined(logLogPath) then ("--log-path " +  '"' + logLogPath + '"') else ""}
+      ~{if defined(phylip_alignment) then ("--phylip-alignment " +  '"' + phylip_alignment + '"') else ""} \
+      ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
+      ~{if defined(path_output_file) then ("--output " +  '"' + path_output_file + '"') else ""} \
+      ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
+      ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""}
   >>>
+  parameter_meta {
+    phylip_alignment: "The PATH to a PHYLIP-formatted alignment"
+    config: "The PATH to a config file containing partition information (RAxML-formatted)"
+    path_output_file: "The PATH to an output file (will be PHYLIP formatted)"
+    verbosity: "The logging level to use."
+    log_path: "The path to a directory to hold logs."
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sketchy_collect.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sketchy_collect.cwl
 inputs:
 - id: directory
   doc: Path to directory to collect {prefix}.data.tsv

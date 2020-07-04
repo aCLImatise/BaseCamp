@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bbFilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bbFilter.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

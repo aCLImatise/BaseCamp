@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastq_quality_trimmer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq_quality_trimmer.cwl
 inputs:
 - id: v
   doc: ''

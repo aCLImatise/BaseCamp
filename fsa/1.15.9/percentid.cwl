@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: percentid.cwl
+id: ../../../../home/ubuntu/BiocondaCli/percentid.cwl
 inputs:
-- id: multi_fasta_or_stockholm_alignment
+- id: multi_fast_a_or_stockholm_alignment
   doc: ''
   type: string
   inputBinding:

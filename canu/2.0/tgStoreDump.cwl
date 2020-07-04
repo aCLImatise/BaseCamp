@@ -1,22 +1,12 @@
 class: CommandLineTool
-id: tgStoreDump.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tgStoreDump.cwl
 inputs:
-- id: v
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: opts
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: s
+- id: path_sequence_store
   doc: path to the sequence store
   type: string
   inputBinding:
     prefix: -S
-- id: t
+- id: path_tigstore_version
   doc: <v>       path to the tigStore, version, to use
   type: string
   inputBinding:
@@ -85,20 +75,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -consensus
-- id: layout
-  doc: 'metadata and read-to-tig position mapping.  -o is mandatory. creates two files:
-    name.layout.readToTig - read to tig position name.layout.tigInfo   - metadata
-    for each tig'
-  type: string
-  inputBinding:
-    prefix: -layout
-- id: layout
-  doc: '[opts]          the layout of reads in each tig and the consensus sequence
-    if available and enabled with option: -sequence         also include consensus
-    sequence and quality'
-  type: boolean
-  inputBinding:
-    prefix: -layout
 - id: multi_align
   doc: '[opts]      the full multialignment, output is to stdout -w width          width
     of the page -s spacing        spacing between reads on the same line'
@@ -111,12 +87,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -sizes
-- id: coverage
-  doc: "[opts]        read coverage plots, one plot per tig -o outputPrefix   write\
-    \ plots to 'outputPrefix.*' in the current directory"
-  type: boolean
-  inputBinding:
-    prefix: -coverage
 - id: depth
   doc: '[opts]           a histogram of depths -single           one histogram per
     tig'
@@ -135,6 +105,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -overlaphistogram
+- id: v
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: opts
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

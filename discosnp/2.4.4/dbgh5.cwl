@@ -1,36 +1,6 @@
 class: CommandLineTool
-id: dbgh5.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dbgh5.cwl
 inputs:
-- id: version
-  doc: ': 1.4.1'
-  type: string
-  inputBinding:
-    position: 0
-- id: git_sha1
-  doc: ': notset'
-  type: string
-  inputBinding:
-    position: 1
-- id: build_date
-  doc: ': 2020-03-24/10:17:25'
-  type: string
-  inputBinding:
-    position: 2
-- id: build_system
-  doc: ': Linux-4.4.0-96-generic'
-  type: string
-  inputBinding:
-    position: 3
-- id: build_compiler
-  doc: ': /opt/conda/conda-bld/discosnp_1585044920332/_build_env/bin/x86_64-conda_cos6-linux-gnu-cc  (7.3.0)'
-  type: string
-  inputBinding:
-    position: 4
-- id: build_km_er_size
-  doc: ': 32 64 96 128'
-  type: string
-  inputBinding:
-    position: 5
 - id: no_mph_f
   doc: "(0 arg) :    don't construct the MPHF"
   type: boolean
@@ -120,7 +90,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -storage-type
-- id: histo2d
+- id: histo_two_d
   doc: "(1 arg) :    compute the 2D histogram (with first file = genome, remaining\
     \ files = reads)  [default '0']"
   type: boolean
@@ -222,37 +192,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -check-dump
-- id: redo_b_calm
-  doc: '(0 arg) :    debug function, redo the bcalm algo'
-  type: boolean
-  inputBinding:
-    prefix: -redo-bcalm
-- id: skip_b_calm
-  doc: '(0 arg) :    same, but       skip     bcalm'
-  type: boolean
-  inputBinding:
-    prefix: -skip-bcalm
-- id: redo_b_glue
-  doc: '(0 arg) :    same, but       redo     bglue (needs debug_keep_glue_files=true
-    in source code)'
-  type: boolean
-  inputBinding:
-    prefix: -redo-bglue
-- id: skip_b_glue
-  doc: '(0 arg) :    same, but       skip     bglue'
-  type: boolean
-  inputBinding:
-    prefix: -skip-bglue
-- id: redo_links
-  doc: '(0 arg) :    same, but       redo     links'
-  type: boolean
-  inputBinding:
-    prefix: -redo-links
-- id: skip_links
-  doc: '(0 arg) :    same, but       skip     links'
-  type: boolean
-  inputBinding:
-    prefix: -skip-links
 - id: nb_glue_partitions
   doc: "(1 arg) :    number of glue partitions (automatically calculated by default)\
     \  [default '0']"

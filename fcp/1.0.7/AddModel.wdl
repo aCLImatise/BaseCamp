@@ -2,32 +2,40 @@ version 1.0
 
 task AddModel.py {
   input {
-    String? pythonPython
-    String? addAddModelPy
-    String? nN
-    String? sequenceSequenceFile
-    String? domainDomain
-    String? phylumPhylum
-    String? classClass
-    String? orderOrder
-    String? familyFamily
-    String? genusGenus
-    String? speciesSpecies
-    String? strainStrain
+    String n
+    String sequence_file
+    String domain
+    String phylum
+    String class
+    String order
+    String family
+    String genus
+    String species
+    String strain
   }
   command <<<
     AddModel.py \
-      ~{pythonPython} \
-      ~{addAddModelPy} \
-      ~{nN} \
-      ~{sequenceSequenceFile} \
-      ~{domainDomain} \
-      ~{phylumPhylum} \
-      ~{classClass} \
-      ~{orderOrder} \
-      ~{familyFamily} \
-      ~{genusGenus} \
-      ~{speciesSpecies} \
-      ~{strainStrain}
+      ~{n} \
+      ~{sequence_file} \
+      ~{domain} \
+      ~{phylum} \
+      ~{class} \
+      ~{order} \
+      ~{family} \
+      ~{genus} \
+      ~{species} \
+      ~{strain}
   >>>
+  parameter_meta {
+    n: ""
+    sequence_file: ""
+    domain: ""
+    phylum: ""
+    class: ""
+    order: ""
+    family: ""
+    genus: ""
+    species: ""
+    strain: ""
+  }
 }

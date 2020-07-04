@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: vcfannotategenotypes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfannotategenotypes.cwl
 inputs:
 - id: annotation_tag
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: vcf_file
+- id: var_1
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: vcf_file
+- id: var_2
   doc: ''
   type: string
   inputBinding:

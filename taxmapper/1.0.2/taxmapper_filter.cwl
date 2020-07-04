@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: taxmapper_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/taxmapper_filter.cwl
 inputs:
 - id: tax
   doc: Taxonomy mapping file (taxa.tsv if not specified otherwise).

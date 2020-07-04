@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bogus.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bogus.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

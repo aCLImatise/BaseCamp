@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: TransGeneScan.cwl
+id: ../../../../home/ubuntu/BiocondaCli/TransGeneScan.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fasta_multigrep.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fasta_multigrep.pl.cwl
 inputs:
 - id: list
   doc: Colon (:) separated list of Fasta IDs to extract (mandatory)

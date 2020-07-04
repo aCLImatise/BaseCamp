@@ -2,34 +2,49 @@ version 1.0
 
 task OvStoreConfig {
   input {
-    String sS
-    File lL
-    String mM
-    String createCreate
-    String describeDescribe
-    Boolean numNumBuckets
-    Boolean numNumSlices
-    Boolean sortSortMemory
-    String listListInputs
-    String? ovOvOverlap
-    String? ovOvOverlapSortSize
-    String? scScChildMax
-    String? scScOpenMax
+    String? path_seqstore_assembly
+    File? list_ovb_files
+    String? use_gigabytes_memory
+    String? create
+    String? describe
+    Boolean? num_buckets
+    Boolean? num_slices
+    Boolean? sort_memory
+    String? list_inputs
+    String ov_overlap
+    String ov_overlap_sort_size
+    String sc_child_max
+    String sc_open_max
   }
   command <<<
     ovStoreConfig \
-      ~{ovOvOverlap} \
-      ~{if defined(sS) then ("-S " +  '"' + sS + '"') else ""} \
-      ~{if defined(lL) then ("-L " +  '"' + lL + '"') else ""} \
-      ~{if defined(mM) then ("-M " +  '"' + mM + '"') else ""} \
-      ~{if defined(createCreate) then ("-create " +  '"' + createCreate + '"') else ""} \
-      ~{if defined(describeDescribe) then ("-describe " +  '"' + describeDescribe + '"') else ""} \
-      ~{true="-numbuckets" false="" numNumBuckets} \
-      ~{true="-numslices" false="" numNumSlices} \
-      ~{true="-sortmemory" false="" sortSortMemory} \
-      ~{if defined(listListInputs) then ("-listinputs " +  '"' + listListInputs + '"') else ""} \
-      ~{ovOvOverlapSortSize} \
-      ~{scScChildMax} \
-      ~{scScOpenMax}
+      ~{ov_overlap} \
+      ~{ov_overlap_sort_size} \
+      ~{sc_child_max} \
+      ~{sc_open_max} \
+      ~{if defined(path_seqstore_assembly) then ("-S " +  '"' + path_seqstore_assembly + '"') else ""} \
+      ~{if defined(list_ovb_files) then ("-L " +  '"' + list_ovb_files + '"') else ""} \
+      ~{if defined(use_gigabytes_memory) then ("-M " +  '"' + use_gigabytes_memory + '"') else ""} \
+      ~{if defined(create) then ("-create " +  '"' + create + '"') else ""} \
+      ~{if defined(describe) then ("-describe " +  '"' + describe + '"') else ""} \
+      ~{true="-numbuckets" false="" num_buckets} \
+      ~{true="-numslices" false="" num_slices} \
+      ~{true="-sortmemory" false="" sort_memory} \
+      ~{if defined(list_inputs) then ("-listinputs " +  '"' + list_inputs + '"') else ""}
   >>>
+  parameter_meta {
+    path_seqstore_assembly: "path to seqStore for this assembly"
+    list_ovb_files: "a list of ovb files in 'fileList'"
+    use_gigabytes_memory: "use up to 'g' gigabytes memory for sorting overlaps default 4; g-0.25 gb is available for sorting overlaps"
+    create: "write overlap store configuration to file 'config'"
+    describe: "write a readable description of the config in 'config' to the screen"
+    num_buckets: "write the number of buckets to the screen"
+    num_slices: "write the number of slices to the screen"
+    sort_memory: "write the memory needed (in GB) for a sort job to the screen"
+    list_inputs: "write a list of the input ovb files needed for bucketizer job 'n'  -listslices n         write a list of the input slice files needed for sorter job 'n'"
+    ov_overlap: "2 words of 64 bits each."
+    ov_overlap_sort_size: "192 bits"
+    sc_child_max: "63942 processes"
+    sc_open_max: "1024 files"
+  }
 }

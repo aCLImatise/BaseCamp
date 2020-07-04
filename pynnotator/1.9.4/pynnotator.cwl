@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pynnotator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pynnotator.cwl
 inputs:
 - id: i
   doc: ''

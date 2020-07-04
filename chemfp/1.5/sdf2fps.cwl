@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: sdf2fps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sdf2fps.cwl
 inputs:
-- id: filenames
-  doc: input SD files (default is stdin)
-  type: File
-  inputBinding:
-    position: 0
 - id: id_tag
   doc: get the record id from TAG instead of the first line of the record
   type: string
@@ -83,7 +78,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --hex-msb
-- id: base64
+- id: base_six_four
   doc: 'Base-64 encoded. Bit #0 is first bit (1<<0) of first byte. Example: AfI= encodes
     value \x01\xf2 = 498'
   type: boolean
@@ -110,6 +105,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --pubchem
+- id: filenames
+  doc: input SD files (default is stdin)
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

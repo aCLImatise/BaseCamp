@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: peakCenters.cwl
-inputs: []
+id: ../../../../home/ubuntu/BiocondaCli/peakCenters.cwl
+inputs:
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -OPTIONS
+- id: more_options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -MORE_OPTIONS
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: scrm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scrm.cwl
 inputs:
-- id: r
+- id: l_set_recombination
   doc: <L>       Set recombination rate to R and locus length to L.
   type: string
   inputBinding:
@@ -11,12 +11,12 @@ inputs:
   type: string
   inputBinding:
     prefix: -sr
-- id: l
+- id: set_window_length
   doc: Set the approximation window length to l.
   type: string
   inputBinding:
     prefix: -l
-- id: i
+- id: use_island_model
   doc: <s1> ... <sn> [<M>]   Use an island model with npop populations, where s1 to
     sn individuals are sampled each population. Optionally assume a symmetric migration
     rate of M.
@@ -29,22 +29,22 @@ inputs:
   type: string
   inputBinding:
     prefix: -eI
-- id: m
+- id: assume_symmetric_rate
   doc: Assume a symmetric migration rate of M/(npop-1).
   type: string
   inputBinding:
     prefix: -M
-- id: em
+- id: m_change_rate
   doc: <M>      Change the symmetric migration rate to M/(npop-1) at time t.
   type: string
   inputBinding:
     prefix: -eM
-- id: m
+- id: j_m_set
   doc: <j> <M>   Set the migration rate from population j to population i to M
   type: string
   inputBinding:
     prefix: -m
-- id: em
+- id: i_j_m
   doc: <i> <j> <M>   Set the migration rate from population j to population i to M
     at time t.
   type: string
@@ -79,59 +79,59 @@ inputs:
   type: string
   inputBinding:
     prefix: -ej
-- id: n
+- id: n_set_size
   doc: <n>       Set the present day size of population i to n*N0.
   type: string
   inputBinding:
     prefix: -n
-- id: en
+- id: i_change_size
   doc: <i> <n>  Change the size of population i to n*N0 at time t.
   type: string
   inputBinding:
     prefix: -en
-- id: en
+- id: set_day_size
   doc: <n>      Set the present day size of all populations to n*N0.
   type: string
   inputBinding:
     prefix: -eN
-- id: g
+- id: set_exponential_growth
   doc: <a>       Set the exponential growth rate of population i to a.
   type: string
   inputBinding:
     prefix: -g
-- id: eg
+- id: i_exponential_rate
   doc: <i> <a>  Change the exponential growth rate of population i to a at time t.
   type: string
   inputBinding:
     prefix: -eg
-- id: g
+- id: set_exponential_rate
   doc: Set the exponential growth rate of all populations to a.
   type: string
   inputBinding:
     prefix: -G
-- id: eg
+- id: change_exponential_growth
   doc: <a>      Change the exponential growth rate of all populations to a at time
     t.
   type: string
   inputBinding:
     prefix: -eG
-- id: t
+- id: set_mutation_rate
   doc: Set the mutation rate to theta = 4N0*mu, where mu is the  neutral mutation
     rate per locus.
   type: string
   inputBinding:
     prefix: -t
-- id: t
+- id: print_genealogies_newick
   doc: Print the simulated local genealogies in Newick format.
   type: boolean
   inputBinding:
     prefix: -T
-- id: o
+- id: print_genealogies_oriented
   doc: Print the simulated local genealogies in Oriented Forest format.
   type: boolean
   inputBinding:
     prefix: -O
-- id: l
+- id: print_tmrca_length
   doc: Print the TMRCA and the local tree length for each segment.
   type: boolean
   inputBinding:
@@ -152,21 +152,6 @@ inputs:
   type: File
   inputBinding:
     prefix: -init
-- id: seed
-  doc: '[<SEED2> <SEED3>]   The random seed to use. Takes up to three integer numbers.'
-  type: string
-  inputBinding:
-    prefix: -seed
-- id: p
-  doc: Specify the number of significant digits used in the output. Defaults to 6.
-  type: string
-  inputBinding:
-    prefix: -p
-- id: print_model
-  doc: ',    '
-  type: boolean
-  inputBinding:
-    prefix: -print-model
 - id: print_model
   doc: Prints information about the demographic model.
   type: boolean

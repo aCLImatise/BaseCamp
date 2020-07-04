@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bismark_methylation_extractor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bismark_methylation_extractor.cwl
 inputs:
 - id: ot
   doc: original top strand

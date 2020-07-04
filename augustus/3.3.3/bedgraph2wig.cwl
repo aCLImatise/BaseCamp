@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: bedgraph2wig.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedgraph2wig.pl.cwl
 inputs:
-- id: output
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: is
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: stdout
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: bed_graph_file
   doc: ': The path to the bedgraphffile'
   type: boolean
@@ -32,6 +17,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --span
+- id: output
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: is
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: stdout
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sccaller.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sccaller.cwl
 inputs:
 - id: d
   doc: ''

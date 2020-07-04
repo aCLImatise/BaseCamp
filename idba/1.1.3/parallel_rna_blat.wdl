@@ -2,18 +2,25 @@ version 1.0
 
 task ParallelRnaBlat {
   input {
-    String numNumThreads
-    String similarSimilar
-    String? parallelParallelBlat
-    String? reReFfa
-    String? queryQueryFa
+    String? num_threads
+    String? similar
+    String parallel_blat
+    String ref_dot_fa
+    String query_dot_fa
   }
   command <<<
     parallel_rna_blat \
-      ~{parallelParallelBlat} \
-      ~{if defined(numNumThreads) then ("--num_threads " +  '"' + numNumThreads + '"') else ""} \
-      ~{if defined(similarSimilar) then ("--similar " +  '"' + similarSimilar + '"') else ""} \
-      ~{reReFfa} \
-      ~{queryQueryFa}
+      ~{parallel_blat} \
+      ~{ref_dot_fa} \
+      ~{query_dot_fa} \
+      ~{if defined(num_threads) then ("--num_threads " +  '"' + num_threads + '"') else ""} \
+      ~{if defined(similar) then ("--similar " +  '"' + similar + '"') else ""}
   >>>
+  parameter_meta {
+    num_threads: "(=8)             number of threads"
+    similar: "(=0.95)              similarity"
+    parallel_blat: ""
+    ref_dot_fa: ""
+    query_dot_fa: ""
+  }
 }

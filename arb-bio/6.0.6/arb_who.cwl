@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: arb_who.cwl
+id: ../../../../home/ubuntu/BiocondaCli/arb_who.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

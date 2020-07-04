@@ -1,33 +1,33 @@
 class: CommandLineTool
-id: preprocess.cwl
+id: ../../../../home/ubuntu/BiocondaCli/preprocess.cwl
 inputs:
 - id: input_vcf
   doc: VCF files to preprocess (use file:sample for a specific sample column).
   type: string
   inputBinding:
     prefix: --input-vcf
-- id: o
+- id: arg_output_variant
   doc: '[ --output-vcf ] arg          Output variant comparison results to VCF.'
   type: boolean
   inputBinding:
     prefix: -o
-- id: r
+- id: arg_reference_fasta
   doc: '[ --reference ] arg           The reference fasta file.'
   type: boolean
   inputBinding:
     prefix: -r
-- id: l
+- id: arg_location_start
   doc: '[ --location ] arg            The location to start at.'
   type: boolean
   inputBinding:
     prefix: -l
-- id: r
+- id: arg_use_regions
   doc: '[ --regions ] arg             Use a bed file for getting a subset of  regions
     (traversal via tabix).'
   type: boolean
   inputBinding:
     prefix: -R
-- id: t
+- id: targets_streaming_file
   doc: '[ --targets ] arg             Use a bed file for getting a subset of  targets
     (streaming the whole file, ignoring  things outside the bed regions).'
   type: boolean
@@ -53,13 +53,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --limit
-- id: v
+- id: arg_apply_normalisations
   doc: '[ --preprocess-variants ] arg Apply variant normalisations, trimming,  realignment
     for complex variants (off by  default).'
   type: boolean
   inputBinding:
     prefix: -V
-- id: l
+- id: arg_leftshift_indel
   doc: '[ --leftshift ] arg           Left-shift indel alleles (off by default).'
   type: boolean
   inputBinding:

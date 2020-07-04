@@ -2,16 +2,25 @@ version 1.0
 
 task NfCoreDownload {
   input {
-    String releaseRelease
-    Boolean singularitySingularity
-    String outdirOutdir
-    Boolean compressCompress
+    String? release
+    Boolean? singularity
+    String? outdir
+    Boolean? compress
+    String pipeline_name
   }
   command <<<
     nf-core download \
-      ~{if defined(releaseRelease) then ("--release " +  '"' + releaseRelease + '"') else ""} \
-      ~{true="--singularity" false="" singularitySingularity} \
-      ~{if defined(outdirOutdir) then ("--outdir " +  '"' + outdirOutdir + '"') else ""} \
-      ~{true="--compress" false="" compressCompress}
+      ~{pipeline_name} \
+      ~{if defined(release) then ("--release " +  '"' + release + '"') else ""} \
+      ~{true="--singularity" false="" singularity} \
+      ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
+      ~{true="--compress" false="" compress}
   >>>
+  parameter_meta {
+    release: "Pipeline release"
+    singularity: "Download singularity containers"
+    outdir: "Output directory"
+    compress: "[tar.gz|tar.bz2|zip|none] Compression type"
+    pipeline_name: ""
+  }
 }

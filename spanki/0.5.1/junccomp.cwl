@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: junccomp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/junccomp.cwl
 inputs:
-- id: a
+- id: table_default_none
   doc: 'table A (default: None)'
   type: string
   inputBinding:
     prefix: -a
-- id: b
+- id: table_b_default
   doc: 'table B (default: None)'
   type: string
   inputBinding:
     prefix: -b
-- id: o
+- id: output_directory_default
   doc: "Output directory, default='junccomp_out' (default: junccomp_out)"
   type: string
   inputBinding:

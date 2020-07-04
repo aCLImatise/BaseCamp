@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: DASrealign.cwl
-inputs: []
+id: ../../../../home/ubuntu/BiocondaCli/DASrealign.cwl
+inputs:
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,6 +1,43 @@
 class: CommandLineTool
-id: novoindex.cwl
+id: ../../../../home/ubuntu/BiocondaCli/novoindex.cwl
 inputs:
+- id: kmer_length_used
+  doc: 99        is the k-mer length to be used for the index. Typically 14.
+  type: boolean
+  inputBinding:
+    prefix: -k
+- id: step_size_index
+  doc: 9         is the step size for the index. Typical values are from 1 to 3.
+  type: boolean
+  inputBinding:
+    prefix: -s
+- id: sets_number_use
+  doc: 9         sets number of threads to use for indexing.
+  type: boolean
+  inputBinding:
+    prefix: -t
+- id: sets_case_masking
+  doc: sets lower case masking on. Lower case sequence will not be indexed.
+  type: boolean
+  inputBinding:
+    prefix: -m
+- id: sets_bisulphite_indexing
+  doc: sets bisulphite indexing and alignment mode for methylation experiments.
+  type: boolean
+  inputBinding:
+    prefix: -b
+- id: add_m_tag
+  doc: add an M5 tag to sequence headers.
+  type: boolean
+  inputBinding:
+    prefix: '-5'
+- id: name_sets_name
+  doc: 'name      sets the an internal name for the reference sequence index. This
+    is used in report headers and as the AS: field in SAM SQ record. Defaults to the
+    indexfile name.'
+  type: boolean
+  inputBinding:
+    prefix: -n
 - id: novo_index
   doc: -k 99 -s 9 -m indexfile sequencefiles....
   type: string
@@ -16,13 +53,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: n
-  doc: 'name      sets the an internal name for the reference sequence index. This
-    is used in report headers and as the AS: field in SAM SQ record. Defaults to the
-    indexfile name.'
-  type: boolean
-  inputBinding:
-    prefix: -n
 outputs: []
 cwlVersion: v1.1
 baseCommand:

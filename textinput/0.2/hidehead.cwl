@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: hidehead.cwl
-inputs: []
+id: ../../../../home/ubuntu/BiocondaCli/hidehead.cwl
+inputs:
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

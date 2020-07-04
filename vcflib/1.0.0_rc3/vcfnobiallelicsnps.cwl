@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfnobiallelicsnps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfnobiallelicsnps.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

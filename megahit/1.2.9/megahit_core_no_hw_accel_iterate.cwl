@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: megahit_core_no_hw_accel_iterate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/megahit_core_no_hw_accel_iterate.cwl
 inputs:
-- id: iterate
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: opt
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: contig_file
   doc: (*) contigs file, fasta/fastq format, output by assembler
   type: string
@@ -47,6 +37,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --output_prefix
+- id: iterate
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: opt
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

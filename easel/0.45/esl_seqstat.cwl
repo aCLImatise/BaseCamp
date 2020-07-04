@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: esl_seqstat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/esl_seqstat.cwl
 inputs:
-- id: a
+- id: report_persequence_info
   doc: ': report per-sequence info line, not just a summary'
   type: boolean
   inputBinding:
     prefix: -a
-- id: c
+- id: count_report_composition
   doc: ': count and report residue composition'
   type: boolean
   inputBinding:
@@ -36,6 +36,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --comptbl
+- id: seq_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

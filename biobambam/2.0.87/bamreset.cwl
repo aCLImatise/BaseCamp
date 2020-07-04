@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamreset.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamreset.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

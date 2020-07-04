@@ -2,16 +2,19 @@ version 1.0
 
 task GetFRCvalues {
   input {
-    Boolean columnColumn
-    Boolean columnColumn
-    Boolean columnColumn
-    String? assemblerAssembler
+    String? g
+    String? b
+    String assembler
   }
   command <<<
     getFRCvalues \
-      ~{assemblerAssembler} \
-      ~{true="- column" false="" columnColumn} \
-      ~{true="- column" false="" columnColumn} \
-      ~{true="- column" false="" columnColumn}
+      ~{assembler} \
+      ~{if defined(g) then ("-g " +  '"' + g + '"') else ""} \
+      ~{if defined(b) then ("-b " +  '"' + b + '"') else ""}
   >>>
+  parameter_meta {
+    g: ""
+    b: ""
+    assembler: ""
+  }
 }

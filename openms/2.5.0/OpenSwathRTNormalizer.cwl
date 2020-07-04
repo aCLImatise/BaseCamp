@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: OpenSwathRTNormalizer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/OpenSwathRTNormalizer.cwl
 inputs:
 - id: in
   doc: "*            Input files separated by blank (valid formats: 'mzML')"
@@ -36,7 +36,7 @@ inputs:
 - id: estimate_best_peptides
   doc: Whether the algorithms should try to choose the best peptides based on their
     peak shape for normalization. Use this option you do not expect all your peptides
-    to be detected in a sampl e and too many 'bad' peptides enter the outlier removal
+    to be detected in a sample and too many 'bad' peptides enter the outlier removal
     step (e.g. due to them being endogenous peptides or using a less curated list
     of peptides).
   type: boolean
@@ -62,28 +62,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: rt_normalization
-  doc: Parameters for the RTNormalization. RT normalization and outlier detection
-    can be done iteratively (by default) which removes one outlier per iteration or
-    using the RANSAC algorithm.
-  type: boolean
-  inputBinding:
-    prefix: '- RTNormalization'
-- id: algorithm
-  doc: Algorithm parameters section
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
-- id: peptide_estimation
-  doc: Parameters for the peptide estimation (use -estimateBestPeptides to enable).
-  type: boolean
-  inputBinding:
-    prefix: '- peptideEstimation'
-- id: http
-  doc: ://www.openms.de/documentation/TOPP_OpenSwathRTNormalizer.html
-  type: boolean
-  inputBinding:
-    prefix: '- http'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

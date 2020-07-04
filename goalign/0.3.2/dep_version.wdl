@@ -2,12 +2,16 @@ version 1.0
 
 task DepVersion {
   input {
-    String? platformPlatform
-    String? featuresFeatures
+    String platform
+    String features
   }
   command <<<
     dep version \
-      ~{platformPlatform} \
-      ~{featuresFeatures}
+      ~{platform} \
+      ~{features}
   >>>
+  parameter_meta {
+    platform: ": linux/amd64"
+    features: ": ImportDuringSolve=false"
+  }
 }

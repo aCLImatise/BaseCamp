@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fq2fa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fq2fa.cwl
 inputs:
 - id: paired
   doc: if the reads are paired-end in one file
@@ -16,6 +16,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --filter
+- id: tmp_dot_fq
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: tmp_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

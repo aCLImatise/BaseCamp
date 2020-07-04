@@ -2,16 +2,19 @@ version 1.0
 
 task Unexpand {
   input {
-    Boolean allAll
-    Boolean firstFirstOnly
-    String tabsTabs
-    String tabsTabs
+    Boolean? all
+    Boolean? first_only
+    String? option
   }
   command <<<
     unexpand \
-      ~{true="--all" false="" allAll} \
-      ~{true="--first-only" false="" firstFirstOnly} \
-      ~{if defined(tabsTabs) then ("--tabs " +  '"' + tabsTabs + '"') else ""} \
-      ~{if defined(tabsTabs) then ("--tabs " +  '"' + tabsTabs + '"') else ""}
+      ~{option} \
+      ~{true="--all" false="" all} \
+      ~{true="--first-only" false="" first_only}
   >>>
+  parameter_meta {
+    all: "convert all blanks, instead of just initial blanks"
+    first_only: "convert only leading sequences of blanks (overrides -a)"
+    option: ""
+  }
 }

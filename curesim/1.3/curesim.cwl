@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: curesim.cwl
+id: ../../../../home/ubuntu/BiocondaCli/curesim.cwl
 inputs:
-- id: java
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: jar
   doc: ''
   type: string
@@ -16,6 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -f
+- id: java
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

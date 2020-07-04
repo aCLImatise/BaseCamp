@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: parcat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/parcat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

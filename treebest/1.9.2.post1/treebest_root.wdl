@@ -2,10 +2,13 @@ version 1.0
 
 task TreebestRoot {
   input {
-    String? treeTree
+    String tree
   }
   command <<<
     treebest root \
-      ~{treeTree}
+      ~{tree}
   >>>
+  parameter_meta {
+    tree: ""
+  }
 }

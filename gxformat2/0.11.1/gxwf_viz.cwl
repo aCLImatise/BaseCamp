@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gxwf_viz.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gxwf_viz.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

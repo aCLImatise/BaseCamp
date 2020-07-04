@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: seqkit_restart.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqkit_restart.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: new_start
   doc: new start position (1-base, supporting negative value counting from the end)
     (default 1)
@@ -61,6 +56,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

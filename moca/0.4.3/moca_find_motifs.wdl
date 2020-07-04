@@ -2,26 +2,37 @@ version 1.0
 
 task MocaFindMotifs {
   input {
-    String bedBedFile
-    String ocOc
-    String configurationConfiguration
-    Int slopSlopLength
-    Int flankFlankMotif
-    Int nNMotif
-    Int coresCores
-    String genomeGenomeBuild
-    Boolean showShowProgress
+    String? bed_file
+    String? oc
+    String? configuration
+    Int? slop_length
+    Int? flank_motif
+    Int? n_motif
+    Int? cores
+    String? genome_build
+    Boolean? show_progress
   }
   command <<<
     moca find_motifs \
-      ~{if defined(bedBedFile) then ("--bedfile " +  '"' + bedBedFile + '"') else ""} \
-      ~{if defined(ocOc) then ("--oc " +  '"' + ocOc + '"') else ""} \
-      ~{if defined(configurationConfiguration) then ("--configuration " +  '"' + configurationConfiguration + '"') else ""} \
-      ~{if defined(slopSlopLength) then ("--slop-length " +  '"' + slopSlopLength + '"') else ""} \
-      ~{if defined(flankFlankMotif) then ("--flank-motif " +  '"' + flankFlankMotif + '"') else ""} \
-      ~{if defined(nNMotif) then ("--n-motif " +  '"' + nNMotif + '"') else ""} \
-      ~{if defined(coresCores) then ("--cores " +  '"' + coresCores + '"') else ""} \
-      ~{if defined(genomeGenomeBuild) then ("--genome-build " +  '"' + genomeGenomeBuild + '"') else ""} \
-      ~{true="--show-progress" false="" showShowProgress}
+      ~{if defined(bed_file) then ("--bedfile " +  '"' + bed_file + '"') else ""} \
+      ~{if defined(oc) then ("--oc " +  '"' + oc + '"') else ""} \
+      ~{if defined(configuration) then ("--configuration " +  '"' + configuration + '"') else ""} \
+      ~{if defined(slop_length) then ("--slop-length " +  '"' + slop_length + '"') else ""} \
+      ~{if defined(flank_motif) then ("--flank-motif " +  '"' + flank_motif + '"') else ""} \
+      ~{if defined(n_motif) then ("--n-motif " +  '"' + n_motif + '"') else ""} \
+      ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""} \
+      ~{if defined(genome_build) then ("--genome-build " +  '"' + genome_build + '"') else ""} \
+      ~{true="--show-progress" false="" show_progress}
   >>>
+  parameter_meta {
+    bed_file: "Bed file input  [required]"
+    oc: "Output Directory  [required]"
+    configuration: "Configuration file  [required]"
+    slop_length: "Flanking sequence length"
+    flank_motif: "Length of sequence flanking motif"
+    n_motif: "Number of motifs"
+    cores: "Number of parallel MEME jobs  [required]"
+    genome_build: "Key denoting genome build to use in configuration file  [required]"
+    show_progress: "Print progress"
+  }
 }

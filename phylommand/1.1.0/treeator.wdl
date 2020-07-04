@@ -2,10 +2,19 @@ version 1.0
 
 task Treeator {
   input {
-    String outputOutput
+    String? default_w
+    String? arguments
+    String data_file_dot_txt
   }
   command <<<
     treeator \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""}
+      ~{arguments} \
+      ~{data_file_dot_txt} \
+      ~{if defined(default_w) then ("--output " +  '"' + default_w + '"') else ""}
   >>>
+  parameter_meta {
+    default_w: "(default w)."
+    arguments: ""
+    data_file_dot_txt: ""
+  }
 }

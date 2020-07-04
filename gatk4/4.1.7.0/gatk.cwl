@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gatk.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gatk.cwl
 inputs:
 - id: g_atk_config_file
   doc: PATH/TO/GATK/PROPERTIES/FILE

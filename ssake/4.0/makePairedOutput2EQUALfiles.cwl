@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: makePairedOutput2EQUALfiles.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/makePairedOutput2EQUALfiles.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

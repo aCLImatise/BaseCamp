@@ -2,10 +2,13 @@ version 1.0
 
 task Obsym {
   input {
-    String? inputInputFile
+    String input_file
   }
   command <<<
     obsym \
-      ~{inputInputFile}
+      ~{input_file}
   >>>
+  parameter_meta {
+    input_file: ""
+  }
 }

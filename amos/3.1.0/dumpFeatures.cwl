@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: dumpFeatures.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dumpFeatures.cwl
 inputs:
-- id: i
+- id: report_contig_iids
   doc: report contig iids instead of eids
   type: boolean
   inputBinding:
     prefix: -i
-- id: u
+- id: report_ungapped_coordinates
   doc: report ungapped coordinates instread of gapped coordinates
   type: boolean
   inputBinding:
     prefix: -u
-- id: g
+- id: report_features_gff
   doc: report features in .gff format
   type: boolean
   inputBinding:

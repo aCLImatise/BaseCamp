@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dimspy_align_samples.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dimspy_align_samples.cwl
 inputs:
 - id: input
   doc: HDF5 file (Peaklist objects) from step 'process-scans / replicate-filter' or

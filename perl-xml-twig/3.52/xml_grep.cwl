@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: xml_grep.cwl
+id: ../../../../home/ubuntu/BiocondaCli/xml_grep.cwl
 inputs:
 - id: man
   doc: full documentation

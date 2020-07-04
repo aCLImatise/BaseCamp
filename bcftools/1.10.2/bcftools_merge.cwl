@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bcftools_merge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcftools_merge.cwl
 inputs:
 - id: force_samples
   doc: resolve duplicate sample names
@@ -16,6 +16,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --use-header
+- id: missing_to_ref
+  doc: assume genotypes at missing sites are 0/0
+  type: boolean
+  inputBinding:
+    prefix: --missing-to-ref
 - id: apply_filters
   doc: require at least one of the listed FILTER strings (e.g. "PASS,.")
   type: string
@@ -61,9 +66,9 @@ inputs:
   inputBinding:
     prefix: --output
 - id: output_type
-  doc: <b|u|z|v>        'b' compressed BCF; 'u' uncompressed BCF; 'z' compressed VCF;
-    'v' uncompressed VCF [v]
-  type: boolean
+  doc: "'b' compressed BCF; 'u' uncompressed BCF; 'z' compressed VCF; 'v' uncompressed\
+    \ VCF [v]"
+  type: string
   inputBinding:
     prefix: --output-type
 - id: regions
@@ -81,6 +86,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: a_dot_vcf_do_tgz
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: bdotvcfdotgz
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gdtools_NOT_EVIDENCE.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gdtools_NOT_EVIDENCE.cwl
 inputs:
 - id: output
   doc: output GD file (DEFAULT=output.gd)

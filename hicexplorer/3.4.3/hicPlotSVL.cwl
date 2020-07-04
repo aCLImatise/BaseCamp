@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hicPlotSVL.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hicPlotSVL.cwl
 inputs:
 - id: matrices
   doc: The matrix (or multiple matrices) to use for the comparison

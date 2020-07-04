@@ -1,21 +1,26 @@
 class: CommandLineTool
-id: randfold_file name.cwl
+id: ../../../../home/ubuntu/BiocondaCli/randfold_file name.cwl
 inputs:
-- id: method
+- id: rand_fold
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: filename
+- id: method
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: file_name
   doc: ''
   type: File
   inputBinding:
-    position: 1
+    position: 2
 - id: number_of_randomization_s
   doc: ''
   type: string
   inputBinding:
-    position: 2
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

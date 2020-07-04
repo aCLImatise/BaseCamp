@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rgt_THOR.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rgt_THOR.cwl
 inputs:
 - id: regions
   doc: Define regions (BED format) to restrict the analysis, that is, where to train
@@ -79,6 +79,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --rmdup
+- id: config
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

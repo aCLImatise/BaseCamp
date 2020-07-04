@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: PIPmiR.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PIPmiR.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

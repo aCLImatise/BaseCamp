@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ebi_metagenomics_download_run_data.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ebi_metagenomics_download_run_data.cwl
 inputs:
 - id: run
   doc: Id of a run in EBI metagenomics

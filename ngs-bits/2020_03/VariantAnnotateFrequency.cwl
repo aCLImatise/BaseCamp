@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: VariantAnnotateFrequency.cwl
+id: ../../../../home/ubuntu/BiocondaCli/VariantAnnotateFrequency.cwl
 inputs:
 - id: in
   doc: Input variant list to annotate in VCF or GSvar format.
@@ -21,7 +21,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -depth
-- id: mapq0
+- id: mapq_zero
   doc: "Annotate an additional column containing the percentage of mapq 0 reads. Default\
     \ value: 'false'"
   type: boolean

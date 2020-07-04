@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: pyrsa_sign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyrsa_sign.cwl
 inputs:
-- id: private_key
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: hash_method
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: input
   doc: Name of the file to sign. Reads from stdin if not specified.
   type: string
@@ -27,6 +17,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --keyform
+- id: private_key
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: hash_method
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

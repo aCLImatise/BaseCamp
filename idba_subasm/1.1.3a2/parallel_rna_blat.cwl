@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: parallel_rna_blat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/parallel_rna_blat.cwl
 inputs:
-- id: parallel_blat
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: re_ffa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: query_fa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: num_threads
   doc: (=8)             number of threads
   type: string
@@ -26,6 +11,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --similar
+- id: parallel_blat
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: ref_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: query_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

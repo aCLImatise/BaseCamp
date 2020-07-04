@@ -1,33 +1,28 @@
 class: CommandLineTool
-id: dcmiod_tests.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmiod_tests.cwl
 inputs:
-- id: tests_to_run
-  doc: 'names of tests to run (default: all)'
-  type: string
-  inputBinding:
-    position: 0
-- id: l
+- id: _list_list
   doc: --list        list available tests and exit
   type: boolean
   inputBinding:
     prefix: -l
-- id: x
+- id: _exhaustive_also
   doc: --exhaustive  also run extensive and slow tests --arguments   print expanded
     command line arguments
   type: boolean
   inputBinding:
     prefix: -x
-- id: q
+- id: _quiet_quiet
   doc: --quiet       quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose     verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug       debug mode, print debug information
   type: boolean
   inputBinding:
@@ -43,6 +38,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --log-config
+- id: tests_to_run
+  doc: 'names of tests to run (default: all)'
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

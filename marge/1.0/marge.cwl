@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: marge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/marge.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

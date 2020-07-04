@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FlashLFQ.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FlashLFQ.cwl
 inputs:
 - id: idt
   doc: Required. string; identification file path

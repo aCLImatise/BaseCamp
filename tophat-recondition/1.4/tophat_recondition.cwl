@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: tophat_recondition.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tophat_recondition.cwl
 inputs:
-- id: top_hat_result_dir
-  doc: directory containing TopHat mapped and unmapped read files.
-  type: string
-  inputBinding:
-    position: 0
 - id: log_file
   doc: 'log file (optional, (default: result_dir/tophat- recondition.log)'
   type: string
@@ -31,6 +26,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --unmapped-file
+- id: top_hat_result_dir
+  doc: directory containing TopHat mapped and unmapped read files.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

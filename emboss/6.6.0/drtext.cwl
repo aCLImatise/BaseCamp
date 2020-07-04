@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: drtext.cwl
+id: ../../../../home/ubuntu/BiocondaCli/drtext.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

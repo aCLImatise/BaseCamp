@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: LabeledEval.cwl
+id: ../../../../home/ubuntu/BiocondaCli/LabeledEval.cwl
 inputs:
 - id: in
   doc: "*        Feature result file (valid formats: 'featureXML')"

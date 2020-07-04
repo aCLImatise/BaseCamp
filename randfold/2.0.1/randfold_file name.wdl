@@ -2,14 +2,22 @@ version 1.0
 
 task RandfoldFile name {
   input {
-    String? methodMethod
-    File? filenameFilename
-    String? numberNumberOfRandomizationS
+    String rand_fold
+    String method
+    File file_name
+    String number_of_randomization_s
   }
   command <<<
     randfold file name \
-      ~{methodMethod} \
-      ~{filenameFilename} \
-      ~{numberNumberOfRandomizationS}
+      ~{rand_fold} \
+      ~{method} \
+      ~{file_name} \
+      ~{number_of_randomization_s}
   >>>
+  parameter_meta {
+    rand_fold: ""
+    method: ""
+    file_name: ""
+    number_of_randomization_s: ""
+  }
 }

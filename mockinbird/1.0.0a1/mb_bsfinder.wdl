@@ -2,22 +2,25 @@ version 1.0
 
 task MbBsfinder {
   input {
-    String thresholdThreshold
-    Int minMinCov
-    String referenceReference
-    String mutationMutation
-    Boolean verboseVerbose
-    String? inputInputFile
-    String? outputOutputFile
+    String? threshold
+    Int? min_cov
+    String? reference
+    String? mutation
+    Boolean? verbose
   }
   command <<<
     mb-bsfinder \
-      ~{inputInputFile} \
-      ~{if defined(thresholdThreshold) then ("--threshold " +  '"' + thresholdThreshold + '"') else ""} \
-      ~{if defined(minMinCov) then ("--mincov " +  '"' + minMinCov + '"') else ""} \
-      ~{if defined(referenceReference) then ("--reference " +  '"' + referenceReference + '"') else ""} \
-      ~{if defined(mutationMutation) then ("--mutation " +  '"' + mutationMutation + '"') else ""} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{outputOutputFile}
+      ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
+      ~{if defined(min_cov) then ("--mincov " +  '"' + min_cov + '"') else ""} \
+      ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
+      ~{if defined(mutation) then ("--mutation " +  '"' + mutation + '"') else ""} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    threshold: "set maximum p-value for site selection"
+    min_cov: "set minimum coverage"
+    reference: "set default reference nucleotide"
+    mutation: "set default mutation nucleotide"
+    verbose: "verbose output"
+  }
 }

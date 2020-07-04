@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: paragraph.cwl
+id: ../../../../home/ubuntu/BiocondaCli/paragraph.cwl
 inputs:
 - id: bad_align_frac
   doc: (=0.800000012)          Fraction of read that needs to  be mapped in order
@@ -17,7 +17,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --bad-align-uniq-kmer-len
-- id: b
+- id: arg_input_bam
   doc: '[ --bam ] arg                             Input BAM file(s) for read  extraction.
     We align all reads  to all graphs.'
   type: boolean
@@ -28,12 +28,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --graph-sequence-matching
-- id: g
+- id: arg_json_files
   doc: '[ --graph-spec ] arg                      JSON file(s) describing the  graph(s)'
   type: boolean
   inputBinding:
     prefix: -g
-- id: z
+- id: gzipcompress_output_files
   doc: '[ --gzip-output ] [=arg(=1)] (=0)         gzip-compress output files. If  -O
     is used, output file names  are appended with .gz'
   type: boolean
@@ -74,13 +74,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --log-level
-- id: m
+- id: arg_maximum_number
   doc: '[ --max-reads-per-event ] arg (=10000)    Maximum number of reads to  process
     for a single event.'
   type: boolean
   inputBinding:
     prefix: -M
-- id: a
+- id: arg_output_alignments_read
   doc: '[ --output-alignments ] arg (=0)          Output alignments for every read
     (large).'
   type: boolean
@@ -92,25 +92,25 @@ inputs:
   type: string
   inputBinding:
     prefix: --output-detailed-read-counts
-- id: e
+- id: arg_write_information
   doc: '[ --output-everything ] arg (=0)          Write all information we have  into
     JSON. (=enable all  --output-* above)'
   type: boolean
   inputBinding:
     prefix: -E
-- id: o
+- id: arg_output_file
   doc: "[ --output-file ] arg                     Output file name. Will output to\
     \ stdout if '-' or neither of  output-file or output-folder  provided."
   type: boolean
   inputBinding:
     prefix: -o
-- id: a
+- id: arg_output_alignments_filtered
   doc: '[ --output-filtered-alignments ] arg (=0) Output alignments for every read
     even when it was filtered  (larger).'
   type: boolean
   inputBinding:
     prefix: -A
-- id: o
+- id: arg_folder_path
   doc: '[ --output-folder ] arg                   Output folder path. paragraph  will
     attempt to create the  folder but not the entire path.  Will output to stdout
     if neither of output-file or output-folder  provided. If specified,  paragraph
@@ -133,7 +133,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --output-read-haplotypes
-- id: v
+- id: arg_output_variants
   doc: '[ --output-variants ] arg (=0)            Output variants not present in  the
     graph.'
   type: boolean
@@ -144,7 +144,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --path-sequence-matching
-- id: r
+- id: arg_reference_genome
   doc: '[ --reference ] arg                       Reference genome fasta file.'
   type: boolean
   inputBinding:
@@ -154,7 +154,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --response-file
-- id: t
+- id: arg_commaseparated_list
   doc: '[ --target-regions ] arg                  Comma-separated list of target  regions,
     e.g. chr1:1-20,chr2:2-4 0. This overrides the target  regions in the graph spec.'
   type: boolean
@@ -182,11 +182,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --variant-min-reads
-- id: v
-  doc: '[ --version ]                             print program version  information'
-  type: boolean
-  inputBinding:
-    prefix: -v
 outputs: []
 cwlVersion: v1.1
 baseCommand:

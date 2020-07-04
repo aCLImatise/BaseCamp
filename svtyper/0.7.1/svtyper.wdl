@@ -2,36 +2,52 @@ version 1.0
 
 task Svtyper {
   input {
-    File inputInputVcf
-    File outputOutputVcf
-    File bamBam
-    File refRefFastA
-    File libLibInfo
-    Int minMinAligned
-    Int nN
-    Boolean sumSumQuals
-    Int maxMaxReads
-    Int maxMaxCiDist
-    Float splitSplitWeight
-    Float discDiscWeight
-    File writeWriteAlignment
-    Boolean verboseVerbose
+    File? input_vcf
+    File? output_vcf
+    File? bam
+    File? ref_fast_a
+    File? lib_info
+    Int? min_aligned
+    Int? number_reads_sample
+    Boolean? sum_quals
+    Int? max_reads
+    Int? max_ci_dist
+    Float? split_weight
+    Float? disc_weight
+    File? write_alignment
+    Boolean? verbose
   }
   command <<<
     svtyper \
-      ~{if defined(inputInputVcf) then ("--input_vcf " +  '"' + inputInputVcf + '"') else ""} \
-      ~{if defined(outputOutputVcf) then ("--output_vcf " +  '"' + outputOutputVcf + '"') else ""} \
-      ~{if defined(bamBam) then ("--bam " +  '"' + bamBam + '"') else ""} \
-      ~{if defined(refRefFastA) then ("--ref_fasta " +  '"' + refRefFastA + '"') else ""} \
-      ~{if defined(libLibInfo) then ("--lib_info " +  '"' + libLibInfo + '"') else ""} \
-      ~{if defined(minMinAligned) then ("--min_aligned " +  '"' + minMinAligned + '"') else ""} \
-      ~{if defined(nN) then ("-n " +  '"' + nN + '"') else ""} \
-      ~{true="--sum_quals" false="" sumSumQuals} \
-      ~{if defined(maxMaxReads) then ("--max_reads " +  '"' + maxMaxReads + '"') else ""} \
-      ~{if defined(maxMaxCiDist) then ("--max_ci_dist " +  '"' + maxMaxCiDist + '"') else ""} \
-      ~{if defined(splitSplitWeight) then ("--split_weight " +  '"' + splitSplitWeight + '"') else ""} \
-      ~{if defined(discDiscWeight) then ("--disc_weight " +  '"' + discDiscWeight + '"') else ""} \
-      ~{if defined(writeWriteAlignment) then ("--write_alignment " +  '"' + writeWriteAlignment + '"') else ""} \
-      ~{true="--verbose" false="" verboseVerbose}
+      ~{if defined(input_vcf) then ("--input_vcf " +  '"' + input_vcf + '"') else ""} \
+      ~{if defined(output_vcf) then ("--output_vcf " +  '"' + output_vcf + '"') else ""} \
+      ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
+      ~{if defined(ref_fast_a) then ("--ref_fasta " +  '"' + ref_fast_a + '"') else ""} \
+      ~{if defined(lib_info) then ("--lib_info " +  '"' + lib_info + '"') else ""} \
+      ~{if defined(min_aligned) then ("--min_aligned " +  '"' + min_aligned + '"') else ""} \
+      ~{if defined(number_reads_sample) then ("-n " +  '"' + number_reads_sample + '"') else ""} \
+      ~{true="--sum_quals" false="" sum_quals} \
+      ~{if defined(max_reads) then ("--max_reads " +  '"' + max_reads + '"') else ""} \
+      ~{if defined(max_ci_dist) then ("--max_ci_dist " +  '"' + max_ci_dist + '"') else ""} \
+      ~{if defined(split_weight) then ("--split_weight " +  '"' + split_weight + '"') else ""} \
+      ~{if defined(disc_weight) then ("--disc_weight " +  '"' + disc_weight + '"') else ""} \
+      ~{if defined(write_alignment) then ("--write_alignment " +  '"' + write_alignment + '"') else ""} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    input_vcf: "VCF input (default: stdin)"
+    output_vcf: "output VCF to write (default: stdout)"
+    bam: "BAM or CRAM file(s), comma-separated if genotyping multiple samples"
+    ref_fast_a: "Indexed reference FASTA file (recommended for reading CRAM files)"
+    lib_info: "create/read JSON file of library information"
+    min_aligned: "minimum number of aligned bases to consider read as evidence [20]"
+    number_reads_sample: "number of reads to sample from BAM file for building insert size distribution [1000000]"
+    sum_quals: "add genotyping quality to existing QUAL (default: overwrite QUAL field)"
+    max_reads: "maximum number of reads to assess at any variant (reduces processing time in high-depth regions, default: unlimited)"
+    max_ci_dist: "maximum size of a confidence interval before 95% CI is used intead (default: 1e10)"
+    split_weight: "weight for split reads [1]"
+    disc_weight: "weight for discordant paired-end reads [1]"
+    write_alignment: "write relevant reads to BAM file"
+    verbose: "Report status updates"
+  }
 }

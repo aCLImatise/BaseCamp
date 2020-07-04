@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gtf2genetab.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gtf2genetab.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

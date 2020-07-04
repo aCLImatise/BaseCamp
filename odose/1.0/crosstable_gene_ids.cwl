@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: crosstable_gene_ids.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/crosstable_gene_ids.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

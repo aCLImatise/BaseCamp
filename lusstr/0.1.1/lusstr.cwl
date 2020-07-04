@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: lusstr.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lusstr.cwl
 inputs:
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
 - id: sub_cmd
   doc: annotate, format
   type: string

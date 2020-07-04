@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: o_generate_exclusive_figures.cwl
+id: ../../../../home/ubuntu/BiocondaCli/o_generate_exclusive_figures.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ASAPRatioPvalueParser.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ASAPRatioPvalueParser.cwl
 inputs:
 - id: xml_file
   doc: ''

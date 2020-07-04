@@ -2,12 +2,16 @@ version 1.0
 
 task Pindel {
   input {
-    String fF
-    String pP
+    String? f
+    String? p
   }
   command <<<
     pindel \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""} \
-      ~{if defined(pP) then ("-p " +  '"' + pP + '"') else ""}
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
+      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""}
   >>>
+  parameter_meta {
+    f: ""
+    p: ""
+  }
 }

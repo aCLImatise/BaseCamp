@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: automake.bak.cwl
+id: ../../../../home/ubuntu/BiocondaCli/automake.bak.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

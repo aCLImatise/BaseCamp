@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: reduce_kmers.cwl
+id: ../../../../home/ubuntu/BiocondaCli/reduce_kmers.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

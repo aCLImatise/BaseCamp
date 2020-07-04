@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: goalign_unalign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_unalign.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: output_prefix
   doc: Unaligned alignment output file prefix (default "stdout")
   type: string
@@ -71,6 +66,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

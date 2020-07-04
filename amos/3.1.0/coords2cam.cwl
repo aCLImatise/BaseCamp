@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: coords2cam.cwl
+id: ../../../../home/ubuntu/BiocondaCli/coords2cam.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

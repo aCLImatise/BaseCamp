@@ -2,20 +2,28 @@ version 1.0
 
 task Gensub2 {
   input {
-    String groupGroup1
-    String groupGroup2
-    File? fileFileList1
-    File? fileFileList2
-    String? templateTemplateFile
-    String? outputOutputFile
+    Boolean? group_one
+    Boolean? group_two
+    File file_list_one
+    File file_list_two
+    String template_file
+    String output_file
   }
   command <<<
     gensub2 \
-      ~{fileFileList1} \
-      ~{if defined(groupGroup1) then ("-group1 " +  '"' + groupGroup1 + '"') else ""} \
-      ~{if defined(groupGroup2) then ("-group2 " +  '"' + groupGroup2 + '"') else ""} \
-      ~{fileFileList2} \
-      ~{templateTemplateFile} \
-      ~{outputOutputFile}
+      ~{file_list_one} \
+      ~{file_list_two} \
+      ~{template_file} \
+      ~{output_file} \
+      ~{true="-group1" false="" group_one} \
+      ~{true="-group2" false="" group_two}
   >>>
+  parameter_meta {
+    group_one: "- write elements in order Aa Ab Ac Ba Bb Bc Ca Cb Cc"
+    group_two: "- write elements in order Aa Ba Ca Ab Bb Cb Ac Bc Cc"
+    file_list_one: ""
+    file_list_two: ""
+    template_file: ""
+    output_file: ""
+  }
 }

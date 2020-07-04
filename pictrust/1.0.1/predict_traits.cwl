@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: predict_traits.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/predict_traits.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

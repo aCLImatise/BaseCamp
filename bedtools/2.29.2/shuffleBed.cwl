@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: shuffleBed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/shuffleBed.cwl
 inputs:
-- id: chr18_gl000207_random
-  doc: '4262'
-  type: string
-  inputBinding:
-    position: 0
 - id: excl
   doc: A BED/GFF/VCF file of coordinates in which features in -i should not be placed
     (e.g. gaps.bed).
@@ -32,7 +27,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -seed
-- id: f
+- id: maximum_overlap_fraction
   doc: Maximum overlap (as a fraction of the -i feature) with an -excl feature that
     is tolerated before searching for a new,  randomized locus. For example, -f 0.10
     allows up to 10% of a randomized feature to overlap with a given feature in the
@@ -74,6 +69,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -allowBeyondChromEnd
+- id: i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
+- id: g
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -g
+- id: bed_tools
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: shuffle
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

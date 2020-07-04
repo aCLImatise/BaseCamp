@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: matam_assembly.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/matam_assembly.py.cwl
 inputs:
 - id: input_fast_q
   doc: Input reads file (fasta or fastq format)
@@ -114,9 +114,8 @@ inputs:
   inputBinding:
     prefix: --perform_taxonomic_assignment
 - id: training_model
-  doc: '{16srrna,fungallsu,fungalits_warcup,fungalits_unite}  The training model used
-    for taxonomic assignment. Default is 16srrna'
-  type: boolean
+  doc: The training model used for taxonomic assignment. Default is 16srrna
+  type: string
   inputBinding:
     prefix: --training_model
 - id: rdp_cut_off

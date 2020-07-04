@@ -2,30 +2,43 @@ version 1.0
 
 task CreateReport {
   input {
-    String ideogramIdeogram
-    Array[String]+ tracksTracks
-    String templateTemplate
-    String outputOutput
-    Array[String]+ infoInfoColumns
-    Array[String]+ infoInfoColumnsPrefixes
-    Array[String]+ sampleSampleColumns
-    String flankingFlanking
-    Boolean standaloneStandalone
-    String? sitesSites
-    String? fastFastA
+    String? ideogram
+    Array[String] tracks
+    String? template
+    String? output_file_name
+    Array[String] info_columns
+    Array[String] info_columns_prefixes
+    Array[String] sample_columns
+    String? flanking
+    Boolean? standalone
+    String sites
+    String fast_a
   }
   command <<<
     create_report \
-      ~{sitesSites} \
-      ~{if defined(ideogramIdeogram) then ("--ideogram " +  '"' + ideogramIdeogram + '"') else ""} \
-      ~{if defined(tracksTracks) then ("--tracks " +  '"' + tracksTracks + '"') else ""} \
-      ~{if defined(templateTemplate) then ("--template " +  '"' + templateTemplate + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(infoInfoColumns) then ("--info-columns " +  '"' + infoInfoColumns + '"') else ""} \
-      ~{if defined(infoInfoColumnsPrefixes) then ("--info-columns-prefixes " +  '"' + infoInfoColumnsPrefixes + '"') else ""} \
-      ~{if defined(sampleSampleColumns) then ("--sample-columns " +  '"' + sampleSampleColumns + '"') else ""} \
-      ~{if defined(flankingFlanking) then ("--flanking " +  '"' + flankingFlanking + '"') else ""} \
-      ~{true="--standalone" false="" standaloneStandalone} \
-      ~{fastFastA}
+      ~{sites} \
+      ~{fast_a} \
+      ~{if defined(ideogram) then ("--ideogram " +  '"' + ideogram + '"') else ""} \
+      ~{if defined(tracks) then ("--tracks " +  '"' + tracks + '"') else ""} \
+      ~{if defined(template) then ("--template " +  '"' + template + '"') else ""} \
+      ~{if defined(output_file_name) then ("--output " +  '"' + output_file_name + '"') else ""} \
+      ~{if defined(info_columns) then ("--info-columns " +  '"' + info_columns + '"') else ""} \
+      ~{if defined(info_columns_prefixes) then ("--info-columns-prefixes " +  '"' + info_columns_prefixes + '"') else ""} \
+      ~{if defined(sample_columns) then ("--sample-columns " +  '"' + sample_columns + '"') else ""} \
+      ~{if defined(flanking) then ("--flanking " +  '"' + flanking + '"') else ""} \
+      ~{true="--standalone" false="" standalone}
   >>>
+  parameter_meta {
+    ideogram: "ideogram file in UCSC cytoIdeo format"
+    tracks: "list of track files"
+    template: "html template file"
+    output_file_name: "output file name"
+    info_columns: "list of VCF info field names to include in variant table"
+    info_columns_prefixes: "list of prefixes of VCF info field names to include in variant table"
+    sample_columns: "list of VCF sample/format field names to include in variant table"
+    flanking: "genomic region to include either side of variant"
+    standalone: "Print more data"
+    sites: "vcf file defining variants, required"
+    fast_a: "reference fasta file, required"
+  }
 }

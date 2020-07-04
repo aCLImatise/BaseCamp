@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: mb_plot_kmer_enrichment.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mb_plot_kmer_enrichment.cwl
 inputs:
-- id: input_file
-  doc: PAR-CLIP file *.table
-  type: string
-  inputBinding:
-    position: 0
-- id: genome
-  doc: path to genome
-  type: string
-  inputBinding:
-    position: 1
-- id: outdir
-  doc: output directory
-  type: string
-  inputBinding:
-    position: 2
-- id: prefix
-  doc: prefix
-  type: string
-  inputBinding:
-    position: 3
 - id: km_er
   doc: kmer-length
   type: string

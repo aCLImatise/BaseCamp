@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: multiBigwigSummary_BED_file.cwl
+id: ../../../../home/ubuntu/BiocondaCli/multiBigwigSummary_BED_file.cwl
 inputs:
-- id: file_2bw
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: bw_files
   doc: 'FILE2 [FILE1 FILE2 ...], -b FILE1 FILE2 [FILE1 FILE2 ...] List of bigWig files,
     separated by spaces. (default: None)'
@@ -103,6 +98,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --deepBlueKeepTemp
+- id: b
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -b
+- id: file_two_dot_bw
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

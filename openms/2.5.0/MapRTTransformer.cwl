@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MapRTTransformer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MapRTTransformer.cwl
 inputs:
 - id: in
   doc: "Input file to transform (separated by blanks) (valid formats: 'mzML', 'featureXML',\
@@ -56,16 +56,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: model
-  doc: Options to control the modeling of retention time transformations from data
-  type: boolean
-  inputBinding:
-    prefix: '- model'
-- id: http
-  doc: ://www.openms.de/documentation/TOPP_MapRTTransformer.html
-  type: boolean
-  inputBinding:
-    prefix: '- http'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

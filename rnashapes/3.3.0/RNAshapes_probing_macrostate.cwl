@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNAshapes_probing_macrostate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAshapes_probing_macrostate.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,12 +2,16 @@ version 1.0
 
 task FastqAnonymous {
   input {
-    Boolean vV
-    Boolean mM
+    Boolean? mask
+    Boolean? v
   }
   command <<<
     fastq-anonymous \
-      ~{true="-v" false="" vV} \
-      ~{true="-m" false="" mM}
+      ~{true="--mask" false="" mask} \
+      ~{true="-v" false="" v}
   >>>
+  parameter_meta {
+    mask: "Mask all nucleotides using N"
+    v: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ebi_metagenomics.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ebi_metagenomics.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

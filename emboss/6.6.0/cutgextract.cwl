@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cutgextract.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cutgextract.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

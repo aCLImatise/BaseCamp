@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: maq2sam_short.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maq2sam_short.cwl
 inputs:
-- id: maq2sam
+- id: maq_two_sam
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: in_map
+- id: in_dot_map
   doc: ''
   type: string
   inputBinding:

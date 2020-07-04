@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: runSpruceView.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/runSpruceView.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,42 +1,42 @@
 class: CommandLineTool
-id: phrase_search.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phrase_search.cwl
 inputs:
-- id: ec
+- id: decreases_expressionproduction
   doc: decreases expression/production
   type: string
   inputBinding:
     position: 0
-- id: ec
+- id: var_1
   doc: affects expression/production (neutral)
   type: string
   inputBinding:
     position: 1
-- id: n
+- id: inhibits
   doc: inhibits
   type: string
   inputBinding:
     position: 2
-- id: o
+- id: transport_channels
   doc: transport, channels
   type: string
   inputBinding:
     position: 0
-- id: k
+- id: metabolism_pharmacokinetics
   doc: metabolism, pharmacokinetics
   type: string
   inputBinding:
     position: 1
-- id: z
+- id: enzyme_activity
   doc: enzyme activity
   type: string
   inputBinding:
     position: 2
-- id: t
+- id: treatmenttherapy_including_investigatory
   doc: treatment/therapy (including investigatory)
   type: string
   inputBinding:
     position: 0
-- id: c
+- id: inhibits_growth_cancers
   doc: inhibits cell growth (especially cancers)
   type: string
   inputBinding:
@@ -66,7 +66,7 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: u
+- id: causal_mutations
   doc: causal mutations
   type: string
   inputBinding:
@@ -76,7 +76,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: d
+- id: drug_targets
   doc: drug targets
   type: string
   inputBinding:
@@ -91,12 +91,12 @@ inputs:
   type: string
   inputBinding:
     position: 4
-- id: y
+- id: polymorphisms_alter_risk
   doc: polymorphisms alter risk
   type: string
   inputBinding:
     position: 5
-- id: g
+- id: promotes_progression
   doc: promotes progression
   type: string
   inputBinding:
@@ -106,12 +106,12 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: x
+- id: overexpression_in_disease
   doc: overexpression in disease
   type: string
   inputBinding:
     position: 1
-- id: l
+- id: improper_regulation_linked
   doc: improper regulation linked to disease
   type: string
   inputBinding:
@@ -121,12 +121,12 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: i
+- id: signaling_pathway
   doc: signaling pathway
   type: string
   inputBinding:
     position: 1
-- id: h
+- id: same_protein_complex
   doc: same protein or complex
   type: string
   inputBinding:
@@ -136,7 +136,7 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: q
+- id: production_cell_population
   doc: production by cell population
   type: string
   inputBinding:

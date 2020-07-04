@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_recomap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_recomap.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,66 +1,6 @@
 class: CommandLineTool
-id: dlcpar.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dlcpar.cwl
 inputs:
-- id: dlc_par
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: is
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: a
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: phylogenetic
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: program
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
-- id: for
-  doc: ''
-  type: string
-  inputBinding:
-    position: 5
-- id: finding
-  doc: ''
-  type: string
-  inputBinding:
-    position: 6
-- id: the
-  doc: ''
-  type: string
-  inputBinding:
-    position: 7
-- id: most
-  doc: ''
-  type: string
-  inputBinding:
-    position: 8
-- id: parsimonious
-  doc: ''
-  type: string
-  inputBinding:
-    position: 9
-- id: gene
-  doc: ''
-  type: string
-  inputBinding:
-    position: 10
-- id: tree
-  doc: ''
-  type: string
-  inputBinding:
-    position: 11
 - id: stree
   doc: species tree file in newick format
   type: string
@@ -160,6 +100,66 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --log
+- id: dlc_par
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: is
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: phylogenetic
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: program
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
+- id: for
+  doc: ''
+  type: string
+  inputBinding:
+    position: 5
+- id: finding
+  doc: ''
+  type: string
+  inputBinding:
+    position: 6
+- id: the
+  doc: ''
+  type: string
+  inputBinding:
+    position: 7
+- id: most
+  doc: ''
+  type: string
+  inputBinding:
+    position: 8
+- id: parsimonious
+  doc: ''
+  type: string
+  inputBinding:
+    position: 9
+- id: gene
+  doc: ''
+  type: string
+  inputBinding:
+    position: 10
+- id: tree
+  doc: ''
+  type: string
+  inputBinding:
+    position: 11
 outputs: []
 cwlVersion: v1.1
 baseCommand:

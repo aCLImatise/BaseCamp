@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: FidoChooseParameters.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FidoChooseParameters.cwl
 inputs:
-- id: graph_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: target_decoy_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: p
   doc: ''
   type: boolean
@@ -31,6 +21,16 @@ inputs:
   type: string
   inputBinding:
     prefix: -c
+- id: graph_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: target_decoy_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

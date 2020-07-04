@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sga_preqc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sga_preqc.cwl
 inputs:
 - id: verbose
   doc: display verbose output
@@ -39,6 +39,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --force-EM
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

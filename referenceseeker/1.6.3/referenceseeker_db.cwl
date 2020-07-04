@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: referenceseeker_db.cwl
+id: ../../../../home/ubuntu/BiocondaCli/referenceseeker_db.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

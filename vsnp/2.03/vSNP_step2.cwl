@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vSNP_step2.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vSNP_step2.py.cwl
 inputs:
 - id: reference
   doc: provide a valid reference, see -t output
@@ -46,6 +46,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --gbk
+- id: prog
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

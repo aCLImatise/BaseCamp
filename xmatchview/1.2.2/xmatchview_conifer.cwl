@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: xmatchview_conifer.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/xmatchview_conifer.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

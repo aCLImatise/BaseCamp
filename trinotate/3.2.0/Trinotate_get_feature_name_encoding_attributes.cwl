@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Trinotate_get_feature_name_encoding_attributes.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Trinotate_get_feature_name_encoding_attributes.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: correct_scafs_coords.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/correct_scafs_coords.pl.cwl
 inputs:
 - id: query
   doc: input scaffold fasta file (e.g., scaf.fa)
@@ -68,6 +68,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --thread
+- id: gm_value
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: verdot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: one_dot_three
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

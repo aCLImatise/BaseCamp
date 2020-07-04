@@ -1,22 +1,22 @@
 class: CommandLineTool
-id: Phi.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Phi.cwl
 inputs:
-- id: f
+- id: filename_fasta_format
   doc: ': Filename = FASTA format'
   type: boolean
   inputBinding:
     prefix: -f
-- id: s
+- id: filename_strict_phylip
   doc: ': Filename = Strict phylip file'
   type: boolean
   inputBinding:
     prefix: -s
-- id: r
+- id: filename_relaxed_phylip
   doc: ': Filename = Relaxed phylip file'
   type: boolean
   inputBinding:
     prefix: -r
-- id: t
+- id: alignmenttype_dao_aaa
   doc: ': AlignmentType = D|A|O where D=DNA A=AA and O=OTHER [default DNA]'
   type: boolean
   inputBinding:
@@ -26,17 +26,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -p
-- id: w
+- id: change_default_window
   doc: ': # = Change default window size [default w = 100]'
   type: boolean
   inputBinding:
     prefix: -w
-- id: o
+- id: report_statistics_nss
   doc: ': Report other statistics (NSS and Max Chi^2) [default = FALSE]'
   type: boolean
   inputBinding:
     prefix: -o
-- id: v
+- id: _verbose
   doc: ': Verbose [default = FALSE]'
   type: boolean
   inputBinding:

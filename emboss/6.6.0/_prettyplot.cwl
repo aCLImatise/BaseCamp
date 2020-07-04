@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _prettyplot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_prettyplot.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

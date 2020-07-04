@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: msms.cwl
+id: ../../../../home/ubuntu/BiocondaCli/msms.cwl
 inputs:
 - id: probe_radius
   doc: ': probe sphere radius, [1.5]'

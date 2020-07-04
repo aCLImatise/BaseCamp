@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ccconfig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ccconfig.cwl
 inputs:
 - id: inc_path
   doc: path       manually set compiler include path

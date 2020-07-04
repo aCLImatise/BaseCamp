@@ -2,10 +2,13 @@ version 1.0
 
 task FindNovelJunctions {
   input {
-    String? orOr
+    String or
   }
   command <<<
     findNovelJunctions \
-      ~{orOr}
+      ~{or}
   >>>
+  parameter_meta {
+    or: "./findNovelJunction refFlat.bed junction.bed"
+  }
 }

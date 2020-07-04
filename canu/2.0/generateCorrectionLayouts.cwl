@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: generateCorrectionLayouts.cwl
+id: ../../../../home/ubuntu/BiocondaCli/generateCorrectionLayouts.cwl
 inputs:
-- id: s
+- id: mandatory_path_to
   doc: mandatory path to seqStore
   type: string
   inputBinding:
     prefix: -S
-- id: o
+- id: mandatory_path_ovlstore
   doc: mandatory path to ovlStore
   type: string
   inputBinding:
@@ -17,27 +17,27 @@ inputs:
   type: string
   inputBinding:
     prefix: -scores
-- id: c
+- id: output_layouts_store
   doc: output layouts to store 'corStore'
   type: string
   inputBinding:
     prefix: -C
-- id: v
+- id: write_extremely_verbose
   doc: write extremely verbose logging to 'corStore.log'
   type: boolean
   inputBinding:
     prefix: -V
-- id: d
+- id: dump_data_used
   doc: dump the data used to estimate overlap scores to 'corStore.scores'
   type: boolean
   inputBinding:
     prefix: -D
-- id: b
+- id: process_reads_starting
   doc: process reads starting at bgnID
   type: string
   inputBinding:
     prefix: -b
-- id: e
+- id: process_reads_including
   doc: process reads up to but not including endID
   type: string
   inputBinding:

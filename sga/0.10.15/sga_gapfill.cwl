@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: sga_gapfill.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sga_gapfill.cwl
 inputs:
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: scaffolds_fa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: verbose
   doc: display verbose output
   type: boolean
@@ -48,6 +38,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --sample-rate
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: scaffolds_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

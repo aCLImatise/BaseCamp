@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: tigmint_cut.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tigmint_cut.cwl
 inputs:
-- id: fast_a
-  doc: Reference genome fasta file (must have FAI index generated)
-  type: string
-  inputBinding:
-    position: 0
-- id: bed
-  doc: Sorted bed file of molecule extents
-  type: string
-  inputBinding:
-    position: 1
 - id: fast_a_out
   doc: The output FASTA file.
   type: string
@@ -42,6 +32,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --trim
+- id: fast_a
+  doc: Reference genome fasta file (must have FAI index generated)
+  type: string
+  inputBinding:
+    position: 0
+- id: bed
+  doc: Sorted bed file of molecule extents
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

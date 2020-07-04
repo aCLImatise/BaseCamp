@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: arb_raxml.cwl
+id: ../../../../home/ubuntu/BiocondaCli/arb_raxml.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

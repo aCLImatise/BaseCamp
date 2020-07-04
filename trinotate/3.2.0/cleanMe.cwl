@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cleanMe.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cleanMe.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

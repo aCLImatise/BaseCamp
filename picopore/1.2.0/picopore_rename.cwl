@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: picopore_rename.cwl
+id: ../../../../home/ubuntu/BiocondaCli/picopore_rename.cwl
 inputs:
-- id: input
-  doc: list of directories or fast5 files to shrink
-  type: string
-  inputBinding:
-    position: 0
 - id: pattern
   doc: String or regex to replace
   type: string
@@ -16,7 +11,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --replacement
-- id: y
+- id: skip_confirm_step
   doc: skip confirm step
   type: boolean
   inputBinding:
@@ -42,6 +37,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --print-every
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: input
+  doc: list of directories or fast5 files to shrink
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

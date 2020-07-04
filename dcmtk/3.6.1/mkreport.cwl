@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mkreport.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mkreport.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

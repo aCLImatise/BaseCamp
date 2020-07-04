@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hicCompartmentalization.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hicCompartmentalization.cwl
 inputs:
 - id: obs_exp_matrices
   doc: HiCExplorer matrices in h5/cool format.

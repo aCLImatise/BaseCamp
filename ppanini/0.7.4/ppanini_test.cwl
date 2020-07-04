@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ppanini_test.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ppanini_test.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

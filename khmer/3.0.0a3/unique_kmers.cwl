@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: unique_kmers.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/unique_kmers.py.cwl
 inputs:
-- id: input_sequence_filename
-  doc: Input FAST[AQ] sequence filename(s).
-  type: string
-  inputBinding:
-    position: 0
 - id: k_size
   doc: 'k-mer size to use (default: 32)'
   type: string
@@ -31,6 +26,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --diagnostics
+- id: info
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --info
+- id: q
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -q
+- id: input_sequence_filename
+  doc: Input FAST[AQ] sequence filename(s).
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

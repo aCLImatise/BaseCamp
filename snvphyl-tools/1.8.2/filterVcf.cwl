@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filterVcf.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filterVcf.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

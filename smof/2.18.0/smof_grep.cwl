@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: smof_grep.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smof_grep.cwl
 inputs:
-- id: pattern
-  doc: pattern to match
-  type: string
-  inputBinding:
-    position: 0
-- id: input
-  doc: input fasta sequence (default = stdin)
-  type: string
-  inputBinding:
-    position: 1
 - id: match_sequence
   doc: match sequence rather than header
   type: boolean
@@ -146,6 +136,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --fastain
+- id: pattern
+  doc: pattern to match
+  type: string
+  inputBinding:
+    position: 0
+- id: input
+  doc: input fasta sequence (default = stdin)
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

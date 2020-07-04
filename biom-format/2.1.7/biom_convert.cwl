@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: biom_convert.cwl
+id: ../../../../home/ubuntu/BiocondaCli/biom_convert.cwl
 inputs:
 - id: input_fp
   doc: The input BIOM table  [required]
@@ -28,7 +28,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --to-json
-- id: to_hdf5
+- id: to_hdf_five
   doc: Output as HDF5-formatted table.
   type: boolean
   inputBinding:

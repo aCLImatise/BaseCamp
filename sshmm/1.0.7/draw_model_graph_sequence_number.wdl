@@ -2,14 +2,22 @@ version 1.0
 
 task DrawModelGraphSequenceNumber {
   input {
-    String? modelModel
-    String? sequenceSequenceNumber
-    String? outputOutput
+    String draw_model_graph
+    String model
+    String sequence_number
+    String var_output
   }
   command <<<
     draw_model_graph sequence_number \
-      ~{modelModel} \
-      ~{sequenceSequenceNumber} \
-      ~{outputOutput}
+      ~{draw_model_graph} \
+      ~{model} \
+      ~{sequence_number} \
+      ~{var_output}
   >>>
+  parameter_meta {
+    draw_model_graph: ""
+    model: ""
+    sequence_number: ""
+    var_output: ""
+  }
 }

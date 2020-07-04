@@ -1,6 +1,27 @@
 class: CommandLineTool
-id: after.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/after.py.cwl
 inputs:
+- id: read_one_file
+  doc: file name of read1, required. If input_dir is specified, then this arg is ignored.
+  type: string
+  inputBinding:
+    prefix: --read1_file
+- id: read_two_file
+  doc: file name of read2, if paired. If input_dir is specified, then this arg is
+    ignored.
+  type: string
+  inputBinding:
+    prefix: --read2_file
+- id: index_one_file
+  doc: file name of 7' index. If input_dir is specified, then this arg is ignored.
+  type: string
+  inputBinding:
+    prefix: --index1_file
+- id: index_two_file
+  doc: file name of 5' index. If input_dir is specified, then this arg is ignored.
+  type: string
+  inputBinding:
+    prefix: --index2_file
 - id: input_dir
   doc: the input dir to process automatically. If read1_file are input_dir are not
     specified, then current dir (.) is specified to input_dir
@@ -25,25 +46,25 @@ inputs:
   type: string
   inputBinding:
     prefix: --report_output_folder
-- id: read_1_flag
+- id: read_one_flag
   doc: specify the name flag of read1, default is R1, which means a file with name
     *R1* is read1 file
   type: string
   inputBinding:
     prefix: --read1_flag
-- id: read_2_flag
+- id: read_two_flag
   doc: specify the name flag of read2, default is R2, which means a file with name
     *R2* is read2 file
   type: string
   inputBinding:
     prefix: --read2_flag
-- id: index_1_flag
+- id: index_one_flag
   doc: specify the name flag of index1, default is I1, which means a file with name
     *I1* is index2 file
   type: string
   inputBinding:
     prefix: --index1_flag
-- id: index_2_flag
+- id: index_two_flag
   doc: specify the name flag of index2, default is I2, which means a file with name
     *I2* is index2 file
   type: string
@@ -194,6 +215,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --compression
+- id: automatic
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: filtering
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

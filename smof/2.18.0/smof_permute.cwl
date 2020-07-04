@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: smof_permute.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smof_permute.cwl
 inputs:
-- id: input
-  doc: input fasta sequence (default = stdin)
-  type: string
-  inputBinding:
-    position: 0
 - id: word_size
   doc: size of each word (default=1)
   type: long
@@ -26,6 +21,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --seed
+- id: input
+  doc: input fasta sequence (default = stdin)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

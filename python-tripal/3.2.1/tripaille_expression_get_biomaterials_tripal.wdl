@@ -2,10 +2,13 @@ version 1.0
 
 task TripailleExpressionGetBiomaterialsTripal {
   input {
-    Int biomaterialBiomaterialId
+    Int? biomaterial_id
   }
   command <<<
     tripaille expression get_biomaterials_tripal \
-      ~{if defined(biomaterialBiomaterialId) then ("--biomaterial_id " +  '"' + biomaterialBiomaterialId + '"') else ""}
+      ~{if defined(biomaterial_id) then ("--biomaterial_id " +  '"' + biomaterial_id + '"') else ""}
   >>>
+  parameter_meta {
+    biomaterial_id: "A biomaterial entity ID"
+  }
 }

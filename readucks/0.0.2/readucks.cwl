@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: readucks.cwl
+id: ../../../../home/ubuntu/BiocondaCli/readucks.cwl
 inputs:
 - id: input
   doc: FASTQ of input reads or a directory which will be recursively searched for

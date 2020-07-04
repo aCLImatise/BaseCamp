@@ -1,31 +1,36 @@
 class: CommandLineTool
-id: genomedata_query_end.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genomedata_query_end.cwl
 inputs:
-- id: gd_archive
+- id: genome_data_query
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: track_name
+- id: gd_archive
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: chrom
+- id: track_name
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: begin
+- id: chrom
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: end
+- id: begin
   doc: ''
   type: string
   inputBinding:
     position: 4
+- id: end
+  doc: ''
+  type: string
+  inputBinding:
+    position: 5
 outputs: []
 cwlVersion: v1.1
 baseCommand:

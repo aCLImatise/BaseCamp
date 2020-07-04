@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: abyss_sealer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/abyss_sealer.cwl
 inputs:
 - id: print_flanks
   doc: outputs flank files
@@ -154,6 +154,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: abyss_sealer_b
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: bloom_filter_size
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

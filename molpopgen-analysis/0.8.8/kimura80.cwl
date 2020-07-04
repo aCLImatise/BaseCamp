@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: kimura80.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kimura80.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

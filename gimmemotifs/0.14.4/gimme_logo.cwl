@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gimme_logo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gimme_logo.cwl
 inputs:
 - id: pfm_file
   doc: PFM file with motifs
@@ -21,6 +21,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --notitle
+- id: h
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -h
+- id: gimme
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: subcommand
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: logo
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

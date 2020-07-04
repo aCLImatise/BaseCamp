@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sandbag.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sandbag.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

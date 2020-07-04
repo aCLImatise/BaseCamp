@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: between_two_genes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/between_two_genes.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,31 +1,21 @@
 class: CommandLineTool
-id: TaxonomicSummary.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/TaxonomicSummary.py.cwl
 inputs:
-- id: python
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: taxonomic_summary_py
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: query_file
   doc: ''
   type: string
   inputBinding:
-    position: 2
+    position: 0
 - id: results_file
   doc: ''
   type: string
   inputBinding:
-    position: 3
+    position: 1
 - id: summary_file
   doc: ''
   type: string
   inputBinding:
-    position: 4
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

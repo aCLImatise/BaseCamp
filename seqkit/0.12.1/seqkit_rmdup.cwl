@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: seqkit_rmdup.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqkit_rmdup.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: by_name
   doc: by full name instead of just id
   type: boolean
@@ -80,6 +75,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

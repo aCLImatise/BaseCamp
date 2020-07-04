@@ -1,27 +1,23 @@
 class: CommandLineTool
-id: calculate_coverage.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/calculate_coverage.py_input_fastx.cwl
 inputs:
-- id: input_fast_x
-  doc: 'Input (default: stdin).'
-  type: string
-  inputBinding:
-    position: 0
 - id: f
-  doc: Input format (fastq).
+  doc: ''
   type: string
   inputBinding:
     prefix: -f
 - id: s
-  doc: Genome size (None).
+  doc: ''
   type: string
   inputBinding:
     prefix: -s
-- id: p
-  doc: Save pickled results in this file.
+- id: calculate_coverage_do_tpy
+  doc: ''
   type: string
   inputBinding:
-    prefix: -p
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - calculate_coverage.py
+- input_fastx

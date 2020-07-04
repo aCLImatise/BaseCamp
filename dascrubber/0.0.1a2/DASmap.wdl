@@ -1,7 +1,14 @@
 version 1.0
 
 task DASmap {
+  input {
+    Boolean? p
+  }
   command <<<
-    DASmap
+    DASmap \
+      ~{true="-p" false="" p}
   >>>
+  parameter_meta {
+    p: ""
+  }
 }

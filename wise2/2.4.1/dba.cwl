@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dba.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dba.cwl
 inputs:
 - id: match_a
   doc: '[0.65]     match level A'
@@ -136,6 +136,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -errorstyle
+- id: seq_one
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: seq_two
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

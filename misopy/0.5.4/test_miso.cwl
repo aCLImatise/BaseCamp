@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: test_miso.cwl
+id: ../../../../home/ubuntu/BiocondaCli/test_miso.cwl
 inputs:
 - id: verbose
   doc: Verbose output
@@ -26,6 +26,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --buffer
+- id: test
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

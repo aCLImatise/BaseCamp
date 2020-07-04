@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: primer3_masker.cwl
+id: ../../../../home/ubuntu/BiocondaCli/primer3_masker.cwl
 inputs:
 - id: probability_cut_off
   doc: '- masking cutoff [0, 1] (default: >=0.1)'
@@ -17,8 +17,9 @@ inputs:
   inputBinding:
     prefix: --list_prefix
 - id: absolute_value_cut_off
-  doc: based on k-mer count; requires a single list name, defined with -l
-  type: string
+  doc: '- masking cutoff based on k-mer count; requires a single list name, defined
+    with -l'
+  type: boolean
   inputBinding:
     prefix: --absolute_value_cutoff
 - id: list
@@ -26,12 +27,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --list
-- id: mask_5p
+- id: mask_five_p
   doc: "- nucleotides to mask in 5' direction (default: 1)"
   type: boolean
   inputBinding:
     prefix: --mask_5p
-- id: mask_3p
+- id: mask_three_p
   doc: "- nucleotides to mask in 3' direction (default: 0)"
   type: boolean
   inputBinding:

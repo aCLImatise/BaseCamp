@@ -2,16 +2,22 @@ version 1.0
 
 task AxtSort {
   input {
-    String queryQuery
-    String byByScore
-    String? inInAXt
-    String? outOutAXt
+    Boolean? query
+    Boolean? by_score
+    String in_do_tax_t
+    String out_do_tax_t
   }
   command <<<
     axtSort \
-      ~{inInAXt} \
-      ~{if defined(queryQuery) then ("-query " +  '"' + queryQuery + '"') else ""} \
-      ~{if defined(byByScore) then ("-byScore " +  '"' + byByScore + '"') else ""} \
-      ~{outOutAXt}
+      ~{in_do_tax_t} \
+      ~{out_do_tax_t} \
+      ~{true="-query" false="" query} \
+      ~{true="-byScore" false="" by_score}
   >>>
+  parameter_meta {
+    query: "- Sort by query position, not target"
+    by_score: "- Sort by score"
+    in_do_tax_t: ""
+    out_do_tax_t: ""
+  }
 }

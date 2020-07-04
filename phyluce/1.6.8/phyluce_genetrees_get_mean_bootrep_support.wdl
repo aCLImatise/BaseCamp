@@ -2,16 +2,22 @@ version 1.0
 
 task PhyluceGenetreesGetMeanBootrepSupport {
   input {
-    String treesTrees
-    String configConfig
-    String schemaSchema
-    String rootRoot
+    String? trees
+    String? config
+    String? schema
+    String? root
   }
   command <<<
     phyluce_genetrees_get_mean_bootrep_support \
-      ~{if defined(treesTrees) then ("--trees " +  '"' + treesTrees + '"') else ""} \
-      ~{if defined(configConfig) then ("--config " +  '"' + configConfig + '"') else ""} \
-      ~{if defined(schemaSchema) then ("--schema " +  '"' + schemaSchema + '"') else ""} \
-      ~{if defined(rootRoot) then ("--root " +  '"' + rootRoot + '"') else ""}
+      ~{if defined(trees) then ("--trees " +  '"' + trees + '"') else ""} \
+      ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
+      ~{if defined(schema) then ("--schema " +  '"' + schema + '"') else ""} \
+      ~{if defined(root) then ("--root " +  '"' + root + '"') else ""}
   >>>
+  parameter_meta {
+    trees: "Tree file"
+    config: "config file"
+    schema: "The scheme of the input data"
+    root: "The taxon on which to root trees"
+  }
 }

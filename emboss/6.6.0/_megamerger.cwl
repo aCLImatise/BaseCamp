@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _megamerger.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_megamerger.cwl
 inputs:
 - id: word_size
   doc: integer    [20] Word size (Integer 2 or more)

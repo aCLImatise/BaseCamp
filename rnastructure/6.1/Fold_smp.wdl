@@ -2,14 +2,19 @@ version 1.0
 
 task FoldSmp {
   input {
-    String? foldFold
-    String? sequenceSequenceFile
-    String? ctCtFile
+    String fold
+    String sequence_file
+    String ct_file
   }
   command <<<
     Fold-smp \
-      ~{foldFold} \
-      ~{sequenceSequenceFile} \
-      ~{ctCtFile}
+      ~{fold} \
+      ~{sequence_file} \
+      ~{ct_file}
   >>>
+  parameter_meta {
+    fold: ""
+    sequence_file: ""
+    ct_file: ""
+  }
 }

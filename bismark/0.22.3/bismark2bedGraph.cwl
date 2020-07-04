@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: bismark2bedGraph.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bismark2bedGraph.cwl
 inputs:
+- id: o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
 - id: methylation
   doc: ''
   type: string
@@ -21,11 +26,6 @@ inputs:
   type: File
   inputBinding:
     position: 3
-- id: o
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -o
 outputs: []
 cwlVersion: v1.1
 baseCommand:

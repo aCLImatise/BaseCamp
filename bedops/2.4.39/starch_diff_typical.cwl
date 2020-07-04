@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: starch_diff_typical.cwl
+id: ../../../../home/ubuntu/BiocondaCli/starch_diff_typical.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

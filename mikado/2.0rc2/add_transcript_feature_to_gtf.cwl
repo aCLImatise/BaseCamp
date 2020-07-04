@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: add_transcript_feature_to_gtf.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/add_transcript_feature_to_gtf.py.cwl
 inputs:
 - id: script
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: to
+- id: var_1
   doc: ''
   type: string
   inputBinding:
@@ -31,12 +31,12 @@ inputs:
   type: string
   inputBinding:
     position: 5
-- id: to
+- id: var_6
   doc: ''
   type: string
   inputBinding:
     position: 6
-- id: eg
+- id: e_dot_gdot
   doc: ''
   type: string
   inputBinding:

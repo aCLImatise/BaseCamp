@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_snp_get_dbsnp_variability_for_all_uces.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_snp_get_dbsnp_variability_for_all_uces.cwl
 inputs:
 - id: dbsnp
   doc: CSV input from dbSNP giving SNP positions within UCE

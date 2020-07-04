@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: logname.cwl
+id: ../../../../home/ubuntu/BiocondaCli/logname.cwl
 inputs:
 - id: option
   doc: ''

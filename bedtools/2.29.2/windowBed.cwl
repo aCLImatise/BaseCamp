@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: windowBed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/windowBed.cwl
 inputs:
 - id: a_bam
   doc: The A input file is in BAM format.  Output will be BAM as well. Replaces -a.
@@ -17,20 +17,20 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -bed
-- id: w
+- id: base_pairs_added_upstream_downstream
   doc: Base pairs added upstream and downstream of each entry in A when searching
     for overlaps in B. - Creates symmetrical "windows" around A. - Default is 1000
     bp. - (INTEGER)
   type: boolean
   inputBinding:
     prefix: -w
-- id: l
+- id: base_pairs_added_upstream_left
   doc: Base pairs added upstream (left of) of each entry in A when searching for overlaps
     in B. - Allows one to define asymmetrical "windows". - Default is 1000 bp. - (INTEGER)
   type: boolean
   inputBinding:
     prefix: -l
-- id: r
+- id: base_pairs_added_downstream
   doc: Base pairs added downstream (right of) of each entry in A when searching for
     overlaps in B. - Allows one to define asymmetrical "windows". - Default is 1000
     bp. - (INTEGER)
@@ -43,31 +43,31 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -sw
-- id: sm
+- id: only_report_same
   doc: Only report hits in B that overlap A on the _same_ strand. - By default, overlaps
     are reported without respect to strand.
   type: boolean
   inputBinding:
     prefix: -sm
-- id: sm
+- id: only_report_opposite
   doc: Only report hits in B that overlap A on the _opposite_ strand. - By default,
     overlaps are reported without respect to strand.
   type: boolean
   inputBinding:
     prefix: -Sm
-- id: u
+- id: write_original_entry
   doc: Write the original A entry _once_ if _any_ overlaps found in B. - In other
     words, just report the fact >=1 hit was found.
   type: boolean
   inputBinding:
     prefix: -u
-- id: c
+- id: entry_report_number
   doc: For each entry in A, report the number of overlaps with B. - Reports 0 for
     A entries that have no overlap with B. - Overlaps restricted by -w, -l, and -r.
   type: boolean
   inputBinding:
     prefix: -c
-- id: v
+- id: only_report_entries
   doc: Only report those entries in A that have _no overlaps_ with B. - Similar to
     "grep -v."
   type: boolean
@@ -78,6 +78,26 @@ inputs:
   type: string
   inputBinding:
     prefix: -header
+- id: a
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -a
+- id: b
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -b
+- id: bed_tools
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: window
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

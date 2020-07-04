@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SAMstatsParallel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SAMstatsParallel.cwl
 inputs:
 - id: sorted_sam_file
   doc: Input SAM file. Use '-' if input is being piped from stdin. File must be sorted

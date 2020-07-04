@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pyprophet.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyprophet.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

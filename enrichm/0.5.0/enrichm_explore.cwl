@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: enrichm_explore.cwl
+id: ../../../../home/ubuntu/BiocondaCli/enrichm_explore.cwl
 inputs:
 - id: queries
   doc: '[--depth DEPTH]'
@@ -64,12 +64,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --force
-- id: queries
-  doc: A file containing the KEGG ids of the compounds from which to start in the
-    metabolic network
-  type: string
-  inputBinding:
-    prefix: --queries
 - id: depth
   doc: Number of steps to take into the metabolic network
   type: string

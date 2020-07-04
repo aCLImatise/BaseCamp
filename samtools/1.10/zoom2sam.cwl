@@ -1,22 +1,38 @@
 class: CommandLineTool
-id: zoom2sam.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/zoom2sam.pl_readLen.cwl
 inputs:
-- id: read_len
+- id: no
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: aln_zoom
+- id: such
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: p
+- id: file
   doc: ''
-  type: boolean
+  type: File
   inputBinding:
-    prefix: -p
+    position: 2
+- id: or
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: directory
+  doc: ''
+  type: Directory
+  inputBinding:
+    position: 4
+- id: at
+  doc: ''
+  type: string
+  inputBinding:
+    position: 5
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - zoom2sam.pl
+- readLen

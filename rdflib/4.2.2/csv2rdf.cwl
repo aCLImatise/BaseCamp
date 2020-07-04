@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: csv2rdf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csv2rdf.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

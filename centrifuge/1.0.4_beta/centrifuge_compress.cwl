@@ -1,36 +1,6 @@
 class: CommandLineTool
-id: centrifuge_compress.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/centrifuge_compress.pl.cwl
 inputs:
-- id: perl
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: centrifuge_compress_pl
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: path_to_download_files
-  doc: ''
-  type: File
-  inputBinding:
-    position: 2
-- id: path_to_tax_no_no_my
-  doc: ''
-  type: File
-  inputBinding:
-    position: 3
-- id: '1'
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
-- id: '50000000'
-  doc: ''
-  type: string
-  inputBinding:
-    position: 5
 - id: map
   doc: ''
   type: string
@@ -48,12 +18,12 @@ inputs:
     prefix: -noCompress
 - id: t
   doc: ''
-  type: boolean
+  type: string
   inputBinding:
     prefix: -t
 - id: maxg
   doc: ''
-  type: boolean
+  type: string
   inputBinding:
     prefix: -maxG
 - id: no_dust_masker
@@ -61,6 +31,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -noDustmasker
+- id: path_to_download_files
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
+- id: path_to_tax_no_no_my
+  doc: ''
+  type: File
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

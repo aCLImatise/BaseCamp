@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Genepop.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Genepop.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

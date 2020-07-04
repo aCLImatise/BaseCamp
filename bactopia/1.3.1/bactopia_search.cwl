@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: bactopia_search.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bactopia_search.py.cwl
 inputs:
-- id: str
-  doc: Taxon ID or Study accession
-  type: string
-  inputBinding:
-    position: 0
 - id: exact_tax_on
   doc: Exclude Taxon ID descendents.
   type: boolean
@@ -46,6 +41,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --genome_size
+- id: str
+  doc: Taxon ID or Study accession
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

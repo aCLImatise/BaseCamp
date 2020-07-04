@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: Circle_Map_Realign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Circle_Map_Realign.cwl
 inputs:
-- id: i
+- id: input_bam_file
   doc: 'Input: bam file containing the reads extracted by ReadExtractor'
   type: boolean
   inputBinding:
@@ -21,53 +21,53 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -fasta
-- id: o
+- id: output_filename
   doc: Output filename
   type: boolean
   inputBinding:
     prefix: -o
-- id: n
+- id: _nhits_number
   doc: ', --nhits          Number of realignment attempts. Default: 10'
   type: boolean
   inputBinding:
     prefix: -n
-- id: p
+- id: _probability_considering
   doc: ', --cut_off        Probability cut-off for considering a soft-clipped as realigned:
     Default: 0.99'
   type: boolean
   inputBinding:
     prefix: -p
-- id: m
+- id: _minsc_minimum
   doc: ', --min_sc         Minimum soft-clipped length to attempt the realignment.
     Default: 8'
   type: boolean
   inputBinding:
     prefix: -m
-- id: g
+- id: _gapopen_gap
   doc: ', --gap_open       Gap open penalty in the position specific scoring matrix.
     Default: 5'
   type: boolean
   inputBinding:
     prefix: -g
-- id: e
+- id: _gap_extension
   doc: ', --gap_ext        Gap extension penalty in the position specific scoring
     matrix. Default: 1'
   type: boolean
   inputBinding:
     prefix: -e
-- id: q
+- id: _mapq_minimum
   doc: ', --mapq           Minimum mapping quality allowed in the supplementary alignments.
     Default: 20'
   type: boolean
   inputBinding:
     prefix: -q
-- id: d
+- id: _editdistancefraction_maximum
   doc: ', --edit_distance-fraction  Maximum edit distance fraction allowed in the
     first realignment. Default (0.05)'
   type: boolean
   inputBinding:
     prefix: -d
-- id: q
+- id: _splitquality_minium
   doc: ', --split_quality  Minium split score to output an interval. Default (0.0)'
   type: boolean
   inputBinding:
@@ -77,19 +77,19 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --remap_splits
-- id: s
+- id: _split_number
   doc: ', --split          Number of required split reads to output a eccDNA. Default:
     0'
   type: boolean
   inputBinding:
     prefix: -S
-- id: o
+- id: _numberofdiscordants_number
   doc: ', --number_of_discordants  Number of required discordant reads for intervals
     with only discordants. Default: 3'
   type: boolean
   inputBinding:
     prefix: -O
-- id: r
+- id: _ratio_minimum
   doc: ', --ratio          Minimum in/out required coverage ratio. Default: 0.0'
   type: boolean
   inputBinding:
@@ -106,25 +106,25 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -sd
-- id: s
+- id: _samplesize_number
   doc: ', --sample_size    Number of concordant reads (R2F1) to use for estimating
     the insert size distribution. Default 100000'
   type: boolean
   inputBinding:
     prefix: -s
-- id: f
+- id: _mergefraction_merge
   doc: ', --merge_fraction  Merge intervals reciprocally overlapping by a fraction.
     Default 0.99'
   type: boolean
   inputBinding:
     prefix: -f
-- id: p
+- id: _intervalprobability_skip
   doc: ', --interval_probability  Skip edges of the graph with a probability below
     the threshold. Default: 0.01'
   type: boolean
   inputBinding:
     prefix: -P
-- id: k
+- id: _clusteringdist_cluster
   doc: ', --clustering_dist  Cluster reads that are K nucleotides appart in the same
     node. Default: 500'
   type: boolean
@@ -135,7 +135,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --only_discordants
-- id: f
+- id: _allelefrequency_minimum
   doc: ', --allele_frequency  Minimum allele frequency required to report the circle
     interval. Default (0.1)'
   type: boolean
@@ -146,7 +146,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no_coverage
-- id: b
+- id: _bases_number
   doc: ', --bases          Number of bases to extend for computing the coverage ratio.
     Default: 200'
   type: boolean
@@ -158,13 +158,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -cq
-- id: e
+- id: _extension_number
   doc: ', --extension      Number of bases inside the eccDNA breakpoint coordinates
     to compute the ratio. Default: 100'
   type: boolean
   inputBinding:
     prefix: -E
-- id: t
+- id: _threads_number
   doc: ', --threads        Number of threads to use.Default 1'
   type: boolean
   inputBinding:
@@ -174,7 +174,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -dir
-- id: v
+- id: _verbose_level
   doc: ', --verbose        Verbose level, 1=error,2=warning, 3=message'
   type: boolean
   inputBinding:

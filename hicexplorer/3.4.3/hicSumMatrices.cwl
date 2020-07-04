@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hicSumMatrices.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hicSumMatrices.cwl
 inputs:
 - id: matrices
   doc: '.h5 or cooler file format [.h5 or cooler file format ...], -m .h5 or cooler

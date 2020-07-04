@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: fastqe.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastqe.cwl
 inputs:
-- id: fast_a_file
-  doc: Input FASTQ files
-  type: string
-  inputBinding:
-    position: 0
 - id: min_len
   doc: Minimum length sequence to include in stats (default 0)
   type: string
@@ -41,6 +36,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --scale
+- id: fast_a_file
+  doc: Input FASTQ files
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

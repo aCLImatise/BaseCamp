@@ -1,32 +1,32 @@
 class: CommandLineTool
-id: roary.cwl
+id: ../../../../home/ubuntu/BiocondaCli/roary.cwl
 inputs:
-- id: p
+- id: number_of_threads
   doc: number of threads [1]
   type: long
   inputBinding:
     prefix: -p
-- id: o
+- id: clusters_output_filename
   doc: clusters output filename [clustered_proteins]
   type: string
   inputBinding:
     prefix: -o
-- id: f
+- id: output_directory
   doc: output directory [.]
   type: string
   inputBinding:
     prefix: -f
-- id: e
+- id: create_multifasta_alignment
   doc: create a multiFASTA alignment of core genes using PRANK
   type: boolean
   inputBinding:
     prefix: -e
-- id: n
+- id: fast_core_gene
   doc: fast core gene alignment with MAFFT, use with -e
   type: boolean
   inputBinding:
     prefix: -n
-- id: i
+- id: minimum_percentage_identity
   doc: minimum percentage identity for blastp [95]
   type: boolean
   inputBinding:
@@ -41,52 +41,52 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -qc
-- id: k
+- id: path_kraken_database
   doc: path to Kraken database for QC, use with -qc
   type: string
   inputBinding:
     prefix: -k
-- id: a
+- id: check_dependancies_versions
   doc: check dependancies and print versions
   type: boolean
   inputBinding:
     prefix: -a
-- id: b
+- id: blastp_executable
   doc: blastp executable [blastp]
   type: string
   inputBinding:
     prefix: -b
-- id: c
+- id: mcl_executable
   doc: mcl executable [mcl]
   type: string
   inputBinding:
     prefix: -c
-- id: d
+- id: mcxdeblast_executable
   doc: mcxdeblast executable [mcxdeblast]
   type: string
   inputBinding:
     prefix: -d
-- id: g
+- id: maximum_number_clusters
   doc: maximum number of clusters [50000]
   type: long
   inputBinding:
     prefix: -g
-- id: m
+- id: makeblastdb_executable
   doc: makeblastdb executable [makeblastdb]
   type: string
   inputBinding:
     prefix: -m
-- id: r
+- id: create_r_plots
   doc: create R plots, requires R and ggplot2
   type: boolean
   inputBinding:
     prefix: -r
-- id: s
+- id: do_split_paralogs
   doc: dont split paralogs
   type: boolean
   inputBinding:
     prefix: -s
-- id: t
+- id: translation_table
   doc: translation table [11]
   type: long
   inputBinding:
@@ -96,22 +96,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ap
-- id: z
+- id: delete_intermediate_files
   doc: dont delete intermediate files
   type: boolean
   inputBinding:
     prefix: -z
-- id: v
+- id: verbose_output_stdout
   doc: verbose output to STDOUT
   type: boolean
   inputBinding:
     prefix: -v
-- id: w
+- id: print_version_exit
   doc: print version and exit
   type: boolean
   inputBinding:
     prefix: -w
-- id: y
+- id: add_inference_information
   doc: add gene inference information to spreadsheet, doesnt work with -e
   type: boolean
   inputBinding:

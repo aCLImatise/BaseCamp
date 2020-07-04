@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: edamhasoutput.cwl
+id: ../../../../home/ubuntu/BiocondaCli/edamhasoutput.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

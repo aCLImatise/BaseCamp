@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pyprophet_export.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyprophet_export.cwl
 inputs:
 - id: in
   doc: PyProphet input file.  [required]

@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: IDFileConverter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/IDFileConverter.cwl
 inputs:
 - id: in
-  doc: "<path/file>*           Input file or directory containing the data to convert.\
-    \ This may be: - a single file in a multi-purpose XML format (.pepXML, .protXML,\
-    \ .idXML, .mzid), - a single file in a search engine-specific format (Mascot:\
-    \ .mascotXML, OMSSA: .omssaXML, X! Tandem: .xml, Percolator: .psms, xQuest: .xquest.xml),\
+  doc: "*           Input file or directory containing the data to convert. This may\
+    \ be: - a single file in a multi-purpose XML format (.pepXML, .protXML, .idXML,\
+    \ .mzid), - a single file in a search engine-specific format (Mascot: .mascotXML,\
+    \ OMSSA: .omssaXML, X! Tandem: .xml, Percolator: .psms, xQuest: .xquest.xml),\
     \ - a single text file (tab separated) with one line for all peptide sequences\
     \ matching a spectrum (top N hits), - for Sequest results, a directory containing\
     \ .out files. (valid formats: 'pepXML', 'protXML', 'mascotXML', 'omssaXML', 'xml',\
     \ 'psms', 'tsv', 'idXML', 'mzid', 'xquest.xml')"
-  type: boolean
+  type: File
   inputBinding:
     prefix: -in
 - id: out
@@ -28,7 +28,7 @@ inputs:
 - id: mz_file
   doc: "[pepXML, Sequest, Mascot, X! Tandem, mzid, Percolator only] Retention times\
     \ and native spectrum ids (spectrum_references) will be looked up in this file\
-    \ (valid formats: 'mzML', 'mzX ML', 'mzData')"
+    \ (valid formats: 'mzML', 'mzXML', 'mzData')"
   type: File
   inputBinding:
     prefix: -mz_file

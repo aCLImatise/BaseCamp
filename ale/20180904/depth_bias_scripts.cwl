@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: depth_bias_scripts.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/depth_bias_scripts.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

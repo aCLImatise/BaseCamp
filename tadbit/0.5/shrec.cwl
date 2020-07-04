@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: shrec.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/shrec.py.cwl
 inputs:
 - id: in_file
   doc: matrix file.

@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: coverm_contig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/coverm_contig.cwl
 inputs:
-- id: reference
-  doc: '...'
+- id: contig_end_exclusion
+  doc: ''
   type: string
   inputBinding:
-    prefix: --reference
-- id: single
-  doc: '...'
+    prefix: --contig-end-exclusion
+- id: coupled
+  doc: ''
   type: string
   inputBinding:
-    prefix: --single
+    prefix: --coupled
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sketchy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sketchy.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: indexdb_rna.cwl
+id: ../../../../home/ubuntu/BiocondaCli/indexdb_rna.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

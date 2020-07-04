@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: tpage.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tpage.cwl
 inputs:
-- id: files
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: define
   doc: =value       Define template variable
   type: string
@@ -126,7 +121,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --compile_dir
-- id: perl5lib
+- id: perl_five_lib
   doc: Specify additional Perl library directories
   type: string
   inputBinding:
@@ -141,6 +136,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --while_max
+- id: files
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

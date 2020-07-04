@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: graph2asqg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/graph2asqg.cwl
 inputs:
 - id: b
   doc: '# (required)'
   type: string
   inputBinding:
     prefix: -b
-- id: r
+- id: optional_default_basename
   doc: '# (optional, default: <basename>) '
   type: string
   inputBinding:
@@ -16,7 +16,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -l
-- id: n
+- id: optional_use_ids
   doc: '# (optional) use numeric IDs instead of FASTA IDs'
   type: boolean
   inputBinding:

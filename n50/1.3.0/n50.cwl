@@ -1,26 +1,16 @@
 class: CommandLineTool
-id: n50.cwl
+id: ../../../../home/ubuntu/BiocondaCli/n50.cwl
 inputs:
-- id: type
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: n50
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: full
   doc: ''
   type: string
   inputBinding:
-    position: 2
+    position: 0
 - id: manual
   doc: ''
   type: string
   inputBinding:
-    position: 3
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

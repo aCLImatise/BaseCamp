@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: stag_autoschema.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stag_autoschema.pl.cwl
 inputs:
-- id: p
+- id: parser_format_format
   doc: '|parser FORMAT FORMAT is one of xml, sxpr or itext, or the name of a perl
     module xml assumed as default'
   type: boolean
@@ -12,7 +12,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -dtd
-- id: w
+- id: writer_format_format
   doc: '|writer FORMAT FORMAT is one of xml, sxpr or itext, or the name of a perl
     module, OR DTD The default is sxpr note that stag schemas exported as xml will
     be invalid xml, due to the use of symbols *, +, ? in the node names'

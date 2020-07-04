@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: mb_bsfinder.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mb_bsfinder.cwl
 inputs:
-- id: input_file
-  doc: path to the inputfile *.pileup
-  type: string
-  inputBinding:
-    position: 0
-- id: output_file
-  doc: define output file *.table
-  type: string
-  inputBinding:
-    position: 1
 - id: threshold
   doc: set maximum p-value for site selection
   type: string

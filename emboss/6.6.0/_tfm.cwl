@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _tfm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_tfm.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

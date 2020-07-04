@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: menecof.cwl
+id: ../../../../home/ubuntu/BiocondaCli/menecof.cwl
 inputs:
 - id: draft_net
   doc: metabolic network in SBML format

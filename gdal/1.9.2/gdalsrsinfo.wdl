@@ -2,10 +2,13 @@ version 1.0
 
 task Gdalsrsinfo {
   input {
-    String? srsSrsDef
+    String srs_def
   }
   command <<<
     gdalsrsinfo \
-      ~{srsSrsDef}
+      ~{srs_def}
   >>>
+  parameter_meta {
+    srs_def: ""
+  }
 }

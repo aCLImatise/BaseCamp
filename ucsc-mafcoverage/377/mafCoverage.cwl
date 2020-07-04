@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: mafCoverage.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mafCoverage.cwl
 inputs:
-- id: database
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: maf_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: restrict
   doc: Restrict to parts in restrict.bed
   type: string
@@ -21,6 +11,16 @@ inputs:
   type: string
   inputBinding:
     prefix: -count
+- id: database
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: maf_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

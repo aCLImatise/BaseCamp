@@ -1,11 +1,16 @@
 class: CommandLineTool
-id: homGeneMapping.cwl
+id: ../../../../home/ubuntu/BiocondaCli/homGeneMapping.cwl
 inputs:
-- id: name_of_genome_n
-  doc: path/to/genefile/of/genome_N  path/to/hintsfile/of/genome_N
+- id: gt_fs
+  doc: ''
   type: string
   inputBinding:
-    position: 0
+    prefix: --gtfs
+- id: hal_file
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --halfile
 outputs: []
 cwlVersion: v1.1
 baseCommand:

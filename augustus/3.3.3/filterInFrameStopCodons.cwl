@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filterInFrameStopCodons.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filterInFrameStopCodons.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

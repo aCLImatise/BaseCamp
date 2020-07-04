@@ -2,14 +2,19 @@ version 1.0
 
 task SortPsl {
   input {
-    String? validateValidateContigsBlat
-    String? reReFfa
-    String? contigsContigsFa
+    String validate_contigs_blat
+    String ref_dot_fa
+    String contigs_dot_fa_dot
   }
   command <<<
     sort_psl \
-      ~{validateValidateContigsBlat} \
-      ~{reReFfa} \
-      ~{contigsContigsFa}
+      ~{validate_contigs_blat} \
+      ~{ref_dot_fa} \
+      ~{contigs_dot_fa_dot}
   >>>
+  parameter_meta {
+    validate_contigs_blat: ""
+    ref_dot_fa: ""
+    contigs_dot_fa_dot: ""
+  }
 }

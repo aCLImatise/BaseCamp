@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: plasmidtron.cwl
+id: ../../../../home/ubuntu/BiocondaCli/plasmidtron.cwl
 inputs:
-- id: output_directory
-  doc: Output directory
-  type: string
-  inputBinding:
-    position: 0
-- id: file_of_traits
-  doc: File of filenames of trait (case) FASTQs
-  type: File
-  inputBinding:
-    position: 1
-- id: file_of_non_traits
-  doc: File of filenames of nontrait (control) FASTQs
-  type: File
-  inputBinding:
-    position: 2
 - id: action
   doc: Control how the traits kmers are filtered for assembly [union]
   type: string
@@ -101,6 +86,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: output_directory
+  doc: Output directory
+  type: string
+  inputBinding:
+    position: 0
+- id: file_of_traits
+  doc: File of filenames of trait (case) FASTQs
+  type: File
+  inputBinding:
+    position: 1
+- id: file_of_non_traits
+  doc: File of filenames of nontrait (control) FASTQs
+  type: File
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

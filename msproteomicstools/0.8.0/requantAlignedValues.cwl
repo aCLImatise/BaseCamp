@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: requantAlignedValues.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/requantAlignedValues.py.cwl
 inputs:
 - id: in
   doc: A list of transformation files in the same folder as the .chrom.mzML files

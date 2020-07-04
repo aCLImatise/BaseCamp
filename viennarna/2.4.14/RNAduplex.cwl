@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNAduplex.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAduplex.cwl
 inputs:
 - id: detailed_help
   doc: Print help, including all details and hidden options, and exit
@@ -27,6 +27,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --deltaEnergy
+- id: temp
+  doc: Rescale energy parameters to a temperature of temp C. Default is 37C.
+  type: string
+  inputBinding:
+    prefix: --temp
+- id: no_tetra
+  doc: Do not include special tabulated stabilizing energies for tri-, tetra- and
+    hexaloop hairpins. Mostly for testing. (default=off)
+  type: boolean
+  inputBinding:
+    prefix: --noTetra
 - id: dangles
   doc: How to treat "dangling end" energies for bases adjacent to helices in free
     ends and multi-loops (default=`2')

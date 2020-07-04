@@ -2,14 +2,19 @@ version 1.0
 
 task Chartex {
   input {
-    Boolean chartChartName
-    String chartChartName
-    String manMan
+    String? man
+    Boolean? chart_name
+    File file_dot_xls
   }
   command <<<
     chartex \
-      ~{true="--chartname" false="" chartChartName} \
-      ~{if defined(chartChartName) then ("--chartname " +  '"' + chartChartName + '"') else ""} \
-      ~{if defined(manMan) then ("--man " +  '"' + manMan + '"') else ""}
+      ~{file_dot_xls} \
+      ~{if defined(man) then ("--man " +  '"' + man + '"') else ""} \
+      ~{true="--chartname" false="" chart_name}
   >>>
+  parameter_meta {
+    man: "Prints the manual page and exits."
+    chart_name: ""
+    file_dot_xls: ""
+  }
 }

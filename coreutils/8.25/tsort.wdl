@@ -2,12 +2,16 @@ version 1.0
 
 task Tsort {
   input {
-    String? optionOption
-    File? fileFile
+    String? option
+    File? file
   }
   command <<<
     tsort \
-      ~{optionOption} \
-      ~{fileFile}
+      ~{option} \
+      ~{file}
   >>>
+  parameter_meta {
+    option: ""
+    file: ""
+  }
 }

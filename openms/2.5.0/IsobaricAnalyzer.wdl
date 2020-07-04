@@ -2,40 +2,31 @@ version 1.0
 
 task IsobaricAnalyzer {
   input {
-    String typeType
-    File inIn
-    File outOut
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
-    Boolean extractionExtraction
-    Boolean itraq4plexItraq4plex
-    Boolean itraq8plexItraq8plex
-    Boolean quantificationQuantification
-    Boolean tmt10plexTmt10plex
-    Boolean tmt11plexTmt11plex
-    Boolean tmt16plexTmt16plex
-    Boolean tmt6plexTmt6plex
-    Boolean httpHttp
+    String? type
+    File? in
+    File? out
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     IsobaricAnalyzer \
-      ~{if defined(typeType) then ("-type " +  '"' + typeType + '"') else ""} \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp} \
-      ~{true="- extraction" false="" extractionExtraction} \
-      ~{true="- itraq4plex" false="" itraq4plexItraq4plex} \
-      ~{true="- itraq8plex" false="" itraq8plexItraq8plex} \
-      ~{true="- quantification" false="" quantificationQuantification} \
-      ~{true="- tmt10plex" false="" tmt10plexTmt10plex} \
-      ~{true="- tmt11plex" false="" tmt11plexTmt11plex} \
-      ~{true="- tmt16plex" false="" tmt16plexTmt16plex} \
-      ~{true="- tmt6plex" false="" tmt6plexTmt6plex} \
-      ~{true="- http" false="" httpHttp}
+      ~{if defined(type) then ("-type " +  '"' + type + '"') else ""} \
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    type: "Isobaric Quantitation method used in the experiment. (default: 'itraq4plex' valid: 'itraq4plex', 'itraq8plex', 'tmt10plex', 'tmt11plex', 'tmt16plex', 'tmt6plex')"
+    in: "*        Input raw/picked data file  (valid formats: 'mzML')"
+    out: "*       Output consensusXML file with quantitative information (valid formats: 'consensusXML')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

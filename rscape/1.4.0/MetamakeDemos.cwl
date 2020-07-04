@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MetamakeDemos.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MetamakeDemos.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

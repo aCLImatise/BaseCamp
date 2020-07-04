@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gottcha.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gottcha.pl.cwl
 inputs:
 - id: input
   doc: '|i    <STRING>  Input one or multiple FASTQ file(s). Use comma (,) to separate
@@ -122,6 +122,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --minHits
+- id: help_slash_h_slash
+  doc: '?             display this help                   '
+  type: boolean
+  inputBinding:
+    prefix: --help/h/
 outputs: []
 cwlVersion: v1.1
 baseCommand:

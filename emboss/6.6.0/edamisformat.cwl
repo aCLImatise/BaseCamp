@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: edamisformat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/edamisformat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: CIRCexplorer2_annotate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CIRCexplorer2_annotate.cwl
 inputs:
 - id: ref
   doc: Gene annotation.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FilterFusionByNormalPaired.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FilterFusionByNormalPaired.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

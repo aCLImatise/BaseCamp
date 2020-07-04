@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: decompose.cwl
+id: ../../../../home/ubuntu/BiocondaCli/decompose.cwl
 inputs:
-- id: file_path
-  doc: Alignment file that contains all samples and sequences in FASTA format
-  type: File
-  inputBinding:
-    position: 0
 - id: min_entropy
   doc: 'Minimum entropy for a component to have in order to be picked as a discriminant.
     Defeault: 0.096500'
@@ -159,6 +154,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quick
+- id: file_path
+  doc: Alignment file that contains all samples and sequences in FASTA format
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

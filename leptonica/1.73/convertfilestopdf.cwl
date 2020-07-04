@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: convertfilestopdf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/convertfilestopdf.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

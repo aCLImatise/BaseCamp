@@ -1,32 +1,27 @@
 class: CommandLineTool
-id: esl_construct.cwl
+id: ../../../../home/ubuntu/BiocondaCli/esl_construct.cwl
 inputs:
-- id: msa_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: a
+- id: print_info_conflicting
   doc: ': print info on all conflicting bps in individual structures'
   type: boolean
   inputBinding:
     prefix: -a
-- id: v
+- id: _be_verbose
   doc: ': be verbose'
   type: boolean
   inputBinding:
     prefix: -v
-- id: x
+- id: set_sscons_bps
   doc: ': set SS_cons as max set of non-conflicting bps from indi SSs'
   type: boolean
   inputBinding:
     prefix: -x
-- id: r
+- id: remove_sscons_basepairs
   doc: ': remove SS_cons basepairs that conflicts with > 0 indi SS'
   type: boolean
   inputBinding:
     prefix: -r
-- id: c
+- id: set_sscons_indi
   doc: ': set SS_cons as indi SS with max bps consistent with SS_cons'
   type: boolean
   inputBinding:
@@ -56,7 +51,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --fmin
-- id: o
+- id: output_new_alignment
   doc: ': output a new alignment to file <f>'
   type: string
   inputBinding:
@@ -66,7 +61,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --pfam
-- id: l
+- id: list_seqs_w
   doc: ': list seqs w/> 0 indi bp that conflicts w/a SS_cons bp to file <f>'
   type: string
   inputBinding:
@@ -76,6 +71,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --lmax
+- id: msa_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

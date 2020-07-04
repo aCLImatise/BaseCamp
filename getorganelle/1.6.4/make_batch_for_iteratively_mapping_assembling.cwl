@@ -1,27 +1,37 @@
 class: CommandLineTool
-id: make_batch_for_iteratively_mapping_assembling.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/make_batch_for_iteratively_mapping_assembling.py.cwl
 inputs:
-- id: s
+- id: input_st_fastq
+  doc: Input 1st fastq format file as pool
+  type: string
+  inputBinding:
+    prefix: '-1'
+- id: input_nd_fastq
+  doc: Input 2nd fastq format file as pool
+  type: string
+  inputBinding:
+    prefix: '-2'
+- id: input_fasta_format
   doc: Input fasta format file as initial seed
   type: string
   inputBinding:
     prefix: -s
-- id: r
+- id: how_many_iterations
   doc: How many iterations would you like to have? Default=3
   type: string
   inputBinding:
     prefix: -R
-- id: t
+- id: theads_used_default
   doc: theads used for bowtie2 and SPAdes. Default=1
   type: string
   inputBinding:
     prefix: -t
-- id: k
+- id: spades_kmer_settings
   doc: SPAdes k-mer settings. Use the same format as in SPAdes. Default=21,45,65,85,105
   type: string
   inputBinding:
     prefix: -k
-- id: o
+- id: executable_output_batch
   doc: Executable output batch file.
   type: string
   inputBinding:
@@ -36,7 +46,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --random-seed
-- id: which_bowtie2
+- id: which_bowtie_two
   doc: 'Assign the path to Bowtie2 binary files if not added to the path. Default:
     try GetOrganelleDep/linux/bowtie2 first, then $PATH'
   type: string

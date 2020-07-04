@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: biom_subset_table.cwl
+id: ../../../../home/ubuntu/BiocondaCli/biom_subset_table.cwl
 inputs:
-- id: input_hdf5_fp
+- id: input_hdf_five_fp
   doc: the input hdf5 BIOM table filepath to subset
   type: File
   inputBinding:

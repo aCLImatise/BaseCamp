@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: sortsam.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sortsam.cwl
 inputs:
-- id: sort
-  doc: chromosome position
-  type: string
+- id: pos
+  doc: -- Sort by chromosome position
+  type: boolean
   inputBinding:
-    prefix: -- Sort
-- id: sort
-  doc: read_index position
-  type: string
+    prefix: -pos
+- id: idx
+  doc: -- Sort by read_index position
+  type: boolean
   inputBinding:
-    prefix: -- Sort
+    prefix: -idx
 outputs: []
 cwlVersion: v1.1
 baseCommand:

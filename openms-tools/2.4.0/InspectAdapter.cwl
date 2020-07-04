@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: InspectAdapter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/InspectAdapter.cwl
 inputs:
 - id: in
   doc: "*                      Input file in mzXML or mzData format. Note: In mode\
@@ -131,37 +131,6 @@ inputs:
   type: string
   inputBinding:
     prefix: -p_value
-- id: blind
-  doc: :blind                     Perform a blind search (allowing arbitrary modification
-    masses), is preceeded by a normal search to gain a smaller database. (in full
-    mode only)
-  type: boolean
-  inputBinding:
-    prefix: -blind
-- id: blind
-  doc: :blind_only                Like blind but no prior search is performed to reduce
-    the database size
-  type: boolean
-  inputBinding:
-    prefix: -blind
-- id: blind
-  doc: ":p_value_blind <prob>      Used for generating the minimized database (default:\
-    \ '1')"
-  type: boolean
-  inputBinding:
-    prefix: -blind
-- id: blind
-  doc: :snd_db <file>             Name of the minimized trie database generated when
-    using blind mode.
-  type: boolean
-  inputBinding:
-    prefix: -blind
-- id: blind
-  doc: ":max_ptm_size <num>        Maximum modification size (in Da) to consider (default:\
-    \ '250')"
-  type: boolean
-  inputBinding:
-    prefix: -blind
 - id: contact_name
   doc: "Name of the contact (default: 'unknown')"
   type: string

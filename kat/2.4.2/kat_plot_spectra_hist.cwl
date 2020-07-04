@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: kat_plot_spectra_hist.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kat_plot_spectra_hist.cwl
 inputs:
-- id: histo_files
-  doc: The input histogram file from KAT
-  type: string
-  inputBinding:
-    position: 0
 - id: output
   doc: The path to the output file.
   type: string
@@ -86,6 +81,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: histo_files
+  doc: The input histogram file from KAT
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

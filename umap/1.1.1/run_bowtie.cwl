@@ -1,6 +1,21 @@
 class: CommandLineTool
-id: run_bowtie.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_bowtie.py.cwl
 inputs:
+- id: bis_map
+  doc: Run bowtie with --norc
+  type: boolean
+  inputBinding:
+    prefix: -Bismap
+- id: var_id
+  doc: HPC environmental variable for JOB ID
+  type: string
+  inputBinding:
+    prefix: -var_id
+- id: job_id
+  doc: 1-based index for selecting a k-mer file
+  type: string
+  inputBinding:
+    prefix: -job_id
 - id: km_er_dir
   doc: Directory containing the .kmer files
   type: string
@@ -21,21 +36,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: bis_map
-  doc: Run bowtie with --norc
-  type: boolean
-  inputBinding:
-    prefix: -Bismap
-- id: var_id
-  doc: HPC environmental variable for JOB ID
-  type: string
-  inputBinding:
-    prefix: -var_id
-- id: job_id
-  doc: 1-based index for selecting a k-mer file
-  type: string
-  inputBinding:
-    prefix: -job_id
 outputs: []
 cwlVersion: v1.1
 baseCommand:

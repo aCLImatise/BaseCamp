@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nucleosome_prediction.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nucleosome_prediction.pl.cwl
 inputs:
 - id: raw_binding
   doc: ': Output the raw nucleosome binding log-ratio per basepair instead of the
@@ -7,17 +7,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -raw_binding
-- id: t
+- id: _title
   doc: ':    Title.'
   type: string
   inputBinding:
     prefix: -t
-- id: s
+- id: sequence_file_format
   doc: ':    Sequence file (fasta format).'
   type: string
   inputBinding:
     prefix: -s
-- id: c
+- id: nucleosomes_concentration_default
   doc: ':    Nucleosomes concentration (default: 0.1).'
   type: string
   inputBinding:
@@ -27,7 +27,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -temp
-- id: p
+- id: prefix_use_default
   doc: ':    Prefix of output files to use (default: the process id).'
   type: string
   inputBinding:

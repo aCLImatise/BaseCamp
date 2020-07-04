@@ -1,7 +1,17 @@
 class: CommandLineTool
-id: kneaddata_bowtie2_discordant_pairs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kneaddata_bowtie2_discordant_pairs.cwl
 inputs:
-- id: x
+- id: one
+  doc: the fastq file of pair1 reads
+  type: string
+  inputBinding:
+    prefix: '-1'
+- id: two
+  doc: the fastq file of pair2 reads
+  type: string
+  inputBinding:
+    prefix: '-2'
+- id: database_index_file
   doc: the database index file
   type: string
   inputBinding:
@@ -26,17 +36,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --al-single
-- id: u
+- id: fastq_files_orphan
   doc: the fastq files of orphan reads in comma-delimited list
   type: string
   inputBinding:
     prefix: -U
-- id: s
+- id: file_write_output
   doc: the file to write the sam output
   type: string
   inputBinding:
     prefix: -S
-- id: bowtie2
+- id: bowtie_two
   doc: the path to the bowtie2 executable
   type: string
   inputBinding:
@@ -46,7 +56,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --threads
-- id: bowtie2_options
+- id: bowtie_two_options
   doc: the bowtie2 options to apply
   type: string
   inputBinding:

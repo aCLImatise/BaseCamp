@@ -1,16 +1,21 @@
 class: CommandLineTool
-id: bioconductor_sc3_scripts_post_install_tests.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bioconductor_sc3_scripts_post_install_tests.sh.cwl
 inputs:
+- id: r_seurat_workflow_post_install_tests_dots_h
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 - id: action
-  doc: ": what action to take, 'test' or 'clean'"
-  type: boolean
+  doc: ''
+  type: string
   inputBinding:
-    prefix: '- action'
+    position: 1
 - id: use_existing_outputs
-  doc: ", 'true' or 'false'"
-  type: boolean
+  doc: ''
+  type: string
   inputBinding:
-    prefix: '- use_existing_outputs'
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

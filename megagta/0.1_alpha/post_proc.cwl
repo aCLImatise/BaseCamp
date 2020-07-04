@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: post_proc.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/post_proc.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

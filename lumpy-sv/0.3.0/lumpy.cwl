@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: lumpy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lumpy.cwl
 inputs:
-- id: g
+- id: genome_file_defines
   doc: Genome file (defines chromosome order)
   type: boolean
   inputBinding:
     prefix: -g
-- id: e
+- id: show_evidence_call
   doc: Show evidence for each call
   type: boolean
   inputBinding:
     prefix: -e
-- id: w
+- id: file_read_default
   doc: File read windows size (default 1000000)
   type: boolean
   inputBinding:
@@ -31,22 +31,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -tt
-- id: x
+- id: exclude_file_bed
   doc: exclude file bed file
   type: boolean
   inputBinding:
     prefix: -x
-- id: t
+- id: temp_file_prefix
   doc: temp file prefix, must be to a writeable directory
   type: boolean
   inputBinding:
     prefix: -t
-- id: p
+- id: output_probability_curve
   doc: output probability curve for each variant
   type: boolean
   inputBinding:
     prefix: -P
-- id: b
+- id: output_instead_vcf
   doc: output BEDPE instead of VCF
   type: boolean
   inputBinding:

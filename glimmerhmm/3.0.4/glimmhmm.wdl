@@ -1,15 +1,20 @@
 version 1.0
 
-task Glimmhmm.plTrainDir {
+task Glimmhmm.pl {
   input {
-    String? glimmerGlimmerHmmProgram
-    String? fastFastAFile
-    String? trainTrainDir
+    String glimmer_hmm_program
+    String fast_a_file
+    String train_dir
   }
   command <<<
-    glimmhmm.pl train_dir \
-      ~{glimmerGlimmerHmmProgram} \
-      ~{fastFastAFile} \
-      ~{trainTrainDir}
+    glimmhmm.pl \
+      ~{glimmer_hmm_program} \
+      ~{fast_a_file} \
+      ~{train_dir}
   >>>
+  parameter_meta {
+    glimmer_hmm_program: ""
+    fast_a_file: ""
+    train_dir: ""
+  }
 }

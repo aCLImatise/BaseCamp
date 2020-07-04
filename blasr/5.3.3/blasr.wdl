@@ -2,40 +2,58 @@ version 1.0
 
 task Blasr {
   input {
-    Boolean noNoSplitSubReads
-    Boolean polymerasePolymerase
-    Boolean ignoreIgnoreHqRegions
-    Boolean placePlaceRepeatsRandomly
-    Boolean allowAllowAdjacentIndels
-    Boolean fastFastSdp
-    String maxMaxScore
-    Boolean minMinAlnlength
-    Boolean minMinPctSimilarity
-    Boolean minMinPctAccuracy
-    String nprocNproc
-    String startStart
-    String strideStride
-    Boolean subsampleSubsample
-    String holeHoleNumbers
-    String? leftmostLeftmost
+    Boolean? no_split_sub_reads
+    Boolean? polymerase
+    Boolean? ignore_hq_regions
+    Boolean? place_repeats_randomly
+    Boolean? allow_adjacent_indels
+    Boolean? fast_sdp
+    String? max_score
+    Boolean? min_alnlength
+    Boolean? min_pct_similarity
+    Boolean? min_pct_accuracy
+    String? nproc
+    String? start
+    String? stride
+    Boolean? subsample
+    String? hole_numbers
+    String leftmost
   }
   command <<<
     blasr \
-      ~{leftmostLeftmost} \
-      ~{true="--noSplitSubreads" false="" noNoSplitSubReads} \
-      ~{true="--polymerase" false="" polymerasePolymerase} \
-      ~{true="--ignoreHQRegions" false="" ignoreIgnoreHqRegions} \
-      ~{true="--placeRepeatsRandomly" false="" placePlaceRepeatsRandomly} \
-      ~{true="--allowAdjacentIndels" false="" allowAllowAdjacentIndels} \
-      ~{true="--fastSDP" false="" fastFastSdp} \
-      ~{if defined(maxMaxScore) then ("--maxScore " +  '"' + maxMaxScore + '"') else ""} \
-      ~{true="--minAlnLength" false="" minMinAlnlength} \
-      ~{true="--minPctSimilarity" false="" minMinPctSimilarity} \
-      ~{true="--minPctAccuracy" false="" minMinPctAccuracy} \
-      ~{if defined(nprocNproc) then ("--nproc " +  '"' + nprocNproc + '"') else ""} \
-      ~{if defined(startStart) then ("--start " +  '"' + startStart + '"') else ""} \
-      ~{if defined(strideStride) then ("--stride " +  '"' + strideStride + '"') else ""} \
-      ~{true="--subsample" false="" subsampleSubsample} \
-      ~{if defined(holeHoleNumbers) then ("--holeNumbers " +  '"' + holeHoleNumbers + '"') else ""}
+      ~{leftmost} \
+      ~{true="--noSplitSubreads" false="" no_split_sub_reads} \
+      ~{true="--polymerase" false="" polymerase} \
+      ~{true="--ignoreHQRegions" false="" ignore_hq_regions} \
+      ~{true="--placeRepeatsRandomly" false="" place_repeats_randomly} \
+      ~{true="--allowAdjacentIndels" false="" allow_adjacent_indels} \
+      ~{true="--fastSDP" false="" fast_sdp} \
+      ~{if defined(max_score) then ("--maxScore " +  '"' + max_score + '"') else ""} \
+      ~{true="--minAlnLength" false="" min_alnlength} \
+      ~{true="--minPctSimilarity" false="" min_pct_similarity} \
+      ~{true="--minPctAccuracy" false="" min_pct_accuracy} \
+      ~{if defined(nproc) then ("--nproc " +  '"' + nproc + '"') else ""} \
+      ~{if defined(start) then ("--start " +  '"' + start + '"') else ""} \
+      ~{if defined(stride) then ("--stride " +  '"' + stride + '"') else ""} \
+      ~{true="--subsample" false="" subsample} \
+      ~{if defined(hole_numbers) then ("--holeNumbers " +  '"' + hole_numbers + '"') else ""}
   >>>
+  parameter_meta {
+    no_split_sub_reads: "Do not split subreads at adapters. This is typically only  useful when the genome in an unrolled version of a known template, and  contains template-adapter-reverse_template sequence. For BAM input it reconstitutes full ZMW reads."
+    polymerase: "Instead of reconstituting ZMW reads, this option reconstitutes polymerase reads, omitting LQ regions. Polymerase reads are aligned, if at least one subread is present."
+    ignore_hq_regions: "(false)Ignore any hq regions in the region table."
+    place_repeats_randomly: "(false)"
+    allow_adjacent_indels: "When specified, adjacent insertion or deletions are allowed. Otherwise, adjacent  insertion and deletions are merged into one operation.  Using quality values  to guide pairwise alignments may dictate that the higher probability alignment  contains adjacent insertions or deletions.  Current tools such as GATK do not permit this and so they are not reported by default."
+    fast_sdp: "(false) Use a fast heuristic algorithm to speed up sparse dynamic programming."
+    max_score: "(-200) Maximum score to output (high is bad, negative good)."
+    min_alnlength: "(0) Report alignments only if their lengths are greater than minAlnLength."
+    min_pct_similarity: "(0) Report alignments only if their percentage similarity is greater than minPctSimilarity."
+    min_pct_accuracy: "(0) Report alignments only if their percentage accuracy is greater than minAccuracy."
+    nproc: "(1) Align using N processes.  All large data structures such as the suffix array and  tuple count table are shared."
+    start: "(0) Index of the first read to begin aligning. This is useful when multiple instances  are running on the same data, for example when on a multi-rack cluster."
+    stride: "(1) Align one read every 'S' reads."
+    subsample: "(0) Proportion of reads to randomly subsample (expressed as a decimal) and align."
+    hole_numbers: "When specified, only align reads whose ZMW hole numbers are in LIST. LIST is a comma-delimited string of ranges, such as '1,2,3,10-13'. This option only works when reads are in bam, bax.h5 or plx.h5 format."
+    leftmost: ": report an alignment which has the best alignmentscore and has the smallest mapping coordinate in any reference."
+  }
 }

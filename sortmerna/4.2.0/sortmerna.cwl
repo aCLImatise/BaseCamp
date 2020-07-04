@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: sortmerna.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sortmerna.cwl
 inputs:
-- id: dbg_put_db
-  doc: 'BOOL        Optional  '
-  type: boolean
-  inputBinding:
-    prefix: --dbg_put_db
 - id: cmd
   doc: BOOL        Optional  Launch an interactive session (command prompt)          False
   type: boolean
@@ -18,6 +13,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --task
+- id: ref
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --ref
+- id: reads
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --reads
 outputs: []
 cwlVersion: v1.1
 baseCommand:

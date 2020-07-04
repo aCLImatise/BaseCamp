@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: LoRMA.cwl
+id: ../../../../home/ubuntu/BiocondaCli/LoRMA.cwl
 inputs:
 - id: best_friends
   doc: "(1 arg) :    Number of best friends  [default '3']"
@@ -11,7 +11,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -friends
-- id: k
+- id: arg_kmer_length
   doc: "(1 arg) :    kmer length  [default '31']"
   type: boolean
   inputBinding:

@@ -2,14 +2,19 @@ version 1.0
 
 task Trnascan1.4 {
   input {
-    Boolean optionsOptions
-    String? trnascanTrnascan
-    String? seqSeqFile
+    Boolean? options
+    String trnascan
+    String seq_file
   }
   command <<<
     trnascan-1.4 \
-      ~{trnascanTrnascan} \
-      ~{true="-options" false="" optionsOptions} \
-      ~{seqSeqFile}
+      ~{trnascan} \
+      ~{seq_file} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    options: ""
+    trnascan: ""
+    seq_file: ""
+  }
 }

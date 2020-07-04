@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: formcon.cwl
+id: ../../../../home/ubuntu/BiocondaCli/formcon.cwl
 inputs:
 - id: file_of_reads
   doc: file of DNA reads in FASTA format

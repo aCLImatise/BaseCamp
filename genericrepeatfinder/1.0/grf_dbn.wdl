@@ -2,12 +2,16 @@ version 1.0
 
 task GrfDbn {
   input {
-    String? inputInputFastA
-    String? outputOutputDbn
+    String input_fast_a
+    String output_dbn
   }
   command <<<
     grf-dbn \
-      ~{inputInputFastA} \
-      ~{outputOutputDbn}
+      ~{input_fast_a} \
+      ~{output_dbn}
   >>>
+  parameter_meta {
+    input_fast_a: ""
+    output_dbn: ""
+  }
 }

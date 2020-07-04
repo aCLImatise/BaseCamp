@@ -2,14 +2,19 @@ version 1.0
 
 task SentieonBwaBwtupdate {
   input {
-    String? bwaBwa
-    String? bwtBwtUpdate
-    String? theTheBwt
+    String bwa
+    String bwt_update
+    String the_dot_bwt
   }
   command <<<
     sentieon-bwa bwtupdate \
-      ~{bwaBwa} \
-      ~{bwtBwtUpdate} \
-      ~{theTheBwt}
+      ~{bwa} \
+      ~{bwt_update} \
+      ~{the_dot_bwt}
   >>>
+  parameter_meta {
+    bwa: ""
+    bwt_update: ""
+    the_dot_bwt: ""
+  }
 }

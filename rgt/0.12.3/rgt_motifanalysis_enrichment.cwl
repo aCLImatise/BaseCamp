@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rgt_motifanalysis_enrichment.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rgt_motifanalysis_enrichment.cwl
 inputs:
 - id: organism
   doc: Organism considered on the analysis. Must have been setup in the RGTDATA folder.
@@ -94,6 +94,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --bigbed
+- id: background_dot_bed
+  doc: BED file containing background regions.
+  type: string
+  inputBinding:
+    position: 0
+- id: input_dot_bed
+  doc: BED files to be enriched against the background.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

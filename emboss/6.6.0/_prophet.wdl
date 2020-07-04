@@ -2,12 +2,16 @@ version 1.0
 
 task _prophet {
   input {
-    Boolean gapGapOpen
-    Boolean gapGapExtend
+    Boolean? gap_open
+    Boolean? gap_extend
   }
   command <<<
     _prophet \
-      ~{true="-gapopen" false="" gapGapOpen} \
-      ~{true="-gapextend" false="" gapGapExtend}
+      ~{true="-gapopen" false="" gap_open} \
+      ~{true="-gapextend" false="" gap_extend}
   >>>
+  parameter_meta {
+    gap_open: "float      [1.0] Gap opening coefficient (Number from 0.000 to 100.000)"
+    gap_extend: "float      [1.0] Gap extension coefficient (Number from 0.000 to 100.000)"
+  }
 }

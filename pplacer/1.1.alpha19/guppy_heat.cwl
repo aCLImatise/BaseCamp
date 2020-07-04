@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: guppy_heat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/guppy_heat.cwl
 inputs:
-- id: o
+- id: specify_filename_write
   doc: Specify the filename to write to.
   type: boolean
   inputBinding:
@@ -16,7 +16,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --prefix
-- id: c
+- id: reference_package_path
   doc: Reference package path. Required.
   type: boolean
   inputBinding:
@@ -60,6 +60,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --help
+- id: heat
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: matrix_dot_csv
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,12 +1,7 @@
 class: CommandLineTool
-id: get_organelle_from_assembly.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_organelle_from_assembly.py.cwl
 inputs:
-- id: '10'
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: f
+- id: flag_should_followed
   doc: This flag should be followed with embplant_pt (embryophyta plant plastome),
     other_pt (non- embryophyta plant plastome), embplant_mt (plant mitochondrion),
     embplant_nr (plant nuclear ribosomal RNA), animal_mt (animal mitochondrion), fungus_mt
@@ -19,12 +14,12 @@ inputs:
   type: string
   inputBinding:
     prefix: -F
-- id: g
+- id: input_assembly_graph
   doc: Input assembly graph (fastg/gfa) file.
   type: string
   inputBinding:
     prefix: -g
-- id: o
+- id: output_directory_overwriting
   doc: Output directory. Overwriting files if directory exists.
   type: string
   inputBinding:
@@ -48,7 +43,7 @@ inputs:
     a list of databases split by comma(s) on a multi-organelle mode, with the same
     list length to organelle_type (followed by '-F'). This is optional for any organelle
     mentioned in '-F' but required for 'anonym'. By default, certain database(s) in
-    /tmp/tmphg2suakg/lib/python3.8/site- packages/GetOrganelleLib/LabelDatabase would
+    /tmp/tmpkfo1qzio/lib/python3.8/site- packages/GetOrganelleLib/LabelDatabase would
     be used contingent on the organelle types chosen (-F). The default value no longer
     holds when '--genes' or '--ex- genes' is used.
   type: string
@@ -170,7 +165,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --max-multiplicity
-- id: t
+- id: maximum_threads_use
   doc: Maximum threads to use.
   type: string
   inputBinding:

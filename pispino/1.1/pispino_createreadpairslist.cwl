@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: pispino_createreadpairslist.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pispino_createreadpairslist.cwl
 inputs:
-- id: i
+- id: directory_raw_sequences
   doc: '[REQUIRED] Directory with your raw sequences in gzipped FASTQ'
   type: string
   inputBinding:
     prefix: -i
-- id: o
+- id: name_output_list
   doc: Name of output list file.
   type: File
   inputBinding:
@@ -29,11 +29,26 @@ inputs:
   type: string
   inputBinding:
     prefix: --label-reindex-c
-- id: f
+- id: ignore_name_clash
   doc: Ignore name clash and create a mapping file anyway.
   type: boolean
   inputBinding:
     prefix: -f
+- id: makes
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: read_pairs_list_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

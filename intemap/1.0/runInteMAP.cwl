@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: runInteMAP.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/runInteMAP.py.cwl
 inputs:
-- id: sequence_position_file
-  doc: keeps the directories of sequencing reads in the fastq formats
-  type: string
-  inputBinding:
-    position: 0
-- id: lib_info_file
-  doc: keeps the information of the library for sequencing reads
-  type: string
-  inputBinding:
-    position: 1
 - id: outfile
   doc: Output contig file
   type: string
@@ -21,11 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --thread_num
-- id: q
-  doc: '{33,64}, --quality_start {33,64} Quality value ascii start, default=33'
-  type: boolean
+- id: quality_start
+  doc: Quality value ascii start, default=33
+  type: string
   inputBinding:
-    prefix: -q
+    prefix: --quality_start
 - id: min_high_cov_length
   doc: the high coverage length threashold, above which InteMAP will deem that high-coverage
     species exist in the community, and run IDBA-UD and ABySS on the corrected read
@@ -63,6 +53,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --clearance
+- id: sequence_position_file
+  doc: keeps the directories of sequencing reads in the fastq formats
+  type: string
+  inputBinding:
+    position: 0
+- id: lib_info_file
+  doc: keeps the information of the library for sequencing reads
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

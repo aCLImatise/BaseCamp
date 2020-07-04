@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ripser.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ripser.cwl
 inputs:
-- id: filename
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: format
   doc: 'use the specified file format for the input. Options are: lower-distance (lower
     triangular distance matrix; default) upper-distance (upper triangular distance
@@ -24,6 +19,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --threshold
+- id: filename
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

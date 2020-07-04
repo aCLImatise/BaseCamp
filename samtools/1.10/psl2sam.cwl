@@ -1,49 +1,24 @@
 class: CommandLineTool
-id: psl2sam.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/psl2sam.pl.cwl
 inputs:
-- id: '1'
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: '3'
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: '5'
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: '2'
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: in_psl
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
 - id: a
   doc: ''
-  type: boolean
+  type: string
   inputBinding:
     prefix: -a
 - id: b
   doc: ''
-  type: boolean
+  type: string
   inputBinding:
     prefix: -b
 - id: q
   doc: ''
-  type: boolean
+  type: string
   inputBinding:
     prefix: -q
 - id: r
   doc: ''
-  type: boolean
+  type: string
   inputBinding:
     prefix: -r
 outputs: []

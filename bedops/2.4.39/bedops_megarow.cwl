@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bedops_megarow.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedops_megarow.cwl
 inputs:
 - id: chrom
   doc: Jump to and process data for given <chromosome> only.
@@ -21,19 +21,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --help-
-- id: range
-  doc: :R          Add 'L' bp to all start coordinates and 'R' bp to end coordinates.
-    Either value may be + or - to grow or shrink regions.  With the -e/-n operations,
-    the first (reference) file is not padded, unlike all other files.
+- id: bed_ops
+  doc: ''
   type: string
   inputBinding:
-    prefix: --range
-- id: range
-  doc: 'Pad or shrink input file(s) coordinates symmetrically by S. This is shorthand
-    for: --range -S:S.'
+    position: 0
+- id: process_flags
+  doc: ''
   type: string
   inputBinding:
-    prefix: --range
+    position: 1
+- id: operation
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

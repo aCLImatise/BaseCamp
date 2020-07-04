@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: plotPCA.cwl
+id: ../../../../home/ubuntu/BiocondaCli/plotPCA.cwl
 inputs:
 - id: transpose
   doc: Perform the PCA on the transposed matrix, (i.e., on the matrix where rows are
@@ -80,7 +80,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --PCs
-- id: log2
+- id: log_two
   doc: log2 transform the datapoints prior to computing the PCA. Note that 0.01 is
     added to all values to prevent 0 values from becoming -infinity. Using this option
     with input that contains negative values will result in an error.

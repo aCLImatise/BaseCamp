@@ -2,20 +2,28 @@ version 1.0
 
 task FastqRename {
   input {
-    String prefixPrefix
-    Boolean renumRenum
-    Boolean cleanClean
-    String trTr
-    String trcTrc
-    String suffixSuffix
+    String? prefix
+    Boolean? renum
+    Boolean? clean
+    String? tr
+    String? trc
+    String? suffix
   }
   command <<<
     fastq_rename \
-      ~{if defined(prefixPrefix) then ("-prefix " +  '"' + prefixPrefix + '"') else ""} \
-      ~{true="-renum" false="" renumRenum} \
-      ~{true="-clean" false="" cleanClean} \
-      ~{if defined(trTr) then ("-tr " +  '"' + trTr + '"') else ""} \
-      ~{if defined(trcTrc) then ("-trc " +  '"' + trcTrc + '"') else ""} \
-      ~{if defined(suffixSuffix) then ("-suffix " +  '"' + suffixSuffix + '"') else ""}
+      ~{if defined(prefix) then ("-prefix " +  '"' + prefix + '"') else ""} \
+      ~{true="-renum" false="" renum} \
+      ~{true="-clean" false="" clean} \
+      ~{if defined(tr) then ("-tr " +  '"' + tr + '"') else ""} \
+      ~{if defined(trc) then ("-trc " +  '"' + trc + '"') else ""} \
+      ~{if defined(suffix) then ("-suffix " +  '"' + suffix + '"') else ""}
   >>>
+  parameter_meta {
+    prefix: ": add prefix to each readname"
+    renum: ": replace the readname as a sequential number 1,2,...,E,F,10,11..."
+    clean: ": clean the sequence name by removing sequence after first space"
+    tr: ": replace these characters in the readname"
+    trc: ": when replacing, replace with this (default: _)"
+    suffix: ": add suffix to each readname"
+  }
 }

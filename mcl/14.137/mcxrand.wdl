@@ -2,10 +2,13 @@ version 1.0
 
 task Mcxrand {
   input {
-    String imxImx
+    String? imx
   }
   command <<<
     mcxrand \
-      ~{if defined(imxImx) then ("-imx " +  '"' + imxImx + '"') else ""}
+      ~{if defined(imx) then ("-imx " +  '"' + imx + '"') else ""}
   >>>
+  parameter_meta {
+    imx: ""
+  }
 }

@@ -2,14 +2,22 @@ version 1.0
 
 task FastxLengthTab.pyOutputTsv {
   input {
-    String iI
-    String? inputInputFastX
-    String? outputOutputTsv
+    String? i
+    String fast_x_length_tab_do_tpy
+    String? input_fast_x
+    String? output_tsv
   }
   command <<<
     fastx_length_tab.py output_tsv \
-      ~{inputInputFastX} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{outputOutputTsv}
+      ~{fast_x_length_tab_do_tpy} \
+      ~{input_fast_x} \
+      ~{output_tsv} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  parameter_meta {
+    i: ""
+    fast_x_length_tab_do_tpy: ""
+    input_fast_x: ""
+    output_tsv: ""
+  }
 }

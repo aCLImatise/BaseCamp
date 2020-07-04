@@ -1,39 +1,6 @@
 class: CommandLineTool
-id: mapGL.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mapGL.py.cwl
 inputs:
-- id: input
-  doc: Input regions to process. Should be in standard bed format. Only the first
-    four bed fields will be used.
-  type: string
-  inputBinding:
-    position: 0
-- id: tree
-  doc: Tree, in standard Newick format, with or without branch lengths, describing
-    relationships of query and target species to outgroups. May be given as a string
-    or file.
-  type: string
-  inputBinding:
-    position: 1
-- id: qname
-  doc: Name of the query species. Regions from this species will be mapped to target
-    species coordinates.
-  type: string
-  inputBinding:
-    position: 2
-- id: t_name
-  doc: Name of the target species. Regions from the query species will be mapped to
-    coordinates from this species.
-  type: string
-  inputBinding:
-    position: 3
-- id: alignments
-  doc: 'Alignment files (.chain or .pkl): One for the target species and one per outgroup
-    species. Files should be named according to the convention: qname.tname[...].chain.gz,
-    where qname is the query species name and tname is the name of the target/outgroup
-    species. Names used for qname and tname must match names used in the newick tree.'
-  type: string
-  inputBinding:
-    position: 4
 - id: output
   doc: 'Output file. Default stdout. (default: stdout)'
   type: File
@@ -79,6 +46,39 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --full_labels
+- id: input
+  doc: Input regions to process. Should be in standard bed format. Only the first
+    four bed fields will be used.
+  type: string
+  inputBinding:
+    position: 0
+- id: tree
+  doc: Tree, in standard Newick format, with or without branch lengths, describing
+    relationships of query and target species to outgroups. May be given as a string
+    or file.
+  type: string
+  inputBinding:
+    position: 1
+- id: qname
+  doc: Name of the query species. Regions from this species will be mapped to target
+    species coordinates.
+  type: string
+  inputBinding:
+    position: 2
+- id: t_name
+  doc: Name of the target species. Regions from the query species will be mapped to
+    coordinates from this species.
+  type: string
+  inputBinding:
+    position: 3
+- id: alignments
+  doc: 'Alignment files (.chain or .pkl): One for the target species and one per outgroup
+    species. Files should be named according to the convention: qname.tname[...].chain.gz,
+    where qname is the query species name and tname is the name of the target/outgroup
+    species. Names used for qname and tname must match names used in the newick tree.'
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

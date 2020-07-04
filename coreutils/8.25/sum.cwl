@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: sum.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sum.cwl
 inputs:
-- id: r
+- id: use_sum_algorithm
   doc: use BSD sum algorithm, use 1K blocks
   type: boolean
   inputBinding:
@@ -11,6 +11,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --sysv
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

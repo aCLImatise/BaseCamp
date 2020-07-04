@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MKtest.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MKtest.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

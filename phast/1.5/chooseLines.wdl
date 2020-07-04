@@ -2,14 +2,16 @@ version 1.0
 
 task ChooseLines {
   input {
-    String kK
-    String? optionsOptions
-    String? inInFile
+    String? number_lines_choose
+    String in_file
   }
   command <<<
     chooseLines \
-      ~{optionsOptions} \
-      ~{if defined(kK) then ("-k " +  '"' + kK + '"') else ""} \
-      ~{inInFile}
+      ~{in_file} \
+      ~{if defined(number_lines_choose) then ("-k " +  '"' + number_lines_choose + '"') else ""}
   >>>
+  parameter_meta {
+    number_lines_choose: "Number of lines to choose (default is all lines)."
+    in_file: ""
+  }
 }

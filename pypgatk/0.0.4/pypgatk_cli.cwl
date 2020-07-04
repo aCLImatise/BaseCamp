@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: pypgatk_cli.py_vcf_to_proteindb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pypgatk_cli.py_vcf_to_proteindb.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: config_file
   doc: Configuration to perform conversion between ENSEMBL Files
   type: string

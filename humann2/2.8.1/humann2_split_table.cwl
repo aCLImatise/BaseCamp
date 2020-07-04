@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: humann2_split_table.cwl
+id: ../../../../home/ubuntu/BiocondaCli/humann2_split_table.cwl
 inputs:
 - id: verbose
   doc: additional output is printed

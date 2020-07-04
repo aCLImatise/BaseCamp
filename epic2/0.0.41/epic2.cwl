@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: epic2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/epic2.cwl
 inputs:
 - id: treatment
   doc: 'Treatment (pull-down) file(s) in one of these formats: bed, bedpe, bed.gz,

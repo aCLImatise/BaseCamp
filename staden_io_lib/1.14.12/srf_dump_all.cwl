@@ -1,25 +1,20 @@
 class: CommandLineTool
-id: srf_dump_all.cwl
+id: ../../../../home/ubuntu/BiocondaCli/srf_dump_all.cwl
 inputs:
-- id: archive_name
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: c
+- id: chunk_types_output
   doc: 'Chunk types to output given as a comma delimited list of types. The following
     types are allowed: "all", "seq", "prb", "int", "nse", "sig2". The default is "all".'
   type: string
   inputBinding:
     prefix: -c
-- id: d
+- id: distinations_output_following
   doc: 'Distinations to output to. The following types are allowed: "console", "file",
     "none". The default is "console".  Console and file can be together,  but none
     is exclusive.'
   type: string
   inputBinding:
     prefix: -d
-- id: f
+- id: filter_apply_reads
   doc: The filter to apply to reads in the archive.  If reads match the filter they
     are dumped. The filter takes the form of <name>=<value>, where <name> can be "read",
     "prefix", "file". If the <name> is "read" the value is represents the name of
@@ -31,27 +26,32 @@ inputs:
   type: string
   inputBinding:
     prefix: -f
-- id: n
+- id: output_at_bottom
   doc: Output the total number of reads at the bottom.
   type: boolean
   inputBinding:
     prefix: -n
-- id: o
+- id: output_number_only
   doc: Output the total number of reads only.  Nothing else is output.
   type: boolean
   inputBinding:
     prefix: -o
-- id: t
+- id: type_output_only
   doc: Type of output.  Only one value allowed. Currently "text" and "solexa" is supported.
     The default is "text".
   type: string
   inputBinding:
     prefix: -t
-- id: v
+- id: print_verbose_messages
   doc: Print verbose messages.
   type: boolean
   inputBinding:
     prefix: -v
+- id: archive_name
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: long_seq_tm_test.cwl
+id: ../../../../home/ubuntu/BiocondaCli/long_seq_tm_test.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hicBuildMatrix.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hicBuildMatrix.cwl
 inputs:
 - id: sam_files
   doc: 'sam files two sam files, -s two sam files two sam files The two PE alignment
@@ -136,6 +136,31 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --skipDuplicationCheck
+- id: var_17
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: var_18
+  doc: ''
+  type: File
+  inputBinding:
+    position: 1
+- id: two
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: var_20
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: var_21
+  doc: ''
+  type: File
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

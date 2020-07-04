@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: sparse_report.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sparse_report.cwl
 inputs:
-- id: workspace
-  doc: Folders that contain "SPARSE extract" outputs. REQUIRED at least one folder.
-  type: string
-  inputBinding:
-    position: 0
 - id: path
   doc: All sparse workspaces under the assigned folder will be added in automatically.
   type: File
@@ -41,6 +36,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --inverse
+- id: workspace
+  doc: Folders that contain "SPARSE extract" outputs. REQUIRED at least one folder.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

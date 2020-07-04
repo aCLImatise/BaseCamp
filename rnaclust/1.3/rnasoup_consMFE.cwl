@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rnasoup_consMFE.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnasoup_consMFE.pl.cwl
 inputs:
 - id: fast_a
   doc: Original FASTA file with sequences which have been clustered.

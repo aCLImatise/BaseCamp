@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fasten_validate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fasten_validate.cwl
 inputs:
 - id: n
   doc: ''
@@ -36,11 +36,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --print-reads
-- id: v
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -v
 outputs: []
 cwlVersion: v1.1
 baseCommand:

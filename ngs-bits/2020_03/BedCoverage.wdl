@@ -2,26 +2,37 @@ version 1.0
 
 task BedCoverage {
   input {
-    File bamBam
-    Int minMinMapq
-    Boolean dupDup
-    File inIn
-    String modeMode
-    Int decimalsDecimals
-    File outOut
-    Boolean changelogChangelog
-    Boolean tdxTdx
+    File? bam
+    Int? min_mapq
+    Boolean? dup
+    File? in
+    String? mode
+    Int? decimals
+    File? out
+    Boolean? changelog
+    Boolean? tdx
   }
   command <<<
     BedCoverage \
-      ~{if defined(bamBam) then ("-bam " +  '"' + bamBam + '"') else ""} \
-      ~{if defined(minMinMapq) then ("-min_mapq " +  '"' + minMinMapq + '"') else ""} \
-      ~{true="-dup" false="" dupDup} \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(modeMode) then ("-mode " +  '"' + modeMode + '"') else ""} \
-      ~{if defined(decimalsDecimals) then ("-decimals " +  '"' + decimalsDecimals + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{true="--changelog" false="" changelogChangelog} \
-      ~{true="--tdx" false="" tdxTdx}
+      ~{if defined(bam) then ("-bam " +  '"' + bam + '"') else ""} \
+      ~{if defined(min_mapq) then ("-min_mapq " +  '"' + min_mapq + '"') else ""} \
+      ~{true="-dup" false="" dup} \
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(mode) then ("-mode " +  '"' + mode + '"') else ""} \
+      ~{if defined(decimals) then ("-decimals " +  '"' + decimals + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{true="--changelog" false="" changelog} \
+      ~{true="--tdx" false="" tdx}
   >>>
+  parameter_meta {
+    bam: "Input BAM file(s)."
+    min_mapq: "Minimum mapping quality. Default value: '1'"
+    dup: "Include reads marked as duplicates. Default value: 'false'"
+    in: "Input BED file (note that overlapping regions will be merged before processing). If unset, reads from STDIN. Default value: ''"
+    mode: "Mode to optimize run time. Use 'panel' mode if only a small part of the data in the BAM file is accessed, e.g. a sub-panel of an exome. Default value: 'default' Valid: 'default,panel'"
+    decimals: "Number of decimals used in output. Default value: '2'"
+    out: "Output BED file. If unset, writes to STDOUT. Default value: ''"
+    changelog: "Prints changeloge and exits."
+    tdx: "Writes a Tool Definition Xml file. The file name is the application name with the suffix '.tdx'."
+  }
 }

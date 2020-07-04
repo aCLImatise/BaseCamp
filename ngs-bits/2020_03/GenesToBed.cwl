@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: GenesToBed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/GenesToBed.cwl
 inputs:
 - id: source
   doc: "Transcript source database. Valid: 'ccds,ensembl'"

@@ -2,46 +2,37 @@ version 1.0
 
 task SpecLibSearcher {
   input {
-    File inIn
-    File libLib
-    File outOut
-    Boolean precursorPrecursor
-    Boolean precursorPrecursor
-    Boolean precursorPrecursor
-    Boolean fragmentFragment
-    String compareCompareFunction
-    Boolean filterFilter
-    Boolean filterFilter
-    Boolean filterFilter
-    Boolean filterFilter
-    Boolean modificationsModifications
-    Boolean modificationsModifications
-    Boolean modificationsModifications
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    File? in
+    File? lib
+    File? out
+    Boolean? fragment
+    String? compare_function
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     SpecLibSearcher \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(libLib) then ("-lib " +  '"' + libLib + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{true="-precursor" false="" precursorPrecursor} \
-      ~{true="-precursor" false="" precursorPrecursor} \
-      ~{true="-precursor" false="" precursorPrecursor} \
-      ~{true="-fragment" false="" fragmentFragment} \
-      ~{if defined(compareCompareFunction) then ("-compare_function " +  '"' + compareCompareFunction + '"') else ""} \
-      ~{true="-filter" false="" filterFilter} \
-      ~{true="-filter" false="" filterFilter} \
-      ~{true="-filter" false="" filterFilter} \
-      ~{true="-filter" false="" filterFilter} \
-      ~{true="-modifications" false="" modificationsModifications} \
-      ~{true="-modifications" false="" modificationsModifications} \
-      ~{true="-modifications" false="" modificationsModifications} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(lib) then ("-lib " +  '"' + lib + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{true="-fragment" false="" fragment} \
+      ~{if defined(compare_function) then ("-compare_function " +  '"' + compare_function + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*                                      Input files (valid formats: 'mzML')"
+    lib: "*                                      Searchable spectral library (MSP format) (valid formats: 'msp')"
+    out: "*                                     Output files. Have to be as many as input files (valid formats: 'idXML')"
+    fragment: ":mass_tolerance <tolerance>              Fragment mass tolerance (default: '10')"
+    compare_function: "Function for similarity comparison (default: 'ZhangSimilarityScore' valid: 'PeakAlignment', 'SpectrumAlignmentScore', 'SpectrumCheapDPCorr', 'SpectrumPrecursorComparator', 'SteinScottImproveScore', 'ZhangSimilarityScore')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

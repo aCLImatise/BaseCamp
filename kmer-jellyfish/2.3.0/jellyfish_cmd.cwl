@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: jellyfish_cmd.cwl
+id: ../../../../home/ubuntu/BiocondaCli/jellyfish_cmd.cwl
 inputs:
-- id: arg
+- id: arg_dot_dot_dot
   doc: ''
   type: string
   inputBinding:

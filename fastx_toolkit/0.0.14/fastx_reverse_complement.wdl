@@ -2,18 +2,25 @@ version 1.0
 
 task FastxReverseComplement {
   input {
-    Boolean rR
-    Boolean zZ
-    Boolean vV
-    String iI
-    String oO
+    Boolean? r
+    Boolean? z
+    Boolean? v
+    String? i
+    String? o
   }
   command <<<
     fastx_reverse_complement \
-      ~{true="-r" false="" rR} \
-      ~{true="-z" false="" zZ} \
-      ~{true="-v" false="" vV} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""}
+      ~{true="-r" false="" r} \
+      ~{true="-z" false="" z} \
+      ~{true="-v" false="" v} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    r: ""
+    z: ""
+    v: ""
+    i: ""
+    o: ""
+  }
 }

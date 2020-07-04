@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: find_duplicates.cwl
+id: ../../../../home/ubuntu/BiocondaCli/find_duplicates.cwl
 inputs:
 - id: nuc_me_rpath
-  doc: ''
+  doc: Path to the 'nucmer' executable.
   type: string
   inputBinding:
     prefix: --nucmerpath
 - id: reference
-  doc: ''
+  doc: Path to the reference fasta file.
   type: string
   inputBinding:
     prefix: --reference

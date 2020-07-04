@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: saddle2gml.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/saddle2gml.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

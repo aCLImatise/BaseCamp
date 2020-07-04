@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: parse_mappings.pl.orig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/parse_mappings.pl.orig.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

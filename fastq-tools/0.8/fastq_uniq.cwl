@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastq_uniq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq_uniq.cwl
 inputs:
 - id: verbose
   doc: print status along the way

@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: splitrim.cwl
+id: ../../../../home/ubuntu/BiocondaCli/splitrim.cwl
 inputs:
-- id: input
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: output
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: others
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: in_file
   doc: =        string   Name of the FASTQ file containing all the single-end reads
   type: boolean
@@ -92,6 +77,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: input
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: others
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

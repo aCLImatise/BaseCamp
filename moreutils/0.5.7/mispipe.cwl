@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mispipe.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mispipe.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

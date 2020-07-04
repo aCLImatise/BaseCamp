@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: removeRC.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/removeRC.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

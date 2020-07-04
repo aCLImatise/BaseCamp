@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ovc.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ovc.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

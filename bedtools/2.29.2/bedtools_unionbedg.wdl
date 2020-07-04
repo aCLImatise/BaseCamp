@@ -2,20 +2,31 @@ version 1.0
 
 task BedtoolsUnionbedg {
   input {
-    Boolean headerHeader
-    Boolean namesNames
-    Boolean gG
-    Boolean emptyEmpty
-    String fillerFiller
-    Boolean examplesExamples
+    Boolean? header
+    Boolean? names
+    Boolean? use_genome_file
+    Boolean? empty
+    String? filler
+    Boolean? examples
+    Array[File] i
   }
   command <<<
     bedtools unionbedg \
-      ~{true="-header" false="" headerHeader} \
-      ~{true="-names" false="" namesNames} \
-      ~{true="-g" false="" gG} \
-      ~{true="-empty" false="" emptyEmpty} \
-      ~{if defined(fillerFiller) then ("-filler " +  '"' + fillerFiller + '"') else ""} \
-      ~{true="-examples" false="" examplesExamples}
+      ~{true="-header" false="" header} \
+      ~{true="-names" false="" names} \
+      ~{true="-g" false="" use_genome_file} \
+      ~{true="-empty" false="" empty} \
+      ~{if defined(filler) then ("-filler " +  '"' + filler + '"') else ""} \
+      ~{true="-examples" false="" examples} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  parameter_meta {
+    header: "Print a header line. (chrom/start/end + names of each file)."
+    names: "A list of names (one/file) to describe each file in -i. These names will be printed in the header line."
+    use_genome_file: "Use genome file to calculate empty regions. - STRING."
+    empty: "Report empty regions (i.e., start/end intervals w/o values in all files). - Requires the '-g FILE' parameter."
+    filler: "Use TEXT when representing intervals having no value. - Default is '0', but you can use 'N/A' or any text."
+    examples: "Show detailed usage examples."
+    i: ""
+  }
 }

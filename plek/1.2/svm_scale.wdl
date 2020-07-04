@@ -2,10 +2,13 @@ version 1.0
 
 task SvmScale {
   input {
-    String? dataDataFilename
+    String data_filename
   }
   command <<<
     svm-scale \
-      ~{dataDataFilename}
+      ~{data_filename}
   >>>
+  parameter_meta {
+    data_filename: ""
+  }
 }

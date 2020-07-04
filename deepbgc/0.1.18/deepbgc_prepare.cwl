@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: deepbgc_prepare.cwl
+id: ../../../../home/ubuntu/BiocondaCli/deepbgc_prepare.cwl
 inputs:
-- id: inputs
-  doc: Input sequence file path(s) (FASTA/GenBank)
-  type: string
-  inputBinding:
-    position: 0
 - id: limit_to_record
   doc: Process only specific record ID. Can be provided multiple times
   type: string
@@ -32,6 +27,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --output-tsv
+- id: debug
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --debug
+- id: inputs
+  doc: Input sequence file path(s) (FASTA/GenBank)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

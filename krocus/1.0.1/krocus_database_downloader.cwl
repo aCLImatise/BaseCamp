@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: krocus_database_downloader.cwl
+id: ../../../../home/ubuntu/BiocondaCli/krocus_database_downloader.cwl
 inputs:
 - id: list_species
   doc: 'List all available species (default: False)'

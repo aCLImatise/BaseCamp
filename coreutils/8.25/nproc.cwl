@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nproc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nproc.cwl
 inputs:
 - id: all
   doc: print the number of installed processors
@@ -11,6 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --ignore
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,12 +2,16 @@ version 1.0
 
 task OmeroShell {
   input {
-    Boolean loginLogin
-    String? argArg
+    Boolean? login
+    String arg
   }
   command <<<
     omero shell \
-      ~{argArg} \
-      ~{true="--login" false="" loginLogin}
+      ~{arg} \
+      ~{true="--login" false="" login}
   >>>
+  parameter_meta {
+    login: "Logins in and sets the 'client' variable"
+    arg: "Arguments for IPython."
+  }
 }

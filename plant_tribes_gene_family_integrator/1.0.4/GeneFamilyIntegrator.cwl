@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: GeneFamilyIntegrator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/GeneFamilyIntegrator.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

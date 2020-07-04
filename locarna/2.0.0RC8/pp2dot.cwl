@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pp2dot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pp2dot.cwl
 inputs:
 - id: colors
   doc: 'Color palette. Use --colors2 to define a second palette for the lower-left
@@ -7,7 +7,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --colors
-- id: colors_2
+- id: colors_two
   doc: Color palette for lower left triangle.
   type: string
   inputBinding:

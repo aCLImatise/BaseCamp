@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: CopraRNA2.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CopraRNA2.pl.cwl
 inputs:
 - id: srna_seq
   doc: FASTA file with small RNA sequences (def:input_sRNA.fa)
@@ -44,7 +44,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --maxbpdist
-- id: cop1
+- id: cop_one
   doc: switch for CopraRNA1 prediction (def:off)
   type: boolean
   inputBinding:

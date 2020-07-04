@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastq_trim_poly_at.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq_trim_poly_at.cwl
 inputs:
 - id: file
   doc: ':fastq (optional gzipped) file name '
@@ -21,6 +21,21 @@ inputs:
   type: long
   inputBinding:
     prefix: --min_len
+- id: outfile
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --outfile
+- id: optional
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: parameters
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

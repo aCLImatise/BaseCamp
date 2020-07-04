@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: triangulateGA.cwl
+id: ../../../../home/ubuntu/BiocondaCli/triangulateGA.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

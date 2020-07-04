@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tadaridaD.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tadaridaD.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gseapy_enrichr.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gseapy_enrichr.cwl
 inputs:
 - id: input_list
   doc: Enrichr uses a list of gene names as input.
@@ -38,13 +38,13 @@ inputs:
   type: long
   inputBinding:
     prefix: --top-term
-- id: o
+- id: _outdir_gseapy
   doc: ', --outdir         The GSEApy output directory. Default: the current working
     directory'
   type: boolean
   inputBinding:
     prefix: -o
-- id: f
+- id: _format_file
   doc: ", --format         File extensions supported by Matplotlib active backend,\
     \ choose from {'pdf', 'png', 'jpeg','ps', 'eps','svg'}. Default: 'pdf'."
   type: boolean

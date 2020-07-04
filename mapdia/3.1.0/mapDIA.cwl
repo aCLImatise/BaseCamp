@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mapDIA.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mapDIA.cwl
 inputs:
 - id: input
   doc: ''

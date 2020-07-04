@@ -2,12 +2,19 @@ version 1.0
 
 task CirclatorRequired arguments {
   input {
-    String? commandCommand
-    String? requiredRequiredArguments
+    String circ_lator
+    String var_command
+    String required_arguments
   }
   command <<<
     circlator required arguments \
-      ~{commandCommand} \
-      ~{requiredRequiredArguments}
+      ~{circ_lator} \
+      ~{var_command} \
+      ~{required_arguments}
   >>>
+  parameter_meta {
+    circ_lator: ""
+    var_command: ""
+    required_arguments: ""
+  }
 }

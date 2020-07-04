@@ -1,42 +1,6 @@
 class: CommandLineTool
-id: ngsfilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ngsfilter.cwl
 inputs:
-- id: gh
-  doc: 01_11a     cacgcagtc:cacgcatcg    GGGCAATCCTGAGCCAA    CCATTGAGTCTCTGCACCTATC    F
-    @ community=Festuca; bucket=1; extraction=1;
-  type: string
-  inputBinding:
-    position: 0
-- id: gh
-  doc: 01_12a     cacgcatcg:cacgcagtc    GGGCAATCCTGAGCCAA    CCATTGAGTCTCTGCACCTATC    F
-    @ community=Festuca; bucket=1; extraction=2;
-  type: string
-  inputBinding:
-    position: 1
-- id: gh
-  doc: 01_21a     cacgcgcat:cacgctact    GGGCAATCCTGAGCCAA    CCATTGAGTCTCTGCACCTATC    F
-    @ community=Festuca; bucket=2; extraction=1;
-  type: string
-  inputBinding:
-    position: 2
-- id: gh
-  doc: 01_22a     cacgctact:cacgcgcat    GGGCAATCCTGAGCCAA    CCATTGAGTCTCTGCACCTATC    F
-    @ community=Festuca; bucket=2; extraction=2;
-  type: string
-  inputBinding:
-    position: 3
-- id: gh
-  doc: 02_11a     cacgctgag:cacgtacga    GGGCAATCCTGAGCCAA    CCATTGAGTCTCTGCACCTATC    F
-    @ community=Festuca; bucket=1; extraction=1;
-  type: string
-  inputBinding:
-    position: 4
-- id: gh
-  doc: 02_12a     cacgtacga:cacgctgag    GGGCAATCCTGAGCCAA    CCATTGAGTCTCTGCACCTATC    F
-    @ community=Festuca; bucket=1; extraction=2;
-  type: string
-  inputBinding:
-    position: 5
 - id: tag_list
   doc: File containing the samples definition (with tags, primers, sample names,...)
   type: File
@@ -47,7 +11,7 @@ inputs:
   type: File
   inputBinding:
     prefix: --unidentified
-- id: e
+- id: _error_number
   doc: '###, --error=### Number of errors allowed for matching primers [default =
     2]'
   type: boolean

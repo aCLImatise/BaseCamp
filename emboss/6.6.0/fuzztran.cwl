@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fuzztran.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fuzztran.cwl
 inputs:
 - id: pattern
   doc: "pattern    The standard IUPAC one-letter codes for the amino acids are used.\

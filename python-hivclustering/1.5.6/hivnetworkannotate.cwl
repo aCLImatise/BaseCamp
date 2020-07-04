@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: hivnetworkannotate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hivnetworkannotate.cwl
 inputs:
-- id: o
+- id: output_annotated_file
   doc: '[OUTPUT], --output [OUTPUT] Output the annotated JSON network file to'
   type: boolean
   inputBinding:
     prefix: -o
-- id: n
+- id: input_network_file
   doc: '[NETWORK], --network [NETWORK] The input network file to process'
   type: boolean
   inputBinding:
     prefix: -n
-- id: x
+- id: missing__missing
   doc: MISSING, --missing MISSING MISSING If desired, provide a value to inject for
     nodes that do not have an attribute value specified
   type: string
@@ -48,7 +48,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --csv
-- id: f
+- id: field_field_field
   doc: FIELD FIELD FIELD, --field FIELD FIELD FIELD FIELD Describe an argument to
     be added to invididual nodes as "name" "label" "type" "transform"; currently supported
     types are "String", "enum", "Date", "Number"; transform must be specified as a
@@ -58,6 +58,16 @@ inputs:
   type: string
   inputBinding:
     prefix: -f
+- id: output
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: network
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

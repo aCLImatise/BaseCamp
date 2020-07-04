@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csvtk_sample.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csvtk_sample.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: line_number
   doc: print line number as the first column ("n")
   type: boolean
@@ -91,6 +86,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tabs
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

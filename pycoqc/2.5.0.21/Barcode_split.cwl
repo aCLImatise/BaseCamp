@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Barcode_split.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Barcode_split.cwl
 inputs:
 - id: summary_file
   doc: '[SUMMARY_FILE [SUMMARY_FILE ...]], -f [SUMMARY_FILE [SUMMARY_FILE ...]] Path

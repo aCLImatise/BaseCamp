@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: sqStoreDumpFASTQ.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sqStoreDumpFASTQ.cwl
 inputs:
-- id: o
+- id: write_files_outprefixlibnamefastq
   doc: write files out-prefix.(libname).fastq, ... if out-prefix is '-', all sequences
     output to stdout if out-prefix ends in .gz, .bz2 or .xz, output is compressed
   type: string
@@ -35,12 +35,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -reverse
-- id: l
+- id: output_only_read_library
   doc: output only read in library number 'id'
   type: string
   inputBinding:
     prefix: -l
-- id: r
+- id: output_only_single_read
   doc: "[-id]          output only the single read 'id', or the specified range of\
     \ ids"
   type: string

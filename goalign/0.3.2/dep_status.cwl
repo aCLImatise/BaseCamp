@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: dep_status.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dep_status.cwl
 inputs:
-- id: package
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: detail
   doc: 'include more detail in the chosen format (default: false)'
   type: boolean
@@ -21,7 +16,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -examples
-- id: f
+- id: output_texttemplate_format
   doc: 'output in text/template format (default: <none>)'
   type: boolean
   inputBinding:
@@ -52,11 +47,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -out
-- id: v
+- id: enable_verbose_logging
   doc: 'enable verbose logging (default: false)'
   type: boolean
   inputBinding:
     prefix: -v
+- id: package_dot_dot_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

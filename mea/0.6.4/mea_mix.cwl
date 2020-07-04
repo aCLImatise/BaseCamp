@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: mea_mix.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mea_mix.cwl
 inputs:
+- id: gamma_one
+  doc: base pair weight factor, first pair probabilities (default=`1.0')
+  type: string
+  inputBinding:
+    prefix: --gamma1
+- id: gamma_two
+  doc: base pair weight factor, second pair probabilities (default=`1.0')
+  type: string
+  inputBinding:
+    prefix: --gamma2
 - id: reference
   doc: Reference structure; if given, then output TP FP FN TN SENS PPV F1 MCC
   type: string
@@ -21,6 +31,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: me_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: dotplot_one_filename
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: dotplot_two_filename
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

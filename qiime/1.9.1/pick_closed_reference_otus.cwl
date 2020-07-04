@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: pick_closed_reference_otus.py.cwl
-inputs:
-- id: input_fp
-  doc: the input sequences [REQUIRED]
-  type: string
-  inputBinding:
-    prefix: --input_fp
-- id: output_dir
-  doc: the output directory [REQUIRED]
-  type: string
-  inputBinding:
-    prefix: --output_dir
+id: ../../../../home/ubuntu/BiocondaCli/pick_closed_reference_otus.py.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

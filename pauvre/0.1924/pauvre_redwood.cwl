@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: pauvre_redwood.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pauvre_redwood.cwl
 inputs:
 - id: quiet
   doc: Do not output warnings to stderr
   type: boolean
   inputBinding:
     prefix: --quiet
-- id: d
+- id: fasta_file_doubled
   doc: "[{main,rnaseq} ...], --doubled {main,rnaseq} [{main,rnaseq} ...] If your fasta\
     \ file was doubled to map circularly, use this flag or you may encounter plotting\
     \ errors. Accepts multiple arguments. 'main' is for the sam file passed with --sam,\

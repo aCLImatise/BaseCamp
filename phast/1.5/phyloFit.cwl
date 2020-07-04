@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: phyloFit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyloFit.cwl
 inputs:
-- id: out_root
-  doc: ).
-  type: boolean
-  inputBinding:
-    prefix: --out-root
-- id: out_root
-  doc: primate-rodent.fa
-  type: string
-  inputBinding:
-    prefix: --out-root
-- id: out_root
-  doc: 4 primate-rodent.fa
-  type: string
-  inputBinding:
-    prefix: --out-root
 - id: cat_map
   doc: '"NCATS = 3; CDS 1-3" --do-cats 1,2,3 mammals.fa'
   type: boolean
@@ -183,6 +168,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --windows-explicit
+- id: msa_fname
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

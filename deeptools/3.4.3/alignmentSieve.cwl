@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: alignmentSieve.cwl
+id: ../../../../home/ubuntu/BiocondaCli/alignmentSieve.cwl
 inputs:
-- id: alignment_sieve_py
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: '10'
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: bam
   doc: An indexed BAM file.
   type: File
@@ -95,6 +85,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --maxFragmentLength
+- id: example
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: usage
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

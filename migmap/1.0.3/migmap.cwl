@@ -1,23 +1,23 @@
 class: CommandLineTool
-id: migmap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/migmap.cwl
 inputs:
-- id: n
+- id: number_reads_take
   doc: Number of reads to take. [default = all]
   type: long
   inputBinding:
     prefix: -n
-- id: p
+- id: number_cores_use
   doc: Number of cores to use. [default = all available processors]
   type: long
   inputBinding:
     prefix: -p
-- id: q
-  doc: <2..40>                             Threshold for average quality of mutations
-    and N-regions of CDR3 [default = 25]
-  type: boolean
+- id: threshold_average_nregions
+  doc: Threshold for average quality of mutations and N-regions of CDR3 [default =
+    25]
+  type: string
   inputBinding:
     prefix: -q
-- id: r
+- id: chain_receptor_gene
   doc: '<chain1,...>                        Receptor gene and chain. Several chains
     can be specified, separated with commas. Allowed values: [TRA, TRB, TRG, TRD,
     IGH, IGL, IGK]. [required] --report <file>                     File to store MIGMAP
@@ -25,7 +25,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -R
-- id: s
+- id: species_allowed_values
   doc: 'Species. Allowed values: [human, mouse, rat, rabbit, rhesus_monkey]. [required]'
   type: string
   inputBinding:
@@ -40,6 +40,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --use-kabat
+- id: input_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

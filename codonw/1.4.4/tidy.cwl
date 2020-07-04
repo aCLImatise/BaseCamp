@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tidy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tidy.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

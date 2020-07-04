@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_paralogs.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_paralogs.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the paralog genes are downloaded, e.g. homo_sapiens,

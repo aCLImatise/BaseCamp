@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: 3EdgeTests.cwl
+id: ../../../../home/ubuntu/BiocondaCli/3EdgeTests.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

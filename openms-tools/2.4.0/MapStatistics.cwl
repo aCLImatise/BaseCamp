@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MapStatistics.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MapStatistics.cwl
 inputs:
 - id: in
   doc: "*        Input file (valid formats: 'featureXML', 'consensusXML')"
@@ -18,23 +18,23 @@ inputs:
   type: File
   inputBinding:
     prefix: -out
-- id: n
+- id: report_separate_statistics
   doc: "Report separate statistics for each of n RT slices of the map. (default: '4'\
     \ min: '1' max: '100')"
   type: string
   inputBinding:
     prefix: -n
-- id: m
+- id: show_meta_information
   doc: Show meta information about the whole experiment
   type: boolean
   inputBinding:
     prefix: -m
-- id: p
+- id: shows_processing_information
   doc: Shows data processing information
   type: boolean
   inputBinding:
     prefix: -p
-- id: s
+- id: computes_summary_statistics
   doc: Computes a summary statistics of intensities, qualities, and widths
   type: boolean
   inputBinding:

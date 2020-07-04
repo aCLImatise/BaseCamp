@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: bedparse_bed12tobed6.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedparse_bed12tobed6.cwl
 inputs:
-- id: bed_file
-  doc: Path to the GTF file.
-  type: string
-  inputBinding:
-    position: 0
 - id: append_exn
   doc: Appends the exon number to the transcript name.
   type: boolean

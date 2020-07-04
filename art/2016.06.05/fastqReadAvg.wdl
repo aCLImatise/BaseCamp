@@ -2,14 +2,13 @@ version 1.0
 
 task FastqReadAvg.pl {
   input {
-    String? perlPerl
-    String? fastFastQReadAvgPl
-    String? fastFastQFile
+    String fast_q_file
   }
   command <<<
     fastqReadAvg.pl \
-      ~{perlPerl} \
-      ~{fastFastQReadAvgPl} \
-      ~{fastFastQFile}
+      ~{fast_q_file}
   >>>
+  parameter_meta {
+    fast_q_file: ""
+  }
 }

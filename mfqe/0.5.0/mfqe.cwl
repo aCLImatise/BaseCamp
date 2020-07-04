@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mfqe.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mfqe.cwl
 inputs:
 - id: output_uncompressed
   doc: 'Output sequences uncompressed [default: gzip compress outputs]'
@@ -31,6 +31,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --sequence-name-lists
+- id: usage
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: for
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: fast_q
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

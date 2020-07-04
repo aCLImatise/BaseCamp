@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: test_yaml.cwl
+id: ../../../../home/ubuntu/BiocondaCli/test_yaml.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

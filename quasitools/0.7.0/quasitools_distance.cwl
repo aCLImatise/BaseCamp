@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: quasitools_distance.cwl
+id: ../../../../home/ubuntu/BiocondaCli/quasitools_distance.cwl
 inputs:
 - id: normalize
   doc: / -dn, --dont_normalize Normalize read count data so that the read counts per
@@ -47,6 +47,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --keep_no_coverage
+- id: reference
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: bam
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

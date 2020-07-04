@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gappa_edit_accumulate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gappa_edit_accumulate.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: j_place_path
   doc: :PATH(existing)=[] ... REQUIRED List of jplace files or directories to process.
     For directories, only files with the extension .jplace are processed.

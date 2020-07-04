@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: intersectFiles.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/intersectFiles.py.cwl
 inputs:
-- id: p
+- id: threads_to_run
   doc: Threads to run
   type: string
   inputBinding:
     prefix: -p
-- id: a
+- id: file_lookup_from
   doc: This is the file to lookup values from.
   type: string
   inputBinding:
@@ -26,7 +26,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --aheader
-- id: b
+- id: file_lookup_in
   doc: This is the file to lookup values in.
   type: string
   inputBinding:
@@ -57,7 +57,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --strict
-- id: o
+- id: file_write_results
   doc: '[OUT], --out [OUT] The file to write results to. Leave blank for stdout,'
   type: boolean
   inputBinding:

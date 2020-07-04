@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: resis_parser.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/resis_parser.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

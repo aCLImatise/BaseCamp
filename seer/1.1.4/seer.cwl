@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: seer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seer.cwl
 inputs:
-- id: k
+- id: arg_dsm_kmer
   doc: '[ --kmers ] arg       dsm kmer output file'
   type: boolean
   inputBinding:
     prefix: -k
-- id: p
+- id: _arg_metadata
   doc: '[ --pheno ] arg       .pheno metadata'
   type: boolean
   inputBinding:

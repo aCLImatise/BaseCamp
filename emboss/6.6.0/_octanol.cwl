@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _octanol.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_octanol.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

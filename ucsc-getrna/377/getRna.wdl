@@ -2,20 +2,28 @@ version 1.0
 
 task GetRna {
   input {
-    Boolean cdsCdsUpperAll
-    String includeInclude
-    String translateTranslate
-    String? databaseDatabase
-    String? accAccFile
-    String? outOutFa
+    Boolean? cds_upper_all
+    Boolean? incl_ver
+    Boolean? peptides
+    String database
+    String acc_file
+    String out_fa
   }
   command <<<
     getRna \
-      ~{databaseDatabase} \
-      ~{true="-cdsUpperAll" false="" cdsCdsUpperAll} \
-      ~{if defined(includeInclude) then ("- include " +  '"' + includeInclude + '"') else ""} \
-      ~{if defined(translateTranslate) then ("- translate " +  '"' + translateTranslate + '"') else ""} \
-      ~{accAccFile} \
-      ~{outOutFa}
+      ~{database} \
+      ~{acc_file} \
+      ~{out_fa} \
+      ~{true="-cdsUpperAll" false="" cds_upper_all} \
+      ~{true="-inclVer" false="" incl_ver} \
+      ~{true="-peptides" false="" peptides}
   >>>
+  parameter_meta {
+    cds_upper_all: "- like -cdsUpper, except keep sequeneces without CDS"
+    incl_ver: "- include version with sequence id."
+    peptides: "- translate mRNAs to peptides"
+    database: ""
+    acc_file: ""
+    out_fa: ""
+  }
 }

@@ -1,18 +1,6 @@
 class: CommandLineTool
-id: nglview.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nglview.cwl
 inputs:
-- id: command
-  doc: command could be a topology filename (.pdb, .mol2, .parm7, ...) or could be
-    a python script (.py), a notebook (.ipynb). If not given, a notebook will be created
-    with only nglview imported
-  type: string
-  inputBinding:
-    position: 0
-- id: t_raj
-  doc: coordinate filename, optional
-  type: string
-  inputBinding:
-    position: 1
 - id: crd
   doc: coordinate filename
   type: string
@@ -58,6 +46,18 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --symlink
+- id: command
+  doc: command could be a topology filename (.pdb, .mol2, .parm7, ...) or could be
+    a python script (.py), a notebook (.ipynb). If not given, a notebook will be created
+    with only nglview imported
+  type: string
+  inputBinding:
+    position: 0
+- id: t_raj
+  doc: coordinate filename, optional
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

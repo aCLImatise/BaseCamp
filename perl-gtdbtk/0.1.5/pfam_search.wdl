@@ -2,14 +2,19 @@ version 1.0
 
 task PfamSearch.pl {
   input {
-    String fastFastA
-    Directory dirDir
-    String? pfamPfamScanPl
+    String? fast_a
+    Directory? dir
+    String pfam_scan_do_tpl
   }
   command <<<
     pfam_search.pl \
-      ~{pfamPfamScanPl} \
-      ~{if defined(fastFastA) then ("-fasta " +  '"' + fastFastA + '"') else ""} \
-      ~{if defined(dirDir) then ("-dir " +  '"' + dirDir + '"') else ""}
+      ~{pfam_scan_do_tpl} \
+      ~{if defined(fast_a) then ("-fasta " +  '"' + fast_a + '"') else ""} \
+      ~{if defined(dir) then ("-dir " +  '"' + dir + '"') else ""}
   >>>
+  parameter_meta {
+    fast_a: ""
+    dir: ""
+    pfam_scan_do_tpl: ""
+  }
 }

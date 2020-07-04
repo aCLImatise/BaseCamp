@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: prokka_cdd_to_hmm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/prokka_cdd_to_hmm.cwl
 inputs:
 - id: verbose
   doc: "!      Verbose output (default '0')."

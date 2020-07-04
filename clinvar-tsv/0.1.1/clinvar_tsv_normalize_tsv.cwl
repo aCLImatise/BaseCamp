@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: clinvar_tsv_normalize_tsv.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clinvar_tsv_normalize_tsv.cwl
 inputs:
 - id: reference
   doc: Path to reference FASTA file
@@ -16,6 +16,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --output-tsv
+- id: clin_var_tsv
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: normalize_tsv
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

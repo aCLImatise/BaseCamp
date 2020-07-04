@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cramtools_fastq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cramtools_fastq.cwl
 inputs:
 - id: default_quality_score
   doc: 'Use this quality score (decimal representation of ASCII symbol) as a default
@@ -26,7 +26,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gzip
-- id: ignore_md5_mismatch
+- id: ignore_md_five_mismatch
   doc: 'Issue a warning on sequence MD5 mismatch and continue. This does not garantee
     the data will be read succesfully.  (default: false)'
   type: boolean
@@ -58,7 +58,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --reverse
-- id: skip_md5_check
+- id: skip_md_five_check
   doc: 'Skip MD5 checks when reading the header. (default: false)'
   type: boolean
   inputBinding:
@@ -68,6 +68,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --log-level
+- id: main_class
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: simplifyFastaHeaders.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/simplifyFastaHeaders.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

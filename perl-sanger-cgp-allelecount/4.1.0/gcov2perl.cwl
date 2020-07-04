@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gcov2perl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gcov2perl.cwl
 inputs:
-- id: gcov_files
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: i
   doc: ''
   type: boolean
@@ -21,6 +16,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -db
+- id: gcov_files
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

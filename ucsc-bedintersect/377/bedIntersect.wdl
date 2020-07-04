@@ -2,18 +2,28 @@ version 1.0
 
 task BedIntersect {
   input {
-    Boolean aAHitAny
-    Boolean minMinCoverage
-    Boolean bBScore
-    Boolean tabTab
-    Boolean allowAllowStartEqualEnd
+    Boolean? b_score
+    Boolean? tab
+    Boolean? allow_start_equal_end
+    String bed
+    String columns
+    String four
   }
   command <<<
     bedIntersect \
-      ~{true="-aHitAny" false="" aAHitAny} \
-      ~{true="-minCoverage" false="" minMinCoverage} \
-      ~{true="-bScore" false="" bBScore} \
-      ~{true="-tab" false="" tabTab} \
-      ~{true="-allowStartEqualEnd" false="" allowAllowStartEqualEnd}
+      ~{bed} \
+      ~{columns} \
+      ~{four} \
+      ~{true="-bScore" false="" b_score} \
+      ~{true="-tab" false="" tab} \
+      ~{true="-allowStartEqualEnd" false="" allow_start_equal_end}
   >>>
+  parameter_meta {
+    b_score: "output score from b.bed (must be at least 5 field bed)"
+    tab: "chop input at tabs not spaces"
+    allow_start_equal_end: "Don't discard 0-length items of a or b (e.g. point insertions)"
+    bed: ""
+    columns: ""
+    four: ""
+  }
 }

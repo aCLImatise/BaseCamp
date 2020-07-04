@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: clique.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clique.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pat_sel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pat_sel.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

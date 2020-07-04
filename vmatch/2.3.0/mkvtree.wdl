@@ -2,10 +2,13 @@ version 1.0
 
 task Mkvtree {
   input {
-    String? indexIndexName
+    String index_name
   }
   command <<<
     mkvtree \
-      ~{indexIndexName}
+      ~{index_name}
   >>>
+  parameter_meta {
+    index_name: ""
+  }
 }

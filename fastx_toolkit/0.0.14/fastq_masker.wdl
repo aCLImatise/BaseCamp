@@ -2,20 +2,28 @@ version 1.0
 
 task FastqMasker {
   input {
-    Boolean vV
-    String qQ
-    String rR
-    Boolean zZ
-    String iI
-    String oO
+    Boolean? v
+    String? q
+    String? r
+    Boolean? z
+    String? i
+    String? o
   }
   command <<<
     fastq_masker \
-      ~{true="-v" false="" vV} \
-      ~{if defined(qQ) then ("-q " +  '"' + qQ + '"') else ""} \
-      ~{if defined(rR) then ("-r " +  '"' + rR + '"') else ""} \
-      ~{true="-z" false="" zZ} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""}
+      ~{true="-v" false="" v} \
+      ~{if defined(q) then ("-q " +  '"' + q + '"') else ""} \
+      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""} \
+      ~{true="-z" false="" z} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    v: ""
+    q: ""
+    r: ""
+    z: ""
+    i: ""
+    o: ""
+  }
 }

@@ -2,18 +2,22 @@ version 1.0
 
 task SegtoolsRelabel {
   input {
-    Boolean quietQuiet
-    File outfileOutfile
-    String? optionsOptions
-    String? segmentationSegmentation
-    String? mnemonicMnemonicFile
+    Boolean? quiet
+    File? outfile
+    String segmentation
+    String mnemonic_file
   }
   command <<<
     segtools-relabel \
-      ~{optionsOptions} \
-      ~{true="--quiet" false="" quietQuiet} \
-      ~{if defined(outfileOutfile) then ("--outfile " +  '"' + outfileOutfile + '"') else ""} \
-      ~{segmentationSegmentation} \
-      ~{mnemonicMnemonicFile}
+      ~{segmentation} \
+      ~{mnemonic_file} \
+      ~{true="--quiet" false="" quiet} \
+      ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""}
   >>>
+  parameter_meta {
+    quiet: "Do not print diagnostic messages."
+    outfile: "Save relabeled bed file to FILE instead of printing to stdout (default)"
+    segmentation: ""
+    mnemonic_file: ""
+  }
 }

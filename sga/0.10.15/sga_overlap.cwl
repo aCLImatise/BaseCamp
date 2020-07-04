@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sga_overlap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sga_overlap.cwl
 inputs:
 - id: verbose
   doc: display verbose output
@@ -65,6 +65,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --sample-rate
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

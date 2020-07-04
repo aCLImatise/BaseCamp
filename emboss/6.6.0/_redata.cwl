@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _redata.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_redata.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

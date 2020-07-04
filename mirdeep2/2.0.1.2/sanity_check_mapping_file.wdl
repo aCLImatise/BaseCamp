@@ -1,7 +1,29 @@
 version 1.0
 
 task SanityCheckMappingFile.pl {
+  input {
+    String no
+    String such
+    File file
+    String or
+    Directory directory
+    String at
+  }
   command <<<
-    sanity_check_mapping_file.pl
+    sanity_check_mapping_file.pl \
+      ~{no} \
+      ~{such} \
+      ~{file} \
+      ~{or} \
+      ~{directory} \
+      ~{at}
   >>>
+  parameter_meta {
+    no: ""
+    such: ""
+    file: ""
+    or: ""
+    directory: ""
+    at: ""
+  }
 }

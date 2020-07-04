@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sort.cwl
 inputs:
 - id: ignore_leading_blanks
   doc: leading blanks
@@ -78,6 +78,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --zero-terminated
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mcxi.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mcxi.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

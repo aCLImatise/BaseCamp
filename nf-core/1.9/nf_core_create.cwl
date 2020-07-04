@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nf_core_create.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nf_core_create.cwl
 inputs:
 - id: name
   doc: The name of your new pipeline  [required]

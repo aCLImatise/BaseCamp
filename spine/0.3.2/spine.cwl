@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: spine.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/spine.pl.cwl
 inputs:
 - id: file
   doc: "file with list of input sequence files. Accepted file formats include fasta\
@@ -37,12 +37,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --maxdist
-- id: l
+- id: _license_print
   doc: or --license  print license information and quit
   type: boolean
   inputBinding:
     prefix: -l
-- id: m
+- id: _nucpath_path
   doc: 'or --nucpath  full path to folder containing MUMmer scripts and executables,
     i.e. /home/applications/MUMmer/bin (default: tries to find MUMmer in your PATH)'
   type: boolean

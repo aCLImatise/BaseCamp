@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_assembly_explode_get_fastas_file.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_assembly_explode_get_fastas_file.cwl
 inputs:
 - id: input
   doc: The input fasta file to explode

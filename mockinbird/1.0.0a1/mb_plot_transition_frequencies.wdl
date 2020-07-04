@@ -2,22 +2,22 @@ version 1.0
 
 task MbPlotTransitionFrequencies {
   input {
-    String coverageCoverage
-    String limitLimit
-    Boolean verboseVerbose
-    Boolean removeRemove
-    String? inputInputFile
-    String? outdirOutdir
-    String? prefixPrefix
+    String? coverage
+    String? limit
+    Boolean? verbose
+    Boolean? remove
   }
   command <<<
     mb-plot-transition-frequencies \
-      ~{inputInputFile} \
-      ~{if defined(coverageCoverage) then ("--coverage " +  '"' + coverageCoverage + '"') else ""} \
-      ~{if defined(limitLimit) then ("--limit " +  '"' + limitLimit + '"') else ""} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{true="--remove" false="" removeRemove} \
-      ~{outdirOutdir} \
-      ~{prefixPrefix}
+      ~{if defined(coverage) then ("--coverage " +  '"' + coverage + '"') else ""} \
+      ~{if defined(limit) then ("--limit " +  '"' + limit + '"') else ""} \
+      ~{true="--verbose" false="" verbose} \
+      ~{true="--remove" false="" remove}
   >>>
+  parameter_meta {
+    coverage: "minimum coverage"
+    limit: "y-axis limit"
+    verbose: "verbose output"
+    remove: "remove temporary files"
+  }
 }

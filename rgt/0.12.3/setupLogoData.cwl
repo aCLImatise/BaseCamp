@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: setupLogoData.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/setupLogoData.py.cwl
 inputs:
 - id: all
   doc: Fetch all data sets.

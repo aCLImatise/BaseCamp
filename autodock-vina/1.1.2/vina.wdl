@@ -2,44 +2,67 @@ version 1.0
 
 task Vina {
   input {
-    String receptorReceptor
-    String flexFlex
-    String ligandLigand
-    String centerCenterX
-    String centerCenterY
-    String centerCenterZ
-    String sizeSizeX
-    String sizeSizeY
-    String sizeSizeZ
-    String outOut
-    String logLog
-    String cpuCpu
-    String seedSeed
-    String exhaustiveExhaustiveNess
-    String numNumModes
-    String energyEnergyRange
-    String configConfig
-    Boolean helpHelpAdvanced
+    String? receptor
+    String? flex
+    String? ligand
+    String? center_x
+    String? center_y
+    String? center_z
+    String? size_x
+    String? size_y
+    String? size_z
+    String? out
+    String? log
+    String? cpu
+    String? seed
+    String? exhaustive_ness
+    String? num_modes
+    String? energy_range
+    String? config
+    Boolean? help_advanced
+    String var_input
   }
   command <<<
     vina \
-      ~{if defined(receptorReceptor) then ("--receptor " +  '"' + receptorReceptor + '"') else ""} \
-      ~{if defined(flexFlex) then ("--flex " +  '"' + flexFlex + '"') else ""} \
-      ~{if defined(ligandLigand) then ("--ligand " +  '"' + ligandLigand + '"') else ""} \
-      ~{if defined(centerCenterX) then ("--center_x " +  '"' + centerCenterX + '"') else ""} \
-      ~{if defined(centerCenterY) then ("--center_y " +  '"' + centerCenterY + '"') else ""} \
-      ~{if defined(centerCenterZ) then ("--center_z " +  '"' + centerCenterZ + '"') else ""} \
-      ~{if defined(sizeSizeX) then ("--size_x " +  '"' + sizeSizeX + '"') else ""} \
-      ~{if defined(sizeSizeY) then ("--size_y " +  '"' + sizeSizeY + '"') else ""} \
-      ~{if defined(sizeSizeZ) then ("--size_z " +  '"' + sizeSizeZ + '"') else ""} \
-      ~{if defined(outOut) then ("--out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(logLog) then ("--log " +  '"' + logLog + '"') else ""} \
-      ~{if defined(cpuCpu) then ("--cpu " +  '"' + cpuCpu + '"') else ""} \
-      ~{if defined(seedSeed) then ("--seed " +  '"' + seedSeed + '"') else ""} \
-      ~{if defined(exhaustiveExhaustiveNess) then ("--exhaustiveness " +  '"' + exhaustiveExhaustiveNess + '"') else ""} \
-      ~{if defined(numNumModes) then ("--num_modes " +  '"' + numNumModes + '"') else ""} \
-      ~{if defined(energyEnergyRange) then ("--energy_range " +  '"' + energyEnergyRange + '"') else ""} \
-      ~{if defined(configConfig) then ("--config " +  '"' + configConfig + '"') else ""} \
-      ~{true="--help_advanced" false="" helpHelpAdvanced}
+      ~{var_input} \
+      ~{if defined(receptor) then ("--receptor " +  '"' + receptor + '"') else ""} \
+      ~{if defined(flex) then ("--flex " +  '"' + flex + '"') else ""} \
+      ~{if defined(ligand) then ("--ligand " +  '"' + ligand + '"') else ""} \
+      ~{if defined(center_x) then ("--center_x " +  '"' + center_x + '"') else ""} \
+      ~{if defined(center_y) then ("--center_y " +  '"' + center_y + '"') else ""} \
+      ~{if defined(center_z) then ("--center_z " +  '"' + center_z + '"') else ""} \
+      ~{if defined(size_x) then ("--size_x " +  '"' + size_x + '"') else ""} \
+      ~{if defined(size_y) then ("--size_y " +  '"' + size_y + '"') else ""} \
+      ~{if defined(size_z) then ("--size_z " +  '"' + size_z + '"') else ""} \
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
+      ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
+      ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""} \
+      ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
+      ~{if defined(exhaustive_ness) then ("--exhaustiveness " +  '"' + exhaustive_ness + '"') else ""} \
+      ~{if defined(num_modes) then ("--num_modes " +  '"' + num_modes + '"') else ""} \
+      ~{if defined(energy_range) then ("--energy_range " +  '"' + energy_range + '"') else ""} \
+      ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
+      ~{true="--help_advanced" false="" help_advanced}
   >>>
+  parameter_meta {
+    receptor: "rigid part of the receptor (PDBQT)"
+    flex: "flexible side chains, if any (PDBQT)"
+    ligand: "ligand (PDBQT)"
+    center_x: "X coordinate of the center"
+    center_y: "Y coordinate of the center"
+    center_z: "Z coordinate of the center"
+    size_x: "size in the X dimension (Angstroms)"
+    size_y: "size in the Y dimension (Angstroms)"
+    size_z: "size in the Z dimension (Angstroms)"
+    out: "output models (PDBQT), the default is chosen based on  the ligand file name"
+    log: "optionally, write log file"
+    cpu: "the number of CPUs to use (the default is to try to detect the number of CPUs or, failing that, use 1)"
+    seed: "explicit random seed"
+    exhaustive_ness: "(=8) exhaustiveness of the global search (roughly  proportional to time): 1+"
+    num_modes: "(=9)      maximum number of binding modes to generate"
+    energy_range: "(=3)   maximum energy difference between the best binding  mode and the worst one displayed (kcal/mol)"
+    config: "the above options can be put here"
+    help_advanced: "display usage summary with advanced options"
+    var_input: ""
+  }
 }

@@ -2,22 +2,31 @@ version 1.0
 
 task StartParallelPicrustJobsSge.py {
   input {
-    Boolean verboseVerbose
-    Boolean makeMakeJobs
-    Boolean submitSubmitJobs
-    String delayDelay
-    String queueQueue
-    String jobJobDir
-    String numNumJobs
+    Boolean? verbose
+    Boolean? make_jobs
+    Boolean? submit_jobs
+    String? delay
+    String? queue
+    String? job_dir
+    String? num_jobs
   }
   command <<<
     start_parallel_picrust_jobs_sge.py \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{true="--make_jobs" false="" makeMakeJobs} \
-      ~{true="--submit_jobs" false="" submitSubmitJobs} \
-      ~{if defined(delayDelay) then ("--delay " +  '"' + delayDelay + '"') else ""} \
-      ~{if defined(queueQueue) then ("--queue " +  '"' + queueQueue + '"') else ""} \
-      ~{if defined(jobJobDir) then ("--job_dir " +  '"' + jobJobDir + '"') else ""} \
-      ~{if defined(numNumJobs) then ("--num_jobs " +  '"' + numNumJobs + '"') else ""}
+      ~{true="--verbose" false="" verbose} \
+      ~{true="--make_jobs" false="" make_jobs} \
+      ~{true="--submit_jobs" false="" submit_jobs} \
+      ~{if defined(delay) then ("--delay " +  '"' + delay + '"') else ""} \
+      ~{if defined(queue) then ("--queue " +  '"' + queue + '"') else ""} \
+      ~{if defined(job_dir) then ("--job_dir " +  '"' + job_dir + '"') else ""} \
+      ~{if defined(num_jobs) then ("--num_jobs " +  '"' + num_jobs + '"') else ""}
   >>>
+  parameter_meta {
+    verbose: "Print information during execution -- useful for debugging [default: False]"
+    make_jobs: "make the job files [default: none]"
+    submit_jobs: "submit the job files [default: none]"
+    delay: "Number of seconds to pause between launching each job [default: 0]"
+    queue: "name of queue to submit to  [default: none]"
+    job_dir: "directory to store the jobs [default: jobs/]"
+    num_jobs: "Number of jobs to group commands into. [default: 100]"
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hostid.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hostid.cwl
 inputs:
 - id: option
   doc: ''

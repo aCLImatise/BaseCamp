@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: soap.coverage.cwl
+id: ../../../../home/ubuntu/BiocondaCli/soap.coverage.cwl
 inputs:
-- id: ref
-  doc: start    end    name
-  type: string
-  inputBinding:
-    position: 0
-- id: ref
-  doc: start    end    name
-  type: string
-  inputBinding:
-    position: 0
 - id: cvg
   doc: Selector for sequencing coverage mode, physical coverage mode or reads tag
     mode At least and only one should be selected!
@@ -22,7 +12,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -refsingle
-- id: i
+- id: input_several_soap_soap
   doc: '[soap-file1 soap-file2 ...] Input several soap or soap gziped results by filenames.'
   type: boolean
   inputBinding:
@@ -44,7 +34,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -il_soap
-- id: o
+- id: results_output_details
   doc: '[file-name]          Results output with details'
   type: boolean
   inputBinding:
@@ -143,13 +133,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -maq
-- id: m8_subject
+- id: m_eight_subject
   doc: Input is Blast m8 file for calculating subject coverage (reference should be
     subject).
   type: boolean
   inputBinding:
     prefix: -m8subject
-- id: m8_query
+- id: m_eight_query
   doc: Input is Blast m8 file for calculating query coverage (reference should be
     query).
   type: boolean
@@ -170,11 +160,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -axtoiq
-- id: pe_support
-  doc: '[filename_in] [filename_out] Output pair-end reads on specific areas.'
-  type: boolean
-  inputBinding:
-    prefix: -pesupport
 - id: only_uniq
   doc: Use reads those are uniquely mapped (column 4 in soap == 1).
   type: boolean

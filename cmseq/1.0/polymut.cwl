@@ -1,19 +1,14 @@
 class: CommandLineTool
-id: polymut.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/polymut.py.cwl
 inputs:
-- id: bam_file
-  doc: The file on which to operate
-  type: string
-  inputBinding:
-    position: 0
-- id: c
+- id: id__contig
   doc: ID, --contig REFERENCE ID Focus on a subset of references in the BAM file.
     Can be a list of references separated by commas or a FASTA file (the IDs are used
     to subset)
   type: string
   inputBinding:
     prefix: -c
-- id: f
+- id: set_unmapped_funmap
   doc: 'If set unmapped (FUNMAP), secondary (FSECONDARY), qc- fail (FQCFAIL) and duplicate
     (FDUP) are excluded. If unset ALL reads are considered (bedtools genomecov style).
     Default: unset'
@@ -54,6 +49,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --gff_file
+- id: bam_file
+  doc: The file on which to operate
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

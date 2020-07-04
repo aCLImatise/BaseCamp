@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dfamscan.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dfamscan.pl.cwl
 inputs:
 - id: df_am_in_file
   doc: "Use this is you've already run nhmmscan, and just want to perfom dfamscan\
@@ -13,16 +13,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --dfam_outfile
-- id: masking_thresh
-  doc: /--cut_ga
+- id: annotation_thresh_slash_cut_tc
+  doc: Default
   type: boolean
   inputBinding:
-    prefix: --masking_thresh
-- id: annotation_thresh
-  doc: /--cut_tc  Default
-  type: boolean
-  inputBinding:
-    prefix: --annotation_thresh
+    prefix: --annotation_thresh/--cut_tc
 - id: species
   doc: Currently allowed are "Other", "Homo sapiens",  "Mus Musculus", "Danio rerio",
     "Drosophila melanogaster", or "Caenorhabditis elegans"

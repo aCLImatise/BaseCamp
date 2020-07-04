@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: catmt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/catmt.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

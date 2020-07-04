@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pairtools_dedup.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pairtools_dedup.cwl
 inputs:
 - id: output
   doc: output file for pairs after duplicate removal. If the path ends with .gz or
@@ -59,32 +59,32 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --send-header-to
-- id: c1
+- id: cone
   doc: Chrom 1 column; default 1
   type: long
   inputBinding:
     prefix: --c1
-- id: c2
+- id: c_two
   doc: Chrom 2 column; default 3
   type: long
   inputBinding:
     prefix: --c2
-- id: p1
+- id: p_one
   doc: Position 1 column; default 2
   type: long
   inputBinding:
     prefix: --p1
-- id: p2
+- id: p_two
   doc: Position 2 column; default 4
   type: long
   inputBinding:
     prefix: --p2
-- id: s1
+- id: s_one
   doc: Strand 1 column; default 5
   type: long
   inputBinding:
     prefix: --s1
-- id: s2
+- id: s_two
   doc: Strand 2 column; default 6
   type: long
   inputBinding:
@@ -134,6 +134,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --cmd-out
+- id: pairs_path
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

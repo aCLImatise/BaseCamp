@@ -2,22 +2,31 @@ version 1.0
 
 task GfPcr {
   input {
-    String nameName
-    String? hostHost
-    String? portPort
-    String? seqSeqDir
-    String? fFPrimer
-    String? rRPrimer
-    String? outputOutput
+    String? name
+    String host
+    String port
+    String seq_dir
+    String f_primer
+    String r_primer
+    String var_output
   }
   command <<<
     gfPcr \
-      ~{hostHost} \
-      ~{if defined(nameName) then ("- Name " +  '"' + nameName + '"') else ""} \
-      ~{portPort} \
-      ~{seqSeqDir} \
-      ~{fFPrimer} \
-      ~{rRPrimer} \
-      ~{outputOutput}
+      ~{host} \
+      ~{port} \
+      ~{seq_dir} \
+      ~{f_primer} \
+      ~{r_primer} \
+      ~{var_output} \
+      ~{if defined(name) then ("-name " +  '"' + name + '"') else ""}
   >>>
+  parameter_meta {
+    name: "- Name to use in bed output."
+    host: ""
+    port: ""
+    seq_dir: ""
+    f_primer: ""
+    r_primer: ""
+    var_output: ""
+  }
 }

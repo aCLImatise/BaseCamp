@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tripaille_feature_sync.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tripaille_feature_sync.cwl
 inputs:
 - id: organism
   doc: Common name of the organism to sync

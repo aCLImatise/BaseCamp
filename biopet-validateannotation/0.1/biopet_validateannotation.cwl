@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: biopet_validateannotation.cwl
+id: ../../../../home/ubuntu/BiocondaCli/biopet_validateannotation.cwl
 inputs:
 - id: log_level
   doc: "Level of log information printed. Possible levels: 'debug', 'info', 'warn',\
@@ -28,6 +28,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --disableFail
+- id: validate_annotation
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

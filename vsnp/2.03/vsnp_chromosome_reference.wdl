@@ -2,14 +2,19 @@ version 1.0
 
 task VsnpChromosomeReference.py {
   input {
-    String wW
-    Boolean vV
-    String? progProg
+    String? cwd
+    Boolean? v
+    String prog
   }
   command <<<
     vsnp_chromosome_reference.py \
-      ~{progProg} \
-      ~{if defined(wW) then ("-w " +  '"' + wW + '"') else ""} \
-      ~{true="-v" false="" vV}
+      ~{prog} \
+      ~{if defined(cwd) then ("--cwd " +  '"' + cwd + '"') else ""} \
+      ~{true="-v" false="" v}
   >>>
+  parameter_meta {
+    cwd: "Optional: path to VCF files"
+    v: ""
+    prog: ""
+  }
 }

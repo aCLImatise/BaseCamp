@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fetch_ucsc.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fetch_ucsc.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

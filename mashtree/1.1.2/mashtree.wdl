@@ -2,20 +2,16 @@ version 1.0
 
 task Mashtree {
   input {
-    Boolean genomeGenomeSize
-    Boolean minMinDepth
-    Boolean kmKmErLength
-    Boolean sketchSketchSize
-    Boolean seedSeed
-    Boolean saveSaveSketches
+    Boolean? seed
+    Boolean? save_sketches
   }
   command <<<
     mashtree \
-      ~{true="--genomesize" false="" genomeGenomeSize} \
-      ~{true="--mindepth" false="" minMinDepth} \
-      ~{true="--kmerlength" false="" kmKmErLength} \
-      ~{true="--sketch-size" false="" sketchSketchSize} \
-      ~{true="--seed" false="" seedSeed} \
-      ~{true="--save-sketches" false="" saveSaveSketches}
+      ~{true="--seed" false="" seed} \
+      ~{true="--save-sketches" false="" save_sketches}
   >>>
+  parameter_meta {
+    seed: "42   Seed for mash sketch"
+    save_sketches: "''   If a directory is supplied, then sketches will be saved in it. If no directory is supplied, then sketches will be saved alongside source files."
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: malt_run.cwl
+id: ../../../../home/ubuntu/BiocondaCli/malt_run.cwl
 inputs:
 - id: mode
   doc: '[string]                  Program mode. Mandatory option. Legal values: Unknown,

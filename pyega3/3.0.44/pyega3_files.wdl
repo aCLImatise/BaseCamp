@@ -2,10 +2,13 @@ version 1.0
 
 task Pyega3Files {
   input {
-    String? identifierIdentifier
+    String identifier
   }
   command <<<
     pyega3 files \
-      ~{identifierIdentifier}
+      ~{identifier}
   >>>
+  parameter_meta {
+    identifier: "Dataset ID (e.g. EGAD00000000001)"
+  }
 }

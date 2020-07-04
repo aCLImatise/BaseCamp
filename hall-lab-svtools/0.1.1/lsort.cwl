@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: lsort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lsort.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,28 +1,38 @@
 class: CommandLineTool
-id: get_organelle_from_reads.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_organelle_from_reads.py.cwl
 inputs:
-- id: u
+- id: input_file_forward
+  doc: 'Input file with forward paired-end reads (format: fastq/fastq.gz/fastq.tar.gz).'
+  type: string
+  inputBinding:
+    prefix: '-1'
+- id: input_file_reverse
+  doc: 'Input file with reverse paired-end reads (format: fastq/fastq.gz/fastq.tar.gz).'
+  type: string
+  inputBinding:
+    prefix: '-2'
+- id: input_files_unpaired
   doc: "Input file(s) with unpaired (single-end) reads (format: fastq/fastq.gz/fastq.tar.gz).\
     \ files could be comma-separated lists such as 'seq1.fq,seq2.fq'."
   type: string
   inputBinding:
     prefix: -u
-- id: o
+- id: output_directory_overwriting
   doc: Output directory. Overwriting files if directory exists.
   type: string
   inputBinding:
     prefix: -o
-- id: s
+- id: seed_sequences_input
   doc: "Seed sequence(s). Input fasta format file as initial seed. A seed sequence\
     \ in GetOrganelle is only used for identifying initial organelle reads. The assembly\
     \ process is purely de novo. Should be a list of files split by comma(s) on a\
     \ multi-organelle mode, with the same list length to organelle_type (followed\
-    \ by '-F'). Default: '/tmp/tmphg2suakg/lib/python3.8/site- packages/GetOrganelleLib/SeedDatabase/*.fasta'\
+    \ by '-F'). Default: '/tmp/tmpkfo1qzio/lib/python3.8/site- packages/GetOrganelleLib/SeedDatabase/*.fasta'\
     \ (* depends on the value followed with flag '-F')"
   type: string
   inputBinding:
     prefix: -s
-- id: a
+- id: antiseeds_suggested_serves
   doc: Anti-seed(s). Not suggested unless what you really know what you are doing.
     Input fasta format file as anti-seed, where the extension process stop. Typically
     serves as excluding plastid reads when extending mitochondrial reads, or the other
@@ -84,7 +94,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --keep-temp
-- id: f
+- id: flag_should_followed
   doc: "This flag should be followed with embplant_pt (embryophyta plant plastome),\
     \ other_pt (non- embryophyta plant plastome), embplant_mt (plant mitogenome),\
     \ embplant_nr (plant nuclear ribosomal RNA), animal_mt (animal mitogenome), fungus_mt\
@@ -123,7 +133,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --memory-unlimited
-- id: w
+- id: word_size_w_pregrouping_assigned
   doc: "Word size (W) for pre-grouping (if not assigned by '-- pre-w') and extending\
     \ process. This script would try to guess (auto-estimate) a proper W using an\
     \ empirical function based on average read length, reads quality, target genome\
@@ -154,7 +164,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --max-n-words
-- id: j
+- id: length_step_checking
   doc: 'The length of step for checking words in reads during extending process (integer
     >= 1). When you have reads of high quality, the larger the number is, the faster
     the extension will be, the more risk of missing reads in low coverage area. Choose
@@ -162,7 +172,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -J
-- id: m
+- id: beta_parameter_length
   doc: '(Beta parameter) The length of step for building words from seeds during extending
     process (integer >= 1). When you have reads of high quality, the larger the number
     is, the faster the extension will be, the more risk of missing reads in low coverage
@@ -173,7 +183,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -M
-- id: bowtie2_options
+- id: bowtie_two_options
   doc: "Bowtie2 options, such as '--ma 3 --mp 5,2 --very-fast -t'. Default: --very-fast\
     \ -t."
   type: string
@@ -215,7 +225,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --max-extending-len
-- id: k
+- id: spades_kmer_settings
   doc: 'SPAdes kmer settings. Use the same format as in SPAdes. illegal kmer values
     would be automatically discarded by GetOrganelle. Default: 21,55,85,115'
   type: string
@@ -251,7 +261,7 @@ inputs:
     a list of databases split by comma(s) on a multi-organelle mode, with the same
     list length to organelle_type (followed by '-F'). This is optional for any organelle
     mentioned in '-F' but required for 'anonym'. By default, certain database(s) in
-    /tmp/tmphg2suakg/lib/python3.8/site- packages/GetOrganelleLib/LabelDatabase would
+    /tmp/tmpkfo1qzio/lib/python3.8/site- packages/GetOrganelleLib/LabelDatabase would
     be used contingent on the organelle types chosen (-F). The default value no longer
     holds when '--genes' or '--ex- genes' is used.
   type: string
@@ -338,12 +348,12 @@ inputs:
   type: long
   inputBinding:
     prefix: --max-paths-num
-- id: t
+- id: maximum_threads_use
   doc: Maximum threads to use.
   type: string
   inputBinding:
     prefix: -t
-- id: p
+- id: maximum_number_integer
   doc: The maximum number (integer) of high-covered reads to be pre-grouped before
     extending process. pre_grouping is suggested when the whole genome coverage is
     shallow but the organ genome coverage is deep. The default value is 2E5. For personal
@@ -359,7 +369,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --which-blast
-- id: which_bowtie2
+- id: which_bowtie_two
   doc: 'Assign the path to Bowtie2 binary files if not added to the path. Default:
     try GetOrganelleDep/linux/bowtie2 first, then $PATH'
   type: string

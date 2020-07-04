@@ -1,28 +1,26 @@
 class: CommandLineTool
-id: cuffnorm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cuffnorm.cwl
 inputs:
-- id: o
-  doc: '/--output-dir              write all output files to this directory              [
-    default:     ./ ]'
+- id: oslash_output_dir
+  doc: 'write all output files to this directory              [ default:     ./ ]'
   type: boolean
   inputBinding:
-    prefix: -o
-- id: l
-  doc: /--labels                  comma-separated list of condition labels
+    prefix: -o/--output-dir
+- id: lslash_labels
+  doc: comma-separated list of condition labels
   type: boolean
   inputBinding:
-    prefix: -L
+    prefix: -L/--labels
 - id: norm_standards_file
   doc: 'Housekeeping/spike genes to normalize libraries       [ default:   NULL ]'
   type: boolean
   inputBinding:
     prefix: --norm-standards-file
-- id: p
-  doc: '/--num-threads             number of threads used during quantification          [
-    default:      1 ]'
+- id: p_slash_num_threads
+  doc: 'number of threads used during quantification          [ default:      1 ]'
   type: boolean
   inputBinding:
-    prefix: -p
+    prefix: -p/--num-threads
 - id: library_type
   doc: 'Library prep used for input reads                     [ default:  below ]'
   type: boolean
@@ -48,18 +46,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --total-hits-norm
-- id: v
-  doc: '/--verbose                 log-friendly verbose processing (no progress bar)     [
-    default:  FALSE ]'
+- id: v_slash_verbose
+  doc: 'log-friendly verbose processing (no progress bar)     [ default:  FALSE ]'
   type: boolean
   inputBinding:
-    prefix: -v
-- id: q
-  doc: '/--quiet                   log-friendly quiet processing (no progress bar)       [
-    default:  FALSE ]'
+    prefix: -v/--verbose
+- id: q_slash_quiet
+  doc: 'log-friendly quiet processing (no progress bar)       [ default:  FALSE ]'
   type: boolean
   inputBinding:
-    prefix: -q
+    prefix: -q/--quiet
 - id: seed
   doc: 'value of random number generator seed                 [ default:      0 ]'
   type: boolean
@@ -70,6 +66,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-update-check
+- id: transcripts_dot_gtf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: sample_one_expr_dot_cx_b
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: sample_two_expr_dot_cx_b
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

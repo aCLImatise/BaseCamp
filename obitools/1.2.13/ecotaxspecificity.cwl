@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ecotaxspecificity.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ecotaxspecificity.cwl
 inputs:
 - id: skip
   doc: skip the N first sequences
@@ -76,7 +76,7 @@ inputs:
   type: File
   inputBinding:
     prefix: --taxonomy-dump
-- id: e
+- id: _errors_maximum
   doc: '###, --errors=### Maximum errors between two sequences'
   type: boolean
   inputBinding:

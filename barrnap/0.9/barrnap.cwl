@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: barrnap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/barrnap.cwl
 inputs:
 - id: citation
   doc: Print citation for referencing barrnap
@@ -7,7 +7,7 @@ inputs:
   inputBinding:
     prefix: --citation
 - id: kingdom
-  doc: "[X]     Kingdom: bac mito arc euk (default 'bac')"
+  doc: "[X]     Kingdom: euk bac mito arc (default 'bac')"
   type: boolean
   inputBinding:
     prefix: --kingdom
@@ -46,6 +46,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --outseq
+- id: chr_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

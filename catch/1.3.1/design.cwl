@@ -1,18 +1,6 @@
 class: CommandLineTool
-id: design.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/design.py.cwl
 inputs:
-- id: dataset
-  doc: One or more target datasets (e.g., one per species). Each dataset can be specified
-    in one of multiple ways. (a) If dataset is in the format 'download:TAXID', then
-    CATCH downloads from NCBI all whole genomes for the NCBI taxonomy with id TAXID,
-    and uses these sequences as input. (b) If dataset is a path to a FASTA file, then
-    its sequences are read and used as input. (c) Otherwise, it is assumed that this
-    is a label for a dataset included in this package (e.g., 'zika'). If the label
-    starts with 'colleciton:' (e.g., 'collection:viruses_with_human_host'), then this
-    reads from an available collection of datasets.
-  type: string
-  inputBinding:
-    position: 0
 - id: add_reverse_complements
   doc: Add to the output the reverse complement of each probe
   type: boolean
@@ -167,6 +155,33 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
+- id: pl
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -pl
+- id: ps
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -ps
+- id: dataset
+  doc: One or more target datasets (e.g., one per species). Each dataset can be specified
+    in one of multiple ways. (a) If dataset is in the format 'download:TAXID', then
+    CATCH downloads from NCBI all whole genomes for the NCBI taxonomy with id TAXID,
+    and uses these sequences as input. (b) If dataset is a path to a FASTA file, then
+    its sequences are read and used as input. (c) Otherwise, it is assumed that this
+    is a label for a dataset included in this package (e.g., 'zika'). If the label
+    starts with 'colleciton:' (e.g., 'collection:viruses_with_human_host'), then this
+    reads from an available collection of datasets.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

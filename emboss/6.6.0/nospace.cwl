@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nospace.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nospace.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sambamba_index.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sambamba_index.cwl
 inputs:
 - id: n_threads
   doc: number of threads to use for decompression
@@ -21,6 +21,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --cram-input
+- id: samba_mba_index
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: input_dot_bam_vertical_line_input_dot_cram
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: output_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

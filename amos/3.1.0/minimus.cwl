@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: minimus.cwl
+id: ../../../../home/ubuntu/BiocondaCli/minimus.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

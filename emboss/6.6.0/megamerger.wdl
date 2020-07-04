@@ -2,10 +2,13 @@ version 1.0
 
 task Megamerger {
   input {
-    Boolean wordWordSize
+    Boolean? word_size
   }
   command <<<
     megamerger \
-      ~{true="-wordsize" false="" wordWordSize}
+      ~{true="-wordsize" false="" word_size}
   >>>
+  parameter_meta {
+    word_size: "integer    [20] Word size (Integer 2 or more)"
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: PyLOH.py_BAF_heatmap_filename_base.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PyLOH.py_BAF_heatmap.cwl
 inputs:
 - id: filename_base
   doc: Base name of preprocessed files created.
@@ -11,4 +11,3 @@ cwlVersion: v1.1
 baseCommand:
 - PyLOH.py
 - BAF_heatmap
-- filename_base

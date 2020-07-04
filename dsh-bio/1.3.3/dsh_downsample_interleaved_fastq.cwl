@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dsh_downsample_interleaved_fastq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dsh_downsample_interleaved_fastq.cwl
 inputs:
 - id: about
   doc: display about message [optional]
@@ -28,6 +28,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --seed
+- id: args
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

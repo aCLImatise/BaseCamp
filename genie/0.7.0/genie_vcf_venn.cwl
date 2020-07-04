@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: genie_vcf_venn.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genie_vcf_venn.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: file_path
   doc: VCF files (*require at 3 files)
   type: string
@@ -21,6 +16,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --svtype
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

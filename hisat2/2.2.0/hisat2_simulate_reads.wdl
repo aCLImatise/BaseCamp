@@ -1,43 +1,23 @@
 version 1.0
 
-task Hisat2SimulateReads.py {
+task Hisat2SimulateReads.pyBaseFname {
   input {
-    Boolean dnaDna
-    Boolean singleSingleEnd
-    String readReadLength
-    String fragmentFragmentLength
-    String numNumFragment
-    String exprExprProfile
-    String repeatRepeatInfo
-    String errorErrorRate
-    Int maxMaxMismatch
-    String randomRandomSeed
-    String snpSnpProb
-    Boolean sanitySanityCheck
-    Boolean verboseVerbose
-    String? genomeGenomeFile
-    String? gtfGtfFile
-    String? snpSnpFile
-    String? baseBaseFname
+    Boolean? d
+    Boolean? single_end
+    String? r
+    String his_at_two_simulate_reads_do_tpy
   }
   command <<<
-    hisat2_simulate_reads.py \
-      ~{genomeGenomeFile} \
-      ~{true="--dna" false="" dnaDna} \
-      ~{true="--single-end" false="" singleSingleEnd} \
-      ~{if defined(readReadLength) then ("--read-length " +  '"' + readReadLength + '"') else ""} \
-      ~{if defined(fragmentFragmentLength) then ("--fragment-length " +  '"' + fragmentFragmentLength + '"') else ""} \
-      ~{if defined(numNumFragment) then ("--num-fragment " +  '"' + numNumFragment + '"') else ""} \
-      ~{if defined(exprExprProfile) then ("--expr-profile " +  '"' + exprExprProfile + '"') else ""} \
-      ~{if defined(repeatRepeatInfo) then ("--repeat-info " +  '"' + repeatRepeatInfo + '"') else ""} \
-      ~{if defined(errorErrorRate) then ("--error-rate " +  '"' + errorErrorRate + '"') else ""} \
-      ~{if defined(maxMaxMismatch) then ("--max-mismatch " +  '"' + maxMaxMismatch + '"') else ""} \
-      ~{if defined(randomRandomSeed) then ("--random-seed " +  '"' + randomRandomSeed + '"') else ""} \
-      ~{if defined(snpSnpProb) then ("--snp-prob " +  '"' + snpSnpProb + '"') else ""} \
-      ~{true="--sanity-check" false="" sanitySanityCheck} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{gtfGtfFile} \
-      ~{snpSnpFile} \
-      ~{baseBaseFname}
+    hisat2_simulate_reads.py base_fname \
+      ~{his_at_two_simulate_reads_do_tpy} \
+      ~{true="-d" false="" d} \
+      ~{true="--single-end" false="" single_end} \
+      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
+  parameter_meta {
+    d: ""
+    single_end: ""
+    r: ""
+    his_at_two_simulate_reads_do_tpy: ""
+  }
 }

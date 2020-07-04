@@ -2,14 +2,13 @@ version 1.0
 
 task MbCapOccupancy {
   input {
-    String quantileQuantile
-    String? inputInputFile
-    String? outputOutputFile
+    String? quantile
   }
   command <<<
     mb-cap-occupancy \
-      ~{inputInputFile} \
-      ~{if defined(quantileQuantile) then ("--quantile " +  '"' + quantileQuantile + '"') else ""} \
-      ~{outputOutputFile}
+      ~{if defined(quantile) then ("--quantile " +  '"' + quantile + '"') else ""}
   >>>
+  parameter_meta {
+    quantile: "quantile [0, 1.0]"
+  }
 }

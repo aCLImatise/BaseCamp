@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sdm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sdm.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

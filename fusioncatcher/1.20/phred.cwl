@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phred.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phred.py.cwl
 inputs:
 - id: input
   doc: The input file in FASTQ format.

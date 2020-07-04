@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: map_gff_coords.cwl
+id: ../../../../home/ubuntu/BiocondaCli/map_gff_coords.cwl
 inputs:
-- id: source_genome
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: source_gff_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: target_genome
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: type
   doc: only look at features of particular type
   type: string
@@ -57,6 +42,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: source_genome
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: source_gff_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: target_genome
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

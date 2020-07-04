@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: xam_coverage_bins.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/xam_coverage_bins.pl.cwl
 inputs:
 - id: x_am_file
   doc: -f    bam|cram file to check coverage.
@@ -31,26 +31,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -man
-- id: type
-  doc: Type of target file passed [bed|gff]
-  type: boolean
-  inputBinding:
-    prefix: -type
 - id: x_am_files
   doc: bam|cram file to check coverage.
   type: boolean
   inputBinding:
     prefix: -xam_files
-- id: target_file
-  doc: bed|gff3 file of targets.
-  type: boolean
-  inputBinding:
-    prefix: -target_file
-- id: man
-  doc: Prints the man page for this script
-  type: boolean
-  inputBinding:
-    prefix: -man
 outputs: []
 cwlVersion: v1.1
 baseCommand:

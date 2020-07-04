@@ -1,26 +1,26 @@
 class: CommandLineTool
-id: genomedata_open_data.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genomedata_open_data.cwl
 inputs:
-- id: gd_archive
-  doc: ''
-  type: string
+- id: track_names
+  doc: tracknames to open
+  type: string[]
   inputBinding:
-    position: 0
+    prefix: --tracknames
+- id: verbose
+  doc: Print status updates and diagnostic messages
+  type: boolean
+  inputBinding:
+    prefix: --verbose
 - id: v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
-- id: verbose
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --verbose
-- id: track_names
-  doc: ''
+- id: gd_archive
+  doc: genomedata archive
   type: string
   inputBinding:
-    prefix: --tracknames
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

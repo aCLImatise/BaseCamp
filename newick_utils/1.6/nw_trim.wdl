@@ -2,10 +2,13 @@ version 1.0
 
 task NwTrim {
   input {
-    Boolean aA
+    Boolean? ah
   }
   command <<<
     nw_trim \
-      ~{true="-a" false="" aA}
+      ~{true="-ah" false="" ah}
   >>>
+  parameter_meta {
+    ah: ""
+  }
 }

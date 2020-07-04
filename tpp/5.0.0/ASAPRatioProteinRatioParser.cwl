@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ASAPRatioProteinRatioParser.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ASAPRatioProteinRatioParser.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

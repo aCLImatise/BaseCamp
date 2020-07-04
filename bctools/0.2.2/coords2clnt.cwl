@@ -1,11 +1,16 @@
 class: CommandLineTool
-id: coords2clnt.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/coords2clnt.py.cwl
 inputs:
-- id: in_file
-  doc: Path to bed input file.
+- id: outfile
+  doc: Write results to this file.
   type: string
   inputBinding:
-    position: 0
+    prefix: --outfile
+- id: three_prime
+  doc: Set position one nt downstream of 3'-end as crosslinked nucleotide.
+  type: boolean
+  inputBinding:
+    prefix: --threeprime
 - id: verbose
   doc: Be verbose.
   type: boolean
@@ -16,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
+- id: in_file
+  doc: Path to bed input file.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

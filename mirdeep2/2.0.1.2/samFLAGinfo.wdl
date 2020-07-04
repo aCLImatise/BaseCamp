@@ -2,14 +2,13 @@ version 1.0
 
 task SamFLAGinfo.pl {
   input {
-    String? perlPerl
-    String? samSamFlagInfoPl
-    Int? intInt
+    Int? var_int
   }
   command <<<
     samFLAGinfo.pl \
-      ~{perlPerl} \
-      ~{samSamFlagInfoPl} \
-      ~{intInt}
+      ~{var_int}
   >>>
+  parameter_meta {
+    var_int: ""
+  }
 }

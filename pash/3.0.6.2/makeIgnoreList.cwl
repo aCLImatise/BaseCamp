@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: makeIgnoreList.cwl
+id: ../../../../home/ubuntu/BiocondaCli/makeIgnoreList.cwl
 inputs:
-- id: make_ignore_list_exe
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: i
   doc: ''
   type: string

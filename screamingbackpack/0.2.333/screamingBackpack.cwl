@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: screamingBackpack.cwl
+id: ../../../../home/ubuntu/BiocondaCli/screamingBackpack.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

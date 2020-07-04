@@ -1,7 +1,14 @@
 version 1.0
 
 task FetchChromSizes {
+  input {
+    String db
+  }
   command <<<
-    fetchChromSizes
+    fetchChromSizes \
+      ~{db}
   >>>
+  parameter_meta {
+    db: ""
+  }
 }

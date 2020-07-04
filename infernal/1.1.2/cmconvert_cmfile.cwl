@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cmconvert_cmfile.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cmconvert_cmfile.cwl
 inputs:
 - id: options
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: snnsbat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snnsbat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

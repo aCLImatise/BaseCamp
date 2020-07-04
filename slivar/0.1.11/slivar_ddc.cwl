@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: slivar_ddc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/slivar_ddc.cwl
 inputs:
-- id: vcf
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: ped
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: chrom
   doc: "limit to this chromosome only. use '-3' for all chromosomes (in the case of\
     \ exome data) (default: chr15)"
@@ -32,6 +22,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --html
+- id: vcf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: ped
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

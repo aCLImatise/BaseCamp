@@ -1,126 +1,86 @@
 class: CommandLineTool
-id: fqtools.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fqtools.cwl
 inputs:
-- id: u
-  doc: Do not assume specifc quality score encoding
-  type: string
-  inputBinding:
-    position: 0
-- id: s
-  doc: Interpret quality scores as Sanger encoded
-  type: string
-  inputBinding:
-    position: 1
-- id: o
-  doc: Interpret quality scores as Solexa encoded
-  type: string
-  inputBinding:
-    position: 2
-- id: i
-  doc: Interpret quality scores as Illumina encoded
-  type: string
-  inputBinding:
-    position: 3
-- id: f
-  doc: uncompressed FASTQ format (.fastq)
-  type: string
-  inputBinding:
-    position: 0
-- id: f
-  doc: compressed FASTQ format (.fastq.gz)
-  type: string
-  inputBinding:
-    position: 1
-- id: b
-  doc: BAM format (.bam)
-  type: string
-  inputBinding:
-    position: 2
-- id: s
-  doc: SAM format (.sam)
-  type: string
-  inputBinding:
-    position: 3
-- id: u
-  doc: attempt to infer format from file extension, (default .fastq.gz)
-  type: string
-  inputBinding:
-    position: 4
-- id: v
+- id: show_program_version
   doc: Show the program version and exit.
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: allow_dna_sequence_bases
   doc: Allow DNA sequence bases       (ACGTN)
   type: boolean
   inputBinding:
     prefix: -d
-- id: r
+- id: allow_rna_sequence_bases
   doc: Allow RNA sequence bases       (ACGUN)
   type: boolean
   inputBinding:
     prefix: -r
-- id: a
+- id: allow_ambiguous_bases
   doc: Allow ambiguous sequence bases (RYKMSWBDHV)
   type: boolean
   inputBinding:
     prefix: -a
-- id: m
+- id: allow_sequence_base
   doc: Allow mask sequence base       (X)
   type: boolean
   inputBinding:
     prefix: -m
-- id: u
+- id: allow_uppercase_sequence_bases
   doc: Allow uppercase sequence bases
   type: boolean
   inputBinding:
     prefix: -u
-- id: l
+- id: allow_lowercase_sequence_bases
   doc: Allow lowercase sequence bases
   type: boolean
   inputBinding:
     prefix: -l
-- id: p
+- id: set_replacement_default
   doc: Set the pair replacement character (default "%")
   type: string
   inputBinding:
     prefix: -p
-- id: b
+- id: set_input_size
   doc: Set the input buffer size
   type: string
   inputBinding:
     prefix: -b
-- id: b
+- id: set_output_size
   doc: Set the output buffer size
   type: string
   inputBinding:
     prefix: -B
-- id: q
+- id: set_score_encoding
   doc: Set the quality score encoding
   type: string
   inputBinding:
     prefix: -q
-- id: f
+- id: set_input_format
   doc: Set the input file format
   type: string
   inputBinding:
     prefix: -f
-- id: f
+- id: set_file_format
   doc: Set the output file format
   type: string
   inputBinding:
     prefix: -F
-- id: i
+- id: read_interleaved_pairs
   doc: Read interleaved input file pairs
   type: boolean
   inputBinding:
     prefix: -i
-- id: i
+- id: write_file_pairs
   doc: Write interleaved output file pairs
   type: boolean
   inputBinding:
     prefix: -I
+- id: hv_dram_uli
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -hvdramuli
 outputs: []
 cwlVersion: v1.1
 baseCommand:

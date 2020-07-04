@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: platypus.cwl
+id: ../../../../home/ubuntu/BiocondaCli/platypus.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

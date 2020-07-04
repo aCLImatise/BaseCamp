@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: dcmdspfn.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmdspfn.cwl
 inputs:
-- id: q
+- id: _quiet_print
   doc: --quiet          quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose        verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug          debug mode, print debug information
   type: boolean
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hicFindTADs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hicFindTADs.cwl
 inputs:
 - id: matrix
   doc: Corrected Hi-C matrix to use for the computations.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: predict_metagenomes.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/predict_metagenomes.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

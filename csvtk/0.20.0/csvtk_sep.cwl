@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csvtk_sep.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csvtk_sep.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: drop
   doc: drop extra data, exclusive with --merge
   type: boolean
@@ -126,6 +121,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tabs
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

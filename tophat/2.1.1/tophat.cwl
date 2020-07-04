@@ -1,78 +1,77 @@
 class: CommandLineTool
-id: tophat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tophat.cwl
 inputs:
 - id: tmp_dir
   doc: '<dirname>   [ default: <output_dir>/tmp ]'
   type: boolean
   inputBinding:
     prefix: --tmp-dir
-- id: z
-  doc: '/--zpacker                   <program>   [ default: gzip             ]'
+- id: z_slash_z_packer
+  doc: '<program>   [ default: gzip             ]'
   type: boolean
   inputBinding:
-    prefix: -z
-- id: x
-  doc: /--unmapped-fifo                         [use mkfifo to compress more temporary
-    files for color space reads]
+    prefix: -z/--zpacker
+- id: x_slash_unmapped_fifo
+  doc: '[use mkfifo to compress more temporary files for color space reads]'
   type: boolean
   inputBinding:
-    prefix: -X
-- id: b2_n
+    prefix: -X/--unmapped-fifo
+- id: b_two_n
   doc: '<int>       [ default: 0                ]'
   type: boolean
   inputBinding:
     prefix: --b2-N
-- id: b2_l
+- id: b_two_l
   doc: '<int>       [ default: 20               ]'
   type: boolean
   inputBinding:
     prefix: --b2-L
-- id: b2_i
+- id: b_two_i
   doc: '<func>      [ default: S,1,1.25         ]'
   type: boolean
   inputBinding:
     prefix: --b2-i
-- id: b2_n_ceil
+- id: b_two_n_ceil
   doc: '<func>      [ default: L,0,0.15         ]'
   type: boolean
   inputBinding:
     prefix: --b2-n-ceil
-- id: b2_g_bar
+- id: b_two_g_bar
   doc: '<int>       [ default: 4                ]'
   type: boolean
   inputBinding:
     prefix: --b2-gbar
-- id: b2_mp
+- id: b_two_mp
   doc: '<int>,<int> [ default: 6,2              ]'
   type: boolean
   inputBinding:
     prefix: --b2-mp
-- id: b2_np
+- id: b_two_np
   doc: '<int>       [ default: 1                ]'
   type: boolean
   inputBinding:
     prefix: --b2-np
-- id: b2_rdg
+- id: b_two_rdg
   doc: '<int>,<int> [ default: 5,3              ]'
   type: boolean
   inputBinding:
     prefix: --b2-rdg
-- id: b2_rfg
+- id: b_two_rfg
   doc: '<int>,<int> [ default: 5,3              ]'
   type: boolean
   inputBinding:
     prefix: --b2-rfg
-- id: b2_score_min
+- id: b_two_score_min
   doc: '<func>      [ default: L,-0.6,-0.6      ]'
   type: boolean
   inputBinding:
     prefix: --b2-score-min
-- id: b2_d
+- id: b_two_d
   doc: '<int>       [ default: 15               ]'
   type: boolean
   inputBinding:
     prefix: --b2-D
-- id: b2_r
+- id: b_two_r
   doc: '<int>       [ default: 2                ]'
   type: boolean
   inputBinding:
@@ -112,6 +111,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --fusion-do-not-resolve-conflicts
+- id: bowtie_index
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

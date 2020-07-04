@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: spades_gbuilder.cwl
+id: ../../../../home/ubuntu/BiocondaCli/spades_gbuilder.cwl
 inputs:
-- id: k
+- id: kmer_length_use
   doc: k-mer length to use
   type: string
   inputBinding:
     prefix: -k
-- id: t
+- id: _threads_use
   doc: '# of threads to use'
   type: string
   inputBinding:
@@ -16,7 +16,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -tmp-dir
-- id: b
+- id: sorting_buffer_size
   doc: sorting buffer size, per thread
   type: string
   inputBinding:

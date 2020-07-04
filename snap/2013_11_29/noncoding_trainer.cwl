@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: noncoding_trainer.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/noncoding_trainer.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

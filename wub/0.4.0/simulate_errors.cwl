@@ -1,32 +1,23 @@
 class: CommandLineTool
-id: simulate_errors.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/simulate_errors.py_output_fasta.cwl
 inputs:
-- id: input_fast_a
-  doc: 'Input fasta (default: stdin).'
-  type: string
-  inputBinding:
-    position: 0
-- id: output_fast_a
-  doc: 'Output fasta (default: stdout)'
-  type: string
-  inputBinding:
-    position: 1
 - id: e
-  doc: Total rate of substitutions insertions and deletions (0.1).
+  doc: ''
   type: string
   inputBinding:
     prefix: -e
 - id: w
-  doc: Relative frequency of substitutions,insertions,deletions (1,1,4).
+  doc: ''
   type: string
   inputBinding:
     prefix: -w
-- id: z
-  doc: Random seed (None).
+- id: simulate_errors_do_tpy
+  doc: ''
   type: string
   inputBinding:
-    prefix: -z
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - simulate_errors.py
+- output_fasta

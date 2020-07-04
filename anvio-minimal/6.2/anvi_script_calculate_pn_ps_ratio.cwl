@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_script_calculate_pn_ps_ratio.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_script_calculate_pn_ps_ratio.cwl
 inputs:
 - id: engine
   doc: and the output filename.

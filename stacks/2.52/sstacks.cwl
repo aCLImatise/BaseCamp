@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sstacks.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sstacks.cwl
 inputs:
 - id: in_path
   doc: ': path to the directory containing Stacks files.'
@@ -31,7 +31,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --out-path
-- id: x
+- id: verify_haplotype_matching
   doc: ": don't verify haplotype of matching locus."
   type: boolean
   inputBinding:

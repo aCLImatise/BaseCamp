@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: uname.cwl
+id: ../../../../home/ubuntu/BiocondaCli/uname.cwl
 inputs:
 - id: all
   doc: 'all information, in the following order, except omit -p and -i if unknown:'
@@ -46,6 +46,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --operating-system
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

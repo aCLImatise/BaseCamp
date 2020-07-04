@@ -1,7 +1,12 @@
 class: CommandLineTool
-id: faFrag.cwl
+id: ../../../../home/ubuntu/BiocondaCli/faFrag.cwl
 inputs:
-- id: in_fa
+- id: mixed
+  doc: '- preserve mixed-case in FASTA file'
+  type: boolean
+  inputBinding:
+    prefix: -mixed
+- id: in_dot_fa
   doc: ''
   type: string
   inputBinding:
@@ -16,16 +21,11 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: out_fa
+- id: out_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: preserve
-  doc: in FASTA file
-  type: string
-  inputBinding:
-    prefix: '- preserve'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

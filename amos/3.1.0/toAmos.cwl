@@ -1,41 +1,41 @@
 class: CommandLineTool
-id: toAmos.cwl
+id: ../../../../home/ubuntu/BiocondaCli/toAmos.cwl
 inputs:
-- id: use
-  doc: numbers in FRG files
+- id: acc
+  doc: '- use accession numbers in FRG files'
+  type: boolean
+  inputBinding:
+    prefix: -acc
+- id: arachne
+  doc: '- scaffold file in Arachne .links format'
   type: string
   inputBinding:
-    prefix: '- use'
-- id: scaffold
-  doc: in Arachne .links format
+    prefix: -arachne
+- id: sc_aff
+  doc: '- scaffold file in Bambus .scaff format'
   type: string
   inputBinding:
-    prefix: '- scaffold'
-- id: scaffold
-  doc: in Bambus .scaff format
+    prefix: -scaff
+- id: read_insert_information
+  doc: '- read insert information'
   type: string
   inputBinding:
-    prefix: '- scaffold'
-- id: read
-  doc: information
+    prefix: -i
+- id: map
+  doc: '- read map information'
   type: string
   inputBinding:
-    prefix: '- read'
-- id: read
-  doc: information
+    prefix: -map
+- id: pos
+  doc: '- TIGR-style .pos position file'
   type: string
   inputBinding:
-    prefix: '- read'
-- id: tigr_style
-  doc: .pos position file
-  type: string
-  inputBinding:
-    prefix: '- TIGR-style'
-- id: start
-  doc: AMOS internal IDs at this number
+    prefix: -pos
+- id: id
+  doc: '- start numbering AMOS internal IDs at this number'
   type: long
   inputBinding:
-    prefix: '- start'
+    prefix: -id
 outputs: []
 cwlVersion: v1.1
 baseCommand:

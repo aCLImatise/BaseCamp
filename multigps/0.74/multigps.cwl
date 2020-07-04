@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: multigps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/multigps.cwl
 inputs:
 - id: threads
   doc: <number of threads to use (default=1)>
@@ -119,12 +119,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --memeargs
-- id: meme1proc
+- id: meme_one_proc
   doc: '[flag to enforce non-parallel version of MEME]'
   type: boolean
   inputBinding:
     prefix: --meme1proc
-- id: q
+- id: qvalue_minimum_default
   doc: <Q-value minimum (default=0.001)>
   type: boolean
   inputBinding:

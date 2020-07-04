@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: getN50.cwl
+id: ../../../../home/ubuntu/BiocondaCli/getN50.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

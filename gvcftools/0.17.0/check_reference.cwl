@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: check_reference.cwl
+id: ../../../../home/ubuntu/BiocondaCli/check_reference.cwl
 inputs:
 - id: ref
   doc: samtools reference sequence (required)

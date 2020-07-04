@@ -2,10 +2,13 @@ version 1.0
 
 task Cover {
   input {
-    Boolean testTest
+    Boolean? test
   }
   command <<<
     cover \
-      ~{true="-test" false="" testTest}
+      ~{true="-test" false="" test}
   >>>
+  parameter_meta {
+    test: ""
+  }
 }

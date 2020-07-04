@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_snp_get_dbsnp_freq_stats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_snp_get_dbsnp_freq_stats.cwl
 inputs:
 - id: dbsnp
   doc: CSV input from dbSNP giving SNP positions within UCE
@@ -16,7 +16,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
-- id: output_2
+- id: output_two
   doc: The output file
   type: string
   inputBinding:

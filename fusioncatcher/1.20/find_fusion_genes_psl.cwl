@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: find_fusion_genes_psl.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/find_fusion_genes_psl.py.cwl
 inputs:
 - id: input_mappings
   doc: The input file in PSL format containing the reads/contigs uniquely mapped on

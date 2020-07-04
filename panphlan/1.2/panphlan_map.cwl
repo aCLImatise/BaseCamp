@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: panphlan_map.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/panphlan_map.py.cwl
 inputs:
 - id: input
   doc: Short read input files. If no file is specified, panphlan_map reads from standard
@@ -7,7 +7,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --input
-- id: i_bowtie2_indexes
+- id: i_bowtie_two_indexes
   doc: Input directory of bowtie2 indexes and pangenome
   type: string
   inputBinding:
@@ -49,7 +49,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --readLength
-- id: bt2
+- id: bt_two
   doc: 'Additional bowtie2 mapping options, separated by slash: /-D/20/-R/3/, default:
     -bt2 /--very-sensitive/'
   type: string

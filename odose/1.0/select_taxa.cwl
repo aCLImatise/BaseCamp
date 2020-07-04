@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: select_taxa.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/select_taxa.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

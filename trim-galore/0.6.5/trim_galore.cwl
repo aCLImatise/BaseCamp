@@ -1,14 +1,14 @@
 class: CommandLineTool
-id: trim_galore.cwl
+id: ../../../../home/ubuntu/BiocondaCli/trim_galore.cwl
 inputs:
-- id: hard_trim5
-  doc: '20: CCTAAGGAAACAAGTACACT'
-  type: boolean
+- id: hard_trim_five
+  doc: ': CCTAAGGAAACAAGTACACT'
+  type: string
   inputBinding:
     prefix: --hardtrim5
-- id: hard_trim3
-  doc: '20:                                                   TTTTTAAGAAAATGGAAAAT'
-  type: boolean
+- id: hard_trim_three
+  doc: ':                                                   TTTTTAAGAAAATGGAAAAT'
+  type: string
   inputBinding:
     prefix: --hardtrim3
 outputs: []

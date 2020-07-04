@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: filter_stats.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_stats.pl.cwl
 inputs:
-- id: filter_stats_pl
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: input
   doc: The psudo-alignment positions tab delimited file
   type: boolean
@@ -17,6 +12,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --all
+- id: filter_stats_do_tpl
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

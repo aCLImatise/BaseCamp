@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: conus_train.cwl
+id: ../../../../home/ubuntu/BiocondaCli/conus_train.cwl
 inputs:
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 - id: nus
   doc: 'Ambiguous Simple Grammar (G1) '
   type: string
@@ -36,21 +41,16 @@ inputs:
   type: string
   inputBinding:
     position: 6
-- id: ry3
+- id: ry_three
   doc: Stacking analog of RUN (G8)
   type: string
   inputBinding:
     position: 7
-- id: bk2
+- id: bk_two
   doc: Stacking parameterization of BJK (G6S)
   type: string
   inputBinding:
     position: 8
-- id: options
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

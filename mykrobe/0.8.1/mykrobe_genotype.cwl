@@ -1,16 +1,46 @@
 class: CommandLineTool
-id: mykrobe_genotype.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mykrobe_genotype.cwl
 inputs:
-- id: sample
-  doc: sample id
+- id: km_er
+  doc: kmer length (default:21)
   type: string
   inputBinding:
-    position: 0
-- id: probe_set
-  doc: probe_set
+    prefix: --kmer
+- id: tmp
+  doc: 'tmp directory (default: tmp/)'
   type: string
   inputBinding:
-    position: 1
+    prefix: --tmp
+- id: keep_tmp
+  doc: Dont remove tmp files
+  type: boolean
+  inputBinding:
+    prefix: --keep_tmp
+- id: skeleton_dir
+  doc: directory for skeleton binaries
+  type: string
+  inputBinding:
+    prefix: --skeleton_dir
+- id: threads
+  doc: threads
+  type: string
+  inputBinding:
+    prefix: --threads
+- id: memory
+  doc: memory for graph constuction
+  type: string
+  inputBinding:
+    prefix: --memory
+- id: expected_depth
+  doc: expected depth
+  type: string
+  inputBinding:
+    prefix: --expected_depth
+- id: seq
+  doc: sequence files (fasta,fastq,bam)
+  type: string[]
+  inputBinding:
+    prefix: --seq
 - id: ctx
   doc: cortex graph binary
   type: string
@@ -98,6 +128,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: sample
+  doc: sample id
+  type: string
+  inputBinding:
+    position: 0
+- id: probe_set
+  doc: probe_set
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

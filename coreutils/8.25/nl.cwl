@@ -1,41 +1,6 @@
 class: CommandLineTool
-id: nl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nl.cwl
 inputs:
-- id: a
-  doc: number all lines
-  type: string
-  inputBinding:
-    position: 0
-- id: t
-  doc: number only nonempty lines
-  type: string
-  inputBinding:
-    position: 1
-- id: n
-  doc: number no lines
-  type: string
-  inputBinding:
-    position: 2
-- id: pb_re
-  doc: number only lines that contain a match for the basic regular expression, BRE
-  type: string
-  inputBinding:
-    position: 3
-- id: ln
-  doc: left justified, no leading zeros
-  type: string
-  inputBinding:
-    position: 0
-- id: rn
-  doc: right justified, no leading zeros
-  type: string
-  inputBinding:
-    position: 1
-- id: rz
-  doc: right justified, leading zeros
-  type: string
-  inputBinding:
-    position: 2
 - id: body_numbering
   doc: use STYLE for numbering body lines
   type: string
@@ -91,6 +56,41 @@ inputs:
   type: string
   inputBinding:
     prefix: --number-width
+- id: number_all_lines
+  doc: number all lines
+  type: string
+  inputBinding:
+    position: 0
+- id: number_only_nonempty
+  doc: number only nonempty lines
+  type: string
+  inputBinding:
+    position: 1
+- id: number_no_lines
+  doc: number no lines
+  type: string
+  inputBinding:
+    position: 2
+- id: pb_re
+  doc: number only lines that contain a match for the basic regular expression, BRE
+  type: string
+  inputBinding:
+    position: 3
+- id: ln
+  doc: left justified, no leading zeros
+  type: string
+  inputBinding:
+    position: 0
+- id: rn
+  doc: right justified, no leading zeros
+  type: string
+  inputBinding:
+    position: 1
+- id: rz
+  doc: right justified, leading zeros
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

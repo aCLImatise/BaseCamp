@@ -1,15 +1,9 @@
 class: CommandLineTool
-id: velvetg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/velvetg.cwl
 inputs:
-- id: directory
-  doc: ': working directory name'
-  type: Directory
-  inputBinding:
-    position: 0
 - id: scaffolding
-  doc: '<yes|no>           : scaffolding of contigs used paired end information (default:
-    on)'
-  type: boolean
+  doc: ': scaffolding of contigs used paired end information (default: on)'
+  type: string
   inputBinding:
     prefix: -scaffolding
 - id: max_branch_length
@@ -50,32 +44,32 @@ inputs:
   inputBinding:
     prefix: -long_mult_cutoff
 - id: unused_reads
-  doc: '<yes|no>          : export unused reads in UnusedReads.fa file (default: no)'
-  type: boolean
+  doc: ': export unused reads in UnusedReads.fa file (default: no)'
+  type: string
   inputBinding:
     prefix: -unused_reads
 - id: alignments
-  doc: '<yes|no>            : export a summary of contig alignment to the reference
-    sequences (default: no)'
-  type: boolean
+  doc: ': export a summary of contig alignment to the reference sequences (default:
+    no)'
+  type: string
   inputBinding:
     prefix: -alignments
 - id: export_filtered
-  doc: '<yes|no>        : export the long nodes which were eliminated by the coverage
-    filters (default: no)'
-  type: boolean
+  doc: ': export the long nodes which were eliminated by the coverage filters (default:
+    no)'
+  type: string
   inputBinding:
     prefix: -exportFiltered
 - id: clean
-  doc: '<yes|no>                 : remove all the intermediary files which are useless
-    for recalculation (default : no)'
-  type: boolean
+  doc: ': remove all the intermediary files which are useless for recalculation (default
+    : no)'
+  type: string
   inputBinding:
     prefix: -clean
 - id: very_clean
-  doc: '<yes|no>            : remove all the intermediary files (no recalculation
-    possible) (default: no)'
-  type: boolean
+  doc: ': remove all the intermediary files (no recalculation possible) (default:
+    no)'
+  type: string
   inputBinding:
     prefix: -very_clean
 - id: paired_exp_fraction
@@ -91,10 +85,35 @@ inputs:
   inputBinding:
     prefix: -shortMatePaired
 - id: conserve_long
-  doc: '<yes|no>          : preserve sequences with long reads in them (default no)'
-  type: boolean
+  doc: ': preserve sequences with long reads in them (default no)'
+  type: string
   inputBinding:
     prefix: -conserveLong
+- id: directory
+  doc: ': working directory name'
+  type: Directory
+  inputBinding:
+    position: 0
+- id: directory_slash_contigs_dot_fa
+  doc: ': fasta file of contigs longer than twice hash length'
+  type: Directory
+  inputBinding:
+    position: 0
+- id: directory_slash_stats_dot_txt
+  doc: ': stats file (tab-spaced) useful for determining appropriate coverage cutoff'
+  type: Directory
+  inputBinding:
+    position: 1
+- id: directory_slash_last_graph
+  doc: ': special formatted file with all the information on the final graph'
+  type: Directory
+  inputBinding:
+    position: 2
+- id: directory_slash_velvet_as_mdot_afg
+  doc: ': (if requested) AMOS compatible assembly file'
+  type: Directory
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

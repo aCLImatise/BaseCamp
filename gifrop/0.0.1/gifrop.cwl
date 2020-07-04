@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gifrop.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gifrop.cwl
 inputs:
 - id: threads
   doc: Number of threads to use for parallel abricate commands
@@ -26,6 +26,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --get_islands
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

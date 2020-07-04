@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nullarbor_report.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nullarbor_report.pl.cwl
 inputs:
 - id: name
   doc: Report name to put in the top heading

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gmtkParmConvert.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gmtkParmConvert.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

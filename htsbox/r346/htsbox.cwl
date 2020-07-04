@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: htsbox.cwl
+id: ../../../../home/ubuntu/BiocondaCli/htsbox.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,18 +2,25 @@ version 1.0
 
 task VcfExtractSamples {
   input {
-    String samplesSamples
-    File inIn
-    File outOut
-    Boolean changelogChangelog
-    Boolean tdxTdx
+    String? samples
+    File? in
+    File? out
+    Boolean? changelog
+    Boolean? tdx
   }
   command <<<
     VcfExtractSamples \
-      ~{if defined(samplesSamples) then ("-samples " +  '"' + samplesSamples + '"') else ""} \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{true="--changelog" false="" changelogChangelog} \
-      ~{true="--tdx" false="" tdxTdx}
+      ~{if defined(samples) then ("-samples " +  '"' + samples + '"') else ""} \
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{true="--changelog" false="" changelog} \
+      ~{true="--tdx" false="" tdx}
   >>>
+  parameter_meta {
+    samples: "Comma-separated list of samples to extract (in the given order)."
+    in: "Input VCF file. If unset, reads from STDIN. Default value: ''"
+    out: "Output VCF list. If unset, writes to STDOUT. Default value: ''"
+    changelog: "Prints changeloge and exits."
+    tdx: "Writes a Tool Definition Xml file. The file name is the application name with the suffix '.tdx'."
+  }
 }

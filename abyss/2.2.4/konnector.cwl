@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: konnector.cwl
+id: ../../../../home/ubuntu/BiocondaCli/konnector.cwl
 inputs:
 - id: threads
   doc: use N parallel threads [1]

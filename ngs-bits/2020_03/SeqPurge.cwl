@@ -1,32 +1,32 @@
 class: CommandLineTool
-id: SeqPurge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SeqPurge.cwl
 inputs:
-- id: in1
+- id: in_one
   doc: Forward input gzipped FASTQ file(s).
   type: File
   inputBinding:
     prefix: -in1
-- id: in2
+- id: in_two
   doc: Reverse input gzipped FASTQ file(s).
   type: File
   inputBinding:
     prefix: -in2
-- id: out1
+- id: out_one
   doc: Forward output gzipped FASTQ file.
   type: File
   inputBinding:
     prefix: -out1
-- id: out2
+- id: out_two
   doc: Reverse output gzipped FASTQ file.
   type: File
   inputBinding:
     prefix: -out2
-- id: a1
+- id: a_one
   doc: "Forward adapter sequence (at least 15 bases). Default value: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCA'"
   type: string
   inputBinding:
     prefix: -a1
-- id: a2
+- id: a_two
   doc: "Reverse adapter sequence (at least 15 bases). Default value: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'"
   type: string
   inputBinding:
@@ -76,7 +76,7 @@ inputs:
   type: long
   inputBinding:
     prefix: -threads
-- id: out3
+- id: out_three
   doc: "Name prefix of singleton read output files (if only one read of a pair is\
     \ discarded). Default value: ''"
   type: File

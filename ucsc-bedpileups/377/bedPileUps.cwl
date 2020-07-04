@@ -1,26 +1,26 @@
 class: CommandLineTool
-id: bedPileUps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedPileUps.cwl
 inputs:
-- id: in_bed
+- id: name
+  doc: '- include BED name field 4 when evaluating uniqueness'
+  type: boolean
+  inputBinding:
+    prefix: -name
+- id: tab
+  doc: '- use tabs to parse fields'
+  type: boolean
+  inputBinding:
+    prefix: -tab
+- id: verbose
+  doc: '- show the location and size of each pileUp'
+  type: string
+  inputBinding:
+    prefix: -verbose
+- id: in_dot_bed
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: include
-  doc: name field 4 when evaluating uniqueness
-  type: string
-  inputBinding:
-    prefix: '- include'
-- id: use
-  doc: to parse fields
-  type: string
-  inputBinding:
-    prefix: '- use'
-- id: verbose
-  doc: =2 - show the location and size of each pileUp
-  type: boolean
-  inputBinding:
-    prefix: -verbose
 outputs: []
 cwlVersion: v1.1
 baseCommand:

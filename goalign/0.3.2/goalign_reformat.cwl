@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: goalign_reformat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_reformat.cwl
 inputs:
 - id: clean_names
   doc: Replaces special characters (tabs, spaces, newick characters) with '-' from
@@ -28,7 +28,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --auto-detect
-- id: clustal
+- id: alignment_clustal_default
   doc: Alignment is in clustal? default fasta
   type: boolean
   inputBinding:
@@ -43,7 +43,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --input-strict
-- id: nexus
+- id: alignment_nexus_default
   doc: Alignment is in nexus? default fasta
   type: boolean
   inputBinding:
@@ -63,7 +63,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --output-strict
-- id: phylip
+- id: alignment_phylip_default
   doc: Alignment is in phylip? default fasta
   type: boolean
   inputBinding:
@@ -78,6 +78,36 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: reformats_input_alignment_clustal
+  doc: Reformats an input alignment into Clustal format
+  type: string
+  inputBinding:
+    position: 0
+- id: fast_a
+  doc: Reformats an input alignment into Fasta
+  type: string
+  inputBinding:
+    position: 1
+- id: reformats_input_alignment_nexus
+  doc: Reformats an input alignment into nexus
+  type: string
+  inputBinding:
+    position: 2
+- id: paml
+  doc: Reformats an input alignment into input data for PAML
+  type: string
+  inputBinding:
+    position: 3
+- id: reformats_input_alignment_phylip
+  doc: Reformats an input alignment into Phylip
+  type: string
+  inputBinding:
+    position: 4
+- id: tnt
+  doc: Reformats an input alignment into input data for TNT
+  type: string
+  inputBinding:
+    position: 5
 outputs: []
 cwlVersion: v1.1
 baseCommand:

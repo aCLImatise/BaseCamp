@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: merge_depths.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/merge_depths.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

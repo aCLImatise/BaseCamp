@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: mmseqs_convertkb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mmseqs_convertkb.cwl
 inputs:
-- id: uniprotkb_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: uniprotkb_db
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: mapping_file
   doc: specify a file that translates the keys of a DB to new keys, TSV format
   type: boolean
@@ -22,11 +12,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --kb-columns
-- id: v
+- id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'
   type: boolean
   inputBinding:
     prefix: -v
+- id: uniprotkb_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: uniprotkb_db
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

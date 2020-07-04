@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gth2gtf.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gth2gtf.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

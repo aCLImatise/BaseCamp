@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hmm2gff.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hmm2gff.py.cwl
 inputs:
 - id: map
   doc: ''
@@ -16,12 +16,12 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: to
+- id: var_3
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: the
+- id: var_4
   doc: ''
   type: string
   inputBinding:
@@ -36,12 +36,12 @@ inputs:
   type: string
   inputBinding:
     position: 6
-- id: to
+- id: var_7
   doc: ''
   type: string
   inputBinding:
     position: 7
-- id: the
+- id: var_8
   doc: ''
   type: string
   inputBinding:

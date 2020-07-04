@@ -2,10 +2,19 @@ version 1.0
 
 task NwClade {
   input {
-    Boolean sS
+    Boolean? hm
+    File filename_vertical_line
+    String label
   }
   command <<<
     nw_clade \
-      ~{true="-s" false="" sS}
+      ~{filename_vertical_line} \
+      ~{label} \
+      ~{true="-hm" false="" hm}
   >>>
+  parameter_meta {
+    hm: ""
+    filename_vertical_line: ""
+    label: ""
+  }
 }

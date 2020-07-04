@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: diffseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/diffseq.cwl
 inputs:
 - id: word_size
   doc: integer    [10] The similar regions between the two sequences are found by
@@ -12,11 +12,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -wordsize
-- id: r_format
-  doc: )
-  type: string
-  inputBinding:
-    prefix: -rformat
 outputs: []
 cwlVersion: v1.1
 baseCommand:

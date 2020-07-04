@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: byobu_layout.cwl
+id: ../../../../home/ubuntu/BiocondaCli/byobu_layout.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

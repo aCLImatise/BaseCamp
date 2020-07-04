@@ -2,10 +2,13 @@ version 1.0
 
 task FastTreeMP {
   input {
-    String expertExpert
+    Boolean? expert
   }
   command <<<
     FastTreeMP \
-      ~{if defined(expertExpert) then ("-expert " +  '"' + expertExpert + '"') else ""}
+      ~{true="-expert" false="" expert}
   >>>
+  parameter_meta {
+    expert: "-- see more options"
+  }
 }

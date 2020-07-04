@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: segway_layer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/segway_layer.cwl
 inputs:
 - id: big_bed
   doc: specify bigBed output file
@@ -17,11 +17,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-recolor
-- id: s
+- id: value__tracklinesetattr
   doc: VALUE, --track-line-set=ATTR VALUE set ATTR to VALUE in track line
   type: string
   inputBinding:
     prefix: -s
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

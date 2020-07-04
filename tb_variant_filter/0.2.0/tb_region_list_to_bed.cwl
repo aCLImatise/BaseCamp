@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: tb_region_list_to_bed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tb_region_list_to_bed.cwl
 inputs:
-- id: output_file
-  doc: File to write output to
-  type: string
-  inputBinding:
-    position: 0
 - id: chromosome_name
   doc: Chromosome name to use in BED
   type: string

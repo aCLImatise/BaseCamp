@@ -2,24 +2,34 @@ version 1.0
 
 task FaNoise {
   input {
-    String outputOutput
-    String? inInName
-    String? outOutName
-    String? transitionTransitionPpt
-    String? transversionTransversionPpt
-    String? insertInsertPpt
-    String? deleteDeletePpt
-    String? chimeraChimeraPpt
+    Boolean? upper
+    String in_name
+    String out_name
+    String transition_ppt
+    String transversion_ppt
+    String insert_ppt
+    String delete_ppt
+    String chimera_ppt
   }
   command <<<
     faNoise \
-      ~{inInName} \
-      ~{if defined(outputOutput) then ("- output " +  '"' + outputOutput + '"') else ""} \
-      ~{outOutName} \
-      ~{transitionTransitionPpt} \
-      ~{transversionTransversionPpt} \
-      ~{insertInsertPpt} \
-      ~{deleteDeletePpt} \
-      ~{chimeraChimeraPpt}
+      ~{in_name} \
+      ~{out_name} \
+      ~{transition_ppt} \
+      ~{transversion_ppt} \
+      ~{insert_ppt} \
+      ~{delete_ppt} \
+      ~{chimera_ppt} \
+      ~{true="-upper" false="" upper}
   >>>
+  parameter_meta {
+    upper: "- output in upper case"
+    in_name: ""
+    out_name: ""
+    transition_ppt: ""
+    transversion_ppt: ""
+    insert_ppt: ""
+    delete_ppt: ""
+    chimera_ppt: ""
+  }
 }

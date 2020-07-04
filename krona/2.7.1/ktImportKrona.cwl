@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ktImportKrona.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ktImportKrona.cwl
 inputs:
 - id: krona_chart
   doc: Krona HTML file created with KronaTools or the Krona Excel Template By default,

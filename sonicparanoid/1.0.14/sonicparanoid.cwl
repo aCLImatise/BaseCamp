@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sonicparanoid.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sonicparanoid.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

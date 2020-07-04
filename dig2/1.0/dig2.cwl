@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dig2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dig2.cwl
 inputs:
 - id: dig
   doc: ''

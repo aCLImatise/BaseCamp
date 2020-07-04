@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: conus_fold.cwl
+id: ../../../../home/ubuntu/BiocondaCli/conus_fold.cwl
 inputs:
-- id: h
+- id: g_shift_hydrogen
   doc: '(with -g) shift to hydrogen bonding scoring  '
   type: boolean
   inputBinding:
@@ -11,6 +11,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --flat
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

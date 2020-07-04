@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: satrap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/satrap.cwl
 inputs:
 - id: max_reads
   doc: (float)         Max number of reads per analyzed file or files [10]
@@ -12,17 +12,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -tags
-- id: t1
+- id: tone
   doc: (int)          it trims the first sequenced end at 3' (if paired-end) [0]
   type: boolean
   inputBinding:
     prefix: -t1
-- id: t2
+- id: int_it_trims_second_sequenced_end
   doc: (int)          it trims the second sequenced end at 3' [0]
   type: boolean
   inputBinding:
     prefix: -t2
-- id: q
+- id: int_minimum_mean_quality_tolerated
   doc: (int)          minimum mean quality tolerated for paired_end sequences [15]
   type: boolean
   inputBinding:
@@ -63,32 +63,27 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -oases_kmer
-- id: t2
+- id: int_it_trims_sequences
   doc: (int)          it trims sequences at 3' end [0]
   type: boolean
   inputBinding:
     prefix: -T2
-- id: q
+- id: int_minimum_mean_quality_reads
   doc: (int)          minimum mean quality for reads [9]
   type: boolean
   inputBinding:
     prefix: -Q
-- id: len
-  doc: (int)          minimum read size after trimming [30]
-  type: boolean
-  inputBinding:
-    prefix: -len
-- id: l
+- id: int_minimum_contig
   doc: (int)          Minimum contig length [100]
   type: boolean
   inputBinding:
     prefix: -l
-- id: n
+- id: float_maximum_tolerated
   doc: (float)         Maximum tolerated fraction of Ns for each translated contig[1].
   type: boolean
   inputBinding:
     prefix: -n
-- id: c
+- id: int_minimum_coverage_required
   doc: (int)          Minimum coverage required to operate the assembly correction
     If this parameter is used -z will be not considered.
   type: boolean
@@ -99,7 +94,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -erode
-- id: z
+- id: float_zscore_required
   doc: (float)         z-score required to calculate the coverage threshold basing
     on the statistical analysis of the sequence coverage [3]. Low values are more
     conservative when the error correction is applied. As consequence of this fact

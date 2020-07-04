@@ -2,10 +2,13 @@ version 1.0
 
 task Vcffixup {
   input {
-    String? vcfVcfFile
+    String vcf_file
   }
   command <<<
     vcffixup \
-      ~{vcfVcfFile}
+      ~{vcf_file}
   >>>
+  parameter_meta {
+    vcf_file: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bam_uniq.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bam_uniq.pl.cwl
 inputs:
 - id: bam
   doc: BAM file to extract unique and multi mappers from

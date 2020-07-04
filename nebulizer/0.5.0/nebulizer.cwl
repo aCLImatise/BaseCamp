@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nebulizer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nebulizer.cwl
 inputs:
 - id: api_key
   doc: specify API key to use for connecting to Galaxy instance. Must be supplied

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: go2fmt.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/go2fmt.pl.cwl
 inputs:
 - id: obj_yaml
   doc: a YAML representation of a GO::Model::Graph object

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scanpy_find_cluster_louvain.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scanpy_find_cluster_louvain.cwl
 inputs:
 - id: input_format
   doc: '[anndata|loom] Input object format.  [default: anndata]'
@@ -62,8 +62,9 @@ inputs:
   inputBinding:
     prefix: --random-state
 - id: key_added
-  doc: '[,TEXT...]      Key under which to add the computed results'
-  type: string
+  doc: Key under which to add the computed results
+  type:
+  - string
   inputBinding:
     prefix: --key-added
 - id: flavor
@@ -73,11 +74,22 @@ inputs:
   inputBinding:
     prefix: --flavor
 - id: resolution
-  doc: '[,FLOAT...] For the default flavor "vtraag", you can provide a resolution.
-    Higher resolution means finding more and smaller clusters. [default: 1]'
-  type: double
+  doc: 'For the default flavor "vtraag", you can provide a resolution. Higher resolution
+    means finding more and smaller clusters. [default: 1]'
+  type:
+  - double
   inputBinding:
     prefix: --resolution
+- id: input_obj
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_obj
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

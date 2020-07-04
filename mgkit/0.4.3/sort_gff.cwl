@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sort_gff.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sort_gff.sh.cwl
 inputs:
 - id: ignore_leading_blanks
   doc: leading blanks
@@ -51,7 +51,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --reverse
-- id: sort
+- id: sort_according_word
   doc: 'sort according to WORD: general-numeric -g, human-numeric -h, month -M, numeric
     -n, random -R, version -V'
   type: string
@@ -78,6 +78,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --zero-terminated
+- id: var_15
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

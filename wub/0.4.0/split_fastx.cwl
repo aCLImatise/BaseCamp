@@ -1,32 +1,28 @@
 class: CommandLineTool
-id: split_fastx.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/split_fastx.py_output_dir.cwl
 inputs:
-- id: input_fast_x
-  doc: 'Input file (default: stdin).'
-  type: string
-  inputBinding:
-    position: 0
-- id: output_dir
-  doc: 'Output directory (default: .)'
-  type: string
-  inputBinding:
-    position: 1
 - id: i
-  doc: Input format (fastq).
+  doc: ''
   type: string
   inputBinding:
     prefix: -i
 - id: o
-  doc: Output format (fastq).
+  doc: ''
   type: string
   inputBinding:
     prefix: -o
 - id: b
-  doc: Batch size (None).
+  doc: ''
   type: string
   inputBinding:
     prefix: -b
+- id: split_fast_x_do_tpy
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - split_fastx.py
+- output_dir

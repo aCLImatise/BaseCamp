@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: spades.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/spades.py.cwl
 inputs:
-- id: o
+- id: directory_store_files
   doc: directory to store all the resulting files (required)
   type: string
   inputBinding:
@@ -46,7 +46,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --test
-- id: s
+- id: file_interlaced_forward
+  doc: file with interlaced forward and reverse paired-end reads
+  type: File
+  inputBinding:
+    prefix: --12
+- id: file_forward_pairedend
+  doc: file with forward paired-end reads
+  type: File
+  inputBinding:
+    prefix: '-1'
+- id: file_reverse_pairedend
+  doc: file with reverse paired-end reads
+  type: File
+  inputBinding:
+    prefix: '-2'
+- id: file_unpaired_reads
   doc: file with unpaired reads
   type: File
   inputBinding:
@@ -56,19 +71,19 @@ inputs:
   type: File
   inputBinding:
     prefix: --merged
-- id: pe_12
+- id: pe_one_two
   doc: <#> <filename>      file with interlaced reads for paired-end library number
     <#>. Older deprecated syntax is -pe<#>-12 <filename>
   type: boolean
   inputBinding:
     prefix: --pe-12
-- id: pe_1
+- id: pe_one
   doc: <#> <filename>       file with forward reads for paired-end library number
     <#>. Older deprecated syntax is -pe<#>-1 <filename>
   type: boolean
   inputBinding:
     prefix: --pe-1
-- id: pe_2
+- id: pe_two
   doc: <#> <filename>       file with reverse reads for paired-end library number
     <#>. Older deprecated syntax is -pe<#>-2 <filename>
   type: boolean
@@ -92,25 +107,19 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --pe-or
-- id: s
-  doc: <#> <filename>          file with unpaired reads for single reads library number
-    <#>. Older deprecated syntax is --s<#> <filename>
-  type: boolean
-  inputBinding:
-    prefix: --s
-- id: mp_12
+- id: mp_one_two
   doc: <#> <filename>      file with interlaced reads for mate-pair library number
     <#>. Older deprecated syntax is -mp<#>-12 <filename>
   type: boolean
   inputBinding:
     prefix: --mp-12
-- id: mp_1
+- id: mp_one
   doc: <#> <filename>       file with forward reads for mate-pair library number <#>.
     Older deprecated syntax is -mp<#>-1 <filename>
   type: boolean
   inputBinding:
     prefix: --mp-1
-- id: mp_2
+- id: mp_two
   doc: <#> <filename>       file with reverse reads for mate-pair library number <#>.
     Older deprecated syntax is -mp<#>-2 <filename>
   type: boolean
@@ -128,19 +137,19 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --mp-or
-- id: hq_mp_12
+- id: hq_mp_one_two
   doc: <#> <filename>    file with interlaced reads for high-quality mate-pair library
     number <#>. Older deprecated syntax is -hqmp<#>-12 <filename>
   type: boolean
   inputBinding:
     prefix: --hqmp-12
-- id: hq_mp_1
+- id: hq_mp_one
   doc: <#> <filename>     file with forward reads for high-quality mate-pair library
     number <#>. Older deprecated syntax is -hqmp<#>-1 <filename>
   type: boolean
   inputBinding:
     prefix: --hqmp-1
-- id: hq_mp_2
+- id: hq_mp_two
   doc: <#> <filename>     file with reverse reads for high-quality mate-pair library
     number <#>. Older deprecated syntax is -hqmp<#>-2 <filename>
   type: boolean
@@ -158,13 +167,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --hqmp-or
-- id: nx_mate_1
+- id: nx_mate_one
   doc: <#> <filename>   file with forward reads for Lucigen NxMate library number
     <#>. Older deprecated syntax is -nxmate<#>-1 <filename>
   type: boolean
   inputBinding:
     prefix: --nxmate-1
-- id: nx_mate_2
+- id: nx_mate_two
   doc: <#> <filename>   file with reverse reads for Lucigen NxMate library number
     <#>. Older deprecated syntax is -nxmate<#>-2 <filename>
   type: boolean
@@ -274,9 +283,8 @@ inputs:
   inputBinding:
     prefix: --cov-cutoff
 - id: phred_offset
-  doc: '<33 or 64>   PHRED quality offset in the input reads (33 or 64), [default:
-    auto-detect]'
-  type: boolean
+  doc: 'PHRED quality offset in the input reads (33 or 64), [default: auto-detect]'
+  type: string
   inputBinding:
     prefix: --phred-offset
 outputs: []

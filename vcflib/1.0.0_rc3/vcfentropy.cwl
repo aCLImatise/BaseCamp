@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: vcfentropy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfentropy.cwl
 inputs:
-- id: vcf_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: fast_a_reference
   doc: FASTA reference file to use to obtain flanking sequences
   type: boolean
@@ -16,6 +11,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --window-size
+- id: vcf_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: hicMergeMatrixBins.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hicMergeMatrixBins.cwl
 inputs:
 - id: num_bins
-  doc: '[--runningWindow] [--help] [--version]'
+  doc: 'Number of bins to merge. (default: None)'
   type: long
   inputBinding:
     prefix: --numBins
@@ -17,11 +17,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --outFileName
-- id: num_bins
-  doc: 'Number of bins to merge. (default: None)'
-  type: long
-  inputBinding:
-    prefix: --numBins
 - id: running_window
   doc: 'Set to merge for using a running window of length --numBins. (default: False)'
   type: boolean

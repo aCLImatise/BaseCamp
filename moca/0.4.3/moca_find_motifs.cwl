@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: moca_find_motifs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/moca_find_motifs.cwl
 inputs:
 - id: bed_file
   doc: Bed file input  [required]

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vseqinfo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vseqinfo.cwl
 inputs:
 - id: index_name
   doc: ''

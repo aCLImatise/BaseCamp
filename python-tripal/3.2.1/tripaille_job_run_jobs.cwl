@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tripaille_job_run_jobs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tripaille_job_run_jobs.cwl
 inputs:
 - id: wait
   doc: 'Wait for job completion  [default: True]'

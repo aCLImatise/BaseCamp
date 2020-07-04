@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: createAugustusJoblist.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/createAugustusJoblist.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

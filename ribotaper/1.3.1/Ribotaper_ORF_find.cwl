@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Ribotaper_ORF_find.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Ribotaper_ORF_find.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

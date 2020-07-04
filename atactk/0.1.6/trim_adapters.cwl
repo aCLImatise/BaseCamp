@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: trim_adapters.cwl
+id: ../../../../home/ubuntu/BiocondaCli/trim_adapters.cwl
 inputs:
-- id: forward
-  doc: The (optionally gzipped) FASTQ file containing the forward reads.
-  type: string
-  inputBinding:
-    position: 0
-- id: reverse
-  doc: The (optionally gzipped) FASTQ file containing the reverse reads.
-  type: string
-  inputBinding:
-    position: 1
 - id: max_edit_distance
   doc: 'The maximum edit distance permitted when aligning the paired reads (default:
     1).'
@@ -39,6 +29,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: forward
+  doc: The (optionally gzipped) FASTQ file containing the forward reads.
+  type: string
+  inputBinding:
+    position: 0
+- id: reverse
+  doc: The (optionally gzipped) FASTQ file containing the reverse reads.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

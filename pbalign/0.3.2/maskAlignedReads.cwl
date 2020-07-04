@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: maskAlignedReads.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maskAlignedReads.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

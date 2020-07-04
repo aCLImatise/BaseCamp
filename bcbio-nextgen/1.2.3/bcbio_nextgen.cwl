@@ -1,23 +1,6 @@
 class: CommandLineTool
-id: bcbio_nextgen.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcbio_nextgen.py.cwl
 inputs:
-- id: global_config
-  doc: Global YAML configuration file specifying details about the system (optional,
-    defaults to installed bcbio_system.yaml)
-  type: string
-  inputBinding:
-    position: 0
-- id: fc_dir
-  doc: A directory of Illumina output or fastq files to process (optional)
-  type: string
-  inputBinding:
-    position: 1
-- id: run_config
-  doc: YAML file with details about samples to process (required, unless using Galaxy
-    LIMS as input)
-  type: string
-  inputBinding:
-    position: 2
 - id: num_cores
   doc: Total cores to use for processing
   type: string
@@ -85,6 +68,23 @@ inputs:
   type: string
   inputBinding:
     prefix: --separators
+- id: global_config
+  doc: Global YAML configuration file specifying details about the system (optional,
+    defaults to installed bcbio_system.yaml)
+  type: string
+  inputBinding:
+    position: 0
+- id: fc_dir
+  doc: A directory of Illumina output or fastq files to process (optional)
+  type: string
+  inputBinding:
+    position: 1
+- id: run_config
+  doc: YAML file with details about samples to process (required, unless using Galaxy
+    LIMS as input)
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

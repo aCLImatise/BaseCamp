@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfExtractSite.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfExtractSite.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

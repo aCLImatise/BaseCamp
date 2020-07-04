@@ -1,7 +1,14 @@
 version 1.0
 
 task Stringiphy {
+  input {
+    String exons_dot_gff
+  }
   command <<<
-    stringiphy
+    stringiphy \
+      ~{exons_dot_gff}
   >>>
+  parameter_meta {
+    exons_dot_gff: ""
+  }
 }

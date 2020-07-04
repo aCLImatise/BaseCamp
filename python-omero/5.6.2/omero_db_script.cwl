@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: omero_db_script.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_db_script.cwl
 inputs:
-- id: pos_version
-  doc: ==SUPPRESS==
-  type: string
-  inputBinding:
-    position: 0
-- id: pos_patch
-  doc: ==SUPPRESS==
-  type: string
-  inputBinding:
-    position: 1
-- id: pos_password
-  doc: ==SUPPRESS==
-  type: string
-  inputBinding:
-    position: 2
 - id: file
   doc: Optional file to save to. Use '-' for stdout.
   type: File
@@ -36,6 +21,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-salt
+- id: pos_version
+  doc: ==SUPPRESS==
+  type: string
+  inputBinding:
+    position: 0
+- id: pos_patch
+  doc: ==SUPPRESS==
+  type: string
+  inputBinding:
+    position: 1
+- id: pos_password
+  doc: ==SUPPRESS==
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

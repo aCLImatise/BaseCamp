@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: epic_cluster.cwl
+id: ../../../../home/ubuntu/BiocondaCli/epic_cluster.cwl
 inputs:
 - id: matrix
   doc: Matrix to run clustering algorithm on.

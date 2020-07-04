@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: readfq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/readfq.cwl
 inputs:
-- id: in_seq
+- id: in_dot_seq
   doc: ''
   type: string
   inputBinding:

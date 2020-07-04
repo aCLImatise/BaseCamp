@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MaRaClusterAdapter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MaRaClusterAdapter.cwl
 inputs:
 - id: in
   doc: "*                           Input file(s) (valid formats: 'mzML', 'mgf')"

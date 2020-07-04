@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _hmoment.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_hmoment.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

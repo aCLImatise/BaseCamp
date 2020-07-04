@@ -1,16 +1,18 @@
 class: CommandLineTool
-id: nanoraw_genome_resquiggle.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nanoraw_genome_resquiggle.cwl
 inputs:
-- id: fast5_basedir
-  doc: Directory containing fast5 files.
-  type: string
+- id: base_call_subgroups
+  doc: "FAST5 subgroup (under Analyses/[corrected-group]) where individual template\
+    \ and/or complement reads are stored. Default: ['BaseCalled_template']"
+  type: string[]
   inputBinding:
-    position: 0
-- id: genome_fast_a
-  doc: Path to fasta file for mapping.
-  type: string
+    prefix: --basecall-subgroups
+- id: two_d
+  doc: Input contains 2D reads. Equivalent to `--basecall- subgroups BaseCalled_template
+    BaseCalled_complement`
+  type: boolean
   inputBinding:
-    position: 1
+    prefix: --2d
 - id: graph_map_executable
   doc: Relative or absolute path to built graphmap executable or command name if globally
     installed.
@@ -62,7 +64,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --outlier-threshold
-- id: fast5_pattern
+- id: fast_five_pattern
   doc: A pattern to search for a subset of files within fast5-basedir. Note that on
     the unix command line patterns may be expanded so it is best practice to quote
     patterns.
@@ -141,6 +143,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: fast_five_basedir
+  doc: Directory containing fast5 files.
+  type: string
+  inputBinding:
+    position: 0
+- id: genome_fast_a
+  doc: Path to fasta file for mapping.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

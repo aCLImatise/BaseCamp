@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: mafFrag.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mafFrag.cwl
 inputs:
+- id: out_name
+  doc: Use XXX instead of database.chrom for the name
+  type: string
+  inputBinding:
+    prefix: -outName
 - id: database
   doc: ''
   type: string
@@ -31,16 +36,11 @@ inputs:
   type: string
   inputBinding:
     position: 5
-- id: out_maf
+- id: out_dot_maf
   doc: ''
   type: string
   inputBinding:
     position: 6
-- id: out_name
-  doc: Use XXX instead of database.chrom for the name
-  type: string
-  inputBinding:
-    prefix: -outName
 outputs: []
 cwlVersion: v1.1
 baseCommand:

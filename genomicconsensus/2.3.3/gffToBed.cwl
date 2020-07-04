@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gffToBed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gffToBed.cwl
 inputs:
-- id: gff
-  doc: GFF file
-  type: string
-  inputBinding:
-    position: 0
 - id: emit_tool_contract
   doc: 'Emit Tool Contract to stdout (default: False)'
   type: boolean

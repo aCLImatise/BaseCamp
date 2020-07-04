@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: intron_exon_reads.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/intron_exon_reads.py.cwl
 inputs:
 - id: gff
   doc: GFF or GTF file containing annotations
@@ -26,6 +26,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: example
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: from
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: py_bed_tools
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: documentation
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

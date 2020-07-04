@@ -1,20 +1,23 @@
 class: CommandLineTool
-id: paragraph2dot.py_output_output_output.cwl
+id: ../../../../home/ubuntu/BiocondaCli/paragraph2dot.py_output.cwl
 inputs:
-- id: input
+- id: paragraph_two_dot_do_tpy
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: output
+- id: input
   doc: ''
   type: string
   inputBinding:
     position: 1
+- id: output
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - paragraph2dot.py
-- output
-- output
 - output

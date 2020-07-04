@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: gof3r.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gof3r.cwl
 inputs:
+- id: man_page
+  doc: Create gof3r.man man page in current directory
+  type: boolean
+  inputBinding:
+    prefix: --manpage
+- id: write_ini
+  doc: Write .gof3r.ini in current user's home directory
+  type: boolean
+  inputBinding:
+    prefix: --writeini
 - id: cp
   doc: 'copy S3 objects (aliases: copy)'
   type: string
@@ -21,16 +31,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: man_page
-  doc: Create gof3r.man man page in current directory
-  type: boolean
-  inputBinding:
-    prefix: --manpage
-- id: write_ini
-  doc: Write .gof3r.ini in current user's home directory
-  type: boolean
-  inputBinding:
-    prefix: --writeini
 outputs: []
 cwlVersion: v1.1
 baseCommand:

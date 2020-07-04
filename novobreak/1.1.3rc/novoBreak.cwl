@@ -1,37 +1,37 @@
 class: CommandLineTool
-id: novoBreak.cwl
+id: ../../../../home/ubuntu/BiocondaCli/novoBreak.cwl
 inputs:
-- id: i
+- id: tumor_bam_file
   doc: Tumor bam file
   type: string
   inputBinding:
     prefix: -i
-- id: c
+- id: normal_bam_file
   doc: Normal bam file
   type: string
   inputBinding:
     prefix: -c
-- id: r
+- id: reference_file_fasta
   doc: Reference file in fasta format
   type: string
   inputBinding:
     prefix: -r
-- id: k
+- id: kmer_size_
   doc: Kmer size, <=31 [31]
   type: long
   inputBinding:
     prefix: -k
-- id: o
+- id: output_kmer
   doc: Output kmer
   type: string
   inputBinding:
     prefix: -o
-- id: g
+- id: output_germline_events
   doc: Output germline events [0]
   type: long
   inputBinding:
     prefix: -g
-- id: m
+- id: minimum_kmer_count
   doc: Minimum kmer count regarded as novo kmers [3]
   type: long
   inputBinding:

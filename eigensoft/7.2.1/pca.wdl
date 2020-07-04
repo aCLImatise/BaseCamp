@@ -2,24 +2,34 @@ version 1.0
 
 task Pca {
   input {
-    Boolean iI
-    Boolean oO
-    Boolean eE
-    String lL
-    String? mustMust
-    String? allAll
-    String? beBe
-    String? specifiedSpecified
+    Boolean? i
+    Boolean? o
+    Boolean? e
+    String? l
+    String must
+    String all
+    String be
+    String specified
   }
   command <<<
     pca \
-      ~{mustMust} \
-      ~{true="-i" false="" iI} \
-      ~{true="-o" false="" oO} \
-      ~{true="-e" false="" eE} \
-      ~{if defined(lL) then ("-l " +  '"' + lL + '"') else ""} \
-      ~{allAll} \
-      ~{beBe} \
-      ~{specifiedSpecified}
+      ~{must} \
+      ~{all} \
+      ~{be} \
+      ~{specified} \
+      ~{true="-i" false="" i} \
+      ~{true="-o" false="" o} \
+      ~{true="-e" false="" e} \
+      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""}
   >>>
+  parameter_meta {
+    i: ""
+    o: ""
+    e: ""
+    l: ""
+    must: ""
+    all: ""
+    be: ""
+    specified: ""
+  }
 }

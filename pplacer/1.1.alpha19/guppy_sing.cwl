@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: guppy_sing.cwl
+id: ../../../../home/ubuntu/BiocondaCli/guppy_sing.cwl
 inputs:
 - id: point_mass
   doc: Treat every pquery as a point mass concentrated on the highest-weight placement.
@@ -11,7 +11,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --pp
-- id: o
+- id: specify_filename_write
   doc: Specify the filename to write to.
   type: boolean
   inputBinding:
@@ -53,16 +53,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --xml
-- id: node_numbers
-  doc: Put the node numbers in where the bootstraps usually go.
-  type: boolean
-  inputBinding:
-    prefix: --node-numbers
 - id: help
   doc: Display this list of options
   type: boolean
   inputBinding:
     prefix: --help
+- id: sing
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: place_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: s
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

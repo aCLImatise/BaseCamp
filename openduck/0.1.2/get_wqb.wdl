@@ -2,14 +2,19 @@ version 1.0
 
 task GetWqb {
   input {
-    String dirDir
-    String ligandLigand
-    String outputOutput
+    String? dir
+    String? ligand
+    String? ligand_output_mol
   }
   command <<<
     get_wqb \
-      ~{if defined(dirDir) then ("--dir " +  '"' + dirDir + '"') else ""} \
-      ~{if defined(ligandLigand) then ("--ligand " +  '"' + ligandLigand + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""}
+      ~{if defined(dir) then ("--dir " +  '"' + dir + '"') else ""} \
+      ~{if defined(ligand) then ("--ligand " +  '"' + ligand + '"') else ""} \
+      ~{if defined(ligand_output_mol) then ("--output " +  '"' + ligand_output_mol + '"') else ""}
   >>>
+  parameter_meta {
+    dir: "Directory with location of OpenDUck data"
+    ligand: "Ligand in mol format"
+    ligand_output_mol: "Ligand output in mol forma, with wqb value"
+  }
 }

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: RADpainter_paint.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RADpainter_paint.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: input_txt
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: ploidy
   doc: ploidy of the species being analysed (default is 2N, i.e. diploid)
   type: string
@@ -26,12 +16,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --run-name
-- id: missing_2
+- id: missing_two
   doc: (deprecated) output a conancestry matrix with missing data treated as if any
     pair of individuals are equally distant
   type: boolean
   inputBinding:
     prefix: --missing2
+- id: input_dot_txt
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

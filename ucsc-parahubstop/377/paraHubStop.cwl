@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: paraHubStop.cwl
+id: ../../../../home/ubuntu/BiocondaCli/paraHubStop.cwl
 inputs:
 - id: now
   doc: ''

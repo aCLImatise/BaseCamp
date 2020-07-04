@@ -1,6 +1,21 @@
 class: CommandLineTool
-id: cleric.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cleric.cwl
 inputs:
+- id: aln
+  doc: Pairwise alignment of reference to target
+  type: boolean
+  inputBinding:
+    prefix: --aln
+- id: emit_tool_contract
+  doc: Emit tool contract.
+  type: boolean
+  inputBinding:
+    prefix: --emit-tool-contract
+- id: resolved_tool_contract
+  doc: Use args from resolved tool contract.
+  type: boolean
+  inputBinding:
+    prefix: --resolved-tool-contract
 - id: bam
   doc: Source BAM
   type: string
@@ -21,21 +36,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: aln
-  doc: Pairwise alignment of reference to target
-  type: boolean
-  inputBinding:
-    prefix: --aln
-- id: emit_tool_contract
-  doc: Emit tool contract.
-  type: boolean
-  inputBinding:
-    prefix: --emit-tool-contract
-- id: resolved_tool_contract
-  doc: Use args from resolved tool contract.
-  type: boolean
-  inputBinding:
-    prefix: --resolved-tool-contract
 outputs: []
 cwlVersion: v1.1
 baseCommand:

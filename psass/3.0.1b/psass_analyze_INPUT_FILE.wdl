@@ -2,14 +2,13 @@ version 1.0
 
 task PsassAnalyzeINPUTFILE {
   input {
-    String? optionsOptions
-    String? inputInputFile
-    String? outputOutputFile
+    String output_file
   }
   command <<<
     psass analyze INPUT_FILE \
-      ~{optionsOptions} \
-      ~{inputInputFile} \
-      ~{outputOutputFile}
+      ~{output_file}
   >>>
+  parameter_meta {
+    output_file: ""
+  }
 }

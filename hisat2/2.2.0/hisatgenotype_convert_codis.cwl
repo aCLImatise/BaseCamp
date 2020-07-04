@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hisatgenotype_convert_codis.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hisatgenotype_convert_codis.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

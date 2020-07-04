@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: quick_hierarchical_clustering.cwl
+id: ../../../../home/ubuntu/BiocondaCli/quick_hierarchical_clustering.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

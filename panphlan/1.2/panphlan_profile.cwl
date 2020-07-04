@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: panphlan_profile.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/panphlan_profile.py.cwl
 inputs:
 - id: i_dna
   doc: Input directory of panphlan_map.py results, containing SAMPLE.csv.bz2 files
   type: string
   inputBinding:
     prefix: --i_dna
-- id: i_bowtie2_indexes
+- id: i_bowtie_two_indexes
   doc: Input directory of bowtie2 indexes
   type: string
   inputBinding:

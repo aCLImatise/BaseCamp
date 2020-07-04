@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: seqkit_watch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqkit_watch.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: bins
   doc: number of histogram bins (default -1)
   type: long
@@ -125,6 +120,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

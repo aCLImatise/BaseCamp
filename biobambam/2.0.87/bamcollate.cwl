@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamcollate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamcollate.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

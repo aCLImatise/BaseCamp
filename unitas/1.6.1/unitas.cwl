@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: unitas.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/unitas.pl.cwl
 inputs:
-- id: xxx
-  doc: .oXXXXXXXX. .XXXXo
-  type: string
-  inputBinding:
-    position: 0
 - id: refseq
   doc: '[-refseq sequence_2.fas ...]'
   type: string

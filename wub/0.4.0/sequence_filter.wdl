@@ -1,25 +1,23 @@
 version 1.0
 
-task SequenceFilter.py {
+task SequenceFilter.pyOutputFastx {
   input {
-    String iI
-    String oO
-    Int qQ
-    Int lL
-    Boolean cC
-    Int uU
-    String? inputInputFastX
-    String? outputOutputFastX
+    String? i
+    String? o
+    Int? q
+    String sequence_filter_do_tpy
   }
   command <<<
-    sequence_filter.py \
-      ~{inputInputFastX} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{if defined(qQ) then ("-q " +  '"' + qQ + '"') else ""} \
-      ~{if defined(lL) then ("-l " +  '"' + lL + '"') else ""} \
-      ~{true="-c" false="" cC} \
-      ~{if defined(uU) then ("-u " +  '"' + uU + '"') else ""} \
-      ~{outputOutputFastX}
+    sequence_filter.py output_fastx \
+      ~{sequence_filter_do_tpy} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(q) then ("-q " +  '"' + q + '"') else ""}
   >>>
+  parameter_meta {
+    i: ""
+    o: ""
+    q: ""
+    sequence_filter_do_tpy: ""
+  }
 }

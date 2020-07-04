@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dbicadmin.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dbicadmin.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

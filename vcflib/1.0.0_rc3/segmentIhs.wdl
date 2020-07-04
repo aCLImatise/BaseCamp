@@ -2,14 +2,19 @@ version 1.0
 
 task SegmentIhs {
   input {
-    String yourYour
-    String? segmentSegmentFst
-    String? 22
+    String? s
+    String? f
+    String segment_fst
   }
   command <<<
     segmentIhs \
-      ~{segmentSegmentFst} \
-      ~{if defined(yourYour) then ("-     Your " +  '"' + yourYour + '"') else ""} \
-      ~{22}
+      ~{segment_fst} \
+      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  parameter_meta {
+    s: ""
+    f: ""
+    segment_fst: ""
+  }
 }

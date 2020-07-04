@@ -2,24 +2,34 @@ version 1.0
 
 task PgSAgen {
   input {
-    String rR
-    String kK
-    Boolean cC
-    Boolean pP
-    Boolean vV
-    String? readsReadsSrcfile
-    String? pairPairSrcfile
-    String? indexIndexPrefix
+    String? r
+    String? k
+    Boolean? c
+    Boolean? p
+    Boolean? v
+    String reads_srcfile
+    String? pair_srcfile
+    String index_prefix
   }
   command <<<
     PgSAgen \
-      ~{readsReadsSrcfile} \
-      ~{if defined(rR) then ("-r " +  '"' + rR + '"') else ""} \
-      ~{if defined(kK) then ("-k " +  '"' + kK + '"') else ""} \
-      ~{true="-c" false="" cC} \
-      ~{true="-p" false="" pP} \
-      ~{true="-v" false="" vV} \
-      ~{pairPairSrcfile} \
-      ~{indexIndexPrefix}
+      ~{reads_srcfile} \
+      ~{pair_srcfile} \
+      ~{index_prefix} \
+      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""} \
+      ~{if defined(k) then ("-k " +  '"' + k + '"') else ""} \
+      ~{true="-c" false="" c} \
+      ~{true="-p" false="" p} \
+      ~{true="-v" false="" v}
   >>>
+  parameter_meta {
+    r: ""
+    k: ""
+    c: ""
+    p: ""
+    v: ""
+    reads_srcfile: ""
+    pair_srcfile: ""
+    index_prefix: ""
+  }
 }

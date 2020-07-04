@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: metagenome_contributions.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/metagenome_contributions.py.cwl
 inputs:
 - id: input_otu_table
   doc: the input otu table in biom format [REQUIRED]

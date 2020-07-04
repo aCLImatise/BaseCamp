@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: humann2_test.cwl
+id: ../../../../home/ubuntu/BiocondaCli/humann2_test.cwl
 inputs:
 - id: run_functional_tests_tools
   doc: run the functional tests for tools

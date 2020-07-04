@@ -2,14 +2,19 @@ version 1.0
 
 task BoltHelp {
   input {
-    String? genieGenie
-    String? helpHelp
-    String? flagsFlags
+    String genie
+    String help
+    String? flags
   }
   command <<<
     bolt help \
-      ~{genieGenie} \
-      ~{helpHelp} \
-      ~{flagsFlags}
+      ~{genie} \
+      ~{help} \
+      ~{flags}
   >>>
+  parameter_meta {
+    genie: ""
+    help: ""
+    flags: ""
+  }
 }

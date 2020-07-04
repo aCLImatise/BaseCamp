@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastx_collapser.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastx_collapser.cwl
 inputs:
 - id: v
   doc: ''

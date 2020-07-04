@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dsh_split_interleaved_fastq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dsh_split_interleaved_fastq.cwl
 inputs:
 - id: about
   doc: display about message [optional]

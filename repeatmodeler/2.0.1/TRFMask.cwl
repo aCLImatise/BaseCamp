@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: TRFMask.cwl
+id: ../../../../home/ubuntu/BiocondaCli/TRFMask.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: obiselect.cwl
+id: ../../../../home/ubuntu/BiocondaCli/obiselect.cwl
 inputs:
 - id: category_attribute
   doc: Add one attribute to the list of attribute used for categorizing sequence records

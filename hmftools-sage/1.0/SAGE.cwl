@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SAGE.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SAGE.cwl
 inputs:
 - id: coding_regions
   doc: Coding regions bed file to search for inframe indels
@@ -83,6 +83,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -tumor_bam
+- id: sage_hotspot_application
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

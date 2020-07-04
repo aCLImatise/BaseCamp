@@ -2,12 +2,19 @@ version 1.0
 
 task Nproc {
   input {
-    Boolean allAll
-    String ignoreIgnore
+    Boolean? all
+    String? ignore
+    String? option
   }
   command <<<
     nproc \
-      ~{true="--all" false="" allAll} \
-      ~{if defined(ignoreIgnore) then ("--ignore " +  '"' + ignoreIgnore + '"') else ""}
+      ~{option} \
+      ~{true="--all" false="" all} \
+      ~{if defined(ignore) then ("--ignore " +  '"' + ignore + '"') else ""}
   >>>
+  parameter_meta {
+    all: "print the number of installed processors"
+    ignore: "if possible, exclude N processing units"
+    option: ""
+  }
 }

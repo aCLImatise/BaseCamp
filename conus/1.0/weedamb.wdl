@@ -2,10 +2,13 @@ version 1.0
 
 task Weedamb {
   input {
-    String? seqSeqFileIn
+    String seq_file_in
   }
   command <<<
     weedamb \
-      ~{seqSeqFileIn}
+      ~{seq_file_in}
   >>>
+  parameter_meta {
+    seq_file_in: ""
+  }
 }

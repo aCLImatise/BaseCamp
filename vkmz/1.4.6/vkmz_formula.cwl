@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: vkmz_formula.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vkmz_formula.cwl
 inputs:
 - id: input
   doc: Path to tabular formula file.
   type: string
   inputBinding:
     prefix: --input
-- id: output
+- id: specify_output_file
   doc: '[OUTPUT], -o [OUTPUT] Specify output file path'
   type: boolean
   inputBinding:
@@ -57,6 +57,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --impute-charge
+- id: var_11
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

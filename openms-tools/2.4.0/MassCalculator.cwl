@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MassCalculator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MassCalculator.cwl
 inputs:
 - id: in
   doc: "Input file with peptide sequences and optionally charge numbers (mutually\

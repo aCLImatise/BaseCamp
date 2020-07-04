@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gat_plot.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gat_plot.py.cwl
 inputs:
 - id: time_it
   doc: store timeing information in file [none].

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tripaille_expression_get_biomaterials.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tripaille_expression_get_biomaterials.cwl
 inputs:
 - id: biomaterial_name
   doc: Limit query to the selected biomaterial

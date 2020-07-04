@@ -1,13 +1,17 @@
 version 1.0
 
-task LoadBalanceMers.plNumOfPrefixBlocks {
+task LoadBalanceMers.pl {
   input {
-    String? merMerCountFile
-    String? numNumOfPrefixBlocks
+    String mer_count_file
+    String num_of_prefix_blocks
   }
   command <<<
-    loadBalanceMers.pl num_of_prefix_blocks \
-      ~{merMerCountFile} \
-      ~{numNumOfPrefixBlocks}
+    loadBalanceMers.pl \
+      ~{mer_count_file} \
+      ~{num_of_prefix_blocks}
   >>>
+  parameter_meta {
+    mer_count_file: ""
+    num_of_prefix_blocks: ""
+  }
 }

@@ -1,27 +1,16 @@
 class: CommandLineTool
-id: omero_user_email.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_user_email.cwl
 inputs:
-- id: omer_o_userdir
-  doc: "Set the base directory containing the user's files. Default: $HOME/omero"
-  type: string
+- id: names
+  doc: Print user names along with email addresses
+  type: boolean
   inputBinding:
-    position: 0
-- id: omer_o_session_dir
-  doc: 'Set the base directory containing local sessions. Default: $OMERO_USERDIR/sessions'
-  type: string
+    prefix: --names
+- id: print_one_user
+  doc: Print one user per line
+  type: boolean
   inputBinding:
-    position: 1
-- id: omer_o_tmpdir
-  doc: 'Set the base directory containing temporary files. Default: $OMERO_USERDIR/tmp'
-  type: string
-  inputBinding:
-    position: 2
-- id: omer_o_password
-  doc: Set the user's password for creating new sessions. Ignored if -w or --password
-    is used.
-  type: string
-  inputBinding:
-    position: 3
+    prefix: --one
 - id: ignore
   doc: Ignore users without email addresses
   type: boolean
@@ -77,6 +66,27 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: omer_o_userdir
+  doc: "Set the base directory containing the user's files. Default: $HOME/omero"
+  type: string
+  inputBinding:
+    position: 0
+- id: omer_o_session_dir
+  doc: 'Set the base directory containing local sessions. Default: $OMERO_USERDIR/sessions'
+  type: string
+  inputBinding:
+    position: 1
+- id: omer_o_tmpdir
+  doc: 'Set the base directory containing temporary files. Default: $OMERO_USERDIR/tmp'
+  type: string
+  inputBinding:
+    position: 2
+- id: omer_o_password
+  doc: Set the user's password for creating new sessions. Ignored if -w or --password
+    is used.
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

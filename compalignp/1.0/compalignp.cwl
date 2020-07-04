@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: compalignp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/compalignp.cwl
 inputs:
 - id: v
   doc: ''

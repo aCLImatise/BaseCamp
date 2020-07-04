@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: GenesToApproved.cwl
+id: ../../../../home/ubuntu/BiocondaCli/GenesToApproved.cwl
 inputs:
 - id: in
   doc: "Input TXT file with one gene symbol per line. If unset, reads from STDIN.\

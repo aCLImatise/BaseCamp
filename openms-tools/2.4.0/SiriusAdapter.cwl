@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SiriusAdapter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SiriusAdapter.cwl
 inputs:
 - id: executable
   doc: Sirius executable e.g. sirius
@@ -25,7 +25,7 @@ inputs:
 - id: out_finger_id
   doc: "MzTab output file for CSI:FingerID, if this parameter is given, SIRIUS will\
     \ search for a molecular structure using CSI:FingerID after determining the sum\
-    \ formula (valid  formats: 'mzTab')"
+    \ formula (valid formats: 'mzTab')"
   type: File
   inputBinding:
     prefix: -out_fingerid
@@ -72,7 +72,7 @@ inputs:
 - id: database
   doc: "Search formulas in given database (default: 'all' valid: 'all', 'chebi', 'custom',\
     \ 'kegg', 'bio', 'natural products', 'pubmed', 'hmdb', 'biocyc', 'hsdb', 'knapsack',\
-    \  'biological', 'zinc bio', 'gnps', 'pubchem', 'mesh', 'maconda')"
+    \ 'biological', 'zinc bio', 'gnps', 'pubchem', 'mesh', 'maconda')"
   type: string
   inputBinding:
     prefix: -database
@@ -89,7 +89,7 @@ inputs:
 - id: isotope
   doc: "How to handle isotope pattern data. Use 'score' to use them for ranking or\
     \ 'filter' if you just want to remove candidates with bad isotope pattern. With\
-    \ 'both' you can  use isotopes for filtering and scoring. Use 'omit' to ignore\
+    \ 'both' you can use isotopes for filtering and scoring. Use 'omit' to ignore\
     \ isotope pattern. (default: 'both' valid: 'score', 'filter', 'both', 'omit')"
   type: string
   inputBinding:
@@ -121,7 +121,7 @@ inputs:
 - id: auto_charge
   doc: Use this option if the charge of your compounds is unknown and you do not want
     to assume [M+H]+ as default. With the auto charge option SIRIUS will not care
-    about charge s and allow arbitrary adducts for the precursor peak.
+    about charges and allow arbitrary adducts for the precursor peak.
   type: boolean
   inputBinding:
     prefix: -auto_charge
@@ -137,7 +137,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -no_recalibration
-- id: most_intense_ms2
+- id: most_intense_ms_two
   doc: SIRIUS uses the fragmentation spectrum with the most intense precursor peak
     (for each spectrum)
   type: boolean

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FeatureLinkerUnlabeledQT.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FeatureLinkerUnlabeledQT.cwl
 inputs:
 - id: in
   doc: "*        Input files separated by blanks (valid formats: 'featureXML', 'consensusXML')"
@@ -42,11 +42,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Algorithm parameters section
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

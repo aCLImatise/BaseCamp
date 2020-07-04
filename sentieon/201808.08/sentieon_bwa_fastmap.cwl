@@ -1,6 +1,31 @@
 class: CommandLineTool
-id: sentieon_bwa_fastmap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sentieon_bwa_fastmap.cwl
 inputs:
+- id: min_smem_length
+  doc: min SMEM length to output [17]
+  type: long
+  inputBinding:
+    prefix: -l
+- id: max_interval_size
+  doc: max interval size to find coordiantes [20]
+  type: long
+  inputBinding:
+    prefix: -w
+- id: min_smem_interval
+  doc: min SMEM interval size [1]
+  type: long
+  inputBinding:
+    prefix: -i
+- id: max_mem_length
+  doc: max MEM length [2147483647]
+  type: long
+  inputBinding:
+    prefix: -L
+- id: stop_mem_longer
+  doc: stop if MEM is longer than -l with a size less than INT [0]
+  type: long
+  inputBinding:
+    prefix: -I
 - id: bwa
   doc: ''
   type: string
@@ -16,36 +41,11 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: in_fq
+- id: in_dot_fq
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: l
-  doc: min SMEM length to output [17]
-  type: long
-  inputBinding:
-    prefix: -l
-- id: w
-  doc: max interval size to find coordiantes [20]
-  type: long
-  inputBinding:
-    prefix: -w
-- id: i
-  doc: min SMEM interval size [1]
-  type: long
-  inputBinding:
-    prefix: -i
-- id: l
-  doc: max MEM length [2147483647]
-  type: long
-  inputBinding:
-    prefix: -L
-- id: i
-  doc: stop if MEM is longer than -l with a size less than INT [0]
-  type: long
-  inputBinding:
-    prefix: -I
 outputs: []
 cwlVersion: v1.1
 baseCommand:

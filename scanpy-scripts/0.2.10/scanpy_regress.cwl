@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scanpy_regress.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scanpy_regress.cwl
 inputs:
 - id: input_format
   doc: '[anndata|loom] Input object format.  [default: anndata]'
@@ -33,10 +33,21 @@ inputs:
   inputBinding:
     prefix: --n-jobs
 - id: keys
-  doc: '[,TEXT...]       Key(s) for observation annotation on which to regress.'
-  type: string
+  doc: Key(s) for observation annotation on which to regress.
+  type:
+  - string
   inputBinding:
     prefix: --keys
+- id: input_obj
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_obj
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

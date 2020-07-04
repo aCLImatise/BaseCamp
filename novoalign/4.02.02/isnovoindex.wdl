@@ -2,10 +2,13 @@ version 1.0
 
 task Isnovoindex {
   input {
-    File? filenameFilename
+    File filename
   }
   command <<<
     isnovoindex \
-      ~{filenameFilename}
+      ~{filename}
   >>>
+  parameter_meta {
+    filename: ""
+  }
 }

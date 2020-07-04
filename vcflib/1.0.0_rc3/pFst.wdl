@@ -2,10 +2,13 @@ version 1.0
 
 task PFst {
   input {
-    String yourYour
+    String? target
   }
   command <<<
     pFst \
-      ~{if defined(yourYour) then ("-     Your " +  '"' + yourYour + '"') else ""}
+      ~{if defined(target) then ("--target " +  '"' + target + '"') else ""}
   >>>
+  parameter_meta {
+    target: ""
+  }
 }

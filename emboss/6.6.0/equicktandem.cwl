@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: equicktandem.cwl
+id: ../../../../home/ubuntu/BiocondaCli/equicktandem.cwl
 inputs:
 - id: max_repeat
   doc: integer    [600] Maximum repeat size (Any integer value)

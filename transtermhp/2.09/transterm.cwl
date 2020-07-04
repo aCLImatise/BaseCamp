@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: transterm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/transterm.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

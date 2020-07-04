@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: halMafTests.cwl
+id: ../../../../home/ubuntu/BiocondaCli/halMafTests.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,9 +1,16 @@
 class: CommandLineTool
-id: phyloP.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyloP.cwl
 inputs:
 - id: confidence_interval
-  doc: (see below).
-  type: boolean
+  doc: Allow for uncertainty in the estimate of the actual number of substitutions
+    by using a (central) confidence interval about the mean of the specified size
+    (0 < val < 1).  To be conservative, the maximum of this interval is used when
+    computing a p-value of conservation, and the minimum is used when computing a
+    p-value of acceleration.  The variance of the posterior is computed exactly, but
+    the confidence interval is based on the assumption that the combined distribution
+    will be approximately normal (true for large numbers of sites by central limit
+    theorem).
+  type: string
   inputBinding:
     prefix: --confidence-interval
 - id: chrom
@@ -67,24 +74,22 @@ inputs:
   type: string
   inputBinding:
     prefix: --epsilon
-- id: confidence_interval
-  doc: Allow for uncertainty in the estimate of the actual number of substitutions
-    by using a (central) confidence interval about the mean of the specified size
-    (0 < val < 1).  To be conservative, the maximum of this interval is used when
-    computing a p-value of conservation, and the minimum is used when computing a
-    p-value of acceleration.  The variance of the posterior is computed exactly, but
-    the confidence interval is based on the assumption that the combined distribution
-    will be approximately normal (true for large numbers of sites by central limit
-    theorem).
-  type: string
-  inputBinding:
-    prefix: --confidence-interval
 - id: quantiles
   doc: (For use with --null or --posterior) Report quantiles of distribution rather
     than whole distribution.
   type: boolean
   inputBinding:
     prefix: --quantiles
+- id: tree_dot_mod
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: alignment
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

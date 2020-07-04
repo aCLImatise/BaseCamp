@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNAshapes_subopt_microstate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAshapes_subopt_microstate.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

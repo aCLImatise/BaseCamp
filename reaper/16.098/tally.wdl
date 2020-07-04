@@ -2,10 +2,13 @@ version 1.0
 
 task Tally {
   input {
-    String? cmpCmp
+    String cmp
   }
   command <<<
     tally \
-      ~{cmpCmp}
+      ~{cmp}
   >>>
+  parameter_meta {
+    cmp: "with cmp paired end identifier mismatches will be reported"
+  }
 }

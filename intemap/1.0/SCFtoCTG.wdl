@@ -1,7 +1,17 @@
 version 1.0
 
 task SCFtoCTG {
+  input {
+    String input_file
+    String output_file
+  }
   command <<<
-    SCFtoCTG
+    SCFtoCTG \
+      ~{input_file} \
+      ~{output_file}
   >>>
+  parameter_meta {
+    input_file: ""
+    output_file: ""
+  }
 }

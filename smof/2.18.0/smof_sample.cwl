@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: smof_sample.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smof_sample.cwl
 inputs:
-- id: input
-  doc: input fasta sequence (default = stdin)
-  type: string
-  inputBinding:
-    position: 0
 - id: number
   doc: sample size (default=1)
   type: string
@@ -16,6 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --seed
+- id: input
+  doc: input fasta sequence (default = stdin)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

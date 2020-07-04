@@ -2,12 +2,16 @@ version 1.0
 
 task OrthomclDropSchema {
   input {
-    String? configConfigFile
-    String? sqlSqlLogFile
+    String config_file
+    String sql_log_file
   }
   command <<<
     orthomclDropSchema \
-      ~{configConfigFile} \
-      ~{sqlSqlLogFile}
+      ~{config_file} \
+      ~{sql_log_file}
   >>>
+  parameter_meta {
+    config_file: ""
+    sql_log_file: ""
+  }
 }

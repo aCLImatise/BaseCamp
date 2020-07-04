@@ -2,28 +2,40 @@ version 1.0
 
 task MergePreds.py {
   input {
-    String? combineCombine
-    String? theThe
-    String? misclassifiedMisclassified
-    String? samplesSamples
-    String? ofOf
-    String? differentDifferent
-    String? phenotypesPhenotypes
-    Int? intoInto
-    String? dataData
-    String? matricesMatrices
+    String combine
+    String the
+    String misclassified
+    String samples
+    String of
+    String different
+    String phenotypes
+    Int into
+    String data
+    String matrices
   }
   command <<<
     merge_preds.py \
-      ~{combineCombine} \
-      ~{theThe} \
-      ~{misclassifiedMisclassified} \
-      ~{samplesSamples} \
-      ~{ofOf} \
-      ~{differentDifferent} \
-      ~{phenotypesPhenotypes} \
-      ~{intoInto} \
-      ~{dataData} \
-      ~{matricesMatrices}
+      ~{combine} \
+      ~{the} \
+      ~{misclassified} \
+      ~{samples} \
+      ~{of} \
+      ~{different} \
+      ~{phenotypes} \
+      ~{into} \
+      ~{data} \
+      ~{matrices}
   >>>
+  parameter_meta {
+    combine: ""
+    the: ""
+    misclassified: ""
+    samples: ""
+    of: ""
+    different: ""
+    phenotypes: ""
+    into: ""
+    data: ""
+    matrices: ""
+  }
 }

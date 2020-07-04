@@ -2,18 +2,25 @@ version 1.0
 
 task ChadoAdminRestore {
   input {
-    Boolean verboseVerbose
-    String configConfig
-    Boolean useUsePassword
-    String? dbnameDbname
-    String? archiveArchive
+    Boolean? verbose
+    String? config
+    Boolean? use_password
+    String dbname
+    String archive
   }
   command <<<
     chado admin restore \
-      ~{dbnameDbname} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{if defined(configConfig) then ("--config " +  '"' + configConfig + '"') else ""} \
-      ~{true="--use_password" false="" useUsePassword} \
-      ~{archiveArchive}
+      ~{dbname} \
+      ~{archive} \
+      ~{true="--verbose" false="" verbose} \
+      ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
+      ~{true="--use_password" false="" use_password}
   >>>
+  parameter_meta {
+    verbose: "verbose mode"
+    config: "YAML file containing connection details"
+    use_password: "connect with password (default: no password)"
+    dbname: "name of the database"
+    archive: "archive file"
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pyprophet_protein.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyprophet_protein.cwl
 inputs:
 - id: in
   doc: PyProphet input file.  [required]
@@ -28,27 +28,27 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --pfdr
-- id: pi0_lambda
+- id: pi_zero_lambda
   doc: '... Use non-parametric estimation of p-values. Either use <START END STEPS>,
     e.g. 0.1, 1.0, 0.1 or set to fixed value, e.g. 0.4, 0, 0. [default: 0.1, 0.5,
     0.05]'
   type: double
   inputBinding:
     prefix: --pi0_lambda
-- id: pi0_method
+- id: pi_zero_method
   doc: '[smoother|bootstrap] Either "smoother" or "bootstrap"; the method for automatically
     choosing tuning parameter in the estimation of pi_0, the proportion of true null
     hypotheses.  [default: bootstrap]'
   type: boolean
   inputBinding:
     prefix: --pi0_method
-- id: pi0_smooth_df
+- id: pi_zero_smooth_df
   doc: 'Number of degrees-of-freedom to use when estimating pi_0 with a smoother.  [default:
     3]'
   type: long
   inputBinding:
     prefix: --pi0_smooth_df
-- id: pi0_smooth_log_pi0
+- id: pi_zero_smooth_log_pi_zero
   doc: '/ --no-pi0_smooth_log_pi0 If True and pi0_method = "smoother", pi0 will be
     estimated by applying a smoother to a scatterplot of log(pi0) estimates against
     the tuning parameter lambda.  [default: False]'

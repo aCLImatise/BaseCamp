@@ -2,14 +2,19 @@ version 1.0
 
 task Cassiopeeknife {
   input {
-    Boolean sS
-    Boolean oO
-    Boolean vV
+    Boolean? _sequence_convert
+    Boolean? _output_file
+    Boolean? _show_version
   }
   command <<<
     cassiopeeknife \
-      ~{true="-s" false="" sS} \
-      ~{true="-o" false="" oO} \
-      ~{true="-v" false="" vV}
+      ~{true="-s" false="" _sequence_convert} \
+      ~{true="-o" false="" _output_file} \
+      ~{true="-v" false="" _show_version}
   >>>
+  parameter_meta {
+    _sequence_convert: ": sequence to convert"
+    _output_file: ": output file"
+    _show_version: ": show version"
+  }
 }

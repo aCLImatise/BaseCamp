@@ -1,6 +1,17 @@
 class: CommandLineTool
-id: chromosomer_fragmentmap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chromosomer_fragmentmap.cwl
 inputs:
+- id: ratio_threshold
+  doc: 'the least ratio of two greatest fragment alignment scores to determine the
+    fragment placed to a reference genome (default: 1.2)'
+  type: string
+  inputBinding:
+    prefix: --ratio_threshold
+- id: shrink_gaps
+  doc: 'shrink large interfragment gaps to the specified size (default: False)'
+  type: boolean
+  inputBinding:
+    prefix: --shrink_gaps
 - id: alignment_file
   doc: a BLAST tabular file of fragment alignments to reference chromosomes
   type: string
@@ -22,17 +33,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: ratio_threshold
-  doc: 'the least ratio of two greatest fragment alignment scores to determine the
-    fragment placed to a reference genome (default: 1.2)'
-  type: string
-  inputBinding:
-    prefix: --ratio_threshold
-- id: shrink_gaps
-  doc: 'shrink large interfragment gaps to the specified size (default: False)'
-  type: boolean
-  inputBinding:
-    prefix: --shrink_gaps
 outputs: []
 cwlVersion: v1.1
 baseCommand:

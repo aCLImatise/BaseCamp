@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: aclocal.bak.cwl
+id: ../../../../home/ubuntu/BiocondaCli/aclocal.bak.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

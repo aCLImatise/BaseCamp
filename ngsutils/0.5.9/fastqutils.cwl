@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastqutils.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastqutils.cwl
 inputs:
 - id: command
   doc: ''

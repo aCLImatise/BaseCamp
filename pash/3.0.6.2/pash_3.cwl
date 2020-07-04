@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pash_3.0lx.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pash_3.0lx.cwl
 inputs:
 - id: vertical_input
   doc: "| -v <verticalFile>  Vertical sequence as a fasta input file with full path;\
@@ -113,6 +113,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --keepHashedKmersPercent
+- id: pash_dot_exe
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

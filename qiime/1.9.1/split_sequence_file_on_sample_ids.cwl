@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: split_sequence_file_on_sample_ids.py.cwl
-inputs:
-- id: input_seqs_fp
-  doc: the input fasta file to split [REQUIRED]
-  type: string
-  inputBinding:
-    prefix: --input_seqs_fp
-- id: output_dir
-  doc: 'the output directory [default: none] [REQUIRED]'
-  type: string
-  inputBinding:
-    prefix: --output_dir
+id: ../../../../home/ubuntu/BiocondaCli/split_sequence_file_on_sample_ids.py.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

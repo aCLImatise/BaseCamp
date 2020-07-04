@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rgt_motifanalysis.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rgt_motifanalysis.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: lfmm2geno.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lfmm2geno.cwl
 inputs:
 - id: input
-  doc: -h
+  doc: --help
   type: File
   inputBinding:
     prefix: -input
 - id: output
-  doc: -h.geno
+  doc: --help.geno
   type: File
   inputBinding:
     prefix: -output

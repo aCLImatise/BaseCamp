@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bland_altman_plot.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bland_altman_plot.py.cwl
 inputs:
 - id: input
   doc: Input dataset in wide format.

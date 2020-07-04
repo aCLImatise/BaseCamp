@@ -1,19 +1,23 @@
 version 1.0
 
-task SplitFastx.py {
+task SplitFastx.pyOutputDir {
   input {
-    String iI
-    String oO
-    String bB
-    String? inputInputFastX
-    String? outputOutputDir
+    String? i
+    String? o
+    String? b
+    String split_fast_x_do_tpy
   }
   command <<<
-    split_fastx.py \
-      ~{inputInputFastX} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{if defined(bB) then ("-b " +  '"' + bB + '"') else ""} \
-      ~{outputOutputDir}
+    split_fastx.py output_dir \
+      ~{split_fast_x_do_tpy} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(b) then ("-b " +  '"' + b + '"') else ""}
   >>>
+  parameter_meta {
+    i: ""
+    o: ""
+    b: ""
+    split_fast_x_do_tpy: ""
+  }
 }

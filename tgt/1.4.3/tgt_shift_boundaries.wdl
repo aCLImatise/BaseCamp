@@ -1,19 +1,23 @@
 version 1.0
 
-task TgtShiftBoundaries.py {
+task TgtShiftBoundaries.pyFile {
   input {
-    String encodingEncoding
-    String formatFormat
-    String outfileOutfile
-    String? shiftShift
-    File? fileFile
+    String? e
+    String? f
+    String? o
+    String tgt_shift_boundaries_do_tpy
   }
   command <<<
-    tgt-shift-boundaries.py \
-      ~{shiftShift} \
-      ~{if defined(encodingEncoding) then ("--encoding " +  '"' + encodingEncoding + '"') else ""} \
-      ~{if defined(formatFormat) then ("--format " +  '"' + formatFormat + '"') else ""} \
-      ~{if defined(outfileOutfile) then ("--outfile " +  '"' + outfileOutfile + '"') else ""} \
-      ~{fileFile}
+    tgt-shift-boundaries.py file \
+      ~{tgt_shift_boundaries_do_tpy} \
+      ~{if defined(e) then ("-e " +  '"' + e + '"') else ""} \
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    e: ""
+    f: ""
+    o: ""
+    tgt_shift_boundaries_do_tpy: ""
+  }
 }

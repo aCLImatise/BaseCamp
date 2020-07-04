@@ -1,32 +1,32 @@
 class: CommandLineTool
-id: cd_hit_lap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cd_hit_lap.cwl
 inputs:
-- id: i
+- id: input_file
   doc: Input file;
   type: boolean
   inputBinding:
     prefix: -i
-- id: o
+- id: output_file
   doc: Output file;
   type: boolean
   inputBinding:
     prefix: -o
-- id: m
+- id: minimum_length_overlapping
   doc: Minimum length of overlapping part (default 20);
   type: boolean
   inputBinding:
     prefix: -m
-- id: p
+- id: minimum_percentage_percentage
   doc: Minimum percentage of overlapping part (default 0, any percentage);
   type: boolean
   inputBinding:
     prefix: -p
-- id: d
+- id: description_length_default
   doc: Description length (default 0, truncate at the first whitespace character)
   type: boolean
   inputBinding:
     prefix: -d
-- id: s
+- id: random_number_seed
   doc: Random number seed for shuffling (default 0, no shuffling; shuffled before
     sorting by length);
   type: boolean

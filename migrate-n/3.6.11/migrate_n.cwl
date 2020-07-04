@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: migrate_n.cwl
+id: ../../../../home/ubuntu/BiocondaCli/migrate_n.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

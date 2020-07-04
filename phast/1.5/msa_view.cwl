@@ -1,41 +1,23 @@
 class: CommandLineTool
-id: msa_view.cwl
+id: ../../../../home/ubuntu/BiocondaCli/msa_view.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: in_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: out_format
   doc: '> chr1.ordered.ss'
   type: string
   inputBinding:
     prefix: --out-format
 - id: tuple_size
-  doc: 2 > chr1.pairs.ss
-  type: boolean
-  inputBinding:
-    prefix: --tuple-size
-- id: out_format
-  doc: chr1.ss chr2.ss chr3.ss > chr123.ss
+  doc: (For use with --out-format SS).  Represent an alignment in terms of tuples
+    of columns of the designated size.  Useful with context-dependent phylogenetic
+    models.
   type: string
   inputBinding:
-    prefix: --out-format
+    prefix: --tuple-size
 - id: cat_map
   doc: '"NCATS = 3; CDS 1-3" --reverse-groups transcript_id'
   type: boolean
   inputBinding:
     prefix: --catmap
-- id: out_format
-  doc: '> chr22.pos.ss'
-  type: string
-  inputBinding:
-    prefix: --out-format
 - id: start
   doc: Starting column of sub-alignment (indexing starts with 1). Default is 1.  Note
     that coordinates use the frame of reference of the entire alignment unless --refidx
@@ -100,13 +82,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --window-summary
-- id: tuple_size
-  doc: (For use with --out-format SS).  Represent an alignment in terms of tuples
-    of columns of the designated size.  Useful with context-dependent phylogenetic
-    models.
-  type: string
-  inputBinding:
-    prefix: --tuple-size
 - id: unordered_ss
   doc: (For use with --out-format SS).  Suppress the portion of the sufficient statistics
     concerned with the order in which columns appear.  Useful for analyses for which
@@ -131,11 +106,42 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --keep-overlapping
-- id: unordered_stats
-  doc: 3 --reverse-groups transcript_id.
+- id: cats_cycle
+  doc: (alternative to --features and --catmap) Assign site categories in cycles of
+    the specified size, e.g., as 1,2,3,...,1,2,3 (for cycle_size == 3).  Useful for
+    in-frame coding sequence, or to partition a data set into nonoverlapping tuples
+    of columns (use with --do-cats).
+  type: string
+  inputBinding:
+    prefix: --cats-cycle
+- id: do_cats
+  doc: (For use with --features or --cats-cycle)  Obtain sufficient statistics only
+    for the specified categories (comma-delimited list, by number).
+  type: string
+  inputBinding:
+    prefix: --do-cats
+- id: codons
+  doc: Extract sufficient statistics for in-frame codons.  Implies --tuple-size 3
+    --cats-cycle 3 --do-cats 3.  Not appropriate for use with --features/--catmap.
   type: boolean
   inputBinding:
-    prefix: --unordered-stats
+    prefix: --codons
+- id: reverse_groups
+  doc: (For use with --features) Group features by <tag> (e.g., "transcript_id" or
+    "exon_id") and reverse complement segments of the alignment corresponding to groups
+    on the reverse strand.  Groups must be non-overlapping (see refeature --unique).  Useful
+    when extracting sufficient statistics for strand-specific site categories (e.g.,
+    codon positions).
+  type: string
+  inputBinding:
+    prefix: --reverse-groups
+- id: four_d
+  doc: (For use with --features; assumes coding regions have feature type 'CDS')  Extract
+    sufficient statistics for fourfold degenerate synonymous sites.  Implies --out-format
+    SS --unordered-stats --tuple-size 3 --reverse-groups transcript_id.
+  type: boolean
+  inputBinding:
+    prefix: --4d
 - id: clean_coding
   doc: Clean an alignment of coding sequences with respect to a named reference sequence.  Removes
     sites with gaps and blocks of gapless sites smaller than 10 codons in length,
@@ -154,6 +160,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --clean-indels
+- id: in_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: split_and_validate_reads.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/split_and_validate_reads.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

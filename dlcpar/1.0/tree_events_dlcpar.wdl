@@ -2,10 +2,13 @@ version 1.0
 
 task TreeEventsDlcpar {
   input {
-    Boolean explicitExplicit
+    Boolean? explicit
   }
   command <<<
     tree-events-dlcpar \
-      ~{true="--explicit" false="" explicitExplicit}
+      ~{true="--explicit" false="" explicit}
   >>>
+  parameter_meta {
+    explicit: "set to ignore extra lineages at implied speciation nodes"
+  }
 }

@@ -2,12 +2,16 @@ version 1.0
 
 task PrintScaff {
   input {
-    String lL
-    String fF
+    String? l
+    String? f
   }
   command <<<
     printScaff \
-      ~{if defined(lL) then ("-l " +  '"' + lL + '"') else ""} \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""}
+      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  parameter_meta {
+    l: "[-dot -page -plot -unused -phys -oo -sum] [-detail]"
+    f: "[-[no]merge] [-arachne <araprefix>]"
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: embl_api_validator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/embl_api_validator.cwl
 inputs:
 - id: assembly
   doc: 'genome assembly entries (default: false)'
@@ -11,7 +11,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -de
-- id: f
+- id: file_values_embl
   doc: "File format(optional) Values:'embl','genbank','gff3','assembly' (default:\
     \ embl)"
   type: boolean
@@ -37,7 +37,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -fix_diagnose
-- id: l
+- id: log_leveloptional_values
   doc: 'Log level(optional) Values : 0(Quiet), 1(Summary), 2(Verbose) (default: 1)'
   type: boolean
   inputBinding:
@@ -59,7 +59,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -prefix
-- id: r
+- id: remote_run_ebioptional
   doc: 'Remote, is this being run outside the EBI(optional) (default: false)'
   type: boolean
   inputBinding:
@@ -79,6 +79,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -wrap
+- id: en_a_validator
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: files
+  doc: ''
+  type: File
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

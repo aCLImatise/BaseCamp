@@ -1,41 +1,26 @@
 class: CommandLineTool
-id: makmdm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/makmdm.cwl
 inputs:
-- id: c
-  doc: ':    Suppress output of average compositions'
-  type: boolean
-  inputBinding:
-    prefix: -c-
-- id: m
-  doc: ':    Suppress output of mdm matrix'
-  type: boolean
-  inputBinding:
-    prefix: -m-
-- id: l
-  doc: ':     Output LU-decomposited matrix'
-  type: boolean
-  inputBinding:
-    prefix: -l
-- id: p
-  doc: ':     Output power matrices'
-  type: boolean
-  inputBinding:
-    prefix: -p
-- id: f78
-  doc: '|91'
-  type: boolean
-  inputBinding:
-    prefix: -f78
-- id: b
+- id: _brosum_series
   doc: ':     Brosum series'
   type: boolean
   inputBinding:
     prefix: -b
-- id: v
+- id: _vt_series
   doc: ':     VT series'
   type: boolean
   inputBinding:
     prefix: -v
+- id: opt_dot_dot_dot
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -opt...
+- id: dest_path
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

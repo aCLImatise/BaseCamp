@@ -1,7 +1,14 @@
 version 1.0
 
 task Unlink {
+  input {
+    File file
+  }
   command <<<
-    unlink
+    unlink \
+      ~{file}
   >>>
+  parameter_meta {
+    file: ""
+  }
 }

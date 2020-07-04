@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: abruijn.cwl
+id: ../../../../home/ubuntu/BiocondaCli/abruijn.cwl
 inputs:
 - id: debug
   doc: enable debug output

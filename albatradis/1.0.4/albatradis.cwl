@@ -1,17 +1,6 @@
 class: CommandLineTool
-id: albatradis.cwl
+id: ../../../../home/ubuntu/BiocondaCli/albatradis.cwl
 inputs:
-- id: embl_file
-  doc: Annotation file in EMBL format
-  type: string
-  inputBinding:
-    position: 0
-- id: plot_files
-  doc: Input plot files (optionally gzipped). There must be an equal number of condition
-    and control files
-  type: string
-  inputBinding:
-    position: 1
 - id: span_gaps
   doc: 'Span a gap if it is this multiple of a window size (default: 1)'
   type: string
@@ -104,6 +93,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
+- id: embl_file
+  doc: Annotation file in EMBL format
+  type: string
+  inputBinding:
+    position: 0
+- id: plot_files
+  doc: Input plot files (optionally gzipped). There must be an equal number of condition
+    and control files
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

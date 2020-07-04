@@ -1,11 +1,16 @@
 class: CommandLineTool
-id: wtdbgConvert.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wtdbgConvert.cwl
 inputs:
-- id: o
+- id: output_prefix
   doc: output prefix
   type: string
   inputBinding:
     prefix: -o
+- id: file_dot_dbg_dot_lay
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

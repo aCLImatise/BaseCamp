@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_align_remove_empty_taxa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_align_remove_empty_taxa.cwl
 inputs:
 - id: alignments
   doc: 'The directory containing alignments to be screened. (default: None)'

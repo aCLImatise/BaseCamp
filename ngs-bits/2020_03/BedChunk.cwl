@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: BedChunk.cwl
+id: ../../../../home/ubuntu/BiocondaCli/BedChunk.cwl
 inputs:
-- id: n
+- id: desired_chunk_size
   doc: 'The desired chunk size. Note: Not all chunks will have this size. Regions
     are split to chunks that are closest to the the desired size.'
   type: long

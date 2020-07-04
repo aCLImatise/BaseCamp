@@ -2,34 +2,46 @@ version 1.0
 
 task ComputeStats {
   input {
-    String? computeComputeStatsExe
-    String? inputInputFilename
-    String? measuredMeasuredSpecDir
-    String? predictedPredictedSpecDir
-    String? numNumSpectraPerMol
-    String? ppmPpmMassToL
-    String? absAbsMassToL
-    String? outputOutputFilename
-    String? cumulativeCumulativeIntensityThresh
-    String? applyApplyCutoffs
-    String? cleanCleanTargetSpectra
-    String? quantiQuantiSeSpectraDecPl
-    String? numNumGroups
+    String input_filename
+    String measured_spec_dir
+    String predicted_spec_dir
+    String num_spectra_per_mol
+    String ppm_mass_to_l
+    String abs_mass_to_l
+    String output_filename
+    String cumulative_intensity_thresh
+    String apply_cutoffs
+    String clean_target_spectra
+    String quanti_se_spectra_dec_pl
+    String num_groups
   }
   command <<<
     compute-stats \
-      ~{computeComputeStatsExe} \
-      ~{inputInputFilename} \
-      ~{measuredMeasuredSpecDir} \
-      ~{predictedPredictedSpecDir} \
-      ~{numNumSpectraPerMol} \
-      ~{ppmPpmMassToL} \
-      ~{absAbsMassToL} \
-      ~{outputOutputFilename} \
-      ~{cumulativeCumulativeIntensityThresh} \
-      ~{applyApplyCutoffs} \
-      ~{cleanCleanTargetSpectra} \
-      ~{quantiQuantiSeSpectraDecPl} \
-      ~{numNumGroups}
+      ~{input_filename} \
+      ~{measured_spec_dir} \
+      ~{predicted_spec_dir} \
+      ~{num_spectra_per_mol} \
+      ~{ppm_mass_to_l} \
+      ~{abs_mass_to_l} \
+      ~{output_filename} \
+      ~{cumulative_intensity_thresh} \
+      ~{apply_cutoffs} \
+      ~{clean_target_spectra} \
+      ~{quanti_se_spectra_dec_pl} \
+      ~{num_groups}
   >>>
+  parameter_meta {
+    input_filename: ""
+    measured_spec_dir: ""
+    predicted_spec_dir: ""
+    num_spectra_per_mol: ""
+    ppm_mass_to_l: ""
+    abs_mass_to_l: ""
+    output_filename: ""
+    cumulative_intensity_thresh: ""
+    apply_cutoffs: ""
+    clean_target_spectra: ""
+    quanti_se_spectra_dec_pl: ""
+    num_groups: ""
+  }
 }

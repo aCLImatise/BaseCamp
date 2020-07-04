@@ -1,17 +1,6 @@
 class: CommandLineTool
-id: omero_admin_restart.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_admin_restart.cwl
 inputs:
-- id: file
-  doc: Application descriptor. If not provided, a default will be used
-  type: File
-  inputBinding:
-    position: 0
-- id: targets
-  doc: 'Targets within the application descriptor which  should  be activated. Common
-    values are: "debug", "trace" '
-  type: string
-  inputBinding:
-    position: 1
 - id: wait
   doc: Seconds to wait for operation
   type: string
@@ -37,6 +26,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --password
+- id: file
+  doc: Application descriptor. If not provided, a default will be used
+  type: File
+  inputBinding:
+    position: 0
+- id: targets
+  doc: 'Targets within the application descriptor which  should  be activated. Common
+    values are: "debug", "trace" '
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

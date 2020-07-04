@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fithic.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fithic.cwl
 inputs:
 - id: interactions
   doc: 'REQUIRED: interactions between fragment pairs are read from INTERSFILE'

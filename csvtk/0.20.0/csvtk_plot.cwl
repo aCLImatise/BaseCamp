@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: csvtk_plot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csvtk_plot.cwl
 inputs:
 - id: axis_width
   doc: axis width (default 1.5)

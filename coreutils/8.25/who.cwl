@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: who.cwl
+id: ../../../../home/ubuntu/BiocondaCli/who.cwl
 inputs:
 - id: all
   doc: as -b -d --login -p -r -t -T -u
@@ -31,7 +31,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --lookup
-- id: m
+- id: hostname_user_associated
   doc: hostname and user associated with stdin
   type: string
   inputBinding:
@@ -81,6 +81,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --writable
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

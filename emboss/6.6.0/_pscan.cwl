@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _pscan.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_pscan.cwl
 inputs:
 - id: emin
   doc: integer    [2] Minimum number of elements per fingerprint (Integer from 1 to

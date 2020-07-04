@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: collectstats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/collectstats.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

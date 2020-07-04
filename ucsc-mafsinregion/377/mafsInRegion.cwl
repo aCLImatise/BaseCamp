@@ -1,16 +1,32 @@
 class: CommandLineTool
-id: mafsInRegion.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mafsInRegion.cwl
 inputs:
-- id: output
-  doc: files named by bed name field to outDir
-  type: string
+- id: outdir
+  doc: '- output separate files named by bed name field to outDir'
+  type: boolean
   inputBinding:
-    prefix: '- output'
+    prefix: -outDir
 - id: keep_initial_gaps
-  doc: columns at the beginning and of a block that are gapped in all species
-  type: string
+  doc: '- keep alignment columns at the beginning and of a block that are gapped in
+    all species'
+  type: boolean
   inputBinding:
     prefix: -keepInitialGaps
+- id: regions_dot_bed
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: out_dot_maf_vertical_line_outdir
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: in_dot_maf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

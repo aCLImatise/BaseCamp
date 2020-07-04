@@ -2,16 +2,22 @@ version 1.0
 
 task BiopetSeqstat {
   input {
-    String? seqSeqStat
-    String? toolToolName
-    String? toolTool
-    String? argsArgs
+    String seq_stat
+    String? tool_name
+    String? tool
+    String? args
   }
   command <<<
     biopet-seqstat \
-      ~{seqSeqStat} \
-      ~{toolToolName} \
-      ~{toolTool} \
-      ~{argsArgs}
+      ~{seq_stat} \
+      ~{tool_name} \
+      ~{tool} \
+      ~{args}
   >>>
+  parameter_meta {
+    seq_stat: ""
+    tool_name: ""
+    tool: ""
+    args: ""
+  }
 }

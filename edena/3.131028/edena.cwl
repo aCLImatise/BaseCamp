@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: edena.cwl
+id: ../../../../home/ubuntu/BiocondaCli/edena.cwl
 inputs:
 - id: truncate
   doc: Truncate the 3' end of the reads TO the specified length

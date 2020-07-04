@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gemBS_prepare.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gemBS_prepare.cwl
 inputs:
 - id: config
   doc: Text config file with gemBS parameters.

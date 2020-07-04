@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ansible_playbook.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ansible_playbook.cwl
 inputs:
-- id: playbook_yml
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: ask_become_pass
   doc: ask for privilege escalation password
   type: boolean
@@ -184,6 +179,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: playbook_doty_ml
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

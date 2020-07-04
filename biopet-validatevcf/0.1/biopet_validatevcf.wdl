@@ -2,16 +2,25 @@ version 1.0
 
 task BiopetValidatevcf {
   input {
-    String logLogLevel
-    File inputInputVcf
-    File referenceReference
-    Boolean disableDisableFail
+    String? log_level
+    File? input_vcf
+    File? reference
+    Boolean? disable_fail
+    String validate_vcf
   }
   command <<<
     biopet-validatevcf \
-      ~{if defined(logLogLevel) then ("--log_level " +  '"' + logLogLevel + '"') else ""} \
-      ~{if defined(inputInputVcf) then ("--inputVcf " +  '"' + inputInputVcf + '"') else ""} \
-      ~{if defined(referenceReference) then ("--reference " +  '"' + referenceReference + '"') else ""} \
-      ~{true="--disableFail" false="" disableDisableFail}
+      ~{validate_vcf} \
+      ~{if defined(log_level) then ("--log_level " +  '"' + log_level + '"') else ""} \
+      ~{if defined(input_vcf) then ("--inputVcf " +  '"' + input_vcf + '"') else ""} \
+      ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
+      ~{true="--disableFail" false="" disable_fail}
   >>>
+  parameter_meta {
+    log_level: "Level of log information printed. Possible levels: 'debug', 'info', 'warn', 'error'"
+    input_vcf: "Vcf file to check"
+    reference: "Reference fasta to check vcf file against"
+    disable_fail: "Do not fail on error. The tool will still exit when encountering an error, but will do so with exit code 0"
+    validate_vcf: ""
+  }
 }

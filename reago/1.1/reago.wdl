@@ -2,18 +2,19 @@ version 1.0
 
 task Reago.py {
   input {
-    String lL
-    String? pythonPython
-    String? reReAgoPy
-    File? filenameFilenameFastA
-    String? outputOutputDir
+    String? l
+    File filename_dot_fast_a
+    String output_dir
   }
   command <<<
     reago.py \
-      ~{pythonPython} \
-      ~{if defined(lL) then ("-l " +  '"' + lL + '"') else ""} \
-      ~{reReAgoPy} \
-      ~{filenameFilenameFastA} \
-      ~{outputOutputDir}
+      ~{filename_dot_fast_a} \
+      ~{output_dir} \
+      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""}
   >>>
+  parameter_meta {
+    l: ""
+    filename_dot_fast_a: ""
+    output_dir: ""
+  }
 }

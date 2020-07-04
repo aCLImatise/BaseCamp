@@ -2,26 +2,37 @@ version 1.0
 
 task Dsk {
   input {
-    Int tT
-    Int mM
-    Int dD
-    String oO
-    Boolean histoHisto
-    Boolean cC
-    Boolean bB
-    String? inputInputFile
-    String? kmKmErSize
+    Int? t
+    Int? m
+    Int? d
+    String? o
+    Boolean? histo
+    Boolean? c
+    Boolean? b
+    String input_file
+    String km_er_size
   }
   command <<<
     dsk \
-      ~{inputInputFile} \
-      ~{if defined(tT) then ("-t " +  '"' + tT + '"') else ""} \
-      ~{if defined(mM) then ("-m " +  '"' + mM + '"') else ""} \
-      ~{if defined(dD) then ("-d " +  '"' + dD + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{true="-histo" false="" histoHisto} \
-      ~{true="-c" false="" cC} \
-      ~{true="-b" false="" bB} \
-      ~{kmKmErSize}
+      ~{input_file} \
+      ~{km_er_size} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{true="-histo" false="" histo} \
+      ~{true="-c" false="" c} \
+      ~{true="-b" false="" b}
   >>>
+  parameter_meta {
+    t: ""
+    m: ""
+    d: ""
+    o: ""
+    histo: ""
+    c: ""
+    b: ""
+    input_file: ""
+    km_er_size: ""
+  }
 }

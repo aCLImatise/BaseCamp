@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: mpra_data_access_portal.cwl
-inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
+id: ../../../../home/ubuntu/BiocondaCli/mpra_data_access_portal.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MergeXCorrMatches.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MergeXCorrMatches.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

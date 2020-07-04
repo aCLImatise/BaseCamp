@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: easel_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/easel_filter.cwl
 inputs:
-- id: o
+- id: send_output_msas
   doc: ': send filtered output MSAs to file <f>, not stdout'
   type: string
   inputBinding:
@@ -66,7 +66,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --maxfrag
-- id: s
+- id: set_random_seed
   doc: ': set random number seed to <n>  [42]'
   type: string
   inputBinding:
@@ -86,6 +86,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --origorder
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

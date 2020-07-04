@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: edit_imgt_file.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/edit_imgt_file.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

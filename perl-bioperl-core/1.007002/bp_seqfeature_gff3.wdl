@@ -2,18 +2,25 @@ version 1.0
 
 task BpSeqfeatureGff3.pl {
   input {
-    Boolean dsnDsn
-    Boolean adaptorAdaptor
-    Boolean userUser
-    Boolean passwordPassword
-    Boolean gff3optGff3opt
+    Boolean? dsn
+    Boolean? adaptor
+    Boolean? user
+    Boolean? password
+    Boolean? gff_three_opt
   }
   command <<<
     bp_seqfeature_gff3.pl \
-      ~{true="--dsn" false="" dsnDsn} \
-      ~{true="--adaptor" false="" adaptorAdaptor} \
-      ~{true="--user" false="" userUser} \
-      ~{true="--password" false="" passwordPassword} \
-      ~{true="--gff3opt" false="" gff3optGff3opt}
+      ~{true="--dsn" false="" dsn} \
+      ~{true="--adaptor" false="" adaptor} \
+      ~{true="--user" false="" user} \
+      ~{true="--password" false="" password} \
+      ~{true="--gff3opt" false="" gff_three_opt}
   >>>
+  parameter_meta {
+    dsn: "The database name ()"
+    adaptor: "The storage adaptor to use ()"
+    user: "User to connect to database as"
+    password: "Password to use to connect to database"
+    gff_three_opt: "flag options to gff3_string (i.e.: pass -gffopt 1 to recurse)"
+  }
 }

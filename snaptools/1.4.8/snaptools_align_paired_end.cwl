@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: snaptools_align_paired_end.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snaptools_align_paired_end.cwl
 inputs:
 - id: input_reference
   doc: 'reference genome file contains the reference genome that reads are mapped
@@ -7,13 +7,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --input-reference
-- id: input_fastq1
+- id: input_fast_q_one
   doc: 'fastq file contains R1 reads, currently supports fastq, gz, bz2 file (default:
     None)'
   type: string
   inputBinding:
     prefix: --input-fastq1
-- id: input_fastq2
+- id: input_fast_q_two
   doc: 'fastq file contains R2 reads, currently supports fastq, gz, bz2 file (default:
     None)'
   type: string

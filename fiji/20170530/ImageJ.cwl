@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ImageJ.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ImageJ.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

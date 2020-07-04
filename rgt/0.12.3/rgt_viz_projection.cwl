@@ -1,37 +1,37 @@
 class: CommandLineTool
-id: rgt_viz_projection.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rgt_viz_projection.cwl
 inputs:
-- id: r
+- id: file_name_reference
   doc: 'The file name of the reference Experimental Matrix. Multiple references are
     acceptable. (default: None)'
   type: boolean
   inputBinding:
     prefix: -r
-- id: q
+- id: file_name_query
   doc: 'The file name of the query Experimental Matrix. Multiple queries are acceptable.
     (default: None)'
   type: boolean
   inputBinding:
     prefix: -q
-- id: o
+- id: directory_name_output
   doc: 'The directory name for the output files. For example, project name. (default:
     None)'
   type: boolean
   inputBinding:
     prefix: -o
-- id: t
+- id: title_shown_default
   doc: 'The title shown on the top of the plot and also the folder name. (default:
     projection_test)'
   type: boolean
   inputBinding:
     prefix: -t
-- id: g
+- id: group_data_optional
   doc: "Group the data by any optional column (for example, 'cell') of experimental\
     \ matrix, or None. (default: None)"
   type: boolean
   inputBinding:
     prefix: -g
-- id: c
+- id: color_data_optional
   doc: "Color the data by any optional column (for example, 'cell') of experimental\
     \ matrix, or None. (default: regions)"
   type: boolean

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ca2ctg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ca2ctg.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,38 +2,37 @@ version 1.0
 
 task ProteinInference {
   input {
-    File inIn
-    File outOut
-    String mergeMergeRuns
-    String annotateAnnotateInDistGroups
-    Boolean mergingMerging
-    Boolean algorithmAlgorithm
-    Boolean algorithmAlgorithm
-    Boolean algorithmAlgorithm
-    Boolean algorithmAlgorithm
-    Boolean algorithmAlgorithm
-    Boolean algorithmAlgorithm
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    File? in
+    File? out
+    String? merge_runs
+    String? annotate_in_dist_groups
+    Boolean? merging
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     ProteinInference \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(mergeMergeRuns) then ("-merge_runs " +  '"' + mergeMergeRuns + '"') else ""} \
-      ~{if defined(annotateAnnotateInDistGroups) then ("-annotate_indist_groups " +  '"' + annotateAnnotateInDistGroups + '"') else ""} \
-      ~{true="-Merging" false="" mergingMerging} \
-      ~{true="-Algorithm" false="" algorithmAlgorithm} \
-      ~{true="-Algorithm" false="" algorithmAlgorithm} \
-      ~{true="-Algorithm" false="" algorithmAlgorithm} \
-      ~{true="-Algorithm" false="" algorithmAlgorithm} \
-      ~{true="-Algorithm" false="" algorithmAlgorithm} \
-      ~{true="-Algorithm" false="" algorithmAlgorithm} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(merge_runs) then ("-merge_runs " +  '"' + merge_runs + '"') else ""} \
+      ~{if defined(annotate_in_dist_groups) then ("-annotate_indist_groups " +  '"' + annotate_in_dist_groups + '"') else ""} \
+      ~{true="-Merging" false="" merging} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*                                               Input file(s) (valid formats: 'idXML')"
+    out: "*                                              Output file (valid formats: 'idXML')"
+    merge_runs: "If your idXML contains multiple runs, merge them beforehand? (default: 'no' valid: 'no', 'all')"
+    annotate_in_dist_groups: "If you want to annotate indistinguishable protein groups, either for reporting or for group based quant. later. Only works with a single ID run in the file. (default: 'true' valid: 'true', 'false')"
+    merging: ":annotate_origin <choice>                         If true, adds a map_index MetaValue to the PeptideIDs to annotate the IDRun they came from. (default: 'true' valid: 'true', 'false')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

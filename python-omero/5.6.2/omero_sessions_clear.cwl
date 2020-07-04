@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: omero_sessions_clear.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_sessions_clear.cwl
 inputs:
 - id: all
   doc: Remove all locally stored sessions not just inactive ones

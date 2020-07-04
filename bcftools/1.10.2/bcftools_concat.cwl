@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bcftools_concat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcftools_concat.cwl
 inputs:
 - id: allow_overlaps
   doc: First coordinate of the next file can precede last record of the current file.
@@ -53,9 +53,9 @@ inputs:
   inputBinding:
     prefix: --output
 - id: output_type
-  doc: '<b|u|z|v>    b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v:
-    uncompressed VCF [v]'
-  type: boolean
+  doc: 'b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed
+    VCF [v]'
+  type: string
   inputBinding:
     prefix: --output-type
 - id: min_pq
@@ -79,10 +79,15 @@ inputs:
   inputBinding:
     prefix: --threads
 - id: verbose
-  doc: <0|1>            Set verbosity level [1]
-  type: boolean
+  doc: Set verbosity level [1]
+  type: string
   inputBinding:
     prefix: --verbose
+- id: a_dot_vcf_do_tgz
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

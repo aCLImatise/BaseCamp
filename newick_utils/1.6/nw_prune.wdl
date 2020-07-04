@@ -2,12 +2,13 @@ version 1.0
 
 task NwPrune {
   input {
-    Boolean fF
-    Boolean vV
+    Boolean? hv
   }
   command <<<
     nw_prune \
-      ~{true="-f" false="" fF} \
-      ~{true="-v" false="" vV}
+      ~{true="-hv" false="" hv}
   >>>
+  parameter_meta {
+    hv: ""
+  }
 }

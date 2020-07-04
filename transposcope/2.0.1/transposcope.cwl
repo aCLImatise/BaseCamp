@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: transposcope.cwl
+id: ../../../../home/ubuntu/BiocondaCli/transposcope.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

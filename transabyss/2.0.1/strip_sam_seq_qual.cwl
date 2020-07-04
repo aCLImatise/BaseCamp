@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: strip_sam_seq_qual.awk.cwl
+id: ../../../../home/ubuntu/BiocondaCli/strip_sam_seq_qual.awk.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

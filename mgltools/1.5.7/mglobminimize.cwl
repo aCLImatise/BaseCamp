@@ -1,17 +1,7 @@
 class: CommandLineTool
-id: mglobminimize.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mglobminimize.cwl
 inputs:
-- id: ob_minimize
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: filename
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
-- id: c
+- id: set_convergence_criteria
   doc: set convergence criteria (default=1e-6)
   type: string
   inputBinding:
@@ -36,7 +26,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -ff
-- id: n
+- id: specify_maximum_numer
   doc: specify the maximum numer of steps (default=2500)
   type: string
   inputBinding:
@@ -61,6 +51,16 @@ inputs:
   type: string
   inputBinding:
     prefix: -pf
+- id: ob_minimize
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: filename
+  doc: ''
+  type: File
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

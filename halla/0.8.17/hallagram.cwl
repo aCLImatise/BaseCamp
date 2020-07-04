@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: hallagram.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hallagram.cwl
 inputs:
-- id: sim_table
-  doc: table of pairwise similarity scores
-  type: string
-  inputBinding:
-    position: 0
-- id: tree
-  doc: hypothesis tree (for getting feature order)
-  type: string
-  inputBinding:
-    position: 1
-- id: associations
-  doc: HAllA associations
-  type: string
-  inputBinding:
-    position: 2
 - id: strongest
   doc: isolate the N strongest associations
   type: string
@@ -56,6 +41,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --orderby
+- id: sim_table
+  doc: table of pairwise similarity scores
+  type: string
+  inputBinding:
+    position: 0
+- id: tree
+  doc: hypothesis tree (for getting feature order)
+  type: string
+  inputBinding:
+    position: 1
+- id: associations
+  doc: HAllA associations
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

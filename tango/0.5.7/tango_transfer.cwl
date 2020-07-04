@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: tango_transfer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tango_transfer.cwl
 inputs:
-- id: orf_taxonomy
-  doc: Taxonomy assigned to ORFs (ORF ids in first column)
-  type: string
-  inputBinding:
-    position: 0
-- id: gff
-  doc: GFF or file with contig id in first column and ORF id in second column
-  type: string
-  inputBinding:
-    position: 1
-- id: contig_taxonomy
-  doc: Output file with assigned taxonomy for contigs
-  type: string
-  inputBinding:
-    position: 2
 - id: ignore_unc_rank
   doc: Ignore ORFs unclassified at <rank>
   type: string
@@ -37,6 +22,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --chunksize
+- id: orf_taxonomy
+  doc: Taxonomy assigned to ORFs (ORF ids in first column)
+  type: string
+  inputBinding:
+    position: 0
+- id: gff
+  doc: GFF or file with contig id in first column and ORF id in second column
+  type: string
+  inputBinding:
+    position: 1
+- id: contig_taxonomy
+  doc: Output file with assigned taxonomy for contigs
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

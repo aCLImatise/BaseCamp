@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: dkfzbiasfilter.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dkfzbiasfilter.py.cwl
 inputs:
-- id: vcf_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: bam_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: reference_sequence_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: filtered_vcf_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
 - id: temp_folder
   doc: 'Path to the folder where temporary files are stored [default: /tmp]'
   type: string
@@ -126,6 +106,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --passOnly
+- id: vcf_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: bam_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: reference_sequence_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: filtered_vcf_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

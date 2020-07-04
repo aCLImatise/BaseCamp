@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: blockclust.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blockclust.py.cwl
 inputs:
 - id: mode
   doc: 'Mode of operationPRE = Preprocessing mode. convert from reads BAM to tags
@@ -30,7 +30,7 @@ inputs:
   inputBinding:
     prefix: --out
 - id: config
-  doc: 'blockClust configuration file. (default: /tmp/tmpiwzjk x5s/share/blockclust_data/blockclust.config)'
+  doc: 'blockClust configuration file. (default: /tmp/tmpi0uqw 2_2/share/blockclust_data/blockclust.config)'
   type: string
   inputBinding:
     prefix: --config
@@ -46,7 +46,7 @@ inputs:
   inputBinding:
     prefix: --clmode
 - id: model_dir
-  doc: 'Directory containing trained models for classification (default: /tmp/tmpiwzjkx5s/share/blockclust_data/models)'
+  doc: 'Directory containing trained models for classification (default: /tmp/tmpi0uqw2_2/share/blockclust_data/models)'
   type: string
   inputBinding:
     prefix: --model_dir
@@ -76,7 +76,7 @@ inputs:
   inputBinding:
     prefix: --sim_tab
 - id: rf_am_map
-  doc: 'Mapping of Rfam families (default: /tmp/tmpiwzjkx5s/share/blockclust_data/rfam_map.txt)'
+  doc: 'Mapping of Rfam families (default: /tmp/tmpi0uqw2_2/share/blockclust_data/rfam_map.txt)'
   type: string
   inputBinding:
     prefix: --rfam_map

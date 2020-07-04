@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: genie_fasta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genie_fasta.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

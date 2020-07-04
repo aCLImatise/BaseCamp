@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: grf_intersperse.cwl
+id: ../../../../home/ubuntu/BiocondaCli/grf_intersperse.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: bolt_gff3_convert.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bolt_gff3_convert.cwl
 inputs:
-- id: genie
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: gff3
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: convert
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
 - id: attributes
   doc: select attributes by key
   type: string
@@ -91,6 +71,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --type
+- id: genie
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: gff_three
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: convert
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

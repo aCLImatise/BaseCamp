@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: ragout_overlap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ragout_overlap.cwl
 inputs:
+- id: detect_km_er
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --detect-kmer
+- id: hist
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --hist
 - id: overlap
   doc: ''
   type: string
@@ -26,16 +36,6 @@ inputs:
   type: long
   inputBinding:
     position: 4
-- id: detect_km_er
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --detect-kmer
-- id: hist
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --hist
 outputs: []
 cwlVersion: v1.1
 baseCommand:

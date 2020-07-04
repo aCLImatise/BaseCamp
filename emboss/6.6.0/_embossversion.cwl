@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _embossversion.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_embossversion.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

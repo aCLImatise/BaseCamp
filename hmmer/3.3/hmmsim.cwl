@@ -1,32 +1,27 @@
 class: CommandLineTool
-id: hmmsim.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hmmsim.cwl
 inputs:
-- id: hmm_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: a
+- id: obtain_length_statistics
   doc: ': obtain alignment length statistics too'
   type: boolean
   inputBinding:
     prefix: -a
-- id: v
+- id: verbose_print_scores
   doc: ': verbose: print scores'
   type: boolean
   inputBinding:
     prefix: -v
-- id: l
+- id: length_random_target
   doc: ': length of random target seqs  [100]  (n>0)'
   type: string
   inputBinding:
     prefix: -L
-- id: n
+- id: number_random_target
   doc: ': number of random target seqs  [1000]  (n>0)'
   type: string
   inputBinding:
     prefix: -N
-- id: o
+- id: direct_output_file
   doc: ': direct output to file <f>, not stdout'
   type: string
   inputBinding:
@@ -71,7 +66,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ls
-- id: s
+- id: unihit_glocal_alignment
   doc: ': unihit glocal alignment'
   type: boolean
   inputBinding:
@@ -191,6 +186,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --pthresh
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: hmm_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

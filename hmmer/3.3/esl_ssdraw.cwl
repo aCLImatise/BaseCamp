@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: esl_ssdraw.cwl
+id: ../../../../home/ubuntu/BiocondaCli/esl_ssdraw.cwl
 inputs:
-- id: d
+- id: draw_default_set
   doc: ': draw default set of alignment summary diagrams'
   type: boolean
   inputBinding:
@@ -76,7 +76,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --indi
-- id: f
+- id: force_windi_draw
   doc: ': force; w/--indi draw all seqs, even if predicted output >100 Mb'
   type: boolean
   inputBinding:

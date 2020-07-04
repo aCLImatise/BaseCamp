@@ -2,14 +2,19 @@ version 1.0
 
 task AnviDeleteState {
   input {
-    String panPanOrProfileDb
-    String stateState
-    Boolean listListStates
+    Boolean? list_states
+    String? p
+    String? s
   }
   command <<<
     anvi-delete-state \
-      ~{if defined(panPanOrProfileDb) then ("--pan-or-profile-db " +  '"' + panPanOrProfileDb + '"') else ""} \
-      ~{if defined(stateState) then ("--state " +  '"' + stateState + '"') else ""} \
-      ~{true="--list-states" false="" listListStates}
+      ~{true="--list-states" false="" list_states} \
+      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
+      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""}
   >>>
+  parameter_meta {
+    list_states: "Show available states and exit."
+    p: ""
+    s: ""
+  }
 }

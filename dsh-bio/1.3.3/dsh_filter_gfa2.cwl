@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dsh_filter_gfa2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dsh_filter_gfa2.cwl
 inputs:
 - id: about
   doc: display about message [optional]
@@ -11,12 +11,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --script
-- id: input_gfa2_file
+- id: input_gfa_two_file
   doc: '[class java.io.File]  input GFA 2.0 file, default stdin [optional]'
   type: boolean
   inputBinding:
     prefix: --input-gfa2-file
-- id: output_gfa2_file
+- id: output_gfa_two_file
   doc: '[class java.io.File]  output GFA 2.0 file, default stdout [optional]'
   type: boolean
   inputBinding:

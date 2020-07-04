@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scaffold.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scaffold.cwl
 inputs:
 - id: out
   doc: (=out)                   output directory
@@ -31,6 +31,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --min_pairs
+- id: reads_lib_one_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: reads_lib_two_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: preg.cwl
-inputs:
-- id: r_format
-  doc: )
-  type: string
-  inputBinding:
-    prefix: -rformat
+id: ../../../../home/ubuntu/BiocondaCli/preg.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

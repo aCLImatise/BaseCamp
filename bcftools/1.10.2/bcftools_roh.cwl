@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: bcftools_roh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcftools_roh.cwl
 inputs:
-- id: in_vcf_gz
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: af_dflt
   doc: if AF is not known, use this allele frequency [skip]
   type: double
@@ -133,6 +128,11 @@ inputs:
   type: double
   inputBinding:
     prefix: --viterbi-training
+- id: in_dot_vcf_do_tgz
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

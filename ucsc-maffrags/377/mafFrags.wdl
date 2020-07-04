@@ -2,18 +2,25 @@ version 1.0
 
 task MafFrags {
   input {
-    String refRefCoords
-    String? databaseDatabase
-    String? trackTrack
-    String? inInBed
-    String? outOutMaf
+    Boolean? ref_coords
+    String database
+    String track
+    String in_dot_bed
+    String out_dot_maf
   }
   command <<<
     mafFrags \
-      ~{databaseDatabase} \
-      ~{if defined(refRefCoords) then ("-refCoords " +  '"' + refRefCoords + '"') else ""} \
-      ~{trackTrack} \
-      ~{inInBed} \
-      ~{outOutMaf}
+      ~{database} \
+      ~{track} \
+      ~{in_dot_bed} \
+      ~{out_dot_maf} \
+      ~{true="-refCoords" false="" ref_coords}
   >>>
+  parameter_meta {
+    ref_coords: "- output actual reference genome coordinates in MAF."
+    database: ""
+    track: ""
+    in_dot_bed: ""
+    out_dot_maf: ""
+  }
 }

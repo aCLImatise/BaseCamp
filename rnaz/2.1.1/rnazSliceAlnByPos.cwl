@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rnazSliceAlnByPos.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnazSliceAlnByPos.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

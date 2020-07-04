@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mb_learn_mock.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mb_learn_mock.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

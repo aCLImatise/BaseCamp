@@ -2,32 +2,34 @@ version 1.0
 
 task MapAlignerIdentification {
   input {
-    File inIn
-    File outOut
-    File trafTrafOOut
-    Boolean referenceReference
-    Boolean referenceReference
-    File designDesign
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
-    Boolean algorithmAlgorithm
-    Boolean modelModel
+    File? in
+    File? out
+    File? traf_o_out
+    File? design
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     MapAlignerIdentification \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(trafTrafOOut) then ("-trafo_out " +  '"' + trafTrafOOut + '"') else ""} \
-      ~{true="-reference" false="" referenceReference} \
-      ~{true="-reference" false="" referenceReference} \
-      ~{if defined(designDesign) then ("-design " +  '"' + designDesign + '"') else ""} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp} \
-      ~{true="- algorithm" false="" algorithmAlgorithm} \
-      ~{true="- model" false="" modelModel}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(traf_o_out) then ("-trafo_out " +  '"' + traf_o_out + '"') else ""} \
+      ~{if defined(design) then ("-design " +  '"' + design + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*               Input files to align (all must have the same file type) (valid formats: 'featureXML', 'consensusXML', 'idXML')"
+    out: "Output files (same file type as 'in'). Either this option or 'trafo_out' has to be provided; they can be used together. (valid formats: 'featureXML', 'consensusXML', 'idXML')"
+    traf_o_out: "Transformation output files. Either this option or 'out' has to be provided; they can be used together. (valid formats: 'trafoXML')"
+    design: "Input file containing the experimental design (valid formats: 'tsv')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

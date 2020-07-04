@@ -1,42 +1,42 @@
 class: CommandLineTool
-id: pairsnp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pairsnp.cwl
 inputs:
-- id: v
+- id: print_version_exit
   doc: Print version and exit
   type: boolean
   inputBinding:
     prefix: -v
-- id: s
+- id: output_sparse_matrix
   doc: Output in sparse matrix form (i,j,distance).
   type: boolean
   inputBinding:
     prefix: -s
-- id: d
+- id: distance_threshold_sparse
   doc: Distance threshold for sparse output. Only distances <= d will be returned.
   type: boolean
   inputBinding:
     prefix: -d
-- id: k
+- id: will_k_neighbours
   doc: Will on return the k nearest neighbours for each sample in sparse output.
   type: boolean
   inputBinding:
     prefix: -k
-- id: c
+- id: output_csv_tsv
   doc: Output CSV instead of TSV
   type: boolean
   inputBinding:
     prefix: -c
-- id: n
+- id: count_comparisons_off
   doc: Count comparisons with Ns (off by default)
   type: boolean
   inputBinding:
     prefix: -n
-- id: t
+- id: number_use_default
   doc: Number of threads to use (default=1)
   type: boolean
   inputBinding:
     prefix: -t
-- id: b
+- id: blank_top_left
   doc: Blank top left corner cell instead of 'pairsnp 0.2.0'
   type: boolean
   inputBinding:

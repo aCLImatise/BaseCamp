@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: alnsel.pl_names.cwl
+id: ../../../../home/ubuntu/BiocondaCli/alnsel.pl.cwl
 inputs:
-- id: input_aln
+- id: input_dot_aln
   doc: ''
   type: string
   inputBinding:
@@ -15,4 +15,3 @@ outputs: []
 cwlVersion: v1.1
 baseCommand:
 - alnsel.pl
-- names

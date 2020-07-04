@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: funnel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/funnel.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

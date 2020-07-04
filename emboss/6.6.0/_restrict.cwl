@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _restrict.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_restrict.cwl
 inputs:
 - id: site_len
   doc: integer    [4] This sets the minimum length of the restriction enzyme recognition

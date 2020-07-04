@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fermi.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fermi.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

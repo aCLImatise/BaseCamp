@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: karect.cwl
+id: ../../../../home/ubuntu/BiocondaCli/karect.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

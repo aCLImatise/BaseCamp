@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gap_links.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gap_links.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

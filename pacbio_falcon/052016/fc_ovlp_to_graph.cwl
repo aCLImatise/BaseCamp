@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: fc_ovlp_to_graph.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fc_ovlp_to_graph.cwl
 inputs:
-- id: overlap_file
-  doc: a file that contains the overlap information.
-  type: string
-  inputBinding:
-    position: 0
 - id: min_len
   doc: minimum length of the reads to be considered for assembling
   type: long
@@ -22,6 +17,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --lfc
+- id: overlap_file
+  doc: a file that contains the overlap information.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

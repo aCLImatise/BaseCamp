@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: convert_stacks.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/convert_stacks.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

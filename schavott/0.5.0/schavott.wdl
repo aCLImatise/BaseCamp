@@ -2,34 +2,49 @@ version 1.0
 
 task Schavott {
   input {
-    String runRunMode
-    String scaffoldScaffoldEr
-    String sSSpacePath
-    String readReadType
-    Int minMinReadLength
-    Int minMinQuality
-    String watchWatch
-    String contigContigFile
-    String triggerTriggerMode
-    String skipSkip
-    Int intensityIntensity
-    Boolean plotPlot
-    String outputOutput
+    String? run_mode
+    String? scaffold_er
+    String? s_space_path
+    String? read_type
+    Int? min_read_length
+    Int? min_quality
+    String? watch
+    String? contig_file
+    String? trigger_mode
+    String? skip
+    Int? intensity
+    Boolean? plot
+    String? set_output_filename
   }
   command <<<
     schavott \
-      ~{if defined(runRunMode) then ("--run_mode " +  '"' + runRunMode + '"') else ""} \
-      ~{if defined(scaffoldScaffoldEr) then ("--scaffolder " +  '"' + scaffoldScaffoldEr + '"') else ""} \
-      ~{if defined(sSSpacePath) then ("--sspace_path " +  '"' + sSSpacePath + '"') else ""} \
-      ~{if defined(readReadType) then ("--read_type " +  '"' + readReadType + '"') else ""} \
-      ~{if defined(minMinReadLength) then ("--min_read_length " +  '"' + minMinReadLength + '"') else ""} \
-      ~{if defined(minMinQuality) then ("--min_quality " +  '"' + minMinQuality + '"') else ""} \
-      ~{if defined(watchWatch) then ("--watch " +  '"' + watchWatch + '"') else ""} \
-      ~{if defined(contigContigFile) then ("--contig_file " +  '"' + contigContigFile + '"') else ""} \
-      ~{if defined(triggerTriggerMode) then ("--trigger_mode " +  '"' + triggerTriggerMode + '"') else ""} \
-      ~{if defined(skipSkip) then ("--skip " +  '"' + skipSkip + '"') else ""} \
-      ~{if defined(intensityIntensity) then ("--intensity " +  '"' + intensityIntensity + '"') else ""} \
-      ~{true="--plot" false="" plotPlot} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""}
+      ~{if defined(run_mode) then ("--run_mode " +  '"' + run_mode + '"') else ""} \
+      ~{if defined(scaffold_er) then ("--scaffolder " +  '"' + scaffold_er + '"') else ""} \
+      ~{if defined(s_space_path) then ("--sspace_path " +  '"' + s_space_path + '"') else ""} \
+      ~{if defined(read_type) then ("--read_type " +  '"' + read_type + '"') else ""} \
+      ~{if defined(min_read_length) then ("--min_read_length " +  '"' + min_read_length + '"') else ""} \
+      ~{if defined(min_quality) then ("--min_quality " +  '"' + min_quality + '"') else ""} \
+      ~{if defined(watch) then ("--watch " +  '"' + watch + '"') else ""} \
+      ~{if defined(contig_file) then ("--contig_file " +  '"' + contig_file + '"') else ""} \
+      ~{if defined(trigger_mode) then ("--trigger_mode " +  '"' + trigger_mode + '"') else ""} \
+      ~{if defined(skip) then ("--skip " +  '"' + skip + '"') else ""} \
+      ~{if defined(intensity) then ("--intensity " +  '"' + intensity + '"') else ""} \
+      ~{true="--plot" false="" plot} \
+      ~{if defined(set_output_filename) then ("--output " +  '"' + set_output_filename + '"') else ""}
   >>>
+  parameter_meta {
+    run_mode: "Run scaffolding or assembly"
+    scaffold_er: "Which scaffolder to use."
+    s_space_path: "Path to SSPACE (Only for scaffolding)"
+    read_type: "Select input type: fastq, fast5 or fasta, this is also the search pattern for shavott (*.read_type)"
+    min_read_length: "Minimum read length from MinION to use."
+    min_quality: "Minimum quality for reads from MinION to use."
+    watch: "Directory to watch for fast5 files"
+    contig_file: "Path to contig file (Only for scaffolding)"
+    trigger_mode: "Use timer or read count. [reads]"
+    skip: "Skips the first j read of the sequencing"
+    intensity: "How often the scaffolding process should run. If run mode is set to reads, scaffolding will run every i:th read. If run mode is time, scaffolding will run every i:th second. [100 reads]"
+    plot: "Plot result in web-browser"
+    set_output_filename: "Set output filename. (Defaut: schavott)"
+  }
 }

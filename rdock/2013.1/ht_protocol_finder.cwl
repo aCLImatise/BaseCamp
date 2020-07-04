@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ht_protocol_finder.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ht_protocol_finder.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

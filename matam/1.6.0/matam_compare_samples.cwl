@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: matam_compare_samples.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/matam_compare_samples.py.cwl
 inputs:
 - id: samples_file
   doc: A tabulated file with one sample by row. The first column contains the sample

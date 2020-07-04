@@ -2,10 +2,13 @@ version 1.0
 
 task Prosolo {
   input {
-    Boolean vV
+    Boolean? provide_verbose_output
   }
   command <<<
     prosolo \
-      ~{true="-v" false="" vV}
+      ~{true="-v" false="" provide_verbose_output}
   >>>
+  parameter_meta {
+    provide_verbose_output: "Provide verbose output."
+  }
 }

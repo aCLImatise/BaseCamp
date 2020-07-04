@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cp.cwl
 inputs:
 - id: archive
   doc: same as -dR --preserve=all
@@ -16,7 +16,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --backup
-- id: b
+- id: _backup_accept
   doc: like --backup but does not accept an argument
   type: boolean
   inputBinding:
@@ -26,7 +26,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --copy-contents
-- id: d
+- id: same__nodereference
   doc: same as --no-dereference --preserve=links
   type: boolean
   inputBinding:
@@ -42,7 +42,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --interactive
-- id: h
+- id: follow_commandline_links
   doc: follow command-line symbolic links in SOURCE
   type: boolean
   inputBinding:
@@ -67,7 +67,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-dereference
-- id: p
+- id: same__preservemodeownershiptimestamps
   doc: same as --preserve=mode,ownership,timestamps
   type: boolean
   inputBinding:
@@ -150,7 +150,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --one-file-system
-- id: z
+- id: set_selinux_context
   doc: set SELinux security context of destination file to default type
   type: boolean
   inputBinding:
@@ -161,6 +161,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --context
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

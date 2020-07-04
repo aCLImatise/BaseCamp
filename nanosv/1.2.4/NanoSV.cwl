@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: NanoSV.cwl
+id: ../../../../home/ubuntu/BiocondaCli/NanoSV.cwl
 inputs:
-- id: bam
-  doc: /path/to/file.bam
-  type: string
-  inputBinding:
-    position: 0
 - id: threads
   doc: 'Number of threads [default: 4]'
   type: string
@@ -39,6 +34,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --snp_file
+- id: bam
+  doc: /path/to/file.bam
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

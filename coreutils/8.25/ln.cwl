@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ln.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ln.cwl
 inputs:
 - id: no_target_directory
   doc: treat LINK_NAME as a normal file always
@@ -11,6 +11,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

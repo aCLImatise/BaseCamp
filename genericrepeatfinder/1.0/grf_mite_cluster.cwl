@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: grf_mite_cluster.cwl
+id: ../../../../home/ubuntu/BiocondaCli/grf_mite_cluster.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

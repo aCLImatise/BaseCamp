@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: wigToBigWig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wigToBigWig.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

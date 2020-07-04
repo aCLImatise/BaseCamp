@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: vkmz_w4m_xcms.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vkmz_w4m_xcms.cwl
 inputs:
-- id: data_matrix
+- id: path_xcms_matrix_file
   doc: '[DATA_MATRIX], -xd [DATA_MATRIX] Path to XCMS data matrix file'
   type: boolean
   inputBinding:
@@ -73,6 +73,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --impute-charge
+- id: var_14
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

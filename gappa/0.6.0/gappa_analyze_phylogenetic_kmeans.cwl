@@ -1,18 +1,13 @@
 class: CommandLineTool
-id: gappa_analyze_phylogenetic_kmeans.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gappa_analyze_phylogenetic_kmeans.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: j_place_path
   doc: :PATH(existing)=[] ... REQUIRED List of jplace files or directories to process.
     For directories, only files with the extension .jplace are processed.
   type: string
   inputBinding:
     prefix: --jplace-path
-- id: k
+- id: required_number_clusters
   doc: 'REQUIRED           Number of clusters to find. Can be a comma-separated list
     of multiple values or ranges for k: 1-5,8,10,12'
   type: string

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: stride_preprocess.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stride_preprocess.cwl
 inputs:
 - id: verbose
   doc: display verbose output
@@ -24,7 +24,7 @@ inputs:
   type: File
   inputBinding:
     prefix: --pe-orphans
-- id: phred64
+- id: phred_six_four
   doc: convert quality values from phred-64 to phred-33.
   type: boolean
   inputBinding:
@@ -92,6 +92,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --remove-adapter-rev
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: prepare
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: reads_one
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: IDMapper.cwl
+id: ../../../../home/ubuntu/BiocondaCli/IDMapper.cwl
 inputs:
 - id: id
   doc: "*                        Protein/peptide identifications file (valid formats:\
@@ -47,21 +47,6 @@ inputs:
   type: string
   inputBinding:
     prefix: -mz_reference
-- id: feature
-  doc: ":use_centroid_rt <choice>  Use the RT coordinates of the feature centroids\
-    \ for matching, instead of the RT ranges of the features/mass traces. (default:\
-    \ 'false' valid: 'true', 'false')"
-  type: boolean
-  inputBinding:
-    prefix: -feature
-- id: feature
-  doc: ":use_centroid_mz <choice>  Use the m/z coordinates of the feature centroids\
-    \ for matching, instead of the m/z ranges of the features/mass traces. (If you\
-    \ choose 'peptide' as 'mz_reference', you should usually set this flag to avoid\
-    \ false-positive matches.) (default: 'true' valid: 'true', 'false')"
-  type: boolean
-  inputBinding:
-    prefix: -feature
 - id: consensus
   doc: :use_subelements         Match using RT and m/z of sub-features instead of
     consensus RT and m/z. A consensus feature matches if any of its sub-features matches.

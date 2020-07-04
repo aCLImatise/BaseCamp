@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: htsfile.cwl
+id: ../../../../home/ubuntu/BiocondaCli/htsfile.cwl
 inputs:
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: view
   doc: Write textual form of FILEs to standard output
   type: boolean
@@ -26,6 +21,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: c_hhv
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -chHv
+- id: file_dot_dot_dot
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

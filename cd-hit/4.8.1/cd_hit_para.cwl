@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: cd_hit_para.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cd_hit_para.pl.cwl
 inputs:
-- id: t
+- id: queuing_system_supported
   doc: of queuing system, "PBS", "SGE" are supported, default PBS
   type: string
   inputBinding:
     prefix: --T
-- id: r
+- id: file_used_crash
   doc: file, used after a crash of run
   type: string
   inputBinding:
     prefix: --R
-- id: h
+- id: this_help
   doc: this help
   type: string
   inputBinding:

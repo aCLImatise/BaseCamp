@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: bedtools_overlap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedtools_overlap.cwl
 inputs:
-- id: i
+- id: input_file_use
   doc: Input file. Use "stdin" for pipes.
   type: boolean
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dreamtools_layout.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dreamtools_layout.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

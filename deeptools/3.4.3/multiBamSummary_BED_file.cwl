@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: multiBamSummary_BED_file.cwl
+id: ../../../../home/ubuntu/BiocondaCli/multiBamSummary_BED_file.cwl
 inputs:
-- id: file_2bam
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: bam_files
   doc: 'FILE2 [FILE1 FILE2 ...], -b FILE1 FILE2 [FILE1 FILE2 ...] List of indexed
     bam files separated by spaces. (default: None)'
@@ -143,6 +138,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --transcript_id_designator
+- id: file_two_dot_bam
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: select_sec_rbcontig.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/select_sec_rbcontig.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

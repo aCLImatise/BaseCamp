@@ -1,7 +1,17 @@
 version 1.0
 
 task Bustools {
+  input {
+    String cmd
+    String? arguments
+  }
   command <<<
-    bustools
+    bustools \
+      ~{cmd} \
+      ~{arguments}
   >>>
+  parameter_meta {
+    cmd: ""
+    arguments: ""
+  }
 }

@@ -2,28 +2,34 @@ version 1.0
 
 task MetaboliteAdductDecharger {
   input {
-    File inIn
-    File outOutCm
-    File outOutFm
-    File outOutPairs
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
-    Boolean algorithmAlgorithm
-    Boolean httpHttp
+    File? in
+    File? out_cm
+    File? out_fm
+    File? out_pairs
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     MetaboliteAdductDecharger \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOutCm) then ("-out_cm " +  '"' + outOutCm + '"') else ""} \
-      ~{if defined(outOutFm) then ("-out_fm " +  '"' + outOutFm + '"') else ""} \
-      ~{if defined(outOutPairs) then ("-outpairs " +  '"' + outOutPairs + '"') else ""} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp} \
-      ~{true="- algorithm" false="" algorithmAlgorithm} \
-      ~{true="- http" false="" httpHttp}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out_cm) then ("-out_cm " +  '"' + out_cm + '"') else ""} \
+      ~{if defined(out_fm) then ("-out_fm " +  '"' + out_fm + '"') else ""} \
+      ~{if defined(out_pairs) then ("-outpairs " +  '"' + out_pairs + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*        Input file  (valid formats: 'featureXML')"
+    out_cm: "Output consensus map (valid formats: 'consensusXML')"
+    out_fm: "Output feature map (valid formats: 'featureXML')"
+    out_pairs: "Output file (valid formats: 'consensusXML')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

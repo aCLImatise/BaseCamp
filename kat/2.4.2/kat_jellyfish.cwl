@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: kat_jellyfish.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kat_jellyfish.cwl
 inputs:
 - id: jellyfish
   doc: ''
@@ -11,7 +11,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: arg
+- id: arg_dot_dot_dot
   doc: ''
   type: string
   inputBinding:

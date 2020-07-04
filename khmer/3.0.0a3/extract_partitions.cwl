@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: extract_partitions.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extract_partitions.py.cwl
 inputs:
 - id: info
   doc: print citation information

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: deadzones.cwl
+id: ../../../../home/ubuntu/BiocondaCli/deadzones.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: 1_or_more_fast_a_chrom_files
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: output
   doc: 'Name of output file (default: stdout) '
   type: boolean
@@ -51,6 +41,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -about
+- id: one_or_more_fast_a_chrom_files
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

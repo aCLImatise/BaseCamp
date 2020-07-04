@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_script_gen_programs_network.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_script_gen_programs_network.cwl
 inputs:
 - id: output_file
   doc: File path to store results.

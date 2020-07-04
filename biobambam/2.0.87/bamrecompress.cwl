@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamrecompress.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamrecompress.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

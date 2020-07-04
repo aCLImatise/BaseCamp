@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ratt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ratt.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

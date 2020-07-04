@@ -1,17 +1,23 @@
 class: CommandLineTool
-id: compare_HLA_Omixon.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/compare_HLA_Omixon.py_omixon_fname.cwl
 inputs:
-- id: his_at_genotype_fname
-  doc: hisatgenotype file name (e.g. cp_hla.txt)
+- id: compare_hla_omix_on_do_tpy
+  doc: ''
   type: string
   inputBinding:
     position: 0
-- id: omix_on_fname
-  doc: omixon file name (e.g. omixon_caapa_hla.txt)
+- id: his_at_genotype_fname
+  doc: ''
   type: string
   inputBinding:
     position: 1
+- id: omix_on_fname
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - compare_HLA_Omixon.py
+- omixon_fname

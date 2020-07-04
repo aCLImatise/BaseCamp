@@ -2,10 +2,13 @@ version 1.0
 
 task Bedutils {
   input {
-    String? commandCommand
+    String var_command
   }
   command <<<
     bedutils \
-      ~{commandCommand}
+      ~{var_command}
   >>>
+  parameter_meta {
+    var_command: ""
+  }
 }

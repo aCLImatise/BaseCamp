@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pyprophet_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyprophet_filter.cwl
 inputs:
 - id: in
   doc: PyProphet input file.  [required]
@@ -21,6 +21,11 @@ inputs:
   type: double
   inputBinding:
     prefix: --max_transition_pep
+- id: sq_mass_files
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

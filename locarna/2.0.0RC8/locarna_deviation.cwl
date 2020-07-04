@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: locarna_deviation.cwl
+id: ../../../../home/ubuntu/BiocondaCli/locarna_deviation.cwl
 inputs:
 - id: deviation
   doc: ''

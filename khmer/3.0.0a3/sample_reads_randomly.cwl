@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sample_reads_randomly.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sample_reads_randomly.py.cwl
 inputs:
 - id: force
   doc: 'Overwrite output file if it exits (default: False)'
@@ -16,6 +16,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --bzip
+- id: info
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --info
+- id: n
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -N
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,20 +2,25 @@ version 1.0
 
 task SpadesBwaBwt2sa {
   input {
-    Boolean iI
-    String? bwaBwa
-    String? bwt2saBwt2sa
-    String? 3232
-    String? inInBwt
-    String? outsOutsA
+    String? i
+    String bwa
+    String bwt_two_sa
+    String in_dot_bwt
+    String out_dots_a
   }
   command <<<
     spades-bwa bwt2sa \
-      ~{bwaBwa} \
-      ~{true="-i" false="" iI} \
-      ~{bwt2saBwt2sa} \
-      ~{3232} \
-      ~{inInBwt} \
-      ~{outsOutsA}
+      ~{bwa} \
+      ~{bwt_two_sa} \
+      ~{in_dot_bwt} \
+      ~{out_dots_a} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  parameter_meta {
+    i: ""
+    bwa: ""
+    bwt_two_sa: ""
+    in_dot_bwt: ""
+    out_dots_a: ""
+  }
 }

@@ -2,46 +2,67 @@ version 1.0
 
 task KatPlotProfile {
   input {
-    String outputOutput
-    String outputOutputType
-    String titleTitle
-    String xXLabel
-    String yYLabel
-    String y2Y2Label
-    String xXMax
-    String xXMin
-    String yYMax
-    String yYMin
-    String y2Y2Max
-    String widthWidth
-    String heightHeight
-    String indexIndex
-    String headerHeader
-    String dpiDpi
-    Boolean verboseVerbose
-    String? sectSectProfileFile
-    String? sectSectProfileFile2
+    String? path_output_file
+    String? output_type
+    String? title
+    String? x_label
+    String? y_label
+    String? y_two_label
+    String? x_max
+    String? x_min
+    String? y_max
+    String? y_min
+    String? y_two_max
+    String? width
+    String? height
+    String? index
+    String? header
+    String? dpi
+    Boolean? verbose
+    String sect_profile_file
+    String sect_profile_file_two
   }
   command <<<
     kat_plot_profile \
-      ~{sectSectProfileFile} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(outputOutputType) then ("--output_type " +  '"' + outputOutputType + '"') else ""} \
-      ~{if defined(titleTitle) then ("--title " +  '"' + titleTitle + '"') else ""} \
-      ~{if defined(xXLabel) then ("--x_label " +  '"' + xXLabel + '"') else ""} \
-      ~{if defined(yYLabel) then ("--y_label " +  '"' + yYLabel + '"') else ""} \
-      ~{if defined(y2Y2Label) then ("--y2_label " +  '"' + y2Y2Label + '"') else ""} \
-      ~{if defined(xXMax) then ("--x_max " +  '"' + xXMax + '"') else ""} \
-      ~{if defined(xXMin) then ("--x_min " +  '"' + xXMin + '"') else ""} \
-      ~{if defined(yYMax) then ("--y_max " +  '"' + yYMax + '"') else ""} \
-      ~{if defined(yYMin) then ("--y_min " +  '"' + yYMin + '"') else ""} \
-      ~{if defined(y2Y2Max) then ("--y2_max " +  '"' + y2Y2Max + '"') else ""} \
-      ~{if defined(widthWidth) then ("--width " +  '"' + widthWidth + '"') else ""} \
-      ~{if defined(heightHeight) then ("--height " +  '"' + heightHeight + '"') else ""} \
-      ~{if defined(indexIndex) then ("--index " +  '"' + indexIndex + '"') else ""} \
-      ~{if defined(headerHeader) then ("--header " +  '"' + headerHeader + '"') else ""} \
-      ~{if defined(dpiDpi) then ("--dpi " +  '"' + dpiDpi + '"') else ""} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{sectSectProfileFile2}
+      ~{sect_profile_file} \
+      ~{sect_profile_file_two} \
+      ~{if defined(path_output_file) then ("--output " +  '"' + path_output_file + '"') else ""} \
+      ~{if defined(output_type) then ("--output_type " +  '"' + output_type + '"') else ""} \
+      ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
+      ~{if defined(x_label) then ("--x_label " +  '"' + x_label + '"') else ""} \
+      ~{if defined(y_label) then ("--y_label " +  '"' + y_label + '"') else ""} \
+      ~{if defined(y_two_label) then ("--y2_label " +  '"' + y_two_label + '"') else ""} \
+      ~{if defined(x_max) then ("--x_max " +  '"' + x_max + '"') else ""} \
+      ~{if defined(x_min) then ("--x_min " +  '"' + x_min + '"') else ""} \
+      ~{if defined(y_max) then ("--y_max " +  '"' + y_max + '"') else ""} \
+      ~{if defined(y_min) then ("--y_min " +  '"' + y_min + '"') else ""} \
+      ~{if defined(y_two_max) then ("--y2_max " +  '"' + y_two_max + '"') else ""} \
+      ~{if defined(width) then ("--width " +  '"' + width + '"') else ""} \
+      ~{if defined(height) then ("--height " +  '"' + height + '"') else ""} \
+      ~{if defined(index) then ("--index " +  '"' + index + '"') else ""} \
+      ~{if defined(header) then ("--header " +  '"' + header + '"') else ""} \
+      ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    path_output_file: "The path to the output file."
+    output_type: "The plot file type to create (default is based on given output name)."
+    title: "Title for plot"
+    x_label: "Label for x-axis"
+    y_label: "Label for y-axis"
+    y_two_label: "Label for second y-axis"
+    x_max: "Maximum value for x-axis"
+    x_min: "Minimum value for x-axis"
+    y_max: "Maximum value for y-axis"
+    y_min: "Minimum value for y-axis"
+    y_two_max: "Maximum value for second y-axis"
+    width: "Width of canvas"
+    height: "Height of canvas"
+    index: "Comma separate list of indexes of fasta entry to plot"
+    header: "Name of fasta entry to plot (has priority over index)"
+    dpi: "Resolution in dots per inch of output graphic."
+    verbose: "Print extra information"
+    sect_profile_file: "The input profile file from KAT sect"
+    sect_profile_file_two: "The optional second input profile file from KAT sect"
+  }
 }

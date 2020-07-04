@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ansible_doc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ansible_doc.cwl
 inputs:
-- id: module
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: module_path
   doc: Ansible modules/ directory
   type: string
@@ -21,11 +16,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --snippet
-- id: v
+- id: show_version_number
   doc: Show version number and exit
   type: boolean
   inputBinding:
     prefix: -v
+- id: module_dot_dot_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

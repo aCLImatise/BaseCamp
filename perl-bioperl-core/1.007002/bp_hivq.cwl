@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bp_hivq.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bp_hivq.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

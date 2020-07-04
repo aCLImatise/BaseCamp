@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: create_metaplots.bash_name.cwl
+id: ../../../../home/ubuntu/BiocondaCli/create_metaplots.bash.cwl
 inputs:
-- id: ri_bob_am
+- id: ribo_dot_bam
   doc: ''
   type: string
   inputBinding:
@@ -20,4 +20,3 @@ outputs: []
 cwlVersion: v1.1
 baseCommand:
 - create_metaplots.bash
-- name

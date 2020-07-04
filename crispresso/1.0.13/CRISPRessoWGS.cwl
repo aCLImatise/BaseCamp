@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: CRISPRessoWGS.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CRISPRessoWGS.cwl
 inputs:
 - id: trim_sequences
   doc: 'Enable the trimming of Illumina adapters with Trimmomatic (default: False)'
@@ -7,7 +7,7 @@ inputs:
   inputBinding:
     prefix: --trim_sequences
 - id: trim_mo_matic_options_string
-  doc: 'Override options for Trimmomatic (default: ILLUMINACLIP:/tmp/tmpw8ijk_jx/lib/python2.7/site-
+  doc: 'Override options for Trimmomatic (default: ILLUMINACLIP:/tmp/tmplwqo0wwj/lib/python2.7/site-
     packages/CRISPResso/data/NexteraPE- PE.fa:0:90:10:0:true MINLEN:40)'
   type: string
   inputBinding:
@@ -107,6 +107,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --n_processes
+- id: b
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -b
+- id: f
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -f
+- id: r
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -r
 outputs: []
 cwlVersion: v1.1
 baseCommand:

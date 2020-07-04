@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sketchy_utils_plot_kraken.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sketchy_utils_plot_kraken.cwl
 inputs:
 - id: report
   doc: Path or file glob to tax report files

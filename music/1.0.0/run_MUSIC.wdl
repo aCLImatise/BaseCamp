@@ -1,13 +1,14 @@
 version 1.0
 
-task RunMUSIC.cshArguments {
+task RunMUSIC.csh {
   input {
-    String? optionsOptions
-    String? argumentsArguments
+    String? arguments
   }
   command <<<
-    run_MUSIC.csh Arguments \
-      ~{optionsOptions} \
-      ~{argumentsArguments}
+    run_MUSIC.csh \
+      ~{arguments}
   >>>
+  parameter_meta {
+    arguments: ""
+  }
 }

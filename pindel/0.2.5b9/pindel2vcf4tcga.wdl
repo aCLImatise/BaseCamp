@@ -2,12 +2,19 @@ version 1.0
 
 task Pindel2vcf4tcga {
   input {
-    Boolean dD
-    Boolean dD
+    String? p
+    String? r
+    String pin_del_two_vcf
   }
   command <<<
     pindel2vcf4tcga \
-      ~{true="-d" false="" dD} \
-      ~{true="-d" false="" dD}
+      ~{pin_del_two_vcf} \
+      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
+      ~{if defined(r) then ("-r " +  '"' + r + '"') else ""}
   >>>
+  parameter_meta {
+    p: ""
+    r: ""
+    pin_del_two_vcf: ""
+  }
 }

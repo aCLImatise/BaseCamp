@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: load_graph.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/load_graph.py.cwl
 inputs:
-- id: output_node_graph_filename
-  doc: output k-mer nodegraph filename.
-  type: string
-  inputBinding:
-    position: 0
-- id: input_sequence_filename
-  doc: input FAST[AQ] sequence filename
-  type: string
-  inputBinding:
-    position: 1
 - id: info
   doc: print citation information
   type: boolean
@@ -51,6 +41,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --force
+- id: output_node_graph_filename
+  doc: output k-mer nodegraph filename.
+  type: string
+  inputBinding:
+    position: 0
+- id: input_sequence_filename
+  doc: input FAST[AQ] sequence filename
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

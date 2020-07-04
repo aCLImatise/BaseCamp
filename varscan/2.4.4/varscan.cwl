@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: varscan.cwl
+id: ../../../../home/ubuntu/BiocondaCli/varscan.cwl
 inputs:
 - id: jar
   doc: ''

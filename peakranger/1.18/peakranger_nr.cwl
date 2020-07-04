@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: peakranger_nr.cwl
+id: ../../../../home/ubuntu/BiocondaCli/peakranger_nr.cwl
 inputs:
-- id: d
+- id: arg_data_file
   doc: '[ --data ] arg               data file'
   type: boolean
   inputBinding:
     prefix: -d
-- id: c
+- id: arg_control_file
   doc: '[ --control ] arg            control file'
   type: boolean
   inputBinding:
@@ -16,7 +16,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --format
-- id: l
+- id: arg_read_length
   doc: '[ --ext_length ] arg (=200)  read extension length'
   type: boolean
   inputBinding:
@@ -26,6 +26,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: input
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

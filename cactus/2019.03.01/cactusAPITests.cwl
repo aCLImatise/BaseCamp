@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cactusAPITests.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cactusAPITests.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

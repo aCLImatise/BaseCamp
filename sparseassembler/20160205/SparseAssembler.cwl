@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SparseAssembler.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SparseAssembler.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

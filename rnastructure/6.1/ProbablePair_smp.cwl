@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ProbablePair_smp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ProbablePair_smp.cwl
 inputs:
 - id: probable_pair
   doc: ''

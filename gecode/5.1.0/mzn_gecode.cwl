@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mzn_gecode.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mzn_gecode.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

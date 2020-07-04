@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: rm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rm.cwl
 inputs:
 - id: force
   doc: ignore nonexistent files and arguments, never prompt
   type: boolean
   inputBinding:
     prefix: --force
-- id: i
+- id: prompt_before_removal
   doc: prompt before every removal
   type: boolean
   inputBinding:
     prefix: -i
-- id: i
+- id: prompt_once_removing
   doc: prompt once before removing more than three files, or when removing recursively;
     less intrusive than -i, while still giving protection against most mistakes
   type: boolean
@@ -54,6 +54,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

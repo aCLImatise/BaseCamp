@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: sraX.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sraX.cwl
 inputs:
-- id: o
+- id: output_directory_store
   doc: "|output     Directory to store obtained results [/path/to/output_dir]. While\
     \ not provided, the following default name will be taken: 'input_directory'_'sraX'_'id'_'aln_cov'_'seqal'\
     \ Example: -------- Input directory: 'Test' Options: -id 85; -c 95; -p dblastx\
@@ -9,7 +9,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -o
-- id: s
+- id: seqal_preferred_algorithm
   doc: "|seqal      The preferred algorithm for aligning the assembled genome(s) to\
     \ a locally compiled AMR DB. The possible choices are: 'dblastx' (DIAMOND blastx)\
     \ or 'blastx' (NCBI blastx). In any case, the process is parallelized (up to 100\
@@ -18,7 +18,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -s
-- id: a
+- id: msa_preferred_algorithm
   doc: "|msa        The preferred algorithm for producing the alignment of clustered\
     \ homologous sequences (multiple-sequence files). The possible choices are: 'muscle',\
     \ 'clustalo' or 'mafft'. [string] Default: muscle Note: The accuracy and computing\
@@ -26,7 +26,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -a
-- id: e
+- id: eval_minimum_evalue
   doc: '|eval       Minimum evalue cut-off to filter false positives. [number] Default:
     1e-05'
   type: boolean
@@ -37,7 +37,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -id
-- id: c
+- id: minimum_length_query
   doc: '|aln_cov    Minimum length of the query which must align to the reference
     sequence. [number] Default: 60'
   type: boolean
@@ -53,28 +53,33 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -db
-- id: u
+- id: customary_amr_db
   doc: '|user_sq    Customary AMR DB provided by the user. The sequences must be in
     FASTA format.'
   type: boolean
   inputBinding:
     prefix: -u
-- id: t
+- id: threads_number_running
   doc: '|threads    Number of threads when running sraX. [number] Default: 6'
   type: boolean
   inputBinding:
     prefix: -t
-- id: v
+- id: version_displays_version
   doc: '|version    Displays version information and exits.'
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: debug_verbose_output
   doc: "|debug      Verbose output (for debugging). 'sraX' was last modified: 05th\
     \ February 2020"
   type: boolean
   inputBinding:
     prefix: -d
+- id: i
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -i
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,31 +1,26 @@
 class: CommandLineTool
-id: pilprint.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pilprint.py.cwl
 inputs:
-- id: pil_print
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: files
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
-- id: c
+- id: colour_printer_default
   doc: colour printer (default is monochrome)
   type: boolean
   inputBinding:
     prefix: -c
-- id: p
+- id: print_lpr_default
   doc: print via lpr (default is stdout)
   type: boolean
   inputBinding:
     prefix: -p
-- id: p
+- id: same_p_use
   doc: same as -p but use given printer
   type: string
   inputBinding:
     prefix: -P
+- id: files_dot_dot_dot
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: mafGene.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mafGene.cwl
 inputs:
-- id: output
-  doc: put output here
-  type: string
-  inputBinding:
-    position: 0
 - id: use_file
   doc: genePredTable argument is a genePred file name
   type: boolean
@@ -61,6 +56,31 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -noDash
+- id: dbname
+  doc: name of SQL database
+  type: string
+  inputBinding:
+    position: 0
+- id: maf_table
+  doc: name of maf file table
+  type: string
+  inputBinding:
+    position: 1
+- id: gene_pred_table
+  doc: name of the genePred table
+  type: string
+  inputBinding:
+    position: 2
+- id: species_dot_lst
+  doc: list of species names
+  type: string
+  inputBinding:
+    position: 3
+- id: output
+  doc: put output here
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: peakranger_lc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/peakranger_lc.cwl
 inputs:
-- id: d
+- id: arg_data_file
   doc: '[ --data ] arg      the data file'
   type: boolean
   inputBinding:
@@ -11,6 +11,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: input
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

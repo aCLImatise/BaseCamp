@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cytoscape.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cytoscape.sh.cwl
 inputs:
 - id: session
   doc: Load a cytoscape session (.cys) file.
@@ -32,6 +32,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --rest
+- id: cytoscape_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

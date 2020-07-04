@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _revseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_revseq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

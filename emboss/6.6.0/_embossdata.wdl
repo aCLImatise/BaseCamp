@@ -2,10 +2,13 @@ version 1.0
 
 task _embossdata {
   input {
-    Boolean showShowAll
+    Boolean? show_all
   }
   command <<<
     _embossdata \
-      ~{true="-showall" false="" showShowAll}
+      ~{true="-showall" false="" show_all}
   >>>
+  parameter_meta {
+    show_all: "toggle     Show all potential EMBOSS data files"
+  }
 }

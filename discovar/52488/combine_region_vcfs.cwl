@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: combine_region_vcfs.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/combine_region_vcfs.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hisatgenotype_extract_codis_data.py.bak.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hisatgenotype_extract_codis_data.py.bak.cwl
 inputs:
 - id: base
   doc: 'base filename (default: codis)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: insilico_read_normalization.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/insilico_read_normalization.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

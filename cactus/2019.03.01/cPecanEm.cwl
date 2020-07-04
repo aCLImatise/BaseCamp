@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cPecanEm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cPecanEm.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

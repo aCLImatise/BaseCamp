@@ -1,12 +1,16 @@
 class: CommandLineTool
-id: vcf_convert.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf_convert.cwl
 inputs:
-- id: refseq
-  doc: The reference sequence in samtools faindexed fasta file. (Not required with
-    SNPs only.)
-  type: File
+- id: cat
+  doc: ''
+  type: string
   inputBinding:
-    prefix: --refseq
+    position: 0
+- id: in_dot_vcf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

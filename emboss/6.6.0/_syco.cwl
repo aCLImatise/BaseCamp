@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _syco.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_syco.cwl
 inputs:
 - id: c_file
   doc: codon      Codon usage file

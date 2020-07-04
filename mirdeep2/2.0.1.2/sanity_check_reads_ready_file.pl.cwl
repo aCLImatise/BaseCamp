@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sanity_check_reads_ready_file.pl.orig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sanity_check_reads_ready_file.pl.orig.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

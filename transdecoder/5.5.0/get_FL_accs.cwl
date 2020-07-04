@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_FL_accs.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_FL_accs.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

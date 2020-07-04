@@ -1,9 +1,10 @@
 class: CommandLineTool
-id: colmux.cwl
+id: ../../../../home/ubuntu/BiocondaCli/colmux.cwl
 inputs:
 - id: address
-  doc: addr[,addr]  comma separated list of address to connect or filename
-  type: boolean
+  doc: comma separated list of address to connect or filename
+  type:
+  - string
   inputBinding:
     prefix: -address
 - id: command
@@ -107,12 +108,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -reverse
-- id: zero
+- id: include_columns_zero
   doc: do not include columns of zero
   type: boolean
   inputBinding:
     prefix: -zero
-- id: col1000
+- id: col_one_zero_zero_zero
   doc: divide each column by 1000
   type: boolean
   inputBinding:
@@ -122,7 +123,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -colk
-- id: collog10
+- id: collo_gone_zero
   doc: convert each column to log10, except when -colnodiv see man page for details
   type: boolean
   inputBinding:
@@ -220,6 +221,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -timerange
+- id: switches
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -switches
 outputs: []
 cwlVersion: v1.1
 baseCommand:

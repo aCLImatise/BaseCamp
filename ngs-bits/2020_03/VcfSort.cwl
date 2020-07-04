@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: VcfSort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/VcfSort.cwl
 inputs:
 - id: in
   doc: Input variant list.

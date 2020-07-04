@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: avro.cwl
+id: ../../../../home/ubuntu/BiocondaCli/avro.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

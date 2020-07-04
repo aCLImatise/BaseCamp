@@ -2,26 +2,16 @@ version 1.0
 
 task FormatTreeAndTraitTable.py {
   input {
-    String addAdd
-    String filterFilter
-    String outputOutput
-    String ensureEnsure
-    Float convertConvert
-    String addAdd
-    Int removeRemove
-    String inputInputTree
-    String inputInputTraitTable
+    String? input_tree
+    String? input_trait_table
   }
   command <<<
     format_tree_and_trait_table.py \
-      ~{if defined(addAdd) then ("-- Add " +  '"' + addAdd + '"') else ""} \
-      ~{if defined(filterFilter) then ("-- Filter " +  '"' + filterFilter + '"') else ""} \
-      ~{if defined(outputOutput) then ("-- Output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(ensureEnsure) then ("-- Ensure " +  '"' + ensureEnsure + '"') else ""} \
-      ~{if defined(convertConvert) then ("-- Convert " +  '"' + convertConvert + '"') else ""} \
-      ~{if defined(addAdd) then ("-- Add " +  '"' + addAdd + '"') else ""} \
-      ~{if defined(removeRemove) then ("-- Remove " +  '"' + removeRemove + '"') else ""} \
-      ~{if defined(inputInputTree) then ("--input_tree " +  '"' + inputInputTree + '"') else ""} \
-      ~{if defined(inputInputTraitTable) then ("--input_trait_table " +  '"' + inputInputTraitTable + '"') else ""}
+      ~{if defined(input_tree) then ("--input_tree " +  '"' + input_tree + '"') else ""} \
+      ~{if defined(input_trait_table) then ("--input_trait_table " +  '"' + input_trait_table + '"') else ""}
   >>>
+  parameter_meta {
+    input_tree: "the input tree (Newick format) [REQUIRED]"
+    input_trait_table: "the input trait table (QIIME OTU table format) [REQUIRED]"
+  }
 }

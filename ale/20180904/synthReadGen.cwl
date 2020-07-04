@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: synthReadGen.cwl
+id: ../../../../home/ubuntu/BiocondaCli/synthReadGen.cwl
 inputs:
-- id: input_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: output_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: id
   doc: ': set distribution used for insert length [1 = normal], 2 = poisson'
   type: string
@@ -71,7 +61,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -ps
-- id: b
+- id: outputs_two_files
   doc: ': outputs two fastq files for bowtie mapping [off]'
   type: boolean
   inputBinding:

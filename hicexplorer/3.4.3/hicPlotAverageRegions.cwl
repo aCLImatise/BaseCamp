@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hicPlotAverageRegions.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hicPlotAverageRegions.cwl
 inputs:
 - id: matrix
   doc: The averaged regions file computed by hicAverageRegions (npz file).
@@ -11,7 +11,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --outputFile
-- id: log1p
+- id: logo_nep
   doc: Plot log1p of the matrix values.
   type: boolean
   inputBinding:

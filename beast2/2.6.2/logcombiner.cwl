@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: logcombiner.cwl
+id: ../../../../home/ubuntu/BiocondaCli/logcombiner.cwl
 inputs:
-- id: log_combiner
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: log
   doc: ''
   type: File

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fix.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fix.py.cwl
 inputs:
 - id: input
   doc: The input list of gene pairs.

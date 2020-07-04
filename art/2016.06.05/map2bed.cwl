@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: map2bed.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/map2bed.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

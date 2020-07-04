@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: printafm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/printafm.cwl
 inputs:
 - id: fontname
   doc: ''

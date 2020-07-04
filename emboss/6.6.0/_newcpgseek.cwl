@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _newcpgseek.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_newcpgseek.cwl
 inputs:
 - id: score
   doc: integer    [17] CpG score (Integer from 1 to 200)

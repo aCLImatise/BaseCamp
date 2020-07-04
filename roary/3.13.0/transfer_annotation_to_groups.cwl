@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: transfer_annotation_to_groups.cwl
+id: ../../../../home/ubuntu/BiocondaCli/transfer_annotation_to_groups.cwl
 inputs:
-- id: o
+- id: output_filename
   doc: output filename [reannotated_groups]
   type: string
   inputBinding:
     prefix: -o
-- id: g
+- id: clusters_filename
   doc: clusters filename [clustered_proteins]
   type: string
   inputBinding:
     prefix: -g
-- id: v
+- id: verbose_output_stdout
   doc: verbose output to STDOUT
   type: boolean
   inputBinding:

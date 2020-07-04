@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: Compiler_Module.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Compiler_Module.py.cwl
 inputs:
-- id: input_data
-  doc: UnCompiled Results file from ViReMa run
-  type: string
-  inputBinding:
-    position: 0
 - id: output_tag
   doc: Enter a tag name that will be appended to end of each output file.
   type: string
@@ -57,6 +52,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -BED
+- id: input_data
+  doc: UnCompiled Results file from ViReMa run
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

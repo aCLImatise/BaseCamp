@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: baralign.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/baralign.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

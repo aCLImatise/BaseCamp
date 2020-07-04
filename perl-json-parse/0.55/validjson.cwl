@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: validjson.cwl
+id: ../../../../home/ubuntu/BiocondaCli/validjson.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

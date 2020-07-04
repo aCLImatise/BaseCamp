@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: ptmSummary.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ptmSummary.py.cwl
 inputs:
-- id: p
+- id: threads_to_run
   doc: Threads to run
   type: string
   inputBinding:
     prefix: -p
-- id: no_log2
+- id: no_log_two
   doc: Do not log2 normalize quantification values.
   type: boolean
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamfilterheader.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamfilterheader.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

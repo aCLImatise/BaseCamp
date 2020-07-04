@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: efilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/efilter.cwl
 inputs:
 - id: query
   doc: Query string

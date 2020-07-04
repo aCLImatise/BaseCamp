@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mirabait.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mirabait.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

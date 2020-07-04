@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nearblack.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nearblack.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

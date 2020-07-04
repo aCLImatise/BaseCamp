@@ -1,47 +1,28 @@
 class: CommandLineTool
-id: sequence_filter.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sequence_filter.py_output_fastx.cwl
 inputs:
-- id: input_fast_x
-  doc: 'Input file (default: stdin).'
-  type: string
-  inputBinding:
-    position: 0
-- id: output_fast_x
-  doc: 'Output file (default: stdout).'
-  type: string
-  inputBinding:
-    position: 1
 - id: i
-  doc: Input format (fastq).
+  doc: ''
   type: string
   inputBinding:
     prefix: -i
 - id: o
-  doc: Output format (fastq).
+  doc: ''
   type: string
   inputBinding:
     prefix: -o
 - id: q
-  doc: Minimum mean quality value (0.0).
+  doc: ''
   type: long
   inputBinding:
     prefix: -q
-- id: l
-  doc: Minimum length (0).
-  type: long
+- id: sequence_filter_do_tpy
+  doc: ''
+  type: string
   inputBinding:
-    prefix: -l
-- id: c
-  doc: Reverse complement sequences.
-  type: boolean
-  inputBinding:
-    prefix: -c
-- id: u
-  doc: Maximum length (None).
-  type: long
-  inputBinding:
-    prefix: -u
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - sequence_filter.py
+- output_fastx

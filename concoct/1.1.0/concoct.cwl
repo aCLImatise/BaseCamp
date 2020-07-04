@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: concoct.cwl
+id: ../../../../home/ubuntu/BiocondaCli/concoct.cwl
 inputs:
 - id: coverage_file
   doc: specify the coverage file, containing a table where each row correspond to

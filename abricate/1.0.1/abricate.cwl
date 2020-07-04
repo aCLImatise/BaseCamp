@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: abricate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/abricate.cwl
 inputs:
 - id: debug
   doc: Verbose debug output.
@@ -37,7 +37,7 @@ inputs:
   inputBinding:
     prefix: --list
 - id: datadir
-  doc: '[X]   Databases folder [/tmp/tmp8we49qhd/db].'
+  doc: '[X]   Databases folder [/tmp/tmptbtde21b/db].'
   type: boolean
   inputBinding:
     prefix: --datadir

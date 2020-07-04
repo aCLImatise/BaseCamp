@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: writedb_entry.cwl
+id: ../../../../home/ubuntu/BiocondaCli/writedb_entry.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

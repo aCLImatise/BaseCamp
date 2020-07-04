@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: newProg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/newProg.cwl
 inputs:
+- id: jkh_gap
+  doc: '- include jkhgap.a and mysql libraries as well as jkweb.a archives '
+  type: boolean
+  inputBinding:
+    prefix: -jkhgap
+- id: cgi
+  doc: '- create shell of a CGI script for web'
+  type: boolean
+  inputBinding:
+    prefix: -cgi
 - id: progname
   doc: ''
   type: string
@@ -16,16 +26,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: include
-  doc: 'and mysql libraries as well as jkweb.a archives '
-  type: string
-  inputBinding:
-    prefix: '- include'
-- id: cgi
-  doc: '- create shell of a CGI script for web'
-  type: boolean
-  inputBinding:
-    prefix: -cgi
 outputs: []
 cwlVersion: v1.1
 baseCommand:

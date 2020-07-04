@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: funcannot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/funcannot.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

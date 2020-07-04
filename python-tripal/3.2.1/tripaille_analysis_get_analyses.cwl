@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tripaille_analysis_get_analyses.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tripaille_analysis_get_analyses.cwl
 inputs:
 - id: analysis_id
   doc: An analysis ID

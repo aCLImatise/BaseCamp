@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: runConcurrently.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/runConcurrently.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

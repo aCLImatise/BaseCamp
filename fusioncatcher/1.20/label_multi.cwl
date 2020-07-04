@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: label_multi.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/label_multi.py.cwl
 inputs:
 - id: input
   doc: The input file in text tab delimited format containing the fusion genes candidates

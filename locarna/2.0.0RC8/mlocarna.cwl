@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mlocarna.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mlocarna.cwl
 inputs:
 - id: fast_a_file
   doc: ''

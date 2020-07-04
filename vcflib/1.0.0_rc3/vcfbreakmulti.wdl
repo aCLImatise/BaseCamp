@@ -2,10 +2,13 @@ version 1.0
 
 task Vcfbreakmulti {
   input {
-    File? fileFile
+    File? file
   }
   command <<<
     vcfbreakmulti \
-      ~{fileFile}
+      ~{file}
   >>>
+  parameter_meta {
+    file: ""
+  }
 }

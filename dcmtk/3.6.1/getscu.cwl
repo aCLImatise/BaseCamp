@@ -1,38 +1,23 @@
 class: CommandLineTool
-id: getscu.cwl
+id: ../../../../home/ubuntu/BiocondaCli/getscu.cwl
 inputs:
-- id: peer
-  doc: hostname of DICOM peer
-  type: string
-  inputBinding:
-    position: 0
-- id: port
-  doc: tcp/ip port number of peer
-  type: string
-  inputBinding:
-    position: 1
-- id: dcm_file_in
-  doc: DICOM query file(s)
-  type: string
-  inputBinding:
-    position: 2
-- id: k
+- id: _key_ggggeeee
   doc: '--key                  [k]ey: gggg,eeee="str", path or dic. name="str" override
     matching key'
   type: boolean
   inputBinding:
     prefix: -k
-- id: p
+- id: _patient_use
   doc: --patient              use patient root information model (default)
   type: boolean
   inputBinding:
     prefix: -P
-- id: s
+- id: _study_use
   doc: --study                use study root information model
   type: boolean
   inputBinding:
     prefix: -S
-- id: o
+- id: _psonly_use
   doc: --psonly               use patient/study only information model
   type: boolean
   inputBinding:
@@ -47,7 +32,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --call
-- id: x
+- id: _proposeuncompr_propose
   doc: =   --propose-uncompr      propose all uncompressed TS, explicit VR with local
     byte ordering first (default)
   type: boolean
@@ -120,6 +105,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ignore
+- id: peer
+  doc: hostname of DICOM peer
+  type: string
+  inputBinding:
+    position: 0
+- id: port
+  doc: tcp/ip port number of peer
+  type: string
+  inputBinding:
+    position: 1
+- id: dcm_file_in
+  doc: DICOM query file(s)
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

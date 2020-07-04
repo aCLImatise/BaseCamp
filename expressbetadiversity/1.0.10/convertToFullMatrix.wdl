@@ -1,13 +1,20 @@
 version 1.0
 
-task ConvertToFullMatrix.pyOutputMatrixOutputMatrixOutputMatrix {
+task ConvertToFullMatrix.pyOutputMatrix {
   input {
-    String? inputInputMatrix
-    String? outputOutputMatrix
+    String convert_to_full_matrix_do_tpy
+    String input_matrix
+    String output_matrix
   }
   command <<<
-    convertToFullMatrix.py outputMatrix outputMatrix outputMatrix \
-      ~{inputInputMatrix} \
-      ~{outputOutputMatrix}
+    convertToFullMatrix.py outputMatrix \
+      ~{convert_to_full_matrix_do_tpy} \
+      ~{input_matrix} \
+      ~{output_matrix}
   >>>
+  parameter_meta {
+    convert_to_full_matrix_do_tpy: ""
+    input_matrix: ""
+    output_matrix: ""
+  }
 }

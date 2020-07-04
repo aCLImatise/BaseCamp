@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: humann2_databases.cwl
+id: ../../../../home/ubuntu/BiocondaCli/humann2_databases.cwl
 inputs:
 - id: available
   doc: print the available databases

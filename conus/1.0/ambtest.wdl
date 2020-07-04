@@ -2,14 +2,19 @@ version 1.0
 
 task Ambtest {
   input {
-    String mM
-    Boolean optionsOptions
-    String? seqSeqFileIn
+    String? m
+    Boolean? options
+    String seq_file_in
   }
   command <<<
     ambtest \
-      ~{seqSeqFileIn} \
-      ~{if defined(mM) then ("-m " +  '"' + mM + '"') else ""} \
-      ~{true="-options" false="" optionsOptions}
+      ~{seq_file_in} \
+      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    m: ""
+    options: ""
+    seq_file_in: ""
+  }
 }

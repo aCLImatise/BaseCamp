@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: refinem_modify_bin.cwl
+id: ../../../../home/ubuntu/BiocondaCli/refinem_modify_bin.cwl
 inputs:
-- id: scaffold_file
-  doc: scaffolds binned to generate putative genomes
-  type: string
-  inputBinding:
-    position: 0
-- id: genome_file
-  doc: genome to be modified
-  type: string
-  inputBinding:
-    position: 1
-- id: output_genome
-  doc: modified genome
-  type: string
-  inputBinding:
-    position: 2
 - id: min_len
   doc: minimum length of scaffold to allow it to be added to a genome
   type: long
@@ -41,6 +26,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --silent
+- id: scaffold_file
+  doc: scaffolds binned to generate putative genomes
+  type: string
+  inputBinding:
+    position: 0
+- id: genome_file
+  doc: genome to be modified
+  type: string
+  inputBinding:
+    position: 1
+- id: output_genome
+  doc: modified genome
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

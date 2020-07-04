@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: CrossMap.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CrossMap.py.cwl
 inputs:
 - id: gff
   doc: convert genome coordinate or annotation file in GFF or GTF format.

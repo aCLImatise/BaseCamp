@@ -1,6 +1,21 @@
 class: CommandLineTool
-id: pathoscope_MAP.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pathoscope_MAP.cwl
 inputs:
+- id: input_read_fastq_file_unpairedsingleend
+  doc: Input Read Fastq File (Unpaired/Single-end)
+  type: string
+  inputBinding:
+    prefix: -U
+- id: one
+  doc: Input Read Fastq File (Pair 1)
+  type: string
+  inputBinding:
+    prefix: '-1'
+- id: two
+  doc: Input Read Fastq File (Pair 2)
+  type: string
+  inputBinding:
+    prefix: '-2'
 - id: target_ref_files
   doc: Target Reference Genome Fasta Files Full Path (Comma Separated)
   type: string

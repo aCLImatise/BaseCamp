@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: peptides2hints.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/peptides2hints.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

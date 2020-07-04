@@ -1,43 +1,48 @@
 class: CommandLineTool
-id: medpy_resample.py_input.cwl
+id: ../../../../home/ubuntu/BiocondaCli/medpy_resample.py_spacing.cwl
 inputs:
-- id: input
-  doc: the input image
+- id: o
+  doc: ''
   type: string
   inputBinding:
-    position: 0
-- id: output
-  doc: the output image
-  type: string
-  inputBinding:
-    position: 1
-- id: spacing
-  doc: the desired voxel spacing in colon-separated values, e.g. 1.2,1.2,5.0
-  type: string
-  inputBinding:
-    position: 2
-- id: order
-  doc: the bspline order, default is 2; means nearest neighbours; see also medpy_binary_resampling.py
-  type: string
-  inputBinding:
-    prefix: --order
-- id: verbose
-  doc: verbose output
+    prefix: -o
+- id: v
+  doc: ''
   type: boolean
   inputBinding:
-    prefix: --verbose
+    prefix: -v
 - id: d
-  doc: Display debug information.
+  doc: ''
   type: boolean
   inputBinding:
     prefix: -d
-- id: force
-  doc: overwrite existing files
+- id: f
+  doc: ''
   type: boolean
   inputBinding:
-    prefix: --force
+    prefix: -f
+- id: me_dpy_resample_do_tpy
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: input
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: output
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: spacing
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - medpy_resample.py
-- input
+- spacing

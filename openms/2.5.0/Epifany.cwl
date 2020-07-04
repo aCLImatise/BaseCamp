@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Epifany.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Epifany.cwl
 inputs:
 - id: in
   doc: "*                            Input: identification results (valid formats:\
@@ -22,7 +22,7 @@ inputs:
 - id: greedy_group_resolution
   doc: "Post-process inference output with greedy resolution of shared peptides based\
     \ on the parent protein probabilities. Also adds the resolved ambiguity groups\
-    \ to output.  (default: 'none' valid: 'none', 'remove_associations_only', 'remove_proteins_wo_evidence')"
+    \ to output. (default: 'none' valid: 'none', 'remove_associations_only', 'remove_proteins_wo_evidence')"
   type: string
   inputBinding:
     prefix: -greedy_group_resolution
@@ -52,16 +52,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Parameters for the Algorithm section
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
-- id: http
-  doc: ://www.openms.de/documentation/UTILS_Epifany.html
-  type: boolean
-  inputBinding:
-    prefix: '- http'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

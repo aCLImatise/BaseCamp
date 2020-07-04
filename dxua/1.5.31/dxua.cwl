@@ -1,27 +1,27 @@
 class: CommandLineTool
-id: dxua.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dxua.cwl
 inputs:
-- id: e
+- id: print_environment_information
   doc: '[ --env ]                       Print environment information'
   type: boolean
   inputBinding:
     prefix: -e
-- id: a
+- id: arg_specify_token
   doc: '[ --auth-token ] arg            Specify the authentication token'
   type: boolean
   inputBinding:
     prefix: -a
-- id: p
+- id: arg_name_id
   doc: '[ --project ] arg               Name or ID of the destination project'
   type: boolean
   inputBinding:
     prefix: -p
-- id: f
+- id: arg_name_destination
   doc: '[ --folder ] arg (=/)           Name of the destination folder'
   type: boolean
   inputBinding:
     prefix: -f
-- id: n
+- id: arg_name_remote
   doc: '[ --name ] arg                  Name of the remote file (Note: Extension  ".gz"
     will be appended if the file is  compressed before uploading)'
   type: boolean
@@ -64,17 +64,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --read-threads
-- id: c
+- id: arg_number_parallel_compression
   doc: '[ --compress-threads ] arg (=7) Number of parallel compression threads'
   type: boolean
   inputBinding:
     prefix: -c
-- id: u
+- id: arg_number_parallel_upload
   doc: '[ --upload-threads ] arg (=8)   Number of parallel upload threads'
   type: boolean
   inputBinding:
     prefix: -u
-- id: s
+- id: arg_m_size
   doc: "[ --chunk-size ] arg (=75M)     Size of chunks in which the file should be\
     \ uploaded. Specify an integer size in bytes or append optional units (B, K, M,\
     \ G).  E.g., '50M' sets chunk size to 50  megabytes."
@@ -88,7 +88,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --throttle
-- id: r
+- id: arg_number_tries
   doc: '[ --tries ] arg (=3)            Number of tries to upload each chunk'
   type: boolean
   inputBinding:
@@ -98,12 +98,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --do-not-compress
-- id: g
+- id: report_upload_progress
   doc: '[ --progress ]                  Report upload progress'
   type: boolean
   inputBinding:
     prefix: -g
-- id: v
+- id: _verbose_logging
   doc: '[ --verbose ]                   Verbose logging'
   type: boolean
   inputBinding:
@@ -123,11 +123,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --test
-- id: i
+- id: read_file_content
   doc: '[ --read-from-stdin ]           Read file content from stdin'
   type: boolean
   inputBinding:
     prefix: -i
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

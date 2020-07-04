@@ -1,32 +1,23 @@
 class: CommandLineTool
-id: sequence_subtract.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sequence_subtract.py_output_fastx.cwl
 inputs:
-- id: input_fast_x_bait
-  doc: 'First input file (default: stdin).'
-  type: string
-  inputBinding:
-    position: 0
-- id: input_fast_x_target
-  doc: Second input file.
-  type: string
-  inputBinding:
-    position: 1
-- id: output_fast_x
-  doc: 'Output file (default: stdout).'
-  type: string
-  inputBinding:
-    position: 2
 - id: i
-  doc: Input format (fastq).
+  doc: ''
   type: string
   inputBinding:
     prefix: -i
 - id: o
-  doc: Output format (fastq).
+  doc: ''
   type: string
   inputBinding:
     prefix: -o
+- id: sequence_subtract_do_tpy
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - sequence_subtract.py
+- output_fastx

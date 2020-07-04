@@ -2,10 +2,13 @@ version 1.0
 
 task JeDemultiplexIllu {
   input {
-    String? orOr
+    String data_dot
   }
   command <<<
     je demultiplex-illu \
-      ~{orOr}
+      ~{data_dot}
   >>>
+  parameter_meta {
+    data_dot: "Required. "
+  }
 }

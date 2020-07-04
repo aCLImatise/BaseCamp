@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: analyzePositionSSAKE.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/analyzePositionSSAKE.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

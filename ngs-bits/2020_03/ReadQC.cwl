@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: ReadQC.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ReadQC.cwl
 inputs:
-- id: in1
+- id: in_one
   doc: Forward input gzipped FASTQ file(s).
   type: File
   inputBinding:
     prefix: -in1
-- id: in2
+- id: in_two
   doc: "Reverse input gzipped FASTQ file(s) for paired-end mode (same number of cycles/reads\
     \ as 'in1'). Default value: ''"
   type: File

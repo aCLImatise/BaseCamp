@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vdjer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vdjer.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

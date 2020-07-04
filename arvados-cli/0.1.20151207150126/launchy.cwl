@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: launchy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/launchy.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

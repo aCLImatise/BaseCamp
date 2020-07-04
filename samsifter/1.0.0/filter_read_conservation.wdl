@@ -2,22 +2,31 @@ version 1.0
 
 task FilterReadConservation {
   input {
-    String inputInput
-    String discardDiscard
-    Boolean verboseVerbose
-    Boolean debugDebug
-    Boolean modifyModify
-    String asAsDev
-    Int maxMaxTaxA
+    String? specify_file_analysed
+    String? discard
+    Boolean? verbose
+    Boolean? debug
+    Boolean? modify
+    String? as_dev
+    Int? max_tax_a
   }
   command <<<
     filter_read_conservation \
-      ~{if defined(inputInput) then ("--input " +  '"' + inputInput + '"') else ""} \
-      ~{if defined(discardDiscard) then ("--discard " +  '"' + discardDiscard + '"') else ""} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{true="--debug" false="" debugDebug} \
-      ~{true="--modify" false="" modifyModify} \
-      ~{if defined(asAsDev) then ("--as_dev " +  '"' + asAsDev + '"') else ""} \
-      ~{if defined(maxMaxTaxA) then ("--max_taxa " +  '"' + maxMaxTaxA + '"') else ""}
+      ~{if defined(specify_file_analysed) then ("--input " +  '"' + specify_file_analysed + '"') else ""} \
+      ~{if defined(discard) then ("--discard " +  '"' + discard + '"') else ""} \
+      ~{true="--verbose" false="" verbose} \
+      ~{true="--debug" false="" debug} \
+      ~{true="--modify" false="" modify} \
+      ~{if defined(as_dev) then ("--as_dev " +  '"' + as_dev + '"') else ""} \
+      ~{if defined(max_tax_a) then ("--max_taxa " +  '"' + max_tax_a + '"') else ""}
   >>>
+  parameter_meta {
+    specify_file_analysed: "specify SAM file to be analysed (default: STDIN)"
+    discard: "keep or discard entries passing the filter criteria?"
+    verbose: "print additional information to stderr"
+    debug: "print debug messages to stderr"
+    modify: "modify header by adding PG record"
+    as_dev: "permitted deviation from max alignment score [5]"
+    max_tax_a: "maximum number of taxa [10]"
+  }
 }

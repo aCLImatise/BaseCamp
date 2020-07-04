@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: caper_server.cwl
+id: ../../../../home/ubuntu/BiocondaCli/caper_server.cwl
 inputs:
 - id: dry_run
   doc: Caper does not take any action.
@@ -199,12 +199,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --aws-region
-- id: out_s3_bucket
+- id: out_s_three_bucket
   doc: Output S3 bucket for AWS backend
   type: string
   inputBinding:
     prefix: --out-s3-bucket
-- id: tmp_s3_bucket
+- id: tmp_s_three_bucket
   doc: Temporary S3 bucket for AWS backend
   type: string
   inputBinding:

@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: pdb_cluster_zip.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pdb_cluster_zip.cwl
 inputs:
-- id: c
-  doc: ''
+- id: config
+  doc: This file can be a YAML file, JSON file or JSON string
   type: string
   inputBinding:
-    prefix: -c
-- id: o
-  doc: ''
+    prefix: --config
+- id: output_pdb_zip_path
+  doc: Output ZIP file name
   type: string
   inputBinding:
-    prefix: -o
+    prefix: --output_pdb_zip_path
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: nanonetcall.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nanonetcall.cwl
 inputs:
-- id: input
-  doc: 'A path to fast5 files. (default: None)'
-  type: string
-  inputBinding:
-    position: 0
 - id: watch
   doc: 'Switch to watching folder, argument value used as timeout period. (default:
     None)'
@@ -99,6 +94,11 @@ inputs:
   type: string[]
   inputBinding:
     prefix: --platforms
+- id: input
+  doc: 'A path to fast5 files. (default: None)'
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

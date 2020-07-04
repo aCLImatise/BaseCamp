@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: probabilistic2020_oncogene.cwl
+id: ../../../../home/ubuntu/BiocondaCli/probabilistic2020_oncogene.cwl
 inputs:
 - id: input
   doc: gene FASTA file from extract_gene_seq.py script

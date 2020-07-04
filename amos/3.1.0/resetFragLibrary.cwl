@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: resetFragLibrary.cwl
+id: ../../../../home/ubuntu/BiocondaCli/resetFragLibrary.cwl
 inputs:
 - id: update_clr_ranges
   doc: ''
@@ -11,7 +11,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: frag_id_newlib_id
+- id: frag_id_dot_newlib_id
   doc: ''
   type: string
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: getUniqueProtein_o.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/getUniqueProtein_o.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

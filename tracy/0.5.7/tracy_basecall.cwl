@@ -1,17 +1,7 @@
 class: CommandLineTool
-id: tracy_basecall.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tracy_basecall.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: trace_ab1
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: p
+- id: arg_peak_ratio
   doc: '[ --pratio ] arg (=0.330000013)  peak ratio to call a base'
   type: boolean
   inputBinding:
@@ -21,11 +11,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -f
-- id: o
+- id: arg_basecalling_output
   doc: '[ --output ] arg (="out.json")   basecalling output'
   type: boolean
   inputBinding:
     prefix: -o
+- id: trace_do_tab_one
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

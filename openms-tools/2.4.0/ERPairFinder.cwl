@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ERPairFinder.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ERPairFinder.cwl
 inputs:
 - id: in
   doc: "*                            Input mzML file containing the ER spectra. (valid\

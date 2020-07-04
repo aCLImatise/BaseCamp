@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: bolt_fasta_view.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bolt_fasta_view.cwl
 inputs:
+- id: file_path
+  doc: A bam file (*require)
+  type: string
+  inputBinding:
+    prefix: --filepath
+- id: scope
+  doc: Scope chr:begin-end (*require)
+  type: string
+  inputBinding:
+    prefix: --scope
 - id: genie
   doc: ''
   type: string
@@ -21,16 +31,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: file_path
-  doc: A bam file (*require)
-  type: string
-  inputBinding:
-    prefix: --filepath
-- id: scope
-  doc: Scope chr:begin-end (*require)
-  type: string
-  inputBinding:
-    prefix: --scope
 outputs: []
 cwlVersion: v1.1
 baseCommand:

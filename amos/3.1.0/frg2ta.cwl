@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: frg2ta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/frg2ta.cwl
 inputs:
 - id: check
   doc: Prints out those seqnames that are shorter than MINSEQ
@@ -11,7 +11,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -minseq
-- id: o
+- id: output_prefix
   doc: Output prefix
   type: string
   inputBinding:
@@ -41,7 +41,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -nonames
-- id: v
+- id: prints_version_information
   doc: Prints version information
   type: boolean
   inputBinding:

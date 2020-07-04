@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mcmctree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mcmctree.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

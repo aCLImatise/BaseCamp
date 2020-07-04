@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: optimize_augustus.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/optimize_augustus.pl.cwl
 inputs:
 - id: meta_pars
   doc: 'metapars.cfg contains the names and their ranges of the meta parameters that
@@ -40,9 +40,8 @@ inputs:
   inputBinding:
     prefix: --AUGUSTUS_CONFIG_PATH
 - id: opt_trans_matrix
-  doc: Optimize the transition matrix file s. s must be the transition file used.
-    e.g. ../species/nt/generic/generic_trans_shadow_partial.pbl
-  type: string
+  doc: /species/nt/generic/generic_trans_shadow_partial.pbl
+  type: string[]
   inputBinding:
     prefix: --opt_trans_matrix
 - id: matrix_constraints
@@ -62,15 +61,15 @@ inputs:
   inputBinding:
     prefix: --aug_exec_dir
 - id: train_only_utr
-  doc: '=1           Use this option, if the exon, intron and intergenic models need
-    not be trained. (default: 0)'
-  type: boolean
+  doc: 'Use this option, if the exon, intron and intergenic models need not be trained.
+    (default: 0)'
+  type: string
   inputBinding:
     prefix: --trainOnlyUtr
 - id: not_rain_pars
-  doc: '=1            Use this option, if the parameters to optimize do not affect
-    training. The training step (etraining) is omitted completely. (default: 0)'
-  type: boolean
+  doc: 'Use this option, if the parameters to optimize do not affect training. The
+    training step (etraining) is omitted completely. (default: 0)'
+  type: string
   inputBinding:
     prefix: --noTrainPars
 - id: sens_spec_bias
@@ -79,20 +78,20 @@ inputs:
   inputBinding:
     prefix: --sens_spec_bias
 - id: nice
-  doc: =1                   execute all time consuming system calls with bash nice
-    (default nice level) Default value for execution of optmize_augustus.pl is --nice=0.
-  type: boolean
+  doc: execute all time consuming system calls with bash nice (default nice level)
+    Default value for execution of optmize_augustus.pl is --nice=0.
+  type: string
   inputBinding:
     prefix: --nice
 - id: cleanup
-  doc: '=1                Delete tmp_opt_* folder after optimization (default: 0)'
-  type: boolean
+  doc: 'Delete tmp_opt_* folder after optimization (default: 0)'
+  type: string
   inputBinding:
     prefix: --cleanup
 - id: stop_codon_excluded_from_cds
-  doc: "=1 Use this option, if the stop codons are excluded from the CDS features\
-    \ in 'eval.gtf' (default: 0)."
-  type: boolean
+  doc: "Use this option, if the stop codons are excluded from the CDS features in\
+    \ 'eval.gtf' (default: 0)."
+  type: string
   inputBinding:
     prefix: --stopCodonExcludedFromCDS
 - id: eval_exec_dir
@@ -126,11 +125,11 @@ inputs:
   inputBinding:
     prefix: --dbaccess
 - id: jg
-  doc: "=1                       Use this option, if you want to filter out duplicates\
-    \ from the prediction with the external tool 'joingenes' (default: 0, however\
-    \ --jg=1 is recommended). The tool 'joingenes' is part of the augustus package\
-    \ and can be found in the 'auxprogs' folder."
-  type: boolean
+  doc: "Use this option, if you want to filter out duplicates from the prediction\
+    \ with the external tool 'joingenes' (default: 0, however --jg=1 is recommended).\
+    \ The tool 'joingenes' is part of the augustus package and can be found in the\
+    \ 'auxprogs' folder."
+  type: string
   inputBinding:
     prefix: --jg
 - id: jg_exec_dir
@@ -138,36 +137,44 @@ inputs:
   type: string
   inputBinding:
     prefix: --jg_exec_dir
-- id: meta_pars
-  doc: 'see usage 1 above (default: generic_metapars.cgp.cfg)'
+- id: prefix_species_name
+  doc: prefix of the species name
   type: string
   inputBinding:
-    prefix: --metapars
-- id: cpus
-  doc: see usage 1 above
+    position: 0
+- id: train_dot_gb
+  doc: genbank file for training with bona fide gene structures
   type: string
   inputBinding:
-    prefix: --cpus
-- id: p_step
-  doc: see usage 1 above
+    position: 1
+- id: prefix_model_species
+  doc: prefix of the model species
   type: string
   inputBinding:
-    prefix: --pstep
-- id: augustus_config_path
-  doc: see usage 1 above
+    position: 0
+- id: tree_dot_nwk
+  doc: a phylogenetic tree of the species in NEWICK format
   type: string
   inputBinding:
-    prefix: --AUGUSTUS_CONFIG_PATH
-- id: aug_exec_dir
-  doc: see usage 1 above
+    position: 1
+- id: aln_dot_maf
+  doc: an alignment of the genomes in MAF format
   type: string
   inputBinding:
-    prefix: --aug_exec_dir
-- id: sens_spec_bias
-  doc: see usage 1 above
+    position: 2
+- id: genomes_dot_tbl
+  doc: a text file containing the locations of the genomes. Each line starts with
+    the species identifier followed by the location of the corresponding genome file,
+    e.g. hg19 /path/to/human/genome.fa mm9  /path/to/mouse/genome.fa ...
   type: string
   inputBinding:
-    prefix: --sens_spec_bias
+    position: 3
+- id: eval_dot_gtf
+  doc: annotation file in GTF format. Accuracy values are computed by comparing the
+    predictions against this reference set.
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

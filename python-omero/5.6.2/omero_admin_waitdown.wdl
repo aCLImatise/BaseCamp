@@ -2,10 +2,13 @@ version 1.0
 
 task OmeroAdminWaitdown {
   input {
-    String waitWait
+    String? wait
   }
   command <<<
     omero admin waitdown \
-      ~{if defined(waitWait) then ("--wait " +  '"' + waitWait + '"') else ""}
+      ~{if defined(wait) then ("--wait " +  '"' + wait + '"') else ""}
   >>>
+  parameter_meta {
+    wait: "Seconds to wait for operation"
+  }
 }

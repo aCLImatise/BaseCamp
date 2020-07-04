@@ -1,27 +1,7 @@
 class: CommandLineTool
-id: bolt_bam_tofastq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bolt_bam_tofastq.cwl
 inputs:
-- id: genie
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: bam
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: to_fast_q
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: bam
+- id: input_bam_file
   doc: Input BAM file (*require)
   type: string
   inputBinding:
@@ -36,7 +16,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --fq
-- id: fq2
+- id: fq_two
   doc: Output FASTQ2 for paired-end reads (If empty, all data will be at fq)
   type: string
   inputBinding:
@@ -46,6 +26,26 @@ inputs:
   type: string
   inputBinding:
     prefix: --requiredflags
+- id: genie
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: var_6
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: to_fast_q
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

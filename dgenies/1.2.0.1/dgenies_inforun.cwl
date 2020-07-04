@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dgenies_inforun.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dgenies_inforun.cwl
 inputs:
 - id: message
   doc: Message to add

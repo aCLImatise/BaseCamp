@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: stk2ct.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stk2ct.cwl
 inputs:
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 - id: give_ct
   doc: ''
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: options
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

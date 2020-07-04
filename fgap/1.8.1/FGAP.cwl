@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FGAP.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FGAP.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

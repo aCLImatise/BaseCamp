@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: asn2xml.cwl
+id: ../../../../home/ubuntu/BiocondaCli/asn2xml.cwl
 inputs:
-- id: l
+- id: log_errors_file
   doc: 'Log errors to file named: [File Out]  Optional'
   type: boolean
   inputBinding:

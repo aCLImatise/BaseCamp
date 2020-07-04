@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sga.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sga.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

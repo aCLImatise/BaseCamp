@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pslCat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pslCat.cwl
 inputs:
 - id: check
   doc: input.  Detects more errors but slower
@@ -26,6 +26,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ext
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,46 +1,33 @@
 class: CommandLineTool
-id: dbTrash.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dbTrash.cwl
 inputs:
-- id: number
-  doc: hours old to qualify for drop.  N can be a float.
+- id: age
+  doc: '- number of hours old to qualify for drop.  N can be a float.'
   type: string
   inputBinding:
-    prefix: '- number'
-- id: actually
-  doc: the tables, default is merely to display tables.
-  type: string
+    prefix: -age
+- id: drop
+  doc: '- actually drop the tables, default is merely to display tables.'
+  type: boolean
   inputBinding:
-    prefix: '- actually'
+    prefix: -drop
 - id: drop_limit
-  doc: if number of tables to drop is greater than limit,
+  doc: '- ERROR out if number of tables to drop is greater than limit, - default is
+    to drop all expired tables'
   type: string
   inputBinding:
     prefix: -dropLimit
-- id: default
-  doc: to drop all expired tables
+- id: db
+  doc: '- Specify a database to work with, default is customTrash.'
   type: string
   inputBinding:
-    prefix: '- default'
-- id: specify
-  doc: database to work with, default is customTrash.
-  type: string
-  inputBinding:
-    prefix: '- Specify'
+    prefix: -db
 - id: history_too
-  doc: the table called 'history' for deletion.
-  type: string
+  doc: "- also consider the table called 'history' for deletion. - default is to leave\
+    \ 'history' alone no matter how old. - this applies to the table 'metaInfo' also."
+  type: boolean
   inputBinding:
     prefix: -historyToo
-- id: default
-  doc: to leave 'history' alone no matter how old.
-  type: string
-  inputBinding:
-    prefix: '- default'
-- id: this
-  doc: to the table 'metaInfo' also.
-  type: string
-  inputBinding:
-    prefix: '- this'
 - id: ext_file
   doc: '- check extFile for lines that reference files - no longer in trash'
   type: boolean
@@ -59,25 +46,16 @@ inputs:
   inputBinding:
     prefix: -topDir
 - id: table_status
-  doc: "'show table status' to get size data, very inefficient"
+  doc: "- use 'show table status' to get size data, very inefficient"
   type: boolean
   inputBinding:
     prefix: -tableStatus
 - id: del_lost_table
-  doc: that exist but are missing from metaInfo
-  type: string
+  doc: '- delete tables that exist but are missing from metaInfo - this operation
+    can be even slower than -tableStatus - if there are many tables to check.'
+  type: boolean
   inputBinding:
     prefix: -delLostTable
-- id: this
-  doc: can be even slower than -tableStatus
-  type: string
-  inputBinding:
-    prefix: '- this'
-- id: if
-  doc: are many tables to check.
-  type: string
-  inputBinding:
-    prefix: '- if'
 - id: verbose
   doc: '- 2 == show arguments, dates, and dropped tables, - 3 == show date information
     for all tables.'

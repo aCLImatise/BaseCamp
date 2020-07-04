@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: NovorAdapter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/NovorAdapter.cwl
 inputs:
 - id: executable
   doc: Novor.jar
@@ -51,9 +51,9 @@ inputs:
 - id: variable_modifications
   doc: "Variable modifications (valid: 'Acetyl (K)', 'Acetyl (N-term)', 'Amidated\
     \ (C-term)', 'Ammonia-loss (N-term C)', 'Biotin (K)', 'Biotin (N-term)', 'Carbamidomethyl\
-    \ (C)', 'Car bamyl (K)', 'Carbamyl (N-term)', 'Carboxymethyl (C)', 'Deamidated\
+    \ (C)', 'Carbamyl (K)', 'Carbamyl (N-term)', 'Carboxymethyl (C)', 'Deamidated\
     \ (NQ)', 'Dehydrated (N-term C)', 'Dioxidation (M)', 'Methyl (C-term)', 'Methyl\
-    \ (DE)', 'Oxidation (M)', 'Oxi dation (HW)', 'Phospho (ST)', 'Phospho (Y)', 'Pyro-carbamidomethyl\
+    \ (DE)', 'Oxidation (M)', 'Oxidation (HW)', 'Phospho (ST)', 'Phospho (Y)', 'Pyro-carbamidomethyl\
     \ (N-term C)', 'Pyro-Glu (E)', 'Pyro-Glu (Q)', 'Sodium (C-term)', 'Sodium (DE)',\
     \ 'Sulfo (STY)', 'Trimethyl (RK)')"
   type: string
@@ -62,9 +62,9 @@ inputs:
 - id: fixed_modifications
   doc: "Fixed modifications (valid: 'Acetyl (K)', 'Acetyl (N-term)', 'Amidated (C-term)',\
     \ 'Ammonia-loss (N-term C)', 'Biotin (K)', 'Biotin (N-term)', 'Carbamidomethyl\
-    \ (C)', 'Carbam yl (K)', 'Carbamyl (N-term)', 'Carboxymethyl (C)', 'Deamidated\
+    \ (C)', 'Carbamyl (K)', 'Carbamyl (N-term)', 'Carboxymethyl (C)', 'Deamidated\
     \ (NQ)', 'Dehydrated (N-term C)', 'Dioxidation (M)', 'Methyl (C-term)', 'Methyl\
-    \ (DE)', 'Oxidation (M)', 'Oxidat ion (HW)', 'Phospho (ST)', 'Phospho (Y)', 'Pyro-carbamidomethyl\
+    \ (DE)', 'Oxidation (M)', 'Oxidation (HW)', 'Phospho (ST)', 'Phospho (Y)', 'Pyro-carbamidomethyl\
     \ (N-term C)', 'Pyro-Glu (E)', 'Pyro-Glu (Q)', 'Sodium (C-term)', 'Sodium (DE)',\
     \ 'Sulfo (STY)', 'Trimethyl (RK)')"
   type: string

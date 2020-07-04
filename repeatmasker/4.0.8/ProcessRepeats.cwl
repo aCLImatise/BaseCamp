@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ProcessRepeats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ProcessRepeats.cwl
 inputs:
 - id: ace
   doc: Creates an additional output file in ACeDB format.
@@ -26,13 +26,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -excln
-- id: orf2
+- id: orf_two
   doc: Results in sometimes negative coordinates for L1 elements; all L1 subfamilies
     are aligned over the ORF2 region, sometimes improving interpretation of data.
   type: boolean
   inputBinding:
     prefix: -orf2
-- id: a
+- id: shows_alignments_align
   doc: Shows the alignments in a .align output file.
   type: boolean
   inputBinding:
@@ -42,7 +42,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -maskSource
-- id: x
+- id: mask_repeats_lower
   doc: Mask repeats with a lower case 'x'.
   type: boolean
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: DaisySuite_stats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/DaisySuite_stats.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

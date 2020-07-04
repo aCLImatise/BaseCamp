@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: shigatyper.cwl
+id: ../../../../home/ubuntu/BiocondaCli/shigatyper.cwl
 inputs:
-- id: read_1
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: read_2
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: n
   doc: ''
   type: string
@@ -21,6 +11,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: read_one
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: read_two
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

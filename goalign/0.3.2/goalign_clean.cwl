@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: goalign_clean.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_clean.cwl
 inputs:
-- id: seqs
-  doc: Removes sequences with gaps
-  type: string
-  inputBinding:
-    position: 0
-- id: sites
-  doc: Removes sites with gaps
-  type: string
-  inputBinding:
-    position: 1
 - id: cut_off
   doc: 'Cutoff for gap deletion : 0 remove sites/sequences with > 0 gap, 1 remove
     sites/sequences with 100% gaps)'
@@ -87,6 +77,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: seqs
+  doc: Removes sequences with gaps
+  type: string
+  inputBinding:
+    position: 0
+- id: sites
+  doc: Removes sites with gaps
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

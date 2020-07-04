@@ -2,12 +2,16 @@ version 1.0
 
 task ToMultiFastA {
   input {
-    String? inputInputIntervalFile
-    String? outputOutputBasename
+    String input_interval_file
+    String output_base_name
   }
   command <<<
     toMultiFastA \
-      ~{inputInputIntervalFile} \
-      ~{outputOutputBasename}
+      ~{input_interval_file} \
+      ~{output_base_name}
   >>>
+  parameter_meta {
+    input_interval_file: ""
+    output_base_name: ""
+  }
 }

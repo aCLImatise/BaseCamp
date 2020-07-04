@@ -2,16 +2,19 @@ version 1.0
 
 task LongshotFLAGS {
   input {
-    String bamBam
-    String refRef
-    String outOut
-    String? optionsOptions
+    String? bam
+    String? ref
+    String? out
   }
   command <<<
     longshot FLAGS \
-      ~{optionsOptions} \
-      ~{if defined(bamBam) then ("--bam " +  '"' + bamBam + '"') else ""} \
-      ~{if defined(refRef) then ("--ref " +  '"' + refRef + '"') else ""} \
-      ~{if defined(outOut) then ("--out " +  '"' + outOut + '"') else ""}
+      ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
+      ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""} \
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""}
   >>>
+  parameter_meta {
+    bam: ""
+    ref: ""
+    out: ""
+  }
 }

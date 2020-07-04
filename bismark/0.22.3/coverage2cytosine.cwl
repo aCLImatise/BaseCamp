@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: coverage2cytosine.cwl
+id: ../../../../home/ubuntu/BiocondaCli/coverage2cytosine.cwl
 inputs:
-- id: input
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: genome_folder
   doc: ''
   type: File
@@ -16,6 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -o
+- id: input
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: panX.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/panX.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

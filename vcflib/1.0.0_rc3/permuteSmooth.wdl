@@ -2,14 +2,19 @@ version 1.0
 
 task PermuteSmooth {
   input {
-    String yourYour
-    String? 55
-    String? 11
+    String? s
+    String? f
+    String? n
   }
   command <<<
     permuteSmooth \
-      ~{55} \
-      ~{if defined(yourYour) then ("-     Your " +  '"' + yourYour + '"') else ""} \
-      ~{11}
+      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
+      ~{if defined(n) then ("-n " +  '"' + n + '"') else ""}
   >>>
+  parameter_meta {
+    s: ""
+    f: ""
+    n: ""
+  }
 }

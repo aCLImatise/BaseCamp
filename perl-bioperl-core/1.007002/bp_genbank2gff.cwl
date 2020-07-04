@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bp_genbank2gff.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bp_genbank2gff.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

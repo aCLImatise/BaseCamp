@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_gen_gene_consensus_sequences.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_gen_gene_consensus_sequences.cwl
 inputs:
 - id: compress_samples
   doc: Normally all samples with variation will have their own consensus sequence.

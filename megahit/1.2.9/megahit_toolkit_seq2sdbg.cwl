@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: megahit_toolkit_seq2sdbg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/megahit_toolkit_seq2sdbg.cwl
 inputs:
-- id: s_dbg_builder
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: seq2sdbg
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: host_mem
   doc: (=0)                memory to be used. No more than 95% of the free memory
     is recommended. 0 for auto detect.
@@ -74,6 +64,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --mem_flag
+- id: s_dbg_builder
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: seq_two_s_dbg
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

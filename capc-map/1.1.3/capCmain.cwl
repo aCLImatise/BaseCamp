@@ -1,34 +1,34 @@
 class: CommandLineTool
-id: capCmain.cwl
+id: ../../../../home/ubuntu/BiocondaCli/capCmain.cwl
 inputs:
-- id: r
+- id: fragfile_bed_file
   doc: frag_file   is a bed file of restriction enzyme fragments genome wide
   type: boolean
   inputBinding:
     prefix: -r
-- id: t
+- id: targfile_bed_file
   doc: targ_file   is a bed file of capture targets
   type: boolean
   inputBinding:
     prefix: -t
-- id: s
+- id: samfile_sam_file
   doc: sam_file    is a SAM file containing groups of aligned digested fragments,
     sorted by name
   type: boolean
   inputBinding:
     prefix: -s
-- id: o
+- id: name_first_part
   doc: name        is the first part of the output file name
   type: boolean
   inputBinding:
     prefix: -o
-- id: e
+- id: exclusion_zone_reporter
   doc: exclusion zone; reporter fragments mapping within N bp of a target fragment
     are discarder. Default N=500.
   type: string
   inputBinding:
     prefix: -e
-- id: i
+- id: save_interchromosomal_present
   doc: save interchromosomal. If present, interchomosomal interactions will be saved
     as well as counted.
   type: boolean

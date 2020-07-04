@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: artificial_errors.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/artificial_errors.py.cwl
 inputs:
 - id: ase
   doc: '<i>     : add substitution error at <location> for <length>'
@@ -36,7 +36,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ab
-- id: o
+- id: s_output_file
   doc: '<s>         : output file name (error_ + inputfile.fna)'
   type: boolean
   inputBinding:

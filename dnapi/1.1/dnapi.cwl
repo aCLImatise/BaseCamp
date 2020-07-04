@@ -1,18 +1,13 @@
 class: CommandLineTool
-id: dnapi.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dnapi.py.cwl
 inputs:
-- id: fast_q
-  doc: including stdin or compressed file {zip,gz,tar,bz}
-  type: string
-  inputBinding:
-    position: 0
-- id: k
+- id: range_single_kmer
   doc: "[KMER_BEG:KMER_END:INCREMENT | KMER_LEN] range of kmers or a single kmer to\
     \ predict 3'adapters (default: 9:11:2)"
   type: boolean
   inputBinding:
     prefix: -k
-- id: r
+- id: range_single_ratio
   doc: '[RATIO_BEG:RATIO_END:INTCREMENT | RATIO] range of ratios or a single ratio
     to filter less abundant kmers (default: 1.2:1.4:0.1)'
   type: boolean
@@ -68,18 +63,23 @@ inputs:
   type: long
   inputBinding:
     prefix: --max-len
-- id: trim_5p
+- id: trim_five_p
   doc: "trim specified number of bases from 5'ends after adapter removal (default:\
     \ 0)"
   type: long
   inputBinding:
     prefix: --trim-5p
-- id: trim_3p
+- id: trim_three_p
   doc: "trim specified number of bases from 3'ends after adapter removal (default:\
     \ 0)"
   type: long
   inputBinding:
     prefix: --trim-3p
+- id: fast_q
+  doc: including stdin or compressed file {zip,gz,tar,bz}
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

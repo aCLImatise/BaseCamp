@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: blacksheep.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blacksheep.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

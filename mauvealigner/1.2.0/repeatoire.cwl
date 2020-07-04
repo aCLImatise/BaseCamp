@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: repeatoire.cwl
+id: ../../../../home/ubuntu/BiocondaCli/repeatoire.cwl
 inputs:
 - id: allow_redundant
   doc: (=1)        allow redundant alignments?
@@ -31,7 +31,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --gapextend
-- id: h
+- id: _transition_homologous
   doc: (=0.00800000038)          Transition to Homologous
   type: string
   inputBinding:
@@ -41,7 +41,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --highest
-- id: l
+- id: minimum_repeat_length
   doc: (=1)                      minimum repeat length
   type: string
   inputBinding:
@@ -136,7 +136,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --two-hits
-- id: u
+- id: _transition_unrelated
   doc: (=0.00100000005)          Transition to Unrelated
   type: string
   inputBinding:
@@ -146,7 +146,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --unalign
-- id: w
+- id: max_gap_width
   doc: '(=0)                      max gap width '
   type: string
   inputBinding:
@@ -161,7 +161,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --xml
-- id: z
+- id: _seed_weight
   doc: (=0)                      seed weight
   type: string
   inputBinding:

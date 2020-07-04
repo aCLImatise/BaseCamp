@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gseapy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gseapy.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

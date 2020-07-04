@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: PTPredict.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PTPredict.cwl
 inputs:
 - id: in
   doc: "*                    Input file  (valid formats: 'idXML')"

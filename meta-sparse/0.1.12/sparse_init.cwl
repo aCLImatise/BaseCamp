@@ -1,11 +1,11 @@
 class: CommandLineTool
-id: sparse_init.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sparse_init.cwl
 inputs:
-- id: n
-  doc: ''
+- id: dbname
+  doc: 'Name for the new database to be generated. '
   type: string
   inputBinding:
-    prefix: -n
+    prefix: --dbname
 outputs: []
 cwlVersion: v1.1
 baseCommand:

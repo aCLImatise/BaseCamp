@@ -1,29 +1,6 @@
 class: CommandLineTool
-id: svim_asm_diploid.cwl
+id: ../../../../home/ubuntu/BiocondaCli/svim_asm_diploid.cwl
 inputs:
-- id: working_dir
-  doc: Working and output directory. Existing files in the directory are overwritten.
-    If the directory does not exist, it is created.
-  type: string
-  inputBinding:
-    position: 0
-- id: bam_file_1
-  doc: SAM/BAM file with alignment of query assembly's first haplotype to reference
-    assembly (needs to be coordinate-sorted)
-  type: string
-  inputBinding:
-    position: 1
-- id: bam_file_2
-  doc: SAM/BAM file with alignment of query assembly's second haplotype to reference
-    assembly (needs to be coordinate-sorted)
-  type: string
-  inputBinding:
-    position: 2
-- id: genome
-  doc: Reference genome file that the assembly was aligned to (FASTA)
-  type: string
-  inputBinding:
-    position: 3
 - id: min_mapq
   doc: 'Minimum mapping quality of alignments to consider (default: 20). Alignments
     with a lower mapping quality are ignored.'
@@ -132,6 +109,29 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --query_names
+- id: working_dir
+  doc: Working and output directory. Existing files in the directory are overwritten.
+    If the directory does not exist, it is created.
+  type: string
+  inputBinding:
+    position: 0
+- id: bam_file_one
+  doc: SAM/BAM file with alignment of query assembly's first haplotype to reference
+    assembly (needs to be coordinate-sorted)
+  type: string
+  inputBinding:
+    position: 1
+- id: bam_file_two
+  doc: SAM/BAM file with alignment of query assembly's second haplotype to reference
+    assembly (needs to be coordinate-sorted)
+  type: string
+  inputBinding:
+    position: 2
+- id: genome
+  doc: Reference genome file that the assembly was aligned to (FASTA)
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: sina.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sina.cwl
 inputs:
-- id: h
+- id: show_help_long
   doc: '[ --help-all ]        show full help (long)'
   type: boolean
   inputBinding:
     prefix: -H
-- id: i
+- id: arg_input_file_arb
   doc: '[ --in ] arg (="-")   input file (arb or fasta)'
   type: boolean
   inputBinding:
     prefix: -i
-- id: o
+- id: arg_output_file_arb
   doc: '[ --out ] arg (="")   output file (arb or fasta)'
   type: boolean
   inputBinding:
@@ -21,17 +21,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --add-relatives
-- id: s
+- id: enable_search_stage
   doc: '[ --search ]          enable search stage'
   type: boolean
   inputBinding:
     prefix: -S
-- id: p
+- id: skip_alignment_stage
   doc: '[ --prealigned ]      skip alignment stage'
   type: boolean
   inputBinding:
     prefix: -P
-- id: p
+- id: arg_limit_number
   doc: '[ --threads ] arg     limit number of threads (automatic)'
   type: boolean
   inputBinding:
@@ -41,17 +41,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --num-pts
-- id: v
+- id: _show_version
   doc: '[ --version ]         show version'
   type: boolean
   inputBinding:
     prefix: -V
-- id: v
+- id: _increase_verbosity
   doc: '[ --verbose ]         increase verbosity'
   type: boolean
   inputBinding:
     prefix: -v
-- id: q
+- id: _decrease_verbosity
   doc: '[ --quiet ]           decrease verbosity'
   type: boolean
   inputBinding:
@@ -66,12 +66,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --meta-fmt
-- id: r
+- id: arg_reference_database
   doc: '[ --db ] arg          reference database'
   type: boolean
   inputBinding:
     prefix: -r
-- id: t
+- id: arg_check_strand
   doc: "[ --turn ] arg        check other strand as well 'all' checks all four frames"
   type: boolean
   inputBinding:

@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: ribotish_quality.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ribotish_quality.cwl
 inputs:
-- id: b
+- id: riboseq_bam_file
   doc: Riboseq bam file
   type: string
   inputBinding:
     prefix: -b
-- id: g
+- id: gene_annotation_file
   doc: Gene annotation file
   type: string
   inputBinding:
     prefix: -g
-- id: o
+- id: output_data_file
   doc: "Output data file (default: ribobampath[:-4]+ '_qual.txt')"
   type: string
   inputBinding:
@@ -21,7 +21,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tis
-- id: i
+- id: input_previous_output
   doc: Input previous output file, do not read gene file and bam file again
   type: string
   inputBinding:
@@ -37,22 +37,22 @@ inputs:
   type: string
   inputBinding:
     prefix: --chrmap
-- id: f
+- id: output_pdf_figure
   doc: "Output pdf figure file (default: ribobampath[:-4]+ '_qual.pdf')"
   type: string
   inputBinding:
     prefix: -f
-- id: r
+- id: output_offset_ribobampath
   doc: "Output offset parameter file (default: ribobampath[:-4]+ '.para.py')"
   type: string
   inputBinding:
     prefix: -r
-- id: l
+- id: range_tag_length
   doc: 'Range of tag length (default: 25,35)'
   type: string
   inputBinding:
     prefix: -l
-- id: d
+- id: position_range_start
   doc: 'Position range near start codon or stop codon (default: -40,20)'
   type: string
   inputBinding:
@@ -62,7 +62,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --bins
-- id: nom0
+- id: nom_zero
   doc: Do not consider reads with mismatch at position 0 as a new group
   type: boolean
   inputBinding:
@@ -103,7 +103,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --colors
-- id: p
+- id: number_processes_default
   doc: 'Number of processes (default: 1)'
   type: string
   inputBinding:

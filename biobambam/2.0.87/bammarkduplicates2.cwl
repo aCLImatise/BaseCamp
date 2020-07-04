@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bammarkduplicates2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bammarkduplicates2.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

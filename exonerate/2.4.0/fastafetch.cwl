@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastafetch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastafetch.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

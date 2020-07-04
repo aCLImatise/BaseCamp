@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: denovo_map.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/denovo_map.pl.cwl
 inputs:
 - id: samples
   doc: ': path to the directory containing the samples reads files.'
@@ -17,7 +17,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --out-path
-- id: x
+- id: additional_options_specific
   doc: ': additional options for specific pipeline components, e.g. -X "populations:
     --min-maf 0.05".'
   type: boolean
@@ -39,12 +39,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --resume
-- id: m
+- id: number_within_individuals
   doc: ': number of mismatches allowed between stacks within individuals (for ustacks).'
   type: boolean
   inputBinding:
     prefix: -M
-- id: n
+- id: number_between_individuals
   doc: ': number of mismatches allowed between stacks between individuals (for cstacks;
     default 1; suggested: set to ustacks -M).'
   type: boolean

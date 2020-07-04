@@ -1,32 +1,17 @@
 class: CommandLineTool
-id: findscu.cwl
+id: ../../../../home/ubuntu/BiocondaCli/findscu.cwl
 inputs:
-- id: peer
-  doc: hostname of DICOM peer
-  type: string
-  inputBinding:
-    position: 0
-- id: port
-  doc: tcp/ip port number of peer
-  type: string
-  inputBinding:
-    position: 1
-- id: dcm_file_in
-  doc: DICOM query file(s)
-  type: string
-  inputBinding:
-    position: 2
-- id: q
+- id: _quiet_print
   doc: --quiet               quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose             verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug               debug mode, print debug information
   type: boolean
   inputBinding:
@@ -42,28 +27,28 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lc
-- id: k
+- id: _key_ggggeeee
   doc: '--key                 [k]ey: gggg,eeee="str", path or dict. name="str" override
     matching key'
   type: boolean
   inputBinding:
     prefix: -k
-- id: w
+- id: _worklist_use
   doc: --worklist            use modality worklist information model (def.)
   type: boolean
   inputBinding:
     prefix: -W
-- id: p
+- id: _patient_use
   doc: --patient             use patient root information model
   type: boolean
   inputBinding:
     prefix: -P
-- id: s
+- id: _study_use
   doc: --study               use study root information model
   type: boolean
   inputBinding:
     prefix: -S
-- id: o
+- id: _psonly_use
   doc: --psonly              use patient/study only information model
   type: boolean
   inputBinding:
@@ -78,12 +63,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --call
-- id: u
+- id: _disablenewvr_disable
   doc: --disable-new-vr      disable support for new VRs, convert to OB
   type: boolean
   inputBinding:
     prefix: -u
-- id: x
+- id: _proposeuncompr_propose
   doc: =   --propose-uncompr     propose all uncompressed TS, explicit VR with local
     byte ordering first (default)
   type: boolean
@@ -195,11 +180,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -sr
-- id: x
+- id: _extract_extract
   doc: --extract             extract responses to file (rsp0001.dcm, ...)
   type: boolean
   inputBinding:
     prefix: -X
+- id: peer
+  doc: hostname of DICOM peer
+  type: string
+  inputBinding:
+    position: 0
+- id: port
+  doc: tcp/ip port number of peer
+  type: string
+  inputBinding:
+    position: 1
+- id: dcm_file_in
+  doc: DICOM query file(s)
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

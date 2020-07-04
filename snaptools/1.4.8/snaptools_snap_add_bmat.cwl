@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: snaptools_snap_add_bmat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snaptools_snap_add_bmat.cwl
 inputs:
 - id: snap_file
   doc: 'snap file. (default: None)'

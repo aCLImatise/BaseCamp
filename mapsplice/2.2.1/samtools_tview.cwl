@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: samtools_tview.cwl
+id: ../../../../home/ubuntu/BiocondaCli/samtools_tview.cwl
 inputs:
 - id: bam_tk
   doc: ''
@@ -11,12 +11,12 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: a_lnb_am
+- id: aln_dot_bam
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: ref_fast_a
+- id: ref_dot_fast_a
   doc: ''
   type: string
   inputBinding:

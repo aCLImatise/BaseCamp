@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: refseq_masher_matches.cwl
+id: ../../../../home/ubuntu/BiocondaCli/refseq_masher_matches.cwl
 inputs:
 - id: mash_bin
   doc: Mash binary path (default="mash")
@@ -32,6 +32,11 @@ inputs:
   type: Directory
   inputBinding:
     prefix: --tmp-dir
+- id: input_dot_dot_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

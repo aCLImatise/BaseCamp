@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: segway_task.cwl
+id: ../../../../home/ubuntu/BiocondaCli/segway_task.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

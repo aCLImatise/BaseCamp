@@ -2,24 +2,34 @@ version 1.0
 
 task Dbiprof {
   input {
-    String numberNumber
-    String sortSort
-    Boolean reverseReverse
-    String matchMatch
-    String excludeExclude
-    Boolean caseCaseSensitive
-    Boolean deleteDelete
-    Boolean versionVersion
+    String? number
+    String? sort
+    Boolean? reverse
+    String? match
+    String? exclude
+    Boolean? case_sensitive
+    Boolean? delete
+    Boolean? version
   }
   command <<<
     dbiprof \
-      ~{if defined(numberNumber) then ("-number " +  '"' + numberNumber + '"') else ""} \
-      ~{if defined(sortSort) then ("-sort " +  '"' + sortSort + '"') else ""} \
-      ~{true="-reverse" false="" reverseReverse} \
-      ~{if defined(matchMatch) then ("-match " +  '"' + matchMatch + '"') else ""} \
-      ~{if defined(excludeExclude) then ("-exclude " +  '"' + excludeExclude + '"') else ""} \
-      ~{true="-case_sensitive" false="" caseCaseSensitive} \
-      ~{true="-delete" false="" deleteDelete} \
-      ~{true="-version" false="" versionVersion}
+      ~{if defined(number) then ("-number " +  '"' + number + '"') else ""} \
+      ~{if defined(sort) then ("-sort " +  '"' + sort + '"') else ""} \
+      ~{true="-reverse" false="" reverse} \
+      ~{if defined(match) then ("-match " +  '"' + match + '"') else ""} \
+      ~{if defined(exclude) then ("-exclude " +  '"' + exclude + '"') else ""} \
+      ~{true="-case_sensitive" false="" case_sensitive} \
+      ~{true="-delete" false="" delete} \
+      ~{true="-version" false="" version}
   >>>
+  parameter_meta {
+    number: "show top N, defaults to 10"
+    sort: "sort by S, defaults to total"
+    reverse: "reverse the sort"
+    match: "=V       for filtering, see docs"
+    exclude: "=V     for filtering, see docs"
+    case_sensitive: "for -match and -exclude"
+    delete: "rename files before reading then delete afterwards"
+    version: "print version number and exit"
+  }
 }

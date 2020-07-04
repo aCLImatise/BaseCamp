@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: mreps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mreps.cwl
 inputs:
-- id: s
+- id: specifies_sequence_command
   doc: ': specifies the sequence in command line'
   type: string
   inputBinding:

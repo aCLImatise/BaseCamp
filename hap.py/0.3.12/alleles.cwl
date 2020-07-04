@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: alleles.cwl
+id: ../../../../home/ubuntu/BiocondaCli/alleles.cwl
 inputs:
 - id: input_file
   doc: Input VCF file.
   type: string
   inputBinding:
     prefix: --input-file
-- id: o
+- id: arg_output_file
   doc: '[ --output-file ] arg The output file name (VCF / BCF / VCF.gz).'
   type: boolean
   inputBinding:

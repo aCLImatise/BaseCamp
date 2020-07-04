@@ -1,41 +1,51 @@
 class: CommandLineTool
-id: trimadap_mt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/trimadap_mt.cwl
 inputs:
-- id: in_fq
-  doc: ''
+- id: five
+  doc: 5'-end adapter
   type: string
   inputBinding:
-    position: 0
-- id: l
-  doc: min length [8]
+    prefix: '-5'
+- id: three
+  doc: 3'-end adapter
+  type: string
+  inputBinding:
+    prefix: '-3'
+- id: min_length
+  doc: min length [0]
   type: long
   inputBinding:
     prefix: -l
-- id: s
+- id: min_score
   doc: min score [15]
   type: long
   inputBinding:
     prefix: -s
-- id: t
+- id: trim_down
   doc: trim down [don't trim]
   type: long
   inputBinding:
     prefix: -t
-- id: d
+- id: max_difference
   doc: max difference [0.150]
   type: double
   inputBinding:
     prefix: -d
-- id: p
+- id: number_trimmer_threads
   doc: number of trimmer threads [1]
   type: long
   inputBinding:
     prefix: -p
-- id: v
+- id: print_version_number
   doc: print version number
   type: boolean
   inputBinding:
     prefix: -v
+- id: in_dot_fq
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

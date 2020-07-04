@@ -1,27 +1,17 @@
 class: CommandLineTool
-id: dcmpsmk.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmpsmk.cwl
 inputs:
-- id: dcm_file_in
-  doc: DICOM image file(s) to be read
-  type: string
-  inputBinding:
-    position: 0
-- id: dcm_file_out
-  doc: DICOM presentation state file to be created
-  type: string
-  inputBinding:
-    position: 1
-- id: q
+- id: _quiet_quiet
   doc: --quiet                quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose              verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug                debug mode, print debug information
   type: boolean
   inputBinding:
@@ -37,12 +27,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lc
-- id: f
+- id: _readdataset_read
   doc: --read-dataset         read data set without file meta information
   type: boolean
   inputBinding:
     prefix: -f
-- id: t
+- id: _readxferauto_use
   doc: =  --read-xfer-auto       use TS recognition (default)
   type: boolean
   inputBinding:
@@ -67,27 +57,27 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --read-xfer-implicit
-- id: v
+- id: _voiignore_ignore
   doc: --voi-ignore           ignore VOI LUT and window center/width
   type: boolean
   inputBinding:
     prefix: -V
-- id: c
+- id: _curveignore_ignore
   doc: --curve-ignore         ignore curve data
   type: boolean
   inputBinding:
     prefix: -c
-- id: o
+- id: _overlayignore_ignore
   doc: --overlay-ignore       ignore overlays
   type: boolean
   inputBinding:
     prefix: -o
-- id: s
+- id: _shutterignore_ignore
   doc: --shutter-ignore       ignore shutter
   type: boolean
   inputBinding:
     prefix: -s
-- id: p
+- id: _plutignore_ignore
   doc: --plut-ignore          ignore presentation LUT shape
   type: boolean
   inputBinding:
@@ -107,6 +97,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --location-media
+- id: dcm_file_in
+  doc: DICOM image file(s) to be read
+  type: string
+  inputBinding:
+    position: 0
+- id: dcm_file_out
+  doc: DICOM presentation state file to be created
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

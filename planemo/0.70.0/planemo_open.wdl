@@ -1,7 +1,14 @@
 version 1.0
 
 task PlanemoOpen {
+  input {
+    File path
+  }
   command <<<
-    planemo open
+    planemo open \
+      ~{path}
   >>>
+  parameter_meta {
+    path: ""
+  }
 }

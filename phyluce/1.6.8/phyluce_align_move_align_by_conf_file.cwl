@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_align_move_align_by_conf_file.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_align_move_align_by_conf_file.cwl
 inputs:
 - id: conf
   doc: The configuration file giving locus names

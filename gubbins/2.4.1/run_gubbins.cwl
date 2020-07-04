@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: run_gubbins.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_gubbins.py.cwl
 inputs:
-- id: alignment_filename
-  doc: Multifasta alignment file
-  type: string
-  inputBinding:
-    position: 0
 - id: out_group
   doc: 'Outgroup name for rerooting. A list of comma separated names can be used if
     they form a clade (default: None)'
@@ -88,6 +83,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --remove_identical_sequences
+- id: alignment_filename
+  doc: Multifasta alignment file
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

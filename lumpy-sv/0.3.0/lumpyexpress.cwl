@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: lumpyexpress.config.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lumpyexpress.config.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

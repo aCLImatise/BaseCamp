@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sort_bed_float128.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sort_bed_float128.cwl
 inputs:
 - id: tmpdir
   doc: useful only with --max-mem.
@@ -18,6 +18,31 @@ inputs:
   type: string
   inputBinding:
     prefix: --duplicates
+- id: check_sort
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --check-sort
+- id: max_mem
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --max-mem
+- id: sort_bed
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: file_one_dot_bed
+  doc: ''
+  type: File
+  inputBinding:
+    position: 1
+- id: file_two_dot_bed
+  doc: ''
+  type: File
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: makeprofiledb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/makeprofiledb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

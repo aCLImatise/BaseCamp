@@ -2,10 +2,13 @@ version 1.0
 
 task Dcmftest {
   input {
-    File? fileFile
+    File file_dot_dot_dot
   }
   command <<<
     dcmftest \
-      ~{fileFile}
+      ~{file_dot_dot_dot}
   >>>
+  parameter_meta {
+    file_dot_dot_dot: ""
+  }
 }

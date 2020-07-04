@@ -2,16 +2,19 @@ version 1.0
 
 task Count2huge.pl {
   input {
-    String splitSplit
-    String? optionsOptions
-    String? sourceSource
-    String? destinationDestinationDir
+    String? split
+    String source
+    String destination_dir
   }
   command <<<
     count2huge.pl \
-      ~{optionsOptions} \
-      ~{if defined(splitSplit) then ("--split " +  '"' + splitSplit + '"') else ""} \
-      ~{sourceSource} \
-      ~{destinationDestinationDir}
+      ~{source} \
+      ~{destination_dir} \
+      ~{if defined(split) then ("--split " +  '"' + split + '"') else ""}
   >>>
+  parameter_meta {
+    split: "Split the bigrams list into smaller pieces. Each file has N bigrams. N is an integer (N>=1). "
+    source: ""
+    destination_dir: ""
+  }
 }

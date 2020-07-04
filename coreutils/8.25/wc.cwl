@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: wc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wc.cwl
 inputs:
 - id: bytes
   doc: print the byte counts
@@ -16,7 +16,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --lines
-- id: files_0_from
+- id: files_zero_from
   doc: read input from the files specified by NUL-terminated names in file F; If F
     is - then read names from standard input
   type: string
@@ -32,6 +32,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --words
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

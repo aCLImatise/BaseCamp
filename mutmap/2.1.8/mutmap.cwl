@@ -1,68 +1,58 @@
 class: CommandLineTool
-id: mutmap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mutmap.cwl
 inputs:
-- id: n
+- id: var_0
   doc: '[-T] [-e <DATABASE>]'
   type: long
   inputBinding:
     prefix: -n
-- id: r
+- id: _ref_reference
   doc: ', --ref         Reference fasta.'
   type: boolean
   inputBinding:
     prefix: -r
-- id: c
+- id: _cultivar_fastq
   doc: ', --cultivar    fastq or bam of cultivar. If you specify fastq, please separate
     pairs by comma, e.g. -c fastq1,fastq2. You can use this optiion multiple times'
   type: boolean
   inputBinding:
     prefix: -c
-- id: b
+- id: _bulk_fastq
   doc: ', --bulk        fastq or bam of mutnat bulk. If you specify fastq, please
     separate pairs by comma, e.g. -b fastq1,fastq2. You can use this optiion multiple
     times'
   type: boolean
   inputBinding:
     prefix: -b
-- id: n
-  doc: ', --N-bulk      Number of individuals in mutant bulk.'
-  type: boolean
-  inputBinding:
-    prefix: -n
-- id: o
-  doc: ', --out         Output directory. Specified name must not exist.'
-  type: boolean
-  inputBinding:
-    prefix: -o
-- id: t
+- id: _threads_number
   doc: ', --threads     Number of threads. If you specify the number below one, then
     MutMap will use the threads as many as possible. [2]'
   type: boolean
   inputBinding:
     prefix: -t
-- id: w
+- id: _window_size
   doc: ', --window      Window size (kb). [2000]'
   type: boolean
   inputBinding:
     prefix: -w
-- id: s
+- id: _step_size
   doc: ', --step        Step size (kb). [100]'
   type: boolean
   inputBinding:
     prefix: -s
-- id: d
+- id: _maxdepth_maximum
   doc: ', --max-depth   Maximum depth of variants which will be used. This cutoff
     will be applied in both of cultivar and bulk. [250]'
   type: boolean
   inputBinding:
     prefix: -D
-- id: d
+- id: _mindepth_minimum
   doc: ', --min-depth   Minimum depth of variants which will be used. This cutoff
     will be applied in both of cultivar and bulk. [8]'
   type: boolean
   inputBinding:
     prefix: -d
-- id: n
+- id: _nrep_number
   doc: ', --N-rep       Number of replicates for simulation to make  null distribution.
     [5000]'
   type: boolean
@@ -73,7 +63,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --trim
-- id: a
+- id: _adapter_fasta
   doc: ', --adapter     FASTA of adapter sequences. This will be used when you specify
     "-T" for trimming.'
   type: boolean
@@ -88,7 +78,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --trim-params
-- id: e
+- id: _predict_variant
   doc: ', --snpEff      Predict causal variant using SnpEff. Please check available
     databases in SnpEff.'
   type: boolean
@@ -99,17 +89,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --mem
-- id: q
+- id: _minmq_minimum
   doc: ', --min-MQ      Minimum mapping quality in mpileup. [40]'
   type: boolean
   inputBinding:
     prefix: -q
-- id: q
+- id: _minimum_base
   doc: ', --min-BQ      Minimum base quality in mpileup. [18]'
   type: boolean
   inputBinding:
     prefix: -Q
-- id: c
+- id: _adjustmq_mpileup
   doc: ', --adjust-MQ   "adjust-MQ" in mpileup. Default parameter is suited for BWA.
     [50]'
   type: boolean

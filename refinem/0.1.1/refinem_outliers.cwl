@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: refinem_outliers.cwl
+id: ../../../../home/ubuntu/BiocondaCli/refinem_outliers.cwl
 inputs:
-- id: scaffold_stats_file
-  doc: file with statistics for each scaffold
-  type: string
-  inputBinding:
-    position: 0
-- id: output_dir
-  doc: output directory
-  type: string
-  inputBinding:
-    position: 1
 - id: gc_perc
   doc: 'percentile for identify scaffolds with divergent GC content (default: 98)'
   type: long
@@ -100,6 +90,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --silent
+- id: scaffold_stats_file
+  doc: file with statistics for each scaffold
+  type: string
+  inputBinding:
+    position: 0
+- id: output_dir
+  doc: output directory
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

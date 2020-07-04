@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: para.cwl
+id: ../../../../home/ubuntu/BiocondaCli/para.cwl
 inputs:
+- id: verbose
+  doc: '- set verbosity level.'
+  type: string
+  inputBinding:
+    prefix: -verbose
 - id: command
   doc: ''
   type: string
@@ -16,11 +21,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: verbose
-  doc: =1 - set verbosity level.
-  type: boolean
-  inputBinding:
-    prefix: -verbose
 outputs: []
 cwlVersion: v1.1
 baseCommand:

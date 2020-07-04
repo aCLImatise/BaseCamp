@@ -2,14 +2,19 @@ version 1.0
 
 task TdbQuery {
   input {
-    Boolean rootRoot
-    String releaseRelease
-    String? sqlSqlStatement
+    Boolean? root
+    String? release
+    String sql_statement
   }
   command <<<
     tdbQuery \
-      ~{sqlSqlStatement} \
-      ~{true="-root" false="" rootRoot} \
-      ~{if defined(releaseRelease) then ("-release " +  '"' + releaseRelease + '"') else ""}
+      ~{sql_statement} \
+      ~{true="-root" false="" root} \
+      ~{if defined(release) then ("-release " +  '"' + release + '"') else ""}
   >>>
+  parameter_meta {
+    root: "=/path/to/trackDb/root/dir"
+    release: "|beta|public"
+    sql_statement: ""
+  }
 }

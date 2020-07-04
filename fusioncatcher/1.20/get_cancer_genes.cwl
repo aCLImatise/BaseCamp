@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_cancer_genes.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_cancer_genes.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the known fusion genes are downloaded, e.g.

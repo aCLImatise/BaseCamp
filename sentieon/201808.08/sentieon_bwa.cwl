@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sentieon_bwa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sentieon_bwa.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

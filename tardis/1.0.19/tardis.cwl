@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: tardis.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tardis.cwl
 inputs:
-- id: command
-  doc: command to run
-  type: string
-  inputBinding:
-    position: 0
-- id: arg
-  doc: command arguments
-  type: string
-  inputBinding:
-    position: 1
 - id: in_workflow
   doc: Run the command as part of a workflow. After launching all of the jobs, tardis
     waits for all outputs, which are then collated and merged into a single output
@@ -56,7 +46,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --to-record
-- id: s
+- id: rather_process_files
   doc: Rather than process the entire input file(s), a random sample of the records
     is processed. RATE is the probability that a given record will be sampled. For
     example -s .001 will result in roughly 1 in every 1000 logical records being sampled.
@@ -146,6 +136,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-sysconfig
+- id: command
+  doc: command to run
+  type: string
+  inputBinding:
+    position: 0
+- id: arg
+  doc: command arguments
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

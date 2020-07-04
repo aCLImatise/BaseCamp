@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: wiggle_to_simple.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wiggle_to_simple.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

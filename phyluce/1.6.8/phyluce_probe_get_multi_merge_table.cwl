@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_probe_get_multi_merge_table.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_probe_get_multi_merge_table.cwl
 inputs:
 - id: conf
   doc: A config file mapping names to BED files.

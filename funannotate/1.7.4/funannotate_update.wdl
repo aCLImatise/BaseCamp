@@ -2,86 +2,61 @@ version 1.0
 
 task FunannotateUpdate {
   input {
-    Boolean fastFastA
-    Boolean gffGff
-    Boolean speciesSpecies
-    Boolean outOut
-    Boolean leftLeft
-    Boolean rightRight
-    Boolean singleSingle
-    Boolean strandedStranded
-    Boolean leftLeftNorm
-    Boolean rightRightNorm
-    Boolean singleSingleNorm
-    Boolean pacPacBioIsoSeq
-    Boolean nanoNanoPoreCdna
-    Boolean nanoNanoPoreMrna
-    Boolean trinityTrinity
-    Boolean jaccardJaccardClip
-    Boolean noNoNormalizeReads
-    Boolean noNoTrimMoMatic
-    Boolean memoryMemory
-    Boolean coverageCoverage
-    Boolean minMinCoverage
-    Boolean pasaPasaConfig
-    Boolean pasaPasaDb
-    String stringentStringentAlignmentOverlap
-    Boolean alignersAligners
-    Boolean maxMaxIntronLen
-    Boolean minMinProtLen
-    Boolean altAltTranscripts
-    Boolean p2gP2g
-    Boolean tbl2asnTbl2asn
-    Boolean nameName
-    Boolean sbtSbt
-    Boolean speciesSpecies
-    Boolean strainStrain
-    Boolean isolateIsolate
-    Boolean seqSeqCenter
-    Boolean seqSeqAccession
-    Boolean cpusCpus
-    String? argumentsArguments
+    Boolean? fast_a
+    Boolean? gff
+    Boolean? species
+    Boolean? aligners
+    Boolean? max_intron_len
+    Boolean? min_prot_len
+    Boolean? alt_transcripts
+    Boolean? p_two_g
+    Boolean? tbl_two_asn
+    Boolean? name
+    Boolean? sbt
+    Boolean? strain
+    Boolean? isolate
+    Boolean? seq_center
+    Boolean? seq_accession
+    Boolean? cpus
+    String arguments
   }
   command <<<
     funannotate update \
-      ~{argumentsArguments} \
-      ~{true="--fasta" false="" fastFastA} \
-      ~{true="--gff" false="" gffGff} \
-      ~{true="--species" false="" speciesSpecies} \
-      ~{true="--out" false="" outOut} \
-      ~{true="--left" false="" leftLeft} \
-      ~{true="--right" false="" rightRight} \
-      ~{true="--single" false="" singleSingle} \
-      ~{true="--stranded" false="" strandedStranded} \
-      ~{true="--left_norm" false="" leftLeftNorm} \
-      ~{true="--right_norm" false="" rightRightNorm} \
-      ~{true="--single_norm" false="" singleSingleNorm} \
-      ~{true="--pacbio_isoseq" false="" pacPacBioIsoSeq} \
-      ~{true="--nanopore_cdna" false="" nanoNanoPoreCdna} \
-      ~{true="--nanopore_mrna" false="" nanoNanoPoreMrna} \
-      ~{true="--trinity" false="" trinityTrinity} \
-      ~{true="--jaccard_clip" false="" jaccardJaccardClip} \
-      ~{true="--no_normalize_reads" false="" noNoNormalizeReads} \
-      ~{true="--no_trimmomatic" false="" noNoTrimMoMatic} \
-      ~{true="--memory" false="" memoryMemory} \
-      ~{true="--coverage" false="" coverageCoverage} \
-      ~{true="--min_coverage" false="" minMinCoverage} \
-      ~{true="--pasa_config" false="" pasaPasaConfig} \
-      ~{true="--pasa_db" false="" pasaPasaDb} \
-      ~{if defined(stringentStringentAlignmentOverlap) then ("--stringent_alignment_overlap " +  '"' + stringentStringentAlignmentOverlap + '"') else ""} \
-      ~{true="--aligners" false="" alignersAligners} \
-      ~{true="--max_intronlen" false="" maxMaxIntronLen} \
-      ~{true="--min_protlen" false="" minMinProtLen} \
-      ~{true="--alt_transcripts" false="" altAltTranscripts} \
-      ~{true="--p2g" false="" p2gP2g} \
-      ~{true="--tbl2asn" false="" tbl2asnTbl2asn} \
-      ~{true="--name" false="" nameName} \
-      ~{true="--sbt" false="" sbtSbt} \
-      ~{true="--species" false="" speciesSpecies} \
-      ~{true="--strain" false="" strainStrain} \
-      ~{true="--isolate" false="" isolateIsolate} \
-      ~{true="--SeqCenter" false="" seqSeqCenter} \
-      ~{true="--SeqAccession" false="" seqSeqAccession} \
-      ~{true="--cpus" false="" cpusCpus}
+      ~{arguments} \
+      ~{true="--fasta" false="" fast_a} \
+      ~{true="--gff" false="" gff} \
+      ~{true="--species" false="" species} \
+      ~{true="--aligners" false="" aligners} \
+      ~{true="--max_intronlen" false="" max_intron_len} \
+      ~{true="--min_protlen" false="" min_prot_len} \
+      ~{true="--alt_transcripts" false="" alt_transcripts} \
+      ~{true="--p2g" false="" p_two_g} \
+      ~{true="--tbl2asn" false="" tbl_two_asn} \
+      ~{true="--name" false="" name} \
+      ~{true="--sbt" false="" sbt} \
+      ~{true="--strain" false="" strain} \
+      ~{true="--isolate" false="" isolate} \
+      ~{true="--SeqCenter" false="" seq_center} \
+      ~{true="--SeqAccession" false="" seq_accession} \
+      ~{true="--cpus" false="" cpus}
   >>>
+  parameter_meta {
+    fast_a: "Genome in FASTA format"
+    gff: "Annotation in GFF3 format"
+    species: "Species name, use quotes for binomial, e.g. \"Aspergillus fumigatus\""
+    aligners: "Aligners to use with PASA: Default: minimap2 blat [gmap]"
+    max_intron_len: "Maximum intron length. Default: 3000"
+    min_prot_len: "Minimum protein length. Default: 50"
+    alt_transcripts: "Expression threshold (percent) to keep alt transcripts. Default: 0.1 [0-1]"
+    p_two_g: "NCBI p2g file (if updating NCBI annotation)"
+    tbl_two_asn: "Assembly parameters for tbl2asn. Example: \"-l paired-ends\"           "
+    name: "Locus tag name (assigned by NCBI?). Default: use existing  "
+    sbt: "NCBI Submission file        "
+    strain: "Strain name"
+    isolate: "Isolate name"
+    seq_center: "Sequencing facilty for NCBI tbl file. Default: CFMR"
+    seq_accession: "Sequence accession number for NCBI tbl file. Default: 12345"
+    cpus: "Number of CPUs to use. Default: 2"
+    arguments: ""
+  }
 }

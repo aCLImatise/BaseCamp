@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: iprscan_wrap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/iprscan_wrap.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

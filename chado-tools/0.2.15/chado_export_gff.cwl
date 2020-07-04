@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: chado_export_gff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chado_export_gff.cwl
 inputs:
-- id: dbname
-  doc: name of the database
-  type: string
-  inputBinding:
-    position: 0
 - id: verbose
   doc: verbose mode
   type: boolean
@@ -46,6 +41,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --include_obsolete
+- id: dbname
+  doc: name of the database
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

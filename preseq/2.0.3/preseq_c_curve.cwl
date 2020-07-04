@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: preseq_c_curve.cwl
+id: ../../../../home/ubuntu/BiocondaCli/preseq_c_curve.cwl
 inputs:
-- id: c_curve
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: sorted_bed_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: output
   doc: 'yield output file (default: stdout) '
   type: boolean
@@ -66,6 +51,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -about
+- id: c_curve
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: sorted_bed_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

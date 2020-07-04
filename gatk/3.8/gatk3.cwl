@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gatk3.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gatk3.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

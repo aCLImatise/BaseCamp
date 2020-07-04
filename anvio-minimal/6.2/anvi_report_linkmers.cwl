@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: anvi_report_linkmers.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_report_linkmers.cwl
 inputs:
-- id: i
+- id: s_sorted_indexed
   doc: (S) [INPUT_BAM(S) ...], --input-files INPUT_BAM(S) [INPUT_BAM(S) ...] Sorted
     and indexed BAM files to analyze. It is essential that all BAM files must be the
     result of mappings against the same contigs.

@@ -1,47 +1,32 @@
 class: CommandLineTool
-id: ScanIndel.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ScanIndel.py.cwl
 inputs:
-- id: python
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: scan_in_delpy
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: opts
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: o
+- id: setting_directory_default
   doc: :setting the output directory (default current working directory)
   type: boolean
   inputBinding:
     prefix: -o
-- id: f
+- id: setting_minalternatefraction_freebayes
   doc: :setting min-alternate-fraction for FreeBayes (default 0.2)
   type: boolean
   inputBinding:
     prefix: -F
-- id: c
+- id: setting_minalternatecount_freebayes
   doc: :setting min-alternate-count for FreeBayes (default 2)
   type: boolean
   inputBinding:
     prefix: -C
-- id: d
+- id: setting_mincoverage_freebayes
   doc: :setting min-coverage for Freebayes (default 0)
   type: boolean
   inputBinding:
     prefix: -d
-- id: t
+- id: setting__target
   doc: :setting --target for Freebayes to provide a BED file for analysis
   type: boolean
   inputBinding:
     prefix: -t
-- id: s
+- id: softclipping_triggering_default
   doc: :softclipping percentage triggering BLAT re-alignment (default 0.2)
   type: boolean
   inputBinding:
@@ -98,6 +83,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --mapping_only
+- id: p
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -p
+- id: i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
+- id: opts
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

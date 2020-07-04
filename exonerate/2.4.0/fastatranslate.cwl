@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: fastatranslate.cwl
-inputs:
-- id: genetic_code
-  doc: '[1] '
-  type: boolean
-  inputBinding:
-    prefix: --geneticcode
+id: ../../../../home/ubuntu/BiocondaCli/fastatranslate.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

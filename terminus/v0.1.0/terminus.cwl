@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: terminus.cwl
+id: ../../../../home/ubuntu/BiocondaCli/terminus.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

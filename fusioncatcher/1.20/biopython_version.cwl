@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: biopython_version.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/biopython_version.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

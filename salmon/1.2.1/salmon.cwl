@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: salmon.cwl
+id: ../../../../home/ubuntu/BiocondaCli/salmon.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

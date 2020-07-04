@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pm_stash.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pm_stash.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

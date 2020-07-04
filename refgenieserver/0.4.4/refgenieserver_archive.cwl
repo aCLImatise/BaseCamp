@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: refgenieserver_archive.cwl
+id: ../../../../home/ubuntu/BiocondaCli/refgenieserver_archive.cwl
 inputs:
-- id: asset_registry_paths
-  doc: One or more registry path strings that identify assets, e.g. hg38/fasta:tag
-  type: string
-  inputBinding:
-    position: 0
 - id: config
   doc: "A path to the refgenie config file (YAML). If not provided, the first available\
     \ environment variable among: 'REFGENIE' will be used if set. Currently: not set"
@@ -33,6 +28,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --remove
+- id: asset_registry_paths
+  doc: One or more registry path strings that identify assets, e.g. hg38/fasta:tag
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: vcfrandomsample.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfrandomsample.cwl
 inputs:
-- id: vcf_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: rate
   doc: base sampling probability per locus
   type: string
@@ -26,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --pseudorandom-seed
+- id: vcf_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

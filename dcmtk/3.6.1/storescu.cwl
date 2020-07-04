@@ -1,22 +1,7 @@
 class: CommandLineTool
-id: storescu.cwl
+id: ../../../../home/ubuntu/BiocondaCli/storescu.cwl
 inputs:
-- id: peer
-  doc: hostname of DICOM peer
-  type: string
-  inputBinding:
-    position: 0
-- id: port
-  doc: tcp/ip port number of peer
-  type: string
-  inputBinding:
-    position: 1
-- id: dcm_file_in
-  doc: DICOM file or directory to be transmitted
-  type: string
-  inputBinding:
-    position: 2
-- id: f
+- id: _read_data
   doc: --read-dataset       read data set without file meta information
   type: boolean
   inputBinding:
@@ -37,7 +22,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -xf
-- id: u
+- id: _disablenewvr_disable
   doc: --disable-new-vr     disable support for new VRs, convert to OB
   type: boolean
   inputBinding:
@@ -98,6 +83,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ic
+- id: peer
+  doc: hostname of DICOM peer
+  type: string
+  inputBinding:
+    position: 0
+- id: port
+  doc: tcp/ip port number of peer
+  type: string
+  inputBinding:
+    position: 1
+- id: dcm_file_in
+  doc: DICOM file or directory to be transmitted
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

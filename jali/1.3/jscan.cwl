@@ -1,17 +1,7 @@
 class: CommandLineTool
-id: jscan.cwl
+id: ../../../../home/ubuntu/BiocondaCli/jscan.cwl
 inputs:
-- id: sequence_fast_a
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: alignment_db_prodom
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: w
+- id: amino_acid_similarity
   doc: //amino acid similarity matrix
   type: string
   inputBinding:
@@ -31,21 +21,31 @@ inputs:
   type: string
   inputBinding:
     prefix: -j
-- id: l
+- id: print_best_l
   doc: //print best l scores
   type: string
   inputBinding:
     prefix: -l
-- id: o
+- id: run_verbose_mode
   doc: //run in verbose mode
   type: boolean
   inputBinding:
     prefix: -o
-- id: v
+- id: print_version
   doc: //print version
   type: boolean
   inputBinding:
     prefix: -v
+- id: sequence_dot_fast_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: alignment_db_dot_prodom
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

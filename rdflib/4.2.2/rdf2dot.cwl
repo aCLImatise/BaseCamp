@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rdf2dot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rdf2dot.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

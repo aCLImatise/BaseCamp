@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rm_low_coverage_duplicated_contigs.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rm_low_coverage_duplicated_contigs.py.cwl
 inputs:
 - id: cov_t
   doc: 'With ratio (coverage of query/coverage of subject) below which, the query
@@ -28,7 +28,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --which-blast
-- id: o
+- id: output_directory_default
   doc: 'Output directory. Default: along with the original file'
   type: string
   inputBinding:

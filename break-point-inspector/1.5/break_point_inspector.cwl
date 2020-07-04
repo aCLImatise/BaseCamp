@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: break_point_inspector.cwl
+id: ../../../../home/ubuntu/BiocondaCli/break_point_inspector.cwl
 inputs:
-- id: break_point_inspector
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: arg
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: contamination_fraction
   doc: fraction of allowable normal support per tumor support read
   type: string
@@ -51,6 +41,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -vcf
+- id: arg
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

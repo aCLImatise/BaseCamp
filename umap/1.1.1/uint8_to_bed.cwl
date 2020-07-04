@@ -1,35 +1,19 @@
 class: CommandLineTool
-id: uint8_to_bed.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/uint8_to_bed.py.cwl
 inputs:
-- id: in_dir
-  doc: folder with <chrom>.uint8.unique.gz files
-  type: string
-  inputBinding:
-    position: 0
-- id: out_dir
-  doc: Folder for writing the output files
-  type: string
-  inputBinding:
-    position: 1
-- id: out_label
-  doc: File names would be kmer.<out_label>.bed.gz
-  type: string
-  inputBinding:
-    position: 2
-- id: c2t
+- id: c_two_t
   doc: If using converted genomes specify -C2T or -G2A
   type: boolean
   inputBinding:
     prefix: -C2T
-- id: g2a
+- id: g_two_a
   doc: If using converted genomes specify -C2T or -G2A
   type: boolean
   inputBinding:
     prefix: -G2A
 - id: chr_size_path
-  doc: Path to a 2 column file of chromosome and length. By default it goes to ../../chrsize.tsv
-    from out_dir
-  type: string
+  doc: /../chrsize.tsv from out_dir
+  type: string[]
   inputBinding:
     prefix: -chrsize_path
 - id: write_unique
@@ -71,6 +55,21 @@ inputs:
   type: string
   inputBinding:
     prefix: -var_id
+- id: in_dir
+  doc: folder with <chrom>.uint8.unique.gz files
+  type: string
+  inputBinding:
+    position: 0
+- id: out_dir
+  doc: Folder for writing the output files
+  type: string
+  inputBinding:
+    position: 1
+- id: out_label
+  doc: File names would be kmer.<out_label>.bed.gz
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

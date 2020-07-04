@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mmseqs_result2profile.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mmseqs_result2profile.cwl
 inputs:
 - id: comp_bias_corr
   doc: '1               correct for locally biased amino acid composition [0,1]     '
@@ -83,7 +83,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --threads
-- id: v
+- id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'
   type: boolean
   inputBinding:

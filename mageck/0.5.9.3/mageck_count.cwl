@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mageck_count.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mageck_count.cwl
 inputs:
 - id: list_seq
   doc: 'A file containing the list of sgRNA names, their sequences and associated
@@ -67,7 +67,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --test-run
-- id: fast_q_2
+- id: fast_q_two
   doc: Paired sample fastq files (or fastq.gz files), the order of which should be
     consistent with that in fastq option.
   type: string[]
@@ -78,7 +78,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --count-pair
-- id: trim_5
+- id: trim_five
   doc: Length of trimming the 5' of the reads. Users can specify multiple trimming
     lengths, separated by comma (,); for example, "7,8". Use "AUTO" to allow MAGeCK
     to automatically determine the trimming length. Default AUTO.
@@ -107,7 +107,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --pdf-report
-- id: day0_label
+- id: day_zero_label
   doc: Turn on the negative selection QC and specify the label for control sample
     (usually day 0 or plasmid). For every other sample label, the negative selection
     QC will compare it with day0 sample, and estimate the degree of negative selections

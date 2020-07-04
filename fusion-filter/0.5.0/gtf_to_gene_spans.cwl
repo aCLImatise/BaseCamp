@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gtf_to_gene_spans.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gtf_to_gene_spans.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

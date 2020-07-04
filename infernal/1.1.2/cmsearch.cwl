@@ -1,22 +1,12 @@
 class: CommandLineTool
-id: cmsearch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cmsearch.cwl
 inputs:
-- id: cm_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: seq_db
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: g
+- id: configure_cm_glocal
   doc: ': configure CM for glocal alignment [default: local]'
   type: boolean
   inputBinding:
     prefix: -g
-- id: z
+- id: set_space_size
   doc: ': set search space size in *Mb* to <x> for E-value calculations  (x>0)'
   type: string
   inputBinding:
@@ -26,12 +16,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --devhelp
-- id: o
+- id: direct_output_file
   doc: ': direct output to file <f>, not stdout'
   type: string
   inputBinding:
     prefix: -o
-- id: a
+- id: save_multiple_alignment
   doc: ': save multiple alignment of all significant hits to file <s>'
   type: string
   inputBinding:
@@ -66,12 +56,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: e
+- id: report_sequences_evalue
   doc: ': report sequences <= this E-value threshold in output  [10.0]  (x>0)'
   type: string
   inputBinding:
     prefix: -E
-- id: t
+- id: report_sequences_threshold
   doc: ': report sequences >= this score threshold in output'
   type: string
   inputBinding:
@@ -151,7 +141,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --anytrunc
-- id: nonull3
+- id: no_null_three
   doc: ': turn off the NULL3 post hoc additional null model'
   type: boolean
   inputBinding:
@@ -201,6 +191,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --cpu
+- id: cm_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: seq_db
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

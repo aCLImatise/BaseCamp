@@ -1,22 +1,12 @@
 class: CommandLineTool
-id: hgLoadMaf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hgLoadMaf.cwl
 inputs:
-- id: database
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: table
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: warn
+- id: warn_instead_error_emptyincomplete
   doc: warn instead of error upon empty/incomplete alignments
   type: boolean
   inputBinding:
     prefix: -warn
-- id: warn
+- id: warn_instead_error_detail
   doc: warn instead of error, with detail for the warning
   type: boolean
   inputBinding:
@@ -58,6 +48,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -custom
+- id: database
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: table
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

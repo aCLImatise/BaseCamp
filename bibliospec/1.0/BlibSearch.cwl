@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: BlibSearch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/BlibSearch.cwl
 inputs:
-- id: c
+- id: arg_remove_peaks
   doc: '[ --clear-precursor ] arg (=1)  Remove the peaks in a X m/z window around  the
     precursor from the query and library  spectrum.'
   type: boolean
@@ -12,7 +12,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --topPeaksForSearch
-- id: w
+- id: arg_compare_query
   doc: '[ --mz-window ] arg (=3)        Compare query to library spectra with  precursor
     m/z +/- ARG.'
   type: boolean
@@ -30,13 +30,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -L
-- id: h
+- id: arg_search_only_spectra_charge_higher
   doc: '[ --high-charge ] arg (=5)      Search only spectra with charge no higher  than
     ARG.'
   type: boolean
   inputBinding:
     prefix: -H
-- id: m
+- id: arg_return_arg
   doc: '[ --report-matches ] arg (=5)   Return ARG of the best matches for each  query.  Use
     -1 to report all.'
   type: boolean
@@ -47,7 +47,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --psm-result-file
-- id: r
+- id: arg_return_results
   doc: '[ --report-file ] arg           Return results in report file named ARG.   Default
     is <spectrum file name>.report.'
   type: boolean
@@ -59,18 +59,28 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --preserve-order
-- id: p
+- id: arg_file_containing
   doc: '[ --parameter-file ] arg        File containing search parameters.   Command
     line values override file values.'
   type: boolean
   inputBinding:
     prefix: -p
-- id: v
+- id: arg_status_control
   doc: '[ --verbosity ] arg (=status)   Control the level of output to stderr.  (silent,
     error, status, warn, debug,  detail, all)  Default status.'
   type: boolean
   inputBinding:
     prefix: -v
+- id: spectrum_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: library
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

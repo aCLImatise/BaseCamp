@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: blastp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blastp.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

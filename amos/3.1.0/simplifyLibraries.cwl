@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: simplifyLibraries.cwl
+id: ../../../../home/ubuntu/BiocondaCli/simplifyLibraries.cwl
 inputs:
 - id: bank_name
   doc: ''

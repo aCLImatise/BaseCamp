@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: referenceseeker_db_init.cwl
+id: ../../../../home/ubuntu/BiocondaCli/referenceseeker_db_init.cwl
 inputs:
 - id: output
-  doc: ''
+  doc: output directory (default = current working directory)
   type: string
   inputBinding:
     prefix: --output
 - id: db
-  doc: ''
+  doc: Name of the new ReferenceSeeker database
   type: string
   inputBinding:
     prefix: --db

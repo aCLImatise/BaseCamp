@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SpectraFilterNormalizer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SpectraFilterNormalizer.cwl
 inputs:
 - id: in
   doc: "*        Input file (valid formats: 'mzML')"
@@ -31,16 +31,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Algorithm parameter subsection.
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
-- id: http
-  doc: ://www.openms.de/documentation/TOPP_SpectraFilterNormalizer.html
-  type: boolean
-  inputBinding:
-    prefix: '- http'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

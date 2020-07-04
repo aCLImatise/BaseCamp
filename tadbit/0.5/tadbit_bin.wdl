@@ -2,70 +2,103 @@ version 1.0
 
 task TadbitBin {
   input {
-    File workdirWorkdir
-    Int resolutionResolution
-    Boolean noxNox
-    File bamBam
-    Int jobidJobid
-    Boolean forceForce
-    Boolean quietQuiet
-    File tmpTmpDb
-    String nNChunks
-    String cpusCpus
-    Array[Int]+ filterFilter
-    File biasesBiases
-    Array[String]+ normNorm
-    Boolean matrixMatrix
-    Boolean coolerCooler
-    Boolean rowRowNames
-    Boolean onlyOnlyPlot
-    Boolean interactiveInteractive
-    Boolean cC
-    Boolean c2C2
-    Boolean onlyOnlyTxt
-    Boolean plotPlot
-    Boolean forceForcePlot
-    Boolean triangularTriangular
-    String xXTickRotation
-    String cmapCmap
-    String badBadColor
-    String formatFormat
-    String zZRange
-    String transformTransform
-    String figFigSize
+    File? workdir
+    Int? resolution
+    Boolean? nox
+    File? bam
+    Int? jobid
+    Boolean? force
+    Boolean? quiet
+    File? tmp_db
+    String? n_chunks
+    String? cpus
+    Array[Int] filter
+    File? biases
+    Array[String] norm
+    Boolean? matrix
+    Boolean? cooler
+    Boolean? row_names
+    Boolean? only_plot
+    Boolean? interactive
+    Boolean? _coord_coordinate_retrieve_arguments
+    Boolean? c_two
+    Boolean? only_txt
+    Boolean? plot
+    Boolean? force_plot
+    Boolean? triangular
+    String? x_tick_rotation
+    String? cmap
+    String? bad_color
+    String? format
+    String? z_range
+    String? transform
+    String? fig_size
   }
   command <<<
     tadbit bin \
-      ~{if defined(workdirWorkdir) then ("--workdir " +  '"' + workdirWorkdir + '"') else ""} \
-      ~{if defined(resolutionResolution) then ("--resolution " +  '"' + resolutionResolution + '"') else ""} \
-      ~{true="--noX" false="" noxNox} \
-      ~{if defined(bamBam) then ("--bam " +  '"' + bamBam + '"') else ""} \
-      ~{if defined(jobidJobid) then ("--jobid " +  '"' + jobidJobid + '"') else ""} \
-      ~{true="--force" false="" forceForce} \
-      ~{true="--quiet" false="" quietQuiet} \
-      ~{if defined(tmpTmpDb) then ("--tmpdb " +  '"' + tmpTmpDb + '"') else ""} \
-      ~{if defined(nNChunks) then ("--nchunks " +  '"' + nNChunks + '"') else ""} \
-      ~{if defined(cpusCpus) then ("--cpus " +  '"' + cpusCpus + '"') else ""} \
-      ~{if defined(filterFilter) then ("--filter " +  '"' + filterFilter + '"') else ""} \
-      ~{if defined(biasesBiases) then ("--biases " +  '"' + biasesBiases + '"') else ""} \
-      ~{if defined(normNorm) then ("--norm " +  '"' + normNorm + '"') else ""} \
-      ~{true="--matrix" false="" matrixMatrix} \
-      ~{true="--cooler" false="" coolerCooler} \
-      ~{true="--rownames" false="" rowRowNames} \
-      ~{true="--only_plot" false="" onlyOnlyPlot} \
-      ~{true="--interactive" false="" interactiveInteractive} \
-      ~{true="-c" false="" cC} \
-      ~{true="-c2" false="" c2C2} \
-      ~{true="--only_txt" false="" onlyOnlyTxt} \
-      ~{true="--plot" false="" plotPlot} \
-      ~{true="--force_plot" false="" forceForcePlot} \
-      ~{true="--triangular" false="" triangularTriangular} \
-      ~{if defined(xXTickRotation) then ("--xtick_rotation " +  '"' + xXTickRotation + '"') else ""} \
-      ~{if defined(cmapCmap) then ("--cmap " +  '"' + cmapCmap + '"') else ""} \
-      ~{if defined(badBadColor) then ("--bad_color " +  '"' + badBadColor + '"') else ""} \
-      ~{if defined(formatFormat) then ("--format " +  '"' + formatFormat + '"') else ""} \
-      ~{if defined(zZRange) then ("--zrange " +  '"' + zZRange + '"') else ""} \
-      ~{if defined(transformTransform) then ("--transform " +  '"' + transformTransform + '"') else ""} \
-      ~{if defined(figFigSize) then ("--figsize " +  '"' + figFigSize + '"') else ""}
+      ~{if defined(workdir) then ("--workdir " +  '"' + workdir + '"') else ""} \
+      ~{if defined(resolution) then ("--resolution " +  '"' + resolution + '"') else ""} \
+      ~{true="--noX" false="" nox} \
+      ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
+      ~{if defined(jobid) then ("--jobid " +  '"' + jobid + '"') else ""} \
+      ~{true="--force" false="" force} \
+      ~{true="--quiet" false="" quiet} \
+      ~{if defined(tmp_db) then ("--tmpdb " +  '"' + tmp_db + '"') else ""} \
+      ~{if defined(n_chunks) then ("--nchunks " +  '"' + n_chunks + '"') else ""} \
+      ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""} \
+      ~{if defined(filter) then ("--filter " +  '"' + filter + '"') else ""} \
+      ~{if defined(biases) then ("--biases " +  '"' + biases + '"') else ""} \
+      ~{if defined(norm) then ("--norm " +  '"' + norm + '"') else ""} \
+      ~{true="--matrix" false="" matrix} \
+      ~{true="--cooler" false="" cooler} \
+      ~{true="--rownames" false="" row_names} \
+      ~{true="--only_plot" false="" only_plot} \
+      ~{true="--interactive" false="" interactive} \
+      ~{true="-c" false="" _coord_coordinate_retrieve_arguments} \
+      ~{true="-c2" false="" c_two} \
+      ~{true="--only_txt" false="" only_txt} \
+      ~{true="--plot" false="" plot} \
+      ~{true="--force_plot" false="" force_plot} \
+      ~{true="--triangular" false="" triangular} \
+      ~{if defined(x_tick_rotation) then ("--xtick_rotation " +  '"' + x_tick_rotation + '"') else ""} \
+      ~{if defined(cmap) then ("--cmap " +  '"' + cmap + '"') else ""} \
+      ~{if defined(bad_color) then ("--bad_color " +  '"' + bad_color + '"') else ""} \
+      ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
+      ~{if defined(z_range) then ("--zrange " +  '"' + z_range + '"') else ""} \
+      ~{if defined(transform) then ("--transform " +  '"' + transform + '"') else ""} \
+      ~{if defined(fig_size) then ("--figsize " +  '"' + fig_size + '"') else ""}
   >>>
+  parameter_meta {
+    workdir: "path to working directory (generated with the tool tadbit mapper)"
+    resolution: "resolution at which to output matrices"
+    nox: "no display server (X screen)"
+    bam: "path to a TADbit-generated BAM file with all reads (other wise the tool will guess from the working directory database)"
+    jobid: "Use as input data generated by a job with a given jobid. Use tadbit describe to find out which."
+    force: "overwrite previously run job"
+    quiet: "remove all messages"
+    tmp_db: "if provided uses this directory to manipulate the database"
+    n_chunks: "maximum number of chunks into which to cut the BAM"
+    cpus: "[8] Maximum number of CPU cores available in the execution host. If higher than 1, tasks with multi-threading capabilities will enabled (if 0 all available) cores will be used"
+    filter: "[[1, 2, 3, 4, 6, 7, 9, 10]] Use filters to define a set os valid pair of reads e.g.: '--apply 1 2 3 4 8 9 10'. Where these numberscorrespond to: 0: nothing, 1: self-circle, 2: dangling-end, 3: error, 4: extra dangling-end, 5: too close from RES, 6: too short, 7: too large, 8: over-represented, 9: duplicated, 10: random breaks, 11: trans-chromosomic"
+    biases: "path to file with pre-calculated biases by columns"
+    norm: "[['raw']] normalization(s) to apply. Choices are: [norm, decay, raw, raw&decay]"
+    matrix: "Write text matrix in multiple columns (square). By defaults matrices are written in BED-like format (also only way to get a raw matrix with all values including the ones in masked columns)."
+    cooler: "Write i,j,v matrix in cooler format instead of text."
+    row_names: "To store row names in the output text matrix. WARNING: when non- matrix, results in two extra columns"
+    only_plot: "[False] Skip writing matrix in text format."
+    interactive: "[False] Open matplotlib interactive plot (nothing will be saved)."
+    _coord_coordinate_retrieve_arguments: ", --coord             Coordinate of the region to retrieve. By default all genome, arguments can be either one chromosome name, or the coordinate in the form: \"-c chr3:110000000-120000000\""
+    c_two: ", --coord2           Coordinate of a second region to retrieve the matrix in the intersection with the first region."
+    only_txt: "Save only text file for matrices, not images"
+    plot: "Plot matrix in desired format."
+    force_plot: "Force plotting even with demoniacally big matrices (more than 5000x5000, or 1500x1500with interactive option)."
+    triangular: "[False] represents only half matrix. Note that this also results in truly vectorial images of matrix."
+    x_tick_rotation: "[-25] x-tick rotation"
+    cmap: "[viridis] Matplotlib color map to use."
+    bad_color: "[white] Matplotlib color to use on bins filtered out (only used with normalized matrices, not raw)."
+    format: "[png] plot file format."
+    z_range: "Range, in log2 scale of the color scale. i.e.: --zrange=-2,2"
+    transform: "[log2] can be any of [log2, log, none]"
+    fig_size: "Range, in log2 scale of the color scale. default for triangular matrices: --figsize=16,10 and for square matrices: --figsize=16,14"
+  }
 }

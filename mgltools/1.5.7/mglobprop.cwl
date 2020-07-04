@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mglobprop.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mglobprop.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ktImportRDP.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ktImportRDP.cwl
 inputs:
 - id: rdp_details
   doc: RDP assignment details downloaded as text from the RDP Classifier web portal

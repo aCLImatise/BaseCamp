@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: novo2sam.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/novo2sam.pl.cwl
 inputs:
-- id: aln_novo
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: p
+- id: options
   doc: ''
   type: boolean
   inputBinding:
-    prefix: -p
+    prefix: -OPTIONS
+- id: more_options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -MORE_OPTIONS
 outputs: []
 cwlVersion: v1.1
 baseCommand:

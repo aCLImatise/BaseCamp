@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MapAlignerPoseClustering.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MapAlignerPoseClustering.cwl
 inputs:
 - id: in
   doc: "*               Input files to align (all must have the same file type) (valid\
@@ -19,19 +19,6 @@ inputs:
   type: File
   inputBinding:
     prefix: -trafo_out
-- id: reference
-  doc: ":file <file>     File to use as reference (same file format as input files\
-    \ required) (valid formats: 'featureXML', 'mzML')"
-  type: boolean
-  inputBinding:
-    prefix: -reference
-- id: reference
-  doc: ":index <number>  Use one of the input files as reference ('1' for the first\
-    \ file, etc.). If '0', no explicit reference is set - the algorithm will select\
-    \ a reference. (default: '0' min: '0')"
-  type: boolean
-  inputBinding:
-    prefix: -reference
 - id: ini
   doc: Use the given TOPP INI file
   type: File
@@ -52,11 +39,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Algorithm parameters section
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

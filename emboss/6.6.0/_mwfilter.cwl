@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _mwfilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_mwfilter.cwl
 inputs:
 - id: tolerance
   doc: float      [50.0] Ppm tolerance (Any numeric value)

@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: MBICseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MBICseq.cwl
 inputs:
-- id: i
+- id: input_file_name
   doc: ': the input file name; default stdin'
   type: string
   inputBinding:
     prefix: -i
-- id: l
+- id: penalty_lambda_mbicseq
   doc: ': the penalty lambda of MBIC-seq; default 1.2'
   type: double
   inputBinding:

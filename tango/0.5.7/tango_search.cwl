@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: tango_search.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tango_search.cwl
 inputs:
-- id: query
-  doc: Query contig nucleotide file
-  type: string
-  inputBinding:
-    position: 0
-- id: dbfile
-  doc: Diamond database file
-  type: string
-  inputBinding:
-    position: 1
-- id: outfile
-  doc: Diamond output file
-  type: string
-  inputBinding:
-    position: 2
 - id: mode
   doc: "Choice of search mode for diamond: 'blastx' (default) for DNA query sequences\
     \ or 'blastp' for amino acid query sequences"
@@ -57,6 +42,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --tmpdir
+- id: query
+  doc: Query contig nucleotide file
+  type: string
+  inputBinding:
+    position: 0
+- id: dbfile
+  doc: Diamond database file
+  type: string
+  inputBinding:
+    position: 1
+- id: outfile
+  doc: Diamond output file
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

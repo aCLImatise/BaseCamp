@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: contact.so.cwl
+id: ../../../../home/ubuntu/BiocondaCli/contact.so.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

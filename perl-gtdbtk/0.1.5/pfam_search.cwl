@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: pfam_search.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pfam_search.pl.cwl
 inputs:
-- id: pfam_scan_pl
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: fast_a
   doc: ''
   type: string
@@ -16,6 +11,11 @@ inputs:
   type: Directory
   inputBinding:
     prefix: -dir
+- id: pfam_scan_do_tpl
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,10 +2,13 @@ version 1.0
 
 task LocarnapRevcomp.pl {
   input {
-    String? fastFastAFiles
+    String fast_a_files
   }
   command <<<
     locarnap-revcomp.pl \
-      ~{fastFastAFiles}
+      ~{fast_a_files}
   >>>
+  parameter_meta {
+    fast_a_files: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fretree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fretree.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

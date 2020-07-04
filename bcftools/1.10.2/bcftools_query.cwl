@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bcftools_query.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcftools_query.cwl
 inputs:
 - id: exclude
   doc: exclude sites for which the expression is true (see man page for details)
@@ -71,6 +71,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --vcf-list
+- id: a_dot_vcf_do_tgz
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

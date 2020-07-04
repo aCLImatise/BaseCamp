@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: rnazMAF2BED.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnazMAF2BED.pl.cwl
 inputs:
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: seq_id
   doc: Specify the sequence identifier of the sequence which should be used as a reference
     to create the output. Use for example "hg17" if you want to get all sequences
@@ -26,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --man
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

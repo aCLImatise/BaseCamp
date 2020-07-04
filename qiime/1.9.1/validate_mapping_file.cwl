@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: validate_mapping_file.py.cwl
-inputs:
-- id: mapping_fp
-  doc: Metadata mapping filepath [REQUIRED]
-  type: string
-  inputBinding:
-    prefix: --mapping_fp
+id: ../../../../home/ubuntu/BiocondaCli/validate_mapping_file.py.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: make_repeat_file.cwl
+id: ../../../../home/ubuntu/BiocondaCli/make_repeat_file.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

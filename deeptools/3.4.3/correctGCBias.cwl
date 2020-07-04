@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: correctGCBias.cwl
+id: ../../../../home/ubuntu/BiocondaCli/correctGCBias.cwl
 inputs:
 - id: bam_file
   doc: 'file, -b BAM file Sorted BAM file to correct. (default: None)'
@@ -62,6 +62,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: an
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: example
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: usage
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: is
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

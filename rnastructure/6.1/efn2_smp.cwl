@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: efn2_smp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/efn2_smp.cwl
 inputs:
-- id: efn2
+- id: efn_two
   doc: ''
   type: string
   inputBinding:

@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: snoscan.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snoscan.cwl
 inputs:
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 - id: rrna_sequence_file
   doc: ''
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: options
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

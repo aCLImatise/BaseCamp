@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mafStats.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mafStats.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

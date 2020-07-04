@@ -2,26 +2,37 @@ version 1.0
 
 task Ace.pl {
   input {
-    String hostHost
-    String portPort
-    String pathPath
-    Boolean urlUrl
-    String loginLogin
-    String passPass
-    Boolean tcshTcsh
-    Boolean saveSave
-    String execExec
+    String? host
+    String? port
+    String? path
+    Boolean? url
+    String? login
+    String? pass
+    Boolean? tcsh
+    Boolean? save
+    String? exec
   }
   command <<<
     ace.pl \
-      ~{if defined(hostHost) then ("-host " +  '"' + hostHost + '"') else ""} \
-      ~{if defined(portPort) then ("-port " +  '"' + portPort + '"') else ""} \
-      ~{if defined(pathPath) then ("-path " +  '"' + pathPath + '"') else ""} \
-      ~{true="-url" false="" urlUrl} \
-      ~{if defined(loginLogin) then ("-login " +  '"' + loginLogin + '"') else ""} \
-      ~{if defined(passPass) then ("-pass " +  '"' + passPass + '"') else ""} \
-      ~{true="-tcsh" false="" tcshTcsh} \
-      ~{true="-save" false="" saveSave} \
-      ~{if defined(execExec) then ("-exec " +  '"' + execExec + '"') else ""}
+      ~{if defined(host) then ("-host " +  '"' + host + '"') else ""} \
+      ~{if defined(port) then ("-port " +  '"' + port + '"') else ""} \
+      ~{if defined(path) then ("-path " +  '"' + path + '"') else ""} \
+      ~{true="-url" false="" url} \
+      ~{if defined(login) then ("-login " +  '"' + login + '"') else ""} \
+      ~{if defined(pass) then ("-pass " +  '"' + pass + '"') else ""} \
+      ~{true="-tcsh" false="" tcsh} \
+      ~{true="-save" false="" save} \
+      ~{if defined(exec) then ("-exec " +  '"' + exec + '"') else ""}
   >>>
+  parameter_meta {
+    host: "Server host (localhost)"
+    port: "Server port (200005)"
+    path: "Local database path (no default)"
+    url: "<url>       Server URL (see below"
+    login: "Username"
+    pass: "Password"
+    tcsh: "Use T-shell completion mode"
+    save: "Save database updates automatically"
+    exec: "Run a command and quit"
+  }
 }

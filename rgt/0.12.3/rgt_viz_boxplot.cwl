@@ -1,40 +1,33 @@
 class: CommandLineTool
-id: rgt_viz_boxplot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rgt_viz_boxplot.cwl
 inputs:
-- id: input
-  doc: 'The file name of the input Experimental Matrix file. Recommended to add more
-    columns for more information for ploting. For example, cell type or factors. (default:
-    None)'
-  type: string
-  inputBinding:
-    position: 0
-- id: o
+- id: directory_name_output
   doc: 'The directory name for the output files. For example, project name. (default:
     None)'
   type: boolean
   inputBinding:
     prefix: -o
-- id: t
+- id: title_shown_top
   doc: 'The title shown on the top of the plot and also the folder name. (default:
     boxplot)'
   type: boolean
   inputBinding:
     prefix: -t
-- id: g
+- id: group_data_readsneeds
   doc: "Group the data by reads(needs 'factor' column), regions(needs 'factor' column),\
     \ another name of column (for example, 'cell')in the header of experimental matrix,\
     \ or None. (default: reads)"
   type: boolean
   inputBinding:
     prefix: -g
-- id: c
+- id: color_data_readsneeds
   doc: "Color the data by reads(needs 'factor' column), regions(needs 'factor' column),\
     \ another name of column (for example, 'cell')in the header of experimental matrix,\
     \ or None. (default: regions)"
   type: boolean
   inputBinding:
     prefix: -c
-- id: s
+- id: sort_data_default
   doc: "Sort the data by reads(needs 'factor' column), regions(needs 'factor' column),\
     \ another name of column (for example, 'cell')in the header of experimental matrix,\
     \ or None. (default: None)"
@@ -84,7 +77,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ylim
-- id: p
+- id: define_significance_level
   doc: 'Define the significance level for multiple test. (default: 0.05)'
   type: boolean
   inputBinding:
@@ -99,6 +92,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -table
+- id: input
+  doc: 'The file name of the input Experimental Matrix file. Recommended to add more
+    columns for more information for ploting. For example, cell type or factors. (default:
+    None)'
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

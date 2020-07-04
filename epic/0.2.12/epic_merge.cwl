@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: epic_merge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/epic_merge.cwl
 inputs:
 - id: matrixes
   doc: epic-count matrixes to merge.

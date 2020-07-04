@@ -1,37 +1,37 @@
 class: CommandLineTool
-id: hmmbuild2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hmmbuild2.cwl
 inputs:
-- id: n
+- id: name_name_first
   doc: ': name; name this (first) HMM <s>'
   type: string
   inputBinding:
     prefix: -n
-- id: o
+- id: resave_annotated_alignment
   doc: ': re-save annotated alignment to <f>'
   type: string
   inputBinding:
     prefix: -o
-- id: a
+- id: append_append_hmm
   doc: ': append; append this HMM to <hmmfile>'
   type: boolean
   inputBinding:
     prefix: -A
-- id: f
+- id: force_allow_overwriting
   doc: ': force; allow overwriting of <hmmfile>'
   type: boolean
   inputBinding:
     prefix: -F
-- id: f
+- id: multihit_local_hmmfs
   doc: ': multi-hit local (hmmfs style)'
   type: boolean
   inputBinding:
     prefix: -f
-- id: g
+- id: global_alignment_hmms
   doc: ': global alignment (hmms style, Needleman/Wunsch)'
   type: boolean
   inputBinding:
     prefix: -g
-- id: s
+- id: local_alignment_hmmsw
   doc: ': local alignment (hmmsw style, Smith/Waterman)'
   type: boolean
   inputBinding:
@@ -161,6 +161,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: hmmbuild
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: hmm_file_output
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: alignment_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

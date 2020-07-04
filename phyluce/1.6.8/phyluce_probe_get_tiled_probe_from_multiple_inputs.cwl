@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_probe_get_tiled_probe_from_multiple_inputs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_probe_get_tiled_probe_from_multiple_inputs.cwl
 inputs:
 - id: fast_as
   doc: The folder of fasta files from which to design probes

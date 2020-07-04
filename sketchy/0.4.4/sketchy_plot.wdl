@@ -2,26 +2,37 @@ version 1.0
 
 task SketchyPlot {
   input {
-    File indexIndex
-    File keyKey
-    File sSSsh
-    File sshSsh
-    Int stableStable
-    String palettePalette
-    String prefixPrefix
-    String formatFormat
-    Boolean verboseVerbose
+    File? index
+    File? key
+    File? s_ssh
+    File? ssh
+    Int? stable
+    String? palette
+    String? prefix
+    String? format
+    Boolean? verbose
   }
   command <<<
     sketchy plot \
-      ~{if defined(indexIndex) then ("--index " +  '"' + indexIndex + '"') else ""} \
-      ~{if defined(keyKey) then ("--key " +  '"' + keyKey + '"') else ""} \
-      ~{if defined(sSSsh) then ("--sssh " +  '"' + sSSsh + '"') else ""} \
-      ~{if defined(sshSsh) then ("--ssh " +  '"' + sshSsh + '"') else ""} \
-      ~{if defined(stableStable) then ("--stable " +  '"' + stableStable + '"') else ""} \
-      ~{if defined(palettePalette) then ("--palette " +  '"' + palettePalette + '"') else ""} \
-      ~{if defined(prefixPrefix) then ("--prefix " +  '"' + prefixPrefix + '"') else ""} \
-      ~{if defined(formatFormat) then ("--format " +  '"' + formatFormat + '"') else ""} \
-      ~{true="--verbose" false="" verboseVerbose}
+      ~{if defined(index) then ("--index " +  '"' + index + '"') else ""} \
+      ~{if defined(key) then ("--key " +  '"' + key + '"') else ""} \
+      ~{if defined(s_ssh) then ("--sssh " +  '"' + s_ssh + '"') else ""} \
+      ~{if defined(ssh) then ("--ssh " +  '"' + ssh + '"') else ""} \
+      ~{if defined(stable) then ("--stable " +  '"' + stable + '"') else ""} \
+      ~{if defined(palette) then ("--palette " +  '"' + palette + '"') else ""} \
+      ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
+      ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    index: "Path to genotype feature index used in: sketchy evaluate  [required]"
+    key: "Path to genotype feature index key for translation from numeric.  [required]"
+    s_ssh: "Path to sum of ranked sums shared hashes data file from evaluation  [required]"
+    ssh: "Path to sum of shared hashes data file from prediction"
+    stable: "Stability parameter passed to: sketchy evaluate"
+    palette: "Color palette for output plots [YlGnBu]"
+    prefix: "Output prefix for all files [sketchy]"
+    format: "Output image format [png]"
+    verbose: "Verbose logging output [false]"
+  }
 }

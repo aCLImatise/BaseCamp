@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hicCorrelate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hicCorrelate.cwl
 inputs:
 - id: matrices
   doc: 'Matrices to correlate (usually .h5 but other formats are allowed). hicCorrelate
@@ -44,7 +44,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --method
-- id: log1p
+- id: logo_nep
   doc: 'If set, then the log1p of the matrix values is used. This parameter has no
     effect for Spearman correlations but changes the output of Pearson correlation
     and, for the scatter plot, if set, the visualization of the values is easier.

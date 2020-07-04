@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: rsem_bam2wig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rsem_bam2wig.cwl
 inputs:
+- id: no_fractional_weight
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --no-fractional-weight
 - id: sorted_alignment_file
   doc: ''
   type: string
@@ -16,11 +21,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: no_fractional_weight
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: --no-fractional-weight
 outputs: []
 cwlVersion: v1.1
 baseCommand:

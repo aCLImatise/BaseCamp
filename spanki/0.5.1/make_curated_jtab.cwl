@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: make_curated_jtab.cwl
+id: ../../../../home/ubuntu/BiocondaCli/make_curated_jtab.cwl
 inputs:
-- id: i
+- id: bam_file_name
   doc: BAM file name
   type: string
   inputBinding:
@@ -18,12 +18,12 @@ inputs:
   type: string
   inputBinding:
     prefix: -jtab
-- id: a
+- id: anchor_size_default
   doc: Anchor size, default=8
   type: string
   inputBinding:
     prefix: -a
-- id: o
+- id: output_directory_default
   doc: Output directory, default='curated_juncs'
   type: string
   inputBinding:

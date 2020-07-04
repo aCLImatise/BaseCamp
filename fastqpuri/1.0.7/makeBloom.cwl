@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: makeBloom.cwl
+id: ../../../../home/ubuntu/BiocondaCli/makeBloom.cwl
 inputs:
 - id: fast_a
   doc: Fasta input file. Mandatory option.

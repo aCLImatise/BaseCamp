@@ -1,11 +1,16 @@
 class: CommandLineTool
-id: wordLine.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wordLine.cwl
 inputs:
-- id: break
-  doc: words based on C symbol rules rather than white space
+- id: c_sym
+  doc: '- Break up words based on C symbol rules rather than white space'
+  type: boolean
+  inputBinding:
+    prefix: -csym
+- id: in_file
+  doc: ''
   type: string
   inputBinding:
-    prefix: '- Break'
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

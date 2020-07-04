@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: CycleFold.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CycleFold.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: sequence
   doc: ''
   type: string
   inputBinding:
-    position: 1
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

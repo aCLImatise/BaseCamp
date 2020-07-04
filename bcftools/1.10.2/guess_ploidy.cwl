@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: guess_ploidy.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/guess_ploidy.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

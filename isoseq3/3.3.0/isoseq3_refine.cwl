@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: isoseq3_refine.cwl
+id: ../../../../home/ubuntu/BiocondaCli/isoseq3_refine.cwl
 inputs:
 - id: min_polya_length
   doc: INT   Minimum poly(A) tail length. [20]
@@ -31,6 +31,31 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: iso_seq
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: refine
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: ccs_dot_demux_dot_bam_vertical_line_xml
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: primer_dot_fast_a_vertical_line_xml
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: fl_ncdot_bam_vertical_line_xml
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_genetrees_get_tree_counts.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_genetrees_get_tree_counts.cwl
 inputs:
 - id: trees
   doc: Tree file

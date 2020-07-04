@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: miramem.cwl
+id: ../../../../home/ubuntu/BiocondaCli/miramem.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

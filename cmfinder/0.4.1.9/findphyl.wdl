@@ -2,14 +2,19 @@ version 1.0
 
 task Findphyl {
   input {
-    String limitLimit
-    String? rateRateFile
-    String? colColFile
+    String? limit
+    String rate_file
+    String? col_file
   }
   command <<<
     findphyl \
-      ~{rateRateFile} \
-      ~{if defined(limitLimit) then ("--limit " +  '"' + limitLimit + '"') else ""} \
-      ~{colColFile}
+      ~{rate_file} \
+      ~{col_file} \
+      ~{if defined(limit) then ("--limit " +  '"' + limit + '"') else ""}
   >>>
+  parameter_meta {
+    limit: ""
+    rate_file: ""
+    col_file: ""
+  }
 }

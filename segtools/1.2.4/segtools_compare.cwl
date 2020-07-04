@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: segtools_compare.cwl
+id: ../../../../home/ubuntu/BiocondaCli/segtools_compare.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: segmentation
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: segmentation
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: edit_distance
   doc: Measure the base-wise edit distance between the two specified segmentations
   type: boolean
@@ -31,6 +16,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: var_3
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: var_4
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

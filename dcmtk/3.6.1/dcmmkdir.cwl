@@ -1,22 +1,17 @@
 class: CommandLineTool
-id: dcmmkdir.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmmkdir.cwl
 inputs:
-- id: dcm_file_in
-  doc: ref. DICOM file (or directory to be scanned)
-  type: string
-  inputBinding:
-    position: 0
-- id: q
+- id: _quiet_print
   doc: --quiet                  quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose                verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug                  debug mode, print debug information
   type: boolean
   inputBinding:
@@ -32,7 +27,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lc
-- id: a
+- id: _abortinconsistfile_abort
   doc: --abort-inconsist-file   abort on first inconsistent file
   type: boolean
   inputBinding:
@@ -80,7 +75,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --general-dvd-jpeg
-- id: general_dvd_j2k
+- id: general_dvd_j_two_k
   doc: General Purpose DVD Interchange with JPEG 2000 (STD-GEN-DVD-J2K)
   type: boolean
   inputBinding:
@@ -90,45 +85,45 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --general-bd-jpeg
-- id: general_bd_j2k
+- id: general_bd_j_two_k
   doc: General Purpose BD Interchange with JPEG 2000 (STD-GEN-BD-J2K)
   type: boolean
   inputBinding:
     prefix: --general-bd-j2k
-- id: general_bd_mpeg2_mp_ml
+- id: general_bd_mpeg_two_mp_ml
   doc: General Purpose BD Interchange with MPEG2 MP@ML (STD-GEN-BD-MPEG2-MPML)
   type: boolean
   inputBinding:
     prefix: --general-bd-mpeg2-mpml
-- id: general_bd_mpeg2_mph_l
+- id: general_bd_mpeg_two_mph_l
   doc: General Purpose BD Interchange with MPEG2 MP@HL (STD-GEN-BD-MPEG2-MPHL)
   type: boolean
   inputBinding:
     prefix: --general-bd-mpeg2-mphl
-- id: general_bd_mpeg4_hp
+- id: general_bd_mpeg_four_hp
   doc: General Purpose BD Interchange with MPEG-4 AVC/H.264 HiP@Level4.1 (STD-GEN-BD-MPEG4-HPLV41)
   type: boolean
   inputBinding:
     prefix: --general-bd-mpeg4-hp
-- id: general_bd_mpeg4_hp_bd
+- id: general_bd_mpeg_four_hp_bd
   doc: General Purpose BD Interchange with MPEG-4 AVC/H.264 BD-Compatible HiP@Level4.1
     (STD-GEN-BD-MPEG4-HPLV41BD)
   type: boolean
   inputBinding:
     prefix: --general-bd-mpeg4-hpbd
-- id: general_bd_mpeg4_hp2d
+- id: general_bd_mpeg_four_hp_two_d
   doc: General Purpose BD Interchange with MPEG-4 AVC/H.264 HiP@Level4.2 for 2D video
     (STD-GEN-BD-MPEG4-HPLV42-2D)
   type: boolean
   inputBinding:
     prefix: --general-bd-mpeg4-hp2d
-- id: general_bd_mpeg4_hp3d
+- id: general_bd_mpeg_four_hp_three_d
   doc: General Purpose BD Interchange with MPEG-4 AVC/H.264 HiP@Level4.2 for 3D video
     (STD-GEN-BD-MPEG4-HPLV42-3D)
   type: boolean
   inputBinding:
     prefix: --general-bd-mpeg4-hp3d
-- id: general_bd_mpeg4_h_pst
+- id: general_bd_mpeg_four_h_pst
   doc: General Purpose BD Interchange with MPEG-4 AVC/H.264 Stereo HiP@Level4.2 (STD-GEN-BD-MPEG4-SHPLV42)
   type: boolean
   inputBinding:
@@ -138,7 +133,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --usb-and-flash-jpeg
-- id: usb_and_flash_j2k
+- id: usb_and_flash_j_two_k
   doc: General Purpose USB/Flash Memory Interchange with JPEG 2000 (STD-GEN-USB/MMC/CF/SD-J2K)
   type: boolean
   inputBinding:
@@ -148,7 +143,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --general-mime
-- id: mpeg2_mp_ml_dvd
+- id: mpeg_two_mp_ml_dvd
   doc: DVD Interchange with MPEG2 Main Profile @ Main Level (STD-DVD-MPEG2-MPML)
   type: boolean
   inputBinding:
@@ -208,17 +203,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ultrasound-cc-mf
-- id: pec
-  doc: --12-lead-ecg            12-lead ECG Interchange on Diskette (STD-WVFM-ECG-FD)
+- id: one_two_lead_ecg
+  doc: 12-lead ECG Interchange on Diskette (STD-WVFM-ECG-FD)
   type: boolean
   inputBinding:
-    prefix: -Pec
+    prefix: --12-lead-ecg
 - id: hemodynamic_waveform
   doc: Hemodynamic Waveform Interchange on Diskette (STD-WVFM-HD-FD)
   type: boolean
   inputBinding:
     prefix: --hemodynamic-waveform
-- id: w
+- id: _discard_write
   doc: --discard                do not write out DICOMDIR
   type: boolean
   inputBinding:
@@ -228,16 +223,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -nb
-- id: u
+- id: _disable_support
   doc: --disable-new-vr         disable support for new VRs, convert to OB
   type: boolean
   inputBinding:
     prefix: -u
-- id: e
+- id: _lengthundefined_write
   doc: --length-undefined       write with undefined lengths
   type: boolean
   inputBinding:
     prefix: -e
+- id: dcm_file_in
+  doc: ref. DICOM file (or directory to be scanned)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

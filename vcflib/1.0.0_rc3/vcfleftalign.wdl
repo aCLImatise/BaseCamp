@@ -2,14 +2,19 @@ version 1.0
 
 task Vcfleftalign {
   input {
-    File referenceReference
-    String windowWindow
-    File? fileFile
+    File? reference
+    String? window
+    File? file
   }
   command <<<
     vcfleftalign \
-      ~{fileFile} \
-      ~{if defined(referenceReference) then ("--reference " +  '"' + referenceReference + '"') else ""} \
-      ~{if defined(windowWindow) then ("--window " +  '"' + windowWindow + '"') else ""}
+      ~{file} \
+      ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
+      ~{if defined(window) then ("--window " +  '"' + window + '"') else ""}
   >>>
+  parameter_meta {
+    reference: "Use this reference as a basis for realignment."
+    window: "Use a window of this many bp when left aligning (150)."
+    file: ""
+  }
 }

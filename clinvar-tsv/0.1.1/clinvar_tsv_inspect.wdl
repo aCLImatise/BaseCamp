@@ -2,14 +2,19 @@ version 1.0
 
 task ClinvarTsvInspect {
   input {
-    String workWorkDir
-    String? clinClinVarTsv
-    String? inspectInspect
+    String? work_dir
+    String clin_var_tsv
+    String inspect
   }
   command <<<
     clinvar_tsv inspect \
-      ~{clinClinVarTsv} \
-      ~{if defined(workWorkDir) then ("--work-dir " +  '"' + workWorkDir + '"') else ""} \
-      ~{inspectInspect}
+      ~{clin_var_tsv} \
+      ~{inspect} \
+      ~{if defined(work_dir) then ("--work-dir " +  '"' + work_dir + '"') else ""}
   >>>
+  parameter_meta {
+    work_dir: "Path to working directory"
+    clin_var_tsv: ""
+    inspect: ""
+  }
 }

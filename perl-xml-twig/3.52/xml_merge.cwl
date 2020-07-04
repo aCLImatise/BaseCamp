@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: xml_merge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/xml_merge.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

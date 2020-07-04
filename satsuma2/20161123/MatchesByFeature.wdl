@@ -2,14 +2,19 @@ version 1.0
 
 task MatchesByFeature {
   input {
-    String? gff3Gff3File
-    String? gffGffFeatures
-    String? matchMatchFiles
+    String gff_three_file
+    String gff_features
+    String match_files
   }
   command <<<
     MatchesByFeature \
-      ~{gff3Gff3File} \
-      ~{gffGffFeatures} \
-      ~{matchMatchFiles}
+      ~{gff_three_file} \
+      ~{gff_features} \
+      ~{match_files}
   >>>
+  parameter_meta {
+    gff_three_file: ""
+    gff_features: ""
+    match_files: ""
+  }
 }

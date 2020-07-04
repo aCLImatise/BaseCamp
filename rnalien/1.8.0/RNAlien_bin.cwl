@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNAlien_bin.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAlien_bin.cwl
 inputs:
 - id: numeric_version
   doc: Print just the version number

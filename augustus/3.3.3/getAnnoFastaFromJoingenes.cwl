@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: getAnnoFastaFromJoingenes.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/getAnnoFastaFromJoingenes.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

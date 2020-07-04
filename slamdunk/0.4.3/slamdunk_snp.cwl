@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: slamdunk_snp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/slamdunk_snp.cwl
 inputs:
-- id: bam
-  doc: Bam file(s)
-  type: string
-  inputBinding:
-    position: 0
 - id: output_dir
   doc: Output directory for mapped BAM files.
   type: string

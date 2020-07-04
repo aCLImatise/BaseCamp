@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: prince.cwl
+id: ../../../../home/ubuntu/BiocondaCli/prince.cwl
 inputs:
 - id: boost_output
   doc: output file for training data / training data used to predict copy numbers
@@ -27,7 +27,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --boosting_file
-- id: k
+- id: kmer_size_used
   doc: Kmer size used during read recruitment.
   type: string
   inputBinding:

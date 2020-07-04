@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: connor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/connor.cwl
 inputs:
-- id: input_bam
-  doc: path to input BAM
-  type: string
-  inputBinding:
-    position: 0
-- id: output_bam
-  doc: path to deduplicated output BAM
-  type: string
-  inputBinding:
-    position: 1
 - id: verbose
   doc: print all log messages to console
   type: boolean
@@ -61,6 +51,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --umt_length
+- id: input_bam
+  doc: path to input BAM
+  type: string
+  inputBinding:
+    position: 0
+- id: output_bam
+  doc: path to deduplicated output BAM
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

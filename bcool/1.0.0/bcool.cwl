@@ -1,55 +1,55 @@
 class: CommandLineTool
-id: bcool.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcool.cwl
 inputs:
-- id: u
+- id: mandatory_input_fasta
   doc: (MANDATORY) input fasta read files. Several read files must be concatenated
   type: string
   inputBinding:
     prefix: -u
-- id: o
+- id: path_store_results
   doc: Path to store the results (Default = current directory)
   type: string
   inputBinding:
     prefix: -o
-- id: t
+- id: number_cores_used
   doc: Number of cores used (Default = 1)
   type: string
   inputBinding:
     prefix: -t
-- id: k
+- id: kmer_size_default
   doc: k-mer size (Default = AUTO)
   type: string
   inputBinding:
     prefix: -k
-- id: s
+- id: kmers_present_less
   doc: k-mers present strictly less than this number of times in the dataset will
     be discarded (Default = 2)
   type: long
   inputBinding:
     prefix: -s
-- id: s
+- id: unitig_coverage_cleaning
   doc: Unitig Coverage for cleaning (Default = AUTO)
   type: string
   inputBinding:
     prefix: -S
-- id: m
+- id: advanced_maximum_number
   doc: (ADVANCED) Maximum number of corrected bases (Default = 10)
   type: string
   inputBinding:
     prefix: -m
-- id: i
+- id: advanced_index_one
   doc: (ADVANCED) index one out of i anchors to reduce memory consumption (Default
     = 1)
   type: string
   inputBinding:
     prefix: -i
-- id: n
+- id: advanced_maximum_occurence
   doc: (ADVANCED) Maximum occurence of an anchor (Default = 1), better correction
     for repetitive genome but slower
   type: long
   inputBinding:
     prefix: -n
-- id: d
+- id: advanced_print_command
   doc: (ADVANCED) Print command lines
   type: string
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gff2bed_megarow.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gff2bed_megarow.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

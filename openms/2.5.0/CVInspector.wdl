@@ -2,26 +2,37 @@ version 1.0
 
 task CVInspector {
   input {
-    File cvCvFiles
-    String cvCvNames
-    File mappingMappingFile
-    String ignoreIgnoreCv
-    File htmlHtml
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    File? cv_files
+    String? cv_names
+    File? mapping_file
+    String? ignore_cv
+    File? html
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     CVInspector \
-      ~{if defined(cvCvFiles) then ("-cv_files " +  '"' + cvCvFiles + '"') else ""} \
-      ~{if defined(cvCvNames) then ("-cv_names " +  '"' + cvCvNames + '"') else ""} \
-      ~{if defined(mappingMappingFile) then ("-mapping_file " +  '"' + mappingMappingFile + '"') else ""} \
-      ~{if defined(ignoreIgnoreCv) then ("-ignore_cv " +  '"' + ignoreIgnoreCv + '"') else ""} \
-      ~{if defined(htmlHtml) then ("-html " +  '"' + htmlHtml + '"') else ""} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(cv_files) then ("-cv_files " +  '"' + cv_files + '"') else ""} \
+      ~{if defined(cv_names) then ("-cv_names " +  '"' + cv_names + '"') else ""} \
+      ~{if defined(mapping_file) then ("-mapping_file " +  '"' + mapping_file + '"') else ""} \
+      ~{if defined(ignore_cv) then ("-ignore_cv " +  '"' + ignore_cv + '"') else ""} \
+      ~{if defined(html) then ("-html " +  '"' + html + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    cv_files: "*    List of ontology files in OBO format. (valid formats: 'obo')"
+    cv_names: "*    List of identifiers (one for each ontology file)."
+    mapping_file: "Mapping file in CVMapping (XML) format. (valid formats: 'XML')"
+    ignore_cv: "A list of CV identifiers which should be ignored. (default: '[UO PATO BTO]')"
+    html: "Writes an HTML version of the mapping file with annotated CV terms (valid formats: 'HTML')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

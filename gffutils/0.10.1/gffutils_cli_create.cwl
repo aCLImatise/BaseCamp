@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gffutils_cli_create.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gffutils_cli_create.cwl
 inputs:
-- id: filename
-  doc: GFF or GTF file to use
-  type: File
-  inputBinding:
-    position: 0
 - id: output
   doc: 'Database to create. Default is to append ".db" to the end of the input filename
     (default: -)'
@@ -40,6 +35,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --disable-infer-transcripts
+- id: filename
+  doc: GFF or GTF file to use
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

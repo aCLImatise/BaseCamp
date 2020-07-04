@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: metaphlan2krona.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/metaphlan2krona.py.cwl
 inputs:
 - id: profile
   doc: The input file is the MetaPhlAn standard result file

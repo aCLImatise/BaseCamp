@@ -2,10 +2,13 @@ version 1.0
 
 task GetAbundance {
   input {
-    Int cC
+    Int? resultcsv_resultncsv_minabundance
   }
   command <<<
     getAbundance \
-      ~{if defined(cC) then ("-c " +  '"' + cC + '"') else ""}
+      ~{if defined(resultcsv_resultncsv_minabundance) then ("-c " +  '"' + resultcsv_resultncsv_minabundance + '"') else ""}
   >>>
+  parameter_meta {
+    resultcsv_resultncsv_minabundance: ".csv <result2>.csv ... <result_n>.csv -a <minAbundance> ... "
+  }
 }

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: funannotate_iprscan.cwl
+id: ../../../../home/ubuntu/BiocondaCli/funannotate_iprscan.cwl
 inputs:
-- id: arguments
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: input
   doc: Funannotate folder or FASTA protein file. (Required)
   type: boolean
@@ -46,12 +41,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --iprscan_path
-- id: cpus
-  doc: 'Number of InterProScan instances to run (configure cpu/thread control in interproscan.properties
-    file)          '
-  type: boolean
+- id: arguments
+  doc: ''
+  type: string
   inputBinding:
-    prefix: --cpus
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

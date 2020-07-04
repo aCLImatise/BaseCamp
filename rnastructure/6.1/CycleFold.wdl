@@ -2,12 +2,13 @@ version 1.0
 
 task CycleFold {
   input {
-    String? optionsOptions
-    String? sequenceSequence
+    String sequence
   }
   command <<<
     CycleFold \
-      ~{optionsOptions} \
-      ~{sequenceSequence}
+      ~{sequence}
   >>>
+  parameter_meta {
+    sequence: ""
+  }
 }

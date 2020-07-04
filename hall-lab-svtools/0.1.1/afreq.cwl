@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: afreq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/afreq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

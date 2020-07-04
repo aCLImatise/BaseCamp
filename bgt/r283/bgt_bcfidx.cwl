@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: bgt_bcfidx.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bgt_bcfidx.cwl
 inputs:
-- id: in_bcf
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: s
   doc: ''
   type: long
   inputBinding:
     prefix: -s
+- id: in_dot_bcf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

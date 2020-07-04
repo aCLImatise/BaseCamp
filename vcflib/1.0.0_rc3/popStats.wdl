@@ -2,14 +2,19 @@ version 1.0
 
 task PopStats {
   input {
-    String yourYour
-    String yourYour
-    String yourYour
+    String? type
+    String? target
+    String pop_stat
   }
   command <<<
     popStats \
-      ~{if defined(yourYour) then ("-     Your " +  '"' + yourYour + '"') else ""} \
-      ~{if defined(yourYour) then ("-     Your " +  '"' + yourYour + '"') else ""} \
-      ~{if defined(yourYour) then ("-     Your " +  '"' + yourYour + '"') else ""}
+      ~{pop_stat} \
+      ~{if defined(type) then ("--type " +  '"' + type + '"') else ""} \
+      ~{if defined(target) then ("--target " +  '"' + target + '"') else ""}
   >>>
+  parameter_meta {
+    type: ""
+    target: ""
+    pop_stat: ""
+  }
 }

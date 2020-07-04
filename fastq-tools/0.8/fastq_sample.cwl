@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: fastq_sample.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq_sample.cwl
 inputs:
-- id: n
+- id: number_sample_default
   doc: 'the number of reads to sample (default: 10000)'
   type: string
   inputBinding:
     prefix: -n
-- id: p
+- id: proportion_total_reads
   doc: the proportion of the total reads to sample
   type: string
   inputBinding:

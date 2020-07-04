@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cameo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cameo.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: merge_wrapper.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/merge_wrapper.py.cwl
 inputs:
-- id: hybrid_assembly_fast_a
-  doc: the output of a hybrid assembly program such as DBG2OLC
-  type: string
-  inputBinding:
-    position: 0
-- id: self_assembly_fast_a
-  doc: the output of a self assembly program such as PBcR
-  type: string
-  inputBinding:
-    position: 1
 - id: prefix
   doc: the prefix for all output files
   type: string
@@ -21,7 +11,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --hco
-- id: c
+- id: quickmerge_c_parameter
   doc: the quickmerge c parameter (default=1.5)
   type: string
   inputBinding:
@@ -61,6 +51,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --clean_only
+- id: hybrid_assembly_fast_a
+  doc: the output of a hybrid assembly program such as DBG2OLC
+  type: string
+  inputBinding:
+    position: 0
+- id: self_assembly_fast_a
+  doc: the output of a self assembly program such as PBcR
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

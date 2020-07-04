@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: normalize_multicov.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/normalize_multicov.pl.cwl
 inputs:
-- id: i
+- id: input_file_output
   doc: Input file in 'bedtools multicov' output format, i.e. an extended BED12 file
     where each colum past the 12th lists the read counts for one sample/condition.
   type: boolean

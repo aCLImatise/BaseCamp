@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dnase_bias_estimator.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dnase_bias_estimator.py.cwl
 inputs:
 - id: regions
   doc: BED file of the regions you want to exclude from calculating the bias. This

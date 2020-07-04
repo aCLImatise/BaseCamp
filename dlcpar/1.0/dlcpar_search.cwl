@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dlcpar_search.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dlcpar_search.cwl
 inputs:
 - id: stree
   doc: species tree file in newick format
@@ -41,7 +41,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --explicit
-- id: i
+- id: iterations__number
   doc: '<# iterations>, --iter=<# iterations> number of search iterations (default:
     10)'
   type: boolean
@@ -67,6 +67,36 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --log
+- id: dlc_par_search
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: is
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: phylogenetic
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: program
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
+- id: for
+  doc: ''
+  type: string
+  inputBinding:
+    position: 5
 outputs: []
 cwlVersion: v1.1
 baseCommand:

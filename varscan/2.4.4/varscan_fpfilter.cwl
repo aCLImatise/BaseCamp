@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: varscan_fpfilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/varscan_fpfilter.cwl
 inputs:
 - id: min_var_count
   doc: Minimum number of variant-supporting reads [4]
@@ -36,12 +36,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --min-var-readpos
-- id: min_ref_dist3
+- id: min_ref_dist_three
   doc: Minimum average distance to effective 3' end (ref) [0.1]
   type: boolean
   inputBinding:
     prefix: --min-ref-dist3
-- id: min_var_dist3
+- id: min_var_dist_three
   doc: Minimum average distance to effective 3' end (var) [0.1]
   type: boolean
   inputBinding:
@@ -121,6 +121,41 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --max-mapqual-diff
+- id: jar
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -jar
+- id: java
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: fp_filter
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: variant
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: var_28
+  doc: ''
+  type: File
+  inputBinding:
+    position: 3
+- id: read_count
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
+- id: var_30
+  doc: ''
+  type: File
+  inputBinding:
+    position: 5
 outputs: []
 cwlVersion: v1.1
 baseCommand:

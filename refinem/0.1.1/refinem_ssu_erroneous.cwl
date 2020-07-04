@@ -1,31 +1,6 @@
 class: CommandLineTool
-id: refinem_ssu_erroneous.cwl
+id: ../../../../home/ubuntu/BiocondaCli/refinem_ssu_erroneous.cwl
 inputs:
-- id: genome_nt_dir
-  doc: directory containing nucleotide scaffolds for each genome
-  type: string
-  inputBinding:
-    position: 0
-- id: tax_on_profile_dir
-  doc: directory with results of taxon_profile command
-  type: string
-  inputBinding:
-    position: 1
-- id: ssu_db
-  doc: BLAST database of 16S rRNA genes
-  type: string
-  inputBinding:
-    position: 2
-- id: ssu_taxonomy_file
-  doc: taxonomy file for genes in the 16S rRNA database
-  type: string
-  inputBinding:
-    position: 3
-- id: output_dir
-  doc: output directory
-  type: string
-  inputBinding:
-    position: 4
 - id: genome_ext
   doc: 'extension of genomes (other files in directory are ignored) (default: fna)'
   type: string
@@ -99,6 +74,31 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --silent
+- id: genome_nt_dir
+  doc: directory containing nucleotide scaffolds for each genome
+  type: string
+  inputBinding:
+    position: 0
+- id: tax_on_profile_dir
+  doc: directory with results of taxon_profile command
+  type: string
+  inputBinding:
+    position: 1
+- id: ssu_db
+  doc: BLAST database of 16S rRNA genes
+  type: string
+  inputBinding:
+    position: 2
+- id: ssu_taxonomy_file
+  doc: taxonomy file for genes in the 16S rRNA database
+  type: string
+  inputBinding:
+    position: 3
+- id: output_dir
+  doc: output directory
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

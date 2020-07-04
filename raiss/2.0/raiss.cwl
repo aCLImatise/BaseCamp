@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: raiss.cwl
+id: ../../../../home/ubuntu/BiocondaCli/raiss.cwl
 inputs:
 - id: chrom
   doc: chromosome to impute to the chr\d+ format
@@ -41,7 +41,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --buffer-size
-- id: l2_regularization
+- id: l_two_regularization
   doc: Size of the small value added to the diagonal of the covariance matrix before
     inversion
   type: string
@@ -53,7 +53,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --eigen-threshold
-- id: r2_threshold
+- id: r_two_threshold
   doc: R square (imputation quality) threshold bellow which SNPs are filtered from
     the output
   type: string

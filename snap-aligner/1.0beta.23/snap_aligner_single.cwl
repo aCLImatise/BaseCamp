@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: snap_aligner_single.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snap_aligner_single.cwl
 inputs:
 - id: lp
   doc: Run SNAP at low scheduling priority (Only implemented on Windows)
@@ -35,6 +35,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -wbs
+- id: index_dir
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

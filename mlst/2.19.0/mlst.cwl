@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mlst.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mlst.cwl
 inputs:
 - id: check
   doc: Just check dependencies and exit (default OFF)
@@ -89,12 +89,12 @@ inputs:
   inputBinding:
     prefix: --minscore
 - id: blast_db
-  doc: "[X]     BLAST database (default '/tmp/tmpf3_1y9c7/db/blast/mlst.fa')"
+  doc: "[X]     BLAST database (default '/tmp/tmp7lnwueq0/db/blast/mlst.fa')"
   type: boolean
   inputBinding:
     prefix: --blastdb
 - id: datadir
-  doc: "[X]     PubMLST data (default '/tmp/tmpf3_1y9c7/db/pubmlst')"
+  doc: "[X]     PubMLST data (default '/tmp/tmp7lnwueq0/db/pubmlst')"
   type: boolean
   inputBinding:
     prefix: --datadir

@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: faNoise.cwl
+id: ../../../../home/ubuntu/BiocondaCli/faNoise.cwl
 inputs:
+- id: upper
+  doc: '- output in upper case'
+  type: boolean
+  inputBinding:
+    prefix: -upper
 - id: in_name
   doc: ''
   type: string
@@ -36,11 +41,6 @@ inputs:
   type: string
   inputBinding:
     position: 6
-- id: output
-  doc: upper case
-  type: string
-  inputBinding:
-    prefix: '- output'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

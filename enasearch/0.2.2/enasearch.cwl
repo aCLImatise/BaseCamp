@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: enasearch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/enasearch.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

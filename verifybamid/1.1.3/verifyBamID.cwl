@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: verifyBamID.cwl
+id: ../../../../home/ubuntu/BiocondaCli/verifyBamID.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

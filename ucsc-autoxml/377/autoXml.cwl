@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: autoXml.cwl
+id: ../../../../home/ubuntu/BiocondaCli/autoXml.cwl
 inputs:
-- id: filed_tdx
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
-- id: root
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: text_field
   doc: what to name text between start/end tags. Default 'text'
   type: string
@@ -41,6 +31,16 @@ inputs:
   type: string
   inputBinding:
     prefix: -positive
+- id: file_dot_dtd_x
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
+- id: root
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

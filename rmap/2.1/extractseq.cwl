@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: extractseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extractseq.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: bed_format_regions
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: output
   doc: 'Name of output file (default: stdout) '
   type: boolean
@@ -31,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -about
+- id: bed_format_regions
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

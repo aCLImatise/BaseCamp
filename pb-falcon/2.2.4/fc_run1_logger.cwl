@@ -1,16 +1,21 @@
 class: CommandLineTool
-id: fc_run1_logger.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fc_run1_logger.cwl
 inputs:
-- id: config
-  doc: .cfg/.ini/.json
+- id: fc_run_one
+  doc: ''
   type: string
   inputBinding:
     position: 0
-- id: logger
-  doc: (Optional)JSON config for standard Python logging module
+- id: config
+  doc: ''
   type: string
   inputBinding:
     position: 1
+- id: logger
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

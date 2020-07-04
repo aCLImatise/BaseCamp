@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mktemp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mktemp.cwl
 inputs:
 - id: directory
   doc: create a directory, not a file
@@ -29,12 +29,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --tmpdir
-- id: t
+- id: interpret_template_set
   doc: 'interpret TEMPLATE as a single file name component, relative to a directory:
     $TMPDIR, if set; else the directory specified via -p; else /tmp [deprecated]'
   type: boolean
   inputBinding:
     prefix: -t
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

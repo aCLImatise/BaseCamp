@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_snp_get_from_uce_alignments.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_snp_get_from_uce_alignments.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

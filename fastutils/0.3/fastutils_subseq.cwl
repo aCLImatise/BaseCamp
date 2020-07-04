@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: fastutils_subseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastutils_subseq.cwl
 inputs:
-- id: i
+- id: input_file_fastx
   doc: input file in fastx format. Use - for stdin.
   type: string
   inputBinding:
     prefix: -i
-- id: o
+- id: output_file_use
   doc: output file. Use - for stdout.
   type: string
   inputBinding:
     prefix: -o
-- id: v
+- id: print_version_build
   doc: print version and build date
   type: boolean
   inputBinding:

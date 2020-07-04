@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: workflow.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/workflow.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

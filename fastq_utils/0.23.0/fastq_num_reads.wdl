@@ -2,10 +2,13 @@ version 1.0
 
 task FastqNumReads {
   input {
-    String? fastFastQFile
+    String fast_q_file
   }
   command <<<
     fastq_num_reads \
-      ~{fastFastQFile}
+      ~{fast_q_file}
   >>>
+  parameter_meta {
+    fast_q_file: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pairToBed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pairToBed.cwl
 inputs:
 - id: a_bam
   doc: The A input file is in BAM format.  Output will be BAM as well. Replaces -a.
@@ -26,19 +26,19 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ed
-- id: f
+- id: minimum_overlap_required
   doc: Minimum overlap required as fraction of A (e.g. 0.05). Default is 1E-9 (effectively
     1bp).
   type: boolean
   inputBinding:
     prefix: -f
-- id: s
+- id: require_same_strandedness
   doc: Require same strandedness when finding overlaps. Default is to ignore stand.
     Not applicable with -type inspan or -type outspan.
   type: boolean
   inputBinding:
     prefix: -s
-- id: s
+- id: require_different_strandedness
   doc: Require different strandedness when finding overlaps. Default is to ignore
     stand. Not applicable with -type inspan or -type outspan.
   type: boolean
@@ -59,6 +59,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -type
+- id: a
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -a
+- id: b
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -b
 outputs: []
 cwlVersion: v1.1
 baseCommand:

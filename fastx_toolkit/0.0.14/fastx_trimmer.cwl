@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastx_trimmer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastx_trimmer.cwl
 inputs:
 - id: f
   doc: ''

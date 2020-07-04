@@ -2,16 +2,19 @@ version 1.0
 
 task FunannotateRemote {
   input {
-    Boolean genbankGenbank
-    Boolean outOut
-    Boolean forceForce
-    String? argumentsArguments
+    Boolean? genbank
+    Boolean? out
+    Boolean? force
   }
   command <<<
     funannotate remote \
-      ~{argumentsArguments} \
-      ~{true="--genbank" false="" genbankGenbank} \
-      ~{true="--out" false="" outOut} \
-      ~{true="--force" false="" forceForce}
+      ~{true="--genbank" false="" genbank} \
+      ~{true="--out" false="" out} \
+      ~{true="--force" false="" force}
   >>>
+  parameter_meta {
+    genbank: "GenBank file (must be annotated)."
+    out: "Output folder name. "
+    force: "Force query even if antiSMASH server looks busy"
+  }
 }

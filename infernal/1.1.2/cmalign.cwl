@@ -1,22 +1,12 @@
 class: CommandLineTool
-id: cmalign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cmalign.cwl
 inputs:
-- id: cm_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: seq_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: o
+- id: output_alignment_file
   doc: ': output the alignment to file <f>, not stdout'
   type: string
   inputBinding:
     prefix: -o
-- id: g
+- id: configure_cm_global
   doc: ': configure CM for global alignment [default: local]'
   type: boolean
   inputBinding:
@@ -166,6 +156,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --cpu
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: cm_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: seq_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

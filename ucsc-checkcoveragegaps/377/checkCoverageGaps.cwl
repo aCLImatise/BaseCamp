@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: checkCoverageGaps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/checkCoverageGaps.cwl
 inputs:
-- id: database
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: track_n
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: all_parts
   doc: If set then include _hap and _random and other wierd chroms
   type: boolean
@@ -22,10 +12,15 @@ inputs:
   inputBinding:
     prefix: -female
 - id: no_comma
-  doc: "'t put commas in biggest gap output"
+  doc: "- Don't put commas in biggest gap output"
   type: boolean
   inputBinding:
     prefix: -noComma
+- id: track_n
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

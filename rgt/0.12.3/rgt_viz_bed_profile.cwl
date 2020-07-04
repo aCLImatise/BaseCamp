@@ -1,19 +1,19 @@
 class: CommandLineTool
-id: rgt_viz_bed_profile.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rgt_viz_bed_profile.cwl
 inputs:
-- id: i
+- id: input_experimental_matrix
   doc: Input experimental matrix or Input BED file or Input directory which contains
     BED files
   type: boolean
   inputBinding:
     prefix: -i
-- id: o
+- id: directory_name_output
   doc: 'The directory name for the output files. For example, project name. (default:
     None)'
   type: boolean
   inputBinding:
     prefix: -o
-- id: t
+- id: title_shown_default
   doc: 'The title shown on the top of the plot and also the folder name. (default:
     bed_profile)'
   type: boolean

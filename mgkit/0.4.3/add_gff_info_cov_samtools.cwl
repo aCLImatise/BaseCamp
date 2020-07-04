@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: add_gff_info_cov_samtools.cwl
+id: ../../../../home/ubuntu/BiocondaCli/add_gff_info_cov_samtools.cwl
 inputs:
 - id: average
   doc: if one or more samples are provided, the average coverage is calculated
@@ -28,6 +28,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --progress
+- id: input_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

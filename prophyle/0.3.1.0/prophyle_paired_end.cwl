@@ -1,23 +1,28 @@
 class: CommandLineTool
-id: prophyle_paired_end.py_reads_1.cwl
+id: ../../../../home/ubuntu/BiocondaCli/prophyle_paired_end.py_reads_2.cwl
 inputs:
-- id: reads_1
-  doc: 1st FASTA or FASTQ file
+- id: o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
+- id: prophy_le_paired_enddo_tpy
+  doc: ''
   type: string
   inputBinding:
     position: 0
-- id: reads_2
-  doc: 2nd FASTA or FASTQ file
+- id: reads_one
+  doc: ''
   type: string
   inputBinding:
     position: 1
-- id: output_file
-  doc: output file [stdout]
+- id: reads_two
+  doc: ''
   type: string
   inputBinding:
-    prefix: --output-file
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - prophyle_paired_end.py
-- reads_1
+- reads_2

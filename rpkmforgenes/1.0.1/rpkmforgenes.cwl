@@ -1,29 +1,29 @@
 class: CommandLineTool
-id: rpkmforgenes.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rpkmforgenes.py.cwl
 inputs:
-- id: o
+- id: by_output_file
   doc: by output file
   type: string
   inputBinding:
     prefix: -o
-- id: i
+- id: list_input_files
   doc: by list of input files (by default, guesses format from file extension)
   type: string
   inputBinding:
     prefix: -i
-- id: a
+- id: by_annotation_file
   doc: by annotation file
   type: string
   inputBinding:
     prefix: -a
-- id: u
+- id: bigwig_file_alternatively
   doc: by a bigWig file, alternatively a directory for files for non-unique positions
     (lower case for nonunique k-mers (where k is the read length), upper case for
     unique; filenames are e.g. chr1.fa, can also be chr1_unique20-255.btxt etc
   type: string
   inputBinding:
     prefix: -u
-- id: no3utr
+- id: no_three_utr
   doc: remove 3'UTRs
   type: string
   inputBinding:
@@ -205,8 +205,8 @@ inputs:
   inputBinding:
     prefix: -exportann
 - id: read_present
-  doc: zero count entries - Ramu
-  type: string
+  doc: '- to suppress zero count entries - Ramu'
+  type: boolean
   inputBinding:
     prefix: -readpresent
 - id: strand
@@ -258,18 +258,12 @@ inputs:
   type: string
   inputBinding:
     prefix: -maxNM
-- id: add_chr
-  doc: add the text 'chr' to read chromosome field, to resolve Ensembl genome/UCSC
-    annotation mismatch
-  type: string
-  inputBinding:
-    prefix: -addchr
-- id: n
+- id: list_sample_names
   doc: by list of sample names (input file names are otherwise used)
   type: string
   inputBinding:
     prefix: -n
-- id: p
+- id: number_files_process
   doc: by number of files to process in parallel
   type: string
   inputBinding:
@@ -279,7 +273,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -quite
-- id: h
+- id: print_message_quit
   doc: print this message and quit
   type: string
   inputBinding:

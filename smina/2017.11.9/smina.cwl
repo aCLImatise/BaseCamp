@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: smina.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smina.cwl
 inputs:
-- id: r
-  doc: '[ --receptor ] arg         rigid part of the receptor (PDBQT)'
-  type: boolean
-  inputBinding:
-    prefix: -r
-- id: flex
-  doc: flexible side chains, if any (PDBQT)
-  type: string
-  inputBinding:
-    prefix: --flex
-- id: l
-  doc: '[ --ligand ] arg           ligand(s)'
-  type: boolean
-  inputBinding:
-    prefix: -l
 - id: flex_res
   doc: flexible side chains specified by comma  separated list of chain:resid
   type: string
@@ -163,7 +148,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --print_atom_types
-- id: o
+- id: arg_name_format
   doc: '[ --out ] arg              output file name, format taken from file  extension'
   type: boolean
   inputBinding:
@@ -220,7 +205,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --min_rmsd_filter
-- id: q
+- id: suppress_output_messages
   doc: '[ --quiet ]                Suppress output messages'
   type: boolean
   inputBinding:
@@ -240,6 +225,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --help_hidden
+- id: input
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

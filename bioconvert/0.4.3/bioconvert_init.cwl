@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bioconvert_init.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bioconvert_init.cwl
 inputs:
 - id: input_extension
   doc: input_extension

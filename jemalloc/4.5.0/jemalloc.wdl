@@ -2,12 +2,16 @@ version 1.0
 
 task Jemalloc.sh {
   input {
-    String? notNot
-    String? foundFound
+    String not
+    String found
   }
   command <<<
     jemalloc.sh \
-      ~{notNot} \
-      ~{foundFound}
+      ~{not} \
+      ~{found}
   >>>
+  parameter_meta {
+    not: ""
+    found: ""
+  }
 }

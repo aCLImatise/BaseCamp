@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: verifybamid2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/verifybamid2.cwl
 inputs:
 - id: bam_file
   doc: '[Empty],'
@@ -17,7 +17,7 @@ inputs:
   inputBinding:
     prefix: --Reference
 - id: svd_prefix
-  doc: '[/tmp/tmpsdf6bm_k/share/verifybamid2-1.0.6-0/resource/1000g.100k.b38.vcf.gz.dat],'
+  doc: '[/tmp/tmp9ljwxmgo/share/verifybamid2-1.0.6-0/resource/1000g.100k.b38.vcf.gz.dat],'
   type: boolean
   inputBinding:
     prefix: --SVDPrefix

@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: hgLoadChain.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hgLoadChain.cwl
 inputs:
-- id: database
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: chr_n_track
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: chr_n_chain
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: t_index
   doc: Include tName in indexes (for non-split chain tables)
   type: boolean
@@ -57,6 +42,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -test
+- id: database
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: chr_n_track
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: chr_ndot_chain
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

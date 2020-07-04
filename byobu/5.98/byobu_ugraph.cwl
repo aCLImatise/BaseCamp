@@ -1,52 +1,52 @@
 class: CommandLineTool
-id: byobu_ugraph.cwl
+id: ../../../../home/ubuntu/BiocondaCli/byobu_ugraph.cwl
 inputs:
-- id: command
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: args
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: f
+- id: file_read_points
   doc: ': File to read data points from. (only required if no command specified).'
   type: File
   inputBinding:
     prefix: -f
-- id: m
+- id: minimum_value_default
   doc: ': Minimum value (default=0).'
   type: string
   inputBinding:
     prefix: -m
-- id: n
+- id: supress_output_newline
   doc: ': Supress output of newline character.'
   type: boolean
   inputBinding:
     prefix: -n
-- id: p
+- id: specify_number_data
   doc: ': Specify number of data points in graph (default=5).'
   type: string
   inputBinding:
     prefix: -p
-- id: r
+- id: rotate_file_default
   doc: ': Do not rotate file <file> (default is to rotate). Option implies file <file>
     should not be written to so a command cannot follow script options in this case.'
   type: boolean
   inputBinding:
     prefix: -r
-- id: t
+- id: theme_use_defaultvbars
   doc: ": 'byobu-ulevel' theme to use (default=vbars_8)."
   type: string
   inputBinding:
     prefix: -t
-- id: x
+- id: maximum_value_default
   doc: ': Maximum value (default=100).'
   type: string
   inputBinding:
     prefix: -x
+- id: command
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: args_dot_dot_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

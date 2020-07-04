@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: albatradis_gene_reports.cwl
+id: ../../../../home/ubuntu/BiocondaCli/albatradis_gene_reports.cwl
 inputs:
-- id: gene_reports
-  doc: Gene report spreadsheets
-  type: string
-  inputBinding:
-    position: 0
 - id: prefix
   doc: 'Output directory prefix (default: output)'
   type: string
@@ -21,6 +16,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
+- id: gene_reports
+  doc: Gene report spreadsheets
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

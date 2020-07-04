@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastaoverlap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastaoverlap.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

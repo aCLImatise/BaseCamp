@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pauvre_custommargin.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pauvre_custommargin.cwl
 inputs:
 - id: quiet
   doc: Do not output warnings to stderr

@@ -1,21 +1,21 @@
 class: CommandLineTool
-id: sbpipe_move_datasets.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sbpipe_move_datasets.cwl
 inputs:
-- id: n
-  doc: ''
+- id: model_name
+  doc: the model name without extension
   type: string
   inputBinding:
-    prefix: -n
-- id: i
-  doc: ''
+    prefix: --model-name
+- id: input_path
+  doc: the path containing the input files
   type: File
   inputBinding:
-    prefix: -i
-- id: o
-  doc: ''
+    prefix: --input-path
+- id: output_path
+  doc: the path to store the output files
   type: File
   inputBinding:
-    prefix: -o
+    prefix: --output-path
 outputs: []
 cwlVersion: v1.1
 baseCommand:

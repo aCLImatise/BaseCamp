@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tripaille_expression_add_expression.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tripaille_expression_add_expression.cwl
 inputs:
 - id: match_type
   doc: 'Match to features using either name or uniquename. Default to uniquename  [default:
@@ -50,6 +50,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no_wait
+- id: organism_id
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: analysis_id
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

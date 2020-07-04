@@ -2,12 +2,16 @@ version 1.0
 
 task Starchstrip {
   input {
-    String includeInclude
-    String excludeExclude
+    String? include
+    String? exclude
   }
   command <<<
     starchstrip \
-      ~{if defined(includeInclude) then ("--include " +  '"' + includeInclude + '"') else ""} \
-      ~{if defined(excludeExclude) then ("--exclude " +  '"' + excludeExclude + '"') else ""}
+      ~{if defined(include) then ("--include " +  '"' + include + '"') else ""} \
+      ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""}
   >>>
+  parameter_meta {
+    include: "Include specified chromosomes from <starch-file>."
+    exclude: "Exclude specified chromosomes from <starch-file>."
+  }
 }

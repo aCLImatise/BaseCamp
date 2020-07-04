@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: bp_fetch.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bp_fetch.pl.cwl
 inputs:
-- id: net
-  doc: '- networked http: based database'
-  type: string
-  inputBinding:
-    position: 0
-- id: ace
-  doc: '- ACeDB database'
-  type: string
-  inputBinding:
-    position: 1
 - id: fmt
   doc: <format> - Output format Fasta (default), EMBL, Raw, swiss or GCG
   type: boolean
@@ -32,6 +22,16 @@ inputs:
   type: string
   inputBinding:
     prefix: -type
+- id: net
+  doc: '- networked http: based database'
+  type: string
+  inputBinding:
+    position: 0
+- id: ace
+  doc: '- ACeDB database'
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

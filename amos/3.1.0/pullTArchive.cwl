@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pullTArchive.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pullTArchive.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

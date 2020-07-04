@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fasta_stats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fasta_stats.cwl
 inputs:
 - id: verbose
   doc: verbose

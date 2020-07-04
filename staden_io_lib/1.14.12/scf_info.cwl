@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scf_info.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scf_info.cwl
 inputs:
 - id: scf_filename
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ama_qvalues.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ama_qvalues.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

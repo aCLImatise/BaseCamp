@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: deblur_deblur_seqs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/deblur_deblur_seqs.cwl
 inputs:
 - id: mean_error
   doc: 'The mean per nucleotide error, used for original sequence estimate. If not
@@ -35,6 +35,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --log-file
+- id: seqs_fp
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,6 +1,21 @@
 class: CommandLineTool
-id: Oncotator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Oncotator.cwl
 inputs:
+- id: var_0
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: var_1
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -V
+- id: i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
 - id: input_file
   doc: Input file to be annotated. Type is specified through options.
   type: string

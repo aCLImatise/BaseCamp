@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _pepwindowall.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_pepwindowall.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

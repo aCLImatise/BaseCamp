@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mimeo_self.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mimeo_self.cwl
 inputs:
 - id: a_dir
   doc: Name of directory containing sequences from genome. Write split files here

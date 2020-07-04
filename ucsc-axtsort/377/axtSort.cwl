@@ -1,26 +1,26 @@
 class: CommandLineTool
-id: axtSort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/axtSort.cwl
 inputs:
-- id: in_a_xt
+- id: query
+  doc: '- Sort by query position, not target'
+  type: boolean
+  inputBinding:
+    prefix: -query
+- id: by_score
+  doc: '- Sort by score'
+  type: boolean
+  inputBinding:
+    prefix: -byScore
+- id: in_do_tax_t
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: out_a_xt
+- id: out_do_tax_t
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: query
-  doc: query position, not target
-  type: string
-  inputBinding:
-    prefix: -query
-- id: by_score
-  doc: score
-  type: string
-  inputBinding:
-    prefix: -byScore
 outputs: []
 cwlVersion: v1.1
 baseCommand:

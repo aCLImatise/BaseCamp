@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: verify_mapping_quality.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/verify_mapping_quality.pl.cwl
 inputs:
 - id: output
   doc: Path to write human readable report
@@ -12,6 +12,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --out_strains
+- id: bam
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --bam
 outputs: []
 cwlVersion: v1.1
 baseCommand:

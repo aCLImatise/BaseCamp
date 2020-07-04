@@ -1,22 +1,7 @@
 class: CommandLineTool
-id: dcmsend.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmsend.cwl
 inputs:
-- id: peer
-  doc: hostname of DICOM peer
-  type: string
-  inputBinding:
-    position: 0
-- id: port
-  doc: tcp/ip port number of peer
-  type: string
-  inputBinding:
-    position: 1
-- id: dcm_file_in
-  doc: DICOM file or directory to be transmitted
-  type: string
-  inputBinding:
-    position: 2
-- id: f
+- id: _readdataset_read
   doc: --read-dataset         read data set without file meta information
   type: boolean
   inputBinding:
@@ -81,6 +66,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --max-send-pdu
+- id: peer
+  doc: hostname of DICOM peer
+  type: string
+  inputBinding:
+    position: 0
+- id: port
+  doc: tcp/ip port number of peer
+  type: string
+  inputBinding:
+    position: 1
+- id: dcm_file_in
+  doc: DICOM file or directory to be transmitted
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

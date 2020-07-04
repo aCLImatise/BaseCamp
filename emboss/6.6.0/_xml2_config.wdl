@@ -2,22 +2,31 @@ version 1.0
 
 task _xml2Config {
   input {
-    String prefixPrefix
-    String execExecPrefix
-    Boolean libsLibs
-    Boolean cflagsCflags
-    Boolean modulesModules
-    String? xml2Xml2Config
-    String? optionOption
+    String? prefix
+    String? exec_prefix
+    Boolean? libs
+    Boolean? cflags
+    Boolean? modules
+    String xml_two_config
+    String? option
   }
   command <<<
     _xml2-config \
-      ~{xml2Xml2Config} \
-      ~{if defined(prefixPrefix) then ("--prefix " +  '"' + prefixPrefix + '"') else ""} \
-      ~{if defined(execExecPrefix) then ("--exec-prefix " +  '"' + execExecPrefix + '"') else ""} \
-      ~{true="--libs" false="" libsLibs} \
-      ~{true="--cflags" false="" cflagsCflags} \
-      ~{true="--modules" false="" modulesModules} \
-      ~{optionOption}
+      ~{xml_two_config} \
+      ~{option} \
+      ~{if defined(prefix) then ("--prefix " +  '"' + prefix + '"') else ""} \
+      ~{if defined(exec_prefix) then ("--exec-prefix " +  '"' + exec_prefix + '"') else ""} \
+      ~{true="--libs" false="" libs} \
+      ~{true="--cflags" false="" cflags} \
+      ~{true="--modules" false="" modules}
   >>>
+  parameter_meta {
+    prefix: "change libxml prefix [default /tmp/tmpa5dnn8jt]"
+    exec_prefix: "change libxml exec prefix [default /tmp/tmpa5dnn8jt]"
+    libs: "print library linking information add --dynamic to print only shared libraries"
+    cflags: "print pre-processor and compiler flags"
+    modules: "module support enabled"
+    xml_two_config: ""
+    option: ""
+  }
 }

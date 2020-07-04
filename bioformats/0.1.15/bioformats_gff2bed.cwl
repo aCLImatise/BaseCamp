@@ -1,22 +1,7 @@
 class: CommandLineTool
-id: bioformats_gff2bed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bioformats_gff2bed.cwl
 inputs:
-- id: gff_file
-  doc: a GFF3 file
-  type: string
-  inputBinding:
-    position: 0
-- id: type
-  doc: type of features to be processed
-  type: string
-  inputBinding:
-    position: 1
-- id: output_file
-  doc: the output file in the BED format
-  type: string
-  inputBinding:
-    position: 2
-- id: a
+- id: attributes_include_output
   doc: '[ATTRIBUTES [ATTRIBUTES ...]], --attributes [ATTRIBUTES [ATTRIBUTES ...]]
     attributes to include to the output BED file (default: None)'
   type: boolean
@@ -47,6 +32,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no_order_check
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: gff_file
+  doc: a GFF3 file
+  type: string
+  inputBinding:
+    position: 0
+- id: type
+  doc: type of features to be processed
+  type: string
+  inputBinding:
+    position: 1
+- id: output_file
+  doc: the output file in the BED format
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

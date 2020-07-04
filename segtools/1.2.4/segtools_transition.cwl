@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: segtools_transition.cwl
+id: ../../../../home/ubuntu/BiocondaCli/segtools_transition.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: segmentation
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: clobber
   doc: Overwrite any existing output files.
   type: boolean
@@ -70,12 +60,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gmtk
-- id: r
+- id: val_pass_val
   doc: =VAL        Pass VAL for PARAM when calling R functions. May be specified multiple
     times.
   type: string
   inputBinding:
     prefix: -R
+- id: segmentation
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

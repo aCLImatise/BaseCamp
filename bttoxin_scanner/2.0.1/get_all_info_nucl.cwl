@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_all_info_nucl.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_all_info_nucl.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

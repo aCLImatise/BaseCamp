@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hicQC.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hicQC.cwl
 inputs:
 - id: log_files
   doc: Path to the log files to be processed
@@ -24,6 +24,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --dpi
+- id: matrix_two_qc_folder_slash_qc_dot_log
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

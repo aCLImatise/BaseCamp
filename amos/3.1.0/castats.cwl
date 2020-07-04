@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: castats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/castats.cwl
 inputs:
-- id: ca_stats
-  doc: <prefix>.asm  [options]
-  type: string
-  inputBinding:
-    position: 0
 - id: min_qual
   doc: <n>   Minimum quality value threshhold to report as bad quality (default 20)
   type: boolean
@@ -16,11 +11,21 @@ inputs:
   type: string
   inputBinding:
     prefix: -mincontig
-- id: g
+- id: genome_size_used
   doc: 'Genome size used in the calculation of N50 numbers (default: TotalBasesInContigs)'
   type: string
   inputBinding:
     prefix: -g
+- id: ca_stats
+  doc: <prefix>.asm  [options]
+  type: string
+  inputBinding:
+    position: 0
+- id: prefix_dot_asm
+  doc: The Celera .asm file
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

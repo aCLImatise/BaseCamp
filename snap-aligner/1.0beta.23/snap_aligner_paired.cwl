@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: snap_aligner_paired.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snap_aligner_paired.cwl
 inputs:
 - id: lp
   doc: Run SNAP at low scheduling priority (Only implemented on Windows)
@@ -35,7 +35,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -wbs
-- id: f
+- id: additional_option_f
   doc: additional option to -F to require both mates to satisfy filter (default is
     just one) If you specify -F b together with one of the other -F options, -F b
     MUST be second
@@ -52,6 +52,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ku
+- id: index_dir
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

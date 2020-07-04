@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_synonyms.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_synonyms.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the chromosomes are downloaded, e.g. homo_sapiens,

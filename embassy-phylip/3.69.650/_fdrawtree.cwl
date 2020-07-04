@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _fdrawtree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_fdrawtree.cwl
 inputs:
 - id: plotter
   doc: 'menu       [l] Plotter or printer the tree will be drawn on (Values: l (Postscript

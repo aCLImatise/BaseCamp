@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: shuf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/shuf.cwl
 inputs:
 - id: echo
   doc: treat each ARG as an input line
@@ -36,6 +36,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --zero-terminated
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

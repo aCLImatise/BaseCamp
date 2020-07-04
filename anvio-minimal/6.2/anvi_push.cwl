@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_push.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_push.cwl
 inputs:
 - id: user
   doc: The user for an anvi'server.

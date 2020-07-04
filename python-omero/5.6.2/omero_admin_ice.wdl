@@ -2,10 +2,13 @@ version 1.0
 
 task OmeroAdminIce {
   input {
-    String? argumentArgument
+    String argument
   }
   command <<<
     omero admin ice \
-      ~{argumentArgument}
+      ~{argument}
   >>>
+  parameter_meta {
+    argument: "Arguments joined together to make an Ice command. If not present, the user will enter a console"
+  }
 }

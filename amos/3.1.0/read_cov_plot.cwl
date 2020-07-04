@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: read_cov_plot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/read_cov_plot.cwl
 inputs:
 - id: bank
   doc: ''

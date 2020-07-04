@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: splash.cwl
+id: ../../../../home/ubuntu/BiocondaCli/splash.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

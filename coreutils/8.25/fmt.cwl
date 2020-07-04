@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fmt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fmt.cwl
 inputs:
 - id: crown_margin
   doc: indentation of first two lines
@@ -27,7 +27,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --uniform-spacing
-- id: width
+- id: maximum_line_width
   doc: maximum line width (default of 75 columns)
   type: string
   inputBinding:
@@ -37,6 +37,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --goal
+- id: var_7
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -WIDTH
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

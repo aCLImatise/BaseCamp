@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FEELnc_filter.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FEELnc_filter.pl.cwl
 inputs:
 - id: man
   doc: Open man page
@@ -24,8 +24,8 @@ inputs:
   inputBinding:
     prefix: --mRNAfile
 - id: size
-  doc: =200               Keep transcript with a minimal size (default 200)
-  type: boolean
+  doc: Keep transcript with a minimal size (default 200)
+  type: string
   inputBinding:
     prefix: --size
 - id: biotype
@@ -48,20 +48,20 @@ inputs:
   inputBinding:
     prefix: --monoex
 - id: biex
-  doc: =25                   Discard biexonic transcripts having one exon size lower
-    to this value (default 25)
-  type: boolean
+  doc: Discard biexonic transcripts having one exon size lower to this value (default
+    25)
+  type: string
   inputBinding:
     prefix: --biex
 - id: min_frac_over
-  doc: =0         Minimal fraction out of the candidate lncRNA size to be considered
-    for overlap [default 0 i.e 1nt]
-  type: boolean
+  doc: Minimal fraction out of the candidate lncRNA size to be considered for overlap
+    [default 0 i.e 1nt]
+  type: string
   inputBinding:
     prefix: --minfrac_over
 - id: proc
-  doc: =4                 Number of thread for computing overlap [default 4]
-  type: boolean
+  doc: Number of thread for computing overlap [default 4]
+  type: string
   inputBinding:
     prefix: --proc
 - id: out_log

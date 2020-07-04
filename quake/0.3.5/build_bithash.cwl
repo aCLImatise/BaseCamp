@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: build_bithash.cwl
+id: ../../../../home/ubuntu/BiocondaCli/build_bithash.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

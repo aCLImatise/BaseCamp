@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: trimFilterPE.cwl
+id: ../../../../home/ubuntu/BiocondaCli/trimFilterPE.cwl
 inputs:
 - id: if_a
   doc: '[<INPUT.fa>:<score>:[lmer_len]])'
@@ -17,7 +17,10 @@ inputs:
   inputBinding:
     prefix: --minL
 - id: trim_n
-  doc: '[NO|ALL|ENDS|STRIP]  '
+  doc: "NO:     does nothing to reads containing N's, ALL:    removes all reads containing\
+    \ N's, ENDS:   trims ends of reads with N's, STRIPS: looks for the largest substring\
+    \ with no N's. All reads are discarded if they are shorter than the sequence length\
+    \ specified by -m/--minL."
   type: boolean
   inputBinding:
     prefix: --trimN
@@ -27,14 +30,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --global
-- id: trim_n
-  doc: "NO:     does nothing to reads containing N's, ALL:    removes all reads containing\
-    \ N's, ENDS:   trims ends of reads with N's, STRIPS: looks for the largest substring\
-    \ with no N's. All reads are discarded if they are shorter than the sequence length\
-    \ specified by -m/--minL."
-  type: boolean
+- id: if_q
+  doc: ''
+  type: string
   inputBinding:
-    prefix: --trimN
+    prefix: --ifq
 outputs: []
 cwlVersion: v1.1
 baseCommand:

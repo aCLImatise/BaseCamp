@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: meryl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/meryl.cwl
 inputs:
 - id: union
   doc: '[count k=22 input1.fasta output input1] \ [count k=22 input2.fasta output

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: minipolish.cwl
+id: ../../../../home/ubuntu/BiocondaCli/minipolish.cwl
 inputs:
-- id: reads
-  doc: Long reads for polishing (FASTA or FASTQ format)
-  type: string
-  inputBinding:
-    position: 0
-- id: assembly
-  doc: Miniasm assembly to be polished (GFA format)
-  type: string
-  inputBinding:
-    position: 1
 - id: threads
   doc: 'Number of threads to use for alignment and polishing (default: 8)'
   type: string
@@ -27,6 +17,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --pacbio
+- id: reads
+  doc: Long reads for polishing (FASTA or FASTQ format)
+  type: string
+  inputBinding:
+    position: 0
+- id: assembly
+  doc: Miniasm assembly to be polished (GFA format)
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

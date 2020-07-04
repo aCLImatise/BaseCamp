@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: bcftools_reheader.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcftools_reheader.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: in_vcf_gz
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: fai
   doc: update sequences and their lengths from the .fai file
   type: File
@@ -36,6 +26,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: in_dot_vcf_do_tgz
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

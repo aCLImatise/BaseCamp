@@ -1,31 +1,6 @@
 class: CommandLineTool
-id: mb_plot_kmer_logodds.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mb_plot_kmer_logodds.cwl
 inputs:
-- id: par_clip
-  doc: PAR-CLIP file *.table
-  type: string
-  inputBinding:
-    position: 0
-- id: outdir
-  doc: output directory
-  type: string
-  inputBinding:
-    position: 1
-- id: prefix
-  doc: prefix of filenames
-  type: string
-  inputBinding:
-    position: 2
-- id: genome
-  doc: path to genome
-  type: string
-  inputBinding:
-    position: 3
-- id: neg_set
-  doc: path to correct k-mer negative set
-  type: string
-  inputBinding:
-    position: 4
 - id: km_er
   doc: kmer length
   type: string

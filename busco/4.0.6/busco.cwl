@@ -1,37 +1,7 @@
 class: CommandLineTool
-id: busco.cwl
+id: ../../../../home/ubuntu/BiocondaCli/busco.cwl
 inputs:
-- id: sequence_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: lineage
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: output_name
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: mode
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: other
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 5
-- id: i
+- id: file__fasta
   doc: FILE, --in FASTA FILE Input sequence file in FASTA format. Can be an assembled
     genome or transcriptome (DNA), or protein sequences from an annotated gene set.
   type: string
@@ -60,7 +30,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --evalue
-- id: mode
+- id: specify_busco_mode
   doc: 'Specify which BUSCO analysis mode to run. There are three valid modes: - geno
     or genome, for genome assemblies (DNA) - tran or transcriptome, for transcriptome
     assemblies (DNA) - prot or proteins, for annotated gene sets (protein)'
@@ -142,6 +112,31 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --list-datasets
+- id: sequence_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: lineage
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: output_name
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: var_23
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: other
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

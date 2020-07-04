@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: alleleCounter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/alleleCounter.cwl
 inputs:
 - id: loci_file
   doc: '[file]           Path to loci file.'
@@ -43,7 +43,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --dense-snps
-- id: is_10x
+- id: is_one_zero_x
   doc: Enables 10X processing mode. In this mode the HTS input file must be a cellranger
     produced BAM file.  Allele counts are then given on a per-cellular barcode basis,
     with each count representing the consensus base for that UMI.  by iterating through

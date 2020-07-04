@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gmtkTime.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gmtkTime.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: intersect_uid_lists.cwl
+id: ../../../../home/ubuntu/BiocondaCli/intersect_uid_lists.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

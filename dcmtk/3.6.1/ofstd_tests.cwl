@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ofstd_tests.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ofstd_tests.cwl
 inputs:
-- id: tests_to_run
-  doc: 'names of tests to run (default: all)'
-  type: string
-  inputBinding:
-    position: 0
 - id: list
   doc: list available tests and exit
   type: boolean
@@ -21,6 +16,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: tests_to_run
+  doc: 'names of tests to run (default: all)'
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

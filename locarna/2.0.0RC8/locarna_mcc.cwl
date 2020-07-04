@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: locarna_mcc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/locarna_mcc.cwl
 inputs:
-- id: f
+- id: structure_annotation_file
   doc: Structure annotation file. Mandatory argument.
   type: string
   inputBinding:
     prefix: -f
-- id: p
+- id: parameter_file_for
   doc: Parameter file for RNAalifold
   type: string
   inputBinding:
@@ -36,6 +36,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: aln_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

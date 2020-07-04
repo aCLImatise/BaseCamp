@@ -2,10 +2,13 @@ version 1.0
 
 task Vispr {
   input {
-    Boolean debugDebug
+    Boolean? debug
   }
   command <<<
     vispr \
-      ~{true="--debug" false="" debugDebug}
+      ~{true="--debug" false="" debug}
   >>>
+  parameter_meta {
+    debug: "Print debug info."
+  }
 }

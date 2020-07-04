@@ -2,20 +2,28 @@ version 1.0
 
 task OStackbar.R {
   input {
-    String outputOutputFilePrefix
-    String colorsColorsFile
-    String titleTitle
-    String legendLegendPos
-    String? stackStackBarr
-    String? environmentEnvironmentFile
+    String? output_file_prefix
+    String? colors_file
+    String? title
+    String? legend_pos
+    String stack_bardot_r
+    String environment_file
   }
   command <<<
     o-stackbar.R \
-      ~{stackStackBarr} \
-      ~{if defined(outputOutputFilePrefix) then ("--output_file_prefix " +  '"' + outputOutputFilePrefix + '"') else ""} \
-      ~{if defined(colorsColorsFile) then ("--colors_file " +  '"' + colorsColorsFile + '"') else ""} \
-      ~{if defined(titleTitle) then ("--title " +  '"' + titleTitle + '"') else ""} \
-      ~{if defined(legendLegendPos) then ("--legend_pos " +  '"' + legendLegendPos + '"') else ""} \
-      ~{environmentEnvironmentFile}
+      ~{stack_bardot_r} \
+      ~{environment_file} \
+      ~{if defined(output_file_prefix) then ("--output_file_prefix " +  '"' + output_file_prefix + '"') else ""} \
+      ~{if defined(colors_file) then ("--colors_file " +  '"' + colors_file + '"') else ""} \
+      ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
+      ~{if defined(legend_pos) then ("--legend_pos " +  '"' + legend_pos + '"') else ""}
   >>>
+  parameter_meta {
+    output_file_prefix: "Output file prefix for visualization files [default \"unknown\"]"
+    colors_file: "Colors file"
+    title: "Title for the output figure [default '(unknown title)']"
+    legend_pos: "Legend pos [default 'none']"
+    stack_bardot_r: ""
+    environment_file: ""
+  }
 }

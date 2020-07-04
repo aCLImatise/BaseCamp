@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gvcf_regions.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gvcf_regions.py.cwl
 inputs:
-- id: gvc_f
-  doc: input gvcf file
-  type: string
-  inputBinding:
-    position: 0
 - id: unreported_is_called
   doc: use this flag to treat unreported sites as called
   type: boolean
@@ -41,6 +36,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --gvcf_type
+- id: gvc_f
+  doc: input gvcf file
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

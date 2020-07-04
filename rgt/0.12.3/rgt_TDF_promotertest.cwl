@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: rgt_TDF_promotertest.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rgt_TDF_promotertest.cwl
 inputs:
-- id: r
+- id: input_file_name
   doc: Input file name for RNA sequence (in fasta format)
   type: boolean
   inputBinding:
@@ -26,12 +26,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -bg
-- id: o
+- id: output_directory_name
   doc: Output directory name for all the results
   type: boolean
   inputBinding:
     prefix: -o
-- id: t
+- id: define_title_name
   doc: Define the title name for the results under the Output name. (default is RNA
     name)
   type: boolean
@@ -73,7 +73,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -scoreh
-- id: a
+- id: define_significance_level
   doc: 'Define significance level for rejection null hypothesis (default: 0.05)'
   type: boolean
   inputBinding:
@@ -134,17 +134,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -nofile
-- id: l
+- id: define_minimum_length
   doc: '[Triplexes] Define the minimum length of triplex (default: 20)'
   type: boolean
   inputBinding:
     prefix: -l
-- id: e
+- id: set_maximal_errorrate
   doc: '[Triplexes] Set the maximal error-rate in % tolerated (default: 20)'
   type: boolean
   inputBinding:
     prefix: -e
-- id: c
+- id: sets_tolerated_number
   doc: '[Triplexes] Sets the tolerated number of consecutive errors with respect to
     the canonical triplex rules as such were found to greatly destabilize triplexes
     in vitro (default: 2)'

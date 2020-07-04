@@ -1,19 +1,20 @@
 version 1.0
 
-task SequenceSubtract.py {
+task SequenceSubtract.pyOutputFastx {
   input {
-    String iI
-    String oO
-    String? inputInputFastXBait
-    String? inputInputFastXTarget
-    String? outputOutputFastX
+    String? i
+    String? o
+    String sequence_subtract_do_tpy
   }
   command <<<
-    sequence_subtract.py \
-      ~{inputInputFastXBait} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{inputInputFastXTarget} \
-      ~{outputOutputFastX}
+    sequence_subtract.py output_fastx \
+      ~{sequence_subtract_do_tpy} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    i: ""
+    o: ""
+    sequence_subtract_do_tpy: ""
+  }
 }

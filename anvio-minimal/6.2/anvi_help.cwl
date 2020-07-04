@@ -1,12 +1,6 @@
 class: CommandLineTool
-id: anvi_help.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_help.cwl
 inputs:
-- id: search_term
-  doc: Find programs associated with this search term. if you want all programs, use
-    'ALL'
-  type: string
-  inputBinding:
-    position: 0
 - id: requires
   doc: Restrict to programs that require this search term
   type: boolean
@@ -30,6 +24,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --report
+- id: search_term
+  doc: Find programs associated with this search term. if you want all programs, use
+    'ALL'
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

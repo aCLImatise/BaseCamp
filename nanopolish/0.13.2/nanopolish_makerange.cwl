@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nanopolish_makerange.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nanopolish_makerange.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

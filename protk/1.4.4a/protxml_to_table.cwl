@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: protxml_to_table.rb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/protxml_to_table.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

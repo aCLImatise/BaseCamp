@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pathoscope_LIB.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pathoscope_LIB.cwl
 inputs:
 - id: genome_file
   doc: Specify reference genome(Download ftp://ftp.ncbi.nih.gov/blast/db/FASTA/nt.gz)

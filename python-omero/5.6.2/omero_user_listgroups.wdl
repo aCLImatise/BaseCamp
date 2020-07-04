@@ -2,24 +2,34 @@ version 1.0
 
 task OmeroUserListgroups {
   input {
-    String styleStyle
-    Boolean countCount
-    Boolean longLong
-    Boolean sortSortById
-    Boolean sortSortByName
-    Array[String]+ userUserId
-    Array[String]+ userUserName
-    String? userUser
+    String? style
+    Boolean? count
+    Boolean? long
+    Boolean? sort_by_id
+    Boolean? sort_by_name
+    Array[String] user_id
+    Array[String] user_name
+    String user
   }
   command <<<
     omero user listgroups \
-      ~{userUser} \
-      ~{if defined(styleStyle) then ("--style " +  '"' + styleStyle + '"') else ""} \
-      ~{true="--count" false="" countCount} \
-      ~{true="--long" false="" longLong} \
-      ~{true="--sort-by-id" false="" sortSortById} \
-      ~{true="--sort-by-name" false="" sortSortByName} \
-      ~{if defined(userUserId) then ("--user-id " +  '"' + userUserId + '"') else ""} \
-      ~{if defined(userUserName) then ("--user-name " +  '"' + userUserName + '"') else ""}
+      ~{user} \
+      ~{if defined(style) then ("--style " +  '"' + style + '"') else ""} \
+      ~{true="--count" false="" count} \
+      ~{true="--long" false="" long} \
+      ~{true="--sort-by-id" false="" sort_by_id} \
+      ~{true="--sort-by-name" false="" sort_by_name} \
+      ~{if defined(user_id) then ("--user-id " +  '"' + user_id + '"') else ""} \
+      ~{if defined(user_name) then ("--user-name " +  '"' + user_name + '"') else ""}
   >>>
+  parameter_meta {
+    style: "use alternative output style (default=sql)"
+    count: "Print count of all users and owners (default)"
+    long: "Print comma-separated list of all users and owners"
+    sort_by_id: "Sort groups by ID (default)"
+    sort_by_name: "Sort groups by name"
+    user_id: "ID of the user(s)"
+    user_name: "Name of the user(s)"
+    user: "ID or name of the user(s)"
+  }
 }

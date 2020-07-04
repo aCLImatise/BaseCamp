@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastq_multx.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq_multx.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

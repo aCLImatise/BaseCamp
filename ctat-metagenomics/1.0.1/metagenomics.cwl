@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: metagenomics.cwl
+id: ../../../../home/ubuntu/BiocondaCli/metagenomics.cwl
 inputs:
 - id: threads
   doc: 'Launch NTHREADS parallel search threads - default: 1 (default: 1)'

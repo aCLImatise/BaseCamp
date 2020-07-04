@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: kallisto_quant.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kallisto_quant.cwl
 inputs:
-- id: arguments
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: fast_q_files
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: bias
   doc: Perform sequence based bias correction
   type: boolean
@@ -67,6 +57,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: arguments
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: fast_q_files
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

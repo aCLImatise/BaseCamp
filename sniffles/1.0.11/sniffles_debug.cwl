@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: sniffles_debug.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sniffles_debug.cwl
 inputs:
-- id: sniffles
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: ivcf
   doc: Input VCF file name. Enable force calling []
   type: string
@@ -81,6 +76,21 @@ inputs:
   type: long
   inputBinding:
     prefix: --max_dist_aln_events
+- id: m
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -m
+- id: v
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -v
+- id: sniffles
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

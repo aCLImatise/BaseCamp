@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: cram_size.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cram_size.cwl
 inputs:
-- id: filename_cram
+- id: filename_dot_cram
   doc: ''
   type: File
   inputBinding:

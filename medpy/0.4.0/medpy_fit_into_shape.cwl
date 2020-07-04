@@ -1,38 +1,43 @@
 class: CommandLineTool
-id: medpy_fit_into_shape.py_input.cwl
+id: ../../../../home/ubuntu/BiocondaCli/medpy_fit_into_shape.py_shape.cwl
 inputs:
-- id: input
-  doc: the input image
-  type: string
-  inputBinding:
-    position: 0
-- id: output
-  doc: the output image
-  type: string
-  inputBinding:
-    position: 1
-- id: shape
-  doc: the desired shape in colon-separated values, e.g. 255,255,32
-  type: string
-  inputBinding:
-    position: 2
-- id: verbose
-  doc: verbose output
+- id: v
+  doc: ''
   type: boolean
   inputBinding:
-    prefix: --verbose
+    prefix: -v
 - id: d
-  doc: Display debug information.
+  doc: ''
   type: boolean
   inputBinding:
     prefix: -d
-- id: force
-  doc: overwrite existing files
+- id: f
+  doc: ''
   type: boolean
   inputBinding:
-    prefix: --force
+    prefix: -f
+- id: me_dpy_fit_into_shape_do_tpy
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: input
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: output
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: shape
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - medpy_fit_into_shape.py
-- input
+- shape

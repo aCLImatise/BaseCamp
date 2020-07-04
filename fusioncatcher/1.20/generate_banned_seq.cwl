@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: generate_banned_seq.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/generate_banned_seq.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the list of banned candidate fusion genes

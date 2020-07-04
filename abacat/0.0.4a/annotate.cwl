@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: annotate.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/annotate.py.cwl
 inputs:
 - id: input
   doc: Input file. Must a valid FASTA contigs file (post- assembly).

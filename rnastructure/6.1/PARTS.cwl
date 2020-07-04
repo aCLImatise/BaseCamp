@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: PARTS.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PARTS.cwl
 inputs:
 - id: configuration_file
   doc: ''

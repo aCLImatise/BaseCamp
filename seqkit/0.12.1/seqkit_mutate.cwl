@@ -1,11 +1,11 @@
 class: CommandLineTool
-id: seqkit_mutate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqkit_mutate.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
+- id: c_g_t
+  doc: :-1    A C G T N a c g t n
+  type: boolean
   inputBinding:
-    position: 0
+    prefix: '-12'
 - id: by_name
   doc: '[match seqs to mutate] match by full name instead of just id'
   type: boolean
@@ -46,7 +46,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --pattern-file
-- id: point
+- id: point_mutation_changing
   doc: 'point mutation: changing base at given position. e.g., -p 2:C for setting
     2nd base as C, -p -1:A for change last base as A'
   type: string
@@ -106,6 +106,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

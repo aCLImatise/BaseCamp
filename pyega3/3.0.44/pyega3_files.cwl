@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pyega3_files.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyega3_files.cwl
 inputs:
 - id: identifier
   doc: Dataset ID (e.g. EGAD00000000001)

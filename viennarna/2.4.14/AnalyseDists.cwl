@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: AnalyseDists.cwl
+id: ../../../../home/ubuntu/BiocondaCli/AnalyseDists.cwl
 inputs:
+- id: x
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -X
 - id: analyse_dist
   doc: ''
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: x
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -X
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pyprophet_subsample.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyprophet_subsample.cwl
 inputs:
 - id: in
   doc: OpenSWATH input file.  [required]

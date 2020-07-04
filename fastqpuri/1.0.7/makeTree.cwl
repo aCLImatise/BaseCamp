@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: makeTree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/makeTree.cwl
 inputs:
 - id: fast_a
   doc: Fasta input file. Mandatory option.

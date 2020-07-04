@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: CoFold.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CoFold.cwl
 inputs:
 - id: detailed_help
   doc: Print help, including all details and hidden  options, and exit
@@ -45,6 +45,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --circ
+- id: temp
+  doc: Rescale energy parameters to a temperature of  temp C. Default is 37C.
+  type: string
+  inputBinding:
+    prefix: --temp
+- id: no_tetra
+  doc: Do not include special tabulated stabilizing  energies for tri-, tetra- and
+    hexaloop  hairpins. Mostly for testing. (default=off)
+  type: boolean
+  inputBinding:
+    prefix: --noTetra
 - id: dangles
   doc: How to treat "dangling end" energies for  bases adjacent to helices in free
     ends and  multi-loops (default=`2')
@@ -72,6 +83,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --paramFile
+- id: rna_fold
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

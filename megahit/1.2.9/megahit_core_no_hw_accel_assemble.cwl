@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: megahit_core_no_hw_accel_assemble.cwl
+id: ../../../../home/ubuntu/BiocondaCli/megahit_core_no_hw_accel_assemble.cwl
 inputs:
-- id: assemble
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: s_dbg_name
   doc: succinct de Bruijn graph name
   type: string
@@ -87,6 +82,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --careful_bubble
+- id: assemble
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

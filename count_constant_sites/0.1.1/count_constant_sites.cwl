@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: count_constant_sites.cwl
+id: ../../../../home/ubuntu/BiocondaCli/count_constant_sites.cwl
 inputs:
 - id: fast_a_file
   doc: ''

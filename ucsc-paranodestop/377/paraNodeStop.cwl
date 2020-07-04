@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: paraNodeStop.cwl
+id: ../../../../home/ubuntu/BiocondaCli/paraNodeStop.cwl
 inputs:
 - id: machine_list
   doc: ''

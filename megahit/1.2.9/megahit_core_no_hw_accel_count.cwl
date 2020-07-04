@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: megahit_core_no_hw_accel_count.cwl
+id: ../../../../home/ubuntu/BiocondaCli/megahit_core_no_hw_accel_count.cwl
 inputs:
-- id: s_dbg_builder
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: count
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: km_er_k
   doc: (=21)                 kmer size
   type: string
@@ -47,6 +37,26 @@ inputs:
   type: string
   inputBinding:
     prefix: --mem_flag
+- id: input_file
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --input_file
+- id: o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
+- id: s_dbg_builder
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: count
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

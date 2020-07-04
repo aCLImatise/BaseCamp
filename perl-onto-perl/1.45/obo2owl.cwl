@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: obo2owl.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/obo2owl.pl.cwl
 inputs:
-- id: f
+- id: obo_input_file
   doc: OBO input file
   type: boolean
   inputBinding:
     prefix: -f
-- id: u
+- id: url
   doc: URL
   type: boolean
   inputBinding:
     prefix: -u
-- id: w
+- id: obo_owl_url
   doc: obo in owl url
   type: boolean
   inputBinding:

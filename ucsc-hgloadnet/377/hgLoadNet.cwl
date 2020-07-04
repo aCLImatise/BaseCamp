@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hgLoadNet.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hgLoadNet.cwl
 inputs:
 - id: no_bin
   doc: suppress bin field
@@ -31,6 +31,21 @@ inputs:
   type: string
   inputBinding:
     prefix: -test
+- id: database
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: track
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: files
+  doc: ''
+  type: File
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

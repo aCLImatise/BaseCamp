@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: design_redprint_multistate.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/design_redprint_multistate.py.cwl
 inputs:
 - id: file
   doc: Read file in *.inp format

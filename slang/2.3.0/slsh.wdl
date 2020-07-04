@@ -2,14 +2,19 @@ version 1.0
 
 task Slsh {
   input {
-    File? fileFile
-    String? notNot
-    String? foundFound
+    File file
+    String not
+    String found
   }
   command <<<
     slsh \
-      ~{fileFile} \
-      ~{notNot} \
-      ~{foundFound}
+      ~{file} \
+      ~{not} \
+      ~{found}
   >>>
+  parameter_meta {
+    file: ""
+    not: ""
+    found: ""
+  }
 }

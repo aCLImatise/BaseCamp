@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gappa_analyze_dispersion.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gappa_analyze_dispersion.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: j_place_path
   doc: :PATH(existing)=[] ... REQUIRED List of jplace files or directories to process.
     For directories, only files with the extension .jplace are processed.

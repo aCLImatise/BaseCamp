@@ -2,34 +2,52 @@ version 1.0
 
 task AbyssTofastq {
   input {
-    Boolean catCat
-    Boolean interleaveInterleave
-    Boolean fastFastQ
-    Boolean fastFastA
-    Boolean bxBx
-    Boolean chastityChastity
-    Boolean noNoChastity
-    Boolean trimTrimMasked
-    Boolean noNoTrimMasked
-    String trimTrimQuality
-    Boolean standardStandardQuality
-    Boolean illuminaIlluminaQuality
-    Boolean verboseVerbose
+    Boolean? cat
+    Boolean? interleave
+    Boolean? fast_q
+    Boolean? fast_a
+    Boolean? bx
+    Boolean? chastity
+    Boolean? no_chastity
+    Boolean? trim_masked
+    Boolean? no_trim_masked
+    String? trim_quality
+    Boolean? standard_quality
+    Boolean? illumina_quality
+    Boolean? verbose
+    String? option
   }
   command <<<
     abyss-tofastq \
-      ~{true="--cat" false="" catCat} \
-      ~{true="--interleave" false="" interleaveInterleave} \
-      ~{true="--fastq" false="" fastFastQ} \
-      ~{true="--fasta" false="" fastFastA} \
-      ~{true="--bx" false="" bxBx} \
-      ~{true="--chastity" false="" chastityChastity} \
-      ~{true="--no-chastity" false="" noNoChastity} \
-      ~{true="--trim-masked" false="" trimTrimMasked} \
-      ~{true="--no-trim-masked" false="" noNoTrimMasked} \
-      ~{if defined(trimTrimQuality) then ("--trim-quality " +  '"' + trimTrimQuality + '"') else ""} \
-      ~{true="--standard-quality" false="" standardStandardQuality} \
-      ~{true="--illumina-quality" false="" illuminaIlluminaQuality} \
-      ~{true="--verbose" false="" verboseVerbose}
+      ~{option} \
+      ~{true="--cat" false="" cat} \
+      ~{true="--interleave" false="" interleave} \
+      ~{true="--fastq" false="" fast_q} \
+      ~{true="--fasta" false="" fast_a} \
+      ~{true="--bx" false="" bx} \
+      ~{true="--chastity" false="" chastity} \
+      ~{true="--no-chastity" false="" no_chastity} \
+      ~{true="--trim-masked" false="" trim_masked} \
+      ~{true="--no-trim-masked" false="" no_trim_masked} \
+      ~{if defined(trim_quality) then ("--trim-quality " +  '"' + trim_quality + '"') else ""} \
+      ~{true="--standard-quality" false="" standard_quality} \
+      ~{true="--illumina-quality" false="" illumina_quality} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    cat: "concatenate the records [default]"
+    interleave: "interleave the records"
+    fast_q: "output FASTQ format [default]"
+    fast_a: "output FASTA format"
+    bx: "copy SAM BX tag to output FASTA comment"
+    chastity: "discard unchaste reads [default]"
+    no_chastity: "do not discard unchaste reads"
+    trim_masked: "trim masked bases from the ends of reads"
+    no_trim_masked: "do not trim masked bases from the ends of reads [default]"
+    trim_quality: "trim bases from the ends of reads whose quality is less than the threshold"
+    standard_quality: "zero quality is `!' (33) default for FASTQ and SAM files"
+    illumina_quality: "zero quality is `@' (64) default for qseq and export files"
+    verbose: "display verbose output"
+    option: ""
+  }
 }

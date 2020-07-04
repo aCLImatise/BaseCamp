@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_exons_positions.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_exons_positions.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the exons positions are downloaded, e.g.

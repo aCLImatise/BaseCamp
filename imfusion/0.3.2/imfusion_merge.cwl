@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: imfusion_merge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/imfusion_merge.cwl
 inputs:
 - id: sample_dirs
   doc: Path to sample directories.

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: RapClust.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RapClust.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: config
   doc: Config file describing the experimental setup  [required]
   type: string

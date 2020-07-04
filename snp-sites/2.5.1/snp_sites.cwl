@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: snp_sites.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snp_sites.cwl
 inputs:
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: rmv_pc_bhv
   doc: ''
   type: boolean
@@ -16,6 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -o
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

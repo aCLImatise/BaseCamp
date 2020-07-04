@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: down_tRNA.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/down_tRNA.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

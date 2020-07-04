@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: pslSelect.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pslSelect.cwl
 inputs:
+- id: qt_start
+  doc: '- file is tab-separate rows of qName,tName,tStart'
+  type: File
+  inputBinding:
+    prefix: -qtStart
+- id: q_delim
+  doc: '- use only the part of the query name before this character'
+  type: string
+  inputBinding:
+    prefix: -qDelim
 - id: in_psl
   doc: ''
   type: string
@@ -11,16 +21,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: qt_start
-  doc: tab-separate rows of qName,tName,tStart
-  type: File
-  inputBinding:
-    prefix: -qtStart
-- id: q_delim
-  doc: the part of the query name before this character
-  type: string
-  inputBinding:
-    prefix: -qDelim
 outputs: []
 cwlVersion: v1.1
 baseCommand:

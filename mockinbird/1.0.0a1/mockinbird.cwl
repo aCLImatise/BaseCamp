@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mockinbird.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mockinbird.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

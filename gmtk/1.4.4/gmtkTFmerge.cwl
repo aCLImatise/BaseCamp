@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gmtkTFmerge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gmtkTFmerge.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

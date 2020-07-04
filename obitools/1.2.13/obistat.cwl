@@ -1,31 +1,6 @@
 class: CommandLineTool
-id: obistat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/obistat.cwl
 inputs:
-- id: minimum
-  doc: '(``-m`` option) '
-  type: string
-  inputBinding:
-    prefix: '- minimum'
-- id: maximum
-  doc: '(``-M`` option) '
-  type: string
-  inputBinding:
-    prefix: '- maximum'
-- id: mean
-  doc: '(``-a`` option) '
-  type: string
-  inputBinding:
-    prefix: '- mean'
-- id: variance
-  doc: '(``-v`` option) '
-  type: boolean
-  inputBinding:
-    prefix: '- variance'
-- id: standard
-  doc: (``-s`` option)
-  type: string
-  inputBinding:
-    prefix: '- standard'
 - id: category_attribute
   doc: Attribute used to categorize the sequence records.
   type: string

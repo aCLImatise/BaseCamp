@@ -2,34 +2,19 @@ version 1.0
 
 task Corset {
   input {
-    String dD
-    String dD
-    Boolean iI
-    Int mM
-    String gG
-    String pP
-    Boolean fF
-    String nN
-    Boolean rR
-    Boolean iI
-    Int lL
-    Int xX
-    String? inputInputBamFiles
+    Int? running_i_will
+    Int? running_i_option
+    String input_bam_files
   }
   command <<<
     corset \
-      ~{inputInputBamFiles} \
-      ~{if defined(dD) then ("-d " +  '"' + dD + '"') else ""} \
-      ~{if defined(dD) then ("-D " +  '"' + dD + '"') else ""} \
-      ~{true="-I" false="" iI} \
-      ~{if defined(mM) then ("-m " +  '"' + mM + '"') else ""} \
-      ~{if defined(gG) then ("-g " +  '"' + gG + '"') else ""} \
-      ~{if defined(pP) then ("-p " +  '"' + pP + '"') else ""} \
-      ~{true="-f" false="" fF} \
-      ~{if defined(nN) then ("-n " +  '"' + nN + '"') else ""} \
-      ~{true="-r" false="" rR} \
-      ~{true="-i" false="" iI} \
-      ~{if defined(lL) then ("-l " +  '"' + lL + '"') else ""} \
-      ~{if defined(xX) then ("-x " +  '"' + xX + '"') else ""}
+      ~{input_bam_files} \
+      ~{if defined(running_i_will) then ("-l " +  '"' + running_i_will + '"') else ""} \
+      ~{if defined(running_i_option) then ("-x " +  '"' + running_i_option + '"') else ""}
   >>>
+  parameter_meta {
+    running_i_will: "If running with -i corset or salmon_eq_classes, this will filter out a link between contigs if the link is supported by less than this many reads (performed sample-wise). Reads will  be reassigned uniformly to the contigs in the equivalence class. This option will improve runtime and memory usage, but will increase the number of clusters reported. Default: 1 (no filtering)"
+    running_i_option: "If running with -i corset or salmon_eq_classes, this option will filter out reads that align to more than x contigs. Default: no filtering"
+    input_bam_files: ""
+  }
 }

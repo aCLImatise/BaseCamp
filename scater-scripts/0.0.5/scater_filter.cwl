@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scater_filter.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scater_filter.R.cwl
 inputs:
 - id: input_object_file
   doc: A serialized SingleCellExperiment object file in RDS format.

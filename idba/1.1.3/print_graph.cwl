@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: print_graph.cwl
+id: ../../../../home/ubuntu/BiocondaCli/print_graph.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,14 +2,19 @@ version 1.0
 
 task GrfAlignment {
   input {
-    String? typeType
-    String? inputInputFastA
-    String? outputOutput
+    String type
+    String input_fast_a
+    String var_output
   }
   command <<<
     grf-alignment \
-      ~{typeType} \
-      ~{inputInputFastA} \
-      ~{outputOutput}
+      ~{type} \
+      ~{input_fast_a} \
+      ~{var_output}
   >>>
+  parameter_meta {
+    type: ""
+    input_fast_a: ""
+    var_output: ""
+  }
 }

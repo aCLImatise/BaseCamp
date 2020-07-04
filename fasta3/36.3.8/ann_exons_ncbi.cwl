@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ann_exons_ncbi.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ann_exons_ncbi.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

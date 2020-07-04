@@ -2,10 +2,13 @@ version 1.0
 
 task ShowSnps {
   input {
-    String? deltaDeltaFile
+    String delta_file
   }
   command <<<
     show-snps \
-      ~{deltaDeltaFile}
+      ~{delta_file}
   >>>
+  parameter_meta {
+    delta_file: ""
+  }
 }

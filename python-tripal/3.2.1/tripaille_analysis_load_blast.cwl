@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tripaille_analysis_load_blast.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tripaille_analysis_load_blast.cwl
 inputs:
 - id: blast_ext
   doc: If looking for files in a directory, extension of the blast result files
@@ -84,6 +84,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --date_executed
+- id: name
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: program
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: program_version
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

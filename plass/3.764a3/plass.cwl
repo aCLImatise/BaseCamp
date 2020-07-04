@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: plass.cwl
+id: ../../../../home/ubuntu/BiocondaCli/plass.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

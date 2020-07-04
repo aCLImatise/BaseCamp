@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: libdrawtree.so.cwl
+id: ../../../../home/ubuntu/BiocondaCli/libdrawtree.so.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

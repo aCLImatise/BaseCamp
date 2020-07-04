@@ -1,7 +1,17 @@
 class: CommandLineTool
-id: axtToMaf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/axtToMaf.cwl
 inputs:
-- id: in_a_xt
+- id: score
+  doc: '- recalculate score '
+  type: boolean
+  inputBinding:
+    prefix: -score
+- id: score_zero
+  doc: '- recalculate score if zero '
+  type: boolean
+  inputBinding:
+    prefix: -scoreZero
+- id: in_do_tax_t
   doc: ''
   type: string
   inputBinding:
@@ -16,21 +26,11 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: out_maf
+- id: out_dot_maf
   doc: ''
   type: string
   inputBinding:
     position: 3
-- id: score
-  doc: '- recalculate score '
-  type: boolean
-  inputBinding:
-    prefix: -score
-- id: score_zero
-  doc: '- recalculate score if zero '
-  type: boolean
-  inputBinding:
-    prefix: -scoreZero
 outputs: []
 cwlVersion: v1.1
 baseCommand:

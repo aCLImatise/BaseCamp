@@ -2,24 +2,34 @@ version 1.0
 
 task PhylophlanDrawMetagenomic {
   input {
-    String inputInput
-    String mapMap
-    String topTop
-    String outputOutput
-    String separatorSeparator
-    String dpiDpi
-    String fF
-    Boolean verboseVerbose
+    String? input_file_generated
+    String? mapping_file_maps
+    String? top
+    String? prefix_output_files
+    String? separator
+    String? dpi
+    String? images_output_format
+    Boolean? verbose
   }
   command <<<
     phylophlan_draw_metagenomic \
-      ~{if defined(inputInput) then ("--input " +  '"' + inputInput + '"') else ""} \
-      ~{if defined(mapMap) then ("--map " +  '"' + mapMap + '"') else ""} \
-      ~{if defined(topTop) then ("--top " +  '"' + topTop + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(separatorSeparator) then ("--separator " +  '"' + separatorSeparator + '"') else ""} \
-      ~{if defined(dpiDpi) then ("--dpi " +  '"' + dpiDpi + '"') else ""} \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""} \
-      ~{true="--verbose" false="" verboseVerbose}
+      ~{if defined(input_file_generated) then ("--input " +  '"' + input_file_generated + '"') else ""} \
+      ~{if defined(mapping_file_maps) then ("--map " +  '"' + mapping_file_maps + '"') else ""} \
+      ~{if defined(top) then ("--top " +  '"' + top + '"') else ""} \
+      ~{if defined(prefix_output_files) then ("--output " +  '"' + prefix_output_files + '"') else ""} \
+      ~{if defined(separator) then ("--separator " +  '"' + separator + '"') else ""} \
+      ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
+      ~{if defined(images_output_format) then ("-f " +  '"' + images_output_format + '"') else ""} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    input_file_generated: "The input file generated from phylophlan_metagenomic.py (default: None)"
+    mapping_file_maps: "A mapping file that maps each bin to its metagenome (default: None)"
+    top: "The number of SGBs to display in the figure (default: 20)"
+    prefix_output_files: "Prefix output files (default: output_heatmap)"
+    separator: "The separator used in the mapping file (default: )"
+    dpi: "Dpi resolution of the images (default: 200)"
+    images_output_format: "Images output format (default: svg)"
+    verbose: "Prints more stuff (default: False)"
+  }
 }

@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: venn_mpl.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/venn_mpl.py.cwl
 inputs:
-- id: a
+- id: file_use_leftmost
   doc: File to use for the left-most circle
   type: string
   inputBinding:
     prefix: -a
-- id: b
+- id: file_use_rightmost
   doc: File to use for the right-most circle
   type: string
   inputBinding:
     prefix: -b
-- id: c
+- id: file_use_bottom
   doc: File to use for the bottom circle
   type: string
   inputBinding:
@@ -27,7 +27,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --colors
-- id: o
+- id: output_file_save
   doc: Output file to save as. Extension is meaningful, e.g., out.pdf, out.png, out.svg.
     Default is "out.png"
   type: string

@@ -1,7 +1,14 @@
 version 1.0
 
 task OlapsFromContig {
+  input {
+    String? option
+  }
   command <<<
-    olapsFromContig
+    olapsFromContig \
+      ~{option}
   >>>
+  parameter_meta {
+    option: ""
+  }
 }

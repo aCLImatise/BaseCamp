@@ -1,20 +1,23 @@
 class: CommandLineTool
-id: convertToEBD.py_outputFile_outputFile_outputFile.cwl
+id: ../../../../home/ubuntu/BiocondaCli/convertToEBD.py_outputFile.cwl
 inputs:
-- id: input_file
+- id: convert_to_ebd_do_tpy
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: output_file
+- id: input_file
   doc: ''
   type: string
   inputBinding:
     position: 1
+- id: output_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - convertToEBD.py
-- outputFile
-- outputFile
 - outputFile

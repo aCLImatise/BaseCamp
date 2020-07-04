@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gdk_pixbuf_csource.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gdk_pixbuf_csource.cwl
 inputs:
 - id: stream
   doc: generate pixbuf data stream
@@ -56,6 +56,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --g-fatal-warnings
+- id: gdk_pixbuf_c_source_three_dot_zero
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: image
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

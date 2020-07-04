@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: eqtlbma_bf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/eqtlbma_bf.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: omero_config_def.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_config_def.cwl
 inputs:
 - id: name
   doc: Name of the profile which should be made the new active profile.

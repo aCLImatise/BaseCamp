@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: adam_shell.cwl
+id: ../../../../home/ubuntu/BiocondaCli/adam_shell.cwl
 inputs:
-- id: i
+- id: preload_file_enforcing
   doc: preload <file>, enforcing line-by-line interpretation
   type: File
   inputBinding:
@@ -66,7 +66,7 @@ inputs:
   inputBinding:
     prefix: --files
 - id: conf
-  doc: =VALUE           Arbitrary Spark configuration property.
+  doc: =VALUE       Arbitrary Spark configuration property.
   type: string
   inputBinding:
     prefix: --conf
@@ -139,41 +139,39 @@ inputs:
   inputBinding:
     prefix: --total-executor-cores
 - id: executor_cores
-  doc: 'Number of cores per executor. (Default: 1 in YARN mode, or all available cores
-    on the worker in standalone mode)'
+  doc: 'Number of cores used by each executor. (Default: 1 in YARN and K8S modes,
+    or all available cores on the worker in standalone mode).'
   type: string
   inputBinding:
     prefix: --executor-cores
-- id: queue
-  doc: 'The YARN queue to submit to (Default: "default").'
-  type: string
-  inputBinding:
-    prefix: --queue
 - id: num_executors
   doc: 'Number of executors to launch (Default: 2). If dynamic allocation is enabled,
     the initial number of executors will be at least NUM.'
   type: string
   inputBinding:
     prefix: --num-executors
+- id: principal
+  doc: Principal to be used to login to KDC.
+  type: string
+  inputBinding:
+    prefix: --principal
+- id: keytab
+  doc: The full path to the file that contains the keytab for the principal specified
+    above.
+  type: string
+  inputBinding:
+    prefix: --keytab
+- id: queue
+  doc: 'The YARN queue to submit to (Default: "default").'
+  type: string
+  inputBinding:
+    prefix: --queue
 - id: archives
   doc: Comma separated list of archives to be extracted into the working directory
     of each executor.
   type: string
   inputBinding:
     prefix: --archives
-- id: principal
-  doc: Principal to be used to login to KDC, while running on secure HDFS.
-  type: string
-  inputBinding:
-    prefix: --principal
-- id: keytab
-  doc: The full path to the file that contains the keytab for the principal specified
-    above. This keytab will be copied to the node running the Application Master via
-    the Secure Distributed Cache, for renewing the login tickets and the delegation
-    tokens periodically.
-  type: string
-  inputBinding:
-    prefix: --keytab
 outputs: []
 cwlVersion: v1.1
 baseCommand:

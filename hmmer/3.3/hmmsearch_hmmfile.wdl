@@ -2,10 +2,13 @@ version 1.0
 
 task HmmsearchHmmfile {
   input {
-    String? seqSeqDb
+    String seq_db
   }
   command <<<
     hmmsearch hmmfile \
-      ~{seqSeqDb}
+      ~{seq_db}
   >>>
+  parameter_meta {
+    seq_db: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: krocus.cwl
+id: ../../../../home/ubuntu/BiocondaCli/krocus.cwl
 inputs:
 - id: filtered_reads_file
   doc: 'Filename to save matching reads to (default: None)'
@@ -52,7 +52,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --kmer
-- id: divisible_by_3
+- id: divisible_by_three
   doc: 'Genes which are not divisible by 3 are excluded (default: False)'
   type: boolean
   inputBinding:

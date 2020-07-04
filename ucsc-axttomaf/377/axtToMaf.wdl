@@ -2,20 +2,28 @@ version 1.0
 
 task AxtToMaf {
   input {
-    Boolean scoreScore
-    Boolean scoreScoreZero
-    String? inInAXt
-    String? tTSizes
-    String? qQSizes
-    String? outOutMaf
+    Boolean? score
+    Boolean? score_zero
+    String in_do_tax_t
+    String t_sizes
+    String q_sizes
+    String out_dot_maf
   }
   command <<<
     axtToMaf \
-      ~{inInAXt} \
-      ~{true="-score" false="" scoreScore} \
-      ~{true="-scoreZero" false="" scoreScoreZero} \
-      ~{tTSizes} \
-      ~{qQSizes} \
-      ~{outOutMaf}
+      ~{in_do_tax_t} \
+      ~{t_sizes} \
+      ~{q_sizes} \
+      ~{out_dot_maf} \
+      ~{true="-score" false="" score} \
+      ~{true="-scoreZero" false="" score_zero}
   >>>
+  parameter_meta {
+    score: "- recalculate score "
+    score_zero: "- recalculate score if zero "
+    in_do_tax_t: ""
+    t_sizes: ""
+    q_sizes: ""
+    out_dot_maf: ""
+  }
 }

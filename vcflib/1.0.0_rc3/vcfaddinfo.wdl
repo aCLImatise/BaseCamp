@@ -2,12 +2,16 @@ version 1.0
 
 task Vcfaddinfo {
   input {
-    String? vcfVcfFile
-    String? vcfVcfFile
+    String var_0
+    String var_1
   }
   command <<<
     vcfaddinfo \
-      ~{vcfVcfFile} \
-      ~{vcfVcfFile}
+      ~{var_0} \
+      ~{var_1}
   >>>
+  parameter_meta {
+    var_0: ""
+    var_1: ""
+  }
 }

@@ -1,6 +1,17 @@
 class: CommandLineTool
-id: map_bed.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/map_bed.py.cwl
 inputs:
+- id: single_nucleotide
+  doc: If specified, assumes each region is only one nucleotide. You must specify
+    -wig as well.
+  type: boolean
+  inputBinding:
+    prefix: -SingleNucleotide
+- id: wig_dir
+  doc: Path to directory with <chrom>.<kmer>.MultiReadMappability.wg.gz files.
+  type: string
+  inputBinding:
+    prefix: -wigdir
 - id: bed_path
   doc: Path to gzipped bed file
   type: string
@@ -21,17 +32,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: single_nucleotide
-  doc: If specified, assumes each region is only one nucleotide. You must specify
-    -wig as well.
-  type: boolean
-  inputBinding:
-    prefix: -SingleNucleotide
-- id: wig_dir
-  doc: Path to directory with <chrom>.<kmer>.MultiReadMappability.wg.gz files.
-  type: string
-  inputBinding:
-    prefix: -wigdir
 outputs: []
 cwlVersion: v1.1
 baseCommand:

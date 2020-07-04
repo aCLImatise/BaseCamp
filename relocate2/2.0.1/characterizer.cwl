@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: characterizer.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/characterizer.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

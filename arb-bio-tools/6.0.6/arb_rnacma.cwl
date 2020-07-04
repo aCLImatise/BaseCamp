@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: arb_rnacma.cwl
+id: ../../../../home/ubuntu/BiocondaCli/arb_rnacma.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

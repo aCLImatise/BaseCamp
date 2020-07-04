@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_estimate_genome_taxonomy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_estimate_genome_taxonomy.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

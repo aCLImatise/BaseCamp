@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fix_bar.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fix_bar.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

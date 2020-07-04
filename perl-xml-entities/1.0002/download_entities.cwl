@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: download_entities.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/download_entities.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

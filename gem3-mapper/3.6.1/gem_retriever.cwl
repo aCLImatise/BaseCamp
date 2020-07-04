@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gem_retriever.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gem_retriever.cwl
 inputs:
 - id: index
   doc: (GEM archive)

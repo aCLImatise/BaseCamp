@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: add_gff_info_uniprot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/add_gff_info_uniprot.cwl
 inputs:
 - id: email
   doc: Contact email  [required]
@@ -51,6 +51,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --mapping
+- id: input_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

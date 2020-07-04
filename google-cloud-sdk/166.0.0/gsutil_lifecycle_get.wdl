@@ -2,10 +2,13 @@ version 1.0
 
 task GsutilLifecycleGet {
   input {
-    String? urlUrl
+    String url
   }
   command <<<
     gsutil lifecycle get \
-      ~{urlUrl}
+      ~{url}
   >>>
+  parameter_meta {
+    url: ""
+  }
 }

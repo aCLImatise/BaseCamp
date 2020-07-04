@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: centreseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/centreseq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

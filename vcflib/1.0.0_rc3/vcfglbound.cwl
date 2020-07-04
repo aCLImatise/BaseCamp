@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: vcfglbound.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfglbound.cwl
 inputs:
-- id: vcf_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: bound
   doc: Bound GLs to this limit.
   type: string
@@ -16,6 +11,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --exclude-broken
+- id: vcf_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: genomedata_hardmask.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genomedata_hardmask.cwl
 inputs:
-- id: mask_file
-  doc: input mask file
-  type: string
-  inputBinding:
-    position: 0
-- id: gd_archive
-  doc: genomedata archive
-  type: string
-  inputBinding:
-    position: 1
 - id: track_name
   doc: 'Track(s) to be filtered (default: all)'
   type: string[]
@@ -39,6 +29,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: mask_file
+  doc: input mask file
+  type: string
+  inputBinding:
+    position: 0
+- id: gd_archive
+  doc: genomedata archive
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

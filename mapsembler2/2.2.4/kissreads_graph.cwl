@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: kissreads_graph.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kissreads_graph.cwl
 inputs:
-- id: h
+- id: this_message_exit
   doc: this message and exit
   type: string
   inputBinding:
@@ -11,23 +11,23 @@ inputs:
   type: string
   inputBinding:
     prefix: -t
-- id: o
+- id: write_obtained_output
   doc: ': write obtained graph. Default: standard output '
   type: File
   inputBinding:
     prefix: -o
-- id: k
+- id: will_use_seeds
   doc: ': will use seeds of length size_seed. Default: 25.'
   type: long
   inputBinding:
     prefix: -k
-- id: c
+- id: will_consider_edge
   doc: ': Will consider an edge as coherent if coverage (number of reads from all
     sets using this edge) is at least min_coverage. Default: 2 '
   type: long
   inputBinding:
     prefix: -c
-- id: d
+- id: will_map_read
   doc: ': Will map a read on the graph with at most max_substitutions substitutions.
     Default: 1 '
   type: long

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: methratio.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/methratio.py.cwl
 inputs:
-- id: bs_map_mapping_files
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: out
   doc: 'output methylation ratio file name. [default: STDOUT]'
   type: File
@@ -99,6 +94,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --context
+- id: bs_map_mapping_files
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

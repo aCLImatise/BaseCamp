@@ -1,6 +1,21 @@
 class: CommandLineTool
-id: MinYS.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MinYS.py.cwl
 inputs:
+- id: in
+  doc: '(1 arg) :    Input reads file'
+  type: boolean
+  inputBinding:
+    prefix: -in
+- id: arg_input_reads_first_file
+  doc: '(1 arg) :    Input reads first file'
+  type: boolean
+  inputBinding:
+    prefix: '-1'
+- id: arg_input_reads_second_file
+  doc: '(1 arg) :    Input reads second file'
+  type: boolean
+  inputBinding:
+    prefix: '-2'
 - id: f_of
   doc: '(1 arg) :    Input file of read files (if paired files, 2 columns tab-separated)'
   type: boolean
@@ -68,7 +83,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -max-length
-- id: l
+- id: arg_length_minimum
   doc: '(1 arg) :    Length of minimum prefix for node merging, default should work
     for most cases [Default: 100]'
   type: boolean

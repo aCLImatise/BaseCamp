@@ -2,10 +2,13 @@ version 1.0
 
 task GsutilStat {
   input {
-    String? urlUrl
+    String url_dot_dot_dot
   }
   command <<<
     gsutil stat \
-      ~{urlUrl}
+      ~{url_dot_dot_dot}
   >>>
+  parameter_meta {
+    url_dot_dot_dot: ""
+  }
 }

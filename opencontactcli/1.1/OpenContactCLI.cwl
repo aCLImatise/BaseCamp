@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: OpenContactCLI.cwl
+id: ../../../../home/ubuntu/BiocondaCli/OpenContactCLI.cwl
 inputs:
 - id: prot_a
   doc: Path to proteinA.pdb

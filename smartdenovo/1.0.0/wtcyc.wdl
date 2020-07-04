@@ -2,38 +2,55 @@ version 1.0
 
 task Wtcyc {
   input {
-    Int tT
-    Int pP
-    Int pP
-    String oO
-    String aA
-    Boolean fF
-    Int sS
-    Int mM
-    Int mM
-    Int xX
-    Int oO
-    Int eE
-    Int tT
-    Int wW
-    String? longLongReadFile
+    Int? number_of_threads
+    Int? total_parallel_jobs
+    Int? index_current_based
+    String? output_reads_regions
+    String? output_of_alignments
+    Boolean? force_overwrite_output
+    Int? mininum_alignment_score
+    Int? mininum_alignment_identity
+    Int? alignment_penalty_match
+    Int? alignment_penalty_mismatch
+    Int? alignment_penalty_gap_open
+    Int? alignment_penalty_gap_extension
+    Int? alignment_penalty_read
+    Int? bandwidth
+    String long_read_file
   }
   command <<<
     wtcyc \
-      ~{longLongReadFile} \
-      ~{if defined(tT) then ("-t " +  '"' + tT + '"') else ""} \
-      ~{if defined(pP) then ("-P " +  '"' + pP + '"') else ""} \
-      ~{if defined(pP) then ("-p " +  '"' + pP + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{if defined(aA) then ("-a " +  '"' + aA + '"') else ""} \
-      ~{true="-f" false="" fF} \
-      ~{if defined(sS) then ("-s " +  '"' + sS + '"') else ""} \
-      ~{if defined(mM) then ("-m " +  '"' + mM + '"') else ""} \
-      ~{if defined(mM) then ("-M " +  '"' + mM + '"') else ""} \
-      ~{if defined(xX) then ("-X " +  '"' + xX + '"') else ""} \
-      ~{if defined(oO) then ("-O " +  '"' + oO + '"') else ""} \
-      ~{if defined(eE) then ("-E " +  '"' + eE + '"') else ""} \
-      ~{if defined(tT) then ("-T " +  '"' + tT + '"') else ""} \
-      ~{if defined(wW) then ("-W " +  '"' + wW + '"') else ""}
+      ~{long_read_file} \
+      ~{if defined(number_of_threads) then ("-t " +  '"' + number_of_threads + '"') else ""} \
+      ~{if defined(total_parallel_jobs) then ("-P " +  '"' + total_parallel_jobs + '"') else ""} \
+      ~{if defined(index_current_based) then ("-p " +  '"' + index_current_based + '"') else ""} \
+      ~{if defined(output_reads_regions) then ("-o " +  '"' + output_reads_regions + '"') else ""} \
+      ~{if defined(output_of_alignments) then ("-a " +  '"' + output_of_alignments + '"') else ""} \
+      ~{true="-f" false="" force_overwrite_output} \
+      ~{if defined(mininum_alignment_score) then ("-s " +  '"' + mininum_alignment_score + '"') else ""} \
+      ~{if defined(mininum_alignment_identity) then ("-m " +  '"' + mininum_alignment_identity + '"') else ""} \
+      ~{if defined(alignment_penalty_match) then ("-M " +  '"' + alignment_penalty_match + '"') else ""} \
+      ~{if defined(alignment_penalty_mismatch) then ("-X " +  '"' + alignment_penalty_mismatch + '"') else ""} \
+      ~{if defined(alignment_penalty_gap_open) then ("-O " +  '"' + alignment_penalty_gap_open + '"') else ""} \
+      ~{if defined(alignment_penalty_gap_extension) then ("-E " +  '"' + alignment_penalty_gap_extension + '"') else ""} \
+      ~{if defined(alignment_penalty_read) then ("-T " +  '"' + alignment_penalty_read + '"') else ""} \
+      ~{if defined(bandwidth) then ("-W " +  '"' + bandwidth + '"') else ""}
   >>>
+  parameter_meta {
+    number_of_threads: "Number of threads, [1]"
+    total_parallel_jobs: "Total parallel jobs, [1]"
+    index_current_based: "Index of current job (0-based), [0] Suppose to run it parallelly in 60 nodes. For node1, -P 60 -p 0; node2, -P 60 -p 1, ..."
+    output_reads_regions: "Output of reads' regions after trimming, [-]"
+    output_of_alignments: "Output of alignments, [NULL]"
+    force_overwrite_output: "Force overwrite output file"
+    mininum_alignment_score: "Mininum alignment score, [400]"
+    mininum_alignment_identity: "Mininum alignment identity, [0.7]"
+    alignment_penalty_match: "Alignment penalty: match, [2]"
+    alignment_penalty_mismatch: "Alignment penalty: mismatch, [-5]"
+    alignment_penalty_gap_open: "Alignment penalty: gap open, [-3]"
+    alignment_penalty_gap_extension: "Alignment penalty: gap extension, [-1]"
+    alignment_penalty_read: "Alignment penalty: read end clipping, 0: distable HSP extension, otherwise set to -30 or other [-100]"
+    bandwidth: "Bandwidth, [800]"
+    long_read_file: ""
+  }
 }

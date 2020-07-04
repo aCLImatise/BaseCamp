@@ -1,32 +1,6 @@
 class: CommandLineTool
-id: edd.cwl
+id: ../../../../home/ubuntu/BiocondaCli/edd.cwl
 inputs:
-- id: chrom_size
-  doc: This must be a tab separated file with two columns. The first column contains
-    chromosome names and the second contains the chromosome sizes.
-  type: string
-  inputBinding:
-    position: 0
-- id: un_align_able_regions
-  doc: bed file marking regions to be excluded from the analysis (such as centromeres).
-  type: string
-  inputBinding:
-    position: 1
-- id: ip_bam
-  doc: ChIP bam file
-  type: string
-  inputBinding:
-    position: 2
-- id: input_bam
-  doc: Input/control bam file
-  type: string
-  inputBinding:
-    position: 3
-- id: output_dir
-  doc: output directory, will be created if not existing.
-  type: string
-  inputBinding:
-    position: 4
 - id: gap_penalty
   doc: Leave unspecificed for auto-estimation. Adjusts how sensitive EDD is to heterogeneity
     within domains. Depends on Signal/Noise ratio of source files and on the interests
@@ -51,6 +25,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --write-bin-scores
+- id: bin_size
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --bin-size
+- id: n
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -n
+- id: p
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -p
+- id: fdr
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --fdr
 outputs: []
 cwlVersion: v1.1
 baseCommand:

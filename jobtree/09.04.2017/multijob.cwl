@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: multijob.cwl
+id: ../../../../home/ubuntu/BiocondaCli/multijob.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

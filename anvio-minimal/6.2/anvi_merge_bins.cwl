@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_merge_bins.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_merge_bins.cwl
 inputs:
 - id: pan_or_profile_db
   doc: Anvi'o pan or profile database (and even genes database in appropriate contexts).
@@ -11,12 +11,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --collection-name
-- id: b
+- id: names__binnameslist
   doc: NAMES, --bin-names-list BIN NAMES Comma-separated list of bin names.
   type: string
   inputBinding:
     prefix: -b
-- id: b
+- id: name__newbinname
   doc: NAME, --new-bin-name BIN NAME The new bin name.
   type: string
   inputBinding:

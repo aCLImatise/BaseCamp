@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: findknownsnps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/findknownsnps.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

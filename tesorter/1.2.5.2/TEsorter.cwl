@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: TEsorter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/TEsorter.cwl
 inputs:
-- id: sequence
-  doc: input TE sequences in fasta format [required]
-  type: string
-  inputBinding:
-    position: 0
 - id: hmm_database
   doc: the database used [default=rexdb]
   type: string
@@ -46,13 +41,13 @@ inputs:
   type: long
   inputBinding:
     prefix: --max-evalue
-- id: disable_pass2
+- id: disable_pass_two
   doc: do not further classify the unclassified sequences [default=False for `nucl`,
     True for `prot`]
   type: boolean
   inputBinding:
     prefix: --disable-pass2
-- id: pass2_rule
+- id: pass_two_rule
   doc: classifying rule [identity-coverage-length] in pass-2 based on similarity [default=80-80-80]
   type: string
   inputBinding:
@@ -72,6 +67,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-cleanup
+- id: sequence
+  doc: input TE sequences in fasta format [required]
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

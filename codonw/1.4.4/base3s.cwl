@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: base3s.cwl
+id: ../../../../home/ubuntu/BiocondaCli/base3s.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

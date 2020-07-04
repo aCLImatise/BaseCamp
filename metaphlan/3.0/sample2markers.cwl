@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sample2markers.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sample2markers.py.cwl
 inputs:
 - id: input
   doc: The input samples as SAM or BAM files
@@ -21,11 +21,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --output_dir
-- id: breath_threshold
-  doc: The breath threshold for the consensus markers. Default 80 (%)
+- id: breadth_threshold
+  doc: The breadth of coverage threshold for the consensus markers. Default 80 (%)
   type: string
   inputBinding:
-    prefix: --breath_threshold
+    prefix: --breadth_threshold
 - id: nprocs
   doc: The number of threads to execute the script
   type: string

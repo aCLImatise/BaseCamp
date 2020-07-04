@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bp_genbank_ref_extractor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bp_genbank_ref_extractor.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

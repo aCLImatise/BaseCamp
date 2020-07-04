@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sift_bam_max_cov.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sift_bam_max_cov.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

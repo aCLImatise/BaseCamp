@@ -2,10 +2,13 @@ version 1.0
 
 task EnsembleEnergy {
   input {
-    String? inputInputFile
+    String input_file
   }
   command <<<
     EnsembleEnergy \
-      ~{inputInputFile}
+      ~{input_file}
   >>>
+  parameter_meta {
+    input_file: ""
+  }
 }

@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: Bifrost.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Bifrost.cwl
 inputs:
-- id: build
-  doc: Build a compacted de Bruijn graph, with or without colors
-  type: string
-  inputBinding:
-    position: 0
-- id: update
-  doc: Update a compacted (possible colored) de Bruijn graph with new sequences
-  type: string
-  inputBinding:
-    position: 1
-- id: query
-  doc: Query a compacted (possible colored) de Bruijn graph
-  type: string
-  inputBinding:
-    position: 2
 - id: colors
   doc: Color the compacted de Bruijn graph (default is no coloring)
   type: boolean
@@ -46,32 +31,27 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
-- id: clip_tips
-  doc: Clip tips shorter than k k-mers in length
-  type: boolean
-  inputBinding:
-    prefix: --clip-tips
-- id: del_isolated
-  doc: Delete isolated contigs shorter than k k-mers in length
-  type: boolean
-  inputBinding:
-    prefix: --del-isolated
-- id: verbose
-  doc: Print information messages during execution
-  type: boolean
-  inputBinding:
-    prefix: --verbose
 - id: in_exact
   doc: Graph is searched with exact and inexact k-mers (1 substitution or indel) from
     queries
   type: boolean
   inputBinding:
     prefix: --inexact
-- id: verbose
-  doc: Print information messages during execution
-  type: boolean
+- id: build
+  doc: Build a compacted de Bruijn graph, with or without colors
+  type: string
   inputBinding:
-    prefix: --verbose
+    position: 0
+- id: update
+  doc: Update a compacted (possible colored) de Bruijn graph with new sequences
+  type: string
+  inputBinding:
+    position: 1
+- id: query
+  doc: Query a compacted (possible colored) de Bruijn graph
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

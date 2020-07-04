@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: omero_config_list.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_config_list.cwl
 inputs:
 - id: show_password
   doc: Show values of sensitive keys (passwords, tokens, etc.) in the current profile

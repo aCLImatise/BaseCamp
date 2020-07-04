@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: IDConflictResolver.cwl
+id: ../../../../home/ubuntu/BiocondaCli/IDConflictResolver.cwl
 inputs:
 - id: in
   doc: "*                                           Input file (data annotated with\
@@ -16,7 +16,7 @@ inputs:
 - id: resolve_between_features
   doc: "A map may contain multiple features with both identical (possibly modified\
     \ i.e. not stripped) sequence and charge state. The feature with the 'highest\
-    \  intensity' is very likely the most reliable one. When switched on, the filter\
+    \ intensity' is very likely the most reliable one. When switched on, the filter\
     \ removes the sequence annotation from the lower intensity features, thereby resolving\
     \ the multiplicity. Only the most reliable features for each (possibly modified\
     \ i.e. not stripped) sequence maintain annotated with this peptide sequence. (default:\

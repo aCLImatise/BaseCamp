@@ -1,32 +1,32 @@
 class: CommandLineTool
-id: ribotish_predict.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ribotish_predict.cwl
 inputs:
-- id: t
+- id: tis_enriched_riboseq
   doc: TIS enriched riboseq bam files, comma seperated
   type: string
   inputBinding:
     prefix: -t
-- id: b
+- id: ordinary_riboseq_bam
   doc: Ordinary riboseq bam files, comma seperated
   type: string
   inputBinding:
     prefix: -b
-- id: g
+- id: gene_annotation_file_orf
   doc: Gene annotation file for ORF prediction
   type: string
   inputBinding:
     prefix: -g
-- id: f
+- id: genome_fasta_file
   doc: Genome fasta file
   type: string
   inputBinding:
     prefix: -f
-- id: o
+- id: output_result_file
   doc: Output result file
   type: string
   inputBinding:
     prefix: -o
-- id: i
+- id: only_test_input
   doc: 'Only test input candidate ORFs, format: transID start stop (0 based, half
     open)'
   type: string
@@ -52,18 +52,18 @@ inputs:
   type: string
   inputBinding:
     prefix: --nparts
-- id: a
+- id: gene_file_file
   doc: Gene file for known protein coding gene annotation and TIS background estimation
     instead of -g gene file
   type: string
   inputBinding:
     prefix: -a
-- id: e
+- id: output_tis_background
   doc: 'Output TIS background estimation result (default: tisBackground.txt)'
   type: string
   inputBinding:
     prefix: -e
-- id: s
+- id: input_background_estimation
   doc: Input background estimation result file instead of instant estimation
   type: string
   inputBinding:
@@ -101,7 +101,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --altcodons
-- id: tis2ribo
+- id: tis_two_ribo
   doc: Add TIS bam counts to ribo, if specified or -b not provided
   type: boolean
   inputBinding:
@@ -217,7 +217,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --compatiblemis
-- id: p
+- id: number_of_processes
   doc: Number of processes
   type: string
   inputBinding:

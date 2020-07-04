@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: agg_ingest2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/agg_ingest2.cwl
 inputs:
 - id: output
   doc: agg will output output_prefix.bcf and output_prefix.dpt
@@ -16,6 +16,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --list
+- id: input_one
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

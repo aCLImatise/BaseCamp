@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_utilities_combine_reads.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_utilities_combine_reads.cwl
 inputs:
 - id: config
   doc: The configuration file for reads we are combining

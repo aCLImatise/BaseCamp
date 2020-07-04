@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: dvipdf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dvipdf.cwl
 inputs:
-- id: options
+- id: options_dot_dot_dot
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: input_dvi
+- id: input_dot_dvi
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: output_pdf
+- id: output_dot_pdf
   doc: ''
   type: string
   inputBinding:

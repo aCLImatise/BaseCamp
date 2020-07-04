@@ -2,16 +2,22 @@ version 1.0
 
 task Msdiff {
   input {
-    Boolean pP
-    Boolean iI
-    File? filenameFilename1
-    File? filenameFilename2
+    Boolean? arg__set
+    Boolean? ignore_metadata_compare
+    File filename_one
+    File filename_two
   }
   command <<<
     msdiff \
-      ~{filenameFilename1} \
-      ~{true="-p" false="" pP} \
-      ~{true="-i" false="" iI} \
-      ~{filenameFilename2}
+      ~{filename_one} \
+      ~{filename_two} \
+      ~{true="-p" false="" arg__set} \
+      ~{true="-i" false="" ignore_metadata_compare}
   >>>
+  parameter_meta {
+    arg__set: "[ --precision ] arg (=9.9999999999999995e-07) : set floating point precision for  comparing binary data"
+    ignore_metadata_compare: "[ --ignore ]                       : ignore metadata (compare scan binary  data and important scan metadata only)"
+    filename_one: ""
+    filename_two: ""
+  }
 }

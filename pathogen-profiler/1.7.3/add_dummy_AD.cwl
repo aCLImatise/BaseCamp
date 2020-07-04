@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: add_dummy_AD.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/add_dummy_AD.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

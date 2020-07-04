@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: rgt_tools.py_encode.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rgt_tools.py_encode.cwl
 inputs:
-- id: i
+- id: input_file_list
   doc: Input file list downloaded from ENCODE
   type: string
   inputBinding:
     prefix: -i
-- id: o
+- id: output_directory
   doc: Output directory
   type: string
   inputBinding:

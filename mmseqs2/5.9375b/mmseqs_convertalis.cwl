@@ -1,10 +1,9 @@
 class: CommandLineTool
-id: mmseqs_convertalis.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mmseqs_convertalis.cwl
 inputs:
 - id: format_mode
-  doc: '0               output format 0: BLAST-TAB, 1: PAIRWISE, 2: BLAST-TAB + query/db
-    length'
-  type: boolean
+  doc: 'output format 0: BLAST-TAB, 1: PAIRWISE, 2: BLAST-TAB + query/db length'
+  type: string
   inputBinding:
     prefix: --format-mode
 - id: no_preload
@@ -23,7 +22,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --threads
-- id: v
+- id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'
   type: boolean
   inputBinding:

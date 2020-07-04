@@ -2,10 +2,13 @@ version 1.0
 
 task XmlCat {
   input {
-    String? xxxXxx
+    String xxx
   }
   command <<<
     xmlCat \
-      ~{xxxXxx}
+      ~{xxx}
   >>>
+  parameter_meta {
+    xxx: ""
+  }
 }

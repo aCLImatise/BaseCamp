@@ -1,18 +1,8 @@
 class: CommandLineTool
-id: fc_calc_cutoff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fc_calc_cutoff.cwl
 inputs:
-- id: genome_size
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: capture
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: coverage
-  doc: ''
+  doc: 'Desired coverage ratio (i.e. over-sampling) (default: 20)'
   type: string
   inputBinding:
     prefix: --coverage

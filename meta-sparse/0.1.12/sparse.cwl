@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sparse.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sparse.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

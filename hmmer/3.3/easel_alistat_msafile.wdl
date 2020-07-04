@@ -2,10 +2,13 @@ version 1.0
 
 task EaselAlistatMsafile {
   input {
-    Boolean optionsOptions
+    Boolean? options
   }
   command <<<
     easel alistat msafile \
-      ~{true="-options" false="" optionsOptions}
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    options: ""
+  }
 }

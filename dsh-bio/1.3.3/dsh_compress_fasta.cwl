@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dsh_compress_fasta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dsh_compress_fasta.cwl
 inputs:
 - id: about
   doc: display about message [optional]
@@ -21,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --line-width
+- id: args
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

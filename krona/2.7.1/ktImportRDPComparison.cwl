@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ktImportRDPComparison.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ktImportRDPComparison.cwl
 inputs:
 - id: rdp_comparison
   doc: RDP comparison result downloaded as text.

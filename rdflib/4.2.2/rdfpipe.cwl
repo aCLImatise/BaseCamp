@@ -1,20 +1,20 @@
 class: CommandLineTool
-id: rdfpipe.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rdfpipe.cwl
 inputs:
 - id: input_format
-  doc: 'Format of the input document(s). Available input formats are: nt, text/turtle,
-    nt11, ntriples, application/svg+xml, trix, mdata, application/xhtml+xml, application/n-quads,
-    rdfa1.1, application/trix, turtle, html, n3, application/n-triples, ttl, microdata,
-    rdfa1.0, nquads, rdfa, trig, xml, hturtle, application/rdf+xml, text/n3, text/html.
-    If no format is given, it will be guessed from the file name extension. Keywords
-    to parser can be given after format like: FORMAT:(+)KW1,-KW2,KW3=VALUE.'
+  doc: 'Format of the input document(s). Available input formats are: rdfa1.0, rdfa1.1,
+    html, text/n3, nt, trig, nquads, application/n-triples, application/xhtml+xml,
+    ttl, ntriples, application/svg+xml, application/trix, turtle, hturtle, microdata,
+    xml, text/html, mdata, nt11, trix, application/rdf+xml, rdfa, application/n-quads,
+    n3, text/turtle. If no format is given, it will be guessed from the file name
+    extension. Keywords to parser can be given after format like: FORMAT:(+)KW1,-KW2,KW3=VALUE.'
   type: string
   inputBinding:
     prefix: --input-format
 - id: output_format
-  doc: "Format of the graph serialization. Available output formats are: text/turtle,\
-    \ application/trix, nt11, text/n3, trig, nt, trix, application/n-quads, application/n-triples,\
-    \ n3, nquads, turtle, ttl, application/rdf+xml, xml, pretty-xml, ntriples. Default\
+  doc: "Format of the graph serialization. Available output formats are: xml, ntriples,\
+    \ turtle, text/n3, application/trix, application/rdf+xml, pretty-xml, application/n-quads,\
+    \ n3, nt11, trix, nquads, text/turtle, ttl, nt, trig, application/n-triples. Default\
     \ format is: 'n3'. Keywords to serializer can be given after format like: FORMAT:(+)KW1,-KW2,KW3=VALUE."
   type: string
   inputBinding:

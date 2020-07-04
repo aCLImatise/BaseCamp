@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csvtk_xlsx2csv.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csvtk_xlsx2csv.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: list_sheets
   doc: list all sheets
   type: boolean
@@ -91,6 +86,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tabs
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

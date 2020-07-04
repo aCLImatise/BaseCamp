@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SVrefine.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SVrefine.cwl
 inputs:
 - id: sv_regions
   doc: Specify the path to which to write a BED file containing the widened coordinates
@@ -19,6 +19,41 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: bam
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --bam
+- id: regions
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --regions
+- id: ref_fast_a
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --ref_fasta
+- id: query_fast_a
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --query_fasta
+- id: out_vcf
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --outvcf
+- id: out_ref
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --outref
+- id: no_cov
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: --nocov
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: jeprof.cwl
+id: ../../../../home/ubuntu/BiocondaCli/jeprof.cwl
 inputs:
-- id: je_prof_tmpdir
-  doc: Profiles directory. Defaults to $HOME/jeprof
-  type: string
-  inputBinding:
-    position: 0
-- id: je_prof_tools
-  doc: Prefix for object tools pathnames
-  type: string
-  inputBinding:
-    position: 1
 - id: cum
   doc: Sort by cumulative data
   type: boolean
@@ -241,6 +231,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --test
+- id: je_prof_tmpdir
+  doc: Profiles directory. Defaults to $HOME/jeprof
+  type: string
+  inputBinding:
+    position: 0
+- id: je_prof_tools
+  doc: Prefix for object tools pathnames
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

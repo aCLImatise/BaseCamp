@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: genomedata_info.cwl
-inputs:
-- id: gd_archive
-  doc: genomedata archive
-  type: string
-  inputBinding:
-    position: 0
+id: ../../../../home/ubuntu/BiocondaCli/genomedata_info.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

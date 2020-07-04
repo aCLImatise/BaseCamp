@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hicAggregateContacts.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hicAggregateContacts.cwl
 inputs:
 - id: matrix
   doc: Path of the Hi-C matrix to plot.
@@ -23,7 +23,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --range
-- id: bed2
+- id: bed_two
   doc: Optional second BED file. Interactions between regions in first and second
     BED file are plotted.
   type: string
@@ -36,12 +36,11 @@ inputs:
   inputBinding:
     prefix: --numberOfBins
 - id: transform
-  doc: '{total-counts,z-score,obs/exp,none} Type of transformation for the matrix.
-    The options are "none", "total-counts", "z-score" and "obs/exp". If total counts
-    are selected, the sub-matrix values are divided by the total counts for normalization.
-    If z-score or obs/exp are selected, the Hi-C matrix is converted into a z-score
-    or observed / expected matrix.'
-  type: boolean
+  doc: Type of transformation for the matrix. The options are "none", "total-counts",
+    "z-score" and "obs/exp". If total counts are selected, the sub-matrix values are
+    divided by the total counts for normalization. If z-score or obs/exp are selected,
+    the Hi-C matrix is converted into a z-score or observed / expected matrix.
+  type: string
   inputBinding:
     prefix: --transform
 - id: avg_type
@@ -118,8 +117,8 @@ inputs:
   inputBinding:
     prefix: --colorMap
 - id: plot_type
-  doc: '{2d,3d}    Plot type.'
-  type: boolean
+  doc: Plot type.
+  type: string
   inputBinding:
     prefix: --plotType
 - id: vmin

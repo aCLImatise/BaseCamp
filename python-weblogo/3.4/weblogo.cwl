@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: weblogo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/weblogo.cwl
 inputs:
-- id: sequence_data_fa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: sequence_logo_eps
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: fin
   doc: 'Sequence input file (default: stdin)'
   type: File
@@ -122,7 +112,7 @@ inputs:
   inputBinding:
     prefix: --label
 - id: show_x_axis
-  doc: '/NO      Display sequence numbers along x-axis? (default: True)'
+  doc: 'Display sequence numbers along x-axis? (default: True)'
   type: string
   inputBinding:
     prefix: --show-xaxis
@@ -143,7 +133,7 @@ inputs:
   inputBinding:
     prefix: --yaxis
 - id: show_yaxis
-  doc: '/NO      Display entropy scale along y-axis? (default: True)'
+  doc: 'Display entropy scale along y-axis? (default: True)'
   type: string
   inputBinding:
     prefix: --show-yaxis
@@ -153,7 +143,7 @@ inputs:
   inputBinding:
     prefix: --ylabel
 - id: show_ends
-  doc: '/NO       Label the ends of the sequence? (default: False)'
+  doc: 'Label the ends of the sequence? (default: False)'
   type: string
   inputBinding:
     prefix: --show-ends
@@ -168,12 +158,12 @@ inputs:
   inputBinding:
     prefix: --ticmarks
 - id: error_bars
-  doc: '/NO       Display error bars? (default: True)'
+  doc: 'Display error bars? (default: True)'
   type: string
   inputBinding:
     prefix: --errorbars
 - id: reverse_stacks
-  doc: '/NO  Draw stacks with largest letters on top? (default: True)'
+  doc: 'Draw stacks with largest letters on top? (default: True)'
   type: string
   inputBinding:
     prefix: --reverse-stacks
@@ -205,7 +195,7 @@ inputs:
   inputBinding:
     prefix: --aspect-ratio
 - id: box
-  doc: '/NO             Draw boxes around symbols? (default: no)'
+  doc: 'Draw boxes around symbols? (default: no)'
   type: string
   inputBinding:
     prefix: --box
@@ -216,13 +206,13 @@ inputs:
   inputBinding:
     prefix: --resolution
 - id: scale_width
-  doc: '/NO     Scale the visible stack width by the fraction of symbols in the column?  (I.e.
+  doc: 'Scale the visible stack width by the fraction of symbols in the column?  (I.e.
     columns with many gaps of unknowns are narrow.)  (Default: yes)'
   type: string
   inputBinding:
     prefix: --scale-width
 - id: debug
-  doc: '/NO           Output additional diagnostic information. (Default: False)'
+  doc: 'Output additional diagnostic information. (Default: False)'
   type: string
   inputBinding:
     prefix: --debug
@@ -236,6 +226,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --port
+- id: sequence_data_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: sequence_logo_dot_eps
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

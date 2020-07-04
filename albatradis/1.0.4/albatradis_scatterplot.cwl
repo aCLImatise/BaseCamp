@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: albatradis_scatterplot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/albatradis_scatterplot.cwl
 inputs:
 - id: control
   doc: 'control files (use 2 or more) (default: None)'

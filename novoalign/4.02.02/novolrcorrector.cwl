@@ -1,31 +1,6 @@
 class: CommandLineTool
-id: novolrcorrector.cwl
+id: ../../../../home/ubuntu/BiocondaCli/novolrcorrector.cwl
 inputs:
-- id: novo_craft
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: long
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: read
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: correct_or
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: format_specific
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
 - id: in
   doc: the input BAM file [stdin]
   type: string
@@ -49,10 +24,9 @@ inputs:
   inputBinding:
     prefix: -fasta
 - id: use
-  doc: <0.0 to 1.0>                 Fraction of alignments to use when calling a consensus
-    base. Chooses the alignments with the lowest Alignment Score plus Single End Penalty.
-    [0.3300]
-  type: boolean
+  doc: Fraction of alignments to use when calling a consensus base. Chooses the alignments
+    with the lowest Alignment Score plus Single End Penalty. [0.3300]
+  type: string
   inputBinding:
     prefix: -use
 - id: at_least
@@ -106,6 +80,31 @@ inputs:
   type: string
   inputBinding:
     prefix: -baseq
+- id: novo_craft
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: long
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: read
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: correct_or
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: format_specific
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

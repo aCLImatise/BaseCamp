@@ -1,22 +1,7 @@
 class: CommandLineTool
-id: merfishtools_diffexp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/merfishtools_diffexp.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: group_1
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: group_2
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: max_null_log2fc
+- id: max_null_log_two_fc
   doc: Maximum absolute log2 fold change considered as no differential expression
     [1.0].
   type: double
@@ -37,6 +22,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: group_one
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: group_two
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: uropa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/uropa.cwl
 inputs:
-- id: b
+- id: _bed_filename
   doc: ', --bed                       Filename of .bed-file to annotate'
   type: boolean
   inputBinding:
     prefix: -b
-- id: g
+- id: _gtf_filename
   doc: ', --gtf                       Filename of .gtf-file with features'
   type: boolean
   inputBinding:
@@ -68,13 +68,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --input
-- id: p
+- id: _prefix_defaults
   doc: ', --prefix                    Prefix for result file names (defaults to basename
     of .bed-file)'
   type: boolean
   inputBinding:
     prefix: -p
-- id: o
+- id: _outdir_output
   doc: ', --outdir                    Output directory for output files (default:
     current dir)'
   type: boolean
@@ -105,7 +105,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
-- id: c
+- id: _chunk_number
   doc: ', --chunk                     Number of lines per chunk for multiprocessing
     (default: 1000)'
   type: boolean

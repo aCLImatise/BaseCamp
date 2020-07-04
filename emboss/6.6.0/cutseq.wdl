@@ -2,12 +2,16 @@ version 1.0
 
 task Cutseq {
   input {
-    Boolean fromFrom
-    Boolean toTo
+    Boolean? from
+    Boolean? to
   }
   command <<<
     cutseq \
-      ~{true="-from" false="" fromFrom} \
-      ~{true="-to" false="" toTo}
+      ~{true="-from" false="" from} \
+      ~{true="-to" false="" to}
   >>>
+  parameter_meta {
+    from: "integer    [Start of sequence (0)] This is the start position (inclusive) of the section of the sequence that you wish to remove. (Any integer value)"
+    to: "integer    [End of sequence (0)] This is the end position (inclusive) of the section of the sequence that you wish to remove. (Any integer value)"
+  }
 }

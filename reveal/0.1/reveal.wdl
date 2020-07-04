@@ -2,12 +2,16 @@ version 1.0
 
 task Reveal {
   input {
-    String hH
-    String? usageUsage
+    String? h
+    String usage
   }
   command <<<
     reveal \
-      ~{usageUsage} \
-      ~{if defined(hH) then ("-h " +  '"' + hH + '"') else ""}
+      ~{usage} \
+      ~{if defined(h) then ("-h " +  '"' + h + '"') else ""}
   >>>
+  parameter_meta {
+    h: ""
+    usage: ""
+  }
 }

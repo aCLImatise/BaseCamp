@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: IDScoreSwitcher.cwl
+id: ../../../../home/ubuntu/BiocondaCli/IDScoreSwitcher.cwl
 inputs:
 - id: in
   doc: "*                       Input file (valid formats: 'idXML')"

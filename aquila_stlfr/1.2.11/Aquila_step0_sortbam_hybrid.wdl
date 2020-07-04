@@ -2,16 +2,22 @@ version 1.0
 
 task AquilaStep0SortbamHybrid {
   input {
-    String bamBamFileList
-    String outOutDir
-    String sampleSampleNameList
-    String numNumThreadsForSamToolsSort
+    String? bam_file_list
+    String? out_dir
+    String? sample_name_list
+    String? num_threads_for_sam_tools_sort
   }
   command <<<
     Aquila_step0_sortbam_hybrid \
-      ~{if defined(bamBamFileList) then ("--bam_file_list " +  '"' + bamBamFileList + '"') else ""} \
-      ~{if defined(outOutDir) then ("--out_dir " +  '"' + outOutDir + '"') else ""} \
-      ~{if defined(sampleSampleNameList) then ("--sample_name_list " +  '"' + sampleSampleNameList + '"') else ""} \
-      ~{if defined(numNumThreadsForSamToolsSort) then ("--num_threads_for_samtools_sort " +  '"' + numNumThreadsForSamToolsSort + '"') else ""}
+      ~{if defined(bam_file_list) then ("--bam_file_list " +  '"' + bam_file_list + '"') else ""} \
+      ~{if defined(out_dir) then ("--out_dir " +  '"' + out_dir + '"') else ""} \
+      ~{if defined(sample_name_list) then ("--sample_name_list " +  '"' + sample_name_list + '"') else ""} \
+      ~{if defined(num_threads_for_sam_tools_sort) then ("--num_threads_for_samtools_sort " +  '"' + num_threads_for_sam_tools_sort + '"') else ""}
   >>>
+  parameter_meta {
+    bam_file_list: "Required Parameter, BAM file list, each BAM file is seperately by comma \",\". For example: 1.bam,2.bam"
+    out_dir: "output folder"
+    sample_name_list: "Required Parameter, The sample names list, each sample name is seperately by comma \",\". For example: S24385_lysis_2,S24385_lysis_2H"
+    num_threads_for_sam_tools_sort: "The number of threads you can define for samtoos sort, default = 20"
+  }
 }

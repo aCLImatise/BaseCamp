@@ -2,14 +2,19 @@ version 1.0
 
 task SketchyOnlineWatch {
   input {
-    File directoryDirectory
-    String regexRegex
-    Boolean nowNow
+    File? directory
+    String? regex
+    Boolean? now
   }
   command <<<
     sketchy online watch \
-      ~{if defined(directoryDirectory) then ("--directory " +  '"' + directoryDirectory + '"') else ""} \
-      ~{if defined(regexRegex) then ("--regex " +  '"' + regexRegex + '"') else ""} \
-      ~{true="--now" false="" nowNow}
+      ~{if defined(directory) then ("--directory " +  '"' + directory + '"') else ""} \
+      ~{if defined(regex) then ("--regex " +  '"' + regex + '"') else ""} \
+      ~{true="--now" false="" now}
   >>>
+  parameter_meta {
+    directory: "Path to directory to watch [required]  [required]"
+    regex: "Regex to identify read files [.*\.fastq$]"
+    now: "Disable waiting for file completion."
+  }
 }

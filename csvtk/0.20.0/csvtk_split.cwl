@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csvtk_split.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csvtk_split.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: buf_groups
   doc: buffering N groups before writing to file (default 100)
   type: long
@@ -107,6 +102,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tabs
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

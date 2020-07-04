@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sqt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sqt.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNAdistance.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAdistance.cwl
 inputs:
 - id: detailed_help
   doc: Print help, including all details and hidden  options, and exit

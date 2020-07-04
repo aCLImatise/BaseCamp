@@ -2,24 +2,19 @@ version 1.0
 
 task BedtoolsExpand {
   input {
-    Boolean iI
-    Boolean cC
-    String? chr1Chr1
-    String? chr1Chr1
-    String? chr1Chr1
-    String? chr1Chr1
-    String? chr1Chr1
-    String? chr1Chr1
+    Boolean? input_file_assumes
+    Boolean? specify_column_based
+    String? cols
   }
   command <<<
     bedtools expand \
-      ~{chr1Chr1} \
-      ~{true="-i" false="" iI} \
-      ~{true="-c" false="" cC} \
-      ~{chr1Chr1} \
-      ~{chr1Chr1} \
-      ~{chr1Chr1} \
-      ~{chr1Chr1} \
-      ~{chr1Chr1}
+      ~{cols} \
+      ~{true="-i" false="" input_file_assumes} \
+      ~{true="-c" false="" specify_column_based}
   >>>
+  parameter_meta {
+    input_file_assumes: "Input file. Assumes \"stdin\" if omitted."
+    specify_column_based: "Specify the column (1-based) that should be summarized. - Required."
+    cols: ""
+  }
 }

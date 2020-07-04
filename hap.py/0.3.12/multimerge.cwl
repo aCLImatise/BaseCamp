@@ -1,33 +1,33 @@
 class: CommandLineTool
-id: multimerge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/multimerge.cwl
 inputs:
 - id: input_file
   doc: The input files
   type: string
   inputBinding:
     prefix: --input-file
-- id: o
+- id: arg_output_file
   doc: '[ --output-file ] arg   The output file name.'
   type: boolean
   inputBinding:
     prefix: -o
-- id: r
+- id: arg_reference_fasta
   doc: '[ --reference ] arg     The reference fasta file.'
   type: boolean
   inputBinding:
     prefix: -r
-- id: l
+- id: arg_start_location
   doc: '[ --location ] arg      Start location.'
   type: boolean
   inputBinding:
     prefix: -l
-- id: r
+- id: arg_use_regions
   doc: '[ --regions ] arg       Use a bed file for getting a subset of regions  (traversal
     via tabix).'
   type: boolean
   inputBinding:
     prefix: -R
-- id: t
+- id: arg_use_targets
   doc: '[ --targets ] arg       Use a bed file for getting a subset of targets  (streaming
     the whole file, ignoring things outside the bed regions).'
   type: boolean
@@ -43,7 +43,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --message-every
-- id: f
+- id: arg_apply_filtering
   doc: '[ --apply-filters ] arg Apply filtering in VCF.'
   type: boolean
   inputBinding:

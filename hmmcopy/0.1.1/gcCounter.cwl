@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gcCounter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gcCounter.cwl
 inputs:
-- id: fast_a_reference
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: seg
   doc: Outputs in SEG format
   type: boolean
@@ -27,6 +22,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --chromosome
+- id: fast_a_reference
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

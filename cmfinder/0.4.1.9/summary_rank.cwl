@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: summary_rank.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/summary_rank.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: norm.cwl
-inputs:
-- id: a
-  doc: for downstream analysis of selscan output
-  type: string
-  inputBinding:
-    prefix: -- a
+id: ../../../../home/ubuntu/BiocondaCli/norm.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

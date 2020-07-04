@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Smooth.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Smooth.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

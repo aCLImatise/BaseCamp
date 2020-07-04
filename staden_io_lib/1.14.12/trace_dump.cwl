@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: trace_dump.cwl
+id: ../../../../home/ubuntu/BiocondaCli/trace_dump.cwl
 inputs:
-- id: tracefile
+- id: trace_file
   doc: ''
   type: string
   inputBinding:

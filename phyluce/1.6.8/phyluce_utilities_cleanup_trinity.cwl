@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_utilities_cleanup_trinity.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_utilities_cleanup_trinity.cwl
 inputs:
 - id: path_to_clean
   doc: The directory holding the trinity files to clean

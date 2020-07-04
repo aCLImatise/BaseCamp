@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_probe_get_genome_sequences_from_bed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_probe_get_genome_sequences_from_bed.cwl
 inputs:
 - id: bed
   doc: The input BED file

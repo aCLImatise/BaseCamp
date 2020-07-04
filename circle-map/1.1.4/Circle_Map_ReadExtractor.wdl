@@ -2,24 +2,34 @@ version 1.0
 
 task CircleMapReadExtractor {
   input {
-    Boolean iI
-    Boolean oO
-    Boolean dirDir
-    Boolean qQ
-    Boolean noNoDiscordant
-    Boolean noNoSoftClipped
-    Boolean noNoHardClipped
-    Boolean vV
+    Boolean? input_query_name
+    Boolean? _output_reads
+    Boolean? dir
+    Boolean? _quality_bwamem
+    Boolean? no_discordant
+    Boolean? no_soft_clipped
+    Boolean? no_hard_clipped
+    Boolean? _verbose_level
   }
   command <<<
     Circle-Map ReadExtractor \
-      ~{true="-i" false="" iI} \
-      ~{true="-o" false="" oO} \
-      ~{true="-dir" false="" dirDir} \
-      ~{true="-q" false="" qQ} \
-      ~{true="--nodiscordant" false="" noNoDiscordant} \
-      ~{true="--nosoftclipped" false="" noNoSoftClipped} \
-      ~{true="--nohardclipped" false="" noNoHardClipped} \
-      ~{true="-v" false="" vV}
+      ~{true="-i" false="" input_query_name} \
+      ~{true="-o" false="" _output_reads} \
+      ~{true="-dir" false="" dir} \
+      ~{true="-q" false="" _quality_bwamem} \
+      ~{true="--nodiscordant" false="" no_discordant} \
+      ~{true="--nosoftclipped" false="" no_soft_clipped} \
+      ~{true="--nohardclipped" false="" no_hard_clipped} \
+      ~{true="-v" false="" _verbose_level}
   >>>
+  parameter_meta {
+    input_query_name: "Input: query name sorted bam file"
+    _output_reads: ", --output         Ouput: Reads indicating circular DNA structural variants"
+    dir: ", --directory    Working directory, default is the working directory"
+    _quality_bwamem: ", --quality        bwa-mem mapping quality cutoff. Default value 10"
+    no_discordant: "Turn off discordant (R2F1 oriented) read extraction"
+    no_soft_clipped: "Turn off soft-clipped read extraction"
+    no_hard_clipped: "Turn off hard-clipped read extraction"
+    _verbose_level: ", --verbose        Verbose level, 1=error,2=warning, 3=message. Default=3"
+  }
 }

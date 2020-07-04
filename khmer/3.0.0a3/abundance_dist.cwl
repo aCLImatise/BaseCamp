@@ -1,6 +1,36 @@
 class: CommandLineTool
-id: abundance_dist.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/abundance_dist.py.cwl
 inputs:
+- id: info
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --info
+- id: z
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -z
+- id: s
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -s
+- id: b
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -b
+- id: f
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -f
+- id: q
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -q
 - id: input_count_graph_filename
   doc: The name of the input k-mer countgraph file.
   type: string

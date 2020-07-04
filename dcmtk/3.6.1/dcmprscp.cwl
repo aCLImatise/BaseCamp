@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: dcmprscp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmprscp.cwl
 inputs:
-- id: q
+- id: _quiet_quiet
   doc: --quiet       quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose     verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug       debug mode, print debug information
   type: boolean
   inputBinding:
@@ -27,7 +27,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --log-config
-- id: l
+- id: _logfile_write
   doc: --logfile     write a log file (not with --log-config)
   type: boolean
   inputBinding:

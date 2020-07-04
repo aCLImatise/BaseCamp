@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sliding_read.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sliding_read.py.cwl
 inputs:
 - id: input
   doc: The first FASTQ input file containing the short reads which are interleaved.

@@ -1,87 +1,12 @@
 class: CommandLineTool
-id: Ray.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Ray.cwl
 inputs:
-- id: debugging
-  doc: -verify-message-integrity Checks message data reliability for any non-empty
-    message. add '-D CONFIG_SSE_4_2' in the Makefile to use hardware instruction (SSE
-    4.2) -write-scheduling-data Writes RayPlatform scheduling information to RayOutput/Scheduling/
-    -write-plugin-data Writes data for plugins registered with the RayPlatform API
-    to RayOutput/Plugins -run-profiler Runs the profiler as the code runs. By default,
-    only show granularity warnings. Running the profiler increases running times.
-    -with-profiler-details Shows number of messages sent and received in each methods
-    during in each time slices (epochs). Needs -run-profiler. -debug Turns on -run-profiler
-    and -with-profiler-details for debugging -show-communication-events Shows all
-    messages sent and received. -show-read-placement Shows read placement in the graph
-    during the extension. -debug-bubbles Debugs bubble code. Bubbles can be due to
-    heterozygous sites or sequencing errors or other (unknown) events -debug-seeds
-    Debugs seed code. Seeds are paths in the graph that are likely unique. -debug-fusions
-    Debugs fusion code. -debug-scaffolder Debug the scaffolder.
-  type: string
-  inputBinding:
-    position: 0
-- id: amos
-  doc: 'RayOutput/AMOS.afg Assembly representation in AMOS format, required option:
-    -amos'
-  type: string
-  inputBinding:
-    position: 0
-- id: communication
-  doc: RayOutput/NetworkTest.txt Latencies in microseconds RayOutput/Rank<rank>NetworkTestData.txt
-    Network test raw data
-  type: string
-  inputBinding:
-    position: 1
-- id: de
-  doc: genome assembly (with Ray vanilla)
-  type: string
-  inputBinding:
-    prefix: '- de'
-- id: de
-  doc: meta-genome assembly (with Ray Méta)
-  type: string
-  inputBinding:
-    prefix: '- de'
-- id: de
-  doc: transcriptome assembly (works, but not tested a lot)
-  type: string
-  inputBinding:
-    prefix: '- de'
-- id: quantification
-  doc: contig abundances
-  type: string
-  inputBinding:
-    prefix: '- quantification'
-- id: quantification
-  doc: microbiome consortia members (with Ray Communities)
-  type: string
-  inputBinding:
-    prefix: '- quantification'
-- id: quantification
-  doc: transcript expression
-  type: string
-  inputBinding:
-    prefix: '- quantification'
-- id: taxonomy
-  doc: of samples (with Ray Communities)
-  type: string
-  inputBinding:
-    prefix: '- taxonomy'
-- id: gene
-  doc: profiling of samples (with Ray Ontologies)
-  type: string
-  inputBinding:
-    prefix: '- gene'
-- id: compare
-  doc: samples using words (Ray -run-surveyor ...; see Ray Surveyor options)
-  type: string
-  inputBinding:
-    prefix: '- compare'
 - id: version
   doc: Displays Ray version and compilation options.
   type: boolean
   inputBinding:
     prefix: -version
-- id: o
+- id: specifies_directory_outputted
   doc: 'Specifies the directory for outputted files. Default is RayOutput Other name:
     -output'
   type: string
@@ -193,7 +118,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -enable-neighbourhoods
-- id: amos
+- id: writes_amos_file
   doc: Writes the AMOS file called RayOutput/AMOS.afg An AMOS file contains read positions
     on contigs. Can be opened with software with graphical user interface.
   type: boolean
@@ -291,31 +216,72 @@ inputs:
   type: string
   inputBinding:
     prefix: -routing-graph-degree
-- id: mpiexec
-  doc: 1 Ray -help|less (always up-to-date)
-  type: boolean
-  inputBinding:
-    prefix: '- mpiexec'
-- id: this
-  doc: page (always up-to-date)
+- id: debugging
+  doc: -verify-message-integrity Checks message data reliability for any non-empty
+    message. add '-D CONFIG_SSE_4_2' in the Makefile to use hardware instruction (SSE
+    4.2) -write-scheduling-data Writes RayPlatform scheduling information to RayOutput/Scheduling/
+    -write-plugin-data Writes data for plugins registered with the RayPlatform API
+    to RayOutput/Plugins -run-profiler Runs the profiler as the code runs. By default,
+    only show granularity warnings. Running the profiler increases running times.
+    -with-profiler-details Shows number of messages sent and received in each methods
+    during in each time slices (epochs). Needs -run-profiler. -debug Turns on -run-profiler
+    and -with-profiler-details for debugging -show-communication-events Shows all
+    messages sent and received. -show-read-placement Shows read placement in the graph
+    during the extension. -debug-bubbles Debugs bubble code. Bubbles can be due to
+    heterozygous sites or sequencing errors or other (unknown) events -debug-seeds
+    Debugs seed code. Seeds are paths in the graph that are likely unique. -debug-fusions
+    Debugs fusion code. -debug-scaffolder Debug the scaffolder.
   type: string
   inputBinding:
-    prefix: '- This'
-- id: the
-  doc: Documentation/
-  type: Directory
-  inputBinding:
-    prefix: '- The'
-- id: manual
-  doc: '(Portable Document Format): InstructionManual.tex (in Documentation)'
-  type: boolean
-  inputBinding:
-    prefix: '- Manual'
-- id: mailing
-  doc: 'archives: http://sourceforge.net/mailarchive/forum.php?forum_name=denovoassembler-users'
+    position: 0
+- id: ray_output_slash_output_numbers_dot_txt
+  doc: Overall numbers for the assembly
   type: string
   inputBinding:
-    prefix: '- Mailing'
+    position: 0
+- id: ray_output_slash_coverage_distribution_dot_txt
+  doc: The distribution of coverage values
+  type: string
+  inputBinding:
+    position: 0
+- id: ray_output_slash_coverage_distribution_analysis_dot_txt
+  doc: Analysis of the coverage distribution
+  type: string
+  inputBinding:
+    position: 1
+- id: ray_output_slash_degree_distribution_dot_txt
+  doc: Distribution of ingoing and outgoing degrees
+  type: string
+  inputBinding:
+    position: 2
+- id: ray_output_slash_km_ers_dot_txt
+  doc: 'k-mer graph, required option: -write-kmers The resulting file is not utilised
+    by Ray. The resulting file is very large.'
+  type: string
+  inputBinding:
+    position: 3
+- id: ray_output_slash_number_of_sequences_dot_txt
+  doc: Number of reads in each file
+  type: string
+  inputBinding:
+    position: 0
+- id: ray_output_slash_sequence_partition_dot_txt
+  doc: Sequence partition
+  type: string
+  inputBinding:
+    position: 1
+- id: rayoutputamosafg_assembly_representation
+  doc: 'RayOutput/AMOS.afg Assembly representation in AMOS format, required option:
+    -amos'
+  type: string
+  inputBinding:
+    position: 0
+- id: communication
+  doc: RayOutput/NetworkTest.txt Latencies in microseconds RayOutput/Rank<rank>NetworkTestData.txt
+    Network test raw data
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

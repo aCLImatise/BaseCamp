@@ -2,12 +2,16 @@ version 1.0
 
 task PslHisto {
   input {
-    String multiMultiOnly
-    String nonzeroNonzero
+    Boolean? multi_only
+    Boolean? nonzero
   }
   command <<<
     pslHisto \
-      ~{if defined(multiMultiOnly) then ("-multiOnly " +  '"' + multiMultiOnly + '"') else ""} \
-      ~{if defined(nonzeroNonzero) then ("-nonZero " +  '"' + nonzeroNonzero + '"') else ""}
+      ~{true="-multiOnly" false="" multi_only} \
+      ~{true="-nonZero" false="" nonzero}
   >>>
+  parameter_meta {
+    multi_only: "- omit queries with only one alignment from output."
+    nonzero: "- omit queries with zero values."
+  }
 }

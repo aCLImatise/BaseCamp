@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: du.cwl
+id: ../../../../home/ubuntu/BiocondaCli/du.cwl
 inputs:
+- id: 'null'
+  doc: end each output line with NUL, not newline
+  type: boolean
+  inputBinding:
+    prefix: --null
 - id: all
   doc: write counts for all files, not just directories
   type: boolean
@@ -40,13 +45,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --max-depth
-- id: files_0_from
+- id: files_zero_from
   doc: summarize disk usage of the NUL-terminated file names specified in file F;
     if F is -, then read names from standard input
   type: string
   inputBinding:
     prefix: --files0-from
-- id: h
+- id: equivalent__dereferenceargs
   doc: equivalent to --dereference-args (-D)
   type: boolean
   inputBinding:
@@ -56,7 +61,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --inodes
-- id: k
+- id: like__blocksizek
   doc: like --block-size=1K
   type: boolean
   inputBinding:
@@ -71,7 +76,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --count-links
-- id: m
+- id: like__blocksizem
   doc: like --block-size=1M
   type: boolean
   inputBinding:
@@ -102,18 +107,6 @@ inputs:
   type: long
   inputBinding:
     prefix: --threshold
-- id: time
-  doc: show time of the last modification of any file in the directory, or any of
-    its subdirectories
-  type: boolean
-  inputBinding:
-    prefix: --time
-- id: time
-  doc: 'show time as WORD instead of modification time: atime, access, use, ctime
-    or status'
-  type: string
-  inputBinding:
-    prefix: --time
 - id: time_style
   doc: "show times using STYLE, which can be: full-iso, long-iso, iso, or +FORMAT;\
     \ FORMAT is interpreted like in 'date'"
@@ -135,6 +128,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --one-file-system
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

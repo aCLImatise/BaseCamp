@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: PgSAgen.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PgSAgen.cwl
 inputs:
-- id: reads_srcfile
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: pair_srcfile
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: index_prefix
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: r
   doc: ''
   type: string
@@ -41,6 +26,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -v
+- id: reads_srcfile
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: pair_srcfile
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: index_prefix
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

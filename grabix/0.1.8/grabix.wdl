@@ -2,12 +2,16 @@ version 1.0
 
 task Grabix {
   input {
-    String? indexIndex
-    String? bgBgZfFile
+    String index
+    String bg_zf_file
   }
   command <<<
     grabix \
-      ~{indexIndex} \
-      ~{bgBgZfFile}
+      ~{index} \
+      ~{bg_zf_file}
   >>>
+  parameter_meta {
+    index: ""
+    bg_zf_file: ""
+  }
 }

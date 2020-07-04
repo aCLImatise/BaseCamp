@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: id.cwl
+id: ../../../../home/ubuntu/BiocondaCli/id.cwl
 inputs:
-- id: a
+- id: ignore_compatibility_other
   doc: ignore, for compatibility with other versions
   type: boolean
   inputBinding:
@@ -36,12 +36,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --user
-- id: zero
+- id: delimit_entries_whitespace
   doc: delimit entries with NUL characters, not whitespace; not permitted in default
     format
   type: boolean
   inputBinding:
     prefix: --zero
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

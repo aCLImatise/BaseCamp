@@ -1,23 +1,13 @@
 class: CommandLineTool
-id: gimme_motifs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gimme_motifs.cwl
 inputs:
-- id: input
-  doc: FASTA, BED, narrowPeak or region file.
-  type: string
-  inputBinding:
-    position: 0
-- id: outdir
-  doc: Output directory.
-  type: string
-  inputBinding:
-    position: 1
 - id: background
   doc: Background type (random,genomic,gc,promoter,custom) or a file with background
     sequences (FASTA, BED or regions)
   type: string
   inputBinding:
     prefix: --background
-- id: g
+- id: genome_name_file
   doc: Genome name or fasta file
   type: string
   inputBinding:
@@ -52,7 +42,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --nthreads
-- id: p
+- id: pfm_file_motifsdefault
   doc: 'PFM file with motifs.(default: gimme.vertebrate.v5.0.pfm)'
   type: string
   inputBinding:
@@ -89,6 +79,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --size
+- id: h
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -h
+- id: input
+  doc: FASTA, BED, narrowPeak or region file.
+  type: string
+  inputBinding:
+    position: 0
+- id: outdir
+  doc: Output directory.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

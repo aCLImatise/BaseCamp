@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: rcorrector.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rcorrector.cwl
 inputs:
 - id: od
   doc: '(default: ./)'
   type: string
   inputBinding:
     prefix: -od
-- id: t
+- id: threads_use_default
   doc: 'of threads to use (default: 1)'
   type: string
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: motif_display.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/motif_display.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

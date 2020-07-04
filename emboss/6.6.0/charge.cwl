@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: charge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/charge.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

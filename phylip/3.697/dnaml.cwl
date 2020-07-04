@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dnaml.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dnaml.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gcpp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gcpp.cwl
 inputs:
-- id: input_bam
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: reference
   doc: FILE   The filename of the reference FASTA file.
   type: boolean
@@ -168,6 +163,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --log-file
+- id: input_dot_bam
+  doc: STR    The input BAM file.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

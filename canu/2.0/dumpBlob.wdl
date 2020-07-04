@@ -2,10 +2,13 @@ version 1.0
 
 task DumpBlob {
   input {
-    String bB
+    String? b
   }
   command <<<
     dumpBlob \
-      ~{if defined(bB) then ("-b " +  '"' + bB + '"') else ""}
+      ~{if defined(b) then ("-b " +  '"' + b + '"') else ""}
   >>>
+  parameter_meta {
+    b: ""
+  }
 }

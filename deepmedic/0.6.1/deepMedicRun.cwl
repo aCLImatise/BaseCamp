@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: deepMedicRun.cwl
+id: ../../../../home/ubuntu/BiocondaCli/deepMedicRun.cwl
 inputs:
 - id: new_model
   doc: Create a new CNN model with model parameters at given config file [MODEL_CONF].
@@ -70,6 +70,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -resetOptimizer
+- id: deep_medic
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

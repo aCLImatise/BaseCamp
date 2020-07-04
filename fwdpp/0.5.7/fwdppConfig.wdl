@@ -2,20 +2,28 @@ version 1.0
 
 task FwdppConfig {
   input {
-    String? printPrint
-    String? outOut
-    String? versionVersion
-    String? numberNumber
-    String? andAnd
-    String? exitExit
+    String print
+    String out
+    String version
+    String number
+    String and
+    String exit
   }
   command <<<
     fwdppConfig \
-      ~{printPrint} \
-      ~{outOut} \
-      ~{versionVersion} \
-      ~{numberNumber} \
-      ~{andAnd} \
-      ~{exitExit}
+      ~{print} \
+      ~{out} \
+      ~{version} \
+      ~{number} \
+      ~{and} \
+      ~{exit}
   >>>
+  parameter_meta {
+    print: ""
+    out: ""
+    version: ""
+    number: ""
+    and: ""
+    exit: ""
+  }
 }

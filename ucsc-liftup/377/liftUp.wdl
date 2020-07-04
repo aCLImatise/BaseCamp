@@ -2,16 +2,22 @@ version 1.0
 
 task LiftUp {
   input {
-    String noNoSort
-    String gapGapSize
-    String ignoreIgnoreVersions
-    String extExtGenePred
+    String? no_sort
+    String? gap_size
+    Boolean? ignore_versions
+    String? ext_gene_pred
   }
   command <<<
     liftUp \
-      ~{if defined(noNoSort) then ("-nosort " +  '"' + noNoSort + '"') else ""} \
-      ~{if defined(gapGapSize) then ("-gapsize " +  '"' + gapGapSize + '"') else ""} \
-      ~{if defined(ignoreIgnoreVersions) then ("-ignoreVersions " +  '"' + ignoreIgnoreVersions + '"') else ""} \
-      ~{if defined(extExtGenePred) then ("-extGenePred " +  '"' + extExtGenePred + '"') else ""}
+      ~{if defined(no_sort) then ("-nosort " +  '"' + no_sort + '"') else ""} \
+      ~{if defined(gap_size) then ("-gapsize " +  '"' + gap_size + '"') else ""} \
+      ~{true="-ignoreVersions" false="" ignore_versions} \
+      ~{if defined(ext_gene_pred) then ("-extGenePred " +  '"' + ext_gene_pred + '"') else ""}
   >>>
+  parameter_meta {
+    no_sort: "'t sort bed, gff, or gdup files, to save memory"
+    gap_size: "contig gapsize from default"
+    ignore_versions: "- Ignore NCBI-style version number in sequence ids of input files"
+    ext_gene_pred: "extended genePred"
+  }
 }

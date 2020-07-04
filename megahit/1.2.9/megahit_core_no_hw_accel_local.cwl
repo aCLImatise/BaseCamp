@@ -1,11 +1,16 @@
 class: CommandLineTool
-id: megahit_core_no_hw_accel_local.cwl
+id: ../../../../home/ubuntu/BiocondaCli/megahit_core_no_hw_accel_local.cwl
 inputs:
-- id: local
-  doc: ''
+- id: sparsity
+  doc: (=8)                sparsity of hash mapper
   type: string
   inputBinding:
-    position: 0
+    prefix: --sparsity
+- id: similarity
+  doc: (=0.8)            alignment similarity threshold
+  type: string
+  inputBinding:
+    prefix: --similarity
 - id: c
   doc: ''
   type: string
@@ -21,6 +26,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -o
+- id: local
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

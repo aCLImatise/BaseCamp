@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filterBam.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filterBam.cwl
 inputs:
 - id: best
   doc: output all best matches that satisfy minId and minCover (default 0)
@@ -81,6 +81,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --pairwiseAlignments
+- id: in
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --in
+- id: out
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --out
 outputs: []
 cwlVersion: v1.1
 baseCommand:

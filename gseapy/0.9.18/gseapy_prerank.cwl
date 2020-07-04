@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gseapy_prerank.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gseapy_prerank.cwl
 inputs:
 - id: rnk
   doc: Ranking metric file in .rnk format. Same with GSEA.
@@ -11,19 +11,19 @@ inputs:
   type: string
   inputBinding:
     prefix: --gmt
-- id: l
+- id: neg__label
   doc: "neg, --label pos neg The phenotype label argument need two parameters to define.\
     \ Default: ('Pos','Neg')"
   type: string
   inputBinding:
     prefix: -l
-- id: o
+- id: _outdir_gseapy
   doc: ', --outdir         The GSEApy output directory. Default: the current working
     directory'
   type: boolean
   inputBinding:
     prefix: -o
-- id: f
+- id: _format_file
   doc: ", --format         File extensions supported by Matplotlib active backend,\
     \ choose from {'pdf', 'png', 'jpeg','ps', 'eps','svg'}. Default: 'pdf'."
   type: boolean
@@ -78,7 +78,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ascending
-- id: s
+- id: _seed_number
   doc: ', --seed           Number of random seed. Default: None'
   type: boolean
   inputBinding:
@@ -88,6 +88,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --threads
+- id: neg
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tsplit_LTR.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tsplit_LTR.cwl
 inputs:
 - id: in_file
   doc: Multifasta containing complete elements.
@@ -71,6 +71,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --method
+- id: exterminate
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

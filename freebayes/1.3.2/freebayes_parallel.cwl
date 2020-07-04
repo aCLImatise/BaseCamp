@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: freebayes_parallel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/freebayes_parallel.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: metabat2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/metabat2.cwl
 inputs:
 - id: i
   doc: '[ --inFile ] arg               Contigs in (gzipped) fasta file format [Mandatory]'
@@ -19,7 +19,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -a
-- id: m
+- id: arg_minimum_size_contig
   doc: '[ --minContig ] arg (=2500)    Minimum size of a contig for binning (should
     be >=1500).'
   type: boolean
@@ -60,7 +60,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --cvExt
-- id: x
+- id: arg_minimum_mean
   doc: '[ --minCV ] arg (=1)           Minimum mean coverage of a contig in each library
     for binning.'
   type: boolean
@@ -72,17 +72,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --minCVSum
-- id: s
+- id: arg_minimum_size_bin
   doc: '[ --minClsSize ] arg (=200000) Minimum size of a bin as the output.'
   type: boolean
   inputBinding:
     prefix: -s
-- id: t
+- id: arg_number_use
   doc: '[ --numThreads ] arg (=0)      Number of threads to use (0: use all cores).'
   type: boolean
   inputBinding:
     prefix: -t
-- id: l
+- id: output_only_sequence
   doc: '[ --onlyLabel ]                Output only sequence labels as a list in a
     column without sequences.'
   type: boolean
@@ -108,12 +108,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --seed
-- id: d
+- id: _debug_output
   doc: '[ --debug ]                    Debug output'
   type: boolean
   inputBinding:
     prefix: -d
-- id: v
+- id: _verbose_output
   doc: '[ --verbose ]                  Verbose output'
   type: boolean
   inputBinding:

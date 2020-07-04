@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: novoalignMPI.cwl
+id: ../../../../home/ubuntu/BiocondaCli/novoalignMPI.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

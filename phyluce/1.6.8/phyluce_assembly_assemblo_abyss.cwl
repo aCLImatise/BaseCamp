@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_assembly_assemblo_abyss.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_assembly_assemblo_abyss.cwl
 inputs:
 - id: output
   doc: The directory in which to store the assembly data

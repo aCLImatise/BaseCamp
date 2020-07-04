@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_package_data.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_package_data.R.cwl
 inputs:
 - id: marker_file
   doc: Path for marker file

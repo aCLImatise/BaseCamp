@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: bioformats_flanknfilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bioformats_flanknfilter.cwl
 inputs:
-- id: input_file
-  doc: an input file of features to be filtered
-  type: string
-  inputBinding:
-    position: 0
-- id: fast_a_file
-  doc: a FASTA file of sequences the features are related to
-  type: string
-  inputBinding:
-    position: 1
-- id: output_file
-  doc: an output file of filtered features
-  type: string
-  inputBinding:
-    position: 2
 - id: type
   doc: 'the input file type (default: bed)'
   type: string
@@ -32,6 +17,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --strict
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: input_file
+  doc: an input file of features to be filtered
+  type: string
+  inputBinding:
+    position: 0
+- id: fast_a_file
+  doc: a FASTA file of sequences the features are related to
+  type: string
+  inputBinding:
+    position: 1
+- id: output_file
+  doc: an output file of filtered features
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

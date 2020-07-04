@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: razers3.cwl
+id: ../../../../home/ubuntu/BiocondaCli/razers3.cwl
 inputs:
 - id: percent_identity
   doc: 'Percent identity threshold. In range [50..100]. Default: 95.'
@@ -231,6 +231,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --match-histo-start-threshold
+- id: gap_space_gaps
+  doc: Gap space. Gaps between characters are counted from 0.
+  type: string
+  inputBinding:
+    position: 0
+- id: position_space_characters
+  doc: Position space. Characters are counted from 1.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,14 +2,19 @@ version 1.0
 
 task ShapeKnotsSmp {
   input {
-    String? shapeShapeKnots
-    String? seqSeqFile
-    String? ctCtFile
+    String shape_knots
+    String seq_file
+    String ct_file
   }
   command <<<
     ShapeKnots-smp \
-      ~{shapeShapeKnots} \
-      ~{seqSeqFile} \
-      ~{ctCtFile}
+      ~{shape_knots} \
+      ~{seq_file} \
+      ~{ct_file}
   >>>
+  parameter_meta {
+    shape_knots: ""
+    seq_file: ""
+    ct_file: ""
+  }
 }

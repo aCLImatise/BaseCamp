@@ -1,24 +1,36 @@
 class: CommandLineTool
-id: gemBS_index.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gemBS_index.cwl
 inputs:
-- id: threads
-  doc: Number of threads. By default GEM indexer will use the maximum available on
-    the system.
+- id: loglevel
+  doc: ''
   type: string
   inputBinding:
-    prefix: --threads
-- id: sampling_rate
-  doc: Text sampling rate. Increasing will decrease index size at the expense of slower
-    mapping performance.
+    prefix: --loglevel
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: j
+  doc: ''
   type: string
   inputBinding:
-    prefix: --sampling-rate
-- id: list_dbsnp_files
-  doc: List of dbSNP files (can be compressed) to create an index to later use it
-    at the bscall step. The bed files should have the name of the SNP in column 4.
-  type: File[]
+    prefix: -j
+- id: d
+  doc: ''
+  type: string
   inputBinding:
-    prefix: --list-dbSNP-files
+    prefix: -d
+- id: var_4
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: var_5
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

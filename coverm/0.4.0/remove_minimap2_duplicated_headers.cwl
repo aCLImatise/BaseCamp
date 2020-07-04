@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: remove_minimap2_duplicated_headers.cwl
+id: ../../../../home/ubuntu/BiocondaCli/remove_minimap2_duplicated_headers.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

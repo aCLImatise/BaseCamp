@@ -1,23 +1,23 @@
 class: CommandLineTool
-id: disentangle_organelle_assembly.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/disentangle_organelle_assembly.py.cwl
 inputs:
-- id: g
+- id: input_fastg_format
   doc: input fastg format file.
   type: string
   inputBinding:
     prefix: -g
-- id: t
+- id: input_tab_format
   doc: input tab format file (*.csv; the postfix 'csv' was in conformity with Bandage)
     produced by slim_fastg.py.
   type: string
   inputBinding:
     prefix: -t
-- id: o
+- id: output_directory
   doc: output directory.
   type: string
   inputBinding:
     prefix: -o
-- id: f
+- id: organelle_type_embplantptotherptembplantmtembpl
   doc: 'organelle type: embplant_pt/other_pt/embplant_mt/embpl ant_nr/animal_mt/fungus_mt/anonym.'
   type: string
   inputBinding:

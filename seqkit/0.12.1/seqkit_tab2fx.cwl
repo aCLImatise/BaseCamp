@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: seqkit_tab2fx.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqkit_tab2fx.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: comment_line_prefix
   doc: comment line prefix (default [#,//])
   type: string
@@ -60,6 +55,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

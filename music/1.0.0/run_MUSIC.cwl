@@ -1,18 +1,12 @@
 class: CommandLineTool
-id: run_MUSIC.csh_Arguments.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_MUSIC.csh.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: arguments
   doc: ''
   type: string
   inputBinding:
-    position: 1
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - run_MUSIC.csh
-- Arguments

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: stag_view.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stag_view.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

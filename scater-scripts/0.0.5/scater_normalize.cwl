@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scater_normalize.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scater_normalize.R.cwl
 inputs:
 - id: input_object_file
   doc: File name in which a serialized R SingleCellExperiment object where object

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filter_components.py_minlength.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_components.py.cwl
 inputs:
 - id: in_file
   doc: ''
@@ -20,4 +20,3 @@ outputs: []
 cwlVersion: v1.1
 baseCommand:
 - filter_components.py
-- minlength

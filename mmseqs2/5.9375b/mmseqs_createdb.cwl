@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mmseqs_createdb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mmseqs_createdb.cwl
 inputs:
 - id: dont_split_seq_by_len
   doc: 'true            Dont split sequences by --max-seq-len                       '
@@ -21,7 +21,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --max-seq-len
-- id: v
+- id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'
   type: boolean
   inputBinding:

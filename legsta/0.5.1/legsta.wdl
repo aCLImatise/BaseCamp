@@ -2,18 +2,25 @@ version 1.0
 
 task Legsta {
   input {
-    Boolean quietQuiet
-    Boolean debugDebug
-    String dbDbDir
-    Boolean csvCsv
-    Boolean noheaderNoheader
+    Boolean? quiet
+    Boolean? debug
+    String? db_dir
+    Boolean? csv
+    Boolean? noheader
   }
   command <<<
     legsta \
-      ~{true="--quiet" false="" quietQuiet} \
-      ~{true="--debug" false="" debugDebug} \
-      ~{if defined(dbDbDir) then ("--dbdir " +  '"' + dbDbDir + '"') else ""} \
-      ~{true="--csv" false="" csvCsv} \
-      ~{true="--noheader" false="" noheaderNoheader}
+      ~{true="--quiet" false="" quiet} \
+      ~{true="--debug" false="" debug} \
+      ~{if defined(db_dir) then ("--dbdir " +  '"' + db_dir + '"') else ""} \
+      ~{true="--csv" false="" csv} \
+      ~{true="--noheader" false="" noheader}
   >>>
+  parameter_meta {
+    quiet: "Don't print anything to stderr."
+    debug: "+     Verbose debug output to stderr (default '0')."
+    db_dir: "SBT database folder (default '/tmp/tmp7aa9wtj1/db')."
+    csv: "Output CSV instead of TSV (default '0')."
+    noheader: "Don't print header row (default '0')."
+  }
 }

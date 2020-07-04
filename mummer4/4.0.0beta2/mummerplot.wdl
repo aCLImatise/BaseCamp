@@ -2,10 +2,13 @@ version 1.0
 
 task Mummerplot {
   input {
-    String? matchMatchFile
+    String match_file
   }
   command <<<
     mummerplot \
-      ~{matchMatchFile}
+      ~{match_file}
   >>>
+  parameter_meta {
+    match_file: ""
+  }
 }

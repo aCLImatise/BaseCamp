@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: InterProphetParser.cwl
+id: ../../../../home/ubuntu/BiocondaCli/InterProphetParser.cwl
 inputs:
 - id: length
   doc: '- Use Peptide Length model'

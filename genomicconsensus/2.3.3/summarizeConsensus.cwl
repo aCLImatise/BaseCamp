@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: summarizeConsensus.cwl
+id: ../../../../home/ubuntu/BiocondaCli/summarizeConsensus.cwl
 inputs:
-- id: alignment_summary
-  doc: Alignment summary GFF file
-  type: string
-  inputBinding:
-    position: 0
 - id: emit_tool_contract
   doc: 'Emit Tool Contract to stdout (default: False)'
   type: boolean
@@ -51,6 +46,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
+- id: alignment_summary
+  doc: Alignment summary GFF file
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: obiuniq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/obiuniq.cwl
 inputs:
 - id: merge
   doc: Attributes to merge

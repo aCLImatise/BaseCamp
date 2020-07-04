@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: crux_spectral_counts.cwl
+id: ../../../../home/ubuntu/BiocondaCli/crux_spectral_counts.cwl
 inputs:
 - id: input_psms
   doc: ''

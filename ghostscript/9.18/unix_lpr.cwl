@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: unix_lpr.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/unix_lpr.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

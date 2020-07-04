@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: taeper.cwl
+id: ../../../../home/ubuntu/BiocondaCli/taeper.cwl
 inputs:
 - id: input_dir
   doc: Directory where files are located.
@@ -37,9 +37,9 @@ inputs:
   inputBinding:
     prefix: --no_index
 - id: log_level
-  doc: '{0,1,2,3,4,5} Level of logging. 0 is none, 5 is for debugging. Default is
-    4 which will report info, warnings, errors, and critical information.'
-  type: boolean
+  doc: Level of logging. 0 is none, 5 is for debugging. Default is 4 which will report
+    info, warnings, errors, and critical information.
+  type: string
   inputBinding:
     prefix: --log_level
 - id: no_progress_bar

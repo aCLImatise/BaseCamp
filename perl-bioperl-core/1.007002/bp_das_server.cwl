@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bp_das_server.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bp_das_server.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

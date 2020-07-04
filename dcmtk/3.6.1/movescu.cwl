@@ -1,32 +1,17 @@
 class: CommandLineTool
-id: movescu.cwl
+id: ../../../../home/ubuntu/BiocondaCli/movescu.cwl
 inputs:
-- id: peer
-  doc: hostname of DICOM peer
-  type: string
-  inputBinding:
-    position: 0
-- id: port
-  doc: tcp/ip port number of peer
-  type: string
-  inputBinding:
-    position: 1
-- id: dcm_file_in
-  doc: DICOM query file(s)
-  type: string
-  inputBinding:
-    position: 2
-- id: q
+- id: _quiet_quiet
   doc: --quiet                quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose              verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug                debug mode, print debug information
   type: boolean
   inputBinding:
@@ -42,23 +27,23 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lc
-- id: k
+- id: _key_ggggeeee
   doc: '--key                  [k]ey: gggg,eeee="str" or dict. name="str" override
     matching key'
   type: boolean
   inputBinding:
     prefix: -k
-- id: p
+- id: _patient_use
   doc: --patient              use patient root information model (default)
   type: boolean
   inputBinding:
     prefix: -P
-- id: s
+- id: _study_use
   doc: --study                use study root information model
   type: boolean
   inputBinding:
     prefix: -S
-- id: o
+- id: _psonly_use
   doc: --psonly               use patient/study only information model
   type: boolean
   inputBinding:
@@ -78,7 +63,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --move
-- id: x
+- id: _proposeuncompr_propose
   doc: =   --propose-uncompr      propose all uncompressed TS, explicit VR with local
     byte ordering first (default)
   type: boolean
@@ -181,26 +166,41 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -od
-- id: f
+- id: _writedataset_write
   doc: --write-dataset        write data set without file meta information
   type: boolean
   inputBinding:
     prefix: -F
-- id: u
+- id: _disablenewvr_disable
   doc: --disable-new-vr       disable support for new VRs, convert to OB
   type: boolean
   inputBinding:
     prefix: -u
-- id: g
+- id: _grouplengthremove_always
   doc: --group-length-remove  always write without group length elements
   type: boolean
   inputBinding:
     prefix: -g
-- id: e
+- id: _lengthundefined_write
   doc: --length-undefined     write with undefined lengths
   type: boolean
   inputBinding:
     prefix: -e
+- id: peer
+  doc: hostname of DICOM peer
+  type: string
+  inputBinding:
+    position: 0
+- id: port
+  doc: tcp/ip port number of peer
+  type: string
+  inputBinding:
+    position: 1
+- id: dcm_file_in
+  doc: DICOM query file(s)
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

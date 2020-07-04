@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: juliet.cwl
+id: ../../../../home/ubuntu/BiocondaCli/juliet.cwl
 inputs:
-- id: source
-  doc: Source BAM or DataSet XML file.
-  type: string
-  inputBinding:
-    position: 0
 - id: config
   doc: Defines genes of interest within the reference for reporting purposes. Enter
     either 1) the predefined target config "HIV_HXB2" or a custom target config through
@@ -72,6 +67,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --resolved-tool-contract
+- id: source
+  doc: Source BAM or DataSet XML file.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

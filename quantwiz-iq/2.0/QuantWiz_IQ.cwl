@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: QuantWiz_IQ.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/QuantWiz_IQ.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

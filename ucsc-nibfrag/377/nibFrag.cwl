@@ -1,31 +1,6 @@
 class: CommandLineTool
-id: nibFrag.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nibFrag.cwl
 inputs:
-- id: file_nib
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
-- id: start
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: end
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: strand
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: out_fa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
 - id: masked
   doc: Use lower-case characters for bases meant to be masked out.
   type: boolean
@@ -56,6 +31,31 @@ inputs:
   type: string
   inputBinding:
     prefix: -tbaHeader
+- id: file_dot_nib
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
+- id: start
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: end
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: strand
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: out_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

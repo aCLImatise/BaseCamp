@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: sga_mergeDriver.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sga_mergeDriver.pl.cwl
 inputs:
-- id: files
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: threads
   doc: use N threads for the merge processes
   type: string
@@ -16,6 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --bin
+- id: files
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

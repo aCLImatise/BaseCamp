@@ -2,26 +2,19 @@ version 1.0
 
 task FznGecode {
   input {
-    String supportedSupported
-    Boolean versionVersion
-    String variableVariable
-    String trigonometricTrigonometric
-    String threadThread
-    String gistGist
-    Boolean modeMode
-    Boolean sS
-    Boolean oO
+    Boolean? mode
+    Boolean? optional_false_true
+    Boolean? string_default_none
   }
   command <<<
     fzn-gecode \
-      ~{if defined(supportedSupported) then ("- Supported " +  '"' + supportedSupported + '"') else ""} \
-      ~{true="- Version" false="" versionVersion} \
-      ~{if defined(variableVariable) then ("- Variable " +  '"' + variableVariable + '"') else ""} \
-      ~{if defined(trigonometricTrigonometric) then ("- Trigonometric " +  '"' + trigonometricTrigonometric + '"') else ""} \
-      ~{if defined(threadThread) then ("- Thread " +  '"' + threadThread + '"') else ""} \
-      ~{if defined(gistGist) then ("- Gist " +  '"' + gistGist + '"') else ""} \
-      ~{true="-mode" false="" modeMode} \
-      ~{true="-s" false="" sS} \
-      ~{true="-o" false="" oO}
+      ~{true="-mode" false="" mode} \
+      ~{true="-s" false="" optional_false_true} \
+      ~{true="-o" false="" string_default_none}
   >>>
+  parameter_meta {
+    mode: "(solution, stat, gist) default: solution how to execute script"
+    optional_false_true: "(optional: false, 0, true, 1) default: false emit statistics"
+    string_default_none: "(string) default: NONE file to send output to"
+  }
 }

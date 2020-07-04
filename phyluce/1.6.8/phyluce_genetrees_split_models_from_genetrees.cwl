@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_genetrees_split_models_from_genetrees.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_genetrees_split_models_from_genetrees.cwl
 inputs:
 - id: gene_trees
   doc: The cloudforest genetree file containing models

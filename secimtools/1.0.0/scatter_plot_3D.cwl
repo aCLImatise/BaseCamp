@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scatter_plot_3D.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scatter_plot_3D.py.cwl
 inputs:
 - id: input
   doc: Input dataset in wide format.
@@ -21,17 +21,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --group
-- id: x
+- id: name_column_x
   doc: Name of column for X values
   type: string
   inputBinding:
     prefix: --X
-- id: y
+- id: name_column_y
   doc: Name of column for Y values
   type: string
   inputBinding:
     prefix: --Y
-- id: z
+- id: name_column_z
   doc: Name of column for Z values
   type: string
   inputBinding:

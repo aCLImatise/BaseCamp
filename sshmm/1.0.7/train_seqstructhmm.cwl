@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: train_seqstructhmm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/train_seqstructhmm.cwl
 inputs:
-- id: training_sequences
-  doc: FASTA file with sequences for training
-  type: string
-  inputBinding:
-    position: 0
-- id: training_structures
-  doc: FASTA file with RNA structures for training
-  type: string
-  inputBinding:
-    position: 1
 - id: motif_length
   doc: 'length of the motif that shall be found (default: 6)'
   type: string
@@ -65,6 +55,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --only_best_shape
+- id: training_sequences
+  doc: FASTA file with sequences for training
+  type: string
+  inputBinding:
+    position: 0
+- id: training_structures
+  doc: FASTA file with RNA structures for training
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

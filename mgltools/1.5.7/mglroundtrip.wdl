@@ -2,14 +2,19 @@ version 1.0
 
 task Mglroundtrip {
   input {
-    String? roundRoundTrip
-    File? fileFile1
-    File? fileFile2
+    String round_trip
+    File file_one
+    File file_two
   }
   command <<<
     mglroundtrip \
-      ~{roundRoundTrip} \
-      ~{fileFile1} \
-      ~{fileFile2}
+      ~{round_trip} \
+      ~{file_one} \
+      ~{file_two}
   >>>
+  parameter_meta {
+    round_trip: ""
+    file_one: ""
+    file_two: ""
+  }
 }

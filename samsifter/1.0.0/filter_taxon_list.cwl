@@ -1,18 +1,18 @@
 class: CommandLineTool
-id: filter_taxon_list.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_taxon_list.cwl
 inputs:
-- id: i
-  doc: ''
+- id: input
+  doc: 'specify SAM file to be analysed (default: STDIN)'
   type: string
   inputBinding:
-    prefix: -i
-- id: l
-  doc: ''
+    prefix: --input
+- id: list
+  doc: tab-separated CSV file with accession numbers in first column
   type: string
   inputBinding:
-    prefix: -l
+    prefix: --list
 - id: discard
-  doc: ''
+  doc: keep or discard entries passing the filter criteria?
   type: string
   inputBinding:
     prefix: --discard

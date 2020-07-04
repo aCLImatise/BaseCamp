@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastaexplode.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastaexplode.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

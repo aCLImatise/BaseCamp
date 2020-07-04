@@ -1,12 +1,11 @@
 class: CommandLineTool
-id: nw_trim.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nw_trim.cwl
 inputs:
-- id: a
-  doc: ': the maximum depth is expressed in number of ancestors, not distance. Nodes
-    are not shortened, but no node is retained that has more ancestors than the maximum.'
+- id: ah
+  doc: ''
   type: boolean
   inputBinding:
-    prefix: -a
+    prefix: -ah
 outputs: []
 cwlVersion: v1.1
 baseCommand:

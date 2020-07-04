@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: anvi_experimental_organization.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_experimental_organization.cwl
 inputs:
-- id: file
-  doc: Config file for clustering of contigs. See documentation for help.
-  type: File
-  inputBinding:
-    position: 0
 - id: profile_db
   doc: Anvi'o profile database
   type: string
@@ -62,6 +57,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --dry-run
+- id: file
+  doc: Config file for clustering of contigs. See documentation for help.
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

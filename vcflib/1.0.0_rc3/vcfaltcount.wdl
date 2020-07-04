@@ -2,10 +2,13 @@ version 1.0
 
 task Vcfaltcount {
   input {
-    String? vcfVcfFile
+    String vcf_file
   }
   command <<<
     vcfaltcount \
-      ~{vcfVcfFile}
+      ~{vcf_file}
   >>>
+  parameter_meta {
+    vcf_file: ""
+  }
 }

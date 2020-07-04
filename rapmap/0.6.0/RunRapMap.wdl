@@ -2,10 +2,13 @@ version 1.0
 
 task RunRapMap.sh {
   input {
-    String? quasiQuasiMap
+    String quasi_map
   }
   command <<<
     RunRapMap.sh \
-      ~{quasiQuasiMap}
+      ~{quasi_map}
   >>>
+  parameter_meta {
+    quasi_map: "--- maps reads to a quasi-mapping index"
+  }
 }

@@ -1,11 +1,21 @@
 class: CommandLineTool
-id: testAtac.cwl
+id: ../../../../home/ubuntu/BiocondaCli/testAtac.cwl
 inputs:
-- id: i
+- id: print_warning_match
   doc: print a warning if a match is below this percent identity
   type: boolean
   inputBinding:
     prefix: -i
+- id: d
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -d
+- id: m
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -m
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csvtk_join.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csvtk_join.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: fields
   doc: Semicolon separated key fields of all files, if given one, we think all the
     files have the same key columns. Fields of different files should be separated
@@ -113,6 +108,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tabs
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

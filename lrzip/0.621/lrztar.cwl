@@ -1,51 +1,21 @@
 class: CommandLineTool
-id: lrztar.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lrztar.cwl
 inputs:
-- id: d
+- id: path_will_decompress_path_tarball
   doc: ': <path1> will decompress a <path1> lrzip tarball to current directory.'
   type: boolean
   inputBinding:
     prefix: -d
-- id: o
+- id: path_will_decompress_d_tarball
   doc: ': <path2> will decompress a -d specified lrzip tarball to <path2> path.'
   type: boolean
   inputBinding:
     prefix: -O
-- id: f
+- id: will_force_overwrites
   doc: ': will force overwrites.'
   type: boolean
   inputBinding:
     prefix: -f
-- id: the
-  doc: argument is always last, all options and their arguments precede.
-  type: string
-  inputBinding:
-    prefix: '- The'
-- id: the
-  doc: 'is an option flag, goes before: (-O <somedir> <input arg>).'
-  type: string
-  inputBinding:
-    prefix: '- The'
-- id: you
-  doc: use the remaining options of lrzip as they were.
-  type: string
-  inputBinding:
-    prefix: '- You'
-- id: lrz_untar
-  doc: equivalent to lrztar [options] -d <filename>.
-  type: string
-  inputBinding:
-    prefix: '- lrzuntar'
-- id: this
-  doc: exists because of how lrzip behaves.
-  type: string
-  inputBinding:
-    prefix: '- This'
-- id: beware
-  doc: ', it stands for what it says...'
-  type: string
-  inputBinding:
-    prefix: '- Beware'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

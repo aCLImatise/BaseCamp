@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _seqmatchall.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_seqmatchall.cwl
 inputs:
 - id: word_size
   doc: integer    [4] Word size (Integer 2 or more)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pbmarkdup.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pbmarkdup.cwl
 inputs:
 - id: cross_library
   doc: Identify duplicates across sequencing libraries (LB tag in read group).
@@ -36,6 +36,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --log-file
+- id: in_file_dot_bam_vertical_line_xml_vertical_line_f_a_vertical_line_fq_vertical_line_fof_n
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: outfile_dot_bam_vertical_line_xml_vertical_line_fado_tgz_vertical_line_fq_do_tgz
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

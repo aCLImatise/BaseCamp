@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FeatureFinderMetaboIdent.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FeatureFinderMetaboIdent.cwl
 inputs:
 - id: in
   doc: "*                   Input file: LC-MS raw data (valid formats: 'mzML')"
@@ -38,24 +38,6 @@ inputs:
   type: File
   inputBinding:
     prefix: -trafo_out
-- id: extract
-  doc: ":mz_window <value>    M/z window size for chromatogram extraction (unit: ppm\
-    \ if 1 or greater, else Da/Th) (default: '10.0' min: '0.0')"
-  type: boolean
-  inputBinding:
-    prefix: -extract
-- id: extract
-  doc: ":n_isotopes <number>  Number of isotopes to include in each assay. (default:\
-    \ '2' min: '2')"
-  type: boolean
-  inputBinding:
-    prefix: -extract
-- id: extract
-  doc: ":rt_window <value>    RT window size (in sec.) for chromatogram extraction.\
-    \ If zero, calculated based on 'detect:peak_width'. (default: '0.0' min: '0.0')"
-  type: boolean
-  inputBinding:
-    prefix: -extract
 - id: detect
   doc: ":peak_width <value>    Expected elution peak width in seconds, for smoothing\
     \ (Gauss filter). Also determines the RT extration window, unless set explicitly\

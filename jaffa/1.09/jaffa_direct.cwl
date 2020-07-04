@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: jaffa_direct.cwl
+id: ../../../../home/ubuntu/BiocondaCli/jaffa_direct.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

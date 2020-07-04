@@ -2,10 +2,13 @@ version 1.0
 
 task FastqNotEmpty {
   input {
-    String? fastFastQFile
+    String fast_q_file
   }
   command <<<
     fastq_not_empty \
-      ~{fastFastQFile}
+      ~{fast_q_file}
   >>>
+  parameter_meta {
+    fast_q_file: ""
+  }
 }

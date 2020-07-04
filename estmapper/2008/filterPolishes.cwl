@@ -1,22 +1,22 @@
 class: CommandLineTool
-id: filterPolishes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filterPolishes.cwl
 inputs:
 - id: verbose
   doc: Report progress
   type: boolean
   inputBinding:
     prefix: -verbose
-- id: c
+- id: discard_polishes_c
   doc: 'Discard polishes below c% composite (default: 0).'
   type: string
   inputBinding:
     prefix: -c
-- id: i
+- id: discard_polishes_i
   doc: 'Discard polishes below i% identity (default: 0).'
   type: string
   inputBinding:
     prefix: -i
-- id: l
+- id: discard_polishes_l
   doc: 'Discard polishes below l identities (default: 0).'
   type: string
   inputBinding:
@@ -31,37 +31,37 @@ inputs:
   type: string
   inputBinding:
     prefix: -maxexons
-- id: c
+- id: discard_polishes_cdna
   doc: Discard polishes that are not from cDNA idx 'c'
   type: string
   inputBinding:
     prefix: -C
-- id: g
+- id: discard_polishes_genomic
   doc: Discard polishes that are not from genomic idx 'g'
   type: string
   inputBinding:
     prefix: -G
-- id: o
+- id: write_saved_polishes_file
   doc: Write saved polishes to the 'o' file (default == stdout).
   type: string
   inputBinding:
     prefix: -o
-- id: o
+- id: do_write_saved_polishes
   doc: Don't write saved polishes.
   type: boolean
   inputBinding:
     prefix: -O
-- id: d
+- id: write_discarded_polishes_file
   doc: Write discarded polishes to the 'o' file (default == stdout).
   type: string
   inputBinding:
     prefix: -d
-- id: d
+- id: do_write_discarded_polishes
   doc: Don't write discarded polishes.
   type: boolean
   inputBinding:
     prefix: -D
-- id: j
+- id: write_intractable_aborted
   doc: Write intractable and aborted polishes to the 'o' file.  By default these are
     silently discarded.
   type: string
@@ -89,7 +89,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -noalignments
-- id: gff3
+- id: gff_three
   doc: Write output in GFF3 format. All conditions must be met.
   type: boolean
   inputBinding:

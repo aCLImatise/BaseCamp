@@ -1,87 +1,72 @@
 class: CommandLineTool
-id: ghostz.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ghostz.cwl
 inputs:
-- id: i
+- id: protein_sequences_fasta
   doc: Protein sequences in FASTA format for a database
   type: string
   inputBinding:
     prefix: -i
-- id: o
+- id: the_name_database
   doc: The name of the database
   type: string
   inputBinding:
     prefix: -o
-- id: c
+- id: clustering_t_enable
   doc: Clustering, T (enable) or F (disable) [T]
   type: string
   inputBinding:
     prefix: -C
-- id: l
+- id: chunk_size_database
   doc: Chunk size of the database (bytes) [1073741824 (=1GB)]
   type: long
   inputBinding:
     prefix: -l
-- id: l
+- id: length_subsequence_clustering
   doc: Length of a subsequence for clustering [10]
   type: long
   inputBinding:
     prefix: -L
-- id: s
+- id: the_seed_threshold
   doc: The seed threshold [39]
   type: long
   inputBinding:
     prefix: -s
-- id: i
-  doc: Sequences in FASTA format
-  type: string
-  inputBinding:
-    prefix: -i
-- id: o
-  doc: Output file
-  type: string
-  inputBinding:
-    prefix: -o
-- id: d
+- id: database_name_must
   doc: database name (must be formatted)
   type: string
   inputBinding:
     prefix: -d
-- id: v
+- id: maximum_number_alignments
   doc: Maximum number of alignments for each subject [1]
   type: long
   inputBinding:
     prefix: -v
-- id: b
+- id: maximum_number_output
   doc: Maximum number of the output for a query [10]
   type: long
   inputBinding:
     prefix: -b
-- id: l
-  doc: Chunk size of the queries (bytes) [134217728 (=128MB)]
-  type: long
-  inputBinding:
-    prefix: -l
-- id: q
+- id: query_sequence_type
   doc: Query sequence type, p (protein) or d (dna) [p]
   type: string
   inputBinding:
     prefix: -q
-- id: t
+- id: database_sequence_type
   doc: Database sequence type, p (protein) or d (dna) [p]
   type: string
   inputBinding:
     prefix: -t
-- id: f
+- id: filter_query_sequence
   doc: 'Filter query sequence, T (enable) or F (disable) [T] '
   type: string
   inputBinding:
     prefix: -F
-- id: a
+- id: the_number_threads
   doc: The number of threads [1]
   type: long
   inputBinding:
     prefix: -a
-- id: n
+- id: minimum_length_query
   doc: Minimum length of query[12]
   type: long
   inputBinding:

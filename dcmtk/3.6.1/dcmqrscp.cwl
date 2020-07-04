@@ -1,22 +1,17 @@
 class: CommandLineTool
-id: dcmqrscp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmqrscp.cwl
 inputs:
-- id: port
-  doc: 'tcp/ip port number to listen on (default: in config file)'
-  type: string
-  inputBinding:
-    position: 0
-- id: q
+- id: _quiet_quiet
   doc: --quiet                 quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose               verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug                 debug mode, print debug information
   type: boolean
   inputBinding:
@@ -32,13 +27,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lc
-- id: c
+- id: _config_ilename
   doc: '--config                [f]ilename: string use specific configuration file
-    (default: /tmp/tmp_gcjhv_q/etc/dcmtk/dcmqrscp.cfg)'
+    (default: /tmp/tmpqmdno0st/etc/dcmtk/dcmqrscp.cfg)'
   type: boolean
   inputBinding:
     prefix: -c
-- id: s
+- id: _singleprocess_single
   doc: --single-process        single process mode --fork                  fork child
     process for each assoc. (default)
   type: boolean
@@ -72,7 +67,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -XF
-- id: xm
+- id: _cmove_validity
   doc: --check-move            check C-MOVE identifier validity --no-check-move         do
     not check C-MOVE identifier validity (def.)
   type: boolean
@@ -108,7 +103,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -QO
-- id: x
+- id: _proposeuncompr_propose
   doc: =   --propose-uncompr       propose all uncompressed TS, explicit VR with local
     byte ordering first (default)
   type: boolean
@@ -173,7 +168,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -xu
-- id: xm
+- id: _proposempeg_propose_profile
   doc: --propose-mpeg2         propose MPEG2 Main Profile @ Main Level TS only
   type: boolean
   inputBinding:
@@ -254,26 +249,31 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -up
-- id: u
+- id: _disablenewvr_disable
   doc: --disable-new-vr        disable support for new VRs, convert to OB
   type: boolean
   inputBinding:
     prefix: -u
-- id: f
+- id: _writedataset_data
   doc: --write-dataset         write data set without file meta information
   type: boolean
   inputBinding:
     prefix: -F
-- id: g
+- id: _grouplengthremove_always
   doc: --group-length-remove   always write without group length elements
   type: boolean
   inputBinding:
     prefix: -g
-- id: e
+- id: _lengthundefined_write
   doc: --length-undefined      write with undefined lengths
   type: boolean
   inputBinding:
     prefix: -e
+- id: port
+  doc: 'tcp/ip port number to listen on (default: in config file)'
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

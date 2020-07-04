@@ -1,26 +1,27 @@
 class: CommandLineTool
-id: bigWigAverageOverBed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bigWigAverageOverBed.cwl
 inputs:
-- id: in_bw
+- id: minmax
+  doc: '- include two additional columns containing the min and max observed in the
+    area.'
+  type: boolean
+  inputBinding:
+    prefix: -minMax
+- id: in_dot_bw
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: in_bed
+- id: in_dot_bed
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: out_tab
+- id: out_dot_tab
   doc: ''
   type: string
   inputBinding:
     position: 2
-- id: include
-  doc: additional columns containing the min and max observed in the area.
-  type: string
-  inputBinding:
-    prefix: '- include'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

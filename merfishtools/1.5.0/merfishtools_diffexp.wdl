@@ -2,22 +2,28 @@ version 1.0
 
 task MerfishtoolsDiffexp {
   input {
-    Float maxMaxNullLog2fc
-    Float pseudoPseudoCounts
-    File cdfCdf
-    Int threadsThreads
-    String? optionsOptions
-    String? groupGroup1
-    String? groupGroup2
+    Float? max_null_log_two_fc
+    Float? pseudo_counts
+    File? cdf
+    Int? threads
+    String group_one
+    String group_two
   }
   command <<<
     merfishtools diffexp \
-      ~{optionsOptions} \
-      ~{if defined(maxMaxNullLog2fc) then ("--max-null-log2fc " +  '"' + maxMaxNullLog2fc + '"') else ""} \
-      ~{if defined(pseudoPseudoCounts) then ("--pseudocounts " +  '"' + pseudoPseudoCounts + '"') else ""} \
-      ~{if defined(cdfCdf) then ("--cdf " +  '"' + cdfCdf + '"') else ""} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{groupGroup1} \
-      ~{groupGroup2}
+      ~{group_one} \
+      ~{group_two} \
+      ~{if defined(max_null_log_two_fc) then ("--max-null-log2fc " +  '"' + max_null_log_two_fc + '"') else ""} \
+      ~{if defined(pseudo_counts) then ("--pseudocounts " +  '"' + pseudo_counts + '"') else ""} \
+      ~{if defined(cdf) then ("--cdf " +  '"' + cdf + '"') else ""} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  parameter_meta {
+    max_null_log_two_fc: "Maximum absolute log2 fold change considered as no differential expression [1.0]."
+    pseudo_counts: "Pseudocounts to add to means before fold change calculation [1.0]."
+    cdf: "Path to write CDFs of log2 fold changes to."
+    threads: "Number of threads to use."
+    group_one: ""
+    group_two: ""
+  }
 }

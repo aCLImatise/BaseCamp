@@ -1,21 +1,31 @@
 class: CommandLineTool
-id: tango_update_idfile.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tango_update_idfile.cwl
 inputs:
-- id: taxon_map
+- id: tango
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: id_file
+- id: update
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: new_file
+- id: taxon_map
   doc: ''
   type: string
   inputBinding:
     position: 2
+- id: id_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: new_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

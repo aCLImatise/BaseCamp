@@ -2,14 +2,22 @@ version 1.0
 
 task AwsParameters {
   input {
-    String? commandCommand
-    String? subcommandSubcommand
-    String? parametersParameters
+    String aws
+    String var_command
+    String subcommand
+    String? parameters
   }
   command <<<
     aws parameters \
-      ~{commandCommand} \
-      ~{subcommandSubcommand} \
-      ~{parametersParameters}
+      ~{aws} \
+      ~{var_command} \
+      ~{subcommand} \
+      ~{parameters}
   >>>
+  parameter_meta {
+    aws: ""
+    var_command: ""
+    subcommand: ""
+    parameters: ""
+  }
 }

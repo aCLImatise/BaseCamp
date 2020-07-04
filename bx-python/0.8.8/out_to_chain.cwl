@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: out_to_chain.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/out_to_chain.py.cwl
 inputs:
-- id: input
-  doc: File to process.
-  type: string
-  inputBinding:
-    position: 0
 - id: species
   doc: "SPECIES Names of target and query species (respectively) in the alignment.\
     \ (default: ['homo_sapiens', 'mus_musculus'])"
@@ -22,6 +17,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --output
+- id: input
+  doc: File to process.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

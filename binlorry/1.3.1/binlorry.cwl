@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: binlorry.cwl
+id: ../../../../home/ubuntu/BiocondaCli/binlorry.cwl
 inputs:
 - id: input
   doc: FASTA/FASTQ of input reads or a directory which will be recursively searched

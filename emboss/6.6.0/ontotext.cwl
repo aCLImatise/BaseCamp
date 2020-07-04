@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ontotext.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ontotext.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

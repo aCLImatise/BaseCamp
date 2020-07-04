@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: masterSplitter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/masterSplitter.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

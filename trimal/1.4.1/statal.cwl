@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: statal.cwl
+id: ../../../../home/ubuntu/BiocondaCli/statal.cwl
 inputs:
 - id: in
   doc: Input file in several formats (clustal, fasta, nexus, phylip, etc).
@@ -62,7 +62,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -scolidentt
-- id: w
+- id: half_window_size
   doc: (half) Window size, score of position i is the average of the window (i - n)
     to (i + n).
   type: string

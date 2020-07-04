@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _chips.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_chips.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

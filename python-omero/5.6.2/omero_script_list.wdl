@@ -2,10 +2,13 @@ version 1.0
 
 task OmeroScriptList {
   input {
-    String? whoWho
+    String who
   }
   command <<<
     omero script list \
-      ~{whoWho}
+      ~{who}
   >>>
+  parameter_meta {
+    who: "Who to execute for: user, group, user=1, group=5 (default=official)"
+  }
 }

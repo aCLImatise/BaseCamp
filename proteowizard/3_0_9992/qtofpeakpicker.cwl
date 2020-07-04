@@ -1,27 +1,27 @@
 class: CommandLineTool
-id: qtofpeakpicker.cwl
+id: ../../../../home/ubuntu/BiocondaCli/qtofpeakpicker.cwl
 inputs:
-- id: h
+- id: produce_help_message
   doc: '[ --help ]               produce help message'
   type: boolean
   inputBinding:
     prefix: -H
-- id: v
+- id: produces_version_information
   doc: '[ --version ]            produces version information'
   type: boolean
   inputBinding:
     prefix: -V
-- id: i
+- id: arg_input_file
   doc: '[ --in ] arg             input file'
   type: boolean
   inputBinding:
     prefix: -I
-- id: o
+- id: arg_output_file
   doc: '[ --out ] arg            output file'
   type: boolean
   inputBinding:
     prefix: -O
-- id: c
+- id: arg_configuration_file
   doc: '[ --config-file ] arg    configuration file'
   type: boolean
   inputBinding:
@@ -47,7 +47,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --numberofpeaks
-- id: i
+- id: arg_peak_apex
   doc: '[ --widthint ] arg (=2)  peak apex +- integration width'
   type: boolean
   inputBinding:

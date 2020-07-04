@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tepid_discover.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tepid_discover.cwl
 inputs:
 - id: keep
   doc: keep all intermediate files

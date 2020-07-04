@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: NanoSplit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/NanoSplit.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

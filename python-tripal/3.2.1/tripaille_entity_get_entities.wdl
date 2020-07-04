@@ -2,12 +2,16 @@ version 1.0
 
 task TripailleEntityGetEntities {
   input {
-    String entityEntity
-    Int entityEntityId
+    String? entity
+    Int? entity_id
   }
   command <<<
     tripaille entity get_entities \
-      ~{if defined(entityEntity) then ("--entity " +  '"' + entityEntity + '"') else ""} \
-      ~{if defined(entityEntityId) then ("--entity_id " +  '"' + entityEntityId + '"') else ""}
+      ~{if defined(entity) then ("--entity " +  '"' + entity + '"') else ""} \
+      ~{if defined(entity_id) then ("--entity_id " +  '"' + entity_id + '"') else ""}
   >>>
+  parameter_meta {
+    entity: "Name of the entity type (e.g. Organism)"
+    entity_id: "ID of an entity"
+  }
 }

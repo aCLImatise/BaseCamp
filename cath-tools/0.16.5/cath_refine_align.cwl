@@ -1,22 +1,7 @@
 class: CommandLineTool
-id: cath_refine_align.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cath_refine_align.cwl
 inputs:
-- id: alignment_source
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: protein_file_source
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: superposition_outputs
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: v
+- id: output_version_information
   doc: '[ --version ]                   Output version information'
   type: boolean
   inputBinding:
@@ -195,6 +180,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --normalise-scores
+- id: alignment_source
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: protein_file_source
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: superposition_outputs
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

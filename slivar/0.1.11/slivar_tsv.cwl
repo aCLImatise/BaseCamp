@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: slivar_tsv.cwl
+id: ../../../../home/ubuntu/BiocondaCli/slivar_tsv.cwl
 inputs:
-- id: vcf
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: ped
   doc: required ped file describing the trios in the VCF
   type: string
@@ -48,6 +43,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --out
+- id: vcf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

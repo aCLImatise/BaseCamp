@@ -1,22 +1,17 @@
 class: CommandLineTool
-id: ob2fps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ob2fps.cwl
 inputs:
-- id: filenames
-  doc: input structure files (default is stdin)
-  type: File
-  inputBinding:
-    position: 0
-- id: fp2
+- id: fp_two
   doc: linear fragments up to 7 atoms
   type: boolean
   inputBinding:
     prefix: --FP2
-- id: fp3
+- id: fp_three
   doc: SMARTS patterns specified in the file patterns.txt
   type: boolean
   inputBinding:
     prefix: --FP3
-- id: fp4
+- id: fp_four
   doc: SMARTS patterns specified in the file SMARTS_InteLigand.txt
   type: boolean
   inputBinding:
@@ -31,16 +26,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --substruct
-- id: rdma_ccs
-  doc: /2 166 bit RDKit/MACCS fingerprints (version 2)
+- id: rdma_ccs_slash_two
+  doc: 166 bit RDKit/MACCS fingerprints (version 2)
   type: boolean
   inputBinding:
-    prefix: --rdmaccs
-- id: rdma_ccs
-  doc: /1           use the version 1 definition for --rdmaccs
+    prefix: --rdmaccs/2
+- id: rdma_ccs_slash_one
+  doc: use the version 1 definition for --rdmaccs
   type: boolean
   inputBinding:
-    prefix: --rdmaccs
+    prefix: --rdmaccs/1
 - id: id_tag
   doc: tag name containing the record id (SD files only)
   type: string
@@ -66,6 +61,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --errors
+- id: filenames
+  doc: input structure files (default is stdin)
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

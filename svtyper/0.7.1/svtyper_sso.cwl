@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: svtyper_sso.cwl
+id: ../../../../home/ubuntu/BiocondaCli/svtyper_sso.cwl
 inputs:
 - id: input_vcf
   doc: 'VCF input (default: stdin)'
@@ -31,7 +31,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --min_aligned
-- id: n
+- id: number_reads_sample
   doc: number of reads to sample from BAM file for building insert size distribution
     [1000000]
   type: long

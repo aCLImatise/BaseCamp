@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dDocent.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dDocent.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

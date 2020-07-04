@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ctk_version.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ctk_version.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

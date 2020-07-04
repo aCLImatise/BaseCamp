@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ALE_low_scores.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ALE_low_scores.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

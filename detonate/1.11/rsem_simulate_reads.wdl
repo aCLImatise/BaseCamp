@@ -2,24 +2,34 @@ version 1.0
 
 task RsemSimulateReads {
   input {
-    String seedSeed
-    Boolean qQ
-    String? referenceReferenceName
-    String? estimatedEstimatedModelFile
-    String? estimatedEstimatedIsoformResults
-    String? theTheTa0
-    String? nN
-    String? outputOutputName
+    String? seed
+    Boolean? q
+    String reference_name
+    String estimated_model_file
+    String estimated_isoform_results
+    String theta_zero
+    String n
+    String output_name
   }
   command <<<
     rsem-simulate-reads \
-      ~{referenceReferenceName} \
-      ~{if defined(seedSeed) then ("--seed " +  '"' + seedSeed + '"') else ""} \
-      ~{true="-q" false="" qQ} \
-      ~{estimatedEstimatedModelFile} \
-      ~{estimatedEstimatedIsoformResults} \
-      ~{theTheTa0} \
-      ~{nN} \
-      ~{outputOutputName}
+      ~{reference_name} \
+      ~{estimated_model_file} \
+      ~{estimated_isoform_results} \
+      ~{theta_zero} \
+      ~{n} \
+      ~{output_name} \
+      ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
+      ~{true="-q" false="" q}
   >>>
+  parameter_meta {
+    seed: ""
+    q: ""
+    reference_name: ""
+    estimated_model_file: ""
+    estimated_isoform_results: ""
+    theta_zero: ""
+    n: ""
+    output_name: ""
+  }
 }

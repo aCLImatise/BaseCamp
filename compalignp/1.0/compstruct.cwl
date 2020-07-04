@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: compstruct.cwl
+id: ../../../../home/ubuntu/BiocondaCli/compstruct.cwl
 inputs:
 - id: in_format
   doc: ': specify that both alignments are in format <s> (SELEX, for instance)'
@@ -11,6 +11,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

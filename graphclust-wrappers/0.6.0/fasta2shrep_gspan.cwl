@@ -1,27 +1,7 @@
 class: CommandLineTool
-id: fasta2shrep_gspan.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fasta2shrep_gspan.pl.cwl
 inputs:
-- id: wins
-  doc: '""'
-  type: boolean
-  inputBinding:
-    prefix: -wins
-- id: shift
-  doc: 1 nt
-  type: boolean
-  inputBinding:
-    prefix: -shift
-- id: c
-  doc: '10'
-  type: boolean
-  inputBinding:
-    prefix: -c
-- id: t
-  doc: '3'
-  type: boolean
-  inputBinding:
-    prefix: -t
-- id: m
+- id: _selects_shreps
   doc: '0 # selects all shreps'
   type: boolean
   inputBinding:

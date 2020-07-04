@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: deepbgc_info.cwl
+id: ../../../../home/ubuntu/BiocondaCli/deepbgc_info.cwl
 inputs:
 - id: debug
   doc: ''

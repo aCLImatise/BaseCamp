@@ -2,16 +2,19 @@ version 1.0
 
 task GimmeMatch {
   input {
-    String dD
-    Int nN
-    File oO
-    String? pfmPfmFile
+    Boolean? h
+    String? d
+    Int? n
   }
   command <<<
     gimme match \
-      ~{pfmPfmFile} \
-      ~{if defined(dD) then ("-d " +  '"' + dD + '"') else ""} \
-      ~{if defined(nN) then ("-n " +  '"' + nN + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""}
+      ~{true="-h" false="" h} \
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
+      ~{if defined(n) then ("-n " +  '"' + n + '"') else ""}
   >>>
+  parameter_meta {
+    h: ""
+    d: ""
+    n: ""
+  }
 }

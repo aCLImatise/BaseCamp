@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: obsym.cwl
+id: ../../../../home/ubuntu/BiocondaCli/obsym.cwl
 inputs:
 - id: input_file
   doc: ''

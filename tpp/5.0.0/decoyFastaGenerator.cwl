@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: decoyFastaGenerator.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/decoyFastaGenerator.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: hmmeralign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hmmeralign.cwl
 inputs:
-- id: o
+- id: output_alignment_file
   doc: ': output alignment to file <f>, not stdout'
   type: string
   inputBinding:
@@ -41,6 +41,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --outformat
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

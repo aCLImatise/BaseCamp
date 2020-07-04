@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: last_split.cwl
+id: ../../../../home/ubuntu/BiocondaCli/last_split.cwl
 inputs:
-- id: last_alignments_maf
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: format
   doc: 'output format: MAF, MAF+ (default=MAF+)'
   type: string
@@ -66,6 +61,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: last_alignments_dot_maf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,10 +2,13 @@ version 1.0
 
 task Hostid {
   input {
-    String? optionOption
+    String? option
   }
   command <<<
     hostid \
-      ~{optionOption}
+      ~{option}
   >>>
+  parameter_meta {
+    option: ""
+  }
 }

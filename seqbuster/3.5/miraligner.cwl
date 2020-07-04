@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: miraligner.cwl
+id: ../../../../home/ubuntu/BiocondaCli/miraligner.cwl
 inputs:
 - id: add
   doc: 'nt allowed for addition processes Default: 3'
@@ -26,7 +26,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -freq
-- id: i
+- id: input
   doc: input
   type: boolean
   inputBinding:
@@ -36,7 +36,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -minl
-- id: o
+- id: output
   doc: output
   type: boolean
   inputBinding:
@@ -46,7 +46,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -pre
-- id: s
+- id: three_letter_code
   doc: three letter code for species
   type: boolean
   inputBinding:
@@ -61,11 +61,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -trim
-- id: v
+- id: version_default_false
   doc: 'version Default: false'
   type: boolean
   inputBinding:
     prefix: -v
+- id: main_class
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

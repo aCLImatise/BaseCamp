@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pullseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pullseq.cwl
 inputs:
 - id: input
   doc: ',       Input fasta/fastq file (required)'

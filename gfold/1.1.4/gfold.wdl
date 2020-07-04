@@ -2,16 +2,22 @@ version 1.0
 
 task Gfold {
   input {
-    String? gGFold
-    String? authorAuthor
-    String? dateDate
-    String? versionVersion
+    String g_fold
+    String author
+    String date
+    String version
   }
   command <<<
     gfold \
-      ~{gGFold} \
-      ~{authorAuthor} \
-      ~{dateDate} \
-      ~{versionVersion}
+      ~{g_fold} \
+      ~{author} \
+      ~{date} \
+      ~{version}
   >>>
+  parameter_meta {
+    g_fold: ":   Generalized fold change for ranking differentially expressed    genes from RNA-seq data."
+    author: ":   Jianxing Feng (jianxing.tongji@gmail.com)"
+    date: ":   Sun May 24 07:42:36 CST 2015"
+    version: ":   V1.1.4"
+  }
 }

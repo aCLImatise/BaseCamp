@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastasubseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastasubseq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

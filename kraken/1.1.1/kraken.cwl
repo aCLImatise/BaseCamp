@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: kraken.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kraken.cwl
 inputs:
 - id: db
   doc: 'Name for Kraken DB (default: none)'
@@ -31,7 +31,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gzip-compressed
-- id: bzip2_compressed
+- id: bzip_two_compressed
   doc: Input is bzip2 compressed
   type: boolean
   inputBinding:

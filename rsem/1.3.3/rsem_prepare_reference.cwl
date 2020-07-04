@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rsem_prepare_reference.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rsem_prepare_reference.cwl
 inputs:
 - id: gtf
   doc: "If this option is on, RSEM assumes that 'reference_fasta_file(s)' contains\
@@ -11,20 +11,20 @@ inputs:
   type: File
   inputBinding:
     prefix: --gtf
-- id: gff3
+- id: gff_three
   doc: "The annotation file is in GFF3 format instead of GTF format. RSEM will first\
     \ convert it to GTF format with the file name 'reference_name.gtf'. Please make\
     \ sure that 'reference_name.gtf' does not exist. (Default: off)"
   type: File
   inputBinding:
     prefix: --gff3
-- id: gff3_rna_patterns
+- id: gff_three_rna_patterns
   doc: '<pattern> is a comma-separated list of transcript categories, e.g. "mRNA,rRNA".
     Only transcripts that match the <pattern> will be extracted. (Default: "mRNA")'
   type: string
   inputBinding:
     prefix: --gff3-RNA-patterns
-- id: gff3_genes_as_transcripts
+- id: gff_three_genes_as_transcripts
   doc: This option is designed for untypical organisms, such as viruses, whose GFF3
     files only contain genes. RSEM will assume each gene as a unique transcript when
     it converts the GFF3 file into GTF format.
@@ -92,12 +92,12 @@ inputs:
   type: File
   inputBinding:
     prefix: --bowtie-path
-- id: bowtie2
+- id: bowtie_two
   doc: 'Build Bowtie 2 indices. (Default: off)'
   type: boolean
   inputBinding:
     prefix: --bowtie2
-- id: bowtie2_path
+- id: bowtie_two_path
   doc: "The path to the Bowtie 2 executables. (Default: the path to Bowtie 2 executables\
     \ is assumed to be in the user's PATH environment variable)"
   type: File
@@ -124,29 +124,33 @@ inputs:
   type: long
   inputBinding:
     prefix: --star-sjdboverhang
-- id: hisat2_hca
+- id: his_at_two_hca
   doc: 'Build HISAT2 indices on the transcriptome according to Human Cell Atlas (HCA)
     SMART-Seq2 pipeline. (Default: off)'
   type: boolean
   inputBinding:
     prefix: --hisat2-hca
-- id: hisat2_path
+- id: his_at_two_path
   doc: "The path to the HISAT2 executables. (Default: the path to HISAT2 executables\
     \ is assumed to be in the user's PATH environment variable)"
   type: File
   inputBinding:
     prefix: --hisat2-path
-- id: p
-  doc: "/--num-threads <int> Number of threads to use for building STAR's genome indices.\
-    \ (Default: 1)"
+- id: p_slash_num_threads
+  doc: "Number of threads to use for building STAR's genome indices. (Default: 1)"
+  type: long
+  inputBinding:
+    prefix: -p/--num-threads
+- id: q_slash_quiet
+  doc: 'Suppress the output of logging information. (Default: off)'
   type: boolean
   inputBinding:
-    prefix: -p
-- id: q
-  doc: '/--quiet Suppress the output of logging information. (Default: off)'
+    prefix: -q/--quiet
+- id: h_slash_help
+  doc: Show help information.
   type: boolean
   inputBinding:
-    prefix: -q
+    prefix: -h/--help
 - id: prep_pr_sem
   doc: 'A Boolean indicating whether to prepare reference files for pRSEM, including
     building Bowtie indices for a genome and selecting training set isoforms. The

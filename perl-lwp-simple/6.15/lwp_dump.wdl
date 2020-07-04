@@ -2,10 +2,13 @@ version 1.0
 
 task LwpDump {
   input {
-    String? urlUrl
+    String url
   }
   command <<<
     lwp-dump \
-      ~{urlUrl}
+      ~{url}
   >>>
+  parameter_meta {
+    url: ""
+  }
 }

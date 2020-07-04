@@ -1,31 +1,31 @@
 class: CommandLineTool
-id: vsnp_spoligotype.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vsnp_spoligotype.py.cwl
 inputs:
-- id: prog
-  doc: ''
+- id: read_one
+  doc: 'Required: single read'
   type: string
   inputBinding:
-    position: 0
-- id: r1
-  doc: ''
+    prefix: --read1
+- id: read_two
+  doc: 'Optional: paired read'
   type: string
   inputBinding:
-    prefix: -r1
-- id: r2
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -r2
-- id: d
-  doc: ''
+    prefix: --read2
+- id: debug
+  doc: turn off map.pooling of samples
   type: boolean
   inputBinding:
-    prefix: -d
+    prefix: --debug
 - id: v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
+- id: prog
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

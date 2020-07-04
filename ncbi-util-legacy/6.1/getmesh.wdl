@@ -2,10 +2,13 @@ version 1.0
 
 task Getmesh {
   input {
-    Boolean oO
+    Boolean? output_list
   }
   command <<<
     getmesh \
-      ~{true="-o" false="" oO}
+      ~{true="-o" false="" output_list}
   >>>
+  parameter_meta {
+    output_list: "Output list [File Out]"
+  }
 }

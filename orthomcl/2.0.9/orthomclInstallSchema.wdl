@@ -2,14 +2,19 @@ version 1.0
 
 task OrthomclInstallSchema {
   input {
-    String? configConfigFile
-    String? sqlSqlLogFile
-    String? tableTableSuffix
+    String config_file
+    String sql_log_file
+    String table_suffix
   }
   command <<<
     orthomclInstallSchema \
-      ~{configConfigFile} \
-      ~{sqlSqlLogFile} \
-      ~{tableTableSuffix}
+      ~{config_file} \
+      ~{sql_log_file} \
+      ~{table_suffix}
   >>>
+  parameter_meta {
+    config_file: ""
+    sql_log_file: ""
+    table_suffix: ""
+  }
 }

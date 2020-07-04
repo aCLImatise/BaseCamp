@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcf2bed.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf2bed.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

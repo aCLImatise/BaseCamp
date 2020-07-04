@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: garnett_get_feature_genes.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/garnett_get_feature_genes.R.cwl
 inputs:
 - id: classifier_object
   doc: path to the object of class garnett_classifier, which is either trained via

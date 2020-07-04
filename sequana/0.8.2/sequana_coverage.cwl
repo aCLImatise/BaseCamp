@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sequana_coverage.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sequana_coverage.cwl
 inputs:
 - id: input
   doc: 'Input file in BED or BAM format. If a BAM file is provided, it will be converted
@@ -101,13 +101,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --clustering-parameter
-- id: s
+- id: length_chunk_used
   doc: '[minimum=1000000], --chunk-size [minimum=1000000] Length of the chunk to be
     used for the analysis. (default: 5000000)'
   type: boolean
   inputBinding:
     prefix: -s
-- id: b
+- id: merge_consecutive_points
   doc: '[minimum=2], --binning [minimum=2] merge consecutive (non overlapping) data
     points, taking the mean. This is useful for large genome (e.g. human). This allows
     a faster computation, especially for CNV detection were only large windows are
@@ -128,6 +128,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --database
+- id: welcome
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: to
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: se_quan_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

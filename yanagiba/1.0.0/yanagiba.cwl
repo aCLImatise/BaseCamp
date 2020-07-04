@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: yanagiba.cwl
+id: ../../../../home/ubuntu/BiocondaCli/yanagiba.cwl
 inputs:
 - id: in_file
   doc: Input fastq.gz file.

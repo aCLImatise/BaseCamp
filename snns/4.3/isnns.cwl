@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: isnns.cwl
+id: ../../../../home/ubuntu/BiocondaCli/isnns.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

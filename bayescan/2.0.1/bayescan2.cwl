@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bayescan2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bayescan2.cwl
 inputs:
 - id: out_pilot
   doc: Optional output file for pilot runs

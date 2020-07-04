@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mixdata.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mixdata.cwl
 inputs:
 - id: reference
   doc: Reference sequence FASTA FILE [null]
@@ -11,16 +11,21 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
-- id: reference
-  doc: Reference sequence FASTA FILE [null]
-  type: File
+- id: sam_tools
+  doc: ''
+  type: string
   inputBinding:
-    prefix: --reference
-- id: threads
-  doc: Number of additional threads to use [0]
-  type: long
+    position: 0
+- id: view
+  doc: ''
+  type: string
   inputBinding:
-    prefix: --threads
+    position: 1
+- id: in_dot_bam
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

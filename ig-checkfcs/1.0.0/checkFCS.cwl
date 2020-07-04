@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: checkFCS.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/checkFCS.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

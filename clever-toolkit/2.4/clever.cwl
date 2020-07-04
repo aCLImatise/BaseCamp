@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: clever.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clever.cwl
 inputs:
 - id: sorted
   doc: Input BAM file is sorted by position. Note that this requires alternative alignments
@@ -18,49 +18,49 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --use_mapq
-- id: t
+- id: number_use_default
   doc: Number of threads to use (default=1).
   type: string
   inputBinding:
     prefix: -T
-- id: f
+- id: delete_old_result
   doc: Delete old result and working directory first (if present).
   type: boolean
   inputBinding:
     prefix: -f
-- id: w
+- id: working_directory_default
   doc: 'Working directory (default: <result-directory>/work).'
   type: string
   inputBinding:
     prefix: -w
-- id: a
+- id: recompute_as_tags
   doc: Do not (re-)compute AS tags. If given, the argument <ref.fasta(.gz)> is ignored.
   type: boolean
   inputBinding:
     prefix: -a
-- id: k
+- id: keep_default_directory
   doc: 'Keep working directory (default: delete directory when finished).'
   type: boolean
   inputBinding:
     prefix: -k
-- id: r
+- id: take_read_groups
   doc: Take read groups into account (multi sample mode).
   type: boolean
   inputBinding:
     prefix: -r
-- id: c
+- id: additional_parameters_passed
   doc: Additional parameters to be passed to the CLEVER core algorithm. Call "clever-core"
     without parameters for a list of options.
   type: string
   inputBinding:
     prefix: -C
-- id: p
+- id: additional_parameters_postprocessing
   doc: Additional parameters for postprocessing results. Call "postprocess-predictions"
     without parameters for a list of options.
   type: string
   inputBinding:
     prefix: -P
-- id: i
+- id: create_plot_internal
   doc: Create a plot of internal segment size distribution (=fragment size - 2x read
     length). Also displays the estimated normal distribution (requires NumPy and matplotlib).
   type: boolean
@@ -71,6 +71,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --chromosome
+- id: bam_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

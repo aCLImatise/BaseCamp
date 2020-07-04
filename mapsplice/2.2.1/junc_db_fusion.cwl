@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: junc_db_fusion.cwl
+id: ../../../../home/ubuntu/BiocondaCli/junc_db_fusion.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

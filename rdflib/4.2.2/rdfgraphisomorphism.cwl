@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: rdfgraphisomorphism.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rdfgraphisomorphism.cwl
 inputs:
-- id: file_1
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
-- id: file_n
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
 - id: stdin
   doc: Load from STDIN as well
   type: boolean
@@ -22,6 +12,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --format
+- id: file_n
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

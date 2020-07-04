@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: Tm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Tm.cwl
 inputs:
-- id: seq
-  doc: nucleotide sequence
-  type: string
-  inputBinding:
-    position: 0
 - id: uncorrected
   doc: Do not use monovalent/divalent cation corrections
   type: boolean

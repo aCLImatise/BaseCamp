@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastutils_revcomp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastutils_revcomp.cwl
 inputs:
 - id: in
   doc: input file in fasta/q format [stdin]

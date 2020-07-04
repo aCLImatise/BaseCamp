@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gemBS.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gemBS.cwl
 inputs:
 - id: loglevel
   doc: Log level (error, warn, info, debug)
@@ -16,6 +16,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --dir
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
 outputs: []
 cwlVersion: v1.1
 baseCommand:

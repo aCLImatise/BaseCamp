@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: omero_delete.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_delete.cwl
 inputs:
-- id: obj
-  doc: Objects to be processed in the form <Class>:<Id>
-  type: string
-  inputBinding:
-    position: 0
 - id: wait
   doc: Number of seconds to wait for the processing to complete (Indefinite < 0; No
     wait=0).
@@ -48,6 +43,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --force
+- id: obj
+  doc: Objects to be processed in the form <Class>:<Id>
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,22 +1,7 @@
 class: CommandLineTool
-id: metacherchant.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/metacherchant.sh.cwl
 inputs:
-- id: meta_cher_chant
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: launch_options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: input_parameters
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: k
+- id: kmer_size_mandatory
   doc: k-mer size (MANDATORY)
   type: string
   inputBinding:
@@ -52,6 +37,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --force
+- id: launch_options
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: input_parameters
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

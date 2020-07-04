@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dbtell.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dbtell.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

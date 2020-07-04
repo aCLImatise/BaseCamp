@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: quasitools.cwl
+id: ../../../../home/ubuntu/BiocondaCli/quasitools.cwl
 inputs:
 - id: verbose
   doc: Enables verbose mode.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FeatureFinderIsotopeWavelet.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FeatureFinderIsotopeWavelet.cwl
 inputs:
 - id: in
   doc: "*        Input file (valid formats: 'mzML')"
@@ -31,16 +31,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Algorithm section
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
-- id: http
-  doc: ://www.openms.de/documentation/TOPP_FeatureFinderIsotopeWavelet.html
-  type: boolean
-  inputBinding:
-    prefix: '- http'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

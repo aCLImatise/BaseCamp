@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: juicer_shortform2pairs.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/juicer_shortform2pairs.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

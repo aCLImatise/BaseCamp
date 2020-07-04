@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cactus_barTests.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cactus_barTests.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

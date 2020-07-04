@@ -1,23 +1,23 @@
 class: CommandLineTool
-id: vardict.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vardict.pl.cwl
 inputs:
-- id: b
+- id: minimum_determine_default
   doc: 'The minimum # of reads to determine strand bias, default 2'
   type: long
   inputBinding:
     prefix: -B
-- id: q
+- id: set_reads_less
   doc: If set, reads with mapping quality less than INT will be filtered and ignored
   type: long
   inputBinding:
     prefix: -Q
-- id: q
+- id: phred_score_considered
   doc: 'The phred score for a base to be considered a good call.  Default: 22.5 (for
     Illumina) For PGM, set it to ~15, as PGM tends to under estimate base quality.'
   type: long
   inputBinding:
     prefix: -q
-- id: m
+- id: set_reads_mismatches
   doc: 'If set, reads with mismatches more than INT will be filtered and ignored.  Gaps
     are not counted as mismatches.   Valid only for bowtie2/TopHat or BWA aln followed
     by sampe.  BWA mem is calculated as NM - Indels.  Default: 8, or reads with more
@@ -30,7 +30,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --trim
-- id: x
+- id: extension_bp_look
   doc: Extension of bp to look for mismatches after insersion or deletion.  Default
     to 3 bp, or only calls when they are within 3 bp.
   type: long
@@ -43,7 +43,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --ref-extension
-- id: p
+- id: read_position_filter
   doc: 'The read position filter.  If the mean variants position is less that specified,
     it is considered false positive.  Default: 5'
   type: string
@@ -55,30 +55,30 @@ inputs:
   type: string
   inputBinding:
     prefix: --downsample
-- id: o
+- id: qratio_goodqualityreadsbadqualityreads_quality
   doc: 'The Qratio of (good_quality_reads)/(bad_quality_reads+0.5).  The quality is
     defined by -q option.  Default: 1.5'
   type: string
   inputBinding:
     prefix: -o
-- id: o
+- id: reads_should_at
   doc: 'The reads should have at least mean MapQ to be considered a valid variant.  Default:
     no filtering'
   type: string
   inputBinding:
     prefix: -O
-- id: v
+- id: lowest_frequency_normal
   doc: The lowest frequency in normal sample allowed for a putative somatic mutations.  Default
     to 0.05
   type: string
   inputBinding:
     prefix: -V
-- id: i
+- id: indel_size_bp
   doc: 'The indel size.  Default: 50bp'
   type: long
   inputBinding:
     prefix: -I
-- id: m
+- id: minimum_matches_read
   doc: 'The minimum matches for a read to be considered.  If, after soft-clipping,
     the matched bp is less than INT, then the  read is discarded.  It is meant for
     PCR based targeted sequencing where there is no insert and the matching is only
@@ -86,7 +86,7 @@ inputs:
   type: long
   inputBinding:
     prefix: -M
-- id: l
+- id: minimum_structural_variant
   doc: 'The minimum structural variant length to be presented using <DEL> <DUP> <INV>
     <INS>, etc.  Default: 500.  Any indel, complex variants less than this will be
     spelled out with exact nucleotides'
@@ -103,7 +103,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --insert-std
-- id: a
+- id: number_std_pair
   doc: 'The number of STD.  A pair will be considered for DEL if INSERT > INSERT_SIZE
     + INSERT_STD_AMT * INSERT_STD.  Default: 4'
   type: string
@@ -117,7 +117,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --crispr
-- id: j
+- id: crispr_mode_amount
   doc: 'In CRISPR mode, the minimum amount in bp that a read needs to overlap with
     cutting site.  If a read does not meet the criteria, it will not be used for variant
     calling, since it is likely just a partially amplified PCR.  Default: not set,

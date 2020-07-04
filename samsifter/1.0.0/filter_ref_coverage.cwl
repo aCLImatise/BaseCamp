@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filter_ref_coverage.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_ref_coverage.cwl
 inputs:
 - id: input
   doc: 'specify SAM file to be analysed (default: STDIN)'

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: extract_reference.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extract_reference.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

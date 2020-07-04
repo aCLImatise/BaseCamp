@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tag2sort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tag2sort.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: idr.cwl
+id: ../../../../home/ubuntu/BiocondaCli/idr.cwl
 inputs:
-- id: samples
+- id: samples_samples_samples
   doc: SAMPLES, -s SAMPLES SAMPLES Files containing peaks and scores.
   type: string
   inputBinding:
@@ -152,6 +152,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: var_28
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

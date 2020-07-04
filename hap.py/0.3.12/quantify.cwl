@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: quantify.cwl
+id: ../../../../home/ubuntu/BiocondaCli/quantify.cwl
 inputs:
 - id: input_file
   doc: The input file
   type: string
   inputBinding:
     prefix: --input-file
-- id: o
+- id: arg_output_file
   doc: '[ --output-file ] arg   The output file name (TSV Format).'
   type: boolean
   inputBinding:
     prefix: -o
-- id: v
+- id: arg_annotated_vcf
   doc: '[ --output-vcf ] arg    Annotated VCF file (with bed annotations).'
   type: boolean
   inputBinding:
@@ -48,17 +48,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --qq-header
-- id: r
+- id: arg_reference_fasta
   doc: '[ --reference ] arg     The reference fasta file (needed only for VCF  output).'
   type: boolean
   inputBinding:
     prefix: -r
-- id: l
+- id: arg_start_location
   doc: '[ --location ] arg      Start location.'
   type: boolean
   inputBinding:
     prefix: -l
-- id: r
+- id: arg_region_bed
   doc: '[ --regions ] arg       Region bed file. You can attach a label by  prefixing
     with a colon, e.g. -R  FP2:false-positives-type2.bed'
   type: boolean
@@ -76,7 +76,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --type
-- id: o
+- id: arg_bed_file
   doc: '[ --only ] arg          Bed file of locations (equivalent to -R in  bcftools)'
   type: boolean
   inputBinding:
@@ -91,7 +91,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --message-every
-- id: f
+- id: arg_apply_filtering
   doc: '[ --apply-filters ] arg Apply filtering in VCF.'
   type: boolean
   inputBinding:

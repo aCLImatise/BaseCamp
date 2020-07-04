@@ -2,26 +2,37 @@ version 1.0
 
 task Droptag {
   input {
-    File configConfig
-    String logLogPrefix
-    String nameName
-    String parallelParallel
-    Boolean saveSaveReadsParams
-    Boolean saveSaveStats
-    Boolean readsReadsPerOutFile
-    String libLibTag
-    Boolean quietQuiet
+    File? config
+    String? log_prefix
+    String? name
+    String? parallel
+    Boolean? save_reads_params
+    Boolean? save_stats
+    Boolean? reads_per_out_file
+    String? lib_tag
+    Boolean? quiet
   }
   command <<<
     droptag \
-      ~{if defined(configConfig) then ("--config " +  '"' + configConfig + '"') else ""} \
-      ~{if defined(logLogPrefix) then ("--log-prefix " +  '"' + logLogPrefix + '"') else ""} \
-      ~{if defined(nameName) then ("--name " +  '"' + nameName + '"') else ""} \
-      ~{if defined(parallelParallel) then ("--parallel " +  '"' + parallelParallel + '"') else ""} \
-      ~{true="--save-reads-params" false="" saveSaveReadsParams} \
-      ~{true="--save-stats" false="" saveSaveStats} \
-      ~{true="--reads-per-out-file" false="" readsReadsPerOutFile} \
-      ~{if defined(libLibTag) then ("--lib-tag " +  '"' + libLibTag + '"') else ""} \
-      ~{true="--quiet" false="" quietQuiet}
+      ~{if defined(config) then ("--config " +  '"' + config + '"') else ""} \
+      ~{if defined(log_prefix) then ("--log-prefix " +  '"' + log_prefix + '"') else ""} \
+      ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
+      ~{if defined(parallel) then ("--parallel " +  '"' + parallel + '"') else ""} \
+      ~{true="--save-reads-params" false="" save_reads_params} \
+      ~{true="--save-stats" false="" save_stats} \
+      ~{true="--reads-per-out-file" false="" reads_per_out_file} \
+      ~{if defined(lib_tag) then ("--lib-tag " +  '"' + lib_tag + '"') else ""} \
+      ~{true="--quiet" false="" quiet}
   >>>
+  parameter_meta {
+    config: ": xml file with droptag parameters"
+    log_prefix: ": logs prefix"
+    name: ": alternative output base name"
+    parallel: ": number of threads"
+    save_reads_params: ": serialize reads parameters to save quality info"
+    save_stats: ": save stats to rds file"
+    reads_per_out_file: ": maximum number of reads per output file; (0 - unlimited). Overrides corresponding xml parameter."
+    lib_tag: "tag : (for IndropV3 with library tag only)"
+    quiet: ": disable logs"
+  }
 }

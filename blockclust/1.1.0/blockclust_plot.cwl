@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: blockclust_plot.r.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blockclust_plot.r.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: progressiveMauve.cwl
+id: ../../../../home/ubuntu/BiocondaCli/progressiveMauve.cwl
 inputs:
 - id: island_gap_size
   doc: Alignment gaps above this size in nucleotides are considered to be islands
@@ -70,13 +70,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --debug
-- id: scratch_path_1
+- id: scratch_path_one
   doc: Designate a path that can be used for temporary data storage.  Two or more
     paths should be specified.
   type: File
   inputBinding:
     prefix: --scratch-path-1
-- id: scratch_path_2
+- id: scratch_path_two
   doc: Designate a path that can be used for temporary data storage.  Two or more
     paths should be specified.
   type: File
@@ -88,9 +88,8 @@ inputs:
   inputBinding:
     prefix: --collinear
 - id: scoring_scheme
-  doc: =<ancestral|sp_ancestral|sp> Selects the anchoring score function.  Default
-    is extant sum-of-pairs (sp).
-  type: boolean
+  doc: Selects the anchoring score function.  Default is extant sum-of-pairs (sp).
+  type: string
   inputBinding:
     prefix: --scoring-scheme
 - id: no_weight_scaling
@@ -141,9 +140,9 @@ inputs:
   inputBinding:
     prefix: --gap-open
 - id: repeat_penalty
-  doc: =<negative|zero> Sets whether the repeat scores go negative or go to zero for
-    highly repetitive sequences.  Default is negative.
-  type: boolean
+  doc: Sets whether the repeat scores go negative or go to zero for highly repetitive
+    sequences.  Default is negative.
+  type: string
   inputBinding:
     prefix: --repeat-penalty
 - id: gap_extend
@@ -208,6 +207,46 @@ inputs:
   type: string
   inputBinding:
     prefix: --no-recursion
+- id: when
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: each
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: genome
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: resides
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: in
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
+- id: a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 5
+- id: separate
+  doc: ''
+  type: string
+  inputBinding:
+    position: 6
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 7
 outputs: []
 cwlVersion: v1.1
 baseCommand:

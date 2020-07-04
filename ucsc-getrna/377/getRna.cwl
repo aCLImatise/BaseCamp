@@ -1,6 +1,21 @@
 class: CommandLineTool
-id: getRna.cwl
+id: ../../../../home/ubuntu/BiocondaCli/getRna.cwl
 inputs:
+- id: cds_upper_all
+  doc: '- like -cdsUpper, except keep sequeneces without CDS'
+  type: boolean
+  inputBinding:
+    prefix: -cdsUpperAll
+- id: incl_ver
+  doc: '- include version with sequence id.'
+  type: boolean
+  inputBinding:
+    prefix: -inclVer
+- id: peptides
+  doc: '- translate mRNAs to peptides'
+  type: boolean
+  inputBinding:
+    prefix: -peptides
 - id: database
   doc: ''
   type: string
@@ -16,21 +31,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: cds_upper_all
-  doc: ', except keep sequeneces without CDS'
-  type: boolean
-  inputBinding:
-    prefix: -cdsUpperAll
-- id: include
-  doc: with sequence id.
-  type: string
-  inputBinding:
-    prefix: '- include'
-- id: translate
-  doc: to peptides
-  type: string
-  inputBinding:
-    prefix: '- translate'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

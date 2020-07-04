@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sepMPSfusion.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sepMPSfusion.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

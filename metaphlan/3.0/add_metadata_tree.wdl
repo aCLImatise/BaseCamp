@@ -2,12 +2,22 @@ version 1.0
 
 task AddMetadataTree.py {
   input {
-    String stringStringToRemove
-    Array[String]+ metadataMetadataS
+    String? string_to_remove
+    Array[String] metadata_s
+    Array[String] t
+    Array[String] f
   }
   command <<<
     add_metadata_tree.py \
-      ~{if defined(stringStringToRemove) then ("--string_to_remove " +  '"' + stringStringToRemove + '"') else ""} \
-      ~{if defined(metadataMetadataS) then ("--metadatas " +  '"' + metadataMetadataS + '"') else ""}
+      ~{if defined(string_to_remove) then ("--string_to_remove " +  '"' + string_to_remove + '"') else ""} \
+      ~{if defined(metadata_s) then ("--metadatas " +  '"' + metadata_s + '"') else ""} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  parameter_meta {
+    string_to_remove: "string to be removed in the tree node names"
+    metadata_s: "The metadata fields that you want to add. Default: add all metadata from the first line."
+    t: ""
+    f: ""
+  }
 }

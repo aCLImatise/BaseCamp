@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: extract_promoter_regions.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extract_promoter_regions.py.cwl
 inputs:
+- id: gzip
+  doc: Output will be compressed in GZip format.
+  type: boolean
+  inputBinding:
+    prefix: --gzip
 - id: little
   doc: ''
   type: string
@@ -36,16 +41,11 @@ inputs:
   type: string
   inputBinding:
     position: 6
-- id: genes
+- id: genes_dot
   doc: ''
   type: string
   inputBinding:
     position: 7
-- id: gzip
-  doc: Output will be compressed in GZip format.
-  type: boolean
-  inputBinding:
-    prefix: --gzip
 outputs: []
 cwlVersion: v1.1
 baseCommand:

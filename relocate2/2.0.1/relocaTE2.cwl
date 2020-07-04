@@ -1,6 +1,56 @@
 class: CommandLineTool
-id: relocaTE2.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/relocaTE2.py.cwl
 inputs:
+- id: bam
+  doc: Name of BAM file of read mapped reference genome
+  type: string
+  inputBinding:
+    prefix: --bam
+- id: te_fast_a
+  doc: Name of fasta sequence of repeat element
+  type: string
+  inputBinding:
+    prefix: --te_fasta
+- id: fq_dir
+  doc: Name of directory of input fastq sequence data
+  type: string
+  inputBinding:
+    prefix: --fq_dir
+- id: genome_fast_a
+  doc: Name of fasta file of reference genome sequence
+  type: string
+  inputBinding:
+    prefix: --genome_fasta
+- id: reference_ins
+  doc: Name of RepeatMasker TE annotation of reference genome
+  type: string
+  inputBinding:
+    prefix: --reference_ins
+- id: outdir
+  doc: Name of output directory where to put temperary and final results
+  type: string
+  inputBinding:
+    prefix: --outdir
+- id: size
+  doc: Insert size of sequence library, default = 500
+  type: long
+  inputBinding:
+    prefix: --size
+- id: cpu
+  doc: Number of CPUs to use for multiplex, default = 1
+  type: string
+  inputBinding:
+    prefix: --cpu
+- id: mate_one_id
+  doc: string define paired-end read1, default = "_1"
+  type: string
+  inputBinding:
+    prefix: --mate_1_id
+- id: mate_two_id
+  doc: string define paired-end read2, default = "_2"
+  type: string
+  inputBinding:
+    prefix: --mate_2_id
 - id: unpaired_id
   doc: string define single-end reads, default = ".unPaired"
   type: string

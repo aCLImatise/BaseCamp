@@ -2,84 +2,124 @@ version 1.0
 
 task AnviInteractive {
   input {
-    String profileProfileDb
-    String contigsContigsDb
-    String collectionCollectionName
-    Boolean manualManualMode
-    String fastFastAFile
-    String viewViewData
-    String treeTree
-    String itemsItemsOrder
-    String additionalAdditionalView
-    String additionalAdditionalLayers
-    Boolean geneGeneMode
-    Boolean inInSeqStats
-    String binBinId
-    String viewView
-    String titleTitle
-    String taxonomicTaxonomicLevel
-    Boolean splitSplitHmmLayers
-    Boolean hideHideOutlierSnVs
-    String stateStateAutoload
-    String collectionCollectionAutoload
-    File exportExportSvg
-    Boolean showShowViews
-    Boolean skipSkipCheckNames
-    String outputOutputDir
-    Boolean dryDryRun
-    Boolean showShowStates
-    Boolean listListCollections
-    Boolean skipSkipInItFunctions
-    Boolean skipSkipAutoOrdering
-    String distanceDistance
-    String linkageLinkage
-    String ipIpAddress
-    Int portPortNumber
-    File browserBrowserPath
-    Boolean readReadOnly
-    Boolean serverServerOnly
-    Boolean passwordPasswordProtected
-    Boolean userUserServerShutdown
+    String? profile_db
+    String? contigs_db
+    String? collection_name
+    Boolean? manual_mode
+    String? fast_a_file
+    String? view_data
+    String? tree
+    String? items_order
+    String? additional_view
+    String? additional_layers
+    Boolean? gene_mode
+    Boolean? in_seq_stats
+    String? bin_id
+    String? view
+    String? title
+    String? taxonomic_level
+    Boolean? split_hmm_layers
+    Boolean? hide_outlier_sn_vs
+    String? state_autoload
+    String? collection_autoload
+    File? export_svg
+    Boolean? show_views
+    Boolean? skip_check_names
+    String? output_dir
+    Boolean? dry_run
+    Boolean? show_states
+    Boolean? list_collections
+    Boolean? skip_in_it_functions
+    Boolean? skip_auto_ordering
+    String? distance
+    String? linkage
+    String? ip_address
+    Int? port_number
+    File? browser_path
+    Boolean? read_only
+    Boolean? server_only
+    Boolean? password_protected
+    Boolean? user_server_shutdown
   }
   command <<<
     anvi-interactive \
-      ~{if defined(profileProfileDb) then ("--profile-db " +  '"' + profileProfileDb + '"') else ""} \
-      ~{if defined(contigsContigsDb) then ("--contigs-db " +  '"' + contigsContigsDb + '"') else ""} \
-      ~{if defined(collectionCollectionName) then ("--collection-name " +  '"' + collectionCollectionName + '"') else ""} \
-      ~{true="--manual-mode" false="" manualManualMode} \
-      ~{if defined(fastFastAFile) then ("--fasta-file " +  '"' + fastFastAFile + '"') else ""} \
-      ~{if defined(viewViewData) then ("--view-data " +  '"' + viewViewData + '"') else ""} \
-      ~{if defined(treeTree) then ("--tree " +  '"' + treeTree + '"') else ""} \
-      ~{if defined(itemsItemsOrder) then ("--items-order " +  '"' + itemsItemsOrder + '"') else ""} \
-      ~{if defined(additionalAdditionalView) then ("--additional-view " +  '"' + additionalAdditionalView + '"') else ""} \
-      ~{if defined(additionalAdditionalLayers) then ("--additional-layers " +  '"' + additionalAdditionalLayers + '"') else ""} \
-      ~{true="--gene-mode" false="" geneGeneMode} \
-      ~{true="--inseq-stats" false="" inInSeqStats} \
-      ~{if defined(binBinId) then ("--bin-id " +  '"' + binBinId + '"') else ""} \
-      ~{if defined(viewView) then ("--view " +  '"' + viewView + '"') else ""} \
-      ~{if defined(titleTitle) then ("--title " +  '"' + titleTitle + '"') else ""} \
-      ~{if defined(taxonomicTaxonomicLevel) then ("--taxonomic-level " +  '"' + taxonomicTaxonomicLevel + '"') else ""} \
-      ~{true="--split-hmm-layers" false="" splitSplitHmmLayers} \
-      ~{true="--hide-outlier-SNVs" false="" hideHideOutlierSnVs} \
-      ~{if defined(stateStateAutoload) then ("--state-autoload " +  '"' + stateStateAutoload + '"') else ""} \
-      ~{if defined(collectionCollectionAutoload) then ("--collection-autoload " +  '"' + collectionCollectionAutoload + '"') else ""} \
-      ~{if defined(exportExportSvg) then ("--export-svg " +  '"' + exportExportSvg + '"') else ""} \
-      ~{true="--show-views" false="" showShowViews} \
-      ~{true="--skip-check-names" false="" skipSkipCheckNames} \
-      ~{if defined(outputOutputDir) then ("--output-dir " +  '"' + outputOutputDir + '"') else ""} \
-      ~{true="--dry-run" false="" dryDryRun} \
-      ~{true="--show-states" false="" showShowStates} \
-      ~{true="--list-collections" false="" listListCollections} \
-      ~{true="--skip-init-functions" false="" skipSkipInItFunctions} \
-      ~{true="--skip-auto-ordering" false="" skipSkipAutoOrdering} \
-      ~{if defined(distanceDistance) then ("--distance " +  '"' + distanceDistance + '"') else ""} \
-      ~{if defined(linkageLinkage) then ("--linkage " +  '"' + linkageLinkage + '"') else ""} \
-      ~{if defined(ipIpAddress) then ("--ip-address " +  '"' + ipIpAddress + '"') else ""} \
-      ~{if defined(portPortNumber) then ("--port-number " +  '"' + portPortNumber + '"') else ""} \
-      ~{if defined(browserBrowserPath) then ("--browser-path " +  '"' + browserBrowserPath + '"') else ""} \
-      ~{true="--read-only" false="" readReadOnly} \
-      ~{true="--server-only" false="" serverServerOnly} \
-      ~{true="--password-protected" false="" passwordPasswordProtected} \
-      ~{true="--user-server-shutdown" false="" userUserServerShutdown}
+      ~{if defined(profile_db) then ("--profile-db " +  '"' + profile_db + '"') else ""} \
+      ~{if defined(contigs_db) then ("--contigs-db " +  '"' + contigs_db + '"') else ""} \
+      ~{if defined(collection_name) then ("--collection-name " +  '"' + collection_name + '"') else ""} \
+      ~{true="--manual-mode" false="" manual_mode} \
+      ~{if defined(fast_a_file) then ("--fasta-file " +  '"' + fast_a_file + '"') else ""} \
+      ~{if defined(view_data) then ("--view-data " +  '"' + view_data + '"') else ""} \
+      ~{if defined(tree) then ("--tree " +  '"' + tree + '"') else ""} \
+      ~{if defined(items_order) then ("--items-order " +  '"' + items_order + '"') else ""} \
+      ~{if defined(additional_view) then ("--additional-view " +  '"' + additional_view + '"') else ""} \
+      ~{if defined(additional_layers) then ("--additional-layers " +  '"' + additional_layers + '"') else ""} \
+      ~{true="--gene-mode" false="" gene_mode} \
+      ~{true="--inseq-stats" false="" in_seq_stats} \
+      ~{if defined(bin_id) then ("--bin-id " +  '"' + bin_id + '"') else ""} \
+      ~{if defined(view) then ("--view " +  '"' + view + '"') else ""} \
+      ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
+      ~{if defined(taxonomic_level) then ("--taxonomic-level " +  '"' + taxonomic_level + '"') else ""} \
+      ~{true="--split-hmm-layers" false="" split_hmm_layers} \
+      ~{true="--hide-outlier-SNVs" false="" hide_outlier_sn_vs} \
+      ~{if defined(state_autoload) then ("--state-autoload " +  '"' + state_autoload + '"') else ""} \
+      ~{if defined(collection_autoload) then ("--collection-autoload " +  '"' + collection_autoload + '"') else ""} \
+      ~{if defined(export_svg) then ("--export-svg " +  '"' + export_svg + '"') else ""} \
+      ~{true="--show-views" false="" show_views} \
+      ~{true="--skip-check-names" false="" skip_check_names} \
+      ~{if defined(output_dir) then ("--output-dir " +  '"' + output_dir + '"') else ""} \
+      ~{true="--dry-run" false="" dry_run} \
+      ~{true="--show-states" false="" show_states} \
+      ~{true="--list-collections" false="" list_collections} \
+      ~{true="--skip-init-functions" false="" skip_in_it_functions} \
+      ~{true="--skip-auto-ordering" false="" skip_auto_ordering} \
+      ~{if defined(distance) then ("--distance " +  '"' + distance + '"') else ""} \
+      ~{if defined(linkage) then ("--linkage " +  '"' + linkage + '"') else ""} \
+      ~{if defined(ip_address) then ("--ip-address " +  '"' + ip_address + '"') else ""} \
+      ~{if defined(port_number) then ("--port-number " +  '"' + port_number + '"') else ""} \
+      ~{if defined(browser_path) then ("--browser-path " +  '"' + browser_path + '"') else ""} \
+      ~{true="--read-only" false="" read_only} \
+      ~{true="--server-only" false="" server_only} \
+      ~{true="--password-protected" false="" password_protected} \
+      ~{true="--user-server-shutdown" false="" user_server_shutdown}
   >>>
+  parameter_meta {
+    profile_db: "Anvi'o profile database"
+    contigs_db: "Anvi'o contigs database generated by 'anvi-gen- contigs'"
+    collection_name: "If you have a collection in your profile database, you can use this flag to start the interactive interface with a tree showing your bins in your collection, instead of each split. This is very useful when you have imported your external binning results into anvi'o, and want to see the distribution of your bins across samples. In these cases anvi'o will cluster your bins and based on multiple metrics. Because this particular clustering will be done on the fly within anvi'o interactive class, you get to define a disntance metric and a linkage method using --linkage and --distance parameters if you want!"
+    manual_mode: "Using this flag, you can run the interactive interface in an ad hoc manner using input files you curated instead of standard output files generated by an anvi'o run. In the manual mode you will be asked to provide a profile database. In this mode a profile database is only used to store 'state' of the interactive interface so you can reload your visual settings when you re-analyze the same files again. If the profile database you provide does not exist, anvi'o will create an empty one for you."
+    fast_a_file: "A FASTA-formatted input file"
+    view_data: "A TAB-delimited file for view data"
+    tree: "NEWICK formatted tree structure"
+    items_order: "A flat file that contains the order of items you wish the display using the interactive interface. You may want to use this if you have a specific order of items in your mind, and do not want to display a tree in the middle (or simply you don't have one). The file format is simple: each line should have an item name, and there should be no header."
+    additional_view: "A TAB-delimited file for an additional view to be used in the interface. This file should contain all split names, and values for each of them in all samples. Each column in this file must correspond to a sample name. Content of this file will be called 'user_view', which will be available as a new item in the 'views' combo box in the interface"
+    additional_layers: "A TAB-delimited file for additional layers for splits. The first column of this file must be split names, and the remaining columns should be unique attributes. The file does not need to contain all split names, or values for each split in every column. Anvi'o will try to deal with missing data nicely. Each column in this file will be visualized as a new layer in the tree."
+    gene_mode: "Initiate the interactive interface in 'gene mode'. In this mode, the items are genes (instead of splits of contigs). The following views are available: detection (the detection value of each gene in each sample). The mean_coverage (the mean coverage of genes). The non_outlier_mean_coverage (the mean coverage of the non-outlier nucleotide positions of each gene in each sample (median absolute deviation is used to remove outliers per gene per sample)). The non_outlier_coverage_std view (standard deviation of the coverage of non-outlier positions of genes in samples). You can also choose to order items and layers according to each one of the aforementioned views. In addition, all layer ordering that are available in the regular mode (i.e. the full mode where you have contigs/splits) are also available in 'gene mode', so that, for example, you can choose to order the layers according to 'detection', and that would be the order according to the detection values of splits, whereas if you choose 'genes_detections' then the order of layers would be according to the detection values of genes. Inspection and sequence functionality are available (through the right-click menu), except now sequences are of the specific gene. Inspection has now two options available: 'Inspect Context', which brings you to the inspection page of the split to which the gene belongs where the inspected gene will be highlighted in yellow in the bottom, and 'Inspect Gene', which opens the inspection page only for the gene and 100 nts around each side of it (the purpose of this option is to make the inspection page load faster if you only want to look at the nucleotide coverage of a specific gene). NOTICE: You can't store states or collections in 'gene mode'. However, you still can make fake selections, and create fake bins for your viewing convenience only (smiley). Search options are available, and you can even search for functions if you have them in your contigs database. ANOTHER NOTICE: loading this mode might take a while if your bin has many genes, and your profile database has many samples, this is because the gene coverages stats are computed in an ad-hoc manner when you load this mode, we know this is not ideal and we plan to improve that (along with other things). If you have suggestions/complaints regarding this mode please comment on this github issue: https://goo.gl/yHhRei. Please refer to the online tutorial for more information."
+    in_seq_stats: "Provide if working with INSeq/Tn-Seq genomic data. With this, all gene level coverage stats will be calculated using INSeq/Tn-Seq statistical methods."
+    bin_id: "Bin name you are interested in."
+    view: "Start the interface with a pre-selected view. To see a list of available views, use --show-views flag."
+    title: "Title for the interface. If you are working with a RUNINFO dict, the title will be determined based on information stored in that file. Regardless, you can override that value using this parameter."
+    taxonomic_level: "The taxonomic level to use whenever relevant and/or available. The default taxonomic level is t_genus, but if you choose something specific, anvi'o will focus on that whenever possible."
+    split_hmm_layers: "When declared, this flag tells the interface to split every gene found in HMM searches that were performed against non-singlecopy gene HMM profiles into their own layer. Please see the documentation for details."
+    hide_outlier_sn_vs: "During profiling, anvi'o marks positions of single- nucleotide variations (SNVs) that originate from places in contigs where coverage values are a bit 'sketchy'. If you would like to avoid SNVs in those positions of splits in applicable projects you can use this flag, and the interface would hide SNVs that are marked as 'outlier' (although it is clearly the best to see everything, no one will judge you if you end up using this flag) (plus, there may or may not be some historical data on this here: https://github.com/meren/anvio/issues/309)."
+    state_autoload: "Automatically load previous saved state and draw tree. To see a list of available states, use --show-states flag."
+    collection_autoload: "Automatically load a collection and draw tree. To see a list of available collections, use --list- collections flag."
+    export_svg: "The SVG output file path."
+    show_views: "When declared, the program will show a list of available views, and exit."
+    skip_check_names: "For debugging purposes. You should never really need it."
+    output_dir: "Directory path for output files"
+    dry_run: "Don't do anything real. Test everything, and stop right before wherever the developer said 'well, this is enough testing', and decided to print out results."
+    show_states: "When declared the program will print all available states and exit."
+    list_collections: "Show available collections and exit."
+    skip_in_it_functions: "When declared, function calls for genes will not be initialized (therefore will be missing from all relevant interfaces or output files). The use of this flag may reduce the memory fingerprint and processing time for large datasets."
+    skip_auto_ordering: "When declared, the attempt to include automatically generated orders of items based on additional data is skipped. In case those buggers cause issues with your data, and you still want to see your stuff and deal with the other issue maybe later."
+    distance: "The distance metric for the hierarchical clustering. Only relevant if you are running the interactive interface in \"collection\" mode. The default is \"euclidean\"."
+    linkage: "The linkage method for the hierarchical clustering. Only relevant if you are running the interactive interface in \"collection\" mode. The default is \"ward\"."
+    ip_address: "IP address for the HTTP server. The default ip address (0.0.0.0) should work just fine for most."
+    port_number: "Port number to use for anvi'o services. If nothing is declared, anvi'o will try to find a suitable port number, starting from the default port number, 8080."
+    browser_path: "By default, anvi'o will use your default browser to launch the interactive interface. If you would like to use something else than your system default, you can provide a full path for an alternative browser using this parameter, and hope for the best. For instance we are using this parameter to call Google's experimental browser, Canary, which performs better with demanding visualizations."
+    read_only: "When the interactive interface is started with this flag, all 'database write' operations will be disabled."
+    server_only: "The default behavior is to start the local server, and fire up a browser that connects to the server. If you have other plans, and want to start the server without calling the browser, this is the flag you need."
+    password_protected: "If this flag is set, command line tool will ask you to enter a password and interactive interface will be only accessible after entering same password. This option is recommended for shared machines like clusters or shared networks where computers are not isolated."
+    user_server_shutdown: "Allow users to shutdown an anvi'server via web interface."
+  }
 }

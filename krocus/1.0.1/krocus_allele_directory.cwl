@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: krocus_allele_directory.cwl
+id: ../../../../home/ubuntu/BiocondaCli/krocus_allele_directory.cwl
 inputs:
-- id: input_fast_q
+- id: input_dot_fast_q
   doc: ''
   type: string
   inputBinding:

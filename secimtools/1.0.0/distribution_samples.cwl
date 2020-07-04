@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: distribution_samples.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/distribution_samples.py.cwl
 inputs:
-- id: paths
-  doc: and outputs
-  type: File
-  inputBinding:
-    position: 0
 - id: input
   doc: Input dataset in wide format.
   type: string
@@ -51,6 +46,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --color
+- id: paths
+  doc: and outputs
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

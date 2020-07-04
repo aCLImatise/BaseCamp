@@ -2,10 +2,13 @@ version 1.0
 
 task XPressProteinRatioParser {
   input {
-    String? protProtXmlFile
+    String prot_xml_file
   }
   command <<<
     XPressProteinRatioParser \
-      ~{protProtXmlFile}
+      ~{prot_xml_file}
   >>>
+  parameter_meta {
+    prot_xml_file: ""
+  }
 }

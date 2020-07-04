@@ -2,14 +2,19 @@ version 1.0
 
 task _pngtogd {
   input {
-    String? pngPngToGd
-    File? filenameFilenamePng
-    File? filenameFilenameGd
+    String png_to_gd
+    File filename_dot_png
+    File filename_dot_gd
   }
   command <<<
     _pngtogd \
-      ~{pngPngToGd} \
-      ~{filenameFilenamePng} \
-      ~{filenameFilenameGd}
+      ~{png_to_gd} \
+      ~{filename_dot_png} \
+      ~{filename_dot_gd}
   >>>
+  parameter_meta {
+    png_to_gd: ""
+    filename_dot_png: ""
+    filename_dot_gd: ""
+  }
 }

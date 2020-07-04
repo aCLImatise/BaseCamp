@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: QCExtractor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/QCExtractor.cwl
 inputs:
 - id: in
   doc: "*        Input qcml file (valid formats: 'qcML')"

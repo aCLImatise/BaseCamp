@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: kart.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kart.cwl
 inputs:
-- id: t
+- id: number_of_threads
   doc: number of threads [4]
   type: long
   inputBinding:
@@ -11,12 +11,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -f
-- id: f2
+- id: f_two
   doc: 'files with #2 mates reads (format:fa, fq, fq.gz)'
   type: boolean
   inputBinding:
     prefix: -f2
-- id: o
+- id: alignment_filename_sam
   doc: alignment filename in SAM format [output.sam]
   type: boolean
   inputBinding:
@@ -26,17 +26,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -bo
-- id: m
+- id: output_multiple_alignments
   doc: output multiple alignments
   type: boolean
   inputBinding:
     prefix: -m
-- id: g
+- id: max_gaps_indels
   doc: max gaps (indels) [5]
   type: long
   inputBinding:
     prefix: -g
-- id: p
+- id: pairedend_reads_interlaced
   doc: paired-end reads are interlaced in the same file
   type: boolean
   inputBinding:
@@ -46,11 +46,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -pacbio
-- id: v
+- id: version
   doc: version
   type: boolean
   inputBinding:
     prefix: -v
+- id: i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
 outputs: []
 cwlVersion: v1.1
 baseCommand:

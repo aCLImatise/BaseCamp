@@ -2,14 +2,16 @@ version 1.0
 
 task FastqFilterN {
   input {
-    Boolean nN
-    String? 00
-    String? fastq1Fastq1
+    String? n
+    String fast_q_one
   }
   command <<<
     fastq_filter_n \
-      ~{00} \
-      ~{true="-n" false="" nN} \
-      ~{fastq1Fastq1}
+      ~{fast_q_one} \
+      ~{if defined(n) then ("-n " +  '"' + n + '"') else ""}
   >>>
+  parameter_meta {
+    n: ""
+    fast_q_one: ""
+  }
 }

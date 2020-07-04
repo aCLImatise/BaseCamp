@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: make_otu_heatmap_html.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/make_otu_heatmap_html.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

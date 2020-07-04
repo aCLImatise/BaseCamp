@@ -1,24 +1,18 @@
 class: CommandLineTool
-id: gatb_h5dump.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gatb_h5dump.cwl
 inputs:
-- id: options
-  doc: -h,   --help         Print a usage message and exit -V,   --version      Print
-    version number and exit
-  type: string
-  inputBinding:
-    position: 0
-- id: n
+- id: _contents_print
   doc: ',   --contents     Print a list of the file contents and exit Optional value
     1 also prints attributes.'
   type: boolean
   inputBinding:
     prefix: -n
-- id: b
+- id: _superblock_print
   doc: ',   --superblock   Print the content of the super block'
   type: boolean
   inputBinding:
     prefix: -B
-- id: h
+- id: _header_print
   doc: ',   --header       Print the header only; no data is displayed'
   type: boolean
   inputBinding:
@@ -75,18 +69,18 @@ inputs:
   type: string
   inputBinding:
     prefix: --any_path
-- id: a
+- id: _onlyattr_print
   doc: ',   --onlyattr     Print the header and value of attributes Optional value
     0 suppresses printing attributes.'
   type: boolean
   inputBinding:
     prefix: -A
-- id: i
+- id: _objectids_print
   doc: ',   --object-ids   Print the object ids'
   type: boolean
   inputBinding:
     prefix: -i
-- id: p
+- id: _properties_print
   doc: ',   --properties   Print dataset filters, storage layout and fill value'
   type: boolean
   inputBinding:
@@ -99,7 +93,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --packedbits
-- id: r
+- id: _region_dataset
   doc: ',   --region       Print dataset pointed by region references'
   type: boolean
   inputBinding:
@@ -115,12 +109,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --width
-- id: x
+- id: _xml_output
   doc: ',   --xml          Output in XML using Schema'
   type: boolean
   inputBinding:
     prefix: -x
-- id: u
+- id: _output_using
   doc: ',   --use-dtd      Output in XML using DTD'
   type: boolean
   inputBinding:
@@ -136,7 +130,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --xml-ns
-- id: s
+- id: _startstart_offset
   doc: ',  --start=START    Offset of start of subsetting selection'
   type: string
   inputBinding:
@@ -146,21 +140,22 @@ inputs:
   type: string
   inputBinding:
     prefix: --stride
-- id: c
+- id: _countcount_number
   doc: ',  --count=COUNT    Number of blocks to include in selection'
   type: string
   inputBinding:
     prefix: -c
-- id: k
+- id: _blockblock_size
   doc: ',  --block=BLOCK    Size of block in hyperslab'
   type: string
   inputBinding:
     prefix: -k
-- id: d
-  doc: (dataset) is used. B is an optional argument, defaults to NATIVE
-  type: boolean
+- id: options
+  doc: -h,   --help         Print a usage message and exit -V,   --version      Print
+    version number and exit
+  type: string
   inputBinding:
-    prefix: -d
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

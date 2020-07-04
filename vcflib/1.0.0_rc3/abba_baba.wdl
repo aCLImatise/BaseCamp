@@ -2,12 +2,13 @@ version 1.0
 
 task AbbaBaba {
   input {
-    String treeTree
-    String yourYour
+    String? tree
   }
   command <<<
     abba-baba \
-      ~{if defined(treeTree) then ("--tree " +  '"' + treeTree + '"') else ""} \
-      ~{if defined(yourYour) then ("-     Your " +  '"' + yourYour + '"') else ""}
+      ~{if defined(tree) then ("--tree " +  '"' + tree + '"') else ""}
   >>>
+  parameter_meta {
+    tree: ",B,C,D"
+  }
 }

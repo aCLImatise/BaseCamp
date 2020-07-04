@@ -1,22 +1,17 @@
 class: CommandLineTool
-id: mspicture.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mspicture.cwl
 inputs:
-- id: input_filenames
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: o
+- id: arg_output_directory
   doc: '[ --outdir ] arg (=.) : output directory'
   type: boolean
   inputBinding:
     prefix: -o
-- id: c
+- id: arg_configuration_file
   doc: '[ --config ] arg      : configuration file (optionName=value) (ignored)'
   type: boolean
   inputBinding:
     prefix: -c
-- id: l
+- id: arg_set_filename
   doc: '[ --label ] arg       : set filename label to xxx'
   type: boolean
   inputBinding:
@@ -36,17 +31,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --timeScale
-- id: b
+- id: arg_set_count
   doc: '[ --binCount ] arg    : set histogram bin count'
   type: boolean
   inputBinding:
     prefix: -b
-- id: t
+- id: render_linearly_time
   doc: '[ --time ]            : render linearly to time'
   type: boolean
   inputBinding:
     prefix: -t
-- id: s
+- id: render_linearly_scans
   doc: '[ --scan ]            : render linearly to scans'
   type: boolean
   inputBinding:
@@ -56,7 +51,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -z
-- id: w
+- id: arg_set_output
   doc: '[ --width ] arg       : set output bitmap width (default is calculated)'
   type: boolean
   inputBinding:
@@ -76,7 +71,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --binSum
-- id: m
+- id: indicate_masses_selected
   doc: '[ --ms2locs ]         : indicate masses selected for ms2'
   type: boolean
   inputBinding:
@@ -86,31 +81,36 @@ inputs:
   type: string
   inputBinding:
     prefix: --shape
-- id: p
+- id: arg_pepxml_file
   doc: '[ --pepxml ] arg      : pepxml file location'
   type: boolean
   inputBinding:
     prefix: -p
-- id: i
+- id: arg_msinspect_output
   doc: '[ --msi ] arg         : msInspect output file location'
   type: boolean
   inputBinding:
     prefix: -i
-- id: f
+- id: arg_peptide_location
   doc: '[ --flat ] arg        : peptide file location (nativeID rt mz score seq)'
   type: boolean
   inputBinding:
     prefix: -f
-- id: x
+- id: arg_processes_commands
   doc: '[ --commands ] arg    : processes commands'
   type: boolean
   inputBinding:
     prefix: -x
-- id: v
+- id: prints_extra_information
   doc: '[ --verbose ]         : prints extra information.'
   type: boolean
   inputBinding:
     prefix: -v
+- id: input_filenames
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

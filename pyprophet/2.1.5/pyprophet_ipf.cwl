@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pyprophet_ipf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyprophet_ipf.cwl
 inputs:
 - id: in
   doc: PyProphet input file.  [required]
@@ -11,17 +11,17 @@ inputs:
   type: File
   inputBinding:
     prefix: --out
-- id: ipf_ms1_scoring
+- id: ipf_ms_one_scoring
   doc: '/ --no-ipf_ms1_scoring Use MS1 precursor data for IPF.  [default: True]'
   type: boolean
   inputBinding:
     prefix: --ipf_ms1_scoring
-- id: ipf_ms2_scoring
+- id: ipf_ms_two_scoring
   doc: '/ --no-ipf_ms2_scoring Use MS2 precursor data for IPF.  [default: True]'
   type: boolean
   inputBinding:
     prefix: --ipf_ms2_scoring
-- id: ipf_h0
+- id: ipf_h_zero
   doc: '/ --no-ipf_h0          Include possibility that peak groups are not covered
     by peptidoform space.  [default: True]'
   type: boolean

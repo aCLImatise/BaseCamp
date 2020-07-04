@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: phyloBoot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyloBoot.cwl
 inputs:
-- id: n_reps
-  doc: '500 --nsites 10000 '
-  type: boolean
-  inputBinding:
-    prefix: --nreps
-- id: n_reps
-  doc: '500 --nsites 10000 '
-  type: boolean
-  inputBinding:
-    prefix: --nreps
 - id: read_mods
   doc: Read estimated models from list of filenames instead of generating alignments
     and estimating parameters.  fname_list can be comma- delimited list of files,
@@ -74,6 +64,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --scale-file
+- id: model_fname
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

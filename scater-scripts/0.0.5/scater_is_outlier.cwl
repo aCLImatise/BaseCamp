@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scater_is_outlier.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scater_is_outlier.R.cwl
 inputs:
 - id: metric_file
   doc: Two column table with cell names on the first column and numeric QC metric

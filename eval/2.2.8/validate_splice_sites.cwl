@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: validate_splice_sites.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/validate_splice_sites.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: computeMatrixOperations_rbind.cwl
+id: ../../../../home/ubuntu/BiocondaCli/computeMatrixOperations_rbind.cwl
 inputs:
 - id: matrix_file
   doc: 'Matrix files from the computeMatrix tool. (default: None)'
@@ -11,6 +11,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --outFileName
+- id: example
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: usage
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

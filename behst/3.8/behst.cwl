@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: behst.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/behst.py.cwl
 inputs:
-- id: input_bed_file
-  doc: input BED file of genomic regions
-  type: string
-  inputBinding:
-    position: 0
-- id: be_hst_data_files_folder
-  doc: path to the folder where you downloaded the default BEHST data files with ./download_behst_data.sh
-  type: string
-  inputBinding:
-    position: 1
 - id: target_extension
   doc: target extension basepair integer. Default is 9400.
   type: string
@@ -39,6 +29,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --interaction-file
+- id: input_bed_file
+  doc: input BED file of genomic regions
+  type: string
+  inputBinding:
+    position: 0
+- id: be_hst_data_files_folder
+  doc: path to the folder where you downloaded the default BEHST data files with ./download_behst_data.sh
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,11 +1,16 @@
 class: CommandLineTool
-id: pslCheck.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pslCheck.cwl
 inputs:
 - id: quiet
-  doc: error message, just filter
-  type: string
+  doc: '- no write error message, just filter'
+  type: boolean
   inputBinding:
     prefix: -quiet
+- id: file_tbl
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

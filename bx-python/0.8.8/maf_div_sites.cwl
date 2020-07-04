@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: maf_div_sites.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maf_div_sites.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

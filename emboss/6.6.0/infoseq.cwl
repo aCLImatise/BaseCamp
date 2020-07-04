@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: infoseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/infoseq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: runcabog.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/runcabog.py.cwl
 inputs:
 - id: para_file
   doc: ''

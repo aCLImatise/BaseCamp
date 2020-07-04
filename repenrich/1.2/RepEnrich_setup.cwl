@@ -1,24 +1,7 @@
 class: CommandLineTool
-id: RepEnrich_setup.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RepEnrich_setup.py.cwl
 inputs:
-- id: annotation_file
-  doc: List annotation file. The annotation file contains the repeat masker annotation
-    for the genome of interest and may be downloaded at RepeatMasker.org Example /data/annotation/mm9/mm9.fa.out
-  type: string
-  inputBinding:
-    position: 0
-- id: genome_fast_a
-  doc: File name and path for genome of interest in fasta format. Example /data/annotation/mm9/mm9.fa
-  type: string
-  inputBinding:
-    position: 1
-- id: setup_folder
-  doc: List folder to contain bamfiles for repeats and repeat element psuedogenomes.
-    Example /data/annotation/mm9/setup
-  type: string
-  inputBinding:
-    position: 2
-- id: n_fragments_file_1
+- id: n_fragments_file_one
   doc: Output location of a description file that saves the number of fragments processed
     per repname. Default ./repnames_nfragments.txt
   type: string
@@ -44,6 +27,23 @@ inputs:
   type: string
   inputBinding:
     prefix: --is_bed
+- id: annotation_file
+  doc: List annotation file. The annotation file contains the repeat masker annotation
+    for the genome of interest and may be downloaded at RepeatMasker.org Example /data/annotation/mm9/mm9.fa.out
+  type: string
+  inputBinding:
+    position: 0
+- id: genome_fast_a
+  doc: File name and path for genome of interest in fasta format. Example /data/annotation/mm9/mm9.fa
+  type: string
+  inputBinding:
+    position: 1
+- id: setup_folder
+  doc: List folder to contain bamfiles for repeats and repeat element psuedogenomes.
+    Example /data/annotation/mm9/setup
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

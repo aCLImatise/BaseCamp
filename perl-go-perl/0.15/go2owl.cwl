@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: go2owl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/go2owl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

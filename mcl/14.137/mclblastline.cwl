@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mclblastline.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mclblastline.cwl
 inputs:
 - id: what_if
   doc: shows only what would be done.
@@ -51,22 +51,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ass
-- id: start_assemble
-  doc: start running mcxassemble with base-name.
-  type: string
-  inputBinding:
-    prefix: --start-assemble
 - id: mcl_te
   doc: number of expansion threads.
   type: string
   inputBinding:
     prefix: --mcl-te
-- id: mcl_i
+- id: inflation_value_main
   doc: inflation value, MAIN mcl handle.
   type: double
   inputBinding:
     prefix: --mcl-I
-- id: mcl_i
+- id: initial_inflation_value
   doc: initial inflation value.
   type: double
   inputBinding:
@@ -102,11 +97,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --mcl
-- id: start_mcl
-  doc: start running mcl with file-name.  optionally combines with the --xi option.
-  type: File
-  inputBinding:
-    prefix: --start-mcl
 - id: fmt_lump_size
   doc: collect clusters of size lq <num> in a single file.
   type: string
@@ -132,6 +122,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --fmt
+- id: mcl_pipeline
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: file_name
+  doc: ''
+  type: File
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

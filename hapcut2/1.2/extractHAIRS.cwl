@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: extractHAIRS.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extractHAIRS.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,12 +2,19 @@ version 1.0
 
 task Finestructure {
   input {
-    Boolean zZ
-    Boolean zZ
+    String data_file
+    String initial_popfile
+    String output_file
   }
   command <<<
     finestructure \
-      ~{true="-z" false="" zZ} \
-      ~{true="-z" false="" zZ}
+      ~{data_file} \
+      ~{initial_popfile} \
+      ~{output_file}
   >>>
+  parameter_meta {
+    data_file: ""
+    initial_popfile: ""
+    output_file: ""
+  }
 }

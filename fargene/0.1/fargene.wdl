@@ -2,54 +2,79 @@ version 1.0
 
 task Fargene {
   input {
-    Array[String]+ inInFiles
-    String hmmHmmModel
-    String scoreScore
-    Boolean metaMeta
-    String metaMetaScore
-    String outputOutput
-    Boolean forceForce
-    String tmpTmpDir
-    Boolean proteinProtein
-    String processesProcesses
-    Int minMinOrfLength
-    Boolean retrieveRetrieveWhole
-    Boolean noNoOrfPredict
-    Boolean noNoQualityFiltering
-    Boolean noNoAssembly
-    Boolean orfOrfFinder
-    Boolean storeStorePeptides
-    Boolean rerunRerun
-    String aminoAminoDir
-    String fastFastADir
-    String translationTranslationFormat
-    String loglevelLoglevel
-    String logLogFile
+    Array[String] in_files
+    String? hmm_model
+    String? score
+    Boolean? input_data_paired
+    String? meta_score
+    String? output_directory_whole
+    Boolean? force
+    String? tmp_dir
+    Boolean? protein
+    String? processes
+    Int? min_orf_length
+    Boolean? retrieve_whole
+    Boolean? no_orf_predict
+    Boolean? no_quality_filtering
+    Boolean? no_assembly
+    Boolean? orf_finder
+    Boolean? store_peptides
+    Boolean? rerun
+    String? amino_dir
+    String? fast_a_dir
+    String? translation_format
+    String? loglevel
+    String? log_file
   }
   command <<<
     fargene \
-      ~{if defined(inInFiles) then ("--infiles " +  '"' + inInFiles + '"') else ""} \
-      ~{if defined(hmmHmmModel) then ("--hmm-model " +  '"' + hmmHmmModel + '"') else ""} \
-      ~{if defined(scoreScore) then ("--score " +  '"' + scoreScore + '"') else ""} \
-      ~{true="--meta" false="" metaMeta} \
-      ~{if defined(metaMetaScore) then ("--meta-score " +  '"' + metaMetaScore + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{true="--force" false="" forceForce} \
-      ~{if defined(tmpTmpDir) then ("--tmp-dir " +  '"' + tmpTmpDir + '"') else ""} \
-      ~{true="--protein" false="" proteinProtein} \
-      ~{if defined(processesProcesses) then ("--processes " +  '"' + processesProcesses + '"') else ""} \
-      ~{if defined(minMinOrfLength) then ("--min-orf-length " +  '"' + minMinOrfLength + '"') else ""} \
-      ~{true="--retrieve-whole" false="" retrieveRetrieveWhole} \
-      ~{true="--no-orf-predict" false="" noNoOrfPredict} \
-      ~{true="--no-quality-filtering" false="" noNoQualityFiltering} \
-      ~{true="--no-assembly" false="" noNoAssembly} \
-      ~{true="--orf-finder" false="" orfOrfFinder} \
-      ~{true="--store-peptides" false="" storeStorePeptides} \
-      ~{true="--rerun" false="" rerunRerun} \
-      ~{if defined(aminoAminoDir) then ("--amino-dir " +  '"' + aminoAminoDir + '"') else ""} \
-      ~{if defined(fastFastADir) then ("--fasta-dir " +  '"' + fastFastADir + '"') else ""} \
-      ~{if defined(translationTranslationFormat) then ("--translation-format " +  '"' + translationTranslationFormat + '"') else ""} \
-      ~{if defined(loglevelLoglevel) then ("--loglevel " +  '"' + loglevelLoglevel + '"') else ""} \
-      ~{if defined(logLogFile) then ("--logfile " +  '"' + logLogFile + '"') else ""}
+      ~{if defined(in_files) then ("--infiles " +  '"' + in_files + '"') else ""} \
+      ~{if defined(hmm_model) then ("--hmm-model " +  '"' + hmm_model + '"') else ""} \
+      ~{if defined(score) then ("--score " +  '"' + score + '"') else ""} \
+      ~{true="--meta" false="" input_data_paired} \
+      ~{if defined(meta_score) then ("--meta-score " +  '"' + meta_score + '"') else ""} \
+      ~{if defined(output_directory_whole) then ("--output " +  '"' + output_directory_whole + '"') else ""} \
+      ~{true="--force" false="" force} \
+      ~{if defined(tmp_dir) then ("--tmp-dir " +  '"' + tmp_dir + '"') else ""} \
+      ~{true="--protein" false="" protein} \
+      ~{if defined(processes) then ("--processes " +  '"' + processes + '"') else ""} \
+      ~{if defined(min_orf_length) then ("--min-orf-length " +  '"' + min_orf_length + '"') else ""} \
+      ~{true="--retrieve-whole" false="" retrieve_whole} \
+      ~{true="--no-orf-predict" false="" no_orf_predict} \
+      ~{true="--no-quality-filtering" false="" no_quality_filtering} \
+      ~{true="--no-assembly" false="" no_assembly} \
+      ~{true="--orf-finder" false="" orf_finder} \
+      ~{true="--store-peptides" false="" store_peptides} \
+      ~{true="--rerun" false="" rerun} \
+      ~{if defined(amino_dir) then ("--amino-dir " +  '"' + amino_dir + '"') else ""} \
+      ~{if defined(fast_a_dir) then ("--fasta-dir " +  '"' + fast_a_dir + '"') else ""} \
+      ~{if defined(translation_format) then ("--translation-format " +  '"' + translation_format + '"') else ""} \
+      ~{if defined(loglevel) then ("--loglevel " +  '"' + loglevel + '"') else ""} \
+      ~{if defined(log_file) then ("--logfile " +  '"' + log_file + '"') else ""}
   >>>
+  parameter_meta {
+    in_files: "Input file(s) to be searched. Could either be in FASTA or FASTQ format."
+    hmm_model: "The Hidden Markov Model that should be used to analyse the data. Could either be one of the pre-defined models or the path to a custom HMM."
+    score: "The threshold score for a sequence to be classified as a (almost) complete gene (default: None)."
+    input_data_paired: "If the input data is paired end metagenomic data (default: False)."
+    meta_score: "The threshold score for a fragment to be classified as a positive. Expressed as score per amino acid (default: None)."
+    output_directory_whole: "The output directory for the whole run (default: ./fargene_output)."
+    force: "Overwrite output directory if it exists (default: False)."
+    tmp_dir: "Directory for (sometimes large) intermediate files. (default: OUT_DIR/tmpdir)"
+    protein: "If the input sequence(s) is amino acids (default: False)."
+    processes: "Number of processes to be used when processing metagenomic data (default: 1)."
+    min_orf_length: "The minimal length for a retrieved predicted ORF (nt). (default: 90% of the length of the chosen hmm.)"
+    retrieve_whole: "Use this flag if the whole sequence where a hit is detected should be retrieved (default: False)."
+    no_orf_predict: "Do not perform ORF prediction."
+    no_quality_filtering: "Use if no quality control should be performed on the metagenomic data (default: False)."
+    no_assembly: "Use if you want to skip the assembly and retrieval of contigs for metagenomic data (default: False)."
+    orf_finder: "Use NCBI ORFfinder instead of prodigal for ORF prediction of genomes/contigs (default: False)."
+    store_peptides: "Store the translated sequences. Useful if you plan to redo the analysis using a different model and want to skip the preprocessing steps (default: False)."
+    rerun: "Use of you want to redo the analysis or do the analysis using a different model and have kept either the nucletide or amino acid sequences. Please note that this only works if the input data is the same for both runs (default: False)."
+    amino_dir: "Where the amino acid sequences generated by the method are located. Only to be used in combination with --rerun"
+    fast_a_dir: "Where the nucleotide sequences in FASTA generated by previous runs of the method are located. Only to be used in combination with --rerun"
+    translation_format: "The translation format that transeq should use. (default: pearson)"
+    loglevel: "Set logging level (default: INFO)."
+    log_file: "Logfile (default: fargene_analysis.log)."
+  }
 }

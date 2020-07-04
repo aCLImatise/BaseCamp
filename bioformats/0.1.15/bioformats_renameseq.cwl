@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: bioformats_renameseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bioformats_renameseq.cwl
 inputs:
-- id: renaming_table
-  doc: a file containing a table of original and new sequence names
-  type: string
-  inputBinding:
-    position: 0
-- id: input_file
-  doc: a file to change sequence names in
-  type: string
-  inputBinding:
-    position: 1
-- id: output_file
-  doc: an output file with renamed sequences
-  type: string
-  inputBinding:
-    position: 2
 - id: fast_a
   doc: the input file is of the FASTA format
   type: boolean
@@ -48,6 +33,26 @@ inputs:
   type: string
   inputBinding:
     prefix: --separator
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: renaming_table
+  doc: a file containing a table of original and new sequence names
+  type: string
+  inputBinding:
+    position: 0
+- id: input_file
+  doc: a file to change sequence names in
+  type: string
+  inputBinding:
+    position: 1
+- id: output_file
+  doc: an output file with renamed sequences
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

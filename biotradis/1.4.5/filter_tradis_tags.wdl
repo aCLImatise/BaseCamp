@@ -2,14 +2,19 @@ version 1.0
 
 task FilterTradisTags {
   input {
-    File bB
-    String tT
-    String? filterFilterTags
+    File? b
+    String? t
+    String filter_tags
   }
   command <<<
     filter_tradis_tags \
-      ~{filterFilterTags} \
-      ~{if defined(bB) then ("-b " +  '"' + bB + '"') else ""} \
-      ~{if defined(tT) then ("-t " +  '"' + tT + '"') else ""}
+      ~{filter_tags} \
+      ~{if defined(b) then ("-b " +  '"' + b + '"') else ""} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
   >>>
+  parameter_meta {
+    b: ""
+    t: ""
+    filter_tags: ""
+  }
 }

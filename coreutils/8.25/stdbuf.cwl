@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: stdbuf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stdbuf.cwl
 inputs:
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: command
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: input
   doc: adjust standard input stream buffering
   type: string
@@ -26,6 +16,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --error
+- id: option_dot_dot_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: command
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

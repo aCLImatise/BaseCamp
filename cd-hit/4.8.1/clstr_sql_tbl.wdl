@@ -2,12 +2,16 @@ version 1.0
 
 task ClstrSqlTbl.pl {
   input {
-    String? clClStrFile
-    String? tblTblFile
+    String cl_str_file
+    String tbl_file
   }
   command <<<
     clstr_sql_tbl.pl \
-      ~{clClStrFile} \
-      ~{tblTblFile}
+      ~{cl_str_file} \
+      ~{tbl_file}
   >>>
+  parameter_meta {
+    cl_str_file: ""
+    tbl_file: ""
+  }
 }

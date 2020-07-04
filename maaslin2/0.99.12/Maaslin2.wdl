@@ -2,36 +2,52 @@ version 1.0
 
 task Maaslin2.R {
   input {
-    Int minMinAbundance
-    Int minMinPrevalence
-    Int maxMaxSignificance
-    String normalizationNormalization
-    String transformTransform
-    String analysisAnalysisMethod
-    String randomRandomEffects
-    String fixedFixedEffects
-    String correctionCorrection
-    String standardizeStandardize
-    String plotPlotHeatMap
-    String heatHeatMapFirstN
-    String plotPlotScatter
-    String coresCores
+    Int? min_abundance
+    Int? min_prevalence
+    Int? max_significance
+    String? normalization
+    String? transform
+    String? analysis_method
+    String? random_effects
+    String? fixed_effects
+    String? correction
+    String? standardize
+    String? plot_heat_map
+    String? heat_map_first_n
+    String? plot_scatter
+    String? cores
   }
   command <<<
     Maaslin2.R \
-      ~{if defined(minMinAbundance) then ("--min_abundance " +  '"' + minMinAbundance + '"') else ""} \
-      ~{if defined(minMinPrevalence) then ("--min_prevalence " +  '"' + minMinPrevalence + '"') else ""} \
-      ~{if defined(maxMaxSignificance) then ("--max_significance " +  '"' + maxMaxSignificance + '"') else ""} \
-      ~{if defined(normalizationNormalization) then ("--normalization " +  '"' + normalizationNormalization + '"') else ""} \
-      ~{if defined(transformTransform) then ("--transform " +  '"' + transformTransform + '"') else ""} \
-      ~{if defined(analysisAnalysisMethod) then ("--analysis_method " +  '"' + analysisAnalysisMethod + '"') else ""} \
-      ~{if defined(randomRandomEffects) then ("--random_effects " +  '"' + randomRandomEffects + '"') else ""} \
-      ~{if defined(fixedFixedEffects) then ("--fixed_effects " +  '"' + fixedFixedEffects + '"') else ""} \
-      ~{if defined(correctionCorrection) then ("--correction " +  '"' + correctionCorrection + '"') else ""} \
-      ~{if defined(standardizeStandardize) then ("--standardize " +  '"' + standardizeStandardize + '"') else ""} \
-      ~{if defined(plotPlotHeatMap) then ("--plot_heatmap " +  '"' + plotPlotHeatMap + '"') else ""} \
-      ~{if defined(heatHeatMapFirstN) then ("--heatmap_first_n " +  '"' + heatHeatMapFirstN + '"') else ""} \
-      ~{if defined(plotPlotScatter) then ("--plot_scatter " +  '"' + plotPlotScatter + '"') else ""} \
-      ~{if defined(coresCores) then ("--cores " +  '"' + coresCores + '"') else ""}
+      ~{if defined(min_abundance) then ("--min_abundance " +  '"' + min_abundance + '"') else ""} \
+      ~{if defined(min_prevalence) then ("--min_prevalence " +  '"' + min_prevalence + '"') else ""} \
+      ~{if defined(max_significance) then ("--max_significance " +  '"' + max_significance + '"') else ""} \
+      ~{if defined(normalization) then ("--normalization " +  '"' + normalization + '"') else ""} \
+      ~{if defined(transform) then ("--transform " +  '"' + transform + '"') else ""} \
+      ~{if defined(analysis_method) then ("--analysis_method " +  '"' + analysis_method + '"') else ""} \
+      ~{if defined(random_effects) then ("--random_effects " +  '"' + random_effects + '"') else ""} \
+      ~{if defined(fixed_effects) then ("--fixed_effects " +  '"' + fixed_effects + '"') else ""} \
+      ~{if defined(correction) then ("--correction " +  '"' + correction + '"') else ""} \
+      ~{if defined(standardize) then ("--standardize " +  '"' + standardize + '"') else ""} \
+      ~{if defined(plot_heat_map) then ("--plot_heatmap " +  '"' + plot_heat_map + '"') else ""} \
+      ~{if defined(heat_map_first_n) then ("--heatmap_first_n " +  '"' + heat_map_first_n + '"') else ""} \
+      ~{if defined(plot_scatter) then ("--plot_scatter " +  '"' + plot_scatter + '"') else ""} \
+      ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
+  parameter_meta {
+    min_abundance: "The minimum abundance for each feature [ Default: 0 ]"
+    min_prevalence: "The minimum percent of samples for whicha feature is detected at minimum abundance [ Default: 0.1 ]"
+    max_significance: "The q-value threshold for significance [ Default: 0.25 ]"
+    normalization: "The normalization method to apply  [ Default: TSS ] [ Choices: TSS, CLR, CSS, NONE, TMM ]"
+    transform: "The transform to apply [ Default: LOG ] [ Choices: LOG, LOGIT, AST, NONE ]"
+    analysis_method: "The analysis method to apply [ Default: LM ] [ Choices: LM, SLM, CPLM, ZICP, NEGBIN, ZINB ]"
+    random_effects: "The random effects for the model,  comma-delimited for multiple effects  [ Default: none ]"
+    fixed_effects: "The fixed effects for the model,  comma-delimited for multiple effects  [ Default: all ]"
+    correction: "The correction method for computing  the q-value [ Default: BH ]"
+    standardize: "Apply z-score so continuous metadata are on  the same scale [ Default: TRUE ]"
+    plot_heat_map: "Generate a heatmap for the significant  associations [ Default: TRUE ]"
+    heat_map_first_n: "In heatmap, plot top N features with significant  associations [ Default: 50 ]"
+    plot_scatter: "Generate scatter plots for the significant  associations [ Default: TRUE ]"
+    cores: "The number of R processes to  run in parallel [ Default: 1 ]"
+  }
 }

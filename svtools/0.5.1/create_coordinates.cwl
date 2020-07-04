@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: create_coordinates.cwl
+id: ../../../../home/ubuntu/BiocondaCli/create_coordinates.cwl
 inputs:
 - id: input_vcf
   doc: VCF input

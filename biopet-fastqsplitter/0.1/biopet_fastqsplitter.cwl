@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: biopet_fastqsplitter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/biopet_fastqsplitter.cwl
 inputs:
 - id: log_level
   doc: "Level of log information printed. Possible levels: 'debug', 'info', 'warn',\
@@ -17,6 +17,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --outputFile
+- id: fast_q_splitter
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

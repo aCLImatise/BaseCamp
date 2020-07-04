@@ -1,27 +1,27 @@
 class: CommandLineTool
-id: esl_translate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/esl_translate.cwl
 inputs:
-- id: c
+- id: use_alt_code
   doc: ': use alt genetic code of NCBI transl table <n>  [1]'
   type: string
   inputBinding:
     prefix: -c
-- id: l
+- id: minimum_orf_length
   doc: ': minimum ORF length  [20]'
   type: string
   inputBinding:
     prefix: -l
-- id: m
+- id: orfs_must_initiate
   doc: ': ORFs must initiate with AUG only'
   type: boolean
   inputBinding:
     prefix: -m
-- id: m
+- id: orfs_must_start
   doc: ': ORFs must start with allowed initiation codon'
   type: boolean
   inputBinding:
     prefix: -M
-- id: w
+- id: use_windowed_reading
   doc: ': use windowed, memory-efficient seq reading'
   type: boolean
   inputBinding:
@@ -41,6 +41,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --crick
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

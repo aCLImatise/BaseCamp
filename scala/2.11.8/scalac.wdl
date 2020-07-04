@@ -2,10 +2,13 @@ version 1.0
 
 task Scalac {
   input {
-    String? sourceSourceFiles
+    String source_files
   }
   command <<<
     scalac \
-      ~{sourceSourceFiles}
+      ~{source_files}
   >>>
+  parameter_meta {
+    source_files: ""
+  }
 }

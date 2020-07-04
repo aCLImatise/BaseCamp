@@ -1,37 +1,33 @@
 class: CommandLineTool
-id: convert_alphabet.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/convert_alphabet.py_output_fastx.cwl
 inputs:
-- id: input_fast_x
-  doc: 'Input file (default: stdin).'
-  type: string
-  inputBinding:
-    position: 0
-- id: output_fast_x
-  doc: 'Output file (default: stdout).'
-  type: string
-  inputBinding:
-    position: 1
 - id: i
-  doc: Input format (fastq).
+  doc: ''
   type: string
   inputBinding:
     prefix: -i
 - id: o
-  doc: Output format (fastq).
+  doc: ''
   type: string
   inputBinding:
     prefix: -o
 - id: d
-  doc: RNA->DNA alphabet conversion.
+  doc: ''
   type: boolean
   inputBinding:
     prefix: -D
 - id: r
-  doc: DNA->RNA alphabet conversion.
+  doc: ''
   type: boolean
   inputBinding:
     prefix: -R
+- id: convert_alphabet_do_tpy
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - convert_alphabet.py
+- output_fastx

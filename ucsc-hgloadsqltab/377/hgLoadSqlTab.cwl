@@ -1,21 +1,41 @@
 class: CommandLineTool
-id: hgLoadSqlTab.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hgLoadSqlTab.cwl
 inputs:
 - id: warn
-  doc: of abort on mysql errors or warnings
-  type: string
+  doc: '- warn instead of abort on mysql errors or warnings'
+  type: boolean
   inputBinding:
-    prefix: '- warn'
+    prefix: -warn
 - id: not_on_server
-  doc: '*not* in a directory that the mysql server can see'
-  type: string
+  doc: '- file is *not* in a directory that the mysql server can see'
+  type: boolean
   inputBinding:
     prefix: -notOnServer
 - id: old_table
-  doc: existing table
-  type: string
+  doc: '- add to existing table'
+  type: boolean
   inputBinding:
     prefix: -oldTable
+- id: database
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: table
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: file_dot_sql
+  doc: ''
+  type: File
+  inputBinding:
+    position: 2
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

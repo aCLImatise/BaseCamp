@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_align_format_nexus_files_for_mrbayes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_align_format_nexus_files_for_mrbayes.cwl
 inputs:
 - id: alignments
   doc: The path to the alignments directory

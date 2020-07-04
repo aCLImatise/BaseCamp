@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: parldyn.cwl
+id: ../../../../home/ubuntu/BiocondaCli/parldyn.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

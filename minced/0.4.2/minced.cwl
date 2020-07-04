@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: minced.cwl
+id: ../../../../home/ubuntu/BiocondaCli/minced.cwl
 inputs:
-- id: file_fa
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
-- id: output_file_txt
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: output_file_gff
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: search_wl
   doc: 'Length of search window used to discover CRISPRs (range: 6-9). Default: 8'
   type: boolean
@@ -63,6 +48,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -spacers
+- id: file_dot_fa
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
+- id: output_file_dot_txt
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: output_file_dot_gff
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

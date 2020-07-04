@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mcerunner.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mcerunner.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

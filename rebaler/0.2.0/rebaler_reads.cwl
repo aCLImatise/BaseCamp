@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rebaler_reads.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rebaler_reads.cwl
 inputs:
 - id: d
   doc: ''
@@ -16,6 +16,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --random
+- id: re_baler
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: reference
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: reads
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

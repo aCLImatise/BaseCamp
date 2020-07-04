@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: pswdb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pswdb.cwl
 inputs:
-- id: g
+- id: penalty_default
   doc: penalty (default 12)
   type: string
   inputBinding:
     prefix: -g
-- id: e
+- id: penatly_default
   doc: penatly (default 2)
   type: string
   inputBinding:
     prefix: -e
-- id: m
+- id: matrix_default_blosumbla
   doc: matrix (default BLOSUM62.bla)
   type: string
   inputBinding:
@@ -21,17 +21,17 @@ inputs:
   type: string
   inputBinding:
     prefix: -abc
-- id: a
+- id: a_penalty_above_default
   doc: a penalty for above (default 120)
   type: boolean
   inputBinding:
     prefix: -a
-- id: b
+- id: b_penalty_above_default
   doc: b penalty for above (default 10)
   type: boolean
   inputBinding:
     prefix: -b
-- id: c
+- id: c_penalty_above_default
   doc: c penalty for above (default 3)
   type: boolean
   inputBinding:

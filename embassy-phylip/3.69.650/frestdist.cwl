@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: frestdist.cwl
+id: ../../../../home/ubuntu/BiocondaCli/frestdist.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

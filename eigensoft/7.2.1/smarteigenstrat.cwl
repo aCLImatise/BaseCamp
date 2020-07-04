@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: smarteigenstrat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smarteigenstrat.cwl
 inputs:
 - id: bad
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: params
+- id: params_dot_dot_dot_dot
   doc: ''
   type: string
   inputBinding:

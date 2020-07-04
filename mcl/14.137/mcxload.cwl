@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mcxload.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mcxload.cwl
 inputs:
 - id: abc
   doc: ''

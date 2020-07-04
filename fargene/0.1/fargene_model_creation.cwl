@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fargene_model_creation.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fargene_model_creation.cwl
 inputs:
 - id: reference_sequences
   doc: The sequences that the model should be built of.

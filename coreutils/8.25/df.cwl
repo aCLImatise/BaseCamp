@@ -1,32 +1,6 @@
 class: CommandLineTool
-id: df.cwl
+id: ../../../../home/ubuntu/BiocondaCli/df.cwl
 inputs:
-- id: all
-  doc: include pseudo, duplicate, inaccessible file systems
-  type: boolean
-  inputBinding:
-    prefix: --all
-- id: block_size
-  doc: scale sizes by SIZE before printing them; e.g., '-BM' prints sizes in units
-    of 1,048,576 bytes; see SIZE format below
-  type: long
-  inputBinding:
-    prefix: --block-size
-- id: si
-  doc: print sizes in powers of 1000 (e.g., 1.1G)
-  type: boolean
-  inputBinding:
-    prefix: --si
-- id: inodes
-  doc: inode information instead of block usage
-  type: string
-  inputBinding:
-    prefix: --inodes
-- id: block_size
-  doc: =1K
-  type: string
-  inputBinding:
-    prefix: --block-size
 - id: local
   doc: listing to local file systems
   type: string
@@ -73,11 +47,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --exclude-type
-- id: v
+- id: ignored
   doc: (ignored)
   type: boolean
   inputBinding:
     prefix: -v
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

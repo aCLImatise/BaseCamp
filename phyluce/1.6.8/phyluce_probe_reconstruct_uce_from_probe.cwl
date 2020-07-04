@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_probe_reconstruct_uce_from_probe.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_probe_reconstruct_uce_from_probe.cwl
 inputs:
 - id: input
   doc: The input probe set

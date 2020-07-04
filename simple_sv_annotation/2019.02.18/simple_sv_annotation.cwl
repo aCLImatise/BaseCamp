@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: simple_sv_annotation.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/simple_sv_annotation.py.cwl
 inputs:
-- id: vcf
-  doc: VCF file with snpEff annotations
-  type: string
-  inputBinding:
-    position: 0
 - id: gene_list
   doc: File with names of genes (one per line) for prioritisation
   type: string
@@ -33,6 +28,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --exonNums
+- id: vcf
+  doc: VCF file with snpEff annotations
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

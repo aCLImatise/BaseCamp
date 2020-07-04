@@ -1,82 +1,92 @@
 class: CommandLineTool
-id: daligner.cwl
+id: ../../../../home/ubuntu/BiocondaCli/daligner.cwl
 inputs:
-- id: w
+- id: look_kmers_averlapping
   doc: ': Look for k-mers in averlapping bands of size 2^-w.'
   type: boolean
   inputBinding:
     prefix: -w
-- id: t
+- id: ignore_kmers_occur
   doc: ': Ignore k-mers that occur >= -t times in a block.'
   type: boolean
   inputBinding:
     prefix: -t
-- id: m
+- id: use_only_gb
   doc: ': Use only -M GB of memory by ignoring most frequent k-mers.'
   type: boolean
   inputBinding:
     prefix: -M
-- id: e
+- id: look_alignments_e
   doc: ': Look for alignments with -e percent similarity.'
   type: boolean
   inputBinding:
     prefix: -e
-- id: l
+- id: look_alignments_l
   doc: ': Look for alignments of length >= -l.'
   type: boolean
   inputBinding:
     prefix: -l
-- id: s
+- id: trace_point_spacing
   doc: ': The trace point spacing for encoding alignments.'
   type: boolean
   inputBinding:
     prefix: -s
-- id: b
+- id: bridge_consecutive_aligned
   doc: ': Bridge consecutive aligned segments into one if possible'
   type: boolean
   inputBinding:
     prefix: -B
-- id: h
+- id: hgap_option_align
   doc: ': HGAP option: align only target reads of length >= -H.'
   type: boolean
   inputBinding:
     prefix: -H
-- id: t
+- id: use_t_threads
   doc: ': Use -T threads.'
   type: boolean
   inputBinding:
     prefix: -T
-- id: p
+- id: block_level_sorts
   doc: ': Do block level sorts and merges in directory -P.'
   type: boolean
   inputBinding:
     prefix: -P
-- id: m
+- id: soft_mask_blocks
   doc: ': Soft mask the blocks with the specified mask.'
   type: boolean
   inputBinding:
     prefix: -m
-- id: v
+- id: verbose_mode_output
   doc: ': Verbose mode, output statistics as proceed.'
   type: boolean
   inputBinding:
     prefix: -v
-- id: a
+- id: sort_areadaposition_pairs
   doc: ': sort .las by A-read,A-position pairs for map usecase off => sort .las by
     A,B-read pairs for overlap piles'
   type: boolean
   inputBinding:
     prefix: -a
-- id: a
+- id: compare_subjet_target
   doc: ': Compare subjet to target, but not vice versa.'
   type: boolean
   inputBinding:
     prefix: -A
-- id: i
+- id: compare_reads_themselves
   doc: ': Compare reads to themselves'
   type: boolean
   inputBinding:
     prefix: -I
+- id: va_abi
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -vaABI
+- id: d_aligner_two_dot_zero
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: centrimo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/centrimo.cwl
 inputs:
-- id: o
+- id: output_directory_default
   doc: "output directory; default: 'centrimo_out'"
   type: string
   inputBinding:
@@ -138,6 +138,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbosity
+- id: sequence_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: motif_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

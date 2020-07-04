@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hal4dExtractTest.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hal4dExtractTest.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

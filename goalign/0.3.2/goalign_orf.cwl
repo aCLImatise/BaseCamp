@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: goalign_orf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_orf.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: output
   doc: ORF Output Fasta File (default "stdout")
   type: string
@@ -76,6 +71,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

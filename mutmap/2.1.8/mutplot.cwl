@@ -1,56 +1,56 @@
 class: CommandLineTool
-id: mutplot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mutplot.cwl
 inputs:
-- id: v
+- id: _vcf_vcf
   doc: ', --vcf            VCF file which contains cultivar and mutant bulk. in this
     order. This VCF file must have AD field.'
   type: boolean
   inputBinding:
     prefix: -v
-- id: o
+- id: _output_directory
   doc: ', --out            Output directory. Specified name can exist.'
   type: boolean
   inputBinding:
     prefix: -o
-- id: n
+- id: _nbulk_number
   doc: ', --N-bulk         Number of individuals in mutant bulk.'
   type: boolean
   inputBinding:
     prefix: -n
-- id: w
+- id: _window_size
   doc: ', --window         Window size (kb). [2000]'
   type: boolean
   inputBinding:
     prefix: -w
-- id: s
+- id: _step_size
   doc: ', --step           Step size (kb). [100]'
   type: boolean
   inputBinding:
     prefix: -s
-- id: d
+- id: _maxdepth_maximum
   doc: ', --max-depth      Maximum depth of variants which will be used. This cutoff
     will be applied in both of cultivar and bulk. [250]'
   type: boolean
   inputBinding:
     prefix: -D
-- id: d
+- id: _mindepth_minimum
   doc: ', --min-depth      Minimum depth of variants which will be used. This cutoff
     will be applied in both of cultivar and bulk. [8]'
   type: boolean
   inputBinding:
     prefix: -d
-- id: n
+- id: _nrep_number
   doc: ', --N-rep          Number of replicates for simulation to make  null distribution.
     [5000]'
   type: boolean
   inputBinding:
     prefix: -N
-- id: m
+- id: _minsnpindex_cutoff
   doc: ', --min-SNPindex   Cutoff of minimum SNP-index for clear results. [0.3]'
   type: boolean
   inputBinding:
     prefix: -m
-- id: s
+- id: _strandbias_filter
   doc: ', --strand-bias    Filter spurious homo genotypes in cultivar using strand
     bias. If ADF (or ADR) is higher than this cutoff when ADR (or ADF) is 0, that
     SNP will be filtered out. If you want to supress this filtering, please set this
@@ -58,7 +58,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -S
-- id: e
+- id: _snpeff_predict
   doc: ', --snpEff         Predict causal variant using SnpEff. Please check available
     databases in SnpEff.'
   type: boolean

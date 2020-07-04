@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: download_dfam.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/download_dfam.py.cwl
 inputs:
 - id: output
   doc: Give an output destination /home/user/Dfam.hmm.gz

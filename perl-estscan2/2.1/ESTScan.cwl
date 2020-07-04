@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ESTScan.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ESTScan.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

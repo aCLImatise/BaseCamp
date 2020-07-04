@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sc3_sc3_kmeans.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sc3_sc3_kmeans.R.cwl
 inputs:
 - id: input_object_file
   doc: File name in which a transformed SC3 'SingleCellExperiment' object has been

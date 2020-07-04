@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: savage.cwl
+id: ../../../../home/ubuntu/BiocondaCli/savage.cwl
 inputs:
-- id: s
+- id: path_input_fastq_containing_singleend
   doc: path to input fastq containing single-end reads
   type: string
   inputBinding:
     prefix: -s
-- id: p1
+- id: p_one
   doc: path to input fastq containing paired-end reads (/1)
   type: string
   inputBinding:
     prefix: -p1
-- id: p2
+- id: p_two
   doc: path to input fastq containing paired-end reads (/2)
   type: string
   inputBinding:

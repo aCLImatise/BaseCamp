@@ -1,31 +1,31 @@
 class: CommandLineTool
-id: seqtk_gc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqtk_gc.cwl
 inputs:
-- id: in_fa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: w
+- id: identify_highat_regions
   doc: identify high-AT regions
   type: boolean
   inputBinding:
     prefix: -w
-- id: f
+- id: min_gc_fraction
   doc: min GC fraction (or AT fraction for -w) [0.60]
   type: double
   inputBinding:
     prefix: -f
-- id: l
-  doc: min region length to output [20]
+- id: min_region_length
+  doc: min region length to output [0]
   type: long
   inputBinding:
     prefix: -l
-- id: x
+- id: xdropoff
   doc: X-dropoff [10.0]
   type: double
   inputBinding:
     prefix: -x
+- id: in_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,24 +1,19 @@
 class: CommandLineTool
-id: miRge2.0_predict.cwl
+id: ../../../../home/ubuntu/BiocondaCli/miRge2.0_predict.cwl
 inputs:
-- id: args
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: s
+- id: two_options_file
   doc: '[sample <required> [sample <required> ...]] two options: 1. A file where each
     row represents one sample name; 2. *.fastq *.fastq ... Or *.fastq.gz *.fastq.gz
     ...'
   type: boolean
   inputBinding:
     prefix: -s
-- id: o
+- id: directory_outputs_default
   doc: 'the directory of the outputs (default: current directory)'
   type: string
   inputBinding:
     prefix: -o
-- id: d
+- id: mirna_database_default
   doc: 'the miRNA database (default: miRBase. miRGeneDB is optional)'
   type: string
   inputBinding:
@@ -62,7 +57,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -ad
-- id: phred64
+- id: phred_six_four
   doc: 'phred64 format(default: 64)'
   type: boolean
   inputBinding:
@@ -152,6 +147,11 @@ inputs:
   type: long
   inputBinding:
     prefix: -clc
+- id: args
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,18 +1,6 @@
 class: CommandLineTool
-id: telescope_assign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/telescope_assign.cwl
 inputs:
-- id: sam_file
-  doc: Path to alignment file. Alignment file can be in SAM or BAM format. File must
-    be collated so that all alignments for a read pair appear sequentially in the
-    file.
-  type: string
-  inputBinding:
-    position: 0
-- id: gtf_file
-  doc: Path to annotation file (GTF format)
-  type: string
-  inputBinding:
-    position: 1
 - id: attribute
   doc: 'GTF attribute that defines a transposable element locus. GTF features that
     share the same value for --attribute will be considered as part of the same locus.
@@ -138,6 +126,18 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --skip_em
+- id: sam_file
+  doc: Path to alignment file. Alignment file can be in SAM or BAM format. File must
+    be collated so that all alignments for a read pair appear sequentially in the
+    file.
+  type: string
+  inputBinding:
+    position: 0
+- id: gtf_file
+  doc: Path to annotation file (GTF format)
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

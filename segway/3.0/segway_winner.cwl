@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: segway_winner.cwl
+id: ../../../../home/ubuntu/BiocondaCli/segway_winner.cwl
 inputs:
 - id: input_master
   doc: print input master file name
@@ -21,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --clobber
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

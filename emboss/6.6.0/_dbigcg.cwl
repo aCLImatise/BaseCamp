@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _dbigcg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_dbigcg.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,30 +2,43 @@ version 1.0
 
 task BpDownloadQueryGenbank.pl {
   input {
-    String queryQuery
-    String queryQueryFile
-    File giGiFile
-    String dbDb
-    String outfileOutfile
-    String formatFormat
-    String verboseVerbose
-    Int maxMaxIds
-    Int relRelDate
-    Int minMinDate
-    String dateDateType
+    String? query
+    String? query_file
+    File? gi_file
+    String? db
+    String? outfile
+    String? format
+    String? verbose
+    Int? max_ids
+    Int? rel_date
+    Int? min_date
+    String? date_type
   }
   command <<<
     bp_download_query_genbank.pl \
-      ~{if defined(queryQuery) then ("--query " +  '"' + queryQuery + '"') else ""} \
-      ~{if defined(queryQueryFile) then ("--queryfile " +  '"' + queryQueryFile + '"') else ""} \
-      ~{if defined(giGiFile) then ("--gifile " +  '"' + giGiFile + '"') else ""} \
-      ~{if defined(dbDb) then ("--db " +  '"' + dbDb + '"') else ""} \
-      ~{if defined(outfileOutfile) then ("--outfile " +  '"' + outfileOutfile + '"') else ""} \
-      ~{if defined(formatFormat) then ("--format " +  '"' + formatFormat + '"') else ""} \
-      ~{if defined(verboseVerbose) then ("--verbose " +  '"' + verboseVerbose + '"') else ""} \
-      ~{if defined(maxMaxIds) then ("--maxids " +  '"' + maxMaxIds + '"') else ""} \
-      ~{if defined(relRelDate) then ("--reldate " +  '"' + relRelDate + '"') else ""} \
-      ~{if defined(minMinDate) then ("--mindate " +  '"' + minMinDate + '"') else ""} \
-      ~{if defined(dateDateType) then ("--datetype " +  '"' + dateDateType + '"') else ""}
+      ~{if defined(query) then ("--query " +  '"' + query + '"') else ""} \
+      ~{if defined(query_file) then ("--queryfile " +  '"' + query_file + '"') else ""} \
+      ~{if defined(gi_file) then ("--gifile " +  '"' + gi_file + '"') else ""} \
+      ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
+      ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
+      ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
+      ~{if defined(verbose) then ("--verbose " +  '"' + verbose + '"') else ""} \
+      ~{if defined(max_ids) then ("--maxids " +  '"' + max_ids + '"') else ""} \
+      ~{if defined(rel_date) then ("--reldate " +  '"' + rel_date + '"') else ""} \
+      ~{if defined(min_date) then ("--mindate " +  '"' + min_date + '"') else ""} \
+      ~{if defined(date_type) then ("--datetype " +  '"' + date_type + '"') else ""}
   >>>
+  parameter_meta {
+    query: "string OR"
+    query_file: "file with query OR"
+    gi_file: "with list of GIs to download"
+    db: "(nucleotide [default], nucest, protein, )"
+    outfile: "file (results are displayed on screen otherwise)"
+    format: "file output format (fasta by default)"
+    verbose: "output"
+    max_ids: "number of IDs to retrieve in a set (100 at a time by default)"
+    rel_date: "for a record"
+    min_date: "date for record"
+    date_type: "or mdat (entered or modified)"
+  }
 }

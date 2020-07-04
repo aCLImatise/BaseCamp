@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: msaconverter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/msaconverter.cwl
 inputs:
-- id: i
+- id: input_msa_file
   doc: input msa file
   type: string
   inputBinding:
     prefix: -i
-- id: o
+- id: output_msa_file
   doc: output msa file
   type: string
   inputBinding:

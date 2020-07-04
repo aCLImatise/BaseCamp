@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hapenum.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hapenum.cwl
 inputs:
 - id: input_file
   doc: The input VCF/BCF file (use file:sample to specify a sample)
@@ -16,22 +16,22 @@ inputs:
   type: string
   inputBinding:
     prefix: --output-fasta
-- id: l
+- id: arg_location_subset
   doc: '[ --location ] arg      The location / subset.'
   type: boolean
   inputBinding:
     prefix: -l
-- id: r
+- id: arg_reference_fasta
   doc: '[ --reference ] arg     The reference fasta file.'
   type: boolean
   inputBinding:
     prefix: -r
-- id: f
+- id: arg_apply_filtering
   doc: '[ --apply-filters ] arg Apply filtering in VCF.'
   type: boolean
   inputBinding:
     prefix: -f
-- id: p
+- id: arg_preprocess_variants
   doc: '[ --preprocess ] arg    Preprocess variants'
   type: boolean
   inputBinding:

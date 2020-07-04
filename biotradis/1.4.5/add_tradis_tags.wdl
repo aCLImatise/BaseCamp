@@ -2,12 +2,16 @@ version 1.0
 
 task AddTradisTags {
   input {
-    File bB
-    String? addAddTags
+    File? b
+    String add_tags
   }
   command <<<
     add_tradis_tags \
-      ~{addAddTags} \
-      ~{if defined(bB) then ("-b " +  '"' + bB + '"') else ""}
+      ~{add_tags} \
+      ~{if defined(b) then ("-b " +  '"' + b + '"') else ""}
   >>>
+  parameter_meta {
+    b: ""
+    add_tags: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ama.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ama.cwl
 inputs:
 - id: s_dbg
   doc: Use Markov background model of order <order> derived from the sequence to compute
@@ -66,7 +66,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --o-format
-- id: o
+- id: output_formats_give
   doc: Output all available formats to <directory>; give up if <directory> exists.
   type: Directory
   inputBinding:
@@ -92,6 +92,21 @@ inputs:
   type: long
   inputBinding:
     prefix: --last
+- id: motif_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: sequence_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: background_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

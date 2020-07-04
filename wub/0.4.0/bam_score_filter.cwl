@@ -1,6 +1,21 @@
 class: CommandLineTool
-id: bam_score_filter.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bam_score_filter.py.cwl
 inputs:
+- id: inputoutput_format_sam
+  doc: Input/output format (SAM).
+  type: string
+  inputBinding:
+    prefix: -f
+- id: filtering_strategy_topperquery
+  doc: 'Filtering strategy: top_per_query, query_coverage, ref_coverage (top_per_query).'
+  type: string
+  inputBinding:
+    prefix: -s
+- id: minimum_query_coverage
+  doc: Minimum query coverage fraction (0.8).
+  type: string
+  inputBinding:
+    prefix: -q
 - id: input_file
   doc: Input file.
   type: string
@@ -11,21 +26,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: f
-  doc: Input/output format (SAM).
-  type: string
-  inputBinding:
-    prefix: -f
-- id: s
-  doc: 'Filtering strategy: top_per_query, query_coverage, ref_coverage (top_per_query).'
-  type: string
-  inputBinding:
-    prefix: -s
-- id: q
-  doc: Minimum query coverage fraction (0.8).
-  type: string
-  inputBinding:
-    prefix: -q
 outputs: []
 cwlVersion: v1.1
 baseCommand:

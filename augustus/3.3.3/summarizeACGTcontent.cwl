@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: summarizeACGTcontent.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/summarizeACGTcontent.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

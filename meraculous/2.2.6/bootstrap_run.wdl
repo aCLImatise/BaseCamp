@@ -2,14 +2,19 @@ version 1.0
 
 task BootstrapRun.sh {
   input {
-    String oO
-    String nN
-    String sS
+    String? o
+    String? n
+    String? s
   }
   command <<<
     bootstrap_run.sh \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{if defined(nN) then ("-n " +  '"' + nN + '"') else ""} \
-      ~{if defined(sS) then ("-s " +  '"' + sS + '"') else ""}
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(n) then ("-n " +  '"' + n + '"') else ""} \
+      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""}
   >>>
+  parameter_meta {
+    o: ""
+    n: ""
+    s: ""
+  }
 }

@@ -1,76 +1,71 @@
 class: CommandLineTool
-id: cfm_id.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cfm_id.cwl
 inputs:
-- id: cfm_id_exe
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: spectrum_file
   doc: ''
   type: string
   inputBinding:
-    position: 1
+    position: 0
 - id: id
   doc: ''
   type: string
   inputBinding:
-    position: 2
+    position: 1
 - id: candidate_file
   doc: ''
   type: string
   inputBinding:
-    position: 3
+    position: 2
 - id: num_highest
   doc: ''
   type: string
   inputBinding:
-    position: 4
+    position: 3
 - id: ppm_mass_to_l
   doc: ''
   type: string
   inputBinding:
-    position: 5
+    position: 4
 - id: abs_mass_to_l
   doc: ''
   type: string
   inputBinding:
-    position: 6
+    position: 5
 - id: prob_thresh_for_prune
   doc: ''
   type: string
   inputBinding:
-    position: 7
+    position: 6
 - id: param_filename
   doc: ''
   type: string
   inputBinding:
-    position: 8
+    position: 7
 - id: config_filename
   doc: ''
   type: string
   inputBinding:
-    position: 9
+    position: 8
 - id: score_type
   doc: ''
   type: string
   inputBinding:
-    position: 10
+    position: 9
 - id: apply_postprocessing
   doc: ''
   type: string
   inputBinding:
-    position: 11
+    position: 10
 - id: output_filename
   doc: ''
   type: string
   inputBinding:
-    position: 12
+    position: 11
 - id: output_msp_or_mgf
   doc: ''
   type: string
   inputBinding:
-    position: 13
+    position: 12
 outputs: []
 cwlVersion: v1.1
 baseCommand:

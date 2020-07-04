@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sortPolishes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sortPolishes.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,16 +2,22 @@ version 1.0
 
 task MakeKtaxonomy.py {
   input {
-    String nodesNodes
-    String namesNames
-    String seqid2taxidSeqid2taxid
-    String outputOutput
+    String? nodes
+    String? names
+    String? seq_id_two_taxid
+    String? output_taxonomy_file
   }
   command <<<
     make_ktaxonomy.py \
-      ~{if defined(nodesNodes) then ("--nodes " +  '"' + nodesNodes + '"') else ""} \
-      ~{if defined(namesNames) then ("--names " +  '"' + namesNames + '"') else ""} \
-      ~{if defined(seqid2taxidSeqid2taxid) then ("--seqid2taxid " +  '"' + seqid2taxidSeqid2taxid + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""}
+      ~{if defined(nodes) then ("--nodes " +  '"' + nodes + '"') else ""} \
+      ~{if defined(names) then ("--names " +  '"' + names + '"') else ""} \
+      ~{if defined(seq_id_two_taxid) then ("--seqid2taxid " +  '"' + seq_id_two_taxid + '"') else ""} \
+      ~{if defined(output_taxonomy_file) then ("--output " +  '"' + output_taxonomy_file + '"') else ""}
   >>>
+  parameter_meta {
+    nodes: "nodes.dmp file from taxonomy"
+    names: "names.dmp file from taxonomy"
+    seq_id_two_taxid: "seqid2taxid.map file"
+    output_taxonomy_file: "output taxonomy file"
+  }
 }

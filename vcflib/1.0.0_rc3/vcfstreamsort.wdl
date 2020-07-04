@@ -2,16 +2,22 @@ version 1.0
 
 task Vcfstreamsort {
   input {
-    String windowWindow
-    Boolean allAll
-    String? vcfVcf
-    File? fileFile
+    String? window
+    Boolean? all
+    String? vcf
+    File? file
   }
   command <<<
     vcfstreamsort \
-      ~{vcfVcf} \
-      ~{if defined(windowWindow) then ("--window " +  '"' + windowWindow + '"') else ""} \
-      ~{true="--all" false="" allAll} \
-      ~{fileFile}
+      ~{vcf} \
+      ~{file} \
+      ~{if defined(window) then ("--window " +  '"' + window + '"') else ""} \
+      ~{true="--all" false="" all}
   >>>
+  parameter_meta {
+    window: "number of sites to sort (default 10000)"
+    all: "load all sites and then sort in memory"
+    vcf: ""
+    file: ""
+  }
 }

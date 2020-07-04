@@ -2,30 +2,43 @@ version 1.0
 
 task Vcfremap {
   input {
-    String refRefWindowSize
-    String altAltWindowSize
-    File referenceReference
-    String matchMatchScore
-    String mismatchMismatchScore
-    String gapGapOpenPenalty
-    String gapGapExtendPenalty
-    Boolean entropyEntropyGapOpen
-    String repeatRepeatGapExtend
-    String adjustAdjustVcf
-    String? vcfVcfFile
+    String? ref_window_size
+    String? alt_window_size
+    File? reference
+    String? match_score
+    String? mismatch_score
+    String? gap_open_penalty
+    String? gap_extend_penalty
+    Boolean? entropy_gap_open
+    String? repeat_gap_extend
+    String? adjust_vcf
+    String? vcf_file
   }
   command <<<
     vcfremap \
-      ~{vcfVcfFile} \
-      ~{if defined(refRefWindowSize) then ("--ref-window-size " +  '"' + refRefWindowSize + '"') else ""} \
-      ~{if defined(altAltWindowSize) then ("--alt-window-size " +  '"' + altAltWindowSize + '"') else ""} \
-      ~{if defined(referenceReference) then ("--reference " +  '"' + referenceReference + '"') else ""} \
-      ~{if defined(matchMatchScore) then ("--match-score " +  '"' + matchMatchScore + '"') else ""} \
-      ~{if defined(mismatchMismatchScore) then ("--mismatch-score " +  '"' + mismatchMismatchScore + '"') else ""} \
-      ~{if defined(gapGapOpenPenalty) then ("--gap-open-penalty " +  '"' + gapGapOpenPenalty + '"') else ""} \
-      ~{if defined(gapGapExtendPenalty) then ("--gap-extend-penalty " +  '"' + gapGapExtendPenalty + '"') else ""} \
-      ~{true="--entropy-gap-open" false="" entropyEntropyGapOpen} \
-      ~{if defined(repeatRepeatGapExtend) then ("--repeat-gap-extend " +  '"' + repeatRepeatGapExtend + '"') else ""} \
-      ~{if defined(adjustAdjustVcf) then ("--adjust-vcf " +  '"' + adjustAdjustVcf + '"') else ""}
+      ~{vcf_file} \
+      ~{if defined(ref_window_size) then ("--ref-window-size " +  '"' + ref_window_size + '"') else ""} \
+      ~{if defined(alt_window_size) then ("--alt-window-size " +  '"' + alt_window_size + '"') else ""} \
+      ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
+      ~{if defined(match_score) then ("--match-score " +  '"' + match_score + '"') else ""} \
+      ~{if defined(mismatch_score) then ("--mismatch-score " +  '"' + mismatch_score + '"') else ""} \
+      ~{if defined(gap_open_penalty) then ("--gap-open-penalty " +  '"' + gap_open_penalty + '"') else ""} \
+      ~{if defined(gap_extend_penalty) then ("--gap-extend-penalty " +  '"' + gap_extend_penalty + '"') else ""} \
+      ~{true="--entropy-gap-open" false="" entropy_gap_open} \
+      ~{if defined(repeat_gap_extend) then ("--repeat-gap-extend " +  '"' + repeat_gap_extend + '"') else ""} \
+      ~{if defined(adjust_vcf) then ("--adjust-vcf " +  '"' + adjust_vcf + '"') else ""}
   >>>
+  parameter_meta {
+    ref_window_size: "align using this many bases flanking each side of the reference allele"
+    alt_window_size: "align using this many flanking bases from the reference around each alternate allele"
+    reference: "FASTA reference file, required with -i and -u"
+    match_score: "match score for SW algorithm"
+    mismatch_score: "mismatch score for SW algorithm"
+    gap_open_penalty: "gap open penalty for SW algorithm"
+    gap_extend_penalty: "gap extension penalty for SW algorithm"
+    entropy_gap_open: "use entropy scaling for the gap open penalty"
+    repeat_gap_extend: "penalize non-repeat-unit gaps in repeat sequence"
+    adjust_vcf: "supply a new cigar as TAG in the output VCF"
+    vcf_file: ""
+  }
 }

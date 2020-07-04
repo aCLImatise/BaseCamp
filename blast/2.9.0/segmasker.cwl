@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: segmasker.cwl
+id: ../../../../home/ubuntu/BiocondaCli/segmasker.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

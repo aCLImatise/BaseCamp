@@ -1,12 +1,6 @@
 class: CommandLineTool
-id: brassI_prep_bam.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/brassI_prep_bam.pl.cwl
 inputs:
-- id: example
-  doc: '... | brassI_prep_bam.pl -b my.bam.bas -e NC_007605,hs37d5,GL% | <some digesting
-    process>'
-  type: string
-  inputBinding:
-    position: 0
 - id: include
   doc: -i    Include reads where self and mate are mapped to this ref name (or unmapped).
   type: boolean
@@ -28,6 +22,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -man
+- id: example
+  doc: '... | brassI_prep_bam.pl -b my.bam.bas -e NC_007605,hs37d5,GL% | <some digesting
+    process>'
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

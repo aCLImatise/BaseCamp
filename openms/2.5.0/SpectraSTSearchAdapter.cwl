@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SpectraSTSearchAdapter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SpectraSTSearchAdapter.cwl
 inputs:
 - id: executable
   doc: '*                                                            Path to the SpectraST
@@ -16,7 +16,7 @@ inputs:
 - id: output_files
   doc: "[ <OutputFileName2> ... <OutputFileNameN> ]*       Output files. Make sure\
     \ to specify one output file for each input file (valid formats: 'txt', 'tsv',\
-    \ 'pep.xml', 'xml', 'pepXML',  'html')"
+    \ 'pep.xml', 'xml', 'pepXML', 'html')"
   type: string
   inputBinding:
     prefix: -output_files
@@ -45,13 +45,13 @@ inputs:
     prefix: -search_file
 - id: params_file
   doc: "Read search options from file. All options set in the file will be overridden\
-    \ by command-line options, if specified. (valid forma ts: 'params')"
+    \ by command-line options, if specified. (valid formats: 'params')"
   type: string
   inputBinding:
     prefix: -params_file
 - id: precursor_mz_tolerance
   doc: "M/z (in Th) tolerance within which candidate entries are compared to the query.\
-    \ Monoisotopic mass is assumed. (default: '3.0'  min: '0.0')"
+    \ Monoisotopic mass is assumed. (default: '3.0' min: '0.0')"
   type: string
   inputBinding:
     prefix: -precursor_mz_tolerance

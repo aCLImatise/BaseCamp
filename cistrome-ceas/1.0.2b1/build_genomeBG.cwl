@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: build_genomeBG.cwl
+id: ../../../../home/ubuntu/BiocondaCli/build_genomeBG.cwl
 inputs:
 - id: db
   doc: 'Genome of UCSC (eg hg18). If -d (--db) is not given, this script searches

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rmOutToGFF3.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rmOutToGFF3.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

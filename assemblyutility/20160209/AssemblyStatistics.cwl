@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: AssemblyStatistics.cwl
+id: ../../../../home/ubuntu/BiocondaCli/AssemblyStatistics.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

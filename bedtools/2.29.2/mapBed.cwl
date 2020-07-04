@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: mapBed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mapBed.cwl
 inputs:
-- id: c
+- id: specify_columns_map
   doc: 'Specify columns from the B file to map onto intervals in A. Default: 5. Multiple
     columns can be specified in a comma-delimited list.'
   type: boolean
   inputBinding:
     prefix: -c
-- id: o
+- id: specify_operation_applied
   doc: 'Specify the operation that should be applied to -c. Valid operations: sum,
     min, max, absmin, absmax, mean, median, mode, antimode stdev, sstdev collapse
     (i.e., print a delimited list (duplicates allowed)),  distinct (i.e., print a
@@ -38,39 +38,39 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -prec
-- id: s
+- id: require_same_strandedness
   doc: Require same strandedness.  That is, only report hits in B that overlap A on
     the _same_ strand. - By default, overlaps are reported without respect to strand.
   type: boolean
   inputBinding:
     prefix: -s
-- id: s
+- id: require_different_strandedness
   doc: Require different strandedness.  That is, only report hits in B that overlap
     A on the _opposite_ strand. - By default, overlaps are reported without respect
     to strand.
   type: boolean
   inputBinding:
     prefix: -S
-- id: f
+- id: minimum_overlap_a
   doc: Minimum overlap required as a fraction of A. - Default is 1E-9 (i.e., 1bp).
     - FLOAT (e.g. 0.50)
   type: boolean
   inputBinding:
     prefix: -f
-- id: f
+- id: minimum_overlap_b
   doc: Minimum overlap required as a fraction of B. - Default is 1E-9 (i.e., 1bp).
     - FLOAT (e.g. 0.50)
   type: boolean
   inputBinding:
     prefix: -F
-- id: r
+- id: require_fraction_overlap
   doc: Require that the fraction overlap be reciprocal for A AND B. - In other words,
     if -f is 0.90 and -r is used, this requires that B overlap 90% of A and A _also_
     overlaps 90% of B.
   type: boolean
   inputBinding:
     prefix: -r
-- id: e
+- id: require_minimum_fraction
   doc: Require that the minimum fraction be satisfied for A OR B. - In other words,
     if -e is used with -f 0.90 and -F 0.10 this requires that either 90% of A is covered
     OR 10% of  B is covered. Without -e, both fractions would have to be satisfied.
@@ -82,7 +82,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -split
-- id: g
+- id: provide_genome_file
   doc: Provide a genome file to enforce consistent chromosome sort order across input
     files. Only applies when used with -sorted option.
   type: boolean
@@ -120,6 +120,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -iobuf
+- id: a
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -a
+- id: b
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -b
+- id: bed_tools
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: map
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

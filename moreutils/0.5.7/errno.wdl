@@ -2,18 +2,25 @@ version 1.0
 
 task Errno {
   input {
-    Boolean lssLss
-    Boolean listList
-    Boolean searchSearch
-    Boolean searchSearchAllLocales
-    String? keywordKeyword
+    Boolean? lss
+    Boolean? list
+    Boolean? search
+    Boolean? search_all_locales
+    String? keyword
   }
   command <<<
     errno \
-      ~{keywordKeyword} \
-      ~{true="-lsS" false="" lssLss} \
-      ~{true="--list" false="" listList} \
-      ~{true="--search" false="" searchSearch} \
-      ~{true="--search-all-locales" false="" searchSearchAllLocales}
+      ~{keyword} \
+      ~{true="-lsS" false="" lss} \
+      ~{true="--list" false="" list} \
+      ~{true="--search" false="" search} \
+      ~{true="--search-all-locales" false="" search_all_locales}
   >>>
+  parameter_meta {
+    lss: ""
+    list: ""
+    search: ""
+    search_all_locales: ""
+    keyword: ""
+  }
 }

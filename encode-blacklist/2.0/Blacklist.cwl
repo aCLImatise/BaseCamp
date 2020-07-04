@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Blacklist.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Blacklist.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

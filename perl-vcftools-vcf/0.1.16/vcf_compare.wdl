@@ -2,44 +2,52 @@ version 1.0
 
 task VcfCompare {
   input {
-    Boolean applyApplyFilters
-    Boolean chromosomesChromosomes
-    Boolean debugDebug
-    Boolean cmpCmpGenotypes
-    Boolean ignoreIgnoreIndels
-    Boolean nameNameMapping
-    String infoInfo
-    String plotPlot
-    File refseqRefseq
-    Boolean regionsRegions
-    Boolean samplesSamples
-    String titleTitle
-    Int winWin
-    String? optionsOptions
-    File? fileFile1vcf
-    String? vcfVcfCompare
-    String? chr1cmpChr1cmp
-    String? optionsOptions
+    Boolean? apply_filters
+    String? chromosomes
+    Boolean? debug
+    Boolean? cmp_genotypes
+    Boolean? ignore_indels
+    String? name_mapping
+    String? info
+    String? plot
+    File? refseq
+    String? regions
+    String? samples
+    String? title
+    Int? win
+    String vcf_compare
   }
   command <<<
     vcf-compare \
-      ~{optionsOptions} \
-      ~{true="--apply-filters" false="" applyApplyFilters} \
-      ~{true="--chromosomes" false="" chromosomesChromosomes} \
-      ~{true="--debug" false="" debugDebug} \
-      ~{true="--cmp-genotypes" false="" cmpCmpGenotypes} \
-      ~{true="--ignore-indels" false="" ignoreIgnoreIndels} \
-      ~{true="--name-mapping" false="" nameNameMapping} \
-      ~{if defined(infoInfo) then ("--INFO " +  '"' + infoInfo + '"') else ""} \
-      ~{if defined(plotPlot) then ("--plot " +  '"' + plotPlot + '"') else ""} \
-      ~{if defined(refseqRefseq) then ("--refseq " +  '"' + refseqRefseq + '"') else ""} \
-      ~{true="--regions" false="" regionsRegions} \
-      ~{true="--samples" false="" samplesSamples} \
-      ~{if defined(titleTitle) then ("--title " +  '"' + titleTitle + '"') else ""} \
-      ~{if defined(winWin) then ("--win " +  '"' + winWin + '"') else ""} \
-      ~{fileFile1vcf} \
-      ~{vcfVcfCompare} \
-      ~{chr1cmpChr1cmp} \
-      ~{optionsOptions}
+      ~{vcf_compare} \
+      ~{true="--apply-filters" false="" apply_filters} \
+      ~{if defined(chromosomes) then ("--chromosomes " +  '"' + chromosomes + '"') else ""} \
+      ~{true="--debug" false="" debug} \
+      ~{true="--cmp-genotypes" false="" cmp_genotypes} \
+      ~{true="--ignore-indels" false="" ignore_indels} \
+      ~{if defined(name_mapping) then ("--name-mapping " +  '"' + name_mapping + '"') else ""} \
+      ~{if defined(info) then ("--INFO " +  '"' + info + '"') else ""} \
+      ~{if defined(plot) then ("--plot " +  '"' + plot + '"') else ""} \
+      ~{if defined(refseq) then ("--refseq " +  '"' + refseq + '"') else ""} \
+      ~{if defined(regions) then ("--regions " +  '"' + regions + '"') else ""} \
+      ~{if defined(samples) then ("--samples " +  '"' + samples + '"') else ""} \
+      ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
+      ~{if defined(win) then ("--win " +  '"' + win + '"') else ""}
   >>>
+  parameter_meta {
+    apply_filters: "Ignore lines where FILTER column is anything else than PASS or '.'"
+    chromosomes: "Same as -r, left for backward compatibility. Please do not use as it will be dropped in the future."
+    debug: "Debugging information. Giving the option multiple times increases verbosity"
+    cmp_genotypes: "Compare genotypes, not only positions"
+    ignore_indels: "Exclude sites containing indels from genotype comparison"
+    name_mapping: "Use with -g when comparing files with differing column names. The argument to this options is a comma-separated list or one mapping per line in a file. The names are colon separated and must appear in the same order as the files on the command line."
+    info: "[<int>]         Calculate genotype errors by INFO. Use zero based indecies if field has more than one value. Can be given multiple times."
+    plot: "Create plots. Multiple files (e.g. per-chromosome outputs from vcf-compare) can be given."
+    refseq: "Compare the actual sequence, not just positions. Use with -w to compare indels."
+    regions: "Process the given regions (comma-separated list or one region per line in a file)."
+    samples: "Process only the listed samples. Excluding unwanted samples may increase performance considerably."
+    title: "Title for graphs (see also -p)"
+    win: "In repetitive sequences, the same indel can be called at different positions. Consider records this far apart as matching (be it a SNP or an indel)."
+    vcf_compare: ""
+  }
 }

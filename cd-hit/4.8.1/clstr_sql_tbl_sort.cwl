@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: clstr_sql_tbl_sort.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clstr_sql_tbl_sort.pl.cwl
 inputs:
 - id: table_file
   doc: ''

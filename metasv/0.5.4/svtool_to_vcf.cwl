@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: svtool_to_vcf.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/svtool_to_vcf.py.cwl
 inputs:
 - id: input
   doc: 'SV tool output file (default: None)'

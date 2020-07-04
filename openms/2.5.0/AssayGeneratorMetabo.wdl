@@ -2,100 +2,70 @@ version 1.0
 
 task AssayGeneratorMetabo {
   input {
-    String executableExecutable
-    Boolean inIn
-    Boolean inInId
-    File outOut
-    String fragmentFragmentAnnotation
-    String methodMethod
-    Boolean useUseExactMass
-    Boolean excludeExcludeMs2Precursor
-    String precursorPrecursorMzDistance
-    String precursorPrecursorRtTolerance
-    Boolean useUseKnownUnknowns
-    Int minMinTransitions
-    Int maxMaxTransitions
-    String cosineCosineSimilarityThreshold
-    String transitionTransitionThreshold
-    Boolean deDeIsoToPing
-    Boolean deDeIsoToPing
-    Boolean deDeIsoToPing
-    Boolean deDeIsoToPing
-    Boolean deDeIsoToPing
-    Boolean deDeIsoToPing
-    Boolean deDeIsoToPing
-    Boolean deDeIsoToPing
-    Boolean deDeIsoToPing
-    Boolean preprocessingPreprocessing
-    Boolean preprocessingPreprocessing
-    Boolean preprocessingPreprocessing
-    Boolean preprocessingPreprocessing
-    Boolean preprocessingPreprocessing
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Boolean siriusSirius
-    Directory outOutWorkspaceDirectory
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    String? executable
+    Boolean? in
+    Boolean? in_id
+    File? out
+    String? fragment_annotation
+    String? method
+    Boolean? use_exact_mass
+    Boolean? exclude_ms_two_precursor
+    String? precursor_mz_distance
+    String? precursor_rt_tolerance
+    Boolean? use_known_unknowns
+    Int? min_transitions
+    Int? max_transitions
+    String? cosine_similarity_threshold
+    String? transition_threshold
+    Directory? out_workspace_directory
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     AssayGeneratorMetabo \
-      ~{if defined(executableExecutable) then ("-executable " +  '"' + executableExecutable + '"') else ""} \
-      ~{true="-in" false="" inIn} \
-      ~{true="-in_id" false="" inInId} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(fragmentFragmentAnnotation) then ("-fragment_annotation " +  '"' + fragmentFragmentAnnotation + '"') else ""} \
-      ~{if defined(methodMethod) then ("-method " +  '"' + methodMethod + '"') else ""} \
-      ~{true="-use_exact_mass" false="" useUseExactMass} \
-      ~{true="-exclude_ms2_precursor" false="" excludeExcludeMs2Precursor} \
-      ~{if defined(precursorPrecursorMzDistance) then ("-precursor_mz_distance " +  '"' + precursorPrecursorMzDistance + '"') else ""} \
-      ~{if defined(precursorPrecursorRtTolerance) then ("-precursor_rt_tolerance " +  '"' + precursorPrecursorRtTolerance + '"') else ""} \
-      ~{true="-use_known_unknowns" false="" useUseKnownUnknowns} \
-      ~{if defined(minMinTransitions) then ("-min_transitions " +  '"' + minMinTransitions + '"') else ""} \
-      ~{if defined(maxMaxTransitions) then ("-max_transitions " +  '"' + maxMaxTransitions + '"') else ""} \
-      ~{if defined(cosineCosineSimilarityThreshold) then ("-cosine_similarity_threshold " +  '"' + cosineCosineSimilarityThreshold + '"') else ""} \
-      ~{if defined(transitionTransitionThreshold) then ("-transition_threshold " +  '"' + transitionTransitionThreshold + '"') else ""} \
-      ~{true="-deisotoping" false="" deDeIsoToPing} \
-      ~{true="-deisotoping" false="" deDeIsoToPing} \
-      ~{true="-deisotoping" false="" deDeIsoToPing} \
-      ~{true="-deisotoping" false="" deDeIsoToPing} \
-      ~{true="-deisotoping" false="" deDeIsoToPing} \
-      ~{true="-deisotoping" false="" deDeIsoToPing} \
-      ~{true="-deisotoping" false="" deDeIsoToPing} \
-      ~{true="-deisotoping" false="" deDeIsoToPing} \
-      ~{true="-deisotoping" false="" deDeIsoToPing} \
-      ~{true="-preprocessing" false="" preprocessingPreprocessing} \
-      ~{true="-preprocessing" false="" preprocessingPreprocessing} \
-      ~{true="-preprocessing" false="" preprocessingPreprocessing} \
-      ~{true="-preprocessing" false="" preprocessingPreprocessing} \
-      ~{true="-preprocessing" false="" preprocessingPreprocessing} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{true="-sirius" false="" siriusSirius} \
-      ~{if defined(outOutWorkspaceDirectory) then ("-out_workspace_directory " +  '"' + outOutWorkspaceDirectory + '"') else ""} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(executable) then ("-executable " +  '"' + executable + '"') else ""} \
+      ~{true="-in" false="" in} \
+      ~{true="-in_id" false="" in_id} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(fragment_annotation) then ("-fragment_annotation " +  '"' + fragment_annotation + '"') else ""} \
+      ~{if defined(method) then ("-method " +  '"' + method + '"') else ""} \
+      ~{true="-use_exact_mass" false="" use_exact_mass} \
+      ~{true="-exclude_ms2_precursor" false="" exclude_ms_two_precursor} \
+      ~{if defined(precursor_mz_distance) then ("-precursor_mz_distance " +  '"' + precursor_mz_distance + '"') else ""} \
+      ~{if defined(precursor_rt_tolerance) then ("-precursor_rt_tolerance " +  '"' + precursor_rt_tolerance + '"') else ""} \
+      ~{true="-use_known_unknowns" false="" use_known_unknowns} \
+      ~{if defined(min_transitions) then ("-min_transitions " +  '"' + min_transitions + '"') else ""} \
+      ~{if defined(max_transitions) then ("-max_transitions " +  '"' + max_transitions + '"') else ""} \
+      ~{if defined(cosine_similarity_threshold) then ("-cosine_similarity_threshold " +  '"' + cosine_similarity_threshold + '"') else ""} \
+      ~{if defined(transition_threshold) then ("-transition_threshold " +  '"' + transition_threshold + '"') else ""} \
+      ~{if defined(out_workspace_directory) then ("-out_workspace_directory " +  '"' + out_workspace_directory + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    executable: "SIRIUS executable e.g. sirius"
+    in: "<file(s)>*                                       MzML input file(s) used for assay library generation (valid formats: 'mzML')"
+    in_id: "<file(s)>*                                    FeatureXML input file(s) containing identification information (e.g. AccurateMassSearch) (valid formats: 'featureXML')"
+    out: "*                                         Assay library output file (valid formats: 'tsv', 'traML', 'pqp')"
+    fragment_annotation: "Fragment annotation method (default: 'none' valid: 'none', 'sirius')"
+    method: "Spectrum with the highest precursor intensity or a consensus spectrum ist used for assay library construction (if no fragment annotation is used). (default: 'highest_intensity' valid: 'highest_intensity', 'consensus_spectrum')"
+    use_exact_mass: "Use exact mass for fragment annotation"
+    exclude_ms_two_precursor: "Excludes precursor in ms2 from transition list"
+    precursor_mz_distance: "Max m/z distance of the precursor entries of two spectra to be merged in [Da]. (default: '1.0e-04')"
+    precursor_rt_tolerance: "Tolerance window (left and right) for precursor selection [seconds] (default: '5.0')"
+    use_known_unknowns: "Use features without identification information"
+    min_transitions: "Minimal number of transitions (default: '3')"
+    max_transitions: "Maximal number of transitions (default: '3')"
+    cosine_similarity_threshold: "Threshold for cosine similarity of MS2 spectra from the same precursor used in consensus spectrum creation (default: '0.98')"
+    transition_threshold: "Further transitions need at least x% of the maximum intensity (default 5%) (default: '5.0')"
+    out_workspace_directory: "Output directory for SIRIUS workspace"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

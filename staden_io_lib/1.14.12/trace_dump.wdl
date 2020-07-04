@@ -2,10 +2,13 @@ version 1.0
 
 task TraceDump {
   input {
-    String? tracefileTracefile
+    String trace_file
   }
   command <<<
     trace_dump \
-      ~{tracefileTracefile}
+      ~{trace_file}
   >>>
+  parameter_meta {
+    trace_file: ""
+  }
 }

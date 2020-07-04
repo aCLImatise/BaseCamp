@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: postprocess_predictions.cwl
+id: ../../../../home/ubuntu/BiocondaCli/postprocess_predictions.cwl
 inputs:
-- id: d
+- id: minimum_expected_support_deletion
   doc: Minimum expected support for deletion cliques (cliques with lower support are
     discarded).
   type: long
   inputBinding:
     prefix: -d
-- id: i
+- id: minimum_expected_support_insertion
   doc: Minimum expected support for insertion cliques (cliques with lower support
     are discarded).
   type: long
@@ -19,18 +19,18 @@ inputs:
   type: string
   inputBinding:
     prefix: --covbal
-- id: c
+- id: minimum_coverage_clique
   doc: Minimum coverage at clique center.
   type: long
   inputBinding:
     prefix: -c
-- id: c
+- id: minimum_individual_coverage
   doc: Minimum individual coverage at clique center, that is, only cliques are retains
     for which ALL individuals have at least the given coverage.
   type: long
   inputBinding:
     prefix: -C
-- id: r
+- id: reevaluate_cliques_lead
   doc: Re-evaluate which cliques lead to which sets of individuals (requires standard
     deviation to be given).
   type: boolean
@@ -41,13 +41,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --stddev
-- id: s
+- id: also_store_output
   doc: 'Also store output in separate files for each sample. Parameter: prefix of
     filenames for samplewise output.'
   type: string
   inputBinding:
     prefix: -S
-- id: n
+- id: filename_read_samplenames
   doc: Filename to read samplenames from.
   type: string
   inputBinding:

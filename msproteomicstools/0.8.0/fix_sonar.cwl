@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fix_sonar.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fix_sonar.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

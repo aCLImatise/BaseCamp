@@ -2,10 +2,13 @@ version 1.0
 
 task ShowTiling {
   input {
-    String? deltaDeltaFile
+    String delta_file
   }
   command <<<
     show-tiling \
-      ~{deltaDeltaFile}
+      ~{delta_file}
   >>>
+  parameter_meta {
+    delta_file: ""
+  }
 }

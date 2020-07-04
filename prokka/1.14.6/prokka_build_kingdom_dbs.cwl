@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: prokka_build_kingdom_dbs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/prokka_build_kingdom_dbs.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

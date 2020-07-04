@@ -2,42 +2,61 @@ version 1.0
 
 task KatPlotSpectraHist {
   input {
-    String outputOutput
-    String outputOutputType
-    String titleTitle
-    String xXLabel
-    String yYLabel
-    String legendLegendLabels
-    String xXMin
-    String yYMin
-    String xXMax
-    String yYMax
-    String widthWidth
-    String heightHeight
-    Boolean xXLogScale
-    Boolean yYLogScale
-    String dpiDpi
-    Boolean verboseVerbose
-    String? histoHistoFiles
+    String? path_output_file
+    String? output_type
+    String? title
+    String? x_label
+    String? y_label
+    String? legend_labels
+    String? x_min
+    String? y_min
+    String? x_max
+    String? y_max
+    String? width
+    String? height
+    Boolean? x_log_scale
+    Boolean? y_log_scale
+    String? dpi
+    Boolean? verbose
+    String histo_files
   }
   command <<<
     kat_plot_spectra_hist \
-      ~{histoHistoFiles} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(outputOutputType) then ("--output_type " +  '"' + outputOutputType + '"') else ""} \
-      ~{if defined(titleTitle) then ("--title " +  '"' + titleTitle + '"') else ""} \
-      ~{if defined(xXLabel) then ("--x_label " +  '"' + xXLabel + '"') else ""} \
-      ~{if defined(yYLabel) then ("--y_label " +  '"' + yYLabel + '"') else ""} \
-      ~{if defined(legendLegendLabels) then ("--legend_labels " +  '"' + legendLegendLabels + '"') else ""} \
-      ~{if defined(xXMin) then ("--x_min " +  '"' + xXMin + '"') else ""} \
-      ~{if defined(yYMin) then ("--y_min " +  '"' + yYMin + '"') else ""} \
-      ~{if defined(xXMax) then ("--x_max " +  '"' + xXMax + '"') else ""} \
-      ~{if defined(yYMax) then ("--y_max " +  '"' + yYMax + '"') else ""} \
-      ~{if defined(widthWidth) then ("--width " +  '"' + widthWidth + '"') else ""} \
-      ~{if defined(heightHeight) then ("--height " +  '"' + heightHeight + '"') else ""} \
-      ~{true="--x_logscale" false="" xXLogScale} \
-      ~{true="--y_logscale" false="" yYLogScale} \
-      ~{if defined(dpiDpi) then ("--dpi " +  '"' + dpiDpi + '"') else ""} \
-      ~{true="--verbose" false="" verboseVerbose}
+      ~{histo_files} \
+      ~{if defined(path_output_file) then ("--output " +  '"' + path_output_file + '"') else ""} \
+      ~{if defined(output_type) then ("--output_type " +  '"' + output_type + '"') else ""} \
+      ~{if defined(title) then ("--title " +  '"' + title + '"') else ""} \
+      ~{if defined(x_label) then ("--x_label " +  '"' + x_label + '"') else ""} \
+      ~{if defined(y_label) then ("--y_label " +  '"' + y_label + '"') else ""} \
+      ~{if defined(legend_labels) then ("--legend_labels " +  '"' + legend_labels + '"') else ""} \
+      ~{if defined(x_min) then ("--x_min " +  '"' + x_min + '"') else ""} \
+      ~{if defined(y_min) then ("--y_min " +  '"' + y_min + '"') else ""} \
+      ~{if defined(x_max) then ("--x_max " +  '"' + x_max + '"') else ""} \
+      ~{if defined(y_max) then ("--y_max " +  '"' + y_max + '"') else ""} \
+      ~{if defined(width) then ("--width " +  '"' + width + '"') else ""} \
+      ~{if defined(height) then ("--height " +  '"' + height + '"') else ""} \
+      ~{true="--x_logscale" false="" x_log_scale} \
+      ~{true="--y_logscale" false="" y_log_scale} \
+      ~{if defined(dpi) then ("--dpi " +  '"' + dpi + '"') else ""} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    path_output_file: "The path to the output file."
+    output_type: "The plot file type to create (default is based on given output name)."
+    title: "Title for plot"
+    x_label: "Label for x-axis"
+    y_label: "Label for y-axis"
+    legend_labels: "Comma separated list of labels for legend"
+    x_min: "Minimum value for x-axis"
+    y_min: "Minimum value for y-axis"
+    x_max: "Maximum value for x-axis"
+    y_max: "Maximum value for y-axis"
+    width: "Width of canvas"
+    height: "Height of canvas"
+    x_log_scale: "X-axis is logscale. Overrides x_min and x_max"
+    y_log_scale: "Y-axis is logscale. Overrides y_min and y_max"
+    dpi: "Resolution in dots per inch of output graphic."
+    verbose: "Print extra information"
+    histo_files: "The input histogram file from KAT"
+  }
 }

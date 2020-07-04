@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phylophlan_draw_metagenomic.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phylophlan_draw_metagenomic.cwl
 inputs:
 - id: input
   doc: 'The input file generated from phylophlan_metagenomic.py (default: None)'
@@ -31,7 +31,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --dpi
-- id: f
+- id: images_output_format
   doc: 'Images output format (default: svg)'
   type: string
   inputBinding:

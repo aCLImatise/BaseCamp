@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: kmer_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kmer_filter.cwl
 inputs:
 - id: rare
   doc: ': turn on filtering based on rare k-mers.'

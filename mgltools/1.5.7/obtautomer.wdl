@@ -2,12 +2,16 @@ version 1.0
 
 task Obtautomer {
   input {
-    Boolean cC
-    File? filenameFilename
+    Boolean? c
+    File filename
   }
   command <<<
     obtautomer \
-      ~{filenameFilename} \
-      ~{true="-c" false="" cC}
+      ~{filename} \
+      ~{true="-c" false="" c}
   >>>
+  parameter_meta {
+    c: ""
+    filename: ""
+  }
 }

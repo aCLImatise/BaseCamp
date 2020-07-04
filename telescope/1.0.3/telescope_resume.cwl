@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: telescope_resume.cwl
+id: ../../../../home/ubuntu/BiocondaCli/telescope_resume.cwl
 inputs:
-- id: checkpoint
-  doc: Path to checkpoint file.
-  type: string
-  inputBinding:
-    position: 0
 - id: quiet
   doc: 'Silence (most) output. (default: False)'
   type: boolean
@@ -78,6 +73,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --use_likelihood
+- id: checkpoint
+  doc: Path to checkpoint file.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

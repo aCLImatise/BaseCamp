@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: obiannotate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/obiannotate.cwl
 inputs:
 - id: with_tax_on_at_rank
   doc: seq1.fasta > seq2.fasta
@@ -29,7 +29,7 @@ inputs:
   type: File
   inputBinding:
     prefix: --id-list
-- id: a
+- id: regularpattern__attributeattributenameregularpattern
   doc: ':<REGULAR_PATTERN>, --attribute=<ATTRIBUTE_NAME>:<REGULAR_PATTERN> regular
     expression pattern matched against the attributes of the sequence. the value of
     this atribute is of the form : attribute_name:regular_pattern. The pattern is
@@ -50,12 +50,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --predicat
-- id: l
+- id: _lmax_keep
   doc: <##>, --lmax=<##> keep sequences shorter than lmax
   type: boolean
   inputBinding:
     prefix: -L
-- id: l
+- id: _lmin_keep
   doc: <##>, --lmin=<##> keep sequences longer than lmin
   type: boolean
   inputBinding:
@@ -98,7 +98,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --seq-rank
-- id: r
+- id: oldnamenewname__renametagoldnamenewname
   doc: <OLD_NAME:NEW_NAME>, --rename-tag=<OLD_NAME:NEW_NAME> change tag name from
     OLD_NAME to NEW_NAME
   type: boolean
@@ -109,7 +109,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --delete-tag
-- id: s
+- id: tagnamepythonexpression__settagtagnamepythonexpression
   doc: <TAG_NAME:PYTHON_EXPRESSION>, --set-tag=<TAG_NAME:PYTHON_EXPRESSION> Add a
     new tag named TAG_NAME with a value computed from PYTHON_EXPRESSION
   type: boolean
@@ -160,11 +160,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --length
-- id: with_tax_on_at_rank
-  doc: add taxonomy annotation at a specified rank level
-  type: string
-  inputBinding:
-    prefix: --with-taxon-at-rank
 - id: mcl
   doc: add cluster tag to sequences according to a mcl graph clustering partition
   type: string

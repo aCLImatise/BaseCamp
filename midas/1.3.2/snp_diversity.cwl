@@ -1,12 +1,6 @@
 class: CommandLineTool
-id: snp_diversity.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snp_diversity.py.cwl
 inputs:
-- id: path
-  doc: path to output from `merge_midas.py snps` for one species directory should
-    be named according to a species_id and contains files 'snps_*.txt')
-  type: File
-  inputBinding:
-    position: 0
 - id: out
   doc: path to output file (/dev/stdout)
   type: File
@@ -130,9 +124,9 @@ inputs:
   inputBinding:
     prefix: --locus_type
 - id: site_type
-  doc: "{1D,2D,3D,4D} if locus_type == 'CDS', use genomic sites with specified degeneracy:\
-    \ 4D indicates synonymous and 1D non-synonymous sites"
-  type: boolean
+  doc: "if locus_type == 'CDS', use genomic sites with specified degeneracy: 4D indicates\
+    \ synonymous and 1D non-synonymous sites"
+  type: string
   inputBinding:
     prefix: --site_type
 - id: max_sites
@@ -140,6 +134,12 @@ inputs:
   type: long
   inputBinding:
     prefix: --max_sites
+- id: path
+  doc: path to output from `merge_midas.py snps` for one species directory should
+    be named according to a species_id and contains files 'snps_*.txt')
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

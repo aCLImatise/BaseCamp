@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filterremappedfusion.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filterremappedfusion.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

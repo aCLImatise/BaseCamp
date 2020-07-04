@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cactus_mirrorAndOrientAlignments.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cactus_mirrorAndOrientAlignments.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

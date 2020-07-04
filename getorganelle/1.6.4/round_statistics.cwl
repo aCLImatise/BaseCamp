@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: round_statistics.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/round_statistics.py.cwl
 inputs:
+- id: debug
+  doc: Debug mode.
+  type: string
+  inputBinding:
+    prefix: --debug
 - id: f
   doc: ''
   type: string

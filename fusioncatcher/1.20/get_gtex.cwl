@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_gtex.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_gtex.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the known fusion genes are downloaded, e.g.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: maker2wap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maker2wap.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

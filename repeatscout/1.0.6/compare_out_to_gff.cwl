@@ -1,23 +1,13 @@
 class: CommandLineTool
-id: compare_out_to_gff.prl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/compare_out_to_gff.prl.cwl
 inputs:
-- id: cat
-  doc: '> lib.ref'
-  type: string
-  inputBinding:
-    prefix: --cat
-- id: cat
-  doc: RepeatMasker instances in either .cat format or .out format (prefer .out)
-  type: boolean
-  inputBinding:
-    prefix: --cat
 - id: gff
   doc: A GFF-formatted file of features. More than one file may be specified with
     multiple --gff options.
   type: boolean
   inputBinding:
     prefix: --gff
-- id: f
+- id: fasta_formatted_file
   doc: A fasta formatted file. If this is given, then sequences that are under (over)
     the overlap threshold will be in the output. This is a sequence filter.
   type: boolean

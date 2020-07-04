@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_wqb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_wqb.cwl
 inputs:
 - id: dir
   doc: Directory with location of OpenDUck data

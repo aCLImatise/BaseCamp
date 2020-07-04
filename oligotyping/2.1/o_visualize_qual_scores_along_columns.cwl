@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: o_visualize_qual_scores_along_columns.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/o_visualize_qual_scores_along_columns.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

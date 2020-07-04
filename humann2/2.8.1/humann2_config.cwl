@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: humann2_config.cwl
+id: ../../../../home/ubuntu/BiocondaCli/humann2_config.cwl
 inputs:
 - id: print
   doc: print the configuration
@@ -11,6 +11,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --update
+- id: name
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: value
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

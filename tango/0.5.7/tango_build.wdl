@@ -2,12 +2,16 @@ version 1.0
 
 task TangoBuild {
   input {
-    String dD
-    String pP
+    String? dbfile
+    String? cpus
   }
   command <<<
     tango build \
-      ~{if defined(dD) then ("-d " +  '"' + dD + '"') else ""} \
-      ~{if defined(pP) then ("-p " +  '"' + pP + '"') else ""}
+      ~{if defined(dbfile) then ("--dbfile " +  '"' + dbfile + '"') else ""} \
+      ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""}
   >>>
+  parameter_meta {
+    dbfile: "Name of diamond database file. Defaults to diamond.dmnd in same directory as the protein fasta file"
+    cpus: "Number of cpus to use when building (defaults to 1)"
+  }
 }

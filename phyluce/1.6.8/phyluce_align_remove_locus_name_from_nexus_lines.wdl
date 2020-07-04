@@ -2,24 +2,34 @@ version 1.0
 
 task PhyluceAlignRemoveLocusNameFromNexusLines {
   input {
-    String alignmentsAlignments
-    String outputOutput
-    String taxTaxA
-    String inputInputFormat
-    String outputOutputFormat
-    String verbosityVerbosity
-    String logLogPath
-    String coresCores
+    String? alignments
+    String? output_directory_hold
+    String? tax_a
+    String? input_format
+    String? output_format
+    String? verbosity
+    String? log_path
+    String? cores
   }
   command <<<
     phyluce_align_remove_locus_name_from_nexus_lines \
-      ~{if defined(alignmentsAlignments) then ("--alignments " +  '"' + alignmentsAlignments + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(taxTaxA) then ("--taxa " +  '"' + taxTaxA + '"') else ""} \
-      ~{if defined(inputInputFormat) then ("--input-format " +  '"' + inputInputFormat + '"') else ""} \
-      ~{if defined(outputOutputFormat) then ("--output-format " +  '"' + outputOutputFormat + '"') else ""} \
-      ~{if defined(verbosityVerbosity) then ("--verbosity " +  '"' + verbosityVerbosity + '"') else ""} \
-      ~{if defined(logLogPath) then ("--log-path " +  '"' + logLogPath + '"') else ""} \
-      ~{if defined(coresCores) then ("--cores " +  '"' + coresCores + '"') else ""}
+      ~{if defined(alignments) then ("--alignments " +  '"' + alignments + '"') else ""} \
+      ~{if defined(output_directory_hold) then ("--output " +  '"' + output_directory_hold + '"') else ""} \
+      ~{if defined(tax_a) then ("--taxa " +  '"' + tax_a + '"') else ""} \
+      ~{if defined(input_format) then ("--input-format " +  '"' + input_format + '"') else ""} \
+      ~{if defined(output_format) then ("--output-format " +  '"' + output_format + '"') else ""} \
+      ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
+      ~{if defined(log_path) then ("--log-path " +  '"' + log_path + '"') else ""} \
+      ~{if defined(cores) then ("--cores " +  '"' + cores + '"') else ""}
   >>>
+  parameter_meta {
+    alignments: "The input directory containing nexus files to filter"
+    output_directory_hold: "The output directory to hold the converted nexus files"
+    tax_a: "The expected number of taxa in all alignments"
+    input_format: "The input alignment format."
+    output_format: "The output alignment format."
+    verbosity: "The logging level to use."
+    log_path: "The path to a directory to hold logs."
+    cores: "Process alignments in parallel using --cores for alignment. This is the number of PHYSICAL CPUs."
+  }
 }

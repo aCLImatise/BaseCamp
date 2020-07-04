@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: raau.cwl
+id: ../../../../home/ubuntu/BiocondaCli/raau.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

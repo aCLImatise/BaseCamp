@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: twoBitInfo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/twoBitInfo.cwl
 inputs:
-- id: input_2bit
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: output_tab
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: n_bed
   doc: instead of seq sizes, output BED records that define  areas with N's in sequence
   type: boolean
@@ -26,6 +16,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -udcDir
+- id: input_dot_two_bit
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_dot_tab
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

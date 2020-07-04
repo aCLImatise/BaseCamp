@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csb_bfite.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csb_bfite.cwl
 inputs:
-- id: pdb
-  doc: full path to the ensemble
-  type: string
-  inputBinding:
-    position: 0
 - id: chain
   doc: Chain (default=A)
   type: string
@@ -32,6 +27,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --niter
+- id: pdb
+  doc: full path to the ensemble
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

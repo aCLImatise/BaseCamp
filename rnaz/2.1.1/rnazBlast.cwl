@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: rnazBlast.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnazBlast.pl.cwl
 inputs:
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: blast_dir
   doc: The directory with your BLAST database. If not set, the value from the "BLASTDB"
     environment variable is used.
@@ -39,6 +34,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --man
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

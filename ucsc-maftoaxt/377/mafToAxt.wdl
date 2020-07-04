@@ -2,18 +2,25 @@ version 1.0
 
 task MafToAxt {
   input {
-    String stripStripDb
-    String? inInMaf
-    String? tTName
-    String? qnameQname
-    String? outputOutput
+    Boolean? strip_db
+    String in_dot_maf
+    String t_name
+    String qname
+    String var_output
   }
   command <<<
     mafToAxt \
-      ~{inInMaf} \
-      ~{if defined(stripStripDb) then ("-stripDb " +  '"' + stripStripDb + '"') else ""} \
-      ~{tTName} \
-      ~{qnameQname} \
-      ~{outputOutput}
+      ~{in_dot_maf} \
+      ~{t_name} \
+      ~{qname} \
+      ~{var_output} \
+      ~{true="-stripDb" false="" strip_db}
   >>>
+  parameter_meta {
+    strip_db: "- Strip names from start to first period."
+    in_dot_maf: ""
+    t_name: ""
+    qname: ""
+    var_output: ""
+  }
 }

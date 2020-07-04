@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: kidc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kidc.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
 - id: force
   doc: Force compilation even if .pyc file already exists.
   type: boolean
@@ -28,6 +18,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --strip-dest-dir
+- id: file_dot_dot_dot
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

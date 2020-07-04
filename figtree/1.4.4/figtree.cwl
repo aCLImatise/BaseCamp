@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: figtree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/figtree.cwl
 inputs:
 - id: graphic
   doc: a graphic with the given format
@@ -21,6 +21,16 @@ inputs:
   type: string
   inputBinding:
     prefix: -url
+- id: tree_file_name
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: graphic_file_name
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

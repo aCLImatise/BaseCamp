@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csvtk_rename.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csvtk_rename.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: fields
   doc: select only these fields. e.g -f 1,2 or -f columnA,columnB
   type: string
@@ -91,6 +86,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tabs
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

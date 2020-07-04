@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: convertToExtent.cwl
+id: ../../../../home/ubuntu/BiocondaCli/convertToExtent.cwl
 inputs:
-- id: v
+- id: be_chatty
   doc: be chatty
   type: boolean
   inputBinding:
@@ -26,6 +26,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -extended
+- id: in
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: out
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

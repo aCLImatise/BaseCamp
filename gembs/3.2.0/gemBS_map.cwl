@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gemBS_map.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gemBS_map.cwl
 inputs:
 - id: dataset
   doc: Dataset to be mapped.

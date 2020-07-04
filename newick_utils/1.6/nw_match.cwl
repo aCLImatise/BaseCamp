@@ -1,11 +1,21 @@
 class: CommandLineTool
-id: nw_match.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nw_match.cwl
 inputs:
-- id: v
-  doc: ': prints tree which do NOT match the pattern.'
+- id: hv
+  doc: ''
   type: boolean
   inputBinding:
-    prefix: -v
+    prefix: -hv
+- id: target_trees_filename_vertical_line
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: pattern
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

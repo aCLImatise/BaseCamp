@@ -1,37 +1,37 @@
 class: CommandLineTool
-id: hera.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hera.cwl
 inputs:
-- id: o
+- id: output_directory_default
   doc: ':      Output directory (default: ./)'
   type: boolean
   inputBinding:
     prefix: -o
-- id: t
+- id: number_threads_default
   doc: ':      Number of threads (default: 1)'
   type: boolean
   inputBinding:
     prefix: -t
-- id: z
+- id: compress_level_default
   doc: ':      Compress level (1 - 9) (default: -1)'
   type: boolean
   inputBinding:
     prefix: -z
-- id: b
+- id: number_bootstraps_default
   doc: ':      Number of bootstraps (default: 0)'
   type: boolean
   inputBinding:
     prefix: -b
-- id: w
+- id: output_bam_file
   doc: ':      Output bam file 0:true, 1: false (default: 0)'
   type: boolean
   inputBinding:
     prefix: -w
-- id: f
+- id: genome_fasta_file
   doc: ':      Genome fasta file (if not define, genome mapping will be ignore'
   type: boolean
   inputBinding:
     prefix: -f
-- id: p
+- id: output_prefix_default
   doc: ":      Output prefix (default: '')"
   type: boolean
   inputBinding:

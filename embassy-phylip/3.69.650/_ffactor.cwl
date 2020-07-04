@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _ffactor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_ffactor.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

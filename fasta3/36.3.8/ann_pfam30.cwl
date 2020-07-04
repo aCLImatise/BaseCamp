@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ann_pfam30.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ann_pfam30.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

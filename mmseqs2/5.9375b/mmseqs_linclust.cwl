@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mmseqs_linclust.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mmseqs_linclust.cwl
 inputs:
 - id: comp_bias_corr
   doc: '1               correct for locally biased amino acid composition [0,1]     '
@@ -21,7 +21,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --mask
-- id: k
+- id: kmer_size_range
   doc: '0               k-mer size in the range [6,7] (0: set automatically to optimum)'
   type: boolean
   inputBinding:
@@ -32,7 +32,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --split-memory-limit
-- id: a
+- id: false_add_convert
   doc: false           add backtrace string (convert to alignments with mmseqs convertalis
     utility)
   type: boolean
@@ -44,7 +44,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --alignment-mode
-- id: e
+- id: list_matches_evalue
   doc: '0.001           list matches below this E-value [0.0, inf]                  '
   type: boolean
   inputBinding:
@@ -65,7 +65,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --alt-ali
-- id: c
+- id: list_matches_fraction
   doc: 0.800           list matches above this fraction of aligned (covered) residues
     (see --cov-mode)
   type: boolean
@@ -164,7 +164,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --threads
-- id: v
+- id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'
   type: boolean
   inputBinding:

@@ -1,7 +1,12 @@
 class: CommandLineTool
-id: mafToAxt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mafToAxt.cwl
 inputs:
-- id: in_maf
+- id: strip_db
+  doc: '- Strip names from start to first period.'
+  type: boolean
+  inputBinding:
+    prefix: -stripDb
+- id: in_dot_maf
   doc: ''
   type: string
   inputBinding:
@@ -21,11 +26,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: strip_db
-  doc: from start to first period.
-  type: string
-  inputBinding:
-    prefix: -stripDb
 outputs: []
 cwlVersion: v1.1
 baseCommand:

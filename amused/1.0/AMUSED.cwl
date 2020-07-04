@@ -1,6 +1,46 @@
 class: CommandLineTool
-id: AMUSED.cwl
+id: ../../../../home/ubuntu/BiocondaCli/AMUSED.cwl
 inputs:
+- id: _query_sequences
+  doc: = query sequences
+  type: string
+  inputBinding:
+    prefix: -q
+- id: compare_seqs_background
+  doc: = compare seqs to these background seqs
+  type: string
+  inputBinding:
+    prefix: -b
+- id: bp
+  doc: = pseudocount to add to background [default=0.5]
+  type: string
+  inputBinding:
+    prefix: -bp
+- id: _output_file
+  doc: = output file
+  type: string
+  inputBinding:
+    prefix: -o
+- id: max_nmer_consider
+  doc: = max n-mer to consider [default=8]
+  type: long
+  inputBinding:
+    prefix: -s
+- id: minimum_absolute_subzscore
+  doc: = minimum absolute Sub-Z-score [default = 0; print all]
+  type: string
+  inputBinding:
+    prefix: -z
+- id: number_cpu_use
+  doc: = number of CPU threads to use [default=1]
+  type: string
+  inputBinding:
+    prefix: -t
+- id: one_p
+  doc: '= sequences not in fasta format: each line is a full sequence'
+  type: boolean
+  inputBinding:
+    prefix: -1p
 - id: ng
   doc: = no inserting gaps
   type: boolean

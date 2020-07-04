@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pear.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pear.cwl
 inputs:
 - id: forward_fast_q
   doc: <str>     Forward paired-end FASTQ file.
@@ -16,49 +16,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --output
-- id: p_value
-  doc: '<float>   Specify  a p-value for the statistical test. If the computed p-value
-    of a possible assembly exceeds the specified p-value then  paired-end  read  will
-    not be assembled. Valid options are: 0.0001, 0.001, 0.01, 0.05 and 1.0. Setting
-    1.0 disables the test. (default: 0.01)'
-  type: boolean
-  inputBinding:
-    prefix: --p-value
-- id: min_overlap
-  doc: '<int>     Specify the minimum overlap size. The minimum overlap may be set
-    to 1 when the statistical test is used. However, further restricting  the  minimum
-    overlap size to a proper value may reduce false-positive assembles. (default:
-    10)'
-  type: boolean
-  inputBinding:
-    prefix: --min-overlap
-- id: max_assembly_length
-  doc: '<int>     Specify   the  maximum  possible  length  of  the  assembled sequences.  Setting
-    this value to 0 disables the restriction and assembled sequences may be arbitrary
-    long. (default: 0)'
-  type: boolean
-  inputBinding:
-    prefix: --max-assembly-length
-- id: min_assembly_length
-  doc: '<int>     Specify   the  minimum  possible  length  of  the  assembled sequences.  Setting
-    this value to 0 disables the restriction and  assembled  sequences  may be arbitrary
-    short. (default: 50)'
-  type: boolean
-  inputBinding:
-    prefix: --min-assembly-length
-- id: min_trim_length
-  doc: '<int>     Specify  the  minimum length of reads after trimming the low quality
-    part (see option -q). (default: 1)'
-  type: boolean
-  inputBinding:
-    prefix: --min-trim-length
-- id: quality_threshold
-  doc: '<int>     Specify  the  quality  score  threshold for trimming the low quality  part  of  a  read.  If  the  quality  scores
-    of two consecutive  bases  are  strictly  less  than  the specified threshold,  the  rest
-    of the read will be trimmed. (default: 0)'
-  type: boolean
-  inputBinding:
-    prefix: --quality-threshold
 - id: max_uncalled_base
   doc: '<float>   Specify  the maximal proportion of uncalled bases in a read. Setting
     this value to 0 will cause PEAR to discard all reads containing  uncalled  bases.  The

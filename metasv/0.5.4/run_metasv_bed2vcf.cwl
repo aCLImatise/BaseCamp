@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: run_metasv_bed2vcf.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_metasv_bed2vcf.py.cwl
 inputs:
 - id: sample
   doc: 'Sample name (default: None)'

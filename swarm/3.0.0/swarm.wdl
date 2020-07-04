@@ -2,52 +2,73 @@ version 1.0
 
 task Swarm {
   input {
-    Int threadsThreads
-    Int differencesDifferences
-    Boolean noNoOtuBreaking
-    Int boundaryBoundary
-    Int ceilingCeiling
-    Boolean fastidiousFastidious
-    Int bloomBloomBits
-    Int appendAppendAbundance
-    File internalInternalStructure
-    File logLog
-    File outputOutputFile
-    Boolean moMoThur
-    File statisticsStatisticsFile
-    File ucUcLustFile
-    File seedsSeeds
-    Boolean uUSearchAbundance
-    Int matchMatchReward
-    Int mismatchMismatchPenalty
-    Int gapGapOpeningPenalty
-    Int gapGapExtensionPenalty
-    String? optionsOptions
-    String? fastFastAFile
+    Int? threads
+    Int? differences
+    Boolean? no_otu_breaking
+    Int? boundary
+    Int? ceiling
+    Boolean? fastidious
+    Int? bloom_bits
+    Int? append_abundance
+    File? internal_structure
+    File? log
+    File? output_file
+    Boolean? mo_thur
+    File? statistics_file
+    File? uc_lust_file
+    File? seeds
+    Boolean? u_search_abundance
+    Int? match_reward
+    Int? mismatch_penalty
+    Int? gap_opening_penalty
+    Int? gap_extension_penalty
+    String? fast_a_file
   }
   command <<<
     swarm \
-      ~{optionsOptions} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(differencesDifferences) then ("--differences " +  '"' + differencesDifferences + '"') else ""} \
-      ~{true="--no-otu-breaking" false="" noNoOtuBreaking} \
-      ~{if defined(boundaryBoundary) then ("--boundary " +  '"' + boundaryBoundary + '"') else ""} \
-      ~{if defined(ceilingCeiling) then ("--ceiling " +  '"' + ceilingCeiling + '"') else ""} \
-      ~{true="--fastidious" false="" fastidiousFastidious} \
-      ~{if defined(bloomBloomBits) then ("--bloom-bits " +  '"' + bloomBloomBits + '"') else ""} \
-      ~{if defined(appendAppendAbundance) then ("--append-abundance " +  '"' + appendAppendAbundance + '"') else ""} \
-      ~{if defined(internalInternalStructure) then ("--internal-structure " +  '"' + internalInternalStructure + '"') else ""} \
-      ~{if defined(logLog) then ("--log " +  '"' + logLog + '"') else ""} \
-      ~{if defined(outputOutputFile) then ("--output-file " +  '"' + outputOutputFile + '"') else ""} \
-      ~{true="--mothur" false="" moMoThur} \
-      ~{if defined(statisticsStatisticsFile) then ("--statistics-file " +  '"' + statisticsStatisticsFile + '"') else ""} \
-      ~{if defined(ucUcLustFile) then ("--uclust-file " +  '"' + ucUcLustFile + '"') else ""} \
-      ~{if defined(seedsSeeds) then ("--seeds " +  '"' + seedsSeeds + '"') else ""} \
-      ~{true="--usearch-abundance" false="" uUSearchAbundance} \
-      ~{if defined(matchMatchReward) then ("--match-reward " +  '"' + matchMatchReward + '"') else ""} \
-      ~{if defined(mismatchMismatchPenalty) then ("--mismatch-penalty " +  '"' + mismatchMismatchPenalty + '"') else ""} \
-      ~{if defined(gapGapOpeningPenalty) then ("--gap-opening-penalty " +  '"' + gapGapOpeningPenalty + '"') else ""} \
-      ~{if defined(gapGapExtensionPenalty) then ("--gap-extension-penalty " +  '"' + gapGapExtensionPenalty + '"') else ""} \
-      ~{fastFastAFile}
+      ~{fast_a_file} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(differences) then ("--differences " +  '"' + differences + '"') else ""} \
+      ~{true="--no-otu-breaking" false="" no_otu_breaking} \
+      ~{if defined(boundary) then ("--boundary " +  '"' + boundary + '"') else ""} \
+      ~{if defined(ceiling) then ("--ceiling " +  '"' + ceiling + '"') else ""} \
+      ~{true="--fastidious" false="" fastidious} \
+      ~{if defined(bloom_bits) then ("--bloom-bits " +  '"' + bloom_bits + '"') else ""} \
+      ~{if defined(append_abundance) then ("--append-abundance " +  '"' + append_abundance + '"') else ""} \
+      ~{if defined(internal_structure) then ("--internal-structure " +  '"' + internal_structure + '"') else ""} \
+      ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
+      ~{if defined(output_file) then ("--output-file " +  '"' + output_file + '"') else ""} \
+      ~{true="--mothur" false="" mo_thur} \
+      ~{if defined(statistics_file) then ("--statistics-file " +  '"' + statistics_file + '"') else ""} \
+      ~{if defined(uc_lust_file) then ("--uclust-file " +  '"' + uc_lust_file + '"') else ""} \
+      ~{if defined(seeds) then ("--seeds " +  '"' + seeds + '"') else ""} \
+      ~{true="--usearch-abundance" false="" u_search_abundance} \
+      ~{if defined(match_reward) then ("--match-reward " +  '"' + match_reward + '"') else ""} \
+      ~{if defined(mismatch_penalty) then ("--mismatch-penalty " +  '"' + mismatch_penalty + '"') else ""} \
+      ~{if defined(gap_opening_penalty) then ("--gap-opening-penalty " +  '"' + gap_opening_penalty + '"') else ""} \
+      ~{if defined(gap_extension_penalty) then ("--gap-extension-penalty " +  '"' + gap_extension_penalty + '"') else ""}
   >>>
+  parameter_meta {
+    threads: "number of threads to use (1)"
+    differences: "resolution (1)"
+    no_otu_breaking: "never break OTUs (not recommended!)"
+    boundary: "min mass of large OTUs (3)"
+    ceiling: "max memory in MB for Bloom filter (unlim.)"
+    fastidious: "link nearby low-abundance swarms"
+    bloom_bits: "bits used per Bloom filter entry (16)"
+    append_abundance: "value to use when abundance is missing"
+    internal_structure: "write internal OTU structure to file"
+    log: "log to file, not to stderr"
+    output_file: "output result to file (stdout)"
+    mo_thur: "output using mothur-like format"
+    statistics_file: "dump OTU statistics to file"
+    uc_lust_file: "output using UCLUST-like format to file"
+    seeds: "write OTU representatives to FASTA file"
+    u_search_abundance: "abundance annotation in usearch style"
+    match_reward: "reward for nucleotide match (5)"
+    mismatch_penalty: "penalty for nucleotide mismatch (4)"
+    gap_opening_penalty: "gap open penalty (12)"
+    gap_extension_penalty: "gap extension penalty (4)"
+    fast_a_file: ""
+  }
 }

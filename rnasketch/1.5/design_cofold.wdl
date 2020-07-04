@@ -2,32 +2,46 @@ version 1.0
 
 task DesignCofold.py {
   input {
-    Boolean inputInput
-    String packagePackage
-    String temperatureTemperature
-    String numberNumber
-    String stopStop
-    String modeMode
-    String killKill
-    String graphGraphMl
-    Boolean csvCsv
-    Boolean progressProgress
-    Boolean debugDebug
-    String reporterReporter
+    Boolean? read_structures_constraints
+    String? package
+    String? temperature
+    String? number
+    String? stop
+    String? mode
+    String? kill
+    String? graph_ml
+    Boolean? csv
+    Boolean? progress
+    Boolean? debug
+    String? reporter
   }
   command <<<
     design-cofold.py \
-      ~{true="--input" false="" inputInput} \
-      ~{if defined(packagePackage) then ("--package " +  '"' + packagePackage + '"') else ""} \
-      ~{if defined(temperatureTemperature) then ("--temperature " +  '"' + temperatureTemperature + '"') else ""} \
-      ~{if defined(numberNumber) then ("--number " +  '"' + numberNumber + '"') else ""} \
-      ~{if defined(stopStop) then ("--stop " +  '"' + stopStop + '"') else ""} \
-      ~{if defined(modeMode) then ("--mode " +  '"' + modeMode + '"') else ""} \
-      ~{if defined(killKill) then ("--kill " +  '"' + killKill + '"') else ""} \
-      ~{if defined(graphGraphMl) then ("--graphml " +  '"' + graphGraphMl + '"') else ""} \
-      ~{true="--csv" false="" csvCsv} \
-      ~{true="--progress" false="" progressProgress} \
-      ~{true="--debug" false="" debugDebug} \
-      ~{if defined(reporterReporter) then ("--reporter " +  '"' + reporterReporter + '"') else ""}
+      ~{true="--input" false="" read_structures_constraints} \
+      ~{if defined(package) then ("--package " +  '"' + package + '"') else ""} \
+      ~{if defined(temperature) then ("--temperature " +  '"' + temperature + '"') else ""} \
+      ~{if defined(number) then ("--number " +  '"' + number + '"') else ""} \
+      ~{if defined(stop) then ("--stop " +  '"' + stop + '"') else ""} \
+      ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""} \
+      ~{if defined(kill) then ("--kill " +  '"' + kill + '"') else ""} \
+      ~{if defined(graph_ml) then ("--graphml " +  '"' + graph_ml + '"') else ""} \
+      ~{true="--csv" false="" csv} \
+      ~{true="--progress" false="" progress} \
+      ~{true="--debug" false="" debug} \
+      ~{if defined(reporter) then ("--reporter " +  '"' + reporter + '"') else ""}
   >>>
+  parameter_meta {
+    read_structures_constraints: "Read custom structures and sequence constraints from stdin"
+    package: "Chose the calculation package: hotknots, pkiss, nupack, or vrna/ViennaRNA (default: vrna)"
+    temperature: "Temperature of the energy calculations."
+    number: "Number of designs to generate"
+    stop: "Stop optimization run if no better solution is aquired after (stop) trials."
+    mode: "Mode for getting a new sequence: sample, sample_plocal, sample_clocal, random"
+    kill: "Timeout value of graph construction in seconds. (default: infinite)"
+    graph_ml: "Write a graphml file with the given filename."
+    csv: "Write output as semi-colon csv file to stdout"
+    progress: "Show progress of optimization"
+    debug: "Show debug information of library"
+    reporter: "The coding sequence context, excluding the start codon that should be part of the sequence constraint. Default are the first 66 nucleotides of eGFP."
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: peddy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/peddy.cwl
 inputs:
 - id: procs
   doc: number of processors to use
@@ -30,6 +30,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --loglevel
+- id: vcf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: ped
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

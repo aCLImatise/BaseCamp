@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: unionBedGraphs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/unionBedGraphs.cwl
 inputs:
 - id: header
   doc: Print a header line. (chrom/start/end + names of each file).
@@ -12,7 +12,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -names
-- id: g
+- id: use_genome_file
   doc: Use genome file to calculate empty regions. - STRING.
   type: boolean
   inputBinding:
@@ -34,6 +34,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -examples
+- id: i
+  doc: ''
+  type: File[]
+  inputBinding:
+    prefix: -i
+- id: bed_tools
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: union_bed_g
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

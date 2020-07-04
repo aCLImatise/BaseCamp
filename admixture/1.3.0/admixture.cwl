@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: admixture.cwl
+id: ../../../../home/ubuntu/BiocondaCli/admixture.cwl
 inputs:
-- id: a
-  doc: '.bed file                                                     '
-  type: string
-  inputBinding:
-    prefix: '- a'
-- id: a
-  doc: '"12" coded .ped file                                        '
-  type: string
-  inputBinding:
-    prefix: '- a'
 - id: jx
   doc: ': do computation on X threads                                '
   type: boolean
@@ -21,12 +11,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --seed
-- id: c
+- id: set_major_criterion
   doc: ': set major convergence criterion (for point estimation)             '
   type: string
   inputBinding:
     prefix: -C
-- id: c
+- id: set_minor_criterion
   doc: ': set minor convergence criterion (for bootstrap and CV reestimates) '
   type: string
   inputBinding:

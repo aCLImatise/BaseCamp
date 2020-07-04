@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamclipreinsert.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamclipreinsert.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

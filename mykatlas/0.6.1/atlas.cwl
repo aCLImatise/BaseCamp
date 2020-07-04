@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: atlas.cwl
+id: ../../../../home/ubuntu/BiocondaCli/atlas.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

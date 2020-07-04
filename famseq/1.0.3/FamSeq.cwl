@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FamSeq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FamSeq.cwl
 inputs:
 - id: vcf
   doc: input vcf file

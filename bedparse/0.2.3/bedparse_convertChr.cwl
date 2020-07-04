@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: bedparse_convertChr.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedparse_convertChr.cwl
 inputs:
-- id: bed_file
-  doc: Path to the BED file.
-  type: string
-  inputBinding:
-    position: 0
 - id: assembly
   doc: Assembly of the BED file (either hg38 or mm10).
   type: string

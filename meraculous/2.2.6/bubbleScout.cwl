@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bubbleScout.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bubbleScout.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

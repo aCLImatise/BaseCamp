@@ -2,10 +2,13 @@ version 1.0
 
 task GenieHelp {
   input {
-    String? flagsFlags
+    String? flags
   }
   command <<<
     genie help \
-      ~{flagsFlags}
+      ~{flags}
   >>>
+  parameter_meta {
+    flags: ""
+  }
 }

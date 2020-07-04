@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: dialign2_2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dialign2_2.cwl
 inputs:
-- id: n
+- id: dna_sequences_nucleotide
   doc: 'DNA sequences; similarity calculated at the nucleotide level '
   type: boolean
   inputBinding:
@@ -17,6 +17,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -lgs
+- id: seq_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

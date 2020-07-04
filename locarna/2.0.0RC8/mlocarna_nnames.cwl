@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: mlocarna_nnames.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mlocarna_nnames.cwl
 inputs:
-- id: fast_a_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: man
   doc: Full documentation
   type: boolean
   inputBinding:
     prefix: --man
+- id: fast_a_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

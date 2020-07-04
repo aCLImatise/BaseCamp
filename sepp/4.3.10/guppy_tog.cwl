@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: guppy_tog.cwl
+id: ../../../../home/ubuntu/BiocondaCli/guppy_tog.cwl
 inputs:
 - id: pp
   doc: Use posterior probability for the weight.
   type: boolean
   inputBinding:
     prefix: --pp
-- id: o
+- id: specify_filename_write
   doc: Specify the filename to write to.
   type: boolean
   inputBinding:
@@ -36,6 +36,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --help
+- id: tog
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: place_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: s
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

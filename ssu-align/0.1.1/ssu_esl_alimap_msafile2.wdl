@@ -2,12 +2,19 @@ version 1.0
 
 task SsuEslAlimapMsafile2 {
   input {
-    String? msafile1Msafile1
-    String? msafile2Msafile2
+    String ssu_esl_ali_map
+    String msa_file_one
+    String msa_file_two
   }
   command <<<
     ssu-esl-alimap msafile2 \
-      ~{msafile1Msafile1} \
-      ~{msafile2Msafile2}
+      ~{ssu_esl_ali_map} \
+      ~{msa_file_one} \
+      ~{msa_file_two}
   >>>
+  parameter_meta {
+    ssu_esl_ali_map: ""
+    msa_file_one: ""
+    msa_file_two: ""
+  }
 }

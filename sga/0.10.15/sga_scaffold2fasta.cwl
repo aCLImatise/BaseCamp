@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sga_scaffold2fasta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sga_scaffold2fasta.cwl
 inputs:
 - id: verbose
   doc: display verbose output
@@ -73,6 +73,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --distanceFactor
+- id: scaffold_two_fast_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,12 +1,7 @@
 class: CommandLineTool
-id: cmcalibrate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cmcalibrate.cwl
 inputs:
-- id: cm_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: l
+- id: set_random_length
   doc: ': set random seq length to search in Mb to <x>  [1.6]  (0.01<=x<=160.)'
   type: string
   inputBinding:
@@ -86,7 +81,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --nonbanded
-- id: nonull3
+- id: no_null_three
   doc: ': turn OFF the NULL3 post hoc additional null model'
   type: boolean
   inputBinding:
@@ -106,6 +101,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --cpu
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: cm_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: parse_genes_from_gffs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/parse_genes_from_gffs.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

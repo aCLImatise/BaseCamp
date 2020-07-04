@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fasta_strip_identifier.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fasta_strip_identifier.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

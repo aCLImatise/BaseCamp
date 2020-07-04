@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MicroSyntenyPlot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MicroSyntenyPlot.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

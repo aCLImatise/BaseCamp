@@ -1,27 +1,12 @@
 class: CommandLineTool
-id: check_annotations.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/check_annotations.py.cwl
 inputs:
-- id: python
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: this_script_py
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: query_gb
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: r
+- id: input_reference_file
   doc: input reference *.gb file
   type: string
   inputBinding:
     prefix: -r
-- id: d
+- id: input_reference_fasta
   doc: input reference fasta file exported exported by "Extract Annotations"-"Export"-"Selected
     Documents"-fasta in Geneious, remember to choose "Replace spaces in sequence name
     with underscores"
@@ -60,6 +45,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --s-threshold
+- id: python
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: this_script_do_tpy
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: query_dot_gb
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

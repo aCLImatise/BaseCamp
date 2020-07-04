@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: haystack_pipeline.cwl
+id: ../../../../home/ubuntu/BiocondaCli/haystack_pipeline.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

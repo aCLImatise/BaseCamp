@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: densitree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/densitree.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

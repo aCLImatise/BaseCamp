@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: longshot_FLAGS.cwl
+id: ../../../../home/ubuntu/BiocondaCli/longshot_FLAGS.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: bam
   doc: ''
   type: string

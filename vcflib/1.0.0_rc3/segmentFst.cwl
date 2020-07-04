@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: segmentFst.cwl
+id: ../../../../home/ubuntu/BiocondaCli/segmentFst.cwl
 inputs:
-- id: '07'
+- id: s
   doc: ''
   type: string
   inputBinding:
-    position: 0
-- id: your
-  doc: "goes here       -'                "
+    prefix: -s
+- id: f
+  doc: ''
   type: string
   inputBinding:
-    prefix: '-     Your'
+    prefix: -f
 outputs: []
 cwlVersion: v1.1
 baseCommand:

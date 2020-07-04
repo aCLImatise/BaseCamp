@@ -2,26 +2,37 @@ version 1.0
 
 task CompoundIdentification.py {
   input {
-    String anAnNo
-    String uniqidUniqid
-    String mzMzId
-    String rtRtId
-    String libraryLibrary
-    String libLibUniqid
-    String libmLibmZid
-    String librLibrTid
-    String outputOutput
+    String? an_no
+    String? uniqid
+    String? mz_id
+    String? rt_id
+    String? library
+    String? lib_uniqid
+    String? libm_zid
+    String? libr_tid
+    String? output_path_identifiedcompounds
   }
   command <<<
     compound_identification.py \
-      ~{if defined(anAnNo) then ("--anno " +  '"' + anAnNo + '"') else ""} \
-      ~{if defined(uniqidUniqid) then ("--uniqID " +  '"' + uniqidUniqid + '"') else ""} \
-      ~{if defined(mzMzId) then ("--mzID " +  '"' + mzMzId + '"') else ""} \
-      ~{if defined(rtRtId) then ("--rtID " +  '"' + rtRtId + '"') else ""} \
-      ~{if defined(libraryLibrary) then ("--library " +  '"' + libraryLibrary + '"') else ""} \
-      ~{if defined(libLibUniqid) then ("--libuniqID " +  '"' + libLibUniqid + '"') else ""} \
-      ~{if defined(libmLibmZid) then ("--libmzID " +  '"' + libmLibmZid + '"') else ""} \
-      ~{if defined(librLibrTid) then ("--librtID " +  '"' + librLibrTid + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""}
+      ~{if defined(an_no) then ("--anno " +  '"' + an_no + '"') else ""} \
+      ~{if defined(uniqid) then ("--uniqID " +  '"' + uniqid + '"') else ""} \
+      ~{if defined(mz_id) then ("--mzID " +  '"' + mz_id + '"') else ""} \
+      ~{if defined(rt_id) then ("--rtID " +  '"' + rt_id + '"') else ""} \
+      ~{if defined(library) then ("--library " +  '"' + library + '"') else ""} \
+      ~{if defined(lib_uniqid) then ("--libuniqID " +  '"' + lib_uniqid + '"') else ""} \
+      ~{if defined(libm_zid) then ("--libmzID " +  '"' + libm_zid + '"') else ""} \
+      ~{if defined(libr_tid) then ("--librtID " +  '"' + libr_tid + '"') else ""} \
+      ~{if defined(output_path_identifiedcompounds) then ("--output " +  '"' + output_path_identifiedcompounds + '"') else ""}
   >>>
+  parameter_meta {
+    an_no: "Out path for first file"
+    uniqid: "Name of thecolumn in file that contains the uniqID"
+    mz_id: "Name of the column in file that contains MZ"
+    rt_id: "Name of the column in file that contains RT"
+    library: "Library to use forthe matching."
+    lib_uniqid: "Name of thecolumn in the library file that contains the uniqID"
+    libm_zid: "Name of the column in the library file that contains MZ"
+    libr_tid: "Name of the column in the library file that contains RT"
+    output_path_identifiedcompounds: "Output path for identifiedcompounds."
+  }
 }

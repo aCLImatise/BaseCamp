@@ -1,12 +1,74 @@
 class: CommandLineTool
-id: bowtie.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bowtie.cwl
 inputs:
-- id: phred33_quals
+- id: query_input_files_fastq
+  doc: query input files are FASTQ .fq/.fastq (default)
+  type: boolean
+  inputBinding:
+    prefix: -q
+- id: query_input_files_multifasta
+  doc: query input files are (multi-)FASTA .fa/.mfa
+  type: boolean
+  inputBinding:
+    prefix: -f
+- id: intiint_query_input
+  doc: :<int>,i:<int> query input files are continuous FASTA where reads are substrings
+    (k-mers) extracted from a FASTA file <s> and aligned at offsets 1, 1+i, 1+2i ...
+    end of reference
+  type: string
+  inputBinding:
+    prefix: -F
+- id: query_input_files_raw
+  doc: query input files are raw one-sequence-per-line
+  type: boolean
+  inputBinding:
+    prefix: -r
+- id: query_sequences_given
+  doc: query sequences given on cmd line (as <mates>, <singles>)
+  type: boolean
+  inputBinding:
+    prefix: -c
+- id: reads_index_colorspace
+  doc: reads and index are in colorspace
+  type: boolean
+  inputBinding:
+    prefix: -C
+- id: q_slash_quals
+  doc: QV file(s) corresponding to CSFASTA inputs; use with -f -C
+  type: File
+  inputBinding:
+    prefix: -Q/--quals
+- id: q_one_slash_q_two
+  doc: same as -Q, but for mate files 1 and 2 respectively
+  type: File
+  inputBinding:
+    prefix: --Q1/--Q2
+- id: s_slash_skip
+  doc: skip the first <int> reads/pairs in the input
+  type: long
+  inputBinding:
+    prefix: -s/--skip
+- id: us_lash_q_up_to
+  doc: stop after first <int> reads/pairs (excl. skipped reads)
+  type: long
+  inputBinding:
+    prefix: -u/--qupto
+- id: five_slash_trim_five
+  doc: trim <int> bases from 5' (left) end of reads
+  type: long
+  inputBinding:
+    prefix: -5/--trim5
+- id: three_slash_trim_three
+  doc: trim <int> bases from 3' (right) end of reads
+  type: long
+  inputBinding:
+    prefix: -3/--trim3
+- id: phred_three_three_quals
   doc: input quals are Phred+33 (default)
   type: boolean
   inputBinding:
     prefix: --phred33-quals
-- id: phred64_quals
+- id: phred_six_four_quals
   doc: input quals are Phred+64 (same as --solexa1.3-quals)
   type: boolean
   inputBinding:
@@ -16,11 +78,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --solexa-quals
-- id: solexa1
-  doc: .3-quals  input quals are from GA Pipeline ver. >= 1.3
+- id: solexa_one_dot_three_quals
+  doc: input quals are from GA Pipeline ver. >= 1.3
   type: boolean
   inputBinding:
-    prefix: --solexa1
+    prefix: --solexa1.3-quals
 - id: integer_quals
   doc: qualities are given as space-separated integers (not ASCII)
   type: boolean
@@ -31,46 +93,46 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --large-index
-- id: n
-  doc: '/--seedmms <int> max mismatches in seed (can be 0-3, default: -n 2)'
-  type: boolean
+- id: n_slash_seed_mms
+  doc: 'max mismatches in seed (can be 0-3, default: -n 2)'
+  type: long
   inputBinding:
-    prefix: -n
-- id: e
-  doc: '/--maqerr <int>  max sum of mismatch quals across alignment for -n (def: 70)'
-  type: boolean
+    prefix: -n/--seedmms
+- id: e_slash_maq_err
+  doc: 'max sum of mismatch quals across alignment for -n (def: 70)'
+  type: long
   inputBinding:
-    prefix: -e
-- id: l
-  doc: '/--seedlen <int> seed length for -n (default: 28)'
-  type: boolean
+    prefix: -e/--maqerr
+- id: lslash_seed_len
+  doc: 'seed length for -n (default: 28)'
+  type: long
   inputBinding:
-    prefix: -l
+    prefix: -l/--seedlen
 - id: no_maq_round
   doc: disable Maq-like quality rounding for -n (nearest 10 <= 30)
   type: boolean
   inputBinding:
     prefix: --nomaqround
-- id: i
-  doc: '/--minins <int>  minimum insert size for paired-end alignment (default: 0)'
+- id: i_slash_mini_ns
+  doc: 'minimum insert size for paired-end alignment (default: 0)'
+  type: long
+  inputBinding:
+    prefix: -I/--minins
+- id: x_slash_max_ins
+  doc: 'maximum insert size for paired-end alignment (default: 250)'
+  type: long
+  inputBinding:
+    prefix: -X/--maxins
+- id: fr_slash_rf_slash_ff
+  doc: '-1, -2 mates align fw/rev, rev/fw, fw/fw (default: --fr)'
   type: boolean
   inputBinding:
-    prefix: -I
-- id: x
-  doc: '/--maxins <int>  maximum insert size for paired-end alignment (default: 250)'
+    prefix: --fr/--rf/--ff
+- id: nofws_lash_norc
+  doc: do not align to forward/reverse-complement reference strand
   type: boolean
   inputBinding:
-    prefix: -X
-- id: fr
-  doc: '/--rf/--ff     -1, -2 mates align fw/rev, rev/fw, fw/fw (default: --fr)'
-  type: boolean
-  inputBinding:
-    prefix: --fr
-- id: no_fw
-  doc: /--norc      do not align to forward/reverse-complement reference strand
-  type: boolean
-  inputBinding:
-    prefix: --nofw
+    prefix: --nofw/--norc
 - id: max_bts
   doc: 'max # backtracks for -n 2/3 (default: 125, 800 for --best)'
   type: long
@@ -81,11 +143,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --pairtries
-- id: y
-  doc: /--tryhard       try hard to find valid alignments, at the expense of speed
+- id: y_slash_try_hard
+  doc: try hard to find valid alignments, at the expense of speed
   type: boolean
   inputBinding:
-    prefix: -y
+    prefix: -y/--tryhard
 - id: chunk_mbs
   doc: 'max megabytes of RAM for best-first search frames (def: 64)'
   type: long
@@ -96,22 +158,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --reads-per-batch
-- id: k
+- id: report_int_alignments
   doc: 'report up to <int> good alignments per read (default: 1)'
   type: long
   inputBinding:
     prefix: -k
-- id: a
-  doc: /--all           report all alignments per read (much slower than low -k)
+- id: a_slash_all
+  doc: report all alignments per read (much slower than low -k)
   type: boolean
   inputBinding:
-    prefix: -a
-- id: m
+    prefix: -a/--all
+- id: suppress_alignments_exist
   doc: 'suppress all alignments if > <int> exist (def: no limit)'
   type: long
   inputBinding:
     prefix: -m
-- id: m
+- id: m_reports_random
   doc: like -m, but reports 1 random hit (MAPQ=0); requires --best
   type: long
   inputBinding:
@@ -126,16 +188,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --strata
-- id: t
-  doc: /--time          print wall-clock time taken by search phases
+- id: t_slash_time
+  doc: print wall-clock time taken by search phases
   type: boolean
   inputBinding:
-    prefix: -t
-- id: b
-  doc: '/--offbase <int> leftmost ref offset = <int> in bowtie output (default: 0)'
-  type: boolean
+    prefix: -t/--time
+- id: b_slash_off_base
+  doc: 'leftmost ref offset = <int> in bowtie output (default: 0)'
+  type: long
   inputBinding:
-    prefix: -B
+    prefix: -B/--offbase
 - id: quiet
   doc: print nothing but the alignments
   type: boolean
@@ -196,11 +258,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --col-keepends
-- id: s
-  doc: /--sam           write hits in SAM format
+- id: s_slash_sam
+  doc: write hits in SAM format
   type: boolean
   inputBinding:
-    prefix: -S
+    prefix: -S/--sam
 - id: mapq
   doc: default mapping quality (MAPQ) to print for SAM alignments
   type: long
@@ -221,16 +283,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --sam-RG
-- id: o
-  doc: /--offrate <int> override offrate of index; must be >= index's offrate
-  type: boolean
+- id: oslash_off_rate
+  doc: override offrate of index; must be >= index's offrate
+  type: long
   inputBinding:
-    prefix: -o
-- id: p
-  doc: '/--threads <int> number of alignment threads to launch (default: 1)'
-  type: boolean
+    prefix: -o/--offrate
+- id: p_slash_threads
+  doc: 'number of alignment threads to launch (default: 1)'
+  type: long
   inputBinding:
-    prefix: -p
+    prefix: -p/--threads
 - id: mm
   doc: use memory-mapped I/O for index; many 'bowtie's can share
   type: boolean
@@ -251,6 +313,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: h_slash_help
+  doc: print this usage message
+  type: boolean
+  inputBinding:
+    prefix: -h/--help
 outputs: []
 cwlVersion: v1.1
 baseCommand:

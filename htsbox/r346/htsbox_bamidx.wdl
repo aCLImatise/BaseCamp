@@ -2,14 +2,19 @@ version 1.0
 
 task HtsboxBamidx {
   input {
-    Int sS
-    String? bamBamIdx
-    String? inInBam
+    Int? s
+    String bam_idx
+    String in_dot_bam
   }
   command <<<
     htsbox bamidx \
-      ~{bamBamIdx} \
-      ~{if defined(sS) then ("-s " +  '"' + sS + '"') else ""} \
-      ~{inInBam}
+      ~{bam_idx} \
+      ~{in_dot_bam} \
+      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""}
   >>>
+  parameter_meta {
+    s: ""
+    bam_idx: ""
+    in_dot_bam: ""
+  }
 }

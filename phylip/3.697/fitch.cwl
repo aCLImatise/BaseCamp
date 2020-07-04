@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fitch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fitch.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

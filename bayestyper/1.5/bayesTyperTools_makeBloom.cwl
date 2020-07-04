@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: bayesTyperTools_makeBloom.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bayesTyperTools_makeBloom.cwl
 inputs:
-- id: k
+- id: arg_kmc_kmer
   doc: '[ --kmc-table-prefix ] arg       KMC kmer table prefix. Output is written
     as <kmc-table-prefix>.bloomMeta and <kmc-table-prefix>.bloomData.'
   type: boolean
   inputBinding:
     prefix: -k
-- id: p
+- id: arg_number_threads
   doc: '[ --num-threads ] arg (=1)       number of threads used (+= 1 I/O thread).'
   type: boolean
   inputBinding:

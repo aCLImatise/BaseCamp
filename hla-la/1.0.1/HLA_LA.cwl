@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: HLA_LA.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/HLA_LA.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

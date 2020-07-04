@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: bed_intersect.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bed_intersect.py.cwl
 inputs:
-- id: bed_file_1
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: bed_file_2
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: min_cols
   doc: Require this much overlap (default 1bp)
   type: long
@@ -36,6 +26,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --booleans
+- id: bed_file_one
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: bed_file_two
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: omero_config_remove.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_config_remove.cwl
 inputs:
+- id: report
+  doc: Report if changes are made
+  type: boolean
+  inputBinding:
+    prefix: --report
 - id: key
   doc: Name of the key in the current profile
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: report
-  doc: Report if changes are made
-  type: boolean
-  inputBinding:
-    prefix: --report
 outputs: []
 cwlVersion: v1.1
 baseCommand:

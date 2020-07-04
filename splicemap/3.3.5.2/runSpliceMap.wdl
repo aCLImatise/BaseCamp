@@ -1,7 +1,14 @@
 version 1.0
 
 task RunSpliceMap {
+  input {
+    String run_dot_cfg
+  }
   command <<<
-    runSpliceMap
+    runSpliceMap \
+      ~{run_dot_cfg}
   >>>
+  parameter_meta {
+    run_dot_cfg: "--  Configuration options for this run, see comments in file for details"
+  }
 }

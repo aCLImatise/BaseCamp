@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: plot_len1.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/plot_len1.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

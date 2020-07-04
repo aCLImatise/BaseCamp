@@ -1,7 +1,14 @@
 version 1.0
 
 task Ntthal {
+  input {
+    String oligo
+  }
   command <<<
-    ntthal
+    ntthal \
+      ~{oligo}
   >>>
+  parameter_meta {
+    oligo: ""
+  }
 }

@@ -1,12 +1,7 @@
 class: CommandLineTool
-id: cath_resolve_hits.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cath_resolve_hits.cwl
 inputs:
-- id: input_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: v
+- id: output_version_information
   doc: '[ --version ]                               Output version information'
   type: boolean
   inputBinding:
@@ -160,6 +155,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --raw-format-help
+- id: input_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

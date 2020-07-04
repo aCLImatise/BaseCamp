@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: show_snps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/show_snps.cwl
 inputs:
 - id: delta_file
   doc: ''

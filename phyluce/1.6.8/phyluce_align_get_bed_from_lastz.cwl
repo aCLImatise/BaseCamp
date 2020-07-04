@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_align_get_bed_from_lastz.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_align_get_bed_from_lastz.cwl
 inputs:
 - id: last_z
   doc: The input lastz file.

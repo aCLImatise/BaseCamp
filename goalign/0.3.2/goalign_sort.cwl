@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: goalign_sort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_sort.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: output
   doc: Sorted alignment output file (default "stdout")
   type: string
@@ -77,6 +72,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

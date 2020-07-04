@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: cassiopeeknife.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cassiopeeknife.cwl
 inputs:
-- id: s
+- id: _sequence_convert
   doc: ': sequence to convert'
   type: boolean
   inputBinding:
     prefix: -s
-- id: o
+- id: _output_file
   doc: ': output file'
   type: boolean
   inputBinding:
     prefix: -o
-- id: v
+- id: _show_version
   doc: ': show version'
   type: boolean
   inputBinding:

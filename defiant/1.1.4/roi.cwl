@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: roi.cwl
+id: ../../../../home/ubuntu/BiocondaCli/roi.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

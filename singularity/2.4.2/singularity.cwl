@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: singularity.cwl
+id: ../../../../home/ubuntu/BiocondaCli/singularity.cwl
 inputs:
 - id: debug
   doc: Print debugging information

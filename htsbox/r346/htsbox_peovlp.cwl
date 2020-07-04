@@ -1,52 +1,72 @@
 class: CommandLineTool
-id: htsbox_peovlp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/htsbox_peovlp.cwl
 inputs:
-- id: b
+- id: barcode_file_overriding
   doc: barcode file (overriding -B) []
   type: File
   inputBinding:
     prefix: -b
-- id: b
+- id: barcode_length
   doc: barcode length [0,0]
   type:
   - long
   inputBinding:
     prefix: -B
-- id: t
+- id: number_of_threads
   doc: number of threads [2]
   type: long
   inputBinding:
     prefix: -t
-- id: l
-  doc: min read/fragment length to output [30]
+- id: min_readfragment_length
+  doc: min read/fragment length to output [0]
   type: long
   inputBinding:
     prefix: -l
-- id: o
+- id: min_overlap_length
   doc: min overlap length [15]
   type: long
   inputBinding:
     prefix: -o
-- id: p
+- id: output_pe_reads
   doc: output PE reads to STR.R[12].fq.gz (overriding -P) [discard pe]
   type: string
   inputBinding:
     prefix: -p
-- id: t
+- id: trim_intbp_end
   doc: trim INT-bp from 5'-end [0]
   type: long
   inputBinding:
     prefix: -T
-- id: p
+- id: output_paired_reads
   doc: output paired reads also to stdout [discard pe]
   type: boolean
   inputBinding:
     prefix: -P
-- id: d
+- id: tabular_output_debugging
   doc: tabular output for debugging
   type: boolean
   inputBinding:
     prefix: -d
+- id: seq_tk
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: merge_pe
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: read_one_dot_fq
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: read_two_dot_fq
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

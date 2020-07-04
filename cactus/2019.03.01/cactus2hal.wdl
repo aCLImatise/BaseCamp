@@ -1,31 +1,20 @@
 version 1.0
 
-task Cactus2hal.py {
+task Cactus2hal.pyHALFilePath {
   input {
-    String eventEvent
-    String cacheCacheBytes
-    String cacheCacheMdc
-    String cacherCacherDc
-    String cacheCacheW0
-    String chunkChunk
-    String deflateDeflate
-    Boolean inInMemory
-    Boolean appendAppend
-    String? cactusCactusProject
-    String? halHalFilePath
+    String? event
+    String? cache_bytes
+    String cactus_two_hal_do_tpy
   }
   command <<<
-    cactus2hal.py \
-      ~{cactusCactusProject} \
-      ~{if defined(eventEvent) then ("--event " +  '"' + eventEvent + '"') else ""} \
-      ~{if defined(cacheCacheBytes) then ("--cacheBytes " +  '"' + cacheCacheBytes + '"') else ""} \
-      ~{if defined(cacheCacheMdc) then ("--cacheMDC " +  '"' + cacheCacheMdc + '"') else ""} \
-      ~{if defined(cacherCacherDc) then ("--cacheRDC " +  '"' + cacherCacherDc + '"') else ""} \
-      ~{if defined(cacheCacheW0) then ("--cacheW0 " +  '"' + cacheCacheW0 + '"') else ""} \
-      ~{if defined(chunkChunk) then ("--chunk " +  '"' + chunkChunk + '"') else ""} \
-      ~{if defined(deflateDeflate) then ("--deflate " +  '"' + deflateDeflate + '"') else ""} \
-      ~{true="--inMemory" false="" inInMemory} \
-      ~{true="--append" false="" appendAppend} \
-      ~{halHalFilePath}
+    cactus2hal.py HAL_file_path \
+      ~{cactus_two_hal_do_tpy} \
+      ~{if defined(event) then ("--event " +  '"' + event + '"') else ""} \
+      ~{if defined(cache_bytes) then ("--cacheBytes " +  '"' + cache_bytes + '"') else ""}
   >>>
+  parameter_meta {
+    event: ""
+    cache_bytes: ""
+    cactus_two_hal_do_tpy: ""
+  }
 }

@@ -2,12 +2,16 @@ version 1.0
 
 task TgTigDisplay {
   input {
-    String sS
-    String tT
+    String? s
+    String? t
   }
   command <<<
     tgTigDisplay \
-      ~{if defined(sS) then ("-S " +  '"' + sS + '"') else ""} \
-      ~{if defined(tT) then ("-t " +  '"' + tT + '"') else ""}
+      ~{if defined(s) then ("-S " +  '"' + s + '"') else ""} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""}
   >>>
+  parameter_meta {
+    s: ""
+    t: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scriptTreeTest_Wrapper2.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scriptTreeTest_Wrapper2.py.cwl
 inputs:
 - id: logoff
   doc: Turn off logging. (default is CRITICAL)

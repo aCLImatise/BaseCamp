@@ -1,26 +1,16 @@
 class: CommandLineTool
-id: trfBig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/trfBig.cwl
 inputs:
-- id: in_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: outfile
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: bed
   doc: a bed file in current dir
   type: string
   inputBinding:
     prefix: -bed
-- id: create
-  doc: bed file at explicit location
+- id: bed_at
+  doc: '- create a bed file at explicit location'
   type: File
   inputBinding:
-    prefix: '- create'
+    prefix: -bedAt
 - id: tempdir
   doc: Where to put temp files.
   type: string
@@ -41,12 +31,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -keep
-- id: l
+- id: when_used_here
   doc: 'when used here, for new trf v4.09 option: maximum TR length expected (in millions)
     (eg, -l=3 for 3 million), Human genome hg38 would need -l=6'
   type: string
   inputBinding:
     prefix: -l
+- id: in_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: outfile
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: merauder.cwl
-inputs:
-- id: option
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
+id: ../../../../home/ubuntu/BiocondaCli/merauder.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

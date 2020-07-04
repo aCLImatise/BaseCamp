@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: maCMD.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maCMD.cwl
 inputs:
 - id: presetting
   doc: "[Default]              Optimize aligner parameters for a selected  sequencing\

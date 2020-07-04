@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bp_netinstall.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bp_netinstall.pl.cwl
 inputs:
 - id: dev
   doc: Use the development version of bioperl from git
@@ -27,6 +27,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --skip_start
+- id: b
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -b
 outputs: []
 cwlVersion: v1.1
 baseCommand:

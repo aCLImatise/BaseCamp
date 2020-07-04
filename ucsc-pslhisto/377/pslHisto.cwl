@@ -1,14 +1,14 @@
 class: CommandLineTool
-id: pslHisto.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pslHisto.cwl
 inputs:
 - id: multi_only
-  doc: with only one alignment from output.
-  type: string
+  doc: '- omit queries with only one alignment from output.'
+  type: boolean
   inputBinding:
     prefix: -multiOnly
 - id: nonzero
-  doc: with zero values.
-  type: string
+  doc: '- omit queries with zero values.'
+  type: boolean
   inputBinding:
     prefix: -nonZero
 outputs: []

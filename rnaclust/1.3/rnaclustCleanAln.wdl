@@ -2,12 +2,16 @@ version 1.0
 
 task RnaclustCleanAln.pl {
   input {
-    String? rnaRnaClustGenReportPl
-    String? dirDir
+    String rna_clust_gen_report_do_tpl
+    String dir
   }
   command <<<
     rnaclustCleanAln.pl \
-      ~{rnaRnaClustGenReportPl} \
-      ~{dirDir}
+      ~{rna_clust_gen_report_do_tpl} \
+      ~{dir}
   >>>
+  parameter_meta {
+    rna_clust_gen_report_do_tpl: ""
+    dir: ""
+  }
 }

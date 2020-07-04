@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fc_get_read_hctg_map.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fc_get_read_hctg_map.py.cwl
 inputs:
 - id: base_dir
   doc: 'Substituted as {base_dir} into default inputs. (default: .)'

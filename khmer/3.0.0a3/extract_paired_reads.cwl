@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: extract_paired_reads.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extract_paired_reads.py.cwl
 inputs:
 - id: info
   doc: print citation information

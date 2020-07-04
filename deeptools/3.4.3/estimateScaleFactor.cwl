@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: estimateScaleFactor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/estimateScaleFactor.cwl
 inputs:
 - id: bam_files
   doc: 'of bam files [list of bam files ...], -b list of bam files [list of bam files
@@ -52,6 +52,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: of
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: bam
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: files
+  doc: ''
+  type: File
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

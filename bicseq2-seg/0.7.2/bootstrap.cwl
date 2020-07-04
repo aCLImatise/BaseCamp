@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bootstrap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bootstrap.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

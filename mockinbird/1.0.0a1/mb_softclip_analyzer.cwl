@@ -1,18 +1,8 @@
 class: CommandLineTool
-id: mb_softclip_analyzer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mb_softclip_analyzer.cwl
 inputs:
-- id: bam_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: output_dir
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: top_n
-  doc: ''
+  doc: number of most commonly clipped sequences printed
   type: string
   inputBinding:
     prefix: --top_n

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: inchworm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/inchworm.cwl
 inputs:
-- id: opts
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: reads
   doc: <str>             :fasta file containing reads
   type: boolean
@@ -26,7 +21,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --run_inchworm
-- id: k
+- id: kmer_length_default
   doc: ':kmer length (default: 25, meaning 24mer overlaps)  max = 32 (stored as 64-bit
     integers, 2-base char encoding)'
   type: long
@@ -37,7 +32,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --minKmerCount
-- id: l
+- id: min_contig_length
   doc: ':min contig length to be reported (default: 25)'
   type: long
   inputBinding:
@@ -84,6 +79,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --show_advanced
+- id: opts
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

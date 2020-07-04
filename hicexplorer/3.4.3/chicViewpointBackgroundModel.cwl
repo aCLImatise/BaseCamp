@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: chicViewpointBackgroundModel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chicViewpointBackgroundModel.cwl
 inputs:
 - id: matrices
   doc: The input matrices (samples) to build the background model on.

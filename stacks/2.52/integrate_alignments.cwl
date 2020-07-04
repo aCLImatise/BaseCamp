@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: integrate_alignments.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/integrate_alignments.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: fastahack.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastahack.cwl
 inputs:
-- id: fast_a_reference
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: index
   doc: generate fasta index <fasta reference>.fai
   type: boolean
@@ -32,6 +27,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --dump
+- id: fast_a_reference
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

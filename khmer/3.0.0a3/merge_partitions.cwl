@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: merge_partitions.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/merge_partitions.py.cwl
 inputs:
-- id: graph_base
-  doc: basename for input and output files
-  type: string
-  inputBinding:
-    position: 0
 - id: info
   doc: print citation information
   type: boolean
@@ -26,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --force
+- id: graph_base
+  doc: basename for input and output files
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

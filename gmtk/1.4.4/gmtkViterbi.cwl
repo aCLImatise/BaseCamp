@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gmtkViterbi.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gmtkViterbi.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

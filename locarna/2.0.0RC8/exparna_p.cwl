@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: exparna_p.cwl
+id: ../../../../home/ubuntu/BiocondaCli/exparna_p.cwl
 inputs:
-- id: input_1
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: input_2
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: verbose
   doc: Verbose
   type: boolean
@@ -47,6 +37,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --stopwatch
+- id: input_one
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: input_two
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

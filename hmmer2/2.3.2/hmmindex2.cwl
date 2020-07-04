@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: hmmindex2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hmmindex2.cwl
 inputs:
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 - id: hmm_index
   doc: ''
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: options
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

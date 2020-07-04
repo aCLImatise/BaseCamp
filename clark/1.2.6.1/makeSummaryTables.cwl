@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: makeSummaryTables.cwl
+id: ../../../../home/ubuntu/BiocondaCli/makeSummaryTables.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

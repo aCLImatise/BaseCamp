@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bmtool.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bmtool.cwl
 inputs:
 - id: quiet
   doc: -q     Do not show progress indicators [off]
@@ -27,35 +27,34 @@ inputs:
   inputBinding:
     prefix: --input-file
 - id: fast_a_parse_ids
-  doc: =0           Parse FASTA ids (becomes broken if ranges are used)
-  type: boolean
+  doc: Parse FASTA ids (becomes broken if ranges are used)
+  type: string
   inputBinding:
     prefix: --fasta-parse-ids
 - id: word_size
-  doc: =18         -w 18  Word size to use
-  type: boolean
+  doc: -w 18  Word size to use
+  type: string
   inputBinding:
     prefix: --word-size
 - id: word_step
-  doc: =1          -S 1   Step (stride size) to use
-  type: boolean
+  doc: -S 1   Step (stride size) to use
+  type: string
   inputBinding:
     prefix: --word-step
 - id: max_amb
-  doc: =0            -A 0   Maximal number of ambiguities to count
-  type: boolean
+  doc: -A 0   Maximal number of ambiguities to count
+  type: string
   inputBinding:
     prefix: --max-amb
 - id: pattern
-  doc: =0            -p 0   Set pattern to use with discontiguous words, 0x or 0b
-    prefix may be used for hex or bin (-w## will be ignored)
-  type: boolean
+  doc: -p 0   Set pattern to use with discontiguous words, 0x or 0b prefix may be
+    used for hex or bin (-w## will be ignored)
+  type: string
   inputBinding:
     prefix: --pattern
 - id: max_word_count
-  doc: =0     -W 0   Do not include words counted more than this value (for 16-mers
-    or less)
-  type: boolean
+  doc: -W 0   Do not include words counted more than this value (for 16-mers or less)
+  type: string
   inputBinding:
     prefix: --max-word-count
 - id: compress
@@ -70,18 +69,18 @@ inputs:
   inputBinding:
     prefix: --extra-compress
 - id: pack_prefix_bits
-  doc: =26         Bits to use for compression prefix
-  type: boolean
+  doc: Bits to use for compression prefix
+  type: string
   inputBinding:
     prefix: --pack-prefix-bits
 - id: pack_offset_bits
-  doc: =34         Number of bits in table to use for data segment offset
-  type: boolean
+  doc: Number of bits in table to use for data segment offset
+  type: string
   inputBinding:
     prefix: --pack-offset-bits
 - id: pack_count_bits
-  doc: =10          Number of bits to reserve for entry count within segment
-  type: boolean
+  doc: Number of bits to reserve for entry count within segment
+  type: string
   inputBinding:
     prefix: --pack-count-bits
 - id: mmap

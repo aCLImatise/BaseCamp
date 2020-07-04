@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FEELnc_classifier.pl.bak.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FEELnc_classifier.pl.bak.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

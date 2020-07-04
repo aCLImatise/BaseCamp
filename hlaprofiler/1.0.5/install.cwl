@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: install.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/install.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

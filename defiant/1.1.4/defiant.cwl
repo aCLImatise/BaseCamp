@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: defiant.cwl
+id: ../../../../home/ubuntu/BiocondaCli/defiant.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

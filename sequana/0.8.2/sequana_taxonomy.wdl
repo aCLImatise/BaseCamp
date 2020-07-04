@@ -2,12 +2,19 @@ version 1.0
 
 task SequanaTaxonomy {
   input {
-    Boolean databasesDatabases
-    Boolean showShowHtml
+    String welcome
+    String to
+    String se_quan_a
   }
   command <<<
     sequana_taxonomy \
-      ~{true="--databases" false="" databasesDatabases} \
-      ~{true="--show-html" false="" showShowHtml}
+      ~{welcome} \
+      ~{to} \
+      ~{se_quan_a}
   >>>
+  parameter_meta {
+    welcome: ""
+    to: ""
+    se_quan_a: ""
+  }
 }

@@ -1,17 +1,26 @@
 version 1.0
 
-task AddVariants.pyGraph {
+task AddVariants.pyOutput {
   input {
-    String variantsVariants
-    Boolean verboseVerbose
-    String? graphGraph
-    String? outputOutput
+    String? variants
+    Boolean? v
+    String add_variants_do_tpy
+    String graph
+    String var_output
   }
   command <<<
-    addVariants.py graph \
-      ~{graphGraph} \
-      ~{if defined(variantsVariants) then ("--variants " +  '"' + variantsVariants + '"') else ""} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{outputOutput}
+    addVariants.py output \
+      ~{add_variants_do_tpy} \
+      ~{graph} \
+      ~{var_output} \
+      ~{if defined(variants) then ("--variants " +  '"' + variants + '"') else ""} \
+      ~{true="-v" false="" v}
   >>>
+  parameter_meta {
+    variants: ""
+    v: ""
+    add_variants_do_tpy: ""
+    graph: ""
+    var_output: ""
+  }
 }

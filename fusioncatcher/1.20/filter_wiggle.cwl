@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filter_wiggle.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_wiggle.py.cwl
 inputs:
 - id: input
   doc: The input file containing the fusion (chromosomal) coordinates for each fusion

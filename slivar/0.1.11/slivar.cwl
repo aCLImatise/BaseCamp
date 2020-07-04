@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: slivar.cwl
+id: ../../../../home/ubuntu/BiocondaCli/slivar.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

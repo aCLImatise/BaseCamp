@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: TsvMerge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/TsvMerge.cwl
 inputs:
 - id: in
   doc: Input TSV files that are merged. If only one file is given, each line in this

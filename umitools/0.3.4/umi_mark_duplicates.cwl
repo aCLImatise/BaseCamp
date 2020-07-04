@@ -1,26 +1,26 @@
 class: CommandLineTool
-id: umi_mark_duplicates.cwl
+id: ../../../../home/ubuntu/BiocondaCli/umi_mark_duplicates.cwl
 inputs:
-- id: f
-  doc: ''
+- id: file
+  doc: the input bam file
   type: File
   inputBinding:
-    prefix: -f
-- id: p
-  doc: ''
+    prefix: --file
+- id: processes
+  doc: number of processes
   type: string
   inputBinding:
-    prefix: -p
-- id: d
-  doc: ''
+    prefix: --processes
+- id: debug
+  doc: turn on debug mode
   type: boolean
   inputBinding:
-    prefix: -d
-- id: c
-  doc: ''
+    prefix: --debug
+- id: count
+  doc: Count the number of raw reads for each locus (determined by pairs)
   type: boolean
   inputBinding:
-    prefix: -c
+    prefix: --count
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cds_trainer.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cds_trainer.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

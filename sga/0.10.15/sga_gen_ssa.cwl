@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sga_gen_ssa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sga_gen_ssa.cwl
 inputs:
 - id: verbose
   doc: display verbose output
@@ -21,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --sai-only
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

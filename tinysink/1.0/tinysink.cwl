@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tinysink.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tinysink.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

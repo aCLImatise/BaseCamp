@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: selectFasta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/selectFasta.cwl
 inputs:
 - id: fast_q
   doc: 'FILE  (fastq file to select reads from) '
@@ -16,7 +16,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -random
-- id: fastq2fasta
+- id: fast_q_two_fast_a
   doc: (convert fastq file to fasta)
   type: boolean
   inputBinding:

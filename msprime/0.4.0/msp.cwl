@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: msp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/msp.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

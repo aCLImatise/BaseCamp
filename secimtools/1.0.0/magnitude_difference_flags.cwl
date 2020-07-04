@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: magnitude_difference_flags.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/magnitude_difference_flags.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

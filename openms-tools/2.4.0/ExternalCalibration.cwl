@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ExternalCalibration.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ExternalCalibration.cwl
 inputs:
 - id: in
   doc: "*        Input peak file (valid formats: 'mzML')"
@@ -27,9 +27,9 @@ inputs:
   inputBinding:
     prefix: -power
 - id: ms_level
-  doc: "j ...  Target MS levels to apply the transformation onto. Scans with other\
-    \ levels remain unchanged. (default: '[1 2 3]')"
-  type: string
+  doc: "MS levels to apply the transformation onto. Scans with other levels remain\
+    \ unchanged. (default: '[1 2 3]')"
+  type: string[]
   inputBinding:
     prefix: -ms_level
 - id: ini

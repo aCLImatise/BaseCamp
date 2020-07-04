@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: BamClipOverlap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/BamClipOverlap.cwl
 inputs:
 - id: in
   doc: Input bam file. Needs to be sorted by name.
@@ -38,7 +38,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ignore_indels
-- id: v
+- id: verbose_mode_default
   doc: "Verbose mode. Default value: 'false'"
   type: boolean
   inputBinding:

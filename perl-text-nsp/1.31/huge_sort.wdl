@@ -2,14 +2,16 @@ version 1.0
 
 task HugeSort.pl {
   input {
-    Boolean keepKeep
-    String? optionsOptions
-    String? sourceSource
+    Boolean? keep
+    String source
   }
   command <<<
     huge-sort.pl \
-      ~{optionsOptions} \
-      ~{true="--keep" false="" keepKeep} \
-      ~{sourceSource}
+      ~{source} \
+      ~{true="--keep" false="" keep}
   >>>
+  parameter_meta {
+    keep: "keep the unsorted file The default is to delete the unsorted file. "
+    source: ""
+  }
 }

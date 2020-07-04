@@ -2,14 +2,19 @@ version 1.0
 
 task BayesTyperToolsMakeBloom {
   input {
-    Boolean kK
-    Boolean pP
-    String falseFalsePositiveRate
+    Boolean? arg_kmc_kmer
+    Boolean? arg_number_threads
+    String? false_positive_rate
   }
   command <<<
     bayesTyperTools makeBloom \
-      ~{true="-k" false="" kK} \
-      ~{true="-p" false="" pP} \
-      ~{if defined(falseFalsePositiveRate) then ("--false-positive-rate " +  '"' + falseFalsePositiveRate + '"') else ""}
+      ~{true="-k" false="" arg_kmc_kmer} \
+      ~{true="-p" false="" arg_number_threads} \
+      ~{if defined(false_positive_rate) then ("--false-positive-rate " +  '"' + false_positive_rate + '"') else ""}
   >>>
+  parameter_meta {
+    arg_kmc_kmer: "[ --kmc-table-prefix ] arg       KMC kmer table prefix. Output is written as <kmc-table-prefix>.bloomMeta and <kmc-table-prefix>.bloomData."
+    arg_number_threads: "[ --num-threads ] arg (=1)       number of threads used (+= 1 I/O thread)."
+    false_positive_rate: "(=0.001)  bloom filter false positive rate."
+  }
 }

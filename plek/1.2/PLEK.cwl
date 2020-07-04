@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: PLEK.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PLEK.py.cwl
 inputs:
-- id: minlength
-  doc: 0_or_1 -isrmtempfile 0_or_1
-  type: long
-  inputBinding:
-    prefix: -minlength
 - id: fast_a
   doc: The name of a fasta file, its sequences are to be predicted.
   type: boolean

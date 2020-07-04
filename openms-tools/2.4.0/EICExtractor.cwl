@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: EICExtractor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/EICExtractor.cwl
 inputs:
 - id: in
   doc: "*        Input raw data file (valid formats: 'mzML')"

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: generate_var2pep_only.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/generate_var2pep_only.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

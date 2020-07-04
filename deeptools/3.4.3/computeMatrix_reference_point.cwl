@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: computeMatrix_reference_point.cwl
+id: ../../../../home/ubuntu/BiocondaCli/computeMatrix_reference_point.cwl
 inputs:
 - id: regions_filename
   doc: 'File name or names, in BED or GTF format, containing the regions to plot.
@@ -116,6 +116,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --deepBlueKeepTemp
+- id: an
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: example
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: usage
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: is
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

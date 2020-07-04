@@ -1,32 +1,22 @@
 class: CommandLineTool
-id: ssu_cmbuild.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ssu_cmbuild.cwl
 inputs:
-- id: cm_file_output
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: alignment_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: n
+- id: name_cms_s
   doc: ': name the CM(s) <s>, (only if single aln in file)'
   type: string
   inputBinding:
     prefix: -n
-- id: a
+- id: append_cm_cmfile
   doc: ': append this CM to <cmfile>'
   type: boolean
   inputBinding:
     prefix: -A
-- id: f
+- id: force_allow_overwriting
   doc: ': force; allow overwriting of <cmfile>'
   type: boolean
   inputBinding:
     prefix: -F
-- id: v
+- id: _verbose_output
   doc: ': be verbose with output'
   type: boolean
   inputBinding:
@@ -171,17 +161,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gibbs
-- id: s
+- id: wgibbs_set_seed
   doc: ': w/--gibbs, set RNG seed to <n> (if 0: one-time arbitrary seed)'
   type: string
   inputBinding:
     prefix: -s
-- id: l
+- id: wrefine_align_locally
   doc: ': w/--refine, align locally w.r.t the model'
   type: boolean
   inputBinding:
     prefix: -l
-- id: a
+- id: print_individual_sequence
   doc: ': print individual sequence scores during MSA refinement'
   type: boolean
   inputBinding:
@@ -226,6 +216,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ileaved
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: cm_file_output
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: alignment_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

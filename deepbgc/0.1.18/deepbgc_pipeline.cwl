@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: deepbgc_pipeline.cwl
+id: ../../../../home/ubuntu/BiocondaCli/deepbgc_pipeline.cwl
 inputs:
-- id: inputs
-  doc: Input sequence file path (FASTA, GenBank, Pfam CSV)
-  type: string
-  inputBinding:
-    position: 0
 - id: output
   doc: Custom output directory path
   type: string
@@ -104,6 +99,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --classifier-score
+- id: debug
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --debug
+- id: inputs
+  doc: Input sequence file path (FASTA, GenBank, Pfam CSV)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

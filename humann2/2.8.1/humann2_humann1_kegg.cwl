@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: humann2_humann1_kegg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/humann2_humann1_kegg.cwl
 inputs:
-- id: i_gene_ls
+- id: var_0
   doc: '[IGENELS]'
   type: boolean
   inputBinding:
@@ -16,7 +16,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ikoc
-- id: ikeggorgid2org_name
+- id: i_kegg_orgid_two_orgname
   doc: '[IKEGGORGID2ORGNAME]'
   type: boolean
   inputBinding:
@@ -26,6 +26,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --o
+- id: var_5
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

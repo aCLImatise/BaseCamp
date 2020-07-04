@@ -1,12 +1,27 @@
 class: CommandLineTool
-id: fermi_scaf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fermi_scaf.cwl
 inputs:
-- id: in_fmd
+- id: number_of_threads
+  doc: number of threads [1]
+  type: long
+  inputBinding:
+    prefix: -t
+- id: minimum_number_supporting
+  doc: minimum number of supporting reads [5]
+  type: long
+  inputBinding:
+    prefix: -m
+- id: print_links_unitigs
+  doc: print the links between unitigs
+  type: boolean
+  inputBinding:
+    prefix: -P
+- id: in_dot_fmd
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: in_remapped_mag
+- id: in_dot_remapped_dot_mag
   doc: ''
   type: string
   inputBinding:
@@ -21,21 +36,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: t
-  doc: number of threads [1]
-  type: long
-  inputBinding:
-    prefix: -t
-- id: m
-  doc: minimum number of supporting reads [5]
-  type: long
-  inputBinding:
-    prefix: -m
-- id: p
-  doc: print the links between unitigs
-  type: boolean
-  inputBinding:
-    prefix: -P
 outputs: []
 cwlVersion: v1.1
 baseCommand:

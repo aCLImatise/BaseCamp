@@ -2,10 +2,13 @@ version 1.0
 
 task Validate {
   input {
-    File? fileFilePath
+    File file_path
   }
   command <<<
     validate \
-      ~{fileFilePath}
+      ~{file_path}
   >>>
+  parameter_meta {
+    file_path: ""
+  }
 }

@@ -2,14 +2,19 @@ version 1.0
 
 task ExtractMarkers.py {
   input {
-    String databaseDatabase
-    String cladeClade
-    String outputOutputDir
+    String? database
+    String? clade
+    String? output_dir
   }
   command <<<
     extract_markers.py \
-      ~{if defined(databaseDatabase) then ("--database " +  '"' + databaseDatabase + '"') else ""} \
-      ~{if defined(cladeClade) then ("--clade " +  '"' + cladeClade + '"') else ""} \
-      ~{if defined(outputOutputDir) then ("--output_dir " +  '"' + outputOutputDir + '"') else ""}
+      ~{if defined(database) then ("--database " +  '"' + database + '"') else ""} \
+      ~{if defined(clade) then ("--clade " +  '"' + clade + '"') else ""} \
+      ~{if defined(output_dir) then ("--output_dir " +  '"' + output_dir + '"') else ""}
   >>>
+  parameter_meta {
+    database: "The input MetaPhlAn dtabase"
+    clade: "The clades to investigate"
+    output_dir: "The output directory"
+  }
 }

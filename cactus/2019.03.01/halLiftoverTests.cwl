@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: halLiftoverTests.cwl
+id: ../../../../home/ubuntu/BiocondaCli/halLiftoverTests.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

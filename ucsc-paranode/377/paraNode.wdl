@@ -2,12 +2,16 @@ version 1.0
 
 task ParaNode {
   input {
-    String cpuCpu
-    String? startStart
+    String? cpu
+    String start
   }
   command <<<
     paraNode \
-      ~{startStart} \
-      ~{if defined(cpuCpu) then ("-cpu " +  '"' + cpuCpu + '"') else ""}
+      ~{start} \
+      ~{if defined(cpu) then ("-cpu " +  '"' + cpu + '"') else ""}
   >>>
+  parameter_meta {
+    cpu: "Number of CPUs to use - default 1."
+    start: ""
+  }
 }

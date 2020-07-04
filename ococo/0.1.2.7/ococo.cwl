@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ococo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ococo.cwl
 inputs:
 - id: input
   doc: input SAM/BAM file (- for standard input)
@@ -85,6 +85,11 @@ inputs:
   type: double
   inputBinding:
     prefix: --maj-thres
+- id: other
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

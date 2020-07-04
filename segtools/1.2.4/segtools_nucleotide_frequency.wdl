@@ -2,30 +2,40 @@ version 1.0
 
 task SegtoolsNucleotideFrequency {
   input {
-    Boolean clobberClobber
-    Boolean quietQuiet
-    Boolean quickQuick
-    Boolean replotReplot
-    Boolean noNoPlot
-    File mnemonicMnemonicFile
-    String outdirOutdir
-    String rR
-    String? optionsOptions
-    String? annotationAnnotation
-    String? genomeGenomeDataFile
+    Boolean? clobber
+    Boolean? quiet
+    Boolean? quick
+    Boolean? replot
+    Boolean? no_plot
+    File? mnemonic_file
+    String? outdir
+    String? val_pass_val
+    String annotation
+    String genome_data_file
   }
   command <<<
     segtools-nucleotide-frequency \
-      ~{optionsOptions} \
-      ~{true="--clobber" false="" clobberClobber} \
-      ~{true="--quiet" false="" quietQuiet} \
-      ~{true="--quick" false="" quickQuick} \
-      ~{true="--replot" false="" replotReplot} \
-      ~{true="--noplot" false="" noNoPlot} \
-      ~{if defined(mnemonicMnemonicFile) then ("--mnemonic-file " +  '"' + mnemonicMnemonicFile + '"') else ""} \
-      ~{if defined(outdirOutdir) then ("--outdir " +  '"' + outdirOutdir + '"') else ""} \
-      ~{if defined(rR) then ("-R " +  '"' + rR + '"') else ""} \
-      ~{annotationAnnotation} \
-      ~{genomeGenomeDataFile}
+      ~{annotation} \
+      ~{genome_data_file} \
+      ~{true="--clobber" false="" clobber} \
+      ~{true="--quiet" false="" quiet} \
+      ~{true="--quick" false="" quick} \
+      ~{true="--replot" false="" replot} \
+      ~{true="--noplot" false="" no_plot} \
+      ~{if defined(mnemonic_file) then ("--mnemonic-file " +  '"' + mnemonic_file + '"') else ""} \
+      ~{if defined(outdir) then ("--outdir " +  '"' + outdir + '"') else ""} \
+      ~{if defined(val_pass_val) then ("-R " +  '"' + val_pass_val + '"') else ""}
   >>>
+  parameter_meta {
+    clobber: "Overwrite any existing output files."
+    quiet: "Do not print diagnostic messages."
+    quick: "Compute values only for one chromosome."
+    replot: "Load data from output tab files and regenerate plots instead of recomputing data."
+    no_plot: "Do not generate any plots."
+    mnemonic_file: "If specified, labels will be shown using mnemonics found in FILE"
+    outdir: "File output directory (will be created if it does not exist) [default: nucleotide_frequency]"
+    val_pass_val: "=VAL        Pass VAL for PARAM when calling R functions. May be specified multiple times."
+    annotation: ""
+    genome_data_file: ""
+  }
 }

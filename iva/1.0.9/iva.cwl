@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: iva.cwl
+id: ../../../../home/ubuntu/BiocondaCli/iva.cwl
 inputs:
-- id: f
+- id: name_forward_reads
   doc: '[.gz], --reads_fwd filename[.gz] Name of forward reads fasta/q file. Must
     be used in conjunction with --reads_rev'
   type: File
   inputBinding:
     prefix: -f
-- id: r
+- id: name_reverse_reads
   doc: '[.gz], --reads_rev filename[.gz] Name of reverse reads fasta/q file. Must
     be used in conjunction with --reads_fwd'
   type: File

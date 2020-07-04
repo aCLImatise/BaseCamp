@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: tdbQuery.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tdbQuery.cwl
 inputs:
-- id: sql_statement
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: root
   doc: =/path/to/trackDb/root/dir
   type: boolean
@@ -16,6 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -release
+- id: sql_statement
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

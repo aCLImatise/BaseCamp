@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: build_report_fusions_map.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/build_report_fusions_map.py.cwl
 inputs:
 - id: input_fast_q
   doc: The input FASTQ file containing all the reads (can be given as gzipped file
@@ -75,13 +75,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --suporting_unique_reads
-- id: anchor_2
+- id: anchor_two
   doc: For anchors longer (or equal) with this value it is enough to have only one
     supporting read. Default is '40'.
   type: string
   inputBinding:
     prefix: --anchor2
-- id: input_genome_2bit
+- id: input_genome_two_bit
   doc: Path to the genome in 2bit format (generated with faToTwoBit) which will be
     used for aligning using BLAT the supporting reads and their alignment in PSL format
     is added to file specified with '--output_zip_fasta'.
@@ -93,13 +93,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --blat-dir
-- id: input_genome_bowtie2
+- id: input_genome_bowtie_two
   doc: Path to the genome BOWTIE2 index which is used to generate the alignments in
     SAM format which is added to file specified with '--output_zip_fasta'.
   type: string
   inputBinding:
     prefix: --input_genome_bowtie2
-- id: bowtie2_dir
+- id: bowtie_two_dir
   doc: Path to Bowtie2's executable.
   type: string
   inputBinding:

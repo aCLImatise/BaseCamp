@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: compute_CLmotif_scores.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/compute_CLmotif_scores.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

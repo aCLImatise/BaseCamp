@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_dia_windows.py_output_file.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_dia_windows.py.cwl
 inputs:
 - id: tims_analysis_directory
   doc: ''
@@ -15,4 +15,3 @@ outputs: []
 cwlVersion: v1.1
 baseCommand:
 - get_dia_windows.py
-- output_file

@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: ssu_esl_compalign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ssu_esl_compalign.cwl
 inputs:
-- id: c
+- id: print_column_statistics
   doc: ': print per column statistics instead of per sequence stats'
   type: boolean
   inputBinding:
     prefix: -c
-- id: p
+- id: print_stats_pp
   doc: ': print stats on accuracy versus posterior probability (PP)'
   type: boolean
   inputBinding:
@@ -16,7 +16,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --p-mask
-- id: c2d_file
+- id: c_two_d_file
   doc: ': print per column stats to esl-ssdraw --dfile file <f>'
   type: string
   inputBinding:
@@ -36,6 +36,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --rna
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

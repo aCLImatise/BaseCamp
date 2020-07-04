@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: fqfilt.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fqfilt.pl.cwl
 inputs:
 - id: this
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: in_fq
+- id: in_dot_fq
   doc: ''
   type: string
   inputBinding:

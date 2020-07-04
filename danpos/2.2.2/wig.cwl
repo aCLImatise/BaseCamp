@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: wig.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wig.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

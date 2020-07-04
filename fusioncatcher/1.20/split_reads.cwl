@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: split_reads.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/split_reads.py.cwl
 inputs:
 - id: input
   doc: The input file in FASTQ format (Solexa). Can be given as gzipped file too.
@@ -13,12 +13,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --list
-- id: output_1
+- id: output_one
   doc: The output FASTQ file where is the first part of the reads (on forward strand).
   type: string
   inputBinding:
     prefix: --output-1
-- id: output_2
+- id: output_two
   doc: The output FASTQ file where is the second part of the reads (on forward strand).
   type: string
   inputBinding:
@@ -58,7 +58,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --buffer-size
-- id: output_2_rc
+- id: output_two_rc
   doc: The Fastq file specified by '--output-2' will be reverse-complemented. Default
     is False.
   type: boolean

@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: clinvar_tsv_inspect.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clinvar_tsv_inspect.cwl
 inputs:
+- id: work_dir
+  doc: Path to working directory
+  type: string
+  inputBinding:
+    prefix: --work-dir
 - id: clin_var_tsv
   doc: ''
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: work_dir
-  doc: Path to working directory
-  type: string
-  inputBinding:
-    prefix: --work-dir
 outputs: []
 cwlVersion: v1.1
 baseCommand:

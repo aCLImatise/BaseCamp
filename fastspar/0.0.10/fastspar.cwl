@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastspar.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastspar.cwl
 inputs:
 - id: otu_table
   doc: OTU input OTU count table
@@ -46,7 +46,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --yes
-- id: v
+- id: _version_display
   doc: --version Display version information and exit
   type: boolean
   inputBinding:

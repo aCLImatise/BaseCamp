@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ConsensusID.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ConsensusID.cwl
 inputs:
 - id: in
   doc: "*                       Input file (valid formats: 'idXML', 'featureXML',\
@@ -25,25 +25,6 @@ inputs:
   type: string
   inputBinding:
     prefix: -mz_delta
-- id: filter
-  doc: ":considered_hits <number>  The number of top hits in each ID run that are\
-    \ considered for consensus scoring ('0' for all hits). (default: '0' min: '0')"
-  type: boolean
-  inputBinding:
-    prefix: -filter
-- id: filter
-  doc: ":min_support <value>       For each peptide hit from an ID run, the fraction\
-    \ of other ID runs that must support that hit (otherwise it is removed). (default:\
-    \ '0' min: '0' max: '1')"
-  type: boolean
-  inputBinding:
-    prefix: -filter
-- id: filter
-  doc: :count_empty               Count empty ID runs (i.e. those containing no peptide
-    hit for the current spectrum) when calculating 'min_support'?
-  type: boolean
-  inputBinding:
-    prefix: -filter
 - id: algorithm
   doc: "Algorithm used for consensus scoring. * PEPMatrix: Scoring based on posterior\
     \ error probabilities (PEPs) and peptide sequence similarities (scored by a substitution\
@@ -82,16 +63,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: pep_ions
-  doc: PEPIons algorithm parameters
-  type: boolean
-  inputBinding:
-    prefix: '- PEPIons'
-- id: pep_matrix
-  doc: PEPMatrix algorithm parameters
-  type: boolean
-  inputBinding:
-    prefix: '- PEPMatrix'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

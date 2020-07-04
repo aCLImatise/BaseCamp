@@ -2,12 +2,16 @@ version 1.0
 
 task KseqCount {
   input {
-    Boolean aA
-    File? filenameFilename
+    Boolean? a
+    File filename
   }
   command <<<
     kseq_count \
-      ~{filenameFilename} \
-      ~{true="-a" false="" aA}
+      ~{filename} \
+      ~{true="-a" false="" a}
   >>>
+  parameter_meta {
+    a: ""
+    filename: ""
+  }
 }

@@ -2,18 +2,25 @@ version 1.0
 
 task DbTuner {
   input {
-    String cC
-    File dD
-    String hH
-    String sS
-    String vV
+    String? c
+    File? d
+    String? h
+    String? s
+    String? v
   }
   command <<<
     db_tuner \
-      ~{if defined(cC) then ("-c " +  '"' + cC + '"') else ""} \
-      ~{if defined(dD) then ("-d " +  '"' + dD + '"') else ""} \
-      ~{if defined(hH) then ("-h " +  '"' + hH + '"') else ""} \
-      ~{if defined(sS) then ("-s " +  '"' + sS + '"') else ""} \
-      ~{if defined(vV) then ("-v " +  '"' + vV + '"') else ""}
+      ~{if defined(c) then ("-c " +  '"' + c + '"') else ""} \
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
+      ~{if defined(h) then ("-h " +  '"' + h + '"') else ""} \
+      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
+      ~{if defined(v) then ("-v " +  '"' + v + '"') else ""}
   >>>
+  parameter_meta {
+    c: ""
+    d: ""
+    h: ""
+    s: ""
+    v: ""
+  }
 }

@@ -1,22 +1,6 @@
 class: CommandLineTool
-id: isescan.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/isescan.py.cwl
 inputs:
-- id: seq_file
-  doc: sequence file in fasta format
-  type: string
-  inputBinding:
-    position: 0
-- id: path2_proteome
-  doc: directory where proteome (each line corresponds to a protein sequence database
-    translated from a genome) files will be placed
-  type: File
-  inputBinding:
-    position: 1
-- id: path2hmm
-  doc: directory where the results of hmmsearch will be placed
-  type: File
-  inputBinding:
-    position: 2
 - id: remove_short_is
   doc: remove incomplete (partial) IS elements which include IS element with length
     < 400 or single copy IS element without perfect TIR.
@@ -36,6 +20,22 @@ inputs:
   type: string
   inputBinding:
     prefix: --nthread
+- id: seq_file
+  doc: sequence file in fasta format
+  type: string
+  inputBinding:
+    position: 0
+- id: path_two_proteome
+  doc: directory where proteome (each line corresponds to a protein sequence database
+    translated from a genome) files will be placed
+  type: File
+  inputBinding:
+    position: 1
+- id: path_two_hmm
+  doc: directory where the results of hmmsearch will be placed
+  type: File
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

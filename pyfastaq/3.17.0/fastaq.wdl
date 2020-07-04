@@ -2,10 +2,13 @@ version 1.0
 
 task Fastaq {
   input {
-    String? commandCommand
+    String var_command
   }
   command <<<
     fastaq \
-      ~{commandCommand}
+      ~{var_command}
   >>>
+  parameter_meta {
+    var_command: ""
+  }
 }

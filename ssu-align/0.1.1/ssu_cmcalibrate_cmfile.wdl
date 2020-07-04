@@ -2,10 +2,13 @@ version 1.0
 
 task SsuCmcalibrateCmfile {
   input {
-    Boolean optionsOptions
+    Boolean? options
   }
   command <<<
     ssu-cmcalibrate cmfile \
-      ~{true="-options" false="" optionsOptions}
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    options: ""
+  }
 }

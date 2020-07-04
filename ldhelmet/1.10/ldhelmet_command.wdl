@@ -2,10 +2,13 @@ version 1.0
 
 task LdhelmetCommand {
   input {
-    String? argsArgs
+    String? args
   }
   command <<<
     ldhelmet command \
-      ~{argsArgs}
+      ~{args}
   >>>
+  parameter_meta {
+    args: ""
+  }
 }

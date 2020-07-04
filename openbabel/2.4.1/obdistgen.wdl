@@ -2,10 +2,13 @@ version 1.0
 
 task Obdistgen {
   input {
-    File? filenameFilename
+    File filename
   }
   command <<<
     obdistgen \
-      ~{filenameFilename}
+      ~{filename}
   >>>
+  parameter_meta {
+    filename: ""
+  }
 }

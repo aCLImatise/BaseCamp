@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: AddFusionStrandConsistent.cwl
+id: ../../../../home/ubuntu/BiocondaCli/AddFusionStrandConsistent.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

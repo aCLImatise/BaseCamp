@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: drfindid.cwl
+id: ../../../../home/ubuntu/BiocondaCli/drfindid.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

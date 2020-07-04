@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: split_reads_by_backbone.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/split_reads_by_backbone.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: psl2bed_float128.cwl
+id: ../../../../home/ubuntu/BiocondaCli/psl2bed_float128.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

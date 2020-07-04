@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fconsense.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fconsense.cwl
 inputs:
 - id: method
   doc: 'menu       [mre] Consensus method (Values: s (strict consensus tree); mr (Majority

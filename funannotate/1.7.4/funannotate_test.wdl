@@ -2,14 +2,19 @@ version 1.0
 
 task FunannotateTest {
   input {
-    Boolean testsTests
-    Boolean cpusCpus
-    String? argumentsArguments
+    Boolean? tests
+    Boolean? cpus
+    String arguments
   }
   command <<<
     funannotate test \
-      ~{argumentsArguments} \
-      ~{true="--tests" false="" testsTests} \
-      ~{true="--cpus" false="" cpusCpus}
+      ~{arguments} \
+      ~{true="--tests" false="" tests} \
+      ~{true="--cpus" false="" cpus}
   >>>
+  parameter_meta {
+    tests: "Test sets to run. [all,clean,mask,predict,busco,rna-seq,annotate,compare]"
+    cpus: "Number of cpus to use. Default: 2"
+    arguments: ""
+  }
 }

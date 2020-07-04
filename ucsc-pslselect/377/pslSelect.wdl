@@ -2,16 +2,22 @@ version 1.0
 
 task PslSelect {
   input {
-    File qtQtStart
-    String qQDelim
-    String? inInPsl
-    String? outOutPsl
+    File? qt_start
+    String? q_delim
+    String in_psl
+    String out_psl
   }
   command <<<
     pslSelect \
-      ~{inInPsl} \
-      ~{if defined(qtQtStart) then ("-qtStart " +  '"' + qtQtStart + '"') else ""} \
-      ~{if defined(qQDelim) then ("-qDelim " +  '"' + qQDelim + '"') else ""} \
-      ~{outOutPsl}
+      ~{in_psl} \
+      ~{out_psl} \
+      ~{if defined(qt_start) then ("-qtStart " +  '"' + qt_start + '"') else ""} \
+      ~{if defined(q_delim) then ("-qDelim " +  '"' + q_delim + '"') else ""}
   >>>
+  parameter_meta {
+    qt_start: "- file is tab-separate rows of qName,tName,tStart"
+    q_delim: "- use only the part of the query name before this character"
+    in_psl: ""
+    out_psl: ""
+  }
 }

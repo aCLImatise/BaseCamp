@@ -1,18 +1,13 @@
 class: CommandLineTool
-id: pyega3_fetch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyega3_fetch.cwl
 inputs:
-- id: identifier
-  doc: Id for dataset (e.g. EGAD00000000001) or file (e.g. EGAF12345678901)
-  type: string
-  inputBinding:
-    position: 0
 - id: reference_name
   doc: The reference sequence name, for example 'chr1', '1', or 'chrX'. If unspecified,
     all data is returned.
   type: string
   inputBinding:
     prefix: --reference-name
-- id: reference_md5
+- id: reference_md_five
   doc: The MD5 checksum uniquely representing the requested reference sequence as
     a lower-case hexadecimal string, calculated as the MD5 of the upper-case sequence
     excluding all whitespace characters.
@@ -52,6 +47,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --saveto
+- id: identifier
+  doc: Id for dataset (e.g. EGAD00000000001) or file (e.g. EGAF12345678901)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

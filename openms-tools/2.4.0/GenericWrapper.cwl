@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: GenericWrapper.cwl
+id: ../../../../home/ubuntu/BiocondaCli/GenericWrapper.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

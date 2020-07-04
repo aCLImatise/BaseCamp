@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: trawler.cwl
+id: ../../../../home/ubuntu/BiocondaCli/trawler.cwl
 inputs:
 - id: directory
   doc: (optional) output directory. [DEFAULT = "TRAWLER_HOME/myResults"]
@@ -39,6 +39,31 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -web
+- id: if
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: using
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: bed
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: formatted
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: input
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

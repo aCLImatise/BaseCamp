@@ -2,16 +2,16 @@ version 1.0
 
 task Beagle2chromopainter.pl {
   input {
-    String? perlPerl
-    String? beagleBeagle2chromopainterpl
-    String? beagleBeaglePhasedOutputFile
-    String? outputOutputFilenamePrefix
+    String beagle_phased_output_file
+    String output_filename_prefix
   }
   command <<<
     beagle2chromopainter.pl \
-      ~{perlPerl} \
-      ~{beagleBeagle2chromopainterpl} \
-      ~{beagleBeaglePhasedOutputFile} \
-      ~{outputOutputFilenamePrefix}
+      ~{beagle_phased_output_file} \
+      ~{output_filename_prefix}
   >>>
+  parameter_meta {
+    beagle_phased_output_file: ""
+    output_filename_prefix: ""
+  }
 }

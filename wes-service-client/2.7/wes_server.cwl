@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: wes_server.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wes_server.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

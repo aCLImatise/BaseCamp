@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: secapr.cwl
+id: ../../../../home/ubuntu/BiocondaCli/secapr.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

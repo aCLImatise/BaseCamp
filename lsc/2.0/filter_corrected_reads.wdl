@@ -1,13 +1,17 @@
 version 1.0
 
-task FilterCorrectedReads.pyInputFilename {
+task FilterCorrectedReads.py {
   input {
-    String? coverageCoverageThreshold
-    String? inputInputFilename
+    String coverage_threshold
+    String input_filename
   }
   command <<<
-    filter_corrected_reads.py input_filename \
-      ~{coverageCoverageThreshold} \
-      ~{inputInputFilename}
+    filter_corrected_reads.py \
+      ~{coverage_threshold} \
+      ~{input_filename}
   >>>
+  parameter_meta {
+    coverage_threshold: ""
+    input_filename: ""
+  }
 }

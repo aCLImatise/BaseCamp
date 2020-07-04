@@ -2,10 +2,13 @@ version 1.0
 
 task Cacheensembl {
   input {
-    Boolean servernameServername
+    Boolean? servername
   }
   command <<<
     cacheensembl \
-      ~{true="-servername" false="" servernameServername}
+      ~{true="-servername" false="" servername}
   >>>
+  parameter_meta {
+    servername: "string     Server name (Any string)"
+  }
 }

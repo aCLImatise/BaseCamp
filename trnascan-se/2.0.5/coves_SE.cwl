@@ -1,6 +1,31 @@
 class: CommandLineTool
-id: coves_SE.cwl
+id: ../../../../home/ubuntu/BiocondaCli/coves_SE.cwl
 inputs:
+- id: show_pairs_watsoncrick
+  doc: ': show all pairs, not just Watson-Crick'
+  type: boolean
+  inputBinding:
+    prefix: -a
+- id: set_expected_default
+  doc: ': set expected background GC composition (default 0.5)'
+  type: string
+  inputBinding:
+    prefix: -g
+- id: mountain_representation_structural
+  doc: ': mountain representation of structural alignment'
+  type: boolean
+  inputBinding:
+    prefix: -m
+- id: secondary_structure_string
+  doc: ': secondary structure string representation of  structural alignment'
+  type: boolean
+  inputBinding:
+    prefix: -s
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 - id: coves
   doc: ''
   type: string
@@ -16,26 +41,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: a
-  doc: ': show all pairs, not just Watson-Crick'
-  type: boolean
-  inputBinding:
-    prefix: -a
-- id: g
-  doc: ': set expected background GC composition (default 0.5)'
-  type: string
-  inputBinding:
-    prefix: -g
-- id: m
-  doc: ': mountain representation of structural alignment'
-  type: boolean
-  inputBinding:
-    prefix: -m
-- id: s
-  doc: ': secondary structure string representation of  structural alignment'
-  type: boolean
-  inputBinding:
-    prefix: -s
 outputs: []
 cwlVersion: v1.1
 baseCommand:

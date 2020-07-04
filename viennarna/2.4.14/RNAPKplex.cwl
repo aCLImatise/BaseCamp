@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNAPKplex.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAPKplex.cwl
 inputs:
 - id: detailed_help
   doc: Print help, including all details and hidden options, and exit
@@ -17,6 +17,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --temp
+- id: no_tetra
+  doc: Do not include special stabilizing energies for certain tetra-loops. Mostly
+    for testing. (default=off)
+  type: boolean
+  inputBinding:
+    prefix: --noTetra
 - id: no_lp
   doc: Produce structures without lonely pairs (helices of length 1). (default=off)
   type: boolean

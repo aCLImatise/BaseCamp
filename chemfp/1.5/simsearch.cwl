@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: simsearch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/simsearch.cwl
 inputs:
-- id: target_filename
-  doc: target filename
-  type: string
-  inputBinding:
-    position: 0
 - id: k_nearest
   doc: select the k nearest neighbors (use 'all' for all neighbors)
   type: string
@@ -81,6 +76,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --times
+- id: target_filename
+  doc: target filename
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

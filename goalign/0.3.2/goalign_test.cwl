@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: goalign_test.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_test.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

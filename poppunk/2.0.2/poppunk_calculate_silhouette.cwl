@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: poppunk_calculate_silhouette.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/poppunk_calculate_silhouette.py.cwl
 inputs:
 - id: distances
   doc: Prefix of input pickle of pre-calculated distances (required)
@@ -26,6 +26,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --sub
+- id: calculate_silhouette
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

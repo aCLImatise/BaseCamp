@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _twofeat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_twofeat.cwl
 inputs:
 - id: a_type
   doc: "string     [*] By default every feature in the feature table is allowed. You\
@@ -35,11 +35,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -maxrange
-- id: r_format
-  doc: )
-  type: string
-  inputBinding:
-    prefix: -rformat
 - id: a_source
   doc: "string     [*] By default any feature source in the feature table is allowed.\
     \ You can set this to match any feature source you wish to allow. The source name\

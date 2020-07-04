@@ -2,24 +2,34 @@ version 1.0
 
 task CdsSubgraphs {
   input {
-    String outputOutputFolder
-    File partPartDesc
-    File partPartSeq
-    String graphGraph
-    File cdsCdsLenEst
-    String kK
-    String threadsThreads
-    String tmpdirTmpdir
+    String? output_folder
+    File? part_desc
+    File? part_seq
+    String? graph
+    File? cds_len_est
+    String? kmer_length_use
+    String? threads
+    String? tmpdir
   }
   command <<<
     cds-subgraphs \
-      ~{if defined(outputOutputFolder) then ("--output-folder " +  '"' + outputOutputFolder + '"') else ""} \
-      ~{if defined(partPartDesc) then ("--part-desc " +  '"' + partPartDesc + '"') else ""} \
-      ~{if defined(partPartSeq) then ("--part-seq " +  '"' + partPartSeq + '"') else ""} \
-      ~{if defined(graphGraph) then ("--graph " +  '"' + graphGraph + '"') else ""} \
-      ~{if defined(cdsCdsLenEst) then ("--cds-len-est " +  '"' + cdsCdsLenEst + '"') else ""} \
-      ~{if defined(kK) then ("-k " +  '"' + kK + '"') else ""} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(tmpdirTmpdir) then ("--tmpdir " +  '"' + tmpdirTmpdir + '"') else ""}
+      ~{if defined(output_folder) then ("--output-folder " +  '"' + output_folder + '"') else ""} \
+      ~{if defined(part_desc) then ("--part-desc " +  '"' + part_desc + '"') else ""} \
+      ~{if defined(part_seq) then ("--part-seq " +  '"' + part_seq + '"') else ""} \
+      ~{if defined(graph) then ("--graph " +  '"' + graph + '"') else ""} \
+      ~{if defined(cds_len_est) then ("--cds-len-est " +  '"' + cds_len_est + '"') else ""} \
+      ~{if defined(kmer_length_use) then ("-k " +  '"' + kmer_length_use + '"') else ""} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(tmpdir) then ("--tmpdir " +  '"' + tmpdir + '"') else ""}
   >>>
+  parameter_meta {
+    output_folder: "output folder to use for GFA files"
+    part_desc: "file with partial genes description (.gff)"
+    part_seq: "file with partial genes sequences (.fasta)"
+    graph: "In GFA (ending with .gfa) or prefix to SPAdes graph pack"
+    cds_len_est: "file with cds length estimamtes"
+    kmer_length_use: "k-mer length to use"
+    threads: "# of threads to use (default: max_threads / 2)"
+    tmpdir: "scratch directory to use (default: <outdir>/tmp)"
+  }
 }

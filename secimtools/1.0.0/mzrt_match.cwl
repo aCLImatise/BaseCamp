@@ -1,42 +1,42 @@
 class: CommandLineTool
-id: mzrt_match.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mzrt_match.py.cwl
 inputs:
-- id: anno1
+- id: an_no_one
   doc: Out path for first file
   type: string
   inputBinding:
     prefix: --anno1
-- id: anno2
+- id: an_no_two
   doc: Out path for second file
   type: string
   inputBinding:
     prefix: --anno2
-- id: uniqid1
+- id: uniqid_one
   doc: Name of the column in file1 that contains the uniqID
   type: string
   inputBinding:
     prefix: --uniqID1
-- id: mzid1
+- id: mz_i_done
   doc: Name of the column in file1 that contains MZ
   type: string
   inputBinding:
     prefix: --mzID1
-- id: rtid1
+- id: rti_done
   doc: Name of the column in file1 that contains RT
   type: string
   inputBinding:
     prefix: --rtID1
-- id: uniqid2
+- id: uniqid_two
   doc: Name of the column in file2 that contains the uniqID
   type: string
   inputBinding:
     prefix: --uniqID2
-- id: mzid2
+- id: mz_id_two
   doc: Name of the column in file2 that contains MZ
   type: string
   inputBinding:
     prefix: --mzID2
-- id: rtid2
+- id: rt_id_two
   doc: Name of the column in file2 that contains RT
   type: string
   inputBinding:
@@ -51,12 +51,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --matched
-- id: unmatched_1
+- id: unmatched_one
   doc: Out path for Unmatched peaks in file 1
   type: string
   inputBinding:
     prefix: --unmatched1
-- id: unmatched_2
+- id: unmatched_two
   doc: Out path for Unmatched peaks in file 2
   type: string
   inputBinding:
@@ -81,12 +81,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --rtcut
-- id: name_1
+- id: name_one
   doc: Short name for File 1 [default F1]
   type: string
   inputBinding:
     prefix: --name1
-- id: name_2
+- id: name_two
   doc: Short name for File 2 [default F2]
   type: string
   inputBinding:

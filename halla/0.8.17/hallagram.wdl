@@ -2,30 +2,43 @@ version 1.0
 
 task Hallagram {
   input {
-    String strongestStrongest
-    String largestLargest
-    Boolean maskMask
-    String cmapCmap
-    String aAXLabels
-    String outfileOutfile
-    String similaritySimilarity
-    String orderOrderBy
-    String? simSimTable
-    String? treeTree
-    String? associationsAssociations
+    String? strongest
+    String? largest
+    Boolean? mask
+    String? cmap
+    String? a_x_labels
+    String? outfile
+    String? similarity
+    String? order_by
+    String sim_table
+    String tree
+    String associations
   }
   command <<<
     hallagram \
-      ~{simSimTable} \
-      ~{if defined(strongestStrongest) then ("--strongest " +  '"' + strongestStrongest + '"') else ""} \
-      ~{if defined(largestLargest) then ("--largest " +  '"' + largestLargest + '"') else ""} \
-      ~{true="--mask" false="" maskMask} \
-      ~{if defined(cmapCmap) then ("--cmap " +  '"' + cmapCmap + '"') else ""} \
-      ~{if defined(aAXLabels) then ("--axlabels " +  '"' + aAXLabels + '"') else ""} \
-      ~{if defined(outfileOutfile) then ("--outfile " +  '"' + outfileOutfile + '"') else ""} \
-      ~{if defined(similaritySimilarity) then ("--similarity " +  '"' + similaritySimilarity + '"') else ""} \
-      ~{if defined(orderOrderBy) then ("--orderby " +  '"' + orderOrderBy + '"') else ""} \
-      ~{treeTree} \
-      ~{associationsAssociations}
+      ~{sim_table} \
+      ~{tree} \
+      ~{associations} \
+      ~{if defined(strongest) then ("--strongest " +  '"' + strongest + '"') else ""} \
+      ~{if defined(largest) then ("--largest " +  '"' + largest + '"') else ""} \
+      ~{true="--mask" false="" mask} \
+      ~{if defined(cmap) then ("--cmap " +  '"' + cmap + '"') else ""} \
+      ~{if defined(a_x_labels) then ("--axlabels " +  '"' + a_x_labels + '"') else ""} \
+      ~{if defined(outfile) then ("--outfile " +  '"' + outfile + '"') else ""} \
+      ~{if defined(similarity) then ("--similarity " +  '"' + similarity + '"') else ""} \
+      ~{if defined(order_by) then ("--orderby " +  '"' + order_by + '"') else ""}
   >>>
+  parameter_meta {
+    strongest: "isolate the N strongest associations"
+    largest: "isolate the N largest associations"
+    mask: "mask feature pairs not in associations"
+    cmap: "matplotlib color map"
+    a_x_labels: "AXLABELS axis labels"
+    outfile: "output file name"
+    similarity: "Similarity metric has been used for similarity measurement"
+    order_by: "Order the significant association by similarity, pvalue, or qvalue"
+    sim_table: "table of pairwise similarity scores"
+    tree: "hypothesis tree (for getting feature order)"
+    associations: "HAllA associations"
+  }
 }

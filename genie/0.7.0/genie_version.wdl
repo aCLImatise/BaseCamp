@@ -2,10 +2,13 @@ version 1.0
 
 task GenieVersion {
   input {
-    String? flagsFlags
+    String? flags
   }
   command <<<
     genie version \
-      ~{flagsFlags}
+      ~{flags}
   >>>
+  parameter_meta {
+    flags: ""
+  }
 }

@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: metaSNV.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/metaSNV.py.cwl
 inputs:
-- id: dir
-  doc: A metaSNP initialized project directory
-  type: string
-  inputBinding:
-    position: 0
-- id: file
-  doc: File with an input list of bam files, one file per line
-  type: File
-  inputBinding:
-    position: 1
-- id: ref_db_file
-  doc: reference multi-sequence FASTA file used for the alignments.
-  type: string
-  inputBinding:
-    position: 2
 - id: db_ann
   doc: Database gene annotation.
   type: string
@@ -37,6 +22,21 @@ inputs:
   type: long
   inputBinding:
     prefix: --n_splits
+- id: dir
+  doc: A metaSNP initialized project directory
+  type: string
+  inputBinding:
+    position: 0
+- id: file
+  doc: File with an input list of bam files, one file per line
+  type: File
+  inputBinding:
+    position: 1
+- id: ref_db_file
+  doc: reference multi-sequence FASTA file used for the alignments.
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfprintaltdiscrepancy.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfprintaltdiscrepancy.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

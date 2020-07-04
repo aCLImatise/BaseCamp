@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_delete_misc_data.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_delete_misc_data.cwl
 inputs:
 - id: pan_or_profile_db
   doc: Anvi'o pan or profile database (and even genes database in appropriate contexts).

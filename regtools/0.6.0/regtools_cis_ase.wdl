@@ -2,10 +2,13 @@ version 1.0
 
 task RegtoolsCisAse {
   input {
-    String? commandCommand
+    String var_command
   }
   command <<<
     regtools cis-ase \
-      ~{commandCommand}
+      ~{var_command}
   >>>
+  parameter_meta {
+    var_command: ""
+  }
 }

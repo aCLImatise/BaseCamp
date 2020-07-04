@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: lavToPsl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lavToPsl.cwl
 inputs:
-- id: in_lav
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: out_psl
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: target_strand
   doc: set the target strand to c (default is no strand)
   type: string
@@ -27,6 +17,16 @@ inputs:
   type: File
   inputBinding:
     prefix: -scoreFile
+- id: in_dot_lav
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: out_dot_psl
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

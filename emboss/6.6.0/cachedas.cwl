@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cachedas.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cachedas.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

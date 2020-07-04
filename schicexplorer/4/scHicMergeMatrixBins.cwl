@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scHicMergeMatrixBins.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scHicMergeMatrixBins.cwl
 inputs:
 - id: matrix
   doc: 'Matrix to reduce in h5 format. (default: None)'

@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: create_newcase.cwl
+id: ../../../../home/ubuntu/BiocondaCli/create_newcase.cwl
 inputs:
 - id: debug
-  doc: Print debug information (very verbose) to file /tmp/tmpyq76ofy5/create_newcase.log
+  doc: Print debug information (very verbose) to file /tmp/tmpeksbd5_3/create_newcase.log
   type: boolean
   inputBinding:
     prefix: --debug

@@ -2,12 +2,19 @@ version 1.0
 
 task MakeHKY {
   input {
-    String branchBranchLength
-    String treeTree
+    String? branch_length
+    String? tree
+    String kappa
   }
   command <<<
     makeHKY \
-      ~{if defined(branchBranchLength) then ("--branch-length " +  '"' + branchBranchLength + '"') else ""} \
-      ~{if defined(treeTree) then ("--tree " +  '"' + treeTree + '"') else ""}
+      ~{kappa} \
+      ~{if defined(branch_length) then ("--branch-length " +  '"' + branch_length + '"') else ""} \
+      ~{if defined(tree) then ("--tree " +  '"' + tree + '"') else ""}
   >>>
+  parameter_meta {
+    branch_length: "Assume a tree consisting of a single branch of specified length. Default value is 1."
+    tree: "Override --branch-length and use specified tree."
+    kappa: ""
+  }
 }

@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: trnascan_1.4.cwl
+id: ../../../../home/ubuntu/BiocondaCli/trnascan_1.4.cwl
 inputs:
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 - id: trnascan
   doc: ''
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: options
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

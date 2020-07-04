@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: bcftools_cnv.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcftools_cnv.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: file_vcf
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
 - id: plot_threshold
   doc: plot aberrant chromosomes with quality at least 'float'
   type: double
@@ -91,6 +81,11 @@ inputs:
   type: double
   inputBinding:
     prefix: --xy-prob
+- id: file_dot_vcf
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

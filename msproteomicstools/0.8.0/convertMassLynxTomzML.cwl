@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: convertMassLynxTomzML.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/convertMassLynxTomzML.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tepid_refine.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tepid_refine.cwl
 inputs:
 - id: keep
   doc: keep all intermediate files

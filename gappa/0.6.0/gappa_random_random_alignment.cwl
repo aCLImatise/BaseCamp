@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gappa_random_random_alignment.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gappa_random_random_alignment.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: sequence_count
   doc: =0 REQUIRED Number of sequences to create.
   type: string

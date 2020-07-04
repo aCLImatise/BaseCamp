@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: CMCWStoCMCV.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CMCWStoCMCV.cwl
 inputs:
 - id: numeric_version
   doc: Print just the version number

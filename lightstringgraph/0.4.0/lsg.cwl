@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: lsg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lsg.cwl
 inputs:
 - id: basename
   doc: '<basename>     # (required)'

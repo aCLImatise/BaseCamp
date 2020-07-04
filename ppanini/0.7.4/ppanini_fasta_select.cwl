@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ppanini_fasta_select.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ppanini_fasta_select.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: clearcut.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clearcut.cwl
 inputs:
 - id: verbose
   doc: 'More output. (Default: OFF)'
@@ -91,6 +91,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --expdist
+- id: in
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --in
+- id: out
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --out
 outputs: []
 cwlVersion: v1.1
 baseCommand:

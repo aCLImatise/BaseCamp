@@ -1,16 +1,17 @@
 class: CommandLineTool
-id: generate_kmer_distribution.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/generate_kmer_distribution.py.cwl
 inputs:
-- id: i
-  doc: ''
+- id: input
+  doc: Kraken counts file for each genome mapped to the overall database.
   type: string
   inputBinding:
-    prefix: -i
-- id: o
-  doc: ''
+    prefix: --input
+- id: output
+  doc: Output file containing each classified taxonomy ID and the kmer distributions
+    of all genomes with this classification.
   type: string
   inputBinding:
-    prefix: -o
+    prefix: --output
 outputs: []
 cwlVersion: v1.1
 baseCommand:

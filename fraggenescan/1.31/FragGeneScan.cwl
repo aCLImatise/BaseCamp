@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FragGeneScan.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FragGeneScan.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

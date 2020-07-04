@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hapcut2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hapcut2.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

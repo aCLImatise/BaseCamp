@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: convertsegfilestops.cwl
+id: ../../../../home/ubuntu/BiocondaCli/convertsegfilestops.cwl
 inputs:
 - id: where
   doc: "pagedir:  Input directory for page image files pagestr:  Substring for matching;\

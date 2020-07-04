@@ -1,31 +1,6 @@
 class: CommandLineTool
-id: cactus_preprocess.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cactus_preprocess.cwl
 inputs:
-- id: output_sequence_dir
-  doc: Directory where the processed sequences will be placed
-  type: string
-  inputBinding:
-    position: 0
-- id: input_sequences
-  doc: input FASTA file(s)
-  type: string
-  inputBinding:
-    position: 1
-- id: job_store
-  doc: 'The location of the job store for the workflow. A job store holds persistent
-    information about the jobs and files in a workflow. If the workflow is run with
-    a distributed batch system, the job store must be accessible by all worker nodes.
-    Depending on the desired job store implementation, the location should be formatted
-    according to one of the following schemes: file:<path> where <path> points to
-    a directory on the file systen aws:<region>:<prefix> where <region> is the name
-    of an AWS region like us- west-2 and <prefix> will be prepended to the names of
-    any top-level AWS resources in use by job store, e.g. S3 buckets. azure:<account>:<prefix>
-    google:<project_id>:<prefix> TODO: explain For backwards compatibility, you may
-    also specify ./foo (equivalent to file:./foo or just file:foo) or /bar (equivalent
-    to file:/bar).'
-  type: string
-  inputBinding:
-    position: 0
 - id: logoff
   doc: Same as --logCritical
   type: boolean
@@ -386,6 +361,31 @@ inputs:
   type: string
   inputBinding:
     prefix: --badWorkerFailInterval
+- id: output_sequence_dir
+  doc: Directory where the processed sequences will be placed
+  type: string
+  inputBinding:
+    position: 0
+- id: input_sequences
+  doc: input FASTA file(s)
+  type: string
+  inputBinding:
+    position: 1
+- id: job_store
+  doc: 'The location of the job store for the workflow. A job store holds persistent
+    information about the jobs and files in a workflow. If the workflow is run with
+    a distributed batch system, the job store must be accessible by all worker nodes.
+    Depending on the desired job store implementation, the location should be formatted
+    according to one of the following schemes: file:<path> where <path> points to
+    a directory on the file systen aws:<region>:<prefix> where <region> is the name
+    of an AWS region like us- west-2 and <prefix> will be prepended to the names of
+    any top-level AWS resources in use by job store, e.g. S3 buckets. azure:<account>:<prefix>
+    google:<project_id>:<prefix> TODO: explain For backwards compatibility, you may
+    also specify ./foo (equivalent to file:./foo or just file:foo) or /bar (equivalent
+    to file:/bar).'
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cstacks.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cstacks.cwl
 inputs:
 - id: in_path
   doc: ': path to the directory containing Stacks files.'
@@ -11,7 +11,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --popmap
-- id: n
+- id: number_allowed_build
   doc: ': number of mismatches allowed between sample loci when build the catalog
     (default 1; suggested: set to ustacks -M).'
   type: boolean
@@ -22,7 +22,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --threads
-- id: s
+- id: sample_prefix_load
   doc: ': sample prefix from which to load loci into the catalog.'
   type: boolean
   inputBinding:

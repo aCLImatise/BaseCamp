@@ -1,18 +1,18 @@
 class: CommandLineTool
-id: target_DB.cwl
+id: ../../../../home/ubuntu/BiocondaCli/target_DB.cwl
 inputs:
-- id: g
+- id: _gene_enter
   doc: ', --gene           enter a single gene name'
   type: boolean
   inputBinding:
     prefix: -g
-- id: i
+- id: _infile_name
   doc: ', --in_file        Name of the input file with a list of genes (.txt - 1 gene
     per line)'
   type: boolean
   inputBinding:
     prefix: -i
-- id: l
+- id: _listgenes_enter
   doc: ', --list_genes     Enter a list of gene name separated by a ","'
   type: boolean
   inputBinding:
@@ -23,7 +23,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --do_all
-- id: s
+- id: _spheresize_enter
   doc: ', --sphere_size    enter a value for the probe size of the pocket finder tool
     (default = 3.0)'
   type: boolean

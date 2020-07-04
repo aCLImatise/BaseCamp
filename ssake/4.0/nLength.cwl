@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nLength.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nLength.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

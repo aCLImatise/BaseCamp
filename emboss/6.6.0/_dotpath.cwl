@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _dotpath.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_dotpath.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

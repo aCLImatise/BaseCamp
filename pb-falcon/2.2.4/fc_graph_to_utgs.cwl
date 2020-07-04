@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fc_graph_to_utgs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fc_graph_to_utgs.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

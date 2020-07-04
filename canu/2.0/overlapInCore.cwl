@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: overlapInCore.cwl
+id: ../../../../home/ubuntu/BiocondaCli/overlapInCore.cwl
 inputs:
 - id: seq_storepath
   doc: ''

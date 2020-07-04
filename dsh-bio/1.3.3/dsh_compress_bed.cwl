@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dsh_compress_bed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dsh_compress_bed.cwl
 inputs:
 - id: about
   doc: display about message [optional]
@@ -16,6 +16,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --output-bed-file
+- id: args
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

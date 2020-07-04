@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: generate_report.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/generate_report.py.cwl
 inputs:
+- id: name_report_file
+  doc: 'name of the report file (default: [prefix]_report.html)'
+  type: string
+  inputBinding:
+    prefix: -o
+- id: diploid
+  doc: use the diploid model
+  type: boolean
+  inputBinding:
+    prefix: --diploid
 - id: generate_report
   doc: ''
   type: string
@@ -11,16 +21,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: o
-  doc: 'name of the report file (default: [prefix]_report.html)'
-  type: string
-  inputBinding:
-    prefix: -o
-- id: diploid
-  doc: use the diploid model
-  type: boolean
-  inputBinding:
-    prefix: --diploid
 outputs: []
 cwlVersion: v1.1
 baseCommand:

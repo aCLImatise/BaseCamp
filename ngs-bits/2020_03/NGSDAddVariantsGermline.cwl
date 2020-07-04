@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: NGSDAddVariantsGermline.cwl
+id: ../../../../home/ubuntu/BiocondaCli/NGSDAddVariantsGermline.cwl
 inputs:
 - id: ps
   doc: Processed sample name

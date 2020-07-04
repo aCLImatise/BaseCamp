@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: twoBitToFa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/twoBitToFa.cwl
 inputs:
-- id: or
-  doc: /path/input.2bit:name
-  type: string
-  inputBinding:
-    position: 0
-- id: or
-  doc: /path/input.2bit:name:start-end
-  type: string
-  inputBinding:
-    position: 1
 - id: seq
   doc: Restrict this to just one sequence.
   type: string
@@ -57,6 +47,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -udcDir
+- id: input_dot_two_bit
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,28 +2,40 @@ version 1.0
 
 task SmofClean {
   input {
-    String tT
-    Boolean toToUpper
-    Boolean toToLower
-    Boolean toToSeq
-    Boolean reduceReduceHeader
-    Boolean maskMaskIrregular
-    Boolean maskMaskLowercase
-    String colColWidth
-    Boolean standardizeStandardize
-    String? inputInput
+    String? _type_np
+    Boolean? to_upper
+    Boolean? to_lower
+    Boolean? to_seq
+    Boolean? reduce_header
+    Boolean? mask_irregular
+    Boolean? mask_lowercase
+    String? col_width
+    Boolean? standardize
+    String input_fasta_sequence
   }
   command <<<
     smof clean \
-      ~{inputInput} \
-      ~{if defined(tT) then ("-t " +  '"' + tT + '"') else ""} \
-      ~{true="--toupper" false="" toToUpper} \
-      ~{true="--tolower" false="" toToLower} \
-      ~{true="--toseq" false="" toToSeq} \
-      ~{true="--reduce-header" false="" reduceReduceHeader} \
-      ~{true="--mask-irregular" false="" maskMaskIrregular} \
-      ~{true="--mask-lowercase" false="" maskMaskLowercase} \
-      ~{if defined(colColWidth) then ("--col_width " +  '"' + colColWidth + '"') else ""} \
-      ~{true="--standardize" false="" standardizeStandardize}
+      ~{input_fasta_sequence} \
+      ~{if defined(_type_np) then ("-t " +  '"' + _type_np + '"') else ""} \
+      ~{true="--toupper" false="" to_upper} \
+      ~{true="--tolower" false="" to_lower} \
+      ~{true="--toseq" false="" to_seq} \
+      ~{true="--reduce-header" false="" reduce_header} \
+      ~{true="--mask-irregular" false="" mask_irregular} \
+      ~{true="--mask-lowercase" false="" mask_lowercase} \
+      ~{if defined(col_width) then ("--col_width " +  '"' + col_width + '"') else ""} \
+      ~{true="--standardize" false="" standardize}
   >>>
+  parameter_meta {
+    _type_np: "|p, --type n|p    sequence type"
+    to_upper: "convert to uppercase"
+    to_lower: "convert to lowercase"
+    to_seq: "removes all non-letter characters (gaps, stops, etc.)"
+    reduce_header: "Remove all text from header that follows the first word (delimited by [ |])"
+    mask_irregular: "converts irregular letters to unknown"
+    mask_lowercase: "convert lower-case to unknown"
+    col_width: "width of the sequence output (0 indicates no wrapping)"
+    standardize: "Convert 'X' in DNA to 'N' and '[._]' to '-' (for gaps)"
+    input_fasta_sequence: "input fasta sequence (default = stdin)"
+  }
 }

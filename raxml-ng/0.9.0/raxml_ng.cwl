@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: raxml_ng.cwl
+id: ../../../../home/ubuntu/BiocondaCli/raxml_ng.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: evaluate
   doc: evaluate the likelihood of a tree (with model+brlen optimization)
   type: boolean
@@ -78,7 +73,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ancestral
-- id: search_1
+- id: search_one
   doc: 'Alias for: --search --tree rand{1}'
   type: boolean
   inputBinding:
@@ -257,23 +252,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --spr-cutoff
-- id: bs_trees
-  doc: VALUE                       number of bootstraps replicates
-  type: boolean
-  inputBinding:
-    prefix: --bs-trees
-- id: bs_trees
-  doc: 'autoMRE{N}                  use MRE-based bootstrap convergence criterion,
-    up to N replicates (default: 1000)'
-  type: boolean
-  inputBinding:
-    prefix: --bs-trees
-- id: bs_trees
-  doc: FILE                        Newick file containing set of bootstrap replicate
-    trees (with --support)
-  type: boolean
-  inputBinding:
-    prefix: --bs-trees
 - id: bs_cut_off
   doc: 'VALUE                       cutoff threshold for the MRE-based bootstopping
     criteria (default: 0.03)'

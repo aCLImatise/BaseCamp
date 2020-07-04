@@ -1,19 +1,29 @@
 version 1.0
 
-task MedpyDiff.pyInput1 {
+task MedpyDiff.pyInput2 {
   input {
-    Boolean vV
-    Boolean dD
-    Boolean fF
-    String? inputInput1
-    String? inputInput2
+    Boolean? v
+    Boolean? d
+    Boolean? f
+    String me_dpy_diff_do_tpy
+    String input_one
+    String input_two
   }
   command <<<
-    medpy_diff.py input1 \
-      ~{inputInput1} \
-      ~{true="-v" false="" vV} \
-      ~{true="-d" false="" dD} \
-      ~{true="-f" false="" fF} \
-      ~{inputInput2}
+    medpy_diff.py input2 \
+      ~{me_dpy_diff_do_tpy} \
+      ~{input_one} \
+      ~{input_two} \
+      ~{true="-v" false="" v} \
+      ~{true="-d" false="" d} \
+      ~{true="-f" false="" f}
   >>>
+  parameter_meta {
+    v: ""
+    d: ""
+    f: ""
+    me_dpy_diff_do_tpy: ""
+    input_one: ""
+    input_two: ""
+  }
 }

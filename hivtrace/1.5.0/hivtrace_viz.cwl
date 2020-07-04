@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: hivtrace_viz.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hivtrace_viz.cwl
 inputs:
-- id: filename
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: hostname
   doc: 'hostname to bind to (default: 127.0.0.1'
   type: string
@@ -28,6 +23,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --server
+- id: filename
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

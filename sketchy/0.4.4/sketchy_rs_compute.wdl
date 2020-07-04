@@ -2,18 +2,22 @@ version 1.0
 
 task SketchyRsCompute {
   input {
-    Int progressProgress
-    Int ranksRanks
-    File sketchSketch
-    Int threadsThreads
-    String? optionsOptions
+    Int? progress
+    Int? ranks
+    File? sketch
+    Int? threads
   }
   command <<<
     sketchy-rs compute \
-      ~{optionsOptions} \
-      ~{if defined(progressProgress) then ("--progress " +  '"' + progressProgress + '"') else ""} \
-      ~{if defined(ranksRanks) then ("--ranks " +  '"' + ranksRanks + '"') else ""} \
-      ~{if defined(sketchSketch) then ("--sketch " +  '"' + sketchSketch + '"') else ""} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""}
+      ~{if defined(progress) then ("--progress " +  '"' + progress + '"') else ""} \
+      ~{if defined(ranks) then ("--ranks " +  '"' + ranks + '"') else ""} \
+      ~{if defined(sketch) then ("--sketch " +  '"' + sketch + '"') else ""} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  parameter_meta {
+    progress: "progress switch > 0"
+    ranks: "max ranks per read"
+    sketch: "reference sketch"
+    threads: "max threads for mash"
+  }
 }

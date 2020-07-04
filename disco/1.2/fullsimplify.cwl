@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fullsimplify.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fullsimplify.cwl
 inputs:
 - id: fs
   doc: contained single read reduction read filename(s) (comma separated fasta/fastq)
@@ -23,17 +23,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -crd
-- id: e
+- id: overlapped_graph_filenames
   doc: overlapped edge property graph filename(s) (comma separated edge list)
   type: boolean
   inputBinding:
     prefix: -e
-- id: p
+- id: assembly_parameter_file
   doc: 'assembly parameter file (default: parameter.cfg)'
   type: boolean
   inputBinding:
     prefix: -p
-- id: o
+- id: output_filename_prefix
   doc: all output filename prefix
   type: boolean
   inputBinding:
@@ -43,6 +43,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -simPth
+- id: h_slash_help
+  doc: only print out the help contents
+  type: boolean
+  inputBinding:
+    prefix: -h/--help
 - id: ovl
   doc: 'minimum overlap length (default: 0, use all overlap found in edge property
     graph files)'
@@ -54,6 +59,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -log
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

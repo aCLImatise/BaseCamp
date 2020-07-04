@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: archosv.cwl
+id: ../../../../home/ubuntu/BiocondaCli/archosv.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

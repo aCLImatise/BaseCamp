@@ -2,12 +2,16 @@ version 1.0
 
 task SegmentFst {
   input {
-    String yourYour
-    String? 0707
+    String? s
+    String? f
   }
   command <<<
     segmentFst \
-      ~{0707} \
-      ~{if defined(yourYour) then ("-     Your " +  '"' + yourYour + '"') else ""}
+      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""} \
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""}
   >>>
+  parameter_meta {
+    s: ""
+    f: ""
+  }
 }

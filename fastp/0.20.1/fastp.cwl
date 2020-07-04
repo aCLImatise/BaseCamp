@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: fastp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastp.cwl
 inputs:
-- id: unpaired_1
+- id: unpaired_one
   doc: for PE input, if read1 passed QC but read2 not, it will be written to unpaired1.
     Default is to discard it. (string [=])
   type: boolean
   inputBinding:
     prefix: --unpaired1
-- id: unpaired_2
+- id: unpaired_two
   doc: for PE input, if read2 passed QC but read1 not, it will be written to unpaired2.
     If --unpaired2 is same as --unpaired1 (default mode), both unpaired reads will
     be written to this same file. (string [=])
@@ -39,6 +39,18 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --include_unmerged
+- id: phred_six_four
+  doc: indicate the input is using phred64 scoring (it'll be converted to phred33,
+    so the output will still be phred33)
+  type: boolean
+  inputBinding:
+    prefix: --phred64
+- id: compression
+  doc: compression level for gzip output (1 ~ 9). 1 is fastest, 9 is smallest, default
+    is 4. (int [=4])
+  type: boolean
+  inputBinding:
+    prefix: --compression
 - id: stdin
   doc: input from STDIN. If the STDIN is interleaved paired-end FASTQ, please also
     add --interleaved_in.
@@ -91,7 +103,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --adapter_sequence
-- id: adapter_sequence_r2
+- id: adapter_sequence_r_two
   doc: the adapter for read2 (PE data only). This is used if R1/R2 are found not overlapped.
     If not specified, it will be the same as <adapter_sequence> (string [=auto])
   type: boolean
@@ -109,35 +121,35 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --detect_adapter_for_pe
-- id: trim_front_1
+- id: trim_front_one
   doc: trimming how many bases in front for read1, default is 0 (int [=0])
   type: boolean
   inputBinding:
     prefix: --trim_front1
-- id: trim_tail1
+- id: trim_tail_one
   doc: trimming how many bases in tail for read1, default is 0 (int [=0])
   type: boolean
   inputBinding:
     prefix: --trim_tail1
-- id: max_len1
+- id: max_len_one
   doc: if read1 is longer than max_len1, then trim read1 at its tail to make it as
     long as max_len1. Default 0 means no limitation (int [=0])
   type: boolean
   inputBinding:
     prefix: --max_len1
-- id: trim_front_2
+- id: trim_front_two
   doc: trimming how many bases in front for read2. If it's not specified, it will
     follow read1's settings (int [=0])
   type: boolean
   inputBinding:
     prefix: --trim_front2
-- id: trim_tail2
+- id: trim_tail_two
   doc: trimming how many bases in tail for read2. If it's not specified, it will follow
     read1's settings (int [=0])
   type: boolean
   inputBinding:
     prefix: --trim_tail2
-- id: max_len2
+- id: max_len_two
   doc: if read2 is longer than max_len2, then trim read2 at its tail to make it as
     long as max_len2. Default 0 means no limitation. If it's not specified, it will
     follow read1's settings (int [=0])
@@ -171,6 +183,36 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --poly_x_min_len
+- id: cut_front
+  doc: move a sliding window from front (5') to tail, drop the bases in the window
+    if its mean quality < threshold, stop otherwise.
+  type: boolean
+  inputBinding:
+    prefix: --cut_front
+- id: cut_tail
+  doc: move a sliding window from tail (3') to front, drop the bases in the window
+    if its mean quality < threshold, stop otherwise.
+  type: boolean
+  inputBinding:
+    prefix: --cut_tail
+- id: cut_right
+  doc: move a sliding window from front to tail, if meet one window with mean quality
+    < threshold, drop the bases in the window and the right part, and then stop.
+  type: boolean
+  inputBinding:
+    prefix: --cut_right
+- id: cut_window_size
+  doc: 'the window size option shared by cut_front, cut_tail or cut_sliding. Range:
+    1~1000, default: 4 (int [=4])'
+  type: boolean
+  inputBinding:
+    prefix: --cut_window_size
+- id: cut_mean_quality
+  doc: 'the mean quality requirement option shared by cut_front, cut_tail or cut_sliding.
+    Range: 1~36 default: 20 (Q20) (int [=20])'
+  type: boolean
+  inputBinding:
+    prefix: --cut_mean_quality
 - id: cut_front_window_size
   doc: the window size option of cut_front, default to cut_window_size if not specified
     (int [=4])
@@ -266,13 +308,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --complexity_threshold
-- id: filter_by_index_1
+- id: filter_by_index_one
   doc: specify a file contains a list of barcodes of index1 to be filtered out, one
     barcode per line (string [=])
   type: boolean
   inputBinding:
     prefix: --filter_by_index1
-- id: filter_by_index_2
+- id: filter_by_index_two
   doc: specify a file contains a list of barcodes of index2 to be filtered out, one
     barcode per line (string [=])
   type: boolean
@@ -385,12 +427,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --split_prefix_digits
-- id: cut_by_quality_5
+- id: cut_by_quality_five
   doc: DEPRECATED, use --cut_front instead.
   type: boolean
   inputBinding:
     prefix: --cut_by_quality5
-- id: cut_by_quality_3
+- id: cut_by_quality_three
   doc: DEPRECATED, use --cut_tail instead.
   type: boolean
   inputBinding:

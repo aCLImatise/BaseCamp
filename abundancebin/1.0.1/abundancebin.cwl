@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: abundancebin.cwl
-inputs:
-- id: recursive_classification
-  doc: ']'
-  type: boolean
-  inputBinding:
-    prefix: -RECURSIVE_CLASSIFICATION
+id: ../../../../home/ubuntu/BiocondaCli/abundancebin.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

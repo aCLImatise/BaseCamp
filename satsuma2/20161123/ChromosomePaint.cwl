@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ChromosomePaint.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ChromosomePaint.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: obisplit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/obisplit.cwl
 inputs:
 - id: prefix
   doc: Prefix added to each subfile name

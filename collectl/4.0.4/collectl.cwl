@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: collectl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/collectl.cwl
 inputs:
 - id: count
   doc: count      collect this number of samples and exit
@@ -99,6 +99,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --showrootslabs
+- id: switches
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

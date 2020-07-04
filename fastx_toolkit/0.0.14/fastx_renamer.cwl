@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastx_renamer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastx_renamer.cwl
 inputs:
 - id: n
   doc: ''

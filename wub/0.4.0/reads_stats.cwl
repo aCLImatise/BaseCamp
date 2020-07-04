@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: reads_stats.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/reads_stats.py.cwl
 inputs:
 - id: fast_x
   doc: input file fastq or fasta

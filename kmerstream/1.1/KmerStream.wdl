@@ -2,18 +2,25 @@ version 1.0
 
 task KmerStream {
   input {
-    Boolean binaryBinary
-    Boolean tsvTsv
-    Boolean verboseVerbose
-    Boolean onlineOnline
-    Boolean q64Q64
+    Boolean? binary
+    Boolean? tsv
+    Boolean? verbose
+    Boolean? online
+    Boolean? q_six_four
   }
   command <<<
     KmerStream \
-      ~{true="--binary" false="" binaryBinary} \
-      ~{true="--tsv" false="" tsvTsv} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{true="--online" false="" onlineOnline} \
-      ~{true="--q64" false="" q64Q64}
+      ~{true="--binary" false="" binary} \
+      ~{true="--tsv" false="" tsv} \
+      ~{true="--verbose" false="" verbose} \
+      ~{true="--online" false="" online} \
+      ~{true="--q64" false="" q_six_four}
   >>>
+  parameter_meta {
+    binary: "Output is written in binary format (default false)"
+    tsv: "Output is written in TSV format (default false)"
+    verbose: "Print lots of messages during run"
+    online: "Prints out estimates every 100K reads"
+    q_six_four: "set if PHRED+64 scores are used (@...h) default used PHRED+33"
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rapifilt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rapifilt.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

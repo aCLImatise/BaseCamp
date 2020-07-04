@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RADpainter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RADpainter.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

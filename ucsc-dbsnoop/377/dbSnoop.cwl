@@ -1,6 +1,31 @@
 class: CommandLineTool
-id: dbSnoop.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dbSnoop.cwl
 inputs:
+- id: unsplit
+  doc: '- if set will merge together tables split by chromosome'
+  type: boolean
+  inputBinding:
+    prefix: -unsplit
+- id: no_number_commas
+  doc: '- if set will leave out commas in big numbers'
+  type: boolean
+  inputBinding:
+    prefix: -noNumberCommas
+- id: just_schema
+  doc: '- only schema parts, no contents'
+  type: boolean
+  inputBinding:
+    prefix: -justSchema
+- id: skip_table
+  doc: '- if set skip a given table name'
+  type: string
+  inputBinding:
+    prefix: -skipTable
+- id: profile
+  doc: "- use profile for connection settings, default = 'db'"
+  type: string
+  inputBinding:
+    prefix: -profile
 - id: database
   doc: ''
   type: string
@@ -11,31 +36,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: unsplit
-  doc: will merge together tables split by chromosome
-  type: string
-  inputBinding:
-    prefix: -unsplit
-- id: no_number_commas
-  doc: will leave out commas in big numbers
-  type: string
-  inputBinding:
-    prefix: -noNumberCommas
-- id: just_schema
-  doc: parts, no contents
-  type: string
-  inputBinding:
-    prefix: -justSchema
-- id: skip_table
-  doc: skip a given table name
-  type: string
-  inputBinding:
-    prefix: -skipTable
-- id: profile
-  doc: for connection settings, default = 'db'
-  type: string
-  inputBinding:
-    prefix: -profile
 outputs: []
 cwlVersion: v1.1
 baseCommand:

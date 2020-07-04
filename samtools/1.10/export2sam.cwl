@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: export2sam.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/export2sam.pl.cwl
 inputs:
-- id: read_1
+- id: read_one
   doc: read1 export file or '-' for stdin (mandatory) (file may be gzipped with ".gz"
     extension)
   type: File
   inputBinding:
     prefix: --read1
-- id: read_2
+- id: read_two
   doc: read2 export file or '-' for stdin (file may be gzipped with ".gz" extension)
   type: File
   inputBinding:

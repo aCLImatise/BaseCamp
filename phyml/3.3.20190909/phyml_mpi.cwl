@@ -1,30 +1,30 @@
 class: CommandLineTool
-id: phyml_mpi.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyml_mpi.cwl
 inputs:
-- id: d
+- id: _datatype_mdatatypem
   doc: "(or --datatype) \e[00;04mdata_type\e[00;00m \e[00;04mdata_type\e[00;00m is\
     \ 'nt' for nucleotide (default), 'aa' for amino-acid sequences, or 'generic',\
     \ (use NEXUS file format and the 'symbols' parameter here)."
   type: boolean
   inputBinding:
     prefix: -d
-- id: q
+- id: or__sequential
   doc: (or --sequential)
   type: boolean
   inputBinding:
     prefix: -q
-- id: n
+- id: _multiple_mnbdatasetsm
   doc: "(or --multiple) \e[00;04mnb_data_sets\e[00;00m \e[00;04mnb_data_sets\e[00;00m\
     \ is an integer corresponding to the number of data sets to analyse."
   type: boolean
   inputBinding:
     prefix: -n
-- id: p
+- id: or__parsm
   doc: "(or --pars)\e[00;00m"
   type: boolean
   inputBinding:
     prefix: -p
-- id: b
+- id: _bootstrap_mintm
   doc: "(or --bootstrap) \e[00;04mint\e[00;00m \e[00;04mint\e[00;00m >  0: \e[00;04mint\e\
     [00;00m is the number of bootstrap replicates. \e[00;04mint\e[00;00m =  0: neither\
     \ approximate likelihood ratio test nor bootstrap values are computed. \e[00;04mint\e\
@@ -41,7 +41,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tbe
-- id: m
+- id: _model_mmodelm
   doc: "(or --model) \e[00;04mmodel\e[00;00m model\e[00;00m : substitution model name.\
     \ \e[00;00m- \e[00;04mNucleotide\e[00;00m-based models : \e[00;04mHKY85\e[00;00m\
     \ (default) | \e[00;04mJC69\e[00;00m | \e[00;04mK80\e[00;00m | \e[00;04mF81\e\
@@ -59,54 +59,54 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -m
-- id: f
+- id: mem_mmm_mem
   doc: "\e[00;04me\e[00;01m, \e[00;04mm\e[00;01m, or \e[00;04mfA,fC,fG,fT\e[00;00m\
     \ \e[00;04me\e[00;00m : the character frequencies are determined as follows : "
   type: boolean
   inputBinding:
     prefix: -f
-- id: t
+- id: _tstv_tstvratiom
   doc: "(or --ts/tv) \e[00;04mts/tv_ratio\e[00;00m ts/tv_ratio\e[00;00m : transition/transversion\
     \ ratio. DNA sequences only. Can be a fixed positive value (ex:4.0) or \e[00;04me\e\
     [00;00m to get the maximum likelihood estimate."
   type: boolean
   inputBinding:
     prefix: -t
-- id: v
+- id: _pinv_range
   doc: "(or --pinv) \e[00;04mprop_invar\e[00;00m prop_invar\e[00;00m : proportion\
     \ of invariable sites. Can be a fixed value in the [0,1] range or \e[00;04me\e\
     [00;00m to get the maximum likelihood estimate."
   type: boolean
   inputBinding:
     prefix: -v
-- id: c
+- id: _nclasses_number
   doc: "(or --nclasses) \e[00;04mnb_subst_cat\e[00;00m nb_subst_cat\e[00;00m : number\
     \ of relative substitution rate categories. Default : \e[00;04mnb_subst_cat\e\
     [00;00m=4. Must be a positive integer."
   type: boolean
   inputBinding:
     prefix: -c
-- id: a
+- id: _alpha_mgammam
   doc: "(or --alpha) \e[00;04mgamma\e[00;00m gamma\e[00;00m : distribution of the\
     \ gamma distribution shape parameter. Can be a fixed positive value or \e[00;04me\e\
     [00;00m to get the maximum likelihood estimate."
   type: boolean
   inputBinding:
     prefix: -a
-- id: s
+- id: _search_mmovem
   doc: "(or --search) \e[00;04mmove\e[00;00m Tree topology search operation option.\
     \ Can be either \e[00;04mNNI\e[00;00m (default, fast) or \e[00;04mSPR\e[00;00m\
     \ (a bit slower than NNI) or \e[00;04mBEST\e[00;00m (best of NNI and SPR search)."
   type: boolean
   inputBinding:
     prefix: -s
-- id: u
+- id: _inputtree_musertreefilem
   doc: "(or --inputtree) \e[00;04muser_tree_file\e[00;00m user_tree_file\e[00;00m\
     \ : starting tree filename. The tree must be in Newick format."
   type: boolean
   inputBinding:
     prefix: -u
-- id: o
+- id: mparamsm_option_focuses
   doc: "\e[00;04mparams\e[00;00m This option focuses on specific parameter optimisation.\
     \ \e[00;04mparams\e[00;00m=tlr : tree topology (t), branch length (l) and rate\
     \ parameters (r) are optimised. \e[00;04mparams\e[00;00m=tl  : tree topology and\

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SetUnmappedBitFlag.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SetUnmappedBitFlag.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

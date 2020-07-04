@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nebulizer_add_library_datasets.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nebulizer_add_library_datasets.cwl
 inputs:
 - id: file_type
   doc: Galaxy data type to assign the files to (default is 'auto'). Must be a valid
@@ -24,6 +24,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --link
+- id: galaxy
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: dest
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

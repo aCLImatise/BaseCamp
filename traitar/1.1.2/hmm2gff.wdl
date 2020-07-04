@@ -2,36 +2,52 @@ version 1.0
 
 task Hmm2gff.py {
   input {
-    String? mapMap
-    String? featuresFeatures
-    String? contributingContributing
-    String? toTo
-    String? theThe
-    String? classClassFication
-    String? backBack
-    String? toTo
-    String? theThe
-    String? functionalFunctional
-    String? annotationAnnotation
-    String? andAnd
-    String? geneGene
-    String? predictionPrediction
+    String var_map
+    String features
+    String contributing
+    String var_3
+    String var_4
+    String class_fication
+    String back
+    String var_7
+    String var_8
+    String functional
+    String annotation
+    String and
+    String gene
+    String prediction
   }
   command <<<
     hmm2gff.py \
-      ~{mapMap} \
-      ~{featuresFeatures} \
-      ~{contributingContributing} \
-      ~{toTo} \
-      ~{theThe} \
-      ~{classClassFication} \
-      ~{backBack} \
-      ~{toTo} \
-      ~{theThe} \
-      ~{functionalFunctional} \
-      ~{annotationAnnotation} \
-      ~{andAnd} \
-      ~{geneGene} \
-      ~{predictionPrediction}
+      ~{var_map} \
+      ~{features} \
+      ~{contributing} \
+      ~{var_3} \
+      ~{var_4} \
+      ~{class_fication} \
+      ~{back} \
+      ~{var_7} \
+      ~{var_8} \
+      ~{functional} \
+      ~{annotation} \
+      ~{and} \
+      ~{gene} \
+      ~{prediction}
   >>>
+  parameter_meta {
+    var_map: ""
+    features: ""
+    contributing: ""
+    var_3: ""
+    var_4: ""
+    class_fication: ""
+    back: ""
+    var_7: ""
+    var_8: ""
+    functional: ""
+    annotation: ""
+    and: ""
+    gene: ""
+    prediction: ""
+  }
 }

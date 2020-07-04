@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _prophecy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_prophecy.cwl
 inputs:
 - id: type
   doc: 'menu       [F] Select type (Values: F (Frequency); G (Gribskov); H (Henikoff))'

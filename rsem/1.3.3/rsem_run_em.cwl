@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: rsem_run_em.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rsem_run_em.cwl
 inputs:
-- id: p
+- id: number_user_wants
   doc: ': number of threads which user wants to use. (default: 1)'
   type: boolean
   inputBinding:
     prefix: -p
-- id: b
+- id: produce_bam_default
   doc: ': produce bam format output file. (default: off)'
   type: boolean
   inputBinding:
     prefix: -b
-- id: q
+- id: set_it_quiet
   doc: ': set it quiet'
   type: boolean
   inputBinding:

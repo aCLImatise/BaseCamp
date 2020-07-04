@@ -2,28 +2,40 @@ version 1.0
 
 task PoppunkReferences {
   input {
-    String networkNetwork
-    String distancesDistances
-    String refRefDb
-    String modelModel
-    String clustersClusters
-    String outputOutput
-    Boolean noNoReSketch
-    Boolean useUseMash
-    String mashMash
-    String threadsThreads
+    String? network
+    String? distances
+    String? ref_db
+    String? model
+    String? clusters
+    String? prefix_output_files
+    Boolean? no_re_sketch
+    Boolean? use_mash
+    String? mash
+    String? threads
   }
   command <<<
     poppunk_references \
-      ~{if defined(networkNetwork) then ("--network " +  '"' + networkNetwork + '"') else ""} \
-      ~{if defined(distancesDistances) then ("--distances " +  '"' + distancesDistances + '"') else ""} \
-      ~{if defined(refRefDb) then ("--ref-db " +  '"' + refRefDb + '"') else ""} \
-      ~{if defined(modelModel) then ("--model " +  '"' + modelModel + '"') else ""} \
-      ~{if defined(clustersClusters) then ("--clusters " +  '"' + clustersClusters + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{true="--no-resketch" false="" noNoReSketch} \
-      ~{true="--use-mash" false="" useUseMash} \
-      ~{if defined(mashMash) then ("--mash " +  '"' + mashMash + '"') else ""} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""}
+      ~{if defined(network) then ("--network " +  '"' + network + '"') else ""} \
+      ~{if defined(distances) then ("--distances " +  '"' + distances + '"') else ""} \
+      ~{if defined(ref_db) then ("--ref-db " +  '"' + ref_db + '"') else ""} \
+      ~{if defined(model) then ("--model " +  '"' + model + '"') else ""} \
+      ~{if defined(clusters) then ("--clusters " +  '"' + clusters + '"') else ""} \
+      ~{if defined(prefix_output_files) then ("--output " +  '"' + prefix_output_files + '"') else ""} \
+      ~{true="--no-resketch" false="" no_re_sketch} \
+      ~{true="--use-mash" false="" use_mash} \
+      ~{if defined(mash) then ("--mash " +  '"' + mash + '"') else ""} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""}
   >>>
+  parameter_meta {
+    network: "gpickle file of network (required)"
+    distances: "Prefix of input pickle of pre-calculated distances (required)"
+    ref_db: "Location of reference db, if resketching"
+    model: "Directory containing model fit. Will be copied to new directory"
+    clusters: "Specify a different clustering (e.g. core/accessory) to copy to new directory"
+    prefix_output_files: "Prefix for output files (required)"
+    no_re_sketch: "Do not resketch the references (--use-mash only)[default = False]"
+    use_mash: "Use the old mash sketch backend [default = False]"
+    mash: "Location of mash executable"
+    threads: "Number of threads to use [default = 1]"
+  }
 }

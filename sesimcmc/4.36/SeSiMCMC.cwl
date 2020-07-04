@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SeSiMCMC.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SeSiMCMC.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

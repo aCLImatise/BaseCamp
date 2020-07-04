@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: train_start_PWM.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/train_start_PWM.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

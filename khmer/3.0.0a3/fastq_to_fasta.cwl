@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: fastq_to_fasta.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq_to_fasta.py.cwl
 inputs:
-- id: input_sequence
-  doc: The name of the input FASTQ sequence file.
-  type: string
-  inputBinding:
-    position: 0
 - id: info
   doc: print citation information
   type: boolean
@@ -33,6 +28,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --bzip
+- id: input_sequence
+  doc: The name of the input FASTQ sequence file.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

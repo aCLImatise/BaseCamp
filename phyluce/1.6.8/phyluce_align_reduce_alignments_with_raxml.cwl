@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_align_reduce_alignments_with_raxml.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_align_reduce_alignments_with_raxml.cwl
 inputs:
 - id: alignments
   doc: Input folder of alignments

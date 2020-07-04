@@ -1,22 +1,17 @@
 class: CommandLineTool
-id: dcmprscu.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmprscu.cwl
 inputs:
-- id: dcm_file_in
-  doc: stored print file(s) to be spooled
-  type: string
-  inputBinding:
-    position: 0
-- id: q
+- id: _quiet_print
   doc: --quiet          quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose        verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug          debug mode, print debug information
   type: boolean
   inputBinding:
@@ -42,7 +37,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --session-print
-- id: monochrome_1
+- id: monochrome_one
   doc: transmit basic grayscale images in MONOCHROME1
   type: boolean
   inputBinding:
@@ -82,6 +77,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --owner
+- id: dcm_file_in
+  doc: stored print file(s) to be spooled
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

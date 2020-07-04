@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: benchmark2mates.cwl
+id: ../../../../home/ubuntu/BiocondaCli/benchmark2mates.cwl
 inputs:
-- id: o
+- id: prefix_resulting_mates
   doc: prefix for the resulting .mates file. (required)
   type: boolean
   inputBinding:
     prefix: -o
-- id: c
+- id: generate_file_optional
   doc: generate Bambus <outprefix>.conf file (optional)
   type: boolean
   inputBinding:

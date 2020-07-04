@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bolt_vcf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bolt_vcf.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

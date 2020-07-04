@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: ncfp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ncfp.cwl
 inputs:
-- id: in_fname
-  doc: input sequence file
-  type: string
-  inputBinding:
-    position: 0
-- id: out_dirname
-  doc: output directory for sequence files
-  type: string
-  inputBinding:
-    position: 1
-- id: email
-  doc: email address for NCBI/Entrez
-  type: string
-  inputBinding:
-    position: 2
 - id: uniprot
   doc: 'treat input sequences as UniProt FASTA (default: False)'
   type: boolean
@@ -32,7 +17,7 @@ inputs:
   inputBinding:
     prefix: --cachedir
 - id: cache_stem
-  doc: 'suffix for cache filestems (default: 2020-04-29-00-04-55)'
+  doc: 'suffix for cache filestems (default: 2020-06-19-02-06-45)'
   type: string
   inputBinding:
     prefix: --cachestem
@@ -81,6 +66,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --disabletqdm
+- id: in_fname
+  doc: input sequence file
+  type: string
+  inputBinding:
+    position: 0
+- id: out_dirname
+  doc: output directory for sequence files
+  type: string
+  inputBinding:
+    position: 1
+- id: email
+  doc: email address for NCBI/Entrez
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

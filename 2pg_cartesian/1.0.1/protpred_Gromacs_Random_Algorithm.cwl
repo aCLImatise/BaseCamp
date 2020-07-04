@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: protpred_Gromacs_Random_Algorithm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/protpred_Gromacs_Random_Algorithm.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

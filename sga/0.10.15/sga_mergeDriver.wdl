@@ -2,14 +2,19 @@ version 1.0
 
 task SgaMergeDriver.pl {
   input {
-    String threadsThreads
-    String binBin
-    File? filesFiles
+    String? threads
+    String? bin
+    File files
   }
   command <<<
     sga-mergeDriver.pl \
-      ~{filesFiles} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(binBin) then ("--bin " +  '"' + binBin + '"') else ""}
+      ~{files} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(bin) then ("--bin " +  '"' + bin + '"') else ""}
   >>>
+  parameter_meta {
+    threads: "use N threads for the merge processes"
+    bin: "use PROG as the sga executable [default: sga]"
+    files: ""
+  }
 }

@@ -1,36 +1,6 @@
 class: CommandLineTool
-id: msa_split.cwl
+id: ../../../../home/ubuntu/BiocondaCli/msa_split.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: fname
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: windows
-  doc: 1000000,1000 --out-format SS \
-  type: boolean
-  inputBinding:
-    prefix: --windows
-- id: between_blocks
-  doc: 5000 --out-root chr1
-  type: boolean
-  inputBinding:
-    prefix: --between-blocks
-- id: windows
-  doc: 1000000,1000 --out-format SS \
-  type: boolean
-  inputBinding:
-    prefix: --windows
-- id: between_blocks
-  doc: 5000 --out-root chr1 --unordered-ss
-  type: boolean
-  inputBinding:
-    prefix: --between-blocks
 - id: ref_idx
   doc: (For use with --windows or --by-index) Index of frame of reference for split
     indices.  Default is 1 (1st sequence assumed reference).
@@ -93,6 +63,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: fname
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

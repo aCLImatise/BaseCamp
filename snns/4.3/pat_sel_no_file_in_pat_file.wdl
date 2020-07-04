@@ -2,10 +2,13 @@ version 1.0
 
 task PatSelNoFileInPatFile {
   input {
-    String? outOutPatFile
+    String out_pat_file
   }
   command <<<
     pat_sel no_file in_pat_file \
-      ~{outOutPatFile}
+      ~{out_pat_file}
   >>>
+  parameter_meta {
+    out_pat_file: ""
+  }
 }

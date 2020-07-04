@@ -1,22 +1,22 @@
 class: CommandLineTool
-id: sra2illumina.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sra2illumina.py.cwl
 inputs:
-- id: input_1
+- id: input_one
   doc: The input FASTQ file downloaded from SRA.
   type: string
   inputBinding:
     prefix: --input_1
-- id: input_2
+- id: input_two
   doc: The input FASTQ file downloaded from SRA.
   type: string
   inputBinding:
     prefix: --input_2
-- id: output_1
+- id: output_one
   doc: The output FASTQ file in Illumina format.
   type: string
   inputBinding:
     prefix: --output_1
-- id: output_2
+- id: output_two
   doc: The output FASTQ file in Illumina format.
   type: string
   inputBinding:
@@ -27,19 +27,19 @@ inputs:
   type: string
   inputBinding:
     prefix: --tag_read_name
-- id: phred64
+- id: phred_six_four
   doc: If it is used then the PHRED-33 qualities from the input SRA are converted
     to PHRED-64 qualities.
   type: boolean
   inputBinding:
     prefix: --phred64
-- id: phred33
+- id: phred_three_three
   doc: If it is used then the PHRED-64 qualities from the input SRA are converted
     to PHRED-33 qualities.
   type: boolean
   inputBinding:
     prefix: --phred33
-- id: no12
+- id: no_one_two
   doc: By default to all reads /1 and /2 will be added to the reads ids. By using
     this no adding is done.
   type: boolean

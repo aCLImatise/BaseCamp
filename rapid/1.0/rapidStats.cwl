@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rapidStats.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rapidStats.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

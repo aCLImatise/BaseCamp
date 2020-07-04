@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: maf_select.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maf_select.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

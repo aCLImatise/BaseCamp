@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csvtk_sort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csvtk_sort.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: ignore_case
   doc: ignore-case
   type: boolean
@@ -94,6 +89,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --tabs
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,10 +2,13 @@ version 1.0
 
 task Logname {
   input {
-    String? optionOption
+    String? option
   }
   command <<<
     logname \
-      ~{optionOption}
+      ~{option}
   >>>
+  parameter_meta {
+    option: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sga_stats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sga_stats.cwl
 inputs:
 - id: verbose
   doc: display verbose output
@@ -56,6 +56,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-overlap
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

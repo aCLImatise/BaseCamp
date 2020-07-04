@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: checkHgFindSpec.cwl
+id: ../../../../home/ubuntu/BiocondaCli/checkHgFindSpec.cwl
 inputs:
 - id: show_searches
   doc: Show the order in which tables will be searched in general.  [This will be
@@ -19,6 +19,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -checkIndexes
+- id: database
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

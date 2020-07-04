@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: blast2gff_blastdb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blast2gff_blastdb.cwl
 inputs:
 - id: db_used
   doc: 'blastdb used  [default: NCBI-NT]'
@@ -57,6 +57,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --progress
+- id: blast_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: gff_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

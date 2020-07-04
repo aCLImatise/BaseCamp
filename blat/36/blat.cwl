@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: blat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blat.cwl
 inputs:
 - id: dots
   doc: Output dot every N sequences to show program's progress.
@@ -52,6 +52,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -extendThroughN
+- id: ooc
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -ooc
+- id: database
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: query
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: output_dot_psl
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

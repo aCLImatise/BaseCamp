@@ -2,10 +2,13 @@ version 1.0
 
 task JellyfishCmd {
   input {
-    String? argArg
+    String arg_dot_dot_dot
   }
   command <<<
     jellyfish cmd \
-      ~{argArg}
+      ~{arg_dot_dot_dot}
   >>>
+  parameter_meta {
+    arg_dot_dot_dot: ""
+  }
 }

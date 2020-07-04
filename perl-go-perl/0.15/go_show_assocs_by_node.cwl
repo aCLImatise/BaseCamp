@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: go_show_assocs_by_node.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/go_show_assocs_by_node.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

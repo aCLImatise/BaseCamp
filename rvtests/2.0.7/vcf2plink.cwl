@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcf2plink.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf2plink.cwl
 inputs:
 - id: people_include_id
   doc: '[], --peopleIncludeFile []'

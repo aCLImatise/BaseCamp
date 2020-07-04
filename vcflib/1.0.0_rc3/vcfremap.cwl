@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: vcfremap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfremap.cwl
 inputs:
-- id: vcf_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: ref_window_size
   doc: align using this many bases flanking each side of the reference allele
   type: string
@@ -57,6 +52,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --adjust-vcf
+- id: vcf_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

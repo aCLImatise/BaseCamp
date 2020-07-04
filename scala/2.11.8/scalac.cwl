@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scalac.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scalac.cwl
 inputs:
 - id: source_files
   doc: ''

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: vcfgeno2haplo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfgeno2haplo.cwl
 inputs:
-- id: vcf_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: reference
   doc: FASTA reference file, required with -i and -u
   type: File
@@ -22,6 +17,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --only-variants
+- id: vcf_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

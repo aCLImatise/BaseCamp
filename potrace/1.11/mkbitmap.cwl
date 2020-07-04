@@ -1,18 +1,13 @@
 class: CommandLineTool
-id: mkbitmap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mkbitmap.cwl
 inputs:
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: license
   doc: '- print license info and exit'
   type: boolean
   inputBinding:
     prefix: --license
 - id: output
-  doc: file
+  doc: '- output to file'
   type: File
   inputBinding:
     prefix: --output
@@ -41,8 +36,23 @@ inputs:
   type: string
   inputBinding:
     prefix: --blur
+- id: scale
+  doc: '- scale by integer factor n (default 2)'
+  type: string
+  inputBinding:
+    prefix: --scale
+- id: linear
+  doc: '- use linear interpolation'
+  type: boolean
+  inputBinding:
+    prefix: --linear
+- id: cubic
+  doc: '- use cubic interpolation (default)'
+  type: boolean
+  inputBinding:
+    prefix: --cubic
 - id: threshold
-  doc: for bilevel conversion (default 0.45)
+  doc: '- set threshold for bilevel conversion (default 0.45)'
   type: string
   inputBinding:
     prefix: --threshold
@@ -51,6 +61,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --grey
+- id: file_dot_dot_dot
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

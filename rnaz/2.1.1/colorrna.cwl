@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: colorrna.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/colorrna.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

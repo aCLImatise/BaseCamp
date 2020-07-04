@@ -1,17 +1,67 @@
 class: CommandLineTool
-id: stty.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stty.cwl
 inputs:
-- id: n
+- id: all
+  doc: print all current settings in human-readable form
+  type: boolean
+  inputBinding:
+    prefix: --all
+- id: save
+  doc: print all current settings in a stty-readable form
+  type: boolean
+  inputBinding:
+    prefix: --save
+- id: file
+  doc: open and use the specified DEVICE instead of stdin
+  type: string
+  inputBinding:
+    prefix: --file
+- id: var_3
+  doc: same as icanon
+  type: boolean
+  inputBinding:
+    prefix: -cbreak
+- id: same_as_raw
+  doc: same as raw
+  type: boolean
+  inputBinding:
+    prefix: -cooked
+- id: same_parenb_cs
+  doc: same as -parenb cs8
+  type: boolean
+  inputBinding:
+    prefix: -evenp
+- id: var_6
+  doc: same as parenb istrip opost cs7
+  type: boolean
+  inputBinding:
+    prefix: -litout
+- id: same_ocrnl_onlret
+  doc: same as icrnl -inlcr -igncr onlcr -ocrnl -onlret
+  type: boolean
+  inputBinding:
+    prefix: -nl
+- id: pass_eight
+  doc: as parenb istrip cs7
+  type: string
+  inputBinding:
+    prefix: -pass8
+- id: same_as_cooked
+  doc: same as cooked
+  type: boolean
+  inputBinding:
+    prefix: -raw
+- id: set_input_speeds
   doc: set the input and output speeds to N bauds
   type: string
   inputBinding:
     position: 0
-- id: c_break
+- id: var_11
   doc: same as -icanon
   type: string
   inputBinding:
     position: 0
-- id: cooked
+- id: same_brkint_ignpar
   doc: same as brkint ignpar istrip icrnl ixon opost isig icanon, eof and eol characters
     to their default values
   type: string
@@ -32,22 +82,22 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: even_p
+- id: same_parenb_parodd
   doc: same as parenb -parodd cs7
   type: string
   inputBinding:
     position: 1
-- id: lit_out
+- id: var_17
   doc: same as -parenb -istrip -opost cs8
   type: string
   inputBinding:
     position: 0
-- id: nl
+- id: same_icrnl_onlcr
   doc: same as -icrnl -onlcr
   type: string
   inputBinding:
     position: 1
-- id: raw
+- id: same_ignbrk_brkint
   doc: same as -ignbrk -brkint -ignpar -parmrk -inpck -istrip -inlcr -igncr -icrnl
     -ixon -ixoff -icanon -opost -isig -iuclc -ixany -imaxbel -xcase min 1 time 0
   type: string
@@ -61,56 +111,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: all
-  doc: print all current settings in human-readable form
-  type: boolean
-  inputBinding:
-    prefix: --all
-- id: save
-  doc: print all current settings in a stty-readable form
-  type: boolean
-  inputBinding:
-    prefix: --save
-- id: file
-  doc: open and use the specified DEVICE instead of stdin
-  type: string
-  inputBinding:
-    prefix: --file
-- id: c_break
-  doc: same as icanon
-  type: boolean
-  inputBinding:
-    prefix: -cbreak
-- id: cooked
-  doc: same as raw
-  type: boolean
-  inputBinding:
-    prefix: -cooked
-- id: even_p
-  doc: same as -parenb cs8
-  type: boolean
-  inputBinding:
-    prefix: -evenp
-- id: lit_out
-  doc: same as parenb istrip opost cs7
-  type: boolean
-  inputBinding:
-    prefix: -litout
-- id: nl
-  doc: same as icrnl -inlcr -igncr onlcr -ocrnl -onlret
-  type: boolean
-  inputBinding:
-    prefix: -nl
-- id: pass8
-  doc: as parenb istrip cs7
-  type: string
-  inputBinding:
-    prefix: -pass8
-- id: raw
-  doc: same as cooked
-  type: boolean
-  inputBinding:
-    prefix: -raw
 outputs: []
 cwlVersion: v1.1
 baseCommand:

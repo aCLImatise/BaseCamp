@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: exeSeq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/exeSeq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

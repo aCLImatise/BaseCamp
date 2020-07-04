@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: NGSDImportHGNC.cwl
+id: ../../../../home/ubuntu/BiocondaCli/NGSDImportHGNC.cwl
 inputs:
 - id: in
   doc: HGNC flat file (download and unzip ftp://ftp.ebi.ac.uk/pub/databases/genenames/hgnc_complete_set.txt.gz)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: shiver_map_reads.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/shiver_map_reads.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

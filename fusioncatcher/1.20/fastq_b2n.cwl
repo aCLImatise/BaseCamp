@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastq_b2n.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq_b2n.py.cwl
 inputs:
 - id: input
   doc: The input file (in FASTQ format) containing the short reads to be processed.

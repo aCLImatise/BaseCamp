@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: snns2c.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snns2c.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

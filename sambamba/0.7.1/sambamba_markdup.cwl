@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sambamba_markdup.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sambamba_markdup.cwl
 inputs:
 - id: remove_duplicates
   doc: remove duplicates instead of just marking them
@@ -53,6 +53,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --io-buffer-size
+- id: samba_mba_mark_dup
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: input_dot_bam
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,14 +2,19 @@ version 1.0
 
 task StrainMl {
   input {
-    Boolean optionsOptions
-    String? mlMlTrain
-    String? trainingTrainingSetFiles
+    Boolean? options
+    String ml_train
+    String training_set_files
   }
   command <<<
     strain_ml \
-      ~{mlMlTrain} \
-      ~{true="-options" false="" optionsOptions} \
-      ~{trainingTrainingSetFiles}
+      ~{ml_train} \
+      ~{training_set_files} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    options: ""
+    ml_train: ""
+    training_set_files: ""
+  }
 }

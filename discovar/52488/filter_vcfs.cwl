@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filter_vcfs.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_vcfs.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

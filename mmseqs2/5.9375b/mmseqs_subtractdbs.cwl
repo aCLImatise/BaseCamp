@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mmseqs_subtractdbs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mmseqs_subtractdbs.cwl
 inputs:
 - id: e_profile
   doc: 0.001           includes sequences matches with < e-value thr. into the profile
@@ -13,7 +13,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --threads
-- id: v
+- id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'
   type: boolean
   inputBinding:

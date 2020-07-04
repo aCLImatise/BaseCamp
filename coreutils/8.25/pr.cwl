@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pr.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pr.cwl
 inputs:
 - id: show_control_chars
   doc: use hat notation (^G) and octal backslash notation
@@ -16,7 +16,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --date-format
-- id: e
+- id: expand_chars_tabs
   doc: '[CHAR[WIDTH]], --expand-tabs[=CHAR[WIDTH]] expand input CHARs (TABs) to tab
     WIDTH (8)'
   type: boolean
@@ -34,7 +34,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --header
-- id: i
+- id: replace_spaces_tab
   doc: '[CHAR[WIDTH]], --output-tabs[=CHAR[WIDTH]] replace spaces with CHARs (TABs)
     to tab WIDTH (8)'
   type: boolean
@@ -58,7 +58,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --merge
-- id: n
+- id: number_lines_use
   doc: '[SEP[DIGITS]], --number-lines[=SEP[DIGITS]] number lines, use DIGITS (5) digits,
     then SEP (TAB), default counting starts with 1st line of input file'
   type: boolean
@@ -80,7 +80,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-file-warnings
-- id: s
+- id: turns_line_truncation
   doc: "[CHAR], --separator[=CHAR] separate columns by a single character, default\
     \ for CHAR is the <TAB> character without -w and 'no char' with -w. -s[CHAR] turns\
     \ off line truncation of all 3 column options (-COLUMN|-a -COLUMN|-m) except -w\
@@ -88,7 +88,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -s
-- id: s
+- id: separate_columns_string
   doc: '[STRING], --sep-string[=STRING] separate columns by STRING, without -S: Default
     separator <TAB> with -J and <space> otherwise (same as -S" "), no effect on column
     options'
@@ -123,6 +123,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --page-width
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

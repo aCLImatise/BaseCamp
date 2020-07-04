@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ribocount.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ribocount.cwl
 inputs:
 - id: read_lengths
   doc: 'Read lengths to consider (default: 0). Multiple read lengths should be separated

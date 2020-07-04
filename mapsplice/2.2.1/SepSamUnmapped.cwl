@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SepSamUnmapped.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SepSamUnmapped.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

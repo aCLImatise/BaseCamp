@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _listor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_listor.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: csb_precision.cwl
+id: ../../../../home/ubuntu/BiocondaCli/csb_precision.cwl
 inputs:
-- id: library
-  doc: Fragment library file in Rosetta NNmake format
-  type: string
-  inputBinding:
-    position: 0
 - id: pdb
   doc: the PDB database (a directory containing all PDB files)
   type: string
@@ -46,6 +41,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --save-structures
+- id: library
+  doc: Fragment library file in Rosetta NNmake format
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamrefinterval.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamrefinterval.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

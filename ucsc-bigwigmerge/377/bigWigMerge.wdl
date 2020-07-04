@@ -2,18 +2,31 @@ version 1.0
 
 task BigWigMerge {
   input {
-    Boolean thresholdThreshold
-    Boolean adjustAdjust
-    String valuesValues
-    File inInList
-    String mergedMerged
+    String? threshold
+    String? adjust
+    String? clip
+    Boolean? in_list
+    Boolean? max
+    String inn_dot_bw
+    String out_dot_bed_graph
   }
   command <<<
     bigWigMerge \
-      ~{true="-threshold" false="" thresholdThreshold} \
-      ~{true="-adjust" false="" adjustAdjust} \
-      ~{if defined(valuesValues) then ("- values " +  '"' + valuesValues + '"') else ""} \
-      ~{if defined(inInList) then ("-inList " +  '"' + inInList + '"') else ""} \
-      ~{if defined(mergedMerged) then ("- merged " +  '"' + mergedMerged + '"') else ""}
+      ~{inn_dot_bw} \
+      ~{out_dot_bed_graph} \
+      ~{if defined(threshold) then ("-threshold " +  '"' + threshold + '"') else ""} \
+      ~{if defined(adjust) then ("-adjust " +  '"' + adjust + '"') else ""} \
+      ~{if defined(clip) then ("-clip " +  '"' + clip + '"') else ""} \
+      ~{true="-inList" false="" in_list} \
+      ~{true="-max" false="" max}
   >>>
+  parameter_meta {
+    threshold: "- don't output values at or below this threshold. Default is 0.0"
+    adjust: "- add adjustment to each value"
+    clip: "- values higher than this are clipped to this value"
+    in_list: "- input file are lists of file names of bigWigs"
+    max: "- merged value is maximum from input files rather than sum"
+    inn_dot_bw: ""
+    out_dot_bed_graph: ""
+  }
 }

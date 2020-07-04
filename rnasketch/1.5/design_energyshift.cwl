@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: design_energyshift.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/design_energyshift.py.cwl
 inputs:
 - id: file
   doc: Read file in *.inp format

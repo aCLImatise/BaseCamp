@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: treebest_sortleaf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/treebest_sortleaf.cwl
 inputs:
-- id: tree1
+- id: tree_one
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: tree2
+- id: tree_two
   doc: ''
   type: string
   inputBinding:

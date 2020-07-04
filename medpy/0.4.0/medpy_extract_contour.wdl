@@ -2,22 +2,31 @@ version 1.0
 
 task MedpyExtractContour.py {
   input {
-    String widthWidth
-    String dimensionDimension
-    Boolean vV
-    Boolean dD
-    Boolean fF
-    String? inputInput
-    String? outputOutput
+    String? width
+    String? dimension
+    Boolean? display_more_information
+    Boolean? display_debug_information
+    Boolean? silently_override_images
+    String source_volume
+    String target_volume
   }
   command <<<
     medpy_extract_contour.py \
-      ~{inputInput} \
-      ~{if defined(widthWidth) then ("--width " +  '"' + widthWidth + '"') else ""} \
-      ~{if defined(dimensionDimension) then ("--dimension " +  '"' + dimensionDimension + '"') else ""} \
-      ~{true="-v" false="" vV} \
-      ~{true="-d" false="" dD} \
-      ~{true="-f" false="" fF} \
-      ~{outputOutput}
+      ~{source_volume} \
+      ~{target_volume} \
+      ~{if defined(width) then ("--width " +  '"' + width + '"') else ""} \
+      ~{if defined(dimension) then ("--dimension " +  '"' + dimension + '"') else ""} \
+      ~{true="-v" false="" display_more_information} \
+      ~{true="-d" false="" display_debug_information} \
+      ~{true="-f" false="" silently_override_images}
   >>>
+  parameter_meta {
+    width: "Width of the contour."
+    dimension: "Extract contours only along this dimension."
+    display_more_information: "Display more information."
+    display_debug_information: "Display debug information."
+    silently_override_images: "Silently override existing output images."
+    source_volume: "Source volume."
+    target_volume: "Target volume."
+  }
 }

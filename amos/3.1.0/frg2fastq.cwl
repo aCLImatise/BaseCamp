@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: frg2fastq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/frg2fastq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

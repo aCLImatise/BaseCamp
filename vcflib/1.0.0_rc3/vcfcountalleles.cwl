@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfcountalleles.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfcountalleles.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

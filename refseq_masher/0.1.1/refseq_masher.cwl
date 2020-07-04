@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: refseq_masher.cwl
+id: ../../../../home/ubuntu/BiocondaCli/refseq_masher.cwl
 inputs:
 - id: verbose
   doc: Logging verbosity (-v for logging warnings; -vvv for logging debug info)

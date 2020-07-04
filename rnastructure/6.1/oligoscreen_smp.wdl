@@ -2,14 +2,19 @@ version 1.0
 
 task OligoscreenSmp {
   input {
-    String? oligoOligoScreen
-    String? listListFile
-    String? reportReportFile
+    String oligo_screen
+    String list_file
+    String report_file
   }
   command <<<
     oligoscreen-smp \
-      ~{oligoOligoScreen} \
-      ~{listListFile} \
-      ~{reportReportFile}
+      ~{oligo_screen} \
+      ~{list_file} \
+      ~{report_file}
   >>>
+  parameter_meta {
+    oligo_screen: ""
+    list_file: ""
+    report_file: ""
+  }
 }

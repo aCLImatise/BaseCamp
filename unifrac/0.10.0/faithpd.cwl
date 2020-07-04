@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: faithpd.cwl
+id: ../../../../home/ubuntu/BiocondaCli/faithpd.cwl
 inputs:
-- id: i
+- id: input_biom_table
   doc: The input BIOM table.
   type: boolean
   inputBinding:
     prefix: -i
-- id: t
+- id: input_phylogeny_newick
   doc: The input phylogeny in newick.
   type: boolean
   inputBinding:
     prefix: -t
-- id: o
+- id: the_output_series
   doc: The output series.
   type: boolean
   inputBinding:

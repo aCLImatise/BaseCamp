@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dumpBlob.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dumpBlob.cwl
 inputs:
 - id: b
   doc: ''

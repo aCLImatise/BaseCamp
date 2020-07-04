@@ -2,14 +2,19 @@ version 1.0
 
 task Coverage2cytosine {
   input {
-    File genomeGenomeFolder
-    String oO
-    String? inputInput
+    File? genome_folder
+    String? o
+    String? var_input
   }
   command <<<
     coverage2cytosine \
-      ~{inputInput} \
-      ~{if defined(genomeGenomeFolder) then ("--genome_folder " +  '"' + genomeGenomeFolder + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""}
+      ~{var_input} \
+      ~{if defined(genome_folder) then ("--genome_folder " +  '"' + genome_folder + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    genome_folder: ""
+    o: ""
+    var_input: ""
+  }
 }

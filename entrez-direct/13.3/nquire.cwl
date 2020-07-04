@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nquire.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nquire.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

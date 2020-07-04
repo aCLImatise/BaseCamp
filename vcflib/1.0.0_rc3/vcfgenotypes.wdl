@@ -2,10 +2,13 @@ version 1.0
 
 task Vcfgenotypes {
   input {
-    String? vcfVcfFile
+    String vcf_file
   }
   command <<<
     vcfgenotypes \
-      ~{vcfVcfFile}
+      ~{vcf_file}
   >>>
+  parameter_meta {
+    vcf_file: ""
+  }
 }

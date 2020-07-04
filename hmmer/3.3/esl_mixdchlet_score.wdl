@@ -2,14 +2,19 @@ version 1.0
 
 task EslMixdchletScore {
   input {
-    Boolean optionsOptions
-    String? mixMixDchLetFile
-    String? countsCountsFile
+    Boolean? options
+    String mix_dch_let_file
+    String counts_file
   }
   command <<<
     esl-mixdchlet score \
-      ~{mixMixDchLetFile} \
-      ~{true="-options" false="" optionsOptions} \
-      ~{countsCountsFile}
+      ~{mix_dch_let_file} \
+      ~{counts_file} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    options: ""
+    mix_dch_let_file: ""
+    counts_file: ""
+  }
 }

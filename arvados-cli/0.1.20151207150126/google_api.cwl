@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: google_api.cwl
+id: ../../../../home/ubuntu/BiocondaCli/google_api.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

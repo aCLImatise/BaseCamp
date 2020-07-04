@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: smCounter2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smCounter2.cwl
 inputs:
 - id: run_path
   doc: path to working directory

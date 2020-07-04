@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: specialk.cwl
+id: ../../../../home/ubuntu/BiocondaCli/specialk.cwl
 inputs:
-- id: reads_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: o
   doc: ''
   type: string
@@ -16,6 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -s
+- id: reads_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

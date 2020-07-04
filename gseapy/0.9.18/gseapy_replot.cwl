@@ -1,18 +1,18 @@
 class: CommandLineTool
-id: gseapy_replot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gseapy_replot.cwl
 inputs:
 - id: in_dir
   doc: The GSEA desktop results directroy that you want to reproduce the figure
   type: string
   inputBinding:
     prefix: --indir
-- id: o
+- id: _outdir_gseapy
   doc: ', --outdir         The GSEApy output directory. Default: the current working
     directory'
   type: boolean
   inputBinding:
     prefix: -o
-- id: f
+- id: _format_file
   doc: ", --format         File extensions supported by Matplotlib active backend,\
     \ choose from {'pdf', 'png', 'jpeg','ps', 'eps','svg'}. Default: 'pdf'."
   type: boolean
@@ -46,6 +46,11 @@ inputs:
   type: double
   inputBinding:
     prefix: --weight
+- id: height
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

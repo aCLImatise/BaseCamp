@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: kissnp2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kissnp2.cwl
 inputs:
 - id: max_ambigous_in_del
   doc: "(1 arg) :    Maximal size of ambiguity of INDELs. INDELS whose ambiguity is\
@@ -7,7 +7,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -max_ambigous_indel
-- id: l
+- id: arg_conserve_complexity
   doc: '(0 arg) :    conserve low complexity SNPs'
   type: boolean
   inputBinding:

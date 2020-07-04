@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: format_tree_and_trait_table.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/format_tree_and_trait_table.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

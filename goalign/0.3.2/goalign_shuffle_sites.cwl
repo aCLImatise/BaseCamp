@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: goalign_shuffle_sites.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_shuffle_sites.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: rate
   doc: Rate of shuffled sites (>=0 and <=1) (default 0.5)
   type: double

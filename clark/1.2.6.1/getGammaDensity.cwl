@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: getGammaDensity.cwl
+id: ../../../../home/ubuntu/BiocondaCli/getGammaDensity.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

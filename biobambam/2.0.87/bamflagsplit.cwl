@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamflagsplit.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamflagsplit.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

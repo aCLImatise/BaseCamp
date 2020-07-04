@@ -2,10 +2,13 @@ version 1.0
 
 task CgatreportQuickstart {
   input {
-    String destDest
+    String? dest
   }
   command <<<
     cgatreport-quickstart \
-      ~{if defined(destDest) then ("--dest " +  '"' + destDest + '"') else ""}
+      ~{if defined(dest) then ("--dest " +  '"' + dest + '"') else ""}
   >>>
+  parameter_meta {
+    dest: "destination directory."
+  }
 }

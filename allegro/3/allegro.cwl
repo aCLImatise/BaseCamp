@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: allegro.cwl
+id: ../../../../home/ubuntu/BiocondaCli/allegro.cwl
 inputs:
-- id: options_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: l
   doc: ''
   type: string
@@ -26,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -m
+- id: options_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,14 +2,19 @@ version 1.0
 
 task LwpDownload {
   input {
-    Boolean aA
-    String? urlUrl
-    String? lLPath
+    Boolean? a
+    String url
+    String? l_path
   }
   command <<<
     lwp-download \
-      ~{urlUrl} \
-      ~{true="-a" false="" aA} \
-      ~{lLPath}
+      ~{url} \
+      ~{l_path} \
+      ~{true="-a" false="" a}
   >>>
+  parameter_meta {
+    a: ""
+    url: ""
+    l_path: ""
+  }
 }

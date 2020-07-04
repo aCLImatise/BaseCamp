@@ -1,6 +1,21 @@
 class: CommandLineTool
-id: sortByRefAndCor.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sortByRefAndCor.pl.cwl
 inputs:
+- id: contig_name_field
+  doc: ':   contig name is in the field POS (1-based) of input lines.'
+  type: string
+  inputBinding:
+    prefix: --k
+- id: contig_cordinate_field
+  doc: ':   contig cordinate is in the field COR (1-based) of input lines.'
+  type: string
+  inputBinding:
+    prefix: --c
+- id: tmp
+  doc: ': temp directory [default=/tmp]'
+  type: string
+  inputBinding:
+    prefix: --tmp
 - id: input
   doc: input file to sort. If '-' is specified,  then reads from STDIN.
   type: string
@@ -12,21 +27,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: k
-  doc: ':   contig name is in the field POS (1-based) of input lines.'
-  type: string
-  inputBinding:
-    prefix: --k
-- id: c
-  doc: ':   contig cordinate is in the field COR (1-based) of input lines.'
-  type: string
-  inputBinding:
-    prefix: --c
-- id: tmp
-  doc: ': temp directory [default=/tmp]'
-  type: string
-  inputBinding:
-    prefix: --tmp
 outputs: []
 cwlVersion: v1.1
 baseCommand:

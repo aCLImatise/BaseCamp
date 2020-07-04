@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: elector.cwl
+id: ../../../../home/ubuntu/BiocondaCli/elector.cwl
 inputs:
-- id: threads
+- id: _number_threads
   doc: '[THREADS]    Number of threads'
   type: boolean
   inputBinding:
     prefix: -threads
-- id: corrected
+- id: fasta_file_corrected
   doc: '[CORRECTED] Fasta file with corrected reads (each read sequence on one line)'
   type: boolean
   inputBinding:
@@ -74,6 +74,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -minsize
+- id: var_13
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: var_14
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scaffold_builder.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scaffold_builder.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

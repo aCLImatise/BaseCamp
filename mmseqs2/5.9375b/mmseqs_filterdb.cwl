@@ -1,16 +1,11 @@
 class: CommandLineTool
-id: mmseqs_filterdb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mmseqs_filterdb.cwl
 inputs:
 - id: add_self_matches
   doc: false           artificially add entries of queries with themselves (for clustering)
   type: boolean
   inputBinding:
     prefix: --add-self-matches
-- id: filter_column
-  doc: '1               column                                                      '
-  type: boolean
-  inputBinding:
-    prefix: --filter-column
 - id: column_to_take
   doc: '-1              column to take in join mode. If -1, the whole line is taken '
   type: boolean
@@ -91,7 +86,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --threads
-- id: v
+- id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'
   type: boolean
   inputBinding:

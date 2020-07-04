@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cgatreport_quickstart.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cgatreport_quickstart.cwl
 inputs:
 - id: dest
   doc: destination directory.

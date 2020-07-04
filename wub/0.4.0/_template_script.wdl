@@ -2,10 +2,13 @@ version 1.0
 
 task _templateScript.py {
   input {
-    String iI
+    String? i
   }
   command <<<
     _template_script.py \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""}
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  parameter_meta {
+    i: "Input."
+  }
 }

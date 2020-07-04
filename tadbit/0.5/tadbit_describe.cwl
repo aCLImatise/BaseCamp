@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tadbit_describe.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tadbit_describe.cwl
 inputs:
 - id: workdir
   doc: path to working directory (generated with the tool tadbit map)
@@ -11,7 +11,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --noX
-- id: t
+- id: tables_show_write
   doc: "[ ...], --tables  [ ...] [['1', '2', '3', '4', '5', '6', '7', '8', '9', '10',\
     \ '11', '12', '13']] what tables to show, write either the sequence of names or\
     \ indexes, according to this list: 11: segment_outputs, 10: merge_outputs, 13:\
@@ -21,7 +21,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -t
-- id: t
+- id: tables_not_show
   doc: '[ ...], --skip_tables  [ ...] [[]] what tables NOT to show, write either the
     sequence of names or indexes, according to this list: 11: segment_outputs, 10:
     merge_outputs, 13: modeled_regions, 12: models, 1: paths, 3: mapped_outputs, 2:

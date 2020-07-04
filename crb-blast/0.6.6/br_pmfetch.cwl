@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: br_pmfetch.rb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/br_pmfetch.rb.cwl
 inputs:
 - id: query
   doc: '"genome AND virus"  Query string for PubMed search'
@@ -72,12 +72,12 @@ inputs:
   inputBinding:
     prefix: --reldate
 - id: min_date
-  doc: /MM/DD        Search articles published after the date
+  doc: Search articles published after the date
   type: string
   inputBinding:
     prefix: --mindate
 - id: maxdate
-  doc: /MM/DD        Search articles published before the date
+  doc: Search articles published before the date
   type: string
   inputBinding:
     prefix: --maxdate
@@ -86,6 +86,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --examples
+- id: options_dot_dot_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

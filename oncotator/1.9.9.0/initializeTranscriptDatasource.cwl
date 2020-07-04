@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: initializeTranscriptDatasource.cwl
+id: ../../../../home/ubuntu/BiocondaCli/initializeTranscriptDatasource.cwl
 inputs:
+- id: name
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --name
+- id: filter
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --filter
 - id: gtf_files
   doc: 'Location of the gtf files.  Multiple files can be specified as a comma separated
     list (e.g. file1,file2) without spaces '

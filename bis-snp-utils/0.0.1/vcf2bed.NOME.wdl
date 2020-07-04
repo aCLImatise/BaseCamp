@@ -2,16 +2,22 @@ version 1.0
 
 task Vcf2bed.NOME.pl {
   input {
-    String? perlPerl
-    String? vcf2bed6plus6plVcf2bed6plus6pl
-    String? inputInputFileName
-    String? cgCg
+    String perl
+    String vcftwobedsixplussixdotpl
+    String input_file_name
+    String? cg
   }
   command <<<
     vcf2bed.NOME.pl \
-      ~{perlPerl} \
-      ~{vcf2bed6plus6plVcf2bed6plus6pl} \
-      ~{inputInputFileName} \
-      ~{cgCg}
+      ~{perl} \
+      ~{vcftwobedsixplussixdotpl} \
+      ~{input_file_name} \
+      ~{cg}
   >>>
+  parameter_meta {
+    perl: ""
+    vcftwobedsixplussixdotpl: ""
+    input_file_name: ""
+    cg: ""
+  }
 }

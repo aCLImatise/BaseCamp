@@ -2,12 +2,16 @@ version 1.0
 
 task SamtoolsGlfview {
   input {
-    String? glfGlfView
-    String? inInGlf
+    String glf_view
+    String in_dot_glf
   }
   command <<<
     samtools glfview \
-      ~{glfGlfView} \
-      ~{inInGlf}
+      ~{glf_view} \
+      ~{in_dot_glf}
   >>>
+  parameter_meta {
+    glf_view: ""
+    in_dot_glf: ""
+  }
 }

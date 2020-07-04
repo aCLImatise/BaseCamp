@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: decide.bak.cwl
+id: ../../../../home/ubuntu/BiocondaCli/decide.bak.cwl
 inputs:
-- id: decide
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: histograms_prefix
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: diploid
   doc: use the diploid model
   type: boolean
@@ -21,11 +11,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --first_pass
-- id: t
+- id: number_threads_default
   doc: 'number of threads (default: 1)'
   type: string
   inputBinding:
     prefix: -t
+- id: histograms_prefix
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

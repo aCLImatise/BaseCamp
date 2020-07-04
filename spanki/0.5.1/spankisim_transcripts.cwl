@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: spankisim_transcripts.cwl
+id: ../../../../home/ubuntu/BiocondaCli/spankisim_transcripts.cwl
 inputs:
-- id: o
+- id: output_directory_default
   doc: 'Output directory (default: ./sims_out/)'
   type: string
   inputBinding:
     prefix: -o
-- id: g
+- id: reference_gtf
   doc: Reference GTF
   type: string
   inputBinding:
     prefix: -g
-- id: f
+- id: fasta_file
   doc: Fasta file
   type: string
   inputBinding:
@@ -26,7 +26,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -rpk
-- id: t
+- id: file_transcripts_sim
   doc: File of transcripts to sim
   type: string
   inputBinding:
@@ -41,12 +41,12 @@ inputs:
   type: string
   inputBinding:
     prefix: -ends
-- id: s
+- id: start_selection_mode
   doc: 'Start selection mode (default: random)'
   type: string
   inputBinding:
     prefix: -s
-- id: m
+- id: error_model_random
   doc: 'Error model [random,errorfree,NIST,dm3,flyheads, or custom] (default: random)'
   type: string
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: porechop.cwl
+id: ../../../../home/ubuntu/BiocondaCli/porechop.cwl
 inputs:
 - id: input
   doc: FASTA/FASTQ of input reads or a directory which will be recursively searched
@@ -14,10 +14,9 @@ inputs:
   inputBinding:
     prefix: --output
 - id: format
-  doc: '{auto,fasta,fastq,fasta.gz,fastq.gz} Output format for the reads - if auto,
-    the format will be chosen based on the output filename or the input read format
-    (default: auto)'
-  type: boolean
+  doc: 'Output format for the reads - if auto, the format will be chosen based on
+    the output filename or the input read format (default: auto)'
+  type: string
   inputBinding:
     prefix: --format
 - id: verbosity

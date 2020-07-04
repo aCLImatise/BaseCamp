@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: cramtools_fixheader.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cramtools_fixheader.cwl
 inputs:
-- id: confirm_md5
+- id: confirm_md_five
   doc: 'Calculate MD5 for sequences mentioned in the header. Requires --reference-fasta-file
     option. (default: false)'
   type: boolean
@@ -33,6 +33,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --log-level
+- id: fix_header
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

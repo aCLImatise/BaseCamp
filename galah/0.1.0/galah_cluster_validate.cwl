@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: galah_cluster_validate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/galah_cluster_validate.cwl
 inputs:
 - id: ani
   doc: 'ANI to validate against [default: 99]'

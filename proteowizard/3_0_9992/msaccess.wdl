@@ -2,22 +2,31 @@ version 1.0
 
 task Msaccess {
   input {
-    Boolean fF
-    Boolean oO
-    Boolean cC
-    Boolean xX
-    String filterFilter
-    Boolean vV
-    File? filenamesFilenames
+    Boolean? arg_text_file
+    Boolean? arg_output_directory
+    Boolean? arg_configuration_file
+    Boolean? arg_execute_command
+    String? filter
+    Boolean? print_progress_messages
+    File? filenames
   }
   command <<<
     msaccess \
-      ~{filenamesFilenames} \
-      ~{true="-f" false="" fF} \
-      ~{true="-o" false="" oO} \
-      ~{true="-c" false="" cC} \
-      ~{true="-x" false="" xX} \
-      ~{if defined(filterFilter) then ("--filter " +  '"' + filterFilter + '"') else ""} \
-      ~{true="-v" false="" vV}
+      ~{filenames} \
+      ~{true="-f" false="" arg_text_file} \
+      ~{true="-o" false="" arg_output_directory} \
+      ~{true="-c" false="" arg_configuration_file} \
+      ~{true="-x" false="" arg_execute_command} \
+      ~{if defined(filter) then ("--filter " +  '"' + filter + '"') else ""} \
+      ~{true="-v" false="" print_progress_messages}
   >>>
+  parameter_meta {
+    arg_text_file: "[ --filelist ] arg    : text file containing filenames to process"
+    arg_output_directory: "[ --outdir ] arg (=.) : output directory"
+    arg_configuration_file: "[ --config ] arg      : configuration file (containing settings as  optionName=value)"
+    arg_execute_command: "[ --exec ] arg        : execute command, e.g --exec \"tic mz=409-412\""
+    filter: ": add a spectrum list filter, e.g. --filter=\"msLevel [2,3]\""
+    print_progress_messages: "[ --verbose ]         : print progress messages"
+    filenames: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MRMMapper.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MRMMapper.cwl
 inputs:
 - id: in
   doc: "*        Input file containing chromatograms (converted mzXML file) (valid\
@@ -37,11 +37,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Algorithm parameters section
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

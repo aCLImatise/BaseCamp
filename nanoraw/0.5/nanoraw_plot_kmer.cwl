@@ -1,20 +1,31 @@
 class: CommandLineTool
-id: nanoraw_plot_kmer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nanoraw_plot_kmer.cwl
 inputs:
-- id: fast5_based_irs
+- id: base_call_subgroups
+  doc: "FAST5 subgroup (under Analyses/[corrected-group]) where individual template\
+    \ and/or complement reads are stored. Default: ['BaseCalled_template']"
+  type: string[]
+  inputBinding:
+    prefix: --basecall-subgroups
+- id: two_d
+  doc: Input contains 2D reads. Equivalent to `--basecall- subgroups BaseCalled_template
+    BaseCalled_complement`
+  type: boolean
+  inputBinding:
+    prefix: --2d
+- id: fast_five_based_irs
   doc: Directories containing fast5 files.
   type: string[]
   inputBinding:
     prefix: --fast5-basedirs
 - id: upstream_bases
-  doc: '{0,1,2,3} Upstream bases in k-mer. Should be one of {0,1,2,3}. Default: 1'
-  type: boolean
+  doc: 'Upstream bases in k-mer. Should be one of {0,1,2,3}. Default: 1'
+  type: string
   inputBinding:
     prefix: --upstream-bases
 - id: downstream_bases
-  doc: '{0,1,2,3} Downstream bases in k-mer. Should be one of {0,1,2,3}. Default:
-    2'
-  type: boolean
+  doc: 'Downstream bases in k-mer. Should be one of {0,1,2,3}. Default: 2'
+  type: string
   inputBinding:
     prefix: --downstream-bases
 - id: read_mean

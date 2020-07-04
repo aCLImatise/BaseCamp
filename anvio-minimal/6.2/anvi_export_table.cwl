@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: anvi_export_table.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_export_table.cwl
 inputs:
-- id: db
-  doc: Anvi'o database to read from.
-  type: string
-  inputBinding:
-    position: 0
 - id: table
   doc: Table name to export.
   type: string
@@ -18,7 +13,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --list
-- id: f
+- id: s__fields
   doc: "(S), --fields FIELD(S) Fields to report. Use --list-tables parameter with\
     \ a table name to see available fields You can list fields using this notation:\
     \ --fields 'field_1, field_2, ... field_N'."
@@ -30,6 +25,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --output-file
+- id: db
+  doc: Anvi'o database to read from.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

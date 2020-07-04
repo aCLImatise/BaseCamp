@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcf_annotate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf_annotate.cwl
 inputs:
 - id: annotations
   doc: 'The tabix indexed file with the annotations: CHR\tFROM[\tTO][\tVALUE]+.'
@@ -15,9 +15,9 @@ inputs:
   inputBinding:
     prefix: --columns
 - id: description
-  doc: <file|string>     Header annotation, e.g. key=INFO,ID=HM2,Number=0,Type=Flag,Description='HapMap2
+  doc: Header annotation, e.g. key=INFO,ID=HM2,Number=0,Type=Flag,Description='HapMap2
     membership'. The descriptions can be read from a file, one annotation per line.
-  type: boolean
+  type: File
   inputBinding:
     prefix: --description
 - id: fill_ac_an
@@ -41,10 +41,9 @@ inputs:
   inputBinding:
     prefix: --fill-type
 - id: filter
-  doc: <file|list>            Apply filters, list is in the format flt1=value/flt2/flt3=value/etc.
-    If argument to -f is a file, user-defined filters be applied. See User Defined
-    Filters below.
-  type: boolean
+  doc: Apply filters, list is in the format flt1=value/flt2/flt3=value/etc. If argument
+    to -f is a file, user-defined filters be applied. See User Defined Filters below.
+  type: File
   inputBinding:
     prefix: --filter
 - id: hard_filter
@@ -62,6 +61,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --remove
+- id: cat
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_dot_vcf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

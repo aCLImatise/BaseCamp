@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: goalign_sw.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_sw.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: gap_extend
   doc: Score for extending a gap  (default -0.5)
   type: double
@@ -96,6 +91,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

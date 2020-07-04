@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: sort_psl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sort_psl.cwl
 inputs:
 - id: validate_contigs_blat
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: re_ffa
+- id: ref_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: contigs_fa
+- id: contigs_dot_fa_dot
   doc: ''
   type: string
   inputBinding:

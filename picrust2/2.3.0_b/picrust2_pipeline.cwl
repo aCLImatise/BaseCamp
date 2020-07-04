@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: picrust2_pipeline.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/picrust2_pipeline.py.cwl
 inputs:
 - id: study_fast_a
   doc: FASTA of unaligned study sequences (i.e. OTUs or ASVs).
@@ -22,7 +22,7 @@ inputs:
   inputBinding:
     prefix: --processes
 - id: ref_dir
-  doc: 'Directory containing reference sequence files (default: /tmp/tmpjqcugf20/lib/python3.6/site-
+  doc: 'Directory containing reference sequence files (default: /tmp/tmpqdk0dqqj/lib/python3.6/site-
     packages/picrust2/default_files/prokaryotic/pro_ref). Please see the online documentation
     for how to name the files in this directory.'
   type: File
@@ -52,7 +52,7 @@ inputs:
     prefix: --marker_gene_table
 - id: pathway_map
   doc: 'MinPath mapfile. The default mapfile maps MetaCyc reactions to prokaryotic
-    pathways (default: /tmp/tmpjqcugf20/lib/python3.6/site-packages/picrust2/ default_files/pathway_mapfiles/metacyc_path2rxn_struc_
+    pathways (default: /tmp/tmpqdk0dqqj/lib/python3.6/site-packages/picrust2/ default_files/pathway_mapfiles/metacyc_path2rxn_struc_
     filt_pro.txt).'
   type: string
   inputBinding:
@@ -75,7 +75,7 @@ inputs:
     prefix: --no_pathways
 - id: regroup_map
   doc: 'Mapfile of ids to regroup gene families to before running MinPath. The default
-    mapfile is for regrouping EC numbers to MetaCyc reactions (default: /tmp/tmpjqcugf20/lib/python3.6/site-packages/picrust2/
+    mapfile is for regrouping EC numbers to MetaCyc reactions (default: /tmp/tmpqdk0dqqj/lib/python3.6/site-packages/picrust2/
     default_files/pathway_mapfiles/ec_level4_to_metacyc_rx n.tsv).'
   type: string
   inputBinding:

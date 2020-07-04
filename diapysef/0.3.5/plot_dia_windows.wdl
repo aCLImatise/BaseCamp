@@ -1,13 +1,17 @@
 version 1.0
 
-task PlotDiaWindows.pyPrecursorMap {
+task PlotDiaWindows.py {
   input {
-    String? windowWindowFile
-    String? precursorPrecursorMap
+    String window_file
+    String precursor_map
   }
   command <<<
-    plot_dia_windows.py precursor_map \
-      ~{windowWindowFile} \
-      ~{precursorPrecursorMap}
+    plot_dia_windows.py \
+      ~{window_file} \
+      ~{precursor_map}
   >>>
+  parameter_meta {
+    window_file: ""
+    precursor_map: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: svjedi.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/svjedi.py.cwl
 inputs:
 - id: vcf
   doc: vcf format
@@ -16,7 +16,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --allele
-- id: i
+- id: _reads
   doc: '[<readfile> [<readfile> ...]], --input [<readfile> [<readfile> ...]] reads'
   type: boolean
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: validate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/validate.cwl
 inputs:
 - id: file_path
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ReadFilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ReadFilter.cwl
 inputs:
 - id: unmapped_only
   doc: '(0 arg) :    Output unmapped reads'

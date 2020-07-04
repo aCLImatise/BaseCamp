@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: tango_format.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tango_format.cwl
 inputs:
-- id: fast_a_file
-  doc: Specify protein fasta to reformat
-  type: string
-  inputBinding:
-    position: 0
-- id: reformatted
-  doc: Path to reformatted fastafile
-  type: string
-  inputBinding:
-    position: 1
 - id: force
   doc: Force overwrite of existing reformatted fastafile
   type: boolean
@@ -40,6 +30,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --tmpdir
+- id: fast_a_file
+  doc: Specify protein fasta to reformat
+  type: string
+  inputBinding:
+    position: 0
+- id: reformatted
+  doc: Path to reformatted fastafile
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

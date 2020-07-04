@@ -2,10 +2,13 @@ version 1.0
 
 task Lordfast {
   input {
-    String indexIndex
+    String? index
   }
   command <<<
     lordfast \
-      ~{if defined(indexIndex) then ("--index " +  '"' + indexIndex + '"') else ""}
+      ~{if defined(index) then ("--index " +  '"' + index + '"') else ""}
   >>>
+  parameter_meta {
+    index: ""
+  }
 }

@@ -1,7 +1,32 @@
 class: CommandLineTool
-id: kmer_mask.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kmer_mask.cwl
 inputs:
-- id: l
+- id: mdb
+  doc: load masking kmers from meryl 'mer-database'
+  type: string
+  inputBinding:
+    prefix: -mdb
+- id: ms
+  doc: mer-size          the mer size used to generate the meryl database
+  type: boolean
+  inputBinding:
+    prefix: -ms
+- id: edb
+  doc: save masking kmers to 'exist-database', and reuse on future runs (optional)
+  type: string
+  inputBinding:
+    prefix: -edb
+- id: input_reads_fastqbz
+  doc: input reads - fastq, fastq.gz, fastq.bz2 or fastq.xz
+  type: string
+  inputBinding:
+    prefix: '-1'
+- id: optional_mated_reads
+  doc: '- optional, for mated reads'
+  type: string
+  inputBinding:
+    prefix: '-2'
+- id: maximum_length_input
   doc: maximum length of input read (512) If too small, program will fail. If too
     large, program will use excessive memory.
   type: long
@@ -33,7 +58,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -nomasking
-- id: o
+- id: prefix_output_reads
   doc: 'prefix                output reads: prefix.clean.[12].fastq  - clean (unmasked)
     reads prefix.murky.[12].fastq  - reads in between prefix.match.[12].fastq  - matching
     (masked) reads prefix.mixed.[12].fastq  - reads with conflicting status (for mated
@@ -41,17 +66,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -o
-- id: h
+- id: write_histogram_retained
   doc: write a histogram of the amount of sequence RETAINED
   type: string
   inputBinding:
     prefix: -h
-- id: t
+- id: use_compute_threads
   doc: use 't' compute threads
   type: string
   inputBinding:
     prefix: -t
-- id: v
+- id: show_progress
   doc: show progress
   type: boolean
   inputBinding:

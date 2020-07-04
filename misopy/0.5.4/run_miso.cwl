@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: run_miso.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_miso.py.cwl
 inputs:
 - id: event_type
   doc: Event type of two-isoform events (e.g. 'SE', 'RI', 'A3SS', ...)

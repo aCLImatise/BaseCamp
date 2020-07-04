@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: shiver_funcs.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/shiver_funcs.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

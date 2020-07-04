@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mgaps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mgaps.cwl
 inputs:
 - id: d
   doc: ''

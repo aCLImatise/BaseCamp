@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ngmlr.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ngmlr.cwl
 inputs:
 - id: skip_write
   doc: Don't write reference index to disk [false]
@@ -72,24 +72,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --rg-ks
-- id: x
-  doc: <pacbio, ont>,  --presets <pacbio, ont> Parameter presets for different sequencing
-    technologies [pacbio]
-  type: boolean
-  inputBinding:
-    prefix: -x
-- id: i
-  doc: <0-1>,  --min-identity <0-1> Alignments with an identity lower than this threshold
-    will be discarded [0.65]
-  type: boolean
-  inputBinding:
-    prefix: -i
-- id: r
-  doc: <int/float>,  --min-residues <int/float> Alignments containing less than <int>
-    or (<float> * read length) residues will be discarded [0.25]
-  type: boolean
-  inputBinding:
-    prefix: -R
 - id: no_small_inv
   doc: Don't detect small inversions [false]
   type: boolean
@@ -110,41 +92,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-progress
-- id: match
-  doc: Match score [2]
-  type: double
-  inputBinding:
-    prefix: --match
-- id: mismatch
-  doc: Mismatch score [-5]
-  type: double
-  inputBinding:
-    prefix: --mismatch
-- id: gap_open
-  doc: Gap open score [-5]
-  type: double
-  inputBinding:
-    prefix: --gap-open
-- id: gap_extend_max
-  doc: Gap open extend max [-5]
-  type: double
-  inputBinding:
-    prefix: --gap-extend-max
-- id: gap_extend_min
-  doc: Gap open extend min [-1]
-  type: double
-  inputBinding:
-    prefix: --gap-extend-min
-- id: gap_decay
-  doc: Gap extend decay [0.15]
-  type: double
-  inputBinding:
-    prefix: --gap-decay
-- id: k
-  doc: <10-15>,  --kmer-length <10-15> K-mer length in bases [13]
-  type: boolean
-  inputBinding:
-    prefix: -k
 - id: km_er_skip
   doc: Number of k-mers to skip when building the lookup table from the reference
     [2]
@@ -171,6 +118,21 @@ inputs:
   type: long
   inputBinding:
     prefix: --subread-corridor
+- id: r
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -r
+- id: q
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -q
+- id: o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,24 +2,34 @@ version 1.0
 
 task FunannotateMask {
   input {
-    Boolean inputInput
-    Boolean outOut
-    Boolean methodMethod
-    Boolean repeatmaskerRepeatmaskerSpecies
-    Boolean repeatRepeatModelerLib
-    Boolean cpusCpus
-    Boolean debugDebug
-    String? argumentsArguments
+    Boolean? multifasta_genome_file
+    Boolean? out
+    Boolean? method
+    Boolean? repeatmasker_species
+    Boolean? repeat_modeler_lib
+    Boolean? cpus
+    Boolean? debug
+    String arguments
   }
   command <<<
     funannotate mask \
-      ~{argumentsArguments} \
-      ~{true="--input" false="" inputInput} \
-      ~{true="--out" false="" outOut} \
-      ~{true="--method" false="" methodMethod} \
-      ~{true="--repeatmasker_species" false="" repeatmaskerRepeatmaskerSpecies} \
-      ~{true="--repeatmodeler_lib" false="" repeatRepeatModelerLib} \
-      ~{true="--cpus" false="" cpusCpus} \
-      ~{true="--debug" false="" debugDebug}
+      ~{arguments} \
+      ~{true="--input" false="" multifasta_genome_file} \
+      ~{true="--out" false="" out} \
+      ~{true="--method" false="" method} \
+      ~{true="--repeatmasker_species" false="" repeatmasker_species} \
+      ~{true="--repeatmodeler_lib" false="" repeat_modeler_lib} \
+      ~{true="--cpus" false="" cpus} \
+      ~{true="--debug" false="" debug}
   >>>
+  parameter_meta {
+    multifasta_genome_file: "Multi-FASTA genome file. (Required)"
+    out: "Output softmasked FASTA file. (Required)"
+    method: "Method to use. Default: tantan [repeatmasker, repeatmodeler]"
+    repeatmasker_species: "Species to use for RepeatMasker"
+    repeat_modeler_lib: "Custom repeat database (FASTA format)"
+    cpus: "Number of cpus to use. Default: 2"
+    debug: "Keep intermediate files"
+    arguments: ""
+  }
 }

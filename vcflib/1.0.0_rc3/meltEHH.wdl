@@ -2,12 +2,16 @@ version 1.0
 
 task MeltEHH {
   input {
-    String regionRegion
-    String yourYour
+    String? region
+    String? target
   }
   command <<<
     meltEHH \
-      ~{if defined(regionRegion) then ("--region " +  '"' + regionRegion + '"') else ""} \
-      ~{if defined(yourYour) then ("-     Your " +  '"' + yourYour + '"') else ""}
+      ~{if defined(region) then ("--region " +  '"' + region + '"') else ""} \
+      ~{if defined(target) then ("--target " +  '"' + target + '"') else ""}
   >>>
+  parameter_meta {
+    region: ":1-1000 > STDOUT 2> STDERR          "
+    target: ""
+  }
 }

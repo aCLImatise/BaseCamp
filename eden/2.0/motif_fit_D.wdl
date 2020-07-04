@@ -2,12 +2,25 @@ version 1.0
 
 task MotifFitD {
   input {
-    String epsEps
-    Int minMinSamples
+    String? i
+    String? t
+    String? d
+    String motif
+    String fit
   }
   command <<<
     motif fit D \
-      ~{if defined(epsEps) then ("--eps " +  '"' + epsEps + '"') else ""} \
-      ~{if defined(minMinSamples) then ("--min-samples " +  '"' + minMinSamples + '"') else ""}
+      ~{motif} \
+      ~{fit} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""}
   >>>
+  parameter_meta {
+    i: ""
+    t: ""
+    d: ""
+    motif: ""
+    fit: ""
+  }
 }

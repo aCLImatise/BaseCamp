@@ -2,20 +2,28 @@ version 1.0
 
 task PpaniniPress {
   input {
-    String geneGenePath
-    String outputOutput
-    Boolean resumeResume
-    String threadsThreads
-    String scaleScale
-    String memoryMemory
+    String? gene_path
+    String? path_for_outputs
+    Boolean? resume
+    String? threads
+    String? scale
+    String? memory
   }
   command <<<
     ppanini_press \
-      ~{if defined(geneGenePath) then ("--gene-path " +  '"' + geneGenePath + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{true="--resume" false="" resumeResume} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(scaleScale) then ("--scale " +  '"' + scaleScale + '"') else ""} \
-      ~{if defined(memoryMemory) then ("--memory " +  '"' + memoryMemory + '"') else ""}
+      ~{if defined(gene_path) then ("--gene-path " +  '"' + gene_path + '"') else ""} \
+      ~{if defined(path_for_outputs) then ("--output " +  '"' + path_for_outputs + '"') else ""} \
+      ~{true="--resume" false="" resume} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(scale) then ("--scale " +  '"' + scale + '"') else ""} \
+      ~{if defined(memory) then ("--memory " +  '"' + memory + '"') else ""}
   >>>
+  parameter_meta {
+    gene_path: "a directory path to ppanini_gene_caller outputs which includes txt, gff, and faa files for each sample."
+    path_for_outputs: "Path for outputs"
+    resume: "bypass commands if the output files exist"
+    threads: "number of threads/processes [DEFAULT: 1]"
+    scale: "scale the abundance table"
+    memory: "memory for -M option in CD-Hit "
+  }
 }

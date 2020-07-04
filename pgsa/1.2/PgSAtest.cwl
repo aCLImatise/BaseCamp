@@ -1,31 +1,6 @@
 class: CommandLineTool
-id: PgSAtest.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PgSAtest.cwl
 inputs:
-- id: of
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: repeats
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: of
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: test_km_ers
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: index_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
 - id: k
   doc: ''
   type: long
@@ -61,6 +36,31 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -f
+- id: var_7
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: repeats
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: var_9
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: test_km_ers
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: index_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

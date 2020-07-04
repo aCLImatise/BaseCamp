@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: references_annotator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/references_annotator.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

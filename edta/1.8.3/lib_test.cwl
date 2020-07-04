@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: lib_test.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lib_test.pl.cwl
 inputs:
 - id: genome
   doc: '[file]  FASTA format genome sequence'
@@ -21,7 +21,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -cat
-- id: n
+- id: include_ns_total
   doc: '[0|1]   Include Ns in total length of the genome. Defaule: 0 (not include
     Ns).'
   type: boolean

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gmtkNGramIndex.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gmtkNGramIndex.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

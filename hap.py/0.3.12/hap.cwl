@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hap.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hap.py.cwl
 inputs:
 - id: reference
   doc: Specify a reference file.
@@ -324,6 +324,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: haplotype
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: comparison
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

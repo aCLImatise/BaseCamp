@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: drttest.cwl
+id: ../../../../home/ubuntu/BiocondaCli/drttest.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

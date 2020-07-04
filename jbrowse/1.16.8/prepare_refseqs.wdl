@@ -2,10 +2,13 @@ version 1.0
 
 task PrepareRefseqs.pl {
   input {
-    Boolean trackTrackConfig
+    Boolean? track_config
   }
   command <<<
     prepare-refseqs.pl \
-      ~{true="--trackConfig" false="" trackTrackConfig}
+      ~{true="--trackConfig" false="" track_config}
   >>>
+  parameter_meta {
+    track_config: "'{ \"glyph\": \"ProcessedTranscript\" }'"
+  }
 }

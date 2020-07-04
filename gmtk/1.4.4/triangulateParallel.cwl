@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: triangulateParallel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/triangulateParallel.cwl
 inputs:
 - id: strfile
   doc: Structure file name

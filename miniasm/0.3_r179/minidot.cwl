@@ -1,46 +1,46 @@
 class: CommandLineTool
-id: minidot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/minidot.cwl
 inputs:
-- id: in_paf
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: m
+- id: min_match_length
   doc: min match length [100]
   type: long
   inputBinding:
     prefix: -m
-- id: i
+- id: min_identity
   doc: min identity [0.10]
   type: double
   inputBinding:
     prefix: -i
-- id: s
+- id: min_span
   doc: min span [1000]
   type: long
   inputBinding:
     prefix: -s
-- id: w
+- id: image_width
   doc: image width [600]
   type: long
   inputBinding:
     prefix: -w
-- id: f
+- id: font_size
   doc: font size [11]
   type: long
   inputBinding:
     prefix: -f
-- id: l
+- id: do_print_labels
   doc: don't print labels
   type: boolean
   inputBinding:
     prefix: -L
-- id: d
+- id: try_put_hits
   doc: don't try to put hits onto the diagonal
   type: boolean
   inputBinding:
     prefix: -D
+- id: in_dot_paf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

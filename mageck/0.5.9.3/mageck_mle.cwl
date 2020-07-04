@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mageck_mle.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mageck_mle.cwl
 inputs:
 - id: count_table
   doc: Provide a tab-separated count table. Each line in the table should include
@@ -15,7 +15,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --design-matrix
-- id: day0_label
+- id: day_zero_label
   doc: Specify the label for control sample (usually day 0 or plasmid). For every
     other sample label, the MLE module will treat it as a single condition and generate
     an corresponding design matrix.

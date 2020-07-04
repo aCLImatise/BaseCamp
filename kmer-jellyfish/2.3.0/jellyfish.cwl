@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: jellyfish.cwl
+id: ../../../../home/ubuntu/BiocondaCli/jellyfish.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

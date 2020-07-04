@@ -1,17 +1,6 @@
 class: CommandLineTool
-id: bnMapper.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bnMapper.py.cwl
 inputs:
-- id: input
-  doc: Input to process. If more than a file is specified, all files will be mapped
-    and placed on --output, which should be a directory.
-  type: string
-  inputBinding:
-    position: 0
-- id: alignment
-  doc: Alignment file (.chain or .pkl)
-  type: string
-  inputBinding:
-    position: 1
 - id: format
   doc: 'Output format. BED4 output reports all aligned blocks as separate BED records.
     BED12 reports a single BED record for each mapped element, with individual blocks
@@ -61,6 +50,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --in_format
+- id: input
+  doc: Input to process. If more than a file is specified, all files will be mapped
+    and placed on --output, which should be a directory.
+  type: string
+  inputBinding:
+    position: 0
+- id: alignment
+  doc: Alignment file (.chain or .pkl)
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: queryTaxonomyDatabase.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/queryTaxonomyDatabase.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

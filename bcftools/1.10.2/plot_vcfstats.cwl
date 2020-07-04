@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: plot_vcfstats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/plot_vcfstats.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: merge
   doc: Merge vcfstats files to STDOUT, skip plotting.
   type: boolean

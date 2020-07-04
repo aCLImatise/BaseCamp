@@ -2,12 +2,16 @@ version 1.0
 
 task Metaxa2Dc {
   input {
-    String oO
-    String? inputInputFiles
+    String? o
+    String input_files
   }
   command <<<
     metaxa2_dc \
-      ~{inputInputFiles} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""}
+      ~{input_files} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    o: ""
+    input_files: ""
+  }
 }

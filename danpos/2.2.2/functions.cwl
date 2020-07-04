@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: functions.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/functions.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

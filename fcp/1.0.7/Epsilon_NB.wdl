@@ -2,18 +2,19 @@ version 1.0
 
 task EpsilonNB.py {
   input {
-    String? pythonPython
-    String? epsilonEpsilonNbpY
-    String? nbNbResults
-    String? epsilonEpsilon
-    String? resultsResultsFile
+    String nb_results
+    String epsilon
+    String results_file
   }
   command <<<
     Epsilon-NB.py \
-      ~{pythonPython} \
-      ~{epsilonEpsilonNbpY} \
-      ~{nbNbResults} \
-      ~{epsilonEpsilon} \
-      ~{resultsResultsFile}
+      ~{nb_results} \
+      ~{epsilon} \
+      ~{results_file}
   >>>
+  parameter_meta {
+    nb_results: ""
+    epsilon: ""
+    results_file: ""
+  }
 }

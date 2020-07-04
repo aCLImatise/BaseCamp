@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: lrzip.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lrzip.cwl
 inputs:
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: check
   doc: check integrity of file written on decompression
   type: boolean
@@ -41,7 +36,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --test
-- id: v
+- id: _verbose_increase
   doc: '[v], --verbose        Increase verbosity'
   type: boolean
   inputBinding:
@@ -76,7 +71,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --suffix
-- id: bzip2
+- id: bzip_two
   doc: bzip2 compression
   type: boolean
   inputBinding:
@@ -138,6 +133,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --window
+- id: file_dot_dot_dot
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

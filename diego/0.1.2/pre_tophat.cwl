@@ -1,27 +1,22 @@
 class: CommandLineTool
-id: pre_tophat.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pre_tophat.pl.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: l
+- id: file_containing_files
   doc: file containing input files and ids id [tab] path.to/file
   type: File
   inputBinding:
     prefix: -l
-- id: a
+- id: diegoformated_annotation_file
   doc: 'DIEGO-formated annotation file '
   type: File
   inputBinding:
     prefix: -a
-- id: o
+- id: output_file_name
   doc: output file name (default:junction_tophat_DIEGO )
   type: File
   inputBinding:
     prefix: -o
-- id: h
+- id: usefull_help_message
   doc: this (usefull) help message
   type: File
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: raw_vcf_parse.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/raw_vcf_parse.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

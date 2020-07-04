@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ShortestPathTN93.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ShortestPathTN93.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

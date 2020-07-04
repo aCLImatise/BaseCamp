@@ -2,32 +2,52 @@ version 1.0
 
 task BcftoolsPlugin {
   input {
-    String excludeExclude
-    String includeInclude
-    String regionsRegions
-    File regionsRegionsFile
-    String targetsTargets
-    File targetsTargetsFile
-    Boolean noNoVersion
-    File outputOutput
-    String outputOutputType
-    Int threadsThreads
-    Boolean listListPlugins
-    Boolean verboseVerbose
+    String? exclude
+    String? include
+    String? regions
+    File? regions_file
+    String? targets
+    File? targets_file
+    Boolean? no_version
+    File? write_output_file
+    String? output_type
+    Int? threads
+    Boolean? list_plugins
+    Boolean? verbose
+    String name
+    File file
   }
   command <<<
     bcftools plugin \
-      ~{if defined(excludeExclude) then ("--exclude " +  '"' + excludeExclude + '"') else ""} \
-      ~{if defined(includeInclude) then ("--include " +  '"' + includeInclude + '"') else ""} \
-      ~{if defined(regionsRegions) then ("--regions " +  '"' + regionsRegions + '"') else ""} \
-      ~{if defined(regionsRegionsFile) then ("--regions-file " +  '"' + regionsRegionsFile + '"') else ""} \
-      ~{if defined(targetsTargets) then ("--targets " +  '"' + targetsTargets + '"') else ""} \
-      ~{if defined(targetsTargetsFile) then ("--targets-file " +  '"' + targetsTargetsFile + '"') else ""} \
-      ~{true="--no-version" false="" noNoVersion} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{if defined(outputOutputType) then ("--output-type " +  '"' + outputOutputType + '"') else ""} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{true="--list-plugins" false="" listListPlugins} \
-      ~{true="--verbose" false="" verboseVerbose}
+      ~{name} \
+      ~{file} \
+      ~{if defined(exclude) then ("--exclude " +  '"' + exclude + '"') else ""} \
+      ~{if defined(include) then ("--include " +  '"' + include + '"') else ""} \
+      ~{if defined(regions) then ("--regions " +  '"' + regions + '"') else ""} \
+      ~{if defined(regions_file) then ("--regions-file " +  '"' + regions_file + '"') else ""} \
+      ~{if defined(targets) then ("--targets " +  '"' + targets + '"') else ""} \
+      ~{if defined(targets_file) then ("--targets-file " +  '"' + targets_file + '"') else ""} \
+      ~{true="--no-version" false="" no_version} \
+      ~{if defined(write_output_file) then ("--output " +  '"' + write_output_file + '"') else ""} \
+      ~{if defined(output_type) then ("--output-type " +  '"' + output_type + '"') else ""} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
+      ~{true="--list-plugins" false="" list_plugins} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    exclude: "exclude sites for which the expression is true"
+    include: "select sites for which the expression is true"
+    regions: "restrict to comma-separated list of regions"
+    regions_file: "restrict to regions listed in a file"
+    targets: "similar to -r but streams rather than index-jumps"
+    targets_file: "similar to -R but streams rather than index-jumps"
+    no_version: "do not append version and command line to the header"
+    write_output_file: "write output to a file [standard output]"
+    output_type: "'b' compressed BCF; 'u' uncompressed BCF; 'z' compressed VCF; 'v' uncompressed VCF [v]"
+    threads: "use multithreading with <int> worker threads [0]"
+    list_plugins: "list available plugins. See BCFTOOLS_PLUGINS environment variable and man page for details"
+    verbose: "print verbose information, -vv increases verbosity"
+    name: ""
+    file: ""
+  }
 }

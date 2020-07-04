@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: akt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/akt.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

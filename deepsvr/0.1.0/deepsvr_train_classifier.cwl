@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: deepsvr_train_classifier.cwl
+id: ../../../../home/ubuntu/BiocondaCli/deepsvr_train_classifier.cwl
 inputs:
 - id: training_file_path
   doc: Specify the pickle file produced by the 'prepare_data' command to be used to

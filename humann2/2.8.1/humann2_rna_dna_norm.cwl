@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: humann2_rna_dna_norm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/humann2_rna_dna_norm.cwl
 inputs:
 - id: input_dna
   doc: Original DNA output table (tsv or biom format)

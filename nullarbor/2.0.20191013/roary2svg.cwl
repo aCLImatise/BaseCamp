@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: roary2svg.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/roary2svg.pl.cwl
 inputs:
 - id: verbose
   doc: "!      Verbose output (default '0')."

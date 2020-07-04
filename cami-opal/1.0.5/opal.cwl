@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: opal.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/opal.py.cwl
 inputs:
-- id: profiles_files
-  doc: Files of profiles
-  type: string
-  inputBinding:
-    position: 0
 - id: gold_standard_file
   doc: Gold standard file
   type: string
@@ -58,6 +53,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --silent
+- id: profiles_files
+  doc: Files of profiles
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: stat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stat.cwl
 inputs:
 - id: dereference
   doc: follow links
@@ -28,6 +28,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --terse
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

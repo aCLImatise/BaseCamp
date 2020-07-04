@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ldhelmet.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ldhelmet.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: mapping.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mapping.cwl
 inputs:
-- id: b
+- id: number_take_default
   doc: 'number of bases to take an alignment (default 20) '
   type: long
   inputBinding:
     prefix: -b
-- id: fm9
+- id: fm_nine
   doc: 'fm9 file  '
   type: string
   inputBinding:
@@ -16,7 +16,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -fastq
-- id: list_2_exclude
+- id: list_two_exclude
   doc: with sequeces to exclude of the Aligment
   type: File
   inputBinding:
@@ -31,7 +31,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -nt
-- id: offset_fm9
+- id: offset_fm_nine
   doc: 'use several FM9 indexes (default 0) '
   type: string
   inputBinding:
@@ -56,7 +56,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -totalReads
-- id: w
+- id: offset_start_default
   doc: 'offset to start the alignemnt (default 0) '
   type: string
   inputBinding:

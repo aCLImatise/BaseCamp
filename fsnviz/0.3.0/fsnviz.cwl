@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fsnviz.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fsnviz.cwl
 inputs:
 - id: out_dir
   doc: 'Output directory. Default: current run directory.'

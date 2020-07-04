@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: screen_list2.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/screen_list2.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

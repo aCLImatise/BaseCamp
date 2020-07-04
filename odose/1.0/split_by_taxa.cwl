@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: split_by_taxa.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/split_by_taxa.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

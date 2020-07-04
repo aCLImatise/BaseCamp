@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_ucsc.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_ucsc.py.cwl
 inputs:
 - id: organism
   doc: The name of the organism for which the chromosomes are downloaded, e.g. homo_sapiens,

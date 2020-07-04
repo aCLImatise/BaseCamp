@@ -1,11 +1,21 @@
 class: CommandLineTool
-id: unicycler_polish.cwl
+id: ../../../../home/ubuntu/BiocondaCli/unicycler_polish.cwl
 inputs:
 - id: assembly
   doc: Input assembly to be polished
   type: string
   inputBinding:
     prefix: --assembly
+- id: short_one
+  doc: FASTQ file of short reads (first reads in each pair)
+  type: string
+  inputBinding:
+    prefix: --short1
+- id: short_two
+  doc: FASTQ file of short reads (second reads in each pair)
+  type: string
+  inputBinding:
+    prefix: --short2
 - id: pb_bax
   doc: PacBio raw bax.h5 read files
   type: string[]
@@ -87,12 +97,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --samtools
-- id: bowtie2
+- id: bowtie_two
   doc: 'path to bowtie2 executable (default: bowtie2)'
   type: string
   inputBinding:
     prefix: --bowtie2
-- id: minimap2
+- id: minimap_two
   doc: 'path to minimap2 executable (default: minimap2)'
   type: long
   inputBinding:
@@ -108,7 +118,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --pitchfork
-- id: bax2bam
+- id: bax_two_bam
   doc: 'path to bax2bam executable (default: bax2bam)'
   type: string
   inputBinding:

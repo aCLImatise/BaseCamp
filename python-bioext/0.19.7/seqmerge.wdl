@@ -2,14 +2,13 @@ version 1.0
 
 task Seqmerge {
   input {
-    String sS
-    String? inputInput
-    String? outputOutput
+    String? separator
   }
   command <<<
     seqmerge \
-      ~{inputInput} \
-      ~{if defined(sS) then ("-s " +  '"' + sS + '"') else ""} \
-      ~{outputOutput}
+      ~{if defined(separator) then ("--separator " +  '"' + separator + '"') else ""}
   >>>
+  parameter_meta {
+    separator: "sequence count will be appended as '(SEP)COUNT'"
+  }
 }

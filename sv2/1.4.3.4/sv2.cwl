@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sv2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sv2.cwl
 inputs:
 - id: bam
   doc: '...     bam file(s)'
@@ -36,7 +36,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -pcrfree
-- id: m
+- id: bwa_mem_m
   doc: bwa mem -M compatibility, split-reads flagged as secondary instead of supplementary
   type: boolean
   inputBinding:
@@ -81,17 +81,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -download
-- id: hg19
+- id: h_gone_nine
   doc: hg19 fasta file
   type: boolean
   inputBinding:
     prefix: -hg19
-- id: hg38
+- id: hg_three_eight
   doc: hg38 fasta file
   type: boolean
   inputBinding:
     prefix: -hg38
-- id: mm10
+- id: mm_one_zero
   doc: mm10 fasta file
   type: boolean
   inputBinding:

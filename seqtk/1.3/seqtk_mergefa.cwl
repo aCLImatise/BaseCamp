@@ -1,36 +1,36 @@
 class: CommandLineTool
-id: seqtk_mergefa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqtk_mergefa.cwl
 inputs:
-- id: in1fa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: in2fa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: q
+- id: quality_threshold
   doc: quality threshold [0]
   type: long
   inputBinding:
     prefix: -q
-- id: i
+- id: take_intersection
   doc: take intersection
   type: boolean
   inputBinding:
     prefix: -i
-- id: m
+- id: convert_lowercase_when
   doc: convert to lowercase when one of the input base is N
   type: boolean
   inputBinding:
     prefix: -m
-- id: r
+- id: pick_random_allele
   doc: pick a random allele from het
   type: boolean
   inputBinding:
     prefix: -r
+- id: in_one_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_two_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

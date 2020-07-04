@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bt_srch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bt_srch.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

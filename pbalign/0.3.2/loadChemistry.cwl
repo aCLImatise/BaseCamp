@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: loadChemistry.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/loadChemistry.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

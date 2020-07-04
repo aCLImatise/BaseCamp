@@ -1,170 +1,214 @@
 class: CommandLineTool
-id: illumina_cleanup.cwl
+id: ../../../../home/ubuntu/BiocondaCli/illumina_cleanup.cwl
 inputs:
-- id: '8'
+- id: exports_system_environment
+  doc: 'Exports all current system environment Default: false'
+  type: boolean
+  inputBinding:
+    prefix: -E
+- id: ansi_log
+  doc: Enable/disable ANSI console logging
+  type: boolean
+  inputBinding:
+    prefix: -ansi-log
+- id: bucket_dir
+  doc: Remote bucket where intermediate result files are stored
+  type: boolean
+  inputBinding:
+    prefix: -bucket-dir
+- id: cache
+  doc: Enable/disable processes caching
+  type: boolean
+  inputBinding:
+    prefix: -cache
+- id: dump_channels
+  doc: Dump channels for debugging purpose
+  type: boolean
+  inputBinding:
+    prefix: -dump-channels
+- id: dump_hashes
+  doc: 'Dump task hash keys for debugging purpose Default: false'
+  type: boolean
+  inputBinding:
+    prefix: -dump-hashes
+- id: e_dot
+  doc: 'Add the specified variable to execution environment Syntax: -e.key=value Default:
+    {}'
+  type: boolean
+  inputBinding:
+    prefix: -e.
+- id: entry
+  doc: Entry workflow name to be executed
+  type: boolean
+  inputBinding:
+    prefix: -entry
+- id: hub
+  doc: Service hub where the project is hosted
+  type: boolean
+  inputBinding:
+    prefix: -hub
+- id: latest
+  doc: 'Pull latest changes before run Default: false'
+  type: boolean
+  inputBinding:
+    prefix: -latest
+- id: lib
+  doc: Library extension path
+  type: boolean
+  inputBinding:
+    prefix: -lib
+- id: assign_mnemonic_name
+  doc: Assign a mnemonic name to the a pipeline run
+  type: boolean
+  inputBinding:
+    prefix: -name
+- id: offline
+  doc: 'Do not check for remote project updates Default: false'
+  type: boolean
+  inputBinding:
+    prefix: -offline
+- id: params_file
+  doc: Load script parameters from a JSON/YAML file
+  type: boolean
+  inputBinding:
+    prefix: -params-file
+- id: process_dot
+  doc: 'Set process options Syntax: -process.key=value Default: {}'
+  type: boolean
+  inputBinding:
+    prefix: -process.
+- id: profile
+  doc: Choose a configuration profile
+  type: boolean
+  inputBinding:
+    prefix: -profile
+- id: queue_size
+  doc: Max number of processes that can be executed in parallel by each executor
+  type: boolean
+  inputBinding:
+    prefix: -queue-size
+- id: resume
+  doc: Execute the script using the cached results, useful to continue executions
+    that was stopped by an error
+  type: boolean
+  inputBinding:
+    prefix: -resume
+- id: revision
+  doc: Revision of the project to run (either a git branch, tag or commit SHA number)
+  type: boolean
+  inputBinding:
+    prefix: -revision
+- id: test
+  doc: Test a script function with the name specified
+  type: boolean
+  inputBinding:
+    prefix: -test
+- id: user
+  doc: Private repository user name
+  type: boolean
+  inputBinding:
+    prefix: -user
+- id: with_cond_a
+  doc: Use the specified Conda environment package or file (must end with .yml|.yaml
+    suffix)
+  type: boolean
+  inputBinding:
+    prefix: -with-conda
+- id: with_dag
+  doc: Create pipeline DAG file
+  type: boolean
+  inputBinding:
+    prefix: -with-dag
+- id: with_docker
+  doc: Enable process execution in a Docker container
+  type: boolean
+  inputBinding:
+    prefix: -with-docker
+- id: with_notification
+  doc: Send a notification email on workflow completion to the specified recipients
+  type: boolean
+  inputBinding:
+    prefix: -with-notification
+- id: with_pod_man
+  doc: Enable process execution in a Podman container
+  type: boolean
+  inputBinding:
+    prefix: -with-podman
+- id: with_report
+  doc: Create processes execution html report
+  type: boolean
+  inputBinding:
+    prefix: -with-report
+- id: with_singularity
+  doc: Enable process execution in a Singularity container
+  type: boolean
+  inputBinding:
+    prefix: -with-singularity
+- id: with_timeline
+  doc: Create processes execution timeline file
+  type: boolean
+  inputBinding:
+    prefix: -with-timeline
+- id: with_tower
+  doc: Monitor workflow execution with Seqera Tower service
+  type: boolean
+  inputBinding:
+    prefix: -with-tower
+- id: with_trace
+  doc: Create processes execution tracing file
+  type: boolean
+  inputBinding:
+    prefix: -with-trace
+- id: with_weblog
+  doc: Send workflow status messages via HTTP to target URL
+  type: boolean
+  inputBinding:
+    prefix: -with-weblog
+- id: without_docker
+  doc: 'Disable process execution with Docker Default: false'
+  type: boolean
+  inputBinding:
+    prefix: -without-docker
+- id: without_pod_man
+  doc: Disable process execution in a Podman container
+  type: boolean
+  inputBinding:
+    prefix: -without-podman
+- id: work_dir
+  doc: Directory where intermediate result files are stored
+  type: boolean
+  inputBinding:
+    prefix: -work-dir
+- id: run
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: fast_qs
-  doc: An input file containing the sample name and absolute paths to FASTQs to process.
+- id: project
+  doc: ''
   type: string
   inputBinding:
-    prefix: --fastqs
-- id: coverage
-  doc: 'Reduce samples to a given coverage. (Default: 100)'
-  type: long
-  inputBinding:
-    prefix: --coverage
-- id: genome_size
-  doc: 'Expected genome size (bp) for all samples. (Default: 0).'
-  type: long
-  inputBinding:
-    prefix: --genome_size
-- id: outdir
-  doc: Directory to write results to. (Default ./)
+    position: 1
+- id: var_37
+  doc: ''
   type: string
   inputBinding:
-    prefix: --outdir
-- id: max_cpus
-  doc: 'The maximum number of processors this workflow should have access to at any
-    given moment. (Default: 1)'
-  type: long
-  inputBinding:
-    prefix: --max_cpus
-- id: cpus
-  doc: 'Number of processors made available to a single process. If greater than "--max_cpus"
-    it will be set equal to "--max_cpus" (Default: 1)'
-  type: long
-  inputBinding:
-    prefix: --cpus
-- id: example_fast_qs
-  doc: Print an example of expected input for FASTQs file.
-  type: boolean
-  inputBinding:
-    prefix: --example_fastqs
-- id: check_fast_qs
-  doc: Verify "--fastqs" produces the expected inputs.
-  type: boolean
-  inputBinding:
-    prefix: --check_fastqs
-- id: keep_cache
-  doc: Keeps 'work' and '.nextflow' logs, default is to delete on successful completion.
-  type: boolean
-  inputBinding:
-    prefix: --keep_cache
-- id: adapters
-  doc: 'Illumina adapters to remove (Default: BBmap adapters)'
+    position: 2
+- id: or
+  doc: ''
   type: string
   inputBinding:
-    prefix: --adapters
-- id: adapter_k
-  doc: 'Kmer length used for finding adapters. Adapters shorter than k will not be
-    found. (Default: 23)'
-  type: long
-  inputBinding:
-    prefix: --adapter_k
-- id: phi_x
-  doc: 'phiX174 reference genome to remove (Default: NC_001422)'
+    position: 3
+- id: repository
+  doc: ''
   type: string
   inputBinding:
-    prefix: --phix
-- id: phi_x_k
-  doc: 'Kmer length used for finding phiX174. Contaminants shorter than k will not
-    be found. (Default: 31)'
-  type: long
-  inputBinding:
-    prefix: --phix_k
-- id: k_trim
-  doc: 'Trim reads to remove bases matching reference kmers. Values: f (do not trim)
-    r (trim to the right, Default) l (trim to the left)'
+    position: 4
+- id: url
+  doc: ''
   type: string
   inputBinding:
-    prefix: --ktrim
-- id: mink
-  doc: 'Look for shorter kmers at read tips down to this length, when k-trimming or
-    masking. 0 means disabled. Enabling this will disable maskmiddle. (Default: 11)'
-  type: long
-  inputBinding:
-    prefix: --mink
-- id: h_dist
-  doc: 'Maximum Hamming distance for ref kmers (subs only). Memory use is proportional
-    to (3*K)^hdist. (Default: 1)'
-  type: long
-  inputBinding:
-    prefix: --hdist
-- id: tpe
-  doc: 'When kmer right-trimming, trim both reads to the minimum length of either.
-    Values: f (do not equally trim) t (equally trim to the right, Default)'
-  type: boolean
-  inputBinding:
-    prefix: --tpe
-- id: tbo
-  doc: 'Trim adapters based on where paired reads overlap. Values: f (do not trim
-    by overlap) t (trim by overlap, Default)'
-  type: boolean
-  inputBinding:
-    prefix: --tbo
-- id: q_trim
-  doc: 'Trim read ends to remove bases with quality below trimq. Performed AFTER looking
-    for kmers. Values: rl (trim both ends, Default) f (neither end) r (right end only)
-    l (left end only) w (sliding window)'
-  type: string
-  inputBinding:
-    prefix: --qtrim
-- id: trim_q
-  doc: 'Regions with average quality BELOW this will be trimmed if qtrim is set to
-    something other than f. (Default: 6)'
-  type: double
-  inputBinding:
-    prefix: --trimq
-- id: maq
-  doc: 'Reads with average quality (after trimming) below this will be discarded.
-    (Default: 20)'
-  type: long
-  inputBinding:
-    prefix: --maq
-- id: minlength
-  doc: 'Reads shorter than this after trimming will be discarded. Pairs will be discarded
-    if both are shorter. (Default: 35)'
-  type: long
-  inputBinding:
-    prefix: --minlength
-- id: ftm
-  doc: 'If positive, right-trim length to be equal to zero, modulo this number. (Default:
-    0)'
-  type: long
-  inputBinding:
-    prefix: --ftm
-- id: toss_junk
-  doc: 'Discard reads with invalid characters as bases. Values: f (keep all reads)
-    t (toss reads with ambiguous bases, Default)'
-  type: boolean
-  inputBinding:
-    prefix: --tossjunk
-- id: q_out
-  doc: 'Output quality offset. Values: 33 (PHRED33 offset quality scores, Default)
-    64 (PHRED64 offset quality scores) auto (keeps the current input offset)'
-  type: string
-  inputBinding:
-    prefix: --qout
-- id: x_mx
-  doc: 'This will be passed to Java to set memory usage. Examples: 8g will specify
-    8 gigs of RAM (Default) 20g will specify 20 gigs of RAM 200m will specify 200
-    megs of RAM'
-  type: string
-  inputBinding:
-    prefix: --xmx
-- id: max_cor
-  doc: 'Max number of corrections within a 20bp window (Default: 1)'
-  type: long
-  inputBinding:
-    prefix: --maxcor
-- id: sample_seed
-  doc: Set to a positive number to use that prng seed for sampling (Default 42).
-  type: long
-  inputBinding:
-    prefix: --sampleseed
+    position: 5
 outputs: []
 cwlVersion: v1.1
 baseCommand:

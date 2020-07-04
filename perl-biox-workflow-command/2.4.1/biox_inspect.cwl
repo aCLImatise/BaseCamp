@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: biox_inspect.cwl
+id: ../../../../home/ubuntu/BiocondaCli/biox_inspect.cwl
 inputs:
-- id: help
-  doc: Prints this usage information
-  type: string
-  inputBinding:
-    position: 0
 - id: json
   doc: '[Flag]'
   type: boolean
@@ -16,6 +11,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --show_only_errors
+- id: help
+  doc: Prints this usage information
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

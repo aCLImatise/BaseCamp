@@ -2,10 +2,13 @@ version 1.0
 
 task Bam2fnaINPUT {
   input {
-    String? outputOutput
+    String var_output
   }
   command <<<
     bam2fna INPUT \
-      ~{outputOutput}
+      ~{var_output}
   >>>
+  parameter_meta {
+    var_output: ""
+  }
 }

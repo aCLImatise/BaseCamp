@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: pslPosTarget.cwl
-inputs: []
+id: ../../../../home/ubuntu/BiocondaCli/pslPosTarget.cwl
+inputs:
+- id: in_psl
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: out_psl
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

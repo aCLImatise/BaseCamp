@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RTPredict.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RTPredict.cwl
 inputs:
 - id: in_id
   doc: "Peptides with precursor information (valid formats: 'idXML')"
@@ -35,26 +35,6 @@ inputs:
   type: string
   inputBinding:
     prefix: -total_gradient_time
-- id: out_id
-  doc: ":file <file>          Output file with peptide RT prediction (valid formats:\
-    \ 'idXML')"
-  type: boolean
-  inputBinding:
-    prefix: -out_id
-- id: out_id
-  doc: ":positive <file>      Output file in idXML format containing positive predictions\
-    \ for peptide separation prediction - requires 'out_id:negative' to be present\
-    \ as well. (valid formats: 'idXML')"
-  type: boolean
-  inputBinding:
-    prefix: -out_id
-- id: out_id
-  doc: ":negative <file>      Output file in idXML format containing negative predictions\
-    \ for peptide separation prediction - requires 'out_id:positive' to be present\
-    \ as well. (valid formats: 'idXML')"
-  type: boolean
-  inputBinding:
-    prefix: -out_id
 - id: out_text
   doc: ":file <file>        Output file with predicted RT values (valid formats: 'csv')"
   type: boolean

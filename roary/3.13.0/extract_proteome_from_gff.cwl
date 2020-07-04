@@ -1,32 +1,32 @@
 class: CommandLineTool
-id: extract_proteome_from_gff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extract_proteome_from_gff.cwl
 inputs:
-- id: o
+- id: output_suffix
   doc: output suffix [proteome.faa]
   type: string
   inputBinding:
     prefix: -o
-- id: t
+- id: translation_table
   doc: translation table [11]
   type: long
   inputBinding:
     prefix: -t
-- id: f
+- id: filter_sequences_missing
   doc: filter sequences with missing data
   type: boolean
   inputBinding:
     prefix: -f
-- id: v
+- id: verbose_output_stdout
   doc: verbose output to STDOUT
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: output_directory
   doc: output directory
   type: string
   inputBinding:
     prefix: -d
-- id: w
+- id: print_version_exit
   doc: print version and exit
   type: boolean
   inputBinding:

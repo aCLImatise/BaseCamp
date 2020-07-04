@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: FastqMidParser.cwl
+id: ../../../../home/ubuntu/BiocondaCli/FastqMidParser.cwl
 inputs:
 - id: in
   doc: Input gzipped FASTQ file.

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: make_hexamer_tab.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/make_hexamer_tab.py.cwl
 inputs:
 - id: cod
   doc: Coding sequence (must be CDS without UTR, i.e. from start coden to stop coden)

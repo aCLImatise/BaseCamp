@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: quasitools_complexity.cwl
+id: ../../../../home/ubuntu/BiocondaCli/quasitools_complexity.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

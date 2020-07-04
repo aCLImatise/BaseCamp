@@ -2,12 +2,13 @@ version 1.0
 
 task _tcode {
   input {
-    Boolean windowWindow
-    String rRFormat
+    Boolean? window
   }
   command <<<
     _tcode \
-      ~{true="-window" false="" windowWindow} \
-      ~{if defined(rRFormat) then ("-rformat " +  '"' + rRFormat + '"') else ""}
+      ~{true="-window" false="" window}
   >>>
+  parameter_meta {
+    window: "integer    [200] This is the number of nucleotide bases over which the TESTCODE statistic will be performed each time. The window will then slide along the sequence, covering the same number of bases each time. (Integer 200 or more)"
+  }
 }

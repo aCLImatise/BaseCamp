@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: mb_bam_postprocess.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mb_bam_postprocess.cwl
 inputs:
-- id: input_bam_file
-  doc: input bam file to be postprocessed
-  type: string
-  inputBinding:
-    position: 0
-- id: output_bam_file
-  doc: filtered output bam file
-  type: string
-  inputBinding:
-    position: 1
-- id: output_directory
-  doc: output directory for plots and statistics
-  type: string
-  inputBinding:
-    position: 2
 - id: min_length
   doc: minimum alignment length in bp
   type: long

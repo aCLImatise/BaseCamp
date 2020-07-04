@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: humann2_benchmark.cwl
+id: ../../../../home/ubuntu/BiocondaCli/humann2_benchmark.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

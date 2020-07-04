@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: bq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bq.cwl
 inputs:
-- id: bq_py
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: command
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: args
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: global_flags
   doc: ''
   type: boolean
@@ -26,6 +11,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --command_flags
+- id: command
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: args
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sra_find_experiment_runs.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sra_find_experiment_runs.py.cwl
 inputs:
 - id: experiment_file
   doc: File with SRA experiment IDs (starting with "SRX").

@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: ovStoreDump.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ovStoreDump.cwl
 inputs:
-- id: s
+- id: mandatory_path_sequence
   doc: mandatory path to a sequence store
   type: string
   inputBinding:
     prefix: -S
-- id: o
+- id: mandatory_path_overlap
   doc: mandatory path to an overlap store
   type: string
   inputBinding:
@@ -87,12 +87,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -binary
-- id: no5p
+- id: no_five_p
   doc: do not show oevrlaps off the 5' end of the A read
   type: boolean
   inputBinding:
     prefix: -no5p
-- id: no3p
+- id: no_three_p
   doc: do not show overlaps off the 3' end of the A read
   type: boolean
   inputBinding:

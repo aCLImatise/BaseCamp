@@ -1,11 +1,11 @@
 class: CommandLineTool
-id: pFst.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pFst.cwl
 inputs:
-- id: your
-  doc: "goes here       -'                "
+- id: target
+  doc: ''
   type: string
   inputBinding:
-    prefix: '-     Your'
+    prefix: --target
 outputs: []
 cwlVersion: v1.1
 baseCommand:

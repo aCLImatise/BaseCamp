@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: arb_db_server.cwl
+id: ../../../../home/ubuntu/BiocondaCli/arb_db_server.cwl
 inputs:
-- id: a
+- id: use_asciidbversion
   doc: use ASCII-DB-version
   type: boolean
   inputBinding:
@@ -13,57 +13,57 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -Ccmd
-- id: s
+- id: name_sets_name
   doc: <name>        sets species name to '<name>'
   type: boolean
   inputBinding:
     prefix: -s
-- id: e
+- id: name_sets_extended
   doc: <name>        sets extended name to '<name>'
   type: boolean
   inputBinding:
     prefix: -e
-- id: a
+- id: ali_sets_alignment
   doc: <ali>         sets alignment to '<ali>'
   type: boolean
   inputBinding:
     prefix: -a
-- id: d
+- id: file_sets_file
   doc: <file>        sets default file to '<file>'
   type: boolean
   inputBinding:
     prefix: -d
-- id: f
+- id: fielddef_sets_field
   doc: <field>=<def> sets DB field to '<field>' (using <def> as default)
   type: boolean
   inputBinding:
     prefix: -f
-- id: r
+- id: readonly_mode
   doc: read-only mode
   type: boolean
   inputBinding:
     prefix: -r
-- id: d
+- id: server_sets_dbserver
   doc: <server>      sets DB-server to '<server>'  [default = ':']
   type: boolean
   inputBinding:
     prefix: -D
-- id: j
+- id: server_sets_jobserver
   doc: <server>      sets job-server to '<server>' [default = 'ARB_JOB_SERVER']
   type: boolean
   inputBinding:
     prefix: -J
-- id: m
+- id: server_sets_mgrserver
   doc: <server>      sets MGR-server to '<server>' [default = 'ARB_MGR_SERVER']
   type: boolean
   inputBinding:
     prefix: -M
-- id: p
+- id: server_sets_ptserver
   doc: <server>      sets PT-server to '<server>'  [default = 'ARB_PT_SERVER']
   type: boolean
   inputBinding:
     prefix: -P
-- id: t
+- id: port
   doc: <[host]:port>   sets TCP connection to '<[host]:port>'
   type: boolean
   inputBinding:

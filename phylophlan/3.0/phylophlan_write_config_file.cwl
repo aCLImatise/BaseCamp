@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phylophlan_write_config_file.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phylophlan_write_config_file.cwl
 inputs:
 - id: output
   doc: 'Specify the output file where to write the configurations (default: None)'
@@ -48,26 +48,26 @@ inputs:
   type: string
   inputBinding:
     prefix: --trim
-- id: gene_tree1
+- id: gene_tree_one
   doc: 'Add the "gene_tree1" section of the selected software that will be used for
     building the phylogenies for the markers in the database (default: None)'
   type: string
   inputBinding:
     prefix: --gene_tree1
-- id: gene_tree2
+- id: gene_tree_two
   doc: 'Add the "gene_tree2" section of the selected software that will be used for
     refining the phylogenies previously built with what specified in the "gene_tree1"
     section (default: None)'
   type: string
   inputBinding:
     prefix: --gene_tree2
-- id: tree1
+- id: tree_one
   doc: 'Add the "tree1" section of the selected software that will be used for building
     the first phylogeny (default: None)'
   type: string
   inputBinding:
     prefix: --tree1
-- id: tree2
+- id: tree_two
   doc: 'Add the "tree2" section of the selected software that will be used for refining
     the phylogeny previously built with what specified in the "tree1" section (default:
     None)'

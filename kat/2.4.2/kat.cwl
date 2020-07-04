@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: kat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kat.cwl
 inputs:
-- id: v
+- id: print_extra_information
   doc: '[ --verbose ]      Print extra information'
   type: boolean
   inputBinding:

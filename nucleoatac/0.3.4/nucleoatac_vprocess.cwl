@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nucleoatac_vprocess.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nucleoatac_vprocess.cwl
 inputs:
 - id: sizes
   doc: Insert distribution file
@@ -36,6 +36,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --plot_extra
+- id: out
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --out
 outputs: []
 cwlVersion: v1.1
 baseCommand:

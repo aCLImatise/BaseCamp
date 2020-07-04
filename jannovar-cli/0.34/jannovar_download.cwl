@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: jannovar_download.cwl
+id: ../../../../home/ubuntu/BiocondaCli/jannovar_download.cwl
 inputs:
 - id: database
   doc: Name of database to download, can be given multiple times
@@ -56,6 +56,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --ftp-proxy
+- id: jan_novar_cli
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: download
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

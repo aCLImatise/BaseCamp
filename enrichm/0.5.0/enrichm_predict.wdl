@@ -2,20 +2,28 @@ version 1.0
 
 task EnrichmPredict {
   input {
-    String logLog
-    String verbosityVerbosity
-    String outputOutput
-    Boolean forceForce
-    String foresterForesterModelDirectory
-    String inputInputMatrix
+    String? log
+    String? verbosity
+    String? output_directory
+    Boolean? force
+    String? forester_model_directory
+    String? input_matrix
   }
   command <<<
     enrichm predict \
-      ~{if defined(logLog) then ("--log " +  '"' + logLog + '"') else ""} \
-      ~{if defined(verbosityVerbosity) then ("--verbosity " +  '"' + verbosityVerbosity + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{true="--force" false="" forceForce} \
-      ~{if defined(foresterForesterModelDirectory) then ("--forester_model_directory " +  '"' + foresterForesterModelDirectory + '"') else ""} \
-      ~{if defined(inputInputMatrix) then ("--input_matrix " +  '"' + inputInputMatrix + '"') else ""}
+      ~{if defined(log) then ("--log " +  '"' + log + '"') else ""} \
+      ~{if defined(verbosity) then ("--verbosity " +  '"' + verbosity + '"') else ""} \
+      ~{if defined(output_directory) then ("--output " +  '"' + output_directory + '"') else ""} \
+      ~{true="--force" false="" force} \
+      ~{if defined(forester_model_directory) then ("--forester_model_directory " +  '"' + forester_model_directory + '"') else ""} \
+      ~{if defined(input_matrix) then ("--input_matrix " +  '"' + input_matrix + '"') else ""}
   >>>
+  parameter_meta {
+    log: "Output logging information to this file."
+    verbosity: "Level of verbosity (1 - 5 - default = 4) 5 = Very verbose, 1 = Silent"
+    output_directory: "Output directory"
+    force: "Overwrite previous run"
+    forester_model_directory: "Pickled model to use"
+    input_matrix: "matrix of data to predict"
+  }
 }

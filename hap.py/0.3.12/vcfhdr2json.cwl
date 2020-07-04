@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfhdr2json.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfhdr2json.cwl
 inputs:
 - id: input_file
   doc: The input files

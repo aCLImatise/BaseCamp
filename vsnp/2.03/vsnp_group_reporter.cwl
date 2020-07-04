@@ -1,26 +1,26 @@
 class: CommandLineTool
-id: vsnp_group_reporter.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vsnp_group_reporter.py.cwl
 inputs:
-- id: prog
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: vcf
-  doc: ''
+  doc: 'Required: vcf file'
   type: string
   inputBinding:
-    prefix: -vcf
-- id: r
-  doc: ''
+    prefix: --vcf
+- id: ref_option
+  doc: 'Required: reference option'
   type: string
   inputBinding:
-    prefix: -r
+    prefix: --ref_option
 - id: v
   doc: ''
   type: boolean
   inputBinding:
     prefix: -v
+- id: prog
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

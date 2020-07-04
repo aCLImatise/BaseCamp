@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: makeTableList.cwl
+id: ../../../../home/ubuntu/BiocondaCli/makeTableList.cwl
 inputs:
-- id: assemblies
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: host
   doc: 'show tables: mysql host'
   type: boolean
@@ -56,6 +51,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -bigFiles
+- id: assemblies
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

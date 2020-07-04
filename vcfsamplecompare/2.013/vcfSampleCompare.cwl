@@ -1,23 +1,23 @@
 class: CommandLineTool
-id: vcfSampleCompare.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfSampleCompare.pl.cwl
 inputs:
-- id: o
+- id: vcf_outfile_suffix
   doc: VCF outfile suffix (appended to -i).
   type: string
   inputBinding:
     prefix: -o
-- id: u
+- id: summary_outfile_suffix
   doc: '[STDOUT] Summary outfile suffix (appended to -i).'
   type: string
   inputBinding:
     prefix: -u
-- id: s
+- id: group_sample_names
   doc: '...     [any^] A group of sample names for difference comparisons. ^ See --extended
     usage.'
   type: string
   inputBinding:
     prefix: -s
-- id: d
+- id: minimum_number_use
   doc: <int,...>...     [all*] Minimum number of samples to use in a group to determine
     difference with its partner.
   type: boolean
@@ -43,12 +43,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-w
-- id: l
+- id: minimum_read_dp
   doc: '[4] Minimum read depth (DP).'
   type: long
   inputBinding:
     prefix: -l
-- id: x
+- id: adequate_read_dp
   doc: '[20] Adequate read depth (DP).'
   type: long
   inputBinding:

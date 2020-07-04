@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: arb_textprint.cwl
+id: ../../../../home/ubuntu/BiocondaCli/arb_textprint.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

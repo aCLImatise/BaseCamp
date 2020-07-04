@@ -1,12 +1,6 @@
 class: CommandLineTool
-id: medpy_intensity_range_standardization.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/medpy_intensity_range_standardization.py.cwl
 inputs:
-- id: images
-  doc: The images used for training (in the learning case) or to transform (in the
-    transformation case)
-  type: string
-  inputBinding:
-    position: 0
 - id: verbose
   doc: Verbose output
   type: boolean
@@ -76,6 +70,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ignore
+- id: images
+  doc: The images used for training (in the learning case) or to transform (in the
+    transformation case)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

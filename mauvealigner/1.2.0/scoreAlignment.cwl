@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scoreAlignment.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scoreAlignment.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

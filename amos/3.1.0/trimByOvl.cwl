@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: trimByOvl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/trimByOvl.cwl
 inputs:
-- id: file_ovl
+- id: file_do_to_vl
   doc: ''
   type: File
   inputBinding:

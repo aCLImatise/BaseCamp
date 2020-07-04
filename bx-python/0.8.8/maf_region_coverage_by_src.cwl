@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: maf_region_coverage_by_src.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maf_region_coverage_by_src.py.cwl
 inputs:
 - id: src
   doc: Use this src for all intervals
@@ -11,6 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --prefix
+- id: maf_files
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

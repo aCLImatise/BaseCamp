@@ -1,12 +1,6 @@
 class: CommandLineTool
-id: caper_list.cwl
+id: ../../../../home/ubuntu/BiocondaCli/caper_list.cwl
 inputs:
-- id: wf_id_or_label
-  doc: List of workflow IDs to find matching workflows to commit a specified action
-    (list, metadata and abort). Wildcards (* and ?) are allowed.
-  type: string
-  inputBinding:
-    position: 0
 - id: dry_run
   doc: Caper does not take any action.
   type: boolean
@@ -63,6 +57,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --hide-subworkflow
+- id: wf_id_or_label
+  doc: List of workflow IDs to find matching workflows to commit a specified action
+    (list, metadata and abort). Wildcards (* and ?) are allowed.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: locarna_rnafold_pp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/locarna_rnafold_pp.cwl
 inputs:
 - id: force_ali_fold
   doc: Force alifold for single sequences

@@ -2,10 +2,16 @@ version 1.0
 
 task VcfConvert {
   input {
-    File refseqRefseq
+    String cat
+    String in_dot_vcf
   }
   command <<<
     vcf-convert \
-      ~{if defined(refseqRefseq) then ("--refseq " +  '"' + refseqRefseq + '"') else ""}
+      ~{cat} \
+      ~{in_dot_vcf}
   >>>
+  parameter_meta {
+    cat: ""
+    in_dot_vcf: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfsitesummarize.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfsitesummarize.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

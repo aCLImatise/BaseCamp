@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hypo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hypo.cwl
 inputs:
 - id: sr
   doc: '(Corresponding to NGS reads like Illumina reads) '

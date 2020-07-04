@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: extractTranscriptEnds.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extractTranscriptEnds.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

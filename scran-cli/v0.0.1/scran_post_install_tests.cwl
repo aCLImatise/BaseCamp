@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: scran_post_install_tests.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scran_post_install_tests.sh.cwl
 inputs:
 - id: action
-  doc: ": what action to take, 'test' or 'clean'"
-  type: boolean
+  doc: ''
+  type: string
   inputBinding:
-    prefix: '- action'
+    position: 0
 - id: use_existing_outputs
-  doc: ", 'true' or 'false'"
-  type: boolean
+  doc: ''
+  type: string
   inputBinding:
-    prefix: '- use_existing_outputs'
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

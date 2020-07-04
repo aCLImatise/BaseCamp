@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: computeGCBias.cwl
+id: ../../../../home/ubuntu/BiocondaCli/computeGCBias.cwl
 inputs:
-- id: '2150570000'
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: '200'
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: bam_file
   doc: 'file, -b bam file Sorted BAM file. (default: None)'
   type: string
@@ -27,12 +17,12 @@ inputs:
   inputBinding:
     prefix: --effectiveGenomeSize
 - id: genome
-  doc: '2bit FILE, -g 2bit FILE Genome in two bit format. Most genomes can be found
-    here: http://hgdownload.cse.ucsc.edu/gbdb/ Search for the .2bit ending. Otherwise,
-    fasta files can be converted to 2bit using the UCSC programm called faToTwoBit
-    available for different plattforms at http://hgdownload.cse.ucsc.edu/admin/exe/
-    (default: None)'
-  type: boolean
+  doc: 'FILE, -g 2bit FILE Genome in two bit format. Most genomes can be found here:
+    http://hgdownload.cse.ucsc.edu/gbdb/ Search for the .2bit ending. Otherwise, fasta
+    files can be converted to 2bit using the UCSC programm called faToTwoBit available
+    for different plattforms at http://hgdownload.cse.ucsc.edu/admin/exe/ (default:
+    None)'
+  type: string
   inputBinding:
     prefix: --genome
 - id: gc_bias_frequencies_file
@@ -75,6 +65,21 @@ inputs:
   type: long
   inputBinding:
     prefix: --regionSize
+- id: b
+  doc: ''
+  type: File
+  inputBinding:
+    prefix: -b
+- id: g
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -g
+- id: l
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -l
 outputs: []
 cwlVersion: v1.1
 baseCommand:

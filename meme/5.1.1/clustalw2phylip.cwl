@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: clustalw2phylip.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clustalw2phylip.cwl
 inputs:
-- id: clustalw_2phyilip
+- id: clustalw_two_phy_i_lip
   doc: ''
   type: string
   inputBinding:

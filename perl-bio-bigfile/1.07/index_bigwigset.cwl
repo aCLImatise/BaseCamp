@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: index_bigwigset.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/index_bigwigset.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

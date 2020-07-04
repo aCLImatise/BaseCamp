@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: msa2vcf.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/msa2vcf.py.cwl
 inputs:
 - id: ref
   doc: 'reference name used for the CHROM column. Optional Default: chrUn'
@@ -36,6 +36,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --output
+- id: files
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

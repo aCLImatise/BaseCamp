@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: bcftools_polysomy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcftools_polysomy.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: file_vcf
-  doc: ''
-  type: File
-  inputBinding:
-    position: 1
 - id: peak_size
   doc: minimum peak size (0-1, larger is stricter) [0.1]
   type: double
@@ -41,6 +31,11 @@ inputs:
   type: double
   inputBinding:
     prefix: --peak-symmetry
+- id: file_dot_vcf
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNARedPrintStructure.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNARedPrintStructure.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

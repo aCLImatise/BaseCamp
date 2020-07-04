@@ -2,12 +2,16 @@ version 1.0
 
 task Sortsam {
   input {
-    String sortSort
-    String sortSort
+    Boolean? pos
+    Boolean? idx
   }
   command <<<
     sortsam \
-      ~{if defined(sortSort) then ("-- Sort " +  '"' + sortSort + '"') else ""} \
-      ~{if defined(sortSort) then ("-- Sort " +  '"' + sortSort + '"') else ""}
+      ~{true="-pos" false="" pos} \
+      ~{true="-idx" false="" idx}
   >>>
+  parameter_meta {
+    pos: "-- Sort by chromosome position"
+    idx: "-- Sort by read_index position"
+  }
 }

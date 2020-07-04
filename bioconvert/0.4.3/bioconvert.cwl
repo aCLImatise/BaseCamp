@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bioconvert.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bioconvert.cwl
 inputs:
 - id: verbosity
   doc: Set the outpout verbosity.

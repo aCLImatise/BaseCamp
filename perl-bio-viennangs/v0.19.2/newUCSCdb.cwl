@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: newUCSCdb.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/newUCSCdb.pl.cwl
 inputs:
 - id: db
   doc: <string>  new database name                        ()

@@ -2,10 +2,19 @@ version 1.0
 
 task GeneOntologyFromBed.py {
   input {
-    String modeMode
+    String? mode
+    String exp_matrix
+    File path
   }
   command <<<
     geneOntologyFromBed.py \
-      ~{if defined(modeMode) then ("--mode " +  '"' + modeMode + '"') else ""}
+      ~{exp_matrix} \
+      ~{path} \
+      ~{if defined(mode) then ("--mode " +  '"' + mode + '"') else ""}
   >>>
+  parameter_meta {
+    mode: "choose mode"
+    exp_matrix: ""
+    path: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: isoseq3_polish.cwl
+id: ../../../../home/ubuntu/BiocondaCli/isoseq3_polish.cwl
 inputs:
 - id: rq_cut_off
   doc: FLOAT  RQ cutoff for fastx output. [0.99]
@@ -31,6 +31,31 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: iso_seq
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: polish
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: unpolished_dot_bam_vertical_line_xml
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: sub_reads_dot_bam_vertical_line_xml
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: polished_dot_bam_vertical_line_xml
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

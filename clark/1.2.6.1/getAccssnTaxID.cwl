@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: getAccssnTaxID.cwl
+id: ../../../../home/ubuntu/BiocondaCli/getAccssnTaxID.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

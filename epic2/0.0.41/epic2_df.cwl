@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: epic2_df.cwl
+id: ../../../../home/ubuntu/BiocondaCli/epic2_df.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

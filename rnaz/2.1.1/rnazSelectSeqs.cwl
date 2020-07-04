@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: rnazSelectSeqs.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnazSelectSeqs.pl.cwl
 inputs:
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: num_seqs
   doc: Number of sequences in the output alignment(s). (Default:6)
   type: string
@@ -39,6 +34,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --man
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

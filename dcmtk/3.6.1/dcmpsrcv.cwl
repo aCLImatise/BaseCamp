@@ -1,27 +1,17 @@
 class: CommandLineTool
-id: dcmpsrcv.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dcmpsrcv.cwl
 inputs:
-- id: config_file
-  doc: configuration file to be read
-  type: string
-  inputBinding:
-    position: 0
-- id: receiver_id
-  doc: identifier of receiver in config file
-  type: string
-  inputBinding:
-    position: 1
-- id: q
+- id: _quiet_quiet
   doc: --quiet       quiet mode, print no warnings and errors
   type: boolean
   inputBinding:
     prefix: -q
-- id: v
+- id: _verbose_verbose
   doc: --verbose     verbose mode, print processing details
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: _debug_debug
   doc: --debug       debug mode, print debug information
   type: boolean
   inputBinding:
@@ -37,11 +27,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --log-config
-- id: t
+- id: _terminate_terminate
   doc: --terminate   terminate all running receivers
   type: boolean
   inputBinding:
     prefix: -t
+- id: config_file
+  doc: configuration file to be read
+  type: string
+  inputBinding:
+    position: 0
+- id: receiver_id
+  doc: identifier of receiver in config file
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: edirect.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/edirect.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

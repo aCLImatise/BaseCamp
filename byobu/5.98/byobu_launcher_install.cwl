@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: byobu_launcher_install.cwl
+id: ../../../../home/ubuntu/BiocondaCli/byobu_launcher_install.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

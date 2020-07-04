@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MapNormalizer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MapNormalizer.cwl
 inputs:
 - id: in
   doc: "*        Input file  (valid formats: 'mzML')"

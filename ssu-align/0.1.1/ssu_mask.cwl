@@ -1,38 +1,38 @@
 class: CommandLineTool
-id: ssu_mask.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ssu_mask.cwl
 inputs:
-- id: a
+- id: commandline_argument_stockholm
   doc: ': the command-line argument is a stockholm alignment, not a directory'
   type: boolean
   inputBinding:
     prefix: -a
-- id: d
+- id: use_default_ssualign
   doc: ': use default ssu-align-0.1 masks'
   type: boolean
   inputBinding:
     prefix: -d
-- id: s
+- id: use_single_mask
   doc: ': use single mask in existing file <f> to mask single alignment'
   type: string
   inputBinding:
     prefix: -s
-- id: k
+- id: use_mask_file
   doc: ": use mask file named <modelname>.<s>.mask for masking (<modelname> might\
     \ be 'archaea', 'bacteria' or 'eukarya')"
   type: string
   inputBinding:
     prefix: -k
-- id: m
+- id: cm_file_f
   doc: ': CM file <f> created the alignment(s) (with ssu-align -m <f>)'
   type: string
   inputBinding:
     prefix: -m
-- id: t
+- id: structure_diagrams_use
   doc: ': for structure diagrams, use template file <f>, not the default'
   type: string
   inputBinding:
     prefix: -t
-- id: i
+- id: i_used_ssualign
   doc: ': -i used with ssu-align, alignments are interleaved'
   type: boolean
   inputBinding:
@@ -77,7 +77,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --key-out
-- id: ps2pdf
+- id: pstwo_pdf
   doc: ': <s> (!= "ps2pdf") is the command for converting ps to pdf'
   type: string
   inputBinding:
@@ -97,7 +97,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --list
-- id: stk2afa
+- id: stk_two_afa
   doc: ': convert Stockholm alignment(s) to aligned FASTA'
   type: boolean
   inputBinding:
@@ -112,6 +112,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --seq-r
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

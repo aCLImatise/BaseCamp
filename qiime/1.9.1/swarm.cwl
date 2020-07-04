@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: swarm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/swarm.cwl
 inputs:
 - id: differences
   doc: resolution (1)
@@ -66,6 +66,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --usearch_abundance
+- id: filename
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

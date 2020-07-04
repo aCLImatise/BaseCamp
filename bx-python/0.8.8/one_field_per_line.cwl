@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: one_field_per_line.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/one_field_per_line.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

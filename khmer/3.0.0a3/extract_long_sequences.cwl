@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: extract_long_sequences.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extract_long_sequences.py.cwl
 inputs:
-- id: input_filenames
-  doc: Input FAST[AQ] sequence filename.
-  type: string
-  inputBinding:
-    position: 0
 - id: info
   doc: print citation information
   type: boolean
@@ -32,6 +27,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --bzip
+- id: input_filenames
+  doc: Input FAST[AQ] sequence filename.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

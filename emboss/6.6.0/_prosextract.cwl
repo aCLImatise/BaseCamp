@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _prosextract.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_prosextract.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

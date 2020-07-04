@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: map_learn_static.cwl
+id: ../../../../home/ubuntu/BiocondaCli/map_learn_static.cwl
 inputs:
 - id: map_learn
   doc: ''

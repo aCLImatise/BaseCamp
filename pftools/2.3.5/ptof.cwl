@@ -1,47 +1,52 @@
 class: CommandLineTool
-id: ptof.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ptof.cwl
 inputs:
-- id: l
+- id: impose_limit_line
   doc: ': do not impose limit on line length.'
   type: boolean
   inputBinding:
     prefix: -l
-- id: r
+- id: parameters_given_normalized
   doc: ': parameters given as normalized score units.'
   type: boolean
   inputBinding:
     prefix: -r
-- id: b
+- id: value_minimal_initiationtermination
   doc: '<value>: minimal initiation/termination score (default: -50 or -0.5 with option
     -r).'
   type: boolean
   inputBinding:
     prefix: -B
-- id: f
+- id: value_frameshift_error
   doc: '<value>: frameshift error penalty (default: -100 or -1.0 with option -r).'
   type: boolean
   inputBinding:
     prefix: -F
-- id: i
+- id: value_insert_score
   doc: '<value>: insert score multiplier (default: 1/3).'
   type: boolean
   inputBinding:
     prefix: -I
-- id: x
+- id: value_stop_default
   doc: '<value>: stop codon penalty (default: -100 or -1.0 with option -r).'
   type: boolean
   inputBinding:
     prefix: -X
-- id: y
+- id: value_intron_default
   doc: '<value>: intron opening penalty (default: -300 or -3.0 with option -r).'
   type: boolean
   inputBinding:
     prefix: -Y
-- id: z
+- id: value_intron_extension
   doc: '<value>: intron extension penalty (default: -1 or -0.01 with option -r).'
   type: boolean
   inputBinding:
     prefix: -Z
+- id: hlr_bfi_xyz
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -hlrBFIXYZ
 outputs: []
 cwlVersion: v1.1
 baseCommand:

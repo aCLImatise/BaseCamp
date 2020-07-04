@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: eqtlbma_avg_bfs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/eqtlbma_avg_bfs.cwl
 inputs:
 - id: best_dim
   doc: the best config/type per SNP (and its posterior)

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: trimmer.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/trimmer.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

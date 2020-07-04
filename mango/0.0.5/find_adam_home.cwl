@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: find_adam_home.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/find_adam_home.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

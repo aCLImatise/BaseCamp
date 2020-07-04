@@ -1,22 +1,22 @@
 class: CommandLineTool
-id: DBdust.cwl
+id: ../../../../home/ubuntu/BiocondaCli/DBdust.cwl
 inputs:
-- id: w
+- id: dust_algorithm_window
   doc: ': DUST algorithm window size.'
   type: boolean
   inputBinding:
     prefix: -w
-- id: t
+- id: dust_algorithm_threshold
   doc: ': DUST algorithm threshold.'
   type: boolean
   inputBinding:
     prefix: -t
-- id: m
+- id: record_only_lowcomplexity
   doc: ': Record only low-complexity intervals >= this size.'
   type: boolean
   inputBinding:
     prefix: -m
-- id: b
+- id: take_account_base
   doc: ': Take into account base composition bias.'
   type: boolean
   inputBinding:

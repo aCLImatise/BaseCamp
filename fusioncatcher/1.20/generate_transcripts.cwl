@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: generate_transcripts.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/generate_transcripts.py.cwl
 inputs:
 - id: input_fast_a_exons
   doc: A FASTA file containing all the exon sequences (e.g. 'exons.fa').

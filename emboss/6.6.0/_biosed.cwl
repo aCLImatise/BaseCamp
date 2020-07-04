@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _biosed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_biosed.cwl
 inputs:
 - id: target_region
   doc: string     [N] Sequence section to match (Any string)

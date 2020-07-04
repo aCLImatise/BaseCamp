@@ -2,10 +2,13 @@ version 1.0
 
 task KallistoInspect {
   input {
-    String? indexIndexFile
+    String index_file
   }
   command <<<
     kallisto inspect \
-      ~{indexIndexFile}
+      ~{index_file}
   >>>
+  parameter_meta {
+    index_file: ""
+  }
 }

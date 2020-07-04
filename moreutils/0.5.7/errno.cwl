@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: errno.cwl
+id: ../../../../home/ubuntu/BiocondaCli/errno.cwl
 inputs:
-- id: keyword
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: lss
   doc: ''
   type: boolean
@@ -26,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --search-all-locales
+- id: keyword
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: humann2_split_stratified_table.cwl
+id: ../../../../home/ubuntu/BiocondaCli/humann2_split_stratified_table.cwl
 inputs:
-- id: i
-  doc: ''
+- id: input
+  doc: the stratified input table (tsv, tsv.gzip, tsv.bzip2, or biom format)
   type: string
   inputBinding:
-    prefix: -i
-- id: o
-  doc: ''
+    prefix: --input
+- id: output
+  doc: the output folder
   type: string
   inputBinding:
-    prefix: -o
+    prefix: --output
 outputs: []
 cwlVersion: v1.1
 baseCommand:

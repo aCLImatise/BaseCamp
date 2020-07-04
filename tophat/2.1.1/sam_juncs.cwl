@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: sam_juncs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sam_juncs.cwl
 inputs:
-- id: hits_sam
+- id: hits_dots_am
   doc: ''
   type: string
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ditasic_mapping.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ditasic_mapping.py.cwl
 inputs:
 - id: length
   doc: 'Length of reads used in similarity matrix creation. [default: 100]'

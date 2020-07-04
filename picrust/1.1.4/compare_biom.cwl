@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: compare_biom.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/compare_biom.py.cwl
 inputs:
 - id: exp_trait_table_fp
   doc: the expected trait table (biom format) [REQUIRED]

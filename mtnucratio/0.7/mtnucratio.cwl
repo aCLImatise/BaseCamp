@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mtnucratio.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mtnucratio.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

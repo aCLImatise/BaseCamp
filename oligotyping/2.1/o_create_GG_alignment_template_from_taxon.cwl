@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: o_create_GG_alignment_template_from_taxon.cwl
+id: ../../../../home/ubuntu/BiocondaCli/o_create_GG_alignment_template_from_taxon.cwl
 inputs:
+- id: output
+  doc: Path to the output folder
+  type: string
+  inputBinding:
+    prefix: --output
 - id: tax_on
   doc: '"Taxon" name to be searched in GreenGenes'
   type: string
@@ -18,11 +23,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: output
-  doc: Path to the output folder
-  type: string
-  inputBinding:
-    prefix: --output
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: rsem_tbam2gbam.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rsem_tbam2gbam.cwl
 inputs:
+- id: p
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -p
 - id: reference_name
   doc: ''
   type: string
@@ -16,11 +21,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: p
-  doc: ''
-  type: string
-  inputBinding:
-    prefix: -p
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tgTigDisplay.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tgTigDisplay.cwl
 inputs:
 - id: s
   doc: ''

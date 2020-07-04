@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: snaptools_dex_fastq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snaptools_dex_fastq.cwl
 inputs:
 - id: input_fast_q
   doc: 'fastq file contains the sequencing reads (default: None)'

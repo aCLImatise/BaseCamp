@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: hhconsensus.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hhconsensus.cwl
 inputs:
-- id: i
+- id: query_alignment_am
   doc: 'query alignment (A2M, A3M, or FASTA), or query HMM          '
   type: File
   inputBinding:
     prefix: -i
-- id: s
+- id: append_consensus_sequence
   doc: 'append consensus sequence in FASTA (default=<infile.seq>)   '
   type: File
   inputBinding:
@@ -16,12 +16,12 @@ inputs:
   type: File
   inputBinding:
     prefix: -o
-- id: oa3m
+- id: o_a_three_m
   doc: 'same                                                        '
   type: File
   inputBinding:
     prefix: -oa3m
-- id: oa2m
+- id: o_a_two_m
   doc: 'write alignment with consensus sequence in A2M              '
   type: File
   inputBinding:
@@ -31,7 +31,7 @@ inputs:
   type: File
   inputBinding:
     prefix: -ofas
-- id: v
+- id: verbose_mode_screen
   doc: 'verbose mode: 0:no screen output  1:only warings  2: verbose'
   type: long
   inputBinding:
@@ -62,22 +62,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -qsc
-- id: m
-  doc: "use A2M/A3M (default): upper case = Match; lower case = Insert; '-' = Delete;\
-    \ '.' = gaps aligned to inserts (may be omitted)   "
-  type: string
-  inputBinding:
-    prefix: -M
-- id: m
-  doc: 'use FASTA: columns with residue in 1st sequence are match states'
-  type: string
-  inputBinding:
-    prefix: -M
-- id: m
-  doc: '[0,100]    use FASTA: columns with fewer than X% gaps are match states   '
-  type: boolean
-  inputBinding:
-    prefix: -M
 - id: max_seq
   doc: max number of input rows (def=65535)
   type: long

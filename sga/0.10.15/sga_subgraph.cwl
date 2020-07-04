@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sga_subgraph.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sga_subgraph.cwl
 inputs:
 - id: verbose
   doc: display verbose output
@@ -17,6 +17,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --size
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

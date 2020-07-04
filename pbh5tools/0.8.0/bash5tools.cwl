@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bash5tools.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bash5tools.py.cwl
 inputs:
 - id: verbose
   doc: 'Set the verbosity level (default: None)'
@@ -46,6 +46,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --minPasses
+- id: input_dot_bas_doth_five
+  doc: input .bas.h5 filename
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

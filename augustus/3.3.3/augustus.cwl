@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: augustus.cwl
+id: ../../../../home/ubuntu/BiocondaCli/augustus.cwl
 inputs:
+- id: species
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --species
 - id: partial
   doc: ': allow prediction of incomplete genes at the sequence boundaries (default)'
   type: string

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: augustus2browser.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/augustus2browser.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

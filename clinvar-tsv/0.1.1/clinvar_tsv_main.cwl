@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: clinvar_tsv_main.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clinvar_tsv_main.cwl
 inputs:
-- id: b37_path
+- id: b_three_seven_path
   doc: Path to GRCh37 FAI-indexed FASTA file.
   type: string
   inputBinding:
     prefix: --b37-path
-- id: b38_path
+- id: b_three_eight_path
   doc: Path to GRCh38 FAI-indexed FASTA file.
   type: string
   inputBinding:
@@ -26,6 +26,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
+- id: clin_var_tsv
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: main
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: fastx_uncollapser.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastx_uncollapser.cwl
 inputs:
-- id: fast_a_un_collapse_r
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: c
   doc: ''
   type: string
@@ -26,6 +21,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -o
+- id: fast_a_un_collapse_r
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

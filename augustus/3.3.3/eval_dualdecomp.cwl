@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: eval_dualdecomp.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/eval_dualdecomp.pl.cwl
 inputs:
-- id: f
+- id: intput_augustus_file
   doc: 'intput AUGUSTUS file '
   type: File
   inputBinding:
     prefix: --f
-- id: d
+- id: directory_input_augustus
   doc: directory of input AUGUSTUS files (recognized by .out file extension)
   type: string
   inputBinding:
@@ -30,7 +30,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --err_per_iter
-- id: t
+- id: threshold_percentage_initial
   doc: 'threshold for percentage of initial error. For all cases with an estimated
     error higher than this threshold, the evolution of primal an dual values are plotted
     against the iterations. This helps debugging cases with a high error estimate.

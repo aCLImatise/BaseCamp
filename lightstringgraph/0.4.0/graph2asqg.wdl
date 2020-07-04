@@ -2,16 +2,22 @@ version 1.0
 
 task Graph2asqg {
   input {
-    String bB
-    String rR
-    String lL
-    Boolean nN
+    String? b
+    String? optional_default_basename
+    String? l
+    Boolean? optional_use_ids
   }
   command <<<
     graph2asqg \
-      ~{if defined(bB) then ("-b " +  '"' + bB + '"') else ""} \
-      ~{if defined(rR) then ("-r " +  '"' + rR + '"') else ""} \
-      ~{if defined(lL) then ("-l " +  '"' + lL + '"') else ""} \
-      ~{true="-n" false="" nN}
+      ~{if defined(b) then ("-b " +  '"' + b + '"') else ""} \
+      ~{if defined(optional_default_basename) then ("-r " +  '"' + optional_default_basename + '"') else ""} \
+      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
+      ~{true="-n" false="" optional_use_ids}
   >>>
+  parameter_meta {
+    b: "# (required)"
+    optional_default_basename: "# (optional, default: <basename>) "
+    l: "# (required) "
+    optional_use_ids: "# (optional) use numeric IDs instead of FASTA IDs"
+  }
 }

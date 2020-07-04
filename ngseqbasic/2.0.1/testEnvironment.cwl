@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: testEnvironment.cwl
+id: ../../../../home/ubuntu/BiocondaCli/testEnvironment.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

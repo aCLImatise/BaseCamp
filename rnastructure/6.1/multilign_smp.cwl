@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: multilign_smp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/multilign_smp.cwl
 inputs:
 - id: configuration_file
   doc: ''

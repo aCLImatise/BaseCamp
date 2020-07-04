@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: vcfleftalign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfleftalign.cwl
 inputs:
-- id: file
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: reference
   doc: Use this reference as a basis for realignment.
   type: File
@@ -16,6 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --window
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

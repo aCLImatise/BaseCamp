@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: braker_cleanup.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/braker_cleanup.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

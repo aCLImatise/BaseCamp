@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pKiss_local_window.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pKiss_local_window.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

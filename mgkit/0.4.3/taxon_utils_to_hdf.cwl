@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: taxon_utils_to_hdf.cwl
+id: ../../../../home/ubuntu/BiocondaCli/taxon_utils_to_hdf.cwl
 inputs:
 - id: table_name
   doc: 'Name of the table/storage to use  [default: taxa]'
@@ -26,6 +26,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --progress
+- id: input_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,18 +1,13 @@
 class: CommandLineTool
-id: filtlong.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filtlong.cwl
 inputs:
-- id: input_reads
-  doc: input long reads to be filtered
-  type: string
-  inputBinding:
-    position: 0
-- id: t
+- id: keep_only_best
   doc: '[int], --target_bases [int]          keep only the best reads up to this many
     total bases'
   type: boolean
   inputBinding:
     prefix: -t
-- id: p
+- id: keep_only_percentage
   doc: '[float], --keep_percent [float]      keep only this percentage of the best
     reads (measured by bases)'
   type: boolean
@@ -33,6 +28,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --min_window_q
+- id: reference_assembly_fasta
+  doc: '[file], --assembly [file]            reference assembly in FASTA format'
+  type: boolean
+  inputBinding:
+    prefix: -a
+- id: one
+  doc: '[file], --illumina_1 [file]          reference Illumina reads in FASTQ format'
+  type: boolean
+  inputBinding:
+    prefix: '-1'
+- id: two
+  doc: '[file], --illumina_2 [file]          reference Illumina reads in FASTQ format'
+  type: boolean
+  inputBinding:
+    prefix: '-2'
 - id: length_weight
   doc: '[float]                weight given to the length score (default: 1)'
   type: boolean
@@ -70,6 +80,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: input_reads
+  doc: input long reads to be filtered
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

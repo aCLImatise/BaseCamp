@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bam_to_bigwig.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bam_to_bigwig.pl.cwl
 inputs:
 - id: bam
   doc: Input file in BAM format
@@ -25,7 +25,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --strand
-- id: o
+- id: output_directory
   doc: Output directory
   type: boolean
   inputBinding:

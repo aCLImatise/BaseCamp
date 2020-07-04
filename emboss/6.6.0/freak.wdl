@@ -2,10 +2,13 @@ version 1.0
 
 task Freak {
   input {
-    Boolean lettersLetters
+    Boolean? letters
   }
   command <<<
     freak \
-      ~{true="-letters" false="" lettersLetters}
+      ~{true="-letters" false="" letters}
   >>>
+  parameter_meta {
+    letters: "string     [gc] Residue letters (Any string)"
+  }
 }

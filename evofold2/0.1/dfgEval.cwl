@@ -1,29 +1,19 @@
 class: CommandLineTool
-id: dfgEval.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dfgEval.cwl
 inputs:
-- id: input_var_data_tab
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: input_fac_data_tab
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: o
+- id: arg_calculate_posterior
   doc: '[ --ppFile ] arg                   Calculate posterior probabilities for  each
     state of each random variable and  output to file.'
   type: boolean
   inputBinding:
     prefix: -o
-- id: n
+- id: arg_calculate_normalization
   doc: '[ --ncFile ] arg                   Calculate normalization constant output
     to file.'
   type: boolean
   inputBinding:
     prefix: -n
-- id: m
+- id: arg_calculate_state
   doc: '[ --mpsFile ] arg                  Calculate most probable state for each  random
     variable and output to file.'
   type: boolean
@@ -34,7 +24,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --expFile
-- id: p
+- id: arg_output_precision
   doc: '[ --precision ] arg (=5)           Output precision of real numbers.'
   type: boolean
   inputBinding:
@@ -45,7 +35,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ppSumOther
-- id: l
+- id: output_natural_logarithm
   doc: '[ --minusLogarithm ]               Output minus the natural logarithm of  result
     values (program will terminate  on negative results...).'
   type: boolean
@@ -69,7 +59,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --ppVars
-- id: s
+- id: arg_prefix_dfg
   doc: '[ --dfgSpecPrefix ] arg (=./dfgSpec/) Prefix of DFG specification files..'
   type: boolean
   inputBinding:
@@ -100,6 +90,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --subVarFile
+- id: input_var_data_dot_tab
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: input_fac_data_dot_tab
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

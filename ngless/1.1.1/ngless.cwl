@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: ngless.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ngless.cwl
 inputs:
-- id: input
-  doc: Filename of script to interpret
-  type: string
-  inputBinding:
-    position: 0
-- id: ref
-  doc: Name of reference to install
-  type: string
-  inputBinding:
-    position: 1
 - id: version_short
   doc: print just version string (useful for scripting)
   type: boolean
@@ -163,6 +153,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --color
+- id: input
+  doc: Filename of script to interpret
+  type: string
+  inputBinding:
+    position: 0
+- id: ref
+  doc: Name of reference to install
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

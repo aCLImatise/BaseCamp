@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MapAlignerTreeGuided.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MapAlignerTreeGuided.cwl
 inputs:
 - id: in
   doc: "*        Input files to align (all must have the same file type) (valid formats:\
@@ -39,16 +39,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Algorithm parameters section
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
-- id: http
-  doc: ://www.openms.de/documentation/TOPP_MapAlignerTreeGuided.html
-  type: boolean
-  inputBinding:
-    prefix: '- http'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: make_test_datasets.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/make_test_datasets.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

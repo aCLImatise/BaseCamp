@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_script_filter_fasta_by_blast.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_script_filter_fasta_by_blast.cwl
 inputs:
 - id: fast_a_file
   doc: A FASTA-formatted input file
@@ -11,7 +11,7 @@ inputs:
   type: File
   inputBinding:
     prefix: --output-file
-- id: b
+- id: delimited_file_
   doc: DELIMITED FILE, --blast-output TAB DELIMITED FILE BLAST table generated with
     blastp. `--outfmt 6` as the output format is assumed.
   type: string

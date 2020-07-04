@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: slice_fasta_gff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/slice_fasta_gff.cwl
 inputs:
+- id: type
+  doc: only look at features of particular type
+  type: string
+  inputBinding:
+    prefix: --type
 - id: slice_fast_a
   doc: ''
   type: string
@@ -16,11 +21,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: type
-  doc: only look at features of particular type
-  type: string
-  inputBinding:
-    prefix: --type
 outputs: []
 cwlVersion: v1.1
 baseCommand:

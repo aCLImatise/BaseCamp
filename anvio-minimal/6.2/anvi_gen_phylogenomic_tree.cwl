@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_gen_phylogenomic_tree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_gen_phylogenomic_tree.cwl
 inputs:
 - id: fast_a_file
   doc: A FASTA-formatted input file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: obo2apo.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/obo2apo.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: reads_from_map.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/reads_from_map.py.cwl
 inputs:
 - id: input_reads
   doc: The input file containing the list of reads names to be removed from the MAP

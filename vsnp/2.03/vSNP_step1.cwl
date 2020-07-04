@@ -1,18 +1,12 @@
 class: CommandLineTool
-id: vSNP_step1.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vSNP_step1.py.cwl
 inputs:
-- id: v_snp
-  doc: 'installed with Mycobacterium_AF2122.  For additional reference options see:
-    https://github.com/USDA-VS/vSNP_dependencies.git'
-  type: string
-  inputBinding:
-    prefix: '- vSNP'
-- id: read_1
+- id: read_one
   doc: 'Required: single read, R1 when Illumina read'
   type: string
   inputBinding:
     prefix: --read1
-- id: read_2
+- id: read_two
   doc: 'Optional: R2 Illumina read'
   type: string
   inputBinding:
@@ -44,6 +38,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --skip_assembly
+- id: prog
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

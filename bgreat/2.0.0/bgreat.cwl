@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bgreat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bgreat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

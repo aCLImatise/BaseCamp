@@ -2,22 +2,19 @@ version 1.0
 
 task MbGenerateNegativeSet {
   input {
-    String numberNumber
-    String widthWidth
-    Boolean verboseVerbose
-    String? gffGff
-    String? genomeGenome
-    String? prefixPrefix
-    String? outdirOutdir
+    String? number
+    String? width
+    Boolean? verbose
   }
   command <<<
     mb-generate-negative-set \
-      ~{gffGff} \
-      ~{if defined(numberNumber) then ("--number " +  '"' + numberNumber + '"') else ""} \
-      ~{if defined(widthWidth) then ("--width " +  '"' + widthWidth + '"') else ""} \
-      ~{true="--verbose" false="" verboseVerbose} \
-      ~{genomeGenome} \
-      ~{prefixPrefix} \
-      ~{outdirOutdir}
+      ~{if defined(number) then ("--number " +  '"' + number + '"') else ""} \
+      ~{if defined(width) then ("--width " +  '"' + width + '"') else ""} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    number: "set number or random drawings"
+    width: "set number or nt +/- selected position"
+    verbose: "verbose output"
+  }
 }

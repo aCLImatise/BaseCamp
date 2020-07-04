@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tadbit_segment.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tadbit_segment.cwl
 inputs:
 - id: workdir
   doc: path to working directory (generated with the tool tadbit mapper)

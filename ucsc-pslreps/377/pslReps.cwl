@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: pslReps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pslReps.cwl
 inputs:
-- id: in_psl
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: out_psl
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: out_psr
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: no_head
   doc: Don't add PSL header.
   type: boolean
@@ -37,8 +22,8 @@ inputs:
   inputBinding:
     prefix: -singleHit
 - id: min_cover
-  doc: =0.N      Minimum coverage to output.  Default is 0.
-  type: boolean
+  doc: Minimum coverage to output.  Default is 0.
+  type: string
   inputBinding:
     prefix: -minCover
 - id: ignore_ns
@@ -47,13 +32,13 @@ inputs:
   inputBinding:
     prefix: -ignoreNs
 - id: min_ali
-  doc: =0.N        Minimum alignment ratio.  Default is 0.93.
-  type: boolean
+  doc: Minimum alignment ratio.  Default is 0.93.
+  type: string
   inputBinding:
     prefix: -minAli
 - id: near_top
-  doc: =0.N       How much can deviate from top and be taken. Default is 0.01.
-  type: boolean
+  doc: How much can deviate from top and be taken. Default is 0.01.
+  type: string
   inputBinding:
     prefix: -nearTop
 - id: min_near_top_size
@@ -68,6 +53,21 @@ inputs:
   type: File
   inputBinding:
     prefix: -coverQSizes
+- id: in_dot_psl
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: out_dot_psl
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: out_dot_psr
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

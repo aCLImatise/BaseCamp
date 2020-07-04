@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: targqc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/targqc.cwl
 inputs:
 - id: down_sample_pairs_num
   doc: If input is FastQ, select N random read pairs from each input set (instead

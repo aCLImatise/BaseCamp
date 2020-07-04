@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: genePredToBigGenePred.cwl
+id: ../../../../home/ubuntu/BiocondaCli/genePredToBigGenePred.cwl
 inputs:
 - id: known
   doc: input file is a genePred in knownGene format
@@ -27,6 +27,16 @@ inputs:
   type: string
   inputBinding:
     prefix: -cds
+- id: file_do_tgp
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
+- id: stdout
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

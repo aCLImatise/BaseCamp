@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _distmat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_distmat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

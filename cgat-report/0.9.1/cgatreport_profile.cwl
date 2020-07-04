@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cgatreport_profile.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cgatreport_profile.cwl
 inputs:
 - id: section
   doc: only examine certain sections [default=[]]
@@ -16,6 +16,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --filter
+- id: python
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: mirtrace.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mirtrace.cwl
 inputs:
-- id: trace
-  doc: miRNA trace mode. Produces a clade report. --species is ignored.
-  type: string
-  inputBinding:
-    position: 0
-- id: qc
-  doc: Quality control mode (full set of reports). --species must be given.
-  type: string
-  inputBinding:
-    position: 1
 - id: species
   doc: 'Species (miRBase encoding). EXAMPLE: "hsa" for Homo sapiens. To list all codes,
     run "miRTrace --list-species".'
@@ -110,6 +100,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --cite
+- id: trace
+  doc: miRNA trace mode. Produces a clade report. --species is ignored.
+  type: string
+  inputBinding:
+    position: 0
+- id: qc
+  doc: Quality control mode (full set of reports). --species must be given.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

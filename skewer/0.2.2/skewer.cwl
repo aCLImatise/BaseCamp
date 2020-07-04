@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: skewer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/skewer.cwl
 inputs:
-- id: x
+- id: adapter_sequencefile_agatcggaagagcacacgtctgaactccagtcac
   doc: Adapter sequence/file (AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC)
   type: string
   inputBinding:
     prefix: -x
-- id: y
+- id: adapter_sequencefile_pairend
   doc: Adapter sequence/file for pair-end reads (AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA),
     implied by -x if -x is the only one specified explicitly.
   type: string
@@ -17,7 +17,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --matrix
-- id: j
+- id: junction_adapter_sequencefile
   doc: Junction adapter sequence/file for Nextera Mate Pair reads (CTGTCTCTTATACACATCTAGATGTGTATAAGAGACAG)
   type: string
   inputBinding:
@@ -33,19 +33,19 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --barcode
-- id: r
+- id: maximum_allowed_errors
   doc: 'Maximum allowed error rate (normalized #errors / length of aligned region)
     [0, 0.5], (0.1)'
   type: string
   inputBinding:
     prefix: -r
-- id: d
+- id: maximum_allowed_rate
   doc: Maximum allowed indel error rate [0, r], (0.03) reciprocal is used for -r,
     -e and -d when num > or = 2
   type: string
   inputBinding:
     prefix: -d
-- id: k
+- id: minimum_overlap_length
   doc: Minimum overlap length for adapter detection [1, inf); (max(1, int(4-10*r))
     for single-end; (<junction length>/2) for mate-pair)
   type: long
@@ -57,7 +57,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --cut
-- id: cut3
+- id: cut_three
   doc: Hard clip off the 3' tailing bases if the read length is greater than the maximum
     read length specified by -L; (no)
   type: boolean
@@ -83,12 +83,12 @@ inputs:
   type: long
   inputBinding:
     prefix: --max
-- id: n
+- id: filter_degenerative_many
   doc: Whether to filter out highly degenerative (many Ns) reads; (no)
   type: boolean
   inputBinding:
     prefix: -n
-- id: u
+- id: filter_undetermined_matepair
   doc: Whether to filter out undetermined mate-pair reads; (no)
   type: boolean
   inputBinding:
@@ -98,6 +98,26 @@ inputs:
   type: string
   inputBinding:
     prefix: --fillNs
+- id: format
+  doc: 'Format of FASTQ quality value: sanger|solexa|auto; (auto)'
+  type: string
+  inputBinding:
+    prefix: --format
+- id: output
+  doc: Base name of output file; ('<reads>.trimmed')
+  type: string
+  inputBinding:
+    prefix: --output
+- id: compress
+  doc: Compress output in GZIP format (no)
+  type: boolean
+  inputBinding:
+    prefix: --compress
+- id: stdout
+  doc: Redirect output to STDOUT, suppressing -b, -o, and -z options (no)
+  type: boolean
+  inputBinding:
+    prefix: --stdout
 - id: q_ii_me
   doc: 'Prepare the "barcodes.fastq" and "mapping_file.txt" for processing with QIIME;
     (default: no)'
@@ -131,6 +151,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: reads_dot_fast_q
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: paired_reads_dot_fast_q
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

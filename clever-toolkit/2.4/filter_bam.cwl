@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: filter_bam.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_bam.cwl
 inputs:
 - id: exclude_read_group
   doc: Name of readgroup to discard.

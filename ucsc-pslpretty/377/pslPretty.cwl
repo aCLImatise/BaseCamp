@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: pslPretty.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pslPretty.cwl
 inputs:
-- id: in_psl
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: target_lst
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: query_lst
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: pretty_out
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
 - id: axt
   doc: Save in format like Scott Schwartz's axt format. Note gaps in both sequences
     are still allowed in the output, which not all axt readers will expect.
@@ -42,6 +22,26 @@ inputs:
   type: File
   inputBinding:
     prefix: -check
+- id: in_dot_psl
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: target_dot_lst
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: query_dot_lst
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: pretty_dot_out
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

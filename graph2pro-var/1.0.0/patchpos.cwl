@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: patchpos.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/patchpos.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

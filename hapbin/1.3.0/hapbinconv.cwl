@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hapbinconv.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hapbinconv.cwl
 inputs:
 - id: hap
   doc: ASCII Hap file

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: search_fusion_gene.cwl
+id: ../../../../home/ubuntu/BiocondaCli/search_fusion_gene.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

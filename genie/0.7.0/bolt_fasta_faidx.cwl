@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: bolt_fasta_faidx.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bolt_fasta_faidx.cwl
 inputs:
+- id: file_path
+  doc: A bam file (*require)
+  type: string
+  inputBinding:
+    prefix: --filepath
 - id: genie
   doc: ''
   type: string
@@ -21,11 +26,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: file_path
-  doc: A bam file (*require)
-  type: string
-  inputBinding:
-    prefix: --filepath
 outputs: []
 cwlVersion: v1.1
 baseCommand:

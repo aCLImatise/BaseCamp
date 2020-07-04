@@ -1,7 +1,14 @@
 version 1.0
 
 task Transit {
+  input {
+    String python
+  }
   command <<<
-    transit
+    transit \
+      ~{python}
   >>>
+  parameter_meta {
+    python: ""
+  }
 }

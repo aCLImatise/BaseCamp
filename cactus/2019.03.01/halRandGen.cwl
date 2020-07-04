@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: halRandGen.cwl
+id: ../../../../home/ubuntu/BiocondaCli/halRandGen.cwl
 inputs:
 - id: hal_stats
   doc: ''

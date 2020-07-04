@@ -2,14 +2,19 @@ version 1.0
 
 task StochasticSmp {
   input {
-    String? stochasticStochastic
-    String? inputInputFile
-    String? ctCtFile
+    String stochastic
+    String input_file
+    String ct_file
   }
   command <<<
     stochastic-smp \
-      ~{stochasticStochastic} \
-      ~{inputInputFile} \
-      ~{ctCtFile}
+      ~{stochastic} \
+      ~{input_file} \
+      ~{ct_file}
   >>>
+  parameter_meta {
+    stochastic: ""
+    input_file: ""
+    ct_file: ""
+  }
 }

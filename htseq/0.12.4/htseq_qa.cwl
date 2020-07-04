@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: htseq_qa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/htseq_qa.cwl
 inputs:
-- id: read_filename
-  doc: The file to count reads in (SAM/BAM or Fastq)
-  type: string
-  inputBinding:
-    position: 0
 - id: type
   doc: 'type of read_file (one of: sam [default], bam, solexa- export, fastq, solexa-fastq)'
   type: string
@@ -49,6 +44,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --max-records
+- id: read_filename
+  doc: The file to count reads in (SAM/BAM or Fastq)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

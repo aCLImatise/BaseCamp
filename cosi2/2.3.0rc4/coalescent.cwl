@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: coalescent.cwl
+id: ../../../../home/ubuntu/BiocondaCli/coalescent.cwl
 inputs:
-- id: p
+- id: arg_parameter_file
   doc: '[ --paramfile ] arg                parameter file'
   type: boolean
   inputBinding:
     prefix: -p
-- id: r
+- id: arg_genetic_map
   doc: '[ --recombfile ] arg               genetic map file (if specified,  overrides
     the one in paramfile)'
   type: boolean
@@ -17,37 +17,37 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --genmapRandomRegions
-- id: j
+- id: arg_file_read
   doc: '[ --trajfile ] arg                 file from which to read sweep  trajectory'
   type: boolean
   inputBinding:
     prefix: -J
-- id: n
+- id: arg_number_output
   doc: '[ --nsims ] arg (=1)               number of simulations to output'
   type: boolean
   inputBinding:
     prefix: -n
-- id: r
+- id: arg_random_seed
   doc: '[ --seed ] arg (=0)                random seed (0 to use current time)'
   type: boolean
   inputBinding:
     prefix: -r
-- id: u
+- id: arg_max_dist
   doc: '[ --max-coal-dist ] arg            max dist betw segs for coalescence'
   type: boolean
   inputBinding:
     prefix: -u
-- id: u
+- id: use_convex_hull
   doc: '[ --max-coal-dist-cvx-hull ]       use convex hull for max coal dist'
   type: boolean
   inputBinding:
     prefix: -U
-- id: g
+- id: arg_shift_locations
   doc: '[ --genmapshift ] arg              shift all genmap locations by this  delta'
   type: boolean
   inputBinding:
     prefix: -G
-- id: e
+- id: sweep_end_freq
   doc: '[ --sweep-frac-sample ]            sweep end freq specifies exact sample  fraction'
   type: boolean
   inputBinding:
@@ -68,7 +68,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --apx-rej-samp
-- id: sweep3_no_one_sided_re_combs
+- id: sweep_three_no_one_sided_re_combs
   doc: handle one-sided recombs (experimental)
   type: boolean
   inputBinding:
@@ -93,12 +93,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --traj-only
-- id: o
+- id: arg_base_name
   doc: '[ --outfilebase ] arg              base name for output files in cosi  format'
   type: boolean
   inputBinding:
     prefix: -o
-- id: m
+- id: write_output_stdout_ms
   doc: '[ --outms ]                        write output to stdout in ms format'
   type: boolean
   inputBinding:
@@ -118,33 +118,33 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --output-gen-map
-- id: p
+- id: arg_number_decimal
   doc: '[ --output-precision ] arg         number of decimal places used for  floats
     in the outputs'
   type: boolean
   inputBinding:
     prefix: -P
-- id: j
+- id: arg_file_output
   doc: '[ --trajoutfile ] arg              file to which to output sweep  trajectory'
   type: boolean
   inputBinding:
     prefix: -j
-- id: t
+- id: output_tree_stats
   doc: '[ --write-tree-stats ]             output tree stats'
   type: boolean
   inputBinding:
     prefix: -T
-- id: m
+- id: output_mutation_ages
   doc: '[ --write-mut-ages ]               output mutation ages'
   type: boolean
   inputBinding:
     prefix: -M
-- id: l
+- id: output_recombination_locations
   doc: '[ --write-recomb-locs ]            output recombination locations'
   type: boolean
   inputBinding:
     prefix: -L
-- id: e
+- id: representing_locations_simulated
   doc: "[ --output-ARG ]                   output ARG edges.  Edges are written in\
     \ ms output format (see -m option), one  per line, after the '//' line but  before\
     \ the 'segsites: ' line of each  simulation. Format is: E <edgeKind> <node_1_id>\
@@ -156,7 +156,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -e
-- id: c
+- id: position_output_mutation
   doc: '[ --write-mut-contexts ] position  output mutation contexts for these  locations'
   type: boolean
   inputBinding:
@@ -166,47 +166,47 @@ inputs:
   type: string
   inputBinding:
     prefix: --drop-singletons
-- id: v
+- id: print_version_info
   doc: '[ --version ]                      print version info and compile-time  options'
   type: boolean
   inputBinding:
     prefix: -V
-- id: v
+- id: _verbose_output
   doc: '[ --verbose ]                      verbose output'
   type: boolean
   inputBinding:
     prefix: -v
-- id: g
+- id: _show_progress
   doc: '[ --show-progress ] [=arg(=10)]    show progress'
   type: boolean
   inputBinding:
     prefix: -g
-- id: l
+- id: arg_log_file
   doc: '[ --logfile ] arg                  log file'
   type: boolean
   inputBinding:
     prefix: -l
-- id: s
+- id: arg_seg_file
   doc: '[ --segfile ] arg                  seg file'
   type: boolean
   inputBinding:
     prefix: -s
-- id: d
+- id: arg_delta_factor
   doc: '[ --deltaTfactor ] arg (=1)        delta factor for sweep'
   type: boolean
   inputBinding:
     prefix: -d
-- id: t
+- id: compute_tree_size
   doc: '[ --tree-size-only ]               compute tree size only'
   type: boolean
   inputBinding:
     prefix: -t
-- id: k
+- id: print_number_recombs
   doc: '[ --show-num-recombs ]             print number of recombs'
   type: boolean
   inputBinding:
     prefix: -k
-- id: s
+- id: _simulation_quit
   doc: '[ --sim-and-quit ]                 do simulation and quit'
   type: boolean
   inputBinding:

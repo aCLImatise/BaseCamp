@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: incorporateVCF.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/incorporateVCF.py.cwl
 inputs:
-- id: p
+- id: threads_to_run
   doc: Threads to run
   type: string
   inputBinding:
     prefix: -p
-- id: f
+- id: fasta_file_incorporate
   doc: '[FASTA], --fasta [FASTA] The fasta file to incorporate changes into.'
   type: boolean
   inputBinding:
     prefix: -f
-- id: o
+- id: file_write_file
   doc: '[OUT], --out [OUT] The file to write resulting fasta file to.'
   type: boolean
   inputBinding:
@@ -56,6 +56,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --append-chromosome
+- id: fast_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: out
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

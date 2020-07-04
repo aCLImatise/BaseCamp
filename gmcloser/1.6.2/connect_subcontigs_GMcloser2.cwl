@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: connect_subcontigs_GMcloser2.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/connect_subcontigs_GMcloser2.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

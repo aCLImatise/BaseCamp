@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: CIRCexplorer2_align.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CIRCexplorer2_align.cwl
 inputs:
 - id: gtf
   doc: Annotation GTF file.
@@ -11,12 +11,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --genome
-- id: bowtie1
+- id: bowtie_one
   doc: Index files for Bowtie1 (used for TopHat-Fusion).
   type: string
   inputBinding:
     prefix: --bowtie1
-- id: bowtie2
+- id: bowtie_two
   doc: Index files for Bowtie2 (used for TopHat2).
   type: string
   inputBinding:

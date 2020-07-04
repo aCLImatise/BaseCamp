@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: cutadapt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cutadapt.cwl
 inputs:
-- id: input_fast_q
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: debug
   doc: "[{trace}]     Print debug log. 'trace' prints also DP matrices"
   type: boolean
@@ -94,12 +89,12 @@ inputs:
   inputBinding:
     prefix: --cut
 - id: next_seq_trim
-  doc: 3'CUTOFF NextSeq-specific quality trimming (each read). Trims also dark cycles
-    appearing as high-quality G bases.
-  type: boolean
+  doc: "'CUTOFF NextSeq-specific quality trimming (each read). Trims also dark cycles\
+    \ appearing as high-quality G bases."
+  type: string
   inputBinding:
     prefix: --nextseq-trim
-- id: q
+- id: _end_second
   doc: "[5'CUTOFF,]3'CUTOFF, --quality-cutoff [5'CUTOFF,]3'CUTOFF Trim low-quality\
     \ bases from 5' and/or 3' ends of each read before adapter removal. Applied to\
     \ both reads if data is paired. If one value is given, only the 3' end is trimmed.\
@@ -154,13 +149,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --zero-cap
-- id: m
+- id: discard_reads_shorter
   doc: '[:LEN2], --minimum-length LEN[:LEN2] Discard reads shorter than LEN. Default:
     0'
   type: string
   inputBinding:
     prefix: -m
-- id: m
+- id: discard_reads_longer
   doc: '[:LEN2], --maximum-length LEN[:LEN2] Discard reads longer than LEN. Default:
     no limit'
   type: string
@@ -216,7 +211,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --fasta
-- id: z
+- id: use_compression_level
   doc: Use compression level 1 for gzipped output files (faster, but uses more space)
   type: boolean
   inputBinding:
@@ -272,7 +267,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -B
-- id: u
+- id: remove_length_bases
   doc: Remove LENGTH bases from second read in a pair.
   type: long
   inputBinding:
@@ -315,6 +310,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --too-long-paired-output
+- id: input_dot_fast_q
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

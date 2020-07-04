@@ -2,10 +2,13 @@ version 1.0
 
 task Phame {
   input {
-    String? controlControlFile
+    String control_file
   }
   command <<<
     phame \
-      ~{controlControlFile}
+      ~{control_file}
   >>>
+  parameter_meta {
+    control_file: ""
+  }
 }

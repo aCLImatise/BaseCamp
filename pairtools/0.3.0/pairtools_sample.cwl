@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pairtools_sample.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pairtools_sample.cwl
 inputs:
 - id: output
   doc: output file. If the path ends with .gz or .lz4, the output is pbgzip-/lz4c-compressed.
@@ -38,6 +38,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --cmd-out
+- id: fraction
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: pairs_path
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

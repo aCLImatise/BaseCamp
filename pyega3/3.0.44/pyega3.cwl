@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pyega3.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pyega3.cwl
 inputs:
 - id: debug
   doc: Extra debugging messages

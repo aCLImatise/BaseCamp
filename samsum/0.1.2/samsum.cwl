@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: samsum.cwl
+id: ../../../../home/ubuntu/BiocondaCli/samsum.cwl
 inputs:
 - id: command
   doc: ''

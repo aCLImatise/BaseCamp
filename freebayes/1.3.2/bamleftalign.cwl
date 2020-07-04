@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamleftalign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamleftalign.cwl
 inputs:
 - id: fast_a_reference
   doc: FASTA reference file to use for realignment (required)
@@ -26,6 +26,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --compressed
+- id: bam
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: data
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: stream
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

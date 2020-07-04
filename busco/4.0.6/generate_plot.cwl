@@ -1,32 +1,7 @@
 class: CommandLineTool
-id: generate_plot.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/generate_plot.py.cwl
 inputs:
-- id: python_3
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: generate_plot_py
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: working_directory
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: other
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
-- id: working_directory
+- id: define_location_working
   doc: Define the location of your working directory
   type: File
   inputBinding:
@@ -46,6 +21,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: var_4
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: other
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

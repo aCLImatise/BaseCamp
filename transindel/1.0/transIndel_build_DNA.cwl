@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: transIndel_build_DNA.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/transIndel_build_DNA.py.cwl
 inputs:
-- id: python
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: trans_in_del_build_dna_py
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: opts
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: mapq_cut_off
   doc: :minimal MapQ in SAM for support SV event, default 15
   type: boolean
@@ -26,6 +11,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --max_del_length
+- id: i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
+- id: o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
+- id: opts
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

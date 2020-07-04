@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: recognicer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/recognicer.cwl
 inputs:
-- id: use
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: more
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: information
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: treatment_file
   doc: Name of the sample file you wish to run RECOGNICER on. This can either be the
     relative or the absolute path of the file. Must be in BED or BAM format.
@@ -99,6 +84,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: h
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -h
+- id: use
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: more
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: information
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

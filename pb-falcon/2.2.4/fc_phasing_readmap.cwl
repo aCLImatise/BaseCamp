@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fc_phasing_readmap.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fc_phasing_readmap.py.cwl
 inputs:
 - id: phased_reads
   doc: 'path to read vs. phase map (default: None)'

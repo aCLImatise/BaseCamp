@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: smof_split.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smof_split.cwl
 inputs:
-- id: input
-  doc: input fasta sequence (default = stdin)
-  type: string
-  inputBinding:
-    position: 0
 - id: number
   doc: Number of output files or sequences per file
   type: string
@@ -21,6 +16,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --prefix
+- id: input
+  doc: input fasta sequence (default = stdin)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

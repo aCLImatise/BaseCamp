@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ghost_tree_scaffold_hybrid_tree_foundation_tree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ghost_tree_scaffold_hybrid_tree_foundation_tree.cwl
 inputs:
 - id: graft_level
   doc: '[p|c|o|f|g]  Taxonomic level to graft extensions to foundation. Default is

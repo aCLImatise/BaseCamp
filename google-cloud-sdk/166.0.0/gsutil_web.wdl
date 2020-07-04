@@ -2,16 +2,22 @@ version 1.0
 
 task GsutilWeb {
   input {
-    String mM
-    String eE
-    String? setSet
-    String? bucketBucketUrl
+    String? m
+    String? e
+    String set
+    String bucket_url_dot_dot_dot
   }
   command <<<
     gsutil web \
-      ~{setSet} \
-      ~{if defined(mM) then ("-m " +  '"' + mM + '"') else ""} \
-      ~{if defined(eE) then ("-e " +  '"' + eE + '"') else ""} \
-      ~{bucketBucketUrl}
+      ~{set} \
+      ~{bucket_url_dot_dot_dot} \
+      ~{if defined(m) then ("-m " +  '"' + m + '"') else ""} \
+      ~{if defined(e) then ("-e " +  '"' + e + '"') else ""}
   >>>
+  parameter_meta {
+    m: ""
+    e: ""
+    set: ""
+    bucket_url_dot_dot_dot: ""
+  }
 }

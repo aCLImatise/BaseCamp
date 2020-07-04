@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: DatabaseParser.cwl
+id: ../../../../home/ubuntu/BiocondaCli/DatabaseParser.cwl
 inputs:
 - id: xml_file
   doc: ''

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _pepwindow.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_pepwindow.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

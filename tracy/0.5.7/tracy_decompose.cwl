@@ -1,37 +1,27 @@
 class: CommandLineTool
-id: tracy_decompose.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tracy_decompose.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: trace_ab1
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: r
+- id: arg_gzipped_fasta
   doc: '[ --genome ] arg                 (gzipped) fasta or wildtype ab1 file'
   type: boolean
   inputBinding:
     prefix: -r
-- id: p
+- id: arg_peak_ratio
   doc: '[ --pratio ] arg (=0.330000013)  peak ratio to call base'
   type: boolean
   inputBinding:
     prefix: -p
-- id: k
+- id: arg_kmer_size
   doc: '[ --kmer ] arg (=15)             kmer size'
   type: boolean
   inputBinding:
     prefix: -k
-- id: s
+- id: arg_min_kmer
   doc: '[ --support ] arg (=3)           min. kmer support'
   type: boolean
   inputBinding:
     prefix: -s
-- id: i
+- id: arg_max_indel
   doc: '[ --maxindel ] arg (=1000)       max. indel size in Sanger trace'
   type: boolean
   inputBinding:
@@ -42,57 +32,62 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -a
-- id: v
+- id: call_variants_trace
   doc: '[ --callVariants ]               call variants in trace'
   type: boolean
   inputBinding:
     prefix: -v
-- id: g
+- id: arg_gap_open
   doc: '[ --gapopen ] arg (=-10)         gap open'
   type: boolean
   inputBinding:
     prefix: -g
-- id: e
+- id: arg_gap_extension
   doc: '[ --gapext ] arg (=-4)           gap extension'
   type: boolean
   inputBinding:
     prefix: -e
-- id: m
+- id: _arg_match
   doc: '[ --match ] arg (=3)             match'
   type: boolean
   inputBinding:
     prefix: -m
-- id: n
+- id: _arg_mismatch
   doc: '[ --mismatch ] arg (=-5)         mismatch'
   type: boolean
   inputBinding:
     prefix: -n
-- id: t
+- id: use_trimleft_trimright
   doc: '[ --trim ] arg (=0)              trimming stringency [1:9], 0: use  trimLeft
     and trimRight'
   type: boolean
   inputBinding:
     prefix: -t
-- id: q
+- id: arg_trim_size_left
   doc: '[ --trimLeft ] arg (=50)         trim size left'
   type: boolean
   inputBinding:
     prefix: -q
-- id: u
+- id: arg_trim_size_right
   doc: '[ --trimRight ] arg (=50)        trim size right'
   type: boolean
   inputBinding:
     prefix: -u
-- id: l
+- id: arg_alignment_line
   doc: '[ --linelimit ] arg (=60)        alignment line length'
   type: boolean
   inputBinding:
     prefix: -l
-- id: o
+- id: arg_output_prefix
   doc: '[ --outprefix ] arg (=out)       output prefix'
   type: boolean
   inputBinding:
     prefix: -o
+- id: trace_do_tab_one
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

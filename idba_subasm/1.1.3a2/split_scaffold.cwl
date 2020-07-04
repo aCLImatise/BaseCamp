@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: split_scaffold.cwl
+id: ../../../../home/ubuntu/BiocondaCli/split_scaffold.cwl
 inputs:
-- id: scaffold_fa
+- id: scaffold_dot_fa
   doc: ''
   type: string
   inputBinding:

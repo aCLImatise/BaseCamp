@@ -1,50 +1,45 @@
 class: CommandLineTool
-id: PrepPois.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PrepPois.cwl
 inputs:
-- id: f_a_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: i
+- id: two_column_read
   doc: ': a two column read count file(position and count); If unspecified, use <stdin>
     as input; Data should be ordered by position'
   type: string
   inputBinding:
     prefix: -i
-- id: g
+- id: file_contain_information
   doc: ': the file that contain the gap information of the chromosome (two column,
     start and end of the gaps)'
   type: string
   inputBinding:
     prefix: -g
-- id: s
+- id: fragment_size_estimated
   doc: ': fragment size as estimated from paired end data or by cross correlation
     of reads on postive and negative strands; Default 300'
   type: long
   inputBinding:
     prefix: -s
-- id: l
+- id: read_length_default
   doc: ': read length; Default 50'
   type: long
   inputBinding:
     prefix: -l
-- id: o
+- id: specified_use_output
   doc: ': if specified, use this as output'
   type: string
   inputBinding:
     prefix: -o
-- id: e
+- id: file_stores_estimates
   doc: ': the file that stores the estimates of the glm model'
   type: string
   inputBinding:
     prefix: -e
-- id: b
+- id: bin_size_default
   doc: ': the bin size; default 100; only valid if -e is specified'
   type: long
   inputBinding:
     prefix: -b
-- id: p
+- id: highest_degree_polynomials
   doc: ': the highest degree of polynomials of GC used in the normalization procedure;
     Default 2.'
   type: long
@@ -107,6 +102,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --refine
+- id: fa_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

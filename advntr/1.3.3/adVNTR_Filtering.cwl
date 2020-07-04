@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: adVNTR_Filtering.cwl
+id: ../../../../home/ubuntu/BiocondaCli/adVNTR_Filtering.cwl
 inputs:
-- id: sequences_fa
+- id: sequences_dot_fa
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: keywords_txt
+- id: keywords_dot_txt
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: output_txt
+- id: output_dot_txt
   doc: ''
   type: string
   inputBinding:

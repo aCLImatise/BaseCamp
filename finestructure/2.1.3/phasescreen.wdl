@@ -2,16 +2,22 @@ version 1.0
 
 task Phasescreen.pl {
   input {
-    String? perlPerl
-    String? phasesPhasesScreenPl
-    String? phasePhaseFile
-    String? outputOutputPhaseFile
+    String perl
+    String phases_screen_do_tpl
+    String phase_file
+    String output_phase_file
   }
   command <<<
     phasescreen.pl \
-      ~{perlPerl} \
-      ~{phasesPhasesScreenPl} \
-      ~{phasePhaseFile} \
-      ~{outputOutputPhaseFile}
+      ~{perl} \
+      ~{phases_screen_do_tpl} \
+      ~{phase_file} \
+      ~{output_phase_file}
   >>>
+  parameter_meta {
+    perl: ""
+    phases_screen_do_tpl: ""
+    phase_file: ""
+    output_phase_file: ""
+  }
 }

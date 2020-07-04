@@ -1,13 +1,17 @@
 version 1.0
 
-task FilterGenesInMRNAname.plDbfile {
+task FilterGenesInMRNAname.pl {
   input {
-    String? gtfGtfFile
-    String? dbfileDbfile
+    String gtf_file
+    String dbfile
   }
   command <<<
-    filterGenesIn_mRNAname.pl dbfile \
-      ~{gtfGtfFile} \
-      ~{dbfileDbfile}
+    filterGenesIn_mRNAname.pl \
+      ~{gtf_file} \
+      ~{dbfile}
   >>>
+  parameter_meta {
+    gtf_file: ""
+    dbfile: ""
+  }
 }

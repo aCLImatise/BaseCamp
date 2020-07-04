@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bp_download_query_genbank.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bp_download_query_genbank.pl.cwl
 inputs:
 - id: query
   doc: string OR

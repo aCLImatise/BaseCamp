@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bed2region.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bed2region.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

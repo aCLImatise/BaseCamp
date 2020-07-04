@@ -1,27 +1,22 @@
 class: CommandLineTool
-id: smudgeplot.py_plot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smudgeplot.py_plot.cwl
 inputs:
-- id: in_file
-  doc: name of the input tsv file with covarages (default "coverages_2.tsv")."
-  type: string
-  inputBinding:
-    position: 0
-- id: o
+- id: pattern_used_name
   doc: The pattern used to name the output (smudgeplot).
   type: string
   inputBinding:
     prefix: -o
-- id: q
+- id: remove_kmer_pairs
   doc: Remove kmer pairs with coverage over the specified quantile; (default none).
   type: string
   inputBinding:
     prefix: -q
-- id: l
+- id: lower_boundary_used
   doc: The lower boundary used when dumping kmers (default min(total_pair_cov) / 2).
   type: string
   inputBinding:
     prefix: -L
-- id: n
+- id: expected_haploid_coverage
   doc: The expected haploid coverage (default estimated from data).
   type: string
   inputBinding:
@@ -36,7 +31,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -nbins
-- id: k
+- id: the_length_kmer
   doc: The length of the kmer.
   type: string
   inputBinding:
@@ -47,6 +42,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --homozygous
+- id: in_file
+  doc: name of the input tsv file with covarages (default "coverages_2.tsv")."
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

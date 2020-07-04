@@ -1,17 +1,6 @@
 class: CommandLineTool
-id: extract_bcs.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extract_bcs.py.cwl
 inputs:
-- id: in_file
-  doc: Path to fastq file.
-  type: string
-  inputBinding:
-    position: 0
-- id: pattern
-  doc: Pattern of barcode nucleotides starting at 5'-end. X positions will be moved
-    to the header, N positions will be kept.
-  type: string
-  inputBinding:
-    position: 1
 - id: outfile
   doc: Write results to this file.
   type: string
@@ -42,6 +31,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --debug
+- id: in_file
+  doc: Path to fastq file.
+  type: string
+  inputBinding:
+    position: 0
+- id: pattern
+  doc: Pattern of barcode nucleotides starting at 5'-end. X positions will be moved
+    to the header, N positions will be kept.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

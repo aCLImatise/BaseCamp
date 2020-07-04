@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: asndhuff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/asndhuff.cwl
 inputs:
-- id: i
+- id: input_file
   doc: Input file [File In]
   type: boolean
   inputBinding:
     prefix: -i
-- id: o
+- id: output_file_optional
   doc: Output file [File Out]  Optional
   type: boolean
   inputBinding:

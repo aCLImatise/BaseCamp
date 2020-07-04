@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: vcfsort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfsort.cwl
 inputs:
-- id: e
+- id: equivalent_to_ve
   doc: equivalent to -vE
   type: boolean
   inputBinding:
@@ -21,7 +21,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --squeeze-blank
-- id: t
+- id: to_vt
   doc: to -vT
   type: string
   inputBinding:
@@ -31,7 +31,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --show-tabs
-- id: u
+- id: ignored
   doc: (ignored)
   type: boolean
   inputBinding:
@@ -41,6 +41,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --show-nonprinting
+- id: cat
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

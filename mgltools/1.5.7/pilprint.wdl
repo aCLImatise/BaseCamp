@@ -2,18 +2,22 @@ version 1.0
 
 task Pilprint.py {
   input {
-    Boolean cC
-    Boolean pP
-    String pP
-    String? pilPilPrint
-    File? filesFiles
+    Boolean? colour_printer_default
+    Boolean? print_lpr_default
+    String? same_p_use
+    File files_dot_dot_dot
   }
   command <<<
     pilprint.py \
-      ~{pilPilPrint} \
-      ~{true="-c" false="" cC} \
-      ~{true="-p" false="" pP} \
-      ~{if defined(pP) then ("-P " +  '"' + pP + '"') else ""} \
-      ~{filesFiles}
+      ~{files_dot_dot_dot} \
+      ~{true="-c" false="" colour_printer_default} \
+      ~{true="-p" false="" print_lpr_default} \
+      ~{if defined(same_p_use) then ("-P " +  '"' + same_p_use + '"') else ""}
   >>>
+  parameter_meta {
+    colour_printer_default: "colour printer (default is monochrome)"
+    print_lpr_default: "print via lpr (default is stdout)"
+    same_p_use: "same as -p but use given printer"
+    files_dot_dot_dot: ""
+  }
 }

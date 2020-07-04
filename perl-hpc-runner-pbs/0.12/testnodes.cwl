@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: testnodes.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/testnodes.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

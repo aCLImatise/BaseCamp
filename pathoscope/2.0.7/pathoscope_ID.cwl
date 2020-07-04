@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pathoscope_ID.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pathoscope_ID.cwl
 inputs:
 - id: out_matrix
   doc: Output alignment matrix

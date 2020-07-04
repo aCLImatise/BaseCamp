@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bolt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bolt.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

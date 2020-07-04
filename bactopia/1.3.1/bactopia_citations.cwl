@@ -1,7 +1,12 @@
 class: CommandLineTool
-id: bactopia_citations.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bactopia_citations.py.cwl
 inputs:
-- id: bac_topia
+- id: directory_where_stored
+  doc: Directory where Bactopia repository is stored.
+  type: string
+  inputBinding:
+    prefix: --bactopia
+- id: var_1
   doc: ''
   type: string
   inputBinding:
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: bac_topia
-  doc: Directory where Bactopia repository is stored.
-  type: string
-  inputBinding:
-    prefix: --bactopia
 outputs: []
 cwlVersion: v1.1
 baseCommand:

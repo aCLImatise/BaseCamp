@@ -2,14 +2,19 @@ version 1.0
 
 task Scheck {
   input {
-    Boolean optionsOptions
-    String? sSTest
-    String? seqSeqFileIn
+    Boolean? options
+    String s_test
+    String seq_file_in
   }
   command <<<
     scheck \
-      ~{sSTest} \
-      ~{true="-options" false="" optionsOptions} \
-      ~{seqSeqFileIn}
+      ~{s_test} \
+      ~{seq_file_in} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    options: ""
+    s_test: ""
+    seq_file_in: ""
+  }
 }

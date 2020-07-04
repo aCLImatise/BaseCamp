@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: megahit_core_no_hw_accel_contig2fastg.cwl
+id: ../../../../home/ubuntu/BiocondaCli/megahit_core_no_hw_accel_contig2fastg.cwl
 inputs:
-- id: contig2fastg
+- id: contig_two_fast_g
   doc: ''
   type: string
   inputBinding:
@@ -11,7 +11,7 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: k_km_er_size_contigs_fa
+- id: k_km_er_size_dot_contigs_dot_fa
   doc: ''
   type: string
   inputBinding:

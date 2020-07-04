@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: phmmer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phmmer.cwl
 inputs:
-- id: o
+- id: direct_output_file
   doc: ': direct output to file <f>, not stdout'
   type: string
   inputBinding:
     prefix: -o
-- id: a
+- id: save_multiple_alignment
   doc: ': save multiple alignment of hits to file <f>'
   type: string
   inputBinding:
@@ -66,12 +66,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --mxfile
-- id: e
+- id: report_sequences_evalue
   doc: ': report sequences <= this E-value threshold in output  [10.0]  (x>0)'
   type: string
   inputBinding:
     prefix: -E
-- id: t
+- id: report_sequences_threshold
   doc: ': report sequences >= this score threshold in output'
   type: string
   inputBinding:
@@ -111,17 +111,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --max
-- id: f1
+- id: fone
   doc: ': Stage 1 (MSV) threshold: promote hits w/ P <= F1  [0.02]'
   type: string
   inputBinding:
     prefix: --F1
-- id: f2
+- id: f_two
   doc: ': Stage 2 (Vit) threshold: promote hits w/ P <= F2  [1e-3]'
   type: string
   inputBinding:
     prefix: --F2
-- id: f3
+- id: f_three
   doc: ': Stage 3 (Fwd) threshold: promote hits w/ P <= F3  [1e-5]'
   type: string
   inputBinding:
@@ -166,12 +166,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --Eft
-- id: nonull2
+- id: no_null_two
   doc: ': turn off biased composition score corrections'
   type: boolean
   inputBinding:
     prefix: --nonull2
-- id: z
+- id: set_comparisons_done
   doc: ': set # of comparisons done, for E-value calculation'
   type: string
   inputBinding:
@@ -201,6 +201,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --cpu
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

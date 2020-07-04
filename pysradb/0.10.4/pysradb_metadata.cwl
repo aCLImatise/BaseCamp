@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pysradb_metadata.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pysradb_metadata.cwl
 inputs:
 - id: save_to
   doc: Save metadata dataframe to file

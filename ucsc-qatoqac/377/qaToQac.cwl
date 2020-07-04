@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: qaToQac.cwl
+id: ../../../../home/ubuntu/BiocondaCli/qaToQac.cwl
 inputs:
-- id: in_qa
+- id: in_dot_qa
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: out_qac
+- id: out_dot_qac
   doc: ''
   type: string
   inputBinding:

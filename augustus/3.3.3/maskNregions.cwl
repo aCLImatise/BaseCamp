@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: maskNregions.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maskNregions.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

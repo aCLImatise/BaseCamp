@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: complete_locus.cwl
+id: ../../../../home/ubuntu/BiocondaCli/complete_locus.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: input
   doc: Path to input locus file
   type: File

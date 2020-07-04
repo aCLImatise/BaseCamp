@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: optimize_primers.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/optimize_primers.py.cwl
 inputs:
 - id: hits_fp
   doc: Target primer hits file to generate base frequencies with. [REQUIRED]

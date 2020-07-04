@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Sibelia.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Sibelia.cwl
 inputs:
 - id: sibel_i_a
   doc: '{-s <loose|fine|far>|-k <file name>} [-o <dir name>] [--noblocks] [-r] [-a]
@@ -9,16 +9,6 @@ inputs:
   type: string
   inputBinding:
     position: 0
-- id: or
-  doc: --
-  type: boolean
-  inputBinding:
-    prefix: -- OR
-- id: k
-  doc: ',  --stagefile <file name>'
-  type: File
-  inputBinding:
-    prefix: -k
 outputs: []
 cwlVersion: v1.1
 baseCommand:

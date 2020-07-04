@@ -2,36 +2,52 @@ version 1.0
 
 task DlcparToDlcoal {
   input {
-    String streeStree
-    String sSMap
-    String inputInputExt
-    String outputOutputExt
-    String? dlcDlcParToDlCoal
-    String? isIs
-    String? aA
-    String? utilityUtility
-    String? forFor
-    String? convertingConverting
-    String? dlcDlcPar
-    String? reconciliationsReconciliations
-    String? toTo
-    String? dlDlCoal
+    String? stree
+    String? s_map
+    String? input_ext
+    String? output_ext
+    String dlc_par_to_dl_coal
+    String is
+    String a
+    String utility
+    String for
+    String converting
+    String dlc_par
+    String reconciliations
+    String to
+    String dl_coal
   }
   command <<<
     dlcpar_to_dlcoal \
-      ~{dlcDlcParToDlCoal} \
-      ~{if defined(streeStree) then ("--stree " +  '"' + streeStree + '"') else ""} \
-      ~{if defined(sSMap) then ("--smap " +  '"' + sSMap + '"') else ""} \
-      ~{if defined(inputInputExt) then ("--inputext " +  '"' + inputInputExt + '"') else ""} \
-      ~{if defined(outputOutputExt) then ("--outputext " +  '"' + outputOutputExt + '"') else ""} \
-      ~{isIs} \
-      ~{aA} \
-      ~{utilityUtility} \
-      ~{forFor} \
-      ~{convertingConverting} \
-      ~{dlcDlcPar} \
-      ~{reconciliationsReconciliations} \
-      ~{toTo} \
-      ~{dlDlCoal}
+      ~{dlc_par_to_dl_coal} \
+      ~{is} \
+      ~{a} \
+      ~{utility} \
+      ~{for} \
+      ~{converting} \
+      ~{dlc_par} \
+      ~{reconciliations} \
+      ~{to} \
+      ~{dl_coal} \
+      ~{if defined(stree) then ("--stree " +  '"' + stree + '"') else ""} \
+      ~{if defined(s_map) then ("--smap " +  '"' + s_map + '"') else ""} \
+      ~{if defined(input_ext) then ("--inputext " +  '"' + input_ext + '"') else ""} \
+      ~{if defined(output_ext) then ("--outputext " +  '"' + output_ext + '"') else ""}
   >>>
+  parameter_meta {
+    stree: "species tree file in newick format"
+    s_map: "gene to species map"
+    input_ext: "input file extension (default: \".tree\")"
+    output_ext: "output file extension (default: \"\")"
+    dlc_par_to_dl_coal: ""
+    is: ""
+    a: ""
+    utility: ""
+    for: ""
+    converting: ""
+    dlc_par: ""
+    reconciliations: ""
+    to: ""
+    dl_coal: ""
+  }
 }

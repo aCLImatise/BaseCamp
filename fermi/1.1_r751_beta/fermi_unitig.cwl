@@ -1,26 +1,26 @@
 class: CommandLineTool
-id: fermi_unitig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fermi_unitig.cwl
 inputs:
-- id: reads_fmd
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: l
-  doc: min match [30]
+- id: min_match
+  doc: min match [0]
   type: long
   inputBinding:
     prefix: -l
-- id: t
+- id: number_of_threads
   doc: number of threads [1]
   type: long
   inputBinding:
     prefix: -t
-- id: r
+- id: rank_file
   doc: rank file [null]
   type: File
   inputBinding:
     prefix: -r
+- id: reads_dot_fmd
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

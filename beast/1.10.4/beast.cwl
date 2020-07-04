@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: beast.cwl
+id: ../../../../home/ubuntu/BiocondaCli/beast.cwl
 inputs:
 - id: verbose
   doc: verbose XML parsing messages
@@ -191,22 +191,22 @@ inputs:
   type: string
   inputBinding:
     prefix: -particles
-- id: mc3_chains
+- id: mc_three_chains
   doc: of chains
   type: string
   inputBinding:
     prefix: -mc3_chains
-- id: mc3_delta
+- id: mc_three_delta
   doc: increment parameter
   type: string
   inputBinding:
     prefix: -mc3_delta
-- id: mc3_temperatures
+- id: mc_three_temperatures
   doc: comma-separated list of the hot chain temperatures
   type: string
   inputBinding:
     prefix: -mc3_temperatures
-- id: mc3_swap
+- id: mc_three_swap
   doc: at which chains temperatures will be swapped
   type: string
   inputBinding:
@@ -251,6 +251,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -version
+- id: input_file_name
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

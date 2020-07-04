@@ -1,28 +1,28 @@
 class: CommandLineTool
-id: translatorx_vLocal.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/translatorx_vLocal.pl.cwl
 inputs:
-- id: i
+- id: file_containing_sequences
   doc: ': the file containing the nucleotide sequences in FASTA format (Required) '
   type: boolean
   inputBinding:
     prefix: -i
-- id: o
+- id: output_file_optional
   doc: ': output file (Optional). Default: "translatorx_res".'
   type: boolean
   inputBinding:
     prefix: -o
-- id: a
+- id: file_containing_alignment
   doc: ': file containing the amino acid sequence alignment (Optional)'
   type: boolean
   inputBinding:
     prefix: -a
-- id: p
+- id: program_build_options
   doc: ': program to build the multiple alignment (Optional). Available options are:
     M/C/F/P, standing for Muscle, Clustalw, Prank, and maFft Default: Muscle'
   type: boolean
   inputBinding:
     prefix: -p
-- id: c
+- id: genetic_code_translate
   doc: ': genetic code to translate the sequences (Optional). Available options are:
     1   Standard 2   Vertebrate Mitochondrial 3   Yeast Mitochondrial 4   Mold Mitochondrial;
     Protozoan Mitochondrial; Coelenterate Mitochondrial; Mycoplasma; Spiroplasma 5   Invertebrate
@@ -36,22 +36,32 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -c
-- id: j
+- id: file_containing_codes
   doc: ': file containing alternative genetic codes for each taxon. (Optional) File
     format: Taxon        genetic_code[number]'
   type: boolean
   inputBinding:
     prefix: -j
-- id: g
+- id: parameters_gblocks_optional
   doc: ': parameters for GBlocks (Optional) Example: -g "-b2 x -b3 x -b4 x..."'
   type: boolean
   inputBinding:
     prefix: -g
-- id: t
+- id: ft_guess_reading
   doc: ': F/T. Guess reading frame (Optional)[default F]'
   type: boolean
   inputBinding:
     prefix: -t
+- id: perl
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: translator_x_do_tpl
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

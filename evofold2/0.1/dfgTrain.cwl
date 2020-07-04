@@ -1,40 +1,30 @@
 class: CommandLineTool
-id: dfgTrain.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dfgTrain.cwl
 inputs:
-- id: input_var_data_tab
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: input_fac_data_tab
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: p
+- id: arg_output_precision
   doc: '[ --precision ] arg (=5)           Output precision of real numbers.'
   type: boolean
   inputBinding:
     prefix: -p
-- id: d
+- id: arg_defines_stopping
   doc: '[ --minDeltaLogLik ] arg (=0.0001) Defines stopping criteria for the EM  training.
     The training will stop when  the difference in log likelihood is  below minDeltaLogLik
     (default is 1e-4).'
   type: boolean
   inputBinding:
     prefix: -d
-- id: i
+- id: arg_max_numbr
   doc: '[ --maxIter ] arg (=100)           Max numbr if iterations of the EM  training
     (default is 100).'
   type: boolean
   inputBinding:
     prefix: -i
-- id: l
+- id: arg_logfiletxt_log
   doc: '[ --logFile ] arg (=logFile.txt)   Log file for EM training.'
   type: boolean
   inputBinding:
     prefix: -l
-- id: e
+- id: perform_em_training
   doc: '[ --emTrain ]                      Perform EM training.'
   type: boolean
   inputBinding:
@@ -45,18 +35,18 @@ inputs:
   type: string
   inputBinding:
     prefix: --dotFile
-- id: s
+- id: arg_prefix_dfg
   doc: '[ --dfgSpecPrefix ] arg (=./dfgSpec/) Prefix of DFG specification files.'
   type: boolean
   inputBinding:
     prefix: -s
-- id: o
+- id: arg__prefix
   doc: '[ --outSpecPrefix ] arg (=out_)    Prefix of DFG specification files. Any  included
     prefix directory must already  exist.'
   type: boolean
   inputBinding:
     prefix: -o
-- id: t
+- id: arg_prefix_written
   doc: '[ --tmpSpecPrefix ] arg            Prefix of DFG specification files  written
     during each iteration of  training. Allows state of EM to be  saved - especially
     useful for large  datasets. Any included prefix directory must already exist.
@@ -95,6 +85,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --writeInfo
+- id: input_var_data_dot_tab
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: input_fac_data_dot_tab
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

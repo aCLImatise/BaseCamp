@@ -1,18 +1,19 @@
 class: CommandLineTool
-id: capC_MAP_combinereps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/capC_MAP_combinereps.cwl
 inputs:
-- id: c
-  doc: ''
+- id: configuration_file
+  doc: configuration file
   type: string
   inputBinding:
     prefix: -c
-- id: i
-  doc: ''
+- id: directory_containing_output
+  doc: directory containing output from capC-MAP for a replicate (option must appear
+    multiple times).
   type: string
   inputBinding:
     prefix: -i
-- id: o
-  doc: ''
+- id: directory_created_combined
+  doc: directory to be created for combined output
   type: string
   inputBinding:
     prefix: -o

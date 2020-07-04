@@ -1,18 +1,6 @@
 class: CommandLineTool
-id: BuildDatabase.cwl
+id: ../../../../home/ubuntu/BiocondaCli/BuildDatabase.cwl
 inputs:
-- id: or
-  doc: 'BuildDatabase [-options] -name "mydb"  -dir <dir containing fasta files *.fa,
-    *.fasta, *.fast, *.FA, *.FASTA, *.FAST, *.dna, and  *.DNA > '
-  type: string
-  inputBinding:
-    position: 0
-- id: or
-  doc: BuildDatabase [-options] -name "mydb"  -batch <file containing a list of fasta
-    files>
-  type: string
-  inputBinding:
-    position: 1
 - id: name
   doc: The name of the database to create.
   type: string

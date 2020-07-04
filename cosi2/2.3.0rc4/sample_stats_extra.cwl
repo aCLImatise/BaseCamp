@@ -1,34 +1,34 @@
 class: CommandLineTool
-id: sample_stats_extra.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sample_stats_extra.cwl
 inputs:
-- id: o
+- id: arg_name_output
   doc: '[ --outfile ] arg                  name of output file (default is to  write
     to stdout)'
   type: boolean
   inputBinding:
     prefix: -o
-- id: p
+- id: arg_specify_precision
   doc: '[ --precision ] arg (=8)           specify precision of output'
   type: boolean
   inputBinding:
     prefix: -p
-- id: m
+- id: arg_ignore_part
   doc: '[ --margin ] arg (=0.10000000000000001) ignore part of simulated region within  this
     margin of ends of region'
   type: boolean
   inputBinding:
     prefix: -m
-- id: c
+- id: arg_restrict_chroms
   doc: '[ --chromRange ] arg               restrict chroms to this range'
   type: boolean
   inputBinding:
     prefix: -c
-- id: a
+- id: arg_compute_spectrum
   doc: '[ --afs ] arg                      compute allele frequency spectrum'
   type: boolean
   inputBinding:
     prefix: -a
-- id: l
+- id: arg_compute_ld
   doc: '[ --ld ] arg                       compute LD stats for these definitions'
   type: boolean
   inputBinding:
@@ -48,12 +48,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --ld-seps
-- id: d
+- id: arg_compute_dind
   doc: '[ --DIND ] arg                     compute DIND for this loc'
   type: boolean
   inputBinding:
     prefix: -D
-- id: t
+- id: include_tree_stats
   doc: '[ --tree ]                         include tree stats'
   type: boolean
   inputBinding:
@@ -63,7 +63,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --per-pop-stats
-- id: s
+- id: print_summary_only
   doc: '[ --summary-only ]                 print summary only'
   type: boolean
   inputBinding:
@@ -73,7 +73,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --global-afs
-- id: global_ld_r2
+- id: global_ld_r_two
   doc: save global LD histogram for r^2 to  this file
   type: string
   inputBinding:
@@ -93,7 +93,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --max-sims
-- id: q
+- id: _add_quantiles
   doc: '[ --quantiles ]                    add quantiles'
   type: boolean
   inputBinding:
@@ -119,7 +119,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --ld-hist-min-maf
-- id: g
+- id: arg_print_progress
   doc: '[ --progress-every ] arg           print progress every N sims'
   type: boolean
   inputBinding:

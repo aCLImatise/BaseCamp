@@ -2,14 +2,19 @@ version 1.0
 
 task BpGccalc.pl {
   input {
-    String fF
-    File iI
-    String? gccGccALcpl
+    String? f
+    File? i
+    String gc_calc_do_tpl
   }
   command <<<
     bp_gccalc.pl \
-      ~{gccGccALcpl} \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""}
+      ~{gc_calc_do_tpl} \
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""}
   >>>
+  parameter_meta {
+    f: ""
+    i: ""
+    gc_calc_do_tpl: ""
+  }
 }

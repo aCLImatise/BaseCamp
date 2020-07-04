@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ca2ta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ca2ta.cwl
 inputs:
 - id: check
   doc: Prints out those seqnames that are shorter than MINSEQ
@@ -11,7 +11,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -minseq
-- id: o
+- id: output_prefix
   doc: Output prefix
   type: string
   inputBinding:

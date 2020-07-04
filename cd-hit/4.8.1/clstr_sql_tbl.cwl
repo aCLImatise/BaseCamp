@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: clstr_sql_tbl.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clstr_sql_tbl.pl.cwl
 inputs:
 - id: cl_str_file
   doc: ''

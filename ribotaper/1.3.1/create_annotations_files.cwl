@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: create_annotations_files.bash.cwl
+id: ../../../../home/ubuntu/BiocondaCli/create_annotations_files.bash.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

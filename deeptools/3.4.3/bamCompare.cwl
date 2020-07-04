@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: bamCompare.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamCompare.cwl
 inputs:
-- id: bamfile1
+- id: bam_file_one
   doc: 'file, -b1 BAM file Sorted BAM file 1. Usually the BAM file for the treatment.
     (default: None)'
   type: string
   inputBinding:
     prefix: --bamfile1
-- id: bamfile2
+- id: bam_file_two
   doc: 'file, -b2 BAM file Sorted BAM file 2. Usually the BAM file for the control.
     (default: None)'
   type: string
@@ -165,6 +165,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --maxFragmentLength
+- id: bone
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -b1
+- id: b_two
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -b2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: trimends.cwl
+id: ../../../../home/ubuntu/BiocondaCli/trimends.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

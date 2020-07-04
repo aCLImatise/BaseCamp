@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rdp_classifier.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rdp_classifier.cwl
 inputs:
 - id: format
   doc: 'all tab delimited output format: [allrank|fixrank|db]. Default is allrank.
@@ -29,6 +29,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --train_propfile
+- id: classifier_cmd
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

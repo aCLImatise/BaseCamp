@@ -1,8 +1,8 @@
 class: CommandLineTool
-id: consensus.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/consensus.py.cwl
 inputs:
 - id: alignment
-  doc: ''
+  doc: The aligned sequences, in FASTA format (but no multi-line sequences).
   type: string
   inputBinding:
     position: 0

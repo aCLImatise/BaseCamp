@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rangen.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rangen.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

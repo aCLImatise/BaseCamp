@@ -2,72 +2,106 @@ version 1.0
 
 task MaltBuild {
   input {
-    Boolean inputInput
-    Boolean sequenceSequenceType
-    Boolean inputInputGff
-    Boolean indexIndex
-    Boolean threadsThreads
-    Boolean stepStep
-    Boolean shapesShapes
-    Boolean maxMaxHitsPerSeed
-    Boolean proteinProteinReduct
-    Boolean gi2eggnogGi2eggnog
-    Boolean acc2eggnogAcc2eggnog
-    Boolean syn2eggnogSyn2eggnog
-    Boolean gi2interpro2goGi2interpro2go
-    Boolean acc2interpro2goAcc2interpro2go
-    Boolean syn2interpro2goSyn2interpro2go
-    Boolean gi2keggGi2kegg
-    Boolean acc2keggAcc2kegg
-    Boolean syn2keggSyn2kegg
-    Boolean gi2seedGi2seed
-    Boolean acc2seedAcc2seed
-    Boolean syn2seedSyn2seed
-    Boolean gi2Gi2Taxonomy
-    Boolean acc2Acc2Taxonomy
-    Boolean syn2Syn2Taxonomy
-    Boolean parseParseTaxOnNames
-    Boolean noNoFun
-    Boolean firstFirstWordIsAccession
-    Boolean accessionAccessionTags
-    Boolean firstFirstWordOnly
-    Boolean randomRandom
-    Boolean hashHashScaleFactor
-    Boolean verboseVerbose
+    Boolean? input_reference_files
+    Boolean? sequence_type
+    Boolean? input_gff
+    Boolean? index
+    Boolean? threads
+    Boolean? step
+    Boolean? shapes
+    Boolean? max_hits_per_seed
+    Boolean? protein_reduct
+    Boolean? gi_two_eggnog
+    Boolean? acc_two_eggnog
+    Boolean? syn_two_eggnog
+    Boolean? gi_two_interpro_two_go
+    Boolean? acc_two_interpro_two_go
+    Boolean? syn_two_interpro_two_go
+    Boolean? gi_two_kegg
+    Boolean? acc_two_kegg
+    Boolean? syn_two_kegg
+    Boolean? gi_two_seed
+    Boolean? acc_two_seed
+    Boolean? syn_two_seed
+    Boolean? gi_two_taxonomy
+    Boolean? acc_two_taxonomy
+    Boolean? syn_two_taxonomy
+    Boolean? parse_tax_on_names
+    Boolean? no_fun
+    Boolean? first_word_is_accession
+    Boolean? accession_tags
+    Boolean? first_word_only
+    Boolean? random
+    Boolean? hash_scale_factor
+    Boolean? verbose
   }
   command <<<
     malt-build \
-      ~{true="--input" false="" inputInput} \
-      ~{true="--sequenceType" false="" sequenceSequenceType} \
-      ~{true="--inputGFF" false="" inputInputGff} \
-      ~{true="--index" false="" indexIndex} \
-      ~{true="--threads" false="" threadsThreads} \
-      ~{true="--step" false="" stepStep} \
-      ~{true="--shapes" false="" shapesShapes} \
-      ~{true="--maxHitsPerSeed" false="" maxMaxHitsPerSeed} \
-      ~{true="--proteinReduct" false="" proteinProteinReduct} \
-      ~{true="--gi2eggnog" false="" gi2eggnogGi2eggnog} \
-      ~{true="--acc2eggnog" false="" acc2eggnogAcc2eggnog} \
-      ~{true="--syn2eggnog" false="" syn2eggnogSyn2eggnog} \
-      ~{true="--gi2interpro2go" false="" gi2interpro2goGi2interpro2go} \
-      ~{true="--acc2interpro2go" false="" acc2interpro2goAcc2interpro2go} \
-      ~{true="--syn2interpro2go" false="" syn2interpro2goSyn2interpro2go} \
-      ~{true="--gi2kegg" false="" gi2keggGi2kegg} \
-      ~{true="--acc2kegg" false="" acc2keggAcc2kegg} \
-      ~{true="--syn2kegg" false="" syn2keggSyn2kegg} \
-      ~{true="--gi2seed" false="" gi2seedGi2seed} \
-      ~{true="--acc2seed" false="" acc2seedAcc2seed} \
-      ~{true="--syn2seed" false="" syn2seedSyn2seed} \
-      ~{true="--gi2taxonomy" false="" gi2Gi2Taxonomy} \
-      ~{true="--acc2taxonomy" false="" acc2Acc2Taxonomy} \
-      ~{true="--syn2taxonomy" false="" syn2Syn2Taxonomy} \
-      ~{true="--parseTaxonNames" false="" parseParseTaxOnNames} \
-      ~{true="--noFun" false="" noNoFun} \
-      ~{true="--firstWordIsAccession" false="" firstFirstWordIsAccession} \
-      ~{true="--accessionTags" false="" accessionAccessionTags} \
-      ~{true="--firstWordOnly" false="" firstFirstWordOnly} \
-      ~{true="--random" false="" randomRandom} \
-      ~{true="--hashScaleFactor" false="" hashHashScaleFactor} \
-      ~{true="--verbose" false="" verboseVerbose}
+      ~{true="--input" false="" input_reference_files} \
+      ~{true="--sequenceType" false="" sequence_type} \
+      ~{true="--inputGFF" false="" input_gff} \
+      ~{true="--index" false="" index} \
+      ~{true="--threads" false="" threads} \
+      ~{true="--step" false="" step} \
+      ~{true="--shapes" false="" shapes} \
+      ~{true="--maxHitsPerSeed" false="" max_hits_per_seed} \
+      ~{true="--proteinReduct" false="" protein_reduct} \
+      ~{true="--gi2eggnog" false="" gi_two_eggnog} \
+      ~{true="--acc2eggnog" false="" acc_two_eggnog} \
+      ~{true="--syn2eggnog" false="" syn_two_eggnog} \
+      ~{true="--gi2interpro2go" false="" gi_two_interpro_two_go} \
+      ~{true="--acc2interpro2go" false="" acc_two_interpro_two_go} \
+      ~{true="--syn2interpro2go" false="" syn_two_interpro_two_go} \
+      ~{true="--gi2kegg" false="" gi_two_kegg} \
+      ~{true="--acc2kegg" false="" acc_two_kegg} \
+      ~{true="--syn2kegg" false="" syn_two_kegg} \
+      ~{true="--gi2seed" false="" gi_two_seed} \
+      ~{true="--acc2seed" false="" acc_two_seed} \
+      ~{true="--syn2seed" false="" syn_two_seed} \
+      ~{true="--gi2taxonomy" false="" gi_two_taxonomy} \
+      ~{true="--acc2taxonomy" false="" acc_two_taxonomy} \
+      ~{true="--syn2taxonomy" false="" syn_two_taxonomy} \
+      ~{true="--parseTaxonNames" false="" parse_tax_on_names} \
+      ~{true="--noFun" false="" no_fun} \
+      ~{true="--firstWordIsAccession" false="" first_word_is_accession} \
+      ~{true="--accessionTags" false="" accession_tags} \
+      ~{true="--firstWordOnly" false="" first_word_only} \
+      ~{true="--random" false="" random} \
+      ~{true="--hashScaleFactor" false="" hash_scale_factor} \
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    input_reference_files: "[string(s)]              Input reference files in FastA format (or specify a single directory). Mandatory option."
+    sequence_type: "[string]          Sequence type. Mandatory option. Legal values: DNA, Protein"
+    input_gff: "[string(s)]        Files that provide CDS annotations of DNA input files in GFF format (or specify a single directory). "
+    index: "[string]                 Name of index directory. Mandatory option."
+    threads: "[number]               Number of worker threads. Default value: 8."
+    step: "[number]                 Step size used to advance seed; a value greater than 1 will reduce index size, but also sensitivity. Default value: 1."
+    shapes: "[string(s)]            Seed shape(s). Default value(s): default."
+    max_hits_per_seed: "[number]       Maximum number of hits per seed. Default value: 1000."
+    protein_reduct: "[string]        Name or definition of protein alphabet reduction (BLOSUM50_10,BLOSUM50_11,BLOSUM50_15,BLOSUM50_4,BLOSUM50_8,DIAMOND_11,GBMR4,HSDM17,MALT_10,SDM12,UNREDUCED). Default value: DIAMOND_11."
+    gi_two_eggnog: "[string]      GI-to-EGGNOG mapping file (deprecated). "
+    acc_two_eggnog: "[string]     Accession-to-EGGNOG mapping file. "
+    syn_two_eggnog: "[string]     Synonyms-to-EGGNOG mapping file. "
+    gi_two_interpro_two_go: "[string]   GI-to-INTERPRO2GO mapping file (deprecated). "
+    acc_two_interpro_two_go: "[string]   Accession-to-INTERPRO2GO mapping file. "
+    syn_two_interpro_two_go: "[string]   Synonyms-to-INTERPRO2GO mapping file. "
+    gi_two_kegg: "[string]          GI-to-KEGG mapping file (deprecated). "
+    acc_two_kegg: "[string]         Accession-to-KEGG mapping file. "
+    syn_two_kegg: "[string]         Synonyms-to-KEGG mapping file. "
+    gi_two_seed: "[string]          GI-to-SEED mapping file (deprecated). "
+    acc_two_seed: "[string]         Accession-to-SEED mapping file. "
+    syn_two_seed: "[string]         Synonyms-to-SEED mapping file. "
+    gi_two_taxonomy: "[string]   GI-to-Taxonomy mapping file (deprecated). "
+    acc_two_taxonomy: "[string]   Accession-to-Taxonomy mapping file. "
+    syn_two_taxonomy: "[string]   Synonyms-to-Taxonomy mapping file. "
+    parse_tax_on_names: "Parse taxon names. Default value: true."
+    no_fun: "Turn off functional classifications for provided mapping files (set this when using GFF files for DNA references). Default value: false."
+    first_word_is_accession: "First word in reference header is accession number. Default value: true."
+    accession_tags: "[string(s)]   List of accession tags. Default value(s): gb| ref|."
+    first_word_only: "Save only first word of reference header. Default value: false."
+    random: "[number]              Random number generator seed. Default value: 666."
+    hash_scale_factor: "[number]     Hash table scale factor. Default value: 0.9."
+    verbose: "Echo commandline options and be verbose. Default value: false."
+  }
 }

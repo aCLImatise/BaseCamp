@@ -1,8 +1,18 @@
 class: CommandLineTool
-id: extract_kraken_reads.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extract_kraken_reads.py.cwl
 inputs:
-- id: s2
-  doc: ', -2 SEQ_FILE2 2nd FASTA/FASTQ File containing the raw sequence letters (paired).'
+- id: kraken_output_file
+  doc: Kraken output file to parse
+  type: string
+  inputBinding:
+    prefix: -k
+- id: s_one
+  doc: FASTA/FASTQ File containing the raw sequence letters.
+  type: string
+  inputBinding:
+    prefix: -s1
+- id: s_two
+  doc: 2nd FASTA/FASTQ File containing the raw sequence letters (paired).
   type: string
   inputBinding:
     prefix: -s2
@@ -16,7 +26,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
-- id: output_2
+- id: output_two
   doc: Output FASTA/Q file containig the second pair of reads [required for paired
     input]
   type: string

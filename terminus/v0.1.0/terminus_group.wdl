@@ -2,18 +2,25 @@ version 1.0
 
 task TerminusGroup {
   input {
-    String dirDir
-    Int minMinSpread
-    String outOut
-    String seedSeed
-    String toleranceTolerance
+    String? dir
+    Int? min_spread
+    String? out
+    String? seed
+    String? tolerance
   }
   command <<<
     terminus group \
-      ~{if defined(dirDir) then ("--dir " +  '"' + dirDir + '"') else ""} \
-      ~{if defined(minMinSpread) then ("--min-spread " +  '"' + minMinSpread + '"') else ""} \
-      ~{if defined(outOut) then ("--out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(seedSeed) then ("--seed " +  '"' + seedSeed + '"') else ""} \
-      ~{if defined(toleranceTolerance) then ("--tolerance " +  '"' + toleranceTolerance + '"') else ""}
+      ~{if defined(dir) then ("--dir " +  '"' + dir + '"') else ""} \
+      ~{if defined(min_spread) then ("--min-spread " +  '"' + min_spread + '"') else ""} \
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
+      ~{if defined(seed) then ("--seed " +  '"' + seed + '"') else ""} \
+      ~{if defined(tolerance) then ("--tolerance " +  '"' + tolerance + '"') else ""}
   >>>
+  parameter_meta {
+    dir: "directory to read input from"
+    min_spread: "the minimum spread a transcript must exhibit to enable an attached edge to be a collapse candidate [default: 0.1]"
+    out: "prefix where output would be written"
+    seed: "The allowable difference between the weights of transcripts in same equivalence classes to treat them as identical [default: 10]"
+    tolerance: "The allowable difference between the weights of transcripts in same equivalence classes to treat them as identical [default: 0.001]"
+  }
 }

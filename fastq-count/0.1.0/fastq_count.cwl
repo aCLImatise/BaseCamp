@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: fastq_count.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq_count.cwl
 inputs:
-- id: r1fq
+- id: r_one_dot_fq
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: r2fq
+- id: r_two_dot_fq
   doc: ''
   type: string
   inputBinding:

@@ -2,22 +2,31 @@ version 1.0
 
 task TradisComparison.R {
   input {
-    Boolean fF
-    String tT
-    String oO
-    String pP
-    String controlsControls
-    String conditionsConditions
-    String? cutCutOff
+    Boolean? f
+    String? t
+    String? o
+    String? p
+    String? controls
+    String? conditions
+    String? cut_off
   }
   command <<<
     tradis_comparison.R \
-      ~{cutCutOff} \
-      ~{true="-f" false="" fF} \
-      ~{if defined(tT) then ("-t " +  '"' + tT + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{if defined(pP) then ("-p " +  '"' + pP + '"') else ""} \
-      ~{if defined(controlsControls) then ("--controls " +  '"' + controlsControls + '"') else ""} \
-      ~{if defined(conditionsConditions) then ("--conditions " +  '"' + conditionsConditions + '"') else ""}
+      ~{cut_off} \
+      ~{true="-f" false="" f} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(p) then ("-p " +  '"' + p + '"') else ""} \
+      ~{if defined(controls) then ("--controls " +  '"' + controls + '"') else ""} \
+      ~{if defined(conditions) then ("--conditions " +  '"' + conditions + '"') else ""}
   >>>
+  parameter_meta {
+    f: ""
+    t: ""
+    o: ""
+    p: ""
+    controls: ""
+    conditions: ""
+    cut_off: ""
+  }
 }

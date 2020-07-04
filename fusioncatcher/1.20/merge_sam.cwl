@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: merge_sam.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/merge_sam.py.cwl
 inputs:
 - id: input
   doc: The input file in SAM format.

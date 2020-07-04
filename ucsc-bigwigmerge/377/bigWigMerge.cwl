@@ -1,31 +1,41 @@
 class: CommandLineTool
-id: bigWigMerge.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bigWigMerge.cwl
 inputs:
 - id: threshold
-  doc: =0.N - don't output values at or below this threshold. Default is 0.0
-  type: boolean
+  doc: "- don't output values at or below this threshold. Default is 0.0"
+  type: string
   inputBinding:
     prefix: -threshold
 - id: adjust
-  doc: =0.N - add adjustment to each value
-  type: boolean
+  doc: '- add adjustment to each value'
+  type: string
   inputBinding:
     prefix: -adjust
-- id: values
-  doc: than this are clipped to this value
+- id: clip
+  doc: '- values higher than this are clipped to this value'
   type: string
   inputBinding:
-    prefix: '- values'
+    prefix: -clip
 - id: in_list
-  doc: are lists of file names of bigWigs
-  type: File
+  doc: '- input file are lists of file names of bigWigs'
+  type: boolean
   inputBinding:
     prefix: -inList
-- id: merged
-  doc: is maximum from input files rather than sum
+- id: max
+  doc: '- merged value is maximum from input files rather than sum'
+  type: boolean
+  inputBinding:
+    prefix: -max
+- id: inn_dot_bw
+  doc: ''
   type: string
   inputBinding:
-    prefix: '- merged'
+    position: 0
+- id: out_dot_bed_graph
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

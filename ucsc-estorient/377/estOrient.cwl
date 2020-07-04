@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: estOrient.cwl
+id: ../../../../home/ubuntu/BiocondaCli/estOrient.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

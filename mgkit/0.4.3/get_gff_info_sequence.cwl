@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_gff_info_sequence.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_gff_info_sequence.cwl
 inputs:
 - id: reverse
   doc: Reverse complement sequences on the - strand
@@ -27,6 +27,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --progress
+- id: gff_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: fast_a_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: analyzeSNPs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/analyzeSNPs.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

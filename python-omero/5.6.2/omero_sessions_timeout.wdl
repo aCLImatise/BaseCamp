@@ -2,12 +2,16 @@ version 1.0
 
 task OmeroSessionsTimeout {
   input {
-    String sessionSession
-    String? secondsSeconds
+    String? session
+    String seconds
   }
   command <<<
     omero sessions timeout \
-      ~{secondsSeconds} \
-      ~{if defined(sessionSession) then ("--session " +  '"' + sessionSession + '"') else ""}
+      ~{seconds} \
+      ~{if defined(session) then ("--session " +  '"' + session + '"') else ""}
   >>>
+  parameter_meta {
+    session: "Session other than the current to update"
+    seconds: "Number of seconds to set the timeToIdle value to"
+  }
 }

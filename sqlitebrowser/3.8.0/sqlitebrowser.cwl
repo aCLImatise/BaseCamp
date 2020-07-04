@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sqlitebrowser.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sqlitebrowser.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

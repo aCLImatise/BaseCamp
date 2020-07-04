@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SICER_df.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SICER_df.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

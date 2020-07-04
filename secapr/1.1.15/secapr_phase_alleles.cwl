@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: secapr_phase_alleles.cwl
+id: ../../../../home/ubuntu/BiocondaCli/secapr_phase_alleles.cwl
 inputs:
 - id: input
   doc: Call the folder that contains the results of the reference based assembly (output

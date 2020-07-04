@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: ovl_degr_dist.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ovl_degr_dist.cwl
 inputs:
-- id: m
+- id: adjust_genome_length
   doc: Adjust genome length to get best match to distrib input from stdin
   type: boolean
   inputBinding:
     prefix: -m
-- id: o
+- id: set_minimum_length
   doc: Set minimum overlap length to <n> (default = 40)
   type: string
   inputBinding:

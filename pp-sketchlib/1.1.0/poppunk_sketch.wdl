@@ -2,30 +2,46 @@ version 1.0
 
 task PoppunkSketch {
   input {
-    Boolean sketchSketch
-    Boolean queryQuery
-    String rRFile
-    String refRefDb
-    String queryQueryDb
-    Int minMinK
-    Int maxMaxK
-    String kKStep
-    String sketchSketchSize
-    Int minMinCount
-    String cpusCpus
+    Boolean? sketch
+    Boolean? query
+    String? r_file
+    String? ref_db
+    String? query_db
+    Int? min_k
+    Int? max_k
+    String? k_step
+    String? sketch_size
+    Int? min_count
+    String? cpus
+    String pp_sketch
   }
   command <<<
     poppunk_sketch \
-      ~{true="--sketch" false="" sketchSketch} \
-      ~{true="--query" false="" queryQuery} \
-      ~{if defined(rRFile) then ("--rfile " +  '"' + rRFile + '"') else ""} \
-      ~{if defined(refRefDb) then ("--ref-db " +  '"' + refRefDb + '"') else ""} \
-      ~{if defined(queryQueryDb) then ("--query-db " +  '"' + queryQueryDb + '"') else ""} \
-      ~{if defined(minMinK) then ("--min-k " +  '"' + minMinK + '"') else ""} \
-      ~{if defined(maxMaxK) then ("--max-k " +  '"' + maxMaxK + '"') else ""} \
-      ~{if defined(kKStep) then ("--k-step " +  '"' + kKStep + '"') else ""} \
-      ~{if defined(sketchSketchSize) then ("--sketch-size " +  '"' + sketchSketchSize + '"') else ""} \
-      ~{if defined(minMinCount) then ("--min-count " +  '"' + minMinCount + '"') else ""} \
-      ~{if defined(cpusCpus) then ("--cpus " +  '"' + cpusCpus + '"') else ""}
+      ~{pp_sketch} \
+      ~{true="--sketch" false="" sketch} \
+      ~{true="--query" false="" query} \
+      ~{if defined(r_file) then ("--rfile " +  '"' + r_file + '"') else ""} \
+      ~{if defined(ref_db) then ("--ref-db " +  '"' + ref_db + '"') else ""} \
+      ~{if defined(query_db) then ("--query-db " +  '"' + query_db + '"') else ""} \
+      ~{if defined(min_k) then ("--min-k " +  '"' + min_k + '"') else ""} \
+      ~{if defined(max_k) then ("--max-k " +  '"' + max_k + '"') else ""} \
+      ~{if defined(k_step) then ("--k-step " +  '"' + k_step + '"') else ""} \
+      ~{if defined(sketch_size) then ("--sketch-size " +  '"' + sketch_size + '"') else ""} \
+      ~{if defined(min_count) then ("--min-count " +  '"' + min_count + '"') else ""} \
+      ~{if defined(cpus) then ("--cpus " +  '"' + cpus + '"') else ""}
   >>>
+  parameter_meta {
+    sketch: "Create a database of sketches"
+    query: "Find distances between two sketch databases"
+    r_file: "Samples to sketch"
+    ref_db: "Prefix of reference database file"
+    query_db: "Prefix of query database file"
+    min_k: "Minimum kmer length [default = 13]"
+    max_k: "Maximum kmer length [default = 29]"
+    k_step: "K-mer step size [default = 4]"
+    sketch_size: "Kmer sketch size [default = 10000]"
+    min_count: "Minimum k-mer count from reads [default = 20]"
+    cpus: "Number of CPUs to use [default = 1]"
+    pp_sketch: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_assembly_extract_contigs_to_barcodes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_assembly_extract_contigs_to_barcodes.cwl
 inputs:
 - id: contigs
   doc: The directory containing the assembled contigs.

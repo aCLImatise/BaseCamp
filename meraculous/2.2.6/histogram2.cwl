@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: histogram2.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/histogram2.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

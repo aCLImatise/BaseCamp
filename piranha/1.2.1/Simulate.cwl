@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: Simulate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Simulate.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: distribution
   doc: 'what kind of distribution to use for generating read  counts? Currently supports
     Poisson, NegativeBinomial,  ZeroTruncatedPoisson,  ZeroTruncatedNegativeBinomial,

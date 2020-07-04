@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cu.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cu.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

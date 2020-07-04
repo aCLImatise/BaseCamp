@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: snpgenie_within_group_processor.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snpgenie_within_group_processor.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

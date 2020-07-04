@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cactus_fasta_softmask_intervals.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cactus_fasta_softmask_intervals.py.cwl
 inputs:
 - id: chrom
   doc: copy (and mask) only the specified sequence(s) <sequence_names> is a comma-separated

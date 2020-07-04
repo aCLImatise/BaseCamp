@@ -1,21 +1,16 @@
 class: CommandLineTool
-id: vcf_indel_stats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcf_indel_stats.cwl
 inputs:
-- id: options
+- id: in_dot_vcf
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: in_vcf
+- id: out_dot_txt
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: out_txt
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

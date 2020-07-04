@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: toRawSequence.cwl
+id: ../../../../home/ubuntu/BiocondaCli/toRawSequence.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

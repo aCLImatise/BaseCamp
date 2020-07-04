@@ -1,38 +1,6 @@
 class: CommandLineTool
-id: omero_download.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_download.cwl
 inputs:
-- id: object
-  doc: 'Object to download of form <object>:<id>. OriginalFile is assumed if <object>:
-    is omitted.'
-  type: string
-  inputBinding:
-    position: 0
-- id: filename
-  doc: Local filename to be saved to. '-' for stdout
-  type: File
-  inputBinding:
-    position: 1
-- id: omer_o_userdir
-  doc: "Set the base directory containing the user's files. Default: $HOME/omero"
-  type: string
-  inputBinding:
-    position: 0
-- id: omer_o_session_dir
-  doc: 'Set the base directory containing local sessions. Default: $OMERO_USERDIR/sessions'
-  type: string
-  inputBinding:
-    position: 1
-- id: omer_o_tmpdir
-  doc: 'Set the base directory containing temporary files. Default: $OMERO_USERDIR/tmp'
-  type: string
-  inputBinding:
-    position: 2
-- id: omer_o_password
-  doc: Set the user's password for creating new sessions. Ignored if -w or --password
-    is used.
-  type: string
-  inputBinding:
-    position: 3
 - id: create
   doc: Create a new session regardless of existing ones
   type: boolean
@@ -78,6 +46,38 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quiet
+- id: object
+  doc: 'Object to download of form <object>:<id>. OriginalFile is assumed if <object>:
+    is omitted.'
+  type: string
+  inputBinding:
+    position: 0
+- id: filename
+  doc: Local filename to be saved to. '-' for stdout
+  type: File
+  inputBinding:
+    position: 1
+- id: omer_o_userdir
+  doc: "Set the base directory containing the user's files. Default: $HOME/omero"
+  type: string
+  inputBinding:
+    position: 0
+- id: omer_o_session_dir
+  doc: 'Set the base directory containing local sessions. Default: $OMERO_USERDIR/sessions'
+  type: string
+  inputBinding:
+    position: 1
+- id: omer_o_tmpdir
+  doc: 'Set the base directory containing temporary files. Default: $OMERO_USERDIR/tmp'
+  type: string
+  inputBinding:
+    position: 2
+- id: omer_o_password
+  doc: Set the user's password for creating new sessions. Ignored if -w or --password
+    is used.
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

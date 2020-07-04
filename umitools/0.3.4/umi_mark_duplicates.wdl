@@ -2,16 +2,22 @@ version 1.0
 
 task UmiMarkDuplicates {
   input {
-    File fF
-    String pP
-    Boolean dD
-    Boolean cC
+    File? file
+    String? processes
+    Boolean? debug
+    Boolean? count
   }
   command <<<
     umi_mark_duplicates \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""} \
-      ~{if defined(pP) then ("-p " +  '"' + pP + '"') else ""} \
-      ~{true="-d" false="" dD} \
-      ~{true="-c" false="" cC}
+      ~{if defined(file) then ("--file " +  '"' + file + '"') else ""} \
+      ~{if defined(processes) then ("--processes " +  '"' + processes + '"') else ""} \
+      ~{true="--debug" false="" debug} \
+      ~{true="--count" false="" count}
   >>>
+  parameter_meta {
+    file: "the input bam file"
+    processes: "number of processes"
+    debug: "turn on debug mode"
+    count: "Count the number of raw reads for each locus (determined by pairs)"
+  }
 }

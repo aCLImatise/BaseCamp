@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SeMeta_Cluster.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SeMeta_Cluster.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

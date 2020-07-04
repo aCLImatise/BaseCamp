@@ -2,10 +2,13 @@ version 1.0
 
 task ScreedCommand {
   input {
-    String? argsArgs
+    String? args
   }
   command <<<
     screed command \
-      ~{argsArgs}
+      ~{args}
   >>>
+  parameter_meta {
+    args: ""
+  }
 }

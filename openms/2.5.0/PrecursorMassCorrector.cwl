@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: PrecursorMassCorrector.cwl
+id: ../../../../home/ubuntu/BiocondaCli/PrecursorMassCorrector.cwl
 inputs:
 - id: in
   doc: "*                            Input mzML file containing the spectra. (valid\

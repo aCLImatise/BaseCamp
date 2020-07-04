@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: infoassembly.cwl
+id: ../../../../home/ubuntu/BiocondaCli/infoassembly.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

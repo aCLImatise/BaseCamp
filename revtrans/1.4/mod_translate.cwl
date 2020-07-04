@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mod_translate.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mod_translate.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

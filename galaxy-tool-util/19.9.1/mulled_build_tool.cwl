@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: mulled_build_tool.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mulled_build_tool.cwl
 inputs:
-- id: command
-  doc: Command (build-and-test, build, all)
-  type: string
-  inputBinding:
-    position: 0
-- id: tool
-  doc: Path to tool to build mulled image for.
-  type: string
-  inputBinding:
-    position: 1
 - id: name_override
   doc: Override mulled image name - this is not recommended since metadata will not
     be detectable from the name of resulting images
@@ -22,6 +12,26 @@ inputs:
   type: string
   inputBinding:
     prefix: --image-build
+- id: invo_lucro_path
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --involucro-path
+- id: dry_run
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --dry-run
+- id: command
+  doc: Command (build-and-test, build, all)
+  type: string
+  inputBinding:
+    position: 0
+- id: tool
+  doc: Path to tool to build mulled image for.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: trim_fastq.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/trim_fastq.pl.cwl
 inputs:
 - id: fast_q
   doc: Fastq file for trimming
@@ -16,7 +16,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --down
-- id: a5
+- id: a_five
   doc: Sequence of 5' adapter to trim from the left side of the reads. This option
     and -u / -d are mutually exclusive
   type: boolean

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: copymat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/copymat.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

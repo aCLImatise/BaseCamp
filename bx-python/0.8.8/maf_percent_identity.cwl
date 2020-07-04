@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: maf_percent_identity.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maf_percent_identity.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

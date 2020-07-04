@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: omero_sessions_keepalive.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_sessions_keepalive.cwl
 inputs:
 - id: frequency
   doc: Time in seconds between keep alive calls

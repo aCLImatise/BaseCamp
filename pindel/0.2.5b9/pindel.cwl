@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pindel.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pindel.cwl
 inputs:
 - id: f
   doc: ''

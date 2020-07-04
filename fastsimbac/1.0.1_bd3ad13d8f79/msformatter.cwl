@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: msformatter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/msformatter.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,7 +1,12 @@
 class: CommandLineTool
-id: bigWigSummary.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bigWigSummary.cwl
 inputs:
-- id: file_bigwig
+- id: udc_dir
+  doc: =/dir/to/cache - place to put cache for remote bigBed/bigWigs
+  type: boolean
+  inputBinding:
+    prefix: -udcDir
+- id: file_dot_bigwig
   doc: ''
   type: File
   inputBinding:
@@ -26,11 +31,6 @@ inputs:
   type: string
   inputBinding:
     position: 4
-- id: udc_dir
-  doc: =/dir/to/cache - place to put cache for remote bigBed/bigWigs
-  type: boolean
-  inputBinding:
-    prefix: -udcDir
 outputs: []
 cwlVersion: v1.1
 baseCommand:

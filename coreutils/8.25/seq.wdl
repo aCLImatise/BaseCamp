@@ -2,14 +2,22 @@ version 1.0
 
 task Seq {
   input {
-    String formatFormat
-    String separatorSeparator
-    Boolean equalEqualWidth
+    String? format
+    String? separator
+    Boolean? equal_width
+    String? option
   }
   command <<<
     seq \
-      ~{if defined(formatFormat) then ("--format " +  '"' + formatFormat + '"') else ""} \
-      ~{if defined(separatorSeparator) then ("--separator " +  '"' + separatorSeparator + '"') else ""} \
-      ~{true="--equal-width" false="" equalEqualWidth}
+      ~{option} \
+      ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
+      ~{if defined(separator) then ("--separator " +  '"' + separator + '"') else ""} \
+      ~{true="--equal-width" false="" equal_width}
   >>>
+  parameter_meta {
+    format: "use printf style floating-point FORMAT"
+    separator: "use STRING to separate numbers (default: \n)"
+    equal_width: "equalize width by padding with leading zeroes"
+    option: ""
+  }
 }

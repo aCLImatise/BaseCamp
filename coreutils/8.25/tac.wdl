@@ -2,14 +2,22 @@ version 1.0
 
 task Tac {
   input {
-    String beforeBefore
-    Int regexRegex
-    String separatorSeparator
+    String? before
+    Int? regex
+    String? separator
+    String? option
   }
   command <<<
     tac \
-      ~{if defined(beforeBefore) then ("--before " +  '"' + beforeBefore + '"') else ""} \
-      ~{if defined(regexRegex) then ("--regex " +  '"' + regexRegex + '"') else ""} \
-      ~{if defined(separatorSeparator) then ("--separator " +  '"' + separatorSeparator + '"') else ""}
+      ~{option} \
+      ~{if defined(before) then ("--before " +  '"' + before + '"') else ""} \
+      ~{if defined(regex) then ("--regex " +  '"' + regex + '"') else ""} \
+      ~{if defined(separator) then ("--separator " +  '"' + separator + '"') else ""}
   >>>
+  parameter_meta {
+    before: "the separator before instead of after"
+    regex: "the separator as a regular expression"
+    separator: "use STRING as the separator instead of newline"
+    option: ""
+  }
 }

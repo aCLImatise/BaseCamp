@@ -2,20 +2,28 @@ version 1.0
 
 task FastqQualityTrimmer {
   input {
-    Boolean vV
-    String tT
-    String lL
-    Boolean zZ
-    String iI
-    String oO
+    Boolean? v
+    String? t
+    String? l
+    Boolean? z
+    String? i
+    String? o
   }
   command <<<
     fastq_quality_trimmer \
-      ~{true="-v" false="" vV} \
-      ~{if defined(tT) then ("-t " +  '"' + tT + '"') else ""} \
-      ~{if defined(lL) then ("-l " +  '"' + lL + '"') else ""} \
-      ~{true="-z" false="" zZ} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""}
+      ~{true="-v" false="" v} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""} \
+      ~{true="-z" false="" z} \
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    v: ""
+    t: ""
+    l: ""
+    z: ""
+    i: ""
+    o: ""
+  }
 }

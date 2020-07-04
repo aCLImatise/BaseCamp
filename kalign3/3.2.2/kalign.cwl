@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: kalign.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kalign.cwl
 inputs:
 - id: format
   doc: ': Output format. [Fasta]'
@@ -11,6 +11,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --reformat
+- id: i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
+- id: o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,14 +2,13 @@ version 1.0
 
 task CombinedAvg.pl {
   input {
-    String? perlPerl
-    String? combinedCombinedAvgPl
-    String? freqFreqFile
+    String freq_file
   }
   command <<<
     combinedAvg.pl \
-      ~{perlPerl} \
-      ~{combinedCombinedAvgPl} \
-      ~{freqFreqFile}
+      ~{freq_file}
   >>>
+  parameter_meta {
+    freq_file: ""
+  }
 }

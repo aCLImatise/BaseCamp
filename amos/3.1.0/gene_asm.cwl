@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gene_asm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gene_asm.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

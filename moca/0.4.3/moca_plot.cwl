@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: moca_plot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/moca_plot.cwl
 inputs:
 - id: meme_dir
   doc: MEME output directory  [required]

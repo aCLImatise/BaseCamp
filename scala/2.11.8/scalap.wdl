@@ -2,18 +2,25 @@ version 1.0
 
 task Scalap {
   input {
-    Boolean privatePrivate
-    Boolean verboseVerbose
-    Boolean versionVersion
-    File classpathClasspath
-    File cpCp
+    Boolean? private
+    Boolean? verbose
+    Boolean? version
+    File? classpath
+    File? cp
   }
   command <<<
     scalap \
-      ~{true="-private" false="" privatePrivate} \
-      ~{true="-verbose" false="" verboseVerbose} \
-      ~{true="-version" false="" versionVersion} \
-      ~{if defined(classpathClasspath) then ("-classpath " +  '"' + classpathClasspath + '"') else ""} \
-      ~{if defined(cpCp) then ("-cp " +  '"' + cpCp + '"') else ""}
+      ~{true="-private" false="" private} \
+      ~{true="-verbose" false="" verbose} \
+      ~{true="-version" false="" version} \
+      ~{if defined(classpath) then ("-classpath " +  '"' + classpath + '"') else ""} \
+      ~{if defined(cp) then ("-cp " +  '"' + cp + '"') else ""}
   >>>
+  parameter_meta {
+    private: "print private definitions"
+    verbose: "print out additional information"
+    version: "print out the version number of scalap"
+    classpath: "specify where to find user class files"
+    cp: "specify where to find user class files"
+  }
 }

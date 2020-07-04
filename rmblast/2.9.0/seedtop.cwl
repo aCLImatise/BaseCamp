@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: seedtop.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seedtop.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

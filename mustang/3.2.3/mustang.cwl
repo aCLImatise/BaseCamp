@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mustang.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mustang.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

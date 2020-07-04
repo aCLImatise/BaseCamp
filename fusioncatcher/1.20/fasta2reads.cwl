@@ -1,6 +1,26 @@
 class: CommandLineTool
-id: fasta2reads.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fasta2reads.py.cwl
 inputs:
+- id: input
+  doc: The input file in FASTA format.
+  type: string
+  inputBinding:
+    prefix: --input
+- id: output_one
+  doc: The output file in FASTQ format.
+  type: string
+  inputBinding:
+    prefix: --output1
+- id: output_two
+  doc: The output file in FASTQ format.
+  type: string
+  inputBinding:
+    prefix: --output2
+- id: output_three
+  doc: The output file in FASTA format.
+  type: string
+  inputBinding:
+    prefix: --output3
 - id: step
   doc: Step for the sliding window. Default is 1.
   type: string

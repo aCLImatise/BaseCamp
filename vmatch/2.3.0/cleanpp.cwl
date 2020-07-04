@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: cleanpp.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/cleanpp.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

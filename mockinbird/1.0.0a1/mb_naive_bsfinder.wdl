@@ -2,18 +2,19 @@ version 1.0
 
 task MbNaiveBsfinder {
   input {
-    Int minMinTransitions
-    String referenceReference
-    String mutationMutation
-    String? pilePileUpFile
-    String? outputOutputTable
+    Int? min_transitions
+    String? reference
+    String? mutation
   }
   command <<<
     mb-naive-bsfinder \
-      ~{pilePileUpFile} \
-      ~{if defined(minMinTransitions) then ("--min_transitions " +  '"' + minMinTransitions + '"') else ""} \
-      ~{if defined(referenceReference) then ("--reference " +  '"' + referenceReference + '"') else ""} \
-      ~{if defined(mutationMutation) then ("--mutation " +  '"' + mutationMutation + '"') else ""} \
-      ~{outputOutputTable}
+      ~{if defined(min_transitions) then ("--min_transitions " +  '"' + min_transitions + '"') else ""} \
+      ~{if defined(reference) then ("--reference " +  '"' + reference + '"') else ""} \
+      ~{if defined(mutation) then ("--mutation " +  '"' + mutation + '"') else ""}
   >>>
+  parameter_meta {
+    min_transitions: "minimum number of transitions required"
+    reference: "set default reference nucleotide"
+    mutation: "set default mutation nucleotide"
+  }
 }

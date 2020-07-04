@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: bedtools_bamtobed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedtools_bamtobed.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: ed
   doc: Use BAM edit distance (NM tag) for BED score. - Default for BED is to use mapping
     quality. - Default for BEDPE is to use the minimum of the two mapping qualities
@@ -30,6 +25,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -cigar
+- id: i
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -i
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,10 +2,13 @@ version 1.0
 
 task Hisat2ExtractSpliceSites.pyGtfFile {
   input {
-    Boolean vV
+    Boolean? v
   }
   command <<<
     hisat2_extract_splice_sites.py gtf_file \
-      ~{true="-v" false="" vV}
+      ~{true="-v" false="" v}
   >>>
+  parameter_meta {
+    v: ""
+  }
 }

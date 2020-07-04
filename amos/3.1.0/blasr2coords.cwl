@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: blasr2coords.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blasr2coords.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

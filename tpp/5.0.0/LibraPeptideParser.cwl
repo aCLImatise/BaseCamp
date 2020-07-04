@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: LibraPeptideParser.cwl
+id: ../../../../home/ubuntu/BiocondaCli/LibraPeptideParser.cwl
 inputs:
+- id: c
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -c
 - id: pep_xml_file
   doc: ''
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: c
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -c
 outputs: []
 cwlVersion: v1.1
 baseCommand:

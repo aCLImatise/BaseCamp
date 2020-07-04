@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: openslide_write_png.cwl
+id: ../../../../home/ubuntu/BiocondaCli/openslide_write_png.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

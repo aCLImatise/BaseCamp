@@ -2,18 +2,25 @@ version 1.0
 
 task SpadesBwaFa2pac {
   input {
-    Boolean fF
-    String? bwaBwa
-    String? fa2pacFa2pac
-    String? inInFasta
-    String? outOutPrefix
+    Boolean? f
+    String bwa
+    String fa_two_pac
+    String in_dot_fast_a
+    String? out_dot_prefix
   }
   command <<<
     spades-bwa fa2pac \
-      ~{bwaBwa} \
-      ~{true="-f" false="" fF} \
-      ~{fa2pacFa2pac} \
-      ~{inInFasta} \
-      ~{outOutPrefix}
+      ~{bwa} \
+      ~{fa_two_pac} \
+      ~{in_dot_fast_a} \
+      ~{out_dot_prefix} \
+      ~{true="-f" false="" f}
   >>>
+  parameter_meta {
+    f: ""
+    bwa: ""
+    fa_two_pac: ""
+    in_dot_fast_a: ""
+    out_dot_prefix: ""
+  }
 }

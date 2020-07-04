@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gff2tdf.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gff2tdf.pl.cwl
 inputs:
 - id: format
   doc: 'input format to use (gff or bedgraph) [Current value: gff]'

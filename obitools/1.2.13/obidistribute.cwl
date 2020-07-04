@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: obidistribute.cwl
+id: ../../../../home/ubuntu/BiocondaCli/obidistribute.cwl
 inputs:
-- id: n
+- id: _number_number
   doc: '###, --number=### Number of files to distribute over'
   type: boolean
   inputBinding:

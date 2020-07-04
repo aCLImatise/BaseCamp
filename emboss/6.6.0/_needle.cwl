@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _needle.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_needle.cwl
 inputs:
 - id: gap_open
   doc: float      [10.0 for any sequence] The gap open penalty is the score taken

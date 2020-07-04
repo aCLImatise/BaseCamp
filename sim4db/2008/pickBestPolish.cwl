@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pickBestPolish.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pickBestPolish.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

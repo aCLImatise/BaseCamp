@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gencore.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gencore.cwl
 inputs:
 - id: high_qual
   doc: the threshold for a quality score to be considered as high quality. Default
@@ -41,6 +41,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --quit_after_contig
+- id: ref
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --ref
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: obigrep.cwl
+id: ../../../../home/ubuntu/BiocondaCli/obigrep.cwl
 inputs:
 - id: sequence
   doc: regular expression pattern used to select the sequence. The pattern is case
@@ -24,7 +24,7 @@ inputs:
   type: File
   inputBinding:
     prefix: --id-list
-- id: a
+- id: regularpattern__attributeattributenameregularpattern
   doc: ':<REGULAR_PATTERN>, --attribute=<ATTRIBUTE_NAME>:<REGULAR_PATTERN> regular
     expression pattern matched against the attributes of the sequence. the value of
     this atribute is of the form : attribute_name:regular_pattern. The pattern is
@@ -45,12 +45,12 @@ inputs:
   type: string
   inputBinding:
     prefix: --predicat
-- id: l
+- id: _lmax_keep
   doc: <##>, --lmax=<##> keep sequences shorter than lmax
   type: boolean
   inputBinding:
     prefix: -L
-- id: l
+- id: _lmin_keep
   doc: <##>, --lmin=<##> keep sequences longer than lmin
   type: boolean
   inputBinding:

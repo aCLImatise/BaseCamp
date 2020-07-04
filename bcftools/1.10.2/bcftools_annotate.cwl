@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: bcftools_annotate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcftools_annotate.cwl
 inputs:
-- id: in_vcf_gz
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: annotations
   doc: 'VCF file or tabix-indexed file with annotations: CHR\tPOS[\tVALUE]+'
   type: File
@@ -76,9 +71,9 @@ inputs:
   inputBinding:
     prefix: --output
 - id: output_type
-  doc: '<b|u|z|v>    b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v:
-    uncompressed VCF [v]'
-  type: boolean
+  doc: 'b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed
+    VCF [v]'
+  type: string
   inputBinding:
     prefix: --output-type
 - id: regions
@@ -124,6 +119,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: in_dot_vcf_do_tgz
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mmseqs_concatdbs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mmseqs_concatdbs.cwl
 inputs:
 - id: preserve_keys
   doc: false           the keys of the two DB should be distinct, and they will be
@@ -13,7 +13,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --threads
-- id: v
+- id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'
   type: boolean
   inputBinding:

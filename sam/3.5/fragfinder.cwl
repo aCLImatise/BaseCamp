@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: fragfinder.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fragfinder.cwl
 inputs:
-- id: i
-  doc: or ....
-  type: string
-  inputBinding:
-    prefix: -i
-- id: model_file
-  doc: or ....
-  type: string
-  inputBinding:
-    prefix: -modelfile
 - id: track_mod
   doc: ',file2,...         or ....'
   type: File
@@ -32,12 +22,12 @@ inputs:
   inputBinding:
     prefix: -firstsequence
 - id: fra_glen
-  doc: Fragment length [0]
+  doc: Fragment length [10]
   type: long
   inputBinding:
     prefix: -fraglen
 - id: num_per_match
-  doc: '#   Number of best fragments per bin [0]'
+  doc: '#   Number of best fragments per bin [5]'
   type: boolean
   inputBinding:
     prefix: -numpermatch

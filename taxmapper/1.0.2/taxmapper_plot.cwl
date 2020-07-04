@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: taxmapper_plot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/taxmapper_plot.cwl
 inputs:
 - id: tax_a
   doc: Taxonomy file(s), counted taxa for a taxonomic hierarchy

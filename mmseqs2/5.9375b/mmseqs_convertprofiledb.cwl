@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mmseqs_convertprofiledb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mmseqs_convertprofiledb.cwl
 inputs:
 - id: profile_type
   doc: '0               0: HMM (HHsuite) 1: PSSM or 2: HMMER3                       '
@@ -17,7 +17,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --threads
-- id: v
+- id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'
   type: boolean
   inputBinding:

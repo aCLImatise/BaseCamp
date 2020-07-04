@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ftp_ls.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ftp_ls.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

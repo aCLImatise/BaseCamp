@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: remove_white_space_in_id.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/remove_white_space_in_id.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

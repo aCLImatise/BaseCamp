@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: del_parse.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/del_parse.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

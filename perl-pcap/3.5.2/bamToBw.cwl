@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamToBw.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamToBw.pl.cwl
 inputs:
 - id: bam
   doc: -b   BAM/CRAM file to be processed.
@@ -48,24 +48,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -man
-- id: threads
-  doc: Number of threads to be used in processing. If perl is not compiled with threading
-    some steps will not run in parallel..
-  type: boolean
-  inputBinding:
-    prefix: -threads
-- id: man
-  doc: Prints the manual page and exits.
-  type: boolean
-  inputBinding:
-    prefix: -man
-- id: process
-  doc: If you want to run the code in a more efficient manner then this allows each
-    procesing type to be executed in isolation. You can restrict to a single process
-    within the block by specifying -index as well.
-  type: boolean
-  inputBinding:
-    prefix: -process
 outputs: []
 cwlVersion: v1.1
 baseCommand:

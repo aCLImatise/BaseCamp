@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Aquila_stLFR_step1.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Aquila_stLFR_step1.cwl
 inputs:
 - id: fast_q_file
   doc: Required parameter; stLFR FASTQ file with paired reads
@@ -57,6 +57,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --block_len_use
+- id: use
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

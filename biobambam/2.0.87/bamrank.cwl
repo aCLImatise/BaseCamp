@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamrank.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamrank.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

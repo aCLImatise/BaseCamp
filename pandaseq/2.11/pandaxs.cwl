@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pandaxs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pandaxs.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

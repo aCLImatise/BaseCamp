@@ -2,32 +2,46 @@ version 1.0
 
 task GmerCounter {
   input {
-    String dbDb
-    String dbbDbb
-    File wW
-    String maxMaxKmErs
-    Boolean headerHeader
-    Boolean totalTotal
-    Boolean uniqueUnique
-    Boolean kmKmErs
-    String distributionDistribution
-    Boolean dD
-    String? argumentsArguments
-    String? sequencesSequences
+    String? db
+    String? dbb
+    File? write_binary_database
+    String? max_km_ers
+    Boolean? header
+    Boolean? total
+    Boolean? unique
+    Boolean? km_ers
+    String? distribution
+    Boolean? increase_debug_level
+    String arguments
+    String sequences_dot_dot_dot
   }
   command <<<
     gmer_counter \
-      ~{argumentsArguments} \
-      ~{if defined(dbDb) then ("-db " +  '"' + dbDb + '"') else ""} \
-      ~{if defined(dbbDbb) then ("-dbb " +  '"' + dbbDbb + '"') else ""} \
-      ~{if defined(wW) then ("-w " +  '"' + wW + '"') else ""} \
-      ~{if defined(maxMaxKmErs) then ("--max_kmers " +  '"' + maxMaxKmErs + '"') else ""} \
-      ~{true="--header" false="" headerHeader} \
-      ~{true="--total" false="" totalTotal} \
-      ~{true="--unique" false="" uniqueUnique} \
-      ~{true="--kmers" false="" kmKmErs} \
-      ~{if defined(distributionDistribution) then ("--distribution " +  '"' + distributionDistribution + '"') else ""} \
-      ~{true="-D" false="" dD} \
-      ~{sequencesSequences}
+      ~{arguments} \
+      ~{sequences_dot_dot_dot} \
+      ~{if defined(db) then ("-db " +  '"' + db + '"') else ""} \
+      ~{if defined(dbb) then ("-dbb " +  '"' + dbb + '"') else ""} \
+      ~{if defined(write_binary_database) then ("-w " +  '"' + write_binary_database + '"') else ""} \
+      ~{if defined(max_km_ers) then ("--max_kmers " +  '"' + max_km_ers + '"') else ""} \
+      ~{true="--header" false="" header} \
+      ~{true="--total" false="" total} \
+      ~{true="--unique" false="" unique} \
+      ~{true="--kmers" false="" km_ers} \
+      ~{if defined(distribution) then ("--distribution " +  '"' + distribution + '"') else ""} \
+      ~{true="-D" false="" increase_debug_level}
   >>>
+  parameter_meta {
+    db: "- SNP/KMER database file"
+    dbb: "- binary database file"
+    write_binary_database: "- write binary database to file"
+    max_km_ers: "- maximum number of kmers per node"
+    header: "- print header row"
+    total: "- print the total number of kmers per node"
+    unique: "- print the number of nonzero kmers per node"
+    km_ers: "- print individual kmer counts (default if no other output)"
+    distribution: "- print kmer distribution (up to given number)"
+    increase_debug_level: "- increase debug level"
+    arguments: ""
+    sequences_dot_dot_dot: ""
+  }
 }

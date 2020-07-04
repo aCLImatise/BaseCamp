@@ -1,27 +1,27 @@
 class: CommandLineTool
-id: hmmpfam2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hmmpfam2.cwl
 inputs:
-- id: n
+- id: nucleic_acid_modelssequence
   doc: ': nucleic acid models/sequence (default protein)'
   type: boolean
   inputBinding:
     prefix: -n
-- id: a
+- id: sets_alignment_limit
   doc: ': sets alignment output limit to <n> best domain alignments'
   type: string
   inputBinding:
     prefix: -A
-- id: e
+- id: sets_cutoff_globe
   doc: ': sets E value cutoff (globE) to <x>; default 10'
   type: string
   inputBinding:
     prefix: -E
-- id: t
+- id: sets_bit_threshold
   doc: ': sets T bit threshold (globT) to <x>; no threshold by default'
   type: string
   inputBinding:
     prefix: -T
-- id: z
+- id: sets_z_models
   doc: ': sets Z (# models) for E-value calculation'
   type: string
   inputBinding:
@@ -76,7 +76,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --informat
-- id: null2
+- id: null_two
   doc: ': turn OFF the post hoc second null model'
   type: boolean
   inputBinding:
@@ -91,6 +91,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --xnu
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
+- id: hmmpfam
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: hmm_database
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: sequence_file_or_database
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

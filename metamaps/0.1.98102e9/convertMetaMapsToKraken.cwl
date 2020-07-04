@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: convertMetaMapsToKraken.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/convertMetaMapsToKraken.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

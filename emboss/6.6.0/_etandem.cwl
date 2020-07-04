@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _etandem.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_etandem.cwl
 inputs:
 - id: min_repeat
   doc: integer    [10] Minimum repeat size (Integer, 2 or higher)
@@ -12,11 +12,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -maxrepeat
-- id: r_format
-  doc: )
-  type: string
-  inputBinding:
-    prefix: -rformat
 outputs: []
 cwlVersion: v1.1
 baseCommand:

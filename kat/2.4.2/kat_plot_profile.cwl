@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: kat_plot_profile.cwl
+id: ../../../../home/ubuntu/BiocondaCli/kat_plot_profile.cwl
 inputs:
-- id: sect_profile_file
-  doc: The input profile file from KAT sect
-  type: string
-  inputBinding:
-    position: 0
-- id: sect_profile_file_2
-  doc: The optional second input profile file from KAT sect
-  type: string
-  inputBinding:
-    position: 1
 - id: output
   doc: The path to the output file.
   type: string
@@ -36,7 +26,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --y_label
-- id: y2_label
+- id: y_two_label
   doc: Label for second y-axis
   type: string
   inputBinding:
@@ -61,7 +51,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --y_min
-- id: y2_max
+- id: y_two_max
   doc: Maximum value for second y-axis
   type: string
   inputBinding:
@@ -96,6 +86,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: sect_profile_file
+  doc: The input profile file from KAT sect
+  type: string
+  inputBinding:
+    position: 0
+- id: sect_profile_file_two
+  doc: The optional second input profile file from KAT sect
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

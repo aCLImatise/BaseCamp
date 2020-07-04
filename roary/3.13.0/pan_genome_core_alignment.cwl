@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: pan_genome_core_alignment.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pan_genome_core_alignment.cwl
 inputs:
-- id: o
+- id: output_filename
   doc: output filename [core_gene_alignment.aln]
   type: string
   inputBinding:
@@ -11,27 +11,27 @@ inputs:
   type: double
   inputBinding:
     prefix: -cd
-- id: m
+- id: directory_containing_gene
   doc: directory containing gene multi-FASTAs [pan_genome_sequences]
   type: string
   inputBinding:
     prefix: -m
-- id: s
+- id: gene_presence_spreadsheet
   doc: gene presence and absence spreadsheet [gene_presence_absence.csv]
   type: string
   inputBinding:
     prefix: -s
-- id: p
+- id: allow_paralogs
   doc: allow paralogs
   type: boolean
   inputBinding:
     prefix: -p
-- id: z
+- id: delete_intermediate_files
   doc: dont delete intermediate files
   type: boolean
   inputBinding:
     prefix: -z
-- id: v
+- id: verbose_output_stdout
   doc: verbose output to STDOUT
   type: boolean
   inputBinding:

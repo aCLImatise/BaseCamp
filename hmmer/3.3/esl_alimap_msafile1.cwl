@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: esl_alimap_msafile1.cwl
+id: ../../../../home/ubuntu/BiocondaCli/esl_alimap_msafile1.cwl
 inputs:
-- id: msafile2
+- id: msa_file_two
   doc: ''
   type: string
   inputBinding:

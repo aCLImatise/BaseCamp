@@ -1,48 +1,48 @@
 class: CommandLineTool
-id: ssu_draw.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ssu_draw.cwl
 inputs:
-- id: a
+- id: commandline_argument_stockholm
   doc: ': the command-line argument is a stockholm alignment, not a directory'
   type: boolean
   inputBinding:
     prefix: -a
-- id: f
+- id: force_windi_draw
   doc: ': force; w/--indi, draw all seqs, even if predicted output >100 Mb'
   type: boolean
   inputBinding:
     prefix: -f
-- id: d
+- id: display_default_ssualign
   doc: ': display default ssu-align-0.1 masks on drawings'
   type: boolean
   inputBinding:
     prefix: -d
-- id: s
+- id: display_single_mask
   doc: ': display single mask in file <f> for single alignment (requires -a)'
   type: string
   inputBinding:
     prefix: -s
-- id: k
+- id: display_masks_modelnamesmask
   doc: ": display masks from files named <modelname>.<s>.mask on drawings (<modelname>\
     \ might be 'archaea', 'bacteria' or 'eukarya')"
   type: string
   inputBinding:
     prefix: -k
-- id: m
+- id: cm_file_f
   doc: ': CM file <f> created the alignment(s) (with ssu-align -m <f>)'
   type: string
   inputBinding:
     prefix: -m
-- id: t
+- id: use_template_file
   doc: ': use template file <f>, not the default template file'
   type: string
   inputBinding:
     prefix: -t
-- id: i
+- id: i_used_ssualign
   doc: ': -i used with ssu-align, alignments are interleaved'
   type: boolean
   inputBinding:
     prefix: -i
-- id: ps2pdf
+- id: pstwo_pdf
   doc: ': <s> (!= "ps2pdf") is the command for converting ps to pdf'
   type: string
   inputBinding:
@@ -168,6 +168,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no-foot
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

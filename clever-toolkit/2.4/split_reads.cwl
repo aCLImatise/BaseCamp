@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: split_reads.cwl
+id: ../../../../home/ubuntu/BiocondaCli/split_reads.cwl
 inputs:
-- id: l
+- id: arg_length_prefixsuffix
   doc: '[ --split_length ] arg (=35) Length of prefix/suffix to be extracted.'
   type: boolean
   inputBinding:

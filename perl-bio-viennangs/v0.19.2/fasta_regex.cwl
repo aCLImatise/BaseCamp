@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fasta_regex.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fasta_regex.pl.cwl
 inputs:
 - id: motif
   doc: ''

@@ -2,10 +2,13 @@ version 1.0
 
 task Multilign {
   input {
-    String? configurationConfigurationFile
+    String configuration_file
   }
   command <<<
     multilign \
-      ~{configurationConfigurationFile}
+      ~{configuration_file}
   >>>
+  parameter_meta {
+    configuration_file: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: toulligqc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/toulligqc.cwl
 inputs:
 - id: conf_file
   doc: Specify config file
@@ -11,7 +11,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --report-name
-- id: fast5_source
+- id: fast_five_source
   doc: Fast5 file source
   type: string
   inputBinding:
@@ -21,7 +21,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --sequencing-summary-source
-- id: sequencing_summary_1dsqr_source
+- id: sequencing_summary_one_d_sqr_source
   doc: Basecaller 1dsq summary source
   type: string
   inputBinding:

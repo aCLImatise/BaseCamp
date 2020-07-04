@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gdistribution.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gdistribution.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

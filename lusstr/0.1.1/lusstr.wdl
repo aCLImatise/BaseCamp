@@ -2,10 +2,16 @@ version 1.0
 
 task Lusstr {
   input {
-    String? subSubCmd
+    Boolean? v
+    String sub_cmd
   }
   command <<<
     lusstr \
-      ~{subSubCmd}
+      ~{sub_cmd} \
+      ~{true="-v" false="" v}
   >>>
+  parameter_meta {
+    v: ""
+    sub_cmd: "annotate, format"
+  }
 }

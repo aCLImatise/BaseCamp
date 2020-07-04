@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Chorus2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Chorus2.cwl
 inputs:
 - id: jellyfish
   doc: The path where Jellyfish software installed
@@ -71,11 +71,6 @@ inputs:
   type: string
   inputBinding:
     prefix: --ploidy
-- id: j
-  doc: /opt/software/jellyfish/bin/jellyfish -b /opt/software/bwa/bwa -s sample
-  type: boolean
-  inputBinding:
-    prefix: -j
 outputs: []
 cwlVersion: v1.1
 baseCommand:

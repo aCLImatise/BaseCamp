@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: hilive_build.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hilive_build.cwl
 inputs:
-- id: l
+- id: print_licensing_information
   doc: '[ --license ]         Print licensing information and exit'
   type: boolean
   inputBinding:

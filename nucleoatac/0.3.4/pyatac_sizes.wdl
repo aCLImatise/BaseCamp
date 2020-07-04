@@ -2,22 +2,31 @@ version 1.0
 
 task PyatacSizes {
   input {
-    String bamBam
-    String bedBed
-    String outOut
-    Boolean notNotAtac
-    Int lowerLower
-    Int upperUpper
-    Boolean noNoPlot
+    String? bam
+    String? bed
+    String? out
+    Boolean? not_atac
+    Int? lower
+    Int? upper
+    Boolean? no_plot
   }
   command <<<
     pyatac sizes \
-      ~{if defined(bamBam) then ("--bam " +  '"' + bamBam + '"') else ""} \
-      ~{if defined(bedBed) then ("--bed " +  '"' + bedBed + '"') else ""} \
-      ~{if defined(outOut) then ("--out " +  '"' + outOut + '"') else ""} \
-      ~{true="--not_atac" false="" notNotAtac} \
-      ~{if defined(lowerLower) then ("--lower " +  '"' + lowerLower + '"') else ""} \
-      ~{if defined(upperUpper) then ("--upper " +  '"' + upperUpper + '"') else ""} \
-      ~{true="--no_plot" false="" noNoPlot}
+      ~{if defined(bam) then ("--bam " +  '"' + bam + '"') else ""} \
+      ~{if defined(bed) then ("--bed " +  '"' + bed + '"') else ""} \
+      ~{if defined(out) then ("--out " +  '"' + out + '"') else ""} \
+      ~{true="--not_atac" false="" not_atac} \
+      ~{if defined(lower) then ("--lower " +  '"' + lower + '"') else ""} \
+      ~{if defined(upper) then ("--upper " +  '"' + upper + '"') else ""} \
+      ~{true="--no_plot" false="" no_plot}
   >>>
+  parameter_meta {
+    bam: "Aligned reads"
+    bed: "Only compute size distribution for fragment centered within regions in bed file"
+    out: "Basename for output"
+    not_atac: "Don't use atac offsets"
+    lower: "lower limit on insert size. Default is 0"
+    upper: "upper limit on insert size. Default is 500"
+    no_plot: "Don't plot output"
+  }
 }

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: ocrad.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ocrad.cwl
 inputs:
-- id: files
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
 - id: append
   doc: append text to output file
   type: boolean
@@ -81,6 +76,11 @@ inputs:
   type: File
   inputBinding:
     prefix: --export
+- id: files
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

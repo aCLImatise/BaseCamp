@@ -1,22 +1,6 @@
 class: CommandLineTool
-id: mea.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mea.cwl
 inputs:
-- id: ppv
-  doc: = TP/(TP+FP) 'Positive Predictive Value'
-  type: string
-  inputBinding:
-    position: 0
-- id: f1
-  doc: = PPV*SENS / (PPV+SENS), if PPV+SENS!=0; 0, otherwise   'F1-score'
-  type: string
-  inputBinding:
-    position: 1
-- id: mcc
-  doc: = (TP*TN - FP*FN) / sqrt( (TP+FP)*(TP+FN)*(TN+FP)*(TN+FN) ) 'Mathews correlation
-    coefficient'
-  type: string
-  inputBinding:
-    position: 2
 - id: alpha
   doc: slope of base pair distance penalty (default=`0.012')
   type: string
@@ -67,6 +51,22 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: ppv
+  doc: = TP/(TP+FP) 'Positive Predictive Value'
+  type: string
+  inputBinding:
+    position: 0
+- id: fone
+  doc: = PPV*SENS / (PPV+SENS), if PPV+SENS!=0; 0, otherwise   'F1-score'
+  type: string
+  inputBinding:
+    position: 1
+- id: mcc
+  doc: = (TP*TN - FP*FN) / sqrt( (TP+FP)*(TP+FN)*(TN+FP)*(TN+FN) ) 'Mathews correlation
+    coefficient'
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

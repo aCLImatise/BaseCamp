@@ -1,31 +1,11 @@
 class: CommandLineTool
-id: db_load.cwl
+id: ../../../../home/ubuntu/BiocondaCli/db_load.cwl
 inputs:
-- id: blob_dir
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: blob_threshold
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: db_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: b
+- id: ntv
   doc: ''
   type: boolean
   inputBinding:
-    prefix: -b
-- id: o
-  doc: ''
-  type: boolean
-  inputBinding:
-    prefix: -o
+    prefix: -nTV
 outputs: []
 cwlVersion: v1.1
 baseCommand:

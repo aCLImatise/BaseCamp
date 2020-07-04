@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: starchcat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/starchcat.cwl
 inputs:
 - id: note
   doc: ="foo bar..."   Append note to output archive metadata (optional).
   type: boolean
   inputBinding:
     prefix: --note
-- id: bzip2
+- id: bzip_two
   doc: '| --gzip      Specify backend compression type (optional, default is bzip2).'
   type: boolean
   inputBinding:

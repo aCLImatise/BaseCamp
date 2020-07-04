@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pourRNA.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pourRNA.cwl
 inputs:
 - id: sequence
   doc: The RNA sequence of the molecule (default=`ACUGUAUGCGCGU')

@@ -2,12 +2,19 @@ version 1.0
 
 task PybelMachine {
   input {
-    Boolean localLocal
-    String hostHost
+    Boolean? local
+    String? host
+    String? agents
   }
   command <<<
     pybel machine \
-      ~{true="--local" false="" localLocal} \
-      ~{if defined(hostHost) then ("--host " +  '"' + hostHost + '"') else ""}
+      ~{agents} \
+      ~{true="--local" false="" local} \
+      ~{if defined(host) then ("--host " +  '"' + host + '"') else ""}
   >>>
+  parameter_meta {
+    local: "Upload to local database."
+    host: "URL of BEL Commons. Defaults to https://bel- commons.scai.fraunhofer.de"
+    agents: ""
+  }
 }

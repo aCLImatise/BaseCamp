@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: protpred_Gromacs_MC_Metropolis.cwl
+id: ../../../../home/ubuntu/BiocondaCli/protpred_Gromacs_MC_Metropolis.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

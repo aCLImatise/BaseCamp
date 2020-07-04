@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: gsutil_stat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gsutil_stat.cwl
 inputs:
-- id: url
+- id: url_dot_dot_dot
   doc: ''
   type: string
   inputBinding:

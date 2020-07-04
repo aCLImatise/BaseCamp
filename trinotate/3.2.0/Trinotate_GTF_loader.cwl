@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Trinotate_GTF_loader.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Trinotate_GTF_loader.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

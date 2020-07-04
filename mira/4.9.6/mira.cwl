@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mira.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mira.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

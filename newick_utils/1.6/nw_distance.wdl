@@ -2,10 +2,13 @@ version 1.0
 
 task NwDistance {
   input {
-    Boolean tT
+    Boolean? a_him_nt
   }
   command <<<
     nw_distance \
-      ~{true="-t" false="" tT}
+      ~{true="-ahimnt" false="" a_him_nt}
   >>>
+  parameter_meta {
+    a_him_nt: ""
+  }
 }

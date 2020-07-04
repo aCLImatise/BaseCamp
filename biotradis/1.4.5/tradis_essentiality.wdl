@@ -2,10 +2,13 @@ version 1.0
 
 task TradisEssentiality.R {
   input {
-    String? dataDataTab
+    String data_dot_tab
   }
   command <<<
     tradis_essentiality.R \
-      ~{dataDataTab}
+      ~{data_dot_tab}
   >>>
+  parameter_meta {
+    data_dot_tab: ""
+  }
 }

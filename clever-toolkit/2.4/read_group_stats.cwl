@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: read_group_stats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/read_group_stats.cwl
 inputs:
 - id: read_group_file
   doc: ''

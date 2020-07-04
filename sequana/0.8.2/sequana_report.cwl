@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sequana_report.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sequana_report.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

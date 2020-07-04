@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: benchmark_seq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/benchmark_seq.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

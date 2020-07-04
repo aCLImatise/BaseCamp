@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ace.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ace.pl.cwl
 inputs:
 - id: host
   doc: Server host (localhost)

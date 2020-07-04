@@ -1,13 +1,13 @@
 class: CommandLineTool
-id: guidescan_processer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/guidescan_processer.cwl
 inputs:
-- id: f
+- id: path_fasta_file
   doc: 'path to fasta file or folder with fasta files (will use all .fa, .fasta, .fa.gz,
     .fasta.gz files found in the folder) (default: None)'
   type: string
   inputBinding:
     prefix: -f
-- id: n
+- id: project_name_use
   doc: 'project name, use in all output (will produce a folder with this name containing
     intermediate and final files in it) (default: myguides)'
   type: string
@@ -20,23 +20,23 @@ inputs:
   type: long
   inputBinding:
     prefix: --minchr
-- id: c
+- id: list_names_chromosomes
   doc: 'list names of chromosomes (comma separated) that will be used in analysis,
     or name of file where this list is stored (default: )'
   type: string
   inputBinding:
     prefix: -c
-- id: l
+- id: desired_length_including
   doc: 'desired length of guideRNAs (not including PAM) (default: 20)'
   type: long
   inputBinding:
     prefix: -l
-- id: p
+- id: pam_sequence_default
   doc: 'PAM sequence (default: NGG)'
   type: string
   inputBinding:
     prefix: -p
-- id: a
+- id: alternative_pam_sequences
   doc: 'alternative PAM sequences (separate multiple ones by commas), will not be
     used in primary guideRNAs, but will be considered in off-targets; all PAM sequences
     should be mutually exclusive and of the same length (default: NAG)'
@@ -48,14 +48,14 @@ inputs:
   type: string
   inputBinding:
     prefix: --pampos
-- id: s
+- id: minimum_mismatch_similarity
   doc: 'minimum mismatch similarity between guideRNAs; a candidate guideRNA (with
     primary PAM) should not have alternative occurences in the genome (with any PAM)
     with less than this many mismatches (not including PAM) (default: 2)'
   type: string
   inputBinding:
     prefix: -s
-- id: d
+- id: maximum_distance_consider
   doc: 'maximum distance to consider from guideRNA to its off- target; off-target
     is an alternative occurrence (with any PAM) of this guideRNA in the genome at
     edit distance at most this number (including PAM); currently values larger than
@@ -85,7 +85,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --gnupath
-- id: t
+- id: how_many_threads
   doc: 'how many threads to use; do not specify more than you have on your system;
     currently not implemented (default: 1)'
   type: string

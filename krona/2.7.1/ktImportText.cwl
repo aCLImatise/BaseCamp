@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ktImportText.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ktImportText.cwl
 inputs:
 - id: text
   doc: Tab-delimited text file. Each line should be a number followed by a list of

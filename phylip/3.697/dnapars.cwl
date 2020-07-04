@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dnapars.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dnapars.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

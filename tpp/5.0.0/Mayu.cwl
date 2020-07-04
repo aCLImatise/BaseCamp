@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Mayu.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Mayu.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

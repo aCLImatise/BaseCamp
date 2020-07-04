@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ooSubprocess.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ooSubprocess.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

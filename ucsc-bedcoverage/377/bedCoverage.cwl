@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: bedCoverage.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedCoverage.cwl
 inputs:
+- id: restrict
+  doc: Restrict to parts in restrict.bed
+  type: string
+  inputBinding:
+    prefix: -restrict
 - id: database
   doc: ''
   type: string
@@ -11,11 +16,6 @@ inputs:
   type: string
   inputBinding:
     position: 1
-- id: restrict
-  doc: Restrict to parts in restrict.bed
-  type: string
-  inputBinding:
-    prefix: -restrict
 outputs: []
 cwlVersion: v1.1
 baseCommand:

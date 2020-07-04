@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SalmID.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SalmID.py.cwl
 inputs:
 - id: input_file
   doc: Single fastq.gz file input, include path to file if file is not in same directory
@@ -19,7 +19,7 @@ inputs:
   type: Directory
   inputBinding:
     prefix: --input_dir
-- id: r
+- id: coverage_taxonomy_
   doc: ', coverage or taxonomy, --report percentage, coverage or taxonomy Report either
     percentage ("percentage") of clade specific kmers recovered, average kmer-coverage
     ("cov"), or taxonomy (taxonomic species ID, plus observed mean k-mer coverages
@@ -27,12 +27,17 @@ inputs:
   type: string
   inputBinding:
     prefix: -r
-- id: m
+- id: thorough__mode
   doc: or thorough, --mode quick or thorough Quick [quick] or thorough [thorough]
     mode
   type: string
   inputBinding:
     prefix: -m
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
 outputs: []
 cwlVersion: v1.1
 baseCommand:

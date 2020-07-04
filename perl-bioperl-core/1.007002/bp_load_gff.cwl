@@ -1,22 +1,7 @@
 class: CommandLineTool
-id: bp_load_gff.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bp_load_gff.pl.cwl
 inputs:
-- id: notes
-  doc: "If the filename is given as \"-\" then the input is taken from standard input.\
-    \ Compressed files (.gz, .Z, .bz2) are automatically uncompressed. FASTA format\
-    \ files are distinguished from GFF files by their filename extensions. Files ending\
-    \ in .fa, .fasta, .fast, .seq, .dna and their uppercase variants are treated as\
-    \ FASTA files. Everything else is treated as a GFF file. If you wish to load -fasta\
-    \ files from STDIN, then use the -f command-line swith with an argument of '-',\
-    \ as in gunzip my_data.fa.gz | bp_fast_load_gff.pl -d test -f - On the first load\
-    \ of a database, you will see a number of \"unknown table\" errors. This is normal.\
-    \ About maxfeature: the default value is 100,000,000 bases. If you have features\
-    \ that are close to or greater that 100Mb in length, then the value of maxfeature\
-    \ should be increased to 1,000,000,000, or another power of 10."
-  type: string
-  inputBinding:
-    position: 0
-- id: d
+- id: of__database
   doc: of --database.
   type: string
   inputBinding:
@@ -68,7 +53,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --upgrade
-- id: gff3_munge
+- id: gff_three_munge
   doc: Activate GFF3 name munging (see Bio::DB::GFF)
   type: boolean
   inputBinding:
@@ -84,6 +69,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --summary
+- id: notes
+  doc: "If the filename is given as \"-\" then the input is taken from standard input.\
+    \ Compressed files (.gz, .Z, .bz2) are automatically uncompressed. FASTA format\
+    \ files are distinguished from GFF files by their filename extensions. Files ending\
+    \ in .fa, .fasta, .fast, .seq, .dna and their uppercase variants are treated as\
+    \ FASTA files. Everything else is treated as a GFF file. If you wish to load -fasta\
+    \ files from STDIN, then use the -f command-line swith with an argument of '-',\
+    \ as in gunzip my_data.fa.gz | bp_fast_load_gff.pl -d test -f - On the first load\
+    \ of a database, you will see a number of \"unknown table\" errors. This is normal.\
+    \ About maxfeature: the default value is 100,000,000 bases. If you have features\
+    \ that are close to or greater that 100Mb in length, then the value of maxfeature\
+    \ should be increased to 1,000,000,000, or another power of 10."
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

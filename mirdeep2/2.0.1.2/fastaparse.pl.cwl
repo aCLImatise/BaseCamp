@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fastaparse.pl.orig.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastaparse.pl.orig.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

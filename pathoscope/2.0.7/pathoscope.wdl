@@ -2,10 +2,13 @@ version 1.0
 
 task Pathoscope {
   input {
-    Boolean verboseVerbose
+    Boolean? verbose
   }
   command <<<
     pathoscope \
-      ~{true="--verbose" false="" verboseVerbose}
+      ~{true="--verbose" false="" verbose}
   >>>
+  parameter_meta {
+    verbose: "Prints verbose text while running"
+  }
 }

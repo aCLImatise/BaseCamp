@@ -2,14 +2,13 @@ version 1.0
 
 task Cage {
   input {
-    Boolean orOr
-    String sS
-    String? cageCage
+    String cage
   }
   command <<<
     cage \
-      ~{cageCage} \
-      ~{true="-- OR" false="" orOr} \
-      ~{if defined(sS) then ("-s " +  '"' + sS + '"') else ""}
+      ~{cage}
   >>>
+  parameter_meta {
+    cage: "{-o <VCF_output_file>|-s <SNP_input_db>} [-v] [--] [--version] [-h] <contig> <start> <end> <stepsize> <beta> <cage_output_file>"
+  }
 }

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: hulk_sketch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hulk_sketch.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: fast_q
   doc: FASTQ file(s) to sketch (can also pipe in STDIN)
   type: string
@@ -70,7 +65,7 @@ inputs:
   inputBinding:
     prefix: --log
 - id: outfile
-  doc: directory and basename for saving the outfile(s) (default "./hulk-20200428124320")
+  doc: directory and basename for saving the outfile(s) (default "./hulk-20200619040918")
   type: string
   inputBinding:
     prefix: --outFile
@@ -84,6 +79,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --profiling
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

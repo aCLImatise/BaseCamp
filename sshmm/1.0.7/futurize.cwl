@@ -1,6 +1,28 @@
 class: CommandLineTool
-id: futurize.cwl
+id: ../../../../home/ubuntu/BiocondaCli/futurize.cwl
 inputs:
+- id: all_imports
+  doc: Add all __future__ and future imports to each module
+  type: boolean
+  inputBinding:
+    prefix: --all-imports
+- id: stage_one
+  doc: Modernize Python 2 code only; no compatibility with Python 3 (or dependency
+    on ``future``)
+  type: boolean
+  inputBinding:
+    prefix: --stage1
+- id: stage_two
+  doc: Take modernized (stage1) code and add a dependency on ``future`` to provide
+    Py3 compatibility.
+  type: boolean
+  inputBinding:
+    prefix: --stage2
+- id: both_stages
+  doc: Apply both stages 1 and 2
+  type: boolean
+  inputBinding:
+    prefix: --both-stages
 - id: unicode_literals
   doc: Add ``from __future__ import unicode_literals`` to implicitly convert all unadorned
     string literals '' into unicode strings

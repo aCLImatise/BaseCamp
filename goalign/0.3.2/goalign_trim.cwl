@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: goalign_trim.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_trim.cwl
 inputs:
 - id: out_align
   doc: Renamed alignment output file (default "stdout")

@@ -1,7 +1,29 @@
 version 1.0
 
 task ClstrRenumber.pl {
+  input {
+    String no
+    String such
+    File file
+    String or
+    Directory directory
+    String at
+  }
   command <<<
-    clstr_renumber.pl
+    clstr_renumber.pl \
+      ~{no} \
+      ~{such} \
+      ~{file} \
+      ~{or} \
+      ~{directory} \
+      ~{at}
   >>>
+  parameter_meta {
+    no: ""
+    such: ""
+    file: ""
+    or: ""
+    directory: ""
+    at: ""
+  }
 }

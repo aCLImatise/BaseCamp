@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: starseqr.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/starseqr.py.cwl
 inputs:
 - id: prefix
   doc: prefix to name files. Can be string or /path/to/string
@@ -62,16 +62,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: fast_q_one
+  doc: fastq.gz 1(.gz)
+  type: string
+  inputBinding:
+    prefix: --fastq1
+- id: fast_q_two
+  doc: fastq.gz 2(.gz)
+  type: string
+  inputBinding:
+    prefix: --fastq2
 - id: star_index
   doc: path to STAR index folder
   type: string
   inputBinding:
     prefix: --star_index
-- id: m
-  doc: '{0,1}, --mode {0,1} STAR alignment mode. 0=More-specific, 1=More-Sensitive'
-  type: boolean
+- id: mode
+  doc: STAR alignment mode. 0=More-specific, 1=More-Sensitive
+  type: string
   inputBinding:
-    prefix: -m
+    prefix: --mode
 - id: star_j_xns
   doc: chimeric junctions file produced by STAR
   type: string

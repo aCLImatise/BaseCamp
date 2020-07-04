@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: spectrast_cluster.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/spectrast_cluster.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

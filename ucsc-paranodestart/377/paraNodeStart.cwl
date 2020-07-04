@@ -1,19 +1,14 @@
 class: CommandLineTool
-id: paraNodeStart.cwl
+id: ../../../../home/ubuntu/BiocondaCli/paraNodeStart.cwl
 inputs:
-- id: machine_list
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: log
   doc: Log to file instead of syslog.
   type: File
   inputBinding:
     prefix: -log
 - id: umask
-  doc: =000  Set umask to run under - default 002.
-  type: boolean
+  doc: Set umask to run under - default 002.
+  type: string
   inputBinding:
     prefix: -umask
 - id: random_delay
@@ -46,6 +41,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -rsh
+- id: machine_list
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

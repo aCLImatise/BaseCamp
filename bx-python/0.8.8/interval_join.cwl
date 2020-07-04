@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: interval_join.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/interval_join.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

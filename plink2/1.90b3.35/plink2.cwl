@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: plink2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/plink2.cwl
 inputs:
 - id: out
   doc: '[prefix]   : Specify prefix for output files.'
@@ -16,32 +16,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --check-sex
-- id: homo_zy_g_window_snp
-  doc: .
-  type: boolean
+- id: regress_rel
+  doc: '{d}'
+  type: string
   inputBinding:
-    prefix: --homozyg-window-snp
+    prefix: --regress-rel
 - id: extract
   doc: are considered.
   type: File
   inputBinding:
     prefix: --extract
-- id: meta_analysis
-  doc: '[PLINK report filenames...]'
+- id: write_var_ranges
+  doc: '[block ct]'
   type: boolean
   inputBinding:
-    prefix: --meta-analysis
-- id: meta_analysis
-  doc: '[PLINK report filenames...] + <logscale | qt> <no-map | no-allele> <study>
-    <report-all> <weighted-z>'
-  type: boolean
-  inputBinding:
-    prefix: --meta-analysis
-- id: extract
-  doc: are considered.
-  type: File
-  inputBinding:
-    prefix: --extract
+    prefix: --write-var-ranges
 - id: snps
   doc: split a job across multiple machines.)
   type: string
@@ -83,15 +72,10 @@ inputs:
   inputBinding:
     prefix: --simulate-missing
 - id: allow_extra_chr
-  doc: "<0>     : Permit unrecognized chromosome codes.  The '0'"
-  type: boolean
+  doc: ": Permit unrecognized chromosome codes.  The '0'"
+  type: string
   inputBinding:
     prefix: --allow-extra-chr
-- id: parameters
-  doc: .
-  type: boolean
-  inputBinding:
-    prefix: --parameters
 - id: r_port
   doc: '[port #]  : Connect to Rserve on a port other than 6311.'
   type: boolean
@@ -121,7 +105,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --threads
-- id: d
+- id: change_variantcovariate_range
   doc: "[char]         : Change variant/covariate range delimiter (normally '-')."
   type: boolean
   inputBinding:
@@ -254,13 +238,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --cnv-freq-overlap
-- id: cnv_freq_method_2
+- id: cnv_freq_method_two
   doc: ': Causes k to instead be compared against the number of segments for which
     x >= [overlap] / [union].'
   type: string
   inputBinding:
     prefix: --cnv-freq-method2
-- id: cnv_exclude_off_by_1
+- id: cnv_exclude_off_by_one
   doc: ': Exclude .cnv segments where the terminal .cnv.map entry is off by 1.'
   type: boolean
   inputBinding:
@@ -276,6 +260,36 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --cnv-count
+- id: reports_dot
+  doc: (This cannot be used with very long allele codes.)
+  type: string
+  inputBinding:
+    position: 0
+- id: down_dot
+  doc: With no parameters, 100k iterations are run.
+  type: string
+  inputBinding:
+    position: 0
+- id: homozygosity_dot
+  doc: (Automatically set when --homozyg-match is present.)
+  type: string
+  inputBinding:
+    position: 0
+- id: p_values_dot
+  doc: "'fisher-midp' also applies Lancaster's mid-p adjustment."
+  type: string
+  inputBinding:
+    position: 0
+- id: test_dot
+  doc: Gene locations must be loaded with --cnv-count.
+  type: string
+  inputBinding:
+    position: 0
+- id: loaded_dot
+  doc: Default for non-merge operations.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

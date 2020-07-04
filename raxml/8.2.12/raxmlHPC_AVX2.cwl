@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: raxmlHPC_AVX2.cwl
+id: ../../../../home/ubuntu/BiocondaCli/raxmlHPC_AVX2.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,17 +1,6 @@
 class: CommandLineTool
-id: evolve.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/evolve.py.cwl
 inputs:
-- id: ssm_file
-  doc: File listing SSMs (simple somatic mutations, i.e., single nucleotide variants.
-    For proper format, see README.md.
-  type: string
-  inputBinding:
-    position: 0
-- id: cnv_file
-  doc: File listing CNVs (copy number variations). For proper format, see README.md.
-  type: string
-  inputBinding:
-    position: 1
 - id: output_dir
   doc: 'Path to output directory (default: None)'
   type: string
@@ -60,6 +49,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --params
+- id: ssm_file
+  doc: File listing SSMs (simple somatic mutations, i.e., single nucleotide variants.
+    For proper format, see README.md.
+  type: string
+  inputBinding:
+    position: 0
+- id: cnv_file
+  doc: File listing CNVs (copy number variations). For proper format, see README.md.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

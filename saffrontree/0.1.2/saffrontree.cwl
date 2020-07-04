@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: saffrontree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/saffrontree.cwl
 inputs:
-- id: output_directory
-  doc: Output directory
-  type: string
-  inputBinding:
-    position: 0
-- id: input_files
-  doc: FASTQ/FASTA files which may be gzipped
-  type: string
-  inputBinding:
-    position: 1
 - id: km_er
   doc: Kmer to use, depends on read length [31]
   type: string
@@ -41,6 +31,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: output_directory
+  doc: Output directory
+  type: string
+  inputBinding:
+    position: 0
+- id: input_files
+  doc: FASTQ/FASTA files which may be gzipped
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

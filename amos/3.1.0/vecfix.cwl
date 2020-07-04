@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vecfix.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vecfix.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

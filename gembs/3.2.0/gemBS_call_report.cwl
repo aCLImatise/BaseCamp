@@ -1,21 +1,36 @@
 class: CommandLineTool
-id: gemBS_call_report.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gemBS_call_report.cwl
 inputs:
-- id: project
-  doc: Output title for report (project name)
+- id: loglevel
+  doc: ''
   type: string
   inputBinding:
-    prefix: --project
-- id: output_dir
-  doc: Output directory to store html and Sphinx Variants report.
-  type: File
+    prefix: --loglevel
+- id: v
+  doc: ''
+  type: boolean
   inputBinding:
-    prefix: --output-dir
-- id: threads
-  doc: Number of jobs to run in parallel.
+    prefix: -v
+- id: j
+  doc: ''
   type: string
   inputBinding:
-    prefix: --threads
+    prefix: -j
+- id: d
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -d
+- id: var_4
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: var_5
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

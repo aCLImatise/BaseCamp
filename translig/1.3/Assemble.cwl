@@ -1,11 +1,11 @@
 class: CommandLineTool
-id: Assemble.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Assemble.cwl
 inputs:
-- id: km_er_length
-  doc: '/-k <int>        : length of kmer, default: 25.'
-  type: boolean
+- id: km_er_length_slash_k
+  doc: ': length of kmer, default: 25.'
+  type: long
   inputBinding:
-    prefix: --kmer_length
+    prefix: --kmer_length/-k
 - id: double_stranded_mode
   doc: ': set it true if double stranded mode.'
   type: boolean
@@ -58,11 +58,31 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --pair_gap_length
-- id: out_dir
-  doc: '/-o <string>         : name of directory for output, default : ./RawGraphs '
+- id: out_dir_slash_o
+  doc: ': name of directory for output, default : ./RawGraphs '
+  type: string
+  inputBinding:
+    prefix: --out_dir/-o
+- id: help_slash_h
+  doc: ': display the help information.'
   type: boolean
   inputBinding:
-    prefix: --out_dir
+    prefix: --help/-h
+- id: reads_slash_km_ers
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --reads/--kmers
+- id: filename
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
+- id: opts
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

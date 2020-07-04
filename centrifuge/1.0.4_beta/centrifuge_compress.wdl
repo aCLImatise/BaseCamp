@@ -2,32 +2,34 @@ version 1.0
 
 task CentrifugeCompress.pl {
   input {
-    String mapMap
-    String oO
-    Boolean noNoCompress
-    Boolean tT
-    Boolean maxgMaxg
-    Boolean noNoDustMasker
-    String? perlPerl
-    String? centrifugeCentrifugeCompressPl
-    File? pathPathToDownloadFiles
-    File? pathPathToTaxNoNoMy
-    String? 11
-    String? 5000000050000000
+    String? var_map
+    String? o
+    Boolean? no_compress
+    String? t
+    String? maxg
+    Boolean? no_dust_masker
+    File path_to_download_files
+    File path_to_tax_no_no_my
   }
   command <<<
     centrifuge-compress.pl \
-      ~{perlPerl} \
-      ~{if defined(mapMap) then ("-map " +  '"' + mapMap + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{true="-noCompress" false="" noNoCompress} \
-      ~{true="-t" false="" tT} \
-      ~{true="-maxG" false="" maxgMaxg} \
-      ~{true="-noDustmasker" false="" noNoDustMasker} \
-      ~{centrifugeCentrifugeCompressPl} \
-      ~{pathPathToDownloadFiles} \
-      ~{pathPathToTaxNoNoMy} \
-      ~{11} \
-      ~{5000000050000000}
+      ~{path_to_download_files} \
+      ~{path_to_tax_no_no_my} \
+      ~{if defined(var_map) then ("-map " +  '"' + var_map + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{true="-noCompress" false="" no_compress} \
+      ~{if defined(t) then ("-t " +  '"' + t + '"') else ""} \
+      ~{if defined(maxg) then ("-maxG " +  '"' + maxg + '"') else ""} \
+      ~{true="-noDustmasker" false="" no_dust_masker}
   >>>
+  parameter_meta {
+    var_map: ""
+    o: ""
+    no_compress: ""
+    t: ""
+    maxg: ""
+    no_dust_masker: ""
+    path_to_download_files: ""
+    path_to_tax_no_no_my: ""
+  }
 }

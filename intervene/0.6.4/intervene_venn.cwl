@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: intervene_venn.cwl
+id: ../../../../home/ubuntu/BiocondaCli/intervene_venn.cwl
 inputs:
-- id: i
+- id: input_genomic_regions
   doc: '[INPUT [INPUT ...]], --input [INPUT [INPUT ...]] Input genomic regions in
     (BED/GTF/GFF) format or lists of genes/SNPs IDs. For files in a directory use
     *.<extension>. e.g. *.bed'

@@ -2,12 +2,16 @@ version 1.0
 
 task _fdnadist {
   input {
-    Boolean methodMethod
-    Boolean weightsWeights
+    Boolean? method
+    Boolean? weights
   }
   command <<<
     _fdnadist \
-      ~{true="-method" false="" methodMethod} \
-      ~{true="-weights" false="" weightsWeights}
+      ~{true="-method" false="" method} \
+      ~{true="-weights" false="" weights}
   >>>
+  parameter_meta {
+    method: "menu       [F84 distance model] Choose the method to use (Values: f (F84 distance model); k (Kimura 2-parameter distance); j (Jukes-Cantor distance); l (LogDet distance); s (Similarity table))"
+    weights: "properties Weights file"
+  }
 }

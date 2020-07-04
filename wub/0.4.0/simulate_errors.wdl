@@ -1,19 +1,20 @@
 version 1.0
 
-task SimulateErrors.py {
+task SimulateErrors.pyOutputFasta {
   input {
-    String eE
-    String wW
-    String zZ
-    String? inputInputFastA
-    String? outputOutputFastA
+    String? e
+    String? w
+    String simulate_errors_do_tpy
   }
   command <<<
-    simulate_errors.py \
-      ~{inputInputFastA} \
-      ~{if defined(eE) then ("-e " +  '"' + eE + '"') else ""} \
-      ~{if defined(wW) then ("-w " +  '"' + wW + '"') else ""} \
-      ~{if defined(zZ) then ("-z " +  '"' + zZ + '"') else ""} \
-      ~{outputOutputFastA}
+    simulate_errors.py output_fasta \
+      ~{simulate_errors_do_tpy} \
+      ~{if defined(e) then ("-e " +  '"' + e + '"') else ""} \
+      ~{if defined(w) then ("-w " +  '"' + w + '"') else ""}
   >>>
+  parameter_meta {
+    e: ""
+    w: ""
+    simulate_errors_do_tpy: ""
+  }
 }

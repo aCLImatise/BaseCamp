@@ -1,13 +1,17 @@
 version 1.0
 
-task GlimDiff.awkBPred {
+task GlimDiff.awk {
   input {
-    String? aAPred
-    String? bBPred
+    String a_pred
+    String b_pred
   }
   command <<<
-    glim-diff.awk b-pred \
-      ~{aAPred} \
-      ~{bBPred}
+    glim-diff.awk \
+      ~{a_pred} \
+      ~{b_pred}
   >>>
+  parameter_meta {
+    a_pred: ""
+    b_pred: ""
+  }
 }

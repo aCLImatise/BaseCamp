@@ -2,14 +2,22 @@ version 1.0
 
 task Paste {
   input {
-    String delimitersDelimiters
-    String serialSerial
-    Boolean zeroZeroTerminated
+    String? delimiters
+    String? serial
+    Boolean? zero_terminated
+    String? option
   }
   command <<<
     paste \
-      ~{if defined(delimitersDelimiters) then ("--delimiters " +  '"' + delimitersDelimiters + '"') else ""} \
-      ~{if defined(serialSerial) then ("--serial " +  '"' + serialSerial + '"') else ""} \
-      ~{true="--zero-terminated" false="" zeroZeroTerminated}
+      ~{option} \
+      ~{if defined(delimiters) then ("--delimiters " +  '"' + delimiters + '"') else ""} \
+      ~{if defined(serial) then ("--serial " +  '"' + serial + '"') else ""} \
+      ~{true="--zero-terminated" false="" zero_terminated}
   >>>
+  parameter_meta {
+    delimiters: "reuse characters from LIST instead of TABs"
+    serial: "one file at a time instead of in parallel"
+    zero_terminated: "line delimiter is NUL, not newline"
+    option: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mapviewToBed.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mapviewToBed.pl.cwl
 inputs:
 - id: min_qual
   doc: = Exclude alignments with <= this mapping quality score.

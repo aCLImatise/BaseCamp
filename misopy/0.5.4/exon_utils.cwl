@@ -1,22 +1,36 @@
 class: CommandLineTool
-id: exon_utils.cwl
+id: ../../../../home/ubuntu/BiocondaCli/exon_utils.cwl
 inputs:
-- id: get_const_exons
-  doc: Get constitutive exons from an input GFF file.
+- id: to
+  doc: ''
   type: string
   inputBinding:
-    prefix: --get-const-exons
-- id: min_exon_size
-  doc: Minimum size of constitutive exon (in nucleotides) that should be used in the
-    computation. Default is 20 bp.
-  type: long
-  inputBinding:
-    prefix: --min-exon-size
-- id: output_dir
-  doc: Output directory.
+    position: 0
+- id: fetch
+  doc: ''
   type: string
   inputBinding:
-    prefix: --output-dir
+    position: 1
+- id: constitutive
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: exons
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: from
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
+- id: gff
+  doc: ''
+  type: string
+  inputBinding:
+    position: 5
 outputs: []
 cwlVersion: v1.1
 baseCommand:

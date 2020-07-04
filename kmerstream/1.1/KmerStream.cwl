@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: KmerStream.cwl
+id: ../../../../home/ubuntu/BiocondaCli/KmerStream.cwl
 inputs:
 - id: binary
   doc: Output is written in binary format (default false)
@@ -21,7 +21,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --online
-- id: q64
+- id: q_six_four
   doc: set if PHRED+64 scores are used (@...h) default used PHRED+33
   type: boolean
   inputBinding:

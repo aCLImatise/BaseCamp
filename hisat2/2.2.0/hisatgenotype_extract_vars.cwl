@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hisatgenotype_extract_vars.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hisatgenotype_extract_vars.py.cwl
 inputs:
 - id: base
   doc: 'base filename for backbone sequence, variants, and linking info (Default:

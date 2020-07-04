@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bedExtendRanges.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bedExtendRanges.cwl
 inputs:
 - id: host
   doc: mysql host
@@ -22,10 +22,25 @@ inputs:
   inputBinding:
     prefix: -tab
 - id: verbose
-  doc: for extra information to STDERR
+  doc: '- verbose level for extra information to STDERR'
   type: string
   inputBinding:
-    prefix: '- verbose'
+    prefix: -verbose
+- id: database
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: length
+  doc: ''
+  type: long
+  inputBinding:
+    position: 1
+- id: files
+  doc: ''
+  type: File
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

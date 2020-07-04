@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: chromosomer_fastalength.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chromosomer_fastalength.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

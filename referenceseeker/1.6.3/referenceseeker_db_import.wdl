@@ -2,20 +2,28 @@ version 1.0
 
 task ReferenceseekerDbImport {
   input {
-    String dbDb
-    String genomeGenome
-    String idId
-    String taxonomyTaxonomy
-    String statusStatus
-    String organismOrganism
+    String? db
+    String? genome
+    String? id
+    String? taxonomy
+    String? status
+    String? organism
   }
   command <<<
     referenceseeker_db import \
-      ~{if defined(dbDb) then ("--db " +  '"' + dbDb + '"') else ""} \
-      ~{if defined(genomeGenome) then ("--genome " +  '"' + genomeGenome + '"') else ""} \
-      ~{if defined(idId) then ("--id " +  '"' + idId + '"') else ""} \
-      ~{if defined(taxonomyTaxonomy) then ("--taxonomy " +  '"' + taxonomyTaxonomy + '"') else ""} \
-      ~{if defined(statusStatus) then ("--status " +  '"' + statusStatus + '"') else ""} \
-      ~{if defined(organismOrganism) then ("--organism " +  '"' + organismOrganism + '"') else ""}
+      ~{if defined(db) then ("--db " +  '"' + db + '"') else ""} \
+      ~{if defined(genome) then ("--genome " +  '"' + genome + '"') else ""} \
+      ~{if defined(id) then ("--id " +  '"' + id + '"') else ""} \
+      ~{if defined(taxonomy) then ("--taxonomy " +  '"' + taxonomy + '"') else ""} \
+      ~{if defined(status) then ("--status " +  '"' + status + '"') else ""} \
+      ~{if defined(organism) then ("--organism " +  '"' + organism + '"') else ""}
   >>>
+  parameter_meta {
+    db: "ReferenceSeeker database path"
+    genome: "Genome path [Fasta, GenBank, EMBL]"
+    id: "Unique genome identifier (default sequence id of first record)"
+    taxonomy: "Taxonomy ID (default = 12908 [unclassified sequences])"
+    status: "Assembly level (default = contig)"
+    organism: "Organism name (default = \"\")"
+  }
 }

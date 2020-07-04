@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: art.cwl
+id: ../../../../home/ubuntu/BiocondaCli/art.cwl
 inputs:
-- id: sequence_file
-  doc: An EMBL, GenBank, FASTA, or GFF3 file
-  type: string
-  inputBinding:
-    position: 0
-- id: feature_file
-  doc: An Artemis TAB file, or GFF file
-  type: string
-  inputBinding:
-    position: 1
 - id: options
   doc: Read a text file of options from FILE
   type: File
@@ -54,11 +44,6 @@ inputs:
   type: string
   inputBinding:
     prefix: -DbamClone
-- id: db_am
-  doc: '[1,2,..]=FILE[,FILE2,..]  Open BAM, CRAM, VCF or BCF files in separate panels'
-  type: boolean
-  inputBinding:
-    prefix: -Dbam
 - id: d_show_snps
   doc: Show SNP marks in BamView
   type: boolean
@@ -94,6 +79,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -Dread_only
+- id: sequence_file
+  doc: An EMBL, GenBank, FASTA, or GFF3 file
+  type: string
+  inputBinding:
+    position: 0
+- id: feature_file
+  doc: An Artemis TAB file, or GFF file
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

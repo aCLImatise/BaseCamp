@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ngm_utils_debug.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ngm_utils_debug.cwl
 inputs:
 - id: ngm_utils
   doc: '[--] <name>'

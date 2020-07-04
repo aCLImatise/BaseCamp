@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: bolt_vcf_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bolt_vcf_filter.cwl
 inputs:
-- id: genie
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: vcf
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: filter
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
 - id: file_path
   doc: a VCF file (*require)
   type: string
@@ -46,6 +26,26 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
+- id: genie
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: vcf
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: filter
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
 outputs: []
 cwlVersion: v1.1
 baseCommand:

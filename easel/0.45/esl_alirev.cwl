@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: esl_alirev.cwl
+id: ../../../../home/ubuntu/BiocondaCli/esl_alirev.cwl
 inputs:
 - id: in_format
   doc: ': specify the input MSA file is in format <s>'
@@ -21,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --rna
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: stubmaker.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stubmaker.pl.cwl
 inputs:
-- id: v
+- id: verbose_outputbe_quiet
   doc: Verbose Outputbe quiet
   type: boolean
   inputBinding:
     prefix: -v
-- id: d
+- id: output_directory
   doc: Output directory
   type: string
   inputBinding:

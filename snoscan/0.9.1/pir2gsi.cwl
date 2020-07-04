@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pir2gsi.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pir2gsi.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

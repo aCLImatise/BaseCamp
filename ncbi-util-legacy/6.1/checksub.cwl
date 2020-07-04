@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: checksub.cwl
+id: ../../../../home/ubuntu/BiocondaCli/checksub.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bsb4.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bsb4.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

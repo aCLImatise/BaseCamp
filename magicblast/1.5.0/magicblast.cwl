@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: magicblast.cwl
+id: ../../../../home/ubuntu/BiocondaCli/magicblast.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

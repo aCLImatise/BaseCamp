@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: label_exonexon.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/label_exonexon.py.cwl
 inputs:
 - id: gtf
   doc: The input GTF file containing the genome annotation.

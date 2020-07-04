@@ -2,32 +2,46 @@ version 1.0
 
 task TepidDiscover {
   input {
-    Boolean keepKeep
-    Boolean deletionsDeletions
-    Boolean insertionsInsertions
-    Boolean strictStrict
-    String maskMask
-    String discordantDiscordant
-    String procProc
-    String nameName
-    String concConc
-    String splitSplit
-    String teTe
-    Boolean seSe
+    Boolean? keep
+    Boolean? deletions
+    Boolean? insertions
+    Boolean? strict
+    String? mask
+    String? discordant
+    String? proc
+    String? name
+    String? conc
+    String? split
+    String? te
+    Boolean? se
   }
   command <<<
     tepid-discover \
-      ~{true="--keep" false="" keepKeep} \
-      ~{true="--deletions" false="" deletionsDeletions} \
-      ~{true="--insertions" false="" insertionsInsertions} \
-      ~{true="--strict" false="" strictStrict} \
-      ~{if defined(maskMask) then ("--mask " +  '"' + maskMask + '"') else ""} \
-      ~{if defined(discordantDiscordant) then ("--discordant " +  '"' + discordantDiscordant + '"') else ""} \
-      ~{if defined(procProc) then ("--proc " +  '"' + procProc + '"') else ""} \
-      ~{if defined(nameName) then ("--name " +  '"' + nameName + '"') else ""} \
-      ~{if defined(concConc) then ("--conc " +  '"' + concConc + '"') else ""} \
-      ~{if defined(splitSplit) then ("--split " +  '"' + splitSplit + '"') else ""} \
-      ~{if defined(teTe) then ("--te " +  '"' + teTe + '"') else ""} \
-      ~{true="--se" false="" seSe}
+      ~{true="--keep" false="" keep} \
+      ~{true="--deletions" false="" deletions} \
+      ~{true="--insertions" false="" insertions} \
+      ~{true="--strict" false="" strict} \
+      ~{if defined(mask) then ("--mask " +  '"' + mask + '"') else ""} \
+      ~{if defined(discordant) then ("--discordant " +  '"' + discordant + '"') else ""} \
+      ~{if defined(proc) then ("--proc " +  '"' + proc + '"') else ""} \
+      ~{if defined(name) then ("--name " +  '"' + name + '"') else ""} \
+      ~{if defined(conc) then ("--conc " +  '"' + conc + '"') else ""} \
+      ~{if defined(split) then ("--split " +  '"' + split + '"') else ""} \
+      ~{if defined(te) then ("--te " +  '"' + te + '"') else ""} \
+      ~{true="--se" false="" se}
   >>>
+  parameter_meta {
+    keep: "keep all intermediate files"
+    deletions: "find deletions only"
+    insertions: "find insertions only"
+    strict: "Report high-confidence variants only"
+    mask: "Mask chromosomes in comma separated list or file"
+    discordant: "Supply discordant reads bam file"
+    proc: "number of processors"
+    name: "sample name"
+    conc: "bam file from bowtie2"
+    split: "split reads bam file from yaha"
+    te: "TE annotation bedfile"
+    se: "Run in single-end mode"
+  }
 }

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: fusioncatcher_build.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fusioncatcher_build.py.cwl
 inputs:
-- id: arg
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: output
   doc: The output directory where all the outputs files  and directories will be written.
   type: string
@@ -20,8 +15,8 @@ inputs:
     prefix: --organism
 - id: config
   doc: Configuration file containing the paths to external tools (e.g. Bowtie, etc.)
-    in case that they are not in PATH! Default is '/tmp/tmpg5gctayr/bin/../etc/configur
-    ation.cfg,/tmp/tmpg5gctayr/bin/configuration.cfg'.
+    in case that they are not in PATH! Default is '/tmp/tmpr7lyfvkf/bin/../etc/configur
+    ation.cfg,/tmp/tmpr7lyfvkf/bin/configuration.cfg'.
   type: string
   inputBinding:
     prefix: --config
@@ -118,6 +113,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --checksums
+- id: arg
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

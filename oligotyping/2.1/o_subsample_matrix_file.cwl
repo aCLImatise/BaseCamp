@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: o_subsample_matrix_file.cwl
+id: ../../../../home/ubuntu/BiocondaCli/o_subsample_matrix_file.cwl
 inputs:
-- id: file
-  doc: TAB delimited matrix to be processed
-  type: File
-  inputBinding:
-    position: 0
 - id: cols_to_remove
   doc: Columns to be removed from the matrix (one column id in each line)
   type: File
@@ -31,6 +26,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --output-file
+- id: file
+  doc: TAB delimited matrix to be processed
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

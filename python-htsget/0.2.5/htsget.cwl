@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: htsget.cwl
+id: ../../../../home/ubuntu/BiocondaCli/htsget.cwl
 inputs:
-- id: url
-  doc: The URL of the object to retrieve
-  type: string
-  inputBinding:
-    position: 0
 - id: verbose
   doc: Increase verbosity.
   type: boolean
@@ -22,7 +17,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --reference-name
-- id: reference_md5
+- id: reference_md_five
   doc: The MD5 checksum uniquely representing the requested reference sequence as
     a lower-case hexadecimal string, calculated as the MD5 of the upper-case sequence
     excluding all whitespace characters.
@@ -67,6 +62,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --bearer-token
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -V
+- id: url
+  doc: The URL of the object to retrieve
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

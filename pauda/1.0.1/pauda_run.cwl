@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pauda_run.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pauda_run.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

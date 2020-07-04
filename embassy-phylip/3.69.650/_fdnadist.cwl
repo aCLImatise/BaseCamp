@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _fdnadist.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_fdnadist.cwl
 inputs:
 - id: method
   doc: 'menu       [F84 distance model] Choose the method to use (Values: f (F84 distance

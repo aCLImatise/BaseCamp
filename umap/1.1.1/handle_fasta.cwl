@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: handle_fasta.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/handle_fasta.py.cwl
 inputs:
+- id: complement
+  doc: Create a double genome with both + and - strand information
+  type: boolean
+  inputBinding:
+    prefix: --Complement
+- id: conversion
+  doc: Specify C2T or G2A
+  type: string
+  inputBinding:
+    prefix: -Conversion
 - id: in_fast_a
   doc: FASTA format genome
   type: string
@@ -22,16 +32,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: complement
-  doc: Create a double genome with both + and - strand information
-  type: boolean
-  inputBinding:
-    prefix: --Complement
-- id: conversion
-  doc: Specify C2T or G2A
-  type: string
-  inputBinding:
-    prefix: -Conversion
 outputs: []
 cwlVersion: v1.1
 baseCommand:

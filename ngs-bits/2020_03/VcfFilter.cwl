@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: VcfFilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/VcfFilter.cwl
 inputs:
 - id: in
   doc: "Input VCF file. If unset, reads from STDIN. Default value: ''"

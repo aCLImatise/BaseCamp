@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: egrep.cwl
+id: ../../../../home/ubuntu/BiocondaCli/egrep.cwl
 inputs:
 - id: extended_regexp
   doc: PATTERNS are extended regular expressions
@@ -116,7 +116,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --text
-- id: i
+- id: equivalent__binaryfileswithoutmatch
   doc: equivalent to --binary-files=without-match
   type: boolean
   inputBinding:
@@ -222,6 +222,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --binary
+- id: grep
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

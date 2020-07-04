@@ -1,6 +1,11 @@
 class: CommandLineTool
-id: bcftools_mpileup.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcftools_mpileup.cwl
 inputs:
+- id: illumina_one_dot_three
+  doc: +      quality is in the Illumina-1.3+ encoding
+  type: boolean
+  inputBinding:
+    prefix: --illumina1.3
 - id: count_orphans
   doc: do not discard anomalous read pairs
   type: boolean
@@ -183,6 +188,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --platforms
+- id: in_one_dot_bam
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

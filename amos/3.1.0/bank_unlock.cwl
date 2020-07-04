@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bank_unlock.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bank_unlock.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,6 +1,132 @@
 class: CommandLineTool
-id: nosetests_2.7.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nosetests_2.7.cwl
 inputs:
+- id: plugins
+  doc: Output list of available plugins and exit. Combine with higher verbosity for
+    greater detail
+  type: boolean
+  inputBinding:
+    prefix: --plugins
+- id: verbose
+  doc: Be more verbose. [NOSE_VERBOSE]
+  type: boolean
+  inputBinding:
+    prefix: --verbose
+- id: verbosity
+  doc: Set verbosity; --verbosity=2 is the same as -v
+  type: string
+  inputBinding:
+    prefix: --verbosity
+- id: quiet
+  doc: Be less verbose
+  type: boolean
+  inputBinding:
+    prefix: --quiet
+- id: config
+  doc: Load configuration from config file(s). May be specified multiple times; in
+    that case, all config files will be loaded and combined
+  type: File
+  inputBinding:
+    prefix: --config
+- id: where
+  doc: Look for tests in this directory. May be specified multiple times. The first
+    directory passed will be used as the working directory, in place of the current
+    working directory, which is the default. Others will be added to the list of tests
+    to execute. [NOSE_WHERE]
+  type: string
+  inputBinding:
+    prefix: --where
+- id: py_three_where
+  doc: Look for tests in this directory under Python 3.x. Functions the same as 'where',
+    but only applies if running under Python 3.x or above.  Note that, if present
+    under 3.x, this option completely replaces any directories specified with 'where',
+    so the 'where' option becomes ineffective. [NOSE_PY3WHERE]
+  type: string
+  inputBinding:
+    prefix: --py3where
+- id: test_match
+  doc: 'Files, directories, function names, and class names that match this regular
+    expression are considered tests.  Default: (?:^|[\b_\./-])[Tt]est [NOSE_TESTMATCH]'
+  type: string
+  inputBinding:
+    prefix: --testmatch
+- id: tests
+  doc: Run these tests (comma-separated list). This argument is useful mainly from
+    configuration files; on the command line, just pass the tests to run as additional
+    arguments with no switch.
+  type: string
+  inputBinding:
+    prefix: --tests
+- id: debug
+  doc: 'Activate debug logging for one or more systems. Available debug loggers: nose,
+    nose.importer, nose.inspector, nose.plugins, nose.result and nose.selector. Separate
+    multiple names with a comma.'
+  type: string
+  inputBinding:
+    prefix: --debug
+- id: debug_log
+  doc: 'Log debug messages to this file (default: sys.stderr)'
+  type: File
+  inputBinding:
+    prefix: --debug-log
+- id: logging_config
+  doc: Load logging config from this file -- bypasses all other logging config settings.
+  type: File
+  inputBinding:
+    prefix: --logging-config
+- id: ignore_files
+  doc: Completely ignore any file that matches this regular expression. Takes precedence
+    over any other settings or plugins. Specifying this option will replace the default
+    setting. Specify this option multiple times to add more regular expressions [NOSE_IGNORE_FILES]
+  type: string
+  inputBinding:
+    prefix: --ignore-files
+- id: exclude
+  doc: Don't run tests that match regular expression [NOSE_EXCLUDE]
+  type: string
+  inputBinding:
+    prefix: --exclude
+- id: include
+  doc: This regular expression will be applied to files, directories, function names,
+    and class names for a chance to include additional tests that do not match TESTMATCH.  Specify
+    this option multiple times to add more regular expressions [NOSE_INCLUDE]
+  type: string
+  inputBinding:
+    prefix: --include
+- id: stop
+  doc: Stop running tests after the first error or failure
+  type: boolean
+  inputBinding:
+    prefix: --stop
+- id: no_path_adjustment
+  doc: Don't make any changes to sys.path when loading tests [NOSE_NOPATH]
+  type: boolean
+  inputBinding:
+    prefix: --no-path-adjustment
+- id: exe
+  doc: Look for tests in python modules that are executable. Normal behavior is to
+    exclude executable modules, since they may not be import-safe [NOSE_INCLUDE_EXE]
+  type: boolean
+  inputBinding:
+    prefix: --exe
+- id: no_exe
+  doc: DO NOT look for tests in python modules that are executable. (The default on
+    the windows platform is to do so.)
+  type: boolean
+  inputBinding:
+    prefix: --noexe
+- id: traverse_namespace
+  doc: Traverse through all path entries of a namespace package
+  type: boolean
+  inputBinding:
+    prefix: --traverse-namespace
+- id: first_package_wins
+  doc: nose's importer will normally evict a package from sys.modules if it sees a
+    package with the same name in a different location. Set this option to disable
+    that behavior.
+  type: boolean
+  inputBinding:
+    prefix: --first-package-wins
 - id: no_byte_compile
   doc: Prevent nose from byte-compiling the source into .pyc files while nose is scanning
     for and running tests.

@@ -2,12 +2,16 @@ version 1.0
 
 task Hapbinconv {
   input {
-    Boolean hapHap
-    Boolean outOut
+    Boolean? hap
+    Boolean? out
   }
   command <<<
     hapbinconv \
-      ~{true="--hap" false="" hapHap} \
-      ~{true="--out" false="" outOut}
+      ~{true="--hap" false="" hap} \
+      ~{true="--out" false="" out}
   >>>
+  parameter_meta {
+    hap: "ASCII Hap file"
+    out: "Binary output file"
+  }
 }

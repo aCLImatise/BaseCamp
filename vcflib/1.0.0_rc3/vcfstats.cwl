@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfstats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfstats.cwl
 inputs:
 - id: region
   doc: specify a region on which to target the stats, requires a BGZF compressed file
@@ -43,6 +43,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --gap-extend-penalty
+- id: vcf_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: enrichm_annotate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/enrichm_annotate.cwl
 inputs:
 - id: log
   doc: Output logging information to this file.
@@ -130,7 +130,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --aln_reference
-- id: c
+- id: when_clustering_matches
   doc: 'When clustering, use matches above this fraction of aligned (covered) query
     and target residues (default: 0.7)'
   type: string

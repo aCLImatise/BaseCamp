@@ -2,28 +2,40 @@ version 1.0
 
 task BedAnnotateFromBed {
   input {
-    File in2In2
-    File inIn
-    File outOut
-    Int colCol
-    Boolean clearClear
-    Boolean noNoDuplicates
-    Boolean overlapOverlap
-    Boolean urlUrlDecode
-    Boolean changelogChangelog
-    Boolean tdxTdx
+    File? in_two
+    File? in
+    File? out
+    Int? col
+    Boolean? clear
+    Boolean? no_duplicates
+    Boolean? overlap
+    Boolean? url_decode
+    Boolean? changelog
+    Boolean? tdx
   }
   command <<<
     BedAnnotateFromBed \
-      ~{if defined(in2In2) then ("-in2 " +  '"' + in2In2 + '"') else ""} \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(colCol) then ("-col " +  '"' + colCol + '"') else ""} \
-      ~{true="-clear" false="" clearClear} \
-      ~{true="-no_duplicates" false="" noNoDuplicates} \
-      ~{true="-overlap" false="" overlapOverlap} \
-      ~{true="-url_decode" false="" urlUrlDecode} \
-      ~{true="--changelog" false="" changelogChangelog} \
-      ~{true="--tdx" false="" tdxTdx}
+      ~{if defined(in_two) then ("-in2 " +  '"' + in_two + '"') else ""} \
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(col) then ("-col " +  '"' + col + '"') else ""} \
+      ~{true="-clear" false="" clear} \
+      ~{true="-no_duplicates" false="" no_duplicates} \
+      ~{true="-overlap" false="" overlap} \
+      ~{true="-url_decode" false="" url_decode} \
+      ~{true="--changelog" false="" changelog} \
+      ~{true="--tdx" false="" tdx}
   >>>
+  parameter_meta {
+    in_two: "BED file that is used as annotation source."
+    in: "Input BED file. If unset, reads from STDIN. Default value: ''"
+    out: "Output BED file. If unset, writes to STDOUT. Default value: ''"
+    col: "Annotation source column (if column number does not exist, 'yes' is used). Default value: '4'"
+    clear: "Clear all annotations present in the 'in' file. Default value: 'false'"
+    no_duplicates: "Remove duplicate annotations if several intervals from 'in2' overlap. Default value: 'false'"
+    overlap: "Annotate overlap with regions in 'in2'. The regular annotation is appended in brackets. Default value: 'false'"
+    url_decode: "Decode URL encoded characters Default value: 'false'"
+    changelog: "Prints changeloge and exits."
+    tdx: "Writes a Tool Definition Xml file. The file name is the application name with the suffix '.tdx'."
+  }
 }

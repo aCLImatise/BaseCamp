@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: plotkmers.cwl
+id: ../../../../home/ubuntu/BiocondaCli/plotkmers.cwl
 inputs:
-- id: output_directory
-  doc: Output directory
-  type: string
-  inputBinding:
-    position: 0
-- id: assemblies
-  doc: FASTA files which may be gzipped
-  type: string
-  inputBinding:
-    position: 1
 - id: plot_filename
   doc: Kmer to use, depends on read length [kmerplot.png]
   type: string
@@ -46,6 +36,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: output_directory
+  doc: Output directory
+  type: string
+  inputBinding:
+    position: 0
+- id: assemblies
+  doc: FASTA files which may be gzipped
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

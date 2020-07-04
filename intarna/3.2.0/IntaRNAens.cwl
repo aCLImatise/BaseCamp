@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: IntaRNAens.cwl
+id: ../../../../home/ubuntu/BiocondaCli/IntaRNAens.cwl
 inputs:
 - id: q
   doc: "[ --query ] arg            either an RNA sequence or the stream/file name\
@@ -71,7 +71,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --seedBP
-- id: m
+- id: arg_h_prediction
   doc: "[ --mode ] arg (=H)        prediction mode :  'H' = heuristic (fast and low\
     \ memory),  'M' = exact (slow),  'S' = seed-only"
   type: boolean

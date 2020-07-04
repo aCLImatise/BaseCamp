@@ -2,12 +2,16 @@ version 1.0
 
 task MlocarnaNnames {
   input {
-    Boolean manMan
-    String? fastFastAFile
+    Boolean? man
+    String fast_a_file
   }
   command <<<
     mlocarna_nnames \
-      ~{fastFastAFile} \
-      ~{true="--man" false="" manMan}
+      ~{fast_a_file} \
+      ~{true="--man" false="" man}
   >>>
+  parameter_meta {
+    man: "Full documentation"
+    fast_a_file: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: TakeABreak.cwl
+id: ../../../../home/ubuntu/BiocondaCli/TakeABreak.cwl
 inputs:
 - id: in
   doc: "(1 arg) :    input read file(s)  [default '']"

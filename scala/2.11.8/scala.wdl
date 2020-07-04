@@ -2,10 +2,13 @@ version 1.0
 
 task Scala {
   input {
-    String? orOr
+    String or
   }
   command <<<
     scala \
-      ~{orOr}
+      ~{or}
   >>>
+  parameter_meta {
+    or: "scala -help"
+  }
 }

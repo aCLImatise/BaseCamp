@@ -1,21 +1,22 @@
 class: CommandLineTool
-id: mulled_search.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mulled_search.cwl
 inputs:
-- id: o
-  doc: ''
+- id: organization
+  doc: Change organization. Default is biocontainers.
   type: string
   inputBinding:
-    prefix: -o
+    prefix: --organization
 - id: non_strict
-  doc: ''
+  doc: Autocorrection of typos activated. Lists more results but can be confusing.
+    For too many queries quay.io blocks the request and the results can be incomplete.
   type: boolean
   inputBinding:
     prefix: --non-strict
-- id: s
-  doc: ''
+- id: search
+  doc: The name of the tool you want to search for.
   type: string
   inputBinding:
-    prefix: -s
+    prefix: --search
 outputs: []
 cwlVersion: v1.1
 baseCommand:

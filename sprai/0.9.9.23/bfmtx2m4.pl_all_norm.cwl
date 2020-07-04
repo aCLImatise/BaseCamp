@@ -1,24 +1,33 @@
 class: CommandLineTool
-id: bfmtx2m4.pl_all_norm.fa_directory.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bfmtx2m4.pl_all_norm.fa.cwl
 inputs:
-- id: this
+- id: no
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: m4pre
+- id: such
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: all_norm_fa
+- id: file
+  doc: ''
+  type: File
+  inputBinding:
+    position: 2
+- id: or
   doc: ''
   type: string
   inputBinding:
-    position: 2
+    position: 3
+- id: directory
+  doc: ''
+  type: Directory
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - bfmtx2m4.pl
 - all_norm.fa
-- directory

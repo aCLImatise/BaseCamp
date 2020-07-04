@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: danpos.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/danpos.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

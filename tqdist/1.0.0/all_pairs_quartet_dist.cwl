@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: all_pairs_quartet_dist.cwl
+id: ../../../../home/ubuntu/BiocondaCli/all_pairs_quartet_dist.cwl
 inputs:
-- id: input_file_name
+- id: input_filename
   doc: ''
   type: string
   inputBinding:

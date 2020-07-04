@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: md5fa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/md5fa.cwl
 inputs:
 - id: no
   doc: ''

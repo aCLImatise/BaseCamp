@@ -1,22 +1,22 @@
 class: CommandLineTool
-id: variant_caller.cwl
+id: ../../../../home/ubuntu/BiocondaCli/variant_caller.cwl
 inputs:
-- id: i
+- id: _input_sorted
   doc: '[input.bam] -- input sorted bam file'
   type: boolean
   inputBinding:
     prefix: -i
-- id: o
+- id: _output_directory
   doc: '[output DIR] -- output directory'
   type: boolean
   inputBinding:
     prefix: -o
-- id: e
+- id: _default_pileup
   doc: '[1 or 2] -- default 1; 1: pileup + phasing; 2: pileup'
   type: boolean
   inputBinding:
     prefix: -e
-- id: w
+- id: _default_alignment
   doc: -- default 500; alignment window size
   type: boolean
   inputBinding:
@@ -26,11 +26,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -ig
-- id: default
-  doc: 2; constrain PE distance by delta x fragsize_variation (auto measured by program)
+- id: delta
+  doc: -- default 2; constrain PE distance by delta x fragsize_variation (auto measured
+    by program)
   type: boolean
   inputBinding:
-    prefix: -- default
+    prefix: -delta
 - id: ps
   doc: (0, 100] -- default 30; percentage of reads to sample to get stats.
   type: boolean
@@ -56,7 +57,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -qual
-- id: a
+- id: _default_significance
   doc: -- default 0.05; significance value for stat test
   type: boolean
   inputBinding:

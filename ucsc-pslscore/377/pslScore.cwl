@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: pslScore.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pslScore.cwl
 inputs:
-- id: file_psl
+- id: file_dot_psl
   doc: ''
   type: File
   inputBinding:
     position: 0
-- id: more_files_psl
+- id: more_files_dot_psl
   doc: ''
   type: string
   inputBinding:

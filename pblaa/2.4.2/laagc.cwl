@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: laagc.cwl
+id: ../../../../home/ubuntu/BiocondaCli/laagc.cwl
 inputs:
-- id: guide
-  doc: Guide file.
-  type: string
-  inputBinding:
-    position: 0
-- id: input
-  doc: Input file.
-  type: string
-  inputBinding:
-    position: 1
 - id: rng_seed
   doc: RNG seed, modulates reservoir filtering of reads. [42]
   type: boolean
@@ -303,6 +293,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --resolved-tool-contract
+- id: guide
+  doc: Guide file.
+  type: string
+  inputBinding:
+    position: 0
+- id: input
+  doc: Input file.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

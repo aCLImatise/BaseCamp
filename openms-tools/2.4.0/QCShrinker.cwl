@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: QCShrinker.cwl
+id: ../../../../home/ubuntu/BiocondaCli/QCShrinker.cwl
 inputs:
 - id: in
   doc: "*             Input qcml file (valid formats: 'qcML')"

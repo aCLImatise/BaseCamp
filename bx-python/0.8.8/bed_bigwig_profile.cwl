@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bed_bigwig_profile.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bed_bigwig_profile.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

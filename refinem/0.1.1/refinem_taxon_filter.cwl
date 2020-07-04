@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: refinem_taxon_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/refinem_taxon_filter.cwl
 inputs:
-- id: tax_on_profile_dir
-  doc: directory with results of taxon_profile command
-  type: string
-  inputBinding:
-    position: 0
-- id: output_file
-  doc: file indicating divergent scaffolds
-  type: string
-  inputBinding:
-    position: 1
 - id: consensus_tax_on
   doc: 'threshold for accepting a consensus taxon (default: 50.0)'
   type: string
@@ -58,6 +48,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --silent
+- id: tax_on_profile_dir
+  doc: directory with results of taxon_profile command
+  type: string
+  inputBinding:
+    position: 0
+- id: output_file
+  doc: file indicating divergent scaffolds
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

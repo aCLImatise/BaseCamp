@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: convertFromPeakview.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/convertFromPeakview.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

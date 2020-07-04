@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hicQuickQC.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hicQuickQC.cwl
 inputs:
 - id: sam_files
   doc: 'sam files two sam files, -s two sam files two sam files The two PE alignment
@@ -40,6 +40,31 @@ inputs:
   type: string
   inputBinding:
     prefix: --lines
+- id: var_5
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: var_6
+  doc: ''
+  type: File
+  inputBinding:
+    position: 1
+- id: two
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: var_8
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: var_9
+  doc: ''
+  type: File
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

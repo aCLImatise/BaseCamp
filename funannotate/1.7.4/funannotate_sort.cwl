@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: funannotate_sort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/funannotate_sort.cwl
 inputs:
-- id: arguments
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: input
   doc: Multi-fasta genome file. (Required)
   type: boolean
@@ -26,6 +21,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --minlen
+- id: arguments
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

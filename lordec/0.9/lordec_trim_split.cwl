@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: lordec_trim_split.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lordec_trim_split.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

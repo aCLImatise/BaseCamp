@@ -2,10 +2,13 @@ version 1.0
 
 task ArbPrimer {
   input {
-    String? dbnameDbname
+    String? dbname
   }
   command <<<
     arb_primer \
-      ~{dbnameDbname}
+      ~{dbname}
   >>>
+  parameter_meta {
+    dbname: ""
+  }
 }

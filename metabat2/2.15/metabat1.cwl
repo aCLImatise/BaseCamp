@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: metabat1.cwl
+id: ../../../../home/ubuntu/BiocondaCli/metabat1.cwl
 inputs:
 - id: i
   doc: '[ --inFile ] arg               Contigs in (gzipped) fasta file format [Mandatory]'
@@ -33,14 +33,14 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -p
-- id: p1
+- id: p_one
   doc: (=0)                     Probability cutoff for bin seeding. It mainly controls
     the number of  potential bins and their specificity. The higher, the more (specific)  bins
     would be. (Percentage; Should be between 0 and 100)
   type: string
   inputBinding:
     prefix: --p1
-- id: p2
+- id: p_two
   doc: (=0)                     Probability cutoff for secondary neighbors. It supports
     p1 and better be  close to p1. (Percentage; Should be between 0 and 100)
   type: string
@@ -105,7 +105,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --minSamples
-- id: x
+- id: arg_minimum_mean
   doc: '[ --minCV ] arg (=1)           Minimum mean coverage of a contig to consider
     for abundance distance  calculation in each library'
   type: boolean
@@ -117,13 +117,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --minCVSum
-- id: s
+- id: arg_minimum_size_bin_considered
   doc: '[ --minClsSize ] arg (=200000) Minimum size of a bin to be considered as the
     output'
   type: boolean
   inputBinding:
     prefix: -s
-- id: m
+- id: arg_minimum_size_contig_considered
   doc: '[ --minContig ] arg (=2500)    Minimum size of a contig to be considered for
     binning (should be >=1500;  ideally >=2500). If # of samples >= minSamples, small
     contigs (>=1000)  will be given a chance to be recruited to existing bins by default.'
@@ -137,7 +137,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --minContigByCorr
-- id: t
+- id: arg_number_use
   doc: '[ --numThreads ] arg (=0)      Number of threads to use (0: use all cores)'
   type: boolean
   inputBinding:
@@ -153,19 +153,19 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --fuzzy
-- id: l
+- id: output_only_sequence
   doc: '[ --onlyLabel ]                Output only sequence labels as a list in a
     column without sequences'
   type: boolean
   inputBinding:
     prefix: -l
-- id: s
+- id: set_then_sample
   doc: '[ --sumLowCV ]                 If set, then every sample that falls below
     the minCV will be used in an  aggregate sample'
   type: boolean
   inputBinding:
     prefix: -S
-- id: v
+- id: arg_ignore_contigs
   doc: '[ --maxVarRatio ] arg (=0)     Ignore any contigs where variance / mean exceeds
     this ratio (0 disables)'
   type: boolean
@@ -196,7 +196,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --noBinOut
-- id: b
+- id: arg_number_bootstrapping
   doc: '[ --B ] arg (=20)              Number of bootstrapping for ensemble binning
     (Recommended to be >=20)'
   type: boolean
@@ -220,12 +220,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --keep
-- id: d
+- id: _debug_output
   doc: '[ --debug ]                    Debug output'
   type: boolean
   inputBinding:
     prefix: -d
-- id: v
+- id: _verbose_output
   doc: '[ --verbose ]                  Verbose output'
   type: boolean
   inputBinding:

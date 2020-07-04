@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: deepsvr_classify_data.cwl
+id: ../../../../home/ubuntu/BiocondaCli/deepsvr_classify_data.cwl
 inputs:
 - id: prepared_data_path
   doc: Specify the 'train.pkl' file produced by the 'prepare_data' to perform inference

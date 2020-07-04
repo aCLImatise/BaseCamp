@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: flextaxd.cwl
+id: ../../../../home/ubuntu/BiocondaCli/flextaxd.cwl
 inputs:
 - id: db
   doc: ', --database      Custom taxonomy sqlite3 database file (fullpath)'
   type: boolean
   inputBinding:
     prefix: -db
-- id: o
+- id: _outdir_output
   doc: ', --outdir         Output directory'
   type: boolean
   inputBinding:
@@ -64,7 +64,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -gp
-- id: p
+- id: _parent_parent
   doc: ', --parent         Parent from which to add (replace see below) branch'
   type: boolean
   inputBinding:

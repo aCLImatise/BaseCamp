@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mmseqs_swapdb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mmseqs_swapdb.cwl
 inputs:
 - id: split_memory_limit
   doc: 0               Maximum system memory in megabyte that one split may use. Defaults
@@ -13,7 +13,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --threads
-- id: v
+- id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'
   type: boolean
   inputBinding:

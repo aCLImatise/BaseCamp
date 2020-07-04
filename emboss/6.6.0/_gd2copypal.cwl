@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: _gd2copypal.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_gd2copypal.cwl
 inputs:
-- id: gd2copypal
+- id: gd_two_copy_pal
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: palette_file_gd2
+- id: palette_file_dot_gd_two
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: filename_gd2
+- id: filename_dot_gd_two
   doc: ''
   type: File
   inputBinding:

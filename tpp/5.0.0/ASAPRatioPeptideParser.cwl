@@ -1,78 +1,78 @@
 class: CommandLineTool
-id: ASAPRatioPeptideParser.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ASAPRatioPeptideParser.cwl
 inputs:
-- id: xml_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: l
+- id: str_change_labeled
   doc: <str>    change labeled residues (default='C')
   type: boolean
   inputBinding:
     prefix: -l
-- id: b
+- id: heavy_labeled_peptide
   doc: heavy labeled peptide elutes before light labeled partner
   type: boolean
   inputBinding:
     prefix: -b
-- id: f
+- id: num_areaflag_set
   doc: <num>    areaFlag set to num (ratio display option)
   type: boolean
   inputBinding:
     prefix: -f
-- id: r
+- id: num_range_mz
   doc: <num>    range around precusor m/z to search for peak (default 0.5)
   type: boolean
   inputBinding:
     prefix: -r
-- id: s
+- id: static_modification_quantification
   doc: static modification quantification (i.e. each run is either all light or all
     heavy)
   type: boolean
   inputBinding:
     prefix: -S
-- id: f
+- id: use_fixed_range
   doc: use fixed scan range for light and heavy
   type: boolean
   inputBinding:
     prefix: -F
-- id: c
+- id: quantitate_only_state
   doc: quantitate only the charge state where the CID was made
   type: boolean
   inputBinding:
     prefix: -C
-- id: b
+- id: return_ratio_even
   doc: return a ratio even if the background is high
   type: boolean
   inputBinding:
     prefix: -B
-- id: z
+- id: set_background_zero
   doc: set all background to zero
   type: boolean
   inputBinding:
     prefix: -Z
-- id: p
+- id: num_minimum_peptideprophet
   doc: <num>    minimum PeptideProphet probability to process (default 0)
   type: boolean
   inputBinding:
     prefix: -p
-- id: i
+- id: num_minimum_iprophet
   doc: <num>    minimum iProphet probability to process (default 0)
   type: boolean
   inputBinding:
     prefix: -i
-- id: m
+- id: str_specified_masses
   doc: '<str>    specified label masses (e.g. M74.325Y125.864), only relevant for
     static modification quantification '
   type: boolean
   inputBinding:
     prefix: -m
-- id: w
+- id: experimental_use_smoothing
   doc: 'EXPERIMENTAL: use wavelet smoothing from WaveletQuant implmentation'
   type: boolean
   inputBinding:
     prefix: -w
+- id: xml_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

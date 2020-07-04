@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: pecheck_wrapper.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pecheck_wrapper.py.cwl
 inputs:
-- id: output
-  doc: Output directory (created if non-existant)
-  type: string
-  inputBinding:
-    position: 0
-- id: input
-  doc: Input directory(s) or files
-  type: string
-  inputBinding:
-    position: 1
 - id: gzip
   doc: Which command should be used to gzip? (try pigz!)
   type: string
@@ -31,6 +21,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --dry-run
+- id: output
+  doc: Output directory (created if non-existant)
+  type: string
+  inputBinding:
+    position: 0
+- id: input
+  doc: Input directory(s) or files
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

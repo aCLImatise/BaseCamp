@@ -1,36 +1,6 @@
 class: CommandLineTool
-id: rust_overlaps.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rust_overlaps.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: in_path
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: out_path
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
-- id: err_rate
-  doc: ''
-  type: string
-  inputBinding:
-    position: 4
-- id: thresh
-  doc: ''
-  type: string
-  inputBinding:
-    position: 5
 - id: edit_distance
   doc: Uses Levenshtein / edit distance instead of Hamming distance
   type: boolean
@@ -90,6 +60,31 @@ inputs:
   type: string
   inputBinding:
     prefix: --worker_threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_path
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: out_path
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: err_rate
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: thresh
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

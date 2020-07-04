@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_get_short_reads_from_bam.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_get_short_reads_from_bam.cwl
 inputs:
 - id: profile_db
   doc: Anvi'o profile database
@@ -43,7 +43,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gzip-output
-- id: split_r1_and_r2
+- id: split_r_one_and_r_two
   doc: 'When declared, this program outputs 3 FASTA files for paired-end reads: one
     for R1, one for R2, and one for unpaired reads.'
   type: boolean

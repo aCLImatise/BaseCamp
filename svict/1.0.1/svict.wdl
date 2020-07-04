@@ -2,14 +2,19 @@ version 1.0
 
 task Svict {
   input {
-    Boolean iI
-    Boolean rR
-    String? svcSvcIt
+    Boolean? i
+    Boolean? r
+    String svc_it
   }
   command <<<
     svict \
-      ~{svcSvcIt} \
-      ~{true="-i" false="" iI} \
-      ~{true="-r" false="" rR}
+      ~{svc_it} \
+      ~{true="-i" false="" i} \
+      ~{true="-r" false="" r}
   >>>
+  parameter_meta {
+    i: ""
+    r: ""
+    svc_it: "-- Structural Variant in ctDNA Sequencing Data"
+  }
 }

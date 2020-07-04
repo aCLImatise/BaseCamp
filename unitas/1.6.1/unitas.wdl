@@ -2,12 +2,13 @@ version 1.0
 
 task Unitas.pl {
   input {
-    String refseqRefseq
-    String? xxxXxx
+    String? refseq
   }
   command <<<
     unitas.pl \
-      ~{xxxXxx} \
-      ~{if defined(refseqRefseq) then ("-refseq " +  '"' + refseqRefseq + '"') else ""}
+      ~{if defined(refseq) then ("-refseq " +  '"' + refseq + '"') else ""}
   >>>
+  parameter_meta {
+    refseq: "[-refseq sequence_2.fas ...]"
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: palindrome.cwl
+id: ../../../../home/ubuntu/BiocondaCli/palindrome.cwl
 inputs:
 - id: min_p_allen
   doc: integer    [10] Enter minimum length of palindrome (Integer 1 or more)

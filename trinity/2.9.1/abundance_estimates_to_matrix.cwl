@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: abundance_estimates_to_matrix.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/abundance_estimates_to_matrix.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

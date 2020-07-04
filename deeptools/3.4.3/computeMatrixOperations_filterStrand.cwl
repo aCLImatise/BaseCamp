@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: computeMatrixOperations_filterStrand.cwl
+id: ../../../../home/ubuntu/BiocondaCli/computeMatrixOperations_filterStrand.cwl
 inputs:
 - id: matrix_file
   doc: 'Matrix file from the computeMatrix tool. (default: None)'
@@ -16,6 +16,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --strand
+- id: example
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: usage
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

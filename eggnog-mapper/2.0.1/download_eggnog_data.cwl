@@ -1,27 +1,27 @@
 class: CommandLineTool
-id: download_eggnog_data.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/download_eggnog_data.py.cwl
 inputs:
-- id: d
+- id: install_diamond_database
   doc: Do not install the diamond database
   type: boolean
   inputBinding:
     prefix: -D
-- id: y
+- id: assume__questions
   doc: assume "yes" to all questions
   type: boolean
   inputBinding:
     prefix: -y
-- id: f
+- id: forces_download_exist
   doc: forces download even if the files exist
   type: boolean
   inputBinding:
     prefix: -f
-- id: s
+- id: simulate_print_commands
   doc: simulate and print commands. Nothing is downloaded
   type: boolean
   inputBinding:
     prefix: -s
-- id: q
+- id: quietmode
   doc: quiet_mode
   type: boolean
   inputBinding:

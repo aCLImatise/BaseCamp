@@ -2,10 +2,13 @@ version 1.0
 
 task CruxHardklor {
   input {
-    String? spectraSpectra
+    String spectra
   }
   command <<<
     crux hardklor \
-      ~{spectraSpectra}
+      ~{spectra}
   >>>
+  parameter_meta {
+    spectra: ""
+  }
 }

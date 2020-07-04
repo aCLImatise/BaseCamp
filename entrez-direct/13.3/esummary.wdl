@@ -2,62 +2,79 @@ version 1.0
 
 task Esummary {
   input {
-    Boolean formatFormat
-    Boolean modeMode
-    Boolean styleStyle
-    Boolean dbDb
-    Boolean idId
-    Boolean seqSeqStart
-    Boolean seqSeqStop
-    Boolean strandStrand
-    Boolean revRevComp
-    Boolean chrChrStart
-    Boolean chrChrStop
-    Boolean complexityComplexity
-    Boolean extendExtend
-    Boolean extraExtraFeat
-    Boolean startStart
-    Boolean stopStop
-    Boolean rawRaw
-    Boolean jsonJson
-    String? abstractAbstract
-    String? biocBioc
-    String? medlineMedline
-    String? nativeNative
-    String? nativeNative
-    String? snpSnp
-    String? sraSra
-    String? structureStructure
-    String? taxonomyTaxonomy
+    Boolean? format
+    Boolean? mode
+    Boolean? style
+    Boolean? db
+    Boolean? id
+    Boolean? seq_start
+    Boolean? seq_stop
+    Boolean? strand
+    Boolean? rev_comp
+    Boolean? chr_start
+    Boolean? chr_stop
+    Boolean? complexity
+    Boolean? extend
+    Boolean? extra_feat
+    Boolean? start
+    Boolean? stop
+    Boolean? raw
+    Boolean? json
+    String abstract
+    String bioc
+    String medline
+    String structure
+    String taxonomy
   }
   command <<<
     esummary \
-      ~{abstractAbstract} \
-      ~{snpSnp} \
-      ~{true="-format" false="" formatFormat} \
-      ~{true="-mode" false="" modeMode} \
-      ~{true="-style" false="" styleStyle} \
-      ~{true="-db" false="" dbDb} \
-      ~{true="-id" false="" idId} \
-      ~{true="-seq_start" false="" seqSeqStart} \
-      ~{true="-seq_stop" false="" seqSeqStop} \
-      ~{true="-strand" false="" strandStrand} \
-      ~{true="-revcomp" false="" revRevComp} \
-      ~{true="-chr_start" false="" chrChrStart} \
-      ~{true="-chr_stop" false="" chrChrStop} \
-      ~{true="-complexity" false="" complexityComplexity} \
-      ~{true="-extend" false="" extendExtend} \
-      ~{true="-extrafeat" false="" extraExtraFeat} \
-      ~{true="-start" false="" startStart} \
-      ~{true="-stop" false="" stopStop} \
-      ~{true="-raw" false="" rawRaw} \
-      ~{true="-json" false="" jsonJson} \
-      ~{biocBioc} \
-      ~{sraSra} \
-      ~{medlineMedline} \
-      ~{structureStructure} \
-      ~{nativeNative} \
-      ~{taxonomyTaxonomy} \
-      ~{nativeNative}
+      ~{abstract} \
+      ~{bioc} \
+      ~{medline} \
+      ~{structure} \
+      ~{taxonomy} \
+      ~{true="-format" false="" format} \
+      ~{true="-mode" false="" mode} \
+      ~{true="-style" false="" style} \
+      ~{true="-db" false="" db} \
+      ~{true="-id" false="" id} \
+      ~{true="-seq_start" false="" seq_start} \
+      ~{true="-seq_stop" false="" seq_stop} \
+      ~{true="-strand" false="" strand} \
+      ~{true="-revcomp" false="" rev_comp} \
+      ~{true="-chr_start" false="" chr_start} \
+      ~{true="-chr_stop" false="" chr_stop} \
+      ~{true="-complexity" false="" complexity} \
+      ~{true="-extend" false="" extend} \
+      ~{true="-extrafeat" false="" extra_feat} \
+      ~{true="-start" false="" start} \
+      ~{true="-stop" false="" stop} \
+      ~{true="-raw" false="" raw} \
+      ~{true="-json" false="" json}
   >>>
+  parameter_meta {
+    format: "Format of record or report"
+    mode: "text, xml, asn.1, json"
+    style: "withparts, conwithfeat"
+    db: "Database name"
+    id: "Unique identifier or accession number"
+    seq_start: "First sequence position to retrieve"
+    seq_stop: "Last sequence position to retrieve"
+    strand: "1 = forward DNA strand, 2 = reverse complement"
+    rev_comp: "Shortcut for strand 2"
+    chr_start: "Sequence range from 0-based coordinates"
+    chr_stop: "in gene docsum GenomicInfoType object"
+    complexity: "0 = default, 1 = bioseq, 3 = nuc-prot set"
+    extend: "Extend sequence retrieval in both directions"
+    extra_feat: "Bit flag specifying extra features"
+    start: "First record to fetch"
+    stop: "Last record to fetch"
+    raw: "Skip database-specific XML modifications"
+    json: "Convert adjusted XML output to JSON"
+    abstract: "Abstract"
+    bioc: "PubTator Central BioC XML"
+    medline: "MEDLINE"
+    structure: "mmdb                        Ncbi-mime-asn1 strucseq ASN.1 native                      MMDB Report native             xml      RecordSet XML"
+    taxonomy: "native                      Taxonomy List native             xml      TaxaSet XML"
+  }
 }

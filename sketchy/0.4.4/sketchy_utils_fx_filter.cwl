@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sketchy_utils_fx_filter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sketchy_utils_fx_filter.cwl
 inputs:
 - id: fpath
   doc: Path to Fast{a,q} input file.  [required]

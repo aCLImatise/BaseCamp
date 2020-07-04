@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: smoothing_fusions_psl.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smoothing_fusions_psl.py.cwl
 inputs:
 - id: input
   doc: The input file containing the reads alignments supporting potential fusion

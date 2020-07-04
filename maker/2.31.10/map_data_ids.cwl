@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: map_data_ids.cwl
+id: ../../../../home/ubuntu/BiocondaCli/map_data_ids.cwl
 inputs:
 - id: col
   doc: The column number (1 based) in the data file that corresponds to old_name in

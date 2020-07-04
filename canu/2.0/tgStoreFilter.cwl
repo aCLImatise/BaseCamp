@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tgStoreFilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tgStoreFilter.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phylics.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phylics.cwl
 inputs:
 - id: run
   doc: 'Run the pipeline. USAGE: phylics --run [--run_cnvs | --run_single | --run_multiple]
@@ -8,7 +8,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --run
-- id: run_10x_preproc
+- id: run_one_zero_x_preproc
   doc: 'Run 10x data pre-processing module. USAGE: phylics --run_10x_preproc --input_dirs
     sample_name:10x_out_path --output_path out_oath [--output_prefix out_prefix] [--verbose].
     Only single- sample execution is available for this option: only the first input

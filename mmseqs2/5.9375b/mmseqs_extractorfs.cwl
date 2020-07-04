@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mmseqs_extractorfs.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mmseqs_extractorfs.cwl
 inputs:
 - id: min_length
   doc: '1               minimum codon number in open reading frames                 '
@@ -45,17 +45,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --reverse-frames
-- id: translation_table
-  doc: 1               1) CANONICAL, 2) VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL,
-    4) MOLD_MITOCHONDRIAL, 5) INVERT_MITOCHONDRIAL, 6) CILIATE, 9) FLATWORM_MITOCHONDRIAL,
-    10) EUPLOTID, 11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL, 14) ALT_FLATWORM_MITOCHONDRIAL,
-    15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL, 21) TREMATODE_MITOCHONDRIAL,
-    22) SCENEDESMUS_MITOCHONDRIAL, 23) THRAUSTOCHYTRIUM_MITOCHONDRIAL, 24) PTEROBRANCHIA_MITOCHONDRIAL,
-    25) GRACILIBACTERIA, 26) PACHYSOLEN, 27) KARYORELICT, 28) CONDYLOSTOMA, 29) MESODINIUM,
-    30) PERTRICH, 31) BLASTOCRITHIDIA
-  type: boolean
-  inputBinding:
-    prefix: --translation-table
 - id: use_all_table_starts
   doc: false           use all alteratives for a start codon in the genetic table,
     if false - only ATG (AUG)
@@ -73,7 +62,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --threads
-- id: v
+- id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'
   type: boolean
   inputBinding:

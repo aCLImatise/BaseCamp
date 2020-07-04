@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: treeannotator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/treeannotator.cwl
 inputs:
 - id: heights
   doc: option of 'keep' (default), 'median', 'mean' or 'ca'
@@ -31,11 +31,21 @@ inputs:
   type: string
   inputBinding:
     prefix: -forceDiscrete
-- id: hpd2d
+- id: hpd_two_d
   doc: a (vector of comma seperated) HPD proportion(s)
   type: string
   inputBinding:
     prefix: -hpd2D
+- id: input_file_name
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: output_file_name
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

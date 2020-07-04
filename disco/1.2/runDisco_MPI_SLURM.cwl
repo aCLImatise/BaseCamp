@@ -1,17 +1,17 @@
 class: CommandLineTool
-id: runDisco_MPI_SLURM.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/runDisco_MPI_SLURM.sh.cwl
 inputs:
 - id: ins
   doc: single read filenames (comma separated fasta/fastq/fastq.gz files).
   type: boolean
   inputBinding:
     prefix: -inS
-- id: in1
+- id: in_one
   doc: forward paired read filename (single fasta/fastq/fastq.gz file).
   type: boolean
   inputBinding:
     prefix: -in1
-- id: in2
+- id: in_two
   doc: reverse paired read filename (single fasta/fastq/fastq.gz file).
   type: boolean
   inputBinding:
@@ -21,17 +21,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -inP
-- id: d
+- id: output_directory_path
   doc: output directory path.
   type: boolean
   inputBinding:
     prefix: -d
-- id: o
+- id: output_filename_prefix
   doc: output filename prefix.
   type: boolean
   inputBinding:
     prefix: -o
-- id: m
+- id: maximum_memory_used
   doc: 'maximum memory to be used (DEFAULT: 15 GB).'
   type: boolean
   inputBinding:
@@ -41,7 +41,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -np
-- id: n
+- id: number_threads_default
   doc: 'number of threads (DEFAULT: 8).'
   type: boolean
   inputBinding:
@@ -61,21 +61,66 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -rma
-- id: p
+- id: assembly_parameter_file_st
   doc: assembly parameter file for 1st assembly iteration.
   type: boolean
   inputBinding:
     prefix: -p
-- id: p2
+- id: p_two
   doc: assembly parameter file for 2nd assembly iteration.
   type: boolean
   inputBinding:
     prefix: -p2
-- id: p3
+- id: p_three
   doc: assembly parameter file for 3rd assembly iteration.
   type: boolean
   inputBinding:
     prefix: -p3
+- id: var_15
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: clusters
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: using
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
+- id: simple
+  doc: ''
+  type: string
+  inputBinding:
+    position: 3
+- id: linux
+  doc: ''
+  type: string
+  inputBinding:
+    position: 4
+- id: utility
+  doc: ''
+  type: string
+  inputBinding:
+    position: 5
+- id: var_21
+  doc: ''
+  type: string
+  inputBinding:
+    position: 6
+- id: resource
+  doc: ''
+  type: string
+  inputBinding:
+    position: 7
+- id: management
+  doc: ''
+  type: string
+  inputBinding:
+    position: 8
 outputs: []
 cwlVersion: v1.1
 baseCommand:

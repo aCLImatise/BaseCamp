@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: anvi_script_get_short_reads_matching_something.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_script_get_short_reads_matching_something.cwl
 inputs:
-- id: fast_q_files
-  doc: One or more FASTQ formatted files
-  type: string
-  inputBinding:
-    position: 0
 - id: min_remainder_length
   doc: Minimum lenght of the remainder of the read after the match. If your short
     read is XXXMMMMMMYYYYYYYYYYYYYY, where M indicates nucleotides of matchhing sequence,
@@ -34,6 +29,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --stop-after
+- id: match_sequence
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --match-sequence
+- id: fast_q_files
+  doc: One or more FASTQ formatted files
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

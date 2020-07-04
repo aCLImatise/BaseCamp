@@ -2,12 +2,16 @@ version 1.0
 
 task Cmpress {
   input {
-    Boolean optionsOptions
-    String? cmCmFile
+    Boolean? force_overwrite_files
+    Boolean? options
   }
   command <<<
     cmpress \
-      ~{cmCmFile} \
-      ~{true="-options" false="" optionsOptions}
+      ~{true="-F" false="" force_overwrite_files} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    force_overwrite_files: ": force: overwrite any previous pressed files"
+    options: ""
+  }
 }

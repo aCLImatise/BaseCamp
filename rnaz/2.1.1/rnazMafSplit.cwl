@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: rnazMafSplit.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rnazMafSplit.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

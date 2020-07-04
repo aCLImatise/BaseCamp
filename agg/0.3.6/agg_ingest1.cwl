@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: agg_ingest1.cwl
+id: ../../../../home/ubuntu/BiocondaCli/agg_ingest1.cwl
 inputs:
-- id: input_gvc_f
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: output
   doc: agg will output output_prefix.bcf and output_prefix.tmp
   type: string
@@ -21,6 +16,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ignore-non-matching-ref
+- id: input_gvc_f
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

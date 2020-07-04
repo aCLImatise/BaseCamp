@@ -2,16 +2,19 @@ version 1.0
 
 task VcfValidator {
   input {
-    Boolean duplicatesDuplicates
-    Boolean uniqueUniqueMessages
-    String? optionsOptions
-    File? fileFileVcfGz
+    Boolean? duplicates
+    Boolean? unique_messages
+    File file_dot_vcf_do_tgz
   }
   command <<<
     vcf-validator \
-      ~{optionsOptions} \
-      ~{true="--duplicates" false="" duplicatesDuplicates} \
-      ~{true="--unique-messages" false="" uniqueUniqueMessages} \
-      ~{fileFileVcfGz}
+      ~{file_dot_vcf_do_tgz} \
+      ~{true="--duplicates" false="" duplicates} \
+      ~{true="--unique-messages" false="" unique_messages}
   >>>
+  parameter_meta {
+    duplicates: "Warn about duplicate positions."
+    unique_messages: "Output all messages only once."
+    file_dot_vcf_do_tgz: ""
+  }
 }

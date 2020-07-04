@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Get_output.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Get_output.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

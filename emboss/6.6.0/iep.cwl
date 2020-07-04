@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: iep.cwl
+id: ../../../../home/ubuntu/BiocondaCli/iep.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

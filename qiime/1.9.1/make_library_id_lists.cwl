@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: make_library_id_lists.py.cwl
-inputs:
-- id: input_fast_a
-  doc: The path to a FASTA file containing input sequences [REQUIRED]
-  type: string
-  inputBinding:
-    prefix: --input_fasta
+id: ../../../../home/ubuntu/BiocondaCli/make_library_id_lists.py.cwl
+inputs: []
 outputs: []
 cwlVersion: v1.1
 baseCommand:

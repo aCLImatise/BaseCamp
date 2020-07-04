@@ -2,14 +2,19 @@ version 1.0
 
 task SbpipeMoveDatasets {
   input {
-    String nN
-    File iI
-    File oO
+    String? model_name
+    File? input_path
+    File? output_path
   }
   command <<<
     sbpipe_move_datasets \
-      ~{if defined(nN) then ("-n " +  '"' + nN + '"') else ""} \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""}
+      ~{if defined(model_name) then ("--model-name " +  '"' + model_name + '"') else ""} \
+      ~{if defined(input_path) then ("--input-path " +  '"' + input_path + '"') else ""} \
+      ~{if defined(output_path) then ("--output-path " +  '"' + output_path + '"') else ""}
   >>>
+  parameter_meta {
+    model_name: "the model name without extension"
+    input_path: "the path containing the input files"
+    output_path: "the path to store the output files"
+  }
 }

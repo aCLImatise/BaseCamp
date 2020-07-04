@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: fast_circ.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fast_circ.py.cwl
 inputs:
-- id: parse
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: fusion
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: ref
   doc: Gene annotation.
   type: string
@@ -26,7 +16,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --gtf
-- id: t
+- id: aligner_tophatfusion_star
   doc: Aligner (TopHat-Fusion, STAR, MapSplice, BWA, segemehl).
   type: string
   inputBinding:
@@ -56,6 +46,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --output
+- id: parse
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: fusion
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,20 +2,13 @@ version 1.0
 
 task Grocery {
   input {
-    Boolean versionVersion
-    String variableVariable
-    String trigonometricTrigonometric
-    String threadThread
-    String gistGist
-    Boolean traceTrace
+    Boolean? trace
   }
   command <<<
     grocery \
-      ~{true="- Version" false="" versionVersion} \
-      ~{if defined(variableVariable) then ("- Variable " +  '"' + variableVariable + '"') else ""} \
-      ~{if defined(trigonometricTrigonometric) then ("- Trigonometric " +  '"' + trigonometricTrigonometric + '"') else ""} \
-      ~{if defined(threadThread) then ("- Thread " +  '"' + threadThread + '"') else ""} \
-      ~{if defined(gistGist) then ("- Gist " +  '"' + gistGist + '"') else ""} \
-      ~{true="-trace" false="" traceTrace}
+      ~{true="-trace" false="" trace}
   >>>
+  parameter_meta {
+    trace: "(init,prune,fix,fail,done,propagate,commit,none,all,variable,general) default: none trace flags (comma-separated list)"
+  }
 }

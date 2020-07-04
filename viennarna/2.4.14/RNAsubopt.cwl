@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNAsubopt.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAsubopt.cwl
 inputs:
 - id: detailed_help
   doc: Print help, including all details and hidden options, and exit
@@ -41,47 +41,8 @@ inputs:
   type: string
   inputBinding:
     prefix: --id-prefix
-- id: max_bp_span
-  doc: Set the maximum base pair span (default=`-1')
-  type: long
-  inputBinding:
-    prefix: --maxBPspan
-- id: constraint
-  doc: "[=<filename>] Calculate structures subject to constraints. (default=`')"
-  type: boolean
-  inputBinding:
-    prefix: --constraint
-- id: batch
-  doc: Use constraints for multiple sequences. (default=off)
-  type: boolean
-  inputBinding:
-    prefix: --batch
-- id: canonical_bp_only
-  doc: Remove non-canonical base pairs from the structure constraint (default=off)
-  type: boolean
-  inputBinding:
-    prefix: --canonicalBPonly
-- id: enforce_constraint
-  doc: Enforce base pairs given by round brackets ( ) in structure constraint (default=off)
-  type: boolean
-  inputBinding:
-    prefix: --enforceConstraint
-- id: shape
-  doc: Use SHAPE reactivity data in the folding recursions (does not work for Zuker
-    suboptimals and stochastic backtracking yet)
-  type: File
-  inputBinding:
-    prefix: --shape
-- id: shape_method
-  doc: =[D/Z/W] + [optional parameters] Specify the method how to convert SHAPE reactivity
-    data to pseudo energy contributions (default=`D')
-  type: boolean
-  inputBinding:
-    prefix: --shapeMethod
 - id: shape_conversion
-  doc: /C/S/L/O  + [optional parameters] Specify the method used to convert SHAPE
-    reactivities to pairing probabilities when using the SHAPE approach of Zarringhalam
-    et al. (default=`O')
+  doc: + [optional parameters]
   type: string
   inputBinding:
     prefix: --shapeConversion
@@ -144,6 +105,17 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --gquad
+- id: temp
+  doc: Rescale energy parameters to a temperature of temp C. Default is 37C.
+  type: string
+  inputBinding:
+    prefix: --temp
+- id: no_tetra
+  doc: Do not include special tabulated stabilizing energies for tri-, tetra- and
+    hexaloop hairpins. (default=off)
+  type: boolean
+  inputBinding:
+    prefix: --noTetra
 - id: dangles
   doc: How to treat "dangling end" energies for bases adjacent to helices in free
     ends and multi-loops (default=`2')
@@ -177,6 +149,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --paramFile
+- id: contributions
+  doc: (default=`D')
+  type: string
+  inputBinding:
+    position: 0
+- id: aldot
+  doc: (default=`O')
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

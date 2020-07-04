@@ -1,16 +1,17 @@
 class: CommandLineTool
-id: tango_build.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tango_build.cwl
 inputs:
-- id: d
-  doc: ''
+- id: dbfile
+  doc: Name of diamond database file. Defaults to diamond.dmnd in same directory as
+    the protein fasta file
   type: string
   inputBinding:
-    prefix: -d
-- id: p
-  doc: ''
+    prefix: --dbfile
+- id: cpus
+  doc: Number of cpus to use when building (defaults to 1)
   type: string
   inputBinding:
-    prefix: -p
+    prefix: --cpus
 outputs: []
 cwlVersion: v1.1
 baseCommand:

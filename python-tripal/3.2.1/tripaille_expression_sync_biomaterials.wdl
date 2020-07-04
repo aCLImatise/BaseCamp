@@ -2,16 +2,22 @@ version 1.0
 
 task TripailleExpressionSyncBiomaterials {
   input {
-    String idsIds
-    String maxMaxSync
-    String jobJobName
-    Boolean noNoWait
+    String? ids
+    String? max_sync
+    String? job_name
+    Boolean? no_wait
   }
   command <<<
     tripaille expression sync_biomaterials \
-      ~{if defined(idsIds) then ("--ids " +  '"' + idsIds + '"') else ""} \
-      ~{if defined(maxMaxSync) then ("--max_sync " +  '"' + maxMaxSync + '"') else ""} \
-      ~{if defined(jobJobName) then ("--job_name " +  '"' + jobJobName + '"') else ""} \
-      ~{true="--no_wait" false="" noNoWait}
+      ~{if defined(ids) then ("--ids " +  '"' + ids + '"') else ""} \
+      ~{if defined(max_sync) then ("--max_sync " +  '"' + max_sync + '"') else ""} \
+      ~{if defined(job_name) then ("--job_name " +  '"' + job_name + '"') else ""} \
+      ~{true="--no_wait" false="" no_wait}
   >>>
+  parameter_meta {
+    ids: "JSON list of ids of biomaterials to be synced (default: all)  [default: []]"
+    max_sync: "Maximum number of features to sync (default: all)"
+    job_name: "Name of the job"
+    no_wait: "Return immediately without waiting for job completion"
+  }
 }

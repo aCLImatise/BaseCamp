@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: seurat_filter_cells.R.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seurat_filter_cells.R.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -2,28 +2,40 @@ version 1.0
 
 task ArrayAsVcf {
   input {
-    File pathPath
-    String buildBuild
-    String sampleSampleName
-    String chrChrPrefix
-    String lookupLookupTable
-    String dumpDump
-    String encodingEncoding
-    Array[String]+ excludeExcludeAssays
-    Boolean noNoEnsemblLookup
-    String logLogLevel
+    File? path
+    String? build
+    String? sample_name
+    String? chr_prefix
+    String? lookup_table
+    String? dump
+    String? encoding
+    Array[String] exclude_assays
+    Boolean? no_ensembl_lookup
+    String? log_level
   }
   command <<<
     array-as-vcf \
-      ~{if defined(pathPath) then ("--path " +  '"' + pathPath + '"') else ""} \
-      ~{if defined(buildBuild) then ("--build " +  '"' + buildBuild + '"') else ""} \
-      ~{if defined(sampleSampleName) then ("--sample-name " +  '"' + sampleSampleName + '"') else ""} \
-      ~{if defined(chrChrPrefix) then ("--chr-prefix " +  '"' + chrChrPrefix + '"') else ""} \
-      ~{if defined(lookupLookupTable) then ("--lookup-table " +  '"' + lookupLookupTable + '"') else ""} \
-      ~{if defined(dumpDump) then ("--dump " +  '"' + dumpDump + '"') else ""} \
-      ~{if defined(encodingEncoding) then ("--encoding " +  '"' + encodingEncoding + '"') else ""} \
-      ~{if defined(excludeExcludeAssays) then ("--exclude-assays " +  '"' + excludeExcludeAssays + '"') else ""} \
-      ~{true="--no-ensembl-lookup" false="" noNoEnsemblLookup} \
-      ~{if defined(logLogLevel) then ("--log-level " +  '"' + logLogLevel + '"') else ""}
+      ~{if defined(path) then ("--path " +  '"' + path + '"') else ""} \
+      ~{if defined(build) then ("--build " +  '"' + build + '"') else ""} \
+      ~{if defined(sample_name) then ("--sample-name " +  '"' + sample_name + '"') else ""} \
+      ~{if defined(chr_prefix) then ("--chr-prefix " +  '"' + chr_prefix + '"') else ""} \
+      ~{if defined(lookup_table) then ("--lookup-table " +  '"' + lookup_table + '"') else ""} \
+      ~{if defined(dump) then ("--dump " +  '"' + dump + '"') else ""} \
+      ~{if defined(encoding) then ("--encoding " +  '"' + encoding + '"') else ""} \
+      ~{if defined(exclude_assays) then ("--exclude-assays " +  '"' + exclude_assays + '"') else ""} \
+      ~{true="--no-ensembl-lookup" false="" no_ensembl_lookup} \
+      ~{if defined(log_level) then ("--log-level " +  '"' + log_level + '"') else ""}
   >>>
+  parameter_meta {
+    path: "Path to array file (default: None)"
+    build: "Genome build (default: GRCh37)"
+    sample_name: "Name of sample in VCF file (default: None)"
+    chr_prefix: "Prefix to chromosome names (default: None)"
+    lookup_table: "Path to existing lookup table for rsIDs (default: None)"
+    dump: "Path to write generated lookup table (default: None)"
+    encoding: "Encoding of the array file (default: UTF-8)"
+    exclude_assays: "Assay IDs for OpenArray to ignore (default: None)"
+    no_ensembl_lookup: "Lookup missing rsIDs on Ensembl (default: False)"
+    log_level: "Set the verbosity of the logger (default: INFO)"
+  }
 }

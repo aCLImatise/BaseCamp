@@ -2,10 +2,13 @@ version 1.0
 
 task Vseqinfo {
   input {
-    String? indexIndexName
+    String index_name
   }
   command <<<
     vseqinfo \
-      ~{indexIndexName}
+      ~{index_name}
   >>>
+  parameter_meta {
+    index_name: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bamtools_random.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bamtools_random.cwl
 inputs:
 - id: in
   doc: the input BAM file [stdin]
@@ -29,7 +29,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -forceCompression
-- id: n
+- id: number_alignments_grab
   doc: number of alignments to grab. Note - no duplicate checking is performed [10000]
   type: string
   inputBinding:

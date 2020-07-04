@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: blastMapAnalyzer2.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blastMapAnalyzer2.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

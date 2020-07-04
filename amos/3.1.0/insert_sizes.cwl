@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: insert_sizes.cwl
+id: ../../../../home/ubuntu/BiocondaCli/insert_sizes.cwl
 inputs:
 - id: bank_path
   doc: ''

@@ -2,32 +2,52 @@ version 1.0
 
 task KneaddataBowtie2DiscordantPairs {
   input {
-    String xX
-    String unUnPair
-    String alAlPair
-    String unUnSingle
-    String alAlSingle
-    String uU
-    String sS
-    String bowtie2Bowtie2
-    String threadsThreads
-    String bowtie2Bowtie2Options
-    Boolean catCatPairs
-    Boolean reorderReorder
+    String? one
+    String? two
+    String? database_index_file
+    String? un_pair
+    String? al_pair
+    String? un_single
+    String? al_single
+    String? fastq_files_orphan
+    String? file_write_output
+    String? bowtie_two
+    String? threads
+    String? bowtie_two_options
+    Boolean? cat_pairs
+    Boolean? reorder
   }
   command <<<
     kneaddata_bowtie2_discordant_pairs \
-      ~{if defined(xX) then ("-x " +  '"' + xX + '"') else ""} \
-      ~{if defined(unUnPair) then ("--un-pair " +  '"' + unUnPair + '"') else ""} \
-      ~{if defined(alAlPair) then ("--al-pair " +  '"' + alAlPair + '"') else ""} \
-      ~{if defined(unUnSingle) then ("--un-single " +  '"' + unUnSingle + '"') else ""} \
-      ~{if defined(alAlSingle) then ("--al-single " +  '"' + alAlSingle + '"') else ""} \
-      ~{if defined(uU) then ("-U " +  '"' + uU + '"') else ""} \
-      ~{if defined(sS) then ("-S " +  '"' + sS + '"') else ""} \
-      ~{if defined(bowtie2Bowtie2) then ("--bowtie2 " +  '"' + bowtie2Bowtie2 + '"') else ""} \
-      ~{if defined(threadsThreads) then ("--threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(bowtie2Bowtie2Options) then ("--bowtie2-options " +  '"' + bowtie2Bowtie2Options + '"') else ""} \
-      ~{true="--cat-pairs" false="" catCatPairs} \
-      ~{true="--reorder" false="" reorderReorder}
+      ~{if defined(one) then ("-1 " +  '"' + one + '"') else ""} \
+      ~{if defined(two) then ("-2 " +  '"' + two + '"') else ""} \
+      ~{if defined(database_index_file) then ("-x " +  '"' + database_index_file + '"') else ""} \
+      ~{if defined(un_pair) then ("--un-pair " +  '"' + un_pair + '"') else ""} \
+      ~{if defined(al_pair) then ("--al-pair " +  '"' + al_pair + '"') else ""} \
+      ~{if defined(un_single) then ("--un-single " +  '"' + un_single + '"') else ""} \
+      ~{if defined(al_single) then ("--al-single " +  '"' + al_single + '"') else ""} \
+      ~{if defined(fastq_files_orphan) then ("-U " +  '"' + fastq_files_orphan + '"') else ""} \
+      ~{if defined(file_write_output) then ("-S " +  '"' + file_write_output + '"') else ""} \
+      ~{if defined(bowtie_two) then ("--bowtie2 " +  '"' + bowtie_two + '"') else ""} \
+      ~{if defined(threads) then ("--threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(bowtie_two_options) then ("--bowtie2-options " +  '"' + bowtie_two_options + '"') else ""} \
+      ~{true="--cat-pairs" false="" cat_pairs} \
+      ~{true="--reorder" false="" reorder}
   >>>
+  parameter_meta {
+    one: "the fastq file of pair1 reads"
+    two: "the fastq file of pair2 reads"
+    database_index_file: "the database index file"
+    un_pair: "the name of the output files for the paired reads without any alignments"
+    al_pair: "the name of the output files for the paired reads with concordant alignments"
+    un_single: "the name of the output files for the orphan reads without alignments"
+    al_single: "the name of the output files for the orphan reads with alignments"
+    fastq_files_orphan: "the fastq files of orphan reads in comma-delimited list"
+    file_write_output: "the file to write the sam output"
+    bowtie_two: "the path to the bowtie2 executable"
+    threads: "the number of threads to use"
+    bowtie_two_options: "the bowtie2 options to apply"
+    cat_pairs: "concatenate pair files before aligning so reads are aligned as single end"
+    reorder: "print the sequences in the same order as the input files"
+  }
 }

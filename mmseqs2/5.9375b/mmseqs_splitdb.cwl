@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mmseqs_splitdb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mmseqs_splitdb.cwl
 inputs:
 - id: split
   doc: 0               Splits input sets into N equally distributed chunks. The default
@@ -8,7 +8,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --split
-- id: v
+- id: verbosity_level_nothing
   doc: '3               verbosity level: 0=nothing, 1: +errors, 2: +warnings, 3: +info'
   type: boolean
   inputBinding:

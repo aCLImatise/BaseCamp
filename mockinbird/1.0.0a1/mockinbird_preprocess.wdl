@@ -2,18 +2,13 @@ version 1.0
 
 task MockinbirdPreprocess {
   input {
-    String logLogLevel
-    String? parParClipFastQ
-    String? outputOutputDir
-    String? prefixPrefix
-    String? configConfigFile
+    String? log_level
   }
   command <<<
     mockinbird preprocess \
-      ~{parParClipFastQ} \
-      ~{if defined(logLogLevel) then ("--log_level " +  '"' + logLogLevel + '"') else ""} \
-      ~{outputOutputDir} \
-      ~{prefixPrefix} \
-      ~{configConfigFile}
+      ~{if defined(log_level) then ("--log_level " +  '"' + log_level + '"') else ""}
   >>>
+  parameter_meta {
+    log_level: "verbosity level of the logger (default: info)"
+  }
 }

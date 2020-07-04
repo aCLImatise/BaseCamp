@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_sequence_type.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_sequence_type.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

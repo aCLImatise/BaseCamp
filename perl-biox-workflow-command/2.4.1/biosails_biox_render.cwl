@@ -1,16 +1,16 @@
 class: CommandLineTool
-id: biosails_biox_render.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/biosails_biox_render.py.cwl
 inputs:
-- id: t
-  doc: ''
+- id: template
+  doc: Path to template file
   type: string
   inputBinding:
-    prefix: -t
-- id: j
-  doc: ''
+    prefix: --template
+- id: json
+  doc: Path to json object file
   type: string
   inputBinding:
-    prefix: -j
+    prefix: --json
 outputs: []
 cwlVersion: v1.1
 baseCommand:

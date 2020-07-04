@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: head.cwl
+id: ../../../../home/ubuntu/BiocondaCli/head.cwl
 inputs:
 - id: bytes
   doc: =[-]NUM       print the first NUM bytes of each file; with the leading '-',
@@ -28,6 +28,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --zero-terminated
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

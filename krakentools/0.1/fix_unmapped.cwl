@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fix_unmapped.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fix_unmapped.py.cwl
 inputs:
 - id: input_file
   doc: Input file containing accession IDs to map. Multi- column files accepted. Only
@@ -7,7 +7,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --input_file
-- id: accession_2taxid
+- id: accession_two_taxid
   doc: 'Accession2taxid reference mappings to search. NCBI accession2taxid format
     required: 4 columns with accessions in column 1 and taxonomy IDs in column 3.'
   type: string[]

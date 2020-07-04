@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: easel_downsample.cwl
+id: ../../../../home/ubuntu/BiocondaCli/easel_downsample.cwl
 inputs:
-- id: s
+- id: sequence_sampling_infile
   doc: ': sequence sampling: <infile> is file or stream of seqs'
   type: boolean
   inputBinding:
     prefix: -s
-- id: s
+- id: big_sequence_sample
   doc: ': big sequence sample: <infile> is (seekable) seq file'
   type: boolean
   inputBinding:
@@ -16,6 +16,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --seed
+- id: options
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -options
 outputs: []
 cwlVersion: v1.1
 baseCommand:

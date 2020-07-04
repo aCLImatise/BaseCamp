@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: maskseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maskseq.cwl
 inputs:
 - id: regions
   doc: 'range      [None] Regions to mask. A set of regions is specified by a set

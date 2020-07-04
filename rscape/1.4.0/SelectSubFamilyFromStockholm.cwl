@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SelectSubFamilyFromStockholm.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SelectSubFamilyFromStockholm.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

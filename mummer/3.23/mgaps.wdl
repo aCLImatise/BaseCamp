@@ -2,14 +2,19 @@ version 1.0
 
 task Mgaps {
   input {
-    String dD
-    String fF
-    String lL
+    String? d
+    String? f
+    String? l
   }
   command <<<
     mgaps \
-      ~{if defined(dD) then ("-d " +  '"' + dD + '"') else ""} \
-      ~{if defined(fF) then ("-f " +  '"' + fF + '"') else ""} \
-      ~{if defined(lL) then ("-l " +  '"' + lL + '"') else ""}
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
+      ~{if defined(f) then ("-f " +  '"' + f + '"') else ""} \
+      ~{if defined(l) then ("-l " +  '"' + l + '"') else ""}
   >>>
+  parameter_meta {
+    d: ""
+    f: ""
+    l: ""
+  }
 }

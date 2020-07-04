@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: phyluce_align_get_aligns_partitioned_by_cluster.cwl
+id: ../../../../home/ubuntu/BiocondaCli/phyluce_align_get_aligns_partitioned_by_cluster.cwl
 inputs:
 - id: alignments
   doc: The directory containing the alignment files

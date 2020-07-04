@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: test_dependencies.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/test_dependencies.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: filter_seer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_seer.cwl
 inputs:
-- id: k
+- id: arg_file_output
   doc: '[ --kmers ] arg     file of output from seer'
   type: boolean
   inputBinding:
@@ -36,7 +36,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --pos_beta
-- id: s
+- id: arg_field_sort
   doc: '[ --sort ] arg      field to sort on: chisq, pval, maf or beta'
   type: boolean
   inputBinding:

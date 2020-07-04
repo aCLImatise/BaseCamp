@@ -2,10 +2,13 @@ version 1.0
 
 task DeltaFilter {
   input {
-    String? deltaDeltaFile
+    String delta_file
   }
   command <<<
     delta-filter \
-      ~{deltaDeltaFile}
+      ~{delta_file}
   >>>
+  parameter_meta {
+    delta_file: ""
+  }
 }

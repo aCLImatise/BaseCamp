@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: UnitTest_LV.cwl
+id: ../../../../home/ubuntu/BiocondaCli/UnitTest_LV.cwl
 inputs:
 - id: list_tests
   doc: list all/matching test cases
@@ -62,8 +62,8 @@ inputs:
   inputBinding:
     prefix: --warn
 - id: durations
-  doc: <yes/no>     show test durations
-  type: boolean
+  doc: show test durations
+  type: string
   inputBinding:
     prefix: --durations
 - id: input_file
@@ -82,8 +82,8 @@ inputs:
   inputBinding:
     prefix: --list-reporters
 - id: order
-  doc: <decl|lex|rand>      test case order (defaults to decl)
-  type: boolean
+  doc: test case order (defaults to decl)
+  type: string
   inputBinding:
     prefix: --order
 - id: rng_seed

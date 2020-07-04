@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sonLib_kvDatabaseTest.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sonLib_kvDatabaseTest.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

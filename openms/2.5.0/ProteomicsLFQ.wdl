@@ -2,116 +2,49 @@ version 1.0
 
 task ProteomicsLFQ {
   input {
-    File inIn
-    File idsIds
-    File designDesign
-    File fastFastA
-    File outOut
-    File outOutMsStats
-    File outOutCXml
-    String proteinProteinFdr
-    String psmPsmFdr
-    Boolean centroidCentroidIng
-    Boolean centroidCentroidIng
-    Boolean centroidCentroidIng
-    Boolean centroidCentroidIng
-    Boolean centroidCentroidIng
-    Boolean centroidCentroidIng
-    Boolean centroidCentroidIng
-    Boolean centroidCentroidIng
-    Boolean peptidePeptideQuantification
-    Boolean peptidePeptideQuantification
-    Boolean peptidePeptideQuantification
-    Boolean peptidePeptideQuantification
-    Boolean peptidePeptideQuantification
-    Boolean peptidePeptideQuantification
-    Boolean peptidePeptideQuantification
-    Boolean peptidePeptideQuantification
-    Boolean peptidePeptideQuantification
-    Boolean peptidePeptideQuantification
-    Boolean peptidePeptideQuantification
-    Boolean peptidePeptideQuantification
-    Boolean peptidePeptideQuantification
-    Boolean peptidePeptideQuantification
-    Boolean alignmentAlignment
-    Boolean alignmentAlignment
-    Boolean alignmentAlignment
-    Boolean alignmentAlignment
-    Boolean alignmentAlignment
-    Boolean alignmentAlignment
-    Boolean linkingLinking
-    Boolean linkingLinking
-    Boolean linkingLinking
-    Boolean linkingLinking
-    Boolean linkingLinking
-    Boolean linkingLinking
-    Boolean linkingLinking
-    Boolean proteinProteinQuantification
-    Boolean proteinProteinQuantification
-    Boolean proteinProteinQuantification
-    Boolean proteinProteinQuantification
-    Boolean proteinProteinQuantification
-    Boolean proteinProteinQuantification
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    File? in
+    File? ids
+    File? design
+    File? fast_a
+    File? out
+    File? out_ms_stats
+    File? out_c_xml
+    String? protein_fdr
+    String? psm_fdr
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     ProteomicsLFQ \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(idsIds) then ("-ids " +  '"' + idsIds + '"') else ""} \
-      ~{if defined(designDesign) then ("-design " +  '"' + designDesign + '"') else ""} \
-      ~{if defined(fastFastA) then ("-fasta " +  '"' + fastFastA + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(outOutMsStats) then ("-out_msstats " +  '"' + outOutMsStats + '"') else ""} \
-      ~{if defined(outOutCXml) then ("-out_cxml " +  '"' + outOutCXml + '"') else ""} \
-      ~{if defined(proteinProteinFdr) then ("-proteinFDR " +  '"' + proteinProteinFdr + '"') else ""} \
-      ~{if defined(psmPsmFdr) then ("-psmFDR " +  '"' + psmPsmFdr + '"') else ""} \
-      ~{true="-Centroiding" false="" centroidCentroidIng} \
-      ~{true="-Centroiding" false="" centroidCentroidIng} \
-      ~{true="-Centroiding" false="" centroidCentroidIng} \
-      ~{true="-Centroiding" false="" centroidCentroidIng} \
-      ~{true="-Centroiding" false="" centroidCentroidIng} \
-      ~{true="-Centroiding" false="" centroidCentroidIng} \
-      ~{true="-Centroiding" false="" centroidCentroidIng} \
-      ~{true="-Centroiding" false="" centroidCentroidIng} \
-      ~{true="-PeptideQuantification" false="" peptidePeptideQuantification} \
-      ~{true="-PeptideQuantification" false="" peptidePeptideQuantification} \
-      ~{true="-PeptideQuantification" false="" peptidePeptideQuantification} \
-      ~{true="-PeptideQuantification" false="" peptidePeptideQuantification} \
-      ~{true="-PeptideQuantification" false="" peptidePeptideQuantification} \
-      ~{true="-PeptideQuantification" false="" peptidePeptideQuantification} \
-      ~{true="-PeptideQuantification" false="" peptidePeptideQuantification} \
-      ~{true="-PeptideQuantification" false="" peptidePeptideQuantification} \
-      ~{true="-PeptideQuantification" false="" peptidePeptideQuantification} \
-      ~{true="-PeptideQuantification" false="" peptidePeptideQuantification} \
-      ~{true="-PeptideQuantification" false="" peptidePeptideQuantification} \
-      ~{true="-PeptideQuantification" false="" peptidePeptideQuantification} \
-      ~{true="-PeptideQuantification" false="" peptidePeptideQuantification} \
-      ~{true="-PeptideQuantification" false="" peptidePeptideQuantification} \
-      ~{true="-Alignment" false="" alignmentAlignment} \
-      ~{true="-Alignment" false="" alignmentAlignment} \
-      ~{true="-Alignment" false="" alignmentAlignment} \
-      ~{true="-Alignment" false="" alignmentAlignment} \
-      ~{true="-Alignment" false="" alignmentAlignment} \
-      ~{true="-Alignment" false="" alignmentAlignment} \
-      ~{true="-Linking" false="" linkingLinking} \
-      ~{true="-Linking" false="" linkingLinking} \
-      ~{true="-Linking" false="" linkingLinking} \
-      ~{true="-Linking" false="" linkingLinking} \
-      ~{true="-Linking" false="" linkingLinking} \
-      ~{true="-Linking" false="" linkingLinking} \
-      ~{true="-Linking" false="" linkingLinking} \
-      ~{true="-ProteinQuantification" false="" proteinProteinQuantification} \
-      ~{true="-ProteinQuantification" false="" proteinProteinQuantification} \
-      ~{true="-ProteinQuantification" false="" proteinProteinQuantification} \
-      ~{true="-ProteinQuantification" false="" proteinProteinQuantification} \
-      ~{true="-ProteinQuantification" false="" proteinProteinQuantification} \
-      ~{true="-ProteinQuantification" false="" proteinProteinQuantification} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(ids) then ("-ids " +  '"' + ids + '"') else ""} \
+      ~{if defined(design) then ("-design " +  '"' + design + '"') else ""} \
+      ~{if defined(fast_a) then ("-fasta " +  '"' + fast_a + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(out_ms_stats) then ("-out_msstats " +  '"' + out_ms_stats + '"') else ""} \
+      ~{if defined(out_c_xml) then ("-out_cxml " +  '"' + out_c_xml + '"') else ""} \
+      ~{if defined(protein_fdr) then ("-proteinFDR " +  '"' + protein_fdr + '"') else ""} \
+      ~{if defined(psm_fdr) then ("-psmFDR " +  '"' + psm_fdr + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*                                           Input files (valid formats: 'mzML')"
+    ids: "*                                          Identifications filtered at PSM level (e.g., q-value < 0.01).And annotated with PEP as main score. We suggest using: 1. PercolatorAdapter tool (score_type = 'q-value', -post-processing-tdc) 2. FalseDiscoveryRate (FDR:PSM = 0.01) 3. IDScoreSwitcher (-old_score q-value -new_score MS:1001493 -new_score_orientation lower_better -new_score_type) To obtain well calibrated PEPs and an inital reduction of PSMs ID files must be provided in same order as spectra files. (valid formats: 'idXML', 'mzId')"
+    design: "Design file (valid formats: 'tsv')"
+    fast_a: "Fasta file (valid formats: 'fasta')"
+    out: "*                                               Output mzTab file (valid formats: 'mzTab')"
+    out_ms_stats: "Output MSstats input file (valid formats: 'csv')"
+    out_c_xml: "Output consensusXML file (valid formats: 'consensusXML')"
+    protein_fdr: "Protein FDR threshold (0.05=5%). (default: '0.05' min: '0.0' max: '1.0')"
+    psm_fdr: "PSM FDR threshold (e.g. 0.05=5%). If Bayesian inference was chosen, it is equivalent with a peptide FDR (default: '1.0' min: '0.0' max: '1.0')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

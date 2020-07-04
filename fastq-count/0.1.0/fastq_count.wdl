@@ -2,12 +2,16 @@ version 1.0
 
 task FastqCount {
   input {
-    String? r1fqR1fq
-    String? r2fqR2fq
+    String r_one_dot_fq
+    String r_two_dot_fq
   }
   command <<<
     fastq-count \
-      ~{r1fqR1fq} \
-      ~{r2fqR2fq}
+      ~{r_one_dot_fq} \
+      ~{r_two_dot_fq}
   >>>
+  parameter_meta {
+    r_one_dot_fq: ""
+    r_two_dot_fq: ""
+  }
 }

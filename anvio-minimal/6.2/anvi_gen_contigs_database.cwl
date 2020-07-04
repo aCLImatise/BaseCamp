@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_gen_contigs_database.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_gen_contigs_database.cwl
 inputs:
 - id: contigs_fast_a
   doc: The FASTA file that contains reference sequences you mapped your samples against.

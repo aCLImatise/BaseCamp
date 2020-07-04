@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tradis_merge_plots.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tradis_merge_plots.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

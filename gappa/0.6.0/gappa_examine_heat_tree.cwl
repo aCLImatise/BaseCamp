@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gappa_examine_heat_tree.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gappa_examine_heat_tree.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: j_place_path
   doc: :PATH(existing)=[] ... REQUIRED List of jplace files or directories to process.
     For directories, only files with the extension .jplace are processed.

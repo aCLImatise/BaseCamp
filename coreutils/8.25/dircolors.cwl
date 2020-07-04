@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dircolors.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dircolors.cwl
 inputs:
 - id: bourne_shell
   doc: Bourne shell code to set LS_COLORS
@@ -16,6 +16,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --print-database
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: SampleDist.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/SampleDist.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

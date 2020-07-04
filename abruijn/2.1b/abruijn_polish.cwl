@@ -1,6 +1,16 @@
 class: CommandLineTool
-id: abruijn_polish.cwl
+id: ../../../../home/ubuntu/BiocondaCli/abruijn_polish.cwl
 inputs:
+- id: path_file_verbose
+  doc: path to the file with verbose log [default = not set]
+  type: string
+  inputBinding:
+    prefix: -v
+- id: number_parallel_threads
+  doc: number of parallel threads [default = 1]
+  type: string
+  inputBinding:
+    prefix: -t
 - id: bubbles_file
   doc: path to bubbles file
   type: string
@@ -21,16 +31,6 @@ inputs:
   type: string
   inputBinding:
     position: 3
-- id: v
-  doc: path to the file with verbose log [default = not set]
-  type: string
-  inputBinding:
-    prefix: -v
-- id: t
-  doc: number of parallel threads [default = 1]
-  type: string
-  inputBinding:
-    prefix: -t
 outputs: []
 cwlVersion: v1.1
 baseCommand:

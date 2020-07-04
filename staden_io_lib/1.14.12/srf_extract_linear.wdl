@@ -2,14 +2,19 @@ version 1.0
 
 task SrfExtractLinear {
   input {
-    String? extractExtractLinearSrf
-    String? archiveArchiveName
-    String? traceTraceName
+    String extract_linear_srf
+    String archive_name
+    String trace_name
   }
   command <<<
     srf_extract_linear \
-      ~{extractExtractLinearSrf} \
-      ~{archiveArchiveName} \
-      ~{traceTraceName}
+      ~{extract_linear_srf} \
+      ~{archive_name} \
+      ~{trace_name}
   >>>
+  parameter_meta {
+    extract_linear_srf: ""
+    archive_name: ""
+    trace_name: ""
+  }
 }

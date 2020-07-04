@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: TsvFilter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/TsvFilter.cwl
 inputs:
 - id: filter
   doc: Filter string with column name, operation and value,e.g. 'depth > 17'.
@@ -22,7 +22,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -numeric
-- id: v
+- id: invert_filter_default
   doc: "Invert filter. Default value: 'false'"
   type: boolean
   inputBinding:

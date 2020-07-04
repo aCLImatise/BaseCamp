@@ -1,21 +1,6 @@
 class: CommandLineTool
-id: nucamino_hiv1b.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nucamino_hiv1b.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: hiv1b
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: hiv1b_options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
 - id: quiet
   doc: hide non-error information output
   type: boolean
@@ -78,6 +63,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --pprof
+- id: hiv_one_b_options
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

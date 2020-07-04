@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: enasearch_retrieve_data.cwl
+id: ../../../../home/ubuntu/BiocondaCli/enasearch_retrieve_data.cwl
 inputs:
 - id: ids
   doc: Ids for records to return (other than Taxon and Project) [multiple]  [required]

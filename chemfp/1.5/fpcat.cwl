@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: fpcat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fpcat.cwl
 inputs:
-- id: filename
-  doc: 'input fingerprint filenames (default: use stdin)'
-  type: File
-  inputBinding:
-    position: 0
 - id: in
   doc: input fingerprint format. One of fps or fps.gz. (default guesses from filename
     or is fps)
@@ -44,6 +39,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --show-progress
+- id: filename
+  doc: 'input fingerprint filenames (default: use stdin)'
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

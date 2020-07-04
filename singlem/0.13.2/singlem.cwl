@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: singlem.cwl
+id: ../../../../home/ubuntu/BiocondaCli/singlem.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

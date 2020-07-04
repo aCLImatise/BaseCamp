@@ -2,10 +2,13 @@ version 1.0
 
 task NwStats {
   input {
-    Boolean fF
+    Boolean? fhh
   }
   command <<<
     nw_stats \
-      ~{true="-f" false="" fF}
+      ~{true="-fHh" false="" fhh}
   >>>
+  parameter_meta {
+    fhh: ""
+  }
 }

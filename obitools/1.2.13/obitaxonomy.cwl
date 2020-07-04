@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: obitaxonomy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/obitaxonomy.cwl
 inputs:
 - id: database
   doc: ecoPCR taxonomy Database name

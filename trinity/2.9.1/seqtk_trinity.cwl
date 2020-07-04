@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: seqtk_trinity.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqtk_trinity.cwl
 inputs:
 - id: seq_tk
   doc: ''

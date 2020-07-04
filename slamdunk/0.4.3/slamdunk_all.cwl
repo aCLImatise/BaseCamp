@@ -1,12 +1,36 @@
 class: CommandLineTool
-id: slamdunk_all.cwl
+id: ../../../../home/ubuntu/BiocondaCli/slamdunk_all.cwl
 inputs:
-- id: files
-  doc: Single csv/tsv file (recommended) containing all sample files and sample info
-    or a list of all sample BAM/FASTA(gz)/FASTQ(gz) files
-  type: File
+- id: reference
+  doc: Reference fasta file
+  type: string
   inputBinding:
-    position: 0
+    prefix: --reference
+- id: bed
+  doc: BED file with 3'UTR coordinates
+  type: string
+  inputBinding:
+    prefix: --bed
+- id: filter_bed
+  doc: BED file with 3'UTR coordinates to filter multimappers (activates -m)
+  type: string
+  inputBinding:
+    prefix: --filterbed
+- id: vcf
+  doc: Skip SNP step and provide custom variant file.
+  type: string
+  inputBinding:
+    prefix: --vcf
+- id: output_dir
+  doc: Output directory for slamdunk run.
+  type: string
+  inputBinding:
+    prefix: --outputDir
+- id: trim_five_p
+  doc: "Number of bp removed from 5' end of all reads (default: 12)"
+  type: string
+  inputBinding:
+    prefix: --trim-5p
 - id: max_polya
   doc: "Max number of As at the 3' end of a read (default: 4)"
   type: long
@@ -103,6 +127,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --skip-sam
+- id: files
+  doc: Single csv/tsv file (recommended) containing all sample files and sample info
+    or a list of all sample BAM/FASTA(gz)/FASTQ(gz) files
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

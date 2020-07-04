@@ -2,16 +2,22 @@ version 1.0
 
 task CpinsimParse {
   input {
-    Array[Int]+ interactionsInteractionsWithoutConstraints
-    Array[String]+ competitionsCompetitions
-    Array[String]+ allostericAllostericEffects
-    String outputOutput
+    Array[Int] interactions_without_constraints
+    Array[String] competitions
+    Array[String] allosteric_effects
+    String? output_file_containing
   }
   command <<<
     cpinsim parse \
-      ~{if defined(interactionsInteractionsWithoutConstraints) then ("--interactions_without_constraints " +  '"' + interactionsInteractionsWithoutConstraints + '"') else ""} \
-      ~{if defined(competitionsCompetitions) then ("--competitions " +  '"' + competitionsCompetitions + '"') else ""} \
-      ~{if defined(allostericAllostericEffects) then ("--allosteric_effects " +  '"' + allostericAllostericEffects + '"') else ""} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""}
+      ~{if defined(interactions_without_constraints) then ("--interactions_without_constraints " +  '"' + interactions_without_constraints + '"') else ""} \
+      ~{if defined(competitions) then ("--competitions " +  '"' + competitions + '"') else ""} \
+      ~{if defined(allosteric_effects) then ("--allosteric_effects " +  '"' + allosteric_effects + '"') else ""} \
+      ~{if defined(output_file_containing) then ("--output " +  '"' + output_file_containing + '"') else ""}
   >>>
+  parameter_meta {
+    interactions_without_constraints: "Files containing the annotated pairwise interactions."
+    competitions: "Files containing the annotated competitions."
+    allosteric_effects: "Files containing the annotated allosteric effects."
+    output_file_containing: "Output file containing the parsed proteins."
+  }
 }

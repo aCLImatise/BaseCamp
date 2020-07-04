@@ -2,36 +2,61 @@ version 1.0
 
 task TripailleAnalysisLoadGo {
   input {
-    String organismOrganism
-    Int organismOrganismId
-    String gafGafExt
-    String queryQueryType
-    String queryQueryMatching
-    String methodMethod
-    Int nameNameColumn
-    String reReName
-    Boolean noNoWait
-    String algorithmAlgorithm
-    String sourceSourceVersion
-    String sourceSourceUri
-    String descriptionDescription
-    String dateDateExecuted
+    String? organism
+    Int? organism_id
+    String? gaf_ext
+    String? query_type
+    String? query_matching
+    String? method
+    Int? name_column
+    String? re_name
+    Boolean? no_wait
+    String? algorithm
+    String? source_version
+    String? source_uri
+    String? description
+    String? date_executed
+    String name
+    String program
+    String program_version
   }
   command <<<
     tripaille analysis load_go \
-      ~{if defined(organismOrganism) then ("--organism " +  '"' + organismOrganism + '"') else ""} \
-      ~{if defined(organismOrganismId) then ("--organism_id " +  '"' + organismOrganismId + '"') else ""} \
-      ~{if defined(gafGafExt) then ("--gaf_ext " +  '"' + gafGafExt + '"') else ""} \
-      ~{if defined(queryQueryType) then ("--query_type " +  '"' + queryQueryType + '"') else ""} \
-      ~{if defined(queryQueryMatching) then ("--query_matching " +  '"' + queryQueryMatching + '"') else ""} \
-      ~{if defined(methodMethod) then ("--method " +  '"' + methodMethod + '"') else ""} \
-      ~{if defined(nameNameColumn) then ("--name_column " +  '"' + nameNameColumn + '"') else ""} \
-      ~{if defined(reReName) then ("--re_name " +  '"' + reReName + '"') else ""} \
-      ~{true="--no_wait" false="" noNoWait} \
-      ~{if defined(algorithmAlgorithm) then ("--algorithm " +  '"' + algorithmAlgorithm + '"') else ""} \
-      ~{if defined(sourceSourceVersion) then ("--sourceversion " +  '"' + sourceSourceVersion + '"') else ""} \
-      ~{if defined(sourceSourceUri) then ("--sourceuri " +  '"' + sourceSourceUri + '"') else ""} \
-      ~{if defined(descriptionDescription) then ("--description " +  '"' + descriptionDescription + '"') else ""} \
-      ~{if defined(dateDateExecuted) then ("--date_executed " +  '"' + dateDateExecuted + '"') else ""}
+      ~{name} \
+      ~{program} \
+      ~{program_version} \
+      ~{if defined(organism) then ("--organism " +  '"' + organism + '"') else ""} \
+      ~{if defined(organism_id) then ("--organism_id " +  '"' + organism_id + '"') else ""} \
+      ~{if defined(gaf_ext) then ("--gaf_ext " +  '"' + gaf_ext + '"') else ""} \
+      ~{if defined(query_type) then ("--query_type " +  '"' + query_type + '"') else ""} \
+      ~{if defined(query_matching) then ("--query_matching " +  '"' + query_matching + '"') else ""} \
+      ~{if defined(method) then ("--method " +  '"' + method + '"') else ""} \
+      ~{if defined(name_column) then ("--name_column " +  '"' + name_column + '"') else ""} \
+      ~{if defined(re_name) then ("--re_name " +  '"' + re_name + '"') else ""} \
+      ~{true="--no_wait" false="" no_wait} \
+      ~{if defined(algorithm) then ("--algorithm " +  '"' + algorithm + '"') else ""} \
+      ~{if defined(source_version) then ("--sourceversion " +  '"' + source_version + '"') else ""} \
+      ~{if defined(source_uri) then ("--sourceuri " +  '"' + source_uri + '"') else ""} \
+      ~{if defined(description) then ("--description " +  '"' + description + '"') else ""} \
+      ~{if defined(date_executed) then ("--date_executed " +  '"' + date_executed + '"') else ""}
   >>>
+  parameter_meta {
+    organism: "Organism common name or abbreviation"
+    organism_id: "Organism ID"
+    gaf_ext: "If looking for files in a directory, extension of the GAF files"
+    query_type: "The feature type (e.g. 'gene', 'mRNA', 'contig') of the query. It must be a valid Sequence Ontology term."
+    query_matching: "Method to match identifiers to features in the database. ('name', 'uniquename' or 'dbxref') [default: uniquename]"
+    method: "Import method ('add' or 'remove')  [default: add]"
+    name_column: "Column containing the feature identifiers (2, 3, 10 or 11; default=2).  [default: 2]"
+    re_name: "Regular expression to extract the feature name from GAF file."
+    no_wait: "Do not wait for job to complete"
+    algorithm: "analysis algorithm"
+    source_version: "analysis sourceversion"
+    source_uri: "analysis sourceuri"
+    description: "analysis description"
+    date_executed: "analysis date_executed (yyyy-mm-dd)"
+    name: ""
+    program: ""
+    program_version: ""
+  }
 }

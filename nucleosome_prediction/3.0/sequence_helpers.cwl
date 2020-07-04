@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sequence_helpers.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sequence_helpers.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

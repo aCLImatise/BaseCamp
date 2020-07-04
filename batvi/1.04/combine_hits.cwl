@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: combine_hits.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/combine_hits.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

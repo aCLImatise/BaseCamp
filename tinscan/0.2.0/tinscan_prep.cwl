@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tinscan_prep.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tinscan_prep.cwl
 inputs:
 - id: target
   doc: Multifasta containing A genome.

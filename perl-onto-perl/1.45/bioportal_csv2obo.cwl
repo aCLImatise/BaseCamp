@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: bioportal_csv2obo.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bioportal_csv2obo.pl.cwl
 inputs:
-- id: f
+- id: csv_input_file
   doc: CSV input file
   type: boolean
   inputBinding:

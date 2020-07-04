@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcffirstheader.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcffirstheader.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

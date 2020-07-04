@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: count.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/count.pl.cwl
 inputs:
 - id: n_gram
   doc: Creates n-grams of N tokens each. N = 2 by default.
@@ -96,6 +96,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: destination
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: source
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

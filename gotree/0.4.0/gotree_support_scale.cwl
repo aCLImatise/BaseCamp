@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gotree_support_scale.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gotree_support_scale.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: factor
   doc: Branch support scaling factor (default 1)
   type: double
@@ -36,6 +31,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

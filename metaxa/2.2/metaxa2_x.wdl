@@ -2,12 +2,16 @@ version 1.0
 
 task Metaxa2X {
   input {
-    String iI
-    String oO
+    String? i
+    String? o
   }
   command <<<
     metaxa2_x \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""}
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""}
   >>>
+  parameter_meta {
+    i: ""
+    o: ""
+  }
 }

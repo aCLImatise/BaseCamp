@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: unitig_counter.cwl
+id: ../../../../home/ubuntu/BiocondaCli/unitig_counter.cwl
 inputs:
 - id: gzip
   doc: '(0 arg) :    Compress unitig output using gzip.'
@@ -13,7 +13,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -strains
-- id: k
+- id: arg_kmer_size
   doc: "(1 arg) :    K-mer size.  [default '31']"
   type: boolean
   inputBinding:

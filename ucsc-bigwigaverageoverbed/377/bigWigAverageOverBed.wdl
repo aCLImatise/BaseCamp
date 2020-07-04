@@ -2,16 +2,22 @@ version 1.0
 
 task BigWigAverageOverBed {
   input {
-    String includeInclude
-    String? inInBw
-    String? inInBed
-    String? outOutTab
+    Boolean? minmax
+    String in_dot_bw
+    String in_dot_bed
+    String out_dot_tab
   }
   command <<<
     bigWigAverageOverBed \
-      ~{inInBw} \
-      ~{if defined(includeInclude) then ("- include " +  '"' + includeInclude + '"') else ""} \
-      ~{inInBed} \
-      ~{outOutTab}
+      ~{in_dot_bw} \
+      ~{in_dot_bed} \
+      ~{out_dot_tab} \
+      ~{true="-minMax" false="" minmax}
   >>>
+  parameter_meta {
+    minmax: "- include two additional columns containing the min and max observed in the area."
+    in_dot_bw: ""
+    in_dot_bed: ""
+    out_dot_tab: ""
+  }
 }

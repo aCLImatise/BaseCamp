@@ -1,6 +1,32 @@
 class: CommandLineTool
-id: split_paired_reads.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/split_paired_reads.py.cwl
 inputs:
+- id: info
+  doc: print citation information
+  type: boolean
+  inputBinding:
+    prefix: --info
+- id: output_dir
+  doc: 'Output split reads to specified directory. Creates directory if necessary
+    (default: )'
+  type: string
+  inputBinding:
+    prefix: --output-dir
+- id: output_orphaned
+  doc: 'Allow "orphaned" reads and extract them to this file (default: None)'
+  type: string
+  inputBinding:
+    prefix: --output-orphaned
+- id: output_first
+  doc: 'Output "left" reads to this file (default: None)'
+  type: string
+  inputBinding:
+    prefix: --output-first
+- id: output_second
+  doc: 'Output "right" reads to this file (default: None)'
+  type: string
+  inputBinding:
+    prefix: --output-second
 - id: force
   doc: 'Overwrite output file if it exists (default: False)'
   type: boolean

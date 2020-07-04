@@ -2,14 +2,19 @@ version 1.0
 
 task ResetFragLibrary {
   input {
-    String? updateUpdateClrRanges
-    String? bankBankName
-    String? fragFragIdNewlibId
+    String update_clr_ranges
+    String bank_name
+    String frag_id_dot_newlib_id
   }
   command <<<
     resetFragLibrary \
-      ~{updateUpdateClrRanges} \
-      ~{bankBankName} \
-      ~{fragFragIdNewlibId}
+      ~{update_clr_ranges} \
+      ~{bank_name} \
+      ~{frag_id_dot_newlib_id}
   >>>
+  parameter_meta {
+    update_clr_ranges: ""
+    bank_name: ""
+    frag_id_dot_newlib_id: ""
+  }
 }

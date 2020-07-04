@@ -2,10 +2,13 @@ version 1.0
 
 task SplitScaffold {
   input {
-    String? scaffoldScaffoldFa
+    String scaffold_dot_fa
   }
   command <<<
     split_scaffold \
-      ~{scaffoldScaffoldFa}
+      ~{scaffold_dot_fa}
   >>>
+  parameter_meta {
+    scaffold_dot_fa: ""
+  }
 }

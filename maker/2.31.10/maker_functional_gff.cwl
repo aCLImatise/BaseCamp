@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: maker_functional_gff.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maker_functional_gff.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

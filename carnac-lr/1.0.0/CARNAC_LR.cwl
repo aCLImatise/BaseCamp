@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: CARNAC_LR.cwl
+id: ../../../../home/ubuntu/BiocondaCli/CARNAC_LR.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

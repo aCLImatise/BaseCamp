@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: factor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/factor.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

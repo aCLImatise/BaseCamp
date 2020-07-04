@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: builder.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/builder.pl.cwl
 inputs:
 - id: newick
   doc: '- Guide tree in newick format (same names as fasta files without suffix .fna)'

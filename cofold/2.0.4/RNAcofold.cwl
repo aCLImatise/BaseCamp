@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: RNAcofold.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAcofold.cwl
 inputs:
 - id: detailed_help
   doc: Print help, including all details and hidden  options, and exit
@@ -52,6 +52,17 @@ inputs:
   type: File
   inputBinding:
     prefix: --concfile
+- id: temp
+  doc: Rescale energy parameters to a temperature of  temp C. Default is 37C.
+  type: string
+  inputBinding:
+    prefix: --temp
+- id: no_tetra
+  doc: Do not include special stabilizing energies for  certain tetra-loops. Mostly
+    for testing. (default=off)
+  type: boolean
+  inputBinding:
+    prefix: --noTetra
 - id: dangles
   doc: How to treat "dangling end" energies for  bases adjacent to helices in free
     ends and  multi-loops (default=`2')

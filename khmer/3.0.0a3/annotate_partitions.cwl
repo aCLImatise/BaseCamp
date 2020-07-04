@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: annotate_partitions.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/annotate_partitions.py.cwl
 inputs:
-- id: graph_base
-  doc: basename for input and output files
-  type: string
-  inputBinding:
-    position: 0
-- id: input_sequence_filename
-  doc: input FAST[AQ] sequences to annotate.
-  type: string
-  inputBinding:
-    position: 1
 - id: info
   doc: print citation information
   type: boolean
@@ -26,6 +16,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --force
+- id: graph_base
+  doc: basename for input and output files
+  type: string
+  inputBinding:
+    position: 0
+- id: input_sequence_filename
+  doc: input FAST[AQ] sequences to annotate.
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

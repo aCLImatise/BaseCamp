@@ -1,26 +1,6 @@
 class: CommandLineTool
-id: gat_run.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gat_run.py.cwl
 inputs:
-- id: gat_run
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: genomic
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
-- id: annotation
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: tool
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
 - id: annotation_bed_file
   doc: filename with annotations [default=[]].
   type: string
@@ -185,7 +165,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --qvalue-lambda
-- id: q_value_pi0_method
+- id: q_value_pi_zero_method
   doc: 'fdr computation: method for estimating pi0 [default=smoother].'
   type: string
   inputBinding:

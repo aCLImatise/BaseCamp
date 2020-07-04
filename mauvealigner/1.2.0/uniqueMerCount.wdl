@@ -2,10 +2,13 @@ version 1.0
 
 task UniqueMerCount {
   input {
-    String? sortedSortedMerList
+    String sorted_mer_list
   }
   command <<<
     uniqueMerCount \
-      ~{sortedSortedMerList}
+      ~{sorted_mer_list}
   >>>
+  parameter_meta {
+    sorted_mer_list: ""
+  }
 }

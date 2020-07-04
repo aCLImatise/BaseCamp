@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: clean_bed.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clean_bed.py.cwl
 inputs:
 - id: input
   doc: The input (sorted) BED file.

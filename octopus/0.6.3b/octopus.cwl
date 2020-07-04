@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: octopus.cwl
+id: ../../../../home/ubuntu/BiocondaCli/octopus.cwl
 inputs:
 - id: config
   doc: A config file, used to populate command line options
@@ -29,7 +29,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --very-fast
-- id: w
+- id: arg_sets_directory
   doc: '[ --working-directory ] arg        Sets the working directory'
   type: boolean
   inputBinding:
@@ -41,13 +41,13 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --threads
-- id: x
+- id: arg_mb_maximum
   doc: '[ --max-reference-cache-footprint ] arg (=500MB) Maximum memory footprint
     for cached  reference sequence'
   type: boolean
   inputBinding:
     prefix: -X
-- id: b
+- id: arg_gb_none
   doc: '[ --target-read-buffer-footprint ] arg (=6GB) None binding request to limit
     the  memory footprint of buffered read data'
   type: boolean
@@ -69,20 +69,20 @@ inputs:
   type: string
   inputBinding:
     prefix: --temp-directory-prefix
-- id: r
+- id: arg_fasta_format
   doc: '[ --reference ] arg                FASTA format reference genome file to  be
     analysed. Target regions will be  extracted from the reference index if  not provded
     explicitly'
   type: boolean
   inputBinding:
     prefix: -R
-- id: i
+- id: arg_spaceseparated_list_analysed
   doc: '[ --reads ] arg                    Space-separated list of BAM/CRAM files  to
     be analysed. May be specified  multiple times'
   type: boolean
   inputBinding:
     prefix: -I
-- id: i
+- id: arg_files_containing
   doc: '[ --reads-file ] arg               Files containing lists of BAM/CRAM  files,
     one per line, to be analysed'
   type: boolean
@@ -94,37 +94,37 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --one-based-indexing
-- id: t
+- id: arg_list_regions
   doc: '[ --regions ] arg                  Space-separated list of regions  (chrom:begin-end)
     to be analysed. May  be specified multiple times'
   type: boolean
   inputBinding:
     prefix: -T
-- id: t
+- id: arg_file_containing
   doc: '[ --regions-file ] arg             File containing a list of regions  (chrom:begin-end),
     one per line, to be  analysed'
   type: boolean
   inputBinding:
     prefix: -t
-- id: k
+- id: arg_spaceseparated_list_regions
   doc: '[ --skip-regions ] arg             Space-separated list of regions  (chrom:begin-end)
     to skip May be  specified multiple times'
   type: boolean
   inputBinding:
     prefix: -K
-- id: k
+- id: arg_file_regions
   doc: '[ --skip-regions-file ] arg        File of regions (chrom:begin-end), one  per
     line, to skip'
   type: boolean
   inputBinding:
     prefix: -k
-- id: s
+- id: arg_spaceseparated_sample
   doc: '[ --samples ] arg                  Space-separated list of sample names to
     analyse'
   type: boolean
   inputBinding:
     prefix: -S
-- id: s
+- id: arg_file_analyse
   doc: '[ --samples-file ] arg             File of sample names to analyse, one  per
     line, which must be a subset of the samples that appear in the read files'
   type: boolean
@@ -140,7 +140,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --pedigree
-- id: o
+- id: arg_file_where
   doc: '[ --output ] arg                   File to where output is written. If  unspecified,
     calls are written to  stdout'
   type: boolean
@@ -280,7 +280,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --downsample-target
-- id: g
+- id: arg_generation_from
   doc: '[ --raw-cigar-candidate-generator ] arg (=1) Enable candidate generation from
     raw  read alignments (CIGAR strings)'
   type: boolean
@@ -292,13 +292,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --repeat-candidate-generator
-- id: a
+- id: arg_using_local
   doc: '[ --assembly-candidate-generator ] arg (=1) Enable candidate generation using
     local re-assembly'
   type: boolean
   inputBinding:
     prefix: -a
-- id: c
+- id: arg_variant_file
   doc: '[ --source-candidates ] arg        Variant file paths containing known  variants.
     These variants will  automatically become candidates'
   type: boolean
@@ -398,18 +398,18 @@ inputs:
   type: string
   inputBinding:
     prefix: --protect-reference-haplotype
-- id: c
+- id: arg_population_use
   doc: '[ --caller ] arg (=population)     Which of the octopus callers to use'
   type: boolean
   inputBinding:
     prefix: -C
-- id: p
+- id: arg_contigs_unspecified
   doc: '[ --organism-ploidy ] arg (=2)     All contigs with unspecified ploidies  are
     assumed the organism ploidy'
   type: boolean
   inputBinding:
     prefix: -P
-- id: p
+- id: arg_y_chry
   doc: '[ --contig-ploidies ] arg (=Y=1 chrY=1 MT=1 chrM=1) Space-separated list of
     contig  (contig=ploidy) or sample contig  (sample:contig=ploidy) ploidies'
   type: boolean
@@ -444,7 +444,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --min-refcall-posterior
-- id: z
+- id: arg_germline_snp
   doc: '[ --snp-heterozygosity ] arg (=0.001) Germline SNP heterozygosity for the  given
     samples'
   type: boolean
@@ -456,7 +456,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --snp-heterozygosity-stdev
-- id: y
+- id: arg_germline_indel
   doc: '[ --indel-heterozygosity ] arg (=0.0001) Germline indel heterozygosity for
     the  given samples'
   type: boolean
@@ -509,7 +509,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --max-vb-seeds
-- id: l
+- id: arg_normal_level
   doc: '[ --phasing-level ] arg (=normal)  Level of phasing - longer range phasing
     can improve calling accuracy at the  cost of runtime speed. Possible values  are:
     minimal, conservative, moderate,  normal, aggressive'
@@ -522,7 +522,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --min-phase-score
-- id: f
+- id: arg_turn_call
   doc: '[ --call-filtering ] arg (=1)      Turn variant call filtering on or off'
   type: boolean
   inputBinding:

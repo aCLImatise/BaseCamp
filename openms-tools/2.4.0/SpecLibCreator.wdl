@@ -2,26 +2,37 @@ version 1.0
 
 task SpecLibCreator {
   input {
-    File infoInfo
-    String itemItemSeperator
-    Boolean itemItemEnclosed
-    File specSpec
-    File outOut
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    File? info
+    String? item_seperator
+    Boolean? item_enclosed
+    File? spec
+    File? out
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     SpecLibCreator \
-      ~{if defined(infoInfo) then ("-info " +  '"' + infoInfo + '"') else ""} \
-      ~{if defined(itemItemSeperator) then ("-itemseperator " +  '"' + itemItemSeperator + '"') else ""} \
-      ~{if defined(itemItemEnclosed) then ("-itemenclosed " +  '"' + itemItemEnclosed + '"') else ""} \
-      ~{if defined(specSpec) then ("-spec " +  '"' + specSpec + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(info) then ("-info " +  '"' + info + '"') else ""} \
+      ~{if defined(item_seperator) then ("-itemseperator " +  '"' + item_seperator + '"') else ""} \
+      ~{if defined(item_enclosed) then ("-itemenclosed " +  '"' + item_enclosed + '"') else ""} \
+      ~{if defined(spec) then ("-spec " +  '"' + spec + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    info: "*          Holds id, peptide, retention time etc. (valid formats: 'csv')"
+    item_seperator: "Separator between items. e.g. , (default: ',')"
+    item_enclosed: "'true' or 'false' if true every item is enclosed e.g. '$peptide$,$run$... (default: 'false' valid: 'true', 'false')"
+    spec: "*          Spectra (valid formats: 'mzData', 'mzXML')"
+    out: "*           Output MSP formatted spectra library (valid formats: 'msp')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

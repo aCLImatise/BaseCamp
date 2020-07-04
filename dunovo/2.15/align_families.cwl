@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: align_families.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/align_families.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

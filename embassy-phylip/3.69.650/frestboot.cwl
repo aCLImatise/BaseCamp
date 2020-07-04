@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: frestboot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/frestboot.cwl
 inputs:
 - id: weights
   doc: properties Weights file

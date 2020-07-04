@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: baseml.cwl
+id: ../../../../home/ubuntu/BiocondaCli/baseml.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

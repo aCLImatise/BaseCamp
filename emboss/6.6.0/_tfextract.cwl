@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: _tfextract.cwl
+id: ../../../../home/ubuntu/BiocondaCli/_tfextract.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

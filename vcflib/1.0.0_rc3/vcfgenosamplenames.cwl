@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfgenosamplenames.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfgenosamplenames.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

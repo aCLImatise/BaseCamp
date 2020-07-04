@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: poa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/poa.cwl
 inputs:
-- id: input_file_name
-  doc: The input cmp.h5 or BAM alignment file
-  type: string
-  inputBinding:
-    position: 0
 - id: emit_tool_contract
   doc: 'Emit Tool Contract to stdout (default: False)'
   type: boolean
@@ -201,7 +196,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --reportEffectiveCoverage
-- id: auto_disable_hdf5chunk_cache
+- id: auto_disable_hdf_five_chunk_cache
   doc: 'Disable the HDF5 chunk cache when the number of datasets in the cmp.h5 exceeds
     the given threshold (default: 500)'
   type: string
@@ -238,6 +233,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --skipUnrecognizedContigs
+- id: input_file_name
+  doc: The input cmp.h5 or BAM alignment file
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: swissprot_to_table.rb.cwl
+id: ../../../../home/ubuntu/BiocondaCli/swissprot_to_table.rb.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: hicCorrectMatrix_diagnostic_plot.cwl
+id: ../../../../home/ubuntu/BiocondaCli/hicCorrectMatrix_diagnostic_plot.cwl
 inputs:
 - id: matrix
   doc: 'Name of the Hi-C matrix to correct in .h5 format. (default: None)'

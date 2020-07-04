@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: amap.cwl
+id: ../../../../home/ubuntu/BiocondaCli/amap.cwl
 inputs:
 - id: clustalw
   doc: use CLUSTALW output format instead of MFA
@@ -102,6 +102,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -gui
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

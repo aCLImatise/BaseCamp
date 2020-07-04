@@ -2,18 +2,22 @@ version 1.0
 
 task GappaToolsCitation {
   input {
-    String formatFormat
-    Boolean allAll
-    Boolean listList
-    String? optionsOptions
-    String? keysKeys
+    String? format
+    Boolean? all
+    Boolean? list
+    String? keys_dot_dot_dot
   }
   command <<<
     gappa tools citation \
-      ~{optionsOptions} \
-      ~{if defined(formatFormat) then ("--format " +  '"' + formatFormat + '"') else ""} \
-      ~{true="--all" false="" allAll} \
-      ~{true="--list" false="" listList} \
-      ~{keysKeys}
+      ~{keys_dot_dot_dot} \
+      ~{if defined(format) then ("--format " +  '"' + format + '"') else ""} \
+      ~{true="--all" false="" all} \
+      ~{true="--list" false="" list}
   >>>
+  parameter_meta {
+    format: ":{bibtex,markdown,both}=bibtex Output format for citations."
+    all: "Print all relevant citations used by commands in gappa."
+    list: "List all available citation keys."
+    keys_dot_dot_dot: ""
+  }
 }

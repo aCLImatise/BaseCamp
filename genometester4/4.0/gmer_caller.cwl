@@ -1,18 +1,8 @@
 class: CommandLineTool
-id: gmer_caller.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gmer_caller.cwl
 inputs:
-- id: arguments
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: counts_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: training_size
-  doc: markers for training (default 100000)
+  doc: '- Use NUM markers for training (default 100000)'
   type: string
   inputBinding:
     prefix: --training_size
@@ -71,11 +61,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --coverage
-- id: d
+- id: increase_debug_level
   doc: '- increase debug level'
   type: boolean
   inputBinding:
     prefix: -D
+- id: arguments
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: counts_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

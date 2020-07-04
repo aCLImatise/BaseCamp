@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: DigestorMotif.cwl
+id: ../../../../home/ubuntu/BiocondaCli/DigestorMotif.cwl
 inputs:
 - id: in
   doc: "*                 FASTA input file (valid formats: 'fasta')"
@@ -35,11 +35,11 @@ inputs:
 - id: enzyme
   doc: "The enzyme used for peptide digestion. (default: 'Trypsin' valid: 'Arg-C',\
     \ 'V8-E', 'staphylococcal protease/D', 'V8-DE', 'Asp-N_ambic', 'Formic_acid',\
-    \ 'TrypChymo', 'Trypsin/P',  'Lys-C/P', 'Chymotrypsin/P', 'leukocyte elastase',\
+    \ 'TrypChymo', 'Trypsin/P', 'Lys-C/P', 'Chymotrypsin/P', 'leukocyte elastase',\
     \ 'Chymotrypsin', 'Lys-N', 'Asp-N', 'proline-endopeptidase/HKR', 'Glu-C+P', 'Trypsin',\
-    \ 'Asp-N/B', 'unspecific cleavage', 'Alpha-lyt ic protease', '2-iodobenzoate',\
+    \ 'Asp-N/B', 'unspecific cleavage', 'Alpha-lytic protease', '2-iodobenzoate',\
     \ 'iodosobenzoate', 'CNBr', 'PepsinA', 'proline endopeptidase', 'glutamyl endopeptidase',\
-    \ 'PepsinA + P', 'cyanogen-bromide', 'Clostripain/P', 'elastas e-trypsin-chymotrypsin',\
+    \ 'PepsinA + P', 'cyanogen-bromide', 'Clostripain/P', 'elastase-trypsin-chymotrypsin',\
     \ 'no cleavage', 'Arg-C/P', 'Lys-C')"
   type: string
   inputBinding:

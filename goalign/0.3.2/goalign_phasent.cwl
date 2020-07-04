@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: goalign_phasent.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goalign_phasent.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: aa_output
   doc: Output translated sequences FASTA file (default "none")
   type: string
@@ -149,6 +144,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

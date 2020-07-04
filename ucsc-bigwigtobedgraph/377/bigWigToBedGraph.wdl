@@ -2,20 +2,28 @@ version 1.0
 
 task BigWigToBedGraph {
   input {
-    String chromChrom
-    String startStart
-    String endEnd
-    Boolean udcUdcDir
-    String? inInBigwig
-    String? outOutBedGraph
+    String? chrom
+    String? start
+    String? end
+    Boolean? udc_dir
+    String in_dot_bigwig
+    String out_dot_bed_graph
   }
   command <<<
     bigWigToBedGraph \
-      ~{inInBigwig} \
-      ~{if defined(chromChrom) then ("-chrom " +  '"' + chromChrom + '"') else ""} \
-      ~{if defined(startStart) then ("-start " +  '"' + startStart + '"') else ""} \
-      ~{if defined(endEnd) then ("-end " +  '"' + endEnd + '"') else ""} \
-      ~{true="-udcDir" false="" udcUdcDir} \
-      ~{outOutBedGraph}
+      ~{in_dot_bigwig} \
+      ~{out_dot_bed_graph} \
+      ~{if defined(chrom) then ("-chrom " +  '"' + chrom + '"') else ""} \
+      ~{if defined(start) then ("-start " +  '"' + start + '"') else ""} \
+      ~{if defined(end) then ("-end " +  '"' + end + '"') else ""} \
+      ~{true="-udcDir" false="" udc_dir}
   >>>
+  parameter_meta {
+    chrom: "- if set restrict output to given chromosome"
+    start: "- if set, restrict output to only that over start"
+    end: "- if set, restict output to only that under end"
+    udc_dir: "=/dir/to/cache - place to put cache for remote bigBed/bigWigs"
+    in_dot_bigwig: ""
+    out_dot_bed_graph: ""
+  }
 }

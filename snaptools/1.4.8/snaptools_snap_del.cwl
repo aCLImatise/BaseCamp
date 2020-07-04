@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: snaptools_snap_del.cwl
+id: ../../../../home/ubuntu/BiocondaCli/snaptools_snap_del.cwl
 inputs:
 - id: snap_file
   doc: 'snap file. (default: None)'

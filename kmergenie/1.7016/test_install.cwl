@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: test_install.bak.cwl
+id: ../../../../home/ubuntu/BiocondaCli/test_install.bak.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

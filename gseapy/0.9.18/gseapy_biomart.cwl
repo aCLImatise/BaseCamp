@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: gseapy_biomart.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gseapy_biomart.cwl
 inputs:
-- id: f
+- id: value__filter
   doc: VALUE, --filter NAME VALUE Which filter to use. Input filter name, and value.
     If multi-value required, separate each value by comma. If value is a txt file,
     then one ID per row, exclude header.
@@ -38,6 +38,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: value
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

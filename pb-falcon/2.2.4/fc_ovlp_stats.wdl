@@ -2,22 +2,31 @@ version 1.0
 
 task FcOvlpStats {
   input {
-    String nNCore
-    String fofFofN
-    Int minMinLen
-    String dbDbFn
-    Boolean streamStream
-    Boolean debugDebug
-    Boolean silentSilent
+    String? n_core
+    String? fof_n
+    Int? min_len
+    String? db_fn
+    Boolean? stream
+    Boolean? debug
+    Boolean? silent
   }
   command <<<
     fc_ovlp_stats \
-      ~{if defined(nNCore) then ("--n-core " +  '"' + nNCore + '"') else ""} \
-      ~{if defined(fofFofN) then ("--fofn " +  '"' + fofFofN + '"') else ""} \
-      ~{if defined(minMinLen) then ("--min-len " +  '"' + minMinLen + '"') else ""} \
-      ~{if defined(dbDbFn) then ("--db-fn " +  '"' + dbDbFn + '"') else ""} \
-      ~{true="--stream" false="" streamStream} \
-      ~{true="--debug" false="" debugDebug} \
-      ~{true="--silent" false="" silentSilent}
+      ~{if defined(n_core) then ("--n-core " +  '"' + n_core + '"') else ""} \
+      ~{if defined(fof_n) then ("--fofn " +  '"' + fof_n + '"') else ""} \
+      ~{if defined(min_len) then ("--min-len " +  '"' + min_len + '"') else ""} \
+      ~{if defined(db_fn) then ("--db-fn " +  '"' + db_fn + '"') else ""} \
+      ~{true="--stream" false="" stream} \
+      ~{true="--debug" false="" debug} \
+      ~{true="--silent" false="" silent}
   >>>
+  parameter_meta {
+    n_core: "number of processes used for generating consensus; 0 for main process only (default: 4)"
+    fof_n: "file contains the path of all LAS file to be processed in parallel (default: None)"
+    min_len: "min length of the reads (default: 2500)"
+    db_fn: "DAZZLER DB of preads (default: ./1-preads_ovl/preads.db)"
+    stream: "stream from LA4Falcon, instead of slurping all at once; can save memory for large data (default: False)"
+    debug: "single-threaded, plus other aids to debugging (default: False)"
+    silent: "suppress cmd reporting on stderr (default: False)"
+  }
 }

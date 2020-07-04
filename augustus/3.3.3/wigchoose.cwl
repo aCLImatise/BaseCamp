@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: wigchoose.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wigchoose.pl.cwl
 inputs:
 - id: min_cov
   doc: 'minimal coverage for each position of the interval (default: 1)'
@@ -16,6 +16,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --maxgap
+- id: cat
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: in_do_twig
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

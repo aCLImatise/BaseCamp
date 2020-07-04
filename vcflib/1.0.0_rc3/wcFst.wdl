@@ -2,10 +2,13 @@ version 1.0
 
 task WcFst {
   input {
-    String yourYour
+    String? target
   }
   command <<<
     wcFst \
-      ~{if defined(yourYour) then ("-     Your " +  '"' + yourYour + '"') else ""}
+      ~{if defined(target) then ("--target " +  '"' + target + '"') else ""}
   >>>
+  parameter_meta {
+    target: ""
+  }
 }

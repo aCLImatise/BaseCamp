@@ -2,28 +2,40 @@ version 1.0
 
 task ExternalCalibration {
   input {
-    File inIn
-    File outOut
-    Boolean offsetOffset
-    Boolean slopeSlope
-    Boolean powerPower
-    String msMsLevel
-    File iniIni
-    String threadsThreads
-    File writeWriteIni
-    Boolean helphelpHelphelp
+    File? in
+    File? out
+    Boolean? offset
+    Boolean? slope
+    Boolean? power
+    Array[String] ms_level
+    File? ini
+    String? threads
+    File? write_ini
+    Boolean? helphelp
   }
   command <<<
     ExternalCalibration \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{true="-offset" false="" offsetOffset} \
-      ~{true="-slope" false="" slopeSlope} \
-      ~{true="-power" false="" powerPower} \
-      ~{if defined(msMsLevel) then ("-ms_level " +  '"' + msMsLevel + '"') else ""} \
-      ~{if defined(iniIni) then ("-ini " +  '"' + iniIni + '"') else ""} \
-      ~{if defined(threadsThreads) then ("-threads " +  '"' + threadsThreads + '"') else ""} \
-      ~{if defined(writeWriteIni) then ("-write_ini " +  '"' + writeWriteIni + '"') else ""} \
-      ~{true="--helphelp" false="" helphelpHelphelp}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{true="-offset" false="" offset} \
+      ~{true="-slope" false="" slope} \
+      ~{true="-power" false="" power} \
+      ~{if defined(ms_level) then ("-ms_level " +  '"' + ms_level + '"') else ""} \
+      ~{if defined(ini) then ("-ini " +  '"' + ini + '"') else ""} \
+      ~{if defined(threads) then ("-threads " +  '"' + threads + '"') else ""} \
+      ~{if defined(write_ini) then ("-write_ini " +  '"' + write_ini + '"') else ""} \
+      ~{true="--helphelp" false="" helphelp}
   >>>
+  parameter_meta {
+    in: "*        Input peak file (valid formats: 'mzML')"
+    out: "*       Output file  (valid formats: 'mzML')"
+    offset: "Mass offset in ppm (default: '0.0')"
+    slope: "Slope (dependent on m/z) (default: '0.0')"
+    power: "Power (dependent on m/z) (default: '0.0')"
+    ms_level: "MS levels to apply the transformation onto. Scans with other levels remain unchanged. (default: '[1 2 3]')"
+    ini: "Use the given TOPP INI file"
+    threads: "Sets the number of threads allowed to be used by the TOPP tool (default: '1')"
+    write_ini: "Writes the default configuration file"
+    helphelp: "Shows all options (including advanced)"
+  }
 }

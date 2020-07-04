@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MAnormFast.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MAnormFast.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

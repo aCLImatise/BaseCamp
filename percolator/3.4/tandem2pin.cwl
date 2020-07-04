@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: tandem2pin.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tandem2pin.cwl
 inputs:
-- id: target_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: decoy_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: enzyme
   doc: Type of enzyme  "no_enzyme","elastase","pepsin","proteinasek","therm olysin","chymotrypsin","lys-n","lys-c","arg-c","asp-
     n","glu-c","trypsin" default="trypsin"
@@ -23,6 +13,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --max-mass
+- id: o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
+- id: target_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: decoy_file
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

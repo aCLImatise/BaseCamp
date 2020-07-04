@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dbifasta.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dbifasta.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

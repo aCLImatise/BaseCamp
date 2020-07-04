@@ -1,57 +1,57 @@
 class: CommandLineTool
-id: fseq.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fseq.cwl
 inputs:
-- id: b
+- id: background_directory_defaultnone
   doc: background directory (default=none)
   type: string
   inputBinding:
     prefix: -b
-- id: c
+- id: genomic_count_sequence
   doc: genomic count of sequence reads (defualt = calculated)
   type: string
   inputBinding:
     prefix: -c
-- id: d
+- id: input_directory_defaultcurrent
   doc: input directory (default=current directory)
   type: string
   inputBinding:
     prefix: -d
-- id: f
+- id: fragment_size_defaultestimated
   doc: fragment size (default=estimated from data)
   type: string
   inputBinding:
     prefix: -f
-- id: l
+- id: feature_length_default
   doc: feature length (default=600)
   type: string
   inputBinding:
     prefix: -l
-- id: o
+- id: output_directory_defaultcurrent
   doc: output directory (default=current directory)
   type: string
   inputBinding:
     prefix: -o
 - id: of
-  doc: <wig | bed | npf>   output format (default wig)
-  type: boolean
+  doc: output format (default wig)
+  type: string
   inputBinding:
     prefix: -of
-- id: p
+- id: ploidyinput_directory_defaultnone
   doc: ploidy/input directory (default=none)
   type: string
   inputBinding:
     prefix: -p
-- id: s
+- id: wiggle_step_default
   doc: wiggle track step (default=1)
   type: string
   inputBinding:
     prefix: -s
-- id: t
+- id: threshold_standard_deviations
   doc: threshold (standard deviations) (default=4.0)
   type: string
   inputBinding:
     prefix: -t
-- id: v
+- id: verbose_output
   doc: verbose output
   type: boolean
   inputBinding:

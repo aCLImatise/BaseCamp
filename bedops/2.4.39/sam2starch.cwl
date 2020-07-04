@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sam2starch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sam2starch.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

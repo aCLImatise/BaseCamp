@@ -2,14 +2,16 @@ version 1.0
 
 task TabToVcf {
   input {
-    String idId
-    String refRef
-    String? optionsOptions
+    String? id
+    String? ref
   }
   command <<<
     tab-to-vcf \
-      ~{optionsOptions} \
-      ~{if defined(idId) then ("--id " +  '"' + idId + '"') else ""} \
-      ~{if defined(refRef) then ("--ref " +  '"' + refRef + '"') else ""}
+      ~{if defined(id) then ("--id " +  '"' + id + '"') else ""} \
+      ~{if defined(ref) then ("--ref " +  '"' + ref + '"') else ""}
   >>>
+  parameter_meta {
+    id: "The column ID."
+    ref: "The reference sequence (optional)."
+  }
 }

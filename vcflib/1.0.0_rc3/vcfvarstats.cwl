@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: vcfvarstats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/vcfvarstats.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

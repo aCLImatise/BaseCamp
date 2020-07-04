@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: centrifuge_simulate_reads.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/centrifuge_simulate_reads.py.cwl
 inputs:
-- id: index_fname
-  doc: Centrifuge index
-  type: string
-  inputBinding:
-    position: 0
-- id: base_fname
-  doc: output base filename
-  type: string
-  inputBinding:
-    position: 1
 - id: rna
   doc: 'RNA-seq reads (default: DNA-seq reads)'
   type: boolean
@@ -66,6 +56,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: index_fname
+  doc: Centrifuge index
+  type: string
+  inputBinding:
+    position: 0
+- id: base_fname
+  doc: output base filename
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

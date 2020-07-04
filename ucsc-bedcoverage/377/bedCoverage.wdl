@@ -2,14 +2,19 @@ version 1.0
 
 task BedCoverage {
   input {
-    String restrictRestrict
-    String? databaseDatabase
-    String? bedBedFile
+    String? restrict
+    String database
+    String bed_file
   }
   command <<<
     bedCoverage \
-      ~{databaseDatabase} \
-      ~{if defined(restrictRestrict) then ("-restrict " +  '"' + restrictRestrict + '"') else ""} \
-      ~{bedBedFile}
+      ~{database} \
+      ~{bed_file} \
+      ~{if defined(restrict) then ("-restrict " +  '"' + restrict + '"') else ""}
   >>>
+  parameter_meta {
+    restrict: "Restrict to parts in restrict.bed"
+    database: ""
+    bed_file: ""
+  }
 }

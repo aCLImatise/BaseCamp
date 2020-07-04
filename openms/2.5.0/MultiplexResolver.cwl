@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MultiplexResolver.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MultiplexResolver.cwl
 inputs:
 - id: in
   doc: "*            Peptide multiplets with assigned sequence information (valid\
@@ -44,21 +44,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Parameters for the algorithm.
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
-- id: labels
-  doc: Isotopic labels that can be specified in section 'algorithm:labels'.
-  type: boolean
-  inputBinding:
-    prefix: '- labels'
-- id: http
-  doc: ://www.openms.de/documentation/UTILS_MultiplexResolver.html
-  type: boolean
-  inputBinding:
-    prefix: '- http'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -2,26 +2,34 @@ version 1.0
 
 task Mapsifter {
   input {
-    Boolean outputOutput
-    Boolean verboseVerbose
-    Boolean excludeExclude
-    Boolean upperUpper
-    Boolean lowerLower
-    Boolean targetTarget
-    Boolean aboutAbout
-    String? optionsOptions
-    String? bedBedFormatFile
+    Boolean? name_output_file
+    Boolean? verbose
+    Boolean? exclude
+    Boolean? upper
+    Boolean? lower
+    Boolean? target
+    Boolean? about
+    String bed_format_file
   }
   command <<<
     mapsifter \
-      ~{optionsOptions} \
-      ~{true="-output" false="" outputOutput} \
-      ~{true="-verbose" false="" verboseVerbose} \
-      ~{true="-exclude" false="" excludeExclude} \
-      ~{true="-upper" false="" upperUpper} \
-      ~{true="-lower" false="" lowerLower} \
-      ~{true="-target" false="" targetTarget} \
-      ~{true="-about" false="" aboutAbout} \
-      ~{bedBedFormatFile}
+      ~{bed_format_file} \
+      ~{true="-output" false="" name_output_file} \
+      ~{true="-verbose" false="" verbose} \
+      ~{true="-exclude" false="" exclude} \
+      ~{true="-upper" false="" upper} \
+      ~{true="-lower" false="" lower} \
+      ~{true="-target" false="" target} \
+      ~{true="-about" false="" about}
   >>>
+  parameter_meta {
+    name_output_file: "Name of output file (default: stdout) "
+    verbose: "print more run info "
+    exclude: "exclude contained "
+    upper: "upper bound on scores "
+    lower: "lower bound on scores "
+    target: "target regions file "
+    about: "print about message "
+    bed_format_file: ""
+  }
 }

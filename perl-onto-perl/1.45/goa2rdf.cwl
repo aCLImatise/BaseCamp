@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: goa2rdf.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/goa2rdf.pl.cwl
 inputs:
-- id: f
+- id: goa_input_file
   doc: GOA input file
   type: boolean
   inputBinding:

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: sketchy_rs_evaluate.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sketchy_rs_evaluate.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: features
   doc: genotype feature index
   type: File

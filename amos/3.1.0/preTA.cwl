@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: preTA.cwl
+id: ../../../../home/ubuntu/BiocondaCli/preTA.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

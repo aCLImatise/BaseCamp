@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: taco_refcomp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/taco_refcomp.cwl
 inputs:
 - id: output_dir
   doc: 'Directory for reference comparison output (default: taco_compare)'
@@ -41,6 +41,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --test-gtf
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
 outputs: []
 cwlVersion: v1.1
 baseCommand:

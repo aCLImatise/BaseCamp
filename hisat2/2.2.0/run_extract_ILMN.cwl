@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: run_extract_ILMN.sh.cwl
+id: ../../../../home/ubuntu/BiocondaCli/run_extract_ILMN.sh.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

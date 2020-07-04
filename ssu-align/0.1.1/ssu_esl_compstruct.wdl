@@ -2,14 +2,22 @@ version 1.0
 
 task SsuEslCompstruct {
   input {
-    Boolean mM
-    Boolean pP
-    Boolean quietQuiet
+    Boolean? use_mathewsrelaxed_criterion
+    Boolean? count_pseudoknotted_pairs
+    Boolean? quiet
+    Boolean? options
   }
   command <<<
     ssu-esl-compstruct \
-      ~{true="-m" false="" mM} \
-      ~{true="-p" false="" pP} \
-      ~{true="--quiet" false="" quietQuiet}
+      ~{true="-m" false="" use_mathewsrelaxed_criterion} \
+      ~{true="-p" false="" count_pseudoknotted_pairs} \
+      ~{true="--quiet" false="" quiet} \
+      ~{true="-options" false="" options}
   >>>
+  parameter_meta {
+    use_mathewsrelaxed_criterion: ": use Mathews'relaxed criterion for correctness; allow +/-1 slip"
+    count_pseudoknotted_pairs: ": count pseudoknotted base pairs"
+    quiet: ": suppress verbose header"
+    options: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_mcg_classifier.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_mcg_classifier.cwl
 inputs:
 - id: profile_db
   doc: Anvi'o profile database

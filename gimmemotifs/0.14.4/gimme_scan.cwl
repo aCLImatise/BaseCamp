@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: gimme_scan.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gimme_scan.cwl
 inputs:
-- id: input_file
-  doc: inputfile (FASTA, BED, regions)
-  type: string
-  inputBinding:
-    position: 0
 - id: genome
   doc: Genome
   type: string
@@ -16,17 +11,17 @@ inputs:
   type: string
   inputBinding:
     prefix: --pfmfile
-- id: f
+- id: _fpr_fpr
   doc: ', --fpr            FPR for motif scanning (default 0.01)'
   type: boolean
   inputBinding:
     prefix: -f
-- id: b
+- id: _bgfile_background
   doc: ', --bgfile         background file for threshold'
   type: boolean
   inputBinding:
     prefix: -B
-- id: c
+- id: _cutoff_motif
   doc: ', --cutoff         motif score cutoff or file with cutoffs'
   type: boolean
   inputBinding:
@@ -71,6 +66,16 @@ inputs:
   type: long
   inputBinding:
     prefix: --nthreads
+- id: h
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -h
+- id: input_file
+  doc: inputfile (FASTA, BED, regions)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

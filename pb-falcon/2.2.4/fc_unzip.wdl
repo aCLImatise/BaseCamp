@@ -2,14 +2,19 @@ version 1.0
 
 task FcUnzip.py {
   input {
-    String targetTarget
-    String loggingLoggingConfigFn
-    String? configConfigFn
+    String? target
+    String? logging_config_fn
+    String config_fn
   }
   command <<<
     fc_unzip.py \
-      ~{configConfigFn} \
-      ~{if defined(targetTarget) then ("--target " +  '"' + targetTarget + '"') else ""} \
-      ~{if defined(loggingLoggingConfigFn) then ("--logging-config-fn " +  '"' + loggingLoggingConfigFn + '"') else ""}
+      ~{config_fn} \
+      ~{if defined(target) then ("--target " +  '"' + target + '"') else ""} \
+      ~{if defined(logging_config_fn) then ("--logging-config-fn " +  '"' + logging_config_fn + '"') else ""}
   >>>
+  parameter_meta {
+    target: "target pipeline: clr=regular; ccs=only ccs data (default: clr)"
+    logging_config_fn: "Optional standard Python logging config (default: None)"
+    config_fn: "Configuration file. (TODO: This needs its own help section, or at least a link to a webpage.)"
+  }
 }

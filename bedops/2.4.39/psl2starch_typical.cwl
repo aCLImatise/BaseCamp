@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: psl2starch_typical.cwl
+id: ../../../../home/ubuntu/BiocondaCli/psl2starch_typical.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

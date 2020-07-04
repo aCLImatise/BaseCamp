@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: enaGroupGet.cwl
+id: ../../../../home/ubuntu/BiocondaCli/enaGroupGet.cwl
 inputs:
-- id: accession
-  doc: Study or sample accession or NCBI tax ID to fetch data for
-  type: string
-  inputBinding:
-    position: 0
 - id: group
   doc: Data group to be downloaded for this study/sample/taxon (default is read)
   type: string
@@ -66,6 +61,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --subtree
+- id: accession
+  doc: Study or sample accession or NCBI tax ID to fetch data for
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: maf_gc_content.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/maf_gc_content.py.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

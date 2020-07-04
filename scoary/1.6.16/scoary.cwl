@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: scoary.cwl
+id: ../../../../home/ubuntu/BiocondaCli/scoary.cwl
 inputs:
 - id: traits
   doc: Input trait table (comma-separated-values). Trait presence is indicated by
@@ -60,7 +60,7 @@ inputs:
   type: string[]
   inputBinding:
     prefix: --p_value_cutoff
-- id: c
+- id: apply_indicated_measure
   doc: '[{I,B,BH,PW,EPW,P} [{I,B,BH,PW,EPW,P} ...]], --correction [{I,B,BH,PW,EPW,P}
     [{I,B,BH,PW,EPW,P} ...]] Apply the indicated filtration measure. Allowed values
     are I, B, BH, PW, EPW, P. I=Individual (naive) p-value. B=Bonferroni adjusted

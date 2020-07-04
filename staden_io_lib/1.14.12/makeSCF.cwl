@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: makeSCF.cwl
+id: ../../../../home/ubuntu/BiocondaCli/makeSCF.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

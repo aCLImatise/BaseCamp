@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: stride_fmwalk.cwl
+id: ../../../../home/ubuntu/BiocondaCli/stride_fmwalk.cwl
 inputs:
 - id: verbose
   doc: display verbose output
@@ -58,6 +58,21 @@ inputs:
   type: string
   inputBinding:
     prefix: --max-overlap
+- id: stride
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: fm_index_walk
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: option
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,32 +1,28 @@
 class: CommandLineTool
-id: tgt_shift_boundaries.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tgt_shift_boundaries.py_file.cwl
 inputs:
-- id: shift
-  doc: offset by which to shift the boundaries (positive or negative)
+- id: e
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -e
+- id: f
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -f
+- id: o
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -o
+- id: tgt_shift_boundaries_do_tpy
+  doc: ''
   type: string
   inputBinding:
     position: 0
-- id: file
-  doc: the textgrid file
-  type: File
-  inputBinding:
-    position: 1
-- id: encoding
-  doc: file encoding (default "utf-8")
-  type: string
-  inputBinding:
-    prefix: --encoding
-- id: format
-  doc: the output format (default "short")
-  type: string
-  inputBinding:
-    prefix: --format
-- id: outfile
-  doc: the output file (defaults to inputfile.shifted.Extension)
-  type: string
-  inputBinding:
-    prefix: --outfile
 outputs: []
 cwlVersion: v1.1
 baseCommand:
 - tgt-shift-boundaries.py
+- file

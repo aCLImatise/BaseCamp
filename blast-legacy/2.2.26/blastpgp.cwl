@@ -1,22 +1,22 @@
 class: CommandLineTool
-id: blastpgp.cwl
+id: ../../../../home/ubuntu/BiocondaCli/blastpgp.cwl
 inputs:
-- id: m
+- id: alignment_view_options
   doc: 'alignment view options:'
   type: boolean
   inputBinding:
     prefix: -m
-- id: t
+- id: use_composition_based
   doc: Use composition based score adjustment
   type: boolean
   inputBinding:
     prefix: -t
-- id: q
+- id: asn_scoremat_input
   doc: 'ASN.1 Scoremat input of checkpoint data:'
   type: boolean
   inputBinding:
     prefix: -q
-- id: u
+- id: asn_scoremat_output
   doc: 'ASN.1 Scoremat output of checkpoint data:'
   type: boolean
   inputBinding:

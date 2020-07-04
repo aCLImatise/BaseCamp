@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pynast.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pynast.cwl
 inputs:
 - id: template_fp
   doc: path to template alignment file [REQUIRED]

@@ -1,12 +1,12 @@
 class: CommandLineTool
-id: sequana_mapping.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sequana_mapping.cwl
 inputs:
-- id: file_1
+- id: file_one
   doc: R1 fastq file (zipped)
   type: File
   inputBinding:
     prefix: --file1
-- id: file_2
+- id: file_two
   doc: R2 fastq file (zipped)
   type: File
   inputBinding:
@@ -31,6 +31,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --use-sambamba
+- id: welcome
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: to
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
+- id: se_quan_a
+  doc: ''
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

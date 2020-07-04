@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: omero_user_info.cwl
+id: ../../../../home/ubuntu/BiocondaCli/omero_user_info.cwl
 inputs:
-- id: user
-  doc: ID or name of the user(s)
-  type: string
-  inputBinding:
-    position: 0
 - id: style
   doc: use alternative output style (default=sql)
   type: string
@@ -56,6 +51,11 @@ inputs:
   type: string[]
   inputBinding:
     prefix: --user-name
+- id: user
+  doc: ID or name of the user(s)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

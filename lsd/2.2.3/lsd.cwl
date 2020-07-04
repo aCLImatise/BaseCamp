@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: lsd.cwl
+id: ../../../../home/ubuntu/BiocondaCli/lsd.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: poppunk_sketch.cwl
+id: ../../../../home/ubuntu/BiocondaCli/poppunk_sketch.cwl
 inputs:
 - id: sketch
   doc: Create a database of sketches
@@ -56,6 +56,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --cpus
+- id: pp_sketch
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

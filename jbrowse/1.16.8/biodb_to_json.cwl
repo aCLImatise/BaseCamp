@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: biodb_to_json.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/biodb_to_json.pl.cwl
 inputs:
 - id: out
   doc: 'Directory where output should go. Default: data/'

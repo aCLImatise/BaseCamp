@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: delly.cwl
+id: ../../../../home/ubuntu/BiocondaCli/delly.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: bcftools_convert.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcftools_convert.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: input_file
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: exclude
   doc: exclude sites for which the expression is true
   type: string
@@ -62,9 +52,9 @@ inputs:
   inputBinding:
     prefix: --output
 - id: output_type
-  doc: '<b|u|z|v>    b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v:
-    uncompressed VCF [v]'
-  type: boolean
+  doc: 'b: compressed BCF, u: uncompressed BCF, z: compressed VCF, v: uncompressed
+    VCF [v]'
+  type: string
   inputBinding:
     prefix: --output-type
 - id: threads
@@ -72,7 +62,7 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
-- id: gensample2vcf
+- id: gen_sample_two_vcf
   doc: <...>   <prefix>|<gen-file>,<sample-file>
   type: boolean
   inputBinding:
@@ -102,7 +92,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --vcf-ids
-- id: gvcf2vcf
+- id: gvc_f_two_vcf
   doc: expand gVCF reference blocks
   type: boolean
   inputBinding:
@@ -112,7 +102,7 @@ inputs:
   type: File
   inputBinding:
     prefix: --fasta-ref
-- id: hapsample2vcf
+- id: hap_sample_two_vcf
   doc: <...>   <prefix>|<hap-file>,<sample-file>
   type: boolean
   inputBinding:
@@ -122,61 +112,26 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --hapsample
-- id: haploid_2_diploid
+- id: haploid_two_diploid
   doc: convert haploid genotypes to diploid homozygotes
   type: boolean
   inputBinding:
     prefix: --haploid2diploid
-- id: sex
-  doc: 'output sex column in the sample-file, input format is: Sample\t[MF]'
-  type: File
-  inputBinding:
-    prefix: --sex
-- id: vcf_ids
-  doc: output VCF IDs instead of CHROM:POS_REF_ALT
-  type: boolean
-  inputBinding:
-    prefix: --vcf-ids
-- id: hap_legend_sample_2vcf
+- id: hap_legend_sample_two_vcf
   doc: <...>  <prefix>|<hap-file>,<legend-file>,<sample-file>
   type: boolean
   inputBinding:
     prefix: --haplegendsample2vcf
-- id: haploid_2_diploid
-  doc: convert haploid genotypes to diploid homozygotes
-  type: boolean
-  inputBinding:
-    prefix: --haploid2diploid
-- id: sex
-  doc: 'output sex column in the sample-file, input format is: Sample\t[MF]'
-  type: File
-  inputBinding:
-    prefix: --sex
-- id: vcf_ids
-  doc: output VCF IDs instead of CHROM:POS_REF_ALT
-  type: boolean
-  inputBinding:
-    prefix: --vcf-ids
 - id: columns
   doc: columns of the input tsv file [ID,CHROM,POS,AA]
   type: string
   inputBinding:
     prefix: --columns
-- id: fast_a_ref
-  doc: reference sequence in fasta format
-  type: File
-  inputBinding:
-    prefix: --fasta-ref
-- id: samples
-  doc: list of sample names
+- id: input_file
+  doc: ''
   type: string
   inputBinding:
-    prefix: --samples
-- id: samples_file
-  doc: file of sample names
-  type: File
-  inputBinding:
-    prefix: --samples-file
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

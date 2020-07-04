@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: segway.cwl
+id: ../../../../home/ubuntu/BiocondaCli/segway.cwl
 inputs:
 - id: mem_usage
   doc: try each float in PROGRESSION as the number of gibibytes of memory to allocate

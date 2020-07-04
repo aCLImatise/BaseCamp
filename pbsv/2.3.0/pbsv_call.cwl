@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: pbsv_call.cwl
+id: ../../../../home/ubuntu/BiocondaCli/pbsv_call.cwl
 inputs:
 - id: chunk_length
   doc: STR   Process in chunks of N reference bp. [1M]
@@ -143,6 +143,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --log-file
+- id: ref_dot_out_dot_vcf
+  doc: STR   Variant call format (VCF) output.
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

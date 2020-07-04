@@ -2,12 +2,16 @@ version 1.0
 
 task ClstrSqlTblSort.pl {
   input {
-    String? tableTableFile
-    String? levelLevel
+    String table_file
+    String level
   }
   command <<<
     clstr_sql_tbl_sort.pl \
-      ~{tableTableFile} \
-      ~{levelLevel}
+      ~{table_file} \
+      ~{level}
   >>>
+  parameter_meta {
+    table_file: ""
+    level: ""
+  }
 }

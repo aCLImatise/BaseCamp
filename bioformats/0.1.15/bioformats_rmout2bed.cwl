@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: bioformats_rmout2bed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bioformats_rmout2bed.cwl
 inputs:
-- id: rm_out_file
-  doc: a RepeatMasker out file
-  type: string
-  inputBinding:
-    position: 0
-- id: bed_file
-  doc: the output BED file
-  type: string
-  inputBinding:
-    position: 1
 - id: color
   doc: 'how to choose colors of BED repeat records (default: class)'
   type: string
@@ -26,6 +16,21 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --short
+- id: v
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: -v
+- id: rm_out_file
+  doc: a RepeatMasker out file
+  type: string
+  inputBinding:
+    position: 0
+- id: bed_file
+  doc: the output BED file
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

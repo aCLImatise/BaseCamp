@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: gseapy_ssgsea.cwl
+id: ../../../../home/ubuntu/BiocondaCli/gseapy_ssgsea.cwl
 inputs:
 - id: data
   doc: Input gene expression dataset file in txt format. Same with GSEA.
@@ -11,13 +11,13 @@ inputs:
   type: string
   inputBinding:
     prefix: --gmt
-- id: o
+- id: _outdir_gseapy
   doc: ', --outdir         The GSEApy output directory. Default: the current working
     directory'
   type: boolean
   inputBinding:
     prefix: -o
-- id: f
+- id: _format_file
   doc: ", --format         File extensions supported by Matplotlib active backend,\
     \ choose from {'pdf', 'png', 'jpeg','ps', 'eps','svg'}. Default: 'pdf'."
   type: boolean
@@ -82,7 +82,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ascending
-- id: s
+- id: _seed_number
   doc: ', --seed           Number of random seed. Default: None'
   type: boolean
   inputBinding:
@@ -92,6 +92,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --threads
+- id: height
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tripaille_analysis_load_gff3.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tripaille_analysis_load_gff3.cwl
 inputs:
 - id: organism
   doc: Organism common name or abbreviation
@@ -107,6 +107,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --no_wait
+- id: gff
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

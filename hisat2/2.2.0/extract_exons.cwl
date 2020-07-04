@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: extract_exons.py_gtf_file.cwl
+id: ../../../../home/ubuntu/BiocondaCli/extract_exons.py_gtf_file.cwl
 inputs:
 - id: v
   doc: ''

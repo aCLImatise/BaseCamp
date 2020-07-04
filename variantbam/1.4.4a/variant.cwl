@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: variant.cwl
+id: ../../../../home/ubuntu/BiocondaCli/variant.cwl
 inputs:
 - id: verbose
   doc: Verbose output
@@ -158,6 +158,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --exclude-aln-flag
+- id: input_dot_bam
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

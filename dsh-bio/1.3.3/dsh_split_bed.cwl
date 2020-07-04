@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: dsh_split_bed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/dsh_split_bed.cwl
 inputs:
 - id: about
   doc: display about message [optional]

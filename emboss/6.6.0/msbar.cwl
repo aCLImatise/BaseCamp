@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: msbar.cwl
+id: ../../../../home/ubuntu/BiocondaCli/msbar.cwl
 inputs:
 - id: count
   doc: integer    [1] Number of times to perform the mutation operations (Integer
@@ -7,7 +7,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -count
-- id: point
+- id: menu_types_point_perform_values
   doc: 'menu       [0] Types of point mutations to perform (Values: 0 (None); 1 (Any
     of the following); 2 (Insertions); 3 (Deletions); 4 (Changes); 5 (Duplications);
     6 (Moves))'

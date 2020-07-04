@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bam2hints.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bam2hints.cwl
 inputs:
 - id: priority
   doc: -p   priority of hint group (set to 4)
@@ -97,6 +97,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --maxgenelen
+- id: in
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --in
+- id: out
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --out
 outputs: []
 cwlVersion: v1.1
 baseCommand:

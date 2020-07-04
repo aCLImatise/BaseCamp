@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: MetaboliteSpectralMatcher.cwl
+id: ../../../../home/ubuntu/BiocondaCli/MetaboliteSpectralMatcher.cwl
 inputs:
 - id: in
   doc: "*        Input spectra. (valid formats: 'mzML')"
@@ -36,16 +36,6 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --helphelp
-- id: algorithm
-  doc: Algorithm parameters section
-  type: boolean
-  inputBinding:
-    prefix: '- algorithm'
-- id: http
-  doc: ://www.openms.de/documentation/UTILS_MetaboliteSpectralMatcher.html
-  type: boolean
-  inputBinding:
-    prefix: '- http'
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,18 +1,18 @@
 class: CommandLineTool
-id: fqtrim.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fqtrim.cwl
 inputs:
-- id: a
+- id: minimum_length_exact
   doc: 'minimum length of exact suffix-prefix match with adapter sequence that can
     be trimmed at either end of the read (default: 6)'
   type: boolean
   inputBinding:
     prefix: -a
-- id: pid5
+- id: pid_five
   doc: minimum percent identity for adapter match at 5' end (default 96.0)
   type: boolean
   inputBinding:
     prefix: --pid5
-- id: pid3
+- id: pid_three
   doc: minimum percent identity for adapter match at 3' end (default 94.0)
   type: boolean
   inputBinding:
@@ -27,7 +27,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --match
-- id: r
+- id: also_look_terminal
   doc: also look for terminal alignments with the reverse complement of the adapter
     sequence(s)
   type: boolean

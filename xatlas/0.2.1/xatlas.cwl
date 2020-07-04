@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: xatlas.cwl
+id: ../../../../home/ubuntu/BiocondaCli/xatlas.cwl
 inputs:
 - id: ref
   doc: Reference genome in FASTA format

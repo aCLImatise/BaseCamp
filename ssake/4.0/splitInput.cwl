@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: splitInput.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/splitInput.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

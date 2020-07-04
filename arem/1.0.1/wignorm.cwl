@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: wignorm.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wignorm.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

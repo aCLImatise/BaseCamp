@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: chronic.cwl
+id: ../../../../home/ubuntu/BiocondaCli/chronic.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

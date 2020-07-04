@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: DamMet.cwl
+id: ../../../../home/ubuntu/BiocondaCli/DamMet.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: filterfa.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filterfa.cwl
 inputs:
-- id: tmp_fa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: out_fa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: paired
   doc: if the reads are paired-end
   type: boolean
@@ -21,6 +11,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --merge
+- id: tmp_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: out_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

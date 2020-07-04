@@ -1,27 +1,27 @@
 class: CommandLineTool
-id: RNAPhylo.cwl
+id: ../../../../home/ubuntu/BiocondaCli/RNAPhylo.cwl
 inputs:
-- id: t
+- id: _phylogeny_tree
   doc: ': The phylogeny tree '
   type: string
   inputBinding:
     prefix: -t
-- id: s
+- id: phylogenetic_model_single
   doc: ': The phylogenetic model for single bases '
   type: string
   inputBinding:
     prefix: -s
-- id: p
+- id: phylogenetic_model_paired
   doc: ': The phylogenetic model for paired bases '
   type: string
   inputBinding:
     prefix: -p
-- id: g
+- id: scfg_grammar_file
   doc: ': The SCFG grammar file. '
   type: string
   inputBinding:
     prefix: -g
-- id: l
+- id: float_lower_bound
   doc: '<float> : The lower bound for paired emission probability to be interesting '
   type: boolean
   inputBinding:
@@ -80,6 +80,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --ignore-all-gap
+- id: alignment
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

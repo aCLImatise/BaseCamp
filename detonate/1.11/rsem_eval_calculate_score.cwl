@@ -1,33 +1,6 @@
 class: CommandLineTool
-id: rsem_eval_calculate_score.cwl
+id: ../../../../home/ubuntu/BiocondaCli/rsem_eval_calculate_score.cwl
 inputs:
-- id: input
-  doc: SAM/BAM formatted input file. If "-" is specified for the filename, SAM/BAM
-    input is instead assumed to come from standard input. RSEM-EVAL requires all alignments
-    of the same read group together. For paired-end reads, RSEM-EVAL also requires
-    the two mates of any alignment be adjacent. See Description section for how to
-    make input file obey RSEM-EVAL's requirements.
-  type: string
-  inputBinding:
-    position: 0
-- id: assembly_fast_a_file
-  doc: A multi-FASTA file contains the assembly used for calculating RSEM-EVAL score.
-  type: string
-  inputBinding:
-    position: 1
-- id: sample_name
-  doc: The name of the sample analyzed. All output files are prefixed by this name
-    (e.g., sample_name.isoforms.results).
-  type: string
-  inputBinding:
-    position: 2
-- id: l
-  doc: For single-end data, L represents the average read length. For paired-end data,
-    L represents the average fragment length. It should be a positive integer (real
-    value will be rounded to the nearest integer).
-  type: string
-  inputBinding:
-    position: 3
 - id: overlap_size
   doc: 'The minimum overlap size required to join two reads together. (Default: 0)'
   type: long
@@ -74,7 +47,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --strand-specific
-- id: bowtie2
+- id: bowtie_two
   doc: "Use Bowtie 2 instead of Bowtie to align reads. Since currently RSEM-EVAL does\
     \ not handle indel, local and discordant alignments, the Bowtie2 parameters are\
     \ set in a way to avoid those alignments. In particular, we use options '--sensitive\
@@ -96,12 +69,12 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --bam
-- id: p
-  doc: "/--num-threads <int> Number of threads to use. Both Bowtie/Bowtie2, expression\
-    \ estimation and 'samtools sort' will use this many threads. (Default: 1)"
-  type: boolean
+- id: p_slash_num_threads
+  doc: "Number of threads to use. Both Bowtie/Bowtie2, expression estimation and 'samtools\
+    \ sort' will use this many threads. (Default: 1)"
+  type: long
   inputBinding:
-    prefix: -p
+    prefix: -p/--num-threads
 - id: output_bam
   doc: 'Generate BAM outputs. (Default: off)'
   type: boolean
@@ -125,11 +98,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --seed
-- id: q
-  doc: '/--quiet Suppress the output of logging information. (Default: off)'
+- id: q_slash_quiet
+  doc: 'Suppress the output of logging information. (Default: off)'
   type: boolean
   inputBinding:
-    prefix: -q
+    prefix: -q/--quiet
+- id: h_slash_help
+  doc: Show help information.
+  type: boolean
+  inputBinding:
+    prefix: -h/--help
 - id: sam_header_info
   doc: 'RSEM-EVAL reads header information from input by default. If this option is
     on, header information is read from the specified file. For the format of the
@@ -186,12 +164,12 @@ inputs:
   type: long
   inputBinding:
     prefix: --bowtie-chunkmbs
-- id: phred33_quals
+- id: phred_three_three_quals
   doc: 'Input quality scores are encoded as Phred+33. (Default: on)'
   type: boolean
   inputBinding:
     prefix: --phred33-quals
-- id: phred64_quals
+- id: phred_six_four_quals
   doc: 'Input quality scores are encoded as Phred+64 (default for GA Pipeline ver.
     >= 1.3). (Default: off)'
   type: boolean
@@ -203,24 +181,24 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --solexa-quals
-- id: bowtie2_path
+- id: bowtie_two_path
   doc: "(Bowtie 2 parameter) The path to the Bowtie 2 executables. (Default: the path\
     \ to the Bowtie 2 executables is assumed to be in the user's PATH environment\
     \ variable)"
   type: File
   inputBinding:
     prefix: --bowtie2-path
-- id: bowtie2_mismatch_rate
+- id: bowtie_two_mismatch_rate
   doc: '(Bowtie 2 parameter) The maximum mismatch rate allowed. (Default: 0.1)'
   type: string
   inputBinding:
     prefix: --bowtie2-mismatch-rate
-- id: bowtie2_k
+- id: bowtie_two_k
   doc: '(Bowtie 2 parameter) Find up to <int> alignments per read. (Default: 200)'
   type: long
   inputBinding:
     prefix: --bowtie2-k
-- id: bowtie2_sensitivity_level
+- id: bowtie_two_sensitivity_level
   doc: "(Bowtie 2 parameter) Set Bowtie 2's preset options in --end-to-end mode. This\
     \ option controls how hard Bowtie 2 tries to find alignments. <string> must be\
     \ one of \"very_fast\", \"fast\", \"sensitive\" and \"very_sensitive\". The four\
@@ -292,6 +270,63 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --time
+- id: input
+  doc: SAM/BAM formatted input file. If "-" is specified for the filename, SAM/BAM
+    input is instead assumed to come from standard input. RSEM-EVAL requires all alignments
+    of the same read group together. For paired-end reads, RSEM-EVAL also requires
+    the two mates of any alignment be adjacent. See Description section for how to
+    make input file obey RSEM-EVAL's requirements.
+  type: string
+  inputBinding:
+    position: 0
+- id: assembly_fast_a_file
+  doc: A multi-FASTA file contains the assembly used for calculating RSEM-EVAL score.
+  type: string
+  inputBinding:
+    position: 1
+- id: sample_name
+  doc: The name of the sample analyzed. All output files are prefixed by this name
+    (e.g., sample_name.isoforms.results).
+  type: string
+  inputBinding:
+    position: 2
+- id: singleend_data_l
+  doc: For single-end data, L represents the average read length. For paired-end data,
+    L represents the average fragment length. It should be a positive integer (real
+    value will be rounded to the nearest integer).
+  type: string
+  inputBinding:
+    position: 3
+- id: sample_name_dot_transcript_dot_sorted_do_tba_mdot_bai
+  doc: Only generated when --output-bam is specified. 'sample_name.transcript.bam'
+    is a BAM-formatted file of read alignments in transcript coordinates. The MAPQ
+    field of each alignment is set to min(100, floor(-10 * log10(1.0 - w) + 0.5)),
+    where w is the posterior probability of that alignment being the true mapping
+    of a read. In addition, RSEM-EVAL pads a new tag ZW:f:value, where value is a
+    single precision floating number representing the posterior probability. Because
+    this file contains all alignment lines produced by bowtie or user-specified aligners,
+    it can also be used as a replacement of the aligner generated BAM/SAM file. For
+    paired-end reads, if one mate has alignments but the other does not, this file
+    marks the alignable mate as "unmappable" (flag bit 0x4) and appends an optional
+    field "Z0:A:!". 'sample_name.transcript.sorted.bam' and 'sample_name.transcript.sorted.bam.bai'
+    are the sorted BAM file and indices generated by samtools (included in RSEM-EVAL
+    package).
+  type: string
+  inputBinding:
+    position: 0
+- id: sample_name_dot_time
+  doc: Only generated when --time is specified. It contains time (in seconds) consumed
+    by building references, aligning reads, estimating expression levels and calculating
+    credibility intervals.
+  type: string
+  inputBinding:
+    position: 1
+- id: sample_name_dot_stat
+  doc: This is a folder instead of a file. All model related statistics are stored
+    in this folder. Use 'rsem-plot-model' can generate plots using this folder.
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

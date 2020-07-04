@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: seqkit_stats.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seqkit_stats.cwl
 inputs:
-- id: flags
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: all
   doc: all statistics, including quartiles of seq length, sum_gap, N50
   type: boolean
@@ -86,6 +81,11 @@ inputs:
   type: long
   inputBinding:
     prefix: --threads
+- id: flags
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

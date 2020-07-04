@@ -1,16 +1,6 @@
 class: CommandLineTool
-id: parallel_blat.cwl
+id: ../../../../home/ubuntu/BiocondaCli/parallel_blat.cwl
 inputs:
-- id: re_ffa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: query_fa
-  doc: ''
-  type: string
-  inputBinding:
-    position: 1
 - id: num_threads
   doc: (=8)             number of threads
   type: string
@@ -21,6 +11,16 @@ inputs:
   type: string
   inputBinding:
     prefix: --similar
+- id: ref_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: query_dot_fa
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

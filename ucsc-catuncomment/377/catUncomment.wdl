@@ -1,7 +1,14 @@
 version 1.0
 
 task CatUncomment {
+  input {
+    File file
+  }
   command <<<
-    catUncomment
+    catUncomment \
+      ~{file}
   >>>
+  parameter_meta {
+    file: ""
+  }
 }

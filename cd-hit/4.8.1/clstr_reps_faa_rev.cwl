@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: clstr_reps_faa_rev.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/clstr_reps_faa_rev.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

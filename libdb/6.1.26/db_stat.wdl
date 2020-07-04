@@ -2,18 +2,25 @@ version 1.0
 
 task DbStat {
   input {
-    File dD
-    Boolean fnFn
-    String hH
-    String pP
-    String sS
+    File? d
+    Boolean? fn
+    String? h
+    String? p
+    String? s
   }
   command <<<
     db_stat \
-      ~{if defined(dD) then ("-d " +  '"' + dD + '"') else ""} \
-      ~{true="-fN" false="" fnFn} \
-      ~{if defined(hH) then ("-h " +  '"' + hH + '"') else ""} \
-      ~{if defined(pP) then ("-P " +  '"' + pP + '"') else ""} \
-      ~{if defined(sS) then ("-s " +  '"' + sS + '"') else ""}
+      ~{if defined(d) then ("-d " +  '"' + d + '"') else ""} \
+      ~{true="-fN" false="" fn} \
+      ~{if defined(h) then ("-h " +  '"' + h + '"') else ""} \
+      ~{if defined(p) then ("-P " +  '"' + p + '"') else ""} \
+      ~{if defined(s) then ("-s " +  '"' + s + '"') else ""}
   >>>
+  parameter_meta {
+    d: ""
+    fn: ""
+    h: ""
+    p: ""
+    s: ""
+  }
 }

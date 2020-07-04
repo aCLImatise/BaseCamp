@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: perror.cwl
+id: ../../../../home/ubuntu/BiocondaCli/perror.cwl
 inputs:
 - id: info
   doc: Synonym for --help.
@@ -17,6 +17,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: error_code
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
+- id: error_code_dot_dot_dot
+  doc: ''
+  type: string
+  inputBinding:
+    position: 1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

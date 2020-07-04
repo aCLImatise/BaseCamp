@@ -1,22 +1,22 @@
 class: CommandLineTool
-id: ffindex_modify.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ffindex_modify.cwl
 inputs:
-- id: f
+- id: file_line_containing
   doc: file each line containing a filename -f can be specified up to 4096 times
   type: File
   inputBinding:
     prefix: -f
-- id: s
+- id: sort_index_file
   doc: sort index file
   type: boolean
   inputBinding:
     prefix: -s
-- id: u
+- id: unlink_entry_remove
   doc: unlink entry (remove from index only)
   type: boolean
   inputBinding:
     prefix: -u
-- id: v
+- id: print_version_info
   doc: print version and other info then exit
   type: boolean
   inputBinding:

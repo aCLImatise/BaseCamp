@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: get_user_history.cwl
+id: ../../../../home/ubuntu/BiocondaCli/get_user_history.cwl
 inputs:
 - id: history_id
   doc: History ID. The history ID and the dataset ID uniquly identify a dataset. Per

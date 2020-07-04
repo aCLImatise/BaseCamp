@@ -2,14 +2,19 @@ version 1.0
 
 task MafChunk.py {
   input {
-    String probProb
-    String? chunkChunkSize
-    String? outOutDir
+    String? prob
+    String chunk_size
+    String out_dir
   }
   command <<<
     maf_chunk.py \
-      ~{chunkChunkSize} \
-      ~{if defined(probProb) then ("--prob " +  '"' + probProb + '"') else ""} \
-      ~{outOutDir}
+      ~{chunk_size} \
+      ~{out_dir} \
+      ~{if defined(prob) then ("--prob " +  '"' + prob + '"') else ""}
   >>>
+  parameter_meta {
+    prob: "Probability of writing a given chunk"
+    chunk_size: ""
+    out_dir: ""
+  }
 }

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: anvi_setup_scg_databases.cwl
+id: ../../../../home/ubuntu/BiocondaCli/anvi_setup_scg_databases.cwl
 inputs:
 - id: num_threads
   doc: Maximum number of threads to use for multithreading whenever possible. Very

@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: seeker.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/seeker.pl.cwl
 inputs:
-- id: i
+- id: none_input_file
   doc: ', none         - Input file (can be multiple, each with own flag)'
   type: boolean
   inputBinding:

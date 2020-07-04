@@ -2,18 +2,22 @@ version 1.0
 
 task Bq {
   input {
-    Boolean globalGlobalFlags
-    Boolean commandCommandFlags
-    String? bqBqPy
-    String? commandCommand
-    String? argsArgs
+    Boolean? global_flags
+    Boolean? command_flags
+    String var_command
+    String? args
   }
   command <<<
     bq \
-      ~{bqBqPy} \
-      ~{true="--global_flags" false="" globalGlobalFlags} \
-      ~{true="--command_flags" false="" commandCommandFlags} \
-      ~{commandCommand} \
-      ~{argsArgs}
+      ~{var_command} \
+      ~{args} \
+      ~{true="--global_flags" false="" global_flags} \
+      ~{true="--command_flags" false="" command_flags}
   >>>
+  parameter_meta {
+    global_flags: ""
+    command_flags: ""
+    var_command: ""
+    args: ""
+  }
 }

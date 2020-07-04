@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: smof_sort.cwl
+id: ../../../../home/ubuntu/BiocondaCli/smof_sort.cwl
 inputs:
-- id: input
-  doc: input fasta sequence (default = stdin)
-  type: string
-  inputBinding:
-    position: 0
 - id: regex
   doc: sort by single regex capture
   type: string
@@ -46,6 +41,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --pair-separator
+- id: input
+  doc: input fasta sequence (default = stdin)
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

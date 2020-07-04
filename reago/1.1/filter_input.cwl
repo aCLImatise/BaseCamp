@@ -1,46 +1,36 @@
 class: CommandLineTool
-id: filter_input.py.cwl
+id: ../../../../home/ubuntu/BiocondaCli/filter_input.py.cwl
 inputs:
-- id: python
+- id: paired_end_one_dot_fast_a
   doc: ''
   type: string
   inputBinding:
     position: 0
-- id: filter_input_py
+- id: paired_end_two_dot_fast_a
   doc: ''
   type: string
   inputBinding:
     position: 1
-- id: paired_end_1fasta
-  doc: ''
-  type: string
-  inputBinding:
-    position: 2
-- id: paired_end_2fasta
-  doc: ''
-  type: string
-  inputBinding:
-    position: 3
 - id: output_dir
   doc: ''
   type: string
   inputBinding:
-    position: 4
+    position: 2
 - id: cm_dir
   doc: ''
   type: string
   inputBinding:
-    position: 5
+    position: 3
 - id: cm_to_use
   doc: ''
   type: string
   inputBinding:
-    position: 6
+    position: 4
 - id: num_of_cpu
   doc: ''
   type: string
   inputBinding:
-    position: 7
+    position: 5
 outputs: []
 cwlVersion: v1.1
 baseCommand:

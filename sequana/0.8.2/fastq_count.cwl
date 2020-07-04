@@ -1,7 +1,12 @@
 class: CommandLineTool
-id: fastq_count.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fastq_count.cwl
 inputs:
-- id: input
+- id: input_fastq_gzipped
+  doc: input fastq gzipped or not
+  type: string
+  inputBinding:
+    prefix: --input
+- id: var_1
   doc: ''
   type: string
   inputBinding:
@@ -16,11 +21,6 @@ inputs:
   type: string
   inputBinding:
     position: 2
-- id: input
-  doc: input fastq gzipped or not
-  type: string
-  inputBinding:
-    prefix: --input
 outputs: []
 cwlVersion: v1.1
 baseCommand:

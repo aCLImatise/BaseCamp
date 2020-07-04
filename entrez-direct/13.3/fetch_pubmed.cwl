@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: fetch_pubmed.cwl
+id: ../../../../home/ubuntu/BiocondaCli/fetch_pubmed.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

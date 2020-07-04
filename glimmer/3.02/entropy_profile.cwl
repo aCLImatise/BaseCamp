@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: entropy_profile.cwl
+id: ../../../../home/ubuntu/BiocondaCli/entropy_profile.cwl
 inputs:
 - id: min_len
   doc: Don't output any sequence shorter than <n> characters

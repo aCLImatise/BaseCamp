@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: simlord.cwl
+id: ../../../../home/ubuntu/BiocondaCli/simlord.cwl
 inputs:
-- id: output_prefix
-  doc: Save the simulated reads as a fastq-file at OUTPUT_PREFIX.fastq
-  type: string
-  inputBinding:
-    position: 0
 - id: save_reference
   doc: Save the random reference as fasta-file at given PATH. By default, save at
     output path with '_reference.fasta' appended.
@@ -22,7 +17,7 @@ inputs:
   type: double
   inputBinding:
     prefix: --coverage
-- id: chi2_params_s
+- id: chi_two_params_s
   doc: "PAR PAR PAR PAR, -xs PAR PAR PAR PAR PAR Parameters for the curve determining\
     \ the parameter scale for the chi^2 distribution: m,b, z, c, a for 'm*x + b' if\
     \ x <= z and 'c * x^-a' if x > z (default= (0.01214, -5.12, 675, 48303.0732881,\
@@ -30,7 +25,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --chi2-params-s
-- id: chi2_params_n
+- id: chi_two_params_n
   doc: "PAR PAR, -xn PAR PAR PAR Parameters for the function determining the parameter\
     \ n for the chi^2 distribution: m, b, z for 'm*x + b' if x < z and 'm*z + b' for\
     \ x >=z (default= (0.00189237136, 2.5394497, 5500))."
@@ -134,6 +129,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --old-read-names
+- id: output_prefix
+  doc: Save the simulated reads as a fastq-file at OUTPUT_PREFIX.fastq
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

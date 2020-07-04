@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mpi_evaluator.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mpi_evaluator.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

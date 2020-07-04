@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: spectral_hk.cwl
+id: ../../../../home/ubuntu/BiocondaCli/spectral_hk.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: haystack_run_test.cwl
+id: ../../../../home/ubuntu/BiocondaCli/haystack_run_test.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

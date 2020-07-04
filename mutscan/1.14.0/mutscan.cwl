@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: mutscan.cwl
+id: ../../../../home/ubuntu/BiocondaCli/mutscan.cwl
 inputs:
 - id: simplified
   doc: simplified mode uses less RAM but reports less information. This option can
@@ -13,6 +13,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --verbose
+- id: read_one
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: --read1
 outputs: []
 cwlVersion: v1.1
 baseCommand:

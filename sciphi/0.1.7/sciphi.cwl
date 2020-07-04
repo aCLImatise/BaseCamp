@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: sciphi.cwl
+id: ../../../../home/ubuntu/BiocondaCli/sciphi.cwl
 inputs:
 - id: in
   doc: Name of the BAM files used to create the mpileup.
@@ -29,7 +29,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --inc
-- id: o
+- id: prefix_output_files
   doc: Prefix of output files.
   type: string
   inputBinding:
@@ -48,7 +48,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --sa
-- id: l
+- id: maximal_number_iterations
   doc: Maximal number of iterations before sampling form the  posterior distribution
     of the mutation to cell  assignment. [1000000]
   type: string
@@ -82,7 +82,7 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -u
-- id: e
+- id: parameter_estimation_rate
   doc: Parameter estimation rate, i.e. the fraction of loops  used to estimate the
     different parameters. [0.2]
   type: string
@@ -101,7 +101,7 @@ inputs:
   type: string
   inputBinding:
     prefix: --seed
-- id: t
+- id: tree_score_type
   doc: Tree score type [m (max), s (sum)]. [s]
   type: string
   inputBinding:

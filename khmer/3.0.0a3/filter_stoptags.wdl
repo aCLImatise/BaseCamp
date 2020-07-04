@@ -2,14 +2,19 @@ version 1.0
 
 task FilterStoptags.py {
   input {
-    Boolean infoInfo
-    String kKSize
-    Boolean forceForce
+    Boolean? info
+    String? k_size
+    Boolean? force
   }
   command <<<
     filter-stoptags.py \
-      ~{true="--info" false="" infoInfo} \
-      ~{if defined(kKSize) then ("--ksize " +  '"' + kKSize + '"') else ""} \
-      ~{true="--force" false="" forceForce}
+      ~{true="--info" false="" info} \
+      ~{if defined(k_size) then ("--ksize " +  '"' + k_size + '"') else ""} \
+      ~{true="--force" false="" force}
   >>>
+  parameter_meta {
+    info: "print citation information"
+    k_size: "k-mer size (default: 32)"
+    force: "Overwrite output file if it exists (default: False)"
+  }
 }

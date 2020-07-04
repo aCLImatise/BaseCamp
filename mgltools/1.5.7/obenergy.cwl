@@ -1,12 +1,7 @@
 class: CommandLineTool
-id: obenergy.cwl
+id: ../../../../home/ubuntu/BiocondaCli/obenergy.cwl
 inputs:
-- id: filename
-  doc: ''
-  type: File
-  inputBinding:
-    position: 0
-- id: v
+- id: verbose_print_interactions
   doc: 'verbose: print out indivual energy interactions'
   type: boolean
   inputBinding:
@@ -16,6 +11,11 @@ inputs:
   type: string
   inputBinding:
     prefix: -ff
+- id: filename
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

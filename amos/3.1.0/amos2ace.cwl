@@ -1,7 +1,7 @@
 class: CommandLineTool
-id: amos2ace.cwl
+id: ../../../../home/ubuntu/BiocondaCli/amos2ace.cwl
 inputs:
-- id: o
+- id: see_below
   doc: (see below).
   type: boolean
   inputBinding:

@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: prokka_genpept_to_fasta_db.cwl
+id: ../../../../home/ubuntu/BiocondaCli/prokka_genpept_to_fasta_db.cwl
 inputs:
 - id: verbose
   doc: "!      Verbose progress (default '0')."

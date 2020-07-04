@@ -2,14 +2,19 @@ version 1.0
 
 task Metaxa2 {
   input {
-    String iI
-    String oO
-    String cpuCpu
+    String? i
+    String? o
+    String? cpu
   }
   command <<<
     metaxa2 \
-      ~{if defined(iI) then ("-i " +  '"' + iI + '"') else ""} \
-      ~{if defined(oO) then ("-o " +  '"' + oO + '"') else ""} \
-      ~{if defined(cpuCpu) then ("--cpu " +  '"' + cpuCpu + '"') else ""}
+      ~{if defined(i) then ("-i " +  '"' + i + '"') else ""} \
+      ~{if defined(o) then ("-o " +  '"' + o + '"') else ""} \
+      ~{if defined(cpu) then ("--cpu " +  '"' + cpu + '"') else ""}
   >>>
+  parameter_meta {
+    i: ""
+    o: ""
+    cpu: ""
+  }
 }

@@ -2,32 +2,46 @@ version 1.0
 
 task Muscle {
   input {
-    String inIn
-    String outOut
-    Boolean diagsDiags
-    String maxiterMaxiterS
-    String maxMaxHours
-    Boolean htmlHtml
-    Boolean msfMsf
-    Boolean clwClw
-    Boolean clClWstrict
-    Boolean logLog
-    Boolean quietQuiet
-    Boolean versionVersion
+    String? in
+    String? out
+    Boolean? diags
+    String? maxiter_s
+    String? max_hours
+    Boolean? html
+    Boolean? msf
+    Boolean? clw
+    Boolean? cl_wstrict
+    Boolean? log
+    Boolean? quiet
+    Boolean? version
   }
   command <<<
     muscle \
-      ~{if defined(inIn) then ("-in " +  '"' + inIn + '"') else ""} \
-      ~{if defined(outOut) then ("-out " +  '"' + outOut + '"') else ""} \
-      ~{true="-diags" false="" diagsDiags} \
-      ~{if defined(maxiterMaxiterS) then ("-maxiters " +  '"' + maxiterMaxiterS + '"') else ""} \
-      ~{if defined(maxMaxHours) then ("-maxhours " +  '"' + maxMaxHours + '"') else ""} \
-      ~{true="-html" false="" htmlHtml} \
-      ~{true="-msf" false="" msfMsf} \
-      ~{true="-clw" false="" clwClw} \
-      ~{true="-clwstrict" false="" clClWstrict} \
-      ~{true="-log" false="" logLog} \
-      ~{true="-quiet" false="" quietQuiet} \
-      ~{true="-version" false="" versionVersion}
+      ~{if defined(in) then ("-in " +  '"' + in + '"') else ""} \
+      ~{if defined(out) then ("-out " +  '"' + out + '"') else ""} \
+      ~{true="-diags" false="" diags} \
+      ~{if defined(maxiter_s) then ("-maxiters " +  '"' + maxiter_s + '"') else ""} \
+      ~{if defined(max_hours) then ("-maxhours " +  '"' + max_hours + '"') else ""} \
+      ~{true="-html" false="" html} \
+      ~{true="-msf" false="" msf} \
+      ~{true="-clw" false="" clw} \
+      ~{true="-clwstrict" false="" cl_wstrict} \
+      ~{true="-log" false="" log} \
+      ~{true="-quiet" false="" quiet} \
+      ~{true="-version" false="" version}
   >>>
+  parameter_meta {
+    in: "Input file in FASTA format (default stdin)"
+    out: "Output alignment in FASTA format (default stdout)"
+    diags: "Find diagonals (faster for similar sequences)"
+    maxiter_s: "Maximum number of iterations (integer, default 16)"
+    max_hours: "Maximum time to iterate in hours (default no limit)"
+    html: "Write output in HTML format (default FASTA)"
+    msf: "Write output in GCG MSF format (default FASTA)"
+    clw: "Write output in CLUSTALW format (default FASTA)"
+    cl_wstrict: "As -clw, with 'CLUSTAL W (1.81)' header"
+    log: "[a] <logfile>  Log to file (append if -loga, overwrite if -log)"
+    quiet: "Do not write progress messages to stderr"
+    version: "Display version information and exit"
+  }
 }

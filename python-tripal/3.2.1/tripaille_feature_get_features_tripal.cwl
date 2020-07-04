@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: tripaille_feature_get_features_tripal.cwl
+id: ../../../../home/ubuntu/BiocondaCli/tripaille_feature_get_features_tripal.cwl
 inputs:
 - id: feature_id
   doc: A feature entity/node ID

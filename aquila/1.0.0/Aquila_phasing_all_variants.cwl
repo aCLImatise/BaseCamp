@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Aquila_phasing_all_variants.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Aquila_phasing_all_variants.cwl
 inputs:
 - id: assembly_vcf
   doc: Required parameter, Aquila assembly based VCF file, "Aquila_final_sorted.vcf",
@@ -44,6 +44,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --block_len_use
+- id: use
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

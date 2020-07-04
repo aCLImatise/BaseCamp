@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: nf_core_sync.cwl
+id: ../../../../home/ubuntu/BiocondaCli/nf_core_sync.cwl
 inputs:
 - id: make_template_branch
   doc: Create a TEMPLATE branch if none is found.
@@ -36,6 +36,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --all
+- id: pipeline_directory
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

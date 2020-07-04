@@ -2,12 +2,16 @@ version 1.0
 
 task FormatFasta {
   input {
-    String inputInputFastA
-    String outputOutputFastA
+    String? input_fast_a
+    String? output_fast_a
   }
   command <<<
     format_fasta \
-      ~{if defined(inputInputFastA) then ("--inputfasta " +  '"' + inputInputFastA + '"') else ""} \
-      ~{if defined(outputOutputFastA) then ("--outputfasta " +  '"' + outputOutputFastA + '"') else ""}
+      ~{if defined(input_fast_a) then ("--inputfasta " +  '"' + input_fast_a + '"') else ""} \
+      ~{if defined(output_fast_a) then ("--outputfasta " +  '"' + output_fast_a + '"') else ""}
   >>>
+  parameter_meta {
+    input_fast_a: "Path to input fasta."
+    output_fast_a: "Path to output fasta."
+  }
 }

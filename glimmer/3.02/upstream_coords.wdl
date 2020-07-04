@@ -1,13 +1,17 @@
 version 1.0
 
-task UpstreamCoords.awkSeparation {
+task UpstreamCoords.awk {
   input {
-    String? lenLen
-    String? separationSeparation
+    String len
+    String separation
   }
   command <<<
-    upstream-coords.awk separation \
-      ~{lenLen} \
-      ~{separationSeparation}
+    upstream-coords.awk \
+      ~{len} \
+      ~{separation}
   >>>
+  parameter_meta {
+    len: ""
+    separation: ""
+  }
 }

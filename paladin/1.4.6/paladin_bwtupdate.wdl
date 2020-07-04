@@ -2,10 +2,13 @@ version 1.0
 
 task PaladinBwtupdate {
   input {
-    String? theTheBwt
+    String the_dot_bwt
   }
   command <<<
     paladin bwtupdate \
-      ~{theTheBwt}
+      ~{the_dot_bwt}
   >>>
+  parameter_meta {
+    the_dot_bwt: ""
+  }
 }

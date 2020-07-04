@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: make_html.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/make_html.pl.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

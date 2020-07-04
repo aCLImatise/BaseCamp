@@ -2,10 +2,13 @@ version 1.0
 
 task KwipStats {
   input {
-    String? hashesHashes
+    String hashes
   }
   command <<<
     kwip-stats \
-      ~{hashesHashes}
+      ~{hashes}
   >>>
+  parameter_meta {
+    hashes: ""
+  }
 }

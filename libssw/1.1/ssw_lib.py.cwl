@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: ssw_lib.py.bak.cwl
+id: ../../../../home/ubuntu/BiocondaCli/ssw_lib.py.bak.cwl
 inputs: []
 outputs: []
 cwlVersion: v1.1

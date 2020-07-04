@@ -1,31 +1,6 @@
 class: CommandLineTool
-id: refinem_taxon_profile.cwl
+id: ../../../../home/ubuntu/BiocondaCli/refinem_taxon_profile.cwl
 inputs:
-- id: genome_prot_dir
-  doc: directory containing amino acid genes for each genome
-  type: string
-  inputBinding:
-    position: 0
-- id: scaffold_stats_file
-  doc: file with statistics for each scaffold
-  type: string
-  inputBinding:
-    position: 1
-- id: db_file
-  doc: DIAMOND database of reference genomes
-  type: string
-  inputBinding:
-    position: 2
-- id: taxonomy_file
-  doc: taxonomic assignment of each reference genomes
-  type: string
-  inputBinding:
-    position: 3
-- id: output_dir
-  doc: output directory
-  type: string
-  inputBinding:
-    position: 4
 - id: per_to_classify
   doc: 'minimum percentage of genes to assign a scaffold to a taxonomic group (default:
     20.0)'
@@ -69,6 +44,31 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --silent
+- id: genome_prot_dir
+  doc: directory containing amino acid genes for each genome
+  type: string
+  inputBinding:
+    position: 0
+- id: scaffold_stats_file
+  doc: file with statistics for each scaffold
+  type: string
+  inputBinding:
+    position: 1
+- id: db_file
+  doc: DIAMOND database of reference genomes
+  type: string
+  inputBinding:
+    position: 2
+- id: taxonomy_file
+  doc: taxonomic assignment of each reference genomes
+  type: string
+  inputBinding:
+    position: 3
+- id: output_dir
+  doc: output directory
+  type: string
+  inputBinding:
+    position: 4
 outputs: []
 cwlVersion: v1.1
 baseCommand:

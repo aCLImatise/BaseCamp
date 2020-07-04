@@ -1,24 +1,12 @@
 class: CommandLineTool
-id: InDelFixer.cwl
+id: ../../../../home/ubuntu/BiocondaCli/InDelFixer.cwl
 inputs:
-- id: pac_bio
-  doc: ': java -jar InDelFixer.jar -i libCase102.ccs.fastq -g referenceGenomes.fasta
-    -noHashing -pacbio'
-  type: string
-  inputBinding:
-    position: 0
-- id: illumina
-  doc: ': java -jar InDelFixer.jar -i libCase102_R1.fastq -ir libCase102_R2.fastq
-    -g referenceGenomes.fasta -illumina'
-  type: string
-  inputBinding:
-    position: 1
-- id: o
+- id: path_current_directory
   doc: ': Path to the output directory (default: current directory).'
   type: File
   inputBinding:
     prefix: -o
-- id: i
+- id: path_fasta_fastq
   doc: ': Path to the NGS input file (FASTA, FASTQ or SFF format) [REQUIRED].'
   type: File
   inputBinding:
@@ -29,22 +17,22 @@ inputs:
   type: File
   inputBinding:
     prefix: -ir
-- id: g
+- id: path_reference_genomes
   doc: ': Path to the reference genomes file (FASTA format) [REQUIRED].'
   type: File
   inputBinding:
     prefix: -g
-- id: r
+- id: region_reference_ie
   doc: ': Region on the reference genome (i.e. 342-944).'
   type: long
   inputBinding:
     prefix: -r
-- id: k
+- id: kmer_size_default
   doc: ': Kmer size (default 10).'
   type: long
   inputBinding:
     prefix: -k
-- id: v
+- id: kmer_offset_default
   doc: ': Kmer offset (default 2).'
   type: long
   inputBinding:
@@ -92,7 +80,7 @@ inputs:
   type: string
   inputBinding:
     prefix: -realign
-- id: l
+- id: minimal_readlength_default
   doc: ': Minimal read-length prior alignment (default 0).'
   type: long
   inputBinding:
@@ -124,7 +112,7 @@ inputs:
   type: long
   inputBinding:
     prefix: -maxDel
-- id: q
+- id: minimal_average_phred
   doc: ': Minimal average Phred score of the aligned read (default 20).'
   type: long
   inputBinding:
@@ -139,16 +127,43 @@ inputs:
   type: boolean
   inputBinding:
     prefix: -gex
-- id: illumina
+- id: four_five_four
+  doc: ': 10 open / 1 extend'
+  type: boolean
+  inputBinding:
+    prefix: '-454'
+- id: var_25
   doc: ': 30 open / 3 extend'
   type: boolean
   inputBinding:
     prefix: -illumina
-- id: pac_bio
+- id: var_26
   doc: ': 5 open / 3 extend'
   type: boolean
   inputBinding:
     prefix: -pacbio
+- id: jar
+  doc: ''
+  type: string
+  inputBinding:
+    prefix: -jar
+- id: four_five_four_slash_roche
+  doc: ': java -jar InDelFixer.jar -i libCase102.fastq -g referenceGenomes.fasta -454'
+  type: string
+  inputBinding:
+    position: 0
+- id: java_jar_indelfixerjar_i_libcaseccsfastq
+  doc: ': java -jar InDelFixer.jar -i libCase102.ccs.fastq -g referenceGenomes.fasta
+    -noHashing -pacbio'
+  type: string
+  inputBinding:
+    position: 1
+- id: java_jar_indelfixerjar_i_libcaserfastq
+  doc: ': java -jar InDelFixer.jar -i libCase102_R1.fastq -ir libCase102_R2.fastq
+    -g referenceGenomes.fasta -illumina'
+  type: string
+  inputBinding:
+    position: 2
 outputs: []
 cwlVersion: v1.1
 baseCommand:

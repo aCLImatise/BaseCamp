@@ -1,29 +1,20 @@
 version 1.0
 
-task VcfFilter.py {
+task VcfFilter.pyInput {
   input {
-    Boolean noNoShortCircuit
-    String outputOutput
-    Boolean noNoFiltered
-    String localLocalScript
-    String avgAvgDepthPerSample
-    String depthDepthPerSample
-    String eEBlr
-    String siteSiteQuality
-    String genotypeGenotypeQuality
-    String? inputInput
+    Boolean? no_short_circuit
+    Boolean? no_filtered
+    String vcf_filter_do_tpy
   }
   command <<<
-    vcf_filter.py \
-      ~{inputInput} \
-      ~{true="--no-short-circuit" false="" noNoShortCircuit} \
-      ~{if defined(outputOutput) then ("--output " +  '"' + outputOutput + '"') else ""} \
-      ~{true="--no-filtered" false="" noNoFiltered} \
-      ~{if defined(localLocalScript) then ("--local-script " +  '"' + localLocalScript + '"') else ""} \
-      ~{if defined(avgAvgDepthPerSample) then ("--avg-depth-per-sample " +  '"' + avgAvgDepthPerSample + '"') else ""} \
-      ~{if defined(depthDepthPerSample) then ("--depth-per-sample " +  '"' + depthDepthPerSample + '"') else ""} \
-      ~{if defined(eEBlr) then ("--eblr " +  '"' + eEBlr + '"') else ""} \
-      ~{if defined(siteSiteQuality) then ("--site-quality " +  '"' + siteSiteQuality + '"') else ""} \
-      ~{if defined(genotypeGenotypeQuality) then ("--genotype-quality " +  '"' + genotypeGenotypeQuality + '"') else ""}
+    vcf_filter.py input \
+      ~{vcf_filter_do_tpy} \
+      ~{true="--no-short-circuit" false="" no_short_circuit} \
+      ~{true="--no-filtered" false="" no_filtered}
   >>>
+  parameter_meta {
+    no_short_circuit: ""
+    no_filtered: ""
+    vcf_filter_do_tpy: ""
+  }
 }

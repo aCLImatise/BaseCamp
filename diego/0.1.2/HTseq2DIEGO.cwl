@@ -1,22 +1,17 @@
 class: CommandLineTool
-id: HTseq2DIEGO.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/HTseq2DIEGO.pl.cwl
 inputs:
-- id: options
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
-- id: i
+- id: file_containing_files
   doc: file containing input files and ids id [tab] path.to/file
   type: File
   inputBinding:
     prefix: -i
-- id: o
+- id: output_file_name
   doc: output file name (default:junction_table_dexdas )
   type: File
   inputBinding:
     prefix: -o
-- id: h
+- id: usefull_help_message
   doc: this (usefull) help message
   type: File
   inputBinding:

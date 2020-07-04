@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: bp_genbank2gff3.pl.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bp_genbank2gff3.pl.cwl
 inputs:
 - id: format
   doc: '-f  Input format (SeqIO types): GenBank, Swiss or Uniprot, EMBL work (GenBank
@@ -22,6 +22,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --typesource
+- id: filename
+  doc: ''
+  type: File
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

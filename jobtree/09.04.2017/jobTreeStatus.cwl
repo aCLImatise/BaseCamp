@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: jobTreeStatus.cwl
+id: ../../../../home/ubuntu/BiocondaCli/jobTreeStatus.cwl
 inputs:
-- id: job_tree_dir
-  doc: ''
-  type: string
-  inputBinding:
-    position: 0
 - id: logoff
   doc: Turn off logging. (default is CRITICAL)
   type: boolean
@@ -36,6 +31,16 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --rotatingLogging
+- id: job_tree
+  doc: ''
+  type: boolean
+  inputBinding:
+    prefix: --jobTree
+- id: job_tree_dir
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

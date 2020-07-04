@@ -2,10 +2,13 @@ version 1.0
 
 task UpdateInfo.py {
   input {
-    String? vcfVcf
+    String vcf
   }
   command <<<
     update_info.py \
-      ~{vcfVcf}
+      ~{vcf}
   >>>
+  parameter_meta {
+    vcf: "VCF input (default: stdin)"
+  }
 }

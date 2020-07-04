@@ -2,16 +2,22 @@ version 1.0
 
 task SeqtkCutN {
   input {
-    Int nN
-    Int pP
-    Boolean gG
-    String? inInFa
+    Int? min_size_n
+    Int? penalty_for_a
+    Boolean? print_gaps_sequence
+    String in_dot_fa
   }
   command <<<
     seqtk cutN \
-      ~{inInFa} \
-      ~{if defined(nN) then ("-n " +  '"' + nN + '"') else ""} \
-      ~{if defined(pP) then ("-p " +  '"' + pP + '"') else ""} \
-      ~{true="-g" false="" gG}
+      ~{in_dot_fa} \
+      ~{if defined(min_size_n) then ("-n " +  '"' + min_size_n + '"') else ""} \
+      ~{if defined(penalty_for_a) then ("-p " +  '"' + penalty_for_a + '"') else ""} \
+      ~{true="-g" false="" print_gaps_sequence}
   >>>
+  parameter_meta {
+    min_size_n: "min size of N tract [1000]"
+    penalty_for_a: "penalty for a non-N [10]"
+    print_gaps_sequence: "print gaps only, no sequence"
+    in_dot_fa: ""
+  }
 }

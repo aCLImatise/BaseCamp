@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: Aquila_step1.cwl
+id: ../../../../home/ubuntu/BiocondaCli/Aquila_step1.cwl
 inputs:
 - id: bam_file
   doc: Required parameter; BAM file, called by longranger align
@@ -72,6 +72,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --boundary
+- id: use
+  doc: ''
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

@@ -1,11 +1,6 @@
 class: CommandLineTool
-id: bcbio_monitor.cwl
+id: ../../../../home/ubuntu/BiocondaCli/bcbio_monitor.cwl
 inputs:
-- id: log_file
-  doc: Path to the file bcbio-nextgen-debug.log
-  type: string
-  inputBinding:
-    position: 0
 - id: config
   doc: PAth to the configuration file, defaults to ~/.bcbio/monitor.yaml
   type: string
@@ -32,6 +27,11 @@ inputs:
   type: boolean
   inputBinding:
     prefix: --local
+- id: log_file
+  doc: Path to the file bcbio-nextgen-debug.log
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

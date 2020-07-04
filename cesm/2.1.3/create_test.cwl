@@ -1,13 +1,8 @@
 class: CommandLineTool
-id: create_test.cwl
+id: ../../../../home/ubuntu/BiocondaCli/create_test.cwl
 inputs:
-- id: test_args
-  doc: Tests or test suites to run. Testname form is TEST.GRID.COMPSET[.MACHINE_COMPILER]
-  type: string
-  inputBinding:
-    position: 0
 - id: debug
-  doc: Print debug information (very verbose) to file /tmp/tmpyq76ofy5/create_test.log
+  doc: Print debug information (very verbose) to file /tmp/tmpeksbd5_3/create_test.log
   type: boolean
   inputBinding:
     prefix: --debug
@@ -238,6 +233,11 @@ inputs:
   type: string
   inputBinding:
     prefix: --mail-type
+- id: test_args
+  doc: Tests or test suites to run. Testname form is TEST.GRID.COMPSET[.MACHINE_COMPILER]
+  type: string
+  inputBinding:
+    position: 0
 outputs: []
 cwlVersion: v1.1
 baseCommand:

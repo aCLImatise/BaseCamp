@@ -1,5 +1,5 @@
 class: CommandLineTool
-id: wham.cwl
+id: ../../../../home/ubuntu/BiocondaCli/wham.cwl
 inputs:
 - id: if
   doc: find a bug, please open a report on github!
@@ -11,11 +11,6 @@ inputs:
   type: string
   inputBinding:
     prefix: -The
-- id: if
-  doc: 'have exome data use the -e option for best performance     '
-  type: string
-  inputBinding:
-    prefix: -If
 outputs: []
 cwlVersion: v1.1
 baseCommand:
