@@ -2,25 +2,12 @@
 positional: []
 named:
 - !Flag
-  description: Loads motifs within the file as specified by the following -m options.
-  synonyms:
-  - -i
-  args: !SimpleFlagArg
-    name: input filename
-  optional: true
-- !Flag
-  description: <id/n> <input filename>  Loads the specified motif (n-th position or
-    ID) within the file. Can also be combined with the -m option.
-  synonyms:
-  - -i
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <id/n>                  Loads a motif from the file specified by the
-    previous -i option. The motif ID or position can be used.
+  description: Loads a motif from the file specified by the previous -i option. The
+    motif ID or position can be used.
   synonyms:
   - -m
-  args: !EmptyFlagArg {}
+  args: !SimpleFlagArg
+    name: id/n
   optional: true
 - !Flag
   description: Number of samples for previously loaded motif (-m or -i).
@@ -169,7 +156,41 @@ named:
   optional: true
 command:
 - ceqlogo
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "Usage: ceqlogo [-i <filename> -m <id/n> | -i<id/n> <filename>]+ [options]\n\
+  \  1. Example: Load a motif called MA0036.1 within a MEME motif file\n     ceqlogo\
+  \ -i meme.motifs -m MA0036.1 -o logo.eps\n  2. Example: Load second motif from each\
+  \ of two files and shift the first one\n     ceqlogo -i2 meme1.motifs -s 2 -i2 meme2.motifs\
+  \ -o logo.png -f PNG\n\nMotif loading options:\n  -i <input filename>        Loads\
+  \ motifs within the file as specified by\n                              the following\
+  \ -m options.\n  -i<id/n> <input filename>  Loads the specified motif (n-th position\
+  \ or ID)\n                              within the file. Can also be combined with\
+  \ the\n                              -m option.\n  -m <id/n>                  Loads\
+  \ a motif from the file specified by the\n                              previous\
+  \ -i option. The motif ID or position\n                              can be used.\n\
+  \  -n <sample number>         Number of samples for previously loaded motif\n  \
+  \                            (-m or -i).\n  -s <shift>                 Shift for\
+  \ previously loaded motif (-m or -i).\n  -r                         Reverse complement\
+  \ previously loaded motif\n                              (-m or -i).\n  -p <pseudocounts>\
+  \          Pseudocounts for loaded motifs; default: 0.\n  -l                   \
+  \      Prefentially lookup motifs by position;\n                              default:\
+  \ prefer the ID.\n\nLogo options:\n  -o <output file>           Output file path.\
+  \ Default is stdout.\n  -f <format>                Format of output (EPS, PNG);\
+  \ default: EPS\n  -h <logo height>           Height of output logo in cm (real #\
+  \ > 0).\n  -w <logo width>            Width of output logo in cm (real # > 0).\n\
+  \  -t <title label>           Label for title.\n  -d <fine print>            Descriptive\
+  \ fine print.\n  -x <x-axis label>          Label for x-axis.\n  -y <y-axis label>\
+  \          Label for y-axis; default: \"bits\".\n  -c <tic bits>              Number\
+  \ of bits between tic marks.\n  -e <error bar fraction>    Fraction of error bar\
+  \ to show (real # > 0).\n\nLogo toggles (all uppercase) \n  -S   ...................\
+  \   Turn on small sample correction.\n  -B   ...................   Turn on bar ends.\n\
+  \  -E   ...................   Turn on error bars.\n  -O   ...................  \
+  \ Turn on outlining of characters.\n  -X   ...................   Turn on boxing\
+  \ of characters  \n  -N   ...................   Turn off numbering of x-axis.\n\
+  \  -Y   ...................   Turn off y-axis \n"
+generated_using:
+- --help

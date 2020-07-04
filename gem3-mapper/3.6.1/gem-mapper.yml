@@ -10,16 +10,20 @@ named:
     name: file
   optional: true
 - !Flag
-  description: '|-1 <file> (paired-end, end-1)'
+  description: (paired-end, end-1)
   synonyms:
   - --i1
-  args: !EmptyFlagArg {}
+  - '-1'
+  args: !SimpleFlagArg
+    name: file
   optional: true
 - !Flag
-  description: '|-2 <file> (paired-end, end-2)'
+  description: (paired-end, end-2)
   synonyms:
   - --i2
-  args: !EmptyFlagArg {}
+  - '-2'
+  args: !SimpleFlagArg
+    name: file
   optional: true
 - !Flag
   description: (gzip input)
@@ -69,23 +73,26 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: <number|percentage> (default=0.12, 12%)
+  description: (default=0.12, 12%)
   synonyms:
   - --alignment-max-error
   - -e
-  args: !EmptyFlagArg {}
+  args: !SimpleFlagArg
+    name: number|percentage
   optional: true
 - !Flag
-  description: <number|percentage> (default=80%)
+  description: (default=80%)
   synonyms:
   - --alignment-global-min-identity
-  args: !EmptyFlagArg {}
+  args: !SimpleFlagArg
+    name: number|percentage
   optional: true
 - !Flag
-  description: <number|percentage> (default=0.20)
+  description: (default=0.20)
   synonyms:
   - --alignment-global-min-score
-  args: !EmptyFlagArg {}
+  args: !SimpleFlagArg
+    name: number|percentage
   optional: true
 - !Flag
   description: "'never'|'if-unmapped' (default=if-unmapped)"
@@ -94,16 +101,18 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: <number|percentage> (default=40)
+  description: (default=40)
   synonyms:
   - --alignment-local-min-identity
-  args: !EmptyFlagArg {}
+  args: !SimpleFlagArg
+    name: number|percentage
   optional: true
 - !Flag
-  description: <number|percentage> (default=20)
+  description: (default=20)
   synonyms:
   - --alignment-local-min-score
-  args: !EmptyFlagArg {}
+  args: !SimpleFlagArg
+    name: number|percentage
   optional: true
 - !Flag
   description: (default=disabled)
@@ -209,6 +218,7 @@ named:
   optional: true
 command:
 - gem-mapper
+parent:
 subcommands: []
 help_flag: !Flag
   description: (print usage)
@@ -220,3 +230,30 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "USAGE: ./gem-mapper [ARGS]...\n    [I/O]\n      --index|-I <index_file.gem>\n\
+  \      --input|-i <file> (FASTA/FASTQ, default=stdin)\n      --i1|-1 <file> (paired-end,\
+  \ end-1)\n      --i2|-2 <file> (paired-end, end-2)\n      --gzip-input|-z  (gzip\
+  \ input)\n      --bzip-input|-j  (bzip input)\n      --output|-o <output_prefix>\
+  \ (default=stdout)\n      --gzip-output  (gzip output)\n      --bzip-output  (bzip\
+  \ output)\n      --report-file <file_name> (default=disabled)\n    [Single-end Alignment]\n\
+  \      --mapping-mode 'fast'|'sensitive'|'customed' (default=fast)\n      --alignment-max-error|-e\
+  \ <number|percentage> (default=0.12, 12%)\n      --alignment-global-min-identity\
+  \ <number|percentage> (default=80%)\n      --alignment-global-min-score <number|percentage>\
+  \ (default=0.20)\n      --alignment-local 'never'|'if-unmapped' (default=if-unmapped)\n\
+  \      --alignment-local-min-identity <number|percentage> (default=40)\n      --alignment-local-min-score\
+  \ <number|percentage> (default=20)\n    [Paired-end Alignment]\n      --paired-end-alignment|-p\
+  \ \n      --min-template-length|-l <number> (default=disabled)\n      --max-template-length|-L\
+  \ <number> (default=10000)\n      --discordant-pair-search 'always'|'if-no-concordant'|'never'\
+  \ (default=if-no-concordant)\n    [Bisulfite Alignment]\n      --bisulfite-read\
+  \ 'inferred','1','2','interleaved','non-stranded' (default=inferred)\n      --underconversion_sequence\
+  \ <sequence name> (default=NC_001416.1)\n      --overconversion_sequence <sequence\
+  \ name> (default=NC_001604.1)\n      --control_sequence <sequence name> (default=NC_001422.1)\n\
+  \    [Alignment Score]\n      --gap-affine-penalties A,B,O,X (default=1,4,6,1)\n\
+  \    [Reporting]\n      --max-reported-matches|-M <number>|'all' (default=5)\n \
+  \   [Output-format]\n      --output-format|-F 'MAP'|'SAM' (default=SAM)\n      --sam-compact\
+  \ 'true'|'false' (default=true)\n      --sam-read-group-header|-r <read_group_header>\
+  \ (i.e. '@RG\\tID:xx\\tSM:yy') (default=NULL)\n    [System]\n      --threads|-t\
+  \ <number> (default=#cores)\n    [Miscellaneous]\n      --verbose|-v 'quiet'|'user'|'dev'\
+  \ (default=user)\n      --version \n      --help|-h  (print usage)\n"
+generated_using:
+- --help

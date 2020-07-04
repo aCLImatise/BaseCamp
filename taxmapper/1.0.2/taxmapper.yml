@@ -1,8 +1,15 @@
-!Command
+&id001 !Command
 positional: []
-named: []
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - taxmapper
+parent:
 subcommands:
 - !Command
   positional: []
@@ -57,6 +64,7 @@ subcommands:
   command:
   - taxmapper
   - search
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -67,6 +75,19 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: taxmapper search [-h] -f FILE1 [-r FILE2] [--rapsearch RAPSEARCH]\
+    \ -d\n                        DATABASE [-o OUTPUT] [-t THREADS]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -f FILE1, --forward\
+    \ FILE1\n                        Forward reads in fasta or fastq format\n  -r\
+    \ FILE2, --reverse FILE2\n                        Reads in fasta or fastq format\
+    \ [optional]\n  --rapsearch RAPSEARCH\n                        Rapsearch path,\
+    \ version >=2.24 [default: rapsearch set\n                        in PATH variable]\n\
+    \  -d DATABASE, --database DATABASE\n                        Path to RAPSearch\
+    \ database index\n  -o OUTPUT, --out OUTPUT\n                        Basename\
+    \ for output files [default: <input>_hits]\n  -t THREADS, --threads THREADS\n\
+    \                        Number of threads [default: 4]\n"
+  generated_using: &id002
+  - --help
 - !Command
   positional: []
   named:
@@ -123,6 +144,7 @@ subcommands:
   command:
   - taxmapper
   - map
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -133,6 +155,20 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: taxmapper map [-h] -m LENGTH -f FILE1 [-r FILE2] [-o OUTPUT]\n\
+    \                     [-c COMBINE] [-t THREADS]\n\noptional arguments:\n  -h,\
+    \ --help            show this help message and exit\n  -m LENGTH             Maximum\
+    \ read length\n  -f FILE1, --forward FILE1\n                        Forward read\
+    \ aln file\n  -r FILE2, --reverse FILE2\n                        Reverse read\
+    \ aln file [optional]\n  -o OUTPUT, --out OUTPUT\n                        Output\
+    \ file [default: taxa.tsv]\n  -c COMBINE, --combine COMBINE\n                \
+    \        How to combine forward and reverse hits, for\n                      \
+    \  \"concordant\" forward and reverse have to map to the\n                   \
+    \     same taxon, for \"best\" the best hit from forward and\n               \
+    \         reverse is returned [default: best]\n  -t THREADS, --threads THREADS\n\
+    \                        Number of threads, used to map forward and reverse\n\
+    \                        reads in parallel [default: 2]\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -195,6 +231,7 @@ subcommands:
   command:
   - taxmapper
   - filter
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -205,25 +242,44 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: taxmapper filter [-h] -i TAXA [-o OUTPUT] [-a AUTOMATIC]\n  \
+    \                      [--identity IDENTITY] [-r RATIO] [--evalue EVALUE]\n  \
+    \                      [-d DIFF]\n\noptional arguments:\n  -h, --help        \
+    \    show this help message and exit\n  -i TAXA, --tax TAXA   Taxonomy mapping\
+    \ file (taxa.tsv if not specified\n                        otherwise).\n  -o OUTPUT,\
+    \ --out OUTPUT\n                        Output file [default: taxa_filtered.tsv]\n\
+    \  -a AUTOMATIC, --auto AUTOMATIC\n                        Automatic filter with\
+    \ probability threshold, if\n                        automatic filter is chosen\
+    \ all other thresholds will\n                        be ignored [nan or 0 - 1,\
+    \ default: 0.4]\n  --identity IDENTITY   Threshold for identity of best hit [default:\
+    \ nan]\n  -r RATIO, --identity-ratio RATIO\n                        Threshold\
+    \ for identity ratio [1 - 10, default: nan]\n  --evalue EVALUE       Threshold\
+    \ for log e-values of best hit [default: nan]\n  -d DIFF, --evalue-diff DIFF\n\
+    \                        Threshold for absolute difference in e-values [0 -\n\
+    \                        100, default: nan]\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
   - !Flag
-    description: ''
+    description: Filtered taxonomy mapping file.
     synonyms:
     - -i
+    - --tax
     args: !SimpleFlagArg
       name: TAXA
     optional: true
   - !Flag
-    description: ''
+    description: 'Output file 1, counted taxa for first taxonomic hierarchy [default:
+      taxa_counts_level1.tsv]'
     synonyms:
     - --out1
     args: !SimpleFlagArg
       name: OUTPUT1
     optional: true
   - !Flag
-    description: ''
+    description: 'Output file 2, counted taxa for second taxonomic hierarchy [default:
+      taxa_counts_level2.tsv]'
     synonyms:
     - --out2
     args: !SimpleFlagArg
@@ -232,15 +288,24 @@ subcommands:
   command:
   - taxmapper
   - count
+  parent: *id001
   subcommands: []
   help_flag: !Flag
-    description: ''
+    description: show this help message and exit
     synonyms:
     - -h
+    - --help
     args: !EmptyFlagArg {}
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: taxmapper count [-h] -i TAXA [--out1 OUTPUT1] [--out2 OUTPUT2]\n\
+    \noptional arguments:\n  -h, --help           show this help message and exit\n\
+    \  -i TAXA, --tax TAXA  Filtered taxonomy mapping file.\n  --out1 OUTPUT1    \
+    \   Output file 1, counted taxa for first taxonomic\n                       hierarchy\
+    \ [default: taxa_counts_level1.tsv]\n  --out2 OUTPUT2       Output file 2, counted\
+    \ taxa for second taxonomic\n                       hierarchy [default: taxa_counts_level2.tsv]\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -291,6 +356,7 @@ subcommands:
   command:
   - taxmapper
   - plot
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -301,6 +367,22 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: taxmapper plot [-h] -t TAXA [TAXA ...] [-s SAMPLES [SAMPLES ...]]\n\
+    \                      [-f FREQ] [-c COUNTS] [-p PLOT]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -t TAXA [TAXA ...],\
+    \ --taxa TAXA [TAXA ...]\n                        Taxonomy file(s), counted taxa\
+    \ for a taxonomic\n                        hierarchy\n  -s SAMPLES [SAMPLES ...],\
+    \ --samples SAMPLES [SAMPLES ...]\n                        Optional sample names,\
+    \ sample names have to be in the\n                        same order as taxonomy\
+    \ input files. If no samplenames\n                        are provided, the base\
+    \ names of the taxa file(s) will\n                        be used.\n  -f FREQ,\
+    \ --freq FREQ  Output file 1, taxon matrix with normalized\n                 \
+    \       frequencies [default: taxa_freq_norm.tsv]\n  -c COUNTS, --counts COUNTS\n\
+    \                        Output file 2, taxon matrix with counts [default:\n \
+    \                       taxa_counts.tsv]\n  -p PLOT, --plot PLOT  Output file\
+    \ 3, stacked barplot of total count\n                        normalized taxa [default:\
+    \ taxa_freq_norm.svg]\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -362,6 +444,7 @@ subcommands:
   command:
   - taxmapper
   - run
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -372,6 +455,32 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-help_flag:
+  help_text: "usage: taxmapper run [-h] -d DATABASE -f FOLDER [-r REVERSE] [-s SUFFIX]\
+    \ -m\n                     LENGTH [-o OUTPUT] [-t THREADS]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -d DATABASE, --database\
+    \ DATABASE\n                        Database path for RAPseach database index\n\
+    \  -f FOLDER, --folder FOLDER\n                        Folder with reads in fasta\
+    \ or fastq format\n  -r REVERSE, --reverse REVERSE\n                        Reads\
+    \ also contain reverse read, [default: True]\n  -s SUFFIX, --suffix SUFFIX\n \
+    \                       Suffix of paired end reads, [default: \"_R1,_R2\"]\n \
+    \ -m LENGTH             Maximum read length\n  -o OUTPUT, --out OUTPUT\n     \
+    \                   Output folder, [default: \"results\"]\n  -t THREADS, --threads\
+    \ THREADS\n                        Number of threads, [default: 4]\n"
+  generated_using: *id002
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
+help_text: "usage: taxmapper [-h] [-v] {search,map,filter,count,plot,run} ...\n\n\
+  positional arguments:\n  {search,map,filter,count,plot,run}\n    search        \
+  \      RAPSearch wrapper to search with reads in database\n    map             \
+  \    Map RAPSearch results to taxonomic groups\n    filter              Filter taxonomic\
+  \ assignments\n    count               Count taxonomic groups\n    plot        \
+  \        Nomalize and plot taxonomic groups\n    run                 Run complete\
+  \ pipeline\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -v, --version\n"
+generated_using: *id002

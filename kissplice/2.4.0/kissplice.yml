@@ -219,6 +219,7 @@ named:
   optional: true
 command:
 - kissplice
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -234,3 +235,74 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "KISSPLICE_INSTDIR: /tmp/tmpdtb2yqjz/bin\nKS_SEC_EXEC_PATH: /tmp/tmpdtb2yqjz/libexec/kissplice\n\
+  usage: kissplice [-h] [-r READFILES] [-k KVAL] [-b BVAL] [-l LLMAX]\n          \
+  \       [-m LL_MIN] [-M UL_MAX] [-g GRAPH_PREFIX] [-o OUT_DIR]\n               \
+  \  [-d PATH_TO_TMP] [-t NBPROCS] [-s OUTPUT_SNPS] [-v] [-u]\n                 [-c\
+  \ MIN_COV] [-C MIN_RELATIVE_COV] [-z GENOME_SIZE]\n                 [-e MIN_EDIT_DIST]\
+  \ [-y MAX_CYCLES] [--mismatches MISM]\n                 [--counts COUNTSMETHOD]\
+  \ [--min_overlap MINOVERLAP]\n                 [--timeout TIMEOUT] [--version] [--output-context]\n\
+  \                 [--output-path] [--output-branch-count] [--keep-bccs]\n      \
+  \           [--experimental] [--max-memory MAX_MEMORY] [--keep-counts]\n\nkisSplice\
+  \ - local assembly of SNPs, indels and AS events\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -r READFILES          input fasta/q\
+  \ read files or compressed (.gz) fasta/q\n                        files (mutiple,\
+  \ such as \"-r file1 -r file2...\")\n  -k KVAL               k-mer size (default=41)\n\
+  \  -b BVAL               maximum number of branching nodes (default 5)\n  -l LLMAX\
+  \              maximal length of the shorter path (default: 2k+1)\n  -m LL_MIN \
+  \            minimum length of the shorter path (default 2k-8)\n  -M UL_MAX    \
+  \         maximum length of the longest path (default 1000000),\n              \
+  \          skipped exons longer than UL_MAX are not reported\n  -g GRAPH_PREFIX\
+  \       path and prefix to pre-built de Bruijn graph (suffixed\n               \
+  \         by .edges/.nodes) if jointly used with -r, graph used\n              \
+  \          to find bubbles and reads used for quantification\n  -o OUT_DIR     \
+  \       path to store the results and the summary log file\n                   \
+  \     (default = ./results)\n  -d PATH_TO_TMP        specific directory (absolute\
+  \ path) where to build\n                        temporary files (default temporary\
+  \ directory\n                        otherwise)\n  -t NBPROCS            number\
+  \ of cores (must be <= number of physical cores)\n  -s OUTPUT_SNPS        0, 1 or\
+  \ 2. Changes which types of SNPs will be output.\n                        If 0 (default),\
+  \ will not output SNPs. If 1, will\n                        output Type0a-SNPs.\
+  \ If 2, will output Type0a and\n                        Type0b SNPs (warning: this\
+  \ option may increase a lot\n                        the running time. You might\
+  \ also want to try the\n                        experimental algorithm here)\n \
+  \ -v                    Verbose mode\n  -u                    keep the nodes/edges\
+  \ file for unfinished bccs\n  -c MIN_COV            an integer, k-mers present strictly\
+  \ less than this\n                        number of times in the dataset will be\
+  \ discarded\n                        (default 2)\n  -C MIN_RELATIVE_COV   a percentage\
+  \ from [0,1), edges with relative coverage\n                        below this number\
+  \ are removed (default 0.05)\n  -z GENOME_SIZE        estimated genome/transcriptome\
+  \ size (default = 1G)\n  -e MIN_EDIT_DIST      edit distance threshold, if the two\
+  \ sequences (paths)\n                        of a bubble have edit distance smaller\
+  \ than this\n                        threshold, the bubble is classified as an inexact\n\
+  \                        repeat (default 3)\n  -y MAX_CYCLES         maximal number\
+  \ of bubbles enumeration in each bcc. If\n                        exceeded, no bubble\
+  \ is output for the bcc (default\n                        100M)\n  --mismatches\
+  \ MISM     Maximal number of substitutions authorized between a\n              \
+  \          read and a fragment (for quantification only), default\n            \
+  \            0. If you increase the mismatch and use --counts think\n          \
+  \              of increasing min_overlap too.\n  --counts COUNTSMETHOD\n       \
+  \                 0,1 or 2 . Changes how the counts will be reported. If\n     \
+  \                   0 (default): total counts, if 1: counts on junctions,\n    \
+  \                    if 2: all counts. see User guide for more information\n  --min_overlap\
+  \ MINOVERLAP\n                        Set how many nt must overlap a junction to\
+  \ be counted\n                        by --counts option. Default=3. see User guide\
+  \ for more\n                        information\n  --timeout TIMEOUT     max amount\
+  \ of time (in seconds) spent for enumerating\n                        bubbles in\
+  \ each bcc. If exceeded, no bubble is output\n                        for the bcc\
+  \ (default 100000)\n  --version             show program's version number and exit\n\
+  \  --output-context      Will output the maximum non-ambiguous context of a\n  \
+  \                      bubble\n  --output-path         Will output the id of the\
+  \ nodes composing the two\n                        paths of the bubbles.\n  --output-branch-count\n\
+  \                        Will output the number of branching nodes in each\n   \
+  \                     path.\n  --keep-bccs           Keep the node/edges files for\
+  \ all bccs.\n  --experimental        Uses a new experimental algorithm that searches\
+  \ for\n                        bubbles by listing all paths.\n  --max-memory MAX_MEMORY\n\
+  \                        If you use the experimental algorithm, you must\n     \
+  \                   provide the maximum size of the process's virtual\n        \
+  \                memory (address space) in megabytes (default\n                \
+  \        unlimited). WARNING: this option does not work on Mac\n               \
+  \         operating systems.\n  --keep-counts         Keep the .counts file after\
+  \ the sequencing-errors-\n                        removal step.\n"
+generated_using:
+- --help

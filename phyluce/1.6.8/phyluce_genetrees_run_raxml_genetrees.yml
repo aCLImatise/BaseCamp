@@ -54,10 +54,10 @@ named:
   synonyms:
   - --verbosity
   args: !ChoiceFlagArg
-    choices:
-    - INFO
-    - WARN
-    - CRITICAL
+    choices: !!set
+      WARN:
+      CRITICAL:
+      INFO:
   optional: true
 - !Flag
   description: The path to a directory to hold logs.
@@ -68,6 +68,7 @@ named:
   optional: true
 command:
 - phyluce_genetrees_run_raxml_genetrees
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -78,3 +79,23 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: phyluce_genetrees_run_raxml_genetrees [-h] --input INPUT --output\n\
+  \                                             OUTPUT [--outgroup OUTGROUP]\n   \
+  \                                          [--threads THREADS]\n               \
+  \                              [--tree-searches TREE_SEARCHES]\n               \
+  \                              [--cores CORES] [--quiet]\n                     \
+  \                        [--verbosity {INFO,WARN,CRITICAL}]\n                  \
+  \                           [--log-path LOG_PATH]\n\nPerforms ML tree search on\
+  \ a folder of phylip-formatted alignments using RAxML\n\noptional arguments:\n \
+  \ -h, --help            show this help message and exit\n  --input INPUT       \
+  \  The input directory containing alignments in phylip\n                       \
+  \ format\n  --output OUTPUT       The output directory to hold alignments\n  --outgroup\
+  \ OUTGROUP   The outgroup to use\n  --threads THREADS     The number of RAxML threads\
+  \ to run (best to determine\n                        empirically)\n  --tree-searches\
+  \ TREE_SEARCHES\n                        The number of tree searches to run.\n \
+  \ --cores CORES         The number of concurrent RAxML jobs to run\n  --quiet  \
+  \             Suppress the CPU usage question\n  --verbosity {INFO,WARN,CRITICAL}\n\
+  \                        The logging level to use.\n  --log-path LOG_PATH   The\
+  \ path to a directory to hold logs.\n"
+generated_using:
+- --help

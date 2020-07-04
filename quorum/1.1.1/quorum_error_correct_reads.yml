@@ -1,5 +1,15 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: error_correct_reads
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: db
+  optional: false
 named:
 - !Flag
   description: Number of threads (1)
@@ -154,6 +164,7 @@ named:
   optional: true
 command:
 - quorum_error_correct_reads
+parent:
 subcommands: []
 help_flag: !Flag
   description: This message
@@ -176,3 +187,31 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "Usage: error_correct_reads [options] db:path sequence:path+\n\nError correct\
+  \ reads from a fastq file based on the k-mer frequencies.\n\nOptions (default value\
+  \ in (), *required):\n -t, --thread=uint32                      Number of threads\
+  \ (1)\n -m, --min-count=uint32                   Minimum count for a k-mer to be\
+  \ considered \"good\" (1)\n -s, --skip=uint32                        Number of bases\
+  \ to skip for start k-mer (1)\n -g, --good=uint32                        Number\
+  \ of good k-mer in a row for anchor (2)\n -a, --anchor-count=uint32            \
+  \    Minimum count for an anchor k-mer (3)\n -w, --window=uint32               \
+  \       Size of window (10)\n -e, --error=uint32                       Maximum number\
+  \ of error in a window (3)\n -o, --output=prefix                      Output file\
+  \ prefix (error_corrected)\n     --contaminant=path                   Jellyfish\
+  \ database of contaminant k-mers\n     --trim-contaminant                   Trim\
+  \ reads containing contaminated k-mers instead of discarding (false)\n     --homo-trim=int32\
+  \                    Trim homo-polymer run at the 3' end\n     --gzip          \
+  \                     Gzip output file (false)\n -M, --no-mmap                 \
+  \           Do not memory map the input mer database (false)\n     --apriori-error-rate=double\
+  \          Probability of a base being an error (0.01)\n     --poisson-threshold=double\
+  \           Error probability threshold in Poisson test (1.0e-06)\n -p, --cutoff=uint32\
+  \                      Poisson cutoff when there are multiple choices\n -q, --qual-cutoff-value=uint32\
+  \           Any base above with quality equal or greater is untouched when there\
+  \ are multiple choices\n -Q, --qual-cutoff-char=string            Any base above\
+  \ with quality equal or greater is untouched when there are multiple choices\n -d,\
+  \ --no-discard                         Do not discard reads, output a single N (false)\n\
+  \ -v, --verbose                            Be verbose (false)\n -U, --usage    \
+  \                          Usage\n -h, --help                               This\
+  \ message\n -V, --version                            Version\n"
+generated_using:
+- --help

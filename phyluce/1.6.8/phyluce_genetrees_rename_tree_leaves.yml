@@ -40,22 +40,22 @@ named:
   synonyms:
   - --input-format
   args: !ChoiceFlagArg
-    choices:
-    - nexus
-    - newick
-    - fasta
-    - phylip
+    choices: !!set
+      fasta:
+      phylip:
+      nexus:
+      newick:
   optional: true
 - !Flag
   description: The tree file format
   synonyms:
   - --output-format
   args: !ChoiceFlagArg
-    choices:
-    - nexus
-    - newick
-    - fasta
-    - phylip
+    choices: !!set
+      fasta:
+      phylip:
+      nexus:
+      newick:
   optional: true
 - !Flag
   description: The resulting name to root the tree on
@@ -73,6 +73,7 @@ named:
   optional: true
 command:
 - phyluce_genetrees_rename_tree_leaves
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -83,3 +84,22 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: phyluce_genetrees_rename_tree_leaves [-h] --input INPUT --config\
+  \ CONFIG\n                                            --output OUTPUT --section\
+  \ SECTION\n                                            [--order {left:right,right:left}]\n\
+  \                                            [--input-format {nexus,newick,fasta,phylip}]\n\
+  \                                            [--output-format {nexus,newick,fasta,phylip}]\n\
+  \                                            [--reroot REROOT]\n               \
+  \                             [--do-not-preserve-spaces DO_NOT_PRESERVE_SPACES]\n\
+  \nRename the leaves of an input tree\n\noptional arguments:\n  -h, --help      \
+  \      show this help message and exit\n  --input INPUT         The input tree file\n\
+  \  --config CONFIG       A python config file mapping one name to another\n  --output\
+  \ OUTPUT       The output tree file\n  --section SECTION     The section of the\
+  \ conf file to use\n  --order {left:right,right:left}\n                        Map\
+  \ the names as entered or in reverse\n  --input-format {nexus,newick,fasta,phylip}\n\
+  \                        The tree file format\n  --output-format {nexus,newick,fasta,phylip}\n\
+  \                        The tree file format\n  --reroot REROOT       The resulting\
+  \ name to root the tree on\n  --do-not-preserve-spaces DO_NOT_PRESERVE_SPACES\n\
+  \                        Do not retain spaces in output names\n"
+generated_using:
+- --help

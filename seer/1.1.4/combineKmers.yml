@@ -2,63 +2,42 @@
 positional: []
 named:
 - !Flag
-  description: ''
+  description: '[ --samples ] arg    file with tab separated sample name and kmer
+    file'
   synonyms:
-  - -s
-  args: !SimpleFlagArg
-    name: samples.txt
+  - -r
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ''
+  description: '[ --output ] arg     output file prefix'
   synonyms:
   - -o
-  args: !SimpleFlagArg
-    name: all_kmers
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ''
+  description: (=1)  minimum number of samples kmer must occur in to be  printed
   synonyms:
   - --min_samples
-  args: !EmptyFlagArg {}
+  args: !SimpleFlagArg
+    name: arg
   optional: true
 command:
 - combineKmers
-subcommands:
-- !Command
-  positional: []
-  named:
-  - !Flag
-    description: '[ --samples ] arg  file with tab separated sample name and kmer
-      file'
-    synonyms:
-    - -r
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: '[ --output ] arg   output file prefix'
-    synonyms:
-    - -o
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: (=1) minimum number of samples kmer must occur in to be  printed
-    synonyms:
-    - --min_samples
-    args: !SimpleFlagArg
-      name: arg
-    optional: true
-  command:
-  - combineKmers
-  - '2'
-  subcommands: []
-  help_flag: !Flag
-    description: '[ --help ]          full help message'
-    synonyms:
-    - -h
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
-help_flag:
+parent:
+subcommands: []
+help_flag: !Flag
+  description: '[ --help ]           full help message'
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
+help_text: "combineKmers: basic algorithm to combine kmer counts across samples\n\n\
+  Required options:\n  -r [ --samples ] arg    file with tab separated sample name\
+  \ and kmer file\n  -o [ --output ] arg     output file prefix\n\nOther options:\n\
+  \  --min_samples arg (=1)  minimum number of samples kmer must occur in to be \n\
+  \                          printed\n  -h [ --help ]           full help message\n\
+  \n"
+generated_using:
+- --help

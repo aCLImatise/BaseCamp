@@ -1,5 +1,10 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: OPTION
+  optional: true
 named:
 - !Flag
   description: use N parallel threads [1] (N>=2 should be used when input files are
@@ -54,6 +59,7 @@ named:
   optional: true
 command:
 - ntcard
+parent:
 subcommands: []
 help_flag: !Flag
   description: display this help and exit
@@ -69,3 +75,17 @@ version_flag: !Flag
   args: !SimpleFlagArg
     name: output
   optional: true
+help_text: "Usage: ntCard [OPTION]... FILE(S)...\nEstimates k-mer coverage histogram\
+  \ in FILE(S).\n\nAcceptable file formats: fastq, fasta, sam, bam and in compressed\
+  \ formats gz, bz, zip, xz.\nA list of files containing file names in each row can\
+  \ be passed with @ prefix.\n\n Options:\n\n  -t, --threads=N\tuse N parallel threads\
+  \ [1] (N>=2 should be used when input files are >=2)\n  -k, --kmer=N\tthe length\
+  \ of kmer \n  -g, --gap=N\tthe length of gap in the gap seed [0]. g mod 2 must equal\
+  \ k mod 2 unless g == 0\n           \t-g does not support multiple k currently.\n\
+  \  -c, --cov=N\tthe maximum coverage of kmer in output [1000]\n  -p, --pref=STRING\
+  \    the prefix for output file name(s)\n  -o, --output=STRING\tthe name for output\
+  \ file name (used when output should be a single file)\n      --help\tdisplay this\
+  \ help and exit\n      --version\toutput version information and exit\n\nReport\
+  \ bugs to https://github.com/bcgsc/ntCard/issues\n"
+generated_using:
+- --help

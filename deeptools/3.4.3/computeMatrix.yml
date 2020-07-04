@@ -1,11 +1,32 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - computeMatrix
+parent:
 subcommands:
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: An
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: example
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: usage
+    optional: false
+  - !Positional
+    description: ''
+    position: 3
+    name: is
+    optional: false
   named:
   - !Flag
     description: 'File name or names, in BED or GTF format, containing the regions
@@ -159,6 +180,7 @@ subcommands:
   command:
   - computeMatrix
   - scale-regions
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -169,8 +191,208 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: An example usage is:\n  computeMatrix scale-regions -S <biwig\
+    \ file(s)> -R <bed file> -b 1000\n\noptional arguments:\n  -h, --help        \
+    \    show this help message and exit\n\nRequired arguments:\n  --regionsFileName\
+    \ File [File ...], -R File [File ...]\n                        File name or names,\
+    \ in BED or GTF format, containing\n                        the regions to plot.\
+    \ If multiple bed files are given,\n                        each one is considered\
+    \ a group that can be plotted\n                        separately. Also, adding\
+    \ a \"#\" symbol in the bed file\n                        causes all the regions\
+    \ until the previous \"#\" to be\n                        considered one group.\
+    \ (default: None)\n  --scoreFileName File [File ...], -S File [File ...]\n   \
+    \                     bigWig file(s) containing the scores to be plotted.\n  \
+    \                      Multiple files should be separated by spaced. BigWig\n\
+    \                        files can be obtained by using the bamCoverage or\n \
+    \                       bamCompare tools. More information about the bigWig\n\
+    \                        file format can be found at\n                       \
+    \ http://genome.ucsc.edu/goldenPath/help/bigWig.html\n                       \
+    \ (default: None)\n\nOutput options:\n  --outFileName OUTFILENAME, -out OUTFILENAME,\
+    \ -o OUTFILENAME\n                        File name to save the gzipped matrix\
+    \ file needed by\n                        the \"plotHeatmap\" and \"plotProfile\"\
+    \ tools. (default:\n                        None)\n  --outFileNameMatrix FILE\n\
+    \                        If this option is given, then the matrix of values\n\
+    \                        underlying the heatmap will be saved using the\n    \
+    \                    indicated name, e.g. IndividualValues.tab.This matrix\n \
+    \                       can easily be loaded into R or other programs.\n     \
+    \                   (default: None)\n  --outFileSortedRegions BED file\n     \
+    \                   File name in which the regions are saved after skiping\n \
+    \                       zeros or min/max threshold values. The order of the\n\
+    \                        regions in the file follows the sorting order\n     \
+    \                   selected. This is useful, for example, to generate\n     \
+    \                   other heatmaps keeping the sorting of the first\n        \
+    \                heatmap. Example: Heatmap1sortedRegions.bed (default:\n     \
+    \                   None)\n\nOptional arguments:\n  --version             show\
+    \ program's version number and exit\n  --regionBodyLength REGIONBODYLENGTH, -m\
+    \ REGIONBODYLENGTH\n                        Distance in bases to which all regions\
+    \ will be fit.\n                        (Default: 1000)\n  --startLabel STARTLABEL\n\
+    \                        Label shown in the plot for the start of the region.\n\
+    \                        Default is TSS (transcription start site), but could\n\
+    \                        be changed to anything, e.g. \"peak start\". Note that\n\
+    \                        this is only useful if you plan to plot the results\n\
+    \                        yourself and not, for example, with plotHeatmap, which\n\
+    \                        will override this. (Default: TSS)\n  --endLabel ENDLABEL\
+    \   Label shown in the plot for the region end. Default is\n                 \
+    \       TES (transcription end site). See the --startLabel\n                 \
+    \       option for more information. (Default: TES)\n  --beforeRegionStartLength\
+    \ BEFOREREGIONSTARTLENGTH, -b BEFOREREGIONSTARTLENGTH, --upstream BEFOREREGIONSTARTLENGTH\n\
+    \                        Distance upstream of the start site of the regions\n\
+    \                        defined in the region file. If the regions are genes,\n\
+    \                        this would be the distance upstream of the\n        \
+    \                transcription start site. (Default: 0)\n  --afterRegionStartLength\
+    \ AFTERREGIONSTARTLENGTH, -a AFTERREGIONSTARTLENGTH, --downstream AFTERREGIONSTARTLENGTH\n\
+    \                        Distance downstream of the end site of the given\n  \
+    \                      regions. If the regions are genes, this would be the\n\
+    \                        distance downstream of the transcription end site.\n\
+    \                        (Default: 0)\n  --unscaled5prime UNSCALED5PRIME\n   \
+    \                     Number of bases at the 5-prime end of the region to\n  \
+    \                      exclude from scaling. By default, each region is\n    \
+    \                    scaled to a given length (see the --regionBodyLength\n  \
+    \                      option). In some cases it is useful to look at\n      \
+    \                  unscaled signals around region boundaries, so this\n      \
+    \                  setting specifies the number of unscaled bases on the\n   \
+    \                     5-prime end of each boundary. (Default: 0)\n  --unscaled3prime\
+    \ UNSCALED3PRIME\n                        Like --unscaled5prime, but for the 3-prime\
+    \ end.\n                        (Default: 0)\n  --binSize BINSIZE, -bs BINSIZE\n\
+    \                        Length, in bases, of the non-overlapping bins for\n \
+    \                       averaging the score over the regions length. (Default:\n\
+    \                        10)\n  --sortRegions {descend,ascend,no,keep}\n     \
+    \                   Whether the output file should present the regions\n     \
+    \                   sorted. The default is to not sort the regions. Note\n   \
+    \                     that this is only useful if you plan to plot the\n     \
+    \                   results yourself and not, for example, with\n            \
+    \            plotHeatmap, which will override this. Note also that\n         \
+    \               unsorted output will be in whatever order the regions\n      \
+    \                  happen to be processed in and not match the order in\n    \
+    \                    the input files. If you require the output order to\n   \
+    \                     match that of the input regions, then either specify\n \
+    \                       \"keep\" or use computeMatrixOperations to resort the\n\
+    \                        results file. (Default: keep)\n  --sortUsing {mean,median,max,min,sum,region_length}\n\
+    \                        Indicate which method should be used for sorting. The\n\
+    \                        value is computed for each row.Note that the\n      \
+    \                  region_length option will lead to a dotted line within\n  \
+    \                      the heatmap that indicates the end of the regions.\n  \
+    \                      (Default: mean)\n  --sortUsingSamples SORTUSINGSAMPLES\
+    \ [SORTUSINGSAMPLES ...]\n                        List of sample numbers (order\
+    \ as in matrix), that are\n                        used for sorting by --sortUsing,\
+    \ no value uses all\n                        samples, example: --sortUsingSamples\
+    \ 1 3 (default:\n                        None)\n  --averageTypeBins {mean,median,min,max,std,sum}\n\
+    \                        Define the type of statistic that should be used over\n\
+    \                        the bin size range. The options are: \"mean\", \"median\"\
+    ,\n                        \"min\", \"max\", \"sum\" and \"std\". The default\
+    \ is \"mean\".\n                        (Default: mean)\n  --missingDataAsZero\
+    \   If set, missing data (NAs) will be treated as zeros.\n                   \
+    \     The default is to ignore such cases, which will be\n                   \
+    \     depicted as black areas in a heatmap. (see the\n                       \
+    \ --missingDataColor argument of the plotHeatmap command\n                   \
+    \     for additional options). (default: False)\n  --skipZeros           Whether\
+    \ regions with only scores of zero should be\n                        included\
+    \ or not. Default is to include them. (default:\n                        False)\n\
+    \  --minThreshold MINTHRESHOLD\n                        Numeric value. Any region\
+    \ containing a value that is\n                        less than or equal to this\
+    \ will be skipped. This is\n                        useful to skip, for example,\
+    \ genes where the read\n                        count is zero for any of the bins.\
+    \ This could be the\n                        result of unmappable areas and can\
+    \ bias the overall\n                        results. (Default: None)\n  --maxThreshold\
+    \ MAXTHRESHOLD\n                        Numeric value. Any region containing a\
+    \ value greater\n                        than or equal to this will be skipped.\
+    \ The\n                        maxThreshold is useful to skip those few regions\
+    \ with\n                        very high read counts (e.g. micro satellites)\
+    \ that may\n                        bias the average values. (Default: None)\n\
+    \  --blackListFileName BED file, -bl BED file\n                        A BED file\
+    \ containing regions that should be excluded\n                        from all\
+    \ analyses. Currently this works by rejecting\n                        genomic\
+    \ chunks that happen to overlap an entry.\n                        Consequently,\
+    \ for BAM files, if a read partially\n                        overlaps a blacklisted\
+    \ region or a fragment spans over\n                        it, then the read/fragment\
+    \ might still be considered.\n                        (default: None)\n  --samplesLabel\
+    \ SAMPLESLABEL [SAMPLESLABEL ...]\n                        Labels for the samples.\
+    \ This will then be passed to\n                        plotHeatmap and plotProfile.\
+    \ The default is to use the\n                        file name of the sample.\
+    \ The sample labels should be\n                        separated by spaces and\
+    \ quoted if a label\n                        itselfcontains a space E.g. --samplesLabel\
+    \ label-1\n                        \"label 2\" (default: None)\n  --smartLabels\
+    \         Instead of manually specifying labels for the input\n              \
+    \          bigWig and BED/GTF files, this causes deepTools to use\n          \
+    \              the file name after removing the path and extension.\n        \
+    \                (default: False)\n  --quiet, -q           Set to remove any warning\
+    \ or processing messages.\n                        (default: False)\n  --verbose\
+    \             Being VERY verbose in the status messages. --quiet\n           \
+    \             will disable this. (default: False)\n  --scale SCALE         If\
+    \ set, all values are multiplied by this number.\n                        (Default:\
+    \ 1)\n  --numberOfProcessors INT, -p INT\n                        Number of processors\
+    \ to use. Type \"max/2\" to use half\n                        the maximum number\
+    \ of processors or \"max\" to use all\n                        available processors.\
+    \ (Default: 1)\n\nGTF/BED12 options:\n  --metagene            When either a BED12\
+    \ or GTF file are used to provide\n                        regions, perform the\
+    \ computation on the merged exons,\n                        rather than using\
+    \ the genomic interval defined by the\n                        5-prime and 3-prime\
+    \ most transcript bound (i.e.,\n                        columns 2 and 3 of a BED\
+    \ file). If a BED3 or BED6 file\n                        is used as input, then\
+    \ columns 2 and 3 are used as an\n                        exon. (Default: False)\n\
+    \  --transcriptID TRANSCRIPTID\n                        When a GTF file is used\
+    \ to provide regions, only\n                        entries with this value as\
+    \ their feature (column 3)\n                        will be processed as transcripts.\
+    \ (Default:\n                        transcript)\n  --exonID EXONID       When\
+    \ a GTF file is used to provide regions, only\n                        entries\
+    \ with this value as their feature (column 3)\n                        will be\
+    \ processed as exons. CDS would be another\n                        common value\
+    \ for this. (Default: exon)\n  --transcript_id_designator TRANSCRIPT_ID_DESIGNATOR\n\
+    \                        Each region has an ID (e.g., ACTB) assigned to it,\n\
+    \                        which for BED files is either column 4 (if it exists)\n\
+    \                        or the interval bounds. For GTF files this is instead\n\
+    \                        stored in the last column as a key:value pair (e.g.,\n\
+    \                        as 'transcript_id \"ACTB\"', for a key of transcript_id\n\
+    \                        and a value of ACTB). In some cases it can be\n     \
+    \                   convenient to use a different identifier. To do so,\n    \
+    \                    set this to the desired key. (Default: transcript_id)\n\n\
+    deepBlue arguments:\n  Options used only for remote bedgraph/wig files hosted\
+    \ on deepBlue\n\n  --deepBlueURL DEEPBLUEURL\n                        For remote\
+    \ files bedgraph/wiggle files hosted on\n                        deepBlue, this\
+    \ specifies the server URL. The default\n                        is \"http://deepblue.mpi-inf.mpg.de/xmlrpc\"\
+    , which\n                        should not be changed without good reason. (default:\n\
+    \                        http://deepblue.mpi-inf.mpg.de/xmlrpc)\n  --userKey USERKEY\
+    \     For remote files bedgraph/wiggle files hosted on\n                     \
+    \   deepBlue, this specifies the user key to use for\n                       \
+    \ access. The default is \"anonymous_key\", which suffices\n                 \
+    \       for public datasets. If you need access to a\n                       \
+    \ restricted access/private dataset, then request a key\n                    \
+    \    from deepBlue and specify it here. (default:\n                        anonymous_key)\n\
+    \  --deepBlueTempDir DEEPBLUETEMPDIR\n                        If specified, temporary\
+    \ files from preloading datasets\n                        from deepBlue will be\
+    \ written here (note, this\n                        directory must exist). If\
+    \ not specified, where ever\n                        temporary files would normally\
+    \ be written on your\n                        system is used. (default: None)\n\
+    \  --deepBlueKeepTemp    If specified, temporary bigWig files from preloading\n\
+    \                        deepBlue datasets are not deleted. A message will be\n\
+    \                        printed noting where these files are and what sample\n\
+    \                        they correspond to. These can then be used if you wish\n\
+    \                        to analyse the same sample with the same regions\n  \
+    \                      again. (default: False)\n"
+  generated_using: &id002
+  - --help
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: An
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: example
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: usage
+    optional: false
+  - !Positional
+    description: ''
+    position: 3
+    name: is
+    optional: false
   named:
   - !Flag
     description: 'File name or names, in BED or GTF format, containing the regions
@@ -324,6 +546,7 @@ subcommands:
   command:
   - computeMatrix
   - reference-point
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -334,6 +557,169 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: An example usage is:\n  computeMatrix reference-point -S <biwig\
+    \ file(s)> -R <bed file> -a 3000 -b 3000\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n\nRequired arguments:\n  --regionsFileName\
+    \ File [File ...], -R File [File ...]\n                        File name or names,\
+    \ in BED or GTF format, containing\n                        the regions to plot.\
+    \ If multiple bed files are given,\n                        each one is considered\
+    \ a group that can be plotted\n                        separately. Also, adding\
+    \ a \"#\" symbol in the bed file\n                        causes all the regions\
+    \ until the previous \"#\" to be\n                        considered one group.\
+    \ (default: None)\n  --scoreFileName File [File ...], -S File [File ...]\n   \
+    \                     bigWig file(s) containing the scores to be plotted.\n  \
+    \                      Multiple files should be separated by spaced. BigWig\n\
+    \                        files can be obtained by using the bamCoverage or\n \
+    \                       bamCompare tools. More information about the bigWig\n\
+    \                        file format can be found at\n                       \
+    \ http://genome.ucsc.edu/goldenPath/help/bigWig.html\n                       \
+    \ (default: None)\n\nOutput options:\n  --outFileName OUTFILENAME, -out OUTFILENAME,\
+    \ -o OUTFILENAME\n                        File name to save the gzipped matrix\
+    \ file needed by\n                        the \"plotHeatmap\" and \"plotProfile\"\
+    \ tools. (default:\n                        None)\n  --outFileNameMatrix FILE\n\
+    \                        If this option is given, then the matrix of values\n\
+    \                        underlying the heatmap will be saved using the\n    \
+    \                    indicated name, e.g. IndividualValues.tab.This matrix\n \
+    \                       can easily be loaded into R or other programs.\n     \
+    \                   (default: None)\n  --outFileSortedRegions BED file\n     \
+    \                   File name in which the regions are saved after skiping\n \
+    \                       zeros or min/max threshold values. The order of the\n\
+    \                        regions in the file follows the sorting order\n     \
+    \                   selected. This is useful, for example, to generate\n     \
+    \                   other heatmaps keeping the sorting of the first\n        \
+    \                heatmap. Example: Heatmap1sortedRegions.bed (default:\n     \
+    \                   None)\n\nOptional arguments:\n  --version             show\
+    \ program's version number and exit\n  --referencePoint {TSS,TES,center}\n   \
+    \                     The reference point for the plotting could be either\n \
+    \                       the region start (TSS), the region end (TES) or the\n\
+    \                        center of the region. Note that regardless of what you\n\
+    \                        specify, plotHeatmap/plotProfile will default to using\n\
+    \                        \"TSS\" as the label. (Default: TSS)\n  --beforeRegionStartLength\
+    \ INT bp, -b INT bp, --upstream INT bp\n                        Distance upstream\
+    \ of the reference-point selected.\n                        (Default: 500)\n \
+    \ --afterRegionStartLength INT bp, -a INT bp, --downstream INT bp\n          \
+    \              Distance downstream of the reference-point selected.\n        \
+    \                (Default: 1500)\n  --nanAfterEnd         If set, any values after\
+    \ the region end are discarded.\n                        This is useful to visualize\
+    \ the region end when not\n                        using the scale-regions mode\
+    \ and when the reference-\n                        point is set to the TSS. (default:\
+    \ False)\n  --binSize BINSIZE, -bs BINSIZE\n                        Length, in\
+    \ bases, of the non-overlapping bins for\n                        averaging the\
+    \ score over the regions length. (Default:\n                        10)\n  --sortRegions\
+    \ {descend,ascend,no,keep}\n                        Whether the output file should\
+    \ present the regions\n                        sorted. The default is to not sort\
+    \ the regions. Note\n                        that this is only useful if you plan\
+    \ to plot the\n                        results yourself and not, for example,\
+    \ with\n                        plotHeatmap, which will override this. Note also\
+    \ that\n                        unsorted output will be in whatever order the\
+    \ regions\n                        happen to be processed in and not match the\
+    \ order in\n                        the input files. If you require the output\
+    \ order to\n                        match that of the input regions, then either\
+    \ specify\n                        \"keep\" or use computeMatrixOperations to\
+    \ resort the\n                        results file. (Default: keep)\n  --sortUsing\
+    \ {mean,median,max,min,sum,region_length}\n                        Indicate which\
+    \ method should be used for sorting. The\n                        value is computed\
+    \ for each row.Note that the\n                        region_length option will\
+    \ lead to a dotted line within\n                        the heatmap that indicates\
+    \ the end of the regions.\n                        (Default: mean)\n  --sortUsingSamples\
+    \ SORTUSINGSAMPLES [SORTUSINGSAMPLES ...]\n                        List of sample\
+    \ numbers (order as in matrix), that are\n                        used for sorting\
+    \ by --sortUsing, no value uses all\n                        samples, example:\
+    \ --sortUsingSamples 1 3 (default:\n                        None)\n  --averageTypeBins\
+    \ {mean,median,min,max,std,sum}\n                        Define the type of statistic\
+    \ that should be used over\n                        the bin size range. The options\
+    \ are: \"mean\", \"median\",\n                        \"min\", \"max\", \"sum\"\
+    \ and \"std\". The default is \"mean\".\n                        (Default: mean)\n\
+    \  --missingDataAsZero   If set, missing data (NAs) will be treated as zeros.\n\
+    \                        The default is to ignore such cases, which will be\n\
+    \                        depicted as black areas in a heatmap. (see the\n    \
+    \                    --missingDataColor argument of the plotHeatmap command\n\
+    \                        for additional options). (default: False)\n  --skipZeros\
+    \           Whether regions with only scores of zero should be\n             \
+    \           included or not. Default is to include them. (default:\n         \
+    \               False)\n  --minThreshold MINTHRESHOLD\n                      \
+    \  Numeric value. Any region containing a value that is\n                    \
+    \    less than or equal to this will be skipped. This is\n                   \
+    \     useful to skip, for example, genes where the read\n                    \
+    \    count is zero for any of the bins. This could be the\n                  \
+    \      result of unmappable areas and can bias the overall\n                 \
+    \       results. (Default: None)\n  --maxThreshold MAXTHRESHOLD\n            \
+    \            Numeric value. Any region containing a value greater\n          \
+    \              than or equal to this will be skipped. The\n                  \
+    \      maxThreshold is useful to skip those few regions with\n               \
+    \         very high read counts (e.g. micro satellites) that may\n           \
+    \             bias the average values. (Default: None)\n  --blackListFileName\
+    \ BED file, -bl BED file\n                        A BED file containing regions\
+    \ that should be excluded\n                        from all analyses. Currently\
+    \ this works by rejecting\n                        genomic chunks that happen\
+    \ to overlap an entry.\n                        Consequently, for BAM files, if\
+    \ a read partially\n                        overlaps a blacklisted region or a\
+    \ fragment spans over\n                        it, then the read/fragment might\
+    \ still be considered.\n                        (default: None)\n  --samplesLabel\
+    \ SAMPLESLABEL [SAMPLESLABEL ...]\n                        Labels for the samples.\
+    \ This will then be passed to\n                        plotHeatmap and plotProfile.\
+    \ The default is to use the\n                        file name of the sample.\
+    \ The sample labels should be\n                        separated by spaces and\
+    \ quoted if a label\n                        itselfcontains a space E.g. --samplesLabel\
+    \ label-1\n                        \"label 2\" (default: None)\n  --smartLabels\
+    \         Instead of manually specifying labels for the input\n              \
+    \          bigWig and BED/GTF files, this causes deepTools to use\n          \
+    \              the file name after removing the path and extension.\n        \
+    \                (default: False)\n  --quiet, -q           Set to remove any warning\
+    \ or processing messages.\n                        (default: False)\n  --verbose\
+    \             Being VERY verbose in the status messages. --quiet\n           \
+    \             will disable this. (default: False)\n  --scale SCALE         If\
+    \ set, all values are multiplied by this number.\n                        (Default:\
+    \ 1)\n  --numberOfProcessors INT, -p INT\n                        Number of processors\
+    \ to use. Type \"max/2\" to use half\n                        the maximum number\
+    \ of processors or \"max\" to use all\n                        available processors.\
+    \ (Default: 1)\n\nGTF/BED12 options:\n  --metagene            When either a BED12\
+    \ or GTF file are used to provide\n                        regions, perform the\
+    \ computation on the merged exons,\n                        rather than using\
+    \ the genomic interval defined by the\n                        5-prime and 3-prime\
+    \ most transcript bound (i.e.,\n                        columns 2 and 3 of a BED\
+    \ file). If a BED3 or BED6 file\n                        is used as input, then\
+    \ columns 2 and 3 are used as an\n                        exon. (Default: False)\n\
+    \  --transcriptID TRANSCRIPTID\n                        When a GTF file is used\
+    \ to provide regions, only\n                        entries with this value as\
+    \ their feature (column 3)\n                        will be processed as transcripts.\
+    \ (Default:\n                        transcript)\n  --exonID EXONID       When\
+    \ a GTF file is used to provide regions, only\n                        entries\
+    \ with this value as their feature (column 3)\n                        will be\
+    \ processed as exons. CDS would be another\n                        common value\
+    \ for this. (Default: exon)\n  --transcript_id_designator TRANSCRIPT_ID_DESIGNATOR\n\
+    \                        Each region has an ID (e.g., ACTB) assigned to it,\n\
+    \                        which for BED files is either column 4 (if it exists)\n\
+    \                        or the interval bounds. For GTF files this is instead\n\
+    \                        stored in the last column as a key:value pair (e.g.,\n\
+    \                        as 'transcript_id \"ACTB\"', for a key of transcript_id\n\
+    \                        and a value of ACTB). In some cases it can be\n     \
+    \                   convenient to use a different identifier. To do so,\n    \
+    \                    set this to the desired key. (Default: transcript_id)\n\n\
+    deepBlue arguments:\n  Options used only for remote bedgraph/wig files hosted\
+    \ on deepBlue\n\n  --deepBlueURL DEEPBLUEURL\n                        For remote\
+    \ files bedgraph/wiggle files hosted on\n                        deepBlue, this\
+    \ specifies the server URL. The default\n                        is \"http://deepblue.mpi-inf.mpg.de/xmlrpc\"\
+    , which\n                        should not be changed without good reason. (default:\n\
+    \                        http://deepblue.mpi-inf.mpg.de/xmlrpc)\n  --userKey USERKEY\
+    \     For remote files bedgraph/wiggle files hosted on\n                     \
+    \   deepBlue, this specifies the user key to use for\n                       \
+    \ access. The default is \"anonymous_key\", which suffices\n                 \
+    \       for public datasets. If you need access to a\n                       \
+    \ restricted access/private dataset, then request a key\n                    \
+    \    from deepBlue and specify it here. (default:\n                        anonymous_key)\n\
+    \  --deepBlueTempDir DEEPBLUETEMPDIR\n                        If specified, temporary\
+    \ files from preloading datasets\n                        from deepBlue will be\
+    \ written here (note, this\n                        directory must exist). If\
+    \ not specified, where ever\n                        temporary files would normally\
+    \ be written on your\n                        system is used. (default: None)\n\
+    \  --deepBlueKeepTemp    If specified, temporary bigWig files from preloading\n\
+    \                        deepBlue datasets are not deleted. A message will be\n\
+    \                        printed noting where these files are and what sample\n\
+    \                        they correspond to. These can then be used if you wish\n\
+    \                        to analyse the same sample with the same regions\n  \
+    \                      again. (default: False)\n"
+  generated_using: *id002
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -348,3 +734,22 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: computeMatrix [-h] [--version]  ...\n\nThis tool calculates scores\
+  \ per genome regions and prepares an intermediate file that can be used with ``plotHeatmap``\
+  \ and ``plotProfiles``.\nTypically, the genome regions are genes, but any other\
+  \ regions defined in a BED file can be used.\ncomputeMatrix accepts multiple score\
+  \ files (bigWig format) and multiple regions files (BED format).\nThis tool can\
+  \ also be used to filter and sort regions according\nto their score.\n\nTo learn\
+  \ more about the specific parameters, type:\n\n$ computeMatrix reference-point --help\
+  \ or\n\n$ computeMatrix scale-regions --help\n\noptional arguments:\n  -h, --help\
+  \       show this help message and exit\n  --version        show program's version\
+  \ number and exit\n\nCommands:\n  \n    scale-regions  In the scale-regions mode,\
+  \ all regions in the BED file are\n                   stretched or shrunken to the\
+  \ length (in bases) indicated by\n                   the user.\n    reference-point\n\
+  \                   Reference-point refers to a position within a BED region\n \
+  \                  (e.g., the starting point). In this mode, only those\n      \
+  \             genomicpositions before (upstream) and/or after\n                \
+  \   (downstream) of the reference point will be plotted.\n\nAn example usage is:\n\
+  \  computeMatrix reference-point -S <bigwig file(s)> -R <bed file(s)> -b 1000\n\
+  \ \n"
+generated_using: *id002

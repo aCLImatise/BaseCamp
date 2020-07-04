@@ -1,15 +1,5 @@
-!Command
-positional:
-- !Positional
-  description: 'Input fasta (default: stdin).'
-  position: 0
-  name: input_fasta
-  optional: false
-- !Positional
-  description: 'Output fasta (default: stdout)'
-  position: 1
-  name: output_fasta
-  optional: false
+&id001 !Command
+positional: []
 named:
 - !Flag
   description: Number of errors to introduce (0).
@@ -27,7 +17,87 @@ named:
   optional: true
 command:
 - add_errors.py
-subcommands: []
+parent:
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: add_errors.py
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -n
+    args: !SimpleFlagArg
+      name: nr_errors
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: error_type
+    optional: true
+  command:
+  - add_errors.py
+  - input_fasta
+  parent: *id001
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: add_errors.py [-h] [-n nr_errors] [-t error_type]\n         \
+    \            [input_fasta] [output_fasta]\nadd_errors.py: error: argument input_fasta:\
+    \ can't open 'input_fasta': [Errno 2] No such file or directory: 'input_fasta'\n"
+  generated_using: &id002
+  - --help
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: add_errors.py
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -n
+    args: !SimpleFlagArg
+      name: nr_errors
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -t
+    args: !SimpleFlagArg
+      name: error_type
+    optional: true
+  command:
+  - add_errors.py
+  - output_fasta
+  parent: *id001
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: add_errors.py [-h] [-n nr_errors] [-t error_type]\n         \
+    \            [input_fasta] [output_fasta]\nadd_errors.py: error: argument input_fasta:\
+    \ can't open 'output_fasta': [Errno 2] No such file or directory: 'output_fasta'\n"
+  generated_using: *id002
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -37,3 +107,11 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: add_errors.py [-h] [-n nr_errors] [-t error_type]\n           \
+  \          [input_fasta] [output_fasta]\n\nAdd a specified number of errors to random\
+  \ sites for each input sequence.\n\npositional arguments:\n  input_fasta    Input\
+  \ fasta (default: stdin).\n  output_fasta   Output fasta (default: stdout)\n\noptional\
+  \ arguments:\n  -h, --help     show this help message and exit\n  -n nr_errors \
+  \  Number of errors to introduce (0).\n  -t error_type  Error type: substitution,\
+  \ insertion or deletion.\n"
+generated_using: *id002

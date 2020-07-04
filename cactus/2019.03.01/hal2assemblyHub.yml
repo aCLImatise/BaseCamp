@@ -536,7 +536,225 @@ named:
   optional: true
 command:
 - hal2assemblyHub.py
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "Usage: hal2assemblyHub.py <halFile> <outputDirectory> [options]\n\nOptions:\n\
+  \  -h, --help            show this help message and exit\n  --cpHalFileToOut   \
+  \   If specified, copy the input halfile to the output\n                       \
+  \ directory (instead of just make a softlink).\n                        Default=False\n\
+  \  --ucscNames           Assume that sequence headers use the UCSC naming\n    \
+  \                    convention, (i.e. \"genome.chr\"), and  attempt to\n      \
+  \                  rename the sequences so that their names will end up\n      \
+  \                  as \"chr\"\n\n  HUB INFORMATION:\n    --hub=HUBLABEL      a single-word\
+  \ name of the directory containing the\n                        track hub files.\
+  \ Not displayed to hub users.\n                        Default=myHub\n    --shortLabel=SHORTLABEL\n\
+  \                        the short name for the track hub. Suggested maximum\n \
+  \                       length is 17 characters. Displayed as the hub name on\n\
+  \                        the Track Hubs page and the track group name on the\n \
+  \                       browser tracks page. Default=my hub\n    --longLabel=LONGLABEL\n\
+  \                        a longer descriptive label for the track hub.\n       \
+  \                 Suggested maximum length is 80 characters. Displayed\n       \
+  \                 in the description field on the Track Hubs page.\n           \
+  \             Default=my hub\n    --email=EMAIL       the contact to whom questions\
+  \ regarding the track hub\n                        should be directed. Default=NoEmail\n\
+  \    --genomes=GENOMES   File specified list of genomes to make browser for. If\n\
+  \                        specified, only create browsers for these genomes in\n\
+  \                        the order provided by the list. Otherwise create\n    \
+  \                    browsers for all genomes in the input hal file\n    --rename=RENAME\
+  \     File that maps halfile genomeNames to names displayed\n                  \
+  \      on the browser. Format:\n                        <halGenomeName>\\t<genomeNameToDisplayOnBrowser>.\n\
+  \                        Default=none\n    --tree=TREEFILE     Newick binary tree.\
+  \ The order of the tracks and the\n                        default track layout\
+  \ will be based on this tree if\n                        option \"genomes\" is not\
+  \ specified. If not specified,\n                        try to extract the newick\
+  \ tree from the input halfile.\n    --url=URL           Public url of the hub location\n\
+  \    --twobitdir=TWOBITDIR\n                        Optional. Directory containing\
+  \ the 2bit files of each\n                        genomes. Default: extract from\
+  \ the input hal file.\n\n  LEVEL OF DETAILS:\n    Level-of-detail (LOD) options.\n\
+  \n    --lod               If specified, create \"level of detail\" (lod) hal files\n\
+  \                        and will put the lod.txt at the bigUrl instead of the\n\
+  \                        original hal file. Default=False\n    --lodTxtFile=LODTXTFILE\n\
+  \                        \"hal Level of detail\" lod text file. If specified,\n\
+  \                        will put this at the bigUrl instead of the hal file.\n\
+  \                        Default=none\n    --lodDir=LODDIR     \"hal Level of detail\"\
+  \ lod dir. If specified, will put\n                        this at the bigUrl instead\
+  \ of the hal file.\n                        Default=none\n    --lodMaxBlock=LODMAXBLOCK\n\
+  \                        Maximum number of blocks to display in a hal level of\n\
+  \                        detail (see halLodInterpolate.py --help for the\n     \
+  \                   default value).\n    --lodScale=LODSCALE\n                 \
+  \       Scaling factor between two successive levels of detail\n               \
+  \         (see halLodInterpolate.py --help for the default\n                   \
+  \     value).\n    --lodMaxDNA=LODMAXDNA\n                        Maximum query\
+  \ length such that its hal level of detail\n                        will contain\
+  \ nucleotide information. Default=none (see\n                        halLodInterpolate.py\
+  \ --help for the default value).\n    --lodInMemory       Load entire hal file into\
+  \ memory when generating\n                        levels of detail instead of using\
+  \ hdf5 cache. Could\n                        result in drastic speedup. Default=False.\n\
+  \    --lodMinSeqFrac=LODMINSEQFRAC\n                        Minumum sequence length\
+  \ to sample as fraction of step\n                        size for level of detail\
+  \ generation: ie sequences with\n                        length <= floor(minSeqFrac\
+  \ * step) are ignored (see\n                        halLodExtract --help for default\
+  \ value).\n    --lodMinCovFrac=LODMINCOVFRAC\n                        Minimum fraction\
+  \ of a genome that must be covered by\n                        sequences that exceed\
+  \ --minSeqFrac * step.  LODs that\n                        would violate this threshold\
+  \ will not be generated (or\n                        displayed in  the browser).\
+  \  This is seen a better\n                        than the alternative, which is\
+  \ to produce unreasonably\n                        sparse LODs because half the\
+  \ sequences were not\n                        sampled (see halLodInterpolate.py\
+  \ --help for default\n                        value).\n    --lodChunk=LODCHUNK\n\
+  \                        HDF5 chunk size for generated levels of detail (see\n \
+  \                       halLodExtract --help for default value).\n\n  BED-FORMATTED\
+  \ ANNOTATIONS:\n    All annotations in bed or bigbed formats.\n\n    --bedDirs=BEDDIRS\
+  \   comma separated list of directories containing bed\n                       \
+  \ files of the input genomes. Each directory represents\n                      \
+  \  a type of annotation. The annotations of each genome\n                      \
+  \  will then be liftovered to all other genomes in the\n                       \
+  \ MSA. Example: \"genes,genomicIsland,tRNA\". Format of\n                      \
+  \  each directory: bedDir/ then genome1/ then chr1.bed,\n                      \
+  \  chr2.bed... Default=none\n    --finalBigBedDirs=BBDIRS\n                    \
+  \    comma separated list of directories containing final\n                    \
+  \    big bed files to be displayed. No liftover will be\n                      \
+  \  done for these files. Each directory represents a type\n                    \
+  \    of annotation. Example: \"genes,genomicIsland,tRNA\".\n                   \
+  \     Format of each directory: bbDir/ then queryGenome/\n                     \
+  \   then targetGenome1.bb, targetGenome2.bb ... (so\n                        annotation\
+  \ of queryGenome has been mapped to\n                        targetGenomes and will\
+  \ be display on the targetGenome\n                        browsers). Default=none\n\
+  \    --bedDirs2=BEDDIRS2\n                        Similar to --bedDirs, except these\
+  \ tracks will be kept\n                        separately and out of the composite\
+  \ track.\n                        Default=none\n    --finalBigBedDirs2=BBDIRS2\n\
+  \                        Similar to --finalBigBedDirs, except these tracks will\n\
+  \                        be kept separately and out of the composite track.\n  \
+  \                      Default=none\n    --noBedLiftover     If specified, will\
+  \ not lift over the bed annotations.\n                        Default=False\n  \
+  \  --tabBed            If specified, treat tab as the delimiter of all the\n   \
+  \                     bed files. Default: any white space.\n\n  WIGGLE-FORMATTED\
+  \ ANNOTATIONS:\n    All annotations in wiggle or bigWig formats.\n\n    --wigDirs=WIGDIRS\
+  \   comma separated list of directories containing wig\n                       \
+  \ files of the input genomes. Each directory represents\n                      \
+  \  a type of annotation. The annotations of each genome\n                      \
+  \  will then be liftovered to all other genomes in the\n                       \
+  \ MSA. Example: \"genes,genomicIsland,tRNA\". Format of\n                      \
+  \  each directory: wigDir/ then genome1/ then chr1.wig,\n                      \
+  \  chr2.wig... Default=none\n    --finalBigwigDirs=BWDIRS\n                    \
+  \    comma separated list of directories containing final\n                    \
+  \    big wig files to be displayed. No liftover will be\n                      \
+  \  done for these files. Each directory represents a type\n                    \
+  \    of annotation. Example: \"readCoverage,\". Format of\n                    \
+  \    each directory: bwDir/ then queryGenome/ then\n                        targetGenome1.bw,\
+  \ targetGenome2.bw ... (so annotation\n                        of queryGenome has\
+  \ been mapped to targetGenomes and\n                        will be display on the\
+  \ targetGenome browsers).\n                        Default=none\n    --nowigLiftover\
+  \     If specified, will not lift over the wig annotations.\n                  \
+  \      Default=False\n\n  REPEATMASKER:\n    --rmskDir=RMSKDIR   Directory containing\
+  \ repeatMasker's output files for\n                        each genome. Format:\
+  \ rmskDir/ then genome1/ then\n                        genome.rmsk.SINE.bb, genome.rmsk.LINE.bb,\
+  \ ...\n                        Default=none\n\n  GC PERCENT:\n    --gcContent  \
+  \       If specified, make GC-content tracks. Default=False\n\n  ALIGNABILITY:\n\
+  \    --alignability      If specified, make Alignability (aka Alignment Depth)\n\
+  \                        tracks. Default=False\n\n  CONSERVATION TRACKS:\n    Necessary\
+  \ information for computing conservation tracks\n\n    --conservation=CONSERVATION\n\
+  \                        Bed file providing regions to calculate the\n         \
+  \               conservation tracks.\n    --conservationDir=CONSERVATIONDIR\n  \
+  \                      Optional. Directory contains conservation bigwigs if\n  \
+  \                      available. These bigwigs will be used. If this is not\n \
+  \                       specified, the program will compute the conservation\n \
+  \                       tracks.\n    --conservationGenomeName=CONSERVATIONGENOMENAME\n\
+  \                        Name of the genome of the bed file provided in the \"--\n\
+  \                        conversation\" option\n    --conservationTree=CONSERVATIONTREE\n\
+  \                        Optional. Newick tree for the conservation track\n    --conservationNumProc=CONSERVATIONNUMPROC\n\
+  \                        Optional. Number of processors to run conservation\n\n\
+  \  CLADE EXCLUSIVE REGIONS:\n    Requirements of regions that are exclusive to subgroup\
+  \ of genomes.\n\n    --cladeExclusiveRegions\n                        If specified,\
+  \ will generate tracks of regions that are\n                        exclusive to\
+  \ each branch (including leaf \"branches\",\n                        which will\
+  \ be genome-exclusive regions) on the tree.\n                        Default=False\n\
+  \    --maxOutgroupGenomes=MAXOUT\n                        Maximum number of outgroup\
+  \ genomes that a region is\n                        allowed to be in. Default=0\n\
+  \    --minIngroupGenomes=MININ\n                        Minimum number of ingroup\
+  \ genomes that a region must\n                        appear in. Default=all ingroup\
+  \ genomes (branch node\n                        and all its children).\n\n  SNAKE\
+  \ TRACKS:\n    Snake track options\n\n    --selfAlignmentSnakes\n              \
+  \          Produce a self-alignment snake track for every genome\n\n  Logging options:\n\
+  \    Options that control logging\n\n    --logOff            Turn off logging. (default\
+  \ is CRITICAL)\n    --logInfo           Turn on logging at INFO level. (default\
+  \ is CRITICAL)\n    --logDebug          Turn on logging at DEBUG level. (default\
+  \ is CRITICAL)\n    --logLevel=LOGLEVEL\n                        Log at level (may\
+  \ be either OFF/INFO/DEBUG/CRITICAL).\n                        (default is CRITICAL)\n\
+  \    --logFile=LOGFILE   File to log in\n    --rotatingLogging   Turn on rotating\
+  \ logging, which prevents log files\n                        getting too big.\n\n\
+  \  jobTree core options:\n    Options to specify the location of the jobTree and\
+  \ turn on stats\n    collation about the performance of jobs.\n\n    --jobTree=JOBTREE\
+  \   Directory in which to place job management files and\n                     \
+  \   the global accessed temporary file directories(this\n                      \
+  \  needs to be globally accessible by all machines\n                        running\
+  \ jobs). If you pass an existing directory it\n                        will check\
+  \ if it's a valid existing job tree, then try\n                        and restart\
+  \ the jobs in it. The default=./jobTree\n    --stats             Records statistics\
+  \ about the job-tree to be used by\n                        jobTreeStats. default=False\n\
+  \n  jobTree options for specifying the batch system:\n    Allows the specification\
+  \ of the batch system, and arguments to the\n    batch system/big batch system (see\
+  \ below).\n\n    --batchSystem=BATCHSYSTEM\n                        The type of\
+  \ batch system to run the job(s) with,\n                        currently can be\
+  \ 'singleMachine'/'parasol'/'acidTest'/\n                        'gridEngine'/'lsf'.\
+  \ default=singleMachine\n    --maxThreads=MAXTHREADS\n                        The\
+  \ maximum number of threads (technically processes\n                        at this\
+  \ point) to use when running in single machine\n                        mode. Increasing\
+  \ this will allow more jobs to run\n                        concurrently when running\
+  \ on a single machine.\n                        default=4\n    --parasolCommand=PARASOLCOMMAND\n\
+  \                        The command to run the parasol program default=parasol\n\
+  \n  jobTree options for cpu/memory requirements:\n    The options to specify default\
+  \ cpu/memory requirements (if not\n    specified by the jobs themselves), and to\
+  \ limit the total amount of\n    memory/cpu requested from the batch system.\n\n\
+  \    --defaultMemory=DEFAULTMEMORY\n                        The default amount of\
+  \ memory to request for a job (in\n                        bytes), by default is\
+  \ 2^31 = 2 gigabytes,\n                        default=2147483648\n    --defaultCpu=DEFAULTCPU\n\
+  \                        The default the number of cpus to dedicate a job.\n   \
+  \                     default=1\n    --maxCpus=MAXCPUS   The maximum number of cpus\
+  \ to request from the batch\n                        system at any one time. default=9223372036854775807\n\
+  \    --maxMemory=MAXMEMORY\n                        The maximum amount of memory\
+  \ to request from the batch\n                        system at any one time. default=9223372036854775807\n\
+  \n  jobTree options for rescuing/killing/restarting jobs:\n    The options for jobs\
+  \ that either run too long/fail or get lost (some\n    batch systems have issues!)\n\
+  \n    --retryCount=RETRYCOUNT\n                        Number of times to retry\
+  \ a failing job before giving\n                        up and labeling job failed.\
+  \ default=0\n    --maxJobDuration=MAXJOBDURATION\n                        Maximum\
+  \ runtime of a job (in seconds) before we kill\n                        it (this\
+  \ is a lower bound, and the actual time before\n                        killing\
+  \ the job may be longer).\n                        default=9223372036854775807\n\
+  \    --rescueJobsFrequency=RESCUEJOBSFREQUENCY\n                        Period of\
+  \ time to wait (in seconds) between checking\n                        for missing/overlong\
+  \ jobs, that is jobs which get lost\n                        by the batch system.\
+  \ Expert parameter. (default is set\n                        by the batch system)\n\
+  \n  jobTree big batch system options:\n    jobTree can employ a secondary batch\
+  \ system for running large\n    memory/cpu jobs using the following arguments:\n\
+  \n    --bigBatchSystem=BIGBATCHSYSTEM\n                        The batch system\
+  \ to run for jobs with larger\n                        memory/cpus requests, currently\
+  \ can be\n                        'singleMachine'/'parasol'/'acidTest'/'gridEngine'.\n\
+  \                        default=none\n    --bigMemoryThreshold=BIGMEMORYTHRESHOLD\n\
+  \                        The memory threshold above which to submit to the big\n\
+  \                        queue. default=9223372036854775807\n    --bigCpuThreshold=BIGCPUTHRESHOLD\n\
+  \                        The cpu threshold above which to submit to the big\n  \
+  \                      queue. default=9223372036854775807\n    --bigMaxCpus=BIGMAXCPUS\n\
+  \                        The maximum number of big batch system cpus to allow\n\
+  \                        at one time on the big queue.\n                       \
+  \ default=9223372036854775807\n    --bigMaxMemory=BIGMAXMEMORY\n               \
+  \         The maximum amount of memory to request from the big\n               \
+  \         batch system at any one time.\n                        default=9223372036854775807\n\
+  \n  jobTree miscellaneous options:\n    Miscellaneous options\n\n    --jobTime=JOBTIME\
+  \   The approximate time (in seconds) that you'd like a\n                      \
+  \  list of child jobs to be run serially before being\n                        parallelized.\
+  \ This parameter allows one to avoid over\n                        parallelizing\
+  \ tiny jobs, and therefore paying\n                        significant scheduling\
+  \ overhead, by running tiny jobs\n                        in series on a single\
+  \ node/core of the cluster.\n                        default=30\n    --maxLogFileSize=MAXLOGFILESIZE\n\
+  \                        The maximum size of a job log file to keep (in bytes),\n\
+  \                        log files larger than this will be truncated to the\n \
+  \                       last X bytes. Default is 50 kilobytes, default=50120\n \
+  \   --command=COMMAND   The command to run (which will generate subsequent\n   \
+  \                     jobs). This is deprecated\n"
+generated_using:
+- --help

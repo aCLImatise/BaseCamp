@@ -20,10 +20,10 @@ named:
   synonyms:
   - --input-format
   args: !ChoiceFlagArg
-    choices:
-    - fasta
-    - phylip
-    - phylip-relaxed
+    choices: !!set
+      fasta:
+      phylip-relaxed:
+      phylip:
   optional: true
 - !Flag
   description: The number of compute cores to use
@@ -37,10 +37,10 @@ named:
   synonyms:
   - --verbosity
   args: !ChoiceFlagArg
-    choices:
-    - INFO
-    - WARN
-    - CRITICAL
+    choices: !!set
+      WARN:
+      CRITICAL:
+      INFO:
   optional: true
 - !Flag
   description: The path to a directory to hold logs.
@@ -51,6 +51,7 @@ named:
   optional: true
 command:
 - phyluce_align_reduce_alignments_with_raxml
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -61,3 +62,19 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: phyluce_align_reduce_alignments_with_raxml [-h] --alignments ALIGNMENTS\n\
+  \                                                  --output OUTPUT\n           \
+  \                                       [--input-format {fasta,phylip,phylip-relaxed}]\n\
+  \                                                  [--cores CORES]\n           \
+  \                                       [--verbosity {INFO,WARN,CRITICAL}]\n   \
+  \                                               [--log-path LOG_PATH]\n\nReduce\
+  \ a directory of alignments using RAxML\n\noptional arguments:\n  -h, --help   \
+  \         show this help message and exit\n  --alignments ALIGNMENTS\n         \
+  \               Input folder of alignments\n  --output OUTPUT       Output folder\
+  \ for reduced alignments\n  --input-format {fasta,phylip,phylip-relaxed}\n     \
+  \                   The input alignment format\n  --cores CORES         The number\
+  \ of compute cores to use\n  --verbosity {INFO,WARN,CRITICAL}\n                \
+  \        The logging level to use.\n  --log-path LOG_PATH   The path to a directory\
+  \ to hold logs.\n"
+generated_using:
+- --help

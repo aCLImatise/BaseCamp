@@ -308,6 +308,7 @@ named:
   optional: true
 command:
 - gustaf
+parent:
 subcommands: []
 help_flag: !Flag
   description: Display the help message.
@@ -323,3 +324,77 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "gustaf - Gustaf - Generic mUlti-SpliT Alignment Finder: Tool for split-read\
+  \ mapping allowing multiple splits.\n=============================================================================================================\n\
+  \nSYNOPSIS\n    gustaf [OPTIONS] <GENOME FASTA FILE> <READ FASTA FILE>\n    gustaf\
+  \ [OPTIONS] <GENOME FASTA FILE> <READ FASTA FILE> <READ FASTA FILE 2>\n\nDESCRIPTION\n\
+  \    GUSTAF uses SeqAns STELLAR to find splits as local matches on different\n \
+  \   strands or chromosomes. Criteria and penalties to chain these matches can\n\
+  \    be specified. Output file contains the breakpoints along the best chain.\n\n\
+  \    The genome file is used as database input, the read file as query input.\n\n\
+  \    All STELLAR options are supported. See STELLAR documentation for STELLAR\n\
+  \    parameters and options.\n\n    (c) 2011-2012 by Kathrin Trappe\n\nREQUIRED\
+  \ ARGUMENTS\n    FASTA_FILE_1 INPUT_FILE\n          Valid filetypes are: .fq, .fastq,\
+  \ .fasta, and .fa.\n    FASTA_FILE_2 List of INPUT_FILE's\n          Either one\
+  \ (single-end) or two (paired-end) read files. Valid\n          filetypes are: .fq,\
+  \ .fastq, .fasta, and .fa.\n\nOPTIONS\n    -h, --help\n          Display the help\
+  \ message.\n    --version-check BOOL\n          Turn this option off to disable\
+  \ version update notifications of the\n          application. One of 1, ON, TRUE,\
+  \ T, YES, 0, OFF, FALSE, F, and NO.\n          Default: 1.\n    --version\n    \
+  \      Display version information.\n\n  Main Options:\n    -tp, --transPen INTEGER\n\
+  \          Interchromosomal translocation penalty Default: 5.\n    -ip, --invPen\
+  \ INTEGER\n          Inversion penalty Default: 5.\n    -op, --orderPen INTEGER\n\
+  \          Intrachromosomal order change penalty Default: 0.\n    -oth, --overlapThresh\
+  \ DOUBLE\n          Allowed overlap between matches Default: 0.5.\n    -gth, --gapThresh\
+  \ INTEGER\n          Allowed gap length between matches, default value corresponse\
+  \ to\n          expected size of microindels (5 bp) Default: 5.\n    -ith, --initGapThresh\
+  \ INTEGER\n          Allowed initial or ending gap length at begin and end of read\
+  \ with\n          no breakpoint (e.g. due to sequencing errors at the end) Default:\n\
+  \          15.\n    -bth, --breakendThresh INTEGER\n          Allowed initial or\
+  \ ending gap length at begin and end of read that\n          creates a breakend/breakpoint\
+  \ (e.g. for reads extending into\n          insertions) Default: 30.\n    -tth,\
+  \ --tandemThresh INTEGER\n          Minimal length of (small) insertion/duplication\
+  \ with double overlap\n          to be considered tandem repeat Default: 50.\n \
+  \   -pth, --breakpoint-pos-range INTEGER\n          Allowed difference in breakpoint\
+  \ position Default: 5.\n    -cbp, --complex-breakpoints\n          Disable inferring\
+  \ complex SVs\n    -st, --support INTEGER\n          Number of supporting reads\
+  \ Default: 2.\n    -mst, --mate-support INTEGER\n          Number of supporting\
+  \ concordant mates Default: 2.\n    -ll, --library-size INTEGER\n          Library\
+  \ size of paired-end reads\n    -le, --library-error INTEGER\n          Library\
+  \ error (sd) of paired-end reads\n    -rc, --revcompl\n          Disable reverse\
+  \ complementing second mate pair input file.\n\n  Input Options:\n    -m, --matchfile\
+  \ INPUT_FILE\n          File of (stellar) matches Valid filetypes are: .gff and\
+  \ .GFF.\n\n  Output Options:\n    -gff, --gffOut OUTPUT_FILE\n          Name of\
+  \ gff breakpoint output file. Valid filetypes are: .txt and\n          .gff. Default:\
+  \ breakpoints.gff.\n    -vcf, --vcfOut OUTPUT_FILE\n          Name of vcf breakpoint\
+  \ output file. Valid filetypes are: .vcf and\n          .txt. Default: breakpoints.vcf.\n\
+  \    -j, --jobName STRING\n          Job/Queue name Default: .\n    -do, --dots\n\
+  \          Enable graph output in dot format\n\n  Parallelization Options:\n   \
+  \ -nth, --numThreads INTEGER\n          Number of threads for parallelization of\
+  \ I/O. Default: 1.\n\n  Main Options:\n    -e, --epsilon DOUBLE\n          Maximal\
+  \ error rate (max 0.25). In range [0.0000001..0.25]. Default:\n          0.05.\n\
+  \    -l, --minLength INTEGER\n          Minimal length of epsilon-matches. In range\
+  \ [0..inf]. Default: 100.\n    -f, --forward\n          Search only in forward strand\
+  \ of database.\n    -r, --reverse\n          Search only in reverse complement of\
+  \ database.\n    -a, --alphabet STRING\n          Alphabet type of input sequences\
+  \ (dna, rna, dna5, rna5, protein,\n          char). One of dna, dna5, rna, rna5,\
+  \ protein, and char.\n    -v, --verbose\n          Set verbosity mode.\n\n  Filtering\
+  \ Options:\n    -k, --kmer INTEGER\n          Length of the q-grams (max 32). In\
+  \ range [1..32].\n    -rp, --repeatPeriod INTEGER\n          Maximal period of low\
+  \ complexity repeats to be filtered. Default: 1.\n    -rl, --repeatLength INTEGER\n\
+  \          Minimal length of low complexity repeats to be filtered. Default:\n \
+  \         1000.\n    -c, --abundanceCut DOUBLE\n          k-mer overabundance cut\
+  \ ratio. In range [0..1]. Default: 1.\n\n  Verification Options:\n    -x, --xDrop\
+  \ DOUBLE\n          Maximal x-drop for extension. Default: 5.\n    -vs, --verification\
+  \ STRING\n          Verification strategy: exact or bestLocal or bandedGlobal One\
+  \ of\n          exact, bestLocal, and bandedGlobal. Default: exact.\n    -dt, --disableThresh\
+  \ INTEGER\n          Maximal number of verified matches before disabling verification\
+  \ for\n          one query sequence (default infinity). In range [0..inf].\n   \
+  \ -n, --numMatches INTEGER\n          Maximal number of kept matches per query and\
+  \ database. If STELLAR\n          finds more matches, only the longest ones are\
+  \ kept. Default: 50.\n    -s, --sortThresh INTEGER\n          Number of matches\
+  \ triggering removal of duplicates. Choose a smaller\n          value for saving\
+  \ space. Default: 500.\n\nVERSION\n    Last update: August 2014\n    gustaf version:\
+  \ 1.0.0\n    SeqAn version: 2.3.1\n"
+generated_using:
+- --help

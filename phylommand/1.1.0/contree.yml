@@ -1,5 +1,15 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: arguments
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: file.trees
+  optional: false
 named:
 - !Flag
   description: as last argument).
@@ -15,15 +25,62 @@ named:
   args: !SimpleFlagArg
     name: x.
   optional: true
-- !Flag
-  description: .
-  synonyms:
-  - --calculate_support
-  args: !EmptyFlagArg {}
-  optional: true
 command:
 - contree
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "Contree 1.0 is a command line program for comparing trees. It can compare\n\
+  trees in one file/input against each other or compare the trees in one file/\ninput\
+  \ to the trees in another file/input.\n(c) Martin Ryberg 2016.\n\nUsage:\ncontree\
+  \ [arguments] file.trees\n\nArguments:\n--add_to_support / -a           add one\
+  \ to the value of the internal node for\n                                each tree\
+  \ that that split is present in.\n--calculate_support / -s        same as --add_to_support\
+  \ but divide the number\n                                by number of trees compared\
+  \ against.\n--compare / -c [value]          output conflicting splits where at least\
+  \ one\n                                branch support the conflict with more than\
+  \ given\n                                support, e.g. -c 0.7.\n--database / -d\
+  \ [file]          give a second file of trees to compare against\n             \
+  \                   instead of comparing within the ordinary input.\n          \
+  \                      If - is given input will be taken from standard\n       \
+  \                         in instead of file, e.g. -d -. In that case the\n    \
+  \                            input compared to must  be given in a file (by\n  \
+  \                              -f or as last argument).\n--decisiveness / -D [genes]\
+  \     calculates proportion of random trees for which\n                        \
+  \        given gene sampling is decisive and the mean\n                        \
+  \        proportion of branches that are distinguished.\n                      \
+  \          (Sanderson et al. 2010, BMC Evol. Biol. 19:\n                       \
+  \         155). The genes for each taxon are given as a\n                      \
+  \          comma (,) separated string, the genes for\n                         \
+  \       different taxon are separated by a bar (|). E.g\n                      \
+  \          -D 'ITS,RPB2|ITS|ITS,RPB2|RPB2|RPB2|ITS', or in\n                   \
+  \             a file (given by -f or as last argument) with a\n                \
+  \                comma separated string with the genes for each\n              \
+  \                  taxa on a separate row. No taxon names, trees,\n            \
+  \                    or sequences are needed.\n--iterations / -i [number]      give\
+  \ numbers of iterations to do when\n                                calculating\
+  \ decisiveness, e.g. -i 1000.\n--file / -f [file]              give file name for\
+  \ trees, or decisiveness, e.g.\n                                -f file.tree.\n\
+  --format [newick/nexus]         give format of input, e.g. --format nexus. If no\n\
+  \                                format is given and the input is a file contree\n\
+  \                                will try to guess the format, if it is through\n\
+  \                                standard in it will assume newick format. A\n \
+  \                               separate file format can be given for the\n    \
+  \                            database file after a ',', e.g. --format\n        \
+  \                        newick,nexus. If only one format is given, it\n       \
+  \                         will be used for both tree files/inputs.\n--help / -h\
+  \                     print this help.\n--html                          give output\
+  \ as tree in html (svg) format with\n                                conflicting\
+  \ tips coloured green and red when\n                                doing --compare.\n\
+  --non_shared_tips / -t          print tip names not present in the other tree.\n\
+  --output [newick/nexus]         give tree format for output, nexus (nex or x for\n\
+  \                                short) or newick (new or w for short), e.g\n  \
+  \                              --output x. (default w).\n--robinson_foulds / -r\
+  \          compute Robinson-Foulds metric between trees.\n--rooted / -R        \
+  \           treat trees as rooted for --add_to_support and\n                   \
+  \             --calculate_support.\n--verbose / -v                  get additional\
+  \ output.\n\n"
+generated_using:
+- --help

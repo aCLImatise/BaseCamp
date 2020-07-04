@@ -1,8 +1,9 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - terminus
+parent:
 subcommands:
 - !Command
   positional: []
@@ -44,6 +45,7 @@ subcommands:
   command:
   - terminus
   - collapse
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Prints help information
@@ -60,6 +62,17 @@ subcommands:
     - --version
     args: !EmptyFlagArg {}
     optional: true
+  help_text: "terminus-collapse \nanalyze a collection of per-sample groups, and produce\
+    \ a consensus grouping.\n\nUSAGE:\n    terminus collapse [OPTIONS] --dirs <dirs>...\
+    \ --out <out>\n\nFLAGS:\n    -h, --help       Prints help information\n    -V,\
+    \ --version    Prints version information\n\nOPTIONS:\n    -c, --consensus-thresh\
+    \ <consensus-thresh>    threshold for edge consensus [default: 0.5]\n    -d, --dirs\
+    \ <dirs>...                         direcotories to read the group files from\n\
+    \    -o, --out <out>                              prefix where output would be\
+    \ written\n    -t, --threads <threads>\n            number of threads to use when\
+    \ writing down the collapsed quantifications [default: 8]\n\n"
+  generated_using: &id002
+  - --help
 - !Command
   positional: []
   named:
@@ -107,32 +120,8 @@ subcommands:
   command:
   - terminus
   - group
-  subcommands:
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - --dir
-      args: !SimpleFlagArg
-        name: dir
-      optional: true
-    - !Flag
-      description: ''
-      synonyms:
-      - --out
-      args: !SimpleFlagArg
-        name: out
-      optional: true
-    command:
-    - terminus
-    - group
-    - OPTIONS
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
+  parent: *id001
+  subcommands: []
   help_flag: !Flag
     description: Prints help information
     synonyms:
@@ -148,269 +137,49 @@ subcommands:
     - --version
     args: !EmptyFlagArg {}
     optional: true
+  help_text: "terminus-group \nperform per-sample grouping of transcripts; required\
+    \ prior to consensus collapse.\n\nUSAGE:\n    terminus group [OPTIONS] --dir <dir>\
+    \ --out <out>\n\nFLAGS:\n    -h, --help       Prints help information\n    -V,\
+    \ --version    Prints version information\n\nOPTIONS:\n    -d, --dir <dir>   \
+    \               directory to read input from\n    -m, --min-spread <min-spread>\
+    \    the minimum spread a transcript must exhibit to enable an attached edge to\
+    \ be a\n                                     collapse candidate [default: 0.1]\n\
+    \    -o, --out <out>                  prefix where output would be written\n \
+    \       --seed <seed>                The allowable difference between the weights\
+    \ of transcripts in same equivalence\n                                     classes\
+    \ to treat them as identical [default: 10]\n        --tolerance <tolerance>  \
+    \    The allowable difference between the weights of transcripts in same equivalence\n\
+    \                                     classes to treat them as identical [default:\
+    \ 0.001]\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: For
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: more
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: information
+    optional: false
+  - !Positional
+    description: ''
+    position: 3
+    name: try
+    optional: false
   named: []
   command:
   - terminus
   - help
-  subcommands:
-  - !Command
-    positional: []
-    named: []
-    command:
-    - terminus
-    - help
-    - For
-    subcommands:
-    - !Command
-      positional: []
-      named: []
-      command:
-      - terminus
-      - help
-      - For
-      - more
-      subcommands:
-      - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: try
-          optional: false
-        named: []
-        command:
-        - terminus
-        - help
-        - For
-        - more
-        - information
-        subcommands: []
-        help_flag: !Flag
-          description: ''
-          synonyms:
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-      - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: information
-          optional: false
-        - !Positional
-          description: ''
-          position: 1
-          name: try
-          optional: false
-        named: []
-        command:
-        - terminus
-        - help
-        - For
-        - more
-        - try
-        subcommands: []
-        help_flag: !Flag
-          description: ''
-          synonyms:
-          - --help
-          args: !EmptyFlagArg {}
-          optional: true
-        usage_flag:
-        version_flag:
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: more
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: information
-        optional: false
-      - !Positional
-        description: ''
-        position: 2
-        name: try
-        optional: false
-      named: []
-      command:
-      - terminus
-      - help
-      - For
-      - information
-      subcommands: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: more
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: information
-        optional: false
-      - !Positional
-        description: ''
-        position: 2
-        name: try
-        optional: false
-      named: []
-      command:
-      - terminus
-      - help
-      - For
-      - try
-      subcommands: []
-      help_flag: !Flag
-        description: ''
-        synonyms:
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-    help_flag: !Flag
-      description: ''
-      synonyms:
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: For
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: more
-      optional: false
-    - !Positional
-      description: ''
-      position: 2
-      name: information
-      optional: false
-    - !Positional
-      description: ''
-      position: 3
-      name: try
-      optional: false
-    named: []
-    command:
-    - terminus
-    - help
-    - more
-    subcommands: []
-    help_flag: !Flag
-      description: ''
-      synonyms:
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: For
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: more
-      optional: false
-    - !Positional
-      description: ''
-      position: 2
-      name: information
-      optional: false
-    - !Positional
-      description: ''
-      position: 3
-      name: try
-      optional: false
-    named: []
-    command:
-    - terminus
-    - help
-    - information
-    subcommands: []
-    help_flag: !Flag
-      description: ''
-      synonyms:
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: For
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: more
-      optional: false
-    - !Positional
-      description: ''
-      position: 2
-      name: information
-      optional: false
-    - !Positional
-      description: ''
-      position: 3
-      name: try
-      optional: false
-    named: []
-    command:
-    - terminus
-    - help
-    - try
-    subcommands: []
-    help_flag: !Flag
-      description: ''
-      synonyms:
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
+  parent: *id001
+  subcommands: []
   help_flag: !Flag
     description: ''
     synonyms:
@@ -419,6 +188,11 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "terminus: Relink `/tmp/tmpmhla4wuf/bin/../lib/./libgfortran.so.4' with\
+    \ `/lib/x86_64-linux-gnu/librt.so.1' for IFUNC symbol `clock_gettime'\nerror:\
+    \ The subcommand '--help' wasn't recognized\n\nUSAGE:\n\tterminus help <subcommands>...\n\
+    \nFor more information try --help\n"
+  generated_using: *id002
 help_flag: !Flag
   description: Prints help information
   synonyms:
@@ -434,3 +208,11 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "Terminus 0.1.0\nSarkar et al.\nData-driven grouping of transcripts to\
+  \ reduce inferential uncertainty\n\nUSAGE:\n    terminus [SUBCOMMAND]\n\nFLAGS:\n\
+  \    -h, --help       Prints help information\n    -V, --version    Prints version\
+  \ information\n\nSUBCOMMANDS:\n    collapse    analyze a collection of per-sample\
+  \ groups, and produce a consensus grouping.\n    group       perform per-sample\
+  \ grouping of transcripts; required prior to consensus collapse.\n    help     \
+  \   Prints this message or the help of the given subcommand(s)\n"
+generated_using: *id002

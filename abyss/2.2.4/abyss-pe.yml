@@ -1,5 +1,15 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: make
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: target
+  optional: true
 named:
 - !Flag
   description: Ignored for compatibility.
@@ -45,7 +55,6 @@ named:
 - !Flag
   description: Evaluate STRING as a makefile statement.
   synonyms:
-  - -E
   - --eval
   args: !SimpleFlagArg
     name: STRING
@@ -164,12 +173,6 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Echo recipes (disable --silent mode).
-  synonyms:
-  - --no-silent
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: Turns off -k.
   synonyms:
   - -S
@@ -220,7 +223,8 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 command:
-- abyss-pe
+- abyss-pe.Makefile
+parent:
 subcommands: []
 help_flag: !Flag
   description: Print this message and exit.
@@ -237,3 +241,38 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "Usage: make [options] [target] ...\nOptions:\n  -b, -m               \
+  \       Ignored for compatibility.\n  -B, --always-make           Unconditionally\
+  \ make all targets.\n  -C DIRECTORY, --directory=DIRECTORY\n                   \
+  \           Change to DIRECTORY before doing anything.\n  -d                   \
+  \       Print lots of debugging information.\n  --debug[=FLAGS]             Print\
+  \ various types of debugging information.\n  -e, --environment-overrides\n     \
+  \                         Environment variables override makefiles.\n  --eval=STRING\
+  \               Evaluate STRING as a makefile statement.\n  -f FILE, --file=FILE,\
+  \ --makefile=FILE\n                              Read FILE as a makefile.\n  -h,\
+  \ --help                  Print this message and exit.\n  -i, --ignore-errors  \
+  \       Ignore errors from recipes.\n  -I DIRECTORY, --include-dir=DIRECTORY\n \
+  \                             Search DIRECTORY for included makefiles.\n  -j [N],\
+  \ --jobs[=N]          Allow N jobs at once; infinite jobs with no arg.\n  -k, --keep-going\
+  \            Keep going when some targets can't be made.\n  -l [N], --load-average[=N],\
+  \ --max-load[=N]\n                              Don't start multiple jobs unless\
+  \ load is below N.\n  -L, --check-symlink-times   Use the latest mtime between symlinks\
+  \ and target.\n  -n, --just-print, --dry-run, --recon\n                        \
+  \      Don't actually run any recipe; just print them.\n  -o FILE, --old-file=FILE,\
+  \ --assume-old=FILE\n                              Consider FILE to be very old\
+  \ and don't remake it.\n  -O[TYPE], --output-sync[=TYPE]\n                     \
+  \         Synchronize output of parallel jobs by TYPE.\n  -p, --print-data-base\
+  \       Print make's internal database.\n  -q, --question              Run no recipe;\
+  \ exit status says if up to date.\n  -r, --no-builtin-rules      Disable the built-in\
+  \ implicit rules.\n  -R, --no-builtin-variables  Disable the built-in variable settings.\n\
+  \  -s, --silent, --quiet       Don't echo recipes.\n  -S, --no-keep-going, --stop\n\
+  \                              Turns off -k.\n  -t, --touch                 Touch\
+  \ targets instead of remaking them.\n  --trace                     Print tracing\
+  \ information.\n  -v, --version               Print the version number of make and\
+  \ exit.\n  -w, --print-directory       Print the current directory.\n  --no-print-directory\
+  \        Turn off -w, even if it was turned on implicitly.\n  -W FILE, --what-if=FILE,\
+  \ --new-file=FILE, --assume-new=FILE\n                              Consider FILE\
+  \ to be infinitely new.\n  --warn-undefined-variables  Warn when an undefined variable\
+  \ is referenced.\n\nThis program built for x86_64-pc-linux-gnu\nReport bugs to <bug-make@gnu.org>\n"
+generated_using:
+- --help

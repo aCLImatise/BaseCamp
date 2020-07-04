@@ -28,13 +28,15 @@ named:
     name: svg
   optional: true
 - !Flag
-  description: /--yA domain annotation script
+  description: annotation script
   synonyms:
-  - --xA
-  args: !EmptyFlagArg {}
+  - --xA/--yA
+  args: !SimpleFlagArg
+    name: domain
   optional: true
 command:
 - lav2plt.pl
+parent:
 subcommands: []
 help_flag: !Flag
   description: short help
@@ -44,3 +46,118 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "#!/usr/bin/perl -w\n\n# lav2plt.pl - produce plotfrom lav output */\n\n\
+  # $Id: lav2plt.c 625 2011-03-23 17:21:38Z wrp $ */\n# $Revision: 625 $  */\n\n################################################################\n\
+  # copyright (c) 2012, 2014 by William R. Pearson and The Rector &\n# Visitors of\
+  \ the University of Virginia */\n################################################################\n\
+  # Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not\
+  \ use this file except in compliance with the License.\n# You may obtain a copy\
+  \ of the License at\n#\n# http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless\
+  \ required by applicable law or agreed to in writing,\n# software distributed under\
+  \ this License is distributed on an \"AS\n# IS\" BASIS, WITHOUT WRRANTIES OR CONDITIONS\
+  \ OF ANY KIND, either\n# express or implied.  See the License for the specific language\n\
+  # governing permissions and limitations under the License. \n################################################################\n\
+  \nuse strict;\nuse Getopt::Long;\nuse Pod::Usage;\n\nuse vars qw($pminx $pmaxx $pminy\
+  \ $pmaxy $lvstr $max_x $max_y\n\t    $fxscal $fyscal $fxoff $fyoff\n\t    @linarr\
+  \ @elinval @blinval @ilinval\n\t    @line_colors @block_colors\n\t    $annot_color\
+  \ %annot_names %color_names);\n\n@line_colors=qw(black blue brown green lightgreen);\n\
+  @block_colors = qw( slategrey lightgreen lightblue pink cyan tan gold plum mediumplum\
+  \ );\n\nmy ($have_bits, $have_zdb, $zdb_size,$lav_dev, $shelp, $help) = (0,0,0,'svg',0,0);\n\
+  my ($x_upd_script, $y_upd_script) = (\"\",\"\");\nmy ($x_annot_arr_r, $y_annot_arr_r)\
+  \ = (0,0);\n\n$annot_color = 1;\n%annot_names = ();\n\nGetOptions(\"B\"=>\\$have_bits,\n\
+  \t   \"Z=i\"=>\\$zdb_size,\n\t   \"xA=s\"=>\\$x_upd_script,\n\t   \"yA=s\"=> \\\
+  $y_upd_script,\n\t   \"dev=s\" => \\$lav_dev,\n\t   \"h|?\" => \\$shelp,\n\t   \"\
+  help\" => \\$help,\n    );\n\npod2usage(1) if $shelp;\npod2usage(exitstatus => 0,\
+  \ verbose => 2) if $help;\n\n#require \"./lav_defs.pl\";\n# $max_x, $max_y define\
+  \ the maximum plotting area\n# the actual bounding box/view area will be larger\
+  \ if annotation comments are available\n($max_x,$max_y)=(540,540);\n@elinval=(1e-4,1e-2,1.0,100.0);\n\
+  @blinval=(40.0,30.0,20.0,10.0);\n@ilinval=(200,100,50,25);\n\nrequire \"./color_defs.pl\"\
+  ;\n\nif ($lav_dev =~ m/ps/) {require \"./lavplt_ps.pl\";}\nelse {require \"./lavplt_svg.pl\"\
+  ;}\n\nmy ($g_n0, $g_n1);\n\nmy $pgm_desc;\nmy ($s_name0, $s_name1);\nmy ($s_desc0,\
+  \ $s_desc1, $ss_desc0, $ss_desc1);\nmy ($p0_beg, $p1_beg, $p0_end, $p1_end);\nmy\
+  \ $open_plt = 0;\n\nif ($zdb_size) {\n  $have_zdb = 1;\n}\nelse {\n  $zdb_size =\
+  \ 1;\n}\n\nwhile (my $line = <>) {\n  chomp $line;\n  next unless ($line);\n  next\
+  \ if ($line =~ m/^#/);\n\n  if ($line =~ m/^d/) {$pgm_desc = get_str();}\n  elsif\
+  \ ($line =~ m/^h/) {\n      ($s_desc0, $s_desc1) = get_str2();\n      $s_desc0 =~\
+  \ s/^gi\\|\\d+\\|//;\n      $s_desc1 =~ s/^gi\\|\\d+\\|//;\n      $s_desc0 = substr($s_desc0,0,50);\n\
+  \      $s_desc1 = substr($s_desc1,0,50);\n      $ss_desc0 = ($s_desc0 =~ m/^(\\\
+  S+)\\s*/);\n      $ss_desc1 = ($s_desc1 =~ m/^(\\S+)\\s*/);\n  }\n  elsif ($line\
+  \ =~ m/^s/) {\n    ($s_name0, $p0_beg, $p0_end,$s_name1, $p1_beg, $p1_end) = get_seq_info();\n\
+  \    $g_n0 = $p0_end - $p0_beg + 1;\n    $g_n1 = $p1_end - $p1_beg + 1;\n  }\n \
+  \ elsif ($line =~ m/^a/) {\n    unless ($open_plt) {\n      if ($y_upd_script) {$y_annot_arr_r\
+  \ = get_annot($s_desc1, $y_upd_script);}\n      if ($x_upd_script) {$x_annot_arr_r\
+  \ = get_annot($s_desc0, $x_upd_script);}\n      openplt($g_n0, $g_n1, $p0_beg, $p1_beg,\
+  \  $s_desc0, $s_desc1, $x_annot_arr_r, $y_annot_arr_r,$have_zdb, $have_bits);\n\
+  \      if (($g_n0 == $g_n1) && ($p0_beg == $p1_beg) && ($p0_end == $p1_end) && $ss_desc0\
+  \ eq $ss_desc1) {\n\tdrawdiag($g_n0, $g_n1);\n      }\n      $open_plt = 1;\n  \
+  \  }\n    do_alignment($p0_beg, $p1_beg);\n  }\n}\n\nunless ($open_plt) {\n  if\
+  \ ($y_upd_script) {$y_annot_arr_r = get_annot($y_upd_script);}\n  if ($x_upd_script)\
+  \ {$x_annot_arr_r = get_annot($x_upd_script);}\n  openplt($g_n0, $g_n1, $p0_beg,\
+  \ $p1_beg,  $s_desc0, $s_desc1, $x_annot_arr_r, $y_annot_arr_r,$have_zdb, $have_bits);\n\
+  \  if (($g_n0 == $g_n1) && ($p0_beg == $p1_beg) && ($p0_end == $p1_end) &&\n   \
+  \   $ss_desc0 eq $ss_desc1) {\n    drawdiag($g_n0, $g_n1);\n  }\n  $open_plt = 1;\n\
+  }\ncloseplt();\nexit(0);\n\n# get a quote enclosed string\n# d {\n#   \"../bin/lalign36\
+  \ -m \"F11 mchu.lav\" ../seq/mchu.aa ../seq/mchu.aa\"\n# }\n\n# void get_str(FILE\
+  \ *file, char *str, size_t len) {\nsub get_str {\n\n  my $str = \"\";\n  while (my\
+  \ $line = <>) {\n    chomp $line;\n    next unless $line;\n    next if ($line =~\
+  \ m/^#/);\n    last if ($line =~ m/}/);\n    $str .= $line\n  }\n\n  $str =~ s/^\\\
+  s+\"//;\n  $str =~ s/\"\\s*$//;\n\n  return $str;\n}\n\n# get two quote enclosed\
+  \ strings\n# h {\n#    \"MCHU - Calmodulin - Human, rabbit, bovine, rat, a - 148\
+  \ aa\"\n#    \"MCHU - Calmodulin - Human, rabbit, bovine, rat, and ch\"\n# }\n#\n\
+  #void get_str2(FILE *file, char *str0, size_t len0,  char *str1, size_t len1)\n\n\
+  sub get_str2 {\n\n  my @str = ();\n  my ($str0,$str1) = (\"\",\"\");\n\n  while\
+  \ (my $line = <>) {\n    chomp $line;\n    next unless $line;\n    next if ($line\
+  \ =~ m/^#/);\n    last if ($line =~ m/}/);\n    push @str, $line;\n  }\n\n  do {\n\
+  \    $str0 .= shift @str;\n  } while (@str && $str0 !~ m/\"\\s*$/);\n\n  do {\n\
+  \    $str1 .= shift @str;\n  } while (@str && $str1 !~ m/\"\\s*$/);\n\n  $str0 =~\
+  \ s/^\\s+\"//;\n  $str0 =~ s/\"\\s*$//;\n\n  $str1 =~ s/^\\s+\"//;\n  $str1 =~ s/\"\
+  \\s*$//;\n\n  return ($str0, $str1);\n}\n\n#void get_seq_info(FILE *file,\n#\t \
+  \    char *str0, size_t len0, int *n0_begin, int *n0_end,\n#\t     char *str1, size_t\
+  \ len1, int *n1_begin, int *n1_end)\n\nsub get_seq_info {\n\n  my @lines = ();\n\
+  \  my ($str0, $str1) = (\"\",\"\");\n  my ($n0_beg, $n0_end, $n1_beg, $n1_end, $blank);\n\
+  \n  while (my $line = <>) {\n    chomp($line);\n    next if ($line =~ m/^#/);\n\
+  \    last if ($line =~ m/}/);\n    push @lines, $line;\n  }\n\n  ($blank, $str0,\
+  \ $n0_beg, $n0_end) = split(/\\s+/,$lines[0]);\n  ($blank, $str1, $n1_beg, $n1_end)\
+  \ = split(/\\s+/,$lines[1]);\n\n  $str0 =~ s/^\\s+\"//;\n  $str0 =~ s/\"\\s*$//;\n\
+  \n  $str1 =~ s/^\\s+\"//;\n  $str1 =~ s/\"\\s*$//;\n\n  return ($str0, $n0_beg,\
+  \ $n0_end, $str1, $n1_beg, $n1_end);\n}\n\n# void do_alignment(FILE *file, int p0_beg,\
+  \ int p1_beg)\nsub do_alignment {\n\n  my ($score, $s0_beg, $s0_end, $s1_beg, $s1_end,\
+  \ $percent, $bits);\n  my $have_line = 0;\n\n  while (my $line = <>) {\n    chomp\
+  \ $line;\n    next unless $line;\n    next if ($line =~ m/^#/);\n    last if ($line\
+  \ =~ m/}/);\n\n    my @fields = split(/\\s+/,$line);\n    # loose first field if\
+  \ blank\n    unless ($fields[0]) {shift @fields;}\n\n    if ($fields[0] eq 's')\
+  \ {($score, $bits) = @fields[1,2];}\n    elsif ($fields[0] eq 'b') {($s0_beg, $s1_beg)\
+  \ = @fields[1,2];}\n    elsif ($fields[0] eq 'e') {($s0_end, $s1_end) = @fields[1,2];}\n\
+  \    elsif ($fields[0] eq 'l') {\n      ($s0_beg, $s1_beg, $s0_end, $s1_end,$percent)\
+  \ = @fields[1..5];\n      if ($have_line) {\n\tsxy_draw($s0_beg-$p0_beg+1, $s1_beg-$p1_beg+1);\n\
+  \tsxy_draw($s0_end-$p0_beg+1, $s1_end-$p1_beg+1);\n      }\n      else {\n\topnline($score,\
+  \ $bits);\n\tsxy_move($s0_beg - $p0_beg + 1, $s1_beg - $p1_beg + 1);\n\tsxy_draw($s0_end\
+  \ - $p0_beg + 1, $s1_end - $p1_beg + 1);\n\t$have_line = 1;\n      }\n    }\n  }\n\
+  \  clsline();\n}\n\n# get annot does 2 things:\n# (1) read in the annotations\n\
+  # (2) make a hash of annotation colors, changing the color with each addition\n\
+  #\n\nsub get_annot {\n  my ($acc, $script) = @_;\n\n  my $FIN;\n\n  if ($script\
+  \ !~ /^!/) {\n    if (!open($FIN,$script)) {\n      warn \"cannot open annotation\
+  \ file: $script\\n\";\n      return 0;\n    }\n  }\n  else { # run the script on\
+  \ the accession\n    $script =~ s/!//;\n    $acc =~ m/^(\\S+)/;\n    $acc = $1;\n\
+  \    if (!open($FIN, \"$script \\'$acc\\' |\")) {\n      warn \"cannot run annotation\
+  \ script:  $script $acc\\n\";\n      return 0;\n    }\n  }\n\n  my @annots = ();\n\
+  \n  my $header = <$FIN>;\n  while (my $line = <$FIN>) {\n    last if ($line =~ m/^>/);\n\
+  \    chomp $line;\n    my %fields = ();\n#    @fields{qw(beg type end descr)} =\
+  \ split(/\\t/,$line);\n    @fields{qw(beg end descr)} = ($line =~ m/^\\s*(\\d+)\\\
+  s+(\\d+)\\s+(\\S.*)$/);\n    $fields{sdescr} = substr($fields{descr},0,12);\n  \
+  \  ($fields{sname}) = ($fields{sdescr} =~ m/^(\\S+)/);\n    push @annots, \\%fields;\n\
+  \    unless ($annot_names{$fields{sname}}) {\n      $annot_names{$fields{sname}}\
+  \ = $annot_color++;\n    }\n  }\n  close($FIN);\n  return \\@annots;\n}\n\nmy $M_LN2=0.69314718055994530942;\n\
+  \n# produce e_val from bit score */\n\n#double bit_to_E (double bit)\nsub bit_to_E\
+  \ {\n  my $bit = shift @_;\n\n  my ($p_val);\n\n  $p_val = $g_n0 * $g_n1 / exp($bit\
+  \ * $M_LN2);\n  if ($p_val > 0.01) {$p_val = 1.0 - exp(-$p_val);}\n\n  return $zdb_size\
+  \ * $p_val;\n}\n\n=pod\n\n=head1 NAME\n\nlav2plt.pl\n\n=head1 SYNOPSIS\n\n lav2plt.pl\
+  \ -h -help -B -Z=10000 --dev svg|ps --xA x_annot_script.pl --yA y_annot_script.pl\
+  \  output.lav\n\n=head1 OPTIONS\n\n -h\tshort help\n --help include description\n\
+  \ -B\thave bit scores\n -Z=#   simulated database size\n --dev svg|ps graphical\
+  \ output format\n --xA/--yA domain annotation script\n\n=head1 DESCRIPTION\n\nC<lav2plt.pl>\
+  \ reads a local alignment lav file, produced by 'lalign36\n-m 11' and produces an\
+  \ alignment plot (on stdout) in svg (--dev svg, default)\nor postscript (--dev ps)\
+  \ format.\n\n=head1 AUTHOR\n\nWilliam R. Pearson, wrp@virginia.edu\n\n=cut\n"
+generated_using:
+- --help

@@ -1,15 +1,17 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - lckdo
+parent:
 subcommands:
-- !Command
+- &id002 !Command
   positional: []
   named: []
   command:
   - lckdo
   - lockfile
+  parent: *id001
   subcommands:
   - !Command
     positional:
@@ -156,6 +158,13 @@ subcommands:
       synonyms:
       - -N
       - --no-pad
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: terminate filenames with ASCII NUL
+      synonyms:
+      - '-0'
+      - --print0
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
@@ -207,6 +216,7 @@ subcommands:
     - lckdo
     - lockfile
     - file
+    parent: *id002
     subcommands: []
     help_flag: !Flag
       description: don't follow symlinks (default if POSIXLY_CORRECT is not set) (default)
@@ -223,15 +233,59 @@ subcommands:
       - --version
       args: !EmptyFlagArg {}
       optional: true
+    help_text: "Usage: file [OPTION...] [FILE...]\nDetermine type of FILEs.\n\n  \
+      \    --help                 display this help and exit\n  -v, --version    \
+      \          output version information and exit\n  -m, --magic-file LIST    \
+      \  use LIST as a colon-separated list of magic\n                           \
+      \    number files\n  -z, --uncompress           try to look inside compressed\
+      \ files\n  -Z, --uncompress-noreport  only print the contents of compressed\
+      \ files\n  -b, --brief                do not prepend filenames to output lines\n\
+      \  -c, --checking-printout    print the parsed form of the magic file, use in\n\
+      \                               conjunction with -m to debug a new magic file\n\
+      \                               before installing it\n  -e, --exclude TEST \
+      \        exclude TEST from the list of test to be\n                        \
+      \       performed for file. Valid tests are:\n                             \
+      \  apptype, ascii, cdf, compress, elf, encoding,\n                         \
+      \      soft, tar, json, text, tokens\n  -f, --files-from FILE      read the\
+      \ filenames to be examined from FILE\n  -F, --separator STRING     use string\
+      \ as separator instead of `:'\n  -i, --mime                 output MIME type\
+      \ strings (--mime-type and\n                               --mime-encoding)\n\
+      \      --apple                output the Apple CREATOR/TYPE\n      --extension\
+      \            output a slash-separated list of extensions\n      --mime-type\
+      \            output the MIME type\n      --mime-encoding        output the MIME\
+      \ encoding\n  -k, --keep-going           don't stop at the first match\n  -l,\
+      \ --list                 list magic strength\n  -L, --dereference          follow\
+      \ symlinks (default if POSIXLY_CORRECT is set)\n  -h, --no-dereference     \
+      \  don't follow symlinks (default if POSIXLY_CORRECT is not set) (default)\n\
+      \  -n, --no-buffer            do not buffer output\n  -N, --no-pad         \
+      \      do not pad output\n  -0, --print0               terminate filenames with\
+      \ ASCII NUL\n  -p, --preserve-date        preserve access times on files\n \
+      \ -P, --parameter            set file engine parameter limits\n            \
+      \                   indir        15 recursion limit for indirection\n      \
+      \                         name         30 use limit for name/use magic\n   \
+      \                            elf_notes   256 max ELF notes processed\n     \
+      \                          elf_phnum   128 max ELF prog sections processed\n\
+      \                               elf_shnum 32768 max ELF sections processed\n\
+      \  -r, --raw                  don't translate unprintable chars to \\ooo\n \
+      \ -s, --special-files        treat special (block/char devices) files as\n \
+      \                            ordinary ones\n  -C, --compile              compile\
+      \ file specified by -m\n  -d, --debug                print debugging messages\n\
+      \nReport bugs to https://bugs.astron.com/\n"
+    generated_using: &id004
+    - --help
   help_flag:
   usage_flag:
   version_flag:
-- !Command
+  help_text: "lckdo: unable to execute --usage: No such file or directory\n"
+  generated_using: &id005
+  - --usage
+- &id003 !Command
   positional: []
   named: []
   command:
   - lckdo
   - program
+  parent: *id001
   subcommands:
   - !Command
     positional:
@@ -378,6 +432,13 @@ subcommands:
       synonyms:
       - -N
       - --no-pad
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
+      description: terminate filenames with ASCII NUL
+      synonyms:
+      - '-0'
+      - --print0
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
@@ -429,6 +490,7 @@ subcommands:
     - lckdo
     - program
     - file
+    parent: *id003
     subcommands: []
     help_flag: !Flag
       description: don't follow symlinks (default if POSIXLY_CORRECT is not set) (default)
@@ -445,15 +507,57 @@ subcommands:
       - --version
       args: !EmptyFlagArg {}
       optional: true
+    help_text: "Usage: file [OPTION...] [FILE...]\nDetermine type of FILEs.\n\n  \
+      \    --help                 display this help and exit\n  -v, --version    \
+      \          output version information and exit\n  -m, --magic-file LIST    \
+      \  use LIST as a colon-separated list of magic\n                           \
+      \    number files\n  -z, --uncompress           try to look inside compressed\
+      \ files\n  -Z, --uncompress-noreport  only print the contents of compressed\
+      \ files\n  -b, --brief                do not prepend filenames to output lines\n\
+      \  -c, --checking-printout    print the parsed form of the magic file, use in\n\
+      \                               conjunction with -m to debug a new magic file\n\
+      \                               before installing it\n  -e, --exclude TEST \
+      \        exclude TEST from the list of test to be\n                        \
+      \       performed for file. Valid tests are:\n                             \
+      \  apptype, ascii, cdf, compress, elf, encoding,\n                         \
+      \      soft, tar, json, text, tokens\n  -f, --files-from FILE      read the\
+      \ filenames to be examined from FILE\n  -F, --separator STRING     use string\
+      \ as separator instead of `:'\n  -i, --mime                 output MIME type\
+      \ strings (--mime-type and\n                               --mime-encoding)\n\
+      \      --apple                output the Apple CREATOR/TYPE\n      --extension\
+      \            output a slash-separated list of extensions\n      --mime-type\
+      \            output the MIME type\n      --mime-encoding        output the MIME\
+      \ encoding\n  -k, --keep-going           don't stop at the first match\n  -l,\
+      \ --list                 list magic strength\n  -L, --dereference          follow\
+      \ symlinks (default if POSIXLY_CORRECT is set)\n  -h, --no-dereference     \
+      \  don't follow symlinks (default if POSIXLY_CORRECT is not set) (default)\n\
+      \  -n, --no-buffer            do not buffer output\n  -N, --no-pad         \
+      \      do not pad output\n  -0, --print0               terminate filenames with\
+      \ ASCII NUL\n  -p, --preserve-date        preserve access times on files\n \
+      \ -P, --parameter            set file engine parameter limits\n            \
+      \                   indir        15 recursion limit for indirection\n      \
+      \                         name         30 use limit for name/use magic\n   \
+      \                            elf_notes   256 max ELF notes processed\n     \
+      \                          elf_phnum   128 max ELF prog sections processed\n\
+      \                               elf_shnum 32768 max ELF sections processed\n\
+      \  -r, --raw                  don't translate unprintable chars to \\ooo\n \
+      \ -s, --special-files        treat special (block/char devices) files as\n \
+      \                            ordinary ones\n  -C, --compile              compile\
+      \ file specified by -m\n  -d, --debug                print debugging messages\n\
+      \nReport bugs to https://bugs.astron.com/\n"
+    generated_using: *id004
   help_flag:
   usage_flag:
   version_flag:
-- !Command
+  help_text: "lckdo: unable to execute --usage: No such file or directory\n"
+  generated_using: *id005
+- &id006 !Command
   positional: []
   named: []
   command:
   - lckdo
   - arguments
+  parent: *id001
   subcommands:
   - !Command
     positional:
@@ -603,6 +707,13 @@ subcommands:
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
+      description: terminate filenames with ASCII NUL
+      synonyms:
+      - '-0'
+      - --print0
+      args: !EmptyFlagArg {}
+      optional: true
+    - !Flag
       description: preserve access times on files
       synonyms:
       - -p
@@ -651,6 +762,7 @@ subcommands:
     - lckdo
     - arguments
     - file
+    parent: *id006
     subcommands: []
     help_flag: !Flag
       description: don't follow symlinks (default if POSIXLY_CORRECT is not set) (default)
@@ -667,9 +779,60 @@ subcommands:
       - --version
       args: !EmptyFlagArg {}
       optional: true
+    help_text: "Usage: file [OPTION...] [FILE...]\nDetermine type of FILEs.\n\n  \
+      \    --help                 display this help and exit\n  -v, --version    \
+      \          output version information and exit\n  -m, --magic-file LIST    \
+      \  use LIST as a colon-separated list of magic\n                           \
+      \    number files\n  -z, --uncompress           try to look inside compressed\
+      \ files\n  -Z, --uncompress-noreport  only print the contents of compressed\
+      \ files\n  -b, --brief                do not prepend filenames to output lines\n\
+      \  -c, --checking-printout    print the parsed form of the magic file, use in\n\
+      \                               conjunction with -m to debug a new magic file\n\
+      \                               before installing it\n  -e, --exclude TEST \
+      \        exclude TEST from the list of test to be\n                        \
+      \       performed for file. Valid tests are:\n                             \
+      \  apptype, ascii, cdf, compress, elf, encoding,\n                         \
+      \      soft, tar, json, text, tokens\n  -f, --files-from FILE      read the\
+      \ filenames to be examined from FILE\n  -F, --separator STRING     use string\
+      \ as separator instead of `:'\n  -i, --mime                 output MIME type\
+      \ strings (--mime-type and\n                               --mime-encoding)\n\
+      \      --apple                output the Apple CREATOR/TYPE\n      --extension\
+      \            output a slash-separated list of extensions\n      --mime-type\
+      \            output the MIME type\n      --mime-encoding        output the MIME\
+      \ encoding\n  -k, --keep-going           don't stop at the first match\n  -l,\
+      \ --list                 list magic strength\n  -L, --dereference          follow\
+      \ symlinks (default if POSIXLY_CORRECT is set)\n  -h, --no-dereference     \
+      \  don't follow symlinks (default if POSIXLY_CORRECT is not set) (default)\n\
+      \  -n, --no-buffer            do not buffer output\n  -N, --no-pad         \
+      \      do not pad output\n  -0, --print0               terminate filenames with\
+      \ ASCII NUL\n  -p, --preserve-date        preserve access times on files\n \
+      \ -P, --parameter            set file engine parameter limits\n            \
+      \                   indir        15 recursion limit for indirection\n      \
+      \                         name         30 use limit for name/use magic\n   \
+      \                            elf_notes   256 max ELF notes processed\n     \
+      \                          elf_phnum   128 max ELF prog sections processed\n\
+      \                               elf_shnum 32768 max ELF sections processed\n\
+      \  -r, --raw                  don't translate unprintable chars to \\ooo\n \
+      \ -s, --special-files        treat special (block/char devices) files as\n \
+      \                            ordinary ones\n  -C, --compile              compile\
+      \ file specified by -m\n  -d, --debug                print debugging messages\n\
+      \nReport bugs to https://bugs.astron.com/\n"
+    generated_using: *id004
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "lckdo: unable to execute --usage: No such file or directory\n"
+  generated_using: *id005
 help_flag:
 usage_flag:
 version_flag:
+help_text: "lckdo: execute a program with a lock set.\nUsage: lckdo [options] lockfile\
+  \ program [arguments]\nwhere options are:\n -w - if the lock is already held by\
+  \ another process,\n   wait for it to complete instead of failing immediately\n\
+  \ -W sec - the same as -w but wait not more than sec seconds\n -e - execute the\
+  \ program directly, no fork/wait\n   (keeps extra open file descriptor)\n -E nnn\
+  \ - set the fd# to keep open in -e case (implies -e)\n -n - do not create the lock\
+  \ file if it does not exist\n -q - produce no output if lock is already held\n -s\
+  \ - lock in shared (read) mode\n -x - lock in exclusive (write) mode (default)\n\
+  \ -t - test for lock existence (just prints pid if any with -q)\n   (implies -n)\n"
+generated_using: []

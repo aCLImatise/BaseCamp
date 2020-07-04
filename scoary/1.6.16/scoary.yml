@@ -188,6 +188,7 @@ named:
   optional: true
 command:
 - scoary
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -203,3 +204,100 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: scoary [-h] [-t TRAITS] [-g GENES] [-n NEWICKTREE] [-s START_COL]\n\
+  \              [--delimiter DELIMITER] [-r RESTRICT_TO] [-o OUTDIR] [-u]\n     \
+  \         [-p P_VALUE_CUTOFF [P_VALUE_CUTOFF ...]]\n              [-c [{I,B,BH,PW,EPW,P}\
+  \ [{I,B,BH,PW,EPW,P} ...]]] [-m MAX_HITS]\n              [--include_input_columns\
+  \ GRABCOLS] [-w] [--no-time] [-e PERMUTE]\n              [--no_pairwise] [--collapse]\
+  \ [--threads THREADS] [--test]\n              [--citation] [--version]\n\nScoary\
+  \ version 1.6.16 - Screen pan-genome for trait-associated variants\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n\nInput options:\n  -t\
+  \ TRAITS, --traits TRAITS\n                        Input trait table (comma-separated-values).\
+  \ Trait\n                        presence is indicated by 1, trait absence by 0.\n\
+  \                        Assumes strain names in the first column and trait\n  \
+  \                      names in the first row\n  -g GENES, --genes GENES\n     \
+  \                   Input gene presence/absence table (comma-separated-\n      \
+  \                  values) from ROARY. Strain names must be equal to\n         \
+  \               those in the trait table\n  -n NEWICKTREE, --newicktree NEWICKTREE\n\
+  \                        Supply a custom tree (Newick format) for phylogenetic\n\
+  \                        analyses instead instead of calculating it internally.\n\
+  \  -s START_COL, --start_col START_COL\n                        On which column\
+  \ in the gene presence/absence file do\n                        individual strain\
+  \ info start. Default=15. (1-based\n                        indexing)\n  --delimiter\
+  \ DELIMITER\n                        The delimiter between cells in the gene\n \
+  \                       presence/absence and trait files, as well as the\n     \
+  \                   output file.\n  -r RESTRICT_TO, --restrict_to RESTRICT_TO\n\
+  \                        Use if you only want to analyze a subset of your\n    \
+  \                    strains. Scoary will read the provided comma-separated\n  \
+  \                      table of strains and restrict analyzes to these.\n\nOutput\
+  \ options:\n  -o OUTDIR, --outdir OUTDIR\n                        Directory to place\
+  \ output files. Default = .\n  -u, --upgma_tree      This flag will cause Scoary\
+  \ to write the calculated\n                        UPGMA tree to a newick file\n\
+  \  -p P_VALUE_CUTOFF [P_VALUE_CUTOFF ...], --p_value_cutoff P_VALUE_CUTOFF [P_VALUE_CUTOFF\
+  \ ...]\n                        P-value cut-off / alpha level. For Fishers,\n  \
+  \                      Bonferronis, and Benjamini-Hochbergs tests, SCOARY\n    \
+  \                    will not report genes with higher p-values than this.\n   \
+  \                     For empirical p-values, this is treated as an alpha\n    \
+  \                    level instead. I.e. 0.02 will filter all genes except\n   \
+  \                     the lower and upper percentile from this test. Run\n     \
+  \                   with \"-p 1.0\" to report all genes. Accepts standard\n    \
+  \                    form (e.g. 1E-8). Provide a single value (applied to\n    \
+  \                    all) or exactly as many values as correction criteria\n   \
+  \                     and in corresponding order. (See example under\n         \
+  \               correction). Default = 0.05\n  -c [{I,B,BH,PW,EPW,P} [{I,B,BH,PW,EPW,P}\
+  \ ...]], --correction [{I,B,BH,PW,EPW,P} [{I,B,BH,PW,EPW,P} ...]]\n            \
+  \            Apply the indicated filtration measure. Allowed values\n          \
+  \              are I, B, BH, PW, EPW, P. I=Individual (naive)\n                \
+  \        p-value. B=Bonferroni adjusted p-value. BH=Benjamini-\n               \
+  \         Hochberg adjusted p. PW=Best (lowest) pairwise\n                     \
+  \   comparison. EPW=Entire range of pairwise comparison\n                      \
+  \  p-values. P=Empirical p-value from permutations. You\n                      \
+  \  can enter as many correction criteria as you would\n                        like.\
+  \ These will be associated with the\n                        p_value_cutoffs you\
+  \ enter. For example \"-c I EPW -p\n                        0.1 0.05\" will apply\
+  \ the following cutoffs: Naive\n                        p-value must be lower than\
+  \ 0.1 AND the entire range of\n                        pairwise comparison values\
+  \ are below 0.05 for this\n                        gene. Note that the empirical\
+  \ p-values should be\n                        interpreted at both tails. Therefore,\
+  \ running \"-c P -p\n                        0.05\" will apply an alpha of 0.05\
+  \ to the empirical\n                        (permuted) p-values, i.e. it will filter\
+  \ everything\n                        except the upper and lower 2.5 percent of\
+  \ the\n                        distribution. Default = Individual p-value. (I)\n\
+  \  -m MAX_HITS, --max_hits MAX_HITS\n                        Maximum number of hits\
+  \ to report. SCOARY will only\n                        report the top max_hits results\
+  \ per trait\n  --include_input_columns GRABCOLS\n                        Grab columns\
+  \ from the input Roary file. and puts them\n                        in the output.\
+  \ Handles comma and ranges, e.g.\n                        --include_input_columns\
+  \ 4,6,8,16-23. The special\n                        keyword ALL will include all\
+  \ relevant input columns in\n                        the output\n  -w, --write_reduced\
+  \   Use with -r if you want Scoary to create a new gene\n                      \
+  \  presence absence file from your reduced set of\n                        isolates.\
+  \ Note: Columns 1-14 (No. sequences, Avg group\n                        size nuc\
+  \ etc) in this file do not reflect the reduced\n                        dataset.\
+  \ These are taken from the full dataset.\n  --no-time             Output file in\
+  \ the form TRAIT.results.csv, instead of\n                        TRAIT_TIMESTAMP.csv.\
+  \ When used with the -w argument\n                        will output a reduced\
+  \ gene matrix in the form\n                        gene_presence_absence_reduced.csv\
+  \ rather than\n                        gene_presence_absence_reduced_TIMESTAMP.csv\n\
+  \nAnalysis options:\n  -e PERMUTE, --permute PERMUTE\n                        Perform\
+  \ N number of permutations of the significant\n                        results post-analysis.\
+  \ Each permutation will do a\n                        label switching of the phenotype\
+  \ and a new p-value is\n                        calculated according to this new\
+  \ dataset. After all N\n                        permutations are completed, the\
+  \ results are ordered in\n                        ascending order, and the percentile\
+  \ of the original\n                        result in the permuted p-value distribution\
+  \ is\n                        reported.\n  --no_pairwise         Do not perform\
+  \ pairwise comparisons. Inthis mode,\n                        Scoary will perform\
+  \ population structure-naive\n                        calculations only. (Fishers\
+  \ test, ORs etc). Useful for\n                        summary operations and exploring\
+  \ sets. (Genes unique\n                        in groups, intersections etc) but\
+  \ not causal analyses.\n  --collapse            Add this to collapse correlated\
+  \ genes (genes that have\n                        identical distribution patterns\
+  \ in the sample) into\n                        merged units.\n\nMisc options:\n\
+  \  --threads THREADS     Number of threads to use. Default = 1\n  --test       \
+  \         Run Scoary on the test set in exampledata, overriding\n              \
+  \          all other parameters.\n  --citation            Show citation information,\
+  \ and exit.\n  --version             Display Scoary version, and exit.\n\nby Ola\
+  \ Brynildsrud (olbb@fhi.no)\n"
+generated_using:
+- --help

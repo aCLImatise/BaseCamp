@@ -1,6 +1,30 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: FASTQ
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: FASTQ
+  optional: false
 named:
+- !Flag
+  description: FASTQ, --input-r1 R1 FASTQ Read 1
+  synonyms:
+  - '-1'
+  args: !SimpleFlagArg
+    name: R1
+  optional: true
+- !Flag
+  description: FASTQ, --input-r2 R2 FASTQ Read 1
+  synonyms:
+  - '-2'
+  args: !SimpleFlagArg
+    name: R2
+  optional: true
 - !Flag
   description: Interleaved FASTQ file path (give it a good name).
   synonyms:
@@ -11,7 +35,22 @@ named:
   optional: true
 command:
 - iu-interleave-fastq
+parent:
 subcommands: []
-help_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
+help_text: "usage: iu-interleave-fastq [-h] -1 R1 FASTQ -2 R2 FASTQ -o OUTPUT_FILE_PATH\n\
+  \nRemove reads from FASTQ File\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  -1 R1 FASTQ, --input-r1 R1 FASTQ\n             \
+  \           Read 1\n  -2 R2 FASTQ, --input-r2 R2 FASTQ\n                       \
+  \ Read 1\n  -o OUTPUT_FILE_PATH, --output-file-path OUTPUT_FILE_PATH\n         \
+  \               Interleaved FASTQ file path (give it a good name).\n"
+generated_using:
+- --help

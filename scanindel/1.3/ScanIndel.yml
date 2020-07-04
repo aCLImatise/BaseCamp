@@ -3,16 +3,6 @@ positional:
 - !Positional
   description: ''
   position: 0
-  name: python
-  optional: false
-- !Positional
-  description: ''
-  position: 1
-  name: ScanIndel.py
-  optional: false
-- !Positional
-  description: ''
-  position: 2
   name: opts
   optional: true
 named:
@@ -116,8 +106,23 @@ named:
   - --mapping_only
   args: !EmptyFlagArg {}
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: config.txt
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -i
+  args: !SimpleFlagArg
+    name: sample.txt
+  optional: true
 command:
 - ScanIndel.py
+parent:
 subcommands: []
 help_flag: !Flag
   description: :produce this menu
@@ -134,3 +139,22 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "Usage:\n python ScanIndel.py -p config.txt -i sample.txt [opts]\nOpts:\n\
+  \ -o  :setting the output directory (default current working directory)\n -F  :setting\
+  \ min-alternate-fraction for FreeBayes (default 0.2)\n -C  :setting min-alternate-count\
+  \ for FreeBayes (default 2)\n -d  :setting min-coverage for Freebayes (default 0)\n\
+  \ -t  :setting --target for Freebayes to provide a BED file for analysis\n -s  :softclipping\
+  \ percentage triggering BLAT re-alignment (default 0.2)\n --min_percent_hq  :min\
+  \ percentage of high quality base in soft clipping reads, default 0.8\n --lowqual_cutoff\
+  \  :low quality cutoff value, default 20\n --mapq_cutoff  :low mapping quality cutoff,\
+  \ default 1\n --blat_ident_pct_cutoff  :Blat sequence identity cutoff, default 0.8\n\
+  \ --gfServer_port  :gfServer service port number, default 50000\n --hetero_factor\
+  \  :The factor about the indel's heterogenirity and heterozygosity, default 0.1\n\
+  \ --bam  :the input file is BAM format\n --rmdup  :exccute duplicate removal step\
+  \ before realignment\n --assembly_only  :only execute de novo assembly for indel\
+  \ calling without blat realignment (default False)\n --mapping_only  :only execute\
+  \ blat realignment withou de novo assembly for indel calling (default False)\n -h\
+  \ --help :produce this menu\n -v --version :show version of this tool\nauthor: Rendong\
+  \ Yang <yang4414@umn.edu>, MSI, University of Minnesota, 2014\nversion: 1.3\n"
+generated_using:
+- --help

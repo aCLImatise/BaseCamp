@@ -1,4 +1,4 @@
-!Command
+&id001 !Command
 positional: []
 named:
 - !Flag
@@ -9,6 +9,7 @@ named:
   optional: true
 command:
 - assemblerflow
+parent:
 subcommands:
 - !Command
   positional: []
@@ -81,6 +82,7 @@ subcommands:
   command:
   - assemblerflow
   - build
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -91,6 +93,22 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: assemblerflow build [-h] [-t TASKS] [-r RECIPE] [-o OUTPUT_NF]\n\
+    \                           [-n PIPELINE_NAME] [--pipeline-only] [-nd] [-c]\n\
+    \                           [-L | -l]\n\noptional arguments:\n  -h, --help   \
+    \         show this help message and exit\n  -t TASKS, --tasks TASKS\n       \
+    \                 Space separated tasks of the pipeline\n  -r RECIPE, --recipe\
+    \ RECIPE\n                        Use one of the available recipes\n  -o OUTPUT_NF\
+    \          Name of the pipeline file\n  -n PIPELINE_NAME      Provide a name for\
+    \ your pipeline.\n  --pipeline-only       Write only the pipeline files and not\
+    \ the templates,\n                        bin, and lib folders.\n  -nd, --no-dependecy\
+    \   Do not automatically add dependencies to the pipeline.\n  -c, --check-pipeline\
+    \  Check only the validity of the pipeline string and\n                      \
+    \  exit.\n  -L, --detailed-list   Print a detailed description for all the currently\n\
+    \                        available processes\n  -l, --short-list      Print a\
+    \ short list of the currently available\n                        processes\n"
+  generated_using: &id002
+  - --help
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -100,3 +118,8 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: assemblerflow [-h] [--debug] {build} ...\n\nA Nextflow pipeline\
+  \ generator\n\npositional arguments:\n  {build}     Select which mode to run\n \
+  \   build     Build a nextflow pipeline\n\noptional arguments:\n  -h, --help  show\
+  \ this help message and exit\n  --debug     Set log to debug mode\n"
+generated_using: *id002

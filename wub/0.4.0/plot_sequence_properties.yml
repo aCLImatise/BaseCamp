@@ -1,10 +1,5 @@
-!Command
-positional:
-- !Positional
-  description: 'Input (default: stdin).'
-  position: 0
-  name: input_fastx
-  optional: false
+&id001 !Command
+positional: []
 named:
 - !Flag
   description: Input format (fastq).
@@ -35,7 +30,56 @@ named:
   optional: true
 command:
 - plot_sequence_properties.py
-subcommands: []
+parent:
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: plot_sequence_properties.py
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: format
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -b
+    args: !SimpleFlagArg
+      name: bins
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -r
+    args: !SimpleFlagArg
+      name: report_pdf
+    optional: true
+  command:
+  - plot_sequence_properties.py
+  - input_fastx
+  parent: *id001
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: plot_sequence_properties.py [-h] [-f format] [-b bins] [-r report_pdf]\n\
+    \                                   [-j]\n                                   [input_fastx]\n\
+    plot_sequence_properties.py: error: argument input_fastx: can't open 'input_fastx':\
+    \ [Errno 2] No such file or directory: 'input_fastx'\n"
+  generated_using: &id002
+  - --help
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -45,3 +89,12 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: plot_sequence_properties.py [-h] [-f format] [-b bins] [-r report_pdf]\n\
+  \                                   [-j]\n                                   [input_fastx]\n\
+  \nPlot histograms of lengths and quality values.\n\npositional arguments:\n  input_fastx\
+  \    Input (default: stdin).\n\noptional arguments:\n  -h, --help     show this\
+  \ help message and exit\n  -f format      Input format (fastq).\n  -b bins     \
+  \   Number of bins on histograms (50).\n  -r report_pdf  Report pdf (plot_sequence_properties.pdf).\n\
+  \  -j             Produce joint plot of lengths and mean quality values\n      \
+  \           (False).\n"
+generated_using: *id002

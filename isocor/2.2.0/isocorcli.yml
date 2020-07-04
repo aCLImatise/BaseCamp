@@ -57,11 +57,11 @@ named:
   - -f
   - --resolution_formula_code
   args: !ChoiceFlagArg
-    choices:
-    - orbitrap
-    - ft-icr
-    - constant
-    - datafile
+    choices: !!set
+      constant:
+      orbitrap:
+      datafile:
+      ft-icr:
   optional: true
 - !Flag
   description: purity vector of the tracer
@@ -87,6 +87,7 @@ named:
   optional: true
 command:
 - isocorcli
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -97,3 +98,23 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: isocorcli [-h] [-M M] [-D D] [-I I] -t TRACER [-r RESOLUTION]\n\
+  \                 [-m MZ_OF_RESOLUTION]\n                 [-f {orbitrap,ft-icr,constant,datafile}]\
+  \ [-p TRACER_PURITY]\n                 [-n] [-v]\n                 inputdata\n\n\
+  correction of MS data for naturally occurring isotopes\n\npositional arguments:\n\
+  \  inputdata             measurements file to process\n\noptional arguments:\n \
+  \ -h, --help            show this help message and exit\n  -M M                \
+  \  path to metabolites database\n  -D D                  path to derivatives database\n\
+  \  -I I                  path to isotopes database\n  -t TRACER, --tracer TRACER\n\
+  \                        the isotopic tracer (e.g. \"13C\")\n  -r RESOLUTION, --resolution\
+  \ RESOLUTION\n                        HR only: resolution of the mass spectrometer\
+  \ (e.g.\n                        \"1e4\")\n  -m MZ_OF_RESOLUTION, --mz_of_resolution\
+  \ MZ_OF_RESOLUTION\n                        HR only: mz at which resolution is given\
+  \ (e.g. \"400\")\n  -f {orbitrap,ft-icr,constant,datafile}, --resolution_formula_code\
+  \ {orbitrap,ft-icr,constant,datafile}\n                        HR only: spectrometer\
+  \ formula code\n  -p TRACER_PURITY, --tracer_purity TRACER_PURITY\n            \
+  \            purity vector of the tracer\n  -n, --correct_NA_tracer\n          \
+  \              flag to correct tracer natural abundance\n  -v, --verbose       \
+  \  flag to enable verbose logs\n"
+generated_using:
+- --help

@@ -2,27 +2,6 @@
 positional: []
 named:
 - !Flag
-  description: or genbank for genomic sequences,
-  synonyms:
-  - '- use'
-  args: !SimpleFlagArg
-    name: refseq
-  optional: true
-- !Flag
-  description: contaminant sequences from UniVec and EmVec,
-  synonyms:
-  - '- contaminants'
-  args: !SimpleFlagArg
-    name: gets
-  optional: true
-- !Flag
-  description: taxonomy mappings.
-  synonyms:
-  - '- taxonomy'
-  args: !SimpleFlagArg
-    name: for
-  optional: true
-- !Flag
   description: "Folder to which the files are downloaded. Default: '.'."
   synonyms:
   - -o
@@ -99,12 +78,6 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Download GI map.
-  synonyms:
-  - -g
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: Verbose mode
   synonyms:
   - -v
@@ -112,7 +85,28 @@ named:
   optional: true
 command:
 - centrifuge-download
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "\ncentrifuge-download [<options>] <database>\n\nARGUMENT\n <database>\
+  \        One of refseq, genbank, contaminants or taxonomy:\n                   \
+  \  - use refseq or genbank for genomic sequences,\n                     - contaminants\
+  \ gets contaminant sequences from UniVec and EmVec,\n                     - taxonomy\
+  \ for taxonomy mappings.\n\nCOMMON OPTIONS\n -o <directory>         Folder to which\
+  \ the files are downloaded. Default: '.'.\n -P <# of threads>      Number of processes\
+  \ when downloading (uses xargs). Default: '1'\n\nWHEN USING database refseq OR genbank:\n\
+  \ -d <domain>            What domain to download. One or more of bacteria, viral,\
+  \ archaea, fungi, protozoa, invertebrate, plant, vertebrate_mammalian, vertebrate_other\
+  \ (comma separated).\n -a <assembly level>    Only download genomes with the specified\
+  \ assembly level. Default: 'Complete Genome'. Use 'Any' for any assembly level.\n\
+  \ -c <refseq category>   Only download genomes in the specified refseq category.\
+  \ Default: any.\n -t <taxids>            Only download the specified taxonomy IDs,\
+  \ comma separated. Default: any.\n -g <program>           Download using program.\
+  \ Options: rsync, curl, wget. Default curl (auto-detected).\n -r               \
+  \      Download RNA sequences, too.\n -u                     Filter unplaced sequences.\n\
+  \ -m                     Mask low-complexity regions using dustmasker. Default:\
+  \ off.\n -l                     Modify header to include taxonomy ID. Default: off.\n\
+  \ -g                     Download GI map.\n -v                     Verbose mode\n"
+generated_using: []

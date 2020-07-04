@@ -1,8 +1,9 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - sketchy
+parent:
 subcommands:
 - !Command
   positional: []
@@ -104,6 +105,7 @@ subcommands:
   command:
   - sketchy
   - collect
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Show this message and exit.
@@ -113,12 +115,33 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-- !Command
+  help_text: "Usage: sketchy collect [OPTIONS]\n\n  Collect predictions and summarize\
+    \ results\n\nOptions:\n  -d, --directory PATH     Path to directory to collect\
+    \ {prefix}.data.tsv\n  -n, --nextflow           Predictions are from Sketchy Nextflow\n\
+    \  -p, --prefix TEXT        Prefix for summary files [summary]\n  -su, --subset\
+    \ TEXT       When using Nextflow use a subset string for\n                   \
+    \        specific configurationsof ranks & reads: 10,1000 -\n                \
+    \           or a sample prefix: isolate1  [None]\n\n  -r, --reference PATH   \
+    \  Genotype matrix in same format as output containing\n                     \
+    \      feature truths\n\n  -m, --heatmap            Visualize results as heatmap\n\
+    \  -ti, --time              Parse the time enhanced output files for Nextflow\n\
+    \  -th, --threshold FLOAT   Apply threshold value to median preference score\n\
+    \                           summary; values below are set to 0 [0.6]\n\n  -st,\
+    \ --statistics        Read the *.filtered.stats.txt files from the\n         \
+    \                  Nextflow output and summarise by prefix.\n\n  -sc, --scale\
+    \ FLOAT       Scale plot sizes [1.0]\n  -c, --coverage           Collect coverage\
+    \ information *.coverage.txt from\n                           CoverM in Nextflow\n\
+    \n  -i, --image_format TEXT  Output image format [pdf]\n  --help             \
+    \      Show this message and exit.\n"
+  generated_using: &id003
+  - --help
+- &id002 !Command
   positional: []
   named: []
   command:
   - sketchy
   - feature
+  parent: *id001
   subcommands:
   - !Command
     positional: []
@@ -151,6 +174,7 @@ subcommands:
     - sketchy
     - feature
     - drop
+    parent: *id002
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -160,6 +184,13 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: sketchy feature drop [OPTIONS]\n\n  Drop columns from the feature\
+      \ index file\n\nOptions:\n  -i, --index PATH    Path to feature index input\
+      \ file.  [required]\n  -o, --output PATH   Path to dropped feature index output\
+      \ file\n                      [index.dropped.tsv]\n\n  -c, --columns TEXT  Comma-delimited\
+      \ string of columns to drop or \"clean\"\n                      [clean]\n\n\
+      \  --help              Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -229,6 +260,7 @@ subcommands:
     - sketchy
     - feature
     - lineage
+    parent: *id002
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -238,6 +270,20 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: sketchy feature lineage [OPTIONS]\n\n  Show a summary of a\
+      \ lineage from the reference sketch data\n\nOptions:\n  -d, --data PATH    \
+      \   Path to data file to summarize trait data from\n                       \
+      \ [required]  [required]\n\n  -l, --lineage TEXT    Trait to show summary for;\
+      \ columns in data file\n                        [required]\n\n  -o, --output\
+      \ PATH     Path to legacy key file to extract identifiers\n                \
+      \        [lineage.index.tsv]\n\n  -s, --summary         Print summary of lineage\
+      \ features to terminal [false]\n  -f, --file_path PATH  Path to collect files\
+      \ for this lineage from [none]\n  -p, --pattern TEXT    Pattern to match files\
+      \ with their name identifier\n                        [*.fastq.gz]\n\n  -k,\
+      \ --key PATH        Path to legacy key file to extract identifiers [none]\n\
+      \  -r, --reindex         Reindex the lineage table [none]\n  --help        \
+      \        Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -300,6 +346,7 @@ subcommands:
     - sketchy
     - feature
     - merge
+    parent: *id002
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -309,6 +356,17 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: sketchy feature merge [OPTIONS]\n\n  Merge sketch and feature\
+      \ data by common indices\n\nOptions:\n  -s, --sketch PATH        Path to sketch\
+      \ file to parse indices from\n                           [required]\n\n  -f,\
+      \ --features PATH      Path to genotype feature file to merge indices with\n\
+      \                           sketch  [required]\n\n  -k, --key PATH         \
+      \  Legacy key file to translate UUIDs [dep.]\n  -i, --index_column TEXT  Feature\
+      \ index column to merge indices on [idx]\n  -m, --mash_column TEXT   Mash index\
+      \ column to merge indices on [ids]\n  -p, --prefix TEXT        Prefix for output\
+      \ file: {prefix}.tsv [sketchy]\n  -v, --verbose            Enable verbose output\
+      \ for merge operations\n  --help                   Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -340,6 +398,7 @@ subcommands:
     - sketchy
     - feature
     - prepare
+    parent: *id002
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -349,6 +408,12 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: sketchy feature prepare [OPTIONS]\n\n  Prepare a feature index\
+      \ file for evaluation in Rust\n\nOptions:\n  -i, --index PATH   Path to feature\
+      \ index input file  [required]\n  -d, --drop TEXT    Comma separated string\
+      \ of columns to drop\n  -p, --prefix PATH  Prefix for prepared feature index\
+      \ output files\n  --help             Show this message and exit.\n"
+    generated_using: *id003
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -362,46 +427,49 @@ subcommands:
     - --version
     args: !EmptyFlagArg {}
     optional: true
+  help_text: "Usage: sketchy feature [OPTIONS] COMMAND [ARGS]...\n\n  Tasks for: feature\
+    \ index preparation and population mapping\n\nOptions:\n  --version  Show the\
+    \ version and exit.\n  --help     Show this message and exit.\n\nCommands:\n \
+    \ drop     Drop columns from the feature index file\n  lineage  Show a summary\
+    \ of a lineage from the reference sketch data\n  merge    Merge sketch and feature\
+    \ data by common indices\n  prepare  Prepare a feature index file for evaluation\
+    \ in Rust\n"
+  generated_using: *id003
 - !Command
   positional: []
-  named: []
+  named:
+  - !Flag
+    description: Path to sketchy home directory [~/.sketchy]
+    synonyms:
+    - -p
+    - --path
+    args: !SimpleFlagArg
+      name: PATH
+    optional: true
   command:
   - sketchy
   - list
-  subcommands:
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Path to sketchy home directory [~/.sketchy]
-      synonyms:
-      - -p
-      - --path
-      args: !SimpleFlagArg
-        name: PATH
-      optional: true
-    command:
-    - sketchy
-    - list
-    - OPTIONS
-    subcommands: []
-    help_flag: !Flag
-      description: Show this message and exit.
-      synonyms:
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-  help_flag:
+  parent: *id001
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
   usage_flag:
   version_flag:
-- !Command
+  help_text: "Usage: sketchy list [OPTIONS]\n\n  List currently available database\
+    \ sketches in repository\n\nOptions:\n  -p, --path PATH  Path to sketchy home\
+    \ directory [~/.sketchy]\n  --help           Show this message and exit.\n"
+  generated_using: *id003
+- &id004 !Command
   positional: []
   named: []
   command:
   - sketchy
   - online
+  parent: *id001
   subcommands:
   - !Command
     positional: []
@@ -448,6 +516,7 @@ subcommands:
     - sketchy
     - online
     - monitor
+    parent: *id004
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -457,6 +526,14 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: sketchy online monitor [OPTIONS]\n\n  Monitor benchmarks during\
+      \ a Sketchy execution (Mash, Sketchy)\n\nOptions:\n  -i, --interval FLOAT  Interval\
+      \ in seconds to check on resource usage\n  -t, --terminate       Terminate monitoring\
+      \ if no more processes are active\n  -e, --early FLOAT     Terminate early after\
+      \ this amount of seconds\n  -p, --prefix TEXT     Prefix for data output file\
+      \ when completed or stopped\n  -l, --log             Output to log file instead\
+      \ of terminal\n  --help                Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -533,6 +610,7 @@ subcommands:
     - sketchy
     - online
     - simulate
+    parent: *id004
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -542,6 +620,22 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: sketchy online simulate [OPTIONS]\n\n  Experimental: simulate\
+      \ a live sequencing run with optional barcodes\n\nOptions:\n  -f, --fastx PATH\
+      \              Path to Fast{a,q} file to simulate run\n                    \
+      \            [required]  [required]\n\n  -i, --index PATH              Path\
+      \ to Fast{a,q} index file from previous\n                                simulation\
+      \ [none]\n\n  -o, --outdir PATH             Output directory for run simulation\
+      \ [run_sim]\n  -r, --reads_per_file INTEGER  Number of reads per Fast{a,q} to\
+      \ simulate live\n                                basecalling [4000]\n\n  -b,\
+      \ --barcodes TEXT           Barcode integers, comma-separated e.g. 1,2,3,4\n\
+      \                                [None]\n\n  -s, --speedup FLOAT           Speed\
+      \ up the simulation by this factor [1.0]\n  --start_time_regex TEXT       Read\
+      \ start time regex to parse from read\n                                headers.\n\
+      \n  --barcode_regex TEXT          Barcode regex to parse from read headers.\n\
+      \  --test TEXT                   Run simple test mode; see docs [false]\n  --help\
+      \                        Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -572,6 +666,7 @@ subcommands:
     - sketchy
     - online
     - watch
+    parent: *id004
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -581,6 +676,12 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: sketchy online watch [OPTIONS]\n\n  Watch a directory and output\
+      \ file paths to pipe into Sketchy\n\nOptions:\n  -d, --directory PATH  Path\
+      \ to directory to watch [required]  [required]\n  -r, --regex TEXT      Regex\
+      \ to identify read files [.*\\.fastq$]\n  -n, --now             Disable waiting\
+      \ for file completion.\n  --help                Show this message and exit.\n"
+    generated_using: *id003
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -594,6 +695,13 @@ subcommands:
     - --version
     args: !EmptyFlagArg {}
     optional: true
+  help_text: "Usage: sketchy online [OPTIONS] COMMAND [ARGS]...\n\n  Tasks for: online\
+    \ sequence run monitoring and simulation\n\nOptions:\n  --version  Show the version\
+    \ and exit.\n  --help     Show this message and exit.\n\nCommands:\n  monitor\
+    \   Monitor benchmarks during a Sketchy execution (Mash, Sketchy)\n  simulate\
+    \  Experimental: simulate a live sequencing run with optional...\n  watch    \
+    \ Watch a directory and output file paths to pipe into Sketchy\n"
+  generated_using: *id003
 - !Command
   positional: []
   named:
@@ -671,6 +779,7 @@ subcommands:
   command:
   - sketchy
   - plot
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Show this message and exit.
@@ -680,6 +789,20 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Usage: sketchy plot [OPTIONS]\n\n  Plot output from Sketchy Rust pipeline\n\
+    \nOptions:\n  -i, --index PATH       Path to genotype feature index used in: sketchy\n\
+    \                         evaluate  [required]\n\n  -k, --key PATH         Path\
+    \ to genotype feature index key for translation\n                         from\
+    \ numeric.  [required]\n\n  -ss, --sssh PATH       Path to sum of ranked sums\
+    \ shared hashes data file\n                         from evaluation  [required]\n\
+    \n  -s, --ssh PATH         Path to sum of shared hashes data file from\n     \
+    \                    prediction\n\n  -st, --stable INTEGER  Stability parameter\
+    \ passed to: sketchy evaluate\n  -c, --palette TEXT     Color palette for output\
+    \ plots [YlGnBu]\n  -p, --prefix TEXT      Output prefix for all files [sketchy]\n\
+    \  -f, --format TEXT      Output image format [png]\n  -v, --verbose         \
+    \ Verbose logging output [false]\n  --help                 Show this message and\
+    \ exit.\n"
+  generated_using: *id003
 - !Command
   positional: []
   named:
@@ -701,6 +824,7 @@ subcommands:
   command:
   - sketchy
   - pull
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Show this message and exit.
@@ -710,6 +834,11 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Usage: sketchy pull [OPTIONS]\n\n  Pull default sketch collection into\
+    \ local storage\n\nOptions:\n  --path, --p PATH  Path to sketchy home directory\
+    \ [~/.sketchy ]\n  -f, --full        Pull the full default sketch collections\
+    \ [false]\n  --help            Show this message and exit.\n"
+  generated_using: *id003
 - !Command
   positional: []
   named:
@@ -804,6 +933,7 @@ subcommands:
   command:
   - sketchy
   - run
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Show this message and exit.
@@ -813,12 +943,29 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-- !Command
+  help_text: "Usage: sketchy run [OPTIONS]\n\n  Sketchy main access wrapper for Rust\
+    \ pipeline\n\nOptions:\n  -f, --fastq PATH       Path to input Fastq containing\
+    \ basecalled nanopore\n                         reads  [required]\n\n  -s, --sketch\
+    \ PATH      Path to reference sketch local files or species\n                \
+    \         template  [required]\n\n  -r, --ranks INTEGER    Output highest ranking\
+    \ sum of shared hashes [10]\n  -o, --outdir PATH      Output directory for data\
+    \ and plots [sketchy]\n  -p, --prefix TEXT      Prefix for output files [sketchy].\n\
+    \  -l, --limit INTEGER    Maximum number of reads to predict on [all]\n  -c, --palette\
+    \ TEXT     Brewer color palette for plots [YlGnBu]\n  -b, --stable INTEGER   Stability\
+    \ parameter to compute stable breakpoints, in\n                         reads\
+    \ [1000]\n\n  -t, --threads INTEGER  Threads for sketch queries in Mash [4]\n\
+    \  -h, --home PATH        Sketchy path to reference sketch home directory. Can\n\
+    \                         be set via environmental variable: SKETCHY_PATH\n\n\
+    \  -q, --quiet            Run without logging output or progress bar.\n  --help\
+    \                 Show this message and exit.\n"
+  generated_using: *id003
+- &id005 !Command
   positional: []
   named: []
   command:
   - sketchy
   - survey
+  parent: *id001
   subcommands:
   - !Command
     positional: []
@@ -866,6 +1013,7 @@ subcommands:
     - sketchy
     - survey
     - construct
+    parent: *id005
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -875,6 +1023,16 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: sketchy survey construct [OPTIONS]\n\n  Construct genotype\
+      \ feature data from Pathfinder Survey\n\nOptions:\n  -d, --directory PATH  Input\
+      \ directory with collected output from Pathfinder\n                        Survey\
+      \  [required]\n\n  -o, --output PATH     Tab-delimited genotype feature index\
+      \ for Sketchy\n  -t, --template TEXT   Use a configuration template: saureus,\
+      \ kpneumoniae,\n                        mtuberculosis\n\n  -m, --missing TEXT\
+      \    Set a missing character [-]\n  -i, --intersect       Take minimum intersection\
+      \ of all specified column\n                        values\n\n  --help      \
+      \          Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -929,6 +1087,7 @@ subcommands:
     - sketchy
     - survey
     - link
+    parent: *id005
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -938,6 +1097,17 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: sketchy survey link [OPTIONS]\n\n  Link ID file to FASTA, e.g.\
+      \ from filtered Pathfinder Survey\n\nOptions:\n  -i, --iid PATH        Path\
+      \ to isolate ID file from Pathfinder Survey\n  -d, --directory PATH  Path to\
+      \ directory from which to extract files\n  -c, --column TEXT     Use a header\
+      \ and column name to parse isolate IDs\n                        [None]\n\n \
+      \ -e, --extension TEXT  File extension to link isolate IDs to file [.fasta]\n\
+      \  -s, --symlink         Symlink the detected files to the output directory.\n\
+      \  -o, --outdir PATH     If symlink, output directory for symbolic links to\n\
+      \                        files [sketchy_link]\n\n  --help                Show\
+      \ this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -985,6 +1155,7 @@ subcommands:
     - sketchy
     - survey
     - mashdist
+    parent: *id005
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -994,6 +1165,17 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: sketchy survey mashdist [OPTIONS]\n\n  Experimental: compute\
+      \ a population graph with NetView and Mash\n\nOptions:\n  -f, --fasta PATH \
+      \          Path to list containing path to genomes per line\n              \
+      \               [required]  [required]\n\n  -i, --index PATH           Path\
+      \ to lineage index file [required]  [required]\n  -o, --output PATH        \
+      \  Path to output file [required]\n  -k, --kmer_size TEXT       K-mer size to\
+      \ estimate genome distance between\n                             all genomes\n\
+      \n  -s, --sketch_size INTEGER  Sketch size to estimate genome distance between\n\
+      \                             all genomes\n\n  --help                     Show\
+      \ this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -1052,6 +1234,7 @@ subcommands:
     - sketchy
     - survey
     - popmap
+    parent: *id005
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -1061,6 +1244,21 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: sketchy survey popmap [OPTIONS]\n\n  Experimental: map reference\
+      \ sketch hits against population structures\n\nOptions:\n  -s, --ssh PATH  \
+      \   Path to sum of shared hashes file to map to population\n               \
+      \      [required]  [required]\n\n  -t, --tree PATH    Path to phylogeny [newick]\
+      \ to use as population map\n                     [required] NOTE: This argument\
+      \ is mutually exclusive with\n                     arguments: [graph].\n\n \
+      \ -g, --graph PATH   Path to a population graph to use as population map\n \
+      \                    [none] NOTE: This argument is mutually exclusive with\n\
+      \                     arguments: [tree].\n\n  -i, --index PATH   Path to lineage\
+      \ index file to use as validation\n                     population [required]\
+      \  [required]\n\n  -c, --column TEXT  Column in index file that map the indices\
+      \ from the sum of\n                     shared hashes file to the population\n\
+      \n  -o, --output PATH  Path to a output GIF [pop.gif]\n  --help            \
+      \ Show this message and exit.\n"
+    generated_using: *id003
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -1074,12 +1272,21 @@ subcommands:
     - --version
     args: !EmptyFlagArg {}
     optional: true
-- !Command
+  help_text: "Usage: sketchy survey [OPTIONS] COMMAND [ARGS]...\n\n  Tasks for: creating\
+    \ feature index files from Pathfinder Survey\n\nOptions:\n  --version  Show the\
+    \ version and exit.\n  --help     Show this message and exit.\n\nCommands:\n \
+    \ construct  Construct genotype feature data from Pathfinder Survey\n  link  \
+    \     Link ID file to FASTA, e.g.\n  mashdist   Experimental: compute a population\
+    \ graph with NetView and Mash\n  popmap     Experimental: map reference sketch\
+    \ hits against population...\n"
+  generated_using: *id003
+- &id006 !Command
   positional: []
   named: []
   command:
   - sketchy
   - utils
+  parent: *id001
   subcommands:
   - !Command
     positional: []
@@ -1128,6 +1335,7 @@ subcommands:
     - sketchy
     - utils
     - fx-filter
+    parent: *id006
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -1137,6 +1345,15 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: sketchy utils fx-filter [OPTIONS]\n\n  Filter reads by external\
+      \ file of read header names\n\nOptions:\n  -f, --fpath PATH      Path to Fast{a,q}\
+      \ input file.  [required]\n  -o, --output TEXT     Output to Fast{a,q} file.\
+      \ Default stdout [-]\n  -i, --ids PATH        Path to file containing the read\
+      \ IDs to get from\n                        Fast{a,q}.   [required]\n\n  -c,\
+      \ --column INTEGER  Column index that contains the IDs (0-based). [1]\n  -s,\
+      \ --sep TEXT        File separator to read columns. ['\\t']\n  --help      \
+      \          Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -1169,6 +1386,7 @@ subcommands:
     - sketchy
     - utils
     - fx-index
+    parent: *id006
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -1178,6 +1396,14 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: sketchy utils fx-index [OPTIONS]\n\n  Create read index from\
+      \ information in read headers (Guppy)\n\nOptions:\n  -f, --fastx PATH    Path\
+      \ to Fast{a,q} input file to index reads from headers\n                    \
+      \  [required]\n\n  -s, --sort_by TEXT  Sort read index by column: runid, sampleid,\
+      \ barcode,\n                      name, start_time [start_time]\n\n  -o, --output\
+      \ PATH   Output sorted read index to tab-delimited file\n                  \
+      \    [read_index.tsv]\n\n  --help              Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -1222,6 +1448,7 @@ subcommands:
     - sketchy
     - utils
     - fx-sample
+    parent: *id006
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -1231,6 +1458,14 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: sketchy utils fx-sample [OPTIONS]\n\n  Sample reads with or\
+      \ without replacement (samples held in memory)\n\nOptions:\n  -f, --fastx PATH\
+      \      Path to Fast{a,q} input file.  [required]\n  -o, --output TEXT     Output\
+      \ to Fast{a,q} file. Default stdout [-]\n  -s, --sample INTEGER  Sample size\
+      \ in number of reads [1000].\n  -r, --replacement     Sample with replacement\
+      \ [false].\n  --seed                Seed for sampling function [none].\n  --help\
+      \                Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -1254,6 +1489,7 @@ subcommands:
     - sketchy
     - utils
     - fx-sort
+    parent: *id006
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -1263,6 +1499,11 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: sketchy utils fx-sort [OPTIONS]\n\n  Sort reads by 'start_time'\
+      \ in basecalled header from Guppy\n\nOptions:\n  -f, --fastx PATH   Path to\
+      \ Fast{a,q} input file.  [required]\n  -o, --output TEXT  Output to Fast{a,q}\
+      \ file. Default stdout [-]\n  --help             Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -1313,6 +1554,7 @@ subcommands:
     - sketchy
     - utils
     - fx-time
+    parent: *id006
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -1322,6 +1564,21 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: sketchy utils fx-time [OPTIONS]\n\n  Compute time of prediction\
+      \ from reads and evaluations\n\nOptions:\n  -f, --fastq PATH       Path to Fast{a,q}\
+      \ input file used in evaluation NOTE:\n                         This argument\
+      \ is mutually exclusive with  arguments:\n                         [index].\
+      \  [required]\n\n  -i, --index PATH       Path to input file read index from\
+      \ `sketchy utils fx-\n                         sort` NOTE: This argument is\
+      \ mutually exclusive with\n                         arguments: [fastx].\n\n\
+      \  -e, --evaluation PATH  Path to evaluation file containing predictions\n \
+      \                        (data.tsv)\n\n  -p, --prefix TEXT      Output prefix\
+      \ for time data: {prefix}.time.tsv\n                         [skecthy]\n\n \
+      \ -d, --delta TEXT       Compute time delta between 'first' read or start time\n\
+      \                         of run !! GMT !! in format: '20/11/20 16:20:00'\n\
+      \                         [first]\n\n  --help                 Show this message\
+      \ and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -1384,6 +1641,7 @@ subcommands:
     - sketchy
     - utils
     - plot-kraken
+    parent: *id006
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -1393,6 +1651,15 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: sketchy utils plot-kraken [OPTIONS]\n\n  Generate metagenomic\
+      \ report plots from Kraken2 in Sketchy Nextflow\n\nOptions:\n  -r, --report\
+      \ TEXT  Path or file glob to tax report files\n  -p, --prefix TEXT  Output prefix\
+      \ for plot file.\n  -l, --level TEXT   Taxonomic level to assess: species [S]\n\
+      \  -t, --top INTEGER  Show top taxonomic levels in plots [10]\n  -c, --color\
+      \ TEXT   Color palette for central donut plot.\n  -t, --title TEXT   Row titles\
+      \ for center plot, comma separated string.\n  -s, --sub          Add subplot\
+      \ titles for each column.\n  --help             Show this message and exit.\n"
+    generated_using: *id003
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -1406,6 +1673,16 @@ subcommands:
     - --version
     args: !EmptyFlagArg {}
     optional: true
+  help_text: "Usage: sketchy utils [OPTIONS] COMMAND [ARGS]...\n\n  Tasks for: supplementary\
+    \ utility functions\n\nOptions:\n  --version  Show the version and exit.\n  --help\
+    \     Show this message and exit.\n\nCommands:\n  fx-filter    Filter reads by\
+    \ external file of read header names\n  fx-index     Create read index from information\
+    \ in read headers (Guppy)\n  fx-sample    Sample reads with or without replacement\
+    \ (samples held in...\n  fx-sort      Sort reads by 'start_time' in basecalled\
+    \ header from Guppy\n  fx-time      Compute time of prediction from reads and\
+    \ evaluations\n  plot-kraken  Generate metagenomic report plots from Kraken2 in\
+    \ Sketchy...\n"
+  generated_using: *id003
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -1419,3 +1696,14 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "Usage: sketchy [OPTIONS] COMMAND [ARGS]...\n\n  Sketchy: online lineage\
+  \ and genotype matching using MinHash\n\nOptions:\n  --version  Show the version\
+  \ and exit.\n  --help     Show this message and exit.\n\nCommands:\n  collect  Collect\
+  \ predictions and summarize results\n  feature  Tasks for: feature index preparation\
+  \ and population mapping\n  list     List currently available database sketches\
+  \ in repository\n  online   Tasks for: online sequence run monitoring and simulation\n\
+  \  plot     Plot output from Sketchy Rust pipeline\n  pull     Pull default sketch\
+  \ collection into local storage\n  run      Sketchy main access wrapper for Rust\
+  \ pipeline\n  survey   Tasks for: creating feature index files from Pathfinder Survey\n\
+  \  utils    Tasks for: supplementary utility functions\n"
+generated_using: *id003

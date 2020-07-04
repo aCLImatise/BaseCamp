@@ -27,10 +27,10 @@ named:
   synonyms:
   - --mode
   args: !ChoiceFlagArg
-    choices:
-    - lossless
-    - deep-lossless
-    - raw
+    choices: !!set
+      deep-lossless:
+      lossless:
+      raw:
   optional: true
 - !Flag
   description: reverts files to original size (lossless modes only)
@@ -99,6 +99,7 @@ named:
   optional: true
 command:
 - picopore
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -115,3 +116,30 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: picopore [-h] --mode {lossless,deep-lossless,raw} [--revert] [--fastq]\n\
+  \                [--summary] [--manual STR] [-v] [-y] [-t INT] [--prefix STR]\n\
+  \                [--skip-root] [--print-every INT]\n                [input [input\
+  \ ...]]\n\nA tool for reducing the size of an Oxford Nanopore Technologies dataset\
+  \ without losing any data\n\nSee also:\n\tpicopore-realtime\tmonitors a directory\
+  \ for new reads and compresses them in real time\n\tpicopore-test\t\tcompresses\
+  \ to temporary files and checks that all datasets and attributes are equal (lossless\
+  \ modes only)\n\tpicopore-rename\t\trenames groups and datasets within FAST5 files\n\
+  \npositional arguments:\n  input                 list of directories or fast5 files\
+  \ to shrink\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --mode {lossless,deep-lossless,raw}\n                        choose\
+  \ compression mode\n  --revert              reverts files to original size (lossless\
+  \ modes only)\n  --fastq, --no-fastq   retain FASTQ data (raw mode only) (Default:\
+  \ --fastq)\n  --summary, --no-summary\n                        retain summary data\
+  \ (raw mode only) (Default: --no-\n                        summary)\n  --manual\
+  \ STR          manually remove only groups whose paths contain STR\n           \
+  \             (raw mode only, regular expressions permitted,\n                 \
+  \       overrides defaults)\n  -v, --version         show version number and exit\n\
+  \  -y                    skip confirm step\n  -t INT, --threads INT\n          \
+  \              number of threads (Default: 1)\n  --prefix STR          add prefix\
+  \ to output files to prevent overwrite\n  --skip-root, --no-skip-root\n        \
+  \                ignore files in root input directories for albacore\n         \
+  \               realtime compression (Default: --no-skip-root)\n  --print-every\
+  \ INT     print a dot every approximately INT files, or -1 to\n                \
+  \        silence (Default: 100)\n"
+generated_using:
+- --help

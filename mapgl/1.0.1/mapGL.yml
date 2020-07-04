@@ -68,10 +68,10 @@ named:
   - -v
   - --verbose
   args: !ChoiceFlagArg
-    choices:
-    - info
-    - debug
-    - silent
+    choices: !!set
+      silent:
+      debug:
+      info:
   optional: true
 - !Flag
   description: 'If elements span multiple chains, report them as non- mapping. These
@@ -90,9 +90,9 @@ named:
   - -i
   - --in_format
   args: !ChoiceFlagArg
-    choices:
-    - BED
-    - narrowPeak
+    choices: !!set
+      BED:
+      narrowPeak:
   optional: true
 - !Flag
   description: 'Attempt to predict gain/loss events on all branches of the tree, not
@@ -105,6 +105,7 @@ named:
   optional: true
 command:
 - mapGL.py
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -115,3 +116,55 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: mapGL.py [-h] [-o FILE] [-t FLOAT] [-g GAP] [-v {info,debug,silent}]\n\
+  \                [-d] [-i {BED,narrowPeak}] [-f]\n                input tree qname\
+  \ tname alignments [alignments ...]\n\nLabel input regions as orthologous, gained\
+  \ in the query species, or lost in\nthe target species. Chain alignment files are\
+  \ used to map features from query\nto target and one or more outgroup species. Features\
+  \ that map directly from\nquery to target are labeled as orthologs, and ortholgous\
+  \ coordinates in the\ntarget species are given in the output. Non-mapping features\
+  \ are assigned as\ngains or losses based on a maximum-parsimony algorithm predicting\n\
+  presence/absence in the most-recent common ancestor. Based on bnMapper.py, by\n\
+  Ogert Denas (James Taylor lab) (https://github.com/bxlab/bx-\npython/blob/master/scripts/bnMapper.py)\n\
+  \npositional arguments:\n  input                 Input regions to process. Should\
+  \ be in standard bed\n                        format. Only the first four bed fields\
+  \ will be used.\n  tree                  Tree, in standard Newick format, with or\
+  \ without\n                        branch lengths, describing relationships of query\
+  \ and\n                        target species to outgroups. May be given as a string\n\
+  \                        or file.\n  qname                 Name of the query species.\
+  \ Regions from this species\n                        will be mapped to target species\
+  \ coordinates.\n  tname                 Name of the target species. Regions from\
+  \ the query\n                        species will be mapped to coordinates from\
+  \ this\n                        species.\n  alignments            Alignment files\
+  \ (.chain or .pkl): One for the target\n                        species and one\
+  \ per outgroup species. Files should be\n                        named according\
+  \ to the convention:\n                        qname.tname[...].chain.gz, where qname\
+  \ is the query\n                        species name and tname is the name of the\n\
+  \                        target/outgroup species. Names used for qname and\n   \
+  \                     tname must match names used in the newick tree.\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -o FILE,\
+  \ --output FILE\n                        Output file. Default stdout. (default:\
+  \ stdout)\n  -t FLOAT, --threshold FLOAT\n                        Mapping threshold\
+  \ i.e., |elem| * threshold <=\n                        |mapped_elem|. Default =\
+  \ 0.0 -- equivalent to\n                        accepting a single-base overlap.\
+  \ On the other end of\n                        the spectrum, setting this value\
+  \ to 1 is equivalent to\n                        only accepting full-length overlaps.\
+  \ (default: 0.0)\n  -g GAP, --gap GAP     Ignore elements with an insertion/deletion\
+  \ of this or\n                        bigger size. Using the default value (-1)\
+  \ will allow\n                        gaps of any size. (default: -1)\n  -v {info,debug,silent},\
+  \ --verbose {info,debug,silent}\n                        Verbosity level (default:\
+  \ info)\n  -d, --drop_split      If elements span multiple chains, report them as\
+  \ non-\n                        mapping. These will then be reported as gains or\n\
+  \                        losses, according to the maximum-parsimony\n          \
+  \              predictions. This is the default mapping behavior for\n         \
+  \               bnMapper. By default, mapGL.pys will follow the\n              \
+  \          mapping convention used by liftOver, whereas the\n                  \
+  \      longest mapped alignment is reported for split\n                        elements.\
+  \ (default: False)\n  -i {BED,narrowPeak}, --in_format {BED,narrowPeak}\n      \
+  \                  Input file format. (Default: BED) (default: BED)\n  -f, --full_labels\
+  \     Attempt to predict gain/loss events on all branches of\n                 \
+  \       the tree, not just query/target branches. Output will\n                \
+  \        include a comma-delimited list of gain/loss events\n                  \
+  \      from any/all affected branches. (default: False)\n\nAdam Diehl (Boyle Lab)\n"
+generated_using:
+- --help

@@ -1,5 +1,10 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: filename
+  optional: false
 named:
 - !Flag
   description: '-f  Input format (SeqIO types): GenBank, Swiss or Uniprot, EMBL work
@@ -28,6 +33,7 @@ named:
   optional: true
 command:
 - bp_genbank2gff3.pl
+parent:
 subcommands: []
 help_flag: !Flag
   description: -h  display this message
@@ -37,3 +43,45 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "Possible precedence issue with control flow operator at /tmp/tmpd0000ozj/bin/bp_genbank2gff3.pl\
+  \ line 690.\nUsage:\n      bp_genbank2gff3.pl [options] filename(s)\n\n      # process\
+  \ a directory containing GenBank flatfiles\n      perl bp_genbank2gff3.pl --dir\
+  \ path_to_files --zip\n\n      # process a single file, ignore explicit exons and\
+  \ introns\n      perl bp_genbank2gff3.pl --filter exon --filter intron file.gbk.gz\n\
+  \n      # process a list of files \n      perl bp_genbank2gff3.pl *gbk.gz\n\n  \
+  \    # process data from URL, with Chado GFF model (-noCDS), and pipe to database\
+  \ loader\n      curl ftp://ftp.ncbi.nih.gov/genomes/Saccharomyces_cerevisiae/CHR_X/NC_001142.gbk\
+  \ \\\n      | perl bp_genbank2gff3.pl -noCDS -in stdin -out stdout \\\n      | perl\
+  \ gmod_bulk_load_gff3.pl -dbname mychado -organism fromdata\n\n        Options:\n\
+  \            --noinfer  -r  don't infer exon/mRNA subfeatures\n            --conf\
+  \     -i  path to the curation configuration file that contains user preferences\n\
+  \                           for Genbank entries (must be YAML format)\n        \
+  \                   (if --manual is passed without --ini, user will be prompted\
+  \ to \n                            create the file if any manual input is saved)\n\
+  \            --sofile  -l  path to to the so.obo file to use for feature type mapping\n\
+  \                           (--sofile live will download the latest online revision)\n\
+  \            --manual   -m  when trying to guess the proper SO term, if more than\n\
+  \                           one option matches the primary tag, the converter will\
+  \ \n                           wait for user input to choose the correct one\n \
+  \                          (only works with --sofile)\n            --dir      -d\
+  \  path to a list of genbank flatfiles\n            --outdir   -o  location to write\
+  \ GFF files (can be 'stdout' or '-' for pipe)\n            --zip      -z  compress\
+  \ GFF3 output files with gzip\n            --summary  -s  print a summary of the\
+  \ features in each contig\n            --filter   -x  genbank feature type(s) to\
+  \ ignore\n            --split    -y  split output to separate GFF and fasta files\
+  \ for\n                           each genbank record\n            --nolump   -n\
+  \  separate file for each reference sequence\n                           (default\
+  \ is to lump all records together into one \n                           output file\
+  \ for each input file)\n            --ethresh  -e  error threshold for unflattener\n\
+  \                           set this high (>2) to ignore all unflattener errors\n\
+  \            --[no]CDS  -c  Keep CDS-exons, or convert to alternate gene-RNA-protein-exon\
+  \ \n                           model. --CDS is default. Use --CDS to keep default\
+  \ GFF gene model, \n                           use --noCDS to convert to g-r-p-e.\n\
+  \            --format   -f  Input format (SeqIO types): GenBank, Swiss or Uniprot,\
+  \ EMBL work\n                           (GenBank is default)\n            --GFF_VERSION\
+  \  3 is default, 2 and 2.5 and other Bio::Tools::GFF versions available\n      \
+  \      --quiet        don't talk about what is being processed \n            --typesource\
+  \   SO sequence type for source (e.g. chromosome; region; contig)\n            --help\
+  \     -h  display this message\n\n"
+generated_using:
+- --help

@@ -1,11 +1,22 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - filter-gff
+parent:
 subcommands:
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: INPUT_FILE
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: OUTPUT_FILE
+    optional: true
   named:
   - !Flag
     description: Reference FASTA file for the GFF  [required]
@@ -54,6 +65,7 @@ subcommands:
   command:
   - filter-gff
   - cov
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Show this message and exit.
@@ -63,8 +75,29 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Usage: filter-gff cov [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  Filter\
+    \ on a per coverage basis\n\nOptions:\n  -v, --verbose\n  -f, --reference FILENAME\
+    \  Reference FASTA file for the GFF  [required]\n  -s, --strand-specific     If\
+    \ the coverage must be calculated on each strand\n  -t, --sorted             \
+    \ Assumes the GFF to be correctly sorted\n  -c, --min-coverage FLOAT  Minimum\
+    \ coverage for the contig/strand\n  -r, --rename              Emulates BLAST in\
+    \ reading the FASTA file (keeps\n                            only the header before\
+    \ the first space)\n\n  --progress                Shows Progress Bar\n  --help\
+    \                    Show this message and exit.\n"
+  generated_using: &id002
+  - --help
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: INPUT_FILE
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: OUTPUT_FILE
+    optional: true
   named:
   - !Flag
     description: 'Size of the overlap that triggers the filter [default: 100]'
@@ -107,6 +140,7 @@ subcommands:
   command:
   - filter-gff
   - overlap
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Show this message and exit.
@@ -116,8 +150,33 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Usage: filter-gff overlap [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n \
+    \ Use overlapping filter\n\nOptions:\n  -v, --verbose\n  -s, --size INTEGER  \
+    \            Size of the overlap that triggers the filter\n                  \
+    \                [default: 100]\n\n  -t, --sorted                    If the GFF\
+    \ file is sorted (all of a sequence\n                                  annotations\
+    \ are contiguos and sorted by\n                                  strand) can use\
+    \ less memory, `sort -s -k 1,1\n                                  -k 7,7` can\
+    \ be used\n\n  -c, --choose-func TEXT          Function to choose between two\
+    \ overlapping\n                                  annotations\n\n  -a, --sort-attr\
+    \ [bitscore|identity|length]\n                                  Attribute to sort\
+    \ annotations before\n                                  filtering (default bitscore)\
+    \  [default:\n                                  bitscore]\n\n  --progress    \
+    \                  Shows Progress Bar\n  --help                          Show\
+    \ this message and exit.\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: INPUT_FILE
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: OUTPUT_FILE
+    optional: true
   named:
   - !Flag
     description: If the GFF file is sorted (all of a sequence annotations are contiguos)
@@ -168,6 +227,7 @@ subcommands:
   command:
   - filter-gff
   - sequence
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Show this message and exit.
@@ -177,8 +237,33 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Usage: filter-gff sequence [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n\
+    \  Filter on a per sequence basis\n\nOptions:\n  -v, --verbose\n  -t, --sorted\
+    \                    If the GFF file is sorted (all of a sequence\n          \
+    \                        annotations are contiguos) can use less\n           \
+    \                       memory, `sort -s -k 1,1` can be used\n\n  -a, --attribute\
+    \ [evalue|bitscore|identity|length]\n                                  Attribute\
+    \ on which to apply the filter\n                                  [default: bitscore]\n\
+    \n  -f, --function [mean|median|quantile|std|max|min]\n                      \
+    \            Function for filtering  [default: mean]\n  -l, --value FLOAT    \
+    \           Value for the function (used for *std* and\n                     \
+    \             *quantile*)\n\n  -c, --comparison [gt|ge|lt|le]  Type of comparison\
+    \ (e.g. ge -> greater than\n                                  or equal to)  [default:\
+    \ ge]\n\n  --progress                      Shows Progress Bar\n  --help      \
+    \                    Show this message and exit.\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: INPUT_FILE
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: OUTPUT_FILE
+    optional: true
   named:
   - !Flag
     description: filter by custom key:value, if the argument is 'key:value' the annotation
@@ -243,6 +328,7 @@ subcommands:
   command:
   - filter-gff
   - values
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Show this message and exit.
@@ -252,6 +338,20 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Usage: filter-gff values [OPTIONS] [INPUT_FILE] [OUTPUT_FILE]\n\n  Filter\
+    \ based on values\n\nOptions:\n  -v, --verbose\n  --str-eq TEXT  filter by custom\
+    \ key:value, if the argument is 'key:value'\n                 the annotation is\
+    \ kept if it contains an attribute 'key'\n                 whose value is exactly\
+    \ 'value' as a string\n\n  --str-in TEXT  Same as '--str-eq' but 'value' is contained\
+    \ in the attribute\n  --num-eq TEXT  Same as '--str-eq' but 'value' is a number\
+    \ which is equal or\n                 greater than\n\n  --num-ge TEXT  Same as\
+    \ '--str-eq' but 'value' is a number which is equal or\n                 greater\
+    \ than\n\n  --num-le TEXT  Same as '--num-ge' but 'value' is a number which is\
+    \ equal or\n                 less than\n\n  --num-gt TEXT  Same as '--str-eq'\
+    \ but 'value' is a number which is greater\n                 than\n\n  --num-lt\
+    \ TEXT  Same as '--num-ge' but 'value' is a number which is less than\n  --progress\
+    \     Shows Progress Bar\n  --help         Show this message and exit.\n"
+  generated_using: *id002
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -260,3 +360,9 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "Usage: filter-gff [OPTIONS] COMMAND [ARGS]...\n\n  Main function\n\nOptions:\n\
+  \  --version  Show the version and exit.\n  --cite\n  --help     Show this message\
+  \ and exit.\n\nCommands:\n  cov       Filter on a per coverage basis\n  overlap\
+  \   Use overlapping filter\n  sequence  Filter on a per sequence basis\n  values\
+  \    Filter based on values\n"
+generated_using: *id002

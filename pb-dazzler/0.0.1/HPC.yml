@@ -1,5 +1,10 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: int
+  optional: true
 named:
 - !Flag
   description: ': k-mer size (must be <= 32).'
@@ -109,8 +114,15 @@ named:
   - -f
   args: !EmptyFlagArg {}
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -vbad
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - HPC.daligner
+parent:
 subcommands: []
 help_flag: !Flag
   description: ': A seed hit if the k-mers in band cover >= -h bps in the targest
@@ -121,3 +133,24 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "Usage: HPC.daligner [-vbad] [-t<int>] [-w<int(6)>] [-l<int(1000)>] [-s<int(100)]\
+  \ [-M<int>]\n                            [-P<dir(/tmp)>] [-B<int(4)>] [-T<int(4)>]\
+  \ [-f<name>]\n                          ( [-k<int(14)>] [-h<int(35)>] [-e<double(.70)>]\
+  \ [-H<int>]\n                            [-k<int(20)>] [-h<int(50)>] [-e<double(.85)>]\
+  \ <ref:db|dam> )\n                            [-m<track>]+ <reads:db|dam> [<first:int>[-<last:int>]]\n\
+  \n     Passed through to daligner.\n      -k: k-mer size (must be <= 32).\n    \
+  \  -w: Look for k-mers in averlapping bands of size 2^-w.\n      -h: A seed hit\
+  \ if the k-mers in band cover >= -h bps in the targest read.\n      -t: Ignore k-mers\
+  \ that occur >= -t times in a block.\n      -M: Use only -M GB of memory by ignoring\
+  \ most frequent k-mers.\n\n      -e: Look for alignments with -e percent similarity.\n\
+  \      -l: Look for alignments of length >= -l.\n      -s: Use -s as the trace point\
+  \ spacing for encoding alignments.\n      -H: HGAP option: align only target reads\
+  \ of length >= -H.\n\n      -T: Use -T threads.\n      -P: Do first level sort and\
+  \ merge in directory -P.\n      -m: Soft mask the blocks with the specified mask.\n\
+  \      -b: For AT/GC biased data, compensate k-mer counts (deprecated).\n\n    \
+  \ Script control.\n      -v: Run all commands in script in verbose mode.\n     \
+  \ -a: Instruct LAsort & LAmerge to sort only on (a,ab).\n      -d: Put .las files\
+  \ for each target block in a sub-directory\n      -B: # of block compares per daligner\
+  \ job\n      -D: # of .las's to merge per LAmerge job\n      -f: Place script bundles\
+  \ in separate files with prefix <name>\n"
+generated_using: []

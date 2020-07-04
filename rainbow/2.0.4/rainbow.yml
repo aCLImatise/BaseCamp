@@ -1,6 +1,25 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: cmd
+  optional: false
 named:
+- !Flag
+  description: Input fasta/fastq file, supports multiple '-1'
+  synonyms:
+  - '-1'
+  args: !SimpleFlagArg
+    name: string
+  optional: true
+- !Flag
+  description: Input fasta/fastq file, supports multiple '-2' [null]
+  synonyms:
+  - '-2'
+  args: !SimpleFlagArg
+    name: string
+  optional: true
 - !Flag
   description: 'Read length, default: 0 variable'
   synonyms:
@@ -56,14 +75,6 @@ named:
     name: int
   optional: true
 - !Flag
-  description: Minimum overlap when assemble two reads (valid only when '-a' is opened)
-    [5]
-  synonyms:
-  - -l
-  args: !SimpleFlagArg
-    name: int
-  optional: true
-- !Flag
   description: Minimum fraction of similarity when assembly (valid only when '-a'
     is opened) [0.90]
   synonyms:
@@ -89,7 +100,32 @@ named:
   optional: true
 command:
 - rainbow
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "rainbow 2.0.4 -- <ruanjue@gmail.com, chongzechen@gmail.com>\nUsage: rainbow\
+  \ <cmd> [options]\n\n cluster\nInput  File Format: paired fasta/fastq file(s)\n\
+  Output File Format: <seqid:int>\\t<cluster_id:int>\\t<read1:string>\\t<read2:string>\n\
+  \  -1 <string> Input fasta/fastq file, supports multiple '-1'\n  -2 <string> Input\
+  \ fasta/fastq file, supports multiple '-2' [null]\n  -l <int>    Read length, default:\
+  \ 0 variable\n  -m <int>    Maximum mismatches [4]\n  -e <int>    Exactly matching\
+  \ threshold [2000]\n  -L          Low level of polymorphism\n div\nInput File Format:\
+  \ <seqid:int>\\t<cluster_id:int>\\t<read1:string>\\t<read2:string>\nOutput File\
+  \ Format: <seqid:int>\\t<cluster_id:int>\\t<read1:string>\\t<read2:string>[\\t<pre_cluster_id:int>]\n\
+  \  -i <string> Input file [stdin]\n  -o <string> Output file [stdout]\n  -k <int>\
+  \    K_allele, min variants to create a new group [2]\n  -K <int>    K_allele, divide\
+  \ regardless of frequency when num of variants exceed this value [50]\n  -f <float>\
+  \  Frequency, min variant frequency to create a new group [0.2]\n merge \nInput\
+  \ File Format: <seqid:int>\\t<cluster_id:int>\\t<read1:string>\\t<read2:string>[\\\
+  t<pre_cluster_id:int>]\n  -i <string> Input rbasm output file [stdin]\n  -a    \
+  \      output assembly\n  -o <string> Output file for merged contigs, one line per\
+  \ cluster [stdout]\n  -N <int>    Maximum number of divided clusters to merge [300]\n\
+  \  -l <int>    Minimum overlap when assemble two reads (valid only when '-a' is\
+  \ opened) [5]\n  -f <float>  Minimum fraction of similarity when assembly (valid\
+  \ only when '-a' is opened) [0.90]\n  -r <int>    Minimum number of reads to assemble\
+  \ (valid only when '-a' is opened) [5]\n  -R <int>    Maximum number of reads to\
+  \ assemble (valid only when '-a' is opened) [300]\n\n"
+generated_using:
+- --help

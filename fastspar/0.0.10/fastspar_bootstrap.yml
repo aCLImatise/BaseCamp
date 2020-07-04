@@ -1,23 +1,31 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: bootstraps
+  optional: false
 named:
 - !Flag
-  description: /--otu_table <path> OTU input table
+  description: OTU input table
   synonyms:
-  - -c
-  args: !EmptyFlagArg {}
+  - -c/--otu_table
+  args: !SimpleFlagArg
+    name: path
   optional: true
 - !Flag
-  description: /--number <path> Number of bootstrap samples to generate
+  description: Number of bootstrap samples to generate
   synonyms:
-  - -n
-  args: !EmptyFlagArg {}
+  - -n/--number
+  args: !SimpleFlagArg
+    name: path
   optional: true
 - !Flag
-  description: /--prefix <str> Prefix out bootstrap output files
+  description: Prefix out bootstrap output files
   synonyms:
-  - -p
-  args: !EmptyFlagArg {}
+  - -p/--prefix
+  args: !SimpleFlagArg
+    name: str
   optional: true
 - !Flag
   description: 'Number of threads (default: 1)'
@@ -41,8 +49,30 @@ named:
   - -v
   args: !EmptyFlagArg {}
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --otu_table
+  args: !SimpleFlagArg
+    name: path
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --number
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --prefix
+  args: !SimpleFlagArg
+    name: str
+  optional: true
 command:
 - fastspar_bootstrap
+parent:
 subcommands: []
 help_flag: !Flag
   description: --help Display this help and exit
@@ -52,3 +82,15 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "Program: FastSpar bootstraps (c++ implementation of SparCC)\nVersion 0.0.10\n\
+  Contact: Stephen Watts (s.watts2@student.unimelb.edu.au)\n\nUsage:\n  bootstraps\
+  \ --otu_table <path> --number <int> --prefix <str>\n\n  -c/--otu_table <path>\n\
+  \               OTU input table\n  -n/--number <path>\n               Number of\
+  \ bootstrap samples to generate\n  -p/--prefix <str>\n               Prefix out\
+  \ bootstrap output files\n\nOptions:\n  -t <int>, --threads <int>\n            \
+  \   Number of threads (default: 1)\n  -s <int>, --seed <int>\n               Random\
+  \ number generator seed (default: 1)\n\nOther:\n  -h        --help\n           \
+  \     Display this help and exit\n  -v        --version\n                Display\
+  \ version information and exit\n"
+generated_using:
+- --help

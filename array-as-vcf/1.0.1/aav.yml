@@ -15,9 +15,9 @@ named:
   - --build
   - -b
   args: !ChoiceFlagArg
-    choices:
-    - GRCh37
-    - GRCh38
+    choices: !!set
+      GRCh38:
+      GRCh37:
   optional: true
 - !Flag
   description: 'Name of sample in VCF file (default: None)'
@@ -76,14 +76,15 @@ named:
   synonyms:
   - --log-level
   args: !ChoiceFlagArg
-    choices:
-    - DEBUG
-    - INFO
-    - WARNING
-    - ERROR
+    choices: !!set
+      ERROR:
+      WARNING:
+      DEBUG:
+      INFO:
   optional: true
 command:
 - aav
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -94,3 +95,23 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: aav [-h] --path PATH [--build {GRCh37,GRCh38}] --sample-name\n\
+  \           SAMPLE_NAME [--chr-prefix CHR_PREFIX] [--lookup-table LOOKUP_TABLE]\n\
+  \           [--dump DUMP] [--encoding ENCODING]\n           [--exclude-assays EXCLUDE_ASSAYS\
+  \ [EXCLUDE_ASSAYS ...]]\n           [--no-ensembl-lookup] [--log-level {DEBUG,INFO,WARNING,ERROR}]\n\
+  \nConvert an array file to VCF format\n\noptional arguments:\n  -h, --help     \
+  \       show this help message and exit\n  --path PATH, -p PATH  Path to array file\
+  \ (default: None)\n  --build {GRCh37,GRCh38}, -b {GRCh37,GRCh38}\n             \
+  \           Genome build (default: GRCh37)\n  --sample-name SAMPLE_NAME, -s SAMPLE_NAME\n\
+  \                        Name of sample in VCF file (default: None)\n  --chr-prefix\
+  \ CHR_PREFIX, -c CHR_PREFIX\n                        Prefix to chromosome names\
+  \ (default: None)\n  --lookup-table LOOKUP_TABLE, -l LOOKUP_TABLE\n            \
+  \            Path to existing lookup table for rsIDs (default:\n               \
+  \         None)\n  --dump DUMP, -d DUMP  Path to write generated lookup table (default:\
+  \ None)\n  --encoding ENCODING   Encoding of the array file (default: UTF-8)\n \
+  \ --exclude-assays EXCLUDE_ASSAYS [EXCLUDE_ASSAYS ...]\n                       \
+  \ Assay IDs for OpenArray to ignore (default: None)\n  --no-ensembl-lookup   Lookup\
+  \ missing rsIDs on Ensembl (default: False)\n  --log-level {DEBUG,INFO,WARNING,ERROR}\n\
+  \                        Set the verbosity of the logger (default: INFO)\n"
+generated_using:
+- --help

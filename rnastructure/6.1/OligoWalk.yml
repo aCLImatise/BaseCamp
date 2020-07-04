@@ -1,44 +1,72 @@
 !Command
-positional: []
-named: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: sequence file
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: report file
+  optional: false
+named:
+- !Flag
+  description: (1.5 micromolar).
+  synonyms:
+  - '-6'
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - OligoWalk
-subcommands:
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: report file
-    optional: false
-  named: []
-  command:
-  - OligoWalk
-  - sequence file
-  subcommands: []
-  help_flag:
-  usage_flag:
-  version_flag:
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: sequence file
-    optional: false
-  - !Positional
-    description: ''
-    position: 1
-    name: report file
-    optional: false
-  named: []
-  command:
-  - OligoWalk
-  - report file
-  subcommands: []
-  help_flag:
-  usage_flag:
-  version_flag:
+parent:
+subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "USAGE: OligoWalk <sequence file> <report file> [options]\nAll flags are\
+  \ case-insensitive, and grouping of flags is not allowed.\n\n=============================\n\
+  ==== Required Parameters ====\n=============================\n<sequence file>\n\
+  \    The name of a sequence file (SEQ, FASTA) or structure file (CT, DBN)\n    containing\
+  \ the input sequence.\n\n<report file>\n    The name of a report file to which results\
+  \ will be written.\n\n=========================================\n==== Option Flags\
+  \ Without Parameters ====\n=========================================\n-d --dna \n\
+  \    Indicate that the oligomers are DNA (as opposed to RNA).\n\n-h --help \n  \
+  \  Display the usage details message.\n\n--html \n    Write the report in HTML mode\
+  \ instead of plain text.\n\n--no-header \n    Do not include a list of the parameters\
+  \ used in the \n    calulation in the output report file.\n\n-score \n    Score\
+  \ the siRNA prefilter.\n\n-v --version \n    Display version and copyright information\
+  \ for this interface.\n\n-w --webserver \n    Use special output for running OligoWalk\
+  \ as a webserver.\n    This implies HTML=true and it sends the header (which lists\
+  \ the \n    parameters that were used in the calulation) to STDOUT instead of \n\
+  \    including them in the report. It also turns off progress updates.\n\n-write\
+  \ \n    Write sav files to save time in test mode.\n\n======================================\n\
+  ==== Option Flags With Parameters ====\n======================================\n\
+  All parameters must follow their associated flag directly.\nFailure to do so may\
+  \ result in aberrant program behavior.\n\n-c -co --conc \n    Molar concentration\
+  \ of oligos. E.g. \"1.5E-6\", \"1.5uM\", or \"0.0000015\".\n    Unit Abbreviations:\
+  \ mM=10^-3 uM=10^-6, nM=10^-9, pM=10^-12\n    This may be used in conjunction with\
+  \ the '--unit' flag: --conc 1.5 --unit\n    -6 (1.5 micromolar).\n\n-dist \n   \
+  \ Limit the maximum distance between nucleotides that can pair.\n\n-en --end \n\
+  \    End position of folding region of target.\n\n-fi --filter \n    Whether to\
+  \ use the siRNA prefilter to prefill functional siRNA.\n    0=No Prefilter; 1=Use\
+  \ Prefilter\n\n-fold \n    Only fold a fragment with the specified size (plus the\
+  \ length of \n    the oligomer), which is centered on the binding region.\n    When\
+  \ FOLD_SIZE > 1, MODE (-m) and SUBOPTIMAL (-s) must both be 2.\n\n-l --length \n\
+  \    Length of oligomers for hybridization.\n\n-m --mode \n    Determines how target\
+  \ structure is used:\n      1=Break Local Structure.\n      2=Refold target RNA\
+  \ after oligo binding.\n      3=No target structure considered.\n\n-s --suboptimal\
+  \ \n    Determines suboptimal structure options:\n      0=Do not consider suboptimal\
+  \ structures.\n      1=Use AllSub to generate suboptimal structures.\n      2=Use\
+  \ Partition Function to generate all suboptimal structures.\n      3=Use a heuristic\
+  \ method for both oligo-free and oligo-bound RNA.\n      4=Use stochastic sampling\
+  \ to generate 1000 structures.\n\n-se --to \n    End position of scanning on folded\
+  \ region of target.\n\n-sh --shape \n    Specify a SHAPE data file.\n\n-ss --from\
+  \ \n    Start position of scanning on folded region of target.\n\n-st --start \n\
+  \    Start position of folding region of target.\n\n-test \n    Perform self-tests.\
+  \ The parameter should be a list of space-separated test\n    numbers, e.g.: -test\
+  \ '1 2 5'\n\n-u --unit \n    Specifies a power-of-ten to multiply the concentration\
+  \ by.\n    For example \"-co 3 -unit -6\" is equal to \"-co 3uM\" or \"-co 3E-6\"\
+  \n\n"
+generated_using:
+- --help

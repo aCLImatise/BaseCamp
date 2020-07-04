@@ -179,8 +179,15 @@ named:
   args: !SimpleFlagArg
     name: f
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -options
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - ssu-cmscore
+parent:
 subcommands: []
 help_flag: !Flag
   description: ': show brief help on version and usage'
@@ -190,3 +197,37 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "# ssu-cmscore :: score RNA covariance model against sequences\n# INFERNAL\
+  \ s0.1.1 (Feb 2016)\n# Copyright (C) 2016 Howard Hughes Medical Institute.\n# Freely\
+  \ distributed under the BSD open source license.\n# - - - - - - - - - - - - - -\
+  \ - - - - - - - - - - - - - - - - - - - - - -\nUsage: ssu-cmscore [-options] <cmfile>\n\
+  \nwhere general options are:\n  -h           : show brief help on version and usage\n\
+  \  -n <n>       : generate <n> sequences  [10]\n  -l           : align locally w.r.t.\
+  \ the model\n  -s <n>       : set RNG seed to <n> (if 0: one-time arbitrary seed)\
+  \  [181]\n  -a           : print individual timings & scores, not just a summary\n\
+  \  --sub        : build sub CM for columns b/t HMM predicted start/end points\n\
+  \  --mxsize <x> : set maximum allowable DP matrix size to <x> Mb  [2048.0]\n  --devhelp\
+  \    : show list of undocumented developer options\n\noptions for source of input\
+  \ sequences:\n  --emit        : emit <n> sequences from each CM  [default]\n  --random\
+  \      : emit <n> random seq from cm->null model\n  --infile <f>  : read sequences\
+  \ to align from file <s>\n  --outfile <f> : save seqs to file <s> in FASTA format\n\
+  \  --Lmin <n>    : with --random, specify minimum length of random sequences as\
+  \ <n>\n  --Lmax <n>    : with --random, specify maximum length of random sequences\
+  \ as <n>\n  --pad         : with --emit, pad (W-L) residues on each side of emitted\
+  \ seqs\n\nstage 2 alignment options, to compare to stage 1 (D&C non-banded), are:\n\
+  \  --hbanded   : compare d&c optimal CYK versus HMM banded CYK  [default]\n  --tau\
+  \ <x>   : set tail loss prob for --hbanded to <x>  [1E-7]  (0<x<1)\n  --aln2bands\
+  \ : w/--hbanded derive HMM bands w/o scanning Forward/Backward\n  --hsafe     :\
+  \ realign (non-banded) seqs with HMM banded CYK score < 0 bits\n  --nonbanded :\
+  \ compare divide and conquer (d&c) versus standard non-banded CYK\n  --scoreonly\
+  \ : with --nonbanded, do only score, save memory\n  --viterbi   : align to a CM\
+  \ Plan 9 HMM with the Viterbi algorithm\n\noptions for testing search algorithms\
+  \ instead of alignment algorithms:\n  --search  : run algorithms in scanning search\
+  \ mode\n  --inside  : with --search, use Inside instead of CYK\n  --forward : with\
+  \ --search, use HMM  Forward instead of CYK\n\noptions for testing multiple tau\
+  \ values for --hbanded:\n  --taus <n> : set initial (stage 2) tail loss prob to\
+  \ 1E-<x> for HMM banding\n  --taue <n> : set final   (stage N) tail loss prob to\
+  \ 1E-<x> for HMM banding\n\nextra output files:\n  --tfile <f> : dump parsetrees\
+  \ to file <f>\n"
+generated_using:
+- -h

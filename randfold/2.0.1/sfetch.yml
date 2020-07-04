@@ -1,5 +1,10 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: seqname
+  optional: false
 named:
 - !Flag
   description: ': name is an accession number, not a key'
@@ -58,50 +63,21 @@ named:
     name: format
   optional: true
 - !Flag
-  description: $SWDIR   SwissProt
-  synonyms:
-  - -Dsw
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: $PIRDIR  PIR
-  synonyms:
-  - -Dpir
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: $EMBLDIR EMBL
-  synonyms:
-  - -Dem
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: $GBDIR   GenBank
-  synonyms:
-  - -Dgb
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: $WORMDIR WormPep
-  synonyms:
-  - -Dwp
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: $OWLDIR  OWL
-  synonyms:
-  - -Dowl
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: ': specify input sequence file format <s>'
   synonyms:
   - --informat
   args: !SimpleFlagArg
     name: s
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -options
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - sfetch
+parent:
 subcommands: []
 help_flag: !Flag
   description: ': help; print version and usage info'
@@ -111,3 +87,23 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "sfetch - retrieve a specified sequence from a file\nSQUID 1.9g (Oct 2002)\n\
+  Copyright (C) 1992-2002 HHMI/Washington University School of Medicine\nFreely distributed\
+  \ under the GNU General Public License (GPL)\n- - - - - - - - - - - - - - - - -\
+  \ - - - - - - - - - - - - - - - - - - -\nUsage: sfetch [-options] <seqname>\n  \
+  \ or: sfetch [-options] .\n       (The second version fetches the first seq in the\
+  \ file.)\n   Get a sequence from a database.\n   Available options:\n   -a     \
+  \       : name is an accession number, not a key\n   -d <seqfile>  : get sequence\
+  \ from <seqfile>\n   -D <database> : instead, get sequence from main database\n\
+  \   -h            : help; print version and usage info\n   -r <newname>  : rename\
+  \ the fragment <newname>\n   -f <from>     : from which residue (1..N)\n   -t <to>\
+  \       : to which residue (1..N)\n   -o <outfile>  : direct output to <outfile>\n\
+  \   -F <format>   : use output format of <format>; see below for\n             \
+  \      list. Default is original format of database.\n\n  Available output formats\
+  \ include:\n    fasta\n    genbank\n    embl\n    gcg\n    pir\n    raw\n\n  Available\
+  \ databases are: (if $env variables are set correctly)\n    -Dsw      $SWDIR   SwissProt\n\
+  \    -Dpir     $PIRDIR  PIR\n    -Dem      $EMBLDIR EMBL\n    -Dgb      $GBDIR \
+  \  GenBank\n    -Dwp      $WORMDIR WormPep\n    -Dowl     $OWLDIR  OWL\n\n  --informat\
+  \ <s> : specify input sequence file format <s>\n\n"
+generated_using:
+- -h

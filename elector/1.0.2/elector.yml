@@ -1,5 +1,15 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: THREADS
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: CORRECTED
+  optional: true
 named:
 - !Flag
   description: '[THREADS]    Number of threads'
@@ -90,6 +100,7 @@ named:
   optional: true
 command:
 - elector
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -100,3 +111,31 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: elector [-h] [-threads [THREADS]] [-corrected [CORRECTED]] [-split]\n\
+  \               [-uncorrected [UNCORRECTED]] [-perfect [PERFECT]]\n            \
+  \   [-reference [REFERENCE]] [-simulator [SIMULATOR]]\n               [-corrector\
+  \ [SOFT]] [-dazzDb [DAZZDB]]\n               [-output [OUTPUTDIRPATH]] [-remap]\
+  \ [-assemble]\n               [-minsize [MINSIZE]]\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  -threads [THREADS]    Number\
+  \ of threads\n  -corrected [CORRECTED]\n                        Fasta file with\
+  \ corrected reads (each read sequence on\n                        one line)\n  -split\
+  \                Corrected reads are split\n  -uncorrected [UNCORRECTED]\n     \
+  \                   Prefix of the reads simulation files\n  -perfect [PERFECT] \
+  \   Fasta file with reference read sequences (each read\n                      \
+  \  sequence on one line)\n  -reference [REFERENCE]\n                        Fasta\
+  \ file with reference genome sequences (each\n                        sequence on\
+  \ one line)\n  -simulator [SIMULATOR]\n                        Tool used for the\
+  \ simulation of the long reads (either\n                        nanosim or simlord)\n\
+  \  -corrector [SOFT]     Corrector used (lowercase, in this list: lorma, mecat,\n\
+  \                        pbdagcon, daccord). If no corrector name is provided,\n\
+  \                        make sure the read's headers are correctly formatted\n\
+  \                        (i.e. they correspond to those of uncorrected and\n   \
+  \                     reference files)\n  -dazzDb [DAZZDB]      Reads database used\
+  \ for the correction, if the reads\n                        were corrected with\
+  \ Daccord or PBDagCon\n  -output [OUTPUTDIRPATH]\n                        Name for\
+  \ output directory\n  -remap                Perform remapping of the corrected reads\
+  \ to the\n                        reference\n  -assemble             Perform assembly\
+  \ of the corrected reads\n  -minsize [MINSIZE]    Do not assess reads/fragments\
+  \ chose length is <=\n                        MINSIZE % of the original read\n"
+generated_using:
+- --help

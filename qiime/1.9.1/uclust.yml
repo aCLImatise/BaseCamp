@@ -147,6 +147,7 @@ named:
   optional: true
 command:
 - uclust
+parent:
 subcommands: []
 help_flag: !Flag
   description: This help.
@@ -161,3 +162,60 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "\n\nSort sequences by length, use --mergesort for very large files:\n\
+  \   uclust --sort seqs.fasta --output seqs_sorted.fasta\n   uclust --mergesort seqs.fasta\
+  \ --output seqs_sorted.fasta [--split N] [--tmpdir dir]\n      --split N is partition\
+  \ size in Mb (default 1000).\n      --tmpdir dir is directory for partition files\
+  \ (default current dir).\n\nCluster de novo:\n   uclust --input seqs_sorted.fasta\
+  \ --uc results.uc --id 0.90\n\nDatabase search without clustering:\n   uclust --input\
+  \ seqs.fasta --lib database.fasta --uc results.uc --id 0.90 --libonly\n\nDatabase\
+  \ search, cluster seqs that don't match:\n   uclust --input seqs_sorted.fasta --lib\
+  \ database.fasta --uc results.uc --id 0.90\n\nFile format conversions:\n   uclust\
+  \ --uc2clstr results.uc --output results.clstr\n   uclust --clstr2uc cd_hit.clstr\
+  \ --output results.uc\n   uclust --uc2fasta results.uc --input seqs.fasta --output\
+  \ results.fasta [--types abc]\n      --types abc...  Record types to include (default\
+  \ SH).\n\nCreate multiple alignment for each cluster:\n   uclust --staralign results.fasta\
+  \ --output results_aligned.fasta\n\nSort results by cluster number:\n   uclust --sortuc\
+  \ results.uc --output results_sorted.uc\n\nInput:\n   --usersort             Don't\
+  \ assume input is sorted by length (default assume sorted).\n   --maxlen L     \
+  \        Ignore query sequences longer than L (default 10000).\n   --minlen L  \
+  \           Ignore query sequences shorter than L (default 16).\n   --amino    \
+  \            Input is amino acids (default infer from ACGTU frequencies).\n   --nucleo\
+  \               Input is nucelotides (default infer from ACGTU frequencies).\n\n\
+  Output:\n   --trunclabels          Truncate FASTA labels at first white space.\n\
+  \   --allhits              Write all accepts to .uc file (default top hit/no match\
+  \ only).\n   --[no]output_rejects   Write rejects to .uc file (default output top\
+  \ hit/no match only).\n   --log filename         Log file with miscellaneous information.\n\
+  \   --fastapairs filename  Pair-wise alignments for all hits in FASTA format.\n\
+  \   --blastout filename    BLAST-like alignments.\n     --rowlen n             Row\
+  \ length for --blastout (default 64).\n     --idchar c             Character for\
+  \ identities in --blastout (default '|').\n     --diffchar c           Character\
+  \ for mismatches in --blastout (default ' ').\n     --[no]blast_termgaps   Show\
+  \ terminal gaps in --blastout (default don't show).\n\nSearch:\n   --id f      \
+  \           Minimum identity for a hit (default 0.9).\n   --maxaccepts n       \
+  \  Maximum hits before quitting search (default 1, 0=infinity).\n   --maxrejects\
+  \ n         Maximum rejects before quitting search (default 8, 0=infinity).\n  \
+  \ --w n                  Word length for windex (default 5 aa.s, 8 nuc.s).\n   --[no]wordcountreject\
+  \  Dis/enable word count rejection (default enabled).\n   --bump n             \
+  \  Bump percent (default 50, 0=don't bump).\n   --stepwords n          Target nr.\
+  \ of common words (default 8, 0=don't step).\n   --rev                  Reverse\
+  \ strand matching (default plus strand only)\n   --libonly              Match to\
+  \ --lib only (default add new seed if not matched).\n   --self                 Ignore\
+  \ target sequence with same label as query.\n   --idprefix n           First n letters\
+  \ of query and seed must be identical (default 0).\n   --exact                Same\
+  \ as --maxrejects 0 --nowordcountreject.\n   --optimal              Same as --maxrejects\
+  \ 0 --maxaccepts 0 --nowordcountreject.\n\nAlignment:\n   --match s            \
+  \  Match score (nucleotides only, default 2.0).\n   --mismatch s           Mismatch\
+  \ score (nucleotides only, default -1.0).\n   --gaopen s             Gap open penalties\
+  \ (see manual).\n   --gapext s             Gap extend penalies (see manual).\n \
+  \  --[no]fastalign        [Don't] use HSPs and banding for speed (default do use).\n\
+  \   --hsp n                Minimum length of HSP (default 32).\n   --hspscore s\
+  \           Minimum score/col for HSP (default 1.0)\n   --k n                  Word\
+  \ length for HSP-finding (default 3 amino acids, 4 nucleotides).\n   --band n  \
+  \             Band radius for regions between HSPs (default 16, 0=don't band).\n\
+  \   --check_fast           Compare fast & slow alignments and report statistics\
+  \ in --log file.\n\nMisc:\n   --help                 This help.\n   --quiet    \
+  \            Don't output progress messages to stderr.\n   --version           \
+  \   Write version to standard output and exit.\n"
+generated_using:
+- --help

@@ -25,6 +25,7 @@ named:
   optional: true
 command:
 - vcf-contrast
+parent:
 subcommands: []
 help_flag: !Flag
   description: ', -?, --help                      This help message.'
@@ -34,3 +35,22 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "About: Finds differences amongst samples adding NOVELGT, NOVELAL and NOVELTY\
+  \ annotations to INFO field.\n       Note that haploid genotypes are internally\
+  \ treated as homozygous diploid genotypes, therefore\n       \"0/1\" and \"1\" are\
+  \ considered different genotypes.\nUsage: vcf-contrast +<list> -<list> [OPTIONS]\
+  \ file.vcf.gz\nOptions:\n   +<list>                             List of samples\
+  \ where unique variant is expected\n   -<list>                             List\
+  \ of background samples\n   -d, --min-DP <int>                  Minimum depth across\
+  \ all -<list> samples\n   -f, --apply-filters                 Skip sites with FILTER\
+  \ column different from PASS or \".\"\n   -n, --novel-sites                   Print\
+  \ only records with novel genotypes\n   -h, -?, --help                      This\
+  \ help message.\nExample:\n   # Test if any of the samples A,B is different from\
+  \ all C,D,E\n   vcf-contrast +A,B -C,D,E -m file.vcf.gz\n\n   # Same as above but\
+  \ printing only sites with novel variants and table output\n   vcf-contrast -n +A,B\
+  \ -C,D,E -m file.vcf.gz | vcf-query -f '%CHROM %POS\\t%INFO/NOVELTY\\t%INFO/NOVELAL\\\
+  t%INFO/NOVELGT[\\t%SAMPLE %GTR %PL]\\n'\n\n   # Similar to above but require minimum\
+  \ mapping quality of 20\n   vcf-annotate -f MinMQ=20 file.vcf.gz | vcf-contrast\
+  \ +A,B,C -D,E,F -f\n\n"
+generated_using:
+- --help

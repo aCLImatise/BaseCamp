@@ -1,15 +1,5 @@
-!Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: inputFile
-  optional: false
-- !Positional
-  description: ''
-  position: 1
-  name: outputFile
-  optional: false
+&id001 !Command
+positional: []
 named:
 - !Flag
   description: ': set distribution used for insert length [1 = normal], 2 = poisson'
@@ -103,7 +93,68 @@ named:
   optional: true
 command:
 - synthReadGen
-subcommands: []
+parent:
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: outputFile
+    optional: false
+  named: []
+  command:
+  - synthReadGen
+  - inputFile
+  parent: *id001
+  subcommands: []
+  help_flag: !Flag
+    description: ': print out help'
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "Welcome to the Synthetic Read Generator of ALE!\n(C) 2010 Scott Clark\n\
+    \nUsage: synthReadGen [options] <inputFile> <outputFile>\n    Options:\n    -h\
+    \ : print out help\n"
+  generated_using: &id002 []
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: synthReadGen
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: inputFile
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: outputFile
+    optional: false
+  named: []
+  command:
+  - synthReadGen
+  - outputFile
+  parent: *id001
+  subcommands: []
+  help_flag: !Flag
+    description: ': print out help'
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "Welcome to the Synthetic Read Generator of ALE!\n(C) 2010 Scott Clark\n\
+    \nUsage: synthReadGen [options] <inputFile> <outputFile>\n    Options:\n    -h\
+    \ : print out help\n"
+  generated_using: *id002
 help_flag: !Flag
   description: ': print out this help'
   synonyms:
@@ -112,3 +163,17 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "Welcome to the Synthetic Read Generator of ALE!\n(C) 2010 Scott Clark\n\
+  \nUsage: synthReadGen [options] <inputFile> <outputFile>\n\nOptions: <i>nt <f>loat\
+  \ [default]\n  -h      : print out this help\n  -id <i> : set distribution used\
+  \ for insert length\n            [1 = normal], 2 = poisson\n  -ld <i> : set distribution\
+  \ used for read length\n            [1 = normal], 2 = poisson\n  -im <f> : inward\
+  \ insert length mean [200.0]\n  -om <f> : outward insert length mean [500.0]\n \
+  \ -is <f> : inward insert length std dev [10.0]\n  -os <f> : outward insert length\
+  \ std dev [15.0]\n  -ip <f> : probability for an inward read [0.5]\n  -er <c> :\
+  \ illumina error char [^]\n  -nr <i> : number of reads to make [1000]\n  -rl <x>\
+  \ : read length mean [85.0]\n  -rs <x> : read length sigma [7.0]\n  -ps <x> : no\
+  \ error for first x bases in a read [0]\n  -b      : outputs two fastq files for\
+  \ bowtie mapping [off]\n"
+generated_using:
+- -h

@@ -44,10 +44,10 @@ named:
   synonyms:
   - --read_type
   args: !ChoiceFlagArg
-    choices:
-    - q
-    - qseq
-    - f
+    choices: !!set
+      f:
+      qseq:
+      q:
   optional: true
 - !Flag
   description: Fasta file of MLST alleles (optional)
@@ -264,6 +264,7 @@ named:
   optional: true
 command:
 - srst2
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -279,3 +280,87 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: srst2 [-h] [--version] [--input_se INPUT_SE [INPUT_SE ...]]\n \
+  \            [--input_pe INPUT_PE [INPUT_PE ...]] [--merge_paired]\n           \
+  \  [--forward FORWARD] [--reverse REVERSE] [--read_type {q,qseq,f}]\n          \
+  \   [--mlst_db MLST_DB] [--mlst_delimiter MLST_DELIMITER]\n             [--mlst_definitions\
+  \ MLST_DEFINITIONS]\n             [--mlst_max_mismatch MLST_MAX_MISMATCH]\n    \
+  \         [--gene_db GENE_DB [GENE_DB ...]] [--no_gene_details]\n             [--gene_max_mismatch\
+  \ GENE_MAX_MISMATCH]\n             [--min_coverage MIN_COVERAGE] [--max_divergence\
+  \ MAX_DIVERGENCE]\n             [--min_depth MIN_DEPTH] [--min_edge_depth MIN_EDGE_DEPTH]\n\
+  \             [--prob_err PROB_ERR]\n             [--truncation_score_tolerance\
+  \ TRUNCATION_SCORE_TOLERANCE]\n             [--stop_after STOP_AFTER] [--other OTHER]\n\
+  \             [--max_unaligned_overlap MAX_UNALIGNED_OVERLAP] [--mapq MAPQ]\n  \
+  \           [--baseq BASEQ] [--samtools_args SAMTOOLS_ARGS] --output OUTPUT\n  \
+  \           [--log] [--save_scores] [--report_new_consensus]\n             [--report_all_consensus]\
+  \ [--use_existing_bowtie2_sam]\n             [--use_existing_pileup] [--use_existing_scores]\n\
+  \             [--keep_interim_alignment] [--threads THREADS]\n             [--prev_output\
+  \ PREV_OUTPUT [PREV_OUTPUT ...]]\n\nSRST2 - Short Read Sequence Typer (v2)\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --version\
+  \             show program's version number and exit\n  --input_se INPUT_SE [INPUT_SE\
+  \ ...]\n                        Single end read file(s) for analysing (may be gzipped)\n\
+  \  --input_pe INPUT_PE [INPUT_PE ...]\n                        Paired end read files\
+  \ for analysing (may be gzipped)\n  --merge_paired        Switch on if all the input\
+  \ read sets belong to a\n                        single sample, and you want to\
+  \ merge their data to get\n                        a single result\n  --forward\
+  \ FORWARD     Designator for forward reads (only used if NOT in\n              \
+  \          MiSeq format sample_S1_L001_R1_001.fastq.gz; otherwise\n            \
+  \            default is _1, i.e. expect forward reads as\n                     \
+  \   sample_1.fastq.gz)\n  --reverse REVERSE     Designator for reverse reads (only\
+  \ used if NOT in\n                        MiSeq format sample_S1_L001_R2_001.fastq.gz;\
+  \ otherwise\n                        default is _2, i.e. expect forward reads as\n\
+  \                        sample_2.fastq.gz\n  --read_type {q,qseq,f}\n         \
+  \               Read file type (for bowtie2; default is q=fastq; other\n       \
+  \                 options: qseq=solexa, f=fasta).\n  --mlst_db MLST_DB     Fasta\
+  \ file of MLST alleles (optional)\n  --mlst_delimiter MLST_DELIMITER\n         \
+  \               Character(s) separating gene name from allele number\n         \
+  \               in MLST database (default \"-\", as in arcc-1)\n  --mlst_definitions\
+  \ MLST_DEFINITIONS\n                        ST definitions for MLST scheme (required\
+  \ if mlst_db\n                        supplied and you want to calculate STs)\n\
+  \  --mlst_max_mismatch MLST_MAX_MISMATCH\n                        Maximum number\
+  \ of mismatches per read for MLST allele\n                        calling (default\
+  \ 10)\n  --gene_db GENE_DB [GENE_DB ...]\n                        Fasta file/s for\
+  \ gene databases (optional)\n  --no_gene_details     Switch OFF verbose reporting\
+  \ of gene typing\n  --gene_max_mismatch GENE_MAX_MISMATCH\n                    \
+  \    Maximum number of mismatches per read for gene\n                        detection\
+  \ and allele calling (default 10)\n  --min_coverage MIN_COVERAGE\n             \
+  \           Minimum %coverage cutoff for gene reporting (default\n             \
+  \           90)\n  --max_divergence MAX_DIVERGENCE\n                        Maximum\
+  \ %divergence cutoff for gene reporting (default\n                        10)\n\
+  \  --min_depth MIN_DEPTH\n                        Minimum mean depth to flag as\
+  \ dubious allele call\n                        (default 5)\n  --min_edge_depth MIN_EDGE_DEPTH\n\
+  \                        Minimum edge depth to flag as dubious allele call\n   \
+  \                     (default 2)\n  --prob_err PROB_ERR   Probability of sequencing\
+  \ error (default 0.01)\n  --truncation_score_tolerance TRUNCATION_SCORE_TOLERANCE\n\
+  \                        % increase in score allowed to choose non-truncated\n \
+  \                       allele\n  --stop_after STOP_AFTER\n                    \
+  \    Stop mapping after this number of reads have been\n                       \
+  \ mapped (otherwise map all)\n  --other OTHER         Other arguments to pass to\
+  \ bowtie2 (must be escaped,\n                        e.g. \"\\--no-mixed\".\n  --max_unaligned_overlap\
+  \ MAX_UNALIGNED_OVERLAP\n                        Read discarded from alignment if\
+  \ either of its ends\n                        has unaligned overlap with the reference\
+  \ that is\n                        longer than this value (default 10)\n  --mapq\
+  \ MAPQ           Samtools -q parameter (default 1)\n  --baseq BASEQ         Samtools\
+  \ -Q parameter (default 20)\n  --samtools_args SAMTOOLS_ARGS\n                 \
+  \       Other arguments to pass to samtools mpileup (must be\n                 \
+  \       escaped, e.g. \"\\-A\").\n  --output OUTPUT       Prefix for srst2 output\
+  \ files\n  --log                 Switch ON logging to file (otherwise log to stdout)\n\
+  \  --save_scores         Switch ON verbose reporting of all scores\n  --report_new_consensus\n\
+  \                        If a matching alleles is not found, report the\n      \
+  \                  consensus allele. Note, only SNP differences are\n          \
+  \              considered, not indels.\n  --report_all_consensus\n             \
+  \           Report the consensus allele for the most likely\n                  \
+  \      allele. Note, only SNP differences are considered, not\n                \
+  \        indels.\n  --use_existing_bowtie2_sam\n                        Use existing\
+  \ SAM file generated by Bowtie2 if\n                        available, otherwise\
+  \ they will be generated\n  --use_existing_pileup\n                        Use existing\
+  \ pileups if available, otherwise they will\n                        be generated\n\
+  \  --use_existing_scores\n                        Use existing scores files if available,\
+  \ otherwise they\n                        will be generated\n  --keep_interim_alignment\n\
+  \                        Keep interim files (sam & unsorted bam), otherwise\n  \
+  \                      they will be deleted after sorted bam is created\n  --threads\
+  \ THREADS     Use multiple threads in Bowtie and Samtools\n  --prev_output PREV_OUTPUT\
+  \ [PREV_OUTPUT ...]\n                        SRST2 results files to compile (any\
+  \ new results from\n                        this run will also be incorporated)\n"
+generated_using:
+- --help

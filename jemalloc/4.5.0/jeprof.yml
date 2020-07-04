@@ -306,6 +306,7 @@ named:
   optional: true
 command:
 - jeprof
+parent:
 subcommands: []
 help_flag: !Flag
   description: This message
@@ -320,3 +321,78 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "Usage:\njeprof [options] <program> <profiles>\n   <profiles> is a space\
+  \ separated list of profile names.\njeprof [options] <symbolized-profiles>\n   <symbolized-profiles>\
+  \ is a list of profile files where each file contains\n   the necessary symbol mappings\
+  \  as well as profile data (likely generated\n   with --raw).\njeprof [options]\
+  \ <profile>\n   <profile> is a remote form.  Symbols are obtained from host:port/pprof/symbol\n\
+  \n   Each name can be:\n   /path/to/profile        - a path to a profile file\n\
+  \   host:port[/<service>]   - a location of a service to get profile from\n\n  \
+  \ The /<service> can be /pprof/heap, /pprof/profile, /pprof/pmuprofile,\n      \
+  \                   /pprof/growth, /pprof/contention, /pprof/wall,\n           \
+  \              /pprof/censusprofile(?:\\?.*)?, or /pprof/filteredprofile.\n   For\
+  \ instance:\n     jeprof http://myserver.com:80/pprof/heap\n   If /<service> is\
+  \ omitted, the service defaults to /pprof/profile (cpu profiling).\njeprof --symbols\
+  \ <program>\n   Maps addresses to symbol names.  In this mode, stdin should be a\n\
+  \   list of library mappings, in the same format as is found in the heap-\n   and\
+  \ cpu-profile files (this loosely matches that of /proc/self/maps\n   on linux),\
+  \ followed by a list of hex addresses to map, one per line.\n\n   For more help\
+  \ with querying remote servers, including how to add the\n   necessary server-side\
+  \ support code, see this filename (or one like it):\n\n   /usr/doc/gperftools-2.0/pprof_remote_servers.html\n\
+  \nOptions:\n   --cum               Sort by cumulative data\n   --base=<base>   \
+  \    Subtract <base> from <profile> before display\n   --interactive       Run in\
+  \ interactive mode (interactive \"help\" gives help) [default]\n   --seconds=<n>\
+  \       Length of time for dynamic profiles [default=30 secs]\n   --add_lib=<file>\
+  \    Read additional symbols and line info from the given library\n   --lib_prefix=<dir>\
+  \  Comma separated list of library path prefixes\n\nReporting Granularity:\n   --addresses\
+  \         Report at address level\n   --lines             Report at source line\
+  \ level\n   --functions         Report at function level [default]\n   --files \
+  \            Report at source file level\n\nOutput type:\n   --text            \
+  \  Generate text report\n   --callgrind         Generate callgrind format to stdout\n\
+  \   --gv                Generate Postscript and display\n   --evince           \
+  \ Generate PDF and display\n   --web               Generate SVG and display\n  \
+  \ --list=<regexp>     Generate source listing of matching routines\n   --disasm=<regexp>\
+  \   Generate disassembly of matching routines\n   --symbols           Print demangled\
+  \ symbol names found at given addresses\n   --dot               Generate DOT file\
+  \ to stdout\n   --ps                Generate Postcript to stdout\n   --pdf     \
+  \          Generate PDF to stdout\n   --svg               Generate SVG to stdout\n\
+  \   --gif               Generate GIF to stdout\n   --raw               Generate\
+  \ symbolized jeprof data (useful with remote fetch)\n\nHeap-Profile Options:\n \
+  \  --inuse_space       Display in-use (mega)bytes [default]\n   --inuse_objects\
+  \     Display in-use objects\n   --alloc_space       Display allocated (mega)bytes\n\
+  \   --alloc_objects     Display allocated objects\n   --show_bytes        Display\
+  \ space in bytes\n   --drop_negative     Ignore negative differences\n\nContention-profile\
+  \ options:\n   --total_delay       Display total delay at each region [default]\n\
+  \   --contentions       Display number of delays at each region\n   --mean_delay\
+  \        Display mean delay at each region\n\nCall-graph Options:\n   --nodecount=<n>\
+  \     Show at most so many nodes [default=80]\n   --nodefraction=<f>  Hide nodes\
+  \ below <f>*total [default=.005]\n   --edgefraction=<f>  Hide edges below <f>*total\
+  \ [default=.001]\n   --maxdegree=<n>     Max incoming/outgoing edges per node [default=8]\n\
+  \   --focus=<regexp>    Focus on backtraces with nodes matching <regexp>\n   --thread=<n>\
+  \        Show profile for thread <n>\n   --ignore=<regexp>   Ignore backtraces with\
+  \ nodes matching <regexp>\n   --scale=<n>         Set GV scaling [default=0]\n \
+  \  --heapcheck         Make nodes with non-0 object counts\n                   \
+  \    (i.e. direct leak generators) more visible\n   --retain=<regexp>   Retain only\
+  \ nodes that match <regexp>\n   --exclude=<regexp>  Exclude all nodes that match\
+  \ <regexp>\n\nMiscellaneous:\n   --tools=<prefix or binary:fullpath>[,...]   $PATH\
+  \ for object tool pathnames\n   --test              Run unit tests\n   --help  \
+  \            This message\n   --version           Version information\n\nEnvironment\
+  \ Variables:\n   JEPROF_TMPDIR        Profiles directory. Defaults to $HOME/jeprof\n\
+  \   JEPROF_TOOLS         Prefix for object tools pathnames\n\nExamples:\n\njeprof\
+  \ /bin/ls ls.prof\n                       Enters \"interactive\" mode\njeprof --text\
+  \ /bin/ls ls.prof\n                       Outputs one line per procedure\njeprof\
+  \ --web /bin/ls ls.prof\n                       Displays annotated call-graph in\
+  \ web browser\njeprof --gv /bin/ls ls.prof\n                       Displays annotated\
+  \ call-graph via 'gv'\njeprof --gv --focus=Mutex /bin/ls ls.prof\n             \
+  \          Restricts to code paths including a .*Mutex.* entry\njeprof --gv --focus=Mutex\
+  \ --ignore=string /bin/ls ls.prof\n                       Code paths including Mutex\
+  \ but not string\njeprof --list=getdir /bin/ls ls.prof\n                       (Per-line)\
+  \ annotated source listing for getdir()\njeprof --disasm=getdir /bin/ls ls.prof\n\
+  \                       (Per-PC) annotated disassembly for getdir()\n\njeprof http://localhost:1234/\n\
+  \                       Enters \"interactive\" mode\njeprof --text localhost:1234\n\
+  \                       Outputs one line per procedure for localhost:1234\njeprof\
+  \ --raw localhost:1234 > ./local.raw\njeprof --text ./local.raw\n              \
+  \         Fetches a remote profile for later analysis and then\n               \
+  \        analyzes it in text mode.\n"
+generated_using:
+- --help

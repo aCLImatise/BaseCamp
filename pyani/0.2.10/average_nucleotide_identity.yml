@@ -91,9 +91,9 @@ named:
   synonyms:
   - --gmethod
   args: !ChoiceFlagArg
-    choices:
-    - mpl
-    - seaborn
+    choices: !!set
+      mpl:
+      seaborn:
   optional: true
 - !Flag
   description: Path to file containing sequence labels
@@ -115,20 +115,20 @@ named:
   - -m
   - --method
   args: !ChoiceFlagArg
-    choices:
-    - ANIm
-    - ANIb
-    - ANIblastall
-    - TETRA
+    choices: !!set
+      ANIm:
+      TETRA:
+      ANIblastall:
+      ANIb:
   optional: true
 - !Flag
   description: Job scheduler (default multiprocessing, i.e. locally)
   synonyms:
   - --scheduler
   args: !ChoiceFlagArg
-    choices:
-    - multiprocessing
-    - SGE
+    choices: !!set
+      SGE:
+      multiprocessing:
   optional: true
 - !Flag
   description: Number of worker processes for multiprocessing (default zero, meaning
@@ -235,6 +235,7 @@ named:
   optional: true
 command:
 - average_nucleotide_identity.py
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -250,3 +251,60 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: average_nucleotide_identity.py [-h] [--version] -o OUTDIRNAME -i\n\
+  \                                      INDIRNAME [-v] [-f] [-s FRAGSIZE]\n     \
+  \                                 [-l LOGFILE] [--skip_nucmer]\n               \
+  \                       [--skip_blastn] [--noclobber]\n                        \
+  \              [--nocompress] [-g] [--gformat GFORMAT]\n                       \
+  \               [--gmethod {mpl,seaborn}]\n                                    \
+  \  [--labels LABELS] [--classes CLASSES]\n                                     \
+  \ [-m {ANIm,ANIb,ANIblastall,TETRA}]\n                                      [--scheduler\
+  \ {multiprocessing,SGE}]\n                                      [--workers WORKERS]\n\
+  \                                      [--SGEgroupsize SGEGROUPSIZE]\n         \
+  \                             [--SGEargs SGEARGS] [--maxmatch]\n               \
+  \                       [--nucmer_exe NUCMER_EXE]\n                            \
+  \          [--filter_exe FILTER_EXE]\n                                      [--blastn_exe\
+  \ BLASTN_EXE]\n                                      [--makeblastdb_exe MAKEBLASTDB_EXE]\n\
+  \                                      [--blastall_exe BLASTALL_EXE]\n         \
+  \                             [--formatdb_exe FORMATDB_EXE]\n                  \
+  \                    [--write_excel] [--rerender]\n                            \
+  \          [--subsample SUBSAMPLE] [--seed SEED]\n                             \
+  \         [--jobprefix JOBPREFIX]\n\noptional arguments:\n  -h, --help         \
+  \   show this help message and exit\n  --version             show program's version\
+  \ number and exit\n  -o OUTDIRNAME, --outdir OUTDIRNAME\n                      \
+  \  Output directory (required)\n  -i INDIRNAME, --indir INDIRNAME\n            \
+  \            Input directory name (required)\n  -v, --verbose         Give verbose\
+  \ output\n  -f, --force           Force file overwriting\n  -s FRAGSIZE, --fragsize\
+  \ FRAGSIZE\n                        Sequence fragment size for ANIb (default 1020)\n\
+  \  -l LOGFILE, --logfile LOGFILE\n                        Logfile location\n  --skip_nucmer\
+  \         Skip NUCmer runs, for testing (e.g. if output already\n              \
+  \          present)\n  --skip_blastn         Skip BLASTN runs, for testing (e.g.\
+  \ if output already\n                        present)\n  --noclobber           Don't\
+  \ nuke existing files\n  --nocompress          Don't compress/delete the comparison\
+  \ output\n  -g, --graphics        Generate heatmap of ANI\n  --gformat GFORMAT \
+  \    Graphics output format(s) [pdf|png|jpg|svg] (default\n                    \
+  \    pdf,png,eps meaning three file formats)\n  --gmethod {mpl,seaborn}\n      \
+  \                  Graphics output method (default mpl)\n  --labels LABELS     \
+  \  Path to file containing sequence labels\n  --classes CLASSES     Path to file\
+  \ containing sequence classes\n  -m {ANIm,ANIb,ANIblastall,TETRA}, --method {ANIm,ANIb,ANIblastall,TETRA}\n\
+  \                        ANI method (default ANIm)\n  --scheduler {multiprocessing,SGE}\n\
+  \                        Job scheduler (default multiprocessing, i.e. locally)\n\
+  \  --workers WORKERS     Number of worker processes for multiprocessing\n      \
+  \                  (default zero, meaning use all available cores)\n  --SGEgroupsize\
+  \ SGEGROUPSIZE\n                        Number of jobs to place in an SGE array\
+  \ group (default\n                        10000)\n  --SGEargs SGEARGS     Additional\
+  \ arguments for qsub\n  --maxmatch            Override MUMmer to allow all NUCmer\
+  \ matches\n  --nucmer_exe NUCMER_EXE\n                        Path to NUCmer executable\n\
+  \  --filter_exe FILTER_EXE\n                        Path to delta-filter executable\n\
+  \  --blastn_exe BLASTN_EXE\n                        Path to BLASTN+ executable\n\
+  \  --makeblastdb_exe MAKEBLASTDB_EXE\n                        Path to BLAST+ makeblastdb\
+  \ executable\n  --blastall_exe BLASTALL_EXE\n                        Path to BLASTALL\
+  \ executable\n  --formatdb_exe FORMATDB_EXE\n                        Path to BLAST\
+  \ formatdb executable\n  --write_excel         Write Excel format output tables\n\
+  \  --rerender            Rerender graphics output without recalculation\n  --subsample\
+  \ SUBSAMPLE\n                        Subsample a percentage [0-1] or specific number\
+  \ (1-n)\n                        of input sequences\n  --seed SEED           Set\
+  \ random seed for reproducible subsampling.\n  --jobprefix JOBPREFIX\n         \
+  \               Prefix for SGE jobs (default ANI).\n"
+generated_using:
+- --help

@@ -1,11 +1,17 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - AMAS.py
+parent:
 subcommands:
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: AMAS.py
+    optional: false
   named:
   - !Flag
     description: "File name for th0e concatenated alignment partitions. Default: 'partitions.txt'"
@@ -29,12 +35,12 @@ subcommands:
     - -u
     - --out-format
     args: !ChoiceFlagArg
-      choices:
-      - fasta
-      - phylip
-      - nexus
-      - phylip-int
-      - nexus-int
+      choices: !!set
+        nexus:
+        phylip:
+        nexus-int:
+        phylip-int:
+        fasta:
     optional: true
   - !Flag
     description: 'Check if input sequences are aligned. Default: no check'
@@ -66,12 +72,12 @@ subcommands:
     - -f
     - --in-format
     args: !ChoiceFlagArg
-      choices:
-      - fasta
-      - phylip
-      - nexus
-      - phylip-int
-      - nexus-int
+      choices: !!set
+        nexus:
+        phylip:
+        nexus-int:
+        phylip-int:
+        fasta:
     optional: true
   - !Flag
     description: Type of data
@@ -79,13 +85,14 @@ subcommands:
     - -d
     - --data-type
     args: !ChoiceFlagArg
-      choices:
-      - aa
-      - dna
+      choices: !!set
+        dna:
+        aa:
     optional: true
   command:
   - AMAS.py
   - concat
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -96,8 +103,35 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: AMAS.py [-h] [-p CONCAT_PART] [-t CONCAT_OUT]\n             \
+    \  [-u {fasta,phylip,nexus,phylip-int,nexus-int}] [-e] [-c CORES]\n          \
+    \     -i IN_FILES [IN_FILES ...] -f\n               {fasta,phylip,nexus,phylip-int,nexus-int}\
+    \ -d {aa,dna}\n\nConcatenate input alignments\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n  -p CONCAT_PART, --concat-part\
+    \ CONCAT_PART\n                        File name for th0e concatenated alignment\
+    \ partitions.\n                        Default: 'partitions.txt'\n  -t CONCAT_OUT,\
+    \ --concat-out CONCAT_OUT\n                        File name for the concatenated\
+    \ alignment. Default:\n                        'concatenated.out'\n  -u {fasta,phylip,nexus,phylip-int,nexus-int},\
+    \ --out-format {fasta,phylip,nexus,phylip-int,nexus-int}\n                   \
+    \     File format for the output alignment. Default: fasta\n  -e, --check-align\
+    \     Check if input sequences are aligned. Default: no\n                    \
+    \    check\n  -c CORES, --cores CORES\n                        Number of cores\
+    \ used. Default: 1\n\nrequired arguments:\n  -i IN_FILES [IN_FILES ...], --in-files\
+    \ IN_FILES [IN_FILES ...]\n                        Alignment files to be taken\
+    \ as input. You can specify\n                        multiple files using wildcards\
+    \ (e.g. --in-files\n                        *fasta)\n  -f {fasta,phylip,nexus,phylip-int,nexus-int},\
+    \ --in-format {fasta,phylip,nexus,phylip-int,nexus-int}\n                    \
+    \    The format of input alignment\n  -d {aa,dna}, --data-type {aa,dna}\n    \
+    \                    Type of data\n"
+  generated_using: &id002
+  - --help
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: AMAS.py
+    optional: false
   named:
   - !Flag
     description: 'File format for the output alignment. Default: fasta'
@@ -105,12 +139,12 @@ subcommands:
     - -u
     - --out-format
     args: !ChoiceFlagArg
-      choices:
-      - fasta
-      - phylip
-      - nexus
-      - phylip-int
-      - nexus-int
+      choices: !!set
+        nexus:
+        phylip:
+        nexus-int:
+        phylip-int:
+        fasta:
     optional: true
   - !Flag
     description: 'Check if input sequences are aligned. Default: no check'
@@ -142,12 +176,12 @@ subcommands:
     - -f
     - --in-format
     args: !ChoiceFlagArg
-      choices:
-      - fasta
-      - phylip
-      - nexus
-      - phylip-int
-      - nexus-int
+      choices: !!set
+        nexus:
+        phylip:
+        nexus-int:
+        phylip-int:
+        fasta:
     optional: true
   - !Flag
     description: Type of data
@@ -155,13 +189,14 @@ subcommands:
     - -d
     - --data-type
     args: !ChoiceFlagArg
-      choices:
-      - aa
-      - dna
+      choices: !!set
+        dna:
+        aa:
     optional: true
   command:
   - AMAS.py
   - convert
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -172,8 +207,34 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: AMAS.py [-h] [-u {fasta,phylip,nexus,phylip-int,nexus-int}] [-e]\n\
+    \               [-c CORES] -i IN_FILES [IN_FILES ...] -f\n               {fasta,phylip,nexus,phylip-int,nexus-int}\
+    \ -d {aa,dna}\n\nConvert to other file format\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n  -u {fasta,phylip,nexus,phylip-int,nexus-int},\
+    \ --out-format {fasta,phylip,nexus,phylip-int,nexus-int}\n                   \
+    \     File format for the output alignment. Default: fasta\n  -e, --check-align\
+    \     Check if input sequences are aligned. Default: no\n                    \
+    \    check\n  -c CORES, --cores CORES\n                        Number of cores\
+    \ used. Default: 1\n\nrequired arguments:\n  -i IN_FILES [IN_FILES ...], --in-files\
+    \ IN_FILES [IN_FILES ...]\n                        Alignment files to be taken\
+    \ as input. You can specify\n                        multiple files using wildcards\
+    \ (e.g. --in-files\n                        *fasta)\n  -f {fasta,phylip,nexus,phylip-int,nexus-int},\
+    \ --in-format {fasta,phylip,nexus,phylip-int,nexus-int}\n                    \
+    \    The format of input alignment\n  -d {aa,dna}, --data-type {aa,dna}\n    \
+    \                    Type of data\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: AMAS.py
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: REPLICATE_ARGS
+    optional: false
   named:
   - !Flag
     description: REPLICATE_ARGS, --rep-aln REPLICATE_ARGS REPLICATE_ARGS Create replicate
@@ -189,12 +250,12 @@ subcommands:
     - -u
     - --out-format
     args: !ChoiceFlagArg
-      choices:
-      - fasta
-      - phylip
-      - nexus
-      - phylip-int
-      - nexus-int
+      choices: !!set
+        nexus:
+        phylip:
+        nexus-int:
+        phylip-int:
+        fasta:
     optional: true
   - !Flag
     description: 'Check if input sequences are aligned. Default: no check'
@@ -226,12 +287,12 @@ subcommands:
     - -f
     - --in-format
     args: !ChoiceFlagArg
-      choices:
-      - fasta
-      - phylip
-      - nexus
-      - phylip-int
-      - nexus-int
+      choices: !!set
+        nexus:
+        phylip:
+        nexus-int:
+        phylip-int:
+        fasta:
     optional: true
   - !Flag
     description: Type of data
@@ -239,13 +300,14 @@ subcommands:
     - -d
     - --data-type
     args: !ChoiceFlagArg
-      choices:
-      - aa
-      - dna
+      choices: !!set
+        dna:
+        aa:
     optional: true
   command:
   - AMAS.py
   - replicate
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -256,8 +318,33 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: AMAS.py [-h] -r REPLICATE_ARGS REPLICATE_ARGS\n             \
+    \  [-u {fasta,phylip,nexus,phylip-int,nexus-int}] [-e] [-c CORES]\n          \
+    \     -i IN_FILES [IN_FILES ...] -f\n               {fasta,phylip,nexus,phylip-int,nexus-int}\
+    \ -d {aa,dna}\n\nCreate replicate datasets for phylogenetic jackknife\n\noptional\
+    \ arguments:\n  -h, --help            show this help message and exit\n  -r REPLICATE_ARGS\
+    \ REPLICATE_ARGS, --rep-aln REPLICATE_ARGS REPLICATE_ARGS\n                  \
+    \      Create replicate data sets for phylogenetic jackknife\n               \
+    \         [replicates, no alignments for each replicate]\n  -u {fasta,phylip,nexus,phylip-int,nexus-int},\
+    \ --out-format {fasta,phylip,nexus,phylip-int,nexus-int}\n                   \
+    \     File format for the output alignment. Default: fasta\n  -e, --check-align\
+    \     Check if input sequences are aligned. Default: no\n                    \
+    \    check\n  -c CORES, --cores CORES\n                        Number of cores\
+    \ used. Default: 1\n\nrequired arguments:\n  -i IN_FILES [IN_FILES ...], --in-files\
+    \ IN_FILES [IN_FILES ...]\n                        Alignment files to be taken\
+    \ as input. You can specify\n                        multiple files using wildcards\
+    \ (e.g. --in-files\n                        *fasta)\n  -f {fasta,phylip,nexus,phylip-int,nexus-int},\
+    \ --in-format {fasta,phylip,nexus,phylip-int,nexus-int}\n                    \
+    \    The format of input alignment\n  -d {aa,dna}, --data-type {aa,dna}\n    \
+    \                    Type of data\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: AMAS.py
+    optional: false
   named:
   - !Flag
     description: File name for partitions to be used for alignment splitting.
@@ -281,12 +368,12 @@ subcommands:
     - -u
     - --out-format
     args: !ChoiceFlagArg
-      choices:
-      - fasta
-      - phylip
-      - nexus
-      - phylip-int
-      - nexus-int
+      choices: !!set
+        nexus:
+        phylip:
+        nexus-int:
+        phylip-int:
+        fasta:
     optional: true
   - !Flag
     description: 'Check if input sequences are aligned. Default: no check'
@@ -318,12 +405,12 @@ subcommands:
     - -f
     - --in-format
     args: !ChoiceFlagArg
-      choices:
-      - fasta
-      - phylip
-      - nexus
-      - phylip-int
-      - nexus-int
+      choices: !!set
+        nexus:
+        phylip:
+        nexus-int:
+        phylip-int:
+        fasta:
     optional: true
   - !Flag
     description: Type of data
@@ -331,13 +418,14 @@ subcommands:
     - -d
     - --data-type
     args: !ChoiceFlagArg
-      choices:
-      - aa
-      - dna
+      choices: !!set
+        dna:
+        aa:
     optional: true
   command:
   - AMAS.py
   - split
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -348,8 +436,33 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: AMAS.py [-h] -l SPLIT_BY [-j]\n               [-u {fasta,phylip,nexus,phylip-int,nexus-int}]\
+    \ [-e] [-c CORES]\n               -i IN_FILES [IN_FILES ...] -f\n            \
+    \   {fasta,phylip,nexus,phylip-int,nexus-int} -d {aa,dna}\n\nSplit alignment according\
+    \ to a partitions file\n\noptional arguments:\n  -h, --help            show this\
+    \ help message and exit\n  -l SPLIT_BY, --split-by SPLIT_BY\n                \
+    \        File name for partitions to be used for alignment\n                 \
+    \       splitting.\n  -j, --remove-empty    Remove taxa with sequences composed\
+    \ of only\n                        undetermined characters? Default: Don't remove\n\
+    \  -u {fasta,phylip,nexus,phylip-int,nexus-int}, --out-format {fasta,phylip,nexus,phylip-int,nexus-int}\n\
+    \                        File format for the output alignment. Default: fasta\n\
+    \  -e, --check-align     Check if input sequences are aligned. Default: no\n \
+    \                       check\n  -c CORES, --cores CORES\n                   \
+    \     Number of cores used. Default: 1\n\nrequired arguments:\n  -i IN_FILES [IN_FILES\
+    \ ...], --in-files IN_FILES [IN_FILES ...]\n                        Alignment\
+    \ files to be taken as input. You can specify\n                        multiple\
+    \ files using wildcards (e.g. --in-files\n                        *fasta)\n  -f\
+    \ {fasta,phylip,nexus,phylip-int,nexus-int}, --in-format {fasta,phylip,nexus,phylip-int,nexus-int}\n\
+    \                        The format of input alignment\n  -d {aa,dna}, --data-type\
+    \ {aa,dna}\n                        Type of data\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: AMAS.py
+    optional: false
   named:
   - !Flag
     description: "File name for the alignment summary. Default: 'summary.txt'"
@@ -397,12 +510,12 @@ subcommands:
     - -f
     - --in-format
     args: !ChoiceFlagArg
-      choices:
-      - fasta
-      - phylip
-      - nexus
-      - phylip-int
-      - nexus-int
+      choices: !!set
+        nexus:
+        phylip:
+        nexus-int:
+        phylip-int:
+        fasta:
     optional: true
   - !Flag
     description: Type of data
@@ -410,13 +523,14 @@ subcommands:
     - -d
     - --data-type
     args: !ChoiceFlagArg
-      choices:
-      - aa
-      - dna
+      choices: !!set
+        dna:
+        aa:
     optional: true
   command:
   - AMAS.py
   - summary
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -427,8 +541,31 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: AMAS.py [-h] [-o SUMMARY_OUT] [-s] [-e] [-c CORES] -i IN_FILES\n\
+    \               [IN_FILES ...] -f {fasta,phylip,nexus,phylip-int,nexus-int} -d\n\
+    \               {aa,dna}\n\nWrite alignment summary\n\noptional arguments:\n \
+    \ -h, --help            show this help message and exit\n  -o SUMMARY_OUT, --summary-out\
+    \ SUMMARY_OUT\n                        File name for the alignment summary. Default:\n\
+    \                        'summary.txt'\n  -s, --by-taxon        In addition to\
+    \ alignment summary, write by\n                        sequence/taxon summaries.\
+    \ Default: Don't write\n  -e, --check-align     Check if input sequences are aligned.\
+    \ Default: no\n                        check\n  -c CORES, --cores CORES\n    \
+    \                    Number of cores used. Default: 1\n\nrequired arguments:\n\
+    \  -i IN_FILES [IN_FILES ...], --in-files IN_FILES [IN_FILES ...]\n          \
+    \              Alignment files to be taken as input. You can specify\n       \
+    \                 multiple files using wildcards (e.g. --in-files\n          \
+    \              *fasta)\n  -f {fasta,phylip,nexus,phylip-int,nexus-int}, --in-format\
+    \ {fasta,phylip,nexus,phylip-int,nexus-int}\n                        The format\
+    \ of input alignment\n  -d {aa,dna}, --data-type {aa,dna}\n                  \
+    \      Type of data\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: AMAS.py
+    optional: false
   named:
   - !Flag
     description: Taxon/sequence names to be removed.
@@ -444,12 +581,12 @@ subcommands:
     - -u
     - --out-format
     args: !ChoiceFlagArg
-      choices:
-      - fasta
-      - phylip
-      - nexus
-      - phylip-int
-      - nexus-int
+      choices: !!set
+        nexus:
+        phylip:
+        nexus-int:
+        phylip-int:
+        fasta:
     optional: true
   - !Flag
     description: "File name prefix for the concatenated alignment. Default: 'reduced_'"
@@ -489,12 +626,12 @@ subcommands:
     - -f
     - --in-format
     args: !ChoiceFlagArg
-      choices:
-      - fasta
-      - phylip
-      - nexus
-      - phylip-int
-      - nexus-int
+      choices: !!set
+        nexus:
+        phylip:
+        nexus-int:
+        phylip-int:
+        fasta:
     optional: true
   - !Flag
     description: Type of data
@@ -502,13 +639,14 @@ subcommands:
     - -d
     - --data-type
     args: !ChoiceFlagArg
-      choices:
-      - aa
-      - dna
+      choices: !!set
+        dna:
+        aa:
     optional: true
   command:
   - AMAS.py
   - remove
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -519,6 +657,27 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: AMAS.py [-h] -x TAXA_TO_REMOVE [TAXA_TO_REMOVE ...]\n       \
+    \        [-u {fasta,phylip,nexus,phylip-int,nexus-int}] [-g OUT_PREFIX]\n    \
+    \           [-e] [-c CORES] -i IN_FILES [IN_FILES ...] -f\n               {fasta,phylip,nexus,phylip-int,nexus-int}\
+    \ -d {aa,dna}\n\nRemove taxa from alignment\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n  -x TAXA_TO_REMOVE [TAXA_TO_REMOVE\
+    \ ...], --taxa-to-remove TAXA_TO_REMOVE [TAXA_TO_REMOVE ...]\n               \
+    \         Taxon/sequence names to be removed.\n  -u {fasta,phylip,nexus,phylip-int,nexus-int},\
+    \ --out-format {fasta,phylip,nexus,phylip-int,nexus-int}\n                   \
+    \     File format for the output alignment. Default: fasta\n  -g OUT_PREFIX, --out-prefix\
+    \ OUT_PREFIX\n                        File name prefix for the concatenated alignment.\n\
+    \                        Default: 'reduced_'\n  -e, --check-align     Check if\
+    \ input sequences are aligned. Default: no\n                        check\n  -c\
+    \ CORES, --cores CORES\n                        Number of cores used. Default:\
+    \ 1\n\nrequired arguments:\n  -i IN_FILES [IN_FILES ...], --in-files IN_FILES\
+    \ [IN_FILES ...]\n                        Alignment files to be taken as input.\
+    \ You can specify\n                        multiple files using wildcards (e.g.\
+    \ --in-files\n                        *fasta)\n  -f {fasta,phylip,nexus,phylip-int,nexus-int},\
+    \ --in-format {fasta,phylip,nexus,phylip-int,nexus-int}\n                    \
+    \    The format of input alignment\n  -d {aa,dna}, --data-type {aa,dna}\n    \
+    \                    Type of data\n"
+  generated_using: *id002
 - !Command
   positional:
   - !Positional
@@ -560,6 +719,7 @@ subcommands:
   command:
   - AMAS.py
   - command
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -570,6 +730,15 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Unrecognized command\nusage: AMAS <command> [<args>]\n\nThe AMAS commands\
+    \ are:\n  concat      Concatenate input alignments\n  convert     Convert to other\
+    \ file format\n  replicate   Create replicate data sets for phylogenetic jackknife\n\
+    \  split       Split alignment according to a partitions file\n  summary     Write\
+    \ alignment summary\n  remove      Remove taxa from alignment\n\nUse AMAS <command>\
+    \ -h for help with arguments of the command of interest\n\npositional arguments:\n\
+    \  command     Subcommand to run\n\noptional arguments:\n  -h, --help  show this\
+    \ help message and exit\n"
+  generated_using: *id002
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -579,3 +748,12 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: AMAS <command> [<args>]\n\nThe AMAS commands are:\n  concat   \
+  \   Concatenate input alignments\n  convert     Convert to other file format\n \
+  \ replicate   Create replicate data sets for phylogenetic jackknife\n  split   \
+  \    Split alignment according to a partitions file\n  summary     Write alignment\
+  \ summary\n  remove      Remove taxa from alignment\n\nUse AMAS <command> -h for\
+  \ help with arguments of the command of interest\n\npositional arguments:\n  command\
+  \     Subcommand to run\n\noptional arguments:\n  -h, --help  show this help message\
+  \ and exit\n"
+generated_using: *id002

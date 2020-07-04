@@ -1,5 +1,10 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: DeepMedic
+  optional: false
 named:
 - !Flag
   description: Create a new CNN model with model parameters at given config file [MODEL_CONF].
@@ -87,6 +92,7 @@ named:
   optional: true
 command:
 - deepMedicRun
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -97,3 +103,58 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: DeepMedic [-h] [-newModel MODEL_CONF] [-train TRAINING_CONF]\n\
+  \                 [-test TESTING_CONF] [-model SAVED_MODEL] [-dev DEVICE]\n    \
+  \             [-pretrained PRETRAINED_MODEL]\n                 [-layers LAYERS_TO_TRANSFER\
+  \ [LAYERS_TO_TRANSFER ...]]\n                 [-resetOptimizer]\n\nThis software\
+  \ allows creation and supervised training of 3D, multi-scale CNN models for segmentation\
+  \ of structures in biomedical NIFTI volumes.\nThe project is hosted at: https://github.com/Kamnitsask/deepmedic\
+  \ \nSee the documentation for details on its use.\nThis software accompanies the\
+  \ research presented in:\nKamnitsas et al, \"Efficient Multi-Scale 3D CNN with Fully\
+  \ Connected CRF for Accurate Brain Lesion Segmentation\", Biomedical Image Analysis,\
+  \ 2016.\nWe hope our work aids you in your endeavours.\nFor questions and feedback\
+  \ contact: konstantinos.kamnitsas12@ic.ac.uk\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -newModel MODEL_CONF  Create a new\
+  \ CNN model with model parameters at given config file [MODEL_CONF].\n  -train TRAINING_CONF\
+  \  Train a CNN model with training parameters at given config file [TRAINING_CONF].\n\
+  \                        This option can follow a [-newModel MODEL_CONF] option,\
+  \ to create a new model and start training it immediately.\n                   \
+  \     Otherwise, existing model can be specified in the training-config file or\
+  \ by the additional option [-model].\n  -test TESTING_CONF    Test with an existing\
+  \ CNN model. The testing session's parameters should be given in config file [TESTING_CONF].\n\
+  \                        Existing model can be specified in the given training-config\
+  \ file or by the additional option [-model].\n                        This option\
+  \ cannot be used in combination with [-newModel] or [-train].\n  -model SAVED_MODEL\
+  \    The path to a saved existing cnn model, to train or test with.\n          \
+  \              This option can follow a [-train] or [-test] option. Not in combination\
+  \ with a [-newModel].\n                        If given, this option will override\
+  \ any \"model\" parameters given in the train or testing configuration file.\n \
+  \ -dev DEVICE           Specify the device to run the process on. Values: [cpu]\
+  \ or [cuda] (default = cpu).\n                        In the case of multiple GPUs,\
+  \ specify a particular GPU device with a number, in the format: cpu cuda2.\n   \
+  \                     NOTE#1: For GPU processing, CUDA libraries must be first added\
+  \ in your environment's PATH and LD_LIBRARY_PATH. See accompanying documentation.NOTE#2:\
+  \ If you get problems using the GPU with [cpu cuda], try using the old Theano backend\
+  \ with [cpu cuda] or disaable cuDNN. See docs Sec 1.3 and 2.2.\n  -pretrained PRETRAINED_MODEL\n\
+  \                        Use to transfer the weights from a previously trained model\
+  \ to a new model.\n                        This option must follow a [-newModel]\
+  \ option.\n                        Usage: ./deepMedicRun -newModel /path/to/model/config\
+  \ -pretrained /path/to/pretrained/model \n                        NOTE: By default,\
+  \ parameters are transfered to all layers except the classification layer. Use option\
+  \ [-layers] to manually specify layers to pretrain.\n  -layers LAYERS_TO_TRANSFER\
+  \ [LAYERS_TO_TRANSFER ...]\n                        Use only after a [-pretrained]\
+  \ option.\n                        Specify to which layers of the new model parameters\
+  \ should be transferred to.\n                        First layer is 1. Classification\
+  \ layer of original DeepMedic is 11. Same layers from each parallel-pathway will\
+  \ be transfered.\n                        Usage: ./deepMedicRun -newModel /path/to/model/config\
+  \ -pretrained /path/to/pretrained/model -layers 1 2 3 ...\n  -resetOptimizer   \
+  \    Use optionally with a [-train] command. Does not take an argument.\n      \
+  \                  Usage: ./deepMedicRun -train /path/to/train/config -resetOptimizer\
+  \ ...etc...\n                        Resets the model's optimization state before\
+  \ starting the training session (eg number of epochs already trained, current learning\
+  \ rate etc).\n                        IMPORTANT: Trainable parameters are NOT reinitialized!\
+  \ \n                        Useful to begin a secondary training session with new\
+  \ learning-rate schedule, in order to fine-tune a previously trained model (Doc.,\
+  \ Sec. 3.2)\n"
+generated_using:
+- --help

@@ -135,6 +135,7 @@ named:
   optional: true
 command:
 - anvi-gen-contigs-database
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -145,3 +146,108 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: anvi-gen-contigs-database [-h] -f FASTA [-n PROJECT_NAME]\n   \
+  \                              [-o DB_FILE_PATH] [--description TEXT_FILE]\n   \
+  \                              [-L INT] [-K INT] [--skip-gene-calling]\n       \
+  \                          [--prodigal-translation-table INT]\n                \
+  \                 [--external-gene-calls GENE-CALLS]\n                         \
+  \        [--ignore-internal-stop-codons]\n                                 [--skip-mindful-splitting]\n\
+  \nGenerate a new anvi'o contigs database.\n\noptional arguments:\n  -h, --help \
+  \           show this help message and exit\n\nMANDATORY INPUTS:\n  Things you really\
+  \ need to provide to be in business.\n\n  -f FASTA, --contigs-fasta FASTA\n    \
+  \                    The FASTA file that contains reference sequences you\n    \
+  \                    mapped your samples against. This could be a reference\n  \
+  \                      genome, or contigs from your assembler. Contig names\n  \
+  \                      in this file must match to those in other input files.\n\
+  \                        If there is a problem anvi'o will gracefully complain\n\
+  \                        about it.\n  -n PROJECT_NAME, --project-name PROJECT_NAME\n\
+  \                        Name of the project. Please choose a short but\n      \
+  \                  descriptive name (so anvi'o can use it whenever she\n       \
+  \                 needs to name an output file, or add a new table in a\n      \
+  \                  database, or name her first born).\n\nOPTIONAL INPUTS:\n  Things\
+  \ you may want to tweak.\n\n  -o DB_FILE_PATH, --output-db-path DB_FILE_PATH\n \
+  \                       Output file path for the new database.\n  --description\
+  \ TEXT_FILE\n                        A plain text file that contains some description\
+  \ about\n                        the project. You can use Markdwon syntax. The\n\
+  \                        description text will be rendered and shown in all\n  \
+  \                      relevant interfaces, including the anvi'o interactive\n \
+  \                       interface, or anvi'o summary outputs.\n  -L INT, --split-length\
+  \ INT\n                        Anvi'o splits very long contigs into smaller pieces,\n\
+  \                        without actually splitting them for real. These\n     \
+  \                   'virtual' splits improve the efficacy of the\n             \
+  \           visualization step, and changing the split size gives\n            \
+  \            freedom to the user to adjust the resolution of their\n           \
+  \             display when necessary. The default value is (20000).\n          \
+  \              If you are planning to use your contigs database for\n          \
+  \              metagenomic binning, we advise you to not go below\n            \
+  \            10,000 (since the lower the split size is, the more\n             \
+  \           items to show in the display, and decreasing the split\n           \
+  \             size does not really help much to binning). But if you\n         \
+  \               are thinking about using this parameter for ad hoc\n           \
+  \             investigations other than binning, you should ignore\n           \
+  \             our advice, and set the split size as low as you want.\n         \
+  \               If you do not want your contigs to be split, you can\n         \
+  \               set the split size to '0' or any other negative\n              \
+  \          integer (lots of unnecessary freedom here, enjoy!).\n  -K INT, --kmer-size\
+  \ INT\n                        K-mer size for k-mer frequency calculations. The\n\
+  \                        default k-mer size for composition-based analyses is\n\
+  \                        4, historically. Although tetra-nucleotide frequencies\n\
+  \                        seem to offer the the sweet spot of sensitivity,\n    \
+  \                    information density, and manageable number of\n           \
+  \             dimensions for clustering approaches, you are welcome\n          \
+  \              to experiment (but maybe you should leave it as is for\n        \
+  \                your first set of analyses).\n  --skip-mindful-splitting\n    \
+  \                    By default, anvi'o attempts to prevent soft-splitting\n   \
+  \                     large contigs by cutting proper gene calls to make\n     \
+  \                   sure a single gene is not broken into multiple splits.\n   \
+  \                     This requires a careful examination of where genes\n     \
+  \                   start and end, and to find best locations to split\n       \
+  \                 contigs with respect to this information. So, when the\n     \
+  \                   user asks for a split size of, say, 1,000, it serves\n     \
+  \                   as a mere suggestion. When this flag is used, anvi'o\n     \
+  \                   does what the user wants and creates splits at desired\n   \
+  \                     lengths (although some functionality may become\n        \
+  \                unavailable for the projects that rely on a contigs\n         \
+  \               database that is initiated this way).\n\nGENES IN CONTIGS:\n  Expert\
+  \ thingies.\n\n  --skip-gene-calling   By default, generating an anvi'o contigs\
+  \ database\n                        includes the identification of open reading\
+  \ frames in\n                        contigs by running a bacterial gene caller.\
+  \ Declaring\n                        this flag will by-pass that process. If you\
+  \ prefer,\n                        you can later import your own gene calling results\n\
+  \                        into the database.\n  --prodigal-translation-table INT\n\
+  \                        This is a parameter to pass to the Prodigal for a\n   \
+  \                     specific translation table. This parameter corresponds\n \
+  \                       to the parameter `-g` in Prodigal, the default value\n \
+  \                       of which is 11 (so if you do not set anything, it will\n\
+  \                        be set to 11 in Prodigal runtime. Please refer to the\n\
+  \                        Prodigal documentation to determine what is the right\n\
+  \                        translation table for you if you think you need it.)\n\
+  \  --external-gene-calls GENE-CALLS\n                        A TAB-delimited file\
+  \ to utilize external gene calls.\n                        The file must have these\
+  \ columns: 'gene_callers_id' (a\n                        unique integer number for\
+  \ each gene call, start from\n                        1), 'contig' (the contig name\
+  \ the gene call is found),\n                        'start' (start position, integer),\
+  \ 'stop' (stop\n                        position, integer), 'direction' (the direction\
+  \ of the\n                        gene open reading frame; can be 'f' or 'r'), 'partial'\n\
+  \                        (whether it is a complete gene call, or a partial one;\n\
+  \                        must be 1 for partial calls, and 0 for complete\n     \
+  \                   calls), 'source' (the gene caller), and 'version' (the\n   \
+  \                     version of the gene caller, i.e., v2.6.7 or v1.0). An\n  \
+  \                      example file can be found via the URL\n                 \
+  \       https://bit.ly/2qEEHuQ\n  --ignore-internal-stop-codons\n              \
+  \          This is only relevant when you have an external gene\n              \
+  \          calls file. If anvi'o figures out that your custom\n                \
+  \        gene calls result in amino acid sequences with stop\n                 \
+  \       codons in the middle, it will complain about it. You\n                 \
+  \       can use this flag to tell anvi'o to don't check for\n                  \
+  \      internal stop codons, EVEN THOUGH IT MEANS THERE IS\n                   \
+  \     MOST LIKELY SOMETHING WRONG WITH YOUR EXTERNAL GENE\n                    \
+  \    CALLS FILE. Anvi'o will understand that sometimes we\n                    \
+  \    don't want to care, and will not judge you. Instead,\n                    \
+  \    it will replace every stop codon residue in the amino\n                   \
+  \     acid sequence with an 'X' character. Please let us\n                     \
+  \   know if you used this and things failed, so we can\n                       \
+  \ tell you that you shouldn't have really used it if you\n                     \
+  \   didn't like failures at the first place (smiley).\n"
+generated_using:
+- --help

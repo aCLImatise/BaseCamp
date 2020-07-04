@@ -1,5 +1,15 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: OPTION
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: NEWROOT
+  optional: false
 named:
 - !Flag
   description: specify supplementary groups as g1,g2,..,gN
@@ -23,6 +33,7 @@ named:
   optional: true
 command:
 - chroot
+parent:
 subcommands: []
 help_flag: !Flag
   description: this help and exit
@@ -39,3 +50,14 @@ version_flag: !Flag
   args: !SimpleFlagArg
     name: output
   optional: true
+help_text: "Usage: chroot [OPTION] NEWROOT [COMMAND [ARG]...]\n  or:  chroot OPTION\n\
+  Run COMMAND with root directory set to NEWROOT.\n\n  --groups=G_LIST        specify\
+  \ supplementary groups as g1,g2,..,gN\n  --userspec=USER:GROUP  specify user and\
+  \ group (ID or name) to use\n  --skip-chdir           do not change working directory\
+  \ to '/'\n      --help display this help and exit\n      --version output version\
+  \ information and exit\n\nIf no command is given, run '${SHELL} -i' (default: '/bin/sh\
+  \ -i').\n\nGNU coreutils online help: <http://www.gnu.org/software/coreutils/>\n\
+  Full documentation at: <http://www.gnu.org/software/coreutils/chroot>\nor available\
+  \ locally via: info '(coreutils) chroot invocation'\n"
+generated_using:
+- --help

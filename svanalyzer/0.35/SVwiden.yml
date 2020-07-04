@@ -2,6 +2,23 @@
 positional: []
 named:
 - !Flag
+  description: Specify the path to the multi-fasta file that serves as a reference
+    for the structural variants in the VCF file.
+  synonyms:
+  - --ref
+  args: !SimpleFlagArg
+    name: path to reference multi-fasta file
+  optional: true
+- !Flag
+  description: Specify a prefix for the path to which to write a new VCF file containing
+    the structural variants from the input VCF file, but now with tags specifying
+    widened coordinates. (Default "./widened").
+  synonyms:
+  - --prefix
+  args: !SimpleFlagArg
+    name: path/prefix to which to write a new VCF-formatted file
+  optional: true
+- !Flag
   description: 'Specify a string to be written as the reference name in the ##reference
     line of the VCF header.'
   synonyms:
@@ -15,8 +32,16 @@ named:
   - --noheader
   args: !EmptyFlagArg {}
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --variants
+  args: !SimpleFlagArg
+    name: path to input VCF file
+  optional: true
 command:
 - SVwiden
+parent:
 subcommands: []
 help_flag: !Flag
   description: Display documentation. One "--help" gives a brief synopsis, "-h -h"
@@ -28,3 +53,19 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "Usage:\n      SVwiden --variants <path to input VCF file> --ref <path\
+  \ to reference multi-FASTA file> --prefix <path prefix to name output VCF file>\n\
+  \n    For complete documentation, run \"SVwiden -man\"\n\nOptions:\n    --ref <path\
+  \ to reference multi-fasta file>\n        Specify the path to the multi-fasta file\
+  \ that serves as a reference\n        for the structural variants in the VCF file.\n\
+  \n    --prefix <path/prefix to which to write a new VCF-formatted file>\n      \
+  \  Specify a prefix for the path to which to write a new VCF file\n        containing\
+  \ the structural variants from the input VCF file, but now\n        with tags specifying\
+  \ widened coordinates. (Default \"./widened\").\n\n    --refname <string to include\
+  \ as the reference name in the VCF header>\n        Specify a string to be written\
+  \ as the reference name in the\n        ##reference line of the VCF header.\n\n\
+  \    --noheader\n        Flag option to suppress printout of the VCF header.\n\n\
+  \    --help|--manual\n        Display documentation. One \"--help\" gives a brief\
+  \ synopsis, \"-h -h\"\n        shows all options, \"--manual\" provides complete\
+  \ documentation.\n\n"
+generated_using: []

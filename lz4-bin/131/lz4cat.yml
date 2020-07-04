@@ -2,6 +2,18 @@
 positional: []
 named:
 - !Flag
+  description: ': Fast compression (default) '
+  synonyms:
+  - '-1'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': High compression '
+  synonyms:
+  - '-9'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: ': decompression (default for .lz4 extension)'
   synonyms:
   - -d
@@ -17,6 +29,12 @@ named:
   description: ': overwrite output without prompting '
   synonyms:
   - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': display help/long help and exit'
+  synonyms:
+  - -h/-H
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -87,12 +105,27 @@ named:
   optional: true
 command:
 - lz4cat
+parent:
 subcommands: []
-help_flag: !Flag
-  description: '/-H  : display help/long help and exit'
-  synonyms:
-  - -h
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
 version_flag:
+help_text: "*** LZ4 command line interface 64-bits r128, by Yann Collet (Jul 13 2018)\
+  \ ***\nUsage :\n      lz4cat [arg] [input] [output]\n\ninput   : a filename\n  \
+  \        with no FILE, or when FILE is - or stdin, read standard input\nArguments\
+  \ :\n -1     : Fast compression (default) \n -9     : High compression \n -d   \
+  \  : decompression (default for .lz4 extension)\n -z     : force compression\n -f\
+  \     : overwrite output without prompting \n -h/-H  : display help/long help and\
+  \ exit\n\nAdvanced arguments :\n -V     : display Version number and exit\n -v \
+  \    : verbose mode\n -q     : suppress warnings; specify twice to suppress errors\
+  \ too\n -c     : force write to standard output, even if it is the console\n -t\
+  \     : test compressed file integrity\n -m     : multiple input files (implies\
+  \ automatic output filenames)\n -l     : compress using Legacy format (Linux kernel\
+  \ compression)\n -B#    : Block size [4-7](default : 7)\n -BD    : Block dependency\
+  \ (improve compression ratio)\n--no-frame-crc : disable stream checksum (default:enabled)\n\
+  --content-size : compressed frame includes original size (default:not present)\n\
+  --[no-]sparse  : sparse mode (default:enabled on file, disabled on stdout)\nBenchmark\
+  \ arguments :\n -b     : benchmark file(s)\n -i#    : iteration loops [1-9](default\
+  \ : 3), benchmark mode only\n"
+generated_using:
+- -h

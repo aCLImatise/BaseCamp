@@ -1,114 +1,60 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: Stage 2 of rr_hctg_track
+  position: 0
+  name: rr-hctg-track2
+  optional: false
 named: []
 command:
 - falconc
-subcommands:
-- !Command
-  positional: []
-  named:
-  - !Flag
-    description: 'advanced: prepend,plurals,..'
-    synonyms:
-    - --help-syntax
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: bool    false                                        set test
-    synonyms:
-    - -t
-    - --test
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: =, --read-to-contig-map=  string  "./4-quiver/track_reads/read_to_contig_map"  set
-      read_to_contig_map
-    synonyms:
-    - -r
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: =, --partials-fn=         string  "./4-quiver/track-reads/partials.json"       set
-      partials_fn
-    synonyms:
-    - -p
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: =, --output=              string  "./4-quiver/track-reads/rawread_to_contigs"  set
-      output
-    synonyms:
-    - -o
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: =, --bestn=               int     40                                           set
-      bestn
-    synonyms:
-    - -b
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: =, --n-core=              int     0                                            set
-      n_core
-    synonyms:
-    - -n
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: =         string  ""                                           set
-      phased_read_file
-    synonyms:
-    - --phased-read-file
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: =              string  ""                                           set
-      rawread_ids
-    synonyms:
-    - --rawread-ids
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: =, --min-len=             int     2500                                         set
-      min_len
-    synonyms:
-    - -m
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: bool    false                                        set stream
-    synonyms:
-    - -s
-    - --stream
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: bool    false                                        set debug
-    synonyms:
-    - -d
-    - --debug
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: bool    false                                        set silent
-    synonyms:
-    - --silent
-    args: !EmptyFlagArg {}
-    optional: true
-  command:
-  - falconc
-  - rr-hctg-track2
-  subcommands: []
-  help_flag: !Flag
-    description: print this cligen-erated help
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
+parent:
+subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "Usage:\n  falconc {SUBCMD}  [sub-command options & parameters]\nwhere\
+  \ {SUBCMD} is one of:\n  help                          print comprehensive or per-cmd\
+  \ help\n  version                       \n  dataset                       \n  kmers\
+  \                         \n  utils                         \n  bam-filter-ipa \
+  \               Print subreads which have decent alignments in any of the bam inputs.\n\
+  \  align-filter                  alias for bam-filter-ipa\n  bam-tags-enrich   \
+  \            Add XB/XE/XP/XR/XQ: beg/end/%idt/aln-ref-len/qry-len\n  bam-filter-clipped\
+  \            Filter alignments with significant clipping. To skip an alignment,\
+  \ both max_clipping and end_margin must be exceeded on at least 1 end.\n  raptor-db-filter\
+  \              Read/write raptor-db to/from stdin/stdout. Exclude zmws in blacklist.\n\
+  \  raptor-db-calc-length-cutoff  Perform a linear pass on an overlap file, and determine\
+  \ rough clipping coordinates to 'correct' reads. Write integer to stdout.\n  circ-orient\
+  \                   reorients circular sequences based on gc-skew distribution and\
+  \ writes to output.\n  circ-randomize                randomly rotates left rotates\
+  \ the sequence and writes to the output file.\n  phasr                         Phase\
+  \ PacBio CCS/HIFI reads.\n  m4filt-merge-blacklist        \n  m4filt-stage1    \
+  \             \n  m4filt-stage2                 \n  m4filt-dump-blacklist      \
+  \   \n  m4filt                        Run the multi-stage m4 overlap filter. Read\
+  \ the m4 filenames from stdin. In stage one, reads that trigger a filter are marked\
+  \ including containment, gaps in coverage along the\n                          \
+  \      A-read, and repeat reads. In stage two the filters are applied and the N-best\
+  \ overlaps are kept for the 5prime and 3prime of each read.\n  m4filt-falconRunner\
+  \           Runs the multi-stage m4 overlap filter for falcon. In stage one, reads\
+  \ that trigger a filter are marked including containment, gaps in coverage along\
+  \ the A-read, and repeat reads.\n                                In stage two the\
+  \ filters are applied and the N-best overlaps are kept for the 5prime and 3prime\
+  \ of each read.\n  m4filt-ipaRunner              Runs the multi-stage m4 overlap\
+  \ filter for IPA. In stage one, reads that trigger a filter are marked including\
+  \ containment, gaps in coverage along the A-read, and repeat reads. In\n       \
+  \                         stage two the filters are applied and the N-best overlaps\
+  \ are kept for the 5prime and 3prime of each read.\n  m4filt-contained         \
+  \     Parse .m4 file. Write only the overlaps which pass the filters. (no overlaps\
+  \ involving contained reads;  no overlaps involving short reads;  no overlaps with\
+  \ low identity)\n  pbcromwell-rm-las             Remove all .las files except final\
+  \ stage of merge. (Unzip is still possible.) Filepaths come from the provided command\
+  \ as a subprocess, or from stdin if command==\"-\", (Someday, we\n             \
+  \                   will add a flag to delete the final stage too, optionally.)\n\
+  \  pbreports-circ                Given FASTA of all ctgs and text-list of circular\
+  \ ctgs, print a report (pbreports format).\n  stats-assembly                \n \
+  \ rr-hctg-track1                \n  rr-hctg-track2                Stage 2 of rr_hctg_track\n\
+  \nfalconc {-h|--help} or with no args at all prints this message.\nfalconc --help-syntax\
+  \ gives general cligen syntax help.\nRun \"falconc {help SUBCMD|SUBCMD --help}\"\
+  \ to see help for just SUBCMD.\nRun \"falconc help\" to get *comprehensive* help.\n"
+generated_using:
+- --help

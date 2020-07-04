@@ -1,8 +1,9 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - dimspy
+parent:
 subcommands:
 - !Command
   positional: []
@@ -40,11 +41,11 @@ subcommands:
     - -m
     - --function-noise
     args: !ChoiceFlagArg
-      choices:
-      - median
-      - mean
-      - mad
-      - noise_packets
+      choices: !!set
+        mad:
+        median:
+        noise_packets:
+        mean:
     optional: true
   - !Flag
     description: Signal-to-noise threshold
@@ -156,6 +157,7 @@ subcommands:
   command:
   - dimspy
   - process-scans
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -166,6 +168,51 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Executing dimspy version 2.0.0.\nusage: dimspy process-scans [-h] -i\
+    \ source -o OUTPUT [-l FILELIST] -m\n                            {median,mean,mad,noise_packets}\
+    \ -s SNR_THRESHOLD\n                            [-p PPM] [-n MIN_SCANS] [-a MIN_FRACTION]\n\
+    \                            [-d RSD_THRESHOLD] [-k] [-r RINGING_THRESHOLD]\n\
+    \                            [-e start end scan_type] [-x start end scan_type]\n\
+    \                            [-z start end] [-u REPORT] [-b BLOCK_SIZE]\n    \
+    \                        [-c NCPUS]\n\noptional arguments:\n  -h, --help     \
+    \       show this help message and exit\n  -i source, --input source\n       \
+    \                 Directory (*.raw, *.mzml or tab-delimited peaklist\n       \
+    \                 files), single *.mzml/*.raw file or zip archive\n          \
+    \              (*.mzml only)\n  -o OUTPUT, --output OUTPUT\n                 \
+    \       HDF5 file to save the peaklist objects to.\n  -l FILELIST, --filelist\
+    \ FILELIST\n                        Tab-delimited file that include the name of\
+    \ the data\n                        files (*.raw or *.mzml) and meta data. Column\
+    \ names:\n                        filename, replicate, batch, injectionOrder,\n\
+    \                        classLabel.\n  -m {median,mean,mad,noise_packets}, --function-noise\
+    \ {median,mean,mad,noise_packets}\n                        Select function to\
+    \ calculate noise.\n  -s SNR_THRESHOLD, --snr-threshold SNR_THRESHOLD\n      \
+    \                  Signal-to-noise threshold\n  -p PPM, --ppm PPM     Mass tolerance\
+    \ in Parts per million to group peaks\n                        across scans /\
+    \ mass spectra.\n  -n MIN_SCANS, --min_scans MIN_SCANS\n                     \
+    \   Minimum number of scans required for each m/z range or\n                 \
+    \       event.\n  -a MIN_FRACTION, --min-fraction MIN_FRACTION\n             \
+    \           Minimum fraction a peak has to be present. Use 0.0 to\n          \
+    \              not apply this filter.\n  -d RSD_THRESHOLD, --rsd-threshold RSD_THRESHOLD\n\
+    \                        Maximum threshold - relative standard deviation\n   \
+    \                     (Calculated for peaks that have been measured across a\n\
+    \                        minimum of two scans).\n  -k, --skip-stitching  Skip\
+    \ the step where (SIM) windows are 'stitched' or\n                        'joined'\
+    \ together. Individual peaklists are generated\n                        for each\
+    \ window.\n  -r RINGING_THRESHOLD, --ringing-threshold RINGING_THRESHOLD\n   \
+    \                     Ringing\n  -e start end scan_type, --include-scan-events\
+    \ start end scan_type\n                        Scan events to select. E.g. 100.0\
+    \ 200.0 sim or 50.0\n                        1000.0 full\n  -x start end scan_type,\
+    \ --exclude-scan-events start end scan_type\n                        Scan events\
+    \ to select. E.g. 100.0 200.0 sim or 50.0\n                        1000.0 full\n\
+    \  -z start end, --remove-mz-range start end\n                        M/z range(s)\
+    \ to remove. E.g. 100.0 102.0 or 140.0\n                        145.0.\n  -u REPORT,\
+    \ --report REPORT\n                        Summary/Report of processed mass spectra\n\
+    \  -b BLOCK_SIZE, --block-size BLOCK_SIZE\n                        The size of\
+    \ each block of peaks to perform clustering\n                        on.\n  -c\
+    \ NCPUS, --ncpus NCPUS\n                        Number of central processing units\
+    \ (CPUs).\n"
+  generated_using: &id002
+  - --help
 - !Command
   positional: []
   named:
@@ -256,6 +303,7 @@ subcommands:
   command:
   - dimspy
   - replicate-filter
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -266,6 +314,31 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Executing dimspy version 2.0.0.\nusage: dimspy replicate-filter [-h]\
+    \ -i INPUT -o OUTPUT [-p PPM] -r REPLICATES\n                               -m\
+    \ MIN_PEAK_PRESENT [-d RSD_THRESHOLD]\n                               [-l FILELIST]\
+    \ [-u REPORT] [-b BLOCK_SIZE]\n                               [-c NCPUS]\n\noptional\
+    \ arguments:\n  -h, --help            show this help message and exit\n  -i INPUT,\
+    \ --input INPUT\n                        HDF5 file (Peaklist objects) from step\
+    \ 'process-scans'\n                        or directory path that contains tab-delimited\n\
+    \                        peaklists.\n  -o OUTPUT, --output OUTPUT\n          \
+    \              HDF5 file to save the peaklist objects to.\n  -p PPM, --ppm PPM\
+    \     Mass tolerance in Parts per million to group peaks\n                   \
+    \     across scans / mass spectra.\n  -r REPLICATES, --replicates REPLICATES\n\
+    \                        Number of technical replicates.\n  -m MIN_PEAK_PRESENT,\
+    \ --min-peak-present MIN_PEAK_PRESENT\n                        Minimum number\
+    \ of times a peak has to be present\n                        (number) across technical\
+    \ replicates.\n  -d RSD_THRESHOLD, --rsd-threshold RSD_THRESHOLD\n           \
+    \             Maximum threshold - Relative Standard Deviation.\n  -l FILELIST,\
+    \ --filelist FILELIST\n                        Tab-delimited file that list all\
+    \ the data files (*.raw\n                        or *.mzml) and meta data (filename,\
+    \ technical\n                        replicate, class, batch).\n  -u REPORT, --report\
+    \ REPORT\n                        Summary/Report of processed mass spectra\n \
+    \ -b BLOCK_SIZE, --block-size BLOCK_SIZE\n                        The size of\
+    \ each block of peaks to perform clustering\n                        on.\n  -c\
+    \ NCPUS, --ncpus NCPUS\n                        Number of central processing units\
+    \ (CPUs).\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -323,6 +396,7 @@ subcommands:
   command:
   - dimspy
   - align-samples
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -333,6 +407,23 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Executing dimspy version 2.0.0.\nusage: dimspy align-samples [-h] -i\
+    \ INPUT -o OUTPUT [-p PPM] [-l FILELIST]\n                            [-b BLOCK_SIZE]\
+    \ [-c NCPUS]\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  -i INPUT, --input INPUT\n                        HDF5 file (Peaklist\
+    \ objects) from step 'process-scans\n                        / replicate-filter'\
+    \ or directory path that contains\n                        tab-delimited peaklists.\n\
+    \  -o OUTPUT, --output OUTPUT\n                        HDF5 file to save the peak\
+    \ matrix object to.\n  -p PPM, --ppm PPM     Mass tolerance in parts per million\
+    \ to group peaks\n                        across scans / mass spectra.\n  -l FILELIST,\
+    \ --filelist FILELIST\n                        Tab-delimited file that include\
+    \ the name of the\n                        samples and meta data.Column names:\
+    \ filename,\n                        replicate, batch, injectionOrder, classLabel.\n\
+    \  -b BLOCK_SIZE, --block-size BLOCK_SIZE\n                        The size of\
+    \ each block of peaks to perform clustering\n                        on.\n  -c\
+    \ NCPUS, --ncpus NCPUS\n                        Number of central processing units\
+    \ (CPUs).\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -374,10 +465,10 @@ subcommands:
     - -f
     - --function
     args: !ChoiceFlagArg
-      choices:
-      - mean
-      - median
-      - max
+      choices: !!set
+        median:
+        max:
+        mean:
     optional: true
   - !Flag
     description: Minium fold change blank versus sample.
@@ -406,6 +497,7 @@ subcommands:
   command:
   - dimspy
   - blank-filter
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -416,6 +508,23 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Executing dimspy version 2.0.0.\nusage: dimspy blank-filter [-h] -i\
+    \ INPUT -o OUTPUT -l BLANK_LABEL\n                           [-m MIN_FRACTION]\
+    \ [-f {mean,median,max}]\n                           [-c MIN_FOLD_CHANGE] [-r]\
+    \ [-a LABELS]\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  -i INPUT, --input INPUT\n                        HDF5 file or tab-delimited\
+    \ file that contains a peak\n                        matrix (object).\n  -o OUTPUT,\
+    \ --output OUTPUT\n                        HDF5 file to save the peak matrix object\
+    \ to.\n  -l BLANK_LABEL, --blank-label BLANK_LABEL\n                        Class\
+    \ label for blanks.\n  -m MIN_FRACTION, --min-fraction MIN_FRACTION\n        \
+    \                Minium fold change blank versus sample.\n  -f {mean,median,max},\
+    \ --function {mean,median,max}\n                        Select function to calculate\
+    \ blank intenstiy.\n  -c MIN_FOLD_CHANGE, --min-fold-change MIN_FOLD_CHANGE\n\
+    \                        Minium fold change blank versus sample.\n  -r, --remove-blank-samples\n\
+    \                        Remove blank samples from peak matrix.\n  -a LABELS,\
+    \ --labels LABELS\n                        Tab delimited file with at least two\
+    \ columns named\n                        'filename' and 'classLabel'.\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -479,6 +588,7 @@ subcommands:
   command:
   - dimspy
   - sample-filter
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -489,6 +599,22 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Executing dimspy version 2.0.0.\nusage: dimspy sample-filter [-h] -i\
+    \ INPUT -o OUTPUT [-p MIN_FRACTION] [-w]\n                            [-d RSD_THRESHOLD]\
+    \ [-q QC_LABEL] [-a LABELS]\n\noptional arguments:\n  -h, --help            show\
+    \ this help message and exit\n  -i INPUT, --input INPUT\n                    \
+    \    HDF5 file or tab-delimited file that contains a peak\n                  \
+    \      matrix.\n  -o OUTPUT, --output OUTPUT\n                        HDF5 file\
+    \ to save the peak matrix object to.\n  -p MIN_FRACTION, --min-fraction MIN_FRACTION\n\
+    \                        Minimum percentage of samples a peak has to be\n    \
+    \                    present.\n  -w, --within          Apply sample filter within\
+    \ each sample class.\n  -d RSD_THRESHOLD, --rsd-threshold RSD_THRESHOLD\n    \
+    \                    Peaks where the associated QC peaks are above this\n    \
+    \                    threshold will be removed.\n  -q QC_LABEL, --qc-label QC_LABEL\n\
+    \                        Class label for QCs\n  -a LABELS, --labels LABELS\n \
+    \                       Tab delimited file with at least two columns named\n \
+    \                       'filename' and 'classLabel'.\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -520,6 +646,7 @@ subcommands:
   command:
   - dimspy
   - remove-samples
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -530,6 +657,15 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Executing dimspy version 2.0.0.\nusage: dimspy remove-samples [-h] -i\
+    \ source -o OUTPUT -s SAMPLE_NAMES\n\noptional arguments:\n  -h, --help      \
+    \      show this help message and exit\n  -i source, --input source\n        \
+    \                HDF5 file that contains a peak matrix object or list\n      \
+    \                  of peaklist objects from one of the processing steps.\n  -o\
+    \ OUTPUT, --output OUTPUT\n                        HDF5 file to save the peak\
+    \ matrix object or peaklist\n                        objects to.\n  -s SAMPLE_NAMES,\
+    \ --sample-names SAMPLE_NAMES\n                        Sample name(s)\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -560,6 +696,7 @@ subcommands:
   command:
   - dimspy
   - mv-sample-filter
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -570,6 +707,15 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Executing dimspy version 2.0.0.\nusage: dimspy mv-sample-filter [-h]\
+    \ -i INPUT -o OUTPUT [-m MAX_FRACTION]\n\noptional arguments:\n  -h, --help  \
+    \          show this help message and exit\n  -i INPUT, --input INPUT\n      \
+    \                  HDF5 file file that contains a peak matrix object.\n  -o OUTPUT,\
+    \ --output OUTPUT\n                        HDF5 file to save the peak matrix object\
+    \ to.\n  -m MAX_FRACTION, --max-fraction MAX_FRACTION\n                      \
+    \  Maximum percentage of missing values allowed across a\n                   \
+    \     sample.\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -603,6 +749,7 @@ subcommands:
   command:
   - dimspy
   - merge-peaklists
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -613,6 +760,17 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Executing dimspy version 2.0.0.\nusage: dimspy merge-peaklists [-h]\
+    \ -i INPUT -o OUTPUT [-l FILELIST]\n\noptional arguments:\n  -h, --help      \
+    \      show this help message and exit\n  -i INPUT, --input INPUT\n          \
+    \              Multiple HDF5 files that contain peaklists or peak\n          \
+    \              matrix from one of the processing steps.\n  -o OUTPUT, --output\
+    \ OUTPUT\n                        Directory (if using multilist column in filelist)\
+    \ or\n                        HDF5 file to write to.\n  -l FILELIST, --filelist\
+    \ FILELIST\n                        Tab-delimited file that list all the data\
+    \ files (*.raw\n                        or *.mzml) and meta data (filename, technical\n\
+    \                        replicate, class, batch, multiList).\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -636,6 +794,7 @@ subcommands:
   command:
   - dimspy
   - get-peaklists
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -646,6 +805,13 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Executing dimspy version 2.0.0.\nusage: dimspy get-peaklists [-h] -i\
+    \ INPUT -o OUTPUT\n\noptional arguments:\n  -h, --help            show this help\
+    \ message and exit\n  -i INPUT, --input INPUT\n                        Single\
+    \ or Multiple HDF5 files that contain a peak\n                        matrix object\
+    \ from one of the processing steps.\n  -o OUTPUT, --output OUTPUT\n          \
+    \              HDF5 file to save the peaklist objects to.\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -677,6 +843,7 @@ subcommands:
   command:
   - dimspy
   - get-average-peaklist
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -687,6 +854,15 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Executing dimspy version 2.0.0.\nusage: dimspy get-average-peaklist\
+    \ [-h] -i INPUT -o OUTPUT -n NAME_PEAKLIST\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n  -i INPUT, --input INPUT\n    \
+    \                    Single or Multiple HDF5 files that contain a peak\n     \
+    \                   matrix object from one of the processing steps.\n  -o OUTPUT,\
+    \ --output OUTPUT\n                        HDF5 file to save the peaklist object\
+    \ to.\n  -n NAME_PEAKLIST, --name-peaklist NAME_PEAKLIST\n                   \
+    \     Name of the peaklist.\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -713,10 +889,10 @@ subcommands:
     - -a
     - --attribute_name
     args: !ChoiceFlagArg
-      choices:
-      - intensity
-      - mz
-      - snr
+      choices: !!set
+        intensity:
+        mz:
+        snr:
     optional: true
   - !Flag
     description: Class label to select samples for RSD calculatons (e.g. QC).
@@ -732,9 +908,9 @@ subcommands:
     - -d
     - --delimiter
     args: !ChoiceFlagArg
-      choices:
-      - tab
-      - comma
+      choices: !!set
+        tab:
+        comma:
     optional: true
   - !Flag
     description: Should the rows or columns respresent the samples?
@@ -742,9 +918,9 @@ subcommands:
     - -s
     - --representation-samples
     args: !ChoiceFlagArg
-      choices:
-      - rows
-      - columns
+      choices: !!set
+        columns:
+        rows:
     optional: true
   - !Flag
     description: Comprehensive version of the peak matrix
@@ -756,6 +932,7 @@ subcommands:
   command:
   - dimspy
   - hdf5-pm-to-txt
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -766,6 +943,23 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Executing dimspy version 2.0.0.\nusage: dimspy hdf5-pm-to-txt [-h] -i\
+    \ INPUT -o OUTPUT [-a {intensity,mz,snr}]\n                             [-l CLASS_LABEL_RSD]\
+    \ [-d {tab,comma}]\n                             [-s {rows,columns}] [-c]\n\n\
+    optional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -i INPUT, --input INPUT\n                        HDF5 file that contains a\
+    \ peak matrix object from one\n                        of the processing steps.\n\
+    \  -o OUTPUT, --output OUTPUT\n                        Directory (peaklists) or\
+    \ text file (peak matrix) to\n                        write to.\n  -a {intensity,mz,snr},\
+    \ --attribute_name {intensity,mz,snr}\n                        Type of matrix\
+    \ to print.\n  -l CLASS_LABEL_RSD, --class-label-rsd CLASS_LABEL_RSD\n       \
+    \                 Class label to select samples for RSD calculatons\n        \
+    \                (e.g. QC).\n  -d {tab,comma}, --delimiter {tab,comma}\n     \
+    \                   Values on each line of the file are separated by this\n  \
+    \                      character.\n  -s {rows,columns}, --representation-samples\
+    \ {rows,columns}\n                        Should the rows or columns respresent\
+    \ the samples?\n  -c, --comprehensive   Comprehensive version of the peak matrix\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -792,13 +986,14 @@ subcommands:
     - -d
     - --delimiter
     args: !ChoiceFlagArg
-      choices:
-      - tab
-      - comma
+      choices: !!set
+        tab:
+        comma:
     optional: true
   command:
   - dimspy
   - hdf5-pls-to-txt
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -809,6 +1004,15 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Executing dimspy version 2.0.0.\nusage: dimspy hdf5-pls-to-txt [-h]\
+    \ -i INPUT -o OUTPUT [-d {tab,comma}]\n\noptional arguments:\n  -h, --help   \
+    \         show this help message and exit\n  -i INPUT, --input INPUT\n       \
+    \                 HDF5 file that contains a list of peaklist objects\n       \
+    \                 from one of the processing steps.\n  -o OUTPUT, --output OUTPUT\n\
+    \                        Directory to write to.\n  -d {tab,comma}, --delimiter\
+    \ {tab,comma}\n                        Values on each line of the file are separated\
+    \ by this\n                        character.\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -835,13 +1039,14 @@ subcommands:
     - -d
     - --delimiter
     args: !ChoiceFlagArg
-      choices:
-      - tab
-      - comma
+      choices: !!set
+        tab:
+        comma:
     optional: true
   command:
   - dimspy
   - create-sample-list
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -852,6 +1057,15 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Executing dimspy version 2.0.0.\nusage: dimspy create-sample-list [-h]\
+    \ -i INPUT -o OUTPUT [-d {tab,comma}]\n\noptional arguments:\n  -h, --help   \
+    \         show this help message and exit\n  -i INPUT, --input INPUT\n       \
+    \                 HDF5 file that contains a peak matrix object from one\n    \
+    \                    of the processing steps.\n  -o OUTPUT, --output OUTPUT\n\
+    \                        Text file to write to.\n  -d {tab,comma}, --delimiter\
+    \ {tab,comma}\n                        Values on each line of the file are separated\
+    \ by this\n                        character.\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -874,6 +1088,7 @@ subcommands:
   command:
   - dimspy
   - unzip
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -884,64 +1099,11 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-- !Command
-  positional: []
-  named:
-  - !Flag
-    description: .CommonCore.BackgroundSubtraction.dll
-    synonyms:
-    - '- ThermoFisher'
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .CommonCore.BackgroundSubtraction.XML
-    synonyms:
-    - '- ThermoFisher'
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .CommonCore.Data.dll
-    synonyms:
-    - '- ThermoFisher'
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .CommonCore.Data.XML
-    synonyms:
-    - '- ThermoFisher'
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .CommonCore.MassPrecisionEstimator.dll
-    synonyms:
-    - '- ThermoFisher'
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .CommonCore.MassPrecisionEstimator.XML
-    synonyms:
-    - '- ThermoFisher'
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .CommonCore.RawFileReader.dll
-    synonyms:
-    - '- ThermoFisher'
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .CommonCore.RawFileReader.XML
-    synonyms:
-    - '- ThermoFisher'
-    args: !EmptyFlagArg {}
-    optional: true
-  command:
-  - dimspy
-  - licenses
-  subcommands: []
-  help_flag:
-  usage_flag:
-  version_flag:
+  help_text: "Executing dimspy version 2.0.0.\nusage: dimspy unzip [-h] -i INPUT -o\
+    \ OUTPUT\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  -i INPUT, --input INPUT\n                        file[.zip]\n  -o\
+    \ OUTPUT, --output OUTPUT\n                        Directory to write to.\n"
+  generated_using: *id002
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -951,3 +1113,25 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "Executing dimspy version 2.0.0.\nusage: dimspy [-h]\n              {process-scans,replicate-filter,align-samples,blank-filter,sample-filter,remove-samples,mv-sample-filter,merge-peaklists,get-peaklists,get-average-peaklist,hdf5-pm-to-txt,hdf5-pls-to-txt,create-sample-list,unzip,licenses}\n\
+  \              ...\n\nPython package for processing direct-infusion mass spectrometry-based\n\
+  metabolomics and lipidomics data\n\npositional arguments:\n  {process-scans,replicate-filter,align-samples,blank-filter,sample-filter,remove-samples,mv-sample-filter,merge-peaklists,get-peaklists,get-average-peaklist,hdf5-pm-to-txt,hdf5-pls-to-txt,create-sample-list,unzip,licenses}\n\
+  \    process-scans       Process scans and/or stitch SIM windows.\n    replicate-filter\
+  \    Filter irreproducible peaks from technical replicate\n                    \
+  \    peaklists.\n    align-samples       Align peaklists across samples.\n    blank-filter\
+  \        Filter peaks across samples that are present in the\n                 \
+  \       blank samples.\n    sample-filter       Filter peaks based on certain reproducibility\
+  \ and\n                        sample class criteria.\n    remove-samples      Remove\
+  \ sample(s) from a peak matrix object or list of\n                        peaklist\
+  \ objects.\n    mv-sample-filter    Filter samples based on the percentage of missing\n\
+  \                        values.\n    merge-peaklists     Merge peaklists from multiple\
+  \ lists of peaklist or\n                        peak matrix objects.\n    get-peaklists\
+  \       Get peaklists from a peak matrix object.\n    get-average-peaklist\n   \
+  \                     Get an average peaklist from a peak matrix object.\n    hdf5-pm-to-txt\
+  \      Write HDF5 output (peak matrix) to text format.\n    hdf5-pls-to-txt    \
+  \ Write HDF5 output (peak lists) to text format.\n    create-sample-list  Create\
+  \ a sample list from a peak matrix object or list\n                        of peaklist\
+  \ objects.\n    unzip               Extract files from zip file\n    licenses  \
+  \          Show licenses DIMSpy and RawFileReader\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n"
+generated_using: *id002

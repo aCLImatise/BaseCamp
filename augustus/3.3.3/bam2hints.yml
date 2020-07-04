@@ -128,8 +128,23 @@ named:
   args: !SimpleFlagArg
     name: n
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --in
+  args: !SimpleFlagArg
+    name: example.bam
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --out
+  args: !SimpleFlagArg
+    name: hints.gff
+  optional: true
 command:
 - bam2hints
+parent:
 subcommands: []
 help_flag: !Flag
   description: -h   show this help text
@@ -139,3 +154,36 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "bam2hints -- Convert mRNA-to-genome alignments in BAM format into a hint\
+  \ file for AUGUSTUS in gff format.\n\nUsage:   bam2hints --in=example.bam --out=hints.gff\n\
+  \  PREREQUISITE: input BAM file must be sorted by target (=genome) sequence names\n\
+  \                and within the sequences by begin coordinates\n\n  Options:\n \
+  \ --priority=n       -p   priority of hint group (set to 4)\n  --maxgaplen=n   \
+  \   -g   gaps at most this length are simply closed (set to 14)\n  --minintronlen=n\
+  \   -m   alignments with gaps shorter than this and longer than maxgaplen are discarded\
+  \ (set to 32)\n  --maxintronlen=n   -M   alignments with longer gaps are discarded\
+  \ (set to 350000)\n  --MinEndBlockLen=n -b   minimum length of a 'dangling' exon\
+  \ (set to 8)\n  --maxQgaplen=n     -q   maximum length of gap in query (cDNA) sequence\
+  \ (set to 5)\n  --exonhints        -x   compute exonpart, exon and splice site hints\
+  \ in addition to intron hints (set to 0=Off)\n                          You should\
+  \ generate exonpart hints from RNA-Seq using wiggle (.wig) input to wig2hints.\n\
+  \  --ep_cutoff=n      -e   this many bp are cut off of each exonpart hint at end\
+  \ of alignment (set to 10)\n  --source=s         -s   source identifier (set to\
+  \ 'E')\n  --intronsonly      -I   only retrieve intron hints (e.g. because the exon(part)\
+  \ hints are retrieved by converting to a wig track, set to 1=On)\n             \
+  \             deprecated as this is the default now\n  --nomult           -n   do\
+  \ not summarize multiple identical intron hints to a single one (set to 0=Off)\n\
+  \  --remove_redundant -r   only keep the strongest hint for a region (set to 0=Off)\n\
+  \  --maxcoverage=n    -C   maximal number of hints at a given position (0: filtering\
+  \ deactivated). A high value causes long running time of\n                     \
+  \     AUGUSTUS in regions with thousands of cDNA alignments. (set to 0)\n  --ssOn\
+  \             -S   include splice site (dss, ass) hints in output (set to 0=Off)\n\
+  \  --trunkSS          -T   include splice sites hints from the ends of a truncated\
+  \ alignment (contig too short, set to 0=Off)\n  --score=f          -s   fill this\
+  \ number in in the score column (set to 0)\n  --maxgenelen=n     -G   alignments\
+  \ of the same clone are considered to be of the same gene if not separated by more\
+  \ than this (set to 400000)\n                          Alignments that span more\
+  \ than this are ignored, but better filter long introns through an alignment program.\n\
+  \  --help             -h   show this help text\n\n"
+generated_using:
+- --help

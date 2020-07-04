@@ -1,11 +1,17 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - dgenies
+parent:
 subcommands:
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: DEBUG
+    optional: true
   named:
   - !Flag
     description: Mode into run the application
@@ -13,9 +19,9 @@ subcommands:
     - -m
     - --mode
     args: !ChoiceFlagArg
-      choices:
-      - standalone
-      - webserver
+      choices: !!set
+        webserver:
+        standalone:
     optional: true
   - !Flag
     description: '[DEBUG], --debug [DEBUG] Run in debug mode'
@@ -56,6 +62,7 @@ subcommands:
   command:
   - dgenies
   - run
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -66,8 +73,39 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "No section: 'global'\nNo section: 'global'\nNo section: 'global'\nNo\
+    \ section: 'global'\nNo section: 'global'\nNo section: 'global'\nNo section: 'global'\n\
+    No section: 'global'\nNo section: 'global'\nNo section: 'global'\nusage: dgenies\
+    \ run [-h] [-m {standalone,webserver}] [-d [DEBUG]] [-o HOST]\n              \
+    \     [-p PORT] [--no-crons [NO_CRONS]]\n                   [--no-browser [NO_BROWSER]]\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -m {standalone,webserver}, --mode {standalone,webserver}\n                \
+    \        Mode into run the application\n  -d [DEBUG], --debug [DEBUG]\n      \
+    \                  Run in debug mode\n  -o HOST, --host HOST  Host into run the\
+    \ application\n  -p PORT, --port PORT  Port into run the application\n  --no-crons\
+    \ [NO_CRONS]\n                        Do not run crons (for debug only, ignored\
+    \ for\n                        standalone mode)\n  --no-browser [NO_BROWSER]\n\
+    \                        Do not start the browser (Start of browser is always\n\
+    \                        disabled in debug mode)\n"
+  generated_using: &id002
+  - --help
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: CRONS
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: LOGS
+    optional: true
+  - !Positional
+    description: ''
+    position: 2
+    name: JOBS
+    optional: true
   named:
   - !Flag
     description: '[CRONS], --crons [CRONS] Clear crons'
@@ -105,6 +143,7 @@ subcommands:
   command:
   - dgenies
   - clear
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -115,12 +154,25 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-- !Command
+  help_text: "No section: 'global'\nNo section: 'global'\nNo section: 'global'\nNo\
+    \ section: 'global'\nNo section: 'global'\nNo section: 'global'\nNo section: 'global'\n\
+    No section: 'global'\nNo section: 'global'\nNo section: 'global'\nusage: dgenies\
+    \ clear [-h] [-c [CRONS]] [-l [LOGS]] [-j [JOBS]] [-m MAX_AGE]\n             \
+    \        [-w [WEB]]\n\noptional arguments:\n  -h, --help            show this\
+    \ help message and exit\n  -c [CRONS], --crons [CRONS]\n                     \
+    \   Clear crons\n  -l [LOGS], --logs [LOGS]\n                        Clear logs\n\
+    \  -j [JOBS], --jobs [JOBS]\n                        Clear jobs\n  -m MAX_AGE,\
+    \ --max-age MAX_AGE\n                        Max age for job to delete (0 for\
+    \ all)\n  -w [WEB], --web [WEB]\n                        Add this option with\
+    \ -j option, if you use the\n                        webserver mode\n"
+  generated_using: *id002
+- &id003 !Command
   positional: []
   named: []
   command:
   - dgenies
   - gallery
+  parent: *id001
   subcommands:
   - !Command
     positional: []
@@ -169,6 +221,7 @@ subcommands:
     - dgenies
     - gallery
     - add
+    parent: *id003
     subcommands: []
     help_flag: !Flag
       description: show this help message and exit
@@ -179,6 +232,17 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "No section: 'global'\nNo section: 'global'\nNo section: 'global'\n\
+      No section: 'global'\nNo section: 'global'\nNo section: 'global'\nNo section:\
+      \ 'global'\nNo section: 'global'\nNo section: 'global'\nNo section: 'global'\n\
+      usage: dgenies gallery add [-h] -i ID_JOB -n NAME -q QUERY -t TARGET -p PICT\n\
+      \noptional arguments:\n  -h, --help            show this help message and exit\n\
+      \  -i ID_JOB, --id-job ID_JOB\n                        Id (name) of the job\
+      \ to add to the gallery\n  -n NAME, --name NAME  Name to show in the gallery\
+      \ for the job\n  -q QUERY, --query QUERY\n                        Name of the\
+      \ query\n  -t TARGET, --target TARGET\n                        Name of the target\n\
+      \  -p PICT, --pict PICT  Name of the file that illustrate the job\n"
+    generated_using: *id002
   - !Command
     positional: []
     named:
@@ -208,6 +272,7 @@ subcommands:
     - dgenies
     - gallery
     - del
+    parent: *id003
     subcommands: []
     help_flag: !Flag
       description: show this help message and exit
@@ -218,6 +283,15 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "No section: 'global'\nNo section: 'global'\nNo section: 'global'\n\
+      No section: 'global'\nNo section: 'global'\nNo section: 'global'\nNo section:\
+      \ 'global'\nNo section: 'global'\nNo section: 'global'\nNo section: 'global'\n\
+      usage: dgenies gallery del [-h] [-i ID_JOB] [-n NAME] [--remove-pict]\n\noptional\
+      \ arguments:\n  -h, --help            show this help message and exit\n  -i\
+      \ ID_JOB, --id-job ID_JOB\n                        Id (name) of the job to delete\
+      \ from the gallery\n  -n NAME, --name NAME  Name of the job shown in the gallery\n\
+      \  --remove-pict         Remove picture file\n"
+    generated_using: *id002
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -227,6 +301,13 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "No section: 'global'\nNo section: 'global'\nNo section: 'global'\nNo\
+    \ section: 'global'\nNo section: 'global'\nNo section: 'global'\nNo section: 'global'\n\
+    No section: 'global'\nNo section: 'global'\nNo section: 'global'\nusage: dgenies\
+    \ gallery [-h] {add,del} ...\n\npositional arguments:\n  {add,del}\n    add  \
+    \     Add new job to the gallery\n    del       Delete a job from the gallery\n\
+    \noptional arguments:\n  -h, --help  show this help message and exit\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -244,11 +325,11 @@ subcommands:
     - -t
     - --type
     args: !ChoiceFlagArg
-      choices:
-      - info
-      - warn
-      - critical
-      - success
+      choices: !!set
+        critical:
+        warn:
+        success:
+        info:
     optional: true
   - !Flag
     description: Remove message
@@ -260,6 +341,7 @@ subcommands:
   command:
   - dgenies
   - inforun
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -270,6 +352,15 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "No section: 'global'\nNo section: 'global'\nNo section: 'global'\nNo\
+    \ section: 'global'\nNo section: 'global'\nNo section: 'global'\nNo section: 'global'\n\
+    No section: 'global'\nNo section: 'global'\nNo section: 'global'\nusage: dgenies\
+    \ inforun [-h] [-m MESSAGE] [-t {info,warn,critical,success}]\n              \
+    \         [-c]\n\noptional arguments:\n  -h, --help            show this help\
+    \ message and exit\n  -m MESSAGE, --message MESSAGE\n                        Message\
+    \ to add\n  -t {info,warn,critical,success}, --type {info,warn,critical,success}\n\
+    \                        Type of message\n  -c, --clear           Remove message\n"
+  generated_using: *id002
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -279,3 +370,12 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "No section: 'global'\nNo section: 'global'\nNo section: 'global'\nNo section:\
+  \ 'global'\nNo section: 'global'\nNo section: 'global'\nNo section: 'global'\nNo\
+  \ section: 'global'\nNo section: 'global'\nNo section: 'global'\nusage: dgenies\
+  \ [-h] {run,clear,gallery,inforun} ...\n\nManage dgenies application\n\npositional\
+  \ arguments:\n  {run,clear,gallery,inforun}\n    run                 Run the application\n\
+  \    clear               Clear data\n    gallery             Manage gallery\n  \
+  \  inforun             Set a message at the top of the run page\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n"
+generated_using: *id002

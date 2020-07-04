@@ -38,15 +38,9 @@ named:
   - --murdock
   args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: of overlapping indel alleles
-  synonyms:
-  - '- No'
-  args: !SimpleFlagArg
-    name: handling
-  optional: true
 command:
 - merge_variants
+parent:
 subcommands: []
 help_flag: !Flag
   description: '[ --help ]         print this message'
@@ -56,3 +50,23 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "\nmerge_variants merges the variants from multiple gVCF files\n\nversion:\
+  \ 0.17.0\n\nusage: merge_variants [options] > merged_variants\n\noptions:\n\nconfiguration:\n\
+  \  --ref arg             samtools reference sequence (required)\n  --region arg\
+  \          samtools reference region (optional)\n  --exclude arg         name of\
+  \ chromosome to skip over (argument may be \n                        specified multiple\
+  \ times). Exclusions will be ignored \n                        if a region argument\
+  \ is provided\n  --input arg           merge files (can be specified multiple times)\n\
+  \  --murdock             If true, don't stop because of any out-of-order \n    \
+  \                    position conflicts. Any out of order positions are \n     \
+  \                   ignored. In case of an overlap the first observation is\n  \
+  \                      used and subsequent repeats are ignored.\n\nhelp:\n  -h [\
+  \ --help ]         print this message\n\n\nNote this is a simple prototype merge\
+  \ implementation and comes with\nconsiderable restrictions:\n\n  - Most INFO fields\
+  \ are not recomputed/forwared to the merged record.\n  - Most sample fields are\
+  \ not forwarded to the merged record (this would\n      require knowing which fields\
+  \ depend on allele count.)\n  - Merged record FILTER field is a simple union of\
+  \ all merged samples,\n      thus a single filtered sample will filter the merged\
+  \ record.\n  - No handling of overlapping indel alleles\n\n"
+generated_using:
+- --help

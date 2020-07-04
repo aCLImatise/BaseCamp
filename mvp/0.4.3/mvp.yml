@@ -44,12 +44,13 @@ named:
   - -t
   - --sequence-type
   args: !ChoiceFlagArg
-    choices:
-    - dna
-    - aa
+    choices: !!set
+      dna:
+      aa:
   optional: true
 command:
 - mvp
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -60,3 +61,17 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: mvp [-h] [-o OUTFILE] -r REFERENCE (-f MOTIF_FILE | -m MOTIF_LIST)\n\
+  \           [-t {dna,aa}]\n           infile\n\nMotif-Variant Probe: detect motif\
+  \ gain and loss due to mutations\n\npositional arguments:\n  infile            \
+  \    vcf or vcf.gz file containing mutations (default:\n                       \
+  \ stdin)\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  -o OUTFILE, --outfile OUTFILE\n                        results table\
+  \ (default: stdout)\n  -r REFERENCE, --reference REFERENCE\n                   \
+  \     reference sequence in fasta format\n  -f MOTIF_FILE, --motif-file MOTIF_FILE\n\
+  \                        file containing a list of motifs to check\n  -m MOTIF_LIST,\
+  \ --motif-list MOTIF_LIST\n                        a comma-delimited string of motifs\
+  \ to check\n  -t {dna,aa}, --sequence-type {dna,aa}\n                        DNA\
+  \ or amino acid (default: dna)\n"
+generated_using:
+- --help

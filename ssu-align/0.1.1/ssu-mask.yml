@@ -145,8 +145,15 @@ named:
   args: !SimpleFlagArg
     name: f
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -options
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - ssu-mask
+parent:
 subcommands: []
 help_flag: !Flag
   description: ': show brief help on version and usage'
@@ -156,3 +163,36 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "# _ssu-mask :: mask SSU rRNA alignments\n# SSU-ALIGN 0.1.1 (Feb 2016)\n\
+  # Copyright (C) 2016 Howard Hughes Medical Institute\n# Freely distributed under\
+  \ the BSD open source license.\n# - - - - - - - - - - - - - - - - - - - - - - -\
+  \ - - - - - - - - - - - - -\n# command: _ssu-mask -h \n# date:    Thu Jun 25 18:01:03\
+  \ 2020\nUsage: ssu-mask [-options] <directory created by ssu-align (includes >=\
+  \ 1 alignment file(s))>\nUsage: ssu-mask [-options] -a <Stockholm alignment file>\n\
+  \nwhere general options are:\n  -h     : show brief help on version and usage\n\
+  \  -a     : the command-line argument is a stockholm alignment, not a directory\n\
+  \  -d     : use default ssu-align-0.1 masks\n  -s <f> : use single mask in existing\
+  \ file <f> to mask single alignment\n  -k <s> : use mask file named <modelname>.<s>.mask\
+  \ for masking\n           (<modelname> might be 'archaea', 'bacteria' or 'eukarya')\n\
+  \  -m <f> : CM file <f> created the alignment(s) (with ssu-align -m <f>)\n  -t <f>\
+  \ : for structure diagrams, use template file <f>, not the default\n  -i     : -i\
+  \ used with ssu-align, alignments are interleaved\n\noptions controlling mask construction:\n\
+  \  --pf <x>        : include columns w/<x> fraction of seqs w/prob >= --pt <y> [df:\
+  \ 0.95]\n  --pt <y>        : set probability threshold as <y> [default=0.95]\n \
+  \ --rfonly        : exclude insert (gap in RF) columns only\n  --gapthresh <x> :\
+  \ only consider columns with <= <x> fraction gaps\n  --gaponly       : do not consider\
+  \ posterior probabilities, only gap frequencies\n\nmiscellaneous output options:\n\
+  \  --afa         : output aligned FASTA (.afa) alignments, not Stockholm ones\n\
+  \  --dna         : output alignments as DNA, default is RNA (even if input is DNA)\n\
+  \  --key-out <s> : add <s> to all output file names, before the suffix\n\noptions\
+  \ for creating secondary structure diagrams displaying masks\n  (diagrams are created\
+  \ only if default models were used for alignment):\n  --ps2pdf <s> : <s> (!= \"\
+  ps2pdf\") is the command for converting ps to pdf\n  --ps-only    : save postscript\
+  \ secondary structure diagrams, don't convert to pdf\n  --no-draw    : do not draw\
+  \ mask diagrams\n\noptions for listing, converting, or removing sequences (no masking\
+  \ will be done):\n  --list      : output list file(s) of sequence names in alignment(s)\n\
+  \  --stk2afa   : convert Stockholm alignment(s) to aligned FASTA\n  --seq-k <f>\
+  \ : with -a, remove all sequences *except* those listed in file <f>\n  --seq-r <f>\
+  \ : with -a, remove sequences with names listed in file <f>\n"
+generated_using:
+- -h

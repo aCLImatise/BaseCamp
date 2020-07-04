@@ -1,5 +1,10 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: BCL2FASTQ_ARGS
+  optional: true
 named:
 - !Flag
   description: path to input directory; default is RUNFOLDER- DIR/Data/Intensities/BaseCalls
@@ -10,7 +15,7 @@ named:
     name: TEXT
   optional: true
 - !Flag
-  description: 'path to directory containing run data [default: /tmp/tmpqmpgu90u]'
+  description: 'path to directory containing run data [default: /tmp/tmp5fz1qsxd]'
   synonyms:
   - -R
   - --runfolder-dir
@@ -110,6 +115,7 @@ named:
   optional: true
 command:
 - bcl_to_fastq
+parent:
 subcommands: []
 help_flag: !Flag
   description: Show this message and exit.
@@ -120,3 +126,35 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "Usage: bcl_to_fastq [OPTIONS] [BCL2FASTQ_ARGS]...\n\n  Runs bcl2fastq2,\
+  \ creating fastqs and concatenating fastqs across lanes.\n  Undetermined files are\
+  \ deleted by default.\n\n  Any arguments not matching those outlined below will\
+  \ be sent to the\n  `bcl2fastq` call.\n\nOptions:\n  -i, --input-dir TEXT      \
+  \    path to input directory; default is RUNFOLDER-\n                          \
+  \      DIR/Data/Intensities/BaseCalls\n\n  -R, --runfolder-dir TEXT      path to\
+  \ directory containing run data\n                                [default: /tmp/tmp5fz1qsxd]\n\
+  \n  -o, --output-dir TEXT         path to demultiplexed output; default is same\n\
+  \                                as INPUT-DIR\n\n  --sample-sheet TEXT         \
+  \  file path to sample sheet; default is\n                                RUNFOLDER-DIR/SampleSheet.csv\n\
+  \n  --loading INTEGER             number of threads used for loading BCL data\n\
+  \                                [default: 12]\n\n  --demultiplexing INTEGER   \
+  \   number of threads used for demultiplexing\n                                [default:\
+  \ 12]\n\n  --processing INTEGER          number of threads used for processing\n\
+  \                                demultiplexed data  [default: 24]\n\n  --writing\
+  \ INTEGER             number of threads used for writing FASTQ data\n          \
+  \                      [default: 12]\n\n  --barcode-mismatches INTEGER  number of\
+  \ allowed mismatches per index\n                                [default: 0]\n\n\
+  \  --keep-tmp                    save Undetermined reads  [default: False]\n  --reverse-complement\
+  \          reverse complement index 2 of the sample sheet\n                    \
+  \            [default: False]\n\n  --no-wait                     process the run\
+  \ without checking its\n                                completion status  [default:\
+  \ False]\n\n  --overwrite                   overwrite existing fastq files in the\
+  \ output\n                                directory  [default: False]\n\n  --determine\
+  \                   use barcodes in samplesheet as well as the\n               \
+  \                 reverse complement of index 2, then\n                        \
+  \        demultiplex with best  [default: False]\n\n  --no-cleanup             \
+  \     skip all cleaning up -- do not rename fastq\n                            \
+  \    output and do not delete undetermined files\n                             \
+  \   [default: False]\n\n  -h, --help                    Show this message and exit.\n"
+generated_using:
+- --help

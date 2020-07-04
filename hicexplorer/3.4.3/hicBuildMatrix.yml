@@ -1,5 +1,30 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: sam
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: files
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: two
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: sam
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: files
+  optional: false
 named:
 - !Flag
   description: 'sam files two sam files, -s two sam files two sam files The two PE
@@ -173,6 +198,7 @@ named:
   optional: true
 command:
 - hicBuildMatrix
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -188,3 +214,138 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: hicBuildMatrix --samFiles two sam files two sam files --outFileName\n\
+  \                      FILENAME --QCfolder FOLDER [--outBam bam file]\n        \
+  \              (--binSize BINSIZE [BINSIZE ...] | --restrictionCutFile BED file)\n\
+  \                      [--minDistance MINDISTANCE] [--maxDistance MAXDISTANCE]\n\
+  \                      [--maxLibraryInsertSize MAXLIBRARYINSERTSIZE]\n         \
+  \             [--restrictionSequence RESTRICTIONSEQUENCE]\n                    \
+  \  [--genomeAssembly GENOMEASSEMBLY]\n                      [--danglingSequence\
+  \ DANGLINGSEQUENCE]\n                      [--region CHR:START-END] [--keepSelfCircles]\n\
+  \                      [--minMappingQuality MINMAPPINGQUALITY]\n               \
+  \       [--threads THREADS] [--inputBufferSize INPUTBUFFERSIZE]\n              \
+  \        [--doTestRun] [--doTestRunLines DOTESTRUNLINES]\n                     \
+  \ [--skipDuplicationCheck] [--help] [--version]\n\nUsing an alignment from a program\
+  \ that supports local alignment (eg. Bowtie2)\nwhere both PE reads are mapped using\
+  \ the --local option, this program reads\nsuch file and creates a matrix of interactions.\n\
+  \nRequired arguments:\n  --samFiles two sam files two sam files, -s two sam files\
+  \ two sam files\n                        The two PE alignment sam files to process\
+  \ (default:\n                        None)\n  --outFileName FILENAME, -o FILENAME\n\
+  \                        Output file name for the Hi-C matrix. (default: None)\n\
+  \  --QCfolder FOLDER     Path of folder to save the quality control data for\n \
+  \                       the matrix. The log files produced this way can be\n   \
+  \                     loaded into `hicQC` in order to compare the quality of\n \
+  \                       multiple Hi-C libraries. (default: None)\n\nOptional arguments:\n\
+  \  --outBam bam file, -b bam file\n                        Output bam file to process.\
+  \ Optional parameter. A bam\n                        file containing all valid Hi-C\
+  \ reads can be created\n                        using this option. This bam file\
+  \ could be useful to\n                        inspect the distribution of valid\
+  \ Hi-C reads pairs or\n                        for other downstream analyses, but\
+  \ is not used by any\n                        HiCExplorer tool. Computation will\
+  \ be significantly\n                        longer if this option is set. (default:\
+  \ None)\n  --binSize BINSIZE [BINSIZE ...], -bs BINSIZE [BINSIZE ...]\n        \
+  \                Size in bp for the bins. The bin size depends on the\n        \
+  \                depth of sequencing. Use a larger bin size for\n              \
+  \          libraries sequenced with lower depth. Alternatively,\n              \
+  \          the location of the restriction sites can be given\n                \
+  \        (see --restrictionCutFile). However, either binSize or\n              \
+  \          restrictionCutFile must be defined.Optional for mcool\n             \
+  \           file format: Define multiple resolutions which are all\n           \
+  \             a multiple of the first value. Example: --binSize\n              \
+  \          10000 20000 50000 will create a mcool file formate\n                \
+  \        containing the three defined resolutions. (default:\n                 \
+  \       None)\n  --restrictionCutFile BED file, -rs BED file\n                 \
+  \       BED file with all restriction cut places (output of\n                  \
+  \      \"findRestSite\" command). Should contain only mappable\n               \
+  \         restriction sites. If given, the bins are set to match\n             \
+  \           the restriction fragments (i.e. the region between one\n           \
+  \             restriction site and the next). Alternatively, a fixed\n         \
+  \               binSize can be defined instead. However, either\n              \
+  \          binSize or restrictionCutFile must be defined.\n                    \
+  \    (default: None)\n  --minDistance MINDISTANCE\n                        Minimum\
+  \ distance between restriction sites.\n                        Restriction sites\
+  \ that are closer than this distance\n                        are merged into one.\
+  \ This option only applies if\n                        --restrictionCutFile is given.\
+  \ (default: 300)\n  --maxDistance MAXDISTANCE\n                        This parameter\
+  \ is now obsolete. Use\n                        --maxLibraryInsertSize instead (default:\
+  \ None)\n  --maxLibraryInsertSize MAXLIBRARYINSERTSIZE\n                       \
+  \ The maximum library insert size defines different cut\n                      \
+  \  offs based on the maximum expected library size. *This\n                    \
+  \    is not the average fragment size* but the higher end\n                    \
+  \    of the the fragment size distribution (obtained using\n                   \
+  \     for example a Fragment Analyzer or a Bioanalyzer)\n                      \
+  \  which usually is between 800 to 1500 bp. If this value\n                    \
+  \    is not known use the default of 1000. The insert value\n                  \
+  \      is used to decide if two mates belong to the same\n                     \
+  \   fragment (by checking if they are within this max\n                        insert\
+  \ size) and to decide if a mate is too far away\n                        from the\
+  \ nearest restriction site. (default: 1000)\n  --restrictionSequence RESTRICTIONSEQUENCE,\
+  \ -seq RESTRICTIONSEQUENCE\n                        Sequence of the restriction\
+  \ site. (default: None)\n  --genomeAssembly GENOMEASSEMBLY, -ga GENOMEASSEMBLY\n\
+  \                        The genome the reads were mapped to. Used for metadata\n\
+  \                        of cool file. (default: None)\n  --danglingSequence DANGLINGSEQUENCE\n\
+  \                        Sequence left by the restriction enzyme after cutting.\n\
+  \                        Each restriction enzyme recognizes a different DNA\n  \
+  \                      sequence and, after cutting, they leave behind a\n      \
+  \                  specific \"sticky\" end or dangling end sequence. For\n     \
+  \                   example, for HindIII the restriction site is AAGCTT\n      \
+  \                  and the dangling end is AGCT. For DpnII, the\n              \
+  \          restriction site and dangling end sequence are the\n                \
+  \        same: GATC. This information is easily found on the\n                 \
+  \       description of the restriction enzyme. The dangling\n                  \
+  \      sequence is used to classify and report reads whose 5'\n                \
+  \        end starts with such sequence as dangling-end reads. A\n              \
+  \          significant portion of dangling-end reads in a sample\n             \
+  \           are indicative of a problem with the re-ligation step\n            \
+  \            of the protocol. (default: None)\n  --region CHR:START-END, -r CHR:START-END\n\
+  \                        Region of the genome to limit the operation to. The\n \
+  \                       format is chr:start-end. It is also possible to just\n \
+  \                       specify a chromosome, for example --region chr10\n     \
+  \                   (default: None)\n  --keepSelfCircles     If set, outward facing\
+  \ reads without any restriction\n                        fragment (self circles)\
+  \ are kept. They will be counted\n                        and shown in the QC plots.\
+  \ (default: False)\n  --minMappingQuality MINMAPPINGQUALITY\n                  \
+  \      minimum mapping quality for reads to be accepted.\n                     \
+  \   Because the restriction enzyme site could be located\n                     \
+  \   on top of the read, this may reduce the reported\n                        quality\
+  \ of the read. Thus, this parameter may be\n                        adjusted if\
+  \ too many low quality (but otherwise\n                        perfectly valid Hi-C\
+  \ reads) are found. A good strategy\n                        is to make a test run\
+  \ (using the --doTestRun), then\n                        checking the results to\
+  \ see if too many low quality\n                        reads are present and then\
+  \ using the bam file\n                        generated to check if those low quality\
+  \ reads are\n                        caused by the read not being mapped entirely.\n\
+  \                        (default: 15)\n  --threads THREADS     Number of threads.\
+  \ Using the python multiprocessing\n                        module. One master process\
+  \ which is used to read the\n                        input file into the buffer\
+  \ and one process which is\n                        merging the output bam files\
+  \ of the processes into one\n                        output bam file. All other\
+  \ threads do the actual\n                        computation. Minimum value for\
+  \ the '--thread'\n                        parameter is 2. The usage of 8 threads\
+  \ is optimal if\n                        you have an HDD. A higher number of threads\
+  \ is only\n                        useful if you have a fast SSD. Have in mind that\
+  \ the\n                        performance of hicBuildMatrix is influenced by the\n\
+  \                        number of threads, the speed of your hard drive and\n \
+  \                       the inputBufferSize. To clarify: the performance with\n\
+  \                        a higher thread number is not negative influenced but\n\
+  \                        not positive too. With a slow HDD and a high number of\n\
+  \                        threads many threads will do nothing most of the time.\n\
+  \                        (default: 4)\n  --inputBufferSize INPUTBUFFERSIZE\n   \
+  \                     Size of the input buffer of each thread. 400,000 read\n  \
+  \                      pairs per input file per thread is the default value.\n \
+  \                       Reduce this value to decrease memory usage. (default:\n\
+  \                        400000)\n  --doTestRun           A test run is useful to\
+  \ test the quality of a Hi-C\n                        experiment quickly. It works\
+  \ by testing only 1,000,000\n                        reads. This option is useful\
+  \ to get an idea of quality\n                        control values like inter-chromosomal\
+  \ interactions,\n                        duplication rates etc. (default: False)\n\
+  \  --doTestRunLines DOTESTRUNLINES\n                        Number of lines to consider\
+  \ for the qc test run.\n                        (default: 1000000)\n  --skipDuplicationCheck\n\
+  \                        Identification of duplicated read pairs is memory\n   \
+  \                     consuming. Thus, in case of memory errors this check\n   \
+  \                     can be skipped. However, consider running a\n            \
+  \            `--doTestRun` first to get an estimation of the\n                 \
+  \       duplicated reads. (default: False)\n  --help, -h            show this help\
+  \ message and exit\n  --version             show program's version number and exit\n"
+generated_using:
+- --help

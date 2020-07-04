@@ -1,5 +1,15 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: scHi-C
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: matrix
+  optional: false
 named:
 - !Flag
   description: 'scHi-C matrix, -m scool scHi-C matrix The single cell Hi-C interaction
@@ -56,9 +66,9 @@ named:
   - --orderBy
   - -ob
   args: !ChoiceFlagArg
-    choices:
-    - svl
-    - orderByFile
+    choices: !!set
+      orderByFile:
+      svl:
   optional: true
 - !Flag
   description: 'File name to save the resulting cluster profile. (default: clusters_profile.png)'
@@ -87,6 +97,7 @@ named:
   optional: true
 command:
 - scHicPlotClusterProfiles
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -102,3 +113,34 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: scHicPlotClusterProfiles --matrix scool scHi-C matrix --clusters\n\
+  \                                cluster file\n                                [--chromosomes\
+  \ CHROMOSOMES [CHROMOSOMES ...]]\n                                [--maximalDistance\
+  \ MAXIMALDISTANCE]\n                                [--distanceShortRange DISTANCESHORTRANGE]\n\
+  \                                [--distanceLongRange DISTANCELONGRANGE]\n     \
+  \                           [--orderBy {svl,orderByFile}]\n                    \
+  \            [--outFileName OUTFILENAME] [--dpi DPI]\n                         \
+  \       [--threads THREADS] [--help] [--version]\n\nRequired arguments:\n  --matrix\
+  \ scool scHi-C matrix, -m scool scHi-C matrix\n                        The single\
+  \ cell Hi-C interaction matrices to\n                        investigate for QC.\
+  \ Needs to be in scool format\n                        (default: None)\n  --clusters\
+  \ cluster file, -c cluster file\n                        Text file which contains\
+  \ per matrix the associated\n                        cluster. (default: None)\n\n\
+  Optional arguments:\n  --chromosomes CHROMOSOMES [CHROMOSOMES ...]\n           \
+  \             List of to be plotted chromosomes (default: None)\n  --maximalDistance\
+  \ MAXIMALDISTANCE, -md MAXIMALDISTANCE\n                        maximal distance\
+  \ in bases (default: 50000000)\n  --distanceShortRange DISTANCESHORTRANGE, -ds DISTANCESHORTRANGE\n\
+  \                        Distance which should be considered as short range.\n \
+  \                       Default 2MB. (default: 2000000)\n  --distanceLongRange DISTANCELONGRANGE,\
+  \ -dl DISTANCELONGRANGE\n                        Distance which should be considered\
+  \ as short range.\n                        Default 12MB. (default: 12000000)\n \
+  \ --orderBy {svl,orderByFile}, -ob {svl,orderByFile}\n                        Algorithm\
+  \ to cluster the Hi-C matrices (default: svl)\n  --outFileName OUTFILENAME, -o OUTFILENAME\n\
+  \                        File name to save the resulting cluster profile.\n    \
+  \                    (default: clusters_profile.png)\n  --dpi DPI, -d DPI     The\
+  \ dpi of the plot. (default: 300)\n  --threads THREADS, -t THREADS\n           \
+  \             Number of threads. Using the python multiprocessing\n            \
+  \            module. (default: 4)\n  --help, -h            show this help message\
+  \ and exit\n  --version             show program's version number and exit\n"
+generated_using:
+- --help

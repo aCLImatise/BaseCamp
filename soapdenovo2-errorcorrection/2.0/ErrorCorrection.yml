@@ -1,12 +1,43 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - ErrorCorrection
+parent:
 subcommands:
 - !Command
   positional: []
   named:
+  - !Flag
+    description: <str>   Query a file, *.fq, *.fa
+    synonyms:
+    - -a
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: <str>   Query b file, the same as a
+    synonyms:
+    - -b
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: <str>   Output connected file in *.fa
+    synonyms:
+    - -o
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: <str>   Output fail connected read1.fq
+    synonyms:
+    - '-2'
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: <str>   Output fail connected read2.fq
+    synonyms:
+    - '-3'
+    args: !EmptyFlagArg {}
+    optional: true
   - !Flag
     description: <int>   Trim x bp at head before use [0]
     synonyms:
@@ -90,6 +121,7 @@ subcommands:
   command:
   - ErrorCorrection
   - connect
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Help
@@ -99,6 +131,25 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "connect -h [PARAMETERS]\nOptions:\n    -a  <str>   Query a file, *.fq,\
+    \ *.fa\n    -b  <str>   Query b file, the same as a\n    -o  <str>   Output connected\
+    \ file in *.fa\n    -2  <str>   Output fail connected read1.fq\n    -3  <str>\
+    \   Output fail connected read2.fq\n    -r  <int>   Trim x bp at head before use\
+    \ [0]\n    -R  <int>   Trim x bp at tail before use [0]\n    -l  <int>   Minimal\
+    \ align length allowed [8]\n    -m  <int>   Mean align length induced alignment\
+    \ (Default: No) [0]\n    -u  <int>   Maximal align length allowed [70]\n    -c\
+    \  <float> Identity cutoff of aligned region [0.9]\n    -d  <float> Maximum simularity\
+    \ between best and second best result. [0.7]\n    -B  <float> b threshold (Maximum\
+    \ %/100 of qual '0' base per alignment) [0.9]\n    -t  <int>   Pairs to connect\
+    \ (Default: All) [0]\n    -N  <int>   Maximum 'N' allowance for filtering (Default:\
+    \ Do not filter) [-1]\n    -q          Output connecting quality [0]\n    -h \
+    \         Help\n\nAdvance Options (Use with caution or consult your parents)\n\
+    \    -x  <int>   Quality ASCII base (Default: 33)\n    -X  <int>   Quality start\
+    \ range offset (Default: 2)\n\nExample:\n    /tmp/tmpzb_g45xf/connect -a in_1.fq\
+    \ -b in_2.fq -o out.fa -l 8 -u 70 -2 fail_1.fq -3 fail_2.fq\n\nNow: Thu Jun 25\
+    \ 15:57:31 2020\n"
+  generated_using:
+  - -h
 - !Command
   positional: []
   named:
@@ -139,6 +190,7 @@ subcommands:
   command:
   - ErrorCorrection
   - kmerfreq
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: This help
@@ -148,6 +200,14 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "kmerfreq: invalid option -- '-'\nErrorCorrection kmerfreq [PARAMETERS]\
+    \ <List of Read Files>\n    -k <int>     Consecutive Kmer Size, Default: 17\n\
+    \    -K <int>     Space Kmer Solid Part Size, Default: 16\n    -S <int>     Space\
+    \ Kmer Space Part Size, Default: 9\n    -p <string>  Output prefix, Default: output\n\
+    \    -v           Increase Verbosity, 3 times max\n    -h           This help\n\
+    Now: Thu Jun 25 15:57:59 2020\n"
+  generated_using: &id002
+  - --help
 - !Command
   positional: []
   named:
@@ -319,6 +379,7 @@ subcommands:
   command:
   - ErrorCorrection
   - correct
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: This help
@@ -328,6 +389,37 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "correct: invalid option -- '-'\nErrorCorrection correct [PARAMETERS]\
+    \ <Consecutive Kmer Frequency Table> <Space Kmer Frequency Table> <Reads Filenames\
+    \ List>\n    -k <int>     Consecutive Kmer Size, Default: 17\n    -K <int>   \
+    \  Space Kmer Solid Part Size, Default: 16\n    -S <int>     Space Kmer Space\
+    \ Part Size, Default: 9\n    -l <int>     Consecutive Kmer Frequency lower limit,\
+    \ Default: 10\n    -e <int>     Consecutive Kmer Frequency upper limit, Default:\
+    \ 255\n    -L <int>     Space Kmer Frequency lower limit, Default: 10\n    -E\
+    \ <int>     Space Kmer Frequency upper limit, Default: 255\n    -m <int>     Minimum\
+    \ consecutive high frequency kmers per high-freq block, Default: 10\n    -c <int>\
+    \     Maximum base alternation per read, Default: 2\n    -t <int>     Maximum\
+    \ trimmed bases allowed on each side, Default: 0\n    -r <int>     Minimum read\
+    \ length after correction, Default: 50\n    -I <int>     Minimum base interval\
+    \ between two correction, Default: 0\n    -x           Delete correction failed\
+    \ reads, Default: false\n    -j           Connect reads after correction, use\
+    \ 2 times to output quality, Default: false\n    -y           Correct reads end\
+    \ by overlapping information, Default: false\n    -v           Increase Verbosity,\
+    \ 3 times max, Default: 1\n    -F           Append additional information to read\
+    \ ID (EXPERIMENTAL), Default: false\n    -h           This help\n\nReads overlapping\
+    \ related parameters:\n    -q  <int>    Quality ASCII base (Default: 33)\n   \
+    \ -Q  <int>    Quality start range offset (Default: 2)\n    -a <int>     Minimal\
+    \ align length allowed, Default: 8\n    -A <int>     Maximal align length allowed,\
+    \ Default: 70\n    -i <int>     Mean align length induced alignment, Default:\
+    \ 0\n    -u <float>   Identity cutoff of aligned region, Default: 0.9\n    -d\
+    \ <float>   Maximum simularity between best and second best result, Default: 0.7\n\
+    \nNow: Thu Jun 25 15:58:08 2020\n"
+  generated_using: *id002
 help_flag:
 usage_flag:
 version_flag:
+help_text: "Version:       0.04\nCompile Date:  Jul 24 2018 00:29:13\nAuthor:    \
+  \    Aqua Lo\nContact:       rbluo@cs.hku.hk\n\nErrorCorrection <MODE> [PARAMETERS]\n\
+  \    connect       Connect PE reads\n    kmerfreq      Build Kmer Frequency Table\n\
+  \    correct       Reads Error Correction\nNow: Thu Jun 25 15:57:28 2020\n"
+generated_using: []

@@ -1,4 +1,4 @@
-!Command
+&id001 !Command
 positional: []
 named:
 - !Flag
@@ -27,9 +27,25 @@ named:
   optional: true
 command:
 - guppy
+parent:
 subcommands:
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: fat
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: placefile
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: s
+    optional: true
   named:
   - !Flag
     description: Specify the filename to write to.
@@ -116,6 +132,7 @@ subcommands:
   command:
   - guppy
   - fat
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Display this list of options
@@ -125,8 +142,34 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: fat [options] placefile[s]\n  -o              Specify the filename\
+    \ to write to.\n  --out-dir       Specify the directory to write files to.\n \
+    \ --prefix        Specify a string to be prepended to filenames.\n  --point-mass\
+    \    Treat every pquery as a point mass concentrated on the highest-weight placement.\n\
+    \  --pp            Use posterior probability for the weight.\n  -c           \
+    \   Reference package path.\n  --min-fat       The minimum branch length for fattened\
+    \ edges (to increase their visibility). To turn off set to 0. Default: 0.01\n\
+    \  --total-width   Set the total pixel width for all of the branches of the tree.\
+    \ Default: 300\n  --width-factor  Override total-width by directly setting the\
+    \ number of pixels per unit of thing displayed.\n  --node-numbers  Put the node\
+    \ numbers in where the bootstraps usually go.\n  --average       Average all input\
+    \ placefiles together.\n  --edpl          Specify the maximum EDPL for an EDPL\
+    \ tree.\n  -help           Display this list of options\n  --help          Display\
+    \ this list of options\n"
+  generated_using: &id002
+  - --help
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: heat
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: matrix.csv
+    optional: false
   named:
   - !Flag
     description: Specify the filename to write to.
@@ -202,6 +245,7 @@ subcommands:
   command:
   - guppy
   - heat
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Display this list of options
@@ -211,8 +255,37 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: heat -o my.xml -c my.refpkg matrix.csv\n  -o              Specify\
+    \ the filename to write to.\n  --out-dir       Specify the directory to write\
+    \ files to.\n  --prefix        Specify a string to be prepended to filenames.\n\
+    \  -c              Reference package path. Required.\n  --min-fat       The minimum\
+    \ branch length for fattened edges (to increase their visibility). To turn off\
+    \ set to 0. Default: 0.01\n  --total-width   Set the total pixel width for all\
+    \ of the branches of the tree. Default: 300\n  --width-factor  Override total-width\
+    \ by directly setting the number of pixels per unit of thing displayed.\n  --node-numbers\
+    \  Put the node numbers in where the bootstraps usually go.\n  --gray-black  \
+    \  Use gray/black in place of red/blue to signify the sign of the coefficient\
+    \ for that edge.\n  --min-width     Specify the minimum width for a branch to\
+    \ be colored and thickened. Default is 1.\n  -help           Display this list\
+    \ of options\n  --help          Display this list of options\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: sing
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: placefile
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: s
+    optional: true
   named:
   - !Flag
     description: Treat every pquery as a point mass concentrated on the highest-weight
@@ -279,12 +352,6 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Put the node numbers in where the bootstraps usually go.
-    synonyms:
-    - --node-numbers
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
     description: Display this list of options
     synonyms:
     - --help
@@ -293,6 +360,7 @@ subcommands:
   command:
   - guppy
   - sing
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Display this list of options
@@ -302,8 +370,37 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: sing [options] placefile[s]\n  --point-mass    Treat every pquery\
+    \ as a point mass concentrated on the highest-weight placement.\n  --pp      \
+    \      Use posterior probability for the weight.\n  -o              Specify the\
+    \ filename to write to.\n  --out-dir       Specify the directory to write files\
+    \ to.\n  --prefix        Specify a string to be prepended to filenames.\n  --min-fat\
+    \       The minimum branch length for fattened edges (to increase their visibility).\
+    \ To turn off set to 0. Default: 0.01\n  --total-width   Set the total pixel width\
+    \ for all of the branches of the tree. Default: 300\n  --width-factor  Override\
+    \ total-width by directly setting the number of pixels per unit of thing displayed.\n\
+    \  --node-numbers  Put the node numbers in where the bootstraps usually go.\n\
+    \  --xml           Write phyloXML (with colors) for all visualizations.\n  --node-numbers\
+    \  Put the node numbers in where the bootstraps usually go.\n  -help         \
+    \  Display this list of options\n  --help          Display this list of options\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: tog
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: placefile
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: s
+    optional: true
   named:
   - !Flag
     description: Use posterior probability for the weight.
@@ -350,6 +447,7 @@ subcommands:
   command:
   - guppy
   - tog
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Display this list of options
@@ -359,6 +457,14 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: tog [options] placefile[s]\n  --pp            Use posterior probability\
+    \ for the weight.\n  -o              Specify the filename to write to.\n  --out-dir\
+    \       Specify the directory to write files to.\n  --prefix        Specify a\
+    \ string to be prepended to filenames.\n  --xml           Write phyloXML (with\
+    \ colors) for all visualizations.\n  --node-numbers  Put the node numbers in where\
+    \ the bootstraps usually go.\n  -help           Display this list of options\n\
+    \  --help          Display this list of options\n"
+  generated_using: *id002
 - !Command
   positional:
   - !Positional
@@ -412,10 +518,52 @@ subcommands:
   command:
   - guppy
   - classification
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Unknown guppy command: classification\nHere is a list of commands available\
+    \ using this interface:\n  visualization\n    fat                     makes trees\
+    \ with edges fattened in proportion to the number of reads\n    heat         \
+    \           maps an an arbitrary vector of the correct length to the tree\n  \
+    \  sing                    makes one tree for each query sequence, showing uncertainty\n\
+    \    tog                     makes a tree with each of the reads represented as\
+    \ a pendant edge\n\n  statistical comparison\n    bary                    draws\
+    \ the barycenter of a placement collection on the reference tree\n    edpl   \
+    \                 calculates the EDPL uncertainty values for a collection of pqueries\n\
+    \    error                   finds the error between two placefiles\n    fpd \
+    \                    calculates various alpha diversity metrics of placefiles\n\
+    \    kr                      calculates the Kantorovich-Rubinstein distance and\
+    \ corresponding p-values\n    kr_heat                 makes a heat tree\n    pca\
+    \                     performs edge principal components\n    rarefact       \
+    \         calculates phylogenetic rarefaction curves\n    splitify           \
+    \     writes out differences of masses for the splits of the tree\n    squash\
+    \                  performs squash clustering\n    unifrac                 calculates\
+    \ unifrac on two or more placefiles\n\n  classification\n    classify        \
+    \        outputs classification information in a tabular or SQLite format\n  \
+    \  classify_rdp            converts RDP output to something resembling guppy classify\
+    \ output\n    to_rdp                  convert a reference package to a format\
+    \ RDP wants\n\n  utilities\n    adcl                    calculates ADCL for each\
+    \ pquery in a placefile\n    check                   checks placefiles for common\
+    \ problems\n    compress                compresses a placefile's pqueries\n  \
+    \  demulti                 splits apart placements with multiplicity, undoing\
+    \ a round procedure\n    distmat                 prints out a pairwise distance\
+    \ matrix between the edges\n    filter                  filters one or more placefiles\
+    \ by placement name\n    info                    writes the number of leaves of\
+    \ the reference tree and the number of pqueries\n    islands                 finds\
+    \ the mass islands of one or more pqueries\n    merge                   merges\
+    \ placefiles together\n    mft                     Multi-Filter and Transform\
+    \ placefiles\n    ograph                  finds the mass islands of one or more\
+    \ pqueries\n    rarefy                  performs rarefaction on collections of\
+    \ placements\n    redup                   restores duplicates to deduped placefiles\n\
+    \    round                   clusters the placements by rounding branch lengths\n\
+    \    to_csv                  turns a placefile into a csv file\n    to_json  \
+    \               converts old-style .place files to .jplace placement files\n \
+    \   trim                    trims placefiles down to only containing an informative\
+    \ subset of the mass\n\nTo get more help about a given command, type guppy COMMAND\
+    \ --help\n"
+  generated_using: *id002
 - !Command
   positional:
   - !Positional
@@ -469,10 +617,52 @@ subcommands:
   command:
   - guppy
   - utilities
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Unknown guppy command: utilities\nHere is a list of commands available\
+    \ using this interface:\n  visualization\n    fat                     makes trees\
+    \ with edges fattened in proportion to the number of reads\n    heat         \
+    \           maps an an arbitrary vector of the correct length to the tree\n  \
+    \  sing                    makes one tree for each query sequence, showing uncertainty\n\
+    \    tog                     makes a tree with each of the reads represented as\
+    \ a pendant edge\n\n  statistical comparison\n    bary                    draws\
+    \ the barycenter of a placement collection on the reference tree\n    edpl   \
+    \                 calculates the EDPL uncertainty values for a collection of pqueries\n\
+    \    error                   finds the error between two placefiles\n    fpd \
+    \                    calculates various alpha diversity metrics of placefiles\n\
+    \    kr                      calculates the Kantorovich-Rubinstein distance and\
+    \ corresponding p-values\n    kr_heat                 makes a heat tree\n    pca\
+    \                     performs edge principal components\n    rarefact       \
+    \         calculates phylogenetic rarefaction curves\n    splitify           \
+    \     writes out differences of masses for the splits of the tree\n    squash\
+    \                  performs squash clustering\n    unifrac                 calculates\
+    \ unifrac on two or more placefiles\n\n  classification\n    classify        \
+    \        outputs classification information in a tabular or SQLite format\n  \
+    \  classify_rdp            converts RDP output to something resembling guppy classify\
+    \ output\n    to_rdp                  convert a reference package to a format\
+    \ RDP wants\n\n  utilities\n    adcl                    calculates ADCL for each\
+    \ pquery in a placefile\n    check                   checks placefiles for common\
+    \ problems\n    compress                compresses a placefile's pqueries\n  \
+    \  demulti                 splits apart placements with multiplicity, undoing\
+    \ a round procedure\n    distmat                 prints out a pairwise distance\
+    \ matrix between the edges\n    filter                  filters one or more placefiles\
+    \ by placement name\n    info                    writes the number of leaves of\
+    \ the reference tree and the number of pqueries\n    islands                 finds\
+    \ the mass islands of one or more pqueries\n    merge                   merges\
+    \ placefiles together\n    mft                     Multi-Filter and Transform\
+    \ placefiles\n    ograph                  finds the mass islands of one or more\
+    \ pqueries\n    rarefy                  performs rarefaction on collections of\
+    \ placements\n    redup                   restores duplicates to deduped placefiles\n\
+    \    round                   clusters the placements by rounding branch lengths\n\
+    \    to_csv                  turns a placefile into a csv file\n    to_json  \
+    \               converts old-style .place files to .jplace placement files\n \
+    \   trim                    trims placefiles down to only containing an informative\
+    \ subset of the mass\n\nTo get more help about a given command, type guppy COMMAND\
+    \ --help\n"
+  generated_using: *id002
 help_flag: !Flag
   description: Display this list of options and subcommands
   synonyms:
@@ -486,3 +676,47 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "Here is a list of commands available using this interface:\n  visualization\n\
+  \    fat                     makes trees with edges fattened in proportion to the\
+  \ number of reads\n    heat                    maps an an arbitrary vector of the\
+  \ correct length to the tree\n    sing                    makes one tree for each\
+  \ query sequence, showing uncertainty\n    tog                     makes a tree\
+  \ with each of the reads represented as a pendant edge\n\n  statistical comparison\n\
+  \    bary                    draws the barycenter of a placement collection on the\
+  \ reference tree\n    edpl                    calculates the EDPL uncertainty values\
+  \ for a collection of pqueries\n    error                   finds the error between\
+  \ two placefiles\n    fpd                     calculates various alpha diversity\
+  \ metrics of placefiles\n    kr                      calculates the Kantorovich-Rubinstein\
+  \ distance and corresponding p-values\n    kr_heat                 makes a heat\
+  \ tree\n    pca                     performs edge principal components\n    rarefact\
+  \                calculates phylogenetic rarefaction curves\n    splitify      \
+  \          writes out differences of masses for the splits of the tree\n    squash\
+  \                  performs squash clustering\n    unifrac                 calculates\
+  \ unifrac on two or more placefiles\n\n  classification\n    classify          \
+  \      outputs classification information in a tabular or SQLite format\n    classify_rdp\
+  \            converts RDP output to something resembling guppy classify output\n\
+  \    to_rdp                  convert a reference package to a format RDP wants\n\
+  \n  utilities\n    adcl                    calculates ADCL for each pquery in a\
+  \ placefile\n    check                   checks placefiles for common problems\n\
+  \    compress                compresses a placefile's pqueries\n    demulti    \
+  \             splits apart placements with multiplicity, undoing a round procedure\n\
+  \    distmat                 prints out a pairwise distance matrix between the edges\n\
+  \    filter                  filters one or more placefiles by placement name\n\
+  \    info                    writes the number of leaves of the reference tree and\
+  \ the number of pqueries\n    islands                 finds the mass islands of\
+  \ one or more pqueries\n    merge                   merges placefiles together\n\
+  \    mft                     Multi-Filter and Transform placefiles\n    ograph \
+  \                 finds the mass islands of one or more pqueries\n    rarefy   \
+  \               performs rarefaction on collections of placements\n    redup   \
+  \                restores duplicates to deduped placefiles\n    round          \
+  \         clusters the placements by rounding branch lengths\n    to_csv       \
+  \           turns a placefile into a csv file\n    to_json                 converts\
+  \ old-style .place files to .jplace placement files\n    trim                  \
+  \  trims placefiles down to only containing an informative subset of the mass\n\n\
+  To get more help about a given command, type guppy COMMAND --help\n\nAdditional\
+  \ flags for guppy:\n  --version  Print version and exit\n  --cmds     Print a list\
+  \ of the available commands.\n  --batch    Run the provided batch file of guppy\
+  \ commands\n  --quiet    Don't write messages to stdout (unless explicitly requested).\n\
+  \  --help     Display this list of options and subcommands\n  -help      Display\
+  \ this list of options and subcommands\n"
+generated_using: *id002

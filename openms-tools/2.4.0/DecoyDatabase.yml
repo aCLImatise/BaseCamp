@@ -4,11 +4,11 @@ named:
 - !Flag
   description: "Enzyme used for the digestion of the sample (default: 'Trypsin' valid:\
     \ 'TrypChymo', 'Lys-C/P', 'PepsinA', 'Lys-N', 'Lys-C', 'CNBr', 'Formic_acid',\
-    \ 'Trypsin', 'PepsinA + P', 'cya nogen-bromide', 'Clostripain/P', 'Trypsin/P',\
+    \ 'Trypsin', 'PepsinA + P', 'cyanogen-bromide', 'Clostripain/P', 'Trypsin/P',\
     \ 'V8-DE', 'V8-E', 'elastase-trypsin-chymotrypsin', 'no cleavage', 'unspecific\
-    \ cleavage', 'leukocyte elastase', 'proline endopeptidas e', 'staphylococcal protease/D',\
+    \ cleavage', 'leukocyte elastase', 'proline endopeptidase', 'staphylococcal protease/D',\
     \ 'proline-endopeptidase/HKR', 'Glu-C+P', 'Chymotrypsin/P', 'Arg-C', 'glutamyl\
-    \ endopeptidase', 'Alpha-lytic protease', 'Arg-C/P', 'Asp-N', 'Asp-N/ B', 'Chymotrypsin',\
+    \ endopeptidase', 'Alpha-lytic protease', 'Arg-C/P', 'Asp-N', 'Asp-N/B', 'Chymotrypsin',\
     \ '2-iodobenzoate', 'iodosobenzoate', 'Asp-N_ambic')"
   synonyms:
   - -enzyme
@@ -57,9 +57,9 @@ named:
 - !Flag
   description: "Method by which decoy sequences are generated from target sequences.\
     \ Note that all sequences are shuffled using the same random seed, ensuring that\
-    \ identical sequences produce  the same shuffled decoy sequences. Shuffled sequences\
+    \ identical sequences produce the same shuffled decoy sequences. Shuffled sequences\
     \ that produce highly similar output sequences are shuffled again (see shuffle_sequence_identity_threshold).\
-    \ (default: 'rever se' valid: 'reverse', 'shuffle')"
+    \ (default: 'reverse' valid: 'reverse', 'shuffle')"
   synonyms:
   - -method
   args: !SimpleFlagArg
@@ -93,14 +93,9 @@ named:
   - --helphelp
   args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: Decoy parameters section
-  synonyms:
-  - '- Decoy'
-  args: !EmptyFlagArg {}
-  optional: true
 command:
 - DecoyDatabase
+parent:
 subcommands: []
 help_flag: !Flag
   description: Shows options
@@ -110,3 +105,43 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "\nDecoyDatabase -- Create decoy protein DB from forward protein DB.\n\
+  Version: 2.4.0 Jan  8 2020, 08:35:33, Revision: 2116a70\nTo cite OpenMS:\n  Rost\
+  \ HL, Sachsenberg T, Aiche S, Bielow C et al.. OpenMS: a flexible open-source software\
+  \ platform for mass spectrometry data analysis. Nat Meth. 2016; 13, 9: 741-748.\
+  \ doi:10.1038/nmeth.3959.\n\nUsage:\n  DecoyDatabase <options>\n\nThis tool has\
+  \ algorithm parameters that are not shown here! Please check the ini file for a\
+  \ detailed description or use the --helphelp option.\n\nOptions (mandatory options\
+  \ marked with '*'):\n  -enzyme <enzyme>               Enzyme used for the digestion\
+  \ of the sample (default: 'Trypsin' valid: 'TrypChymo', 'Lys-C/P', 'PepsinA', 'Lys-N',\
+  \ 'Lys-C', 'CNBr', 'Formic_acid', 'Trypsin', 'PepsinA + P', 'cyanogen-bromide',\
+  \ 'Clostripain/P', 'Trypsin/P', 'V8-DE', 'V8-E', 'elastase-trypsin-chymotrypsin',\
+  \ 'no cleavage', 'unspecific cleavage', 'leukocyte elastase', 'proline endopeptidase',\
+  \ 'staphylococcal protease/D', 'proline-endopeptidase/HKR', 'Glu-C+P', 'Chymotrypsin/P',\
+  \ 'Arg-C', 'glutamyl endopeptidase', 'Alpha-lytic protease', 'Arg-C/P', 'Asp-N',\
+  \ 'Asp-N/B', 'Chymotrypsin', '2-iodobenzoate', 'iodosobenzoate', 'Asp-N_ambic')\n\
+  \  -in <file(s)>*                 Input FASTA file(s), each containing a database.\
+  \ It is recommended to include a contaminant database as well. (valid formats: 'fasta')\n\
+  \  -out <file>*                   Output FASTA file where the decoy database will\
+  \ be written to. (valid formats: 'fasta')\n  -decoy_string <string>         String\
+  \ that is combined with the accession of the protein identifier to indicate a decoy\
+  \ protein. (default: 'DECOY_')\n  -decoy_string_position <enum>  Should the 'decoy_string'\
+  \ be prepended (prefix) or appended (suffix) to the protein accession? (default:\
+  \ 'prefix' valid: 'prefix', 'suffix')\n  -only_decoy                    Write only\
+  \ decoy proteins to the output database instead of a combined database.\n  -method\
+  \ <enum>                 Method by which decoy sequences are generated from target\
+  \ sequences. Note that all sequences are shuffled using the same random seed, ensuring\
+  \ that identical sequences produce the same shuffled decoy sequences. Shuffled sequences\
+  \ that produce highly similar output sequences are shuffled again (see shuffle_sequence_identity_threshold).\
+  \ (default: 'reverse' valid: 'reverse', 'shuffle')\n                           \
+  \      \nCommon UTIL options:\n  -ini <file>                    Use the given TOPP\
+  \ INI file\n  -threads <n>                   Sets the number of threads allowed\
+  \ to be used by the TOPP tool (default: '1')\n  -write_ini <file>              Writes\
+  \ the default configuration file\n  --help                         Shows options\n\
+  \  --helphelp                     Shows all options (including advanced)\n\nThe\
+  \ following configuration subsections are valid:\n - Decoy   Decoy parameters section\n\
+  \nYou can write an example INI file using the '-write_ini' option.\nDocumentation\
+  \ of subsection parameters can be found in the doxygen documentation or the INIFileEditor.\n\
+  Have a look at the OpenMS documentation for more information.\n\n"
+generated_using:
+- --help

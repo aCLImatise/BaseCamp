@@ -1,4 +1,4 @@
-!Command
+&id001 !Command
 positional: []
 named:
 - !Flag
@@ -7,40 +7,53 @@ named:
   - --man
   args: !EmptyFlagArg {}
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - card-trick
+parent:
 subcommands:
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: card-trick
+    optional: false
   named:
   - !Flag
-    description: Path to store CARD ontology.
+    description: ''
     synonyms:
-    - --path
-    args: !SimpleFlagArg
-      name: PATH
+    - -v
+    args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: Do not print process information
+    description: ''
     synonyms:
-    - -q
-    - --quiet
-    args: !SimpleFlagArg
-      name: QUIET
+    - --man
+    args: !EmptyFlagArg {}
     optional: true
   command:
   - card-trick
   - update
+  parent: *id001
   subcommands: []
   help_flag: !Flag
-    description: show this help message and exit
+    description: ''
     synonyms:
     - -h
-    - --help
     args: !EmptyFlagArg {}
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: card-trick [-h] [-v] [--man] {update,search} ...\ncard-trick:\
+    \ error: unrecognized arguments: --usage\n"
+  generated_using:
+  - --usage
 - !Command
   positional: []
   named:
@@ -59,12 +72,12 @@ subcommands:
     - -f
     - --format_output
     args: !ChoiceFlagArg
-      choices:
-      - stdout
-      - json
-      - csv
-      - tsv
-      - all
+      choices: !!set
+        tsv:
+        json:
+        all:
+        csv:
+        stdout:
     optional: true
   - !Flag
     description: Output name.
@@ -88,12 +101,12 @@ subcommands:
     - -t
     - --term
     args: !ChoiceFlagArg
-      choices:
-      - ARO
-      - gene
-      - antibiotic
-      - target
-      - any
+      choices: !!set
+        gene:
+        ARO:
+        any:
+        target:
+        antibiotic:
     optional: true
   - !Flag
     description: Provide this option if input is a file containing multiple terms,
@@ -119,12 +132,12 @@ subcommands:
     - -t2
     - --term_2
     args: !ChoiceFlagArg
-      choices:
-      - ARO
-      - gene
-      - antibiotic
-      - target
-      - any
+      choices: !!set
+        gene:
+        ARO:
+        any:
+        target:
+        antibiotic:
     optional: true
   - !Flag
     description: Provide this option if input_2 is a file containing multiple terms,
@@ -144,6 +157,7 @@ subcommands:
   command:
   - card-trick
   - search
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -154,6 +168,31 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: card-trick search [-h] -i INPUT [-f {stdout,json,csv,tsv,all}]\n\
+    \                         [-o OUTPUT_NAME] [-p PATH] -t\n                    \
+    \     {ARO,gene,antibiotic,target,any} [-b] [-i2 INPUT_2]\n                  \
+    \       [-t2 {ARO,gene,antibiotic,target,any}] [-b2] [-q]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -i INPUT, --input\
+    \ INPUT\n                        Input term to search in CARD ontology. Provide\
+    \ a\n                        unique term o several using --batch option\n  -f\
+    \ {stdout,json,csv,tsv,all}, --format_output {stdout,json,csv,tsv,all}\n     \
+    \                   Output format. stdout, csv, tsv or json\n  -o OUTPUT_NAME,\
+    \ --output_name OUTPUT_NAME\n                        Output name.\n  -p PATH,\
+    \ --path PATH  Path containing CARD ontology. Default is user’s home\n       \
+    \                 directory.\n  -t {ARO,gene,antibiotic,target,any}, --term {ARO,gene,antibiotic,target,any}\n\
+    \                        The type of term provided to search.\n  -b, --batch \
+    \          Provide this option if input is a file containing\n               \
+    \         multiple terms, one per line.\n  -i2 INPUT_2, --input_2 INPUT_2\n  \
+    \                      Input term to search in results retrieved from first\n\
+    \                        input. Provide a unique term o several using --batch\n\
+    \                        option\n  -t2 {ARO,gene,antibiotic,target,any}, --term_2\
+    \ {ARO,gene,antibiotic,target,any}\n                        The type of term provided\
+    \ to search for the second\n                        input. Default: any\n  -b2,\
+    \ --batch_2        Provide this option if input_2 is a file containing\n     \
+    \                   multiple terms, one per line.\n  -q, --quiet           Do\
+    \ not print process information\n"
+  generated_using: &id002
+  - --help
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -169,3 +208,10 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: card-trick [-h] [-v] [--man] {update,search} ...\n\npositional\
+  \ arguments:\n  {update,search}  The following commands are available. Type card-trick\n\
+  \                   <COMMAND> -h for more help on a specific commands\n    update\
+  \         Get latest CARD ontology\n    search         Search CARD ontology\n\n\
+  optional arguments:\n  -h, --help       show this help message and exit\n  -v, --version\
+  \    display the version number\n  --man            Additional information\n"
+generated_using: *id002

@@ -1,5 +1,10 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: database_file
+  optional: false
 named:
 - !Flag
   description: <num>     set minimum peptide mass (<num> is a float; default=800.00)
@@ -42,6 +47,7 @@ named:
   optional: true
 command:
 - digestdb
+parent:
 subcommands: []
 help_flag: !Flag
   description: <num>     set maximum peptide mass (<num> is a float; default=3000.00)
@@ -51,3 +57,27 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "\n DIGEST PROGRAM, J.Eng\n\n USAGE:   digestdb [options] database_file\n\
+  \n Command line options:\n    -l<num>     set minimum peptide mass (<num> is a float;\
+  \ default=800.00)\n    -h<num>     set maximum peptide mass (<num> is a float; default=3000.00)\n\
+  \    -m<num>     set number of missed cleavages (<num> is an int; default=1)\n\n\
+  \    -r<str>     residues to cleave after (default=\"RK\" for trypsin)\n    -n<str>\
+  \     don't cleave if next AA (default=\"P\" for trypsin)\n                ** only\
+  \ c-term cleavages are support right now so there's no AspN digestion.\n       \
+  \         ** use a dash (-) or leave <str> blank for a null character.\n    -M<str>\
+  \     static modifications, comma separated of form <mass>@<residue>\n         \
+  \          for example -M57.021@C,15.995@M\n\n    -t<num>     mass type, 0=average,\
+  \ 1=monoisotopic (default)\n\n For example:  digestdb ipi.fasta\n              \
+  \ digestdb -m3 ipi.fasta       (allow up to 3 missed cleavages)\n              \
+  \ digestdb -l800.0 -h1000.0 ipi.fasta    (set mass range from 800.0 to 1000.0)\n\
+  \               digestdb -rDE -nP ipi.fasta  (glu-C protease cuts after D/E but\
+  \ no if followed by P)\n\n Results are spit out to stdout in a tab-delimited format.\n\
+  \ Redirect the output if you want them stored in a file.\n\n     For example:  digestdb\
+  \ ipi.fasta > digest.txt\n\n To only get keep certain columns, use the 'awk' command.\
+  \  For example, to print\n only the 2nd (protein), 3rd (mass), and 5th (peptide)\
+  \ columns, type\n    digestdb ipi.fasta | awk '{print $2 \"\\t\" $3 \"\\t\" $4}'\
+  \ > digest.txt\n\n Asterisks (*) in sequence are treated as proper break points\n\
+  \n Output columns:\n - peptide length\n - protein reference\n - peptide mass\n -\
+  \ previous amino acid before peptide\n - peptide sequence\n - next amino acid after\
+  \ peptide\n - peptide start location\n - peptide end location\n - pI\n\n"
+generated_using: []

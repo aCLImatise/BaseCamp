@@ -27,6 +27,60 @@ positional:
   optional: false
 named:
 - !Flag
+  description: path to map, genome and alignment files
+  synonyms:
+  - -D
+  - --data
+  args: !SimpleFlagArg
+    name: directory
+  optional: true
+- !Flag
+  description: path to map and genome files
+  synonyms:
+  - -M
+  - --map
+  args: !SimpleFlagArg
+    name: directory
+  optional: true
+- !Flag
+  description: path to alignment files
+  synonyms:
+  - -A
+  - --align
+  args: !SimpleFlagArg
+    name: directory
+  optional: true
+- !Flag
+  description: warn, rather than die, if the subalignment can't be obtained
+  synonyms:
+  - -L
+  - --lazy
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: truncate unmappable sequence (rather than skipping) and show truncated
+    subalignment
+  synonyms:
+  - -U
+  - --truncate
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: use and display Stockholm-format alignments with conservation statistics
+    (default is multi-FASTA)
+  synonyms:
+  - -s
+  - --stockholm
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: coordinates are 0-based (default is 1-based)
+  synonyms:
+  - '-0'
+  - --zerobased
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: end coordinate is open, i.e., [start, end)
   synonyms:
   - -o
@@ -35,7 +89,33 @@ named:
   optional: true
 command:
 - slice_mercator_alignment
+parent:
 subcommands: []
-help_flag:
+help_flag: !Flag
+  description: show this message
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
+help_text: "slice_mercator_alignment from FSA 1.15.9\n\nUsage: slice_mercator_alignment\
+  \ [options] <genome> <chromosome> <start> <end> <strand>\n\nExtracts the corresponding\
+  \ subalignment from a Mercator multiple alignment.\n\nOptions:\n    -h, --help \
+  \                 show this message\n\n    -D, --data <directory>      path to map,\
+  \ genome and alignment files\n    -M, --map <directory>       path to map and genome\
+  \ files\n    -A, --align <directory>     path to alignment files\n    -L, --lazy\
+  \                  warn, rather than die, if the subalignment can't be obtained\n\
+  \    -U, --truncate              truncate unmappable sequence (rather than skipping)\
+  \ and show truncated subalignment\n\n    -s, --stockholm             use and display\
+  \ Stockholm-format alignments with conservation statistics (default is multi-FASTA)\n\
+  \n    -0, --zerobased             coordinates are 0-based (default is 1-based)\n\
+  \    -o, --halfopen              end coordinate is open, i.e., [start, end)\n\n\
+  Assumes that coordinates are 1-based and fully-closed,\ntherefore representing the\
+  \ interval [start, end].\n\nIf requested, unmappable sequence will be truncated\
+  \ to the mappable portion;\nnote that the truncation will favor the beginning of\
+  \ the requested sequence.\n\nIf the requested sequence is on the - strand, then\
+  \ the corresponding\nsubalignment will be reverse-complemented.\n\n"
+generated_using:
+- --help

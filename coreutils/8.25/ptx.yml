@@ -1,5 +1,10 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: OPTION
+  optional: true
 named:
 - !Flag
   description: output automatically generated references
@@ -32,12 +37,12 @@ named:
     name: STRING
   optional: true
 - !Flag
-  description: generate output as roff directives
+  description: generate output as TeX directives
   synonyms:
-  - -O
+  - -T
   - --format
   args: !SimpleFlagArg
-    name: roff
+    name: tex
   optional: true
 - !Flag
   description: put references at right, not counted in -w
@@ -53,14 +58,6 @@ named:
   - --sentence-regexp
   args: !SimpleFlagArg
     name: REGEXP
-  optional: true
-- !Flag
-  description: generate output as TeX directives
-  synonyms:
-  - -T
-  - --format
-  args: !SimpleFlagArg
-    name: tex
   optional: true
 - !Flag
   description: use REGEXP to match each keyword
@@ -119,18 +116,23 @@ named:
     name: first
   optional: true
 - !Flag
-  description: output width in columns, reference excluded
+  description: '- not implemented -'
   synonyms:
   - -t
   - --typeset-mode
-  - '- not'
-  - "-\n  -w"
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output width in columns, reference excluded
+  synonyms:
+  - -w
   - --width
   args: !SimpleFlagArg
-    name: implemented
+    name: NUMBER
   optional: true
 command:
 - ptx
+parent:
 subcommands: []
 help_flag: !Flag
   description: this help and exit
@@ -147,3 +149,27 @@ version_flag: !Flag
   args: !SimpleFlagArg
     name: output
   optional: true
+help_text: "Usage: ptx [OPTION]... [INPUT]... (without -G)\n  or: ptx -G [OPTION]...\
+  \ [INPUT [OUTPUT]]\nOutput a permuted index, including context, of the words in\
+  \ the input files.\n\nWith no FILE, or when FILE is -, read standard input.\n\n\
+  Mandatory arguments to long options are mandatory for short options too.\n  -A,\
+  \ --auto-reference           output automatically generated references\n  -G, --traditional\
+  \              behave more like System V 'ptx'\n  -F, --flag-truncation=STRING \
+  \  use STRING for flagging line truncations.\n                                 The\
+  \ default is '/'\n  -M, --macro-name=STRING        macro name to use instead of\
+  \ 'xx'\n  -O, --format=roff              generate output as roff directives\n  -R,\
+  \ --right-side-refs          put references at right, not counted in -w\n  -S, --sentence-regexp=REGEXP\
+  \   for end of lines or end of sentences\n  -T, --format=tex               generate\
+  \ output as TeX directives\n  -W, --word-regexp=REGEXP use REGEXP to match each\
+  \ keyword\n  -b, --break-file=FILE word break characters in this FILE\n  -f, --ignore-case\
+  \ fold lower case to upper case for sorting\n  -g, --gap-size=NUMBER gap size in\
+  \ columns between output fields\n  -i, --ignore-file=FILE read ignore word list\
+  \ from FILE\n  -o, --only-file=FILE read only word list from this FILE\n  -r, --references\
+  \ first field of each line is a reference\n  -t, --typeset-mode - not implemented\
+  \ -\n  -w, --width=NUMBER output width in columns, reference excluded\n      --help\
+  \ display this help and exit\n      --version output version information and exit\n\
+  \nGNU coreutils online help: <http://www.gnu.org/software/coreutils/>\nFull documentation\
+  \ at: <http://www.gnu.org/software/coreutils/ptx>\nor available locally via: info\
+  \ '(coreutils) ptx invocation'\n"
+generated_using:
+- --help

@@ -27,10 +27,10 @@ named:
   synonyms:
   - --verbosity
   args: !ChoiceFlagArg
-    choices:
-    - INFO
-    - WARN
-    - CRITICAL
+    choices: !!set
+      WARN:
+      CRITICAL:
+      INFO:
   optional: true
 - !Flag
   description: The path to a directory to hold logs.
@@ -68,6 +68,7 @@ named:
   optional: true
 command:
 - phyluce_assembly_assemblo_trinity
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -78,3 +79,22 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: phyluce_assembly_assemblo_trinity [-h] --output OUTPUT [--cores\
+  \ CORES]\n                                         [--subfolder SUBFOLDER]\n   \
+  \                                      [--verbosity {INFO,WARN,CRITICAL}]\n    \
+  \                                     [--log-path LOG_PATH] [--clean]\n        \
+  \                                 [--min-kmer-coverage MIN_KMER_COVERAGE]\n    \
+  \                                     (--config CONFIG | --dir DIR)\n\nAssemble\
+  \ raw reads using trinity\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --output OUTPUT       The directory in which to store\
+  \ the assembly data\n  --cores CORES         The number of compute cores/threads\
+  \ to run with\n                        Trinity\n  --subfolder SUBFOLDER\n      \
+  \                  A subdirectory, below the level of the group,\n             \
+  \           containing the reads\n  --verbosity {INFO,WARN,CRITICAL}\n         \
+  \               The logging level to use\n  --log-path LOG_PATH   The path to a\
+  \ directory to hold logs.\n  --clean               Cleanup all intermediate Trinity\
+  \ files\n  --min-kmer-coverage MIN_KMER_COVERAGE\n                        The min_kmer_coverage\
+  \ for trinity\n  --config CONFIG       A configuration file containing reads to\
+  \ assemble\n  --dir DIR             A directory of reads to assemble\n"
+generated_using:
+- --help

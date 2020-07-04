@@ -1,12 +1,19 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - easel
+parent:
 subcommands:
-- !Command
+- &id002 !Command
   positional: []
   named:
+  - !Flag
+    description: ': use tabular output, one line per alignment'
+    synonyms:
+    - '-1'
+    args: !EmptyFlagArg {}
+    optional: true
   - !Flag
     description: ": use DNA alphabet (don't autodetect)"
     synonyms:
@@ -25,9 +32,16 @@ subcommands:
     - --amino
     args: !EmptyFlagArg {}
     optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -options
+    args: !EmptyFlagArg {}
+    optional: true
   command:
   - easel
   - alistat
+  parent: *id001
   subcommands:
   - !Command
     positional: []
@@ -42,14 +56,32 @@ subcommands:
     - easel
     - alistat
     - msafile
+    parent: *id002
     subcommands: []
     help_flag:
     usage_flag:
     version_flag:
-  help_flag:
+    help_text: "Incorrect number of command line arguments.Usage:\n  easel alistat\
+      \ [-options] <msafile>\n\nTo see more help on available options, do `easel alistat\
+      \ -h`\n\n"
+    generated_using: &id007
+    - --help
+  help_flag: !Flag
+    description: ': show brief help on version and usage'
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
   usage_flag:
   version_flag:
-- !Command
+  help_text: "easel alistat :: summary statistics for a multiple seq alignment file\n\
+    \nUsage:\n  easel alistat [-options] <msafile>\n\nOptions:\n  -h      : show brief\
+    \ help on version and usage\n  -1      : use tabular output, one line per alignment\n\
+    \  --dna   : use DNA alphabet (don't autodetect)\n  --rna   : use RNA alphabet\
+    \ (don't autodetect)\n  --amino : use protein alphabet (don't autodetect)\n"
+  generated_using: &id005
+  - -h
+- &id003 !Command
   positional: []
   named:
   - !Flag
@@ -71,9 +103,16 @@ subcommands:
     args: !SimpleFlagArg
       name: n
     optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -options
+    args: !EmptyFlagArg {}
+    optional: true
   command:
   - easel
   - downsample
+  parent: *id001
   subcommands:
   - !Command
     positional:
@@ -93,20 +132,35 @@ subcommands:
     - easel
     - downsample
     - m
+    parent: *id003
     subcommands: []
     help_flag:
     usage_flag:
     version_flag:
+    help_text: "Incorrect number of command line arguments.Usage:\n  easel downsample\
+      \ [-options] <m> <infile>\n\nTo see more help on available options, do `easel\
+      \ downsample -h`\n\n"
+    generated_using: &id004 []
   - !Command
     positional:
     - !Positional
       description: ''
       position: 0
-      name: m
+      name: easel
       optional: false
     - !Positional
       description: ''
       position: 1
+      name: downsample
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: m
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
       name: infile
       optional: false
     named:
@@ -120,10 +174,15 @@ subcommands:
     - easel
     - downsample
     - infile
+    parent: *id003
     subcommands: []
     help_flag:
     usage_flag:
     version_flag:
+    help_text: "Incorrect number of command line arguments.Usage:\n  easel downsample\
+      \ [-options] <m> <infile>\n\nTo see more help on available options, do `easel\
+      \ downsample -h`\n\n"
+    generated_using: *id004
   help_flag: !Flag
     description: ': show brief help on version and usage'
     synonyms:
@@ -132,7 +191,13 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-- !Command
+  help_text: "easel downsample :: downsample <m> things from larger <infile> of n\
+    \ things\n\nUsage:\n  easel downsample [-options] <m> <infile>\n\nOptions:\n \
+    \ -h         : show brief help on version and usage\n  -s         : sequence sampling:\
+    \ <infile> is file or stream of seqs\n  -S         : big sequence sample: <infile>\
+    \ is (seekable) seq file\n  --seed <n> : set random number generator seed  [0]\n"
+  generated_using: *id005
+- &id006 !Command
   positional: []
   named:
   - !Flag
@@ -246,9 +311,16 @@ subcommands:
     - --origorder
     args: !EmptyFlagArg {}
     optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -options
+    args: !EmptyFlagArg {}
+    optional: true
   command:
   - easel
   - filter
+  parent: *id001
   subcommands:
   - !Command
     positional:
@@ -268,20 +340,35 @@ subcommands:
     - easel
     - filter
     - maxid
+    parent: *id006
     subcommands: []
     help_flag:
     usage_flag:
     version_flag:
+    help_text: "Incorrect number of command line arguments.\nUsage:\n  easel filter\
+      \ [-options] <maxid> <msafile>\n\nTo see more help on available options, do\
+      \ `easel filter -h`\n\n"
+    generated_using: *id004
   - !Command
     positional:
     - !Positional
       description: ''
       position: 0
-      name: maxid
+      name: easel
       optional: false
     - !Positional
       description: ''
       position: 1
+      name: filter
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: maxid
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
       name: msafile
       optional: false
     named:
@@ -295,10 +382,15 @@ subcommands:
     - easel
     - filter
     - msafile
+    parent: *id006
     subcommands: []
     help_flag:
     usage_flag:
     version_flag:
+    help_text: "Incorrect number of command line arguments.\nUsage:\n  easel filter\
+      \ [-options] <maxid> <msafile>\n\nTo see more help on available options, do\
+      \ `easel filter -h`\n\n"
+    generated_using: *id004
   help_flag: !Flag
     description: ': show brief help on version and usage'
     synonyms:
@@ -307,6 +399,40 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-help_flag:
+  help_text: "easel filter :: remove seqs >= <maxid> fractional identity from MSA\n\
+    \nUsage:\n  easel filter [-options] <maxid> <msafile>\n\nOptions:\n  -h      \
+    \        : show brief help on version and usage\n  -o <f>          : send filtered\
+    \ output MSAs to file <f>, not stdout\n  --informat <s>  : specify the input MSA\
+    \ file is in format <s>\n  --outformat <s> : write the filtered output MSA in\
+    \ format <s>\n  --dna           : specify that input MSA is DNA (don't autodetect)\n\
+    \  --rna           :  ... that input MSA is RNA\n  --amino         :  ... that\
+    \ input MSA is protein\n\noptions for deriving consensus:\n  --ignore-rf     \
+    \ : ignore any RF line; always determine our own consensus\n  --fragthresh <x>\
+    \ : seq is fragment if aspan/alen < fragthresh  [0.5]\n  --symfrac <x>    : col\
+    \ is consensus if nres/(nres+ngap) >= symfrac  [0.5]\n\noptions for deriving consensus\
+    \ by sampling (on deep MSAs):\n  --no-sampling    : never use subsampling to determine\
+    \ consensus\n  --nsamp <n>      : number of seqs to sample (if using sampling)\
+    \  [10000]\n  --sampthresh <n> : switch to using sampling when nseq > nsamp  [50000]\n\
+    \  --maxfrag <n>    : if sample has > maxfrag fragments, don't use sample  [5000]\n\
+    \  -s <n>           : set random number seed to <n>  [42]\n\noptions for sequence\
+    \ preference:\n  --conscover : keep seq whose alispan has better consensus coverage\
+    \  [default]\n  --randorder :  ... or with random preference\n  --origorder :\
+    \  ... or prefer seq that comes first in order\n"
+  generated_using: *id005
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
+help_text: "easel: little utilities for biological sequence analysis\nversion 0.46\
+  \ (Nov 2019): http://bioeasel.org/\n\nUsage:\n  easel -h                : show overall\
+  \ brief help summary\n  easel --version         : show version number\n  easel <cmd>\
+  \ -h          : show brief help for an Easel command\n  easel <cmd> [<args>...]\
+  \ : run an Easel command\n\navailable commands:\n  alistat      summary statistics\
+  \ for a multiple seq alignment file\n  downsample   downsample <m> things from larger\
+  \ <infile> of n things\n  filter       remove seqs >= <maxid> fractional identity\
+  \ from MSA\n"
+generated_using: *id007

@@ -211,8 +211,15 @@ named:
   args: !SimpleFlagArg
     name: n
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -options
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - cmalign
+parent:
 subcommands: []
 help_flag: !Flag
   description: ': show brief help on version and usage'
@@ -222,3 +229,41 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "# cmalign :: align sequences to a CM\n# INFERNAL 1.1.2 (July 2016)\n#\
+  \ Copyright (C) 2016 Howard Hughes Medical Institute.\n# Freely distributed under\
+  \ a BSD open source license.\n# - - - - - - - - - - - - - - - - - - - - - - - -\
+  \ - - - - - - - - - - - -\nUsage: cmalign [-options] <cmfile> <seqfile>\n\nBasic\
+  \ options:\n  -h     : show brief help on version and usage\n  -o <f> : output the\
+  \ alignment to file <f>, not stdout\n  -g     : configure CM for global alignment\
+  \ [default: local]\n\nOptions controlling alignment algorithm:\n  --optacc   : use\
+  \ the Holmes/Durbin optimal accuracy algorithm  [default]\n  --cyk      : use the\
+  \ CYK algorithm\n  --sample   : sample alignment of each seq from posterior distribution\n\
+  \  --seed <n> : w/--sample, set RNG seed to <n> (if 0: one-time arbitrary seed)\n\
+  \  --notrunc  : do not use truncated alignment algorithm\n  --sub      : build sub\
+  \ CM for columns b/t HMM predicted start/end points\n\nOptions controlling speed\
+  \ and memory requirements:\n  --hbanded    : accelerate using CM plan 9 HMM derived\
+  \ bands  [default]\n  --tau <x>    : set tail loss prob for HMM bands to <x>  [1e-7]\
+  \  (1e-18<x<1)\n  --mxsize <x> : set maximum allowable DP matrix size to <x> Mb\
+  \  [1028.0]  (x>0.)\n  --fixedtau   : do not adjust tau (tighten bands) until mx\
+  \ size is < limit\n  --maxtau <x> : set max tau <x> when tightening HMM bands  [0.05]\
+  \  (0<x<0.5)\n  --nonbanded  : do not use HMM bands for faster alignment\n  --small\
+  \      : use small memory divide and conquer (d&c) algorithm\n\nOptional output\
+  \ files:\n  --sfile <f>  : dump alignment score information to file <f>\n  --tfile\
+  \ <f>  : dump individual sequence parsetrees to file <f>\n  --ifile <f>  : dump\
+  \ information on per-sequence inserts to file <f>\n  --elfile <f> : dump information\
+  \ on per-sequence EL inserts to file <f>\n\nOther options:\n  --mapali <f>    :\
+  \ include alignment in file <f> (same ali that CM came from)\n  --mapstr       \
+  \ : include structure (w/pknots) from <f> from --mapali <f>\n  --noss          :\
+  \ cmbuild --noss option was used w/aln from --mapali <f>\n  --informat <s>  : assert\
+  \ <seqfile> is in format <s>: no autodetection\n  --outformat <s> : output alignment\
+  \ in format <s>  [Stockholm]\n  --dnaout        : output alignment as DNA (not RNA)\
+  \ sequence data\n  --noprob        : do not include posterior probabilities in the\
+  \ alignment\n  --matchonly     : include only match columns in output alignment\n\
+  \  --ileaved       : force output in interleaved Stockholm format\n  --regress <f>\
+  \   : save regression test data to file <f>\n  --verbose       : report extra information;\
+  \ mainly useful for debugging\n  --cpu <n>       : number of parallel CPU workers\
+  \ to use for multithreads  (n>=0)\n\nSequence input formats:   FASTA, GenBank\n\
+  Alignment output formats: Stockholm, Pfam, AFA (aligned FASTA), A2M, Clustal, PHYLIP\n\
+  \n"
+generated_using:
+- -h

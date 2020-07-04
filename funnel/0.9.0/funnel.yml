@@ -1,30 +1,32 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - funnel
+parent:
 subcommands:
-- !Command
+- &id002 !Command
   positional: []
   named:
   - !Flag
-    description: .Disabled                  Disable storage backend
+    description: Disable storage backend
     synonyms:
-    - --AmazonS3
+    - --AmazonS3.Disabled
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: .MaxRetries int            Maximum number of times that a request
-      will be retried for failures
+    description: Maximum number of times that a request will be retried for failures
     synonyms:
-    - --AmazonS3
-    args: !EmptyFlagArg {}
+    - --AmazonS3.MaxRetries
+    args: !SimpleFlagArg
+      name: int
     optional: true
   - !Flag
-    description: .Path string                 Path to BoltDB database
+    description: Path to BoltDB database
     synonyms:
-    - --BoltDB
-    args: !EmptyFlagArg {}
+    - --BoltDB.Path
+    args: !SimpleFlagArg
+      name: string
     optional: true
   - !Flag
     description: Name of compute backed to use
@@ -41,41 +43,46 @@ subcommands:
       name: string
     optional: true
   - !Flag
-    description: .Project string           Google project for Datastore
+    description: Google project for Datastore
     synonyms:
-    - --Datastore
-    args: !EmptyFlagArg {}
+    - --Datastore.Project
+    args: !SimpleFlagArg
+      name: string
     optional: true
   - !Flag
-    description: .MaxRetries int            Maximum number of times that a request
-      will be retried for failures
+    description: Maximum number of times that a request will be retried for failures
     synonyms:
-    - --DynamoDB
-    args: !EmptyFlagArg {}
+    - --DynamoDB.MaxRetries
+    args: !SimpleFlagArg
+      name: int
     optional: true
   - !Flag
-    description: .Region string             AWS region of DynamoDB tables
+    description: AWS region of DynamoDB tables
     synonyms:
-    - --DynamoDB
-    args: !EmptyFlagArg {}
+    - --DynamoDB.Region
+    args: !SimpleFlagArg
+      name: string
     optional: true
   - !Flag
-    description: .TableBasename string      Basename of DynamoDB tables
+    description: Basename of DynamoDB tables
     synonyms:
-    - --DynamoDB
-    args: !EmptyFlagArg {}
+    - --DynamoDB.TableBasename
+    args: !SimpleFlagArg
+      name: string
     optional: true
   - !Flag
-    description: .IndexPrefix string         Prefix to use for Elasticsearch indices
+    description: Prefix to use for Elasticsearch indices
     synonyms:
-    - --Elastic
-    args: !EmptyFlagArg {}
+    - --Elastic.IndexPrefix
+    args: !SimpleFlagArg
+      name: string
     optional: true
   - !Flag
-    description: .URL string                 Elasticsearch URL
+    description: Elasticsearch URL
     synonyms:
-    - --Elastic
-    args: !EmptyFlagArg {}
+    - --Elastic.URL
+    args: !SimpleFlagArg
+      name: string
     optional: true
   - !Flag
     description: Name of an event writer backend to use. This flag can be used multiple
@@ -86,212 +93,233 @@ subcommands:
       name: strings
     optional: true
   - !Flag
-    description: .Disabled             Disable storage backend
+    description: Disable storage backend
     synonyms:
-    - --GoogleStorage
+    - --GoogleStorage.Disabled
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: .Disabled               Disable storage backend
+    description: Disable storage backend
     synonyms:
-    - --HTTPStorage
+    - --HTTPStorage.Disabled
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: .Timeout duration       Timeout in seconds for request (default 0s)
+    description: Timeout in seconds for request (default 0s)
     synonyms:
-    - --HTTPStorage
+    - --HTTPStorage.Timeout
+    args: !SimpleFlagArg
+      name: duration
+    optional: true
+  - !Flag
+    description: Address of a Kafka server. This flag can be used multiple times
+    synonyms:
+    - --Kafka.Servers
+    args: !SimpleFlagArg
+      name: strings
+    optional: true
+  - !Flag
+    description: Kafka topic to write events to
+    synonyms:
+    - --Kafka.Topic
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: Directories Funnel is allowed to access. This flag can be used multiple
+      times
+    synonyms:
+    - --LocalStorage.AllowedDirs
+    args: !SimpleFlagArg
+      name: strings
+    optional: true
+  - !Flag
+    description: Disable storage backend
+    synonyms:
+    - --LocalStorage.Disabled
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: .Servers strings              Address of a Kafka server. This flag
-      can be used multiple times
+    description: Logs formatter. One of ['text', 'json']
     synonyms:
-    - --Kafka
-    args: !EmptyFlagArg {}
+    - --Logger.Formatter
+    args: !SimpleFlagArg
+      name: string
     optional: true
   - !Flag
-    description: .Topic string                 Kafka topic to write events to
+    description: Level of logging
     synonyms:
-    - --Kafka
-    args: !EmptyFlagArg {}
+    - --Logger.Level
+    args: !SimpleFlagArg
+      name: string
     optional: true
   - !Flag
-    description: .AllowedDirs strings   Directories Funnel is allowed to access. This
-      flag can be used multiple times
+    description: File path to write logs to
     synonyms:
-    - --LocalStorage
-    args: !EmptyFlagArg {}
+    - --Logger.OutputFile
+    args: !SimpleFlagArg
+      name: string
     optional: true
   - !Flag
-    description: .Disabled              Disable storage backend
+    description: Address of a MongoDB seed server. This flag can be used multiple
+      times
     synonyms:
-    - --LocalStorage
-    args: !EmptyFlagArg {}
+    - --MongoDB.Addrs
+    args: !SimpleFlagArg
+      name: strings
     optional: true
   - !Flag
-    description: .Formatter string            Logs formatter. One of ['text', 'json']
+    description: Database name in MongoDB
     synonyms:
-    - --Logger
-    args: !EmptyFlagArg {}
+    - --MongoDB.Database
+    args: !SimpleFlagArg
+      name: string
     optional: true
   - !Flag
-    description: .Level string                Level of logging
-    synonyms:
-    - --Logger
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .OutputFile string           File path to write logs to
-    synonyms:
-    - --Logger
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .Addrs strings              Address of a MongoDB seed server. This
-      flag can be used multiple times
-    synonyms:
-    - --MongoDB
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .Database string            Database name in MongoDB
-    synonyms:
-    - --MongoDB
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .Timeout duration           Timeout in seconds for initial connection
-      and follow up operations (default 0s)
-    synonyms:
-    - --MongoDB
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .Resources.Cpus uint32         Cpus available to Node
-    synonyms:
-    - --Node
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .Resources.DiskGb float        Free disk (GB) available to Node
-    synonyms:
-    - --Node
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .Resources.RamGb float         Ram (GB) available to Node
-    synonyms:
-    - --Node
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .Timeout duration              Node timeout in seconds (default 0s)
-    synonyms:
-    - --Node
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .UpdateRate duration           Node update rate (default 0s)
-    synonyms:
-    - --Node
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .MaxRetries uint          Maximum number of times that a request
-      will be retried for failures
-    synonyms:
-    - --RPCClient
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .ServerAddress string     RPC server address
-    synonyms:
-    - --RPCClient
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .Timeout duration         Request timeout for RPC client connections
+    description: Timeout in seconds for initial connection and follow up operations
       (default 0s)
     synonyms:
-    - --RPCClient
+    - --MongoDB.Timeout
+    args: !SimpleFlagArg
+      name: duration
+    optional: true
+  - !Flag
+    description: Cpus available to Node
+    synonyms:
+    - --Node.Resources.Cpus
+    args: !SimpleFlagArg
+      name: uint32
+    optional: true
+  - !Flag
+    description: Free disk (GB) available to Node
+    synonyms:
+    - --Node.Resources.DiskGb
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: Ram (GB) available to Node
+    synonyms:
+    - --Node.Resources.RamGb
+    args: !SimpleFlagArg
+      name: float
+    optional: true
+  - !Flag
+    description: Node timeout in seconds (default 0s)
+    synonyms:
+    - --Node.Timeout
+    args: !SimpleFlagArg
+      name: duration
+    optional: true
+  - !Flag
+    description: Node update rate (default 0s)
+    synonyms:
+    - --Node.UpdateRate
+    args: !SimpleFlagArg
+      name: duration
+    optional: true
+  - !Flag
+    description: Maximum number of times that a request will be retried for failures
+    synonyms:
+    - --RPCClient.MaxRetries
+    args: !SimpleFlagArg
+      name: uint
+    optional: true
+  - !Flag
+    description: RPC server address
+    synonyms:
+    - --RPCClient.ServerAddress
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: Request timeout for RPC client connections (default 0s)
+    synonyms:
+    - --RPCClient.Timeout
+    args: !SimpleFlagArg
+      name: duration
+    optional: true
+  - !Flag
+    description: HTTP Port
+    synonyms:
+    - --Server.HTTPPort
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: Host name or IP
+    synonyms:
+    - --Server.HostName
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: RPC Port
+    synonyms:
+    - --Server.RPCPort
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: Host name or IP
+    synonyms:
+    - --Server.ServiceName
+    args: !SimpleFlagArg
+      name: string
+    optional: true
+  - !Flag
+    description: Size of chunks to use for large object creation
+    synonyms:
+    - --Swift.ChunkSizeBytes
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: Disable storage backend
+    synonyms:
+    - --Swift.Disabled
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: .HTTPPort string             HTTP Port
+    description: Maximum number of times that a request will be retried for failures
     synonyms:
-    - --Server
+    - --Swift.MaxRetries
+    args: !SimpleFlagArg
+      name: int
+    optional: true
+  - !Flag
+    description: Leave working directory after execution
+    synonyms:
+    - --Worker.LeaveWorkDir
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: .HostName string             Host name or IP
+    description: Max bytes to store for stdout/stderr
     synonyms:
-    - --Server
-    args: !EmptyFlagArg {}
+    - --Worker.LogTailSize
+    args: !SimpleFlagArg
+      name: int
     optional: true
   - !Flag
-    description: .RPCPort string              RPC Port
+    description: How often to send stdout/stderr log updates (default 0s)
     synonyms:
-    - --Server
-    args: !EmptyFlagArg {}
+    - --Worker.LogUpdateRate
+    args: !SimpleFlagArg
+      name: duration
     optional: true
   - !Flag
-    description: .ServiceName string          Host name or IP
+    description: How often to poll for cancel signals (default 0s)
     synonyms:
-    - --Server
-    args: !EmptyFlagArg {}
+    - --Worker.PollingRate
+    args: !SimpleFlagArg
+      name: duration
     optional: true
   - !Flag
-    description: .ChunkSizeBytes int           Size of chunks to use for large object
-      creation
+    description: Working directory
     synonyms:
-    - --Swift
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .Disabled                     Disable storage backend
-    synonyms:
-    - --Swift
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .MaxRetries int               Maximum number of times that a request
-      will be retried for failures
-    synonyms:
-    - --Swift
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .LeaveWorkDir                Leave working directory after execution
-    synonyms:
-    - --Worker
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .LogTailSize int             Max bytes to store for stdout/stderr
-    synonyms:
-    - --Worker
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .LogUpdateRate duration      How often to send stdout/stderr log
-      updates (default 0s)
-    synonyms:
-    - --Worker
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .PollingRate duration        How often to poll for cancel signals
-      (default 0s)
-    synonyms:
-    - --Worker
-    args: !EmptyFlagArg {}
-    optional: true
-  - !Flag
-    description: .WorkDir string              Working directory
-    synonyms:
-    - --Worker
-    args: !EmptyFlagArg {}
+    - --Worker.WorkDir
+    args: !SimpleFlagArg
+      name: string
     optional: true
   - !Flag
     description: Config File
@@ -304,6 +332,7 @@ subcommands:
   command:
   - funnel
   - worker
+  parent: *id001
   subcommands:
   - !Command
     positional:
@@ -338,23 +367,24 @@ subcommands:
         name: string
       optional: true
     - !Flag
-      description: .Disabled                  Disable storage backend
+      description: Disable storage backend
       synonyms:
-      - --AmazonS3
+      - --AmazonS3.Disabled
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: .MaxRetries int            Maximum number of times that a request
-        will be retried for failures
+      description: Maximum number of times that a request will be retried for failures
       synonyms:
-      - --AmazonS3
-      args: !EmptyFlagArg {}
+      - --AmazonS3.MaxRetries
+      args: !SimpleFlagArg
+        name: int
       optional: true
     - !Flag
-      description: .Path string                 Path to BoltDB database
+      description: Path to BoltDB database
       synonyms:
-      - --BoltDB
-      args: !EmptyFlagArg {}
+      - --BoltDB.Path
+      args: !SimpleFlagArg
+        name: string
       optional: true
     - !Flag
       description: Name of compute backed to use
@@ -371,41 +401,46 @@ subcommands:
         name: string
       optional: true
     - !Flag
-      description: .Project string           Google project for Datastore
+      description: Google project for Datastore
       synonyms:
-      - --Datastore
-      args: !EmptyFlagArg {}
+      - --Datastore.Project
+      args: !SimpleFlagArg
+        name: string
       optional: true
     - !Flag
-      description: .MaxRetries int            Maximum number of times that a request
-        will be retried for failures
+      description: Maximum number of times that a request will be retried for failures
       synonyms:
-      - --DynamoDB
-      args: !EmptyFlagArg {}
+      - --DynamoDB.MaxRetries
+      args: !SimpleFlagArg
+        name: int
       optional: true
     - !Flag
-      description: .Region string             AWS region of DynamoDB tables
+      description: AWS region of DynamoDB tables
       synonyms:
-      - --DynamoDB
-      args: !EmptyFlagArg {}
+      - --DynamoDB.Region
+      args: !SimpleFlagArg
+        name: string
       optional: true
     - !Flag
-      description: .TableBasename string      Basename of DynamoDB tables
+      description: Basename of DynamoDB tables
       synonyms:
-      - --DynamoDB
-      args: !EmptyFlagArg {}
+      - --DynamoDB.TableBasename
+      args: !SimpleFlagArg
+        name: string
       optional: true
     - !Flag
-      description: .IndexPrefix string         Prefix to use for Elasticsearch indices
+      description: Prefix to use for Elasticsearch indices
       synonyms:
-      - --Elastic
-      args: !EmptyFlagArg {}
+      - --Elastic.IndexPrefix
+      args: !SimpleFlagArg
+        name: string
       optional: true
     - !Flag
-      description: .URL string                 Elasticsearch URL
+      description: Elasticsearch URL
       synonyms:
-      - --Elastic
-      args: !EmptyFlagArg {}
+      - --Elastic.URL
+      args: !SimpleFlagArg
+        name: string
       optional: true
     - !Flag
       description: Name of an event writer backend to use. This flag can be used multiple
@@ -416,214 +451,233 @@ subcommands:
         name: strings
       optional: true
     - !Flag
-      description: .Disabled             Disable storage backend
+      description: Disable storage backend
       synonyms:
-      - --GoogleStorage
+      - --GoogleStorage.Disabled
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: .Disabled               Disable storage backend
+      description: Disable storage backend
       synonyms:
-      - --HTTPStorage
+      - --HTTPStorage.Disabled
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: .Timeout duration       Timeout in seconds for request (default
-        0s)
+      description: Timeout in seconds for request (default 0s)
       synonyms:
-      - --HTTPStorage
+      - --HTTPStorage.Timeout
+      args: !SimpleFlagArg
+        name: duration
+      optional: true
+    - !Flag
+      description: Address of a Kafka server. This flag can be used multiple times
+      synonyms:
+      - --Kafka.Servers
+      args: !SimpleFlagArg
+        name: strings
+      optional: true
+    - !Flag
+      description: Kafka topic to write events to
+      synonyms:
+      - --Kafka.Topic
+      args: !SimpleFlagArg
+        name: string
+      optional: true
+    - !Flag
+      description: Directories Funnel is allowed to access. This flag can be used
+        multiple times
+      synonyms:
+      - --LocalStorage.AllowedDirs
+      args: !SimpleFlagArg
+        name: strings
+      optional: true
+    - !Flag
+      description: Disable storage backend
+      synonyms:
+      - --LocalStorage.Disabled
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: .Servers strings              Address of a Kafka server. This flag
-        can be used multiple times
+      description: Logs formatter. One of ['text', 'json']
       synonyms:
-      - --Kafka
-      args: !EmptyFlagArg {}
+      - --Logger.Formatter
+      args: !SimpleFlagArg
+        name: string
       optional: true
     - !Flag
-      description: .Topic string                 Kafka topic to write events to
+      description: Level of logging
       synonyms:
-      - --Kafka
-      args: !EmptyFlagArg {}
+      - --Logger.Level
+      args: !SimpleFlagArg
+        name: string
       optional: true
     - !Flag
-      description: .AllowedDirs strings   Directories Funnel is allowed to access.
-        This flag can be used multiple times
+      description: File path to write logs to
       synonyms:
-      - --LocalStorage
-      args: !EmptyFlagArg {}
+      - --Logger.OutputFile
+      args: !SimpleFlagArg
+        name: string
       optional: true
     - !Flag
-      description: .Disabled              Disable storage backend
+      description: Address of a MongoDB seed server. This flag can be used multiple
+        times
       synonyms:
-      - --LocalStorage
-      args: !EmptyFlagArg {}
+      - --MongoDB.Addrs
+      args: !SimpleFlagArg
+        name: strings
       optional: true
     - !Flag
-      description: .Formatter string            Logs formatter. One of ['text', 'json']
+      description: Database name in MongoDB
       synonyms:
-      - --Logger
-      args: !EmptyFlagArg {}
+      - --MongoDB.Database
+      args: !SimpleFlagArg
+        name: string
       optional: true
     - !Flag
-      description: .Level string                Level of logging
-      synonyms:
-      - --Logger
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: .OutputFile string           File path to write logs to
-      synonyms:
-      - --Logger
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: .Addrs strings              Address of a MongoDB seed server. This
-        flag can be used multiple times
-      synonyms:
-      - --MongoDB
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: .Database string            Database name in MongoDB
-      synonyms:
-      - --MongoDB
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: .Timeout duration           Timeout in seconds for initial connection
-        and follow up operations (default 0s)
-      synonyms:
-      - --MongoDB
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: .Resources.Cpus uint32         Cpus available to Node
-      synonyms:
-      - --Node
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: .Resources.DiskGb float        Free disk (GB) available to Node
-      synonyms:
-      - --Node
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: .Resources.RamGb float         Ram (GB) available to Node
-      synonyms:
-      - --Node
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: .Timeout duration              Node timeout in seconds (default
-        0s)
-      synonyms:
-      - --Node
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: .UpdateRate duration           Node update rate (default 0s)
-      synonyms:
-      - --Node
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: .MaxRetries uint          Maximum number of times that a request
-        will be retried for failures
-      synonyms:
-      - --RPCClient
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: .ServerAddress string     RPC server address
-      synonyms:
-      - --RPCClient
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: .Timeout duration         Request timeout for RPC client connections
+      description: Timeout in seconds for initial connection and follow up operations
         (default 0s)
       synonyms:
-      - --RPCClient
+      - --MongoDB.Timeout
+      args: !SimpleFlagArg
+        name: duration
+      optional: true
+    - !Flag
+      description: Cpus available to Node
+      synonyms:
+      - --Node.Resources.Cpus
+      args: !SimpleFlagArg
+        name: uint32
+      optional: true
+    - !Flag
+      description: Free disk (GB) available to Node
+      synonyms:
+      - --Node.Resources.DiskGb
+      args: !SimpleFlagArg
+        name: float
+      optional: true
+    - !Flag
+      description: Ram (GB) available to Node
+      synonyms:
+      - --Node.Resources.RamGb
+      args: !SimpleFlagArg
+        name: float
+      optional: true
+    - !Flag
+      description: Node timeout in seconds (default 0s)
+      synonyms:
+      - --Node.Timeout
+      args: !SimpleFlagArg
+        name: duration
+      optional: true
+    - !Flag
+      description: Node update rate (default 0s)
+      synonyms:
+      - --Node.UpdateRate
+      args: !SimpleFlagArg
+        name: duration
+      optional: true
+    - !Flag
+      description: Maximum number of times that a request will be retried for failures
+      synonyms:
+      - --RPCClient.MaxRetries
+      args: !SimpleFlagArg
+        name: uint
+      optional: true
+    - !Flag
+      description: RPC server address
+      synonyms:
+      - --RPCClient.ServerAddress
+      args: !SimpleFlagArg
+        name: string
+      optional: true
+    - !Flag
+      description: Request timeout for RPC client connections (default 0s)
+      synonyms:
+      - --RPCClient.Timeout
+      args: !SimpleFlagArg
+        name: duration
+      optional: true
+    - !Flag
+      description: HTTP Port
+      synonyms:
+      - --Server.HTTPPort
+      args: !SimpleFlagArg
+        name: string
+      optional: true
+    - !Flag
+      description: Host name or IP
+      synonyms:
+      - --Server.HostName
+      args: !SimpleFlagArg
+        name: string
+      optional: true
+    - !Flag
+      description: RPC Port
+      synonyms:
+      - --Server.RPCPort
+      args: !SimpleFlagArg
+        name: string
+      optional: true
+    - !Flag
+      description: Host name or IP
+      synonyms:
+      - --Server.ServiceName
+      args: !SimpleFlagArg
+        name: string
+      optional: true
+    - !Flag
+      description: Size of chunks to use for large object creation
+      synonyms:
+      - --Swift.ChunkSizeBytes
+      args: !SimpleFlagArg
+        name: int
+      optional: true
+    - !Flag
+      description: Disable storage backend
+      synonyms:
+      - --Swift.Disabled
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: .HTTPPort string             HTTP Port
+      description: Maximum number of times that a request will be retried for failures
       synonyms:
-      - --Server
+      - --Swift.MaxRetries
+      args: !SimpleFlagArg
+        name: int
+      optional: true
+    - !Flag
+      description: Leave working directory after execution
+      synonyms:
+      - --Worker.LeaveWorkDir
       args: !EmptyFlagArg {}
       optional: true
     - !Flag
-      description: .HostName string             Host name or IP
+      description: Max bytes to store for stdout/stderr
       synonyms:
-      - --Server
-      args: !EmptyFlagArg {}
+      - --Worker.LogTailSize
+      args: !SimpleFlagArg
+        name: int
       optional: true
     - !Flag
-      description: .RPCPort string              RPC Port
+      description: How often to send stdout/stderr log updates (default 0s)
       synonyms:
-      - --Server
-      args: !EmptyFlagArg {}
+      - --Worker.LogUpdateRate
+      args: !SimpleFlagArg
+        name: duration
       optional: true
     - !Flag
-      description: .ServiceName string          Host name or IP
+      description: How often to poll for cancel signals (default 0s)
       synonyms:
-      - --Server
-      args: !EmptyFlagArg {}
+      - --Worker.PollingRate
+      args: !SimpleFlagArg
+        name: duration
       optional: true
     - !Flag
-      description: .ChunkSizeBytes int           Size of chunks to use for large object
-        creation
+      description: Working directory
       synonyms:
-      - --Swift
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: .Disabled                     Disable storage backend
-      synonyms:
-      - --Swift
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: .MaxRetries int               Maximum number of times that a request
-        will be retried for failures
-      synonyms:
-      - --Swift
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: .LeaveWorkDir                Leave working directory after execution
-      synonyms:
-      - --Worker
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: .LogTailSize int             Max bytes to store for stdout/stderr
-      synonyms:
-      - --Worker
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: .LogUpdateRate duration      How often to send stdout/stderr log
-        updates (default 0s)
-      synonyms:
-      - --Worker
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: .PollingRate duration        How often to poll for cancel signals
-        (default 0s)
-      synonyms:
-      - --Worker
-      args: !EmptyFlagArg {}
-      optional: true
-    - !Flag
-      description: .WorkDir string              Working directory
-      synonyms:
-      - --Worker
-      args: !EmptyFlagArg {}
+      - --Worker.WorkDir
+      args: !SimpleFlagArg
+        name: string
       optional: true
     - !Flag
       description: Config File
@@ -637,6 +691,7 @@ subcommands:
     - funnel
     - worker
     - run
+    parent: *id002
     subcommands: []
     help_flag: !Flag
       description: help for run
@@ -647,6 +702,61 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Run a task directly, bypassing the server.\n\nUsage:\n  funnel worker\
+      \ run [flags]\n\nFlags:\n  -h, --help                help for run\n  -b, --taskBase64\
+      \ string   Task base64\n  -f, --taskFile string     Task file\n  -t, --taskID\
+      \ string       Task ID\n\nGlobal Flags:\n      --AmazonS3.Disabled         \
+      \         Disable storage backend\n      --AmazonS3.MaxRetries int         \
+      \   Maximum number of times that a request will be retried for failures\n  \
+      \    --BoltDB.Path string                 Path to BoltDB database\n      --Compute\
+      \ string                     Name of compute backed to use\n      --Database\
+      \ string                    Name of database backed to use\n      --Datastore.Project\
+      \ string           Google project for Datastore\n      --DynamoDB.MaxRetries\
+      \ int            Maximum number of times that a request will be retried for\
+      \ failures\n      --DynamoDB.Region string             AWS region of DynamoDB\
+      \ tables\n      --DynamoDB.TableBasename string      Basename of DynamoDB tables\n\
+      \      --Elastic.IndexPrefix string         Prefix to use for Elasticsearch\
+      \ indices\n      --Elastic.URL string                 Elasticsearch URL\n  \
+      \    --EventWriters strings               Name of an event writer backend to\
+      \ use. This flag can be used multiple times\n      --GoogleStorage.Disabled\
+      \             Disable storage backend\n      --HTTPStorage.Disabled        \
+      \       Disable storage backend\n      --HTTPStorage.Timeout duration      \
+      \ Timeout in seconds for request (default 0s)\n      --Kafka.Servers strings\
+      \              Address of a Kafka server. This flag can be used multiple times\n\
+      \      --Kafka.Topic string                 Kafka topic to write events to\n\
+      \      --LocalStorage.AllowedDirs strings   Directories Funnel is allowed to\
+      \ access. This flag can be used multiple times\n      --LocalStorage.Disabled\
+      \              Disable storage backend\n      --Logger.Formatter string    \
+      \        Logs formatter. One of ['text', 'json']\n      --Logger.Level string\
+      \                Level of logging\n      --Logger.OutputFile string        \
+      \   File path to write logs to\n      --MongoDB.Addrs strings              Address\
+      \ of a MongoDB seed server. This flag can be used multiple times\n      --MongoDB.Database\
+      \ string            Database name in MongoDB\n      --MongoDB.Timeout duration\
+      \           Timeout in seconds for initial connection and follow up operations\
+      \ (default 0s)\n      --Node.Resources.Cpus uint32         Cpus available to\
+      \ Node\n      --Node.Resources.DiskGb float        Free disk (GB) available\
+      \ to Node\n      --Node.Resources.RamGb float         Ram (GB) available to\
+      \ Node\n      --Node.Timeout duration              Node timeout in seconds (default\
+      \ 0s)\n      --Node.UpdateRate duration           Node update rate (default\
+      \ 0s)\n      --RPCClient.MaxRetries uint          Maximum number of times that\
+      \ a request will be retried for failures\n      --RPCClient.ServerAddress string\
+      \     RPC server address\n      --RPCClient.Timeout duration         Request\
+      \ timeout for RPC client connections (default 0s)\n      --Server.HTTPPort string\
+      \             HTTP Port\n      --Server.HostName string             Host name\
+      \ or IP\n      --Server.RPCPort string              RPC Port\n      --Server.ServiceName\
+      \ string          Host name or IP\n      --Swift.ChunkSizeBytes int        \
+      \   Size of chunks to use for large object creation\n      --Swift.Disabled\
+      \                     Disable storage backend\n      --Swift.MaxRetries int\
+      \               Maximum number of times that a request will be retried for failures\n\
+      \      --Worker.LeaveWorkDir                Leave working directory after execution\n\
+      \      --Worker.LogTailSize int             Max bytes to store for stdout/stderr\n\
+      \      --Worker.LogUpdateRate duration      How often to send stdout/stderr\
+      \ log updates (default 0s)\n      --Worker.PollingRate duration        How often\
+      \ to poll for cancel signals (default 0s)\n      --Worker.WorkDir string   \
+      \           Working directory\n  -c, --config string                      Config\
+      \ File\n"
+    generated_using: &id003
+    - --help
   help_flag: !Flag
     description: help for worker
     synonyms:
@@ -656,6 +766,58 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Funnel worker commands.\n\nUsage:\n  funnel worker [command]\n\nAvailable\
+    \ Commands:\n  run         Run a task directly, bypassing the server.\n\nFlags:\n\
+    \      --AmazonS3.Disabled                  Disable storage backend\n      --AmazonS3.MaxRetries\
+    \ int            Maximum number of times that a request will be retried for failures\n\
+    \      --BoltDB.Path string                 Path to BoltDB database\n      --Compute\
+    \ string                     Name of compute backed to use\n      --Database string\
+    \                    Name of database backed to use\n      --Datastore.Project\
+    \ string           Google project for Datastore\n      --DynamoDB.MaxRetries int\
+    \            Maximum number of times that a request will be retried for failures\n\
+    \      --DynamoDB.Region string             AWS region of DynamoDB tables\n  \
+    \    --DynamoDB.TableBasename string      Basename of DynamoDB tables\n      --Elastic.IndexPrefix\
+    \ string         Prefix to use for Elasticsearch indices\n      --Elastic.URL\
+    \ string                 Elasticsearch URL\n      --EventWriters strings     \
+    \          Name of an event writer backend to use. This flag can be used multiple\
+    \ times\n      --GoogleStorage.Disabled             Disable storage backend\n\
+    \      --HTTPStorage.Disabled               Disable storage backend\n      --HTTPStorage.Timeout\
+    \ duration       Timeout in seconds for request (default 0s)\n      --Kafka.Servers\
+    \ strings              Address of a Kafka server. This flag can be used multiple\
+    \ times\n      --Kafka.Topic string                 Kafka topic to write events\
+    \ to\n      --LocalStorage.AllowedDirs strings   Directories Funnel is allowed\
+    \ to access. This flag can be used multiple times\n      --LocalStorage.Disabled\
+    \              Disable storage backend\n      --Logger.Formatter string      \
+    \      Logs formatter. One of ['text', 'json']\n      --Logger.Level string  \
+    \              Level of logging\n      --Logger.OutputFile string           File\
+    \ path to write logs to\n      --MongoDB.Addrs strings              Address of\
+    \ a MongoDB seed server. This flag can be used multiple times\n      --MongoDB.Database\
+    \ string            Database name in MongoDB\n      --MongoDB.Timeout duration\
+    \           Timeout in seconds for initial connection and follow up operations\
+    \ (default 0s)\n      --Node.Resources.Cpus uint32         Cpus available to Node\n\
+    \      --Node.Resources.DiskGb float        Free disk (GB) available to Node\n\
+    \      --Node.Resources.RamGb float         Ram (GB) available to Node\n     \
+    \ --Node.Timeout duration              Node timeout in seconds (default 0s)\n\
+    \      --Node.UpdateRate duration           Node update rate (default 0s)\n  \
+    \    --RPCClient.MaxRetries uint          Maximum number of times that a request\
+    \ will be retried for failures\n      --RPCClient.ServerAddress string     RPC\
+    \ server address\n      --RPCClient.Timeout duration         Request timeout for\
+    \ RPC client connections (default 0s)\n      --Server.HTTPPort string        \
+    \     HTTP Port\n      --Server.HostName string             Host name or IP\n\
+    \      --Server.RPCPort string              RPC Port\n      --Server.ServiceName\
+    \ string          Host name or IP\n      --Swift.ChunkSizeBytes int          \
+    \ Size of chunks to use for large object creation\n      --Swift.Disabled    \
+    \                 Disable storage backend\n      --Swift.MaxRetries int      \
+    \         Maximum number of times that a request will be retried for failures\n\
+    \      --Worker.LeaveWorkDir                Leave working directory after execution\n\
+    \      --Worker.LogTailSize int             Max bytes to store for stdout/stderr\n\
+    \      --Worker.LogUpdateRate duration      How often to send stdout/stderr log\
+    \ updates (default 0s)\n      --Worker.PollingRate duration        How often to\
+    \ poll for cancel signals (default 0s)\n      --Worker.WorkDir string        \
+    \      Working directory\n  -c, --config string                      Config File\n\
+    \  -h, --help                               help for worker\n\nUse \"funnel worker\
+    \ [command] --help\" for more information about a command.\n"
+  generated_using: *id003
 help_flag: !Flag
   description: help for funnel
   synonyms:
@@ -665,3 +827,13 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "Usage:\n  funnel [command]\n\nAvailable Commands:\n  aws         Development\
+  \ utilities for creating funnel resources on AWS\n  completion  Generate shell completion\
+  \ code\n  dashboard   Start a Funnel dashboard in your terminal.\n  examples   \
+  \ Print example task messages.\n  gce         \n  help        Help about any command\n\
+  \  node        Funnel node subcommands.\n  run         Run a task.\n  server   \
+  \   Funnel server commands.\n  storage     Access storage via Funnel's client libraries.\n\
+  \  task        Make API calls to a TES server.\n  version     \n  worker      Funnel\
+  \ worker commands.\n\nFlags:\n  -h, --help   help for funnel\n\nUse \"funnel [command]\
+  \ --help\" for more information about a command.\n"
+generated_using: *id003

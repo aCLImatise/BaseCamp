@@ -20,10 +20,10 @@ named:
   synonyms:
   - --verbosity
   args: !ChoiceFlagArg
-    choices:
-    - INFO
-    - WARN
-    - CRITICAL
+    choices: !!set
+      WARN:
+      CRITICAL:
+      INFO:
   optional: true
 - !Flag
   description: The path to a directory to hold logs.
@@ -34,6 +34,7 @@ named:
   optional: true
 command:
 - phyluce_probe_reconstruct_uce_from_probe
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -44,3 +45,14 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: phyluce_probe_reconstruct_uce_from_probe [-h] --input INPUT --output\n\
+  \                                                OUTPUT\n                      \
+  \                          [--verbosity {INFO,WARN,CRITICAL}]\n                \
+  \                                [--log-path LOG_PATH]\n\nFrom a UCE probe set,\
+  \ reconstruct the UCE sequence used for design\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  --input INPUT         The input\
+  \ probe set\n  --output OUTPUT       The output FASTA file\n  --verbosity {INFO,WARN,CRITICAL}\n\
+  \                        The logging level to use.\n  --log-path LOG_PATH   The\
+  \ path to a directory to hold logs.\n"
+generated_using:
+- --help

@@ -316,8 +316,15 @@ named:
   - --dna
   args: !EmptyFlagArg {}
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -options
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - ssu-cmsearch
+parent:
 subcommands: []
 help_flag: !Flag
   description: ': show brief help on version and usage'
@@ -327,3 +334,56 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "# ssu-cmsearch :: search a sequence database with an RNA CM\n# INFERNAL\
+  \ s0.1.1 (Feb 2016)\n# Copyright (C) 2016 Howard Hughes Medical Institute.\n# Freely\
+  \ distributed under the BSD open source license.\n# - - - - - - - - - - - - - -\
+  \ - - - - - - - - - - - - - - - - - - - - - -\nUsage: ssu-cmsearch [-options] <cmfile>\
+  \ <sequence file>\n\nwhere general options are:\n  -h             : show brief help\
+  \ on version and usage\n  -o <f>         : direct output to file <f>, not stdout\n\
+  \  -g             : configure CM/HMM for glocal alignment [default: local]\n  -p\
+  \             : append posterior probabilities to hit alignments\n  -x         \
+  \    : annotate non-compensatory bps in output alignments with 'x'\n  -v       \
+  \      : annotate negative scoring non-canonical bps with 'v'\n  -Z <x>        \
+  \ : set Z (database size in *Mb*) to <x> for E-value calculations\n  --toponly \
+  \     : only search the top strand\n  --bottomonly   : only search the bottom strand\n\
+  \  --forecast <n> : don't do search, forecast running time with <n> processors\n\
+  \  --informat <s> : specify the input file is in format <x>, not FASTA\n  --mxsize\
+  \ <x>   : set maximum allowable HMM banded DP matrix size to <x> Mb\n  --devhelp\
+  \      : show list of undocumented developer options\n\nalgorithm for final round\
+  \ of search (after >= 0 filters): [default: --inside]\n  --inside  : use scanning\
+  \ CM Inside algorithm  [default]\n  --cyk     : use scanning CM CYK algorithm\n\
+  \  --forward : use scanning HMM Forward algorithm\n  --viterbi : use scanning HMM\
+  \ Viterbi algorithm\n\ncutoff options for final round of search (after >= 0 filters):\n\
+  \  -E <x> : use cutoff E-value of <x> for final round of search  [1.0]  (x>0.)\n\
+  \  -T <x> : use cutoff bit score of <x> for final round of search  [0.0]\n  --nc\
+  \   : use CM Rfam NC noise cutoff as cutoff bit score\n  --ga   : use CM Rfam GA\
+  \ gathering threshold as cutoff bit score\n  --tc   : use CM Rfam TC trusted cutoff\
+  \ as cutoff bit score\n\noptions for banded DP in final round of search:\n  --no-qdb\
+  \   : do not use QDBs in final round of searching\n  --beta <x> : set tail loss\
+  \ prob for QDB calculation to <x>  [1e-15]  (0<x<1)\n  --hbanded  : calculate and\
+  \ use HMM bands in final round of CM search\n  --tau <x>  : set tail loss prob for\
+  \ --hbanded to <x>  [1e-7]  (0<x<1)\n\nfiltering options:\n  --fil-no-hmm   : do\
+  \ not filter with HMM Forward algorithm\n  --fil-no-qdb   : do not filter with CM\
+  \ banded CYK\n  --fil-beta <x> : set tail loss prob for QDB filter to <x>  [1e-10]\
+  \  (x>0)\n\nfilter cutoff options (survival fractions are predicted, not guaranteed):\n\
+  \  --fil-T-qdb <x>    : set QDB CM filter cutoff bit score as <x>  [0.0]\n  --fil-T-hmm\
+  \ <x>    : set HMM filter cutoff bit score as <x>  [3.0]\n  --fil-E-qdb <x>    :\
+  \ set QDB CM filter cutoff E-value as <x>\n  --fil-E-hmm <x>    : set HMM filter\
+  \ cutoff E-value as <x>\n  --fil-S-hmm <x>    : set HMM filter predicted surv fract\
+  \ as <x>\n  --fil-Smax-hmm <x> : set maximum HMM survival fraction as <x>  [0.5]\n\
+  \  --fil-Smin-hmm <x> : set minimum HMM survival fraction as <x>  [0.02]\n  --fil-A-hmm\
+  \        : always filter w/HMM w/surv fract <= <x> from --fil-Smax-hmm\n\ndefining\
+  \ window size (W) for HMM only searches (require --forward or --viterbi):\n  --hmm-W\
+  \ <n>  : set HMM window size as <n>  (n>1)\n  --hmm-cW <x> : set HMM window size\
+  \ as <x> * consensus length  (x>0.01)\n\noptions for returning alignments of search\
+  \ hits:\n  --noalign     : find start/stop/score only; don't do alignments\n  --aln-hbanded\
+  \ : use HMM bands to align hits\n  --aln-optacc  : align hits with the optimal accuracy\
+  \ algorithm, not CYK\n\nusing a single CM from a multi-CM file:\n  --cm-idx <n>\
+  \  : only search with CM number <n>    in the CM file  (n>0)\n  --cm-name <s> :\
+  \ only search with the CM named <s> in the CM file\n\nverbose output files:\n  --tabfile\
+  \ <f> : save hits in tabular format to file <f>\n  --gcfile <f>  : save GC content\
+  \ stats of target sequence file to <f>\n\noptions for selecting output alphabet:\n\
+  \  --rna : output hit alignments as RNA sequence data  [default]\n  --dna : output\
+  \ hit alignments as DNA (not RNA) sequence data\n"
+generated_using:
+- -h

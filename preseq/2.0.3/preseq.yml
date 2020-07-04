@@ -1,8 +1,9 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - preseq
+parent:
 subcommands:
 - !Command
   positional:
@@ -14,11 +15,6 @@ subcommands:
   - !Positional
     description: ''
     position: 1
-    name: OPTIONS
-    optional: true
-  - !Positional
-    description: ''
-    position: 2
     name: sorted-bed-file
     optional: false
   named:
@@ -95,10 +91,22 @@ subcommands:
   command:
   - preseq
   - c_curve
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Usage: c_curve [OPTIONS] <sorted-bed-file>\n\nOptions:\n  -o, -output\
+    \   yield output file (default: stdout) \n  -s, -step     step size in extrapolations\
+    \ (default: 1e+06) \n  -v, -verbose  print more information \n  -P, -pe      \
+    \ input is paired end read file \n  -H, -hist     input is a text file containing\
+    \ the observed histogram \n  -V, -vals     input is a text file containing only\
+    \ the observed counts \n  -B, -bam      input is in BAM format \n  -l, -seg_len\
+    \  maximum segment length when merging paired end bam reads \n               \
+    \ (default: 5000) \n  -r, -seed     seed for random number generator \n\nHelp\
+    \ options:\n  -?, -help     print this help message \n      -about    print about\
+    \ message \n\n"
+  generated_using: &id002 []
 - !Command
   positional:
   - !Positional
@@ -109,11 +117,6 @@ subcommands:
   - !Positional
     description: ''
     position: 1
-    name: OPTIONS
-    optional: true
-  - !Positional
-    description: ''
-    position: 2
     name: sorted-bed-file
     optional: false
   named:
@@ -233,10 +236,28 @@ subcommands:
   command:
   - preseq
   - lc_extrap
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Usage: lc_extrap [OPTIONS] <sorted-bed-file>\n\nOptions:\n  -o, -output\
+    \      yield output file (default: stdout) \n  -e, -extrap      maximum extrapolation\
+    \ (default: 1e+10) \n  -s, -step        step size in extrapolations (default:\
+    \ 1e+06) \n  -n, -bootstraps  number of bootstraps (default: 100), \n  -c, -cval\
+    \        level for confidence intervals (default: 0.95) \n  -x, -terms       maximum\
+    \ number of terms \n  -v, -verbose     print more information \n  -B, -bam   \
+    \      input is in BAM format \n  -l, -seg_len     maximum segment length when\
+    \ merging paired end bam reads \n                   (default: 5000) \n  -P, -pe\
+    \          input is paired end read file \n  -V, -vals        input is a text\
+    \ file containing only the observed counts \n  -H, -hist        input is a text\
+    \ file containing the observed histogram \n  -Q, -quick       quick mode, estimate\
+    \ yield without bootstrapping for \n                   confidence intervals \n\
+    \  -D, -defects     defects mode to extrapolate without testing for defects \n\
+    \  -r, -seed        seed for random number generator \n\nHelp options:\n  -?,\
+    \ -help        print this help message \n      -about       print about message\
+    \ \n\n"
+  generated_using: *id002
 - !Command
   positional:
   - !Positional
@@ -247,11 +268,6 @@ subcommands:
   - !Positional
     description: ''
     position: 1
-    name: OPTIONS
-    optional: true
-  - !Positional
-    description: ''
-    position: 2
     name: sorted-mapped-read-file
     optional: false
   named:
@@ -356,10 +372,26 @@ subcommands:
   command:
   - preseq
   - gc_extrap
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Usage: gc_extrap [OPTIONS] <sorted-mapped-read-file>\n\nOptions:\n \
+    \ -o, -output      coverage yield output file (default: stdout) \n  -w, -max_width\
+    \   max fragment length, set equal to read length for single end \n          \
+    \         reads \n  -b, -bin_size    bin size (default: 10) \n  -e, -extrap  \
+    \    maximum extrapolation in base pairs(default: 1e+12) \n  -s, -step       \
+    \ step size in bases between extrapolations (default: 1e+08) \n  -n, -bootstraps\
+    \  number of bootstraps (default: 100), \n  -c, -cval        level for confidence\
+    \ intervals (default: 0.95) \n  -x, -terms       maximum number of terms \n  -v,\
+    \ -verbose     print more information \n  -B, -bed         input is in bed format\
+    \ without sequence information \n  -Q, -quick       quick mode: run gc_extrap\
+    \ without bootstrapping for \n                   confidence intervals \n  -D,\
+    \ -defects     defects mode to extrapolate without testing for defects \n  -r,\
+    \ -seed        seed for random number generator \n\nHelp options:\n  -?, -help\
+    \        print this help message \n      -about       print about message \n\n"
+  generated_using: *id002
 - !Command
   positional:
   - !Positional
@@ -370,11 +402,6 @@ subcommands:
   - !Positional
     description: ''
     position: 1
-    name: OPTIONS
-    optional: true
-  - !Positional
-    description: ''
-    position: 2
     name: sorted-bed-file
     optional: false
   named:
@@ -479,10 +506,35 @@ subcommands:
   command:
   - preseq
   - bound_pop
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Usage: bound_pop [OPTIONS] <sorted-bed-file>\n\nOptions:\n  -o, -output\
+    \          species richness output file (default: stdout) \n  -p, -max_num_points\
+    \  maximum number of points in quadrature estimates \n                       (default:\
+    \ 10) \n  -t, -tolerance       numerical tolerance (default: 1e-20) \n  -n, -bootstraps\
+    \      number of bootstraps (default: 500) \n  -c, -clevel          level for\
+    \ confidence intervals (default: 0.95) \n  -v, -verbose         print more information\
+    \ \n  -P, -pe              input is paired end read file \n  -H, -hist       \
+    \     input is a text file containing the observed histogram \n  -V, -vals   \
+    \         input is a text file containing only the observed \n               \
+    \        duplicate counts \n  -B, -bam             input is in BAM format \n \
+    \ -l, -seg_len         maximum segment length when merging paired end bam reads\
+    \ \n                       (default: 5000) \n  -Q, -quick           quick mode,\
+    \ estimate without bootstrapping \n  -r, -seed            seed for random number\
+    \ generator \n\nHelp options:\n  -?, -help            print this help message\
+    \ \n      -about           print about message \n\n"
+  generated_using: *id002
 help_flag:
 usage_flag:
 version_flag:
+help_text: "unrecognized command: --help\npreseq:  a program for analyzing library\
+  \ complexity\nVersion: 2.0.3\n\nUsage:   preseq <command> [OPTIONS]\n\n<command>:\
+  \ c_curve    generate complexity curve for a library\n           lc_extrap  predict\
+  \ the yield for future experiments\n           gc_extrap  predict genome coverage\
+  \ low input\n                      sequencing experiments\n           bound_pop\
+  \  lower bound on population size\n\n"
+generated_using:
+- --help

@@ -1,8 +1,9 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - moca
+parent:
 subcommands:
 - !Command
   positional: []
@@ -82,6 +83,7 @@ subcommands:
   command:
   - moca
   - find_motifs
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Show this message and exit.
@@ -92,6 +94,19 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Usage: moca find_motifs [OPTIONS]\n\n  Search motifs and create conservation\
+    \ plots\n\nOptions:\n  -i, --bedfile TEXT              Bed file input  [required]\n\
+    \  -o, --oc TEXT                   Output Directory  [required]\n  -c, --configuration\
+    \ TEXT        Configuration file  [required]\n  -s, --slop-length, --slop_length\
+    \ INTEGER\n                                  Flanking sequence length\n  -f, --flank-motif,\
+    \ --flank_motif INTEGER\n                                  Length of sequence\
+    \ flanking motif\n  --n-motif INTEGER               Number of motifs\n  -t, --cores\
+    \ INTEGER             Number of parallel MEME jobs  [required]\n  -g, -gb, --genome-build\
+    \ TEXT    Key denoting genome build to use in\n                              \
+    \    configuration file  [required]\n\n  --show-progress                 Print\
+    \ progress\n  -h, --help                      Show this message and exit.\n"
+  generated_using: &id002
+  - --help
 - !Command
   positional: []
   named:
@@ -182,6 +197,7 @@ subcommands:
   command:
   - moca
   - plot
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Show this message and exit.
@@ -192,6 +208,21 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Usage: moca plot [OPTIONS]\n\n  Create conservation plots\n\nOptions:\n\
+    \  --meme-dir, --meme_dir TEXT     MEME output directory  [required]\n  --centrimo-dir,\
+    \ --centrimo_dir TEXT\n                                  Centrimo output directory\
+    \  [required]\n  --fimo-dir-sample, --fimo_dir_sample TEXT\n                 \
+    \                 Sample fimo.txt  [required]\n  --fimo-dir-control, --fimo_dir_control\
+    \ TEXT\n                                  Control fimo.txt  [required]\n  --name\
+    \ TEXT                     Plot title\n  --flank-motif INTEGER           Length\
+    \ of sequence flanking motif\n                                  [required]\n\n\
+    \  --motif INTEGER                 Motif number\n  -o, --oc TEXT             \
+    \      Output Directory  [required]\n  -c, --configuration TEXT        Configuration\
+    \ file  [required]\n  --show-progress                 Print progress\n  -g, -gb,\
+    \ --genome-build TEXT    Key denoting genome build to use in\n               \
+    \                   configuration file  [required]\n\n  -h, --help           \
+    \           Show this message and exit.\n"
+  generated_using: *id002
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -205,3 +236,8 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "Usage: moca [OPTIONS] COMMAND [ARGS]...\n\n  moca: Motif Conservation\
+  \ Analysis\n\nOptions:\n  --version  Show the version and exit.\n  --help     Show\
+  \ this message and exit.\n\nCommands:\n  find_motifs  Search motifs and create conservation\
+  \ plots\n  plot         Create conservation plots\n"
+generated_using: *id002

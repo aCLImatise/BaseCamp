@@ -3,237 +3,301 @@ positional:
 - !Positional
   description: ''
   position: 0
-  name: '8'
+  name: run
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: Project
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: name
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: or
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: repository
+  optional: false
+- !Positional
+  description: ''
+  position: 5
+  name: url
   optional: false
 named:
 - !Flag
-  description: An input file containing the sample name and absolute paths to FASTQs
-    to process.
+  description: 'Exports all current system environment Default: false'
   synonyms:
-  - --fastqs
-  args: !SimpleFlagArg
-    name: STR
-  optional: true
-- !Flag
-  description: 'Reduce samples to a given coverage. (Default: 100)'
-  synonyms:
-  - --coverage
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: 'Expected genome size (bp) for all samples. (Default: 0).'
-  synonyms:
-  - --genome_size
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: Directory to write results to. (Default ./)
-  synonyms:
-  - --outdir
-  args: !SimpleFlagArg
-    name: DIR
-  optional: true
-- !Flag
-  description: 'The maximum number of processors this workflow should have access
-    to at any given moment. (Default: 1)'
-  synonyms:
-  - --max_cpus
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: 'Number of processors made available to a single process. If greater
-    than "--max_cpus" it will be set equal to "--max_cpus" (Default: 1)'
-  synonyms:
-  - --cpus
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: Print an example of expected input for FASTQs file.
-  synonyms:
-  - --example_fastqs
+  - -E
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Verify "--fastqs" produces the expected inputs.
+  description: Enable/disable ANSI console logging
   synonyms:
-  - --check_fastqs
+  - -ansi-log
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Keeps 'work' and '.nextflow' logs, default is to delete on successful
-    completion.
+  description: Remote bucket where intermediate result files are stored
   synonyms:
-  - --keep_cache
+  - -bucket-dir
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Illumina adapters to remove (Default: BBmap adapters)'
+  description: Enable/disable processes caching
   synonyms:
-  - --adapters
-  args: !SimpleFlagArg
-    name: FASTA
-  optional: true
-- !Flag
-  description: 'Kmer length used for finding adapters. Adapters shorter than k will
-    not be found. (Default: 23)'
-  synonyms:
-  - --adapter_k
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: 'phiX174 reference genome to remove (Default: NC_001422)'
-  synonyms:
-  - --phix
-  args: !SimpleFlagArg
-    name: FASTA
-  optional: true
-- !Flag
-  description: 'Kmer length used for finding phiX174. Contaminants shorter than k
-    will not be found. (Default: 31)'
-  synonyms:
-  - --phix_k
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: 'Trim reads to remove bases matching reference kmers. Values: f (do
-    not trim) r (trim to the right, Default) l (trim to the left)'
-  synonyms:
-  - --ktrim
-  args: !SimpleFlagArg
-    name: STR
-  optional: true
-- !Flag
-  description: 'Look for shorter kmers at read tips down to this length, when k-trimming
-    or masking. 0 means disabled. Enabling this will disable maskmiddle. (Default:
-    11)'
-  synonyms:
-  - --mink
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: 'Maximum Hamming distance for ref kmers (subs only). Memory use is
-    proportional to (3*K)^hdist. (Default: 1)'
-  synonyms:
-  - --hdist
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: 'When kmer right-trimming, trim both reads to the minimum length of
-    either. Values: f (do not equally trim) t (equally trim to the right, Default)'
-  synonyms:
-  - --tpe
-  args: !SimpleFlagArg
-    name: BOOL
-  optional: true
-- !Flag
-  description: 'Trim adapters based on where paired reads overlap. Values: f (do not
-    trim by overlap) t (trim by overlap, Default)'
-  synonyms:
-  - --tbo
-  args: !SimpleFlagArg
-    name: BOOL
-  optional: true
-- !Flag
-  description: 'Trim read ends to remove bases with quality below trimq. Performed
-    AFTER looking for kmers. Values: rl (trim both ends, Default) f (neither end)
-    r (right end only) l (left end only) w (sliding window)'
-  synonyms:
-  - --qtrim
-  args: !SimpleFlagArg
-    name: STR
-  optional: true
-- !Flag
-  description: 'Regions with average quality BELOW this will be trimmed if qtrim is
-    set to something other than f. (Default: 6)'
-  synonyms:
-  - --trimq
-  args: !SimpleFlagArg
-    name: FLOAT
-  optional: true
-- !Flag
-  description: 'Reads with average quality (after trimming) below this will be discarded.
-    (Default: 20)'
-  synonyms:
-  - --maq
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: 'Reads shorter than this after trimming will be discarded. Pairs will
-    be discarded if both are shorter. (Default: 35)'
-  synonyms:
-  - --minlength
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: 'If positive, right-trim length to be equal to zero, modulo this number.
-    (Default: 0)'
-  synonyms:
-  - --ftm
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: 'Discard reads with invalid characters as bases. Values: f (keep all
-    reads) t (toss reads with ambiguous bases, Default)'
-  synonyms:
-  - --tossjunk
+  - -cache
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Output quality offset. Values: 33 (PHRED33 offset quality scores,
-    Default) 64 (PHRED64 offset quality scores) auto (keeps the current input offset)'
+  description: Dump channels for debugging purpose
   synonyms:
-  - --qout
-  args: !SimpleFlagArg
-    name: STR
+  - -dump-channels
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'This will be passed to Java to set memory usage. Examples: 8g will
-    specify 8 gigs of RAM (Default) 20g will specify 20 gigs of RAM 200m will specify
-    200 megs of RAM'
+  description: 'Dump task hash keys for debugging purpose Default: false'
   synonyms:
-  - --xmx
-  args: !SimpleFlagArg
-    name: STR
+  - -dump-hashes
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'Max number of corrections within a 20bp window (Default: 1)'
+  description: 'Add the specified variable to execution environment Syntax: -e.key=value
+    Default: {}'
   synonyms:
-  - --maxcor
-  args: !SimpleFlagArg
-    name: INT
+  - -e.
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: Set to a positive number to use that prng seed for sampling (Default
-    42).
+  description: Entry workflow name to be executed
   synonyms:
-  - --sampleseed
-  args: !SimpleFlagArg
-    name: INT
+  - -entry
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Service hub where the project is hosted
+  synonyms:
+  - -hub
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Pull latest changes before run Default: false'
+  synonyms:
+  - -latest
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Library extension path
+  synonyms:
+  - -lib
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Assign a mnemonic name to the a pipeline run
+  synonyms:
+  - -name
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Do not check for remote project updates Default: false'
+  synonyms:
+  - -offline
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Load script parameters from a JSON/YAML file
+  synonyms:
+  - -params-file
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Set process options Syntax: -process.key=value Default: {}'
+  synonyms:
+  - -process.
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Choose a configuration profile
+  synonyms:
+  - -profile
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Max number of processes that can be executed in parallel by each executor
+  synonyms:
+  - -qs
+  - -queue-size
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Execute the script using the cached results, useful to continue executions
+    that was stopped by an error
+  synonyms:
+  - -resume
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Revision of the project to run (either a git branch, tag or commit
+    SHA number)
+  synonyms:
+  - -r
+  - -revision
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Test a script function with the name specified
+  synonyms:
+  - -test
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Private repository user name
+  synonyms:
+  - -user
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Use the specified Conda environment package or file (must end with
+    .yml|.yaml suffix)
+  synonyms:
+  - -with-conda
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Create pipeline DAG file
+  synonyms:
+  - -with-dag
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable process execution in a Docker container
+  synonyms:
+  - -with-docker
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Send a notification email on workflow completion to the specified recipients
+  synonyms:
+  - -N
+  - -with-notification
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable process execution in a Podman container
+  synonyms:
+  - -with-podman
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Create processes execution html report
+  synonyms:
+  - -with-report
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Enable process execution in a Singularity container
+  synonyms:
+  - -with-singularity
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Create processes execution timeline file
+  synonyms:
+  - -with-timeline
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Monitor workflow execution with Seqera Tower service
+  synonyms:
+  - -with-tower
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Create processes execution tracing file
+  synonyms:
+  - -with-trace
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Send workflow status messages via HTTP to target URL
+  synonyms:
+  - -with-weblog
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Disable process execution with Docker Default: false'
+  synonyms:
+  - -without-docker
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Disable process execution in a Podman container
+  synonyms:
+  - -without-podman
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Directory where intermediate result files are stored
+  synonyms:
+  - -w
+  - -work-dir
+  args: !EmptyFlagArg {}
   optional: true
 command:
 - illumina-cleanup
+parent:
 subcommands: []
 help_flag: !Flag
-  description: Show this message and exit
+  description: 'Print the command usage Default: false'
   synonyms:
-  - --help
+  - -h
+  - -help
   args: !EmptyFlagArg {}
   optional: true
 usage_flag:
-version_flag: !Flag
-  description: Print workflow version information
-  synonyms:
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
+help_text: "Execute a pipeline project\nUsage: run [options] Project name or repository\
+  \ url\n  Options:\n    -E\n       Exports all current system environment\n     \
+  \  Default: false\n    -ansi-log\n       Enable/disable ANSI console logging\n \
+  \   -bucket-dir\n       Remote bucket where intermediate result files are stored\n\
+  \    -cache\n       Enable/disable processes caching\n    -dump-channels\n     \
+  \  Dump channels for debugging purpose\n    -dump-hashes\n       Dump task hash\
+  \ keys for debugging purpose\n       Default: false\n    -e.\n       Add the specified\
+  \ variable to execution environment\n       Syntax: -e.key=value\n       Default:\
+  \ {}\n    -entry\n       Entry workflow name to be executed\n    -h, -help\n   \
+  \    Print the command usage\n       Default: false\n    -hub\n       Service hub\
+  \ where the project is hosted\n    -latest\n       Pull latest changes before run\n\
+  \       Default: false\n    -lib\n       Library extension path\n    -name\n   \
+  \    Assign a mnemonic name to the a pipeline run\n    -offline\n       Do not check\
+  \ for remote project updates\n       Default: false\n    -params-file\n       Load\
+  \ script parameters from a JSON/YAML file\n    -process.\n       Set process options\n\
+  \       Syntax: -process.key=value\n       Default: {}\n    -profile\n       Choose\
+  \ a configuration profile\n    -qs, -queue-size\n       Max number of processes\
+  \ that can be executed in parallel by each executor\n    -resume\n       Execute\
+  \ the script using the cached results, useful to continue\n       executions that\
+  \ was stopped by an error\n    -r, -revision\n       Revision of the project to\
+  \ run (either a git branch, tag or commit SHA\n       number)\n    -test\n     \
+  \  Test a script function with the name specified\n    -user\n       Private repository\
+  \ user name\n    -with-conda\n       Use the specified Conda environment package\
+  \ or file (must end with\n       .yml|.yaml suffix)\n    -with-dag\n       Create\
+  \ pipeline DAG file\n    -with-docker\n       Enable process execution in a Docker\
+  \ container\n    -N, -with-notification\n       Send a notification email on workflow\
+  \ completion to the specified\n       recipients\n    -with-podman\n       Enable\
+  \ process execution in a Podman container\n    -with-report\n       Create processes\
+  \ execution html report\n    -with-singularity\n       Enable process execution\
+  \ in a Singularity container\n    -with-timeline\n       Create processes execution\
+  \ timeline file\n    -with-tower\n       Monitor workflow execution with Seqera\
+  \ Tower service\n    -with-trace\n       Create processes execution tracing file\n\
+  \    -with-weblog\n       Send workflow status messages via HTTP to target URL\n\
+  \    -without-docker\n       Disable process execution with Docker\n       Default:\
+  \ false\n    -without-podman\n       Disable process execution in a Podman container\n\
+  \    -w, -work-dir\n       Directory where intermediate result files are stored\n\
+  \n"
+generated_using:
+- -h

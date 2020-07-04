@@ -1,4 +1,4 @@
-!Command
+&id001 !Command
 positional: []
 named:
 - !Flag
@@ -53,6 +53,7 @@ named:
   optional: true
 command:
 - ssu-esl-alimerge
+parent:
 subcommands:
 - !Command
   positional:
@@ -65,30 +66,51 @@ subcommands:
   command:
   - ssu-esl-alimerge
   - alignment file 1
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Incorrect number of command line arguments.\nUsage: ssu-esl-alimerge\
+    \ [options] <alignment file 1> <alignment file 2>\nUsage: ssu-esl-alimerge [options]\
+    \ --list <file listing n > 1 ali files to merge>\n\n  Input alignments must be\
+    \ in Stockholm or Pfam format.\n  Ouput format choices\n  --------------------\n\
+    \  stockholm [default]\n  pfam\n  a2m\n  psiblast\n  afa\n\nTo see more help on\
+    \ available options, do ssu-esl-alimerge -h\n\n"
+  generated_using: &id002 []
 - !Command
   positional:
   - !Positional
     description: ''
     position: 0
-    name: alignment file 1
+    name: ssu-esl-alimerge
     optional: false
   - !Positional
     description: ''
     position: 1
+    name: alignment file 1
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
     name: alignment file 2
     optional: false
   named: []
   command:
   - ssu-esl-alimerge
   - alignment file 2
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Incorrect number of command line arguments.\nUsage: ssu-esl-alimerge\
+    \ [options] <alignment file 1> <alignment file 2>\nUsage: ssu-esl-alimerge [options]\
+    \ --list <file listing n > 1 ali files to merge>\n\n  Input alignments must be\
+    \ in Stockholm or Pfam format.\n  Ouput format choices\n  --------------------\n\
+    \  stockholm [default]\n  pfam\n  a2m\n  psiblast\n  afa\n\nTo see more help on\
+    \ available options, do ssu-esl-alimerge -h\n\n"
+  generated_using: *id002
 help_flag: !Flag
   description: ': help; show brief info on version and usage'
   synonyms:
@@ -97,3 +119,21 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "# ssu-esl-alimerge :: merge alignments based on their reference (RF) annotation\n\
+  # Easel s0.1.1 (Feb 2016)\n# Copyright (C) 2016 HHMI Janelia Farm Research Campus\n\
+  # Freely distributed under the BSD open source license.\n# - - - - - - - - - - -\
+  \ - - - - - - - - - - - - - - - - - - - - - - - - -\nUsage: ssu-esl-alimerge [options]\
+  \ <alignment file 1> <alignment file 2>\nUsage: ssu-esl-alimerge [options] --list\
+  \ <file listing n > 1 ali files to merge>\n\n  Input alignments must be in Stockholm\
+  \ or Pfam format.\n  Ouput format choices\n  --------------------\n  stockholm [default]\n\
+  \  pfam\n  a2m\n  psiblast\n  afa\n\n where options are:\n  -h              : help;\
+  \ show brief info on version and usage\n  -o <f>          : output the final alignment\
+  \ to file <f>, not stdout\n  -v              : print info on merge to stdout; requires\
+  \ -o\n  --small         : use minimal RAM (RAM usage will be independent of aln\
+  \ sizes)\n  --rfonly        : remove all columns that are gaps in GC RF annotation\n\
+  \  --outformat <s> : specify that output aln be format <s> (see choices above)\n\
+  \  --rna           : alignments to merge are RNA alignments\n  --dna           :\
+  \ alignments to merge are DNA alignments\n  --amino         : alignments to merge\
+  \ are protein alignments\n"
+generated_using:
+- -h

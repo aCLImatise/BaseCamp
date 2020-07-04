@@ -103,7 +103,69 @@ named:
   optional: true
 command:
 - configureStrelkaGermlineWorkflow.py
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "Usage: configureStrelkaGermlineWorkflow.py [options]\n\nVersion: 2.9.10\n\
+  \nThis script configures Strelka germline small variant calling.\nYou must specify\
+  \ an alignment file (BAM or CRAM) for at least one sample.\n\nConfiguration will\
+  \ produce a workflow run script which\ncan execute the workflow on a single node\
+  \ or through\nsge and resume any interrupted execution.\n\nOptions:\n  --version\
+  \             show program's version number and exit\n  -h, --help            show\
+  \ this help message and exit\n  --config=FILE         provide a configuration file\
+  \ to override defaults in\n                        global config file (/tmp/tmpqgrffl12/share/strelka-2.9\n\
+  \                        .10-0/bin/configureStrelkaGermlineWorkflow.py.ini)\n  --allHelp\
+  \             show all extended/hidden options\n\n  Workflow options:\n    --bam=FILE\
+  \          Sample BAM or CRAM file. May be specified more than\n               \
+  \         once, multiple inputs will be treated as each BAM file\n             \
+  \           representing a different sample. [required] (no\n                  \
+  \      default)\n    --ploidy=FILE       Provide ploidy file in VCF. The VCF should\
+  \ include one\n                        sample column per input sample labeled with\
+  \ the same\n                        sample names found in the input BAM/CRAM RG\
+  \ header\n                        sections. Ploidy should be provided in records\
+  \ using\n                        the FORMAT/CN field, which are interpreted to span\
+  \ the\n                        range [POS+1, INFO/END]. Any CN value besides 1 or\
+  \ 0\n                        will be treated as 2. File must be tabix indexed. (no\n\
+  \                        default)\n    --noCompress=FILE   Provide BED file of regions\
+  \ where gVCF block\n                        compression is not allowed. File must\
+  \ be bgzip-\n                        compressed/tabix-indexed. (no default)\n  \
+  \  --callContinuousVf=CHROM\n                        Call variants on CHROM without\
+  \ a ploidy prior\n                        assumption, issuing calls with continuous\
+  \ variant\n                        frequencies (no default)\n    --rna         \
+  \      Set options for RNA-Seq input.\n    --referenceFasta=FILE\n             \
+  \           samtools-indexed reference fasta file [required]\n    --indelCandidates=FILE\n\
+  \                        Specify a VCF of candidate indel alleles. These\n     \
+  \                   alleles are always evaluated but only reported in the\n    \
+  \                    output when they are inferred to exist in the sample.\n   \
+  \                     The VCF must be tabix indexed. All indel alleles must\n  \
+  \                      be left-shifted/normalized, any unnormalized alleles\n  \
+  \                      will be ignored. This option may be specified more\n    \
+  \                    than once, multiple input VCFs will be merged.\n          \
+  \              (default: None)\n    --forcedGT=FILE     Specify a VCF of candidate\
+  \ alleles. These alleles are\n                        always evaluated and reported\
+  \ even if they are\n                        unlikely to exist in the sample. The\
+  \ VCF must be tabix\n                        indexed. All indel alleles must be\
+  \ left-\n                        shifted/normalized, any unnormalized allele will\n\
+  \                        trigger a runtime error. This option may be specified\n\
+  \                        more than once, multiple input VCFs will be merged.\n \
+  \                       Note that for any SNVs provided in the VCF, the SNV\n  \
+  \                      site will be reported (and for gVCF, excluded from\n    \
+  \                    block compression), but the specific SNV alleles are\n    \
+  \                    ignored. (default: None)\n    --exome, --targeted\n       \
+  \                 Set options for exome or other targeted input: note in\n     \
+  \                   particular that this flag turns off high-depth filters\n   \
+  \ --callRegions=FILE  Optionally provide a bgzip-compressed/tabix-indexed\n    \
+  \                    BED file containing the set of regions to call. No VCF\n  \
+  \                      output will be provided outside of these regions. The\n \
+  \                       full genome will still be used to estimate statistics\n\
+  \                        from the input (such as expected depth per\n          \
+  \              chromosome). Only one BED file may be specified.\n              \
+  \          (default: call the entire genome)\n    --runDir=DIR        Name of directory\
+  \ to be created where all workflow\n                        scripts and output will\
+  \ be written. Each analysis\n                        requires a separate directory.\
+  \ (default:\n                        StrelkaGermlineWorkflow)\n\n  Extended options\
+  \ (hidden):\n"
+generated_using:
+- --help

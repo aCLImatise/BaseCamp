@@ -2,6 +2,27 @@
 positional: []
 named:
 - !Flag
+  description: The input FASTQ file containing the reads from 5' fragment end (i.e.
+    5'-3' orientation for read 1 and 3'-5' for read 2 which needs to be reversed-
+    complemented).
+  synonyms:
+  - '-1'
+  - --input_1
+  args: !SimpleFlagArg
+    name: INPUT_1_FILENAME
+  optional: true
+- !Flag
+  description: The input FASTQ file containing the reads from 3' fragment end (i.e.
+    5'-3' orientation for read 1 and 3'-5' for read 2 which needs to be reversed-
+    complemented). If this is not used then the input FASTQ file is assume to contain
+    single-end reads.
+  synonyms:
+  - '-2'
+  - --input_2
+  args: !SimpleFlagArg
+    name: INPUT_2_FILENAME
+  optional: true
+- !Flag
   description: The output FASTQ file where the reads are trimmed.
   synonyms:
   - -f
@@ -105,7 +126,64 @@ named:
   optional: true
 command:
 - fragment_fastq.py
+parent:
 subcommands: []
-help_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: fragment_fastq.py [options] --input_1 <fastq_file_read_1> --input_2\
+  \ <fastq_file_read_2> --output_2 <fastq_file_1> --output_2 <fastq_file_2> \n\nIt\
+  \ fragments (i.e. breaks up) the input single-end/paired-end reads in reads\nwhich\
+  \ are shorter.\n\nOptions:\n  --version             show program's version number\
+  \ and exit\n  -h, --help            show this help message and exit\n  -1 INPUT_1_FILENAME,\
+  \ --input_1=INPUT_1_FILENAME\n                        The input FASTQ file containing\
+  \ the reads from 5'\n                        fragment end (i.e. 5'-3' orientation\
+  \ for read 1 and\n                        3'-5' for read 2 which needs to be reversed-\n\
+  \                        complemented).\n  -2 INPUT_2_FILENAME, --input_2=INPUT_2_FILENAME\n\
+  \                        The input FASTQ file containing the reads from 3'\n   \
+  \                     fragment end (i.e. 5'-3' orientation for read 1 and\n    \
+  \                    3'-5' for read 2 which needs to be reversed-\n            \
+  \            complemented). If this is not used then the input\n               \
+  \         FASTQ file is assume to contain single-end reads.\n  -f OUTPUT_1_FILENAME,\
+  \ --output_1=OUTPUT_1_FILENAME\n                        The output FASTQ file where\
+  \ the reads are trimmed.\n  -r OUTPUT_2_FILENAME, --output_2=OUTPUT_2_FILENAME\n\
+  \                        The output FASTQ file where the reads are trimmed. If\n\
+  \                        this is not used then all the output reads are written\n\
+  \                        in '-f' as interleaved.\n  -l LOG_FILENAME, --log=LOG_FILENAME\n\
+  \                        It outputs a detalied statistics of the trimming.\n  -w\
+  \ WINDOW_SIZE, --window-size=WINDOW_SIZE\n                        The size of the\
+  \ new reads. This should be shorter than\n                        the size of input\
+  \ reads. Default is 82.\n  -s STEP_SIZE, --step-size=STEP_SIZE\n               \
+  \         The size of step for the sliding window used to\n                    \
+  \    fragment the input reads. This should be shorter than\n                   \
+  \     the size of input reads. Default is 60.\n  -t THRESHOLD_SIZE_READ, --threshold-read=THRESHOLD_SIZE_READ\n\
+  \                        The reads shorter than this will not be fragmented. If\n\
+  \                        it is set then it should be higher than window size.\n\
+  \                        By default reads shorter than the window size will not\n\
+  \                        be fragmented.\n  -a ANCHORS, --anchors=ANCHORS\n     \
+  \                   Number of anchors. Default is 4.\n  -k SKIP_SHORT, --skip-short=SKIP_SHORT\n\
+  \                        The paired-end where both reads are shorter than this\n\
+  \                        will be filtered out. Default is '0'.\n  -e WIGGLE_END,\
+  \ --wiggle-end=WIGGLE_END\n                        The last fragment will not be\
+  \ generated if it overlaps\n                        with the previous generated\
+  \ fragment and the non-\n                        overlapping segment is strictly\
+  \ shorter than this\n                        threshold. This applies only for paired-end\
+  \ reads.\n                        Default is '16'.\n  -n, --trim-n          If it\
+  \ is set then Ns from both ends of the read are\n                        trimmed.\n\
+  \  -q, --quiet           Do not print status messages to stdout.\n  -u AUTHOR, --author=AUTHOR\n\
+  \                        Daniel Nicorici, E-mail: Daniel.Nicorici@gmail.com\n\n\n\
+  Author: Daniel Nicorici\nEmail: Daniel.Nicorici@gmail.com\nCopyright (c) 2009-2019\
+  \ Daniel Nicorici\n\n"
+generated_using:
+- --help

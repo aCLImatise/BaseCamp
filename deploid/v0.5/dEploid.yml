@@ -2,95 +2,120 @@
 positional: []
 named:
 - !Flag
-  description: -vcf STR  --  VCF file path. -ref STR  --  File path of reference allele
-    count. -alt STR  --  File path of alternative allele count.
+  description: --  DEploid version.
   synonyms:
   - -v
   - -version
-  - --  DEploid
   args: !SimpleFlagArg
     name: or
   optional: true
 - !Flag
-  description: of population level allele frequencies.
+  description: --  VCF file path.
+  synonyms:
+  - -vcf
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: --  File path of reference allele count.
+  synonyms:
+  - -ref
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: --  File path of alternative allele count.
+  synonyms:
+  - -alt
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: --  File path of population level allele frequencies.
   synonyms:
   - -plaf
-  - --  File
   args: !SimpleFlagArg
     name: STR
   optional: true
 - !Flag
-  description: of the reference panel.
+  description: --  File path of the reference panel.
   synonyms:
   - -panel
-  - --  File
   args: !SimpleFlagArg
     name: STR
   optional: true
 - !Flag
-  description: of sites to be excluded.
+  description: --  File path of sites to be excluded.
   synonyms:
   - -exclude
-  - --  File
   args: !SimpleFlagArg
     name: STR
   optional: true
 - !Flag
-  description: file name prefix of the output.
+  description: --  Specify the file name prefix of the output.
   synonyms:
   - -o
-  - --  Specify
   args: !SimpleFlagArg
     name: STR
   optional: true
 - !Flag
-  description: precision (default value 8).
+  description: --  Out put precision (default value 8).
   synonyms:
   - -p
-  - --  Out
   args: !SimpleFlagArg
     name: INT
   optional: true
 - !Flag
-  description: strain (default value 5).
+  description: --  Number of strain (default value 5).
   synonyms:
   - -k
-  - --  Number
   args: !SimpleFlagArg
     name: INT
   optional: true
 - !Flag
-  description: -nSample INT  --  Number of MCMC samples. -rate INT  --  MCMC sample
-    rate. -noPanel  --  Use population level allele frequency as prior.
+  description: --  Random seed.
   synonyms:
   - -seed
-  - --  Random
   args: !SimpleFlagArg
     name: INT
   optional: true
 - !Flag
-  description: moves to update proportions.
+  description: --  Number of MCMC samples.
+  synonyms:
+  - -nSample
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: --  MCMC sample rate.
+  synonyms:
+  - -rate
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: --  Use population level allele frequency as prior.
+  synonyms:
+  - -noPanel
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --  Forbid MCMC moves to update proportions.
   synonyms:
   - -forbidUpdateProp
-  - --  Forbid
-  args: !SimpleFlagArg
-    name: MCMC
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: moves to update single haplotype.
+  description: --  Forbid MCMC moves to update single haplotype.
   synonyms:
   - -forbidUpdateSingle
-  - --  Forbid
-  args: !SimpleFlagArg
-    name: MCMC
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: moves to update pair haplotypes.
+  description: --  Forbid MCMC moves to update pair haplotypes.
   synonyms:
   - -forbidUpdatePair
-  - --  Forbid
-  args: !SimpleFlagArg
-    name: MCMC
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: '...  --  Initialize proportions.'
@@ -99,9 +124,54 @@ named:
   args: !SimpleFlagArg
     name: FLT
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !SimpleFlagArg
+    name: or
+  optional: true
 command:
 - dEploid
+parent:
 subcommands: []
-help_flag:
+help_flag: !Flag
+  description: --  Help. List the following content.
+  synonyms:
+  - -h
+  - -help
+  args: !SimpleFlagArg
+    name: or
+  optional: true
 usage_flag:
 version_flag:
+help_text: "\ndEploid v0.5-release\n\nUsage:\n         -h or -help  --  Help. List\
+  \ the following content.\n      -v or -version  --  DEploid version.\n         \
+  \   -vcf STR  --  VCF file path.\n            -ref STR  --  File path of reference\
+  \ allele count.\n            -alt STR  --  File path of alternative allele count.\n\
+  \           -plaf STR  --  File path of population level allele frequencies.\n \
+  \         -panel STR  --  File path of the reference panel.\n        -exclude STR\
+  \  --  File path of sites to be excluded.\n              -o STR  --  Specify the\
+  \ file name prefix of the output.\n              -p INT  --  Out put precision (default\
+  \ value 8).\n              -k INT  --  Number of strain (default value 5).\n   \
+  \        -seed INT  --  Random seed.\n        -nSample INT  --  Number of MCMC samples.\n\
+  \           -rate INT  --  MCMC sample rate.\n            -noPanel  --  Use population\
+  \ level allele frequency as prior.\n   -forbidUpdateProp  --  Forbid MCMC moves\
+  \ to update proportions.\n -forbidUpdateSingle  --  Forbid MCMC moves to update\
+  \ single haplotype.\n   -forbidUpdatePair  --  Forbid MCMC moves to update pair\
+  \ haplotypes.\n   -initialP FLT ...  --  Initialize proportions.\n\nExamples:\n\n\
+  ./dEploid -vcf data/testData/PG0390-C.test.vcf -plaf data/testData/labStrains.test.PLAF.txt\
+  \ -o PG0390-CNopanel -noPanel\n./dEploid -vcf data/testData/PG0390-C.test.vcf -exclude\
+  \ data/testData/labStrains.test.exclude.txt -plaf data/testData/labStrains.test.PLAF.txt\
+  \ -o PG0390-CNopanelExclude -noPanel\n./dEploid -vcf data/testData/PG0390-C.test.vcf\
+  \ -exclude data/testData/labStrains.test.exclude.txt -plaf data/testData/labStrains.test.PLAF.txt\
+  \ -o PG0390-CPanelExclude -panel data/testData/labStrains.test.panel.txt\n./dEploid\
+  \ -vcf data/testData/PG0390-C.test.vcf -exclude data/testData/labStrains.test.exclude.txt\
+  \ -plaf data/testData/labStrains.test.PLAF.txt -o PG0390-CPanelExclude -panel data/testData/labStrains.test.panel.txt\
+  \ -painting PG0390-CPanelExclude.hap\n./dEploid -vcf data/testData/PG0390-C.test.vcf\
+  \ -plaf data/testData/labStrains.test.PLAF.txt -o PG0390-CNopanel -noPanel -k 2\
+  \ -ibd -nSample 250 -rate 8 -burn 0.67\n./dEploid -vcf data/testData/PG0390-C.test.vcf\
+  \ -plaf data/testData/labStrains.test.PLAF.txt -o PG0390-CNopanel -ibdPainting -initialP\
+  \ 0.2 0.8\n"
+generated_using:
+- -h

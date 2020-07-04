@@ -1,11 +1,22 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - scanpy-find-cluster
+parent:
 subcommands:
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input_obj
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: output_obj
+    optional: false
   named:
   - !Flag
     description: '[anndata|loom] Input object format.  [default: anndata]'
@@ -90,11 +101,14 @@ subcommands:
       name: INTEGER
     optional: true
   - !Flag
-    description: '[,TEXT...]      Key under which to add the computed results'
+    description: Key under which to add the computed results
     synonyms:
     - --key-added
-    args: !SimpleFlagArg
-      name: TEXT
+    args: !OptionalFlagArg
+      names:
+      - TEXT
+      - TEXT...
+      separator: ','
     optional: true
   - !Flag
     description: '[vtraag|igraph]        Choose between two packages for computing
@@ -104,17 +118,21 @@ subcommands:
     args: !EmptyFlagArg {}
     optional: true
   - !Flag
-    description: '[,FLOAT...] For the default flavor "vtraag", you can provide a resolution.
-      Higher resolution means finding more and smaller clusters. [default: 1]'
+    description: 'For the default flavor "vtraag", you can provide a resolution. Higher
+      resolution means finding more and smaller clusters. [default: 1]'
     synonyms:
     - -r
     - --resolution
-    args: !SimpleFlagArg
-      name: FLOAT
+    args: !OptionalFlagArg
+      names:
+      - FLOAT
+      - FLOAT...
+      separator: ','
     optional: true
   command:
   - scanpy-find-cluster
   - louvain
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Show this message and exit.
@@ -124,8 +142,56 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Usage: scanpy-find-cluster louvain [OPTIONS] <input_obj> <output_obj>\n\
+    \n  Find clusters by Louvain algorithm.\n\n  <input_obj>:   input file in format\
+    \ specfied by --input-format\n  <output_obj>:  output file in format specfied\
+    \ by --output-format\n\nOptions:\n  -f, --input-format [anndata|loom]\n      \
+    \                            Input object format.  [default: anndata]\n  -F, --output-format\
+    \ [anndata|loom|zarr]\n                                  Output object format.\
+    \  [default: anndata]\n  -z, --zarr-chunk-size INTEGER   Chunk size for writing\
+    \ output in zarr\n                                  format.  [default: 1000]\n\
+    \n  -X, --export-mtx PATH           When specified, using it as prefix for\n \
+    \                                 exporting mtx files. If not empty and not\n\
+    \                                  ending with \"/\" or \"_\", a \"_\" will be\n\
+    \                                  appended.\n\n  --show-obj [stdout|stderr] \
+    \     Print output object summary info to\n                                  specified\
+    \ stream.\n\n  --export-cluster FILE           Export embeddings in a tab-separated\
+    \ text\n                                  table.\n\n  --use-graph TEXT       \
+    \         Slot name under `.uns` that contains the KNN\n                     \
+    \             graph of which sparse adjacency matrix is\n                    \
+    \              used for clustering.  [default: neighbors]\n\n  --directed / --undirected\
+    \       Interpret the adjacency matrix as directed\n                         \
+    \         graph.  [default: True]\n\n  --use-weights                   Use weights\
+    \ from KNN graph.  [default:\n                                  False]\n\n  --restrict-to\
+    \ <TEXT TEXT[,TEXT...]>...\n                                  Restrict the clustering\
+    \ to the categories\n                                  within the key for sample\
+    \ annotation, in the\n                                  form of \"obs_key list_of_categories\"\
+    .\n                                  [default: None, None]\n\n  -S, --random-state\
+    \ INTEGER      Seed for random number generator.  [default:\n                \
+    \                  0]\n\n  --key-added TEXT[,TEXT...]      Key under which to\
+    \ add the computed results\n  --flavor [vtraag|igraph]        Choose between two\
+    \ packages for computing\n                                  the clustering. \"\
+    vtraag\" is much powerful,\n                                  and the default.\
+    \  [default: vtraag]\n\n  -r, --resolution FLOAT[,FLOAT...]\n                \
+    \                  For the default flavor \"vtraag\", you can\n              \
+    \                    provide a resolution. Higher resolution\n               \
+    \                   means finding more and smaller clusters.\n               \
+    \                   [default: 1]\n\n  --help                          Show this\
+    \ message and exit.\n"
+  generated_using: &id002
+  - --help
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: input_obj
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: output_obj
+    optional: false
   named:
   - !Flag
     description: '[anndata|loom] Input object format.  [default: anndata]'
@@ -210,22 +276,27 @@ subcommands:
       name: INTEGER
     optional: true
   - !Flag
-    description: '[,TEXT...]      Key under which to add the computed results'
+    description: Key under which to add the computed results
     synonyms:
     - --key-added
-    args: !SimpleFlagArg
-      name: TEXT
+    args: !OptionalFlagArg
+      names:
+      - TEXT
+      - TEXT...
+      separator: ','
     optional: true
   - !Flag
-    description: "[,FLOAT...] A parameter value controlling the coarseness of the\
-      \ clustering. Higher values lead to more clusters. Set to \"None\" if overriding\
-      \ --partition_type to one that doesn't accept `resolution_parameter`.  [default:\
-      \ 1]"
+    description: "A parameter value controlling the coarseness of the clustering.\
+      \ Higher values lead to more clusters. Set to \"None\" if overriding --partition_type\
+      \ to one that doesn't accept `resolution_parameter`.  [default: 1]"
     synonyms:
     - -r
     - --resolution
-    args: !SimpleFlagArg
-      name: FLOAT
+    args: !OptionalFlagArg
+      names:
+      - FLOAT
+      - FLOAT...
+      separator: ','
     optional: true
   - !Flag
     description: 'How many iterations of the Leiden clustering algorithm to perform.
@@ -239,6 +310,7 @@ subcommands:
   command:
   - scanpy-find-cluster
   - leiden
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Show this message and exit.
@@ -248,6 +320,45 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Usage: scanpy-find-cluster leiden [OPTIONS] <input_obj> <output_obj>\n\
+    \n  Find clusters by Leiden algorithm.\n\n  <input_obj>:   input file in format\
+    \ specfied by --input-format\n  <output_obj>:  output file in format specfied\
+    \ by --output-format\n\nOptions:\n  -f, --input-format [anndata|loom]\n      \
+    \                            Input object format.  [default: anndata]\n  -F, --output-format\
+    \ [anndata|loom|zarr]\n                                  Output object format.\
+    \  [default: anndata]\n  -z, --zarr-chunk-size INTEGER   Chunk size for writing\
+    \ output in zarr\n                                  format.  [default: 1000]\n\
+    \n  -X, --export-mtx PATH           When specified, using it as prefix for\n \
+    \                                 exporting mtx files. If not empty and not\n\
+    \                                  ending with \"/\" or \"_\", a \"_\" will be\n\
+    \                                  appended.\n\n  --show-obj [stdout|stderr] \
+    \     Print output object summary info to\n                                  specified\
+    \ stream.\n\n  --export-cluster FILE           Export embeddings in a tab-separated\
+    \ text\n                                  table.\n\n  --use-graph TEXT       \
+    \         Slot name under `.uns` that contains the KNN\n                     \
+    \             graph of which sparse adjacency matrix is\n                    \
+    \              used for clustering.  [default: neighbors]\n\n  --directed / --undirected\
+    \       Interpret the adjacency matrix as directed\n                         \
+    \         graph.  [default: True]\n\n  --use-weights                   Use weights\
+    \ from KNN graph.  [default:\n                                  False]\n\n  --restrict-to\
+    \ <TEXT TEXT[,TEXT...]>...\n                                  Restrict the clustering\
+    \ to the categories\n                                  within the key for sample\
+    \ annotation, in the\n                                  form of \"obs_key list_of_categories\"\
+    .\n                                  [default: None, None]\n\n  -S, --random-state\
+    \ INTEGER      Seed for random number generator.  [default:\n                \
+    \                  0]\n\n  --key-added TEXT[,TEXT...]      Key under which to\
+    \ add the computed results\n  -r, --resolution FLOAT[,FLOAT...]\n            \
+    \                      A parameter value controlling the coarseness\n        \
+    \                          of the clustering. Higher values lead to\n        \
+    \                          more clusters. Set to \"None\" if overriding\n    \
+    \                              --partition_type to one that doesn't accept\n \
+    \                                 `resolution_parameter`.  [default: 1]\n\n  --n-iterations\
+    \ INTEGER          How many iterations of the Leiden clustering\n            \
+    \                      algorithm to perform. -1 has the algorithm\n          \
+    \                        run until it reaches its optimal clustering.\n      \
+    \                            [default: -1]\n\n  --help                       \
+    \   Show this message and exit.\n"
+  generated_using: *id002
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -256,3 +367,8 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "Usage: scanpy-find-cluster [OPTIONS] COMMAND [ARGS]...\n\n  Cluster cells\
+  \ into sub-populations.\n\nOptions:\n  --help  Show this message and exit.\n\nCommands:\n\
+  \  louvain  Find clusters by Louvain algorithm.\n  leiden   Find clusters by Leiden\
+  \ algorithm.\n"
+generated_using: *id002

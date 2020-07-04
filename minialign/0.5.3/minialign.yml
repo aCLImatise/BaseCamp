@@ -1,5 +1,15 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: first
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: trial
+  optional: false
 named:
 - !Flag
   description: load preset params {pacbio,ont,ava} [ont]
@@ -127,7 +137,33 @@ named:
   optional: true
 command:
 - minialign
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "minialign: invalid option -- '-'\nminialign: invalid option -- 'e'\n\n\
+  \  minialign - fast aligner for PacBio and Nanopore long reads\n\nminialign is a\
+  \ fast long-read (nucleotide sequence) alignment tool built on\nthe top of minimap\
+  \ long-read overlapper adopting libgaba SIMD-parallelized\nSmith-Waterman extension\
+  \ algorithm.\n\nUsage:\n  first trial:\n    $ minialign -t4 -xont <ref.fa> <ont2d.{fa,fq,bam}>\
+  \ > mapping.sam\n\n  mapping on a prebuilt index (saves ~1min for human genome per\
+  \ run):\n    $ minialign [indexing options] -d <index.mai> <ref.fa>\n    $ minialign\
+  \ -l <index.mai> <reads.{fa,fq,bam}> > mapping.sam\n\n  all-versus-all alignment\
+  \ in a read set:\n    $ minialign -X -xava <reads.fa> [<reads.fa> ...] > allvsall.paf\n\
+  \nOptions:\n  Global:\n    -x STR       load preset params {pacbio,ont,ava} [ont]\n\
+  \    -t INT       number of threads [1]\n    -X           switch to all-versus-all\
+  \ alignment mode\n    -v           show version number [0.5.2-unknown]\n  Indexing:\n\
+  \    -k INT       k-mer size [15]\n    -w INT       minimizer window size [{-k}*2/3]\n\
+  \    -d FILE      dump index to FILE []\n    -l FILE      load index from FILE []\
+  \ (overriding -k and -w)\n  Mapping:\n    -a INT       match award [1]\n    -b INT\
+  \       mismatch penalty [1]\n    -p INT       gap open penalty [1]\n    -q INT\
+  \       gap extension penalty [1]\n    -s INT       minimum alignment score [50]\n\
+  \    -m INT       minimum alignment score ratio [0.30]\n  Output:\n    -O STR  \
+  \     output format {sam,maf,blast6,blasr1,blasr4,paf,mhap,falcon} [sam]\n    -Q\
+  \           include quality string\n    -R STR       read group header line, like\
+  \ \"@RG\\tID:1\" []\n    -T STR,...   list of optional tags: {RG,AS,XS,NM,NH,IH,SA,MD}\
+  \ []\n                   RG is also inferred from -R\n                   supp. records\
+  \ are omitted when SA tag is enabled\n\n  Pass -hVV to show all the options.\n\n"
+generated_using:
+- --help

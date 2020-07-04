@@ -20,11 +20,11 @@ named:
   synonyms:
   - --tool
   args: !ChoiceFlagArg
-    choices:
-    - BreakDancer
-    - BreakSeq
-    - CNVnator
-    - Pindel
+    choices: !!set
+      BreakDancer:
+      CNVnator:
+      Pindel:
+      BreakSeq:
   optional: true
 - !Flag
   description: 'Sample name (default: None)'
@@ -54,6 +54,7 @@ named:
   optional: true
 command:
 - svtool_to_vcf.py
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -64,3 +65,17 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: svtool_to_vcf.py [-h] [--input INPUT] [--output OUTPUT]\n     \
+  \                   [--tool {BreakDancer,BreakSeq,CNVnator,Pindel}]\n          \
+  \              --sample SAMPLE [--reference REFERENCE] [--sort]\n              \
+  \          [--index]\n\nConvert SV tool output file to VCF\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --input INPUT      \
+  \   SV tool output file (default: None)\n  --output OUTPUT       Output VCF to create\
+  \ (default: None)\n  --tool {BreakDancer,BreakSeq,CNVnator,Pindel}\n           \
+  \             Tool name (default: BreakDancer)\n  --sample SAMPLE       Sample name\
+  \ (default: None)\n  --reference REFERENCE\n                        Reference FASTA\
+  \ (default: None)\n  --sort                Sort the VCF records before writing (default:\
+  \ False)\n  --index               Tabix compress and index the output VCF (default:\n\
+  \                        False)\n"
+generated_using:
+- --help

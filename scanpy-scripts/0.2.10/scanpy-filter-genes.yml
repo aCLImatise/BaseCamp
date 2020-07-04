@@ -1,5 +1,15 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: input_obj
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: output_obj
+  optional: false
 named:
 - !Flag
   description: '[anndata|loom] Input object format.  [default: anndata]'
@@ -93,6 +103,7 @@ named:
   optional: true
 command:
 - scanpy-filter-genes
+parent:
 subcommands: []
 help_flag: !Flag
   description: Show this message and exit.
@@ -102,3 +113,42 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "Usage: scanpy-filter-genes [OPTIONS] <input_obj> <output_obj>\n\n  Filter\
+  \ data based on specified conditions.\n\n  <input_obj>:   input file in format specfied\
+  \ by --input-format\n  <output_obj>:  output file in format specfied by --output-format\n\
+  \nOptions:\n  -f, --input-format [anndata|loom]\n                              \
+  \    Input object format.  [default: anndata]\n  -F, --output-format [anndata|loom|zarr]\n\
+  \                                  Output object format.  [default: anndata]\n \
+  \ -z, --zarr-chunk-size INTEGER   Chunk size for writing output in zarr\n      \
+  \                            format.  [default: 1000]\n\n  -X, --export-mtx PATH\
+  \           When specified, using it as prefix for\n                           \
+  \       exporting mtx files. If not empty and not\n                            \
+  \      ending with \"/\" or \"_\", a \"_\" will be\n                           \
+  \       appended.\n\n  --show-obj [stdout|stderr]      Print output object summary\
+  \ info to\n                                  specified stream.\n\n  -g, --gene-name\
+  \ TEXT            Name of the variable that contains gene\n                    \
+  \              names, used for flagging mitochondria genes\n                   \
+  \               when column \"mito\" is absent from `.var`.\n                  \
+  \                [default: index]\n\n  -l, --list-attr                 When set,\
+  \ list attributes that can be\n                                  filtered on.\n\n\
+  \  -p, --param <TEXT FLOAT FLOAT>...\n                                  Numerical\
+  \ parameters used to filter the\n                                  data, in the\
+  \ format of \"-p name min max\".\n                                  Multiple -p\
+  \ entries allowed.\n\n  -c, --category <TEXT TEXT[,TEXT...]>...\n              \
+  \                    Categorical attributes used to filter the\n               \
+  \                   data, in the format of \"-c <name> <values>\",\n           \
+  \                       where entries with attribute <name> with\n             \
+  \                     value in <values> are kept. If <values> is\n             \
+  \                     preceded by \"!\", entries with value in\n               \
+  \                   <values> are removed. Multiple -c entries\n                \
+  \                  allowed.\n\n  -s, --subset <TEXT FILENAME>...\n             \
+  \                     Similar to --category in the format of \"-s\n            \
+  \                      <name> <file>\", but the <file> to be a one-\n          \
+  \                        column table that provides the values.\n              \
+  \                    Multiple -s entries allowed.\n\n  --force-recalc          \
+  \        When set, re-calculate\n                                  `pct_counts_<qc_variable>`\
+  \ and\n                                  `pct_counts_in_top_<n>_genes` even if they\n\
+  \                                  exist.\n\n  --help                          Show\
+  \ this message and exit.\n"
+generated_using:
+- --help

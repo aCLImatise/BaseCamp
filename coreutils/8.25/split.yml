@@ -1,5 +1,35 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: split into N files based on size of input
+  position: 0
+  name: N
+  optional: false
+- !Positional
+  description: output Kth of N to stdout
+  position: 1
+  name: K/N
+  optional: false
+- !Positional
+  description: split into N files without splitting lines/records
+  position: 2
+  name: l/N
+  optional: false
+- !Positional
+  description: output Kth of N to stdout without splitting lines/records
+  position: 3
+  name: l/K/N
+  optional: false
+- !Positional
+  description: like 'l' but use round robin distribution
+  position: 4
+  name: r/N
+  optional: false
+- !Positional
+  description: likewise but only output Kth of N to stdout
+  position: 5
+  name: r/K/N
+  optional: false
 named:
 - !Flag
   description: generate suffixes of length N (default 2)
@@ -98,6 +128,7 @@ named:
   optional: true
 command:
 - split
+parent:
 subcommands: []
 help_flag: !Flag
   description: this help and exit
@@ -114,3 +145,32 @@ version_flag: !Flag
   args: !SimpleFlagArg
     name: output
   optional: true
+help_text: "Usage: split [OPTION]... [FILE [PREFIX]]\nOutput pieces of FILE to PREFIXaa,\
+  \ PREFIXab, ...;\ndefault size is 1000 lines, and default PREFIX is 'x'.\n\nWith\
+  \ no FILE, or when FILE is -, read standard input.\n\nMandatory arguments to long\
+  \ options are mandatory for short options too.\n  -a, --suffix-length=N   generate\
+  \ suffixes of length N (default 2)\n      --additional-suffix=SUFFIX  append an\
+  \ additional SUFFIX to file names\n  -b, --bytes=SIZE        put SIZE bytes per\
+  \ output file\n  -C, --line-bytes=SIZE   put at most SIZE bytes of records per output\
+  \ file\n  -d                      use numeric suffixes starting at 0, not alphabetic\n\
+  \      --numeric-suffixes[=FROM]  same as -d, but allow setting the start value\n\
+  \  -e, --elide-empty-files  do not generate empty output files with '-n'\n     \
+  \ --filter=COMMAND    write to shell COMMAND; file name is $FILE\n  -l, --lines=NUMBER\
+  \      put NUMBER lines/records per output file\n  -n, --number=CHUNKS     generate\
+  \ CHUNKS output files; see explanation below\n  -t, --separator=SEP     use SEP\
+  \ instead of newline as the record separator;\n                            '\\0'\
+  \ (zero) specifies the NUL character\n  -u, --unbuffered        immediately copy\
+  \ input to output with '-n r/...'\n      --verbose           print a diagnostic\
+  \ just before each\n                            output file is opened\n      --help\
+  \ display this help and exit\n      --version output version information and exit\n\
+  \nThe SIZE argument is an integer and optional unit (example: 10K is 10*1024).\n\
+  Units are K,M,G,T,P,E,Z,Y (powers of 1024) or KB,MB,... (powers of 1000).\n\nCHUNKS\
+  \ may be:\n  N       split into N files based on size of input\n  K/N     output\
+  \ Kth of N to stdout\n  l/N     split into N files without splitting lines/records\n\
+  \  l/K/N   output Kth of N to stdout without splitting lines/records\n  r/N    \
+  \ like 'l' but use round robin distribution\n  r/K/N   likewise but only output\
+  \ Kth of N to stdout\n\nGNU coreutils online help: <http://www.gnu.org/software/coreutils/>\n\
+  Full documentation at: <http://www.gnu.org/software/coreutils/split>\nor available\
+  \ locally via: info '(coreutils) split invocation'\n"
+generated_using:
+- --help

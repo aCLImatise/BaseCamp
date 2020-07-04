@@ -224,8 +224,15 @@ named:
   args: !SimpleFlagArg
     name: f
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -options
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - ssu-cmalign
+parent:
 subcommands: []
 help_flag: !Flag
   description: ': show brief help on version and usage'
@@ -235,3 +242,42 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "# ssu-cmalign :: align sequences to an RNA CM\n# INFERNAL s0.1.1 (Feb\
+  \ 2016)\n# Copyright (C) 2016 Howard Hughes Medical Institute.\n# Freely distributed\
+  \ under the BSD open source license.\n# - - - - - - - - - - - - - - - - - - - -\
+  \ - - - - - - - - - - - - - - - -\nUsage: ssu-cmalign [-options] <cmfile> <sequence\
+  \ file>\n\nwhere basic options are:\n  -h             : show brief help on version\
+  \ and usage\n  -o <f>         : output the alignment to file <f>, not stdout\n \
+  \ -l             : align locally w.r.t. the model\n  -q             : quiet; suppress\
+  \ banner and scores, print only the alignment\n  -M <f>         : meta-cm mode:\
+  \ <cmfile> is a meta-cm built from aln in <f>\n  --ileaved      : output alnment\
+  \ in interleaved Stockholm format (not 1 line/seq)\n  --no-prob      : do not append\
+  \ posterior probabilities to alignment\n  --informat <s> : specify the input file\
+  \ is in format <x>, not FASTA\n  --chunk <n>    : num seqs for each temp alnment,\
+  \ for saving memory  [1000]\n  --devhelp      : show list of undocumented developer\
+  \ options\n\nalignment algorithm related options:\n  --optacc  : align with the\
+  \ Holmes/Durbin optimal accuracy algorithm\n  --cyk     : align with the CYK algorithm\n\
+  \  --sample  : sample alignment of each seq from posterior distribution\n  -s <n>\
+  \    : w/--sample, set RNG seed to <n> (if 0: one-time arbitrary seed)\n  --viterbi\
+  \ : align to a CM Plan 9 HMM with the Viterbi algorithm\n  --sub     : build sub\
+  \ CM for columns b/t HMM predicted start/end points\n  --small   : use divide and\
+  \ conquer (d&c) alignment algorithm\n\nbanded dynamic programming acceleration options:\n\
+  \  --hbanded    : accelerate using CM plan 9 HMM derived bands  [default]\n  --nonbanded\
+  \  : do not use bands to accelerate aln algorithm\n  --tau <x>    : set tail loss\
+  \ prob for --hbanded to <x>  [1E-7]  (0<x<1)\n  --mxsize <x> : set maximum allowable\
+  \ DP matrix size to <x> Mb  [2048.0]  (x>0.)\n\noutput options:\n  --rna       :\
+  \ output alignment as RNA sequence data\n  --dna       : output alignment as DNA\
+  \ (not RNA) sequence data\n  --matchonly : include only match columns in output\
+  \ alignment\n\noptions for including a fixed alignment within output alignment:\n\
+  \  --withali <f>   : incl. alignment in <f> (must be aln <cm file> was built from)\n\
+  \  --withpknots    : incl. structure (w/pknots) from <f> from --withali <f>\n  --rf\
+  \            : --rf was originally used with cmbuild\n  --gapthresh <x> : --gapthresh\
+  \ <x> was originally used with cmbuild  [0.5]\n\nusing a single CM from a multi-CM\
+  \ file:\n  --cm-idx <n>  : only align seqs with CM number <n>    in the CM file\
+  \  (n>0)\n  --cm-name <s> : only align seqs with the CM named <s> in the CM file\n\
+  \nverbose output files and debugging:\n  --tfile <f>  : dump individual sequence\
+  \ parsetrees to file <f>\n  --ifile <f>  : dump information on per-sequence inserts\
+  \ to file <f>\n  --elfile <f> : dump information on per-sequence EL inserts to file\
+  \ <f>\n  --sfile <f>  : dump alignment score information to file <f>\n"
+generated_using:
+- -h

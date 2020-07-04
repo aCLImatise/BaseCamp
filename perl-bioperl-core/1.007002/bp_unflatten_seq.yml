@@ -1,31 +1,5 @@
 !Command
-positional:
-- !Positional
-  description: 1..2701[+]
-  position: 0
-  name: databank_entry
-  optional: false
-- !Positional
-  description: mRNA                                            CDS hCHCR-G                                  80..1144[+]
-    exon                                         80..1144[+] five_prime_UTR                                 1..79[+]
-    located_sequence_feature                       137..196[+] located_sequence_feature                       239..292[+]
-    located_sequence_feature                       617..676[+] located_sequence_feature                       725..778[+]
-    three_prime_UTR                                1145..2659[+] polyA_site                                     1606..1606[+]
-    polyA_site                                     2660..2660[+]
-  position: 1
-  name: gene
-  optional: false
-- !Positional
-  description: mRNA CG3320-RA                                  CDS CG3320-PA                                53126..54971[-]
-    exon                                         52204..53323[-] exon                                         53404..53631[-]
-    exon                                         53688..53735[-] exon                                         53798..53918[-]
-    exon                                         54949..55287[-] mRNA CG3320-RB                                  CDS
-    CG3320-PB                                53383..54971[-] exon                                         52204..53631[-]
-    exon                                         53688..53735[-] exon                                         53798..53918[-]
-    exon                                         54949..55287[-]
-  position: 0
-  name: gene
-  optional: false
+positional: []
 named:
 - !Flag
   description: '|input FILE input file (can also be specified as last argument)'
@@ -90,7 +64,77 @@ named:
   optional: true
 command:
 - bp_unflatten_seq.pl
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "\e[1mNAME\e[0m\n    bp_unflatten_seq - unflatten a genbank or genbank-style\
+  \ feature file into\n    a nested SeqFeature hierarchy\n\n\e[1mSYNOPSIS\e[0m\n \
+  \     bp_unflatten_seq.PLS -e 3 -gff ~/cvs/bioperl-live/t/data/AE003644_Adh-genomic.gb\n\
+  \n      bp_unflatten_seq.PLS --detail ~/cvs/bioperl-live/t/data/AE003644_Adh-genomic.gb\n\
+  \n      bp_unflatten_seq.PLS -i foo.embl --from embl --to chadoxml -o out.chado.xml\n\
+  \n      bp_unflatten_seq.PLS --notypemap --detail --to asciitree -ethresh 2 AE003644_Adh-genomic.gb\n\
+  \n\e[1mDESCRIPTION\e[0m\n    This script will \e[1munflatten\e[0m a genbank or genbank-style\
+  \ file of SeqFeatures\n    into a nested hierarchy.\n\n    See Bio::SeqFeature::Tools::Unflattener\n\
+  \n    In a GenBank/EMBL representation, features are 'flat' - for example, there\n\
+  \    is no link between an mRNA and a CDS, other than implicit links (eg via\n \
+  \   tags or via splice site coordinates) which may be hard to code for.\n\n    This\
+  \ is most easily illustrated with the default output format,\n    \e[1masciitree\e\
+  [0m\n\n    An unflattened genbank feature set may look like this (AB077698)\n\n\
+  \      Seq: AB077698\n        databank_entry                                   1..2701[+]\n\
+  \        gene                                             \n          mRNA     \
+  \                                      \n            CDS hCHCR-G               \
+  \                   80..1144[+]\n            exon                              \
+  \           80..1144[+]\n          five_prime_UTR                              \
+  \   1..79[+]\n          located_sequence_feature                       137..196[+]\n\
+  \          located_sequence_feature                       239..292[+]\n        \
+  \  located_sequence_feature                       617..676[+]\n          located_sequence_feature\
+  \                       725..778[+]\n          three_prime_UTR                 \
+  \               1145..2659[+]\n          polyA_site                            \
+  \         1606..1606[+]\n          polyA_site                                  \
+  \   2660..2660[+]\n\n    Or like this (portion of AE003734)\n\n      gene      \
+  \                                       \n        mRNA CG3320-RA               \
+  \                  \n          CDS CG3320-PA                                53126..54971[-]\n\
+  \          exon                                         52204..53323[-]\n      \
+  \    exon                                         53404..53631[-]\n          exon\
+  \                                         53688..53735[-]\n          exon      \
+  \                                   53798..53918[-]\n          exon            \
+  \                             54949..55287[-]\n        mRNA CG3320-RB          \
+  \                       \n          CDS CG3320-PB                              \
+  \  53383..54971[-]\n          exon                                         52204..53631[-]\n\
+  \          exon                                         53688..53735[-]\n      \
+  \    exon                                         53798..53918[-]\n          exon\
+  \                                         54949..55287[-]\n\n    The unflattening\
+  \ will also 'normalize' the containment hierarchy (in the\n    sense of standardising\
+  \ it - e.g. making sure there is always a transcript\n    record, even if genbank\
+  \ just specifies CDS and gene)\n\n    By default, the GenBank types will be mapped\
+  \ to SO types\n\n    See Bio::SeqFeature::Tools::TypeMapper\n\n\e[1mCOMMAND LINE\
+  \ ARGUMENTS\e[0m\n    -i|input FILE\n        input file (can also be specified as\
+  \ last argument)\n\n    -from FORMAT\n        input format (defaults to genbank)\n\
+  \n        probably doesn't make so much sense to use this for non-flat formats;\n\
+  \        ie other than embl/genbank\n\n    -to FORMAT\n        output format (defaults\
+  \ to asciitree)\n\n        should really be a format that is nested SeqFeature aware;\
+  \ I think\n        this is only asciitree, chadoxml and gff3\n\n    -gff\n     \
+  \   with export to GFF3 format (pre-3 GFFs make no sense with unflattened\n    \
+  \    sequences, as they have no set way of representing feature graphs)\n\n    -o|output\
+  \ FILE\n        outfile defaults to STDOUT\n\n    -detail\n        show extra detail\
+  \ on features (asciitree mode only)\n\n    -e|ethresh INT\n        sets the error\
+  \ threshold on unflattening\n\n        by default this script will throw a wobbly\
+  \ if it encounters weird\n        stuff in the genbank file - raise the error threshold\
+  \ to signal these\n        to be ignored (and reported on STDERR)\n\n    -nomagic\n\
+  \        suppress use_magic in unflattening (see\n        Bio::SeqFeature::Tools::Unflattener\n\
+  \n    -notypemap\n        suppress type mapping (see Bio::SeqFeature::Tools::TypeMapper\n\
+  \n\e[1mTODO\e[0m\n    Bio::SeqFeature::Tools::Unflattener allows fine-grained control\
+  \ over the\n    unflattening process - need to add more options to allow this control\
+  \ at\n    the command line\n\n\e[1mFEEDBACK\e[0m\n  \e[1mMailing Lists\e[0m\n  \
+  \  User feedback is an integral part of the evolution of this and other\n    Bioperl\
+  \ modules. Send your comments and suggestions preferably to the\n    Bioperl mailing\
+  \ list. Your participation is much appreciated.\n\n      bioperl-l@bioperl.org \
+  \                 - General discussion\n      http://bioperl.org/wiki/Mailing_lists\
+  \  - About the mailing lists\n\n  \e[1mReporting Bugs\e[0m\n    Report bugs to the\
+  \ Bioperl bug tracking system to help us keep track of\n    the bugs and their resolution.\
+  \ Bug reports can be submitted via email or\n    the web:\n\n      https://github.com/bioperl/bioperl-live/issues\n\
+  \n\e[1mAUTHOR\e[0m\n     Chris Mungall E<lt>cjm-at-bioperl.orgE<gt>\n\n"
+generated_using:
+- --help

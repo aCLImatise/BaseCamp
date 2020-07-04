@@ -3,7 +3,56 @@ positional: []
 named: []
 command:
 - TSSAR.bak
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "Usage:\n    ./TSSAR --libP libraryP.sam --libM libraryM.sam [--score p|d]\
+  \ [--fasta\n    genome.fa --g_size INT] [--minPeak INT] [--pval FLOAT] [--winSize\
+  \ INT]\n    [--verbose] [--noclean] [--nocluster] [-range INT]] [<--tmpdir> DIR]\n\
+  \    [--help|?] [--man]\n\nOptions:\n    --libP libraryP.sam AND --libM libraryM.sam\n\
+  \        Input library (P .. Plus; M .. Minus) in SAM format. The plus\n       \
+  \ library is the one with enriched TSS (for dRNA-seq this means that\n        the\
+  \ plus library is the treated library, while the minus library is\n        the untreated\
+  \ library)\n\n    --fasta genome.fa OR --g_size INT\n        Either the location\
+  \ of reference genome sequence in fasta file\n        format OR the genome size\
+  \ in INT. The fasta file is only used to\n        parse the genome size so just\
+  \ one of the two must be specified.\n\n    --minPeak INT\n        Minimal Peak size\
+  \ in INT. Only positions where read start count in\n        the (+)library is greater\
+  \ or equal then INT are evaluated to be a\n        TSS. Positions with less reads\
+  \ are seen as backgroound noise and not\n        considered. Default is 3.\n\n \
+  \   --pval FLOAT\n        Maximal P-value for each position to be annotated as a\
+  \ TSS. Default\n        is 1e-04.\n\n    --winSize INT\n        Size of the window\
+  \ which slides over the genome and defines the\n        statistical properties of\
+  \ the local model. Default is 1,000.\n\n    --verbose\n        If set, some progress\
+  \ reports are printed to STDERR during\n        computation.\n\n    --prorata\n\
+  \        If set, the information from the SAM file how many times a read was\n \
+  \       mapped to the genome is used, if present. If the read maps n times\n   \
+  \     to the genome, each position is counted only 1/n times. Usefull in\n     \
+  \   combination with e.g. segemehl mapper, which can report suboptimal\n       \
+  \ mapping positions and/or reports all location where a read maps\n        optimally.\
+  \ Default is off.\n\n    --score p|d\n        If score mode is p the p-value is\
+  \ used as score in the TSS BED file.\n        If score mode is d the peak difference\
+  \ is used as score in the TSS\n        BED file. Default is d. Also used for clustering,\
+  \ which advices to\n        use 'd', since the p-value often becomes zero for consecutive\n\
+  \        positions, thus disabling a proper merging of consecutive positions\n \
+  \       to the best one.\n\n    --nocluster | --cluster\n        If --nocluster\
+  \ is set all positions annotated as TSS are reported.\n        If --cluster is set\
+  \ consecutive TSS positions are clustered and only\n        the 'best' position\
+  \ is reported. 'Best' position depends on the\n        setting of --score (see above).\
+  \ Either the position with the lowest\n        p-Value or the position with the\
+  \ highest peak difference between\n        plus and minus library is reported. Default\
+  \ is --cluster. The option\n        --range defines the maximal distance for two\
+  \ significant positions\n        to be called 'consecutive'.\n\n    --range INT\n\
+  \        The maximal distance for two significant positions to be be\n        clustered\
+  \ together if option --cluster is set. Default is 3 nt. If\n        --cluster is\
+  \ set to --nocluster, --range is ignored.\n\n    --clean | --noclean\n        If\
+  \ --clean is set, all temporary files which are created during the\n        computation\
+  \ are deleted afterwards. With --noclean they are stored.\n        Mainly for debugging\
+  \ purpose. Default setting is --clean.\n\n    --tmpdir DIR\n        Specifies where\
+  \ the temporary files should be stored. Default is\n        /tmp.\n\n    --man\n\
+  \        Print a long version of the man-page.\n\n    --[help|?]\n        Print\
+  \ a short version of the man-page.\n\n"
+generated_using:
+- --help

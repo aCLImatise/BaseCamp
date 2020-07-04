@@ -99,27 +99,6 @@ named:
     name: string
   optional: true
 - !Flag
-  description: <pacbio, ont>,  --presets <pacbio, ont> Parameter presets for different
-    sequencing technologies [pacbio]
-  synonyms:
-  - -x
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <0-1>,  --min-identity <0-1> Alignments with an identity lower than
-    this threshold will be discarded [0.65]
-  synonyms:
-  - -i
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: <int/float>,  --min-residues <int/float> Alignments containing less
-    than <int> or (<float> * read length) residues will be discarded [0.25]
-  synonyms:
-  - -R
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: Don't detect small inversions [false]
   synonyms:
   - --no-smallinv
@@ -141,54 +120,6 @@ named:
   description: Don't print progress info while mapping [false]
   synonyms:
   - --no-progress
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Match score [2]
-  synonyms:
-  - --match
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: Mismatch score [-5]
-  synonyms:
-  - --mismatch
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: Gap open score [-5]
-  synonyms:
-  - --gap-open
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: Gap open extend max [-5]
-  synonyms:
-  - --gap-extend-max
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: Gap open extend min [-1]
-  synonyms:
-  - --gap-extend-min
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: Gap extend decay [0.15]
-  synonyms:
-  - --gap-decay
-  args: !SimpleFlagArg
-    name: float
-  optional: true
-- !Flag
-  description: <10-15>,  --kmer-length <10-15> K-mer length in bases [13]
-  synonyms:
-  - -k
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -227,9 +158,72 @@ named:
   args: !SimpleFlagArg
     name: int
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -r
+  args: !SimpleFlagArg
+    name: reference
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -q
+  args: !SimpleFlagArg
+    name: reads
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: output
+  optional: true
 command:
 - ngmlr
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "ngmlr 0.2.7 (build: Mar  8 2019 09:29:16, start: 2020-06-25.15:06:30)\n\
+  Contact: philipp.rescheneder@univie.ac.at\n\nUsage: ngmlr [options] -r <reference>\
+  \ -q <reads> [-o <output>]\n\nInput/Output:\n    -r <file>,  --reference <file>\n\
+  \        (required)  Path to the reference genome (FASTA/Q, can be gzipped)\n  \
+  \  -q <file>,  --query <file>\n        Path to the read file (FASTA/Q) [/dev/stdin]\n\
+  \    -o <string>,  --output <string>\n        Adds RG:Z:<string> to all alignments\
+  \ in SAM/BAM [none]\n    --skip-write\n        Don't write reference index to disk\
+  \ [false]\n    --bam-fix\n        Report reads with > 64k CIGAR operations as unmapped.\
+  \ Required to be compatibel to BAM format [false]\n    --rg-id <string>\n      \
+  \  Adds RG:Z:<string> to all alignments in SAM/BAM [none]\n    --rg-sm <string>\n\
+  \        RG header: Sample [none]\n    --rg-lb <string>\n        RG header: Library\
+  \ [none]\n    --rg-pl <string>\n        RG header: Platform [none]\n    --rg-ds\
+  \ <string>\n        RG header: Description [none]\n    --rg-dt <string>\n      \
+  \  RG header: Date (format: YYYY-MM-DD) [none]\n    --rg-pu <string>\n        RG\
+  \ header: Platform unit [none]\n    --rg-pi <string>\n        RG header: Median\
+  \ insert size [none]\n    --rg-pg <string>\n        RG header: Programs [none]\n\
+  \    --rg-cn <string>\n        RG header: sequencing center [none]\n    --rg-fo\
+  \ <string>\n        RG header: Flow order [none]\n    --rg-ks <string>\n       \
+  \ RG header: Key sequence [none]\n\nGeneral:\n    -t <int>,  --threads <int>\n \
+  \       Number of threads [1]\n    -x <pacbio, ont>,  --presets <pacbio, ont>\n\
+  \        Parameter presets for different sequencing technologies [pacbio]\n    -i\
+  \ <0-1>,  --min-identity <0-1>\n        Alignments with an identity lower than this\
+  \ threshold will be discarded [0.65]\n    -R <int/float>,  --min-residues <int/float>\n\
+  \        Alignments containing less than <int> or (<float> * read length) residues\
+  \ will be discarded [0.25]\n    --no-smallinv\n        Don't detect small inversions\
+  \ [false]\n    --no-lowqualitysplit\n        Split alignments with poor quality\
+  \ [false]\n    --verbose\n        Debug output [false]\n    --no-progress\n    \
+  \    Don't print progress info while mapping [false]\n\nAdvanced:\n    --match <float>\n\
+  \        Match score [2]\n    --mismatch <float>\n        Mismatch score [-5]\n\
+  \    --gap-open <float>\n        Gap open score [-5]\n    --gap-extend-max <float>\n\
+  \        Gap open extend max [-5]\n    --gap-extend-min <float>\n        Gap open\
+  \ extend min [-1]\n    --gap-decay <float>\n        Gap extend decay [0.15]\n  \
+  \  -k <10-15>,  --kmer-length <10-15>\n        K-mer length in bases [13]\n    --kmer-skip\
+  \ <int>\n        Number of k-mers to skip when building the lookup table from the\
+  \ reference [2]\n    --bin-size <int>\n        Sets the size of the grid used during\
+  \ candidate search [4]\n    --max-segments <int>\n        Max number of segments\
+  \ allowed for a read per kb [1]\n    --subread-length <int>\n        Length of fragments\
+  \ reads are split into [256]\n    --subread-corridor <int>\n        Length of corridor\
+  \ sub-reads are aligned with [40]\n\n"
+generated_using:
+- --help

@@ -1,5 +1,25 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: OPTION
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: DURATION
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: COMMAND
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: ARG
+  optional: true
 named:
 - !Flag
   description: exit with the same status as COMMAND, even when the command times out
@@ -35,6 +55,7 @@ named:
   optional: true
 command:
 - timeout
+parent:
 subcommands: []
 help_flag: !Flag
   description: this help and exit
@@ -51,3 +72,28 @@ version_flag: !Flag
   args: !SimpleFlagArg
     name: output
   optional: true
+help_text: "Usage: timeout [OPTION] DURATION COMMAND [ARG]...\n  or:  timeout [OPTION]\n\
+  Start COMMAND, and kill it if still running after DURATION.\n\nMandatory arguments\
+  \ to long options are mandatory for short options too.\n      --preserve-status\n\
+  \                 exit with the same status as COMMAND, even when the\n        \
+  \           command times out\n      --foreground\n                 when not running\
+  \ timeout directly from a shell prompt,\n                   allow COMMAND to read\
+  \ from the TTY and get TTY signals;\n                   in this mode, children of\
+  \ COMMAND will not be timed out\n  -k, --kill-after=DURATION\n                 also\
+  \ send a KILL signal if COMMAND is still running\n                   this long after\
+  \ the initial signal was sent\n  -s, --signal=SIGNAL\n                 specify the\
+  \ signal to be sent on timeout;\n                   SIGNAL may be a name like 'HUP'\
+  \ or a number;\n                   see 'kill -l' for a list of signals\n      --help\
+  \ display this help and exit\n      --version output version information and exit\n\
+  \nDURATION is a floating point number with an optional suffix:\n's' for seconds\
+  \ (the default), 'm' for minutes, 'h' for hours or 'd' for days.\n\nIf the command\
+  \ times out, and --preserve-status is not set, then exit with\nstatus 124.  Otherwise,\
+  \ exit with the status of COMMAND.  If no signal\nis specified, send the TERM signal\
+  \ upon timeout.  The TERM signal kills\nany process that does not block or catch\
+  \ that signal.  It may be necessary\nto use the KILL (9) signal, since this signal\
+  \ cannot be caught, in which\ncase the exit status is 128+9 rather than 124.\n\n\
+  GNU coreutils online help: <http://www.gnu.org/software/coreutils/>\nFull documentation\
+  \ at: <http://www.gnu.org/software/coreutils/timeout>\nor available locally via:\
+  \ info '(coreutils) timeout invocation'\n"
+generated_using:
+- --help

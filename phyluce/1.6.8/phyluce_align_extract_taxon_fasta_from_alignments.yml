@@ -27,21 +27,21 @@ named:
   synonyms:
   - --input-format
   args: !ChoiceFlagArg
-    choices:
-    - nexus
-    - newick
-    - fasta
-    - phylip
+    choices: !!set
+      fasta:
+      phylip:
+      nexus:
+      newick:
   optional: true
 - !Flag
   description: The logging level to use.
   synonyms:
   - --verbosity
   args: !ChoiceFlagArg
-    choices:
-    - INFO
-    - WARN
-    - CRITICAL
+    choices: !!set
+      WARN:
+      CRITICAL:
+      INFO:
   optional: true
 - !Flag
   description: The path to a directory to hold logs.
@@ -52,6 +52,7 @@ named:
   optional: true
 command:
 - phyluce_align_extract_taxon_fasta_from_alignments
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -62,3 +63,19 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: phyluce_align_extract_taxon_fasta_from_alignments [-h] --alignments\n\
+  \                                                         ALIGNMENTS --taxon\n \
+  \                                                        TAXON --output OUTPUT\n\
+  \                                                         [--input-format {nexus,newick,fasta,phylip}]\n\
+  \                                                         [--verbosity {INFO,WARN,CRITICAL}]\n\
+  \                                                         [--log-path LOG_PATH]\n\
+  \nFrom a set of input alignments, create a FASTA file of all sequences\nassociated\
+  \ with a given taxon\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  --alignments ALIGNMENTS\n                        The directory\
+  \ of alignments\n  --taxon TAXON         The taxon to extract\n  --output OUTPUT\
+  \       The output FASTA file\n  --input-format {nexus,newick,fasta,phylip}\n  \
+  \                      The input format of the alignments\n  --verbosity {INFO,WARN,CRITICAL}\n\
+  \                        The logging level to use.\n  --log-path LOG_PATH   The\
+  \ path to a directory to hold logs.\n"
+generated_using:
+- --help

@@ -1,4 +1,4 @@
-!Command
+&id001 !Command
 positional: []
 named:
 - !Flag
@@ -41,6 +41,7 @@ named:
   optional: true
 command:
 - seqcoverage
+parent:
 subcommands:
 - !Command
   positional: []
@@ -82,6 +83,7 @@ subcommands:
   command:
   - seqcoverage
   - FASTA
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: ''
@@ -91,6 +93,10 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: seqcoverage [-h] [-o OUTPUT] [-a AMBIGS] [-t TYPE] [-d COUNTS_IN_NAME]\
+    \ [-q] [FASTA]\nseqcoverage: error: unknown argument: FASTA\n"
+  generated_using: &id002
+  - --help
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -100,3 +106,20 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: seqcoverage [-h] [-o OUTPUT] [-a AMBIGS] [-t TYPE] [-d COUNTS_IN_NAME]\
+  \ [-q] [FASTA]\n\ncompute per-position coverage from an MSA and report it as a JSON\n\
+  \noptional arguments:\n  -h, --help               show this help message and exit\n\
+  \  -o OUTPUT                direct the output JSON to a file named OUTPUT (default=stdout)\n\
+  \  -a AMBIGS                handle ambigous characters using one of the following\
+  \ strategies (default=skipover)\n                           average: average ambiguities\
+  \ (e.g. a nucleotide R adds 0.5 to A and G coverage for that position);\n      \
+  \                     ignore: ambiguities contribute nothing to coverage counts;\n\
+  \  -t DATATYPE              the type of data expected (default=DEFAULT_FORMAT)\n\
+  \                           dna: DNA or RNA (IUPAC);\n                         \
+  \  protein : protein (IUPAC);\n  -d COUNTS_IN_NAME        if sequence name is of\
+  \ the form 'somethingCOUNTS_IN_NAMEinteger' then treat the integer as a copy number\n\
+  \                           when computing coverages (a character, default=COUNTS_IN_NAME):\n\
+  \  -q                       do not report progress updates and other diagnostics\
+  \ to stderr \n  FASTA                    read sequences to compare from this file\
+  \ (default=stdin)\n"
+generated_using: *id002

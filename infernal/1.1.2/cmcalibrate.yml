@@ -140,8 +140,15 @@ named:
   args: !SimpleFlagArg
     name: n
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -options
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - cmcalibrate
+parent:
 subcommands: []
 help_flag: !Flag
   description: ': show brief help on version and usage'
@@ -151,3 +158,29 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "# cmcalibrate :: fit exponential tails for CM E-values\n# INFERNAL 1.1.2\
+  \ (July 2016)\n# Copyright (C) 2016 Howard Hughes Medical Institute.\n# Freely distributed\
+  \ under a BSD open source license.\n# - - - - - - - - - - - - - - - - - - - - -\
+  \ - - - - - - - - - - - - - - -\nUsage: cmcalibrate [-options] <cmfile>\n\nBasic\
+  \ options:\n  -h     : show brief help on version and usage\n  -L <x> : set random\
+  \ seq length to search in Mb to <x>  [1.6]  (0.01<=x<=160.)\n\nOptions for predicting\
+  \ running time and memory requirements:\n  --forecast      : don't do calibration,\
+  \ predict running time and exit\n  --nforecast <n> : w/--forecast, predict time\
+  \ with <n> processors (maybe for MPI)\n  --memreq        : don't do calibration,\
+  \ print required memory and exit\n  --noforecast    : do calibration, but skip running\
+  \ time prediction\n\nOptions controlling exponential tail fits:\n  --gtailn <n>\
+  \ : fit the top <n> hits/Mb in histogram for glocal modes [df: 250]\n  --ltailn\
+  \ <n> : fit the top <n> hits/Mb in histogram for  local modes [df: 750]\n  --tailp\
+  \ <x>  : set fraction of histogram tail to fit to exp tail to <x>\n\nOptional output\
+  \ files:\n  --hfile <f>  : save fitted score histogram(s) to file <f>\n  --sfile\
+  \ <f>  : save survival plot to file <f>\n  --qqfile <f> : save Q-Q plot for score\
+  \ histograms to file <f>\n  --ffile <f>  : save lambdas for different tail fit probs\
+  \ to file <f>\n  --xfile <f>  : save scores in fit tail to file <f>\n\nOther options:\n\
+  \  --seed <n>  : set RNG seed to <n> (if 0: one-time arbitrary seed)\n  --beta <x>\
+  \  : set tail loss prob for query dependent banding (QDB) to <x>\n  --nonbanded\
+  \ : do not use QDB\n  --nonull3   : turn OFF the NULL3 post hoc additional null\
+  \ model\n  --random    : use GC content of random null background model of CM\n\
+  \  --gc <f>    : use GC content distribution from file <f>\n  --cpu <n>   : number\
+  \ of parallel CPU workers to use for multithreads\n"
+generated_using:
+- -h

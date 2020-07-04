@@ -1,10 +1,5 @@
-!Command
-positional:
-- !Positional
-  description: input metapeptide database file
-  position: 0
-  name: metapeptidefile
-  optional: false
+&id001 !Command
+positional: []
 named:
 - !Flag
   description: output metapeptide database file
@@ -76,7 +71,53 @@ named:
   optional: true
 command:
 - sixgill_filter
-subcommands: []
+parent:
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: sixgill_filter
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --out
+    args: !SimpleFlagArg
+      name: OUT
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --minorflength
+    args: !SimpleFlagArg
+      name: MINORFLENGTH
+    optional: true
+  command:
+  - sixgill_filter
+  - metapeptidefile
+  parent: *id001
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: sixgill_filter [-h] --out OUT [--minorflength MINORFLENGTH]\n\
+    \                      [--minaaseqlength MINAASEQLENGTH]\n                   \
+    \   [--minreadcount MINREADCOUNT]\n                      [--minqualscore MINQUALSCORE]\n\
+    \                      [--minlongesttryppeplen MINLONGESTTRYPPEPLEN]\n       \
+    \               [--minmetagenescore MINMETAGENESCORE]\n                      [--maxmetapeptides\
+    \ MAXMETAPEPTIDES] [--nogzipout]\n                      [--debug] [--version]\n\
+    \                      metapeptidefile\nsixgill_filter: error: argument metapeptidefile:\
+    \ can't open 'metapeptidefile': [Errno 2] No such file or directory: 'metapeptidefile'\n"
+  generated_using: &id002
+  - --help
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -91,3 +132,24 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: sixgill_filter [-h] --out OUT [--minorflength MINORFLENGTH]\n \
+  \                     [--minaaseqlength MINAASEQLENGTH]\n                      [--minreadcount\
+  \ MINREADCOUNT]\n                      [--minqualscore MINQUALSCORE]\n         \
+  \             [--minlongesttryppeplen MINLONGESTTRYPPEPLEN]\n                  \
+  \    [--minmetagenescore MINMETAGENESCORE]\n                      [--maxmetapeptides\
+  \ MAXMETAPEPTIDES] [--nogzipout]\n                      [--debug] [--version]\n\
+  \                      metapeptidefile\n\nFilter a metapeptide database.\n\npositional\
+  \ arguments:\n  metapeptidefile       input metapeptide database file\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --out OUT\
+  \             output metapeptide database file\n  --minorflength MINORFLENGTH\n\
+  \                        minimum ORF length\n  --minaaseqlength MINAASEQLENGTH\n\
+  \                        minimum AA sequence length\n  --minreadcount MINREADCOUNT\n\
+  \                        minimum read count\n  --minqualscore MINQUALSCORE\n   \
+  \                     minimum basecall quality\n  --minlongesttryppeplen MINLONGESTTRYPPEPLEN\n\
+  \                        minimum length of the longest tryptic peptide\n  --minmetagenescore\
+  \ MINMETAGENESCORE\n                        Minimum MetaGene score (-1 for none)\n\
+  \  --maxmetapeptides MAXMETAPEPTIDES\n                        maximum number of\
+  \ metapeptides to write\n  --nogzipout           Write plaintetxt (non-gzipped)\
+  \ output (default\n                        gzipped)\n  --debug               Enable\
+  \ debug logging\n  --version             show program's version number and exit\n"
+generated_using: *id002

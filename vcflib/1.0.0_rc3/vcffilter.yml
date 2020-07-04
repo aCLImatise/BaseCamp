@@ -88,27 +88,35 @@ named:
   - --region
   args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: '"DP > 10"  # for info fields'
-  synonyms:
-  - -f
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '"GT = 1|1" # for genotype fields'
-  synonyms:
-  - -g
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "\"CpG\"  # for 'flag' fields"
-  synonyms:
-  - -f
-  args: !EmptyFlagArg {}
-  optional: true
 command:
 - vcffilter
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "usage: vcffilter [options] <vcf file>\n\noptions:\n    -f, --info-filter\
+  \     specifies a filter to apply to the info fields of records,\n             \
+  \             removes alleles which do not pass the filter\n    -g, --genotype-filter\
+  \ specifies a filter to apply to the genotype fields of records\n    -k, --keep-info\
+  \       used in conjunction with '-g', keeps variant info, but removes genotype\n\
+  \    -s, --filter-sites    filter entire records, not just alleles\n    -t, --tag-pass\
+  \        tag vcf records as positively filtered with this tag, print all records\n\
+  \    -F, --tag-fail        tag vcf records as negatively filtered with this tag,\
+  \ print all records\n    -A, --append-filter   append the existing filter tag, don't\
+  \ just replace it\n    -a, --allele-tag      apply -t on a per-allele basis.  adds\
+  \ or sets the corresponding INFO field tag\n    -v, --invert          inverts the\
+  \ filter, e.g. grep -v\n    -o, --or              use logical OR instead of AND\
+  \ to combine filters\n    -r, --region          specify a region on which to target\
+  \ the filtering, requires a BGZF\n                          compressed file which\
+  \ has been indexed with tabix.  any number of\n                          regions\
+  \ may be specified.\n\nFilter the specified vcf file using the set of filters.\n\
+  Filters are specified in the form \"<ID> <operator> <value>:\n -f \"DP > 10\"  #\
+  \ for info fields\n -g \"GT = 1|1\" # for genotype fields\n -f \"CpG\"  # for 'flag'\
+  \ fields\n\nOperators can be any of: =, !, <, >, |, &\n\nAny number of filters may\
+  \ be specified.  They are combined via logical AND\nunless --or is specified on\
+  \ the command line.  Obtain logical negation through\nthe use of parentheses, e.g.\
+  \ \"! ( DP = 10 )\"\n\nFor convenience, you can specify \"QUAL\" to refer to the\
+  \ quality of the site, even\nthough it does not appear in the INFO fields.\n\n"
+generated_using:
+- --help

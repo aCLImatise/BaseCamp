@@ -1,15 +1,5 @@
 !Command
-positional:
-- !Positional
-  description: james-bond
-  position: 0
-  name: special-operations
-  optional: false
-- !Positional
-  description: fred
-  position: 1
-  name: special-operations
-  optional: false
+positional: []
 named:
 - !Flag
   description: '|parser FORMAT FORMAT is one of xml, sxpr or itext xml assumed as
@@ -36,7 +26,29 @@ named:
   optional: true
 command:
 - stag-flatten.pl
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "\e[1mNAME\e[0m\n    stag-flatten - turns stag data into a flat table\n\
+  \n\e[1mSYNOPSIS\e[0m\n      stag-flatten -c name -c person/name dept MyFile.xml\n\
+  \n\e[1mDESCRIPTION\e[0m\n    reads in a file in a stag format, and 'flattens' it\
+  \ to a tab-delimited\n    table format. given this data:\n\n      (company\n   \
+  \    (dept\n        (name \"special-operations\")\n        (person\n         (name\
+  \ \"james-bond\"))\n        (person\n         (name \"fred\"))))\n\n    the above\
+  \ command will return a two column table\n\n      special-operations      james-bond\n\
+  \      special-operations      fred\n\n    If there are multiple values for the\
+  \ columns within the node, then the\n    cartesian product will be calculated\n\n\
+  \e[1mUSAGE\e[0m\n      stag-flatten [-p PARSER] [-c COLS] [-c COLS] NODE <file>\n\
+  \n\e[1mARGUMENTS\e[0m\n    -p|parser FORMAT\n        FORMAT is one of xml, sxpr\
+  \ or itext\n\n        xml assumed as default\n\n    -c|column COL1,COL2,COL3,..\n\
+  \        the name of the columns/elements to write out\n\n        this can be specified\
+  \ either with multiple -c arguments, or with a\n        comma-seperated (no spaces)\
+  \ list of column (terminal node) names after\n        a single -c\n\n    -n|nest\n\
+  \        if set, then the output will be a compress repeating values into the\n\
+  \        same row; each cell in the table will be enclosed by {}, and will\n   \
+  \     contain a comma-delimited set of values\n\n\e[1mSEE ALSO\e[0m\n    Data::Stag\n\
+  \n"
+generated_using:
+- --help

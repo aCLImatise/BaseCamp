@@ -1,8 +1,9 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - deepsvr
+parent:
 subcommands:
 - !Command
   positional: []
@@ -45,6 +46,7 @@ subcommands:
   command:
   - deepsvr
   - classify-data
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Show this message and exit.
@@ -55,6 +57,23 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "DeepSVR\nUsage: deepsvr classify-data [OPTIONS]\n\n  Preform automated\
+    \ somatic variant refinement on mutations.\n\nOptions:\n  -h, --help         \
+    \             Show this message and exit.\n  -pdp, --prepared-data-path TEXT\n\
+    \                                  Specify the 'train.pkl' file produced by the\n\
+    \                                  'prepare_data' to perform inference on.\n \
+    \                                 Ignore the call.pkl used in training\n     \
+    \                             classifiers\n\n  -mfp, --model-file-path TEXT  \
+    \  Specify the file path for the model json\n                                \
+    \  file. Created by the train_classifier\n                                  command.\n\
+    \n  -mwp, --model-weights-path TEXT\n                                  Specify\
+    \ the file path for the model weights\n                                  file.\
+    \ Created by the train_classifier\n                                  command.\n\
+    \n  -pop, --predictions-out-path TEXT\n                                  Specify\
+    \ the file path for the predictions\n                                  tab separated\
+    \ file.\n"
+  generated_using: &id002
+  - --help
 - !Command
   positional: []
   named:
@@ -100,6 +119,7 @@ subcommands:
   command:
   - deepsvr
   - prepare-data
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Show this message and exit.
@@ -110,6 +130,34 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "DeepSVR\nUsage: deepsvr prepare-data [OPTIONS]\n\n  Prepare data for\
+    \ training or classification.\n\nOptions:\n  -h, --help                      Show\
+    \ this message and exit.\n  --header / --no-header          Specify whether header\
+    \ is present in sample\n                                  file\n\n  --skip_bam_readcount\
+    \ / --no-skip_bam_readcount\n                                  If bam readcount\
+    \ files already exist in\n                                  output directory as\
+    \ a result of a prior run\n                                  of the prepare_data\
+    \ command, skip the bam-\n                                  readcount step\n\n\
+    \  -sfp, --samples-file-path TEXT  File path of tsv file with sample\n       \
+    \                           information. File shouldhave the following\n     \
+    \                             columns in order: sample_name,\n               \
+    \                   tumor_bam_path, normal_bam_path,\n                       \
+    \           manual_review_file_path, reviewer,\n                             \
+    \     solid_tumor,\n                                  reference_genome_fasta_file_path.If\
+    \ the\n                                  reviewer is specified in the manual review\n\
+    \                                  file or not available for the dataset leave\n\
+    \                                  the column blank.The manual review file\n \
+    \                                 should have the following columnsin order:\n\
+    \                                  chromosome, start, stop, reference,\n     \
+    \                             variant,call, tag, notes, reviewer. For the\n  \
+    \                                manual review filethe reviewer column is\n  \
+    \                                optional. The solid tumor column should be 0\n\
+    \                                  or 1, 0 denotes a blood based tumor and 1 a\n\
+    \                                  solid tumor. Labels need to matchabove.\n\n\
+    \  -odp, --output-dir-path TEXT    Specify output directory: Readcount files\n\
+    \                                  and compressed pandas dataframe will be\n \
+    \                                 output here (default:~/training_data)\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -150,6 +198,7 @@ subcommands:
   command:
   - deepsvr
   - train-classifier
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Show this message and exit.
@@ -160,6 +209,21 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "DeepSVR\nUsage: deepsvr train-classifier [OPTIONS]\n\n  Train a new\
+    \ classifier for somatic variant refinement.\n\nOptions:\n  -h, --help       \
+    \               Show this message and exit.\n  -tfp, --training-file-path TEXT\n\
+    \                                  Specify the pickle file produced by the\n \
+    \                                 'prepare_data' command to be used to train a\n\
+    \                                  new classifier.\n\n  -lfp, --label-file-path\
+    \ TEXT    Specify the label (manual review call)\n                           \
+    \       pickle file produced by the 'prepare_data'\n                         \
+    \         command to be used to train a new\n                                \
+    \  classifier.\n\n  -mop, --model-out-file-path TEXT\n                       \
+    \           Specify output file path for model json\n                        \
+    \          file(default:./deepsvr_model.json)\n\n  -wop, --weights-out-file-path\
+    \ TEXT\n                                  Specify output file path for model weights\n\
+    \                                  file(default:data/deepsvr_model_weights.h5)\n"
+  generated_using: *id002
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -169,3 +233,9 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "Usage: deepsvr [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  -v, --version\n\
+  \  -h, --help     Show this message and exit.\n\nCommands:\n  classify-data    \
+  \ Preform automated somatic variant refinement on...\n  prepare-data      Prepare\
+  \ data for training or classification.\n  train-classifier  Train a new classifier\
+  \ for somatic variant refinement.\n"
+generated_using: *id002

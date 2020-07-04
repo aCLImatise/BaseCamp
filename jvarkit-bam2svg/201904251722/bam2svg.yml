@@ -1,5 +1,10 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: Files
+  optional: false
 named:
 - !Flag
   description: "A filter expression. Reads matching the expression will be filtered-out.\
@@ -63,6 +68,7 @@ named:
   optional: true
 command:
 - bam2svg.sh
+parent:
 subcommands: []
 help_flag: !Flag
   description: print help and exit
@@ -78,3 +84,23 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "Usage: bam2svg [options] Files\n  Options:\n    --filter\n      A filter\
+  \ expression. Reads matching the expression will be filtered-out. \n      Empty\
+  \ String means 'filter out nothing/Accept all'. See https://github.com/lindenb/jvarkit/blob/master/src/main/resources/javacc/com/github/lindenb/jvarkit/util/bio/samfilter/SamFilterParser.jj\
+  \ \n      for a complete syntax.\n      Default: Accept All/ Filter out nothing\n\
+  \    --groupby\n      Group Reads by. Data partitioning using the SAM Read Group\
+  \ (see \n      https://gatkforums.broadinstitute.org/gatk/discussion/6472/ ) . It\
+  \ can \n      be any combination of sample, library....\n      Default: sample\n\
+  \      Possible Values: [readgroup, sample, library, platform, center, sample_by_platform,\
+  \ sample_by_center, sample_by_platform_by_center, any]\n    -h, --help\n      print\
+  \ help and exit\n    --helpFormat\n      What kind of help. One of [usage,markdown,xml].\n\
+  \  * -i, --interval, --region\n      interval CHROM:START-END\n    -o, --output\n\
+  \      Output file. Optional . Default: stdout\n    -R, --reference\n      Indexed\
+  \ fasta Reference file. This file must be indexed with samtools \n      faidx and\
+  \ with picard CreateSequenceDictionary\n    -c, --showclipping\n      Show clipping\n\
+  \      Default: false\n    -S, --vcf\n      add VCF indexed with tabix. Optinal.\
+  \ the Samples's name must be the same \n      than in the BAM\n      Default: []\n\
+  \    --version\n      print version and exit\n    -w, --width\n      Page width\n\
+  \      Default: 1000\n\n"
+generated_using:
+- --help

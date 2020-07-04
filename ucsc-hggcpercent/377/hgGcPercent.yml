@@ -1,83 +1,78 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: database
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: nibDir
+  optional: false
 named:
 - !Flag
-  description: size (default 20000)
+  description: '- change windows size (default 20000)'
   synonyms:
   - -win
-  - '- change'
   args: !SimpleFlagArg
     name: size
   optional: true
 - !Flag
-  description: load mysql table - create bed file
+  description: '- do not load mysql table - create bed file'
   synonyms:
   - -noLoad
-  - '- do'
-  args: !SimpleFlagArg
-    name: not
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: <filename> (stdout OK) (implies -noLoad)
+  description: '- output to <filename> (stdout OK) (implies -noLoad)'
   synonyms:
   - -file
-  - '- output'
   args: !SimpleFlagArg
     name: filename
   optional: true
 - !Flag
-  description: chrN from the nibDir
+  description: '- process only chrN from the nibDir'
   synonyms:
   - -chr
-  - '- process'
   args: !SimpleFlagArg
     name: chrN
   optional: true
 - !Flag
-  description: chromosomes from the nibDir
+  description: '- ignore randome chromosomes from the nibDir'
   synonyms:
   - -noRandom
-  - '- ignore'
-  args: !SimpleFlagArg
-    name: randome
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: display ... progress during processing
+  description: '- do not display ... progress during processing'
   synonyms:
   - -noDots
-  - '- do'
-  args: !SimpleFlagArg
-    name: not
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'correctly (default: gaps are not counted as GC)'
+  description: '- process gaps correctly (default: gaps are not counted as GC)'
   synonyms:
   - -doGaps
-  - '- process'
-  args: !SimpleFlagArg
-    name: gaps
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ascii data ready to pipe to wigEncode
+  description: '- output wiggle ascii data ready to pipe to wigEncode'
   synonyms:
   - -wigOut
-  - '- output'
-  args: !SimpleFlagArg
-    name: wiggle
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: by N bases (default 0)
+  description: '- overlap windows by N bases (default 0)'
   synonyms:
   - -overlap
-  - '- overlap'
   args: !SimpleFlagArg
     name: N
   optional: true
 - !Flag
-  description: to stderr during processing
+  description: '- display details to stderr during processing'
   synonyms:
   - -verbose
-  - '- display'
   args: !SimpleFlagArg
     name: N
   optional: true
@@ -98,7 +93,26 @@ named:
   optional: true
 command:
 - hgGcPercent
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "hgGcPercent - Calculate GC Percentage in 20kb windows\nusage:\n   hgGcPercent\
+  \ [options] database nibDir\n     nibDir can be a .2bit file, a directory that contains\
+  \ a\n     database.2bit file, or a directory that contains *.nib files.\n     Loads\
+  \ gcPercent table with counts from sequence.\noptions:\n   -win=<size> - change\
+  \ windows size (default 20000)\n   -noLoad - do not load mysql table - create bed\
+  \ file\n   -file=<filename> - output to <filename> (stdout OK) (implies -noLoad)\n\
+  \   -chr=<chrN> - process only chrN from the nibDir\n   -noRandom - ignore randome\
+  \ chromosomes from the nibDir\n   -noDots - do not display ... progress during processing\n\
+  \   -doGaps - process gaps correctly (default: gaps are not counted as GC)\n   -wigOut\
+  \ - output wiggle ascii data ready to pipe to wigEncode\n   -overlap=N - overlap\
+  \ windows by N bases (default 0)\n   -verbose=N - display details to stderr during\
+  \ processing\n   -bedRegionIn=input.bed   Read in a bed file for GC content in specific\
+  \ regions and write to bedRegionsOut\n   -bedRegionOut=output.bed Write a bed file\
+  \ of GC content in specific regions from bedRegionIn\n\nexample:\n  calculate GC\
+  \ percent in 5 base windows using a 2bit assembly (dp2):\n    hgGcPercent -wigOut\
+  \ -doGaps -win=5 -file=stdout -verbose=0 \\\n      dp2 /cluster/data/dp2 \\\n  \
+  \  | wigEncode stdin gc5Base.wig gc5Base.wib\n"
+generated_using: []

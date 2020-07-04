@@ -1,5 +1,15 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: INFILE.bam|xml|fa|fq|fofn
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: OUTFILE.bam|xml|fa.gz|fq.gz
+  optional: false
 named:
 - !Flag
   description: Identify duplicates across sequencing libraries (LB tag in read group).
@@ -50,6 +60,7 @@ named:
   optional: true
 command:
 - pbmarkdup
+parent:
 subcommands: []
 help_flag: !Flag
   description: Show this help and exit.
@@ -65,3 +76,20 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "pbmarkdup - Mark duplicate reads from PacBio sequencing of an amplified\
+  \ library.\n\nUsage:\n  pbmarkdup [options] <INFILE.bam|xml|fa|fq|fofn> <OUTFILE.bam|xml|fa.gz|fq.gz>\n\
+  \n  INFILE.bam|xml|fa|fq|fofn    STR   Input file(s) as BAM, DATASET.XML, FASTA[.GZ],\
+  \ FASTQ[.GZ], or FOFN\n  OUTFILE.bam|xml|fa.gz|fq.gz  STR   Output file as BAM,\
+  \ DATASET.XML, FASTA.GZ or FASTQ.GZ\n\n\nDuplicate Marking Options:\n  --cross-library,-x\
+  \                 Identify duplicates across sequencing libraries (LB tag in read\
+  \ group).\n\nOutput Options:\n  --rmdup,-r                         Exclude duplicates\
+  \ from OUTFILE. Redundant when --dup-file is provided.\n  --dup-file           \
+  \        STR   Write duplicates to this file instead of OUTFILE.\n  --clobber,-f\
+  \                       Overwrite OUTFILE if it exists.\n\n  -h,--help         \
+  \                 Show this help and exit.\n  --version                        \
+  \  Show application version and exit.\n  -j,--num-threads             INT   Number\
+  \ of threads to use, 0 means autodetection. [0]\n  --log-level                 \
+  \ STR   Set log level. Valid choices: (TRACE, DEBUG, INFO, WARN, FATAL). [WARN]\n\
+  \  --log-file                   FILE  Log to a file, instead of stderr.\n\n"
+generated_using:
+- --help

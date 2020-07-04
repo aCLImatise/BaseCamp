@@ -1,10 +1,5 @@
-!Command
-positional:
-- !Positional
-  description: nucleotide sequence
-  position: 0
-  name: seq
-  optional: false
+&id001 !Command
+positional: []
 named:
 - !Flag
   description: Do not use monovalent/divalent cation corrections
@@ -43,7 +38,68 @@ named:
   optional: true
 command:
 - Tm
-subcommands: []
+parent:
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: Tm
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --uncorrected
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -d
+    args: !SimpleFlagArg
+      name: DNA
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --na
+    args: !SimpleFlagArg
+      name: NA
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --mg
+    args: !SimpleFlagArg
+      name: MG
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --dntp
+    args: !SimpleFlagArg
+      name: DNTP
+    optional: true
+  command:
+  - Tm
+  - seq
+  parent: *id001
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: Tm [-h] [--uncorrected] [-d DNA] [--na NA] [--mg MG] [--dntp\
+    \ DNTP]\n          [--version]\n          seq\nTm: error: argument seq: invalid\
+    \ nucleotide_sequence value: 'seq'\n"
+  generated_using: &id002
+  - --help
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -58,3 +114,12 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: Tm [-h] [--uncorrected] [-d DNA] [--na NA] [--mg MG] [--dntp DNTP]\n\
+  \          [--version]\n          seq\n\nCalculate nucleotide melting temps\n\n\
+  positional arguments:\n  seq                nucleotide sequence\n\noptional arguments:\n\
+  \  -h, --help         show this help message and exit\n  --uncorrected      Do not\
+  \ use monovalent/divalent cation corrections\n  -d DNA, --dna DNA  DNA concentration\
+  \ (nM)\n  --na NA            Na+ concentration (mM)\n  --mg MG            Mg++ concentration\
+  \ (mM)\n  --dntp DNTP        Nucleotide triphosphate concentration (mM)\n  --version\
+  \          show program's version number and exit\n"
+generated_using: *id002

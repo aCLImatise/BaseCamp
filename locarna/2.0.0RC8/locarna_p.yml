@@ -60,6 +60,7 @@ named:
   optional: true
 command:
 - locarna_p
+parent:
 subcommands: []
 help_flag: !Flag
   description: Print this help.
@@ -76,3 +77,73 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "locarna_p - pairwise partition function of RNA alignments.\n\nComputes\
+  \ base and base pair match probabilities \nfrom alignment partitition functions.\n\
+  \nUSAGE: locarna_p [options] <Input 1> <Input 2> \n\nOptions:\n  -h,--help\n   \
+  \ Print this help.\n\n  -V,--version\n    Print only version string.\n\n  -v,--verbose\n\
+  \    Be verbose. Prints input parameters, sequences and size information.\n\n  -q,--quiet\n\
+  \    Be quiet.\n\n\nScoring parameters:\n  -i,--indel=<score>(-150)\n    Indel score.\
+  \ Score contribution of each single base insertion or\n    deletion. Indel opening\
+  \ score and indel score define the affine scoring\n    of gaps.\n\n  --indel-opening=<score>(-750)\n\
+  \    Indel opening score. Score contribution of opening an insertion or\n    deletion,\
+  \ i.e. score for a consecutive run of deletions or insertions.\n    Indel opening\
+  \ score and indel score define the affine scoring of gaps.\n\n  --ribosum-file=<f>(RIBOSUM85_60)\n\
+  \    File specifying the Ribosum base and base-pair similarities. [default:\n  \
+  \  use RIBOSUM85_60 without requiring a Ribosum file.]\n\n  --use-ribosum=<bool>(true)\n\
+  \    Use ribosum scores for scoring base matches and base pair matches; note\n \
+  \   that tau=0 suppresses any effect on the latter.\n\n  -m,--match=<score>(50)\n\
+  \    Set score contribution of a base match (unless ribosum scoring).\n\n  -M,--mismatch=<score>(0)\n\
+  \    Set score contribution of a base mismatch (unless ribosum scoring).\n\n  -s,--struct-weight=<score>(200)\n\
+  \    Maximal weight of 1/2 arc match. Balances structure vs. sequence score\n  \
+  \  contributions.\n\n  -e,--exp-prob=<prob>\n    Expected base pair probability.\
+  \ Used as background probability for base\n    pair scoring [default: calculated\
+  \ from sequence length].\n\n  -t,--tau=<factor>(50)\n    Tau factor. Factor for\
+  \ contribution of sequence similarity in an arc\n    match (in percent). tau=0 does\
+  \ not penalize any sequence information\n    including compensatory mutations at\
+  \ arc matches, while tau=100 scores\n    sequence similarity at ends of base matches\
+  \ (if a scoring matrix like\n    ribosum is used, this adds the contributions for\
+  \ base pair match from the\n    matrix). [default tau=0!]\n\n  --temperature-alipf=<int>(300)\n\
+  \    Temperature for the /sequence alignment/ partition functions used by the \n\
+  \    probcons-like sequence-based match/trace probability computation (this\n  \
+  \  temperature is different from the 'physical' temperature of RNA\n    folding!).\n\
+  \n\nPartition function representation:\n  --pf-scale=<scale>(1.0)\n    Factor for\
+  \ scaling the partition functions. Use in order to avoid\n    overflow.\n\n  --extended-pf\n\
+  \    Use extended precision for partition function values. This increases\n    run-time\
+  \ and space (less than 2x), however enables handling significantly\n    larger instances.\n\
+  \n  --quad-pf\n    Use quad precision for partition function values. Even more precision\n\
+  \    than extended pf, but usually much slower (overrides extended-pf).\n\n\nOutput:\n\
+  \  --write-arcmatch-probs=<file>\n    Write arcmatch probabilities\n\n  --write-basematch-probs=<file>\n\
+  \    Write basematch probabilities\n\n  -a,--min-am-prob=<amprob>(0.001)\n    Minimal\
+  \ arc match probability. Write probabilities for only the arc\n    matchs of at\
+  \ least this probability.\n\n  -b,--min-bm-prob=<bmprob>(0.001)\n    Minimal base\
+  \ match probability. Write probabilities for only the base\n    matchs of at least\
+  \ this probability.\n\n  --include-am-in-bm\n    Include arc match cases in base\
+  \ match probabilities\n\n  --stopwatch\n    Print run time informations.\n\n\nHeuristics\
+  \ for speed accuracy trade off:\n  -p,--min-prob=<prob>(0.001)\n    Minimal probability.\
+  \ Only base pairs of at least this probability are\n    taken into account.\n\n\
+  \  --max-bps-length-ratio=<factor>(0.0)\n    Maximal ratio of #base pairs divided\
+  \ by sequence length. This serves as a\n    second filter on the \"significant\"\
+  \ base pairs. [default: 0.0 = no\n    effect].\n\n  -D,--max-diff-am=<diff>(-1)\n\
+  \    Maximal difference for sizes of matched arcs. [-1=off]\n\n  -d,--max-diff=<diff>(-1)\n\
+  \    Maximal difference for positions of alignment traces (and aligned bases).\n\
+  \    [-1=off]\n\n  --max-diff-at-am=<diff>(-1)\n    Maximal difference for positions\
+  \ of alignment traces at arc match ends.\n    [-1=off]\n\n  --max-diff-aln=<aln\
+  \ file>()\n    Maximal difference relative to given alignment (file in clustalw\
+  \ format)\n\n  --max-diff-pw-aln=<alignment>()\n    Maximal difference relative\
+  \ to given alignment (string, delim=AMPERSAND)\n\n  --max-diff-relax\n    Relax\
+  \ deviation constraints in multiple aligmnent\n\n  --min-trace-probability=<probability>(1e-5)\n\
+  \    Minimal sequence alignment probability of potential traces\n    (probability-based\
+  \ sequence alignment envelope) [default=1e-4].\n\n\nComputed probabilities:\n  --fragment-match-probs=<\"\
+  i j k l\">()\n    Requests probabilities for the match of fragments [i..j] and [k..l].\n\
+  \    Accepts a ';' separated list of ranges.\n\n\nConstraints:\n  --maxBPspan=<span>(-1)\n\
+  \    Limit maximum base pair span [default=off].\n\n  --relaxed-anchors\n    Use\
+  \ relaxed semantics of anchor constraints [default=strict semantics].\n\n\nInput\
+  \ files:\n  The tool is called with two input files <Input 1> and <Input 2>, which\n\
+  \  specify the two input sequences or input alignments. Different input\n  formats\
+  \ (Fasta, Clustal, Stockholm, LocARNA PP, ViennaRNA postscript\n  dotplots) are\
+  \ accepted and automatically recognized (by file content); the \n  two input files\
+  \ can be in different formats. Extended variants of the\n  Clustal and Stockholm\
+  \ formats enable specifying anchor and structure\n  constraints.\n\n\nReport bugs\
+  \ to <will (at) informatik.uni-freiburg.de>.\n\n"
+generated_using:
+- --help

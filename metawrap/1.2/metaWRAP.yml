@@ -1,4 +1,4 @@
-!Command
+&id001 !Command
 positional: []
 named:
 - !Flag
@@ -9,9 +9,20 @@ named:
   optional: true
 command:
 - metaWRAP
+parent:
 subcommands:
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: readsX_1.fastq
+    optional: true
+  - !Positional
+    description: ''
+    position: 1
+    name: readsX_2.fastq
+    optional: true
   named:
   - !Flag
     description: folder containing draft genomes (bins) in fasta format
@@ -44,10 +55,19 @@ subcommands:
   command:
   - metaWRAP
   - quant_bins
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "metawrap quant_bins --help\n\nUsage: metaWRAP quant_bins [options] -b\
+    \ bins_folder -o output_dir -a assembly.fa readsA_1.fastq readsA_2.fastq ... [readsX_1.fastq\
+    \ readsX_2.fastq]\nOptions:\n\n\t-b STR          folder containing draft genomes\
+    \ (bins) in fasta format\n\t-o STR          output directory\n\t-a STR\t\tfasta\
+    \ file with entire metagenomic assembly (strongly recommended!)\n\t-t INT\t\t\
+    number of threads\n\n\n"
+  generated_using: &id002
+  - --help
 - !Command
   positional: []
   named:
@@ -75,10 +95,16 @@ subcommands:
   command:
   - metaWRAP
   - classify_bins
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "metawrap classify_bins --help\n\nUsage: metaWRAP classify_bins [options]\
+    \ -b bin_folder -o output_dir\nOptions:\n\n\t-b STR\t\tfolder with the bins to\
+    \ be classified (in fasta format)\n\t-o STR\t\toutput directory\n\t-t INT    \
+    \      number of threads\n\n\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -106,10 +132,16 @@ subcommands:
   command:
   - metaWRAP
   - annotate_bins
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "metawrap annotate_bins --help\n\nUsage: metaWRAP annotate_bins [options]\
+    \ -o output_dir -b bin_folder\n\nOptions:\n\n\t-o STR\t\toutput directory\n\t\
+    -t INT\t\tnumber of threads (default=1)\n\t-b STR\t\tfolder with metagenomic bins\
+    \ in fasta format\n\n\n"
+  generated_using: *id002
 help_flag: !Flag
   description: '| -h             show this help message'
   synonyms:
@@ -123,3 +155,15 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "\nMetaWRAP v=1.2\nUsage: metaWRAP [module]\n\n\tModules:\n\tread_qc\t\t\
+  Raw read QC module (read trimming and contamination removal)\n\tassembly\tAssembly\
+  \ module (metagenomic assembly)\n\tkraken\t\tKRAKEN module (taxonomy annotation\
+  \ of reads and assemblies)\n\tblobology\tBlobology module (GC vs Abund plots of\
+  \ contigs and bins)\n\n\tbinning\t\tBinning module (metabat, maxbin, or concoct)\n\
+  \tbin_refinement\tRefinement of bins from binning module\n\treassemble_bins Reassemble\
+  \ bins using metagenomic reads\n\tquant_bins\tQuantify the abundance of each bin\
+  \ across samples\n\tclassify_bins\tAssign taxonomy to genomic bins\n\tannotate_bins\t\
+  Functional annotation of draft genomes\n\n\t--help | -h\t\tshow this help message\n\
+  \t--version | -v\tshow metaWRAP version\n\t--show-config\tshow where the metawrap\
+  \ configuration files are stored\n\n"
+generated_using: *id002

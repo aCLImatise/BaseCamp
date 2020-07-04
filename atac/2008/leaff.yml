@@ -29,6 +29,14 @@ named:
     name: name
   optional: true
 - !Flag
+  description: "<#>:      insert a newline every 60 letters (if the next arg is a\
+    \ number, newlines are inserted every n letters, e.g., -6 80.  Disable line breaks\
+    \ with -6 0, or just don't use -6!)"
+  synonyms:
+  - '-6'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: "end:  Print only the bases from position 'beg' to position 'end' (space\
     \ based, relative to the FORWARD sequence!)  If beg == end, then the entire sequence\
     \ is printed.  It is an error to specify beg > end, or beg > len, or end > len."
@@ -129,6 +137,7 @@ named:
   optional: true
 command:
 - leaff
+parent:
 subcommands: []
 help_flag: !Flag
   description: ':          Use the next word as the defline ("-H -H" will reset to
@@ -139,3 +148,34 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: leaff [-f fasta-file] [options]\n\nSOURCE FILES\n   -f file:  \
+  \   use sequence in 'file' (-F is also allowed for historical reasons)\n   -A file:\
+  \     read actions from 'file'\n\nSOURCE FILE EXAMINATION\n   -d:          print\
+  \ the number of sequences in the fasta\n   -i name:     print an index, labelling\
+  \ the source 'name'\n\nOUTPUT OPTIONS\n   -6 <#>:      insert a newline every 60\
+  \ letters\n                  (if the next arg is a number, newlines are inserted\
+  \ every\n                  n letters, e.g., -6 80.  Disable line breaks with -6\
+  \ 0,\n                  or just don't use -6!)\n   -e beg end:  Print only the bases\
+  \ from position 'beg' to position 'end'\n                  (space based, relative\
+  \ to the FORWARD sequence!)  If\n                  beg == end, then the entire sequence\
+  \ is printed.  It is an\n                  error to specify beg > end, or beg >\
+  \ len, or end > len.\n   -ends n      Print n bases from each end of the sequence.\
+  \  One input\n                  sequence generates two output sequences, with '_5'\
+  \ or '_3'\n                  appended to the ID.  If 2n >= length of the sequence,\
+  \ the\n                  sequence itself is printed, no ends are extracted (they\n\
+  \                  overlap).\n   -C:          complement the sequences\n   -H: \
+  \         DON'T print the defline\n   -h:          Use the next word as the defline\
+  \ (\"-H -H\" will reset to the\n                  original defline\n   -R:     \
+  \     reverse the sequences\n   -u:          uppercase all bases\n\nSEQUENCE SELECTION\n\
+  \   -G n s l:    print n randomly generated sequences, 0 < s <= length <= l\n  \
+  \ -L s l:      print all sequences such that s <= length < l\n   -N l h:      print\
+  \ all sequences such that l <= % N composition < h\n                  (NOTE 0.0\
+  \ <= l < h < 100.0)\n                  (NOTE that you cannot print sequences with\
+  \ 100% N\n                   This is a useful bug).\n   -q file:     print sequences\
+  \ from the seqid list in 'file'\n   -r num:      print 'num' randomly picked sequences\n\
+  \   -s seqid:    print the single sequence 'seqid'\n   -S f l:      print all the\
+  \ sequences from ID 'f' to 'l' (inclusive)\n   -W:          print all sequences\
+  \ (do the whole file)\n\nLONGER HELP\n   -help analysis\n   -help examples\nUnknown\
+  \ option '--help'\n"
+generated_using:
+- --help

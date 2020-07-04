@@ -1,8 +1,9 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - suppa.py
+parent:
 subcommands:
 - !Command
   positional: []
@@ -31,12 +32,12 @@ subcommands:
     synonyms:
     - -e
     args: !ChoiceFlagArg
-      choices:
-      - SE
-      - SS
-      - MX
-      - RI
-      - FL
+      choices: !!set
+        SE:
+        FL:
+        RI:
+        SS:
+        MX:
     optional: true
   - !Flag
     description: 'Boundary type.Options: S -- Strict (Default) V -- Variable'
@@ -44,9 +45,9 @@ subcommands:
     - -b
     - --boundary
     args: !ChoiceFlagArg
-      choices:
-      - S
-      - V
+      choices: !!set
+        S:
+        V:
     optional: true
   - !Flag
     description: 'Variability treshold. In case of strict boundaries this argument
@@ -86,13 +87,14 @@ subcommands:
     - -f
     - --format
     args: !ChoiceFlagArg
-      choices:
-      - ioe
-      - ioi
+      choices: !!set
+        ioe:
+        ioi:
     optional: true
   command:
   - suppa.py
   - generateEvents
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -103,6 +105,29 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: suppa.py generateEvents [-h] -i INPUT_FILE -o OUTPUT_FILE\n \
+    \                              [-e {SE,SS,MX,RI,FL} [{SE,SS,MX,RI,FL} ...]]\n\
+    \                               [-b {S,V}] [-t THRESHOLD] [-p] [-l EXON_LENGTH]\n\
+    \                               [-m MODE] -f {ioe,ioi}\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -i INPUT_FILE, --input-file\
+    \ INPUT_FILE\n                        specify input file\n  -o OUTPUT_FILE, --output-file\
+    \ OUTPUT_FILE\n                        specify output path and name without extension\n\
+    \  -e {SE,SS,MX,RI,FL} [{SE,SS,MX,RI,FL} ...], --event-type {SE,SS,MX,RI,FL} [{SE,SS,MX,RI,FL}\
+    \ ...]\n                        list of events to analyze. (space separated) Options:\n\
+    \                        SE -- Skipping Exon SS -- Alternative Splice Site\n \
+    \                       (5'/3') MX -- Mutually Exclusive Exon RI -- Retained\n\
+    \                        Intron FL -- Alternative First/Last Exon\n  -b {S,V},\
+    \ --boundary {S,V}\n                        Boundary type.Options: S -- Strict\
+    \ (Default) V --\n                        Variable\n  -t THRESHOLD, --threshold\
+    \ THRESHOLD\n                        Variability treshold. In case of strict boundaries\n\
+    \                        this argument is ignored(Default: 10nt).\n  -p, --pool-genes\
+    \      pool together overlapping genes.\n  -l EXON_LENGTH, --exon-length EXON_LENGTH\n\
+    \                        length of the exons for its visualization. (Default:\n\
+    \                        100nt)\n  -m MODE, --mode MODE  to choose from DEBUG,\
+    \ INFO, WARNING, ERROR and\n                        CRITICAL\n  -f {ioe,ioi},\
+    \ --format {ioe,ioi}\n                        Format of the annotation file. Required.\n"
+  generated_using: &id002
+  - --help
 - !Command
   positional: []
   named:
@@ -157,6 +182,7 @@ subcommands:
   command:
   - suppa.py
   - psiPerEvent
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -167,6 +193,20 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: suppa.py psiPerEvent [-h] -i IOE_FILE -e EXPRESSION_FILE -o OUTPUT_FILE\n\
+    \                            [-f TOTAL_FILTER] [-s] [-m MODE]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -i IOE_FILE, --ioe-file\
+    \ IOE_FILE\n                        Input file with the event-transcripts equivalence\n\
+    \                        (.ioe format).\n  -e EXPRESSION_FILE, --expression-file\
+    \ EXPRESSION_FILE\n                        Input transcript expression file.\n\
+    \  -o OUTPUT_FILE, --output-file OUTPUT_FILE\n                        Output psi\
+    \ file.\n  -f TOTAL_FILTER, --total-filter TOTAL_FILTER\n                    \
+    \    Minimum total expression of the transcripts involved\n                  \
+    \      in the event.\n  -s, --save_tpm_events\n                        Boolean.\
+    \ If True, save the TPM of the events in an\n                        external\
+    \ file (Default: False).\n  -m MODE, --mode MODE  to choose from DEBUG, INFO,\
+    \ WARNING, ERROR and\n                        CRITICAL\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -205,6 +245,7 @@ subcommands:
   command:
   - suppa.py
   - psiPerIsoform
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -215,6 +256,15 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: suppa.py psiPerIsoform [-h] -g GTF_FILE -e EXPRESSION_FILE -o\n\
+    \                              OUTPUT_FILE [-m MODE]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -g GTF_FILE, --gtf-file\
+    \ GTF_FILE\n                        Input gtf file\n  -e EXPRESSION_FILE, --expression-file\
+    \ EXPRESSION_FILE\n                        Input expression file\n  -o OUTPUT_FILE,\
+    \ --output-file OUTPUT_FILE\n                        Path and name of the ouput\
+    \ file\n  -m MODE, --mode MODE  to choose from DEBUG, INFO, WARNING, ERROR and\n\
+    \                        CRITICAL\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -224,9 +274,9 @@ subcommands:
     - -m
     - --method
     args: !ChoiceFlagArg
-      choices:
-      - empirical
-      - classical
+      choices: !!set
+        classical:
+        empirical:
     optional: true
   - !Flag
     description: Path of the PSI files. PSI files and the transcript expression (TPM)
@@ -360,6 +410,7 @@ subcommands:
   command:
   - suppa.py
   - diffSplice
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -370,6 +421,50 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: suppa.py diffSplice [-h] -m {empirical,classical}\n         \
+    \                  [-p CONDS [CONDS ...]] [-e TPMS [TPMS ...]]\n             \
+    \              [-i IOX] [-a AREA] [-l LOWER_BOUND] [-pa] [-gc]\n             \
+    \              [-al ALPHA] [-s] [-c] [-me] [-th TPM_TH]\n                    \
+    \       [-nan NAN_TH] [-o OUTPUT] [-mo MODE]\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n  -m {empirical,classical}, --method\
+    \ {empirical,classical}\n                        Method to test significance.\
+    \ Required.\n  -p CONDS [CONDS ...], --psi CONDS [CONDS ...]\n               \
+    \         Path of the PSI files. PSI files and the transcript\n              \
+    \          expression (TPM) files must have the same order.The\n             \
+    \           conditions files and the tpm files must have the same\n          \
+    \              order.\n  -e TPMS [TPMS ...], --tpm TPMS [TPMS ...]\n         \
+    \               Path of the transcript expression (TPM) files.\n             \
+    \           Conditions files and the transcript expression (TPM)\n           \
+    \             files must have the same order.The conditions files\n          \
+    \              and the tpm files must have the same order.\n  -i IOX, --input\
+    \ IOX   Input file with the event-transcripts equivalence\n                  \
+    \      (.ioe or .ioi format)\n  -a AREA, --area AREA  Number indicating the number\
+    \ of points in the local\n                        area distribution. (default:\
+    \ 1000)\n  -l LOWER_BOUND, --lower-bound LOWER_BOUND\n                       \
+    \ Lower-bound for the absolute delta PSI value to test\n                     \
+    \   for significance. (Default: 0).\n  -pa, --paired         Boolean. Indicates\
+    \ if replicates in conditions are\n                        paired. (Default: False).\n\
+    \  -gc, --gene-correction\n                        Boolean. If True, SUPPA correct\
+    \ the p-values by gene.\n                        (Default: False).\n  -al ALPHA,\
+    \ --alpha ALPHA\n                        Family-wise error rate to use for the\
+    \ multiple test\n                        correction. (Default: 0.05).\n  -s, --save_tpm_events\n\
+    \                        Boolean. If True, the average log TPM of the events\n\
+    \                        will be saved in an external file (Default: False).\n\
+    \  -c, --combination     Boolean. If True, SUPPA perform the analysis between\n\
+    \                        all the possible combinations of conditions (Default:\n\
+    \                        False).\n  -me, --median         Boolean. If True, SUPPA\
+    \ use the median to calculate\n                        the Delta PSI. (Default:\
+    \ False).\n  -th TPM_TH, --tpm-threshold TPM_TH\n                        Minimum\
+    \ transcript average TPM value within-replicates\n                        and\
+    \ between-conditions to be included in the analysis.\n                       \
+    \ (Default: 1.0).\n  -nan NAN_TH, --nan-threshold NAN_TH\n                   \
+    \     Percentage allowed of samples per condition with nan\n                 \
+    \       values for returning a DeltaPSI (Default: 0, no\n                    \
+    \    missing values allowed).\n  -o OUTPUT, --output OUTPUT\n                \
+    \        Name of the output files.\n  -mo MODE, --mode MODE\n                \
+    \        to choose from DEBUG, INFO, WARNING, ERROR and\n                    \
+    \    CRITICAL\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -439,10 +534,10 @@ subcommands:
     - -m
     - --metric
     args: !ChoiceFlagArg
-      choices:
-      - euclidean
-      - manhattan
-      - cosine
+      choices: !!set
+        cosine:
+        euclidean:
+        manhattan:
     optional: true
   - !Flag
     description: 'Clustering method to use.Options: OPTICS , DBSCAN (Default).'
@@ -450,9 +545,9 @@ subcommands:
     - -c
     - --clustering
     args: !ChoiceFlagArg
-      choices:
-      - OPTICS
-      - DBSCAN
+      choices: !!set
+        DBSCAN:
+        OPTICS:
     optional: true
   - !Flag
     description: '[INDEXES [INDEXES ...]], --groups [INDEXES [INDEXES ...]] Ranges
@@ -473,6 +568,7 @@ subcommands:
   command:
   - suppa.py
   - clusterEvents
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -483,44 +579,89 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: suppa.py clusterEvents [-h] [-d DPSI] [-p PSIVEC] [-st SIG_THRESHOLD]\n\
+    \                              [-dt DPSI_THRESHOLD] [-e EPS] [-s SEPARATION]\n\
+    \                              [-n MINPTS] [-m {euclidean,manhattan,cosine}]\n\
+    \                              [-c {OPTICS,DBSCAN}] -g [INDEXES [INDEXES ...]]\n\
+    \                              [-o OUTPUT]\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n  -d DPSI, --dpsi DPSI  Input file\
+    \ of delta-PSI values (.dpsi format)\n  -p PSIVEC, --psivec PSIVEC\n         \
+    \               Input file with PSI values (.psivec format)\n  -st SIG_THRESHOLD,\
+    \ --sig-threshold SIG_THRESHOLD\n                        P-value cut-off for significant\
+    \ events. (Default:\n                        0.05).\n  -dt DPSI_THRESHOLD, --dpsi-threshold\
+    \ DPSI_THRESHOLD\n                        Lower-bound for the absolute delta PSI\
+    \ value to\n                        cluster. (Default: 0.05).\n  -e EPS, --eps\
+    \ EPS     Maximum (Euclidean) distance (between 0 and 1) to\n                \
+    \        consider two events as members of the same cluster.\n               \
+    \         (Default: 0.05).\n  -s SEPARATION, --separation SEPARATION\n       \
+    \                 Minimum separation for considering two points in\n         \
+    \               different clusters. (Default: 0).\n  -n MINPTS, --min-pts MINPTS\n\
+    \                        Minimum number of events required per cluster.\n    \
+    \                    (Default: 20).\n  -m {euclidean,manhattan,cosine}, --metric\
+    \ {euclidean,manhattan,cosine}\n                        Distance function to be\
+    \ used.Options: euclidean\n                        (Default), manhattan, cosine.\n\
+    \  -c {OPTICS,DBSCAN}, --clustering {OPTICS,DBSCAN}\n                        Clustering\
+    \ method to use.Options: OPTICS , DBSCAN\n                        (Default).\n\
+    \  -g [INDEXES [INDEXES ...]], --groups [INDEXES [INDEXES ...]]\n            \
+    \            Ranges of column numbers specifying the replicates per\n        \
+    \                condition. Column numbers have to be continuous, with\n     \
+    \                   no overlapping or missing columns between them. Ex:\n    \
+    \                    1-3,4-6\n  -o OUTPUT, --output OUTPUT\n                 \
+    \       Name of the output file.\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
   - !Flag
-    description: ''
+    description: Space separated list of the files to be joined. If the absolute path
+      is not indicate the program use the current working directory instead.
     synonyms:
     - -i
+    - --input-files
     args: !RepeatFlagArg
       name: INPUT
     optional: true
   - !Flag
-    description: ''
+    description: Extension of the output file. Required.
     synonyms:
     - -f
+    - --file-extension
     args: !ChoiceFlagArg
-      choices:
-      - psi
-      - tpm
+      choices: !!set
+        psi:
+        tpm:
     optional: true
   - !Flag
-    description: ''
+    description: Name of the output file.
     synonyms:
     - -o
+    - --output
     args: !SimpleFlagArg
       name: OUTPUT
     optional: true
   command:
   - suppa.py
   - joinFiles
+  parent: *id001
   subcommands: []
   help_flag: !Flag
-    description: ''
+    description: show this help message and exit
     synonyms:
     - -h
+    - --help
     args: !EmptyFlagArg {}
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: suppa.py joinFiles [-h] [-i INPUT [INPUT ...]] -f {psi,tpm} [-o\
+    \ OUTPUT]\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  -i INPUT [INPUT ...], --input-files INPUT [INPUT ...]\n        \
+    \                Space separated list of the files to be joined. If the\n    \
+    \                    absolute path is not indicate the program use the\n     \
+    \                   current working directory instead.\n  -f {psi,tpm}, --file-extension\
+    \ {psi,tpm}\n                        Extension of the output file. Required.\n\
+    \  -o OUTPUT, --output OUTPUT\n                        Name of the output file.\n"
+  generated_using: *id002
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -530,3 +671,17 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: suppa.py [-h]\n                {generateEvents,psiPerEvent,psiPerIsoform,diffSplice,clusterEvents,joinFiles}\n\
+  \                ...\n\nDescription:\n\nSUPPA allows you to generate all the possible\
+  \ Alternative Splicing events from an annotation file, \ncalculate the PSI values\
+  \ per event, calculate differential splicing across multiple conditions \nwith replicates,\
+  \ and cluster events across conditions \nFor further information, see the help of\
+  \ each subcommand.\n\npositional arguments:\n  {generateEvents,psiPerEvent,psiPerIsoform,diffSplice,clusterEvents,joinFiles}\n\
+  \    generateEvents      Calculates the Alternative Splicing events from an annotation\
+  \ file.\n    psiPerEvent         Calculates the PSI value for each event previously\
+  \ generated.\n    psiPerIsoform       Calculates the PSI value for each isoform.\n\
+  \    diffSplice          Calculates differentially spliced events across multiple\
+  \ conditions.\n    clusterEvents       Calculates clusters of events across conditions.\n\
+  \    joinFiles           Join multiple tab separated files into a single file.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n"
+generated_using: *id002

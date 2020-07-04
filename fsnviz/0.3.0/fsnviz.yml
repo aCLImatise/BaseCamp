@@ -1,4 +1,4 @@
-!Command
+&id001 !Command
 positional: []
 named:
 - !Flag
@@ -66,101 +66,57 @@ named:
   optional: true
 command:
 - fsnviz
+parent:
 subcommands:
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: INPUT
+    optional: false
   named: []
   command:
   - fsnviz
   - fusioncatcher
-  subcommands:
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: INPUT
-      optional: false
-    named: []
-    command:
-    - fsnviz
-    - fusioncatcher
-    - OPTIONS
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: OPTIONS
-      optional: true
-    - !Positional
-      description: ''
-      position: 1
-      name: INPUT
-      optional: false
-    named: []
-    command:
-    - fsnviz
-    - fusioncatcher
-    - INPUT
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-  help_flag:
+  parent: *id001
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
   usage_flag:
   version_flag:
+  help_text: "Usage: fsnviz fusioncatcher [OPTIONS] INPUT\n\n  Plots output of FusionCatcher.\n\
+    \nOptions:\n  --help  Show this message and exit.\n"
+  generated_using: &id002
+  - --help
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: INPUT
+    optional: false
   named: []
   command:
   - fsnviz
   - star-fusion
-  subcommands:
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: INPUT
-      optional: false
-    named: []
-    command:
-    - fsnviz
-    - star-fusion
-    - OPTIONS
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: OPTIONS
-      optional: true
-    - !Positional
-      description: ''
-      position: 1
-      name: INPUT
-      optional: false
-    named: []
-    command:
-    - fsnviz
-    - star-fusion
-    - INPUT
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-  help_flag:
+  parent: *id001
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
   usage_flag:
   version_flag:
+  help_text: "Usage: fsnviz star-fusion [OPTIONS] INPUT\n\n  Plots output of STAR-Fusion.\n\
+    \nOptions:\n  --help  Show this message and exit.\n"
+  generated_using: *id002
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -174,3 +130,25 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "Usage: fsnviz [OPTIONS] COMMAND [ARGS]...\n\n  Plots gene fusion finding\
+  \ tools' output using circos.\n\nOptions:\n  --version                       Show\
+  \ the version and exit.\n  --out-dir PATH                  Output directory. Default:\
+  \ current run\n                                  directory.\n\n  -n, --base-name\
+  \ TEXT            Base file name of the image output. Filename\n               \
+  \                   extensions will be added accordingly.\n\n  -k, --karyotype [human.hg19|human.hg38]\n\
+  \                                  Karyotype to use. Must be supported by\n    \
+  \                              circos. If the `--karyotype-file` parameter\n   \
+  \                               is defined, this parameter is ignored.\n       \
+  \                           Default: human.hg19.\n\n  -c, --circos-conf FILE   \
+  \       Circos configuration file. If not supplied,\n                          \
+  \        fsnviz generates a default one.\n\n  --png / --no-png                Whether\
+  \ to create PNG plots or not. Default:\n                                  no.\n\n\
+  \  --svg / --no-svg                Whether to create SVG plots or not. Default:\n\
+  \                                  yes.\n\n  --karyotype-file FILE           Karyotype\
+  \ file to use. This parameter takes\n                                  precedence\
+  \ over the `--karyotype` parameter.\n\n  --circos-exe TEXT               Circos\
+  \ executable. Default: circos (the one\n                                  accessible\
+  \ via PATH).\n\n  --help                          Show this message and exit.\n\n\
+  Commands:\n  fusioncatcher  Plots output of FusionCatcher.\n  star-fusion    Plots\
+  \ output of STAR-Fusion.\n"
+generated_using: *id002

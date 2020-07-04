@@ -2,44 +2,38 @@
 positional: []
 named:
 - !Flag
-  description: vector trimming, default=off. <filename> - is a path to a FASTA-file
-    containing vector genomes.
+  description: '- Turns on vector trimming, default=off. <filename> - is a path to
+    a FASTA-file containing vector genomes.'
   synonyms:
   - -v
-  - '- Turns'
   args: !SimpleFlagArg
     name: filename
   optional: true
 - !Flag
-  description: contaminants screening, default=off, <filename> - is a path to a FASTA-file
-    containing contaminant genomes.
+  description: '- Turns on contaminants screening, default=off, <filename> - is a
+    path to a FASTA-file containing contaminant genomes.'
   synonyms:
   - -c
-  - '- Turns'
   args: !SimpleFlagArg
     name: filename
   optional: true
 - !Flag
-  description: of k-mer, default=15
+  description: '- Common size of k-mer, default=15'
   synonyms:
   - -k
-  - '- Common'
   args: !SimpleFlagArg
     name: value
   optional: true
 - !Flag
-  description: consecutive k-mers, default=1
+  description: '- Distance between consecutive k-mers, default=1'
   synonyms:
   - -d
-  - '- Distance'
-  args: !SimpleFlagArg
-    name: between
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: k-mer used in sampling contaminat genome, default=15
+  description: '- Size of k-mer used in sampling contaminat genome, default=15'
   synonyms:
   - -kc
-  - '- Size'
   args: !SimpleFlagArg
     name: value
   optional: true
@@ -69,18 +63,15 @@ named:
     name: window_size
   optional: true
 - !Flag
-  description: results, default=off
+  description: '- Overwrite existing results, default=off'
   synonyms:
   - -ow
-  - '- Overwrite'
-  args: !SimpleFlagArg
-    name: existing
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: of read to accept, default=50 bp.
+  description: '- Minimum length of read to accept, default=50 bp.'
   synonyms:
   - -minlen
-  - '- Minimum'
   args: !SimpleFlagArg
     name: value
   optional: true
@@ -94,20 +85,16 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: ', default=off.'
+  description: '- Verbose output, default=off.'
   synonyms:
   - -verbose
-  - '- Verbose'
-  args: !SimpleFlagArg
-    name: output
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: report for each read, default=off.
+  description: '- Generate detailed report for each read, default=off.'
   synonyms:
   - -detrep
-  - '- Generate'
-  args: !SimpleFlagArg
-    name: detailed
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: '[-startdw 10][-sizedw 35] [-maxdup 3] - Turns on screening duplicated
@@ -119,124 +106,168 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: trimming of adapters, default=off.
+  description: '- Turns off trimming of adapters, default=off.'
   synonyms:
   - -no_adapter_trim
-  - '- Turns'
-  args: !SimpleFlagArg
-    name: off
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: threads (not yet applicable to Illumina mode), default=4.
+  description: '- Number of threads (not yet applicable to Illumina mode), default=4.'
   synonyms:
   - -t
-  - '- Number'
   args: !SimpleFlagArg
     name: value
   optional: true
 - !Flag
-  description: FASTQ format, default=off.
+  description: '- Output in FASTQ format, default=off.'
   synonyms:
   - -fastq
-  - '- Output'
-  args: !SimpleFlagArg
-    name: in
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: FASTA format, default=off.
+  description: '- Output in FASTA format, default=off.'
   synonyms:
   - -fasta_out
-  - '- Output'
-  args: !SimpleFlagArg
-    name: in
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: barcodes, default=off. <filename> - a path to a FASTA-file with custom
-    barcodes.
+  description: '- Using custom barcodes, default=off. <filename> - a path to a FASTA-file
+    with custom barcodes.'
   synonyms:
   - -m
-  - '- Using'
   args: !SimpleFlagArg
     name: filename
   optional: true
 - !Flag
-  description: Illumina reads in shuffled file, default=off.
+  description: '- Paired-end mode (see examples below)'
+  synonyms:
+  - '-1'
+  - '-2'
+  args: !SimpleFlagArg
+    name: filename1
+  optional: true
+- !Flag
+  description: '- Single-end mode'
+  synonyms:
+  - -U
+  args: !SimpleFlagArg
+    name: filename
+  optional: true
+- !Flag
+  description: '- Store non-paired Illumina reads in shuffled file, default=off.'
   synonyms:
   - -shuffle
-  - '- Store'
-  args: !SimpleFlagArg
-    name: non-paired
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 64-quality base, default = off.
+  description: '- Turns on 64-quality base, default = off.'
   synonyms:
   - -i64
-  - '- Turns'
-  args: !SimpleFlagArg
-    name: on
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: using custom adapters, default=off. <filename> - FASTA file with adapters
+  description: '- Turns on using custom adapters, default=off. <filename> - FASTA
+    file with adapters'
   synonyms:
   - -adp
-  - '- Turns'
   args: !SimpleFlagArg
     name: filename
   optional: true
 - !Flag
-  description: sets the similarity threshold for adapter trimming by overlap (only
-    in paired-end mode). By default its value is set to 0.75.
+  description: '- This option sets the similarity threshold for adapter trimming by
+    overlap (only in paired-end mode). By default its value is set to 0.75.'
   synonyms:
   - -at
-  - '- This'
   args: !SimpleFlagArg
     name: value
   optional: true
 - !Flag
-  description: turns on merging overlapping paired-end reads and <value> is the minimum
-    overlap length. By default the minimum overlap length is 16 base pairs.
+  description: '- This option turns on merging overlapping paired-end reads and <value>
+    is the minimum overlap length. By default the minimum overlap length is 16 base
+    pairs.'
   synonyms:
   - -overlap
-  - '- This'
   args: !SimpleFlagArg
     name: value
   optional: true
 - !Flag
-  description: 'fix read IDs, default=off ( As is detailed in: http://contig.wordpress.com/2011/09/01/newbler-input-iii-a-quick-fix-for-the-new-illumina-fastq-header/#more-342
+  description: '- Switch to fix read IDs, default=off ( As is detailed in: http://contig.wordpress.com/2011/09/01/newbler-input-iii-a-quick-fix-for-the-new-illumina-fastq-header/#more-342
     ).'
   synonyms:
   - -new2old
-  - '- Switch'
-  args: !SimpleFlagArg
-    name: to
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: (GZip format, .gz).
+  description: '- compressed output (GZip format, .gz).'
   synonyms:
   - -gz
-  - '- compressed'
-  args: !SimpleFlagArg
-    name: output
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: length, default=30 bp.(only for paired-end mode)
+  description: '- Maximum adapter length, default=30 bp.(only for paired-end mode)'
   synonyms:
   - -alen
-  - '- Maximum'
-  args: !SimpleFlagArg
-    name: adapter
+  args: !EmptyFlagArg {}
   optional: true
 command:
 - seqyclean
+parent:
 subcommands: []
 help_flag: !Flag
-  description: help and exit.
+  description: '- Show this help and exit.'
   synonyms:
   - -h
   - --help
-  - '- Show'
-  args: !SimpleFlagArg
-    name: this
+  args: !EmptyFlagArg {}
   optional: true
 usage_flag:
 version_flag:
+help_text: "Version: 1.10.09 (2018-10-16)\n**********************************************************************************************************************\n\
+  usage: ./seqyclean libflag input_file_name_1 [libflag input_file_name_2] -o output_prefix\
+  \ [options]\n\nCommon arguments for all library types:\n   -h, --help - Show this\
+  \ help and exit.\n   -v <filename> - Turns on vector trimming, default=off. <filename>\
+  \ - is a path to a FASTA-file containing vector genomes.\n   -c <filename> - Turns\
+  \ on contaminants screening, default=off, <filename> - is a path to a FASTA-file\
+  \ containing contaminant genomes.\n   -k <value> - Common size of k-mer, default=15\n\
+  \   -d - Distance between consecutive k-mers, default=1\n   -kc <value> - Size of\
+  \ k-mer used in sampling contaminat genome, default=15\n   -qual <max_average_error>\
+  \ <max_error_at_ends> - Turns on quality trimming, default=off. Error boundaries:\
+  \ max_average_error (default=0.01), max_error_at_ends (default=0.01)\n   -bracket\
+  \ <window_size> <max_avg_error> - Bracket window_size (default=0.794) and maximum_average_error\
+  \ (default=0.794) for quality trimming\n   -window window_size max_avg_error [window_size\
+  \ max_avg_error ...] - Parameters for window trimming. There are two windows with\
+  \ size of 50 and 10bp and max_avg_err of 0.794 by default.\n   -ow - Overwrite existing\
+  \ results, default=off\n   -minlen <value> - Minimum length of read to accept, default=50\
+  \ bp.\n   -polyat [cdna] [cerr] [crng] - Turns on poly A/T trimming, default=off.\
+  \ Parameters: cdna (default=10) - maximum size of a poly tail, cerr (default=3)\
+  \ - maximum number of G/C nucleotides within a tail, cnrg (default=50) - range to\
+  \ look for a tail within a read.\n   -verbose - Verbose output, default=off.\n \
+  \  -detrep - Generate detailed report for each read, default=off.\n   -dup [-startdw\
+  \ 10][-sizedw 35] [-maxdup 3] - Turns on screening duplicated sequences, default=off.\
+  \ Here: -startdw (defalt=10) and -sizedw (default=25) are starting position and\
+  \ size of the window within a read, -maxdup (default=3) - maximum number of duplicated\
+  \ sequences allowed.\n   -no_adapter_trim - Turns off trimming of adapters, default=off.\n\
+  Roche 454 only arguments:\n   -t <value> - Number of threads (not yet applicable\
+  \ to Illumina mode), default=4.\n   -fastq - Output in FASTQ format, default=off.\n\
+  \   -fasta_out - Output in FASTA format, default=off.\n   -m <filename> - Using\
+  \ custom barcodes, default=off. <filename> - a path to a FASTA-file with custom\
+  \ barcodes.\nIllumina paired- and single-end arguments:\n   -1 <filename1> -2 <filename2>\
+  \ - Paired-end mode (see examples below)\n   -U <filename> - Single-end mode\n \
+  \  -shuffle - Store non-paired Illumina reads in shuffled file, default=off.\n \
+  \  -i64 - Turns on 64-quality base, default = off.\n   -adp <filename> - Turns on\
+  \ using custom adapters, default=off. <filename> - FASTA file with adapters\n  \
+  \ -at <value> - This option sets the similarity threshold for adapter trimming by\
+  \ overlap (only in paired-end mode). By default its value is set to 0.75.\n   -overlap\
+  \ <value> - This option turns on merging overlapping paired-end reads and <value>\
+  \ is the minimum overlap length. By default the minimum overlap length is 16 base\
+  \ pairs.\n   -new2old - Switch to fix read IDs, default=off ( As is detailed in:\
+  \ http://contig.wordpress.com/2011/09/01/newbler-input-iii-a-quick-fix-for-the-new-illumina-fastq-header/#more-342\
+  \ ).\n   -gz - compressed output (GZip format, .gz).\n   -alen - Maximum adapter\
+  \ length, default=30 bp.(only for paired-end mode)\nExamples\nRoche 454:\n./seqyclean\
+  \ -454 test_data/in_001.sff -o test/Test454 -v test_data/vectors.fasta\nPaired-end\
+  \ Illumina library:\n./seqyclean -1 test_data/R1.fastq.gz -2 test_data/R2.fastq.gz\
+  \ -o test/Test_Illumina\nSingle-end Illumina library:\n./seqyclean -U test_data/R1.fastq.gz\
+  \ -o test/Test_Illumina\nPlease ask Ilya by email: ilya.zhbannikov@duke.edu in case\
+  \ of any questions.\n"
+generated_using:
+- --help

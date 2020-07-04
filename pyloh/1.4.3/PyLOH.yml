@@ -1,8 +1,9 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - PyLOH.py
+parent:
 subcommands:
 - !Command
   positional:
@@ -75,6 +76,7 @@ subcommands:
   command:
   - PyLOH.py
   - preprocess
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -85,6 +87,29 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: PyLOH preprocess [-h] [--segments_bed SEGMENTS_BED] [--WES]\n\
+    \                        [--min_depth MIN_DEPTH]\n                        [--min_base_qual\
+    \ MIN_BASE_QUAL]\n                        [--min_map_qual MIN_MAP_QUAL]\n    \
+    \                    [--process_num PROCESS_NUM]\n                        reference_genome\
+    \ normal_bam tumor_bam filename_base\n\npositional arguments:\n  reference_genome\
+    \      FASTA file for reference genome.\n  normal_bam            BAM file for\
+    \ normal sample.\n  tumor_bam             BAM file for tumor sample.\n  filename_base\
+    \         Base name of preprocessed files to be created.\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  --segments_bed SEGMENTS_BED\n\
+    \                        BED file for segments. If not provided, use autosomes\n\
+    \                        as segments. Default is None.\n  --WES              \
+    \   Flag indicating whether the BAM files are whole exome\n                  \
+    \      sequencing(WES) or not. If not provided, the BAM files\n              \
+    \          are assumed to be whole genome sequencing(WGS).\n                 \
+    \       Default is False.\n  --min_depth MIN_DEPTH\n                        Minimum\
+    \ reads depth required for both normal and tumor\n                        samples.\
+    \ Default is 20.\n  --min_base_qual MIN_BASE_QUAL\n                        Minimum\
+    \ base quality required. Default is 10.\n  --min_map_qual MIN_MAP_QUAL\n     \
+    \                   Minimum mapping quality required. Default is 10.\n  --process_num\
+    \ PROCESS_NUM\n                        Number of processes to launch for preprocessing.\n\
+    \                        Default is 1.\n"
+  generated_using: &id002
+  - --help
 - !Command
   positional:
   - !Positional
@@ -126,6 +151,7 @@ subcommands:
   command:
   - PyLOH.py
   - run_model
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -136,87 +162,47 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: PyLOH run_model [-h] [--allelenumber_max ALLELENUMBER_MAX]\n\
+    \                       [--priors PRIORS] [--max_iters MAX_ITERS]\n          \
+    \             [--stop_value STOP_VALUE]\n                       filename_base\n\
+    \npositional arguments:\n  filename_base         Base name of preprocessed files\
+    \ created.\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  --allelenumber_max ALLELENUMBER_MAX\n                        Maximum\
+    \ copy number of each allele allows to take.\n                        Default\
+    \ is 2.\n  --priors PRIORS       File of the prior distribution. If not provided,\
+    \ use\n                        uniform prior. Default is None.\n  --max_iters\
+    \ MAX_ITERS\n                        Maximum number of iterations for training.\
+    \ Default is\n                        100.\n  --stop_value STOP_VALUE\n      \
+    \                  Stop value of the EM algorithm for training. If the\n     \
+    \                   change of log-likelihood is lower than this value,\n     \
+    \                   stop training. Default is 1e-7.\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: Base name of preprocessed files created.
+    position: 0
+    name: filename_base
+    optional: false
   named: []
   command:
   - PyLOH.py
   - BAF_heatmap
-  subcommands:
-  - !Command
-    positional:
-    - !Positional
-      description: Base name of preprocessed files created.
-      position: 0
-      name: filename_base
-      optional: false
-    named: []
-    command:
-    - PyLOH.py
-    - BAF_heatmap
-    - PyLOH
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-  - !Command
-    positional:
-    - !Positional
-      description: Base name of preprocessed files created.
-      position: 0
-      name: filename_base
-      optional: false
-    named: []
-    command:
-    - PyLOH.py
-    - BAF_heatmap
-    - BAF_heatmap
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-  - !Command
-    positional:
-    - !Positional
-      description: Base name of preprocessed files created.
-      position: 0
-      name: filename_base
-      optional: false
-    named: []
-    command:
-    - PyLOH.py
-    - BAF_heatmap
-    - filename_base
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
+  parent: *id001
+  subcommands: []
   help_flag: !Flag
-    description: ''
+    description: show this help message and exit
     synonyms:
     - -h
+    - --help
     args: !EmptyFlagArg {}
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: PyLOH BAF_heatmap [-h] filename_base\n\npositional arguments:\n\
+    \  filename_base  Base name of preprocessed files created.\n\noptional arguments:\n\
+    \  -h, --help     show this help message and exit\n"
+  generated_using: *id002
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -226,3 +212,12 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: PyLOH [-h] {preprocess,run_model,BAF_heatmap} ...\n\npositional\
+  \ arguments:\n  {preprocess,run_model,BAF_heatmap}\n    preprocess          Preprocess\
+  \ paired normal and tumor BAM files\n    run_model           Run a probabilistic\
+  \ model based analysis. Requires\n                        preprocessed counts file\
+  \ and segments file that have\n                        been created.\n    BAF_heatmap\
+  \         Plot the BAF heat map for each segment. Requires\n                   \
+  \     preprocessed heatmap file that have been created.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n"
+generated_using: *id002

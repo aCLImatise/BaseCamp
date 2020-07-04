@@ -15,18 +15,18 @@ named:
   - -n
   - --names
   args: !ChoiceFlagArg
-    choices:
-    - infogo1000
-    - metacyc-rxn
-    - kegg-module
-    - ec
-    - go
-    - metacyc-pwy
-    - pfam
-    - eggnog
-    - uniref50
-    - kegg-pathway
-    - kegg-orthology
+    choices: !!set
+      go:
+      kegg-module:
+      eggnog:
+      uniref50:
+      metacyc-rxn:
+      kegg-orthology:
+      metacyc-pwy:
+      ec:
+      pfam:
+      kegg-pathway:
+      infogo1000:
   optional: true
 - !Flag
   description: Custom mapping of feature IDs to full names (.tsv or .tsv.gz)
@@ -53,6 +53,7 @@ named:
   optional: true
 command:
 - humann2_rename_table
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -63,3 +64,18 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: humann2_rename_table [-h] [-i INPUT]\n                        \
+  \    [-n {infogo1000,metacyc-rxn,kegg-module,ec,go,metacyc-pwy,pfam,eggnog,uniref50,kegg-pathway,kegg-orthology}]\n\
+  \                            [-c CUSTOM] [-s] [-o OUTPUT]\n\nHUMAnN2 utility for\
+  \ renaming table features\n===========================================\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -i INPUT,\
+  \ --input INPUT\n                        Original output table (tsv or biom format);\
+  \ default=[TSV/STDIN]\n  -n {infogo1000,metacyc-rxn,kegg-module,ec,go,metacyc-pwy,pfam,eggnog,uniref50,kegg-pathway,kegg-orthology},\
+  \ --names {infogo1000,metacyc-rxn,kegg-module,ec,go,metacyc-pwy,pfam,eggnog,uniref50,kegg-pathway,kegg-orthology}\n\
+  \                        Table features that can be renamed with included data files\n\
+  \  -c CUSTOM, --custom CUSTOM\n                        Custom mapping of feature\
+  \ IDs to full names (.tsv or .tsv.gz)\n  -s, --simplify        Remove non-alphanumeric\
+  \ characters from names\n  -o OUTPUT, --output OUTPUT\n                        Path\
+  \ for modified output table; default=[STDOUT]\n"
+generated_using:
+- --help

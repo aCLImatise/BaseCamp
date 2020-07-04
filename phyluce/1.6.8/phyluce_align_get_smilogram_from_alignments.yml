@@ -20,13 +20,13 @@ named:
   synonyms:
   - --input-format
   args: !ChoiceFlagArg
-    choices:
-    - fasta
-    - nexus
-    - phylip
-    - clustal
-    - emboss
-    - stockholm
+    choices: !!set
+      nexus:
+      clustal:
+      fasta:
+      stockholm:
+      emboss:
+      phylip:
   optional: true
 - !Flag
   description: The number of cores to use.
@@ -43,6 +43,7 @@ named:
   optional: true
 command:
 - phyluce_align_get_smilogram_from_alignments
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -53,3 +54,17 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: phyluce_align_get_smilogram_from_alignments [-h] --alignments\n\
+  \                                                   ALIGNMENTS --output OUTPUT\n\
+  \                                                   [--input-format {fasta,nexus,phylip,clustal,emboss,stockholm}]\n\
+  \                                                   [--cores CORES]\n          \
+  \                                         [--smilogram]\n\nRecord variant positions\
+  \ in alignments\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --alignments ALIGNMENTS\n                        The directory containing\
+  \ the alignment files\n  --output OUTPUT       The output filename (without extension\
+  \ - code will add\n                        .sqlite)\n  --input-format {fasta,nexus,phylip,clustal,emboss,stockholm}\n\
+  \                        The input alignment format\n  --cores CORES         The\
+  \ number of cores to use.\n  --smilogram           Prepare output for smilogram\
+  \ figure\n"
+generated_using:
+- --help

@@ -1,4 +1,4 @@
-!Command
+&id001 !Command
 positional: []
 named:
 - !Flag
@@ -28,31 +28,33 @@ named:
   optional: true
 command:
 - tripaille
+parent:
 subcommands:
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: OPTIONS
-    optional: true
-  named: []
-  command:
-  - tripaille
-  - init
-  subcommands: []
-  help_flag:
-  usage_flag:
-  version_flag:
-- !Command
+- &id002 !Command
   positional: []
   named: []
   command:
   - tripaille
   - analysis
+  parent: *id001
   subcommands:
   - !Command
-    positional: []
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: NAME
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: PROGRAM
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: PROGRAMVERSION
+      optional: false
     named:
     - !Flag
       description: analysis algorithm
@@ -93,6 +95,7 @@ subcommands:
     - tripaille
     - analysis
     - add_analysis
+    parent: *id002
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -103,6 +106,15 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille analysis add_analysis [OPTIONS] NAME PROGRAM PROGRAMVERSION\n\
+      \                                       SOURCENAME\n\n  Create an analysis\n\
+      \n  Output:\n\n      Analysis information\n\nOptions:\n  --algorithm TEXT  \
+      \    analysis algorithm\n  --sourceversion TEXT  analysis sourceversion\n  --sourceuri\
+      \ TEXT      analysis sourceuri\n  --description TEXT    analysis description\n\
+      \  --date_executed TEXT  analysis date_executed (yyyy-mm-dd)\n  -h, --help \
+      \           Show this message and exit.\n"
+    generated_using: &id003
+    - --help
   - !Command
     positional: []
     named:
@@ -123,6 +135,7 @@ subcommands:
     - tripaille
     - analysis
     - delete_orphans
+    parent: *id002
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -133,6 +146,11 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille analysis delete_orphans [OPTIONS]\n\n  Delete orphans\
+      \ Drupal analysis nodes\n\n  Output:\n\n      status\n\nOptions:\n  --job_name\
+      \ TEXT  Name of the job\n  --no_wait        Return immediately without waiting\
+      \ for job completion\n  -h, --help       Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -203,6 +221,7 @@ subcommands:
     - tripaille
     - analysis
     - get_analyses
+    parent: *id002
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -213,6 +232,15 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille analysis get_analyses [OPTIONS]\n\n  Get analyses\n\
+      \n  Output:\n\n      Analysis information\n\nOptions:\n  --analysis_id TEXT\
+      \     An analysis ID\n  --name TEXT            analysis name\n  --program TEXT\
+      \         analysis program\n  --programversion TEXT  analysis programversion\n\
+      \  --algorithm TEXT       analysis algorithm\n  --sourcename TEXT      analysis\
+      \ sourcename\n  --sourceversion TEXT   analysis sourceversion\n  --sourceuri\
+      \ TEXT       analysis sourceuri\n  --date_executed TEXT   analysis date_executed\
+      \ (yyyy-mm-dd)\n  -h, --help             Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -227,6 +255,7 @@ subcommands:
     - tripaille
     - analysis
     - get_analyses_tripal
+    parent: *id002
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -237,8 +266,28 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille analysis get_analyses_tripal [OPTIONS]\n\n  Get analysis\
+      \ entities\n\n  Output:\n\n      Analysis entity/node information\n\nOptions:\n\
+      \  --analysis_id INTEGER  An analysis entity/node ID\n  -h, --help         \
+      \    Show this message and exit.\n"
+    generated_using: *id003
   - !Command
-    positional: []
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: NAME
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: PROGRAM
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: PROGRAMVERSION
+      optional: false
     named:
     - !Flag
       description: If looking for files in a directory, extension of the blast result
@@ -359,6 +408,7 @@ subcommands:
     - tripaille
     - analysis
     - load_blast
+    parent: *id002
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -369,8 +419,41 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille analysis load_blast [OPTIONS] NAME PROGRAM PROGRAMVERSION\n\
+      \                                     SOURCENAME BLAST_OUTPUT\n\n  Create a\
+      \ Blast analysis\n\n  Output:\n\n      Loading information\n\nOptions:\n  --blast_ext\
+      \ TEXT         If looking for files in a directory, extension of\n         \
+      \                  the blast result files\n\n  --blastdb TEXT           Name\
+      \ of the database blasted against (must be in\n                           the\
+      \ Chado db table)\n\n  --blastdb_id TEXT        ID of the database blasted against\
+      \ (must be in the\n                           Chado db table)\n\n  --blast_parameters\
+      \ TEXT  Blast parameters used to produce these results\n  --query_re TEXT  \
+      \        The regular expression that can uniquely identify\n               \
+      \            the query name. This parameters is required if the\n          \
+      \                 feature name is not the first word in the blast\n        \
+      \                   query name.\n\n  --query_type TEXT        The feature type\
+      \ (e.g. 'gene', 'mRNA', 'contig') of\n                           the query.\
+      \ It must be a valid Sequence Ontology\n                           term.\n\n\
+      \  --query_uniquename       Use this if the --query-re regular expression\n\
+      \                           matches unique names instead of names in the\n \
+      \                          database.\n\n  --is_concat              If the blast\
+      \ result file is simply a list of\n                           concatenated blast\
+      \ results.\n\n  --search_keywords        Extract keywords for Tripal search\n\
+      \  --no_parsed TEXT         Maximum number of hits to parse per feature.\n \
+      \                          Default=all  [default: all]\n\n  --no_wait      \
+      \          Do not wait for job to complete\n  --algorithm TEXT         analysis\
+      \ algorithm\n  --sourceversion TEXT     analysis sourceversion\n  --sourceuri\
+      \ TEXT         analysis sourceuri\n  --description TEXT       analysis description\n\
+      \  --date_executed TEXT     analysis date_executed (yyyy-mm-dd)\n  -h, --help\
+      \               Show this message and exit.\n"
+    generated_using: *id003
   - !Command
-    positional: []
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: FASTA
+      optional: false
     named:
     - !Flag
       description: Organism common name or abbreviation
@@ -490,6 +573,7 @@ subcommands:
     - tripaille
     - analysis
     - load_fasta
+    parent: *id002
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -500,8 +584,35 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille analysis load_fasta [OPTIONS] FASTA\n\n  Load fasta\
+      \ sequences\n\n  Output:\n\n      Loading information\n\nOptions:\n  --organism\
+      \ TEXT          Organism common name or abbreviation\n  --organism_id INTEGER\
+      \    Organism ID\n  --analysis TEXT          Analysis name\n  --analysis_id\
+      \ INTEGER    Analysis ID\n  --sequence_type TEXT     Sequence type  [default:\
+      \ contig]\n  --re_name TEXT           Regular expression for the name\n  --re_uniquename\
+      \ TEXT     Regular expression for the unique name\n  --db_ext_id TEXT      \
+      \   External DB ID\n  --re_accession TEXT      Regular expression for the accession\
+      \ from external\n                           DB\n\n  --rel_type TEXT        \
+      \  Relation type (part_of or derives_from)\n  --rel_subject_re TEXT    Relation\
+      \ subject regular expression (used to\n                           extract id\
+      \ of related entity)\n\n  --rel_subject_type TEXT  Relation subject type (must\
+      \ match already loaded\n                           data, e.g. mRNA)\n\n  --method\
+      \ TEXT            Insertion method (insert, update or insup,\n             \
+      \              default=insup (Insert and Update))  [default:\n             \
+      \              insup]\n\n  --match_type TEXT        Match type for already loaded\
+      \ features (name or\n                           uniquename; default=uniquename;\
+      \ used for \"Update\n                           only\" or \"Insert and update\"\
+      \ methods)'  [default:\n                           uniquename]\n\n  --job_name\
+      \ TEXT          Name of the job\n  --no_wait                Do not wait for\
+      \ job to complete\n  -h, --help               Show this message and exit.\n"
+    generated_using: *id003
   - !Command
-    positional: []
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: GFF
+      optional: false
     named:
     - !Flag
       description: Organism common name or abbreviation
@@ -647,6 +758,7 @@ subcommands:
     - tripaille
     - analysis
     - load_gff3
+    parent: *id002
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -657,8 +769,84 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille analysis load_gff3 [OPTIONS] GFF\n\n  Load GFF3 file\n\
+      \n  Output:\n\n      Loading information\n\nOptions:\n  --organism TEXT    \
+      \           Organism common name or abbreviation\n  --organism_id INTEGER  \
+      \       Organism ID\n  --analysis TEXT               Analysis name\n  --analysis_id\
+      \ INTEGER         Analysis ID\n  --import_mode TEXT            Import mode (add_only=existing\
+      \ features won't\n                                be touched, update=existing\
+      \ features will be\n                                updated and obsolete attributes\
+      \ kept)')\n                                [default: update]\n\n  --target_organism\
+      \ TEXT        In case of Target attribute in the GFF3,\n                   \
+      \             choose the organism abbreviation or common\n                 \
+      \               name to which target sequences belong. Select\n            \
+      \                    this only if target sequences belong to a\n           \
+      \                     different organism than the one specified with\n     \
+      \                           --organism-id. And only choose an organism\n   \
+      \                             here if all of the target sequences belong to\n\
+      \                                the same species. If the targets in the GFF\n\
+      \                                file belong to multiple different species then\n\
+      \                                the organism must be specified using the\n\
+      \                                'target_organism=genus:species' attribute in\n\
+      \                                the GFF file.')\n\n  --target_organism_id INTEGER\
+      \  In case of Target attribute in the GFF3,\n                              \
+      \  choose the organism ID to which target\n                                sequences\
+      \ belong. Select this only if target\n                                sequences\
+      \ belong to a different organism than\n                                the one\
+      \ specified with --organism-id. And only\n                                choose\
+      \ an organism here if all of the target\n                                sequences\
+      \ belong to the same species. If the\n                                targets\
+      \ in the GFF file belong to multiple\n                                different\
+      \ species then the organism must be\n                                specified\
+      \ using the\n                                'target_organism=genus:species'\
+      \ attribute in\n                                the GFF file.')\n\n  --target_type\
+      \ TEXT            In case of Target attribute in the GFF3, if\n            \
+      \                    the unique name for a target sequence is not\n        \
+      \                        unique (e.g. a protein and an mRNA have the\n     \
+      \                           same name) then you must specify the type for\n\
+      \                                all targets in the GFF file. If the targets\n\
+      \                                are of different types then the type must be\n\
+      \                                specified using the 'target_type=type'\n  \
+      \                              attribute in the GFF file. This must be a\n \
+      \                               valid Sequence Ontology (SO) term.')\n\n  --target_create\
+      \               In case of Target attribute in the GFF3, if\n              \
+      \                  the target feature cannot be found, create one\n        \
+      \                        using the organism and type specified above,\n    \
+      \                            or using the 'target_organism' and\n          \
+      \                      'target_type' fields specified in the GFF\n         \
+      \                       file. Values specified in the GFF file take\n      \
+      \                          precedence over those specified above.')\n\n  --start_line\
+      \ INTEGER          The line in the GFF file where importing\n              \
+      \                  should start\n\n  --landmark_type TEXT          A Sequence\
+      \ Ontology type for the landmark\n                                sequences\
+      \ in the GFF fie (e.g. 'chromosome').\n\n  --alt_id_attr TEXT            When\
+      \ ID attribute is absent, specify which\n                                other\
+      \ attribute can uniquely identify the\n                                feature.\n\
+      \n  --create_organism             Create organisms when encountering organism\n\
+      \                                attribute (these lines will be skip otherwise)\n\
+      \n  --re_mrna TEXT                Regular expression for the mRNA name\n  --re_protein\
+      \ TEXT             Replacement string for the protein name\n  --job_name TEXT\
+      \               Name of the job\n  --no_wait                     Do not wait\
+      \ for job to complete\n  -h, --help                    Show this message and\
+      \ exit.\n"
+    generated_using: *id003
   - !Command
-    positional: []
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: NAME
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: PROGRAM
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: PROGRAMVERSION
+      optional: false
     named:
     - !Flag
       description: Organism common name or abbreviation
@@ -764,6 +952,7 @@ subcommands:
     - tripaille
     - analysis
     - load_go
+    parent: *id002
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -774,8 +963,44 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille analysis load_go [OPTIONS] NAME PROGRAM PROGRAMVERSION\n\
+      \                                  SOURCENAME GAF_OUTPUT\n\n  Create a GO analysis\n\
+      \n  Output:\n\n      Loading information\n\nOptions:\n  --organism TEXT    \
+      \    Organism common name or abbreviation\n  --organism_id INTEGER  Organism\
+      \ ID\n  --gaf_ext TEXT         If looking for files in a directory, extension\
+      \ of the\n                         GAF files\n\n  --query_type TEXT      The\
+      \ feature type (e.g. 'gene', 'mRNA', 'contig') of\n                        \
+      \ the query. It must be a valid Sequence Ontology term.\n\n  --query_matching\
+      \ TEXT  Method to match identifiers to features in the\n                   \
+      \      database. ('name', 'uniquename' or 'dbxref')\n                      \
+      \   [default: uniquename]\n\n  --method TEXT          Import method ('add' or\
+      \ 'remove')  [default: add]\n  --name_column INTEGER  Column containing the\
+      \ feature identifiers (2, 3, 10\n                         or 11; default=2).\
+      \  [default: 2]\n\n  --re_name TEXT         Regular expression to extract the\
+      \ feature name from\n                         GAF file.\n\n  --no_wait     \
+      \         Do not wait for job to complete\n  --algorithm TEXT       analysis\
+      \ algorithm\n  --sourceversion TEXT   analysis sourceversion\n  --sourceuri\
+      \ TEXT       analysis sourceuri\n  --description TEXT     analysis description\n\
+      \  --date_executed TEXT   analysis date_executed (yyyy-mm-dd)\n  -h, --help\
+      \             Show this message and exit.\n"
+    generated_using: *id003
   - !Command
-    positional: []
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: NAME
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: PROGRAM
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: PROGRAMVERSION
+      optional: false
     named:
     - !Flag
       description: InterProScan parameters used to produce these results
@@ -859,6 +1084,7 @@ subcommands:
     - tripaille
     - analysis
     - load_interpro
+    parent: *id002
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -869,6 +1095,27 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille analysis load_interpro [OPTIONS] NAME PROGRAM PROGRAMVERSION\n\
+      \                                        SOURCENAME INTERPRO_OUTPUT\n\n  Create\
+      \ an Interpro analysis\n\n  Output:\n\n      Loading information\n\nOptions:\n\
+      \  --interpro_parameters TEXT  InterProScan parameters used to produce these\n\
+      \                              results\n\n  --query_re TEXT             The\
+      \ regular expression that can uniquely\n                              identify\
+      \ the query name. This parameters is\n                              required\
+      \ if the feature name is not the first\n                              word in\
+      \ the blast query name.\n\n  --query_type TEXT           The feature type (e.g.\
+      \ 'gene', 'mRNA', 'contig')\n                              of the query. It\
+      \ must be a valid Sequence\n                              Ontology term.\n\n\
+      \  --query_uniquename          Use this if the query_re regular expression\n\
+      \                              matches unique names instead of names in the\n\
+      \                              database.\n\n  --parse_go                  Load\
+      \ GO annotation to the database\n  --no_wait                   Do not wait for\
+      \ job to complete\n  --algorithm TEXT            analysis algorithm\n  --sourceversion\
+      \ TEXT        analysis sourceversion\n  --sourceuri TEXT            analysis\
+      \ sourceuri\n  --description TEXT          analysis description\n  --date_executed\
+      \ TEXT        analysis date_executed (yyyy-mm-dd)\n  -h, --help            \
+      \      Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -903,6 +1150,7 @@ subcommands:
     - tripaille
     - analysis
     - sync
+    parent: *id002
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -913,6 +1161,12 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille analysis sync [OPTIONS]\n\n  Synchronize an analysis\n\
+      \n  Output:\n\n      status\n\nOptions:\n  --analysis TEXT     Analysis name\n\
+      \  --analysis_id TEXT  ID of the analysis to sync\n  --job_name TEXT     Name\
+      \ of the job\n  --no_wait           Return immediately without waiting for job\
+      \ completion\n  -h, --help          Show this message and exit.\n"
+    generated_using: *id003
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -922,12 +1176,25 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-- !Command
+  help_text: "Usage: tripaille analysis [OPTIONS] COMMAND [ARGS]...\n\n  Manage Tripal\
+    \ analyses\n\nOptions:\n  -h, --help  Show this message and exit.\n\nCommands:\n\
+    \  add_analysis         Create an analysis Output: Analysis information\n  delete_orphans\
+    \       Delete orphans Drupal analysis nodes Output: status\n  get_analyses  \
+    \       Get analyses Output: Analysis information\n  get_analyses_tripal  Get\
+    \ analysis entities Output: Analysis entity/node...\n  load_blast           Create\
+    \ a Blast analysis Output: Loading information\n  load_fasta           Load fasta\
+    \ sequences Output: Loading information\n  load_gff3            Load GFF3 file\
+    \ Output: Loading information\n  load_go              Create a GO analysis Output:\
+    \ Loading information\n  load_interpro        Create an Interpro analysis Output:\
+    \ Loading...\n  sync                 Synchronize an analysis Output: status\n"
+  generated_using: *id003
+- &id004 !Command
   positional: []
   named: []
   command:
   - tripaille
   - db
+  parent: *id001
   subcommands:
   - !Command
     positional: []
@@ -950,6 +1217,7 @@ subcommands:
     - tripaille
     - db
     - get_dbs
+    parent: *id004
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -960,6 +1228,10 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille db get_dbs [OPTIONS]\n\n  Get all dbs\n\n  Output:\n\
+      \n      Dbs information\n\nOptions:\n  --db_id TEXT  A db ID\n  --name TEXT\
+      \   filter on db name\n  -h, --help    Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -974,6 +1246,7 @@ subcommands:
     - tripaille
     - db
     - get_mviews
+    parent: *id004
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -984,6 +1257,10 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille db get_mviews [OPTIONS]\n\n  Get all materialized\
+      \ views\n\n  Output:\n\n      materialized views information\n\nOptions:\n \
+      \ --name TEXT  filter on mview name\n  -h, --help   Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -1087,6 +1364,7 @@ subcommands:
     - tripaille
     - db
     - index
+    parent: *id004
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -1097,6 +1375,40 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille db index [OPTIONS]\n\n  Schedule database indexing\
+      \ using elasticsearch\n\n  Output:\n\n      Indexing information\n\nOptions:\n\
+      \  --mode TEXT           Indexing mode: 'website' to index the website ,\n \
+      \                       'nodes' for the website nodes, 'entities' for the\n\
+      \                        website entities (Tripal 3), 'table' to index a single\n\
+      \                        table, 'gene' to build a Gene search index (Tripal\
+      \ 3\n                        only) (default: website) ('website' default to\
+      \ 'nodes'\n                        for Tripal 2, 'entities' for Tripal 3)  [default:\n\
+      \                        website]\n\n  --table TEXT          Table to index\
+      \ (only in 'table' mode)\n  --index_name TEXT     Index name (only in 'table'\
+      \ mode)\n  --queues INTEGER      Number of indexing task queues (Tripal 2 only)\n\
+      \                        [default: 10]\n\n  --fields TEXT         Fields to\
+      \ index (only in 'table' mode), syntax:\n                        <field_name>|<field_type>,\
+      \ field_type should be one of\n                        'string' (Tripal2), 'text'\
+      \ (Tripal3), 'keyword',\n                        'date', 'long', 'double', 'boolean',\
+      \ 'ip', 'object',\n                        'nested', 'geo_point', 'geo_shape',\
+      \ or 'completion'\n\n  --links TEXT          List of links to show to users,\
+      \ syntax: <column-where-\n                        to-show-the-link>|</your/url/[any-column-name]>\n\
+      \                        (Tripal 2 only)\n\n  --tokenizer TEXT      Tokenizer\
+      \ to use (only in 'table' mode) (one of\n                        'standard',\
+      \ 'letter', 'lowercase', 'whitespace',\n                        'uax_url_email',\
+      \ 'classic', 'ngram', 'edge_ngram',\n                        'keywordx', 'pattern',\
+      \ or 'path_hierarchy';\n                        default='standard')  [default:\
+      \ standard]\n\n  --token_filters TEXT  Token filters (Tripal 3 only) (only in\
+      \ 'table' mode)\n                        (available filters are 'standard',\
+      \ 'asciifolding',\n                        'length', 'lowercase', 'uppercase')\
+      \ (Default to\n                        ['standard', 'lowercase'])\n\n  --exposed\
+      \             \"Expose the index (read-only) to other websites\n  --index_url\
+      \ TEXT      In order for other sites to link back to your results\n        \
+      \                page, you must specify a path where the form for this\n   \
+      \                     index can be reached\n\n  --job_name TEXT       Name of\
+      \ the job\n  --no_wait             Do not wait for job to complete\n  -h, --help\
+      \            Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -1117,6 +1429,7 @@ subcommands:
     - tripaille
     - db
     - populate_mviews
+    parent: *id004
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -1127,22 +1440,11 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: OPTIONS
-      optional: true
-    named: []
-    command:
-    - tripaille
-    - db
-    - tune
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
+    help_text: "Usage: tripaille db populate_mviews [OPTIONS]\n\n  Populate materialized\
+      \ views\n\n  Output:\n\n      Loading information\n\nOptions:\n  --name TEXT\
+      \  filter on mview name\n  --no_wait    Do not wait for job to complete\n  -h,\
+      \ --help   Show this message and exit.\n"
+    generated_using: *id003
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -1152,87 +1454,57 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-- !Command
+  help_text: "Usage: tripaille db [OPTIONS] COMMAND [ARGS]...\n\n  Access Tripal/Chado\
+    \ database\n\nOptions:\n  -h, --help  Show this message and exit.\n\nCommands:\n\
+    \  get_dbs          Get all dbs Output: Dbs information\n  get_mviews       Get\
+    \ all materialized views Output: materialized views...\n  index            Schedule\
+    \ database indexing using elasticsearch Output:...\n  populate_mviews  Populate\
+    \ materialized views Output: Loading information\n  tune             Setup default\
+    \ entity index priority for whole website...\n"
+  generated_using: *id003
+- &id005 !Command
   positional: []
   named: []
   command:
   - tripaille
   - entity
+  parent: *id001
   subcommands:
-  - !Command
-    positional: []
-    named: []
-    command:
-    - tripaille
-    - entity
-    - add_entity
-    subcommands:
-    - !Command
-      positional: []
-      named:
-      - !Flag
-        description: Values to populate the entity fields
-        synonyms:
-        - --params
-        args: !SimpleFlagArg
-          name: TEXT
-        optional: true
-      command:
-      - tripaille
-      - entity
-      - add_entity
-      - OPTIONS
-      subcommands: []
-      help_flag: !Flag
-        description: Show this message and exit.
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: OPTIONS
-        optional: true
-      - !Positional
-        description: ''
-        position: 1
-        name: ENTITY
-        optional: false
-      named: []
-      command:
-      - tripaille
-      - entity
-      - add_entity
-      - ENTITY
-      subcommands: []
-      help_flag:
-      usage_flag:
-      version_flag:
-    help_flag:
-    usage_flag:
-    version_flag:
   - !Command
     positional:
     - !Positional
       description: ''
       position: 0
-      name: OPTIONS
+      name: ENTITY
+      optional: false
+    named:
+    - !Flag
+      description: Values to populate the entity fields
+      synonyms:
+      - --params
+      args: !SimpleFlagArg
+        name: TEXT
       optional: true
-    named: []
     command:
     - tripaille
     - entity
-    - get_bundles
+    - add_entity
+    parent: *id005
     subcommands: []
-    help_flag:
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille entity add_entity [OPTIONS] ENTITY\n\n  Add a new\
+      \ entity to the database\n\n  Output:\n\n      Entity information\n\nOptions:\n\
+      \  --params TEXT  Values to populate the entity fields\n  -h, --help     Show\
+      \ this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -1254,6 +1526,7 @@ subcommands:
     - tripaille
     - entity
     - get_entities
+    parent: *id005
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -1264,56 +1537,38 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille entity get_entities [OPTIONS]\n\n  Get entities\n\
+      \n  Output:\n\n      Entity information\n\nOptions:\n  --entity TEXT       \
+      \ Name of the entity type (e.g. Organism)\n  --entity_id INTEGER  ID of an entity\n\
+      \  -h, --help           Show this message and exit.\n"
+    generated_using: *id003
   - !Command
-    positional: []
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: ENTITY
+      optional: false
     named: []
     command:
     - tripaille
     - entity
     - get_fields
-    subcommands:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: ENTITY
-        optional: false
-      named: []
-      command:
-      - tripaille
-      - entity
-      - get_fields
-      - OPTIONS
-      subcommands: []
-      help_flag:
-      usage_flag:
-      version_flag:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: OPTIONS
-        optional: true
-      - !Positional
-        description: ''
-        position: 1
-        name: ENTITY
-        optional: false
-      named: []
-      command:
-      - tripaille
-      - entity
-      - get_fields
-      - ENTITY
-      subcommands: []
-      help_flag:
-      usage_flag:
-      version_flag:
-    help_flag:
+    parent: *id005
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille entity get_fields [OPTIONS] ENTITY\n\n  Get the list\
+      \ of available fields for an entity\n\n  Output:\n\n      Fields information\n\
+      \nOptions:\n  -h, --help  Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -1342,6 +1597,7 @@ subcommands:
     - tripaille
     - entity
     - publish
+    parent: *id005
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -1352,6 +1608,13 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille entity publish [OPTIONS]\n\n  Publish entities (Tripal\
+      \ 3 only)\n\n  Output:\n\n      status\n\nOptions:\n  --types TEXT     List\
+      \ of entity types to be published (e.g. Gene mRNA,\n                   default:\
+      \ all)\n\n  --job_name TEXT  Name of the job\n  --no_wait        Return immediately\
+      \ without waiting for job completion\n  -h, --help       Show this message and\
+      \ exit.\n"
+    generated_using: *id003
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -1361,12 +1624,21 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-- !Command
+  help_text: "Usage: tripaille entity [OPTIONS] COMMAND [ARGS]...\n\n  Manage any\
+    \ type of Tripal entities\n\nOptions:\n  -h, --help  Show this message and exit.\n\
+    \nCommands:\n  add_entity    Add a new entity to the database Output: Entity information\n\
+    \  get_bundles   Get the list of tripal bundles Output: Bundles information\n\
+    \  get_entities  Get entities Output: Entity information\n  get_fields    Get\
+    \ the list of available fields for an entity Output:...\n  publish       Publish\
+    \ entities (Tripal 3 only) Output: status\n"
+  generated_using: *id003
+- &id006 !Command
   positional: []
   named: []
   command:
   - tripaille
   - feature
+  parent: *id001
   subcommands:
   - !Command
     positional: []
@@ -1388,6 +1660,7 @@ subcommands:
     - tripaille
     - feature
     - delete_orphans
+    parent: *id006
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -1398,6 +1671,11 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille feature delete_orphans [OPTIONS]\n\n  Delete orphans\
+      \ Drupal feature nodes\n\n  Output:\n\n      status\n\nOptions:\n  --job_name\
+      \ TEXT  Name of the job\n  --no_wait        Return immediately without waiting\
+      \ for job completion\n  -h, --help       Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -1412,6 +1690,7 @@ subcommands:
     - tripaille
     - feature
     - get_features
+    parent: *id006
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -1422,6 +1701,11 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille feature get_features [OPTIONS]\n\n  Get features\
+      \ entities\n\n  Output:\n\n      Feature entity/node information\n\nOptions:\n\
+      \  --feature_id INTEGER  A feature entity/node ID\n  -h, --help            Show\
+      \ this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -1436,6 +1720,7 @@ subcommands:
     - tripaille
     - feature
     - get_features_tripal
+    parent: *id006
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -1446,6 +1731,11 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille feature get_features_tripal [OPTIONS]\n\n  Get features\
+      \ entities\n\n  Output:\n\n      Feature entity/node information\n\nOptions:\n\
+      \  --feature_id INTEGER  A feature entity/node ID\n  -h, --help            Show\
+      \ this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -1503,6 +1793,7 @@ subcommands:
     - tripaille
     - feature
     - sync
+    parent: *id006
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -1513,6 +1804,17 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille feature sync [OPTIONS]\n\n  Synchronize some features\
+      \ (Tripal 2 only)\n\n  Output:\n\n      status\n\nOptions:\n  --organism TEXT\
+      \     Common name of the organism to sync\n  --organism_id TEXT  ID of the organism\
+      \ to sync\n  --max_sync TEXT     Maximum number of features to sync (default:\
+      \ all)\n  --types TEXT        List of types of records to be synced (e.g. gene\
+      \ mRNA,\n                      default: all)\n\n  --ids TEXT          List of\
+      \ names of records to be synced (e.g. gene0001,\n                      default:\
+      \ all)\n\n  --job_name TEXT     Name of the job\n  --no_wait           Return\
+      \ immediately without waiting for job completion\n  -h, --help          Show\
+      \ this message and exit.\n"
+    generated_using: *id003
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -1522,15 +1824,38 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-- !Command
+  help_text: "Usage: tripaille feature [OPTIONS] COMMAND [ARGS]...\n\n  Manage Tripal\
+    \ features\n\nOptions:\n  -h, --help  Show this message and exit.\n\nCommands:\n\
+    \  delete_orphans       Delete orphans Drupal feature nodes Output: status\n \
+    \ get_features         Get features entities Output: Feature entity/node...\n\
+    \  get_features_tripal  Get features entities Output: Feature entity/node...\n\
+    \  sync                 Synchronize some features (Tripal 2 only) Output:...\n"
+  generated_using: *id003
+- &id007 !Command
   positional: []
   named: []
   command:
   - tripaille
   - job
+  parent: *id001
   subcommands:
   - !Command
-    positional: []
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: NAME
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: IMPORTER
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: INPUT_FILE
+      optional: false
     named:
     - !Flag
       description: 'An integer score to prioritize the job  [default: 10]'
@@ -1543,6 +1868,7 @@ subcommands:
     - tripaille
     - job
     - add_import_job
+    parent: *id007
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -1553,414 +1879,62 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille job add_import_job [OPTIONS] NAME IMPORTER INPUT_FILE\n\
+      \                                    ARGUMENTS\n\n  Schedule a new import job\n\
+      \n  Output:\n\n      Job information\n\nOptions:\n  --priority INTEGER  An integer\
+      \ score to prioritize the job  [default: 10]\n  -h, --help          Show this\
+      \ message and exit.\n"
+    generated_using: *id003
   - !Command
-    positional: []
-    named: []
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: NAME
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: MODULE
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: CALLBACK
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
+      name: ARGUMENTS
+      optional: false
+    named:
+    - !Flag
+      description: 'An integer score to prioritize the job  [default: 10]'
+      synonyms:
+      - --priority
+      args: !SimpleFlagArg
+        name: INTEGER
+      optional: true
     command:
     - tripaille
     - job
     - add_job
-    subcommands:
-    - !Command
-      positional: []
-      named: []
-      command:
-      - tripaille
-      - job
-      - add_job
-      - OPTIONS
-      subcommands:
-      - !Command
-        positional: []
-        named: []
-        command:
-        - tripaille
-        - job
-        - add_job
-        - OPTIONS
-        - NAME
-        subcommands:
-        - !Command
-          positional: []
-          named: []
-          command:
-          - tripaille
-          - job
-          - add_job
-          - OPTIONS
-          - NAME
-          - MODULE
-          subcommands:
-          - !Command
-            positional: []
-            named:
-            - !Flag
-              description: 'An integer score to prioritize the job  [default: 10]'
-              synonyms:
-              - --priority
-              args: !SimpleFlagArg
-                name: INTEGER
-              optional: true
-            command:
-            - tripaille
-            - job
-            - add_job
-            - OPTIONS
-            - NAME
-            - MODULE
-            - CALLBACK
-            subcommands: []
-            help_flag: !Flag
-              description: Show this message and exit.
-              synonyms:
-              - -h
-              - --help
-              args: !EmptyFlagArg {}
-              optional: true
-            usage_flag:
-            version_flag:
-          - !Command
-            positional:
-            - !Positional
-              description: ''
-              position: 0
-              name: CALLBACK
-              optional: false
-            - !Positional
-              description: ''
-              position: 1
-              name: ARGUMENTS
-              optional: false
-            named: []
-            command:
-            - tripaille
-            - job
-            - add_job
-            - OPTIONS
-            - NAME
-            - MODULE
-            - ARGUMENTS
-            subcommands: []
-            help_flag:
-            usage_flag:
-            version_flag:
-          help_flag:
-          usage_flag:
-          version_flag:
-        - !Command
-          positional:
-          - !Positional
-            description: ''
-            position: 0
-            name: MODULE
-            optional: false
-          - !Positional
-            description: ''
-            position: 1
-            name: CALLBACK
-            optional: false
-          - !Positional
-            description: ''
-            position: 2
-            name: ARGUMENTS
-            optional: false
-          named: []
-          command:
-          - tripaille
-          - job
-          - add_job
-          - OPTIONS
-          - NAME
-          - CALLBACK
-          subcommands: []
-          help_flag:
-          usage_flag:
-          version_flag:
-        - !Command
-          positional:
-          - !Positional
-            description: ''
-            position: 0
-            name: MODULE
-            optional: false
-          - !Positional
-            description: ''
-            position: 1
-            name: CALLBACK
-            optional: false
-          - !Positional
-            description: ''
-            position: 2
-            name: ARGUMENTS
-            optional: false
-          named: []
-          command:
-          - tripaille
-          - job
-          - add_job
-          - OPTIONS
-          - NAME
-          - ARGUMENTS
-          subcommands: []
-          help_flag:
-          usage_flag:
-          version_flag:
-        help_flag:
-        usage_flag:
-        version_flag:
-      - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: NAME
-          optional: false
-        - !Positional
-          description: ''
-          position: 1
-          name: MODULE
-          optional: false
-        - !Positional
-          description: ''
-          position: 2
-          name: CALLBACK
-          optional: false
-        - !Positional
-          description: ''
-          position: 3
-          name: ARGUMENTS
-          optional: false
-        named: []
-        command:
-        - tripaille
-        - job
-        - add_job
-        - OPTIONS
-        - MODULE
-        subcommands: []
-        help_flag:
-        usage_flag:
-        version_flag:
-      - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: NAME
-          optional: false
-        - !Positional
-          description: ''
-          position: 1
-          name: MODULE
-          optional: false
-        - !Positional
-          description: ''
-          position: 2
-          name: CALLBACK
-          optional: false
-        - !Positional
-          description: ''
-          position: 3
-          name: ARGUMENTS
-          optional: false
-        named: []
-        command:
-        - tripaille
-        - job
-        - add_job
-        - OPTIONS
-        - CALLBACK
-        subcommands: []
-        help_flag:
-        usage_flag:
-        version_flag:
-      - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: NAME
-          optional: false
-        - !Positional
-          description: ''
-          position: 1
-          name: MODULE
-          optional: false
-        - !Positional
-          description: ''
-          position: 2
-          name: CALLBACK
-          optional: false
-        - !Positional
-          description: ''
-          position: 3
-          name: ARGUMENTS
-          optional: false
-        named: []
-        command:
-        - tripaille
-        - job
-        - add_job
-        - OPTIONS
-        - ARGUMENTS
-        subcommands: []
-        help_flag:
-        usage_flag:
-        version_flag:
-      help_flag:
-      usage_flag:
-      version_flag:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: OPTIONS
-        optional: true
-      - !Positional
-        description: ''
-        position: 1
-        name: NAME
-        optional: false
-      - !Positional
-        description: ''
-        position: 2
-        name: MODULE
-        optional: false
-      - !Positional
-        description: ''
-        position: 3
-        name: CALLBACK
-        optional: false
-      - !Positional
-        description: ''
-        position: 4
-        name: ARGUMENTS
-        optional: false
-      named: []
-      command:
-      - tripaille
-      - job
-      - add_job
-      - NAME
-      subcommands: []
-      help_flag:
-      usage_flag:
-      version_flag:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: OPTIONS
-        optional: true
-      - !Positional
-        description: ''
-        position: 1
-        name: NAME
-        optional: false
-      - !Positional
-        description: ''
-        position: 2
-        name: MODULE
-        optional: false
-      - !Positional
-        description: ''
-        position: 3
-        name: CALLBACK
-        optional: false
-      - !Positional
-        description: ''
-        position: 4
-        name: ARGUMENTS
-        optional: false
-      named: []
-      command:
-      - tripaille
-      - job
-      - add_job
-      - MODULE
-      subcommands: []
-      help_flag:
-      usage_flag:
-      version_flag:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: OPTIONS
-        optional: true
-      - !Positional
-        description: ''
-        position: 1
-        name: NAME
-        optional: false
-      - !Positional
-        description: ''
-        position: 2
-        name: MODULE
-        optional: false
-      - !Positional
-        description: ''
-        position: 3
-        name: CALLBACK
-        optional: false
-      - !Positional
-        description: ''
-        position: 4
-        name: ARGUMENTS
-        optional: false
-      named: []
-      command:
-      - tripaille
-      - job
-      - add_job
-      - CALLBACK
-      subcommands: []
-      help_flag:
-      usage_flag:
-      version_flag:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: OPTIONS
-        optional: true
-      - !Positional
-        description: ''
-        position: 1
-        name: NAME
-        optional: false
-      - !Positional
-        description: ''
-        position: 2
-        name: MODULE
-        optional: false
-      - !Positional
-        description: ''
-        position: 3
-        name: CALLBACK
-        optional: false
-      - !Positional
-        description: ''
-        position: 4
-        name: ARGUMENTS
-        optional: false
-      named: []
-      command:
-      - tripaille
-      - job
-      - add_job
-      - ARGUMENTS
-      subcommands: []
-      help_flag:
-      usage_flag:
-      version_flag:
-    help_flag:
+    parent: *id007
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille job add_job [OPTIONS] NAME MODULE CALLBACK ARGUMENTS\n\
+      \n  Schedule a new job\n\n  Output:\n\n      Job information\n\nOptions:\n \
+      \ --priority INTEGER  An integer score to prioritize the job  [default: 10]\n\
+      \  -h, --help          Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -1975,6 +1949,7 @@ subcommands:
     - tripaille
     - job
     - get_jobs
+    parent: *id007
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -1985,124 +1960,42 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille job get_jobs [OPTIONS]\n\n  Get all jobs\n\n  Output:\n\
+      \n      Jobs information\n\nOptions:\n  --job_id INTEGER  job id\n  -h, --help\
+      \        Show this message and exit.\n"
+    generated_using: *id003
   - !Command
-    positional: []
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: STDOUT
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: STDERR
+      optional: false
     named: []
     command:
     - tripaille
     - job
     - get_logs
-    subcommands:
-    - !Command
-      positional: []
-      named: []
-      command:
-      - tripaille
-      - job
-      - get_logs
-      - OPTIONS
-      subcommands:
-      - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: STDERR
-          optional: false
-        named: []
-        command:
-        - tripaille
-        - job
-        - get_logs
-        - OPTIONS
-        - STDOUT
-        subcommands: []
-        help_flag:
-        usage_flag:
-        version_flag:
-      - !Command
-        positional:
-        - !Positional
-          description: ''
-          position: 0
-          name: STDOUT
-          optional: false
-        - !Positional
-          description: ''
-          position: 1
-          name: STDERR
-          optional: false
-        named: []
-        command:
-        - tripaille
-        - job
-        - get_logs
-        - OPTIONS
-        - STDERR
-        subcommands: []
-        help_flag:
-        usage_flag:
-        version_flag:
-      help_flag:
-      usage_flag:
-      version_flag:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: OPTIONS
-        optional: true
-      - !Positional
-        description: ''
-        position: 1
-        name: STDOUT
-        optional: false
-      - !Positional
-        description: ''
-        position: 2
-        name: STDERR
-        optional: false
-      named: []
-      command:
-      - tripaille
-      - job
-      - get_logs
-      - STDOUT
-      subcommands: []
-      help_flag:
-      usage_flag:
-      version_flag:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: OPTIONS
-        optional: true
-      - !Positional
-        description: ''
-        position: 1
-        name: STDOUT
-        optional: false
-      - !Positional
-        description: ''
-        position: 2
-        name: STDERR
-        optional: false
-      named: []
-      command:
-      - tripaille
-      - job
-      - get_logs
-      - STDERR
-      subcommands: []
-      help_flag:
-      usage_flag:
-      version_flag:
-    help_flag:
+    parent: *id007
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille job get_logs [OPTIONS] STDOUT STDERR\n\n  Get job\
+      \ output\n\n  Output:\n\n      Output information\n\nOptions:\n  -h, --help\
+      \  Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -2116,6 +2009,7 @@ subcommands:
     - tripaille
     - job
     - run_jobs
+    parent: *id007
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -2126,56 +2020,38 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille job run_jobs [OPTIONS]\n\n  Run jobs in queue. There\
+      \ is no way to trigger a single job execution.\n\n  Output:\n\n      Job information\n\
+      \nOptions:\n  --wait      Wait for job completion  [default: True]\n  -h, --help\
+      \  Show this message and exit.\n"
+    generated_using: *id003
   - !Command
-    positional: []
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: JOB_ID
+      optional: false
     named: []
     command:
     - tripaille
     - job
     - wait
-    subcommands:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: JOB_ID
-        optional: false
-      named: []
-      command:
-      - tripaille
-      - job
-      - wait
-      - OPTIONS
-      subcommands: []
-      help_flag:
-      usage_flag:
-      version_flag:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: OPTIONS
-        optional: true
-      - !Positional
-        description: ''
-        position: 1
-        name: JOB_ID
-        optional: false
-      named: []
-      command:
-      - tripaille
-      - job
-      - wait
-      - JOB_ID
-      subcommands: []
-      help_flag:
-      usage_flag:
-      version_flag:
-    help_flag:
+    parent: *id007
+    subcommands: []
+    help_flag: !Flag
+      description: Show this message and exit.
+      synonyms:
+      - -h
+      - --help
+      args: !EmptyFlagArg {}
+      optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille job wait [OPTIONS] JOB_ID\n\n  Wait for a job completion\n\
+      \n  Output:\n\n      Job information\n\nOptions:\n  -h, --help  Show this message\
+      \ and exit.\n"
+    generated_using: *id003
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -2185,15 +2061,34 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-- !Command
+  help_text: "Usage: tripaille job [OPTIONS] COMMAND [ARGS]...\n\n  Manage Tripal\
+    \ jobs\n\nOptions:\n  -h, --help  Show this message and exit.\n\nCommands:\n \
+    \ add_import_job  Schedule a new import job Output: Job information\n  add_job\
+    \         Schedule a new job Output: Job information\n  get_jobs        Get all\
+    \ jobs Output: Jobs information\n  get_logs        Get job output Output: Output\
+    \ information\n  run_jobs        Run jobs in queue.\n  wait            Wait for\
+    \ a job completion Output: Job information\n"
+  generated_using: *id003
+- &id008 !Command
   positional: []
   named: []
   command:
   - tripaille
   - organism
+  parent: *id001
   subcommands:
   - !Command
-    positional: []
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: GENUS
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: SPECIES
+      optional: false
     named:
     - !Flag
       description: The common name of the organism
@@ -2236,6 +2131,7 @@ subcommands:
     - tripaille
     - organism
     - add_organism
+    parent: *id008
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -2246,6 +2142,17 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille organism add_organism [OPTIONS] GENUS SPECIES\n\n\
+      \  Add a new organism to the database\n\n  Output:\n\n      Organism information\n\
+      \nOptions:\n  --common TEXT              The common name of the organism\n \
+      \ --abbr TEXT                The abbreviation of the organism\n  --comment TEXT\
+      \             A comment / description\n  --infraspecific_rank TEXT  The type\
+      \ name of infraspecific name for any taxon\n                             below\
+      \ the rank of species. Must be one of\n                             ['subspecies',\
+      \ 'varietas', 'subvariety', 'forma',\n                             'subforma']\n\
+      \n  --infraspecific_name TEXT  The infraspecific name for this organism.\n \
+      \ -h, --help                 Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -2266,6 +2173,7 @@ subcommands:
     - tripaille
     - organism
     - delete_orphans
+    parent: *id008
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -2276,6 +2184,11 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille organism delete_orphans [OPTIONS]\n\n  Delete orphans\
+      \ Drupal organism nodes\n\n  Output:\n\n      status\n\nOptions:\n  --job_name\
+      \ TEXT  Name of the job\n  --no_wait        Return immediately without waiting\
+      \ for job completion\n  -h, --help       Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -2325,6 +2238,7 @@ subcommands:
     - tripaille
     - organism
     - get_organisms
+    parent: *id008
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -2335,6 +2249,14 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille organism get_organisms [OPTIONS]\n\n  Get organisms\
+      \ from chado table\n\n  Output:\n\n      Organism information\n\nOptions:\n\
+      \  --organism_id TEXT  An organism ID\n  --genus TEXT        The genus of the\
+      \ organism\n  --species TEXT      The species of the organism\n  --common TEXT\
+      \       The common name of the organism\n  --abbr TEXT         The abbreviation\
+      \ of the organism\n  --comment TEXT      A comment / description\n  -h, --help\
+      \          Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -2349,6 +2271,7 @@ subcommands:
     - tripaille
     - organism
     - get_organisms_tripal
+    parent: *id008
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -2359,22 +2282,11 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: OPTIONS
-      optional: true
-    named: []
-    command:
-    - tripaille
-    - organism
-    - get_taxonomic_ranks
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
+    help_text: "Usage: tripaille organism get_organisms_tripal [OPTIONS]\n\n  Get\
+      \ organism entities\n\n  Output:\n\n      Organism entity information\n\nOptions:\n\
+      \  --organism_id INTEGER  An organism entity ID\n  -h, --help             Show\
+      \ this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -2409,6 +2321,7 @@ subcommands:
     - tripaille
     - organism
     - sync
+    parent: *id008
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -2419,6 +2332,13 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille organism sync [OPTIONS]\n\n  Synchronize an organism\n\
+      \n  Output:\n\n      status\n\nOptions:\n  --organism TEXT     Common name of\
+      \ the organism to sync\n  --organism_id TEXT  ID of the organism to sync\n \
+      \ --job_name TEXT     Name of the job\n  --no_wait           Return immediately\
+      \ without waiting for job completion\n  -h, --help          Show this message\
+      \ and exit.\n"
+    generated_using: *id003
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -2428,68 +2348,105 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-- !Command
+  help_text: "Usage: tripaille organism [OPTIONS] COMMAND [ARGS]...\n\n  Manage Tripal\
+    \ organisms\n\nOptions:\n  -h, --help  Show this message and exit.\n\nCommands:\n\
+    \  add_organism          Add a new organism to the database Output: Organism...\n\
+    \  delete_orphans        Delete orphans Drupal organism nodes Output: status\n\
+    \  get_organisms         Get organisms from chado table Output: Organism...\n\
+    \  get_organisms_tripal  Get organism entities Output: Organism entity...\n  get_taxonomic_ranks\
+    \   Get taxonomic ranks Output: Taxonomic ranks\n  sync                  Synchronize\
+    \ an organism Output: status\n"
+  generated_using: *id003
+- &id009 !Command
   positional: []
   named: []
   command:
   - tripaille
   - phylogeny
+  parent: *id001
   subcommands:
   - !Command
-    positional: []
-    named:
-    - !Flag
-      description: 'Maximum number of features to sync (default: all)'
-      synonyms:
-      - --max_sync
-      args: !SimpleFlagArg
-        name: TEXT
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: ARGS
       optional: true
-    - !Flag
-      description: Name of the job
-      synonyms:
-      - --job_name
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    - !Flag
-      description: Return immediately without waiting for job completion
-      synonyms:
-      - --no_wait
-      args: !EmptyFlagArg {}
-      optional: true
+    named: []
     command:
     - tripaille
     - phylogeny
-    - sync
+    - COMMAND
+    parent: *id009
     subcommands: []
-    help_flag: !Flag
-      description: Show this message and exit.
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
+    help_flag:
     usage_flag:
     version_flag:
-  help_flag: !Flag
-    description: Show this message and exit.
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
+    help_text: "Usage: tripaille phylogeny [OPTIONS] COMMAND [ARGS]...\nTry 'tripaille\
+      \ phylogeny -h' for help.\n\nError: No such command 'COMMAND'.\n"
+    generated_using: *id003
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: tripaille
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: phylogeny
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
+      name: COMMAND
+      optional: false
+    - !Positional
+      description: ''
+      position: 3
+      name: ARGS
+      optional: true
+    named: []
+    command:
+    - tripaille
+    - phylogeny
+    - ARGS
+    parent: *id009
+    subcommands: []
+    help_flag:
+    usage_flag:
+    version_flag:
+    help_text: "Usage: tripaille phylogeny [OPTIONS] COMMAND [ARGS]...\nTry 'tripaille\
+      \ phylogeny -h' for help.\n\nError: No such command 'ARGS'.\n"
+    generated_using: *id003
+  help_flag:
   usage_flag:
   version_flag:
-- !Command
+  help_text: "Usage: tripaille phylogeny [OPTIONS] COMMAND [ARGS]...\nTry 'tripaille\
+    \ phylogeny -h' for help.\n\nError: no such option: --usage\n"
+  generated_using:
+  - --usage
+- &id010 !Command
   positional: []
   named: []
   command:
   - tripaille
   - expression
+  parent: *id001
   subcommands:
   - !Command
-    positional: []
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: ORGANISM_ID
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: FILE_PATH
+      optional: false
     named:
     - !Flag
       description: The id of the associated analysis. Required for TripalV3
@@ -2508,6 +2465,7 @@ subcommands:
     - tripaille
     - expression
     - add_biomaterial
+    parent: *id010
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -2518,8 +2476,25 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille expression add_biomaterial [OPTIONS] ORGANISM_ID\
+      \ FILE_PATH\n                                            FILE_TYPE\n\n  Add\
+      \ a new biomaterial file to the database\n\n  Output:\n\n      Job information\n\
+      \nOptions:\n  --analysis_id TEXT  The id of the associated analysis. Required\
+      \ for TripalV3\n  --no_wait           Do not wait for job to complete\n  -h,\
+      \ --help          Show this message and exit.\n"
+    generated_using: *id003
   - !Command
-    positional: []
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: ORGANISM_ID
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: ANALYSIS_ID
+      optional: false
     named:
     - !Flag
       description: 'Match to features using either name or uniquename. Default to
@@ -2592,6 +2567,7 @@ subcommands:
     - tripaille
     - expression
     - add_expression
+    parent: *id010
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -2602,6 +2578,30 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille expression add_expression [OPTIONS] ORGANISM_ID ANALYSIS_ID\n\
+      \                                           FILE_PATH\n\n  Add an expression\
+      \ file to tripal\n\n  Output:\n\n      Loading information\n\nOptions:\n  --match_type\
+      \ TEXT            Match to features using either name or\n                 \
+      \              uniquename. Default to uniquename  [default:\n              \
+      \                 uniquename]\n\n  --array_design_id TEXT       The array design\
+      \ ID associated with this\n                               analysis. (Non functional\
+      \ in Tripal2)\n\n  --quantification_units TEXT  The units associated with the\
+      \ loaded values\n                               (ie, FPKM, RPKM, raw counts).\n\
+      \n  --file_extension TEXT        File extension for the file(s) to be loaded\n\
+      \                               into Chado. Do not include the \".\". Not\n\
+      \                               required for matrix files.\n\n  --start_regex\
+      \ TEXT           A regular expression to describe the line that\n          \
+      \                     occurs before the start of the expression data.\n    \
+      \                           If the file has no header, this is not needed.\n\
+      \n  --stop_regex TEXT            A regular expression to describe the line that\n\
+      \                               occurs after the end of the expression data.\
+      \ If\n                               the file has no footer text, this is not\n\
+      \                               needed.\n\n  --seq_type TEXT              Specify\
+      \ the feature type to associate the data\n                               with.\
+      \ (Tripal3 only)\n\n  --use_column                 Set if the expression file\
+      \ is a column file\n  --no_wait                    Do not wait for job to complete\n\
+      \  -h, --help                   Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -2643,6 +2643,7 @@ subcommands:
     - tripaille
     - expression
     - delete_biomaterials
+    parent: *id010
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -2653,6 +2654,15 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille expression delete_biomaterials [OPTIONS]\n\n  Delete\
+      \ some biomaterials\n\n  Output:\n\n      status\n\nOptions:\n  --names TEXT\
+      \        JSON list of biomaterial names to delete. (optional)\n  --organism_id\
+      \ TEXT  Organism id from which to delete biomaterials (optional)\n  --analysis_id\
+      \ TEXT  Analysis id from which to delete biomaterials (optional)\n  --job_name\
+      \ TEXT     Name of the job (optional)\n  --no_wait           Return immediately\
+      \ without waiting for job completion\n  -h, --help          Show this message\
+      \ and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -2695,6 +2705,7 @@ subcommands:
     - tripaille
     - expression
     - get_biomaterials
+    parent: *id010
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -2705,6 +2716,14 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille expression get_biomaterials [OPTIONS]\n\n  List biomaterials\
+      \ in the database\n\n  Output:\n\n      Biomaterial list\n\nOptions:\n  --biomaterial_name\
+      \ TEXT  Limit query to the selected biomaterial\n  --provider_id TEXT      \
+      \ Limit query to the selected provider\n  --biomaterial_id TEXT    Limit query\
+      \ to the selected biomaterial\n  --organism_id TEXT       Limit query to the\
+      \ selected organism\n  --dbxref_id TEXT         Limit query to the selected\
+      \ ref\n  -h, --help               Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -2719,6 +2738,7 @@ subcommands:
     - tripaille
     - expression
     - get_biomaterials_tripal
+    parent: *id010
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -2729,6 +2749,11 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille expression get_biomaterials_tripal [OPTIONS]\n\n\
+      \  Get Biomaterial entities\n\n  Output:\n\n      Organism entity information\n\
+      \nOptions:\n  --biomaterial_id INTEGER  A biomaterial entity ID\n  -h, --help\
+      \                Show this message and exit.\n"
+    generated_using: *id003
   - !Command
     positional: []
     named:
@@ -2764,6 +2789,7 @@ subcommands:
     - tripaille
     - expression
     - sync_biomaterials
+    parent: *id010
     subcommands: []
     help_flag: !Flag
       description: Show this message and exit.
@@ -2774,6 +2800,14 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "Usage: tripaille expression sync_biomaterials [OPTIONS]\n\n  Synchronize\
+      \ some biomaterials\n\n  Output:\n\n      status\n\nOptions:\n  --ids TEXT \
+      \      JSON list of ids of biomaterials to be synced (default:\n           \
+      \        all)  [default: []]\n\n  --max_sync TEXT  Maximum number of features\
+      \ to sync (default: all)\n  --job_name TEXT  Name of the job\n  --no_wait  \
+      \      Return immediately without waiting for job completion\n  -h, --help \
+      \      Show this message and exit.\n"
+    generated_using: *id003
   help_flag: !Flag
     description: Show this message and exit.
     synonyms:
@@ -2783,6 +2817,15 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Usage: tripaille expression [OPTIONS] COMMAND [ARGS]...\n\n  Manage\
+    \ Tripal expressions\n\nOptions:\n  -h, --help  Show this message and exit.\n\n\
+    Commands:\n  add_biomaterial          Add a new biomaterial file to the database...\n\
+    \  add_expression           Add an expression file to tripal Output: Loading...\n\
+    \  delete_biomaterials      Delete some biomaterials Output: status\n  get_biomaterials\
+    \         List biomaterials in the database Output:...\n  get_biomaterials_tripal\
+    \  Get Biomaterial entities Output: Organism entity...\n  sync_biomaterials  \
+    \      Synchronize some biomaterials Output: status\n"
+  generated_using: *id003
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -2797,3 +2840,16 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "Usage: tripaille [OPTIONS] COMMAND [ARGS]...\n\n  Command line wrappers\
+  \ around Python-Tripal functions.\n\nOptions:\n  --version            Show the version\
+  \ and exit.\n  -v, --verbose        Enables verbose mode.\n  -i, --instance TEXT\
+  \  Name of instance in /home/ubuntu/.tripaille.yml. This\n                     \
+  \  parameter can also be set via the environment variable\n                    \
+  \   TRIPAILLE_INSTANCE  [default: __default; required]\n\n  -f, --path TEXT    \
+  \  config file path\n  -h, --help           Show this message and exit.\n\nCommands:\n\
+  \  init        Help initialize global configuration (in home directory)\n  analysis\
+  \    Manage Tripal analyses\n  db          Access Tripal/Chado database\n  entity\
+  \      Manage any type of Tripal entities\n  feature     Manage Tripal features\n\
+  \  job         Manage Tripal jobs\n  organism    Manage Tripal organisms\n  phylogeny\
+  \   Manage Tripal phylogeny\n  expression  Manage Tripal expressions\n"
+generated_using: *id003

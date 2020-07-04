@@ -40,18 +40,18 @@ named:
   - -d
   - --data_class
   args: !ChoiceFlagArg
-    choices:
-    - CON
-    - PAT
-    - EST
-    - GSS
-    - HTC
-    - HTG
-    - MGA
-    - WGS
-    - TSA
-    - STS
-    - STD
+    choices: !!set
+      STS:
+      TSA:
+      STD:
+      HTG:
+      WGS:
+      MGA:
+      PAT:
+      GSS:
+      HTC:
+      CON:
+      EST:
   optional: true
 - !Flag
   description: Sample organelle. No default value.
@@ -95,26 +95,18 @@ named:
   - -m
   - --molecule_type
   args: !ChoiceFlagArg
-    choices:
-    - genomic
-    - DNA
-    - genomic
-    - RNA
-    - mRNA
-    - tRNA
-    - rRNA
-    - other
-    - RNA
-    - other
-    - DNA
-    - transcribed
-    - RNA
-    - viral
-    - cRNA
-    - unassigned
-    - DNA
-    - unassigned
-    - RNA
+    choices: !!set
+      viral:
+      DNA:
+      genomic:
+      other:
+      cRNA:
+      unassigned:
+      tRNA:
+      rRNA:
+      RNA:
+      mRNA:
+      transcribed:
   optional: true
 - !Flag
   description: Output filename.
@@ -140,14 +132,39 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25},
-    --transl_table {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25}
-    Translation table. No default. (This is used to set up the translation table qualifier
-    transl_table of the CDS features.) Please visit [NCBI genetic code](https: //www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi)
-    for more information.'
+  description: 'Translation table. No default. (This is used to set up the translation
+    table qualifier transl_table of the CDS features.) Please visit [NCBI genetic
+    code](https: //www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi) for more information.'
   synonyms:
   - -r
-  args: !EmptyFlagArg {}
+  - --transl_table
+  args: !ChoiceFlagArg
+    choices: !!set
+      '4':
+      '10':
+      '17':
+      '21':
+      '13':
+      '8':
+      '2':
+      '3':
+      '14':
+      '9':
+      '6':
+      '22':
+      '16':
+      '23':
+      '19':
+      '7':
+      '20':
+      '1':
+      '11':
+      '25':
+      '24':
+      '15':
+      '18':
+      '5':
+      '12':
   optional: true
 - !Flag
   description: Sample species, formatted as 'Genus species' or taxid. No default.
@@ -165,9 +182,9 @@ named:
   - -t
   - --topology
   args: !ChoiceFlagArg
-    choices:
-    - linear
-    - circular
+    choices: !!set
+      linear:
+      circular:
   optional: true
 - !Flag
   description: Increase verbosity.
@@ -183,22 +200,22 @@ named:
   - -x
   - --taxonomy
   args: !ChoiceFlagArg
-    choices:
-    - PHG
-    - ENV
-    - FUN
-    - HUM
-    - INV
-    - MAM
-    - VRT
-    - MUS
-    - PLN
-    - PRO
-    - ROD
-    - SYN
-    - TGN
-    - UNC
-    - VRL
+    choices: !!set
+      MUS:
+      INV:
+      VRL:
+      SYN:
+      PHG:
+      ENV:
+      FUN:
+      MAM:
+      UNC:
+      TGN:
+      ROD:
+      HUM:
+      PLN:
+      VRT:
+      PRO:
   optional: true
 - !Flag
   description: Gzip output file.
@@ -214,12 +231,12 @@ named:
   - --ah
   - --advanced_help
   args: !ChoiceFlagArg
-    choices:
-    - One
-    - of
-    - the
-    - parameters
-    - above
+    choices: !!set
+      of:
+      One:
+      above:
+      parameters:
+      the:
   optional: true
 - !Flag
   description: Description. Default value 'XXX'.
@@ -395,6 +412,7 @@ named:
   optional: true
 command:
 - EMBLmyGFF3
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -411,3 +429,122 @@ version_flag: !Flag
   args: !SimpleFlagArg
     name: VERSION
   optional: true
+help_text: "usage: EMBLmyGFF3 [-h] [-a] [-c CREATED]\n                  [-d {CON,PAT,EST,GSS,HTC,HTG,MGA,WGS,TSA,STS,STD}]\n\
+  \                  [-g ORGANELLE] [-i LOCUS_TAG] [-k KEYWORD [KEYWORD ...]]\n  \
+  \                [-l CLASSIFICATION]\n                  [-m {genomic DNA,genomic\
+  \ RNA,mRNA,tRNA,rRNA,other RNA,other DNA,transcribed RNA,viral cRNA,unassigned DNA,unassigned\
+  \ RNA}]\n                  [-o OUTPUT] [-p PROJECT_ID] [-q]\n                  [-r\
+  \ {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25}]\n       \
+  \           [-s SPECIES] [-t {linear,circular}] [-v]\n                  [-x {PHG,ENV,FUN,HUM,INV,MAM,VRT,MUS,PLN,PRO,ROD,SYN,TGN,UNC,VRL}]\n\
+  \                  [-z] [--ah {One of the parameters above}] [--de DE]\n       \
+  \           [--ra RA [RA ...]] [--rc RC] [--rg RG] [--rl RL] [--rt RT]\n       \
+  \           [--rx RX] [--email EMAIL] [--expose_translations]\n                \
+  \  [--force_unknown_features] [--force_uncomplete_features]\n                  [--interleave_genes]\
+  \ [--keep_duplicates]\n                  [--locus_numbering_start LOCUS_NUMBERING_START]\n\
+  \                  [--no_progress] [--no_wrap_qualifier] [--shame]\n           \
+  \       [--translate]\n                  [--use_attribute_value_as_locus_tag USE_ATTRIBUTE_VALUE_AS_LOCUS_TAG]\n\
+  \                  [--uncompressed_log] [--version VERSION] [--strain STRAIN]\n\
+  \                  [--environmental_sample]\n                  [--isolation_source\
+  \ ISOLATION_SOURCE] [--isolate ISOLATE]\n                  gff_file fasta\n\npositional\
+  \ arguments:\n  gff_file              Input gff-file.\n  fasta                 Input\
+  \ fasta sequence.\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -a, --accession       Bolean. Accession number(s) for the\
+  \ entry. Default\n                        value: XXX. The proper value is automatically\
+  \ filled\n                        up by ENA during the submission by a unique accession\n\
+  \                        number they will assign. The accession number is used\n\
+  \                        to set up the AC line and the first token of the ID\n \
+  \                       line as well. Please visit [this\n                     \
+  \   page](https://www.ebi.ac.uk/ena/submit/accession-\n                        number-formats)\
+  \ and [this\n                        one](https://www.ebi.ac.uk/ena/submit/sequence-\n\
+  \                        submission) to learn more about it. Activating the\n  \
+  \                      option will set the Accession number with the fasta\n   \
+  \                     sequence identifier.\n  -c CREATED, --created CREATED\n  \
+  \                      Creation time of the original entry. The default value\n\
+  \                        is the date of the day.\n  -d {CON,PAT,EST,GSS,HTC,HTG,MGA,WGS,TSA,STS,STD},\
+  \ --data_class {CON,PAT,EST,GSS,HTC,HTG,MGA,WGS,TSA,STS,STD}\n                 \
+  \       Data class of the sample. Default value 'XXX'. This\n                  \
+  \      option is used to set up the 5th token of the ID line.\n  -g ORGANELLE, --organelle\
+  \ ORGANELLE\n                        Sample organelle. No default value.\n  -i LOCUS_TAG,\
+  \ --locus_tag LOCUS_TAG\n                        Locus tag prefix used to set up\
+  \ the prefix of the\n                        locus_tag qualifier. The locus tag\
+  \ has to be\n                        registered at ENA prior any submission. More\n\
+  \                        information\n                        [here](https://www.ebi.ac.uk/ena/submit/locus-tags).\n\
+  \  -k KEYWORD [KEYWORD ...], --keyword KEYWORD [KEYWORD ...]\n                 \
+  \       Keywords for the entry. No default value.\n  -l CLASSIFICATION, --classification\
+  \ CLASSIFICATION\n                        Organism classification e.g 'Eukaryota;\
+  \ Opisthokonta;\n                        Metazoa'. The default value is the classification\n\
+  \                        found in the NCBI taxonomy DB from the species/taxid\n\
+  \                        given as --species parameter. If none is found, 'Life'\n\
+  \                        will be the default value.\n  -m {genomic DNA,genomic RNA,mRNA,tRNA,rRNA,other\
+  \ RNA,other DNA,transcribed RNA,viral cRNA,unassigned DNA,unassigned RNA}, --molecule_type\
+  \ {genomic DNA,genomic RNA,mRNA,tRNA,rRNA,other RNA,other DNA,transcribed RNA,viral\
+  \ cRNA,unassigned DNA,unassigned RNA}\n                        Molecule type of\
+  \ the sample. No default value.\n  -o OUTPUT, --output OUTPUT\n                \
+  \        Output filename.\n  -p PROJECT_ID, --project_id PROJECT_ID\n          \
+  \              Project ID. Default is 'XXX' (This is used to set up\n          \
+  \              the PR line).\n  -q, --quiet           Decrease verbosity.\n  -r\
+  \ {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25}, --transl_table\
+  \ {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25}\n        \
+  \                Translation table. No default. (This is used to set up\n      \
+  \                  the translation table qualifier transl_table of the\n       \
+  \                 CDS features.) Please visit [NCBI genetic code](https:\n     \
+  \                   //www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi)\n      \
+  \                  for more information.\n  -s SPECIES, --species SPECIES\n    \
+  \                    Sample species, formatted as 'Genus species' or taxid.\n  \
+  \                      No default. (This is used to set up the OS line.)\n  -t {linear,circular},\
+  \ --topology {linear,circular}\n                        Sequence topology. No default.\
+  \ (This is used to set up\n                        the Topology that is the 3rd\
+  \ token of the ID line.)\n  -v, --verbose         Increase verbosity.\n  -x {PHG,ENV,FUN,HUM,INV,MAM,VRT,MUS,PLN,PRO,ROD,SYN,TGN,UNC,VRL},\
+  \ --taxonomy {PHG,ENV,FUN,HUM,INV,MAM,VRT,MUS,PLN,PRO,ROD,SYN,TGN,UNC,VRL}\n   \
+  \                     Source taxonomy. Default value 'XXX'. This option is\n   \
+  \                     used to set the taxonomic division within ID line (6th\n \
+  \                       token).\n  -z, --gzip            Gzip output file.\n  --ah\
+  \ {One of the parameters above}, --advanced_help {One of the parameters above}\n\
+  \                        Display advanced information of the parameter\n       \
+  \                 specified or of all parameters if none specified.\n  --de DE \
+  \              Description. Default value 'XXX'.\n  --ra RA [RA ...], --author RA\
+  \ [RA ...]\n                        Author for the reference. No default value.\n\
+  \  --rc RC               Reference Comment. No default value.\n  --rg RG       \
+  \        Reference Group, the working groups/consortia that\n                  \
+  \      produced the record. Default value 'XXX'.\n  --rl RL               Reference\
+  \ publishing location. No default value.\n  --rt RT               Reference Title.\
+  \ No default value.\n  --rx RX               Reference cross-reference. No default\
+  \ value\n  --email EMAIL         Email used to fetch information from NCBI taxonomy\n\
+  \                        database. Default value 'EMBLmyGFF3@tool.org'.\n  --expose_translations\n\
+  \                        Copy feature and attribute mapping files to the\n     \
+  \                   working directory. They will be used as mapping files\n    \
+  \                    instead of the default internal JSON files. You may\n     \
+  \                   modify them as it suits you.\n  --force_unknown_features\n \
+  \                       Force to keep feature types not accepted by EMBL. /!\\\n\
+  \                        Option not suitable for submission purpose.\n  --force_uncomplete_features\n\
+  \                        Force to keep features whithout all the mandatory\n   \
+  \                     qualifiers. /!\\ Option not suitable for submission\n    \
+  \                    purpose.\n  --interleave_genes    Print gene features with\
+  \ interleaved mRNA and CDS\n                        features.\n  --keep_duplicates\
+  \     Do not remove duplicate features during the process.\n                   \
+  \     /!\\ Option not suitable for submission purpose.\n  --locus_numbering_start\
+  \ LOCUS_NUMBERING_START\n                        Start locus numbering with the\
+  \ provided value.\n  --no_progress         Hide conversion progress counter.\n \
+  \ --no_wrap_qualifier   By default there is a line wrapping at 80 characters.\n\
+  \                        The cut is at the world level. Activating this option\n\
+  \                        will avoid the line-wrapping for the qualifiers.\n  --shame\
+  \               Suppress the shameless plug.\n  --translate           Include translation\
+  \ in CDS features.\n  --use_attribute_value_as_locus_tag USE_ATTRIBUTE_VALUE_AS_LOCUS_TAG\n\
+  \                        Use the value of the defined attribute as locus_tag.\n\
+  \  --uncompressed_log    Some logs can be compressed for better lisibility,\n  \
+  \                      they won't.\n  --version VERSION     Sequence version number.\
+  \ The default value is 1.\n  --strain STRAIN       Strain from which sequence was\
+  \ obtained. May be needed\n                        when organism belongs to Bacteria.\n\
+  \  --environmental_sample\n                        Bolean. Identifies sequences\
+  \ derived by direct\n                        molecular isolation from a bulk environmental\
+  \ DNA\n                        sample with no reliable identification of the source\n\
+  \                        organism. May be needed when organism belongs to\n    \
+  \                    Bacteria.\n  --isolation_source ISOLATION_SOURCE\n        \
+  \                Describes the physical, environmental and/or local\n          \
+  \              geographical source of the biological sample from\n             \
+  \           which the sequence was derived. Mandatory when\n                   \
+  \     environmental_sample option used.\n  --isolate ISOLATE     Individual isolate\
+  \ from which the sequence was\n                        obtained. May be needed when\
+  \ organism belongs to\n                        Bacteria.\n"
+generated_using:
+- --help

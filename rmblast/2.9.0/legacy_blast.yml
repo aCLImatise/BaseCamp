@@ -3,7 +3,679 @@ positional: []
 named: []
 command:
 - legacy_blast.pl
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "#! /usr/bin/perl -w\n# $Id: legacy_blast.pl 195935 2010-06-28 20:32:08Z\
+  \ camacho $\n# ===========================================================================\n\
+  #\n#                            PUBLIC DOMAIN NOTICE\n#               National Center\
+  \ for Biotechnology Information\n#\n#  This software/database is a \"United States\
+  \ Government Work\" under the\n#  terms of the United States Copyright Act.  It\
+  \ was written as part of\n#  the author's official duties as a United States Government\
+  \ employee and\n#  thus cannot be copyrighted.  This software/database is freely\
+  \ available\n#  to the public for use. The National Library of Medicine and the\
+  \ U.S.\n#  Government have not placed any restriction on its use or reproduction.\n\
+  #\n#  Although all reasonable efforts have been taken to ensure the accuracy\n#\
+  \  and reliability of the software and data, the NLM and the U.S.\n#  Government\
+  \ do not and cannot warrant the performance or results that\n#  may be obtained\
+  \ by using this software or data. The NLM and the U.S.\n#  Government disclaim all\
+  \ warranties, express or implied, including\n#  warranties of performance, merchantability\
+  \ or fitness for any particular\n#  purpose.\n#\n#  Please cite the author in any\
+  \ work or product based on this material.\n#\n# ===========================================================================\n\
+  #\n# Author:  Christiam Camacho\n#\n# File Description:\n#   Script to convert NCBI\
+  \ C toolkit command line program and arguments into \n#   NCBI C++ toolkit command\
+  \ line program and arguments for the BLAST suite of\n#   programs\n#\n# ===========================================================================\n\
+  \nuse strict;\nuse warnings;\nuse Getopt::Long qw(:config no_ignore_case bundling\
+  \ no_auto_abbrev);\nuse Pod::Usage;\n\nuse constant DEBUG => 0;\n# Default PATH\
+  \ where binaries will be found\nuse constant DEFAULT_PATH => \"/usr/bin\";\n\npod2usage({-exitval\
+  \ => 1, -verbose => 2}) if (@ARGV == 0);\n\nmy $application = shift;\nmy $print_only\
+  \ = \"0\"; # Determines whether script prints or runs the command\n# This array\
+  \ will contain file names to delete that are created with bl2seq's\n# -A option\n\
+  my @files2delete;\n\nmy $cmd;\nif ($application eq \"blastall\") {\n    $cmd = &handle_blastall(\\\
+  $print_only);\n} elsif ($application eq \"megablast\") {\n    $cmd = &handle_megablast(\\\
+  $print_only);\n} elsif ($application eq \"blastpgp\") {\n    $cmd = &handle_blastpgp(\\\
+  $print_only);\n} elsif ($application eq \"bl2seq\") {\n    $cmd = &handle_bl2seq(\\\
+  $print_only);\n} elsif ($application eq \"rpsblast\") {\n    $cmd = &handle_rpsblast(\\\
+  $print_only);\n} elsif ($application eq \"fastacmd\") {\n    $cmd = &handle_fastacmd(\\\
+  $print_only);\n} elsif ($application eq \"formatdb\") {\n    $cmd = &handle_formatdb(\\\
+  $print_only);\n} elsif ($application eq \"seedtop\") {\n    $cmd = &handle_seedtop(\\\
+  $print_only);\n} elsif ($application =~ /version/) {\n    my $revision = '$Revision:\
+  \ 195935 $';\n    $revision =~ s/\\$Revision: | \\$//g;\n    print \"$0 version\
+  \ $revision\\n\";\n    goto CLEAN_UP;\n} elsif ($application =~ /help/) {\n    pod2usage({-exitval\
+  \ => 1, -verbose => 2});\n} else {\n    die \"Application: '$application' is not\
+  \ supported\\n\";\n}\n\nif ($print_only) {\n    print \"$cmd\\n\";\n} else {\n \
+  \   print STDERR \"$cmd\\n\" if (DEBUG);\n    my $rv = system($cmd);\n    unless\
+  \ ($rv == 0) {\n        die \"Program failed, try executing the command manually.\\\
+  n\"; \n    }\n}\n\nCLEAN_UP:\nunlink foreach (@files2delete);\n\n# Only add quotation\
+  \ marks in case there are spaces in the database argument\nsub create_db_argument($)\n\
+  {\n    my $arg = shift;\n    my $retval = \"-db \";\n    $retval .= ( ($arg =~ /\\\
+  s/) ? \"\\\"$arg\\\" \" : \"$arg \");\n    return $retval;\n}\n\n# Converts floating\
+  \ point numbers to integers\nsub convert_float_to_int($)\n{\n    my $float_arg =\
+  \ shift;\n    my $retval = 0;\n    if ($float_arg =~ /(\\d+)e([+-])(\\d+)/) {\n\
+  \        $retval = $1;\n        if ($2 eq \"+\") {\n            $retval *= 10**$3\n\
+  \        } else {\n            $retval /= 10**$3\n        }\n    } else {\n    \
+  \    $retval = int($float_arg);\n    }\n    return $retval;\n}\n\n# Add the .exe\
+  \ extension for binaries if necessary on windows\nsub add_exe_extension()\n{\n \
+  \   return ($^O =~ /mswin|cygwin/i) ? \".exe \" : \" \";\n}\n\nsub convert_sequence_locations($$)\n\
+  {\n    my $arg = shift;\n    my $target = shift;\n    my $retval;\n    if (defined\
+  \ $arg) {\n        if ($target eq \"query\") {\n            $retval .= \"-query_loc\
+  \ \";\n        } elsif ($target eq \"range\") {\n            $retval .= \"-range\
+  \ \";\n        } else {\n            $retval .= \"-subject_loc \";\n        }\n\
+  \        my @fields = split(/[ ;,]/, $arg);\n        $retval .= \"$fields[0]-$fields[1]\
+  \ \";\n    }\n    return $retval;\n}\n\nsub convert_filter_string($$)\n{\n    my\
+  \ $filter_string = shift;\n    my $program = shift;\n\n    #print STDERR \"Parsing\
+  \ '$filter_string'\\n\";\n\n    if ($filter_string =~ /F/) {\n        if ($program\
+  \ eq \"blastp\" or $program eq \"tblastn\" or \n            $program eq \"blastx\"\
+  \ or $program eq \"tblastx\") {\n            return \"-seg no \";\n        } else\
+  \ {\n            return \"-dust no \";\n        }\n    }\n\n    my $retval = \"\"\
+  ;\n    if ($filter_string =~ /S (\\d+) (\\S+) (\\S+)/) {\n        $retval .= \"\
+  -seg '$1 $2 $3' \";\n    }\n    if ($filter_string =~ /D (\\d+) (\\d+) (\\d+)/)\
+  \ {\n        $retval .= \"-dust '$1 $2 $3' \";\n    }\n    if ($filter_string =~\
+  \ /R -d (\\S+)/) {\n        $retval .= \"-filtering_db $1 \";\n    } elsif ($filter_string\
+  \ =~ /R\\s*;/) {\n        $retval .= \"-filtering_db repeat/repeat_9606 \";\n  \
+  \  }\n\n    if ($filter_string =~ /L|T|S|D/ and not ($retval =~ /seg|dust/)) {\n\
+  \        if ($program eq \"blastp\" or $program eq \"tblastn\" or \n           \
+  \ $program eq \"blastx\") {\n            $retval .= \"-seg yes \";\n        } else\
+  \ {\n            $retval .= \"-dust yes \";\n        }\n    }\n\n    if ($filter_string\
+  \ =~ /m/) {\n        $retval .= \"-soft_masking true \";\n    }\n    #print STDERR\
+  \ \"returning '$retval'\\n\";\n    return $retval;\n}\n\nsub convert_strand($)\n\
+  {\n    my $old_strand_arg = shift;\n    my $retval = \"-strand \";\n    if ($old_strand_arg\
+  \ == 1) {\n        $retval .= \"plus \";\n    } elsif ($old_strand_arg == 2) {\n\
+  \        $retval .= \"minus \";\n    } else {\n        $retval .= \"both \";\n \
+  \   }\n    return $retval;\n}\n\n# Handle the conversion from blastall arguments\
+  \ to the corresponding C++\n# binaries\nsub handle_blastall($)\n{\n    my $print_only\
+  \ = shift;\n    my $path = DEFAULT_PATH;\n    my ($opt_A, $opt_B, $opt_C, $opt_D,\
+  \ $opt_E, $opt_F, $opt_G, $opt_I, $opt_J, \n        $opt_K, $opt_L, $opt_M, $opt_O,\
+  \ $opt_P, $opt_Q, $opt_R, $opt_S, $opt_T, \n        $opt_U, $opt_V, $opt_W, $opt_X,\
+  \ $opt_Y, $opt_Z, $opt_a, $opt_b, $opt_d, \n        $opt_e, $opt_f, $opt_g, $opt_i,\
+  \ $opt_l, $opt_m, $opt_n, $opt_o, $opt_p, \n        $opt_q, $opt_r, $opt_s, $opt_t,\
+  \ $opt_v, $opt_w, $opt_y, $opt_z);\n\n    GetOptions(\"<>\"             => sub {\
+  \ $application = shift; },\n               \"print_only!\"    => $print_only,\n\
+  \               \"path=s\"         => \\$path,\n               \"A=i\"         \
+  \   => \\$opt_A,\n               \"B=i\"            => \\$opt_B, # not handled,\
+  \ not applicable\n               \"C=s\"            => \\$opt_C,\n             \
+  \  \"D=i\"            => \\$opt_D,\n               \"E=i\"            => \\$opt_E,\n\
+  \               \"F=s\"            => \\$opt_F,\n               \"G=i\"        \
+  \    => \\$opt_G,\n               \"I:s\"            => \\$opt_I,\n            \
+  \   \"J:s\"            => \\$opt_J,\n               \"K=i\"            => \\$opt_K,\n\
+  \               \"L=s\"            => \\$opt_L,\n               \"M=s\"        \
+  \    => \\$opt_M,\n               \"O=s\"            => \\$opt_O,\n            \
+  \   \"P=i\"            => \\$opt_P,\n               \"Q=i\"            => \\$opt_Q,\n\
+  \               \"R=s\"            => \\$opt_R,\n               \"S=i\"        \
+  \    => \\$opt_S,\n               \"T:s\"            => \\$opt_T,\n            \
+  \   \"U:s\"            => \\$opt_U,\n               \"V:s\"            => \\$opt_V,\
+  \ # not handled, not applicable\n               \"W=i\"            => \\$opt_W,\n\
+  \               \"X=i\"            => \\$opt_X,\n               \"Y=f\"        \
+  \    => \\$opt_Y,\n               \"Z=i\"            => \\$opt_Z,\n            \
+  \   \"a=i\"            => \\$opt_a,\n               \"b=i\"            => \\$opt_b,\n\
+  \               \"d=s\"            => \\$opt_d,\n               \"e=f\"        \
+  \    => \\$opt_e,\n               \"f=i\"            => \\$opt_f,\n            \
+  \   \"g:s\"            => \\$opt_g,\n               \"i=s\"            => \\$opt_i,\n\
+  \               \"l=s\"            => \\$opt_l,\n               \"m=i\"        \
+  \    => \\$opt_m,\n               \"n:s\"            => \\$opt_n,\n            \
+  \   \"o=s\"            => \\$opt_o,\n               \"p=s\"            => \\$opt_p,\n\
+  \               \"q=i\"            => \\$opt_q,\n               \"r=i\"        \
+  \    => \\$opt_r,\n               \"s:s\"            => \\$opt_s,\n            \
+  \   \"t=i\"            => \\$opt_t,\n               \"v=i\"            => \\$opt_v,\n\
+  \               \"w=i\"            => \\$opt_w,\n               \"y=f\"        \
+  \    => \\$opt_y,\n               \"z=f\"            => \\$opt_z,\n            \
+  \   );\n\n    unless (defined $opt_p) {\n        die \"-p must be provided\\n\"\
+  ;\n    }\n\n    my $retval = $path;\n    if (defined $opt_p) {\n        if (defined\
+  \ $opt_R) {\n            $retval .= \"/tblastn\";\n            $retval .= &add_exe_extension();\n\
+  \            $retval .= \"-in_pssm $opt_R \";\n        } elsif (defined $opt_n and\
+  \ $opt_n =~ /t/i) {\n            $retval .= \"/blastn\";\n            $retval .=\
+  \ &add_exe_extension();\n            $retval .= \"-task megablast \";\n        }\
+  \ else {\n            $retval .= \"/$opt_p\";\n            $retval .= &add_exe_extension();\n\
+  \            $retval .= \"-task blastn \" if ($opt_p eq \"blastn\");\n        }\n\
+  \    }\n    $retval .= &create_db_argument($opt_d)  if (defined $opt_d);\n    unless\
+  \ (($retval =~ /\\/tblastn/) and defined $opt_R) {\n        $retval .= \"-query\
+  \ $opt_i \"         if (defined $opt_i);\n    }\n    $retval .= \"-gilist $opt_l\
+  \ \"            if (defined $opt_l);\n    $retval .= \"-dbsize $opt_z \"       \
+  \     if (defined $opt_z);\n    $retval .= \"-matrix $opt_M \"            if (defined\
+  \ $opt_M);\n    $retval .= \"-evalue $opt_e \"            if (defined $opt_e);\n\
+  \    $retval .= \"-gapopen $opt_G \"           if (defined $opt_G);\n    $retval\
+  \ .= \"-gapextend $opt_E \"         if (defined $opt_E);\n    $retval .= \"-xdrop_ungap\
+  \ $opt_y \"       if (defined $opt_y);\n    $retval .= \"-xdrop_gap $opt_X \"  \
+  \       if (defined $opt_X);\n    $retval .= \"-xdrop_gap_final $opt_Z \"   if (defined\
+  \ $opt_Z);\n    $retval .= \"-num_threads $opt_a \"       if (defined $opt_a);\n\
+  \    if (defined $opt_A) {\n        if (defined $opt_P and $opt_P ne \"0\") {\n\
+  \            print STDERR \"Warning: ignoring -P because window size is set\\n\"\
+  ;\n        }\n        $retval .= \"-window_size $opt_A \"       \n    }\n    if\
+  \ (defined $opt_P and $opt_P eq \"1\" and (not defined $opt_A)) {\n        $retval\
+  \ .= \"-window_size 0 \";\n    }\n    $retval .= \"-word_size $opt_W \"        \
+  \ if (defined $opt_W);\n    if (defined $opt_Y) {\n        $retval .= \"-searchsp\
+  \ \" . &convert_float_to_int($opt_Y) . \" \";\n    }\n    if (defined $opt_f) {\n\
+  \        unless ($opt_p eq \"blastn\") {\n            $retval .= \"-min_word_score\
+  \ $opt_f \"    \n        } else {\n            print STDERR \"Warning: -f is not\
+  \ supported for blastn\\n\";\n        }\n    }\n    if (defined $opt_I and (length($opt_I)\
+  \ == 0 or $opt_I =~ /t/i)) {\n        $retval .= \"-show_gis \";\n    }\n    $retval\
+  \ .= \"-num_descriptions $opt_v \"  if (defined $opt_v);\n    $retval .= \"-num_alignments\
+  \ $opt_b \"    if (defined $opt_b);\n    $retval .= \"-query_gencode $opt_Q \" \
+  \    if (defined $opt_Q);\n    $retval .= \"-db_gencode $opt_D \"        if (defined\
+  \ $opt_D);\n    $retval .= \"-penalty $opt_q \"           if (defined $opt_q);\n\
+  \    $retval .= \"-reward $opt_r \"            if (defined $opt_r);\n    $retval\
+  \ .= \"-culling_limit $opt_K \"     if (defined $opt_K);\n    $retval .= \"-max_intron_length\
+  \ $opt_t \" if (defined $opt_t);\n    $retval .= \"-frame_shift_penalty $opt_w \"\
+  \ if (defined $opt_w);\n    $retval .= \"-comp_based_stats $opt_C \"  if (defined\
+  \ $opt_C);\n    $retval .= \"-out $opt_o \"               if (defined $opt_o);\n\
+  \    if (defined $opt_m) {\n        if ($opt_m == 5 or $opt_m == 6) {\n        \
+  \    print STDERR \"Warning: -m5 or -m6 formatting options \";\n            print\
+  \ STDERR \"are not supported!\\n\";\n        }\n        $opt_m -= 2 if ($opt_m >=\
+  \ 7);\n        $retval .= \"-outfmt $opt_m \"            \n    }\n    if (defined\
+  \ $opt_O) {\n        unless ($retval =~ s/-out \\S+ /-out $opt_O /) {\n        \
+  \    $retval .= \"-out $opt_O \";\n        }\n        unless ($retval =~ s/-outfmt\
+  \ \\d+/-outfmt 8/) {\n            $retval .= \"-outfmt 8 \";\n        } else {\n\
+  \            print STDERR \"Warning: overriding output format\\n\";\n        }\n\
+  \    }\n    if (defined $opt_T and (length($opt_T) == 0 or $opt_T =~ /t/i)) {\n\
+  \        $retval .= \"-html \"                     \n    }\n\n    $retval .= &convert_sequence_locations($opt_L,\
+  \ \"query\") if ($opt_L);\n    if (defined $opt_U and (length($opt_U) == 0 or $opt_U\
+  \ =~ /t/i)) {\n        $retval .= \"-lcase_masking \";\n    }\n    if (defined $opt_g\
+  \ and $opt_g =~ /f/i) {\n        $retval .= \"-ungapped \";\n    }\n    if (defined\
+  \ $opt_J and (length($opt_J) == 0 or $opt_J =~ /t/i)) {\n        $retval .= \"-parse_deflines\
+  \ \";\n    }\n    $retval .= &convert_strand($opt_S) if (defined $opt_S and not\n\
+  \                                           ($opt_p ne \"blastp\" or \n        \
+  \                                    $opt_p ne \"tblastn\"));\n    if (defined $opt_s\
+  \ and (length($opt_s) == 0 or $opt_s =~ /t/i)) {\n        $retval .= \"-use_sw_tback\
+  \ \";\n    }\n\n    if (defined $opt_F) {\n        $retval .= &convert_filter_string($opt_F,\
+  \ $opt_p);\n    } elsif (not defined $opt_F and $opt_p eq \"blastp\") {\n      \
+  \  $retval .= &convert_filter_string(\"T\", $opt_p);\n    }\n\n    return $retval;\n\
+  }\n\nsub handle_seedtop($)\n{\n    my $print_only = shift;\n    my $path = DEFAULT_PATH;\n\
+  \    my ($opt_C, $opt_D, $opt_E, $opt_F, $opt_G, $opt_I, $opt_J, $opt_K, $opt_M,\n\
+  \        $opt_O, $opt_S, $opt_X, $opt_d, $opt_e, $opt_f, $opt_i, $opt_k, $opt_o,\n\
+  \        $opt_p, $opt_q, $opt_r);\n\n    GetOptions(\"<>\"             => sub {\
+  \ $application = shift; },\n               \"print_only!\"    => $print_only,\n\
+  \               \"path=s\"         => \\$path,\n               \"C=i\"         \
+  \   => \\$opt_C,\n               \"D=i\"            => \\$opt_D,\n             \
+  \  \"E=i\"            => \\$opt_E,\n               \"F:s\"            => \\$opt_F,\n\
+  \               \"G=i\"            => \\$opt_G,\n               \"I:s\"        \
+  \    => \\$opt_I,\n               \"J:s\"            => \\$opt_J,\n            \
+  \   \"K=i\"            => \\$opt_K,\n               \"M=s\"            => \\$opt_M,\n\
+  \               \"O=s\"            => \\$opt_O,\n               \"S=i\"        \
+  \    => \\$opt_S,\n               \"X=i\"            => \\$opt_X,\n            \
+  \   \"d=s\"            => \\$opt_d,\n               \"e=f\"            => \\$opt_e,\n\
+  \               \"f:s\"            => \\$opt_f,\n               \"i=s\"        \
+  \    => \\$opt_i,\n               \"k=s\"            => \\$opt_k,\n            \
+  \   \"o=s\"            => \\$opt_o,\n               \"p=s\"            => \\$opt_p,\n\
+  \               \"q=i\"            => \\$opt_q,\n               \"r=i\"        \
+  \    => \\$opt_r\n               );\n\n    my $retval = $path;\n    $retval .= \"\
+  /psiblast\";\n    $retval .= &add_exe_extension();\n    $retval .= \"-query $opt_i\
+  \ \"             if (defined $opt_i);\n    $retval .= \"-phi_pattern $opt_k \" \
+  \      if (defined $opt_k);\n    $retval .= &create_db_argument($opt_d)  if (defined\
+  \ $opt_d);\n    $retval .= \"-gapopen $opt_G \"           if (defined $opt_G);\n\
+  \    $retval .= \"-gapextend $opt_E \"         if (defined $opt_E);\n    $retval\
+  \ .= \"-out $opt_o \"               if (defined $opt_o);\n    if (defined $opt_O)\
+  \ {\n        unless ($retval =~ s/-out \\S+ /-out $opt_O /) {\n            $retval\
+  \ .= \"-out $opt_O \";\n        }\n        unless ($retval =~ s/-outfmt \\d+/-outfmt\
+  \ 8/) {\n            $retval .= \"-outfmt 8 \";\n        } else {\n            print\
+  \ STDERR \"Warning: overriding output format\\n\";\n        }\n    }\n    if (defined\
+  \ $opt_I and (length($opt_I) == 0 or $opt_I =~ /t/i)) {\n        $retval .= \"-show_gis\
+  \ \";\n    }\n    if (defined $opt_J and (length($opt_J) == 0 or $opt_J =~ /t/i))\
+  \ {\n        $retval .= \"-parse_deflines \";\n    }\n    $retval .= \"-xdrop_gap\
+  \ $opt_X \"         if (defined $opt_X);\n    $retval .= \"-evalue $opt_e \"   \
+  \         if (defined $opt_e);\n    $retval .= \"-matrix $opt_M \"            if\
+  \ (defined $opt_M);\n    my $query_is_protein = \"1\";\n    if (defined $opt_p)\
+  \ {\n        unless ($opt_p eq \"patseedp\") {\n            die \"Only patseedp\
+  \ program is supported\\n\";\n        }\n        # Change query_is_protein if other\
+  \ programs are supported\n    } else {\n        die \"Program must be specified\\\
+  n\";\n    }\n    if (defined $opt_F) {\n        $retval .= &convert_filter_string($opt_F,\n\
+  \                                          ($query_is_protein eq \"1\")\n      \
+  \                                    ? \"blastp\" : \"blastn\");\n    }\n\n    #\
+  \ Unsupported options\n    if (defined $opt_D) {\n        print STDERR \"Warning:\
+  \ -D option is not supported!\\n\";\n    }\n    if (defined $opt_S) {\n        print\
+  \ STDERR \"Warning: -S option is not supported!\\n\";\n    }\n    if (defined $opt_C)\
+  \ {\n        print STDERR \"Warning: -C option is not supported!\\n\";\n    }\n\
+  \    if (defined $opt_q) {\n        print STDERR \"Warning: -q option is not supported!\\\
+  n\";\n    }\n    if (defined $opt_r) {\n        print STDERR \"Warning: -r option\
+  \ is not supported!\\n\";\n    }\n    if (defined $opt_f) {\n        print STDERR\
+  \ \"Warning: -f option is not supported!\\n\";\n    }\n    if (defined $opt_K) {\n\
+  \        print STDERR \"Warning: -K option is not supported!\\n\";\n    }\n    return\
+  \ $retval;\n}\n\nsub handle_megablast($)\n{\n    my $print_only = shift;\n    my\
+  \ $path = DEFAULT_PATH;\n    my ($opt_A, $opt_D, $opt_E, $opt_F, $opt_G, $opt_H,\
+  \ $opt_I, $opt_J, \n        $opt_L, $opt_M, $opt_N, $opt_O, $opt_P, $opt_Q, $opt_R,\
+  \ $opt_S, \n        $opt_T, $opt_U, $opt_V, $opt_W, $opt_X, $opt_Y, $opt_Z, $opt_a,\
+  \ \n        $opt_b, $opt_d, $opt_e, $opt_f, $opt_g, $opt_i, $opt_l, $opt_m, \n \
+  \       $opt_n, $opt_o, $opt_p, $opt_q, $opt_r, $opt_s, $opt_t, $opt_v, \n     \
+  \   $opt_y, $opt_z);\n\n    GetOptions(\"<>\"             => sub { $application\
+  \ = shift; },\n               \"print_only!\"    => $print_only,\n             \
+  \  \"path=s\"         => \\$path,\n               \"A=i\"            => \\$opt_A,\n\
+  \               \"D=i\"            => \\$opt_D,\n               \"E=i\"        \
+  \    => \\$opt_E,\n               \"F=s\"            => \\$opt_F,\n            \
+  \   \"G=i\"            => \\$opt_G,\n               \"H=i\"            => \\$opt_H,\n\
+  \               \"I:s\"            => \\$opt_I,\n               \"J:s\"        \
+  \    => \\$opt_J,\n               \"L=s\"            => \\$opt_L,\n            \
+  \   \"M=i\"            => \\$opt_M,\n               \"N=i\"            => \\$opt_N,\n\
+  \               \"O=s\"            => \\$opt_O,\n               \"P=i\"        \
+  \    => \\$opt_P, # no equivalent in new engine\n               \"Q=s\"        \
+  \    => \\$opt_Q,\n               \"R:s\"            => \\$opt_R,\n            \
+  \   \"S=i\"            => \\$opt_S,\n               \"T:s\"            => \\$opt_T,\n\
+  \               \"U:s\"            => \\$opt_U,\n               \"V:s\"        \
+  \    => \\$opt_V, # not handled, not applicable\n               \"W=i\"        \
+  \    => \\$opt_W,\n               \"X=i\"            => \\$opt_X,\n            \
+  \   \"Y=f\"            => \\$opt_Y,\n               \"Z=i\"            => \\$opt_Z,\n\
+  \               \"a=i\"            => \\$opt_a,\n               \"b=i\"        \
+  \    => \\$opt_b,\n               \"d=s\"            => \\$opt_d,\n            \
+  \   \"e=f\"            => \\$opt_e,\n               \"f:s\"            => \\$opt_f,\n\
+  \               \"g:s\"            => \\$opt_g,\n               \"i=s\"        \
+  \    => \\$opt_i,\n               \"l=s\"            => \\$opt_l,\n            \
+  \   \"m=i\"            => \\$opt_m,\n               \"n:s\"            => \\$opt_n,\n\
+  \               \"o=s\"            => \\$opt_o,\n               \"p=f\"        \
+  \    => \\$opt_p,\n               \"q=i\"            => \\$opt_q,\n            \
+  \   \"r=i\"            => \\$opt_r,\n               \"s=i\"            => \\$opt_s,\n\
+  \               \"t=i\"            => \\$opt_t,\n               \"v=i\"        \
+  \    => \\$opt_v,\n               \"y=i\"            => \\$opt_y,\n            \
+  \   \"z=f\"            => \\$opt_z\n               );\n    my $retval = $path;\n\
+  \n    $retval .= \"/blastn\";\n    $retval .= &add_exe_extension();\n    $retval\
+  \ .= \"-query $opt_i \"             if (defined $opt_i);\n    $retval .= &create_db_argument($opt_d)\
+  \  if (defined $opt_d);\n    $retval .= \"-evalue $opt_e \"            if (defined\
+  \ $opt_e);\n    $retval .= \"-xdrop_gap $opt_X \"         if (defined $opt_X);\n\
+  \    $retval .= \"-gilist $opt_l \"            if (defined $opt_l);\n    $retval\
+  \ .= \"-penalty $opt_q \"           if (defined $opt_q);\n    $retval .= \"-reward\
+  \ $opt_r \"            if (defined $opt_r);\n    $retval .= \"-gapopen $opt_G \"\
+  \           if (defined $opt_G);\n    $retval .= \"-gapextend $opt_E \"        \
+  \ if (defined $opt_E);\n    $retval .= \"-out $opt_o \"               if (defined\
+  \ $opt_o);\n    if (defined $opt_m) {\n        if ($opt_m == 5 or $opt_m == 6) {\n\
+  \            print STDERR \"Warning: -m5 or -m6 formatting options \";\n       \
+  \     print STDERR \"are not supported!\\n\";\n        }\n        $opt_m -= 2 if\
+  \ ($opt_m >= 7);\n        $retval .= \"-outfmt $opt_m \"            \n    }\n  \
+  \  if (defined $opt_O) {\n        unless ($retval =~ s/-out \\S+ /-out $opt_O /)\
+  \ {\n            $retval .= \"-out $opt_O \";\n        }\n        unless ($retval\
+  \ =~ s/-outfmt \\d+/-outfmt 8/) {\n            $retval .= \"-outfmt 8 \";\n    \
+  \    } else {\n            print STDERR \"Warning: overriding output format\\n\"\
+  ;\n        }\n    }\n    if (defined $opt_T and (length($opt_T) == 0 or $opt_T =~\
+  \ /t/i)) {\n        $retval .= \"-html \"                     \n    }\n    $retval\
+  \ .= \"-num_descriptions $opt_v \"  if (defined $opt_v);\n    $retval .= \"-num_alignments\
+  \ $opt_b \"    if (defined $opt_b);\n    $retval .= \"-num_threads $opt_a \"   \
+  \    if (defined $opt_a);\n    $retval .= \"-word_size $opt_W \"         if (defined\
+  \ $opt_W);\n    $retval .= \"-dbsize $opt_z \"            if (defined $opt_z);\n\
+  \    if (defined $opt_Y) {\n        $retval .= \"-searchsp \" . &convert_float_to_int($opt_Y)\
+  \ . \" \";\n    }\n    $retval .= \"-xdrop_ungap $opt_y \"       if (defined $opt_y);\n\
+  \    $retval .= \"-xdrop_gap_final $opt_Z \"   if (defined $opt_Z);\n    if (defined\
+  \ $opt_t) {\n        $retval .= \"-template_length $opt_t \";\n        # Set the\
+  \ template type to the default value in megablast if not\n        # provided, as\
+  \ blastn requires it\n        $opt_N = 0 unless (defined $opt_N); \n    }\n    $retval\
+  \ .= \"-window_size $opt_A \"       if (defined $opt_A);\n    if (defined $opt_N)\
+  \ {\n        $retval .= \"-template_type coding \" if ($opt_N == 0);\n        $retval\
+  \ .= \"-template_type optimal \" if ($opt_N == 1);\n        $retval .= \"-template_type\
+  \ coding_and_optimal \" if ($opt_N == 2);\n    }\n    if (defined $opt_F) {\n  \
+  \      $retval .= &convert_filter_string($opt_F, \"blastn\");\n    }\n    if (defined\
+  \ $opt_J and (length($opt_J) == 0 or $opt_J =~ /t/i)) {\n        $retval .= \"-parse_deflines\
+  \ \";\n    }\n\n\n    $retval .= \"-perc_identity $opt_p \" if (defined $opt_p);\n\
+  \    $retval .= \"-min_raw_gapped_score $opt_s \" if (defined $opt_s);\n    $retval\
+  \ .= &convert_strand($opt_S) if (defined $opt_S);\n    $retval .= &convert_sequence_locations($opt_L,\
+  \ \"query\") if ($opt_L);\n    if (defined $opt_U and (length($opt_U) == 0 or $opt_U\
+  \ =~ /t/i)) {\n        $retval .= \"-lcase_masking \";\n    }\n    if (defined $opt_n\
+  \ and (length($opt_n) == 0 or $opt_n =~ /t/i)) {\n        $retval .= \"-no_greedy\
+  \ \";\n    }\n\n    # Unsupported options\n    # This option can be safely ignored\n\
+  \    #if (defined $opt_M) {\n    #    print STDERR \"Warning: -M option is ignored\\\
+  n\";\n    #}\n\n    my $tab_with_acc =\n        \"-outfmt \\\"7 qacc sseqid pident\
+  \ length mismatch gapopen qstart qend \" .\n        \"sstart send evalue bitscore\\\
+  \" \";\n\n    # Here are some combinations of options and their equivalent conversion\
+  \ to\n    # the -outfmt option:\n    # NOTE: only in the last case we use sgi as\
+  \ the user explicitely requests\n    # the GIs to be shown (via -I), thus we assume\
+  \ the database/subjects will\n    # have GIs. We don't do the same for accessions,\
+  \ because if these are not\n    # available, an ordinal ID gets printed.\n    #\
+  \ -J -D3 -R -fF = -outfmt \"7 qacc sseqid pident length mismatch gapopen\n    #\
+  \ qstart qend sstart send evalue bitscore\"\n    # -J -D3 -R -fT = -outfmt \"7 qseqid\
+  \ sseqid pident length mismatch gapopen\n    # qstart qend sstart send evalue bitscore\"\
+  \n    # -J -D3 -R -fT -I = -outfmt \"7 qgi sgi pident length mismatch gapopen\n\
+  \    # qstart qend sstart send evalue bitscore\"\n\n    if (defined $opt_D) {\n\
+  \        if ($opt_D == 3) {  # tabular output\n            unless ($retval =~ s/-outfmt\
+  \ \\d+/$tab_with_acc/) {\n                $retval .= \"$tab_with_acc \";\n     \
+  \       } else {\n                print STDERR \"Warning: overriding output format\\\
+  n\";\n            }\n        } elsif ($opt_D == 2) { # traditional BLAST output\n\
+  \            unless ($retval =~ s/-outfmt \\d+/-outfmt 0/) {\n                $retval\
+  \ .= \"-outfmt 0 \";\n            } else {\n                print STDERR \"Warning:\
+  \ overriding output format\\n\";\n            }\n        } elsif ($opt_D == 4) {\
+  \ # text ASN.1\n            unless ($retval =~ s/-outfmt \\d+/-outfmt 8/) {\n  \
+  \              $retval .= \"-outfmt 8 \";\n            } else {\n              \
+  \  print STDERR \"Warning: overriding output format\\n\";\n            }\n     \
+  \   } elsif ($opt_D == 5) { # binary ASN.1\n            unless ($retval =~ s/-outfmt\
+  \ \\d+/-outfmt 9/) {\n                $retval .= \"-outfmt 9 \";\n            }\
+  \ else {\n                print STDERR \"Warning: overriding output format\\n\"\
+  ;\n            }\n        } else {\n            print STDERR \"Warning: -D option\
+  \ with value $opt_D is not \" .\n                \"supported!\\n\";\n        }\n\
+  \    }\n\n    if (defined $opt_I and (length($opt_I) == 0 or $opt_I =~ /t/i)) {\n\
+  \        $retval .= \"-show_gis \";\n        $retval =~ s/qacc/qgi/;\n        $retval\
+  \ =~ s/sseqid/sgi/;\n    }\n    # -fF is the default, if -f or -fT is specified,\
+  \ we assume that's what's\n    # desired and we apply a modification to the previously\
+  \ set output format\n    # (we can safely assume this b/c -f only works with -D3)\n\
+  \    if (defined $opt_f and (length($opt_f) == 0 or $opt_f =~ /t/i)) {\n       \
+  \ $retval =~ s/qacc/qseqid/;\n    }\n    if (defined $opt_R and not ($retval =~\
+  \ /-outfmt.*7/)) {\n        print STDERR \"Warning: -R option is deprecated, please\
+  \ rely on the \".\n            \"application's exit code to determine its success\
+  \ or failure.\\n\" .\n            \"0 means success, non-zero means failure\\n\"\
+  ;\n    }\n    # Deprecated options\n    if (defined $opt_g and $opt_g =~ /f/i) {\n\
+  \        print STDERR \"Warning: -g option is not supported!\\n\";\n    }\n    if\
+  \ (defined $opt_H) {\n        print STDERR \"Warning -H option is not supported!\\\
+  n\";\n    }\n    if (defined $opt_Q) {\n        print STDERR \"Warning: -Q option\
+  \ is deprecated\\n\";\n    }\n    if (defined $opt_P) {\n        print STDERR \"\
+  Warning: -P option is deprecated\\n\";\n    }\n\n    return $retval;\n}\n\nsub handle_blastpgp($)\n\
+  {\n    my $print_only = shift;\n    my $path = DEFAULT_PATH;\n    my ($opt_A, $opt_B,\
+  \ $opt_C, $opt_E, $opt_F, $opt_G, $opt_H, $opt_I, \n        $opt_J, $opt_K, $opt_L,\
+  \ $opt_M, $opt_N, $opt_O, $opt_P, $opt_Q, \n        $opt_R, $opt_S, $opt_T, $opt_U,\
+  \ $opt_W, $opt_X, $opt_Y, $opt_Z, \n        $opt_a, $opt_b, $opt_c, $opt_d, $opt_e,\
+  \ $opt_f, $opt_h, $opt_i, \n        $opt_j, $opt_k, $opt_l, $opt_m, $opt_o, $opt_p,\
+  \ $opt_q, $opt_s, \n        $opt_t, $opt_u, $opt_v, $opt_y, $opt_z);\n\n    GetOptions(\"\
+  <>\"             => sub { $application = shift; },\n               \"print_only!\"\
+  \    => $print_only,\n               \"path=s\"         => \\$path,\n          \
+  \     \"A=i\"            => \\$opt_A,\n               \"B=s\"            => \\$opt_B,\n\
+  \               \"C=s\"            => \\$opt_C,\n               \"E=i\"        \
+  \    => \\$opt_E,\n               \"F=s\"            => \\$opt_F,\n            \
+  \   \"G=i\"            => \\$opt_G,\n               \"H=i\"            => \\$opt_H,\n\
+  \               \"I:s\"            => \\$opt_I,\n               \"J:s\"        \
+  \    => \\$opt_J,\n               \"K=i\"            => \\$opt_K,\n            \
+  \   \"L=i\"            => \\$opt_L,\n               \"M=s\"            => \\$opt_M,\n\
+  \               \"N=f\"            => \\$opt_N,\n               \"O=s\"        \
+  \    => \\$opt_O,\n               \"P=i\"            => \\$opt_P,\n            \
+  \   \"Q=s\"            => \\$opt_Q,\n               \"R=s\"            => \\$opt_R,\n\
+  \               \"S=i\"            => \\$opt_S,\n               \"T:s\"        \
+  \    => \\$opt_T,\n               \"U:s\"            => \\$opt_U,\n            \
+  \   \"W=i\"            => \\$opt_W,\n               \"X=i\"            => \\$opt_X,\n\
+  \               \"Y=f\"            => \\$opt_Y,\n               \"Z=i\"        \
+  \    => \\$opt_Z,\n               \"a=i\"            => \\$opt_a,\n            \
+  \   \"b=i\"            => \\$opt_b,\n               \"c=i\"            => \\$opt_c,\n\
+  \               \"d=s\"            => \\$opt_d,\n               \"e=f\"        \
+  \    => \\$opt_e,\n               \"f=i\"            => \\$opt_f,\n            \
+  \   \"h=f\"            => \\$opt_h,\n               \"i=s\"            => \\$opt_i,\n\
+  \               \"j=i\"            => \\$opt_j,\n               \"k=s\"        \
+  \    => \\$opt_k,\n               \"l=s\"            => \\$opt_l,\n            \
+  \   \"m=i\"            => \\$opt_m,\n               \"o=s\"            => \\$opt_o,\n\
+  \               \"p=s\"            => \\$opt_p,\n               \"q=i\"        \
+  \    => \\$opt_q,\n               \"s:s\"            => \\$opt_s,\n            \
+  \   \"t=s\"            => \\$opt_t,\n               \"u=i\"            => \\$opt_u,\n\
+  \               \"v=i\"            => \\$opt_v,\n               \"y=f\"        \
+  \    => \\$opt_y,\n               \"z=f\"            => \\$opt_z\n             \
+  \  );\n    my $retval = $path . \"/psiblast\";\n    $retval .= &add_exe_extension();\n\
+  \n    my $query_is_protein = \"1\";\n\n    if (defined $opt_p and not ($opt_p ne\
+  \ \"blastpgp\" or\n                                $opt_p ne \"patseedp\")) {\n\
+  \        die \"Program '$opt_p' not implemented\\n\";\n    }\n\n    $retval .= &create_db_argument($opt_d)\
+  \  if (defined $opt_d);\n    $retval .= \"-query $opt_i \"             if (defined\
+  \ $opt_i);\n    $retval .= \"-gilist $opt_l \"            if (defined $opt_l);\n\
+  \    $retval .= \"-gap_trigger $opt_N \"       if (defined $opt_N);\n    $retval\
+  \ .= \"-matrix $opt_M \"            if (defined $opt_M);\n    $retval .= \"-num_iterations\
+  \ $opt_j \"    if (defined $opt_j);\n    $retval .= \"-min_word_score $opt_f \"\
+  \    if (defined $opt_f);\n    $retval .= \"-evalue $opt_e \"            if (defined\
+  \ $opt_e);\n    $retval .= \"-gapopen $opt_G \"           if (defined $opt_G);\n\
+  \    $retval .= \"-gapextend $opt_E \"         if (defined $opt_E);\n    $retval\
+  \ .= \"-num_threads $opt_a \"       if (defined $opt_a);\n    $retval .= \"-dbsize\
+  \ $opt_z \"            if (defined $opt_z);\n    if (defined $opt_Y) {\n       \
+  \ $retval .= \"-searchsp \" . &convert_float_to_int($opt_Y) . \" \";\n    }\n  \
+  \  $retval .= \"-pseudocount $opt_c \"       if (defined $opt_c);\n    $retval .=\
+  \ \"-inclusion_ethresh $opt_h \" if (defined $opt_h);\n    if (defined $opt_A) {\n\
+  \        if (defined $opt_P and $opt_P ne \"0\") {\n            print STDERR \"\
+  Warning: ignoring -P because window size is set\\n\";\n        }\n        $retval\
+  \ .= \"-window_size $opt_A \"       \n    }\n    if (defined $opt_P and $opt_P eq\
+  \ \"1\" and (not defined $opt_A)) {\n        $retval .= \"-window_size 0 \";\n \
+  \   }\n    $retval .= \"-word_size $opt_W \"         if (defined $opt_W);\n    $retval\
+  \ .= \"-xdrop_ungap $opt_y \"       if (defined $opt_y);\n    $retval .= \"-xdrop_gap\
+  \ $opt_X \"         if (defined $opt_X);\n    $retval .= \"-xdrop_gap_final $opt_Z\
+  \ \"   if (defined $opt_Z);\n    $retval .= \"-num_descriptions $opt_v \"  if (defined\
+  \ $opt_v);\n    $retval .= \"-num_alignments $opt_b \"    if (defined $opt_b);\n\
+  \    $retval .= \"-culling_limit $opt_K \"     if (defined $opt_K);\n    $retval\
+  \ .= \"-comp_based_stats $opt_t \"  if (defined $opt_t);\n    $retval .= \"-phi_pattern\
+  \ $opt_k \"       if (defined $opt_k);\n    $retval .= \"-out $opt_o \"        \
+  \       if (defined $opt_o);\n    $retval .= \"-out_ascii_pssm $opt_Q \"    if (defined\
+  \ $opt_Q);\n    $retval .= \"-in_msa $opt_B \"            if (defined $opt_B);\n\
+  \n    if (defined $opt_m) {\n        if ($opt_m == 5 or $opt_m == 6) {\n       \
+  \     print STDERR \"Warning: -m5 or -m6 formatting options \";\n            print\
+  \ STDERR \"are not supported!\\n\";\n        }\n        $opt_m -= 2 if ($opt_m >=\
+  \ 7);\n        $retval .= \"-outfmt $opt_m \"            \n    }\n    if (defined\
+  \ $opt_O) {\n        unless ($retval =~ s/-out \\S+ /-out $opt_O /) {\n        \
+  \    $retval .= \"-out $opt_O \";\n        }\n        unless ($retval =~ s/-outfmt\
+  \ \\d+/-outfmt 8/) {\n            $retval .= \"-outfmt 8 \";\n        } else {\n\
+  \            print STDERR \"Warning: overriding output format\\n\";\n        }\n\
+  \    }\n    if (defined $opt_T and (length($opt_T) == 0 or $opt_T =~ /t/i)) {\n\
+  \        $retval .= \"-html \"                     \n    }\n    if (defined $opt_I\
+  \ and (length($opt_I) == 0 or $opt_I =~ /t/i)) {\n        $retval .= \"-show_gis\
+  \ \";\n    }\n    if (defined $opt_J and (length($opt_J) == 0 or $opt_J =~ /t/i))\
+  \ {\n        $retval .= \"-parse_deflines \";\n    }\n    if (defined $opt_s and\
+  \ (length($opt_s) == 0 or $opt_s =~ /t/i)) {\n        $retval .= \"-use_sw_tback\
+  \ \";\n    }\n    if (defined $opt_U and (length($opt_U) == 0 or $opt_U =~ /t/i))\
+  \ {\n        $retval .= \"-lcase_masking \";\n    }\n    if (defined $opt_F) {\n\
+  \        $retval .= &convert_filter_string($opt_F, \n                          \
+  \                ($query_is_protein eq \"1\")\n                                \
+  \          ? \"blastp\" : \"blastn\");\n    }\n\n    my $location = \"\";\n    $location\
+  \ .= $opt_S if (defined $opt_S);\n    if (defined $opt_H) {\n        if ($location\
+  \ eq \"\") {\n            $location = \"0,$opt_H\";\n        } else {\n        \
+  \    $location .= \",$opt_H\";\n        }\n    }\n    if ($location ne \"\") {\n\
+  \        $location .= \",-1\" unless (defined $opt_H);\n        $retval .= &convert_sequence_locations($location,\
+  \ \"query\");\n    }\n\n    # Checkpoint file recovery\n    if (defined $opt_R)\
+  \ {\n        if (defined $opt_q and $opt_q ne \"0\") {\n            $retval .= \"\
+  -in_pssm $opt_R \" \n        } else {\n            die \"ERROR: recovery from C\
+  \ toolkit checkpoint \" .\n                \"file format not supported\\n\";\n \
+  \       }\n    }\n\n    # Checkpoint file saving\n    if (defined $opt_C) {\n  \
+  \      if (defined $opt_C and $opt_u ne \"0\") {\n            $retval .= \"-out_pssm\
+  \ $opt_C \"          \n        } else {\n            die \"ERROR: saving PSSM to\
+  \ C toolkit checkpoint \" .\n                \"file format not supported\\n\";\n\
+  \        }\n    }\n\n    return $retval;\n}\n\n# Tested: all conversions should\
+  \ work\nsub handle_bl2seq\n{\n    use File::Temp qw(:POSIX);  # for tmpnam\n\n \
+  \   my $print_only = shift;\n    my $path = DEFAULT_PATH;\n    my ($opt_A, $opt_D,\
+  \ $opt_E, $opt_F, $opt_G, $opt_I, $opt_J, $opt_M, \n        $opt_S, $opt_T, $opt_U,\
+  \ $opt_V, $opt_W, $opt_X, $opt_Y, $opt_a, \n        $opt_d, $opt_e, $opt_g, $opt_i,\
+  \ $opt_j, $opt_m, $opt_o, $opt_p, \n        $opt_q, $opt_r, $opt_t);\n\n    GetOptions(\"\
+  <>\"             => sub { $application = shift; },\n               \"print_only!\"\
+  \    => $print_only,\n               \"path=s\"         => \\$path,\n          \
+  \     \"A:s\"            => \\$opt_A,\n               \"D=i\"            => \\$opt_D,\n\
+  \               \"E=i\"            => \\$opt_E,\n               \"F=s\"        \
+  \    => \\$opt_F,\n               \"G=i\"            => \\$opt_G,\n            \
+  \   \"I=s\"            => \\$opt_I,\n               \"J=s\"            => \\$opt_J,\n\
+  \               \"M=s\"            => \\$opt_M,\n               \"S=i\"        \
+  \    => \\$opt_S,\n               \"T:s\"            => \\$opt_T,\n            \
+  \   \"U:s\"            => \\$opt_U,\n               \"V:s\"            => \\$opt_V,\
+  \ # not handled, not applicable\n               \"W=i\"            => \\$opt_W,\n\
+  \               \"X=i\"            => \\$opt_X,\n               \"Y=f\"        \
+  \    => \\$opt_Y,\n               \"a=s\"            => \\$opt_a,\n            \
+  \   \"d=f\"            => \\$opt_d,\n               \"e=f\"            => \\$opt_e,\n\
+  \               \"g:s\"            => \\$opt_g,\n               \"i=s\"        \
+  \    => \\$opt_i,\n               \"j=s\"            => \\$opt_j,\n            \
+  \   \"m:s\"            => \\$opt_m,\n               \"o=s\"            => \\$opt_o,\n\
+  \               \"p=s\"            => \\$opt_p,\n               \"q=i\"        \
+  \    => \\$opt_q,\n               \"r=i\"            => \\$opt_r,\n            \
+  \   \"t=i\"            => \\$opt_t\n               );\n    my $retval = $path;\n\
+  \n    unless (defined $opt_i and defined $opt_j) {\n        die \"-i and -j are\
+  \ required in bl2seq\\n\";\n    }\n\n    if (defined $opt_p) {\n        $retval\
+  \ .= \"/$opt_p\";\n        $retval .= &add_exe_extension();\n    } else {\n    \
+  \    die \"Program must be specified via the -p option\\n\";\n    }\n    unless\
+  \ (defined $opt_A) {\n        $retval .= \"-query $opt_i \"             if (defined\
+  \ $opt_i);\n        $retval .= \"-subject $opt_j \"           if (defined $opt_j);\n\
+  \    } else {\n        # The -A option is not supported, so we create temporary\
+  \ files to\n        # simulate it (example input: bl2seq -i129295 -j104501 -pblastp\
+  \ -A)\n        my $query_fname = tmpnam();\n        open(Q, \">$query_fname\") or\
+  \ die \"Failed to open $query_fname: $!\\n\";\n        print Q \"$opt_i\" and close(Q);\n\
+  \        push @files2delete, $query_fname;\n\n        my $subj_fname = tmpnam();\n\
+  \        open(S, \">$subj_fname\") or die \"Failed to open $subj_fname: $!\\n\"\
+  ;\n        print S \"$opt_j\" and close(S);\n        push @files2delete, $subj_fname;\n\
+  \        if (DEBUG) {\n            print STDERR \"Created temp. files $query_fname\
+  \ and $subj_fname\\n\";\n        }\n\n        $retval .= \"-query $query_fname -subject\
+  \ $subj_fname \";\n        if ($$print_only) {\n            print STDERR \"Warning:\
+  \ arguments to -query and -subject must be \";\n            print STDERR \"files\
+  \ containing the\\narguments to bl2seq's -i and \";\n            print STDERR \"\
+  -j arguments respectively.\\n\";\n        }\n    }\n    $retval .= \"-out $opt_o\
+  \ \"               if (defined $opt_o);\n    if (defined $opt_a) {\n        unless\
+  \ ($retval =~ s/-out \\S+ /-out $opt_a /) {\n            $retval .= \"-out $opt_a\
+  \ \";\n        }\n        unless ($retval =~ s/-outfmt \\d+/-outfmt 8/) {\n    \
+  \        $retval .= \"-outfmt 8 \";\n        } else {\n            print STDERR\
+  \ \"Warning: overriding output format\\n\";\n        }\n    }\n    if (defined $opt_D\
+  \ and $opt_D =~ /1/) {\n        if ($retval =~ s/-outfmt \\d+/-outfmt 7/) {\n  \
+  \          print STDERR \"Warning: overriding output format\\n\";\n        } else\
+  \ {\n            $retval .= \"-outfmt 7 \";\n        }\n    }\n    if (defined $opt_T\
+  \ and (length($opt_T) == 0 or $opt_T =~ /t/i)) {\n        $retval .= \"-html \"\
+  \                     \n    }\n    $retval .= \"-evalue $opt_e \"            if\
+  \ (defined $opt_e);\n    $retval .= \"-gapopen $opt_G \"           if (defined $opt_G);\n\
+  \    $retval .= \"-gapextend $opt_E \"         if (defined $opt_E);\n    $retval\
+  \ .= \"-word_size $opt_W \"         if (defined $opt_W);\n    $retval .= \"-matrix\
+  \ $opt_M \"            if (defined $opt_M);\n    $retval .= \"-penalty $opt_q \"\
+  \           if (defined $opt_q);\n    $retval .= \"-reward $opt_r \"           \
+  \ if (defined $opt_r);\n    $retval .= &convert_strand($opt_S)      if (defined\
+  \ $opt_S);\n    $retval .= \"-max_intron_length $opt_t \" if (defined $opt_t);\n\
+  \    $retval .= \"-dbsize $opt_d \"            if (defined $opt_d);\n    $retval\
+  \ .= \"-xdrop_gap $opt_X \"         if (defined $opt_X);\n    if (defined $opt_Y)\
+  \ {\n        $retval .= \"-searchsp \" . &convert_float_to_int($opt_Y) . \" \";\n\
+  \    }\n    if (defined $opt_U and (length($opt_U) == 0 or $opt_U =~ /t/i)) {\n\
+  \        $retval .= \"-lcase_masking \";\n    }\n    if (defined $opt_m and (length($opt_m)\
+  \ == 0 or $opt_m =~ /t/i)) {\n        $retval .= \"-task megablast \";\n    }\n\
+  \    if (defined $opt_g and $opt_g =~ /f/i) {\n        $retval .= \"-ungapped \"\
+  ;\n    }\n    $retval .= &convert_sequence_locations($opt_I, \"query\") if ($opt_I);\n\
+  \    $retval .= &convert_sequence_locations($opt_J, \"subject\") if ($opt_J);\n\n\
+  \    if (defined $opt_F) {\n        $retval .= &convert_filter_string($opt_F, $opt_p);\n\
+  \    }\n\n    return $retval;\n}\n\nsub handle_rpsblast\n{\n    my $print_only =\
+  \ shift;\n    my $path = DEFAULT_PATH;\n    my ($opt_F, $opt_I, $opt_J, $opt_L,\
+  \ $opt_N, $opt_O, $opt_P, $opt_T, \n        $opt_U, $opt_V, $opt_X, $opt_Y, $opt_Z,\
+  \ $opt_a, $opt_b, $opt_d, \n        $opt_e, $opt_i, $opt_l, $opt_m, $opt_o, $opt_p,\
+  \ $opt_v, $opt_y, \n        $opt_z);\n\n    GetOptions(\"<>\"             => sub\
+  \ { $application = shift; },\n               \"print_only!\"    => $print_only,\n\
+  \               \"path=s\"         => \\$path,\n               \"F=s\"         \
+  \   => \\$opt_F,\n               \"I:s\"            => \\$opt_I,\n             \
+  \  \"J:s\"            => \\$opt_J,\n               \"L=s\"            => \\$opt_L,\n\
+  \               \"N=f\"            => \\$opt_N,\n               \"O=s\"        \
+  \    => \\$opt_O,\n               \"P=i\"            => \\$opt_P,\n            \
+  \   \"T:s\"            => \\$opt_T,\n               \"U:s\"            => \\$opt_U,\n\
+  \               \"V=s\"            => \\$opt_V,\n               \"X=i\"        \
+  \    => \\$opt_X,\n               \"Y=f\"            => \\$opt_Y,\n            \
+  \   \"Z=i\"            => \\$opt_Z,\n               \"a=i\"            => \\$opt_a,\n\
+  \               \"b=i\"            => \\$opt_b,\n               \"d=s\"        \
+  \    => \\$opt_d,\n               \"e=f\"            => \\$opt_e,\n            \
+  \   \"i=s\"            => \\$opt_i,\n               \"l=s\"            => \\$opt_l,\n\
+  \               \"m=i\"            => \\$opt_m,\n               \"o=s\"        \
+  \    => \\$opt_o,\n               \"p:s\"            => \\$opt_p,\n            \
+  \   \"v=i\"            => \\$opt_v,\n               \"y=f\"            => \\$opt_y,\n\
+  \               \"z=f\"            => \\$opt_z\n               );\n    my $retval\
+  \ = $path;\n\n    if (defined $opt_p and $opt_p =~ /f/i) {\n        $retval .= \"\
+  /rpstblastn\";\n    } else {\n        $retval .= \"/rpsblast\";\n    }\n    $retval\
+  \ .= &add_exe_extension();\n\n    $retval .= \"-query $opt_i \"             if (defined\
+  \ $opt_i);\n    $retval .= &create_db_argument($opt_d)  if (defined $opt_d);\n \
+  \   $retval .= \"-evalue $opt_e \"            if (defined $opt_e);\n    $retval\
+  \ .= \"-out $opt_o \"               if (defined $opt_o);\n    $retval .= \"-xdrop_ungap\
+  \ $opt_y \"       if (defined $opt_y);\n    $retval .= \"-xdrop_gap $opt_X \"  \
+  \       if (defined $opt_X);\n    $retval .= \"-min_raw_gapped_score $opt_N \" if\
+  \ (defined $opt_N);\n    $retval .= \"-num_threads $opt_a \"       if (defined $opt_a);\n\
+  \    $retval .= \"-num_descriptions $opt_v \"  if (defined $opt_v);\n    $retval\
+  \ .= \"-num_alignments $opt_b \"    if (defined $opt_b);\n    $retval .= \"-dbsize\
+  \ $opt_z \"            if (defined $opt_z);\n    if (defined $opt_Y) {\n       \
+  \ $retval .= \"-searchsp \" . &convert_float_to_int($opt_Y) . \" \";\n    }\n  \
+  \  $retval .= \"-xdrop_gap_final $opt_Z \"   if (defined $opt_Z);\n    if (defined\
+  \ $opt_m) {\n        if ($opt_m == 5 or $opt_m == 6) {\n            print STDERR\
+  \ \"Warning: -m5 or -m6 formatting options \";\n            print STDERR \"are not\
+  \ supported!\\n\";\n        }\n        $opt_m -= 2 if ($opt_m >= 7);\n        $retval\
+  \ .= \"-outfmt $opt_m \"            \n    }\n    if (defined $opt_O) {\n       \
+  \ unless ($retval =~ s/-out \\S+ /-out $opt_O /) {\n            $retval .= \"-out\
+  \ $opt_O \";\n        }\n        unless ($retval =~ s/-outfmt \\d+/-outfmt 8/) {\n\
+  \            $retval .= \"-outfmt 8 \";\n        } else {\n            print STDERR\
+  \ \"Warning: overriding output format\\n\";\n        }\n    }\n    if (defined $opt_T\
+  \ and (length($opt_T) == 0 or $opt_T =~ /t/i)) {\n        $retval .= \"-html \"\
+  \                     \n    }\n    if (defined $opt_P and $opt_P eq \"1\") {\n \
+  \       $retval .= \"-window_size 0 \";\n    }\n    if (defined $opt_F) {\n    \
+  \    $retval .= &convert_filter_string($opt_F, \"blastp\");\n    }\n    if (defined\
+  \ $opt_I and (length($opt_I) == 0 or $opt_I =~ /t/i)) {\n        $retval .= \"-show_gis\
+  \ \";\n    }\n    if (defined $opt_J and (length($opt_J) == 0 or $opt_J =~ /t/i))\
+  \ {\n        $retval .= \"-parse_deflines \";\n    }\n    if (defined $opt_U and\
+  \ (length($opt_U) == 0 or $opt_U =~ /t/i)) {\n        $retval .= \"-lcase_masking\
+  \ \";\n    }\n    $retval .= &convert_sequence_locations($opt_L, \"query\") if ($opt_L);\n\
+  \n    return $retval;\n}\n\nsub handle_fastacmd\n{\n    my $print_only = shift;\n\
+  \    my $path = DEFAULT_PATH;\n    my ($opt_d, $opt_p, $opt_s, $opt_i, $opt_a, $opt_l,\
+  \ $opt_t, $opt_o,\n        $opt_c, $opt_D, $opt_L, $opt_S, $opt_T, $opt_I, $opt_P);\n\
+  \n    GetOptions(\"<>\"             => sub { $application = shift; },\n        \
+  \       \"print_only!\"    => $print_only,\n               \"path=s\"         =>\
+  \ \\$path,\n               \"D=i\"            => \\$opt_D,\n               \"I:s\"\
+  \            => \\$opt_I,\n               \"L=s\"            => \\$opt_L,\n    \
+  \           \"P=i\"            => \\$opt_P,\n               \"S=i\"            =>\
+  \ \\$opt_S,\n               \"T:s\"            => \\$opt_T,\n               \"a:s\"\
+  \            => \\$opt_a,\n               \"c:s\"            => \\$opt_c,\n    \
+  \           \"d=s\"            => \\$opt_d,\n               \"i=s\"            =>\
+  \ \\$opt_i,\n               \"l=i\"            => \\$opt_l,\n               \"o=s\"\
+  \            => \\$opt_o,\n               \"p=s\"            => \\$opt_p,\n    \
+  \           \"s=s\"            => \\$opt_s,\n               \"t:s\"            =>\
+  \ \\$opt_t\n               );\n\n    my $retval = $path . \"/blastdbcmd\";\n   \
+  \ $retval .= &add_exe_extension();\n    $retval .= &create_db_argument($opt_d) \
+  \ if (defined $opt_d);\n    if (defined $opt_p) {\n        $retval .= \"-dbtype\
+  \ \";\n        if ($opt_p =~ /p/i) {\n            $retval .= \"prot \";\n      \
+  \  } elsif ($opt_p =~ /f/i) {\n            $retval .= \"nucl \";\n        } else\
+  \ {\n            $retval .= \"guess \";\n        }\n    }\n    $retval .= \"-entry\
+  \ $opt_s \"             if (defined $opt_s);\n    $retval .= \"-entry_batch $opt_i\
+  \ \"       if (defined $opt_i);\n    $retval .= \"-line_length $opt_l \"       if\
+  \ (defined $opt_l);\n    $retval .= \"-out $opt_o \"               if (defined $opt_o);\n\
+  \    $retval .= \"-pig $opt_P \"               if (defined $opt_P);\n    if (defined\
+  \ $opt_D) {\n        $retval .= \"-entry all -outfmt \";\n        if ($opt_D eq\
+  \ '1') {\n            $retval .= \"\\%f \";\n        } elsif ($opt_D eq '2') {\n\
+  \            $retval .= \"\\%g \";\n        } elsif ($opt_D eq '3') {\n        \
+  \    $retval .= \"\\%a \";\n        } else {\n            die \"Invalid argument\
+  \ to -D\\n\";\n        }\n    }\n    $retval .= &convert_sequence_locations($opt_L,\
+  \ \"range\") if ($opt_L);\n    $retval .= &convert_strand($opt_S) if (defined $opt_S);\n\
+  \    if (defined $opt_T) {\n        #print STDERR \"Warning: -T option is not supported,\
+  \ please use \" .\n        #    \"the -outfmt option to blastdbcmd with \\%T, \\\
+  %L, or \\%S as an \" .\n        #    \"argument\\n\";\n        $retval .= \"-outfmt\
+  \ \\\"NCBI Taxonomy id: \\%T; Common name: \\%L; \";\n        $retval .= \"Scientific\
+  \ name: \\%S\\\" \";\n    }\n    if (defined $opt_I and (length($opt_I) == 0 or\
+  \ $opt_I =~ /t/i)) {\n        $retval .= \"-info \";\n    }\n    if (defined $opt_a\
+  \ and (length($opt_a) == 0 or $opt_a =~ /t/i)) {\n        $retval .= \"-get_dups\
+  \ \";\n    }\n    if (defined $opt_t and (length($opt_t) == 0 or $opt_t =~ /t/i))\
+  \ {\n        $retval .= \"-target_only \";\n    }\n    if (defined $opt_c and (length($opt_c)\
+  \ == 0 or $opt_c =~ /t/i)) {\n        $retval .= \"-ctrl_a \";\n    }\n    return\
+  \ $retval;\n}\n\nsub handle_formatdb\n{\n    my $print_only = shift;\n    my $path\
+  \ = DEFAULT_PATH;\n    my ($opt_B, $opt_F, $opt_L, $opt_T, $opt_V, $opt_a, $opt_b,\
+  \ $opt_e, $opt_i,\n        $opt_l, $opt_n, $opt_o, $opt_p, $opt_s, $opt_t, $opt_v);\n\
+  \n    GetOptions(\"<>\"             => sub { $application = shift; },\n        \
+  \       \"print_only!\"    => $print_only,\n               \"path=s\"         =>\
+  \ \\$path,\n               \"B=s\"            => \\$opt_B,\n               \"F=s\"\
+  \            => \\$opt_F,\n               \"L=s\"            => \\$opt_L,\n    \
+  \           \"T=s\"            => \\$opt_T,\n               \"V:s\"            =>\
+  \ \\$opt_V,\n               \"a:s\"            => \\$opt_a,\n               \"b:s\"\
+  \            => \\$opt_b,\n               \"e:s\"            => \\$opt_e,\n    \
+  \           \"i=s\"            => \\$opt_i,\n               \"l=s\"            =>\
+  \ \\$opt_l,\n               \"n=s\"            => \\$opt_n,\n               \"o:s\"\
+  \            => \\$opt_o,\n               \"p:s\"            => \\$opt_p,\n    \
+  \           \"s:s\"            => \\$opt_s,\n               \"t=s\"            =>\
+  \ \\$opt_t,\n               \"v=i\"            => \\$opt_v\n               );\n\n\
+  \    my $retval = $path;\n    if (defined $opt_L) {\n        $retval .= \"/blastdb_aliastool\"\
+  ;\n        die \"-i is required\\n\" unless (defined $opt_i);\n        die \"-F\
+  \ is required\\n\" unless (defined $opt_F);\n    } else {\n        $retval .= \"\
+  /makeblastdb\";\n    }\n    $retval .= &add_exe_extension();\n\n    if (defined\
+  \ $opt_B) {\n        die \"-F option must be specified with -B\\n\" unless (defined\
+  \ $opt_F);\n        $retval = $path . \"/blastdb_aliastool\";\n        $retval .=\
+  \ &add_exe_extension();\n        $retval .= \"-gi_file_in $opt_F -gi_file_out $opt_B\"\
+  ;\n        return $retval;\n    }\n\n    $retval .= \"-title \\\"$opt_t\\\" \" \
+  \        if (defined $opt_t);\n    if (defined $opt_p) {\n        $retval .= \"\
+  -dbtype \";\n        if ((length($opt_p) == 0 or $opt_p =~ /t/i)) {\n          \
+  \  $retval .= \"prot \";\n        } else {\n            $retval .= \"nucl \";\n\
+  \        }\n    }\n    if ($retval =~ /blastdb_aliastool/) {\n        $retval .=\
+  \ \"-out $opt_L \"               if (defined $opt_L);\n        if (defined $opt_i\
+  \ and not defined $opt_n) {\n            $retval .= &create_db_argument($opt_i);\n\
+  \        }\n        # there's no -n in blastdb_aliastool, as we copy the argument\
+  \ value\n        # verbatim into the DBLIST field of the alias file, so we make\n\
+  \        # formatdb's -n option tool override -i\n        $retval .= &create_db_argument($opt_n)\
+  \  if (defined $opt_n);\n    } else {\n        $retval .= \"-out $opt_n \"     \
+  \          if (defined $opt_n);\n        $retval .= \"-in $opt_i \"            \
+  \    if (defined $opt_i);\n    }\n    $retval .= \"-gilist $opt_F \"           \
+  \ if (defined $opt_F);\n    $retval .= \"-logfile $opt_l \"           if (defined\
+  \ $opt_l);\n    $retval .= \"-taxid-map $opt_T \"           if (defined $opt_T);\n\
+  \n    if (defined $opt_o and (length($opt_o) == 0 or $opt_o =~ /t/i)) {\n      \
+  \  $retval .= \"-parse_seqids \";\n    }\n    if (defined $opt_a) {\n        print\
+  \ STDERR \"Warning: -a option is not supported\\n\";\n    }\n    if (defined $opt_b)\
+  \ {\n        print STDERR \"Warning: -b option is not supported\\n\";\n    }\n \
+  \   if (defined $opt_e) {\n        print STDERR \"Warning: -e option is not supported\\\
+  n\";\n    }\n    if (defined $opt_s) {\n        print STDERR \"Warning: -s option\
+  \ is not supported\\n\";\n    }\n    if (defined $opt_V) {\n        print STDERR\
+  \ \"Warning: -V option is not supported\\n\";\n    }\n    if (defined $opt_v) {\n\
+  \        print STDERR \"Warning: -v option is not supported, please use \" .\n \
+  \           \"the -max_file_sz option to makeblastdb\\n\";\n    }\n    return $retval;\n\
+  }\n__END__\n\n=head1 NAME\n\nB<legacy_blast.pl> - Convert BLAST command line invocations\
+  \ from NCBI C \ntoolkit's implementation to NCBI C++ toolkit's implementation.\n\
+  \n=head1 SYNOPSIS\n\nlegacy_blast.pl <C toolkit command line program and arguments>\
+  \ [--print_only] \n[--path /path/to/binaries] \nlegacy_blast.pl [--version]\nlegacy_blast.pl\
+  \ [--help]\n\n=head1 OPTIONS\n\n=over 2\n\n=item B<--path>\n\nUse the provided path\
+  \ as the location of the BLAST binaries to execute/print\n(default: /usr/bin).\n\
+  \n=item B<--print_only>\n\nPrint the equivalent command line option instead of running\
+  \ the command\n(default: false).\n\n=item B<--version>\n\nPrints this script's version.\
+  \ Must be invoked as the first and only argument to\nthis script.\n\n=back\n\n=head1\
+  \ DESCRIPTION\n\nThis script converts and runs the equivalent NCBI C toolkit command\
+  \ line BLAST \nprogram and arguments provided to it (whenever possible) to NCBI\
+  \ C++ tookit \nBLAST programs. Note that to specify options to this script they\
+  \ B<MUST> use 2\ndashes to prefix the options B<AND> be listed at the end of the\
+  \ command line\ninvocation to convert.\n\n=head1 EXIT CODES\n\nThis script returns\
+  \ 0 on success and a non-zero value on errors.\n\n=head1 BUGS\n\nPlease report them\
+  \ to <blast-help@ncbi.nlm.nih.gov>\n\n=head1 COPYRIGHT\n\nSee PUBLIC DOMAIN NOTICE\
+  \ included at the top of this script.\n\n=cut\n"
+generated_using:
+- --help

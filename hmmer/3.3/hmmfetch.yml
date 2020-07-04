@@ -1,4 +1,4 @@
-!Command
+&id001 !Command
 positional: []
 named:
 - !Flag
@@ -28,7 +28,60 @@ named:
   optional: true
 command:
 - hmmfetch
-subcommands: []
+parent:
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: key
+    optional: false
+  named: []
+  command:
+  - hmmfetch
+  - hmmfile
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: hmmfetch [options] <hmmfile> <key>         (retrieves HMM named\
+    \ <key>)\nUsage: hmmfetch [options] -f <hmmfile> <keyfile>  (retrieves all HMMs\
+    \ in <keyfile>)\nUsage: hmmfetch [options] --index <hmmfile>       (indexes <hmmfile>)\n\
+    \nTo see more help on available options, do hmmfetch -h\n\n"
+  generated_using: &id002 []
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: hmmfetch
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: hmmfile
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: key
+    optional: false
+  named: []
+  command:
+  - hmmfetch
+  - key
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: hmmfetch [options] <hmmfile> <key>         (retrieves HMM named\
+    \ <key>)\nUsage: hmmfetch [options] -f <hmmfile> <keyfile>  (retrieves all HMMs\
+    \ in <keyfile>)\nUsage: hmmfetch [options] --index <hmmfile>       (indexes <hmmfile>)\n\
+    \nTo see more help on available options, do hmmfetch -h\n\n"
+  generated_using: *id002
 help_flag: !Flag
   description: ': help; show brief info on version and usage'
   synonyms:
@@ -37,3 +90,15 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "# hmmfetch :: retrieve profile HMM(s) from a file\n# Easel 0.46 (Nov 2019)\n\
+  # Copyright (C) 2019 Howard Hughes Medical Institute.\n# Freely distributed under\
+  \ the BSD open source license.\n# - - - - - - - - - - - - - - - - - - - - - - -\
+  \ - - - - - - - - - - - - -\nUsage: hmmfetch [options] <hmmfile> <key>         (retrieves\
+  \ HMM named <key>)\nUsage: hmmfetch [options] -f <hmmfile> <keyfile>  (retrieves\
+  \ all HMMs in <keyfile>)\nUsage: hmmfetch [options] --index <hmmfile>       (indexes\
+  \ <hmmfile>)\n\nOptions:\n  -h      : help; show brief info on version and usage\n\
+  \  -f      : second cmdline arg is a file of names to retrieve\n  -o <f>  : output\
+  \ HMM to file <f> instead of stdout\n  -O      : output HMM to file named <key>\n\
+  \  --index : index the <hmmfile>, creating <hmmfile>.ssi\n"
+generated_using:
+- -h

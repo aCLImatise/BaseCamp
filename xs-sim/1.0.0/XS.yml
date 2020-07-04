@@ -1,5 +1,10 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: OPTION
+  optional: true
 named:
 - !Flag
   description: verbose mode
@@ -152,6 +157,7 @@ named:
   optional: true
 command:
 - XS
+parent:
 subcommands: []
 help_flag: !Flag
   description: give this help
@@ -161,3 +167,29 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "Usage: XS   [OPTION]... [FILE] \n\nSystem options:\n -h              \
+  \         give this help\n -v                       verbose mode\n\nMain FASTQ options:\n\
+  \ -t  <sequencingType>     type: 1=Roche-454, 2=Illumina, 3=ABI SOLiD, 4=Ion Torrent\n\
+  \ -hf <headerFormat>       header format: 1=Length appendix, 2=Pair End\n -i  n=<instrumentName>\
+  \   the unique instrument name (use n= before name)\n -o                       use\
+  \ the same header in third line of the read\n -ls <lineSize>           static line\
+  \ (bases/quality scores) size\n -ld <minSize>:<maxSize>  dynamic line (bases/quality\
+  \ scores) size\n -n  <numberOfReads>      number of reads per file\n\nDNA options:\n\
+  \ -f  <A>,<C>,<G>,<T>,<N>  symbols frequency\n -rn <numberOfRepeats>    repeats:\
+  \ number (default: 0)\n -ri <repeatsMinSize>     repeats: minimum size\n -ra <repeatsMaxSize>\
+  \     repeats: maximum size\n -rm <mutationRate>       repeats: mutation frequency\n\
+  \ -rr                      repeats: use reverse complement repeats\n\nQuality scores\
+  \ options:\n -qt <assignmentType>     quality scores distribution: 1=uniform, 2=gaussian\n\
+  \ -qf <statsFile>          load file: mean, standard deviation (when: -qt 2)\n -qc\
+  \ <template>           custom template ascii alphabet\n\nFiltering options:\n -eh\
+  \                      excludes the use of headers from output\n -eo           \
+  \           excludes the use of optional headers (+) from output\n -ed         \
+  \             excludes the use of DNA bases from output\n -edb                 \
+  \    excludes '\\n' when DNA bases line size is reached\n -es                  \
+  \    excludes the use of quality scores from output\n\nStochastic options:\n -s\
+  \  <seed>               generation seed\n\n<genFile>                 simulated output\
+  \ file\n\nCommon usage:\n ./XS -v -t 1 -i n=MySeq -ld 30:80 -n 20000 -qt=1 -qc 33,36,39:43\
+  \ File\n ./XS -v -ls 100 -n 10000 -eh -eo -es -edb -f 0.3,0.2,0.2,0.3,0.0 -rn 50\
+  \ -ri 300 -ra 3000 -rm 0.1 File\n\nReport bugs to {pratas,ap,jmr}@ua.pt\n"
+generated_using:
+- -h

@@ -1,106 +1,44 @@
 !Command
-positional: []
-named: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: in.maf
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: species.lst
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: out.maf
+  optional: false
+named:
+- !Flag
+  description: "- If set, keep the first 'a' line in a maf no matter what Useful for\
+    \ mafFrag results where we use this for the gene name"
+  synonyms:
+  - -keepFirst
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - mafSpeciesSubset
-subcommands:
-- !Command
-  positional: []
-  named: []
-  command:
-  - mafSpeciesSubset
-  - in.maf
-  subcommands:
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: out.maf
-      optional: false
-    named: []
-    command:
-    - mafSpeciesSubset
-    - in.maf
-    - species.lst
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: species.lst
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: out.maf
-      optional: false
-    named: []
-    command:
-    - mafSpeciesSubset
-    - in.maf
-    - out.maf
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-  help_flag:
-  usage_flag:
-  version_flag:
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: in.maf
-    optional: false
-  - !Positional
-    description: ''
-    position: 1
-    name: species.lst
-    optional: false
-  - !Positional
-    description: ''
-    position: 2
-    name: out.maf
-    optional: false
-  named: []
-  command:
-  - mafSpeciesSubset
-  - species.lst
-  subcommands: []
-  help_flag:
-  usage_flag:
-  version_flag:
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: in.maf
-    optional: false
-  - !Positional
-    description: ''
-    position: 1
-    name: species.lst
-    optional: false
-  - !Positional
-    description: ''
-    position: 2
-    name: out.maf
-    optional: false
-  named: []
-  command:
-  - mafSpeciesSubset
-  - out.maf
-  subcommands: []
-  help_flag:
-  usage_flag:
-  version_flag:
+parent:
+subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "mafSpeciesSubset - Extract a maf that just has a subset of species.\n\
+  usage:\n   mafSpeciesSubset in.maf species.lst out.maf\nWhere:\n    in.maf is a\
+  \ file where the sequence source are either simple species\n           names, or\
+  \ species.something.  Usually actually it's a genome\n           database name rather\
+  \ than a species before the dot to tell the\n           truth.\n    species.lst\
+  \ is a file with a list of species to keep\n    out.maf is the output.  It will\
+  \ have columns that are all - or . in\n           the reduced species set removed,\
+  \ as well as the lines representing\n           species not in species.lst removed.\n\
+  options:\n   -keepFirst - If set, keep the first 'a' line in a maf no matter what\n\
+  \                Useful for mafFrag results where we use this for the gene name\n\
+  \n"
+generated_using: []

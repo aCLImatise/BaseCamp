@@ -56,9 +56,9 @@ named:
   synonyms:
   - --out_type
   args: !ChoiceFlagArg
-    choices:
-    - gct
-    - gctx
+    choices: !!set
+      gct:
+      gctx:
   optional: true
 - !Flag
   description: 'whether to increase the # of messages reported (default: False)'
@@ -69,6 +69,7 @@ named:
   optional: true
 command:
 - subset
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -79,3 +80,27 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: subset [-h] --in_path IN_PATH [--rid RID [RID ...]]\n         \
+  \     [--cid CID [CID ...]]\n              [--exclude_rid EXCLUDE_RID [EXCLUDE_RID\
+  \ ...]]\n              [--exclude_cid EXCLUDE_CID [EXCLUDE_CID ...]]\n         \
+  \     [--out_name OUT_NAME] [--out_type {gct,gctx}] [--verbose]\n\nsubset.py Extract\
+  \ a subset of data from a GCT(x) file using the command line.\nids can be provided\
+  \ as a list or as a path to a grp file. See subset_gctoo for\nthe equivalent method\
+  \ to be used on GCToo objects.\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --in_path IN_PATH, -i IN_PATH\n                \
+  \        file path to input GCT(x) file (default: None)\n  --rid RID [RID ...] \
+  \  filepath to grp file or string array for including\n                        rows\
+  \ (default: None)\n  --cid CID [CID ...]   filepath to grp file or string array\
+  \ for including\n                        cols (default: None)\n  --exclude_rid EXCLUDE_RID\
+  \ [EXCLUDE_RID ...], -er EXCLUDE_RID [EXCLUDE_RID ...]\n                       \
+  \ filepath to grp file or string array for excluding\n                        rows\
+  \ (default: None)\n  --exclude_cid EXCLUDE_CID [EXCLUDE_CID ...], -ec EXCLUDE_CID\
+  \ [EXCLUDE_CID ...]\n                        filepath to grp file or string array\
+  \ for excluding\n                        cols (default: None)\n  --out_name OUT_NAME,\
+  \ -o OUT_NAME\n                        what to name the output file (default:\n\
+  \                        ds_subsetted.gct)\n  --out_type {gct,gctx}\n          \
+  \              whether to write output as GCT or GCTx (default: gct)\n  --verbose,\
+  \ -v         whether to increase the # of messages reported\n                  \
+  \      (default: False)\n"
+generated_using:
+- --help

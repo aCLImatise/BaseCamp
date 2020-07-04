@@ -1,4 +1,4 @@
-!Command
+&id001 !Command
 positional: []
 named:
 - !Flag
@@ -16,9 +16,20 @@ named:
   optional: true
 command:
 - pathwaymatcher.py
+parent:
 subcommands:
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: java
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: match-proteoforms
+    optional: false
   named:
   - !Flag
     description: Path to directory with the static mapping files. By default uses
@@ -97,17 +108,68 @@ subcommands:
     synonyms:
     - -T
     - --topLevelPathways
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -jar
+    args: !SimpleFlagArg
+      name: PathwayMatcher.jar
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -gT
     args: !EmptyFlagArg {}
     optional: true
   command:
   - pathwaymatcher.py
   - match-proteoforms
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Missing required option '--input=<input_path>'\nUsage: java -jar PathwayMatcher.jar\
+    \ match-proteoforms [-gT] [-gg] [-gp] [-gu]\n                                \
+    \                      [--mapping=<mapping_path>]\n                          \
+    \                             -i=<input_path>\n                              \
+    \                        [-m=<matchType>]\n                                  \
+    \                    [-o=<output_prefix>]\n                                  \
+    \                    [-r=<range>]\nMatch a list of proteoforms to reactions and\
+    \ pathways\n      --mapping=<mapping_path>\n                             Path\
+    \ to directory with the static mapping files. By\n                           \
+    \    default uses the mapping files integrated in the jar\n                  \
+    \             file.\n  -g, --graph                Create default connection graph\
+    \ according to input type.\n      -gg, --graphGene       Create gene connection\
+    \ graph\n      -gp, --graphProteoform Create proteoform connection graph\n   \
+    \   -gu, --graphUniprot    Create protein connection graph\n  -i, --input=<input_path>\
+    \   Input file with path\n  -m, --matchType=<matchType>\n                    \
+    \         Proteoform match criteria.\n                             Valid values:\
+    \ STRICT, SUPERSET, SUPERSET_NO_TYPES,\n                               SUBSET,\
+    \ SUBSET_NO_TYPES, ONE, ONE_NO_TYPES,\n                               ACCESSION.\n\
+    \                             Default: SUBSET\n  -o, --output=<output_prefix>\n\
+    \                             Path and prefix for the output files: search.tsv\
+    \ (list\n                               of reactions and pathways containing the\
+    \ input),\n                               analysis.tsv (over-representation analysis)\
+    \ and\n                               networks files.\n  -r, --range=<range> \
+    \       Integer range of error for PTM sites.\n                             Default:\
+    \ 0\n  -T, --topLevelPathways     Show Top Level Pathways in the search result.\n"
+  generated_using: &id002
+  - --help
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: java
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: match-genes
+    optional: false
   named:
   - !Flag
     description: Path to directory with the static mapping files. By default uses
@@ -169,17 +231,59 @@ subcommands:
     synonyms:
     - -T
     - --topLevelPathways
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -jar
+    args: !SimpleFlagArg
+      name: PathwayMatcher.jar
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -gT
     args: !EmptyFlagArg {}
     optional: true
   command:
   - pathwaymatcher.py
   - match-genes
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Missing required option '--input=<input_path>'\nUsage: java -jar PathwayMatcher.jar\
+    \ match-genes [-gT] [-gg] [-gp] [-gu]\n                                      \
+    \          [--mapping=<mapping_path>]\n                                      \
+    \          -i=<input_path>\n                                                [-o=<output_prefix>]\n\
+    Match a list of gene names\n      --mapping=<mapping_path>\n                 \
+    \            Path to directory with the static mapping files. By\n           \
+    \                    default uses the mapping files integrated in the jar\n  \
+    \                             file.\n  -g, --graph                Create default\
+    \ connection graph according to input type.\n      -gg, --graphGene       Create\
+    \ gene connection graph\n      -gp, --graphProteoform Create proteoform connection\
+    \ graph\n      -gu, --graphUniprot    Create protein connection graph\n  -i, --input=<input_path>\
+    \   Input file with path\n  -o, --output=<output_prefix>\n                   \
+    \          Path and prefix for the output files: search.tsv (list\n          \
+    \                     of reactions and pathways containing the input),\n     \
+    \                          analysis.tsv (over-representation analysis) and\n \
+    \                              networks files.\n  -T, --topLevelPathways     Show\
+    \ Top Level Pathways in the search result.\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: java
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: match-uniprot
+    optional: false
   named:
   - !Flag
     description: Path to directory with the static mapping files. By default uses
@@ -241,17 +345,60 @@ subcommands:
     synonyms:
     - -T
     - --topLevelPathways
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -jar
+    args: !SimpleFlagArg
+      name: PathwayMatcher.jar
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -gT
     args: !EmptyFlagArg {}
     optional: true
   command:
   - pathwaymatcher.py
   - match-uniprot
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Missing required option '--input=<input_path>'\nUsage: java -jar PathwayMatcher.jar\
+    \ match-uniprot [-gT] [-gg] [-gp] [-gu]\n                                    \
+    \              [--mapping=<mapping_path>]\n                                  \
+    \                -i=<input_path>\n                                           \
+    \       [-o=<output_prefix>]\nMatch a list of UniProt protein accessions\n   \
+    \   --mapping=<mapping_path>\n                             Path to directory with\
+    \ the static mapping files. By\n                               default uses the\
+    \ mapping files integrated in the jar\n                               file.\n\
+    \  -g, --graph                Create default connection graph according to input\
+    \ type.\n      -gg, --graphGene       Create gene connection graph\n      -gp,\
+    \ --graphProteoform Create proteoform connection graph\n      -gu, --graphUniprot\
+    \    Create protein connection graph\n  -i, --input=<input_path>   Input file\
+    \ with path\n  -o, --output=<output_prefix>\n                             Path\
+    \ and prefix for the output files: search.tsv (list\n                        \
+    \       of reactions and pathways containing the input),\n                   \
+    \            analysis.tsv (over-representation analysis) and\n               \
+    \                networks files.\n  -T, --topLevelPathways     Show Top Level\
+    \ Pathways in the search result.\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: java
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: match-ensembl
+    optional: false
   named:
   - !Flag
     description: Path to directory with the static mapping files. By default uses
@@ -313,17 +460,60 @@ subcommands:
     synonyms:
     - -T
     - --topLevelPathways
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -jar
+    args: !SimpleFlagArg
+      name: PathwayMatcher.jar
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -gT
     args: !EmptyFlagArg {}
     optional: true
   command:
   - pathwaymatcher.py
   - match-ensembl
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Missing required option '--input=<input_path>'\nUsage: java -jar PathwayMatcher.jar\
+    \ match-ensembl [-gT] [-gg] [-gp] [-gu]\n                                    \
+    \              [--mapping=<mapping_path>]\n                                  \
+    \                -i=<input_path>\n                                           \
+    \       [-o=<output_prefix>]\nMatch a list of Ensembl protein identifiers\n  \
+    \    --mapping=<mapping_path>\n                             Path to directory\
+    \ with the static mapping files. By\n                               default uses\
+    \ the mapping files integrated in the jar\n                               file.\n\
+    \  -g, --graph                Create default connection graph according to input\
+    \ type.\n      -gg, --graphGene       Create gene connection graph\n      -gp,\
+    \ --graphProteoform Create proteoform connection graph\n      -gu, --graphUniprot\
+    \    Create protein connection graph\n  -i, --input=<input_path>   Input file\
+    \ with path\n  -o, --output=<output_prefix>\n                             Path\
+    \ and prefix for the output files: search.tsv (list\n                        \
+    \       of reactions and pathways containing the input),\n                   \
+    \            analysis.tsv (over-representation analysis) and\n               \
+    \                networks files.\n  -T, --topLevelPathways     Show Top Level\
+    \ Pathways in the search result.\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: java
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: match-vcf
+    optional: false
   named:
   - !Flag
     description: Path to directory with the static mapping files. By default uses
@@ -385,17 +575,59 @@ subcommands:
     synonyms:
     - -T
     - --topLevelPathways
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -jar
+    args: !SimpleFlagArg
+      name: PathwayMatcher.jar
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -gT
     args: !EmptyFlagArg {}
     optional: true
   command:
   - pathwaymatcher.py
   - match-vcf
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Missing required option '--input=<input_path>'\nUsage: java -jar PathwayMatcher.jar\
+    \ match-vcf [-gT] [-gg] [-gp] [-gu]\n                                        \
+    \      [--mapping=<mapping_path>]\n                                          \
+    \    -i=<input_path>\n                                              [-o=<output_prefix>]\n\
+    Match a list of genetic variants in VCF format\n      --mapping=<mapping_path>\n\
+    \                             Path to directory with the static mapping files.\
+    \ By\n                               default uses the mapping files integrated\
+    \ in the jar\n                               file.\n  -g, --graph            \
+    \    Create default connection graph according to input type.\n      -gg, --graphGene\
+    \       Create gene connection graph\n      -gp, --graphProteoform Create proteoform\
+    \ connection graph\n      -gu, --graphUniprot    Create protein connection graph\n\
+    \  -i, --input=<input_path>   Input file with path\n  -o, --output=<output_prefix>\n\
+    \                             Path and prefix for the output files: search.tsv\
+    \ (list\n                               of reactions and pathways containing the\
+    \ input),\n                               analysis.tsv (over-representation analysis)\
+    \ and\n                               networks files.\n  -T, --topLevelPathways\
+    \     Show Top Level Pathways in the search result.\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: java
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: match-chrbp
+    optional: false
   named:
   - !Flag
     description: Path to directory with the static mapping files. By default uses
@@ -457,17 +689,59 @@ subcommands:
     synonyms:
     - -T
     - --topLevelPathways
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -jar
+    args: !SimpleFlagArg
+      name: PathwayMatcher.jar
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -gT
     args: !EmptyFlagArg {}
     optional: true
   command:
   - pathwaymatcher.py
   - match-chrbp
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Missing required option '--input=<input_path>'\nUsage: java -jar PathwayMatcher.jar\
+    \ match-chrbp [-gT] [-gg] [-gp] [-gu]\n                                      \
+    \          [--mapping=<mapping_path>]\n                                      \
+    \          -i=<input_path>\n                                                [-o=<output_prefix>]\n\
+    Match a list of genetic variants as chromosome and base pairs\n      --mapping=<mapping_path>\n\
+    \                             Path to directory with the static mapping files.\
+    \ By\n                               default uses the mapping files integrated\
+    \ in the jar\n                               file.\n  -g, --graph            \
+    \    Create default connection graph according to input type.\n      -gg, --graphGene\
+    \       Create gene connection graph\n      -gp, --graphProteoform Create proteoform\
+    \ connection graph\n      -gu, --graphUniprot    Create protein connection graph\n\
+    \  -i, --input=<input_path>   Input file with path\n  -o, --output=<output_prefix>\n\
+    \                             Path and prefix for the output files: search.tsv\
+    \ (list\n                               of reactions and pathways containing the\
+    \ input),\n                               analysis.tsv (over-representation analysis)\
+    \ and\n                               networks files.\n  -T, --topLevelPathways\
+    \     Show Top Level Pathways in the search result.\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: java
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: match-rsids
+    optional: false
   named:
   - !Flag
     description: Path to directory with the static mapping files. By default uses
@@ -531,15 +805,57 @@ subcommands:
     - --topLevelPathways
     args: !EmptyFlagArg {}
     optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -jar
+    args: !SimpleFlagArg
+      name: PathwayMatcher.jar
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -gT
+    args: !EmptyFlagArg {}
+    optional: true
   command:
   - pathwaymatcher.py
   - match-rsids
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Missing required option '--input=<input_path>'\nUsage: java -jar PathwayMatcher.jar\
+    \ match-rsids [-gT] [-gg] [-gp] [-gu]\n                                      \
+    \          [--mapping=<mapping_path>]\n                                      \
+    \          -i=<input_path>\n                                                [-o=<output_prefix>]\n\
+    Match a list of genetic variants as RsIds\n      --mapping=<mapping_path>\n  \
+    \                           Path to directory with the static mapping files. By\n\
+    \                               default uses the mapping files integrated in the\
+    \ jar\n                               file.\n  -g, --graph                Create\
+    \ default connection graph according to input type.\n      -gg, --graphGene  \
+    \     Create gene connection graph\n      -gp, --graphProteoform Create proteoform\
+    \ connection graph\n      -gu, --graphUniprot    Create protein connection graph\n\
+    \  -i, --input=<input_path>   Input file with path\n  -o, --output=<output_prefix>\n\
+    \                             Path and prefix for the output files: search.tsv\
+    \ (list\n                               of reactions and pathways containing the\
+    \ input),\n                               analysis.tsv (over-representation analysis)\
+    \ and\n                               networks files.\n  -T, --topLevelPathways\
+    \     Show Top Level Pathways in the search result.\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: java
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: match-peptides
+    optional: false
   named:
   - !Flag
     description: Path to directory with the static mapping files. By default uses
@@ -612,15 +928,60 @@ subcommands:
     - --topLevelPathways
     args: !EmptyFlagArg {}
     optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -jar
+    args: !SimpleFlagArg
+      name: PathwayMatcher.jar
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -gT
+    args: !EmptyFlagArg {}
+    optional: true
   command:
   - pathwaymatcher.py
   - match-peptides
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Missing required options [--input=<input_path>, --fasta=<fasta_path>]\n\
+    Usage: java -jar PathwayMatcher.jar match-peptides [-gT] [-gg] [-gp] [-gu]\n \
+    \                                                  [--mapping=<mapping_path>]\n\
+    \                                                   -f=<fasta_path>\n        \
+    \                                           -i=<input_path>\n                \
+    \                                   [-o=<output_prefix>]\nMatch a list of peptides\n\
+    \      --mapping=<mapping_path>\n                             Path to directory\
+    \ with the static mapping files. By\n                               default uses\
+    \ the mapping files integrated in the jar\n                               file.\n\
+    \  -f, --fasta=<fasta_path>   Path and name of the fasta file containing the Proteins\n\
+    \                               where to find the peptides.\n  -g, --graph   \
+    \             Create default connection graph according to input type.\n     \
+    \ -gg, --graphGene       Create gene connection graph\n      -gp, --graphProteoform\
+    \ Create proteoform connection graph\n      -gu, --graphUniprot    Create protein\
+    \ connection graph\n  -i, --input=<input_path>   Input file with path\n  -o, --output=<output_prefix>\n\
+    \                             Path and prefix for the output files: search.tsv\
+    \ (list\n                               of reactions and pathways containing the\
+    \ input),\n                               analysis.tsv (over-representation analysis)\
+    \ and\n                               networks files.\n  -T, --topLevelPathways\
+    \     Show Top Level Pathways in the search result.\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: java
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: match-modified-peptides
+    optional: false
   named:
   - !Flag
     description: Path to directory with the static mapping files. By default uses
@@ -710,13 +1071,59 @@ subcommands:
     - --topLevelPathways
     args: !EmptyFlagArg {}
     optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -jar
+    args: !SimpleFlagArg
+      name: PathwayMatcher.jar
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -gT
+    args: !EmptyFlagArg {}
+    optional: true
   command:
   - pathwaymatcher.py
   - match-modified-peptides
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Missing required options [--input=<input_path>, --fasta=<fasta_path>]\n\
+    Usage: java -jar PathwayMatcher.jar match-modified-peptides [-gT] [-gg] [-gp]\n\
+    \                                                            [-gu]\n         \
+    \                                                   [--mapping=<mapping_\n   \
+    \                                                         path>]\n           \
+    \                                                 -f=<fasta_path>\n          \
+    \                                                  -i=<input_path>\n         \
+    \                                                   [-m=<matchType>]\n       \
+    \                                                     [-o=<output_prefix>]\n \
+    \                                                            [-r=<range>]\nMatch\
+    \ a list of peptides with post translational modifications\n      --mapping=<mapping_path>\n\
+    \                             Path to directory with the static mapping files.\
+    \ By\n                               default uses the mapping files integrated\
+    \ in the jar\n                               file.\n  -f, --fasta=<fasta_path>\
+    \   Path and name of the fasta file containing the Proteins\n                \
+    \               where to find the peptides.\n  -g, --graph                Create\
+    \ default connection graph according to input type.\n      -gg, --graphGene  \
+    \     Create gene connection graph\n      -gp, --graphProteoform Create proteoform\
+    \ connection graph\n      -gu, --graphUniprot    Create protein connection graph\n\
+    \  -i, --input=<input_path>   Input file with path\n  -m, --matchType=<matchType>\n\
+    \                             Proteoform match criteria.\n                   \
+    \          Valid values: STRICT, SUPERSET, SUPERSET_NO_TYPES,\n              \
+    \                 SUBSET, SUBSET_NO_TYPES, ONE, ONE_NO_TYPES,\n              \
+    \                 ACCESSION.\n                             Default: SUBSET\n \
+    \ -o, --output=<output_prefix>\n                             Path and prefix for\
+    \ the output files: search.tsv (list\n                               of reactions\
+    \ and pathways containing the input),\n                               analysis.tsv\
+    \ (over-representation analysis) and\n                               networks\
+    \ files.\n  -r, --range=<range>        Integer range of error for PTM sites.\n\
+    \                             Default: 0\n  -T, --topLevelPathways     Show Top\
+    \ Level Pathways in the search result.\n"
+  generated_using: *id002
 help_flag: !Flag
   description: display this help message
   synonyms:
@@ -732,3 +1139,20 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "\n PathwayMatcher 1.9.1\n\nUsage: java -jar PathwayMatcher.jar [-hv] [COMMAND]\n\
+  Matches the input to reactions and pathways. Creates search.csv with the\nreactions\
+  \ and pathways relevant to the matched entities, and analysis.csv with\nthe over\
+  \ representation analysis.\n  -h, --help      display this help message\n  -v, --version\
+  \   Show version information and exit\nCommands:\n  match-proteoforms        Match\
+  \ a list of proteoforms to reactions and pathways\n  match-genes              Match\
+  \ a list of gene names\n  match-uniprot            Match a list of UniProt protein\
+  \ accessions\n  match-ensembl            Match a list of Ensembl protein identifiers\n\
+  \  match-vcf                Match a list of genetic variants in VCF format\n  match-chrbp\
+  \              Match a list of genetic variants as chromosome and\n            \
+  \                 base pairs\n  match-rsids              Match a list of genetic\
+  \ variants as RsIds\n  match-peptides           Match a list of peptides\n  match-modified-peptides\
+  \  Match a list of peptides with post translational\n                          \
+  \   modifications\n  help                     Displays help information about the\
+  \ specified command\n\n If you like the project, star it on github.\n\n Includes\
+  \ mapping from Reactome v68.\n\n"
+generated_using: *id002

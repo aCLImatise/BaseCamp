@@ -94,6 +94,7 @@ named:
   optional: true
 command:
 - find_homolog_genes.py
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -109,3 +110,46 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "Usage: find_homolog_genes.py [options]\n\nIt finds a list of genes that\
+  \ might homologous (there is a short read which\nmaps on both genes).\n\nOptions:\n\
+  \  --version             show program's version number and exit\n  -h, --help  \
+  \          show this help message and exit\n  --input=INPUT_MAP_FILENAME\n     \
+  \                   The input file in Bowtie MAP format (sorted by read\n      \
+  \                  name) containing the short reads mapped on the\n            \
+  \            transcripts (can be also STDIN).\n  --output=OUTPUT_FILENAME\n    \
+  \                    The output text tab-separated file containing the\n       \
+  \                 candidate homologous genes (the genes are sorted\n           \
+  \             alphabetically on the each line).\n  --reads=READS         The minimum\
+  \ number of reads which map simultaneously\n                        on two genes\
+  \ in order to be considered as homolog\n                        genes. Default is\
+  \ 1.\n  --output_offending_pair_reads=OUTPUT_OFFENDING_PAIR_READS_FILENAME\n   \
+  \                     The output text file containing the reads names (and\n   \
+  \                     its mate) which mapp simultaneously on transcripts\n     \
+  \                   from at least two genes.\n  --input_exons=EXONS_FILENAME\n \
+  \                       Database with exons position on chromosomes, e.g.\n    \
+  \                    'more_exons_ensembl.txt'. This is used for filtering\n    \
+  \                    the UTRs extensions by removing any extension which\n     \
+  \                   overlaps with any exons from the database. This is\n       \
+  \                 optional.\n  --filter=FILTER_FILENAME\n                      \
+  \  Input file which contain a pattern for genes which\n                        should\
+  \ be ignored/skipped from the analysis.\n  --d0                  If it set then\
+  \ only the alignments of a read are taken\n                        into consideration\
+  \ which are at maximum zero\n                        mismatches away. This expects\
+  \ that the input has 4\n                        columns instead of 3, and the fourth\
+  \ column contains\n                        the mismatches from Bowtie.\n  --d1 \
+  \                 If it set then only the alignments of a read are taken\n     \
+  \                   into consideration which are at maximum one mismatch\n     \
+  \                   away. This works only for maximum two mismatches. This\n   \
+  \                     expects that the input has 4 columns instead of 3, and\n \
+  \                       the fourth column contains the mismatches from Bowtie.\n\
+  \  --output_saved_from_pseudogenes=OUTPUT_SAVED_FROM_PSEUDOGENES_FILENAME\n    \
+  \                    A file containing paths to candidate fusion genes and\n   \
+  \                     transcripts together with the ids/names of supporting\n  \
+  \                      reads.\n  --input_pseudogenes=INPUT_PSEUDOGENES_FILENAME\n\
+  \                        The input database with gene ids of the pseudogenes.\n\
+  \  -p PROCESSES, --processes=PROCESSES\n                        Number of parallel\
+  \ processes/CPUs to be used for\n                        computations. In case of\
+  \ value 0 then the program will\n                        use all the CPUs which\
+  \ are found. The default value is\n                        0.\n"
+generated_using:
+- --help

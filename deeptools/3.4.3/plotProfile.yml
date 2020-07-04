@@ -90,13 +90,13 @@ named:
   synonyms:
   - --averageType
   args: !ChoiceFlagArg
-    choices:
-    - mean
-    - median
-    - min
-    - max
-    - std
-    - sum
+    choices: !!set
+      mean:
+      min:
+      sum:
+      std:
+      median:
+      max:
   optional: true
 - !Flag
   description: 'Plot height in cm. (default: 7)'
@@ -123,13 +123,13 @@ named:
   synonyms:
   - --plotType
   args: !ChoiceFlagArg
-    choices:
-    - lines
-    - fill
-    - se
-    - std
-    - overlapped_lines
-    - heatmap
+    choices: !!set
+      lines:
+      fill:
+      std:
+      se:
+      heatmap:
+      overlapped_lines:
   optional: true
 - !Flag
   description: "List of colors to use for the plotted lines (N.B., not applicable\
@@ -253,18 +253,18 @@ named:
   synonyms:
   - --legendLocation
   args: !ChoiceFlagArg
-    choices:
-    - best
-    - upper-right
-    - upper-left
-    - upper-center
-    - lower-left
-    - lower-right
-    - lower-center
-    - center
-    - center-left
-    - center-right
-    - none
+    choices: !!set
+      upper-right:
+      lower-left:
+      center:
+      upper-center:
+      best:
+      center-right:
+      lower-center:
+      center-left:
+      none:
+      upper-left:
+      lower-right:
   optional: true
 - !Flag
   description: 'The default is to plot all groups of regions by sample. Using this
@@ -292,6 +292,7 @@ named:
   optional: true
 command:
 - plotProfile
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -307,3 +308,149 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: plotProfile [--matrixFile MATRIXFILE] --outFileName OUTFILENAME\n\
+  \                   [--outFileSortedRegions FILE]\n                   [--outFileNameData\
+  \ OUTFILENAMEDATA] [--dpi DPI]\n                   [--kmeans KMEANS] [--hclust HCLUST]\
+  \ [--silhouette] [--help]\n                   [--version] [--averageType {mean,median,min,max,std,sum}]\n\
+  \                   [--plotHeight PLOTHEIGHT] [--plotWidth PLOTWIDTH]\n        \
+  \           [--plotType {lines,fill,se,std,overlapped_lines,heatmap}]\n        \
+  \           [--colors COLORS [COLORS ...]]\n                   [--numPlotsPerRow\
+  \ NUMPLOTSPERROW]\n                   [--clusterUsingSamples CLUSTERUSINGSAMPLES\
+  \ [CLUSTERUSINGSAMPLES ...]]\n                   [--startLabel STARTLABEL] [--endLabel\
+  \ ENDLABEL]\n                   [--refPointLabel REFPOINTLABEL]\n              \
+  \     [--labelRotation LABEL_ROTATION]\n                   [--regionsLabel REGIONSLABEL\
+  \ [REGIONSLABEL ...]]\n                   [--samplesLabel SAMPLESLABEL [SAMPLESLABEL\
+  \ ...]]\n                   [--plotTitle PLOTTITLE] [--yAxisLabel YAXISLABEL]\n\
+  \                   [--yMin YMIN [YMIN ...]] [--yMax YMAX [YMAX ...]]\n        \
+  \           [--legendLocation {best,upper-right,upper-left,upper-center,lower-left,lower-right,lower-center,center,center-left,center-right,none}]\n\
+  \                   [--perGroup] [--plotFileFormat] [--verbose]\n\nThis tool creates\
+  \ a profile plot for scores over sets of genomic regions.\nTypically, these regions\
+  \ are genes, but any other regions defined in BED will\nwork. A matrix generated\
+  \ by computeMatrix is required.\n\nRequired arguments:\n  --matrixFile MATRIXFILE,\
+  \ -m MATRIXFILE\n                        Matrix file from the computeMatrix tool.\
+  \ (default:\n                        None)\n  --outFileName OUTFILENAME, -out OUTFILENAME,\
+  \ -o OUTFILENAME\n                        File name to save the image to. The file\
+  \ ending will\n                        be used to determine the image format. The\
+  \ available\n                        options are: \"png\", \"eps\", \"pdf\" and\
+  \ \"svg\", e.g.,\n                        MyHeatmap.png. (default: None)\n\nOutput\
+  \ options:\n  --outFileSortedRegions FILE\n                        File name into\
+  \ which the regions are saved after\n                        skipping zeros or min/max\
+  \ threshold values. The order\n                        of the regions in the file\
+  \ follows the sorting order\n                        selected. This is useful, for\
+  \ example, to generate\n                        other heatmaps while keeping the\
+  \ sorting of the first\n                        heatmap. Example: Heatmap1sortedRegions.bed\
+  \ (default:\n                        None)\n  --outFileNameData OUTFILENAMEDATA\n\
+  \                        File name to save the data underlying data for the\n  \
+  \                      average profile, e.g. myProfile.tab. (default: None)\n  --dpi\
+  \ DPI             Set the DPI to save the figure. (default: 200)\n\nClustering arguments:\n\
+  \  --kmeans KMEANS       Number of clusters to compute. When this option is\n  \
+  \                      set, the matrix is split into clusters using the\n      \
+  \                  k-means algorithm. Only works for data that is not\n        \
+  \                grouped, otherwise only the first group will be\n             \
+  \           clustered. If more specific clustering methods are\n               \
+  \         required, then save the underlying matrix and run the\n              \
+  \          clustering using other software. The plotting of the\n              \
+  \          clustering may fail with an error if a cluster has\n                \
+  \        very few members compared to the total number or\n                    \
+  \    regions. (default: None)\n  --hclust HCLUST       Number of clusters to compute.\
+  \ When this option is\n                        set, then the matrix is split into\
+  \ clusters using the\n                        hierarchical clustering algorithm,\
+  \ using \"ward\n                        linkage\". Only works for data that is not\
+  \ grouped,\n                        otherwise only the first group will be clustered.\n\
+  \                        --hclust could be very slow if you have >1000 regions.\n\
+  \                        In those cases, you might prefer --kmeans or if more\n\
+  \                        clustering methods are required you can save the\n    \
+  \                    underlying matrix and run the clustering using other\n    \
+  \                    software. The plotting of the clustering may fail with\n  \
+  \                      an error if a cluster has very few members compared to\n\
+  \                        the total number of regions. (default: None)\n  --silhouette\
+  \          Compute the silhouette score for regions. This is only\n            \
+  \            applicable if clustering has been performed. The\n                \
+  \        silhouette score is a measure of how similar a region\n               \
+  \         is to other regions in the same cluster as opposed to\n              \
+  \          those in other clusters. It will be reported in the\n               \
+  \         final column of the BED file with regions. The\n                     \
+  \   silhouette evaluation can be very slow when you have\n                     \
+  \   morethan 100 000 regions. (default: False)\n\nOptional arguments:\n  --help,\
+  \ -h            show this help message and exit\n  --version             show program's\
+  \ version number and exit\n  --averageType {mean,median,min,max,std,sum}\n     \
+  \                   The type of statistic that should be used for the\n        \
+  \                profile. The options are: \"mean\", \"median\", \"min\",\n    \
+  \                    \"max\", \"sum\" and \"std\". (default: mean)\n  --plotHeight\
+  \ PLOTHEIGHT\n                        Plot height in cm. (default: 7)\n  --plotWidth\
+  \ PLOTWIDTH\n                        Plot width in cm. The minimum value is 1 cm.\
+  \ (default:\n                        11)\n  --plotType {lines,fill,se,std,overlapped_lines,heatmap}\n\
+  \                        \"lines\" will plot the profile line based on the\n   \
+  \                     average type selected. \"fill\" fills the region between\n\
+  \                        zero and the profile curve. The fill in color is semi\n\
+  \                        transparent to distinguish different profiles. \"se\"\n\
+  \                        and \"std\" color the region between the profile and the\n\
+  \                        standard error or standard deviation of the data. As\n\
+  \                        in the case of fill, a semi-transparent color is used.\n\
+  \                        \"overlapped_lines\" plots each region's value, one on\n\
+  \                        top of the other. \"heatmap\" plots a summary heatmap.\n\
+  \                        (default: lines)\n  --colors COLORS [COLORS ...]\n    \
+  \                    List of colors to use for the plotted lines (N.B., not\n  \
+  \                      applicable to '--plotType overlapped_lines'). Color\n   \
+  \                     names and html hex strings (e.g., #eeff22) are\n         \
+  \               accepted. The color names should be space separated.\n         \
+  \               For example, --colors red blue green (default: None)\n  --numPlotsPerRow\
+  \ NUMPLOTSPERROW\n                        Number of plots per row (default: 8)\n\
+  \  --clusterUsingSamples CLUSTERUSINGSAMPLES [CLUSTERUSINGSAMPLES ...]\n       \
+  \                 List of sample numbers (order as in matrix), that are\n      \
+  \                  used for clustering by --kmeans or --hclust if not\n        \
+  \                given, all samples are taken into account for\n               \
+  \         clustering. Example: --ClusterUsingSamples 1 3\n                     \
+  \   (default: None)\n  --startLabel STARTLABEL\n                        [only for\
+  \ scale-regions mode] Label shown in the plot\n                        for the start\
+  \ of the region. Default is TSS\n                        (transcription start site),\
+  \ but could be changed to\n                        anything, e.g. \"peak start\"\
+  . Same for the --endLabel\n                        option. See below. (default:\
+  \ TSS)\n  --endLabel ENDLABEL   [only for scale-regions mode] Label shown in the\
+  \ plot\n                        for the region end. Default is TES (transcription\
+  \ end\n                        site). (default: TES)\n  --refPointLabel REFPOINTLABEL\n\
+  \                        [only for reference-point mode] Label shown in the\n  \
+  \                      plot for the reference-point. Default is the same as\n  \
+  \                      the reference point selected (e.g. TSS), but could be\n \
+  \                       anything, e.g. \"peak start\". (default: None)\n  --labelRotation\
+  \ LABEL_ROTATION\n                        Rotation of the X-axis labels in degrees.\
+  \ The default\n                        is 0, positive values denote a counter-clockwise\n\
+  \                        rotation. (default: 0.0)\n  --regionsLabel REGIONSLABEL\
+  \ [REGIONSLABEL ...], -z REGIONSLABEL [REGIONSLABEL ...]\n                     \
+  \   Labels for the regions plotted in the heatmap. If more\n                   \
+  \     than one region is being plotted, a list of labels\n                     \
+  \   separated by spaces is required. If a label itself\n                       \
+  \ contains a space, then quotes are needed. For example,\n                     \
+  \   --regionsLabel label_1, \"label 2\". (default: None)\n  --samplesLabel SAMPLESLABEL\
+  \ [SAMPLESLABEL ...]\n                        Labels for the samples plotted. The\
+  \ default is to use\n                        the file name of the sample. The sample\
+  \ labels should\n                        be separated by spaces and quoted if a\
+  \ label\n                        itselfcontains a space E.g. --samplesLabel label-1\n\
+  \                        \"label 2\" (default: None)\n  --plotTitle PLOTTITLE, -T\
+  \ PLOTTITLE\n                        Title of the plot, to be printed on top of\
+  \ the\n                        generated image. Leave blank for no title. (default:\
+  \ )\n  --yAxisLabel YAXISLABEL, -y YAXISLABEL\n                        Y-axis label\
+  \ for the top panel. (default: )\n  --yMin YMIN [YMIN ...]\n                   \
+  \     Minimum value for the Y-axis. Multiple values,\n                        separated\
+  \ by spaces can be set for each profile. If\n                        the number\
+  \ of yMin values is smaller thanthe number of\n                        plots, the\
+  \ values are recycled. (default: None)\n  --yMax YMAX [YMAX ...]\n             \
+  \           Maximum value for the Y-axis. Multiple values,\n                   \
+  \     separated by spaces can be set for each profile. If\n                    \
+  \    the number of yMin values is smaller thanthe number of\n                  \
+  \      plots, the values are recycled. (default: None)\n  --legendLocation {best,upper-right,upper-left,upper-center,lower-left,lower-right,lower-center,center,center-left,center-right,none}\n\
+  \                        Location for the legend in the summary plot. Note that\n\
+  \                        \"none\" does not work for the profiler. (default: best)\n\
+  \  --perGroup            The default is to plot all groups of regions by\n     \
+  \                   sample. Using this option instead plots all samples by\n   \
+  \                     group of regions. Note that this is only useful if you\n \
+  \                       have multiple groups of regions. by sample rather than\n\
+  \                        group. (default: False)\n  --plotFileFormat      Image\
+  \ format type. If given, this option overrides the\n                        image\
+  \ format based on the plotFile ending. The\n                        available options\
+  \ are: \"png\", \"eps\", \"pdf\", \"plotly\"\n                        and \"svg\"\
+  \ (default: None)\n  --verbose             If set, warning messages and additional\
+  \ information\n                        are given. (default: False)\n\nAn example\
+  \ usage is: plotProfile -m <matrix file>\n"
+generated_using:
+- --help

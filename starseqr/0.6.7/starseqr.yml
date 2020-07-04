@@ -55,9 +55,9 @@ named:
   synonyms:
   - --subset_type
   args: !ChoiceFlagArg
-    choices:
-    - either
-    - both
+    choices: !!set
+      either:
+      both:
   optional: true
 - !Flag
   description: assembler to use
@@ -65,8 +65,8 @@ named:
   - -a
   - --as_type
   args: !ChoiceFlagArg
-    choices:
-    - velvet
+    choices: !!set
+      velvet:
   optional: true
 - !Flag
   description: keep read duplicates. Use for PCR data or with molecular tags
@@ -94,6 +94,22 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: fastq.gz 1(.gz)
+  synonyms:
+  - '-1'
+  - --fastq1
+  args: !SimpleFlagArg
+    name: FASTQ1
+  optional: true
+- !Flag
+  description: fastq.gz 2(.gz)
+  synonyms:
+  - '-2'
+  - --fastq2
+  args: !SimpleFlagArg
+    name: FASTQ2
+  optional: true
+- !Flag
   description: path to STAR index folder
   synonyms:
   - -i
@@ -102,10 +118,14 @@ named:
     name: STAR_INDEX
   optional: true
 - !Flag
-  description: '{0,1}, --mode {0,1} STAR alignment mode. 0=More-specific, 1=More-Sensitive'
+  description: STAR alignment mode. 0=More-specific, 1=More-Sensitive
   synonyms:
   - -m
-  args: !EmptyFlagArg {}
+  - --mode
+  args: !ChoiceFlagArg
+    choices: !!set
+      '1':
+      '0':
   optional: true
 - !Flag
   description: chimeric junctions file produced by STAR
@@ -134,6 +154,7 @@ named:
   optional: true
 command:
 - starseqr.py
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -144,3 +165,36 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: starseqr.py [-h] -1 FASTQ1 -2 FASTQ2 [-i STAR_INDEX] [-m {0,1}]\n\
+  \                   [-sj STAR_JXNS] [-ss STAR_SAM] [-sb STAR_BAM] -p PREFIX -r\n\
+  \                   FASTA -g GTF [-l LIBRARY] [-t THREADS] [-b BED_FILE]\n     \
+  \              [--subset_type {either,both}] [-a {velvet}] [--keep_dups]\n     \
+  \              [--keep_gene_dups] [--keep_mito] [-v]\n\nSTAR-SEQR Parameters:\n\n\
+  optional arguments:\n  -h, --help            show this help message and exit\n \
+  \ -p PREFIX, --prefix PREFIX\n                        prefix to name files. Can\
+  \ be string or /path/to/string\n  -r FASTA, --fasta FASTA\n                    \
+  \    indexed fasta (.fa)\n  -g GTF, --gtf GTF     gtf file. (.gtf)\n  -l LIBRARY,\
+  \ --library LIBRARY\n                        salmon library type(A, ISF, ISR, etc)\n\
+  \  -t THREADS, --threads THREADS\n                        Number of threads to use\
+  \ for STAR and STAR-SEQR. 4-12\n                        recommended.\n  -b BED_FILE,\
+  \ --bed_file BED_FILE\n                        Bed file to subset analysis\n  --subset_type\
+  \ {either,both}\n                        allow fusions to pass with either one breakend\
+  \ in bed\n                        file or require both. Must use -b.\n  -a {velvet},\
+  \ --as_type {velvet}\n                        assembler to use\n  --keep_dups  \
+  \         keep read duplicates. Use for PCR data or with\n                     \
+  \   molecular tags\n  --keep_gene_dups      allow internal gene duplications to\
+  \ be considered\n  --keep_mito           allow RNA fusions to contain at least one\
+  \ breakpoint\n                        from Mitochondria\n  -v, --verbose       \
+  \  verbose level... repeat up to three times.\n\nDo Alignment:\n\n  -1 FASTQ1, --fastq1\
+  \ FASTQ1\n                        fastq.gz 1(.gz)\n  -2 FASTQ2, --fastq2 FASTQ2\n\
+  \                        fastq.gz 2(.gz)\n  -i STAR_INDEX, --star_index STAR_INDEX\n\
+  \                        path to STAR index folder\n  -m {0,1}, --mode {0,1}\n \
+  \                       STAR alignment mode. 0=More-specific, 1=More-Sensitive\n\
+  \nUse Existing Alignment:\n\n  -sj STAR_JXNS, --star_jxns STAR_JXNS\n          \
+  \              chimeric junctions file produced by STAR\n  -ss STAR_SAM, --star_sam\
+  \ STAR_SAM\n                        Chimeric.out.sam file produced by STAR. Either\
+  \ use\n                        this or -sb\n  -sb STAR_BAM, --star_bam STAR_BAM\n\
+  \                        Aligned.sortedByCoord.out.bam file produced by STAR.\n\
+  \                        Must contain chimeric reads with ch tag.\n"
+generated_using:
+- --help

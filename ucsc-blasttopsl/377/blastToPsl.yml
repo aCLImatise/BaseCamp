@@ -12,6 +12,14 @@ positional:
   optional: false
 named:
 - !Flag
+  description: '- n >= 3 prints each line of file after parsing. n >= 4 dumps the
+    result of each query'
+  synonyms:
+  - -verbose
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
   description: n is e-value threshold to filter results. Format can be either an integer,
     double or 1e-10. Default is no filter.
   synonyms:
@@ -20,16 +28,24 @@ named:
     name: n
   optional: true
 - !Flag
-  description: output (includes sequences for blocks)
+  description: '- create PSLX output (includes sequences for blocks)'
   synonyms:
   - -pslx
-  - '- create'
-  args: !SimpleFlagArg
-    name: PSLX
+  args: !EmptyFlagArg {}
   optional: true
 command:
 - blastToPsl
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "blastToPsl - Convert blast alignments to PSLs.\n\nusage:\n   blastToPsl\
+  \ [options] blastOutput psl\n\nOptions:\n  -scores=file - Write score information\
+  \ to this file.  Format is:\n       strands qName qStart qEnd tName tStart tEnd\
+  \ bitscore eVal\n  -verbose=n - n >= 3 prints each line of file after parsing.\n\
+  \               n >= 4 dumps the result of each query\n  -eVal=n n is e-value threshold\
+  \ to filter results. Format can be either\n          an integer, double or 1e-10.\
+  \ Default is no filter.\n  -pslx - create PSLX output (includes sequences for blocks)\n\
+  \nOutput only results of last round from PSI BLAST\n\n"
+generated_using: []

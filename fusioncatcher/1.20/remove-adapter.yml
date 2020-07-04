@@ -2,6 +2,26 @@
 positional: []
 named:
 - !Flag
+  description: The input FASTQ file containing the reads from 5' fragment end (i.e.
+    5'-3' orientation for read 1 and 3'-5' for read 2 which needs to be reversed-
+    complemented).
+  synonyms:
+  - '-1'
+  - --input_1
+  args: !SimpleFlagArg
+    name: INPUT_1_FILENAME
+  optional: true
+- !Flag
+  description: The input FASTQ file containing the reads from 3' fragment end (i.e.
+    5'-3' orientation for read 1 and 3'-5' for read 2 which needs to be reversed-
+    complemented).
+  synonyms:
+  - '-2'
+  - --input_2
+  args: !SimpleFlagArg
+    name: INPUT_2_FILENAME
+  optional: true
+- !Flag
   description: The output FASTQ file where the reads are trimmed.
   synonyms:
   - -f
@@ -126,7 +146,72 @@ named:
   optional: true
 command:
 - remove-adapter.py
+parent:
 subcommands: []
-help_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: remove-adapter.py [options] --input_1 <fastq_file_read_1> --input_2\
+  \ <fastq_file_read_2> --output_2 <fastq_file_1> --output_2 <fastq_file_2> \n\nIt\
+  \ trims (finds and/or removes by trimming) the paired-reads (FASTQ file\nproduced\
+  \ by Illumina Solexa) which overlap and contain the adapter. The\nadapter is found\
+  \ automatically. Also the partial overlapping between a short\nread and the adapter\
+  \ sequence is handled.\n\nOptions:\n  --version             show program's version\
+  \ number and exit\n  -h, --help            show this help message and exit\n  -1\
+  \ INPUT_1_FILENAME, --input_1=INPUT_1_FILENAME\n                        The input\
+  \ FASTQ file containing the reads from 5'\n                        fragment end\
+  \ (i.e. 5'-3' orientation for read 1 and\n                        3'-5' for read\
+  \ 2 which needs to be reversed-\n                        complemented).\n  -2 INPUT_2_FILENAME,\
+  \ --input_2=INPUT_2_FILENAME\n                        The input FASTQ file containing\
+  \ the reads from 3'\n                        fragment end (i.e. 5'-3' orientation\
+  \ for read 1 and\n                        3'-5' for read 2 which needs to be reversed-\n\
+  \                        complemented).\n  -f OUTPUT_1_FILENAME, --output_1=OUTPUT_1_FILENAME\n\
+  \                        The output FASTQ file where the reads are trimmed.\n  -r\
+  \ OUTPUT_2_FILENAME, --output_2=OUTPUT_2_FILENAME\n                        The output\
+  \ FASTQ file where the reads are trimmed.\n  -l LOG_FILENAME, --log=LOG_FILENAME\n\
+  \                        It outputs a detalied statistics of the trimming.\n  -g\
+  \ ALIGNMENT_LOG_FILENAME, --alignment_log=ALIGNMENT_LOG_FILENAME\n             \
+  \           It outputs also the alignment for each found\n                     \
+  \   overlapping.\n  -o READS_OVERLAP, --reads_overlap=READS_OVERLAP\n          \
+  \              The minimum length of the region which is considered\n          \
+  \              an overlap. Default is 10.\n  -n LEN_ADAPTER, --len_adapter=LEN_ADAPTER\n\
+  \                        The length of the adapter which is found automaticaly\n\
+  \                        and further used for trimming. Default is 13.\n  -s SHORTEST_READ,\
+  \ --shortest_read=SHORTEST_READ\n                        The reads stricly shorter\
+  \ than 20 after the adapter\n                        trimming will be removed (i.e.\
+  \ replaced with a read of\n                        length one containing the sequence\
+  \ 'N'). Default is\n                        20.\n  -t THRESHOLD_INFER_ADAPTER, --threshold_infer_adapter=THRESHOLD_INFER_ADAPTER\n\
+  \                        The percentage of reads which should contain the found\n\
+  \                        candidate-adapter (during the automatic adapter-\n    \
+  \                    finding step) in order to be considered a real adapter\n  \
+  \                      and used further for trimming. The range is [0..1].\n   \
+  \                     Default is 0.0001.\n  -i READS_INFER_ADAPTER, --reads_infer_adapter=READS_INFER_ADAPTER\n\
+  \                        The number of first reads which are used for finding\n\
+  \                        automatically the adapter. If it is set to 0 then all\n\
+  \                        the reads from the files are used. Default is 3000000.\n\
+  \  -x TRIM_N, --trim-n=TRIM_N\n                        The number of Ns needed to\
+  \ be found in order the\n                        trimming of Ns (from both reads\
+  \ ends) is done. Default\n                        is 0.\n  -k LINK, --link=LINK\
+  \  The type of link between the input and output file\n                        when\
+  \ there are no changes done. The choices are\n                        ['soft','hard'].\
+  \ Default is 'soft'.\n  -q, --quiet           Do not print status messages to stdout.\n\
+  \  -a AUTHOR, --author=AUTHOR\n                        Daniel Nicorici, E-mail:\
+  \ Daniel.Nicorici@gmail.com\n  -p PROCESSES, --processes=PROCESSES\n           \
+  \             Maximum number of parallel processes/CPUs to be used\n           \
+  \             for computations. In case of value 0 then the program\n          \
+  \              will try to use, if it see fit, all the CPUs which are\n        \
+  \                found. The default value is 0.\n\n\nAuthor: Daniel Nicorici\nEmail:\
+  \ Daniel.Nicorici@gmail.com\nCopyright (c) 2009-2019 Daniel Nicorici\n\n"
+generated_using:
+- --help

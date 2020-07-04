@@ -1,19 +1,15 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - RADpainter
+parent:
 subcommands:
 - !Command
   positional:
   - !Positional
     description: ''
     position: 0
-    name: OPTIONS
-    optional: true
-  - !Positional
-    description: ''
-    position: 1
     name: INPUT.txt
     optional: false
   named:
@@ -50,6 +46,7 @@ subcommands:
   command:
   - RADpainter
   - paint
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: display this help and exit
@@ -60,16 +57,23 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Usage: RADpainter paint [OPTIONS] INPUT.txt\nGenerate a co-ancestry\
+    \ matrix from RAD data\n\n       -h, --help                              display\
+    \ this help and exit\n       -p, --ploidy=N                          ploidy of\
+    \ the species being analysed (default is 2N, i.e. diploid)\n       -c, --chr \
+    \                              output per-chromosome coancestry matrices\n   \
+    \    -n, --run-name                          run-name will be included in the\
+    \ output file name(s)\n\n       -m, --missing2                          (deprecated)\
+    \ output a conancestry matrix with missing data treated\n                    \
+    \                           as if any pair of individuals are equally distant\n\
+    \n\n\nReport bugs to milan.malinsky@unibas.ch\n\n"
+  generated_using: &id002
+  - --help
 - !Command
   positional:
   - !Positional
     description: ''
     position: 0
-    name: OPTIONS
-    optional: true
-  - !Positional
-    description: ''
-    position: 1
     name: INPUT.vcf
     optional: false
   named:
@@ -90,6 +94,7 @@ subcommands:
   command:
   - RADpainter
   - hapsFromVCF
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: display this help and exit
@@ -100,6 +105,20 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "\nUsage: RADpainter hapsFromVCF [OPTIONS] INPUT.vcf\nGenerate a co-ancestry\
+    \ matrix from RAD data\n\n       -h, --help                              display\
+    \ this help and exit\n       -H,   --het-treatment <r|p>             r: assign\
+    \ het bases randomly (default); p: use the phase information in the VCF\n    \
+    \   -F MIN_F                                minimum acceptable inbreeding coefficient\
+    \ (default: F >= -0.3)\n\n\n\nReport bugs to milan.malinsky@unibas.ch\n\n"
+  generated_using: *id002
 help_flag:
 usage_flag:
 version_flag:
+help_text: "Program: RADpainter\nVersion: 0.3.2 r109\nContact: Milan Malinsky [milan.malinsky@unibas.ch]\n\
+  Usage: RADpainter <command> [options]\n\nCommands:\n           paint           Get\
+  \ co-ancestry matrix for fineStructure\n           hapsFromVCF     (experimental)\
+  \ Get the haplotype format input from a VCF file\n                           !NOTE!\
+  \ for now this only works for some VCF formats\n\nReport bugs to milan.malinsky@unibas.ch\n\
+  \n"
+generated_using: *id002

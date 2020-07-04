@@ -26,13 +26,13 @@ named:
   - -s
   - --species
   args: !ChoiceFlagArg
-    choices:
-    - fly
-    - human
-    - mouse
-    - worm
-    - yeast
-    - zebrafish
+    choices: !!set
+      worm:
+      human:
+      mouse:
+      yeast:
+      fly:
+      zebrafish:
   optional: true
 - !Flag
   description: Regular expression that chromosome names have to match. If not specified,
@@ -76,6 +76,7 @@ named:
   optional: true
 command:
 - ensembl_extract_protein_coding_exon_annotations.py
+parent:
 subcommands: []
 help_flag: !Flag
   description: Show this help message and exit.
@@ -91,3 +92,32 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: ensembl_extract_protein_coding_exon_annotations.py [-h] [--version]\n\
+  \                                                          [-a ANNOTATION_FILE]\n\
+  \                                                          -o OUTPUT_FILE\n    \
+  \                                                      [-s {fly,human,mouse,worm,yeast,zebrafish}]\n\
+  \                                                          [-c CHROMOSOME_PATTERN]\n\
+  \                                                          [-f FIELD_NAME]\n   \
+  \                                                       [-l <file>] [-q]\n     \
+  \                                                     [-v]\n\nExtract all exon annotations\
+  \ of protein-coding genes.\n\noptional arguments:\n  -a ANNOTATION_FILE, --annotation-file\
+  \ ANNOTATION_FILE\n                        Path of Ensembl gene annotation file\
+  \ (in GTF format). The file\n                        may be gzip'ed. If set to ``-``,\
+  \ read from ``stdin``.\n  -o OUTPUT_FILE, --output-file OUTPUT_FILE\n          \
+  \              Path of output file. If set to ``-``, print to ``stdout``,\n    \
+  \                    and redirect logging messages to ``stderr``.\n  -s {fly,human,mouse,worm,yeast,zebrafish},\
+  \ --species {fly,human,mouse,worm,yeast,zebrafish}\n                        Species\
+  \ for which to extract genes. (This parameter is ignored\n                     \
+  \   if ``--chromosome-pattern`` is specified.)\n  -c CHROMOSOME_PATTERN, --chromosome-pattern\
+  \ CHROMOSOME_PATTERN\n                        Regular expression that chromosome\
+  \ names have to match.\n                        If not specified, determine pattern\
+  \ based on\n                        ``--species``.\n  -f FIELD_NAME, --field-name\
+  \ FIELD_NAME\n                        Rows in the GTF file that do not contain this\
+  \ value\n                        in the third column are ignored.\n\nHelp:\n  -h,\
+  \ --help            Show this help message and exit.\n  --version             Output\
+  \ the GenomeTools version and exit.\n\nReporting options:\n  -l <file>, --log-file\
+  \ <file>\n                        Path of log file (if specified, report to stdout\
+  \ AND file.\n  -q, --quiet           Only output errors and warnings.\n  -v, --verbose\
+  \         Enable verbose output. Ignored if --quiet is specified.\n"
+generated_using:
+- --help

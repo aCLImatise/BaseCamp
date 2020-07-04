@@ -254,6 +254,7 @@ named:
   optional: true
 command:
 - pourRNA
+parent:
 subcommands: []
 help_flag: !Flag
   description: Print help and exit
@@ -270,3 +271,118 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "pourRNA 1.2.0\n\nExplore RNA energy landscapes\n\nUsage: pourRNA [OPTIONS]...\n\
+  \npourRNA takes an RNA sequence as input and explores the landscape topology\nlocally.\
+  \ This means the flooding algorithm will be applied for each gradient\nbasin. The\
+  \ partition function for the basin and also for the transitions to\nneighbored minima\
+  \ will be calculated during the flooding. This approach\nconsumes more computations\
+  \ than global flooding, because the contact surface\nfor two neighbored states is\
+  \ calculated twice. The advantage of pourRNA is,\nthat the filtering techniques\
+  \ can be calculated locally. The filters are used\nto prune non-relevant transitions\
+  \ directly after flooding a gradient basin. As\na result, the transition rates for\
+  \ the filtered landscape topology can be\ncalculated faster than with global approaches.\
+  \ The advantage increases with\nincreasing size of the energy landscape.\n\n\n \
+  \ -h, --help                    Print help and exit\n  -V, --version           \
+  \      Print version and exit\n\nGeneral Options:\n      --sequence=STRING     \
+  \    The RNA sequence of the molecule\n                                    (default=`ACUGUAUGCGCGU')\n\
+  \      --start-structure=STRING  the start structure of the exploration defining\n\
+  \                                  the first gradient basin; defaults to the\n \
+  \                                 open chain\n\n      --start-structure-file=STRING\n\
+  \                                File with start structures (one per line)\n\n \
+  \     --final-structure=STRING  the final structure of the exploration defining\n\
+  \                                  the last gradient basin\n\n      --max-threads=INT\
+  \         Sets the maximum number of threads for\n                             \
+  \     parallelized computation.\n\n      --skip-diagonal           Skip the computation\
+  \ of the diagonal of the\n                                  rate matrix (it can\
+  \ be skipped because some\n                                  post-processing tools\
+  \ like treekin compute it\n                                  per default).  (default=off)\n\
+  \nFilter:\n      --filter-best-k=INT       reduces outgoing transitions to the best\
+  \ K for\n                                  each gradient basin\n\n      --dynamic-best-k\
+  \          Increases K if the MFE structure is not\n                           \
+  \       explored.\n                                    (default=off)\n      --max-neigh-e=DOUBLE\
+  \      reduces outgoing transitions to the neighbored\n                        \
+  \          minima, for which the energy is lower than\n                        \
+  \          the energy of the current minimum plus the\n                        \
+  \          filter value. (E(neighbored minimum) <\n                            \
+  \      E(current minimum) + filterValue) for each\n                            \
+  \      gradient basin.\n\n      --max-to-queue=INT        Sets the maximum number\
+  \ of states to be stored\n                                  in the priority queue\
+  \ of the flooder.\n\n      --max-to-hash=INT         Sets the maximum number of\
+  \ states to be hashed\n                                  for a gradient walk.\n\n\
+  \      --dynamic-max-to-hash     Sets the dynamicMaxToHash variable for\n      \
+  \                            estimating the maximal number of states to be\n   \
+  \                               hashed in a gradient walk, by considering the\n\
+  \                                  maximal available physical memory and the\n \
+  \                                 number of threads. This reduces the\n        \
+  \                          probability of swapping.\n                          \
+  \          (default=off)\n      --max-energy=DOUBLE       Sets the maximum energy\
+  \ that a state is allowed\n                                  to have to be considered\
+  \ by the flooder (in\n                                  kcal/mol).\n           \
+  \                         (default=`5')\n      --delta-e=DOUBLE          Set the\
+  \ maximum energy difference that states\n                                  in a\
+  \ basin can have w.r.t. the local minimum\n                                  (in\
+  \ kcal/mol).\n                                    (default=`65536')\n      --max-bp-dist-add=INT\
+  \     Increases the maximum base pair distance for\n                           \
+  \       direct neighbor minima to be explored. Needs\n                         \
+  \         a start structure and a final structure in\n                         \
+  \         order to work. For all discovered minima m\n                         \
+  \         holds: bp_dist(m, start-structure) +\n                               \
+  \   bp_dist(m, final-structure) <\n                                  d(start-structure,\
+  \ final-structure) +\n                                  maxBPdist_add.\n       \
+  \                           If this parameter is given, the explorative\n      \
+  \                            flooding will not stop at the final\n             \
+  \                     structure! Instead\n                                  it will\
+  \ explore all minima on the direct path\n                                  and at\
+  \ its borders. This helps to evaluate\n                                  optimal\
+  \ refolding paths\n                                  in a post-processing step.\n\
+  \                                    (default=`65536')\n\nRNA model parameters:\n\
+  \  -T, --temperature=DOUBLE      Set the temperature for the free energy\n     \
+  \                             calculation (in °C). (If \"T\" is set and\n      \
+  \                            \"B\" not, \"B\" is equals \"T\").\n              \
+  \                      (default=`37')\n  -G, --gas-constant=DOUBLE     Set the gas\
+  \ constant in [kcal/(K*mol)]. You\n                                  need this in\
+  \ order to compare the rate matrix\n                                  with the results\
+  \ of other tools.\n                                  ViennaRNA package: 0.00198717\
+  \ kcal/(K*mol)\n                                  Barriers:          0.00198717\
+  \ kcal/(K*mol)\n                                  ELL Library:       0.0019871588\
+  \ kcal/(K*mol)\n                                    (default=`0.00198717')\n  -d,\
+  \ --dangling-end=INT        How to treat \"dangling end\" energies for\n       \
+  \                           bases adjacent to helices in free ends and\n       \
+  \                           multi-loops.\n                                    (default=`2')\n\
+  \  -B, --boltzmann-temp=DOUBLE   Set the temperature for the Boltzmann weight\n\
+  \                                  (in °C).\n                                  \
+  \  (default=`37')\n  -M, --energy-model=INT        Set the energy model. 0=Turner\
+  \ model 2004,\n                                  1=Turner model 1999, 2=Andronescu\
+  \ model, 2007\n                                    (default=`0')\n      --move-set=INT\
+  \            Move set: 0 = insertion and deletion, 1 = shift\n                 \
+  \                 moves, 2 = no lonely pair moves.\n                           \
+  \         (default=`0')\n\nOutput files:\n      --transition-prob=STRING  If provided,\
+  \ the transition probability matrix\n                                  will be written\
+  \ to the given file name or\n                                  'STDOUT' when to\
+  \ write to standard output\n\n      --energy-file=STRING      File to store all\
+  \ energies.\n\n      --binary-rates-file=STRING\n                              \
+  \  File to store all rates in a treekin readable\n                             \
+  \     format.\n\n      --binary-rates-file-sparse=STRING\n                     \
+  \           File to store all rates in a sparse binary\n                       \
+  \           format: First value is the number of states\n                      \
+  \            (uint_32), then <uint_32 from>, <uint_32\n                        \
+  \          number of how many value pairs to>, <value\n                        \
+  \          pair <uint_32 to, double rate from, to>> etc.\n\n      --saddle-file=STRING\
+  \      Store all saddles in a CSV file.\n      --barriers-like-output=STRING\n \
+  \                               Output the rates file and the structures in a\n\
+  \                                  format similar to the tool barriers. For the\n\
+  \                                  same prefix is used for both files.\n      --partition-functions=STRING\n\
+  \                                If provided, the partition function matrix will\n\
+  \                                  be written to the given file name.\n\n      --dot-plot=STRING\
+  \         If provided, the dotPlot will be written to the\n                    \
+  \              given file name. The dotPlot contains the\n                     \
+  \             base pair probabilities for all structures in\n                  \
+  \                the (filtered) energy landscape.\n\n      --dot-plot-per-basin=STRING\n\
+  \                                Creates a dotplot for each gradient basin in\n\
+  \                                  the enrgy landscape. It shows the Maximum\n \
+  \                                 Expected Accuracy (MEA) structure in the\n   \
+  \                               upper right triangle and the basin\n           \
+  \                       representative in the lower left triangle.\n\n  -v, --verbose\
+  \                 Verbose.\n                                    (default=off)\n"
+generated_using:
+- --help

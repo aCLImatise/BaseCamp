@@ -1,9 +1,65 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: Bismark
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: BAM
+  optional: true
+- !Positional
+  description: ''
+  position: 2
+  name: files
+  optional: true
 named: []
 command:
 - filter_non_conversion
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "\n  USAGE: filter_non_conversion [options] [Bismark BAM files]\n\n  SYNOPSIS:\n\
+  \n  Filtering incomplete bisulfite conversion from Bismark BAM files. This script\
+  \ examines the methylation calls\n  of reads, or read pairs for paired-end sequencing,\
+  \ and filters out reads that exceed a certain threshold of\n  methylated calls in\
+  \ non-CG context (the default is 3). In the first instance we look for a certain\
+  \ number of\n  methylated non-CG calls, but this could potentially also be extended\
+  \ to a percentage for any given read.\n \n  Please be aware that this kind of filtering\
+  \ is not advisable and will introduce biases if you work with organisms\n  which\
+  \ exhibit any appreciable levels of non-CG methylation (e.g. most plants).\n\n\n\
+  \n*** Please note that for paired-end BAM files the filter_non_conversion script\
+  \ expects Read 1 and Read 2 to\nfollow each other in consecutive lines! If the file\
+  \ has been sorted by position make sure that you resort it\nby read name first (e.g.\
+  \ using samtools sort -n)  ***\n\n\n-s/--single                 Filter single-end\
+  \ Bismark BAM files. If not specified the library type is auto-detected.\n\n-p/--paired\
+  \                 Filter paired-end Bismark BAM files. If not specified the library\
+  \ type is auto-detected.\n\n--threshold [int]           The number of methylated\
+  \ cytosines in non-CG context at which reads or read pairs are filtered\n      \
+  \                      out. For paired-end files either Read 1 or Read 2 can fail\
+  \ the entire read pair. Default: 3.\n\n--percentage_cutoff [int]   Instead of filtering\
+  \ on an absolute count of methylated cytosines in non-CG context (see \n       \
+  \                     '--threshold [int]') this option allows you to define an overall\
+  \ percentage of methylation in\n                            non-CG context (both\
+  \ CHH and CHG) which, if reached or exceeded, results in the read or read\n    \
+  \                        pair being filtered out. For paired-end files either Read\
+  \ 1 or Read 2 can fail the entire read\n                            pair. Also requires\
+  \ a minimum number of cytosines in non-CG context to make confident filtering\n\
+  \                            choices (see '--minimum_count [int]').\n\n--minimum_count\
+  \ [int]       At least this number of cytosines in non-CG context (CHH or CHG) have\
+  \ to be seen in a read\n                            (irrespective of their methylation\
+  \ state) before the '--percentage_cutoff' filter kicks in.\n\t\t\t    Default: 5.\n\
+  \n--consecutive               Non-CG methylation has be found on consecutive non-CGs.\
+  \ Any kind of unmethylated cytosine (in\n                            any context)\
+  \ resets the methylated non-CG counter to 0. Default: OFF.\n\n--samtools_path  \
+  \           The path to your Samtools installation, e.g. /home/user/samtools/. Does\
+  \ not need to be specified\n                            explicitly if Samtools is\
+  \ in the PATH already.\n\n\n--help                      Displays this help text\
+  \ end exits.\n\n--version                   Displays version information and exits.\n\
+  \n\n                                Last modified: 06 September 2017\n\n"
+generated_using:
+- --help

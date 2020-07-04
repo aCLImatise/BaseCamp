@@ -17,39 +17,47 @@ positional:
   optional: false
 named:
 - !Flag
-  description: '100000'
+  description: '- default 100000'
   synonyms:
   - -sampleSize
-  - '- default'
   args: !SimpleFlagArg
     name: N
   optional: true
 - !Flag
-  description: seed for random number generator.  Default 0.
+  description: '- Use given seed for random number generator.  Default 0.'
   synonyms:
   - -seed
-  - '- Use'
   args: !SimpleFlagArg
     name: N
   optional: true
 - !Flag
-  description: error if less than sampleSize reads.  out.fastq will be entire in.fastq
+  description: '- Not an error if less than sampleSize reads.  out.fastq will be entire
+    in.fastq'
   synonyms:
   - -smallOk
-  - '- Not'
-  args: !SimpleFlagArg
-    name: an
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: .stats will be in json rather than text format
+  description: '- out.stats will be in json rather than text format'
   synonyms:
   - -json
-  - '- out'
   args: !EmptyFlagArg {}
   optional: true
 command:
 - fastqStatsAndSubsample
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "fastqStatsAndSubsample v2 - Go through a fastq file doing sanity checks\
+  \ and collecting stats\nand also producing a smaller fastq out of a sample of the\
+  \ data.  The fastq input may be\ncompressed with gzip or bzip2.\nPaired-end samples:\
+  \ run on both files, the seed is fixed so it will chose the paired reads\nusage:\n\
+  \   fastqStatsAndSubsample in.fastq out.stats out.fastq\noptions:\n   -sampleSize=N\
+  \ - default 100000\n   -seed=N - Use given seed for random number generator.  Default\
+  \ 0.\n   -smallOk - Not an error if less than sampleSize reads.  out.fastq will\
+  \ be entire in.fastq\n   -json - out.stats will be in json rather than text format\n\
+  Use /dev/null for out.fastq and/or out.stats if not interested in these outputs\n\
+  \n"
+generated_using: []

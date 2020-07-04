@@ -1,4 +1,4 @@
-!Command
+&id001 !Command
 positional: []
 named:
 - !Flag
@@ -49,7 +49,57 @@ named:
   optional: true
 command:
 - esl-mask
-subcommands: []
+parent:
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: maskfile
+    optional: false
+  named: []
+  command:
+  - esl-mask
+  - sqfile
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: esl-mask [options] <sqfile> <maskfile>\n\nTo see more help on\
+    \ available options, do esl-mask -h\n\n"
+  generated_using: &id002
+  - --help
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: esl-mask
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: sqfile
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: maskfile
+    optional: false
+  named: []
+  command:
+  - esl-mask
+  - maskfile
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: esl-mask [options] <sqfile> <maskfile>\n\nTo see more help on\
+    \ available options, do esl-mask -h\n\n"
+  generated_using: *id002
 help_flag: !Flag
   description: ': help; show brief info on version and usage'
   synonyms:
@@ -58,3 +108,22 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "# esl-mask :: mask sequences in a sequence file\n# Easel 0.45h (June 2018)\n\
+  # Copyright (C) 2018 Howard Hughes Medical Institute\n# Freely distributed under\
+  \ the BSD open source license.\n# - - - - - - - - - - - - - - - - - - - - - - -\
+  \ - - - - - - - - - - - - -\nUsage: esl-mask [options] <sqfile> <maskfile>\n\n where\
+  \ general options are:\n  -h             : help; show brief info on version and\
+  \ usage\n  -o <f>         : output masked sequences to file <f> instead of stdout\n\
+  \  -r             : reverse: mask exclusive of <start>..<end>, not inclusive\n \
+  \ -R             : random access: fetch seqs from ssi-indexed <sqfile>\n  -l   \
+  \          : convert masked residues to lower case\n  -m <c>         : convert masked\
+  \ residues to character <c>\n  -x <n>         : mask additional <n> residues beyond\
+  \ <start>,<end>\n  --informat <s> : specify that input file is in format <s>\n\n\
+  The <seqfile> is a sequence file in any accepted format, such as FASTA.\nIt may\
+  \ be indexed (see esl-sfetch --index) for faster performance.\n\nThe <maskfile>\
+  \ is a space-delimited file; each data line with 3 columns:\n  field 1: <seqname>\
+  \ to fetch from <sqfile>\n  field 2: <start> coordinate for mask operation, 1..n\n\
+  \  field 3: <end> coordinate for mask operation, 1..n\nLines starting with # are\
+  \ comments, and ignored.)\n\n"
+generated_using:
+- -h

@@ -24,12 +24,6 @@ positional:
   optional: false
 named:
 - !Flag
-  description: =8
-  synonyms:
-  - --processes
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: Assume `windows` specifies a genomic coordinate of the form 'chrom:start-stop'
     or 'chrom:start-stop[strand]
   synonyms:
@@ -73,6 +67,7 @@ named:
   optional: true
 command:
 - metaseq-cli
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -83,3 +78,39 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: metaseq-cli [-h] [--fromstring] [--bins BINS] [--output OUTPUT]\n\
+  \                   [--plot] [--processes PROCESSES]\n                   [--fragmentsize\
+  \ FRAGMENTSIZE]\n                   action datafile type windows\n\n    **Still\
+  \ in development -- the API will probably change; this is mostly\n    provided as\
+  \ an example for how to use metaseq in general...**\n\n    Given two files -- one\
+  \ with data to summarize (`datafile`), and another\n    with windows in which that\
+  \ data will be summarized (`windows`) -- return\n    either an average density or\
+  \ a full array of data.\n\n    For example, say \"reads.bam\" is a BAM file of ChIP-seq\
+  \ reads, and\n    \"tsses.bed\" is a BED file of transcript TSSs, +/- 1kb.\n\n \
+  \   The following command will plot the average read density around TSSs, with\n\
+  \    data binned into 100 bins.  Eight CPUs will be used to calculate the full\n\
+  \    array, which will then be averaged to give the final read density.  If each\n\
+  \    feature in \"tsses.bed\" is 2kb, then the bin sizes will be 20bp.  Results\n\
+  \    will be saved to \"avgdensity.txt\" for use by other programs.\n\n    metaseq-cli\
+  \ avgdensity \\\n        reads.bam bam \\\n        tsses.bed \\\n        --bins=100\
+  \ \\\n        --plot \\\n        --output avgdensity.txt \\\n        --processes=8\n\
+  \n    \n\npositional arguments:\n  action                One of (avgdensity, array)\n\
+  \  datafile              Data file to use.\n  type                  Type of data\
+  \ file. One of (bam, bed, bigwig, bigbed,\n                        gff, gtf, vcf)\n\
+  \  windows               Windows within which to get data from `datafile`. Can\n\
+  \                        be a filename of intervals (bam, bed, gff, gtf, vcf),\n\
+  \                        or, if `--fromstring` is specified, a coord of the\n  \
+  \                      form \"chrom:start-stop\", which only works for a single\n\
+  \                        interval')\n\noptional arguments:\n  -h, --help       \
+  \     show this help message and exit\n  --fromstring          Assume `windows`\
+  \ specifies a genomic coordinate of the\n                        form 'chrom:start-stop'\
+  \ or 'chrom:start-stop[strand]\n  --bins BINS           Number of bins to divide\
+  \ each window into\n  --output OUTPUT       Results will be saved to this file;\
+  \ default is to\n                        print to stdout.\n  --plot            \
+  \    Create a simple plot of the results\n  --processes PROCESSES\n            \
+  \            Number of processes to use\n  --fragmentsize FRAGMENTSIZE\n       \
+  \                 Each interval in `datafile` will be extended 3' to a\n       \
+  \                 total of `fragmentsize` bp. This can have a dramatic\n       \
+  \                 smoothing effect.\n"
+generated_using:
+- --help

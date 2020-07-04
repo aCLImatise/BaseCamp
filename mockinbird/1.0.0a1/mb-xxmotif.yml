@@ -61,11 +61,11 @@ named:
   synonyms:
   - --key
   args: !ChoiceFlagArg
-    choices:
-    - occupancy
-    - transitions
-    - coverage
-    - score
+    choices: !!set
+      transitions:
+      occupancy:
+      coverage:
+      score:
   optional: true
 - !Flag
   description: set path to GFF if sites should be removed that overlap with the GFF.
@@ -90,6 +90,7 @@ named:
   optional: true
 command:
 - mb-xxmotif
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -100,3 +101,24 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: mb-xxmotif [-h] [--negSet NEGSET] [--plotPWM PLOTPWM] [--start\
+  \ START]\n                  [--stop STOP] [--width WIDTH]\n                  [--key\
+  \ {occupancy,transitions,coverage,score}]\n                  [--filterGFF FILTERGFF]\
+  \ [--awidth AWIDTH] [--keep-tmp-files]\n                  inputfile genome outdir\
+  \ prefix\n\nSelects sequences from PAR-CLIP sites and pass them for motif search\
+  \ to\nXXmotif.\n\npositional arguments:\n  inputfile             PAR-CLIP file *.table\n\
+  \  genome                path to genome\n  outdir                output directory\n\
+  \  prefix                prefix\n\noptional arguments:\n  -h, --help           \
+  \ show this help message and exit\n  --negSet NEGSET       set path to negative\
+  \ set if available.\n  --plotPWM PLOTPWM     plot top plotPWM PWMs as pdf sequence\
+  \ logos\n  --start START         start index of PAR-CLIP sites\n  --stop STOP  \
+  \         stop index of PAR-CLIP sites\n  --width WIDTH         number of nt +/-\
+  \ the crosslink site\n  --key {occupancy,transitions,coverage,score}\n         \
+  \               set key that is used for PAR-CLIP site ordering\n  --filterGFF FILTERGFF\n\
+  \                        set path to GFF if sites should be removed that\n     \
+  \                   overlap with the GFF. Does not filter by default.\n  --awidth\
+  \ AWIDTH       number of nt that are added to the start/stop indices\n         \
+  \               of the GFF annotations\n  --keep-tmp-files      do not clean up\
+  \ temporary files\n"
+generated_using:
+- --help

@@ -1,17 +1,32 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: transcripts.gtf
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: sample1_hits.sam
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: sample2_hits.sam
+  optional: false
 named:
 - !Flag
-  description: '/--output-dir              write all output files to this directory              [
-    default:     ./ ]'
+  description: 'write all output files to this directory              [ default:     ./
+    ]'
   synonyms:
-  - -o
+  - -o/--output-dir
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: /--labels                  comma-separated list of condition labels
+  description: comma-separated list of condition labels
   synonyms:
-  - -L
+  - -L/--labels
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -22,38 +37,38 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '/--mask-file               ignore all alignment within transcripts
-    in this file  [ default:   NULL ]'
+  description: 'ignore all alignment within transcripts in this file  [ default:   NULL
+    ]'
   synonyms:
-  - -M
+  - -M/--mask-file
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '/--contrast-file           Perform the constrasts specified in this
-    file         [ default:   NULL ]'
+  description: 'Perform the constrasts specified in this file         [ default:   NULL
+    ]'
   synonyms:
-  - -C
+  - -C/--contrast-file
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '/--frag-bias-correct       use bias correction - reference fasta required        [
-    default:   NULL ]'
+  description: 'use bias correction - reference fasta required        [ default:   NULL
+    ]'
   synonyms:
-  - -b
+  - -b/--frag-bias-correct
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: "/--multi-read-correct      use 'rescue method' for multi-reads   \
-    \                [ default:  FALSE ]"
+  description: "use 'rescue method' for multi-reads                   [ default: \
+    \ FALSE ]"
   synonyms:
-  - -u
+  - -u/--multi-read-correct
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '/--num-threads             number of threads used during quantification          [
-    default:      1 ]'
+  description: 'number of threads used during quantification          [ default:      1
+    ]'
   synonyms:
-  - -p
+  - -p/--num-threads
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -71,10 +86,10 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '/--time-series             treat samples as a time-series                        [
-    default:  FALSE ]'
+  description: 'treat samples as a time-series                        [ default:  FALSE
+    ]'
   synonyms:
-  - -T
+  - -T/--time-series
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -99,24 +114,24 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '/--frag-len-mean           average fragment length (unpaired reads
-    only)         [ default:    200 ]'
+  description: 'average fragment length (unpaired reads only)         [ default:    200
+    ]'
   synonyms:
-  - -m
+  - -m/--frag-len-mean
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '/--frag-len-std-dev        fragment length std deviation (unpaired
-    reads only)   [ default:     80 ]'
+  description: 'fragment length std deviation (unpaired reads only)   [ default:     80
+    ]'
   synonyms:
-  - -s
+  - -s/--frag-len-std-dev
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '/--min-alignment-count     minimum number of alignments in a locus
-    for testing   [ default:   10 ]'
+  description: 'minimum number of alignments in a locus for testing   [ default:   10
+    ]'
   synonyms:
-  - -c
+  - -c/--min-alignment-count
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -141,17 +156,17 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '/--verbose                 log-friendly verbose processing (no progress
-    bar)     [ default:  FALSE ]'
+  description: 'log-friendly verbose processing (no progress bar)     [ default:  FALSE
+    ]'
   synonyms:
-  - -v
+  - -v/--verbose
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '/--quiet                   log-friendly quiet processing (no progress
-    bar)       [ default:  FALSE ]'
+  description: 'log-friendly quiet processing (no progress bar)       [ default:  FALSE
+    ]'
   synonyms:
-  - -q
+  - -q/--quiet
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -229,9 +244,9 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: /--upper-quartile-norm     Deprecated, use --library-norm-method                 [    DEPRECATED   ]
+  description: Deprecated, use --library-norm-method                 [    DEPRECATED   ]
   synonyms:
-  - -N
+  - -N/--upper-quartile-norm
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -282,7 +297,73 @@ named:
   optional: true
 command:
 - cuffdiff
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "cuffdiff: unrecognized option '--help'\ncuffdiff v2.2.1 (4237)\n-----------------------------\n\
+  Usage:   cuffdiff [options] <transcripts.gtf> <sample1_hits.sam> <sample2_hits.sam>\
+  \ [... sampleN_hits.sam]\n   Supply replicate SAMs as comma separated lists for\
+  \ each condition: sample1_rep1.sam,sample1_rep2.sam,...sample1_repM.sam\nGeneral\
+  \ Options:\n  -o/--output-dir              write all output files to this directory\
+  \              [ default:     ./ ]\n  -L/--labels                  comma-separated\
+  \ list of condition labels\n  --FDR                        False discovery rate\
+  \ used in testing                  [ default:   0.05 ]\n  -M/--mask-file       \
+  \        ignore all alignment within transcripts in this file  [ default:   NULL\
+  \ ]\n  -C/--contrast-file           Perform the constrasts specified in this file\
+  \         [ default:   NULL ]\n  -b/--frag-bias-correct       use bias correction\
+  \ - reference fasta required        [ default:   NULL ]\n  -u/--multi-read-correct\
+  \      use 'rescue method' for multi-reads                   [ default:  FALSE ]\n\
+  \  -p/--num-threads             number of threads used during quantification   \
+  \       [ default:      1 ]\n  --no-diff                    Don't generate differential\
+  \ analysis files            [ default:  FALSE ]\n  --no-js-tests               \
+  \ Don't perform isoform switching tests                 [ default:  FALSE ]\n  -T/--time-series\
+  \             treat samples as a time-series                        [ default: \
+  \ FALSE ]\n  --library-type               Library prep used for input reads    \
+  \                 [ default:  below ]\n  --dispersion-method          Method used\
+  \ to estimate dispersion models             [ default:  below ]\n  --library-norm-method\
+  \        Method used to normalize library sizes                [ default:  below\
+  \ ]\n\nAdvanced Options:\n  -m/--frag-len-mean           average fragment length\
+  \ (unpaired reads only)         [ default:    200 ]\n  -s/--frag-len-std-dev   \
+  \     fragment length std deviation (unpaired reads only)   [ default:     80 ]\n\
+  \  -c/--min-alignment-count     minimum number of alignments in a locus for testing\
+  \   [ default:   10 ]\n  --max-mle-iterations         maximum iterations allowed\
+  \ for MLE calculation        [ default:   5000 ]\n  --compatible-hits-norm     \
+  \  count hits compatible with reference RNAs only        [ default:   TRUE ]\n \
+  \ --total-hits-norm            count all hits for normalization                \
+  \      [ default:  FALSE ]\n  -v/--verbose                 log-friendly verbose\
+  \ processing (no progress bar)     [ default:  FALSE ]\n  -q/--quiet           \
+  \        log-friendly quiet processing (no progress bar)       [ default:  FALSE\
+  \ ]\n  --seed                       value of random number generator seed      \
+  \           [ default:      0 ]\n  --no-update-check            do not contact server\
+  \ to check for update availability[ default:  FALSE ]\n  --emit-count-tables   \
+  \       print count tables used to fit overdispersion         [    DEPRECATED  \
+  \ ]\n  --max-bundle-frags           maximum fragments allowed in a bundle before\
+  \ skipping [ default: 500000 ]\n  --num-frag-count-draws       Number of fragment\
+  \ generation samples                 [ default:    100 ]\n  --num-frag-assign-draws\
+  \      Number of fragment assignment samples per generation  [ default:     50 ]\n\
+  \  --max-frag-multihits         Maximum number of alignments allowed per fragment\
+  \     [ default: unlim  ]\n  --min-outlier-p              Min replicate p value\
+  \ to admit for testing            [    DEPRECATED   ]\n  --min-reps-for-js-test\
+  \       Replicates needed for relative isoform shift testing  [ default:      3\
+  \ ]\n  --no-effective-length-correction   No effective length correction       \
+  \           [ default:  FALSE ]\n  --no-length-correction       No length correction\
+  \                                  [ default:  FALSE ]\n  -N/--upper-quartile-norm\
+  \     Deprecated, use --library-norm-method                 [    DEPRECATED   ]\n\
+  \  --geometric-norm             Deprecated, use --library-norm-method          \
+  \       [    DEPRECATED   ]\n  --raw-mapped-norm            Deprecated, use --library-norm-method\
+  \                 [    DEPRECATED   ]\n  --poisson-dispersion         Deprecated,\
+  \ use --dispersion-method                   [    DEPRECATED   ]\n\nDebugging use\
+  \ only:\n  --read-skip-fraction         Skip a random subset of reads this size\
+  \               [ default:    0.0 ]\n  --no-read-pairs              Break all read\
+  \ pairs                                  [ default:  FALSE ]\n  --trim-read-length\
+  \           Trim reads to be this long (keep 5' end)              [ default:   none\
+  \ ]\n  --no-scv-correction          Disable SCV correction                     \
+  \           [ default:  FALSE ]\n\nSupported library types:\n\tff-firststrand\n\t\
+  ff-secondstrand\n\tff-unstranded\n\tfr-firststrand\n\tfr-secondstrand\n\tfr-unstranded\
+  \ (default)\n\ttransfrags\n\nSupported dispersion methods:\n\tblind\n\tper-condition\n\
+  \tpoisson\n\tpooled (default)\n\nSupported library normalization methods:\n\tclassic-fpkm\n\
+  \tgeometric (default)\n\tgeometric\n\tquartile\n"
+generated_using:
+- --help

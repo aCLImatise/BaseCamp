@@ -401,8 +401,15 @@ named:
   args: !SimpleFlagArg
     name: n
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -options
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - jackhmmer
+parent:
 subcommands: []
 help_flag: !Flag
   description: ': show brief help on version and usage'
@@ -412,3 +419,67 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "# jackhmmer :: iteratively search a protein sequence against a protein\
+  \ database\n# HMMER 3.3 (Nov 2019); http://hmmer.org/\n# Copyright (C) 2019 Howard\
+  \ Hughes Medical Institute.\n# Freely distributed under the BSD open source license.\n\
+  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\nUsage:\
+  \ jackhmmer [-options] <seqfile> <seqdb>\n\nBasic options:\n  -h     : show brief\
+  \ help on version and usage\n  -N <n> : set maximum number of iterations to <n>\
+  \  [5]  (n>0)\n\nOptions directing output:\n  -o <f>          : direct output to\
+  \ file <f>, not stdout\n  -A <f>          : save multiple alignment of hits to file\
+  \ <f>\n  --tblout <f>    : save parseable table of per-sequence hits to file <f>\n\
+  \  --domtblout <f> : save parseable table of per-domain hits to file <f>\n  --chkhmm\
+  \ <f>    : save HMM checkpoints to files <f>-<iteration>.hmm\n  --chkali <f>   \
+  \ : save alignment checkpoints to files <f>-<iteration>.sto\n  --acc           :\
+  \ prefer accessions over names in output\n  --noali         : don't output alignments,\
+  \ so output is smaller\n  --notextw       : unlimit ASCII text output line width\n\
+  \  --textw <n>     : set max width of ASCII text output lines  [120]  (n>=120)\n\
+  \nOptions controlling scoring system in first iteration:\n  --popen <x>   : gap\
+  \ open probability\n  --pextend <x> : gap extend probability\n  --mx <s>      :\
+  \ substitution score matrix choice (of some built-in matrices)\n  --mxfile <f> \
+  \ : read substitution score matrix from file <f>\n\nOptions controlling reporting\
+  \ thresholds:\n  -E <x>     : report sequences <= this E-value threshold in output\
+  \  [10.0]  (x>0)\n  -T <x>     : report sequences >= this score threshold in output\n\
+  \  --domE <x> : report domains <= this E-value threshold in output  [10.0]  (x>0)\n\
+  \  --domT <x> : report domains >= this score cutoff in output\n\nOptions controlling\
+  \ significance thresholds for inclusion in next round:\n  --incE <x>    : consider\
+  \ sequences <= this E-value threshold as significant\n  --incT <x>    : consider\
+  \ sequences >= this score threshold as significant\n  --incdomE <x> : consider domains\
+  \ <= this E-value threshold as significant\n  --incdomT <x> : consider domains >=\
+  \ this score threshold as significant\n\nOptions controlling acceleration heuristics:\n\
+  \  --max    : Turn all heuristic filters off (less speed, more power)\n  --F1 <x>\
+  \ : Stage 1 (MSV) threshold: promote hits w/ P <= F1  [0.02]\n  --F2 <x> : Stage\
+  \ 2 (Vit) threshold: promote hits w/ P <= F2  [1e-3]\n  --F3 <x> : Stage 3 (Fwd)\
+  \ threshold: promote hits w/ P <= F3  [1e-5]\n  --nobias : turn off composition\
+  \ bias filter\n\nOptions controlling model construction after first iteration:\n\
+  \  --fragthresh <x> : if L <= x*alen, tag sequence as a fragment  [0.5]  (0<=x<=1)\n\
+  \nOptions controlling relative weights in models after first iteration:\n  --wpb\
+  \     : Henikoff position-based weights  [default]\n  --wgsc    : Gerstein/Sonnhammer/Chothia\
+  \ tree weights\n  --wblosum : Henikoff simple filter weights\n  --wnone   : don't\
+  \ do any relative weighting; set all to 1\n  --wid <x> : for --wblosum: set identity\
+  \ cutoff  [0.62]  (0<=x<=1)\n\nOptions controlling effective seq number in models\
+  \ after first iteration:\n  --eent       : adjust eff seq # to achieve relative\
+  \ entropy target\n  --eentexp    : adjust eff seq # to reach rel. ent. target using\
+  \ exp scaling\n  --eclust     : eff seq # is # of single linkage clusters\n  --enone\
+  \      : no effective seq # weighting: just use nseq\n  --eset <x>   : set eff seq\
+  \ # for all models to <x>\n  --ere <x>    : for --eent[exp]: set minimum rel entropy/position\
+  \ to <x>\n  --esigma <x> : for --eent[exp]: set sigma param to <x>\n  --eid <x>\
+  \    : for --eclust: set fractional identity cutoff to <x>\n\nOptions controlling\
+  \ prior strategy in models after first iteration:\n  --pnone    : don't use any\
+  \ prior; parameters are frequencies\n  --plaplace : use a Laplace +1 prior\n\nOptions\
+  \ controlling E value calibration:\n  --EmL <n> : length of sequences for MSV Gumbel\
+  \ mu fit  [200]  (n>0)\n  --EmN <n> : number of sequences for MSV Gumbel mu fit\
+  \  [200]  (n>0)\n  --EvL <n> : length of sequences for Viterbi Gumbel mu fit  [200]\
+  \  (n>0)\n  --EvN <n> : number of sequences for Viterbi Gumbel mu fit  [200]  (n>0)\n\
+  \  --EfL <n> : length of sequences for Forward exp tail tau fit  [100]  (n>0)\n\
+  \  --EfN <n> : number of sequences for Forward exp tail tau fit  [200]  (n>0)\n\
+  \  --Eft <x> : tail mass for Forward exponential tail tau fit  [0.04]  (0<x<1)\n\
+  \nOther expert options:\n  --nonull2     : turn off biased composition score corrections\n\
+  \  -Z <x>        : set # of comparisons done, for E-value calculation\n  --domZ\
+  \ <x>    : set # of significant seqs, for domain E-value calculation\n  --seed <n>\
+  \    : set RNG seed to <n> (if 0: one-time arbitrary seed)  [42]\n  --qformat <s>\
+  \ : assert query <seqfile> is in format <s>: no autodetection\n  --tformat <s> :\
+  \ assert target <seqdb> is in format <s>>: no autodetection\n  --cpu <n>     : number\
+  \ of parallel CPU workers to use for multithreads  [2]\n"
+generated_using:
+- -h

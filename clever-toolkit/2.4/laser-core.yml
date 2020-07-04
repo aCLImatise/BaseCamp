@@ -322,7 +322,105 @@ named:
   optional: true
 command:
 - laser-core
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "laser-core version: v2.4\nUsage: laser-core [options] <reference.fasta(.gz)>\
+  \ <unsplit.1.fastq(.gz)> <unsplit.2.fastq(.gz)>\n       laser-core [options] --single-end\
+  \ <reference.fasta(.gz)> <unsplit.fastq(.gz)>\n\nReads BAM format of aligned split\
+  \ reads from stdin, joins them,\nand outputs a alignments in BAM format to stdout.\n\
+  \n<insert-length-dist>: Insert length distribution as obtained by running\n    \
+  \                  insert-length-histogram on a BAM file.\n\nAllowed options:\n\
+  \  -v [ --verbose ]                      Be (very) verbose. CAUTION: produces a\
+  \ \n                                        lot of output to stderr.\n  --single-end\
+  \                          Process single end reads (instead of \n             \
+  \                           paired end).\n  -X [ --skip_non_xa ]               \
+  \   Skip reads for which other alignments \n                                   \
+  \     exist (i.e. X0+X1>1), but no XA tag is \n                                \
+  \        present. Turn on when using BWA.\n  --max_input_aln arg (=-1)         \
+  \    Maximum number of input anchor \n                                        alignments.\
+  \ If more are given, skip \n                                        this anchor\
+  \ (but not the whole read).\n  -I [ --ignore_wrong_X_tags ]          Do not abort\
+  \ when wrongly set X0/X1 \n                                        tags are encountered.\n\
+  \  -p [ --phred_offset ] arg (=33)       Value to subtract from ASCII code to \n\
+  \                                        get the PHRED quality.\n  -m [ --max_mapping\
+  \ ] arg (=10)        Maximum number of mappings for each \n                    \
+  \                    read in a pair. If more mappings are \n                   \
+  \                     found, the read is skipped.\n  -c [ --cost_threshold ] arg\
+  \ (=115)    Maximum PHRED sum allowed for (split) \n                           \
+  \             read alignments.\n  -i [ --indel_cost ] arg (=30)         PHRED like\
+  \ cost of an indel.\n  --affine_gapcosts                     Use affine gapcosts\
+  \ (instead of linear \n                                        gapcosts). If enabled,\
+  \ gap open costs \n                                        are given by --indel_cost\
+  \ and gap \n                                        extend costs are given by \n\
+  \                                        --gap_extend_cost, i.e. a gap of length\n\
+  \                                        k costs indel_cost+k*gap_extend_cost.\n\
+  \  --gap_extend_cost arg (=10)           Gap extend cost. Only effective in \n \
+  \                                       connection with --affine_gapcosts.\n  -s\
+  \ [ --split_cost ] arg (=25)         PHRED like cost of splitting an \n        \
+  \                                alignment.\n  --interchromosomal              \
+  \      Search for interchromosomal split \n                                    \
+  \    reads.\n  --interchrom_split_cost arg (=60)     PHRED like cost of an inter-chromosomal\n\
+  \                                        split.\n  --inversions                \
+  \          Search for inversion split reads.\n  --inversion_split_cost arg (=45)\
+  \      PHRED like cost of an inversion split.\n  -d [ --secondary_aln_phred_diff\
+  \ ] arg (=29)\n                                        Report/evaluate split alignments\
+  \ with a\n                                        difference of at most this value\
+  \ to the\n                                        best split alignment.\n  -a [\
+  \ --min_anchor_length ] arg (=8)   Minimal number of nucleotides on each \n    \
+  \                                    sides of a split.\n  -n [ --max_span ] arg\
+  \ (=1000)         Maximal allowed span (i.e. length on \n                      \
+  \                  reference) of a split read alignment.\n  --max_anchors arg (=100)\
+  \              Maximal allowed anchors per read \n                             \
+  \           suffix/prefix.\n  --max_anchor_pairs arg (=500)         Maximal allowed\
+  \ number of anchor \n                                        pairings.\n  --anchor_length_increment\
+  \ arg (=4)    Number of characters to increase anchor\n                        \
+  \                length by if too many anchors are \n                          \
+  \              found.\n  --max_anchor_length arg (=30)         Maximal anchor length\
+  \ (if reached it \n                                        will not be increased\
+  \ any further.\n  -N [ --max_insert ] arg (=50000)      Maximal allowed internal\
+  \ segment size \n                                        when pairing alignments\
+  \ for a read \n                                        pair.\n  -S [ --output_secondary\
+  \ ]             Also output secondary alignments.\n  -A [ --anchor_search_length\
+  \ ] arg (=20)\n                                        Length of anchor used for\
+  \ searching.\n  -e [ --anchor_errors ] arg (=2)       Allowed errors when searching\
+  \ for \n                                        anchors.\n  -o [ --anchor_distance\
+  \ ] arg (=600)   Regions size for searching for anchors.\n  -t [ --anchor_search_iter\
+  \ ] arg (=3)  Anchor search iterations.\n  -P [ --putative_variations ] arg    \
+  \  Filename to write a list of all \n                                        variation\
+  \ candidates to. All candidates\n                                        are written,\
+  \ no matter how weak the \n                                        evidence for\
+  \ them to be true.\n  -l [ --input_length_dist_in ] arg     File with known internal\
+  \ segment length\n                                        histogram to be used to\
+  \ score \n                                        alignments.\n  -L [ --input_length_dist_out\
+  \ ] arg    File to write internal segment length \n                            \
+  \            histogram for uniquely mappable reads \n                          \
+  \              to.\n  -R [ --insertion_length_dist ] arg    File to write insertion\
+  \ length \n                                        histogram for uniquely mappable\
+  \ reads \n                                        to.\n  -D [ --deletion_length_dist\
+  \ ] arg     File to write deletion length histogram\n                          \
+  \              for uniquely mappable reads to.\n  -T [ --threads ] arg (=0)    \
+  \         Number of threads (default: 0 = \n                                   \
+  \     strictly single-threaded).\n  -M [ --m_in_cigar ]                   Use M\
+  \ for matches and mismatches in \n                                        CIGAR\
+  \ strings (instead of '=' and 'X').\n  --snp arg                             Filename\
+  \ to store putative SNP \n                                        positions to.\n\
+  \  -w [ --snp_weight_cutoff ] arg (=3)   Weight cutoff for SNPs to be written to\n\
+  \                                        filename given as parameter --snp.\n  --indel_weight_cutoff\
+  \ arg (=3)        Weight cutoff for indels to be written \n                    \
+  \                    to filename given as parameter -P.\n  --rightmost         \
+  \                  Report rightmost deletions/insertions \n                    \
+  \                    (default: leftmost).\n  --soft_clip                       \
+  \    Allow reads to be soft-clipped.\n  --soft_clip_open_cost arg (=35)       Cost\
+  \ for soft clipping a read.\n  --soft_clip_extend_cost arg (=3)      Cost for \"\
+  extending\" a soft clip; i.e.,\n                                        softclipping\
+  \ k characters from a read \n                                        will cost soft_clip_open_cost+k*soft_cl\n\
+  \                                        ip_extend_cost.\n  --read_group arg   \
+  \                   Read group for all reads.\n  --read_group_library arg      \
+  \        Library information for read group \n                                 \
+  \       header.\n  --read_group_sample arg               Sample information for\
+  \ read group \n                                        header.\n\n"
+generated_using:
+- --help

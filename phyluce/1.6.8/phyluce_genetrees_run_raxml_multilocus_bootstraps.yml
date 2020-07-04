@@ -61,10 +61,10 @@ named:
   synonyms:
   - --verbosity
   args: !ChoiceFlagArg
-    choices:
-    - INFO
-    - WARN
-    - CRITICAL
+    choices: !!set
+      WARN:
+      CRITICAL:
+      INFO:
   optional: true
 - !Flag
   description: The path to a directory to hold logs.
@@ -75,6 +75,7 @@ named:
   optional: true
 command:
 - phyluce_genetrees_run_raxml_multilocus_bootstraps
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -85,3 +86,28 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: phyluce_genetrees_run_raxml_multilocus_bootstraps [-h] --input\
+  \ INPUT\n                                                         --best-trees\n\
+  \                                                         BEST_TREES --output\n\
+  \                                                         OUTPUT\n             \
+  \                                            [--bootreps BOOTREPS]\n           \
+  \                                              [--outgroup OUTGROUP]\n         \
+  \                                                [--threads THREADS]\n         \
+  \                                                [--cores CORES]\n             \
+  \                                            [--quiet]\n                       \
+  \                                  [--verbosity {INFO,WARN,CRITICAL}]\n        \
+  \                                                 [--log-path LOG_PATH]\n\nPerforms\
+  \ multi-locus bootstrapping and ML tree searches for a folder of\nphylip-formatted\
+  \ alignments\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --input INPUT         The input directory containing alignments in\
+  \ phylip\n                        format\n  --best-trees BEST_TREES\n          \
+  \              The directory containing the best trees\n  --output OUTPUT      \
+  \ The output directory to hold alignments\n  --bootreps BOOTREPS   The number of\
+  \ bootstrap replicates to run\n  --outgroup OUTGROUP   The outgroup to use\n  --threads\
+  \ THREADS     The number of RAxML threads to run (best to determine\n          \
+  \              empirically)\n  --cores CORES         The number of concurrent RAxML\
+  \ jobs to run\n  --quiet               Suppress the CPU usage question\n  --verbosity\
+  \ {INFO,WARN,CRITICAL}\n                        The logging level to use.\n  --log-path\
+  \ LOG_PATH   The path to a directory to hold logs.\n"
+generated_using:
+- --help

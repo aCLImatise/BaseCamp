@@ -2,6 +2,22 @@
 positional: []
 named:
 - !Flag
+  description: The input FASTQ file containing the reads from 5' fragment end.
+  synonyms:
+  - '-1'
+  - --input_1
+  args: !SimpleFlagArg
+    name: INPUT_1_FILENAME
+  optional: true
+- !Flag
+  description: The input FASTQ file containing the reads from 3' fragment end.
+  synonyms:
+  - '-2'
+  - --input_2
+  args: !SimpleFlagArg
+    name: INPUT_2_FILENAME
+  optional: true
+- !Flag
   description: It outputs the merged reads as FASTQ file.
   synonyms:
   - -m
@@ -62,7 +78,43 @@ named:
   optional: true
 command:
 - merge-reads.py
+parent:
 subcommands: []
-help_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
-version_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: merge-reads.py [options]\n\nIt merges the overlapping reads which\
+  \ are paired.\n\nOptions:\n  --version             show program's version number\
+  \ and exit\n  -h, --help            show this help message and exit\n  -1 INPUT_1_FILENAME,\
+  \ --input_1=INPUT_1_FILENAME\n                        The input FASTQ file containing\
+  \ the reads from 5'\n                        fragment end.\n  -2 INPUT_2_FILENAME,\
+  \ --input_2=INPUT_2_FILENAME\n                        The input FASTQ file containing\
+  \ the reads from 3'\n                        fragment end.\n  -m OUTPUT_MERGED_FILENAME,\
+  \ --merged=OUTPUT_MERGED_FILENAME\n                        It outputs the merged\
+  \ reads as FASTQ file.\n  -f OUTPUT_FORWARD_FILENAME, --forward=OUTPUT_FORWARD_FILENAME\n\
+  \                        It outputs the un-merged reads as FASTQ file.\n  -r OUTPUT_REVERSE_FILENAME,\
+  \ --reverse=OUTPUT_REVERSE_FILENAME\n                        It outputs the un-merged\
+  \ reads as FASTQ file.\n  -a OUTPUT_ALIGNMENT_FILENAME, --alignment=OUTPUT_ALIGNMENT_FILENAME\n\
+  \                        It outputs also the alignment for each found\n        \
+  \                overlapping.\n  -s OUTPUT_FRAGMENT_SIZE_FILENAME, --fragment-size=OUTPUT_FRAGMENT_SIZE_FILENAME\n\
+  \                        It outputs the fragment size for paired reads which\n \
+  \                       are found to overlap.\n  -v OVERLAP, --overlap=OVERLAP\n\
+  \                        The minimum length of the region which is considered\n\
+  \                        an overlap. Default is 11.\n  -p PROCESSES, --processes=PROCESSES\n\
+  \                        Number of parallel processes/CPUs to be used for\n    \
+  \                    computations. In case of value 0 then the program will\n  \
+  \                      use all the CPUs which are found. The default value is\n\
+  \                        0.\n"
+generated_using:
+- --help

@@ -12,9 +12,9 @@ named:
   synonyms:
   - --target
   args: !ChoiceFlagArg
-    choices:
-    - clr
-    - ccs
+    choices: !!set
+      ccs:
+      clr:
   optional: true
 - !Flag
   description: 'Optional standard Python logging config (default: None)'
@@ -25,6 +25,7 @@ named:
   optional: true
 command:
 - fc_unzip.py
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -35,3 +36,13 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: fc_unzip.py [-h] [--target {clr,ccs}]\n                   [--logging-config-fn\
+  \ LOGGING_CONFIG_FN]\n                   config_fn\n\nRun stage 3-unzip and stage\
+  \ 4-polish, given the results of stage 2-asm-falcon of Falcon.\n\npositional arguments:\n\
+  \  config_fn             Configuration file. (TODO: This needs its own help section,\
+  \ or at least a link to a webpage.)\n\noptional arguments:\n  -h, --help       \
+  \     show this help message and exit\n  --target {clr,ccs}    target pipeline:\
+  \ clr=regular; ccs=only ccs data (default: clr)\n  --logging-config-fn LOGGING_CONFIG_FN\n\
+  \                        Optional standard Python logging config (default: None)\n"
+generated_using:
+- --help

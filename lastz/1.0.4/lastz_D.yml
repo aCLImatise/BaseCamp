@@ -68,37 +68,11 @@ named:
   args: !SimpleFlagArg
     name: n
   optional: true
-- !Flag
-  description: list information about file specifiers
-  synonyms:
-  - --help
-  args: !SimpleFlagArg
-    name: files
-  optional: true
-- !Flag
-  description: list blastz-compatible shortcuts
-  synonyms:
-  - --help
-  args: !SimpleFlagArg
-    name: shortcuts
-  optional: true
-- !Flag
-  description: list yasra-specific shortcuts
-  synonyms:
-  - --help
-  args: !SimpleFlagArg
-    name: yasra
-  optional: true
 command:
 - lastz_D
+parent:
 subcommands: []
-help_flag: !Flag
-  description: list scoring defaults for your current settings
-  synonyms:
-  - --help
-  args: !SimpleFlagArg
-    name: defaults
-  optional: true
+help_flag:
 usage_flag:
 version_flag: !Flag
   description: report the program version and quit
@@ -106,3 +80,79 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "NOTE: the following list is not comprehensive.  The most up-to-date list\
+  \ is\n      available at http://www.bx.psu.edu/~rsharris/lastz\n\n  target[[start..end]]\
+  \   spec/file containing target sequence (fasta, fastq,\n                      \
+  \   nib, 2bit or hsx);  [start..end] defines a subrange of\n                   \
+  \      the file\n                         (use --help=files for more details)\n\
+  \  query[[start..end]]    spec/file containing query sequences;  if absent,\n  \
+  \                       queries come from stdin (if needed)\n  --self          \
+  \       the target sequence is also the query\n                         (this replaces\
+  \ the query file)\n  --seed=match<length>   use a word with no gaps instead of a\
+  \ seed pattern\n  --[no]transition[=2]   allow one or two transitions in a seed\
+  \ hit\n                         (by default a transition is allowed)\n  --step=<length>\
+  \        set step length (default is 1)\n  --strand=both          search both strands\n\
+  \  --strand=plus          search + strand only (matching strand of query spec)\n\
+  \  --strand=minus         search - strand only (opposite strand of query spec)\n\
+  \                         (by default both strands are searched)\n  --ambiguous=n[,<penalty>]\
+  \ treat N as an ambiguous nucleotide\n                         (by default N is\
+  \ treated as a sequence splicing\n                          character)\n  --ambiguous=iupac[,<penalty>]\
+  \ treat any ambiguous IUPAC-IUB character as a\n                         completely\
+  \ ambiguous nucleotide\n                         (by default any sequence file with\
+  \ B,D,H,K,M,R,S,V,W,Y\n                          is rejected)\n  --[no]gfextend\
+  \         perform gap-free extension of seed hits to HSPs\n                    \
+  \     (by default extension is performed)\n  --[no]chain            perform chaining\n\
+  \  --chain=<diag,anti>    perform chaining with given penalties for diagonal and\n\
+  \                         anti-diagonal\n                         (by default no\
+  \ chaining is performed)\n  --[no]gapped           perform gapped alignment (instead\
+  \ of gap-free)\n                         (by default gapped alignment is performed)\n\
+  \  --notrivial            do not output a trivial self-alignment block if the\n\
+  \                         target and query happen to be identical\n  --scores=<file>\
+  \        read substitution scores from a file\n                         (default\
+  \ is HOXD70)\n  --match=<R>,<P>        scores are +R/-P for match/mismatch\n  --gap=<open,extend>\
+  \    set gap open and extend penalties (default is 400.000000,30.000000)\n  --xdrop=<score>\
+  \        set x-drop threshold (default is 10*sub[A][A])\n  --ydrop=<score>     \
+  \   set y-drop threshold (default is open+300extend)\n  --noxtrim              if\
+  \ x-drop extension encounters end of sequence, don't\n                         trim\
+  \ back to peak score (use this for short reads)\n  --noytrim              if y-drop\
+  \ extension encounters end of sequence, don't\n                         trim back\
+  \ to peak score (use this for short reads)\n  --hspthresh=<score>    set threshold\
+  \ for high scoring pairs (default is 3000.000000)\n                         ungapped\
+  \ extensions scoring lower are discarded\n                         <score> can also\
+  \ be a percentage or base count\n  --exact=<length>       set threshold for exact\
+  \ matches\n                         if specified, exact matches are found rather\
+  \ than high\n                         scoring pairs (replaces --hspthresh)\n  --inner=<score>\
+  \        set threshold for HSPs during interpolation\n                         (default\
+  \ is no interpolation)\n  --gappedthresh=<score> set threshold for gapped alignments\n\
+  \                         gapped extensions scoring lower are discarded\n      \
+  \                   <score> can also be a percentage or base count\n           \
+  \              (default is to use same value as --hspthresh)\n  --[no]entropy  \
+  \        involve entropy in filtering high scoring pairs\n                     \
+  \    (default is \"entropy\")\n  --nomirror             don't report mirror-image\
+  \ alignments when using --self\n                         (default is to skip processing\
+  \ them, but recreate them\n                         in the output)\n  --allocate:traceback=<bytes>\
+  \  space for trace-back information\n                         (default is 80.0M)\n\
+  \  --masking=<count>      mask any position in target hit this many times\n    \
+  \                     zero indicates no masking\n                         (default\
+  \ is no masking)\n  --identity=<min>[..<max>] filter alignments by percent identity\n\
+  \                         0<=min<=max<=100;  blocks (or HSPs) outside min..max\n\
+  \                         are discarded\n                         (default is no\
+  \ identity filtering)\n  --coverage=<min>[..<max>] filter alignments by percentage\
+  \ of query covered\n                         0<=min<=max<=100;  blocks (or HSPs)\
+  \ outside min..max\n                         are discarded\n                   \
+  \      (default is no query coverage filtering)\n  --output=<file>        specify\
+  \ output alignment file;  otherwise alignments\n                         are written\
+  \ to stdout\n  --format=<type>        specify output format; one of lav, axt, maf,\
+  \ cigar,\n                         rdotplot, text or general\n                 \
+  \        (use --help=formats for more details)\n                         (by default\
+  \ output is LAV)\n  --rdotplot=<file>      create an output file suitable for plotting\
+  \ in R.\n  --progress=<n>         report processing of every nth query\n  --version\
+  \              report the program version and quit\n  --help                 list\
+  \ all options\n  --help=files           list information about file specifiers\n\
+  \  --help=formats         list information about output file formats\n  --help=shortcuts\
+  \       list blastz-compatible shortcuts\n  --help=defaults        list scoring\
+  \ defaults for your current settings\n  --help=yasra           list yasra-specific\
+  \ shortcuts\n\nNOTE: the preceding list is not comprehensive.  The most up-to-date\
+  \ list is\n      available at http://www.bx.psu.edu/~rsharris/lastz\n"
+generated_using:
+- --help

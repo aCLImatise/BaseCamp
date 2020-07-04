@@ -1,113 +1,47 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - gffutils-cli
+parent:
 subcommands:
-- !Command
+- &id002 !Command
   positional: []
   named: []
   command:
   - gffutils-cli
   - fetch
+  parent: *id001
   subcommands:
   - !Command
     positional:
     - !Positional
-      description: Database to use. If a GFF or GTF file is provided instead for this
-        argument, a database will be created for you. This can take some time (several
-        minutes), so it's best to create one ahead of time.
+      description: ''
       position: 0
+      name: gffutils-cli
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: fetch
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
       name: db
       optional: false
     - !Positional
-      description: Comma-separated list of IDs to fetch
-      position: 1
+      description: ''
+      position: 3
       name: ids
       optional: false
     named: []
     command:
     - gffutils-cli
     - fetch
-    - db
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-  - !Command
-    positional: []
-    named: []
-    command:
-    - gffutils-cli
-    - fetch
     - ids
-    subcommands:
-    - !Command
-      positional:
-      - !Positional
-        description: Database to use. If a GFF or GTF file is provided instead for
-          this argument, a database will be created for you. This can take some time
-          (several minutes), so it's best to create one ahead of time.
-        position: 0
-        name: db
-        optional: false
-      - !Positional
-        description: Comma-separated list of IDs to fetch
-        position: 1
-        name: ids
-        optional: false
-      named: []
-      command:
-      - gffutils-cli
-      - fetch
-      - ids
-      - db
-      subcommands: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-    - !Command
-      positional:
-      - !Positional
-        description: Database to use. If a GFF or GTF file is provided instead for
-          this argument, a database will be created for you. This can take some time
-          (several minutes), so it's best to create one ahead of time.
-        position: 0
-        name: db
-        optional: false
-      - !Positional
-        description: Comma-separated list of IDs to fetch
-        position: 1
-        name: ids
-        optional: false
-      named: []
-      command:
-      - gffutils-cli
-      - fetch
-      - ids
-      - ids
-      subcommands: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
+    parent: *id002
+    subcommands: []
     help_flag: !Flag
       description: ''
       synonyms:
@@ -116,14 +50,26 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "usage: gffutils-cli fetch [-h] db ids\ngffutils-cli fetch: error:\
+      \ the following arguments are required: ids\n"
+    generated_using: &id005 []
   help_flag: !Flag
-    description: ''
+    description: show this help message and exit
     synonyms:
     - -h
+    - --help
     args: !EmptyFlagArg {}
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: gffutils-cli fetch [-h] db ids\n\n    Fetch IDs.\n    \n\npositional\
+    \ arguments:\n  db          Database to use. If a GFF or GTF file is provided\
+    \ instead for\n              this argument, a database will be created for you.\
+    \ This can take\n              some time (several minutes), so it's best to create\
+    \ one ahead of\n              time.\n  ids         Comma-separated list of IDs\
+    \ to fetch\n\noptional arguments:\n  -h, --help  show this help message and exit\n"
+  generated_using: &id003
+  - --help
 - !Command
   positional:
   - !Positional
@@ -167,6 +113,7 @@ subcommands:
   command:
   - gffutils-cli
   - children
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -177,6 +124,24 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: gffutils-cli children [-h] [--limit LIMIT] [--exclude EXCLUDE]\n\
+    \                             [--exclude-self]\n                             db\
+    \ [ids]\n\n    Fetch children from the database according to ID.\n    \n\npositional\
+    \ arguments:\n  db                 Database to use. If a GFF or GTF file is provided\
+    \ instead\n                     for this argument, a database will be created\
+    \ for you.\n                     This can take some time (several minutes), so\
+    \ it's best\n                     to create one ahead of time.\n  ids        \
+    \        Comma-separated list of IDs. These IDs, along with their\n          \
+    \           children, will be returned (subject to --limit and\n             \
+    \        --exclude). If none provided, use all genes in the\n                \
+    \     database (default: -)\n\noptional arguments:\n  -h, --help         show\
+    \ this help message and exit\n  --limit LIMIT      Feature type (string), or level\
+    \ (integer). No children\n                     below this level will be returned\
+    \ (default: -)\n  --exclude EXCLUDE  Comma-separated list of featuretypes to filter\
+    \ out (like\n                     grep -v) (default: -)\n  --exclude-self    \
+    \ Use this to suppress reporting the IDs you've provided.\n                  \
+    \   (default: False)\n"
+  generated_using: *id003
 - !Command
   positional:
   - !Positional
@@ -220,6 +185,7 @@ subcommands:
   command:
   - gffutils-cli
   - parents
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -230,110 +196,61 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-- !Command
+  help_text: "usage: gffutils-cli parents [-h] [--limit LIMIT] [--exclude EXCLUDE]\n\
+    \                            [--exclude-self]\n                            db\
+    \ [ids]\n\n    Fetch parents from the database according to ID.\n    \n\npositional\
+    \ arguments:\n  db                 Database to use. If a GFF or GTF file is provided\
+    \ instead\n                     for this argument, a database will be created\
+    \ for you.\n                     This can take some time (several minutes), so\
+    \ it's best\n                     to create one ahead of time.\n  ids        \
+    \        Comma-separated list of IDs. These IDs, along with their\n          \
+    \           parents, will be returned (subject to --limit and\n              \
+    \       --exclude). If none provided, use all exons in the\n                 \
+    \    database (default: -)\n\noptional arguments:\n  -h, --help         show this\
+    \ help message and exit\n  --limit LIMIT      Feature type (string), or level\
+    \ (integer). No parents\n                     below this level will be returned\
+    \ (default: -)\n  --exclude EXCLUDE  Comma-separated list of featuretypes to filter\
+    \ out (like\n                     grep -v) (default: -)\n  --exclude-self    \
+    \ Use this to suppress reporting the IDs you've provided.\n                  \
+    \   (default: False)\n"
+  generated_using: *id003
+- &id004 !Command
   positional: []
   named: []
   command:
   - gffutils-cli
   - region
+  parent: *id001
   subcommands:
   - !Command
     positional:
     - !Positional
-      description: Database to use. If a GFF or GTF file is provided instead for this
-        argument, a database will be created for you. This can take some time (several
-        minutes), so it's best to create one ahead of time.
+      description: ''
       position: 0
+      name: gffutils-cli
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: region
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
       name: db
       optional: false
     - !Positional
-      description: Genomic coordinates of the form "chrom:start-stop"
-      position: 1
+      description: ''
+      position: 3
       name: region
       optional: false
     named: []
     command:
     - gffutils-cli
     - region
-    - db
+    - region
+    parent: *id004
     subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-  - !Command
-    positional: []
-    named: []
-    command:
-    - gffutils-cli
-    - region
-    - region
-    subcommands:
-    - !Command
-      positional:
-      - !Positional
-        description: Database to use. If a GFF or GTF file is provided instead for
-          this argument, a database will be created for you. This can take some time
-          (several minutes), so it's best to create one ahead of time.
-        position: 0
-        name: db
-        optional: false
-      - !Positional
-        description: Genomic coordinates of the form "chrom:start-stop"
-        position: 1
-        name: region
-        optional: false
-      named: []
-      command:
-      - gffutils-cli
-      - region
-      - region
-      - db
-      subcommands: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
-    - !Command
-      positional:
-      - !Positional
-        description: Database to use. If a GFF or GTF file is provided instead for
-          this argument, a database will be created for you. This can take some time
-          (several minutes), so it's best to create one ahead of time.
-        position: 0
-        name: db
-        optional: false
-      - !Positional
-        description: Genomic coordinates of the form "chrom:start-stop"
-        position: 1
-        name: region
-        optional: false
-      named: []
-      command:
-      - gffutils-cli
-      - region
-      - region
-      - region
-      subcommands: []
-      help_flag: !Flag
-        description: show this help message and exit
-        synonyms:
-        - -h
-        - --help
-        args: !EmptyFlagArg {}
-        optional: true
-      usage_flag:
-      version_flag:
     help_flag: !Flag
       description: ''
       synonyms:
@@ -342,14 +259,26 @@ subcommands:
       optional: true
     usage_flag:
     version_flag:
+    help_text: "usage: gffutils-cli region [-h] db region\ngffutils-cli region: error:\
+      \ the following arguments are required: region\n"
+    generated_using: *id005
   help_flag: !Flag
-    description: ''
+    description: show this help message and exit
     synonyms:
     - -h
+    - --help
     args: !EmptyFlagArg {}
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: gffutils-cli region [-h] db region\n\n    Returns features within\
+    \ provided genomic coordinates.\n    \n\npositional arguments:\n  db         \
+    \ Database to use. If a GFF or GTF file is provided instead for\n            \
+    \  this argument, a database will be created for you. This can take\n        \
+    \      some time (several minutes), so it's best to create one ahead of\n    \
+    \          time.\n  region      Genomic coordinates of the form \"chrom:start-stop\"\
+    \n\noptional arguments:\n  -h, --help  show this help message and exit\n"
+  generated_using: *id003
 - !Command
   positional:
   - !Positional
@@ -404,6 +333,7 @@ subcommands:
   command:
   - gffutils-cli
   - create
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -414,87 +344,91 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: gffutils-cli create [-h] [--output OUTPUT] [--force] [--quiet]\n\
+    \                           [--merge MERGE] [--disable-infer-genes]\n        \
+    \                   [--disable-infer-transcripts]\n                          \
+    \ filename\n\n    Create a database.\n    \n\npositional arguments:\n  filename\
+    \              GFF or GTF file to use\n\noptional arguments:\n  -h, --help   \
+    \         show this help message and exit\n  --output OUTPUT       Database to\
+    \ create. Default is to append \".db\" to the\n                        end of\
+    \ the input filename (default: -)\n  --force               Overwrite an existing\
+    \ database (default: False)\n  --quiet               Suppress the reporting of\
+    \ timing information when\n                        creating the database (default:\
+    \ False)\n  --merge MERGE         Merge strategy to be used if if duplicate IDs\
+    \ are\n                        found. (default: 'merge')\n  --disable-infer-genes\n\
+    \                        Disable inferring of gene extents for GTF files. Use\n\
+    \                        this if your GTF file already has \"gene\" featuretypes\n\
+    \                        (default: False)\n  --disable-infer-transcripts\n   \
+    \                     Disable inferring of transcript extents for GTF files.\n\
+    \                        Use this if your GTF file already has \"transcript\"\n\
+    \                        featuretypes (default: False)\n"
+  generated_using: *id003
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: Database to use. If a GFF or GTF file is provided instead for this
+      argument, a database will be created for you. This can take some time (several
+      minutes), so it's best to create one ahead of time.
+    position: 0
+    name: db
+    optional: false
   named: []
   command:
   - gffutils-cli
   - common
-  subcommands:
-  - !Command
-    positional:
-    - !Positional
-      description: Database to use. If a GFF or GTF file is provided instead for this
-        argument, a database will be created for you. This can take some time (several
-        minutes), so it's best to create one ahead of time.
-      position: 0
-      name: db
-      optional: false
-    named: []
-    command:
-    - gffutils-cli
-    - common
-    - db
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
+  parent: *id001
+  subcommands: []
   help_flag: !Flag
-    description: ''
+    description: show this help message and exit
     synonyms:
     - -h
+    - --help
     args: !EmptyFlagArg {}
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: gffutils-cli common [-h] db\n\n    Identify child features in\
+    \ common (e.g., common exons across multiple\n    isoforms)\n    \n\npositional\
+    \ arguments:\n  db          Database to use. If a GFF or GTF file is provided\
+    \ instead for\n              this argument, a database will be created for you.\
+    \ This can take\n              some time (several minutes), so it's best to create\
+    \ one ahead of\n              time.\n\noptional arguments:\n  -h, --help  show\
+    \ this help message and exit\n"
+  generated_using: *id003
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: GFF or GTF file to use
+    position: 0
+    name: filename
+    optional: false
   named: []
   command:
   - gffutils-cli
   - clean
-  subcommands:
-  - !Command
-    positional:
-    - !Positional
-      description: GFF or GTF file to use
-      position: 0
-      name: filename
-      optional: false
-    named: []
-    command:
-    - gffutils-cli
-    - clean
-    - filename
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
+  parent: *id001
+  subcommands: []
   help_flag: !Flag
-    description: ''
+    description: show this help message and exit
     synonyms:
     - -h
+    - --help
     args: !EmptyFlagArg {}
     optional: true
   usage_flag:
   version_flag:
-- !Command
+  help_text: "usage: gffutils-cli clean [-h] filename\n\n    Perform various QC operations\
+    \ to clean a GFF or GTF file.\n    \n\npositional arguments:\n  filename    GFF\
+    \ or GTF file to use\n\noptional arguments:\n  -h, --help  show this help message\
+    \ and exit\n"
+  generated_using: *id003
+- &id006 !Command
   positional: []
   named:
   - !Flag
-    description: ''
+    description: 'Restrict to a particular featuretype. This can be faster than doing
+      a grep on the output, since it restricts the search space in the database (default:
+      -)'
     synonyms:
     - --featuretype
     args: !SimpleFlagArg
@@ -503,26 +437,33 @@ subcommands:
   command:
   - gffutils-cli
   - search
+  parent: *id001
   subcommands:
   - !Command
     positional:
     - !Positional
-      description: Database to use. If a GFF or GTF file is provided instead for this
-        argument, a database will be created for you. This can take some time (several
-        minutes), so it's best to create one ahead of time.
+      description: ''
       position: 0
+      name: gffutils-cli
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: search
+      optional: false
+    - !Positional
+      description: ''
+      position: 2
       name: db
       optional: false
     - !Positional
-      description: Text to search for. Case-insensitive; use sql LIKE syntax
-      position: 1
+      description: ''
+      position: 3
       name: text
       optional: false
     named:
     - !Flag
-      description: 'Restrict to a particular featuretype. This can be faster than
-        doing a grep on the output, since it restricts the search space in the database
-        (default: -)'
+      description: ''
       synonyms:
       - --featuretype
       args: !SimpleFlagArg
@@ -531,25 +472,42 @@ subcommands:
     command:
     - gffutils-cli
     - search
-    - db
+    - text
+    parent: *id006
     subcommands: []
     help_flag: !Flag
-      description: show this help message and exit
+      description: ''
       synonyms:
       - -h
-      - --help
       args: !EmptyFlagArg {}
       optional: true
     usage_flag:
     version_flag:
+    help_text: "usage: gffutils-cli search [-h] [--featuretype FEATURETYPE] db text\n\
+      gffutils-cli search: error: the following arguments are required: text\n"
+    generated_using: *id005
   help_flag: !Flag
-    description: ''
+    description: show this help message and exit
     synonyms:
     - -h
+    - --help
     args: !EmptyFlagArg {}
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: gffutils-cli search [-h] [--featuretype FEATURETYPE] db text\n\
+    \n    Search the attributes.\n    \n\npositional arguments:\n  db            \
+    \        Database to use. If a GFF or GTF file is provided\n                 \
+    \       instead for this argument, a database will be created\n              \
+    \          for you. This can take some time (several minutes), so\n          \
+    \              it's best to create one ahead of time.\n  text                \
+    \  Text to search for. Case-insensitive; use sql LIKE\n                      \
+    \  syntax\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  --featuretype FEATURETYPE\n                        Restrict to a\
+    \ particular featuretype. This can be\n                        faster than doing\
+    \ a grep on the output, since it\n                        restricts the search\
+    \ space in the database (default:\n                        -)\n"
+  generated_using: *id003
 - !Command
   positional:
   - !Positional
@@ -558,20 +516,6 @@ subcommands:
     name: filename
     optional: false
   named:
-  - !Flag
-    description: start > end in all entries
-    synonyms:
-    - '- Ensures'
-    args: !SimpleFlagArg
-      name: that
-    optional: true
-  - !Flag
-    description: entry id (eid) to each entry to make files grep-able
-    synonyms:
-    - '- Adds'
-    args: !SimpleFlagArg
-      name: an
-    optional: true
   - !Flag
     description: 'Load GFF into memory for processing. (default: True)'
     synonyms:
@@ -588,6 +532,7 @@ subcommands:
   command:
   - gffutils-cli
   - sanitize
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -598,11 +543,27 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: gffutils-cli sanitize [-h] [--in-memory] [--in-place] filename\n\
+    \n    Sanitize a GFF file. Might get merged with clean feature later.\n\n    Cleans\
+    \ and adds useful annotations to a GFF file:\n\n      - Ensures that start > end\
+    \ in all entries\n      - Adds an entry id (eid) to each entry to make files grep-able\n\
+    \n    Outputs result to stdout unless asked to sanitize in place.\n    \n\npositional\
+    \ arguments:\n  filename     GFF or GTF file to use (or GFF database.)\n\noptional\
+    \ arguments:\n  -h, --help   show this help message and exit\n  --in-memory  Load\
+    \ GFF into memory for processing. (default: True)\n  --in-place   Sanitize file\
+    \ in-place: overwrites current file with sanitized\n               version. (default:\
+    \ False)\n"
+  generated_using: *id003
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: GFF or GTF file to use.
+    position: 0
+    name: filename
+    optional: false
   named:
   - !Flag
-    description: ''
+    description: 'Remove duplicates in place (overwrite current file.) (default: False)'
     synonyms:
     - --in-place
     args: !EmptyFlagArg {}
@@ -610,44 +571,23 @@ subcommands:
   command:
   - gffutils-cli
   - rmdups
-  subcommands:
-  - !Command
-    positional:
-    - !Positional
-      description: GFF or GTF file to use.
-      position: 0
-      name: filename
-      optional: false
-    named:
-    - !Flag
-      description: 'Remove duplicates in place (overwrite current file.) (default:
-        False)'
-      synonyms:
-      - --in-place
-      args: !EmptyFlagArg {}
-      optional: true
-    command:
-    - gffutils-cli
-    - rmdups
-    - filename
-    subcommands: []
-    help_flag: !Flag
-      description: show this help message and exit
-      synonyms:
-      - -h
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
+  parent: *id001
+  subcommands: []
   help_flag: !Flag
-    description: ''
+    description: show this help message and exit
     synonyms:
     - -h
+    - --help
     args: !EmptyFlagArg {}
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: gffutils-cli rmdups [-h] [--in-place] filename\n\n    Remove\
+    \ duplicates from a GFF file.\n    \n\npositional arguments:\n  filename    GFF\
+    \ or GTF file to use.\n\noptional arguments:\n  -h, --help  show this help message\
+    \ and exit\n  --in-place  Remove duplicates in place (overwrite current file.)\
+    \ (default:\n              False)\n"
+  generated_using: *id003
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -657,3 +597,21 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: gffutils-cli [-h]\n                    {fetch,children,parents,region,create,common,clean,search,sanitize,rmdups}\n\
+  \                    ...\n\npositional arguments:\n  {fetch,children,parents,region,create,common,clean,search,sanitize,rmdups}\n\
+  \    fetch               Fetch IDs.\n    children            Fetch children from\
+  \ the database according to ID.\n    parents             Fetch parents from the\
+  \ database according to ID.\n    region              Returns features within provided\
+  \ genomic coordinates.\n    create              Create a database.\n    common \
+  \             Identify child features in common (e.g., common exons\n          \
+  \              across multiple isoforms)\n    clean               Perform various\
+  \ QC operations to clean a GFF or GTF\n                        file.\n    search\
+  \              Search the attributes.\n    sanitize            Sanitize a GFF file.\
+  \ Might get merged with clean\n                        feature later. Cleans and\
+  \ adds useful annotations to a\n                        GFF file: - Ensures that\
+  \ start > end in all entries -\n                        Adds an entry id (eid) to\
+  \ each entry to make files\n                        grep-able Outputs result to\
+  \ stdout unless asked to\n                        sanitize in place.\n    rmdups\
+  \              Remove duplicates from a GFF file.\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n"
+generated_using: *id003

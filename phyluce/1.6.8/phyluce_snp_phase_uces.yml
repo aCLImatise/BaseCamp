@@ -44,10 +44,10 @@ named:
   synonyms:
   - --verbosity
   args: !ChoiceFlagArg
-    choices:
-    - INFO
-    - WARN
-    - CRITICAL
+    choices: !!set
+      WARN:
+      CRITICAL:
+      INFO:
   optional: true
 - !Flag
   description: The path to a directory to hold logs.
@@ -58,6 +58,7 @@ named:
   optional: true
 command:
 - phyluce_snp_phase_uces
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -68,3 +69,22 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: phyluce_snp_phase_uces [-h] --config CONFIG --bams BAMS --output\
+  \ OUTPUT\n                              [--conservative] [--cores CORES]\n     \
+  \                         [--verbosity {INFO,WARN,CRITICAL}]\n                 \
+  \             [--log-path LOG_PATH]\n\nPhase reads in a BAM file into two separate\
+  \ alleles. Then produce a consensus\nsequence for each allele.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --config CONFIG    \
+  \   A configuration file containing the reference-to-read\n                    \
+  \    sample mapping and some metadata\n  --bams BAMS           The directory containing\
+  \ sample-specific BAM files\n  --output OUTPUT       The directory in which to store\
+  \ the SNPs files\n  --conservative        Use this flag if you want to discard all\
+  \ base calls\n                        with limited certainty (covered by <3 reads).\
+  \ This\n                        will produce the ambiguity character \"N\" instead\
+  \ of\n                        that potential base call in the final sequence.\n\
+  \  --cores CORES         For parallel processing you can choose the number of\n\
+  \                        cores you want CLC to run on.\n  --verbosity {INFO,WARN,CRITICAL}\n\
+  \                        The logging level to use\n  --log-path LOG_PATH   The path\
+  \ to a directory to hold logs.\n"
+generated_using:
+- --help

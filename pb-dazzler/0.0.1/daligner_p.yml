@@ -1,5 +1,10 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: daligner
+  optional: false
 named:
 - !Flag
   description: ': k-mer size (must be <= 32).'
@@ -98,8 +103,15 @@ named:
   - -I
   args: !EmptyFlagArg {}
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -vabAI
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - daligner_p
+parent:
 subcommands: []
 help_flag: !Flag
   description: ': A seed hit if the k-mers in band cover >= -h bps in the targest
@@ -110,3 +122,21 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "Usage: daligner [-vabAI] [-k<int(14)>] [-w<int(6)>] [-h<int(35)>] [-t<int>]\
+  \ [-M<int>] [-P<dir(/tmp)>]\n                         [-e<double(.70)] [-l<int(1000)>]\
+  \ [-s<int(100)>] [-H<int>] [-T<int(4)>]\n                         [-m<track>]+ <subject:db|dam>\
+  \ <target:db|dam> ...\n\n      -k: k-mer size (must be <= 32).\n      -w: Look for\
+  \ k-mers in averlapping bands of size 2^-w.\n      -h: A seed hit if the k-mers\
+  \ in band cover >= -h bps in the targest read.\n      -t: Ignore k-mers that occur\
+  \ >= -t times in a block.\n      -M: Use only -M GB of memory by ignoring most frequent\
+  \ k-mers.\n\n      -e: Look for alignments with -e percent similarity.\n      -l:\
+  \ Look for alignments of length >= -l.\n      -s: The trace point spacing for encoding\
+  \ alignments.\n      -H: HGAP option: align only target reads of length >= -H.\n\
+  \n      -T: Use -T threads.\n      -P: Do block level sorts and merges in directory\
+  \ -P.\n      -m: Soft mask the blocks with the specified mask.\n      -b: For AT/GC\
+  \ biased data, compensate k-mer counts (deprecated).\n\n      -v: Verbose mode,\
+  \ output statistics as proceed.\n      -a: sort .las by A-read,A-position pairs\
+  \ for map usecase\n          off => sort .las by A,B-read pairs for overlap piles\n\
+  \      -A: Compare subjet to target, but not vice versa.\n      -I: Compare reads\
+  \ to themselves\n"
+generated_using: []

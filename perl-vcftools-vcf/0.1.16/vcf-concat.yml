@@ -1,5 +1,20 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: A.vcf.gz
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: B.vcf.gz
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: C.vcf.gz
+  optional: false
 named:
 - !Flag
   description: Do not concatenate, only check if the columns agree.
@@ -34,6 +49,7 @@ named:
   optional: true
 command:
 - vcf-concat
+parent:
 subcommands: []
 help_flag: !Flag
   description: ', -?, --help                   This help message.'
@@ -43,3 +59,16 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "About: Convenience tool for concatenating VCF files (e.g. VCFs split by\
+  \ chromosome).\n   In the basic mode it does not do anything fancy except for a\
+  \ sanity check that all\n   files have the same columns.  When run with the -s option,\
+  \ it will perform a partial\n   merge sort, looking at limited number of open files\
+  \ simultaneously.\nUsage: vcf-concat [OPTIONS] A.vcf.gz B.vcf.gz C.vcf.gz > out.vcf\n\
+  Options:\n   -c, --check-columns              Do not concatenate, only check if\
+  \ the columns agree.\n   -f, --files <file>               Read the list of files\
+  \ from a file.\n   -p, --pad-missing                Write '.' in place of missing\
+  \ columns. Useful for joining chrY with the rest.\n   -s, --merge-sort <int>   \
+  \        Allow small overlaps in N consecutive files.\n   -h, -?, --help       \
+  \            This help message.\n\n"
+generated_using:
+- --help

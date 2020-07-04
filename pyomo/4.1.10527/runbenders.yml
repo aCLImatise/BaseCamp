@@ -325,7 +325,144 @@ named:
   optional: true
 command:
 - runbenders
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "Usage: runbenders [options]\n\nOptions:\n  -h, --help            show\
+  \ this help message and exit\n\n  Input Options:\n    -m MODEL_DIRECTORY, --model-directory=MODEL_DIRECTORY\n\
+  \                        The directory in which all model (reference and\n     \
+  \                   scenario) definitions are stored. Default is \".\".\n    -i\
+  \ INSTANCE_DIRECTORY, --instance-directory=INSTANCE_DIRECTORY\n                \
+  \        The directory in which all instance (reference and\n                  \
+  \      scenario) definitions are stored. This option is\n                      \
+  \  required if no callback is found in the model file.\n    -o OBJECTIVE_SENSE,\
+  \ --objective-sense-stage-based=OBJECTIVE_SENSE\n                        The objective\
+  \ sense to use for the auto-generated\n                        scenario instance\
+  \ objective, which is equal to the sum\n                        of the scenario-tree\
+  \ stage costs. Default is None,\n                        indicating an Objective\
+  \ has been declared on the\n                        reference model.\n\n  Scenario\
+  \ Tree Options:\n    --scenario-tree-seed=SCENARIO_TREE_RANDOM_SEED\n          \
+  \              The random seed associated with manipulation\n                  \
+  \      operations on the scenario tree (e.g., down-sampling\n                  \
+  \      or bundle creation). Default is 0, indicating\n                        unassigned.\n\
+  \    --scenario-tree-downsample-fraction=SCENARIO_TREE_DOWNSAMPLE_FRACTION\n   \
+  \                     The proportion of the scenarios in the scenario tree\n   \
+  \                     that are actually used. Specific scenarios are\n         \
+  \               selected at random. Default is 1.0, indicating no\n            \
+  \            down-sampling.\n    --scenario-bundle-specification=SCENARIO_BUNDLE_SPECIFICATION\n\
+  \                        The name of the scenario bundling specification to be\n\
+  \                        used when executing Progressive Hedging. Default is\n \
+  \                       None, indicating no bundling is employed. If the\n     \
+  \                   specified name ends with a .dat suffix, the argument\n     \
+  \                   is interpreted as a filename. Otherwise, the name is\n     \
+  \                   interpreted as a file in the instance directory,\n         \
+  \               constructed by adding the .dat suffix automatically\n    --create-random-bundles=CREATE_RANDOM_BUNDLES\n\
+  \                        Specification to create the indicated number of\n     \
+  \                   random, equally-sized (to the degree possible)\n           \
+  \             scenario bundles. Default is 0, indicating disabled.\n\n  Benders\
+  \ Options:\n    --max-iterations=MAX_ITERATIONS\n                        The maximal\
+  \ number of benders iterations. Default is\n                        100.\n    --percent-gap=PERCENT_GAP\n\
+  \                        Percent optimality gap required for convergence.\n    \
+  \                    Default is 0.0001%.\n    --multicut-level=MULTICUTS\n     \
+  \                   The number of cut groups added to the master benders\n     \
+  \                   problem each iteration. Default is 1.\n    --user-bound=USER_BOUND\n\
+  \                        A user provided best bound for the relaxed (master)\n \
+  \                       problem. When provided, will be used in the optimality\n\
+  \                        gap calculation if appropriate.\n\n  Master Solver Options:\n\
+  \    --master-disable-warmstarts\n                        Disable warm-start of\
+  \ the benders master problem\n                        solves. Default is False.\n\
+  \    --master-solver=MASTER_SOLVER_TYPE\n                        Specify the solver\
+  \ with which to solve the master\n                        benders problem. The following\
+  \ solver types are\n                        currently supported: asl, baron, bilevel_blp_global,\n\
+  \                        bilevel_blp_local, bilevel_ld, cbc, cplex, glpk,\n    \
+  \                    gurobi, mpec_minlp, mpec_nlp, openopt, os, path, pico,\n  \
+  \                      ps, py, scip, xpress; Default: cplex\n    --master-solver-io=MASTER_SOLVER_IO\n\
+  \                        The type of IO used to execute the master solver.\n   \
+  \                     Different solvers support different types of IO, but\n   \
+  \                     the following are common options: lp - generate LP\n     \
+  \                   files, nl - generate NL files, python - direct Python\n    \
+  \                    interface, os - generate OSiL XML files.\n    --master-mipgap=MASTER_MIPGAP\n\
+  \                        Specifies the mipgap for the master benders solves.\n \
+  \   --master-solver-options=MASTER_SOLVER_OPTIONS\n                        Solver\
+  \ options for the master benders problem.\n    --master-output-solver-log\n    \
+  \                    Output solver logs during master benders solves solves\n  \
+  \  --master-keep-solver-files\n                        Retain temporary input and\
+  \ output files for master\n                        benders solves\n    --master-symbolic-solver-labels\n\
+  \                        When interfacing with the solver, use symbol names\n  \
+  \                      derived from the model. For example,\n                  \
+  \      \"my_special_variable[1_2_3]\" instead of \"v1\". Useful\n              \
+  \          for debugging. When using the ASL interface (--solver-\n            \
+  \            io=nl), generates corresponding .row (constraints) and\n          \
+  \              .col (variables) files. The ordering in these files\n           \
+  \             provides a mapping from ASL index to symbolic model\n            \
+  \            names.\n\n  Subproblem Solver Options:\n    --output-solver-logs\n\
+  \                        Output solver logs during scenario sub-problem solves\n\
+  \    --symbolic-solver-labels\n                        When interfacing with the\
+  \ solver, use symbol names\n                        derived from the model. For\
+  \ example,\n                        \"my_special_variable[1_2_3]\" instead of \"\
+  v1\". Useful\n                        for debugging. When using the ASL interface\
+  \ (--solver-\n                        io=nl), generates corresponding .row (constraints)\
+  \ and\n                        .col (variables) files. The ordering in these files\n\
+  \                        provides a mapping from ASL index to symbolic model\n \
+  \                       names.\n    --scenario-mipgap=SCENARIO_MIPGAP\n        \
+  \                Specifies the mipgap for all sub-problems\n    --scenario-solver-options=SCENARIO_SOLVER_OPTIONS\n\
+  \                        Solver options for all sub-problems\n    --solver=SOLVER_TYPE\n\
+  \                        Specify the solver with which to solve scenario sub-\n\
+  \                        problems.  The following solver types are currently\n \
+  \                       supported: asl, baron, bilevel_blp_global,\n           \
+  \             bilevel_blp_local, bilevel_ld, cbc, cplex, glpk,\n               \
+  \         gurobi, mpec_minlp, mpec_nlp, openopt, os, path, pico,\n             \
+  \           ps, py, scip, xpress; Default: cplex\n    --solver-io=SOLVER_IO\n  \
+  \                      The type of IO used to execute the solver.  Different\n \
+  \                       solvers support different types of IO, but the\n       \
+  \                 following are common options: lp - generate LP files,\n      \
+  \                  nl - generate NL files, python - direct Python\n            \
+  \            interface, os - generate OSiL XML files.\n    --solver-manager=SOLVER_MANAGER_TYPE\n\
+  \                        The type of solver manager used to coordinate scenario\n\
+  \                        sub-problem solves. Default is serial.\n    --phpyro-required-workers=PHPYRO_REQUIRED_WORKERS\n\
+  \                        Set the number of idle phsolverserver worker processes\n\
+  \                        expected to be available when the PHPyro solver\n     \
+  \                   manager is selected. This option should be used when\n     \
+  \                   the number of worker threads is less than the total\n      \
+  \                  number of scenarios (or bundles). When this option is\n     \
+  \                   not used, PH will attempt to assign each scenario (or\n    \
+  \                    bundle) to a single phsolverserver until the timeout\n    \
+  \                    indicated by the --phpyro-workers-timeout option\n        \
+  \                occurs.\n    --phpyro-workers-timeout=PHPYRO_WORKERS_TIMEOUT\n\
+  \                        Set the time limit (seconds) for finding idle\n       \
+  \                 phsolverserver worker processes to be used when the\n        \
+  \                PHPyro solver manager is selected. This option is\n           \
+  \             ignored when --phpyro-required-workers is set\n                  \
+  \      manually. Default is 30.\n    --pyro-hostname=PYRO_MANAGER_HOSTNAME\n   \
+  \                     The hostname to bind on. By default, the first\n         \
+  \               dispatcher found will be used. This option can also\n          \
+  \              help speed up initialization time if the hostname is\n          \
+  \              known (e.g., localhost)\n    --disable-warmstarts\n             \
+  \           Disable warm-start of scenario sub-problem solves in\n             \
+  \           iterations >= 1. Default is False.\n    --shutdown-pyro     Shut down\
+  \ all Pyro-related components associated with\n                        the Pyro\
+  \ and PH Pyro solver managers (if specified),\n                        including\
+  \ the dispatch server, name server, and any\n                        solver servers.\
+  \ Default is False.\n\n  Output Options:\n    --output-scenario-tree-solution\n\
+  \                        Report the full solution (even leaves) in scenario\n  \
+  \                      tree format upon termination. Values represent\n        \
+  \                averages, so convergence is not an issue. Default is\n        \
+  \                False.\n    --output-solver-results\n                        Output\
+  \ solutions obtained after each scenario sub-\n                        problem solve\n\
+  \    --output-times      Output timing statistics for various components\n    --output-instance-construction-times\n\
+  \                        Output timing statistics for instance construction\n  \
+  \                      timing statistics (client-side only when using PHPyro\n \
+  \   --verbose           Generate verbose output for both initialization and\n  \
+  \                      execution. Default is False.\n\n  Other Options:\n    --disable-gc\
+  \        Disable the python garbage collecter. Default is\n                    \
+  \    False.\n    -k, --keep-solver-files\n                        Retain temporary\
+  \ input and output files for scenario\n                        sub-problem solves\n\
+  \    --profile=PROFILE   Enable profiling of Python code.  The value of this\n \
+  \                       option is the number of functions that are summarized.\n\
+  \    --traceback         When an exception is thrown, show the entire call\n   \
+  \                     stack. Ignored if profiling is enabled. Default is\n     \
+  \                   False.\n"
+generated_using:
+- --help

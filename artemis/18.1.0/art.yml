@@ -46,6 +46,7 @@ named:
     names:
     - FILE
     - FILE2
+    separator: ','
   optional: true
 - !Flag
   description: Open one or more userplots, take log(data)
@@ -55,6 +56,7 @@ named:
     names:
     - FILE
     - FILE2
+    separator: ','
   optional: true
 - !Flag
   description: '[,FILE2,...]         Open one or more BAM, CRAM, VCF or BCF files'
@@ -69,13 +71,6 @@ named:
   - -DbamClone
   args: !SimpleFlagArg
     name: n
-  optional: true
-- !Flag
-  description: '[1,2,..]=FILE[,FILE2,..]  Open BAM, CRAM, VCF or BCF files in separate
-    panels'
-  synonyms:
-  - -Dbam
-  args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: Show SNP marks in BamView
@@ -121,7 +116,35 @@ named:
   optional: true
 command:
 - art
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "SYNOPSIS\n        Artemis: Genome Browser and Annotation Tool\nUSAGE\n\
+  \        /tmp/tmpebb15ve8/bin/art [options] <SEQUENCE_FILE> [+FEATURE_FILE ...]\n\
+  OPTIONS\n        SEQUENCE_FILE                  An EMBL, GenBank, FASTA, or GFF3\
+  \ file\n        FEATURE_FILE                   An Artemis TAB file, or GFF file\n\
+  \n        -options FILE                  Read a text file of options from FILE\n\
+  \        -chado                         Connect to a Chado database (using PGHOST,\
+  \ PGPORT, PGDATABASE, PGUSER environment variables)\n\n        -Dblack_belt_mode=?\
+  \            Keep warning messages to a minimum [true,false]\n        -Doffset=XXX\
+  \                   Open viewer at base position XXX [integer >= 1]\n        -Duserplot=FILE[,FILE2]\
+  \        Open one or more userplots\n        -Dloguserplot=FILE[,FILE2]     Open\
+  \ one or more userplots, take log(data)\n        -Dbam=FILE[,FILE2,...]        \
+  \ Open one or more BAM, CRAM, VCF or BCF files\n        -DbamClone=n           \
+  \        Open all BAM, CRAM, VCF or BCF files in multiple (n > 1) panels\n     \
+  \   -Dbam[1,2,..]=FILE[,FILE2,..]  Open BAM, CRAM, VCF or BCF files in separate\
+  \ panels\n        -Dshow_snps                    Show SNP marks in BamView\n   \
+  \     -Dshow_snp_plot                Open SNP plot in BamView\n        -Dshow_cov_plot\
+  \                Open coverage plot in BamView\n        -Dshow_forward_lines=? \
+  \        Hide/show forward frame lines [true,false]\n        -Dshow_reverse_lines=?\
+  \         Hide/show reverse frame lines [true,false]\n        -Dchado=\"h:p/d?u\"\
+  \              Get Artemis to open this CHADO database\n        -Dread_only    \
+  \                Open CHADO database read-only\nEXAMPLES\n        % art AJ006275.embl\n\
+  \        % art contigs.fa +annotation.gff +islands.tab\n        % art -Dblack_belt_mode=true\
+  \ -Dbam=ecoli_hiseq.bam E_coli_K12.gbk\n        % art -Duserplot=repeatmap.plot,geecee.plot\
+  \ Plasmid.gff3\nHOMEPAGE\n        http://www.sanger.ac.uk/science/tools/artemis\n\
+  \n"
+generated_using:
+- --help

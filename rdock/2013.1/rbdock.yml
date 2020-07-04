@@ -1,106 +1,143 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: receptor.prm
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: protocol.prm
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: infile
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: outfile
+  optional: false
 named:
 - !Flag
-  description: SD file
+  description: input file
   synonyms:
   - -i
-  - '- input'
+  - -input
   args: !SimpleFlagArg
-    name: sdFile
+    name: STRING
   optional: true
 - !Flag
-  description: for output file(s)
+  description: output file
   synonyms:
   - -o
-  - '- root'
+  - -output
   args: !SimpleFlagArg
-    name: outputRoot
+    name: STRING
   optional: true
 - !Flag
-  description: 'file '
+  description: receptor file
   synonyms:
   - -r
-  - '- receptor'
+  - -receptor
   args: !SimpleFlagArg
-    name: recepPrmFile
+    name: STRING
   optional: true
 - !Flag
-  description: parameter file
+  description: protocol file
   synonyms:
   - -p
-  - '- docking'
+  - -protocol
   args: !SimpleFlagArg
-    name: protoPrmFile
+    name: STRING
   optional: true
 - !Flag
-  description: runs/ligand (default=1)
+  description: number of runs
   synonyms:
   - -n
-  - '- number'
+  - -runs
   args: !SimpleFlagArg
-    name: nRuns
+    name: INT
   optional: true
 - !Flag
-  description: neutral amines, guanidines, imidazoles (default=disabled)
-  synonyms:
-  - -ap
-  - '- protonate'
-  args: !SimpleFlagArg
-    name: all
-  optional: true
-- !Flag
-  description: carboxylic, sulphur and phosphorous acid groups (default=disabled)
-  synonyms:
-  - -an
-  - '- deprotonate'
-  args: !SimpleFlagArg
-    name: all
-  optional: true
-- !Flag
-  description: hydrogens present (default=polar hydrogens only)
-  synonyms:
-  - -allH
-  - '- read'
-  args: !SimpleFlagArg
-    name: all
-  optional: true
-- !Flag
-  description: OR filter file name
-  synonyms:
-  - -t
-  - '- score'
-  args: !SimpleFlagArg
-    name: threshold
-  optional: true
-- !Flag
-  description: score threshold is met (use with -t <targetScore>, default=terminate
-    ligand)
-  synonyms:
-  - -c
-  - '- continue'
-  args: !SimpleFlagArg
-    name: if
-  optional: true
-- !Flag
-  description: level for debugging (0 = minimal, >0 = more verbose)
+  description: trace level for debugging
   synonyms:
   - -T
-  - '- controls'
+  - -trace
   args: !SimpleFlagArg
-    name: traceLevel
+    name: INT
   optional: true
 - !Flag
-  description: seed (default=from sys clock)
+  description: random seed
   synonyms:
   - -s
-  - '- random'
+  - -seed
   args: !SimpleFlagArg
-    name: rndSeed
+    name: INT
+  optional: true
+- !Flag
+  description: protonate groups
+  synonyms:
+  - -P
+  - -ap
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: DEprotonate groups
+  synonyms:
+  - -D
+  - -an
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: read all Hs
+  synonyms:
+  - -H
+  - -allH
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: target score
+  synonyms:
+  - -t
+  - -target
+  args: !SimpleFlagArg
+    name: STRING
+  optional: true
+- !Flag
+  description: continue even if target met
+  synonyms:
+  - -C
+  - -cont
+  args: !EmptyFlagArg {}
   optional: true
 command:
 - rbdock
+parent:
 subcommands: []
 help_flag:
-usage_flag:
+usage_flag: !Flag
+  description: Display brief usage message
+  synonyms:
+  - --usage
+  args: !EmptyFlagArg {}
+  optional: true
 version_flag:
+help_text: "***********************************************\nThe rDock program is licensed\
+  \ under GNU-LGPLv3.0. http://rdock.sourceforge.net/\nExecutable:\trbdock ($Id: //depot/dev/client3/rdock/2013.1/src/exe/rbdock.cxx#4\
+  \ $)\nLibrary:\tlibRbt.so/2013.1/901 2013/11/27\nRBT_ROOT:\t/tmp/tmpa3r0opcw/share/rdock-2013.1-1\n\
+  RBT_HOME:\t/home/ubuntu\nCurrent dir:\t/tmp/tmpa3r0opcw\nDate:\t\tFri Jun 19 19:41:07\
+  \ 2020\n***********************************************\nUsage: rbdock -r<receptor.prm>\
+  \ -p<protocol.prm> -i<infile> -o<outfile> [options]\n  -i, -input=STRING       \
+  \ input file\n  -o, -output=STRING       output file\n  -r, -receptor=STRING   \
+  \  receptor file\n  -p, -protocol=STRING     protocol file\n  -n, -runs=INT    \
+  \        number of runs\n  -T, -trace=INT           trace level for debugging\n\
+  \  -s, -seed=INT            random seed\n  -P, -ap                  protonate groups\n\
+  \  -D, -an                  DEprotonate groups\n  -H, -allH                read\
+  \ all Hs\n  -t, -target=STRING       target score\n  -C, -cont                continue\
+  \ even if target met\n\nHelp options:\n  -?, --help               Show this help\
+  \ message\n      --usage              Display brief usage message\n"
+generated_using:
+- --help

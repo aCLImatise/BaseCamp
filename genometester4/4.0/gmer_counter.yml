@@ -12,10 +12,36 @@ positional:
   optional: false
 named:
 - !Flag
-  description: of kmers per node
+  description: '- SNP/KMER database file'
+  synonyms:
+  - -db
+  args: !SimpleFlagArg
+    name: DATABASE
+  optional: true
+- !Flag
+  description: '- binary database file'
+  synonyms:
+  - -dbb
+  args: !SimpleFlagArg
+    name: DBBINARY
+  optional: true
+- !Flag
+  description: '- write binary database to file'
+  synonyms:
+  - -w
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
+- !Flag
+  description: '- use 32-bit integeres for counts (default 16-bit)'
+  synonyms:
+  - '-32'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- maximum number of kmers per node'
   synonyms:
   - --max_kmers
-  - '- maximum'
   args: !SimpleFlagArg
     name: NUM
   optional: true
@@ -51,18 +77,16 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: index to database and write it to file
+  description: '- Add read index to database and write it to file'
   synonyms:
   - --compile_index
-  - '- Add'
   args: !SimpleFlagArg
     name: FILENAME
   optional: true
 - !Flag
-  description: distribution (up to given number)
+  description: '- print kmer distribution (up to given number)'
   synonyms:
   - --distribution
-  - '- print'
   args: !SimpleFlagArg
     name: NUM
   optional: true
@@ -86,7 +110,22 @@ named:
   optional: true
 command:
 - gmer_counter
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "Nothing to do!\nUsage:\n  gmer_counter ARGUMENTS SEQUENCES...\nArguments:\n\
+  \    -db DATABASE     - SNP/KMER database file\n    -dbb DBBINARY    - binary database\
+  \ file\n    -w FILENAME      - write binary database to file\n    -32          \
+  \    - use 32-bit integeres for counts (default 16-bit)\n    --max_kmers NUM  -\
+  \ maximum number of kmers per node\n    --silent         - do not output kmer counts\
+  \ (useful if only compiling db or index is needed\n    --header         - print\
+  \ header row\n    --total          - print the total number of kmers per node\n\
+  \    --unique         - print the number of nonzero kmers per node\n    --kmers\
+  \          - print individual kmer counts (default if no other output)\n    --compile_index\
+  \ FILENAME - Add read index to database and write it to file\n    --distribution\
+  \ NUM  - print kmer distribution (up to given number)\n    --num_threads    - number\
+  \ of worker threads (default 24)\n    --prefetch       - prefetch memory mapped\
+  \ files (faster on high-memory systems)\n    -D               - increase debug level\n"
+generated_using: []

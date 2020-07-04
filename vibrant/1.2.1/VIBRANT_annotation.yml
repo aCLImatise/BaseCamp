@@ -13,9 +13,9 @@ named:
   synonyms:
   - -f
   args: !ChoiceFlagArg
-    choices:
-    - prot
-    - nucl
+    choices: !!set
+      prot:
+      nucl:
   optional: true
 - !Flag
   description: length in basepairs to limit input sequences [default=1000, can increase
@@ -72,6 +72,7 @@ named:
   optional: true
 command:
 - VIBRANT_annotation.py
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -87,3 +88,21 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: VIBRANT_annotation.py [-h] [--version] -i I [-f {prot,nucl}] [-l\
+  \ L]\n                             [-o O] [-virome] [-d D] [-m M] [-x X] [-y Y]\n\
+  \nSee main wrapper script: VIBRANT_run.py. This script performs the bulk of the\n\
+  work but is not callable on its own.\n\noptional arguments:\n  -h, --help      show\
+  \ this help message and exit\n  --version       show program's version number and\
+  \ exit\n  -i I            input fasta file\n  -f {prot,nucl}  format of input [default=\"\
+  nucl\"]\n  -l L            length in basepairs to limit input sequences [default=1000,\n\
+  \                  can increase but not decrease]\n  -o O            number of ORFs\
+  \ per scaffold to limit input sequences\n                  [default=4, can increase\
+  \ but not decrease]\n  -virome         use this setting if dataset is known to be\
+  \ comprised mainly\n                  of viruses. More sensitive to viruses, less\
+  \ sensitive to\n                  false identifications [default=off]\n  -d D  \
+  \          path to \"databases\" directory that contains .HMM files (if\n      \
+  \            moved from default location)\n  -m M            path to \"files\" directory\
+  \ that contains .tsv and model files\n                  (if moved from default location)\n\
+  \  -x X            out_folder\n  -y Y            base\n"
+generated_using:
+- --help

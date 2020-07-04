@@ -1,10 +1,5 @@
-!Command
-positional:
-- !Positional
-  description: Input file name
-  position: 0
-  name: RESULTS_FILE
-  optional: false
+&id001 !Command
+positional: []
 named:
 - !Flag
   description: Level to summarize. Default=3 (species)
@@ -39,7 +34,55 @@ named:
   optional: true
 command:
 - spingo_summary.py
-subcommands: []
+parent:
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: spingo_summary.py
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --level
+    args: !SimpleFlagArg
+      name: LEVEL
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --similarity
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --threshold
+    args: !SimpleFlagArg
+      name: N
+    optional: true
+  command:
+  - spingo_summary.py
+  - RESULTS_FILE
+  parent: *id001
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: spingo_summary.py [-h] [--level LEVEL] [--similarity N] [--threshold\
+    \ N]\n                         [--percent]\n                         RESULTS_FILE\n\
+    spingo_summary.py: error: File 'RESULTS_FILE' does not exist\n"
+  generated_using: &id002
+  - --help
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -49,3 +92,12 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: spingo_summary.py [-h] [--level LEVEL] [--similarity N] [--threshold\
+  \ N]\n                         [--percent]\n                         RESULTS_FILE\n\
+  \nSummarize spingo output\n\npositional arguments:\n  RESULTS_FILE          Input\
+  \ file name\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --level LEVEL, -l LEVEL\n                        Level to summarize.\
+  \ Default=3 (species)\n  --similarity N, -s N  Similarity score threshold [0-1].\
+  \ Default=0.5\n  --threshold N, -t N   bootstrap threshold cutoff [0-1]. Defualt=0.8\n\
+  \  --percent, -p         Display summary as a percentage instead of raw counts.\n"
+generated_using: *id002

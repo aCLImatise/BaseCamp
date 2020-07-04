@@ -15,7 +15,34 @@ named:
   optional: true
 command:
 - stag-handle.pl
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "\e[1mNAME\e[0m\n    stag-handle - streams a stag file through a handler\
+  \ into a writer\n\n\e[1mSYNOPSIS\e[0m\n      stag-handle -w itext -c my-handler.pl\
+  \ myfile.xml > processed.itext\n      stag-handle -w itext -p My::Parser -m My::Handler\
+  \ myfile.xml > processed.itext\n\n\e[1mDESCRIPTION\e[0m\n    will take a Stag compatible\
+  \ format (xml, sxpr or itext), turn the data\n    into an event stream passing it\
+  \ through my-handler.pl\n\n    -help|h\n        shows this document\n\n    -module|m\
+  \ PERLMODULE\n        A module that is used to transform the input events the module\
+  \ should\n        inherit from Data::Stag::BaseHandler\n\n    -unit|u NODE_NAME\n\
+  \        (you should always use this option if you specify -m)\n\n        this is\
+  \ the unit that gets passed to the handler/transformer. this\n        will get set\
+  \ automatically if you use the the -c, -s or -t options\n\n        multiple units\
+  \ can be set\n\n          -u foo -u bar -u boz\n\n    -writer|w WRITER\n       \
+  \ writer for final transformed tree; can be xml, sxpr or itext\n\n    -module|m\
+  \ MODULE\n        perl modules for handling events\n\n    -codefile|c FILE\n   \
+  \     a file containing a perlhashref containing event handlers - see below\n\n\
+  \    -sub|s PERL\n        a perl hashref containing handlers\n\n    -trap|t ELEMENT=SUB\n\
+  \n\e[1mEXAMPLES\e[0m\n      unix> cat my-handler.pl\n      {\n        person =>\
+  \ sub {\n            my ($self, $person) = @_;\n            $person->set_fullname($person->get_firstname\
+  \ . ' ' .\n                               $person->get_lastname);\n            $person;\n\
+  \        },\n        address => sub {\n            my ($self, $address) = @_;\n\
+  \            # remove addresses altogether from processed file\n            return;\n\
+  \        },\n      }\n\n\e[1mPOD ERRORS\e[0m\n    Hey! \e[1mThe above document had\
+  \ some coding errors, which are explained\n    below:\e[0m\n\n    Around line 138:\n\
+  \        =over should be: '=over' or '=over positive_number'\n\n"
+generated_using:
+- --help

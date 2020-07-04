@@ -106,24 +106,6 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'metadata and read-to-tig position mapping.  -o is mandatory. creates
-    two files: name.layout.readToTig - read to tig position name.layout.tigInfo   -
-    metadata for each tig'
-  synonyms:
-  - -layout
-  - -o
-  args: !SimpleFlagArg
-    name: name
-  optional: true
-- !Flag
-  description: '[opts]          the layout of reads in each tig and the consensus
-    sequence if available and enabled with option: -sequence         also include
-    consensus sequence and quality'
-  synonyms:
-  - -layout
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: '[opts]      the full multialignment, output is to stdout -w width          width
     of the page -s spacing        spacing between reads on the same line'
   synonyms:
@@ -135,13 +117,6 @@ named:
     use for n50 computation'
   synonyms:
   - -sizes
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: "[opts]        read coverage plots, one plot per tig -o outputPrefix\
-    \   write plots to 'outputPrefix.*' in the current directory"
-  synonyms:
-  - -coverage
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -167,7 +142,52 @@ named:
   optional: true
 command:
 - tgStoreDump
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "usage: tgStoreDump -S <seqStore> -T <tigStore> <v> [opts]\n\nSTORE SELECTION\
+  \ (mandatory)\n\n  -S <seqStore>           path to the sequence store\n  -T <tigStore>\
+  \ <v>       path to the tigStore, version, to use\n\nTIG SELECTION - if nothing\
+  \ specified, all tigs are reported\n              - all ranges are inclusive.\n\n\
+  \  -tig A[-B]              only dump tigs between ids A and B\n  -unassembled  \
+  \          only dump tigs that are 'unassembled'\n  -contigs                only\
+  \ dump tigs that are 'contigs'\n\n  -repeats                only dump tigs that\
+  \ are (probably) repeats\n  -bubbles                only dump tigs that are (probably)\
+  \ bubbles\n  -circular               only dump tigs that are (probably) circular\n\
+  \n  -nreads min max         only dump tigs with between min and max reads\n  -length\
+  \ min max         only dump tigs with length between 'min' and 'max' bases\n  -coverage\
+  \ c C g G       only dump tigs with between fraction g and G at coverage between\
+  \ c and C\n                            example:  -coverage 10 inf 0.5 1.0 would\
+  \ report tigs where half of the\n                                      bases are\
+  \ at 10+ times coverage.\n\nDUMP TYPE - all dumps, except status, report on tigs\
+  \ selected as above\n\n  -status                 the number of tigs in the store\n\
+  \n  -tigs                   a list of tigs, and some information about them\n\n\
+  \  -consensus [opts]       the consensus sequence, with options:\n             \
+  \               -reverse          reverse complement the sequence\n            \
+  \                -fasta            report sequences in FASTA format (the default)\n\
+  \                            -fastq            report sequences in FASTQ format\n\
+  \n  -layout -o name         metadata and read-to-tig position mapping.  -o is mandatory.\n\
+  \                          creates two files:\n                            name.layout.readToTig\
+  \ - read to tig position\n                            name.layout.tigInfo   - metadata\
+  \ for each tig\n\n  -layout [opts]          the layout of reads in each tig and\
+  \ the consensus sequence if available\n                          and enabled with\
+  \ option:\n                            -sequence         also include consensus\
+  \ sequence and quality\n\n\n  -multialign [opts]      the full multialignment, output\
+  \ is to stdout\n                            -w width          width of the page\n\
+  \                            -s spacing        spacing between reads on the same\
+  \ line\n\n  -sizes [opts]           size statistics\n                          \
+  \  -s genomesize     denominator to use for n50 computation\n\n  -coverage [opts]\
+  \        read coverage plots, one plot per tig\n                            -o outputPrefix\
+  \   write plots to 'outputPrefix.*' in the current directory\n\n  -depth [opts]\
+  \           a histogram of depths\n                            -single         \
+  \  one histogram per tig\n\n  -overlap                read overlaps\n          \
+  \                  -thin overlap     report regions where the (thickest) read overlap\
+  \ is less than 'overlap' bases\n\n  -overlaphistogram       a histogram of the thickest\
+  \ overlaps used\n                            -o outputPrefix   write plots to 'outputPrefix.*'\
+  \ in the current directory\n\n\ntgStoreDump: Unknown option '--help'\nNo sequence\
+  \ store (-S option) supplied.\nNo tig store (-T option) supplied.\nNo tig store\
+  \ version (-T option) supplied.\nNo DUMP TYPE supplied.\n"
+generated_using:
+- --help

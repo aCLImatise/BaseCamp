@@ -1,5 +1,25 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: An
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: example
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: usage
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: is
+  optional: false
 named:
 - !Flag
   description: 'file, -b BAM file Sorted BAM file to correct. (default: None)'
@@ -85,6 +105,7 @@ named:
   optional: true
 command:
 - correctGCBias
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -100,3 +121,48 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: An example usage is:\n correctGCBias -b file.bam --effectiveGenomeSize\
+  \ 2150570000 -g mm9.2bit --GCbiasFrequenciesFile freq.txt -o gc_corrected.bam [options]\n\
+  \nThis tool corrects the GC-bias using the method proposed by [Benjamini & Speed\n\
+  (2012). Nucleic Acids Research, 40(10)]. It will remove reads from regions\nwith\
+  \ too high coverage compared to the expected values (typically GC-rich\nregions)\
+  \ and will add reads to regions where too few reads are seen (typically\nAT-rich\
+  \ regions). The tool ``computeGCBias`` needs to be run first to generate\nthe frequency\
+  \ table needed here.\n\nRequired arguments:\n  --bamfile BAM file, -b BAM file\n\
+  \                        Sorted BAM file to correct. (default: None)\n  --effectiveGenomeSize\
+  \ EFFECTIVEGENOMESIZE\n                        The effective genome size is the\
+  \ portion of the genome\n                        that is mappable. Large fractions\
+  \ of the genome are\n                        stretches of NNNN that should be discarded.\
+  \ Also, if\n                        repetitive regions were not included in the\
+  \ mapping of\n                        reads, the effective genome size needs to\
+  \ be adjusted\n                        accordingly. A table of values is available\
+  \ here: http\n                        ://deeptools.readthedocs.io/en/latest/content/feature/\n\
+  \                        effectiveGenomeSize.html . (default: None)\n  --genome\
+  \ two bit file, -g two bit file\n                        Genome in two bit format.\
+  \ Most genomes can be found\n                        here: http://hgdownload.cse.ucsc.edu/gbdb/\
+  \ Search for\n                        the .2bit ending. Otherwise, fasta files can\
+  \ be\n                        converted to 2bit using faToTwoBit available here:\n\
+  \                        http://hgdownload.cse.ucsc.edu/admin/exe/ (default:\n \
+  \                       None)\n  --GCbiasFrequenciesFile FILE, -freq FILE\n    \
+  \                    Indicate the output file from computeGCBias containing\n  \
+  \                      the observed and expected read frequencies per GC-\n    \
+  \                    content. (default: None)\n\nOutput options:\n  --correctedFile\
+  \ FILE, -o FILE\n                        Name of the corrected file. The ending\
+  \ will be used to\n                        decide the output file format. The options\
+  \ are \".bam\",\n                        \".bw\" for a bigWig file, \".bg\" for\
+  \ a bedGraph file.\n                        (default: None)\n\nOptional arguments:\n\
+  \  --help, -h            show this help message and exit\n  --version          \
+  \   show program's version number and exit\n  --binSize INT bp, -bs INT bp\n   \
+  \                     Size of the bins, in bases, for the output of the\n      \
+  \                  bigwig/bedgraph file. (Default: 50)\n  --region CHR:START:END,\
+  \ -r CHR:START:END\n                        Region of the genome to limit the operation\
+  \ to - this\n                        is useful when testing parameters to reduce\
+  \ the\n                        computing time. The format is chr:start:end, for\n\
+  \                        example --region chr10 or --region\n                  \
+  \      chr10:456700:891000. (default: None)\n  --numberOfProcessors INT, -p INT\n\
+  \                        Number of processors to use. Type \"max/2\" to use half\n\
+  \                        the maximum number of processors or \"max\" to use all\n\
+  \                        available processors. (Default: 1)\n  --verbose, -v   \
+  \      Set to see processing messages. (default: False)\n"
+generated_using:
+- --help

@@ -113,8 +113,16 @@ named:
   - --uid-mapping
   args: !EmptyFlagArg {}
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --report-file
+  args: !SimpleFlagArg
+    name: FILENAME
+  optional: true
 command:
 - krakenhll
+parent:
 subcommands: []
 help_flag: !Flag
   description: Print this message
@@ -129,3 +137,27 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "Usage: krakenhll --report-file FILENAME [options] <filename(s)>\n\nOptions:\n\
+  \  --db NAME               Name for Kraken DB (default: none)\n  --threads NUM \
+  \          Number of threads (default: 1)\n  --fasta-input           Input is FASTA\
+  \ format\n  --fastq-input           Input is FASTQ format\n  --gzip-compressed \
+  \      Input is gzip compressed\n  --bzip2-compressed      Input is bzip2 compressed\n\
+  \  --precision INT         Precision for unique k-mer counting, between 10 and 18\
+  \ (default: 12)\n  --quick                 Quick operation (use first hit or hits)\n\
+  \  --min-hits NUM          In quick op., number of hits req'd for classification\n\
+  \                          NOTE: this is ignored if --quick is not specified\n \
+  \ --unclassified-out FILENAME\n                          Print unclassified sequences\
+  \ to filename\n  --classified-out FILENAME\n                          Print classified\
+  \ sequences to filename\n  --output FILENAME       Print output to filename (default:\
+  \ stdout); \"off\" will\n                          suppress normal output\n  --only-classified-output\n\
+  \                          Print no Kraken output for unclassified sequences\n \
+  \ --preload               Loads DB into memory before classification\n  --paired\
+  \                The two filenames provided are paired-end reads\n  --check-names\
+  \           Ensure each pair of reads have names that agree\n                  \
+  \        with each other; ignored if --paired is not specified\n  --help       \
+  \           Print this message\n  --version               Print version information\n\
+  \nExperimental:\n  --uid-mapping           Map using UID database\n\nIf none of\
+  \ the *-input or *-compressed flags are specified, and the \nfile is a regular file,\
+  \ automatic format detection is attempted.\n"
+generated_using:
+- --help

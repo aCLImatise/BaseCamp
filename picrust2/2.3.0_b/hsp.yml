@@ -20,12 +20,20 @@ named:
     name: PATH
   optional: true
 - !Flag
-  description: '{16S,COG,EC,KO,PFAM,TIGRFAM,PHENO}, --in_trait {16S,COG,EC,KO,PFAM,TIGRFAM,PHENO}
-    Specifies which default trait table should be used. Use the --observed_trait_table
-    option to input a non- default trait table.'
+  description: Specifies which default trait table should be used. Use the --observed_trait_table
+    option to input a non- default trait table.
   synonyms:
   - -i
-  args: !EmptyFlagArg {}
+  - --in_trait
+  args: !ChoiceFlagArg
+    choices: !!set
+      PHENO:
+      TIGRFAM:
+      COG:
+      16S:
+      PFAM:
+      EC:
+      KO:
   optional: true
 - !Flag
   description: The input trait table describing directly observed traits (e.g. sequenced
@@ -56,12 +64,12 @@ named:
   - -m
   - --hsp_method
   args: !ChoiceFlagArg
-    choices:
-    - mp
-    - emp_prob
-    - pic
-    - scp
-    - subtree_average
+    choices: !!set
+      pic:
+      subtree_average:
+      emp_prob:
+      mp:
+      scp:
   optional: true
 - !Flag
   description: Calculate NSTI and add to output file.
@@ -100,6 +108,7 @@ named:
   optional: true
 command:
 - hsp.py
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -116,3 +125,49 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: hsp.py [-h] -t PATH -o PATH [-i {16S,COG,EC,KO,PFAM,TIGRFAM,PHENO}]\n\
+  \              [--observed_trait_table PATH] [--chunk_size CHUNK_SIZE]\n       \
+  \       [-m {mp,emp_prob,pic,scp,subtree_average}] [-n] [--check]\n            \
+  \  [-p PROCESSES] [--seed SEED] [--verbose] [-v]\n\nThis script performs hidden\
+  \ state prediction on tips in the input tree with unknown trait values. Typically\
+  \ this script is used to predict the copy number of gene families present in the\
+  \ predicted genome for each amplicon sequence variant, given a tree and a set of\
+  \ known trait values. This script outputs a table of trait predictions.\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -t PATH,\
+  \ --tree PATH  The full reference tree in newick format containing\n           \
+  \             both study sequences (i.e. ASVs or OTUs) and reference\n         \
+  \               sequences.\n  -o PATH, --output PATH\n                        Output\
+  \ table with predicted abundances per study\n                        sequence in\
+  \ input tree. If the extension \".gz\" is\n                        added the table\
+  \ will automatically be gzipped.\n  -i {16S,COG,EC,KO,PFAM,TIGRFAM,PHENO}, --in_trait\
+  \ {16S,COG,EC,KO,PFAM,TIGRFAM,PHENO}\n                        Specifies which default\
+  \ trait table should be used.\n                        Use the --observed_trait_table\
+  \ option to input a non-\n                        default trait table.\n  --observed_trait_table\
+  \ PATH\n                        The input trait table describing directly observed\n\
+  \                        traits (e.g. sequenced genomes) in tab-delimited\n    \
+  \                    format. Necessary if you want to use a custom table.\n  --chunk_size\
+  \ CHUNK_SIZE\n                        Number of functions to run at a time on one\
+  \ processor.\n                        Note that you should consider how many processes\
+  \ you\n                        have specified before changing this option. E.g.\
+  \ if\n                        you specify the chunk_size to be the total number\
+  \ of\n                        functions, 1 processor will be used even if you\n\
+  \                        specified more so the job will be substantially slower\n\
+  \                        (default: 500).\n  -m {mp,emp_prob,pic,scp,subtree_average},\
+  \ --hsp_method {mp,emp_prob,pic,scp,subtree_average}\n                        HSP\
+  \ method to use.\"mp\": predict discrete traits using\n                        max\
+  \ parsimony. \"emp_prob\": predict discrete traits\n                        based\
+  \ on empirical state probabilities across tips.\n                        \"subtree_average\"\
+  : predict continuous traits using\n                        subtree averaging. \"\
+  pic\": predict continuous traits\n                        with phylogentic independent\
+  \ contrast. \"scp\":\n                        reconstruct continuous traits using\
+  \ squared-change\n                        parsimony (default: mp).\n  -n, --calculate_NSTI\
+  \  Calculate NSTI and add to output file.\n  --check               Check input trait\
+  \ table before HSP.\n  -p PROCESSES, --processes PROCESSES\n                   \
+  \     Number of processes to run in parallel (default: 1).\n  --seed SEED      \
+  \     Seed to make output reproducible, which is necessary\n                   \
+  \     for the emp_prob method (default: 100).\n  --verbose             If specified,\
+  \ print out wrapped commands and other\n                        details to screen.\n\
+  \  -v, --version         show program's version number and exit\n\nUsage example:\n\
+  hsp.py -n -t out.tre -i 16S -o 16S_predicted_and_nsti.tsv.gz --processes 1\n"
+generated_using:
+- --help

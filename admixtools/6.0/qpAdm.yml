@@ -1,4 +1,4 @@
-!Command
+&id001 !Command
 positional: []
 named:
 - !Flag
@@ -14,21 +14,34 @@ named:
   - -v
   args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: '... toggle verbose mode ON.'
-  synonyms:
-  - -V
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '... toggle details mode ON.'
-  synonyms:
-  - -V
-  args: !EmptyFlagArg {}
-  optional: true
 command:
 - qpAdm
-subcommands: []
+parent:
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: bad
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: params....
+    optional: false
+  named: []
+  command:
+  - qpAdm
+  - file
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: bad params.... \n"
+  generated_using:
+  - --help
 help_flag: !Flag
   description: '... Print this message and exit.'
   synonyms:
@@ -37,3 +50,9 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "Usage: qpAdm [options] <file>\n   -h          ... Print this message and\
+  \ exit.\n   -p <file>   ... use parameters from <file> .\n   -v          ... print\
+  \ version and exit.\n   -V          ... toggle verbose mode ON.\n   -V         \
+  \ ... toggle details mode ON.\n"
+generated_using:
+- -h

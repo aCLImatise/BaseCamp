@@ -1,4 +1,4 @@
-!Command
+&id001 !Command
 positional: []
 named:
 - !Flag
@@ -36,6 +36,7 @@ named:
   optional: true
 command:
 - prune
+parent:
 subcommands:
 - !Command
   positional: []
@@ -70,6 +71,7 @@ subcommands:
   command:
   - prune
   - input
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: ''
@@ -79,6 +81,11 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: prune [-h] [-d INT] [-e string] [-s] [-o OUTPUT] [input]\nprune:\
+    \ error: argument input: can't open 'input': [Errno 2] No such file or directory:\
+    \ 'input'\n"
+  generated_using: &id002
+  - --help
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -88,3 +95,16 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: prune [-h] [-d INT] [-e string] [-s] [-o OUTPUT] [input]\n\nclusterBedpe.py\n\
+  author: Abhijit Badve\nversion: $Revision: 0.0.1 $\ndescription: cluster a BEDPE\
+  \ file by position based on their allele frequency\n\npositional arguments:\n  input\
+  \                 BEDPE file to read. If '-' or absent then defaults to stdin.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -d INT, --distance INT\n                        max separation distance (bp)\
+  \ of adjacent loci in cluster [50]\n  -e string, --eval_param string\n         \
+  \               evaluating parameter for choosing best bedpe in a cluster(e.g. af=AlleleFrequency\
+  \ default:af)\n  -s, --is_sorted       specifying if an input file is sorted (default=False)\n\
+  \                        (use following command to sort: 'cat FILE | sort -k1,1V\
+  \ -k2,2n -k3,3n -k4,4V -k5,5n -k6,6')\n  -o OUTPUT, --output OUTPUT\n          \
+  \              Output bedpe to write (default: stdout)\n"
+generated_using: *id002

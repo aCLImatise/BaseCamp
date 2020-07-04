@@ -378,6 +378,7 @@ named:
   optional: true
 command:
 - laa
+parent:
 subcommands: []
 help_flag: !Flag
   description: Output this help.
@@ -393,3 +394,91 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "Usage: laa [options] INPUT\nA tool to deconvolute mixtures of alleles\
+  \ and loci into phased consensus sequences. \nCopyright (c) 2014-2018 Pacific Biosciences,\
+  \ Inc.\nLicense: 3-BSD\n\nGeneral Options:\n  --rngSeed                 RNG seed,\
+  \ modulates reservoir filtering of reads.\n                            [42]\n  --generateBamIndex\
+  \        Generate PacBio indicies (*.pbi) for BAM files that\n                 \
+  \           don't have them.\n  --ignoreBamIndex          Ignore PacBio indicies\
+  \ (*.pbi) for BAM files if\n                            they exist.\n  --numThreads,-n\
+  \           Number of threads to use, <= 0 means autodetection.\n              \
+  \              [-1]\n  -M,--modelPath            Path to a model file or directory\
+  \ containing model\n                            files.\n  -m,--modelSpec       \
+  \     Name of chemistry or model to use, overriding\n                          \
+  \  default selection.\n\nBarcode Options:\n  -b,--barcodes             Fasta file\
+  \ of the barcode sequences used,\n                            overwriting any names\
+  \ in the DataSet. NOTE: Only\n                            used to find barcode names\n\
+  \  --minBarcodeScore         Minimum average barcode score to require of\n     \
+  \                       subreads. [26]\n  --fullLength              Filter input\
+  \ reads by presence of both flanking\n                            barcodes.\n  --doBc\
+  \                    Comma-separated list of barcode pairs to analyze,\n       \
+  \                     either by name, such as 'lbc1--lbc1', or by index,\n     \
+  \                       such as '0--0'.\n  --ignoreBc                Disable barcode\
+  \ filtering and treat all data as one\n                            sample.\n\nData\
+  \ Filtering Options:\n  -l,--minLength            Minimum length of input reads.\
+  \ [3000]\n  -L,--maxLength            Maximum length of input reads, set 0 to disable.\n\
+  \                            [0]\n  -s,--minReadScore         Minimum read score\
+  \ of input reads. [0.75]\n  --minSnr                  Minimum SNR of input reads.\
+  \ [3.75]\n  -g,--clusterGuide         Path to a fasta file of sequences to use for\
+  \ guided\n                            clustering\n  --minGuideScore           Minimum\
+  \ score of a query alignment to the cluster\n                            guide [50]\n\
+  \  --minGuideSpan            Minimum span of a query alignment to the cluster\n\
+  \                            guide [500]\n  --whitelist               A file of\
+  \ ReadIds, as either Text or Fasta, to\n                            allow from the\
+  \ input file. [\"None\"]\n\nCoarse Clustering Options:\n  -r,--maxReads        \
+  \     Maximum number of input reads to cluster per\n                           \
+  \ barcode. [2000]\n  -c,--maxClusteringReads   Maximum number of input reads to\
+  \ cluster per\n                            barcode. [400]\n  --fullLengthPreference\
+  \    Prefer full-length subreads when clustering\n  --fullLengthClustering    Only\
+  \ use full-length subreads when clustering\n  --clusterInflation        Markov Clustering\
+  \ inflation parameter. [2]\n  --clusterLoopWeight       Markov Clustering loop weight\
+  \ parameter. [0.001]\n  --skipRate                Skip some high-scoring alignments\
+  \ to disperse the\n                            cluster more. [0]\n  --minClusterSize\
+  \          Minimum number reads supporting a cluster before it\n               \
+  \             is reported. [20]\n  --doCluster               Only analyze one specified\
+  \ [-1]\n  --Clustering              Enable the coarse clustering\n  --noClustering\
+  \            Disable the coarse clustering\n\nFine Phasing Options:\n  -i,--ignoreEnds\
+  \           When splitting, ignore N bases at the ends. Use to\n               \
+  \             prevent excessive splitting caused by degenerate\n               \
+  \             primers. [0]\n  --maxPhasingReads         Maximum number of reads\
+  \ to use for\n                            phasing/consensus. [500]\n  --minQScore\
+  \               Minimum score to require of mutations  used for\n              \
+  \              phasing. [20]\n  --minPrevalence           Minimum prevalence to\
+  \ require of mutations used for\n                            phasing. [0.09]\n \
+  \ --minSplitReads           Minimum number reads favoring the minor phase\n    \
+  \                        required to split a haplotype. [20]\n  --minSplitFraction\
+  \        Minimum fraction of reads favoring the minor phase\n                  \
+  \          required to split a haplotype. [0.1]\n  --minSplitScore           Global\
+  \ likelihood improvement required to split a\n                            haplotype.\
+  \ [500]\n  --minZScore               Minimum ZScore to allow before adding a read\
+  \ to a\n                            haplotype. [-10]\n  --Phasing              \
+  \   Enable the fine phasing step.\n  --noPhasing               Disable the fine\
+  \ phasing step.\n\nPost-Processing Options:\n  --takeN                   Report\
+  \ only the top N consensus sequences for each\n                            barcode,\
+  \ set <1 to disable. [0]\n  -t,--trimEnds             Trim N bases from each end\
+  \ of each consensus. [0]\n  --minPredictedAccuracy    Minimum predicted consensus\
+  \ accuracy below which a\n                            consensus is called 'noise'.\
+  \ [0.95]\n  --chimeraScoreThreshold   Minimum score to consider a sequence chimeric.\
+  \ [1]\n  --ChimeraFilter           Activate the chimera filter and separate chimeric\n\
+  \                            consensus outputs\n  --noChimeraFilter         Deactivate\
+  \ the chimera filter and output all\n                            consensus\n\nResult\
+  \ Options:\n  --logFile                 Output file to write logging information\
+  \ to\n  --resultFile              Output file for high-quality results.\n      \
+  \                      [\"amplicon_analysis.fastq\"]\n  --junkFile             \
+  \   Output file for low-quality or chimeric results.\n                         \
+  \   [\"amplicon_analysis_chimeras_noise.fastq\"]\n  --reportFile              Output\
+  \ file for summary report.\n                            [\"amplicon_analysis_summary.csv\"\
+  ]\n  --inputReportFile         Output estimates of input PCR quality based on\n\
+  \                            subread mappings [\"amplicon_analysis_input.csv\"]\n\
+  \  --locusReportFile         Output estimates of sample mixture based on\n     \
+  \                       ZMW/subread mappings\n                            [\"amplicon_analysis_per_locus.csv\"\
+  ]\n  --whitelistReportFile     Output barcode/locus mappings for each subread seen\n\
+  \                            [\"amplicon_analysis_whitelist.csv\"]\n  --subreadsReportPrefix\
+  \    Output prefix for subreads report.\n                            [\"amplicon_analysis_subreads\"\
+  ]\n\nOptions:\n  -h,--help                 Output this help.\n  --version      \
+  \           Output version info.\n  -v,--verbose              Use verbose output.\n\
+  \  --log-level,--logLevel    Set log level. [\"INFO\"]\n  --emit-tool-contract \
+  \     Emit tool contract.\n  --resolved-tool-contract  Use args from resolved tool\
+  \ contract.\n\nArguments:\n  input                     Input file.\n\n"
+generated_using:
+- --help

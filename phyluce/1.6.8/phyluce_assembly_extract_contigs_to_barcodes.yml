@@ -27,10 +27,10 @@ named:
   synonyms:
   - --verbosity
   args: !ChoiceFlagArg
-    choices:
-    - INFO
-    - WARN
-    - CRITICAL
+    choices: !!set
+      WARN:
+      CRITICAL:
+      INFO:
   optional: true
 - !Flag
   description: The path to a directory to hold logs.
@@ -41,6 +41,7 @@ named:
   optional: true
 command:
 - phyluce_assembly_extract_contigs_to_barcodes
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -51,3 +52,17 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: phyluce_assembly_extract_contigs_to_barcodes [-h] --contigs CONTIGS\n\
+  \                                                    --config CONFIG --output\n\
+  \                                                    OUTPUT\n                  \
+  \                                  [--verbosity {INFO,WARN,CRITICAL}]\n        \
+  \                                            [--log-path LOG_PATH]\n\nParse the\
+  \ log file from match_contigs_to_barcodes to output a table of results\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --contigs\
+  \ CONTIGS     The directory containing the assembled contigs.\n  --config CONFIG\
+  \       A config file containing the contigs to extract.\n  --output OUTPUT    \
+  \   The output FASTA file to create\n  --verbosity {INFO,WARN,CRITICAL}\n      \
+  \                  The logging level to use.\n  --log-path LOG_PATH   The path to\
+  \ a directory to hold logs.\n"
+generated_using:
+- --help

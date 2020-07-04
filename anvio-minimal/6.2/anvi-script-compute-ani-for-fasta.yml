@@ -55,11 +55,11 @@ named:
   synonyms:
   - --method
   args: !ChoiceFlagArg
-    choices:
-    - ANIm
-    - ANIb
-    - ANIblastall
-    - TETRA
+    choices: !!set
+      ANIb:
+      ANIm:
+      ANIblastall:
+      TETRA:
   optional: true
 - !Flag
   description: The distance metric for the hierarchical clustering. The default is
@@ -85,6 +85,7 @@ named:
   optional: true
 command:
 - anvi-script-compute-ani-for-fasta
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -95,3 +96,40 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: anvi-script-compute-ani-for-fasta [-h] -f FASTA -o DIR_PATH [-p\
+  \ PAN_DB]\n                                         [-T NUM_THREADS]\n         \
+  \                                [--log-file FILE_PATH]\n                      \
+  \                   [--method {ANIm,ANIb,ANIblastall,TETRA}]\n                 \
+  \                        [--distance DISTANCE_METRIC]\n                        \
+  \                 [--linkage LINKAGE_METHOD]\n                                 \
+  \        [--just-do-it]\n\nRun ANI between contigs in a single FASTA file.\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -f FASTA,\
+  \ --fasta-file FASTA\n                        A FASTA-formatted input file\n  -o\
+  \ DIR_PATH, --output-dir DIR_PATH\n                        Directory path for output\
+  \ files\n  -p PAN_DB, --pan-db PAN_DB\n                        Anvi'o pan database\n\
+  \  -T NUM_THREADS, --num-threads NUM_THREADS\n                        Maximum number\
+  \ of threads to use for multithreading\n                        whenever possible.\
+  \ Very conservatively, the default is\n                        1. It is a good idea\
+  \ to not exceed the number of CPUs\n                        / cores on your system.\
+  \ Plus, please be careful with\n                        this option if you are running\
+  \ your commands on a SGE\n                        --if you are clusterizing your\
+  \ runs, and asking for\n                        multiple threads to use, you may\
+  \ deplete your\n                        resources very fast.\n  --log-file FILE_PATH\
+  \  File path to store debug/output messages.\n  --method {ANIm,ANIb,ANIblastall,TETRA}\n\
+  \                        Method for pyANI. The default is ANIb. You must have\n\
+  \                        the necessary binary in path for whichever method you\n\
+  \                        choose. According to the pyANI help for v0.2.7 at\n   \
+  \                     https://github.com/widdowquinn/pyani, the method\n       \
+  \                 'ANIm' uses MUMmer (NUCmer) to align the input\n             \
+  \           sequences. 'ANIb' uses BLASTN+ to align 1020nt\n                   \
+  \     fragments of the input sequences. 'ANIblastall': uses\n                  \
+  \      the legacy BLASTN to align 1020nt fragments Finally,\n                  \
+  \      'TETRA': calculates tetranucleotide frequencies of\n                    \
+  \    each input sequence\n  --distance DISTANCE_METRIC\n                       \
+  \ The distance metric for the hierarchical clustering.\n                       \
+  \ The default is \"euclidean\".\n  --linkage LINKAGE_METHOD\n                  \
+  \      The linkage method for the hierarchical clustering.\n                   \
+  \     The default is \"ward\".\n  --just-do-it          Don't bother me with questions\
+  \ or warnings, just do\n                        it.\n"
+generated_using:
+- --help

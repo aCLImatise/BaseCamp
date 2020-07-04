@@ -47,16 +47,20 @@ named:
     name: OUTPUT_PREFIX
   optional: true
 - !Flag
-  description: '<1>, --threads <1> number of threads [ Default : 1 ]'
+  description: 'number of threads [ Default : 1 ]'
   synonyms:
   - -t
-  args: !EmptyFlagArg {}
+  - --threads
+  args: !SimpleFlagArg
+    name: '1'
   optional: true
 - !Flag
-  description: '<1>, --processes <1> number of processes [ Default : 1 ]'
+  description: 'number of processes [ Default : 1 ]'
   synonyms:
   - -p
-  args: !EmptyFlagArg {}
+  - --processes
+  args: !SimpleFlagArg
+    name: '1'
   optional: true
 - !Flag
   description: 'quality scores [ DEFAULT : phred33 ]'
@@ -64,9 +68,9 @@ named:
   - -q
   - --quality-scores
   args: !ChoiceFlagArg
-    choices:
-    - phred33
-    - phred64
+    choices: !!set
+      phred33:
+      phred64:
   optional: true
 - !Flag
   description: run BMTagger instead of Bowtie2 to identify contaminant reads
@@ -118,12 +122,12 @@ named:
   synonyms:
   - --log-level
   args: !ChoiceFlagArg
-    choices:
-    - DEBUG
-    - INFO
-    - WARNING
-    - ERROR
-    - CRITICAL
+    choices: !!set
+      WARNING:
+      DEBUG:
+      ERROR:
+      INFO:
+      CRITICAL:
   optional: true
 - !Flag
   description: 'log file [ DEFAULT : $OUTPUT_DIR/$SAMPLE_kneaddata.log ]'
@@ -262,6 +266,7 @@ named:
   optional: true
 command:
 - kneaddata
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -277,3 +282,73 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: kneaddata [-h] [--version] [-v] -i INPUT -o OUTPUT_DIR\n      \
+  \           [-db REFERENCE_DB] [--bypass-trim]\n                 [--output-prefix\
+  \ OUTPUT_PREFIX] [-t <1>] [-p <1>]\n                 [-q {phred33,phred64}] [--run-bmtagger]\
+  \ [--run-trf]\n                 [--run-fastqc-start] [--run-fastqc-end] [--store-temp-output]\n\
+  \                 [--remove-intermediate-output] [--cat-final-output]\n        \
+  \         [--log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}] [--log LOG]\n      \
+  \           [--trimmomatic TRIMMOMATIC_PATH] [--max-memory MAX_MEMORY]\n       \
+  \          [--trimmomatic-options TRIMMOMATIC_OPTIONS]\n                 [--bowtie2\
+  \ BOWTIE2_PATH] [--bowtie2-options BOWTIE2_OPTIONS]\n                 [--no-discordant]\
+  \ [--reorder] [--serial]\n                 [--bmtagger BMTAGGER_PATH] [--trf TRF_PATH]\
+  \ [--match MATCH]\n                 [--mismatch MISMATCH] [--delta DELTA] [--pm\
+  \ PM] [--pi PI]\n                 [--minscore MINSCORE] [--maxperiod MAXPERIOD]\n\
+  \                 [--fastqc FASTQC_PATH]\n\nKneadData\n\noptional arguments:\n \
+  \ -h, --help            show this help message and exit\n  -v, --verbose       \
+  \  additional output is printed\n\nglobal options:\n  --version             show\
+  \ program's version number and exit\n  -i INPUT, --input INPUT\n               \
+  \         input FASTQ file (add a second argument instance to run with paired input\
+  \ files)\n  -o OUTPUT_DIR, --output OUTPUT_DIR\n                        directory\
+  \ to write output files\n  -db REFERENCE_DB, --reference-db REFERENCE_DB\n     \
+  \                   location of reference database (additional arguments add databases)\n\
+  \  --bypass-trim         bypass the trim step\n  --output-prefix OUTPUT_PREFIX\n\
+  \                        prefix for all output files\n                        [\
+  \ DEFAULT : $SAMPLE_kneaddata ]\n  -t <1>, --threads <1>\n                     \
+  \   number of threads\n                        [ Default : 1 ]\n  -p <1>, --processes\
+  \ <1>\n                        number of processes\n                        [ Default\
+  \ : 1 ]\n  -q {phred33,phred64}, --quality-scores {phred33,phred64}\n          \
+  \              quality scores\n                        [ DEFAULT : phred33 ]\n \
+  \ --run-bmtagger        run BMTagger instead of Bowtie2 to identify contaminant\
+  \ reads\n  --run-trf             run TRF to remove tandem repeats\n  --run-fastqc-start\
+  \    run fastqc at the beginning of the workflow\n  --run-fastqc-end      run fastqc\
+  \ at the end of the workflow\n  --store-temp-output   store temp output files\n\
+  \                        [ DEFAULT : temp output files are removed ]\n  --remove-intermediate-output\n\
+  \                        remove intermediate output files\n                    \
+  \    [ DEFAULT : intermediate output files are stored ]\n  --cat-final-output  \
+  \  concatenate all final output files\n                        [ DEFAULT : final\
+  \ output is not concatenated ]\n  --log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}\n\
+  \                        level of log messages\n                        [ DEFAULT\
+  \ : DEBUG ]\n  --log LOG             log file\n                        [ DEFAULT\
+  \ : $OUTPUT_DIR/$SAMPLE_kneaddata.log ]\n\ntrimmomatic arguments:\n  --trimmomatic\
+  \ TRIMMOMATIC_PATH\n                        path to trimmomatic\n              \
+  \          [ DEFAULT : $PATH ]\n  --max-memory MAX_MEMORY\n                    \
+  \    max amount of memory\n                        [ DEFAULT : 500m ]\n  --trimmomatic-options\
+  \ TRIMMOMATIC_OPTIONS\n                        options for trimmomatic\n       \
+  \                 [ DEFAULT : ILLUMINACLIP:/TruSeq3-SE.fa:2:30:10 SLIDINGWINDOW:4:20\
+  \ MINLEN:50 ]\n                        MINLEN is set to 50 percent of total input\
+  \ read length\n\nbowtie2 arguments:\n  --bowtie2 BOWTIE2_PATH\n                \
+  \        path to bowtie2\n                        [ DEFAULT : $PATH ]\n  --bowtie2-options\
+  \ BOWTIE2_OPTIONS\n                        options for bowtie2\n               \
+  \         [ DEFAULT : --very-sensitive ]\n  --no-discordant       do not include\
+  \ discordant alignments for pairs (ie one of the two pairs aligns)\n           \
+  \             [ DEFAULT : Discordant alignments are included ]\n  --reorder    \
+  \         order the sequences in the same order as the input\n                 \
+  \       [ DEFAULT : With discordant paired alignments sequences are not ordered\
+  \ ]\n  --serial              filter the input in serial for multiple databases so\
+  \ a subset of reads are processed in each database search\n\nbmtagger arguments:\n\
+  \  --bmtagger BMTAGGER_PATH\n                        path to BMTagger\n        \
+  \                [ DEFAULT : $PATH ]\n\ntrf arguments:\n  --trf TRF_PATH       \
+  \ path to TRF\n                        [ DEFAULT : $PATH ]\n  --match MATCH    \
+  \     matching weight\n                        [ DEFAULT : 2 ]\n  --mismatch MISMATCH\
+  \   mismatching penalty\n                        [ DEFAULT : 7 ]\n  --delta DELTA\
+  \         indel penalty\n                        [ DEFAULT : 7 ]\n  --pm PM    \
+  \           match probability\n                        [ DEFAULT : 80 ]\n  --pi\
+  \ PI               indel probability\n                        [ DEFAULT : 10 ]\n\
+  \  --minscore MINSCORE   minimum alignment score to report\n                   \
+  \     [ DEFAULT : 50 ]\n  --maxperiod MAXPERIOD\n                        maximum\
+  \ period size to report\n                        [ DEFAULT : 500 ]\n\nfastqc arguments:\n\
+  \  --fastqc FASTQC_PATH  path to fastqc\n                        [ DEFAULT : $PATH\
+  \ ]\n"
+generated_using:
+- --help

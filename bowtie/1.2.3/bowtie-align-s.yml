@@ -2,6 +2,87 @@
 positional: []
 named:
 - !Flag
+  description: query input files are FASTQ .fq/.fastq (default)
+  synonyms:
+  - -q
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: query input files are (multi-)FASTA .fa/.mfa
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: :<int>,i:<int> query input files are continuous FASTA where reads are
+    substrings (k-mers) extracted from a FASTA file <s> and aligned at offsets 1,
+    1+i, 1+2i ... end of reference
+  synonyms:
+  - -F
+  args: !SimpleFlagArg
+    name: k
+  optional: true
+- !Flag
+  description: query input files are raw one-sequence-per-line
+  synonyms:
+  - -r
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: query sequences given on cmd line (as <mates>, <singles>)
+  synonyms:
+  - -c
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: reads and index are in colorspace
+  synonyms:
+  - -C
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: QV file(s) corresponding to CSFASTA inputs; use with -f -C
+  synonyms:
+  - -Q/--quals
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: same as -Q, but for mate files 1 and 2 respectively
+  synonyms:
+  - --Q1/--Q2
+  args: !SimpleFlagArg
+    name: file
+  optional: true
+- !Flag
+  description: skip the first <int> reads/pairs in the input
+  synonyms:
+  - -s/--skip
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: stop after first <int> reads/pairs (excl. skipped reads)
+  synonyms:
+  - -u/--qupto
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: trim <int> bases from 5' (left) end of reads
+  synonyms:
+  - -5/--trim5
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: trim <int> bases from 3' (right) end of reads
+  synonyms:
+  - -3/--trim3
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
   description: input quals are Phred+33 (default)
   synonyms:
   - --phred33-quals
@@ -20,9 +101,9 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: .3-quals  input quals are from GA Pipeline ver. >= 1.3
+  description: input quals are from GA Pipeline ver. >= 1.3
   synonyms:
-  - --solexa1
+  - --solexa1.3-quals
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -32,23 +113,25 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '/--seedmms <int> max mismatches in seed (can be 0-3, default: -n 2)'
+  description: 'max mismatches in seed (can be 0-3, default: -n 2)'
   synonyms:
-  - -n
-  args: !EmptyFlagArg {}
+  - -n/--seedmms
+  args: !SimpleFlagArg
+    name: int
   optional: true
 - !Flag
-  description: '/--maqerr <int>  max sum of mismatch quals across alignment for -n
-    (def: 70)'
+  description: 'max sum of mismatch quals across alignment for -n (def: 70)'
   synonyms:
-  - -e
-  args: !EmptyFlagArg {}
+  - -e/--maqerr
+  args: !SimpleFlagArg
+    name: int
   optional: true
 - !Flag
-  description: '/--seedlen <int> seed length for -n (default: 28)'
+  description: 'seed length for -n (default: 28)'
   synonyms:
-  - -l
-  args: !EmptyFlagArg {}
+  - -l/--seedlen
+  args: !SimpleFlagArg
+    name: int
   optional: true
 - !Flag
   description: disable Maq-like quality rounding for -n (nearest 10 <= 30)
@@ -57,30 +140,29 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '/--minins <int>  minimum insert size for paired-end alignment (default:
-    0)'
+  description: 'minimum insert size for paired-end alignment (default: 0)'
   synonyms:
-  - -I
+  - -I/--minins
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: 'maximum insert size for paired-end alignment (default: 250)'
+  synonyms:
+  - -X/--maxins
+  args: !SimpleFlagArg
+    name: int
+  optional: true
+- !Flag
+  description: '-1, -2 mates align fw/rev, rev/fw, fw/fw (default: --fr)'
+  synonyms:
+  - --fr/--rf/--ff
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '/--maxins <int>  maximum insert size for paired-end alignment (default:
-    250)'
+  description: do not align to forward/reverse-complement reference strand
   synonyms:
-  - -X
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '/--rf/--ff     -1, -2 mates align fw/rev, rev/fw, fw/fw (default:
-    --fr)'
-  synonyms:
-  - --fr
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: /--norc      do not align to forward/reverse-complement reference strand
-  synonyms:
-  - --nofw
+  - --nofw/--norc
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -98,10 +180,9 @@ named:
     name: int
   optional: true
 - !Flag
-  description: /--tryhard       try hard to find valid alignments, at the expense
-    of speed
+  description: try hard to find valid alignments, at the expense of speed
   synonyms:
-  - -y
+  - -y/--tryhard
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -125,10 +206,9 @@ named:
     name: int
   optional: true
 - !Flag
-  description: /--all           report all alignments per read (much slower than low
-    -k)
+  description: report all alignments per read (much slower than low -k)
   synonyms:
-  - -a
+  - -a/--all
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -158,17 +238,17 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: /--time          print wall-clock time taken by search phases
+  description: print wall-clock time taken by search phases
   synonyms:
-  - -t
+  - -t/--time
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '/--offbase <int> leftmost ref offset = <int> in bowtie output (default:
-    0)'
+  description: 'leftmost ref offset = <int> in bowtie output (default: 0)'
   synonyms:
-  - -B
-  args: !EmptyFlagArg {}
+  - -B/--offbase
+  args: !SimpleFlagArg
+    name: int
   optional: true
 - !Flag
   description: print nothing but the alignments
@@ -248,9 +328,9 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: /--sam           write hits in SAM format
+  description: write hits in SAM format
   synonyms:
-  - -S
+  - -S/--sam
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -280,16 +360,18 @@ named:
     name: text
   optional: true
 - !Flag
-  description: /--offrate <int> override offrate of index; must be >= index's offrate
+  description: override offrate of index; must be >= index's offrate
   synonyms:
-  - -o
-  args: !EmptyFlagArg {}
+  - -o/--offrate
+  args: !SimpleFlagArg
+    name: int
   optional: true
 - !Flag
-  description: '/--threads <int> number of alignment threads to launch (default: 1)'
+  description: 'number of alignment threads to launch (default: 1)'
   synonyms:
-  - -p
-  args: !EmptyFlagArg {}
+  - -p/--threads
+  args: !SimpleFlagArg
+    name: int
   optional: true
 - !Flag
   description: use memory-mapped I/O for index; many 'bowtie's can share
@@ -316,15 +398,17 @@ named:
   - --verbose
   args: !EmptyFlagArg {}
   optional: true
-command:
-- bowtie-align-s
-subcommands: []
-help_flag: !Flag
-  description: /--help          print this usage message
+- !Flag
+  description: print this usage message
   synonyms:
-  - -h
+  - -h/--help
   args: !EmptyFlagArg {}
   optional: true
+command:
+- bowtie-align-s
+parent:
+subcommands: []
+help_flag:
 usage_flag:
 version_flag: !Flag
   description: print version information and quit
@@ -332,3 +416,77 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "Usage: \nbowtie-align-s [options]* <ebwt> {-1 <m1> -2 <m2> | --12 <r>\
+  \ | --interleaved <i> | <s>} [<hit>]\n\n  <m1>    Comma-separated list of files\
+  \ containing upstream mates (or the\n          sequences themselves, if -c is set)\
+  \ paired with mates in <m2>\n  <m2>    Comma-separated list of files containing\
+  \ downstream mates (or the\n          sequences themselves if -c is set) paired\
+  \ with mates in <m1>\n  <r>     Comma-separated list of files containing Crossbow-style\
+  \ reads.  Can be\n          a mixture of paired and unpaired.  Specify \"-\" for\
+  \ stdin.\n  <i>     Files with interleaved paired-end FASTQ reads.\n  <s>     Comma-separated\
+  \ list of files containing unpaired reads, or the\n          sequences themselves,\
+  \ if -c is set.  Specify \"-\" for stdin.\n  <hit>   File to write hits to (default:\
+  \ stdout)\nInput:\n  -q                 query input files are FASTQ .fq/.fastq (default)\n\
+  \  -f                 query input files are (multi-)FASTA .fa/.mfa\n  -F k:<int>,i:<int>\
+  \ query input files are continuous FASTA where reads\n                     are substrings\
+  \ (k-mers) extracted from a FASTA file <s>\n                     and aligned at\
+  \ offsets 1, 1+i, 1+2i ... end of reference\n  -r                 query input files\
+  \ are raw one-sequence-per-line\n  -c                 query sequences given on cmd\
+  \ line (as <mates>, <singles>)\n  -C                 reads and index are in colorspace\n\
+  \  -Q/--quals <file>  QV file(s) corresponding to CSFASTA inputs; use with -f -C\n\
+  \  --Q1/--Q2 <file>   same as -Q, but for mate files 1 and 2 respectively\n  -s/--skip\
+  \ <int>    skip the first <int> reads/pairs in the input\n  -u/--qupto <int>   stop\
+  \ after first <int> reads/pairs (excl. skipped reads)\n  -5/--trim5 <int>   trim\
+  \ <int> bases from 5' (left) end of reads\n  -3/--trim3 <int>   trim <int> bases\
+  \ from 3' (right) end of reads\n  --phred33-quals    input quals are Phred+33 (default)\n\
+  \  --phred64-quals    input quals are Phred+64 (same as --solexa1.3-quals)\n  --solexa-quals\
+  \     input quals are from GA Pipeline ver. < 1.3\n  --solexa1.3-quals  input quals\
+  \ are from GA Pipeline ver. >= 1.3\n  --integer-quals    qualities are given as\
+  \ space-separated integers (not ASCII)\nAlignment:\n  -v <int>           report\
+  \ end-to-end hits w/ <=v mismatches; ignore qualities\n    or\n  -n/--seedmms <int>\
+  \ max mismatches in seed (can be 0-3, default: -n 2)\n  -e/--maqerr <int>  max sum\
+  \ of mismatch quals across alignment for -n (def: 70)\n  -l/--seedlen <int> seed\
+  \ length for -n (default: 28)\n  --nomaqround       disable Maq-like quality rounding\
+  \ for -n (nearest 10 <= 30)\n  -I/--minins <int>  minimum insert size for paired-end\
+  \ alignment (default: 0)\n  -X/--maxins <int>  maximum insert size for paired-end\
+  \ alignment (default: 250)\n  --fr/--rf/--ff     -1, -2 mates align fw/rev, rev/fw,\
+  \ fw/fw (default: --fr)\n  --nofw/--norc      do not align to forward/reverse-complement\
+  \ reference strand\n  --maxbts <int>     max # backtracks for -n 2/3 (default: 125,\
+  \ 800 for --best)\n  --pairtries <int>  max # attempts to find mate for anchor hit\
+  \ (default: 100)\n  -y/--tryhard       try hard to find valid alignments, at the\
+  \ expense of speed\n  --chunkmbs <int>   max megabytes of RAM for best-first search\
+  \ frames (def: 64)\n --reads-per-batch   # of reads to read from input file at once\
+  \ (default: 16)\nReporting:\n  -k <int>           report up to <int> good alignments\
+  \ per read (default: 1)\n  -a/--all           report all alignments per read (much\
+  \ slower than low -k)\n  -m <int>           suppress all alignments if > <int> exist\
+  \ (def: no limit)\n  -M <int>           like -m, but reports 1 random hit (MAPQ=0);\
+  \ requires --best\n  --best             hits guaranteed best stratum; ties broken\
+  \ by quality\n  --strata           hits in sub-optimal strata aren't reported (requires\
+  \ --best)\nOutput:\n  -t/--time          print wall-clock time taken by search phases\n\
+  \  -B/--offbase <int> leftmost ref offset = <int> in bowtie output (default: 0)\n\
+  \  --quiet            print nothing but the alignments\n  --refidx           refer\
+  \ to ref. seqs by 0-based index rather than name\n  --al <fname>       write aligned\
+  \ reads/pairs to file(s) <fname>\n  --un <fname>       write unaligned reads/pairs\
+  \ to file(s) <fname>\n  --no-unal          suppress SAM records for unaligned reads\n\
+  \  --max <fname>      write reads/pairs over -m limit to file(s) <fname>\n  --suppress\
+  \ <cols>  suppresses given columns (comma-delim'ed) in default output\n  --fullref\
+  \          write entire ref name (default: only up to 1st space)\nColorspace:\n\
+  \  --snpphred <int>   Phred penalty for SNP when decoding colorspace (def: 30)\n\
+  \     or\n  --snpfrac <dec>    approx. fraction of SNP bases (e.g. 0.001); sets\
+  \ --snpphred\n  --col-cseq         print aligned colorspace seqs as colors, not\
+  \ decoded bases\n  --col-cqual        print original colorspace quals, not decoded\
+  \ quals\n  --col-keepends     keep nucleotides at extreme ends of decoded alignment\n\
+  SAM:\n  -S/--sam           write hits in SAM format\n  --mapq <int>       default\
+  \ mapping quality (MAPQ) to print for SAM alignments\n  --sam-nohead       supppress\
+  \ header lines (starting with @) for SAM output\n  --sam-nosq         supppress\
+  \ @SQ header lines for SAM output\n  --sam-RG <text>    add <text> (usually \"lab=value\"\
+  ) to @RG line of SAM header\nPerformance:\n  -o/--offrate <int> override offrate\
+  \ of index; must be >= index's offrate\n  -p/--threads <int> number of alignment\
+  \ threads to launch (default: 1)\n  --mm               use memory-mapped I/O for\
+  \ index; many 'bowtie's can share\n  --shmem            use shared mem for index;\
+  \ many 'bowtie's can share\nOther:\n  --seed <int>       seed for random number\
+  \ generator\n  --verbose          verbose output (for debugging)\n  --version  \
+  \        print version information and quit\n  -h/--help          print this usage\
+  \ message\n"
+generated_using:
+- --help

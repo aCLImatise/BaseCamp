@@ -93,7 +93,7 @@ named:
 - !Flag
   description: Configuration file containing the paths to external tools (e.g. Bowtie,
     Blat, fastq-dump.) in case that they are not specified in PATH variable! Default
-    is '/ tmp/tmpg5gctayr/etc/configuration.cfg,/tmp/tmpg5gctayr /bin/configuration.cfg'.
+    is '/ tmp/tmpr7lyfvkf/etc/configuration.cfg,/tmp/tmpr7lyfvkf /bin/configuration.cfg'.
   synonyms:
   - --config
   args: !SimpleFlagArg
@@ -146,7 +146,7 @@ named:
     \ aligners specified in the list of aligners specified in the configuration file\
     \ will be used (and the rest of aligner specified here will be ignored). In case\
     \ that the configuration file is not found then the following aligners from the\
-    \ list will be used. Default is '/tmp/tmpg5gctayr/etc/configuration.cfg,blat,star'."
+    \ list will be used. Default is '/tmp/tmpr7lyfvkf/etc/configuration.cfg,blat,star'."
   synonyms:
   - --aligners
   args: !SimpleFlagArg
@@ -223,6 +223,7 @@ named:
   optional: true
 command:
 - fusioncatcher.py
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -238,3 +239,136 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "Usage: fusioncatcher.py [options]\n\nFusionCatcher searches for novel\
+  \ and known somatic gene fusions in RNA-seq\npaired-end/single-end reads data produced\
+  \ by the Illumina sequencing\nplatforms (like for example: Illumina HiSeq 2500,\
+  \  Illumina HiSeq 2000,\nIllumina HiSeq X, Illumina NextSeq 500,  Illumina GAIIx,\
+  \ Illumina GAII,\nIllumina MiSeq, Illumina MiniSeq).\n\nOptions:\n  --version  \
+  \           show program's version number and exit\n  -h, --help            show\
+  \ this help message and exit\n  -i INPUT_FILENAME, --input=INPUT_FILENAME\n    \
+  \                    The input file(s) or directory. The files should be in\n  \
+  \                      FASTQ or SRA format and may be or not compressed using\n\
+  \                        gzip or zip. A list of files can be specified by given\n\
+  \                        the filenames separated by comma. If a directory is\n \
+  \                       given then it will analyze all the files found with\n  \
+  \                      the following extensions: .sra, .fastq, .fastq.zip,\n   \
+  \                     .fastq.gz, .fastq.bz2, fastq.xz, .fq, .fq.zip, .fq.gz,\n \
+  \                       .fq.bz2, fz.xz, .txt, .txt.zip, .txt.gz, .txt.bz2 .\n  --batch\
+  \               If this is used then batch mode is used and the input\n        \
+  \                specified using '--input' or '-i' is: (i) a tab-\n            \
+  \            separated text file containing a each line such that\n            \
+  \            there is one sample per line and first column are the\n           \
+  \             FASTQ files' full pathnames/URLs, separated by commas,\n         \
+  \               corresponding to the sample and an optional second\n           \
+  \             column containing the name for the sample, or (ii) a\n           \
+  \             input directory which contains a several\n                       \
+  \ subdirectories such that each subdirectory corresponds\n                     \
+  \   to only one sample and it contains all the FASTQ files\n                   \
+  \     corresponding to that sample. This is useful when\n                      \
+  \  several samples needs to be analyzed.\n  --single-end          If this is used\
+  \ then it is assumed that all the input\n                        reads are single-end\
+  \ reads which must be longer than\n                        130 bp. Be default it\
+  \ is assumed that all input reads\n                        come from a paired-end\
+  \ reads.\n  -I NORMAL_MATCHED_FILENAME, --normal=NORMAL_MATCHED_FILENAME\n     \
+  \                   The input file(s) or directory containing the healthy\n    \
+  \                    normal-matched data. They should be given in the same\n   \
+  \                     format as for '--input'. In case that this option is\n   \
+  \                     used then the files/directory given to '--input' is\n    \
+  \                    considered to be from the sample of a patient with\n      \
+  \                  disease. This is optional.\n  -o OUTPUT_DIRECTORY, --output=OUTPUT_DIRECTORY\n\
+  \                        The output directory where all the output files\n     \
+  \                   containing information about the found candidate\n         \
+  \               fusiongenes are written. Default is 'none'.\n  -d DATA_DIRECTORY,\
+  \ --data=DATA_DIRECTORY\n                        The data directory where all the\
+  \ annotations files\n                        from Ensembl database are placed, e.g.\
+  \ 'data/'. This\n                        directory should be built using 'fusioncatcher-build'.\n\
+  \                        If it is not used then it is read from configuration\n\
+  \                        file specified with '--config' from 'data = ...' line.\n\
+  \  -T TMP_DIRECTORY, --tmp=TMP_DIRECTORY\n                        The temporary\
+  \ directory where all the outputs files\n                        and directories\
+  \ will be written. Default is directory\n                        'tmp' in the output\
+  \ directory specified with '--\n                        output'.\n  -p PROCESSES,\
+  \ --threads=PROCESSES\n                        Number or processes/threads to be\
+  \ used for running\n                        SORT, Bowtie, BLAT, STAR, BOWTIE2 and\
+  \ other\n                        tools/programs. If it is 0 (as it is by default)\
+  \ then\n                        the number of processes/threads will be read first\n\
+  \                        from 'fusioncatcher/etc/configuration.cfg' file. If\n \
+  \                       even there it is still set to 0 then 'min(number-of-\n \
+  \                       CPUs-found,16)' processes will be used. Setting number\n\
+  \                        of threads in 'fusioncatcher/etc/configuration.cfg'\n \
+  \                       might be usefull in situations where one server is\n   \
+  \                     shared between several users and in order to limit\n     \
+  \                   FusionCatcher using all the CPUs/resources.Default is\n    \
+  \                    '0'.\n  --config=CONFIGURATION_FILENAME\n                 \
+  \       Configuration file containing the paths to external\n                  \
+  \      tools (e.g. Bowtie, Blat, fastq-dump.) in case that\n                   \
+  \     they are not specified in PATH variable! Default is '/\n                 \
+  \       tmp/tmpr7lyfvkf/etc/configuration.cfg,/tmp/tmpr7lyfvkf\n               \
+  \         /bin/configuration.cfg'.\n  -F, --force-paths     If it is specified then\
+  \ all external tools and all\n                        Python tools will be executed\
+  \ by FusionCatcher by\n                        using their corresponding absolute\
+  \ paths, which will\n                        be obined from the fusioncatcher/bin/configuration.cfg\n\
+  \                        file. By default no paths are specified when executing\n\
+  \                        tools/scripts. Default is 'False'.\n  -Z, --no-update-check\n\
+  \                        Skips the automatic routine that contacts the\n       \
+  \                 FusionCatcher server to check for a more recent\n            \
+  \            version. Default is 'False'.\n  -V, --keep-viruses-alignments\n   \
+  \                     If it is set then the SAM alignments files of reads\n    \
+  \                    mapping on viruses genomes are saved in the output\n      \
+  \                  directory for later inspection by the user. Default is\n    \
+  \                    'False'.\n  -U, --keep-unmapped-reads\n                   \
+  \     If it is set then the FASTQ files, containing the\n                      \
+  \  unmapped reads (i.e. reads which do not map on genome\n                     \
+  \   and transcriptome), are saved in the output directory\n                    \
+  \    for later inspection by the user. Default is 'False'.\n  --aligners=ALIGNERS\
+  \   The aligners to be used on Bowtie aligner. By default\n                    \
+  \    always BOWTIE aligner is used and it cannot be\n                        disabled.\
+  \ The choices are: ['blat','star','bowtie2'].\n                        Any combination\
+  \ of these is accepted if the aligners'\n                        names are comma\
+  \ separated. For example, if one wants\n                        to used all four\
+  \ aligners then 'blat,star,bowtie2'\n                        should be given. The\
+  \ command line options '--skip-\n                        blat', '--skip-star', and\
+  \ '--skip-bowtie2' have\n                        priority over this option. If the\
+  \ first element in the\n                        list is the configuration file (that\
+  \ is '.cfg' file)\n                        of FusionCatcher then the aligners specified\
+  \ in the\n                        list of aligners specified in the configuration\
+  \ file\n                        will be used (and the rest of aligner specified\
+  \ here\n                        will be ignored). In case that the configuration\
+  \ file\n                        is not found then the following aligners from the\
+  \ list\n                        will be used. Default is\n                     \
+  \   '/tmp/tmpr7lyfvkf/etc/configuration.cfg,blat,star'.\n  --skip-blat         \
+  \  If it is set then the pipeline will NOT use the BLAT\n                      \
+  \  aligner and all options and methods which make use of\n                     \
+  \   BLAT will be disabled. BLAT aligner is used by\n                        default.\
+  \ Please, note that BLAT license does not allow\n                        BLAT to\
+  \ be used for commercial activities. Fore more\n                        information\
+  \ regarding BLAT please see its license:\n                        <http://users.soe.ucsc.edu/~kent/src/>.\
+  \ Default is\n                        'False'.\n  --skip-star           If it is\
+  \ set then the pipeline will NOT use the STAR\n                        aligner and\
+  \ all options and methods which make use of\n                        STAR will be\
+  \ disabled. STAR aligner is used by\n                        default. Default is\
+  \ 'False'.\n  --skip-conversion-grch37\n                        If it is set then\
+  \ the fusion coordinates for human\n                        genome version GRCh38\
+  \ (which is default) will NOT be\n                        reported also using version\
+  \ GRCh37/hg19. Default is\n                        'False'.\n  --limitSjdbInsertNsj=LIMITSJDBINSERTNSJ\n\
+  \                        This option is passed diretly to STAR aligner For more\n\
+  \                        info see STAR aligner regarding this option. Default\n\
+  \                        is '2000000'.\n  --limitOutSJcollapsed=LIMITOUTSJCOLLAPSED\n\
+  \                        This option is passed diretly to STAR aligner For more\n\
+  \                        info see STAR aligner regarding this option. Default\n\
+  \                        is '1000000'.\n  --sort-buffer-size=SORT_BUFFER_SIZE\n\
+  \                        It specifies the buffer size for command SORT. Default\n\
+  \                        is '80%' if less than 32GB RAM is installed on\n      \
+  \                  computer else is set to 26GB.\n  --start=START_STEP    It re-starts\
+  \ executing the workflow/pipeline from the\n                        given step number.\
+  \ This can be used when the pipeline\n                        has crashed/stopped\
+  \ and one wants to re-run it from\n                        from the step where it\
+  \ stopped without re-running from\n                        the beginning the entire\
+  \ pipeline. 0 is for restarting\n                        automatically and 1 is\
+  \ the first step. Default is '0'.\n  --Xmx=XMX             The amount of memory\
+  \ to be used by Java tools. This\n                        will be passed to Javas\
+  \ '-Xmx' so for more info see\n                        '-Xmx' in java.Default is\
+  \ '18g'.\n\nAuthor: Daniel Nicorici \nEmail: Daniel.Nicorici@gmail.com \nCopyright\
+  \ (c) 2009-2019, Daniel Nicorici \n \n"
+generated_using:
+- --help

@@ -37,9 +37,9 @@ named:
   synonyms:
   - --scale
   args: !ChoiceFlagArg
-    choices:
-    - rpk
-    - count
+    choices: !!set
+      count:
+      rpk:
   optional: true
 - !Flag
   description: 'memory for -M option in CD-Hit '
@@ -50,6 +50,7 @@ named:
   optional: true
 command:
 - ppanini_press
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -60,3 +61,17 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: ppanini_press [-h] -i GENE_PATH -o OUTPUT [-r] [--threads THREADS]\n\
+  \                     [--scale {rpk,count}] [--memory CD_HIT_MEMORY]\n\nPPANINI\
+  \ Press: clusters genes to gene families including annotated genes to UniRef90 and\
+  \ homology-based clustered genes.\n\noptional arguments:\n  -h, --help         \
+  \   show this help message and exit\n  -i GENE_PATH, --gene-path GENE_PATH\n   \
+  \                     a directory path to ppanini_gene_caller outputs which includes\
+  \ txt, gff, and faa files for each sample.\n  -o OUTPUT, --output OUTPUT\n     \
+  \                   Path for outputs\n  -r, --resume          bypass commands if\
+  \ the output files exist\n  --threads THREADS     number of threads/processes\n\
+  \                        [DEFAULT: 1]\n  --scale {rpk,count}   scale the abundance\
+  \ table\n  --memory CD_HIT_MEMORY\n                        memory for -M option\
+  \ in CD-Hit \n"
+generated_using:
+- --help

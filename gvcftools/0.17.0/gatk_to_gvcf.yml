@@ -144,6 +144,7 @@ named:
   optional: true
 command:
 - gatk_to_gvcf
+parent:
 subcommands: []
 help_flag: !Flag
   description: '[ --help ]         print this message'
@@ -153,3 +154,35 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "\ngatk_to_gvcf creates block-compressed gVCF from modified GATK all sites\
+  \ output\n\nversion: 0.17.0\n\nusage: gatk_to_gvcf [options] < all_sites > gVCF\n\
+  \noptions:\n\nfilters:\n  --chrom-depth-file arg        Read mean depth for each\
+  \ chromosome from file, \n                                and use these values for\
+  \ maximum site depth \n                                filteration. File should\
+  \ contain one line per \n                                chromosome, where each\
+  \ line begins with: \n                                \"chrom_name<TAB>depth\" (default:\
+  \ no chrom depth\n                                filtration)\n  --max-depth-factor\
+  \ arg (=3.0) If a chrom depth file is supplied then loci \n                    \
+  \            with depth exceeding the mean chrom depth times\n                 \
+  \               this value are filtered\n  --min-gqx arg (=20.0)         Minimum\
+  \ locus GQX\n  --min-mq arg (=20.0)          Minimum site MQ\n  --min-qd arg (=3.73)\
+  \          Minimum locus QD\n  --max-site-fs arg (=60.0)     Maximum site FS\n \
+  \ --max-hapscore arg (=13.0)    Maximum site HaplotypeScore\n  --min-mqrs arg (=-12.5)\
+  \       Minimum site MQRankSum\n  --min-site-rprs arg (=-2.386) Minimum site ReadPosRankSum\n\
+  \  --max-indel-fs arg (=200.0)   Maximum indel FS\n  --min-indel-rprs arg (=-20.0)\
+  \ Minimum indel ReadPosRankSum\n  --no-default-filters          Clear all default\
+  \ filters. Any individual \n                                filter threshold changes\
+  \ above will still be in\n                                effect\n\nconfiguration:\n\
+  \  --min-blockable-nonref arg (=0.2) If AD present, only compress non-variant \n\
+  \                                    site if 1-AD[0]/DP < value\n  --skip-header\
+  \                     Write gVCF output without header\n\nblocks:\n  --block-range-factor\
+  \ arg (=0.3)       Non-variant blocks are restricted to \n                     \
+  \                   range [x,y], y <= max(x+3,x*(1+block-ra\n                  \
+  \                      nge-factor))\n  --block-label arg (=BLOCKAVG_min30p3a)\n\
+  \                                        VCF INFO key used to annotate \n      \
+  \                                  compressed non-variant blocks\n  --block-stats\
+  \ arg                     Write non-variant block stats to the \n              \
+  \                          file\n  --no-block-compression                Turn off\
+  \ block compression\n\nhelp:\n  -h [ --help ]         print this message\n\n"
+generated_using:
+- --help

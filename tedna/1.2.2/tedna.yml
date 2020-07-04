@@ -2,6 +2,20 @@
 positional: []
 named:
 - !Flag
+  description: First FASTQ file.
+  synonyms:
+  - '-1'
+  - --file1
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Second FASTQ file.
+  synonyms:
+  - '-2'
+  - --file2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: Insert size.
   synonyms:
   - -i
@@ -70,6 +84,7 @@ named:
   optional: true
 command:
 - tedna
+parent:
 subcommands: []
 help_flag: !Flag
   description: Print usage and exit.
@@ -84,3 +99,44 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "USAGE: tedna [options]\n\nCompulsory options:\n  -1, --file1         \
+  \ First FASTQ file.\n  -2, --file2          Second FASTQ file.\n  -i, --insert \
+  \        Insert size.\n  -k, --kmer           K-mer size.\n  -o, --output      \
+  \   Output file.\n\nOther options:\n  -t, --threshold      K-mer frequency threshold\
+  \   (default: ad hoc).\n  -m, --min-te-size    Minimum TE size             (default:\
+  \ 500).\n  -M, --max-te-size    Maximum TE size             (default: 30000).\n\
+  \  -p, --processors     Number of processors        (default: 2).\n  --help    \
+  \           Print usage and exit.\n  --version            Print version and exit.\n\
+  \nObscure options:\n\n  k-mer frequency:\n  --repeat-frequency   Minimum number\
+  \ of repetitions      (default: 2).\n  --min-frequency      Minimum k-mer frequency\
+  \            (default: 3).\n  --frequency-dif      Maximum k-mer frequency difference\
+  \ (default: 2.5).\n\n  graph:\n  --small-graph        Minimum graph size       \
+  \          (default: 300).\n  --big-graph          Maximum graph size          \
+  \       (default: 100000).\n  --small-graph-count  Stop after N small graphs   \
+  \       (default: 10000), 0:\n                       never stop.\n  --max-paths\
+  \          Maximum # paths                    (default: 100), 0:\n             \
+  \          never stop.\n  --erosion            Erosion strength                \
+  \   (default: 100).\n  --bubble-size        Size of the bubbles                (default:\
+  \ 1000).\n\n  LTR elements:\n  --min-ltr            Minimum LTR size           \
+  \        (default: 50).\n  --max-ltr            Maximum LTR size               \
+  \    (default: 5000).\n\n  duplicate removal:\n  --duplicate-id       Maximum id.\
+  \ to remove duplicate    (default: 30%).\n\n  merge:\n  --min-overlap        Minimum\
+  \ overlap to merge TEs       (default: 20).\n  --max-overlap        Maximum overlap\
+  \ to merge TEs       (default: 500).\n  --short-kmer         Small k-mer size  \
+  \                 (default: 15).\n  --indel-pen          Indel penalty         \
+  \             (default: 30).\n  --mismatch-pen       Mismatch penalty          \
+  \         (default: 10).\n  --size-pen           Size penalty                  \
+  \     (default: 1).\n  --max-pen            Maximum penalty                    (default:\
+  \ 200).\n  --min-id             Minimum identity                   (default: 80).\n\
+  \  --merge-max-nb       Maximum number of neighbor/node    (default: 10), 0: do\n\
+  \                       not use.\n\n  scaffolding:\n  --min-scaffold       Minimum\
+  \ number of evidences/scaff. (default: 100).\n  --max-scaffold       Maximum number\
+  \ of evidences/scaff. (default: 10000).\n  --scaffold-max-nb    Maximum number of\
+  \ neighbor/node    (default: 5), 0: do\n                       not use.\n\n  input\
+  \ reading:\n  --bytes-per-thread   Number of bytes read per thread    (default:\
+  \ 10000000).\n  --max-reads          Maximum number of reads read       (default:\
+  \ 0), 0: read\n                       all.\n  --check              Check if a sequence\
+  \ is assembled   (default: none).\n\nExample:\n  ./tedna -1 left.fastq -2 right.fastq\
+  \ -k 61 -i 300 -o output.fasta\n"
+generated_using:
+- --help

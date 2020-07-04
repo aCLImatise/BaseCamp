@@ -36,9 +36,9 @@ named:
   synonyms:
   - --format
   args: !ChoiceFlagArg
-    choices:
-    - fasta
-    - diamond
+    choices: !!set
+      fasta:
+      diamond:
   optional: true
 - !Flag
   description: the minimum abundance for a genus to be included in the database
@@ -49,6 +49,7 @@ named:
   optional: true
 command:
 - humann2_build_custom_database
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -59,3 +60,19 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: humann2_build_custom_database [-h] -i INPUT -o OUTPUT\n       \
+  \                              [--id-mapping ID_MAPPING]\n                     \
+  \                [--taxonomic-profile TAXONOMIC_PROFILE]\n                     \
+  \                [--format {fasta,diamond}]\n                                  \
+  \   [--genus-abundance-threshold GENUS_ABUNDANCE_THRESHOLD]\n\nCreate a custom database\
+  \ file\n\noptional arguments:\n  -h, --help            show this help message and\
+  \ exit\n  -i INPUT, --input INPUT\n                        the fasta input file\n\
+  \  -o OUTPUT, --output OUTPUT\n                        the output folder\n  --id-mapping\
+  \ ID_MAPPING\n                        the file mapping fasta ids to taxonomy\n \
+  \ --taxonomic-profile TAXONOMIC_PROFILE\n                        the file containing\
+  \ the taxonomic profile\n  --format {fasta,diamond}\n                        the\
+  \ final database format\n  --genus-abundance-threshold GENUS_ABUNDANCE_THRESHOLD\n\
+  \                        the minimum abundance for a genus to be included in the\
+  \ database\n"
+generated_using:
+- --help

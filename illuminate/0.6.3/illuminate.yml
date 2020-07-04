@@ -1,5 +1,10 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: datapath
+  optional: false
 named:
 - !Flag
   description: 'Increase verbosity           '
@@ -120,6 +125,7 @@ named:
   optional: true
 command:
 - illuminate
+parent:
 subcommands: []
 help_flag: !Flag
   description: Show this screen.
@@ -135,3 +141,31 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "ILLUMINATE\n\nUsage: illuminate [options] <datapath>\n       illuminate\
+  \ [options] [--csv | --json] <datapath>\n\nBy default, illuminate prints a summary\
+  \ of most commonly desired characteristics rather\nthan raw data (e.g. cluster density\
+  \ from --tile, Q30 percentage scores from --quality.)\n\nRaw data can be output\
+  \ to --csv or --json, either to STDOUT or to file(s). If no --outpath\nspecified,\
+  \ data will be sent to STDOUT with two newlines separating each metric section.\n\
+  \nThe --outpath / -o param should contain an already existing directory which the\
+  \ user has\npermissions to create new directories within.\n\nFor example, \n\n \
+  \ illuminate --csv --quality --extraction -o /data/dump/ /path/to/dataset \n\nproduces:\
+  \  /data/dump/name/quality.metrics.csv, /data/dump/name/extraction.metrics.csv\n\
+  \n...where `name` is either a user-supplied --name parameter or the RunID given\
+  \ by the \nsequencer (as recorded in RTA_Run_Info).\n\n  -h --help             Show\
+  \ this screen.\n  --version             Show version.\n  -v, --verbose         Increase\
+  \ verbosity           \n  -q, --quiet           Suppress all console output   \n\
+  \  -d, --debug           Increase verbosity and prefix output with Unix timestamps.\
+  \ \n  -i, --interactive     Load dataset into iPython for interactive fun.\n  -n\
+  \ --name=name        Set a name for this dataset. [default: meta.runID]\n  \n  --all\
+  \             Parse and print (or dump) everything\n  --meta            Print flowcell_layout\
+  \ and read_config\n\n  --tile            Parse tile metrics\n  --quality       \
+  \  Parse quality metrics \n  --index           Parse index metrics\n  --error  \
+  \         Parse error metrics\n  --corint          Parse corrected intensity metrics\n\
+  \  --extraction      Parse extraction metrics\n  --control         Parse control\
+  \ metrics\n\n  --csv             Output raw data from parser as CSV \n  --json \
+  \           Output raw data from parser as JSON\n  \n  -o, --outpath=<outpath> Output\
+  \ parser results to directory\n  -t, --timestamp   Generate filename(s) containing\
+  \ Unix timestamps (format: timestamp.metric.format)\n"
+generated_using:
+- --help

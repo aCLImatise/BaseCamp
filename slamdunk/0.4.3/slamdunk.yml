@@ -1,8 +1,9 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - slamdunk
+parent:
 subcommands:
 - !Command
   positional:
@@ -13,6 +14,30 @@ subcommands:
     name: files
     optional: false
   named:
+  - !Flag
+    description: Reference fasta file
+    synonyms:
+    - -r
+    - --reference
+    args: !SimpleFlagArg
+      name: REFERENCEFILE
+    optional: true
+  - !Flag
+    description: Output directory for mapped BAM files.
+    synonyms:
+    - -o
+    - --outputDir
+    args: !SimpleFlagArg
+      name: OUTPUTDIR
+    optional: true
+  - !Flag
+    description: "Number of bp removed from 5' end of all reads. (default: 12)"
+    synonyms:
+    - '-5'
+    - --trim-5p
+    args: !SimpleFlagArg
+      name: TRIM5
+    optional: true
   - !Flag
     description: 'Max. number of alignments to report per read (default: 1)'
     synonyms:
@@ -96,10 +121,49 @@ subcommands:
   command:
   - slamdunk
   - map
+  parent: *id001
   subcommands: []
-  help_flag:
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: slamdunk map [-h] -r REFERENCEFILE -o OUTPUTDIR [-5 TRIM5] [-n\
+    \ TOPN]\n                    [-a MAXPOLYA] [-t THREADS] [-q] [-e] [-sn SAMPLENAME]\n\
+    \                    [-sy SAMPLETYPE] [-st SAMPLETIME] [-i SAMPLEINDEX] [-ss]\n\
+    \                    files [files ...]\n\npositional arguments:\n  files     \
+    \            Single csv/tsv file (recommended) containing all\n              \
+    \          sample files and sample info or a list of all sample\n            \
+    \            BAM/FASTA(gz)/FASTQ(gz) files\n\noptional arguments:\n  -h, --help\
+    \            show this help message and exit\n  -r REFERENCEFILE, --reference\
+    \ REFERENCEFILE\n                        Reference fasta file\n  -o OUTPUTDIR,\
+    \ --outputDir OUTPUTDIR\n                        Output directory for mapped BAM\
+    \ files.\n  -5 TRIM5, --trim-5p TRIM5\n                        Number of bp removed\
+    \ from 5' end of all reads.\n                        (default: 12)\n  -n TOPN,\
+    \ --topn TOPN  Max. number of alignments to report per read (default:\n      \
+    \                  1)\n  -a MAXPOLYA, --max-polya MAXPOLYA\n                 \
+    \       Max number of As at the 3' end of a read. (default: 4)\n  -t THREADS,\
+    \ --threads THREADS\n                        Thread number (default: 1)\n  -q,\
+    \ --quantseq        Run plain Quantseq alignment without SLAM-seq scoring\n  \
+    \                      (default: False)\n  -e, --endtoend        Use a end to\
+    \ end alignment algorithm for mapping.\n                        (default: False)\n\
+    \  -sn SAMPLENAME, --sampleName SAMPLENAME\n                        Use this sample\
+    \ name for all supplied samples\n                        (default: None)\n  -sy\
+    \ SAMPLETYPE, --sampleType SAMPLETYPE\n                        Use this sample\
+    \ type for all supplied samples\n                        (default: pulse)\n  -st\
+    \ SAMPLETIME, --sampleTime SAMPLETIME\n                        Use this sample\
+    \ time for all supplied samples\n                        (default: 0)\n  -i SAMPLEINDEX,\
+    \ --sample-index SAMPLEINDEX\n                        Run analysis only for sample\
+    \ <i>. Use for distributing\n                        slamdunk analysis on a cluster\
+    \ (index is 1-based).\n                        (default: -1)\n  -ss, --skip-sam\
+    \       Output BAM while mapping. Slower but, uses less hard\n               \
+    \         disk. (default: False)\n"
+  generated_using: &id002
+  - --help
 - !Command
   positional:
   - !Positional
@@ -159,6 +223,7 @@ subcommands:
   command:
   - slamdunk
   - filter
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -169,13 +234,19 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-- !Command
-  positional:
-  - !Positional
-    description: Bam file(s)
-    position: 0
-    name: bam
-    optional: false
+  help_text: "usage: slamdunk filter [-h] -o OUTPUTDIR [-b BED] [-mq MQ] [-mi IDENTITY]\n\
+    \                       [-nm NM] [-t THREADS]\n                       bam [bam\
+    \ ...]\n\npositional arguments:\n  bam                   Bam file(s)\n\noptional\
+    \ arguments:\n  -h, --help            show this help message and exit\n  -o OUTPUTDIR,\
+    \ --outputDir OUTPUTDIR\n                        Output directory for mapped BAM\
+    \ files.\n  -b BED, --bed BED     BED file, overrides MQ filter to 0\n  -mq MQ,\
+    \ --min-mq MQ   Minimum mapping quality (default: 2)\n  -mi IDENTITY, --min-identity\
+    \ IDENTITY\n                        Minimum alignment identity (default: 0.95)\n\
+    \  -nm NM, --max-nm NM   Maximum NM for alignments (default: -1)\n  -t THREADS,\
+    \ --threads THREADS\n                        Thread number (default: 1)\n"
+  generated_using: *id002
+- &id003 !Command
+  positional: []
   named:
   - !Flag
     description: Output directory for mapped BAM files.
@@ -220,7 +291,74 @@ subcommands:
   command:
   - slamdunk
   - snp
-  subcommands: []
+  parent: *id001
+  subcommands:
+  - !Command
+    positional:
+    - !Positional
+      description: ''
+      position: 0
+      name: slamdunk
+      optional: false
+    - !Positional
+      description: ''
+      position: 1
+      name: snp
+      optional: false
+    named:
+    - !Flag
+      description: ''
+      synonyms:
+      - -o
+      args: !SimpleFlagArg
+        name: OUTPUTDIR
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -r
+      args: !SimpleFlagArg
+        name: FASTA
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -c
+      args: !SimpleFlagArg
+        name: COV
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -f
+      args: !SimpleFlagArg
+        name: VAR
+      optional: true
+    - !Flag
+      description: ''
+      synonyms:
+      - -t
+      args: !SimpleFlagArg
+        name: THREADS
+      optional: true
+    command:
+    - slamdunk
+    - snp
+    - bam
+    parent: *id003
+    subcommands: []
+    help_flag: !Flag
+      description: ''
+      synonyms:
+      - -h
+      args: !EmptyFlagArg {}
+      optional: true
+    usage_flag:
+    version_flag:
+    help_text: "usage: slamdunk snp [-h] -o OUTPUTDIR -r FASTA [-c COV] [-f VAR] [-t\
+      \ THREADS]\n                    bam [bam ...]\nslamdunk snp: error: the following\
+      \ arguments are required: -o/--outputDir, -r/--reference\n"
+    generated_using: []
   help_flag: !Flag
     description: show this help message and exit
     synonyms:
@@ -230,6 +368,17 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: slamdunk snp [-h] -o OUTPUTDIR -r FASTA [-c COV] [-f VAR] [-t\
+    \ THREADS]\n                    bam [bam ...]\n\npositional arguments:\n  bam\
+    \                   Bam file(s)\n\noptional arguments:\n  -h, --help         \
+    \   show this help message and exit\n  -o OUTPUTDIR, --outputDir OUTPUTDIR\n \
+    \                       Output directory for mapped BAM files.\n  -r FASTA, --reference\
+    \ FASTA\n                        Reference fasta file\n  -c COV, --min-coverage\
+    \ COV\n                        Minimimum coverage to call variant (default: 10)\n\
+    \  -f VAR, --var-fraction VAR\n                        Minimimum variant fraction\
+    \ to call variant (default:\n                        0.8)\n  -t THREADS, --threads\
+    \ THREADS\n                        Thread number (default: 1)\n"
+  generated_using: *id002
 - !Command
   positional:
   - !Positional
@@ -314,6 +463,7 @@ subcommands:
   command:
   - slamdunk
   - count
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -324,6 +474,24 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: slamdunk count [-h] -o OUTPUTDIR [-s SNPDIR] [-v VCFFILE] -r\
+    \ REF -b BED\n                      [-c CONVERSIONTHRESHOLD] [-l MAXLENGTH] [-q\
+    \ MINQUAL]\n                      [-t THREADS]\n                      bam [bam\
+    \ ...]\n\npositional arguments:\n  bam                   Bam file(s)\n\noptional\
+    \ arguments:\n  -h, --help            show this help message and exit\n  -o OUTPUTDIR,\
+    \ --outputDir OUTPUTDIR\n                        Output directory for mapped BAM\
+    \ files.\n  -s SNPDIR, --snp-directory SNPDIR\n                        Directory\
+    \ containing SNP files.\n  -v VCFFILE, --vcf VCFFILE\n                       \
+    \ Externally provided custom variant file.\n  -r REF, --reference REF\n      \
+    \                  Reference fasta file\n  -b BED, --bed BED     BED file\n  -c\
+    \ CONVERSIONTHRESHOLD, --conversion-threshold CONVERSIONTHRESHOLD\n          \
+    \              Number of T>C conversions required to count read as\n         \
+    \               T>C read (default: 1)\n  -l MAXLENGTH, --max-read-length MAXLENGTH\n\
+    \                        Max read length in BAM file\n  -q MINQUAL, --min-base-qual\
+    \ MINQUAL\n                        Min base quality for T -> C conversions (default:\
+    \ 27)\n  -t THREADS, --threads THREADS\n                        Thread number\
+    \ (default: 1)\n"
+  generated_using: *id002
 - !Command
   positional:
   - !Positional
@@ -333,6 +501,55 @@ subcommands:
     name: files
     optional: false
   named:
+  - !Flag
+    description: Reference fasta file
+    synonyms:
+    - -r
+    - --reference
+    args: !SimpleFlagArg
+      name: REFERENCEFILE
+    optional: true
+  - !Flag
+    description: BED file with 3'UTR coordinates
+    synonyms:
+    - -b
+    - --bed
+    args: !SimpleFlagArg
+      name: BED
+    optional: true
+  - !Flag
+    description: BED file with 3'UTR coordinates to filter multimappers (activates
+      -m)
+    synonyms:
+    - -fb
+    - --filterbed
+    args: !SimpleFlagArg
+      name: FILTERBED
+    optional: true
+  - !Flag
+    description: Skip SNP step and provide custom variant file.
+    synonyms:
+    - -v
+    - --vcf
+    args: !SimpleFlagArg
+      name: VCFFILE
+    optional: true
+  - !Flag
+    description: Output directory for slamdunk run.
+    synonyms:
+    - -o
+    - --outputDir
+    args: !SimpleFlagArg
+      name: OUTPUTDIR
+    optional: true
+  - !Flag
+    description: "Number of bp removed from 5' end of all reads (default: 12)"
+    synonyms:
+    - '-5'
+    - --trim-5p
+    args: !SimpleFlagArg
+      name: TRIM5
+    optional: true
   - !Flag
     description: "Max number of As at the 3' end of a read (default: 4)"
     synonyms:
@@ -486,10 +703,64 @@ subcommands:
   command:
   - slamdunk
   - all
+  parent: *id001
   subcommands: []
-  help_flag:
+  help_flag: !Flag
+    description: show this help message and exit
+    synonyms:
+    - -h
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: slamdunk all [-h] -r REFERENCEFILE -b BED [-fb FILTERBED] [-v\
+    \ VCFFILE]\n                    -o OUTPUTDIR [-5 TRIM5] [-a MAXPOLYA] [-n TOPN]\n\
+    \                    [-t THREADS] [-q] [-e] [-m] [-mq MQ] [-mi IDENTITY]\n   \
+    \                 [-nm NM] [-mc COV] [-mv VAR] [-c CONVERSIONTHRESHOLD]\n    \
+    \                [-rl MAXLENGTH] [-mbq MINQUAL] [-sn SAMPLENAME]\n           \
+    \         [-sy SAMPLETYPE] [-st SAMPLETIME] [-i SAMPLEINDEX] [-ss]\n         \
+    \           files [files ...]\n\npositional arguments:\n  files              \
+    \   Single csv/tsv file (recommended) containing all\n                       \
+    \ sample files and sample info or a list of all sample\n                     \
+    \   BAM/FASTA(gz)/FASTQ(gz) files\n\noptional arguments:\n  -h, --help       \
+    \     show this help message and exit\n  -r REFERENCEFILE, --reference REFERENCEFILE\n\
+    \                        Reference fasta file\n  -b BED, --bed BED     BED file\
+    \ with 3'UTR coordinates\n  -fb FILTERBED, --filterbed FILTERBED\n           \
+    \             BED file with 3'UTR coordinates to filter multimappers\n       \
+    \                 (activates -m)\n  -v VCFFILE, --vcf VCFFILE\n              \
+    \          Skip SNP step and provide custom variant file.\n  -o OUTPUTDIR, --outputDir\
+    \ OUTPUTDIR\n                        Output directory for slamdunk run.\n  -5\
+    \ TRIM5, --trim-5p TRIM5\n                        Number of bp removed from 5'\
+    \ end of all reads\n                        (default: 12)\n  -a MAXPOLYA, --max-polya\
+    \ MAXPOLYA\n                        Max number of As at the 3' end of a read (default:\
+    \ 4)\n  -n TOPN, --topn TOPN  Max. number of alignments to report per read (default:\n\
+    \                        1)\n  -t THREADS, --threads THREADS\n               \
+    \         Thread number (default: 1)\n  -q, --quantseq        Run plain Quantseq\
+    \ alignment without SLAM-seq scoring\n  -e, --endtoend        Use a end to end\
+    \ alignment algorithm for mapping.\n  -m, --multimap        Use reference to resolve\
+    \ multimappers (requires -n >\n                        1).\n  -mq MQ, --min-mq\
+    \ MQ   Minimum mapping quality (default: 2)\n  -mi IDENTITY, --min-identity IDENTITY\n\
+    \                        Minimum alignment identity (default: 0.95)\n  -nm NM,\
+    \ --max-nm NM   Maximum NM for alignments (default: -1)\n  -mc COV, --min-coverage\
+    \ COV\n                        Minimimum coverage to call variant (default: 10)\n\
+    \  -mv VAR, --var-fraction VAR\n                        Minimimum variant fraction\
+    \ to call variant (default:\n                        0.8)\n  -c CONVERSIONTHRESHOLD,\
+    \ --conversion-threshold CONVERSIONTHRESHOLD\n                        Number of\
+    \ T>C conversions required to count read as\n                        T>C read\
+    \ (default: 1)\n  -rl MAXLENGTH, --max-read-length MAXLENGTH\n               \
+    \         Max read length in BAM file\n  -mbq MINQUAL, --min-base-qual MINQUAL\n\
+    \                        Min base quality for T -> C conversions (default: 27)\n\
+    \  -sn SAMPLENAME, --sampleName SAMPLENAME\n                        Use this sample\
+    \ name for all supplied samples\n  -sy SAMPLETYPE, --sampleType SAMPLETYPE\n \
+    \                       Use this sample type for all supplied samples\n  -st SAMPLETIME,\
+    \ --sampleTime SAMPLETIME\n                        Use this sample time for all\
+    \ supplied samples\n  -i SAMPLEINDEX, --sample-index SAMPLEINDEX\n           \
+    \             Run analysis only for sample <i>. Use for distributing\n       \
+    \                 slamdunk analysis on a cluster (index is 1-based).\n  -ss, --skip-sam\
+    \       Output BAM while mapping. Slower but, uses less hard\n               \
+    \         disk.\n"
+  generated_using: *id002
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -504,3 +775,12 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: slamdunk [-h] [--version] {map,filter,snp,count,all} ...\n\nSLAMdunk\
+  \ software for analyzing SLAM-seq data\n\npositional arguments:\n  {map,filter,snp,count,all}\n\
+  \    map                 Map SLAM-seq read data\n    filter              Filter\
+  \ SLAM-seq aligned data\n    snp                 Call SNPs on SLAM-seq aligned data\n\
+  \    count               Count T/C conversions in SLAM-seq aligned data\n    all\
+  \                 Run entire SLAMdunk analysis\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  --version             show program's\
+  \ version number and exit\n"
+generated_using: *id002

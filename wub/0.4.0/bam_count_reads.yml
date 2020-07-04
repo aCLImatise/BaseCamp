@@ -1,10 +1,5 @@
-!Command
-positional:
-- !Positional
-  description: 'Input file (default: stdin).'
-  position: 0
-  name: bam
-  optional: false
+&id001 !Command
+positional: []
 named:
 - !Flag
   description: Minimum mapping quality (0).
@@ -78,7 +73,57 @@ named:
   optional: true
 command:
 - bam_count_reads.py
-subcommands: []
+parent:
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: bam_count_reads.py
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - -a
+    args: !SimpleFlagArg
+      name: min_aqual
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -f
+    args: !SimpleFlagArg
+      name: in_format
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -z
+    args: !SimpleFlagArg
+      name: ref_fasta
+    optional: true
+  command:
+  - bam_count_reads.py
+  - bam
+  parent: *id001
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: bam_count_reads.py [-h] [-a min_aqual] [-f in_format] [-z ref_fasta]\n\
+    \                          [-k words] [-g] [-p results_pickle] [-t tsv_file]\n\
+    \                          [-Q] [-R] [-F yield_freq]\n                       \
+    \   [bam]\nbam_count_reads.py: error: argument bam: can't open 'bam': [Errno 2]\
+    \ No such file or directory: 'bam'\n"
+  generated_using: &id002
+  - --help
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -88,3 +133,22 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: bam_count_reads.py [-h] [-a min_aqual] [-f in_format] [-z ref_fasta]\n\
+  \                          [-k words] [-g] [-p results_pickle] [-t tsv_file]\n \
+  \                         [-Q] [-R] [-F yield_freq]\n                          [bam]\n\
+  \nCount reads mapping to each reference in a BAM file.\n\npositional arguments:\n\
+  \  bam                Input file (default: stdin).\n\noptional arguments:\n  -h,\
+  \ --help         show this help message and exit\n  -a min_aqual       Minimum mapping\
+  \ quality (0).\n  -f in_format       Input format (BAM).\n  -z ref_fasta       Reference\
+  \ fasta. GC content and length columns are added\n                     if present\
+  \ (None).\n  -k words           Include word frequencies of specifed length in output\n\
+  \                     (None).\n  -g                 Include mean GC content of reads\
+  \ mapped to each reference\n                     (False).\n  -p results_pickle \
+  \ Save pickled results in this file (None).\n  -t tsv_file        Save results in\
+  \ tsv format in this file\n                     (bam_count_reads.tsv).\n  -Q   \
+  \              Be quiet and do not print progress bar (False).\n  -R           \
+  \      Count reads from SAM stream in stdin. Only read count\n                 \
+  \    fields are written. Header required! (False).\n  -F yield_freq      Yield counts\
+  \ after every -Fth mapped record when doing\n                     online counting\
+  \ (100).\n"
+generated_using: *id002

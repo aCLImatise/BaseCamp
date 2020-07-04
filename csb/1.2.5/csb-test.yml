@@ -16,12 +16,12 @@ named:
   - -t
   - --type
   args: !ChoiceFlagArg
-    choices:
-    - unit
-    - functional
-    - custom
-    - any
-    - regression
+    choices: !!set
+      any:
+      functional:
+      regression:
+      custom:
+      unit:
   optional: true
 - !Flag
   description: Verbosity level passed to unittest.TextTestRunner (default=1).
@@ -32,7 +32,7 @@ named:
     name: VERBOSITY
   optional: true
 - !Flag
-  description: Force update of the test pickles in /tmp/tmpqbtfa496/lib/python3.8/site-
+  description: Force update of the test pickles in /tmp/tmp55avv5mq/lib/python3.8/site-
     packages/csb/test/data
   synonyms:
   - -u
@@ -41,7 +41,7 @@ named:
   optional: true
 - !Flag
   description: Generate, store and load additional test resources in this directory
-    (default=/tmp/tmpqbtfa496/lib/python3.8/site- packages/csb/test/data)
+    (default=/tmp/tmp55avv5mq/lib/python3.8/site- packages/csb/test/data)
   synonyms:
   - -g
   - --generated-resources
@@ -50,6 +50,7 @@ named:
   optional: true
 command:
 - csb-test
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -60,3 +61,24 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: csb-test [-h] [-t {unit,functional,custom,any,regression}]\n  \
+  \              [-v VERBOSITY] [-u] [-g GENERATED_RESOURCES]\n                [namespaces\
+  \ [namespaces ...]]\n\nCSB Test Runner Console.\n\npositional arguments:\n  namespaces\
+  \            An optional list of CSB test dotted namespaces, from\n            \
+  \            which to load tests. '__main__' and '.' are\n                     \
+  \   interpreted as the current module. If a namespace ends\n                   \
+  \     with an asterisk '.*', all sub-packages will be\n                        scanned\
+  \ as well. Examples: \"csb.test.cases.bio.*\"\n                        \"csb.test.cases.bio.io\"\
+  \ \"csb.test.cases.bio.utils\"\n                        \".\")\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -t {unit,functional,custom,any,regression},\
+  \ --type {unit,functional,custom,any,regression}\n                        Type of\
+  \ tests to load from each namespace\n                        (default=any)\n  -v\
+  \ VERBOSITY, --verbosity VERBOSITY\n                        Verbosity level passed\
+  \ to unittest.TextTestRunner\n                        (default=1).\n  -u, --update-files\
+  \    Force update of the test pickles in\n                        /tmp/tmp55avv5mq/lib/python3.8/site-\n\
+  \                        packages/csb/test/data\n  -g GENERATED_RESOURCES, --generated-resources\
+  \ GENERATED_RESOURCES\n                        Generate, store and load additional\
+  \ test resources in\n                        this directory\n                  \
+  \      (default=/tmp/tmp55avv5mq/lib/python3.8/site-\n                        packages/csb/test/data)\n"
+generated_using:
+- --help

@@ -33,10 +33,10 @@ named:
   synonyms:
   - --verbosity
   args: !ChoiceFlagArg
-    choices:
-    - INFO
-    - WARN
-    - CRITICAL
+    choices: !!set
+      WARN:
+      CRITICAL:
+      INFO:
   optional: true
 - !Flag
   description: 'The path to a directory to hold logs. (default: None)'
@@ -47,6 +47,7 @@ named:
   optional: true
 command:
 - phyluce_align_format_nexus_files_for_raxml
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -57,3 +58,19 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: phyluce_align_format_nexus_files_for_raxml [-h] --alignments ALIGNMENTS\n\
+  \                                                  --output OUTPUT [--nexus]\n \
+  \                                                 [--charsets]\n               \
+  \                                   [--verbosity {INFO,WARN,CRITICAL}]\n       \
+  \                                           [--log-path LOG_PATH]\n\nConvert individual\
+  \ nexus files to concatenated phylip format\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  --alignments ALIGNMENTS\n      \
+  \                  The directory containing alignments to concatenate\n        \
+  \                (NEXUS-ONLY). (default: None)\n  --output OUTPUT       The output\
+  \ file for the concatenated phylip data\n                        (default: None)\n\
+  \  --nexus               Export as NEXUS format (default: False)\n  --charsets \
+  \           Add charsets to phylip file (default: False)\n  --verbosity {INFO,WARN,CRITICAL}\n\
+  \                        The logging level to use. (default: INFO)\n  --log-path\
+  \ LOG_PATH   The path to a directory to hold logs. (default: None)\n"
+generated_using:
+- --help

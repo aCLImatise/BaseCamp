@@ -340,8 +340,16 @@ named:
   args: !SimpleFlagArg
     name: OUTDIR
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - --sample
+  args: !SimpleFlagArg
+    name: Sample
+  optional: true
 command:
 - run_metasv.py
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -357,3 +365,141 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: run_metasv.py [-h] --sample Sample\n                     [--pindel_vcf\
+  \ pindel_vcf [pindel_vcf ...]]\n                     [--pindel_native File list\
+  \ [File list ...]]\n                     [--breakdancer_vcf breakdancer_vcf [breakdancer_vcf\
+  \ ...]]\n                     [--breakdancer_native File list [File list ...]]\n\
+  \                     [--breakseq_vcf breakseq_vcf [breakseq_vcf ...]]\n       \
+  \              [--breakseq_native breakseq_native [breakseq_native ...]]\n     \
+  \                [--cnvnator_vcf cnvnator_vcf [cnvnator_vcf ...]]\n            \
+  \         [--cnvnator_native File list [File list ...]]\n                     [--gatk_vcf\
+  \ file [file ...]]\n                     [--manta_vcf MANTA_VCF [MANTA_VCF ...]]\n\
+  \                     [--lumpy_vcf LUMPY_VCF [LUMPY_VCF ...]]\n                \
+  \     [--cnvkit_vcf CNVKIT_VCF [CNVKIT_VCF ...]]\n                     [--wham_vcf\
+  \ WHAM_VCF [WHAM_VCF ...]]\n                     [--mean_read_length MEAN_READ_LENGTH]\
+  \ --reference\n                     reference [--chromosomes CHROMOSOMES [CHROMOSOMES\
+  \ ...]]\n                     [--gaps gaps] [--filter_gaps] [--keep_standard_contigs]\n\
+  \                     [--bams BAMS [BAMS ...]] [--isize_mean ISIZE_MEAN]\n     \
+  \                [--isize_sd ISIZE_SD] [--wiggle WIGGLE]\n                     [--inswiggle\
+  \ INSWIGGLE] [--minsvlen MINSVLEN]\n                     [--maxsvlen MAXSVLEN] [--overlap_ratio\
+  \ OVERLAP_RATIO]\n                     [--min_avg_base_qual MIN_AVG_BASE_QUAL]\n\
+  \                     [--min_mapq MIN_MAPQ] [--min_soft_clip MIN_SOFT_CLIP]\n  \
+  \                   [--max_nm MAX_NM] [--min_matches MIN_MATCHES]\n            \
+  \         [--min_support_ins MIN_SUPPORT_INS]\n                     [--min_support_frac_ins\
+  \ MIN_SUPPORT_FRAC_INS]\n                     [--max_ins_intervals MAX_INS_INTERVALS]\n\
+  \                     [--mean_read_coverage MEAN_READ_COVERAGE]\n              \
+  \       [--min_ins_cov_frac MIN_INS_COV_FRAC]\n                     [--max_ins_cov_frac\
+  \ MAX_INS_COV_FRAC]\n                     [--sc_other_scale SC_OTHER_SCALE] [--spades\
+  \ SPADES]\n                     [--spades_options SPADES_OPTIONS]\n            \
+  \         [--spades_timeout SPADES_TIMEOUT] [--disable_assembly]\n             \
+  \        [--svs_to_assemble {DUP,INV,DEL,INS} [{DUP,INV,DEL,INS} ...]]\n       \
+  \              [--svs_to_softclip {DUP,INV,DEL,INS} [{DUP,INV,DEL,INS} ...]]\n \
+  \                    [--extraction_max_read_pairs EXTRACTION_MAX_READ_PAIRS]\n \
+  \                    [--spades_max_interval_size SPADES_MAX_INTERVAL_SIZE]\n   \
+  \                  [--assembly_max_tools ASSEMBLY_MAX_TOOLS]\n                 \
+  \    [--assembly_pad ASSEMBLY_PAD] [--stop_spades_on_fail]\n                   \
+  \  [--age AGE] [--age_timeout AGE_TIMEOUT]\n                     [--min_inv_subalign_len\
+  \ MIN_INV_SUBALIGN_LEN]\n                     [--min_del_subalign_len MIN_DEL_SUBALIGN_LEN]\n\
+  \                     [--age_window AGE_WINDOW] [--boost_sc]\n                 \
+  \    [--gt_window GT_WINDOW] [--gt_normal_frac GT_NORMAL_FRAC]\n               \
+  \      [--svs_to_report {INV,CTX,INS,DEL,ITX,DUP} [{INV,CTX,INS,DEL,ITX,DUP} ...]]\n\
+  \                     [--enable_per_tool_output] [--workdir WORKDIR]\n         \
+  \            [--num_threads NUM_THREADS] --outdir OUTDIR [--version]\n\nMerge SVs\
+  \ from multiple tools for accurate SV calling\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n\nInput data options:\n  --sample\
+  \ Sample       Sample name (default: None)\n  --pindel_vcf pindel_vcf [pindel_vcf\
+  \ ...]\n                        VCF file or dir for Pindel VCFs (default: [])\n\
+  \  --pindel_native File list [File list ...]\n                        Pindel native\
+  \ files (default: [])\n  --breakdancer_vcf breakdancer_vcf [breakdancer_vcf ...]\n\
+  \                        VCF file or dir for BreakDancer VCFs (default: [])\n  --breakdancer_native\
+  \ File list [File list ...]\n                        BreakDancer native files (default:\
+  \ [])\n  --breakseq_vcf breakseq_vcf [breakseq_vcf ...]\n                      \
+  \  VCF file or dir for BreakSeq VCFs (default: [])\n  --breakseq_native breakseq_native\
+  \ [breakseq_native ...]\n                        BreakSeq native GFF files (default:\
+  \ [])\n  --cnvnator_vcf cnvnator_vcf [cnvnator_vcf ...]\n                      \
+  \  VCF file or dir for CNVnator VCFs (default: [])\n  --cnvnator_native File list\
+  \ [File list ...]\n                        CNVnator native files (default: [])\n\
+  \  --gatk_vcf file [file ...]\n                        VCF file or dir for gatk\
+  \ VCFs (default: [])\n  --manta_vcf MANTA_VCF [MANTA_VCF ...]\n                \
+  \        VCF file or dir for Manta VCFs (default: [])\n  --lumpy_vcf LUMPY_VCF [LUMPY_VCF\
+  \ ...]\n                        VCF file or dir for Lumpy VCFs (default: [])\n \
+  \ --cnvkit_vcf CNVKIT_VCF [CNVKIT_VCF ...]\n                        VCF file or\
+  \ dir for CNVkit VCFs (default: [])\n  --wham_vcf WHAM_VCF [WHAM_VCF ...]\n    \
+  \                    VCF file or dir for WHAM VCFs (default: [])\n  --mean_read_length\
+  \ MEAN_READ_LENGTH\n                        Mean read length (default: 100)\n\n\
+  Reference options:\n  --reference reference\n                        Reference file\
+  \ (default: None)\n  --chromosomes CHROMOSOMES [CHROMOSOMES ...]\n             \
+  \           Chromosome list to process. If unspecified, then all\n             \
+  \           chromosomes will be considered. (default: [])\n  --gaps gaps       \
+  \    Gap bed file (default: None)\n  --filter_gaps         Filter out gaps (default:\
+  \ False)\n  --keep_standard_contigs\n                        Keep only the major\
+  \ contigs + MT (default: False)\n\nInput BAM options:\n  --bams BAMS [BAMS ...]\n\
+  \                        BAMs (default: [])\n  --isize_mean ISIZE_MEAN\n       \
+  \                 Insert size mean (default: 350.0)\n  --isize_sd ISIZE_SD   Insert\
+  \ size standard deviation (default: 50.0)\n\nTool output merging options:\n  --wiggle\
+  \ WIGGLE       Wiggle for interval overlap (default: 100)\n  --inswiggle INSWIGGLE\n\
+  \                        Wiggle for insertions, overides wiggle (default: 100)\n\
+  \  --minsvlen MINSVLEN   Minimum length acceptable to be an SV (default: 50)\n \
+  \ --maxsvlen MAXSVLEN   Maximum length SV to report (default: 1000000)\n  --overlap_ratio\
+  \ OVERLAP_RATIO\n                        Reciprocal overlap ratio (default: 0.5)\n\
+  \nSoft-clip detection options:\n  --min_avg_base_qual MIN_AVG_BASE_QUAL\n      \
+  \                  Minimum average base quality (default: 20)\n  --min_mapq MIN_MAPQ\
+  \   Minimum MAPQ (default: 5)\n  --min_soft_clip MIN_SOFT_CLIP\n               \
+  \         Minimum soft-clip (default: 20)\n  --max_nm MAX_NM       Maximum number\
+  \ of edits (default: 10)\n  --min_matches MIN_MATCHES\n                        Mininum\
+  \ number of matches (default: 50)\n  --min_support_ins MIN_SUPPORT_INS\n       \
+  \                 Minimum read support for calling insertions using\n          \
+  \              soft-clips (including neighbors) (default: 15)\n  --min_support_frac_ins\
+  \ MIN_SUPPORT_FRAC_INS\n                        Minimum fraction of reads supporting\
+  \ insertion using\n                        soft-clips (including neighbors) (default:\
+  \ 0.05)\n  --max_ins_intervals MAX_INS_INTERVALS\n                        Maximum\
+  \ number of insertion intervals to generate\n                        (default: 10000)\n\
+  \  --mean_read_coverage MEAN_READ_COVERAGE\n                        Mean read coverage\
+  \ (default: 50)\n  --min_ins_cov_frac MIN_INS_COV_FRAC\n                       \
+  \ Minimum read coverage around the insertion breakpoint.\n                     \
+  \   (default: 0.5)\n  --max_ins_cov_frac MAX_INS_COV_FRAC\n                    \
+  \    Maximum read coverage around the insertion breakpoint.\n                  \
+  \      (default: 1.5)\n  --sc_other_scale SC_OTHER_SCALE\n                     \
+  \   Control degree of incorporation of breakpoints from\n                      \
+  \  other methods. (default: 5)\n\nAssembly options:\n  --spades SPADES       Path\
+  \ to SPAdes executable (default: None)\n  --spades_options SPADES_OPTIONS\n    \
+  \                    Options for SPAdes (default: )\n  --spades_timeout SPADES_TIMEOUT\n\
+  \                        Maximum time (in seconds) for running SPAdes on an\n  \
+  \                      interval (default: 300)\n  --disable_assembly    Disable\
+  \ assembly (default: False)\n  --svs_to_assemble {DUP,INV,DEL,INS} [{DUP,INV,DEL,INS}\
+  \ ...]\n                        SVs to assemble (default: ['INS', 'INV', 'DUP'])\n\
+  \  --svs_to_softclip {DUP,INV,DEL,INS} [{DUP,INV,DEL,INS} ...]\n               \
+  \         SVs to soft-clip (default: ['INS', 'INV', 'DUP'])\n  --extraction_max_read_pairs\
+  \ EXTRACTION_MAX_READ_PAIRS\n                        Maximum number of pairs to\
+  \ extract for assembly\n                        (default: 10000)\n  --spades_max_interval_size\
+  \ SPADES_MAX_INTERVAL_SIZE\n                        Maximum SV length for assembly\
+  \ (default: 50000)\n  --assembly_max_tools ASSEMBLY_MAX_TOOLS\n                \
+  \        Skip assembly if more than this many tools support a\n                \
+  \        call (default 1) (default: 1)\n  --assembly_pad ASSEMBLY_PAD\n        \
+  \                Padding base pairs to use for assembling breakpoint\n         \
+  \               with Spades and AGE (default: 500)\n  --stop_spades_on_fail\n  \
+  \                      Abort on SPAdes failure (default: False)\n  --age AGE   \
+  \          Path to AGE executable (default: None)\n  --age_timeout AGE_TIMEOUT\n\
+  \                        Maximum time (in seconds) for running AGE on an\n     \
+  \                   assembled contig (default: 300)\n  --min_inv_subalign_len MIN_INV_SUBALIGN_LEN\n\
+  \                        Minimum length of inversion sub-alginment (default:\n \
+  \                       50)\n  --min_del_subalign_len MIN_DEL_SUBALIGN_LEN\n   \
+  \                     Minimum length of deletion sub-alginment (default: 50)\n \
+  \ --age_window AGE_WINDOW\n                        Window size for AGE to merge\
+  \ nearby breakpoints\n                        (default: 20)\n  --boost_sc      \
+  \      Use soft-clips for improving breakpoint detection\n                     \
+  \   (default: False)\n\nGenotyping options:\n  --gt_window GT_WINDOW\n         \
+  \               Window for genotyping (default: 100)\n  --gt_normal_frac GT_NORMAL_FRAC\n\
+  \                        Min. fraction of reads supporting reference for\n     \
+  \                   genotyping (default: 0.05)\n\nOutput options:\n  --svs_to_report\
+  \ {INV,CTX,INS,DEL,ITX,DUP} [{INV,CTX,INS,DEL,ITX,DUP} ...]\n                  \
+  \      SV types to report (default: set(['INV', 'CTX', 'INS',\n                \
+  \        'DEL', 'ITX', 'DUP']))\n  --enable_per_tool_output\n                  \
+  \      Enable output of merged SVs for individual tools\n                      \
+  \  (default: False)\n\nRunning environment options:\n  --workdir WORKDIR     Scratch\
+  \ directory for working (default: work)\n  --num_threads NUM_THREADS\n         \
+  \               Number of threads to use (default: 1)\n  --outdir OUTDIR       Output\
+  \ directory (default: None)\n\nOther options:\n  --version             show program's\
+  \ version number and exit\n"
+generated_using:
+- --help

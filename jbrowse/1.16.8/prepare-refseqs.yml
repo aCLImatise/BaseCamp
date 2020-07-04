@@ -9,7 +9,60 @@ named:
   optional: true
 command:
 - prepare-refseqs.pl
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "\e[1mNAME\e[0m\n    prepare-refseqs.pl - format reference sequences for\
+  \ use by JBrowse\n\n\e[1mUSAGE\e[0m\n           prepare-refseqs.pl --gff <GFF file>\
+  \  [options]\n       # OR:\n           prepare-refseqs.pl --fasta <file1> --fasta\
+  \ <file2>  [options]\n       # OR:\n           prepare-refseqs.pl --indexed_fasta\
+  \ <file>  [options]\n       # OR:\n           prepare-refseqs.pl --bgzip_fasta <file>\
+  \  [options]\n       # OR:\n           prepare-refseqs.pl --twobit <file>  [options]\n\
+  \       # OR:\n           prepare-refseqs.pl --conf <biodb config file>  [options]\n\
+  \       # OR:\n           prepare-refseqs.pl --sizes <sizes file>  [options]\n \
+  \      # OR:\n           prepare-refseqs.pl --gff-sizes <gff file>  [options]\n\n\
+  \e[1mDESCRIPTION\e[0m\n    Formats reference sequence data for use with JBrowse.\n\
+  \n    This tool can also read fasta files compressed with gzip, if they end in\n\
+  \    .gz or .gzip.\n\n    You can use a GFF file to describe the reference sequences;\
+  \ or you can use\n    a JBrowse config file (pointing to a BioPerl database) or\
+  \ a FASTA file,\n    together with a list of refseq names or a list of refseq IDs.\
+  \ If you use a\n    GFF file, it should contain ##sequence-region lines as described\
+  \ in the\n    GFF specs (for --gff-sizes), and/or it should be GFF version 3 with\
+  \ an\n    embedded FASTA section (for --gff).\n\n    If you use a JBrowse config\
+  \ file or FASTA file, you can either provide a\n    (comma-separated) list of refseq\
+  \ names, or (if the names aren't globally\n    unique) a list of refseq IDs; or\
+  \ (for FASTA files only) you can omit the\n    list of refseqs, in which case every\
+  \ sequence in the database will be\n    used.\n\n\e[1mOPTIONS\e[0m\n    --noSort\n\
+  \        If using GFF or FASTA input, preserve the order of the reference\n    \
+  \    sequences (sorts alphabetically by default).\n\n    --conf <file>\n       \
+  \ biodb-to-json.pl configuration file that defines a database from which\n     \
+  \   to get reference sequence information.\n\n    --out <output directory>\n   \
+  \     Optional directory to write to. Defaults to data/.\n\n    --noseq\n      \
+  \  Do not store the actual sequence bases, just the sequence metadata\n        (name,\
+  \ length, and so forth).\n\n    --refs <comma-separated list of refseq names>\n\
+  \        Output only the sequences with the given names.\n\n    --compress\n   \
+  \     If passed, compress the reference sequences with gzip, making the\n      \
+  \  chunks be .txt.gz. NOTE: this requires a bit of additional web server\n     \
+  \   configuration to be served correctly.\n\n    --chunksize <num>\n        Size\
+  \ of sequence chunks to make, in base pairs. Default 20kb. This is\n        multiplied\
+  \ by 4 if --compress is passed, so that the compressed\n        sequence files are\
+  \ still approximately this size.\n\n    --nohash\n        Store sequences in a flat\
+  \ seq/$seqname/$chunk.txt structure, instead\n        of the new (more scalable)\
+  \ /seq/hash/hash/hash/$seqname-$chunk.txt\n        structure.\n\n    --trackLabel\
+  \ <label>\n        The unique name of the sequence track, default 'DNA'.\n\n   \
+  \ --key <string>\n        The displayed name of the sequence track, defaults to\
+  \ 'Reference\n        sequence'.\n\n    --seqType <string>\n        The Name of\
+  \ the alphabet used for these reference sequences, usually\n        either 'dna',\
+  \ 'rna', or 'protein'.\n\n    --trackConfig '{ JSON-format extra configuration for\
+  \ this track }'\n        Additional top-level configuration for the client, in JSON\
+  \ syntax.\n        Example:\n\n          --trackConfig '{ \"glyph\": \"ProcessedTranscript\"\
+  \ }'\n\n\e[1mAUTHOR\e[0m\n    Mitchell Skinner <mitch_skinner@berkeley.edu>\n\n\
+  \    Copyright (c) 2007-2009 The Evolutionary Software Foundation\n\n    This package\
+  \ and its accompanying libraries are free software; you can\n    redistribute it\
+  \ and/or modify it under the terms of the LGPL (either\n    version 2.1, or at your\
+  \ option, any later version) or the Artistic License\n    2.0. Refer to LICENSE\
+  \ for the full license text.\n\n"
+generated_using:
+- --help

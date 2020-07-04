@@ -6,6 +6,11 @@ positional:
   position: 0
   name: program
   optional: false
+- !Positional
+  description: (default=`D')
+  position: 0
+  name: contributions
+  optional: false
 named:
 - !Flag
   description: Print help, including all details and hidden options, and exit
@@ -73,78 +78,11 @@ named:
     name: delimiter
   optional: true
 - !Flag
-  description: How to treat "dangling end" energies for bases adjacent to helices
-    in free ends and multi-loops (default=`2')
-  synonyms:
-  - -d
-  - --dangles
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: Rarely used option to fold sequences from the artificial ABCD... alphabet,
-    where A pairs B, C-D etc.  Use the energy parameters for GC (-e 1) or AU (-e 2)
-    pairs.
-  synonyms:
-  - -e
-  - --energyModel
-  args: !SimpleFlagArg
-    name: INT
-  optional: true
-- !Flag
-  description: Read energy parameters from paramfile, instead of using the default
-    parameter set.
-  synonyms:
-  - -P
-  - --paramFile
-  args: !SimpleFlagArg
-    name: paramfile
-  optional: true
-- !Flag
-  description: Assume a circular (instead of linear) RNA molecule. (default=off)
-  synonyms:
-  - -c
-  - --circ
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Incoorporate G-Quadruplex formation into the structure prediction algorithm
-    (default=off)
-  synonyms:
-  - -g
-  - --gquad
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Recalculate energies of structures using a logarithmic energy function
-    for multi-loops before output. (default=off)
-  synonyms:
-  - --logML
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: file        Use SHAPE reactivity data in the folding recursions (does
-    not work for PF yet)
-  synonyms:
-  - --shape
-  args: !SimpleFlagArg
-    name: SHAPE
-  optional: true
-- !Flag
-  description: =[D/Z/W] + [optional parameters] Specify the method how to convert
-    SHAPE reactivity data to pseudo energy contributions (default=`D')
-  synonyms:
-  - --shapeMethod
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: /C/S/L/O  + [optional parameters] Specify the method used to convert
-    SHAPE reactivities to pairing probabilities when using the SHAPE approach of Zarringhalam
-    et al. (default=`O')
+  description: + [optional parameters]
   synonyms:
   - --shapeConversion
   args: !SimpleFlagArg
-    name: M
+    name: M/C/S/L/O
   optional: true
 - !Flag
   description: 'Output "most informative sequence" instead of simple consensus: For
@@ -194,6 +132,7 @@ named:
   optional: true
 command:
 - RNAeval
+parent:
 subcommands: []
 help_flag: !Flag
   description: Print help and exit
@@ -210,3 +149,95 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "RNAeval 2.4.14\n\nDetermine the free energy of a (consensus) secondary\
+  \ structure for (an\nalignment of) RNA sequence(s)\n\nUsage: RNAeval [OPTIONS] [<input0>]\
+  \ [<input1>]...\n\nEvaluates the free energy of a particular (consensus) secondary\
+  \ structure for\nan (an alignment of) RNA molecule(s). The energy unit is kcal/mol\
+  \ and contains\na covariance pseudo-energy term for multiple sequence alignments\
+  \ (--msa option)\nand corresponding consensus structures.\nThe program will continue\
+  \ to read new sequences and structures until a line\nconsisting of the single character\
+  \ \"@\" or an end of file condition is\nencountered.\nIf the input sequence or structure\
+  \ contains the separator character \"&\" the\nprogram calculates the energy of the\
+  \ co-folding of two RNA strands, where the\n\"&\" marks the boundary between the\
+  \ two strands.\n\n\n  -h, --help                    Print help and exit\n      --detailed-help\
+  \           Print help, including all details and hidden\n                     \
+  \             options, and exit\n      --full-help               Print help, including\
+  \ hidden options, and exit\n  -V, --version                 Print version and exit\n\
+  \nGeneral Options:\n  Below are command line options which alter the general behavior\
+  \ of this\n  program\n\n      --noconv                  Do not automatically substitude\
+  \ nucleotide\n                                  \"T\" with \"U\"\n\n           \
+  \                         (default=off)\n  -v, --verbose                 Print out\
+  \ energy contribution of each loop in\n                                  the structure.\n\
+  \n                                    (default=off)\n  -j, --jobs[=number]     \
+  \      Split batch input into jobs and start\n                                 \
+  \ processing in parallel using multiple\n                                  threads.\
+  \ A value of 0 indicates to use as\n                                  many parallel\
+  \ threads as computation cores\n                                  are available.\n\
+  \                                    (default=`0')\n  -i, --infile=<filename>  \
+  \     Read a file instead of reading from stdin\n\n  -a, --msa                 \
+  \    Input is multiple sequence alignment in\n                                 \
+  \ Stockholm 1.0 format\n                                    (default=off)\n    \
+  \  --auto-id                 Automatically generate an ID for each sequence.\n \
+  \                                   (default=off)\n      --id-prefix=prefix    \
+  \    Prefix for automatically generated IDs (as used\n                         \
+  \         in output file names)\n\n                                    (default=`sequence')\n\
+  \      --id-delim=delimiter      Change the delimiter between prefix and\n     \
+  \                             increasing number for automatically generated\n  \
+  \                                IDs (as used in output file names)\n\n        \
+  \                            (default=`_')\n\nModel Details:\n  -T, --temp=DOUBLE\
+  \             Rescale energy parameters to a temperature of\n                  \
+  \                temp C. Default is 37C.\n\n\n  -4, --noTetra                 Do\
+  \ not include special tabulated stabilizing\n                                  energies\
+  \ for tri-, tetra- and hexaloop\n                                  hairpins. Mostly\
+  \ for testing.\n\n                                    (default=off)\n  -d, --dangles=INT\
+  \             How to treat \"dangling end\" energies for\n                     \
+  \             bases adjacent to helices in free ends and\n                     \
+  \             multi-loops\n                                    (default=`2')\n \
+  \ -e, --energyModel=INT         Rarely used option to fold sequences from the\n\
+  \                                  artificial ABCD... alphabet, where A pairs B,\n\
+  \                                  C-D etc.  Use the energy parameters for GC\n\
+  \                                  (-e 1) or AU (-e 2) pairs.\n\n\n  -P, --paramFile=paramfile\
+  \     Read energy parameters from paramfile, instead\n                         \
+  \         of using the default parameter set.\n\n  -c, --circ                  \
+  \  Assume a circular (instead of linear) RNA\n                                 \
+  \ molecule.\n\n                                    (default=off)\n  -g, --gquad\
+  \                   Incoorporate G-Quadruplex formation into the\n             \
+  \                     structure prediction algorithm\n\n                       \
+  \             (default=off)\n      --logML                   Recalculate energies\
+  \ of structures using a\n                                  logarithmic energy function\
+  \ for multi-loops\n                                  before output.\n          \
+  \                          (default=off)\n      --shape=SHAPE file        Use SHAPE\
+  \ reactivity data in the folding\n                                  recursions (does\
+  \ not work for PF yet)\n\n\n      --shapeMethod=[D/Z/W] + [optional parameters]\n\
+  \                                Specify the method how to convert SHAPE\n     \
+  \                             reactivity data to pseudo energy\n               \
+  \                   contributions\n                                    (default=`D')\n\
+  \      --shapeConversion=M/C/S/L/O  + [optional parameters]\n                  \
+  \              Specify the method used to convert SHAPE\n                      \
+  \            reactivities to pairing probabilities when\n                      \
+  \            using the SHAPE approach of Zarringhalam et\n                     \
+  \             al.\n                                    (default=`O')\n      --mis\
+  \                     Output \"most informative sequence\" instead of\n        \
+  \                          simple consensus: For each column of the\n          \
+  \                        alignment output the set of nucleotides with\n        \
+  \                          frequency greater than average in IUPAC\n           \
+  \                       notation.\n\n                                    (default=off)\n\
+  \      --cfactor=DOUBLE          Set the weight of the covariance term in the\n\
+  \                                  energy function\n\n                         \
+  \           (default=`1.0')\n      --nfactor=DOUBLE          Set the penalty for\
+  \ non-compatible sequences in\n                                  the covariance\
+  \ term of the energy function\n\n                                    (default=`1.0')\n\
+  \  -R, --ribosum_file=ribosumfile\n                                use specified\
+  \ Ribosum Matrix instead of normal\n                                  energy model.\
+  \ Matrixes to use should be 6x6\n                                  matrices, the\
+  \ order of the terms is AU, CG,\n                                  GC, GU, UA, UG.\n\
+  \n\n  -r, --ribosum_scoring         use ribosum scoring matrix. The matrix is\n\
+  \                                  chosen according to the minimal and maximal\n\
+  \                                  pairwise identities of the sequences in the\n\
+  \                                  file.\n\n                                   \
+  \ (default=off)\n      --old                     use old energy evaluation, treating\
+  \ gaps as\n                                  characters.\n\n                   \
+  \                 (default=off)\n\nIf in doubt our program is right, nature is at\
+  \ fault.\nComments should be sent to rna@tbi.univie.ac.at.\n\n\n"
+generated_using:
+- --help

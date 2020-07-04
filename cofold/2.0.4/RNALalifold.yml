@@ -1,23 +1,14 @@
 !Command
 positional:
 - !Positional
-  description: ''
+  description: -h, --help                    Print help and exit --detailed-help           Print
+    help, including all details and hidden  options, and exit --full-help               Print
+    help, including hidden options, and exit -V, --version                 Print version
+    and exit
   position: 0
-  name: file1.aln
+  name: structures.
   optional: false
 named:
-- !Flag
-  description: Print help, including all details and hidden  options, and exit
-  synonyms:
-  - --detailed-help
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: Print help, including hidden options, and exit
-  synonyms:
-  - --full-help
-  args: !EmptyFlagArg {}
-  optional: true
 - !Flag
   description: Set the maximum allowed separation of a base  pair to span. I.e. no
     pairs (i,j) with  j-i>span will be allowed. (default=`70')
@@ -56,6 +47,22 @@ named:
     than average in IUPAC  notation. (default=off)'
   synonyms:
   - --mis
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Rescale energy parameters to a temperature of  temp C. Default is 37C.
+  synonyms:
+  - -T
+  - --temp
+  args: !SimpleFlagArg
+    name: DOUBLE
+  optional: true
+- !Flag
+  description: Do not include special tabulated stabilizing  energies for tri-, tetra-
+    and hexaloop  hairpins. Mostly for testing. (default=off)
+  synonyms:
+  - '-4'
+  - --noTetra
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -129,19 +136,75 @@ named:
   optional: true
 command:
 - RNALalifold
+parent:
 subcommands: []
-help_flag: !Flag
-  description: Print help and exit
-  synonyms:
-  - -h
-  - --help
-  args: !EmptyFlagArg {}
-  optional: true
+help_flag:
 usage_flag:
-version_flag: !Flag
-  description: Print version and exit
-  synonyms:
-  - -V
-  - --version
-  args: !EmptyFlagArg {}
-  optional: true
+version_flag:
+help_text: "RNALalifold 2.0.4\n\ncalculate locally stable secondary structures for\
+  \ a set of aligned RNAs\n\nUsage: RNALalifold [options] <file1.aln>\n\nreads aligned\
+  \ RNA sequences from stdin or file.aln and calculates locally \nstable RNA secondary\
+  \ structure with a maximal base pair span. For a sequence of \nlength n and a base\
+  \ pair span of L the algorithm uses only O(n+L*L) memory and \nO(n*L*L) CPU time.\
+  \ Thus it is practical to \"scan\" very large genomes for \nshort RNA\n structures.\n\
+  \n\n  -h, --help                    Print help and exit\n      --detailed-help \
+  \          Print help, including all details and hidden \n                     \
+  \             options, and exit\n      --full-help               Print help, including\
+  \ hidden options, and exit\n  -V, --version                 Print version and exit\n\
+  \nGeneral Options:\n  Below are command line options which alter the general behavior\
+  \ of this \n  program\n\n  -L, --span=INT                Set the maximum allowed\
+  \ separation of a base \n                                  pair to span. I.e. no\
+  \ pairs (i,j) with \n                                  j-i>span will be allowed.\n\
+  \                                  \n                                    (default=`70')\n\
+  \      --csv                     Create comma seperated output (csv)\n         \
+  \                         \n                                    (default=off)\n\n\
+  Algorithms:\n  Select additional algorithms which should be included in the calculations.\n\
+  \  The Minimum free energy (MFE) and a structure representative are calculated \n\
+  \  in any case.\n  \n\n  -p, --partfunc[=INT]          Calculate the partition function\
+  \ and base \n                                  pairing probability matrix in addition\
+  \ to the \n                                  mfe structure.  (default=`1')\n  -c,\
+  \ --cutoff=FLOAT            Report only base pairs with an average \n          \
+  \                        probability > cutoff in the dot plot\n                \
+  \                  \n                                    (default=`0.01')\n    \
+  \  --mis                     Output \"most informative sequence\" instead of \n\
+  \                                  simple consensus: For each column of the \n \
+  \                                 alignment output the set of nucleotides with \n\
+  \                                  frequence greater than average in IUPAC \n  \
+  \                                notation.\n                                  \n\
+  \                                    (default=off)\n\nModel Details:\n  -T, --temp=DOUBLE\
+  \             Rescale energy parameters to a temperature of \n                 \
+  \                 temp C. Default is 37C.\n                                  \n\n\
+  \  -4, --noTetra                 Do not include special tabulated stabilizing \n\
+  \                                  energies for tri-, tetra- and hexaloop \n   \
+  \                               hairpins. Mostly for testing.\n                \
+  \                  \n                                    (default=off)\n  -d, --dangles=INT\
+  \             How to treat \"dangling end\" energies for \n                    \
+  \              bases adjacent to helices in free ends and \n                   \
+  \               multi-loops\n                                    (default=`2')\n\
+  \      --noLP                    Produce structures without lonely pairs \n    \
+  \                              (helices of length 1).\n                        \
+  \            (default=off)\n      --noGU                    Do not allow GU pairs\n\
+  \                                  \n                                    (default=off)\n\
+  \      --noClosingGU             Do not allow GU pairs at the end of helices\n \
+  \                                 \n                                    (default=off)\n\
+  \  -P, --paramFile=paramfile     Read energy parameters from paramfile, instead\
+  \ \n                                  of using the default parameter set.\n\n  \
+  \    --cfactor=DOUBLE          Set the weight of the covariance term in the \n \
+  \                                 energy function\n                            \
+  \      \n                                    (default=`1.0')\n      --nfactor=DOUBLE\
+  \          Set the penalty for non-compatible sequences in \n                  \
+  \                the covariance term of the energy function\n                  \
+  \                \n                                    (default=`1.0')\n  -R, --ribosum_file=ribosumfile\n\
+  \                                use specified Ribosum Matrix instead of normal\
+  \ \n                                  energy model. Matrixes to use should be 6x6\
+  \ \n                                  matrices, the order of the terms is AU, CG,\
+  \ \n                                  GC, GU, UA, UG.\n                        \
+  \          \n\n  -r, --ribosum_scoring         use ribosum scoring matrix. The matrix\
+  \ is \n                                  chosen according to the minimal and maximal\
+  \ \n                                  pairwise identities of the sequences in the\
+  \ \n                                  file.\n                                  \n\
+  \                                    (default=off)\n\nIf in doubt our program is\
+  \ right, nature is at fault.\nComments should be sent to rna@tbi.univie.ac.at.\n\
+  \n"
+generated_using:
+- --help

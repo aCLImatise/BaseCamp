@@ -1,5 +1,15 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: FASTA
+  optional: true
+- !Positional
+  description: ''
+  position: 1
+  name: OUT
+  optional: true
 named:
 - !Flag
   description: A regex cleavage pattern such as [KR]|{P} to cleave proteins with.
@@ -28,9 +38,55 @@ named:
   - --parallel
   args: !EmptyFlagArg {}
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -p
+  args: !SimpleFlagArg
+    name: P
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -o
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - fastadigeststats.py
+parent:
 subcommands: []
-help_flag:
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
+help_text: "usage: fastadigeststats.py [-h] [-p P] -f [FASTA] [-o [OUT]]\n       \
+  \                    [--enzyme {trypsin,lysc,none,argc,gluc,aspn,V8} [{trypsin,lysc,none,argc,gluc,aspn,V8}\
+  \ ...]]\n                           [--enzyme-pattern ENZYME_PATTERN] [--min MIN]\n\
+  \                           [--max MAX] [--parallel]\n\nThis script will digest\
+  \ a given protein fasta file with the specified enzymes\nand summarize how much\
+  \ of the proteome is covered, what residues are missed,\nand what isoforms can be\
+  \ uniquely identified.\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -p P                  Threads to run\n  -f [FASTA], --fasta\
+  \ [FASTA]\n                        The fasta file to operate on.\n  -o [OUT], --out\
+  \ [OUT]\n                        The file to write results to. Leave blank for stdout,\n\
+  \  --enzyme {trypsin,lysc,none,argc,gluc,aspn,V8} [{trypsin,lysc,none,argc,gluc,aspn,V8}\
+  \ ...]\n                        Enzyme to use. Pass a list like \"trypsin lysc\"\
+  \ to use\n                        multiple enzymes. The order of enzymes will be\
+  \ the\n                        order of digestion if digesting in series.\n  --enzyme-pattern\
+  \ ENZYME_PATTERN\n                        A regex cleavage pattern such as [KR]|{P}\
+  \ to cleave\n                        proteins with.\n  --min MIN             Minimum\
+  \ cleavage length\n  --max MAX             Maximum cleavage length\n  --parallel\
+  \            Should cleavages be done in parallel (default is\n                \
+  \        serial digestion)?\n"
+generated_using:
+- --help

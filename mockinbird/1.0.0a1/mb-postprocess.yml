@@ -1,20 +1,5 @@
-!Command
-positional:
-- !Positional
-  description: folder to files created by the preprocessing
-  position: 0
-  name: preprocess_dir
-  optional: false
-- !Positional
-  description: output directory - will be created if it does not exist
-  position: 1
-  name: output_dir
-  optional: false
-- !Positional
-  description: path to the postprocessing config file
-  position: 2
-  name: config_file
-  optional: false
+&id001 !Command
+positional: []
 named:
 - !Flag
   description: preprocessing filename prefix - only required if there are multiple
@@ -29,15 +14,119 @@ named:
   synonyms:
   - --log_level
   args: !ChoiceFlagArg
-    choices:
-    - debug
-    - info
-    - warn
-    - error
+    choices: !!set
+      warn:
+      error:
+      info:
+      debug:
   optional: true
 command:
 - mb-postprocess
-subcommands: []
+parent:
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: mockinbird-postprocess
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  command:
+  - mb-postprocess
+  - preprocess_dir
+  parent: *id001
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: mockinbird-postprocess [-h] [--prefix PREFIX]\n             \
+    \                 [--log_level {debug,info,warn,error}]\n                    \
+    \          [--version]\n                              preprocess_dir output_dir\
+    \ config_file\nmockinbird-postprocess: error: argument preprocess_dir: 'preprocess_dir'\
+    \ is not an existing directory\n"
+  generated_using: &id002
+  - --help
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: mockinbird-postprocess
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  command:
+  - mb-postprocess
+  - output_dir
+  parent: *id001
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: mockinbird-postprocess [-h] [--prefix PREFIX]\n             \
+    \                 [--log_level {debug,info,warn,error}]\n                    \
+    \          [--version]\n                              preprocess_dir output_dir\
+    \ config_file\nmockinbird-postprocess: error: argument preprocess_dir: 'output_dir'\
+    \ is not an existing directory\n"
+  generated_using: *id002
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: mockinbird-postprocess
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --prefix
+    args: !SimpleFlagArg
+      name: PREFIX
+    optional: true
+  command:
+  - mb-postprocess
+  - config_file
+  parent: *id001
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: mockinbird-postprocess [-h] [--prefix PREFIX]\n             \
+    \                 [--log_level {debug,info,warn,error}]\n                    \
+    \          [--version]\n                              preprocess_dir output_dir\
+    \ config_file\nmockinbird-postprocess: error: argument preprocess_dir: 'config_file'\
+    \ is not an existing directory\n"
+  generated_using: *id002
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -53,3 +142,16 @@ version_flag: !Flag
   - -v
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: mockinbird-postprocess [-h] [--prefix PREFIX]\n               \
+  \               [--log_level {debug,info,warn,error}]\n                        \
+  \      [--version]\n                              preprocess_dir output_dir config_file\n\
+  \nrun the PAR-CLIP postprocessing pipeline\n\npositional arguments:\n  preprocess_dir\
+  \        folder to files created by the preprocessing\n  output_dir            output\
+  \ directory - will be created if it does not\n                        exist\n  config_file\
+  \           path to the postprocessing config file\n\noptional arguments:\n  -h,\
+  \ --help            show this help message and exit\n  --prefix PREFIX       preprocessing\
+  \ filename prefix - only required if there\n                        are multiple\
+  \ table files in the specified preprocess\n                        directory\n \
+  \ --log_level {debug,info,warn,error}\n                        verbosity level of\
+  \ the logger\n  --version, -v         show program's version number and exit\n"
+generated_using: *id002

@@ -3,36 +3,6 @@ positional:
 - !Positional
   description: ''
   position: 0
-  name: that
-  optional: false
-- !Positional
-  description: ''
-  position: 1
-  name: remove
-  optional: false
-- !Positional
-  description: ''
-  position: 2
-  name: not
-  optional: false
-- !Positional
-  description: ''
-  position: 3
-  name: annotated
-  optional: false
-- !Positional
-  description: ''
-  position: 4
-  name: ss
-  optional: false
-- !Positional
-  description: ''
-  position: 5
-  name: correlations
-  optional: false
-- !Positional
-  description: ''
-  position: 6
   name: msa
   optional: false
 named:
@@ -40,6 +10,19 @@ named:
   description: ': be verbose'
   synonyms:
   - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ': number of sequences in the simulated msa, N=0 for use all  [0]'
+  synonyms:
+  - -N
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: ': assume unstructured, even if msa has a given ss_cons'
+  synonyms:
+  - --noss
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
@@ -69,8 +52,29 @@ named:
   - --onemsa
   args: !EmptyFlagArg {}
   optional: true
+- !Flag
+  description: ': tolerance  [1e-3]'
+  synonyms:
+  - --tol
+  args: !SimpleFlagArg
+    name: x
+  optional: true
+- !Flag
+  description: ': set RNG seed to <n>  [0]'
+  synonyms:
+  - --seed
+  args: !SimpleFlagArg
+    name: n
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -options
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - R-scape-sim-nobps
+parent:
 subcommands: []
 help_flag: !Flag
   description: ': show brief help on version and usage'
@@ -80,3 +84,17 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "# R-scape-sim-nobps :: R-scape-sim-nobps - synthetic alignments that remove\
+  \ not annotated ss correlations\n# Easel 0.45h (June 2018)\n# Copyright (C) 2018\
+  \ Howard Hughes Medical Institute.\n# Freely distributed under the BSD open source\
+  \ license.\n# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\
+  \ - - -\nUsage: R-scape-sim-nobps [-options] <msa>\n\noptions:\n  -h           \
+  \  : show brief help on version and usage\n  -v             : be verbose\n  -N <n>\
+  \         : number of sequences in the simulated msa, N=0 for use all  [0]\n  --noss\
+  \         : assume unstructured, even if msa has a given ss_cons\n  --informat <s>\
+  \ : specify format\n  --outdir <s>   : specify a directory for all output files\n\
+  \  -o <f>         : send output to file <f>, not stdout\n  --onemsa       : if file\
+  \ has more than one msa, analyze only the first one\n  --tol <x>      : tolerance\
+  \  [1e-3]\n  --seed <n>     : set RNG seed to <n>  [0]\n"
+generated_using:
+- -h

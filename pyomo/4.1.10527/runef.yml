@@ -224,7 +224,93 @@ named:
   optional: true
 command:
 - runef
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "Usage: runef [options]\n\nOptions:\n  -h, --help            show this\
+  \ help message and exit\n\n  Input Options:\n    -i INSTANCE_DIRECTORY, --instance-directory=INSTANCE_DIRECTORY\n\
+  \                        The directory in which all instance (reference and\n  \
+  \                      scenario) definitions are stored. This option is\n      \
+  \                  required if no callback is found in the model file.\n    -m MODEL_DIRECTORY,\
+  \ --model-directory=MODEL_DIRECTORY\n                        The directory in which\
+  \ all model (reference and\n                        scenario) definitions are stored.\
+  \ Default is \".\".\n    -o OBJECTIVE_SENSE, --objective-sense-stage-based=OBJECTIVE_SENSE\n\
+  \                        The objective sense to use for the auto-generated\n   \
+  \                     scenario instance objective, which is equal to the sum\n \
+  \                       of the scenario-tree stage costs. Default is None,\n   \
+  \                     indicating an Objective has been declared on the\n       \
+  \                 reference model.\n\n  Scenario Tree Options:\n    --scenario-tree-seed=SCENARIO_TREE_RANDOM_SEED\n\
+  \                        The random seed associated with manipulation\n        \
+  \                operations on the scenario tree (e.g., down-sampling).\n      \
+  \                  Default is 0, indicating unassigned.\n    --scenario-tree-downsample-fraction=SCENARIO_TREE_DOWNSAMPLE_FRACTION\n\
+  \                        The proportion of the scenarios in the scenario tree\n\
+  \                        that are actually used. Specific scenarios are\n      \
+  \                  selected at random. Default is 1.0, indicating no\n         \
+  \               down-sampling.\n\n  EF Options:\n    --cvar-weight=CVAR_WEIGHT\n\
+  \                        The weight associated with the CVaR term in the risk-\n\
+  \                        weighted objective formulation. Default is 1.0. If the\n\
+  \                        weight is 0, then *only* a non-weighted CVaR cost will\n\
+  \                        appear in the EF objective - the expected cost\n      \
+  \                  component will be dropped.\n    --generate-weighted-cvar\n  \
+  \                      Add a weighted CVaR term to the primary objective\n    --risk-alpha=RISK_ALPHA\n\
+  \                        The probability threshold associated with cvar (or any\n\
+  \                        future) risk-oriented performance metrics. Default is\n\
+  \                        0.95.\n\n  Chance Constraint Options:\n    --cc-alpha=CC_ALPHA\n\
+  \                        The probability threshold associated with a chance\n  \
+  \                      constraint. The RHS will be one minus this value.\n     \
+  \                   Default is 0.\n    --cc-indicator-var=CC_INDICATOR_VAR\n   \
+  \                     The name of the binary variable to be used to\n          \
+  \              construct a chance constraint. Default is None, which\n         \
+  \               indicates no chance constraint.\n\n  Solver Options:\n    --mipgap=MIPGAP\
+  \     Specifies the mipgap for the EF solve.\n    --solve             Following\
+  \ write of the extensive form model, solve it.\n    --solver=SOLVER_TYPE\n     \
+  \                   Specify the solver with which to solve the extensive\n     \
+  \                   form.  The following solver types are currently\n          \
+  \              supported: asl, baron, bilevel_blp_global,\n                    \
+  \    bilevel_blp_local, bilevel_ld, cbc, cplex, glpk,\n                        gurobi,\
+  \ mpec_minlp, mpec_nlp, openopt, os, path, pico,\n                        ps, py,\
+  \ scip, xpress; Default: cplex\n    --solver-io=SOLVER_IO\n                    \
+  \    The type of IO used to execute the solver.  Different\n                   \
+  \     solvers support different types of IO, but the\n                        following\
+  \ are common options: lp - generate LP files,\n                        nl - generate\
+  \ NL files, python - direct Python\n                        interface, os - generate\
+  \ OSiL XML files.\n    --solver-manager=SOLVER_MANAGER_TYPE\n                  \
+  \      The type of solver manager used to coordinate scenario\n                \
+  \        sub-problem solves. Default is serial.\n    --solver-options=SOLVER_OPTIONS\n\
+  \                        Solver options for the extensive form problem.\n    --disable-warmstarts\n\
+  \                        Disable warm-starts of EF solves. Default is False.\n \
+  \   --shutdown-pyro     Shut down all Pyro-related components associated with\n\
+  \                        the Pyro solver manager (if specified), including the\n\
+  \                        dispatch server, name server, and any mip servers.\n  \
+  \                      Default is False.\n\n  Output Options:\n    --output-file=OUTPUT_FILE\n\
+  \                        The name of the extensive form output file (currently\n\
+  \                        only LP and NL file formats are supported). If the\n  \
+  \                      option name does not end in '.lp' or '.nl', then the\n  \
+  \                      output format will be determined by the value of the\n  \
+  \                      --solver-io option, and the appropriate ending suffix\n \
+  \                       will be added to the name. Default is 'efout'.\n    --symbolic-solver-labels\n\
+  \                        When interfacing with the solver, use symbol names\n  \
+  \                      derived from the model. For example,\n                  \
+  \      \"my_special_variable[1_2_3]\" instead of \"v1\". Useful\n              \
+  \          for debugging. When using the ASL interface (--solver-\n            \
+  \            io=nl), generates corresponding .row (constraints) and\n          \
+  \              .col (variables) files. The ordering in these files\n           \
+  \             provides a mapping from ASL index to symbolic model\n            \
+  \            names.\n    --output-solver-log\n                        Output solver\
+  \ log during the extensive form solve.\n    --solution-writer=SOLUTION_WRITER\n\
+  \                        The plugin invoked to write the scenario tree\n       \
+  \                 solution. Defaults to the empty list.\n    --verbose         \
+  \  Generate verbose output, beyond the usual status\n                        output.\
+  \ Default is False.\n    --output-times      Output timing statistics for various\
+  \ EF components\n\n  Other Options:\n    --disable-gc        Disable the python\
+  \ garbage collecter. Default is\n                        False.\n    -k, --keep-solver-files\n\
+  \                        Retain temporary input and output files for solve.\n  \
+  \  --profile=PROFILE   Enable profiling of Python code.  The value of this\n   \
+  \                     option is the number of functions that are summarized.\n \
+  \   --traceback         When an exception is thrown, show the entire call\n    \
+  \                    stack. Ignored if profiling is enabled. Default is\n      \
+  \                  False.\n"
+generated_using:
+- --help

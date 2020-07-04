@@ -20,16 +20,17 @@ named:
   synonyms:
   - --input-format
   args: !ChoiceFlagArg
-    choices:
-    - fasta
-    - nexus
-    - phylip
-    - clustal
-    - emboss
-    - stockholm
+    choices: !!set
+      nexus:
+      clustal:
+      fasta:
+      stockholm:
+      emboss:
+      phylip:
   optional: true
 command:
 - phyluce_align_filter_characters_from_alignments
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -40,3 +41,15 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: phyluce_align_filter_characters_from_alignments [-h] --alignments\n\
+  \                                                       ALIGNMENTS --output\n  \
+  \                                                     OUTPUT\n                 \
+  \                                      [--input-format {fasta,nexus,phylip,clustal,emboss,stockholm}]\n\
+  \nFor a given folder of alignments, replace masked bases and/or insertion\ncharacters\
+  \ and convert to FASTA sequence files\n\noptional arguments:\n  -h, --help     \
+  \       show this help message and exit\n  --alignments ALIGNMENTS\n           \
+  \             The input alignment files to filter\n  --output OUTPUT       The output\
+  \ FASTA file to create\n  --input-format {fasta,nexus,phylip,clustal,emboss,stockholm}\n\
+  \                        The input alignment format\n"
+generated_using:
+- --help

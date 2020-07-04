@@ -13,8 +13,8 @@ named:
   synonyms:
   - --input-format
   args: !ChoiceFlagArg
-    choices:
-    - fasta
+    choices: !!set
+      fasta:
   optional: true
 - !Flag
   description: 'The min count of taxa allowed in a fasta file (default: 3)'
@@ -33,6 +33,7 @@ named:
   optional: true
 command:
 - phyluce_align_output_list_of_taxon_counts
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -43,3 +44,17 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: phyluce_align_output_list_of_taxon_counts [-h] --fastas FASTAS\n\
+  \                                                 [--input-format {fasta}]\n   \
+  \                                              [--min-count MIN_COUNT]\n       \
+  \                                          [--cores CORES]\n\nCompute summary statistics\
+  \ for alignments in parallel\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n  --fastas FASTAS       The directory containing fastas\
+  \ to checked. (default:\n                        None)\n  --input-format {fasta}\n\
+  \                        The input file format. (default: fasta)\n  --min-count\
+  \ MIN_COUNT\n                        The min count of taxa allowed in a fasta file\n\
+  \                        (default: 3)\n  --cores CORES         Process alignments\
+  \ in parallel using --cores for\n                        alignment. This is the\
+  \ number of PHYSICAL CPUs.\n                        (default: 1)\n"
+generated_using:
+- --help

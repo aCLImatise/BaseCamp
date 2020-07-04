@@ -1,8 +1,13 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: maf_files
+  optional: false
 named:
 - !Flag
-  description: ': Comma separated list of species to include'
+  description: Comma separated list of species to include
   synonyms:
   - -s
   - --species
@@ -10,7 +15,7 @@ named:
     name: SPECIES
   optional: true
 - !Flag
-  description: ': Prefix to add to each interval chrom (usually reference species)'
+  description: Prefix to add to each interval chrom (usually reference species)
   synonyms:
   - -p
   - --prefix
@@ -18,8 +23,8 @@ named:
     name: PREFIX
   optional: true
 - !Flag
-  description: ':   Use a cache that keeps blocks of the MAF files in memory (requires
-    ~20MB per MAF)'
+  description: Use a cache that keeps blocks of the MAF files in memory (requires
+    ~20MB per MAF)
   synonyms:
   - -C
   - --usecache
@@ -27,7 +32,23 @@ named:
   optional: true
 command:
 - maf_interval_alignibility.py
+parent:
 subcommands: []
-help_flag:
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
 usage_flag:
 version_flag:
+help_text: "Usage: maf_interval_alignibility.py maf_files [options] < interval_file\n\
+  \nOptions:\n  -h, --help            show this help message and exit\n  -s SPECIES,\
+  \ --species=SPECIES\n                        Comma separated list of species to\
+  \ include\n  -p PREFIX, --prefix=PREFIX\n                        Prefix to add to\
+  \ each interval chrom (usually\n                        reference species)\n  -C,\
+  \ --usecache        Use a cache that keeps blocks of the MAF files in\n        \
+  \                memory (requires ~20MB per MAF)\n"
+generated_using:
+- --help

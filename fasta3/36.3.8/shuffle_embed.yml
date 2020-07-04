@@ -1,5 +1,10 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: file.seq
+  optional: false
 named:
 - !Flag
   description: include description
@@ -8,16 +13,18 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: =0 shuffle only, do not insert unshuffled
+  description: shuffle only, do not insert unshuffled
   synonyms:
   - --insert
-  args: !EmptyFlagArg {}
+  args: !SimpleFlagArg
+    name: '0'
   optional: true
 - !Flag
-  description: =1      number of shuffles
+  description: number of shuffles
   synonyms:
   - --n
-  args: !EmptyFlagArg {}
+  args: !SimpleFlagArg
+    name: '1'
   optional: true
 - !Flag
   description: size of shuffle window
@@ -27,6 +34,7 @@ named:
   optional: true
 command:
 - shuffle_embed.pl
+parent:
 subcommands: []
 help_flag: !Flag
   description: short help
@@ -36,3 +44,9 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "Usage:\n    shuffle_embed.pl --n=1 --insert=1 --window=20 file.seq > file.shuff_emb\n\
+  \nOptions:\n     -h         short help\n     --help     include description\n  \
+  \   --insert=0 shuffle only, do not insert unshuffled\n     --n=1      number of\
+  \ shuffles\n     --window   size of shuffle window\n\n"
+generated_using:
+- -h

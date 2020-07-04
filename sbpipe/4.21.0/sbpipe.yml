@@ -71,12 +71,12 @@ named:
   synonyms:
   - --log-level
   args: !ChoiceFlagArg
-    choices:
-    - DEBUG
-    - INFO
-    - WARNING
-    - ERROR
-    - CRITICAL
+    choices: !!set
+      WARNING:
+      DEBUG:
+      ERROR:
+      INFO:
+      CRITICAL:
   optional: true
 - !Flag
   description: print debugging output
@@ -87,6 +87,7 @@ named:
   optional: true
 command:
 - sbpipe
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -103,3 +104,23 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: sbpipe [-h] [-c NAME] [-s FILE] [-p FILE] [-d FILE] [-e FILE]\n\
+  \              [--license] [--nocolor] [--logo] [-q]\n              [--log-level\
+  \ {DEBUG,INFO,WARNING,ERROR,CRITICAL}] [-v] [-V]\n\nPipelines for systems modelling\
+  \ of biological networks.\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -c NAME, --create-project NAME\n                    \
+  \    create a project structure\n  -s FILE, --simulate FILE\n                  \
+  \      run time course simulations\n  -p FILE, --parameter-scan1 FILE\n        \
+  \                run parameter scans for 1 model variable\n  -d FILE, --parameter-scan2\
+  \ FILE\n                        run parameter scans for 2 model variables\n  -e\
+  \ FILE, --parameter-estimation FILE\n                        run parameter estimations\n\
+  \  --license             show the license and exit\n  --nocolor             print\
+  \ logging messages without colors\n  --logo                show the logo and exit\n\
+  \  -q, --quiet           do not print any log\n  --log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}\n\
+  \                        override the log level\n  -v, --verbose         print debugging\
+  \ output\n  -V, --version         show the version and exit\n\nExit status:\n0 \
+  \ if OK,\n1  if trouble (e.g. a pipeline did not execute correctly).\n\nReport bugs\
+  \ to sbpipe@googlegroups.com\nSBpipe home page: <https://github.com/pdp10/sbpipe>\n\
+  For complete documentation, see http://sbpipe.readthedocs.io .\n    \n"
+generated_using:
+- --help

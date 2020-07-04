@@ -1,8 +1,15 @@
-!Command
+&id001 !Command
 positional: []
-named: []
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - rgt-tools.py
+parent:
 subcommands:
 - !Command
   positional: []
@@ -24,6 +31,7 @@ subcommands:
   command:
   - rgt-tools.py
   - gtf_add_transcripts
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -34,6 +42,11 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py gtf_add_transcripts [-h] [-i input] [-o output]\n\
+    \noptional arguments:\n  -h, --help  show this help message and exit\n  -i input\
+    \    Input GTF file\n  -o output   Output GTF file\n"
+  generated_using: &id002
+  - --help
 - !Command
   positional: []
   named:
@@ -102,6 +115,7 @@ subcommands:
   command:
   - rgt-tools.py
   - gtf_to_bed
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -112,29 +126,19 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-- !Command
-  positional: []
-  named:
-  - !Flag
-    description: Input GTF file
-    synonyms:
-    - -i
-    args: !SimpleFlagArg
-      name: input
-    optional: true
-  command:
-  - rgt-tools.py
-  - gtf_add_chr
-  subcommands: []
-  help_flag: !Flag
-    description: show this help message and exit
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
+  help_text: "usage: rgt-tools.py gtf_to_bed [-h] [-i input] [-o output] [-s source]\n\
+    \                               [-f feature] [-t type] [-st status] [-g gene]\n\
+    \                               [-id] [-b]\n\noptional arguments:\n  -h, --help\
+    \  show this help message and exit\n  -i input    Input GTF file\n  -o output\
+    \   Output BED file\n  -s source   Define the source {ENSEMBL,HAVANA,All}\n  -f\
+    \ feature  Define the feature {gene,transcript,exon,CDS,UTR,start_codon,sto\n\
+    \              p_codon,Selenocysteine,All}\n  -t type     Define gene type e.g.\
+    \ 'protein_coding' more:\n              http://www.gencodegenes.org/gencode_biotypes.html\n\
+    \  -st status  Define gene status {KNOWN, NOVEL, PUTATIVE,All}\n  -g gene    \
+    \ Define the gene list for filtering, default is None.\n  -id         Use gene\
+    \ ID as region name, instead of gene symbol.\n  -b          Save exons into entries\
+    \ with block in BED\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -161,6 +165,7 @@ subcommands:
   command:
   - rgt-tools.py
   - gtf_intergenic
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -171,6 +176,11 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py gtf_intergenic [-h] [-i input] [-o output] [-organism\
+    \  ]\n\noptional arguments:\n  -h, --help    show this help message and exit\n\
+    \  -i input      Input GTF file\n  -o output     Output directory for BED file\n\
+    \  -organism     Define the organism\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -198,6 +208,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_add_score
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -208,6 +219,11 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_add_score [-h] [-i input] [-o output] [-v value]\n\
+    \noptional arguments:\n  -h, --help  show this help message and exit\n  -i input\
+    \    Input BED file\n  -o output   Output BED file\n  -v value    Define value\
+    \ to add\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -240,6 +256,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_merge
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -250,6 +267,11 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_merge [-h] [-i input] [-o output] [-s] [-b]\n\
+    \noptional arguments:\n  -h, --help  show this help message and exit\n  -i input\
+    \    Input BED file\n  -o output   Output BED file\n  -s          Strand specific\n\
+    \  -b          BED12 format\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -276,6 +298,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_merge_by_name
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -286,6 +309,10 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_merge_by_name [-h] [-i input] [-o output] [-b]\n\
+    \noptional arguments:\n  -h, --help  show this help message and exit\n  -i input\
+    \    Input BED file\n  -o output   Output BED file\n  -b          BED12 format\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -350,6 +377,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_rename
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -360,6 +388,16 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_rename [-h] [-i input] [-o output] [-s] [-d]\n\
+    \                               [-organism  ] [-l length] [-t threshold]\n   \
+    \                            [-target  ] [-genes  ]\n\noptional arguments:\n \
+    \ -h, --help    show this help message and exit\n  -i input      Input BED file\n\
+    \  -o output     Output BED file\n  -s            Strand specific\n  -d      \
+    \      Show the distance\n  -organism     Define the organism\n  -l length   \
+    \  Define the length of promoter region (default:1000 bp)\n  -t threshold  Define\
+    \ the threshold of distance (default:50000bp\n  -target       Target BED file\n\
+    \  -genes        Target gene list\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -407,6 +445,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_change_strand
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -417,6 +456,13 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_change_strand [-h] [-i input] [-o output]\n\
+    \                                      [-d distance] [-t target] [-r] [-a all]\n\
+    \noptional arguments:\n  -h, --help   show this help message and exit\n  -i input\
+    \     Input BED file\n  -o output    Output BED file\n  -d distance  Define the\
+    \ threshold of distance (default:0 bp\n  -t target    Target BED file\n  -r  \
+    \         Reverse the strand\n  -a all       Define the stand for all regions\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -481,6 +527,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_extend
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -491,6 +538,16 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_extend [-h] [-i input] [-o output] [-oz] [-len\
+    \ length]\n                               [-c] [-l] [-r] [-up] [-down]\n\noptional\
+    \ arguments:\n  -h, --help       show this help message and exit\n  -i input \
+    \        Input BED file\n  -o output        Output BED name.\n  -oz, --onlyzero\
+    \  Extend only the zero-length regions\n  -len length      Define the length to\
+    \ extend.\n  -c               Extend from the center to both directions.\n  -l\
+    \               Extend from the left ends.\n  -r               Extend from the\
+    \ right ends.\n  -up              Extend from the upstream ends.\n  -down    \
+    \        Extend from the downstream ends.\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -536,6 +593,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_subtract
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -546,6 +604,13 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_subtract [-h] [-i input] [-o output] [-t target]\n\
+    \                                 [-all] [-blocki] [-blockt]\n\noptional arguments:\n\
+    \  -h, --help  show this help message and exit\n  -i input    Input BED file\n\
+    \  -o output   Output BED name.\n  -t target   Define the target BED file to subtract.\n\
+    \  -all        Subtract the whole region when it overlaps.\n  -blocki     Read\
+    \ the blocks in input.\n  -blockt     Read the blocks in target.\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -579,6 +644,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_cut
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -589,6 +655,11 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_cut [-h] [-i input] [-o output] [-t target]\
+    \ [-s]\n\noptional arguments:\n  -h, --help  show this help message and exit\n\
+    \  -i input    Input BED file\n  -o output   Output BED name.\n  -t target   Define\
+    \ the target BED file for cutting.\n  -s          Strand-specific.\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -623,6 +694,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_get_promoters
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -633,6 +705,13 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_get_promoters [-h] [-i input] [-o output]\n\
+    \                                      [-organism ORGANISM] [-l length]\n\noptional\
+    \ arguments:\n  -h, --help          show this help message and exit\n  -i input\
+    \            Input file (BED or gene list)\n  -o output           Output BED file\n\
+    \  -organism ORGANISM  Define the organism (necessary if input is a gene list)\n\
+    \  -l length           Define length of promoters (default:1000bp)\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -688,6 +767,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_upstream
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -698,6 +778,16 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_upstream [-h] [-i input] [-o output] [-l length]\n\
+    \                                 [-d distance] [-min minimum] [-r] [-ds]\n\n\
+    optional arguments:\n  -h, --help         show this help message and exit\n  -i\
+    \ input           Input BED file\n  -o output          Output BED file\n  -l length\
+    \          Define length (default:100bp)\n  -d distance        Define distance\
+    \ (default:100bp)\n  -min minimum       Define minimum length of gene to filter\
+    \ out the small\n                     genes (default:0)\n  -r, --reverse     \
+    \ Reverse the strand.\n  -ds, --downstream  Find downstream regions instead of\
+    \ upstream.\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -748,6 +838,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_to_fasta
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -758,6 +849,15 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_to_fasta [-h] [-i input] [-o output] [-genome\
+    \   ]\n                                 [-loci] [-order] [-block] [-score]\n\n\
+    optional arguments:\n  -h, --help   show this help message and exit\n  -i input\
+    \     Input BED file\n  -o output    Output directory for FASTA files\n  -genome\
+    \      Define the FASTA file of the genome sequence\n  -loci        Make genomic\
+    \ loci as sequence name\n  -order       Make ranking number as sequence name\n\
+    \  -block       Read blocks\n  -score       Load the score column in BED into\
+    \ FASTA\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -811,6 +911,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_filter
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -821,6 +922,14 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_filter [-h] [-i input] [-o output] [-gene GENE]\n\
+    \                               [-min MIN] [-max MAX] [-score] [-background]\n\
+    \noptional arguments:\n  -h, --help   show this help message and exit\n  -i input\
+    \     Input BED file\n  -o output    Output BED file\n  -gene GENE   Define file\
+    \ for the gene list\n  -min MIN     Define minimal length\n  -max MAX     Define\
+    \ maximal length\n  -score       Add the score from gene list to BED file\n  -background\
+    \  Get the genes not in the given gene list.\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -862,6 +971,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_remove_if_overlap
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -872,6 +982,13 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_remove_if_overlap [-h] [-i input] [-o output]\n\
+    \                                          [-t target] [-k] [-b]\n\noptional arguments:\n\
+    \  -h, --help   show this help message and exit\n  -i input     Input BED file\n\
+    \  -o output    Output BED file\n  -t target    Define BED file for target regions\n\
+    \  -k, --keep   Keep the overlapped regions, and remove the non-overlapped\n \
+    \              ones.\n  -b, --block  Read and write BED12 format.\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -907,6 +1024,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_add_columns
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -917,29 +1035,14 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-- !Command
-  positional: []
-  named:
-  - !Flag
-    description: Input BED file
-    synonyms:
-    - -i
-    args: !SimpleFlagArg
-      name: input
-    optional: true
-  command:
-  - rgt-tools.py
-  - bed_size
-  subcommands: []
-  help_flag: !Flag
-    description: show this help message and exit
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
+  help_text: "usage: rgt-tools.py bed_add_columns [-h] [-i input] [-o output] [-ref\
+    \ refer]\n                                    [-f FIELD]\n\noptional arguments:\n\
+    \  -h, --help            show this help message and exit\n  -i input         \
+    \     Input BED file\n  -o output             Output BED file\n  -ref refer  \
+    \          Define file for referring the extra columns\n  -f FIELD, --field FIELD\n\
+    \                        Which field of the reference file is compared for\n \
+    \                       names.\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -967,6 +1070,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_complement
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -977,6 +1081,12 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_complement [-h] [-i input] [-o output]\n   \
+    \                                [-organism ORGANISM]\n\noptional arguments:\n\
+    \  -h, --help          show this help message and exit\n  -i input           \
+    \ Input BED file\n  -o output           Output BED file\n  -organism ORGANISM\
+    \  Define the organism (necessary if input is a gene list)\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1004,6 +1114,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_polya
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1014,6 +1125,10 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_polya [-h] [-i input] [-b bam] [-o output]\n\
+    \noptional arguments:\n  -h, --help  show this help message and exit\n  -i input\
+    \    Input BED file\n  -b bam      Input BAM file\n  -o output   Output file\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1034,6 +1149,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_to_gtf
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1044,6 +1160,10 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_to_gtf [-h] [-i input] [-o output]\n\noptional\
+    \ arguments:\n  -h, --help  show this help message and exit\n  -i input    Input\
+    \ BED file\n  -o output   Output GTF file\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1064,6 +1184,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_overlap
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1074,6 +1195,10 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_overlap [-h] [-i input] [-o output]\n\noptional\
+    \ arguments:\n  -h, --help  show this help message and exit\n  -i input    Input\
+    \ BED files or directory\n  -o output   Output text file\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1101,6 +1226,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_distance
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1111,29 +1237,11 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
-- !Command
-  positional: []
-  named:
-  - !Flag
-    description: Input BED file
-    synonyms:
-    - -i
-    args: !SimpleFlagArg
-      name: input
-    optional: true
-  command:
-  - rgt-tools.py
-  - bed_standard_chrom
-  subcommands: []
-  help_flag: !Flag
-    description: show this help message and exit
-    synonyms:
-    - -h
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
-  usage_flag:
-  version_flag:
+  help_text: "usage: rgt-tools.py bed_distance [-h] [-i input] [-o output] [-t target]\n\
+    \noptional arguments:\n  -h, --help  show this help message and exit\n  -i input\
+    \    Input BED file\n  -o output   Output table.\n  -t target   Define the target\
+    \ BED file to define the distance.\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1154,6 +1262,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_strand
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1164,6 +1273,10 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_strand [-h] [-i input] [-o output]\n\noptional\
+    \ arguments:\n  -h, --help  show this help message and exit\n  -i input    Input\
+    \ BED file\n  -o output   Input directory\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1198,6 +1311,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_add_data
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1208,6 +1322,11 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_add_data [-h] [-i input] [-o output] [-t target]\n\
+    \                                 [-s strand]\n\noptional arguments:\n  -h, --help\
+    \  show this help message and exit\n  -i input    Input BED file\n  -o output\
+    \   Output BED file\n  -t target   Target BED file\n  -s strand   same or opposite\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1235,6 +1354,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_sampling
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1245,6 +1365,11 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_sampling [-h] [-i input] [-o output] [-s size]\n\
+    \noptional arguments:\n  -h, --help  show this help message and exit\n  -i input\
+    \    Input BED file\n  -o output   Output BED file\n  -s size     Number of the\
+    \ output regions\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1271,6 +1396,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed12tobed6
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1281,6 +1407,11 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed12tobed6 [-h] [-i input] [-o output] [-e]\n\n\
+    optional arguments:\n  -h, --help  show this help message and exit\n  -i input\
+    \    Input BED file\n  -o output   Output BED file\n  -e          Add exon number\
+    \ or not\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1322,6 +1453,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_check_up
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1332,6 +1464,13 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_check_up [-h] [-i input] [-o output] [-t target]\n\
+    \                                 [-l L] [-organism ORGANISM]\n\noptional arguments:\n\
+    \  -h, --help          show this help message and exit\n  -i input           \
+    \ Input BED file\n  -o output           Output BED file\n  -t target         \
+    \  Target BED file\n  -l L                Define the length (bp) to detect\n \
+    \ -organism ORGANISM  Define the organism\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1379,6 +1518,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bed_divide
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1389,6 +1529,14 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bed_divide [-h] [-bed   ] [-t table] [-o1 output1]\n\
+    \                               [-o2 output2] [-c cutoff] [-m mode]\n\noptional\
+    \ arguments:\n  -h, --help   show this help message and exit\n  -bed         Input\
+    \ BED file\n  -t table     Input expression table (Gene name should match the\
+    \ region name.\n  -o1 output1  Output first BED file\n  -o2 output2  Output second\
+    \ BED file\n  -c cutoff    Define the cutoff\n  -m mode      Define the mode,\
+    \ such as mean, max, or min.\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1415,6 +1563,7 @@ subcommands:
   command:
   - rgt-tools.py
   - bam_filter
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1425,8 +1574,18 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py bam_filter [-h] [-i input] [-bed   ] [-o output]\n\
+    \noptional arguments:\n  -h, --help  show this help message and exit\n  -i input\
+    \    Input BAM file\n  -bed        Input BED file for the regions for filtering\n\
+    \  -o output   Output prefix for BAM file\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: result
+    optional: true
   named:
   - !Flag
     description: Input data config.
@@ -1466,6 +1625,7 @@ subcommands:
   command:
   - rgt-tools.py
   - thor_ma
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1476,6 +1636,13 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py thor_ma [-h] [-i input] [-thor THOR result] [-o\
+    \ output]\n                            [-e extension] [-b bin size]\n\noptional\
+    \ arguments:\n  -h, --help         show this help message and exit\n  -i input\
+    \           Input data config.\n  -thor THOR result  Output directory of THOR.\n\
+    \  -o output          Output directory\n  -e extension       Define the extension\
+    \ size.\n  -b bin size        Define the bin size.\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1559,6 +1726,7 @@ subcommands:
   command:
   - rgt-tools.py
   - thor_split
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1569,6 +1737,19 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py thor_split [-h] [-i input] [-o output] [-p p-value]\n\
+    \                               [-fc fold-change] [-rn] [-g genome] [-m merge]\n\
+    \                               [-b bin] [-s step] [-dnc dnc] [-snc snc]\n\noptional\
+    \ arguments:\n  -h, --help       show this help message and exit\n  -i input \
+    \        Input BED file\n  -o output        Output directory.\n  -p p-value  \
+    \     Define the cut-off of p-value (-log10) for filtering.\n  -fc fold-change\
+    \  Define the cut-off of foldchange for filtering.\n  -rn, --rename    Rename\
+    \ the peak names by associated genes.\n  -g genome        Define the genome\n\
+    \  -m merge         Define the maximum distance for merging the nearby regions\n\
+    \  -b bin           Define the bin size\n  -s step          Define the step size\n\
+    \  -dnc dnc         Define the cutoff of the difference of norm. read counts\n\
+    \  -snc snc         Define the cutoff of the sum of norm. read counts\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1659,6 +1840,7 @@ subcommands:
   command:
   - rgt-tools.py
   - getseq
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1669,6 +1851,17 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py getseq [-h] [-b bed] [-o output] [-d dna] [-p pos]\n\
+    \                           [-s strand] [-ch chr] [-ss start] [-es end]\n    \
+    \                       [-ex extention] [-re] [-c] [-r]\n\noptional arguments:\n\
+    \  -h, --help        show this help message and exit\n  -b bed            Input\
+    \ BED file\n  -o output         Output FASTA file\n  -d dna            DNA sequence\
+    \ in FASTA format\n  -p pos            position\n  -s strand         strand (+,\
+    \ -, or both)\n  -ch chr           chromosome\n  -ss start         start site\n\
+    \  -es end           end site\n  -ex extention     extention\n  -re, --reverse\
+    \    Reverse the sequence\n  -c, --complement  Get the complement of the sequence\n\
+    \  -r, --rna         Convert T to U\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1695,6 +1888,7 @@ subcommands:
   command:
   - rgt-tools.py
   - wig_trim_end
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1705,6 +1899,11 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py wig_trim_end [-h] [-i input] [-o output] [-chrosize\
+    \  ]\n\noptional arguments:\n  -h, --help    show this help message and exit\n\
+    \  -i input      Input WIG file\n  -o output     Output WIG file\n  -chrosize\
+    \     Define path to the chromosome size file\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1731,6 +1930,7 @@ subcommands:
   command:
   - rgt-tools.py
   - ensembl2symbol
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1741,6 +1941,11 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py ensembl2symbol [-h] [-i input] [-o output] [-organism\
+    \  ]\n\noptional arguments:\n  -h, --help    show this help message and exit\n\
+    \  -i input      Input gene list\n  -o output     Output gene list\n  -organism\
+    \     Define the organism\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1767,6 +1972,7 @@ subcommands:
   command:
   - rgt-tools.py
   - symbol2ensembl
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1777,6 +1983,11 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py symbol2ensembl [-h] [-i input] [-o output] [-organism\
+    \  ]\n\noptional arguments:\n  -h, --help    show this help message and exit\n\
+    \  -i input      Input gene list\n  -o output     Output gene list\n  -organism\
+    \     Define the organism\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1797,6 +2008,7 @@ subcommands:
   command:
   - rgt-tools.py
   - fasta2bp
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1807,6 +2019,10 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py fasta2bp [-h] [-i input] [-o output]\n\noptional\
+    \ arguments:\n  -h, --help  show this help message and exit\n  -i input    Input\
+    \ FASTA file or directory\n  -o output   Output file with a table\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1841,6 +2057,7 @@ subcommands:
   command:
   - rgt-tools.py
   - circRNA
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1851,6 +2068,12 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py circRNA [-h] [-i input] [-t tcons] [-o output] [-c\
+    \ circ]\n\noptional arguments:\n  -h, --help  show this help message and exit\n\
+    \  -i input    Input chimeric junction file from STAR\n  -t tcons    Input BED\
+    \ file of tcons\n  -o output   Output BED file\n  -c circ     Output BED file\
+    \ of circular RNA\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1892,6 +2115,7 @@ subcommands:
   command:
   - rgt-tools.py
   - sliceFASTA
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1902,6 +2126,12 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py sliceFASTA [-h] [-i input] [-l length] [-o output]\n\
+    \                               [-p position] [-r]\n\noptional arguments:\n  -h,\
+    \ --help     show this help message and exit\n  -i input       Input FASTA file\n\
+    \  -l length      Length of the slice sequence\n  -o output      Output FASTA\
+    \ file\n  -p position    The start position\n  -r, --reverse  Reverse the sequence\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1936,6 +2166,7 @@ subcommands:
   command:
   - rgt-tools.py
   - fasta_convert
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1946,6 +2177,12 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py fasta_convert [-h] [-i input] [-o output] [-c] [-r]\n\
+    \noptional arguments:\n  -h, --help        show this help message and exit\n \
+    \ -i input          Input FASTA file\n  -o output         Output FASTA file\n\
+    \  -c, --complement  Get the complement of the sequence\n  -r, --reverse     Reverse\
+    \ the sequence\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1966,6 +2203,7 @@ subcommands:
   command:
   - rgt-tools.py
   - tpx2bed
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -1976,6 +2214,10 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py tpx2bed [-h] [-i input] [-o output]\n\noptional\
+    \ arguments:\n  -h, --help  show this help message and exit\n  -i input    Input\
+    \ TPX file\n  -o output   Output BED file\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -1996,6 +2238,7 @@ subcommands:
   command:
   - rgt-tools.py
   - encode
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -2006,6 +2249,10 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: rgt-tools.py encode [-h] [-i input] [-o output]\n\noptional arguments:\n\
+    \  -h, --help  show this help message and exit\n  -i input    Input file list\
+    \ downloaded from ENCODE\n  -o output   Output directory\n"
+  generated_using: *id002
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -2021,3 +2268,54 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: rgt-tools.py [-h] [-v]\n                    {gtf_add_transcripts,gtf_to_bed,gtf_add_chr,gtf_intergenic,bed_add_score,bed_merge,bed_merge_by_name,bed_rename,bed_change_strand,bed_extend,bed_subtract,bed_cut,bed_get_promoters,bed_upstream,bed_to_fasta,bed_filter,bed_remove_if_overlap,bed_add_columns,bed_size,bed_complement,bed_polya,bed_to_gtf,bed_overlap,bed_distance,bed_standard_chrom,bed_strand,bed_add_data,bed_sampling,bed12tobed6,bed_check_up,bed_divide,bam_filter,thor_ma,thor_split,getseq,wig_trim_end,ensembl2symbol,symbol2ensembl,fasta2bp,circRNA,sliceFASTA,fasta_convert,tpx2bed,encode}\n\
+  \                    ...\n\nRGT-tools is for converting various data format in bioinformatic\
+  \ research\nAuthor: Joseph Chao-Chung Kuo\n\npositional arguments:\n  {gtf_add_transcripts,gtf_to_bed,gtf_add_chr,gtf_intergenic,bed_add_score,bed_merge,bed_merge_by_name,bed_rename,bed_change_strand,bed_extend,bed_subtract,bed_cut,bed_get_promoters,bed_upstream,bed_to_fasta,bed_filter,bed_remove_if_overlap,bed_add_columns,bed_size,bed_complement,bed_polya,bed_to_gtf,bed_overlap,bed_distance,bed_standard_chrom,bed_strand,bed_add_data,bed_sampling,bed12tobed6,bed_check_up,bed_divide,bam_filter,thor_ma,thor_split,getseq,wig_trim_end,ensembl2symbol,symbol2ensembl,fasta2bp,circRNA,sliceFASTA,fasta_convert,tpx2bed,encode}\n\
+  \                        sub-command help\n    gtf_add_transcripts\n           \
+  \             [GTF] Add transcripts from the existed exons\n    gtf_to_bed     \
+  \     [GTF] Convert GTF file to BED by the given biotype\n    gtf_add_chr      \
+  \   [GTF] Add 'chr' to each line in GTF for proper\n                        chromosome\
+  \ name\n    gtf_intergenic      [GTF] Generate BED files for exon, intron, and\n\
+  \                        intergenic regions\n    bed_add_score       [BED] Add score\
+  \ column, such as '0'\n    bed_merge           [BED] Merge regions\n    bed_merge_by_name\
+  \   [BED] Merge regions by name\n    bed_rename          [BED] Rename regions by\
+  \ associated genes\n    bed_change_strand   [BED] Change strand of regions by the\
+  \ target BED file\n    bed_extend          [BED] Extend the regions\n    bed_subtract\
+  \        [BED] Subtract the regions\n    bed_cut             [BED] Cut the regions\n\
+  \    bed_get_promoters   [BED] Get promoters from the given genes\n    bed_upstream\
+  \        [BED] Get regions upstream from the given BED file\n    bed_to_fasta  \
+  \      [BED] Export the sequences in FASTA according to the\n                  \
+  \      given BED file\n    bed_filter          [BED] Filter by the given gene list\
+  \ or minimal size or\n                        maximal size.\n    bed_remove_if_overlap\n\
+  \                        [BED] Remove the regions if they overlap with the\n   \
+  \                     target regions\n    bed_add_columns     [BED] Add extra columns\
+  \ to the BED file by gene name\n    bed_size            [BED] Calculate the average\
+  \ size.\n    bed_complement      [BED] Get the complementary regions from genome.\n\
+  \    bed_polya           [BED] Detect polyA reads within the regions.\n    bed_to_gtf\
+  \          [BED] Convert BED file to GTF format.\n    bed_overlap         [BED]\
+  \ Output statistics of overlaps among the BED\n                        files.\n\
+  \    bed_distance        [BED] Show the distance between two region sets\n    bed_standard_chrom\
+  \  [BED] Standardize the chromosomes.\n    bed_strand          [BED] Seperate the\
+  \ BED files by strandness\n    bed_add_data        [BED] Add overlapping region\
+  \ name\n    bed_sampling        [BED] Sampling the regions in the given BED file\n\
+  \                        randomly\n    bed12tobed6         [BED] Convert BED12 to\
+  \ BED6\n    bed_check_up        [BED] Convert BED12 to BED6\n    bed_divide    \
+  \      [BED] Divide the BED files by the expression.\n    bam_filter          [BAM]\
+  \ Filter BAM file by the given regions in BED.\n    thor_ma             [THOR] Create\
+  \ the MA plot for understanding the effect\n                        of normalization.\n\
+  \    thor_split          [THOR] Split and filter the differential peaks from\n \
+  \                       rgt-THOR\n    getseq              [FASTA] Get sequence from\
+  \ genome FASTA\n    wig_trim_end        [WIG] Trim the WIG file according to the\
+  \ given\n                        chromosome size\n    ensembl2symbol      [GENE]\
+  \ Convert the gene list from ensembl ID to gene\n                        symbol\n\
+  \    symbol2ensembl      [GENE] Convert the gene list from gene symbol to\n    \
+  \                    ensembl ID\n    fasta2bp            [FASTA] Get the length\
+  \ in bp of FASTA files\n    circRNA             [junction] Convert the Chimeric\
+  \ junction from STAR to\n                        BED file\n    sliceFASTA      \
+  \    [FASTA] Slice the sequence by given position and\n                        length\n\
+  \    fasta_convert       [FASTA] Convert the sequence by critiria\n    tpx2bed \
+  \            [BED] Convert TXP file into BED format\n    encode              [ENCODE]\
+  \ Download files from ENCODE database\n\noptional arguments:\n  -h, --help     \
+  \       show this help message and exit\n  -v, --version         show program's\
+  \ version number and exit\n"
+generated_using: *id002

@@ -21,9 +21,9 @@ named:
   synonyms:
   - --section
   args: !ChoiceFlagArg
-    choices:
-    - template
-    - complement
+    choices: !!set
+      template:
+      complement:
   optional: true
 - !Flag
   description: 'Input validation data, either a path to fast5 files or a single netcdf
@@ -150,6 +150,7 @@ named:
   optional: true
 command:
 - nanonettrain
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -160,3 +161,44 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: nanonettrain [-h] --train TRAIN [--train_list TRAIN_LIST]\n   \
+  \                 [--section {template,complement}] --val VAL\n                \
+  \    [--val_list VAL_LIST] [--workspace WORKSPACE] --output\n                  \
+  \  OUTPUT [--model MODEL] [--kmer_length KMER_LENGTH]\n                    [--bases\
+  \ BASES] [--device DEVICE] [--cuda]\n                    [--window WINDOW [WINDOW\
+  \ ...]] [--max_epochs MAX_EPOCHS]\n                    [--max_epochs_no_best MAX_EPOCHS_NO_BEST]\n\
+  \                    [--validate_every VALIDATE_EVERY]\n                    [--parallel_sequences\
+  \ PARALLEL_SEQUENCES]\n                    [--learning_rate LEARNING_RATE] [--momentum\
+  \ MOMENTUM]\n                    [--cache_path CACHE_PATH]\n\nA simple ANN training\
+  \ wrapper.\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --train TRAIN         Input training data, either a path to fast5\
+  \ files or a\n                        single netcdf file (default: None)\n  --train_list\
+  \ TRAIN_LIST\n                        Strand list constaining training set (default:\
+  \ None)\n  --section {template,complement}\n                        Section of reads\
+  \ to train (default: template)\n  --val VAL             Input validation data, either\
+  \ a path to fast5 files or\n                        a single netcdf file (default:\
+  \ None)\n  --val_list VAL_LIST   Strand list constaining validation set (default:\
+  \ None)\n  --workspace WORKSPACE\n                        Path for storing training\
+  \ and validation NetCDF files,\n                        if not specified a temporary\
+  \ file is used. (default:\n                        /tmp)\n  --output OUTPUT    \
+  \   Output prefix (default: None)\n  --model MODEL         ANN configuration file\
+  \ (default: /home/ubuntu/.cache\n                        /Python-Eggs/nanonet-2.0.0-py2.7-linux-x86_64.egg-\n\
+  \                        tmp/nanonet/data/default_model.tmpl)\n  --kmer_length KMER_LENGTH\n\
+  \                        Length of kmers to learn. (default: 5)\n  --bases BASES\
+  \         Alphabet of kmers to learn. (default: ACGT)\n  --device DEVICE       ID\
+  \ of CUDA device to use. (default: 0)\n  --cuda, --no-cuda     Use CUDA acceleration.\
+  \ (Default: --no-cuda) (default:\n                        False)\n  --window WINDOW\
+  \ [WINDOW ...]\n                        The detailed list of the entire window.\
+  \ (default: [-1,\n                        0, 1])\n\nTraining Parameters.:\n  --max_epochs\
+  \ MAX_EPOCHS\n                        Max training epocs, default 500 (default:\
+  \ 500)\n  --max_epochs_no_best MAX_EPOCHS_NO_BEST\n                        Stop\
+  \ training when no improvment for number of epocs,\n                        default\
+  \ 50 (default: 50)\n  --validate_every VALIDATE_EVERY\n                        Run\
+  \ validation data set every number of epocs.\n                        (default:\
+  \ 5)\n  --parallel_sequences PARALLEL_SEQUENCES\n                        Number\
+  \ of sequences in a min-batch (default: 125)\n  --learning_rate LEARNING_RATE\n\
+  \                        Learning rate parameters of SGD. (default: 1e-05)\n  --momentum\
+  \ MOMENTUM   Momentum parameter of SGD. (default: 0.9)\n  --cache_path CACHE_PATH\n\
+  \                        Path for currennt temporary files. (default: /tmp)\n"
+generated_using:
+- --help

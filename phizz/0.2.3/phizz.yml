@@ -1,101 +1,36 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - phizz
+parent:
 subcommands:
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: GENE_FILE
+    optional: false
   named: []
   command:
   - phizz
   - build-genes
-  subcommands:
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: GENE_FILE
-      optional: false
-    named: []
-    command:
-    - phizz
-    - build-genes
-    - OPTIONS
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: OPTIONS
-      optional: true
-    - !Positional
-      description: ''
-      position: 1
-      name: GENE_FILE
-      optional: false
-    named: []
-    command:
-    - phizz
-    - build-genes
-    - GENE_FILE
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-  help_flag:
-  usage_flag:
-  version_flag:
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: OPTIONS
-    optional: true
-  named: []
-  command:
-  - phizz
-  - delete
+  parent: *id001
   subcommands: []
-  help_flag:
-  usage_flag:
-  version_flag:
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: OPTIONS
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
     optional: true
-  named: []
-  command:
-  - phizz
-  - init
-  subcommands: []
-  help_flag:
   usage_flag:
   version_flag:
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: OPTIONS
-    optional: true
-  named: []
-  command:
-  - phizz
-  - query
-  subcommands: []
-  help_flag:
-  usage_flag:
-  version_flag:
+  help_text: "Usage: phizz build-genes [OPTIONS] GENE_FILE\n\n  Create a gene database.\n\
+    \nOptions:\n  --db_name TEXT\n  --path TEXT\n  --help          Show this message\
+    \ and exit.\n"
+  generated_using: &id002
+  - --help
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -109,3 +44,9 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "Usage: phizz [OPTIONS] COMMAND [ARGS]...\n\n  phizz: query hpo and omim\
+  \ resources.\n\nOptions:\n  -v, --verbose\n  --version      Show the version and\
+  \ exit.\n  --help         Show this message and exit.\n\nCommands:\n  build-genes\
+  \  Create a gene database.\n  delete       Delete the database.\n  init        \
+  \ Create a config file for phizz.\n  query        Query the hpo database.\n"
+generated_using: *id002

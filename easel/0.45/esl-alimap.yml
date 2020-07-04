@@ -1,4 +1,4 @@
-!Command
+&id001 !Command
 positional: []
 named:
 - !Flag
@@ -62,6 +62,7 @@ named:
   optional: true
 command:
 - esl-alimap
+parent:
 subcommands:
 - !Command
   positional:
@@ -74,30 +75,45 @@ subcommands:
   command:
   - esl-alimap
   - msafile1
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Incorrect number of command line arguments.\nUsage: esl-alimap [options]\
+    \ <msafile1> <msafile2>\n<msafile1> and <msafile2> must be in Stockholm format.\n\
+    \nTo see more help on available options, do esl-alimap -h\n\n"
+  generated_using: &id002 []
 - !Command
   positional:
   - !Positional
     description: ''
     position: 0
-    name: msafile1
+    name: esl-alimap
     optional: false
   - !Positional
     description: ''
     position: 1
+    name: msafile1
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
     name: msafile2
     optional: false
   named: []
   command:
   - esl-alimap
   - msafile2
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Incorrect number of command line arguments.\nUsage: esl-alimap [options]\
+    \ <msafile1> <msafile2>\n<msafile1> and <msafile2> must be in Stockholm format.\n\
+    \nTo see more help on available options, do esl-alimap -h\n\n"
+  generated_using: *id002
 help_flag: !Flag
   description: ': help; show brief info on version and usage'
   synonyms:
@@ -106,3 +122,19 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "# esl-alimap :: map two alignments to each other\n# Easel 0.45h (June\
+  \ 2018)\n# Copyright (C) 2018 Howard Hughes Medical Institute\n# Freely distributed\
+  \ under the BSD open source license.\n# - - - - - - - - - - - - - - - - - - - -\
+  \ - - - - - - - - - - - - - - - -\nUsage: esl-alimap [options] <msafile1> <msafile2>\n\
+  <msafile1> and <msafile2> must be in Stockholm format.\n\nwhere basic options are:\n\
+  \  -h               : help; show brief info on version and usage\n  -q         \
+  \      : be quiet, don't print mapping of each column\n  --mask-a2a <f>   : mask\
+  \ to <f>:'1'=msa1 aln       col x maps msa2 aln col\n  --mask-a2rf <f>  : mask to\
+  \ <f>:'1'=msa1 aln       col x maps msa2 nongap RF col\n  --mask-rf2a <f>  : mask\
+  \ to <f>:'1'=msa1 nongap RF col x maps msa2 aln col\n  --mask-rf2rf <f> : mask to\
+  \ <f>:'1'=msa1 nongap RF col x maps msa2 nongap RF col\n  --submap <f>     : <msafile2>\
+  \ is subaln of <msafile1>, output mask to <f>\n  --amino          : <msafile{1,2}>\
+  \ contain protein alignments\n  --dna            : <msafile{1,2}> contain DNA alignments\n\
+  \  --rna            : <msafile{1,2}> contain RNA alignments\n"
+generated_using:
+- -h

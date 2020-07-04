@@ -28,10 +28,14 @@ named:
     name: THREAD_NUM
   optional: true
 - !Flag
-  description: '{33,64}, --quality_start {33,64} Quality value ascii start, default=33'
+  description: Quality value ascii start, default=33
   synonyms:
   - -q
-  args: !EmptyFlagArg {}
+  - --quality_start
+  args: !ChoiceFlagArg
+    choices: !!set
+      '33':
+      '64':
   optional: true
 - !Flag
   description: the high coverage length threashold, above which InteMAP will deem
@@ -87,6 +91,7 @@ named:
   optional: true
 command:
 - runInteMAP.py
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -97,3 +102,33 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: runInteMAP.py [-h] [-o OUTFILE] [-t THREAD_NUM] [-q {33,64}]\n\
+  \                     [-l MINHIGHCOVLENGTH] [--k_for_abyss K_FOR_ABYSS]\n      \
+  \               [--min_k_for_idba MIN_K_FOR_IDBA]\n                     [--high_cov_idba\
+  \ HIGH_COV_IDBA]\n                     [--low_cov_idba LOW_COV_IDBA]\n         \
+  \            [--high_cov_abyss HIGH_COV_ABYSS] [-c]\n                     sequence_position_file\
+  \ libinfo_file\n\npositional arguments:\n  sequence_position_file\n            \
+  \            keeps the directories of sequencing reads in the fastq\n          \
+  \              formats\n  libinfo_file          keeps the information of the library\
+  \ for sequencing\n                        reads\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -o OUTFILE, --outfile OUTFILE\n\
+  \                        Output contig file\n  -t THREAD_NUM, --thread_num THREAD_NUM\n\
+  \                        number of threads, default=2\n  -q {33,64}, --quality_start\
+  \ {33,64}\n                        Quality value ascii start, default=33\n  -l MINHIGHCOVLENGTH,\
+  \ --minHighCovLength MINHIGHCOVLENGTH\n                        the high coverage\
+  \ length threashold, above which\n                        InteMAP will deem that\
+  \ high-coverage species exist in\n                        the community, and run\
+  \ IDBA-UD and ABySS on the\n                        corrected read set, default=1000000\n\
+  \  --k_for_abyss K_FOR_ABYSS\n                        kmer size for ABySS, default=61\n\
+  \  --min_k_for_idba MIN_K_FOR_IDBA\n                        minimal kmer size for\
+  \ IDBA_UD, default=23\n  --high_cov_idba HIGH_COV_IDBA\n                       \
+  \ lower bound for IDBA-contigs of high coverage,\n                        default=30\n\
+  \  --low_cov_idba LOW_COV_IDBA\n                        higher bound for IDBA-contigs\
+  \ of low coverage,\n                        default=50\n  --high_cov_abyss HIGH_COV_ABYSS\n\
+  \                        lower bound for ABySS-contigs of high coverage,\n     \
+  \                   default=20\n  -c, --clearance       make clearance of intermediate\
+  \ output files,\n                        default=False\n\nAlternatively you can\
+  \ assign paramenters via a file.\nUsage: runInteMAP runInteMAP.py read-file libinfo-file\
+  \ [para-spec-file]\nSee MANUAL for details.\n"
+generated_using:
+- --help

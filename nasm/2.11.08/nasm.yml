@@ -235,8 +235,16 @@ named:
   - -w-foo
   args: !EmptyFlagArg {}
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -@
+  args: !SimpleFlagArg
+    name: response
+  optional: true
 command:
 - nasm
+parent:
 subcommands: []
 help_flag: !Flag
   description: show invocation summary and exit
@@ -246,3 +254,42 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: nasm [-@ response file] [-o outfile] [-f format] [-l listfile]\n\
+  \            [options...] [--] filename\n    or nasm -v (or --v) for version info\n\
+  \n    -t          assemble in SciTech TASM compatible mode\n    -g          generate\
+  \ debug information in selected format\n    -E (or -e)  preprocess only (writes\
+  \ output to stdout by default)\n    -a          don't preprocess (assemble only)\n\
+  \    -M          generate Makefile dependencies on stdout\n    -MG         d:o,\
+  \ missing files assumed generated\n    -MF <file>  set Makefile dependency file\n\
+  \    -MD <file>  assemble and generate dependencies\n    -MT <file>  dependency\
+  \ target name\n    -MQ <file>  dependency target name (quoted)\n    -MP        \
+  \ emit phony target\n\n    -Z<file>    redirect error messages to file\n    -s \
+  \         redirect error messages to stdout\n\n    -F format   select a debugging\
+  \ format\n\n    -o outfile  write output to an outfile\n\n    -f format   select\
+  \ an output format\n\n    -l listfile write listing to a listfile\n\n    -I<path>\
+  \    adds a pathname to the include file path\n    -O<digit>   optimize branch offsets\n\
+  \                -O0: No optimization\n                -O1: Minimal optimization\n\
+  \                -Ox: Multipass optimization (default)\n\n    -P<file>    pre-includes\
+  \ a file\n    -D<macro>[=<value>] pre-defines a macro\n    -U<macro>   undefines\
+  \ a macro\n    -X<format>  specifies error reporting format (gnu or vc)\n    -w+foo\
+  \      enables warning foo (equiv. -Wfoo)\n    -w-foo      disable warning foo (equiv.\
+  \ -Wno-foo)\n\n    -h          show invocation summary and exit\n\n--prefix,--postfix\n\
+  \  this options prepend or append the given argument to all\n  extern and global\
+  \ variables\n\nWarnings:\n    error                   treat warnings as errors (default\
+  \ off)\n    macro-params            macro calls with wrong parameter count (default\
+  \ on)\n    macro-selfref           cyclic macro references (default off)\n    macro-defaults\
+  \          macros with more default than optional parameters (default on)\n    orphan-labels\
+  \           labels alone on lines without trailing `:' (default on)\n    number-overflow\
+  \         numeric constant does not fit (default on)\n    gnu-elf-extensions   \
+  \   using 8- or 16-bit relocation in ELF32, a GNU extension (default off)\n    float-overflow\
+  \          floating point overflow (default on)\n    float-denorm            floating\
+  \ point denormal (default off)\n    float-underflow         floating point underflow\
+  \ (default off)\n    float-toolong           too many digits in floating-point number\
+  \ (default on)\n    user                    %warning directives (default on)\n \
+  \   lock                    lock prefix on unlockable instructions (default on)\n\
+  \    hle                     invalid hle prefixes (default on)\n    bnd        \
+  \             invalid bnd prefixes (default on)\n\nresponse files should contain\
+  \ command line parameters, one per line.\n\nFor a list of valid output formats,\
+  \ use -hf.\nFor a list of debug formats, use -f <form> -y.\n"
+generated_using:
+- -h

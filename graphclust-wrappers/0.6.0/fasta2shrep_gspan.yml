@@ -2,30 +2,6 @@
 positional: []
 named:
 - !Flag
-  description: '""'
-  synonyms:
-  - -wins
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: 1 nt
-  synonyms:
-  - -shift
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '10'
-  synonyms:
-  - -c
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '3'
-  synonyms:
-  - -t
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: '0 # selects all shreps'
   synonyms:
   - -M
@@ -45,7 +21,95 @@ named:
   optional: true
 command:
 - fasta2shrep_gspan.pl
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "Usage:\n    Options:\n\n                    HELP\n            -help  \
+  \ brief help message\n            -man    full documentation\n\n            COMPULSORY\n\
+  \            -fasta  <STRING> e.g. \"sequence.fasta\"\n                        \
+  \    All sequences in fasta format.\n\n            OPTIONS\n            -wins  \
+  \         [INTEGER] e.g. \"50,100,200\"\n                            A list of window\
+  \ sizes to use.\n                            If none are given (empty string ''),\
+  \ then the entire sequence is\n                            taken with no windows.\
+  \ Each window > 1 required!\n            -shift          <INTEGER> e.g. 20\n   \
+  \                         The shift of the window, relative to the window size given\
+  \ in\n                            percent. So you give which percent of the window\
+  \ size shall be\n                            used for the shift. Of course the shift\
+  \ is rounded down to the\n                            nearest whole number.\n  \
+  \                          Example 20 % of a window 150 would result in a step size\
+  \ of 30 nt.\n                            It is a relative parameter, as you can\
+  \ give different window sizes.\n                            If you do not give this\
+  \ parameter there is a default shift of 1 nt.\n            -cue            Crop\
+  \ unpaired ends.\n                            If you give this flag, then the unpaired\
+  \ ends of each\n                            single structure are ignored. E.g. the\
+  \ structure\n                            ...(((...))).. becomes just (((...)))\n\
+  \            -stack          Adds stacking information to graphs. This adds an additional\n\
+  \                            vertex (type P) for each pair of stacked base-pairs\
+  \ and four edges\n                            (type p) from each of the involved\
+  \ bases to the new vertex.\n            -e              <FLOAT> e.g. 5.0\n     \
+  \                       Energy range in kcal/mol (RNAshapes)\n                 \
+  \           Use only one of -e and -c!\n            -c              <INTEGER> e.g.\
+  \ 10\n                            Relative energy range, i.e. percentage (%) of\
+  \ MFE energy (RNAshapes)\n                            Use only one of -e and -c!\n\
+  \            -t              <INTEGER> [1-5] e.g. 3 OR \"3=0,4=100,5=200\"\n   \
+  \                         The shape type (RNAshapes). Default is 3.\n          \
+  \                  With the list format, the shape level can be changed for different\
+  \ window length\n                            \"4=100\" means that shape level 4\
+  \ is used from length 100nt (window length)\n                            The first\
+  \ given length has to be 0! Not continuous given levels are allowed!\n         \
+  \   -M              <INTEGER> e.g. 10\n                            Max number of\
+  \ shreps that should be taken per window.\n            -u              Ignore unstable\
+  \ structures (RNAshapes).\n                            This option filters out closed\
+  \ structures with positive free energy.\n            -r              Calculate structure\
+  \ probabilities for shreps (RNAshapes)\n            -i              <INT> e.g. 10\n\
+  \                            Turn on structure sampling and gives number of sampling\
+  \ iterations.\n                            Default no sampling (i=0)\n         \
+  \   -sample-len     <INT> e.g. 100\n                            Only in sampling\
+  \ mode: Sampling is only used for seqs/windows >= given length,\n              \
+  \              Default: sample all lengths (0), if -i > 0\n            -q      \
+  \        Turn on shape probabilities for RNAshapes, no sampling mode allowed\n \
+  \           -Tp             <FLOAT> e.g 0.001\n                            Filter\
+  \ cutoff for shape probabilities, applied before -M filter!\n            -seq-graph-win\
+  \  add for each window a graph which contains no structure\n            -seq-graph-t\
+  \    add for each 't #' a graph which contains no structure\n            -seq-graph-alph\
+  \ change the alphabet of unstructured graphs\n            -annotate            \
+  \   <STRING> annotation.tab\n                                            A file\
+  \ with annotations to be added as abstract graphs\n                            \
+  \                on the sequence leven (if given) and on the structure\n       \
+  \                                     (SHREP) level. The format is has the following\
+  \ TAB-delimited\n                                            columns: SEQID, START,\
+  \ END, NAMESPACE#LABEL.\n                                            Labels with\
+  \ the same name-space and SEQID form connected\n                               \
+  \             components, which is a sequence of label vertices ordered\n      \
+  \                                      by the START position in the sequence.\n\
+  \            -abstr                  Add abstract structure graphs to the single\
+  \ shrep graph\n                                            instances.\n        \
+  \    -nostr                  Calculate no structures, only add sequence information,\n\
+  \                                            if this is given, then -seq-graph-win\
+  \ AND/OR -seq-graph-t\n                                            are required.\n\
+  \            -match-shape    <SHAPE>\n                    all seqs/windows will\
+  \ be constraint folded into that shape via\n                    RNAshapes (if structure\
+  \ is given in another way this struct will be kept),\n                    if this\
+  \ shape is not possible within given energy range, produce a\n                 \
+  \   specific t graph with only one vertex 'X'. By this the instance\n          \
+  \          becomes very unsimilar to all other graphs (for knn)\n            -vp\
+  \     enable graph computation with viewpoints:\n                    svmsgdnspdk\
+  \ will center on those nucleotides that are given\n                    via capital\
+  \ letters and ignore those given as lowercase letters\n            -tmp        \
+  \    <STRING> e.g. \"/scratch/1/sita/tmp\"\n                            A directory\
+  \ for writing temporary files\n            -o              <STRING> e.g. \"ProjectX/MySequences/GSPAN/\"\
+  \n                            Output directory for gspan files containing graphs.\n\
+  \            -group          <INTEGER> e.g. 5\n                            Combine/group\
+  \ that number of input seqs into 1 gspan file\n                            output\
+  \ name is then '<INT>.group.gspan.bz2'\n\n            -stdout         send graphs\
+  \ to stdout instead of writing to files\n            -ignore-header  don't write\
+  \ fasta id part after first space to gspan\n            -debug          additional\
+  \ debug output\n\n\n            DEFAULT VALUES\n            -wins   \"\"\n     \
+  \       -shift  1 nt\n            -c              10\n            -t           \
+  \   3\n            -M              0 # selects all shreps\n            -tmp    \"\
+  /var/tmp/fasta2shrep\"\n            -o              \"CURRENT_DIR/GSPAN_Outputs/\"\
+  \n\n"
+generated_using:
+- --help

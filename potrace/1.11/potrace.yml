@@ -50,53 +50,10 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '- PDF backend (portable document format)'
-  synonyms:
-  - -b
-  args: !SimpleFlagArg
-    name: pdf
-  optional: true
-- !Flag
-  description: '- fixed page-size PDF backend'
-  synonyms:
-  - -b
-  args: !SimpleFlagArg
-    name: pdfpage
-  optional: true
-- !Flag
-  description: '- DXF backend (drawing interchange format)'
-  synonyms:
-  - -b
-  args: !SimpleFlagArg
-    name: dxf
-  optional: true
-- !Flag
-  description: '- GeoJSON backend'
-  synonyms:
-  - -b
-  args: !SimpleFlagArg
-    name: geojson
-  optional: true
-- !Flag
-  description: '- Gimppath backend (GNU Gimp)'
-  synonyms:
-  - -b
-  args: !SimpleFlagArg
-    name: gimppath
-  optional: true
-- !Flag
-  description: '- XFig backend'
-  synonyms:
-  - -b
-  args: !SimpleFlagArg
-    name: xfig
-  optional: true
-- !Flag
-  description: resolve ambiguities in path decomposition
+  description: '- how to resolve ambiguities in path decomposition'
   synonyms:
   - -z
   - --turnpolicy
-  - '- how'
   args: !SimpleFlagArg
     name: policy
   optional: true
@@ -281,6 +238,27 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: '- do not compress the output'
+  synonyms:
+  - -c
+  - --cleartext
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- use postscript level 2 compression (default)'
+  synonyms:
+  - '-2'
+  - --level2
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '- use postscript level 3 compression'
+  synonyms:
+  - '-3'
+  - --level3
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: '- do not optimize for file size'
   synonyms:
   - -q
@@ -325,6 +303,7 @@ named:
   optional: true
 command:
 - potrace
+parent:
 subcommands: []
 help_flag: !Flag
   description: '- print this help message and exit'
@@ -341,3 +320,52 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "potrace 1.11. Transforms bitmaps into vector graphics.\n\nUsage: potrace\
+  \ [options] [filename...]\nGeneral options:\n -h, --help                 - print\
+  \ this help message and exit\n -v, --version              - print version info and\
+  \ exit\n -l, --license              - print license info and exit\nFile selection:\n\
+  \ <filename>                 - an input file\n -o, --output <filename>    - write\
+  \ all output to this file\n --                         - end of options; 0 or more\
+  \ input filenames follow\nBackend selection:\n -b, --backend <name>       - select\
+  \ backend by name\n -e, --eps                  - EPS backend (encapsulated PostScript)\
+  \ (default)\n -p, --postscript           - PostScript backend\n -s, --svg      \
+  \            - SVG backend (scalable vector graphics)\n -g, --pgm              \
+  \    - PGM backend (portable greymap)\n -b pdf                     - PDF backend\
+  \ (portable document format)\n -b pdfpage                 - fixed page-size PDF\
+  \ backend\n -b dxf                     - DXF backend (drawing interchange format)\n\
+  \ -b geojson                 - GeoJSON backend\n -b gimppath                - Gimppath\
+  \ backend (GNU Gimp)\n -b xfig                    - XFig backend\nAlgorithm options:\n\
+  \ -z, --turnpolicy <policy>  - how to resolve ambiguities in path decomposition\n\
+  \ -t, --turdsize <n>         - suppress speckles of up to this size (default 2)\n\
+  \ -a, --alphamax <n>         - corner threshold parameter (default 1)\n -n, --longcurve\
+  \            - turn off curve optimization\n -O, --opttolerance <n>     - curve\
+  \ optimization tolerance (default 0.2)\n -u, --unit <n>             - quantize output\
+  \ to 1/unit pixels (default 10)\n -d, --debug <n>            - produce debugging\
+  \ output of type n (n=1,2,3)\nScaling and placement options:\n -P, --pagesize <format>\
+  \    - page size (default is letter)\n -W, --width <dim>          - width of output\
+  \ image\n -H, --height <dim>         - height of output image\n -r, --resolution\
+  \ <n>[x<n>] - resolution (in dpi) (dimension-based backends)\n -x, --scale <n>[x<n>]\
+  \      - scaling factor (pixel-based backends)\n -S, --stretch <n>          - yresolution/xresolution\n\
+  \ -A, --rotate <angle>       - rotate counterclockwise by angle\n -M, --margin <dim>\
+  \         - margin\n -L, --leftmargin <dim>     - left margin\n -R, --rightmargin\
+  \ <dim>    - right margin\n -T, --topmargin <dim>      - top margin\n -B, --bottommargin\
+  \ <dim>   - bottom margin\n --tight                    - remove whitespace around\
+  \ the input image\nColor options, supported by some backends:\n -C, --color #rrggbb\
+  \        - set foreground color (default black)\n --fillcolor #rrggbb        - set\
+  \ fill color (default transparent)\n --opaque                   - make white shapes\
+  \ opaque\nSVG options:\n --group                    - group related paths together\n\
+  \ --flat                     - whole image as a single path\nPostscript/EPS/PDF\
+  \ options:\n -c, --cleartext            - do not compress the output\n -2, --level2\
+  \               - use postscript level 2 compression (default)\n -3, --level3  \
+  \             - use postscript level 3 compression\n -q, --longcoding          \
+  \ - do not optimize for file size\nPGM options:\n -G, --gamma <n>            - gamma\
+  \ value for anti-aliasing (default 2.2)\nFrontend options:\n -k, --blacklevel <n>\
+  \       - black/white cutoff in input file (default 0.5)\n -i, --invert        \
+  \       - invert bitmap\nProgress bar options:\n --progress                 - show\
+  \ progress bar\n --tty <mode>               - progress bar rendering: vt100 or dumb\n\
+  \nDimensions can have optional units, e.g. 6.5in, 15cm, 100pt.\nDefault is inches\
+  \ (or pixels for pgm, dxf, and gimppath backends).\nPossible input file formats\
+  \ are: pnm (pbm, pgm, ppm), bmp.\nBackends are: eps, postscript, ps, pdf, pdfpage,\
+  \ svg, dxf, geojson, pgm, \ngimppath, xfig.\n"
+generated_using:
+- --help

@@ -1,70 +1,63 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - platypus
+parent:
 subcommands:
 - !Command
-  positional: []
-  named:
-  - !Flag
-    description: 'tab separated file with two columns: name/identifier of the sequence
-      and then the taxonomy. Note: the sequence identifier is the longest string before
-      a space in the header of the sequence.  [required]'
-    synonyms:
-    - --tax_fp
-    args: !SimpleFlagArg
-      name: FILE
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: ARGS
     optional: true
-  - !Flag
-    description: 'path to a FASTA formatted file to split in interest and rest. Note:
-      sequence identifiers must match the ones in the taxonomy file.  [required]'
-    synonyms:
-    - --seqs_fp
-    args: !SimpleFlagArg
-      name: FILE
-    optional: true
-  - !Flag
-    description: Path where the results are saved  [required]
-    synonyms:
-    - --output_fp
-    args: !SimpleFlagArg
-      name: FILE
-    optional: true
-  - !Flag
-    description: 'The query used to split the database, for example: salmonella. The
-      query should be an exact, no wild cards, it is case insensitive and can have
-      spaces'
-    synonyms:
-    - --query
-    args: !SimpleFlagArg
-      name: TEXT
-    optional: true
-  - !Flag
-    description: The tab-delimited query file, where each line is a different sequence
-      and the first column is the sequence id.
-    synonyms:
-    - --split_fp
-    args: !SimpleFlagArg
-      name: FILE
-    optional: true
+  named: []
   command:
   - platypus
-  - split-db
+  - COMMAND
+  parent: *id001
   subcommands: []
-  help_flag: !Flag
-    description: Show this message and exit.
-    synonyms:
-    - --help
-    args: !EmptyFlagArg {}
-    optional: true
+  help_flag:
   usage_flag:
   version_flag:
-help_flag: !Flag
-  description: Show this message and exit.
-  synonyms:
+  help_text: "Usage: platypus [OPTIONS] COMMAND [ARGS]...\nTry 'platypus --help' for\
+    \ help.\n\nError: No such command 'COMMAND'.\n"
+  generated_using: &id002
   - --help
-  args: !EmptyFlagArg {}
-  optional: true
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: platypus
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: COMMAND
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: ARGS
+    optional: true
+  named: []
+  command:
+  - platypus
+  - ARGS
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: platypus [OPTIONS] COMMAND [ARGS]...\nTry 'platypus --help' for\
+    \ help.\n\nError: No such command 'ARGS'.\n"
+  generated_using: *id002
+help_flag:
 usage_flag:
 version_flag:
+help_text: "Usage: platypus [OPTIONS] COMMAND [ARGS]...\nTry 'platypus --help' for\
+  \ help.\n\nError: no such option: -h\n"
+generated_using:
+- -h

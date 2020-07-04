@@ -1,11 +1,27 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - shorah
+parent:
 subcommands:
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: shorah
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: subcommand
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: shotgun
+    optional: false
   named:
   - !Flag
     description: alpha in dpm sampling
@@ -61,9 +77,9 @@ subcommands:
     synonyms:
     - -of
     args: !ChoiceFlagArg
-      choices:
-      - csv
-      - vcf
+      choices: !!set
+        vcf:
+        csv:
     optional: true
   - !Flag
     description: coverage threshold. Omit windows with low coverage
@@ -112,9 +128,16 @@ subcommands:
     args: !SimpleFlagArg
       name: REF
     optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
   command:
   - shorah
   - shotgun
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -131,8 +154,47 @@ subcommands:
     - --version
     args: !EmptyFlagArg {}
     optional: true
+  help_text: "usage: shorah <subcommand> [options] shotgun [-h] [-v] -b BAM -f REF\n\
+    \                                             [-a FLOAT] [-r chrm:start-stop]\n\
+    \                                             [-R INT] [-x INT] [-S FLOAT] [-I]\n\
+    \                                             [-of {csv,vcf} [{csv,vcf} ...]]\n\
+    \                                             [-c INT] [-w INT] [-s INT] [-k]\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -v, --version         show program's version number and exit\n  -a FLOAT, --alpha\
+    \ FLOAT\n                        alpha in dpm sampling\n  -r chrm:start-stop,\
+    \ --region chrm:start-stop\n                        region in format 'chr:start-stop',\
+    \ e.g.\n                        'chrm:1000-3000'\n  -R INT, --seed INT    set\
+    \ seed for reproducible results\n  -x INT, --maxcov INT  approximate max coverage\
+    \ allowed\n  -S FLOAT, --sigma FLOAT\n                        sigma value to use\
+    \ when calling SNVs\n  -I, --ignore_indels   ignore SNVs adjacent to insertions/deletions\
+    \ (legacy\n                        behaviour of 'fil', ignore this option if you\
+    \ don't\n                        understand)\n  -of {csv,vcf} [{csv,vcf} ...],\
+    \ --out_format {csv,vcf} [{csv,vcf} ...]\n                        output format\
+    \ of called SNVs\n  -c INT, --win_coverage INT\n                        coverage\
+    \ threshold. Omit windows with low coverage\n  -w INT, --windowsize INT\n    \
+    \                    window size\n  -s INT, --winshifts INT\n                \
+    \        number of window shifts\n  -k, --keep_files      keep all intermediate\
+    \ files\n\nrequired arguments:\n  -b BAM, --bam BAM     sorted bam format alignment\
+    \ file\n  -f REF, --fasta REF   reference genome in fasta format\n"
+  generated_using: &id002
+  - --help
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: shorah
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: subcommand
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: amplicon
+    optional: false
   named:
   - !Flag
     description: alpha in dpm sampling
@@ -188,9 +250,9 @@ subcommands:
     synonyms:
     - -of
     args: !ChoiceFlagArg
-      choices:
-      - csv
-      - vcf
+      choices: !!set
+        vcf:
+        csv:
     optional: true
   - !Flag
     description: coverage threshold. Omit windows with low coverage
@@ -231,9 +293,16 @@ subcommands:
     args: !SimpleFlagArg
       name: REF
     optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
   command:
   - shorah
   - amplicon
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -250,8 +319,47 @@ subcommands:
     - --version
     args: !EmptyFlagArg {}
     optional: true
+  help_text: "usage: shorah <subcommand> [options] amplicon [-h] [-v] -b BAM -f REF\n\
+    \                                              [-a FLOAT] [-r chrm:start-stop]\n\
+    \                                              [-R INT] [-x INT] [-S FLOAT]\n\
+    \                                              [-I]\n                        \
+    \                      [-of {csv,vcf} [{csv,vcf} ...]]\n                     \
+    \                         [-c INT] [-d] [-m FLOAT]\n\noptional arguments:\n  -h,\
+    \ --help            show this help message and exit\n  -v, --version         show\
+    \ program's version number and exit\n  -a FLOAT, --alpha FLOAT\n             \
+    \           alpha in dpm sampling\n  -r chrm:start-stop, --region chrm:start-stop\n\
+    \                        region in format 'chr:start-stop', e.g.\n           \
+    \             'chrm:1000-3000'\n  -R INT, --seed INT    set seed for reproducible\
+    \ results\n  -x INT, --maxcov INT  approximate max coverage allowed\n  -S FLOAT,\
+    \ --sigma FLOAT\n                        sigma value to use when calling SNVs\n\
+    \  -I, --ignore_indels   ignore SNVs adjacent to insertions/deletions (legacy\n\
+    \                        behaviour of 'fil', ignore this option if you don't\n\
+    \                        understand)\n  -of {csv,vcf} [{csv,vcf} ...], --out_format\
+    \ {csv,vcf} [{csv,vcf} ...]\n                        output format of called SNVs\n\
+    \  -c INT, --win_coverage INT\n                        coverage threshold. Omit\
+    \ windows with low coverage\n  -d, --diversity       detect the highest entropy\
+    \ region and run there\n  -m FLOAT, --min_overlap FLOAT\n                    \
+    \    fraction of read overlap to be included\n\nrequired arguments:\n  -b BAM,\
+    \ --bam BAM     sorted bam format alignment file\n  -f REF, --fasta REF   reference\
+    \ genome in fasta format\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: shorah
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: subcommand
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: snv
+    optional: false
   named:
   - !Flag
     description: alpha in dpm sampling
@@ -307,9 +415,9 @@ subcommands:
     synonyms:
     - -of
     args: !ChoiceFlagArg
-      choices:
-      - csv
-      - vcf
+      choices: !!set
+        vcf:
+        csv:
     optional: true
   - !Flag
     description: value of increment to use when calling SNVs (1 used in amplicon mode)
@@ -335,9 +443,16 @@ subcommands:
     args: !SimpleFlagArg
       name: REF
     optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - -v
+    args: !EmptyFlagArg {}
+    optional: true
   command:
   - shorah
   - snv
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -354,6 +469,27 @@ subcommands:
     - --version
     args: !EmptyFlagArg {}
     optional: true
+  help_text: "usage: shorah <subcommand> [options] snv [-h] [-v] -b BAM -f REF [-a\
+    \ FLOAT]\n                                         [-r chrm:start-stop] [-R INT]\n\
+    \                                         [-x INT] [-S FLOAT] [-I]\n         \
+    \                                [-of {csv,vcf} [{csv,vcf} ...]]\n           \
+    \                              [-i INT]\n\noptional arguments:\n  -h, --help \
+    \           show this help message and exit\n  -v, --version         show program's\
+    \ version number and exit\n  -a FLOAT, --alpha FLOAT\n                       \
+    \ alpha in dpm sampling\n  -r chrm:start-stop, --region chrm:start-stop\n    \
+    \                    region in format 'chr:start-stop', e.g.\n               \
+    \         'chrm:1000-3000'\n  -R INT, --seed INT    set seed for reproducible\
+    \ results\n  -x INT, --maxcov INT  approximate max coverage allowed\n  -S FLOAT,\
+    \ --sigma FLOAT\n                        sigma value to use when calling SNVs\n\
+    \  -I, --ignore_indels   ignore SNVs adjacent to insertions/deletions (legacy\n\
+    \                        behaviour of 'fil', ignore this option if you don't\n\
+    \                        understand)\n  -of {csv,vcf} [{csv,vcf} ...], --out_format\
+    \ {csv,vcf} [{csv,vcf} ...]\n                        output format of called SNVs\n\
+    \  -i INT, --increment INT\n                        value of increment to use\
+    \ when calling SNVs (1 used in\n                        amplicon mode)\n\nrequired\
+    \ arguments:\n  -b BAM, --bam BAM     sorted bam format alignment file\n  -f REF,\
+    \ --fasta REF   reference genome in fasta format\n"
+  generated_using: *id002
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -369,3 +505,11 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: shorah <subcommand> [options]\n\noptional arguments:\n  -h, --help\
+  \            show this help message and exit\n  -v, --version         show program's\
+  \ version number and exit\n\nsub-commands:\n  {shotgun,amplicon,snv}\n         \
+  \               available sub-commands\n    shotgun             run local analysis\
+  \ in shotgun mode\n    amplicon            run local analysis in amplicon mode\n\
+  \    snv                 run single-nucleotide-variant calling\n\nRun `shorah subcommand\
+  \ -h` for more help\n"
+generated_using: *id002

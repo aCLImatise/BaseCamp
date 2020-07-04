@@ -2,12 +2,6 @@
 positional: []
 named:
 - !Flag
-  description: ': no input (-i) directory specified.'
-  synonyms:
-  - '- ERROR'
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
   description: 'number of threads/cores used by PIRATE [default: 2]'
   synonyms:
   - -t
@@ -35,8 +29,15 @@ named:
   - --check
   args: !EmptyFlagArg {}
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - PIRATE
+parent:
 subcommands: []
 help_flag: !Flag
   description: usage information
@@ -47,3 +48,28 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "Usage:\n            PIRATE -i /path/to/directory/containing/gffs/ \n\n\
+  \     PIRATE input/output:\n     -i|--input     input directory containing gffs\
+  \ [mandatory]\n     -o|--output    output directory in which to create PIRATE folder\
+  \ \n                    [default: input_dir/PIRATE]\n\n     Global:\n     -s|--steps\
+  \     % identity thresholds to use for pangenome construction\n                \
+  \    [default: 50,60,70,80,90,95,98]\n     -f|--features  choose features to use\
+  \ for pangenome construction. \n                    Multiple may be entered, seperated\
+  \ by a comma [default: CDS]\n     -n|--nucl      CDS are not translated to AA sequence\
+  \ [default: off]\n     --pan-opt      additional arguments to pass to pangenome_contruction\
+  \   \n     --pan-off      don't run pangenome tool [assumes PIRATE has been previously\n\
+  \                    run and resulting files are present in output folder]\n\n \
+  \    Paralog classification:\n     --para-off     switch off paralog identification\
+  \ [default: on]\n     --para-args    options to pass to paralog splitting algorithm\n\
+  \                    [default: none] \n     --classify-off do not classify paralogs,\
+  \ assumes this has been\n                    run previously [default: on]\n\n  \
+  \   Output:\n     -a|--align     align all genes and produce core/pangenome alignments\
+  \ \n                    [default: off]\n     -r|--rplots    plot summaries using\
+  \ R [requires dependencies]\n\n     Usage:\n     -t|--threads   number of threads/cores\
+  \ used by PIRATE [default: 2]\n     -q|--quiet     switch off verbose\n     -z \
+  \            retain intermediate files [0 = none, 1 = retain pangenome \n      \
+  \              files (default - re-run using --pan-off), 2 = all]  \n     -c|--check\
+  \     check installation and run on example files\n     -h|--help      usage information\n\
+  \n"
+generated_using:
+- --help

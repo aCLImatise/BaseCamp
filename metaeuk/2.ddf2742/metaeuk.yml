@@ -1,8 +1,9 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - metaeuk
+parent:
 subcommands:
 - !Command
   positional: []
@@ -708,22 +709,156 @@ subcommands:
     args: !SimpleFlagArg
       name: INT
     optional: true
-  - !Flag
-    description: 'E, Mirdita M, Soeding J: MetaEuk – sensitive, high-throughput gene
-      discovery and annotation for large-scale eukaryotic metagenomics. biorxiv, 851964
-      (2019).'
-    synonyms:
-    - '- Levy'
-    args: !SimpleFlagArg
-      name: Karin
-    optional: true
   command:
   - metaeuk
   - predictexons
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "usage: metaeuk predictexons <i:contigsDB> <i:targetsDB> <o:calledExonsDB>\
+    \ <tmpDir> [options]\n By Eli Levy Karin <eli.levy.karin@gmail.com>\noptions:\
+    \ prefilter:                  \n --comp-bias-corr INT         Correct for locally\
+    \ biased amino acid composition (range 0-1) [1]\n --add-self-matches BOOL    \
+    \  Artificially add entries of queries with themselves (for clustering) [0]\n\
+    \ --seed-sub-mat TWIN          Substitution matrix file for k-mer generation [nucl:nucleotide.out,aa:VTML80.out]\n\
+    \ -s FLOAT                     Sensitivity: 1.0 faster; 4.0 fast; 7.5 sensitive\
+    \ [4.000]\n -k INT                       k-mer length (0: automatically set to\
+    \ optimum) [0]\n --k-score INT                k-mer threshold for generating similar\
+    \ k-mer lists [2147483647]\n --alph-size TWIN             Alphabet size (range\
+    \ 2-21) [nucl:5,aa:21]\n --max-seqs INT               Maximum results per query\
+    \ sequence allowed to pass the prefilter (affects sensitivity) [300]\n --split\
+    \ INT                  Split input into N equally distributed chunks. 0: set the\
+    \ best split automatically [0]\n --split-mode INT             0: split target\
+    \ db; 1: split query db; 2: auto, depending on main memory [2]\n --split-memory-limit\
+    \ BYTE    Set max memory per split. E.g. 800B, 5K, 10M, 1G. Default (0) to all\
+    \ available system memory [0]\n --diag-score BOOL            Use ungapped diagonal\
+    \ scoring during prefilter [1]\n --exact-kmer-matching INT    Extract only exact\
+    \ k-mers for matching (range 0-1) [0]\n --mask INT                   Mask sequences\
+    \ in k-mer stage: 0: w/o low complexity masking, 1: with low complexity masking\
+    \ [1]\n --mask-lower-case INT        Lowercase letters will be excluded from k-mer\
+    \ search 0: include region, 1: exclude region [0]\n --min-ungapped-score INT \
+    \    Accept only matches with ungapped alignment score above threshold [15]\n\
+    \ --spaced-kmer-mode INT       0: use consecutive positions in k-mers; 1: use\
+    \ spaced k-mers [1]\n --spaced-kmer-pattern STR    User-specified spaced k-mer\
+    \ pattern []\n --local-tmp STR              Path where some of the temporary files\
+    \ will be created []\n --disk-space-limit BYTE      Set max disk space to use\
+    \ for reverse profile searches. E.g. 800B, 5K, 10M, 1G. Default (0) to all available\
+    \ disk space in the temp folder [0]\nalign:                      \n -a BOOL  \
+    \                    Add backtrace string (convert to alignments with mmseqs convertalis\
+    \ module) [0]\n --alignment-mode INT         How to compute the alignment: 0:\
+    \ automatic; 1: only score and end_pos; 2: also start_pos and cov; 3: also seq.id;\
+    \ 4: only ungapped alignment [2]\n --wrapped-scoring BOOL       Double the (nucleotide)\
+    \ query sequence during the scoring process to allow wrapped diagonal scoring\
+    \ around end and start [0]\n -e FLOAT                     List matches below this\
+    \ E-value (range 0.0-inf) [100.000]\n --min-seq-id FLOAT           List matches\
+    \ above this sequence identity (for clustering) (range 0.0-1.0) [0.000]\n --min-aln-len\
+    \ INT            Minimum alignment length (range 0-INT_MAX) [0]\n --seq-id-mode\
+    \ INT            0: alignment length 1: shorter, 2: longer sequence [0]\n --alt-ali\
+    \ INT                Show up to this many alternative alignments [0]\n -c FLOAT\
+    \                     List matches above this fraction of aligned (covered) residues\
+    \ (see --cov-mode) [0.000]\n --cov-mode INT               0: coverage of query\
+    \ and target\n                              1: coverage of target\n          \
+    \                    2: coverage of query\n                              3: target\
+    \ seq. length has to be at least x% of query length\n                        \
+    \      4: query seq. length has to be at least x% of target length\n         \
+    \                     5: short seq. needs to be at least x% of the other seq.\
+    \ length [0]\n --realign BOOL               Compute more conservative, shorter\
+    \ alignments (scores and E-values not changed) [0]\n --max-rejected INT      \
+    \     Maximum rejected alignments before alignment calculation for a query is\
+    \ stopped [2147483647]\n --max-accept INT             Maximum accepted alignments\
+    \ before alignment calculation for a query is stopped [2147483647]\n --score-bias\
+    \ FLOAT           Score bias when computing SW alignment (in bits) [0.000]\n --gap-open\
+    \ INT               Gap open cost [11]\n --gap-extend INT             Gap extension\
+    \ cost [1]\n --zdrop INT                  Maximal allowed difference between score\
+    \ values before alignment is truncated  (nucleotide alignment only) [40]\nprofile:\
+    \                    \n --pca FLOAT                  Pseudo count admixture strength\
+    \ [1.000]\n --pcb FLOAT                  Pseudo counts: Neff at half of maximum\
+    \ admixture (range 0.0-inf) [1.500]\n --mask-profile INT           Mask query\
+    \ sequence of profile using tantan [0,1] [1]\n --e-profile FLOAT            Include\
+    \ sequences matches with < e-value thr. into the profile (>=0.0) [0.001]\n --wg\
+    \ BOOL                    Use global sequence weighting for profile calculation\
+    \ [0]\n --filter-msa INT             Filter msa: 0: do not filter, 1: filter [1]\n\
+    \ --max-seq-id FLOAT           Reduce redundancy of output MSA using max. pairwise\
+    \ sequence identity [0.0,1.0] [0.900]\n --qid FLOAT                  Reduce diversity\
+    \ of output MSAs using min.seq. identity with query sequences [0.0,1.0] [0.000]\n\
+    \ --qsc FLOAT                  Reduce diversity of output MSAs using min. score\
+    \ per aligned residue with query sequences [-50.0,100.0] [-20.000]\n --cov FLOAT\
+    \                  Filter output MSAs using min. fraction of query residues covered\
+    \ by matched sequences [0.0,1.0] [0.000]\n --diff INT                   Filter\
+    \ MSAs by selecting most diverse set of sequences, keeping at least this many\
+    \ seqs in each MSA block of length 50 [1000]\n --num-iterations INT         Number\
+    \ of iterative profile search iterations [1]\n --slice-search BOOL          For\
+    \ bigger profile DB, run iteratively the search by greedily swapping the search\
+    \ results [0]\nmisc:                       \n --rescore-mode INT           Rescore\
+    \ diagonals with:\n                              0: Hamming distance\n       \
+    \                       1: local alignment (score only)\n                    \
+    \          2: local alignment\n                              3: global alignment\n\
+    \                              4: longest alignment fullfilling window quality\
+    \ criterion [0]\n --allow-deletion BOOL        Allow deletions in a MSA [0]\n\
+    \ --min-length INT             Minimum codon number in open reading frames [15]\n\
+    \ --max-length INT             Maximum codon number in open reading frames [32734]\n\
+    \ --max-gaps INT               Maximum number of codons with gaps or unknown residues\
+    \ before an open reading frame is rejected [2147483647]\n --contig-start-mode\
+    \ INT      Contig start can be 0: incomplete, 1: complete, 2: both [2]\n --contig-end-mode\
+    \ INT        Contig end can be 0: incomplete, 1: complete, 2: both [2]\n --orf-start-mode\
+    \ INT         Orf fragment can be 0: from start to stop, 1: from any to stop,\
+    \ 2: from last encountered start to stop (no start in the middle) [1]\n --forward-frames\
+    \ STR         Comma-seperated list of frames on the forward strand to be extracted\
+    \ [1,2,3]\n --reverse-frames STR         Comma-seperated list of frames on the\
+    \ reverse strand to be extracted [1,2,3]\n --translation-table INT      1) CANONICAL,\
+    \ 2) VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL, 4) MOLD_MITOCHONDRIAL, 5) INVERT_MITOCHONDRIAL,\
+    \ 6) CILIATE\n                              9) FLATWORM_MITOCHONDRIAL, 10) EUPLOTID,\
+    \ 11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL, 14) ALT_FLATWORM_MITOCHONDRIAL\n\
+    \                              15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL,\
+    \ 21) TREMATODE_MITOCHONDRIAL, 22) SCENEDESMUS_MITOCHONDRIAL\n               \
+    \               23) THRAUSTOCHYTRIUM_MITOCHONDRIAL, 24) PTEROBRANCHIA_MITOCHONDRIAL,\
+    \ 25) GRACILIBACTERIA, 26) PACHYSOLEN, 27) KARYORELICT, 28) CONDYLOSTOMA\n   \
+    \                            29) MESODINIUM, 30) PERTRICH, 31) BLASTOCRITHIDIA\
+    \ [1]\n --translate INT              Translate ORF to amino acid [0]\n --use-all-table-starts\
+    \ BOOL  Use all alteratives for a start codon in the genetic table, if false -\
+    \ only ATG (AUG) [0]\n --id-offset INT              Numeric ids in index file\
+    \ are offset by this value [0]\n --add-orf-stop BOOL          Add stop codon '*'\
+    \ at complete start and end [0]\n --search-type INT            Search type 0:\
+    \ auto 1: amino acid, 2: translated, 3: nucleotide, 4: translated nucleotide alignment\
+    \ [0]\n --start-sens FLOAT           Start sensitivity [4.000]\n --sens-steps\
+    \ INT             Number of search steps performed from --start-sens to -s [1]\n\
+    \ --metaeuk-eval FLOAT         maximal combined evalue of an optimal set [0.0,\
+    \ inf] [0.001]\n --metaeuk-tcov FLOAT         minimal length ratio of combined\
+    \ set to target [0.0, 1.0] [0.500]\n --max-intron INT             Maximal allowed\
+    \ intron length [10000]\n --min-intron INT             Minimal allowed intron\
+    \ length [15]\n --min-exon-aa INT            Minimal allowed exon length in amino\
+    \ acids [11]\n --max-overlap INT            Maximal allowed overlap of consecutive\
+    \ exons in amino acids [10]\n --set-gap-open INT           Gap open penalty (negative)\
+    \ for missed target amino acids between exons [-1]\n --set-gap-extend INT    \
+    \     Gap extend penalty (negative) for missed target amino acids between exons\
+    \ [-1]\n --reverse-fragments INT      reverse AA fragments to compute under null\
+    \ [0,1] [0]\ncommon:                     \n --sub-mat TWIN               Substitution\
+    \ matrix file [nucl:nucleotide.out,aa:blosum62.out]\n --max-seq-len INT      \
+    \      Maximum sequence length [65535]\n --db-load-mode INT           Database\
+    \ preload mode 0: auto, 1: fread, 2: mmap, 3: mmap+touch [0]\n --threads INT \
+    \               Number of CPU-cores used (all by default) [8]\n --compressed INT\
+    \             Write compressed output [0]\n -v INT                       Verbosity\
+    \ level: 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]\n --mpi-runner STR \
+    \            Use MPI on compute cluster with this MPI command (e.g. \"mpirun -np\
+    \ 42\") []\n --force-reuse BOOL           Reuse tmp filse in tmp/latest folder\
+    \ ignoring parameters and version changes [0]\n --remove-tmp-files BOOL      Delete\
+    \ temporary files [0]\nexpert:                     \n --filter-hits BOOL     \
+    \      Filter hits by seq.id. and coverage [0]\n --sort-results INT          \
+    \ Sort results: 0: no sorting, 1: sort by E-value (Alignment) or seq.id. (Hamming)\
+    \ [0]\n --omit-consensus BOOL        Omit consensus sequence in alignment [0]\n\
+    \ --create-lookup INT          Create database lookup file (can be very large)\
+    \ [0]\n --chain-alignments INT       Chain overlapping alignments [0]\n --merge-query\
+    \ INT            Combine ORFs/split sequences to a single entry [1]\n --strand\
+    \ INT                 Strand selection only works for DNA/DNA search 0: reverse,\
+    \ 1: forward, 2: both [1]\n\nexamples:\n An analog of 6-frame translation to produce\
+    \ putative protein fragments. Search against protein DB. Compatible exon set identified\
+    \ with respect to each target.\n\nreferences:\n - Levy Karin E, Mirdita M, Soeding\
+    \ J: MetaEuk – sensitive, high-throughput gene discovery and annotation for large-scale\
+    \ eukaryotic metagenomics. biorxiv, 851964 (2019).\n"
+  generated_using: &id002
+  - --help
 - !Command
   positional: []
   named:
@@ -1452,22 +1587,160 @@ subcommands:
     args: !SimpleFlagArg
       name: INT
     optional: true
-  - !Flag
-    description: 'E, Mirdita M, Soeding J: MetaEuk – sensitive, high-throughput gene
-      discovery and annotation for large-scale eukaryotic metagenomics. biorxiv, 851964
-      (2019).'
-    synonyms:
-    - '- Levy'
-    args: !SimpleFlagArg
-      name: Karin
-    optional: true
   command:
   - metaeuk
   - easy-predict
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "usage: metaeuk easy-predict <i:contigs> <i:targets> <o:predictionsFasta>\
+    \ <tmpDir> [options]\n By Eli Levy Karin <eli.levy.karin@gmail.com>\noptions:\
+    \ prefilter:                  \n --comp-bias-corr INT         Correct for locally\
+    \ biased amino acid composition (range 0-1) [1]\n --add-self-matches BOOL    \
+    \  Artificially add entries of queries with themselves (for clustering) [0]\n\
+    \ --seed-sub-mat TWIN          Substitution matrix file for k-mer generation [nucl:nucleotide.out,aa:VTML80.out]\n\
+    \ -s FLOAT                     Sensitivity: 1.0 faster; 4.0 fast; 7.5 sensitive\
+    \ [4.000]\n -k INT                       k-mer length (0: automatically set to\
+    \ optimum) [0]\n --k-score INT                k-mer threshold for generating similar\
+    \ k-mer lists [2147483647]\n --alph-size TWIN             Alphabet size (range\
+    \ 2-21) [nucl:5,aa:21]\n --max-seqs INT               Maximum results per query\
+    \ sequence allowed to pass the prefilter (affects sensitivity) [300]\n --split\
+    \ INT                  Split input into N equally distributed chunks. 0: set the\
+    \ best split automatically [0]\n --split-mode INT             0: split target\
+    \ db; 1: split query db; 2: auto, depending on main memory [2]\n --split-memory-limit\
+    \ BYTE    Set max memory per split. E.g. 800B, 5K, 10M, 1G. Default (0) to all\
+    \ available system memory [0]\n --diag-score BOOL            Use ungapped diagonal\
+    \ scoring during prefilter [1]\n --exact-kmer-matching INT    Extract only exact\
+    \ k-mers for matching (range 0-1) [0]\n --mask INT                   Mask sequences\
+    \ in k-mer stage: 0: w/o low complexity masking, 1: with low complexity masking\
+    \ [1]\n --mask-lower-case INT        Lowercase letters will be excluded from k-mer\
+    \ search 0: include region, 1: exclude region [0]\n --min-ungapped-score INT \
+    \    Accept only matches with ungapped alignment score above threshold [15]\n\
+    \ --spaced-kmer-mode INT       0: use consecutive positions in k-mers; 1: use\
+    \ spaced k-mers [1]\n --spaced-kmer-pattern STR    User-specified spaced k-mer\
+    \ pattern []\n --local-tmp STR              Path where some of the temporary files\
+    \ will be created []\n --disk-space-limit BYTE      Set max disk space to use\
+    \ for reverse profile searches. E.g. 800B, 5K, 10M, 1G. Default (0) to all available\
+    \ disk space in the temp folder [0]\nalign:                      \n -a BOOL  \
+    \                    Add backtrace string (convert to alignments with mmseqs convertalis\
+    \ module) [0]\n --alignment-mode INT         How to compute the alignment: 0:\
+    \ automatic; 1: only score and end_pos; 2: also start_pos and cov; 3: also seq.id;\
+    \ 4: only ungapped alignment [2]\n --wrapped-scoring BOOL       Double the (nucleotide)\
+    \ query sequence during the scoring process to allow wrapped diagonal scoring\
+    \ around end and start [0]\n -e FLOAT                     List matches below this\
+    \ E-value (range 0.0-inf) [100.000]\n --min-seq-id FLOAT           List matches\
+    \ above this sequence identity (for clustering) (range 0.0-1.0) [0.000]\n --min-aln-len\
+    \ INT            Minimum alignment length (range 0-INT_MAX) [0]\n --seq-id-mode\
+    \ INT            0: alignment length 1: shorter, 2: longer sequence [0]\n --alt-ali\
+    \ INT                Show up to this many alternative alignments [0]\n -c FLOAT\
+    \                     List matches above this fraction of aligned (covered) residues\
+    \ (see --cov-mode) [0.000]\n --cov-mode INT               0: coverage of query\
+    \ and target\n                              1: coverage of target\n          \
+    \                    2: coverage of query\n                              3: target\
+    \ seq. length has to be at least x% of query length\n                        \
+    \      4: query seq. length has to be at least x% of target length\n         \
+    \                     5: short seq. needs to be at least x% of the other seq.\
+    \ length [0]\n --realign BOOL               Compute more conservative, shorter\
+    \ alignments (scores and E-values not changed) [0]\n --max-rejected INT      \
+    \     Maximum rejected alignments before alignment calculation for a query is\
+    \ stopped [2147483647]\n --max-accept INT             Maximum accepted alignments\
+    \ before alignment calculation for a query is stopped [2147483647]\n --score-bias\
+    \ FLOAT           Score bias when computing SW alignment (in bits) [0.000]\n --gap-open\
+    \ INT               Gap open cost [11]\n --gap-extend INT             Gap extension\
+    \ cost [1]\n --zdrop INT                  Maximal allowed difference between score\
+    \ values before alignment is truncated  (nucleotide alignment only) [40]\nprofile:\
+    \                    \n --pca FLOAT                  Pseudo count admixture strength\
+    \ [1.000]\n --pcb FLOAT                  Pseudo counts: Neff at half of maximum\
+    \ admixture (range 0.0-inf) [1.500]\n --mask-profile INT           Mask query\
+    \ sequence of profile using tantan [0,1] [1]\n --e-profile FLOAT            Include\
+    \ sequences matches with < e-value thr. into the profile (>=0.0) [0.001]\n --wg\
+    \ BOOL                    Use global sequence weighting for profile calculation\
+    \ [0]\n --filter-msa INT             Filter msa: 0: do not filter, 1: filter [1]\n\
+    \ --max-seq-id FLOAT           Reduce redundancy of output MSA using max. pairwise\
+    \ sequence identity [0.0,1.0] [0.900]\n --qid FLOAT                  Reduce diversity\
+    \ of output MSAs using min.seq. identity with query sequences [0.0,1.0] [0.000]\n\
+    \ --qsc FLOAT                  Reduce diversity of output MSAs using min. score\
+    \ per aligned residue with query sequences [-50.0,100.0] [-20.000]\n --cov FLOAT\
+    \                  Filter output MSAs using min. fraction of query residues covered\
+    \ by matched sequences [0.0,1.0] [0.000]\n --diff INT                   Filter\
+    \ MSAs by selecting most diverse set of sequences, keeping at least this many\
+    \ seqs in each MSA block of length 50 [1000]\n --num-iterations INT         Number\
+    \ of iterative profile search iterations [1]\n --slice-search BOOL          For\
+    \ bigger profile DB, run iteratively the search by greedily swapping the search\
+    \ results [0]\nmisc:                       \n --rescore-mode INT           Rescore\
+    \ diagonals with:\n                              0: Hamming distance\n       \
+    \                       1: local alignment (score only)\n                    \
+    \          2: local alignment\n                              3: global alignment\n\
+    \                              4: longest alignment fullfilling window quality\
+    \ criterion [0]\n --allow-deletion BOOL        Allow deletions in a MSA [0]\n\
+    \ --min-length INT             Minimum codon number in open reading frames [15]\n\
+    \ --max-length INT             Maximum codon number in open reading frames [32734]\n\
+    \ --max-gaps INT               Maximum number of codons with gaps or unknown residues\
+    \ before an open reading frame is rejected [2147483647]\n --contig-start-mode\
+    \ INT      Contig start can be 0: incomplete, 1: complete, 2: both [2]\n --contig-end-mode\
+    \ INT        Contig end can be 0: incomplete, 1: complete, 2: both [2]\n --orf-start-mode\
+    \ INT         Orf fragment can be 0: from start to stop, 1: from any to stop,\
+    \ 2: from last encountered start to stop (no start in the middle) [1]\n --forward-frames\
+    \ STR         Comma-seperated list of frames on the forward strand to be extracted\
+    \ [1,2,3]\n --reverse-frames STR         Comma-seperated list of frames on the\
+    \ reverse strand to be extracted [1,2,3]\n --translation-table INT      1) CANONICAL,\
+    \ 2) VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL, 4) MOLD_MITOCHONDRIAL, 5) INVERT_MITOCHONDRIAL,\
+    \ 6) CILIATE\n                              9) FLATWORM_MITOCHONDRIAL, 10) EUPLOTID,\
+    \ 11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL, 14) ALT_FLATWORM_MITOCHONDRIAL\n\
+    \                              15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL,\
+    \ 21) TREMATODE_MITOCHONDRIAL, 22) SCENEDESMUS_MITOCHONDRIAL\n               \
+    \               23) THRAUSTOCHYTRIUM_MITOCHONDRIAL, 24) PTEROBRANCHIA_MITOCHONDRIAL,\
+    \ 25) GRACILIBACTERIA, 26) PACHYSOLEN, 27) KARYORELICT, 28) CONDYLOSTOMA\n   \
+    \                            29) MESODINIUM, 30) PERTRICH, 31) BLASTOCRITHIDIA\
+    \ [1]\n --translate INT              Translate ORF to amino acid [0]\n --use-all-table-starts\
+    \ BOOL  Use all alteratives for a start codon in the genetic table, if false -\
+    \ only ATG (AUG) [0]\n --id-offset INT              Numeric ids in index file\
+    \ are offset by this value [0]\n --add-orf-stop BOOL          Add stop codon '*'\
+    \ at complete start and end [0]\n --search-type INT            Search type 0:\
+    \ auto 1: amino acid, 2: translated, 3: nucleotide, 4: translated nucleotide alignment\
+    \ [0]\n --start-sens FLOAT           Start sensitivity [4.000]\n --sens-steps\
+    \ INT             Number of search steps performed from --start-sens to -s [1]\n\
+    \ --metaeuk-eval FLOAT         maximal combined evalue of an optimal set [0.0,\
+    \ inf] [0.001]\n --metaeuk-tcov FLOAT         minimal length ratio of combined\
+    \ set to target [0.0, 1.0] [0.500]\n --max-intron INT             Maximal allowed\
+    \ intron length [10000]\n --min-intron INT             Minimal allowed intron\
+    \ length [15]\n --min-exon-aa INT            Minimal allowed exon length in amino\
+    \ acids [11]\n --max-overlap INT            Maximal allowed overlap of consecutive\
+    \ exons in amino acids [10]\n --set-gap-open INT           Gap open penalty (negative)\
+    \ for missed target amino acids between exons [-1]\n --set-gap-extend INT    \
+    \     Gap extend penalty (negative) for missed target amino acids between exons\
+    \ [-1]\n --overlap INT                allow predictions to overlap another on\
+    \ the same strand. when not allowed (default), only the prediction with better\
+    \ E-value will be retained [0,1] [0]\n --protein INT                translate\
+    \ the joint exons coding sequence to amino acids [0,1] [0]\n --target-key INT\
+    \             write the target key (internal DB identifier) instead of its accession.\
+    \ By default (0) target accession will be written [0,1] [0]\n --reverse-fragments\
+    \ INT      reverse AA fragments to compute under null [0,1] [0]\ncommon:     \
+    \                \n --sub-mat TWIN               Substitution matrix file [nucl:nucleotide.out,aa:blosum62.out]\n\
+    \ --max-seq-len INT            Maximum sequence length [65535]\n --db-load-mode\
+    \ INT           Database preload mode 0: auto, 1: fread, 2: mmap, 3: mmap+touch\
+    \ [0]\n --threads INT                Number of CPU-cores used (all by default)\
+    \ [8]\n --compressed INT             Write compressed output [0]\n -v INT    \
+    \                   Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3: +info\
+    \ [3]\n --mpi-runner STR             Use MPI on compute cluster with this MPI\
+    \ command (e.g. \"mpirun -np 42\") []\n --force-reuse BOOL           Reuse tmp\
+    \ filse in tmp/latest folder ignoring parameters and version changes [0]\n --remove-tmp-files\
+    \ BOOL      Delete temporary files [0]\nexpert:                     \n --filter-hits\
+    \ BOOL           Filter hits by seq.id. and coverage [0]\n --sort-results INT\
+    \           Sort results: 0: no sorting, 1: sort by E-value (Alignment) or seq.id.\
+    \ (Hamming) [0]\n --omit-consensus BOOL        Omit consensus sequence in alignment\
+    \ [0]\n --create-lookup INT          Create database lookup file (can be very\
+    \ large) [0]\n --chain-alignments INT       Chain overlapping alignments [0]\n\
+    \ --merge-query INT            Combine ORFs/split sequences to a single entry\
+    \ [1]\n --strand INT                 Strand selection only works for DNA/DNA search\
+    \ 0: reverse, 1: forward, 2: both [1]\n\nexamples:\n Combines the following MetaEuk\
+    \ modules into a single step: predictexons, reduceredundancy and unitesetstofasta\n\
+    \nreferences:\n - Levy Karin E, Mirdita M, Soeding J: MetaEuk – sensitive, high-throughput\
+    \ gene discovery and annotation for large-scale eukaryotic metagenomics. biorxiv,\
+    \ 851964 (2019).\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -2151,22 +2424,151 @@ subcommands:
     args: !SimpleFlagArg
       name: INT
     optional: true
-  - !Flag
-    description: 'E, Mirdita M, Soeding J: MetaEuk – sensitive, high-throughput gene
-      discovery and annotation for large-scale eukaryotic metagenomics. biorxiv, 851964
-      (2019).'
-    synonyms:
-    - '- Levy'
-    args: !SimpleFlagArg
-      name: Karin
-    optional: true
   command:
   - metaeuk
   - taxtocontig
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "usage: metaeuk taxtocontig <i:contigsDB> <i:predictionsFasta> <i:predictionsFasta.headersMap.tsv>\
+    \ <i:taxAnnotTargetDb> <o:taxResult> <tmpDir> [options]\n By Eli Levy Karin <eli.levy.karin@gmail.com>\n\
+    options: prefilter:                  \n --comp-bias-corr INT         Correct for\
+    \ locally biased amino acid composition (range 0-1) [1]\n --add-self-matches BOOL\
+    \      Artificially add entries of queries with themselves (for clustering) [0]\n\
+    \ --seed-sub-mat TWIN          Substitution matrix file for k-mer generation [nucl:nucleotide.out,aa:VTML80.out]\n\
+    \ -s FLOAT                     Sensitivity: 1.0 faster; 4.0 fast; 7.5 sensitive\
+    \ [4.000]\n -k INT                       k-mer length (0: automatically set to\
+    \ optimum) [0]\n --k-score INT                k-mer threshold for generating similar\
+    \ k-mer lists [2147483647]\n --alph-size TWIN             Alphabet size (range\
+    \ 2-21) [nucl:5,aa:21]\n --max-seqs INT               Maximum results per query\
+    \ sequence allowed to pass the prefilter (affects sensitivity) [300]\n --split\
+    \ INT                  Split input into N equally distributed chunks. 0: set the\
+    \ best split automatically [0]\n --split-mode INT             0: split target\
+    \ db; 1: split query db; 2: auto, depending on main memory [2]\n --split-memory-limit\
+    \ BYTE    Set max memory per split. E.g. 800B, 5K, 10M, 1G. Default (0) to all\
+    \ available system memory [0]\n --diag-score BOOL            Use ungapped diagonal\
+    \ scoring during prefilter [1]\n --exact-kmer-matching INT    Extract only exact\
+    \ k-mers for matching (range 0-1) [0]\n --mask INT                   Mask sequences\
+    \ in k-mer stage: 0: w/o low complexity masking, 1: with low complexity masking\
+    \ [1]\n --mask-lower-case INT        Lowercase letters will be excluded from k-mer\
+    \ search 0: include region, 1: exclude region [0]\n --min-ungapped-score INT \
+    \    Accept only matches with ungapped alignment score above threshold [15]\n\
+    \ --spaced-kmer-mode INT       0: use consecutive positions in k-mers; 1: use\
+    \ spaced k-mers [1]\n --spaced-kmer-pattern STR    User-specified spaced k-mer\
+    \ pattern []\n --local-tmp STR              Path where some of the temporary files\
+    \ will be created []\n --disk-space-limit BYTE      Set max disk space to use\
+    \ for reverse profile searches. E.g. 800B, 5K, 10M, 1G. Default (0) to all available\
+    \ disk space in the temp folder [0]\nalign:                      \n -a BOOL  \
+    \                    Add backtrace string (convert to alignments with mmseqs convertalis\
+    \ module) [0]\n --alignment-mode INT         How to compute the alignment: 0:\
+    \ automatic; 1: only score and end_pos; 2: also start_pos and cov; 3: also seq.id;\
+    \ 4: only ungapped alignment [0]\n --wrapped-scoring BOOL       Double the (nucleotide)\
+    \ query sequence during the scoring process to allow wrapped diagonal scoring\
+    \ around end and start [0]\n -e FLOAT                     List matches below this\
+    \ E-value (range 0.0-inf) [0.001]\n --min-seq-id FLOAT           List matches\
+    \ above this sequence identity (for clustering) (range 0.0-1.0) [0.000]\n --min-aln-len\
+    \ INT            Minimum alignment length (range 0-INT_MAX) [0]\n --seq-id-mode\
+    \ INT            0: alignment length 1: shorter, 2: longer sequence [0]\n --alt-ali\
+    \ INT                Show up to this many alternative alignments [0]\n -c FLOAT\
+    \                     List matches above this fraction of aligned (covered) residues\
+    \ (see --cov-mode) [0.000]\n --cov-mode INT               0: coverage of query\
+    \ and target\n                              1: coverage of target\n          \
+    \                    2: coverage of query\n                              3: target\
+    \ seq. length has to be at least x% of query length\n                        \
+    \      4: query seq. length has to be at least x% of target length\n         \
+    \                     5: short seq. needs to be at least x% of the other seq.\
+    \ length [0]\n --realign BOOL               Compute more conservative, shorter\
+    \ alignments (scores and E-values not changed) [0]\n --max-rejected INT      \
+    \     Maximum rejected alignments before alignment calculation for a query is\
+    \ stopped [2147483647]\n --max-accept INT             Maximum accepted alignments\
+    \ before alignment calculation for a query is stopped [2147483647]\n --score-bias\
+    \ FLOAT           Score bias when computing SW alignment (in bits) [0.000]\n --gap-open\
+    \ INT               Gap open cost [11]\n --gap-extend INT             Gap extension\
+    \ cost [1]\n --zdrop INT                  Maximal allowed difference between score\
+    \ values before alignment is truncated  (nucleotide alignment only) [40]\nprofile:\
+    \                    \n --pca FLOAT                  Pseudo count admixture strength\
+    \ [1.000]\n --pcb FLOAT                  Pseudo counts: Neff at half of maximum\
+    \ admixture (range 0.0-inf) [1.500]\n --mask-profile INT           Mask query\
+    \ sequence of profile using tantan [0,1] [1]\n --e-profile FLOAT            Include\
+    \ sequences matches with < e-value thr. into the profile (>=0.0) [0.001]\n --wg\
+    \ BOOL                    Use global sequence weighting for profile calculation\
+    \ [0]\n --filter-msa INT             Filter msa: 0: do not filter, 1: filter [1]\n\
+    \ --max-seq-id FLOAT           Reduce redundancy of output MSA using max. pairwise\
+    \ sequence identity [0.0,1.0] [0.900]\n --qid FLOAT                  Reduce diversity\
+    \ of output MSAs using min.seq. identity with query sequences [0.0,1.0] [0.000]\n\
+    \ --qsc FLOAT                  Reduce diversity of output MSAs using min. score\
+    \ per aligned residue with query sequences [-50.0,100.0] [-20.000]\n --cov FLOAT\
+    \                  Filter output MSAs using min. fraction of query residues covered\
+    \ by matched sequences [0.0,1.0] [0.000]\n --diff INT                   Filter\
+    \ MSAs by selecting most diverse set of sequences, keeping at least this many\
+    \ seqs in each MSA block of length 50 [1000]\n --num-iterations INT         Number\
+    \ of iterative profile search iterations [1]\n --slice-search BOOL          For\
+    \ bigger profile DB, run iteratively the search by greedily swapping the search\
+    \ results [0]\nmisc:                       \n --rescore-mode INT           Rescore\
+    \ diagonals with:\n                              0: Hamming distance\n       \
+    \                       1: local alignment (score only)\n                    \
+    \          2: local alignment\n                              3: global alignment\n\
+    \                              4: longest alignment fullfilling window quality\
+    \ criterion [0]\n --allow-deletion BOOL        Allow deletions in a MSA [0]\n\
+    \ --min-length INT             Minimum codon number in open reading frames [30]\n\
+    \ --max-length INT             Maximum codon number in open reading frames [32734]\n\
+    \ --max-gaps INT               Maximum number of codons with gaps or unknown residues\
+    \ before an open reading frame is rejected [2147483647]\n --contig-start-mode\
+    \ INT      Contig start can be 0: incomplete, 1: complete, 2: both [2]\n --contig-end-mode\
+    \ INT        Contig end can be 0: incomplete, 1: complete, 2: both [2]\n --orf-start-mode\
+    \ INT         Orf fragment can be 0: from start to stop, 1: from any to stop,\
+    \ 2: from last encountered start to stop (no start in the middle) [1]\n --forward-frames\
+    \ STR         Comma-seperated list of frames on the forward strand to be extracted\
+    \ [1,2,3]\n --reverse-frames STR         Comma-seperated list of frames on the\
+    \ reverse strand to be extracted [1,2,3]\n --translation-table INT      1) CANONICAL,\
+    \ 2) VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL, 4) MOLD_MITOCHONDRIAL, 5) INVERT_MITOCHONDRIAL,\
+    \ 6) CILIATE\n                              9) FLATWORM_MITOCHONDRIAL, 10) EUPLOTID,\
+    \ 11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL, 14) ALT_FLATWORM_MITOCHONDRIAL\n\
+    \                              15) BLEPHARISMA, 16) CHLOROPHYCEAN_MITOCHONDRIAL,\
+    \ 21) TREMATODE_MITOCHONDRIAL, 22) SCENEDESMUS_MITOCHONDRIAL\n               \
+    \               23) THRAUSTOCHYTRIUM_MITOCHONDRIAL, 24) PTEROBRANCHIA_MITOCHONDRIAL,\
+    \ 25) GRACILIBACTERIA, 26) PACHYSOLEN, 27) KARYORELICT, 28) CONDYLOSTOMA\n   \
+    \                            29) MESODINIUM, 30) PERTRICH, 31) BLASTOCRITHIDIA\
+    \ [1]\n --translate INT              Translate ORF to amino acid [0]\n --use-all-table-starts\
+    \ BOOL  Use all alteratives for a start codon in the genetic table, if false -\
+    \ only ATG (AUG) [0]\n --id-offset INT              Numeric ids in index file\
+    \ are offset by this value [0]\n --add-orf-stop BOOL          Add stop codon '*'\
+    \ at complete start and end [0]\n --search-type INT            Search type 0:\
+    \ auto 1: amino acid, 2: translated, 3: nucleotide, 4: translated nucleotide alignment\
+    \ [0]\n --start-sens FLOAT           Start sensitivity [4.000]\n --sens-steps\
+    \ INT             Number of search steps performed from --start-sens to -s [1]\n\
+    \ --lca-ranks STR              Add column with specified ranks (',' separated)\
+    \ []\n --blacklist STR              Comma separated list of ignored taxa in LCA\
+    \ computation [12908,28384]\n --tax-lineage BOOL           Add column with full\
+    \ taxonomy lineage [0]\n --lca-mode INT               LCA Mode 1: Single Search\
+    \ LCA , 2: 2bLCA, 3: approx. 2bLCA, 4: top hit [4]\n --tax-output-mode INT   \
+    \     0: output LCA, 1: output alignment [0]\n --majority FLOAT             minimal\
+    \ fraction of agreement among taxonomically assigned sequences of a set [0.500]\n\
+    common:                     \n --sub-mat TWIN               Substitution matrix\
+    \ file [nucl:nucleotide.out,aa:blosum62.out]\n --max-seq-len INT            Maximum\
+    \ sequence length [65535]\n --db-load-mode INT           Database preload mode\
+    \ 0: auto, 1: fread, 2: mmap, 3: mmap+touch [0]\n --threads INT              \
+    \  Number of CPU-cores used (all by default) [8]\n --compressed INT          \
+    \   Write compressed output [0]\n -v INT                       Verbosity level:\
+    \ 0: quiet, 1: +errors, 2: +warnings, 3: +info [3]\n --mpi-runner STR        \
+    \     Use MPI on compute cluster with this MPI command (e.g. \"mpirun -np 42\"\
+    ) []\n --force-reuse BOOL           Reuse tmp filse in tmp/latest folder ignoring\
+    \ parameters and version changes [0]\n --remove-tmp-files BOOL      Delete temporary\
+    \ files [0]\nexpert:                     \n --filter-hits BOOL           Filter\
+    \ hits by seq.id. and coverage [0]\n --sort-results INT           Sort results:\
+    \ 0: no sorting, 1: sort by E-value (Alignment) or seq.id. (Hamming) [0]\n --omit-consensus\
+    \ BOOL        Omit consensus sequence in alignment [0]\n --create-lookup INT \
+    \         Create database lookup file (can be very large) [0]\n --chain-alignments\
+    \ INT       Chain overlapping alignments [0]\n --merge-query INT            Combine\
+    \ ORFs/split sequences to a single entry [1]\n --strand INT                 Strand\
+    \ selection only works for DNA/DNA search 0: reverse, 1: forward, 2: both [1]\n\
+    \nexamples:\n The LCA of a majority of predictions will be assigned to their contig\n\
+    \nreferences:\n - Levy Karin E, Mirdita M, Soeding J: MetaEuk – sensitive, high-throughput\
+    \ gene discovery and annotation for large-scale eukaryotic metagenomics. biorxiv,\
+    \ 851964 (2019).\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -2200,22 +2602,27 @@ subcommands:
     args: !SimpleFlagArg
       name: INT
     optional: true
-  - !Flag
-    description: 'E, Mirdita M, Soeding J: MetaEuk – sensitive, high-throughput gene
-      discovery and annotation for large-scale eukaryotic metagenomics. biorxiv, 851964
-      (2019).'
-    synonyms:
-    - '- Levy'
-    args: !SimpleFlagArg
-      name: Karin
-    optional: true
   command:
   - metaeuk
   - reduceredundancy
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "usage: metaeuk reduceredundancy <i:calledExonsDB> <o:predictionsExonsDB>\
+    \ <o:predToCall> [options]\n By Eli Levy Karin <eli.levy.karin@gmail.com>\noptions:\
+    \ misc:             \n --overlap INT      allow predictions to overlap another\
+    \ on the same strand. when not allowed (default), only the prediction with better\
+    \ E-value will be retained [0,1] [0]\ncommon:           \n --threads INT     \
+    \ Number of CPU-cores used (all by default) [8]\n --compressed INT   Write compressed\
+    \ output [0]\n -v INT             Verbosity level: 0: quiet, 1: +errors, 2: +warnings,\
+    \ 3: +info [3]\n\nexamples:\n A greedy examination of calls according to their\
+    \ contig order, subordered by the number of exons. Calls in a cluster share an\
+    \ exon with the representative.\n\nreferences:\n - Levy Karin E, Mirdita M, Soeding\
+    \ J: MetaEuk – sensitive, high-throughput gene discovery and annotation for large-scale\
+    \ eukaryotic metagenomics. biorxiv, 851964 (2019).\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -2268,22 +2675,37 @@ subcommands:
     args: !SimpleFlagArg
       name: INT
     optional: true
-  - !Flag
-    description: 'E, Mirdita M, Soeding J: MetaEuk – sensitive, high-throughput gene
-      discovery and annotation for large-scale eukaryotic metagenomics. biorxiv, 851964
-      (2019).'
-    synonyms:
-    - '- Levy'
-    args: !SimpleFlagArg
-      name: Karin
-    optional: true
   command:
   - metaeuk
   - unitesetstofasta
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "usage: metaeuk unitesetstofasta <i:contigsDB> <i:targetsDB> <i:exonsDB>\
+    \ <o:unitedExonsFasta> [options]\n By Eli Levy Karin <eli.levy.karin@gmail.com>\n\
+    options: misc:                    \n --protein INT             translate the joint\
+    \ exons coding sequence to amino acids [0,1] [0]\n --translation-table INT   1)\
+    \ CANONICAL, 2) VERT_MITOCHONDRIAL, 3) YEAST_MITOCHONDRIAL, 4) MOLD_MITOCHONDRIAL,\
+    \ 5) INVERT_MITOCHONDRIAL, 6) CILIATE\n                           9) FLATWORM_MITOCHONDRIAL,\
+    \ 10) EUPLOTID, 11) PROKARYOTE, 12) ALT_YEAST, 13) ASCIDIAN_MITOCHONDRIAL, 14)\
+    \ ALT_FLATWORM_MITOCHONDRIAL\n                           15) BLEPHARISMA, 16)\
+    \ CHLOROPHYCEAN_MITOCHONDRIAL, 21) TREMATODE_MITOCHONDRIAL, 22) SCENEDESMUS_MITOCHONDRIAL\n\
+    \                           23) THRAUSTOCHYTRIUM_MITOCHONDRIAL, 24) PTEROBRANCHIA_MITOCHONDRIAL,\
+    \ 25) GRACILIBACTERIA, 26) PACHYSOLEN, 27) KARYORELICT, 28) CONDYLOSTOMA\n   \
+    \                         29) MESODINIUM, 30) PERTRICH, 31) BLASTOCRITHIDIA [1]\n\
+    \ --target-key INT          write the target key (internal DB identifier) instead\
+    \ of its accession. By default (0) target accession will be written [0,1] [0]\n\
+    common:                  \n --threads INT             Number of CPU-cores used\
+    \ (all by default) [8]\n --compressed INT          Write compressed output [0]\n\
+    \ -v INT                    Verbosity level: 0: quiet, 1: +errors, 2: +warnings,\
+    \ 3: +info [3]\n\nexamples:\n Each optimal set is joined to a single sequence\
+    \ of codons or amino-acids. In addition, a TSV map for each header to internal\
+    \ idenfiers.\n\nreferences:\n - Levy Karin E, Mirdita M, Soeding J: MetaEuk –\
+    \ sensitive, high-throughput gene discovery and annotation for large-scale eukaryotic\
+    \ metagenomics. biorxiv, 851964 (2019).\n"
+  generated_using: *id002
 - !Command
   positional: []
   named:
@@ -2301,22 +2723,41 @@ subcommands:
     args: !SimpleFlagArg
       name: INT
     optional: true
-  - !Flag
-    description: 'E, Mirdita M, Soeding J: MetaEuk – sensitive, high-throughput gene
-      discovery and annotation for large-scale eukaryotic metagenomics. biorxiv, 851964
-      (2019).'
-    synonyms:
-    - '- Levy'
-    args: !SimpleFlagArg
-      name: Karin
-    optional: true
   command:
   - metaeuk
   - groupstoacc
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "usage: metaeuk groupstoacc <i:contigsDB> <i:targetsDB> <i:predToCall>\
+    \ <o:predToCallInfoTSV> [options]\n By Eli Levy Karin <eli.levy.karin@gmail.com>\n\
+    options: common:        \n --threads INT   Number of CPU-cores used (all by default)\
+    \ [8]\n -v INT          Verbosity level: 0: quiet, 1: +errors, 2: +warnings, 3:\
+    \ +info [3]\n\nexamples:\n Replace the internal contig, target and strand identifiers\
+    \ with accessions from the headers\n\nreferences:\n - Levy Karin E, Mirdita M,\
+    \ Soeding J: MetaEuk – sensitive, high-throughput gene discovery and annotation\
+    \ for large-scale eukaryotic metagenomics. biorxiv, 851964 (2019).\n"
+  generated_using: *id002
 help_flag:
 usage_flag:
 version_flag:
+help_text: "MetaEuk is homology-based strategy to efficiently query many contigs assembled\
+  \ from metagenomic samples against a comprehensive protein/profile target database\
+  \ to describe their protein repertoire. It does not require preliminary binning\
+  \ of the contigs and makes no assumption concerning the splicing signal when searching\
+  \ for multi-exon proteins.\n\nPlease cite:\nLevy Karin E, Mirdita M, Soding J: MetaEuk\
+  \ — sensitive, high-throughput gene discovery, and annotation for large-scale eukaryotic\
+  \ metagenomics. Microbiome (2020) 8:48.\n\nmetaeuk Version: 2.ddf2742\n© Eli Levy\
+  \ Karin, eli.levy.karin@gmail.com\n\nusage: metaeuk <command> [<args>]\n\nMain workflows\
+  \ for database input/output\n  predictexons      \tCall optimal exon sets based\
+  \ on protein similarity\n  easy-predict      \tPredict protein-coding genes from\
+  \ contigs (fasta/database) based on similarities to targets (fasta/database) and\
+  \ return a fasta of the predictions in a single step\n  taxtocontig       \tAssign\
+  \ taxonomic labels to predictions and aggregate them per contig\n  reduceredundancy\
+  \  \tCluster metaeuk calls that share an exon and select representative prediction\n\
+  \  unitesetstofasta  \tCreate a fasta output from optimal exon sets\n  groupstoacc\
+  \       \tCreate a TSV output from representative prediction to member\n\n\nInvalid\
+  \ Command: --help\nDid you mean \"metaeuk easy-search\"?\n"
+generated_using: *id002

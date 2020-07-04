@@ -1,5 +1,10 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: MODE
+  optional: false
 named:
 - !Flag
   description: Output directory name; must not be already existing [Required]  [required]
@@ -202,6 +207,7 @@ named:
   optional: true
 command:
 - hichipper
+parent:
 subcommands: []
 help_flag: !Flag
   description: Show this message and exit.
@@ -216,3 +222,62 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "Usage: hichipper [OPTIONS] MODE\n\n  hichipper: a preprocessing and QC\
+  \ pipeline for HiChIP data.\n\n  (c) Aryee Lab, 2019\n\n  See https://hichipper.readthedocs.io\
+  \ for more details.\n\n  hichipper mode: [call, *.yaml] ^ either specify the word\
+  \ `call` and feed\n  in a valid interactions file OR specify the .yaml format for\
+  \ options to be\n  parsed from a manifest file (see documentation)\n\nOptions:\n\
+  \  --version                      Show the version and exit.\n  -o, --out TEXT \
+  \                Output directory name; must not be already\n                  \
+  \               existing [Required]  [required]\n\n  -z, --keep-temp-files     \
+  \     Keep temporary files?\n  -ii, --input-vi TEXT           Comma-separted list\
+  \ of interactions files for\n                                 loop calling; option\
+  \ valid only in `call`\n                                 mode\n\n  -rf, --restriction-frags\
+  \ TEXT  Filepath to restriction fragment files; will\n                         \
+  \        overwrite specification of this file when a\n                         \
+  \        .yaml is supplied for mode\n\n  -p, --peaks TEXT               Either 1\
+  \ of 4 peak logic strings or a valid\n                                 filepath\
+  \ to a .bed (or similary formatted)\n                                 file; defers\
+  \ to what is in the .yaml\n\n  -k, --keep-samples TEXT        Comma separated list\
+  \ of sample names to keep;\n                                 ALL (special string)\
+  \ by default\n\n  -x, --ignore-samples TEXT      Comma separated list of sample\
+  \ names to\n                                 ignore; NONE (special string) by default\n\
+  \n  -l, --read-length TEXT         Length of reads from sequencing runs; default\n\
+  \                                 = 75\n\n  -mi, --min-dist TEXT           Minimum\
+  \ distance for loop calls; default =\n                                 5000\n\n\
+  \  -ma, --max-dist TEXT           Maximum distance for loop calls; default =\n \
+  \                                2000000\n\n  --macs2-string TEXT            String\
+  \ of arguments to pass to MACS2; only is\n                                 called\
+  \ when peaks are set to be called;\n                                 default = \"\
+  -q 0.01 --extsize 147 --nomodel\"\n\n  --macs2-genome TEXT            Argument to\
+  \ pass to the -g variable in MACS2\n                                 (mm for mouse\
+  \ genome; hs for human genome);\n                                 default = \"hs\"\
+  \n\n  -pp, --peak-pad TEXT           Peak padding width (applied on both left and\n\
+  \                                 right); default = 500\n\n  -mg, --merge-gap TEXT\
+  \          Merge nearby peaks (after all padding is\n                          \
+  \       complete; default = 500\n\n  -nm, --no-merge                Completely skip\
+  \ anchor merging; will affect\n                                 summary statistics.\
+  \ Not recommended unless\n                                 understood what is happening.\n\
+  \n  --skip-resfrag-pad             Skip restriction fragment aware padding\n  --skip-background-correction\
+  \   Skip restriction fragment aware background\n                               \
+  \  correction?\n\n  -mu, --make-ucsc               Make additional output files\
+  \ that can support\n                                 viewing in UCSC genome browser;\
+  \ requires\n                                 tabix and bgzip; does the same thing\
+  \ as\n                                 --make-washu.\n\n  -mw, --make-washu    \
+  \          Make additional output files that can support\n                     \
+  \            viewing in WashU genome browser; requires\n                       \
+  \          tabix and bgzip; does the same thing as\n                           \
+  \      --make-ucsc.\n\n  --basic-qc                     Create a simple QC report\
+  \ without Pandoc\n  --skip-diffloop                Skip analyses in diffloop (e.g.\
+  \ Mango loop\n                                 calling; .rds generation)\n\n  --bedtools-path\
+  \ TEXT           Path to bedtools; by default, assumes that\n                  \
+  \               bedtools is in PATH\n\n  --macs2-path TEXT              Path to\
+  \ macs2; by default, assumes that macs2\n                                 is in\
+  \ PATH\n\n  --tabix-path TEXT              Path to samtools; by default, assumes\
+  \ that\n                                 tabix is in PATH\n\n  --bgzip-path TEXT\
+  \              Path to macs2; by default, assumes that bgzip\n                 \
+  \                is in PATH\n\n  --r-path TEXT                  Path to R; by default,\
+  \ assumes that R is in\n                                 PATH\n\n  --help      \
+  \                   Show this message and exit.\n"
+generated_using:
+- --help

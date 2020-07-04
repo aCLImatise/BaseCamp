@@ -1,16 +1,5 @@
-!Command
-positional:
-- !Positional
-  description: A SAM or BAM file produced by BLASR.
-  position: 0
-  name: input_alignment_file
-  optional: false
-- !Positional
-  description: Name of the SAM or BAM header file that will be created with chemistry
-    information loaded.
-  position: 1
-  name: output_header_file
-  optional: false
+&id001 !Command
+positional: []
 named:
 - !Flag
   description: 'Output detailed log information. (default: False)'
@@ -28,7 +17,89 @@ named:
   optional: true
 command:
 - createChemistryHeader.py
-subcommands: []
+parent:
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: getChemistryHeader.py
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --bas_files
+    args: !RepeatFlagArg
+      name: BAS_FILES
+    optional: true
+  command:
+  - createChemistryHeader.py
+  - input_alignment_file
+  parent: *id001
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: getChemistryHeader.py [-h] [--debug] --bas_files BAS_FILES\n\
+    \                             [BAS_FILES ...]\n                             input_alignment_file\
+    \ output_header_file\ngetChemistryHeader.py: error: argument input_alignment_file:\
+    \ File must end with .sam or .bam. input_alignment_file doesn't end with either\
+    \ of those.\n"
+  generated_using: &id002
+  - --help
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: getChemistryHeader.py
+    optional: false
+  named:
+  - !Flag
+    description: ''
+    synonyms:
+    - --debug
+    args: !EmptyFlagArg {}
+    optional: true
+  - !Flag
+    description: ''
+    synonyms:
+    - --bas_files
+    args: !RepeatFlagArg
+      name: BAS_FILES
+    optional: true
+  command:
+  - createChemistryHeader.py
+  - output_header_file
+  parent: *id001
+  subcommands: []
+  help_flag: !Flag
+    description: ''
+    synonyms:
+    - -h
+    args: !EmptyFlagArg {}
+    optional: true
+  usage_flag:
+  version_flag:
+  help_text: "usage: getChemistryHeader.py [-h] [--debug] --bas_files BAS_FILES\n\
+    \                             [BAS_FILES ...]\n                             input_alignment_file\
+    \ output_header_file\ngetChemistryHeader.py: error: argument input_alignment_file:\
+    \ File must end with .sam or .bam. output_header_file doesn't end with either\
+    \ of those.\n"
+  generated_using: *id002
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -38,3 +109,16 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: getChemistryHeader.py [-h] [--debug] --bas_files BAS_FILES\n  \
+  \                           [BAS_FILES ...]\n                             input_alignment_file\
+  \ output_header_file\n\ncreateChemistryHeader creates a SAM header that contains\
+  \ the chemistry\ninformation used by Quiver.\n\npositional arguments:\n  input_alignment_file\
+  \  A SAM or BAM file produced by BLASR.\n  output_header_file    Name of the SAM\
+  \ or BAM header file that will be\n                        created with chemistry\
+  \ information loaded.\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  --debug               Output detailed log information.\
+  \ (default: False)\n  --bas_files BAS_FILES [BAS_FILES ...]\n                  \
+  \      The bas or bax files containing the reads that were\n                   \
+  \     aligned in the input_alignment_file. Also can be a\n                     \
+  \   fofn of bas or bax files. (default: None)\n"
+generated_using: *id002

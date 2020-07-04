@@ -2,6 +2,40 @@
 positional: []
 named:
 - !Flag
+  description: load masking kmers from meryl 'mer-database'
+  synonyms:
+  - -mdb
+  args: !SimpleFlagArg
+    name: mer-database
+  optional: true
+- !Flag
+  description: mer-size          the mer size used to generate the meryl database
+  synonyms:
+  - -ms
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: save masking kmers to 'exist-database', and reuse on future runs (optional)
+  synonyms:
+  - -edb
+  args: !SimpleFlagArg
+    name: exist-database
+  optional: true
+- !Flag
+  description: input reads - fastq, fastq.gz, fastq.bz2 or fastq.xz
+  synonyms:
+  - '-1'
+  args: !SimpleFlagArg
+    name: in.1.fastq
+  optional: true
+- !Flag
+  description: '- optional, for mated reads'
+  synonyms:
+  - '-2'
+  args: !SimpleFlagArg
+    name: in.2.fastq
+  optional: true
+- !Flag
   description: maximum length of input read (512) If too small, program will fail.
     If too large, program will use excessive memory.
   synonyms:
@@ -71,7 +105,41 @@ named:
   optional: true
 command:
 - kmer-mask
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "usage: kmer-mask -mdb mer-database -ms mer-size ...\n\nINPUTS:\n\n  -mdb\
+  \ mer-database      load masking kmers from meryl 'mer-database'\n  -ms  mer-size\
+  \          the mer size used to generate the meryl database\n  -edb exist-database\
+  \    save masking kmers to 'exist-database', and reuse on\n                    \
+  \       future runs (optional)\n\n  -1 in.1.fastq          input reads - fastq,\
+  \ fastq.gz, fastq.bz2 or fastq.xz\n  -2 in.2.fastq                      - optional,\
+  \ for mated reads\n\n  -l length              maximum length of input read (512)\n\
+  \                           If too small, program will fail.\n                 \
+  \          If too large, program will use excessive memory.\n\nTHRESHOLDS and OPTIONS:\n\
+  \n  A read with fewer than 'c' bases masked is 'clean', while a read with more than\
+  \ 'd' bases\n  masked is 'match'ed.  Reads in between are 'murky'.  See OUTPUTS.\n\
+  \n  -clean c               mark reads with less than this fraction masked as 'clean'\
+  \ (0.3333)\n  -match d               mark reads with more than this fraction masked\
+  \ as 'match' (0.6667)\n\n  -m min-size            ignore database hits below this\
+  \ many consecutive kmers (0)\n  -e extend-size         extend database hits across\
+  \ this many missing kmers (0)\n\n  For mate pairs, how to handle reads with different\
+  \ classifications:\n\n  -cleaner               use the cleaner classification of\
+  \ the two reads\n  -dirtier               use the dirtier classification of the\
+  \ two reads\n  -discard               discard pairs with conflicting classifications\
+  \ (DEFAULT)\n  -unlink                leave conflicting status alone, output reads\
+  \ to different files\n                           NOTE: mate pairing will be broken\n\
+  \n  -nomasking             do not trim masked sequence; output the original read\n\
+  \nOUTPUTS:\n\n  -o  prefix                output reads:\n                      \
+  \      prefix.clean.[12].fastq  - clean (unmasked) reads\n                     \
+  \       prefix.murky.[12].fastq  - reads in between\n                          \
+  \  prefix.match.[12].fastq  - matching (masked) reads\n                        \
+  \    prefix.mixed.[12].fastq  - reads with conflicting status (for mated reads)\n\
+  \  -h histogram           write a histogram of the amount of sequence RETAINED\n\
+  \nCOMPUTE CONFIGURATION and LOGGING\n\n  -t t                   use 't' compute\
+  \ threads\n  -v                     show progress\nERROR: either a mer-database\
+  \ (-mdb) or an exist-database (-edb) must be supplied.\n"
+generated_using:
+- --help

@@ -2,7 +2,7 @@
 positional: []
 named:
 - !Flag
-  description: 'The path to the MPA installation folder. [Default: /tmp/tmp6z3s7q_f/bin]'
+  description: 'The path to the MPA installation folder. [Default: /tmp/tmpjlb2c7kj/bin]'
   synonyms:
   - -d
   - --mpa-directory
@@ -15,12 +15,12 @@ named:
   - -l
   - --logging-level
   args: !ChoiceFlagArg
-    choices:
-    - DEBUG
-    - INFO
-    - WARNING
-    - ERROR
-    - CRITICAL
+    choices: !!set
+      ERROR:
+      CRITICAL:
+      INFO:
+      WARNING:
+      DEBUG:
   optional: true
 - !Flag
   description: 'The vcf file to annotate (format: VCF). This vcf must be annotate
@@ -41,6 +41,7 @@ named:
   optional: true
 command:
 - mpa
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -57,3 +58,17 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: mpa [-h] [-d MPA_DIRECTORY] [-l {DEBUG,INFO,WARNING,ERROR,CRITICAL}]\n\
+  \           [-v] -i INPUT -o OUTPUT\n\nAnnotate VCF with Mobidic Prioritization\
+  \ Algorithm score (MPA).\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -d MPA_DIRECTORY, --mpa-directory MPA_DIRECTORY\n   \
+  \                     The path to the MPA installation folder. [Default:\n     \
+  \                   /tmp/tmpjlb2c7kj/bin]\n  -l {DEBUG,INFO,WARNING,ERROR,CRITICAL},\
+  \ --logging-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}\n                        The\
+  \ logger level. [Default: INFO]\n  -v, --version         show program's version\
+  \ number and exit\n\nInputs:\n  -i INPUT, --input INPUT\n                      \
+  \  The vcf file to annotate (format: VCF). This vcf must\n                     \
+  \   be annotate with annovar.\n\nOutputs:\n  -o OUTPUT, --output OUTPUT\n      \
+  \                  The output vcf file with annotation (format : VCF)\n"
+generated_using:
+- --help

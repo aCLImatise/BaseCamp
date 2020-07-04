@@ -1,8 +1,15 @@
-!Command
+&id001 !Command
 positional: []
-named: []
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - refgenieserver
+parent:
 subcommands:
 - !Command
   positional: []
@@ -35,6 +42,7 @@ subcommands:
   command:
   - refgenieserver
   - serve
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -45,6 +53,16 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: refgenieserver serve [-h] [-c CONFIG] [-d] [-p PORT]\n\nrun the\
+    \ server\n\noptional arguments:\n  -h, --help            show this help message\
+    \ and exit\n  -c CONFIG, --config CONFIG\n                        A path to the\
+    \ refgenie config file (YAML). If not\n                        provided, the first\
+    \ available environment variable\n                        among: 'REFGENIE' will\
+    \ be used if set. Currently: not\n                        set\n  -d, --dbg   \
+    \          Set logger verbosity to debug\n  -p PORT, --port PORT  The port the\
+    \ webserver should be run on.\n"
+  generated_using: &id002
+  - --help
 - !Command
   positional:
   - !Positional
@@ -95,6 +113,7 @@ subcommands:
   command:
   - refgenieserver
   - archive
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: show this help message and exit
@@ -105,6 +124,23 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "usage: refgenieserver archive [-h] [-c CONFIG] [-d]\n              \
+    \                [--genomes-desc GENOMES_DESC] [-f] [-r]\n                   \
+    \           [asset-registry-paths [asset-registry-paths ...]]\n\nprepare servable\
+    \ archives\n\npositional arguments:\n  asset-registry-paths  One or more registry\
+    \ path strings that identify\n                        assets, e.g. hg38/fasta:tag\n\
+    \noptional arguments:\n  -h, --help            show this help message and exit\n\
+    \  -c CONFIG, --config CONFIG\n                        A path to the refgenie\
+    \ config file (YAML). If not\n                        provided, the first available\
+    \ environment variable\n                        among: 'REFGENIE' will be used\
+    \ if set. Currently: not\n                        set\n  -d, --dbg           \
+    \  Set logger verbosity to debug\n  --genomes-desc GENOMES_DESC\n            \
+    \            Path to a CSV file with genomes descriptions. Format:\n         \
+    \               genome_name, genome description\n  -f, --force           whether\
+    \ the server file tree should be rebuilt even if\n                        exists\n\
+    \  -r, --remove          Remove selected genome, genome/asset or\n           \
+    \             genome/asset:tag\n"
+  generated_using: *id002
 help_flag: !Flag
   description: show this help message and exit
   synonyms:
@@ -120,3 +156,10 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: refgenieserver [-h] [-V] {serve,archive} ...\n\nrefgenieserver\
+  \ - refgenie web server utilities\n\npositional arguments:\n  {serve,archive}\n\
+  \    serve          run the server\n    archive        prepare servable archives\n\
+  \noptional arguments:\n  -h, --help       show this help message and exit\n  -V,\
+  \ --version    show program's version number and exit\n\nFor subcommand-specific\
+  \ options, type: 'refgenieserver <subcommand> -h'\nhttps://github.com/databio/refgenieserver\n"
+generated_using: *id002

@@ -32,12 +32,12 @@ named:
   synonyms:
   - --log-level
   args: !ChoiceFlagArg
-    choices:
-    - DEBUG
-    - INFO
-    - WARNING
-    - ERROR
-    - CRITICAL
+    choices: !!set
+      WARNING:
+      DEBUG:
+      ERROR:
+      INFO:
+      CRITICAL:
   optional: true
 - !Flag
   description: 'Alias for setting log level to DEBUG (default: False)'
@@ -109,10 +109,10 @@ named:
   synonyms:
   - --noEvidenceConsensusCall
   args: !ChoiceFlagArg
-    choices:
-    - nocall
-    - reference
-    - lowercasereference
+    choices: !!set
+      reference:
+      lowercasereference:
+      nocall:
   optional: true
 - !Flag
   description: 'A designation of the maximum coverage level to be used for analysis.
@@ -301,9 +301,9 @@ named:
   - --aligner
   - -a
   args: !ChoiceFlagArg
-    choices:
-    - affine
-    - simple
+    choices: !!set
+      simple:
+      affine:
   optional: true
 - !Flag
   description: 'Require quiver maximum likelihood search to try one less/more repeat
@@ -336,6 +336,7 @@ named:
   optional: true
 command:
 - plurality
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -351,3 +352,146 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: variantCaller [-h] [--version] [--emit-tool-contract]\n       \
+  \              [--resolved-tool-contract RESOLVED_TOOL_CONTRACT]\n             \
+  \        [--log-file LOG_FILE]\n                     [--log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}\
+  \ | --debug | --quiet | -v]\n                     --referenceFilename REFERENCEFILENAME\
+  \ -o OUTPUTFILENAMES\n                     [-j NUMWORKERS] [--minConfidence MINCONFIDENCE]\n\
+  \                     [--minCoverage MINCOVERAGE]\n                     [--noEvidenceConsensusCall\
+  \ {nocall,reference,lowercasereference}]\n                     [--coverage COVERAGE]\
+  \ [--minMapQV MINMAPQV]\n                     [--referenceWindow REFERENCEWINDOWSASSTRING]\n\
+  \                     [--alignmentSetRefWindows]\n                     [--referenceWindowsFile\
+  \ REFERENCEWINDOWSASSTRING]\n                     [--barcode _BARCODE] [--readStratum\
+  \ READSTRATUM]\n                     [--minReadScore MINREADSCORE] [--minSnr MINHQREGIONSNR]\n\
+  \                     [--minZScore MINZSCORE] [--minAccuracy MINACCURACY]\n    \
+  \                 [--algorithm {quiver,arrow,plurality,poa,best}]\n            \
+  \         [--parametersFile PARAMETERSFILE]\n                     [--parametersSpec\
+  \ PARAMETERSSPEC]\n                     [--maskRadius MASKRADIUS] [--maskErrorRate\
+  \ MASKERRORRATE]\n                     [--pdb] [--notrace] [--pdbAtStartup] [--profile]\n\
+  \                     [--annotateGFF] [--reportEffectiveCoverage] [--diploid]\n\
+  \                     [--queueSize QUEUESIZE] [--threaded]\n                   \
+  \  [--referenceChunkSize REFERENCECHUNKSIZE]\n                     [--fancyChunking]\
+  \ [--simpleChunking]\n                     [--referenceChunkOverlap REFERENCECHUNKOVERLAP]\n\
+  \                     [--autoDisableHdf5ChunkCache AUTODISABLEHDF5CHUNKCACHE]\n\
+  \                     [--aligner {affine,simple}] [--refineDinucleotideRepeats]\n\
+  \                     [--noRefineDinucleotideRepeats] [--fast]\n               \
+  \      [--skipUnrecognizedContigs]\n                     inputFilename\n\nCompute\
+  \ genomic consensus and call variants relative to the reference.\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  --version          \
+  \   show program's version number and exit\n  --emit-tool-contract  Emit Tool Contract\
+  \ to stdout (default: False)\n  --resolved-tool-contract RESOLVED_TOOL_CONTRACT\n\
+  \                        Run Tool directly from a PacBio Resolved tool contract\n\
+  \                        (default: None)\n  --log-file LOG_FILE   Write the log\
+  \ to file. Default(None) will write to\n                        stdout. (default:\
+  \ None)\n  --log-level {DEBUG,INFO,WARNING,ERROR,CRITICAL}\n                   \
+  \     Set log level (default: WARN)\n  --debug               Alias for setting log\
+  \ level to DEBUG (default: False)\n  --quiet               Alias for setting log\
+  \ level to CRITICAL to suppress\n                        output. (default: False)\n\
+  \  -v, --verbose         Set the verbosity level. (default: None)\n\nBasic required\
+  \ options:\n  inputFilename         The input cmp.h5 or BAM alignment file\n  --referenceFilename\
+  \ REFERENCEFILENAME, --reference REFERENCEFILENAME, -r REFERENCEFILENAME\n     \
+  \                   The filename of the reference FASTA file (default:\n       \
+  \                 None)\n  -o OUTPUTFILENAMES, --outputFilename OUTPUTFILENAMES\n\
+  \                        The output filename(s), as a comma-separated\n        \
+  \                list.Valid output formats are .fa/.fasta, .fq/.fastq,\n       \
+  \                 .gff, .vcf (default: [])\n\nParallelism:\n  -j NUMWORKERS, --numWorkers\
+  \ NUMWORKERS\n                        The number of worker processes to be used\
+  \ (default: 1)\n\nOutput filtering:\n  --minConfidence MINCONFIDENCE, -q MINCONFIDENCE\n\
+  \                        The minimum confidence for a variant call to be output\n\
+  \                        to variants.{gff,vcf} (default: 40)\n  --minCoverage MINCOVERAGE,\
+  \ -x MINCOVERAGE\n                        The minimum site coverage that must be\
+  \ achieved for\n                        variant calls and consensus to be calculated\
+  \ for a\n                        site. (default: 5)\n  --noEvidenceConsensusCall\
+  \ {nocall,reference,lowercasereference}\n                        The consensus base\
+  \ that will be output for sites with\n                        no effective coverage.\
+  \ (default: lowercasereference)\n\nRead selection/filtering:\n  --coverage COVERAGE,\
+  \ -X COVERAGE\n                        A designation of the maximum coverage level\
+  \ to be used\n                        for analysis. Exact interpretation is algorithm-\n\
+  \                        specific. (default: 100)\n  --minMapQV MINMAPQV, -m MINMAPQV\n\
+  \                        The minimum MapQV for reads that will be used for\n   \
+  \                     analysis. (default: 10)\n  --referenceWindow REFERENCEWINDOWSASSTRING,\
+  \ --referenceWindows REFERENCEWINDOWSASSTRING, -w REFERENCEWINDOWSASSTRING\n   \
+  \                     The window (or multiple comma-delimited windows) of\n    \
+  \                    the reference to be processed, in the format refGroup\n   \
+  \                     :refStart-refEnd (default: entire reference).\n          \
+  \              (default: None)\n  --alignmentSetRefWindows\n                   \
+  \     The window (or multiple comma-delimited windows) of\n                    \
+  \    the reference to be processed, in the format refGroup\n                   \
+  \     :refStart-refEnd will be pulled from the alignment\n                     \
+  \   file. (default: False)\n  --referenceWindowsFile REFERENCEWINDOWSASSTRING, -W\
+  \ REFERENCEWINDOWSASSTRING\n                        A file containing reference\
+  \ window designations, one\n                        per line (default: None)\n \
+  \ --barcode _BARCODE    Only process reads with the given barcode name.\n      \
+  \                  (default: None)\n  --readStratum READSTRATUM\n              \
+  \          A string of the form 'n/N', where n, and N are\n                    \
+  \    integers, 0 <= n < N, designating that the reads are\n                    \
+  \    to be deterministically split into N strata of roughly\n                  \
+  \      even size, and stratum n is to be used for variant and\n                \
+  \        consensus calling. This is mostly useful for Quiver\n                 \
+  \       development. (default: None)\n  --minReadScore MINREADSCORE\n          \
+  \              The minimum ReadScore for reads that will be used for\n         \
+  \               analysis (arrow-only). (default: 0.65)\n  --minSnr MINHQREGIONSNR\n\
+  \                        The minimum acceptable signal-to-noise over all\n     \
+  \                   channels for reads that will be used for analysis\n        \
+  \                (arrow-only). (default: 2.5)\n  --minZScore MINZSCORE\n       \
+  \                 The minimum acceptable z-score for reads that will be\n      \
+  \                  used for analysis (arrow-only). (default: -3.5)\n  --minAccuracy\
+  \ MINACCURACY\n                        The minimum acceptable window-global alignment\n\
+  \                        accuracy for reads that will be used for the analysis\n\
+  \                        (arrow-only). (default: 0.82)\n\nAlgorithm and parameter\
+  \ settings:\n  --algorithm {quiver,arrow,plurality,poa,best}\n  --parametersFile\
+  \ PARAMETERSFILE, -P PARAMETERSFILE\n                        Parameter set filename\
+  \ (such as ArrowParameters.json\n                        or QuiverParameters.ini),\
+  \ or directory D such that\n                        either D/*/GenomicConsensus/QuiverParameters.ini,\
+  \ or\n                        D/GenomicConsensus/QuiverParameters.ini, is found.\
+  \ In\n                        the former case, the lexically largest path is chosen.\n\
+  \                        (default: None)\n  --parametersSpec PARAMETERSSPEC, -p\
+  \ PARAMETERSSPEC\n                        Name of parameter set (chemistry.model)\
+  \ to select from\n                        the parameters file, or just the name\
+  \ of the\n                        chemistry, in which case the best available model\
+  \ is\n                        chosen. Default is 'auto', which selects the best\n\
+  \                        parameter set from the alignment data (default: auto)\n\
+  \  --maskRadius MASKRADIUS\n                        Radius of window to use when\
+  \ excluding local regions\n                        for exceeding maskMinErrorRate,\
+  \ where 0 disables any\n                        filtering (arrow-only). (default:\
+  \ 3)\n  --maskErrorRate MASKERRORRATE\n                        Maximum local error\
+  \ rate before the local region\n                        defined by maskRadius is\
+  \ excluded from polishing\n                        (arrow-only). (default: 0.7)\n\
+  \nVerbosity and debugging/profiling:\n  --pdb                 Enable Python debugger\
+  \ (default: False)\n  --notrace             Suppress stacktrace for exceptions (to\
+  \ simplify\n                        testing) (default: False)\n  --pdbAtStartup\
+  \        Drop into Python debugger at startup (requires ipdb)\n                \
+  \        (default: False)\n  --profile             Enable Python-level profiling\
+  \ (using cProfile).\n                        (default: False)\n  --annotateGFF \
+  \        Augment GFF variant records with additional\n                        information\
+  \ (default: False)\n  --reportEffectiveCoverage\n                        Additionally\
+  \ record the *post-filtering* coverage at\n                        variant sites\
+  \ (default: False)\n\nAdvanced configuration options:\n  --diploid             Enable\
+  \ detection of heterozygous variants\n                        (experimental) (default:\
+  \ False)\n  --queueSize QUEUESIZE, -Q QUEUESIZE\n  --threaded, -T        Run threads\
+  \ instead of processes (for debugging\n                        purposes only) (default:\
+  \ False)\n  --referenceChunkSize REFERENCECHUNKSIZE, -C REFERENCECHUNKSIZE\n  --fancyChunking\
+  \       Adaptive reference chunking designed to handle\n                       \
+  \ coverage cutouts better (default: True)\n  --simpleChunking      Disable adaptive\
+  \ reference chunking (default: True)\n  --referenceChunkOverlap REFERENCECHUNKOVERLAP\n\
+  \  --autoDisableHdf5ChunkCache AUTODISABLEHDF5CHUNKCACHE\n                     \
+  \   Disable the HDF5 chunk cache when the number of\n                        datasets\
+  \ in the cmp.h5 exceeds the given threshold\n                        (default: 500)\n\
+  \  --aligner {affine,simple}, -a {affine,simple}\n                        The pairwise\
+  \ alignment algorithm that will be used to\n                        produce variant\
+  \ calls from the consensus (Quiver\n                        only). (default: affine)\n\
+  \  --refineDinucleotideRepeats\n                        Require quiver maximum likelihood\
+  \ search to try one\n                        less/more repeat copy in dinucleotide\
+  \ repeats, which\n                        seem to be the most frequent cause of\
+  \ suboptimal\n                        convergence (getting trapped in local optimum)\
+  \ (Quiver\n                        only) (default: True)\n  --noRefineDinucleotideRepeats\n\
+  \                        Disable dinucleotide refinement (default: True)\n  --fast\
+  \                Cut some corners to run faster. Unsupported! (default:\n      \
+  \                  False)\n  --skipUnrecognizedContigs\n                       \
+  \ Do not abort when told to process a reference window\n                       \
+  \ (via -w/--referenceWindow[s]) that has no aligned\n                        coverage.\
+  \ Outputs emptyish files if there are no\n                        remaining non-degenerate\
+  \ windows. Only intended for\n                        use by smrtpipe scatter/gather.\
+  \ (default: False)\n"
+generated_using:
+- --help

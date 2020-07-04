@@ -1,5 +1,10 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: names...
+  optional: true
 named:
 - !Flag
   description: support discontinued
@@ -348,6 +353,7 @@ named:
   optional: true
 command:
 - rdoc
+parent:
 subcommands: []
 help_flag: !Flag
   description: Display this help
@@ -364,3 +370,122 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "Usage: rdoc [options] [names...]\n\n  Files are parsed, and the information\
+  \ they contain collected, before any\n  output is produced. This allows cross references\
+  \ between all files to be\n  resolved. If a name is a directory, it is traversed.\
+  \ If no names are\n  specified, all Ruby files in the current directory (and subdirectories)\
+  \ are\n  processed.\n\n  How RDoc generates output depends on the output formatter\
+  \ being used, and on\n  the options you give.\n\n  Options can be specified via\
+  \ the RDOCOPT environment variable, which\n  functions similar to the RUBYOPT environment\
+  \ variable for ruby.\n\n    $ export RDOCOPT=\"--show-hash\"\n\n  will make rdoc\
+  \ show hashes in method links by default.  Command-line options\n  always will override\
+  \ those in RDOCOPT.\n\n  Available formatters:\n\n  darkfish - HTML generator, written\
+  \ by Michael Granger\n  pot      - creates .pot file\n  ri       - creates ri data\
+  \ files\n\n  RDoc understands the following file formats:\n\n  - C: \\.(?:([CcHh])\\\
+  1?|c([+xp])\\2|y)\\z\n  - ChangeLog: (/|\\\\|\\A)ChangeLog[^/\\\\]*\\z\n  - Markdown:\
+  \ \\.(md|markdown)(?:\\.[^.]+)?$\n  - RD: \\.rd(?:\\.[^.]+)?$\n  - Ruby: \\.rbw?$\n\
+  \  - Simple: \n  - TomDoc:  Only in ruby files\n\n  The following options are deprecated:\n\
+  \n    --accessor       support discontinued\n    --diagram        support discontinued\n\
+  \    --help-output    support discontinued\n    --image-format   was an option for\
+  \ --diagram\n    --inline-source  source code is now always inlined\n    --merge\
+  \          ri now always merges class information\n    --one-file       support\
+  \ discontinued\n    --op-name        support discontinued\n    --opname        \
+  \ support discontinued\n    --promiscuous    files always only document their content\n\
+  \    --ri-system      Ruby installers use other techniques\n\nParsing options:\n\
+  \n    -e is preferred over --charset,  Specifies the output encoding.  All files\n\
+  \        --encoding                   read will be converted to this encoding.\n\
+  \                                     The default encoding is UTF-8.\n\n       \
+  \ --locale=NAME                Specifies the output locale.\n        --locale-data-dir=DIR\
+  \        Specifies the directory where locale data live.\n\n    -a, --all      \
+  \                  Synonym for --visibility=private.\n\n    -x, --exclude=PATTERN\
+  \            Do not process files or directories\n                             \
+  \        matching PATTERN.\n\n    -E, --extension=NEW=OLD          Treat files ending\
+  \ with .new as if they\n                                     ended with .old. Using\
+  \ '-E cgi=rb' will\n                                     cause xxx.cgi to be parsed\
+  \ as a Ruby file.\n\n    -U, --[no-]force-update          Forces rdoc to scan all\
+  \ sources even if\n                                     newer than the flag file.\n\
+  \n    -p, --pipe                       Convert RDoc on stdin to HTML\n\n    -w,\
+  \ --tab-width=WIDTH            Set the width of tab characters.\n\n        --visibility=VISIBILITY\
+  \      Minimum visibility to document a method.\n                              \
+  \       One of 'public', 'protected' (the default),\n                          \
+  \           'private' or 'nodoc' (show everything)\n\n        --markup=MARKUP  \
+  \            The markup format for the named files.\n                          \
+  \           The default is rdoc.  Valid values are:\n                          \
+  \           markdown, rd, rdoc, tomdoc\n\n        --root=ROOT                  Root\
+  \ of the source tree documentation\n                                     will be\
+  \ generated for.  Set this when\n                                     building documentation\
+  \ outside the\n                                     source directory.  Default is\
+  \ the\n                                     current directory.\n\n        --page-dir=DIR\
+  \               Directory where guides, your FAQ or\n                          \
+  \           other pages not associated with a class\n                          \
+  \           live.  Set this when you don't store\n                             \
+  \        such files at your project root.\n                                    \
+  \ NOTE: Do not use the same file name in\n                                     the\
+  \ page dir and the root of your project\n\nCommon generator options:\n\n    -O,\
+  \ --force-output               Forces rdoc to write the output files,\n        \
+  \                             even if the output directory exists\n            \
+  \                         and does not seem to have been created\n             \
+  \                        by rdoc.\n\n    -f, --fmt, --format=FORMAT       Set the\
+  \ output formatter.  One of:\n                                       darkfish\n\
+  \                                       pot\n                                  \
+  \     ri\n\n    -i, --include=DIRECTORIES        Set (or add to) the list of directories\
+  \ to\n                                     be searched when satisfying :include:\n\
+  \                                     requests. Can be used more than once.\n\n\
+  \    -C[LEVEL],                       Prints a report on undocumented items.\n \
+  \       --[no-]coverage-report       Does not generate files.\n        --[no-]dcov\n\
+  \n    -o, --output, --op=DIR           Set the output directory.\n\n    -d     \
+  \                          Deprecated --diagram option.\n                      \
+  \               Prevents firing debug mode\n                                   \
+  \  with legacy invocation.\n\nHTML generator options:\n\n    -c, --charset=CHARSET\
+  \            Specifies the output HTML character-set.\n                        \
+  \             Use --encoding instead of --charset if\n                         \
+  \            available.\n\n    -A, --hyperlink-all              Generate hyperlinks\
+  \ for all words that\n                                     correspond to known methods,\
+  \ even if they\n                                     do not start with '#' or '::'\
+  \ (legacy\n                                     behavior).\n\n    -m, --main=NAME\
+  \                  NAME will be the initial page displayed.\n\n    -N, --[no-]line-numbers\
+  \          Include line numbers in the source code.\n                          \
+  \           By default, only the number of the first\n                         \
+  \            line is displayed, in a leading comment.\n\n    -H, --show-hash   \
+  \               A name of the form #name in a comment is a\n                   \
+  \                  possible hyperlink to an instance method\n                  \
+  \                   name. When displayed, the '#' is removed\n                 \
+  \                    unless this option is specified.\n\n    -T, --template=NAME\
+  \              Set the template used when generating\n                         \
+  \            output. The default depends on the\n                              \
+  \       formatter used.\n\n        --template-stylesheets=FILES Set (or add to)\
+  \ the list of files to\n                                     include with the html\
+  \ template.\n\n    -t, --title=TITLE                Set TITLE as the title for HTML\
+  \ output.\n\n        --copy-files=PATH            Specify a file or directory to\
+  \ copy static\n                                     files from.\n              \
+  \                       If a file is given it will be copied into\n            \
+  \                         the output dir.  If a directory is given the\n       \
+  \                              entire directory will be copied.\n              \
+  \                       You can use this multiple times\n\n    -W, --webcvs=URL\
+  \                 Specify a URL for linking to a web frontend\n                \
+  \                     to CVS. If the URL contains a '%s', the\n                \
+  \                     name of the current file will be\n                       \
+  \              substituted; if the URL doesn't contain a\n                     \
+  \                '%s', the filename will be appended to it.\n\nri generator options:\n\
+  \n    -r, --ri                         Generate output for use by `ri`. The files\n\
+  \                                     are stored in the '.rdoc' directory under\n\
+  \                                     your home directory unless overridden by a\n\
+  \                                     subsequent --op parameter, so no special\n\
+  \                                     privileges are needed.\n\n    -R, --ri-site\
+  \                    Generate output for use by `ri`. The files\n              \
+  \                       are stored in a site-wide directory,\n                 \
+  \                    making them accessible to others, so\n                    \
+  \                 special privileges are needed.\n\nGeneric options:\n\n       \
+  \ --write-options              Write .rdoc_options to the current\n            \
+  \                         directory with the given options.  Not all\n         \
+  \                            options will be used.  See RDoc::Options\n        \
+  \                             for details.\n\n        --[no-]dry-run           \
+  \    Don't write any files\n\n    -D, --[no-]debug                 Displays lots\
+  \ on internal stuff.\n\n        --[no-]ignore-invalid        Ignore invalid options\
+  \ and continue\n                                     (default true).\n\n    -q,\
+  \ --quiet                      Don't show progress as we parse.\n\n    -V, --verbose\
+  \                    Display extra progress as RDoc parses\n\n    -v, --version\
+  \                    print the version\n\n    -h, --help                       Display\
+  \ this help\n\n"
+generated_using:
+- --help

@@ -66,22 +66,9 @@ named:
   - -l
   args: !EmptyFlagArg {}
   optional: true
-- !Flag
-  description: '[ --outputGrammar ] arg (=-)       Output file for trained grammar  (default
-    is stdout).'
-  synonyms:
-  - -o
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: '[ --tmpGrammar ] arg (=tmpGrammar.txt) Output file for partly trained
-    grammar, printed in each interation (default is  tmpGrammar.txt).'
-  synonyms:
-  - -o
-  args: !EmptyFlagArg {}
-  optional: true
 command:
 - grammarTrain
+parent:
 subcommands: []
 help_flag: !Flag
   description: '[ --help ]                         produce help message'
@@ -91,3 +78,32 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "grammarTrins estimate transition probabilities (production rule probabilities)\
+  \ of stochastic context free grammars. Currently ama type input data is supported.\n\
+  \n  Usage: grammarTrain [options] <grammar.txt> <emitModels.txt> <alg.ama>\n\nSetting\
+  \ alg.ama to '-' reads from stdin.\nAllowed options:\n  -h [ --help ]          \
+  \               produce help message\n  -t [ --treeFile ] arg                 File\
+  \ with Newick tree used with phylo \n                                        grammars.\n\
+  \  -a [ --annoMapFile ] arg              Anno map file.\n  -n [ --annoName ] arg\
+  \                 Name of annotation to use.\n  -p [ --pseudoCounts ] arg (=0) \
+  \       Defines total number of pseudocounts \n                                \
+  \        used for each transition distribution \n                              \
+  \          (For each transition, the number of \n                              \
+  \          pseudocounts is defined as the initital\n                           \
+  \             transition probs in the input file \n                            \
+  \            times the given pseudoCounts value).\n  -d [ --minDeltaLogLik ] arg\
+  \ (=0.0001) Defines stopping criteria for the EM \n                            \
+  \            training. The training will stop when \n                          \
+  \              the difference in log likelihood is \n                          \
+  \              below minDeltaLogLik (default is 1e-4).\n  -i [ --maxIter ] arg (=100)\
+  \           Max numbr if iterations of the EM \n                               \
+  \         training (default is 100).\n  -l [ --logFile ] arg (=grammarLogFile.txt)\n\
+  \                                        Log file for EM training (default is \n\
+  \                                        ./grammarLogFile.txt).\n  -o [ --outputGrammar\
+  \ ] arg (=-)       Output file for trained grammar \n                          \
+  \              (default is stdout).\n  -o [ --tmpGrammar ] arg (=tmpGrammar.txt)\n\
+  \                                        Output file for partly trained grammar,\n\
+  \                                        printed in each interation (default is\
+  \ \n                                        tmpGrammar.txt).\n\n"
+generated_using:
+- --help

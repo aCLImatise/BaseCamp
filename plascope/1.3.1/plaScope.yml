@@ -3,11 +3,6 @@ positional:
 - !Positional
   description: ''
   position: 0
-  name: OPTIONS
-  optional: true
-- !Positional
-  description: ''
-  position: 1
   name: ARGUMENTS
   optional: true
 named:
@@ -49,6 +44,18 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
+  description: forward paired-end reads [MANDATORY]
+  synonyms:
+  - '-1'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: reverse paired-end reads [MANDATORY]
+  synonyms:
+  - '-2'
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
   description: SPAdes assembly fasta file [MANDATORY]
   synonyms:
   - --fasta
@@ -56,6 +63,7 @@ named:
   optional: true
 command:
 - plaScope.sh
+parent:
 subcommands: []
 help_flag: !Flag
   description: display this message and exit
@@ -72,3 +80,19 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "usage: plaScope.sh [OPTIONS] [ARGUMENTS]\n\nGeneral options:\n  -h, --help\t\
+  \tdisplay this message and exit\n  -v, --version\t\tdisplay version number and exit\n\
+  \  -n, --no-banner\tdon't print beautiful banners\n  -t\t\t\tnumber of threads[OPTIONAL]\
+  \ [default : 8]\n  -o\t\t\toutput directory [OPTIONAL] [default : current directory]\n\
+  \  --sample\t\tSample name [MANDATORY]\n  --db_dir\t\tpath to centrifuge database\
+  \ [MANDATORY]\n  --db_name\t\tcentrifuge database name [MANDATORY]\n\nMode 1: SPAdes\
+  \ assembly + contig classification\n  -1\t\t\tforward paired-end reads [MANDATORY]\n\
+  \  -2\t\t\treverse paired-end reads [MANDATORY]\n\n\nMode 2: contig classification\
+  \ of a fasta file (only if you already have your SPAdes assembly!)\n  --fasta\t\t\
+  SPAdes assembly fasta file [MANDATORY]\n\n\n\nExample mode 1:\nplaScope.sh -1 my_reads_1.fastq.gz\
+  \ -2 my_reads_2.fastq.gz -o output_directory  --db_dir path/to/DB --db_name chromosome_plasmid_db\
+  \ --sample name_of_my_sample\n\nExample mode 2:\nplaScope.sh --fasta my_fastafile.fasta\
+  \ -o output_directory --db_dir path/to/DB --db_name chromosome_plasmid_db --sample\
+  \ name_of_my_sample\n\n\n\nGithub:\nhttps://github.com/GuilhemRoyer/PlaScope\n\n"
+generated_using:
+- --help

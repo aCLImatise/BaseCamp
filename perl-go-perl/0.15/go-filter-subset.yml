@@ -61,7 +61,45 @@ named:
   optional: true
 command:
 - go-filter-subset.pl
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "\e[1mNAME\e[0m\n    go-filter-subset.pl - extracts a subgraph from an\
+  \ ontology file\n\n\e[1mSYNOPSIS\e[0m\n      go-filter-subset.pl -id GO:0003767\
+  \ go.obo\n\n      go-filter-subset.pl -id GO:0003767 -to png go.obo | xv -\n\n \
+  \     go-filter-subset.pl -filter_code 'sub{shift->name =~ /transcr/}' go.obo\n\n\
+  \e[1mDESCRIPTION\e[0m\n    Exports a subset of an ontology from a file. The subset\
+  \ can be based on a\n    specified set of IDs, a preset \"subset\" filter in the\
+  \ ontology file (eg a\n    GO \"slim\" or subset), or a user-defined filter.\n\n\
+  \    The subset can be exported in any format, including a graphical image\n\n\e\
+  [1mARGUMENTS\e[0m\n    -id ID\n        ID to use as leaf node in subgraph. All ancestors\
+  \ of this ID are\n        included in the exported graph (unless -partial is set)\n\
+  \n        Multiple IDs can be passed\n\n          -id ID1 -id ID2 -id ID3 ....etc\n\
+  \n    -subset SUBSET_ID\n        Extracts a named subset from the ontology file.\
+  \ (only works with obo\n        format files). For example, a specific GO slim\n\
+  \n        ONLY terms belonging to the subset are exported - the -partial option\n\
+  \        is automatically set\n\n    -namespace NAMESPACE\n        only terms in\
+  \ this namespace\n\n    -filter_code SUBROUTINE\n        \e[1madvanced option\e\
+  [0m\n\n        A subroutine with which the GO::Model::Term object is tested for\n\
+  \        inclusion in the subgraph (all ancestors are automatically included)\n\n\
+  \        You should have an understanding of the go-perl object model before\n \
+  \       using this option\n\n        Example:\n\n          go-filter-subset -filter_code\
+  \ 'sub {shift->namespace eq 'molecular_function'}' go.obo\n\n        (the same things\
+  \ can be achieved with the -namespace option)\n\n    -partial\n        If this is\
+  \ set, then only terms that match the user query are\n        included. Parentage\
+  \ is set to the next recursive parent node in the\n        filter\n\n        For\
+  \ example, with the -subset option: if X and Y belong to the subset,\n        and\
+  \ Z does not, and X is_a Z is_a Y, then the exported graph withh\n        have X\
+  \ is_a Y\n\n    -use_cache\n        If this switch is specified, then caching mode\
+  \ is turned on.\n\n        With caching mode, the first time you parse a file, then\
+  \ an additional\n        file will be exported in a special format that is fast\
+  \ to parse. This\n        file will have the same filename as the original file,\
+  \ except it will\n        have the \".cache\" suffix.\n\n        The next time you\
+  \ parse the file, this program will automatically\n        check for the existence\
+  \ of the \".cache\" file. If it exists, and is\n        more recent than the file\
+  \ you specified, this is parsed instead. If it\n        does not exist, it is rebuilt.\n\
+  \n  \e[1mDOCUMENTATION\e[0m\n    <http://www.godatabase.org/dev>\n\n"
+generated_using:
+- --help

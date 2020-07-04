@@ -1,44 +1,34 @@
 !Command
-positional: []
-named: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: in.agp
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: in.fa
+  optional: false
+named:
+- !Flag
+  description: "- Ignore seq (e.g. chrM for which we usually get sequence from GenBank\
+    \ but don't have AGP)"
+  synonyms:
+  - -exclude
+  args: !SimpleFlagArg
+    name: seq
+  optional: true
 command:
 - checkAgpAndFa
-subcommands:
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: in.fa
-    optional: false
-  named: []
-  command:
-  - checkAgpAndFa
-  - in.agp
-  subcommands: []
-  help_flag:
-  usage_flag:
-  version_flag:
-- !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: in.agp
-    optional: false
-  - !Positional
-    description: ''
-    position: 1
-    name: in.fa
-    optional: false
-  named: []
-  command:
-  - checkAgpAndFa
-  - in.fa
-  subcommands: []
-  help_flag:
-  usage_flag:
-  version_flag:
+parent:
+subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "\ncheckAgpAndFa - takes a .agp file and .fa file and ensures that they\
+  \ are in synch\nusage:\n\n   checkAgpAndFa in.agp in.fa\n\noptions:\n   -exclude=seq\
+  \ - Ignore seq (e.g. chrM for which we usually get\n                  sequence from\
+  \ GenBank but don't have AGP)\nin.fa can be a .2bit file.  If it is .fa then sequences\
+  \ must appear\nin the same order in .agp and .fa.\n\n\n"
+generated_using: []

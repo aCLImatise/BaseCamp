@@ -1,8 +1,9 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - treebest
+parent:
 subcommands:
 - !Command
   positional:
@@ -15,10 +16,13 @@ subcommands:
   command:
   - treebest
   - leaf
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Usage: treebest leaf <nh_tree>\n"
+  generated_using: &id002 []
 - !Command
   positional:
   - !Positional
@@ -36,10 +40,16 @@ subcommands:
   command:
   - treebest
   - mfa2aln
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "mfa2aln: invalid option -- '-'\nmfa2aln: invalid option -- 'h'\nmfa2aln:\
+    \ invalid option -- 'e'\nmfa2aln: invalid option -- 'l'\nmfa2aln: invalid option\
+    \ -- 'p'\nUsage: treebest mfa2aln [-n] <fasta_align>\n"
+  generated_using: &id003
+  - --help
 - !Command
   positional:
   - !Positional
@@ -51,57 +61,59 @@ subcommands:
   command:
   - treebest
   - ortho
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Usage: treebest ortho <tree>\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: dn|ds|dm|jtt|kimura|mm|dns
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: alignment
+    optional: false
+  named: []
+  command:
+  - treebest
+  - distmat
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "Usage: treebest distmat <dn|ds|dm|jtt|kimura|mm|dns> <alignment>\n"
+  generated_using: *id003
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: tree1
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: tree2
+    optional: false
   named: []
   command:
   - treebest
   - treedist
-  subcommands:
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: tree2
-      optional: false
-    named: []
-    command:
-    - treebest
-    - treedist
-    - tree1
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: tree1
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: tree2
-      optional: false
-    named: []
-    command:
-    - treebest
-    - treedist
-    - tree2
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
+  parent: *id001
+  subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Usage: treebest treedist <tree1> <tree2>\n"
+  generated_using: *id003
 - !Command
   positional: []
   named:
@@ -181,6 +193,7 @@ subcommands:
   command:
   - treebest
   - pwalign
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: help
@@ -190,6 +203,17 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "pwalign: invalid option -- '-'\n\nProgram : pwalign (PairWise ALIGNment\
+    \ tool)\nVersion : 0.1.5, on May 3, 2006\nContact : liheng@genomics.org.cn\n\n\
+    Usage   : pwalign [options] <nt2nt|aa2aa|nt2aa|splice> <seq1> <seq2>\n\nOptions\
+    \ : -f       generate full alignment\n          -a       do not apply matrix mean\
+    \ in local alignment\n          -d       just calculate alignment boundaries\n\
+    \          -o NUM   gap open penalty\n          -e NUM   gap extension penalty\n\
+    \          -n NUM   gap end penalty for nt2nt or aa2aa\n          -s NUM   frame-shift\
+    \ penalty for aa2nt\n          -g NUM   good splicing penalty\n          -w NUM\
+    \   band-width\n          -b NUM   bad splicing penalty\n          -m       output\
+    \ miscellaneous information\n          -h       help\n\n"
+  generated_using: *id003
 - !Command
   positional: []
   named:
@@ -209,10 +233,16 @@ subcommands:
   command:
   - treebest
   - mmerge
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "mmerge: invalid option -- '-'\nmmerge: invalid option -- 'h'\nmmerge:\
+    \ invalid option -- 'e'\nmmerge: invalid option -- 'l'\nmmerge: invalid option\
+    \ -- 'p'\n\nUsage  : treebest mmerge [-r] <forest>\n\nOptions: -r         reroot\n\
+    \         -s FILE    species tree [default taxa tree]\n\n"
+  generated_using: *id003
 - !Command
   positional:
   - !Positional
@@ -303,57 +333,44 @@ subcommands:
   command:
   - treebest
   - export
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "export: invalid option -- '-'\nexport: invalid option -- 'h'\nexport:\
+    \ invalid option -- 'e'\nexport: invalid option -- 'l'\n\nUsage:   treebest export\
+    \ [options] <tree>\n\nOptions: -x NUM      width [640]\n         -y NUM      height\
+    \ [480]\n         -m NUM      margin [20]\n         -f NUM      font size [11]\n\
+    \         -b FNUM     box size [4.0]\n         -w FNUM     font width [font_size/2]\n\
+    \         -s FILE     species tree\n         -B          suppress bootstrap value\n\
+    \         -M          black/white mode\n         -S          show species name\n\
+    \         -d          speciation/duplication inference\n         -p          pseudo-length\n\
+    \n"
+  generated_using: *id003
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: tree
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: list
+    optional: false
   named: []
   command:
   - treebest
   - subtree
-  subcommands:
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: list
-      optional: false
-    named: []
-    command:
-    - treebest
-    - subtree
-    - tree
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: tree
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: list
-      optional: false
-    named: []
-    command:
-    - treebest
-    - subtree
-    - list
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
+  parent: *id001
+  subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Usage: treebest subtree <tree> <list>\n"
+  generated_using: *id003
 - !Command
   positional: []
   named:
@@ -394,6 +411,7 @@ subcommands:
   command:
   - treebest
   - simulate
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: help
@@ -403,6 +421,12 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "simulate: invalid option -- '-'\n\nUsage:   treebest simulate [options]\n\
+    \nOptions: -d FNUM        duplication probability [0.05]\n         -l FNUM   \
+    \     loss probability [0.01]\n         -p FNUM        loss probability after\
+    \ duplication [0.25]\n         -m FNUM        max height [0.25]\n         -n \
+    \            not show internal name\n         -h             help\n\n"
+  generated_using: *id003
 - !Command
   positional:
   - !Positional
@@ -419,122 +443,41 @@ subcommands:
   command:
   - treebest
   - sortleaf
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Usage: treebest sortleaf <tree1> [<tree2>]\n"
+  generated_using: *id002
 - !Command
-  positional: []
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: tree
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: matrix
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: tag
+    optional: false
   named: []
   command:
   - treebest
   - estlen
-  subcommands:
-  - !Command
-    positional: []
-    named: []
-    command:
-    - treebest
-    - estlen
-    - tree
-    subcommands:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: tag
-        optional: false
-      named: []
-      command:
-      - treebest
-      - estlen
-      - tree
-      - matrix
-      subcommands: []
-      help_flag:
-      usage_flag:
-      version_flag:
-    - !Command
-      positional:
-      - !Positional
-        description: ''
-        position: 0
-        name: matrix
-        optional: false
-      - !Positional
-        description: ''
-        position: 1
-        name: tag
-        optional: false
-      named: []
-      command:
-      - treebest
-      - estlen
-      - tree
-      - tag
-      subcommands: []
-      help_flag:
-      usage_flag:
-      version_flag:
-    help_flag:
-    usage_flag:
-    version_flag:
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: tree
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: matrix
-      optional: false
-    - !Positional
-      description: ''
-      position: 2
-      name: tag
-      optional: false
-    named: []
-    command:
-    - treebest
-    - estlen
-    - matrix
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
-  - !Command
-    positional:
-    - !Positional
-      description: ''
-      position: 0
-      name: tree
-      optional: false
-    - !Positional
-      description: ''
-      position: 1
-      name: matrix
-      optional: false
-    - !Positional
-      description: ''
-      position: 2
-      name: tag
-      optional: false
-    named: []
-    command:
-    - treebest
-    - estlen
-    - tag
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
+  parent: *id001
+  subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Usage: treebest estlen <tree> <matrix> <tag>\n"
+  generated_using: *id003
 - !Command
   positional:
   - !Positional
@@ -546,10 +489,30 @@ subcommands:
   command:
   - treebest
   - root
+  parent: *id001
   subcommands: []
   help_flag:
   usage_flag:
   version_flag:
+  help_text: "Usage: treebest root <tree>\n"
+  generated_using: *id002
 help_flag:
 usage_flag:
 version_flag:
+help_text: "\nProgram: TreeBeST (gene Tree Building guided by Species Tree)\nVersion:\
+  \ 1.9.2 build 13Jun2019\nContact: Heng Li <lh3@sanger.ac.uk>\n\nUsage:   treebest\
+  \ <command> [options]\n\nCommand: nj        build neighbour-joining tree, SDI, rooting\n\
+  \         best      build tree with the help of a species tree\n         phyml \
+  \    build phyml tree\n         sdi       speciation vs. duplication inference\n\
+  \         spec      print species tree\n         format    reformat a tree\n   \
+  \      filter    filter a multi-alignment\n         trans     translate coding nucleotide\
+  \ alignment\n         backtrans translate aa alignment back to nt\n         leaf\
+  \      get external nodes\n         mfa2aln   convert MFA to ALN format\n      \
+  \   ortho     ortholog/paralog inference\n         distmat   distance matrix\n \
+  \        treedist  topological distance between two trees\n         pwalign   pairwise\
+  \ alignment\n         mmerge    merge a forest\n         export    export a tree\
+  \ to EPS format\n         subtree   extract the subtree\n         simulate  simulate\
+  \ a gene tree\n         sortleaf  sort leaf order\n         estlen    estimate branch\
+  \ length\n         trimpoor  trim out leaves that affect the quality of a tree\n\
+  \         root      root a tree by minimizing height\n\n"
+generated_using: *id002

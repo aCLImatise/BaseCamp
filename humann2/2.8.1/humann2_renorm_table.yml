@@ -16,9 +16,9 @@ named:
   - -u
   - --units
   args: !ChoiceFlagArg
-    choices:
-    - cpm
-    - relab
+    choices: !!set
+      relab:
+      cpm:
   optional: true
 - !Flag
   description: Normalize all levels by [community] total or [levelwise] totals; default=[community]
@@ -26,9 +26,9 @@ named:
   - -m
   - --mode
   args: !ChoiceFlagArg
-    choices:
-    - community
-    - levelwise
+    choices: !!set
+      levelwise:
+      community:
   optional: true
 - !Flag
   description: Include the special features UNMAPPED, UNINTEGRATED, and UNGROUPED;
@@ -37,9 +37,9 @@ named:
   - -s
   - --special
   args: !ChoiceFlagArg
-    choices:
-    - y
-    - n
+    choices: !!set
+      n:
+      y:
   optional: true
 - !Flag
   description: Update '-RPK' in sample names to appropriate suffix; default=off
@@ -58,6 +58,7 @@ named:
   optional: true
 command:
 - humann2_renorm_table
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -68,3 +69,20 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: humann2_renorm_table [-h] [-i INPUT] [-u {cpm,relab}]\n       \
+  \                     [-m {community,levelwise}] [-s {y,n}] [-p]\n             \
+  \               [-o OUTPUT]\n\nHUMAnN2 utility for renormalizing TSV files\n===========================================\n\
+  Each level of a stratified table will be \nnormalized using the desired scheme.\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -i INPUT, --input INPUT\n                        Original output table (tsv or\
+  \ biom format); default=[TSV/STDIN]\n  -u {cpm,relab}, --units {cpm,relab}\n   \
+  \                     Normalization scheme: copies per million [cpm], relative abundance\
+  \ [relab]; default=[cpm]\n  -m {community,levelwise}, --mode {community,levelwise}\n\
+  \                        Normalize all levels by [community] total or [levelwise]\
+  \ totals; default=[community]\n  -s {y,n}, --special {y,n}\n                   \
+  \     Include the special features UNMAPPED, UNINTEGRATED, and UNGROUPED; default=[y]\n\
+  \  -p, --update-snames   Update '-RPK' in sample names to appropriate suffix; default=off\n\
+  \  -o OUTPUT, --output OUTPUT\n                        Path for modified output\
+  \ table; default=[STDOUT]\n"
+generated_using:
+- --help

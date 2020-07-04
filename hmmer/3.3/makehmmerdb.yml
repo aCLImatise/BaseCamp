@@ -1,4 +1,4 @@
-!Command
+&id001 !Command
 positional: []
 named:
 - !Flag
@@ -31,6 +31,7 @@ named:
   optional: true
 command:
 - makehmmerdb
+parent:
 subcommands:
 - !Command
   positional:
@@ -43,6 +44,7 @@ subcommands:
   command:
   - makehmmerdb
   - seqfile
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: ': show brief help on version and usage'
@@ -52,22 +54,33 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Incorrect number of command line arguments.\nUsage: makehmmerdb [options]\
+    \ <seqfile> <binaryfile>\n\nwhere basic options are:\n  -h : show brief help on\
+    \ version and usage\n\nTo see more help on available options, do makehmmerdb -h\n\
+    \n"
+  generated_using: &id002 []
 - !Command
   positional:
   - !Positional
     description: ''
     position: 0
-    name: seqfile
+    name: makehmmerdb
     optional: false
   - !Positional
     description: ''
     position: 1
+    name: seqfile
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
     name: binaryfile
     optional: false
   named: []
   command:
   - makehmmerdb
   - binaryfile
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: ': show brief help on version and usage'
@@ -77,6 +90,11 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Incorrect number of command line arguments.\nUsage: makehmmerdb [options]\
+    \ <seqfile> <binaryfile>\n\nwhere basic options are:\n  -h : show brief help on\
+    \ version and usage\n\nTo see more help on available options, do makehmmerdb -h\n\
+    \n"
+  generated_using: *id002
 help_flag: !Flag
   description: ': show brief help on version and usage'
   synonyms:
@@ -85,3 +103,15 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "# makehmmerdb :: build a HMMER binary-formatted database from an input\
+  \ sequence file\n# HMMER 3.3 (Nov 2019); http://hmmer.org/\n# Copyright (C) 2019\
+  \ Howard Hughes Medical Institute.\n# Freely distributed under the BSD open source\
+  \ license.\n# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\
+  \ - - -\nUsage: makehmmerdb [options] <seqfile> <binaryfile>\n\nBasic options:\n\
+  \  -h : show brief help on version and usage\n\nSpecial options:\n  --informat <s>\
+  \   : specify that input file is in format <s>\n  --bin_length <n> : bin length\
+  \ (power of 2;  32<=b<=4096)  [256]\n  --sa_freq <n>    : suffix array sample rate\
+  \ (power of 2)  [8]\n  --block_size <n> : input sequence broken into blocks this\
+  \ size (Mbases)  [50]\n"
+generated_using:
+- -h

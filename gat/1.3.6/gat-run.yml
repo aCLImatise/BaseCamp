@@ -1,25 +1,5 @@
 !Command
-positional:
-- !Positional
-  description: ''
-  position: 0
-  name: gat-run
-  optional: false
-- !Positional
-  description: ''
-  position: 1
-  name: genomic
-  optional: false
-- !Positional
-  description: ''
-  position: 2
-  name: annotation
-  optional: false
-- !Positional
-  description: ''
-  position: 3
-  name: tool
-  optional: false
+positional: []
 named:
 - !Flag
   description: filename with annotations [default=[]].
@@ -427,7 +407,128 @@ named:
   optional: true
 command:
 - gat-run.py
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "Usage: gat-run - run the genomic annotation tool\n=============================================\n\
+  \n:Author: Andreas Heger\n:Release: $Id$\n:Date: |today|\n:Tags: Python\n\nPurpose\n\
+  -------\n\nThis script compares one or more genomic segments of interest against\n\
+  one more other genomic annotations.\n\nUsage\n-----\n\nExample::\n\n   python gat-run.py\n\
+  \      --segment-file=segments.bed.gz\n      --workspace-file=workspace.bed.gz\n\
+  \      --annotation-file=annotations_architecture.bed.gz\n\nType::\n\n   python\
+  \ gat-run.py --help\n\nfor command line help.\n\nDocumentation\n-------------\n\n\
+  Code\n----\n\n\n\nOptions:\n  --version             show program's version number\
+  \ and exit\n  -h, --help            show this help message and exit\n\n  Input options:\n\
+  \    -a ANNOTATION_FILES, --annotation-bed-file=ANNOTATION_FILES, --annotations=ANNOTATION_FILES,\
+  \ --annotation-file=ANNOTATION_FILES\n                        filename with annotations\
+  \ [default=[]].\n    -s SEGMENT_FILES, --segment-bed-file=SEGMENT_FILES, --segments=SEGMENT_FILES,\
+  \ --segment-file=SEGMENT_FILES\n                        filename with segments.\
+  \ Also accepts a glob in\n                        parentheses [default=[]].\n  \
+  \  -w WORKSPACE_FILES, --workspace-bed-file=WORKSPACE_FILES, --workspace=WORKSPACE_FILES,\
+  \ --workspace-file=WORKSPACE_FILES\n                        filename with workspace\
+  \ segments. Also accepts a glob\n                        in parentheses [default=[]].\n\
+  \    -i ISOCHORE_FILES, --isochore-bed-file=ISOCHORE_FILES, --isochores=ISOCHORE_FILES,\
+  \ --isochore-file=ISOCHORE_FILES\n                        filename with isochore\
+  \ segments. Also accepts a glob\n                        in parentheses [default=none].\n\
+  \    -l SAMPLE_FILES, --sample-file=SAMPLE_FILES\n                        filename\
+  \ with sample files. Start processing from\n                        samples [default=[]].\n\
+  \    --input-counts-file=INPUT_FILENAME_COUNTS\n                        start processing\
+  \ from counts - no segments required\n                        [default=none].\n\
+  \    --input-results-file=INPUT_FILENAME_RESULTS\n                        start\
+  \ processing from results - no segments required\n                        [default=none].\n\
+  \    --ignore-segment-tracks\n                        ignore segment tracks - all\
+  \ segments belong to one\n                        track and called 'merged' [default=True]\n\
+  \    --with-segment-tracks\n                        the segments data file is arranged\
+  \ in tracks.\n                        [default=True]\n    --enable-split-tracks\n\
+  \                        permit the same track to be in multiple files\n       \
+  \                 [default=False]\n    --overlapping-annotations\n             \
+  \           the annotations within a track are overlapping and\n               \
+  \         should not be merged. This is useful for working with\n              \
+  \          short-read data. [default=default]\n    --annotations-label=ANNOTATIONS_LABEL\n\
+  \                        ignore tracks in annotations and instead set them to\n\
+  \                        label [default=default]\n    --annotations-to-points=ANNOTATIONS_TO_POINTS\n\
+  \                        convert annotations from segments to positions.\n     \
+  \                   Available methods are 'midpoint', 'start' or 'end'.\n      \
+  \                  [default=default]\n\n  Output options:\n    -o OUTPUT_ORDER,\
+  \ --order=OUTPUT_ORDER\n                        order results in output by fold,\
+  \ track, etc.\n                        [default=fold].\n    --output-tables-pattern=OUTPUT_TABLES_PATTERN\n\
+  \                        output pattern for result tables. Used if there are\n \
+  \                       multiple counters used [default=%s.tsv.gz].\n    --output-counts-pattern=OUTPUT_COUNTS_PATTERN\n\
+  \                        output pattern for counts [default=none].\n    --output-plots-pattern=OUTPUT_PLOTS_PATTERN\n\
+  \                        output pattern for plots [default=none]\n    --output-samples-pattern=OUTPUT_SAMPLES_PATTERN\n\
+  \                        output pattern for samples. Samples are stored in bed\n\
+  \                        format, one for  each segment [default=none]\n    --output-stats=OUTPUT_STATS\n\
+  \                        output overlap summary stats [default=[]].\n    --output-bed=OUTPUT_BED\n\
+  \                        output bed files [default=[]].\n    --descriptions=INPUT_FILENAME_DESCRIPTIONS\n\
+  \                        filename mapping annotation terms to descriptions. if\n\
+  \                        given, the output table will contain additional\n     \
+  \                   columns [default=none]\n\n  Sampling algorithm options:\n  \
+  \  -c COUNTERS, --counter=COUNTERS\n                        quantity to use for\
+  \ estimating enrichment\n                        [default=[]].\n    -m SAMPLER,\
+  \ --sampler=SAMPLER\n                        quantity to test [default=annotator].\n\
+  \    -n NUM_SAMPLES, --num-samples=NUM_SAMPLES\n                        number of\
+  \ samples to compute [default=1000].\n    --shift-extension=SHIFT_EXTENSION\n  \
+  \                      if the sampling method is 'shift', create a segment of\n\
+  \                        size # anound the segment to determine the size of the\n\
+  \                        region for shifthing [default=0].\n    --shift-expansion=SHIFT_EXPANSION\n\
+  \                        if the sampling method is 'shift', multiply each\n    \
+  \                    segment by # to determine the size of the region for\n    \
+  \                    shifthing [default=2.0].\n    --bucket-size=BUCKET_SIZE\n \
+  \                       size of a bin for histogram of segment lengths. If 0,\n\
+  \                        it will be automatically scaled to fit nbuckets\n     \
+  \                   [default=0]\n    --nbuckets=NBUCKETS\n                     \
+  \   number of bins for histogram of segment lengths\n                        [default=100000]\n\
+  \n  Statistics options:\n    -p PVALUE_METHOD, --pvalue-method=PVALUE_METHOD\n \
+  \                       type of pvalue reported [default=empirical].\n    -q QVALUE_METHOD,\
+  \ --qvalue-method=QVALUE_METHOD\n                        method to perform multiple\
+  \ testing correction by\n                        controlling the fdr [default=BH].\n\
+  \    --qvalue-lambda=QVALUE_LAMBDA\n                        fdr computation: lambda\
+  \ [default=none].\n    --qvalue-pi0-method=QVALUE_PI0_METHOD\n                 \
+  \       fdr computation: method for estimating pi0\n                        [default=smoother].\n\
+  \    --pseudo-count=PSEUDO_COUNT\n                        pseudo count. The pseudo\
+  \ count is added to both the\n                        observed and expected overlap.\
+  \ Using a pseudo-count\n                        avoids gat reporting fold changes\
+  \ of 0 [default=1.0].\n    --null=NULL         null hypothesis. The default is to\
+  \ test categories for\n                        enrichment/depletion. If a filename\
+  \ with gat output is\n                        given, gat will test for the difference\
+  \ in fold change\n                        between the segments supplied and in the\
+  \ other file\n                        [default=default].\n\n  Processing options:\n\
+  \    -e CACHE, --cache=CACHE\n                        filename for caching samples\
+  \ [default=none].\n    -t NUM_THREADS, --num-threads=NUM_THREADS\n             \
+  \           number of threads to use for sampling [default=0]\n    --random-seed=RANDOM_SEED\n\
+  \                        random seed to initialize number generator with\n     \
+  \                   [none].\n\n  Workspace manipulation (experimental):\n    --conditional=CONDITIONAL\n\
+  \                        conditional workspace creation\n                      \
+  \  [default=unconditional]*cooccurance* - compute\n                        enrichment\
+  \ only within workspace segments that contain\n                        both segments\
+  \ and annotations, *annotation-centered* -\n                        workspace centered\
+  \ around annotations. See\n                        --conditional-extension,segment-centered\
+  \ - workspace\n                        centered around segments. See --conditional-extension\n\
+  \    --conditional-extension=CONDITIONAL_EXTENSION\n                        if workspace\
+  \ is created conditional, extend by this\n                        amount (in bp)\
+  \ [default=none].\n    --conditional-expansion=CONDITIONAL_EXPANSION\n         \
+  \               if workspace is created conditional, expand by this\n          \
+  \              amount (ratio) [default=none].\n    --restrict-workspace\n      \
+  \                  restrict workspace to those segments that contain both\n    \
+  \                    track and annotations [default=False]\n    --truncate-workspace-to-annotations\n\
+  \                        truncate workspace with annotations [default=False]\n \
+  \   --truncate-segments-to-workspace\n                        truncate segments\
+  \ to workspace before sampling\n                        [default=False]\n\n  Script\
+  \ timing options:\n    --timeit=TIMEIT_FILE\n                        store timeing\
+  \ information in file [none].\n    --timeit-name=TIMEIT_NAME\n                 \
+  \       name in timing file for this class of jobs [all].\n    --timeit-header \
+  \    add header for timing information [none].\n\n  Common options:\n    -v LOGLEVEL,\
+  \ --verbose=LOGLEVEL\n                        loglevel [1]. The higher, the more\
+  \ output.\n    -?                  output short help (command line options only.\n\
+  \n  Input/output options:\n    -P OUTPUT_FILENAME_PATTERN, --output-filename-pattern=OUTPUT_FILENAME_PATTERN\n\
+  \                        OUTPUT filename pattern for various methods [%s].\n   \
+  \ -F, --force-output  force over-writing of existing files.\n    -I FILE, --stdin=FILE\n\
+  \                        file to read stdin from [default = stdin].\n    -L FILE,\
+  \ --log=FILE\n                        file with logging information [default = stdout].\n\
+  \    -E FILE, --error=FILE\n                        file with error information\
+  \ [default = stderr].\n    -S FILE, --stdout=FILE\n                        file\
+  \ where output is to go [default = stdout].\n"
+generated_using:
+- --help

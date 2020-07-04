@@ -287,8 +287,15 @@ named:
   - --ileaved
   args: !EmptyFlagArg {}
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -options
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - ssu-cmbuild
+parent:
 subcommands: []
 help_flag: !Flag
   description: ': show brief help on version and usage'
@@ -298,3 +305,51 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "# ssu-cmbuild :: build RNA covariance model(s) from alignment\n# INFERNAL\
+  \ s0.1.1 (Feb 2016)\n# Copyright (C) 2016 Howard Hughes Medical Institute.\n# Freely\
+  \ distributed under the BSD open source license.\n# - - - - - - - - - - - - - -\
+  \ - - - - - - - - - - - - - - - - - - - - - -\nUsage: ssu-cmbuild [-options] <cmfile\
+  \ output> <alignment file>\n\nwhere general options are:\n  -h          : show brief\
+  \ help on version and usage\n  -n <s>      : name the CM(s) <s>, (only if single\
+  \ aln in file)\n  -A          : append this CM to <cmfile>\n  -F          : force;\
+  \ allow overwriting of <cmfile>\n  -v          : be verbose with output\n  --iins\
+  \      : allow informative insert emissions, do not zero them\n  --Wbeta <x> : set\
+  \ tail loss prob for calc'ing W (max size of a hit) to <x>\n  --devhelp   : show\
+  \ list of undocumented developer options\n\nexpert model construction options:\n\
+  \  --rsearch <f>   : use RSEARCH parameterization with RIBOSUM matrix file <s>\n\
+  \  --binary        : save the model(s) in binary format\n  --rf            : use\
+  \ reference coordinate annotation to specify consensus\n  --gapthresh <x> : fraction\
+  \ of gaps to allow in a consensus column [0..1]  [0.5]\n  --ignorant      : strip\
+  \ the structural info from input alignment\n\nsequence weighting options [default:\
+  \ GSC weighting]:\n  --wgsc         : Gerstein/Sonnhammer/Chothia tree weights \
+  \ [default]\n  --wblosum      : Henikoff simple filter weights\n  --wpb        \
+  \  : Henikoff position-based weights\n  --wnone        : don't do any relative weighting;\
+  \ set all to 1\n  --wgiven       : use weights as given in MSA file\n  --pbswitch\
+  \ <n> : set failover to efficient PB wgts at > <n> seqs  [5000]  (n>0)\n  --wid\
+  \ <x>      : for --wblosum: set identity cutoff  [0.62]  (0<=x<=1)\n\neffective\
+  \ sequence number related options:\n  --eent       : adjust eff seq # to achieve\
+  \ relative entropy target  [default]\n  --enone      : no effective seq # weighting:\
+  \ just use nseq\n  --ere <x>    : for --eent: set CM target relative entropy to\
+  \ <x>  (x>0)\n  --ehmmre <x> : for --eent: set minimum HMM relative entropy to <x>\
+  \  (x>0)\n\ncustomization of null model and priors:\n  --null <f>  : read null (random\
+  \ sequence) model from file <s>\n  --prior <f> : read priors from file <s>\n\noptions\
+  \ for building multiple CMs after clustering input MSA:\n  --ctarget <n> : build\
+  \ (at most) <n> CMs by partitioning MSA into <n> clusters\n  --cmaxid <x>  : max\
+  \ fractional id b/t 2 clusters is <x>, each cluster -> CM\n  --call        : build\
+  \ a separate CM from every seq in MSA\n  --corig       : build an additional CM\
+  \ from the original, full MSA\n  --cdump <f>   : dump the MSA for each cluster (CM)\
+  \ to file <s>\n\nexpert options for refining the input alignment:\n  --refine <f>\
+  \ : refine input aln w/Expectation-Maximization, save to <s>\n  --gibbs      : w/--refine,\
+  \ use Gibbs sampling instead of EM\n  -s <n>       : w/--gibbs, set RNG seed to\
+  \ <n> (if 0: one-time arbitrary seed)\n  -l           : w/--refine, align locally\
+  \ w.r.t the model\n  -a           : print individual sequence scores during MSA\
+  \ refinement\n  --cyk        : w/--refine align w/the CYK algorithm, not optimal\
+  \ accuracy\n  --sub        : w/--refine, use sub CM for columns b/t HMM start/end\
+  \ points\n  --nonbanded  : do not use bands to accelerate alignment with --refine\n\
+  \  --tau <x>    : set tail loss prob for --hbanded to <x>\n  --fins       : w/--refine,\
+  \ flush inserts left/right in alignments\n  --mxsize <x> : set maximum allowable\
+  \ DP matrix size to <x> Mb\n  --rdump <f>  : w/--refine, print all intermediate\
+  \ alignments to <f>\n  --ileaved    : w/--refine,--cdump, output alnment as interleaved\
+  \ Stockholm\n"
+generated_using:
+- -h

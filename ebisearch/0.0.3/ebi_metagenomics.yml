@@ -1,8 +1,9 @@
-!Command
+&id001 !Command
 positional: []
 named: []
 command:
 - ebi_metagenomics
+parent:
 subcommands:
 - !Command
   positional: []
@@ -31,6 +32,7 @@ subcommands:
   command:
   - ebi_metagenomics
   - download_run_data
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Show this message and exit.
@@ -40,39 +42,40 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Usage: ebi_metagenomics download_run_data [OPTIONS]\n\n  Download data\
+    \ for a run\n\nOptions:\n  --run TEXT   Id of a run in EBI metagenomics\n  --data\
+    \ TEXT  Data to download for the run (accessible with\n               get_possible_run_data\n\
+    \n  --file PATH  File to export downloaded data\n  --help       Show this message\
+    \ and exit.\n"
+  generated_using: &id002
+  - --help
 - !Command
   positional: []
-  named: []
+  named:
+  - !Flag
+    description: Id of a run in EBI metagenomics
+    synonyms:
+    - --run
+    args: !SimpleFlagArg
+      name: TEXT
+    optional: true
   command:
   - ebi_metagenomics
   - print_possible_run_data
-  subcommands:
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: Id of a run in EBI metagenomics
-      synonyms:
-      - --run
-      args: !SimpleFlagArg
-        name: TEXT
-      optional: true
-    command:
-    - ebi_metagenomics
-    - print_possible_run_data
-    - OPTIONS
-    subcommands: []
-    help_flag: !Flag
-      description: Show this message and exit.
-      synonyms:
-      - --help
-      args: !EmptyFlagArg {}
-      optional: true
-    usage_flag:
-    version_flag:
-  help_flag:
+  parent: *id001
+  subcommands: []
+  help_flag: !Flag
+    description: Show this message and exit.
+    synonyms:
+    - --help
+    args: !EmptyFlagArg {}
+    optional: true
   usage_flag:
   version_flag:
+  help_text: "Usage: ebi_metagenomics print_possible_run_data [OPTIONS]\n\n  Print\
+    \ information about the possible data to download for a run\n\nOptions:\n  --run\
+    \ TEXT  Id of a run in EBI metagenomics\n  --help      Show this message and exit.\n"
+  generated_using: *id002
 help_flag: !Flag
   description: Show this message and exit.
   synonyms:
@@ -81,3 +84,7 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "Usage: ebi_metagenomics [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  --help\
+  \  Show this message and exit.\n\nCommands:\n  download_run_data        Download\
+  \ run data\n  print_possible_run_data  Get possible data for a run\n"
+generated_using: *id002

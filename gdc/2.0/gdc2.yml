@@ -1,43 +1,69 @@
 !Command
-positional: []
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: mode
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: archive_name
+  optional: false
 named:
 - !Flag
-  description: for insertions/deletions (indels) of length 2 (default 1 only)
+  description: '- additionally look for insertions/deletions (indels) of length 2
+    (default 1 only)'
   synonyms:
   - -i2
-  - '- additionally'
-  args: !SimpleFlagArg
-    name: look
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: of working threads to X (minimum is 2, default is 4)
+  description: '- set number of working threads to X (minimum is 2, default is 4)'
   synonyms:
   - -tX
-  - '- set'
-  args: !SimpleFlagArg
-    name: number
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: limit in MB that program can allocate to X (default is 1024MB)
+  description: '- set memory limit in MB that program can allocate to X (default is
+    1024MB)'
   synonyms:
   - -mmX
-  - '- set'
-  args: !SimpleFlagArg
-    name: memory
+  args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: 'degree (defining percentage of sequences used in the second level
-    compression) to X, where X is an integer number in range [1-10] (default is 10);
-    ; X*10 percent of sequences will be used in the second level compression. '
+  description: '- set compression degree (defining percentage of sequences used in
+    the second level compression) to X, where X is an integer number in range [1-10]
+    (default is 10); ; X*10 percent of sequences will be used in the second level
+    compression. '
   synonyms:
   - -lX
-  - '- set'
-  args: !SimpleFlagArg
-    name: compression
+  args: !EmptyFlagArg {}
   optional: true
 command:
 - gdc2
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "Genome Differential Compressor v. 2.0\nUsage: gdc2 <mode> [options] <archive_name>\
+  \ [@list_of_files | file1_name file2_name ...]\n  mode - c (compress) archive_name\
+  \ [@list_of_files | file1_name file2_name ...], d (decompress) archive_name [@list_of_files\
+  \ | file1_name file2_name ...], l (list files in archive) archive_name\n  archive_name\
+  \ - archive name, required\n  list_of_files - file containing a list of files (1\
+  \ file per line) to compress\n  file1_name file2_name file3_name ... - list of files\
+  \ (separated by space) to compress\n (if some list of files is not provided for\
+  \ decompression, all files will be decompressed)\n  options:\n    -mpX,Y - match\
+  \ parameters (default: 15,4):\n      X - min. len. of 1st part of a match (hashing)\n\
+  \      Y - min. len. of 2nd and next parts of a match (after SNP/INS/DEL)\n    -i2\
+  \ - additionally look for insertions/deletions (indels) of length 2 (default 1 only)\n\
+  \    -tX - set number of working threads to X (minimum is 2, default is 4)\n   \
+  \ -mmX - set memory limit in MB that program can allocate to X (default is 1024MB)\n\
+  \    -lX - set compression degree (defining percentage of sequences used in the\
+  \ second level compression) to X, where X is an integer number in range [1-10] (default\
+  \ is 10); ; X*10 percent of sequences will be used in the second level compression.\
+  \ \nExamples:\n  gdc2 c my_archive @files_list\n  gdc2 c -mp15,4 -i2 my_archive\
+  \ @files_list\n  gdc2 d my_archive @files_list\n  gdc2 d my_archive\n  gdc2 l my_archive\n"
+generated_using:
+- --help

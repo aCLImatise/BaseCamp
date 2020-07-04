@@ -75,9 +75,9 @@ named:
   synonyms:
   - --assembly_tool
   args: !ChoiceFlagArg
-    choices:
-    - spades
-    - tigra
+    choices: !!set
+      tigra:
+      spades:
   optional: true
 - !Flag
   description: 'Minimum length of contig to consider (default: 200)'
@@ -123,6 +123,7 @@ named:
   optional: true
 command:
 - run_metasv_age.py
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -133,3 +134,36 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: run_metasv_age.py [-h] --reference REFERENCE --assembly ASSEMBLY\
+  \ --age\n                         AGE [--work WORK] [--pad PAD] [--nthreads NTHREADS]\n\
+  \                         [--chrs CHRS [CHRS ...]]\n                         [--sv_types\
+  \ SV_TYPES [SV_TYPES ...]]\n                         [--timeout TIMEOUT] [--keep_temp]\n\
+  \                         [--assembly_tool {spades,tigra}]\n                   \
+  \      [--min_contig_len MIN_CONTIG_LEN]\n                         [--max_region_len\
+  \ MAX_REGION_LEN]\n                         [--min_del_subalign_len MIN_DEL_SUBALIGN_LEN]\n\
+  \                         [--min_inv_subalign_len MIN_INV_SUBALIGN_LEN]\n      \
+  \                   [--age_window AGE_WINDOW] --intervals_bed\n                \
+  \         INTERVALS_BED\n\nRun AGE on files assembled under MetaSV.\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --reference\
+  \ REFERENCE\n                        Reference FASTA (default: None)\n  --assembly\
+  \ ASSEMBLY   Assembly FASTA (default: None)\n  --age AGE             Path to AGE\
+  \ executable (default: None)\n  --work WORK           Work directory (default: work)\n\
+  \  --pad PAD             Padding to apply on both sides of the bed regions\n   \
+  \                     (default: 500)\n  --nthreads NTHREADS   Number of threads\
+  \ to use (default: 1)\n  --chrs CHRS [CHRS ...]\n                        Chromosome\
+  \ list to process (default: [])\n  --sv_types SV_TYPES [SV_TYPES ...]\n        \
+  \                SV types list to process (INS, DEL, INV) (default: [])\n  --timeout\
+  \ TIMEOUT     Max time for assembly processes to run (default: 300)\n  --keep_temp\
+  \           Don't delete temporary files (default: False)\n  --assembly_tool {spades,tigra}\n\
+  \                        Tool used for assembly (default: spades)\n  --min_contig_len\
+  \ MIN_CONTIG_LEN\n                        Minimum length of contig to consider (default:\
+  \ 200)\n  --max_region_len MAX_REGION_LEN\n                        Maximum length\
+  \ of an SV interval (default: 1000000)\n  --min_del_subalign_len MIN_DEL_SUBALIGN_LEN\n\
+  \                        Minimum length of deletion sub-alginment (default: 50)\n\
+  \  --min_inv_subalign_len MIN_INV_SUBALIGN_LEN\n                        Minimum\
+  \ length of inversion sub-alginment (default:\n                        50)\n  --age_window\
+  \ AGE_WINDOW\n                        Window size for AGE to merge nearby breakpoints\n\
+  \                        (default: 20)\n  --intervals_bed INTERVALS_BED\n      \
+  \                  BED file for assembly (default: None)\n"
+generated_using:
+- --help

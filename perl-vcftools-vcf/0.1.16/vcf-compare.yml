@@ -3,27 +3,7 @@ positional:
 - !Positional
   description: ''
   position: 0
-  name: OPTIONS
-  optional: true
-- !Positional
-  description: ''
-  position: 1
-  name: file1.vcf
-  optional: false
-- !Positional
-  description: ''
-  position: 2
   name: vcf-compare
-  optional: false
-- !Positional
-  description: ''
-  position: 3
-  name: chr1.cmp
-  optional: false
-- !Positional
-  description: ''
-  position: 4
-  name: Options
   optional: false
 named:
 - !Flag
@@ -34,12 +14,13 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: <list|file>       Same as -r, left for backward compatibility. Please
-    do not use as it will be dropped in the future.
+  description: Same as -r, left for backward compatibility. Please do not use as it
+    will be dropped in the future.
   synonyms:
   - -c
   - --chromosomes
-  args: !EmptyFlagArg {}
+  args: !SimpleFlagArg
+    name: list|file
   optional: true
 - !Flag
   description: Debugging information. Giving the option multiple times increases verbosity
@@ -62,14 +43,15 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: <list|file>      Use with -g when comparing files with differing column
-    names. The argument to this options is a comma-separated list or one mapping per
-    line in a file. The names are colon separated and must appear in the same order
-    as the files on the command line.
+  description: Use with -g when comparing files with differing column names. The argument
+    to this options is a comma-separated list or one mapping per line in a file. The
+    names are colon separated and must appear in the same order as the files on the
+    command line.
   synonyms:
   - -m
   - --name-mapping
-  args: !EmptyFlagArg {}
+  args: !SimpleFlagArg
+    name: list|file
   optional: true
 - !Flag
   description: '[<int>]         Calculate genotype errors by INFO. Use zero based
@@ -98,20 +80,22 @@ named:
     name: file
   optional: true
 - !Flag
-  description: <list|file>           Process the given regions (comma-separated list
-    or one region per line in a file).
+  description: Process the given regions (comma-separated list or one region per line
+    in a file).
   synonyms:
   - -r
   - --regions
-  args: !EmptyFlagArg {}
+  args: !SimpleFlagArg
+    name: list|file
   optional: true
 - !Flag
-  description: <list|file>           Process only the listed samples. Excluding unwanted
-    samples may increase performance considerably.
+  description: Process only the listed samples. Excluding unwanted samples may increase
+    performance considerably.
   synonyms:
   - -s
   - --samples
-  args: !EmptyFlagArg {}
+  args: !SimpleFlagArg
+    name: list|file
   optional: true
 - !Flag
   description: Title for graphs (see also -p)
@@ -132,6 +116,7 @@ named:
   optional: true
 command:
 - vcf-compare
+parent:
 subcommands: []
 help_flag: !Flag
   description: ', -?, --help                      This help message.'
@@ -141,3 +126,33 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "About: Compare bgzipped and tabix indexed VCF files. (E.g. bgzip file.vcf;\
+  \ tabix -p vcf file.vcf.gz)\nUsage: vcf-compare [OPTIONS] file1.vcf file2.vcf ...\n\
+  \       vcf-compare -p plots chr1.cmp chr2.cmp ...\nOptions:\n   -a, --apply-filters\
+  \                 Ignore lines where FILTER column is anything else than PASS or\
+  \ '.'\n   -c, --chromosomes <list|file>       Same as -r, left for backward compatibility.\
+  \ Please do not use as it will be dropped in the future.\n   -d, --debug       \
+  \                  Debugging information. Giving the option multiple times increases\
+  \ verbosity\n   -g, --cmp-genotypes                 Compare genotypes, not only\
+  \ positions\n       --ignore-indels                 Exclude sites containing indels\
+  \ from genotype comparison\n   -m, --name-mapping <list|file>      Use with -g when\
+  \ comparing files with differing column names. The argument to this options is a\n\
+  \                                           comma-separated list or one mapping\
+  \ per line in a file. The names are colon separated and must\n                 \
+  \                          appear in the same order as the files on the command\
+  \ line.\n       --INFO <string> [<int>]         Calculate genotype errors by INFO.\
+  \ Use zero based indecies if field has more than one value. Can be\n           \
+  \                                given multiple times.\n   -p, --plot <prefix> \
+  \                Create plots. Multiple files (e.g. per-chromosome outputs from\
+  \ vcf-compare) can be given.\n   -R, --refseq <file>                 Compare the\
+  \ actual sequence, not just positions. Use with -w to compare indels.\n   -r, --regions\
+  \ <list|file>           Process the given regions (comma-separated list or one region\
+  \ per line in a file).\n   -s, --samples <list|file>           Process only the\
+  \ listed samples. Excluding unwanted samples may increase performance considerably.\n\
+  \   -t, --title <string>                Title for graphs (see also -p)\n   -w, --win\
+  \ <int>                     In repetitive sequences, the same indel can be called\
+  \ at different positions. Consider\n                                           records\
+  \ this far apart as matching (be it a SNP or an indel).\n   -h, -?, --help     \
+  \                 This help message.\n\n"
+generated_using:
+- --help

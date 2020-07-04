@@ -48,10 +48,11 @@ named:
   args: !EmptyFlagArg {}
   optional: true
 - !Flag
-  description: '<1>         number of threads/processes [DEFAULT: 1]'
+  description: 'number of threads/processes [DEFAULT: 1]'
   synonyms:
   - --threads
-  args: !EmptyFlagArg {}
+  args: !SimpleFlagArg
+    name: '1'
   optional: true
 - !Flag
   description: If there is only one contig file for all samples, then this option
@@ -62,6 +63,7 @@ named:
   optional: true
 command:
 - ppanini_gene_caller
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -72,3 +74,18 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: ppanini_gene_caller [-h] -i CONTIG -f FASTQ -o OUTPUT\n       \
+  \                    [--output-basename <sample_name>] -u UNIREF [-r]\n        \
+  \                   [--threads <1>] [--one-contig]\n\nPPANINI gene caller\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  -i CONTIG,\
+  \ --contig CONTIG\n                        contigs file (fna)\n  -f FASTQ, --fastq\
+  \ FASTQ\n                        reads file (fastq)\n  -o OUTPUT, --output OUTPUT\n\
+  \                        Path for outputs\n  --output-basename <sample_name>\n \
+  \                       the basename for the output files\n                    \
+  \    [DEFAULT: input file basename]\n  -u UNIREF, --uniref UNIREF\n            \
+  \            UniRe90 database\n  -r, --resume          bypass commands if the output\
+  \ files exist\n  --threads <1>         number of threads/processes\n           \
+  \             [DEFAULT: 1]\n  --one-contig          If there is only one contig\
+  \ file for all samples, then this option should be provided\n"
+generated_using:
+- --help

@@ -1,4 +1,4 @@
-!Command
+&id001 !Command
 positional: []
 named:
 - !Flag
@@ -202,8 +202,15 @@ named:
   args: !SimpleFlagArg
     name: n
   optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -options
+  args: !EmptyFlagArg {}
+  optional: true
 command:
 - hmmscan
+parent:
 subcommands:
 - !Command
   positional:
@@ -222,6 +229,7 @@ subcommands:
   command:
   - hmmscan
   - hmmdb
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: ': show brief help on version and usage'
@@ -231,16 +239,26 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Incorrect number of command line arguments.\nUsage: hmmscan [-options]\
+    \ <hmmdb> <seqfile>\n\nwhere most common options are:\n  -h : show brief help\
+    \ on version and usage\n\nTo see more help on available options, do hmmscan -h\n\
+    \n"
+  generated_using: &id002 []
 - !Command
   positional:
   - !Positional
     description: ''
     position: 0
-    name: hmmdb
+    name: hmmscan
     optional: false
   - !Positional
     description: ''
     position: 1
+    name: hmmdb
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
     name: seqfile
     optional: false
   named:
@@ -253,6 +271,7 @@ subcommands:
   command:
   - hmmscan
   - seqfile
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: ': show brief help on version and usage'
@@ -262,6 +281,11 @@ subcommands:
     optional: true
   usage_flag:
   version_flag:
+  help_text: "Incorrect number of command line arguments.\nUsage: hmmscan [-options]\
+    \ <hmmdb> <seqfile>\n\nwhere most common options are:\n  -h : show brief help\
+    \ on version and usage\n\nTo see more help on available options, do hmmscan -h\n\
+    \n"
+  generated_using: *id002
 help_flag: !Flag
   description: ': show brief help on version and usage'
   synonyms:
@@ -270,3 +294,39 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "# hmmscan :: search sequence(s) against a profile database\n# HMMER 3.3\
+  \ (Nov 2019); http://hmmer.org/\n# Copyright (C) 2019 Howard Hughes Medical Institute.\n\
+  # Freely distributed under the BSD open source license.\n# - - - - - - - - - - -\
+  \ - - - - - - - - - - - - - - - - - - - - - - - - -\nUsage: hmmscan [-options] <hmmdb>\
+  \ <seqfile>\n\nBasic options:\n  -h : show brief help on version and usage\n\nOptions\
+  \ controlling output:\n  -o <f>           : direct output to file <f>, not stdout\n\
+  \  --tblout <f>     : save parseable table of per-sequence hits to file <f>\n  --domtblout\
+  \ <f>  : save parseable table of per-domain hits to file <f>\n  --pfamtblout <f>\
+  \ : save table of hits and domains to file, in Pfam format <f>\n  --acc        \
+  \    : prefer accessions over names in output\n  --noali          : don't output\
+  \ alignments, so output is smaller\n  --notextw        : unlimit ASCII text output\
+  \ line width\n  --textw <n>      : set max width of ASCII text output lines  [120]\
+  \  (n>=120)\n\nOptions controlling reporting thresholds:\n  -E <x>     : report\
+  \ models <= this E-value threshold in output  [10.0]  (x>0)\n  -T <x>     : report\
+  \ models >= this score threshold in output\n  --domE <x> : report domains <= this\
+  \ E-value threshold in output  [10.0]  (x>0)\n  --domT <x> : report domains >= this\
+  \ score cutoff in output\n\nOptions controlling inclusion (significance) thresholds:\n\
+  \  --incE <x>    : consider models <= this E-value threshold as significant\n  --incT\
+  \ <x>    : consider models >= this score threshold as significant\n  --incdomE <x>\
+  \ : consider domains <= this E-value threshold as significant\n  --incdomT <x> :\
+  \ consider domains >= this score threshold as significant\n\nOptions for model-specific\
+  \ thresholding:\n  --cut_ga : use profile's GA gathering cutoffs to set all thresholding\n\
+  \  --cut_nc : use profile's NC noise cutoffs to set all thresholding\n  --cut_tc\
+  \ : use profile's TC trusted cutoffs to set all thresholding\n\nOptions controlling\
+  \ acceleration heuristics:\n  --max    : Turn all heuristic filters off (less speed,\
+  \ more power)\n  --F1 <x> : MSV threshold: promote hits w/ P <= F1  [0.02]\n  --F2\
+  \ <x> : Vit threshold: promote hits w/ P <= F2  [1e-3]\n  --F3 <x> : Fwd threshold:\
+  \ promote hits w/ P <= F3  [1e-5]\n  --nobias : turn off composition bias filter\n\
+  \nOther expert options:\n  --nonull2     : turn off biased composition score corrections\n\
+  \  -Z <x>        : set # of comparisons done, for E-value calculation\n  --domZ\
+  \ <x>    : set # of significant seqs, for domain E-value calculation\n  --seed <n>\
+  \    : set RNG seed to <n> (if 0: one-time arbitrary seed)  [42]\n  --qformat <s>\
+  \ : assert input <seqfile> is in format <s>: no autodetection\n  --cpu <n>     :\
+  \ number of parallel CPU workers to use for multithreads  [2]\n"
+generated_using:
+- -h

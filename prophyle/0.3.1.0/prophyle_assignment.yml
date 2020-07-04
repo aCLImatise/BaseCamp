@@ -6,9 +6,9 @@ named:
   synonyms:
   - -f
   args: !ChoiceFlagArg
-    choices:
-    - kraken
-    - sam
+    choices: !!set
+      sam:
+      kraken:
   optional: true
 - !Flag
   description: 'measure: h1=hit count, c1=coverage, h2=norm.hit count, c2=norm.coverage
@@ -16,11 +16,11 @@ named:
   synonyms:
   - -m
   args: !ChoiceFlagArg
-    choices:
-    - h1
-    - c1
-    - c2
-    - h2
+    choices: !!set
+      c2:
+      h1:
+      c1:
+      h2:
   optional: true
 - !Flag
   description: annotate assignments
@@ -48,6 +48,7 @@ named:
   optional: true
 command:
 - prophyle_assignment.py
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -58,3 +59,17 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: prophyle_assignment.py [-h] [-f {kraken,sam}] [-m {h1,c1,c2,h2}]\
+  \ [-A]\n                              [-L] [-X] [-c [STR [STR ...]]]\n         \
+  \                     <tree.nhx> <k> <assignments.txt>\n\nImplementation of assignment\
+  \ algorithm\n\npositional arguments:\n  <tree.nhx>          phylogenetic tree (Newick/NHX)\n\
+  \  <k>                 k-mer length\n  <assignments.txt>   assignments in generalized\
+  \ Kraken format\n\noptional arguments:\n  -h, --help          show this help message\
+  \ and exit\n  -f {kraken,sam}     format of output [sam]\n  -m {h1,c1,c2,h2}   \
+  \ measure: h1=hit count, c1=coverage, h2=norm.hit count,\n                     \
+  \ c2=norm.coverage [h1]\n  -A                  annotate assignments\n  -L      \
+  \            use LCA when tie (multiple assignments with the same\n            \
+  \          score)\n  -X                  use LCA for k-mers (multiple hits of a\
+  \ k-mer)\n  -c [STR [STR ...]]  configuration (a JSON dictionary)\n"
+generated_using:
+- --help

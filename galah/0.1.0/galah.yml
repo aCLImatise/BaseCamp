@@ -1,4 +1,4 @@
-!Command
+&id001 !Command
 positional: []
 named:
 - !Flag
@@ -17,14 +17,10 @@ named:
   optional: true
 command:
 - galah
+parent:
 subcommands:
 - !Command
-  positional:
-  - !Positional
-    description: ''
-    position: 0
-    name: OPTIONS
-    optional: true
+  positional: []
   named:
   - !Flag
     description: 'Average nucleotide identity threshold for clustering [default: 99]'
@@ -105,6 +101,7 @@ subcommands:
   command:
   - galah
   - cluster
+  parent: *id001
   subcommands: []
   help_flag: !Flag
     description: Prints help information
@@ -121,6 +118,28 @@ subcommands:
     - --version
     args: !EmptyFlagArg {}
     optional: true
+  help_text: "galah-cluster \nCluster FASTA files by average nucleotide identity\n\
+    \nUSAGE:\n    galah cluster [OPTIONS]\n\nFLAGS:\n    -h, --help       Prints help\
+    \ information\n    -V, --version    Prints version information\n\nOPTIONS:\n \
+    \       --ani <ani>\n            Average nucleotide identity threshold for clustering\
+    \ [default: 99]\n\n        --checkm-tab-table <checkm-tab-table>\n           \
+    \ Output of CheckM lineage_wf/taxonomy_wf/qa with --tab_table specified\n\n  \
+    \      --genome-fasta-directory <genome-fasta-directory>    Directory containing\
+    \ fasta files for processing\n    -x, --genome-fasta-extension <genome-fasta-extension>\n\
+    \            File extension of FASTA files in --genome-fasta-directory [default:\
+    \ fna]\n\n    -f, --genome-fasta-files <genome-fasta-files>...         List of\
+    \ fasta files for processing\n        --genome-fasta-list <genome-fasta-list>\
+    \              List of fasta file paths, one per line, for processing\n      \
+    \  --max-contamination <max-contamination>\n            Genomes with greater than\
+    \ this percentage of contamination are exluded\n\n        --min-completeness <min-completeness>\n\
+    \            Genomes with less than this percentage of completeness are exluded\
+    \ [default: 0]\n\n        --prethreshold-ani <prethreshold-ani>\n            Require\
+    \ at least this dashing-derived ANI for preclustering and to avoid FastANI on\
+    \ distant lineages within\n            preclusters [default: 95]\n    -t, --threads\
+    \ <threads>                                  Number of CPU threads to use [default:\
+    \ 1]\n"
+  generated_using: &id002
+  - --help
 - !Command
   positional: []
   named:
@@ -149,25 +168,8 @@ subcommands:
   command:
   - galah
   - cluster-validate
-  subcommands:
-  - !Command
-    positional: []
-    named:
-    - !Flag
-      description: ''
-      synonyms:
-      - --cluster-file
-      args: !SimpleFlagArg
-        name: cluster-file
-      optional: true
-    command:
-    - galah
-    - cluster-validate
-    - OPTIONS
-    subcommands: []
-    help_flag:
-    usage_flag:
-    version_flag:
+  parent: *id001
+  subcommands: []
   help_flag: !Flag
     description: Prints help information
     synonyms:
@@ -183,6 +185,13 @@ subcommands:
     - --version
     args: !EmptyFlagArg {}
     optional: true
+  help_text: "galah-cluster-validate \nVerify clustering results\n\nUSAGE:\n    galah\
+    \ cluster-validate [OPTIONS] --cluster-file <cluster-file>\n\nFLAGS:\n    -h,\
+    \ --help       Prints help information\n    -V, --version    Prints version information\n\
+    \nOPTIONS:\n        --ani <ani>                      ANI to validate against [default:\
+    \ 99]\n        --cluster-file <cluster-file>    Output of 'cluster' subcommand\n\
+    \    -t, --threads <threads>               [default: 1]\n"
+  generated_using: *id002
 help_flag: !Flag
   description: Prints help information
   synonyms:
@@ -198,3 +207,12 @@ version_flag: !Flag
   - --version
   args: !EmptyFlagArg {}
   optional: true
+help_text: "galah 0.1.0\nBen J. Woodcroft <benjwoodcroft near gmail.com>\nMetagenome\
+  \ assembled genome (MAG) dereplicator / clusterer\n\nUSAGE:\n    galah [FLAGS] [SUBCOMMAND]\n\
+  \nFLAGS:\n    -h, --help       Prints help information\n    -q, --quiet      Unless\
+  \ there is an error, do not print logging information\n    -V, --version    Prints\
+  \ version information\n    -v, --verbose    Print extra debug logging information\n\
+  \nSUBCOMMANDS:\n    cluster             Cluster FASTA files by average nucleotide\
+  \ identity\n    cluster-validate    Verify clustering results\n    help        \
+  \        Prints this message or the help of the given subcommand(s)\n"
+generated_using: *id002

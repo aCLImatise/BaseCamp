@@ -35,7 +35,7 @@ named:
 - !Flag
   description: Process multiple protein identification runs in the input separately,
     don't merge them. Merging results in loss of descriptive information of the single
-    protein identification runs .
+    protein identification runs.
   synonyms:
   - -separate_runs
   args: !EmptyFlagArg {}
@@ -71,32 +71,11 @@ named:
 - !Flag
   description: "Binary logarithm of the max. number of connected states in a subgraph.\
     \ For a value N, subgraphs that are bigger than 2^N will be split up, sacrificing\
-    \ accuracy for runtime. '0'  uses the default (18). (default: '0' min: '0')"
+    \ accuracy for runtime. '0' uses the default (18). (default: '0' min: '0')"
   synonyms:
   - -log2_states
   args: !SimpleFlagArg
     name: number
-  optional: true
-- !Flag
-  description: ":protein <value>       Protein prior probability ('gamma' parameter)\
-    \ (default: '0.0' min: '0.0')"
-  synonyms:
-  - -prob
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ":peptide <value>       Peptide emission probability ('alpha' parameter)\
-    \ (default: '0.0' min: '0.0')"
-  synonyms:
-  - -prob
-  args: !EmptyFlagArg {}
-  optional: true
-- !Flag
-  description: ":spurious <value>      Spurious peptide identification probability\
-    \ ('beta' parameter) (default: '0.0' min: '0.0')"
-  synonyms:
-  - -prob
-  args: !EmptyFlagArg {}
   optional: true
 - !Flag
   description: Use the given TOPP INI file
@@ -128,6 +107,7 @@ named:
   optional: true
 command:
 - FidoAdapter
+parent:
 subcommands: []
 help_flag: !Flag
   description: Shows options
@@ -137,3 +117,41 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "\nFidoAdapter -- Runs the protein inference engine Fido.\nFull documentation:\
+  \ http://www.openms.de/documentation/TOPP_FidoAdapter.html\nVersion: 2.5.0-HEAD-HASH-NOTFOUND-HEAD-HASH-NOTFOUND\
+  \ May 19 2020, 23:12:02, Revision: HEAD-HASH-NOTFOUND\nTo cite OpenMS:\n  Rost HL,\
+  \ Sachsenberg T, Aiche S, Bielow C et al.. OpenMS: a flexible open-source software\
+  \ platform for mass spectrometry data analysis. Nat Meth. 2016; 13, 9: 741-748.\
+  \ doi:10.1038/nmeth.3959.\n\nUsage:\n  FidoAdapter <options>\n\nOptions (mandatory\
+  \ options marked with '*'):\n  -in <file>*                 Input: identification\
+  \ results (valid formats: 'idXML')\n  -out <file>*                Output: identification\
+  \ results with scored/grouped proteins (valid formats: 'idXML')\n  -fido_executable\
+  \ <path>*    The Fido executable. Provide a full or relative path, or make sure\
+  \ it can be found in your PATH environment.\n  -fidocp_executable <path>*  The FidoChooseParameters\
+  \ executable. Provide a full or relative path, or make sure it can be found in your\
+  \ PATH environment.\n  -separate_runs              Process multiple protein identification\
+  \ runs in the input separately, don't merge them. Merging results in loss of descriptive\
+  \ information of the single protein identification runs.\n  -greedy_group_resolution\
+  \    Post-process Fido output with greedy resolution of shared peptides based on\
+  \ the protein probabilities. Also adds the resolved ambiguity groups to output.\n\
+  \  -no_cleanup                 Omit clean-up of peptide sequences (removal of non-letter\
+  \ characters, replacement of I with L)\n  -all_PSMs                   Consider all\
+  \ PSMs of each peptide, instead of only the best one\n  -group_level           \
+  \     Perform inference on protein group level (instead of individual protein level).\
+  \ This will lead to higher probabilities for (bigger) protein groups.\n  -log2_states\
+  \ <number>       Binary logarithm of the max. number of connected states in a subgraph.\
+  \ For a value N, subgraphs that are bigger than 2^N will be split up, sacrificing\
+  \ accuracy for runtime. '0' uses the default (18). (default: '0' min: '0')\n\nProbability\
+  \ values for running Fido directly, i.e. without parameter estimation (in which\
+  \ case other settings, except 'log2_states', are ignored):\n  -prob:protein <value>\
+  \       Protein prior probability ('gamma' parameter) (default: '0.0' min: '0.0')\n\
+  \  -prob:peptide <value>       Peptide emission probability ('alpha' parameter)\
+  \ (default: '0.0' min: '0.0')\n  -prob:spurious <value>      Spurious peptide identification\
+  \ probability ('beta' parameter) (default: '0.0' min: '0.0')\n\n               \
+  \               \nCommon TOPP options:\n  -ini <file>                 Use the given\
+  \ TOPP INI file\n  -threads <n>                Sets the number of threads allowed\
+  \ to be used by the TOPP tool (default: '1')\n  -write_ini <file>           Writes\
+  \ the default configuration file\n  --help                      Shows options\n\
+  \  --helphelp                  Shows all options (including advanced)\n\n"
+generated_using:
+- --help

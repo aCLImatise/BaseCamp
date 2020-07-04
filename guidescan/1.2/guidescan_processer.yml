@@ -62,9 +62,9 @@ named:
   synonyms:
   - --pampos
   args: !ChoiceFlagArg
-    choices:
-    - start
-    - end
+    choices: !!set
+      start:
+      end:
   optional: true
 - !Flag
   description: 'minimum mismatch similarity between guideRNAs; a candidate guideRNA
@@ -123,6 +123,7 @@ named:
   optional: true
 command:
 - guidescan_processer
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -133,3 +134,57 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: guidescan_processer [-h] -f FASTA [-n NAME] [--minchr MINCHRLEN]\n\
+  \                           [-c CHROM] [-l LENGTH] [-p PAM] [-a ALTPAM]\n      \
+  \                     [--pampos {start,end}] [-s SIM] [-d OFFDIST]\n           \
+  \                [--maxoffpos MAXOFFPOS] [--maxoffcount MAXOFFCOUNT]\n         \
+  \                  [--gnupath GNUPATH] [-t THREADS]\n\nPrecompute guideRNA database\
+  \ from genomic sequences\n\noptional arguments:\n  -h, --help            show this\
+  \ help message and exit\n  -f FASTA              path to fasta file or folder with\
+  \ fasta files (will\n                        use all .fa, .fasta, .fa.gz, .fasta.gz\
+  \ files found in\n                        the folder) (default: None)\n  -n NAME\
+  \               project name, use in all output (will produce a folder\n       \
+  \                 with this name containing intermediate and final files\n     \
+  \                   in it) (default: myguides)\n  --minchr MINCHRLEN    minimum\
+  \ chromosome length to consider, chromosomes in\n                        input FASTA\
+  \ that are shorter than this will be\n                        excluded from analysis;\
+  \ simple way to exclude\n                        scaffolds unassigned to known chromosomes\
+  \ etc.\n                        (default: 10000)\n  -c CHROM              list names\
+  \ of chromosomes (comma separated) that will\n                        be used in\
+  \ analysis, or name of file where this list\n                        is stored (default:\
+  \ )\n  -l LENGTH             desired length of guideRNAs (not including PAM)\n \
+  \                       (default: 20)\n  -p PAM                PAM sequence (default:\
+  \ NGG)\n  -a ALTPAM             alternative PAM sequences (separate multiple ones\
+  \ by\n                        commas), will not be used in primary guideRNAs, but\n\
+  \                        will be considered in off-targets; all PAM sequences\n\
+  \                        should be mutually exclusive and of the same length\n \
+  \                       (default: NAG)\n  --pampos {start,end}  position of PAM\
+  \ with respect to guideRNA (default:\n                        end)\n  -s SIM   \
+  \             minimum mismatch similarity between guideRNAs; a\n               \
+  \         candidate guideRNA (with primary PAM) should not have\n              \
+  \          alternative occurences in the genome (with any PAM)\n               \
+  \         with less than this many mismatches (not including\n                 \
+  \       PAM) (default: 2)\n  -d OFFDIST            maximum distance to consider\
+  \ from guideRNA to its off-\n                        target; off-target is an alternative\
+  \ occurrence (with\n                        any PAM) of this guideRNA in the genome\
+  \ at edit\n                        distance at most this number (including PAM);\n\
+  \                        currently values larger than 4 are infeasible for\n   \
+  \                     large (e.g., mammalian) genomes, and value 3 will take\n \
+  \                       long time to compute; use -1 if do not want any off-\n \
+  \                       target info in resulting database (can add it later\n  \
+  \                      using bamdata) (default: 3)\n  --maxoffpos MAXOFFPOS\n  \
+  \                      maximum number of positions of k-mers to remember; for\n\
+  \                        k-mer occurring multiple times in the genome (such\n  \
+  \                      k-mers cannot be guideRNAs, but their positions can be\n\
+  \                        off-targets of guideRNAs) store at most this many\n   \
+  \                     arbitrary their occurrences in the genome (default:\n    \
+  \                    10)\n  --maxoffcount MAXOFFCOUNT\n                        maximum\
+  \ number of off-targets to store for a guideRNA\n                        in a resulting\
+  \ BAM library (default: 1000)\n  --gnupath GNUPATH     path to gnu utilities, e.g.\
+  \ \"/usr/local/bin\"; if\n                        empty, use system defaults; requires:\
+  \ cut, sort, uniq,\n                        shuf (default: )\n  -t THREADS     \
+  \       how many threads to use; do not specify more than you\n                \
+  \        have on your system; currently not implemented\n                      \
+  \  (default: 1)\n"
+generated_using:
+- --help

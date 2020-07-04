@@ -24,7 +24,7 @@ named:
     name: CONFIG
   optional: true
 - !Flag
-  description: 'The path to the trimmomatic-0.XX.jar file. (default: /tmp/tmpk1sf2i_q/bin/trimmomatic)'
+  description: 'The path to the trimmomatic-0.XX.jar file. (default: /tmp/tmp0e300ahp/bin/trimmomatic)'
   synonyms:
   - --trimmomatic
   args: !SimpleFlagArg
@@ -75,9 +75,9 @@ named:
   synonyms:
   - --phred
   args: !ChoiceFlagArg
-    choices:
-    - phred33
-    - phred64
+    choices: !!set
+      phred33:
+      phred64:
   optional: true
 - !Flag
   description: 'The path to a directory to hold logs. (default: None)'
@@ -91,13 +91,14 @@ named:
   synonyms:
   - --verbosity
   args: !ChoiceFlagArg
-    choices:
-    - INFO
-    - WARN
-    - CRITICAL
+    choices: !!set
+      WARN:
+      CRITICAL:
+      INFO:
   optional: true
 command:
 - illumiprocessor
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -108,3 +109,30 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: illumiprocessor [-h] --input INPUT --output OUTPUT --config CONFIG\n\
+  \                       [--trimmomatic TRIMMOMATIC] [--min-len MIN_LEN]\n      \
+  \                 [--no-merge] [--cores CORES] [--r1-pattern R1_PATTERN]\n     \
+  \                  [--r2-pattern R2_PATTERN] [--se]\n                       [--phred\
+  \ {phred33,phred64}] [--log-path LOG_PATH]\n                       [--verbosity\
+  \ {INFO,WARN,CRITICAL}]\n\nBatch trim Illumina reads for adapter contamination and\
+  \ low quality bases\nusing Trimmomatic\n\noptional arguments:\n  -h, --help    \
+  \        show this help message and exit\n  --input INPUT         The input directory\
+  \ of raw reads to trim. (default:\n                        None)\n  --output OUTPUT\
+  \       The output directory of clean reads to create.\n                       \
+  \ (default: None)\n  --config CONFIG       A configuration file containing the tag:sample\
+  \ mapping\n                        and renaming options. (default: None)\n  --trimmomatic\
+  \ TRIMMOMATIC\n                        The path to the trimmomatic-0.XX.jar file.\
+  \ (default:\n                        /tmp/tmp0e300ahp/bin/trimmomatic)\n  --min-len\
+  \ MIN_LEN     The minimum length of reads to keep. (default: 40)\n  --no-merge \
+  \           When trimming PE reads, do not merge singleton files.\n            \
+  \            (default: False)\n  --cores CORES         Number of compute cores to\
+  \ use. (default: 1)\n  --r1-pattern R1_PATTERN\n                        An optional\
+  \ regex pattern to find R1 reads. (default:\n                        None)\n  --r2-pattern\
+  \ R2_PATTERN\n                        An optional regex pattern to find R2 reads.\
+  \ (default:\n                        None)\n  --se                  Single-end reads.\
+  \ (default: False)\n  --phred {phred33,phred64}\n                        The type\
+  \ of fastq encoding used. (default: phred33)\n  --log-path LOG_PATH   The path to\
+  \ a directory to hold logs. (default: None)\n  --verbosity {INFO,WARN,CRITICAL}\n\
+  \                        The logging level to use. (default: INFO)\n"
+generated_using:
+- --help

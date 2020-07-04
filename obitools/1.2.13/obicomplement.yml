@@ -232,7 +232,89 @@ named:
   optional: true
 command:
 - obicomplement
+parent:
 subcommands: []
 help_flag:
 usage_flag:
 version_flag:
+help_text: "Usage: \n:py:mod:`obicomplement`: reverse-complements sequences\n======================================================\n\
+  \n.. codeauthor:: Eric Coissac <eric.coissac@metabarcoding.org>\n\n:py:mod:`obicomplement`\
+  \ reverse-complements the sequence records.\n\n\n    .. TIP:: The identifiers of\
+  \ the sequence records are modified by appending\n             to them the ``_CMP``\
+  \ suffix.\n             \n    .. TIP:: a attribute with key ``complemented`` and\
+  \ value sets to ``True`` is added\n             on each reversed complemented sequence\
+  \ record.\n             \nBy using the selection option set, it is possible to reverse\
+  \ complement only a subset of the\nsequence records included in the input file.\
+  \ The selected sequence are reversed complemented,\nothers are stored without modification\
+  \ \n\n    *Example 1:* \n    \n    .. code-block:: bash\n    \n       > obicomplement\
+  \ seq.fasta > seqRC.fasta\n       \n    Reverses complements all sequence records\
+  \ from the ``seq.fasta`` file and stores the \n    result to the ``seqRC.fasta``\
+  \ file.\n\n    *Example 2:* \n    \n    .. code-block:: bash\n    \n       > obicomplement\
+  \ -s 'A{10,}$' seq.fasta > seqRC.fasta\n       \n    Reverses complements sequence\
+  \ records from the ``seq.fasta`` file only if they finish\n    by at least 10 ``A``.\
+  \ Others sequences are stored without modification.\n\n\n\n***********\n* Options\
+  \ *\n***********\n  -h, --help            show this help message and exit\n  --DEBUG\
+  \               Set logging in debug mode\n  --without-progress-bar\n          \
+  \              desactivate progress bar\n\n  *********************\n  * Filtering\
+  \ options *\n  *********************\n    -s <REGULAR_PATTERN>, --sequence=<REGULAR_PATTERN>\n\
+  \                        regular expression pattern used to select the\n       \
+  \                 sequence. The pattern is case insensitive\n    -D <REGULAR_PATTERN>,\
+  \ --definition=<REGULAR_PATTERN>\n                        regular expression pattern\
+  \ matched against the\n                        definition of the sequence. The pattern\
+  \ is case\n                        sensitive\n    -I <REGULAR_PATTERN>, --identifier=<REGULAR_PATTERN>\n\
+  \                        regular expression pattern matched against the\n      \
+  \                  identifier of the sequence. The pattern is case\n           \
+  \             sensitive\n    --id-list=<FILENAME>\n                        file\
+  \ containing identifiers of sequences to select\n    -a <ATTRIBUTE_NAME>:<REGULAR_PATTERN>,\
+  \ --attribute=<ATTRIBUTE_NAME>:<REGULAR_PATTERN>\n                        regular\
+  \ expression pattern matched against the\n                        attributes of\
+  \ the sequence. the value of this atribute\n                        is of the form\
+  \ : attribute_name:regular_pattern. The\n                        pattern is case\
+  \ sensitive.Several -a option can be\n                        used on the same commande\
+  \ line.\n    -A <ATTRIBUTE_NAME>, --has-attribute=<ATTRIBUTE_NAME>\n           \
+  \             select sequence with attribute <ATTRIBUTE_NAME>\n                \
+  \        defined\n    -p <PYTHON_EXPRESSION>, --predicat=<PYTHON_EXPRESSION>\n \
+  \                       python boolean expression to be evaluated in the\n     \
+  \                   sequence context. The attribute name can be used in\n      \
+  \                  the expression as variable name .An extra variable\n        \
+  \                named 'sequence' refersto the sequence object itself.\n       \
+  \                 Several -p option can be used on the same commande\n         \
+  \               line.\n    -L <##>, --lmax=<##>\n                        keep sequences\
+  \ shorter than lmax\n    -l <##>, --lmin=<##>\n                        keep sequences\
+  \ longer than lmin\n    -v, --inverse-match\n                        revert the\
+  \ sequence selection [default : False]\n\n  ****************************\n  * Taxonomy\
+  \ loading options *\n  ****************************\n    -d <FILENAME>, --database=<FILENAME>\n\
+  \                        ecoPCR taxonomy Database name\n    -t <FILENAME>, --taxonomy-dump=<FILENAME>\n\
+  \                        NCBI Taxonomy dump repository name\n\n  **************************************\n\
+  \  * Taxonomy-related filtering options *\n  **************************************\n\
+  \    --require-rank=<RANK_NAME>\n                        select sequence with taxid\
+  \ tag containing a parent of\n                        rank <RANK_NAME>\n    -r <TAXID>,\
+  \ --required=<TAXID>\n                        Select the sequences having the ancestor\
+  \ of taxid\n                        <TAXID>. If several ancestors are specified\
+  \ (with  '-r\n                        taxid1 -r taxid2'), the sequences having at\
+  \ least one\n                        of them are selected\n    -i <TAXID>, --ignore=<TAXID>\n\
+  \                        ignored taxid\n\n  *************************************\n\
+  \  * Restriction to a sub-part options *\n  *************************************\n\
+  \    Allow to limit analysis to a sub-part of the data file\n\n    --skip=<N>  \
+  \        skip the N first sequences\n    --only=<N>          treat only N sequences\n\
+  \n  ************************\n  * Input format options *\n  ************************\n\
+  \    If not specified, a test is done to determine the file format\n\n    --genbank\
+  \           Input file is in genbank format\n    --embl              Input file\
+  \ is in embl format\n    --skip-on-error     Skip sequence entries with parse error\n\
+  \    --fasta             Input file is in fasta nucleic format (including\n    \
+  \                    obitools fasta extentions)\n    --ecopcr            Input file\
+  \ is in ecopcr format\n    --raw-fasta         Input file is in fasta format (but\
+  \ more tolerant to\n                        format variant)\n    --sanger      \
+  \      Input file is in sanger fastq nucleic format (standard\n                \
+  \        fastq)\n    --solexa            Input file is in fastq nucleic format produced\
+  \ by\n                        solexa sequencer\n    --ecopcrdb          Input file\
+  \ is an ecopcr database\n    --nuc               Input file contains nucleic sequences\n\
+  \    --prot              Input file contains protein sequences\n\n  *************************\n\
+  \  * Output format options *\n  *************************\n    --fasta-output  \
+  \    Output sequences in obitools fasta format\n    --fastq-output      Output sequences\
+  \ in sanger fastq format\n    --ecopcrdb-output=ECOPCROUTPUT\n                 \
+  \       Output sequences in ecopcr database format (sequence\n                 \
+  \       records are not printed on standard output)\n    --uppercase         Print\
+  \ sequences in upper case (default is lower case)\n"
+generated_using:
+- --help

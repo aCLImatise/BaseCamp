@@ -34,10 +34,10 @@ named:
   synonyms:
   - --verbosity
   args: !ChoiceFlagArg
-    choices:
-    - INFO
-    - WARN
-    - CRITICAL
+    choices: !!set
+      WARN:
+      CRITICAL:
+      INFO:
   optional: true
 - !Flag
   description: The path to a directory to hold logs.
@@ -54,6 +54,7 @@ named:
   optional: true
 command:
 - phyluce_utilities_merge_next_seq_gzip_files
+parent:
 subcommands: []
 help_flag: !Flag
   description: show this help message and exit
@@ -64,3 +65,19 @@ help_flag: !Flag
   optional: true
 usage_flag:
 version_flag:
+help_text: "usage: phyluce_utilities_merge_next_seq_gzip_files [-h] --input INPUT\
+  \ --config\n                                                   CONFIG --output OUTPUT\n\
+  \                                                   [--section SECTION]\n      \
+  \                                             [--verbosity {INFO,WARN,CRITICAL}]\n\
+  \                                                   [--log-path LOG_PATH]\n    \
+  \                                               [--se]\n\nGiven a config file and\
+  \ inputs, merge multiple read files output by the\nNextSeq into one\n\noptional\
+  \ arguments:\n  -h, --help            show this help message and exit\n  --input\
+  \ INPUT         The path to a directory containing the reads to merge.\n  --config\
+  \ CONFIG       The path to the config file to use for merging.\n  --output OUTPUT\
+  \       The path to a directory in which to store the output.\n  --section SECTION\
+  \     The section holding the merge info.\n  --verbosity {INFO,WARN,CRITICAL}\n\
+  \                        The logging level to use.\n  --log-path LOG_PATH   The\
+  \ path to a directory to hold logs.\n  --se                  Run is single-end.\n"
+generated_using:
+- --help
