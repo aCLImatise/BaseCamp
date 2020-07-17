@@ -1,0 +1,74 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -genome
+  args: !SimpleFlagArg
+    name: genomefile
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -inharvest
+  args: !SimpleFlagArg
+    name: LTRharvest_input
+  optional: true
+command:
+- LTR_retriever
+parent:
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n##########################\n### LTR_retriever v2.8.7 ###\n##########################\n\
+  \nA program for accurate identification of LTR-RTs from outputs of LTRharvest and\
+  \ LTR_FINDER,\n\tgenerates non-redundant LTR-RT library for genome annotations.\n\
+  \nShujun Ou (shujun.ou.1@gmail.com) 03/26/2019\n\nUsage: LTR_retriever -genome genomefile\
+  \ -inharvest LTRharvest_input [options]\n\n【Input Options】\n-genome      [File]\t\
+  specify the genome sequence file (FASTA)\n-inharvest   [File]\tLTR-RT candidates\
+  \ from LTRharvest\n-infinder    [File]\tLTR-RT candidates from LTR_FINDER\n-inmgescan\
+  \   [File]\tLTR-RT candidates from MGEScan_LTR\n-nonTGCA     [File]\tNon-canonical\
+  \ LTR-RT candidates from LTRharvest\n\n【Output options】\n-verbose/-v\t\tretain intermediate\
+  \ outputs (developer mode)\n-noanno\t\t\tdisable whole genome LTR-RT annotation\
+  \ (no GFF output)\n\n【Filter options】\n-misschar    [CHR]\tspecify the ambiguous\
+  \ character (default N)\n-Nscreen\t\tdisable filtering ambiguous sequence in candidates\n\
+  -missmax     [INT]\tmaximum number of ambiguous bp allowed in a candidate (default\
+  \ 10)\n-missrate    [0-1]\tmaximum percentage of ambiguous bp allowed in a candidate\
+  \ (default 0.8)\n-minlen      [INT]\tminimum bp of the LTR region (default 100)\n\
+  -max_ratio   [FLOAT]\tmaximum length ratio of internal region/LTR region (default\
+  \ 50)\n-minscore    [INT]\tminimum alignment length (INT/2) to identify tandem repeats\
+  \ (default 1000)\n-flankmiss   [1-60]\tmaximum ambiguous length (bp) allowed in\
+  \ 60bp-flanking sequences (default 25)\n-flanksim    [0-100]\tminimum percentage\
+  \ of identity for flanking sequence alignment (default 60)\n-flankaln    [0-1]\t\
+  maximum alignment portion allowed for 60bp-flanking sequences (default 0.6)\n-motif\
+  \       [[STRING]]\tspecify non-canonical motifs to search for\n\t\t\t(default -motif\
+  \ [TCCA TGCT TACA TACT TGGA TATA TGTA TGCA])\n-notrunc\t\tDiscard truncated LTR-RTs\
+  \ and nested LTR-RTs (will dampen sensitivity)\n-procovTE     [0-1]\tmaximum portion\
+  \ of allowed for cumulated DNA TE database and LINE database \n\t\t\tlignments (default\
+  \ 0.7)\n-procovPL     [0-1]\tmaximum portion allowed for cumulated plant protein\
+  \ database alignments (default 0.7)\n-prolensig   [INT]\tminimum alignment length\
+  \ (aa) for LINE/DNA transposase/plant protein alignment (default 30)\n\n【Library\
+  \ options】\n-blastclust  [[STRING]]\ttrigger to use blastclust and customize parameters\
+  \ \n\t\t\t(default -blastclust [-L .9 -b T -S 80])\n-cdhit       [[STRING]]\ttrigger\
+  \ to use cd-hit-est (default) and customize parameters \n\t\t\t(default -cdhit [-c\
+  \ 0.8 -G 0.8 -s 0.9 -aL 0.9 -aS 0.9 -M 0])\n-linelib     [FASTA]\tprovide LINE transposase\
+  \ database for LINE TE exclusion \n\t\t\t(default /database/Tpases020812LINE)\n\
+  -dnalib      [FASTA]\tprovide DNA TE transposase database for DNA TE exclusion \n\
+  \t\t\t(default /database/Tpases020812DNA)\n-plantprolib [FASTA]\tprovide plant protein\
+  \ database for coding sequence exclusion \n\t\t\t(default /database/alluniRefprexp082813)\n\
+  -TEhmm       [Pfam]\tprovide Pfam database for TE identification \n\t\t\t(default\
+  \ /database/TEfam.hmm)\n\n【Miscellaneous】\n-u           [FLOAT]\tneutral mutation\
+  \ rate (per bp per ya) (default 1.3e-8 (from rice))\n-step\t     [STRING]\trestart\
+  \ the program from a particular step. Existing outputs will be overwritten. Options:\
+  \ \n\t\t\t\tInit (default, from the beginning);\n\t\t\t\tMajor (Tandem repeat cleanup\
+  \ finished, structrual analyses next)\n\t\t\t\tTrunc (Structural analyses finished,\
+  \ truncated LTR recycle next)\n\t\t\t\tPromask (Truncated LTR recycle finished,\
+  \ protein contamination cleanup next)\n\t\t\t\tLibrary (Protein contamination cleanup\
+  \ finished, initial library construction next)\n\t\t\t\tNext (Initial library construction\
+  \ finished, non-TGCA analyses next)\n-threads     [INT]\tnumber of threads (≤ total\
+  \ available threads, default 4)\n-help/-h\t\tdisplay this help information\n\n######Questions\
+  \ and Issues Please See: https://github.com/oushujun/LTR_retriever ######\n\n"
+generated_using:
+- --help

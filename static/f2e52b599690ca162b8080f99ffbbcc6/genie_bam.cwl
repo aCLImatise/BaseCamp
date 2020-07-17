@@ -1,0 +1,8 @@
+class: CommandLineTool
+id: ../../../../home/ubuntu/BiocondaCli/genie_bam.cwl
+inputs: []
+outputs: []
+cwlVersion: v1.1
+baseCommand:
+- genie
+- bam

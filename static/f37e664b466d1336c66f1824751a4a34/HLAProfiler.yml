@@ -1,0 +1,223 @@
+&id001 !Command
+positional: []
+named: []
+command:
+- HLAProfiler.pl
+parent:
+subcommands:
+- !Command
+  positional:
+  - !Positional
+    description: Refines the allelle call by looking predicting the true allele sequence
+      using observed reads and looking for a better match in the reference
+    position: 0
+    name: refine_only
+    optional: false
+  - !Positional
+    description: Reports if the observe reads support a novel allele sequence not
+      found in the reference
+    position: 1
+    name: predict_only
+    optional: false
+  - !Positional
+    description: Refines the allele call (-refine_only) and report novel alleles (-novel_only)
+    position: 2
+    name: refineAndPredict
+    optional: false
+  - !Positional
+    description: Refines the allele call (-refine_only) and report novel alleles (-novel_only),
+      creates a profile for the refined/novel allele sequence and calculates prediction
+      metrics.
+    position: 3
+    name: all
+    optional: false
+  - !Positional
+    description: Turns off refinement and novel allele prediction.
+    position: 4
+    name: none
+    optional: false
+  named: []
+  command:
+  - HLAProfiler.pl
+  - predict
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nHLAProfiler.pl predict\n\nDESCRIPTION\nA tool for predicting the HLA\
+    \ type of Paired-end NGS data.\n\nUSAGE:\nperl HLAProfiler.pl predict <options>\n\
+    \nRequired Options:\n-fastq1|fq1\t\tlocation of read1 fastq (required)\n-fastq2|fq2\t\
+    \tlocation of read2 fastq (required)\n-database_name|db\tname of HLA database\
+    \ (required)\n-directory_dir|dd\tname of parent directory of database (required)\n\
+    -reference|r\treference fa used to create the database (required)\n\nAllele Refinement\
+    \ Options:\n-allele_refinement|ar\tSpecifies the level to which the predicted\
+    \ alleles are to be refined based on the observed reads (default:all)\n     Possible\
+    \ values:\n\trefine_only\tRefines the allelle call by looking predicting the true\
+    \ allele sequence using observed reads and looking for a better match in the reference\n\
+    \tpredict_only\tReports if the observe reads support a novel allele sequence not\
+    \ found in the reference\n\trefineAndPredict\tRefines the allele call (-refine_only)\
+    \ and report novel alleles (-novel_only)\n\tall\t\tRefines the allele call (-refine_only)\
+    \ and report novel alleles (-novel_only), creates a profile for the refined/novel\
+    \ allele sequence and calculates prediction metrics.\n\tnone\t\tTurns off refinement\
+    \ and novel allele prediction.\n\n-num_reads|nr\t\tnumber of reads to simulated\
+    \ per reference allele for k-mer profile creations.(default:500000)\n-read_length|rl\t\
+    \tlength of reads simulated for k-mer profile. Same as the length of the k-mers\
+    \ in the profile.(default:50)\n-max_insert|m\t\tmaximum size of insert (default:1000)\n\
+    -scale|sc\t\tscale of pareto distribution to determine insert size (default:80)\n\
+    -shape|sh\t\tshape of pareto distribution to determine insert size (default:0.7)\n\
+    -seed|sd\t\tseed of random number generator for simulation (default:1234)\n\n\
+    General Options:\n-intermediate_files|if\ttoggles flag to keep intermediate files\
+    \ (default:off)\n-minimum_reads|min\tminimum number of reads from a gene before\
+    \ attempting to call HLA types.(default:100)\n-threads|c\t\tnumber of threads\
+    \ (default:1)\n-output_dir|od\t\toutput directory (default:\" .\")\n-kraken_path|kp\t\
+    \tbase directory of kraken installation. (default:base directory of path returned\
+    \ by `which kraken`)\n-log|l\t\t\tname of the prediction log file\n-help|h\t\t\
+    \tprints this help prompt\n\nAUTHORS:\nMartin Buchkovich:martin.buchkovich@q2labsolutions.com\n\
+    Chad Brown:chad.brown@q2labsolutions.com\n\nCREATED:\n1 Oct 2016\n\nLAST UPDATED:\n\
+    14 Jul 2017\n\nCopyright. Q2 Solutions|EA Genomics. 2016\n\n\n"
+  generated_using: &id002
+  - --help
+- !Command
+  positional:
+  - !Positional
+    description: ''
+    position: 0
+    name: perl
+    optional: false
+  - !Positional
+    description: ''
+    position: 1
+    name: HLAProfiler.pl
+    optional: false
+  - !Positional
+    description: ''
+    position: 2
+    name: create_profile
+    optional: false
+  named: []
+  command:
+  - HLAProfiler.pl
+  - create_profiles
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nHLAProfiler.pl create_profiles\n\nDESCRIPTION\nA tool for creating\
+    \ a k-mer profile to used with HLAProfile.pl predict\n\nUSAGE:\nperl HLAProfiler.pl\
+    \ create_profile <options>\n\nRequired Options:\n-reference|r\tlocation of HLA\
+    \ reference fasta file.(required)\n\nOutput Options:\n-output_dir|o\t\tlocation\
+    \ of output directory(default:\".\")\n-database_dir|dd\tlocation of database parent\
+    \ directory(default:\".\")\n-database_name|db\tname of the HLA database to be\
+    \ created(default:hla)\n-kraken_path|kp\t\tbase directory of kraken installation.\
+    \ (default:base directory of path returned by `which kraken`)\n\nK-mer profile\
+    \ creation\n-num_reads|nr\t\tnumber of reads to simulated per reference allele\
+    \ for k-mer profile creations.(default:500000)\n-read_length|rl\t\tlength of reads\
+    \ simulated for k-mer profile. Same as the length of the k-mers in the profile.(default:50)\n\
+    -filter_reads|f\t\ttoggle whether or not to filter reads using in the HLA database\
+    \ when building the k-mer profile.It is STRONGLY recommended to use the default\
+    \ for this setting. Possibile values 0 or 1. (default:1)\n-intermediate_files|if\t\
+    toggles flag to keep intermediate files (default:off)\n-max_insert|mi\t\tmaximum\
+    \ size of insert (default:1000)\n-scale|sc\t\tscale of pareto distribution to\
+    \ determine insert size (default:80)\n-shape|sh\t\tshape of pareto distribution\
+    \ to determine insert size (default:0.7)\n-seed\t\t\tseed of random number generator\
+    \ for simulation (default:1234)\n\nGeneral options:\n-threads|c\t\tnumber of threads\
+    \ to uses for processing.(default:1)\n-help|h\t\t\tprints this help prompt\n\n\
+    AUTHORS:\nMartin Buchkovich:martin.buchkovich@q2labsolutions.com\nChad Brown:chad.brown@q2labsolutions.com\n\
+    \nCREATED:\n1 Oct 2016\n\nLAST UPDATED:\n14 Jul 2017\n\nCopyright. Q2 Solutions|EA\
+    \ Genomics. 2016\n\n\n"
+  generated_using: *id002
+- !Command
+  positional:
+  - !Positional
+    description: Refines the allelle call by looking predicting the true allele sequence
+      using observed reads and looking for a better match in the reference
+    position: 0
+    name: refine_only
+    optional: false
+  - !Positional
+    description: Reports if the observe reads support a novel allele sequence not
+      found in the reference
+    position: 1
+    name: predict_only
+    optional: false
+  - !Positional
+    description: Refines the allele call (-refine_only) and report novel alleles (-novel_only)
+    position: 2
+    name: refineAndPredict
+    optional: false
+  - !Positional
+    description: Refines the allele call (-refine_only) and report novel alleles (-novel_only),
+      creates a profile for the refined/novel allele sequence and calculates prediction
+      metrics.
+    position: 3
+    name: all
+    optional: false
+  - !Positional
+    description: Turns off refinement and novel allele prediction.
+    position: 4
+    name: none
+    optional: false
+  named: []
+  command:
+  - HLAProfiler.pl
+  - predict_only
+  parent: *id001
+  subcommands: []
+  help_flag:
+  usage_flag:
+  version_flag:
+  help_text: "\nHLAProfiler.pl predict_only\n\nDESCRIPTION\nA tool for predicting\
+    \ the HLA type of Paired-end NGS data from paired fastqs or read count files.\n\
+    \nUSAGE:\nperl HLAProfiler.pl predict <options>\n\nRequired Options:\n-counts_directory|cd\t\
+    \tlocation of directory containing filtered and paired read counts files. To generate\
+    \ these files from fastq files please run HLAProfiler.pl filter followed by HLAProfiler.pl\
+    \ count_reads (required)\n-reads_directory|cd\t\tlocation of directory containing\
+    \ filtered and paired read fastqs.(required)\n-profile_directory|sdir\t\tpath\
+    \ to directory containing the profile files (required)\n-sample_name|sn\t\t\t\
+    name of the sample. This must perfect match the prefix of each of the read count\
+    \ files. i.e. The sample name for file NA12878.200.B_1.uniq.cnt would be NA12878.200\
+    \ (required)\n-reference|r\t\t\tHLA reference fasta. There must also be an allele\
+    \ map file in the sample directory as the reference fa. (required)\n\nGeneral\
+    \ Options:\n-allele_refinement|ar\tSpecifies the level to which the predicted\
+    \ alleles are to be refined based on the observed reads (default:all)\n   Possible\
+    \ values:\n\trefine_only\t\tRefines the allelle call by looking predicting the\
+    \ true allele sequence using observed reads and looking for a better match in\
+    \ the reference\n\tpredict_only\t\tReports if the observe reads support a novel\
+    \ allele sequence not found in the reference\n\trefineAndPredict\tRefines the\
+    \ allele call (-refine_only) and report novel alleles (-novel_only)\n\tall\t\t\
+    \tRefines the allele call (-refine_only) and report novel alleles (-novel_only),\
+    \ creates a profile for the refined/novel allele sequence and calculates prediction\
+    \ metrics.\n\tnone\t\t\tTurns off refinement and novel allele prediction.\n-kraken_db|db\t\
+    \tbase directory of kraken database.\n-kraken_path|kp\t\tbase directory of kraken\
+    \ installation. (default:base directory of path returned by `which kraken`)\n\
+    -minimum_reads|min\tminimum number of reads from a gene before attempting to call\
+    \ HLA types.(default:100)\n-output_dir|od\t\toutput directory(default:'.')\n-threads|c\t\
+    \tnumber of threads (default:1)\n-help|h\t\t\tprints this help prompt\n\nAUTHORS:\n\
+    Martin Buchkovich:martin.buchkovich@q2labsolutions.com\nChad Brown:chad.brown@q2labsolutions.com\n\
+    \nCREATED:\n1 Oct 2016\n\nLAST UPDATED:\n14 Jul 2017\n\nCopyright. Q2 Solutions|EA\
+    \ Genomics. 2016\n\n\n"
+  generated_using: *id002
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nHLAProfiler.pl v1.0\n\nDESCRIPTION\nA tool for predicting HLA types\
+  \ using NGS Paired-end sequencing data.\n\nUSAGE:\nperl HLAProfiler.pl <module>\n\
+  \nGlobal Modules. These module will run the process from start to finish.\n  build\t\
+  \t\tBuild the HLAProfiler reference using a reference FASTA\n  predict\t\tPredict\
+  \ the HLA types using paired end sequencing data.\n  test_modules\t\tThis modules\
+  \ simply tests whether HLAProfiler.pl can access the required accessory perl modules\n\
+  \  test\t\t\tThis modules runs unit tests.\n\nBuild Module Components. These module\
+  \ complete individual steps in the build module.\n  create_taxonomy\tCreates a taxonomy\
+  \ needed to create a HLA database\n  build_taxonomy\tBuilds the taxonomy into a\
+  \ database\n  create_profiles\tSimulated reads from the HLA reference and creates\
+  \ kmer profiles\n\nPredict Module Components. These module complete individual steps\
+  \ in the predict module.\n  filter\t\tFilters paired fastq files into HLA genes\
+  \ using and HLA database\n  count_reads\t\tCounts the reads in fastq files to create\
+  \ a read count file\n  predict_only\t\tOnly predicts HLA type using previously filtered\
+  \ and counted reads\n\nFor module specific instructions run each individual module\
+  \ with the help flag.\ni.e. perl HLAProfiler.pl  build -h\n\nAUTHORS:\nMartin Buchkovich:martin.buchkovich@q2labsolutions.com\n\
+  Chad Brown\n\nCREATED:\n1 Oct 2016\n\nLAST UPDATED:\n14 Jul 2017\n\nCopyright. Q2\
+  \ Solutions|EA Genomics. 2016\n\n\n"
+generated_using: *id002

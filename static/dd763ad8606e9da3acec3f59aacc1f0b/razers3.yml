@@ -1,0 +1,480 @@
+!Command
+positional:
+- !Positional
+  description: Gap space. Gaps between characters are counted from 0.
+  position: 0
+  name: '0'
+  optional: false
+- !Positional
+  description: Position space. Characters are counted from 1.
+  position: 1
+  name: '1'
+  optional: false
+named:
+- !Flag
+  description: 'Percent identity threshold. In range [50..100]. Default: 95.'
+  synonyms:
+  - -i
+  - --percent-identity
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Percent recognition rate. In range [80..100]. Default: 99.'
+  synonyms:
+  - -rr
+  - --recognition-rate
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Allow only mismatches, no indels. Default: allow both.'
+  synonyms:
+  - -ng
+  - --no-gaps
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Map reads only to forward strands.
+  synonyms:
+  - -f
+  - --forward
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Map reads only to reverse strands.
+  synonyms:
+  - -r
+  - --reverse
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output only <NUM> of the best hits. In range [1..inf]. Default: 100.'
+  synonyms:
+  - -m
+  - --max-hits
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Output only unique best matches (-m 1 -dr 0 -pa).
+  synonyms:
+  - --unique
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Trim reads to given length. Default: off. In range [14..inf].'
+  synonyms:
+  - -tr
+  - --trim-reads
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Mapping result filename (use - to dump to stdout in razers format).
+    Default: <READS FILE>.razers. Valid filetypes are: .razers, .eland, .fa, .fasta,
+    .gff, .sam, .bam, and .afg.'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Verbose mode.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Very verbose mode.
+  synonyms:
+  - -vv
+  - --vverbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Paired-end library length. In range [1..inf]. Default: 220.'
+  synonyms:
+  - -ll
+  - --library-length
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Paired-end library length tolerance. In range [0..inf]. Default: 50.'
+  synonyms:
+  - -le
+  - --library-error
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Dump the alignment for each match (only razer or fasta format).
+  synonyms:
+  - -a
+  - --alignment
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Purge reads with more than <max-hits> best matches.
+  synonyms:
+  - -pa
+  - --purge-ambiguous
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Only consider matches with at most NUM more errors compared to the
+    best. Default: output all.'
+  synonyms:
+  - -dr
+  - --distance-range
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Select how genomes are named (see Naming section below). In range
+    [0..1]. Default: 0.'
+  synonyms:
+  - -gn
+  - --genome-naming
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Select how reads are named (see Naming section below). In range [0..3].
+    Default: 0.'
+  synonyms:
+  - -rn
+  - --read-naming
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Use the whole read id (don't clip after whitespace).
+  synonyms:
+  - --full-readid
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Select how matches are sorted (see Sorting section below). In range
+    [0..1]. Default: 0.'
+  synonyms:
+  - -so
+  - --sort-order
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Select begin/end position numbering (see Coordinate section below).
+    In range [0..1]. Default: 0.'
+  synonyms:
+  - -pf
+  - --position-format
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Disable alignment shrinking in SAM. This is required for generating
+    a gold mapping for Rabema.
+  synonyms:
+  - -ds
+  - --dont-shrink-alignments
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Select k-mer filter. One of pigeonhole and swift. Default: pigeonhole.'
+  synonyms:
+  - -fl
+  - --filter
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: 'Set the percent mutation rate (pigeonhole). In range [0..20]. Default:
+    5.'
+  synonyms:
+  - -mr
+  - --mutation-rate
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Manually set the overlap length of adjacent k-mers (pigeonhole). In
+    range [0..inf].
+  synonyms:
+  - -ol
+  - --overlap-length
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Read user-computed parameter files in the directory <DIR> (swift).
+  synonyms:
+  - -pd
+  - --param-dir
+  args: !SimpleFlagArg
+    name: DIR
+  optional: true
+- !Flag
+  description: Manually set minimum k-mer count threshold (swift). In range [1..inf].
+  synonyms:
+  - -t
+  - --threshold
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Set taboo length (swift). In range [1..inf]. Default: 1.'
+  synonyms:
+  - -tl
+  - --taboo-length
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: Manually set k-mer shape.
+  synonyms:
+  - -s
+  - --shape
+  args: !SimpleFlagArg
+    name: BITSTRING
+  optional: true
+- !Flag
+  description: 'Set k-mer overabundance cut ratio. In range [0..1]. Default: 1.'
+  synonyms:
+  - -oc
+  - --overabundance-cut
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Skip simple-repeats of length <NUM>. In range [1..inf]. Default: 1000.'
+  synonyms:
+  - -rl
+  - --repeat-length
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Set the load factor for the open addressing k-mer index. In range
+    [1..inf]. Default: 1.6.'
+  synonyms:
+  - -lf
+  - --load-factor
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'N matches all other characters. Default: N matches nothing.'
+  synonyms:
+  - -mN
+  - --match-N
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Write error distribution to FILE.
+  synonyms:
+  - -ed
+  - --error-distr
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: Write mismatch patterns to FILE.
+  synonyms:
+  - -mf
+  - --mismatch-file
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'Multiply compaction treshold by this value after reaching and compacting.
+    In range [0..inf]. Default: 2.2.'
+  synonyms:
+  - -cm
+  - --compact-mult
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: "Don't compact if in this last fraction of genome. In range [0..1].\
+    \ Default: 0.05."
+  synonyms:
+  - -ncf
+  - --no-compact-frac
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Set the number of threads to use (0 to force sequential mode). In
+    range [0..inf]. Default: 1.'
+  synonyms:
+  - -tc
+  - --thread-count
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Collect candidates in windows of this length. In range [1..inf]. Default:
+    500000.'
+  synonyms:
+  - -pws
+  - --parallel-window-size
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Verify candidates in packages of this size. In range [1..inf]. Default:
+    100.'
+  synonyms:
+  - -pvs
+  - --parallel-verification-size
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Largest number of packages to create for verification per thread-1.
+    In range [1..inf]. Default: 100.'
+  synonyms:
+  - -pvmpc
+  - --parallel-verification-max-package-count
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'Bytes of main memory available for storing matches. In range [-1..inf].
+    Default: 0.'
+  synonyms:
+  - -amms
+  - --available-matches-memory-size
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: 'When to start histogram. In range [1..inf]. Default: 5.'
+  synonyms:
+  - -mhst
+  - --match-histo-start-threshold
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+command:
+- razers3
+parent:
+subcommands: []
+help_flag: !Flag
+  description: Display the help message.
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: Display version information.
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "razers3 - Faster, fully sensitive read mapping\n==============================================\n\
+  \nSYNOPSIS\n    razers3 [OPTIONS] <GENOME FILE> <READS FILE>\n    razers3 [OPTIONS]\
+  \ <GENOME FILE> <PE-READS FILE1> <PE-READS FILE2>\n\nDESCRIPTION\n    RazerS 3 is\
+  \ a versatile full-sensitive read mapper based on k-mer counting\n    and seeding\
+  \ filters. It supports single and paired-end mapping,\n    shared-memory parallelism,\
+  \ and optimally parametrizes the filter based on\n    a user-defined minimal sensitivity.\
+  \ See\n    http://www.seqan.de/projects/razers for more information.\n\n    Input\
+  \ to RazerS 3 is a reference genome file and either one file with\n    single-end\
+  \ reads or two files containing left or right mates of paired-end\n    reads. Use\
+  \ - to read single-end reads from stdin.\n\n    (c) Copyright 2009-2014 by David\
+  \ Weese.\n\n    -h, --help\n          Display the help message.\n    --version\n\
+  \          Display version information.\n\n  Main Options:\n    -i, --percent-identity\
+  \ NUM\n          Percent identity threshold. In range [50..100]. Default: 95.\n\
+  \    -rr, --recognition-rate NUM\n          Percent recognition rate. In range [80..100].\
+  \ Default: 99.\n    -ng, --no-gaps\n          Allow only mismatches, no indels.\
+  \ Default: allow both.\n    -f, --forward\n          Map reads only to forward strands.\n\
+  \    -r, --reverse\n          Map reads only to reverse strands.\n    -m, --max-hits\
+  \ NUM\n          Output only <NUM> of the best hits. In range [1..inf]. Default:\
+  \ 100.\n    --unique\n          Output only unique best matches (-m 1 -dr 0 -pa).\n\
+  \    -tr, --trim-reads NUM\n          Trim reads to given length. Default: off.\
+  \ In range [14..inf].\n    -o, --output FILE\n          Mapping result filename\
+  \ (use - to dump to stdout in razers format).\n          Default: <READS FILE>.razers.\
+  \ Valid filetypes are: .razers, .eland,\n          .fa, .fasta, .gff, .sam, .bam,\
+  \ and .afg.\n    -v, --verbose\n          Verbose mode.\n    -vv, --vverbose\n \
+  \         Very verbose mode.\n\n  Paired-end Options:\n    -ll, --library-length\
+  \ NUM\n          Paired-end library length. In range [1..inf]. Default: 220.\n \
+  \   -le, --library-error NUM\n          Paired-end library length tolerance. In\
+  \ range [0..inf]. Default: 50.\n\n  Output Format Options:\n    -a, --alignment\n\
+  \          Dump the alignment for each match (only razer or fasta format).\n   \
+  \ -pa, --purge-ambiguous\n          Purge reads with more than <max-hits> best matches.\n\
+  \    -dr, --distance-range NUM\n          Only consider matches with at most NUM\
+  \ more errors compared to the\n          best. Default: output all.\n    -gn, --genome-naming\
+  \ NUM\n          Select how genomes are named (see Naming section below). In range\n\
+  \          [0..1]. Default: 0.\n    -rn, --read-naming NUM\n          Select how\
+  \ reads are named (see Naming section below). In range\n          [0..3]. Default:\
+  \ 0.\n    --full-readid\n          Use the whole read id (don't clip after whitespace).\n\
+  \    -so, --sort-order NUM\n          Select how matches are sorted (see Sorting\
+  \ section below). In range\n          [0..1]. Default: 0.\n    -pf, --position-format\
+  \ NUM\n          Select begin/end position numbering (see Coordinate section below).\n\
+  \          In range [0..1]. Default: 0.\n    -ds, --dont-shrink-alignments\n   \
+  \       Disable alignment shrinking in SAM. This is required for generating\n  \
+  \        a gold mapping for Rabema.\n\n  Filtration Options:\n    -fl, --filter\
+  \ STR\n          Select k-mer filter. One of pigeonhole and swift. Default:\n  \
+  \        pigeonhole.\n    -mr, --mutation-rate NUM\n          Set the percent mutation\
+  \ rate (pigeonhole). In range [0..20].\n          Default: 5.\n    -ol, --overlap-length\
+  \ NUM\n          Manually set the overlap length of adjacent k-mers (pigeonhole).\
+  \ In\n          range [0..inf].\n    -pd, --param-dir DIR\n          Read user-computed\
+  \ parameter files in the directory <DIR> (swift).\n    -t, --threshold NUM\n   \
+  \       Manually set minimum k-mer count threshold (swift). In range\n         \
+  \ [1..inf].\n    -tl, --taboo-length NUM\n          Set taboo length (swift). In\
+  \ range [1..inf]. Default: 1.\n    -s, --shape BITSTRING\n          Manually set\
+  \ k-mer shape.\n    -oc, --overabundance-cut NUM\n          Set k-mer overabundance\
+  \ cut ratio. In range [0..1]. Default: 1.\n    -rl, --repeat-length NUM\n      \
+  \    Skip simple-repeats of length <NUM>. In range [1..inf]. Default:\n        \
+  \  1000.\n    -lf, --load-factor NUM\n          Set the load factor for the open\
+  \ addressing k-mer index. In range\n          [1..inf]. Default: 1.6.\n\n  Verification\
+  \ Options:\n    -mN, --match-N\n          N matches all other characters. Default:\
+  \ N matches nothing.\n    -ed, --error-distr FILE\n          Write error distribution\
+  \ to FILE.\n    -mf, --mismatch-file FILE\n          Write mismatch patterns to\
+  \ FILE.\n\n  Misc Options:\n    -cm, --compact-mult NUM\n          Multiply compaction\
+  \ treshold by this value after reaching and\n          compacting. In range [0..inf].\
+  \ Default: 2.2.\n    -ncf, --no-compact-frac NUM\n          Don't compact if in\
+  \ this last fraction of genome. In range [0..1].\n          Default: 0.05.\n\n \
+  \ Parallelism Options:\n    -tc, --thread-count NUM\n          Set the number of\
+  \ threads to use (0 to force sequential mode). In\n          range [0..inf]. Default:\
+  \ 1.\n    -pws, --parallel-window-size NUM\n          Collect candidates in windows\
+  \ of this length. In range [1..inf].\n          Default: 500000.\n    -pvs, --parallel-verification-size\
+  \ NUM\n          Verify candidates in packages of this size. In range [1..inf].\n\
+  \          Default: 100.\n    -pvmpc, --parallel-verification-max-package-count\
+  \ NUM\n          Largest number of packages to create for verification per thread-1.\n\
+  \          In range [1..inf]. Default: 100.\n    -amms, --available-matches-memory-size\
+  \ NUM\n          Bytes of main memory available for storing matches. In range\n\
+  \          [-1..inf]. Default: 0.\n    -mhst, --match-histo-start-threshold NUM\n\
+  \          When to start histogram. In range [1..inf]. Default: 5.\n\nFORMATS, NAMING,\
+  \ SORTING, AND COORDINATE SCHEMES\n    RazerS 3 supports various output formats.\
+  \ The output format is detected\n    automatically from the file name suffix.\n\n\
+  \    .razers\n          Razer format\n    .fa, .fasta\n          Enhanced Fasta\
+  \ format\n    .eland\n          Eland format\n    .gff  GFF format\n    .sam  SAM\
+  \ format\n    .bam  BAM format\n    .afg  Amos AFG format\n    By default, reads\
+  \ and contigs are referred by their Fasta ids given in the\n    input files. With\
+  \ the -gn and -rn options this behaviour can be changed:\n\n    0     Use Fasta\
+  \ id.\n    1     Enumerate beginning with 1.\n    2     Use the read sequence (only\
+  \ for short reads!).\n    3     Use the Fasta id, do NOT append /L or /R for mate\
+  \ pairs.\n    \n    The way matches are sorted in the output file can be changed\
+  \ with the -so\n    option for the following formats: razers, fasta, sam, and afg.\
+  \ Primary and\n    secondary sort keys are:\n\n    0     1. read number, 2. genome\
+  \ position\n    1     1. genome position, 2. read number\n    \n    The coordinate\
+  \ space used for begin and end positions can be changed with\n    the -pf option\
+  \ for the razer and fasta formats:\n\n    0     Gap space. Gaps between characters\
+  \ are counted from 0.\n    1     Position space. Characters are counted from 1.\n\
+  \nEXAMPLES\n    razers3 -i 96 -tc 12 -o mapped.razers hg18.fa reads.fq\n       \
+  \   Map single-end reads with 4% error rate using 12 threads.\n    razers3 -i 95\
+  \ -no-gaps -o mapped.razers hg18.fa reads.fq.gz\n          Map single-end gzipped\
+  \ reads with 5% error rate and no indels.\n    razers3 -i 94 -rr 95 -tc 12 -ll 280\
+  \ --le 80 -o mapped.razers hg18.fa reads_1.fq reads_2.fq\n          Map paired-end\
+  \ reads with up to 6% errors, 95% sensitivity, 12\n          threads, and only output\
+  \ aligned pairs with an outer distance of\n          200-360bp.\n\nVERSION\n   \
+  \ Last update: \n    razers3 version: 3.5.3 [tarball]\n    SeqAn version: 2.1.1\n"
+generated_using:
+- --help

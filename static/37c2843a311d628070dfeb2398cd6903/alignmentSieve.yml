@@ -1,0 +1,217 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: Example
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: usage
+  optional: false
+named:
+- !Flag
+  description: An indexed BAM file.
+  synonyms:
+  - --bam
+  - -b
+  args: !SimpleFlagArg
+    name: FILE1
+  optional: true
+- !Flag
+  description: The file to write results to. These are the alignments or fragments
+    that pass the filtering criteria.
+  synonyms:
+  - --outFile
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILE
+  optional: true
+- !Flag
+  description: 'Number of processors to use. Type "max/2" to use half the maximum
+    number of processors or "max" to use all available processors. (Default: 1)'
+  synonyms:
+  - --numberOfProcessors
+  - -p
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: The number of entries in total and filtered are saved to this file
+  synonyms:
+  - --filterMetrics
+  args: !SimpleFlagArg
+    name: FILE.log
+  optional: true
+- !Flag
+  description: If desired, all reads NOT passing the filtering criteria can be written
+    to this file.
+  synonyms:
+  - --filteredOutReads
+  args: !SimpleFlagArg
+    name: filtered.bam
+  optional: true
+- !Flag
+  description: User defined label instead of the default label (file name).
+  synonyms:
+  - --label
+  - -l
+  args: !SimpleFlagArg
+    name: sample1
+  optional: true
+- !Flag
+  description: Instead of manually specifying a labels for the input file, this causes
+    deepTools to use the file name after removing the path and extension.
+  synonyms:
+  - --smartLabels
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Set to see processing messages.
+  synonyms:
+  - --verbose
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Shift the left and right end of a read (for BAM files) or a fragment
+    (for BED files). A positive value shift an end to the right (on the + strand)
+    and a negative value shifts a fragment to the left. Either 2 or 4 integers can
+    be provided. For example, "2 -3" will shift the left-most fragment end two bases
+    to the right and the right-most end 3 bases to the left. If 4 integers are provided,
+    then the first and last two refer to fragments whose read 1 is on the left or
+    right, respectively. Consequently, it is possible to take strand into consideration
+    for strand-specific protocols. A fragment whose length falls below 1 due to shifting
+    will not be written to the output. See the online documentation for graphical
+    examples. Note that non-properly-paired reads will be filtered.
+  synonyms:
+  - --shift
+  args: !RepeatFlagArg
+    name: SHIFT
+  optional: true
+- !Flag
+  description: Shift the produced BAM file or BEDPE regions as commonly done for ATAC-seq.
+    This is equivalent to --shift 4 -5 5 -4.
+  synonyms:
+  - --ATACshift
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Instead of producing BAM files, write output in BEDPE format (as defined
+    by MACS2). Note that only reads/fragments passing filtering criterion are written
+    in BEDPE format.
+  synonyms:
+  - --BED
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'The minimum fragment length needed for read/pair inclusion. This option
+    is primarily useful in ATACseq experiments, for filtering mono- or di-nucleosome
+    fragments. (Default: 0)'
+  synonyms:
+  - --minFragmentLength
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+- !Flag
+  description: 'The maximum fragment length needed for read/pair inclusion. A value
+    of 0 indicates no limit. (Default: 0)'
+  synonyms:
+  - --maxFragmentLength
+  args: !SimpleFlagArg
+    name: INT
+  optional: true
+command:
+- alignmentSieve
+parent:
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: Example usage: alignmentSieve.py -b sample1.bam -o sample1.filtered.bam\
+  \ --minMappingQuality 10 --filterMetrics log.txt\n\nThis tool filters alignments\
+  \ in a BAM/CRAM file according the the specified parameters. It can optionally output\
+  \ to BEDPE format.\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n\nRequired arguments:\n  --bam FILE1, -b FILE1\n           \
+  \             An indexed BAM file.\n  --outFile OUTFILE, -o OUTFILE\n          \
+  \              The file to write results to. These are the alignments\n        \
+  \                or fragments that pass the filtering criteria.\n\nGeneral arguments:\n\
+  \  --numberOfProcessors INT, -p INT\n                        Number of processors\
+  \ to use. Type \"max/2\" to use half\n                        the maximum number\
+  \ of processors or \"max\" to use all\n                        available processors.\
+  \ (Default: 1)\n  --filterMetrics FILE.log\n                        The number of\
+  \ entries in total and filtered are saved\n                        to this file\n\
+  \  --filteredOutReads filtered.bam\n                        If desired, all reads\
+  \ NOT passing the filtering\n                        criteria can be written to\
+  \ this file.\n  --label sample1, -l sample1\n                        User defined\
+  \ label instead of the default label (file\n                        name).\n  --smartLabels\
+  \         Instead of manually specifying a labels for the input\n              \
+  \          file, this causes deepTools to use the file name after\n            \
+  \            removing the path and extension.\n  --verbose, -v         Set to see\
+  \ processing messages.\n  --version             show program's version number and\
+  \ exit\n  --shift SHIFT [SHIFT ...]\n                        Shift the left and\
+  \ right end of a read (for BAM files)\n                        or a fragment (for\
+  \ BED files). A positive value shift\n                        an end to the right\
+  \ (on the + strand) and a negative\n                        value shifts a fragment\
+  \ to the left. Either 2 or 4\n                        integers can be provided.\
+  \ For example, \"2 -3\" will\n                        shift the left-most fragment\
+  \ end two bases to the\n                        right and the right-most end 3 bases\
+  \ to the left. If 4\n                        integers are provided, then the first\
+  \ and last two\n                        refer to fragments whose read 1 is on the\
+  \ left or\n                        right, respectively. Consequently, it is possible\
+  \ to\n                        take strand into consideration for strand-specific\n\
+  \                        protocols. A fragment whose length falls below 1 due\n\
+  \                        to shifting will not be written to the output. See the\n\
+  \                        online documentation for graphical examples. Note that\n\
+  \                        non-properly-paired reads will be filtered.\n  --ATACshift\
+  \           Shift the produced BAM file or BEDPE regions as\n                  \
+  \      commonly done for ATAC-seq. This is equivalent to\n                     \
+  \   --shift 4 -5 5 -4.\n\nOutput arguments:\n  --BED                 Instead of\
+  \ producing BAM files, write output in BEDPE\n                        format (as\
+  \ defined by MACS2). Note that only\n                        reads/fragments passing\
+  \ filtering criterion are\n                        written in BEDPE format.\n\n\
+  Optional arguments:\n  --filterRNAstrand {forward,reverse}\n                   \
+  \     Selects RNA-seq reads (single-end or paired-end) in\n                    \
+  \    the given strand. (Default: None)\n  --ignoreDuplicates    If set, reads that\
+  \ have the same orientation and start\n                        position will be\
+  \ considered only once. If reads are\n                        paired, the mate's\
+  \ position also has to coincide to\n                        ignore a read.\n  --minMappingQuality\
+  \ INT\n                        If set, only reads that have a mapping quality score\n\
+  \                        of at least this are considered.\n  --samFlagInclude INT\
+  \  Include reads based on the SAM flag. For example, to\n                      \
+  \  get only reads that are the first mate, use a flag of\n                     \
+  \   64. This is useful to count properly paired reads only\n                   \
+  \     once, as otherwise the second mate will be also\n                        considered\
+  \ for the coverage.\n  --samFlagExclude INT  Exclude reads based on the SAM flag.\
+  \ For example, to\n                        get only reads that map to the forward\
+  \ strand, use\n                        --samFlagExclude 16, where 16 is the SAM\
+  \ flag for\n                        reads that map to the reverse strand.\n  --blackListFileName\
+  \ BED file [BED file ...], -bl BED file [BED file ...]\n                       \
+  \ A BED or GTF file containing regions that should be\n                        excluded\
+  \ from all analyses. Currently this works by\n                        rejecting\
+  \ genomic chunks that happen to overlap an\n                        entry. Consequently,\
+  \ for BAM files, if a read\n                        partially overlaps a blacklisted\
+  \ region or a fragment\n                        spans over it, then the read/fragment\
+  \ might still be\n                        considered. Please note that you should\
+  \ adjust the\n                        effective genome size, if relevant.\n  --minFragmentLength\
+  \ INT\n                        The minimum fragment length needed for read/pair\n\
+  \                        inclusion. This option is primarily useful in ATACseq\n\
+  \                        experiments, for filtering mono- or di-nucleosome\n   \
+  \                     fragments. (Default: 0)\n  --maxFragmentLength INT\n     \
+  \                   The maximum fragment length needed for read/pair\n         \
+  \               inclusion. A value of 0 indicates no limit. (Default:\n        \
+  \                0)\n"
+generated_using:
+- --help

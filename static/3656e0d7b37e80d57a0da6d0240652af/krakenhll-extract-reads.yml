@@ -1,0 +1,76 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: taxon
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: kraken
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: fasta/fastq
+  optional: false
+named:
+- !Flag
+  description: 'input is FASTA file (default: FASTQ)'
+  synonyms:
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: output in FASTA format
+  synonyms:
+  - -f
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'invert: print all reads not matching taxon'
+  synonyms:
+  - -i
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Include children of taxonomy IDs, using TAXDB to find them
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: TAXDB
+  optional: true
+- !Flag
+  description: verbose
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: "paired-end reads: use a '%' in fasta/q file name as placeholder for\
+    \ 1 and 2"
+  synonyms:
+  - -p
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- krakenhll-extract-reads
+parent:
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Unknown option: h\n\nkrakenhll-extract-reads: Extract all reads from FASTQ\
+  \ file that are matched to a specied taxon by KrakenHLL\n\nUsage: krakenhll-extract-reads\
+  \ [OPTIONS] <taxon> <kraken> <fasta/fastq>\n\n<taxon>         taxonomy ID, possibly\
+  \ multiple separated by ','\n<kraken>        kraken result file\n<fasta/fastq> \
+  \  fasta/fastq file, possibly gzipped\n\nOptions:\n  -a  input is FASTA file (default:\
+  \ FASTQ)\n  -f  output in FASTA format\n  -i  invert: print all reads not matching\
+  \ taxon\n  -t TAXDB Include children of taxonomy IDs, using TAXDB to find them\n\
+  \  -v  verbose\n  -p  paired-end reads: use a '%' in fasta/q file name as placeholder\
+  \ for 1 and 2\n\nExample:\n    krakenhll-extract-reads -p 9606 result.kraken input_%.fq\
+  \ \n    outputs all reads of input_1.fq and input_2.fq that have the taxonomy ID\
+  \ 9606 to STDOUT.\n"
+generated_using:
+- -h

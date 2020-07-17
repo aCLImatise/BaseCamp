@@ -1,0 +1,168 @@
+!Command
+positional:
+- !Positional
+  description: Input file to be annotated. Type is specified through options.
+  position: 0
+  name: input_file
+  optional: false
+- !Positional
+  description: Output file name of annotated file.
+  position: 1
+  name: output_file
+  optional: false
+- !Positional
+  description: 'Genome build. For example: hg19'
+  position: 2
+  name: genome_build
+  optional: false
+named:
+- !Flag
+  description: ''
+  synonyms:
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -V
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: ''
+  synonyms:
+  - -i
+  args: !ChoiceFlagArg
+    choices: !!set
+      SEG_FILE:
+      VCF:
+      TCGAMAF:
+      MAFLITE:
+  optional: true
+command:
+- oncotator
+parent:
+subcommands: []
+help_flag: !Flag
+  description: ''
+  synonyms:
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: oncotator [-h] [-v] [-V] [-i {TCGAMAF,SEG_FILE,VCF,MAFLITE}]\n\
+  \                 [--db-dir DBDIR]\n                 [-o {TCGAMAF,VCF,SIMPLE_TSV,TCGAVCF,SIMPLE_BED,GENE_LIST}]\n\
+  \                 [--override_config OVERRIDE_CONFIG]\n                 [--default_config\
+  \ DEFAULT_CONFIG] [--no-multicore]\n                 [-a OVERRIDE_CLI] [-d DEFAULT_CLI]\
+  \ [-u CACHE_URL] [-r]\n                 [--tx-mode {CANONICAL,EFFECT}]\n       \
+  \          [--infer_genotypes {yes,true,t,1,y,no,false,f,0,n}]\n               \
+  \  [--skip-no-alt] [--log_name LOG_NAME] [--prepend]\n                 [--infer-onps]\
+  \ [-c CANONICAL_TX_FILE]\n                 [--collapse-filter-cols] [--reannotate-tcga-maf-cols]\
+  \ [-w]\n                 [--collapse-number-annotations] [--longer-other-tx]\n \
+  \                [--prune-filter-cols]\n                 input_file output_file\
+  \ genome_build\n\noncotator v1.9.9.0\n\n    Oncotator is a tool for annotating human\
+  \ genomic point mutations and indels with data relevant to cancer researchers.\n\
+  \n    \n\npositional arguments:\n  input_file            Input file to be annotated.\
+  \ Type is specified through\n                        options.\n  output_file   \
+  \        Output file name of annotated file.\n  genome_build          Genome build.\
+  \ For example: hg19\n\noptional arguments:\n  -h, --help            show this help\
+  \ message and exit\n  -v, --verbose         set verbosity level [default: 5]\n \
+  \ -V, --version         show program's version number and exit\n  -i {TCGAMAF,SEG_FILE,VCF,MAFLITE},\
+  \ --input_format {TCGAMAF,SEG_FILE,VCF,MAFLITE}\n                        Input format.\
+  \ Note that MAFLITE will work for any tsv\n                        file with appropriate\
+  \ headers, so long as all of the\n                        required headers (or an\
+  \ alias -- see maflite.config)\n                        are present. Note that \"\
+  -i TCGAMAF\" is the same as\n                        specifying \"-i MAFLITE --prune-tcga-maf-cols\
+  \ --allow-\n                        overwriting\" [default: MAFLITE]\n  --db-dir\
+  \ DBDIR        Main annotation database directory. [default: /xchip/c\n        \
+  \                ga/reference/annotation/db/oncotator_v1_ds_gencode_cur\n      \
+  \                  rent/]\n  -o {TCGAMAF,VCF,SIMPLE_TSV,TCGAVCF,SIMPLE_BED,GENE_LIST},\
+  \ --output_format {TCGAMAF,VCF,SIMPLE_TSV,TCGAVCF,SIMPLE_BED,GENE_LIST}\n      \
+  \                  Output format. [default: TCGAMAF]\n  --override_config OVERRIDE_CONFIG\n\
+  \                        File path to manual annotations in a config file\n    \
+  \                    format (section is 'manual_annotations' and\n             \
+  \           annotation:value pairs).\n  --default_config DEFAULT_CONFIG\n      \
+  \                  File path to default annotation values in a config\n        \
+  \                file format (section is 'manual_annotations' and\n            \
+  \            annotation:value pairs).\n  --no-multicore        Disables all multicore\
+  \ functionality.\n  -a OVERRIDE_CLI, --annotate-manual OVERRIDE_CLI\n          \
+  \              Specify annotations to override. Can be specified\n             \
+  \           multiple times. E.g. -a 'name1:value1' -a\n                        'name2:value2'\n\
+  \  -d DEFAULT_CLI, --annotate-default DEFAULT_CLI\n                        Specify\
+  \ default values for annotations. Can be\n                        specified multiple\
+  \ times. E.g. -d 'name1:value1' -d\n                        'name2:value2'\n  -u\
+  \ CACHE_URL, --cache-url CACHE_URL\n                        URL to use for cache.\
+  \ See help for examples.\n  -r, --read_only_cache\n                        Makes\
+  \ the cache read-only\n  --tx-mode {CANONICAL,EFFECT}\n                        Specify\
+  \ transcript mode for transcript providing\n                        datasources\
+  \ that support multiple modes. [default:\n                        CANONICAL]\n \
+  \ --infer_genotypes {yes,true,t,1,y,no,false,f,0,n}\n                        Forces\
+  \ the VCF output renderer to populate the output\n                        genotypes\
+  \ as heterozygous. This option should only be\n                        used when\
+  \ converting a MAFLITE to a VCF; otherwise,\n                        the option\
+  \ has no effect. [default: false]\n  --skip-no-alt         If specified, any mutation\
+  \ with annotation\n                        alt_allele_seen of 'False' will not be\
+  \ annotated or\n                        rendered. Do not use if output format is\
+  \ a VCF. If\n                        alt_allele_seen annotation is missing, render\
+  \ the\n                        mutation.\n  --log_name LOG_NAME   Specify log output\
+  \ location. Default: oncotator.log\n  --prepend             If specified for TCGAMAF\
+  \ output, will put a 'i_' in\n                        front of fields that are not\
+  \ directly rendered in\n                        Oncotator TCGA MAFs\n  --infer-onps\
+  \          Will merge adjacent SNPs,DNPs,TNPs,etc if they are in\n             \
+  \           the same sample. This assumes that the input file is\n             \
+  \           position sorted. This may cause problems with VCF ->\n             \
+  \           VCF conversion, and does not guarantee input order is\n            \
+  \            maintained.\n  -c CANONICAL_TX_FILE, --canonical-tx-file CANONICAL_TX_FILE\n\
+  \                        Simple text file with list of transcript IDs (one per\n\
+  \                        line) to always select where possible for variants.\n \
+  \                       Transcript IDs must match the ones used by the\n       \
+  \                 transcript provider in your datasource (e.g. gencode\n       \
+  \                 ENST00000123456). If more than one transcript can be\n       \
+  \                 selected for a variant, uses the method defined by\n         \
+  \               --tx-mode to break ties. Using this list means that a\n        \
+  \                transcript will be selected from this list first,\n           \
+  \             possibly superseding a best-effect. Note that\n                  \
+  \      transcript version number is not considered, whether\n                  \
+  \      included in the list or not.\n  --collapse-filter-cols\n                \
+  \        Render FILTER columns from VCF input as single\n                      \
+  \  'filter' column when using TCGAMAF output option.\n  --reannotate-tcga-maf-cols\n\
+  \                        Prefer new, annotated values to those specified by the\n\
+  \                        input file. Only useful when output is TCGA MAF and\n \
+  \                       when --allow-overwriting is specified. Automatically\n \
+  \                       turned on with -i TCGAMAF\n  -w, --allow-overwriting\n \
+  \                       Allow annotations to be overwritten (no\n              \
+  \          DuplicateAnnotationException errors). This should only\n            \
+  \            be used in rare cases and user should know when that\n            \
+  \            is. Automatically turned on with -i TCGAMAF\n  --collapse-number-annotations\n\
+  \                        Advanced: For TCGA MAF output, collapse a set of known\n\
+  \                        numeric fields that may have been annotated with a\n  \
+  \                      pipe. This can be useful for downstream tools that are\n\
+  \                        expecting a single value.\n  --longer-other-tx     Adds\
+  \ some select field(s) to the other_transcript\n                        field\n\
+  \  --prune-filter-cols   Prune mutations from VCF input as based on 'filter'\n \
+  \                       column when using TCGAMAF output option.\n\n    Example\
+  \ usage\n    -------------\n    oncotator -v --input_format=MAFLITE --output_format=TCGAMAF\
+  \ myInputFile.maflite myOutputFile.maf.annotated hg19\n    \n    IMPORTANT NOTE:\
+  \  hg19 is only supported genome build for now.\n\n    Default values specified\
+  \ by -d or --default_annotation_values are used when an annotation does not exist\
+  \ or is populated with an empty string (\"\")\n\n    Both default and override config\
+  \ files and command line specifications stack.\n\n    Example of an override_config\
+  \ or default_config file:\n\n    # Create center, source, sequencer, and score annotations,\
+  \ with the values broad.mit.edu, WXS, Illumina GAIIx, and <blank> for all mutations.\n\
+  \    #  This will overwrite all mutations.\n    [manual_annotations]\n    override:center=broad.mit.edu,source=WXS,sequencer=Illumina\
+  \ GAIIx,score=\n\n    Example of cache urls:\n\n    # Use a file (/home/user/myfile.cache)\
+  \ ... note the three forward slashes after \"file:\" for absolute path.\n    -u\
+  \ file:///home/user/myfile.cache\n    -u file://relative_file.cache\n\n    # memcache\n\
+  \    -u memcache://localhost:11211\n\n    Please note that only VCF input will populate\
+  \ the alt_allele_seen annotation.  All other inputs assume that the alternate is\
+  \ present if it appears at all.\n        This feature is to allow users to include\
+  \ or exclude GT of 0/0 or ./. variants when converting VCFs to MAF.\n\n        If\
+  \ --skip-no-alt is specified, VCF input processing will remove mutations with alt_allele_seen\
+  \ of False entirely (the mutations will not even seen when output format is SIMPLE_TSV).\n\
+  \n    -----\n    Copyright 2012 Broad Institute. All rights reserved.  Distributed\
+  \ on an \"AS IS\" basis without warranties or conditions of any kind, either express\
+  \ or implied.\n    Oncotator is free for non-profit use.  See LICENSE for complete\
+  \ licensing information.\n    \n"
+generated_using:
+- --help

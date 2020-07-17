@@ -1,0 +1,20 @@
+version 1.0
+
+task Enano {
+  input {
+    Boolean? use_compresion_default
+    Int? base_sequence_context
+    String? length_dna_sequence
+  }
+  command <<<
+    enano \
+      ~{true="-c" false="" use_compresion_default} \
+      ~{if defined(base_sequence_context) then ("-k " +  '"' + base_sequence_context + '"') else ""} \
+      ~{if defined(length_dna_sequence) then ("-l " +  '"' + length_dna_sequence + '"') else ""}
+  >>>
+  parameter_meta {
+    use_compresion_default: "To use MAX COMPRESION MODE. Default is FAST MODE."
+    base_sequence_context: "Base sequence context length. Default is 7 (max 13)."
+    length_dna_sequence: "Length of the DNA sequence context. Default is 6."
+  }
+}

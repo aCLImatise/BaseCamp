@@ -1,0 +1,20 @@
+version 1.0
+
+task Metfrag {
+  input {
+    String? jar
+    String java
+    String parameter_file
+  }
+  command <<<
+    metfrag \
+      ~{java} \
+      ~{parameter_file} \
+      ~{if defined(jar) then ("-jar " +  '"' + jar + '"') else ""}
+  >>>
+  parameter_meta {
+    jar: ""
+    java: ""
+    parameter_file: ""
+  }
+}

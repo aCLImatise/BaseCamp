@@ -1,0 +1,20 @@
+version 1.0
+
+task _gd2copypal {
+  input {
+    String gd_two_copy_pal
+    String palette_file_dot_gd_two
+    File filename_dot_gd_two
+  }
+  command <<<
+    _gd2copypal \
+      ~{gd_two_copy_pal} \
+      ~{palette_file_dot_gd_two} \
+      ~{filename_dot_gd_two}
+  >>>
+  parameter_meta {
+    gd_two_copy_pal: ""
+    palette_file_dot_gd_two: ""
+    filename_dot_gd_two: ""
+  }
+}

@@ -1,0 +1,128 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: store timeing information in file [none].
+  synonyms:
+  - --timeit
+  args: !SimpleFlagArg
+    name: TIMEIT_FILE
+  optional: true
+- !Flag
+  description: name in timing file for this class of jobs [all].
+  synonyms:
+  - --timeit-name
+  args: !SimpleFlagArg
+    name: TIMEIT_NAME
+  optional: true
+- !Flag
+  description: add header for timing information [none].
+  synonyms:
+  - --timeit-header
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: OUTPUT filename pattern for various methods [%s].
+  synonyms:
+  - -P
+  - --output-filename-pattern
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME_PATTERN
+  optional: true
+- !Flag
+  description: force over-writing of existing files.
+  synonyms:
+  - -F
+  - --force-output
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: file to read stdin from [default = stdin].
+  synonyms:
+  - -I
+  - --stdin
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: file with logging information [default = stdout].
+  synonyms:
+  - -L
+  - --log
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: file with error information [default = stderr].
+  synonyms:
+  - -E
+  - --error
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: file where output is to go [default = stdout].
+  synonyms:
+  - -S
+  - --stdout
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+command:
+- gat-compare.py
+parent:
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "Usage: \ngat-compare - compare two gat runs\n==================================\n\
+  \n:Author: Andreas Heger\n:Release: $Id$\n:Date: |today|\n:Tags: Python\n\nPurpose\n\
+  -------\n\nThis script compares gat runs and compares statistical significance of\n\
+  fold change differences between two or more regions of interest.\n\nThis script\
+  \ requires counts files created by gat (option\n``--output-counts-pattern``).\n\n\
+  The reported observed value between sets 1 and 2 is the difference of\nfc2 and fc1:\n\
+  \n   * observed = fold2 - fold1\n\nThe script accepts one or more output files from\
+  \ a gat run.\n\nIf only a single file is given, the significance of fold change\n\
+  differences are computed for each pairwise comparison of\nannotations. Thus, the\
+  \ script might answer the question if a\ntranscription factor is more enriched in\
+  \ promotors than in enhancers.\n\nIf multiple files are given, the script computes\
+  \ the fold change\ndifferences for the same annotation for all pairwise combinations\
+  \ of\n:term:`segments of interest` across the different files. Thus, the\nscript\
+  \ might answer the question if transcription factor A is more\nenriched in promotors\
+  \ than transcription factor B is enriched in\npromotors.\n\nUsage\n-----\n\nExample::\n\
+  \n   python gat-compare.py tfA.counts.tsv.gz tfB.counts.tsv.gz\n      \nType::\n\
+  \n   python gat-compare.py --help\n\nfor command line help.\n\nDocumentation\n-------------\n\
+  \nCode\n----\n\n\n\nOptions:\n  --version             show program's version number\
+  \ and exit\n  -h, --help            show this help message and exit\n  -o OUTPUT_ORDER,\
+  \ --order=OUTPUT_ORDER\n                        order results in output by fold,\
+  \ track, etc.\n                        [default=observed].\n  -p PVALUE_METHOD,\
+  \ --pvalue-method=PVALUE_METHOD\n                        type of pvalue reported\
+  \ [default=empirical].\n  -q QVALUE_METHOD, --qvalue-method=QVALUE_METHOD\n    \
+  \                    method to perform multiple testing correction by\n        \
+  \                controlling the fdr [default=BH].\n  --qvalue-lambda=QVALUE_LAMBDA\n\
+  \                        fdr computation: lambda [default=none].\n  --qvalue-pi0-method=QVALUE_PI0_METHOD\n\
+  \                        fdr computation: method for estimating pi0\n          \
+  \              [default=smoother].\n  --descriptions=INPUT_FILENAME_DESCRIPTIONS\n\
+  \                        filename mapping annotation terms to descriptions.  if\n\
+  \                        given, the output table will contain additional\n     \
+  \                   columns  [default=none]\n  --pseudo-count=PSEUDO_COUNT\n   \
+  \                     pseudo count. The pseudo count is added to both the\n    \
+  \                    observed and expected overlap.  Using a pseudo-count\n    \
+  \                    avoids gat reporting fold changes of 0 [default=1.0].\n  --output-plots-pattern=OUTPUT_PLOTS_PATTERN\n\
+  \                        output pattern for plots [default=none]\n\n  Script timing\
+  \ options:\n    --timeit=TIMEIT_FILE\n                        store timeing information\
+  \ in file [none].\n    --timeit-name=TIMEIT_NAME\n                        name in\
+  \ timing file for this class of jobs [all].\n    --timeit-header     add header\
+  \ for timing information [none].\n\n  Common options:\n    -v LOGLEVEL, --verbose=LOGLEVEL\n\
+  \                        loglevel [1]. The higher, the more output.\n    -?    \
+  \              output short help (command line options only.\n\n  Input/output options:\n\
+  \    -P OUTPUT_FILENAME_PATTERN, --output-filename-pattern=OUTPUT_FILENAME_PATTERN\n\
+  \                        OUTPUT filename pattern for various methods [%s].\n   \
+  \ -F, --force-output  force over-writing of existing files.\n    -I FILE, --stdin=FILE\n\
+  \                        file to read stdin from [default = stdin].\n    -L FILE,\
+  \ --log=FILE\n                        file with logging information [default = stdout].\n\
+  \    -E FILE, --error=FILE\n                        file with error information\
+  \ [default = stderr].\n    -S FILE, --stdout=FILE\n                        file\
+  \ where output is to go [default = stdout].\n"
+generated_using:
+- -h

@@ -1,0 +1,92 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Input FASTQ file which contanins the reads which will be trimmed.
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT_FILENAME
+  optional: true
+- !Flag
+  description: The size of part which is trimmed from each read. It should not be
+    used together with --size!
+  synonyms:
+  - -s
+  - --trim_size
+  args: !SimpleFlagArg
+    name: TRIM_SIZE
+  optional: true
+- !Flag
+  description: The size of read part which is left after trimming. If the read is
+    shorter than this then no trimming is performed.
+  synonyms:
+  - -f
+  - --final_size
+  args: !SimpleFlagArg
+    name: SIZE
+  optional: true
+- !Flag
+  description: The end of the short read where the trimming will be done. The choices
+    are [5,3].
+  synonyms:
+  - -e
+  - --trim_end
+  args: !SimpleFlagArg
+    name: END
+  optional: true
+- !Flag
+  description: It trims the Ns from the reads sequence ends, wherever is possible,
+    such that to minimize the amount of Ns in the read sequence which is left after
+    the trimming. It works only with '--final_size'.'
+  synonyms:
+  - -N
+  - --trim_n
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: The output FASTQ file containing the trimmed reads.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_FILENAME
+  optional: true
+command:
+- trim_reads.py
+parent:
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: trim_reads.py [options]\n\nIt trim the short reads from 5-end or\
+  \ 3-end.\n\nOptions:\n  --version             show program's version number and\
+  \ exit\n  -h, --help            show this help message and exit\n  -i INPUT_FILENAME,\
+  \ --input=INPUT_FILENAME\n                        Input FASTQ file which contanins\
+  \ the reads which will\n                        be trimmed.\n  -s TRIM_SIZE, --trim_size=TRIM_SIZE\n\
+  \                        The size of part which is trimmed from each read. It\n\
+  \                        should not be used together with --size!\n  -f SIZE, --final_size=SIZE\n\
+  \                        The size of read part which is left after trimming. If\n\
+  \                        the read is shorter than this then no trimming is\n   \
+  \                     performed.\n  -e END, --trim_end=END\n                   \
+  \     The end of the short read where the trimming will be\n                   \
+  \     done. The choices are [5,3].\n  -N, --trim_n          It trims the Ns from\
+  \ the reads sequence ends, wherever\n                        is possible, such that\
+  \ to minimize the amount of Ns in\n                        the read sequence which\
+  \ is left after the trimming. It\n                        works only with '--final_size'.'\n\
+  \  -o OUTPUT_FILENAME, --output=OUTPUT_FILENAME\n                        The output\
+  \ FASTQ file containing the trimmed reads.\n"
+generated_using:
+- --help

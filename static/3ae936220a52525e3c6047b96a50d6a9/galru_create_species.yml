@@ -1,0 +1,113 @@
+!Command
+positional:
+- !Positional
+  description: Species in quotes
+  position: 0
+  name: species
+  optional: false
+named:
+- !Flag
+  description: 'Output directory, defaults to species name in current directory (default:
+    None)'
+  synonyms:
+  - --output_directory
+  - -o
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+  optional: true
+- !Flag
+  description: 'No. of threads to use (default: 1)'
+  synonyms:
+  - --threads
+  - -t
+  args: !SimpleFlagArg
+    name: THREADS
+  optional: true
+- !Flag
+  description: 'Sequencing technology (default: all)'
+  synonyms:
+  - --refseq_category
+  - -c
+  args: !ChoiceFlagArg
+    choices: !!set
+      reference:
+      all:
+      representative:
+  optional: true
+- !Flag
+  description: 'Assembly level (default: complete)'
+  synonyms:
+  - --assembly_level
+  - -l
+  args: !ChoiceFlagArg
+    choices: !!set
+      complete:
+      contig:
+      scaffold:
+      chromosome:
+      all:
+  optional: true
+- !Flag
+  description: 'Sequence identity for CD-hit (default: 0.99)'
+  synonyms:
+  - --cdhit_seq_identity
+  - -i
+  args: !SimpleFlagArg
+    name: CDHIT_SEQ_IDENTITY
+  optional: true
+- !Flag
+  description: Use files with missing ST [False]
+  synonyms:
+  - --allow_missing_st
+  - -a
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Turn on debugging and save intermediate files (default: False)'
+  synonyms:
+  - --debug
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Turn on verbose output (default: False)'
+  synonyms:
+  - --verbose
+  - -v
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- galru_create_species
+parent:
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: galru_create_database [options] \"species\"\n\nGiven a species\
+  \ name, create a database\n\npositional arguments:\n  species               Species\
+  \ in quotes\n\noptional arguments:\n  -h, --help            show this help message\
+  \ and exit\n  --output_directory OUTPUT_DIRECTORY, -o OUTPUT_DIRECTORY\n       \
+  \                 Output directory, defaults to species name in current\n      \
+  \                  directory (default: None)\n  --threads THREADS, -t THREADS\n\
+  \                        No. of threads to use (default: 1)\n  --refseq_category\
+  \ {all,reference,representative}, -c {all,reference,representative}\n          \
+  \              Sequencing technology (default: all)\n  --assembly_level {all,complete,chromosome,scaffold,contig},\
+  \ -l {all,complete,chromosome,scaffold,contig}\n                        Assembly\
+  \ level (default: complete)\n  --cdhit_seq_identity CDHIT_SEQ_IDENTITY, -i CDHIT_SEQ_IDENTITY\n\
+  \                        Sequence identity for CD-hit (default: 0.99)\n  --allow_missing_st,\
+  \ -a\n                        Use files with missing ST [False]\n  --debug     \
+  \          Turn on debugging and save intermediate files\n                     \
+  \   (default: False)\n  --verbose, -v         Turn on verbose output (default: False)\n\
+  \  --version             show program's version number and exit\n"
+generated_using:
+- --help

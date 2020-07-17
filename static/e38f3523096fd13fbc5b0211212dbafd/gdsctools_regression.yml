@@ -1,0 +1,122 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: A file in TSV format with IC50s. First column should be the COSMIC
+    identifiers Following columns contain the IC50s for a set of drugs. The header
+    must be COSMIC_ID, Drug_1_IC50, Drug_2_IC50, ...
+  synonyms:
+  - -I
+  - --input-ic50
+  args: !SimpleFlagArg
+    name: INPUT_IC50
+  optional: true
+- !Flag
+  description: A matrix of genomic features. One column with COSMIC identifiers should
+    match those from the IC50s matrix. Then columns named TISSUE_FACTOR, MSI_FACTOR,
+    MEDIA_FACTOR should be provided. Finally, other columns will be considered as
+    genomic features (e.g., mutation)
+  synonyms:
+  - -F
+  - --input-features
+  args: !SimpleFlagArg
+    name: INPUT_FEATURES
+  optional: true
+- !Flag
+  description: a decoder file
+  synonyms:
+  - -D
+  - --input-drug-decode
+  args: !SimpleFlagArg
+    name: INPUT_DRUG_DECODE
+  optional: true
+- !Flag
+  description: kfold for regression cross validation
+  synonyms:
+  - -K
+  - --kfold
+  args: !SimpleFlagArg
+    name: KFOLD
+  optional: true
+- !Flag
+  description: directory where to save images and HTML files.
+  synonyms:
+  - -O
+  - --output-directory
+  args: !SimpleFlagArg
+    name: OUTPUT_DIRECTORY
+  optional: true
+- !Flag
+  description: verbose option.
+  synonyms:
+  - -v
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: force creation of the directory and overwrite files.
+  synonyms:
+  - -f
+  - --force
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: lasso, elasticnet or ridge
+  synonyms:
+  - -M
+  - --method
+  args: !SimpleFlagArg
+    name: METHOD
+  optional: true
+- !Flag
+  description: Print the current license
+  synonyms:
+  - --license
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- gdsctools_regression
+parent:
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: print current version of this application
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Welcome to GDSCTools standalone (lasso, ridge, elastic net)\n===========================================================================\n\
+  usage: \n\n    gdsctools_regression -I <filename> -F <filename> --method lasso\n\
+  \n    \n\nGeneral Description:\n\noptional arguments:\n  -h, --help            show\
+  \ this help message and exit\n\nGeneral:\n  General options (compulsary or not)\n\
+  \n  -I INPUT_IC50, --input-ic50 INPUT_IC50\n                        A file in TSV\
+  \ format with IC50s. First column should\n                        be the COSMIC\
+  \ identifiers Following columns contain\n                        the IC50s for a\
+  \ set of drugs. The header must be\n                        COSMIC_ID, Drug_1_IC50,\
+  \ Drug_2_IC50, ...\n  -F INPUT_FEATURES, --input-features INPUT_FEATURES\n     \
+  \                   A matrix of genomic features. One column with COSMIC\n     \
+  \                   identifiers should match those from the IC50s matrix.\n    \
+  \                    Then columns named TISSUE_FACTOR, MSI_FACTOR,\n           \
+  \             MEDIA_FACTOR should be provided. Finally, other\n                \
+  \        columns will be considered as genomic features (e.g.,\n               \
+  \         mutation)\n  -D INPUT_DRUG_DECODE, --input-drug-decode INPUT_DRUG_DECODE\n\
+  \                        a decoder file\n  -K KFOLD, --kfold KFOLD\n           \
+  \             kfold for regression cross validation\n  -O OUTPUT_DIRECTORY, --output-directory\
+  \ OUTPUT_DIRECTORY\n                        directory where to save images and HTML\
+  \ files.\n  -v, --verbose         verbose option.\n  -f, --force           force\
+  \ creation of the directory and overwrite files.\n  -M METHOD, --method METHOD\n\
+  \                        lasso, elasticnet or ridge\n  --license             Print\
+  \ the current license\n  --version             print current version of this application\n\
+  \nAuthor(s): Thomas Cokelaer (GDSCtools) and authors from the GDSCtools repository.\n\
+  \nHow to contribute ? : Visit https://github.com/CancerRxGene/gdsctools\nIssues\
+  \ or bug report ? Please fill an issue on\nhttp://github.com/CancerRxGene/gdsctools/issues\
+  \ \n"
+generated_using:
+- --help

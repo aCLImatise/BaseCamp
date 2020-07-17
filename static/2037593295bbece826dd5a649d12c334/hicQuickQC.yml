@@ -1,0 +1,133 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: sam
+  optional: false
+- !Positional
+  description: ''
+  position: 1
+  name: files
+  optional: false
+- !Positional
+  description: ''
+  position: 2
+  name: two
+  optional: false
+- !Positional
+  description: ''
+  position: 3
+  name: sam
+  optional: false
+- !Positional
+  description: ''
+  position: 4
+  name: files
+  optional: false
+named:
+- !Flag
+  description: 'sam files two sam files, -s two sam files two sam files The two PE
+    alignment sam files to process. (default: None)'
+  synonyms:
+  - --samFiles
+  args: !SimpleFlagArg
+    name: two
+  optional: true
+- !Flag
+  description: 'Path of folder to save the quality control data of the matrix. The
+    log files produced this way can be loaded into `hicQC` in order to compare the
+    quality of multiple Hi-C libraries. (default: None)'
+  synonyms:
+  - --QCfolder
+  args: !SimpleFlagArg
+    name: FOLDER
+  optional: true
+- !Flag
+  description: 'Sequence of the restriction site. It is highly recommended to set
+    this parameter to get a good quality report. (default: None)'
+  synonyms:
+  - --restrictionSequence
+  - -seq
+  args: !SimpleFlagArg
+    name: RESTRICTIONSEQUENCE
+  optional: true
+- !Flag
+  description: "Sequence left by the restriction enzyme after cutting. Each restriction\
+    \ enzyme recognizes a different DNA sequence and, after cutting, they leave behind\
+    \ a specific \"sticky\" end or dangling end sequence. For example, for HindIII\
+    \ the restriction site is AAGCTT and the dangling end is AGCT. For DpnII, the\
+    \ restriction site and dangling end sequence are the same: GATC. This information\
+    \ is easily found on the description of the restriction enzyme. The dangling sequence\
+    \ is used to classify and report reads whose 5' end starts with such sequence\
+    \ as dangling-end reads. A significant portion of dangling-end reads in a sample\
+    \ are indicative of a problem with the re-ligation step of the protocol. It is\
+    \ highly recommended to set this parameter to get a good quality report. (default:\
+    \ None)"
+  synonyms:
+  - --danglingSequence
+  args: !SimpleFlagArg
+    name: DANGLINGSEQUENCE
+  optional: true
+- !Flag
+  description: 'Number of lines to consider for the QC test run. (default: 1000000)'
+  synonyms:
+  - --lines
+  args: !SimpleFlagArg
+    name: LINES
+  optional: true
+command:
+- hicQuickQC
+parent:
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: hicQuickQC --samFiles two sam files two sam files --QCfolder FOLDER\n\
+  \                  [--restrictionSequence RESTRICTIONSEQUENCE]\n               \
+  \   [--danglingSequence DANGLINGSEQUENCE] [--lines LINES]\n                  [--help]\
+  \ [--version]\n\nThe tool hicQuickQC considers the first n lines of two bam/sam\
+  \ files to get a\nfirst estimate of the quality of the data. It is highly recommended\
+  \ to set the\nrestriction enzyme and dangling end parameter to get a good quality\
+  \ report.\n\nRequired arguments:\n  --samFiles two sam files two sam files, -s two\
+  \ sam files two sam files\n                        The two PE alignment sam files\
+  \ to process. (default:\n                        None)\n  --QCfolder FOLDER    \
+  \ Path of folder to save the quality control data of the\n                     \
+  \   matrix. The log files produced this way can be loaded\n                    \
+  \    into `hicQC` in order to compare the quality of\n                        multiple\
+  \ Hi-C libraries. (default: None)\n\nOptional arguments:\n  --restrictionSequence\
+  \ RESTRICTIONSEQUENCE, -seq RESTRICTIONSEQUENCE\n                        Sequence\
+  \ of the restriction site. It is highly\n                        recommended to\
+  \ set this parameter to get a good\n                        quality report. (default:\
+  \ None)\n  --danglingSequence DANGLINGSEQUENCE\n                        Sequence\
+  \ left by the restriction enzyme after cutting.\n                        Each restriction\
+  \ enzyme recognizes a different DNA\n                        sequence and, after\
+  \ cutting, they leave behind a\n                        specific \"sticky\" end\
+  \ or dangling end sequence. For\n                        example, for HindIII the\
+  \ restriction site is AAGCTT\n                        and the dangling end is AGCT.\
+  \ For DpnII, the\n                        restriction site and dangling end sequence\
+  \ are the\n                        same: GATC. This information is easily found\
+  \ on the\n                        description of the restriction enzyme. The dangling\n\
+  \                        sequence is used to classify and report reads whose 5'\n\
+  \                        end starts with such sequence as dangling-end reads. A\n\
+  \                        significant portion of dangling-end reads in a sample\n\
+  \                        are indicative of a problem with the re-ligation step\n\
+  \                        of the protocol. It is highly recommended to set this\n\
+  \                        parameter to get a good quality report. (default:\n   \
+  \                     None)\n  --lines LINES         Number of lines to consider\
+  \ for the QC test run.\n                        (default: 1000000)\n  --help, -h\
+  \            show this help message and exit\n  --version             show program's\
+  \ version number and exit\n"
+generated_using:
+- --help

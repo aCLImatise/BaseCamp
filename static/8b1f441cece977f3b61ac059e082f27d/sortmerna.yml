@@ -1,0 +1,114 @@
+!Command
+positional: []
+named: []
+command:
+- sortmerna
+parent:
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n  usage:   ./sortmerna --ref db.fasta,db.idx --reads file.fa --aligned\
+  \ base_name_output [OPTIONS]:\n\n  -------------------------------------------------------------------------------------------------------------\n\
+  \  | parameter          value           description                            \
+  \                        default |\n  -------------------------------------------------------------------------------------------------------------\n\
+  \     \e[1m--ref\e[0m             \e[4mSTRING,STRING\e[0m   FASTA reference file,\
+  \ index file                               \e[0;32mmandatory\e[0m\n            \
+  \                             (ex. --ref /path/to/file1.fasta,/path/to/index1)\n\
+  \                                         If passing multiple reference files, separate\
+  \ \n                                         them using the delimiter ':',\n   \
+  \                                      (ex. --ref /path/to/file1.fasta,/path/to/index1:/path/to/file2.fasta,path/to/index2)\n\
+  \     \e[1m--reads\e[0m           \e[4mSTRING\e[0m          FASTA/FASTQ reads file\
+  \                                         \e[0;32mmandatory\e[0m\n     \e[1m--aligned\e\
+  [0m         \e[4mSTRING\e[0m          aligned reads filepath + base file name  \
+  \                      \e[0;32mmandatory\e[0m\n                                \
+  \         (appropriate extension will be added)\n\n   [COMMON OPTIONS]: \n     \e\
+  [1m--other\e[0m           \e[4mSTRING\e[0m          rejected reads filepath + base\
+  \ file name\n                                         (appropriate extension will\
+  \ be added)\n     \e[1m--fastx\e[0m           \e[4mBOOL\e[0m            output FASTA/FASTQ\
+  \ file                                        \e[4moff\e[0m\n                  \
+  \                       (for aligned and/or rejected reads)\n     \e[1m--sam\e[0m\
+  \             \e[4mBOOL\e[0m            output SAM alignment                   \
+  \                        \e[4moff\e[0m\n                                       \
+  \  (for aligned reads only)\n     \e[1m--SQ\e[0m              \e[4mBOOL\e[0m   \
+  \         add SQ tags to the SAM file                                    \e[4moff\e\
+  [0m\n     \e[1m--blast\e[0m           \e[4mINT\e[0m             output alignments\
+  \ in various Blast-like formats                \n                              \
+  \          0 - pairwise\n                                        1 - tabular (Blast\
+  \ -m 8 format)\n                                        2 - tabular + column for\
+  \ CIGAR \n                                        3 - tabular + columns for CIGAR\
+  \ and query coverage\n     \e[1m--log\e[0m             \e[4mBOOL\e[0m          \
+  \  output overall statistics                                      \e[4moff\e[0m\n\
+  \     \e[1m--num_alignments\e[0m  \e[4mINT\e[0m             report first INT alignments\
+  \ per read reaching E-value          \e[4m-1\e[0m\n                            \
+  \            (--num_alignments 0 signifies all alignments will be output)\n    \
+  \   \e[31mor\e[0m (default)\n     \e[1m--best\e[0m            \e[4mINT\e[0m    \
+  \         report INT best alignments per read reaching E-value           \e[4m1\e\
+  [0m\n                                         by searching --min_lis INT candidate\
+  \ alignments\n                                        (--best 0 signifies all candidate\
+  \ alignments will be searched)\n     \e[1m--min_lis\e[0m         \e[4mINT\e[0m \
+  \            search all alignments having the first INT longest LIS         \e[4m2\e\
+  [0m\n                                         LIS stands for Longest Increasing\
+  \ Subsequence, it is \n                                         computed using seeds'\
+  \ positions to expand hits into\n                                         longer\
+  \ matches prior to Smith-Waterman alignment. \n     \e[1m--print_all_reads\e[0m\
+  \ \e[4mBOOL\e[0m            output null alignment strings for non-aligned reads\
+  \            \e[4moff\e[0m\n                                         to SAM and/or\
+  \ BLAST tabular files\n     \e[1m--paired_in\e[0m       \e[4mBOOL\e[0m         \
+  \   both paired-end reads go in --aligned fasta/q file             \e[4moff\e[0m\n\
+  \                                         (interleaved reads only, see Section 4.2.4\
+  \ of User Manual)\n     \e[1m--paired_out\e[0m      \e[4mBOOL\e[0m            both\
+  \ paired-end reads go in --other fasta/q file               \e[4moff\e[0m\n    \
+  \                                     (interleaved reads only, see Section 4.2.4\
+  \ of User Manual)\n     \e[1m--match \e[0m          \e[4mINT\e[0m             SW\
+  \ score (positive integer) for a match                        \e[4m2\e[0m\n    \
+  \ \e[1m--mismatch\e[0m        \e[4mINT\e[0m             SW penalty (negative integer)\
+  \ for a mismatch                   \e[4m-3\e[0m\n     \e[1m--gap_open\e[0m     \
+  \   \e[4mINT\e[0m             SW penalty (positive integer) for introducing a gap\
+  \            \e[4m5\e[0m\n     \e[1m--gap_ext\e[0m         \e[4mINT\e[0m       \
+  \      SW penalty (positive integer) for extending a gap              \e[4m2\e[0m\n\
+  \     \e[1m-N\e[0m                \e[4mINT\e[0m             SW penalty for ambiguous\
+  \ letters (N's)                         \e[4mscored as --mismatch\e[0m\n     \e\
+  [1m-F\e[0m                \e[4mBOOL\e[0m            search only the forward strand\
+  \                                 \e[4moff\e[0m\n     \e[1m-R\e[0m             \
+  \   \e[4mBOOL\e[0m            search only the reverse-complementary strand     \
+  \              \e[4moff\e[0m\n     \e[1m-a\e[0m                \e[4mINT\e[0m   \
+  \          number of threads to use                                       \e[4m1\e\
+  [0m\n     \e[1m-e\e[0m                \e[4mDOUBLE\e[0m          E-value threshold\
+  \                                              \e[4m1\e[0m\n     \e[1m-m\e[0m  \
+  \              \e[4mINT\e[0m             INT Mbytes for loading the reads into memory\
+  \                   \e[4m1024\e[0m\n                                        (maximum\
+  \ -m INT is 8006)\n     \e[1m-v\e[0m                \e[4mBOOL\e[0m            verbose\
+  \                                                        \e[4moff\e[0m\n\n\n   [OTU\
+  \ PICKING OPTIONS]: \n     \e[1m--id\e[0m              \e[4mDOUBLE\e[0m        \
+  \  %id similarity threshold (the alignment must                   \e[4m0.97\e[0m\n\
+  \                                         still pass the E-value threshold)\n  \
+  \   \e[1m--coverage\e[0m        \e[4mDOUBLE\e[0m          %query coverage threshold\
+  \ (the alignment must                  \e[4m0.97\e[0m\n                        \
+  \                 still pass the E-value threshold)\n     \e[1m--de_novo_otu\e[0m\
+  \     \e[4mBOOL\e[0m            FASTA/FASTQ file for reads matching database < %id\
+  \             \e[4moff\e[0m\n                                         (set using\
+  \ --id) and < %cov (set using --coverage) \n                                   \
+  \      (alignment must still pass the E-value threshold)\n     \e[1m--otu_map\e\
+  [0m         \e[4mBOOL\e[0m            output OTU map (input to QIIME's make_otu_table.py)\
+  \            \e[4moff\e[0m\n\n\n   [ADVANCED OPTIONS] (see SortMeRNA user manual\
+  \ for more details): \n    \e[1m--passes\e[0m           \e[4mINT,INT,INT\e[0m  \
+  \   three intervals at which to place the seed on the read         \e[4mL,L/2,3\e\
+  [0m\n                                         (L is the seed length set in ./indexdb_rna)\n\
+  \    \e[1m--edges\e[0m            \e[4mINT\e[0m             number (or percent if\
+  \ INT followed by % sign) of               \e[4m4\e[0m\n                       \
+  \                  nucleotides to add to each edge of the read\n               \
+  \                          prior to SW local alignment \n    \e[1m--num_seeds\e\
+  [0m        \e[4mINT\e[0m             number of seeds matched before searching  \
+  \                     \e[4m2\e[0m\n                                         for\
+  \ candidate LIS \n    \e[1m--full_search\e[0m      \e[4mBOOL\e[0m            search\
+  \ for all 0-error and 1-error seed                        \e[4moff\e[0m\n      \
+  \                                   matches in the index rather than stopping\n\
+  \                                         after finding a 0-error match (<1% gain\
+  \ in\n                                         sensitivity with up four-fold decrease\
+  \ in speed)\n    \e[1m--pid\e[0m              \e[4mBOOL\e[0m            add pid\
+  \ to output file names                                   \e[4moff\e[0m\n\n\n   [HELP]:\n\
+  \     \e[1m-h\e[0m                \e[4mBOOL\e[0m            help\n     \e[1m--version\e\
+  [0m         \e[4mBOOL\e[0m            SortMeRNA version number\n\n\n"
+generated_using:
+- --help

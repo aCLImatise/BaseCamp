@@ -1,0 +1,140 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: number of conformers to generate
+  synonyms:
+  - -n
+  - --num
+  args: !SimpleFlagArg
+    name: NUM
+  optional: true
+- !Flag
+  description: number of attempts
+  synonyms:
+  - -a
+  - --attempts
+  args: !SimpleFlagArg
+    name: ATTEMPTS
+  optional: true
+- !Flag
+  description: prune RMSD threshold
+  synonyms:
+  - -r
+  - --rmsd
+  args: !SimpleFlagArg
+    name: RMSD
+  optional: true
+- !Flag
+  description: Cluster method (RMSD or TFD). If None then no clustering
+  synonyms:
+  - -c
+  - --cluster
+  args: !ChoiceFlagArg
+    choices: !!set
+      tfd:
+      rmsd:
+  optional: true
+- !Flag
+  description: cluster threshold (default of 2.0 for RMSD and 0.3 for TFD)
+  synonyms:
+  - -t
+  - --threshold
+  args: !SimpleFlagArg
+    name: THRESHOLD
+  optional: true
+- !Flag
+  description: energy minimisation iterations (default of 0 means none)
+  synonyms:
+  - -e
+  - --emin
+  args: !SimpleFlagArg
+    name: EMIN
+  optional: true
+- !Flag
+  description: Input file, if not defined the STDIN is used
+  synonyms:
+  - -i
+  - --input
+  args: !SimpleFlagArg
+    name: INPUT
+  optional: true
+- !Flag
+  description: Input format. When using STDIN this must be specified.
+  synonyms:
+  - -if
+  - --informat
+  args: !ChoiceFlagArg
+    choices: !!set
+      sdf:
+      json:
+  optional: true
+- !Flag
+  description: Base name for output file (no extension). If not defined then SDTOUT
+    is used for the structures and output is used as base name of the other files.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT
+  optional: true
+- !Flag
+  description: Output format. Defaults to 'sdf'.
+  synonyms:
+  - -of
+  - --outformat
+  args: !ChoiceFlagArg
+    choices: !!set
+      sdf:
+      json:
+  optional: true
+- !Flag
+  description: Write metadata and metrics files
+  synonyms:
+  - --meta
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: input structure as smiles (incompatible with using files or stdin for
+    input)
+  synonyms:
+  - --smiles
+  args: !SimpleFlagArg
+    name: SMILES
+  optional: true
+command:
+- conformers
+parent:
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: conformers [-h] [-n NUM] [-a ATTEMPTS] [-r RMSD] [-c {rmsd,tfd}]\n\
+  \                  [-t THRESHOLD] [-e EMIN] [-i INPUT] [-if {sdf,json}]\n      \
+  \            [-o OUTPUT] [-of {sdf,json}] [--meta] [--smiles SMILES]\n\nRDKit conformers\n\
+  \noptional arguments:\n  -h, --help            show this help message and exit\n\
+  \  -n NUM, --num NUM     number of conformers to generate\n  -a ATTEMPTS, --attempts\
+  \ ATTEMPTS\n                        number of attempts\n  -r RMSD, --rmsd RMSD \
+  \ prune RMSD threshold\n  -c {rmsd,tfd}, --cluster {rmsd,tfd}\n                \
+  \        Cluster method (RMSD or TFD). If None then no\n                       \
+  \ clustering\n  -t THRESHOLD, --threshold THRESHOLD\n                        cluster\
+  \ threshold (default of 2.0 for RMSD and 0.3 for\n                        TFD)\n\
+  \  -e EMIN, --emin EMIN  energy minimisation iterations (default of 0 means\n  \
+  \                      none)\n  -i INPUT, --input INPUT\n                      \
+  \  Input file, if not defined the STDIN is used\n  -if {sdf,json}, --informat {sdf,json}\n\
+  \                        Input format. When using STDIN this must be specified.\n\
+  \  -o OUTPUT, --output OUTPUT\n                        Base name for output file\
+  \ (no extension). If not\n                        defined then SDTOUT is used for\
+  \ the structures and\n                        output is used as base name of the\
+  \ other files.\n  -of {sdf,json}, --outformat {sdf,json}\n                     \
+  \   Output format. Defaults to 'sdf'.\n  --meta                Write metadata and\
+  \ metrics files\n  --smiles SMILES       input structure as smiles (incompatible\
+  \ with using\n                        files or stdin for input)\n"
+generated_using:
+- --help

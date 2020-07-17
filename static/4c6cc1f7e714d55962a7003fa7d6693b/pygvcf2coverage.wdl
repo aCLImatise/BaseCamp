@@ -1,0 +1,20 @@
+version 1.0
+
+task Pygvcf2coverage {
+  input {
+    String? threshold
+    Boolean? no_merge
+    String? distance
+  }
+  command <<<
+    pygvcf2coverage \
+      ~{if defined(threshold) then ("--threshold " +  '"' + threshold + '"') else ""} \
+      ~{true="--no_merge" false="" no_merge} \
+      ~{if defined(distance) then ("--distance " +  '"' + distance + '"') else ""}
+  >>>
+  parameter_meta {
+    threshold: "DP threshold"
+    no_merge: "Do not merge entries"
+    distance: "Merging distance"
+  }
+}

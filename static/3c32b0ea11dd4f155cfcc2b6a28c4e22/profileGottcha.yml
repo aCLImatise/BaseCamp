@@ -1,0 +1,90 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: =/home/me/indir/genomeVitals2.dmp          --treeFile=/home/me/indir/speciesTreeGI2.dmp
+  synonyms:
+  - --genomeVitals
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: =/home/me/indir/datasetXYZ_fixL30.stats.txt   --rank=all
+  synonyms:
+  - --trimStats
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: --outdir=/home/me/outdir
+  synonyms:
+  - --prefix
+  args: !SimpleFlagArg
+    name: ECOLI
+  optional: true
+command:
+- profileGottcha.pl
+parent:
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\nThis program profiles (organism ID + abundance) an alignment file (SAM,\
+  \ Nucmer, BLAST, etc.) containing reads \nthat were mapped to a database of taxonomic\
+  \ rank-specific nucleotide signatures.\n    \nUsage:  /tmp/tmprqrt4zpm/bin/profileGottcha.pl\
+  \ [REQUIRED1] [REQUIRED2] [OPTIONS]\n\n    [REQUIRED1]\n    --db=<filename>    \
+  \                 Filename of the signature (GOTTCHA) DB in multiFASTA format.\n\
+  \    or  \n    --db=<filename>                     Filename of the signature (GOTTCHA)\
+  \ DB in multiFASTA format.\n    --make_dmp                          Parse a multiFASTA\
+  \ formatted signature (GOTTCHA) DB, store in Perl's Storable format, and exit.\n\
+  \    or  \n    --parsedDB=<filename>               Filename for the signature (GOTTCHA)\
+  \ DB in Perl's Storable format.\n\n    [REQUIRED2: unless --make_dmp]\n    --map=<filename>\
+  \                    Mapping results file in one of the specified formats below.\n\
+  \    --sam, --nucmer, or --blast         The three supported map file format types.\n\
+  \    --genomeVitals=<genomeVitals file>  Perl Storable hash of genome vitals.\n\
+  \    --treeFile=<TaxTree file>           Perl Storable hash of taxonomic tree (includes\
+  \ GI).\n    --trimStats=<file1,file2,...>       Comma-separated list of text files\
+  \ containing the no. of reads and bases of the\n                               \
+  \         input FASTQ files after trimming.\n\n    [ID FILTER: Coverage-based] \
+  \        PASS if values are greater than these thresholds\n    --minCov=<FLOAT>\
+  \                    minimum best_LINEAR_COVERAGE [0.005]\n    --minHits=<INT> \
+  \                    minimum best_HIT_COUNT [5]\n    --minLen=<INT>            \
+  \          minimum best_LINEAR_LENGTH [100]\n\n    [ABUNDANCE FILTER: Stacking-based]\
+  \  PASS if values are greater than these thresholds\n    --method=<INT>        \
+  \              Comma-separated integers corresponding to the method of abundance\
+  \ calculation, \n                                        being either 1 or 2 or\
+  \ 3 or 1,2 or 1,3 or 2,3 or 1,2,3 [1]\n    --minMLHL=<FLOAT>                   mean\
+  \ Linear Hit Length [10]\n    --cCov=<FLOAT>                      critical coverage\
+  \ [0.006]\n    --field=<STRING>                    Field separator within table\
+  \ [TAB, \"\\t\"]\n\n    [OPTIONS]\n    --outdir                            Output\
+  \ directory [.]\n    --prefix                            Prefix to add to output\
+  \ files\n    --noMappedFastq                     Prevents writing of the *.MAPPED.trimmed.fastq\
+  \ file\n    --noUnmappedFastq                   Prevents writing of the *.UNMAPPED.trimmed.fastq\
+  \ file\n    --noFastqOut                        Same as --noMapped and --noUnmapped\n\
+  \    --topHit                            Identifies the ONE most probable organism\
+  \ in sample [<DISABLED>]\n    --minID=<min %ID>                   Filter OUT hits\
+  \ in --map with %identity lower than this [98%] <DISABLED>\n    --verbose      \
+  \                     Verbosity\n    --debug                             Prints\
+  \ extra data for debugging purposes\n    --ddebug                            Specialized\
+  \ debugging\n    --help                              Prints this message\n\n   \
+  \ *Note that entries in --genomeVitals and --treeFile must match those in --db or\
+  \ --parsedDB exactly. \n     If inconsistencies among entries exist:\n     (1) recreate\
+  \ --genomeVitals and --treeFile with mkSpeciesTree_v##.pl with the version of NCBI's\
+  \ names/nodes/gi_taxid_nucl.dmp files\n         that correspond to those entries\
+  \ specified in --db and/or --parsedDB;\n     (2) recreate --genomeVitals and --treeFile\
+  \ with mkSpeciesTree_v##.pl with NCBI's most recent names/nodes/gi_taxid_nucl.dmp\
+  \ files and\n         manually (!!) update the entries in --db to be compliant (DANGEROUS!);\n\
+  \     (3) recreate --db from scratch using NCBI's most recent names/nodes/gi_taxid_nucl.dmp\
+  \ files.\n\n\nExample:\n\n    1. Making a parsed version of GOTTCHA only\n     \
+  \  perl /tmp/tmprqrt4zpm/bin/profileGottcha.pl --make_dmp --db=DTAR.Ecoli_v9b.r93.s15.l35.N1.u30.n64.p1.m9.ALL.fna\
+  \ --prefix=ECOLI --outdir=/home/me/outdir\n       \n    2. Parsing GOTTCHA's FNA\
+  \ file from scratch and profiling a SAM alignment file\n       perl /tmp/tmprqrt4zpm/bin/profileGottcha.pl\
+  \ --db=DTAR.Ecoli_v9b.r93.s15.l35.N1.u30.n64.p1.m9.ALL.fna --map=samfiles.list --sam\
+  \ \n               --genomeVitals=/home/me/indir/genomeVitals2.dmp          --treeFile=/home/me/indir/speciesTreeGI2.dmp\n\
+  \               --trimStats=/home/me/indir/datasetXYZ_fixL30.stats.txt   --rank=all\n\
+  \               --prefix=ECOLI    --outdir=/home/me/outdir\n\n    3. Loading a pre-parsed\
+  \ version of GOTTCHA and profiling a SAM alignment file\n       perl /tmp/tmprqrt4zpm/bin/profileGottcha.pl\
+  \ --parsedDB=DTAR.Ecoli_v9b.r93.s15.l35.N1.u30.n64.p1.m9.ALL.fna.dmp --map=samfiles.list\
+  \ --sam \n               --genomeVitals=/home/me/indir/genomeVitals2.dmp       \
+  \   --treeFile=/home/me/indir/speciesTreeGI2.dmp\n               --trimStats=/home/me/indir/datasetXYZ_fixL30.stats.txt\
+  \   --rank=all\n               --prefix=ECOLI    --outdir=/home/me/outdir\n\n\n"
+generated_using:
+- --help

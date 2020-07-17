@@ -1,0 +1,91 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: List of chromosomes to keep / remove.
+  synonyms:
+  - --chromosomes
+  - -c
+  args: !RepeatFlagArg
+    name: CHROMOSOMES
+  optional: true
+- !Flag
+  description: BED file which stores a list of regions to keep / remove.
+  synonyms:
+  - --regions
+  - -r
+  args: !SimpleFlagArg
+    name: REGIONS
+  optional: true
+- !Flag
+  description: Bad regions are identified and masked.
+  synonyms:
+  - --maskBadRegions
+  - -mbr
+  args: !SimpleFlagArg
+    name: MASKBADREGIONS
+  optional: true
+- !Flag
+  description: 'The Hi-C matrix to adjust. HiCExplorer supports the following file
+    formats: h5 (native HiCExplorer format) and cool.'
+  synonyms:
+  - --matrix
+  - -m
+  args: !SimpleFlagArg
+    name: MATRIX
+  optional: true
+- !Flag
+  description: File name to save the adjusted matrix.
+  synonyms:
+  - --outFileName
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+  optional: true
+- !Flag
+  description: Keep, remove or mask the list of specified chromosomes / regions.
+  synonyms:
+  - --action
+  args: !ChoiceFlagArg
+    choices: !!set
+      keep:
+      remove:
+      mask:
+  optional: true
+command:
+- hicAdjustMatrix
+parent:
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: hicAdjustMatrix --matrix MATRIX --outFileName OUTFILENAME\n   \
+  \                    [--chromosomes CHROMOSOMES [CHROMOSOMES ...] |\n          \
+  \             --regions REGIONS | --maskBadRegions MASKBADREGIONS]\n           \
+  \            [--action {keep,remove,mask}] [--help] [--version]\n\noptional arguments:\n\
+  \  --chromosomes CHROMOSOMES [CHROMOSOMES ...], -c CHROMOSOMES [CHROMOSOMES ...]\n\
+  \                        List of chromosomes to keep / remove.\n  --regions REGIONS,\
+  \ -r REGIONS\n                        BED file which stores a list of regions to\
+  \ keep /\n                        remove.\n  --maskBadRegions MASKBADREGIONS, -mbr\
+  \ MASKBADREGIONS\n                        Bad regions are identified and masked.\n\
+  \nRequired arguments:\n  --matrix MATRIX, -m MATRIX\n                        The\
+  \ Hi-C matrix to adjust. HiCExplorer supports the\n                        following\
+  \ file formats: h5 (native HiCExplorer format)\n                        and cool.\n\
+  \  --outFileName OUTFILENAME, -o OUTFILENAME\n                        File name\
+  \ to save the adjusted matrix.\n\nOptional arguments:\n  --action {keep,remove,mask}\n\
+  \                        Keep, remove or mask the list of specified chromosomes\n\
+  \                        / regions.\n  --help, -h            show this help message\
+  \ and exit\n  --version             show program's version number and exit\n"
+generated_using:
+- --help

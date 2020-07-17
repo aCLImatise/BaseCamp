@@ -1,0 +1,148 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Output directory (default: ./sims_out/)'
+  synonyms:
+  - -o
+  args: !SimpleFlagArg
+    name: O
+  optional: true
+- !Flag
+  description: Reference GTF
+  synonyms:
+  - -g
+  args: !SimpleFlagArg
+    name: G
+  optional: true
+- !Flag
+  description: Fasta file
+  synonyms:
+  - -f
+  args: !SimpleFlagArg
+    name: F
+  optional: true
+- !Flag
+  description: 'Coverage to sim [Default: if nothing specified, coverage=1 for all
+    transcripts]'
+  synonyms:
+  - -cov
+  args: !SimpleFlagArg
+    name: C
+  optional: true
+- !Flag
+  description: RPK to sim
+  synonyms:
+  - -rpk
+  args: !SimpleFlagArg
+    name: R
+  optional: true
+- !Flag
+  description: File of transcripts to sim
+  synonyms:
+  - -t
+  args: !SimpleFlagArg
+    name: T
+  optional: true
+- !Flag
+  description: 'Read length (default: 75)'
+  synonyms:
+  - -bp
+  args: !SimpleFlagArg
+    name: BP
+  optional: true
+- !Flag
+  description: 'Number of mates (1=single (default) or 2=paired ends) (default: 1)'
+  synonyms:
+  - -ends
+  args: !SimpleFlagArg
+    name: ENDS
+  optional: true
+- !Flag
+  description: 'Start selection mode (default: random)'
+  synonyms:
+  - -s
+  args: !SimpleFlagArg
+    name: S
+  optional: true
+- !Flag
+  description: 'Error model [random,errorfree,NIST,dm3,flyheads, or custom] (default:
+    random)'
+  synonyms:
+  - -m
+  args: !SimpleFlagArg
+    name: M
+  optional: true
+- !Flag
+  description: 'Custom error model directory (default: none)'
+  synonyms:
+  - -mdir
+  args: !SimpleFlagArg
+    name: MDIR
+  optional: true
+- !Flag
+  description: 'Intron_retention [0 to 1 (eg 0.2 = 20 percent retention)] (default:
+    0)'
+  synonyms:
+  - -ir
+  args: !SimpleFlagArg
+    name: IR
+  optional: true
+- !Flag
+  description: 'Fragment_size (default: 200)'
+  synonyms:
+  - -frag
+  args: !SimpleFlagArg
+    name: FRAGSIZE
+  optional: true
+- !Flag
+  description: 'Fixed_fragment_size (T=True, F=False) (default: F)'
+  synonyms:
+  - -fragfixed
+  args: !SimpleFlagArg
+    name: FRAGFIXED
+  optional: true
+command:
+- spankisim_transcripts
+parent:
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "usage: spankisim_transcripts [-h] [-o O] [-g G] [-f F] [-cov C] [-rpk\
+  \ R]\n                             [-t T] [-bp BP] [-ends ENDS] [-s S] [-m M]\n\
+  \                             [-mdir MDIR] [-ir IR] [-frag FRAGSIZE]\n         \
+  \                    [-fragfixed FRAGFIXED]\n\n-----------------------------------------------------------------\n\
+  spankisim_transcripts - Generate simulated RNA-SEQ reads. Usage:\nspankisim_transcripts\
+  \ -g genemodels.gtf -f genome.fa [options] Example:\nspankisim_transcripts -o all_tx_sim\
+  \ -g fb_rel5.25.gtf -f dm3.fa -cov 1 This\nwill generate simulated reads for every\
+  \ transcript in the provided reference.\nThe number of reads simulated is based\
+  \ on input values of either reads per\nkilobase (rpk) or coverage (cov). In neither\
+  \ of these is provided, all\ntranscripts are simulated to 1x coverage. Optionally,\
+  \ a text file can be\nprovided that specifies a value for rpk or cov for each transcript.\
+  \ Artificial\nmismatches are inserted according to models based on data from external\n\
+  controls (NIST) or from D. melanogaster RNA-SEQ (dm3). The default model is\nweighted\
+  \ random. You can also specify a custom model built on your own data\n(see spankisim_models)\n\
+  -----------------------------------------------------------------\n\noptional arguments:\n\
+  \  -h, --help            show this help message and exit\n  -o O               \
+  \   Output directory (default: ./sims_out/)\n  -g G                  Reference GTF\n\
+  \  -f F                  Fasta file\n  -cov C                Coverage to sim [Default:\
+  \ if nothing specified,\n                        coverage=1 for all transcripts]\n\
+  \  -rpk R                RPK to sim\n  -t T                  File of transcripts\
+  \ to sim\n  -bp BP                Read length (default: 75)\n  -ends ENDS      \
+  \      Number of mates (1=single (default) or 2=paired ends)\n                 \
+  \       (default: 1)\n  -s S                  Start selection mode (default: random)\n\
+  \  -m M                  Error model [random,errorfree,NIST,dm3,flyheads, or\n \
+  \                       custom] (default: random)\n  -mdir MDIR            Custom\
+  \ error model directory (default: none)\n  -ir IR                Intron_retention\
+  \ [0 to 1 (eg 0.2 = 20 percent\n                        retention)] (default: 0)\n\
+  \  -frag FRAGSIZE        Fragment_size (default: 200)\n  -fragfixed FRAGFIXED  Fixed_fragment_size\
+  \ (T=True, F=False) (default: F)\n"
+generated_using:
+- --help

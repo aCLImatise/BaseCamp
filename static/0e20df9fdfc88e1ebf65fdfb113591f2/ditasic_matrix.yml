@@ -1,0 +1,121 @@
+!Command
+positional:
+- !Positional
+  description: ''
+  position: 0
+  name: FILES
+  optional: false
+named:
+- !Flag
+  description: Mismatch probability at the first base.
+  synonyms:
+  - --startprob
+  args: !SimpleFlagArg
+    name: STARTPROB
+  optional: true
+- !Flag
+  description: Average per base mismatch probability.
+  synonyms:
+  - --avgprob
+  args: !SimpleFlagArg
+    name: AVGPROB
+  optional: true
+- !Flag
+  description: Mismatch probability at the last base.
+  synonyms:
+  - --endprob
+  args: !SimpleFlagArg
+    name: ENDPROB
+  optional: true
+- !Flag
+  description: File with mismatch (start, avg, end) probabilities for each reference.
+  synonyms:
+  - --prob-file
+  args: !SimpleFlagArg
+    name: PROB_FILE
+  optional: true
+- !Flag
+  description: Length of reads used in similarity matrix creation (Required).
+  synonyms:
+  - -l
+  - --length
+  args: !SimpleFlagArg
+    name: LENGTH
+  optional: true
+- !Flag
+  description: 'Number of reads sampled from each reference. [default: 250000]'
+  synonyms:
+  - -n
+  args: !SimpleFlagArg
+    name: NUMBER
+  optional: true
+- !Flag
+  description: Path to existing kallisto index for all files (has to be constructed
+    in same order as the paths in FILES).
+  synonyms:
+  - -i
+  - --index
+  args: !SimpleFlagArg
+    name: INDEX
+  optional: true
+- !Flag
+  description: 'Directory to store temporary simulated datasets and TSV files. [default:
+    ./temp]'
+  synonyms:
+  - -t
+  - --temp
+  args: !SimpleFlagArg
+    name: TEMP
+  optional: true
+- !Flag
+  description: 'Skip read simulation (assume existing reads in temp) [default: False].'
+  synonyms:
+  - --skip
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Output similarity matrix file. [default: similarity_matrix.npy]'
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUT
+  optional: true
+command:
+- ditasic_matrix.py
+parent:
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag:
+help_text: "Usage: ditasic_matrix.py [options] FILES \n\n    Calculate the similarity\
+  \ matrix.\n\n    First, a set of reads is simulated for every reference genome using\
+  \ the mason\n    read simulator.\n    Second, the simulated reads of each species\
+  \ are mapped against all reference\n    genomes using the Kallisto read mapper.\n\
+  \    Third, the resulting tsv-files are analyzed to calculate the similarity\n \
+  \   matrix. The similarity matrix is stored as a numpy file (-o).\n\n    Input:\n\
+  \    FILES: Files with absolute paths to the reference sequences that we use. \n\
+  \n    See the provided LICENSE file or source code for license information.\n  \
+  \  \n\nOptions:\n  -h, --help            show this help message and exit\n  --startprob=STARTPROB\n\
+  \                        Mismatch probability at the first base.\n  --avgprob=AVGPROB\
+  \     Average per base mismatch probability.\n  --endprob=ENDPROB     Mismatch probability\
+  \ at the last base.\n  --prob-file=PROB_FILE\n                        File with\
+  \ mismatch (start, avg, end) probabilities for\n                        each reference.\n\
+  \  -l LENGTH, --length=LENGTH\n                        Length of reads used in similarity\
+  \ matrix creation\n                        (Required).\n  -n NUMBER            \
+  \ Number of reads sampled from each reference. [default:\n                     \
+  \   250000]\n  -i INDEX, --index=INDEX\n                        Path to existing\
+  \ kallisto index for all files (has to\n                        be constructed in\
+  \ same order as the paths in FILES).\n  -t TEMP, --temp=TEMP  Directory to store\
+  \ temporary simulated datasets and\n                        TSV files. [default:\
+  \ ./temp]\n  --skip                Skip read simulation (assume existing reads in\
+  \ temp)\n                        [default: False].\n  -o OUT, --output=OUT  Output\
+  \ similarity matrix file. [default:\n                        similarity_matrix.npy]\n"
+generated_using:
+- --help

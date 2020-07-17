@@ -1,0 +1,720 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: 'Matrix file from the computeMatrix tool. (default: None)'
+  synonyms:
+  - --matrixFile
+  - -m
+  args: !SimpleFlagArg
+    name: MATRIXFILE
+  optional: true
+- !Flag
+  description: 'File name to save the image to. The file ending will be used to determine
+    the image format. The available options are: "png", "eps", "pdf" and "svg", e.g.,
+    MyHeatmap.png. (default: None)'
+  synonyms:
+  - --outFileName
+  - -out
+  - -o
+  args: !SimpleFlagArg
+    name: OUTFILENAME
+  optional: true
+- !Flag
+  description: 'File name into which the regions are saved after skipping zeros or
+    min/max threshold values. The order of the regions in the file follows the sorting
+    order selected. This is useful, for example, to generate other heatmaps while
+    keeping the sorting of the first heatmap. Example: Heatmap1sortedRegions.bed (default:
+    None)'
+  synonyms:
+  - --outFileSortedRegions
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'If this option is given, then the matrix of values underlying the
+    heatmap will be saved using this name, e.g. MyMatrix.tab. (default: None)'
+  synonyms:
+  - --outFileNameMatrix
+  args: !SimpleFlagArg
+    name: FILE
+  optional: true
+- !Flag
+  description: 'If the heatmap image contains a large number of columns is usually
+    better to use an interpolation method to produce better results (see https://matplotl
+    ib.org/examples/images_contours_and_fields/interpolati on_methods.html). Be default,
+    plotHeatmap uses the method `nearest` if the number of columns is 1000 or less.
+    Otherwise it uses the bilinear method. This default behaviour can be changed by
+    using any of the following options: "nearest", "bilinear", "bicubic", "gaussian"
+    (default: auto)'
+  synonyms:
+  - --interpolationMethod
+  args: !SimpleFlagArg
+    name: STR
+  optional: true
+- !Flag
+  description: 'Set the DPI to save the figure. (default: 200)'
+  synonyms:
+  - --dpi
+  args: !SimpleFlagArg
+    name: DPI
+  optional: true
+- !Flag
+  description: 'Number of clusters to compute. When this option is set, the matrix
+    is split into clusters using the k-means algorithm. Only works for data that is
+    not grouped, otherwise only the first group will be clustered. If more specific
+    clustering methods are required, then save the underlying matrix and run the clustering
+    using other software. The plotting of the clustering may fail with an error if
+    a cluster has very few members compared to the total number or regions. (default:
+    None)'
+  synonyms:
+  - --kmeans
+  args: !SimpleFlagArg
+    name: KMEANS
+  optional: true
+- !Flag
+  description: 'Number of clusters to compute. When this option is set, then the matrix
+    is split into clusters using the hierarchical clustering algorithm, using "ward
+    linkage". Only works for data that is not grouped, otherwise only the first group
+    will be clustered. --hclust could be very slow if you have >1000 regions. In those
+    cases, you might prefer --kmeans or if more clustering methods are required you
+    can save the underlying matrix and run the clustering using other software. The
+    plotting of the clustering may fail with an error if a cluster has very few members
+    compared to the total number of regions. (default: None)'
+  synonyms:
+  - --hclust
+  args: !SimpleFlagArg
+    name: HCLUST
+  optional: true
+- !Flag
+  description: 'Compute the silhouette score for regions. This is only applicable
+    if clustering has been performed. The silhouette score is a measure of how similar
+    a region is to other regions in the same cluster as opposed to those in other
+    clusters. It will be reported in the final column of the BED file with regions.
+    The silhouette evaluation can be very slow when you have morethan 100 000 regions.
+    (default: False)'
+  synonyms:
+  - --silhouette
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: '"lines" will plot the profile line based on the average type selected.
+    "fill" fills the region between zero and the profile curve. The fill in color
+    is semi transparent to distinguish different profiles. "se" and "std" color the
+    region between the profile and the standard error or standard deviation of the
+    data. (default: lines)'
+  synonyms:
+  - --plotType
+  args: !ChoiceFlagArg
+    choices: !!set
+      std:
+      lines:
+      se:
+      fill:
+  optional: true
+- !Flag
+  description: 'Whether the heatmap should present the regions sorted. The default
+    is to sort in descending order based on the mean value per region. Note that "keep"
+    and "no" are the same thing. (default: descend)'
+  synonyms:
+  - --sortRegions
+  args: !ChoiceFlagArg
+    choices: !!set
+      no:
+      descend:
+      ascend:
+      keep:
+  optional: true
+- !Flag
+  description: 'Indicate which method should be used for sorting. For each row the
+    method is computed. For region_length, a dashed line is drawn at the end of the
+    region (reference point TSS and center) or the beginning of the region (reference
+    point TES) as appropriate. (default: mean)'
+  synonyms:
+  - --sortUsing
+  args: !ChoiceFlagArg
+    choices: !!set
+      mean:
+      min:
+      region_length:
+      sum:
+      median:
+      max:
+  optional: true
+- !Flag
+  description: 'List of sample numbers (order as in matrix), that are used for sorting
+    by --sortUsing, no value uses all samples, example: --sortUsingSamples 1 3 (default:
+    None)'
+  synonyms:
+  - --sortUsingSamples
+  args: !RepeatFlagArg
+    name: SORTUSINGSAMPLES
+  optional: true
+- !Flag
+  description: 'Draw dashed lines from all tick marks through the heatmap. This is
+    then similar to the dashed line draw at region bounds when using a reference point
+    and --sortUsing region_length (default: False)'
+  synonyms:
+  - --linesAtTickMarks
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'List of sample numbers (order as in matrix), that are used for clustering
+    by --kmeans or --hclust if not given, all samples are taken into account for clustering.
+    Example: --ClusterUsingSamples 1 3 (default: None)'
+  synonyms:
+  - --clusterUsingSamples
+  args: !RepeatFlagArg
+    name: CLUSTERUSINGSAMPLES
+  optional: true
+- !Flag
+  description: 'Define the type of statistic that should be plotted in the summary
+    image above the heatmap. The options are: "mean", "median", "min", "max", "sum"
+    and "std". (default: mean)'
+  synonyms:
+  - --averageTypeSummaryPlot
+  args: !ChoiceFlagArg
+    choices: !!set
+      mean:
+      min:
+      sum:
+      std:
+      median:
+      max:
+  optional: true
+- !Flag
+  description: 'If --missingDataAsZero was not set, such cases will be colored in
+    black by default. Using this parameter, a different color can be set. A value
+    between 0 and 1 will be used for a gray scale (black is 0). For a list of possible
+    color names see: http://packages.python.or g/ete2/reference/reference_svgcolors.html.
+    Other colors can be specified using the #rrggbb notation. (default: black)'
+  synonyms:
+  - --missingDataColor
+  args: !SimpleFlagArg
+    name: MISSINGDATACOLOR
+  optional: true
+- !Flag
+  description: "Color map to use for the heatmap. If more than one heatmap is being\
+    \ plotted the color of each heatmap can be enter individually (e.g. `--colorMap\
+    \ Reds Blues`). Color maps are recycled if the number of color maps is smaller\
+    \ than the number of heatmaps being plotted. Available values can be seen here:\
+    \ http://matplotlib.org/users/colormaps.html The available options are: 'Accent',\
+    \ 'Blues', 'BrBG', 'BuGn', 'BuPu', 'CMRmap', 'Dark2', 'GnBu', 'Greens', 'Greys',\
+    \ 'OrRd', 'Oranges', 'PRGn', 'Paired', 'Pastel1', 'Pastel2', 'PiYG', 'PuBu', 'PuBuGn',\
+    \ 'PuOr', 'PuRd', 'Purples', 'RdBu', 'RdGy', 'RdPu', 'RdYlBu', 'RdYlGn', 'Reds',\
+    \ 'Set1', 'Set2', 'Set3', 'Spectral', 'Wistia', 'YlGn', 'YlGnBu', 'YlOrBr', 'YlOrRd',\
+    \ 'afmhot', 'autumn', 'binary', 'bone', 'brg', 'bwr', 'cividis', 'cool', 'coolwarm',\
+    \ 'copper', 'cubehelix', 'flag', 'gist_earth', 'gist_gray', 'gist_heat', 'gist_ncar',\
+    \ 'gist_rainbow', 'gist_stern', 'gist_yarg', 'gnuplot', 'gnuplot2', 'gray', 'hot',\
+    \ 'hsv', 'icefire', 'inferno', 'jet', 'magma', 'mako', 'nipy_spectral', 'ocean',\
+    \ 'pink', 'plasma', 'prism', 'rainbow', 'rocket', 'seismic', 'spring', 'summer',\
+    \ 'tab10', 'tab20', 'tab20b', 'tab20c', 'terrain', 'twilight', 'twilight_shifted',\
+    \ 'viridis', 'vlag', 'winter' (default: ['RdYlBu'])"
+  synonyms:
+  - --colorMap
+  args: !RepeatFlagArg
+    name: COLORMAP
+  optional: true
+- !Flag
+  description: 'The alpha channel (transparency) to use for the heatmaps. The default
+    is 1.0 and values must be between 0 and 1. (default: 1.0)'
+  synonyms:
+  - --alpha
+  args: !SimpleFlagArg
+    name: ALPHA
+  optional: true
+- !Flag
+  description: 'List of colors to use to create a colormap. For example, if `--colorList
+    black,yellow,blue` is set (colors separated by comas) then a color map that starts
+    with black, continues to yellow and finishes in blue is created. If this option
+    is selected, it overrides the --colorMap chosen. The list of valid color names
+    can be seen here: http://matplotlib.org/examples/color/named_colors.html Hex colors
+    are valid (e.g #34a2b1). If individual colors for different heatmaps need to be
+    specified they need to be separated by space as for example: `--colorList "white,#cccccc"
+    "white,darkred"` As for --colorMap, the color lists are recycled if their number
+    is smaller thatn the number ofplotted heatmaps. The number of transitions is defined
+    by the --colorNumber option. (default: None)'
+  synonyms:
+  - --colorList
+  args: !RepeatFlagArg
+    name: COLORLIST
+  optional: true
+- !Flag
+  description: 'N.B., --colorList is required for an effect. This controls the number
+    of transitions from one color to the other. If --colorNumber is the number of
+    colors in --colorList then there will be no transitions between the colors. (default:
+    256)'
+  synonyms:
+  - --colorNumber
+  args: !SimpleFlagArg
+    name: COLORNUMBER
+  optional: true
+- !Flag
+  description: 'Minimum value for the heatmap intensities. Multiple values, separated
+    by spaces can be set for each heatmap. If the number of zMin values is smaller
+    thanthe number of heatmaps the values are recycled. (default: None)'
+  synonyms:
+  - --zMin
+  - -min
+  args: !RepeatFlagArg
+    name: ZMIN
+  optional: true
+- !Flag
+  description: 'Maximum value for the heatmap intensities. Multiple values, separated
+    by spaces can be set for each heatmap. If the number of zMax values is smaller
+    thanthe number of heatmaps the values are recycled. (default: None)'
+  synonyms:
+  - --zMax
+  - -max
+  args: !RepeatFlagArg
+    name: ZMAX
+  optional: true
+- !Flag
+  description: 'Plot height in cm. The default for the heatmap height is 28. The minimum
+    value is 3 and the maximum is 100. (default: 28)'
+  synonyms:
+  - --heatmapHeight
+  args: !SimpleFlagArg
+    name: HEATMAPHEIGHT
+  optional: true
+- !Flag
+  description: 'Plot width in cm. The default value is 4 The minimum value is 1 and
+    the maximum is 100. (default: 4)'
+  synonyms:
+  - --heatmapWidth
+  args: !SimpleFlagArg
+    name: HEATMAPWIDTH
+  optional: true
+- !Flag
+  description: 'The default is to include a summary or profile plot on top of the
+    heatmap and a heatmap colorbar. Other options are: "plot and heatmap", "heatmap
+    only", "heatmap and colorbar", and the default "plot, heatmap and colorbar". (default:
+    plot, heatmap and colorbar)'
+  synonyms:
+  - --whatToShow
+  args: !ChoiceFlagArg
+    choices: !!set
+      colorbar:
+      plot:
+      and:
+      only:
+      heatmap:
+  optional: true
+- !Flag
+  description: 'By default black boxes are plot around heatmaps. This can be turned
+    off by setting --boxAroundHeatmaps no (default: yes)'
+  synonyms:
+  - --boxAroundHeatmaps
+  args: !SimpleFlagArg
+    name: BOXAROUNDHEATMAPS
+  optional: true
+- !Flag
+  description: 'Description for the x-axis label. (default: gene distance (bp))'
+  synonyms:
+  - --xAxisLabel
+  - -x
+  args: !SimpleFlagArg
+    name: XAXISLABEL
+  optional: true
+- !Flag
+  description: '[only for scale-regions mode] Label shown in the plot for the start
+    of the region. Default is TSS (transcription start site), but could be changed
+    to anything, e.g. "peak start". Same for the --endLabel option. See below. (default:
+    TSS)'
+  synonyms:
+  - --startLabel
+  args: !SimpleFlagArg
+    name: STARTLABEL
+  optional: true
+- !Flag
+  description: '[only for scale-regions mode] Label shown in the plot for the region
+    end. Default is TES (transcription end site). (default: TES)'
+  synonyms:
+  - --endLabel
+  args: !SimpleFlagArg
+    name: ENDLABEL
+  optional: true
+- !Flag
+  description: '[only for reference-point mode] Label shown in the plot for the reference-point.
+    Default is the same as the reference point selected (e.g. TSS), but could be anything,
+    e.g. "peak start". (default: None)'
+  synonyms:
+  - --refPointLabel
+  args: !SimpleFlagArg
+    name: REFPOINTLABEL
+  optional: true
+- !Flag
+  description: 'Rotation of the X-axis labels in degrees. The default is 0, positive
+    values denote a counter-clockwise rotation. (default: 0.0)'
+  synonyms:
+  - --labelRotation
+  args: !SimpleFlagArg
+    name: LABEL_ROTATION
+  optional: true
+- !Flag
+  description: 'Labels for the regions plotted in the heatmap. If more than one region
+    is being plotted, a list of labels separated by spaces is required. If a label
+    itself contains a space, then quotes are needed. For example, --regionsLabel label_1,
+    "label 2". (default: None)'
+  synonyms:
+  - --regionsLabel
+  - -z
+  args: !RepeatFlagArg
+    name: REGIONSLABEL
+  optional: true
+- !Flag
+  description: 'Labels for the samples plotted. The default is to use the file name
+    of the sample. The sample labels should be separated by spaces and quoted if a
+    label itselfcontains a space E.g. --samplesLabel label-1 "label 2" (default: None)'
+  synonyms:
+  - --samplesLabel
+  args: !RepeatFlagArg
+    name: SAMPLESLABEL
+  optional: true
+- !Flag
+  description: 'Title of the plot, to be printed on top of the generated image. Leave
+    blank for no title. (default: )'
+  synonyms:
+  - --plotTitle
+  - -T
+  args: !SimpleFlagArg
+    name: PLOTTITLE
+  optional: true
+- !Flag
+  description: 'Y-axis label for the top panel. (default: )'
+  synonyms:
+  - --yAxisLabel
+  - -y
+  args: !SimpleFlagArg
+    name: YAXISLABEL
+  optional: true
+- !Flag
+  description: 'Minimum value for the Y-axis. Multiple values, separated by spaces
+    can be set for each profile. If the number of yMin values is smaller thanthe number
+    of plots, the values are recycled. (default: None)'
+  synonyms:
+  - --yMin
+  args: !RepeatFlagArg
+    name: YMIN
+  optional: true
+- !Flag
+  description: 'Maximum value for the Y-axis. Multiple values, separated by spaces
+    can be set for each profile. If the number of yMin values is smaller thanthe number
+    of plots, the values are recycled. (default: None)'
+  synonyms:
+  - --yMax
+  args: !RepeatFlagArg
+    name: YMAX
+  optional: true
+- !Flag
+  description: 'Location for the legend in the summary plot. Note that "none" does
+    not work for the profiler. (default: best)'
+  synonyms:
+  - --legendLocation
+  args: !ChoiceFlagArg
+    choices: !!set
+      upper-right:
+      lower-left:
+      center:
+      upper-center:
+      best:
+      center-right:
+      lower-center:
+      center-left:
+      none:
+      upper-left:
+      lower-right:
+  optional: true
+- !Flag
+  description: 'The default is to plot all groups of regions by sample. Using this
+    option instead plots all samples by group of regions. Note that this is only useful
+    if you have multiple groups of regions. by sample rather than group. (default:
+    False)'
+  synonyms:
+  - --perGroup
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'Image format type. If given, this option overrides the image format
+    based on the plotFile ending. The available options are: "png", "eps", "pdf",
+    "plotly" and "svg" (default: None)'
+  synonyms:
+  - --plotFileFormat
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: 'If set, warning messages and additional information are given. (default:
+    False)'
+  synonyms:
+  - --verbose
+  args: !EmptyFlagArg {}
+  optional: true
+command:
+- plotHeatmap
+parent:
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - --help
+  - -h
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "usage: plotHeatmap [--matrixFile MATRIXFILE] --outFileName OUTFILENAME\n\
+  \                   [--outFileSortedRegions FILE] [--outFileNameMatrix FILE]\n \
+  \                  [--interpolationMethod STR] [--dpi DPI] [--kmeans KMEANS]\n \
+  \                  [--hclust HCLUST] [--silhouette] [--help] [--version]\n     \
+  \              [--plotType {lines,fill,se,std}]\n                   [--sortRegions\
+  \ {descend,ascend,no,keep}]\n                   [--sortUsing {mean,median,max,min,sum,region_length}]\n\
+  \                   [--sortUsingSamples SORTUSINGSAMPLES [SORTUSINGSAMPLES ...]]\n\
+  \                   [--linesAtTickMarks]\n                   [--clusterUsingSamples\
+  \ CLUSTERUSINGSAMPLES [CLUSTERUSINGSAMPLES ...]]\n                   [--averageTypeSummaryPlot\
+  \ {mean,median,min,max,std,sum}]\n                   [--missingDataColor MISSINGDATACOLOR]\n\
+  \                   [--colorMap COLORMAP [COLORMAP ...]] [--alpha ALPHA]\n     \
+  \              [--colorList COLORLIST [COLORLIST ...]]\n                   [--colorNumber\
+  \ COLORNUMBER] [--zMin ZMIN [ZMIN ...]]\n                   [--zMax ZMAX [ZMAX ...]]\
+  \ [--heatmapHeight HEATMAPHEIGHT]\n                   [--heatmapWidth HEATMAPWIDTH]\n\
+  \                   [--whatToShow {plot, heatmap and colorbar,plot and heatmap,heatmap\
+  \ only,heatmap and colorbar}]\n                   [--boxAroundHeatmaps BOXAROUNDHEATMAPS]\n\
+  \                   [--xAxisLabel XAXISLABEL] [--startLabel STARTLABEL]\n      \
+  \             [--endLabel ENDLABEL] [--refPointLabel REFPOINTLABEL]\n          \
+  \         [--labelRotation LABEL_ROTATION]\n                   [--regionsLabel REGIONSLABEL\
+  \ [REGIONSLABEL ...]]\n                   [--samplesLabel SAMPLESLABEL [SAMPLESLABEL\
+  \ ...]]\n                   [--plotTitle PLOTTITLE] [--yAxisLabel YAXISLABEL]\n\
+  \                   [--yMin YMIN [YMIN ...]] [--yMax YMAX [YMAX ...]]\n        \
+  \           [--legendLocation {best,upper-right,upper-left,upper-center,lower-left,lower-right,lower-center,center,center-left,center-right,none}]\n\
+  \                   [--perGroup] [--plotFileFormat] [--verbose]\n\nThis tool creates\
+  \ a heatmap for scores associated with genomic regions. The\nprogram requires a\
+  \ matrix file generated by the tool ``computeMatrix``.\n\nRequired arguments:\n\
+  \  --matrixFile MATRIXFILE, -m MATRIXFILE\n                        Matrix file from\
+  \ the computeMatrix tool. (default:\n                        None)\n  --outFileName\
+  \ OUTFILENAME, -out OUTFILENAME, -o OUTFILENAME\n                        File name\
+  \ to save the image to. The file ending will\n                        be used to\
+  \ determine the image format. The available\n                        options are:\
+  \ \"png\", \"eps\", \"pdf\" and \"svg\", e.g.,\n                        MyHeatmap.png.\
+  \ (default: None)\n\nOutput options:\n  --outFileSortedRegions FILE\n          \
+  \              File name into which the regions are saved after\n              \
+  \          skipping zeros or min/max threshold values. The order\n             \
+  \           of the regions in the file follows the sorting order\n             \
+  \           selected. This is useful, for example, to generate\n               \
+  \         other heatmaps while keeping the sorting of the first\n              \
+  \          heatmap. Example: Heatmap1sortedRegions.bed (default:\n             \
+  \           None)\n  --outFileNameMatrix FILE\n                        If this option\
+  \ is given, then the matrix of values\n                        underlying the heatmap\
+  \ will be saved using this name,\n                        e.g. MyMatrix.tab. (default:\
+  \ None)\n  --interpolationMethod STR\n                        If the heatmap image\
+  \ contains a large number of\n                        columns is usually better\
+  \ to use an interpolation\n                        method to produce better results\
+  \ (see https://matplotl\n                        ib.org/examples/images_contours_and_fields/interpolati\n\
+  \                        on_methods.html). Be default, plotHeatmap uses the\n  \
+  \                      method `nearest` if the number of columns is 1000 or\n  \
+  \                      less. Otherwise it uses the bilinear method. This\n     \
+  \                   default behaviour can be changed by using any of the\n     \
+  \                   following options: \"nearest\", \"bilinear\", \"bicubic\",\n\
+  \                        \"gaussian\" (default: auto)\n  --dpi DPI             Set\
+  \ the DPI to save the figure. (default: 200)\n\nClustering arguments:\n  --kmeans\
+  \ KMEANS       Number of clusters to compute. When this option is\n            \
+  \            set, the matrix is split into clusters using the\n                \
+  \        k-means algorithm. Only works for data that is not\n                  \
+  \      grouped, otherwise only the first group will be\n                       \
+  \ clustered. If more specific clustering methods are\n                        required,\
+  \ then save the underlying matrix and run the\n                        clustering\
+  \ using other software. The plotting of the\n                        clustering\
+  \ may fail with an error if a cluster has\n                        very few members\
+  \ compared to the total number or\n                        regions. (default: None)\n\
+  \  --hclust HCLUST       Number of clusters to compute. When this option is\n  \
+  \                      set, then the matrix is split into clusters using the\n \
+  \                       hierarchical clustering algorithm, using \"ward\n      \
+  \                  linkage\". Only works for data that is not grouped,\n       \
+  \                 otherwise only the first group will be clustered.\n          \
+  \              --hclust could be very slow if you have >1000 regions.\n        \
+  \                In those cases, you might prefer --kmeans or if more\n        \
+  \                clustering methods are required you can save the\n            \
+  \            underlying matrix and run the clustering using other\n            \
+  \            software. The plotting of the clustering may fail with\n          \
+  \              an error if a cluster has very few members compared to\n        \
+  \                the total number of regions. (default: None)\n  --silhouette  \
+  \        Compute the silhouette score for regions. This is only\n              \
+  \          applicable if clustering has been performed. The\n                  \
+  \      silhouette score is a measure of how similar a region\n                 \
+  \       is to other regions in the same cluster as opposed to\n                \
+  \        those in other clusters. It will be reported in the\n                 \
+  \       final column of the BED file with regions. The\n                       \
+  \ silhouette evaluation can be very slow when you have\n                       \
+  \ morethan 100 000 regions. (default: False)\n\nOptional arguments:\n  --help, -h\
+  \            show this help message and exit\n  --version             show program's\
+  \ version number and exit\n  --plotType {lines,fill,se,std}\n                  \
+  \      \"lines\" will plot the profile line based on the\n                     \
+  \   average type selected. \"fill\" fills the region between\n                 \
+  \       zero and the profile curve. The fill in color is semi\n                \
+  \        transparent to distinguish different profiles. \"se\"\n               \
+  \         and \"std\" color the region between the profile and the\n           \
+  \             standard error or standard deviation of the data.\n              \
+  \          (default: lines)\n  --sortRegions {descend,ascend,no,keep}\n        \
+  \                Whether the heatmap should present the regions sorted.\n      \
+  \                  The default is to sort in descending order based on\n       \
+  \                 the mean value per region. Note that \"keep\" and \"no\"\n   \
+  \                     are the same thing. (default: descend)\n  --sortUsing {mean,median,max,min,sum,region_length}\n\
+  \                        Indicate which method should be used for sorting. For\n\
+  \                        each row the method is computed. For region_length, a\n\
+  \                        dashed line is drawn at the end of the region\n       \
+  \                 (reference point TSS and center) or the beginning of\n       \
+  \                 the region (reference point TES) as appropriate.\n           \
+  \             (default: mean)\n  --sortUsingSamples SORTUSINGSAMPLES [SORTUSINGSAMPLES\
+  \ ...]\n                        List of sample numbers (order as in matrix), that\
+  \ are\n                        used for sorting by --sortUsing, no value uses all\n\
+  \                        samples, example: --sortUsingSamples 1 3 (default:\n  \
+  \                      None)\n  --linesAtTickMarks    Draw dashed lines from all\
+  \ tick marks through the\n                        heatmap. This is then similar\
+  \ to the dashed line draw\n                        at region bounds when using a\
+  \ reference point and\n                        --sortUsing region_length (default:\
+  \ False)\n  --clusterUsingSamples CLUSTERUSINGSAMPLES [CLUSTERUSINGSAMPLES ...]\n\
+  \                        List of sample numbers (order as in matrix), that are\n\
+  \                        used for clustering by --kmeans or --hclust if not\n  \
+  \                      given, all samples are taken into account for\n         \
+  \               clustering. Example: --ClusterUsingSamples 1 3\n               \
+  \         (default: None)\n  --averageTypeSummaryPlot {mean,median,min,max,std,sum}\n\
+  \                        Define the type of statistic that should be plotted in\n\
+  \                        the summary image above the heatmap. The options are:\n\
+  \                        \"mean\", \"median\", \"min\", \"max\", \"sum\" and \"\
+  std\".\n                        (default: mean)\n  --missingDataColor MISSINGDATACOLOR\n\
+  \                        If --missingDataAsZero was not set, such cases will be\n\
+  \                        colored in black by default. Using this parameter, a\n\
+  \                        different color can be set. A value between 0 and 1\n \
+  \                       will be used for a gray scale (black is 0). For a list\n\
+  \                        of possible color names see: http://packages.python.or\n\
+  \                        g/ete2/reference/reference_svgcolors.html. Other\n    \
+  \                    colors can be specified using the #rrggbb notation.\n     \
+  \                   (default: black)\n  --colorMap COLORMAP [COLORMAP ...]\n   \
+  \                     Color map to use for the heatmap. If more than one\n     \
+  \                   heatmap is being plotted the color of each heatmap can\n   \
+  \                     be enter individually (e.g. `--colorMap Reds Blues`).\n  \
+  \                      Color maps are recycled if the number of color maps is\n\
+  \                        smaller than the number of heatmaps being plotted.\n  \
+  \                      Available values can be seen here:\n                    \
+  \    http://matplotlib.org/users/colormaps.html The\n                        available\
+  \ options are: 'Accent', 'Blues', 'BrBG',\n                        'BuGn', 'BuPu',\
+  \ 'CMRmap', 'Dark2', 'GnBu', 'Greens',\n                        'Greys', 'OrRd',\
+  \ 'Oranges', 'PRGn', 'Paired',\n                        'Pastel1', 'Pastel2', 'PiYG',\
+  \ 'PuBu', 'PuBuGn',\n                        'PuOr', 'PuRd', 'Purples', 'RdBu',\
+  \ 'RdGy', 'RdPu',\n                        'RdYlBu', 'RdYlGn', 'Reds', 'Set1', 'Set2',\
+  \ 'Set3',\n                        'Spectral', 'Wistia', 'YlGn', 'YlGnBu', 'YlOrBr',\n\
+  \                        'YlOrRd', 'afmhot', 'autumn', 'binary', 'bone', 'brg',\n\
+  \                        'bwr', 'cividis', 'cool', 'coolwarm', 'copper',\n     \
+  \                   'cubehelix', 'flag', 'gist_earth', 'gist_gray',\n          \
+  \              'gist_heat', 'gist_ncar', 'gist_rainbow',\n                     \
+  \   'gist_stern', 'gist_yarg', 'gnuplot', 'gnuplot2',\n                        'gray',\
+  \ 'hot', 'hsv', 'icefire', 'inferno', 'jet',\n                        'magma', 'mako',\
+  \ 'nipy_spectral', 'ocean', 'pink',\n                        'plasma', 'prism',\
+  \ 'rainbow', 'rocket', 'seismic',\n                        'spring', 'summer', 'tab10',\
+  \ 'tab20', 'tab20b',\n                        'tab20c', 'terrain', 'twilight', 'twilight_shifted',\n\
+  \                        'viridis', 'vlag', 'winter' (default: ['RdYlBu'])\n  --alpha\
+  \ ALPHA         The alpha channel (transparency) to use for the\n              \
+  \          heatmaps. The default is 1.0 and values must be\n                   \
+  \     between 0 and 1. (default: 1.0)\n  --colorList COLORLIST [COLORLIST ...]\n\
+  \                        List of colors to use to create a colormap. For\n     \
+  \                   example, if `--colorList black,yellow,blue` is set\n       \
+  \                 (colors separated by comas) then a color map that\n          \
+  \              starts with black, continues to yellow and finishes in\n        \
+  \                blue is created. If this option is selected, it\n             \
+  \           overrides the --colorMap chosen. The list of valid\n               \
+  \         color names can be seen here:\n                        http://matplotlib.org/examples/color/named_colors.html\n\
+  \                        Hex colors are valid (e.g #34a2b1). If individual\n   \
+  \                     colors for different heatmaps need to be specified\n     \
+  \                   they need to be separated by space as for example:\n       \
+  \                 `--colorList \"white,#cccccc\" \"white,darkred\"` As for\n   \
+  \                     --colorMap, the color lists are recycled if their\n      \
+  \                  number is smaller thatn the number ofplotted heatmaps.\n    \
+  \                    The number of transitions is defined by the\n             \
+  \           --colorNumber option. (default: None)\n  --colorNumber COLORNUMBER\n\
+  \                        N.B., --colorList is required for an effect. This\n   \
+  \                     controls the number of transitions from one color to\n   \
+  \                     the other. If --colorNumber is the number of colors in\n \
+  \                       --colorList then there will be no transitions between\n\
+  \                        the colors. (default: 256)\n  --zMin ZMIN [ZMIN ...], -min\
+  \ ZMIN [ZMIN ...]\n                        Minimum value for the heatmap intensities.\
+  \ Multiple\n                        values, separated by spaces can be set for each\n\
+  \                        heatmap. If the number of zMin values is smaller\n    \
+  \                    thanthe number of heatmaps the values are recycled.\n     \
+  \                   (default: None)\n  --zMax ZMAX [ZMAX ...], -max ZMAX [ZMAX ...]\n\
+  \                        Maximum value for the heatmap intensities. Multiple\n \
+  \                       values, separated by spaces can be set for each\n      \
+  \                  heatmap. If the number of zMax values is smaller\n          \
+  \              thanthe number of heatmaps the values are recycled.\n           \
+  \             (default: None)\n  --heatmapHeight HEATMAPHEIGHT\n               \
+  \         Plot height in cm. The default for the heatmap height\n              \
+  \          is 28. The minimum value is 3 and the maximum is 100.\n             \
+  \           (default: 28)\n  --heatmapWidth HEATMAPWIDTH\n                     \
+  \   Plot width in cm. The default value is 4 The minimum\n                     \
+  \   value is 1 and the maximum is 100. (default: 4)\n  --whatToShow {plot, heatmap\
+  \ and colorbar,plot and heatmap,heatmap only,heatmap and colorbar}\n           \
+  \             The default is to include a summary or profile plot on\n         \
+  \               top of the heatmap and a heatmap colorbar. Other\n             \
+  \           options are: \"plot and heatmap\", \"heatmap only\",\n             \
+  \           \"heatmap and colorbar\", and the default \"plot, heatmap\n        \
+  \                and colorbar\". (default: plot, heatmap and colorbar)\n  --boxAroundHeatmaps\
+  \ BOXAROUNDHEATMAPS\n                        By default black boxes are plot around\
+  \ heatmaps. This\n                        can be turned off by setting --boxAroundHeatmaps\
+  \ no\n                        (default: yes)\n  --xAxisLabel XAXISLABEL, -x XAXISLABEL\n\
+  \                        Description for the x-axis label. (default: gene\n    \
+  \                    distance (bp))\n  --startLabel STARTLABEL\n               \
+  \         [only for scale-regions mode] Label shown in the plot\n              \
+  \          for the start of the region. Default is TSS\n                       \
+  \ (transcription start site), but could be changed to\n                        anything,\
+  \ e.g. \"peak start\". Same for the --endLabel\n                        option.\
+  \ See below. (default: TSS)\n  --endLabel ENDLABEL   [only for scale-regions mode]\
+  \ Label shown in the plot\n                        for the region end. Default is\
+  \ TES (transcription end\n                        site). (default: TES)\n  --refPointLabel\
+  \ REFPOINTLABEL\n                        [only for reference-point mode] Label shown\
+  \ in the\n                        plot for the reference-point. Default is the same\
+  \ as\n                        the reference point selected (e.g. TSS), but could\
+  \ be\n                        anything, e.g. \"peak start\". (default: None)\n \
+  \ --labelRotation LABEL_ROTATION\n                        Rotation of the X-axis\
+  \ labels in degrees. The default\n                        is 0, positive values\
+  \ denote a counter-clockwise\n                        rotation. (default: 0.0)\n\
+  \  --regionsLabel REGIONSLABEL [REGIONSLABEL ...], -z REGIONSLABEL [REGIONSLABEL\
+  \ ...]\n                        Labels for the regions plotted in the heatmap. If\
+  \ more\n                        than one region is being plotted, a list of labels\n\
+  \                        separated by spaces is required. If a label itself\n  \
+  \                      contains a space, then quotes are needed. For example,\n\
+  \                        --regionsLabel label_1, \"label 2\". (default: None)\n\
+  \  --samplesLabel SAMPLESLABEL [SAMPLESLABEL ...]\n                        Labels\
+  \ for the samples plotted. The default is to use\n                        the file\
+  \ name of the sample. The sample labels should\n                        be separated\
+  \ by spaces and quoted if a label\n                        itselfcontains a space\
+  \ E.g. --samplesLabel label-1\n                        \"label 2\" (default: None)\n\
+  \  --plotTitle PLOTTITLE, -T PLOTTITLE\n                        Title of the plot,\
+  \ to be printed on top of the\n                        generated image. Leave blank\
+  \ for no title. (default: )\n  --yAxisLabel YAXISLABEL, -y YAXISLABEL\n        \
+  \                Y-axis label for the top panel. (default: )\n  --yMin YMIN [YMIN\
+  \ ...]\n                        Minimum value for the Y-axis. Multiple values,\n\
+  \                        separated by spaces can be set for each profile. If\n \
+  \                       the number of yMin values is smaller thanthe number of\n\
+  \                        plots, the values are recycled. (default: None)\n  --yMax\
+  \ YMAX [YMAX ...]\n                        Maximum value for the Y-axis. Multiple\
+  \ values,\n                        separated by spaces can be set for each profile.\
+  \ If\n                        the number of yMin values is smaller thanthe number\
+  \ of\n                        plots, the values are recycled. (default: None)\n\
+  \  --legendLocation {best,upper-right,upper-left,upper-center,lower-left,lower-right,lower-center,center,center-left,center-right,none}\n\
+  \                        Location for the legend in the summary plot. Note that\n\
+  \                        \"none\" does not work for the profiler. (default: best)\n\
+  \  --perGroup            The default is to plot all groups of regions by\n     \
+  \                   sample. Using this option instead plots all samples by\n   \
+  \                     group of regions. Note that this is only useful if you\n \
+  \                       have multiple groups of regions. by sample rather than\n\
+  \                        group. (default: False)\n  --plotFileFormat      Image\
+  \ format type. If given, this option overrides the\n                        image\
+  \ format based on the plotFile ending. The\n                        available options\
+  \ are: \"png\", \"eps\", \"pdf\", \"plotly\"\n                        and \"svg\"\
+  \ (default: None)\n  --verbose             If set, warning messages and additional\
+  \ information\n                        are given. (default: False)\n\nAn example\
+  \ usage is: plotHeatmap -m <matrix file>\n"
+generated_using:
+- --help

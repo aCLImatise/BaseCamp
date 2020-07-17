@@ -1,7 +1,0 @@
-class: CommandLineTool
-id: SatsumaToFASTA.cwl
-inputs: []
-outputs: []
-cwlVersion: v1.1
-baseCommand:
-- SatsumaToFASTA

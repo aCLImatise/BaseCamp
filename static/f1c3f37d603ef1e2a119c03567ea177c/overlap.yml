@@ -1,0 +1,124 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: The input FASTQ file containing the reads from 5' fragment end.
+  synonyms:
+  - '-1'
+  - --input_1
+  args: !SimpleFlagArg
+    name: INPUT_1_FILENAME
+  optional: true
+- !Flag
+  description: The input FASTQ file containing the reads from 3' fragment end.
+  synonyms:
+  - '-2'
+  - --input_2
+  args: !SimpleFlagArg
+    name: INPUT_2_FILENAME
+  optional: true
+- !Flag
+  description: It gives a statistics regarding the amount of mate reads which are
+    overlapping.
+  synonyms:
+  - -o
+  - --output
+  args: !SimpleFlagArg
+    name: OUTPUT_STAT_FILENAME
+  optional: true
+- !Flag
+  description: It outputs also the alignment for each found overlapping.
+  synonyms:
+  - -a
+  - --alignment
+  args: !SimpleFlagArg
+    name: OUTPUT_ALIGNMENT_FILENAME
+  optional: true
+- !Flag
+  description: It outputs in the alignment file, the info for merging the paired-end
+    reads (len_read_1,len_read_2,mismatches _in_overlapping_region).
+  synonyms:
+  - -m
+  - --merged
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: It outputs the fragment size for paired reads which are found to overlap.
+  synonyms:
+  - -s
+  - --fragment-size
+  args: !SimpleFlagArg
+    name: OUTPUT_FRAGMENT_SIZE_FILENAME
+  optional: true
+- !Flag
+  description: The minimum length of the region which is considered an overlap. Default
+    is 13.
+  synonyms:
+  - -v
+  - --overlap
+  args: !SimpleFlagArg
+    name: OVERLAP
+  optional: true
+- !Flag
+  description: Fail gracefully in case the the input reads have different lengths.
+    Default is False.
+  synonyms:
+  - -f
+  - --fail-gracefully
+  args: !EmptyFlagArg {}
+  optional: true
+- !Flag
+  description: Number of parallel processes/CPUs to be used for computations. In case
+    of value 0 then the program will use all the CPUs which are found. The default
+    value is 0.
+  synonyms:
+  - -p
+  - --processes
+  args: !SimpleFlagArg
+    name: PROCESSES
+  optional: true
+command:
+- overlap.py
+parent:
+subcommands: []
+help_flag: !Flag
+  description: show this help message and exit
+  synonyms:
+  - -h
+  - --help
+  args: !EmptyFlagArg {}
+  optional: true
+usage_flag:
+version_flag: !Flag
+  description: show program's version number and exit
+  synonyms:
+  - --version
+  args: !EmptyFlagArg {}
+  optional: true
+help_text: "Usage: overlap.py [options]\n\nGives information regarding the overlap\
+  \ of the mate-reads (i.e.\nlibrary/fragment size) using two FASTQ files as input.\n\
+  \nOptions:\n  --version             show program's version number and exit\n  -h,\
+  \ --help            show this help message and exit\n  -1 INPUT_1_FILENAME, --input_1=INPUT_1_FILENAME\n\
+  \                        The input FASTQ file containing the reads from 5'\n   \
+  \                     fragment end.\n  -2 INPUT_2_FILENAME, --input_2=INPUT_2_FILENAME\n\
+  \                        The input FASTQ file containing the reads from 3'\n   \
+  \                     fragment end.\n  -o OUTPUT_STAT_FILENAME, --output=OUTPUT_STAT_FILENAME\n\
+  \                        It gives a statistics regarding the amount of mate\n  \
+  \                      reads which are overlapping.\n  -a OUTPUT_ALIGNMENT_FILENAME,\
+  \ --alignment=OUTPUT_ALIGNMENT_FILENAME\n                        It outputs also\
+  \ the alignment for each found\n                        overlapping.\n  -m, --merged\
+  \          It outputs in the alignment file, the info for merging\n            \
+  \            the paired-end reads (len_read_1,len_read_2,mismatches\n          \
+  \              _in_overlapping_region).\n  -s OUTPUT_FRAGMENT_SIZE_FILENAME, --fragment-size=OUTPUT_FRAGMENT_SIZE_FILENAME\n\
+  \                        It outputs the fragment size for paired reads which\n \
+  \                       are found to overlap.\n  -v OVERLAP, --overlap=OVERLAP\n\
+  \                        The minimum length of the region which is considered\n\
+  \                        an overlap. Default is 13.\n  -f, --fail-gracefully\n \
+  \                       Fail gracefully in case the the input reads have\n     \
+  \                   different lengths. Default is False.\n  -p PROCESSES, --processes=PROCESSES\n\
+  \                        Number of parallel processes/CPUs to be used for\n    \
+  \                    computations. In case of value 0 then the program will\n  \
+  \                      use all the CPUs which are found. The default value is\n\
+  \                        0.\n"
+generated_using:
+- --help

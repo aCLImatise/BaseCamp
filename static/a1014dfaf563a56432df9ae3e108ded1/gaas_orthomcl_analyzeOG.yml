@@ -1,0 +1,64 @@
+!Command
+positional: []
+named:
+- !Flag
+  description: Tree file in nhx format. If provided the analyse will focuse only on
+    species present in the tree. When no tree is provided, a species tree will be
+    created on the fly using the NCBI taxonomy database online according to the species
+    present among the OG.
+  synonyms:
+  - -t
+  - --tree
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+- !Flag
+  description: taxid or scientific name (use underscore instead of spaces). It allows
+    to focus the analysis only on OG containg the species defined.
+  synonyms:
+  - -s
+  - --species
+  - -ref
+  args: !SimpleFlagArg
+    name: or
+  optional: true
+command:
+- gaas_orthomcl_analyzeOG.pl
+parent:
+subcommands: []
+help_flag:
+usage_flag:
+version_flag:
+help_text: "\n ------------------------------------------------------------------------------\n\
+  |   Genome Assembly Annotation Service (AGAT) - Version: v1.1.0              |\n\
+  |   https://github.com/NBISweden/AGAT                                          |\n\
+  |   National Bioinformatics Infrastructure Sweden (NBIS) - www.nbis.se         |\n\
+  \ ------------------------------------------------------------------------------\n\
+  \  \n\nName:\n    analyzeOG.pl - The script computes some statistics of a COG/KOG\
+  \ file\n    from OrthoMCL output - Statistics as : - number of OG by number of\n\
+  \    species - number of OG by number of species that includes a specifc\n    species\
+  \ (if specified by -s option) - gene appearances - gene losses -\n    Amount of\
+  \ gene at each node/leaf (Compute for ancestral nodes is Dallo\n    like parsimony\
+  \ => on gene appear only one time. Moreover we do not\n    consider potential HGTs).\
+  \ - etc... *OG = Ortholog Group\n\n    Prerequisite: OrthoMCL output where taxid\n\
+  \    (http://www.ncbi.nlm.nih.gov/taxonomy/) has been used to label the\n    sequences.\
+  \ As example: OG00001: 10090|ENSMUSP0000001 9606|ENSP0000001\n\n    => In that case\
+  \ The orthologous group \"OG00001\" contains 2 sequences,\n    one comming from\
+  \ Mus musculus (taxid 10090) and the other from human\n    (taxid 9606).\n\nUsage:\n\
+  \        ./analyzeOG.pl --cog infile [ -s TaxidSpeciesWhichFocusOn -t tree -taxid\
+  \ taxidA_taxidB_taxidC --output outfile ]\n        ./analyzeOG.pl --help\n\nOptions:\n\
+  \    --cog, --og or --kog\n            Orthomcl file containg Ortholog groups (COG)\
+  \ from OrthoMCL.\n\n    --taxid Taxid list. If provided the analyse will use only\
+  \ these species.\n            If a tree is also provided, the taxid will be filtered\
+  \ according\n            to the tree to keep only taxid present in the tree. If\
+  \ no taxid\n            is provided, but a tree is, only species from the tree will\
+  \ be\n            analyzed. If no tree and no taxid are provided, only taxid among\n\
+  \            OG will be use.\n\n    -t or --tree\n            Tree file in nhx format.\
+  \ If provided the analyse will focuse\n            only on species present in the\
+  \ tree. When no tree is provided, a\n            species tree will be created on\
+  \ the fly using the NCBI taxonomy\n            database online according to the\
+  \ species present among the OG.\n\n    -s, --species or -ref\n            taxid\
+  \ or scientific name (use underscore instead of spaces). It\n            allows\
+  \ to focus the analysis only on OG containg the species\n            defined.\n\n"
+generated_using:
+- --help

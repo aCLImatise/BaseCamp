@@ -1,0 +1,17 @@
+version 1.0
+
+task GenomepySearch {
+  input {
+    String? provider
+    String term
+  }
+  command <<<
+    genomepy search \
+      ~{term} \
+      ~{if defined(provider) then ("--provider " +  '"' + provider + '"') else ""}
+  >>>
+  parameter_meta {
+    provider: "provider"
+    term: ""
+  }
+}
