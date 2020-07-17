@@ -1,4 +1,6 @@
 const path = require("path")
+const yaml = require("js-yaml")
+const schema = require("./aclimatiseTypes")
 
 exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
   createTypes([
@@ -141,6 +143,9 @@ exports.createPages = async ({
       let createdExe = false
       let exe = getNode(exeId)
       if (!exe) {
+        const contents = await loadNodeContent(node)
+        const parsed = yaml.safeLoad(contents, { schema: schema })
+
         exe = {
           id: exeId,
           name: stem,

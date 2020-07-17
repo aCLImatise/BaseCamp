@@ -22,12 +22,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-transformer-yaml-full",
-      options: {
-        plugins: [`${__dirname}/aclimatiseTypes`],
-      },
-    },
-    {
       resolve: `gatsby-source-git`,
       options: {
         name: `Definitions`,
