@@ -31,6 +31,7 @@ exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) => {
           },
         },
         name: "String!",
+        succeeded: "Boolean!",
         path: "String!",
         publicURL: "String!",
       },
@@ -45,6 +46,7 @@ exports.createPages = async ({
   actions,
   getNode,
   createContentDigest,
+  loadNodeContent,
   createNodeId,
 }) => {
   const {
